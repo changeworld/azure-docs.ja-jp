@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 081c61610c4134917ffa90cf45fb096f3df4bcbe
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534832"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939292"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>チュートリアル:Netskope Administrator Console と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -148,19 +148,19 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
 1. 左側のナビゲーション ペインの **[Settings]\(設定\)** タブをクリックします。
 
-    ![Netskope Administrator Console 構成](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![ナビゲーション ウィンドウで [設定] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. **[管理]** タブをクリックします。
 
-    ![Netskope Administrator Console 構成](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![[設定] で [管理] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-administration.png)
 
 1. **[SSO]** タブをクリックします。
 
-    ![Netskope Administrator Console 構成](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![[管理] で [SSO] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-sso.png)
 
 1. **[ネットワーク設定]** セクションで、次の手順に従います。
     
-    ![Netskope Administrator Console 構成](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![[ネットワーク設定] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
 
     a. **[Assertion Consumer Service URL]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[返信 URL]** テキスト ボックスに貼り付けます。
 
@@ -168,11 +168,11 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
 1. **[SSO/SLO Settings]\(SSO/SLO 設定\)** セクションの **[設定の編集]** をクリックします。
 
-    ![Netskope Administrator Console 構成](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![[SSO/SLO Settings]\(SSO/SLO 設定\) を示すスクリーンショット。ここでは、[設定の編集] を選択できます。](./media/netskope-cloud-security-tutorial/config-editsettings.png)
 
 1. **[設定]** ポップアップ ウィンドウで、次の手順を実行します。
 
-    ![Netskope Administrator Console 構成](./media/netskope-cloud-security-tutorial/configuration.png)
+    ![[設定] ダイアログ ボックスを示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/netskope-cloud-security-tutorial/configuration.png)
 
     a. **[Enable SSO]\(SSO を有効にする\)** を選択します。
 
@@ -194,23 +194,23 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
 1. 左側のナビゲーション ペインの **[Settings]\(設定\)** タブをクリックします。
 
-    ![Netskope Administrator Console ユーザーの作成](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![[設定] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. **[Active Platform]\(アクティブなプラットフォーム\)** タブをクリックします。
 
-    ![Netskope Administrator Console ユーザーの作成](./media/netskope-cloud-security-tutorial/user1.png)
+    ![[設定] で [アクティブなプラットフォーム] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/user1.png)
 
 1. **[Users]** タブをクリックします。
 
-    ![Netskope Administrator Console ユーザーの作成](./media/netskope-cloud-security-tutorial/add-user.png)
+    ![[アクティブなプラットフォーム] で [ユーザー] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/add-user.png)
 
 1. **[ADD USERS]\(ユーザーの追加\)** をクリックします。
 
-    ![Netskope Administrator Console ユーザーの作成](./media/netskope-cloud-security-tutorial/user-add.png)
+    ![[ユーザー] ダイアログ ボックスを示すスクリーンショット。ここでは、[ユーザーの追加] を選択できます。](./media/netskope-cloud-security-tutorial/user-add.png)
 
 1. 追加するユーザーのメール アドレスを入力し、 **[ADD]\(追加\)** をクリックします。
 
-    ![Netskope Administrator Console ユーザーの作成](./media/netskope-cloud-security-tutorial/add-user-popup.png)
+    ![[ユーザーの追加] を示すスクリーンショット。ここでは、ユーザーの一覧を入力できます。](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 

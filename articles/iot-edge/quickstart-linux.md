@@ -9,24 +9,23 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bbed5899a860f3ba8ac7047a283966536f6c8a87
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328617"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978851"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
 このクイックスタートでは、コンテナー化されたコードを Linux IoT Edge 仮想デバイスに配置して、Azure IoT Edge をテストします。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイス用に Azure 仮想マシンを使用することをお勧めします。これにより、IoT Edge サービスがインストールされているテスト マシンをすばやく作成でき、さらにテストが完了したら削除することができます。
 
 このクイック スタートでは、次の方法について説明します。
-> [!div class="checklist"]
->
-> * IoT Hub を作成します。
-> * IoT Edge デバイスを IoT ハブに登録します。
-> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-> * モジュールを IoT Edge デバイスにリモートで展開する。
+
+* IoT Hub を作成します。
+* IoT Edge デバイスを IoT ハブに登録します。
+* IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+* モジュールを IoT Edge デバイスにリモートで展開する。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart-linux/install-edge-full.png)
 
@@ -110,7 +109,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 ### <a name="deploy-the-iot-edge-device"></a>IoT Edge デバイスを展開する
 
-このセクションでは、Azure Resource Manager テンプレートを使用して新しい仮想マシンを作成し、そこに IoT Edge ランタイムをインストールします。 代わりに独自の Linux デバイスを使用する場合は、[Linux への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-linux.md)に関するページのインストール手順を行ってから、このクイックスタートに戻ることができます。
+このセクションでは、Azure Resource Manager テンプレートを使用して新しい仮想マシンを作成し、そこに IoT Edge ランタイムをインストールします。 代わりに独自の Linux デバイスを使用する場合は、[Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge.md)に関するページのインストール手順を行ってから、このクイックスタートに戻ることができます。
 
 次の CLI コマンドを使用して、構築済みの [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) テンプレートに基づいて IoT Edge デバイスを作成します。
 

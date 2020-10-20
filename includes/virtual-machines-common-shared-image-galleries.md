@@ -4,15 +4,15 @@ description: インクルード ファイル
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494259"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071780"
 ---
 Shared Image Gallery は、イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -56,19 +56,36 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 この 3 つは、それぞれ固有の値を有しています。 形式は、現在 Azure PowerShell で [Azure Marketplace イメージ](../articles/virtual-machines/windows/cli-ps-findimage.md)のパブリッシャー、オファー、SKU を指定して最新バージョンの Marketplace イメージを取得する方法に似ています。 イメージ定義ごとに、これらの値の組み合わせが一意になる必要があります。
 
+イメージ定義により、それに含めることができるイメージ バージョンの種類を決定する次のパラメーターを定義する必要があります。
+-   オペレーティング システムの状態 - OS の状態を[一般化または特殊化](#generalized-and-specialized-images)に設定できます。
+- オペレーティング システム - Windows または Linux にすることができます。
+
+
+
 以下は、リソースをより簡単に追跡できるようにイメージ定義で設定できる他のパラメーターです。
 
-* オペレーティング システムの状態 - OS の状態を[一般化または特殊化](#generalized-and-specialized-images)に設定できます。
-* オペレーティング システム - Windows または Linux にすることができます。
-* 説明 - そのイメージ定義が存在する理由についての詳細な情報を提供するために使います。 たとえば、アプリケーションがプレインストールされているフロントエンド サーバー用のイメージ定義などです。
-* Eula - イメージ定義に固有のエンド ユーザー ライセンス契約を示すために使うことができます。
-* プライバシーに関する声明およびリリース ノート - リリース ノートとプライバシーに関する声明を Azure Storage に格納し、イメージ定義の一部としてそれらにアクセスするための URI を提供します。
-* 終了日 - オートメーションを使って古いイメージ定義を削除できるように、終了日をイメージ定義にアタッチします。
-* タグ - イメージ定義を作成するときに、タグを追加することができます。 タグについて詳しくは、[タグを使用したリソースの整理](../articles/azure-resource-manager/management/tag-resources.md)に関する記事をご覧ください
-* vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
-* 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
-* Hyper-V の世代 - イメージが第 1 世代または第 2 世代のどちらの Hyper-V VHD から作成されたのかを指定できます。
-* Marketplace イメージの購入プラン情報 - `-PurchasePlanPublisher `、`-PurchasePlanName`、および `-PurchasePlanProduct`。 購入プラン情報の詳細については、[Azure Marketplace でのイメージの検索](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)に関するページおよび「[Supply Azure Marketplace purchase plan information when creating images (イメージの作成時に Azure Marketplace 購入プラン情報を指定する)](../articles/virtual-machines/marketplace-images.md)」を参照してください。
+- 説明 - そのイメージ定義が存在する理由についての詳細な情報を提供するために使います。 たとえば、アプリケーションがプレインストールされているフロントエンド サーバー用のイメージ定義などです。
+- Eula - イメージ定義に固有のエンド ユーザー ライセンス契約を示すために使うことができます。
+- プライバシーに関する声明およびリリース ノート - リリース ノートとプライバシーに関する声明を Azure Storage に格納し、イメージ定義の一部としてそれらにアクセスするための URI を提供します。
+- 終了日 - オートメーションを使って古いイメージ定義を削除できるように、終了日をイメージ定義にアタッチします。
+- タグ - イメージ定義を作成するときに、タグを追加することができます。 タグについて詳しくは、[タグを使用したリソースの整理](../articles/azure-resource-manager/management/tag-resources.md)に関する記事をご覧ください
+- vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
+- 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
+-   Hyper-V の世代 - イメージが第 1 世代または[第 2](../articles/virtual-machines/generation-2.md) 世代 Hyper-V VHD から作成されたことを指定します。 既定値は第 1 世代です。
+- Marketplace イメージの購入プラン情報 - `-PurchasePlanPublisher`、`-PurchasePlanName`、および `-PurchasePlanProduct`。 購入プラン情報の詳細については、[Azure Marketplace でのイメージの検索](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)に関するページおよび「[Supply Azure Marketplace purchase plan information when creating images (イメージの作成時に Azure Marketplace 購入プラン情報を指定する)](../articles/virtual-machines/marketplace-images.md)」を参照してください。
+
+
+## <a name="image-versions"></a>イメージ バージョン
+
+**イメージ バージョン**は VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 **イメージ バージョン**を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
+
+イメージ バージョンのプロパティは次のようになります。
+
+- バージョン番号。 これはイメージ バージョンの名前として使用されます。 これは常に次の形式になります。MajorVersion.MinorVersion.Patch VM の作成時に**最新**イメージの使用を指定するとき、最新イメージの選択基準は最高の MajorVersion、MinorVersion、Patch の順になります。 
+- ソース。 ソースには、VM、マネージド ディスク、スナップショット、マネージド イメージ、その他のイメージ バージョンを指定できます。 
+- 最新から除外。 あるバージョンを最新イメージ バージョンとして使用しないようにできます。 
+- 有効期限の終了日。 この日付を経過すると、このイメージから VM を作成できなくなります。
+
 
 ## <a name="generalized-and-specialized-images"></a>一般化されたイメージと特殊化されたイメージ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552800"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
 
@@ -94,7 +94,7 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
 3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
-    ![[編集] アイコン](common/edit-urls.png)
+    ![[SAML でシングル サインオンをセットアップします] ページを示すスクリーンショット。[編集] アイコンが選択されています。](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ダイアログ ボックスで、次の手順を実行します。
 
@@ -113,7 +113,7 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
 5. **[SAML 署名証明書]** セクションで **[編集]** アイコンを選択して、 **[SAML 署名証明書]** ダイアログ ボックスを開きます。
 
-    ![[編集] アイコン](common/edit-certificate.png)
+    ![[編集] アイコンが選択されている [SAML 署名証明書] ページを示すスクリーンショット。](common/edit-certificate.png)
 
 6. **[SAML 署名証明書]** ダイアログ ボックスで、証明書の **[拇印]** の値をコピーして保存します。
 
@@ -143,9 +143,9 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
 1. **[Single Sign-On]\(シングル サインオン\)** 構成セクションで、次の手順を実行します。
 
-    ![[Single Sign-On]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775572.png "[Single Sign-On]\(シングル サインオン\) セクション")
+    ![[Enabled]\(有効\) が選択されている [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/ic775572.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
-    ![[Single Sign-On]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775573.png "[Single Sign-On]\(シングル サインオン\) セクション")
+    ![この手順で説明されている情報を追加できる [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/ic775573.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
     1. **[Enabled]** を選択します。
 

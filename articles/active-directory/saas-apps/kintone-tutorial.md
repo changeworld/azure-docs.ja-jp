@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e1e966595422f353067d66483defa0b880874415
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535341"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>チュートリアル: Azure Active Directory と Kintone の統合
 
@@ -145,7 +145,7 @@ Kintone で Azure AD シングル サインオンを構成するには、次の�
 
 1. **[SAML 認証を有効にする]** を選択します。
 
-    ![SAML 認証](./media/kintone-tutorial/ic785882.png "[SAML 認証]")
+    ![[ユーザーとシステム管理] が選択されているスクリーンショット。](./media/kintone-tutorial/ic785882.png "[SAML 認証]")
 
 1. [SAML 承認] セクションで、次の手順に従います。
 
@@ -232,7 +232,7 @@ Azure AD ユーザーが Kintone にサインインできるようにするに�
 
 1. **[新しいユーザー]** をクリックします。
 
-    ![[新しいユーザー]](./media/kintone-tutorial/ic785889.png "新しいユーザー")
+    ![[New User]\(新しいユーザー\) アクションが選択されている [Users]\(ユーザー\) セクションを示すスクリーンショット。](./media/kintone-tutorial/ic785889.png "新しいユーザー")
 
 1. **[新しいユーザー]** セクションで、次の手順に従います。
 

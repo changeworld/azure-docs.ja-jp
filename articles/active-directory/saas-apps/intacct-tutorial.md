@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535844"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850576"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -189,7 +189,7 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 1. **[ユーザー情報]** セクションで、次の手順を実行します。
 
-    ![[User Information]\(ユーザー情報\)](./media/intacct-tutorial/ic790043.png "[ユーザー情報]")
+    ![この手順の情報を入力できる [User Information]\(ユーザー情報\) セクションを示すスクリーンショット。](./media/intacct-tutorial/ic790043.png "[ユーザー情報]")
 
     a. プロビジョニングする Azure AD アカウントの**ユーザー ID**、**姓**、**名**、**電子メール アドレス**、**役職**、**電話番号**を、 **[User Information (ユーザー情報)]** セクションに入力します。
 
@@ -204,7 +204,7 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 1. **[Single sign-on]\(シングル サインオン\)** タブをクリックし、下のスクリーンショットの **[Federated SSO User ID]\(フェデレーション SSO のユーザー ID\)** と、Azure portal の **[ユーザー属性]** セクションの `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` にマップされている **[Source Attribute]\(ソース属性\)** の値が同じになるようにします。
 
-    ![[User Information]\(ユーザー情報\)](./media/intacct-tutorial/ic790044.png "[ユーザー情報]")
+    ![[Federated S S O user i d]\(フェデレーション S S O ユーザー I D\) を入力できる [User Information]\(ユーザー情報\) セクションを示すスクリーンショット。](./media/intacct-tutorial/ic790044.png "[ユーザー情報]")
 
 > [!NOTE]
 > Azure AD ユーザー アカウントをプロビジョニングするには、Sage Intacct から提供されているその他の Sage Intacct ユーザー アカウント作成ツールまたは API を使用できます。

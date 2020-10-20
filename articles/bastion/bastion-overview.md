@@ -5,20 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89291876"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014785"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
-Azure Bastion サービスは、お使いの仮想ネットワーク内でプロビジョニングする、新しいフル プラットフォームマネージド PaaS サービスです。 これは、Azure portal 内で直接 TLS を経由して、お使いの仮想マシンへの安全かつシームレスな RDP または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。
+Azure Bastion は、ブラウザーと Azure portal を使用して仮想マシンに接続できるようにするサービスで、ユーザーがデプロイします。 Azure Bastion サービスは、お使いの仮想ネットワーク内でプロビジョニングする、フル プラットフォーム マネージド PaaS サービスです。 これにより、TLS 経由で Azure portal から直接、仮想マシンに安全かつシームレスに RDP/SSH 接続できます。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレス、エージェント、クライアント ソフトウェアはいずれも不要です。
 
-Bastion は、プロビジョニングされる仮想ネットワーク内のすべての VM に対して安全な RDP および SSH 接続を提供します。 Azure Bastion を使用すると、RDP または SSH を使用した安全なアクセスを提供しながら、お使いの仮想マシンが RDP または SSH ポートを外部に公開しないように保護されます。 Azure Bastion を使用して、Azure portal から直接仮想マシンに接続します。 追加のクライアント、エージェント、ソフトウェアは必要ありません。
+Bastion は、プロビジョニングされる仮想ネットワーク内のすべての VM に対して安全な RDP および SSH 接続を提供します。 Azure Bastion を使用すると、RDP または SSH を使用した安全なアクセスを提供しながら、お使いの仮想マシンが RDP または SSH ポートを外部に公開しないように保護されます。
 
 ## <a name="architecture"></a>Architecture
 
@@ -57,5 +57,5 @@ RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.c
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Bastion ホスト リソースを作成する](bastion-create-host-portal.md)。
+* [チュートリアル: Azure Bastion ホストを作成し、Windows VM に接続する](tutorial-create-host-portal.md)。
 * Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。

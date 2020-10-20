@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547549"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合
 
@@ -146,23 +146,23 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
 2. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon1.png)
+    ![[Settings]\(設定\) メニューの [Add-ons]\(アドオン\) が選択されているスクリーンショット。](./media/jira52microsoft-tutorial/addon1.png)
 
 3. [アドオン] タブ セクションで、 **[アドオンの管理]** をクリックします。
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon7.png)
+    ![[Add-ons]\(アドオン\) タブで [Manage add-ons]\(アドオンの管理\) が選択されているスクリーンショット。](./media/jira52microsoft-tutorial/addon7.png)
 
 4. [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=56521)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement/)の対象です。
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon12.png)
+    ![[Upload add-on]\(アドオンのアップロード\) リンクが強調表示されている [Manage add-ons]\(アドオンの管理\) を示すスクリーンショット。](./media/jira52microsoft-tutorial/addon12.png)
 
 5. プラグインがインストールされると、 **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon13.png)
+    ![[Configure]\(構成\) が選択されている [Azure A D SAML Single Sign-on for Jira] セクションを示すスクリーンショット。](./media/jira52microsoft-tutorial/addon13.png)
 
 6. 構成ページで次の手順を実行します。
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon52.png)
+    ![[Microsoft Jira S S O Connector configuration]\(Microsoft Jira S S O コネクタの構成\) ページを示すスクリーンショット。](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
@@ -251,19 +251,19 @@ Azure AD ユーザーが JIRA オンプレミス サーバーにサインイン�
 
 2. 歯車をポイントし、 **[User management]\(ユーザー管理\)** をクリックします。
 
-    ![従業員の追加](./media/jira52microsoft-tutorial/user1.png)
+    ![[Settings]\(設定\) メニューの [User management]\(ユーザー管理\) が選択されているスクリーンショット。](./media/jira52microsoft-tutorial/user1.png)
 
 3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード**を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
-    ![従業員の追加](./media/jira52microsoft-tutorial/user2.png)
+    ![資格情報を入力する [Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。](./media/jira52microsoft-tutorial/user2.png)
 
 4. **[User management]\(ユーザー管理\)** タブ セクションで、 **[create user]\(ユーザーの作成\)** をクリックします。
 
-    ![従業員の追加](./media/jira52microsoft-tutorial/user3.png) 
+    ![ユーザーを作成する [User management]\(ユーザー管理\) タブを示すスクリーンショット。](./media/jira52microsoft-tutorial/user3.png) 
 
 5. **[Create new user]\(新しいユーザーの作成\)** ダイアログ ページで、以下の手順を実行します。
 
-    ![従業員の追加](./media/jira52microsoft-tutorial/user4.png)
+    ![この手順の情報を入力できる [Create new user]\(新しいユーザーの作成\) ダイアログ ボックスを示すスクリーンショット。](./media/jira52microsoft-tutorial/user4.png)
 
     a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 

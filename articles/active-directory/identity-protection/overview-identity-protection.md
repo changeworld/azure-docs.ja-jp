@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265275"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996530"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -113,6 +113,8 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 | 通知 | 危険な状態のユーザーが検出されたアラート  | いいえ | いいえ |はい |
 | 通知 | 週間ダイジェスト| いいえ | いいえ | はい | 
 | | MFA 登録ポリシー | いいえ | いいえ | はい |
+
+これらの高度なレポートの詳細については次の記事を参照してください。[リスクを調査する方法](howto-identity-protection-investigate-risk.md#navigating-the-reports)。
 
 ## <a name="next-steps"></a>次のステップ
 

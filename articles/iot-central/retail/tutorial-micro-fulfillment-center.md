@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440192"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840440"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
@@ -96,4 +96,4 @@ ms.locfileid: "91440192"
 > [!div class="nextstepaction"]
 > [マイクロフルフィルメント センターのソリューション アーキテクチャ](./architecture-micro-fulfillment-center.md)
 * [Azure IoT Central 小売りテンプレート](./overview-iot-central-retail.md)について詳細を確認する。
-* 他の [Azure IoT Central 概要](../preview/overview-iot-central.md)について詳細を確認する。
+* [Azure IoT Central](../preview/overview-iot-central.md) についての詳細

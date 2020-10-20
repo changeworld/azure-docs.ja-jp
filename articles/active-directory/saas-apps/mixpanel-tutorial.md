@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554721"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>チュートリアル: Azure Active Directory と Mixpanel の統合
 
@@ -130,15 +130,15 @@ Mixpanel で Azure AD シングル サインオンを構成するには、次の
 
 3. **[Access security]** タブをクリックし、 **[Change settings]** をクリックします。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![[アクセス セキュリティ] タブを示すスクリーンショット。ここでは、設定を変更できます。](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. **[Change your certificate]\(証明書の変更\)** ダイアログ ページで、 **[ファイルの選択]** をクリックしてダウンロードした証明書をアップロードし、 **[次へ]** をクリックします。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![[Change your certificate]\(証明書の変更\) ダイアログ ボックスを示すスクリーンショット。ここでは、証明書ファイルを選択できます。](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  **[Change your authentication URL]\(認証 URL の変更\)** ダイアログ ページの [authentication URL]\(認証 URL\) ボックスで、Azure portal からコピーした **[ログイン URL]** の値を貼り付けて **[次へ]** をクリックします。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![[Change your authentication URL]\(認証 URL の変更\) ウィンドウを示すスクリーンショット。ここでは、ログイン URL をコピーできます。](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. **[Done]** をクリックします。
 
@@ -205,7 +205,7 @@ Mixpanel で Azure AD シングル サインオンを構成するには、次の
 
 4. **[Invite a team member by email]** ボックスに、Azure での Britta の 電子メール アドレスを入力します。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![[チーム] タブを示すスクリーンショット。ここでは、招待するアドレスを追加します。](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. **[招待]** をクリックします。 
 

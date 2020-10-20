@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282462"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938425"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal 経由で DMS を使用して、Azure DB for postgresql - シングル サーバーを Azure DB for PostgreSQL - シングル サーバーまたは Hyperscale (Citus) にオンラインで移行する
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行する
 
-Azure Database Migration Service を使用すると、[Azure Database for PostgreSQL - シングル サーバー](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) インスタンスから [Azure Database for PostgreSQL の Hyperscale (Citus)](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) インスタンスに最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを Azure Database for PostgreSQL v10 から Azure Database for PostgreSQL の Hyperscale (Citus) に移行します。
+Azure Database Migration Service を使用すると、[Azure Database for PostgreSQL - 単一サーバー](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) インスタンスから、同じまたは別のバージョンの Azure Database for PostgreSQL - 単一サーバー インスタンス、または Azure Database for PostgreSQL - フレキシブル サーバーに、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを Azure Database for PostgreSQL v10 から Azure Database for PostgreSQL - 単一サーバーに移行します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -57,9 +57,10 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 * 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
 * Azure Database for PostgreSQL ソースのサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がソース データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * Azure Database for PostgreSQL ターゲットのサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
+* Azure DB for PostgreSQL ソースで[論理レプリケーションを有効に](https://docs.microsoft.com/azure/postgresql/concepts-logical)します。 
 * ソースとして使用されている Azure Database for PostgreSQL インスタンスで、次のサーバー パラメーターを設定します。
 
-  * max_replication_slots = [スロットの数]、**5 スロット**に設定することをお勧めします
+  * max_replication_slots = [スロットの数]。**10 スロット**に設定することをお勧めします
   * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、**10 タスク**に設定することをお勧めします
 
 > [!NOTE]
@@ -284,7 +285,10 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 
     ![[一括を完了する] 画面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. データベースの移行状態に **[完了]** と表示されたら、アプリケーションを Azure Database for PostgreSQL の新しいターゲット インスタンスに接続します。
+3. データベースの移行状態に **[完了]** と表示されたら、[順序を再作成](https://wiki.postgresql.org/wiki/Fixing_Sequences) (該当する場合) して、アプリケーションを Azure Database for PostgreSQL の新しいターゲット インスタンスに接続します。
+ 
+> [!NOTE]
+> Azure Database Migration Service を使用すると、Azure Database for PostgreSQL - 単一サーバーのダウンタイムを短縮して、メジャー バージョンのアップグレードを実行できます。 最初に、目的とする高バージョンの PostgreSQL、ネットワーク設定およびパラメーターを使用して、ターゲット データベースを構成します。 上記の手順に従うことで、ターゲット データベースへの移行を開始することができます。 ターゲット データベース サーバーに切り替えると、そのターゲット データベース サーバーを指すようにアプリケーションの接続文字列を更新できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

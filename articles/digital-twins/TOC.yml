@@ -55,6 +55,8 @@
               href: how-to-set-up-instance-portal.md
         - name: アプリ認証コードを作成する
           href: how-to-authenticate-client.md
+        - name: アプリの登録を作成する
+          href: how-to-create-app-registration.md
         - name: インスタンスを別のリージョンに移動する
           href: how-to-move-regions.md
     - name: モデルを設計する

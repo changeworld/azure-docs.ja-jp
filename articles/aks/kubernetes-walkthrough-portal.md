@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、Azure portal を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2331f2a9dc4ca0e94b251a03e7917547f360af4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459797"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850443"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -37,15 +37,15 @@ AKS クラスターを作成するには、次の手順を実行します。
 
 3. **[基本]** ページで、次のオプションを構成します。
     - **プロジェクトの詳細**:Azure **サブスクリプション**を選択し、Azure **リソース グループ** (たとえば、*myResourceGroup*) を選択または作成します。
-    - **クラスターの詳細**:**Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。 AKS クラスターの**リージョン**、**Kubernetes バージョン**、および **DNS 名プレフィックス**を選択します。
-    - **プライマリ ノード プール**:AKS ノードの VM **ノード サイズ**を選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは*できません*。 
+    - **クラスターの詳細**:**Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。 AKS クラスターの**リージョン**と **Kubernetes バージョン**を選択します。
+    - **プライマリ ノード プール**:AKS ノードの VM **ノード サイズ**を選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは*できません*。
             - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整*できます*。
     
     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    **[Next:スケール]** を完了後に選択します。
+    **[Next:Node pools]\(次: ノード プール\)** を、完了したら選択します。
 
-4. **[スケール]** ページで、既定のオプションを維持します。 ページの下部にある **[Next:Authentication] (次: 認証)** をクリックします。
+4. **[ノード プール]** ページで、既定のオプションを維持します。 ページの下部にある **[Next:Authentication] (次: 認証)** をクリックします。
     > [!CAUTION]
     > 新しい AAD サービス プリンシパルの作成は、伝達されて使用可能になるまでに数分かかる場合があり、それが原因でサービス プリンシパルが見つからないエラーや検証エラーが Azure portal で生じることがあります。 そのような場合の軽減策については、[こちら](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)をご覧ください。
 

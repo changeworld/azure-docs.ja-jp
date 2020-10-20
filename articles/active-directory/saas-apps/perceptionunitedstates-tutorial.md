@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7581dd52cb9affa3295bfbc00c14535ee72de5be
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553958"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -133,7 +133,7 @@ Perception United States (非 UltiPro) で Azure AD シングル サインオン
 
 2. メイン ツール バーで、 **[Account Settings]** をクリックします。
 
-    ![Perception United States (非 UltiPro) ユーザー](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![メイン ツール バーから [Account Settings]\(アカウント設定\) が選択されている画面のスクリーンショット。](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. **[Account Settings]** ページで、次の手順を実行します。
 

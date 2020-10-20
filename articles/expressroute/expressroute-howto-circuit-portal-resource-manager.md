@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: e25ebd181d0017885a24310e3dac3ff30a59a21e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c2e0f7736aa5d6779e4ed7cb3824f6606c121565
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973361"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073140"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>クイックスタート: ExpressRoute 回線の作成と変更
 
@@ -164,7 +164,7 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-**[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 
+**[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 続行する前に、プロバイダーのステータスが確実に "*未プロビジョニング*" になっているようにします。
 
 :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="ExpressRoute 回線の作成":::
 

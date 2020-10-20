@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538958"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873916"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -72,16 +72,16 @@ Azure Policy は、次の 2 つのリソース プロバイダーにおいて、
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者**ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者**はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者**はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者**ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者**はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者**はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者**が必要です。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
 > [!NOTE]
-> **deployIfNotExists** ポリシー割り当てのマネージド ID には、テンプレートに含まれているリソースを作成または更新するのに十分なアクセス許可が必要です。 詳細については、[修復用のポリシー定義の構成](./how-to/remediate-resources.md#configure-policy-definition)に関するページを参照してください。
+> **deployIfNotExists** ポリシー割り当てまたは **modify** ポリシー割り当てのマネージド ID には、対象となるリソースを作成したり更新したりするための十分なアクセス許可が必要です。 詳細については、[修復用のポリシー定義の構成](./how-to/remediate-resources.md#configure-policy-definition)に関するページを参照してください。
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy の対象となるリソース
 
-Azure Policy では Azure 内のすべてのリソースを評価します。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
+Azure 内のすべてのリソースおよび Arc 対応リソースが、Azure Policy の評価の対象となります。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
 
 ### <a name="recommendations-for-managing-policies"></a>ポリシー管理に関する推奨事項
 
@@ -112,7 +112,6 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 - **許可されている場所** (拒否):新しいリソースに使用できる場所を制限します。 その効果は、geo コンプライアンス要件を強制するために使用されます。
 - **許可されている仮想マシン SKU** (拒否):展開できる仮想マシンの SKU の設定を指定します。
 - **リソースへのタグの追加** (変更):展開要求によって指定されていない場合に、必要なタグとその既定値を適用します。
-- **タグとその既定値の追加** (追加):必要なタグとその値をリソースに適用します。
 - **許可されていないリソースの種類** (拒否):リストのリソースの種類が展開されないようにします。
 
 これらのポリシー定義 (組み込み定義とカスタム定義の両方) を実装するには、割り当てを行う必要があります。 こうしたポリシーを割り当てるには、Azure Portal、PowerShell、または Azure CLI を使用します。

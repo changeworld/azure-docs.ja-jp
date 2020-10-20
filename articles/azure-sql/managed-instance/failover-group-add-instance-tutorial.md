@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070855"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91617742"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに SQL Managed Instance を追加する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ Azure SQL Managed Instance のマネージド インスタンスをフェール�
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>リソース グループとプライマリ マネージド インスタンスを作成する
 
 この手順では、Azure portal または PowerShell を使用して、リソース グループと、フェールオーバー グループのプライマリ マネージド インスタンスを作成します。 
+
+パフォーマンス上の理由により、両方のマネージド インスタンスを、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にデプロイします。 geo のペアになっているリージョンに存在するマネージド インスタンスは、ペアになっていないリージョンと比較すると、パフォーマンスがはるかに優れています。 
 
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal) 
@@ -740,6 +742,8 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 
 この記事では、2 つの VPN ゲートウェイを作成して接続する手順について説明しますが、代わりに ExpressRoute を構成した場合は、フェールオーバー グループの作成に進むことができます。 
 
+> [!NOTE]
+> ゲートウェイの SKU は、スループットのパフォーマンスに影響を与えます。 このチュートリアルでは、最も基本的な SKU (`HwGw1`) を使用して、ゲートウェイをデプロイします。 上位の SKU (`VpnGw3` など) をデプロイして、より高いスループットを実現します。 使用可能なすべてのオプションについては、[ゲートウェイ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) に関する記事を参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

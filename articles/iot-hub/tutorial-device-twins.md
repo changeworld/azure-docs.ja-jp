@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251883"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842769"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -191,11 +191,11 @@ node ServiceClient.js "{your service connection string}"
 
 次のスクリーンショットは、シミュレートされたデバイス アプリケーションからの出力を示しています。必要なプロパティ **maxTemperature** の更新を処理する方法が強調表示されています。 最上位のハンドラーと climate コンポーネント ハンドラーの両方がどのように動作するかがわかります。
 
-![シミュレートされたデバイス](./media/tutorial-device-twins/SimulatedDevice1.png)
+![最上位のハンドラーと climate コンポーネント ハンドラーの両方がどのように動作するかを示すスクリーンショット。](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 次のスクリーンショットは、バックエンド アプリケーションからの出力を示しています。必要なプロパティ **maxTemperature** に更新が送信される方法が強調表示されています。
 
-![バックエンド アプリケーション](./media/tutorial-device-twins/BackEnd1.png)
+![バックエンド アプリケーションからの出力を示し、更新が送信される方法が強調表示されているスクリーンショット。](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>状態情報を受信する
 

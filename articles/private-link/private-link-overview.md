@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 7c647ba9a89fedf0d43bd8b10460fed101d166b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1ce0368bb86134bd52473b80eabbfaf87e36148d
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801397"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939649"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -62,7 +62,7 @@ Azure Private Link には次のような利点があります。
 |Azure Service Bus | すべてのパブリック リージョン<br/>すべての Government リージョン  | Azure Service Bus の Premium レベルでサポートされます。 [レベルを選択してください](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [Azure Service Bus のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Relay | すべてのパブリック リージョン      |  | プレビュー <br/> [Azure Relay のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/azure-relay/private-link-service)  |
 |Azure Event Grid| すべてのパブリック リージョン<br/> すべての Government リージョン       |  | GA   <br/> [Azure Event Grid のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | すべてのパブリック リージョン      | PremiumV2 Windows および Linux とエラスティック Premium 機能でサポートされています  | プレビュー   <br/> [Azure Web Apps のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
+|Azure Web Apps | すべてのパブリック リージョン      | PremiumV2、PremiumV3、または Function Premium プランでサポートされます  | GA   <br/> [Azure Web Apps のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
 |Azure Machine Learning | すべてのパブリック リージョン    |  | GA   <br/> [Azure Machine Learning のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | すべてのパブリック リージョン |  | プレビュー </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/automation/how-to/private-link-security)| |
 | Azure IoT Hub | すべてのパブリック リージョン    |  | GA   <br/> [Azure IoT Hub のプライベート エンドポイントを作成する方法を確認します。](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |

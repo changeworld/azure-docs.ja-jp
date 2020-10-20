@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0832fe9ba65ac0df5dbff60b01b7a5eb91a2c3a2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535843"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル: Azure Active Directory と LockPath Keylight の統合
 
@@ -133,15 +133,15 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
     b. 上部のメニューで **[人]** をクリックして **[Keylight セットアップ]** を選択します。
 
-    ![Configure single sign-on](./media/keylight-tutorial/401.png)
+    !["歯車" アイコンが選択され、ドロップダウンの [Keylight Setup]\(Keylight セットアップ\) が選択されているスクリーンショット。](./media/keylight-tutorial/401.png)
 
     c. 左側のツリー ビューで **[SAML]** をクリックします。
 
-    ![Configure single sign-on](./media/keylight-tutorial/402.png)
+    ![ツリー ビューで [SAML] が選択されているスクリーンショット。](./media/keylight-tutorial/402.png)
 
     d. **[SAML 設定]** ダイアログで **[編集]** をクリックします。
 
-    ![Configure single sign-on](./media/keylight-tutorial/404.png)
+    ![[Edit]\(編集\) ボタンが選択されている [SAML Settings]\(SAML の設定\) ウィンドウを示すスクリーンショット。](./media/keylight-tutorial/404.png)
 
 1. **[SAML 設定の編集]** ダイアログ ページで、次の手順を実行します。
 

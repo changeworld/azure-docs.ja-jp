@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665193"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977869"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -34,7 +34,8 @@ ms.locfileid: "91665193"
 |                   | 3 人以上のユーザーでグループ通話を行う (最大 350 ユーザー)                                                       | ✔️   | ✔️            | ✔️ 
 |                   | 2 人のユーザーによる一対一の通話を 3 人以上のユーザーによるグループ通話に昇格させる                                 | ✔️   | ✔️            | ✔️ 
 |                   | 開始後にグループ通話に参加する                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | 別の VoIP 参加者を招待して、進行中のグループ通話に参加させる                                                       | ✔️   | ✔️            | ✔️ 
+|                   | 別の VoIP 参加者を招待して、進行中のグループ通話に参加させる                                                       | ✔️   | ✔️            | ✔️
+|                   | ビデオをオンまたはオフにする                                                         | ✔️   | ✔️            | ✔️ 
 |                   | マイクをミュート/ミュート解除する                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | カメラを切り替える                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | ローカルの保留/保留解除                                                                                                  | ✔️   | ✔️            | ✔️           

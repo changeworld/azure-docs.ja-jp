@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546833"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kanbanize の統合
 
@@ -153,7 +153,7 @@ Kanbanize に対する Azure AD SSO を構成してテストするには、次�
 
 5. [Administration]\(管理\) パネル ページのメニューの左側にある **[Integration]\(統合\)** をクリックし、 **[Single Sign-On]\(シングル サインオン\)** を有効にします。
 
-    ![Kanbanize の統合](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![[Integration]\(統合\) が選択されている [Administration]\(管理\) パネルを示すスクリーンショット。](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
 6. [Integration]\(統合\) セクションで、 **[CONFIGURE]\(構成\)** をっクリックして **[Single Sign-On Integration]\(シングル サインオンの統合\)** ページを開きます。
 
@@ -161,7 +161,7 @@ Kanbanize に対する Azure AD SSO を構成してテストするには、次�
 
 7. **[Single Sign-On Configuration]\(シングル サインオンの統合\)** ページの **[Configurations]\(構成\)** で、次の手順を実行します。
 
-    ![Kanbanize の統合](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![この手順の値を入力する [Single Sign-On Integration]\(シングル サインオンの統合\) ページを示すスクリーンショット。](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. **[Idp Entity ID]\(Idp エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 

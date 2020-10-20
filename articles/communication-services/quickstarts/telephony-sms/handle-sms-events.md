@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756758"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976931"
 ---
 # <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
 
@@ -92,13 +92,13 @@ Azure Portal で次の操作を行います。
 
 ### <a name="receiving-sms-events"></a>SMS イベントの受信
 
-上記のいずれかのアクションを完了すると、`SMS Received` と `SMS Delivery Report Received` のイベントがお使いのエンドポイントに送信されることがわかります。 これらのイベントは、最初に設定した [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)に表示されます。 イベントの横にある目のアイコンを押すと、ペイロード全体を表示できます。 イベントは次のようになります。
+上記のいずれかのアクションを完了すると、`SMS Received` および `SMS Delivery Report Received` イベントがお使いのエンドポイントに送信されることがわかります。 これらのイベントは、最初に設定した [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)に表示されます。 イベントの横にある目のアイコンを押すと、ペイロード全体を表示できます。 イベントは次のようになります。
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
-詳細については、[イベント スキーマとその他のイベントの概念](../../concepts/event-handling.md)に関する記事を参照してください
+詳細については、[イベント スキーマとその他のイベントの概念](../../concepts/event-handling.md)に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: f06d1346e18c54c4a5ceed547dd14e0290e9676e
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 5090ae0c5380a16a911ee433d85d288bd9d8fb25
+  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91578206"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92205304"
 highlightedContent:
   items:
   - title: Azure IoT とは?
@@ -26,19 +26,19 @@ highlightedContent:
     url: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
   - title: Azure CLI を使用した Azure IoT の開発の開始
     itemType: reference
-    url: https://docs.microsoft.com/en-us/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest
+    url: /cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest
   - title: Azure IoT のコード サンプルの参照
     itemType: overview
-    url: https://docs.microsoft.com/samples/browse/?term=iot
+    url: /samples/browse/?term=iot
   - title: Azure IoT デプロイのセキュリティ保護
     itemType: concept
     url: ../iot-fundamentals/security-recommendations.md
   - title: Azure IoT 参照アーキテクチャ
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/reference-architectures/iot/
+    url: /azure/architecture/reference-architectures/iot/
   - title: Microsoft Learn の Azure IoT
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&term=iot
+    url: /learn/browse/?products=azure&term=iot
   - title: サポート オプションとヘルプ オプション
     itemType: how-to-guide
     url: ../iot-fundamentals/iot-support-help.md
@@ -90,13 +90,13 @@ conceptualContent:
       text: 詳細情報
   - title: 接続されたスマートなインフラストラクチャを作成する
     links:
-    - url: ../digital-twins/about-digital-twins.md
+    - url: ../digital-twins/overview.md
       itemType: overview
       text: Azure Digital Twins とは
-    - url: ../digital-twins/quickstart-view-occupancy-dotnet.md
+    - url: /previous-versions/azure/digital-twins/quickstart-view-occupancy-dotnet
       itemType: quickstart
       text: 建物の空き部屋を探す
-    - url: ../digital-twins/tutorial-facilities-setup.md
+    - url: /previous-versions/azure/digital-twins/tutorial-facilities-setup
       itemType: tutorial
       text: オフィス ビルを監視する
     footerLink:
@@ -124,7 +124,7 @@ conceptualContent:
     - url: ../iot-pnp/quickstart-connect-device-node.md
       itemType: quickstart
       text: IoT Hub にサンプル デバイスを接続する
-    - url: ../iot-pnp/concepts-developer-guide.md
+    - url: ../iot-pnp/concepts-developer-guide-device-csharp.md
       itemType: concept
       text: 開発者ガイド
     footerLink:
@@ -132,13 +132,13 @@ conceptualContent:
       text: 詳細情報
   - title: デバイス データの探索と分析
     links:
-    - url: ../time-series-insights/time-series-insights-update-overview.md
+    - url: ../time-series-insights/overview-what-is-tsi.md
       itemType: overview
       text: Azure Time Series Insights とは
     - url: ../time-series-insights/time-series-quickstart.md
       itemType: quickstart
       text: Time Series Insights の探索
-    - url: ../time-series-insights/tutorial-create-tsi-sample-spa.md
+    - url: https://tsiclientsample.azurewebsites.net/
       itemType: tutorial
       text: Time Series Insights Web アプリを作成する
     footerLink:
@@ -178,16 +178,16 @@ tools:
   items:
   - title: Azure IoT SDK for C のリファレンス
     imageSrc: https://docs.microsoft.com/media/logos/logo_c.svg
-    url: https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/
+    url: /azure/iot-hub/iot-c-sdk-ref/
   - title: Azure IoT SDK for Python
     imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
     url: https://github.com/Azure/azure-iot-sdk-python
   - title: Azure IoT SDK for Node.js のリファレンス
     imageSrc: https://docs.microsoft.com/media/logos/logo_nodejs.svg
-    url: https://docs.microsoft.com/javascript/api/overview/azure/iot-hub?view=azure-node-latest
+    url: /javascript/api/overview/azure/iot-hub?view=azure-node-latest
   - title: Azure IoT SDK for Java のリファレンス
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable
+    url: /java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable
   - title: Azure IoT SDK for .NET のリファレンス
     imageSrc: https://docs.microsoft.com/media/logos/logo_NET.svg
-    url: https://docs.microsoft.com/dotnet/api/overview/azure/iot?view=azure-dotnet
+    url: /dotnet/api/overview/azure/iot?view=azure-dotnet

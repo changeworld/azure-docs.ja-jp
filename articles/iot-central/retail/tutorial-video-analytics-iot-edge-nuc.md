@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873304"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)
 
@@ -35,7 +35,7 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開始する前に、[Azure IoT Central でライブ ビデオ分析アプリケーションを作成する](./tutorial-video-analytics-create-app.md)方法に関する前のチュートリアルを完了しておく必要があります。
+* 開始する前に、これよりも前の [Azure IoT Central でのライブ ビデオ分析アプリケーションの作成 (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) に関するチュートリアルか、[Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するチュートリアルを完了しておく必要があります。
 * Linux を実行するデバイス (Intel NUC など)。Docker コンテナーを実行でき、なおかつビデオ分析を実行できるだけの処理能力を備えている必要があります。
 * デバイスに [IoT Edge ランタイムがインストール](../../iot-edge/how-to-install-iot-edge-linux.md)され、実行されていること。
 * Windows マシンから IoT Edge デバイスに接続できること。[PuTTY SSH クライアント](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)または同等のユーティリティが必要です。

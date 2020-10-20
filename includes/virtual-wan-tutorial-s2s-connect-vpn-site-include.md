@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606435"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856725"
 ---
 1. **[VPN サイトの接続]** を選択して、 **[サイトの接続]** ページを開きます。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90606435"
    次のフィールドに入力します。
 
    * 事前共有キーを入力します。 キーを入力しない場合、Azure により、キーが自動的に生成されます。
-   * [プロトコル] と [IPSec] の設定を選択します。 [既定とカスタムの IPSec の詳細](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec) に関する記事を参照してください。
+   * [プロトコル] と [IPSec] の設定を選択します。 詳細については、[既定またはカスタムの IPsec](../articles/virtual-wan/virtual-wan-ipsec.md) に関する記事を参照してください。
    * **[Propagate Default Route]\(既定のルートを伝達する\)** の適切なオプションを選択します。 **[有効]** オプションを選択すると、仮想ハブは、学習した既定のルートをこの接続に伝達できます。 このフラグは、Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブにより既定のルートが既に学習されている場合、または接続されている別のサイトでトンネリングが強制的に有効にされている場合のみ、接続に対して既定のルートの伝達を有効にします。 既定のルートの起点は Virtual WAN ハブ内にありません。
 
 2. **[接続]** を選択します。

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437396"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619544"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "89437396"
 > - 分析データベースを照会する。
 > - データ視覚化に Power BI を使用して、テナント データの傾向を強調表示し、改善のための推奨事項を提案する。
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![この記事で使用されているアーキテクチャの概要を示す図。](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>オフライン テナント分析パターン
 
@@ -138,7 +138,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 4. F5 キーを押してスクリプトを実行します。このスクリプトにより、各テナント データベースからチケット データと顧客データを抽出するジョブが作成され、実行されます。 このジョブはデータを分析ストアに保存します。
 5. tenantanalytics データベースの TicketsRawData テーブルを照会して、テーブルにすべてのテナントのチケット情報が設定されていることを確認します。
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![ExtractTickets データベースを示すスクリーンショット。オブジェクト エクスプローラーで TicketsRawData dbo が選択されています。](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 手順 2. の **\ExtractTickets.sql** を **\ExtractVenuesEvents.sql** に置き換えて、上記の手順を繰り返します。
 
@@ -177,7 +177,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[Connect]** をクリックします。  
 
-    ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![[SQL Server データベース] ダイアログを示すスクリーンショット。ここでは、ユーザー名とパスワードを入力できます。](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. **ナビゲーター** ウィンドウで、分析データベースのスター スキーマ テーブル (fact_Tickets、dim_Events、dim_Venues、dim_Customers、dim_Dates) を選択します。 **[読み込み]** を選択します。 
 
@@ -185,13 +185,13 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 まず、チケット売上データを分析して、各会場の利用状況の差異を確認します。 Power BI で次のオプションを選択して、各会場で販売されたチケットの総数を示す棒グラフをプロットします。 チケット ジェネレーターのランダムな変動により、結果が異なる場合があります。
  
-![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![右側のデータ視覚化での Power BI の視覚化と制御を示すスクリーンショット。](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 上記のプロットでは、各会場で販売されたチケットの数にばらつきがあることを確認できます。 チケットの販売数が多い会場は、販売数が少ない会場よりもサービスを頻繁に利用しています。 これは、テナントのさまざまなニーズに応じてリソースの割り当てを調整するよい機会かもしれません。
 
 データをさらに分析して、チケットの売上の経時的な変化を確認できます。 Power BI で次のオプションを選択して、60 日間にわたり、1 日に販売されたチケットの総数をプロットします。
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![「Ticket Sale Distribution (チケット販売分布) と Sale Day (販売日)」というタイトルの Power BI の視覚化を示すスクリーンショット。](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 上記のグラフは、一部の会場のチケットの販売数がスパイク (突出) していることを示しています。 これらのスパイクは、一部の会場がシステム リソースを過度に使用している可能性があるという考えを補強しています。 今のところ、スパイクが発生したときの明白なパターンはありません。
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 相対的な成果を確認するために、次の視覚化オプションを選択して、各会場で販売されたチケットの割合をプロットします。
 
-![AvgTicketsByVenues](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![「Average Tickets Sold By Each Venue (会場別チケット平均販売数)」というタイトルの Power BI の視覚化を示すスクリーンショット。](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 上記のプロットは、ほとんどの会場がチケットの 80% 以上を販売しているにもかかわらず、座席の半分以上を埋めるのに苦労している会場もあることを示しています。 Values Well を操作して、各会場で販売されたチケットの最大または最小の割合を選択します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c9c4cef07bf1de64bcb14bc4487e0f56d2a40dfc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bdeec23b6b0a0ef2884fa35bd0a576ef57bb7853
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518636"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 
@@ -126,11 +126,11 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 2. **[構成]** セクションで、 **[認証ポリシー]** をクリックします。
    
-    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777314.png "[認証ポリシー]")
+    ![[構成] で [認証ポリシー] が選択されていることを示すスクリーンショット。](./media/mozy-enterprise-tutorial/ic777314.png "[認証ポリシー]")
 
 3. **[認証ポリシー]** セクションで、次の手順に従います。
    
-    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777315.png "[認証ポリシー]")
+    ![[認証ポリシー] セクションを示すスクリーンショット。ここでは、説明されている値を入力することができます。](./media/mozy-enterprise-tutorial/ic777315.png "[認証ポリシー]")
    
     a. **[プロバイダー]** に **[ディレクトリ サービス]** を選択します。
    

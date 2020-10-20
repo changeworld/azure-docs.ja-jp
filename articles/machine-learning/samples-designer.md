@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889744"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074602"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのパイプラインとデータセットのサンプル
 
@@ -67,8 +67,8 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| [回帰 - 自動車価格の予測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | 線形回帰を使用して自動車の価格を予測します。 |
-| [回帰 - 自動車価格の予測 (詳細)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | デシジョン フォレストとブースト デシジョンツリー リグレッサーを使用して、自動車の価格を予測します。 モデルを比較して、最適なアルゴリズムを見つけてください。
+| [回帰 - 自動車価格の予測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) | 線形回帰を使用して自動車の価格を予測します。 |
+| [回帰 - 自動車価格の予測 (詳細)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | デシジョン フォレストとブースト デシジョンツリー リグレッサーを使用して、自動車の価格を予測します。 モデルを比較して、最適なアルゴリズムを見つけてください。
 
 ## <a name="classification"></a>分類
 
@@ -76,19 +76,17 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| [特徴の選択による二項分類 - 収入の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 2 クラスのブースト デシジョン ツリーを使用して、収入を高または低として予測します。 ピアソンの相関関係を使用して、特徴を選択します。
-| [カスタム Python スクリプトを使用した二項分類 - 信用リスクの予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | クレジット申込書を高リスクまたは低リスクとして分類します。 Python スクリプトの実行モジュールを使用して、データを重み付けします。
-| [二項分類 - 顧客関係の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 2 クラス ブースト デシジョン ツリーを使用して、顧客離反を予測します。 偏りのあるデータをサンプリングするには、SMOTE を使用します。
-| [テキスト分類 - Wikipedia SP 500 データセット](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 多クラス ロジスティック回帰を使用して、Wikipedia の記事から会社の種類を分類します。 |
+| [特徴の選択による二項分類 - 収入の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | 2 クラスのブースト デシジョン ツリーを使用して、収入を高または低として予測します。 ピアソンの相関関係を使用して、特徴を選択します。
+| [カスタム Python スクリプトを使用した二項分類 - 信用リスクの予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | クレジット申込書を高リスクまたは低リスクとして分類します。 Python スクリプトの実行モジュールを使用して、データを重み付けします。
+| [二項分類 - 顧客関係の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | 2 クラス ブースト デシジョン ツリーを使用して、顧客離反を予測します。 偏りのあるデータをサンプリングするには、SMOTE を使用します。
+| [テキスト分類 - Wikipedia SP 500 データセット](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | 多クラス ロジスティック回帰を使用して、Wikipedia の記事から会社の種類を分類します。 |
 | 多クラス分類 - 文字認識 | 一連の二項分類器を作成して、手書きの文字を分類します。 |
 
 ## <a name="computer-vision"></a>Computer Vision
 
 以下の組み込みの Computer Vision のサンプルを確認します。 ドキュメント リンクのないサンプルの詳細については、代わりにサンプルを開いてモジュールのコメントをご確認ください。
 
-| サンプル タイトル | 説明 | 
-| --- | --- |
-| ワイド & ディープ ベースの推奨事項 - レストラン評価の予測 | レストランとユーザーの特徴量および評価から、レストラン レコメンダー エンジンを構築します。|
+| DenseNet を使用した画像の分類 | Computer Vision モジュールを使用して、PyTorch DenseNet を基にした画像の分類モデルを構築します。| 
 
 ## <a name="recommender"></a>レコメンダー
 
@@ -96,7 +94,8 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| DenseNet を使用した画像の分類 | Computer Vision モジュールを使用して、PyTorch DenseNet を基にした画像の分類モデルを構築します。| 
+| ワイド & ディープ ベースの推奨事項 - レストラン評価の予測 | レストランとユーザーの特徴量および評価から、レストラン レコメンダー エンジンを構築します。|
+| レコメンデーション - 映画の評価ツイート | 映画とユーザーの特徴と評価から映画レコメンダー エンジンを作成します。|
 
 ## <a name="utility"></a>ユーティリティ
 
@@ -105,7 +104,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 | サンプル タイトル | 説明 | 
 | --- | --- |
 | Vowpal Wabbit モデルを使用した二項分類 - 成人の収入予測 | Vowpal Wabbit は、オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法を使用した機械学習のフロンティアをプッシュする機械学習システムです。 このサンプルでは、Vowpal Wabbit モデルを使用して二項分類モデルを作成する方法を示します。 
-| [カスタム R スクリプトの使用 - フライトの遅延予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | カスタマイズされた R スクリプトを使用して、予定されている旅客便が 15 分以上遅れるかどうかを予測します。
+| [カスタム R スクリプトの使用 - フライトの遅延予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | カスタマイズされた R スクリプトを使用して、予定されている旅客便が 15 分以上遅れるかどうかを予測します。
 | 二項分類のクロス検証 - 成人の収入予測 | クロス検証を使用して、成人の収入予測のための二項分類器を作成します。
 | 順列の特徴量の重要度 | 順列の特徴量の重要度を使用して、テスト データセットの重要度スコアを計算します。 
 | 二項分類のパラメーターの調整 - 成人の収入予測 | モデルのハイパーパラメーターの調整を使用して、バイナリ分類器の作成に最適なハイパーパラメーターを見つけます。 |
@@ -119,7 +118,7 @@ Azure Machine Learning デザイナーで新しいパイプラインを作成す
 | データセット名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| データセットの説明 |
 |-------------|:--------------------|
 | 米国国勢調査局提供の、成人収入に関する二項分類データセット | 調整後の所得指数が 100 を超える就労成人男性 (16 歳以上) を対象とした、米国国勢調査局のデータベース (1994 年) のサブセットです。<br/>**[使用状況]** :人口統計データを使用して対象の人々を分類し、個人が 1 年間に 50,000 ドル以上の年収を得られるかどうかを予測します。<br/> **関連の研究**: Kohavi, R.、Becker, B. (1996 年)。 [UCI Machine Learning リポジトリ](https://archive.ics.uci.edu/ml)。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部|
-|自動車価格データ (生データ)|メーカー/モデル別にまとめた自動車の情報です。価格、シリンダー数、燃費、保険リスク スコアなどの情報が含まれます。<br/> リスク スコアはまず車体価格に関連付けられます。 その後、アクチュアリー (保険数理士) の間でシンボリングと呼ばれるプロセスによって、実際のリスクに対して調整されます。 +3 は自動車のリスクが高く、-3 は高い安全性が見込まれることを示しています。<br/>**使用方法**:</b>回帰または多変量分類を使用して、機能別のリスク スコアを予測します。<br/>**関連の研究**:</b>Schlimmer, J.C. (1987 年)。 [UCI Machine Learning リポジトリ](https://archive.ics.uci.edu/ml)。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。 |
+|自動車価格データ (生データ)|メーカー/モデル別にまとめた自動車の情報です。価格、シリンダー数、燃費、保険リスク スコアなどの情報が含まれます。<br/> リスク スコアはまず車体価格に関連付けられます。 その後、アクチュアリー (保険数理士) の間でシンボリングと呼ばれるプロセスによって、実際のリスクに対して調整されます。 +3 は自動車のリスクが高く、-3 は高い安全性が見込まれることを示しています。<br/>**[使用状況]** :回帰または多変量分類を使用して、機能別のリスク スコアを予測します。<br/>**関連の研究**: Schlimmer, J.C. (1987 年)。 [UCI Machine Learning リポジトリ](https://archive.ics.uci.edu/ml)。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。 |
 | CRM 強い欲求ラベルの共有 |KDD Cup 2009 顧客間関係の予測に関する課題のラベル ([orange_small_train_appetency.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels))。|
 |CRM 離反ラベルの共有|KDD Cup 2009 顧客間関係の予測に関する課題のラベル ([orange_small_train_churn.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels))。|
 |CRM データセットの共有 | このデータは、KDD Cup 2009 顧客関係の予測に関する課題から取得しています ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip))。 <br/>データセットには、French Telecom company Orange の顧客 50,000 人のデータが含まれます。 各顧客には匿名化された特徴が 230 あり、その中の 190 が数値で、40 がカテゴリです。 特徴はきわめて疎です。 |
@@ -130,7 +129,9 @@ Azure Machine Learning デザイナーで新しいパイプラインを作成す
 |映画の評価|このデータセットは、ムービー ツイート データセットの拡張バージョンです。 Twitter で適切に構成されたツイートから抽出した、約 170,000 件の評価が含まれます。 各インスタンスは 1 つのツイートを表し、ユーザー ID、IMDB 登録 ID、評価、タイプスタンプ、このツイートのお気に入りの数、そして、このツイートのリツイートの数を組み合わせたタプルです。 データセットは、A. Said、S. Dooms、B. Loni、D. Tikk によって Recommender Systems Challenge 2014 のために提供されました。|
 |天候データセット|NOAA の 1 時間ごとの陸上の気象観測 ([2013 年 4 月から 2013 年 10 月までのデータをマージ](https://az754797.vo.msecnd.net/data/WeatherDataset.csv))。<br/>気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 デザイナーにアップロードする前に、データセットは次のように処理されました。    <br/> -    気象観測所 ID を、対応する空港 ID にマッピングしました    <br/> -    混雑度が上位 70 の空港に関連付けられていない気象観測所をフィルターで除外しました    <br/> -    Date 列を Year、Month、Day の各列に分割しました    <br/> - 次の列が選択されました。AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter|
 |Wikipedia SP 500 データセット|データは、S&P 500 各企業に関する記事に基づいて Wikipedia (https://www.wikipedia.org/) から派生され、XML データとして格納されています。    <br/>デザイナーにアップロードする前に、データセットは次のように処理されました。    <br/> - 特定の各企業のテキスト コンテンツを抽出しました    <br/> -    Wiki の書式設定を削除しました    <br/> -    英数字以外の文字を削除しました    <br/> -    すべてのテキストを小文字に変換しました    <br/> -    既知の会社のカテゴリを追加しました    <br/>いくつかの企業の記事が見つからないため、レコード数は 500 未満であることに注意してください。|
-
+|レストラン特徴データ| 料理の種類、食事スタイル、場所など、レストランとその特徴に関するメタデータのセットです。 <br/>**[使用状況]** :このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。<br/> **関連の研究**: Bache, K.、Lichman, M.(2013 年)。 [UCI Machine Learning リポジトリ](https://archive.ics.uci.edu/ml)。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。|
+|レストランの評価| ユーザーによるレストランの評価 (0 ～ 2) が含まれます。<br/>**[使用状況]** :このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 <br/>**関連の研究**: Bache, K.、Lichman, M.(2013 年)。 [UCI Machine Learning リポジトリ](https://archive.ics.uci.edu/ml)。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。|
+|レストラン顧客データ| 人口統計データや嗜好など、顧客に関するメタデータのセットです。 <br/>**[使用状況]** :このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 <br/> **関連の研究**: Bache, K.、Lichman, M.(2013 年)。 [UCI Machine Learning リポジトリ](https://archive.ics.uci.edu/ml) アービン、CA:カリフォルニア大学、情報・コンピューター サイエンス学部。|
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

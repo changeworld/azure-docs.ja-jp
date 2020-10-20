@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ae54d1d1c649da510c9653acbd7f118069d366c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc28f5a9c3faa9d1c963a441f79eb1eea3fcba47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833914"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858321"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 
@@ -48,59 +48,7 @@ ms.locfileid: "87833914"
 
 ドキュメントの `body` 要素内に次のコードを追加します。 このコードにより、URL フィールド、 **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
 
-```php
-<?php
-// Replace <Subscription Key> with a valid subscription key.
-$ocpApimSubscriptionKey = '<Subscription Key>';
-
-// Replace <My Endpoint String> with the string in your endpoint URL.
-$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
-
-$imageUrl =
-    'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
-
-// This sample uses the PHP5 HTTP_Request2 package
-// (https://pear.php.net/package/HTTP_Request2).
-require_once 'HTTP/Request2.php';
-
-$request = new Http_Request2($uriBase . '/detect');
-$url = $request->getUrl();
-
-$headers = array(
-    // Request headers
-    'Content-Type' => 'application/json',
-    'Ocp-Apim-Subscription-Key' => $ocpApimSubscriptionKey
-);
-$request->setHeader($headers);
-
-$parameters = array(
-    // Request parameters
-    'returnFaceId' => 'true',
-    'returnFaceLandmarks' => 'false',
-    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,' .
-        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise');
-$url->setQueryVariables($parameters);
-
-$request->setMethod(HTTP_Request2::METHOD_POST);
-
-// Request body parameters
-$body = json_encode(array('url' => $imageUrl));
-
-// Request body
-$request->setBody($body);
-
-try
-{
-    $response = $request->send();
-    echo "<pre>" .
-        json_encode(json_decode($response->getBody()), JSON_PRETTY_PRINT) . "</pre>";
-}
-catch (HttpException $ex)
-{
-    echo "<pre>" . $ex . "</pre>";
-}
-?>
-```
+:::code language="php" source="~/cognitive-services-quickstart-code/php/face/rest/detect.php":::
 
 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なエンドポイント文字列を含むように変更する必要があります。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。この文字列は、実際の用途に合わせて変更してください。
 
@@ -109,6 +57,34 @@ catch (HttpException $ex)
 ## <a name="run-the-script"></a>スクリプトを実行する
 
 PHP に対応した Web ブラウザーでファイルを開きます。 次のような顔のデータの JSON 文字列が得られます。
+
+```json
+[
+    {
+        "faceId": "e93e0db1-036e-4819-b5b6-4f39e0f73509",
+        "faceRectangle": {
+            "top": 621,
+            "left": 616,
+            "width": 195,
+            "height": 195
+        }
+    }
+]
+```
+
+## <a name="extract-face-attributes"></a>顔の属性を抽出する
+ 
+顔の属性を抽出するには、検出モデル 1 を使用し、`returnFaceAttributes` クエリ パラメーターを追加します。
+
+```php
+$parameters = array(
+    // Request parameters
+    'detectionModel' => 'detection_01',
+    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+   'returnFaceId' => 'true');
+```
+
+これで、応答に顔の属性が追加されます。 次に例を示します。
 
 ```json
 [

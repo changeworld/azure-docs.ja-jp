@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 24ae71206188dc6d60f6a37629ad55ae4d4c1567
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185521"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015364"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 
@@ -176,6 +176,9 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
    1. **[Package store name]\(パッケージ ストア名\)** に、パッケージ ストアの名前を入力します。 
 
    1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。 
+
+      > [!NOTE]
+      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー**でも **SAS URI** でもなく) **基本**認証方法のみがサポートされています。 **Azure File Storage** にリンクされているサービスで**基本**認証を使用するには、お使いのブラウザーで ADF ポータル URL に `?feature.upgradeAzureFileStorage=false` を追加できます。 あるいは、**File System** にリンクされているサービスを代わりに使用し、Azure Files にアクセスできます。 
 
       ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 

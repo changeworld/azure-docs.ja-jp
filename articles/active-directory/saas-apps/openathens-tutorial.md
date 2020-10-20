@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543943"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994184"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OpenAthens の統合
 
@@ -134,37 +134,37 @@ OpenAthens で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[管理]** タブの一覧から **[接続]** を選択します。
 
-    ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![[OpenAthens] という企業サイト ページのスクリーンショット。[管理] タブで [接続] が選択されています。](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. **[SAML 1.1/2.0]** を選択し、 **[構成]** を選択します。
 
-    ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![ローカルの認証システムの種類を選択するダイアログのスクリーンショット。 "SAML 1.1/2.0" と "構成" ボタンが選択されています。](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
-1. 構成を追加するには、 **[参照]** を選択して Azure Portal からダウンロードしたメタデータ .xml ファイルをアップロードし、 **[追加]** を選択します。
+1. 構成を追加するには、**[参照]** を選択して Azure Portal からダウンロードしたメタデータ .xml ファイルをアップロードし、**[追加]** を選択します。
 
-    ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![SAML 認証システムを追加するダイアログのスクリーンショット。 [参照] アクションと [追加] ボタンが選択されています。](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
 1. **[詳細]** タブで、次の手順を実行します。
 
     ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. **[Display name mapping]\(表示名マッピング\)** で、 **[Use attribute]\(属性の使用\)** を選択します。
+    a. **[Display name mapping]\(表示名マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
     b. **[Display name attribute]\(表示名属性\)** ボックスに、値「`http://schema.microsoft.com/identity/claims/displayname`」を入力します。
 
-    c. **[Unique user mapping]\(一意のユーザー マッピング\)** で、 **[Use attribute]\(属性の使用\)** を選択します。
+    c. **[Unique user mapping]\(一意のユーザー マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
     d. **[Display name attribute]\(一意のユーザ属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
 
     e. **[状態]** で、3 つのチェック ボックスすべてをオンにします。
 
-    f. **[Create local accounts]\(ローカル アカウントの作成\)** で、 **[automatically]\(自動\)** を選択します。
+    f. **[Create local accounts]\(ローカル アカウントの作成\)** で、**[automatically]\(自動\)** を選択します。
 
     g. **[変更の保存]** を選択します。
 
-    h. **[</> Relying Party]\(</> 証明書利用者\)** タブで、 **[Metadata URL]\(メタデータ URL\)** をコピーし、その URL をブラウザーで開いて **SP メタデータ XML** ファイルをダウンロードします。 Azure AD の **[基本的な SAML 構成]** セクションで、この SP メタデータ ファイルをアップロードします。
+    h. **[</> Relying Party]\(</> 証明書利用者\)** タブで、**[Metadata URL]\(メタデータ URL\)** をコピーし、その URL をブラウザーで開いて **SP メタデータ XML** ファイルをダウンロードします。 Azure AD の **[基本的な SAML 構成]** セクションで、この SP メタデータ ファイルをアップロードします。
 
-    ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![[Relying Party]\(証明書利用者\) タブが選択されている画面のスクリーンショット。[メタデータ URL] が強調表示されています。](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>OpenAthens のテスト ユーザーの作成
 

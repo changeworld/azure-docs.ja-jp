@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 132da93bcb1e8138b63361cdb448c05b985cdf27
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544045"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Moxtra の統合
 
@@ -156,11 +156,11 @@ Moxtra に対する Azure AD SSO を構成してテストするには、次の�
 
 2. 左のツール バーで、 **[管理コンソール] > [SAML Single Sign-on]\(SAML シングル サインオン\)** の順にクリックし、 **[新規]** をクリックします。
    
-    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![[SAML シングル サインオン] ページを示すスクリーンショット。新しい SAML シングル サインオンを作成するオプションが表示されています。](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. **[SAML]** ページで、次の手順を実行します。
    
-    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![[SAML] ページを示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. **[名前]** テキスト ボックスに、構成の名前を入力します (例:*SAML*)。 
   
@@ -191,7 +191,7 @@ Moxtra に対する Azure AD SSO を構成してテストするには、次の�
 
 1. 左のツール バーで、 **[Admin Console (管理コンソール)]、[User Management (ユーザー管理)]** の順にクリックし、 **[Add User (ユーザーの追加)]** をクリックします。
    
-    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![[ユーザー管理] ページを示すスクリーンショット。[ユーザーの追加] が選択されています。](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. **[Add User]** ダイアログで、次の手順を実行します。
   

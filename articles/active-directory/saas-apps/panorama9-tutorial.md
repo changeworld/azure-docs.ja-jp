@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bf3afef81c70355326ed9341f2dd8a39d542b54
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554109"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル: Azure Active Directory と Panorama9 の統合
 
@@ -210,7 +210,7 @@ Panorama9 の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで、 **[管理]** 、 **[ユーザー]** の順にクリックします。
    
-    ![ユーザー](./media/panorama9-tutorial/ic790027.png "ユーザー")
+    ![[管理] タブと [ユーザー] タブが選択されている画面のスクリーンショット。](./media/panorama9-tutorial/ic790027.png "ユーザー")
 
 3. [ユーザー] セクションの **+** をクリックして新しいユーザーを追加します。
 

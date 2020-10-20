@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551410"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grovo の統合
 
@@ -137,11 +137,11 @@ Grovo に対する Azure AD SSO を構成してテストするには、次の構
 
 2. **[管理者]**  >  **[統合]** に移動します。
  
-    ![Grovo 構成](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    ![[Integrations]\(統合\) が選択されている [Admin]\(管理者\) メニューを示すスクリーンショット。](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. **[SP Initiated SAML 2.0]\(SP によって開始された SAML 2.0\)** セクションで **[設定]** をクリックします。
 
-    ![Grovo 構成](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    ![[Set up]\(設定\) ボタンが選択されている [SP Initiated SAML 2.0]\(SP によって開始された SAML 2.0\) セクションを示すスクリーンショット。](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. **[SP Initiated SAML 2.0]\(SP によって開始された SAML 2.0\)** ポップアップ ウィンドウで、次の手順を実行します。
 

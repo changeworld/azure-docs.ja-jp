@@ -2,17 +2,17 @@
 title: チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
 ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 10/08/2020
+ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780173"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850610"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
-この記事では、[Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。  
+この記事では、[Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事は、Node.js の実務知識を持ち、Linux に精通している読者を想定しています。 また、Batch と Storage の 2 つのサービスを作成できるアクセス権を備えた Azure アカウントも必要になります。
@@ -174,7 +174,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,7 +241,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
@@ -252,7 +252,7 @@ Azure Batch ジョブは、よく似たタスクを論理的なグループに�
 タスクはいずれも並行して実行され、多数のノードにデプロイされます。Azure Batch サービスは、そのオーケストレーションを担当します。
 
 > [!Tip]
-> 1 つのノードで同時に実行できるタスクの最大数を指定するには、[maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) プロパティを使用します。
+> 1 つのノードで同時に実行できるタスクの最大数を指定するには、[taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) プロパティを使用します。
 >
 >
 
@@ -317,7 +317,7 @@ csv を処理するジョブが作成できたので、このジョブのため�
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +325,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,7 +339,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-このコードによって、プールにタスクが複数追加されます。 各タスクは、作成された VM のプール内のノードで実行されます。 タスクの数がプールまたは maxTasksPerNode プロパティの VM の数を上回った場合には、タスクはノードが利用可能になるまで待機します。 このオーケストレーションは、Azure Batch によって自動的に処理されます。
+このコードによって、プールにタスクが複数追加されます。 各タスクは、作成された VM のプール内のノードで実行されます。 タスクの数がプールまたは taskSlotsPerNode プロパティの VM の数を上回った場合には、タスクはノードが利用可能になるまで待機します。 このオーケストレーションは、Azure Batch によって自動的に処理されます。
 
 ポータルでは、タスクとジョブの状態の詳細を確認できます。 このほか、Azure Node SDK の list 関数や get 関数も使用できます。 詳細については、ドキュメント ([リンク](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)) を参照してください。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554466"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と New Relic by Account の統合
 
@@ -134,7 +134,7 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
    
-    ![アカウント設定](./media/new-relic-tutorial/ic797036.png "[Account Settings]")
+    ![ウェルカム ページを示すスクリーンショット。[アカウント設定] が選択されています。](./media/new-relic-tutorial/ic797036.png "[Account Settings]")
 
 3. **[セキュリティと認証]** タブをクリックし、 **[シングル サインオン]** タブをクリックします。
    
@@ -158,11 +158,11 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
    
-    ![アカウント設定](./media/new-relic-tutorial/ic797040.png "[Account Settings]")
+    ![ウェルカム ページで [アカウント設定] が選択されていることを示すスクリーンショット。](./media/new-relic-tutorial/ic797040.png "[Account Settings]")
 
 3. **[アカウント]** ペインの左側にある **[概要]** をクリックし、次に **[ユーザーの追加]** をクリックします。
    
-    ![アカウント設定](./media/new-relic-tutorial/ic797041.png "[Account Settings]")
+    ![[概要] ウィンドウを示すスクリーンショット。ここでは、[ユーザーの追加] を選択できます。](./media/new-relic-tutorial/ic797041.png "[Account Settings]")
 
 4. **[アクティブ ユーザー]** ダイアログで、次の手順に従います。
    

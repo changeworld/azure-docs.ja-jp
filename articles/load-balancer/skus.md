@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654482"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631445"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer の SKU
 
@@ -54,7 +54,9 @@ Load Balancer では、Standard SKU と Basic SKU の両方がサポートされ
 
 - SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
 - スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。
-- [サブスクリプションの移動操作](../azure-resource-manager/management/move-resource-group-and-subscription.md)は、Standard Load Balancer および Standard パブリック IP リソースではサポートされていません。
+- [移動操作](../azure-resource-manager/management/move-resource-group-and-subscription.md):
+  - リソース グループの移動操作 (同じサブスクリプション内) は、Standard Load Balancer および Standard パブリック IP で**サポートされています**。 
+  - [サブスクリプション グループの移動操作](../azure-resource-manager/management/move-support-resources.md)は、Standard Load Balancer および Standard パブリック IP リソースではサポートされて**いません**。
 
 ## <a name="next-steps"></a>次のステップ
 

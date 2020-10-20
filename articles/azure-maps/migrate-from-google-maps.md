@@ -1,22 +1,22 @@
 ---
-title: Google マップから Azure Maps に移行する | Microsoft Azure Maps
-description: Google マップから Microsoft Azure Maps に移行する方法。 ガイダンスでは、Azure Maps の API と SDK への切り替え方法について説明します。
+title: チュートリアル - Google Maps から Azure Maps に移行する | Microsoft Azure Maps
+description: Google Maps から Microsoft Azure Maps に移行する方法に関するチュートリアルです。 ガイダンスでは、Azure Maps の API と SDK への切り替え方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/23/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264169"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876313"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Google マップから Azure Maps に移行する
+# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>チュートリアル - Google Maps から Azure Maps に移行する
 
 この記事では、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Google Maps から Microsoft Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このチュートリアルには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。
 

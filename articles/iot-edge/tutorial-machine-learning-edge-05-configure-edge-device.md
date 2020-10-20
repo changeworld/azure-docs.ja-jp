@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448511"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974551"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -96,7 +96,7 @@ ms.locfileid: "91448511"
 
 Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ内のデバイスの ID を作成します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 構成済みのデバイスがハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
 
-このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、[Azure portal](how-to-register-device.md#register-in-the-azure-portal) または [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) を使用して完了することもできます。
+このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、Azure portal または Azure CLI を使用して完了することもできます。
 
 1. 開発用コンピューターで Visual Studio Code を開きます。
 
@@ -294,12 +294,9 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-
 ## <a name="next-steps"></a>次のステップ
 
 Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge ランタイム" イメージを使用して VM をデプロイしました。 VM を稼動状態にし、SSH 経由で接続して、Azure にサインインし、Key Vault から証明書をダウンロードしました。 config.yaml ファイルを更新して IoT Edge ランタイムの構成にいくつかの変更を加えました。
-
-詳細については、「[IoT Edge デバイスをゲートウェイとして使用する方法](iot-edge-as-gateway.md)」および「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 
 次の記事に進んで、IoT Edge モジュールをビルドします。
 

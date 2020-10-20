@@ -6,24 +6,24 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
-ms.reviewer: sstein
+ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619034"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 このチュートリアルでは、テナント単位データベース モデルを使用して実装されているマルチテナント SaaS アプリケーションの、完全なディザスター リカバリー シナリオを見ていきます。 自動的に保守されている geo 冗長バックアップのカタログおよびテナント データベースを代替復旧リージョンに復元するには、[geo リストア](recovery-using-backups.md)を使用します。 停止が解決したら、[geo レプリケーション](active-geo-replication-overview.md)を使用して、変更されたデータベースを元のリージョンに復帰します。
 
-![geo-restore-architecture](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![元のリージョンと復旧リージョンを示す図。これら両方のリージョンには、アプリ、カタログ、サーバーとプールの元のイメージまたはミラー イメージ、ストレージへの自動バックアップが含まれています。復旧リージョンには、バックアップの geo レプリケーションが受け入れられており、新しいテナント用のサーバーとプールが存在しています。](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 geo リストアは、Azure SQL Database 向けの最もコストが低いディザスター リカバリー ソリューションです。 ただし、geo 冗長バックアップから復元すると、最大 1 時間のデータ損失が発生する可能性があります。 各データベースのサイズによっては、かなりの時間がかかることがあります。 
 

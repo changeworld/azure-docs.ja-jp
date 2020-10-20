@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 905ca5fd92a09b209bf099bfac0862132ec679a4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543280"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>チュートリアル:Azure Active Directory と Sectigo Certificate Manager の統合
 
-このチュートリアルでは、Sectigo Certificate Manager と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Sectigo Certificate Manager (SCM と呼ばれることもあります) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 Sectigo Certificate Manager と Azure AD の統合により、次の利点が得られます。
 
@@ -35,7 +35,10 @@ Sectigo Certificate Manager と Azure AD の統合により、次の利点が得
 Sectigo Certificate Manager と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* シングル サインオンが有効な Sectigo Certificate Manager のサブスクリプション。
+* Sectigo Certificate Manager アカウント。
+
+> [!NOTE]
+> Sectigo では、複数の Sectigo Certificate Manager インスタンスを運用しています。 Sectigo Certificate Manager のメイン インスタンスは **https:\//cert-manager.com** です。このチュートリアルでは、この URL を使用します。  アカウントが別のインスタンスにある場合は、それに応じて URL を調整する必要があります。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -99,47 +102,45 @@ Sectigo Certificate Manager による Azure AD のシングル サインオン�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** ウィンドウで、*IDP 開始モード*を構成するために、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    1. **[識別子]** ボックスに、これらの URL のいずれかを入力します。
-       * https:\//cert-manager.com/shibboleth
-       * https:\//hard.cert-manager.com/shibboleth
+    1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[識別子 (エンティティ ID)]** ボックスに「**https:\//cert-manager.com/shibboleth**」と入力します。
 
-    1. **[応答 URL]** ボックスに、これらの URL のいずれかを入力します。
-        * https:\//cert-manager.com/Shibboleth.sso/SAML2/POST
-        * https:\//hard.cert-manager.com/Shibboleth.sso/SAML2/POST
+    1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[応答 URL]** ボックスに「**https:\//cert-manager.com/Shibboleth.sso/SAML2/POST**」と入力します。
+        
+    > [!NOTE]
+    > 一般に "*SP Initiated モード*" では**サインオン URL** が必須となっていますが、Sectigo Certificate Manager からのログインでは不要です。        
+
+1. 必要に応じて、"*IDP Initiated モード*" を構成し、**テスト**を機能させるために、 **[基本的な SAML 構成]** セクションで次の手順を実行します。
 
     1. **[追加の URL を設定します]** を選択します。
 
-    1. **[リレー状態]** ボックスに、これらの URL のいずれかを入力します。
-       * https:\//cert-manager.com/customer/SSLSupport/idp
-       * https:\//hard.cert-manager.com/customer/SSLSupport/idp
+    1. **[リレー状態]** ボックスに、Sectigo Certificate Manager の顧客別 URL を入力します。 Sectigo Certificate Manager のメイン インスタンスの場合には、「**https:\//cert-manager.com/customer/\<customerURI\>/idp**」を入力します。
 
     ![Sectigo Certificate Manager ドメインと URL のシングル サインオン情報](common/idp-relay.png)
 
-1.  *SP 開始モード*でアプリケーションを構成するには、次の手順を実行します。
+1. **[ユーザー属性とクレーム]** セクションで、次の手順に従います。
 
-    * **[サインオン URL]** ボックスに、これらの URL のいずれかを入力します。
-      * https:\//cert-manager.com/Shibboleth.sso/Login
-      * https:\//hard.cert-manager.com/Shibboleth.sso/Login
+    1. **追加の要求**をすべて削除します。
+    
+    1. **[新しいクレームの追加]** を選択し、次の 4 つのクレームを追加します。
+    
+        | 名前 | 名前空間 | source | ソース属性 | [説明] |
+        | --- | --- | --- | --- | --- |
+        | eduPersonPrincipalName | empty | 属性 | user.userprincipalname | 管理者用 Sectigo Certificate Manager の **[IdP Person ID]\(IdP 人物 ID\)** フィールドの内容と合致している必要があります。 |
+        | mail | empty | 属性 | User.mail | 必須 |
+        | givenName | empty | 属性 | User.givenname | オプション |
+        | sn | empty | 属性 | User.surname | オプション |
 
-      ![Sectigo Certificate Manager ドメインと URL のシングル サインオン情報](common/both-signonurl.png)
+       ![Sectigo Certificate Manager - 4 つのクレームの追加](media/sectigo-certificate-manager-tutorial/additional-claims.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択します。 要件に基づいてダウンロード オプションを選択します。 お使いのコンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** の隣にある **[ダウンロード]** を選択します。 XML ファイルを、お使いのコンピューターに保存します。
 
-    ![証明書 (Base64) ダウンロード オプション](common/certificatebase64.png)
-
-1. **[Sectigo Certificate Manager のセットアップ]** セクションで、要件に従って以下の URL をコピーします。
-
-    * ログイン URL
-    * Azure AD 識別子
-    * ログアウト URL
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![フェデレーション メタデータ XML のダウンロード オプション](common/metadataxml.png)
 
 ### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Sectigo Certificate Manager シングル サインオンの構成
 
-Sectigo Certificate Manager 側でシングル サインオンを構成するには、ダウンロードした証明書 (Base64) ファイルと、Azure portal からコピーした関連した URL を [Sectigo Certificate Manager サポート チーム](https://sectigo.com/support)に送信します。 Sectigo Certificate Manager チームは、送られてきた情報を使用して、SAML シングル サインオン接続が両方の側で正しく設定されているかどうかを確認します。
+Sectigo Certificate Manager 側でシングル サインオンを構成するには、ダウンロードしたフェデレーション メタデータ XML ファイルを [Sectigo Certificate Manager サポート チーム](https://sectigo.com/support)に送信します。 Sectigo Certificate Manager チームは、送られてきた情報を使用して、SAML シングル サインオン接続が両方の側で正しく設定されているかどうかを確認します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -159,7 +160,7 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
   
     1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension\>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
 
-    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
+    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を記録しておきます。
 
     1. **［作成］** を選択します
 
@@ -167,7 +168,7 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Sectigo Certificate Manager へのアクセスを許可することで、彼女が Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Sectigo Certificate Manager へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal 内で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Sectigo Certificate Manager]** の順に選択します。
 
@@ -197,9 +198,19 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
+このセクションでは、Azure AD のシングル サインオン構成をテストします。
 
-シングル サインオンをセットアップした後、マイ アプリ ポータルで **[Sectigo Certificate Manager]** を選択すると、Sectigo Certificate Manager に自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+#### <a name="test-from-sectigo-certificate-manager-sp-initiated-single-sign-on"></a>Sectigo Certificate Manager からのテスト (SP Initiated シングル サインオン)
+
+自分の顧客別 URL (Sectigo Certificate Manager のメイン インスタンスの場合には、https:\//cert-manager.com/customer/\<customerURI\>/) を参照し、 **[Or Sign In With]\(または、他のサインイン手段を使用する\)** の下にあるボタンを選択します。  正しく構成されている場合には、Sectigo Certificate Manager に自動的にサインインします。
+
+#### <a name="test-from-azure-single-sign-on-configuration-idp-initiated-single-sign-on"></a>Azure のシングル サインオン構成からのテスト (IDP Initiated シングル サインオン)
+
+**Sectigo Certificate Manager** アプリケーション統合ペインで、 **[シングル サインオン]** 、 **[テスト]** の順に選択します。  正しく構成されている場合には、Sectigo Certificate Manager に自動的にサインインします。
+
+#### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>マイ アプリ ポータルを使ったテスト (IDP Initiated シングル サインオン)
+
+マイ アプリ ポータルで **[Sectigo Certificate Manager]** を選択します。  正しく構成されている場合には、Sectigo Certificate Manager に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

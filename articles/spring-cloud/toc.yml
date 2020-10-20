@@ -94,25 +94,24 @@
     - name: モニター
     - name: ロールとアクセス許可を作成する
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: 分散トレースと App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: ログとメトリックの分析
-          href: diagnostic-services.md
-        - name: リアルタイムでのログのストリーミング
-          href: spring-cloud-howto-log-streaming.md
-    - name: DevOps の展開
-      items:
-        - name: Azure DevOps を使用した CI/CD
-          href: spring-cloud-howto-cicd.md
-        - name: GitHub Actions を使用した CI/CD
-          href: spring-cloud-howto-github-actions.md
-        - name: GitHub Actions での Key Vault を使用した認証
-          href: spring-cloud-github-actions-key-vault.md
-    - name: トラブルシューティング
-      items:
-        - name: トラブルシューティング ガイド
-          href: spring-cloud-troubleshoot.md
+    - name: 分散トレースと App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: ログとメトリックの分析
+      href: diagnostic-services.md
+    - name: リアルタイムでのログのストリーミング
+      href: spring-cloud-howto-log-streaming.md
+- name: DevOps の展開
+  items:
+    - name: Azure DevOps を使用した CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: GitHub Actions を使用した CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: GitHub Actions での Key Vault を使用した認証
+      href: spring-cloud-github-actions-key-vault.md
+- name: トラブルシューティング
+  items:
+    - name: トラブルシューティング ガイド
+      href: spring-cloud-troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure CLI プラグイン

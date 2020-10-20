@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899610"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976081"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用にデバイス設定を構成する
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用にデバイス設定を構成する
 
 このチュートリアルでは、オンボード GPU 搭載の Azure Stack Edge Pro デバイス用にデバイス関連の設定を構成する方法について説明します。 ローカル Web UI を使用して、デバイス名、更新サーバー、タイム サーバーを設定できます。
 
@@ -67,7 +67,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスでデバイス関連の設定を
 
     5. 設定が適用されたら、 **[Next: Update server]\(次へ: 更新サーバー\)** を選択します。
 
-        ![ローカル Web UI の [デバイス] ページ](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![ローカル Web UI の [デバイス] ページ 3](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>更新プログラムを構成する
 
@@ -79,7 +79,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスでデバイス関連の設定を
 
         **Windows Server Update Services** (WSUS) から更新プログラムをデプロイすることもできます。 WSUS サーバーのパスを指定します。
         
-        ![ローカル Web UI の [Update Server]\(更新サーバー\) ページ](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![ローカル Web UI の [Update Server]\(更新サーバー\) ページ 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > 別の Windows Update サーバーが構成されていて、*http* ではなく *https* 経由で接続することを選択した場合は、更新サーバーに接続するための署名チェーン証明書が必要になります。 証明書を作成してアップロードする方法については、[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)に関する記事を参照してください。 

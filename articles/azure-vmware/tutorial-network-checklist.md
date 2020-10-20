@@ -3,12 +3,12 @@ title: チュートリアル - ネットワーク計画のチェックリスト
 description: Azure VMware Solution の、ネットワーク要件の前提条件とネットワーク接続およびネットワーク ポートの詳細について説明します。
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576679"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948206"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware Solution のネットワーク計画のチェックリスト 
 
@@ -36,6 +36,9 @@ Azure VMware Solution は、オンプレミスおよび Azure ベースの環境
 AVS プライベート クラウドは、Azure ExpressRoute 接続を使用してご自分の Azure 仮想ネットワークに接続されます。 この高い帯域幅と短い待ち時間の接続によって、ご自分のプライベート クラウド環境から、ご自分の Azure サブスクリプションで実行されているサービスにアクセスできます。 ルーティングは Border Gateway Protocol (BGP) ベースであり、プライベート クラウドのデプロイごとに既定で自動的にプロビジョニングされ、有効になります。 
 
 AVS プライベート クラウドでは、次に示すように、サブネット用に少なくとも `/22` の CIDR ネットワーク アドレス ブロックが必要です。 このネットワークによって、ご自分のオンプレミス ネットワークが補完されます。 アドレス ブロックは、サブスクリプションやオンプレミス ネットワークにある他の仮想ネットワークで使用されているアドレス ブロックと重複しないようにする必要があります。 このアドレス ブロック内では、管理、プロビジョニング、vMotion ネットワークが自動的にプロビジョニングされます。
+
+>[!NOTE]
+>アドレス ブロックで許可される範囲は RFC 1918 プライベート アドレス空間 (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) です。ただし、172.17.0.0/16 を除きます。
 
 `/22` CIDR ネットワーク アドレス ブロックの例: `10.10.0.0/22`
 

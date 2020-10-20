@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2742a08d97d537e8a5e0670c40f0ab69b34a4d9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442907"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619595"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "89442907"
 > - 分析データベースを照会する。
 > - データ視覚化に Power BI を使用して、テナント データの傾向を強調表示し、改善のための推奨事項を提案する。
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![この記事で使用されているアーキテクチャの概要を示す図。](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>オフライン テナント分析パターン
 
@@ -53,7 +53,7 @@ ms.locfileid: "89442907"
 
 中央のテーブルとディメンション テーブルを組み合わせることで、効率的な分析処理が可能になります。 このチュートリアルで使用するスター スキーマを次の図に示します。
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![中央のデータベース オブジェクトに接続されている 4 つのデータベース オブジェクトを示すデータベース図。](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 最後に、スター スキーマ テーブルを照会します。 クエリ結果が視覚的に表示され、テナントの動作とアプリケーションの使用に関する洞察が強調表示されます。 このスター スキーマでは、次のような項目を明らかにするのに役立つクエリを実行できます。
 
@@ -111,7 +111,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 - スター スキーマ テーブルは、**fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events**、**dim_Dates** です。
 - **sp_ShredRawExtractedData** ストアド プロシージャは、生データ テーブルからスター スキーマ テーブルを設定するために使用します。
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![分析ストア ノードの SSMS オブジェクト エクスプローラーを示すスクリーンショット。ここには、テーブル、ビュー、ノードが含まれています。](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>データの抽出 
 
@@ -139,7 +139,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 4. **F5** キーを押してスクリプトを実行します。このスクリプトにより、各テナント データベースからチケット データと顧客データを抽出するジョブが作成され、実行されます。 このジョブはデータを分析ストアに保存します。
 5. tenantanalytics データベースの TicketsRawData テーブルを照会して、テーブルにすべてのテナントのチケット情報が設定されていることを確認します。
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![ExtractTickets データベースを示すスクリーンショット。オブジェクト エクスプローラーで TicketsRawData dbo が選択されています。](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 手順 2. の **\ExtractTickets.sql** を **\ExtractVenuesEvents.sql** に置き換えて、上記の手順を繰り返します。
 
@@ -159,7 +159,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 4. ジョブを正常に実行するための十分な時間を確保します。
     - jobs.jobs_execution テーブルの **Lifecycle** 列でジョブの状態を確認します。 先に進む前に、ジョブが**成功**したことを確認します。 ジョブが正常に完了すると、次の図のようにデータが表示されます。
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![sp_ShredRawExtractedData プロシージャの実行が成功したことを示すスクリーンショット。](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>データの探索
 
@@ -174,11 +174,11 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 3. **[データを取得]** ウィンドウで、[Azure SQL Database] を選択します。
 4. データベース ログイン ウィンドウで、サーバー名 (catalog-mt-\<User\>.database.windows.net) を入力します。 **[データ接続モード]** の **[インポート]** を選択し、[OK] をクリックします。 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![[SQL Server データベース] ダイアログ ボックスを示すスクリーンショット。ここでは、サーバーとデータベースを入力できます。](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[Connect]** をクリックします。  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![[SQL Server データベース] ダイアログを示すスクリーンショット。ここでは、ユーザー名とパスワードを入力できます。](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. **ナビゲーター** ウィンドウで、分析データベースのスター スキーマ テーブル (fact_Tickets、dim_Events、dim_Venues、dim_Customers、dim_Dates) を選択します。 **[読み込み]** を選択します。 
 
@@ -186,13 +186,13 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 まず、チケット売上データを分析して、各会場の利用状況の差異を確認します。 Power BI で次のオプションを選択して、各会場で販売されたチケットの総数を示す棒グラフをプロットします。 チケット ジェネレーターのランダムな変動により、結果が異なる場合があります。
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![右側のデータ視覚化での Power BI の視覚化と制御を示すスクリーンショット。](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 上記のプロットでは、各会場で販売されたチケットの数にばらつきがあることを確認できます。 チケットの販売数が多い会場は、販売数が少ない会場よりもサービスを頻繁に利用しています。 これは、テナントのさまざまなニーズに応じてリソースの割り当てを調整するよい機会かもしれません。
 
 データをさらに分析して、チケットの売上の経時的な変化を確認できます。 Power BI で次のオプションを選択して、60 日間にわたり、1 日に販売されたチケットの総数をプロットします。
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![「Ticket Sale Distribution (チケット販売分布) と Sale Day (販売日)」というタイトルの Power BI の視覚化を示すスクリーンショット。](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 上記のグラフは、一部の会場のチケットの販売数がスパイク (突出) していることを示しています。 これらのスパイクは、一部の会場がシステム リソースを過度に使用している可能性があるという考えを補強しています。 今のところ、スパイクが発生したときの明白なパターンはありません。
 

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017916"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893542"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 
@@ -22,7 +22,7 @@ ms.locfileid: "90017916"
 
 このチュートリアルでは、Apache Spark for Azure Synapse でデータを読み込んで分析する基本的な手順について説明します。
 
-1. **[Linked]\(リンク済み\)** の下にある **[Data]\(データ\)** ハブで **[Azure Blob Storage]** を右クリックし、 **[nyc_tlc_yellow]、[SELECT New notebook]\(新しいノートブックを選択する\)** の順に選択します
+1. **[データ]** ハブで、 **[新しいリソースの追加]** ( **[リンク済み]** の上にある [+] ボタン)、 **[サンプルの参照]** の順にクリックします。 **NYC Taxi & Limousine Commission - yellow taxi trip records (NYC タクシー & リムジン協会 - イエロー タクシー運行記録)** を見つけてクリックします。 ページの下部にある **[続行]** をクリックしたら、 **[データセットの追加]** をクリックします。 **[リンク済み]** の下にある **[データ]** ハブで **[Azure Blob Storage]、[サンプル データセット]、[nyc_tlc_yellow]** を順に右クリックで選択し、 **[新しいノートブック]** を選択します。
 1. これにより、次のコードを含む新しいノートブックが作成されます。
     ```
     from azureml.opendatasets import NycTlcYellow
@@ -119,6 +119,6 @@ df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ストレージ内のデータを分析する](get-started-analyze-storage.md)
+> [SQL オンデマンドを使用してデータを分析する](get-started-analyze-sql-on-demand.md)
 
 

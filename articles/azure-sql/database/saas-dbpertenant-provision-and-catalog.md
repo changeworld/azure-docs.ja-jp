@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027923"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619697"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 
 2. ブレークポイントを追加するには、*New-Tenant `* と記述されている行のどこかにカーソルを置きます。 その後、F9 キーを押します。
 
-   ![ブレークポイント](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![スクリプトを示すスクリーンショット。ブレークポイントを追加するために、New-Tenant が強調表示されています。](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. F5 キーを押してスクリプトを実行します。
 

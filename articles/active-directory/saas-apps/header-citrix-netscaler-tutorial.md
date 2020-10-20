@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540588"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944226"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>チュートリアル:Azure Active Directory シングル サインオンと Citrix NetScaler の統合 (ヘッダーベースの認証)
 
@@ -392,7 +392,7 @@ GUI を使用して書き換えポリシーを仮想サーバーにバインド�
 
 1. **[Load Balancing Virtual Server]\(負荷分散仮想サーバー\)** ペインの **[Advanced Settings]\(詳細設定\)** で、 **[Policies]\(ポリシー\)** を選択します。 自分の NetScaler インスタンス用に構成されているすべてのポリシーが、一覧に表示されます。
  
-    ![Citrix NetScaler の構成 - [Load Balancing Virtual Server]\(負荷分散仮想サーバー\) ペイン](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![[Name]\(名前\)、[Action]\(アクション\)、[Expression]\(式\) の各フィールドが強調表示され、[作成] ボタンが選択されている [Configuration]\(構成\) タブを示すスクリーンショット。](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Citrix NetScaler の構成 - [Load Balancing Virtual Server]\(負荷分散仮想サーバー\) ペイン](./media/header-citrix-netscaler-tutorial/header06.png)
 

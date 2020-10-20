@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554276"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>チュートリアル: Azure Active Directory と ON24 Virtual Environment SAML Connection の統合
 
@@ -147,7 +147,7 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
 5.  **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![ON24 Virtual Environment SAML Connection ドメインと URL のシングル サインオン情報](common/both-signonurl.png)
+    ![[サインオン URL] というテキスト ボックスが強調表示されている [追加の URL を設定します] セクションを示すスクリーンショット。](common/both-signonurl.png)
 
     **[サインオン URL]** ボックスに、`https://vshow.on24.com/vshow/<INSTANCENAME>` という形式で URL を入力します。
 

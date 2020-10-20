@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535596"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850551"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IntelligenceBank の統合
 
@@ -137,11 +137,11 @@ IntelligenceBank で Azure AD SSO を構成してテストするには、次の�
 
 1. **[Authenticator]** をクリックし、 **[新規追加]** をクリックします。
 
-    ![IntelligenceBank の構成](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![選択された [Administrator]\(管理者\) タブと [Add New]\(新規追加\) アイコンを示すスクリーンショット。](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. 次の手順に従います。
 
-    ![IntelligenceBank の構成](./media/intelligencebank-tutorial/urls.PNG)
+    ![この手順の情報を入力するフィールドを示すスクリーンショット。](./media/intelligencebank-tutorial/urls.PNG)
 
     a. **[名前]** ボックスに、名前 (`azureadsso` など) を入力します。
 
@@ -165,11 +165,11 @@ IntelligenceBank で Azure AD SSO を構成してテストするには、次の�
 
 1. **[管理]**  ->  **[ユーザー]** と移動し、 **[新しいユーザーの追加]** アイコンを選択して**ユーザー**を追加します。
 
-    ![IntelligenceBank の構成](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![[Users]\(ユーザー\) タブで [Users]\(ユーザー\) アイコンが選択されているスクリーンショット。](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. 組織の要件に従って必要なフィールドに入力し、 **[保存]** をクリックします。
 
-    ![IntelligenceBank の構成](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![ユーザー情報を入力する [Add New User]\(新しいユーザーの追加\) ページを示すスクリーンショット。](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>SSO のテスト 
 

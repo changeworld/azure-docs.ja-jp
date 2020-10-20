@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c3eb3706858bd2bfd2160e58698c0f5136c41f3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3e8ed59783a6a714434b17a1d1abbb22fbe30939
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547912"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OneDesk の統合
 
@@ -141,7 +141,7 @@ OneDesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. **[Integrations]\(統合\)** タブをクリックします。
 
-    ![Settings tab](./media/onedesk-tutorial/img-integration.png)
+    ![[Integrations]\(統合\) タブが選択されているスクリーンショット。](./media/onedesk-tutorial/img-integration.png)
 
 1. **[Single Sign On]\(シングル サインオン\)** をクリックして **[Upload Metadata File]\(メタデータ ファイルのアップロード\)** を選択し、 **[Choose File]\(ファイルの選択\)** をクリックして、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
 

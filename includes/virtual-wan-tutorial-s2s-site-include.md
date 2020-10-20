@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 7bb4974620323de45fd621ae2ed73d3655244d8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606553"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856724"
 ---
 1. 仮想 WAN のポータル ページの **[接続]** セクションで、 **[VPN サイト]** を選択して VPN サイト ページを開きます。
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
@@ -26,6 +26,10 @@ ms.locfileid: "90606553"
     * **[デバイス ベンダー]** - VPN デバイス ベンダーの名前 (例:Citrix、Cisco、Barracuda)。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングを行ったりするのに役立ちます。
     * **[ボーダー ゲートウェイ プロトコル]** - 有効にすると、サイトからのすべての接続が BGP 対応になります。 最終的には、[リンク] セクションで VPN サイトからの各リンクの BGP 情報を設定します。 仮想 WAN での BGP の構成は、Azure 仮想ネットワーク ゲートウェイ VPN での BGP の構成と同等です。 オンプレミスの BGP ピア アドレスをデバイス側のご使用の VPN および VPN サイトの VNet アドレス空間のパブリック IP アドレスと同じにすることはできません。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイスのループバック インターフェイスに割り当てられたアドレスを使用できます。場所を表す対応する VPN サイトで、このアドレスを指定します。 BGP の前提条件については、「[BGP と Azure VPN Gateway について](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)」を参照してください。 VPN サイトの BGP 設定を有効にすると、いつでも VPN 接続を編集して、BGP パラメーター (リンクのピアリング IP と AS 番号) を更新することができます。
     * **[プライベート アドレス空間]** - オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。 これは、サイトで BGP が有効になっていない場合に必要です。
+    
+      >[!NOTE]
+      >サイトを作成した後にアドレス空間を編集した場合 (追加のアドレス空間を追加した場合など)、コンポーネントの再作成中での有効なルートの更新には、8 分から 10 分かかることがあります。
+      >
     * **[ハブ]** - サイトを接続する先のハブ。 サイトは、VPN Gateway を持つハブにのみ接続できます。 ハブが表示されない場合は、まずそのハブで VPN ゲートウェイを作成してください。
 4. ブランチにある物理的なリンクに関する情報を追加するには、 **[リンク]** を選択します。 仮想 WAN パートナーの CPE デバイスがある場合は、システムから設定されたブランチ情報のアップロードの一部として、この情報が Azure と交換されるかどうかを確認します。
 

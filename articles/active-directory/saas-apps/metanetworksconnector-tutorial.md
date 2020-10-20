@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 941218f9a35a0a242612ae1d6230c642129c8259
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528893"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856893"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル: Azure Active Directory と Meta Networks Connector の統合
 
@@ -101,7 +101,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Meta Networks Connector のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata` の形式で URL を入力します。
 
@@ -109,7 +109,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Meta Networks Connector のドメインと URL] のシングル サインオン情報](common/both-advanced-urls.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-advanced-urls.png)
 
     a. **[サインオン URL]** ボックスに、`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login` という形式で URL を入力します。
 
@@ -120,7 +120,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 6. Meta Networks Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
     
 7. その他に、Meta Networks Connector アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
@@ -134,9 +134,9 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -173,19 +173,19 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     
 2. **[管理者]** に移動して **[設定]** を選択します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure3.png)
+    ![[Administration]\(管理\) メニューの [Settings]\(設定\) が選択されているスクリーンショット。](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. **[Log Internet Traffic]\(インターネット トラフィックのログ記録\)** と **[Force VPN MFA]\(VPN MFA の強制\)** がオフに設定されていることを確認します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure1.png)
+    ![これらの設定がオフにされているスクリーンショット。](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. **[管理者]** に移動して **[SAML]** を選択します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure4.png)
+    ![[Administration]\(管理\) メニューの [SAML] が選択されているスクリーンショット。](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. **[DETAILS]\(詳細\)** タブで次の手順を実行します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure2.png)
+    ![説明されている値を入力できる [DETAILS]\(詳細\) ページを示すスクリーンショット。](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. **[SSO URL]** の値をコピーし、 **[Meta Networks Connector ドメインと URL]** セクションの **[サインイン URL]** テキスト ボックスに貼り付けます。
     
@@ -197,7 +197,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     
 6. **[GENERAL]\(全般\)** タブで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure5.png)
+    ![説明されている値を入力できる [GENERAL]\(全般\) ページを示すスクリーンショット。](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** に、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 

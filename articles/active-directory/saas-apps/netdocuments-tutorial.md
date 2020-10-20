@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549043"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NetDocuments の統合
 
@@ -136,7 +136,7 @@ NetDocuments での Azure AD SSO を構成してテストするには、次の�
 
 3. **[セキュリティ センター]** を選択します。
    
-    ![リポジトリ](./media/netdocuments-tutorial/security-center.png "Security Center")
+    ![[Legal Documents]\(法的ドキュメント\) で [Security Center] が選択されていることを示すスクリーンショット。](./media/netdocuments-tutorial/security-center.png "Security Center")
 
 4. **[Advanced Authentication]\(高度な認証\)** を選択します。
     
@@ -166,7 +166,7 @@ Azure AD ユーザーが NetDocuments にサインインできるようにする
 
 3. **[ユーザーとグループ]** を選択します。
    
-    ![リポジトリ](./media/netdocuments-tutorial/users-groups.png "リポジトリ")
+    ![[Legal Documents]\(法的ドキュメント\) で [ユーザーとグループ] が選択されていることを示すスクリーンショット。](./media/netdocuments-tutorial/users-groups.png "リポジトリ")
 
 4. **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力して、 **[ユーザーの追加]** をクリックします。
    

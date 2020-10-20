@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266527"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950943"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -72,7 +72,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
   
 4. **[Data Box Disk]** を選択します。 1 つの注文 (5 台のディスク) でのソリューションの最大容量は 35 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
-     ![Data Box Disk オプションを選択する](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![Data Box Disk オプションを選択する 2](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択します。
 

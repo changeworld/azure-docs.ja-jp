@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a63944dfb9a22f30451793d367650f03b8aa2c1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6146809363681ed73f3d63ccf43ba49044ccc28
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87483867"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940584"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -74,7 +74,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 az keyvault certificate create --vault-name "Contoso-Vault2" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
 ```
 
-これで、URI を使用して、Azure Key Vault に追加したこの証明書を参照できるようになりました。 **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** を使用して、現在のバージョンを取得します。 
+これで、URI を使用して、Azure Key Vault に追加したこの証明書を参照できるようになりました。 **"https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate"** を使用して、現在のバージョンを取得します。 
 
 以前に格納した証明書を表示するには:
 

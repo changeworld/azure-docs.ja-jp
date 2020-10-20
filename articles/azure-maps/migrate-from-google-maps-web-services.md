@@ -1,22 +1,22 @@
 ---
-title: Google マップから Web サービスを移行する | Microsoft Azure Maps
-description: Google マップから Microsoft Azure Maps に Web サービスを移行する方法
+title: チュートリアル - Google Maps から Web サービスを移行する | Microsoft Azure Maps
+description: Web サービスを Google Maps から Microsoft Azure Maps に移行する方法に関するチュートリアルです。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874460"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>チュートリアル - Google Maps から Web サービスを移行する
 
 Azure Maps と Google マップでは、どちらの場合も REST Web サービスを介して空間 API にアクセスすることができます。 これらのプラットフォームの API インターフェイスは同様の機能を実行します。 ただし、使用される名前付け規則と応答オブジェクトが異なります。
 

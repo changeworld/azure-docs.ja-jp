@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e395e4e73f6c140d81189f1abbccca8c064f757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437447"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616654"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL Database、Azure Synapse Analytics、Data Factory、Power BI による SaaS 分析を調べる
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -111,7 +111,7 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
     1. スター スキーマ テーブルは、**fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events**、**dim_Dates** です。
     1. ストアド プロシージャ **sp_transformExtractedData** は、データを変換してスター スキーマ テーブルに読み込むために使われます。
 
-![DWtables](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![オブジェクト エクスプローラーを示すスクリーンショット。テーブルが展開され、さまざまなデータベース オブジェクトが表示されています。](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>BLOB ストレージ
 
@@ -167,7 +167,7 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
   
 ### <a name="data-warehouse-pattern-overview"></a>データ ウェアハウスのパターンの概要
 
-Azure Synapse (旧称 SQL Data Warehouse) は、テナント データに対して集計を実行するための分析ストアとして使われます。 このサンプルでは、データ ウェアハウスにデータを読み込むには PolyBase が使用されます。 生データが読み込まれるステージング テーブルには、スター スキーマ テーブルに変換された行を追跡するための ID 列があります。 次の図は読み込みのパターンを示しています。![loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (旧称 SQL Data Warehouse) は、テナント データに対して集計を実行するための分析ストアとして使われます。 このサンプルでは、データ ウェアハウスにデータを読み込むには PolyBase が使用されます。 生データが読み込まれるステージング テーブルには、スター スキーマ テーブルに変換された行を追跡するための ID 列があります。 次の図は、読み込みパターンを示しています。![データベース テーブルの読み込みパターンを示す図。](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 緩やかに変化するディメンション (SCD) タイプ 1 のディメンション テーブルが、この例では使用されます。 各ディメンションでは、ID 列を使って代理キーが定義されています。 ベスト プラクティスとして、時間を節約するため日付ディメンション テーブルはあらかじめ設定されています。 他のディメンション テーブルについては、CREATE TABLE AS SELECT...(CTAS) ステートメントを使って、既存の変更された行と変更されていない行および代理キーを格納する一時テーブルが作成されます。 これは、IDENTITY_INSERT=ON で行われます。 その後、新しい行が IDENTITY_INSERT=OFF でテーブルに挿入されます。 ロールバックが簡単なように、既存のディメンション テーブルの名前が変更された後、一時テーブルの名前が変更されて新しいディメンション テーブルになります。 各実行の前に、古いディメンション テーブルが削除されます。
 
@@ -181,14 +181,14 @@ Azure Synapse (旧称 SQL Data Warehouse) は、テナント データに対し�
 
 1. ADF ユーザー インターフェイスの **[作成者]** タブで、左側のウィンドウから **SQLDBToDW** パイプラインを選択します。
 1. **[トリガー]** をクリックし、プルダウン メニューから **[Trigger Now]\(今すぐトリガー\)** をクリックします。 このアクションはパイプラインをすぐに実行します。 運用シナリオでは、スケジュールに基づいてデータを更新するパイプライン実行タイムテーブルを定義します。
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![SQLDBToDW という名前のパイプラインのファクトリ リソースを示すスクリーンショット。[トリガー] オプションが展開され、[Trigger Now]\(今すぐトリガー\) が選択されています。](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. **[Pipeline Run]\(パイプライン実行\)** ページで、 **[完了]** をクリックします。
 
 ### <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 
 1. ADF ユーザー インターフェイスで左側のメニューから **[Monitor]\(監視\)** タブに切り替えます。
 1. SQLDBToDW パイプラインの状態が **[成功]** になるまで **[更新]** をクリックします。
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![SQLDBToDW パイプラインを示すスクリーンショット。[成功] の状態になっています。](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. SSMS でデータ ウェアハウスに接続し、スター スキーマ テーブルのクエリを行って、これらのテーブルにデータが読み込まれたことを確認します。
 
 パイプラインが完了すると、ファクト テーブルにはすべての会場のチケット販売データが保持されており、ディメンション テーブルには対応する会場、イベント、顧客が設定されています。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549094"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941060"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>チュートリアル:Mimecast Personal Portal と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -83,7 +83,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 | 
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | 米国   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | United States   | `https://us-api.mimecast.com/sso/<accountcode>`|
     | 南アフリカ    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | オーストラリア       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | オフショア        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -96,7 +96,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 |
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | 米国   | `https://us-api.mimecast.com/login/saml`|
+    | United States   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
@@ -155,23 +155,23 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
 
 1. **[Administration]\(管理\)**  >  **[Services]\(サービス\)**  >  **[Applications]\(アプリケーション\)** に移動します。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/services.png)
+    ![スクリーンショットは、[Applications]\(アプリケーション\) が選択された Mimecast ウィンドウを示しています。](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. **[Authentication Profiles]\(認証プロファイル\)** タブをクリックします。
     
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![スクリーンショットは、[Authentication Profiles]\(認証プロファイル\) が選択された [Applications]\(アプリケーション\) タブを示しています。](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. **[New Authentication Profile]\(新しい認証プロファイル\)** タブをクリックします。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![スクリーンショットでは、[New Authentication Profile]\(新しい認証プロファイル\) が選択されています。](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. **[Description]\(説明\)** テキストボックスに有効な説明を入力し、 **[Enforce SAML Authentication for Mimecast Personal Portal]\(Mimecast Personal Portal に SAML 認証を適用\)** チェックボックスをオンにします。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![スクリーンショットでは、[New Authentication Profile]\(新しい認証プロファイル\) が選択されています。](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. **[SAML Configuration for Mimecast Personal Portal]\(Mimecast Personal Portal の SAML 構成\)** ページで、次の手順に従います。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![スクリーンショットは、[Enforce SAML Authentication for Administration Console]\(Administration Console に SAML 認証を適用\) を選択する場所を示しています。](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. **[Provider]\(プロバイダー\)** で、ドロップダウンから **[Azure Active Directory]\(Azure Active Directory\)** を選択します。
 
@@ -189,19 +189,19 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
 
 1. **[Administration]\(管理\)**  >  **[Directories]\(ディレクトリ\)**  >  **[Internal Directories]\(内部ディレクトリ\)** に移動します。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![スクリーンショットは、説明した値を入力できる [SAML Configuration for Mimecast Personal Portal]\(Mimecast Personal Portal の SAML 構成\) を示しています。](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. お使いのドメインが下に記載されている場合は、そのドメインを選択します。記載されていない場合は、 **[New Domain]\(新しいドメイン\)** をクリックして新しいドメインを作成してください。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![スクリーンショットは、[Internal Directories]\(内部ディレクトリ\) が選択された Mimecast ウィンドウを示しています。](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. **[New Address]\(新しいアドレス\)** タブをクリックします。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![スクリーンショットでは、ドメインが選択されています。](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. 次のページで、必要なユーザー情報を入力します。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![スクリーンショットは、説明した値を入力できるページを示しています。](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. **[Email Address]\(メール アドレス\)** テキストボックスに、ユーザーのメール アドレス (`B.Simon@yourdomainname.com` など) を入力します。
 
@@ -215,7 +215,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
 
     f. ユーザーにロールを割り当てるには **[Role Edit]\(ロールの編集\)** をクリックし、組織の要件に従って、必要なロールをユーザーに割り当てます。
 
-    ![Mimecast Personal Portal の構成](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![スクリーンショットは、[Role Edit]\(ロールの編集\) を選択できる [Address Settings]\(アドレス設定\) を示しています。](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>SSO のテスト 

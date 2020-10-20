@@ -4,83 +4,199 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28bcaa898bbf6621295bc5096a924d39073e727e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 8286c0d45700eb976825403ae4321878f87f00ad
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605037"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989547"
 ---
-このガイドでは、C# 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
+.NET 用 Custom Vision クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、画像分類モデルを構築するためのコード例を試してみましょう。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
 > [!NOTE]
-> コードを記述 "_せずに_" 分類モデルの構築とトレーニングを行いたい場合は、代わりに[ブラウザーベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+> コードを記述 "_せずに_" 分類モデルの構築とトレーニングを行う場合は、[ブラウザーベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+
+.NET 用 Custom Vision クライアント ライブラリを使用すると、次のことができます。
+
+* 新しい Custom Vision プロジェクトを作成する
+* プロジェクトにタグを追加する
+* 画像をアップロードし、タグ付けする
+* プロジェクトをトレーニングする
+* 現在のイテレーションを公開する
+* 予測エンドポイントをテストする
+
+[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(予測)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | パッケージ (NuGet) [(トレーニング)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(予測)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/) | [サンプル](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision)
+
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="Custom Vision リソースを作成"  target="_blank">Custom Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、トレーニングおよび予測リソースを作成し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
+    * 対象のアプリケーションを Custom Vision に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
-## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
+## <a name="setting-up"></a>設定
 
-.NET 用の Custom Vision で画像分析アプリを作成するには、Custom Vision の NuGet パッケージが必要です。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
+### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
-- [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
-- [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-[Cognitive Services .NET サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) プロジェクトを複製またはダウンロードします。 **CustomVision/ImageClassification** フォルダーに移動して、_ImageClassification.csproj_ を Visual Studio で開きます。
+Visual Studio を使用して、新しい .NET Core アプリケーションを作成します。 
 
-この Visual Studio プロジェクトは、__My New Project__ という名前の新しい Custom Vision プロジェクトを作成します。作成したプロジェクトには、[Custom Vision Web サイト](https://customvision.ai/)からアクセスすることができます。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 このプロジェクトでは、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを判別することが、分類子の目的となります。
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+新しいプロジェクトを作成したら、**ソリューション エクスプローラー**でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` と `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` を検索します。 最新バージョンを選択し、 **[インストール]** を選択します。 
 
-## <a name="examine-the-code"></a>コードを確認する
+#### <a name="cli"></a>[CLI](#tab/cli)
 
-_Program.cs_ ファイルを開いて、コードを詳しく調べます。 トレーニング キーと予測キーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CUSTOM_VISION_TRAINING_KEY`、`CUSTOM_VISION_PREDICTION_KEY` という名前を付けます。 スクリプトによってこれらの変数が検索されます。
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`custom-vision-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
+```console
+dotnet new console -n custom-vision-quickstart
+```
 
-また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。 それを `CUSTOM_VISION_ENDPOINT` という環境変数に保存します。 スクリプトによって、この環境変数への参照がクラスのルートに保存されます。
+新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_endpoint)]
+```console
+dotnet build
+```
 
-このプロジェクトの主な機能は、以下のコード行によって実行されます。
+ビルドの出力に警告やエラーが含まれないようにする必要があります。 
 
-## <a name="create-a-new-custom-vision-service-project"></a>新しい Custom Vision Service プロジェクトを作成する
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
-作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) メソッドを参照してください ([分類子の構築](../../getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。   
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
+次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Custom Vision クライアント ライブラリをインストールします。
 
-## <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training --version 2.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction --version 2.0.0
+```
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_tags)]
+---
+
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs) にあり、このクイックスタートのコード例が含まれています。
+
+プロジェクト ディレクトリから *program.cs* ファイルを開いて、次の `using` ディレクティブを追加します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_imports)]
+
+
+アプリケーションの **Main** メソッドで、リソースのキーとエンドポイントの変数を作成します。 さらに、後で使用するいくつかの基本的なオブジェクトを宣言します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_creds)]
+
+> [!IMPORTANT]
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Custom Vision リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[キー] および [エンドポイント]** ページの **[リソース管理]** にあります。 トレーニング キーと予測キーの両方を取得する必要があります。
+>
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+
+アプリケーションの **Main** メソッドで、このクイックスタートで使用するメソッドの呼び出しを追加します。 これらは後で実装します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_maincalls)]
+
+## <a name="object-model"></a>オブジェクト モデル
+
+|名前|説明|
+|---|---|
+|[CustomVisionTrainingClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-dotnet) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
+|[CustomVisionPredictionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)| このクラスでは、画像分類予測のために、モデルに対するクエリ実行を処理します。|
+|[PredictionModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet-preview)| このクラスでは、単一の画像に対して単一の予測を定義します。 これには、オブジェクト ID と名前、および信頼度スコアのプロパティが含まれます。|
+
+## <a name="code-examples"></a>コード例
+
+これらのコード スニペットでは、.NET 用 Custom Vision クライアント ライブラリを使用して次のタスクを実行する方法を示します。
+
+* [クライアントを認証する](#authenticate-the-client)
+* [新しい Custom Vision プロジェクトを作成する](#create-a-new-custom-vision-project)
+* [プロジェクトにタグを追加する](#add-tags-to-the-project)
+* [画像をアップロードし、タグ付けする](#upload-and-tag-images)
+* [プロジェクトをトレーニングする](#train-the-project)
+* [現在のイテレーションを公開する](#publish-the-current-iteration)
+* [予測エンドポイントをテストする](#test-the-prediction-endpoint)
+
+
+## <a name="authenticate-the-client"></a>クライアントを認証する
+
+新しいメソッドで、エンドポイントとキーを使用してトレーニング クライアントと予測クライアントをインスタンス化します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_auth)]
+
+## <a name="create-a-new-custom-vision-project"></a>新しい Custom Vision プロジェクトを作成する
+
+次のコードでは、画像分類プロジェクトを作成します。 作成したプロジェクトは、[Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) メソッドを参照してください ([分類子の構築](../../getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。  
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
+
+
+## <a name="add-tags-to-the-project"></a>プロジェクトにタグを追加する
+
+このメソッドでは、モデルをトレーニングするタグを定義します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_addtags)]
 
 ## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-このプロジェクトの画像を追加します。 これらは、_Program.cs_ の **LoadImagesFromDisk** メソッドで参照します。 1 回のバッチで最大 64 個の画像をアップロードできます。
+最初に、このプロジェクト用のサンプル画像をダウンロードします。 [サンプル画像フォルダー](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)の内容をお使いのローカル デバイスに保存します。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
+次に、このディレクトリ内の画像をアップロードするためのヘルパー メソッドを定義します。 画像が保存されている場所を指すように **GetFiles** 引数を編集する必要がある場合があります。
 
-## <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_loadimages)]
 
-このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 イテレーションの名前を使用することで予測要求を送信できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
+次に、画像をアップロードするためのメソッドを定義し、フォルダーの場所に従ってタグを適用します (画像は既に並べ替えられています)。 画像のアップロードとタグ付けは、反復的に実行することも、バッチで実行することもできます (バッチあたり最大 64 個)。 このコード スニペットには、両方の例が含まれています。 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
-## <a name="set-the-prediction-endpoint"></a>予測エンドポイントを設定する
 
-予測エンドポイントは、現在のモデルに画像を送信して分類予測を取得する際に使用できる参照です。
+## <a name="train-the-project"></a>プロジェクトをトレーニングする
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction_endpoint)]
+このメソッドは、プロジェクトにおけるトレーニングの初回イテレーションを作成するものです。 トレーニングが完了するまで、サービスに対してクエリが実行されます。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
+
+> [!TIP]
+> 選択したタグでトレーニングする
+>
+> 必要に応じて、適用したタグのサブセットのみでトレーニングできます。 ある特定のタグが十分に適用されていないが、他のタグが十分に適用されている場合に、これを行うことができます。 [TrainProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) 呼び出しで、*trainingParameters* パラメーターを使用します。 [TrainingParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters?view=azure-dotnet&preserve-view=true) を構築し、その **SelectedTags** プロパティを、使用するタグの ID の一覧に設定します。 モデルは、そのリストのタグのみを認識するようにトレーニングします。
+
+## <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
+
+このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[概要]** タブに、**サブスクリプション ID** として表示されます。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_publish)]
+
 
 ## <a name="test-the-prediction-endpoint"></a>予測エンドポイントをテストする
 
-このスクリプトでは、**LoadImagesFromDisk** メソッドでテスト画像が読み込まれ、モデルの予測出力がコンソールに表示されます。 `publishedModelName` 変数の値は、Custom Vision Web サイトの **[パフォーマンス]** タブにある "として公開される" の値に対応している必要があります。 
+この部分のスクリプトでは、テスト画像を読み込み、モデル エンドポイントを照会して、予測データをコンソールに出力します。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_test)]
+
 
 ## <a name="run-the-application"></a>アプリケーションの実行
+
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
+
+IDE ウィンドウの上部にある **[デバッグ]** ボタンをクリックして、アプリケーションを実行します。
+
+#### <a name="cli"></a>[CLI](#tab/cli)
+
+アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
+
+```dotnet
+dotnet run
+```
+
+---
 
 アプリケーションを実行すると、コンソール ウィンドウが開いて、次の出力が書き込まれます。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552563"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル: Azure Active Directory と N2F - Expense reports の統合
 
@@ -99,11 +99,11 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
-    ![[N2F - Expense reports のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[SAML ベースのサインオン] ページを示すスクリーンショット。[基本的な SAML 構成] が表示されています。](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[N2F - Expense reports のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![[統合] ページを示すスクリーンショット。ここでは、Azure AD シングル サインオンを追加できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.n2f.com/app/`」と入力します。
 
@@ -127,23 +127,23 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 2. **[Settings]\(設定\)** をクリックし、ドロップダウンから **[Advance Settings]\(詳細設定\)** を選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure1.png)
+    ![スクリーンショットでは、[Advance Settings]\(詳細設定\) が選択されています。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. **[Account & Settings]\(アカウントと設定\)** を選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure2.png)
+    ![スクリーンショットでは、[Account settings]\(アカウント設定\) が選択されています。](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. **[Authentication]\(認証\)** を選択し、 **[+ Add an authentication method]\(認証方法の追加\)** タブを選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure3.png)
+    ![スクリーンショットは、認証方法を追加できる [Account settings]\(アカウント設定\) の [Authentication]\(認証\) を示しています。](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. 認証方法として **[SAML Microsoft Office 365]** を選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure4.png)
+    ![スクリーンショットは、[SAML Microsoft Office 365] が選択されている [Authentication method]\(認証方法\) を示しています。](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. **[Authentication method]\(認証方法\)** セクションで、次の手順に従います。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure5.png)
+    ![スクリーンショットは、説明した値を入力できる [Authentication method]\(認証方法\) を示しています。](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. **[エンティティ ID]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -212,19 +212,19 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
 2. **[Settings]\(設定\)** をクリックし、ドロップダウンから **[Advance Settings]\(詳細設定\)** を選択します。
 
-    ![N2F - Expense でのユーザーの追加](./media/n2f-expensereports-tutorial/configure1.png)
+    ![スクリーンショットでは、[Advance Settings]\(詳細設定\) が選択されています。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. ナビゲーション パネルで **[Users]\(ユーザー\)** タブをクリックします。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/user1.png)
+    ![スクリーンショットは、[Users]\(ユーザー\) を示しています。](./media/n2f-expensereports-tutorial/user1.png)
 
 4. **[+ New user]\(+ 新規ユーザー\)** タブを選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/user2.png)
+    ![スクリーンショットは、[New user]\(新規ユーザー\) オプションを示しています。](./media/n2f-expensereports-tutorial/user2.png)
 
 5. **[User]\(ユーザー\)** セクションで、次の手順を実行します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/user3.png)
+    ![スクリーンショットは、説明した値を入力できるセクションを示しています。](./media/n2f-expensereports-tutorial/user3.png)
 
     a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 

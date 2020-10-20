@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553917"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995093"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>チュートリアル:Azure Active Directory と Periscope Data の統合
 
@@ -123,7 +123,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
 2. 左下隅にあるギア メニューを開き、 **[Billing]\(課金\)**  >  **[Security]\(セキュリティ\)** メニューの順に開いてから、次の手順を実行します。 これらの設定にアクセスできるのは管理者のみです。
 
-    ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure01.png)
+    ![[セキュリティ] ダイアログのスクリーンショット。設定が選択されています。](./media/periscope-data-tutorial/configure01.png)
 
     a. 手順 5 の **[SAML 署名証明書]** の **[アプリのフェデレーション メタデータ URL]** をコピーし、ブラウザーで開きます。 XML ドキュメントが開きます。
 
@@ -143,7 +143,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
     i. 最後に、 **[Save]\(保存\)** をクリックし、「**Logout**」と入力して SSO 設定を**確定**します。
 
-    ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure02.png)
+    ![SSO 構成更新ダイアログのスクリーンショット。テキストボックスに「logout」と入力され、[確認] ボタンが選択されています。](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -206,7 +206,7 @@ Azure AD ユーザーが Periscope Data にログインできるようにする�
 
 2. メニューの左下にある **[Settings]\(設定\)** アイコンをクリックして、 **[Permissions]\(権限\)** に移動します。
 
-    ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure03.png)
+    ![[Settings]\(設定\) メニューのスクリーンショット。[Permissions]\(権限\) が選択されています。](./media/periscope-data-tutorial/configure03.png)
 
 3. **[Add User]\(ユーザーの追加\)** をクリックして、次の手順を実行します。
 

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 3110e02c2c4cb8b254e80a55997577db95ba1be0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595990"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075656"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -52,6 +52,8 @@ Azure CLI の `az keyvault set-policy` コマンド、または Azure PowerShell
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>既存のアクセス ポリシーを削除せずに、ARM テンプレートを使用して Key Vault を再デプロイするにはどうすればよいですか?
 
 現在、Key Vault の再デプロイでは、Key Vault のアクセス ポリシーが削除され、ARM テンプレートのアクセス ポリシーに置き換えられます。 Key Vault のアクセス ポリシーに増分オプションはありません。 Key Vault のアクセス ポリシーを保持するには、Key Vault の既存のアクセス ポリシーを読み取り、ARM テンプレートにそれらのポリシーを設定して、アクセスの停止を回避する必要があります。
+
+このシナリオに役立つ可能性があるもう 1 つの選択肢は、アクセス ポリシーの代替として RBAC ロールを利用することです。 RBAC を使用すると、ポリシーを再度指定しなくても、キー コンテナーを再デプロイできます。 このソリューションの詳細は[こちら](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)でご覧いただけます。
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>次のエラーの種類に対して推奨されるトラブルシューティングの手順
 

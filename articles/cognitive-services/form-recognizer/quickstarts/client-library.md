@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: フォーム処理, 自動データ処理
-ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b024b3fac76e51264e89100e63a3cdc477443157
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318916"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963061"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>クイック スタート:Form Recognizer クライアント ライブラリを使用する
 
-自分で選択した言語で Form Recognizer クライアント ライブラリの使用を開始します。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 テキスト、キーと値のペア、テーブル データを特定し、form ドキュメントから抽出します。&mdash;元のファイルにおける関係を含む構造化データがこのサービスにより出力されます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。
+自分で選択した言語で Form Recognizer クライアント ライブラリの使用を開始します。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 テキスト、キーと値のペア、テーブル データを特定し、form ドキュメントから抽出します。&mdash;元のファイルにおける関係を含む構造化データがこのサービスにより出力されます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。 Form Recognizer クライアント ライブラリは現在、From Recognizer サービスの v2.0 を対象としています。
 
 Form Recognizer クライアント ライブラリを使用して、次のことを行います。
 

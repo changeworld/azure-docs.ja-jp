@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78f9217ea7288bac56b008911f7b39c73bba7771
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519789"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>チュートリアル: Azure Active Directory と LaunchDarkly の統合
 
@@ -100,7 +100,7 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[LaunchDarkly のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** テキスト ボックスに、`app.launchdarkly.com` という URL を入力します。
 
@@ -113,7 +113,7 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
     **[サインオン URL]** ボックスに、`https://app.launchdarkly.com` という形式で URL を入力します。
 
-    ![[LaunchDarkly のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -135,19 +135,19 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
 2. 左側のナビゲーション パネルから **[アカウント設定]** を選択します。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure1.png)
+    ![[Production]\(運用\) の下で [Account Settings]\(アカウント設定\) 項目が選択されているスクリーンショット。](./media/launchdarkly-tutorial/configure1.png)
 
 3. **[セキュリティ]** タブをクリックします。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure2.png)
+    ![[Account settings]\(アカウント設定\) の [Security]\(セキュリティ\) タブを示すスクリーンショット。](./media/launchdarkly-tutorial/configure2.png)
 
 4. **[ENABLE SSO]\(SSO を有効にする)** 、 **[EDIT SAML CONFIGURATION]\(SAML 構成の編集)** の順にクリックします。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure3.png)
+    ![[ENABLE S S O]\(S S O を有効にする\) および [EDIT SAML CONFIGURATION]\(SAML 構成の編集\) を操作できる [Single sign-on]\(シングル サインオン\) ページを示すスクリーンショット。](./media/launchdarkly-tutorial/configure3.png)
 
 5. **[Edit your SAML configuration]\(SAML の構成の編集)** セクションで、次の手順を実行します。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure4.png)
+    ![ここで説明されている変更を行うことができる [Edit your SAML configuration]\(SAML の構成の編集\) セクションを示すスクリーンショット。](./media/launchdarkly-tutorial/configure4.png)
 
     a. インスタンスの **SAML コンシューマー サービス URL** をコピーし、Azure Portal で、 **[LaunchDarkly ドメインと URL]** セクションの [応答 URL] ボックスに貼り付けます。
 

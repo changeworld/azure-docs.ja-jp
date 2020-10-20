@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544198"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル: Azure Active Directory と HackerOne の統合
 
@@ -126,11 +126,11 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のメニューで **[Settings]** をクリックします。
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![メニューで [Settings]\(設定\) が選択されているスクリーンショット。](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. **[Authentication]\(認証\)** に移動し、 **[Add SAML settings]\(SAML 設定の追加\)** をクリックします。
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![[Add SAML settings]\(SAML 設定の追加\) ボタンが選択されている [Authentication Settings]\(認証設定\) ページを示すスクリーンショット。](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
 
@@ -146,7 +146,7 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
 5. [Authentication Settings] ダイアログで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![[Run test]\(テストの実行\) ボタンが選択されている [Authentication Settings]\(認証設定\) ダイアログを示すスクリーンショット。](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. **[テストの実行]** をクリックします。
 

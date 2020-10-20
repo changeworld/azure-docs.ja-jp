@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766305"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951011"
 ---
 ::: zone target="docs"
 
@@ -116,14 +116,14 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Data Box 共有に接続したら、次にデータをコピーします。 データのコピーを開始する前に、次の考慮事項を確認してください。
 
 * 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合は、後続の手順で、Azure へのデータのアップロードに失敗します。
+* 必ず、コピーするファイルの共有の下でフォルダーを作成してから、ファイルをそのフォルダーにコピーしてください。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
 * データをコピーするときは、データのサイズが、[Azure ストレージ アカウントのサイズ制限](data-box-limits.md#azure-storage-account-size-limits)に関する記事に記載されているサイズ制限に従っていること確認してください。
-* Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
+* Azure Files にデータを転送するとき、メタデータ (ACL、タイムスタンプ、ファイル属性) を保持する場合、「[Azure Data Box でファイル ACL、属性、タイムスタンプを保持する](data-box-file-acls-preservation.md)」のガイダンスに従ってください。  
+* Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによっても同時にアップロードされている場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 * 推奨事項は次のとおりです。
   * SMB と NFS の両方を同時に使用しません。
   * 同じデータを Azure 上の同じ宛先にコピーします。
-
   このようにした場合は、最終的な結果が不確定になります。
-* 必ず、コピーするファイル用のフォルダーを共有の下に作成してから、ファイルをそのフォルダーにコピーしてください。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
 
 > [!IMPORTANT]
 > Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。

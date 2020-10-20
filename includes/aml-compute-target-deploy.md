@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
-ms.openlocfilehash: bd3ac8d512c1b9d151c0dc549ffeee6a05c7f94b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 944b96e7726f2b2becd5960a17a89c00d00c878a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542797"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841956"
 ---
-モデルをホストするために使用するコンピューティング先は、デプロイされているエンドポイントのコストと可用性に影響を及ぼします。 次の表を使用して、適切なコンピューティング先を選択します。
+モデルをホストするために使用するコンピューティング先は、デプロイされているエンドポイントのコストと可用性に影響を及ぼします。 次のテーブルを使用して、適切なコンピューティング先を選択します。
 
 | コンピューティング ターゲット | 使用目的 | GPU のサポート | FPGA のサポート | 説明 |
 | ----- | ----- | ----- | ----- | ----- |
@@ -26,14 +26,14 @@ ms.locfileid: "87542797"
 | [Azure Container Instances](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | テストまたは開発 | &nbsp;  | &nbsp; | 必要な RAM が 48 GB より少ない低スケール CPU ベース ワークロードに使用。 |
 | [Azure Machine Learning コンピューティング クラスター](../articles/machine-learning/how-to-use-parallel-run-step.md) | バッチ推論&nbsp; | [はい](../articles/machine-learning/how-to-use-parallel-run-step.md) (機械学習パイプライン) | &nbsp;  | サーバーレス コンピューティングでバッチ スコアリングを実行します。 優先順位が中程度または低い VM をサポートします。 |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | (プレビュー) リアルタイムの推論 | &nbsp; | &nbsp; | &nbsp; |
-| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (プレビュー) IoT &nbsp;モジュール |  &nbsp; | &nbsp; | IoT デバイスに ML モデルをデプロイし、サービスを提供します。 |
-| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | IoT Edge を使用 |  &nbsp; | はい | IoT デバイスに ML モデルをデプロイし、サービスを提供します。 |
+| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (プレビュー) IoT &nbsp;モジュール |  &nbsp; | &nbsp; | IoT デバイスに機械学習モデルをデプロイし、サービスを提供します。 |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | IoT Edge を使用 |  &nbsp; | はい | IoT デバイスに機械学習モデルをデプロイし、サービスを提供します。 |
 
 > [!NOTE]
-> ローカル、Azure Machine Learning コンピューティング インスタンス、Azure Machine Learning コンピューティング クラスターなどのコンピューティング先では、トレーニングと実験のために GPU をサポートしていますが、__Web サービスとしてデプロイされる場合__ に、推論に GPU を使用することは、Azure Kubernetes Service でのみサポートされています。
+> ローカル、Azure Machine Learning コンピューティング、Azure Machine Learning コンピューティング クラスターなどのコンピューティング先は、トレーニングと実験のために GPU をサポートしていますが、"_Web サービスとしてデプロイされる場合_" に GPU を推論に使用することは、AKS でのみサポートされています。
 >
-> __機械学習パイプラインでスコアリングするとき__、推論に GPU を使用することは、Azure Machine Learning コンピューティングでのみサポートされます。
+> "_機械学習パイプラインでスコアリングする場合_" に GPU を推論に使用することは、Azure Machine Learning コンピューティングでのみサポートされています。
 
 > [!NOTE]
-> * Azure Container Instances (ACI) が適しているのは、サイズが 1 GB 未満の小さいモデルのみです。 
-> * より大きいモデルの開発テストには、単一ノードの Azure Kubernetes Service (AKS) クラスターを使用することをお勧めします。
+> * コンテナー インスタンスが適しているのは、サイズが 1 GB 未満の小さいモデルのみです。
+> * より大きいモデルの開発およびテストには、単一ノードの AKS クラスターを使用します。

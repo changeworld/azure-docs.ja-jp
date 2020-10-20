@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649830"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876296"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -66,12 +66,15 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 ### <a name="arm-templates"></a>ARM テンプレート
 
-管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)を確認する方法はいくつかあります。
+管理しようとしているプロパティが含まれる [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) を確認する方法はいくつかあります。
 
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 
 プロパティを見つける最も簡単な方法は、同じ種類の既存リソースを確認することです。 適用する設定を使用して既に構成されているリソースには、比較対象の値もあります。
 その特定のリソースについて、Azure portal の ( **[設定]** にある) **[テンプレートのエクスポート]** ページを確認します。
+
+> [!WARNING]
+> Azure portal によってエクスポートされた ARM テンプレートは、[deployIfNotExists](../concepts/effects.md#deployifnotexists) ポリシー定義の ARM テンプレートの `deployment` プロパティに直接接続できません。
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure portal にある既存リソースの Export テンプレート ページのスクリーンショット。" border="false":::
 

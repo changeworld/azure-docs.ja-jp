@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549806"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856413"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Elevate の統合
 
@@ -144,11 +144,11 @@ LinkedIn Elevate で Azure AD SSO を構成してテストするには、次の�
 
 1. **[Account Center (アカウント センター)]** で、 **[Settings (設定)]** の下の **[Global Settings (グローバル設定)]** をクリックします。 また、ドロップダウン リストから **[Elevate - Elevate AAD Test (Elevate - Elevate AAD テスト)]** を選択します。
 
-    ![Configure single sign-on](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![[Elevate A A D Test]\(Elevate A A D テスト\) を選択できる [Global Settings]\(グローバル設定\) を示すスクリーンショット。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックして、次の手順を実行します。
 
-    ![Configure single sign-on](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![説明されている値を入力できる [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. **[Entity ID]\(エンティティ ID\)** をコピーして、Azure portal の **[基本的な SAML 構成]** にある **[識別子]** ボックスに貼り付けます。
 
@@ -156,11 +156,11 @@ LinkedIn Elevate で Azure AD SSO を構成してテストするには、次の�
 
 1. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 [Upload XML file]\(XML ファイルのアップロード\) オプションをクリックして、Azure portal からダウンロードした XML ファイルをアップロードします。
 
-    ![Configure single sign-on](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![X M L ファイルをアップロードできる [Configure the LinkedIn service provider S S O settings]\(LinkedIn サービス プロバイダーの S S O 設定の構成\) を示すスクリーンショット。](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[未接続]** から **[接続済み]** に変更されます
 
-    ![Configure single sign-on](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![[Automatically assign licenses]\(ライセンスを自動的に割り当てる\) を選択できる [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>LinkedIn Elevate のテスト ユーザーの作成
 

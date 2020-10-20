@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c988168f5d56fd7dcf8142a9f1e68af2defdcfc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e8f542f8a734f5bd6592ebc743b30676dd61f07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552970"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と InVision の統合
 
@@ -133,15 +133,15 @@ InVision で Azure AD SSO を構成してテストするには、次の構成要
 
 1. **[Team]\(チーム\)** をクリックし、 **[Settings]\(設定\)** を選択します。
 
-    ![InVision の構成](./media/invision-tutorial/config1.png)
+    ![[Settings]\(設定\) が選択されている [Team]\(チーム\) タブを示すスクリーンショット。](./media/invision-tutorial/config1.png)
 
 1. **[Single sign-on]\(シングル サインオン\)** までスクロールして **[Change]\(変更\)** をクリックします。
 
-    ![InVision の構成](./media/invision-tutorial/config3.png)
+    ![[Single sign-on]\(シングル サインオン\) の [Change]\(変更\) ボタンを示すスクリーンショット。](./media/invision-tutorial/config3.png)
 
 1. **[Single sign-on]\(シングル サインオン\)** ページで、以下の手順を実行します。
 
-    ![InVision の構成](./media/invision-tutorial/config4.png)
+    ![この手順の値を入力する [Single sign-on]\(シングル サインオン\) ページを示すスクリーンショット。](./media/invision-tutorial/config4.png)
 
     a. **[Require SSO for every member of < account name >]\(<アカウント名> のすべてのメンバーに対して SSO を要求する\)** を**オン**に変更します。
 
@@ -169,19 +169,19 @@ InVision で Azure AD SSO を構成してテストするには、次の構成要
 
 1. **[Team]\(チーム\)** をクリックし、 **[People]\(ユーザー\)** を選択します。
 
-    ![InVision の構成](./media/invision-tutorial/config2.png)
+    ![[People]\(ユーザー\) が選択されている [Team]\(チーム\) タブを示すスクリーンショット。](./media/invision-tutorial/config2.png)
 
 1. **+ アイコン**をクリックして、新しいユーザーを追加します。
 
-    ![InVision の構成](./media/invision-tutorial/user1.png)
+    ![ユーザーを追加する [+] アイコンを示すスクリーンショット。](./media/invision-tutorial/user1.png)
 
 1. ユーザーのメール アドレスを入力し、 **[Next]\(次へ\)** をクリックします。
 
-    ![InVision の構成](./media/invision-tutorial/user2.png)
+    ![アドレスを入力できる [Invite to]\(招待先\) ダイアログ ボックスを示すスクリーンショット。](./media/invision-tutorial/user2.png)
 
 1. メール アドレスを確認し、 **[Invite]\(招待\)** をクリックします。
 
-    ![InVision の構成](./media/invision-tutorial/user3.png)
+    ![処理する招待を選択できる [Invite]\(招待\) ダイアログを示すスクリーンショット。](./media/invision-tutorial/user3.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 

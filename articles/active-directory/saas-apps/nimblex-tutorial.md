@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554379"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>チュートリアル: Azure Active Directory と Nimblex の統合
 
@@ -132,19 +132,19 @@ Nimblex で Azure AD シングル サインオンを構成するには、次の�
 
 2. ページの右上の**設定**ロゴをクリックします。
 
-    ![Nimblex 設定](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![スクリーンショットは、設定アイコンを示しています。](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. **コントロール パネル** ページの **[セキュリティ]** の下で、 **[シングル サインオン]** をクリックします。
 
-    ![Nimblex 設定](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![スクリーンショットは、[Security]\(セキュリティ\) メニューの [Single Sign-On]\(シングル サインオン\) が選択されていることを示しています。](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. **[シングル サインオンの管理]** ページで、インスタンス名を選択して **[編集]** をクリックします。
 
-    ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![スクリーンショットは、[Single Sign-On]\(シングル サインオン\) を示しています。ここでは、[Edit]\(編集\) を選択できます。](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. **[SSO プロバイダーの編集]** ページで、次の手順を行います。
 
-    ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![スクリーンショットは、説明した値を入力できる [Edit SSO Provider]\(SSO プロバイダーの編集\) を示しています。](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. **[説明]** テキストボックスに、インスタンス名を入力します。
 

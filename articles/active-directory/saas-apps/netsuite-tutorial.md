@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554517"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940788"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -96,7 +96,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
     * **<`Instance ID`>** の値は、このチュートリアルの手順 8. で後述する [Netsuite Configuration]\(Netsuite の構成\) セクションで取得します。 厳密なドメイン (このケースでは system.na0.netsuite.com など) が見つかります。
 
-        ![Configure single sign-on](./media/NetSuite-tutorial/domain-value.png)
+        ![[SAML 設定] ページを示すスクリーンショット。ここでは、ドメインを取得できます。](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > 上記の URL の値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
@@ -164,31 +164,31 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 2. 上部のナビゲーション バーで、 **[Setup]\(セットアップ\)** を選択し、 **[Company]\(会社\)**  >  **[Enable Features]\(機能の有効化\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![[会社] で選択した [機能を有効にする] を示すスクリーンショット。](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. ページの中央にあるツール バーで、 **[SuiteCloud]** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![[SuiteCloud] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. **[Manage Authentication]\(認証の管理\)** で、 **[SAML Single Sign-on]\(SAML シングル サインオン\)** チェック ボックスをオンにして、NetSuite での SAML シングル サインオン オプションを有効にします。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![[認証を管理する] を示すスクリーンショット。ここでは、[SAML シングル サインオン] を選択できます。](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. 上部のナビゲーション バーで、 **[Setup]\(セットアップ\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
+    ![NETSUITE ナビゲーション バーで [セットアップ] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-setup.png)
 
 6. **[Setup Tasks]\(セットアップ タスク\)** 一覧で、 **[Integration]\(統合\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-integration.png)
+    ![[セットアップ タスク] で [統合] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-integration.png)
 
 7. **[Manage Authentication]\(認証の管理\)** で、 **[SAML Single Sign-on]\(SAML シングル サインオン\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-saml.png)
+    ![[セットアップ タスク] の [統合] 項目で [SAML シングル サインオン] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-saml.png)
 
 8. **[SAML Setup]\(SAML セットアップ\)** ウィンドウの **[NetSuite Configuration]\(NetSuite の構成\)** で、以下を実行します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![[SAML 設定] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. **[Primary Authentication Method]\(プライマリ認証方法\)** チェック ボックスをオンにします。
 
@@ -198,9 +198,9 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 9. NetSuite の上部のナビゲーション バーで、 **[Setup]\(セットアップ\)** を選択し、 **[Company]\(会社\)**  >  **[Company Information]\(会社情報\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-com.png)
+    ![[会社] で [会社情報] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-com.png)
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-account-id.png)
+    ![説明されている値を入力できるウィンドウを示すスクリーンショット。](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. **[Company Information]\(会社情報\)** ウィンドウで、右側の列の **[Account ID]\(アカウント ID\)** の値をコピーします。
 
@@ -210,23 +210,23 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
     a. 上部のナビゲーション バーで、 **[Setup]\(セットアップ\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
+    ![NETSUITE ナビゲーション バーで [セットアップ] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-setup.png)
 
     b. 左側のウィンドウで、 **[Users/Roles]\(ユーザーとロール\)** を選択し、 **[Manage Roles]\(ロールの管理\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![[ロールの管理] ウィンドウを示すスクリーンショット。ここでは、[新しいロール] を選択できます。](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. **[New Role]\(新しいロール\)** を選択します。
 
     d. 新しいロールの**名前**を入力します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-new-role.png)
+    ![[セットアップ マネージャー] を示すスクリーンショット。ここでは、ロールの名前を入力できます。](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. **[保存]** を選択します。
 
     f. 上部のナビゲーション バーで、 **[Permissions]\(アクセス許可\)** を選択します。 次に、 **[Setup]\(セットアップ\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-sso.png)
+    ![[セットアップ] タブを示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/NetSuite-tutorial/ns-sso.png)
 
     g. **[SAML Single Sign-on]\(SAML シングル サインオン\)** を選択し、 **[Add]\(追加\)** を選択します。
 
@@ -234,19 +234,19 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
     i. 上部のナビゲーション バーで、 **[Setup]\(セットアップ\)** を選択し、 **[Setup Manager]\(セットアップ マネージャー\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
+    ![NETSUITE ナビゲーション バーで [セットアップ] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-setup.png)
 
     j. 左側のウィンドウで、 **[Users/Roles]\(ユーザーとロール\)** を選択し、 **[Manage Users]\(ユーザーの管理\)** を選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![[ユーザーの管理] ウィンドウを示すスクリーンショット。ここでは、[Suite Demo Team] を選択できます。](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. テスト ユーザーを選択します。 **[Edit]\(編集\)** を選択して、 **[Access]\(アクセス\)** タブを選択します。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![[ユーザーの管理] ウィンドウを示すスクリーンショット。ここでは、[編集] を選択できます。](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. **[Roles]\(ロール\)** ウィンドウで、作成した適切なロールを割り当てます。
 
-    ![Configure single sign-on](./media/NetSuite-tutorial/ns-add-role.png)
+    ![[従業員] で [管理者] が選択されていることを示すスクリーンショット。](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. **[保存]** を選択します。
 

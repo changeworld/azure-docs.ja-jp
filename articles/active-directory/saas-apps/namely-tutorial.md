@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552477"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>チュートリアル: Azure Active Directory と Namely の統合
 
@@ -128,19 +128,19 @@ Namely で Azure AD シングル サインオンを構成するには、次の�
 
 2. 上部のツール バーの **[Company]** をクリックします。
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![スクリーンショットでは、[Company] が選択されています。](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. **[設定]** タブをクリックします。
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![スクリーンショットは、[Company] の [Settings] タブが選択されていることを示しています。](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. **[SAML]** をクリックします。
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![スクリーンショットでは、[SAML] が選択されています。](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. **[SAML Settings]** ページで、次の手順を実行します。
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_09.png)
+    ![[SAML 設定] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. **[Enable SAML]** をクリックします。 
 
@@ -211,15 +211,15 @@ Namely で Azure AD シングル サインオンを構成するには、次の�
 
 2. 上部のツールバーの **[People]** をクリックします。
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![スクリーンショットでは、[People] の値が選択されています。](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. **[ディレクトリ]** タブをクリックします。
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![スクリーンショットは、[People] の [Directory] タブが選択されていることを示しています。](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. **[Add New Person]** をクリックします。
 
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_12.png)
+    ![スクリーンショットは、[Add New Person] オプションを示しています。](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. **[Add New Person]** ダイアログで、次の手順を実行します。
 
