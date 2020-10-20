@@ -18,7 +18,7 @@
       items:
         - name: Visual Studio Code
           href: ./functions-create-first-function-vs-code.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
           href: functions-create-first-azure-function-azure-cli.md
@@ -29,7 +29,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -141,6 +141,9 @@
           displayName: 'secure, ssl'
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: 監視
+      href: functions-monitoring.md
+      displayName: 'App Insights, Application Insights, logs, logging'
     - name: 診断
       href: functions-diagnostics.md
     - name: 従量課金プランのコスト
@@ -282,11 +285,18 @@
           href: functions-geo-disaster-recovery.md
     - name: モニター
       items:
-        - name: Functions の監視
-          href: functions-monitoring.md
+        - name: 監視の構成
+          href: configure-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
-        - name: ログの分析
+        - name: テレメトリ データを分析する
+          href: analyze-telemetry-data.md
+          displayName: 'App Insights, Application Insights, Kusto'
+        - name: ストリーミング ログ
+          href: streaming-logs.md
+          displayName: monitoring
+        - name: 診断ログ
           href: functions-monitor-log-analytics.md
+          displayName: 'Azure Monitor, Kusto, Log Analytics, metrics'
     - name: セキュリティで保護
       items:
         - name: SSL 証明書の追加

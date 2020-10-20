@@ -31,6 +31,8 @@
       href: tutorial-private-endpoint-storage-portal.md
     - name: Cosmos DB アカウントに接続する
       href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: Web アプリに接続する
+      href: tutorial-private-endpoint-webapp-portal.md
 - name: 概念
   items:
     - name: プライベート エンドポイント

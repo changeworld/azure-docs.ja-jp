@@ -193,7 +193,7 @@
       items:
         - name: デバイス シミュレーター サービス
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Azure Digital Twins サンプル
+        - name: Azure Digital Twins のエンドツーエンド サンプル
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins エクスプローラー (サンプル)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
@@ -201,10 +201,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DPS と IoT Hub の統合サンプル
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Azure Digital Twins の Logic Apps コネクタ用カスタム Swagger
-          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: SignalR 統合のサンプル
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: Azure Digital Twins の Logic Apps コネクタ用カスタム Swagger
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure ツール
       items:
         - name: Azure Cloud Shell
