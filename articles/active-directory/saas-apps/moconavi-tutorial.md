@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1f7ff20dbdd0dac5b56d0f746733b14dfe44803e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554665"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル: Azure Active Directory と moconavi の統合
 
@@ -191,15 +191,15 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
 3. **[Connect setting]\(接続設定\)** をクリックします。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing1.png)
+    ![moconavi を示すスクリーンショット。[接続設定] ボタンが表示されています。](./media/moconavi-tutorial/testing1.png)
 
 4. **[Connect to URL]\(URL への接続\)** ボックスに「`https://mcs-admin.moconavi.biz/gateway`」と入力し、**[Done]\(完了\)** をクリックします。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing2.png)
+    ![スクリーンショットは、[URL への接続] ボックスと [完了] ボタンを示すスクリーンショット。](./media/moconavi-tutorial/testing2.png)
 
 5. 次のスクリーンショットで、次の手順を実行します。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing3.png)
+    ![moconavi ページを示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/moconavi-tutorial/testing3.png)
 
     a. **[Input Authentication Key]\(認証キーを入力\)**: **[Input Authentication Key]\(認証キーを入力\)** ボックスに「`azureAD`」と入力します。
 
@@ -209,11 +209,11 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
 6. **[Password]\(パスワード\)** ボックスに Azure AD のパスワードを入力し、 **[Login]\(ログイン\)** をクリックします。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing4.png)
+    ![Azure AD パスワードを入力する場所を示すスクリーンショット。](./media/moconavi-tutorial/testing4.png)
 
 7. メニューが表示されたら、Azure AD 認証は成功です。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing5.png)
+    ![moconavi の [電話] アイコンを示すスクリーンショット。](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 

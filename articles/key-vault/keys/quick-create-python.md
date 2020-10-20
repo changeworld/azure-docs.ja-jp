@@ -8,58 +8,95 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 44942067756f82c224decc218de17bf7dbc69734
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2eeb68ca5b0b6be0970a1adb071a7662399bc879
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89482133"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042560"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>クイック スタート:Python 用 Azure Key Vault キー クライアント ライブラリ
 
 Python 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Key Vault を使用して暗号キーを格納すると、そのようなキーをコードに格納する必要がなくなり、アプリのセキュリティが向上します。
 
-[API のリファレンスのドキュメント](/python/api/overview/azure/keyvault-keys-readme?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-keyvault-keys/)
+[API のリファレンスのドキュメント](/python/api/overview/azure/keyvault-keys-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-keyvault-keys/)
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Python 2.7 以降または 3.5.3 以降](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Azure CLI](/cli/azure/install-azure-cli)
+
+このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
 ## <a name="set-up-your-local-environment"></a>ローカル環境を設定する
 
-[!INCLUDE [Set up your local environment](../../../includes/key-vault-python-qs-setup.md)]
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](https://docs.microsoft.com/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
-7. Key Vault キー ライブラリをインストールします。
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+1. `login` コマンドを実行します。
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
+
+    それ以外の場合は、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
+
+2. ブラウザーでアカウントの資格情報を使用してサインインします。
+
+### <a name="install-the-packages"></a>パッケージのインストール
+
+1. ターミナルまたはコマンド プロンプトで、適切なプロジェクト フォルダーを作成したら、「[Python 仮想環境を使用する](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments)」で説明されているように、Python 仮想環境を作成し、アクティブ化します。
+
+1. Azure Active Directory ID ライブラリをインストールします。
+
+    ```terminal
+    pip install azure.identity
+    ```
+
+
+1. Key Vault キー クライアント ライブラリをインストールします。
 
     ```terminal
     pip install azure-keyvault-keys
     ```
 
-## <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
+### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-## <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
+### <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
-次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、キーに対する delete、get、list、および create 操作のサービス プリンシパルを承認します。 
+自分のユーザー アカウントにシークレットのアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します。
 
-# <a name="cmd"></a>[cmd](#tab/cmd)
-
-```azurecli
-az keyvault set-policy --name %KEY_VAULT_NAME% --spn %AZURE_CLIENT_ID% --resource-group KeyVault-PythonQS-rg --key-permissions delete get list create
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
 ```
 
-# <a name="bash"></a>[bash](#tab/bash)
+#### <a name="set-environment-variables"></a>環境変数の設定
 
-```azurecli
-az keyvault set-policy --name $KEY_VAULT_NAME --spn $AZURE_CLIENT_ID --resource-group KeyVault-PythonQS-rg --key-permissions delete get list create
+このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
+
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
----
-
-このコマンドは、前の手順で作成した `KEY_VAULT_NAME` および `AZURE_CLIENT_ID` 環境変数に依存しています。
-
-詳細については、[アクセス ポリシーの割り当て - CLI](../general/assign-access-policy-cli.md) に関するページを参照してください。
+macOS または Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="create-the-sample-code"></a>サンプル コードを作成する
 
-Python 用 Azure Key Vault クライアント ライブラリを使用すると、暗号化キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルに、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。
+暗号化キーは、Python 用 Azure Key Vault キー クライアント ライブラリを使用して管理できます。 次のコード サンプルは、クライアントの作成、キーの設定、キーの取得、キーの削除を行う方法を示しています。
 
 このコードを含めた *kv_keys.py* という名前のファイルを作成します。
 
@@ -103,14 +140,17 @@ print(" done.")
 python kv_keys.py
 ```
 
-- アクセス許可エラーが発生した場合は、[`az keyvault set-policy` コマンド](#give-the-service-principal-access-to-your-key-vault)を実行したことを確認してください。
+- アクセス許可エラーが発生した場合は、[`az keyvault set-policy` コマンド](#grant-access-to-your-key-vault)を実行したことを確認してください。
 - 同じキー名を使用してコードを再実行すると、"(Conflict) Key <name> is currently in a deleted but recoverable state ((競合) キー <name> は現在削除されているが、回復可能な状態です)" というエラーが生成されることがあります。 別のキー名を使用してください。
 
 ## <a name="code-details"></a>コードの詳細
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-前述のコードでは、[`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python) オブジェクトにより、サービス プリンシパル用に作成した環境変数が使用されます。 この資格情報は、[`KeyClient`](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?view=azure-python) など、Azure ライブラリからクライアント オブジェクトを作成するたびに、そのクライアントを使用して操作するリソースの URI と共に指定します。
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](https://docs.microsoft.com/python/api/overview/azure/identity-readme)に関するセクションを参照してください。 
+
 
 ```python
 credential = DefaultAzureCredential()
@@ -119,33 +159,31 @@ client = KeyClient(vault_url=KVUri, credential=credential)
 
 ## <a name="save-a-key"></a>キーの保存
 
-キー コンテナーのクライアント オブジェクトを取得したら、[create_rsa_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?view=azure-python#create-rsa-key-name----kwargs-) メソッドを使用してキーを格納することができます。 
+キー コンテナーのクライアント オブジェクトを取得したら、[create_rsa_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-rsa-key-name----kwargs-) メソッドを使用してキーを格納することができます。 
 
 ```python
 rsa_key = client.create_rsa_key(keyName, size=2048)
 ```
 
-[create_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?view=azure-python#create-key-name--key-type----kwargs-) または [create_ec_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?view=azure-python#create-ec-key-name----kwargs-) を使用することもできます。
+[create_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-key-name--key-type----kwargs-) または [create_ec_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-ec-key-name----kwargs-) を使用することもできます。
 
 `create` メソッドを呼び出すと、キー コンテナーに対する Azure REST API への呼び出しが生成されます。
 
 要求を処理するとき、クライアントに提供した資格情報オブジェクトを使用して、Azure により、呼び出し元の ID (サービス プリンシパル) が認証されます。
 
-また、呼び出し元が、要求されたアクションの実行を認可されているかどうかも確認されます。 この認可は、先ほど [`az keyvault set-policy` コマンド](#give-the-service-principal-access-to-your-key-vault)を使用して、サービス プリンシパルに付与しています。
-
 ## <a name="retrieve-a-key"></a>キーの取得
 
-Key Vault からキーを読み取るには、[get_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?view=azure-python#get-key-name--version-none----kwargs-) メソッドを使用します。
+Key Vault からキーを読み取るには、[get_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#get-key-name--version-none----kwargs-) メソッドを使用します。
 
 ```python
 retrieved_key = client.get_key(keyName)
  ```
 
-また、Azure CLI コマンド [az keyvault key show](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-show) を使用してキーが設定されていることを確認することもできます。
+また、Azure CLI コマンド [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) を使用してキーが設定されていることを確認することもできます。
 
 ### <a name="delete-a-key"></a>キーの削除
 
-キーを削除するには、[begin_delete_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?view=azure-python#begin-delete-key-name----kwargs-) メソッドを使用します。
+キーを削除するには、[begin_delete_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#begin-delete-key-name----kwargs-) メソッドを使用します。
 
 ```python
 poller = client.begin_delete_key(keyName)
@@ -154,7 +192,7 @@ deleted_key = poller.result()
 
 `begin_delete_key` メソッドは非同期であり、ポーラー オブジェクトを返します。 ポーラーの `result` メソッドを呼び出して、その完了を待機します。
 
-キーが削除されたことを確認するには、Azure CLI コマンド [az keyvault key show](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-show) を使用します。
+キーが削除されたことを確認するには、Azure CLI コマンド [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) を使用します。
 
 削除されると、キーは削除されたが回復可能な状態がしばらく維持されます。 コードをもう一度実行する場合は、別のキー名を使用します。
 
@@ -171,6 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault の概要](../general/overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
 - [Azure Key Vault のベスト プラクティス](../general/best-practices.md)
 - [Key Vault を使用した認証](../general/authentication.md)

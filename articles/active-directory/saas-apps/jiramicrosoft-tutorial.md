@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891608"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -156,11 +156,11 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
 2. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon1.png)
+    ![[Settings]\(設定\) メニューの [Add-ons]\(アドオン\) が選択されているスクリーンショット。](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=56506)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement/)の対象です。
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon12.png)
+    ![[Upload add-on]\(アドオンのアップロード\) リンクが強調表示されている [Manage add-ons]\(アドオンの管理\) を示すスクリーンショット。](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. JIRA のリバース プロキシ シナリオまたはロード バランサー シナリオを実行するには、次の手順を実行します。
 
@@ -171,26 +171,26 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![新しい行が追加された、エディター内の server ドット x m l ファイルを示すスクリーンショット。](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. プロキシ/ロード バランサーに従って、 **[システム設定]** の **[ベース URL]** を変更します。
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![ベース U R L を変更できる [Administration Settings]\(管理設定\) を示すスクリーンショット。](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. プラグインがインストールされると、 **[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon14.png)
+    ![[Configure]\(構成\) が選択されている [Azure A D SAML Single Sign-on for Jira] セクションを示すスクリーンショット。](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. 構成ページで次の手順を実行します。
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon54.png)
+    ![Microsoft Azure Active Directory single sign-on for Jira の構成ページを示すスクリーンショット。](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
 
     1. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、 **[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
 
-    1. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[JIRA SAML SSO by Microsoft Domain and URLs]\(JIRA SAML SSO by Microsoft のドメインと URL\)** セクションにある**識別子、応答 URL、サインオン URL** ボックスにそれぞれ貼り付けます。
+    1. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[JIRA SAML SSO by Microsoft Domain and URLs]/(JIRA SAML SSO by Microsoft のドメインと URL\)** セクションにある**識別子、応答 URL、サインオン URL** ボックスにそれぞれ貼り付けます。
 
     1. ユーザーのログイン画面に表示するボタン名を **[Login Button Name]\(ログイン ボタン名\)** に入力します。
     
@@ -230,19 +230,19 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
 2. 歯車をポイントし、 **[User management]\(ユーザー管理\)** をクリックします。
 
-    ![従業員の追加](./media/jiramicrosoft-tutorial/user1.png)
+    ![[Settings]\(設定\) メニューの [User management]\(ユーザー管理\) が選択されているスクリーンショット。](./media/jiramicrosoft-tutorial/user1.png)
 
 3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード**を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
-    ![従業員の追加](./media/jiramicrosoft-tutorial/user2.png)
+    ![資格情報を入力する [Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。](./media/jiramicrosoft-tutorial/user2.png)
 
 4. **[User management]\(ユーザー管理\)** タブ セクションで、 **[create user]\(ユーザーの作成\)** をクリックします。
 
-    ![従業員の追加](./media/jiramicrosoft-tutorial/user3.png) 
+    ![ユーザーを作成する [User management]\(ユーザー管理\) タブを示すスクリーンショット。](./media/jiramicrosoft-tutorial/user3.png) 
 
 5. **[Create new user]\(新しいユーザーの作成\)** ダイアログ ページで、以下の手順を実行します。
 
-    ![従業員の追加](./media/jiramicrosoft-tutorial/user4.png) 
+    ![この手順の情報を入力できる [Create new user]\(新しいユーザーの作成\) ダイアログ ボックスを示すスクリーンショット。](./media/jiramicrosoft-tutorial/user4.png) 
 
     a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (B.simon@contoso.com など) を入力します。
 

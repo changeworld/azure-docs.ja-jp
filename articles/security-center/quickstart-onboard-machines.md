@@ -3,31 +3,34 @@ title: Azure 以外のマシンを Azure Security Center に接続する
 description: Azure 以外のマシンを Azure Security Center に接続する方法について説明します
 author: memildin
 ms.author: memildin
-ms.date: 9/30/2020
+ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3cdff2b844aa68de7f07faf69710aeabb5513093
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576067"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993602"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
-Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 
+Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、最初にそれらを Azure に接続する必要があります。 
 
-Azure 以外のコンピューターを追加は、次のいずれかの方法で追加できます。
+Azure 以外のコンピューターは、次のいずれかの方法で接続できます。
 
 - Azure Arc の使用 (**推奨**)
 - Azure portal の Security Center のページから ( **[作業の開始]** と **[インベントリ]** )
 
-以下で、これらのそれぞれについて説明します。
+このページではそれぞれについて説明します。
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc を使用して Azure 以外のマシンを追加する
 
-Azure 以外のマシンを Azure Security Center に追加する方法として推奨されるのは、Azure Arc を使用することです。
+Azure 以外のマシンを Azure Security Center に追加する方法として推奨されるのが Azure Arc です。
 
 Azure Arc が有効になっているマシンは Azure リソースになり、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。 
 
@@ -43,7 +46,11 @@ Azure Arc が有効になっているマシンは Azure リソースになり、
 > [!TIP]
 > AWS マシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Security Center のポータル ページから Azure 以外のマシンを追加する
+::: zone-end
+
+::: zone pivot="azure-portal"
+
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Azure portal から Azure 以外のコンピューターを追加する
 
 1. Security Center メニューから、 **[作業の開始]** ページを開きます。
 1. **[作業の開始]** タブを選択します。
@@ -114,6 +121,7 @@ Windows マシンを追加するには、 **[エージェント管理]** ペー�
 
 エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)に関するページをご覧ください。
 
+::: zone-end
 
 ## <a name="verifying"></a>確認中
 おめでとうございます。 これで Azure と Azure 以外のマシンを 1 か所で確認できるようになりました。 [資産インベントリ](asset-inventory.md) ページを開いて、関連するリソースの種類にフィルターを適用します。 以下のアイコンで種類が区別されます。

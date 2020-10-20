@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: f9ba2decf051bc21f91058e67fea8677b24714a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0f87bc13a75355306f7d2d15b22ff9cdfaa53794
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322922"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858224"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート:Face REST API と Node.js を使用して画像から顔を検出する
 
@@ -46,64 +46,11 @@ npm install axios --save
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-```javascript
-'use strict';
-
-const axios = require('axios').default;
-
-// Add a valid subscription key and endpoint to your environment variables.
-let subscriptionKey = process.env['FACE_SUBSCRIPTION_KEY']
-let endpoint = process.env['FACE_ENDPOINT'] + '/face/v1.0/detect'
-
-// Optionally, replace with your own image URL (for example a .jpg or .png URL).
-let imageUrl = 'https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg'
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/Face/rest/detect.js" id="environment":::
 
 さらに、Face API を呼び出して顔の属性データを入力画像から取得する次のコードを追加します。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。 この文字列は、実際の用途に合わせて変更してください。
 
-
-```javascript
-// Send a POST request
-axios({
-    method: 'post',
-    url: endpoint,
-    params : {
-        returnFaceId: true,
-        returnFaceLandmarks: false,
-        returnFaceAttributes: 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
-    },
-    data: {
-        url: imageUrl,
-    },
-    headers: { 'Ocp-Apim-Subscription-Key': subscriptionKey }
-}).then(function (response) {
-    console.log('Status text: ' + response.status)
-    console.log('Status text: ' + response.statusText)
-    console.log()
-    //console.log(response.data)
-    response.data.forEach((face) => {
-      console.log('Face ID: ' + face.faceId)
-      console.log('Face rectangle: ' + face.faceRectangle.top + ', ' + face.faceRectangle.left + ', ' + face.faceRectangle.width + ', ' + face.faceRectangle.height)
-      console.log('Smile: ' + face.faceAttributes.smile)
-      console.log('Head pose: ' + JSON.stringify(face.faceAttributes.headPose))
-      console.log('Gender: ' + face.faceAttributes.gender)
-      console.log('Age: ' + face.faceAttributes.age)
-      console.log('Facial hair: ' + JSON.stringify(face.faceAttributes.facialHair))
-      console.log('Glasses: ' + face.faceAttributes.glasses)
-      console.log('Smile: ' + face.faceAttributes.smile)
-      console.log('Emotion: ' + JSON.stringify(face.faceAttributes.emotion))
-      console.log('Blur: ' + JSON.stringify(face.faceAttributes.blur))
-      console.log('Exposure: ' + JSON.stringify(face.faceAttributes.exposure))
-      console.log('Noise: ' + JSON.stringify(face.faceAttributes.noise))
-      console.log('Makeup: ' + JSON.stringify(face.faceAttributes.makeup))
-      console.log('Accessories: ' + JSON.stringify(face.faceAttributes.accessories))
-      console.log('Hair: ' + JSON.stringify(face.faceAttributes.hair))
-      console.log()
-    });
-}).catch(function (error) {
-    console.log(error)
-});
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/Face/rest/detect.js" id="main":::
 
 ## <a name="save-and-run-the-script"></a>スクリプトを保存して実行する
 
@@ -113,7 +60,35 @@ axios({
 node facedetection.js
 ```
 
-`response.data` からの完全な JSON データを次に示します。 次に例を示します。
+実行に成功した場合、応答として顔データが、読みやすい JSON 形式で表示されます。 次に例を示します。
+
+```json
+[
+   {
+      "faceId": "f7eda569-4603-44b4-8add-cd73c6dec644",
+      "faceRectangle": {
+         "top": 131,
+         "left": 177,
+         "width": 162,
+         "height": 162
+      }
+   }
+]
+```
+
+## <a name="extract-face-attributes"></a>顔の属性を抽出する
+ 
+顔の属性を抽出するには、検出モデル 1 を使用し、`returnFaceAttributes` クエリ パラメーターを追加します。 次のようにしてパラメーターを編集します。
+
+```javascript
+    params : {
+        detectionModel: 'detection_01',
+        returnFaceAttributes: 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+        returnFaceId: true
+    },
+```
+
+これで、応答に顔の属性が追加されます。 次に例を示します。
 
 ```json
 [

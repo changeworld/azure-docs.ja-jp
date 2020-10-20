@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: afe6d89db81a372bf4b8f318e2439140fe434cd1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 5faed1b36ccb98057898eefde3991292dca1133a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802023"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075452"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -37,6 +37,7 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](security-center-remediate-recommendations.md#quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
 |**アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある**|Azure Security Center が、以下に示した仮想マシンのインターネット トラフィック通信方式を分析したところ、これらの仮想マシンに関連付けられた NSG の既存のルールによる制限が緩すぎて、潜在的な攻撃面が増えたことがわかりました。<br>これは通常、この IP アドレスがこのリソースと定期的に通信していない場合に発生します。 または、その IP アドレスが、Security Center の脅威インテリジェンス ソースによって、悪意があるというフラグが付けられています。<br>(関連ポリシー:アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある)|高|N|仮想マシン|
+|**すべてのインターネット トラフィックはデプロイされた Azure Firewall を介してルーティングする**|一部のサブネットが次世代のファイアウォールで保護されていないことを Azure Security Center で確認しました。 Azure Firewall またはサポートされている次世代のファイアウォールを使用してアクセスを制限することにより、潜在的な脅威からサブネットを保護してください。<br>(関連ポリシー: [プレビュー] すべてのインターネット トラフィックはデプロイされた Azure Firewall を介してルーティングする)|高|N|Subnet|
 |**すべてのネットワーク ポートは、VM に関連付けられた NSG で制限する必要があります**|既存の許可ルールのアクセスを制限することで、インターネットに接続する VM のネットワーク セキュリティ グループを強化します。<br>この推奨事項は、*すべて*のリソースに対して任意のポートが開かれたときにトリガーされます (ポート 22、3389、5985、5986、80、および1443 を除く)。<br>(関連ポリシー:インターネットに接続するエンドポイント経由のアクセスを制限する必要がある)|高|N|仮想マシン|
 |**DDoS Protection Standard を有効にする必要がある**|DDoS Protection Standard を有効にすることで、パブリック IP を使用するアプリケーションが含まれる仮想ネットワークを保護します。 DDoS 保護は、ネットワークに対する帯域幅消費型攻撃およびプロトコル攻撃の軽減を有効にします。<br>(関連ポリシー:DDoS Protection Standard を有効にする必要がある)|高|N|仮想ネットワーク|
 |**Function App には HTTPS 経由でのみアクセスできるようにする**|関数アプリに対して "HTTPS のみ" のアクセスを有効にします。 HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。<br>(関連ポリシー:Function App には HTTPS 経由でのみアクセスできるようにする)|Medium|**Y**|関数アプリ|
@@ -159,8 +160,8 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 |**ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある**|ストレージ アカウントのファイアウォール設定で無制限のネットワーク アクセスを監査します。 代わりに、許可されているネットワークからのアプリケーションのみがストレージ アカウントにアクセスできるように、ネットワーク ルールを構成します。 インターネットまたはオンプレミスの特定のクライアントからの接続を許可するには、特定の Azure 仮想ネットワークからのトラフィックまたはパブリック インターネット IP アドレス範囲に、アクセス権を付与できます。<br>(関連ポリシー:ストレージ アカウントに対する制限のないネットワーク アクセスの監査)|低|N|ストレージ アカウント|
 |**Azure Defender for Azure SQL Database servers を有効にする必要がある**|Azure Defender for SQL は、高度な SQL セキュリティ機能を備えた統合パッケージです。 データベースの潜在的な脆弱性の検出と軽減、データベースへの脅威を示す可能性がある異常なアクティビティの検出、機密データの検出と分類を行う機能が含まれています。 <br>重要:この推奨事項の修復によって、Azure SQL Database サーバーを保護するための料金が発生します。 このサブスクリプションに Azure SQL Database サーバーがない場合、料金は発生しません。 今後このサブスクリプションに Azure SQL Database サーバーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure SQL Database サーバーで Advanced Data Security を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2))|高|**Y**|サブスクリプション|
 |**Azure Defender for SQL servers on machines を有効にする必要がある**|Azure Defender for SQL は、高度な SQL セキュリティ機能を備えた統合パッケージです。 データベースの潜在的な脆弱性の検出と軽減、データベースへの脅威を示す可能性がある異常なアクティビティの検出、機密データの検出と分類を行う機能が含まれています。 <br>重要:この推奨事項の修復によって、マシン上の SQL サーバーを保護するための料金が発生します。 このサブスクリプションにマシン上の SQL サーバーがない場合、料金は発生しません。 今後このサブスクリプションにマシン上の SQL サーバーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[マシン上の SQL サーバーで Advanced Data Security を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b))|高|**Y**|サブスクリプション|
-|**Advanced Data Security を、マネージド インスタンス上で有効にする必要があります**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、マネージド インスタンスあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Managed Instance で Advanced Data Security を有効にする必要がある)|高|**Y**|SQL|
-|**SQL Server で Advanced Data Security を有効にする必要がある**|Advanced Data Security (ADS) は、高度な SQL セキュリティ機能を提供する統合パッケージです。 機密データを検出して分類し、潜在的なデータベースの脆弱性を軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 ADS には、SQL サーバーあたり 15 米ドルの料金がかかります。<br>(関連ポリシー:SQL Server で Advanced Data Security を有効にする必要があります)|高|**Y**|SQL|
+|**マネージド インスタンスで Azure Defender for SQL を有効にする必要があります**|Azure Defender for SQL は、高度な SQL セキュリティ機能を備えた統合パッケージです。 潜在的なデータベースの脆弱性を発見して軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 Azure Defender for SQL は、<a href='https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing'>価格ページ</a>の記載に基づいて課金されます。<br>(関連ポリシー:SQL Managed Instance で Advanced Data Security を有効にする必要がある)|高|**Y**|SQL|
+|**お使いの SQL サーバーで Azure Defender for SQL を有効にする必要があります**|Azure Defender for SQL は、高度な SQL セキュリティ機能を備えた統合パッケージです。 潜在的なデータベースの脆弱性を発見して軽減し、データベースに対する脅威となりうる異常なアクティビティを検出します。 Azure Defender for SQL は、<a href='https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing'>価格ページ</a>の記載に基づいて課金されます。<br>(関連ポリシー:SQL Server で Advanced Data Security を有効にする必要があります)|高|**Y**|SQL|
 |**SQL Database に対して Azure Active Directory 管理者をプロビジョニングする必要がある**|自分の SQL データベースに Azure AD 管理者をプロビジョニングして、Azure AD 認証を有効にします。 Azure AD 認証を使用して、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。<br>(関連ポリシー:SQL Server 向けの Azure Active Directory 管理者のプロビジョニングの監査)|高|N|SQL|
 |**SQL Database の監査を有効にする必要がある**|SQL Database の監査を有効にします。 <br>(関連ポリシー:サーバーの高度なデータ セキュリティ設定で SQL Database の監査を有効にする必要がある)|低|**Y**|SQL|
 |**Azure Defender for Storage を有効にする必要がある**|Azure Defender for Storage では、ストレージ アカウントにアクセスしたり、ストレージ アカウントを利用したりする試みに通常と異なるところがあり、有害な性質が疑われる場合に、そのような試みを検出できます。<br>重要:この推奨事項の修復によって、Azure Storage アカウントを保護するための料金が発生します。 このサブスクリプションに Azure Storage アカウントがない場合、料金は発生しません。 今後このサブスクリプションに Azure Storage アカウントを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br>(関連ポリシー:[Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa))|高|**Y**|サブスクリプション|

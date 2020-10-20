@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:シミュレートされたデバイス データを生成する - Azure IoT Edge での Machine Learning
-description: 後で機械学習モデルをトレーニングするために使用できるシミュレートされたテレメトリを生成する仮想デバイスを作成します。
+description: チュートリアル - 後で機械学習モデルをトレーニングするために使用できるシミュレートされたテレメトリを生成する仮想デバイスを作成します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76722380"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857080"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>チュートリアル:シミュレートされたデバイスのデータを生成する
 

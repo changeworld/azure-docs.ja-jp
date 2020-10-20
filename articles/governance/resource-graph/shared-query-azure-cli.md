@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:Azure CLI で共有クエリを作成する
 description: このクイックスタートでは、手順に従って Azure CLI の Resource Graph 拡張機能を有効にし、共有クエリを作成します。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667658"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057197"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Resource Graph 共有クエリを作成する
 
@@ -84,7 +84,7 @@ Azure CLI を Azure Resource Graph と連動させるには、拡張機能を追
    ```
 
 1. Azure CLI の [az graph query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) コマンド内で `{{shared-query-uri}}` 構文を利用し、共有クエリを実行します。
-   まず、上の `show` コマンドの結果から `id` フィールドをコピーします。 例の `shared-query-uri` テキストを `id` フィールドからの値で置換しますが、前後の `{{` 文字と `}}` 文字はそのままにします。
+   まず、前の `show` コマンドの結果から `id` フィールドをコピーします。 例の `shared-query-uri` テキストを `id` フィールドからの値で置換しますが、前後の `{{` 文字と `}}` 文字はそのままにします。
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query

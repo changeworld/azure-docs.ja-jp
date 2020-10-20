@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, 少量のコードのチャット ボット, マルチターン会話
-ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776784"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874426"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 
@@ -83,9 +83,9 @@ QnA Maker では、完全な開発ライフサイクルに統合するために�
 
 ほとんどの一般的なプログラミング言語向けのクイックスタートが提供されています。それぞれ基本的な設計パターンを学び、いずれも 10 分もかからずにコードを実行できるように作られています。 それぞれの機能のクイックスタートについては、次の各記事を参照してください。
 
-* [LUIS クライアント ライブラリを使ってみる](../quickstarts/quickstart-sdk.md)
-* [LUIS ポータルを使ってみる](../quickstarts/create-publish-knowledge-base.md)
-* [LUIS REST API を使ってみる](../quickstarts/quickstart-rest-curl.md)
+* [QnA Maker クライアント ライブラリの概要](../quickstarts/quickstart-sdk.md)
+* [QnA Maker ポータルの概要](../quickstarts/create-publish-knowledge-base.md)
+* [QnA Maker REST API の概要](../quickstarts/quickstart-rest-curl.md)
 
 
 ## <a name="next-steps"></a>次のステップ

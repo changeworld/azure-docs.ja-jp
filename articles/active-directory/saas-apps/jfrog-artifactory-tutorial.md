@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 826ce780fd9196d67adba5bb148a795d3fe4f0f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552604"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850355"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>チュートリアル:JFrog Artifactory と Azure Active Directory の統合
 
@@ -92,15 +92,15 @@ JFrog Artifactory に対する Azure AD SSO を構成してテストするには
 
 1. JFrog Artifactory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![編集コントロールが強調表示された [ユーザー属性] 画面のスクリーンショット。](common/edit-attribute.png)
 
 1. これに加え、JFrog Artifactory アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
     a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![[すべてのグループ] が選択されている [Group Claims]\(グループ要求\) セクションを示すスクリーンショット。](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 

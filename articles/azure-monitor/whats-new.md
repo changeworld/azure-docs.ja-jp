@@ -6,16 +6,83 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325659"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842667"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="general"></a>全般
+- [Azure Monitor についてよくあるご質問](faq.md) - OpenTelemetry に関するセクションを追加しました。
+
+### <a name="agents"></a>エージェント
+- [Azure Monitor エージェントの概要](platform/azure-monitor-agent-overview.md) - 新しいエージェントに切り替える際の決定要因を追加しました。
+- [Azure 監視エージェントの概要](platform/agents-overview.md) - Windows 10 のサポートを追加しました。
+
+### <a name="alerts"></a>警告
+- [Azure Resource Manager テンプレートでログ アラートを作成する](platform/alerts-log-create-templates.md) - 新しい記事。
+- [Azure のメトリック アラートのトラブルシューティング](platform/alerts-troubleshoot-metric.md) - メトリック アラート ルールの ARM テンプレートのエクスポートに関するセクションを追加しました。
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Monitor Application Insights の新しいワークスペースベースのリソースを作成する](app/create-workspace-resource.md) - プレビューの名称を削除しました。
+- [Azure Application Insights でのデータ保持と保存](app/data-retention-privacy.md) - Mac と Linux のデータ損失保護に対する新しいサポートについて詳細を追加しました。
+- [Application Insights のイベント カウンター](app/eventcounters.md) - 既定で収集されるカウンターに関する注意を追加しました。
+- [Application Insights のログベースのメトリックと事前に集計されたメトリック](app/pre-aggregated-metrics-log-metrics.md) - プレビューの名称を削除しました。
+- [Azure Monitor Application Insights のクラシック リソースをワークスペースベースのリソースに移行する](app/convert-classic-resource.md) - 新しい記事。
+- [Java アプリケーションを任意の環境で監視する - Azure Monitor Application Insights](app/java-in-process-agent.md) - 新しいプレビュー バージョンのエージェントに合わせて更新しました。
+- [Azure Application Insights を使用した ASP.NET の Web アプリ分析を設定する](app/asp-net.md) - 記事を改訂しました。
+- [Azure Application Insights におけるテレメトリ チャネル](app/telemetry-channels.md) - Mac と Linux のデータ損失保護に対する新しいサポートに関する詳細を追加しました。
+- [Azure Application Insights スナップショット デバッガーのトラブルシューティング](app/snapshot-debugger-troubleshoot.md) - スナップショット デバッガーのトラブルシューティングに SSL セクションを追加しました。
+- [Azure Monitor でアプリケーション変更分析を使用して Web アプリの問題を見つける](app/change-analysis.md) - 仮想マシンとアクティビティ ログを追加しました。
+
+
+### <a name="containers"></a>コンテナー
+- [Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターを構成する](insights/container-insights-enable-arc-enabled-clusters.md) - サービス プリンシパルを使用して監視を有効にする場合のガイダンスを追加しました。
+- [Azure Monitor for containers によるデプロイと HPA メトリック](insights/container-insights-deployment-hpa-metrics.md) - 新しい記事。
+
+### <a name="insights-and-solutions"></a>分析情報とソリューション
+- [Azure Monitor for Azure Cache for Redis](insights/redis-cache-insights-overview.md) - プレビューの名称を削除しました。
+- [Azure Monitor for Networks (プレビュー)](insights/network-insights-overview.md) - 接続とトラフィックのセクションを追加しました。
+- [IT Service Management Connector - Azure Monitor のセキュア エクスポート](platform/it-service-management-connector-secure-webhook-connections.md) - 新しい記事。
+- [Azure Monitor の IT Service Management Connector](platform/itsmc-connections.md) - Cherwell と Provance の ITSM 統合に関する注意を追加しました。
+- [Azure Monitor for Key Vault でキー コンテナーを監視する](insights/key-vault-insights-overview.md) - プレビューの名称を削除しました。
+
+### <a name="logs"></a>ログ
+- [Azure Monitor ログ クエリでの監査クエリ](log-query/query-audit.md) - 新しい記事。
+- [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - カスタマー ロックボックスを追加しました。
+- [Azure Monitor ログ専用クラスター](log-query/logs-dedicated-clusters.md) - 新しい記事。
+- [Azure Monitor ログのデプロイの設計](platform/design-logs-deployment.md) - スケールとインジェスト ボリューム レートの制限に関するセクションを更新しました。
+- [Azure Monitor Log Analytics のログ クエリのスコープ](log-query/scope.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
+- [Azure Monitor のログ](platform/data-platform-logs.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
+- [Azure Monitor ログ レコード内の標準列](platform/log-standard-columns.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
+- [Azure Monitor サービスの制限](service-limits.md) - ユーザー クエリの調整に関する制限を更新しました。
+- [Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用](platform/private-storage.md) - 記事を改訂しました。
+- [Azure Log Analytics におけるデータの表示と分析](log-query/logs-structure.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
+
+
+### <a name="platform-logs"></a>プラットフォーム ログ
+- [Azure アクティビティ ログのイベント スキーマ - Azure Monitor](platform/activity-log-schema.md) - 重大度レベルを追加しました。
+- [診断設定用の Resource Manager テンプレートのサンプル](samples/resource-manager-diagnostic-settings.md) - Azure ストレージ アカウントのサンプルを追加しました。
+
+### <a name="visualizations"></a>視覚化
+- [Azure Monitor ブックのグラフの視覚化](platform/workbooks-chart-visualizations.md) - 新しい記事。
+- [Azure Monitor ブックの複合棒グラフ レンダラー](platform/workbooks-composite-bar.md) - 新しい記事。
+- [Azure Monitor ブックのグラフの視覚化](platform/workbooks-graph-visualizations.md) - 新しい記事。
+- [Azure Monitor ブックのグリッドの視覚化](platform/workbooks-grid-visualizations.md) - 新しい記事。
+- [Azure Monitor ブックの蜂の巣の視覚化](platform/workbooks-honey-comb.md) - 新しい記事。
+- [Azure Monitor ブックのテキストの視覚化](platform/workbooks-text-visualizations.md) - 新しい記事。
+- [Azure Monitor ブックのタイルの視覚化](platform/workbooks-tile-visualizations.md) - 新しい記事。
+- [Azure Monitor ブックのツリーの視覚化](platform/workbooks-tree-visualizations.md) - 新しい記事。
+
+
+
 
 ## <a name="august-2020"></a>2020 年 8 月
 

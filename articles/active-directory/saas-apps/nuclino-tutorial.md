@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554296"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nuclino の統合
 
@@ -155,15 +155,15 @@ Nuclino での Azure AD SSO を構成してテストするには、次の構成�
 
 4. **アイコン**をクリックします。
 
-    ![Nuclino 構成](./media/nuclino-tutorial/configure1.png)
+    ![[Azure AD SSO] の横にある "メニュー" アイコンが選択されているスクリーンショット。](./media/nuclino-tutorial/configure1.png)
 
 5. **[Azure AD SSO]** をクリックし、ドロップダウンから **[Team settings]\(チームの設定\)** を選択します。
 
-    ![Nuclino 構成](./media/nuclino-tutorial/configure2.png)
+    ![[Team settings]\(チームの設定\) が選択されている [Azure AD SSO] ドロップダウンを示すスクリーンショット。](./media/nuclino-tutorial/configure2.png)
 
 6. 左側のナビゲーション ウィンドウから **[Authentication]\(認証\)** を選択します。
 
-    ![Nuclino 構成](./media/nuclino-tutorial/configure3.png)
+    ![[Authentication]\(認証\) が選択されているスクリーンショット。](./media/nuclino-tutorial/configure3.png)
 
 7. **[Authentication]\(認証\)** セクションで、次の手順に従います。
 

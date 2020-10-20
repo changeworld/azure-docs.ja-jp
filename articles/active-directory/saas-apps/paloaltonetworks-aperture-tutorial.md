@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: d7f0ca619c990d2a42c31df82ee9f90bd7ea230b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 8f2603ce055d18e1ad7e202e0c662e042a1d1d48
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801836"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - Aperture の統合
 
@@ -77,7 +77,7 @@ Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Palo Alto Networks - Aperture のドメインと URL] のシングル サインオン情報 IDP](common/idp-intiated.png)
+    ![[基本的な SAML 構成] のスクリーンショット。テキスト ボックスの [識別子] と [応答 URL] が強調表示され、[保存] アクションが選択されています。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata` の形式で URL を入力します。
 

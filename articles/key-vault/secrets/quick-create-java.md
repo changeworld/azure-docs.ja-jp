@@ -8,24 +8,16 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 6c29141a2e255588ffa581b84ffeb4ddd7fdb703
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87324711"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019632"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>クイック スタート:Java 用 Azure Key Vault クライアント ライブラリ
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault シークレット クライアント ライブラリ
 
-Java 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
-
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Java 用 Key Vault クライアント ライブラリは、次の目的で使用します。
-
-- キーとパスワードのセキュリティと制御を強化する。
-- 暗号化キーの作成とインポートを数分で実行する。
-- クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
-- TLS または SSL 証明書のタスクを簡略化および自動化する。
-- FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
+Java 用 Azure Key Vault シークレット クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
 その他のリソース:
 
@@ -37,13 +29,29 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) バージョン 8 以降
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
 - [Apache Maven](https://maven.apache.org)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) と [Apache Maven](https://maven.apache.org) を実行していることを前提としています。
+このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) と [Apache Maven](https://maven.apache.org) を実行していることを前提としています。
 
 ## <a name="setting-up"></a>設定
+
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](https://docs.microsoft.com/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
+
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+1. `login` コマンドを実行します。
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
+
+    それ以外の場合は、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
+
+2. ブラウザーでアカウントの資格情報を使用してサインインします。
 
 ### <a name="create-new-java-console-app"></a>新しい Java コンソール アプリを作成する
 
@@ -109,21 +117,35 @@ cd akv-java
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+#### <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+自分のユーザー アカウントにシークレットのアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します。
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+```
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+#### <a name="set-environment-variables"></a>環境変数の設定
 
-#### <a name="set-environmental-variables"></a>環境変数の設定
+このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
+```
+
+macOS または Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Java 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。
+シークレットは、Java 用 Azure Key Vault シークレット クライアント ライブラリを使用して管理できます。 クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を「[コード例](#code-examples)」セクションで紹介しています。
 
 コンソール アプリ全体は[以下](#sample-code)にあります。
 
@@ -143,7 +165,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-キー コンテナーに対する認証とキー コンテナー クライアントの作成は、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数によって異なります。 キー コンテナーの名前は、`https://<your-key-vault-name>.vault.azure.net` という形式で、キー コンテナーの URI に展開されます。
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](https://docs.microsoft.com/java/api/overview/azure/identity-readme)に関するセクションを参照してください。 
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -163,7 +187,7 @@ SecretClient secretClient = new SecretClientBuilder()
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-シークレットが設定されたことは、[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して確認できます。
+シークレットが設定されたことは、[az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) コマンドを使用して確認できます。
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -187,7 +211,7 @@ KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
 secretClient.beginDeleteSecret(secretName);
 ```
 
-[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して、シークレットがなくなったことを確認できます。
+[az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) コマンドを使用して、シークレットがなくなったことを確認できます。
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -272,4 +296,5 @@ public class App {
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)方法
 - [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する

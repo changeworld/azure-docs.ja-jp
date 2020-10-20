@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553977"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル: Azure Active Directory と PerformanceCentre の統合
 
@@ -128,19 +128,19 @@ PerformanceCentre で Azure AD シングル サインオンを構成するには
 
 2. 左側にあるタブで、 **[Configure]** をクリックします。
    
-    ![Azure AD Single Sign-On][10]
+    ![[PerformanceCenter] メニューのスクリーンショット。[Configure]\(構成\) が選択されています。][10]
 
 3. 左側にあるタブで、 **[Miscellaneous]** 、 **[Single Sign On]** の順にクリックします。
    
-    ![Azure AD Single Sign-On][11]
+    ![[Configure]\(構成\) タブのスクリーンショット。[Miscellaneous]\(その他\) メニューから [Single Sign On]\(シングル サインオン\) が選択されています。][11]
 
 4. **[Protocol]** で **[SAML]** を選択します。
    
-    ![Azure AD Single Sign-On][12]
+    ![[Single Sign On]\(シングル サインオン\) セクションのスクリーンショット。[Protocol]\(プロトコル\) メニューから [SAML] が選択されています。][12]
 
 5. ダウンロードしたメタデータ ファイルをメモ帳で開き、ファイルの内容をコピーして、 **[Identity Provider Metadata]** ボックスに貼り付け、 **[Save]** をクリックします。
    
-    ![Azure AD Single Sign-On][13]
+    ![ID プロバイダー メタデータのテキストボックスのスクリーンショット。][13]
 
 6. **[Entity Base URL]** と **[Entity ID URL]** の値が正しいことを確認します。
     
@@ -207,7 +207,7 @@ PerformanceCentre で Azure AD シングル サインオンを構成するには
 
 2. 左側のメニューで、 **[Interrelate]** 、 **[Create Participant]** の順にクリックします。
    
-    ![[Create User]][400]
+    ![[PerformanceCenter] 企業サイトの [Interrelate -Participants]\(相互関連 - 参加者\) ページのスクリーンショット。[Create Participant]\(参加者の作成\) ボタンが選択されています。][400]
 
 3. **[Interrelate - Create Participant]** ダイアログ ボックスで、次の手順を実行します。
    

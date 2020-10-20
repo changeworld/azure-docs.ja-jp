@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903689"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951793"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>チュートリアル:詳細なデプロイ フローのために Azure Stack Edge Pro でデータを変換する
 
@@ -58,7 +58,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 2. **[Edge コンピューティングの構成]** タイルで、 **[コンピューティングの構成]** を選択します。
 
-    ![コンピューティングの開始](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
+    ![コンピューティングの開始 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
 3. **[Edge コンピューティングの構成]** ブレードで、次を入力します。
 
@@ -68,11 +68,11 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
     |IoT Hub     | **[新規]** または **[既存]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Azure Stack Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
     |名前     |自分の IoT Hub リソースの名前を入力します。         |
 
-    ![コンピューティングの開始](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
+    ![コンピューティングの開始 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
 4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、 **[Edge コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、 **[コンピューティングの構成]** タイルの **[構成の表示]** を選択します。
     
-    ![コンピューティングの開始](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
+    ![コンピューティングの開始 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
     Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。
 
@@ -136,17 +136,17 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
     |トリガーの種類     | **[ファイル]** トリガーを選択します。 ファイル トリガーは、入力共有へのファイルの書き込みなど、ファイル イベントが発生するたびに起動します。 一方、スケジュール済みのトリガーは、お客様によって定義されたスケジュールに基づいて起動します。 この例では、ファイル トリガーが必要です。    |
     |Input share (入力共有)     | 入力共有を選択します。 この例では、Edge ローカル共有が入力共有です。 ここで使用されるモジュールによって、Edge ローカル共有から Edge 共有にファイルが移動され、そこでクラウドにアップロードされます。        |
 
-    ![トリガーの追加](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
+    ![トリガーを追加する 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
 3. トリガーが作成された後、通知を受け取ります。 トリガーの一覧が更新されて、新しく作成されたトリガーが表示されます。 作成したトリガーを選択します。
 
-    ![トリガーの追加](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
+    ![トリガーを追加する 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
 4. サンプルのルートをコピーして保存します。 このサンプルのルートを変更して後で IoT Hub で使います。
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
-    ![トリガーの追加](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
+    ![トリガーを追加する 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
@@ -213,7 +213,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
  
     4. 必要に応じて、Edge ランタイムの詳細設定を構成し、 **[次へ]** をクリックします。
 
-        ![カスタム モジュールを追加する](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
+        ![カスタム モジュールを追加する 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
 5. **[ルートの指定]** で、モジュール間のルートを設定します。  
    
@@ -229,11 +229,11 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 6. **[Review deployment]\(デプロイの確認\)** ですべての設定を確認してから **[送信]** を選択し、デプロイのためにモジュールを送信します。
 
-   ![[モジュールの設定] ページ](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![[モジュールの設定] ページ 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     このアクションにより、モジュールのデプロイが始まります。 デプロイが完了すると、モジュールの **[ランタイムの状態]** は **[実行中]** になります。
 
-    ![カスタム モジュールを追加する](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
+    ![カスタム モジュールを追加する 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 
 ## <a name="verify-data-transform-transfer"></a>データ変換を検証して転送する
 
@@ -247,15 +247,15 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
  
 1. データをローカル共有に追加します。
 
-   ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![データ変換を検証する 2](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     そのデータはクラウド共有に移動されます。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
+    ![データ変換を検証する 3](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
     データは次に、クラウド共有からストレージ アカウントにプッシュされます。 データを表示するには、ストレージ アカウントに移動してから、 **[Storage Explorer]** を選択します。 ストレージ アカウントにアップロードされたデータを見ることができます。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
+    ![データ変換を検証する 4](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
 検証プロセスが完了しました。
 

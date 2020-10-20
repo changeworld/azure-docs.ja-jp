@@ -5,19 +5,19 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 0ce995bddb89ce6aa1a550971fbcd92c6515d58e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264552"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813187"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
 このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](overview.md#app-service-on-linux) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上でローカル [Azure コマンドライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用して、Flask または Django のいずれかのフレームワークを使用したサンプルをデプロイします。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
 
 > [!TIP]
-> IDE を使用してアプリをデプロイする場合は、 **[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** に関する記事をご覧ください。
+> Visual Studio Code の使用を希望する場合は、 **[Visual Studio Code App Service のクイックスタート](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** に従ってください。
 
 ## <a name="set-up-your-initial-environment"></a>初期環境を設定する
 
@@ -134,25 +134,9 @@ cd python-docs-hello-django
     
 1. 開発サーバーを実行します。
 
-    # <a name="bash"></a>[Bash](#tab/bash)
-
-    ```bash
-    python3 manage.py runserver
+    ```terminal
+    python manage.py runserver
     ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-    ```powershell
-    py -3 manage.py runserver
-    ```
-
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-
-    ```cmd
-    py -3 manage.py runserver
-    ```
-
-    ---    
 
 1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
 

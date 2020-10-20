@@ -1,23 +1,23 @@
 ---
-title: 'Azure ExpressRoute: ピアリングの構成:CLI'
-description: この記事では、ExpressRoute 回線のプライベート、パブリック、および Microsoft ピアリングを作成し、プロビジョニングします。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
+title: チュートリアル:ExpressRoute 回線のピアリングの構成 - Azure CLI
+description: このチュートリアルでは、ExpressRoute 回線のプライベート、パブリック、および Microsoft ピアリングを作成し、プロビジョニングする方法を説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 04/24/2019
+ms.topic: tutorial
+ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: c20b0741f12ee2cab40d8f5b53c51ad537801bf2
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 292f50877fe40127e5aea95e395109bc76e1f75d
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393175"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940873"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線のピアリングの作成と変更
+# <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>チュートリアル:CLI を使用した ExpressRoute 回線のピアリングの作成と変更
 
-この記事では、CLI を使用して、Resource Manager デプロイ モデルで ExpressRoute 回線のルーティング構成/ピアリングを作成し、管理します。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
+このチュートリアルでは、CLI を使用して Resource Manager デプロイ モデルで ExpressRoute 回線のルーティング構成またはピアリングを作成および管理する方法について説明します。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
@@ -29,15 +29,20 @@ ms.locfileid: "89393175"
 > * [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 > 
 
-## <a name="configuration-prerequisites"></a>構成の前提条件
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> - 回線用に Microsoft ピアリングを構成、更新、削除する
+> - 回線用に Azure プライベート ピアリングを構成、更新、削除する
+
+## <a name="prerequisites"></a>前提条件
 
 * 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」をご覧ください。
-* 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md) ページを確認してください。
-* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](howto-circuit-cli.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 この記事のコマンドを実行するには、ExpressRoute 回線を、プロビジョニングおよび有効化されている状態にする必要があります。
+* 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)の各ページを確認してください。
+* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](howto-circuit-cli.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 この記事のコマンドを実行するには、ExpressRoute 回線がプロビジョニングされ、有効な状態になっている必要があります。
 
-次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
+次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供するマネージド レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
 
-ExpressRoute 回線ではプライベート ピアリングと Microsoft ピアリングを構成できます (新しい回線では Azure パブリック ピアリングは非推奨です)。 ピアリングは、任意の順序で構成できます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[ExpressRoute のルーティング ドメイン](expressroute-circuit-peerings.md)に関する記事をご覧ください。 パブリック ピアリングについては、[ExpressRoute のパブリック ピアリング](about-public-peering.md)に関するページを参照してください。
+ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピアリングを構成できます。 ピアリングは、任意の順序で構成できます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[ExpressRoute のルーティング ドメイン](expressroute-circuit-peerings.md)に関する記事をご覧ください。
 
 ## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft ピアリング
 
@@ -46,11 +51,11 @@ ExpressRoute 回線ではプライベート ピアリングと Microsoft ピア�
 > [!IMPORTANT]
 > 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 詳しくは、「[Configure a route filter for Microsoft peering](how-to-routefilter-powershell.md)」(Microsoft ピアリング用にルート フィルターを構成する) をご覧ください。
 > 
-> 
+
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft ピアリングを作成するには
 
-1. 最新バージョンの Azure CLI をインストールします。 最新バージョンの Azure コマンド ライン インターフェイス (CLI) を使用します。 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
+1. 最新バージョンの Azure CLI をインストールします。 最新バージョンの Azure コマンド ライン インターフェイス (CLI) を使用します。
 
    ```azurecli
    az login
@@ -61,9 +66,10 @@ ExpressRoute 回線ではプライベート ピアリングと Microsoft ピア�
    ```azurecli
    az account set --subscription "<subscription ID>"
    ```
-2. ExpressRoute 回線を作成します。 手順に従って、 [ExpressRoute 回線](howto-circuit-cli.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。 
 
-3. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
+1. ExpressRoute 回線を作成します。 手順に従って、 [ExpressRoute 回線](howto-circuit-cli.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。 
+
+1. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
 
    ```azurecli
    az network express-route list
@@ -102,12 +108,12 @@ ExpressRoute 回線ではプライベート ピアリングと Microsoft ピア�
 
 4. 回路の Microsoft ピアリングを構成する 続行する前に、次の情報を確認してください。
 
-   * プライマリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。
-   * セカンダリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。
+   * プライマリ リンク用の /30 サブネット。 アドレス ブロックは、自分が所有し、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。
+   * セカンダリ リンク用の /30 サブネット。 アドレス ブロックは、自分が所有し、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-   * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
-   * **省略可能 -** 顧客 ASN:ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスを登録する AS 番号を指定できます。
+   * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定します。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
+   * **省略可能 -** 顧客 ASN:ピアリング AS 番号に登録されていないプレフィックスをアドバタイズしている場合は、それらが登録されている AS 番号を指定できます。
    * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
    * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 
@@ -127,7 +133,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 > [!IMPORTANT]
 > Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗すると、上記のコマンドの出力時に 'AdvertisedPublicPrefixesState' が '検証が必要です' と表示されます。 
 > 
-> '検証が必要です' というメッセージが表示された場合は、ルーティング レジストリにプレフィックスの所有者として一覧表示されているエンティティによって組織にパブリック プレフィックスが割り当てられていることを示すドキュメントを収集し、下に示すようにサポート チケットを開くことにより、これらのドキュメントを手動検証のために送信してください。 
+> '検証が必要です' というメッセージが表示された場合は、ルーティング レジストリにプレフィックスの所有者として一覧表示されているエンティティによって組織にパブリック プレフィックスが割り当てられていることを示すドキュメントを収集し、サポート チケットを開くことにより、これらのドキュメントを手動検証のために送信してください。 
 > 
 >
 
@@ -179,22 +185,14 @@ az network express-route peering update --circuit-name MyCircuit -g ExpressRoute
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
-### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft ピアリングを削除するには
-
-ピアリング構成を削除するには、次の例を実行します。
-
-```azurecli
-az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name MicrosoftPeering
-```
-
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure プライベート ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
 
 ### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
 
-1. 最新バージョンの Azure CLI をインストールします。 最新バージョンの Azure コマンド ライン インターフェイス (CLI) を使用する必要があります。* 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
-
+1. 最新バージョンの Azure CLI をインストールします。
+1. 
    ```azurecli
    az login
    ```
@@ -204,9 +202,9 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    ```azurecli
    az account set --subscription "<subscription ID>"
    ```
-2. ExpressRoute 回線を作成します。 手順に従って、 [ExpressRoute 回線](howto-circuit-cli.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
+1. ExpressRoute 回線を作成します。 手順に従って、 [ExpressRoute 回線](howto-circuit-cli.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 
-3. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
+1. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
 
    ```azurecli
    az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
@@ -243,12 +241,12 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    "type": "Microsoft.Network/expressRouteCircuits]
    ```
 
-4. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
+1. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
 
    * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
    * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
-   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 を使用しないようにしてください。
+   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 は使用しないようにしてください。
    * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 
    次の例を使用して、回線用に Azure プライベート ピアリングを構成します。
@@ -312,6 +310,16 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft ピアリングを削除するには
+
+ピアリング構成を削除するには、次の例を実行します。
+
+```azurecli
+az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name MicrosoftPeering
+```
+
 ### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
 
 ピアリング構成を削除するには、次の例を実行します。
@@ -325,11 +333,9 @@ az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGro
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-
 ## <a name="next-steps"></a>次のステップ
 
-次の手順では、 [ExpressRoute 回線に VNet をリンク](howto-linkvnet-cli.md)します。
+Azure プライベート ピアリングを構成すると、仮想ネットワークを回線にリンクできます。詳細については、次を参照してください。 
 
-* ExpressRoute ワークフローの詳細については、「 [ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
-* 回路ピアリングの詳細については、「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
-* 仮想ネットワークの詳細については、「 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+> [!div class="nextstepaction"]
+> [ExpressRoute 回線への VNet のリンク](howto-linkvnet-cli.md)

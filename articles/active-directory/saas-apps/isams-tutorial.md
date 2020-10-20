@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552727"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850040"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iSAMS の統合
 
@@ -132,16 +132,16 @@ iSAMS に対する Azure AD SSO を構成してテストするには、次の構
 1. コントロール パネルに移動し、 **[Authentication]\(認証\)** モジュールを開きます。
 1. 右側のメニューで、 **[Identity Providers]\(ID プロバイダー\)** を選択します
 
-    ![構成](./media/isams-tutorial/click-identity-provider.png)
+    ![[Identity Providers]\(ID プロバイダー\) が選択されている Active Directory 構成を示すスクリーンショット。](./media/isams-tutorial/click-identity-provider.png)
 
 1. **[Add Provider]\(プロバイダーの追加\)** を選択します
 
-    ![構成](./media/isams-tutorial/add-identity-provider.png)
+    ![[Add Providers]\(プロバイダーの追加\) が選択されている [Identity Providers]\(ID プロバイダー\) を示すスクリーンショット。](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. 次のページで、以下の手順を実行します。
 
-    ![構成](./media/isams-tutorial/configure-isams.png)
+    ![説明されている手順を実行できる [Identity Providers]\(ID プロバイダー\) ウィザードのスクリーンショット。](./media/isams-tutorial/configure-isams.png)
 
     a. **[Name]\(名前\)** ボックスに、`Saml2 Azure` などの有効な名前を入力します。 これはログイン ページに表示される名前です。
 
@@ -159,12 +159,12 @@ iSAMS に対する Azure AD SSO を構成してテストするには、次の構
 
 2.  **[Control Panel Home]\(コントロール パネル ホーム\)**  ->  **[Security & Permissions]\(セキュリティとアクセス許可\)**  ->  **[User Accounts]\(ユーザー アカウント\)**  ->  **[User Options & Tasks]\(ユーザー オプションとタスク\)**  ->  **[Modify User Properties]\(ユーザー プロパティの変更\)** に移動します
 
-    ![テスト ユーザー](./media/isams-tutorial/modify-user-properties.png)
+    ![[Modify User Properties]\(ユーザー プロパティの変更\) が選択されている [User Accounts]\(ユーザー アカウント\) ページを示すスクリーンショット。](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. 表示されるポップアップ ウィンドウで、 **[Account Details]\(アカウントの詳細\)** タブを選択し、 **[Authorization]\(承認\)** を、新しく作成した ID プロバイダーのものに変更します。
 
-    ![テスト ユーザー](./media/isams-tutorial/account-details.png)
+    ![[Authorization]\(承認\) の値が表示されている [Account Details]\(アカウントの詳細\) を示すスクリーンショット。](./media/isams-tutorial/account-details.png)
 
 4. **[Save & Close]\(保存して閉じる\)** をクリックします。
 

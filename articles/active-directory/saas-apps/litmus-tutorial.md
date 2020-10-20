@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823019"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854547"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Litmus の統合
 
@@ -129,11 +129,11 @@ Litmus で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 左側のナビゲーション パネルから、 **[Security]\(セキュリティ\)** をクリックします。
 
-    ![Litmus の構成](./media/litmus-tutorial/security-img.png)
+    ![[セキュリティ] 項目が選択されている画面のスクリーンショット。](./media/litmus-tutorial/security-img.png)
 
 1. **[Configure SAML Authentication]\(SAML 認証の構成\)** セクションで、次の手順に従います。
 
-    ![Litmus の構成](./media/litmus-tutorial/configure1.png)
+    ![説明されている値を入力できる [Configure SAML Authentication]\(SAML 認証の構成\) セクションを示すスクリーンショット。](./media/litmus-tutorial/configure1.png)
 
     a. **[Enable SAML]\(SAML を有効にする\)** トグルをオンに切り替えます。
 
@@ -143,7 +143,7 @@ Litmus で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 次の手順に従います。
 
-    ![Litmus の構成](./media/litmus-tutorial/configure3.png)
+    ![説明されている値を入力できるセクションを示すスクリーンショット。](./media/litmus-tutorial/configure3.png)
 
     a. **[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -157,15 +157,15 @@ Litmus で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 左側のナビゲーション パネルから、 **[Accounts]\(アカウント\)** をクリックします。
 
-    ![Litmus の構成](./media/litmus-tutorial/accounts-img.png)
+    ![[Accounts]\(アカウント\) 項目が選択されているスクリーンショット。](./media/litmus-tutorial/accounts-img.png)
 
 1. **[Add New User]\(新しいユーザーの追加\)** タブをクリックします。
 
-    ![Litmus の構成](./media/litmus-tutorial/add-new-user.png)
+    ![[Add New User]\(新しいユーザーの追加\) 項目が選択されているスクリーンショット。](./media/litmus-tutorial/add-new-user.png)
 
 1. **[ユーザーの追加]** セクションで、次の手順を実行します。
 
-    ![Litmus の構成](./media/litmus-tutorial/user-profile.png)
+    ![説明されている値を入力できる [Add User]\(ユーザーの追加\) セクションを示すスクリーンショット。](./media/litmus-tutorial/user-profile.png)
 
     a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **B.Simon\@contoso.com**) を入力します
 

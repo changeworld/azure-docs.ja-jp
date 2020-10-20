@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central 用デバイスの開発 | Microsoft Docs
-description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 この記事では、IoT Central アプリケーションに接続するデバイスの開発について概要を説明します。
+description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 この記事では、IoT Central アプリケーションに接続するデバイスの開発について概要を説明します。 デバイスは、テレメトリを使用してストリーミング データとプロパティを送信することにより、その状態をレポートします。 IoT Central は、書き込み可能なプロパティを使用してデバイスの状態を設定したり、デバイスに対するコマンドを呼び出したりすることができます。
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017525"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812354"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central デバイスの開発の概要
 
@@ -26,7 +26,7 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 デバイスは、次のプリミティブを使用して IoT Central と対話します。
 
 - "_テレメトリ_": デバイスが IoT Central に送信するデータ。 たとえば、オンボード センサーから送られてくる温度の値のストリーム。
-- "_プロパティ_": デバイスが IoT Central に報告する状態の値。 たとえば、デバイスのファームウェアの現在のバージョン。 さらに、IoT Central がデバイスで更新できる書き込み可能なプロパティも使用できます。
+- "_プロパティ_": デバイスが IoT Central に報告する状態の値。 たとえば、デバイスのファームウェアの現在のバージョン。 さらに、IoT Central がデバイスで更新できる書き込み可能なプロパティも使用できます (目標温度など)。
 - "_コマンド_": デバイスの動作を制御するために IoT Central から呼び出されます。 たとえば、IoT Central アプリケーションは、デバイスを再起動するためにコマンドを呼び出す場合があります。
 
 ソリューション ビルダーは、テレメトリの視覚化、プロパティの管理、コマンドの呼び出しを行うために、IoT Central の Web UI でダッシュボードとビューを構成する役割を担います。

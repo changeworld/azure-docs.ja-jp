@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b2d244fa6ea42a85483b3067cf58fc9384a86dee
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544062"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>チュートリアル: Azure Active Directory と OnTrack の統合
 
@@ -118,7 +118,7 @@ OnTrack で Azure AD シングル サインオンを構成するには、次の�
 
 5. OnTrack アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[ユーザー属性] ダイアログのスクリーンショット。右上で [編集] アイコンが選択されています。](common/edit-attribute.png)
 
 6. その他に、OnTrack アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -132,7 +132,7 @@ OnTrack で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[ユーザーの要求] ダイアログのスクリーンショット。[新しい要求の追加] および [保存] アクションが選択されています。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554173"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945364"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OfficeSpace Software の統合
 
@@ -150,11 +150,11 @@ OfficeSpace Software を使用して Azure AD の SSO を構成してテスト�
 
 2. **[設定]** に移動して、 **[コネクタ]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![[Settings]\(設定\) ドロップダウンで [Connectors]\(コネクタ\) が選択されているスクリーンショット。](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. **[SAML 認証]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![[SAML Authentication]\(SAML 認証\) アクションが選択されている [Authentication]\(認証\) セクションを示すスクリーンショット。](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. **[SAML Authentication]** セクションで、次の手順に従います。
 

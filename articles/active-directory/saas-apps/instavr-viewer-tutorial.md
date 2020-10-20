@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550361"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>チュートリアル:Azure Active Directory と InstaVR Viewer の統合
 
@@ -132,11 +132,11 @@ InstaVR Viewer で Azure AD シングル サインオンを構成するには、
 
 2. **ユーザー アイコン** をクリックして、 **[Account]\(アカウント\)** を選択します。
 
-    ![InstaVR Viewer の構成](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![ユーザーが選択されている InstaVR Viewer サイトを示すスクリーンショット。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. 下へスクロールして **[SAML Auth]\(SAML 認証\)** に移動し、次の手順に従います。
 
-    ![InstaVR Viewer の構成](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![この手順で説明されている値を入力できる [SAML Auth]\(SAML 認証\) ページを示すスクリーンショット。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. **[SSO URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -211,15 +211,15 @@ InstaVR Viewer で Azure AD シングル サインオンを構成するには、
 
 2. 左側のナビゲーション パネルから **[Package]\(パッケージ\)** を選択し、 **[Make package for Web]\(Web 用にパッケージ化\)** を選択します。
 
-    ![InstaVR Viewer の構成](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![[Select Package]\(パッケージの選択\) と [Make package for Web]\(Web 用にパッケージ化\) が選択された InstaVR Viewer 会社サイトを示すスクリーンショット。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. **[Download]** を選択します。
 
-    ![InstaVR Viewer の構成](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![[Download]\(ダウンロード\) アイコンが選択されているスクリーンショット。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. **[Open Hosted Page]\(ホストされているページを開く\)** を選択すると、ログインのために Azure AD にリダイレクトされます。
 
-    ![InstaVR Viewer の構成](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![[Open Hosted Page]\(ホストされているページを開く\) が選択されているスクリーンショット。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. SSO を介して Azure AD に正常にログインするには、Azure AD 資格情報を入力します。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526393"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873280"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Linux VM)
 
@@ -34,7 +34,7 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、[Azure IoT Central でビデオ分析アプリケーションを作成する](./tutorial-video-analytics-create-app.md)方法に関する前のチュートリアルを完了しておく必要があります。
+開始する前に、これよりも前の [Azure IoT Central でのビデオ分析アプリケーションの作成](./tutorial-video-analytics-create-app-yolo-v3.md)に関するチュートリアルか、[Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するチュートリアルを完了しておく必要があります。
 
 さらに、Azure サブスクリプションが必要となります。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で無料で作成できます。
 

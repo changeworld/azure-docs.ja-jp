@@ -1,21 +1,19 @@
 ---
 title: ASP.NET Core のサービスを監視および診断する
-description: このチュートリアルでは、Azure Service Fabric の ASP.NET Core アプリケーションの監視と診断をセットアップする方法を説明します。
-author: dkkapur
+description: このチュートリアルでは、Azure Service Fabric の ASP.NET Core アプリケーションの監視と診断を構成する方法を説明します。
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e7fe68c2d0c51ffcc67693da722d9243ea3506f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840797"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
-このチュートリアルは、シリーズの第 5 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。
+このチュートリアルは、シリーズの第 5 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を構成する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。
 
 シリーズの第 4 部で学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -52,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 Application Insights は、Azure のアプリケーション パフォーマンス管理プラットフォームであり、アプリケーションを監視および診断するための Service Fabric の推奨プラットフォームです。
 
-Application Insights リソースを作成するには、[Azure Portal](https://portal.azure.com) に移動します。 左側のナビゲーション メニューで **[リソースの作成]** をクリックして Azure Marketplace を開きます。 **[監視 + 管理]** 、 **[Application Insights]** の順にクリックします。
+Application Insights リソースを作成するには、[Azure Portal](https://portal.azure.com) に移動します。 左側のナビゲーション メニューで **[リソースの作成]** を選択して Azure Marketplace を開きます。 **[監視 + 管理]** 、 **[Application Insights]** の順に選択します。
 
 ![新しい AI リソースの作成](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -60,23 +58,23 @@ Application Insights リソースを作成するには、[Azure Portal](https://
 
 ![AI リソース属性](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource-attrib.png)
 
-必要な情報を入力したら、 **[作成]** をクリックしてリソースをプロビジョニングします。終わるまでに 1 分ほどかかります。
+必要な情報を入力したら、 **[作成]** を選択してリソースをプロビジョニングします。終わるまでに 1 分ほどかかります。
 <!-- When completed, navigate to the newly deployed resource, and find the "Instrumentation Key" (visible in the "Essentials" drop down section). Copy it to clipboard, since we will need it in the next step. -->
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Application Insights をアプリケーションのサービスに追加する
 
-スタート メニューで Visual Studio アイコンを右クリックし、 **[管理者として実行]** を選択して、昇格された特権で Visual Studio 2019 を起動します。 **[ファイル]**  >  **[開く]**  >  **[プロジェクト/ソリューション]** の順にクリックし、投票アプリケーション (チュートリアルの第 1 部で作成済みまたは git から複製済み) に移動します。 *Voting.sln* を開きます。 アプリケーションの NuGet パッケージを復元するかどうかをたずねるプロンプトが表示されたら、 **[はい]** をクリックします。
+スタート メニューで Visual Studio アイコンを右クリックし、 **[管理者として実行]** を選択して、昇格された特権で Visual Studio 2019 を起動します。 **[ファイル]**  >  **[開く]**  >  **[プロジェクト/ソリューション]** の順に選択し、投票アプリケーション (チュートリアルの第 1 部で作成済みまたは git から複製済み) に移動します。 *Voting.sln* を開きます。 アプリケーションの NuGet パッケージを復元するかどうかをたずねるプロンプトが表示されたら、 **[はい]** を選択します。
 
 次の手順に従って、VotingWeb と VotingData の両方のサービス用に Application Insights を構成します。
 
-1. サービス名を右クリックして、 **[追加]、[接続済みサービス]、[Application Insights での監視]** の順にクリックします。
+1. サービス名を右クリックして、 **[追加]、[接続済みサービス]、[Application Insights での監視]** の順に選択します。
 
     ![AI の構成](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
 >[!NOTE]
->プロジェクト タイプによっては、サービスの名前を右クリックするときに、[追加]、[Application Insights Telemetry] の順にクリックする必要があります。
+>プロジェクト タイプによっては、サービスの名前を右クリックするときに、[追加]、[Application Insights Telemetry] の順に選択する必要があります。
 
-2. **[はじめに]** をクリックします。
-3. Azure サブスクリプションの設定に使用したアカウントにサインインし、Application Insights リソースを作成したサブスクリプションを選択します。 [リソース] ボックスの *[Application Insights の既存のリソース]* でリソースを探します。 **[登録]** をクリックして Application Insights をサービスに追加します。
+2. **[Get started]\(作業を開始する\)** を選択します。
+3. Azure サブスクリプションに使用したアカウントにサインインし、Application Insights リソースを作成したサブスクリプションを選択します。 [リソース] ボックスの *[Application Insights の既存のリソース]* でリソースを探します。 **[登録]** を選択して Application Insights をサービスに追加します。
 
     ![AI の登録](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
 
@@ -88,19 +86,19 @@ Application Insights リソースを作成するには、[Azure Portal](https://
 
 ## <a name="add-the-microsoftapplicationinsightsservicefabricnative-nuget-to-the-services"></a>Microsoft.ApplicationInsights.ServiceFabric.Native NuGet をサービスに追加する
 
-Application Insights では、シナリオによって使い分けられる Service Fabric 固有の 2 つの NuGets があります。 1 つは Service Fabric のネイティブ サービスで使用し、もう 1 つはコンテナーおよびゲストの実行可能ファイルで使用します。 今回は、Microsoft.ApplicationInsights.ServiceFabric.Native NuGet を使用し、そこから得られるサービス コンテキストの知識を活用します。 Application Insights SDK と Service Fabric 固有の NuGets の詳細については、「[Microsoft Application Insights for Service Fabric (Service Fabric での Microsoft Application Insights)](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)」をご覧ください。
+Application Insights では、シナリオによって使い分けられる Service Fabric 固有の 2 つの NuGets があります。 1 つは Service Fabric のネイティブ サービスで使用し、もう 1 つはコンテナーおよびゲストの実行可能ファイルで使用します。 今回は、Microsoft.ApplicationInsights.ServiceFabric.Native NuGet を使用し、そこから得られるサービス コンテキストの知識を活用します。 Application Insights SDK と Service Fabric 固有の NuGet パッケージの詳細については、「[Microsoft Application Insights for Service Fabric (Service Fabric での Microsoft Application Insights)](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)」を参照してください。
 
 次に、NuGet パッケージを設定する手順を示します。
 
-1. ソリューション エクスプローラーの最上部にある **"Voting" ソリューション**を右クリックし、 **[Manage NuGet Packages for Solution...]\(ソリューションの NuGet パッケージの管理\)** をクリックします。
-2. [NuGet - ソリューション] ウィンドウ上部のナビゲーション メニューにある **[参照]** をクリックし、検索バーの横にある **[プレリリースを含める]** チェックボックスをオンにします。
+1. ソリューション エクスプローラーの上部にある **"Voting" ソリューション**を右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+2. [NuGet - ソリューション] ウィンドウ上部のナビゲーション メニューにある **[参照]** を選択し、検索バーの横にある **[プレリリースを含める]** チェック ボックスをオンにします。
 >[!NOTE]
 >Microsoft.ServiceFabric.Diagnostics.Internal パッケージが事前にインストールされていない場合は、Application Insights パッケージをインストールする前に同様の方法でこのパッケージをインストールすることが必要になる場合があります
 
-3. `Microsoft.ApplicationInsights.ServiceFabric.Native` を検索し、適切な NuGet パッケージをクリックします。
-4. 右側で、アプリケーション内の 2 つのサービス ( **[VotingWeb]** と **[VotingData]** ) の横にある 2 つのチェック ボックスをオンにして、 **[インストール]** をクリックします。
+3. `Microsoft.ApplicationInsights.ServiceFabric.Native` を検索し、適切な NuGet パッケージを選択します。
+4. 右側で、アプリケーション内の 2 つのサービス ( **[VotingWeb]** と **[VotingData]** ) の横にある 2 つのチェック ボックスをオンにして、 **[インストール]** を選択します。
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. *[変更のプレビュー]* ダイアログ ボックスが表示されたら **[OK]** をクリックし、 *[ライセンスの同意]* に同意します。 これで、サービスへの NuGet の追加が完了します。
+5. *[変更のプレビュー]* ダイアログ ボックスが表示されたら **[OK]** を選択し、 *[ライセンスの同意]* に同意します。 これで、サービスへの NuGet の追加が完了します。
 6. 今度は 2 つのサービスにテレメトリの初期化子を設定する必要があります。 そのためには、*VotingWeb.cs* と *VotingData.cs* を開きます。 両方に対して、次の 2 つの手順を実行します。
     1. それぞれの *\<ServiceName>.cs* の上部で、既存の *using* ステートメントの下に次の 2 つの *using* ステートメントを追加します。
 
@@ -163,7 +161,7 @@ ConfigureServices(services => services
 )
 ```
 
-この時点で、アプリケーションをデプロイする準備が整いました。 上部にある **[開始]** をクリックする (または **F5** キーを押す) と、Visual Studio でアプリケーションがビルドおよびパッケージ化され、ローカル クラスターが設定され、そのクラスターにアプリケーションがデプロイされます。
+この時点で、アプリケーションをデプロイする準備が整いました。 上部にある **[開始]** を選択する (または **F5** キーを押す) と、Visual Studio でアプリケーションがビルドおよびパッケージ化され、ローカル クラスターが設定され、そのクラスターにアプリケーションがデプロイされます。
 
 >[!NOTE]
 >.NET Core SDK の最新バージョンがインストールされていないと、ビルド エラーが発生することがあります。
@@ -178,18 +176,18 @@ ConfigureServices(services => services
 
 Azure Portal で、Application Insights リソースのページに移動します。
 
-**[概要]** をクリックして、お使いのリソースのランディング ページに戻ります。 次に、上部の **[検索]** をクリックして受信トレースを確認します。 Application Insights にトレースが表示されるまで数分かかります。 何も表示されない場合は、しばらく待ってから上部の **[更新]** をクリックします。
+**[概要]** を選択して、お使いのリソースのランディング ページに戻ります。 次に、上部の **[検索]** を選択して受信トレースを確認します。 Application Insights にトレースが表示されるまで数分かかります。 何も表示されない場合は、しばらく待ってから上部の **[更新]** をクリックします。
 ![AI トレースの確認](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
 *[検索]* ウィンドウを下にスクロールすると、Application Insights ですぐに利用できるすべての受信テレメトリが表示されます。 投票アプリケーションで行った操作ごとに、*VotingWeb* からの送信 PUT 要求 (PUT Votes/Put [name]) と *VotingData* からの受信 PUT 要求 (PUT VoteData/Put [name]) が発生し、その後、 表示データを最新の情報に更新するように求める GET 要求が対になって発生します。 それらは HTTP 要求であるため、ローカルホストでも HTTP に対する依存関係トレースが発生します。 1 つの投票がどのように追加されるかが分かるサンプルを次に示します。
 
 ![AI サンプル要求のトレース](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
-トレースのひとつをクリックすると、その詳細を表示できます。 Application Insights で提供される情報には、*応答時間*や*要求 URL* など、要求に関する有用な情報があります。 また、Service Fabric 固有の NuGet を追加したため、後述の *Custom Data* セクションでは、お使いのアプリケーションに関する情報を Service Fabric クラスターのコンテキストで取得することもできます。 これにはサービス コンテキストが含まれるため、要求のソースの *PartitionID* と *ReplicaId* を確認して、アプリケーションでのエラー診断時に問題箇所を適切に特定することができます。
+いずれかのトレースを選択すると、その詳細を表示できます。 Application Insights で提供される情報には、*応答時間*や*要求 URL* など、要求に関する有用な情報があります。 また、Service Fabric 固有の NuGet を追加したため、後述の *Custom Data* セクションでは、お使いのアプリケーションに関する情報を Service Fabric クラスターのコンテキストで取得することもできます。 これにはサービス コンテキストが含まれるため、要求のソースの *PartitionID* と *ReplicaId* を確認して、アプリケーションでのエラー診断時に問題箇所を適切に特定することができます。
 
 ![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-さらに、[概要] ページの左側のメニューの *[Application map]\(アプリケーション マップ\)* をクリックするか、 **[アプリ マップ]** アイコンをクリックすると、2 つのサービスが接続されていることを示すアプリ マップが表示されます。
+さらに、[概要] ページの左側のメニューの *[アプリケーション マップ]* をクリックするか、 **[アプリ マップ]** アイコンを選択すると、2 つのサービスが接続されていることを示すアプリ マップが表示されます。
 
 ![左側のメニューのアプリケーション マップが強調表示されているスクリーンショット。](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
@@ -251,7 +249,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-これらの変更が完了したら、アプリケーションを **[開始]** して、最新バージョンのビルドとデプロイを行います。 アプリケーションのデプロイが完了したら、`localhost:8080` にアクセスし、一部の投票オプションの追加と削除を行います。 次に、Application Insights リソースに戻って、最新の実行に関するトレースを確認します (前と同様に、トレースが Application Insights に表示されるまでに 1 ～ 2 分かかります)。 追加および削除したすべての投票の "カスタム イベント"\* が、すべての応答のテレメトリとともに表示されます。
+これらの変更が完了したら、アプリケーションを **[開始]** して、最新バージョンのビルドとデプロイを行います。 アプリケーションのデプロイが完了したら、`localhost:8080` にアクセスし、一部の投票オプションの追加と削除を行います。 次に、Application Insights リソースに戻って、最新の実行に関するトレースを確認します (前と同様に、トレースが Application Insights に表示されるまでに 1、2 分かかります)。 追加および削除したすべての投票の "カスタム イベント"\* が、すべての応答のテレメトリとともに表示されます。
 
 ![カスタム イベント](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 

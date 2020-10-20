@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Jupyter Notebook の概要 (Python)
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook チュートリアルに向けてセットアップします。  Azure Machine Learning ワークスペースを作成し、Jupyter Notebook をワークスペースに複製して、ノートブックを実行するコンピューティング インスタンスを作成します。
+description: Jupyter Notebook チュートリアルに向けてセットアップします。 Azure Machine Learning ワークスペースを作成し、Jupyter Notebook をワークスペースに複製して、ノートブックを実行するコンピューティング インスタンスを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: de52013628f5d02bedcf72a99e0fad25cabe5d8f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896909"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841854"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>チュートリアル:Jupyter Notebook で Azure Machine Learning の作業を開始する
 
-このチュートリアルでは、[管理されたクラウドベースのワークステーション (コンピューティング インスタンス)](concept-compute-instance.md) で Jupyter Notebook を使用して、Azure Machine Learning の使用を開始する手順を実行します。 このチュートリアルは、他のすべての Jupyter Notebook チュートリアルの前段階となるものです。
+このチュートリアルでは、[マネージド クラウドベースのワークステーション (コンピューティング インスタンス)](concept-compute-instance.md) で Jupyter Notebook を使用して、Azure Machine Learning の使用を開始する手順を実行します。 このチュートリアルは、他のすべての Jupyter Notebook チュートリアルの前段階となるものです。
 
 このチュートリアルでは、次のことを行いました。
 
@@ -39,76 +39,77 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT]
-> お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
+> お使いの*ワークスペース*と*サブスクリプション*をメモしておきます。 この情報は、適切な場所に実験を作成するために必要になります。
 
-## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>ワークスペースでノートブックを実行する
+## <a name="run-a-notebook-in-your-workspace"></a><a name="azure"></a>ワークスペースでノートブックを実行する
 
 Azure Machine Learning では、インストール不要であらかじめ構成されたエクスペリエンスを実現するために、お使いのワークスペースにクラウド ノートブック サーバーが含まれています。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](tutorial-1st-experiment-sdk-setup-local.md)を使用してください。
 
- 次のビデオに従うか、後で示す詳細な手順を使用して、ワークスペースでチュートリアル ノートブックを複製して実行します。
+ 次のビデオに従うか、詳細な手順を使用して、ワークスペースでチュートリアル ノートブックを複製して実行します。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
 ### <a name="clone-a-notebook-folder"></a>ノートブック フォルダーを複製する
 
-Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合インターフェイスです。
+次の実験の設定を完了し、Azure Machine Learning スタジオで手順を実行します。 この統合インターフェイスには、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールが含まれています。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
 
 1. お使いのサブスクリプションと、作成したワークスペースを選択します。
 
-1. 左側にある **[ノートブック]** を選択します。
+1. 左側で **[ノートブック]** を選択します。
 
-1. 上部にある **[サンプル]** タブを選択します。
+1. 上部で **[サンプル]** タブを選択します。
 
 1. **Python** フォルダーを開きます。
 
-1. バージョン番号が付いたフォルダーを開きます。  この番号は、Python SDK の現在のリリースを表します。
+1. バージョン番号が付いたフォルダーを開きます。 この番号は、Python SDK の現在のリリースを表します。
 
-1. **tutorials** フォルダーの右側にある **[...]** を選択し、 **[Clone]\(複製\)** を選択します。
+1. **tutorials** フォルダーの右側にある **[...]** ボタンを選択し、 **[Clone]\(複製\)** を選択します。
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="tutorials フォルダーを複製する":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Clone チュートリアル フォルダーを示すスクリーンショット。":::
 
-1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。  自分のフォルダーを選択して **tutorials** フォルダーをそこに複製します。
+1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。 自分のフォルダーを選択して **tutorials** フォルダーをそこに複製します。
 
 ### <a name="open-the-cloned-notebook"></a><a name="open"></a>複製されたノートブックを開く
 
-1. **[User Files]\(ユーザー ファイル\)** セクションに複製された **tutorials** フォルダーを開きます。
+1. **[User files]\(ユーザー ファイル\)** セクションに複製された **tutorials** フォルダーを開きます。
 
     > [!IMPORTANT]
-    > **samples** フォルダー内のノートブックを表示できますが、そこからノートブックを実行することはできません。  ノートブックを実行するには、必ず **[User Files]\(ユーザー ファイル\)** セクションにあるノートブックの複製バージョンを開いてください。
+    > **samples** フォルダー内のノートブックを表示できますが、そこからノートブックを実行することはできません。 ノートブックを実行するには、必ず **[User Files]\(ユーザー ファイル\)** セクションにあるノートブックの複製バージョンを開いてください。
     
 1. **tutorials/image-classification-mnist-data** フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** ファイルを選択します。
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="tutorials フォルダーを開く":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Clone チュートリアル フォルダーを示すスクリーンショット。":::
 
-1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。 これらの VM には、[Azure Machine Learning を実行するために必要なすべてのもの](concept-compute-instance.md#contents)があらかじめ構成されています。
+1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。 これらの仮想マシン (VM) には、[Azure Machine Learning を実行するために必要なすべてのもの](concept-compute-instance.md#contents)があらかじめ構成されています。
 
-1. VM が見つからない場合は、 **[追加]** を選択してコンピューティング インスタンス VM を作成します。 
+1. VM が見つからない場合は、 **[追加]** を選択してコンピューティング インスタンス VM を作成します。
 
-    1. VM を作成する場合は、以下のルールに従います。  
-        + 名前は必須であり、空にすることはできません。
+    1. VM を作成する場合は、以下のルールに従います。
+ 
+        + 名前は必須であり、フィールドを空にすることはできません。
         + 名前は、ワークスペースまたはコンピューティング インスタンスの Azure リージョン内のすべての既存のコンピューティング インスタンス全体で一意である必要があります (大文字小文字は区別されません)。 選択した名前が一意でない場合は、アラートが表示されます。
         + 有効な文字は、大文字、小文字、数字 (0 から 9)、およびダッシュ (-) です。
-        + 名前の長さは 3 から 24 文字の間でなければなりません。
-        + 名前の先頭は文字である必要があります (数字やダッシュは使用できません)。
-        + ダッシュが使用されている場合は、その後に少なくとも 1 文字を続ける必要があります。 例:Test-、test-0、test-01 は無効であり、test-a0、test-0a は有効な例です。
+        + 名前は 3 から 24 文字の長さでなければなりません。
+        + 名前の先頭は、数字やダッシュではなく、文字である必要があります。
+        + ダッシュを使用する場合は、その後に少なくとも 1 文字を続ける必要があります。 たとえば、Test-、test-0、test-01 は無効であり、test-a0、test-0a は有効な例です。
 
-    1.  利用可能な選択肢から仮想マシンのサイズを選択します。 このチュートリアルでは、既定の VM を選択するのが適切です。
+    1. 利用可能な選択肢から VM のサイズを選択します。 このチュートリアルでは、既定の VM を選択するのが適切です。
 
     1. **[作成]** を選択します。 VM の設定には約 5 分かかる可能性があります。
 
-1. VM が使用可能になると、上部のツール バーに表示されます。  これで、ツール バーの **[Run all]\(すべて実行\)** を使用するか、ノートブックのコード セルで **Shift + Enter** キーを使用して、ノートブックを実行できるようになりました。
+1. VM が使用可能になると、上部のツール バーに表示されます。 これで、ツール バーの **[Run all]\(すべて実行\)** を使用するか、ノートブックのコード セルで **Shift + Enter** キーを使用して、ノートブックを実行できるようになりました。
 
-カスタム ウィジェットがある場合、または Jupyter/JupyterLab を使用する場合は、右端にある **[Jupyter]** ドロップダウンを選択し、 **[Jupyter]** または **[JupyterLab]** を選択します。 新しいブラウザー ウィンドウが開きます。
+カスタム ウィジェットがある場合、または Jupyter か JupyterLab を使用する場合は、右端にある **[Jupyter]** ドロップダウン リストを選択します。 その後、 **[Jupyter]** または **[JupyterLab]** を選択します。 新しいブラウザー ウィンドウが開きます。
 
 ## <a name="next-steps"></a>次のステップ
 
-開発環境のセットアップが完了したので、Jupyter Notebook でのモデルのトレーニングに進みます。
+開発環境の設定が完了したので、Jupyter Notebook でのモデルのトレーニングに進みます。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
 
-<a name="stop-compute-instance"></a> 他のチュートリアルに取り組む予定がない場合は、不使用時のコストを抑えるために、クラウド ノートブック サーバー VM を停止してください。
+<a name="stop-compute-instance"></a> 他のチュートリアルに取り組む予定がない場合は、不使用時のコストを抑えるために、クラウド ノートブック サーバー VM を停止します。
 
 [!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]

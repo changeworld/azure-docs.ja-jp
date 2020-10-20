@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:REST API を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa25a65b20b295045b52a49c8c47fb8849c3cba3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85971200"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056976"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
@@ -329,7 +329,7 @@ REST API を使用してブループリントを発行した後は、それを�
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
 - `{subscriptionId}` - サブスクリプション ID で置き換えます
 
-1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの**所有者**ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 認可が異なる [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用しています。
+1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの**所有者**ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) が使用されますが、承認は異なります。
 
    - REST API URI
 

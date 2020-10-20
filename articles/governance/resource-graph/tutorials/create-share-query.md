@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:Azure portal でのクエリの管理
 description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、新しいクエリを他のユーザーと共有します。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005173"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057928"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
@@ -60,8 +60,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 ## <a name="create-a-shared-query"></a>共有クエリを作成する
 
-プライベート クエリとは異なり、共有クエリは Resource Manager リソースです。 つまり、クエリをリソース グループに保存し、Azure RBAC で管理および制御し、リソース ロックを使用して保護さえできることを意味します。 適切なアクセス許可を持つすべてのユーザーが、リソースとしてそれを参照し、使用することができます。
-新しい共有クエリを作成するには、次の手順のようにします。
+プライベート クエリとは異なり、共有クエリは Resource Manager リソースです。 つまり、クエリをリソース グループに保存し、Azure RBAC で管理および制御し、リソース ロックを使用して保護さえできることを意味します。 適切なアクセス許可を持つすべてのユーザーが、リソースとしてそれを参照し、使用することができます。 新しい共有クエリを作成するには、次の手順のようにします。
 
 1. ポータルのメニューから **[すべてのサービス]** を選択するか、すべてのページの上部にある Azure 検索ボックスを使用し、 **[Resource Graph エクスプローラー]** を探して選択します。
 
@@ -89,7 +88,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 1. **[クエリの保存]** ウィンドウの下部にある **[保存]** を選択します。 タブのタイトルが、 **[クエリ 1]** から **[Count VMs by OS]** に変わります。 **resource-graph-queries** リソース グループを初めて使うときは、リソース グループが作成されるので、保存に予想以上の時間がかかります。
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="新しいクエリを共有クエリとして保存する" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="[保存] ボタンを使用して新しいクエリを保存する" border="false":::
 
    > [!NOTE] 
    > 既存のリソース グループの名前を指定して共有クエリをそこに保存する場合は、 **['resource-graph-queries' リソース グループに発行します]** チェック ボックスをオフにすることができます。 クエリに既定の名前のリソース グループを使用すると、共有クエリを探すのが容易になります。 また、そのリソース グループの目的もより明確になります。 ただし、既存のアクセス許可に基づくセキュリティ上の理由から、既存のリソース グループを選択することもあります。
@@ -98,7 +97,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 1. **[クエリを開く]** を選択します。 種類が **[共有クエリ]** に設定されていること、および **[サブスクリプション]** と **[リソース グループ]** の組み合わせが、クエリを保存した場所と一致していることを確認します。 保存した "**Count VMs by OS**" 項目が、 **[クエリ名]** の一覧に表示されるようになります。 保存したクエリのタイトル リンクを選択して、そのクエリの名前の新しいタブに読み込まれます。 共有クエリなので、タブのタイトルの横にアイコンが表示され、共有されていることが示されます。
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="アイコンの付いたクエリを表示する" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="[保存] ボタンを使用して新しいクエリを保存する" border="false":::
 
    > [!NOTE] 
    > 保存されているクエリを開き、タブにその名前が表示されている状態では、 **[保存]** ボタンにより、行った変更でクエリが更新されます。 新しいクエリを作成して保存するには、 **[名前を付けて保存]** を選択して、新しいクエリを保存したときと同じようにします。
@@ -107,7 +106,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 共有クエリは Resource Manager リソースであるため、いくつかの方法で検索できます。
 
-- Resource Graph エクスプローラーで、 **[クエリを開く]** を選択し、種類を **[共有クエリ]** に設定します。
+- Resource Graph Explorer で、 **[クエリを開く]** を選択し、種類を **[共有クエリ]** に設定します。
 - Resource Graph クエリのポータル ページから。
 - 共有クエリが保存されているリソース グループから。
 - Resource Graph に対するクエリにより。

@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649603"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827033"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して geo レプリケーション コンテナー レジストリを作成する
 
@@ -48,19 +48,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. 次の値を選択または入力します。
+ 1. 次の値を選択または入力します。
 
     * **サブスクリプション**: Azure サブスクリプションを選択します。
     * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** を選択します。
-    * **場所**: リソース グループの場所を選択します。 例:**米国中部**。
+    * **[リージョン]** : リソース グループの場所を選択します。 例:**米国中部**。
     * **[Acr Name]\(Acr 名\)** : 生成されたレジストリ名を受け入れるか、名前を入力します。 名前はグローバルに一意である必要があります。
+    * **[Acr Admin User Enabled]\(ACR 管理者ユーザーの有効\)** : 既定値を受け入れます。
     * **[場所]** : レジストリのホーム レプリカ用に生成された場所を受け入れるか、**米国中部**などの場所を入力します。 
+    * **[Acr Sku]\(ACR の SKU\)** : 既定値を受け入れます。
     * **[Acr Replica Location]\(Acr レプリカの場所\)** : リージョンの短い名前を使用して、レジストリ レプリカの場所を入力します。 ホーム レジストリの場所とは違う場所にする必要があります。 例: **westeurope**。
-    * **[上記の使用条件に同意する]** : 選択。
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="テンプレートのプロパティ":::
 
- 3. 使用条件に同意する場合は、 **[購入]** を選択します。 レジストリが正常に作成されると、次の通知が表示されます。
+1. **[Review + Create]\(確認と作成\)** を選択し、使用条件を確認します。 同意する場合は、 **[作成]** を選択します。
+
+1. レジストリが正常に作成されると、次の通知が表示されます。
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="テンプレートのプロパティ":::
 
@@ -84,6 +87,8 @@ Azure portal またはツール (Azure CLI など) を使用して、コンテ�
 
 不要になったら、リソース グループ、レジストリ、およびレジストリ レプリカを削除します。 これを行うには、Azure portal に移動し、レジストリを含むリソース グループを選択して、 **[リソース グループの削除]** を選択します。
 
+リソース グループの削除
+
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、ARM テンプレートを使用して Azure Container Registry を作成し、別の場所にレジストリ レプリカを構成しました。 Azure Container Registry のチュートリアルに進んで、ACR についての理解を深めましょう。
@@ -94,4 +99,4 @@ Azure portal またはツール (Azure CLI など) を使用して、コンテ�
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> 初めての ARM テンプレートを作成してデプロイする[

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b462dff45263ba3f5e533cd6bd7c4ce089933f66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540094"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル: Azure Active Directory と Lifesize Cloud の統合
 
@@ -137,15 +137,15 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
 2. ページの右上にある自分の名前をクリックし、 **[詳細設定]** をクリックします。
 
-    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![[Advanced Settings]\(詳細設定\) メニュー項目を示すスクリーンショット。](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 3. [詳細設定] で **[SSO 構成]** のリンクをクリックします。 インスタンスの [SSO 構成] ページが開きます。
 
-    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![[S S O Configuration]\(S S O 構成\) を選択できる [Advanced Settings]\(詳細設定\) を示すスクリーンショット。](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 4. SSO 構成 UI で、次の値を構成します。
 
-    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![説明されている値を入力できる [S S O Configuration]\(S S O 構成\) ページを示すスクリーンショット。](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
     a. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 

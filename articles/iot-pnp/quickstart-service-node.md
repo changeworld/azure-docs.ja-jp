@@ -3,17 +3,17 @@ title: Azure IoT ソリューションに接続されている IoT プラグ ア
 description: Node.js を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスと接続してやり取りします。
 author: elhorton
 ms.author: elhorton
-ms.date: 08/11/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574995"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946129"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md) を参照してください。
 
-このクイックスタートでは、Node.js に IoT プラグ アンド プレイ デバイスとして記述されたサンプルのサーモスタット デバイスを使用できます。 サンプル デバイスを実行するには、次のようにします。
+このクイックスタートでは、Node.js に IoT プラグ アンド プレイ デバイスとして記述されたサンプルのサーモスタット デバイスを使用します。 サンプル デバイスを実行するには、次のようにします。
 
 1. ターミナル ウィンドウを開いて、GitHub からクローンした Microsoft Azure IoT SDK for Node.js リポジトリが格納されているローカル フォルダーに移動します。
 
@@ -94,48 +94,103 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 1. "**サービス**" ターミナルにアクセスし、次のコマンドを使用して、デバイス情報を読み取るためのサンプルを実行します。
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. **サービス** ターミナル出力のデジタル ツインの応答に注目してください。 デバイスのモデル ID と関連プロパティが報告されているのがわかります。
+1. **サービス** ターミナル出力の、デバイス ツインの応答に注目してください。 デバイスのモデル ID と関連プロパティが報告されているのがわかります。
 
     ```json
-    "$dtId": "mySimpleThermostat",
-    "serialNumber": "123abc",
-    "maxTempSinceLastReboot": 51.96167432818655,
-    "$metadata": {
-      "$model": "dtmi:com:example:Thermostat;1",
-      "serialNumber": { "lastUpdateTime": "2020-07-09T14:04:00.6845182Z" },
-      "maxTempSinceLastReboot": { "lastUpdateTime": "2020-07-09T14:04:00.6845182" }
+    Model Id: dtmi:com:example:Thermostat;1
+    {
+      "deviceId": "my-pnp-device",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "Njc3MDMxNDcy",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00Z",
+      "connectionState": "Connected",
+      "lastActivityTime": "0001-01-01T00:00:00Z",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "modelId": "dtmi:com:example:Thermostat;1",
+      "version": 4,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:19.4574755Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "maxTempSinceLastReboot": 31.343640523762232,
+          "serialNumber": "123abc",
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:23.7339042Z",
+            "maxTempSinceLastReboot": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            },
+            "serialNumber": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            }
+          },
+          "$version": 3
+        }
+      },
+      "capabilities": {
+        "iotEdge": false
+      },
+      "tags": {}
     }
     ```
 
-1. 次のスニペットは、デバイス ツインのモデル ID を取得する、*get_digital_twin.js* のコードを示しています。
+1. 次のスニペットは、デバイス ツインのモデル ID を取得する、*twin.js* のコードを示しています。
 
     ```javascript
-    console.log("Model Id: " + inspect(digitalTwin.$metadata.$model))
+    var registry = Registry.fromConnectionString(connectionString);
+    registry.getTwin(deviceId, function(err, twin) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log('Model Id: ' + twin.modelId);
+        //...
+      }
+      //...
+    }
     ```
 
 このシナリオでは、`Model Id: dtmi:com:example:Thermostat;1`が出力されます。
 
+> [!NOTE]
+> これらのサービス サンプルでは、**IoT Hub サービス クライアント**からの **Registry** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
+
 ### <a name="update-a-writable-property"></a>書き込み可能なプロパティを更新する
 
-1. コード エディターで、*update_digital_twin.js* ファイルを開きます。
+1. コード エディターで、*twin.js* ファイルを開きます。
 
-1. サンプル コードを確認します。 JSON 修正プログラムを作成して、デバイスのデジタル ツインを更新する方法を確認できます。 このサンプルでは、コードによって、サーモスタットの温度が 42 の値に置き換えられます。
+1. サンプル コードを見てみましょう。ここには、デバイス ツインを更新する 2 つの方法が示されています。 最初の方法を使用するには、`twinPatch` 変数を次のように変更します。
 
     ```javascript
-    const patch = [{
-        op: 'add',
-        path: '/targetTemperature',
-        value: '42'
-      }]
+    var twinPatch = {
+      tags: {
+        city: "Redmond"
+      },
+      properties: {
+        desired: {
+          targetTemperature: 42
+        }
+      }
+    };
     ```
+
+    `targetTemperature` プロパティは、サーモスタット デバイス モデルの書き込み可能なプロパティとして定義されています。
 
 1. **サービス** ターミナルで、次のコマンドを使用して、プロパティを更新するためのサンプルを実行します。
 
     ```cmd/sh
-    node update_digital_twin.js
+    node twin.js
     ```
 
 1. **デバイス** ターミナルで、デバイスによって更新情報が受信されていることを確認します。
@@ -151,44 +206,54 @@ git clone https://github.com/Azure/azure-iot-sdk-node
       }
     }
     updated the property
-    Properties have been reported for component
     ```
 
 1. **サービス** ターミナルで、次のコマンドを実行して、プロパティが更新されていることを確認します。
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. **サービス** ターミナル出力の `thermostat1` コンポーネントの下のデジタル ツイン応答で、更新されたターゲット温度が報告されているのがわかります。 デバイスでの更新が完了するまで、しばらく時間がかかる場合があります。 デバイスによってプロパティの更新が処理されるまで、この手順は繰り返します。
+1. **サービス** ターミナル出力の ¬reported` properties セクションに、更新されたターゲット温度が報告されているのがわかります。 デバイスでの更新が完了するまで、しばらく時間がかかる場合があります。 デバイスによってプロパティの更新が処理されるまで、この手順は繰り返します。
 
     ```json
-    targetTemperature: 42,
+    "reported": {
+      //...
+      "targetTemperature": {
+        "value": 42,
+        "ac": 200,
+        "ad": "Successfully executed patch for targetTemperature",
+        "av": 4
+      },
+      //...
+    }
     ```
 
 ### <a name="invoke-a-command"></a>コマンドを呼び出す
 
-1. *invoke_command.js* ファイルを開き、コードを確認します。
+1. *device_method.js* ファイルを開き、コードを確認します。
 
 1. "**サービス**" ターミナルにアクセスします。 次のコマンドを使用して、コマンドを呼び出すためのサンプルを実行します。
 
     ```cmd/sh
-    set IOTHUB_COMMAND_NAME=getMaxMinReport
-    set IOTHUB_COMMAND_PAYLOAD=commandpayload
-    node invoke_command.js
+    set IOTHUB_METHOD_NAME=getMaxMinReport
+    set IOTHUB_METHOD_PAYLOAD=commandpayload
+    node device_method.js
     ```
 
 1. **サービス** ターミナル出力に、次の確認が表示されます。
 
     ```cmd/sh
+    getMaxMinReport on my-pnp-device:
     {
-        xMsCommandStatuscode: 200,  
-        xMsRequestId: 'ee9dd3d7-4405-4983-8cee-48b4801fdce2',  
-        connection: 'close',  'content-length': '18',  
-        'content-type': 'application/json; charset=utf-8',  
-        date: 'Thu, 09 Jul 2020 15:05:14 GMT',  
-        server: 'Microsoft-HTTPAPI/2.0',  vary: 'Origin',  
-        body: 'min/max response'
+      "status": 200,
+      "payload": {
+        "maxTemp": 23.460596940801928,
+        "minTemp": 23.460596940801928,
+        "avgTemp": 23.460596940801928,
+        "endTime": "2020-10-05T12:48:08.562Z",
+        "startTime": "2020-10-05T12:47:54.450Z"
+      }
     }
     ```
 

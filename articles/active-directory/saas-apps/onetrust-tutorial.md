@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c840f123d74222770f1d044e085cf131f5ab708
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cf2ac8cda9df18bf02b93446605ed2283562cf6b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547966"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル: Azure Active Directory と OneTrust Privacy Management Software の統合
 
@@ -101,7 +101,7 @@ OneTrust Privacy Management Software で Azure AD シングル サインオン�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[OneTrust Privacy Management Software のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子] と [応答 URL] が強調表示され、[保存] ボタンが選択されている [基本的な SAML 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** テキスト ボックスに、`https://www.onetrust.com/saml2` という URL を入力します。
 

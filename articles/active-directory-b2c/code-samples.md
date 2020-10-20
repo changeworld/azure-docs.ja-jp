@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 76cacbea3f98f65e290cb2722062127d2264e171
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 63a79df8e540e88d0f1e3f4c5b8d339ff03c877f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664836"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854292"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -54,3 +54,15 @@ ms.locfileid: "91664836"
 | サンプル | 説明 |
 |--------| ----------- |
 | [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML ID プロバイダーとして動作するように構成された Azure AD B2C をテストするための SAML テスト アプリケーション。 |
+
+## <a name="api-connectors"></a>API コネクタ
+
+次の表に、[API コネクタ](api-connectors-overview.md)を使用したユーザー フローで Web API を活用するためのコード サンプルへのリンクを示します。
+
+## <a name="api-connector-azure-function-quickstarts"></a>API コネクタを使用した Azure 関数のクイックスタート
+
+| サンプル                                                                                                                          | 説明                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | この .NET Core Azure 関数サンプルには、特定の電子メール ドメインへのサインアップを制限し、ユーザー指定の情報を検証する方法が示されています。 |
+| [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | この Node.js Azure 関数サンプルには、特定の電子メール ドメインへのサインアップを制限し、ユーザー指定の情報を検証する方法が示されています。  |
+| [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | この Python Azure 関数サンプルには、特定の電子メール ドメインへのサインアップを制限し、ユーザー指定の情報を検証する方法が示されています。    |

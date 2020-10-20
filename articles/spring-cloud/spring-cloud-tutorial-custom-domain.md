@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326152"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945772"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -28,9 +28,53 @@ ms.locfileid: "91326152"
 * サードパーティ プロバイダーからのプライベート証明書 (つまり自己署名証明書)。 証明書はドメインと一致している必要があります。
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) のデプロイ済みインスタンス
 
-## <a name="import-certificate"></a>証明書のインポート 
-証明書をインポートする手順では、PEM または PFX でエンコードされたファイルがディスク上にあり、秘密キーを持っている必要があります。 
+## <a name="import-certificate"></a>証明書のインポート
+### <a name="prepare-your-certificate-file-in-pfx-optional"></a>PFX で証明書ファイルを準備する (省略可能)
+Azure Key Vault は、PEM および PFX 形式のプライベート証明書のインポートをサポートしています。 証明書プロバイダーから取得した PEM ファイルが次のセクションで動作しない場合: 「[Key Vault に証明書を保存する](#save-certificate-in-key-vault)」、ここの手順に従って Azure Key Vault 用の PFX を生成します。
 
+#### <a name="merge-intermediate-certificates"></a>中間証明書を結合する
+
+証明機関から証明書チェーンの複数の証明書を提供された場合は、それらの証明書を順番に結合する必要があります。
+
+これを行うには、受信した各証明書をテキスト エディターで開きます。
+
+結合した証明書用に _mergedcertificate.crt_ という名前のファイルを作成します。 テキスト エディターで、このファイルに各証明書の内容をコピーします。 証明書の順序は、証明書チェーンの順番に従う必要があります。自分の証明書から始まり、ルート証明書で終わります。 次の例のようになります。
+
+```
+-----BEGIN CERTIFICATE-----
+<your entire Base64 encoded SSL certificate>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 1>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 2>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded root certificate>
+-----END CERTIFICATE-----
+```
+
+#### <a name="export-certificate-to-pfx"></a>PFX への証明書のエクスポート
+
+結合した TLS/SSL 証明書を、証明書の要求と一緒に生成された秘密キーと共にエクスポートします。
+
+証明書の要求の生成に OpenSSL を使用した場合、秘密キー ファイルは作成されています。 証明書を PFX にエクスポートするには、次のコマンドを実行します。 プレースホルダーの _&lt;private-key-file>_ と _&lt;merged-certificate-file>_ をそれぞれ、秘密キーのパスとマージされた証明書ファイルに変更します。
+
+```bash
+openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
+```
+
+メッセージが表示されたら、エクスポートのパスワードを定義します。 このパスワードは、後で TLS/SSL 証明書を Azure Key Vault にアップロードするときに使用します。
+
+IIS または _Certreq.exe_ を使用して証明書の要求を生成した場合は、ローカル コンピューターに証明書をインストールした後で[証明書を PFX にエクスポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))します。
+
+### <a name="save-certificate-in-key-vault"></a>Key Vault に証明書を保存する
+証明書をインポートする手順では、PEM または PFX でエンコードされたファイルがディスク上にあり、秘密キーを持っている必要があります。 
+#### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 証明書をキー コンテナーにアップロードするには、次の操作を行います。
 1. キー コンテナー インスタンスに移動します。
 1. 左側のナビゲーション ペインで、 **[証明書]** をクリックします。
@@ -42,7 +86,17 @@ ms.locfileid: "91326152"
 
     ![証明書のインポート 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
-証明書をインポートする前に、次のようにして Azure Spring Cloud にキー コンテナーへのアクセス権を付与します。
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+
+```azurecli
+az keyvault certificate import --file <path to .pfx file> --name <certificate name> --vault-name <key vault name> --password <export password>
+```
+---
+
+### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>キー コンテナーへの Azure Spring Cloud のアクセス権を付与する
+
+証明書をインポートする前に、次のようにして Azure Spring Cloud にキー コンテナーへのアクセス権を付与する必要があります。
+#### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 1. キー コンテナー インスタンスに移動します。
 1. 左側のナビゲーション ペインで、 **[アクセス ポリシー]** をクリックします。
 1. 上部のメニューで、 **[アクセス ポリシーの追加]** をクリックします。
@@ -54,50 +108,41 @@ ms.locfileid: "91326152"
 
 ![証明書のインポート 2](./media/custom-dns-tutorial/import-certificate-b.png)
 
-または、Azure CLI を使用して、Azure Spring Cloud にキー コンテナーへのアクセス権を付与することもできます。
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-次のコマンドを使用して、オブジェクト ID を取得します。
+Azure Spring Cloud にキー コンテナーへの読み取りアクセス権を付与し、次のコマンドの `<key vault resource group>` と `<key vault name>` を置き換えます。
 ```
-az ad sp show --id <service principal id> --query objectId
-```
-
-Azure Spring Cloud にキー コンテナーへの読み取りアクセス権を付与します。次のコマンドではオブジェクト ID を置き換えてください。
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list --secret-permissions get list
 ``` 
+---
 
-Azure Spring Cloud に証明書をインポートするには、次の操作を行います。
+### <a name="import-certificate-to-azure-spring-cloud"></a>Azure Spring Cloud に証明書をインポートする
+#### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 1. サービス インスタンスに移動します。 
 1. アプリの左側のナビゲーション ペインで、 **[TLS/SSL の設定]** を選択します。
 1. その後、 **[Key Vault 証明書のインポート]** をクリックします。
 
     ![証明書のインポート](./media/custom-dns-tutorial/import-certificate.png)
 
-または、Azure CLI を次のように使用して、証明書をインポートすることもできます。
+1. 証明書が正常にインポートされると、 **[秘密キー証明書]** の一覧に表示されます。
+
+    ![秘密キー証明書](./media/custom-dns-tutorial/key-certificates.png)
+
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
 ```
 az spring-cloud certificate add --name <cert name> --vault-uri <key vault uri> --vault-certificate-name <key vault cert name>
 ```
 
-> [!IMPORTANT] 
-> 前の証明書のインポート コマンドを実行する前に、必ず Azure Spring Cloud にキー コンテナーへのアクセス権を付与してください。 まだの場合は、次のコマンドを実行してアクセス権を付与できます。
-
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list
-``` 
-
-証明書が正常にインポートされると、 **[秘密キー証明書]** の一覧に表示されます。
-
-![秘密キー証明書](./media/custom-dns-tutorial/key-certificates.png)
-
-または、Azure CLI を次のように使用して、証明書の一覧を表示することもできます。
+インポートされた証明書の一覧を表示するには
 
 ```
 az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!IMPORTANT] 
-> この証明書を使用してカスタム ドメインをセキュリティで保護するには、証明書を特定のドメインにバインドする必要があります。 このドキュメントの「**SSL バインドの追加**」の手順に従ってください。
+> この証明書を使用してカスタム ドメインをセキュリティで保護するには、証明書を特定のドメインにバインドする必要があります。 次のセクションの手順に従います: 「[SSL バインドの追加](#add-ssl-binding)」。
 
 ## <a name="add-custom-domain"></a>カスタム ドメインの追加
 カスタム DNS 名を Azure Spring Cloud にマップするには、CNAME レコードを使用できます。 
@@ -113,6 +158,7 @@ DNS プロバイダーに移動し、CNAME レコードを追加して、ドメ�
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Azure Spring Cloud アプリへのカスタム ドメインのマップ
 Azure Spring Cloud にアプリケーションがない場合は、「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master)」の手順に従ってください。
 
+#### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 アプリケーション ページに移動します。
 
 1. **[カスタム ドメイン]** を選択します。
@@ -126,34 +172,38 @@ Azure Spring Cloud にアプリケーションがない場合は、「[クイッ
 
     ![カスタム ドメインの追加](./media/custom-dns-tutorial/add-custom-domain.png)
 
-または、Azure CLI を次のように使用して、カスタム ドメインを追加することもできます。
-```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
-```
-
 1 つのアプリは複数のドメインを持つことができますが、1 つのドメインは 1 つのアプリにのみマップできます。 カスタムド メインがアプリに正常にマップされると、カスタム ドメイン テーブルにそのドメインが表示されます。
 
 ![カスタム ドメイン テーブル](./media/custom-dns-tutorial/custom-domain-table.png)
 
-または、Azure CLI を次のように使用して、カスタム ドメインの一覧を表示することもできます。
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+```
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
+```
+
+カスタム ドメインの一覧を表示するには
 ```
 az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!NOTE]
 > カスタム ドメインの **[セキュリティ保護なし]** というラベルは、まだ SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、エラーまたは警告が表示されます。
 
 ## <a name="add-ssl-binding"></a>SSL バインドの追加
+
+#### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 前の図に示されているように、カスタム ドメイン テーブルで **[SSL バインディングの追加]** を選択します。  
 1. **[証明書]** で選択するか、証明書をインポートします。
 1. **[保存]** をクリックします。
 
     ![SSL バインディングの追加 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
-または、Azure CLI を次のように使用して、**SSL バインディングを追加する**こともできます。
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> 
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 SSL バインディングが正常に追加されると、ドメインの状態は安全になり、 **[正常]** と表示されます。 
 
@@ -161,16 +211,16 @@ SSL バインディングが正常に追加されると、ドメインの状態�
 
 ## <a name="enforce-https"></a>HTTPS の適用
 既定では、ユーザーは引き続き HTTP を使用してアプリにアクセスできますが、管理者はすべての HTTP 要求を HTTPS ポートにリダイレクトすることができます。
-
+#### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 アプリ ページで、左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 次に、 **[HTTPS のみ]** を *True* に設定します。
 
 ![SSL バインディングの追加 3](./media/custom-dns-tutorial/enforce-http.png)
 
-または、Azure CLI を次のように使用して、HTTPS を適用することもできます。
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
+az spring-cloud app update -n <app name> --resource-group <resource group name> --service <service name> --https-only
 ```
-
+---
 操作が完了したら、アプリを指す HTTPS URL のいずれかに移動します。 HTTP URL では機能しないことに注意してください。
 
 ## <a name="see-also"></a>関連項目

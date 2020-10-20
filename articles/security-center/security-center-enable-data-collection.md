@@ -6,34 +6,39 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e5c9540bed34de3cad5c74c7041c8d7e06aef9ca
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447257"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946061"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
 
-不足している更新プログラム、OS のセキュリティ設定ミス、エンドポイント保護のステータス、正常性と脅威の防止を可視化するためには、データ収集が欠かせません。 
+不足している更新プログラム、OS のセキュリティ設定ミス、エンドポイント保護のステータス、正常性と脅威の防止を可視化するためには、データ収集が欠かせません。 データ収集を必要とするのは、コンピューティング リソース (VM、仮想マシン スケール セット、IaaS コンテナー、非 Azure コンピューター) だけです。 Azure Security Center の機能は、エージェントをプロビジョニングしなくても利用することができます。ただしセキュリティは限られており、前述の機能はサポートされません。  
 
-この記事では、Log Analytics エージェントをインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法について説明します。 データ収集を有効にするためには、両方の操作が必要となります。 
+この記事では、Log Analytics エージェントをインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法について説明します。 データ収集を有効にするためには、両方の操作が必要となります。 新しいワークスペースと既存のワークスペースのどちらを使用する場合でも、Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
-> [!NOTE]
-> - データ収集を必要とするのは、コンピューティング リソース (VM、仮想マシン スケール セット、IaaS コンテナー、非 Azure コンピューター) だけです。 Azure Security Center の機能は、エージェントをプロビジョニングしなくても利用することができます。ただしセキュリティは限られており、前述の機能はサポートされません。  
-> - サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
-> - 新しいワークスペースと既存のワークスペースのどちらを使用する場合でも、Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+> [!TIP]
+> サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
 
 ## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>Log Analytics エージェントの自動プロビジョニングを有効にする<a name="auto-provision-mma"></a>
+
+> [!NOTE]
+> Azure Sentinel のユーザー: 単一ワークスペースのコンテキスト内でのセキュリティ イベントの収集は、Azure Security Center と Azure Sentinel のどちらか一方からのみ構成できます。両方からは不可能です。 既に Azure Security Center から Azure Defender アラートを取得しており、なおかつセキュリティ イベントを収集するように設定されているワークスペースに Azure Sentinel を追加する予定の場合、次の 2 つの選択肢があります。
+> - Azure Security Center でのセキュリティ イベントの収集をそのまま使用する。 それらのイベントは、Azure Security Center だけでなく Azure Defender でも照会、分析できるようになります。 ただし、Azure Sentinel でコネクタの接続状態を監視したり、その構成を変更したりすることはできません。 この点が問題となる場合は、2 つ目の選択肢を検討してください。
+>
+> - Azure Security Center での[セキュリティ イベントの収集を無効](#data-collection-tier)にした後、Azure Sentinel でセキュリティ イベント コネクタを追加する。 1 つ目の選択肢と同様、イベントの照会と分析は、Azure Sentinel と Azure Defender/ASC の両方で行えますが、コネクタの接続状態を監視したりその構成を変更したりする作業は、Azure Sentinel でしか行えません。
+
 
 マシンからデータを収集するには、Log Analytics エージェントがインストールされている必要があります。 エージェントのインストールは自動で実行できますが (推奨)、手動でインストールすることもできます。 既定では、自動プロビジョニングはオフです。
 
 自動プロビジョニングがオンの場合、Security Center では、サポートされているすべての Azure VM と新しく作成される VM に Log Analytics エージェントをデプロイします。 自動プロビジョニングをお勧めしますが、必要に応じてエージェントを手動でインストールすることもできます ([Log Analytics エージェント拡張機能の手動インストール](#manual-agent)に関するセクションを参照してください)。
 
-
+お使いのマシンにエージェントが展開されていることで、Security Center は、システムの更新状態、OS セキュリティ構成、エンドポイント保護に関連する追加の推奨事項を提供し、追加のセキュリティ警告を生成できます。
 
 Log Analytics エージェントの自動プロビジョニングを有効にするには、次の手順に従います。
 
@@ -44,20 +49,9 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化":::
 
->[!TIP]
-> ワークスペースをプロビジョニングする必要がある場合は、エージェントのインストールに最大で 25 分かかることがあります。
+    >[!TIP]
+    > ワークスペースをプロビジョニングする必要がある場合は、エージェントのインストールに最大で 25 分かかることがあります。
 
-お使いのマシンにエージェントが展開されていることで、Security Center は、システムの更新状態、OS セキュリティ構成、エンドポイント保護に関連する追加の推奨事項を提供し、追加のセキュリティ警告を生成できます。
-
->[!NOTE]
-> 自動プロビジョニングを**オフ**に設定しても、Log Analytics エージェントが既にプロビジョニングされている Azure VM から、そのエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
-
->[!NOTE]
-> - 既存のインストール済み環境をプロビジョニングする手順については、「[既にインストールされているエージェントが存在する場合の自動プロビジョニング](#preexisting)」を参照してください。
-> - 手動プロビジョニングの手順については、[Log Analytics エージェント拡張機能の手動インストール](#manual-agent)に関するセクションを参照してください。
-> - 自動プロビジョニングをオフにする手順については、「[自動プロビジョニングを無効にする](#offprovisioning)」を参照してください。
-> - PowerShell を使用して Security Center をオンボードする方法については、「[Automate onboarding of Azure Security Center using PowerShell](security-center-powershell-onboarding.md)」 (PowerShell を使用して Azure Security Center のオンボードを自動化する) を参照してください。
->
 
 ## <a name="workspace-configuration"></a>ワークスペースの構成
 Security Center によって収集されたデータは、Log Analytics ワークスペースに保存されます。 Security Center によって作成されたワークスペースまたは自分で作成した既存のワークスペースに保存されているデータを Azure VM から収集できます。 
@@ -147,20 +141,16 @@ Security Center によって作成されたワークスペースを選択する�
 Azure Security Center 内でデータ収集レベルを選択した場合、その影響を受けるのは Log Analytics ワークスペース内のセキュリティ イベントのストレージのみです。 Log Analytics エージェントでは、ご利用の Log Analytics ワークスペース (存在する場合) に格納するように選択したセキュリティ イベントのレベルに関係なく、Azure Security Center での脅威の防止に必要なセキュリティ イベントが引き続き収集され分析されます。 ご利用のワークスペースにセキュリティ イベントを格納するように選択すると、そのワークスペース内のセキュリティ イベントの調査、検索、および監査が有効にされます。 
 > [!NOTE]
 > Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
-> 
-> ご利用のワークスペースに格納される 4 つのイベント セットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。 
 
+ご利用のワークスペースに格納される 4 つのイベント セットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。 
 - **なし** – セキュリティ イベントのストレージを無効にします。 これが既定の設定です。
 - **最小** - イベント ボリュームを最小限に抑える必要があるお客様向けの小さなイベント セットです。
 - **共通** - これは、ほとんどのお客様のニーズを満たすイベントのセットです。このセットでは、完全な監査証跡が可能です。
 - **すべてのイベント** - すべてのイベントを格納する必要があるお客様向けです。
 
+これらのセキュリティ イベント セットは、Azure Defender でのみ使用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 
-> [!NOTE]
-> これらのセキュリティ イベント セットは、Azure Defender でのみ使用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 これらのセットは、一般的なシナリオに対応するように設計されています。 実装前に、どのセットがニーズに合うかを必ず評価してください。
->
->
 
 Microsoft では、**共通**イベント セットと**最小**イベント セットに属するイベントを決定するために、お客様や業界標準化団体と協力して、各イベントがフィルター処理されない頻度とイベントの使用方法を確認しました。 このプロセスでは次のガイドラインが使用されました。
 
@@ -264,9 +254,8 @@ Log Analytics エージェントを手動でインストールして、Security 
 
 1. Resource Manager テンプレートを使用して新しい VM にエージェントをデプロイする場合は、Log Analytics エージェントをインストールします。
 
-   a.  [Windows 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-windows.md)
-    
-   b.  [Linux 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-linux.md)
+   - [Windows 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-windows.md)
+   - [Linux 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-linux.md)
 
 1. 既存の VM に拡張機能をデプロイする場合は、「[Azure Virtual Machines に関するデータの収集](../azure-monitor/learn/quick-collect-azurevm.md)」の手順に従います。
 
@@ -277,7 +266,6 @@ Log Analytics エージェントを手動でインストールして、Security 
 1. PowerShell を使用して拡張機能をデプロイするには、仮想マシンのドキュメントの手順を使用します。
 
     - [Windows マシンの場合](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
-
     - [Linux マシンの場合](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
 
 
@@ -302,8 +290,8 @@ Log Analytics エージェントを手動でインストールして、Security 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
 
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
 
 
 

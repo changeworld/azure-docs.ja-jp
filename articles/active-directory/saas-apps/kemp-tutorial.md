@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300035"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945211"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>チュートリアル:Azure Active Directory SSO と Kemp LoadMaster Azure AD integration の統合
 
@@ -145,7 +145,7 @@ Kemp LoadMaster Azure AD integration で Azure AD SSO を構成してテスト�
 
 1. [Virtual Services]\(仮想サービス\) の [Parameters]\(パラメーター\) を指定します。
 
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-1.png)
+    ![ボックスに例の値が設定されている [Please Specify the Parameters for the Virtual Service]\(仮想サービスのパラメーターを指定してください\) ページを示すスクリーンショット。](./media/kemp-tutorial/kemp-1.png)
 
     a. Virtual Address (仮想アドレス)
     
@@ -161,7 +161,7 @@ Kemp LoadMaster Azure AD integration で Azure AD SSO を構成してテスト�
 
 1. [Real Server] の [Parameters]\(パラメーター\) を指定します。
     
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-2.png)
+    ![ボックスに例の値が設定されている [Please Specify the Parameters for the Real Server]\(Real Server のパラメーターを指定してください\) ページを示すスクリーンショット。](./media/kemp-tutorial/kemp-2.png)
 
     a. [Allow Remote Addresses]\(リモート アドレスを許可する\) を選択します
     
@@ -203,7 +203,7 @@ Kemp LoadMaster Azure AD integration で Azure AD SSO を構成してテスト�
 
 1. [SSL Properties]\(SSL のプロパティ\) (レイヤー7 で動作します) をクリックします。
     
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-3.png)
+    ![[SSL Acceleration]\(SSL アクセラレーション\) の [Enabled]\(有効\) が選択され、証明書の例が選択されている [SSL Properties]\(SSL のプロパティ\) を示すスクリーンショット。](./media/kemp-tutorial/kemp-3.png)
     
     a. [SSL Acceleration]\(SSL アクセラレーション\) の [Enabled]\(有効\) をクリックします。
     
@@ -222,7 +222,7 @@ Kemp LoadMaster Azure AD integration Web Console に移動する
 
 1. [Certificates and Authority]\(証明書と機関\) の [Intermediate Certificates]\(中間証明書\) をクリックします。
 
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-6.png)
+    ![選択した証明書の例が選択されている [Currently installed Intermediate Certificates]\(現在インストールされている中間証明書\) セクションを示すスクリーンショット。](./media/kemp-tutorial/kemp-6.png)
 
     a. [Add a new Intermediate Certificate]\(新しい中間証明書の追加\) の [Choose File]\(ファイルの選択\) をクリックします。
     
@@ -238,7 +238,7 @@ Kemp LoadMaster Azure AD integration Web Console に移動する
  
 [Virtual Services]\(仮想サービス\) の [Manage SSO]\(SSO の管理\) にアクセスします。
 
-   ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-7.png)
+   ![[Manage SSO]\(SSO の管理\) ページを示すスクリーンショット。](./media/kemp-tutorial/kemp-7.png)
    
    a. 名前を指定した後、[Add new Client Side Configuration]\(新しいクライアント側の構成の追加\) の [追加] をクリックします。
 
@@ -268,7 +268,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 1. [Modify]\(変更\) をクリックし、[ESP Options]\(ESP のオプション\) に移動します。
     
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-8.png)
+    ![[ESP Options]\(ESP オプション\) および [Real Servers] セクションが展開されている、[View/Modify Services]\(サービスの表示と変更\) ページを示すスクリーンショット。](./media/kemp-tutorial/kemp-8.png)
 
     a. [Enable ESP]\(ESP を有効にする\) をクリックします。
     
@@ -286,7 +286,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 以前の認証されていないアクセスではなく、テナントのログイン ページが表示されます。 
 
-![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-9.png)
+![テナントの [サインイン] ページを示すスクリーンショット。](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>Kerberos ベースの認証の構成 
  
@@ -294,7 +294,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 1. ユーザー アカウントを作成します (この例では AppDelegation)。
     
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-10.png)
+    ![[Account]\(アカウント\) タブが選択されている [kcd user Properties]\(kcd ユーザーのプロパティ\) ウィンドウを示すスクリーンショット。](./media/kemp-tutorial/kemp-10.png)
 
 
     a. [属性エディター] タブを選択します。
@@ -311,7 +311,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 1. [委任] タブを選択します。
 
-    ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-11.png)
+    ![[Delegation]\(委任\) タブが選択されている [kcd user Properties]\(kcd ユーザーのプロパティ\) ウィンドウを示すスクリーンショット。](./media/kemp-tutorial/kemp-11.png)
 
     a. [指定されたサービスへの委任でのみこのユーザーを信頼する] を選択します。
 
@@ -332,7 +332,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 Kemp LoadMaster Azure AD integration Web Console > [Virtual Services]\(仮想サービス\) > [Manage SSO]\(SSO の管理\) に移動します。
 
-![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-12.png)
+![[Manage SSO]\(SSO の管理\) の [Manage Domain]\(ドメインの管理\) ページを示すスクリーンショット。](./media/kemp-tutorial/kemp-12.png)
 
 a. [Server Side Single Sign On Configurations]\(サーバー側のシングル サインオンの構成\) に移動します。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759171"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945378"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (C#)
 
@@ -34,7 +34,7 @@ Windows 上でこのクイックスタートを実行するには、開発用マ
 
 「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C#)](quickstart-connect-device-csharp.md)」を完了している場合は、リポジトリを既にクローンしています。
 
-Microsoft Azure IoT SDK for .NET GitHub リポジトリからサンプルをクローンします。 任意のフォルダーでコマンド プロンプトを開きます。 次のコマンドを実行して、[Microsoft Azure IoT Samples for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリをクローンします。
+Azure IoT Samples for C# GitHub リポジトリからサンプルをクローンします。 任意のフォルダーでコマンド プロンプトを開きます。 次のコマンドを実行して、[Microsoft Azure IoT Samples for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリをクローンします。
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -55,7 +55,6 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | IOTHUB_DEVICE_DPS_ID_SCOPE | [環境の設定](set-up-environment.md)の完了時に書き留めておいた値 |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
     | IOTHUB_DEVICE_DPS_DEVICE_KEY | [環境の設定](set-up-environment.md)の完了時に書き留めておいた値 |
-
 
 1. これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
 
@@ -81,9 +80,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
 
-### <a name="get-digital-twin"></a>デジタル ツインを取得する
+### <a name="get-device-twin"></a>デバイス ツインを取得する
 
-次のコード スニペットは、サービス アプリケーションがデジタル ツインを取得する方法を示しています。
+次のコード スニペットは、サービス アプリケーションがデバイス ツインを取得する方法を示しています。
 
 ```C#
 // Get a Twin and retrieves model Id set by Device client
@@ -92,7 +91,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> このサンプルでは、**IoT Hub サービス クライアント**の **Microsoft.Azure.Devices.Client;** 名前空間を使用します。 モデル ID を取得する方法の詳細については、[開発者ガイド](concepts-developer-guide-service.md)を参照してください。
+> このサンプルでは、**IoT Hub サービス クライアント**の **Microsoft.Azure.Devices.Client** 名前空間を使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 このコードは、次の出力を生成します。
 
@@ -101,7 +100,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
       Model Id of this Twin is: dtmi:com:example:Thermostat;1
 ```
 
-次のコード スニペットは、*パッチ*を使用して、デバイスのデジタル ツインを介してプロパティを更新する方法を示しています。
+次のコード スニペットは、"*パッチ*" を使用して、デバイス ツインを介してプロパティを更新する方法を示しています。
 
 ```C#
 // Update the twin

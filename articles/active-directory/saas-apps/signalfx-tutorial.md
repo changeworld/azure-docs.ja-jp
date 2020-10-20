@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521571"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SignalFx の統合
 
@@ -159,7 +159,7 @@ SSO のテスト方法および SignalFx への初回ログインに対する期
         * アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 * SignalFx アプリケーションにはアクセス パネルから、または組織に割り当てられたカスタム ログイン ページを介してアクセスできます。 テスト ユーザーは、そのいずれかの場所から統合をテストする必要があります。
-    * テスト ユーザーは、先ほどこのプロセスで作成された、 **b.simon@contoso.com** の資格情報を使用できます。
+    * テスト ユーザーは、先ほどこのプロセスで作成された、**b.simon\@contoso.com** の資格情報を使用できます。
 
 ### <a name="first-time-logins"></a>初回ログイン
 

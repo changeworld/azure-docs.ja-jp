@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bc820eb282d08c248b588aa926eb3fd837fe51c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549944"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858117"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Knowledge Anywhere LMS の統合
 
@@ -111,19 +111,19 @@ Knowledge Anywhere LMS に対する Azure AD SSO を構成してテストする�
 
 4. **[Site]\(サイト\)** タブを選択します。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![[Site]\(サイト\) タブを示すスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. **[SAML Settings]\(SAML 設定\)** タブを選択します。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![[SAML Settings]\(SAML 設定\) が選択されている [Knowledge anywhere] ページが示されているスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. **[Add New]\(新規追加\)** をクリックします。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![[Service Provider Settings]\(サービス プロバイダーの設定\) の [Add New]\(新規追加\) ボタンを示すスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. **[Add/Update SAML Settings]\(SAML 設定の追加/更新\)** ページで、次の手順を実行します。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![ここで説明されている変更を行うことができる [Add/Update SAML Settings]\(SAML 設定の追加/更新\) ページを示すスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. 所属する組織に応じて [IDP Name]\(IDP 名\) に入力します (例: `Azure`)。
 

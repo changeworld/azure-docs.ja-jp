@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - IoT Edge ライブ ビデオ分析モジュールを変更する
+title: チュートリアル - Azure IoT Edge ライブ ビデオ分析モジュールを変更する
 description: このチュートリアルでは、Video analytics - object and motion detection (ビデオ分析 - 物体とモーションの検出) アプリケーション テンプレートで使用されるライブ ビデオ分析ゲートウェイ モジュールに変更を加えてビルドする方法について説明します。
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037996"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873474"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
 
@@ -50,7 +50,7 @@ VS Code で、ローカルの *live-video-analytics* リポジトリ フォル�
 1. `LvaEdgeGatewayModule` モジュール セクションを編集して、イメージの名前と AMS アカウントの名前を `env:amsAccountName:value` に追加します。
 1. `lvaYolov3` モジュール セクションを編集して、イメージの名前を追加します。
 1. `lvaEdge` モジュール セクションを編集して、イメージの名前を追加します。
-1. 構成の方法について詳しくは、[Azure IoT Central でのビデオ分析アプリケーションの作成](tutorial-video-analytics-create-app.md)に関するページを参照してください。
+1. 構成の方法について詳しくは、[Azure IoT Central でのビデオ分析アプリケーションの作成](tutorial-video-analytics-create-app-yolo-v3.md)に関するページを参照してください。
 
 ## <a name="build-the-code"></a>コードのビルド
 

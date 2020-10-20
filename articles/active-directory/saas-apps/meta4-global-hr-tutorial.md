@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
-ms.openlocfilehash: a5d10d776de483919a64ccc46ca4cbb2b633f250
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6b8ea30e9d6c9b4557643d461d39b6375e987784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552579"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>チュートリアル:Azure Active Directory と Meta4 Global HR の統合
 
@@ -103,13 +103,13 @@ Meta4 Global HR との Azure AD シングル サインオンを構成するに�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Meta4 Global HR のドメインと URL] のシングル サインオン情報](common/both-replyurl.png)
+    ![応答 U R L を入力し、[保存] を選択できる、[基本的な SAML 構成] を示すスクリーンショット。](common/both-replyurl.png)
 
     **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.meta4globalhr.com/saml.sso/SAML2/POST` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Meta4 Global HR のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.meta4globalhr.com` という形式で URL を入力します。
 

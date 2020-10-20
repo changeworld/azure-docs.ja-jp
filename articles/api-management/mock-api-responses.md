@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631128"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930715"
 ---
 # <a name="tutorial-mock-api-responses"></a>チュートリアル:API の応答の模擬テストを実行する
 
@@ -102,7 +102,7 @@ API は、少なくとも 1 つの操作を公開します。 このセクショ
 
 1. **[API Management response]\(API Management 応答\)** ボックスに「**200 OK, application/json**」と入力します。 この選択は、API が、前のセクションで定義した応答のサンプルを返すことを示します。
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="モック API 応答" というテキストを含む黄色のバーは、API Management から返される応答によってモック作成ポリシーが送信されるが、実際のバックエンド応答ではないことを示します。
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="モック API 応答" というテキストを含む黄色のバーは、API Management から返された応答が[モック作成ポリシー](api-management-advanced-policies.md#mock-response)によってモック作成されるものの、バックエンドによって生成されるわけではないことを示しています。
 
 ## <a name="test-the-mocked-api"></a>モック API をテストする
 

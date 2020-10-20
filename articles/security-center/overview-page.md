@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447684"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952116"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Security Center の概要ページ
 
@@ -38,9 +38,9 @@ Security Center の概要ページで、ワークロードのセキュリティ�
 
 ページの中央には **4 つの中央タイル**があります。詳細については、専用ダッシュボードへの各リンクを参照してください。
 - **セキュア スコア** - Security Center によって、セキュリティの問題について、リソース、サブスクリプション、組織を継続的に評価されます。 その後、すべての結果を 1 つのスコアに集約して、現在のセキュリティの状況を一目で確認できるようにします。スコアが高くなるほど、識別されたリスク レベルが低下します。 [詳細については、こちらを参照してください](secure-score-security-controls.md)。
-- **コンプライアンス** - お客様の Azure 環境の継続的評価に基づき、お客様のコンプライアンス体制についての分析情報が Security Center から提供されます。 Security Center を使うと、セキュリティのベスト プラクティスに従って、ハイブリッド クラウド環境のリスク要因を分析できます。 それらの評価は、サポートされている一連の標準のコンプライアンス制御に対応付けられます。[詳細情報](security-center-compliance-dashboard.md)。
+- **コンプライアンス** - お客様の Azure 環境の継続的評価に基づき、お客様のコンプライアンス体制についての分析情報が Security Center から提供されます。 Security Center を使うと、セキュリティのベスト プラクティスに従って、ハイブリッド クラウド環境のリスク要因を分析できます。 それらの評価は、サポートされている一連の標準のコンプライアンス制御に対応付けられます。 [詳細については、こちらを参照してください](security-center-compliance-dashboard.md)。
 - **Azure Defender** - これは Azure とハイブリッド ワークロードを高度かつインテリジェントに保護するために Security Center 内に統合された、クラウド ワークロード保護プラットフォーム (CWPP) です。 タイルには、接続されているリソース (現在選択されているサブスクリプション用) と最近のアラート (重要度別にカラー コード) のカバレッジが表示されます。 [詳細については、こちらを参照してください](azure-defender.md)。
-- **インベントリ** - このタイルには、監視されていない VM の数と、Security CenterBen によって監視されるリソースのシンプルなバロメーターが表示されます。 [詳細については、こちらを参照してください](asset-inventory.md)。
+- **インベントリ** - このタイルには、監視されていない VM の数と、Security Center によって監視されるリソースのシンプルなバロメーターが表示されます。 [詳細については、こちらを参照してください](asset-inventory.md)。
 
 
 **[分析情報]** ウィンドウでは、ご利用の環境用にカスタマイズされた次のような項目が提供されます。

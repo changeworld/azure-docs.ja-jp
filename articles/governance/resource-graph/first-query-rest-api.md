@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:自分の初めての REST API クエリ
 description: このクイックスタートでは、手順に従い、REST API 用に Resource Graph エンドポイントを呼び出し、ご自分の初めてのクエリを実行します。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85802616"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057231"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>クイック スタート:REST API を使用して自分の初めて Resource Graph クエリを実行する
 
@@ -49,7 +49,8 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-上の **$restUri** 変数の `{subscriptionId}` を置き換えて、サブスクリプションに関する情報を取得します。 $response 変数には `Invoke-RestMethod` コマンドレットの結果が保持されており、[ConvertFrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) などのコマンドレットで解析できます。 REST API サービス エンドポイントで**要求本文**が必要な場合は、JSON 形式の変数を `Invoke-RestMethod` の `-Body` パラメーターに提供します。
+`$restUri` 変数の `{subscriptionId}` を置き換えて、サブスクリプションに関する情報を取得します。
+`$response` 変数には `Invoke-RestMethod` コマンドレットの結果が保持されており、[ConvertFrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) などのコマンドレットを使用して解析できます。 REST API サービス エンドポイントで**要求本文**が必要な場合は、JSON 形式の変数を `Invoke-RestMethod` の `-Body` パラメーターに提供します。
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 

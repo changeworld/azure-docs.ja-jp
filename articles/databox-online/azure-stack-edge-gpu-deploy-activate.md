@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743388"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938356"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro をアクティブにする
 
@@ -92,6 +92,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
  
 デバイスのアクティブ化は完了しました。 これで、デバイスで共有を追加できます。
 
+アクティベーション中に問題が発生した場合は、[アクティベーションと Azure Key Vault のエラーのトラブルシューティング](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266073"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944281"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -72,15 +72,15 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 2. **[Guided Configuration]\(ガイド付き構成\)** ページで、左上隅の **[Upgrade Guided Configuration]\(ガイド付き構成のアップグレード\)** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure14.png) 
+    ![[Upgrade Guided Configuration]\(ガイド付き構成のアップグレード\) アクションが選択された [Guided Configuration]\(ガイド付き構成\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure14.png) 
 
 3. [Upgrade Guide Configuration]\(ガイド付き構成のアップグレード\) ポップアップ画面で、 **[Choose File]\(ファイルの選択\)** を選択し、ダウンロードしたユース ケース パックをアップロードして、 **[Upload and Install]\(アップロードしてインストール\)** ボタンをクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure15.png) 
+    ![[Choose File]\(ファイルの選択\) と [Upload and Install]\(アップロードしてインストール\) が選択された [Upgrade Guide Configuration]\(ガイド付き構成のアップグレード\) ポップアップ画面が示されているスクリーンショット。](./media/kerbf5-tutorial/configure15.png) 
 
 4. アップグレードが完了したら、 **[Continue]\(続行\)** ボタンをクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure16.png)
+    ![[Continue]\(続行\) ボタンが選択された [Guided Configuration update is complete]\(ガイド付き構成の更新が完了しました\) ダイアログが示されているスクリーンショット。](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -213,60 +213,60 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **証明書の名前**を指定します (この後の構成で参照されます)。 **[Certificate Source]\(証明書ソース\)** で [Upload File]\(ファイルのアップロード\) を選択し、SAML シングル サインオンの構成時に Azure からダウンロードした証明書を指定します。 **[インポート]** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure01.png) 
+    ![証明書名が強調表示され、[Upload File]\(ファイルのアップロード\) と [Import]\(インポート\) ボタンが選択されている [SSL Certificate/Key Source]\(SSL 証明書/キー ソース\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure01.png) 
 
 1. 加えて、アプリケーション ホスト名の SSL 証明書が必要となります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の**パスワード**を指定します。 **[インポート]** をクリックします。
 
     >[!NOTE]
     >この例のアプリ名は `Kerbapp.superdemo.live` です。ワイルド カード証明書を使用しており、キー名は `WildCard-SuperDemo.live` です。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure02.png) 
+    ![値が入力され、[Import]\(インポート\) ボタンが選択されている [SSL Certificate/Key Source]\(SSL 証明書/キー ソース\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure02.png) 
  
 1. ここでは、ガイド付きエクスペリエンスを使用して Azure AD のフェデレーションとアプリケーション アクセスを設定します。 F5 BIG-IP の **[Main]\(メイン\)** に移動し、 **[Access]\(アクセス\) > [Guided Configuration]\(ガイド付き構成\) > [Federation]\(フェデレーション\) > [SAML Service Provider]\(SAML サービス プロバイダー\)** の順に選択します。 **[Next]\(次へ\)** をクリックし、 **[Next]\(次へ\)** をクリックして構成を開始します。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure03.png) 
+    ![[Federation]\(フェデレーション\) アイコンが強調表示され、[SAML Service Provider]\(SAML サービス プロバイダー\) が選択された [Guided Configuration]\(ガイド付き構成\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure03.png) 
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure04.png)
+    ![[Next]\(次へ\) ボタンが選択された [Guided Configuration - SAML Service Provider]\(ガイド付き構成 - SAML サービス プロバイダー\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure04.png)
 
 1. **構成名**を指定します。 **エンティティ ID** (Azure AD アプリケーションの構成で構成した内容と同じ) を指定します。 **ホスト名**を指定します。 参考のために**説明**を追加します。 それ以外は既定値のままとし、 **[Save & Next]\(保存して次へ\)** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure05.png) 
+    ![[Host name]\(ホスト名\) と [Description]\(説明\) のテキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Service Provider Properties]\(サービス プロバイダーのプロパティ\) を示すスクリーンショット。](./media/kerbf5-tutorial/configure05.png) 
 
 1. この例では、新しい仮想サーバーを 192.168.30.200 として作成します。ポートは 443 を使用します。 **[Destination Address]\(接続先のアドレス\)** に仮想サーバーの IP アドレスを指定します。 クライアントの **SSL プロファイル**を選択し、[Create new]\(新規作成\) を選択します。 あらかじめアップロードしておいたアプリケーション証明書 (この例ではワイルド カード証明書) および関連するキーを指定し、 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     >[!NOTE]
     >この例では、内部 Web サーバーがポート 80 で稼動しており、それを 443 で公開したいと考えています。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure06.png)
+    ![[Destination Address]\(宛先アドレス\) テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Virtual Server Properties]\(仮想サーバーのプロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure06.png)
 
 1. **[Select method to configure your IdP connector]\(IdP コネクタの構成方法を選択してください\)** で [Metadata]\(メタデータ\) を指定し、[Choose File]\(ファイルの選択\) をクリックして、先ほど Azure AD からダウンロードしたメタデータ XML ファイルをアップロードします。 SAML IDP コネクタの一意の**名前**を指定します。 先ほどアップロードした**メタデータ署名証明書**を選択します。 **[Save & Next]\(保存して次へ\)** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure07.png)  
+    ![[Name]\(名前\) テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [External Identity Provider Connector Settings]\(外部 ID プロバイダー コネクタの設定\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure07.png)  
 
 1. **[Select a Pool]\(プールの選択\)** で **[Create New]\(新規作成\)** を選択します (または既存のプールを選択します)。 他の値は既定値のままにしてください。    [Pool Servers]\(プール サーバー\) の **[IP Address/Node Name]\(IP アドレス/ノード名\)** に IP アドレスを入力します。 **ポート**を指定します。 **[Save & Next]\(保存して次へ\)** をクリックします。
  
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure08.png)
+    ![[IP Address/Node Name]\(IP アドレス/ノード名\) テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Pool Properties]\(プールのプロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure08.png)
 
 1. [Single Sign-On Settings]\(シングル サインオンの設定\) 画面で **[Enable Single Sign-On]\(シングル サインオンを有効にする\)** を選択します。 **[Selected Single Sign-On Type]\(選択されたシングル サインオンの種類\)** で **[Kerberos]** を選択します。 **[Username Source]\(ユーザー名ソース\)** の **session.saml.last.Identity** を **session.saml.last.attr.name.Identity** に置き換えます (この変数は、Azure AD で要求マッピングを使用して設定されます)。 **[Show Advanced Setting]\(詳細設定の表示\)** を選択します。 **[Kerberos Realm]\(Kerberos 領域\)** に、ドメイン名を入力します。 **[Account Name]\(アカウント名\)/[Account Password]\(アカウント パスワード\)** に、APM 委任アカウントとパスワードを指定します。 **[KDC]** フィールドに、ドメイン コントローラーの IP を指定します。 **[Save & Next]\(保存して次へ\)** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure09.png)   
+    ![テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Single Sign-On Settings]\(シングル サインオンの設定\) を示すスクリーンショット。](./media/kerbf5-tutorial/configure09.png)   
 
 1. このガイダンスの目的上、エンドポイントの確認は省略します。  詳細については、F5 のドキュメントを参照してください。  画面上で **[Save & Next]\(保存して次へ\)** を選択します。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure10.png) 
+    ![[Save & Next]\(保存して次へ\) ボタンが選択されている [Endpoint Checks Properties]\(エンドポイント チェックのプロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure10.png) 
 
 1. 既定値をそのまま使用し、 **[Save & Next]\(保存して次へ\)** をクリックします。 SAML セッション管理設定の詳細については、F5 のドキュメントを参照してください。
 
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure11.png) 
+    ![[Save & Next]\(保存して次へ\) ボタンが選択されている [Timeout Settings]\(タイムアウト設定\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure11.png) 
  
 1. 概要画面を確認し、 **[Deploy]\(デプロイ\)** を選択して BIG-IP を構成します。
  
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure12.png)
+    ![[Summary]\(概要\) セクションが強調表示され、[Deploy]\(デプロイ\) ボタンが選択されている [Your application is ready to be deployed]\(アプリケーションをデプロイする準備ができました\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure12.png)
 
 1. アプリケーションが構成されたら、 **[Finish]\(完了\)** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure13.png)
+    ![[Finish]\(完了\) ボタンが選択されている [Your application is deployed]\(アプリケーションがデプロイされました\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>高度な構成
 
@@ -317,27 +317,27 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
 15. **[Finished]\(完了\)** をクリックします。 新しいサーバーがリストに表示されます。 これで、新しい Active Directory サーバーが Active Directory サーバー リストに追加されます。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure17.png)
+    ![[General Properties]\(全般プロパティ\) と [Configuration]\(構成\) のセクションを示すスクリーンショット。](./media/kerbf5-tutorial/configure17.png)
 
 ### <a name="saml-configuration"></a>SAML の構成
 
 1. 後で設定プロセスで使用するメタデータ証明書を F5 にインポートする必要があります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure18.png)
+    ![[Import]\(インポート\) ボタンが選択されている [Import SSL Certificate/Key Source]\(SSL 証明書/キー ソースのインポート\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure18.png)
 
 2. SAML IDP を設定するには、 **[アクセス] > [フェデレーション] > [SAML: サービス プロバイダー] > [外部 Idp コネクタ]** の順に移動し、 **[作成] > [メタデータから]** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure19.png)
+    ![[Create]\(作成\) ドロップダウンで [From Metadata]\(メタデータから\) が選択された [SAML Service Provider]\(SAML サービス プロバイダー\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure19.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure20.png)
+    ![[Create New SAML IdP Connector]\(新しい SAML IdP コネクタの作成\) ダイアログを示すスクリーンショット。](./media/kerbf5-tutorial/configure20.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure21.png)
+    ![[General Settings]\(全般設定\) が選択された [Edit SAML IdP Connector]\(SAML IdP コネクタの編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure21.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure22.png)
+    ![[Single Sign On Service Settings]\(シングル サインオン サービス設定\) が選択された [Edit SAML IdP Connector]\(SAML IdP コネクタの編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure22.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure23.png)
+    ![[Security Settings]\(セキュリティの設定\) が選択された [Edit SAML IdP Connector]\(SAML IdP コネクタの編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure23.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure24.png)
+    ![[SLO Service Settings]\(SLO サービスの設定\) が選択された [Edit SAML IdP Connector]\(SAML IdP コネクタの編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure24.png)
 
 1. SAML SP を設定するために、 **[Access]\(アクセス\) > [Federation]\(フェデレーション\) > [SAML Service Provider]\(SAML サービス プロバイダー\) > [Local SP Services]\(ローカル SP サービス\)** の順に移動して、 **[Create]\(作成\)** をクリックします。 次の情報を入力して **[OK]** をクリックします。
 
@@ -348,17 +348,17 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * [Host]\(ホスト\): kerbapp200.superdemo.live
     * [Description]\(説明\): kerbapp200.superdemo.live
 
-     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure25.png)
+     ![[General Settings]\(全般設定\) が選択された [Edit SAML SP Service]\(SAML SP サービスの編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure25.png)
 
      b. SP 構成である KerbApp200SAML を選択し、 **[Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\)** をクリックします。
 
-     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure26.png)
+     ![[KerbAPP200 SAML] が選択されている [SAML Service Provider - Local SP Services]\(SAML サービス プロバイダー - ローカル SP サービス\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure26.png)
 
-     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure27.png)
+     ![選択された [Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\) ボタンを示すスクリーンショット。](./media/kerbf5-tutorial/configure27.png)
 
      c. **[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した**外部 IdP コネクタ**を選択して、 **[Update]\(更新\)** 、 **[OK]** の順にクリックします。
 
-     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure28.png)
+     ![[Add New Row]\(新しい行の追加\) ボタンが選択された、[Edit SAML IdPs that use this SP]\(この SP を使用する SAML IdP の編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure28.png)
 
 1. Kerberos SSO を構成する場合は、 **[Access]\(アクセス\) > [Single Sign-on]\(シングル サインオン\) > [Kerberos]** に移動し、必要な情報を入力して **[Finished]\(完了\)** をクリックします。
 
@@ -369,7 +369,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
     * **[User Realm Source]\(ユーザー領域のソース\)** : session.logon.last.domain
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure29.png)
+        ![[Username Source]\(ユーザー名ソース\) および [User Realm Source]\(ユーザー領域のソース\) のテキスト ボックスが強調表示された [Single Sign-On - Properties]\(シングル サインオン - プロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure29.png)
 
 1. アクセス プロファイルを構成する場合は、 **[Access]\(アクセス\) > [Profile/Policies]\(プロファイルまたはポリシー\) > [Access Profile (per session policies)]\(アクセス プロファイル (セッション ポリシーごと)\)** の順に移動して **[Create]\(作成\)** をクリックし、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
@@ -378,38 +378,38 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * [Profile Scope]\(プロファイルのスコープ\): プロファイル
     * 言語:英語
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure30.png)
+        ![[Name]\(名前\)、[Profile Type]\(プロファイルの種類\)、[Languages]\(言語\) のテキスト ボックスが強調表示された、[Profiles/Policies - Properties]\(プロファイル/ポリシー - プロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure30.png)
 
 1. 名前 (KerbApp200) をクリックし、次の情報を入力して、 **[Update]\(更新\)** をクリックします。
 
     * [Domain Cookie]\(ドメイン Cookie\): superdemo.live
     * [SSO Configuration]\(SSO 構成\): KerAppSSO_sso
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure31.png)
+        ![[Domain Cookie]\(ドメイン Cookie\) テキスト ボックスと [SSO Configuration]\(SSO 構成\) ドロップダウンが強調表示され、[Update]\(更新\) ボタンが選択されている、[SSO/Auth Domains]\(SSO および認証ドメイン\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure31.png)
 
 1. **[Access Policy]\(アクセス ポリシー\)** をクリックして、プロファイル "KerbApp200" の **[Edit Access Policy]\(アクセス ポリシーの編集\)** をクリックします。
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure32.png)
+    ![[Edit Access Policy for Profile KerbApp200]\(プロファイル KerbApp200 のアクセス ポリシーを編集する\) アクションが選択された [Access Policy]\(アクセス ポリシー\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure32.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure33.png)
+    ![[Access Policy]\(アクセス ポリシー\) ページと [SAML Authentication SP]\(SAML 認証 SP\) ダイアログを示すスクリーンショット。](./media/kerbf5-tutorial/configure33.png)
 
-    ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure34.png)
+    ![[Access Policy]\(アクセス ポリシー\) ページと、[Assignment]\(割り当て\) テキスト ボックスが強調表示された [Variable Assign]\(変数割り当て\) ダイアログを示すスクリーンショット。](./media/kerbf5-tutorial/configure34.png)
 
     * **session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}**
 
     * **session.ad.lastactualdomain  TEXT superdemo.live**
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure35.png)
+        ![[Access Policy]\(アクセス ポリシー\) ページと、[SearchFilter] テキスト ボックスが強調表示された [Active Directory] ダイアログを示すスクリーンショット。](./media/kerbf5-tutorial/configure35.png)
 
     * **(userPrincipalName=%{session.logon.last.usernameUPN})**
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure36.png)
+        ![[Access Policy]\(アクセス ポリシー\) ページと [AD Query - Branch Rules]\(AD クエリ - 分岐の規則\) ダイアログを示すスクリーンショット。](./media/kerbf5-tutorial/configure36.png)
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure37.png)
+        ![強調表示された [Custom Variable]\(カスタム変数\)および [Custom Expression]\(カスタム式\) のテキスト ボックスを示すスクリーンショット。](./media/kerbf5-tutorial/configure37.png)
 
     * **session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }**
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure38.png)
+        ![強調表示された [Username from Logon Page]\(ログオン ページのユーザー名\) テキスト ボックスを示すスクリーンショット。](./media/kerbf5-tutorial/configure38.png)
 
     * **mcget {session.logon.last.username}**
     * **mcget {session.logon.last.password**
@@ -420,7 +420,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * 説明:KerbApp200
     * Address:192.168.20.200
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure39.png)
+        ![[Name]\(名前\)、[Description]\(説明\)、[Address]\(アドレス\) のテキスト ボックスが強調表示され、[Finished]\(完了\) ボタンが選択された [New Node]\(新しいノード\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure39.png)
 
 1. 新しいプールを作成するために、 **[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プール リスト\) の順に移動して、[Create]\(作成\) をクリックし**、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
@@ -430,7 +430,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * Address:192.168.20.200
     * [Service Port]\(サービス ポート\): 81
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure40.png)
+        ![値が入力され、[Finished]\(完了\) ボタンが選択された [New Pool]\(新しいプール\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure40.png)
 
 1. 新しい仮想サーバーを作成するには、 **[Local Traffic]\(ローカル トラフィック\) > [Virtual Servers]\(仮想サーバー\) > [Virtual Server List]\(仮想サーバー リスト\) > [+]** の順に移動し、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
@@ -440,9 +440,9 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * [Access Profile]\(アクセス プロファイル\): KerbApp200
     * 前の手順で作成したアクセス プロファイルを指定する
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure41.png)
+        ![[Name]\(名前\)、[Destination Address/Mask]\(接続先のアドレス/マスク\)、および [Service Port]\(サービス ポート\) のテキスト ボックスが強調表示されている [Virtual Server List]\(仮想サーバー リスト\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure41.png)
 
-        ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure42.png)
+        ![[Access Profile]\(アクセス プロファイル\) ドロップダウンが強調表示されている[Virtual Server List]\(仮想サーバー リスト\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure42.png)
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos 委任の設定 
 

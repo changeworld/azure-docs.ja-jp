@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 53a224f53f0270166ce75e718e670780730a10c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e772dc39374b178743a6c8b93e6b48e62b1e2ed
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543654"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Paylocity の統合
 
@@ -106,7 +106,7 @@ Paylocity で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**編集アイコン**をクリックします。
 
-    ![SAML 署名証明書の編集](./media/paylocity-tutorial/edit-samlassertion.png)
+    ![[SAML 署名証明書] のスクリーンショット。[フェデレーション メタデータ XML] の [ダウンロード] アクションが選択されています。](./media/paylocity-tutorial/edit-samlassertion.png)
 
 1. **[証明書オプション]** で **[SAML 応答とアサーションへの署名]** を選択し、 **[保存]** をクリックします。
 

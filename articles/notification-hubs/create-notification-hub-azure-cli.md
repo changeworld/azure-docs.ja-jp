@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875031"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Azure CLI を使用して Azure 通知ハブを作成する
 
@@ -32,17 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 `az --version` を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
-
-## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
-
-Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。 Azure CLI 拡張機能を使用すると、コア CLI の一部として出荷されていない実験用とプレリリースのコマンドにアクセスできます。 更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
-
-Notification Hubs 用の Azure CLI 拡張機能をインストールします。
-
-```azurecli
-az extension add --name notification-hub
-```
+> Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 

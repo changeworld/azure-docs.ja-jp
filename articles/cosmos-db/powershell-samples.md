@@ -4,14 +4,14 @@ description: Azure Cosmos DB で一般的なタスクを実行するための Az
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/30/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 678e9490fe52a329365174e1a2283a475f3312e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0c2d13ef49676917bc48dd5a2e682471558567f3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505016"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842973"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB 用 Azure PowerShell サンプル
 
@@ -37,8 +37,7 @@ ms.locfileid: "87505016"
 |[大きいパーティション キーを含むコンテナーの作成](scripts/powershell/sql/create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 大きいパーティション キーを含むコンテナーを作成します。 |
 |[インデックス ポリシーを持たないコンテナーの作成](scripts/powershell/sql/create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | インデックス ポリシーが無効になっている Azure Cosmos コンテナーを作成します。|
 |[データベースまたはコンテナーの一覧表示または取得](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコンテナーを一覧表示または取得します。 |
-|[スループットの取得](scripts/powershell/sql/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコンテナーのスループットを取得します。 |
-|[スループットを更新する](scripts/powershell/sql/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコンテナーのスループットを更新します。 |
+|[スループット操作](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコンテナーに対するスループット操作には、取得、更新、および自動スケーリングと標準スループット間の移行が含まれます。 |
 |[リソースが削除されないようにロックする](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。 |
 |||
 
@@ -49,8 +48,7 @@ ms.locfileid: "87505016"
 |[アカウント、キースペース、およびテーブルの作成](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、キースペース、およびテーブルを作成します。 |
 |[アカウント、キースペース、自動スケーリングするテーブルを作成する](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、キースペース、自動スケーリングするテーブルを作成します。 |
 |[キースペースまたはテーブルの一覧表示または取得](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| キースペースまたはテーブルを一覧表示または取得します。 |
-|[スループットの取得](scripts/powershell/cassandra/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| キースペースまたはテーブルのスループットを取得します。 |
-|[スループットを更新する](scripts/powershell/cassandra/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| キースペースまたはテーブルのスループットを更新します。 |
+|[スループット操作](scripts/powershell/cassandra/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| キースペースまたはテーブルに対するスループット操作には、取得、更新、および自動スケーリングと標準スループット間の移行が含まれます。 |
 |[リソースが削除されないようにロックする](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。 |
 |||
 
@@ -61,8 +59,7 @@ ms.locfileid: "87505016"
 |[アカウント、データベース、およびコレクションの作成](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、データベース、およびコレクションを作成します。 |
 |[アカウント、データベース、自動スケーリングするコレクションを作成する](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、データベース、自動スケーリングするコレクションを作成します。 |
 |[データベースまたはコレクションの一覧表示または取得](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコレクションを一覧表示または取得します。 |
-|[スループットの取得](scripts/powershell/mongodb/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコレクションのスループットを取得します。 |
-|[スループットを更新する](scripts/powershell/mongodb/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコレクションのスループットを更新します。 |
+|[スループット操作](scripts/powershell/mongodb/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはコレクションに対するスループット操作には、取得、更新、および自動スケーリングと標準スループット間の移行が含まれます。 |
 |[リソースが削除されないようにロックする](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。 |
 |||
 
@@ -73,8 +70,7 @@ ms.locfileid: "87505016"
 |[アカウント、データベース、およびグラフの作成](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、データベース、およびグラフを作成します。 |
 |[アカウント、データベース、自動スケーリングするグラフを作成する](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、データベース、自動スケーリングするグラフを作成します。 |
 |[データベースまたはグラフの一覧表示または取得](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはグラフを一覧表示または取得します。 |
-|[スループットの取得](scripts/powershell/gremlin/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはグラフのスループットを取得します。 |
-|[スループットを更新する](scripts/powershell/gremlin/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはグラフのスループットを更新します。 |
+|[スループット操作](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| データベースまたはグラフに対するスループット操作には、取得、更新、および自動スケーリングと標準スループット間の移行が含まれます。 |
 |[リソースが削除されないようにロックする](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。 |
 |||
 
@@ -85,7 +81,6 @@ ms.locfileid: "87505016"
 |[アカウントとテーブルの作成](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウントとテーブルを作成します。 |
 |[アカウントと自動スケーリングするテーブルを作成する](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウントと自動スケーリングするテーブルを作成します。 |
 |[テーブルの一覧表示または取得](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| テーブルを一覧表示または取得します。 |
-|[スループットの取得](scripts/powershell/table/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| テーブルのスループットを取得します。 |
-|[スループットを更新する](scripts/powershell/table/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| テーブルのスループットを更新します。 |
+|[スループット操作](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| テーブルに対するスループット操作には、取得、更新、および自動スケーリングと標準スループット間の移行が含まれます。 |
 |[リソースが削除されないようにロックする](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。 |
 |||

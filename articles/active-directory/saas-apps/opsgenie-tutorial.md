@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543909"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OpsGenie の統合
 
@@ -133,15 +133,15 @@ OpsGenie に対する Azure AD SSO を構成してテストするには、次の
 
 3. SSO を有効にするには、 **[有効]** を選択します。
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![[有効] チェックボックスが選択されている画面のスクリーンショット。](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. **[プロバイダー]** セクションで、 **[Azure Active Directory]** タブをクリックします。
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![[プロバイダー] セクションのスクリーンショット。[Azure Active Directory] タブが選択されています。](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. [Azure Active Directory] ダイアログ ページで、次の手順に従います。
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![[シングル サインオン] セクションのスクリーンショット。[シングル サインオンを有効にする] トグル、[SAML 2.0 Endpoint]\(SAML 2.0 エンドポイント\)、[メタデータ URL] を確認できます。](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. **[App ID URI]\(アプリケーション ID/URI\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
 
@@ -169,7 +169,7 @@ OpsGenie に対する Azure AD SSO を構成してテストするには、次の
 
 4. **[Add User]** ダイアログで、次の手順を実行します。
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![[ユーザーの追加] ダイアログのスクリーンショット。テキスト ボックスの [電子メール] と [フル ネーム] が強調表示されています。[保存] ボタンが選択されています。](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. **[電子メール]** ボックスに、Azure Active Directory の B.Simon のメール アドレスを入力します。
    

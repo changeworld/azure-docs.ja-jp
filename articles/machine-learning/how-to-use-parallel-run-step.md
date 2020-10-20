@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 08/14/2020
+ms.date: 10/13/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1e55a8e8dd78a6093c875cd20dd8b240816e7426
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905602"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055105"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 
@@ -26,6 +26,9 @@ ms.locfileid: "90905602"
 大規模なデータセットの推論や複雑なモデルを使用した推論には、時間がかかることがあります。 `ParallelRunStep` クラスを使用すると、処理を並列で実行できるため、全体的な結果が得られるまでの時間を短縮できる可能性があります。 単一の評価を非常に高速に実行できるとしても、多くのシナリオ (オブジェクト検出、ビデオ処理、自然言語処理など) では多数の評価が実行されます。 
 
 `ParallelRunStep` を使用すると、大量のマシン クラスターにバッチ推論を簡単にスケーリングできます。 このようなクラスターではテラバイト単位の構造化または非構造化データを処理できるため、生産性の向上とコストの最適化を実現できます。
+
+> [!NOTE]
+> ParallelRunStep は驚異的並列ワークロード向けに設計されています。たくさんのモデルを同時にトレーニングしたり、大きなデータを処理したりする目的で使用することもできます。
 
 この記事では、次のタスクについて説明します。
 

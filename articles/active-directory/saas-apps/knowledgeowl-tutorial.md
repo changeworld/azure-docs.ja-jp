@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549893"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858100"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と KnowledgeOwl の統合
 
@@ -167,11 +167,11 @@ KnowledgeOwl で Azure AD SSO を構成してテストするには、次の構�
 
 1. **[Settings]\(設定\)** をクリックし、 **[Security]\(セキュリティ\)** を選択します。
 
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure1.png)
+    ![[Settings]\(設定\) メニューの [Security]\(セキュリティ\) が選択されているスクリーンショット。](./media/knowledgeowl-tutorial/configure1.png)
 
 1. **[SAML SSO Integration]\(SAML SSO 統合\)** までスクロールして、次の手順に従います。
 
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure2.png)
+    ![ここで説明されている変更を行うことができる [SAML S S O Integration]\(SAML S S O 統合\) を示すスクリーンショット。](./media/knowledgeowl-tutorial/configure2.png)
 
     a. **[Enable SAML SSO]\(SAML SSO を有効にする\)** をオンにします。
 
@@ -189,7 +189,7 @@ KnowledgeOwl で Azure AD SSO を構成してテストするには、次の構�
 
     h. **[Map SAML Attributes]\(SAML 属性のマッピング\)** をクリックして属性をマップし、次の手順に従います。
 
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure3.png)
+    ![ここで説明されている変更を行うことができる [Map SAML Attributes]\(SAML 属性のマッピング\) を示すスクリーンショット。](./media/knowledgeowl-tutorial/configure3.png)
 
     * **[SSO ID]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid`」と入力します。
     * **[Username/Email]\(ユーザー名/電子メール\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
@@ -199,7 +199,7 @@ KnowledgeOwl で Azure AD SSO を構成してテストするには、次の構�
 
     i. ページの下部にある **[保存]** をクリックします。
 
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure4.png)
+    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl のテスト ユーザーの作成
 

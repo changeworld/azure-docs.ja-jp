@@ -3,12 +3,12 @@ title: Australian Government ISM PROTECTED ブループリント サンプルを
 description: ブループリント アーティファクト パラメーターの詳細を含む Australian Government ISM PROTECTED ブループリント サンプルのデプロイ手順です。
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 13d378132c928dd673cb5cb98b59abcecb321785
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 4d38a5ad6790b8b2ef09476f4779ef596be9734b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038728"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950518"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルをデプロイする
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|VM で構成する必要がある Log Analytics ワークスペース ID|これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。|
-|\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
+|\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は [Azure Monitor リソース ログ カテゴリ](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)に関するページにあります。|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|Windows VM Administrators グループから除外する必要があるユーザーの一覧|ローカルの Administrators グループで除外する必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
@@ -158,7 +158,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|関数アプリには HTTPS v2 を介してのみアクセスできるようにする  |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|脆弱性評価ソリューションによって脆弱性を修復する必要がある  |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|Azure サブスクリプションにはアクティビティ ログのログ プロファイルが必要  |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
-|\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
+|\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は [Azure Monitor リソース ログ カテゴリ](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)に関するページにあります。|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|システム更新プログラムをマシンにインストールする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|App Service では最新の TLS バージョンを使用する必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:監査要件をサポートするため、Australian Government ISM PROTECTED コントロールを監査し、特定の VM 拡張機能をデプロイする|ポリシー割り当て|サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|

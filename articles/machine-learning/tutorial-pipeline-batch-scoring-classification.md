@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: lobrien
 ms.author: laobri
 ms.reviewer: laobri
-ms.date: 03/11/2020
+ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: f02638acdc60bba710280dcbeba0717173ed8b83
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3f131e1f8d5604e566c8d7b41fa9d45cb7d2a7a2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320508"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054884"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -101,7 +101,7 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-次に、データセットをワークスペースに登録します。
+後で再利用する場合、ワークスペースにデータセットを登録します。 この手順は省略可能です。
 
 ```python
 

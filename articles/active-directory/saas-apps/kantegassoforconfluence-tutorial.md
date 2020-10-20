@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bef0b2d0387b82140e9874f837d9464408d78090
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05fd1fc23afc72174f5454c805dd59a6eb2e9714
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546969"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>チュートリアル:Azure Active Directory と Kantega SSO for Confluence の統合
 
@@ -99,7 +99,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Kantega SSO for Confluence のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子] および [応答 URL] フィールドが強調表示され、[保存] ボタンが選択されている [基本的な SAML 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` の形式で URL を入力します。
 
@@ -134,47 +134,47 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 1. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon1.png)
+    !["歯車" メニュー アイコンと [Add-ons]\(アドオン\) が選択されていることを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon1.png)
 
 1. **[ATLASSIAN MARKETPLACE]** タブで、 **[Find new add-ons]\(新しいアドオンの検索\)** をクリックします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon.png)
+    ![[Find new add-ons]\(新しいアドオンの検索\) が選択されている [ATTLASSIAN MARKETPLACE] タブを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon.png)
 
 1. **Kantega SSO for Confluence SAML Kerberos** を検索し、 **[Install]\(インストール\)** ボタンをクリックして、新しい SAML プラグインをインストールします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon2.png)
+    ![検索ボックスに [Kantega SSO for Confluence SAML Kerberos] があり、[インストール] ボタンが選択されている [Find new add-ons]\(新しいアドオンの検索\) ページを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon2.png)
 
 1. プラグインのインストールが開始されます。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon3.png)
+    ![プラグインの [Installing]\(インストール中\) 画面を示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon3.png)
 
 1. インストールが完了したら、 **[閉じる]** をクリックします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon33.png)
+    ![[閉じる] アクションが選択されている [Installed and ready to go]/(インストールされ、使用できるようになりました/) 画面を示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon33.png)
 
 1. **Manage**をクリックします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon34.png)
+    ![[管理] ボタンが選択されている [Kantega Single Sign-on with Kerberos and SAML]\(Kerberos および SAML を使用した Kantega シングル サインオン\) プラグインを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon34.png)
 
 1. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon35.png)
+    ![[構成] ボタンが選択されている [Kantega Single Sign-on with Kerberos and SAML]\(Kerberos および SAML を使用した Kantega シングル サインオン\) ページを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon35.png)
 
 1. この新しいプラグインは、 **[USERS & SECURITY]\(ユーザーとセキュリティ\)** タブにも表示されます。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon36.png)
+    ![[Kantega Single Sign-on]\(Kantega シングル サインオン\) アクションが選択されている [USERS & SECURITY]\(ユーザーとセキュリティ\) タブを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon36.png)
 
 1. **[SAML]** セクションに移動します。 **[Add identity provider]\(ID プロバイダーの追加\)** ボックスで **[Azure Active Directory (Azure AD)]** を選択します。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon4.png)
+    ![[Add identity provider]\(ID プロバイダーの追加\) と [Azure Active Directory (Azure AD)] が選択されている [SAML] セクションを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. サブスクリプション レベルは **[Basic]** を選択します。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon5.png)
+    ![[Basic] が選択されている [Preparing Azure AD]\(Azure AD の準備\) ページを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon5.png)
 
 1. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon6.png)
+    ![[アプリケーション ID/URI] フィールドと [コピー] ボタンが強調表示され、[次へ] ボタンが選択されている [App properties]\(アプリのプロパティ\) セクションを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon6.png)
 
     a. **[アプリケーション ID/URI]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションで**識別子、応答 URL、サインオン URL** として使用します。
 
@@ -182,7 +182,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。 
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon7.png)
+    ![[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\) が選択されている [Metadata import]\(メタデータのインポート\) セクションを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon7.png)
 
     a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
@@ -190,7 +190,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon8.png)
+    ![[Identity provider name]\(ID プロバイダー名\) テキストボックスが強調表示され、[次へ] ボタンが選択されている [Name and SSO location]\(名前と SSO の場所\) を示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon8.png)
 
     a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
@@ -198,11 +198,11 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 1. 署名証明書を確認し、 **[Next]\(次へ\)** をクリックします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon9.png)
+    ![[次へ] ボタンが選択されている [Signature verification]\(署名の検証\) セクションを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon9.png)
 
 1. **[Confluence user accounts]\(Confluence ユーザー アカウント\)** セクションで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon10.png)
+    ![[Create users in Confluence's internal Directory if needed]\(必要に応じて Confluence の内部ディレクトリにユーザーを作成する\) オプションと [次へ] ボタンが選択されている [Confluence user accounts]\(Confluence ユーザー アカウント\) セクションを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. **[Create users in Confluence's internal Directory if needed]\(必要に応じて Confluence の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
@@ -210,11 +210,11 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 1. **[完了]** をクリックします。
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon11.png)
+    ![[完了] ボタンが選択されている [概要] ページのスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon11.png)
 
 1. **[Known domains for Azure AD]\(既知の Azure AD ドメイン\)** セクションで、次の手順を実行します。 
 
-    ![Configure single sign-on](./media/kantegassoforconfluence-tutorial/addon12.png)
+    ![[Known domains]\(既知のドメイン\) テキスト ボックスが強調表示され、[保存] ボタンが選択されている [Known domains for Azure AD]\(既知の Azure AD ドメイン\) ページを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/addon12.png)
 
     a. ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
 
@@ -283,7 +283,7 @@ Azure AD ユーザーが Confluence にサインインできるようにする�
 
 1. 歯車をポイントし、 **[User management]\(ユーザー管理\)** をクリックします。
 
-    ![従業員の追加](./media/kantegassoforconfluence-tutorial/user1.png)
+    !["歯車" アイコンと [User management]\(ユーザー管理\) が選択されていることを示すスクリーンショット。](./media/kantegassoforconfluence-tutorial/user1.png)
 
 1. [Users]\(ユーザー\) セクションで、 **[Add Users]\(ユーザーの追加\)** タブをクリックします。 **[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 

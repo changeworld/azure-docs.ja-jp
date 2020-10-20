@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1743908652a70667a368dced18b2e808ce590a1b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 746f60374a4e8f01af119d6e9c604b941e7c4950
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549995"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944242"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Saba TalentSpace の統合
 
@@ -131,15 +131,15 @@ Saba TalentSpace で Azure AD SSO を構成してテストするには、次の�
 
 2. **[Options]** タブをクリックします。
   
-    ![What is Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-12.png)
+    ![[Options]\(オプション\) タブが選択された Saba TalentSpace ホーム ページを示すスクリーンショット。](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. 左のナビゲーション ウィンドウで、 **[SAML Configuration]** をクリックします。
   
-    ![What is Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-13.png)
+    ![左側の [User Interface]\(ユーザー インターフェイス\) ナビゲーション ウィンドウで [SAML Configuration]\(SAML 構成\) が選択されているスクリーンショット。](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. **[SAML 構成]** ページで、次の手順を実行します。
 
-    ![What is Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-14.png)
+    ![[Settings]\(設定\) オプションが強調表示されている [SAML Configuration]\(SAML 構成\) ページを示すスクリーンショット。](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. **[Unique Identifier]** で **[NameID]** を選択します。
 
@@ -166,7 +166,7 @@ Saba TalentSpace で Azure AD SSO を構成してテストするには、次の�
 
 2. **[User Center]** タブをクリックし、 **[Create User]** をクリックします。
 
-    ![What is Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
+    ![[User Center]\(ユーザー センター\) タブと [Create User]\(ユーザーの作成\) が選択されているスクリーンショット。](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. **[New User]** ダイアログ ページで、次の手順に従います。
 

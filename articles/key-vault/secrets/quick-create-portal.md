@@ -11,18 +11,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83652277"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962447"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
 Azure Key Vault は、シークレットのセキュリティで保護されたストアを提供するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Azure Key Vault は、Azure Portal を使用して作成および管理できます。 このクイック スタートでは、キー コンテナーを作成し、それを使用してシークレットを格納します。 Key Vault の詳細については、[概要](../general/overview.md)に関する記事をご覧ください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+シークレットの詳細については、(about-secrets.md) を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -46,6 +50,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 * **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
 * **Vault URI (コンテナー URI)** :この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+
+Azure CLI と PowerShell を使用してキー コンテナーを作成することもできます。[PowerShell を使用してキー コンテナーを作成する](../general/quick-create-powershell.md)
+[Azure CLI を使用してキー コンテナーを作成する](../general/quick-create-cli.md)
 
 この時点で、使用している Azure アカウントが、この新しいコンテナーで操作を実行することを許可されている唯一のアカウントになります。
 
@@ -90,5 +97,8 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
+- 「[キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)」を参照する
+- [App Service Web アプリで Key Vault を使用する](../general/tutorial-net-create-vault-azure-web-app.md)方法に関するページを参照する
+- [VM にデプロイされたアプリケーションで Key Vault を使用する](../general/tutorial-net-virtual-machine.md)方法に関するページを参照する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
 - [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する

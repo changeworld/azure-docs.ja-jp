@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Bing 地図から Web アプリを移行する | Microsoft Azure Maps
-description: Bing 地図から Microsoft Azure Maps に Web アプリを移行する方法。
+description: Bing 地図から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアルです。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319743"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876517"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>Bing 地図から Web アプリを移行する
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>チュートリアル - Bing 地図から Web アプリを移行する
 
 Bing 地図が使用される Web アプリでは、多くの場合、Bing 地図 V8 JavaScript SDK が使用されます。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a9560cfe0daf158dad03a3171047669a19eade
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13dd930842cb724d12711ac9e7704fd9af4e29d8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547963"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル:Azure Active Directory と Oneteam の統合
 
@@ -101,7 +101,7 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Oneteam のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子] と [応答 URL] が強調表示され、[保存] ボタンが選択されている [基本的な SAML 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://api.one-team.io/teams/<team name>` の形式で URL を入力します。
 

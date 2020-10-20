@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372614"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048510"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
 Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 そのためには、個々の要素を**デジタル ツイン**としてモデル化し、それらを接続してナレッジ **グラフ**にまとめます。それにより、ライブ イベントに応答したり、照会された情報を返したりすることができます。
 
-このクイックスタートでは、[**Azure Digital Twins (ADT) エクスプローラー**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)というサンプル アプリケーションを利用して、事前構築済みの Azure Digital Twins グラフを精査します。 ADT エクスプローラーを使用すると、ブラウザーベースの視覚的なエクスペリエンスを通じて、シナリオをアップロードしたり、ツインとグラフの視覚表現を確認したり、その他の管理アクティビティを実行したりできます。
+このクイックスタートでは、[**Azure Digital Twins (ADT) エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)というサンプル アプリケーションを利用して、事前構築済みの Azure Digital Twins グラフを精査します。 ADT Explorer を使用すると、環境のデジタル表現をアップロードしたり、Azure Digital Twins の環境を表すために作成されたツインやグラフを視覚化したり、ブラウザーベースの視覚的な操作を通じてその他の管理アクティビティを実行したりできます。
 
 このクイックスタートには主に次の手順が含まれています。
 
@@ -38,8 +38,8 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 お使いのコンピューターには **Node.js** も必要になります。 次のリンクで最新バージョンを入手できます。[Node.js](https://nodejs.org/)。
 
 最後に、クイックスタートの間に使用するサンプルを 2 つダウンロードする必要もあります。
-* **ADT エクスプローラー** サンプル アプリケーション。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するメイン アプリが含まれています。 このアプリは、「[Azure Digital Twins (ADT) エクスプローラー](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)」から入手できます。 *[ZIP のダウンロード]* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルを、ご利用のマシンに _**Azure_Digital_Twins__ADT__explorer.zip**_ としてダウンロードします。 フォルダーを解凍し、ファイルを抽出します。
-* **Azure Digital Twins のサンプル シナリオ**。 ここには、ADT エクスプローラーに読み込んで操作することになる、事前構築済みの Azure Digital Twins グラフが含まれています。 シナリオを入手するには、こちらに移動してください: [Azure Digital Twins サンプル](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 *[ZIP のダウンロード]* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをお使いのマシンにダウンロードします。これによって .ZIP フォルダーが、**Azure_Digital_Twins_samples.zip** としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
+* **ADT エクスプローラー** サンプル アプリケーション。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するメイン アプリが含まれています。 このアプリは、「[Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)」から入手できます。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、ZIP フォルダーが _**Azure_Digital_Twins__ADT__explorer.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
+* **Azure Digital Twins のサンプル シナリオ**。 ここには、ADT エクスプローラーに読み込んで操作することになる、事前構築済みの Azure Digital Twins グラフが含まれています。 シナリオを入手するには、こちらに移動してください: [Azure Digital Twins サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、ZIP フォルダーが _**Azure_Digital_Twins_samples.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins と ADT エクスプローラーを設定する
 
@@ -205,7 +205,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
     :::column-end:::
 :::row-end:::
 
-これでグラフが ADT エクスプローラーにアップロードされました。 グラフを表示するには、ADT エクスプローラー ウィンドウの上部付近にある *[Graph エクスプローラー]* ボックスの *[クエリの実行]* ボタンをクリックします。 
+これでグラフが ADT エクスプローラーにアップロードされました。 グラフを表示するには、ADT Explorer ウィンドウの上部付近にある *[Graph エクスプローラー]* ボックスの *[クエリの実行]* ボタンをクリックします。 
 
 :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
@@ -307,7 +307,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 その後、次のようにしてグラフを精査しました。
 1. クエリを使用して、シナリオについての質問の回答を得る。
 2. デジタル ツインのプロパティを編集する。
-    * 更新の結果、どのように回答が変化したかを調べるために同じクエリを再実行しました。
+3. 更新の結果、どのように回答が変化したかを調べるために同じクエリを再実行しました。
 
 この演習の意図は、Azure Digital Twins のグラフをどのように使用すれば、環境が絶えず変化する中で、対象となる環境についての質問への回答が得られるかを示すことです。 
 

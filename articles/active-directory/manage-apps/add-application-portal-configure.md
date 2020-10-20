@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448229"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044464"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
 
@@ -41,10 +41,7 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 
 1. Azure AD portal で、 **[エンタープライズ アプリケーション]** を選択します。 次に、構成するアプリケーションを探して選択します。
 2. **[管理]** セクションで、 **[プロパティ]** を選択して編集用の **[プロパティ]** ペインを開きます。
-
-    ![編集可能なアプリのプロパティが表示された [プロパティ] 画面のスクリーンショット。](media/add-application-portal/edit-properties.png)
-
-3. ここで、構成で使用できるオプションについて理解しておきましょう。
+3. ここで、使用できるオプションについて理解しておきましょう。 使用可能なオプションは、アプリが Azure AD とどのように統合されているかによって異なります。 たとえば、SAML ベースのシングル サインオンを使用するアプリには *[ユーザー アクセス URL]* などのフィールドがありますが、OIDC ベースのシングル サインオンを使用するアプリにはありません。 また、 **[Azure Active Directory] > [アプリの登録]** を使用して追加したアプリは、既定で OIDC ベースのアプリであることに注意してください。 一方、 **[Azure Active Directory] > [エンタープライズ アプリケーション]** を使用して追加したアプリでは、さまざまなシングル サインオン標準のいずれかを使用している場合があります。 すべてのアプリには、アプリが表示され、使用できるようになるタイミングを構成するためのフィールドがあります。 これらのフィールドを次に示します。
     - **[ユーザーのサインインが有効になっていますか?]** は、アプリケーションに割り当てられているユーザーがサインインできるかどうかを決定します。
     - **[ユーザーの割り当てが必要ですか?]** は、アプリケーションに割り当てられていないユーザーがサインインできるかどうかを決定します。
     - **[ユーザーに表示しますか?]** は、アプリに割り当てられているユーザーが、[マイ アプリ](https://myapps.microsoft.com)と Microsoft 365 アプリ起動ツールにアプリを表示できるかどうかを決定します (Microsoft 365 Web サイトの左上隅にあるワッフル メニューを参照してください)。

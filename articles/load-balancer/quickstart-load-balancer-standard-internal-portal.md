@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: efe4753e78c6dd16fa0b6ce3e98dd21ceae52577
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446111"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047813"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -630,5 +630,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 * 2 つの VM をロード バランサーにアタッチしました。
 * ロード バランサー トラフィック規則と正常性プローブを構成し、ロード バランサーをテストしました。 
 
-Azure Load Balancer の詳細については、「[Azure Load Balancer の概要](load-balancer-overview.md)」および「[Load Balancer に関してよく寄せられる質問](load-balancer-faqs.md)」を参照してください。
-
+Azure Load Balancer についてさらに学習するには、次の記事に進んでください。
+> [!div class="nextstepaction"]
+> [Azure Load Balancer の概要](load-balancer-overview.md) 

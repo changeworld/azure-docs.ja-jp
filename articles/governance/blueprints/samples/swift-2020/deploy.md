@@ -3,12 +3,12 @@ title: SWIFT CSP-CSCF v2020 ブループリント サンプルをデプロイす
 description: ブループリント アーティファクト パラメーターの詳細を含む SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ手順です。
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: b65dc9cdd601f9fd2d7972b74435702a00244e8e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 973cd0076ae03fd32db5fc9be262b2c5300fdf16
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612726"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949413"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
+|\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は [Azure Monitor リソース ログ カテゴリ](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)に関するページにあります。|
 |\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|接続されているワークスペース ID|Log Analytics エージェントの接続先となるワークスペース ID のセミコロン区切りの一覧|
 |\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|ドメイン名 (FQDN)|Windows VM の参加先の完全修飾ドメイン名 (FQDN)|

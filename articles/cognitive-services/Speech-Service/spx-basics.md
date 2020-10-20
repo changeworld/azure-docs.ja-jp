@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854896"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893817"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Speech CLI の基本を学ぶ
 
@@ -69,6 +69,51 @@ spx translate --microphone --source en-US --target ru-RU --output file C:\some\f
 
 > [!NOTE]
 > サポートされているすべての言語と対応するロケール コードの一覧については、「[音声サービスの言語と音声のサポート](language-support.md)」を参照してください。
+
+### <a name="configuration-files-in-the-datastore"></a>データストア内の構成ファイル
+
+Speech CLI では、ローカルの Speech CLI データストアに格納されている、Speech CLI 呼び出し内で @ 記号を使用して名前が指定される構成ファイル内の複数の設定の読み取りと書き込みを行うことができます。 Speech CLI では、新しい設定は、現在の作業ディレクトリに作成された新しい `./spx/data` サブディレクトリに保存されます。
+Speech CLI で構成値を探すとき、最初に現在の作業ディレクトリが検索され、次に `./spx/data` パスが検索されます。
+以前は、データストアを使用して `@key` 値と `@region` 値を保存していたため、各コマンド ライン呼び出しでそれらを指定する必要はありませんでした。
+さらに、構成ファイルを使用して独自の構成設定を保存したり、これらを使用して実行時に生成された URL やその他の動的コンテンツを渡したりすることもできます。
+
+このセクションでは、ローカル データストア内の構成ファイルを使用して、`spx config` を使用してコマンド設定を格納およびフェッチし、`--output` オプションを使用して Speech CLI からの出力を格納する方法を示します。
+
+次の例では、`@my.defaults` 構成ファイルをクリアし、ファイル内の **key** と **region** のキーと値のペアを追加し、`spx recognize` の呼び出しでこの構成を使用します。
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+構成ファイルに動的コンテンツを書き込むこともできます。 たとえば、次のコマンドでは、カスタム音声モデルを作成し、新しいモデルの URL を構成ファイルに格納しています。 次のコマンドでは、その URL のモデルが使用できる状態になるまで待機してから制御を返します。
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+次の例では、2 つの URL を `@my.datasets.txt` 構成ファイルに書き込みます。
+このシナリオでは、`--output` にオプションの **add** キーワードを含めることによって、構成ファイルを作成したり、既存の構成ファイルに追加したりできます。
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+既定の構成ファイル (コマンドに固有の既定の設定の場合は `@spx.default`、`@default.config`、および `@*.default.config`) の使用法など、データストア ファイルの詳細については、次のコマンドを入力してください。
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>バッチ操作
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904597"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951623"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
 
 このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge Pro でデータを変換できるようになります。
 
@@ -55,11 +55,11 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
     |IoT Hub     | **[新規]** または **[既存]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Azure Stack Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
     |名前     |自分の IoT Hub リソースの名前を入力します。         |
 
-    ![コンピューティングの開始](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+    ![コンピューティングの開始 2](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
 4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、 **[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、 **[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
     
-    ![コンピューティングの開始](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
+    ![コンピューティングの開始 3](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
     > Azure Stack Edge Pro デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログが閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
@@ -138,19 +138,19 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
  
 1. エクスプローラーで、先ほど作成した Edge ローカル共有と Edge 共有の両方に接続します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
+    ![データ変換を検証する 2](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
 1. データをローカル共有に追加します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
+    ![データ変換を検証する 3](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
     そのデータはクラウド共有に移動されます。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
+    ![データ変換を検証する 4](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
 
     データは次に、クラウド共有からストレージ アカウントにプッシュされます。 データを確認するには、Storage Explorer に移動します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
+    ![データ変換を検証する 5](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
  
 検証プロセスが完了しました。
 

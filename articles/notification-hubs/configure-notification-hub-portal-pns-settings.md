@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67e90667df2b62ec2c37d865fe431a2be6f81b9e
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87761027"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876568"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
@@ -67,14 +67,11 @@ Google FCM のプッシュ通知を設定するには、次の手順に従いま
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>前提条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-開始する前に、次の項目を用意する必要があります。
+- Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。
 
-* [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.0.67 以降。
-
-* Azure CLI の [Notification Hubs 用拡張機能](/cli/azure/ext/notification-hub/notification-hub)。
-* Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー**。
+- Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー**が必要となります。
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Google FCM のプッシュ通知を設定する
 

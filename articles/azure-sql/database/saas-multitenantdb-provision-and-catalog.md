@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539195"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619622"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL Database を使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -169,7 +169,7 @@ Wingtip アプリが共有データベースに新しいテナントのプロビ
 
 4. ブレークポイントでスクリプトの実行が停止したら、**F11** キーを押してコードにステップ インします。
 
-   ![debug](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Windows PowerShell ISE を示すスクリーンショット。[デバッグ] メニューが開かれており、[ステップ イン] が選択されています。](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. 呼び出された関数にステップ オーバーしたりステップ インしたりする **F10** キーや **F11** キーなどの**デバッグ**のメニュー オプションを使用して、スクリプトの実行をトレースします。
 

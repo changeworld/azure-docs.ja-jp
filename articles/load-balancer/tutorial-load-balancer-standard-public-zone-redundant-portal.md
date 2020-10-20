@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446101"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048357"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -40,6 +40,10 @@ ms.locfileid: "91446101"
 好みに応じて、[Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -231,8 +235,10 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、ロード バランサーを含むリソース グループを選択し、 **[削除]** をクリックします。
+リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、ロード バランサーを含むリソース グループを選択し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
+特定の可用性ゾーン内で VM の負荷を分散する方法について学習します。
+> [!div class="nextstepaction"]
+> [可用性ゾーン内での VM の負荷分散](tutorial-load-balancer-standard-public-zonal-portal.md)

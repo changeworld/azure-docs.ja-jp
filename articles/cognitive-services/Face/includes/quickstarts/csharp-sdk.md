@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 80255790129468857e1115f3034516f04bc86d26
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ceb33a747b987898668e315518c3ba7a2b02efcc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322971"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989553"
 ---
 .NET 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -24,40 +24,47 @@ ms.locfileid: "91322971"
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
-* [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
 
 [リファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [サンプル](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>前提条件
 
-* 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
-* キーとエンドポイントを取得したら、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前を付けます。
 
 ## <a name="setting-up"></a>設定
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
-好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。 
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`face-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*Program.cs*。 
+Visual Studio を使用して、新しい .NET Core アプリケーションを作成します。 
 
-```dotnetcli
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
+
+新しいプロジェクトを作成したら、**ソリューション エクスプローラー**でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.Face` を検索します。 バージョン `2.6.0-preview.1` を選択し、 **[インストール]** を選択します。 
+
+#### <a name="cli"></a>[CLI](#tab/cli)
+
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`face-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
+
+```console
 dotnet new console -n face-quickstart
 ```
 
 新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
 
-```dotnetcli
+```console
 dotnet build
 ```
 
 ビルドの出力に警告やエラーが含まれないようにする必要があります。 
 
-```output
+```console
 ...
 Build succeeded.
  0 Warning(s)
@@ -65,23 +72,37 @@ Build succeeded.
 ...
 ```
 
-プロジェクト ディレクトリから、好みのエディターまたは IDE で *Program.cs* ファイルを開きます。 次の `using` ディレクティブを追加します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_using)]
-
-アプリケーションの `Main` メソッドで、対象のリソースの Azure エンドポイントおよびキー用の変数を作成します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_mainvars)]
-
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Face クライアント ライブラリをインストールします。
 
-```dotnetcli
+```console
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0-preview.1
 ```
 
-Visual Studio IDE を使用している場合、クライアント ライブラリは、ダウンロード可能な NuGet パッケージとして入手できます。
+---
+
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs) にあり、このクイックスタートのコード例が含まれています。
+
+
+プロジェクト ディレクトリから *program.cs* ファイルを開いて、次の `using` ディレクティブを追加します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_using)]
+
+アプリケーションの **Program** クラスで、対象のリソースのキーとエンドポイントの変数を作成します。
+
+
+> [!IMPORTANT]
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+>
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_creds)]
+
+アプリケーションの **Main** メソッドで、このクイックスタートで使用するメソッドの呼び出しを追加します。 これらは後で実装します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_maincalls)]
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -95,7 +116,6 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 |[FaceListOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|このクラスは、クラウドに格納された **FaceList** コンストラクトを管理します。これには、さまざまな顔のセットが格納されます。 |
 |[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| このクラスは、クラウドに格納された **Person** コンストラクトを管理します。これには、1 人の人物に属している顔のセットが格納されます。|
 |[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| このクラスは、クラウドに格納された **PersonGroup** コンストラクトを管理します。これには、さまざまな **Person** オブジェクトのセットが格納されます。 |
-|[ShapshotOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|このクラスは、スナップショット機能を管理します。 これを使用すると、クラウドベースのすべての Face データを一時的に保存し、そのデータを新しい Azure サブスクリプションに移行することができます。 |
 
 ## <a name="code-examples"></a>コード例
 
@@ -106,41 +126,28 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
-* [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
-
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
-
-> [!NOTE]
-> このクイックスタートでは、`FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前の、Face キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)してあることを前提としています。
 
 新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** オブジェクトを作成し、それを自分のエンドポイントと共に使用して **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** オブジェクトを作成します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_auth)]
 
-ほとんどの場合、このメソッドは、`Main` メソッドから呼び出します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_client)]
-
 ### <a name="declare-helper-fields"></a>ヘルパー フィールドを宣言する
 
-次のフィールドは、後で追加するいくつかの Face 操作に必要です。 クラスのルートで、次の URL 文字列を定義します。 この URL は、サンプル画像のフォルダーを指しています。
+次のフィールドは、後で追加するいくつかの Face 操作に必要です。 **Program** クラスのルートで、次の URL 文字列を定義します。 この URL は、サンプル画像のフォルダーを指しています。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_image_url)]
 
-さまざまな認識モデルの種類を指すように文字列を定義します。 後で、顔検出に使用する認識モデルを指定できます。 それらの選択については、[認識モデルの指定](../../Face-API-How-to-Topics/specify-recognition-model.md)に関するページを参照してください。
+**Main** メソッドで、さまざまな認識モデルの種類を指すように文字列を定義します。 後で、顔検出に使用する認識モデルを指定できます。 それらの選択については、[認識モデルの指定](../../Face-API-How-to-Topics/specify-recognition-model.md)に関するページを参照してください。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_models)]
 
 ## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
 
-次のメソッド呼び出しを **main** メソッドに追加します。 次に、メソッドを定義します。 最後の検出操作では、 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** オブジェクト、画像の URL、認識モデルを受け取ります。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_call)]
-
 ### <a name="get-detected-face-objects"></a>検出された顔オブジェクトを取得する
 
-次のコード ブロックでは、指定された URL にある画像のうち 3 つから `DetectFaceExtract` メソッドで顔を検出し、 **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** オブジェクトのリストをプログラムのメモリに作成します。 抽出する特徴は、 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 値のリストで指定します。 
+顔を検出するための新しいメソッドを作成します。 `DetectFaceExtract` メソッドでは、指定された URL にある画像のうち 3 つを処理し、 **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** オブジェクトのリストをプログラムのメモリに作成します。 抽出する特徴は、 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 値のリストで指定します。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
@@ -176,11 +183,9 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。 識別操作を行うには、最初に **PersonGroup** を作成してトレーニングする必要があります
 
-### <a name="create-and-train-a-person-group"></a>人物グループを作成してトレーニングする
+### <a name="create-a-person-group"></a>人物グループを作成する
 
 次のコードでは、6 つの異なる **Person** オブジェクトを含んだ **PersonGroup** を作成します。 各 **Person** を一連のサンプル画像に関連付け、顔の特徴によって各人物を認識するためのトレーニングを行います。 **Person** オブジェクトと **PersonGroup** オブジェクトは、検証、識別、グループ化の各操作で使用されます。
-
-#### <a name="create-persongroup"></a>PersonGroup を作成する
 
 作成する **PersonGroup** の ID を表す文字列変数をクラスのルートで宣言します。
 
@@ -190,21 +195,19 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_files)]
 
+このコードでは変数 `sourceImageFileName` が定義されていることに注意してください。 この変数は、ソース画像 (識別の対象となる人物を含んだ画像) に対応します。
+
 次に、Dictionary 内の人物ごとに **Person** オブジェクトを作成して該当する画像から顔データを追加する次のコードを追加します。 各 **Person** オブジェクトは、その一意の ID 文字列によって同じ **PersonGroup** に関連付けられます。 このメソッドに `client`、`url`、`RECOGNITION_MODEL1` の各変数を忘れずに渡してください。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
-#### <a name="train-persongroup"></a>PersonGroup をトレーニングする
+### <a name="train-the-persongroup"></a>PersonGroup をトレーニングする
 
 画像から顔データを抽出して個別の **Person** オブジェクトに分類したら、各 **Person** オブジェクトに関連付けられた視覚的特徴を識別できるよう **PersonGroup** をトレーニングする必要があります。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_train)]
 
 これで、この **Person** グループとそれに関連付けられた **Person** オブジェクトを検証、識別、グループ化の各操作で使用する準備が整いました。
-
-### <a name="get-a-test-image"></a>テスト画像を取得する
-
-「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」のコードで、`sourceImageFileName` 変数が定義されていることに注目してください。 この変数は、ソース画像 (識別の対象となる人物を含んだ画像) に対応します。
 
 ### <a name="identify-faces"></a>顔を識別する
 
@@ -216,63 +219,21 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
-
-スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行する場合です。 スナップショット機能の概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
-
-この例では、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で作成した **PersonGroup** を移行します。 先にそのセクションを完了しても、移行する独自の Face データ コンストラクトを作成してもかまいません。
-
-### <a name="set-up-target-subscription"></a>ターゲット サブスクリプションを設定する
-
-まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順に従います。 
-
-その後、プログラムの `Main` メソッドに次の変数を定義します。 お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-この例では、ターゲット **PersonGroup** (データのコピー先となる、新しいサブスクリプションに属するオブジェクト) の ID に使用する変数を宣言します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-### <a name="authenticate-target-client"></a>ターゲット クライアントを認証する
-
-次に、2 つ目の Face サブスクリプションを認証するためのコードを追加します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
-
-### <a name="use-a-snapshot"></a>スナップショットを使用する
-
-スナップショット操作の残りは、非同期メソッド内で実行する必要があります。 
-
-1. 最初のステップは、スナップショットを**取得する**ことです。これにより、元のサブスクリプションの顔データが一時的なクラウドの場所に保存されます。 このメソッドは、操作の状態を照会するために使用する ID を返します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
-
-1. 次に、操作が完了するまでに ID を照会します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
-
-1. その後、**apply** 操作を使用して、顔データをターゲット サブスクリプションに書き込みます。 このメソッドも、ID 値を返します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. 操作が完了するまでにもう一度新しい ID を照会します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. 最後に、try/catch ブロックを実行してメソッドを終了します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
-
-この時点で、新しい **PersonGroup** オブジェクトには、元のオブジェクトと同じデータが保持されており、新しい (ターゲット) Azure Face サブスクリプションからアクセスすることができます。
-
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-`dotnet run` コマンドを使用して、アプリケーション ディレクトリから顔認識アプリを実行します。
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-```dotnetcli
+IDE ウィンドウの上部にある **[デバッグ]** ボタンをクリックして、アプリケーションを実行します。
+
+#### <a name="cli"></a>[CLI](#tab/cli)
+
+アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
+
+```dotnet
 dotnet run
 ```
+
+---
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -288,10 +249,6 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 次のコードを使用して削除メソッドを定義します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_deletepersongroup)]
-
-さらに、このクイックスタートでスナップショット機能を使用してデータを移行した場合は、ターゲット サブスクリプションに保存されている **PersonGroup** も削除する必要があります。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>次のステップ
 

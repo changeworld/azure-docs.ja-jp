@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575386"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945534"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>チュートリアル:Windows 上で実行されている IoT プラグ アンド プレイ プレビューの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する (C#)
 
@@ -33,7 +33,7 @@ Windows でこのチュートリアルを完了するには、ご利用のロー
 
 「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C#)](quickstart-connect-device-csharp.md)」を完了している場合は、リポジトリを既にクローンしています。
 
-Microsoft Azure IoT SDK for .NET GitHub リポジトリからサンプルをクローンします。 任意のフォルダーでコマンド プロンプトを開きます。 次のコマンドを実行して、[Microsoft Azure IoT samples for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリをクローンします。
+C# の GitHub リポジトリ用の Azure IoT Samples からサンプルをクローンします。 任意のフォルダーでコマンド プロンプトを開きます。 次のコマンドを実行して、[Microsoft Azure IoT samples for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリをクローンします。
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git

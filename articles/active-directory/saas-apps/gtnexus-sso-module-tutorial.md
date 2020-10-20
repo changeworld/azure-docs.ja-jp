@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544300"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945147"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>チュートリアル:Azure Active Directory と GTNexus SSO System の統合
 
@@ -101,11 +101,11 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![image](common/upload-metadata.png)
+    ![[メタデータ ファイルをアップロードします] アクションが選択された [基本的な SAML 構成] ページを示すスクリーンショット。](common/upload-metadata.png)
 
     b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    ![image](common/browse-upload-metadata.png)
+    !["フォルダー" ロゴと [アップロード] ボタンが選択されている [ファイルの選択] フィールドを示すスクリーンショット。](common/browse-upload-metadata.png)
 
     c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、GTNexus SSO System セクションのテキスト ボックスに自動的に設定されます。
 

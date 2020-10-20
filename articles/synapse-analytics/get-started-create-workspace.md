@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850381"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -29,8 +29,9 @@ ms.locfileid: "91812320"
 1. [Azure portal](https://portal.azure.com) を開き、上部で **Synapse** を検索します。
 1. 検索結果の **[サービス]** で、 **[Azure Synapse Analytics (ワークスペース プレビュー)]** を選択します。
 1. **[追加]** を選択してワークスペースを作成します。
-1. **[基本]** で、必須フィールドに入力し、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
-1. ワークスペースを作成するには、ADLSGEN2 アカウントが必要です。 最も簡単な方法は、新しいものを作成することです。 既存のものを再利用する場合は、追加の構成を行う必要があります。 
+1. **[基本]** で、使用する **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リージョン]** を入力し、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
+1. ワークスペースを作成するには、ADLSGEN2 アカウントと、そのアカウント内のコンテナーが必要です。 最も簡単な方法は、新しいものを作成することです。 既存のものを再利用する場合は、追加の構成を行う必要があります。 
+    1. Synapse ワークスペースは、Spark ログと Spark テーブルのデータを格納するための既定の場所として、このコンテナーを使用します。
 1. オプション 1: 新しい ADLSGEN2 アカウントの作成 
     1. **[Data Lake Storage Gen 2 の選択]** に移動します。 
     1. **[新規作成]** をクリックし、「**contosolake**」という名前を付けます。

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251909"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044957"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
@@ -39,6 +39,10 @@ ms.locfileid: "78251909"
 
 必要に応じて、[Azure CLI](load-balancer-standard-public-zonal-cli.md) を使用してこのチュートリアルを完了することもできます。
 
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
@@ -50,7 +54,7 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[Load Balancer]** の順に選択します。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupZLB*」と入力します。|
@@ -228,5 +232,6 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
-- [可用性ゾーン間で VM の負荷分散を行う](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
+次の記事に進み、可用性ゾーン間で VM の負荷を分散する方法について学習します。
+> [!div class="nextstepaction"]
+> [可用性ゾーン間での VM の負荷分散](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
