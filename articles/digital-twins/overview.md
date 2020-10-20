@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003849"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044668"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -38,13 +38,13 @@ Azure Digital Twins では、[**モデル**](concepts-models.md)と呼ばれる�
 * モデルは、エンティティ間のセマンティック **リレーションシップ**を定義して、それらのやり取りを反映するナレッジ グラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
 * モデルの継承を使用してツインを特殊化することもできます。 一方のモデルがもう一方のモデルから継承できます。
 
-DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
+DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
 
 ### <a name="live-execution-environment"></a>ライブ実行環境
 
 Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す**ライブ グラフ**にツインを接続します。
 
-Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
+Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
 
 次に、視覚化の例を示します。
 
@@ -84,7 +84,7 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 * モデルの構成、トポロジの作成、ツイン グラフからの分析情報の抽出によって Azure Digital Twins インスタンスを駆動する 1 つ以上のクライアント アプリ。
 * Azure Digital Twins によって生成されるイベントや、デバイスなどの接続されたデータ ソースを処理するための 1 つ以上の外部コンピューティング リソース。 コンピューティング リソースを提供する一般的な方法の 1 つは、[Azure Functions](../azure-functions/functions-overview.md) を使用することです。
 * デバイス管理と IoT データ ストリーム機能を提供する IoT ハブ。
-* ワークフロー統合 ([Logic Apps](../logic-apps/logic-apps-overview.md)、コールド ストレージ、タイム シリーズ統合、分析など) のタスクを処理するダウンストリーム サービス。 
+* ワークフロー統合 ([Logic Apps](../logic-apps/logic-apps-overview.md)、コールド ストレージ、時系列統合、分析など) のタスクを処理するダウンストリーム サービス。
 
 次の図は、大規模な Azure IoT ソリューションのコンテキスト内で Azure Digital Twins が存在する場所を示しています。
 

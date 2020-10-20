@@ -12,16 +12,16 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a631a80e7ac5eed3c3239cb79e35b87c70ab1b0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88117772"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055462"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
-Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、ユーザーをサインインし、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者がビルドできます。 これは、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成、完全な開発者向けドキュメント、クイックスタート サンプル、コード サンプル、チュートリアル、ハウツー ガイド、その他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+[Microsoft ID プラットフォーム](../develop/index.yml)は、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、ユーザーをサインインし、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者がビルドできます。 これは、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成、完全な開発者向けドキュメント、クイックスタート サンプル、コード サンプル、チュートリアル、ハウツー ガイド、その他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 これまで、多くの開発者は Azure AD v1.0 プラットフォームを使用して (Azure AD によりプロビジョニングされた) 職場や学校のアカウントを認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure portal、プログラムによるアプリケーション構成用の Microsoft Graph API を使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。
 
@@ -49,7 +49,7 @@ Azure portal **[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083
 
 Azure AD B2C との統合では (ソーシャルまたはローカル ID を認証する場合)、Azure AD B2C テナントにアプリケーションを登録する必要があります。 このエクスペリエンスも Azure portal の一部です。
 
-[アプリケーション API](/graph/api/resources/application?view=graph-rest-1.0) を使用して、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。
+[アプリケーション API](/graph/api/resources/application) を使用して、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。
 
 ### <a name="msal-libraries"></a>MSAL ライブラリ
 
@@ -57,15 +57,10 @@ MSAL ライブラリを使用し、すべての Microsoft ID を認証するア�
 
 MSAL ライブラリを利用し、アプリケーションを Azure AD B2C と統合することもできます。
 
-Web アプリと Web API を構築するための次のサーバー側ライブラリが一般公開されています。[ASP.NET](/aspnet/overview) と [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
-
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイント
 
-Microsoft ID プラットフォーム (v2.0) エンドポイントが OIDC 認定になりました。 Microsoft Authentication Libraries (MSAL) またはその他の標準準拠ライブラリと連動します。 業界標準に準拠し、人間が読めるスコープを実装します。
+Microsoft ID プラットフォーム (v2.0) エンドポイントは OIDC によって認定されています。 Microsoft Authentication Libraries (MSAL) またはその他の標準準拠ライブラリと連動します。 業界標準に準拠し、人間が読めるスコープを実装します。
 
 ## <a name="next-steps"></a>次のステップ
 
-v1.0 および v2.0 に関する詳細。
-
-* [Microsoft ID プラットフォーム (v2.0)](../develop/v2-overview.md) の概要
-* [開発者向け Azure Active Directory (v1.0)](v1-overview.md) の概要
+[Microsoft ID プラットフォームのドキュメント](../develop/index.yml)で詳細を確認します。

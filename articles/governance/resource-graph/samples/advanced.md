@@ -1,14 +1,14 @@
 ---
 title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425298"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057146"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -625,9 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>ゲスト構成の割り当てレポートの詳細を問い合わせる
 
-[ゲスト構成割り当て理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)の詳細からレポートを表示します。
-下の例では、ゲスト割り当て名が `installed_application_linux` の結果のみがクエリから返され、**Python** という名前が含まれるパッケージがインストールされているすべての Linux コンピューターを一覧表示する文字列 `Python` が出力に含まれます。
-特定の割り当てについてすべてのコンピューターのコンプライアンスを問い合わせるには、2 つ目の `where` 句を削除します。
+[ゲスト構成割り当て理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)の詳細からレポートを表示します。 次の例では、ゲスト割り当て名が `installed_application_linux` の結果のみがクエリから返され、**Python** という名前が含まれるパッケージがインストールされているすべての Linux コンピューターを一覧表示する文字列 `Python` が出力に含まれます。 特定の割り当てについてすべてのコンピューターのコンプライアンスを問い合わせるには、2 つ目の `where` 句を削除します。
 
 ```kusto
 GuestConfigurationResources
@@ -666,8 +664,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>コンピューターがゲスト構成割り当てに準拠していない理由をすべて見つける
 
-特定のコンピューターについて[ゲスト構成割り当ての理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)をすべて表示します。
-最初の `where` 句を削除すると、コンピューターが準拠している監査も含まれます。
+特定のコンピューターについて[ゲスト構成割り当ての理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)をすべて表示します。 最初の `where` 句を削除すると、コンピューターが準拠している監査も含まれます。
 
 ```kusto
 GuestConfigurationResources

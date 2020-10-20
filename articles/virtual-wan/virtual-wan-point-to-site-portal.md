@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual WAN を使用して Azure へのポイント対サイト接続を作成する | Microsoft Docs
+title: チュートリアル:Azure Virtual WAN を使用し、Azure へのポイント対サイト接続を作成する
 description: このチュートリアルでは、Azure Virtual WAN を使用して Azure へのポイント対サイト VPN 接続を作成する方法を学習します。
 services: virtual-wan
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84f8563a6b03f10f4cbc647426c350d9fac52780
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 3d03d0267ff4fb16042d5cc2016e87139b88281a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056584"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "91812686"
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [Before beginning](../../includes/virtual-wan-before-include.md)]
 
@@ -82,4 +82,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
+次に、Virtual WAN の詳細については下記を参照してください。
+
+> [!div class="nextstepaction"]
+> * [Virtual WAN の FAQ](virtual-wan-faq.md)

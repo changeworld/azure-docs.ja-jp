@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767136"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048221"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>テレフォニーと SMS ソリューションを計画する
 
@@ -74,7 +74,9 @@ Communication Services には、**ローカル**と**無料電話番号**の 2 �
 
 ## <a name="azure-subscriptions-eligibility"></a>対象となる Azure サブスクリプション
 
-電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントで電話番号を取得することはできません。 
+電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントや Azure 無料クレジットで電話番号を取得することはできません。 
+
+現在、電話番号の提供は、請求先住所が米国内になっている Azure サブスクリプションに制限されています。
 
 ## <a name="next-steps"></a>次の手順
 

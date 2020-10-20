@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617062"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058218"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>チュートリアル:2 つのマネージド インスタンス間でのレプリケーションの構成
 
@@ -48,7 +48,7 @@ ms.locfileid: "91617062"
 
 SQL Managed Instance をパブリッシャー、ディストリビューター、またはその両方として機能するよう構成するには、以下の要件があります。
 
-- パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[仮想ネットワーク ピアリング](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)が 3 つのエンティティすべての仮想ネットワーク間に構成されています。 
+- パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[VPN ゲートウェイ](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)が 3 つのエンティティすべての仮想ネットワーク間に構成されています。 
 - 接続では、レプリケーション参加者間で SQL 認証を使用します。
 - レプリケーションの作業ディレクトリとしての Azure ストレージ アカウント共有。
 - Azure ファイル共有にアクセスするために、マネージド インスタンスの NSG のセキュリティ規則でポート 445 (TCP 送信) を開く必要があります。  「`failed to connect to azure storage \<storage account name> with os error 53`」のエラーが発生する場合、適切な SQL Managed Instance サブネットの NSG にアウトバウンド規則を追加する必要があります。

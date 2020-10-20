@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020390"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057503"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
 
@@ -62,11 +62,9 @@ Linux 用 Log Analytics エージェントをインストールする前に、Lo
 
 2. Log Analytics ワークスペースの一覧で、前の手順で作成したワークスペースを選択します。 (**DefaultLAWorkspace** という名前を付けた可能性があります。)
 
-3. **[詳細設定]** を選択します。
-
-    ![Azure portal の Log Analytics ワークスペースの [詳細設定] メニュー](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. **[エージェント管理]** を選択します。
  
-4. **[接続されたソース]** 、 **[Linux サーバー]** の順に選択します。
+4. 次に、 **[Linux サーバー]** を選択します。
 
 5. **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。 両方をコピーしてお使いのエディターに貼り付けます。
 

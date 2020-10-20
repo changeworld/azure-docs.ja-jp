@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906739"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019377"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 
@@ -68,11 +68,11 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>サンプルのビネットをクローンする 
 
-このチュートリアルで実行するビネット ファイルのコピーのために https://github.com/azure/azureml-sdk-for-r GitHub リポジトリをクローンします。
+このチュートリアルで実行するビネット ファイルのコピーのために https://github.com/Azure/azureml-sdk-for-r GitHub リポジトリをクローンします。
 
 1. RStudio で、[Terminal]\(ターミナル\) タブに移動し、リポジトリをクローンするディレクトリに移動します。
 
-1. ターミナルで "git clone https://github.com/Azure/azureml-sdk-for-r" を実行して、リポジトリをクローンします。
+1. ターミナルで `git clone https://github.com/Azure/azureml-sdk-for-r` を実行し、リポジトリをクローンします。
 
 1. RStudio で、クローンされた *azureml-sdk-for-r* フォルダーの *vignettes* フォルダーに移動します。  *vignettes* の下で、 *train-and-deploy-first-model.Rmd* ファイルを選択し、このチュートリアルで使用されるビネットを検索します。 このビネットに使用されるその他のファイルは、*train-and-deploy-first-model* サブフォルダーにあります。 ビネットを開いたら、 **[Session]\(セッション\) > [Set Working Directory]\(作業ディレクトリの設定\) > [To Source File Location]\(ソース ファイルの場所に\)** を使用して、作業ディレクトリをそのファイルの場所に設定します。 
 

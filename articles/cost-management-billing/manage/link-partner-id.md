@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772721"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017014"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -134,7 +134,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 パートナー ID とアカウント間のリンクは、各顧客テナントに対して行われます。 パートナー ID は、顧客のテナントごとにリンクしてください。
 
-ただし、Azure Lighthouse を使用して顧客のリソースを管理している場合は、顧客のリソースにアクセスできるアカウントを使用して、サービス プロバイダーのテナントにリンクを作成する必要があります。 詳細については、[パートナー ID をリンクして、委任されたリソースでパートナー獲得クレジットを有効にする](../../lighthouse/how-to/partner-earned-credit.md)に関する記事をご覧ください。
+ただし、Azure Lighthouse を使用して顧客のリソースを管理している場合は、顧客のリソースにアクセスできるアカウントを使用して、サービス プロバイダーのテナントにリンクを作成する必要があります。 詳細については、「[パートナー ID をリンクして、委任されたリソースで影響を追跡する](../../lighthouse/how-to/partner-earned-credit.md)」を参照してください。
 
 **他のパートナーまたは顧客がパートナー ID へのリンクを編集または削除できますか。**
 
@@ -164,7 +164,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 [マネージド サービス プランを Azure Marketplace に発行する](../../lighthouse/how-to/publish-managed-services-offers.md)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。
 
-[Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](../../lighthouse/how-to/onboard-customer.md)場合は、MPN ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 これは、各顧客テナントではなく、サービス プロバイダー テナントで行う必要があることにご注意ください。 わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して MPN ID に関連付け、[パートナー獲得クレジットの対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。 詳細については、[パートナー ID をリンクして、委任されたリソースでパートナー獲得クレジットを有効にする](../../lighthouse/how-to/partner-earned-credit.md)に関する記事をご覧ください。
+[Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](../../lighthouse/how-to/onboard-customer.md)場合は、MPN ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 これは、各顧客テナントではなく、サービス プロバイダー テナントで行う必要があることにご注意ください。 わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して MPN ID に関連付け、[パートナー獲得クレジットの対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。 詳細については、「[パートナー ID をリンクして、委任されたリソースで影響を追跡する](../../lighthouse/how-to/partner-earned-credit.md)」を参照してください。
 
 **パートナー管理リンク (PAL) については、顧客にどのように説明すればよいでしょうか。**
 

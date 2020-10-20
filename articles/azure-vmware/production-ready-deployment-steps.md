@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802210"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055088"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -104,7 +104,7 @@ Azure VMware Solution プライベート クラウドにアクセスするには
 Azure VMware Solution からの ExpressRoute 回線は、この手順で定義する Azure Virtual Network の ExpressRoute ゲートウェイに接続します。  
 
 >[!IMPORTANT]
->既存の仮想ネットワークを選択する場合は、既存のゲートウェイ サブネットがないものを選択する必要があります。  
+>仮想ネットワークあたり 4 つの ExpressRoute 回路という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。  ただし、ExpressRoute 経由でオンプレミスから Azure VMware Solution にアクセスするには、ExpressRoute Global Reach を用意する必要があります。ExpressRoute ゲートウェイの場合、それに接続されている回路の間で推移的ルーティングが与えられないためです。  
 
 Azure VMware Solution からの ExpressRoute 回線を既存の ExpressRoute ゲートウェイに接続する場合は、デプロイ後に実行できます。  
 

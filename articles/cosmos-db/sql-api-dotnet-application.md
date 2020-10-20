@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051298"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058167"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 
@@ -71,7 +71,7 @@ ms.locfileid: "89051298"
 
 1. **[新しいプロジェクトの作成]** で、C# の **[ASP.NET Core Web アプリケーション]** を探して選択します。 **[次へ]** をクリックして続行します。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="新しい ASP.NET Core Web アプリケーション プロジェクトを作成する":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
 1. **[新しいプロジェクトの構成]** で、プロジェクトに *todo* という名前を付けて、 **[作成]** を選択します。
 
@@ -89,7 +89,7 @@ ms.locfileid: "89051298"
 
 1. **[NuGet パッケージ マネージャー]** で、**Microsoft.Azure.Cosmos** を検索して選択します。 **[インストール]** を選択します。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet パッケージのインストール":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
    Visual Studio により、Azure Cosmos DB パッケージとその依存関係がダウンロードされ、インストールされます。
 
@@ -139,7 +139,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
    * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="[Add MVC View]\(MVC ビューの追加\) ダイアログ ボックスのスクリーンショット":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
 1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
 
@@ -214,19 +214,19 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>サービスを宣言して初期化する
 
-最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDBService` というクラス、および `ICosmosDBService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
+最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDbService` というクラス、および `ICosmosDbService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
 
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Services* という名前を付けます。
 
-1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *CosmosDBService* という名前を付け、 **[追加]** を選択します。
+1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *CosmosDbService* という名前を付け、 **[追加]** を選択します。
 
-1. *CosmosDBService.cs* の内容を次のコードに置き換えます。
+1. *CosmosDbService.cs* の内容を次のコードに置き換えます。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *ICosmosDBService* という名前を付け、 **[追加]** を選択します。
+1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *ICosmosDbService* という名前を付け、 **[追加]** を選択します。
 
-1. 次のコードを *ICosmosDBService* クラスに追加します。
+1. 次のコードを *ICosmosDbService* クラスに追加します。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -262,7 +262,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. **[スキャフォールディングの追加]** で **[MVC コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="[スキャフォールディングの追加] で [MVC コントローラー - 空] を選択する":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
 1. 新しいコントローラーに *ItemController* という名前を付けます。
 
@@ -280,7 +280,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. Visual Studio で F5 キーを押して、デバッグ モードでアプリケーションをビルドします。 すると、アプリケーションがビルドされてブラウザーが起動し、先ほど見た空のグリッド ページが表示されます。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="このチュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーンショット":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
    
    アプリケーションでホーム ページを開くようにするには、URL に `/Item` を追加します。
 
@@ -288,11 +288,11 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. **［作成］** を選択します アプリによって **[Index]** ビューにリダイレクトされ、追加した項目が一覧に表示されます。 **To-Do** リストに他にもいくつか項目を追加してみてください。
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="[Index] ビューのスクリーンショット":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
   
 1. 一覧の**項目**の横にある **[Edit]** を選択します。 **[Edit]** ビューが表示され、対象オブジェクトのプロパティを更新することができます。**Completed** フラグもこのビューで更新できます。 **[Completed]** を選択して **[Save]** を選択した場合、アプリでは一覧の**項目**が完了として表示されます。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="[Completed] ボックスがオンになっている [Index] ビューのスクリーンショット":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
 1. Azure Cosmos DB サービス内で [Cosmos Explorer](https://cosmos.azure.com) または Azure Cosmos DB エミュレーターのデータ エクスプローラーを使用して、データの状態を検証します。
 
@@ -312,7 +312,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. 自分のプロファイルを見つけて **[OK]** を選択します。 次に、必要な Azure App Service を検索し、 **[OK]** を選択します。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Visual Studio の [App Service] ダイアログ ボックス":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
 別の方法として、新しいプロファイルを作成することもできます。
 
@@ -324,7 +324,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. **[App Service]** で、Web アプリ名と適切なサブスクリプション、リソース グループ、およびホスティング プランを入力し、 **[作成]** を選択します。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Visual Studio の [App Service の作成] ダイアログ ボックス":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーンショット - ASP NET Core MVC チュートリアル ステップ バイ ステップ":::
 
 数秒すると、Visual Studio で Web アプリケーションが発行され、ブラウザーが起動されます。ここで、プロジェクトが Azure で実行されている様子を確認できます。
 

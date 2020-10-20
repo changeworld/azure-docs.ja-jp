@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570084"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038652"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
+
+はい。Azure Virtual WAN は一般提供 (GA) の状態にあります。 ただし、Virtual WAN はいくつかの機能とシナリオから構成されています。 Microsoft がプレビュー タグを適用する機能またはシナリオが Virtual WAN 内にあります。 その場合、特定の機能またはシナリオ自体がプレビューになります。 特定のプレビュー機能を使用しない場合、通常の GA サポートが適用されます。 プレビュー サポートについて詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
 Virtual WAN では、サイト/サイト間 VPN 接続、ユーザー/P2S 接続、ExpressRoute 接続、Virtual Network 接続、VPN ExpressRoute 相互接続、VNet 間の推移的な接続、一元化されたルーティング、Azure Firewall、Firewall Manager のセキュリティ、監視、ExpressRoute 暗号化など、数多くの機能が 1 つの画面に組み込まれています。 Virtual WAN の利用を開始するために、これらのユースケースをすべて用意する必要はありません。 1 つのユース ケースのみで利用を開始できます。 Virtual WAN アーキテクチャは、スケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャで、ブランチ (VPN/SD-WAN デバイス)、ユーザー (Azure VPN クライアント、openVPN、または IKEv2 クライアント)、ExpressRoute 回線、仮想ネットワークが仮想ハブのスポークとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN/VPN デバイスを利用したハブとスポークの場合、ユーザーは Azure Virtual WAN ポータル内で手動で設定するか、Virtual WAN パートナーのCPE (SD-WAN/VPN) を使用して Azure への接続を設定することができます。 Virtual WAN パートナーによって、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化が提供されます。 ポイント対サイト (ユーザー VPN) 接続の場合、[Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN、または IKEv2 クライアントがサポートされています。 
@@ -224,7 +228,7 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 仮想ハブが複数のリモート ハブからの同じルートを学習する場合、次の順序で決定されます。
 
 1. プレフィックスの最長一致。
-2. interhub 経由のローカル ルート。
+2. インターハブ上のローカル ルート (仮想ハブからは 65520-65520 がインターハブ AS に対して割り当てられます)
 3. BGP 経由の静的ルート: これは、仮想ハブ ルーターによって行われる決定に対するコンテキストにあります。 しかし、決定を行うのが VPN ゲートウェイであり、サイトで BGP 経由のルートをアドバタイズする場合、または静的アドレス プレフィックスを指定する場合は、静的ルートが BGP ルートよりも優先されることがあります。
 4. VPN 経由の ExpressRoute (ER): コンテキストがローカル ハブの場合、VPN よりも ER が優先されます。 ExpressRoute 回線間の転送接続は、Global Reach 経由でのみ使用できます。 そのため、ExpressRoute 回線が 1 つのハブに接続されており、VPN 接続を使用して異なるハブに接続されている別の ExpressRoute 回線があるシナリオの場合、ハブ間のシナリオでは VPN が優先される可能性があります。
 5. AS パスの長さ。

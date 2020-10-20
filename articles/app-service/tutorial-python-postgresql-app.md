@@ -3,7 +3,7 @@ title: チュートリアル:Postgres を使用した Python Django アプリを
 description: PostgreSQL データベースを使用する Python Web アプリを作成し、Azure にデプロイします。 このチュートリアルは Django フレームワークを使用しており、アプリは Azure App Service on Linux でホストされています。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369622"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019411"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -114,7 +114,7 @@ djangoapp サンプルには、データ ドリブンの Django 投票アプリ�
 - 運用環境の設定は、*azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
 - `DJANGO_ENV` 環境変数を "production" に設定した場合に、アプリで運用環境の設定が使用されます。 この環境変数は、PostgreSQL データベース構成に使用する他のものと共に、チュートリアルの後半で作成します。
 
-これらの変更は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有ではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/)に関するページを参照してください。
+これらの変更は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有ではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/)に関するページを参照してください。 一部の変更点の詳細については、[Azure 上での Django の運用設定](configure-language-python.md#production-settings-for-django-apps)に関するセクションを参照してください。
 
 [問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -134,19 +134,19 @@ az extension add --name db-up
 次に、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して Azure に Postgres データベースを作成します。
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- *\<postgres-server-name>* は、すべての Azure で一意の名前に置き換えます (サーバー エンドポイントは `https://<postgres-server-name>.postgres.database.azure.com`)。 会社名と別の一意の値を組み合わせて使用すると、適切なパターンになります。
+- *\<postgres-server-name>* を Azure 全体で一意である名前に置き換えます (サーバー エンドポイントは `https://<postgres-server-name>.postgres.database.azure.com` になります)。 会社名と別の一意の値を組み合わせて使用すると、適切なパターンになります。
 - *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
 - ここで使用している B_Gen5_1 (Basic、Gen5、1 コア) の[価格レベル](../postgresql/concepts-pricing-tiers.md)は、コストが最も低いものです。 運用データベースの場合は、`--sku-name` 引数を省略して、代わりに GP_Gen5_2 (General Purpose、Gen 5、2 コア) レベルを使用します。
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
 - `DjangoPostgres-tutorial-rg` という[リソース グループ](../azure-resource-manager/management/overview.md#terminology)がまだない場合は、作成します。
-- Postgres サーバーを作成します。
-- 一意のユーザー名とパスワードを使用して既定の管理者アカウントを作成します (ご自分の資格情報を指定するには、`--admin-user` および `--admin-password` 引数を `az postgres up` コマンドで使用します)。
-- `pollsdb` データベースを作成します。
+- `--server-name` 引数によって指定された Postgres サーバーを作成します。
+- `--admin-user` および `--admin-password` 引数を使用して、管理者アカウントを作成します。 これらの引数を省略すると、コマンドによって一意の資格情報が自動的に生成されるようになります。
+- `--database-name` 引数で指定されたとおりに `pollsdb` データベースを作成します。
 - ローカル IP アドレスからのアクセスを有効にします。
 - Azure サービスからのアクセスを有効にします。
 - `pollsdb` データベースへのアクセス権を持ったデータベース ユーザーを作成します。
@@ -203,17 +203,19 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 
 コードを App Service にデプロイしたので、次の手順として、アプリを Azure の Postgres データベースに接続します。
 
-アプリ コードでは、さまざまな環境変数でデータベース情報を検索することを想定しています。 App Service で環境変数を設定するには、[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して "アプリ設定" を作成します。
+アプリ コードでは、`DBHOST`、`DBNAME`、`DBUSER`、および `DBPASS` という 4 つの環境変数でデータベース情報を検索することを想定しています。 運用設定を使用するには、`DJANGO_ENV` 環境変数が `production` に設定されていることも必要です。
+
+App Service で環境変数を設定するには、次の [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して "アプリ設定" を作成します。
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- *\<postgres-server-name>* は、先ほど `az postgres up` コマンドで使用した名前に置き換えます。
-- *\<username>* と *\<password>* も、そのコマンドで生成された資格情報に置き換えます。 `DBUSER` 引数は、`<username>@<postgres-server-name>` 形式になっている必要があります。
+- *\<postgres-server-name>* は、先ほど `az postgres up` コマンドで使用した名前に置き換えます。 *azuresite/production.py* 内のコードによって、完全な Postgres サーバー URL を作成するための `.postgres.database.azure.com` が自動的に追加されます。
+- *\<username>* と *\<password>* を、前の `az postgres up` コマンドで使用した管理者の資格情報、または `az postgres up` によって自動的に生成された資格情報に置き換えます。 *azuresite/production.py* 内のコードを実行すると、完全な Postgres ユーザー名が `DBUSER` および `DBHOST` を基に自動的に作成されます。
 - リソース グループとアプリ名は、 *.azure/config* ファイル内のキャッシュされた値から取得されます。
-- このコマンドにより、アプリのコードで想定されている `DJANGO_ENV`、`DBHOST`、`DBNAME`、`DBUSER`、`DBPASS` という名前の設定が作成されます。
-- Python コードでは、`os.environ.get('DJANGO_ENV')` のようなステートメントを使用して、環境変数としてこれらの設定にアクセスします。 詳細については、「[環境変数へのアクセス](configure-language-python.md#access-environment-variables)」を参照してください。
+
+Python コードでは、`os.environ.get('DJANGO_ENV')` のようなステートメントを使用して、環境変数としてこれらの設定にアクセスします。 詳細については、「[環境変数へのアクセス](configure-language-python.md#access-environment-variables)」を参照してください。
 
 [問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -230,6 +232,8 @@ Django データベースの移行によって、Azure データベース上の 
     `<app-name>` は、先ほど `az webapp up` コマンドで使用した名前に置き換えます。
 
     macOS と Linux では、[`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) コマンドを使用して SSH セッションに接続することもできます。
+
+    SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
 
 1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
@@ -249,7 +253,7 @@ Django データベースの移行によって、Azure データベース上の 
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
-    
+
 1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、**Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`Pollsdb1`」と入力します。
 
 1. データベースがロックされているというエラーが表示された場合は、前のセクションで `az webapp settings` コマンドを実行したことを確認してください。 それらの設定を行わないと、migrate コマンドがデータベースと通信できずにエラーが発生します。
@@ -259,6 +263,10 @@ Django データベースの移行によって、Azure データベース上の 
 ### <a name="create-a-poll-question-in-the-app"></a>アプリで投票の質問を作成する
 
 1. ブラウザーで `http://<app-name>.azurewebsites.net` という URL を開きます。 データベース内に特定の投票がまだないため、アプリには "No polls are available" (投票は利用できません) というメッセージが表示されます。
+
+    "アプリケーション エラー" が表示される場合は、前の手順「[データベースに接続するための環境変数を構成する](#configure-environment-variables-to-connect-the-database)」で必須の設定を作成していないか、またはそれらの値にエラーが含まれていることが考えられます。 コマンド `az webapp config appsettings list` を実行して、設定を確認します。 また、[診断ログ調べて](#stream-diagnostic-logs)、アプリの起動時に発生したエラーを具体的に確認することもできます。 たとえば、該当する設定を作成していない場合、ログには `KeyError: 'DBNAME'` というエラーが示されます。
+
+    設定を更新してエラーを修正したら、アプリが再起動するまで少し待ってから、ブラウザーを最新の状態に更新します。
 
 1. [https://www.microsoft.com](`http://<app-name>.azurewebsites.net/admin`) を参照します。 前のセクションのスーパーユーザー資格情報 (`root` と `Pollsdb1`) を使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** を選択し、いくつかの選択肢がある投票の質問を作成します。
 
@@ -446,7 +454,7 @@ az webapp log tail
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-アプリを残しておく場合、または次のチュートリアルに進む場合は、「[次のステップ](#next-steps)」に進んでください。 それ以外の場合は、継続して料金が発生しないように、このチュートリアルで作成したリソース グループを削除できます。
+アプリを残しておく場合、またはその他のチュートリアルに進む場合は、「[次のステップ](#next-steps)」に進んでください。 それ以外の場合は、継続して料金が発生しないように、このチュートリアルで作成したリソース グループを削除できます。
 
 ```azurecli
 az group delete --no-wait

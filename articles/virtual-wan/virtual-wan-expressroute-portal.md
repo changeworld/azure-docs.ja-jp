@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Virtual WAN を使用して ExpressRoute 接続を作成する
+title: チュートリアル:Azure Virtual WAN を使用して ExpressRoute 接続を作成する
 description: このチュートリアルでは、Azure Virtual WAN を使用して、Azure 環境とオンプレミス環境への ExpressRoute 接続を作成する方法について説明します。
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821883"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054816"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "91821883"
 > * ゲートウェイ サイズを変更する
 > * 既定のルートをアドバタイズする
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "91821883"
 
 * ハブ リージョンの IP アドレス範囲を取得します。 このハブは、Virtual WAN によって作成および使用される仮想ネットワークです。 ハブに指定するアドレス範囲が、接続先の既存の仮想ネットワークと重複することはできません。 さらに、オンプレミスで接続するアドレス範囲と重複することもできません。 オンプレミス ネットワーク構成に含まれている IP アドレス範囲になじみがない場合は、それらの詳細を提供できるだれかと調整してください。
 
-* ハブ ゲートウェイに接続するには、ExpressRoute 回線は Premium または Standard 回線でなければなりません。
+* ハブ ゲートウェイに接続するには、ExpressRoute 回線を Premium または Standard 回線にする必要があります。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -153,6 +153,17 @@ Azure 仮想ハブで既定ルート 0.0.0.0/0 を ExpressRoute エンド ポイ
 
    ![既定ルートの伝達](./media/virtual-wan-expressroute-portal/defaultroute2.png "既定ルートの伝達")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
+
+これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
+次に、Virtual WAN の詳細については下記を参照してください。
+
+> [!div class="nextstepaction"]
+> * [Virtual WAN の FAQ](virtual-wan-faq.md)

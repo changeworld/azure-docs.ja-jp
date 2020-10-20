@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9db530c1bdff6521c945ae0c2373bb9d32b8a476
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333990"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047779"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -1271,8 +1271,8 @@ Remove-AzResourceGroup -Name $rg
 * ロード バランサーのトラフィック規則と正常性プローブを構成しました。
 * ロード バランサーをテストしました。
 
-Azure Load Balancer の詳細については、「[Azure Load Balancer の概要](load-balancer-overview.md)」および「[Load Balancer に関してよく寄せられる質問](load-balancer-faqs.md)」を参照してください。
-
-* [Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)について理解を深めます。
+Azure Load Balancer についてさらに学習するには、次の記事に進んでください。
+> [!div class="nextstepaction"]
+> [Azure Load Balancer の概要](load-balancer-overview.md)
 
 

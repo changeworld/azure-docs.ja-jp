@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager テンプレート (ARM テンプレート) を使用して内部ロード バランサーを作成する
-description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して内部の Azure ロード バランサーを作成する方法について説明します。
+title: 'クイックスタート: テンプレートを使用して内部ロード バランサーを作成する'
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して内部の Azure ロード バランサーを作成する方法について説明します。
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 287afc51aa15ed4cadba7e2d6cd389e4869d7d61
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532835"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047762"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート」を参照してください。ARM テンプレートを使用して VM の負荷を分散する内部ロード バランサーを作成する
 

@@ -3,19 +3,19 @@ title: クイック スタート:Metrics Advisor Web ポータル
 titleSuffix: Azure Cognitive Services
 description: Metrics Advisor Web ポータルを使い始める方法について説明します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631376"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048238"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>クイック スタート:Web ポータルを使用して初めてのメトリックを監視する
 
@@ -41,7 +41,7 @@ Metrics Advisor インスタンスをプロビジョニングするとき、サ�
 
 ## <a name="sign-in-to-your-workspace"></a>ワークスペースにサインインする
 
-リソースがデプロイされたら、[Metrics Advisor ポータル](https://go.microsoft.com/fwlink/?linkid=2143774)にサインインします。 ワークスペースを選択して、メトリックの監視を開始します。 
+リソースが作成されたら、[Metrics Advisor ポータル](https://go.microsoft.com/fwlink/?linkid=2143774)にサインインします。 ワークスペースを選択して、メトリックの監視を開始します。 
  
 現在、使用可能なリージョンごとに 1 つの Metrics Advisor リソースを作成できます。 Metrics Advisor ポータルでは、いつでもワークスペースを切り替えることができます。
 

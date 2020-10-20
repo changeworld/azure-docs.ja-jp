@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API と Azure Databricks を使用して、データ内の異常を監視する方法について説明します。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245606"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017660"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -63,7 +63,7 @@ ms.locfileid: "88245606"
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure portal での Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal での Databricks")
+    ![ポータルの Azure Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 3. **[Azure Databricks サービス]** で次の値を指定して、Databricks ワークスペースを作成します。
 
@@ -115,7 +115,7 @@ ms.locfileid: "88245606"
 
 3. アプリケーションのページで **[Keys and Access Tokens]\(キーとアクセス トークン\)** タブを選択し、 **[Consumer Key]\(コンシューマー キー\)** と **[Consumer Secret]\(コンシューマー シークレット\)** の値をコピーします。 さらに、 **[Create my access token]\(アクセス トークンの作成\)** を選択してアクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
 
-    ![Twitter アプリケーションの詳細](../media/tutorials/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
+    ![Twitter アプリケーションの詳細 2](../media/tutorials/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
 
 Twitter アプリケーションについて取得した値を保存します。 値は、このチュートリアルの後の方で必要になります。
 
@@ -193,7 +193,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 2. **[Create Notebook]\(ノートブックの作成\)** ダイアログ ボックスに、名前として「**SendTweetsToEventHub**」と入力し、言語として **[Scala]** を選択し、前に作成した Spark クラスターを選択します。
 
-    ![Databricks でノートブックを作成する](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
+    ![ノートブックの詳細](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
     **［作成］** を選択します
 

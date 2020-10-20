@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756918"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044770"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して電話番号を取得する
 
@@ -103,7 +103,7 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 > [!NOTE]
 > プロビジョニングされた番号がこのページに表示されるまでに数分かかる場合があります。
 
-### <a name="customizing-phone-number-plans"></a>電話番号プランをカスタマイズする
+### <a name="customizing-phone-number-features"></a>電話番号の機能をカスタマイズする
 プランをカスタマイズする電話番号は、[`Numbers`] ページで目的の番号をクリックして選択できます。
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
