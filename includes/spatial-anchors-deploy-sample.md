@@ -4,11 +4,15 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e86edb9de075a87be2fe000d1164f3d5f81ace4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d553d8bea7e5dd18fd5ca0c10ef067c7f82c529f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261925"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971460"
 ---
-アプリをデバイスにデプロイします。 アプリが起動したら、**[Choose A Demo]\(デモの選択\)** ダイアログで、左右の矢印を使用して **[LocalShare]** オプションを選択し、**[Go!]\(実行\)** をクリックします。 アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。
+アプリをデバイスにデプロイします。 
+
+アプリが起動したら、 **[Choose A Demo]\(デモの選択\)** ウィンドウで、左右の矢印を使用して **[LocalShare]** オプションを選択します。 その後、 **[Go!]\(実行\)** をクリックします。 
+
+アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850752"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Jive の統合
 
@@ -140,7 +140,7 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. 上部のメニューで、 **[SAML]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_002.png)
+    ![[Enabled]\(有効\) が選択されている [SAML] タブを示すスクリーンショット。](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. **[General]\(全般\)** タブで **[Enabled]\(有効\)** を選択します。
 
@@ -148,7 +148,7 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. **[IDP METADATA]\(IDP メタデータ\)** タブに移動します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_003.png)
+    ![[I D P METADATA]\(I D P メタデータ\) が選択されている [SAML] タブを示すスクリーンショット。](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. ダウンロードしたメタデータ XML ファイルの内容をコピーし、 **[Identity Provider (IDP) Metadata (ID プロバイダー (IDP) のメタデータ)]** ボックスに貼り付けます。
 
@@ -156,7 +156,7 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. **[USER ATTRIBUTE MAPPING]\(ユーザー属性のマッピング\)** タブを選択します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_004.png)
+    ![[USER ATTRIBUTE MAPPING]\(ユーザー属性のマッピング\) が選択されている [SAML] タブを示すスクリーンショット。](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. **[Email (電子メール)]** ボックスに、**mail** 値の属性名をコピーして貼り付けます。
 

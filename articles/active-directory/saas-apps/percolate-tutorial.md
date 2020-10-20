@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553996"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>チュートリアル:Azure Active Directory と Percolate との統合
 
@@ -103,7 +103,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
 5. SP-initiated モードでアプリケーションを構成する場合は、 **[追加の URL を設定します]** を選択し、 **[サインオン URL]** ボックスに **https://percolate.com/app/login** と入力します。
 
-   ![[Percolate のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+   ![[追加の URL を設定します] のスクリーンショット。[サインオン URL] というテキスト ボックスが強調表示されています。](common/metadata-upload-additional-signon.png)
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**コピー** アイコンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーします。 この URL を保存します。
 
     ![アプリのフェデレーション メタデータ URL のコピー](common/copy-metadataurl.png)
@@ -184,7 +184,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
 3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] の選択](common/users-groups-blade.png)
+    ![[ユーザーとグループ] が左のウィンドウで選択されている画面のスクリーンショット。](common/users-groups-blade.png)
 
 4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 

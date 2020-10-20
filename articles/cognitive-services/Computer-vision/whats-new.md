@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90904102"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976370"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="computer-vision-api-v31-ga"></a>Computer Vision API v3.1 GA
+
+一般提供中の Computer Vision API は、v3.1 にアップグレードされました。
 
 ## <a name="september-2020"></a>2020 年 9 月
 

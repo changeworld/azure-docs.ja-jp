@@ -120,6 +120,7 @@
                   href: container-registry-repository-scoped-permissions.md
             - name: Azure ロールベースのアクセス制御
               href: container-registry-roles.md
+              displayName: 'permissions, authorization'
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
             - name: Security Center を使用したイメージのスキャン

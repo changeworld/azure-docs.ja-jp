@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554650"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
 
@@ -99,7 +99,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
 4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[MobileIron のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://www.mobileiron.com/<key>` の形式で URL を入力します。
 
@@ -107,7 +107,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[MobileIron のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<host>.mobileiron.com/user/login.html` という形式で URL を入力します。
 
@@ -124,11 +124,11 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
 2. **[Admin]\(管理\)** > **[Identity]\(ID\)** に移動し、**[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
 
-    ![[シングル サインオン管理者の構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![スクリーンショットは、[Identity]\(ID\) が選択された MobileIron サイトの [Admin]\(管理\) タブを示しています。](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. **キー**と**ホスト**の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションに貼り付けて URL を完成させます。
 
-    ![[シングル サインオン管理者の構成] ボタン](./media/mobileiron-tutorial/key.png)
+    ![スクリーンショットは、キーとホストの値を含む、[Setting Up SAML]\(SAML の設定\) オプションを示しています。](./media/mobileiron-tutorial/key.png)
 
 4. **[Export metadata file from AAD and import to MobileIron Cloud Field]\(AAD からメタデータ ファイルをエクスポートして MobileIron Cloud Field にインポートする\)** で、 **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。 アップロードしたら、 **[完了]** をクリックします。
 

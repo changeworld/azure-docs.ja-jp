@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1b8bcaf283e612b3ebe6d6b7bb5660e8b3179ad3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323058"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858372"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
 
@@ -44,14 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 *Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
 
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="dependencies":::
 
 ### <a name="add-essential-fields"></a>必須フィールドを追加する
 
@@ -59,52 +52,13 @@ using System.Text;
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-```csharp
-namespace DetectFace
-{
-    class Program
-    {
-
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
-
-        // replace <myresourcename> with the string found in your endpoint URL
-        const string uriBase =
-            "https://<myresourcename>.cognitiveservices.azure.com/face/v1.0/detect";
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="environment":::
 
 ### <a name="receive-image-input"></a>画像の入力を受け取る
 
 **Program** クラスの **Main** メソッドに次のコードを追加します。 このコードによって、ローカル画像ファイルのパスを入力するようユーザーに要求するプロンプトがコンソールに書き込まれます。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
 
-```csharp
-        static void Main(string[] args)
-        {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Detect faces:");
-            Console.Write(
-                "Enter the path to an image with faces that you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
-
-            if (File.Exists(imageFilePath))
-            {
-                try
-                {
-                    MakeAnalysisRequest(imageFilePath);
-                    Console.WriteLine("\nWait a moment for the results to appear.\n");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("\n" + e.Message + "\nPress Enter to exit...\n");
-                }
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path.\nPress Enter to exit...\n");
-            }
-            Console.ReadLine();
-        }
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="main":::
 
 ### <a name="call-the-face-detection-rest-api"></a>顔検出 REST API を呼び出す
 
@@ -112,142 +66,47 @@ namespace DetectFace
 
 各ヘルパー メソッドは、以降の手順で定義します。
 
-```csharp
-        // Gets the analysis of the specified image by using the Face REST API.
-        static async void MakeAnalysisRequest(string imageFilePath)
-        {
-            HttpClient client = new HttpClient();
-
-            // Request headers.
-            client.DefaultRequestHeaders.Add(
-                "Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            // Request parameters. A third optional parameter is "details".
-            string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
-                "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
-                "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
-
-            // Assemble the URI for the REST API Call.
-            string uri = uriBase + "?" + requestParameters;
-
-            HttpResponseMessage response;
-
-            // Request body. Posts a locally stored JPEG image.
-            byte[] byteData = GetImageAsByteArray(imageFilePath);
-
-            using (ByteArrayContent content = new ByteArrayContent(byteData))
-            {
-                // This example uses content type "application/octet-stream".
-                // The other content types you can use are "application/json"
-                // and "multipart/form-data".
-                content.Headers.ContentType =
-                    new MediaTypeHeaderValue("application/octet-stream");
-
-                // Execute the REST API call.
-                response = await client.PostAsync(uri, content);
-
-                // Get the JSON response.
-                string contentString = await response.Content.ReadAsStringAsync();
-
-                // Display the JSON response.
-                Console.WriteLine("\nResponse:\n");
-                Console.WriteLine(JsonPrettyPrint(contentString));
-                Console.WriteLine("\nPress Enter to exit...");
-            }
-        }
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="request":::
 
 ### <a name="process-the-input-image-data"></a>入力画像データを処理する
 
 **Program** クラスに次のメソッドを追加します。 このメソッドでは、指定されたファイル パスにある画像をバイト配列に変換します。
 
-```csharp
-        // Returns the contents of the specified file as a byte array.
-        static byte[] GetImageAsByteArray(string imageFilePath)
-        {
-            using (FileStream fileStream =
-                new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
-            {
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-        }
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="getimage":::
 
 ### <a name="parse-the-json-response"></a>JSON 応答を解析します
 
 **Program** クラスに次のメソッドを追加します。 このメソッドでは、JSON 入力を読みやすく書式設定します。 アプリからは、この文字列データをコンソールに書き込むことになります。 その後、クラスと名前空間を閉じることができます。
 
-```csharp
-        // Formats the given JSON string by adding line breaks and indents.
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-                return string.Empty;
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\'':
-                        if (quote) ignore = !ignore;
-                        break;
-                }
-
-                if (quote)
-                    sb.Append(ch);
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-            }
-
-            return sb.ToString().Trim();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="print":::
 
 ## <a name="run-the-app"></a>アプリを実行する
 
 実行に成功した場合、応答として顔データが、読みやすい JSON 形式で表示されます。 次に例を示します。
+
+```json
+[
+   {
+      "faceId": "f7eda569-4603-44b4-8add-cd73c6dec644",
+      "faceRectangle": {
+         "top": 131,
+         "left": 177,
+         "width": 162,
+         "height": 162
+      }
+   }
+]
+```
+
+## <a name="extract-face-attributes"></a>顔の属性を抽出する
+ 
+顔の属性を抽出するには、検出モデル 1 を使用し、`returnFaceAttributes` クエリ パラメーターを追加します。
+
+```csharp
+string requestParameters = "detectionModel=detection_01&returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+```
+
+これで、応答に顔の属性が追加されます。 次に例を示します。
 
 ```json
 [

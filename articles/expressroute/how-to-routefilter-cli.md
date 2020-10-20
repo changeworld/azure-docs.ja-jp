@@ -1,21 +1,21 @@
 ---
-title: ExpressRoute:ルート フィルター - Microsoft ピアリング:Azure CLI
-description: この記事では、Azure CLI を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します
+title: チュートリアル:Microsoft ピアリングにルート フィルターを構成する - Azure CLI
+description: このチュートリアルでは、Azure CLI を使用して Microsoft ピアリングにルート フィルターを構成する方法について説明します
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 12/07/2018
+ms.topic: tutorial
+ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fbce15b84371b7b7907deff361e2a2e706bec28
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567709"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975996"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft ピアリングにルート フィルターを構成する:Azure CLI
+# <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>チュートリアル:Microsoft ピアリングにルート フィルターを構成する:Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
@@ -27,26 +27,31 @@ ms.locfileid: "89567709"
 
 Microsoft 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) には、Microsoft ピアリングを介してアクセスできます。 ExpressRoute 回線に Microsoft ピアリングを構成すると、これらのサービスに関連したすべてのプレフィックスが、確立された BGP セッションを通じてアドバタイズされます。 提供されているサービスをプレフィックスで識別するために、すべてのプレフィックスには BGP コミュニティ値がアタッチされます。 BGP コミュニティ値とサービスのマッピング一覧については、[BGP コミュニティ](expressroute-routing.md#bgp)に関するページを参照してください。
 
-すべてのサービスに接続する必要がある場合、多数のプレフィックスが BGP を通じてアドバタイズされます。 このことによって、ネットワーク内のルーターによって管理されるルート テーブルのサイズは著しく増加します。 Microsoft ピアリング経由で提供されるサービスの一部しか利用する予定がない場合は、ルート テーブルのサイズを 2 とおりの方法で減らすことができます。 次のようにすることができます。
+すべての Azure および Microsoft 365 サービスに接続すると、多数のプレフィックスが BGP を通じてアドバタイズされます。 このようにプレフィックスが多数になると、ネットワーク内のルーターによって管理されるルート テーブルのサイズが著しく増加します。 Microsoft ピアリング経由で提供されるサービスの一部しか利用する予定がない場合は、ルート テーブルのサイズを 2 とおりの方法で減らすことができます。 次のようにすることができます。
 
-* BGP コミュニティにルート フィルターを適用して不要なプレフィックスを除外する。 この方法はネットワーク運用の標準的技法であり、多くのネットワークで広く使用されています。
+* BGP コミュニティにルート フィルターを適用して不要なプレフィックスを除外する。 ルート フィルター処理はネットワーク運用の標準的技法であり、多くのネットワークで広く使用されています。
 
 * ルート フィルターを定義して ExpressRoute 回線に適用する。 ルート フィルターは、Microsoft ピアリング経由で利用する予定の一連のサービスを選択できる新しいリソースです。 ExpressRoute ルーターからは、ルート フィルターで識別されたサービスに属しているプレフィックスのリストだけが送信されます。
 
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> - BGP コミュニティ値を取得する。
+> - ルート フィルターとフィルター規則を作成する。
+> - ExpressRoute 回線にルート フィルターを関連付ける。
+
 ### <a name="about-route-filters"></a><a name="about"></a>ルート フィルターについて
 
-ExpressRoute 回線に Microsoft ピアリングが構成されると、Microsoft のエッジ ルーターは、(貴社または接続プロバイダーの) エッジ ルーターとの間に一対の BGP セッションを確立します。 貴社のネットワークにはルートが一切アドバタイズされません。 ネットワークに対するルート アドバタイズを有効にするには、ルート フィルターを関連付ける必要があります。
+ExpressRoute 回線に Microsoft ピアリングが構成されると、接続プロバイダーを介してご利用のエッジ ルーターとの間に一対の BGP セッションが Microsoft エッジ ルーターによって確立されます。 貴社のネットワークにはルートが一切アドバタイズされません。 ネットワークに対するルート アドバタイズを有効にするには、ルート フィルターを関連付ける必要があります。
 
-ExpressRoute 回線の Microsoft ピアリング経由で利用するサービスがルート フィルターによって識別されます。 これは、実質的には全 BGP コミュニティ値から成る許可リストです。 ルート フィルター リソースを定義して ExpressRoute 回線にアタッチすると、BGP コミュニティ値にマッピングされたすべてのプレフィックスが貴社のネットワークにアドバタイズされます。
+ExpressRoute 回線の Microsoft ピアリング経由で利用するサービスがルート フィルターによって識別されます。 これは、実質的にはすべての BGP コミュニティ値から成る許可リストです。 ルート フィルター リソースを定義して ExpressRoute 回線にアタッチすると、BGP コミュニティ値にマッピングされたすべてのプレフィックスが貴社のネットワークにアドバタイズされます。
 
-Microsoft 365 サービスにルート フィルターをアタッチするには、ExpressRoute を経由して Microsoft 365 サービスを利用することへの承認が必要となります。 ExpressRoute 経由で Microsoft 365 サービスを利用することが承認されていない場合、ルート フィルターをアタッチする操作は失敗します。 承認プロセスの詳細については、「[Microsoft 365 向け Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)」を参照してください。
+Microsoft 365 サービスにルート フィルターをアタッチするには、ExpressRoute 経由での Microsoft 365 サービスの利用に対する承認が必要となります。 ExpressRoute 経由で Microsoft 365 サービスを利用することが承認されていない場合、ルート フィルターをアタッチする操作は失敗します。 承認プロセスの詳細については、[Microsoft 365 向け Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。
 > 
-> 
 
-### <a name="workflow"></a><a name="workflow"></a>ワークフロー
+## <a name="prerequisites"></a>前提条件
 
 Microsoft ピアリング経由でサービスに正しく接続するためには、次の構成手順を完了する必要があります。
 
@@ -54,22 +59,9 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
   * あらかじめ [ExpressRoute 回線を作成](howto-circuit-cli.md)し、接続プロバイダー経由で回線を有効にしておきます。 ExpressRoute 回線がプロビジョニングされて有効な状態になっている必要があります。
   * BGP セッションを直接管理する場合は、[Microsoft ピアリングを作成](howto-routing-cli.md)します。 または、ご利用の回線に対する Microsoft ピアリングのプロビジョニングを接続プロバイダーに依頼します。
 
-* ルート フィルターを作成して構成する。
-  * Microsoft ピアリング経由で利用するサービスを特定します。
-  * それらのサービスに関連付けられている一連の BGP コミュニティ値を特定します。
-  * それらの BGP コミュニティ値と合致した一連のプレフィックスを許可するルールを作成します。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-* ExpressRoute 回線にルート フィルターをアタッチする。
-
-## <a name="before-you-begin"></a>開始する前に
-
-開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
-
-* 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
-
-* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](howto-circuit-cli.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 ExpressRoute 回線がプロビジョニングされて有効な状態になっている必要があります。
-
-* アクティブな Microsoft ピアリングが必要です。 [ピアリング構成の作成と変更](howto-routing-cli.md)に関するページの手順に従ってください。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは Azure CLI バージョン 2.0.28 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択する
 
@@ -91,40 +83,33 @@ ExpressRoute 回線を作成するサブスクリプションを選択します�
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>手順 1:一連のプレフィックスと BGP コミュニティ値を取得する
+## <a name="get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>一連のプレフィックスと BGP コミュニティ値を取得する
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1.一連の BGP コミュニティ値を取得する
+1. 次のコマンドレットを使用して、BGP コミュニティ値と、Microsoft ピアリング経由でアクセス可能なサービスに関連付けられているプレフィックスとから成るリストを取得します。
 
-Microsoft ピアリング経由でアクセス可能なサービスに関連付けられている一連の BGP コミュニティ値とそれに対応する一連のプレフィックスを取得します。次のコマンドレットを使用してください。
+    ```azurecli-interactive
+    az network route-filter rule list-service-communities
+    ```
 
-```azurecli-interactive
-az network route-filter rule list-service-communities
-```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.使用する値をリストアップする
+1. ルート フィルターで使用する BGP コミュニティ値をリストアップします。
 
-ルート フィルターで使用する BGP コミュニティ値をリストアップします。
+## <a name="create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>ルート フィルターとフィルター ルールを作成する
 
-## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
+ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。 `az network route-filter create` コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。
 
-ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
+1. ルート フィルター リソースを作成するには、次のコマンドを実行します。
 
-### <a name="1-create-a-route-filter"></a>1.ルート フィルターを作成する
+    ```azurecli-interactive
+    az network route-filter create -n MyRouteFilter -g MyResourceGroup
+    ```
 
-まず、ルート フィルターを作成します。 `az network route-filter create` コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。 ルート フィルター リソースを作成するには、次のコマンドを実行します。
-
-```azurecli-interactive
-az network route-filter create -n MyRouteFilter -g MyResourceGroup
-```
-
-### <a name="2-create-a-filter-rule"></a>2.フィルター ルールを作成する
-
-次のコマンドを実行して、新しいルールを作成してください。
+1. ルート フィルター規則を作成するには、次のコマンドを実行します。
  
-```azurecli-interactive
-az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
-```
+    ```azurecli-interactive
+    az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
+    ```
 
-## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>手順 3:ルート フィルターを ExpressRoute 回線にアタッチする
+## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>ルート フィルターを ExpressRoute 回線にアタッチする
 
 次のコマンドを実行して、ルート フィルターを ExpressRoute 回線にアタッチします。
 
@@ -144,7 +129,7 @@ az network route-filter show -g ExpressRouteResourceGroupName --name MyRouteFilt
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
 
-既にルート フィルターが回線にアタッチされている場合、一連の BGP コミュニティ値が更新されると、必要なプレフィックス アドバタイズの変更が、確立されている BGP セッションを通じて自動的に伝達されます。 ルート フィルターに対する一連の BGP コミュニティ値は、次のコマンドで更新できます。
+既にルート フィルターが回線にアタッチされている場合、一連の BGP コミュニティ値が更新されると、プレフィックス アドバタイズの変更が、確立されている BGP セッションを通じて自動的に伝達されます。 ルート フィルターに対する一連の BGP コミュニティ値は、次のコマンドで更新できます。
 
 ```azurecli-interactive
 az network route-filter rule update --filter-name MyRouteFilter -n CRM -g ExpressRouteResourceGroupName --add communities '12076:5040' --add communities '12076:5010'
@@ -158,9 +143,9 @@ ExpressRoute 回線からルート フィルターをデタッチした後は、
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-### <a name="to-delete-a-route-filter"></a><a name="delete"></a>ルート フィルターを削除するには
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-削除できるのは、いずれの回線にもアタッチされていないルート フィルターだけです。 削除する前に、ルート フィルターが回線にアタッチされていないことを確認してください。 ルート フィルターを削除するには、次のコマンドを使用します。
+削除できるのは、いずれの回線にもアタッチされていないルート フィルターだけです。 ルート フィルターの削除を試みる前に、それが回線にアタッチされていないことを確認してください。 ルート フィルターを削除するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az network route-filter delete -n MyRouteFilter -g MyResourceGroup
@@ -168,4 +153,7 @@ az network route-filter delete -n MyRouteFilter -g MyResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
+ルーター構成のサンプルについては、以下を参照してください。
+
+> [!div class="nextstepaction"]
+> [ルーティングをセットアップして管理するためのルーター構成のサンプル](expressroute-config-samples-routing.md)

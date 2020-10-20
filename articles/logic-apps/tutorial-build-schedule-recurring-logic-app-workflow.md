@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574733"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842565"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して、スケジュールに基づいて定期的に実行される自動化ワークフローを作成する
 
@@ -360,18 +360,18 @@ ms.locfileid: "91574733"
 
 1. Azure portal の検索ボックスに、作成したリソース グループの名前を入力します。 結果の **[リソース グループ]** で、そのリソース グループを選択します。
 
-   この例では、`LA-TravelTime-RG` という名前の新しいリソース グループを作成しました。 
+   この例では、`LA-TravelTime-RG` という名前の新しいリソース グループを作成しました。
 
    ![Azure 検索ボックスに「la-travel-time-rg」と入力され、**LA-TravelTime-RG** が選択されているスクリーンショット。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > Azure のホーム ページの **[最近のリソース]** にリソース グループが表示されている場合は、ホーム ページからそのグループを選択できます。
 
-1. リソース グループのメニューで、 **[概要]** が選択されていることを確認します。 **[概要]** ペインのツール バーで、 **[リソース グループの削除]** を選択します。 
+1. リソース グループのメニューで、 **[概要]** が選択されていることを確認します。 **[概要]** ペインのツール バーで、 **[リソース グループの削除]** を選択します。
 
    ![リソース グループの [概要] ペインと、ペインのツール バーの [リソース グループの削除] が選択されているスクリーンショット。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. 確認ペインでリソース グループ名を入力して、 **[削除]** をクリックします。
+1. 確認ペインが表示されたら、リソース グループ名を入力して、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: d870372f418cb8873f6664d6a501e0abe0ebe374
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4f747ce424e26a50aadcc84e375da230dff36fb3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88548482"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858304"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
 
@@ -53,35 +53,39 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python detect-face.py` 」のように入力します。
 
-```python
-import requests
-import json
-
-# set to your own subscription key value
-subscription_key = None
-assert subscription_key
-
-# replace <My Endpoint String> with the string from your endpoint URL
-face_api_url = 'https://<My Endpoint String>.com/face/v1.0/detect'
-
-image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
-
-headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-
-params = {
-    'returnFaceId': 'true',
-    'returnFaceLandmarks': 'false',
-    'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
-}
-
-response = requests.post(face_api_url, params=params,
-                         headers=headers, json={"url": image_url})
-print(json.dumps(response.json()))
-```
+:::code language="python" source="~/cognitive-services-quickstart-code/python/Face/rest/detect.py" :::
 
 ## <a name="examine-the-response"></a>結果の確認
 
 成功応答が JSON で返されます。
+
+```json
+[
+  {
+    "faceId": "e93e0db1-036e-4819-b5b6-4f39e0f73509",
+    "faceRectangle": {
+      "top": 621,
+      "left": 616,
+      "width": 195,
+      "height": 195
+    }
+  }
+]
+```
+
+## <a name="extract-face-attributes"></a>顔の属性を抽出する
+ 
+顔の属性を抽出するには、検出モデル 1 を使用し、`returnFaceAttributes` クエリ パラメーターを追加します。
+
+```python
+params = {
+    'detectionModel': 'detection_01',
+    'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+    'returnFaceId': 'true'
+}
+```
+
+これで、応答に顔の属性が追加されます。 次に例を示します。
 
 ```json
 [

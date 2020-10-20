@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d6ef0b0d437674d78064e6c5c5a91e1b2b89074a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb158b713bea588e9de94e13ac194ec0a4d0020a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324673"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058150"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>チュートリアル:Node.js で Language Understanding に対応した Web アプリ ボットを使用する
 
@@ -27,7 +27,7 @@ Node.js を使用して、Language Understanding (LUIS) と統合されたチャ
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Bot emulator](https://aka.ms/abs/build/emulatordownload)
+* [Bot Framework Emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 ## <a name="create-a-web-app-bot-resource"></a>Web アプリ ボット リソースを作成する
@@ -371,20 +371,20 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 ![ホーム ページには、ボットに関する情報が表示されます。](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>ボット エミュレーターを使用してボットをテストする
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>Bot Framework エミュレーターを使用してボットをテストする
 
 航空便を予約する意図があることをボットに伝えます。
 
-1. ボット エミュレーターを開始し、 **[Open Bot]\(ボットを開く\)** を選択します。
+1. Bot Framework エミュレーターを起動し、 **[Open Bot]\(ボットを開く\)** を選択します。
 1. **[Open a bot]\(ボットを開く\)** ポップアップ ダイアログで、ボットの URL (`http://localhost:3978/api/messages` など) を入力します。 `/api/messages` ルートは、ボットの Web アドレスです。
 1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を入力します。これらは、ダウンロードしたボット コードのルートにある **.env** ファイル内にあります。
 
-1. ボット エミュレーターで、「`Book a flight from Seattle to Berlin tomorrow`」と入力します。これにより、 **[Test in Web Chat]\(Web チャットでのテスト\)** で受け取った応答と同じ基本ボットの応答を受け取ります。
+1. Bot Framework エミュレーターで、「`Book a flight from Seattle to Berlin tomorrow`」と入力します。これにより、 **[Test in Web Chat]\(Web チャットでのテスト\)** で受け取った応答と同じ基本ボットの応答を受け取ります。
 
     [![エミュレーターでの基本ボットの返答](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. **[はい]** を選択します。 ボットは、その操作の要約で応答します。
-1. ボット エミュレーターのログから、`<- trace LuisV3 Trace` を含む行を選択します。 これにより、発話の意図とエンティティについて LUIS からの JSON 応答が表示されます。
+1. Bot Framework エミュレーターのログから、`<- trace LuisV3 Trace` を含む行を選択します。 これにより、発話の意図とエンティティについて LUIS からの JSON 応答が表示されます。
 
     [![エミュレーターでの基本ボットの返答](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

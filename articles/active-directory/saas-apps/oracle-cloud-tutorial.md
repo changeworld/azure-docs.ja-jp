@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543841"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996551"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -101,7 +101,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
 1. Oracle Cloud Infrastructure Console アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-   ![image](common/edit-attribute.png)
+   ![[ユーザー属性] ダイアログのスクリーンショット。右上で [編集] アイコンが選択されています。](common/edit-attribute.png)
 
 1. その他に、Oracle Cloud Infrastructure Console アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
@@ -111,9 +111,9 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
  
    1. **[保存]** をクリックします。
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![[ユーザー属性とクレーム] セクションのスクリーンショット。[名前識別子の値] の [編集] アイコンと [Groups returned in claim]\(クレームで返されるグループ\) が強調表示されています。](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![[ユーザー要求の管理] ダイアログのスクリーンショット。[Persistent]\(永続\) と [保存] ボタンが選択されています。](./media/oracle-cloud-tutorial/config11.png)
 
    1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
 
@@ -173,15 +173,15 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
 1. メニューの左側をクリックし、 **[ID]** をクリックして **[Federation]\(フェデレーション\)** に移動します。
 
-   ![構成](./media/oracle-cloud-tutorial/config01.png)
+   ![[Oracle Cloud Infrastructure Console] のスクリーンショット。左上のメニューから [ID] と [Federation]\(フェデレーション\) が選択されています。](./media/oracle-cloud-tutorial/config01.png)
 
 1. **[Download this document]\(このドキュメントをダウンロードする\)** リンクをクリックして**サービス プロバイダー メタデータ ファイル**を保存し、Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、 **[ID プロバイダーの追加]** をクリックします。
 
-   ![構成](./media/oracle-cloud-tutorial/config02.png)
+   ![左側のメニューで [Federation]\(フェデレーション\) が選択されている画面のスクリーンショット。[ID プロバイダーの追加] ボタンと [Download this document]\(このドキュメントをダウンロードする\) が選択されています。](./media/oracle-cloud-tutorial/config02.png)
 
 1. **[ID プロバイダーの追加]** ポップアップで、次の手順に従います。
 
-   ![構成](./media/oracle-cloud-tutorial/config03.png)
+   ![[ID プロバイダーの追加] ポップアップのスクリーンショット。](./media/oracle-cloud-tutorial/config03.png)
 
    1. **[NAME]\(名前\)** ボックスに自分の名前を入力します。
 
@@ -193,7 +193,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
    1. **[Continue]\(続行\)** をクリックし、 **[Edit Identity Provider]\(ID プロバイダーの編集\)** セクションで次の手順を実行します。
 
-      ![構成](./media/oracle-cloud-tutorial/config09.png)
+      ![[Edit Identity Provider]\(ID プロバイダーの編集\) セクションのスクリーンショット。[Identity Provider Group]\(ID プロバイダー グループ\)、[OCI GROUP]\(OCI グループ\)、[Add Mapping]\(マッピングの追加\)、[送信] ボタンが強調表示されています。](./media/oracle-cloud-tutorial/config09.png)
 
    1. **[IDENTITY PROVIDER GROUP]\(ID プロバイダー グループ\)** では、[Custom Group]\(カスタム グループ\) が選択されている必要があります。 グループ ID は Azure Active Directory のグループの GUID である必要があります。 このグループを、 **[OCI GROUP]\(OCI グループ\)** フィールド内の対応するグループとマップする必要があります。
 

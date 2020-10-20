@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3106b52ede95fe63a8df691a82acdd4937c8cce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544106"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91672348"
 ---
 **構成およびプロセス サーバーの要件**
 
@@ -58,7 +58,7 @@ https:\//login.microsoftonline.com | レプリケーション管理操作と調�
 time.nist.gov | システム時刻とグローバル時刻間の時刻同期の確認に使用
 time.windows.com | システム時刻とグローバル時刻間の時刻同期の確認に使用
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> *.services.visualstudio.com (省略可能) </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF の設定では、次の追加 URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL のダウンロードを完了するためのものです。 </br> いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL もホワイトリストに登録されていることを確認してください。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL のダウンロードを完了するためのものです。 </br> いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL も確実に承認されているようにしてください。
 |
 
 > [!NOTE]
@@ -83,4 +83,3 @@ MYSQL | MySQL をインストールする必要があります。 手動でイ�
 12 vCPU<br/><br/> 2 ソケット * 6 コア \@ 2.5 GHz | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシン
 16 vCPU<br/><br/> 2 ソケット * 8 コア \@ 2.5 GHz | 32 GB | 1 TB (テラバイト) | 1 ～ 2 TB | 150 ～ 200 台のマシン
 |
-

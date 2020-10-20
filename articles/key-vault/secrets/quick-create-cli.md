@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8559e0adf1adf549d5bf3933dbb243c02a6d3ad9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61907c53e0b0b0a58ea8a167583f02af35572f6f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87494606"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940482"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -74,7 +74,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** を使用して、現在のバージョンを取得します。 
+これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **"https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword"** を使用して、現在のバージョンを取得します。 
 
 シークレットに格納されている値をプレーンテキストとして表示するには:
 

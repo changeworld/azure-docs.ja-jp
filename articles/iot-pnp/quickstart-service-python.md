@@ -3,17 +3,17 @@ title: Azure IoT ソリューションに接続されている IoT プラグ ア
 description: Python を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して操作します。
 author: elhorton
 ms.author: elhorton
-ms.date: 7/13/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: be5ff3e863752dfc187bd91257425af5e8de85c4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574970"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946078"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>クイックスタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスを操作する (Python)
 
@@ -73,15 +73,18 @@ pip install azure-iot-hub
 
 このクイックスタートでは、Python のサンプルの IoT ソリューションを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
-1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。 
+1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。
 
 1. 複製された Python SDK リポジトリの */azure-iot-sdk-python/azure-iot-hub/samples* フォルダーに移動します。
 
-1. この samples フォルダーには、Digital Twin Manager クラスを使用した操作をデモンストレーションする *get_digital_twin_sample.py、update_digitial_twin_sample.py、invoke_command_sample.py、および invoke_component_command_sample-.py* という 4 つのサンプル ファイルが含まれています。  これらのサンプルは、IoT プラグ アンド プレイ デバイスとやり取りするために、各 API をどのように使用するかを示しています。
+1. *registry_manager_pnp_sample.py* ファイルを開き、コードを確認します。 このサンプルは、**IoTHubRegistryManager** クラスを使用して IoT プラグ アンド プレイ デバイスと対話する方法を示しています。
 
-### <a name="get-digital-twin"></a>デジタル ツインを取得する
+> [!NOTE]
+> これらのサービス サンプルでは、**IoT Hub サービス クライアント**からの **IoTHubRegistryManager** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
-[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)に関するページでは、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
+### <a name="get-the-device-twin"></a>デバイス ツインを取得する
+
+「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
 * **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
 * **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
@@ -89,79 +92,77 @@ pip install azure-iot-hub
 このサンプルを実行するには、**サービス** ターミナルで次のコマンドを使用します。
 
 ```cmd/sh
-python get_digital_twin_sample.py
+set IOTHUB_METHOD_NAME="getMaxMinReport"
+set IOTHUB_METHOD_PAYLOAD="hello world"
+python registry_manager_pnp_sample.py
 ```
 
-出力には、デバイスのデジタル ツインが示され、そのモデル ID が出力されます。
+> [!NOTE]
+> このサンプルを Linux 上で実行する場合は、`set` の代わりに `export` を使用してください。
+
+出力には、デバイス ツインが示され、そのモデル ID が出力されます。
 
 ```cmd/sh
-{'$dtId': 'mySimpleThermostat', '$metadata': {'$model': 'dtmi:com:example:Thermostat;1'}}
-Model Id: dtmi:com:example:Thermostat;1
+The Model ID for this device is:
+dtmi:com:example:Thermostat;1
 ```
 
-次のスニペットは、*get_digital_twin_sample.py* からのサンプル コードを示しています。
+次のスニペットは、*registry_manager_pnp_sample.py* からのサンプル コードを示しています。
 
 ```python
-    # Get digital twin and retrieve the modelId from it
-    digital_twin = iothub_digital_twin_manager.get_digital_twin(device_id)
-    if digital_twin:
-        print(digital_twin)
-        print("Model Id: " + digital_twin["$metadata"]["$model"])
-    else:
-        print("No digital_twin found")
+    # Create IoTHubRegistryManager
+    iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
+
+    # Get device twin
+    twin = iothub_registry_manager.get_twin(device_id)
+    print("The device twin is: ")
+    print("")
+    print(twin)
+    print("")
+
+    # Print the device's model ID
+    additional_props = twin.additional_properties
+    if "modelId" in additional_props:
+        print("The Model ID for this device is:")
+        print(additional_props["modelId"])
+        print("")
 ```
 
-### <a name="update-a-digital-twin"></a>デジタル ツインを更新する
+### <a name="update-a-device-twin"></a>デバイス ツインを更新する
 
-このサンプルは、"*パッチ*" を使用して、デバイスのデジタル ツインを介してプロパティを更新する方法を示しています。 *update_digital_twin_sample.py* からの次のスニペットは、パッチを作成する方法を示しています。
+このサンプルは、デバイスの `targetTemperature` 書き込み可能プロパティを更新する方法を示しています。
 
 ```python
-# If you already have a component thermostat1:
-# patch = [{"op": "replace", "path": "/thermostat1/targetTemperature", "value": 42}]
-patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
-iothub_digital_twin_manager.update_digital_twin(device_id, patch)
-print("Patch has been succesfully applied")
-```
-
-このサンプルを実行するには、**サービス** ターミナルで次のコマンドを使用します。
-
-```cmd/sh
-python update_digital_twin_sample.py
+    # Update twin
+    twin_patch = Twin()
+    twin_patch.properties = TwinProperties(
+        desired={"targetTemperature": 42}
+    )  # this is relevant for the thermostat device sample
+    updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
+    print("The twin patch has been successfully applied")
+    print("")
 ```
 
 以下の出力を示す**デバイス** ターミナルで更新が適用されていることを確認できます。
 
 ```cmd/sh
 the data in the desired properties patch was: {'targetTemperature': 42, '$version': 2}
-previous values
-42
 ```
 
 **サービス** ターミナルで、パッチが成功したことを確認します。
 
 ```cmd/sh
-Patch has been successfully applied
+The twin patch has been successfully applied
 ```
 
 ### <a name="invoke-a-command"></a>コマンドを呼び出す
 
-コマンドを呼び出すには、サンプル *invoke_command_sample.py* を実行します。 このサンプルは、単純なサーモスタット デバイスでコマンドを呼び出す方法を示しています。 このサンプルを実行する前に、**サービス** ターミナルで `IOTHUB_COMMAND_NAME` および `IOTHUB_COMMAND_PAYLOAD` 環境変数を設定します。
-
-```cmd/sh
-set IOTHUB_COMMAND_NAME="getMaxMinReport" # this is the relevant command for the thermostat sample
-set IOTHUB_COMMAND_PAYLOAD="hello world" # this payload doesn't matter for this sample
-```
-
-**サービス** ターミナルで、次のコマンドを使用してこのサンプルを実行します。
-  
-```cmd/sh
-python invoke_command_sample.py
-```
+サンプルでは、次に、コマンドを呼び出します。
 
 **サービス** ターミナルで、デバイスからの確認メッセージが表示されます。
 
 ```cmd/sh
-{"tempReport": {"avgTemp": 34.5, "endTime": "13/07/2020 16:03:38", "maxTemp": 49, "minTemp": 11, "startTime": "13/07/2020 16:02:18"}}
+The device method has been successfully invoked
 ```
 
 **デバイス** ターミナルで、デバイスがコマンドを受け取ったことを確認します。
@@ -172,7 +173,6 @@ hello world
 Will return the max, min and average temperature from the specified time hello to the current time
 Done generating
 {"tempReport": {"avgTemp": 34.2, "endTime": "09/07/2020 09:58:11", "maxTemp": 49, "minTemp": 10, "startTime": "09/07/2020 09:56:51"}}
-Sent message
 ```
 
 ## <a name="next-steps"></a>次のステップ

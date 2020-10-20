@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
 
@@ -130,15 +130,15 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
 1. **[settings (設定)]** タブをクリックします。
 
-    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![設定タブのスクリーンショット。](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. **[Single Sign On - SAML (シングル サインオン - SAML)]** 、 **[General Settings (全般設定)]** の順にクリックし、SAML 設定を構成します。
    
-    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![[Single Sign On - SAML]\(シングル サインオン - SAML\) で [全般設定] が選択された状態を示したスクリーンショット。](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. **[General Settings (全般設定)]** セクションで、次の手順に従います。
    
-    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![ここで説明されている値を入力できる [全般設定] セクションのスクリーンショット。](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. **[Enabled]** を選択します。
 
@@ -158,7 +158,7 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
 1. **[User Settings (ユーザー設定)]** をクリックし、次の手順を実行します。
 
-     ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![ここで説明されている値を入力できる [ユーザー設定] セクションのスクリーンショット。](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. **[First Name Identifier Format]\(名識別子形式\)** テキストボックスに、SAML アサーション内のユーザーの名の場所を示す値を入力します (例: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`)。
   

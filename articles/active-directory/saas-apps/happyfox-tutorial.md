@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550726"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>チュートリアル: Azure Active Directory と HappyFox の統合
 
@@ -132,19 +132,19 @@ HappyFox で Azure AD シングル サインオンを構成するには、次の
 
 2. **[管理]** に移動し、 **[統合]** タブをクリックします。
 
-    ![Configure single sign-on](./media/happyfox-tutorial/header.png) 
+    ![[Integrations]\(統合\) タブが選択されている [Manage]\(管理\) ページを示すスクリーンショット。](./media/happyfox-tutorial/header.png) 
 
 3. [統合] タブで、 **[SAML 統合]** にある **[構成]** をクリックし、[シングル サインオンの設定] を開きます。
 
-    ![Configure single sign-on](./media/happyfox-tutorial/configure.png)
+    ![[configure]\(構成\) アクションが選択されている [SAML Integration]\(SAML 統合\) 設定を示すスクリーンショット。](./media/happyfox-tutorial/configure.png)
 
 4. [SAML configuration]\(SAML 構成\) セクションで、 **[SSO Target URL]\(SSO ターゲット URL\)** テキストボックスに Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    ![Configure single sign-on](./media/happyfox-tutorial/targeturl.png)
+    ![[SSO Target URL]\(SSO ターゲット URL\) テキストボックスが強調表示されている [SAML Configuration]\(SAML 構成\) セクションを示すスクリーンショット。](./media/happyfox-tutorial/targeturl.png)
 
 5. Azure Portal からダウンロードした証明書をメモ帳で開き、 **[IdP Signature]\(IdP 署名\)** セクションにコンテンツを貼り付けます。
 
-    ![Configure single sign-on](./media/happyfox-tutorial/cert.png)
+    ![[IdP Signature]\(IdP 署名\) が強調表示されているスクリーンショット。](./media/happyfox-tutorial/cert.png)
 
 6. **[設定の保存]** ボタンをクリックします。
 

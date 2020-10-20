@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611473"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873185"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
@@ -84,7 +84,7 @@ dotnet run --framework netcoreapp3.1
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Microsoft Graph からデータを取得する
 
-[Microsoft Graph](/graph/overview) には、ユーザーの Microsoft 365 データへのアクセスを提供するさまざまな API が用意されています。 Microsoft ID プラットフォームをアプリの ID プロバイダーとして使用することで、Microsoft ID プラットフォームによって発行されたトークンは Microsoft Graph によって直接サポートされるため、この情報に簡単にアクセスできます。 このセクションでは、コードを追加し、サインインしたユーザーの電子メールをアプリケーションの [フェッチ データ] ページに表示します。
+[Microsoft Graph](/graph/overview) には、ユーザーの Microsoft 365 データへのアクセスを提供するさまざまな API が用意されています。 Microsoft ID プラットフォームをアプリの ID プロバイダーとして使用することで、Microsoft ID プラットフォームによって発行されたトークンは Microsoft Graph によって直接サポートされるため、この情報に簡単にアクセスできます。 このセクションでは、サインインしたユーザーのメールをアプリケーションの [Fetch data]\(データのフェッチ\) ページに表示するためのコードを追加します。
 
 開始する前に、必要なアクセス許可を変更するため、アプリからログアウトしてください。そうしないと、現在のトークンは機能しません。 まだしていない場合は、以下のコードを更新する前に、もう一度アプリを実行して **[ログアウト]** を選択します。
 

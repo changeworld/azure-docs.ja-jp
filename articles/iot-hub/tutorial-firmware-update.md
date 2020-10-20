@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308301"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842820"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
@@ -184,7 +184,7 @@ node ServiceClient.js "{your service connection string}"
 
 次のスクリーンショットは、バックエンド アプリケーションからの出力を示しています。ファームウェアの必要なプロパティを更新するための構成を作成する方法が強調表示されています。
 
-![バックエンド アプリケーション](./media/tutorial-firmware-update/BackEnd1.png)
+![バックエンド アプリケーションからの出力を示すスクリーンショット。](./media/tutorial-firmware-update/BackEnd1.png)
 
 次のスクリーンショットは、バックエンド アプリケーションからの出力を示しています。シミュレートされたデバイスからのファームウェア更新メトリックを監視する方法が強調表示されています。
 

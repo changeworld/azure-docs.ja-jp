@@ -1,17 +1,15 @@
 ---
 title: スタンドアロン クラスターにアプリをインストールする
 description: このチュートリアルでは、スタンドアロンの Service Fabric クラスターにアプリケーションをインストールする方法について説明します。
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245383"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840627"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>チュートリアル: Service Fabric スタンドアロン クラスターにアプリケーションをデプロイする
 
@@ -19,7 +17,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 このチュートリアルは、シリーズの第 3 部です。  Microsoft が Service Fabric で採用している "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアルでは、このスタンドアロン クラスターをホストするために必要な AWS インフラストラクチャの作成方法を紹介します。
 
-シリーズの第 3 部で学習する内容は次のとおりです。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 > * サンプル アプリのダウンロード
@@ -52,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. ソリューション エクスプローラーで `Voting` アプリケーション プロジェクトを右クリックし、 **[発行]** を選択します。
 
-5. **[接続のエンドポイント]** のドロップダウンを選択し、クラスター内のいずれかのノードのパブリック DNS 名を入力します。  たとえば、「 `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 」のように入力します。 Azure では、完全修飾ドメイン名 (FQDN) は自動的には与えられませんが、[VM の [概要] ページで簡単に設定できる](../virtual-machines/linux/portal-create-fqdn.md)ことに注意してください。
+5. **[接続のエンドポイント]** のドロップダウンを選択し、クラスター内のいずれかのノードのパブリック DNS 名を入力します。  たとえば、「 `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 」のように入力します。 Azure では、完全修飾ドメイン名 (FQDN) は自動的には与えられませんが、[VM の [概要] ページでの設定](../virtual-machines/linux/portal-create-fqdn.md)が簡単にできます。
 
 6. 任意のブラウザーを開き、クラスター アドレスを入力します。これが接続エンドポイントとなります。このアプリのデプロイ先は、ポート 8080 とします (例: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080)。
 
@@ -60,7 +58,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="next-steps"></a>次のステップ
 
-シリーズの第 3 部では、アプリケーションをクラスターにデプロイする方法について説明しました。
+この記事では、アプリケーションをクラスターにデプロイする方法について説明しました。
 
 > [!div class="checklist"]
 > * サンプル アプリのダウンロード

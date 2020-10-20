@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Computer Vision 2.1 および 3.0 - 印刷されたテキストと手書きテキストの抽出 - REST、Java
+title: 'クイックスタート: Computer Vision 2.1 および 3.1 - 印刷されたテキストと手書きテキストの抽出 - REST、Java'
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Java と Computer Vision API を使って、印刷されたテキストと手書きテキストを画像から抽出します。
 services: cognitive-services
@@ -11,20 +11,19 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: e9f31a16434c8b54e13f4d52a412afbc90fb5c6b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6a7cc5338a77ece59c625a9b72adcc45bf135f24
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760888"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969128"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用して印刷されたテキストと手書きテキストを抽出する
 
-このクイックスタートでは、Computer Vision の REST API を使って、印刷および手書きのテキストを画像から抽出します。 [読み取り](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)と[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。
+このクイックスタートでは、Computer Vision の REST API を使って、印刷および手書きのテキストを画像から抽出します。 [読み取り](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)と[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。
 
-[読み取り](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)メソッドは、非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドは、`Operation-Location` 応答ヘッダー フィールドの値に URI を返します。 その後、[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API を表すこの URI を呼び出して、状態をチェックし、読み取りメソッド呼び出しの結果を返すことができます。
+[読み取り](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)メソッドは、非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドは、`Operation-Location` 応答ヘッダー フィールドの値に URI を返します。 その後、[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) API を表すこの URI を呼び出して、状態をチェックし、読み取りメソッド呼び出しの結果を返すことができます。
 
----
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -76,7 +75,7 @@ public class Main {
     private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
     private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
-    private static String uriBase = endpoint + "/vision/v3.0/read/analyze";
+    private static String uriBase = endpoint + "/vision/v3.1/read/analyze";
 
     private static String imageToAnalyze =
             "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg";
@@ -189,7 +188,7 @@ public class Main {
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,

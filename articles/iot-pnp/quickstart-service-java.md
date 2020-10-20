@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761330"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046487"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Java)
 
@@ -27,7 +27,7 @@ IoT プラグ アンド プレイを使用すると、基盤となるデバイ�
 
 Windows でこのクイックスタートを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
-* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)」の「**長期サポート**」で「**Java 8**」を選択します。
+* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)」の「**長期サポート**」で「**Java 8**」を選択します。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>サンプル コードを使用して SDK リポジトリをクローンする
@@ -76,7 +76,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 このクイックスタートでは、Java で記述されたサンプルの IoT ソリューションを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
 > [!NOTE]
-> このサンプルでは、**IoT Hub サービス クライアント**の **com.microsoft.azure.sdk.iot.service.*;** 名前空間を使用します。 モデル ID を取得する方法の詳細については、[開発者ガイド](concepts-developer-guide-service.md)を参照してください。
+> このサンプルでは、**IoT Hub サービス クライアント**の **com.microsoft.azure.sdk.iot.service** 名前空間を使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
     mvm exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.service.Thermostat"
     ```
 
-### <a name="get-digital-twin"></a>デジタル ツインを取得する
+### <a name="get-device-twin"></a>デバイス ツインを取得する
 
 次のコード スニペットは、サービス内でデバイス ツインを取得する方法を示しています。
 
@@ -99,9 +99,9 @@ twinClient.getTwin(twin);
 System.out.println("Model Id of this Twin is: " + twin.getModelId());
 ```
 
-### <a name="update-a-digital-twin"></a>デジタル ツインを更新する
+### <a name="update-a-device-twin"></a>デバイス ツインを更新する
 
-次のコード スニペットは、*パッチ*を使用して、デバイスのデジタル ツインを介してプロパティを更新する方法を示しています。
+次のコード スニペットは、"*パッチ*" を使用して、デバイス ツインを介してプロパティを更新する方法を示しています。
 
 ```java
 String propertyName = "targetTemperature";

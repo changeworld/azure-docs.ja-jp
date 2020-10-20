@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: fa457bf930978965b7ad37ea032e6517bda2e9d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62f4d069a6eda6dba48817589e338f010b766a34
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291199"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893715"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>チュートリアル:Azure CLI を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -373,8 +373,6 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
-## <a name="understanding-migration-task-status"></a>移行タスクの状態の理解
-
 出力ファイルには、移行の進行状況を示すいくつかのパラメーターがあります。 たとえば、次の出力ファイルを参照してください。
 
   ```output
@@ -487,6 +485,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
+3. データベースの移行状態に **[完了]** と表示されたら、[順序を再作成](https://wiki.postgresql.org/wiki/Fixing_Sequences) (該当する場合) して、アプリケーションを Azure Database for PostgreSQL の新しいターゲット インスタンスに接続します。
 
 ## <a name="service-project-task-cleanup"></a>サービス、プロジェクト、タスクのクリーンアップ
 

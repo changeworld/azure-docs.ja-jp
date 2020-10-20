@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: dc6abc51fd0e5669126f1d2f1a977194479db5f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df1db5467dadcd127141708fa33147769f1f50a7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91269881"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047881"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -865,6 +865,6 @@ bastion ホストがデプロイされるまでに数分かかります。
 * ロード バランサーのトラフィック規則と正常性プローブを構成しました。
 * ロード バランサーをテストしました。
 
-Azure Load Balancer の詳細については、「[Azure Load Balancer の概要](load-balancer-overview.md)」および「[Load Balancer に関してよく寄せられる質問](load-balancer-faqs.md)」を参照してください。
-
-[Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)について理解を深めます。
+Azure Load Balancer についてさらに学習するには、次の記事に進んでください。 
+> [!div class="nextstepaction"]
+> [Azure Load Balancer の概要](load-balancer-overview.md)

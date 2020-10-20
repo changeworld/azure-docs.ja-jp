@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297668"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048493"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
@@ -79,7 +79,7 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 > 独自のモデルを作成してみたい場合は、*Room* モデルのコードを新しいファイルに貼り付けて、 *.json* という拡張子で *AdtSampleApp\SampleClientApp\Models* フォルダーに保存してください。 その後、望みのものを表現するために、自由にプロパティやリレーションシップを追加してみましょう。 このフォルダーにある他のサンプル モデルも参考にしてください。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 ### <a name="get-started-with-the-command-line-app"></a>コマンド ライン アプリを使ってみる
 
@@ -171,7 +171,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 #### <a name="modify-a-digital-twin"></a>デジタル ツインに変更を加える
 
-作成したツインのプロパティに変更を加えることもできます。 次のコマンドを実行して、*room0* の RoomName を *Room0* から *PresidentialSuite* に変更してみましょう。
+作成したツインのプロパティを変更することもできます。 次のコマンドを実行して、*room0* の RoomName を *Room0* から *PresidentialSuite* に変更してみましょう。
 
 ```cmd/sh
 UpdateDigitalTwin room0 add /RoomName string PresidentialSuite

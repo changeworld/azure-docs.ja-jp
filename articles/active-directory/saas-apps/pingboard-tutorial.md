@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e7b09c13cd27bd8197f6b65a1213d3154db6ac3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f96f7eb358907bc27303735f4d8a111efeb6a3dc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553833"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル: Azure Active Directory と PingBoard の統合
 
@@ -101,7 +101,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Pingboard のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[基本的な SAML 構成] のスクリーンショット。テキスト ボックスの [識別子] と [応答 URL] が強調表示され、[保存] ボタンが選択されています。](common/idp-intiated.png)
 
     a. **[識別子]** テキスト ボックスに、`http://app.pingboard.com/sp` という URL を入力します。
 

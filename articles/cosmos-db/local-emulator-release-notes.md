@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777175"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -25,6 +25,10 @@ ms.locfileid: "91566690"
 |**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2116-6-october-2020"></a>2.11.6 (2020 年 10 月 6 日)
+
+ - このリリースでは、複数のコンテナーが同時に作成される可能性がある場合の、コンカレンシーに関連する問題が解決されています。 そのような場合は、エミュレーターのデータが破損した状態のままとなり、エミュレーターのエンドポイントに対する次の API 要求が "サービスを利用できません" エラーで失敗して、エミュレーターのローカルデータの再起動とリセットが必要となります。
 
 ### <a name="2115-23-august-2020"></a>2.11.5 (2020 年 8 月 23 日)
 

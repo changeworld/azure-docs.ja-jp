@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555936"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950009"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datadog の統合
 
@@ -141,6 +141,22 @@ Datadog で Azure AD SSO を構成してテストするには、次の構成要�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Datadog] タイルをクリックすると、SSO を設定した Datadog に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>テナントのすべてのユーザーがアプリで認証できるようにする
+
+このセクションでは、1 人のユーザーに Datadog 側でアカウントが与えられている場合、テナントの誰もが Datadog にアクセスできるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Datadog]** を選択します。
+1. アプリの概要ページの **[管理]** の下で **[プロパティ]** を選択します。
+
+    ![[プロパティ] リンク](common/properties.png)
+
+1. **[ユーザーの割り当てが必要ですか?]** で **[いいえ]** を選択します。
+
+    ![ユーザーの割り当てが不要](common/user-assignment-not-required.png)
+
+1. **[保存]** を選択します。
 
 ## <a name="additional-resources"></a>その他のリソース
 

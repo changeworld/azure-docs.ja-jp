@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7cb6a9691e1b3186e6493b4ae0b62857fb03f38c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549930"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944046"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>チュートリアル:Kiteworks と Azure Active Directory の統合
 
@@ -100,11 +100,11 @@ Kiteworks で Azure AD SSO を構成してテストするには、次の構成�
 
 1. 上部のツールバーで **[設定]** をクリックします。
 
-    ![Configure single sign-on](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![ツール バーで "設定" アイコンが選択されているスクリーンショット。](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. **[Authentication and Authorization (認証と承認)]** セクションで、 **[SSO Setup (SSO のセットアップ)]** をクリックします。
 
-    ![Configure single sign-on](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    ![[Authentication and Authorization]\(認証と承認\) セクションで [SSO Setup]\(SSO のセットアップ\) が選択されているスクリーンショット。](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 1. [SSO Setup] ページで、次の手順に従います。
 

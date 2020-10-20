@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 9f136248b93283b02824ead7f34886a056ae0a33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 72420019ead1ae47054ae62197d8cc310063a6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762061"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969774"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>クイック スタート:Python で Form Recognizer の REST API を使用してテキストとレイアウト情報を抽出する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートを完了するには、以下が必要です。
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
-- フォーム ドキュメント。 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)から、このクイックスタート用の画像をダウンロードします。
+- フォーム ドキュメント。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)の画像をダウンロードできます (*sample_data.zip* をダウンロードして抽出します)。
 
 > [!NOTE]
 > このクイックスタートでは、ローカルに保存されたドキュメントを使用します。 URL でアクセスするリモート ファイルを使用する方法については、[リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)を参照してください。

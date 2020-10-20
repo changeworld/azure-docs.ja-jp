@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543790"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル: Azure Active Directory と Origami の統合
 
@@ -126,11 +126,11 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
 
 2. 上部のメニューで **[Admin]** をクリックします。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Origami ホーム ページのスクリーンショット。[Admin]\(管理者\) が選択されています。](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. [Single Sign On Setup] ダイアログ ページで、次の手順に従います。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_531.png)
+    ![[Single Sign On Setup]\(シングル サインオンの設定\) ページのスクリーンショット。[Enable Single Sign-on]\(シングル サインオンを有効にする\) が選択され、テキスト ボックスが強調表示されています。](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. **[シングル サインオンを有効にする]** を選択します。
 
@@ -201,19 +201,19 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
 
 2. 上部のメニューで **[Admin]** をクリックします。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Origami アカウント ホーム ページのスクリーンショット。[Admin]\(管理者\) が選択されています。](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. **[Users and Security]** ダイアログ ボックスで、 **[Users]** をクリックします。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_54.png)
+    ![[Users and Security]\(ユーザーとセキュリティ\) ダイアログのスクリーンショット。[ユーザー] が選択されています。](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. **[新しいユーザーの追加]** をクリックします。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_55.png)
+    ![[新規ユーザーの追加] ボタンが選択されている画面のスクリーンショット。](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. [新規ユーザーの追加] ダイアログで、次の手順を実行します。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_56.png)
+    ![[新規ユーザーの追加] ダイアログのスクリーンショット。[ユーザー名]、[名]、[姓] テキスト ボックスが強調表示されています。](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. **[ユーザー名]** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
@@ -227,7 +227,7 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
 
     f. **[保存]** をクリックします。
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_57.png)
+    ![[保存] ボタンが選択されている画面のスクリーンショット。](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. **ユーザー ロール**と**クライアント アクセス**をユーザーに割り当てます。 
    

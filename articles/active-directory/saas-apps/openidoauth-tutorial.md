@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705624"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996620"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
@@ -99,19 +99,19 @@ Azure AD のユーザーとグループや、Microsoft クラウド サービス
 
     a. メニューの左側で **[アプリの登録]** をクリックし、検索ボックスにアプリケーション名を入力して自分のアプリケーションを開きます。
 
-    ![Graph API](./media/openidoauth-tutorial/application.png)
+    ![左側のメニューから [アプリの登録] が選択されている画面のスクリーンショット。[アプリケーション ID] 検索ボックスが強調表示されています。](./media/openidoauth-tutorial/application.png)
 
     b. **[API アクセス許可の表示]** をクリックします。
 
-    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+    ![[Call API]\(API 呼び出し\) ページのスクリーンショット。[API アクセス許可の表示] ボタンが選択されています。](./media/openidoauth-tutorial/api-permission.png)
 
     c. **[アクセス許可の追加]** をクリックします。
 
-    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+    ![[API のアクセス許可] セクションのスクリーンショット。[アクセス許可の追加] ボタンが選択されています。](./media/openidoauth-tutorial/add-permission.png)
 
     d. **[Microsoft Graph]** をクリックします。
 
-    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+    ![[API アクセス許可の要求] ページのスクリーンショット。[Microsoft API] タブと [Microsoft Graph] タイルが選択されています。](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. **[委任されたアクセス許可]** と **[アプリケーションのアクセス許可]** から必要なオプションを選択します。
 

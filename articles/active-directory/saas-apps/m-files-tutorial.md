@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8cf4df682a5c141e39a3860547a5b6130e2a3002
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554833"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>チュートリアル: Azure Active Directory と M-Files の統合
 
@@ -133,11 +133,11 @@ M-Files で Azure AD シングル サインオンを構成するには、次の�
 
 1. **[M-Files デスクトップ設定]** ウィンドウを開きます。 **[追加]** をクリックします。
    
-    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![[Add]\(追加\) を選択できる [M-Files Desktop Settings]\(M-Files デスクトップ設定\) を示すスクリーンショット。](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. **[Document Vault Connection Properties] \(資格情報コンテナーの接続プロパティのドキュメント化)** ウィンドウで、次の手順を実行します。
    
-    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![説明されている値を入力できる [Document Vault Connection Properties]\(ドキュメント コンテナーの接続のプロパティ\) を示すスクリーンショット。](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     [サーバー] セクションで、次のように値を入力します。  
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb53f9a6121ec9329eaec5d8cb554e7f125e058f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89067809"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856655"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>クイック スタート:無制限のアプリの登録を作成するアクセス許可を付与する
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 アプリケーションの登録を作成する権限を付与するために使用できるアクセス許可は 2 つあり、それぞれ動作が異なります。
 
 - microsoft.directory/applications/createAsOwner:このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者として追加され、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になります。
-- microsoft.directory/applicationPolicies/create:このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
+- microsoft.directory/applications/create:このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
 
 ## <a name="create-a-custom-role-in-azure-ad-powershell"></a>Azure AD PowerShell でカスタム ロールを作成する
 

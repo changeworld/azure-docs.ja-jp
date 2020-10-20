@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372257"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827584"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -151,9 +151,11 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 コスト分析、予算、アラートは、従量課金制の料金に基づいたコストで、サブスクリプションとリソース グループの Azure RBAC スコープで利用できます。
 
-Azure RBAC スコープの予約インスタンスの償却ビューおよび実際のコストでは、料金がゼロと表示されます。 予約インスタンスのコストは、購入が行われた課金スコープでのみ表示されます。
+Azure RBAC スコープの予約インスタンスの償却ビューおよび実際のコストでは、料金がゼロと表示されます。 予約インスタンスや Marketplace 料金などのエンタイトルメントの購入コストは、購入が行われたパートナーのテナントの課金スコープにのみ表示されます。
 
 このビューに表示されるコスト計算に使用される小売料金は、すべてのお客様の Azure 料金計算ツールに表示される料金と同じです。 表示されるコストには、パートナーが持っているパートナー獲得クレジット、階層割引、グローバル サービス割引などの割引やクレジットは含まれません。
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 

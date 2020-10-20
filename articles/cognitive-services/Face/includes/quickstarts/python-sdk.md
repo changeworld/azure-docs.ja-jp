@@ -1,20 +1,20 @@
 ---
 title: Face Python クライアント ライブラリのクイックスタート
-description: Python 用 Face クライアント ライブラリを使用して、顔の検出、類似検索 (画像による顔検索)、顔の識別 (顔認識検索)、顔データの移行を行います。
+description: Python 用 Face クライアント ライブラリを使用して、顔の検出、類似検索 (画像による顔検索)、顔の識別 (顔認識検索) を行います。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/07/2020
 ms.author: pafarley
-ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322972"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859620"
 ---
 Python 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -25,7 +25,6 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 * 人物グループを作成してトレーニングする
 * 顔を識別する
 * 顔を確認する
-* データ移行のためのスナップショットを作成する
 
 [リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
@@ -85,7 +84,6 @@ pip install --upgrade azure-cognitiveservices-vision-face
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
 * [顔を確認する](#verify-faces)
-* [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -207,52 +205,6 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
-
-スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行する場合です。 スナップショット機能の広範な概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
-
-この例では、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で作成した **PersonGroup** を移行します。 先にそのセクションを完了することも、独自の Face データ コンストラクトを使用することもできます。
-
-### <a name="set-up-target-subscription"></a>ターゲット サブスクリプションを設定する
-
-まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順に従います。 
-
-次に、スクリプトの先頭付近で以下の変数を作成します。 また、お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
-
-### <a name="authenticate-target-client"></a>ターゲット クライアントを認証する
-
-スクリプトの後の方で、現在のクライアント オブジェクトをソース クライアントとして保存し、ターゲット サブスクリプションのために新しいクライアント オブジェクトを認証します。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_auth)]
-
-### <a name="use-a-snapshot"></a>スナップショットを使用する
-
-スナップショット操作の残りは、非同期関数内で行われます。 
-
-1. 最初のステップは、スナップショットを**取得する**ことです。これにより、元のサブスクリプションの顔データが一時的なクラウドの場所に保存されます。 このメソッドは、操作の状態を照会するために使用する ID を返します。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
-
-1. 次に、操作が完了するまでに ID を照会します。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
-
-    このコードでは、`wait_for_operation` 関数が使用されます。この関数は、個別に定義する必要があります。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
-
-1. 非同期関数に戻ります。 **apply** 操作を使用して、顔データをターゲット サブスクリプションに書き込みます。 このメソッドも、ID を返します。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
-
-1. 再度 `wait_for_operation` 関数を使用して、操作が完了するまでに ID を照会します。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
-
-これらの手順を完了すると、新しい (ターゲット) サブスクリプションから顔データ コンストラクトにアクセスできるようになります。
-
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 `python` コマンドを使用して、アプリケーション ディレクトリから顔認識アプリを実行します。
@@ -271,10 +223,6 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 このクイックスタートで作成してある **PersonGroup** を削除したい場合は、スクリプトで次のコードを実行します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
-
-このクイックスタートでスナップショット機能を使用してデータを移行した場合は、ターゲット サブスクリプションに保存されている **PersonGroup** も削除する必要があります。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
 ## <a name="next-steps"></a>次のステップ
 

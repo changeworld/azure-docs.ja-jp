@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:コンプライアンスを強制するポリシーを作成する
 description: このチュートリアルでは、標準の強制、コストの制御、セキュリティの維持、および企業全体の設計原則の適用を行うポリシーを使用します。
-ms.date: 06/15/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: d8dc65d50182b5336a683c2da8e2a5d8ebb9e849
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650081"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876387"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>チュートリアル:コンプライアンスを強制するポリシーの作成と管理
 
@@ -36,11 +36,11 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="[ポリシーの概要] ページで [割り当て] ノードを選択する操作のスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 1. **[ポリシー - 割り当て]** ページの上部で **[ポリシーの割り当て]** を選択します。
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="[割り当て] ページで [ポリシーの割り当て] ボタンを選択する操作のスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 1. **[ポリシーの割り当て]** ページの **[基本]** タブで、省略記号を選択し、管理グループまたはサブスクリプションのどちらかを選択して、 **[スコープ]** を選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。
    次に、 **[スコープ]** ページの下部にある **[選択]** を選択します。
@@ -54,23 +54,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 1. **[存在しない場合は、リソース グループからタグを継承する]** を選択します。 すぐに見つからない場合は、検索ボックスに「**タグを継承**」と入力して Enter キーを押すか、検索ボックスの外側を選択します。
    ポリシー定義を見つけて選択したら、 **[使用可能な定義]** ページの下部にある **[選択]** を選択します。
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="ポリシー定義選択時の検索フィルターのスクリーンショット。":::
-
-1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、 _[存在しない場合は、リソース グループからタグを継承する]_ のままにします。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。
-
-1. **[ポリシーの適用]** を "_有効_" のままにしておきます。 "_無効_" になっている場合、この設定によって、効果をトリガーせずにポリシーの結果をテストできます。 詳細については、「[適用モード](../concepts/assignment-structure.md#enforcement-mode)」を参照してください。
-
-1. **[割り当て担当者]** は、ログイン ユーザーに基づいて自動的に入力されます。 このフィールドは任意です。カスタム値を入力できます。
-
-1. ウィザードの上部にある **[パラメーター]** タブを選択します。
-
-1. **[タグ名]** に「_Environment_」と入力します。
-
-1. ウィザードの上部にある **[修復]** タブを選択します。
-
-1. **[修復タスクを作成する]** のチェックをオフのままにします。 このボックスを利用すると、新規または更新されたリソースだけでなく、既存のリソースを変更するタスクを作成できます。 詳細については、[修復リソース](../how-to/remediate-resources.md)に関する記事をご覧ください。
-
-1. このポリシー定義では [modify](../concepts/effects.md#modify) 効果を使用しているため、 **[マネージド ID を作成します]** のチェックが自動的にオンになります。 **[アクセス許可]** は、自動的にポリシー定義に基づく "_共同作成者_" に設定されます。 詳しくは、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](../how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" に設定されます。 詳しくは、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](../how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
 
 1. ウィザードの上部にある **[Review + create]\(確認と作成\)** タブを選択します。
 
@@ -82,7 +66,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** を選択します。
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="[作成] グループの下にある [定義] ページのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 1. ページの上部にある **[+ ポリシー定義]** を選択します。 このボタンをクリックすると **[ポリシー定義]** ページが開きます。
 
@@ -342,42 +326,35 @@ az policy definition list
 
 1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** を選択します。
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="[作成] グループの下にある [定義] ページのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。":::
 
-1. ページの上部にある **[+ イニシアティブ定義]** を選択して **[イニシアティブ定義]** ページを開きます。
+1. ページの上部にある **[+ イニシアティブ定義]** を選択して**イニシアティブ定義**ウィザードを開きます。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="[イニシアティブ定義] ページと設定するプロパティのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" を受け取ります。
 
-1. **[定義の場所]** の省略記号を使用して、管理グループと、定義を格納するサブスクリプションを選択します。 前のページのスコープが 1 つの管理グループまたはサブスクリプションであった場合、 **[定義の場所]** は自動的に設定されます。 選択すると、 **[Available Definitions]\(利用可能な定義\)** が設定されます。
-
-1. イニシアティブの**名前**と**説明**を入力します。
-
-   この例では、セキュリティ保護に関するポリシー定義にリソースが準拠していることを確認します。 イニシアティブに "**セキュリティ保護**" という名前を付け、"**このイニシアティブは、リソースのセキュリティ保護に関連するすべてのポリシー定義を処理するために作成されました**" という説明を入力します。
-
-1. **[カテゴリ]** で、カテゴリを既存のオプションから選択するか、新規に作成します。
-
-1. **[使用可能な定義]** ( **[イニシアティブ定義]** ページの右半分) の一覧から、このイニシアティブに追加するポリシー定義を選択します。 **セキュリティ保護**イニシアティブに対して、次の組み込みのポリシー定義を追加します。そのためには、ポリシー定義情報の横にある **[+]** を選択するか、ポリシー定義行を選択してから詳細ページの **[+ 追加]** オプションを選択します。
-
-   - 許可される場所
-   - Endpoint Protection の欠落の Azure Security Center での監視
-   - インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールは、強化する必要がある
-   - Virtual Machines に対して Azure Backup を有効にする必要がある
-   - 仮想マシンでディスク暗号化を適用する必要がある
-
-   一覧からポリシー定義を選択すると、それぞれ **[カテゴリ]** の下に追加されます。
-
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="[イニシアティブ定義] ページのパラメーターと値定義のスクリーンショット。" border="false":::
-
-1. イニシアチブに追加されているポリシー定義にパラメーターがある場合は、 **[カテゴリ]** 領域下にある領域のポリシー名の下に表示されます。 _値_ は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、"_値_" の右にあるドロップダウンから値を入力または選択できます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
-
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="[イニシアティブ定義] ページで effect パラメーターに設定できる値のオプションのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。":::
 
    > [!NOTE]
-   > 一部の `strongType` パラメーターでは、値の一覧を自動的に決定することができません。 このような場合、パラメーター行の右側に省略記号が表示されます。 それを選択すると、[パラメーターのスコープ (&lt;パラメーター名&gt;)] ページが開きます。 このページで、値のオプションの指定に使用するサブスクリプションを選択します。 このパラメーターの範囲は、イニシアチブ定義の作成時にのみ使用され、ポリシーの評価またはイニシアチブ (割り当てられる場合) の範囲には影響しません。
+   > 選択したポリシー定義をグループに追加するには、追加された定義を 1 つ以上選択し、 **[選択したポリシーをグループに追加します]** を選択します。 まずグループが存在している必要があります。ウィザードの **[グループ]** タブで作成できます。
 
-   [許可されている場所] パラメーターを [米国東部 2] に設定し、それ以外は既定の "AuditifNotExists" のままにします。
+1. ページの下部にある **[次へ]** を選択するか、ウィザードの上部にある **[グループ]** タブを選択します。 このタブから新しいグループを追加できます。このチュートリアルでは、グループは追加しません。
 
-1. **[保存]** を選択します。
+1. ページの下部にある **[次へ]** を選択するか、ウィザードの上部にある **[イニシアティブ パラメーター]** タブを選択します。 1 つ以上の含まれているポリシー定義に渡すために、イニシアティブにパラメーターが存在するようにする場合は、パラメーターがここで定義され、 **[ポリシー パラメーター]** タブで使用されます。このチュートリアルでは、イニシアティブ パラメーターは追加しません。
+
+   > [!NOTE]
+   > イニシアティブ定義に保存したイニシアティブ パラメーターは、イニシアティブから削除することはできません。 イニシアティブ パラメーターが不要になった場合は、ポリシー定義パラメーターによって使用されないように削除します。
+
+1. ページの下部にある **[次へ]** を選択するか、ウィザードの上部にある **[ポリシー パラメーター]** タブを選択します。
+
+1. パラメーターを持つイニシアティブに追加されたポリシー定義は、グリッドに表示されます。 _[値の型]_ には、[既定値]、[値の設定]、または [イニシアティブ パラメーターを使用する] を指定できます。 [値の設定] が選択されている場合、関連する値が _[値]_ の下に入力されます。 ポリシー定義のパラメーターに許可された値のリストが含まれている場合、入力ボックスはドロップダウン セレクターになります。 [イニシアティブ パラメーターを使用する] が選択されている場合は、 **[イニシアティブ パラメーター]** タブで作成されたイニシアティブ パラメーターの名前がドロップダウン リストに表示されます。
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" ポリシー定義の 2 つのインスタンスについては、次に示すように、**Tag Name** パラメーターを ' Env ' と 'CostCenter' に、**Tag Value** パラメーターを 'Test' および 'Lab' に設定します。 他は [既定値] のままにします。 イニシアティブで同じ定義を 2 回使用 (ただしパラメーターが異なる) すると、この構成によって、割り当てのスコープ内のリソースで、'Env' タグの場合は値 'Test'、'CostCenter' タグの場合は値 'Lab' が追加されるかこれらの値に置換されます。
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。":::
+
+1. ページの下部またはウィザードの上部にある **[確認と作成]** を選択します。
+
+1. 設定を確認し、 **[作成]** を選択します。
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Azure CLI を使用したポリシー イニシアチブ定義の作成
 
@@ -426,11 +403,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 前に作成した**セキュリティ保護**イニシアティブ定義を見つけて選択します。 ページの上部にある **[割り当て]** を選択して **[セキュリティ保護: イニシアティブの割り当て]** ページを開きます。
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="[イニシアティブ定義] ページの [割り当て] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
    また、選択した行を右クリックするか、行の末尾にある省略記号を選択して、コンテキスト メニューを表示することもできます。 次に、 **[割り当て]** を選択します。
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="割り当て機能を選択するためのイニシアティブのコンテキスト メニューのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 1. **[セキュリティ保護: イニシアティブの割り当て]** ページに、次のサンプル情報を入力します。 独自の情報を使用することもできます。
 
@@ -455,27 +432,30 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. Azure Policy ページの左側にある **[コンプライアンス]** を選択します。
 
 1. **[Get Secure]\(セキュリティ保護\)** イニシアチブを探します。 おそらくまだ _[コンプライアンスの状態]_ は **[未開始]** です。
-   割り当ての進行状況の詳細情報を取得するには、イニシアティブを選択します。
+   割り当ての詳細情報を取得するには、イニシアティブを選択します。
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="イニシアティブ コンプライアンス ページのスクリーンショット。割り当て評価が [未開始] 状態です。" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 1. イニシアティブの割り当てが完了すると、コンプライアンス ページが更新されて、 _[コンプライアンスの状態]_ は **[準拠している]** になります。
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="イニシアティブ コンプライアンス ページのスクリーンショット。割り当て評価が完了しており、[準拠している] 状態です。" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 1. イニシアティブ コンプライアンス ページ上の任意のポリシーを選択すると、そのポリシーのコンプライアンス詳細ページが開きます。 このページでは、コンプライアンスのリソース レベルの詳細が提供されます。
 
-## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>準拠していないリソースまたは拒否されたリソースを免除する
+## <a name="remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion"></a>準拠していないまたは拒否されたリソースを除外してスコープから削除する
 
 特定の場所を要求するようにポリシー イニシアチブを割り当てた後は、別の場所に作成されたリソースはすべて拒否されます。 このセクションでは、単一のリソース グループに対する除外を作成することで、リソースを作成する要求の拒否を解決する手順について説明します。 除外することで、そのリソース グループに対してポリシー (またはイニシアティブ) が適用されなくなります。 次の例では、除外されたリソース グループ内で任意の場所が許可されています。 除外は、サブスクリプション、リソース グループ、または個々のリソースに適用できます。
 
+> [!NOTE]
+> [ポリシーの適用除外](../concepts/exemption-structure.md)を使用して、リソースの評価をスキップすることもできます。 詳細については、[Azure Policy のスコープ](../concepts/scope.md)に関するページを参照してください。
+
 割り当てられたポリシーまたはイニシアチブによって阻止されたデプロイは、デプロイの対象となるリソース グループ上で閲覧できます。ページの左側にある **[デプロイ]** を選択し、失敗したデプロイの**デプロイ名**を選択します。 拒否されたリソースが、"_禁止_" ステータスで表示されます。 リソースを拒否したポリシーまたはイニシアティブと割り当てを確認するには、[デプロイの概要] ページの **[失敗しました。詳細については、ここをクリックしてください]** をクリックします。 ページの右側にウィンドウが開き、エラー情報が表示されます。 **[エラーの詳細]** には、関連するポリシー オブジェクトの GUID が表示されます。
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="ポリシー割り当てで拒否されたデプロイ失敗のスクリーンショット。" border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 Azure Policy ページでの操作: ページの左側にある **[コンプライアンス]** を選択し、**セキュリティ保護**のポリシー イニシアチブを選択します。 このページでは、ブロックされたリソースに対する **[拒否]** カウントが増加しています。 **[イベント]** タブ下には、ポリシー定義によって拒否されたリソースの作成またはデプロイを試行したユーザーに関する詳細が示されます。
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="[イニシアティブ コンプライアンス] ページの [イベント] タブとポリシー イベント詳細のスクリーンショット。" border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
 この例では、Contoso における仮想化のシニアスペシャリストの 1 人である Trent Baker が必要な作業を行っていました。 Trent に例外のスペースを付与する必要があります。 新しいリソース グループ **LocationsExcluded** を作成してから、このポリシー割り当てへの例外を付与します。
 
@@ -487,7 +467,7 @@ Azure Policy ページでの操作: ページの左側にある **[コンプラ�
 
 1. 省略記号を選択し、除外するリソース グループ (この例では、_LocationsExcluded_) を選択して、 **[除外]** を設定します。 **[選択したスコープに追加]** を選択してから、 **[保存]** を選択します。
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="[イニシアティブ割り当て] ページにある、除外されたリソース グループをポリシー割り当てに追加するための [除外] オプションのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="検索バーで Policy を検索する操作のスクリーンショット。" border="false":::
 
    > [!NOTE]
    > ポリシー定義とその効果に応じて、割り当てのスコープ内にあるリソース グループの中の特定のリソースに除外を付与することもできます。 このチュートリアルでは **Deny** 効果が使用されたため、既に存在する特定のリソースに除外を設定することには意味がありません。
