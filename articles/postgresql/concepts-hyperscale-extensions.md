@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314880"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996447"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
@@ -41,6 +41,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [lo](https://www.postgresql.org/docs/current/lo.html) | ラージ オブジェクトのメンテナンス。 |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 階層ツリー状の構造体のデータ型を提供します。 |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | 線分または浮動小数点の間隔を表すデータ型。 |
+> | [tdigest](https://github.com/tvondra/tdigest) | 分位点やトリム平均などのランクベースの統計をオンラインで集計するためのデータ型。 |
 > | [topn](https://github.com/citusdata/postgresql-topn/) | トップ-N JSONB の型。 |
 
 ### <a name="full-text-search-extensions"></a>フルテキスト検索の拡張機能

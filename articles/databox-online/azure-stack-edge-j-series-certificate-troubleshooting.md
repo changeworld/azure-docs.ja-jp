@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891329"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568354"
 ---
 # <a name="troubleshooting-certificate-errors"></a>証明書エラーのトラブルシューティング
 
@@ -30,7 +30,6 @@ ms.locfileid: "90891329"
 |---|---|
 | CertificateManagement_UntrustedCertificate | サブジェクト名 {0} の証明書の証明書チェーンが破損しています。 この証明書をアップロードする前に、署名チェーン証明書をアップロードしてください。|
 | CertificateManagement_DeviceNotRegistered| デバイスがアクティブ化されていません。 アクティブ化した場合のみ、サポート証明書をアップロードできます。|
-| CertificateManagement_EmptySAN | サブジェクト名 {0} の証明書にサブジェクトの別名がありません。 証明書のプロパティを確認し、新しい証明書を導入してください。|
 | CertificateManagement_ExpiredCertificate | 種類が {0} の証明書が有効期限切れか、間もなく有効期限が切れます。 証明書の有効期限を確認し、必要に応じて新しい証明書を導入してください。|
 | CertificateManagement_FormatMismatch | 証明書の形式がサポートされていません。 証明書の形式を確認し、必要に応じて新しい証明書を導入してください。  {0} が必要ですが、{1} が見つかりました。 |
 | CertificateManagement_GenericError | 証明書の管理操作を実行できません。 数分後にこの操作を再試行してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
@@ -42,7 +41,6 @@ ms.locfileid: "90891329"
 | CertificateManagement_KeySizeNotSufficient | サブジェクト名 {0} の証明書のキー サイズ {1} が不十分です。 最小キー サイズは 4096 です。|
 | CertificateManagement_MissingClientOid | サブジェクト名 {0} の証明書にクライアント認証 OID がありません。 証明書のプロパティを確認し、必要に応じて新しい証明書を導入してください。|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | サブジェクト名 {0} の証明書のキー使用法にデジタル署名がありません。 証明書のプロパティを確認し、必要に応じて新しい証明書を導入してください。 |
-| CertificateManagement_MissingEntryInSAN | サブジェクト名 {0} の証明書は、サブジェクトの別名にサブジェクト名のエントリがありません。 証明書のプロパティを確認し、新しい証明書を導入してください。 |
 | CertificateManagement_MissingKeyCertSignKeyUsage | サブジェクト名 {0} の証明書のキー使用法に証明書署名がありません。 証明書のプロパティを確認し、必要に応じて新しい証明書を導入してください。|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | サブジェクト名 {0} の証明書のキー使用法にキーの暗号化がありません。 証明書のプロパティを確認し、必要に応じて新しい証明書を導入してください。 |
 | CertificateManagement_MissingServerOid | サブジェクト名 {0} の証明書にサーバー認証 OID がありません。 証明書のプロパティを確認し、必要に応じて新しい証明書を導入してください。|
@@ -55,6 +53,10 @@ ms.locfileid: "90891329"
 | CertificateManagement_SubjectNamesInvalid | サブジェクト名 {0} の証明書に、{1} 証明書の正しいサブジェクト名またはサブジェクトの別名がありません。 アップロードした証明書を確認し、必要に応じて新しい証明書を導入してください。 また、DNS 名が SANS 名と一致しているか確認する必要もあります。|
 | CertificateManagement_UnreadableCertificate | 種類が {0} の証明書を読み取れませんでした。 このエラーは、証明書が読み取り不能であるか、破損している場合に発生します。 新しい証明書を導入してください。|
 | CertificateSubjectNotFound | サブジェクト名 {0} の証明書が見つかりません。 新しい証明書を導入してください。|
+| CertificateRotationGenericFailure | 1 つまたは複数の証明書のローテーションが失敗しました。 数分後に再試行してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
+| CertificateImportFailure | 拇印 {0} 付きの証明書がノード {1} にインポートされませんでした。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
+| CertificateApplyFailure | 拇印 {0} 付きの証明書がノード {1} に適用されませんでした。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
+| NodeNotReachable | {0} の証明書を検証できませんでした。 システム ハードウェアとソフトウェアの正常性をご確認ください。|
 
 ## <a name="next-steps"></a>次のステップ
 

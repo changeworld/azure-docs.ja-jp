@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325489"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072783"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -65,7 +65,7 @@ Azure NetApp Files ボリュームには、*maxfiles* という制限があり�
 |    3 TiB 超、4 TiB 以下    |    8,000 万     |
 |    4 TiB 超                 |    1 億    |
 
-ボリュームに対して 4 TiB 以上のクォータを既に割り当てている場合は、[サポート リクエスト](#limit_increase)を開始して、maxfiles の制限を 1 億より大きい値に増やすことができます。
+ボリュームに対して 4 TiB 以上のクォータを既に割り当てている場合は、[サポート リクエスト](#limit_increase)を開始して、maxfiles の制限を 1 億より大きい値に増やすことができます。 1 億ファイル増加する (またはその一部) ごとに、対応するボリューム クォータを 4 TiB ずつ増やす必要があります。  たとえば、maxfiles の制限を 1 億ファイルから 2 億ファイル (またはその間の任意の数) に増やした場合は、ボリューム クォータを 4 TiB から 8 TiB に増やす必要があります。
 
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する<a name="limit_increase"></a> 
 

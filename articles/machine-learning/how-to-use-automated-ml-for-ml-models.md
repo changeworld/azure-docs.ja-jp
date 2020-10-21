@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362250"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -143,7 +143,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 1. (任意) 特徴量化の設定を表示する: **追加の構成設定**フォームで**自動を特徴量化**を有効にすることを選択した場合、既定の特徴量化手法が適用されます。 **特徴量化の表示設定**でこれらの既定値を変更し、それに応じてカスタマイズすることができます。 [特徴量化をカスタマイズする](#customize-featurization)方法をご覧ください。 
 
-    ![Azure Machine Learning Studio のタスク タイプ フォーム](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
+    ![[特徴量化設定の表示] が強調表示された [タスクの種類を選択] ダイアログ ボックスを示すスクリーンショット。](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 ## <a name="customize-featurization"></a>特徴量化をカスタマイズする
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294531"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013748"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -215,7 +215,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 ## <a name="cache-information"></a>キャッシュ情報
 Linux 用 Log Analytics エージェントからのデータは、ローカル マシン上の *%STATE_DIR_WS%/out_oms_common*.buffer* にキャッシュされてから Azure Monitor に送信されます。 カスタム ログ データは *%STATE_DIR_WS%/out_oms_blob*.buffer* にバッファリングされます。 このパスは、一部の[ソリューションとデータ型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)では異なる場合があります。
 
-エージェントによって 20 秒ごとにアップロードが試行されます。 失敗した場合は、成功するまで、指数関数的に増加する時間を待機します。 2 回目の試行の前に 30 秒前、その次の前に 60 秒前、さらにその次の前に 120 秒間といった具合に、再接続が成功するまで最大 9 分間待機します。 エージェントは、破棄して次へ移動する前に、特定のデータ チャンクに対して 10 回だけ再試行します。 これは、エージェントが再度正常にアップロードできるようになるまで継続されます。 つまり、データは破棄される前に最大 8.5 時間バッファリングされる可能性があります。
+エージェントによって 20 秒ごとにアップロードが試行されます。 失敗した場合は、成功するまで、待機する時間が指数関数的に増加します。2 回目の試行の前に 30 秒前、3 回目の前に 60 秒前、さらにその次の前に 120 秒間といった具合に、再接続が成功するまで最大 16 分間待機します。 エージェントでは、特定のデータ チャンクに対して最大 6 回再試行されてから破棄され、次に進みます。 これは、エージェントが再度正常にアップロードできるようになるまで継続されます。 これは、データが破棄されるまでに最大約 30 分間バッファーされる可能性があることを意味します。
 
 既定のキャッシュ サイズは 10 MB ですが、[omsagent.conf ファイル](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)内で変更することができます。
 

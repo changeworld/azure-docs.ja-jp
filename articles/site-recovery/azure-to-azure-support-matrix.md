@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 390dba92091a9e419bcd7a8f0e8e83f65597305e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803094"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045331"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -247,6 +247,7 @@ ZRS | サポートされていません |
 NVMe ディスク | サポートされていません
 Azure 共有ディスク | サポートされていません
 転送オプションのセキュリティ保護 | サポートされています
+書き込みアクセラレータが有効になっているディスク | サポートされていません
 
 >[!IMPORTANT]
 > パフォーマンスの問題を回避するには、[Linux](../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM に対する VM ディスクのスケーラビリティとパフォーマンスのターゲットに従っていることを確認します。 既定の設定を使用する場合は、ソースの構成に基づいて、必要なディスクとストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従います。
@@ -273,7 +274,7 @@ Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 |
 **設定** | **サポート** | **詳細**
 --- | --- | ---
 NIC | 特定の Azure VM サイズでサポートされる最大数 | フェールオーバー中に VM が作成されるときには NIC が作成されます。<br/><br/> フェールオーバー VM 上の NIC 数は、レプリケーションが有効にされたときのソース VM 上の NIC 数によって決まります。 レプリケーションを有効にした後に NIC を追加または削除しても、フェールオーバー後、レプリケートされた VM 上にある NIC の数は影響を受けません。 <br/><br/> フェールオーバー後の NIC の順序は元の順序と同じであることが保証されないことにも注意してください。 <br/><br/> 組織の名前付け規則に基づいて、ターゲット リージョンの NIC の名前を変更できます。 NIC の名前変更は、PowerShell を使用して実行できます。
-インターネット Load Balancer | サポートされていません | パブリックおよびインターネットのロード バランサーは Azure Site Recovery ではサポートされていません。
+インターネット Load Balancer | サポートされていません | プライマリ リージョンでパブリック/インターネット ロード バランサーを設定できます。 しかし、パブリックおよびインターネットのロード バランサーは DR リージョンの Azure Site Recovery ではサポートされていません。
 内部ロード バランサー | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、構成済みロード バランサーを関連付けます。
 パブリック IP アドレス | サポートされています | 既存のパブリック IP アドレスを NIC に関連付けます。 または、パブリック IP アドレスを作成し、復旧計画の Azure Automation スクリプトを使用して、それを NIC に関連付けます。
 NIC 上の NSG | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、NSG を NIC に関連付けます。
