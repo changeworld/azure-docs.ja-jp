@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 517344e0bae0a48dbee04da33d28c8777d7c142d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440250"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124964"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した小売ソリューションの構築
 
@@ -185,4 +185,4 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 * [スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-smart-inventory-management.md)。
 * [マイクロフルフィルメント センター アプリケーション テンプレートをデプロイして調べる](./tutorial-micro-fulfillment-center.md)。
 * [ビデオ分析アプリケーション テンプレートをデプロイして調べる](./tutorial-video-analytics-deploy.md)。
-* [IoT Central の概要](../preview/overview-iot-central.md)に関するページで、IoT Central の詳細について確認する。
+* [IoT Central の概要](../core/overview-iot-central.md)に関するページで、IoT Central の詳細について確認する。

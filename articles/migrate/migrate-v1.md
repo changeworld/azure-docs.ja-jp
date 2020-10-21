@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001639"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317216"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 および全 SP | Azure は完全サポートを提供し
 Windows Server 2012 および全 SP | Azure は完全サポートを提供します。 | Azure に対応
 Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供します。| Azure に対応
 Windows Server 2008 (32 ビットおよび 64 ビット) | Azure は完全サポートを提供します。 | Azure に対応
-Windows Server 2003、2003 R2 | サポート対象外。Azure でサポートを受けるには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要になります。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
+Windows Server 2003、2003 R2 | サポート対象外。Azure でサポートを受けるには[カスタム サポート契約 (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) が必要になります。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、98、95、NT、3.1、MS-DOS | サポート対象外。 マシンが Azure で起動する可能性はありますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
 Windows Client 7、8、10 | Azure は、[Visual Studio サブスクリプション](../virtual-machines/windows/client-images.md)にのみサポートを提供します。 | Azure に条件付きで対応
 Windows 10 Pro デスクトップ | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応

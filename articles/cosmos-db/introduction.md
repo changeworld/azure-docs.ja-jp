@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569867"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278428"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -60,7 +60,7 @@ Cosmos DB は、Azure の基盤サービスです。 10 年近くにわたり、
 
 ### <a name="ubiquitous-regional-presence"></a>ユビキタスなリージョン プレゼンス
 
-Cosmos DB は、パブリック クラウドの 54 以上のリージョン、[Azure China 21Vianet](https://www.azure.cn/en-us/)、Azure Germany、Azure Government、および Azure Government for Department of Defense (DoD) など、世界中のすべての Azure リージョンで利用できます。 「[Azure Cosmos DB のリージョン プレゼンス](regional-presence.md)」をご覧ください。
+Cosmos DB は、パブリック クラウドの 54 以上のリージョン、[Azure China 21Vianet](https://www.azure.cn/en-us/)、Azure Germany、Azure Government、および Azure Government for Department of Defense (DoD) など、世界中のすべての Azure リージョンで利用できます。 詳細については、「[Azure Cosmos DB での高可用性](high-availability.md)」を参照してください。
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>既定でのセキュリティ保護とエンタープライズ対応
 

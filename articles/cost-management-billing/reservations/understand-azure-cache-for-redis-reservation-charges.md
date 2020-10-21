@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4b5f77742d3b2611fd7baf5880b9f8fed047aa86
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213261"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147317"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスに予約割引が適用されるしくみについて
 
-Azure Cache for Redis の予約容量を購入すると、予約の属性や数量に合致するキャッシュ インスタンスに対して予約割引が自動的に適用されます。 予約購入分は、ご利用の Azure Cache for Redis の計算コストにのみ充当されます。 ストレージおよびネットワークについては、通常料金が適用されます。 予約容量は、[Premium レベル](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis)のキャッシュでのみ使用できます。
+Azure Cache for Redis の予約容量を購入すると、予約の属性や数量に合致するキャッシュ インスタンスに対して予約割引が自動的に適用されます。 予約購入分は、ご利用の Azure Cache for Redis の計算コストにのみ充当されます。 ストレージおよびネットワークについては、通常料金が適用されます。 予約容量は、[Premium レベル](//azure/azure-cache-for-redis/quickstart-create-redis)のキャッシュでのみ使用できます。
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 
@@ -30,7 +30,7 @@ Azure Cache for Redis の予約容量割引は、利用中のキャッシュに 
 
 次の例は、購入したキャッシュ数と実行する時間に応じて、Azure Cache for Redis の予約容量割引がどのように適用されるかを示しています。
 
-* **例 1**:6 GB キャッシュ用の Azure Cache for Redis の予約容量を購入するとします。 予約の残りの属性と一致する 13 GB のキャッシュを実行している場合、Azure Cache for Redis の計算使用量の 7 GB に対して従量課金制の料金が請求され、1 時間分の 6 GB のキャッシュの計算使用量に対して予約割引が適用されます。
+**例 1**:6 GB キャッシュ用の Azure Cache for Redis の予約容量を購入するとします。 予約の残りの属性と一致する 13 GB のキャッシュを実行している場合、Azure Cache for Redis の計算使用量の 7 GB に対して従量課金制の料金が請求され、1 時間分の 6 GB のキャッシュの計算使用量に対して予約割引が適用されます。
 
 以降の例では、購入する Azure Cache for Redis の予約容量は、26 GB のキャッシュ用であり、残りの予約の属性は実行中のキャッシュと一致するものとします。
 
@@ -40,7 +40,7 @@ Azure Cache for Redis の予約容量割引は、利用中のキャッシュに 
 
 * **例 4**:1 つの 26 GB のキャッシュを午後 1 時から午後 1 時 45 分まで実行するとします。 別の 26 GB のキャッシュを午後 1 時 30 分から午後 2 時まで実行するとします。 15 分間の重復分には、従量課金制の料金が適用されます。 残りの時間の計算使用量には、予約割引が適用されます。
 
-Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](/azure/billing/billing-understand-reserved-instance-usage-ea)に関するページを参照してください。
+Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](./understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

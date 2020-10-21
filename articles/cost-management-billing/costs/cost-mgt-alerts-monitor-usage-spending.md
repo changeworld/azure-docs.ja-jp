@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531340"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131906"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する
 
@@ -21,7 +21,7 @@ ms.locfileid: "90531340"
 
 ## <a name="budget-alerts"></a>予算アラート
 
-予算アラートでは、使用量とコストに基づいて、[予算のアラート条件](tutorial-acm-create-budgets.md)で定義されている額に支出が達するか、それを超えると、通知されます。 Cost Management の予算は、Azure portal または [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API を使用して作成します。
+予算アラートでは、使用量とコストに基づいて、[予算のアラート条件](tutorial-acm-create-budgets.md)で定義されている額に支出が達するか、それを超えると、通知されます。 Cost Management の予算は、Azure portal または [Azure Consumption](/rest/api/consumption) API を使用して作成します。
 
 Azure portal では、予算はコストによって定義されます。 Azure Consumption API を使用する場合は、コストまたは消費量を使用して予算を定義します。 予算アラートでは、コスト ベースと使用量ベースの両方の予算がサポートされています。 予算アラートは、予算アラート条件が満たされると常に自動的に生成されます。 Azure portal では、すべてのコストのアラートを表示できます。 アラートが生成されるたびに、コストのアラートに表示されます。 予算のアラート受信者一覧のユーザーに、アラート メールも送信されます。
 

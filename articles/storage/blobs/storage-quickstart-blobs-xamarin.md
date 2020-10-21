@@ -3,17 +3,17 @@ title: クイック スタート:Azure Blob Storage ライブラリ v12 - Xamari
 description: このクイックスタートでは、Xamarin で Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、モバイル デバイスに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: codemillmatt
 ms.author: masoucou
-ms.date: 05/08/2020
+ms.date: 10/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fa7ebc71f2bbe6abe6956ad36daaf983e011a94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001329"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109019"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイック スタート:Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
@@ -157,7 +157,7 @@ protected async override void OnAppearing()
 次のコード スニペット:
 
 1. テキストの `MemoryStream` を作成します。
-1. [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) クラスの [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 関数を呼び出し、ファイル名とテキストの `MemoryStream` の両方でそれを渡してテキストを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
+1. [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) クラスの [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 関数を呼び出し、ファイル名とテキストの `MemoryStream` の両方でそれを渡してテキストを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
 
 次のコードを *MainPage.xaml.cs* ファイルに追加します。
 

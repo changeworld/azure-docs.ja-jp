@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683404"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131872"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>コスト分析のグループとフィルターのオプション
 
@@ -49,10 +49,10 @@ ms.locfileid: "88683404"
 | **サービス名**または**測定カテゴリ** | Azure サービスでコストを分割します。 | 購入と Marketplace の使用は "**該当なし**" または "**未割り当て**" として表示されます。 |
 | **サービス レベル**または**測定サブカテゴリ** | Azure 利用状況の測定のサブ分類でコストを分割します。 | 購入と Marketplace の使用は "**該当なし**" または "**未割り当て**" として表示されます。 |
 | **サブスクリプション** | コストを Azure サブスクリプションおよび AWS 連結アカウント別にします。 | 購入とテナント リソースは "**該当なし**" として表示されることがあります。 |
-| **Tag** | 特定のタグ キーのタグ値でコストを分割します。 | 購入、サブスクリプションに関連付けられていないテナント リソース、リソース グループにデプロイされていないサブスクリプション リソース、クラシック リソースには、タグを使用できません。 一部のサービスでは、使用量データにタグが含まれません。 [リソースの種類ごとのタグのサポート](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support)に関するページを参照してください。 |
+| **Tag** | 特定のタグ キーのタグ値でコストを分割します。 | 購入、サブスクリプションに関連付けられていないテナント リソース、リソース グループにデプロイされていないサブスクリプション リソース、クラシック リソースには、タグを使用できません。 一部のサービスでは、使用量データにタグが含まれません。 [リソースの種類ごとのタグのサポート](../../azure-resource-manager/management/tag-support.md)に関するページを参照してください。 |
 
 用語について詳しくは、「[Azure の利用状況と請求金額ファイル内の用語について](../understand/understand-usage.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コストの分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)。
+- [コストの分析を開始する](./quick-acm-cost-analysis.md)。

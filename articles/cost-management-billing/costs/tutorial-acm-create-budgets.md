@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527141"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132807"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
 Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知のみがトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。
 
-コストと使用状況データは通常 8 時間から 24 時間以内に利用できるようになり、予算は 12 時間から 14 時間ごとにこれらのコストに対して評価されます。 [コストと使用状況データの更新](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention)の詳細を把握するようにしてください。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
+コストと使用状況データは通常 8 時間から 24 時間以内に利用できるようになり、予算は 12 時間から 14 時間ごとにこれらのコストに対して評価されます。 [コストと使用状況データの更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)の詳細を把握するようにしてください。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
 
 将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。
 
@@ -72,7 +72,7 @@ Azure EA サブスクリプションの場合、予算を表示するには読�
 - 共同作成者と Cost Management 共同作成者 - 自分の予算を作成、変更、削除できます。 他のユーザーによって作成された予算の予算金額を変更できます。
 - 閲覧者と Cost Management 閲覧者 - 自分がアクセス許可を持っている予算を表示できます。
 
-Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](../../cost-management/assign-access-acm-data.md)」をご覧ください。
+Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](./assign-access-acm-data.md)」をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -104,7 +104,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 予算金額を構成したら、 **[次へ]** を選択して予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
 
-メールを受信したい場合は、迷惑メール フォルダーに振り分けられることのないよう、承認済みの差出人一覧に azure-noreply@microsoft.com を追加してください。 通知の詳細については、[コスト アラートの使用](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
+メールを受信したい場合は、迷惑メール フォルダーに振り分けられることのないよう、承認済みの差出人一覧に azure-noreply@microsoft.com を追加してください。 通知の詳細については、[コスト アラートの使用](./cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
 
 以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。 別の言語で送信された電子メール アラートを使用する場合は、「[予算のアラート メールでサポートされているロケール](manage-automation.md#supported-locales-for-budget-alert-emails)」を参照してください。
 
@@ -112,7 +112,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![アラート条件を示す例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-作成した予算は、コストの分析に表示されます。 支出の傾向と照らして予算を表示することは、[コストと支出の分析](../../cost-management/quick-acm-cost-analysis.md)を始めるときの最初のステップの 1 つです。
+作成した予算は、コストの分析に表示されます。 支出の傾向と照らして予算を表示することは、[コストと支出の分析](./quick-acm-cost-analysis.md)を始めるときの最初のステップの 1 つです。
 
 ![コスト分析に表示される予算と支出の例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 

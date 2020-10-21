@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ec91d0997717d536c3b47ce7b276f75b21d1baa1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 926e0c8bc0fdff580b4d1e84be5940e0945d52ae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681653"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146277"
 ---
 # <a name="view-azure-reservations"></a>Azure の予約を表示する
 
@@ -55,7 +55,7 @@ Power BI ユーザーには、次の 2 とおりの方法があります。
 - [Azure の予約を管理する](manage-reserved-vm-instance.md)。
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
-- [CSP サブスクリプションの予約の使用状況について](https://docs.microsoft.com/partner-center/azure-reservations)
+- [CSP サブスクリプションの予約の使用状況について](/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

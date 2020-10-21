@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767740"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075792"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "91767740"
 
 ## <a name="create-a-net-core-console-app"></a>.NET Core コンソール アプリを作成する
 
-[.NET Core コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/dotnet/core/tools/) を使用して、新しい .NET Core コンソール アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。  代わりに、[Azure Cloud Shell](https://shell.azure.com) で提供されているプレインストールのツールを使用します。
+[.NET Core コマンド ライン インターフェイス (CLI)](/dotnet/core/tools/) を使用して、新しい .NET Core コンソール アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。  代わりに、[Azure Cloud Shell](https://shell.azure.com) で提供されているプレインストールのツールを使用します。
 
 1. プロジェクト用の新規フォルダーを作成します。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91767740"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から .NET Core コンソール アプリと共に使用しました。 構成設定を動的に更新するように .NET Core アプリを構成する方法については、次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)から .NET Core コンソール アプリと共に使用しました。 構成設定を動的に更新するように .NET Core アプリを構成する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [動的な構成を有効にする](./enable-dynamic-configuration-dotnet-core.md)

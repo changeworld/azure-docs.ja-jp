@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825649"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282271"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 
@@ -32,11 +32,11 @@ Front Door は、レイヤー 7 (HTTP/HTTPS 層) で動作し、スプリット 
 >[!NOTE]
 > Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 
 > * DNS ベースのグローバルなルーティングを検討中であり、トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") の要件や、HTTP/HTTPS 要求ごとまたはアプリケーション層の処理の要件が**ない**場合は、[Traffic Manager](../traffic-manager/traffic-manager-overview.md) を検討してください。 
-> * アプリケーション層でリージョン内のサーバー間の負荷分散が必要な場合は、[Application Gateway](../application-gateway/application-gateway-introduction.md) を検討してください。
+> * アプリケーション層でリージョン内のサーバー間の負荷分散が必要な場合は、[Application Gateway](../application-gateway/overview.md) を検討してください。
 > * ネットワーク層の負荷分散を行う場合は、[Load Balancer](../load-balancer/load-balancer-overview.md) を検討してください。 
 > 
 > 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
-> Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
+> Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
 ## <a name="why-use-azure-front-door"></a>Azure Front Door を使用する理由
 

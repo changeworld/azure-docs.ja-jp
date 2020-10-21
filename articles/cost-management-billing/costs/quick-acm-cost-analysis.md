@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297863"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132841"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -32,7 +32,7 @@ Azure コストを正しく制御して最適化するには、コストが組�
 
 コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。
 
-Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../../cost-management/assign-access-acm-data.md)に関するページを参照してください。
+Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](./assign-access-acm-data.md)に関するページを参照してください。
 
 新しいサブスクリプションをご利用の場合、すぐには Cost Management 機能を使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。
 
@@ -108,7 +108,7 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 
 一般に、8 から 12 時間以内の消費リソースのデータまたは通知を見ることができます。
 
-共通のプロパティで**グループ化**してコストを明細化し、最も寄与した要因を識別します。 たとえば、リソース タグでグループ化するには、グループ化の基準とするタグ キーを選択します。 タグの値ごとのコスト明細が表示され、そのタグが適用されていないリソースについては別途セグメントが表示されます。  グループとフィルターのオプションの詳細については、[グループとフィルターのオプション](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter)に関するページを参照してください。
+共通のプロパティで**グループ化**してコストを明細化し、最も寄与した要因を識別します。 たとえば、リソース タグでグループ化するには、グループ化の基準とするタグ キーを選択します。 タグの値ごとのコスト明細が表示され、そのタグが適用されていないリソースについては別途セグメントが表示されます。  グループとフィルターのオプションの詳細については、[グループとフィルターのオプション](./group-filter.md)に関するページを参照してください。
 
 ほとんどの [Azure リソースでは、タグ付けがサポートされています](../../azure-resource-manager/management/tag-support.md)。 ただし、一部のタグは Cost Management および請求で使用できません。 また、リソース グループのタグはサポートされていません。 タグのサポートは、タグがリソースに適用された "*後*" にレポートされた使用状況に適用されます。 タグは、過去のコスト データには適用されません。
 

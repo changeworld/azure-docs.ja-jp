@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758542"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131141"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure のクレジット カードの追加または更新
 
@@ -32,7 +32,7 @@ Microsoft 顧客契約では、支払い方法は課金プロファイルに関�
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Azure サブスクリプションのクレジット カードを管理する
 
-以降のセクションは、Microsoft Online Services Program 課金アカウントを持つお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 課金アカウントの種類が Microsoft Online Services Program である場合、支払い方法は個別の Azure サブスクリプションに関連付けられています。 クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](/azure/cost-management-billing/manage/troubleshoot-declined-card)」を参照してください。
+以降のセクションは、Microsoft Online Services Program 課金アカウントを持つお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 課金アカウントの種類が Microsoft Online Services Program である場合、支払い方法は個別の Azure サブスクリプションに関連付けられています。 クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](./troubleshoot-declined-card.md)」を参照してください。
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>新しいクレジット カードを追加してサブスクリプションのクレジット カードを変更する
 

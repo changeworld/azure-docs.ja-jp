@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 41ad240b7232895a83839777f9942011edfaf5f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: subject-armqs
+ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90529388"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088926"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>クイック スタート」を参照してください。ARM テンプレートを使用して Front Door を作成する
 

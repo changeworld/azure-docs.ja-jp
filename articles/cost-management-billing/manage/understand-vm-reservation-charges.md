@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686447"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132144"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure の予約割引が仮想マシンに適用されるしくみ
 
@@ -57,7 +57,7 @@ Windows VM インスタンスの実行中は、インフラストラクチャ �
 
 ## <a name="discount-can-apply-to-different-sizes"></a>さまざまなサイズに割引を適用できる
 
-予約 VM インスタンスを購入するときに、 **[最適化の対象: インスタンス サイズの柔軟性]** を選択した場合、割引範囲は、選択した VM のサイズに適用されます。 また、同じシリーズのインスタンス サイズの柔軟性グループに存在する他の VM サイズにも適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+予約 VM インスタンスを購入するときに、 **[最適化の対象: インスタンス サイズの柔軟性]** を選択した場合、割引範囲は、選択した VM のサイズに適用されます。 また、同じシリーズのインスタンス サイズの柔軟性グループに存在する他の VM サイズにも適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Premium Storage VM には Premium 以外の割引は適用されない
 

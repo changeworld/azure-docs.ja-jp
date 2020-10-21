@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962158"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145253"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -84,13 +84,6 @@ ms.locfileid: "91962158"
 - 特定の場所からのアクセスをブロックまたは許可する
 - リスクの高いサインイン動作をブロックする
 - 特定のアプリケーションに対して、組織のマネージド デバイスを必要とする
-
-## <a name="customer-case-studies"></a>お客様導入事例
-
-Azure AD の条件付きアクセスを使用して、自動化されたアクセス制御の決定を定義および実装するために他の組織がどのようにしているかを紹介します。 以下の特集記事は、これらの顧客ニーズがどのようにして満たされるかを示しています。
-
-* [Wipro は Microsoft のクラウド セキュリティ ツールによってモバイルの生産性を高め、顧客との関係を強化します。](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) 同社では、Azure AD の条件付きアクセス ポリシーによって、独自の企業データに対する統制は維持したまま、(各自の資格情報を使用できる) 信頼された外部エンティティとの間でドキュメント、リソース、およびアプリケーションを共有することが可能になりました。
-* [グローバル物流輸送企業の Aramex delivery limited は、ID とアクセスの管理ソリューションを用いて、クラウドで結び付いたオフィスを構築します](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)。 Aramex の遠隔地の従業員にとって、安全なアクセスを確保することは特に困難でした。 同社では現在、条件付きアクセスを応用して、こうした遠隔地の従業員がネットワークの外から同社の SaaS アプリケーションにアクセスできるようにしています。 条件付きアクセスのルールによって多要素認証の強制の有無を決定し、適切な従業員のみに適切なアクセスが付与されるようにしています。
 
 ## <a name="license-requirements"></a>ライセンスの要件
 

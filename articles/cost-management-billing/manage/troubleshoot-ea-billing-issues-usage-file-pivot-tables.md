@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: a30f85ae1b65321a25ee93239374d2a8aae26769
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b32bb979176af8a8a3751db8edf9c129caf1002e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026429"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131991"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>使用状況ファイルのピボット テーブルを使用して EA の請求に関する問題をトラブルシューティングする
 
@@ -33,7 +33,7 @@ ms.locfileid: "92026429"
 
 Azure 使用状況ファイルは CSV 形式であるため、Excel で使用できるようにデータを準備する必要があります。 データをテーブルとして書式設定するには、次の手順に従います。
 
-1. 「[EA のお客様の使用量のダウンロード](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-ea-customers)」にある手順に従い、[Usage Details Version 2] で [All Charges (usage and purchases)]\(すべての料金 (使用状況と購入)\) を選択してファイルをダウンロードします。
+1. 「[EA のお客様の使用量のダウンロード](./download-azure-invoice-daily-usage-date.md#download-usage-for-ea-customers)」にある手順に従い、[Usage Details Version 2] で [All Charges (usage and purchases)]\(すべての料金 (使用状況と購入)\) を選択してファイルをダウンロードします。
 1. Excel でファイルを開きます。
 1. 書式設定されていないデータは、次の例のようになります。  
     :::image type="content" source="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" alt-text="Excel で表示されている書式設定されていないデータを示す例" lightbox="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" :::

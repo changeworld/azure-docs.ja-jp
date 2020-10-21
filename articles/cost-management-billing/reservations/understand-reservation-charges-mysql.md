@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4ef19b1fc8f0d503f1a35c60afd1faec2a548ca4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5cb4e3dd4145319361a2494ee346c0d2696edf45
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681993"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148308"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Azure Database for MySQL に対する予約割引の適用方法
 
@@ -30,7 +30,7 @@ Azure Database for MySQL の予約容量割引は、実行中の MySQL サーバ
 
 次の例は、購入したコア数と実行する時間に応じて、Azure Database for MySQL の予約容量割引がどのように適用されるかを示しています。
 
-* **例 1**:8 仮想コア用の Azure Database for MySQL の予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for MySQL サーバーを実行している場合、MySQL サーバーの計算使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの MySQL サーバーの計算使用量に対して予約割引が適用されます。</br>
+**例 1**:8 仮想コア用の Azure Database for MySQL の予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for MySQL サーバーを実行している場合、MySQL サーバーの計算使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの MySQL サーバーの計算使用量に対して予約割引が適用されます。</br>
 
 以降の例では、購入する Azure Database for MySQL の予約容量は、16 仮想コアの Azure Database for MySQL 用であり、残りの予約属性は実行中の MySQL サーバーと一致するものとします。
 
@@ -40,7 +40,7 @@ Azure Database for MySQL の予約容量割引は、実行中の MySQL サーバ
 
 * **例 4**:1 つの 16 仮想コア Azure Database for MySQL サーバーを、午後 1 時から午後 1 時 45 分まで実行します。 別の 16 仮想コア Azure Database for MySQL サーバーを、午後 1 時半から午後 2 時まで実行します。 15 分間の重復分には、従量課金制の料金が適用されます。 残りの時間の計算使用量には、予約割引が適用されます。
 
-Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)に関するページを参照してください。
+Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](./understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
