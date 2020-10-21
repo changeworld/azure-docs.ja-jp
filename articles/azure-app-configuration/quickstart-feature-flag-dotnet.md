@@ -13,14 +13,14 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 10/21/2019
+ms.date: 10/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 145015b7645cf7923f15ecd7c0378ff6cb96dd7e
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: c379d3f99628c2d3fb32ae34ca0214f608d365c7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767688"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201268"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>クイック スタート:.NET Framework アプリに機能フラグを追加する
 
@@ -30,7 +30,7 @@ ms.locfileid: "91767688"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
@@ -70,6 +70,7 @@ ms.locfileid: "91767688"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     using Microsoft.FeatureManagement;
+    using System.Threading.Tasks;
     ```
 
 1. `Main` メソッドを更新してアプリ構成に接続し、`UseFeatureFlags` オプションを指定して機能フラグが取得されるようにします。 `Beta` 機能フラグが有効になっている場合は、メッセージを表示します。
@@ -99,6 +100,8 @@ ms.locfileid: "91767688"
             }
 
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Press any key to continue ...");
+            Console.Read();
         }
     ```
 

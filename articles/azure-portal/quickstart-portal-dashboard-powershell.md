@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.author: mblythe
 ms.date: 07/24/2020
-ms.openlocfilehash: 6b7a4f6d4ad7f5e94d19b9d531992f54ff13fec0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: de0394f9b3254931537441d9f44606d16392a62d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87440725"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073888"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>クイック スタート:PowerShell を使用して Azure portal ダッシュボードを作成する
 
@@ -23,7 +23,7 @@ Azure portal のダッシュボードでは、お使いのクラウド リソー
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 > [!IMPORTANT]
 > **Az.Portal** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、Az PowerShell モジュールとは別にインストールする必要があります。 この PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
@@ -36,7 +36,7 @@ Install-Module -Name Az.Portal
 
 ## <a name="choose-a-specific-azure-subscription"></a>特定の Azure サブスクリプションを選択する
 
-複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプションを選択します。
+複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプションを選択します。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -68,7 +68,7 @@ $vmName = 'SimpleWinVM'
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`$location` 変数に指定されたリージョンに、`$resourceGroupName` 変数内の名前に基づいてリソース グループを作成します。
 
@@ -102,7 +102,7 @@ New-AzVm @AzVmParams
 
 ## <a name="download-the-dashboard-template"></a>ダッシュボード テンプレートをダウンロードする
 
-Azure ダッシュボードはリソースであるため、JSON として表すことができます。 次のコードでは、サンプル ダッシュボードの JSON 表現がダウンロードされます。 詳細については、「[Azure ダッシュボードの構造](/azure/azure-portal/azure-portal-dashboards-structure)」を参照してください。
+Azure ダッシュボードはリソースであるため、JSON として表すことができます。 次のコードでは、サンプル ダッシュボードの JSON 表現がダウンロードされます。 詳細については、「[Azure ダッシュボードの構造](./azure-portal-dashboards-structure.md)」を参照してください。
 
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
@@ -180,4 +180,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Az.Portal PowerShell モジュールに含まれるコマンドレットの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure PowerShell: ポータル ダッシュボードのコマンドレット](https://docs.microsoft.com/powershell/module/Az.Portal/)
+> [Microsoft Azure PowerShell: ポータル ダッシュボードのコマンドレット](/powershell/module/Az.Portal/)

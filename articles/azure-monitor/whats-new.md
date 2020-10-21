@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91842667"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151806"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -64,7 +64,7 @@ ms.locfileid: "91842667"
 - [Azure Monitor ログ レコード内の標準列](platform/log-standard-columns.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
 - [Azure Monitor サービスの制限](service-limits.md) - ユーザー クエリの調整に関する制限を更新しました。
 - [Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用](platform/private-storage.md) - 記事を改訂しました。
-- [Azure Log Analytics におけるデータの表示と分析](log-query/logs-structure.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
+- [Azure Log Analytics におけるデータの表示と分析](./platform/data-platform-logs.md) - ワークスペースベースのアプリケーションが含まれるよう更新しました。
 
 
 ### <a name="platform-logs"></a>プラットフォーム ログ
@@ -194,11 +194,11 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 - [Linux コンピューターを Azure Monitor に接続する](platform/agent-linux.md)
 - [ハイブリッド環境で Azure Monitor を有効にする](insights/vminsights-enable-hybrid.md)
 - [Azure portal で 1 つの仮想マシンまたは仮想マシン スケール セットで Azure Monitor を有効にする](insights/vminsights-enable-portal.md)
-- [Azure Policy を使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-at-scale-policy.md)
+- [Azure Policy を使用して Azure Monitor for VMs を有効にする](./insights/vminsights-enable-policy.md)
 - [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md)
 - [PowerShell を使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-powershell.md)
 - [Resource Manager テンプレートを使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-resource-manager.md)
-- [PowerShell またはテンプレートを使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-at-scale-powershell.md)
+- [PowerShell またはテンプレートを使用して Azure Monitor for VMs を有効にする](./insights/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>視覚化
@@ -292,7 +292,7 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 - [Azure Monitor についてよくあるご質問](faq.md) - メトリックのセクションを追加しました。
 - [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - 一般提供に向けたさまざまな変更。
-- [Azure Monitor 用の Azure Policy 組み込みポリシー定義](samples/policy-samples.md) - 新しい記事。
+- [Azure Monitor 用の Azure Policy 組み込みポリシー定義](./samples/policy-reference.md) - 新しい記事。
 - [ログ取り込み用の顧客所有のストレージ アカウント](platform/private-storage.md) - 新しい記事。
 - [Azure Monitor ログで使用量とコストを管理する](platform/manage-cost-storage.md) - クラスターの比例課金を追加しました。
 - [Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](platform/private-link-security.md) - 新しい記事。
@@ -330,8 +330,8 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 - [Azure Monitor ログ クエリでの app() 式](log-query/app-expression.md)
 - [Azure Monitor Log Analytics のログ クエリのスコープ](log-query/scope.md)
 - [Azure Monitor でのリソース間のクエリ](log-query/cross-workspace-query.md)
-- [Azure Monitor ログ レコードの標準プロパティ](platform/log-standard-properties.md)
-- [Azure Monitor Logs の構造](log-query/logs-structure.md)
+- [Azure Monitor ログ レコードの標準プロパティ](./platform/log-standard-columns.md)
+- [Azure Monitor Logs の構造](./platform/data-platform-logs.md)
 
 
 
@@ -353,7 +353,7 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 - [Azure CLI を使用して Log Analytics ワークスペースを作成する](learn/quick-create-workspace-cli.md) - トラブルシューティング セクションを追加しました。
 - [Azure Log Analytics ワークスペースの削除と復旧](platform/delete-workspace.md) - 削除されたワークスペースの復旧に関する情報を更新しました。
 - [Azure Monitor ログ クエリにおける関数](log-query/functions.md) - 他の関数が含まれていない関数についての注を削除しました。
-- [Azure Monitor Logs の構造](log-query/logs-structure.md) - Application Insights テーブルのプロパティの説明をわかりやすくしました。
+- [Azure Monitor Logs の構造](./platform/data-platform-logs.md) - Application Insights テーブルのプロパティの説明をわかりやすくしました。
 - [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - 制限セクションを追加しました。
 - [PowerShell を使用して Log Analytics ワークスペースを作成および構成する](platform/powershell-workspace-configuration.md) - トラブルシューティング セクションを追加しました。
 
@@ -578,7 +578,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
 
 - [Azure Monitor for containers エージェントのデータ収集を構成する](insights/container-insights-agent-config.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
-- [Azure Monitor for containers におけるパフォーマンス アラートを作成する](insights/container-insights-alerts.md) - ワークスペースコンテキストのアラートを使用して、ワークスペースに格納されているパフォーマンス データに関するアラートを作成する方法についての情報を修正し、手順を更新しました。
+- [Azure Monitor for containers におけるパフォーマンス アラートを作成する](./insights/container-insights-log-alerts.md) - ワークスペースコンテキストのアラートを使用して、ワークスペースに格納されているパフォーマンス データに関するアラートを作成する方法についての情報を修正し、手順を更新しました。
 - [Azure Monitor for containers での Kubernetes の監視](insights/container-insights-analyze.md) - Windows Kubernetes クラスターのサポートに関する概要記事と分析記事の両方を更新しました。
 - [Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する](insights/container-insights-azure-redhat-setup.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
 - [ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する](insights/container-insights-hybrid-setup.md) - Kubelet の cAdvisor を使用した secure port:10250 のサポート追加を反映するために更新しました。
@@ -598,7 +598,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 - [Azure Monitor で Log Analytics ワークスペースを管理する](platform/manage-access.md) - 「非アクション」を更新しました。
 - [Azure Monitor ログの使用量とコストを管理する](platform/manage-cost-storage.md) - 「価格モデル」セクションにデータ量の計算についての説明を追加しました。
-- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う](platform/template-workspace-configuration.md) - 新しい価格レベルでテンプレートを更新しました。
+- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う](./samples/resource-manager-workspace.md) - 新しい価格レベルでテンプレートを更新しました。
 
 ### <a name="platform-logs"></a>プラットフォーム ログ
 
@@ -668,9 +668,9 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 - [Azure Monitor サービスの制限](service-limits.md)
 - [Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](./platform/activity-log.md)
 - [診断設定を使用して Azure アクティビティ ログを収集する (プレビュー) - Azure Monitor](./platform/activity-log.md)
-- [Azure テナントにまたがる Log Analytics ワークスペースに Azure アクティビティ ログを収集する](platform/activity-log-collect-tenants.md)
+- [Azure テナントにまたがる Log Analytics ワークスペースに Azure アクティビティ ログを収集する](./platform/activity-log.md)
 - [Log Analytics ワークスペースで Azure リソース ログを収集する](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [Azure で Resource Manager テンプレートを使用して診断設定を作成する](platform/diagnostic-settings-template.md)
+- [Azure で Resource Manager テンプレートを使用して診断設定を作成する](./samples/resource-manager-diagnostic-settings.md)
 - [Azure でログとメトリックを収集するための診断設定を作成する](platform/diagnostic-settings.md)
 - [Azure アクティビティ ログをエクスポートする](./platform/activity-log.md#legacy-collection-methods)
 - [Azure プラットフォーム ログの概要](platform/platform-logs-overview.md)

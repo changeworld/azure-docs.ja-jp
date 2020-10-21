@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3366f1a16777ecf46951296e4a1c2c28aed75feb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031927"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278122"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>チュートリアル:ルール エンジンを構成する
 
@@ -58,7 +58,7 @@ ms.locfileid: "90031927"
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Azure CLI でルール エンジンを構成する
 
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) をまだインストールしていない場合はインストールします。 "front-door" 拡張機能を追加します:- az extension add --name front-door。 次に、ログインし、お使いのサブスクリプションに切り替えます: az account set --subscription <名前または ID>。
+1. [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) をまだインストールしていない場合はインストールします。 "front-door" 拡張機能を追加します:- az extension add --name front-door。 次に、ログインし、お使いのサブスクリプションに切り替えます: az account set --subscription <名前または ID>。
 
 1. 最初に、ルール エンジンを作成します。この例は、1 つのヘッダーベースのアクションと 1 つの一致条件を持つ 1 つのルールを示しています。 
 
@@ -96,7 +96,7 @@ ms.locfileid: "90031927"
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-詳細については、AFD ルール エンジン コマンドの完全な一覧を[こちら](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest&preserve-view=true)で確認してください。   
+詳細については、AFD ルール エンジン コマンドの完全な一覧を[こちら](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest)で確認してください。   
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

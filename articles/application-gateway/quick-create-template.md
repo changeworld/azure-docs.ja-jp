@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, subject-armqs
+ms.openlocfilehash: 3ea5c891a0e3709c1ce469be2e9101a0825acfcb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961688"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093873"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>クイック スタート:Azure Application Gateway を使用して Web トラフィックを転送する - ARM テンプレート
 

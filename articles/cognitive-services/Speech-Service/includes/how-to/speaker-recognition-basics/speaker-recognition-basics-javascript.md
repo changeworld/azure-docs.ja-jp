@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5eb204da12b3c3405d52382285b5d75363f266cf
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb78a60b911823da96c52a104a3e06ecfc634da6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875504"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210953"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -84,7 +84,7 @@ Speech Service で使用するためにオーディオ ファイルをストリ�
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="helpers":::
 
-この関数では、[AudioInputStream.createPushStream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest#createpushstream-audiostreamformat-) および [AudioConfig.fromStreamInput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) メソッドを使用して、[AudioConfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) オブジェクトを作成します。 この `AudioConfig` オブジェクトは、オーディオ ストリームを表します。 次のタスクでは、これらの `AudioConfig` オブジェクトのいくつかを使用します。
+この関数では、[AudioInputStream.createPushStream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest&preserve-view=true#createpushstream-audiostreamformat-) および [AudioConfig.fromStreamInput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) メソッドを使用して、[AudioConfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) オブジェクトを作成します。 この `AudioConfig` オブジェクトは、オーディオ ストリームを表します。 次のタスクでは、これらの `AudioConfig` オブジェクトのいくつかを使用します。
 
 ## <a name="text-dependent-verification"></a>テキスト依存の認証
 
@@ -96,7 +96,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_dependent_verification":::
 
-この関数では、[VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) メソッドを使用して [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) オブジェクトを作成します。 `VoiceProfile` には次の 3 つの[種類](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest)があることに注意してください。
+この関数では、[VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) メソッドを使用して [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) オブジェクトを作成します。 `VoiceProfile` には次の 3 つの[種類](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest&preserve-view=true)があることに注意してください。
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -104,7 +104,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 この場合は、`VoiceProfileType.TextDependentVerification` を `VoiceProfileClient.createProfileAsync` に渡します。
 
-その後、次に定義する 2 つのヘルパー関数 `AddEnrollmentsToTextDependentProfile` と `SpeakerVerify` を呼び出します。 最後に、[VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) を呼び出してプロファイルを削除します。
+その後、次に定義する 2 つのヘルパー関数 `AddEnrollmentsToTextDependentProfile` と `SpeakerVerify` を呼び出します。 最後に、[VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) を呼び出してプロファイルを削除します。
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile 関数
 
@@ -112,7 +112,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_dependent":::
 
-この関数では、前に定義した `GetAudioConfigFromFile` 関数を呼び出して、オーディオ サンプルから `AudioConfig` オブジェクトを作成します。 これらのオーディオ サンプルには、"my voice is my passport, verify me" などのパスフレーズが含まれています。 その後、[VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) メソッドを使用して、これらのオーディオ サンプルを登録します。
+この関数では、前に定義した `GetAudioConfigFromFile` 関数を呼び出して、オーディオ サンプルから `AudioConfig` オブジェクトを作成します。 これらのオーディオ サンプルには、"my voice is my passport, verify me" などのパスフレーズが含まれています。 その後、[VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) メソッドを使用して、これらのオーディオ サンプルを登録します。
 
 ### <a name="speakerverify-function"></a>SpeakerVerify 関数
 
@@ -120,9 +120,9 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_verify":::
 
-この関数では、[SpeakerVerificationModel.FromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest#fromprofile-voiceprofile-) メソッドを使用して [SpeakerVerificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest) オブジェクトを作成し、先ほど作成した [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) オブジェクトを渡します。
+この関数では、[SpeakerVerificationModel.FromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true#fromprofile-voiceprofile-) メソッドを使用して [SpeakerVerificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true) オブジェクトを作成し、先ほど作成した [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) オブジェクトを渡します。
 
-次に、[SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) メソッドを呼び出して、前に登録したオーディオ サンプルと同じパスフレーズを含むオーディオ サンプルを認証します。 `SpeechRecognizer.recognizeOnceAsync` は [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest) オブジェクトを返します。このオブジェクトの `score` プロパティには、0.0 から 1.0 の範囲の類似性スコアが含まれています。 また、`SpeakerRecognitionResult` オブジェクトには、[ResultReason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest) 型の `reason` プロパティも含まれています。 認証が成功した場合、`reason` プロパティの値は `RecognizedSpeaker` になります。
+次に、[SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) メソッドを呼び出して、前に登録したオーディオ サンプルと同じパスフレーズを含むオーディオ サンプルを認証します。 `SpeechRecognizer.recognizeOnceAsync` は [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) オブジェクトを返します。このオブジェクトの `score` プロパティには、0.0 から 1.0 の範囲の類似性スコアが含まれています。 また、`SpeakerRecognitionResult` オブジェクトには、[ResultReason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest&preserve-view=true) 型の `reason` プロパティも含まれています。 認証が成功した場合、`reason` プロパティの値は `RecognizedSpeaker` になります。
 
 ## <a name="text-independent-verification"></a>テキストに依存しない認証
 
@@ -137,11 +137,11 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_verification":::
 
-`TextDependentVerification` 関数と同様に、この関数では、[VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) メソッドを使用して [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) オブジェクトを作成します。
+`TextDependentVerification` 関数と同様に、この関数では、[VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) メソッドを使用して [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) オブジェクトを作成します。
 
 この場合は、`VoiceProfileType.TextIndependentVerification` を `createProfileAsync` に渡します。
 
-その後、2 つのヘルパー関数を呼び出します。1 つは次に定義する `AddEnrollmentsToTextIndependentProfile`、もう 1 つは既に定義した `SpeakerVerify` です。 最後に、[VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) を呼び出してプロファイルを削除します。
+その後、2 つのヘルパー関数を呼び出します。1 つは次に定義する `AddEnrollmentsToTextIndependentProfile`、もう 1 つは既に定義した `SpeakerVerify` です。 最後に、[VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) を呼び出してプロファイルを削除します。
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -149,7 +149,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_independent":::
 
-この関数では、前に定義した `GetAudioConfigFromFile` 関数を呼び出して、オーディオ サンプルから `AudioConfig` オブジェクトを作成します。 その後、[VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) メソッドを使用して、これらのオーディオ サンプルを登録します。
+この関数では、前に定義した `GetAudioConfigFromFile` 関数を呼び出して、オーディオ サンプルから `AudioConfig` オブジェクトを作成します。 その後、[VoiceProfileClient.enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) メソッドを使用して、これらのオーディオ サンプルを登録します。
 
 ## <a name="speaker-identification"></a>話者識別
 
@@ -161,11 +161,11 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_indentification":::
 
-`TextDependentVerification` および `TextIndependentVerification` 関数と同様に、この関数では、[VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) メソッドを使用して [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) オブジェクトを作成します。
+`TextDependentVerification` および `TextIndependentVerification` 関数と同様に、この関数では、[VoiceProfileClient.createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) メソッドを使用して [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) オブジェクトを作成します。
 
 この場合は、`VoiceProfileType.TextIndependentIdentification` を `VoiceProfileClient.createProfileAsync` に渡します。
 
-その後、2 つのヘルパー関数を呼び出します。1 つは既に定義した `AddEnrollmentsToTextIndependentProfile`、もう 1 つは次に定義する `SpeakerIdentify` です。 最後に、[VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) を呼び出してプロファイルを削除します。
+その後、2 つのヘルパー関数を呼び出します。1 つは既に定義した `AddEnrollmentsToTextIndependentProfile`、もう 1 つは次に定義する `SpeakerIdentify` です。 最後に、[VoiceProfileClient.deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) を呼び出してプロファイルを削除します。
 
 ### <a name="speakeridentify-function"></a>SpeakerIdentify 関数
 
@@ -173,10 +173,10 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_identify":::
 
-この関数では、[SpeakerIdentificationModel.fromProfiles](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest#fromprofiles-voiceprofile---) メソッドを使用して [SpeakerIdentificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest) オブジェクトを作成し、先ほど作成した [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) オブジェクトを渡します。
+この関数では、[SpeakerIdentificationModel.fromProfiles](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true#fromprofiles-voiceprofile---) メソッドを使用して [SpeakerIdentificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true) オブジェクトを作成し、先ほど作成した [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) オブジェクトを渡します。
 
-次に、[SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) メソッドを呼び出して、オーディオ サンプルを渡します。
-`SpeechRecognizer.recognizeOnceAsync` は、`SpeakerIdentificationModel` の作成に使用した `VoiceProfile` オブジェクトに基づいて、このオーディオ サンプルの音声の識別を試みます。 これにより、[SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest) オブジェクトが返されます。その `profileId` プロパティでは一致する `VoiceProfile` が識別され (存在する場合)、`score` プロパティには 0.0 から 1.0 までの類似性スコアが含まれています。
+次に、[SpeechRecognizer.recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) メソッドを呼び出して、オーディオ サンプルを渡します。
+`SpeechRecognizer.recognizeOnceAsync` は、`SpeakerIdentificationModel` の作成に使用した `VoiceProfile` オブジェクトに基づいて、このオーディオ サンプルの音声の識別を試みます。 これにより、[SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) オブジェクトが返されます。その `profileId` プロパティでは一致する `VoiceProfile` が識別され (存在する場合)、`score` プロパティには 0.0 から 1.0 までの類似性スコアが含まれています。
 
 ## <a name="main-function"></a>main 関数
 
@@ -184,4 +184,4 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="main":::
 
-この関数では、音声プロファイルの作成、登録、および削除に使用される [VoiceProfileClient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest) オブジェクトを作成します。 その後、前に定義した関数を呼び出します。
+この関数では、音声プロファイルの作成、登録、および削除に使用される [VoiceProfileClient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true) オブジェクトを作成します。 その後、前に定義した関数を呼び出します。

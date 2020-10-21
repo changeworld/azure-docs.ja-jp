@@ -4,17 +4,17 @@ description: Synapse Link を使用して Azure Cosmos DB を Synapse ワーク�
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
+ms.subservice: synapse-link
 ms.topic: quickstart
-ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ed717c2423b5336824bccd256bf43654c31a4c8a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91568952"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090558"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB 用の Azure Synapse Link に接続する
 

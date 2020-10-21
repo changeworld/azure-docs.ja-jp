@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326254"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093057"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>クイック スタート:ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 
 ::: zone pivot="programming-language-csharp"
-Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問題をデバッグおよび監視できます。 Azure Spring Cloud は、Steeltoe [分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合します。 この統合により、Azure portal から強力なログ、メトリック、および分散トレース機能を利用できます。
+Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問題をデバッグおよび監視できます。 Azure Spring Cloud は、Steeltoe [分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力なログ、メトリック、および分散トレース機能を利用できます。
 
 次の手順では、前のクイックスタートでデプロイしたサンプル アプリで、ログ ストリーミング、Log Analytics、メトリック、分散トレースを使用する方法について説明します。
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. クエリを編集し、表示を警告とエラーのログに制限する Where 句を削除します。
 
-1. その後、[`Run`] を選択すると、ログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)を参照してください。
+1. その後、[`Run`] を選択すると、ログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/log-query/get-started-queries.md)を参照してください。
 
    [ ![Log Analytics クエリ - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問題をデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合します。 この統合により、Azure portal から強力なログ、メトリック、および分散トレース機能を利用できます。 次の手順では、デプロイされた PiggyMetrics アプリでログ ストリーミング、ログ分析、メトリック、および分散トレースを使用する方法について説明します。
+Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問題をデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力なログ、メトリック、および分散トレース機能を利用できます。 次の手順では、デプロイされた PiggyMetrics アプリでログ ストリーミング、ログ分析、メトリック、および分散トレースを使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -165,7 +165,7 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 
    [ ![Logs Analytics のエントリ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. そうすると、フィルター処理されたログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)を参照してください。
+1. そうすると、フィルター処理されたログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/log-query/get-started-queries.md)を参照してください。
 
    [ ![Logs Analytics のクエリ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

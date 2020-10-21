@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118792"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151988"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
 
@@ -24,7 +24,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="prerequisites"></a>前提条件
 
 > [!Note]
-> Azure のセキュリティ要件により、Azure Data Catalog にはトランスポート層セキュリティ (TLS) 1.2 が適用されています。 TLS 1.0 と TLS 1.1 が無効になっています。 コンピューターが TLS 1.2 用に更新されていない場合、登録ツールの実行中にエラーが発生することがあります。 TLS 1.2 用にコンピューターを更新するには、[Transport Layer Security (1.2) の有効化](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2)に関するページを参照してください。
+> Azure のセキュリティ要件により、Azure Data Catalog にはトランスポート層セキュリティ (TLS) 1.2 が適用されています。 TLS 1.0 と TLS 1.1 が無効になっています。 コンピューターが TLS 1.2 用に更新されていない場合、登録ツールの実行中にエラーが発生することがあります。 TLS 1.2 用にコンピューターを更新するには、[Transport Layer Security (1.2) の有効化](/mem/configmgr/core/plan-design/security/enable-tls-1-2)に関するページを参照してください。
 
 開始するには、以下が必要です。
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: c8f93548443b043f26bdb3bd7d7d38e6efb39852
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4678ab34de169a8406f0d73b63906152ef1185f0
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334499"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281905"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -45,9 +45,9 @@ ms.locfileid: "91334499"
 
 "*Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
 
-:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
 
-データベース、コンテナー、項目の詳細については、[こちら](databases-containers-items.md)を参照してください。 "*プロビジョニング済みスループット*" や "*パーティション キー*" など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
+データベース、コンテナー、項目の詳細については、[こちら](account-databases-containers-items.md)を参照してください。 "*プロビジョニング済みスループット*" や "*パーティション キー*" など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
 
 プロビジョニング済みスループットは要求ユニット (*RU*) 単位で測定されます。RU には通貨価格が設定されており、アカウント運用コストの大きな決定要因となります。 プロビジョニング済みスループットはコンテナー単位またはデータベース単位で選択できますが、通常はコンテナーレベルのスループット仕様が推奨されます。 スループットのプロビジョニングの詳細については、[こちら](set-throughput.md)を参照してください。
 

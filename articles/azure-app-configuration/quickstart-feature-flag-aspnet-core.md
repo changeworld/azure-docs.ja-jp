@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767732"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074449"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    上記の変更により、[App Configuration の構成プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)が .NET Core 構成 API に登録されました。
+    上記の変更により、[App Configuration の構成プロバイダー](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)が .NET Core 構成 API に登録されました。
 
 1. *Startup.cs* で、.NET Core 機能マネージャーへの参照を追加します。
 
@@ -260,7 +260,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して ASP.NET Core Web アプリの機能を管理しました。
+このクイック スタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)を介して ASP.NET Core Web アプリの機能を管理しました。
 
 * [機能管理](./concept-feature-management.md)の詳細を確認します。
 * [機能フラグを管理](./manage-feature-flags.md)します。

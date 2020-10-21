@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977563"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206086"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT ソリューションを作成するために Azure のどのようなテクノロジとサービスを利用できるか
 
@@ -61,7 +61,7 @@ IoT ソリューションをゼロから作成したり、IoT Central または�
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) では、IoT ワークロードの一部を Azure Cloud Services からデバイスにオフロードすることができます。 IoT Edge では、ソリューションでの待ち時間を短縮したり、デバイスとクラウドとの間でやり取りされるデータの量を削減したり、オフラインのシナリオを実現したりすることができます。 IoT Edge デバイスは、IoT Central やいくつかのソリューション アクセラレータから管理することができます。
 
-[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) とは、インターネットに接続されたデバイスのための通信およびセキュリティ機能が組み込まれている、セキュリティで保護された高水準のアプリケーション プラットフォームです。 セキュリティで保護されたマイクロコントローラー ユニット、カスタムの Linux ベース オペレーティングシステム、継続的で更新可能なセキュリティを提供するクラウドベースのセキュリティ サービスが含まれています。
+[Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) とは、インターネットに接続されたデバイスのための通信およびセキュリティ機能が組み込まれている、セキュリティで保護された高水準のアプリケーション プラットフォームです。 セキュリティで保護されたマイクロコントローラー ユニット、カスタムの Linux ベース オペレーティングシステム、継続的で更新可能なセキュリティを提供するクラウドベースのセキュリティ サービスが含まれています。
 
 ### <a name="cloud-connectivity"></a>クラウドの接続
 
@@ -76,7 +76,7 @@ IoT Hub は、ソリューション アクセラレータの核となるコン�
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>物理世界とデジタル世界との橋渡しをする
 
-[Azure Digital Twins](../digital-twins/about-digital-twins.md) は、物理環境をモデル化できるようにする IoT サービスです。 人、空間、デバイスの間の関係をモデル化する空間インテリジェンス グラフが使用されています。 デジタル世界と物理世界をまたいでデータを関連付けることで、コンテキスト認識ソリューションを作成することができます。
+[Azure Digital Twins](../digital-twins/overview.md) は、物理環境をモデル化できるようにする IoT サービスです。 人、空間、デバイスの間の関係をモデル化する空間インテリジェンス グラフが使用されています。 デジタル世界と物理世界をまたいでデータを関連付けることで、コンテキスト認識ソリューションを作成することができます。
 
 IoT Central はデジタル ツインを使用することで、現実世界のデバイスおよびデータをデジタル モデルと同期させます。そうして接続されたデバイスは、そのデジタル モデルを使用してユーザーが監視、管理することができます。
 
@@ -84,7 +84,7 @@ IoT Central はデジタル ツインを使用することで、現実世界の�
 
 IoT デバイスは、一般的に、センサーからの温度の測定値など、時系列データを大量に生成します。 [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) は、IoT ハブに接続してデバイスからのテレメトリ ストリームを読み取り、そのデータを保存します。ユーザーは、それを照会して可視化することができます。
 
-[Azure Maps](/azure/azure-maps) は、最新のマッピング データを使用して、精度の高い地理的なコンテキストを Web とモバイル アプリケーションに提供する一連の地理空間サービスです。 REST API、Web ベースの JavaScript コントロール、Android SDK のいずれかを使用してアプリケーションを作成できます。
+[Azure Maps](../azure-maps/index.yml) は、最新のマッピング データを使用して、精度の高い地理的なコンテキストを Web とモバイル アプリケーションに提供する一連の地理空間サービスです。 REST API、Web ベースの JavaScript コントロール、Android SDK のいずれかを使用してアプリケーションを作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

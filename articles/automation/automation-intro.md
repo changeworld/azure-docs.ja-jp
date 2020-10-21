@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Managem
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715968"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205338"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -35,7 +35,7 @@ Azure Automation の構成管理では、次の 2 つの機能にアクセスで
 
 ### <a name="change-tracking-and-inventory"></a>変更履歴とインベントリ
 
-変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。 この機能の詳細については、[変更履歴とインベントリ](change-tracking.md)に関する記事を参照してください。
+変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。 この機能の詳細については、[変更履歴とインベントリ](change-tracking/overview.md)に関する記事を参照してください。
 
 ### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
 

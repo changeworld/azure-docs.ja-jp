@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400128"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151621"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -110,7 +110,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>予約 VM インスタンスの最適化設定を変更する
 
- 予約 VM インスタンスを購入する場合は、インスタンス サイズの柔軟性または容量の優先度を選択します。 インスタンス サイズの柔軟性によって、予約割引が、同じ [VM サイズ グループ](https://aka.ms/RIVMGroups)内の他の VM に適用されます。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 このオプションにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。
+ 予約 VM インスタンスを購入する場合は、インスタンス サイズの柔軟性または容量の優先度を選択します。 インスタンス サイズの柔軟性によって、予約割引が、同じ [VM サイズ グループ](../../virtual-machines/reserved-vm-instance-size-flexibility.md)内の他の VM に適用されます。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 このオプションにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。
 
 予約のスコープが共有されている場合、既定でインスタンス サイズの柔軟性はオンです。 VM の展開では、データ センターの容量は優先されません。
 
@@ -173,7 +173,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
 ソフトウェア プランの購入:
-- [Azure の予約からの Red Hat ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Azure の予約からの Red Hat ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Azure の予約からの SUSE ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
 
 割引と使用状況の理解:

@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767705"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076166"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>クイック スタート:Azure Functions アプリに機能フラグを追加する
 
@@ -149,7 +149,7 @@ ms.locfileid: "91767705"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、機能フラグを作成し、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)を介し、Azure Functions アプリでその機能フラグを使用しました。
+このクイックスタートでは、機能フラグを作成し、[App Configuration プロバイダー](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)を介し、Azure Functions アプリでその機能フラグを使用しました。
 
 - [機能管理](./concept-feature-management.md)の詳細を確認します。
 - [機能フラグを管理](./manage-feature-flags.md)します。

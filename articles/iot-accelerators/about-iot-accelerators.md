@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f976bf4260e4a677aee5b5ccc4287db3d0b2e40d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542497"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074296"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
@@ -85,7 +85,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 | 接続済みファクトリ      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | デバイスのシミュレーション      | マイクロサービス | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/)」を参照してください。
+マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](/azure/architecture/reference-architectures/iot/)」を参照してください。
 
 ## <a name="deployment-options"></a>デプロイ オプション
 

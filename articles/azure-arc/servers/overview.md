@@ -4,18 +4,18 @@ description: Azure Arc 対応サーバーを使用して、Azure の外部でホ
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
 ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818748"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200969"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
 Azure Arc 対応サーバーを使用すると、Azure の外部 (企業ネットワークや Azure 以外のクラウド プロバイダー) でホストされている Windows と Linux のマシンを、ネイティブの Azure 仮想マシンと同じように管理することができます。 ハイブリッド マシンは、Azure に接続されると接続済みマシンになり、Azure 内のリソースとして扱われます。 接続済みマシンにはそれぞれリソース ID があり、サブスクリプション内のリソース グループの一部として管理されます。また、Azure Policy やタグの適用などの標準的な Azure のコンストラクトの利点も活用できます。 顧客のオンプレミスのインフラストラクチャを管理するサービス プロバイダーは、[Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) と Azure Arc を使用して、ネイティブの Azure リソースで現在行っているのと同じように、複数のお客様の環境で各自のハイブリッド マシンを管理できます。
 
-Azure の外部でホストされているハイブリッド マシンでこのエクスペリエンスを実現するには、Azure への接続を予定している各マシンに Azure Connected Machine エージェントがインストールされている必要があります。 このエージェントは他の機能をまったく持たず、Azure [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に代わるものでもありません。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-intro.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+Azure の外部でホストされているハイブリッド マシンでこのエクスペリエンスを実現するには、Azure への接続を予定している各マシンに Azure Connected Machine エージェントがインストールされている必要があります。 このエージェントは他の機能をまったく持たず、Azure [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に代わるものでもありません。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-introduction.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -23,7 +23,7 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 - Azure 仮想マシンのポリシーの割り当てと同じエクスペリエンスを使用して [Azure Policy のゲスト構成](../../governance/policy/concepts/guest-configuration.md)を割り当てます。 今日、ほとんどのゲスト構成ポリシーでは、構成は適用されず、マシン内の設定の監査のみが行われます。 Arc 対応サーバーで Azure Policy ゲスト構成ポリシーを使用するコストについては、Azure Policy の[価格ガイド](https://azure.microsoft.com/pricing/details/azure-policy/)を参照してください。
 
-- 監視対象サーバー上にインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンの構成の変更について、Azure Automation の[変更履歴とインベントリ](../../automation/change-tracking.md)を使用してレポートします。
+- 監視対象サーバー上にインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンの構成の変更について、Azure Automation の[変更履歴とインベントリ](../../automation/change-tracking/overview.md)を使用してレポートします。
 
 - [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出してそのプロセスや、アプリケーションが通信する他のリソースとの依存関係を監視します。
 
@@ -31,7 +31,7 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 - Azure Automation の[更新管理](../../automation/update-management/update-mgmt-overview.md)を使用して、Windows と Linux サーバーのオペレーティング システムの更新プログラムを管理します。 最初に、[Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) ロールをデプロイし、その後、Azure 以外の Windows または Linux マシンで[更新管理を有効にする](../../automation/update-management/update-mgmt-enable-portal.md)手順に従います。
 
-- 脅威検出に Azure 以外のサーバーを含め、[Azure Security Center](../../security-center/security-center-intro.md) を使用して、潜在的なセキュリティの脅威を積極的に監視します。
+- 脅威検出に Azure 以外のサーバーを含め、[Azure Security Center](../../security-center/security-center-introduction.md) を使用して、潜在的なセキュリティの脅威を積極的に監視します。
 
 ハイブリッド マシンから Log Analytics ワークスペースに収集および格納されるログ データには、リソース ID など、マシンに固有のプロパティが含まれるようになりました。 これを使用して、[リソース コンテキスト](../../azure-monitor/platform/design-logs-deployment.md#access-mode) ログ アクセスをサポートできます。
 

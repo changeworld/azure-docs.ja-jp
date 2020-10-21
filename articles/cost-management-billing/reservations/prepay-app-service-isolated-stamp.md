@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688931"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151544"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated 印紙税のコストの節約
 
@@ -39,7 +39,7 @@ ms.locfileid: "88688931"
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Isolated スタンプの予約容量を購入する
 
-Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) で購入できます。 予約の支払いは、[前払いまたは月払い](monthly-payments-reservations.md)で行います。 予約容量を購入するには、少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個人サブスクリプションの所有者ロールが必要です。
+Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) で購入できます。 予約の支払いは、[前払いまたは月払い](./prepare-buy-reservation.md)で行います。 予約容量を購入するには、少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個人サブスクリプションの所有者ロールが必要です。
 
 - エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 また、その設定が無効な場合は、EA 管理者である必要があります。
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Synapse Analytics の予約容量を購入できます。

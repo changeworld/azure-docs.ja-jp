@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763926"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072392"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 
@@ -54,7 +54,7 @@ Azure portal メニューと Azure の既定のビューの両方とも、 **[�
 
 ## <a name="getting-around-the-portal"></a>ポータルの利用
 
-基本的なポータルのレイアウトと操作方法を理解することをお勧めします。 ここでは、ユーザー インターフェイスのコンポーネントと、説明に使う用語の一部を紹介します。 より詳細なポータルのツアーについては、コースのレッスン「[ポータルを操作する](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal)」を参照してください。
+基本的なポータルのレイアウトと操作方法を理解することをお勧めします。 ここでは、ユーザー インターフェイスのコンポーネントと、説明に使う用語の一部を紹介します。 より詳細なポータルのツアーについては、コースのレッスン「[ポータルを操作する](/learn/modules/tour-azure-portal/3-navigate-the-portal)」を参照してください。
 
 Azure portal のメニューとページ ヘッダーは、常に存在するグローバル要素です。 恒常的に表示されているこれらの機能は、各サービスまたは機能に関連付けられているユーザー インターフェイスの「シェル」です。ヘッダーからは、グローバル コントロールにアクセスできます。 リソースの構成ページ ("ブレード" とも呼ばれます) にも、機能間を移動する際に便利なリソース メニューが表示される場合があります。
 

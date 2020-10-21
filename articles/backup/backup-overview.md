@@ -4,12 +4,12 @@ description: Azure Backup サービスの概要を紹介し、このサービス
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 537605498fe166b24bd4e24673cfa1542bc449ea
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968339"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172483"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -46,7 +46,7 @@ Azure Backup には、以下のような主な利点があります。
 - **複数のストレージ オプション** - Azure Backup では、ストレージ/データの高可用性を維持するため、2 種類のレプリケーションが提供されています。
   - [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) では、データセンターのストレージ スケール ユニットにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
   - [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
-  - [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 ZRS にダウンタイムはありません。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とし、なおかつダウンタイムが許されない重要なワークロードは、ZRS にバックアップすることができます。
+  - [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 ZRS にダウンタイムはありません。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とし、なおかつダウンタイムが許されない重要なワークロードは、ZRS にバックアップすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
