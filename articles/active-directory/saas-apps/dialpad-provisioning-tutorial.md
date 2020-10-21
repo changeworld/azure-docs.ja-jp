@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328073"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848961"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>チュートリアル:Dialpad を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,13 +54,13 @@ Azure AD での自動ユーザー プロビジョニング用に Dialpad を構�
 
 1. [Dialpad 管理コンソール](https://dialpadbeta.com/login)にサインインし、 **[Admin settings]\(管理者設定\)** を選択します。 ドロップダウンから **[My Company]\(自分の会社\)** が選択されていることを確認します。 **[Authentication]\(認証\) > [API Keys]\(API キー\)** に移動します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
 2. **[Add a key]\(キーの追加\)** をクリックし、シークレット トークンのプロパティを構成することで、新しいキーを生成します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
 3. 直近で作成した API キーの **[Click to show value]\(クリックして値を表示\)** ボタンをクリックし、表示された値をコピーします。 この値を、Azure portal の Dialpad アプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** フィールドに入力します。 
 
@@ -89,19 +89,19 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Dialpa
 
 5. 個別のブラウザーで、以下で強調表示されている **URL** に移動します。 
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
 6. 右上隅で、 **[Log In]\(ログイン)\ > [Use Dialpad online]\(Dialpad オンラインを使用する\)** を選択します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
 7. Dialpad は OpenIDConnect アプリであるため、Microsoft の職場アカウントを使用して Dialpad にログインすることを選択します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
 8. 認証に成功した後、同意ページの同意プロンプトを受け入れます。 その後、ご使用のテナントにアプリケーションが自動的に追加され、Dialpad アカウントにリダイレクトされます。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Dialpad への自動ユーザー プロビジョニングを構成する
 

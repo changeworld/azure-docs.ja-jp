@@ -1,5 +1,5 @@
 ---
-title: 管理単位を追加および削除する (プレビュー) - Azure Active Directory | Microsoft Docs
+title: 管理単位を追加および削除する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で管理単位を使用してロールのアクセス許可のスコープを制限します。
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1166d2ad17aea97a4dd7fdda53c42d6b3df75936
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450367"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する
 
@@ -33,9 +33,6 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
     !["管理者の同意を付与する" へのリンクを示すスクリーンショット](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. Graph Explorer で、 **[ベータ]** バージョンを選択します。
-
-    ![ベータ版が選択されていることを示すスクリーンショット](./media/roles-admin-units-manage/select-beta-version.png)
 
 1. Azure AD PowerShell のプレビュー版を使用します。
 
@@ -45,7 +42,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 1. Azure portal で、Azure AD に移動し、左側のペインで **[管理単位]** を選択します。
 
-    ![Azure AD の [管理単位] (プレビュー) リンクのスクリーンショット](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Azure AD の [管理単位] リンクのスクリーンショット](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
 1. **[追加]** を選択してから、管理単位の名前を入力します。 必要に応じて、管理単位の説明を追加します。
 
@@ -59,7 +56,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 ```powershell
 Connect-AzureAD
-New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 ```
 
 必要に応じて、引用符で囲まれた値を変更できます。
@@ -91,8 +88,8 @@ Azure AD では、管理ロールのスコープの単位として不要にな�
 ### <a name="use-powershell"></a>PowerShell の使用
 
 ```powershell
-$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 ```
 
 特定の環境で必要に応じて、引用符で囲まれた値を変更できます。

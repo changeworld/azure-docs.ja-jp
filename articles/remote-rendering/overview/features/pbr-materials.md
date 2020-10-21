@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ad7fc7d9d02cd9a9a6fe74534a7c674fe0ac778d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613668"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893256"
 ---
 # <a name="pbr-materials"></a>PBR 素材
 
@@ -40,6 +40,8 @@ PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリ�
 * **useVertexColor:** メッシュに :::no-loc text="vertex"::: カラーが含まれていて、このオプションが有効になっている場合は、メッシュの :::no-loc text="vertex"::: カラーが *albedoColor* と *albedoMap* に乗算されます。 既定では *useVertexColor* は無効になっています。
 
 * **isDoubleSided:** 両面に対する表示が true に設定されている場合、この素材が表示されている三角形は、カメラが背面を見ている場合でもレンダリングされます。 PBR 素材の場合、照明も背面に対して適切に計算されます。 既定では、このオプションは無効になっています。 「[:::no-loc text="Single-sided"::: レンダリング](single-sided-rendering.md)」も参照してください。
+
+* **TransparencyWritesDepth:** 素材に TransparencyWritesDepth フラグが設定されていて、その素材が透明である場合、その素材を使用した物体も、最終的な深度バッファーに寄与します。 次のセクションの PBR 素材フラグ *transparent* を参照してください。 実際のユース ケースで、完全に透明なシーンの [Late Stage Reprojection](late-stage-reprojection.md) の現実感を高める必要がある場合は、この機能を有効にすることをお勧めします。 不透明と透明が混在するシーンでは、この設定によって、非現実的な再投影動作や再投影アーティファクトが生じることがあります。 このため、一般的なユース ケースにおいて推奨される既定の設定は、このフラグを無効にすることです。 書き込まれる深度値は、カメラに最も近い物体のピクセルごとの深度レイヤーから取得されます。
 
 ## <a name="pbr-material-properties"></a>PBR 素材のプロパティ
 

@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461036"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91306567"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461036"
 
 * リソースに対するユーザーのアクセス権の削除など、レビュー結果に基づく処理を自動化します
 
-  ![アクセス レビューの計画](./media/deploy-access-review/1-planning-review.png)
+  ![アクセス レビュー フローを示す図。](./media/deploy-access-review/1-planning-review.png)
 
 アクセス レビューは [Azure AD Identity Governance](identity-governance-overview.md) の機能です。 その他の機能には、[エンタイトルメント管理](entitlement-management-overview.md)、[Privileged Identity Management](../privileged-identity-management/pim-configure.md)、[Terms of Use](../conditional-access/terms-of-use.md) などがあります。 これらの機能によって、組織では次の 4 つの疑問を解決できます。
 
@@ -300,7 +300,7 @@ ms.locfileid: "89461036"
 
 [ライフサイクル] タブを開き、[アクセス レビュー] まで下にスクロールします。
 
- ![ポリシーを編集する](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![[ライフサイクル] タブの [ポリシーの編集] を示すスクリーンショット。](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>グループのアクセス レビューを計画する
 
@@ -446,7 +446,7 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 ロールの割り当てが古いことで生じるリスクを軽減するために、Azure AD の特権ロールのアクセスを定期的にレビューする必要があります。
 
-![azure ad ロールのレビュー](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Azure AD ロールの [レビューのメンバーシップ] リストを示すスクリーンショット。](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 以下のリンクの指示に従います。
 

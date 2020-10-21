@@ -122,6 +122,8 @@
       items:
         - name: 有効なサブスクリプションがない
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 予約使用率のトラブルシューティング
+          href: troubleshoot-reservation-utilization.md??toc=/azure/cost-management-billing/reservations/toc.json
 - name: リファレンス
   items:
     - name: 予約 REST API

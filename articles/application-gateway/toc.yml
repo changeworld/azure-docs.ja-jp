@@ -80,10 +80,10 @@
           href: redirect-overview.md
         - name: HTTP ヘッダーと URL を書き換える
           href: rewrite-http-headers-url.md
-        - name: Security
-          items:
-            - name: セキュリティ ベースライン
-              href: security-baseline.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: SSL
       items:
         - name: SSL ターミネーションとエンド ツー エンド SSL

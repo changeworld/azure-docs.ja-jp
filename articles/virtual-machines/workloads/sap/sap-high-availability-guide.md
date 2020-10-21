@@ -1,6 +1,6 @@
 ---
 title: SAP NetWeaver のための Azure Virtual Machines 高可用性
-description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガイド
+description: この記事では、SAP NetWeaver のための高可用性 Azure Virtual Machines について説明します。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080184"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91314659"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>SAP NetWeaver のための高可用性 Azure Virtual Machines
 
