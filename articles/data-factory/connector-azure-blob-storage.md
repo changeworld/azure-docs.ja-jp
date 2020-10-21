@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/10/2020
-ms.openlocfilehash: dff5e73f9bb02357a6a6f74f5d0db08eee13e76e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.openlocfilehash: 38f3aaeddbdedb073d83a64a508eb9f4578f1c97
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332272"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948427"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -242,6 +242,9 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!NOTE]
+>BLOB アカウントで[論理的な削除](../storage/blobs/soft-delete-blob-overview.md)が有効な場合、サービス プリンシパル認証は Data Flow でサポートされません。
+
+>[!NOTE]
 >サービス プリンシパル認証は、"AzureBlobStorage" タイプのリンクされたサービスのみでサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。
 
 **例:**
@@ -293,6 +296,9 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
 | accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+> [!NOTE]
+> BLOB アカウントで[論理的な削除](../storage/blobs/soft-delete-blob-overview.md)が有効な場合、マネージド ID 認証は Data Flow でサポートされません。
 
 > [!NOTE]
 > Azure リソースのマネージド ID 認証は、"AzureBlobStorage" タイプのリンクされたサービスでのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。

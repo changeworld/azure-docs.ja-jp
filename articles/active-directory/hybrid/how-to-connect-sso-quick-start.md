@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658753"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295024"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -125,7 +125,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 1. グループ ポリシー管理エディター ツールを開きます。
 2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
 3. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![[サイトとゾーンの割り当て一覧] が選択された [セキュリティ] ページを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso6.png)
 4. ポリシーを有効にしてから、ダイアログ ボックスに次の値を入力します。
    - **[値の名前]** :Kerberos チケットの転送先となる Azure AD URL。
    - **[値]** (データ):**1** (イントラネット ゾーンを示す)。
@@ -142,15 +142,15 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 5. **[OK]** を選択してから、もう一度 **[OK]** を選択します。
 
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![ゾーン割り当てが選択された [コンテンツの表示] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]**  >  **[イントラネット ゾーン]** の順に移動します。 次に、 **[スクリプトを介したステータス バーの更新を許可する]** を選択します。
 
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![[スクリプトを介したステータス バーの更新を許可する] が選択された [イントラネット ゾーン] ページを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. ポリシー設定を有効にしてから、 **[OK]** を選択します。
 
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![ポリシー設定が有効化された [スクリプトを介したステータス バーの更新を許可する] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>"グループ ポリシーの基本設定" オプション - 詳しい手順
 
@@ -158,7 +158,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
 3. **[ユーザーの構成]**  >  **[基本設定]**  >  **[Windows 設定]**  >  **[レジストリ]**  >  **[新規]**  >  **[レジストリ項目]** の順に移動します。
 
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![[レジストリ] および [レジストリ項目] が選択されていることを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
    - **キー パス**:***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
@@ -166,7 +166,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
    - **値の型**:***REG_DWORD***
    - **値のデータ**:***00000001***
  
-     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![[新しいレジストリのプロパティ] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso17.png)
 

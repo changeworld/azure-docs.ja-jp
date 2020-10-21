@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893563"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91275967"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -35,7 +35,89 @@ Azure Machine Learning では、ワークスペース内のすべてのユーザ
 
 認証可能なすべての Git リポジトリ (GitHub、Azure Repos、BitBucket など) をクローンできます。
 
-Git CLI の使用方法のガイドについては、[こちら](https://guides.github.com/introduction/git-handbook/)を参照してください。
+複製の詳細については、[Git CLI の使用方法](https://guides.github.com/introduction/git-handbook/)に関するガイドを参照してください。
+
+## <a name="authenticate-your-git-account-with-ssh"></a>SSH を使用して Git アカウントを認証する
+### <a name="generate-a-new-ssh-key"></a>新しい SSH キーを生成する
+1) Azure Machine Learning の [Notebook] タブで[ターミナル ウィンドウを開き](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)ます。
+
+2) 次のテキストを自分のメール アドレスに置き換えて貼り付けます。
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+これにより、指定したメール アドレスをラベルとして使う新しい SSH キーが作成されます。
+
+```
+> Generating public/private rsa key pair.
+```
+
+3) キーを保存するファイルを入力するように求められたら、Enter キーを押します。 これにより、ファイルの既定の場所が受け入れられます。
+
+4) 既定の場所が "/home/azureuser/.ssh" であることを確認し、Enter キーを押します。 または、場所 "/home/azureuser/.ssh" を指定します。
+
+> [!TIP]
+> SSH キーが "/home/azureuser/.ssh" に保存されることを確認します。 このファイルは、コンピューティング インスタンスに保存されますが、コンピューティング インスタンスの所有者のみがアクセスできます。
+
+```
+> Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
+```
+
+5) プロンプトが表示されたら、セキュアなパスフレーズを入力します。 セキュリティを強化するため、SSH キーにパスフレーズを追加することをお勧めします。
+
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+### <a name="add-the-public-key-to-git-account"></a>Git アカウントに公開キーを追加する
+1) ターミナル ウィンドウで、公開キー ファイルの内容をコピーします。 キーの名前を変更した場合は、id_rsa.pub を公開キーのファイル名に置き換えます。
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+> [!TIP]
+> **ターミナルでのコピーと貼り付け**
+> * Windows: コピーの場合は `Ctrl-Insert`、貼り付けの場合は `Ctrl-Shift-v` または `Shift-Insert` を使用します。
+> * Mac OS: コピーの場合は `Cmd-c`、貼り付けの場合は `Cmd-v` を使用します。
+> * Firefox や IE ではクリップボードのアクセス許可が正しくサポートされない場合があります。
+
+2) クリップボードのキー出力を選択してコピーします。
+
++ [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
++ [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
+
++ [Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs) **手順 2** から開始します。
+
++ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 **手順 4** から開始します。
+
+### <a name="clone-the-git-repository-with-ssh"></a>SSH を使用して Git リポジトリを複製する
+
+1) SSH Git クローン URL を Git リポジトリからコピーします。
+
+2) URL を以下の `git clone` コマンドに貼り付け、SSH Git リポジトリ URL を使用できるようにします。 これは、次のような見た目になります。
+
+```bash
+git clone git@example.com:GitUser/azureml-example.git
+Cloning into 'azureml-example'...
+```
+
+次のような応答が表示されます。
+
+```bash
+The authenticity of host 'example.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+```
+
+SSH では、サーバーの SSH フィンガープリントが表示され、確認を求めるメッセージが表示される場合があります。 表示されているフィンガープリントが SSH 公開キー ページのいずれかのフィンガープリントに一致していることを確認する必要があります。
+
+SSH は、不明なホストに接続するときにこのフィンガープリントを表示して、[中間者攻撃](https://technet.microsoft.com/library/cc959354.aspx)から保護します。 ホストのフィンガープリントを受け入れると、フィンガープリントが変更されない限り、SSH によって再度メッセージが表示されることはありません。
+
+3) 接続を続行するかどうかを確認するメッセージが表示されたら、「`yes`」と入力します。 Git はリポジトリを複製し、以降の Git コマンドで SSH と接続するように元のリモートを設定します。
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Git リポジトリから取得したコードを追跡する
 
@@ -110,7 +192,7 @@ CLI コマンド `az ml run` を使用して、実行からプロパティを取
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-詳細については、[az ml run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) のリファレンス ドキュメントを参照してください。
+詳細については、[az ml run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) のリファレンス ドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

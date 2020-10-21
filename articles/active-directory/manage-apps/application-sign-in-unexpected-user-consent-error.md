@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321948"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874545"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
@@ -79,10 +79,12 @@ Azure Active Directory と統合する多くのアプリケーションが機能
     -   Azure AD アプリケーション ギャラリーからのアプリケーションの追加
 
 ## <a name="risky-app-error-and-warning"></a>危険なアプリのエラーと警告
+* **AADSTS900941:** 管理者アカウントが必要です。 アプリは危険であると考えられます。 (AdminConsentRequiredDueToRiskyApp)
 * このアプリは危険である可能性があります。 このアプリを信頼する場合は、アクセス権を付与するように管理者に依頼してください。
+* **AADSTS900981:** 危険なアプリに対する管理者の同意要求が受信されました。 (AdminConsentRequestRiskyAppWarning)
 * このアプリは危険である可能性があります。 このアプリを信頼している場合のみ続行してください。
 
-これらのメッセージはどちらも、同意要求が危険である可能性があると Microsoft が判断した場合に表示されます。 他の多くの要因の中で、これは、[確認済みの発行元](../develop/publisher-verification-overview.md)がアプリ登録に追加されていない場合に発生する可能性があります。 最初のメッセージは、[管理者の同意ワークフロー](configure-admin-consent-workflow.md)が無効になっている場合にエンドユーザーに表示されます。 2 番目のメッセージは、管理者の同意ワークフローが有効になっている場合にエンドユーザーに表示され、管理者に表示されます。 
+これらのメッセージはどちらも、同意要求が危険である可能性があると Microsoft が判断した場合に表示されます。 他の多くの要因の中で、これは、[確認済みの発行元](../develop/publisher-verification-overview.md)がアプリ登録に追加されていない場合に発生する可能性があります。 [管理者の同意ワークフロー](configure-admin-consent-workflow.md)が無効になっている場合は、1 番目のエラー コードとメッセージがエンドユーザーに表示されます。 管理者の同意ワークフローが有効になっている場合は、2 番目のコードとメッセージがエンドユーザーと管理者に表示されます。 
 
 エンドユーザーは、危険であると検出されたアプリに同意を付与することはできません。 管理者はできますが、非常に注意してアプリを評価し、慎重に進める必要があります。 詳細に検討した結果、アプリが疑わしいと思われる場合は、同意画面から Microsoft に報告できます。 
 

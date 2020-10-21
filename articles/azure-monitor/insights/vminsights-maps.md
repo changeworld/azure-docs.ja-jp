@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320512"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445529"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Azure Monitor for VMs のマップ機能を使用してアプリケーション コンポーネントを把握する
 Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
@@ -95,7 +95,7 @@ VM から直接 Azure Monitor for VMs にアクセスするには:
 
 既定では、マップには過去 30 分間の情報が表示されます。 過去の依存関係を表示する場合は、過去の時間範囲 (最大 1 時間) のクエリを実行できます。 クエリを実行するには、左上隅にある**時間範囲**セレクターを使用します。 たとえば、インシデントの発生中、または変更が行われる前の状態を確認するために、クエリを実行することがあります。  
 
-![直接 VM マップの概要](./media/vminsights-maps/map-direct-vm-01.png)
+![仮想マシン間の依存関係の図が表示された Azure portal の [監視の分析情報] セクションの [マップ] タブのスクリーンショット。](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>仮想マシン スケール セットからマップを表示する
 
@@ -111,7 +111,7 @@ VM から直接 Azure Monitor for VMs にアクセスするには:
 
 既定では、マップには過去 30 分間の情報が表示されます。 過去の依存関係を表示する場合は、過去の時間範囲 (最大 1 時間) のクエリを実行できます。 クエリを実行するには、**時間範囲**セレクターを使用します。 たとえば、インシデントの発生中、または変更が行われる前の状態を確認するために、クエリを実行することがあります。
 
-![直接 VM マップの概要](./media/vminsights-maps/map-direct-vmss-01.png)
+![仮想マシン スケール セット間の依存関係の図が表示された Azure portal の [監視の分析情報] セクションの [マップ] タブのスクリーンショット。](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
 >仮想マシン スケール セットの **[インスタンス]** ビューから、特定のインスタンスのマップにアクセスすることもできます。 **[設定]** セクションで、 **[インスタンス]**  >  **[分析情報]** に移動します。

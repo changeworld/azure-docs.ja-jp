@@ -1,16 +1,16 @@
 ---
 title: Azure Functions のトリガーとバインド
-description: トリガーとバインドを使用して、Azure Functions をオンライン イベントおよびクラウドベース サービスに接続する方法を学習します。
+description: トリガーとバインドを使用して、Azure 関数をオンライン イベントおよびクラウドベース サービスに接続する方法を学習します。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252693"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91652623"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -73,15 +73,25 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 
 [クラス ライブラリの属性](functions-dotnet-class-library.md)を使用してトリガーとバインドを構成した場合、その方向は属性コンストラクターで提供されるか、またはパラメーター型から推論されます。
 
+## <a name="add-bindings-to-a-function"></a>関数にバインドを追加する
+
+入力バインドまたは出力バインドを使用して、関数を他のサービスに接続できます。 関数に特定の定義を追加することで、バインドを追加します。 詳細については、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md)」を参照してください。  
+
 ## <a name="supported-bindings"></a>サポートされるバインディング
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 どのバインディングがプレビューでどのバインディングが実稼働環境で承認されているかについては、[サポートされている言語](supported-languages.md)に関する記事をご覧ください。
 
+## <a name="bindings-code-examples"></a>バインドのコードの例
+
+次の表を使用して、関数でバインドを使用する方法を示す特定のバインドの種類の例を参照してください。 まず、実際のプロジェクトに対応する言語のタブを選択します。 
+
+[!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
 ## <a name="resources"></a>リソース
 - [バインド式とパターン](./functions-bindings-expressions-patterns.md)
-- [Azure Functions の戻り値の使用](./functions-bindings-return-value.md)
+- [Azure 関数の戻り値の使用](./functions-bindings-return-value.md)
 - [バインド式を登録する方法](./functions-bindings-register.md)
 - テスト:
   - [Azure Functions のコードをテストするための戦略](functions-test-a-function.md)

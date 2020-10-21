@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993045"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91289771"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender for Storage を構成する
 
@@ -23,11 +23,11 @@ Azure Defender for Storage では、ストレージ アカウントに対する�
 
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
-このサービスでは、脅威の検出のために、Blob Storage と Azure Files (プレビュー) に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Azure Defender からのアラートを調査するには、Storage Analytics Logging を使用して関連するストレージ アクティビティを確認します。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
+このサービスでは、脅威の検出のために、Blob Storage と Azure Files に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Azure Defender からのアラートを調査するには、Storage Analytics Logging を使用して関連するストレージ アクティビティを確認します。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
 
 ## <a name="availability"></a>可用性
 
-現在、Azure Defender for Storage は、Blob Storage、Azure Files (プレビュー)、および Azure Data Lake Storage Gen2 (プレビュー) で利用できます。 Azure Defender をサポートするアカウントの種類には、汎用 v2、ブロック BLOB、および BLOB ストレージ アカウントが含まれます。 Azure Defender for Storage は、すべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドや Azure Government クラウドのリージョンでは使用できません。
+現在、Azure Defender for Storage は、Blob Storage、Azure Files、および Azure Data Lake Storage Gen2 で利用できます。 Azure Defender をサポートするアカウントの種類には、汎用 v2、ブロック BLOB、および BLOB ストレージ アカウントが含まれます。 Azure Defender for Storage は、すべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドや Azure Government クラウドのリージョンでは使用できません。
 
 Data Lake Storage 用に階層型名前空間が有効になっているアカウントでは、Azure Blob Storage API と Data Lake Storage API の両方を使用するトランザクションがサポートされます。 Azure ファイル共有では、SMB 経由のトランザクションがサポートされます。
 
@@ -37,8 +37,8 @@ Data Lake Storage 用に階層型名前空間が有効になっているアカ�
 
 - リリース状態:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
-  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (プレビューでは SMB と REST のトランザクションがサポートされています)
-  - Azure Data Lake Storage Gen2 (プレビュー)
+  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (一般公開)
+  - Azure Data Lake Storage Gen2 (一般公開)
 - クラウド:<br>
     ✔ 商用クラウド<br>
     ✔ US Gov<br>

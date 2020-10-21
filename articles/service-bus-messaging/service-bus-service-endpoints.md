@@ -4,12 +4,12 @@ description: この記事では、Microsoft.ServiceBus サービス エンドポ
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552987"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843381"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Service Bus 名前空間へのアクセスを許可する
 
@@ -54,6 +54,10 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 仮想ネットワークへの Service Bus 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワーク サブネットに**仮想ネットワーク サービス エンドポイント**を作成し、[サービス エンドポイントの概要][vnet-sep]に関する記事で説明しているように、そのエンドポイントを **Microsoft.ServiceBus** に対して有効にする必要があります。 サービス エンドポイントを追加した後、Service Bus 名前空間を "**仮想ネットワーク規則**" にバインドします。
 
 仮想ネットワーク規則は、Service Bus 名前空間と仮想ネットワーク サブネットの関連付けです。 ルールが存在する間、サブネットにバインドされているすべてのワークロードには、Service Bus 名前空間へのアクセス権が付与されます。 Service Bus 自体は送信接続を確立することはなく、アクセス許可を取得する必要はないので、このルールを有効にすることでサブネットへのアクセス権が付与されることはありません。
+
+> [!NOTE]
+> ネットワーク サービス エンドポイントにより、仮想ネットワークで実行されているアプリケーションに、Service Bus 名前空間へのアクセスが提供されることに注意してください。 仮想ネットワークにより、エンドポイントの到達可能性は制御されますが、Service Bus エンティティ (キュー、トピック、またはサブスクリプション) で実行できる操作は制御されません。 アプリケーションが名前空間とそのエンティティで実行できる操作を承認するには、Azure Active Directory (Azure AD) を使用します。 詳細については、[Service Bus エンティティにアクセスするために Azure AD を使用してアプリケーションを認証および承認する方法](authenticate-application.md)に関する記事を参照してください。
+
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure portal を使用して仮想ネットワーク サービス エンドポイントを追加する方法を示します。 アクセスを制限するには、この Event Hubs 名前空間に対して仮想ネットワーク サービス エンドポイントを統合する必要があります。

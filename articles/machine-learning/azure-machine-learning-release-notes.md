@@ -9,18 +9,61 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631836"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996755"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2020-10-12"></a>2020-10-12
+
+### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK for Python v1.16.0
++ **バグの修正と機能強化**
+  + **azure-cli-ml**
+    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらの省略可能な制限を定義するには、1. `AKSEndpoint.deploy_configuration()` および `AKSWebservice.deploy_configuration()` メソッドで `cpu_cores_limit` および `memory_gb_limit` パラメーターを設定します。2. 該当する CLI 呼び出しで `--cpu-cores-limit` および `--memory-gb-limit` フラグを設定します。3. デプロイメント構成の .json/.yml ファイルの `containerResourceRequirements` で `cpuLimit` と `memoryInGBLimit` を設定します。Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
+  + **azureml-contrib-interpret**
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
+  + **azureml-contrib-k8s**
+    + ArcKubernetes コンピューティングをアタッチするためのサポートが追加されました
+  + **azureml-contrib-mir**
+    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらの省略可能な制限を定義するには、1. `AKSEndpoint.deploy_configuration()` および `AKSWebservice.deploy_configuration()` メソッドで `cpu_cores_limit` および `memory_gb_limit` パラメーターを設定します。2. 該当する CLI 呼び出しで `--cpu-cores-limit` および `--memory-gb-limit` フラグを設定します。3. デプロイメント構成の .json/.yml ファイルの `containerResourceRequirements` で `cpuLimit` と `memoryInGBLimit` を設定します。Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
+  + **azureml-contrib-server**
+    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらの省略可能な制限を定義するには、1. `AKSEndpoint.deploy_configuration()` および `AKSWebservice.deploy_configuration()` メソッドで `cpu_cores_limit` および `memory_gb_limit` パラメーターを設定します。2. 該当する CLI 呼び出しで `--cpu-cores-limit` および `--memory-gb-limit` フラグを設定します。3. デプロイメント構成の .json/.yml ファイルの `containerResourceRequirements` で `cpuLimit` と `memoryInGBLimit` を設定します。Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
+  + **azureml-core**
+    + azureml-core の直接の依存関係のメジャー バージョンを固定します
+    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
+    + 個々の行をログに記録できるように run.log_table を更新しました。
+    + ワークスペースのみを使用して実行を取得する静的メソッド `Run.get(workspace, run_id)` を追加しました - ワークスペース内の実行を取得するインスタンス メソッド `Workspace.get_run(run_id)` を追加しました
+    + 実行構成に、スクリプトと引数ではなくコマンドを送信できるようになるコマンド プロパティの導入。
+  + **azureml-dataprep-native**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
+  + **azureml-explain-model**
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
+  + **azureml-interpret**
+    + azureml-interpret のクライアントの is_raw フラグの動作に関する説明を修正しました
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
+  + **azureml-pipeline-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
+  + **azureml-sdk**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
+  + **azureml-tensorboard**
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
+  + **azureml-train**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
+  + **azureml-train-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
+    + TensorFlow 2.3 キュレーション環境の追加
+    + 実行構成に、スクリプトと引数ではなくコマンドを送信できるようになるコマンド プロパティの導入。
+  + **azureml-widgets**
+    + スクリプト実行ウィジェットのインターフェイスを再設計しました。
+
 
 ## <a name="2020-09-28"></a>2020-09-28
 
@@ -1785,7 +1828,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
 + **新機能**
   + 自動化された機械学習で、リモート コンピューティング ターゲットでの ONNX モデルのトレーニングがサポートされるようになりました
   + Azure Machine Learning で、以前の実行、チェックポイント、またはモデル ファイルからトレーニングを再開できるようになりました。
-    + [推定器を使用して前回の実行からトレーニングを再開する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/training/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)方法を確認してください
+    + [推定器を使用して前回の実行からトレーニングを再開する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)方法を確認してください
 
 + **バグの修正と機能強化**
   + **azure-cli-ml**
@@ -2046,7 +2089,7 @@ Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
 + **新機能**
   + Azure Machine Learning で、一般的な DNN フレームワーク Chainer のファースト クラスのサポートが提供されるようになりました。 [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true) クラスを使用すると、Chainer モデルを簡単にトレーニングしてデプロイできます。
-    + [ChainerMN を使用して分散トレーニングを実行する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/training/distributed-chainer/distributed-chainer.ipynb)方法をご覧ください。
+    + [ChainerMN を使用して分散トレーニングを実行する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/distributed-chainer/distributed-chainer.ipynb)方法をご覧ください。
     + [HyperDrive を使用して Chainer でハイパーパラメーター調整を実行する](https://github.com/Azure/MachineLearningNotebooks/blob/b881f78e4658b4e102a72b78dbd2129c24506980/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)方法をご覧ください。
   + Azure Machine Learning パイプラインに、データストアの変更に基づいてパイプライン実行をトリガーする機能が追加されました。 この機能を紹介するために、パイプラインの[スケジュール ノートブック](https://aka.ms/pl-schedule)が更新されました。
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549774"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361584"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -70,12 +70,12 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     > [!NOTE]
     > ライセンスの自動割り当てを有効にしない場合、ユーザー データのみが同期されるということです。
 
-    ![LinkedIn Elevate のプロビジョニング](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+    ![LinkedIn アカウント センター グローバル設定を示すスクリーンショット。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
     > [!NOTE]
     > ライセンスの自動割り当てを有効にする場合、アプリケーション インスタンスとライセンスの種類に注意する必要があります。 ライセンスは、すべてのライセンスが取得されるまで、先着順で割り当てられます。
 
-    ![LinkedIn Elevate のプロビジョニング](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![SCIM セットアップ ページを示すスクリーンショット。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
 5. **[トークンの生成]** をクリックします。 **[アクセス トークン]** フィールドの下に、アクセス トークンが表示されます。
 
@@ -89,7 +89,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![LinkedIn Elevate のプロビジョニング](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![[LinkedIn Elevate のプロビジョニング] ページを示すスクリーンショット。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
 11. **[管理者資格情報]** の下で、以下のフィールドを入力します。
 
@@ -105,7 +105,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 14. **[属性マッピング]** セクションで、Azure AD から LinkedIn Elevate に同期するユーザーおよびグループ属性を確認します。 **[Matching (照合)]** プロパティとして選択されている属性は、更新処理で LinkedIn Elevate のユーザー アカウントおよびグループとの照合に使用されることに注意してください。 [保存] ボタンをクリックして変更をコミットします。
 
-    ![LinkedIn Elevate のプロビジョニング](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![属性マッピングを含むマッピングを示すスクリーンショット。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
 15. LinkedIn Elevate に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 

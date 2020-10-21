@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530563"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
 
@@ -39,7 +39,7 @@ Azure SQL Database と SQL Managed Instance に加え、Azure Cognitive Search �
 Azure SQL インデクサーのセットアップと構成には次を使用できます。
 
 * [Azure Portal](https://portal.azure.com) のデータのインポート ウィザード
-* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * Azure Cognitive Search [REST API](/rest/api/searchservice/indexer-operations)
 
 この記事では、REST API を使用して、**インデクサー**と**データソース**を作成します。
@@ -74,7 +74,9 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
     }
    ```
 
-   [Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
+   接続文字列は次のいずれかの形式に従います。
+    1. [Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
+    1. アカウント キーを含まない `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` の形式のマネージド ID 接続文字列。 この接続文字列を使用するには、[マネージド ID を使用して Azure SQL データベースへのインデクサー接続を設定する](search-howto-managed-identities-sql.md)ための手順に従います。
 
 2. まだない場合は、ターゲットの Azure Cognitive Search インデックスを作成します。 インデックスを作成するには、[ポータル](https://portal.azure.com)または[インデックス作成 API](/rest/api/searchservice/Create-Index) を使用します。 ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。詳しくは、「[SQL データ型と Azure Cognitive Search データ型間のマッピング](#TypeMapping)」を参照してください。
 

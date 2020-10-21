@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6ad132513c2ec61dd5a290da1a88e50f0ad6eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510355"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653249"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -119,7 +119,7 @@ StorSimple を使うと、ボリューム クローンの形式でバックア�
 
 :::row:::
     :::column:::
-        ![記事のこのサブセクションに焦点を当てるために役立つ、以前の概要画像の一部を示す画像。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
+        ![VM をプロビジョニングし、その VM に対して iSCSI 経由でボリュームの複製 (1 つまたは複数) を公開することを示す図。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
     :::column-end:::
     :::column:::
         Azure の StorSimple 8020 仮想アプライアンス上で最初のクローンを使用できるようになったら、VM をプロビジョニングし、iSCSI を介してその VM にその (または複数の) ボリューム クローンを公開します。
@@ -175,7 +175,7 @@ Azure の Windows Server 仮想マシンは、StorSimple 8020 と似ており、
 
 :::row:::
     :::column:::
-        ![記事のこのサブセクションに焦点を当てるために役立つ、以前の概要画像の一部を示す画像。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
+        ![いくつかの Azure ファイル共有を決定してプロビジョニングし、StorSimple アプライアンスの交換としてオンプレミスに Windows Server を作成する必要があることを示す図。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
     :::column-end:::
     :::column:::
         このフェーズでは、多数の Azure ファイル共有を決定してプロビジョニングし、StorSimple アプライアンスの代替としてオンプレミスで Windows サーバーを作成し、そのサーバーを Azure File Sync 用に構成します。 
@@ -225,7 +225,7 @@ Windows Server のストレージは、いつでも追加または削除でき�
 
 :::row:::
     :::column:::
-        ![記事のこのサブセクションに焦点を当てるために役立つ、以前の概要画像の一部を示す画像。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
+        ![Azure File Sync を介して VM を接続し、StorSimple ボリューム クローンからファイルを移行する最初のラウンドを開始する方法を示す図。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
     :::column-end:::
     :::column:::
         このフェーズは、iSCSI のマウントされた最初のボリューム クローンを使用する Azure VM に関するものです。 このフェーズでは、Azure File Sync を介して VM を接続し、StorSimple ボリューム クローンからファイルを移行する最初のラウンドを開始します。
@@ -281,7 +281,7 @@ Azure VM を介して Azure ファイル共有に移行する最初のボリュ�
 
 :::row:::
     :::column:::
-        ![記事のこのサブセクションに焦点を当てるために役立つ、以前の概要画像の一部を示す画像。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
+        ![複数のボリューム クローンを使用して、同期が完了したタイミングを通知することで、ダウンタイムを最小限に抑える方法を示す図。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
     :::column-end:::
     :::column:::
         前のフェーズで説明したように、初回の同期には長い時間がかかることがあります。 ユーザーとアプリケーションは、引き続きオンプレミスの StorSimple 8100 または 8600 アプライアンスにアクセスしています。 これは、変更が蓄積されていることを意味します。また、ライブ データと初回のボリューム クローンとの間に毎日大きな差分があり、現在、フォームを移行しています。 このセクションでは、複数のボリューム クローンを使用して、同期が完了したタイミングを通知することで、ダウンタイムを最小限に抑える方法について説明します。
@@ -338,7 +338,7 @@ Azure VM を介して Azure ファイル共有に移行する最初のボリュ�
 1. 同期されていないファイルが存在する可能性があります (上記のイベント ログの **PerItemErrors** を参照してください)
 2. StorSimple アプライアンスにはキャッシュがありますが、Windows Server は名前空間のみであり、現時点ではファイル コンテンツはローカルに格納されていません。
 
-![記事のこのサブセクションに焦点を当てるために役立つ、以前の概要画像の一部を示す画像。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
+![Windows Server のキャッシュをアプライアンスの状態にし、最終的な RoboCopy でファイルが残らないようにする方法を示す図。](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
 
 Windows Server のキャッシュをアプライアンスの状態にし、最終的な RoboCopy でファイルが残らないようにします。
 

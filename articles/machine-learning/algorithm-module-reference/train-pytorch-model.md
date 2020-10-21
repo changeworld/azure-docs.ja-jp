@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439093"
 ---
 # <a name="train-pytorch-model"></a>PyTorch モデルのトレーニング
 
@@ -49,7 +49,7 @@ ms.locfileid: "90883245"
 
 8.  **[Patience]\(忍耐\)** には、検証の損失が連続して減少しない場合に、エポックがトレーニングを早期に停止する回数を指定します。 既定値は 3 です。
 
-9.  パイプラインを送信します。 データセットのサイズが大きい場合は、しばらく時間がかかります。
+9.  パイプラインを送信します。 データセットのサイズが大きい場合は、しばらく時間がかかり、GPU コンピューティングが推奨されます。
 
 ## <a name="results"></a>結果
 

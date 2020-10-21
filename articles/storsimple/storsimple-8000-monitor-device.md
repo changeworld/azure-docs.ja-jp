@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514693"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977410"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
 
@@ -77,7 +77,7 @@ Update 3 以降を使用している場合は、次に示すように、個々�
 
 さらに、リスト内の各ボリュームをクリックすると、対応する使用状況を表示できます。
 
-![全ローカル固定ボリュームのプライマリの容量使用率](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![全ローカル固定ボリュームのプライマリの容量使用率 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>クラウド ストレージの使用状況
 これらのグラフは、クラウド ストレージの使用量を示します。 このデータは、重複除去されて圧縮されています。 この容量に含まれるクラウド スナップショットには、過去の目的や必須の保有期間のために保持されており、どのプライマリ ボリュームにも反映されていないデータが含まれている可能性があります。 プライマリ ストレージとクラウド ストレージの消費量の数値を比較して、データの削減率を把握できます。ただし、この数値は正確なものではありません。

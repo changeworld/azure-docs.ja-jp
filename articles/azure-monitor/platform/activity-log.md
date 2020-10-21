@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983213"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91772806"
 ---
 # <a name="azure-activity-log"></a>Azure アクティビティ ログ
 アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure の[プラットフォーム ログ](platform-logs-overview.md)です。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりできます。 その他の機能を使用するには、診断設定を作成して、[Azure Monitor ログ](data-platform-logs.md)、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティログを送信する必要があります。 この記事では、アクティビティ ログの表示と、別の宛先への送信について詳しく説明します。
@@ -226,7 +226,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId  $storageAccountId -ServiceBusRuleId $serviceBusRuleId
    ```
 
 
@@ -399,4 +399,5 @@ Azure Log Analytics 監視ソリューションは、間もなく非推奨とな
 ## <a name="next-steps"></a>次のステップ
 
 * [プラットフォーム ログの概要を確認する](platform-logs-overview.md)
+* [アクティビティ ログのイベント スキーマを確認する](activity-log-schema.md)
 * [他の送信先にアクティビティ ログを送信するための診断設定を作成する](diagnostic-settings.md)

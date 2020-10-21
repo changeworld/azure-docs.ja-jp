@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265461"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850661"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:Lucidchart を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -49,11 +49,11 @@ ms.locfileid: "91265461"
 
 1. [Lucidchart 管理コンソール](https://www.lucidchart.com)にログインします。 **[Team] (チーム) > [App Integration] (アプリの統合)** に移動します。
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Lucidchart 管理コンソールのスクリーンショット。[Team]\(チーム\) メニューが強調表示され、開かれています。[Admin]\(管理\) の下の [App Integration]\(アプリの統合\) が強調表示されています。" border="false":::
 
 2. **[SCIM]** に移動します。
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart 管理コンソールのスクリーンショット。[Team]\(チーム\) メニューが強調表示され、開かれています。[Admin]\(管理\) の下の [App Integration]\(アプリの統合\) が強調表示されています。" border="false":::
 
 3. 下にスクロールして **[Bearer token] (ベアラー トークン)** と **[Lucidchart Base URL] (Lucidchart ベース URL)** を表示します。 **[Bearer token] (ベアラー トークン)** をコピーして保存します。 この値を、Azure portal の LucidChart アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** * フィールドに入力します。 
 

@@ -2,14 +2,14 @@
 title: マルチインスタンス タスクを使用した MPI アプリケーションの実行
 description: Azure Batch でマルチインスタンス タスクを使用して、Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。
 ms.topic: how-to
-ms.date: 03/13/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850627"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -39,7 +39,7 @@ Batch では、通常、各タスクは単一のコンピューティング ノ�
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>マルチインスタンス タスクの要件
-マルチインスタンス タスクには、**ノード間通信が有効**であり、**同時実行タスクの実行が無効になっている**プールが必要です。 同時実行タスクの実行を無効にするには、[CloudPool.MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) プロパティを 1 に設定します。
+マルチインスタンス タスクには、**ノード間通信が有効**であり、**同時実行タスクの実行が無効になっている**プールが必要です。 同時実行タスクの実行を無効にするには、[CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) プロパティを 1 に設定します。
 
 > [!NOTE]
 > Batch は、ノード間通信が有効になっているプールのサイズを[制限](batch-quota-limit.md#pool-size-limits)します。
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> ノード間通信が無効になっている ( *maxTasksPerNode* 値が 1 より大きい) プールでマルチインスタンス タスクを実行しようとしても、タスクはスケジュールされず、いつまでも "アクティブ" 状態のままになります。 
+> ノード間通信が無効になっている ( *taskSlotsPerNode* 値が 1 より大きい) プールでマルチインスタンス タスクを実行しようとしても、タスクはスケジュールされず、いつまでも "アクティブ" 状態のままになります。
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>StartTask を使用した MPI のインストール
@@ -99,7 +99,7 @@ Batch プールのコンピューティング ノードのサイズとして [RD
   * [Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> [Linux のコンピューティング ノード](batch-linux-nodes.md)で RDMA を利用するには、ノード上で **Intel MPI** を使用する必要があります。 
+> [Linux のコンピューティング ノード](batch-linux-nodes.md)で RDMA を利用するには、ノード上で **Intel MPI** を使用する必要があります。
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Batch .NET を使用したマルチインスタンス タスクの作成

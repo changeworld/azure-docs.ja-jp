@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646682"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710653"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
-この記事では、Power BI アプリ オファーを作成し、Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
+この記事では、Power BI アプリ オファーを作成し、[Microsoft AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
 
 開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](create-account.md) (まだ作成していない場合)。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
@@ -56,9 +56,9 @@ ms.locfileid: "89646682"
 これには、選択した内容に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
 - オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
-- オファーが公開中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- オファーがプレビュー段階である場合 - [一般公開する](publishing-status.md#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
+- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
+- 発行を完了していない場合 - [発行を取り消す](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
@@ -73,7 +73,7 @@ ms.locfileid: "89646682"
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > ご利用の CRM システムが上記の一覧にない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
+    > 自分の CRM システムがこの一覧にない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して、顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで発行する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
@@ -81,10 +81,10 @@ ms.locfileid: "89646682"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
-- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
+- [コマーシャル マーケットプレース オファーからの顧客リード](commercial-marketplace-get-customer-leads.md)
+- [リード管理についてよく寄せられる質問](../lead-management-faq.md#common-questions-about-lead-management)
+- [リード構成エラーのトラブルシューティング](../lead-management-faq.md#publishing-config-errors)
+- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -202,7 +202,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。
@@ -218,7 +218,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 

@@ -1,14 +1,14 @@
 ---
 title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756692"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075486"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -18,8 +18,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 - アプリケーションの構成または存在
 - 環境設定
 
-現在、Azure Policy ゲスト構成のほとんどのポリシーでは、マシン内の設定の監査のみが行われます。
-構成は適用されません。 例外は、[以下で参照されている](#applying-configurations-using-guest-configuration) 1 つの組み込みポリシーです。
+現時点では、ほとんどの Azure Policy ゲスト構成ポリシーの定義では、コンピューター内の設定の監査のみが行われます。 構成は適用されません。 例外は、[以下で参照されている](#applying-configurations-using-guest-configuration) 1 つの組み込みポリシーです。
 
 ## <a name="enable-guest-configuration"></a>ゲスト構成を有効にする
 
@@ -59,8 +58,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 ## <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-ゲスト構成ポリシーには、新しいバージョンが含まれます。 ゲスト構成エージェントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。
-次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
+ゲスト構成ポリシー定義には、新しいバージョンが含まれます。 ゲスト構成エージェントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
 |Publisher|名前|バージョン|
 |-|-|-|
@@ -72,7 +70,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 |Red Hat|Red Hat Enterprise Linux|7.4 - 7.8|
 |Suse|SLES|12 SP3 - SP5|
 
-カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシーでサポートされます。
+カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシー定義でサポートされます。
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
@@ -86,7 +84,7 @@ Azure Arc マシンは、オンプレミスのネットワーク インフラス
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure で Private Link を介して通信する
 
-仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNeworkGC` と値 `TRUE` を使用してタグを適用します。 このタグは、ゲスト構成ポリシーをマシンに適用する前または後に適用できます。
+仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNeworkGC` と値 `TRUE` を使用してタグを適用します。 タグは、ゲスト構成ポリシー定義をマシンに適用する前または後に適用できます。
 
 Azure [仮想パブリック IP アドレス](../../../virtual-network/what-is-ip-address-168-63-129-16.md)を使用してトラフィックがルーティングされて、Azure プラットフォーム リソースとの、セキュリティで保護された認証済みチャネルが確立されます。
 
@@ -111,14 +109,12 @@ Azure のゲスト構成リソース プロバイダーと通信するには、�
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
-ゲスト構成ポリシーでは、**AuditIfNotExists** 効果が使用されます。 定義が割り当てられると、バックエンド サービスでは、`Microsoft.GuestConfiguration` Azure リソース プロバイダーのすべての要件のライフサイクルが自動的に処理されます。
+ゲスト構成ポリシー定義では、**AuditIfNotExists** 効果が使用されます。 定義が割り当てられると、バックエンド サービスでは、`Microsoft.GuestConfiguration` Azure リソース プロバイダーのすべての要件のライフサイクルが自動的に処理されます。
 
-**AuditIfNotExists** ポリシーは、コンピューター上のすべての要件が満たされるまで、コンプライアンスの結果を返しません。 要件の詳細については、「[Azure 仮想マシンの要件をデプロイする](#deploy-requirements-for-azure-virtual-machines)」セクションを参照してください。
+**AuditIfNotExists** ポリシー定義は、マシン上のすべての要件が満たされるまで、コンプライアンスの結果を返しません。 要件については、「[Azure 仮想マシンの要件をデプロイする](#deploy-requirements-for-azure-virtual-machines)」セクションをご覧ください
 
 > [!IMPORTANT]
-> 以前のリリースのゲスト構成では、**DeployIfNoteExists** 定義と **AuditIfNotExists** 定義を組み合わせるためにイニシアチブが必要でした。 **DeployIfNotExists** 定義は不要になりました。 定義とイニシアチブには `[Deprecated]` ラベルが付けられていますが、既存の割り当ては引き続き機能します。
->
-> 手動操作が必要です。 以前にカテゴリ `Guest Configuration` にポリシー イニシアチブを割り当てていた場合は、ポリシー割り当てを削除し、新しい定義を割り当てます。 ゲスト構成ポリシーには、`Audit <Windows/Linux> machines that <non-compliant condition>` という名前パターンがあります。
+> 以前のリリースのゲスト構成では、**DeployIfNoteExists** 定義と **AuditIfNotExists** 定義を組み合わせるためにイニシアチブが必要でした。 **DeployIfNotExists** 定義は不要になりました。 定義とイニシアチブには `[Deprecated]` ラベルが付けられていますが、既存の割り当ては引き続き機能します。 詳細については、ブログ記事の「[ゲスト構成の監査ポリシーに関してリリースされた重要な変更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)」をご覧ください。
 
 Azure Policy は、ゲスト構成リソース プロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
 
@@ -140,15 +136,15 @@ _[Windows コンピューターでタイムゾーンを構成]_ する定義の�
 _[構成]_ で始まる定義を割り当てるとき、 _[前提条件を展開して Windows VM でゲスト構成ポリシーを有効にする]_ 定義も割り当てる必要があります。 必要に応じて、これらの定義をイニシアチブで結合させることができます。
 
 > [!NOTE]
-> 組み込みのタイムゾーン ポリシーは、コンピューター内の設定の構成をサポートする唯一の定義であり、コンピューター内の設定を構成するカスタム ポリシーはサポートされていません。
+> 組み込みのタイム ゾーン ポリシーは、マシン内の設定の構成をサポートする唯一の定義であり、マシン内の設定を構成するカスタム ポリシー定義はサポートされていません。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure 外部のコンピューターにポリシーを割り当てる
 
-ゲスト構成に使用できる監査ポリシーには、**Microsoft.HybridCompute/machines** という種類のリソースが含まれます。 ポリシー割り当てのスコープ内にある[サーバー向け Azure Arc](../../../azure-arc/servers/overview.md) にオンボードされているすべてのマシンが自動的に追加されます。
+ゲスト構成に使用できる監査ポリシー定義には、**Microsoft.HybridCompute/machines** リソースの種類が含まれます。 ポリシー割り当てのスコープ内にある[サーバー向け Azure Arc](../../../azure-arc/servers/overview.md) にオンボードされているすべてのマシンが自動的に追加されます。
 
 ### <a name="multiple-assignments"></a>複数の割り当て
 
-ポリシー割り当てで異なるパラメーターが使用されている場合でも、現在、ゲスト構成ポリシーでは、同じゲスト割り当てはマシンごとに一度の割り当てのみがサポートされています。
+ポリシー割り当てで異なるパラメーターが使用されている場合でも、現在、ゲスト構成ポリシー定義では、同じゲスト割り当てはマシンごとに一度の割り当てのみがサポートされています。
 
 ## <a name="client-log-files"></a>クライアントのログ ファイル
 

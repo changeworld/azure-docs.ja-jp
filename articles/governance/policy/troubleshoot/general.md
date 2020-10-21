@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義、さまざまな SDK、および Kubernetes のアドオンの作成に関する問題をトラブルシューティングする方法について説明します。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545541"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999887"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Policy を使用してエラーを解決する
 
@@ -34,7 +34,7 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
 
 無効または存在しないエイリアスがポリシー定義で使用されています。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 まず、Resource Manager プロパティにエイリアスがあることを確認します。 [Visual Studio Code 用の Azure Policy 拡張機能](../how-to/extension-for-vscode.md)、[Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)、または SDK を使用して、使用可能なエイリアスを検索します。 Resource Manager プロパティのエイリアスが存在しない場合は、サポート チケットを作成します。
 
@@ -48,11 +48,11 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
 
 新しいポリシーまたはイニシアチブの割り当ては、適用されるまでに約 30 分かかります。 既存の割り当てのスコープ内の新規または更新されたリソースは、15 分後に使用できるようになります。 標準のコンプライアンス スキャンは、24 時間ごとに行われます。 詳細については、「[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)」を参照してください。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
 
-### <a name="scenario-evaluation-not-as-expected"></a>シナリオ:評価が想定どおりではない
+### <a name="scenario-compliance-not-as-expected"></a>シナリオ:コンプライアンスが想定どおりでない
 
 #### <a name="issue"></a>問題
 
@@ -62,12 +62,23 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
 
 リソースがポリシー割り当ての正しいスコープに含まれていないか、ポリシー定義が意図したとおりに動作していません。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
-- 対応していることが予期されていた非対応のリソースについては、まず[非準拠である理由を特定](../how-to/determine-non-compliance.md)します。 定義と評価されたプロパティ値を比較することで、リソースが非準拠である理由がわかります。
-- 準拠していないことが予期されていた準拠しているリソースについては、ポリシー定義条件を条件で読み取り、リソースのプロパティに対して評価します。 論理演算子によって適切な条件がグループ化されていること、および条件が反転していないことを検証します。
+ポリシー定義をトラブルシューティングするには、次の手順を実行します。
 
-ポリシー割り当ての準拠に `0/0` リソースが表示されている場合は、割り当てスコープ内で適用できると判断されたリソースはありません。 ポリシー定義と割り当てスコープの両方を確認してください。
+1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
+1. 割り当てパラメーターと割り当てスコープが正しく設定されていることを確認します。
+1. [ポリシー定義モード](../concepts/definition-structure.md#mode)を確認します。
+   - すべてのリソースの種類の場合は モード "すべて"。
+   - ポリシー定義によってタグまたは場所を確認する場合はモード "インデックス付き"。
+1. リソースのスコープが[除外対象](../concepts/assignment-structure.md#excluded-scopes)または[適用除外対象](../concepts/exemption-structure.md)でないことを確認します。
+1. ポリシー割り当ての準拠に `0/0` リソースが表示されている場合は、割り当てスコープ内で適用できると判断されたリソースはありません。 ポリシー定義と割り当てスコープの両方を確認してください。
+1. 対応していることが予期されていた非対応のリソースについては、[非準拠である理由の特定](../how-to/determine-non-compliance.md)に関するページを参照してください。 定義と評価されたプロパティ値を比較することで、リソースが非準拠である理由がわかります。
+   - **対象の値**が間違っている場合は、ポリシー定義を修正します。
+   - **現在の値**が間違っている場合は、`resources.azure.com` を介してリソース ペイロードを検証します。
+1. その他の一般的な問題と解決策については、[「適用が想定どおりでない」のトラブルシューティング](#scenario-enforcement-not-as-expected)を参照してください。
+
+複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、"**ポリシーの作成**" についてサポート チケットを作成してください。
 
 ### <a name="scenario-enforcement-not-as-expected"></a>シナリオ:適用が想定どおりでない
 
@@ -81,7 +92,18 @@ Azure Policy によって処理される予定のリソースが処理されず�
 
 #### <a name="resolution"></a>解決策
 
-**enforcementMode** を _Enabled_ に更新します。 この変更により、Azure Policy はこのポリシー割り当てのリソースを操作し、エントリをアクティビティ ログに送信できます。 **enforcementMode** が既に有効になっている場合は、「[評価が想定どおりではない](#scenario-evaluation-not-as-expected)」を参照してください。
+ポリシー割り当ての適用をトラブルシューティングするには、次の手順を実行します。
+
+1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
+1. 割り当てパラメーターと割り当てスコープが正しく設定されていること、**enforcementMode** が _Enabled_ であることを確認します。 
+1. [ポリシー定義モード](../concepts/definition-structure.md#mode)を確認します。
+   - すべてのリソースの種類の場合は モード "すべて"。
+   - ポリシー定義によってタグまたは場所を確認する場合はモード "インデックス付き"。
+1. リソースのスコープが[除外対象](../concepts/assignment-structure.md#excluded-scopes)または[適用除外対象](../concepts/exemption-structure.md)でないことを確認します。
+1. リソースのペイロードがポリシー ロジックと一致することを確認します。 これを行うには、[HAR トレース](../../../azure-portal/capture-browser-trace.md)をキャプチャするか、ARM テンプレートのプロパティを確認します。
+1. その他の一般的な問題と解決策については、[「コンプライアンスが想定どおりでない」のトラブルシューティング](#scenario-compliance-not-as-expected)を参照してください。
+
+複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、"**ポリシーの作成**" についてサポート チケットを作成してください。
 
 ### <a name="scenario-denied-by-azure-policy"></a>シナリオ:Azure Policy による拒否
 
@@ -93,7 +115,7 @@ Azure Policy によって処理される予定のリソースが処理されず�
 
 新しいリソースまたは更新されたリソースが存在するスコープへのポリシー割り当てが、[Deny](../concepts/effects.md#deny) 効果が適用されているポリシー定義の条件を満たしています。 これらの定義を満たしているリソースは、作成または更新できません。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
 
@@ -109,7 +131,7 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 
 `parameter()` や `resourceGroup()` などのサポートされている関数を使用すると、ポリシー定義および Azure Policy エンジンが処理する関数を残す代わりに、デプロイメント時に関数の処理結果が得られます。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 関数をポリシー定義の一部として渡すには、プロパティが `[[resourceGroup().tags.myTag]` のようになるように `[` で文字列全体をエスケープします。 エスケープ文字により、Resource Manager によってテンプレートが処理されるときに値が文字列として扱われます。 その後 Azure Policy は関数をポリシー定義に配置し、予期したとおりに動的になるようにします。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
@@ -128,7 +150,7 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 
 生成されたパスワードに、Helm Chart では分割されるコンマ (`,`) が含まれています。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 `helm install azure-policy-addon` を実行する場合は、バックスラッシュ (`\`) を使用してパスワード値のコンマ (`,`) をエスケープします。
 
@@ -144,9 +166,27 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 
 `azure-policy-addon` という名前の Helm Chart は、既にインストールされているか、部分的にインストールされています。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 [Kubernetes アドオンの Azure Policy を削除](../concepts/policy-for-kubernetes.md#remove-the-add-on)する指示に従ってから、`helm install azure-policy-addon` コマンドを再実行します。
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>シナリオ:Azure 仮想マシンのユーザー割り当て ID がシステム割り当てマネージド ID に置き換えられる
+
+#### <a name="issue"></a>問題
+
+マシン内の監査設定にゲスト構成ポリシーのイニシアチブを割り当てると、マシンに割り当てられていたユーザー割り当てマネージド ID は割り当てられなくなります。 システム割り当てマネージド ID のみが割り当てられます。
+
+#### <a name="cause"></a>原因
+
+以前にゲスト構成の DeployIfNotExists 定義で使用されていたポリシー定義により、システム割り当て ID がマシンに割り当てられるだけでなく、ユーザー割り当て ID の割り当ても削除されました。
+
+#### <a name="resolution"></a>解像度
+
+以前にこの問題の原因となった定義は、"\[非推奨\]" と表示され、ユーザー割り当てマネージド ID は削除されず、前提条件を管理するポリシー定義に置き換えられます。 手動操作が必要です。 "\[非推奨\]" とマークされている既存のポリシー割り当てをすべて削除し、元のポリシーと同じ名前の更新された前提条件ポリシー イニシアチブとポリシー定義に置き換えてください。
+
+詳細については、次のブログ投稿を参照してください。
+
+[ゲスト構成の監査ポリシーに関してリリースされた重要な変更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>次のステップ
 

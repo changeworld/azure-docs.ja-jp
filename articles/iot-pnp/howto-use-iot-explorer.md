@@ -1,23 +1,23 @@
 ---
 title: Azure IoT エクスプローラーをインストールして使用する | Microsoft Docs
-description: Azure IoT エクスプローラー ツールをインストールして、IoT ハブに接続されている IoT プラグ アンド プレイ プレビュー デバイスとの対話に使用します。
+description: Azure IoT エクスプローラー ツールをインストールして、IoT ハブに接続されている IoT プラグ アンド プレイ デバイスとの対話に使用します。
 author: rido-min
 ms.author: rmpablos
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352024"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019156"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
-Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プレイ プレビュー デバイスと対話し、テストを実施するためのグラフィカル ツールです。 ローカル マシンにツールをインストールしたら、それを使用してハブに接続できます。 このツールを使用して、デバイスから送信されるテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
+Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プレイ デバイスと対話し、テストを実施するためのグラフィカル ツールです。 ローカル マシンにツールをインストールしたら、それを使用してハブに接続できます。 このツールを使用して、デバイスから送信されるテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
 
 この記事で取り上げるテクニック:
 
@@ -29,22 +29,18 @@ Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プ
 Azure IoT エクスプローラー ツールを使用するには、次のものが必要です。
 
 - Azure IoT Hub。 お使いの Azure サブスクリプションに IoT ハブを追加する方法にはさまざまなものがあります。一例を挙げると、[Azure CLI を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-cli.md)という方法があります。 Azure IoT エクスプローラー ツールを実行するには、IoT ハブの接続文字列が必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- お使いの IoT ハブに登録されているデバイス。 デバイスの登録には、次の Azure CLI コマンドを使用できます。 `{YourIoTHubName}` と `{YourDeviceID}` のプレースホルダーは必ず、実際の値に置き換えてください。
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- お使いの IoT ハブに登録されているデバイス。 IoT Explorer を使用して、お使いの IoT ハブでデバイス登録を作成および管理できます。
 
 ## <a name="install-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールする
 
 [Azure IoT エクスプローラーのリリース情報](https://github.com/Azure/azure-iot-explorer/releases)に移動し、最新のリリースのアセットの一覧を展開します。 最新バージョンのアプリケーションをダウンロードしてインストールします。
 
 >[!Important]
->バージョン 0.11.0 の IoT Explorer では、2020 年 5 月のプレビュー リリースの IoT プラグ アンド プレイのみがサポートされています。 以前の 2019 年 8 月のプレビュー リリースで利用できる機能を使用するには、0.10.x バージョンをインストールする必要があります。
+> [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) に基づく任意のリポジトリのモデルを解決するには、バージョン 0.13.x に更新します。
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT エクスプローラーを使用する
 
-デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 シミュレートされたデバイスのサンプルを実行する場合には、[こちらの手順](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples)に従ってください。
+デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 シミュレートされたデバイスのサンプルを実行する場合には、[こちらの手順](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)に従ってください。
 
 ### <a name="connect-to-your-hub"></a>お使いのハブに接続する
 
@@ -65,7 +61,7 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 ソースの優先順位を変更するには:
 
-モデル定義のソースの 1 つを、一覧内の別の順位にドラッグ アンド ドロップできます。 
+モデル定義のソースの 1 つを、一覧内の別の順位にドラッグ アンド ドロップできます。
 
 ### <a name="view-devices"></a>デバイスの表示
 
@@ -103,7 +99,7 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 #### <a name="properties"></a>Properties
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT エクスプローラーでのプロパティの表示":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT エクスプローラーでのコンポーネントの表示":::
 
 **[Properties (read-only)]\(プロパティ (読み取り専用)\)** タブでは、インターフェイスで定義されている読み取り専用プロパティを表示できます。 **[Properties (writable)]\(プロパティ (書き込み可能)\)** タブでは、インターフェイスで定義されている書き込み可能なプロパティを更新できます。
 
@@ -128,6 +124,16 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 選択したインターフェイスのテレメトリを表示するには、その **[テレメトリ]** タブにアクセスします。
 
+#### <a name="known-issues"></a>既知の問題
+
+- IoT Edge のサポート:現在のバージョンには、デバイス一覧に IoT Edge デバイスが表示されません。
+- DTDL 言語の機能:IoT Explorer 0.12.x は DTDL v2 に完全には準拠しておらず、次のような機能がサポートされていません。
+  - `extends` とのインターフェイス継承
+  - マップ内のマップ (入れ子になったマップ)
+  - 配列型
+  - カスタム スキーマ
+  - カスタムのセマンティック型
+
 ## <a name="next-steps"></a>次のステップ
 
-このハウツー記事では、Azure IoT エクスプローラーをインストールして使用し、IoT プラグ アンド プレイ デバイスと対話する方法について学習しました。 次は、[Azure CLI IoT プラグ アンド プレイ コマンド](./howto-use-iot-pnp-cli.md)を使用する方法について学習することをお勧めします。
+このハウツー記事では、Azure IoT エクスプローラーをインストールして使用し、IoT プラグ アンド プレイ デバイスと対話する方法について学習しました。 推奨される次の手順は、[DTDL 作成ツールをインストールして使用する](howto-use-dtdl-authoring-tools.md)方法を学習することです。

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91529832"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -179,7 +179,7 @@ SAP HANA on Azure `service management` によるオンボード中、お客様�
 
 S72m HANA L インスタンス ユニットに対する df -h コマンドの出力は次のようになります。
 
-![HANA L インスタンス ユニットのマウントされたボリュームの fstab](./media/hana-installation/image2_df_output.PNG)
+![HANA L インスタンス ユニットに対するコマンドの出力を示すスクリーンショット。](./media/hana-installation/image2_df_output.PNG)
 
 
 L インスタンス スタンプ内のストレージ コントローラーとノードは NTP サーバーに同期されます。 SAP HANA on Azure (L インスタンス) のユニットと Azure VM を NTP サーバーに対して同期するときには、Azure と L インスタンス スタンプのインフラストラクチャやコンピューティング ユニットの間に大きな時間のずれがあってはいけません。

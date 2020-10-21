@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360601"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850083"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために MediusFlow を構成する
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  テナント ID を指定して [MediusFlow の管理コンソール](https://office365.cloudapp.mediusflow.com/)にログインします。
 
-    ![認証](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 2. MediusFlow との接続を確認します。
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. 構成を保存します。
 
-    ![認証](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 5. [User Provisioning]\(ユーザー プロビジョニング\) を選択して **[OK]** をクリックします。
 
-    ![認証](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 6. **[Generate Secret Key]\(秘密鍵の生成\)** をクリックします。 この値をコピーして保存します。この値は、Azure portal の MediusFLow アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** フィールドに入力します。
 
-    ![認証](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 7. **[OK]** をクリックします。
 
-    ![認証](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 8. MediusFlow で事前定義した一連のロール、会社、およびその他の一般的な構成を使用してユーザーをインポートするには、最初に構成する必要があります。 まず、 **[Add new configuration]\(新しい構成の追加\)** をクリックして構成を追加します。
 
-    ![ユーザーの構成](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 9. ユーザーの既定の設定を指定します。 このビューでは、既定の属性を設定することができます。 標準設定で問題ない場合は、有効な会社名を入力するだけで十分です。 これらの構成設定は Mediusflow からフェッチされるため、最初に構成する必要があります。 詳細については、この記事の「**前提条件**」セクションを参照してください。
 
-    ![ユーザーの構成](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 10. **[保存]** をクリックして、構成を保存します。
 
-    ![ユーザーの構成](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 11. ユーザー プロビジョニング リンクを取得するには、 **[Copy SCIM Link]\(SCIM リンクをコピー\)** をクリックします。 この値をコピーして保存します。 この値は、Azure portal の MediusFLow アプリケーションの **[プロビジョニング]** タブにある **[テナント URL]** フィールドに入力します。
  
-    ![ユーザーの構成](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理コンソールのスクリーンショット。最初の統合手順で、[MediusFlow tenant name]\(MediusFlow テナント名\) ボックスと [Authenticate]\(認証\) ボタンが強調表示されています。" border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから MediusFlow を追加する
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665414"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999693"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
@@ -72,7 +72,7 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 | [Text Analytics][ta-containers-language] | F0、S | **言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
 | [Text Analytics][ta-containers-sentiment] | F0、S | **感情分析 v3** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | 肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 このバージョンの感情分析からは、各ドキュメントとその中の文のセンチメント ラベル (たとえば、"*肯定的*"、"*否定的*") が返されます。 |
 | [Text Analytics][ta-containers-health] | F0、S | **Text Analytics for Health** | 構造化されていない臨床テキストから医療情報を抽出してラベル付けします。 |
-| [空間分析][spa-containers] | S0 | **空間分析** | 構造化されていない臨床テキストから医療情報を抽出してラベル付けします。 |
+| [空間分析][spa-containers] | S0 | **空間分析** | リアルタイム ストリーミング ビデオを分析して、ユーザーとその動きの間の空間関係、および物理的な環境内のオブジェクトの相互作用を把握します。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|

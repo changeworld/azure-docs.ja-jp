@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650419"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362518"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
@@ -62,7 +62,7 @@ Azure Machine Learning は、機械学習のライフサイクルのさまざま
 
 イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。 
 
-Azure Machine Learning イベントのサブスクリプションは、ロールベースのアクセス制御 (RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
+Azure Machine Learning イベントのサブスクリプションは、ロールベースのアクセス制御 (RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
 
 
 1. Azure portal にアクセスし、新しいサブスクリプションまたは既存のサブスクリプションを選択します。 
@@ -126,14 +126,14 @@ Azure Event Grid を使用すると、Azure Machine Learning イベントによ�
 
 1. イベントの発行先のエンドポイントを選択します。 次のスクリーンショットでは、 __[イベント ハブ]__ が選択されたエンドポイントであることを示しています。
 
-    ![select-event-handler](./media/how-to-use-event-grid/select-event-handler.png)
+    ![[イベント ハブの選択] が開いた [イベント サブスクリプションの作成] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/select-event-handler.png)
 
 選択内容を確認したら、 __[作成]__ をクリックします。 構成の後、これらのイベントはエンドポイントにプッシュされます。
 
 
 ### <a name="set-up-with-the-cli"></a>CLI を使用した設定
 
-最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
+最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
 
 Event Grid 拡張機能をインストールするには、CLI から次のコマンドを使用します。
 
@@ -164,15 +164,15 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. Azure portal で、Azure Machine Learning ワークスペースに移動し、左側のバーの [イベント] タブを選択します。 ここで、 __[ロジック アプリ]__ を選択します。 
 
-    ![select-logic-ap](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![Logic Apps の Machine Learning ワークスペース イベント ページを示すスクリーンショット。](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. ロジック アプリの UI にサインインし、トピックの種類として Machine Learning サービスを選択します。 
 
-    ![select-topic-type](./media/how-to-use-event-grid/select-topic-type.png)
+    ![リソースの種類として機械学習が選択された状態の [リソース イベントが発生したとき] ダイアログ ボックスを示すスクリーンショット。](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. 通知するイベントを選択します。 たとえば、次のスクリーンショットで __[RunCompleted]__ を選択します。
 
-    ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![イベントの種類が選択された [リソース イベントが発生したとき] ダイアログ ボックスを示すスクリーンショット。](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. 上のセクションのフィルター処理方法を使用するか、フィルターを追加して、イベントの種類のサブセットでのみロジック アプリをトリガーすることができます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の__プレフィックス フィルター__が使用されています。
 
@@ -180,15 +180,15 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 次に、このイベントを使用して電子メールを検索するステップを追加します。 イベントの受信に使用できるメール アカウントはいくつかあります。 また、電子メール アラートを送信する条件を構成することもできます。
 
-    ![select-email-action](./media/how-to-use-event-grid/select-email-action.png)
+    ![検索行にメールアドレスが入力された [アクションの選択] ダイアログ ボックスを示すスクリーンショット。](./media/how-to-use-event-grid/select-email-action.png)
 
 1. __[メールの送信]__ を選択し、パラメーターを入力します。 件名には、イベントのフィルター処理に役立つ __[Event Type]\(イベントの種類\)__ と __[Topic]\(トピック\)__ を含めることができます。 メッセージ本文で実行するために、ワークスペース ページへのリンクを含めることもできます。 
 
-    ![configure-email-body](./media/how-to-use-event-grid/configure-email-body.png)
+    ![件名行のリストから右側にトピックとイベントの種類が追加された [メールを送る] ダイアログ ボックスを示すスクリーンショット。](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. この操作を保存するには、ページの左端にある **[名前を付けて保存]** を選択します。 表示される右側のバーで、このアクションの作成を確認します。
 
-    ![confirm-logic-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![Logic Apps デザイナーの [名前を付けて保存] および [作成] ボタンを示すスクリーンショット。](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>例:データ ドリフトが再トレーニングをトリガーする
@@ -204,7 +204,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 この例では、単純な Data Factory パイプラインを使用してファイルを blob ストアにコピーし、発行された Machine Learning パイプラインを実行します。 このシナリオの詳細については、[Azure Data Factory の Machine Learning の手順](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)を設定する方法を参照してください。
 
-![adf-mlpipeline-stage](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![ML 実行 Pipeline1 を供給する data1 のコピーがあるファクトリ リソースのトレーニング パイプラインを示すスクリーンショット。](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. ロジック アプリの作成を開始します。 [Azure portal](https://portal.azure.com) にアクセスし、ロジック アプリを検索して、[作成] を選択します。
 
@@ -212,31 +212,31 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 必要な情報を入力します。 エクスペリエンスを単純化するには、Azure Data Factory パイプラインと Azure Machine Learning ワークスペースと同じサブスクリプションおよびリソース グループを使用します。
 
-    ![set-up-logic-app-for-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![ロジック アプリの [作成] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. ロジック アプリを作成したら、 __[Event Grid のリソース イベントが発生するとき]__ を選択します。 
 
-    ![select-event-grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Event Grid リソース イベントが発生したときなど、一般的なトリガー オプションを使用して開始した Logic Apps デザイナーを示すスクリーンショット。](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. ログインし、イベントの詳細を入力します。 __[リソース名]__ をワークスペース名に設定します。 __[イベントの種類]__ を __[DatasetDriftDetected]__ に設定します。
 
-    ![login-and-add-event](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![[イベントの種類] 項目が選択された [リソース イベントが発生したとき] を示すスクリーンショット。](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. 新しいステップを追加し、__Azure Data Factory__ を検索します。 __[パイプラインの実行の作成]__ を選択します。 
 
-    ![create-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![[パイプラインの実行の作成] が選択された [アクションの選択] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. ログインし、実行する公開された Azure Data Factory パイプラインを指定します。
 
-    ![specify-adf-pipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![さまざまな値がある [パイプラインの実行の作成] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. ページの左上にある **[保存]** ボタンを使用して、ロジック アプリを保存して作成します。 アプリを表示するには、[Azure portal](https://portal.azure.com) のワークスペースにアクセスし、 **[イベント]** をクリックします。
 
-    ![show-logic-app-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![ロジック アプリが強調表示されているイベントを示すスクリーンショット。](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 これで、ドリフトが発生したときに Data Factory パイプラインがトリガーされます。 [新しいワークスペース ポータル](https://ml.azure.com)で、データ ドリフトの実行と機械学習パイプラインの詳細を確認します。 
 
-![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
+![パイプライン エンドポイントを示すスクリーンショット。](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>例:タグに基づいてモデルをデプロイする
 

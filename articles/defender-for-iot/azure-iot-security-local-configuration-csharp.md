@@ -4,7 +4,7 @@ description: Defender for IoT セキュリティ サービスのセキュリテ�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931471"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851235"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
 
 Defender for IoT セキュリティ エージェントでは、ローカル構成ファイルの構成が使用されます。
 
-このセキュリティ エージェントは、エージェントの起動時に構成ファイルを 1 回読み取ります。 ローカル構成ファイルにある構成には、認証構成とその他のエージェント関連の構成の両方が含まれます。
+セキュリティ エージェントにより、エージェントの実行開始時に構成ファイルが 1 回読み取られます。 ローカル構成ファイルで指定されている構成には、認証構成とその他のエージェント関連の構成の両方が含まれます。
 
 C# セキュリティ エージェントでは、複数の構成ファイルが使用されます。
 
@@ -57,7 +57,7 @@ Windows の場合:
 | highPriorityQueueSizePercentage | 0 < 数値 < 1 | 優先度が高いメッセージ専用の合計キャッシュの部分。 |
 | logLevel | "Off"、"Fatal"、"Error"、"Warning"、"Information"、"Debug"  | この重大度以上のログ メッセージは、デバッグ コンソール (Linux では Syslog) に記録されます。 |
 | fileLogLevel |  "Off"、"Fatal"、"Error"、"Warning"、"Information"、"Debug"| この重大度以上のログ メッセージは、ファイル (Linux では Syslog) に記録されます。 |
-| diagnosticVerbosityLevel | "None"、"Some"、"All" | 診断イベントの詳細レベル。 None - 診断イベントは送信されません。Some - 重大度が高い診断イベントのみ送信されます。All - すべてのログが診断イベントとして送信されます。 |
+| diagnosticVerbosityLevel | "None"、"Some"、"All" | 診断イベントの詳細レベル。 None - 診断イベントは送信されません。 Some - 重要度の高い診断イベントだけが送信されます。 All - すべてのログも、診断イベントとして送信されます。 |
 | logFilePath | ファイルへのパス | fileLogLevel > Off の場合、このファイルにログが書き込まれます。 |
 | defaultEventPriority | "High"、"Low"、"Off" | 既定のイベント優先度。 |
 
@@ -85,7 +85,8 @@ Windows の場合:
 | 構成名 | 指定できる値 | 詳細 |
 |:-----------|:---------------|:--------|
 | moduleName | string | セキュリティ モジュール ID の名前。 この名前は、デバイスのモジュール ID 名に対応している必要があります。 |
-| deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの)。 || schedulerInterval | TimeSpan 文字列 | 内部スケジューラの間隔。 |
+| deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの)。 |
+| schedulerInterval | TimeSpan 文字列 | 内部スケジューラの間隔。 |
 | gatewayHostname | string | Azure Iot Hub のホスト名。 通常 <my-hub>.azure-devices.net |
 | filePath | 文字列 - ファイルへのパス | 認証シークレットを含むファイルへのパス。|
 | type | "SymmetricKey"、"SelfSignedCertificate" | 認証用のユーザー シークレット。 ユーザー シークレットが対称キーの場合は、*SymmetricKey* を選択します。シークレットが自己署名証明書の場合は、*SelfSignedCertificate* を選択します。 |

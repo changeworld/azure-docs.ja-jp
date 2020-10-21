@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291670"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91409716"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight のクォータの増加を要求する
 
 CPU コア クォータは、確実に、特定の Azure リージョン内のすべての顧客にリソース使用量が公平に配分されるようにするのに役立ちます。 ただし、状況によっては、現在のクォータで許可されているよりも多くのクラスター リソースが業務で必要になる場合があります。 このような場合は、データ処理の要件に合わせてクラスターをデプロイできるように、CPU コア クォータの増加を要求できます。
 
-クォータの上限に達すると、新しいクラスターをデプロイしたり、ワーカー ノードを追加して既存のクラスターをスケールアウトしたりすることができません。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいては 30 CPU コアの制限が存在し、米国東部 2 においてはさらに 30 CPU コアを使用できる場合があります。
+クォータの上限に達すると、新しいクラスターをデプロイしたり、ワーカー ノードを追加して既存のクラスターをスケールアウトしたりすることができません。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいては 30 CPU コアの制限が存在し、米国東部においてはさらに 30 CPU コアを使用できる場合があります。
 
 ## <a name="gather-required-information"></a>必要な情報を収集する
 

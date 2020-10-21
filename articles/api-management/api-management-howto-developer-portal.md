@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614064"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715461"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -172,7 +172,7 @@ CORS は手動で有効にすることもできます。
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>開発者ポータルを編集するにはどのようなアクセス許可が必要ですか。
 
-管理モードでポータルを開いたときに `Oops. Something went wrong. Please try again later.` エラーが表示される場合、必要なアクセス許可 (RBAC) が不足している可能性があります。
+管理モードでポータルを開いたときに `Oops. Something went wrong. Please try again later.` エラーが表示される場合、必要なアクセス許可 (Azure RBAC) が不足している可能性があります。
 
 従来のポータルでは、ユーザー管理者によるポータルへのアクセスを許可するためには、サービス スコープのアクセス許可 `Microsoft.ApiManagement/service/getssotoken/action` (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) が必要でした。 新しいポータルでは、スコープ `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` のアクセス許可 `Microsoft.ApiManagement/service/users/token/action` が必要です。
 

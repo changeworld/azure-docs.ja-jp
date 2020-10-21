@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 08/20/2020
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483798"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873215"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -33,9 +33,6 @@ ms.locfileid: "89483798"
 - サービス プロバイダーのテナント (顧客のリソースを管理する場所) のテナント ID
 - 顧客のテナント (リソースはサービス プロバイダーで管理されます) のテナント ID
 - サービス プロバイダーで管理される (またはサービス プロバイダーで管理されるリソース グループを含む) 顧客のテナントにある特定のサブスクリプションそれぞれのサブスクリプション ID
-
-> [!NOTE]
-> サブスクリプション内の 1 つ以上のリソース グループのみをオンボードする場合でも、サブスクリプション レベルでデプロイを行う必要があるため、サブスクリプション ID が必要になります。
 
 こうした ID 値がまだない場合は、次のいずれかの方法で取得できます。 デプロイではこれらの正確な値を必ず使用してください。
 
@@ -72,7 +69,7 @@ az account show
 承認を定義する場合は、ユーザーがジョブの完了に必要なアクセス許可のみを持つように、必ず最小限の特権の原則に従ってください。 サポートされているロールに関するガイドラインと情報については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../concepts/tenants-users-roles.md)」を参照してください。
 
 > [!IMPORTANT]
-> Azure AD グループのアクセス許可を追加するためには、 **[グループの種類]** を **[Office 365]** ではなく、 **[セキュリティ]** にする必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+> Azure AD グループのアクセス許可を追加するには、 **[グループの種類]** を **[セキュリティ]** に設定する必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 承認を定義するために、アクセスを許可するサービス プロバイダー テナントの各ユーザー、各ユーザー グループ、または各サービス プリンシパルの ID 値を知っておく必要があります。 また、割り当てる各組み込みロールのロール定義 ID も必要になります。 それらをまだ持っていない場合は、サービス プロバイダー テナント内から次のコマンドを実行して取得することができます。
 
@@ -128,6 +125,11 @@ az role definition list --name "<roleName>" | grep name
 
 オンボード プロセスには、Azure Resource Manager テンプレート ([サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)に提供されています) と、お使いの構成に合わせるための変更と承認の定義を行う、対応するパラメーター ファイルが必要です。
 
+> [!IMPORTANT]
+> ここで説明するプロセスでは、同じ顧客テナントにサブスクリプションをオンボードしている場合でも、オンボードするサブスクリプションごとに個別のデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのデプロイで実行できます。
+>
+> また、同じサブスクリプション (またはサブスクリプション内のリソース グループ) に適用される複数のプランに対しても個別のデプロイが必要です。 適用される各プランに、それぞれ異なる **mspOfferName** を使用する必要があります。
+
 選択するテンプレートは、オンボードの対象がサブスクリプション全体、リソース グループ、サブスクリプション内の複数のリソース グループのいずれであるかによって異なります。 また、この方法でサブスクリプションをオンボードしたい方のために、Azure Marketplace に公開したマネージド サービス オファーを購入した顧客に使用できるテンプレートも用意されています。
 
 |オンボードの対象  |使用する Azure Resource Manager テンプレート  |変更するパラメーター ファイル |
@@ -137,10 +139,8 @@ az role definition list --name "<roleName>" | grep name
 |サブスクリプション内の複数のリソース グループ   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |サブスクリプション (Azure Marketplace に公開されたオファーの使用時)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
-> [!IMPORTANT]
-> ここで説明するプロセスでは、同じ顧客テナントにサブスクリプションをオンボードしている場合でも、オンボードするサブスクリプションごとに個別のデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのデプロイで実行できます。
->
-> また、同じサブスクリプション (またはサブスクリプション内のリソース グループ) に適用される複数のプランに対しても個別のデプロイが必要です。 適用される各プランに、それぞれ異なる **mspOfferName** を使用する必要があります。
+> [!TIP]
+> 1 回のデプロイでグループ全体をオンボードすることはできませんが、[管理グループ レベルでポリシーをデプロイする](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)ことはできます。 ポリシーによって、管理グループ内の各サブスクリプションが指定された管理対象のテナントに委任されているかどうかが確認され、委任されていない場合は、指定した値に基づく割り当てが作成されます。
 
 次の例では、変更した **delegatedResourceManagement.parameters.json** ファイルを示します。これを使用すれば、サブスクリプションをオンボードすることができます。 ([rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) フォルダー内にある) リソース グループのパラメーター ファイルは似ていますが、オンボードの対象となる特定のリソース グループを識別するための **rgName** パラメーターも含まれています。
 

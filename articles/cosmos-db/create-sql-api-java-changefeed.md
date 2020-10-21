@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f2dcefa8ed2f4b80ec66851cdc67ee2283a6ac7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322824"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362046"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Azure Cosmos DB SQL API と変更フィード プロセッサを使用する Java アプリケーションを作成する方法
 
@@ -78,7 +78,7 @@ mvn clean package
     * **InventoryContainer-pktype** - インベントリ レコードの具体化されたビュー。項目 ```type``` に対してクエリを実行するように最適化されています。
     * **InventoryContainer-leases** - リース コンテナーは、変更フィードに常に必要です。リースは、変更フィードの読み取りでのアプリの進行状況を追跡します。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="空のコンテナー":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Azure Cosmos DB アカウント":::
 
 1. ターミナルで、プロンプトが表示されます。
 
@@ -96,7 +96,7 @@ mvn clean package
 
     ブラウザーで Azure portal のデータ エクスプローラーに戻ります。 **InventoryContainer-leases** コンテナーで、 **[items]\(項目\)** をクリックして内容を表示します。 変更フィード プロセッサによってリース コンテナーが設定されたことがわかります。つまり、プロセッサが ```SampleHost_1``` ワーカーに、**InventoryContainer** の一部のパーティションに対するリースを割り当てました。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="リース":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Azure Cosmos DB アカウント":::
 
 1. ターミナルでもう一度 Enter キーを押します。 これにより、**InventoryContainer** への 10 個のドキュメントの挿入がトリガーされます。 各ドキュメントの挿入は JSON として変更フィードに表示されます。次のコールバック コードは、JSON ドキュメントを具体化されたビューにミラーリングすることによって、これらのイベントを処理します。
 
@@ -106,15 +106,15 @@ mvn clean package
 
 1. コードの実行には 5 から 10 秒かかります。 次に、Azure portal のデータ エクスプローラーに戻り、 **[InventoryContainer] > [items]\(項目\)** に移動します。 項目がインベントリ コンテナーに挿入されていることがわかります。パーティション キー (```id```) に注意してください。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="フィード コンテナー":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Azure Cosmos DB アカウント":::
 
 1. 次に、データ エクスプローラーで、 **[InventoryContainer-pktype] > [items]\(項目\)** に移動します。 これは具体化されたビューです。このコンテナー内の項目は、変更フィードによってプログラムで挿入されたため、**InventoryContainer** をミラーリングしています。 パーティション キー (```type```) に注意してください。 したがって、この具体化されたビューは、```type``` をフィルター処理するクエリ用に最適化されています。これは、```id``` でパーティション分割されている **InventoryContainer** では効率が悪くなります。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="具体化されたビュー":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Azure Cosmos DB アカウント":::
 
 1. 1 つの ```upsertItem()``` 呼び出しだけを使用して、**InventoryContainer** と **InventoryContainer-pktype** の両方からドキュメントを削除します。 まず、Azure portal のデータ エクスプローラーを見てみましょう。 ```/type == "plums"``` のドキュメント (下で赤で囲まれている) を削除します。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="具体化されたビュー":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Azure Cosmos DB アカウント":::
 
     もう一度 Enter キーを押して、コード例の ```deleteDocument()``` 関数を呼び出します。 以下に示すこの関数は、ドキュメントの新しいバージョンを ```/ttl == 5``` で upsert します。これにより、ドキュメントの Time-To-Live (TTL) は 5 秒に設定されます。 
     

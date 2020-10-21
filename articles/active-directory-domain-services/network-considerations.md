@@ -2,20 +2,20 @@
 title: Azure AD Domain Services のネットワーク計画と接続 | Microsoft Docs
 description: Azure Active Directory Domain Services を実行するときの仮想ネットワーク設計の考慮事項と接続に使用されるリソースについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.author: joflore
+ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749610"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968091"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -115,6 +115,8 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | ドメインの管理。 |
 
 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。 このネットワーク セキュリティ グループを削除しないでください。 これがないと、ロード バランサーは正常に機能しません。
+
+必要に応じて、[Azure PowerShell を使用して必要なネットワーク セキュリティ グループとルールを作成する](powershell-create-instance.md#create-a-network-security-group)ことができます。
 
 > [!WARNING]
 > これらのネットワーク リソースと構成を手動で編集しないでください。 正しく構成されていないネットワーク セキュリティ グループまたはユーザー定義のルート テーブルを、マネージド ドメインが展開されているサブネットに関連付けると、Microsoft のドメインのサービスと管理の機能が中断する可能性があります。 Azure AD テナントとマネージド ドメインの間の同期も中断されます。

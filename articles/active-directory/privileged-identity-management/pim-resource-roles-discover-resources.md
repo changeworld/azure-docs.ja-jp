@@ -11,31 +11,34 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568082"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理する Azure リソースを検出する
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、Azure リソースの保護を向上させることができます。 これは、既に Privileged Identity Management を使用して Azure AD ロールを保護している組織と、運用リソースをセキュリティで保護しようとしている管理グループとサブスクリプションの所有者に役立ちます。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、Azure リソースの保護を向上させることができます。 これは、次の場合に役立ちます。
 
-Privileged Identity Management を Azure リソース用に初めて設定するときは、Privileged Identity Management を使用して保護するリソースを検出して選択する必要があります。 Privileged Identity Management を使用して管理できるリソースの数に制限はありません。 ただし、最も重要な (運用) リソースから始めることをお勧めします。
+- 既に Privileged Identity Management を使用して Azure AD ロールを保護している組織
+- 運用リソースをセキュリティで保護しようとしている管理グループとサブスクリプションの所有者
+
+Privileged Identity Management を Azure リソース用に初めて設定するときは、Privileged Identity Management を使用して保護するリソースを検出して選択する必要があります。 Privileged Identity Management を使用して管理できるリソースの数に制限はありません。 ただし、最も重要な運用リソースから始めることをお勧めします。
 
 ## <a name="discover-resources"></a>リソースを探索する
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
 1. **[Azure リソース]** を選択します。
 
-    Azure リソースに対して Privileged Identity Management を初めて使用する場合は、 **[リソースを検出する]** ページが表示されます。
+    Azure リソースに対して Privileged Identity Management を初めて使用する場合は、**[リソースを検出する]** ページが表示されます。
 
     ![初めて使用する場合の、リソースが一覧表示されていない [リソースの検出] ウィンドウ](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
@@ -45,13 +48,16 @@ Privileged Identity Management を Azure リソース用に初めて設定する
 
 1. **[リソースを検出する]** を選択して、検出エクスペリエンスを起動します。
 
-    ![サブスクリプション、管理グループなど、管理できるリソースが一覧表示されている [検出] ウィンドウ](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![[検出] ウィンドウに、サブスクリプション、管理グループなど、管理できるリソースが一覧表示されています](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. **[検出]** ページで、 **[リソース状態のフィルター]** と **[リソースの種類の選択]** を使用して、書き込みアクセス許可がある管理グループまたはサブスクリプションをフィルター処理します。 おそらく、最も簡単なのは、 **[すべて]** から始めることです。
+1. **[検出]** ページで、**[リソース状態のフィルター]** と **[リソースの種類の選択]** を使用して、書き込みアクセス許可がある管理グループまたはサブスクリプションをフィルター処理します。 おそらく、最も簡単なのは、**[すべて]** から始めることです。
 
-    検索して選択できるのは、Privileged Identity Management を使用して管理する管理グループまたはサブスクリプションのリソースのみです。 Privileged Identity Management で管理グループまたはサブスクリプションを管理する場合は、その子リソースも管理できます。
+   管理グループまたはサブスクリプション リソースを検索して選択し、Privileged Identity Management で管理できます。 Privileged Identity Management で管理グループまたはサブスクリプションを管理する場合は、その子リソースも管理できます。
 
-1. 管理したい非管理リソースの横にあるチェックボックスをオンにします。
+   > [!Note]
+   > PIM で管理されている管理グループに新しい子 Azure リソースを追加すると、PIM で子リソースを検索することにより、それを管理対象にすることができます。
+
+1. 管理するアンマネージド リソースを選択します。
 
 1. **[リソースの管理]** を選択して、選択したリソースの管理を開始します。
 
@@ -60,7 +66,7 @@ Privileged Identity Management を Azure リソース用に初めて設定する
 
     ![リソースが選択され、[リソースの管理] オプションが強調表示されている [検出] ウィンドウ](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 管理対象として選択したリソースのオンボードを確認するメッセージが表示されたら、 **[はい]** を選択します。
+1. 管理対象として選択したリソースのオンボードを確認するメッセージが表示されたら、**[はい]** を選択します。
 
     ![管理対象として選択したリソースのオンボードを確認するメッセージ](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

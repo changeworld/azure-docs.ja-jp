@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235538"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629014"
 ---
 # <a name="on-demand-provisioning"></a>オンデマンド プロビジョニング
 数秒でユーザーをアプリケーションにプロビジョニングするには、オンデマンド プロビジョニングを使用します。 この機能を使用すると、特に以下のことが可能です。
@@ -28,12 +28,15 @@ ms.locfileid: "88235538"
 ## <a name="how-to-use-on-demand-provisioning"></a>オンデマンド プロビジョニングの使用方法
 
 1. **Azure portal** にサインインします。
-2. **[すべてのサービス]**  >  **[エンタープライズ アプリケーション]** と移動します。
-3. 目的のアプリケーションを選択してから、プロビジョニング構成ページに移動します。
-4. 管理者の資格情報を指定してプロビジョニングを構成します。
-5. **[Provision on demand] (オンデマンドでプロビジョニングする)** を選択します。
-6. 名、姓、表示名、ユーザー プリンシパル名、またはメール アドレスでユーザーを検索します。
-7. ページの下部にある **[プロビジョニング]** を選択します。
+1. **[すべてのサービス]**  >  **[エンタープライズ アプリケーション]** と移動します。
+1. 目的のアプリケーションを選択してから、プロビジョニング構成ページに移動します。
+1. 管理者の資格情報を指定してプロビジョニングを構成します。
+1. **[Provision on demand] (オンデマンドでプロビジョニングする)** を選択します。
+1. 名、姓、表示名、ユーザー プリンシパル名、またはメール アドレスでユーザーを検索します。
+   > [!NOTE]
+   > クラウド HR プロビジョニング アプリ (Workday、SuccessFactors から AD、Azure AD) の場合、入力値は異なります。 Workday のシナリオの場合は、Workday でのユーザーの "WID" を指定してください。 SuccessFactors のシナリオの場合は、SuccessFactors でのユーザーの "personIdExternal" を指定してください。 
+ 
+1. ページの下部にある **[プロビジョニング]** を選択します。
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="ユーザーをオンデマンドでプロビジョニングするための Azure portal UI を示すスクリーンショット。":::
 
@@ -121,7 +124,7 @@ ms.locfileid: "88235538"
 
 次に、ユーザーのオンデマンド プロビジョニングが成功した後に表示される内容の例を示します。
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="ユーザーのオンデマンド プロビジョニングが成功したことを示すスクリーンショット。":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="ユーザーをオンデマンドでプロビジョニングするための Azure portal UI を示すスクリーンショット。":::
 
 #### <a name="view-details"></a>詳細を表示する
 
@@ -144,7 +147,7 @@ ms.locfileid: "88235538"
 > [!NOTE]
 > 以下の制限事項は、オンデマンド プロビジョニング機能に固有のものです。 アプリケーションがプロビジョニングのグループ、削除、またはその他の機能をサポートしているかどうかについては、そのアプリケーションのチュートリアルを確認してください。
 
-* Workday、アマゾン ウェブ サービス (AWS)、SuccessFactors のアプリケーションでは、オンデマンド プロビジョニングはサポートされていません。 
+* アマゾン ウェブ サービス (AWS) アプリケーションの場合、オンデマンド プロビジョニングはサポートされていません。 
 * グループとロールのオンデマンド プロビジョニングはサポートされていません。
 * オンデマンド プロビジョニングでは、アプリケーションから割り当て解除されたユーザーの無効化をサポートしています。 ただし、Azure AD から無効化または削除されたユーザーの無効化または削除はサポートしていません。 これらのユーザーは、ユーザーを検索するときに表示されません。
 

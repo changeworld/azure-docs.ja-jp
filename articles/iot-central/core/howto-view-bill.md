@@ -1,25 +1,25 @@
 ---
 title: Azure IoT Central アプリケーションで請求書を管理し、無料の料金プランから切り替える | Microsoft Docs
 description: 管理者として Azure IoT Central アプリケーションで請求書を管理し、無料の料金プランから標準の料金プランに切り替える方法を学習します。
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/09/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 515f5f665e947ff9594cce6dbbaea9b5e0c50ebf
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157515"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999705"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>IoT Central アプリケーションでの請求書の管理
 
-この記事では、管理者として Azure IoT Central アプリケーションの管理セクションで請求書を管理する方法について説明します。 無料の料金プランから標準の料金プランにアプリケーションを切り替える方法について学習し、料金プランをアップグレードまたはダウングレードする方法についても学習します。
+この記事では、管理者が Azure IoT Central の課金を管理する方法について説明します。 無料の料金プランから標準の料金プランにアプリケーションを切り替えることや、料金プランをアップグレードまたはダウングレードすることができます。
 
-**[管理]** セクションにアクセスして使用するには、*管理者*ロールか、Azure IoT Central アプリケーションの請求を表示できる*カスタム ユーザー ロール*が必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの**管理者**ロールに割り当てられます。
+**[管理]** セクションにアクセスするには、"*管理者*" ロールであるか、課金を表示できる "*カスタム ユーザー ロール*" を持っている必要があります。 Azure IoT Central アプリケーションを作成したユーザーには、自動的に**管理者**ロールが割り当てられます。
 
 ## <a name="move-from-free-to-standard-pricing-plan"></a>無料から標準に料金プランを切り替える
 
@@ -55,9 +55,9 @@ ms.locfileid: "80157515"
 
 1. **[管理]** セクションの **[価格]** ページに移動します。
 
-    ![試用版の状態](media/howto-view-bill/pricing.png)
+    ![価格プランをアップグレードする](media/howto-view-bill/pricing.png)
 
-1. **[プラン]** を選択し、 **[保存]** をクリックするとアップグレードまたはダウングレードされます。
+1. **[プラン]** を選択し、 **[保存]** を選択してアップグレードまたはダウングレードします。
 
 ## <a name="view-your-bill"></a>課金状況の表示
 

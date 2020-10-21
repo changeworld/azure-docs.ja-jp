@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886318"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91276086"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -102,24 +102,17 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 [ワークスペース](#workspace) > [実験](#experiments) > [実行](#runs) > **実行構成**
 
-実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義する一連の命令です。 構成には、既存の Python 環境を使用するかどうかや、仕様から構築される Conda 環境を使用するかどうかなど、広範な動作の定義セットが含まれます。
+実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義します。 構成を使用して、スクリプト、コンピューティング先、実行する Azure ML 環境、任意の分散ジョブ固有の構成、いくつかの追加のプロパティを指定します。 実行のための構成可能なオプションのセット全体の詳細については、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) に関する記事を参照してください。
 
 実行構成は、トレーニング スクリプトが含まれるディレクトリ内のファイルに保持できます。   またはメモリ内オブジェクトとして構築して実行の送信に使用できます。
 
-実行構成の例については、[モデルをトレーニングするためのコンピューティング先の使用](how-to-set-up-training-targets.md)に関するページを参照してください。
-
-### <a name="estimators"></a>Estimator
-
-一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
-
-推定器の詳細については、[推定器を使用した ML モデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
+実行構成の例については、[トレーニングの実行の構成](how-to-set-up-training-targets.md)に関する記事を参照してください。
 
 ### <a name="snapshots"></a>スナップショット
 
 [ワークスペース](#workspace) > [実験](#experiments) > [実行](#runs) > **スナップショット**
 
 実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
-
 
 ### <a name="logging"></a>ログ記録
 
@@ -133,7 +126,7 @@ Azure Machine Learning では、標準的な実行メトリックが自動的に
 
 ### <a name="git-tracking-and-integration"></a>Git の追跡と統合
 
-ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 これは、推定器、ML パイプライン、またはスクリプトの実行を使用して送信した実行で機能します。 SDK または Machine Learning CLI から送信された実行でも機能します。
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 これは、スクリプト実行構成または ML パイプラインを使用して送信した実行で機能します。 SDK または Machine Learning CLI から送信された実行でも機能します。
 
 詳細については、「[Azure Machine Learning との Git 統合](concept-train-model-git-integration.md)」を参照してください。
 

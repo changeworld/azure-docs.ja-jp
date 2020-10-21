@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017236"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91716107"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -21,22 +21,22 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 
 <a id="azure-role-based-access-control-rbac"></a>
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-RBAC では、ロールの割り当てを使用して、"*セキュリティ プリンシパル*" にアクセス許可のセットが効果的に適用されます。 "*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求している、Azure Active Directory (AD) で定義されたユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
+Azure RBAC を使用すると、ロールの割り当てを使用して、"*セキュリティ プリンシパル*" にアクセス許可のセットが効果的に適用されます。 "*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求している、Azure Active Directory (AD) で定義されたユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
 
 通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、コンテナー (ファイル システム) のリソースに拡張されています。
 
-お使いのストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+ストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 > [!NOTE]
 > ゲスト ユーザーがロールの割り当てを作成することはできません。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>ファイルおよびディレクトリ レベルのアクセス制御リストでのロール割り当ての影響
 
-Azure ロールの割り当ての使用は、アクセス許可の制御として効果的ですが、ACL と比較すると、非常にきめの粗いメカニズムです。 RBAC の最小粒度は、コンテナー レベルで、これは ACL よりも高い優先順位で評価されます。 したがって、セキュリティ プリンシパルにコンテナーのスコープでロールを割り当てた場合、ACL の割り当てに関係なく、そのセキュリティ プリンシパルには、そのコンテナー内の "すべて" のディレクトリとファイルに対してそのロールに関連付けられている承認レベルが適用されます。
+Azure ロールの割り当ての使用は、アクセス許可の制御として効果的ですが、ACL と比較すると、非常にきめの粗いメカニズムです。 Azure RBAC の最小単位はコンテナー レベルで、これは ACL より高い優先順位で評価されます。 したがって、セキュリティ プリンシパルにコンテナーのスコープでロールを割り当てた場合、ACL の割り当てに関係なく、そのセキュリティ プリンシパルには、そのコンテナー内の "すべて" のディレクトリとファイルに対してそのロールに関連付けられている承認レベルが適用されます。
 
-[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを通じて、セキュリティ プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作がセキュリティ プリンシパルの Azure ロールの割り当てによって承認されると、承認はすぐに決定され、追加の ACL チェックは実行されません。 また、セキュリティ プリンシパルに Azure ロールの割り当てがない場合や、要求の操作が、割り当てられているアクセス許可と一致しない場合は、要求された操作の実行をセキュリティ プリンシパルが許可されているかどうかを判断するために、ACL チェックが実行されます。
+[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを使用してセキュリティ プリンシパルに Azure RBAC データ アクセス許可が付与されると、これらのアクセス許可は、要求の認可時に最初に評価されます。 要求された操作がセキュリティ プリンシパルの Azure ロールの割り当てによって承認されると、承認はすぐに決定され、追加の ACL チェックは実行されません。 また、セキュリティ プリンシパルに Azure ロールの割り当てがない場合や、要求の操作が、割り当てられているアクセス許可と一致しない場合は、要求された操作の実行をセキュリティ プリンシパルが許可されているかどうかを判断するために、ACL チェックが実行されます。
 
 > [!NOTE]
 > セキュリティ プリンシパルにストレージ BLOB データ所有者の組み込みロールが割り当てられている場合、そのセキュリティ プリンシパルは "*スーパー ユーザー*" と見なされ、すべての変更操作 (ディレクトリやファイルの所有権の設定や、自分が所有者ではないディレクトリやファイルへの ACL の設定など) へのフル アクセス権が付与されます。 スーパー ユーザーのアクセス権は、リソースの所有者を変更するために承認された唯一の方法です。
@@ -102,7 +102,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 | **実行 (X)** | Data Lake Storage Gen2 のコンテキストでは、何も意味しない | ディレクトリの子項目をスキャンするために必要です。 |
 
 > [!NOTE]
-> ACL のみを使用して (RBAC なしで) アクセス許可を付与する場合、ファイルにセキュリティ プリンシパルの読み取りまたは書き込みアクセス権を付与するには、コンテナーとそのファイルまでつながるフォルダー階層内の各フォルダーにセキュリティ プリンシパルの**実行**のアクセス許可を付与する必要があります。
+> ACL のみを使用して (Azure RBAC なしで) アクセス許可を付与する場合、ファイルにセキュリティ プリンシパルの読み取りまたは書き込みアクセス権を付与するには、コンテナーとそのファイルまでつながるフォルダー階層内の各フォルダーにセキュリティ プリンシパルの**実行**のアクセス許可を付与する必要があります。
 
 #### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
 

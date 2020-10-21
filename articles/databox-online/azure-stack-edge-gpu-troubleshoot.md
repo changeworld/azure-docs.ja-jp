@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 413847b7858549dc6130f219829b220b2857c7e2
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743201"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938892"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスの問題のトラブルシューティング 
 
@@ -200,6 +200,7 @@ ms.locfileid: "91743201"
 |The connection times out. (接続がタイムアウトになりました。)|Azure Stack Edge Pro にサインインし、ロックが解除されていることを確認します。 デバイスは再起動される度に、ユーザーがサインインするまでロックされた状態になります。|
 
 
+
 ## <a name="next-steps"></a>次のステップ
 
-- [このリリースの既知の問題](azure-stack-edge-gpu-2008-release-notes.md)について学習します。
+- 詳細については、[デバイスのアクティブ化に関する問題をトラブルシューティング](azure-stack-edge-gpu-troubleshoot-activation.md)する方法に関する記事を参照してください。

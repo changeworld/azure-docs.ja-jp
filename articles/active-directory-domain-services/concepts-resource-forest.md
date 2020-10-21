@@ -2,24 +2,24 @@
 title: Azure AD Domain Services のリソース フォレストの概念 | Microsoft Docs
 description: Azure Active Directory Domain Services のリソース フォレストがどのようなものであり、ユーザー認証オプションが限られたハイブリッド環境やセキュリティ上の問題があるハイブリッド環境において、組織にどのような利点をもたらすかについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 1f8c09e7e260d22aa6864327d6a890ef3beaa039
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480409"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962515"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストの概念と機能
 
-Azure Active Directory Domain Services (Azure AD DS) により、従来のオンプレミス基幹業務アプリケーションにサインイン エクスペリエンスが提供されます。 オンプレミスとクラウドのユーザーを対象に、ユーザー、グループ、およびパスワード ハッシュが Azure AD DS マネージド ドメインに同期されます。 これらの同期されたパスワード ハッシュは、オンプレミスの AD DS、Office 365、Azure Active Directory に使用できる資格情報の単一セットをユーザーに提供するものです。
+Azure Active Directory Domain Services (Azure AD DS) により、従来のオンプレミス基幹業務アプリケーションにサインイン エクスペリエンスが提供されます。 オンプレミスとクラウドのユーザーを対象に、ユーザー、グループ、およびパスワード ハッシュが Azure AD DS マネージド ドメインに同期されます。 これらの同期されたパスワード ハッシュは、オンプレミスの AD DS、Microsoft 365、Azure Active Directory に使用できる資格情報の単一セットをユーザーに提供するものです。
 
 セキュリティが確保され、セキュリティ上の追加の利点もありますが、一部の組織では、これらのユーザー パスワード ハッシュを Azure AD または Azure AD DS に同期できません。 組織内のユーザーは、スマート カード認証のみを使用しているために、パスワードを知らない場合があります。 これらの制限により、一部の組織では、Azure AD DS を使用してオンプレミスのクラシック アプリケーションを Azure にリフト アンド シフトすることができません。
 

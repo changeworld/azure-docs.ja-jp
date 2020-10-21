@@ -1,32 +1,37 @@
 ---
-title: Azure Security Center のアラートと推奨事項を SIEM にエクスポートする | Microsoft Docs
-description: この記事では、SIEM へのセキュリティ アラートと推奨事項の連続エクスポートを設定する方法について説明します
+title: 連続エクスポートによって、Azure Security Center のアラートと推奨事項を Log Analytics ワークスペースまたは Azure Event Hubs に送信できます
+description: セキュリティ アラートと推奨事項の Log Analytics ワークスペースまたは Azure Event Hubs への連続エクスポートの構成方法について説明します
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: d0ada1b615d4673f696c6f1b003288f3e7aa02e4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449163"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945289"
 ---
-# <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
+# <a name="continuously-export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項を連続的にエクスポートする
 
-Azure Security Center では、詳細なセキュリティ アラートと推奨事項が生成されます。 これらは、ポータル内またはプログラム ツールで表示できます。 場合によっては、この情報のエクスポートや、環境内の他の監視ツールへの送信が必要になることもあるでしょう。 
+Azure Security Center では、詳細なセキュリティ アラートと推奨事項が生成されます。 これらは、ポータル内またはプログラム ツールで表示できます。 場合によっては、環境内の他の監視ツールでの追跡のために、この情報の一部または全部をエクスポートする必要があります。 
 
-この記事では、アラートと推奨事項を手動または継続的な方法でエクスポートできるようにする一連のツールについて説明します。
+**連続エクスポート**を使用して、エクスポートする "*内容*" とエクスポート先の "*場所*" を完全にカスタマイズできます。 たとえば、次のように構成できます。
 
-これらのツールを使用すると、次のことができます。
+- 重大度が高いすべてのアラートを Azure イベント ハブに送信する
+- SQL サーバーの脆弱性評価スキャンで検出された重大度が中程度または高いすべての結果を、特定の Log Analytics ワークスペースに送信する
+- 生成されるたびに特定の推奨事項を、イベント ハブまたは Log Analytics ワークスペースに送信する 
 
-* Log Analytics ワークスペースへの連続エクスポート
-* Azure Event Hubs への連続エクスポート (サードパーティ SIEM との統合のため)
-* CSV ファイルへのエクスポート (1 回限り)
+この記事では、Log Analytics ワークスペースまたは Azure Event Hubs への連続エクスポートの構成方法について説明します。
 
+> [!NOTE]
+> Security Center と SIEM を統合する必要がある場合は、オプションの [SIEM へのアラートのストリーミング](export-to-siem.md)を確認してください。
+
+> [!TIP]
+> Security Center には、CSV への 1 回限りの手動エクスポートを実行するオプションも用意されています。 詳細については、[アラートと推奨事項の手動によるエクスポート](#manual-one-time-export-of-alerts-and-recommendations)に関する記事を参照してください。
 
 
 ## <a name="availability"></a>可用性
@@ -35,28 +40,30 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|Free|
-|必要なロールとアクセス許可:|リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)<br>ターゲット リソースに対する書き込みアクセス許可も必要になります|
+|必要なロールとアクセス許可:|<ul><li>リソース グループに対する**セキュリティ管理者**または**所有者**</li><li>ターゲット リソースに対する書き込みアクセス許可</li><li>後述する Azure Policy の "DeployIfNotExist" ポリシーを使用する場合は、ポリシーを割り当てるためのアクセス許可も必要です。</li></ul>|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) 中国政府 (Event Hub に)、その他の政府|
 |||
 
 
 
-## <a name="set-up-a-continuous-export"></a>連続エクスポートを設定する
+
+
+## <a name="set-up-a-continuous-export"></a>連続エクスポートを設定する 
+
+連続エクスポートは、Azure portal で Security Center のページから構成する、Security Center REST API を使用して構成する、または提供されている Azure Policy テンプレートを使用して大規模に構成することができます。 それぞれの詳細については、下の適切なタブを選択してください。
+
+### <a name="use-the-azure-portal"></a>[**Azure portal を使用する**](#tab/azure-portal)
+
+### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Azure portal で Security Center のページから連続エクスポートを構成する
 
 連続エクスポート先として Log Analytics ワークスペースまたは Azure Event Hubs のどちらを設定する場合でも、次の手順を実行する必要があります。
 
 1. Security Center のサイドバーで、 **[価格と設定]** を選択します。
-
 1. データのエクスポートを構成する特定のサブスクリプションを選択します。
-    
 1. そのサブスクリプションの設定ページのサイドバーで、 **[連続エクスポート]** を選択します。
-
     [![Azure Security Center のエクスポート オプション](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) - ここにエクスポート オプションが表示されます。 使用可能なエクスポート ターゲットごとにタブがあります。 
-
 1. エクスポートするデータの種類を選択し、それぞれの種類に対するフィルターを選択します (たとえば、重大度が高いアラートのみをエクスポートするなど)。
-
 1. 必要に応じて、選択範囲に次の 4 つの推奨事項のいずれかが含まれている場合は、脆弱性評価の結果を含めることができます。
-
     - SQL データベースの脆弱性評価の結果を修復する必要がある
     - マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある (プレビュー)
     - Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用)
@@ -66,15 +73,14 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める" :::
 
-
 1. [エクスポート ターゲット] 領域で、データを保存する場所を選択します。 データは別のサブスクリプションのターゲットにも保存できます (たとえば、中央のイベント ハブ インスタンスや中央の Log Analytics ワークスペースなど)。
-
 1. **[保存]** を選択します。
 
+### <a name="use-the-rest-api"></a>[**REST API を使用する**](#tab/rest-api)
 
-## <a name="set-up-continuous-export-via-the-rest-api"></a>REST API を利用し、連続エクスポートを設定する
+### <a name="configure-continuous-export-using-the-rest-api"></a>REST API を使用して連続エクスポートを構成する
 
-連続エクスポート機能は、Azure Security Center の[自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の選択可能な出力先にエクスポートするための自動化を作成または更新します。
+連続エクスポートは、Azure Security Center の[自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の可能な宛先のいずれかにエクスポートするためのルールを作成または更新します。
 
 - Azure Event Hub
 - Log Analytics ワークスペース
@@ -95,47 +101,67 @@ API には、Azure portal からは使用できない追加の機能が用意さ
 
 
 
-## <a name="configure-siem-integration-via-azure-event-hubs"></a>Azure Event Hubs を使用して SIEM 統合を構成する
-
-Azure Event Hubs は、ストリーミング データをプログラムで使用するための優れたソリューションです。 Azure Security Center のアラートと推奨事項に関して、これはサードパーティの SIEM と統合するための推奨される方法です。
-
-> [!NOTE]
-> ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、Azure Event Hubs を使用する方法です。 [この記事](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs)では、各種ソースからイベント ハブに監視データをストリーム配信する方法について簡単に説明するほか、詳細なガイダンスへのリンクを紹介しています。
-
-> [!NOTE]
-> これまで Azure アクティビティ ログを使用して Security Center アラートを SIEM にエクスポートしていた場合は、代わりに次の手順で同じことができます。
-
-エクスポートされたデータ型のイベント スキーマを表示するには、[イベント ハブのイベント スキーマ](https://aka.ms/ASCAutomationSchemas)にアクセスします。
 
 
-### <a name="to-integrate-with-a-siem"></a>SIEM と統合するには 
+### <a name="deploy-at-scale-with-azure-policy"></a>[**Azure Policy を使用して大規模にデプロイする**](#tab/azure-policy)
 
-選択した Security Center データを Azure Event Hubs に連続エクスポートするように構成した後、SIEM に適したコネクタを設定できます。
+### <a name="configure-continuous-export-at-scale-using-the-supplied-policies"></a>提供されているポリシーを使用して連続エクスポートを大規模に構成する
 
-* **Azure Sentinel** - そこで提供されているネイティブの Azure Security Center アラート [データ コネクタ](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)を使用する。
-* **Splunk** - [Splunk 向けの Azure Monitor アドオン](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md)を使用する
-* **IBM QRadar** - [手動で構成されたログ ソース](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/t_dsm_guide_microsoft_azure_enable_event_hubs.html)を使用する
-* **ArcSight** – [SmartConnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292) を使用する
+組織の監視とインシデント対応プロセスを自動化すると、セキュリティ インシデントの調査と軽減にかかる時間を大幅に短縮できます。
 
-また、連続エクスポートされたデータを構成済みのイベント ハブから Azure データ エクスプローラーに自動的に移動する場合は、「[イベント ハブから Azure Data Explorer にデータを取り込む](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub)」の手順を使用します。
+組織全体に連続エクスポートの構成をデプロイするには、後述の提供されている Azure Policy の "DeployIfNotExist" ポリシーを使用して、連続エクスポート手順を作成して構成します。
 
+**これらのポリシーを実装するには**
 
+1. 次の表から、適用するポリシーを選択します。
 
-## <a name="continuous-export-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースへの連続エクスポート
+    |目標  |ポリシー  |ポリシー ID  |
+    |---------|---------|---------|
+    |イベント ハブへの連続エクスポート|[Azure Security Center アラートおよび推奨事項についてイベント ハブへのエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Log Analytics ワークスペースへの連続エクスポート|[Azure Security Center アラートおよび推奨事項について Log Analytics ワークスペースへのエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    ||||
 
-Log Analytics ワークスペース内の Azure Security Center データを分析したり、Security Center と共に Azure アラートを使用したりする場合は、Log Analytics ワークスペースへの連続エクスポートを設定します。
+    > [!TIP]
+    > これらは、Azure Policy を検索して見つけることもできます。
+    > 1. Azure Policy を開きます。
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める":::
+    > 2. Azure Policy のメニューから **[定義]** を選択し、名前で検索します。 
 
-Log Analytics ワークスペースにエクスポートするには、ワークスペースで Security Center の Log Analytics ソリューションが有効になっている必要があります。 Azure portal を使用している場合は、連続エクスポートを有効にすると、Security Center の無料のソリューションが自動的に有効になります。 ただし、連続エクスポートの設定をプログラムによって構成する場合は、 **[価格と設定]** ページ内から手動で Azure Defender をオンまたはオフにする必要があります。
+1. 関連する Azure Policy ページで、 **[割り当てる]** を選択します。
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める":::
+
+1. 各タブを開き、必要に応じてパラメーターを設定します。
+    1. **[基本]** タブで、ポリシーのスコープを設定します。 集中管理を使用するには、連続エクスポートの構成を使用するサブスクリプションが含まれている管理グループにポリシーを割り当てます。 
+    1. **[パラメーター]** タブで、リソース グループとデータ型の詳細を設定します。 
+        > [!TIP]
+        > 各パラメーターには、使用可能なオプションを説明するツールヒントがあります。
+        >
+        > Azure Policy のパラメーター タブ (1) には、Security Center の連続エクスポート ページ (2) に似た構成オプションへのアクセスが提供されています。
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+    1. 必要に応じて、この割り当てを既存のサブスクリプションに適用するには、 **[修復]** タブを開き、修復タスクを作成するためのオプションを選択します。
+1. 概要ページを確認し、 **[作成]** を選択します。
+
+--- 
+
+## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースへのエクスポートについての情報
+
+Azure Security Center のデータを Log Analytics ワークスペースの内部で分析したり、Azure アラートを Security Center アラートと一緒に使用したりする場合は、Log Analytics ワークスペースへの連続エクスポートを設定します。
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics のテーブルとスキーマ
 
-セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendations* テーブルに格納されます。 これらのテーブルを含む Log Analytics ソリューションの名前は、Azure Defender を有効にしたかどうかによって異なります。Security ("Security and Audit") または SecurityCenterFree。
+セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendations* テーブルに格納されます。 
+
+これらのテーブルを含む Log Analytics ソリューションの名前は、Azure Defender を有効にしたかどうかによって異なります。Security ("Security and Audit") または SecurityCenterFree。 
+
+> [!TIP]
+> 宛先ワークスペースのデータを表示するには、**Security and Audit** または **SecurityCenterFree** ソリューションのいずれかを有効にする必要があります。
 
 ![Log Analytics の *SecurityAlert* テーブル](./media/continuous-export/log-analytics-securityalert-solution.png)
 
 エクスポートされたデータ型のイベント スキーマを表示するには、[Log Analytics テーブル スキーマ](https://aka.ms/ASCAutomationSchemas)にアクセスします。
 
-###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>エクスポートされたセキュリティ アラートと推奨事項を Azure Monitor で表示する
+
+##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>エクスポートされたアラートと推奨事項を Azure Monitor で表示する
 
 場合によっては、エクスポートされたセキュリティ アラートや推奨事項を [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) で表示することもできます。 
 
@@ -156,9 +182,9 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
     * 必要に応じて、トリガーする[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)を構成します。 アクション グループは、メール送信、ITSM チケット、Webhook などをトリガーできます。
     ![Azure Monitor のアラート ルール](./media/continuous-export/azure-monitor-alert-rule.png)
 
-これで、アクション グループの自動トリガーが設定された (指定されている場合)、新しい Azure Security Center アラートまたは推奨事項 (構成によって異なる) が Azure Monitor アラートに表示されるようになりました。
+これで、アクション グループの自動トリガーが設定された (指定されている場合)、新しい Azure Security Center アラートまたは推奨事項 (構成されている連続エクスポート ルールと Azure Monitor アラート ルールに定義されている条件によって決まります) が Azure Monitor アラートに表示されるようになります。
 
-## <a name="manual-one-time-export-of-security-alerts"></a>セキュリティ アラートの 1 回限りの手動エクスポート
+## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>アラートと推奨事項の手動による 1 回限りのエクスポート
 
 アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード]** ボタンを選択します。
 
@@ -166,7 +192,6 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
 > [!NOTE]
 > これらのレポートには、現在選択されているサブスクリプションのリソースに関するアラートと推奨事項が含まれています。
-
 
 
 ## <a name="faq---continuous-export"></a>FAQ - 連続エクスポート
@@ -180,13 +205,16 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 [Azure Event Hub の価格](https://azure.microsoft.com/pricing/details/event-hubs/)の詳細を確認してください。
 
 
+
+
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、推奨事項とアラートの連続エクスポートを構成する方法について説明しました。 また、アラート データを CSV ファイルとしてダウンロードする方法も説明しました。 
 
 関連資料については、次のドキュメントを参照してください。 
 
+- [ワークフローの自動化テンプレート](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)の詳細を確認します。
 - [Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel のドキュメント](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor のドキュメント](https://docs.microsoft.com/azure/azure-monitor/)
-- [ワークフローの自動化と連続エクスポートのデータ型スキーマ](https://aka.ms/ASCAutomationSchemas)
+- [データ型スキーマをエクスポートする](https://aka.ms/ASCAutomationSchemas)

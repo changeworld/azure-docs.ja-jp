@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362248"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91597626"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure ロールの割り当てを追加または削除する
 
@@ -35,19 +35,15 @@ Azure Active Directory で管理者ロールを割り当てる必要がある場
 
 ![サブスクリプションの [アクセス制御 (IAM)] ページ](./media/role-assignments-portal/access-control-subscription.png)
 
-[アクセス制御 (IAM)] ページを最も効果的に使用するには、ロールを割り当てる際に、次の 3 つの質問に回答できると役立ちます。
+[アクセス制御 (IAM)] ページを最大限に活用するには、次の手順に従ってロールを割り当てます。
 
-1. **誰がアクセスを必要としていますか?**
+1. アクセスが必要なユーザーを決定します。 ロールを、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てることができます。
 
-    誰が、にあてはまるのはユーザー、グループ、サービス プリンシパル、またはマネージド ID になります。 これは *セキュリティ プリンシパル* とも呼ばれます。
+1. 適切なロールを見つけます。 アクセス許可はロールでまとめてグループ化されます。 複数の [Azure 組み込みロール](built-in-roles.md)の一覧から選択することも、独自のカスタム ロールを使用することもできます。
 
-1. **それらには、どのようなロールが必要ですか?**
+1. 必要なスコープを特定します。 Azure には、[管理グループ](../governance/management-groups/overview.md)、サブスクリプション、[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)、リソースという 4 つのレベルのスコープが用意されています。 スコープの詳細については、[スコープについての理解](scope-overview.md)に関する記事を参照してください。
 
-    アクセス許可はロールでまとめてグループ化されます。 複数の[組み込みロール](built-in-roles.md)の一覧から選択することも、独自のカスタム ロールを使用することもできます。
-
-1. **どこでアクセスが必要ですか?**
-
-    どこで、にあてはまるのはアクセスが適用されるリソースのセットになります。 管理グループ、サブスクリプション、リソース グループ、またはストレージ アカウントなどの単一のリソースである場合があります。 これは*スコープ* と呼ばれます。
+1. 次のいずれかのセクションの手順を実行して、ロールを割り当てます。
 
 ## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
 
@@ -101,11 +97,11 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-   ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
+   ![サブスクリプションの [ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ウィンドウが開きます。
 
-   ![[ロールの割り当ての追加] ウィンドウ](./media/role-assignments-portal/add-role-assignment.png)
+   ![サブスクリプションの [ロールの割り当ての追加] ペイン](./media/role-assignments-portal/add-role-assignment.png)
 
 1. **[ロール]**  ドロップダウン リストで、 **[所有者]**  ロールを選択します。
 
@@ -150,7 +146,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
 1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
 
-   ![[ロールの割り当ての追加] ウィンドウ](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![システム割り当てマネージド ID の [ロールの割り当ての追加] ペイン](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. **[保存]** をクリックしてロールを割り当てます。
 
@@ -166,7 +162,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
     選択したユーザー割り当てマネージド ID に、既にロールが割り当てられている場合は、ロールの割り当ての一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
 
-    ![システム割り当てマネージド ID のロールの割り当て](./media/shared/role-assignments-user-assigned.png)
+    ![ユーザー割り当てマネージド ID のロールの割り当て](./media/shared/role-assignments-user-assigned.png)
 
 1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
 
@@ -178,7 +174,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
 1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
 
-   ![[ロールの割り当ての追加] ウィンドウ](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![ユーザー割り当てマネージド ID の [ロールの割り当ての追加] ペイン](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. **[保存]** をクリックしてロールを割り当てます。
 
@@ -194,7 +190,7 @@ Azure RBAC では、Azure リソースからアクセス権を削除するため
 
 1. ロールの割り当ての一覧で、ロールの割り当てを削除するセキュリティ プリンシパルの隣にチェックマークを追加します。
 
-   ![ロールの割り当ての削除メッセージ](./media/role-assignments-portal/remove-role-assignment-select.png)
+   ![削除対象として選択されたロールの割り当て](./media/role-assignments-portal/remove-role-assignment-select.png)
 
 1. **[削除]** をクリックします。
 
@@ -204,7 +200,7 @@ Azure RBAC では、Azure リソースからアクセス権を削除するため
 
     継承されたロールの割り当てを削除できないというメッセージが表示された場合は、子スコープでロールの割り当てを削除しようとしています。 ロールが割り当てられたスコープでアクセス制御 (IAM) を開き、再試行してください。 **[スコープ]** 列を確認し、 **[(継承済み)]** の横にあるリンクをクリックすると、正しいスコープでアクセス制御 (IAM) をすばやく開くことができます。
 
-   ![ロールの割り当ての削除メッセージ](./media/role-assignments-portal/remove-role-assignment-inherited.png)
+   ![継承されたロールの割り当てに対するロールの割り当ての削除メッセージ](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>次のステップ
 

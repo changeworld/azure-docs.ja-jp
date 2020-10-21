@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f594f663267de7ed746082e77ae603e5592e721
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362616"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "84034713"
 
 **シャード マップ マネージャー**:1 つまたは複数のシャード セットのシャード マップ、シャードの場所、およびマッピングを含む管理オブジェクトおよびデータ ストア。
 
-![マッピング][2]
+![図は、shardmaps_global、shards_global、および shard_mappings_global に関連付けられているシャード マップ マネージャーを示しています。][2]
 
 ## <a name="verbs"></a>動詞
 **水平スケーリング**:シャード マップに対するシャードの追加や削除を行ってシャードのコレクションをスケール アウト (またはスケール イン) する操作 (下図参照)。

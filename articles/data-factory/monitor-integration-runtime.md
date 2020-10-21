@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568890"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 
@@ -258,13 +258,13 @@ Azure-SSIS IR を VNet に参加させると、Azure-SSIS IR 監視ページに 
 
 Azure-SSIS IR 監視ページの **[接続の診断]** タイルで **[テスト接続]** リンクを選択してウィンドウをポップアップ表示し、そのウィンドウで、完全修飾ドメイン名 (FQDN) または IP アドレスと指定されたポートを使用して、Azure-SSIS IR と関連するパッケージ、構成、またはデータ ストアとの間の接続を確認できます ([Azure-SSIS IR からの接続のテスト](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)に関するページを参照してください)。
 
-![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Azure-SSIS IR と、関連するパッケージ、構成、データ ストアの間の接続をテストできる場所を示すスクリーンショット。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\) タイル
 
 Azure-SSIS IR にご自分の静的パブリック IP アドレスを使用すると、Azure-SSIS IR の監視ページに **[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\)** タイルが表示されます ([ Azure-SSIS IR に自分の静的パブリック IP アドレスを使用する](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)方法に関するページを参照してください)。 このタイルでは、Azure-SSIS IR の 1 つ目または 2 つ目の静的パブリック IP アドレスを指定するリンクを選択し、ウィンドウをポップアップ表示することができます。ここで、テキスト ボックスからリソース ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) をコピーすることができます。 また、ポップアップ ウィンドウで **[See your first/second static public IP address settings]\(1 つ目または 2 つ目の静的パブリック IP アドレス設定を表示する\)** リンクを選択し、Azure portal で 1 つ目または 2 つ目の静的パブリック IP アドレスを管理することもできます。
 
-![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![1 つ目または 2 つ目の静的パブリック IP アドレスを指定できる場所を示すスクリーンショット。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>[PACKAGE STORES]\(パッケージ ストア\) タイル
 

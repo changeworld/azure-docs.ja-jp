@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445731"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973582"
 ---
 # <a name="deploy-azure-sql-edge"></a>Azure SQL Edge のデプロイ 
 
@@ -25,8 +25,7 @@ Azure SQL Edge は、IoT および Azure IoT Edge のデプロイ向けに最適
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * [Azure portal](https://portal.azure.com/) にサインインします。
 * [Azure IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)を作成します。
-* [Azure portal からIoT Edge デバイス](../iot-edge/how-to-register-device-portal.md)を登録します。
-* IoT Edge デバイスを準備して、[Azure portal から IoT Edge モジュールをデプロイします](../iot-edge/how-to-deploy-modules-portal.md)。
+* [Azure IoT Edge デバイス](../iot-edge/how-to-install-iot-edge.md)を作成します。
 
 > [!NOTE]   
 > Azure Linux VM を IoT Edge デバイスとしてデプロイする場合は、こちらの[クイックスタート ガイド](../iot-edge/quickstart-linux.md)を参照してください。

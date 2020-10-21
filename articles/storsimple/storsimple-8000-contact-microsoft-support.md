@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514244"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960322"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
@@ -39,7 +39,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
    3. 複数のプランがサブスクリプションに関連付けられている場合は、適切な**サポート プラン**をドロップダウン リストから選択します。 テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
    4. **[次へ]** をクリックします。
 
-       ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![新しいポータルでの MS サポートへの問い合わせ 2](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. **[新しいサポート要求]** ブレードで、 **[手順 2 問題]** を選択します。 **[問題]** ブレードで、次の手順を実行します。
     
@@ -51,7 +51,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
     6. **[診断情報の共有]** チェック ボックスをオンにします。
     7. **[次へ]** をクリックします。
 
-       ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![新しいポータルでの MS サポートへの問い合わせ 3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. **[新しいサポート要求]** ブレードで、 **[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** ブレードで、次の手順を実行します。
 
@@ -59,7 +59,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
    2. [連絡先情報] で、名前、メール、オプションの連絡先、国や地域を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
    3. **Create** をクリックしてください。
    
-       ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![新しいポータルでの MS サポートへの問い合わせ 4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
       Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
       要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
@@ -76,11 +76,11 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 2. **[ヘルプとサポート]** ブレードにすべてのサポート リクエストの表形式の一覧が表示されます。
 
-    ![サポート要求を管理する](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![サポート要求を管理する 2](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 
-    ![サポート要求を管理する](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![サポート要求を管理する 3](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell でのサポート セッションの開始
 

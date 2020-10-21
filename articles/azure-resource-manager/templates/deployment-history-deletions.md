@@ -2,13 +2,13 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1d4f49fe6b90e672b65aa97971426186384da02f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605211"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91652484"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -16,14 +16,14 @@ ms.locfileid: "90605211"
 
 Azure Resource Manager では、上限に近づいたときに履歴からデプロイが自動的に削除されます。 自動削除という動作は過去になかったものです。 以前は、エラーを避ける目的で、デプロイ履歴から手動でデプロイを削除する必要がありました。 この変更は 2020 年 8 月 6 日に実装されました。
 
-**リソース グループのデプロイでは、自動削除がサポートされています。現時点では、[サブスクリプション](deploy-to-subscription.md)、[管理グループ](deploy-to-management-group.md)、および[テナント](deploy-to-tenant.md)のデプロイでは、デプロイ履歴のデプロイは削除されません。**
+**リソース グループのデプロイでは、自動削除がサポートされています。現時点では、[サブスクリプション](deploy-to-subscription.md)、[管理グループ](deploy-to-management-group.md)、[テナント](deploy-to-tenant.md)のデプロイに対する履歴のデプロイは、自動的には削除されません。**
 
 > [!NOTE]
 > 履歴からデプロイを削除しても、デプロイされたリソースには影響が出ません。
 
 ## <a name="when-deployments-are-deleted"></a>デプロイが削除されるタイミング
 
-デプロイが 775 件に達すると、ご自分の履歴からデプロイが削除されます。 Azure Resource Manager では、履歴が 750 に減るまでデプロイを削除します。 常に、最も古いデプロイが先に削除されます。
+デプロイが 775 件を超えると、履歴からデプロイが削除されます。 Azure Resource Manager では、履歴が 750 に減るまでデプロイを削除します。 常に、最も古いデプロイが先に削除されます。
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="デプロイ履歴からの削除":::
 

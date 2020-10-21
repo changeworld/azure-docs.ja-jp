@@ -295,7 +295,7 @@
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'
                 - name: NuGet - ランタイム
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
-                - name: 関連項目
+                - name: リファレンス
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
                 - name: サンプル
                   href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
@@ -402,6 +402,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: コード サンプル
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: リージョン別の提供状況
@@ -425,10 +427,6 @@
     - name: 仮想ネットワークを構成する
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: 検索
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: ブログ

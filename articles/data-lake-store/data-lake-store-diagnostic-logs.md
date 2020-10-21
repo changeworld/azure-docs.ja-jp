@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985066"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575539"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -33,11 +33,11 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
 2. Data Lake Storage Gen1 アカウントを開き、Data Lake Storage Gen1 アカウント ブレードから **[診断設定]** をクリックします。
 3. **[診断設定]** ブレードで、 **[診断を有効にする]** をクリックします。
 
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Traffic Manager で診断ログを有効にする")
+    ![[診断設定] オプションと [診断を有効にする] オプションが強調表示されている Data Lake Storage Gen1 アカウントのスクリーンショット。](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Traffic Manager で診断ログを有効にする")
 
 3. **[診断設定]** ブレードで、診断ログの構成を次のように変更します。
    
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Traffic Manager で診断ログを有効にする")
+    ![[名前] テキスト ボックスと [保存] オプションが強調表示されている [診断設定] セクションのスクリーンショット。](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Traffic Manager で診断ログを有効にする")
    
    * **[名前]** には、診断ログ構成の値を入力します。
    * さまざまな方法でデータを格納および処理することができます。
@@ -73,13 +73,13 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
 1. ログ記録用に Data Lake Storage Gen1 に関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログを表示する")
+    ![[BLOB] オプションが選択され、[Blob service] ブレードで 2 つの Blob service の名前が強調表示されている、Data Lake Storage Gen1 ブレードのスクリーンショット。](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログを表示する")
    
    * コンテナー **insights-logs-audit** には、監査ログが含まれます。
    * コンテナー **insights-logs-requests** には、要求ログが含まれます。
 2. これらのコンテナー内で、ログは次の構造の下に格納されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログを表示する")
+    ![コンテナーに格納されているログ構造のスクリーンショット。](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログを表示する")
    
     たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    

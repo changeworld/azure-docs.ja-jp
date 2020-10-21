@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway:強制トンネリングを構成する - サイト間接続: クラシック'
-description: すべてのインターネットへのトラフィックをオンプレミスの場所に "強制的に" リダイレクトする方法。
+description: クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94a5459ade634f6a1de029808aa6bad4d16b9a5d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201579"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874631"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用した 強制トンネリングの構成
 
@@ -57,12 +57,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ### <a name="to-sign-in"></a>サインインするには
 
-1. 管理者特権で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
-
-   ```powershell
-   azure config mode asm
-   ```
-2. アカウントに接続します。 接続については、次の例を参考にしてください。
+1. 管理者特権で PowerShell コンソールを開きます。 次の例を使用して、アカウントに接続します。
 
    ```powershell
    Add-AzureAccount
@@ -109,7 +104,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
     </VirtualNetworkSite>
 ```
 
-この例では、仮想ネットワーク 'MultiTier-VNet' には 3 つのサブネット ('Frontend'、'Midtier'、'Backend' サブネット) があり、クロスプレミス接続は 4 つ ('DefaultSiteHQ' および 3 つの分岐) 用意されています。 
+この例では、仮想ネットワークである "MultiTier-VNet" には、"Frontend"、"Midtier"、"Backend" という 3 つのサブネットがあり、"DefaultSiteHQ" と 3 つの Branch の計 4 つのクロス プレミス接続があります。 
 
 以下の手順で "DefaultSiteHQ" を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように Midtier と Backend を構成します。
 

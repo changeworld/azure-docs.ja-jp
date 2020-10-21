@@ -1,19 +1,20 @@
 ---
-title: 予約容量を使用して BLOB ストレージのコストを最適化する - Azure Storage
+title: 予約容量を使用して BLOB ストレージのコストを最適化する
+titleSuffix: Azure Storage
 description: Azure Storage の予約容量を購入して、ブロック BLOB と Azure Data Lake Storage Gen2 リソースのコストを節約することについて説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259203"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874817"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -29,7 +30,7 @@ Azure Storage の容量予約の価格については、「[ブロック BLOB �
 
 ### <a name="reservation-capacity"></a>予約容量
 
-Azure Storage の予約容量は、1 年間または 3 年間の期間については月あたり 100 TB および 1 PB 単位で購入できます。
+Azure Storage の予約容量は、1 年間または 3 年間の期間については月あたり 100 TiB および 1 PiB 単位で購入できます。
 
 ### <a name="reservation-scope"></a>予約スコープ
 
@@ -62,7 +63,7 @@ Azure Storage の予約容量は、汎用 v2 (GPv2) アカウントおよび Blo
 
 Azure Storage の予約を購入する場合は、予約のリージョン、アクセス層、冗長性オプションを選択する必要があります。 予約はそのリージョン、アクセス層、および冗長性レベルに格納されるデータに対してのみ有効です。 たとえば、ゾーン冗長ストレージ (ZRS) を使用して、ホット アクセス層のデータの予約を米国西部で購入したとします。 米国東部のデータ、アーカイブ アクセス層のデータ、または geo 冗長ストレージ (GRS) のデータに同じ予約を使用することはできません。 ただし、追加のニーズに応じて別の予約を購入することもできます。  
 
-予約は現在、100 TB または 1 PB のブロックでご利用いただくことができ、1 PB ブロックではより割引率が高くなります。 Azure Portal で予約を購入するとき、購入する予約を決定するのに役立つよう、以前の使用状況に応じて、Microsoft からの推奨が表示されることがあります。
+予約は現在、100 TiB または 1 PiB のブロックでご利用いただくことができ、1 PiB ブロックではより割引率が高くなります。 Azure Portal で予約を購入するとき、購入する予約を決定するのに役立つよう、以前の使用状況に応じて、Microsoft からの推奨が表示されることがあります。
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Azure Storage の予約容量を購入する
 
@@ -86,7 +87,7 @@ Azure Storage の予約容量は [Azure portal](https://portal.azure.com) を使
    | **アクセス層** | 予約が有効になっているアクセス層。 オプションには、*ホット*、*クール*、*アーカイブ* があります。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。 |
    | **冗長性** | 予約の冗長オプション。 オプションには、*LRS*、*ZRS*、*GRS*、*GZRS*、*RA-GRS*、*RA- GZRS* があります。 冗長オプションの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。 |
    | **請求頻度** | アカウントが予約に対して課金される頻度を示します。 オプションには *[月 1 回]* または *[前払い]* があります。 |
-   | **[サイズ]** | 予約が有効になっているリージョン。 |
+   | **[サイズ]** | 予約する容量。 |
    |**用語**  | 1 年間または 3 年間。   |
 
 1. 予約のパラメーターを選択すると、Azure portal にコストが表示されます。 ポータルには、従量課金制の割引率も表示されます。

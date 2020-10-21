@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010190"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362182"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL プールの接続に関する問題のトラブルシューティング
 
@@ -34,13 +34,14 @@ SQL プールの状態がここに表示されます。 サービスが **[使�
 
 [リソース正常性] に SQL プール インスタンスが一時停止されているか、スケーリング中であることが表示されている場合、ガイダンスに従いインスタンスを再開します。
 
-![一時停止中のサービス](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) リソースの正常性に関する追加情報がここにあります。
+![一時停止またはスケーリング中の SQL データ ウェアハウスのインスタンスを示すスクリーンショット。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Azure Resource Health に関する追加情報がここにあります。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>一時停止中の操作やスケーリング操作を確認する
 
 SQL プール インスタンスが一時停止しているのか、スケーリング中であるのかをポータルで確認します。
 
-![一時停止中のサービス](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![データ ウェアハウスが一時停止中かどうかを確認する方法を示すスクリーンショット。](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 サービスが一時停止されているか、スケーリング中の場合、メンテナンス スケジュール中でないことを確認します。 SQL プールのポータルの " *[概要]* " に、選択されているメンテナンス スケジュールが表示されます。
 

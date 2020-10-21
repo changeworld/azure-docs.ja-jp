@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449973"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求設定を変更する
 
@@ -125,8 +125,8 @@ ms.locfileid: "90980200"
     |  |  |
     | --- | --- |
     | **Specific connected organizations (特定の接続済み組織)** | 管理者が以前に追加した組織の一覧から選択する場合は、このオプションを選択します。 選択された組織のすべてのユーザーは、このアクセス パッケージを要求できます。 |
-    | **All connected organizations (すべての接続済み組織)** | すべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 |
-    | **すべてのユーザー (すべての接続済み組織 + 新しい外部ユーザー)** | このオプションは、すべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できる場合に選択し、しかも新しい外部ユーザーに対して B2B 許可リストまたは拒否リストの設定が優先されます。 |
+    | **構成済みの接続されたすべての組織** | 構成済みのすべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 構成済みのすべての組織のユーザーに公開されるアクセス パッケージを要求できるのは、構成済みの接続された組織のユーザーのみです。 |
+    | **すべてのユーザー (すべての接続済み組織 + 新しい外部ユーザー)** | インターネット上のすべてのメンバー ユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。  それらのユーザーがディレクトリ内の接続された組織に属していない場合は、パッケージを要求すると、接続された組織が自動的に作成されます。 自動的に作成された接続組織は、**提案された**状態になります。 提案された状態の詳細については、「[接続された組織の状態プロパティ](entitlement-management-organization.md#state-properties-of-connected-organizations)」を参照してください。 |
 
     接続されている組織とは、ご自身と関係のある外部 Azure AD ディレクトリまたはドメインです。
 

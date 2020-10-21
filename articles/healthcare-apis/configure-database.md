@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795781"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042492"
 ---
 # <a name="configure-database-settings"></a>データベース設定を構成する 
 
@@ -38,7 +38,12 @@ Azure API for FHIR では、基になるデータベースのパフォーマン�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure API for FHIR の RU 数を更新する方法について説明しました。 次に、フル マネージド Azure API for FHIR をデプロイします。
+この記事では、Azure API for FHIR の RU 数を更新する方法について説明しました。 顧客管理キーをデータベース設定として構成する方法の詳細については、次を参照してください。
+
+>[!div class="nextstepaction"]
+>[顧客管理キーの構成](customer-managed-key.md)
+
+または、フル マネージド Azure API for FHIR をデプロイすることもできます。
  
 >[!div class="nextstepaction"]
 >[Azure API for FHIR をデプロイする](fhir-paas-portal-quickstart.md)

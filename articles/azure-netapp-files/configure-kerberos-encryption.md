@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 9/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 05d173b715a8bc060e2f4d9cdcc7e3aef5630109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461480"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -135,7 +135,7 @@ NFSv4.1 ボリュームで現在使用できるセキュリティ オプショ�
 
 ### <a name="expected-performance-impact"></a>予想されるパフォーマンスに対する影響 
 
-焦点となる領域が 2 つがあります。 軽い負荷と上限です。 次の一覧では、パフォーマンスに対する影響について、セキュリティ設定別とシナリオ別に説明します。 比較はすべて `sec=sys` セキュリティ パラメーターに対して行われています。
+焦点となる領域が 2 つがあります。 軽い負荷と上限です。 次の一覧では、パフォーマンスに対する影響について、セキュリティ設定別とシナリオ別に説明します。 比較はすべて `sec=sys` セキュリティ パラメーターに対して行われています。 1 つのクライアントを使用して、1 つのボリュームでテストが実行されました。 
 
 krb5 のパフォーマンスに対する影響:
 

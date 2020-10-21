@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d838fe1d1015e1913c8aa28a122b06d108fb4676
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594307"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446644"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure PowerShell を使用して [Web トラフィック リダイレクト](multiple-site-overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを定義します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
+[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure PowerShell を使用して [Web トラフィック リダイレクト](multiple-site-overview.md)を構成できます。 この記事では、仮想マシン スケール セットを使用してバックエンド プールを定義します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
 
 この記事では、次の方法について説明します。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用することを選択する場合、この記事では Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -106,7 +106,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>最初のリスナーと規則の作成
 
-アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、2 つのドメインに対して 2 つのリスナーを作成します。 この例では、*www\.contoso.com* と *www\.contoso.org* のドメインに対してリスナーを作成しています。
+アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 この記事では、2 つのドメインに対して 2 つのリスナーを作成します。 この例では、*www\.contoso.com* と *www\.contoso.org* のドメインに対してリスナーを作成しています。
 
 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、*contosoComListener* という名前の最初のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*contosoComRule* という名前の基本ルールを作成します。
 
@@ -299,11 +299,4 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * リスナーとリダイレクト規則の追加
-> * バックエンド プールでの仮想マシン スケール セットの作成
-> * ドメインの CNAME レコードの作成
+- [Application Gateway のリダイレクトの概要](redirect-overview.md)

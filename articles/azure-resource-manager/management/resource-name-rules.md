@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 10/01/2020
+ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235980"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653368"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -174,8 +174,8 @@ ms.locfileid: "88235980"
 > | galleries/images/versions | image | 32-bit integer | 数字とピリオド。 |
 > | images | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | スナップショット | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/"'[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
-> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/"'[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows VM の場合、ピリオドを含めたり、末尾をハイフンにしたりすることはできません。<br><br>Linux VM の場合、末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `\/"'[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
 
 > [!NOTE]
 > Azure 仮想マシンには、リソース名とホスト名の 2 つの異なる名前があります。 ポータルで仮想マシンを作成すると、両方の名前に同じ値が使用されます。 前の表に記載されている制限事項は、ホスト名に適用されます。 実際のリソース名の最大文字数は 64 文字です。
@@ -392,7 +392,7 @@ ms.locfileid: "88235980"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | actionGroups | resource group | 1-260 | 次は使用できません:<br>`/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | actionGroups | resource group | 1-260 | 次は使用できません:<br>`/&%\?` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 > | components | resource group | 1-260 | 次は使用できません:<br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral

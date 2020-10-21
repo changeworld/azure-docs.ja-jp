@@ -1,14 +1,14 @@
 ---
 title: 署名済みのイメージの管理
-description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。 コンテンツの信頼は、Premium サービス レベルの機能です。
+description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。 コンテンツの信頼は Docker コンテンツの信頼を実装する、Premium サービス レベルの機能です。
 ms.topic: article
-ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/18/2020
+ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076850"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91409166"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -40,7 +40,7 @@ Azure Container Registry では、Docker の[コンテンツの信頼][docker-co
 
 レジストリに対してコンテンツの信頼を有効にするには、まず Azure portal で目的のレジストリに移動します。 **[ポリシー]** で、 **[コンテンツの信頼]**  >  **[有効]**  >  **[保存]** の順に選択します。 また、Azure CLI で [az acr config content-trust update][az-acr-config-content-trust-update] コマンドを使用することもできます。
 
-![Azure portal でレジストリに対するコンテンツの信頼を有効にする][content-trust-01-portal]
+![Azure portal でレジストリに対するコンテンツの信頼の有効化を示すスクリーンショット。][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>クライアントのコンテンツの信頼を有効にする
 
@@ -71,8 +71,10 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 信頼済みのイメージをレジストリにプッシュできるのは、アクセス許可が与えられたユーザーまたはシステムだけです。 信頼済みのイメージをプッシュするアクセス許可をユーザー (またはサービス プリンシパルを使用するシステム) に与えるには、その Azure Active Directory ID に `AcrImageSigner` ロールを与えます。 レジストリにイメージをプッシュするために必要な `AcrPush` (または同等の) ロールとは別に、これを追加することになります。 詳細については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」を参照してください。
 
-> [!NOTE]
-> 信頼されたイメージのプッシュ アクセス許可を Azure コンテナー レジストリの[管理者アカウント](container-registry-authentication.md#admin-account)に付与することはできません。
+> [!IMPORTANT]
+> 信頼されたイメージのプッシュ アクセス許可を次の管理者アカウントに付与することはできません。 
+> * Azure Container Registry の[管理者アカウント](container-registry-authentication.md#admin-account)
+> * [従来のシステム管理者ロール](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)を持つ Azure Active Directory 内のユーザー アカウント。
 
 以降、Azure portal と Azure CLI から `AcrImageSigner` ロールを付与する方法について詳しく説明します。
 
@@ -82,7 +84,7 @@ Azure portal でレジストリに移動し、 **[アクセス制御 (IAM)]**  >
 
 この例では、`AcrImageSigner` ロールが 2 つのエンティティに割り当てられています。"service-principal" という名前のサービス プリンシパルと "Azure User" という名前のユーザーです。
 
-![Azure portal でレジストリに対するコンテンツの信頼を有効にする][content-trust-02-portal]
+![Azure portal で ACR イメージの署名のためのアクセス許可を与える][content-trust-02-portal]
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -92,17 +94,16 @@ Azure portal でレジストリに移動し、 **[アクセス制御 (IAM)]**  >
 az role assignment create --scope <registry ID> --role AcrImageSigner --assignee <user name>
 ```
 
-たとえば、このロールを自分自身に与えるには、認証済みの Azure CLI セッションで次のコマンドを実行します。 `REGISTRY` の値は、実際の Azure Container Registry の名前に合わせて変更してください。
+たとえば、管理者以外のユーザーにこのロールを与えるには、認証済みの Azure CLI セッションで次のコマンドを実行します。 `REGISTRY` の値は、実際の Azure Container Registry の名前に合わせて変更してください。
 
 ```bash
 # Grant signing permissions to authenticated Azure CLI user
 REGISTRY=myregistry
-USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
 ```
 
 ```azurecli
-az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
+az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee azureuser@contoso.com
 ```
 
 信頼済みのイメージをレジストリにプッシュするための権限を[サービス プリンシパル](container-registry-auth-service-principal.md)に与えることもできます。 サービス プリンシパルは、信頼済みのイメージをレジストリにプッシュする必要のある無人のシステム (ビルド システムなど) で使用できます。 その形式は、ユーザーにアクセス許可を与えるときと同様ですが、`--assignee` の値に指定するのはサービス プリンシパル ID となります。
@@ -118,10 +119,11 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 ## <a name="push-a-trusted-image"></a>信頼済みのイメージをプッシュする
 
-信頼済みのイメージのタグをコンテナー レジストリにプッシュするには、コンテンツの信頼を有効にし、`docker push` でイメージをプッシュします。 署名済みのタグを初めてプッシュするとき、ルート署名キーとリポジトリ署名キーの両方のパスフレーズを作成するように求められます。 ルート キーとリポジトリ キーは、どちらもマシンのローカルで生成されて格納されます。
+信頼済みのイメージのタグをコンテナー レジストリにプッシュするには、コンテンツの信頼を有効にし、`docker push` でイメージをプッシュします。 署名済みタグのプッシュの初回完了後、ルート署名キーとリポジトリ署名キーの両方のパスフレーズを作成するように求められます。 ルート キーとリポジトリ キーは、どちらもマシンのローカルで生成されて格納されます。
 
 ```console
 $ docker push myregistry.azurecr.io/myimage:v1
+[...]
 The push refers to repository [myregistry.azurecr.io/myimage]
 ee83fc5847cb: Pushed
 v1: digest: sha256:aca41a608e5eb015f1ec6755f490f3be26b48010b178e78c00eac21ffbe246f1 size: 524
@@ -156,16 +158,19 @@ Status: Downloaded newer image for myregistry.azurecr.io/myimage@sha256:0800d17e
 Tagging myregistry.azurecr.io/myimage@sha256:0800d17e37fb4f8194495b1a188f121e5b54efb52b5d93dc9e0ed97fce49564b as myregistry.azurecr.io/myimage:signed
 ```
 
-コンテンツの信頼を有効にしているクライアントが、署名されていないタグをプルしようとしても、その操作は失敗します。
+コンテンツの信頼を有効にしているクライアントが、署名されていないタグをプルしようとしても、その操作は次のようなエラーが発生して失敗します。
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:unsigned
-No valid trust data for unsigned
+Error: remote trust data does not exist
 ```
 
 ### <a name="behind-the-scenes"></a>バックグラウンド処理
 
 `docker pull` を実行すると、Docker クライアントは、プル対象のタグについて、[Notary CLI][docker-notary-cli] で使われているものと同じライブラリを使って、タグから SHA-256 ダイジェストへのマッピングを要求します。 クライアントは信頼データの署名を確認した後、"ダイジェストでプル" するよう Docker Engine に命令を出します。 このエンジンが、プルの実行中、SHA-256 チェックサムをコンテンツのアドレスとして使い、Azure Container Registry にイメージのマニフェストを要求して検証します。
+
+> [!NOTE]
+> Azure Container Registry は、Notary CLI を正式にはサポートしていませんが、Docker Desktop に含まれている Notary Server API と互換性があります。 現時点では、Notary バージョン **0.6.0** をお勧めします。
 
 ## <a name="key-management"></a>キー管理
 
@@ -196,7 +201,7 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 ## <a name="next-steps"></a>次のステップ
 
-* コンテンツの信頼の詳細については、[Docker のコンテンツの信頼][docker-content-trust]に関するページを参照してください。 この記事では要点を絞って説明しましたが、コンテンツの信頼は広範囲に及ぶテーマです。Docker のドキュメントで、さらに踏み込んだ情報を得ることができるでしょう。
+* [docker trust](https://docs.docker.com/engine/reference/commandline/trust/) コマンドおよび[信頼の委任](https://docs.docker.com/engine/security/trust/trust_delegation/)を含むコンテンツの信頼の詳細については、[Docker のコンテンツの信頼][docker-content-trust]に関するページを参照してください。 この記事では要点を絞って説明しましたが、コンテンツの信頼は広範囲に及ぶテーマです。Docker のドキュメントで、さらに踏み込んだ情報を得ることができるでしょう。
 
 * Docker イメージをビルドし、プッシュするとき、コンテンツの信頼を利用する例については、[Azure Pipelines](/azure/devops/pipelines/build/content-trust) のドキュメントを参照してください。
 

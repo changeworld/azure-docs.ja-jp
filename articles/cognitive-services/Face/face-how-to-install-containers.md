@@ -1,29 +1,30 @@
 ---
-title: コンテナーのインストールと実行 - Face
+title: Face API 用の Docker コンテナーのインストールと実行
 titleSuffix: Azure Cognitive Services
-description: この記事では、このチュートリアルで Face のコンテナーをダウンロード、インストール、および実行する方法を示します。
+description: Face API 用の Docker コンテナーを使用して、画像内の人間の顔を検出および識別します。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: オンプレミス, Docker, コンテナー, 識別
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548465"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461514"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face コンテナーのインストールと実行 (プレビュー)
 
 > [!IMPORTANT]
 > Face コンテナーのユーザー制限に達しました。 現在、Face コンテナーの新しいアプリケーションは受け付けていません。
 
-Azure Cognitive Services Face では、画像中の人の顔を検出する、標準化された Docker 用 Linux コンテナーが提供されます。 また、鼻や目などの顔のパーツ、性別、年齢のほか、マシンが予測するその他の顔の特徴など、さまざまな属性が識別されます。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認できます。 また、Face では顔をデータベースと照合して、似ている顏や同一の顔が既に存在するかどうかを調べることもできます。 さらに、同じ視覚的特徴を使用して、似た顔をグループに整理することもできます。
+Azure Cognitive Services Face API には、画像内の人間の顔を検出して分析する Linux Docker コンテナーが用意されています。 また、鼻や目などの顔のパーツ、性別、年齢のほか、マシンが予測するその他の顔の特徴など、さまざまな属性が識別されます。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認できます。 また、Face では顔をデータベースと照合して、似ている顏や同一の顔が既に存在するかどうかを調べることもできます。 さらに、同じ視覚的特徴を使用して、似た顔をグループに整理することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 

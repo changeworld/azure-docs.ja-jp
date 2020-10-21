@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958237"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91408217"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure アプリ サービスでホストされているアプリケーション�
 これらの現象の主な原因は、次のいずれかの制限に達したため、アプリケーション インスタンスが外部エンドポイントへの新しい接続を開けないことです。
 
 * TCP 接続: 作成できる送信接続の数には制限があります。 これは、使用されるワーカーのサイズに関連付けられています。
-* SNAT ポート: [Azure の送信接続](../load-balancer/load-balancer-outbound-connections.md)に関するページで説明しているように、Azure では、ソース ネットワーク アドレス変換 (SNAT) と Load Balancer (お客様には公開していません) を使用して、パブリック IP アドレス空間内で Azure の外側にあるエンドポイントと通信します。 Azure アプリ サービスの各インスタンスには、当初、**128** 個の SNAT ポートが事前に割り当てられています。 この制限は、同じホストとポートの組み合わせへの接続を開くことに影響します。 アドレスとポートのさまざまな組み合わせへの接続をアプリが作成する場合、SNAT ポートを使い果たすことはありません。 SNAT ポートが使い果たされるのは、同じアドレスとポートの組み合わせへの呼び出しを繰り返したときです。 解放されたポートは必要に応じて再利用できます。 Azure ネットワーク ロード バランサーは、4 分間待機した後でないと、閉じられた接続の SNAT ポートを回収しません。
+* SNAT ポート: [Azure の送信接続](../load-balancer/load-balancer-outbound-connections.md)に関するページで説明しているように、Azure では、ソース ネットワーク アドレス変換 (SNAT) と Load Balancer (お客様には公開していません) を使用して、パブリック IP アドレス空間内で Azure の外側にあるエンドポイントと通信し、サービス エンドポイントを利用していない Azure 内部のエンドポイントとも通信します。 Azure アプリ サービスの各インスタンスには、当初、**128** 個の SNAT ポートが事前に割り当てられています。 この制限は、同じホストとポートの組み合わせへの接続を開くことに影響します。 アドレスとポートのさまざまな組み合わせへの接続をアプリが作成する場合、SNAT ポートを使い果たすことはありません。 SNAT ポートが使い果たされるのは、同じアドレスとポートの組み合わせへの呼び出しを繰り返したときです。 解放されたポートは必要に応じて再利用できます。 Azure ネットワーク ロード バランサーは、4 分間待機した後でないと、閉じられた接続の SNAT ポートを回収しません。
 
 アプリケーションまたは関数で新しい接続を開くペースが速いと、128 ポートの事前割り当てクォータがすぐに枯渇する可能性があります。 その場合、追加の SNAT ポートを動的に割り当てるか、回収した SNAT ポートを再利用することで新しい SNAT ポートが利用可能になるまで、アプリケーションまたは関数はブロックされます。 このように新しい接続を作成できないためにブロックされているアプリケーションまたは関数では、この記事の「**現象**」で説明している 1 つ以上の問題が発生し始めます。
 
@@ -92,16 +92,6 @@ PHP では接続プールがサポートされていませんが、バックエ�
 * 他のデータ ソース
 
    * [PHP の接続管理](https://www.php.net/manual/en/pdo.connections.php)
-
-#### <a name="python"></a>Python
-
-* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (注: MicrosoftSQL Server に加えて、他のデータベースでも SQLAlchemy を使用できます)
-* [HTTP キープアライブ](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) (セッション [session-objects](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) を使用する場合、キープアライブは自動です)。
-
-その他の環境については、アプリケーションに接続プールを実装するための、プロバイダーまたはドライバー固有のドキュメントを確認してください。
 
 ### <a name="modify-the-application-to-reuse-connections"></a>接続を再利用するようにアプリケーションを変更する
 

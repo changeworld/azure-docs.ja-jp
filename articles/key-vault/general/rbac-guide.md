@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972253"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015157"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)
 
@@ -37,7 +37,7 @@ Azure RBAC モデルには、さまざまなスコープ レベル (管理グル
 
 -   レイヤー間でアクセス制御を分離する必要があるマルチレイヤー アプリケーション
 
--   共通のシークレットを持つ共有キー コンテナー (アプリケーションがそのキー コンテナー内のシークレットのサブセットにアクセスする必要がある場合)
+-   複数のアプリケーション間での個々のシークレットの共有
 
 Azure Key Vault 管理ガイドラインの詳細については、以下を参照してください。
 
@@ -45,6 +45,8 @@ Azure Key Vault 管理ガイドラインの詳細については、以下を参�
 - [Azure Key Vault サービスの制限](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Key Vault データ プレーン操作のための Azure の組み込みロール (プレビュー)
+> [!NOTE]
+> `Key Vault Contributor` ロールは、キー コンテナーを管理するための管理プレーン操作用です。 キー、シークレット、証明書へのアクセスは許可されていません。
 
 | 組み込みのロール | 説明 | id |
 | --- | --- | --- |
@@ -62,6 +64,13 @@ Azure 組み込みロールの定義の詳細については、「[Azure 組み�
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>Key Vault での Azure RBAC シークレット、キー、および証明書のアクセス許可の使用
 
 Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテナー アクセス ポリシーのアクセス許可モデルに代わるものです。 
+
+### <a name="prerequisites"></a>前提条件
+
+ロールの割り当てを追加するには、以下が必要です。
+
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)や[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)など)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault で Azure RBAC アクセス許可を有効にする
 

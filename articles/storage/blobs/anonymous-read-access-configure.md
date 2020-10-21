@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087356"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931072"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -56,7 +56,7 @@ Azure Storage では、コンテナーと BLOB へのオプションの匿名パ
 > [!NOTE]
 > **AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントではパブリック アクセスが許可されます。
 >
-> **AllowBlobPublicAccess** プロパティは現在、Azure パブリック クラウド内のストレージ アカウントでのみ使用できます。
+> **AllowBlobPublicAccess** プロパティは、Azure パブリック クラウドと Azure Government クラウドのすべてのストレージ アカウントで使用できます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 

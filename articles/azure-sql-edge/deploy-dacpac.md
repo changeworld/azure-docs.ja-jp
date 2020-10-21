@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887480"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91293902"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Edge での SQL Database DACPAC および BACPAC パッケージ
 
 Azure SQL Edge は、IoT およびエッジのデプロイ向けに最適化されたリレーショナル データベース エンジンです。 これは業界最高レベルのパフォーマンス、セキュリティ、およびクエリ処理機能を提供する、Microsoft SQL データベース エンジンの最新バージョンに基づいて構築されています。 SQL Server の業界をリードするリレーショナル データベース管理機能と共に、Azure SQL Edge では、リアルタイム分析や複雑なイベント処理のための組み込みのストリーミング機能が提供されます。
 
-また、Azure SQL Edge には、SqlPackage.exe のネイティブ実装が用意されています。これにより、SQL Edge のデプロイ時に [SQL Database DACPAC および BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) パッケージをデプロイできます。 
+Azure SQL Edge には、[SQL Database DACPAC および BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) パッケージを SQL Edge のデプロイ中またはデプロイ後に配置できるネイティブのメカニズムが用意されています。
 
 SQL Database dacpac および bacpac パッケージは、`MSSQL_PACKAGE` 環境変数を使用して SQL Edge にデプロイできます。 環境変数は、次のいずれかを使用して構成できます。  
 - dacpac および bacpac ファイルが格納されている、SQL コンテナー内のローカル フォルダーの場所。 このフォルダーは、マウント ポイントまたはデータ ボリューム コンテナーのいずれかを使用してホスト ボリュームにマップできます。 
@@ -64,6 +64,10 @@ Azure Blob Storage と zip ファイル使用して SQL Database DAC パッケ�
 5. モジュールの更新後、パッケージ ファイルがダウンロードおよび解凍され、SQL Edge インスタンスにデプロイされます。
 
 Azure SQL Edge コンテナーを再起動するたびに、SQL Edge によって、zip 圧縮されたファイル パッケージがダウンロードされて、変更の有無が評価されます。 dacpac ファイルの新しいバージョンが検出された場合、変更が SQL Edge のデータベースにデプロイされます。
+
+## <a name="known-issue"></a>既知の問題
+
+一部の DACPAC または BACPAC のデプロイ中に、ユーザーにコマンド タイムアウトが発生し、dacpac デプロイ操作が失敗する場合があります。 この問題が発生した場合は、SQLPackage.exe (または SQL クライアント ツール) を使用して DACPAC または BACPAC を手動で適用してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

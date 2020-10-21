@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187814"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018212"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -151,7 +151,7 @@ Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静
 詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。 
 
 > [!NOTE]
-> プライベート ホスト名には完全修飾ドメイン名 (FQDN) を使用してください。たとえば、`<your_private_server>` ではなく、`<your_private_server>.contoso.com` を使用します。これは、独自の DNS サフィックスが Azure-SSIS IR によって自動的に追加されないためです。
+> プライベート ホスト名には完全修飾ドメイン名 (FQDN) を使用してください (たとえば、`<your_private_server>` ではなく `<your_private_server>.contoso.com` を使用します)。 または、Azure-SSIS IR 上で標準のカスタム セットアップを使用して、独自の DNS サフィックス (たとえば `contoso.com`) を非修飾の 1 つのラベル ドメイン名に自動的に追加することで、DNS クエリで使用する前に FQDN に変換することもできます。[標準のカスタム セットアップのサンプル](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples)に関するページを参照してください。 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> NSG を設定する
 Azure-SSIS IR によって使用されるサブネットに NSG を実装する必要がある場合は、次のポートを経由する受信および送信トラフィックを許可します。 

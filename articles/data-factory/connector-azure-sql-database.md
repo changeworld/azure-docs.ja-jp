@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332136"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952048"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database のデータをコピーおよび変換する
 
@@ -43,6 +43,8 @@ ms.locfileid: "91332136"
 - SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。 Azure SQL Database ソースからの並列コピーを選択することもできます。詳細については、「[SQL Database からの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。
 - シンクとして、ソース スキーマに基づいて、宛先テーブルが存在しない場合はこれを自動的に作成する。テーブルにデータを追加するか、コピー中にカスタム ロジックを使用してストアド プロシージャを呼び出す。
+
+Azure SQL Database の[サーバーレス レベル](../azure-sql/database/serverless-tier-overview.md)を使用している場合、サーバーが一時停止すると、自動再開の準備が整うまで待機せず、アクティビティの実行が失敗することに注意してください。 実際の実行時に確実にサーバーを稼働した状態にするには、アクティビティの再試行を追加するか、追加のアクティビティを連鎖させます。
 
 >[!NOTE]
 > Azure SQL Database の [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) は現在、このコネクタではサポートされていません。 回避するには、セルフホステッド統合ランタイム経由で[汎用 ODBC コネクタ](connector-odbc.md)と SQL Server ODBC ドライバーを使用できます。 詳細については、「[Always Encrypted の使用](#using-always-encrypted)」セクションを参照してください。 
@@ -272,8 +274,8 @@ Azure SQL Database からデータをコピーするために、コピー アク
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | ***`partitionSettings` の下:*** | | |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される**整数型または日付/日時型**のソース列の名前を指定します。 指定されない場合は、テーブルのインデックスまたは主キーが自動検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
-| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
-| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
+| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
+| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
 
 **注意する点:**
 
@@ -698,7 +700,7 @@ Azure SQL Database をコピー元またはコピー先としてデータがコ�
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| イメージ |Byte[] |
+| image |Byte[] |
 | INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |

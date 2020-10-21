@@ -9,30 +9,28 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 15a53ddaa669f0720632901edfd58eb273518867
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e8ecb0dde2208b367362f26f654ec8eb83c7a777
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049623"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016197"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 および Edsv4 シリーズ
 
-Edv4 と Edsv4 シリーズは、ハイパースレッド構成の Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) プロセッサ上で実行されます。メモリを集中的に使用するさまざまなエンタープライズ アプリケーションに最適で、最大 504 GiB の RAM、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) および [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) の機能を備えています。 また、[Intel&reg; ディープ ラーニング ブースト](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)をサポートしています。 これらの新しい VM サイズには 50% 大きいローカル ストレージがある他、[Gen2 VM](./linux/generation-2.md) の [Ev3/Esv3](./ev3-esv3-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上しています。 これは、持続する 3.4 GHz の全コア ターボ クロック速度を特徴としています。 
+Edv4 と Edsv4 シリーズは、ハイパースレッド構成の Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) プロセッサ上で実行されます。メモリを集中的に使用するさまざまなエンタープライズ アプリケーションに最適で、最大 504 GiB の RAM、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) および [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) の機能を備えています。 また、[Intel&reg; ディープ ラーニング ブースト](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)をサポートしています。 これらの新しい VM サイズには 50% 大きいローカル ストレージがある他、[Gen2 VM](./generation-2.md) の [Ev3/Esv3](./ev3-esv3-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上しています。 これは、3.4 GHz の全コア ターボ クロック速度を特徴としています。 
 
 ## <a name="edv4-series"></a>Edv4 シリーズ
 
 Edv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) プロセッサ上で実行されます。 Edv4 仮想マシンのサイズは、高速かつ大規模なローカル SSD ストレージ (最大 2400 GiB) に加えて、最大 504 GiB の RAM を搭載しています。 これらの仮想マシンは、メモリを集中的に使用するエンタープライズ アプリケーションや、低待機時間で高速なローカル ストレージを利用するアプリケーションに最適です。 Edv4 VM には Standard SSD および Standard HDD ディスク ストレージを接続できます。 
 
-ACU: 195 - 210
-
-Premium Storage: サポートされていません
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション: サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 195 - 210<br>
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -50,15 +48,13 @@ Premium Storage キャッシュ:サポートされていません
 
 Edsv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) プロセッサ上で実行されます。 Edsv4 仮想マシンのサイズは、高速かつ大規模なローカル SSD ストレージ (最大 2400 GiB) に加えて、最大 504 GiB の RAM を搭載しています。 これらの仮想マシンは、メモリを集中的に使用するエンタープライズ アプリケーションや、低待機時間で高速なローカル ストレージを利用するアプリケーションに最適です。
 
-ACU: 195-210
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション:サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|

@@ -3,15 +3,15 @@ title: Azure メトリック警告のトラブルシューティング
 description: Azure Monitor のメトリック警告に関する一般的な問題と考えられる解決策。
 author: harelbr
 ms.author: harelbr
-ms.topic: reference
-ms.date: 09/14/2020
+ms.topic: troubleshooting
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068764"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715320"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -76,10 +76,15 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 > [!NOTE] 
 > Log Analytics ワークスペースに送信されるようにゲスト メトリックを構成した場合、これらのメトリックは Log Analytics ワークスペース リソースの下に表示され、それらを監視する警告ルールを作成した後で**のみ**データの表示が開始されます。 これを行うには、[ログのメトリック アラートを構成する](./alerts-metric-logs.md#configuring-metric-alert-for-logs)手順に従います。
 
+> [!NOTE] 
+> 1 つの警告ルールを使用して複数の仮想マシンのゲスト メトリックを監視することは、現在のメトリック アラートではサポートされていません。 これは、[ログ警告ルール](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)で実現できます。 これを行うには、ゲスト メトリックが Log Analytics ワークスペースに収集されていることを確認し、ワークスペースでログ警告ルールを作成します。
+
 ## <a name="cant-find-the-metric-to-alert-on"></a>警告対象のメトリックが見つからない
 
-特定のメトリックについての警告を調べていて、リソースに対するメトリックが何も表示されない場合は、[リソースの種類がメトリック警告に対してサポートされているかどうかを確認します](./alerts-metric-near-real-time.md)。
-リソースに対してメトリックがいくつか表示されるが、特定のメトリックが見つからない場合は、[そのメトリックが使用できるかどうかを確認し](./metrics-supported.md)、使用できる場合は、メトリックの説明を参照して、特定のバージョンまたはエディションのリソースでのみ使用できるかどうかを確認ます。
+警告ルールを作成するときに、特定のメトリックに対するアラートを探していて、それが表示されない場合は、以下を確認してください。
+- リソースのメトリックが表示されない場合は、[リソースの種類がメトリックのアラートでサポートされているかどうかを確認します](./alerts-metric-near-real-time.md)。
+- リソースに対してメトリックがいくつか表示され、特定のメトリックが見つからない場合は、[そのメトリックが使用できるかどうかを確認し](./metrics-supported.md)、その場合はメトリックの説明を参照して、特定のバージョンまたはエディションのリソースでのみ使用できるかどうかを確認します。
+- そのリソースにメトリックを使用できない場合は、リソース ログで使用可能であり、ログ アラートを使用して監視できる可能性があります。 [Azure リソースからリソース ログを収集して分析する方法の詳細についてはこちら](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)を参照してください。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>警告対象のメトリック ディメンションが見つからない
 
@@ -108,9 +113,9 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>まだ生成されていないカスタム メトリックに対してアラート ルールを定義する
 
-メトリック アラート ルールを作成する場合、メトリック名は [Metric Definitions API](/rest/api/monitor/metricdefinitions/list) に対して検証され、それが存在することが確認されます。 場合によっては、カスタム メトリックに対して、それが生成される前にアラート ルールを作成したいこともあるでしょう。 たとえば、カスタム メトリックを生成する Application Insights リソースを (Resource Manager テンプレートを使用して)、そのメトリックを監視するアラート ルールと共に作成する場合です。
+メトリック アラート ルールを作成する場合、メトリック名は [Metric Definitions API](/rest/api/monitor/metricdefinitions/list) に対して検証され、それが存在することが確認されます。 場合によっては、カスタム メトリックに対して、それが生成される前にアラート ルールを作成したいこともあるでしょう。 たとえば、カスタム メトリックを生成する Application Insights リソースを (Resource Manager テンプレートを使用して)、そのメトリックを監視する警告ルールと共に作成する場合です。
 
-カスタム メトリック定義の検証を試行する際のデプロイの失敗を避けるには、アラート ルールの条件セクションで *skipMetricValidation* パラメーターを使用し、メトリックの検証をスキップすることができます。 Resource Manager テンプレートでこのパラメーターを使用する方法については、次の例を参照してください。 詳細については、[メトリック アラート ルールを作成するための Resource Manager テンプレートのサンプル](./alerts-metric-create-templates.md)に関する記事を参照してください。
+カスタム メトリック定義の検証を試行する際のデプロイの失敗を避けるには、アラート ルールの条件セクションで *skipMetricValidation* パラメーターを使用し、メトリックの検証をスキップすることができます。 Resource Manager テンプレートでこのパラメーターを使用する方法については、次の例を参照してください。 詳細については、[メトリック警告ルールを作成するための Resource Manager テンプレートの完全なサンプル](./alerts-metric-create-templates.md)に関する記事を参照してください。
 
 ```json
 "criteria": {
@@ -252,6 +257,12 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
     - この最初の条件を更新し、**ApiName** ディメンションが *"GetBlob"* と等しいトランザクションのみを監視したいと考えています。
     - **Transactions** と **SuccessE2ELatency** のメトリックではどちらも **ApiName** ディメンションがサポートされているため、両方の条件を更新して、 *"GetBlob"* 値を含む **ApiName** ディメンションをその両方に指定する必要があります。
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>警告ルールの期間と頻度の設定
+
+以下のような場合に、追加された時系列の最初の評価を見落とす可能性を減らすために、 *[評価の頻度]* よりも頻度が高い *[集計粒度 (期間)]* を選択することをお勧めします。
+-   複数のディメンションを監視するメトリック アラート ルール – 新しいディメンション値の組み合わせが追加されたとき
+-   複数のリソースを監視するメトリック アラート ルール – 新しいリソースがスコープに追加されたとき
+-   連続して生成されないメトリックを監視するメトリック アラート ルール (スパース メトリック) – メトリックが生成されていない 24 時間以上の期間の後に生成されたとき
 
 ## <a name="next-steps"></a>次のステップ
 

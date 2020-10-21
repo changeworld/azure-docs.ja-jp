@@ -8,23 +8,23 @@ ms.reviewer: zhshang
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105b40da2a612d2a2e9958eff52bfb786c500bc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158197"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876075"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR Service のイベントに対応する
 
-Azure SignalR Service のイベントは、最新のサーバーレス アーキテクチャを使用して、アプリケーションがクライアント接続の接続や接続解除に対応できるようにしています。 複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。  イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)、またはユーザー独自のカスタム HTTP リスナーにプッシュされ、料金は使ったものだけで済みます。
+Azure SignalR Service のイベントは、最新のサーバーレス アーキテクチャを使用して、アプリケーションがクライアント接続の接続や接続解除に対応できるようにしています。 複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。  イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) などのサブスクライバー、またはユーザー独自のカスタム HTTP リスナーにプッシュされます。 Azure SignalR では、使用した分だけ支払います。
 
 Azure SignalR Service のイベントは Event Grid Service に確実に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)」を参照してください。
 
 ![Event Grid モデル](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>サーバーレスの状態
-Azure SignalR Service のイベントは、クライアント接続がサーバーレスの状態の場合にのみアクティブになります。 一般に、クライアントがハブ サーバーにルーティングされない場合、サーバーレスの状態に入ります。 クラシック モードは、クライアント接続が接続しているハブにハブ サーバーがない場合にのみ動作します。 ただし、ある問題を回避するため、サーバーレス モードが推奨されます。 サービス モードの詳細については、[サービス モードの選択方法](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)に関する記述を参照してください。
+Azure SignalR Service のイベントは、クライアント接続がサーバーレスの状態の場合にのみアクティブになります。 クライアントでハブ サーバーにルーティングされない場合、サーバーレスの状態に入ります。 クラシック モードは、クライアント接続で接続しているハブにハブ サーバーがない場合にのみ動作します。 ベスト プラクティスとして、サーバーレス モードが推奨されます。 サービス モードの詳細については、[サービス モードの選択方法](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)に関する記述を参照してください。
 
 ## <a name="available-azure-signalr-service-events"></a>使用可能な Azure SignalR Service のイベント
 Event Grid は、[イベント サブスクリプション](../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 Azure SignalR Service のイベント サブスクリプションは、2 種類のイベントをサポートします。  

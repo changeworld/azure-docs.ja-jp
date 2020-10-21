@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 481bd4f50eb527bcad2ba79b5ba4b9df4b872bfc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312835"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91739912"
 ---
 * Isolated を除くすべての価格プランをサポートするマルチテナント システム
 * VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment。
@@ -23,7 +23,7 @@ VNet 統合により、アプリから VNet 内のリソースにアクセスで
 
 以下は、VNet 統合機能の特徴です。
 
-* Standard、Premium、PremiumV2、または Elastic Premium の価格プランが必要である。
+* Standard、Premium、PremiumV2、PremiumV3、または Elastic Premium の価格プランが必要である。
 * TCP と UDP をサポートする。
 * Azure App Service アプリや関数アプリで動作する。
 

@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub デバイス ツインについて | Microsoft Docs
 description: 開発者ガイド - デバイス ツインを使用して、IoT Hub とデバイス間で状態と構成を同期する
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327771"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996131"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -250,7 +250,7 @@ ms.locfileid: "87327771"
 
 * **キー**: JSON オブジェクト内のすべてのキーは UTF-8 でエンコードされ、大文字と小文字が区別され、最大 1 KB の長さです。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、`$`、SP は使用できません。
 
-* **値**:JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。
+* **値**:JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列もサポートされています。
 
     * 使用できる整数の範囲は、-4503599627370496 (最小値) から 4503599627370495 (最大値) までです。
 

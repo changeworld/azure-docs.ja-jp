@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3d843440adc61b315616a05f223c5a13ebe271ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086574"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930834"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ
 
@@ -59,7 +59,7 @@ Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取
 
 メトリックを構成すると、匿名要求がグラフに表示されるようになります。 次の図は、過去 30 分間に集計された匿名要求を示しています。
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="BLOB ストレージに対する匿名要求の集計を示すスクリーンショット":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="BLOB トランザクションを合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 ストレージ アカウントに対して一定数の匿名要求が行われたら通知する警告ルールも構成できます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
@@ -70,6 +70,9 @@ Azure Storage のログには、要求の承認方法など、ストレージ �
 Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用すると、Azure Storage アカウントに対する要求をログに記録して、匿名要求を評価することができます。 詳細については、「[Azure Storage を監視する](../common/monitor-storage.md)」を参照してください。
 
 Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+
+> [!NOTE]
+> Azure Monitor での Azure Storage のログ記録のプレビューは、Azure パブリック クラウドでのみサポートされています。 Government クラウドでは、Azure Monitor を使用した Azure Storage のログ記録はサポートされていません。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Azure portal での診断設定の作成
 
@@ -85,7 +88,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 1. **[カテゴリの詳細]** の **[ログ]** セクションで、ログを記録する要求の種類を選択します。 すべての匿名要求は読み取り要求になるため、匿名要求をキャプチャするには **StorageRead** を選択します。
 1. **[Destination details]\(宛先の詳細\)** で、 **[Send to Log Analytics]\(Log Analytics に送信\)** を選択します。 以下の図に示すように、ご利用のサブスクリプションと、先ほど作成した Log Analytics ワークスペースを選択します。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="BLOB トランザクションを合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
 
@@ -178,13 +181,13 @@ resources
 
 ### <a name="create-a-policy-with-an-audit-effect"></a>Audit 効果を持つポリシーを作成する
 
-Azure Policy は、ポリシー規則がリソースに対して評価されたときに実行される動作を決定する効果をサポートします。 Audit 効果は、リソースが準拠していない場合に警告を生成しますが、要求は停止しません。 効果の詳細については、「[Azure Policy 効果について](../../governance/policy/concepts/effects.md)」を参照してください。
+Azure Policy では、ポリシー規則がリソースに対して評価されたときに実行される動作を決定する効果がサポートされています。 Audit 効果を使用すると、リソースが準拠していない場合に警告が生成されますが、要求は停止されません。 効果の詳細については、「[Azure Policy 効果について](../../governance/policy/concepts/effects.md)」を参照してください。
 
 Azure portal でストレージ アカウントのパブリック アクセス設定のために Audit 効果を持つポリシーを作成するには、次の手順を実行します。
 
 1. Azure portal で、Azure Policy サービスに移動します。
 1. **[作成]** セクションで **[定義]** を選択します。
-1. 新しいポリシー定義を作成するために、 **[ポリシー定義の追加]** を選択します。
+1. **[ポリシー定義の追加]** を選択して、新しいポリシー定義を作成します。
 1. **[定義の場所]** フィールドで、 **[More]\(詳細\)** ボタンを選択して、監査ポリシーのリソースがある場所を指定します。
 1. ポリシーの名前を指定します。 必要に応じて説明およびカテゴリを指定することもできます。
 1. **[ポリシー規則]** で、次のポリシー定義を **policyRule** セクションに追加します。
@@ -241,7 +244,7 @@ Azure portal でコンプライアンス レポートを表示するには、次
 1. 前の手順で作成したポリシー割り当ての名前の結果をフィルター処理します。 このレポートには、ポリシーに準拠していないリソースの数が表示されます。
 1. レポートをドリルダウンして、準拠していないストレージ アカウントの一覧などの詳細を表示できます。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="BLOB パブリック アクセスについての監査ポリシーのコンプライアンス レポートを示すスクリーンショット":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="BLOB トランザクションを合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>Azure Policy を使用して承認されたアクセスを適用する
 
@@ -277,7 +280,7 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 
 次の図は、Deny 効果を持つポリシーで、パブリック アクセスが許可されないことが要求されているとき、パブリック アクセスを許可するストレージ アカウント (新しいアカウントの既定) を作成しようとした場合に発生するエラーを示しています。
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="BLOB トランザクションを合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 

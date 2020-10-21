@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999734"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -104,9 +104,9 @@ ms.locfileid: "86498799"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Q:10 月 31 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
-> - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
+> - **Office365** ソリューションからデータを受信することができなくなります。 ソリューションはワークスペースから削除され、Marketplace で入手できなくなります。
 > - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
-> - ソリューションを手動でオフボードしない場合、データは 10 月 31 日に自動的に切断されます。
+> - 10 月 31 日までに手動でソリューションをオフボードしない場合、データは自動的に切断され、**OfficeActivity** テーブルは削除されます。 このような場合でも、以下で説明するように、Azure Sentinel で Office 365 コネクタを有効にすると、テーブルを復元できます。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
 > はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 

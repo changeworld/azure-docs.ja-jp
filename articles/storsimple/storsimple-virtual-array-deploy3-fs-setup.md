@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006298"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977580"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
 ![仮想アレイをデプロイするために必要な手順を示す図。 3 番目の手順の最初の部分は「ファイル サーバーとして設定」で、強調表示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -118,7 +118,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     ![Azure portal の [すべてのリソース] ページのスクリーンショット。 デバイス マネージャー サービスが強調表示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. フィルター処理された一覧で、StorSimple デバイス マネージャー サービスを選択し、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、デバイスが正常にサービスに接続されていること、および**セットアップの準備が完了している**状態であることを確認します。
     
-    ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![デプロイ](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>手順 2:デバイスをファイル サーバーとして構成する
 必要なデバイスのセットアップを完了するには、[Azure Portal](https://portal.azure.com/) で次の手順を実行します。
@@ -129,7 +129,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. デバイスをクリックすると、デバイスのセットアップの準備が完了していることを示すバナー メッセージが表示されます。
    
-    ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![ファイル サーバーの構成 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. コマンド バーで **[構成]** をクリックします。 これにより **[構成]** ブレードが開きます。 **[構成]** ブレードで、次の操作を行います。
    
    1. ファイル サーバー名は自動的に設定されます。
@@ -140,7 +140,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
    4. **[必要な設定の構成]** をクリックして、デバイスで使用するストレージ アカウントの資格情報を指定します。 ストレージ アカウントの資格情報が構成されていない場合は、 **[新規追加]** をクリックします。 **使用するストレージ アカウントがブロック BLOB をサポートしていることを確認します。ページ BLOB はサポートされていません。** [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
    
-      ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![ファイル サーバーの構成 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. **[ストレージ アカウント資格情報の追加]** ブレードで、次の操作を行います。 
 
     1. サービスと同じサブスクリプションにストレージ アカウントがある場合は、現在のサブスクリプションを選択します。 サービス サブスクリプション外のストレージ アカウントの場合は、[その他] を指定します。 
@@ -153,19 +153,19 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     5. **[追加]** をクリックして、このストレージ アカウントの資格情報を追加します。 
    
-        ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![ファイル サーバーの構成 4](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
 5. ストレージ アカウントの資格情報が正常に作成されると、 **[構成]** ブレードが更新され、指定したストレージ アカウントの資格情報が表示されます。 **[構成]** をクリックします。
    
-   ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![ファイル サーバーの構成 5](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    作成中のファイル サーバーが表示されます。 ファイル サーバーが正常に作成されると、その旨が通知されます。
    
-   ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![ファイル サーバーの構成 5b](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    デバイスの状態も "**オンライン**" に変わります。
    
-   ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![ファイル サーバーの構成 5c](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    共有の追加に進みます。
 
@@ -189,15 +189,15 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    5. **[追加]** をクリックして、共有を作成します。 
     
-       ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![共有の追加 1](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        共有の作成が進行中であることが通知されます。
    
-       ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![共有の追加 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       指定した設定で共有を作成すると、 **[共有]** ブレードは更新され、新しい共有が反映されます。 既定では、監視とバックアップが共有に対して有効です。
    
-      ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![共有の追加 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>手順 4:共有に接続する
 次に、前の手順で作成した 1 つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。

@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200972"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629371"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Azure Synapse でデータベースをセキュリティで保護する
 
@@ -33,7 +33,7 @@ ms.locfileid: "85200972"
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールは[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)とそのデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。
+ファイアウォール規則は[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)とそのデータベースの両方で使用され、明示的に承認されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。
 
 ベスト プラクティスとして、可能な限りサーバーレベルのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定してください。  
 

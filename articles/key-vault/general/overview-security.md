@@ -3,19 +3,18 @@ title: Azure Key Vault セキュリティ
 description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377575"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91739692"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ
 
@@ -76,21 +75,16 @@ Key Vault アクセス ポリシーでは、キー、シークレット、また
 
 Azure Key Vault ネットワーク アドレスの詳細については、「[Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)」を参照してください。
 
-## <a name="monitoring"></a>監視
+## <a name="tls-and-https"></a>TLS と HTTPS
 
-Key Vault のログによって、コンテナーに対して実行されたアクティビティの情報が保存されます。 Key Vault のログ:
+*   Key Vault のフロントエンド (データ プレーン) はマルチテナント サーバーです。 つまり、異なる顧客のキー コンテナーで同じパブリック IP アドレスを共有できます。 分離を実現するため、各 HTTP 要求は、他の要求とは別に認証および承認されます。
+*   古いバージョンの TLS で脆弱性が報告される場合がありますが、パブリック IP アドレスが共有されているため、Key Vault サービス チームは、トランスポート レベルで個別のキー コンテナーに対して古いバージョンの TLS を無効にすることはできません。
+*   HTTPS プロトコルを使用すると、クライアントは TLS ネゴシエーションに参加できます。 **クライアントで最新バージョンの TLS を強制する**ことができ、クライアントでそれを行うと常に、接続全体で対応するレベルの保護が使用されます。 Key Vault で古い TLS バージョンが引き続きサポートされているからといって、新しい TLS バージョンを使用する接続のセキュリティが損なわれることはありません。
+*   TLS プロトコルには既知の脆弱性がありますが、攻撃者が脆弱性のある TLS のバージョンで接続を開始したときに、悪意のあるエージェントがキー コンテナーから情報を抽出できるような、既知の攻撃はありません。 攻撃者はやはり認証と承認を行う必要があり、正当なクライアントが常に最新バージョンの TLS で接続している限り、古いバージョンの TLS の脆弱性によって資格情報が漏洩することはありません。
 
-- 認証されたすべての REST API 要求 (失敗した要求を含む)
-  - キー コンテナーそのものに対する操作。 これらの操作には、作成、削除、アクセス ポリシーの設定、キー コンテナー属性 (タグなど) の更新が含まれます。
-  - 次の操作を含む、キー コンテナーのキーとシークレットに関する操作。
-    - これらのキーまたはシークレットの作成、変更、または削除。
-    - 署名、確認、暗号化、復号化、キーのラップとラップ解除、シークレットの取得、およびキーとシークレット (およびそのバージョン) の一覧表示。
-- 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。
+## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-ログ情報にアクセスできるのは Key Vault の操作を行ってから 10 分以内です。 ストレージ アカウントでのログの管理はお客様に委ねられます。
-
-- ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
-- ストレージ アカウントに保持する必要がなくなったログは削除します。
+Key Vault のログによって、コンテナーに対して実行されたアクティビティの情報が保存されます。 詳細については、[Key Vault のログ記録](logging.md)に関する記事を参照してください。
 
 ストレージ アカウントの安全な管理に関する推奨事項については、「[Azure Storage セキュリティ ガイド](../../storage/blobs/security-recommendations.md)」を参照してください。
 
@@ -98,4 +92,3 @@ Key Vault のログによって、コンテナーに対して実行されたア�
 
 - [Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)
 - [RBAC:組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
-

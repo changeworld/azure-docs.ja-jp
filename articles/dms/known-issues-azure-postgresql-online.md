@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 14722f46f06351504583da7231179d206f7a3c26
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893732"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -81,6 +81,8 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
+## <a name="size-limitations"></a>サイズの制限
+- 1 つの DMS サービスを使用して、PostgreSQL から Azure DB for PostgreSQL に最大 2 TB のデータを移行できます。
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
 
   **制限事項**:テーブルに主キーがない場合は、変更がターゲット データベースと同期されない可能性があります。

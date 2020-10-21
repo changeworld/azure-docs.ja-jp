@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394739"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042407"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -36,6 +36,9 @@ ms.locfileid: "89394739"
 * テナント B に関連付けられた新しいアクセス ポリシー エントリを追加する。
 
 ## <a name="limitations"></a>制限事項
+
+> [!IMPORTANT]
+> **ディスク暗号化に使用されるキー コンテナーは移動できません** VM のディスク暗号化にキー コンテナーを使用している場合、ディスク暗号化が有効な間は、そのキー コンテナーを別のリソース グループまたはサブスクリプションに移動できません。 キー コンテナーを新しいリソース グループまたはサブスクリプションに移動する前に、ディスクの暗号化を無効にする必要があります。 
 
 一部のサービス プリンシパル (ユーザーとアプリケーション) は特定のテナントにバインドされます。 別のテナントのサブスクリプションにキー コンテナーを移動した場合、特定のサービス プリンシパルへのアクセスを復元できなくなる可能性があります。 キー コンテナーを移動するテナントに、すべての重要なサービス プリンシパルが存在することを確認してください。
 

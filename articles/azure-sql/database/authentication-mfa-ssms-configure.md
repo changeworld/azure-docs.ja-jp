@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: has-adal-ref, sqldbrb=3
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1fb90c106c334073cea18cf014edce491029edec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442651"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91596168"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -38,24 +38,26 @@ ms.locfileid: "89442651"
 
 次の手順は、最新の SSMS を使用して接続する方法を示しています。
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 1. ユニバーサル認証を使用して接続するには、SQL Server Management Studio (SSMS) の **[サーバーに接続]** ダイアログ ボックスで、 **[Active Directory - MFA サポートで汎用]** を選択します ( **[Active Directory のユニバーサル認証]** と表示される場合、お使いのバージョンは最新の SSMS ではありません)。
 
-   ![1mfa-universal-connect](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![SSMS の [サーバーに接続] ダイアログの [接続プロパティ] タブのスクリーンショット。[データベースへの接続] ドロップダウンで [MyDatabase] が選択されています。](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. **[ユーザー名]** ボックスに、`user_name@domain.com` という形式で Azure Active Directory の資格情報を入力します。
 
-   ![1mfa-universal-connect-user](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
+   ![[サーバーに接続] ダイアログでのサーバーの種類、サーバー名、認証、ユーザー名の設定のスクリーンショット。](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
 3. ゲスト ユーザーとして接続する場合は、ゲスト ユーザーの [AD ドメイン名またはテナント ID] フィールドを入力する必要はありません。SSMS 18.x 以降では自動的に認識されます。 詳細については、[SQL Database、SQL Managed Instance、Azure Synapse でのユニバーサル認証 (MFA 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
 
-   ![mfa-no-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
+   ![SSMS の [サーバーに接続] ダイアログの [接続プロパティ] タブのスクリーンショット。[データベースへの接続] ドロップダウンで [MyDatabase] が選択されています。](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
    ただし、SSMS 17.x 以前を使用し、ゲスト ユーザーとして接続している場合は、 **[オプション]** をクリックし、 **[接続プロパティ]** ダイアログ ボックスで **[AD ドメイン名またはテナント ID]** ボックスに入力する必要があります。
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
+   ![SSMS の [サーバーに接続] ダイアログの [接続プロパティ] タブのスクリーンショット。オプション [AD ドメイン名またはテナント ID] プロパティが入力されています。](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
 4. **[オプション]** を選択し、 **[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と Azure Synapse Analytics を使用したユニバーサル認証 (SSMS での MFA のサポート)](../database/authentication-mfa-ssms-overview.md)」をご覧ください。 次いで **[Connect]** をクリックします。  
 5. **[アカウントにサインイン]** ダイアログ ボックスが開いたら、Azure Active Directory ID のアカウントとパスワードを入力します。 ユーザーが Azure AD とフェデレーションされているドメインに属している場合、パスワードは不要です。
 
-   ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
+   ![Azure SQL Database と Data Warehouse の [アカウントにサインイン] ダイアログのスクリーンショット。 アカウントとパスワードが入力されています。](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > MFA を必要としないアカウントでのユニバーサル認証の場合は、この時点で接続が完了します。 MFA を必要とするユーザーの場合は、次の手順に進みます。
@@ -63,14 +65,14 @@ ms.locfileid: "89442651"
 
 6. MFA 設定用の 2 つのダイアログ ボックスが表示される場合があります。 この 1 度限りの操作は MFA 管理者の設定に応じて異なり、省略することも可能です。 MFA が有効なドメインでは、この手順が事前に定義されている場合もあります (たとえば、ユーザーはスマート カードと PIN を使用するように求められます)。
 
-   ![3mfa-setup](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+   ![追加のセキュリティ検証の設定を求めるプロンプトが表示されている、Azure SQL Database と Data Warehouse の [アカウントにサインイン] ダイアログのスクリーンショット。](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
   
 7. 2 つ目に表示される可能性のある 1 度限りのダイアログ ボックスでは、認証方式の詳細を選択できます。 使用可能なオプションは、管理者によって構成されます。
 
-   ![4mfa-verify-1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
+   ![認証方法を選択して構成するためのオプションが含まれる [追加のセキュリティ確認] ダイアログのスクリーンショット。](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. Azure Active Directory から確認用の情報が送信されます。 確認コードを受け取ったら、 **[確認コードを入力する]** ボックスにコードを入力し、 **[サインイン]** をクリックします。
 
-   ![5mfa-verify-2](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
+   ![確認コードの入力を求めるプロンプトが表示されている、Azure SQL Database と Data Warehouse の [アカウントにサインイン] ダイアログのスクリーンショット。](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 確認が完了すると、有効な資格情報とファイアウォール アクセスが推定され、SSMS の接続が通常どおり行われます。
 

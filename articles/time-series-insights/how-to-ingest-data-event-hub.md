@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee94a36ea27a15067cbcbab22b10629bc4b37634
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095559"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91596242"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -42,7 +42,7 @@ ms.locfileid: "87095559"
 
     [![イベント ハブ名前空間を開く](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. イベント ハブ インスタンスで、 **[エンティティ] > [コンシューマー グループ]** を選択します。 次に **[+ コンシューマー グループ]** を選択し、新しいコンシューマー グループを追加します。 
+1. イベント ハブ インスタンスで、 **[エンティティ] > [コンシューマー グループ]** を選択します。 次に **[+ コンシューマー グループ]** を選択し、新しいコンシューマー グループを追加します。
 
    [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
 
@@ -68,11 +68,11 @@ ms.locfileid: "87095559"
 
 1. **[インポート オプション]** に適切な値を選択します。
 
-   * サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
+   - サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
 
      [![イベント ソースのインポート オプションの選択](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
-    *  **[利用可能なサブスクリプションからのイベント ハブを使用する]** オプションに必要なプロパティについて次の表で説明します。
+   - **[利用可能なサブスクリプションからのイベント ハブを使用する]** オプションに必要なプロパティについて次の表で説明します。
 
        [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
@@ -84,10 +84,10 @@ ms.locfileid: "87095559"
        | イベント ハブ ポリシーの値 | 目的の共有アクセス ポリシーを選択します。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。 |
        | イベント ハブ ポリシー キー | 選択したイベント ハブ ポリシーの値から事前設定されます。 |
 
-    * イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、 **[イベント ハブ設定を手動で行う]** を選択します。
+   - イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、 **[イベント ハブ設定を手動で行う]** を選択します。
 
        **[イベント ハブ設定を手動で行う]** オプションに必要なプロパティについて次の表で説明します。
- 
+
        | プロパティ | 説明 |
        | --- | --- |
        | サブスクリプション ID | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
@@ -97,7 +97,7 @@ ms.locfileid: "87095559"
        | イベント ハブ ポリシーの値 | 目的の共有アクセス ポリシーを選択します。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。 |
        | イベント ハブ ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。 |
 
-    * どちらのオプションも以下の構成オプションを共有します。
+   - どちらのオプションも以下の構成オプションを共有します。
 
        | プロパティ | 説明 |
        | --- | --- |
@@ -113,8 +113,8 @@ ms.locfileid: "87095559"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。
+- [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。
 
-* イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
+- イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
 
-* [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) で環境にアクセスします。
+- [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) で環境にアクセスします。

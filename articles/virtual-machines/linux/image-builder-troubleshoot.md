@@ -3,16 +3,16 @@ title: Azure Image Builder サービスのトラブルシューティング
 description: Azure VM Image Builder サービスを使用するときの一般的な問題とエラーのトラブルシューティングを行います
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459931"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969978"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
 
@@ -522,7 +522,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 Image Builder サービスは、ポート 22 (Linux) または 5986 (Windows) を使用してビルド VM に接続します。これはイメージのビルド中にサービスがビルド VM から切断された場合に発生します。 切断の理由はさまざまですが、スクリプトでファイアウォールを有効にしたり構成したりすると、上記のポートがブロックされる可能性があります。
 
 #### <a name="solution"></a>解決策
-ファイアウォールの変更または有効化、あるいは SSH または WinRM への変更についてスクリプトを確認し、上記のポートでサービスとビルド VM の間の常時接続を確立できるように変更してください。 Image Builder のネットワークの詳細については、[要件](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)に関する記事を確認してください。
+ファイアウォールの変更または有効化、あるいは SSH または WinRM への変更についてスクリプトを確認し、上記のポートでサービスとビルド VM の間の常時接続を確立できるように変更してください。 Image Builder のネットワークの詳細については、[要件](./image-builder-networking.md)に関する記事を確認してください。
 
 ## <a name="devops-task"></a>DevOps タスク 
 
@@ -586,11 +586,23 @@ template name:  t_1556938436xxx
 
 ビルドがユーザーによって取り消されなかった場合は、Azure DevOps ユーザー エージェントによって取り消されました。 最も可能性が高いのは、Azure DevOps の機能により、1 時間のタイムアウトが発生した場合です。 プライベート プロジェクトとエージェントを使用している場合は、60 分のビルド時間が得られます。 ビルドがタイムアウトを超えた場合、DevOps によって実行中のタスクが取り消されます。
 
-Azure DevOps の機能と制限事項の詳細については、「[Microsoft によってホストされるエージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)」を参照してください
+Azure DevOps の機能と制限事項の詳細については、「[Microsoft によってホストされるエージェント](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)」を参照してください
  
 #### <a name="solution"></a>解決策
 
 独自の DevOps エージェントをホストするか、ビルドの時間を短縮することができます。 たとえば、Shared Image Gallery に配布している場合は、1 つのリージョンにレプリケートします。 非同期的にレプリケートする場合。 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Windows ログオンが遅い:'Windows モジュール インストーラーの処理が完了するのをお待ちください'
+
+#### <a name="error"></a>エラー
+Image Builder を使用して Windows 10 イメージを作成し、そのイメージから VM を作成した後、RDP を使用すると、最初のログオン時に次のメッセージとブルー スクリーンが表示され、数分待つ必要があります。
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>解決策
+まず、イメージのビルドでは、最後のカスタマイズとして Windows 再起動カスタマイザーを追加することで、必要な未完了が存在しないことと、すべてのソフトウェアのインストールが完了していることを確認します。 最後に、AIB に使用される既定の sysprep に [/mode:vm](/windows-hardware/manufacture/desktop/sysprep-command-line-options) オプションを追加します。後述する「AIB イメージから作成される VM が正常に作成されない」 > 「コマンドのオーバーライド」を参照してください。  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>AIB イメージから作成される VM が正常に作成されない
 

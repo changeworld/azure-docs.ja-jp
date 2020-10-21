@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950393"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839349"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -44,8 +44,8 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 管理者は以下を設定することができます。
 
 - **このメールの生成をトリガーするユーザー リスク レベル** - 既定では、リスク レベルは "高" リスクに設定されます。
-- **このメールの受信者** - 既定では、受信者にはすべてのグローバル管理者が含まれます。 グローバル管理者は、受信者として他のグローバル管理者、セキュリティ管理者、セキュリティ閲覧者を追加することもできます。
-   - 必要に応じて、**アラート通知を受信する電子メールをさらに追加**することができます。この機能はプレビューであり、定義されているユーザーがリンク レポートを Azure portal で表示するには適切なアクセス許可が必要です。
+- **この電子メールの受信者** - グローバル管理者、セキュリティ管理者、またはセキュリティ閲覧者のロールのユーザーは、この一覧に自動的に追加されます。 各ロールの最初の 20 人のメンバーに、メールの送信が試みられます。 ユーザーがこれらのロールのいずれかにオンデマンドで昇格するように PIM に登録されている場合は、**メールが送信される時点で昇格されている場合にのみメールを受け取ります**。
+   - 必要に応じて、**ここでカスタム メールを追加する**ことができます。定義されているユーザーは、Azure portal でリンク レポートを表示するには適切なアクセス許可が必要です。
 
 "危険な状態のユーザー" メールは、**Azure portal** の **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[リスクのあるユーザーが検出された警告]** で構成します。
 
@@ -60,7 +60,7 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 ![週間ダイジェスト電子メール](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-既定では、受信者にはすべてのグローバル管理者が含まれます。 グローバル管理者は、受信者として他のグローバル管理者、セキュリティ管理者、セキュリティ閲覧者を追加することもできます。
+グローバル管理者、セキュリティ管理者、またはセキュリティ閲覧者のロールのユーザーは、この一覧に自動的に追加されます。 各ロールの最初の 20 人のメンバーに、メールの送信が試みられます。 ユーザーがこれらのロールのいずれかにオンデマンドで昇格するように PIM に登録されている場合は、**メールが送信される時点で昇格されている場合にのみメールを受け取ります**
 
 ### <a name="configure-weekly-digest-email"></a>週刊ダイジェストの電子メールを構成する
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534857"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714442"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -21,13 +21,13 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux での Azure Stor
 
 このガイドでは、Storage Explorer で一般に確認されている問題の解決方法を紹介しています。
 
-## <a name="rbac-permissions-issues"></a>RBAC のアクセス許可の問題
+## <a name="azure-rbac-permissions-issues"></a>Azure RBAC のアクセス許可に関する問題
 
-ロールベースのアクセス制御 [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) は、アクセス許可のセットを_ロール_に結合することで、Azure リソースの非常にきめ細かなアクセス管理を可能にします。 ここでは、Storage Explorer で RBAC を最適に動作させる方法について説明します。
+Azure のロールベースのアクセス制御 ([Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)) を使用すると、アクセス許可のセットを "_ロール_" に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Storage Explorer で自分のリソースにアクセスするにはどうすればいいですか?
 
-RBAC を使用したストレージ リソースへのアクセスに問題がある場合は、適切なロールが割り当てられていない可能性があります。 次のセクションでは、ストレージ リソースにアクセスするために Storage Explorer で現在必要なアクセス許可について説明します。 適切なロールまたはアクセス許可があるかどうかが不明な場合は、Azure アカウント管理者に問い合わせてください。
+Azure RBAC を使用したストレージ リソースへのアクセスに問題がある場合は、適切なロールが割り当てられていない可能性があります。 次のセクションでは、ストレージ リソースにアクセスするために Storage Explorer で現在必要なアクセス許可について説明します。 適切なロールまたはアクセス許可があるかどうかが不明な場合は、Azure アカウント管理者に問い合わせてください。
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>"読み取り:ストレージ アカウントの一覧表示/取得" アクセス許可の問題
 
@@ -65,7 +65,7 @@ BLOB コンテナーまたはキューにアクセスする場合、Azure 資格
 3. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 [次へ] をクリックします。
 4. リソースの種類を選択し、リソースの URL を入力し、接続の一意の表示名を入力します。 [次へ] をクリックします。 [接続] をクリックします。
 
-その他のリソースの種類については現在、RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
+その他のリソースの種類については現在、Azure RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
 
 ### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
 
@@ -147,7 +147,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
     ![南京錠アイコン](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. Storage Explorer を開きます。
+5. ストレージ エクスプローラーを開きます。
 6. "サービス ハブがキーチェーンへのアクセスを要求しています" というようなメッセージが表示されます。 Mac 管理者アカウントのパスワードを入力し、 **[常に許可]** ( **[常に許可]** が使用できない場合は **[許可]** ) を選択します。
 7. サインインを試します。
 

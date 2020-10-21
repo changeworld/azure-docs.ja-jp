@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291927"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048085"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
 
@@ -37,11 +37,11 @@ ms.locfileid: "89291927"
 
 共有イメージ ギャラリーのイメージを暗号化するためにカスタマー マネージド キーを使用する場合、いくつかの制限があります。  
 
-- 暗号化キー セットは、お使いのイメージと同じサブスクリプションとリージョン内にある必要があります。
+- 暗号化キー セットは、お使いのイメージと同じサブスクリプション内にある必要があります。
 
-- カスタマー マネージド キーを使用するイメージは共有できません。 
+- 暗号化キー セットはリージョン別のリソースであるため、各リージョンには異なる暗号化キー セットが必要になります。
 
-- カスタマー マネージド キーを使用するイメージを他のリージョンにレプリケートすることはできません。
+- カスタマー マネージド キーを使用するイメージをコピーまたは共有することはできません。 
 
 - いったん独自のキーを使用してディスクやイメージを暗号化すると、それらのディスクやイメージを暗号化するために、プラットフォーム マネージド キーを使用する方法に戻ることはできなくなります。
 
@@ -97,7 +97,19 @@ $encryption1 = @{OSDiskImage=$osDiskImageEncryption;DataDiskImages=$dataDiskImag
 
 $region1 = @{Name='West US';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption1}
 
-$targetRegion = @($region1)
+$eastUS2osDiskImageEncryption = @{DiskEncryptionSetId='subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myEastUS2DESet'}
+
+$eastUS2dataDiskImageEncryption1 = @{DiskEncryptionSetId='subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myEastUS2DESet1';Lun=1}
+
+$eastUS2dataDiskImageEncryption2 = @{DiskEncryptionSetId='subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myEastUS2DESet2';Lun=2}
+
+$eastUS2DataDiskImageEncryptions = @($eastUS2dataDiskImageEncryption1,$eastUS2dataDiskImageEncryption2)
+
+$encryption2 = @{OSDiskImage=$eastUS2osDiskImageEncryption;DataDiskImages=$eastUS2DataDiskImageEncryptions}
+
+$region2 = @{Name='East US 2';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption2}
+
+$targetRegion = @($region1, $region2)
 
 
 # Create the image
@@ -158,8 +170,8 @@ az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
    --location westus \
-   --target-regions westus=2=standard_lrs \
-   --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
+   --target-regions westus=2=standard_lrs eastus2 \
+   --target-region-encryption WestUSDiskEncryptionSet1,0,WestUSDiskEncryptionSet2 EastUS2DiskEncryptionSet1,0,EastUS2DiskEncryptionSet2 \
    --gallery-name MyGallery \
    --gallery-image-definition MyImage \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
@@ -174,8 +186,8 @@ az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
    --location westus\
-   --target-regions westus=2=standard_lrs \
-   --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
+   --target-regions westus=2=standard_lrs eastus\
+   --target-region-encryption WestUSDiskEncryptionSet1,0,WestUSDiskEncryptionSet2 EastUS2DiskEncryptionSet1,0,EastUS2DiskEncryptionSet2 \
    --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot" \
    --data-snapshot-luns 0 \
    --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot" \

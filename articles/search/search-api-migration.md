@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 10/09/2020
+ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949033"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929644"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Azure Cognitive Search で最新の REST API にアップグレードする
 
@@ -40,13 +40,19 @@ ms.locfileid: "88949033"
 
 ## <a name="upgrade-to-2020-06-30"></a>2020-06-30 へのアップグレード
 
-バージョン 2020-06-30 は、REST API の新しい一般公開リリースです。 破壊的変更はありませんが、動作の違いがいくつかあります。 
+バージョン 2020-06-30 は、REST API の新しい一般公開リリースです。 1 つの破壊的変更と複数の動作の違いがあります。 
 
 この API バージョンで一般公開されるようになった機能には、以下が含まれます。
 
 * [ナレッジ ストア](knowledge-store-concept-intro.md)は、スキルセットを通して作成される充実したコンテンツから成る永続的ストレージで、ダウンストリーム分析や他のアプリケーションを通した処理のために作成されます。 この機能を使用すると、インデクサー駆動型の AI エンリッチメント パイプラインにより、検索インデックスに加えてナレッジ ストアにデータを格納できます。 この機能のプレビュー バージョンを使用していた場合、それは一般公開されたバージョンと同等です。 必要とされるコード変更は、API バージョンの変更のみです。
 
-動作の変更には、以下が含まれます。
+### <a name="breaking-change"></a>互換性に影響する変更点
+
+以前の API バージョンに基づいて記述された既存のコードは、コードに以下の機能が含まれる場合、api-version=2020-06-30 以降では使用できなくなります。
+
+* フィルター式のすべての Edm.Date リテラル (`2020-12-12` のような年月日で構成される日付) は、Edm.DateTimeOffset 形式 `2020-12-12T00:00:00Z` に従う必要があります。 タイムゾーンの違いによる間違ったクエリ結果や予期しないクエリ結果を処理するために、この変更が必要でした。
+
+### <a name="behavior-changes"></a>動作の変更
 
 * [BM25 ランク付けアルゴリズム](index-ranking-similarity.md)では、前のランク付けアルゴリズムがより新しいテクノロジに置き換えられます。 新しいサービスはこのアルゴリズムを自動的に使用します。 既存のサービスについては、新しいアルゴリズムを使用するようにパラメーターを設定する必要があります。
 

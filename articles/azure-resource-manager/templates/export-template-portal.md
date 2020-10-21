@@ -3,12 +3,12 @@ title: Azure portal でテンプレートをエクスポートする
 description: Azure portal を使用して、サブスクリプション内のリソースから Azure Resource Manager テンプレートをエクスポートします。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423237"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951759"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
@@ -49,11 +49,13 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 リソースグループまたはリソースからエクスポートする場合、エクスポートされたテンプレートは、リソースの種類ごとに [パブリッシュされたスキーマ](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) から生成されます。 場合によっては、スキーマにリソースの種類に対する最新バージョンがないことがあります。 エクスポートしたテンプレートに必要なプロパティが含まれていることを確認してください。 必要に応じて、エクスポートされたテンプレートを編集し、必要な API バージョンを使用します。
 
-テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](https://aka.ms/exportTemplateViaAdf)」を参照してください。
+テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
 
-クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](https://aka.ms/migrateclassicresourcetoarm)必要があります。
+クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)必要があります。
 
 テンプレートをエクスポートしたとき、リソースの種類がエクスポートされなかったという警告が表示された場合でも、そのリソースのプロパティを検出できます。 リソース プロパティを表示するためのさまざまなオプションに関する詳細について、「[リソースのプロパティ](view-resources.md)」についてを参照してください。 リソースの種類については、[Azure REST API](/rest/api/azure/) も参照できます。
+
+エクスポートされたテンプレートを作成するリソース グループには、200 リソースという制限があります。 200 を超えるリソースを持つリソース グループをエクスポートしようとすると、エラー メッセージ `Export template is not supported for resource groups more than 200 resources` が表示されます。
 
 ## <a name="export-template-from-a-resource-group"></a>リソース グループからテンプレートをエクスポートする
 

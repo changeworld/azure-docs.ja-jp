@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
-ms.openlocfilehash: 3487b5a069b1862ec302a979318ea78722b1433c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 3079cb18f7bc88d691081a7970f5833e8b8d6887
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361689"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078189"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの標準契約
 
@@ -34,7 +34,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 * Custom Amendments (カスタム修正):これらの修正は、Azure テナント ID を通して特定のお客様のみを対象にした、標準契約への特殊な修正です。 発行元は、対象にするテナントを選択できます。 カスタム修正の使用条件は、オファーの購入フローでこのテナントのお客様にのみ示されます。  お客様は、提供されるオファーを使用する前に、標準契約の使用条件とこの修正に同意する必要があります。
 
 >[!Note]
->これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。
+>これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。 修正は、スペースを含め 4000 文字までに制限されています。
 
 Microsoft 商業マーケットプレースの標準契約は、次のオファーの種類に対して利用できます。Azure アプリケーション (ソリューション テンプレートとマネージド アプリケーション)、仮想マシン、および SaaS。
 

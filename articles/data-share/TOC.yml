@@ -44,10 +44,6 @@
         - name: Azure Data Explorer からの共有
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: モニター
-      href: how-to-monitor.md
-    - name: トラブルシューティング
-      href: data-share-troubleshoot.md
     - name: データセットの追加
       href: how-to-add-datasets.md
     - name: データセット マッピングの構成
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: 共有サブスクリプションの取り消し
       href: how-to-revoke-share-subscription.md
+    - name: モニター
+      href: how-to-monitor.md
     - name: Security
       href: security.md
     - name: 障害復旧
       href: disaster-recovery.md
+    - name: トラブルシューティング
+      href: data-share-troubleshoot.md
 - name: リファレンス
   items:
     - name: .NET

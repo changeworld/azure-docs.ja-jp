@@ -197,6 +197,8 @@
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: サンプル
       items:
         - name: 画像処理アプリの探索
@@ -211,10 +213,6 @@
       href: language-support.md
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況

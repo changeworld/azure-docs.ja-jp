@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d4a455458812bef1d79aba583a6317c08b65863
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340926"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948376"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの GitHub Actions ワークフロー
 
@@ -152,7 +152,7 @@ with:
 
 | コマンド            | 説明 |
 |---------------------|-------------|
-| `app_build_command` | 静的コンテンツ アプリケーションのデプロイ時に実行するカスタム コマンドを定義します。<br><br>たとえば、Angular アプリケーションの運用ビルドを構成するには、`ng build --prod` と入力します。 空白のままにすると、ワークフローでは `npm run build` または `npm run build:Azure` コマンドの実行が試みられます。  |
+| `app_build_command` | 静的コンテンツ アプリケーションのデプロイ時に実行するカスタム コマンドを定義します。<br><br>たとえば、Angular アプリケーションの運用ビルドを構成するには、`build-prod` という名前の npm スクリプトを作成して `ng build --prod` を実行し、カスタム コマンドとして `npm run build-prod` を入力します。 空白のままにすると、ワークフローでは `npm run build` または `npm run build:Azure` コマンドの実行が試みられます。  |
 | `api_build_command` | Azure Functions API アプリケーションのデプロイ時に実行するカスタム コマンドを定義します。 |
 
 ## <a name="route-file-location"></a>ルート ファイルの場所

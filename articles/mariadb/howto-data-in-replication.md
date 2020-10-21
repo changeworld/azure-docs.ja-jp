@@ -5,24 +5,24 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 623c072cb8cb2c7fb1b9b6ec7d3ea661302d5e6a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 9/29/2020
+ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598196"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのデータイン レプリケーションの構成
 
-この記事では、マスター サーバーとレプリカ サーバーを構成することによって、Azure Database for MariaDB で[データイン レプリケーション](concepts-data-in-replication.md)をセットアップする方法について説明します。 この記事は、MariaDB サーバーと MariaDB データベースに関して、ある程度の使用経験があることを前提としています。
+この記事では、ソース サーバーとレプリカ サーバーを構成することによって、Azure Database for MariaDB で[データイン レプリケーション](concepts-data-in-replication.md)をセットアップする方法について説明します。 この記事は、MariaDB サーバーと MariaDB データベースに関して、ある程度の使用経験があることを前提としています。
 
-[データイン レプリケーション](concepts-data-in-replication.md)では、Azure Database for MariaDB サービスでレプリカを作成するために、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのマスター MariaDB サーバーからデータが同期されます。 データイン レプリケーションは、MariaDB のネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーションに基づいています。 binlog レプリケーションの詳細については、[binlog レプリケーションの概要](https://mariadb.com/kb/en/library/replication-overview/)に関する記事を参照してください。
+[データイン レプリケーション](concepts-data-in-replication.md)により、Azure Database for MariaDB サービスでレプリカを作成するために、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのソース MariaDB サーバーからデータが同期されます。 データイン レプリケーションは、MariaDB のネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーションに基づいています。 binlog レプリケーションの詳細については、[binlog レプリケーションの概要](https://mariadb.com/kb/en/library/replication-overview/)に関する記事を参照してください。
 
 この記事の手順を実行する前に、データイン レプリケーションの[制限事項と要件](concepts-data-in-replication.md#limitations-and-considerations)を確認してください。
 
 > [!NOTE]
-> マスター サーバーがバージョン 10.2 以降の場合、[グローバル トランザクション ID](https://mariadb.com/kb/en/library/gtid/) を使用してデータイン レプリケーションをセットアップすることをお勧めします。
+> ソース サーバーがバージョン 10.2 以降の場合、[グローバル トランザクション ID](https://mariadb.com/kb/en/library/gtid/) を使用してデータイン レプリケーションをセットアップすることをお勧めします。
 
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>レプリカとして使用する MariaDB サーバーを作成する
@@ -36,27 +36,58 @@ ms.locfileid: "86104675"
 
 2. 同一のユーザー アカウントとそれに対応する権限を作成します。
     
-    レプリカ サーバーにマスター サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに付与するには、新しく作成した Azure Database for MariaDB サーバーですべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
+    レプリカ サーバーにソース サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに付与するには、新しく作成した Azure Database for MariaDB サーバーですべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
 
-3. マスター サーバーの IP アドレスをレプリカのファイアウォール規則に追加します。 
+3. ソース サーバーの IP アドレスをレプリカのファイアウォール規則に追加します。 
 
    [Azure portal](howto-manage-firewall-portal.md) または [Azure CLI](howto-manage-firewall-cli.md) を使用してファイアウォール規則を更新します。
 
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
-## <a name="configure-the-master-server"></a>マスター サーバーを構成する
+## <a name="configure-the-source-server"></a>ソース サーバーを構成する
 
-次の手順では、オンプレミス、VM、またはクラウド データベース サービスでホストされる MariaDB サーバーをデータイン レプリケーション用に準備し、構成します。 MariaDB サーバーは、データイン レプリケーションにおけるマスターになります。
+次の手順では、オンプレミス、VM、またはクラウド データベース サービスでホストされる MariaDB サーバーをデータイン レプリケーション用に準備し、構成します。 MariaDB サーバーは、データイン レプリケーションにおけるソースになります。
 
 1. 続行する前に、[マスター サーバーの要件](concepts-data-in-replication.md#requirements)を確認してください。 
 
-   たとえば、マスター サーバーでポート 3306 での受信トラフィックと送信トラフィックの両方が許可されていて、マスター サーバーに**パブリック IP アドレス**があるか、DNS にパブリックにアクセス可能であるか、または完全修飾ドメイン名 (FQDN) があるかのいずれかであることを確認してください。 
+2. ソース サーバーでポート 3306 での受信と送信の両方のトラフィックが許可されていて、ソース サーバーに**パブリック IP アドレス**があるか、DNS にパブリックにアクセス可能であるか、または完全修飾ドメイン名 (FQDN) があるかのいずれかであることを確認してください。 
    
-   別のマシンでホストされている MySQL のコマンド ラインや、Azure portal で使用可能な [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) などのツールから接続を試行することで、マスター サーバーへの接続性をテストします。
+   別のマシンでホストされている MySQL のコマンド ラインや、Azure portal で使用可能な [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) などのツールから接続を試行することで、ソース サーバーへの接続性をテストします。
+
+   組織に厳密なセキュリティ ポリシーがあり、ソース サーバー上のすべての IP アドレスで Azure からソース サーバーへの通信が許可されない場合は、次のコマンドを使用して Azure Database for MariaDB サーバーの IP アドレスを確認できます。
+    
+   1. MySQL コマンドラインなどのツールを使用して Azure Database for MariaDB にサインインします。
+   2. 下のクエリを実行します。
+      ```bash
+      mysql> SELECT @@global.redirect_server_host;
+      ```
+      出力例を次に示します。
+      ```bash 
+      +-----------------------------------------------------------+
+      | @@global.redirect_server_host                             |
+      +-----------------------------------------------------------+
+      | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
+       +-----------------------------------------------------------+
+      ```
+   3. MySQL コマンドラインを終了します。
+   4. ping ユーティリティで以下を実行して、IP アドレスを取得します。
+      ```bash
+      ping <output of step 2b>
+      ``` 
+      次に例を示します。 
+      ```bash      
+      C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
+      Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
+      ```
+
+   5. 前のステップで出力された IP アドレスがポート 3306 に含まれるように、ソース サーバーのファイアウォール規則を構成します。
+
+   > [!NOTE]
+   > この IP アドレスは、メンテナンスやデプロイの操作により変更される可能性があります。 この接続方法は、ポート 3306 上ですべての IP アドレスを許可することができないお客様のみを対象としています。
 
 2. バイナリ ログを有効にします。
     
@@ -70,9 +101,9 @@ ms.locfileid: "86104675"
 
    `log_bin` で値 `OFF` が返された場合、**my.cnf** ファイルを編集して、`log_bin=ON` によってバイナリ ログを有効にします。 変更を有効にするためにサーバーを再起動します。
 
-3. マスター サーバーの設定を構成します。
+3. ソース サーバーの設定を構成します。
 
-    データイン レプリケーションでは、マスター サーバーとレプリカ サーバーとの間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MariaDB では、`lower_case_table_names` パラメーターは既定では `1` に設定されています。
+    データイン レプリケーションの場合、ソース サーバーとレプリカ サーバーの間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MariaDB では、`lower_case_table_names` パラメーターは既定では `1` に設定されています。
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -80,11 +111,11 @@ ms.locfileid: "86104675"
 
 4. 新しいレプリケーション ロールを作成し、権限をセットアップします。
 
-   レプリケーションの権限を持つように構成されたユーザー アカウントをマスター サーバーに作成します。 SQL コマンドまたは MySQL Workbench を使用してアカウントを作成できます。 SSL を使用してレプリケートを行う場合は、ユーザー アカウントの作成時にこれを指定する必要があります。
+   レプリケーションの権限を持つように構成されたユーザー アカウントをソース サーバーに作成します。 SQL コマンドまたは MySQL Workbench を使用してアカウントを作成できます。 SSL を使用してレプリケートを行う場合は、ユーザー アカウントの作成時にこれを指定する必要があります。
    
-   マスター サーバーにユーザー アカウントを追加する方法については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/create-user/)をご覧ください。
+   ソース サーバーにユーザー アカウントを追加する方法については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/create-user/)を参照してください。
 
-   次のコマンドを使用することで、新しいレプリケーション ロールは、マスター自体をホストするマシンだけでなく、任意のマシンからマスターにアクセスできます。 このアクセスでは、ユーザーを作成するコマンドに **syncuser\@'%'** を指定します。
+   次のコマンドを使用することで、新しいレプリケーション ロールは、ソース自体をホストするマシンだけでなく、任意のマシンからソースにアクセスできます。 このアクセスでは、ユーザーを作成するコマンドに **syncuser\@'%'** を指定します。
    
    MariaDB のドキュメントの詳細については、[アカウント名の指定](https://mariadb.com/kb/en/library/create-user/#account-names)に関するページをご覧ください。
 
@@ -123,9 +154,9 @@ ms.locfileid: "86104675"
    ![[Replication Slave]\(レプリケーション スレーブ\)](./media/howto-data-in-replication/replicationslave.png)
 
 
-5. マスター サーバーを読み取り専用モードに設定します。
+5. ソース サーバーを読み取り専用モードに設定します。
 
-   データベースをダンプする前に、サーバーを読み取り専用モードにする必要があります。 読み取り専用モードの間、マスターは書き込みトランザクションを処理できません。 ビジネスに影響が出ないようにするために、ピーク時以外の時間帯に読み取り専用期間をスケジュールしてください。
+   データベースをダンプする前に、サーバーを読み取り専用モードにする必要があります。 読み取り専用モードの間、ソースで書き込みトランザクションを処理することはできません。 ビジネスに影響が出ないようにするために、ピーク時以外の時間帯に読み取り専用期間をスケジュールしてください。
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
@@ -154,17 +185,17 @@ ms.locfileid: "86104675"
     ```
  
 
-## <a name="dump-and-restore-the-master-server"></a>マスター サーバーのダンプと復元
+## <a name="dump-and-restore-the-source-server"></a>ソース サーバーのダンプと復元
 
-1. マスター サーバーからすべてのデータベースをダンプします。
+1. ソース サーバーからすべてのデータベースをダンプします。
 
-   mysqldump を使用して、マスター サーバーからすべてのデータベースをダンプします。 MySQL ライブラリとテスト ライブラリをダンプする必要はありません。
+   mysqldump を使用して、ソース サーバーからすべてのデータベースをダンプします。 MySQL ライブラリとテスト ライブラリをダンプする必要はありません。
 
     詳細については、「[ダンプと復元](howto-migrate-dump-restore.md)」をご覧ください。
 
-2. マスター サーバーを読み取り/書き込みモードに設定します。
+2. ソース サーバーを読み取り書き込みモードに設定します。
 
-   データベースのダンプ後、マスター MariaDB サーバーを読み取り/書き込みモードに戻します。
+   データベースのダンプ後、ソース MariaDB サーバーを読み取り書き込みモードに戻します。
 
    ```sql
    SET GLOBAL read_only = OFF;
@@ -177,27 +208,27 @@ ms.locfileid: "86104675"
 
    大きいダンプ ファイルは、レプリカ サーバーと同じリージョンにある Azure 内の VM にアップロードしてください。 それを VM から Azure Database for MariaDB サーバーに復元します。
 
-## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>マスター サーバーとレプリカ サーバーをリンクしてデータイン レプリケーションを開始する
+## <a name="link-the-source-and-replica-servers-to-start-data-in-replication"></a>ソースとレプリカのサーバーをリンクしてデータイン レプリケーションを開始する
 
-1. マスター サーバーを設定します。
+1. ソース サーバーを設定します。
 
    データイン レプリケーションの機能は、すべてストアド プロシージャによって実現されています。 「[データイン レプリケーションのストアド プロシージャ](reference-data-in-stored-procedures.md)」で、すべてのプロシージャをご覧いただけます。 ストアド プロシージャは、MySQL シェルまたは MySQL Workbench で実行できます。
 
-   2 つのサーバーをリンクさせてレプリケーションを開始するには、Azure DB for MariaDB サービスのターゲット レプリカ サーバーにサインインします。 次に、Azure DB for MariaDB サーバーで `mysql.az_replication_change_master` または `mysql.az_replication_change_master_with_gtid` ストアド プロシージャを使用して、外部インスタンスをマスター サーバーとして設定します。
+   2 つのサーバーをリンクさせてレプリケーションを開始するには、Azure DB for MariaDB サービスのターゲット レプリカ サーバーにサインインします。 次に、Azure DB for MariaDB サーバーで `mysql.az_replication_change_master` または `mysql.az_replication_change_master_with_gtid` ストアド プロシージャを使用して、外部インスタンスをソース サーバーとして設定します。
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
    
-   or
+   または
    
    ```sql
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
-   - master_host: マスター サーバーのホスト名
-   - master_user: マスター サーバーのユーザー名
-   - master_password: マスター サーバーのパスワード
+   - master_host: ソース サーバーのホスト名
+   - master_user: ソース サーバーのユーザー名
+   - master_password: ソース サーバーのパスワード
    - master_log_file: `show master status` を実行することによって得たバイナリ ログ ファイルの名前
    - master_log_pos: `show master status` を実行することによって得たバイナリ ログの位置
    - master_gtid_pos: `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);` を実行することによって得た GTID の位置
@@ -218,14 +249,14 @@ ms.locfileid: "86104675"
        -----END CERTIFICATE-----'
        ```
 
-       SSL を使用したレプリケーションを、ドメイン companya.com でホストされたマスター サーバーと Azure Database for MariaDB でホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。
+       SSL を使用したレプリケーションを、ドメイン companya.com にホストされたソース サーバーと Azure Database for MariaDB にホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。
     
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
    - SSL を使用しないレプリケーション
 
-       SSL を使用しないレプリケーションを、ドメイン companya.com でホストされたマスター サーバーと Azure Database for MariaDB でホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。
+       SSL を使用しないレプリケーションを、ドメイン companya.com にホストされたソース サーバーと Azure Database for MariaDB にホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。
 
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, '');
@@ -259,7 +290,7 @@ ms.locfileid: "86104675"
 
 ### <a name="stop-replication"></a>レプリケーションの停止
 
-マスター サーバーとレプリカ サーバーとの間のレプリケーションを停止するには、次のストアド プロシージャを使用します。
+ソースとレプリカのサーバー間でレプリケーションを停止するには、次のストアド プロシージャを使用します。
 
 ```sql
 CALL mysql.az_replication_stop;
@@ -267,7 +298,7 @@ CALL mysql.az_replication_stop;
 
 ### <a name="remove-the-replication-relationship"></a>レプリケーション関係の解除
 
-マスター サーバーとレプリカ サーバーの関係を解除するには、次のストアド プロシージャを使用します。
+ソースとレプリカのサーバーの関係を解除するには、次のストアド プロシージャを使用します。
 
 ```sql
 CALL mysql.az_replication_remove_master;

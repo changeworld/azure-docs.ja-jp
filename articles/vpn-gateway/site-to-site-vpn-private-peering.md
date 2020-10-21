@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: effbe8e771922ea07ad908dd4871f8dcdb7c1d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931250"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776563"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を構成する (プレビュー)
 
@@ -72,16 +72,18 @@ Azure からオンプレミス ネットワークへのトラフィックにも�
 
 ## <a name="portal-steps"></a><a name="portal"></a>ポータルの手順
 
-1. サイト間接続を構成します。 手順については、[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。 必ず、ゾーン冗長ゲートウェイ SKU をゲートウェイに対して選択してください。 ゾーン冗長 SKU は、SKU の末尾に "AZ" が付いています。 たとえば、VpnGw1AZ のようになります。
+1. サイト間接続を構成します。 手順については、[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。 必ず、ゾーン冗長ゲートウェイ SKU をゲートウェイに対して選択してください。 
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="ゲートウェイ プライベート IP":::
+   ゾーン冗長 SKU は、SKU の末尾に "AZ" が付いています。 たとえば、**VpnGw1AZ** のようになります。 ゾーン冗長ゲートウェイは、可用性ゾーン サービスが使用可能なリージョンでのみ利用できます。 可用性ゾーンがサポートされているリージョンの詳細については、[可用性ゾーンがサポートされているリージョン](../availability-zones/az-region.md)に関する記事を参照してください。
+
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="図 1":::
 1. ゲートウェイでプライベート IP を有効にします。 **[構成]** を選択し、 **[ゲートウェイ プライベート IP]** を **[有効]** に設定します。 **[保存]** を選択して変更を保存します。
 1. **[概要]** ページで、 **[詳細表示]** を選択してプライベート IP アドレスを表示します。 後で構成手順で使用するために、この情報を書き留めておきます。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="[概要] ページ" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="図 1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. 接続で **[Azure プライベート IP アドレスを使用する]** を有効にするには、 **[構成]** を選択します。 **[Azure プライベート IP アドレスを使用する]** を **[有効]** に設定してから、 **[保存]** を選択します。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="ゲートウェイ プライベート IP - 有効":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="図 1":::
 1. ファイアウォールから、手順 3 で書き留めたプライベート IP に ping を実行します。 ExpressRoute プライベート ピアリング経由でプライベート IP に到達できるはずです。
 1. このプライベート IP をオンプレミス ファイアウォール上のリモート IP として使用して、ExpressRoute プライベート ピアリング経由のサイト間トンネルを確立します。
 

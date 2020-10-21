@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440900"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91368891"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
@@ -134,7 +134,7 @@ OpenFaaS が稼働したら、OpenFaas ポータルを使用して関数を作�
 
 **[Deploy New Function]\(新しい関数のデプロイ\)** をクリックし、**Figlet** を検索します。 Figlet 関数を選択し、 **[Deploy]\(デプロイ)** をクリックします。
 
-![Figlet](media/container-service-serverless/figlet.png)
+![検索行に figlet というテキストが表示された [Deploy A New Function]\(新しい関数のデプロイ\) ダイアログ ボックスを示すスクリーンショット。](media/container-service-serverless/figlet.png)
 
 curl を使用して関数を呼び出します。 次の例にある IP アドレスを、OpenFaas ゲートウェイのものに置き換えます。
 

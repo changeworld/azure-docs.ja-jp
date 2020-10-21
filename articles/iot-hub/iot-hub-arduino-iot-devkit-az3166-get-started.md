@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319220"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839556"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -176,7 +176,7 @@ DevKit は、IoT ハブ上のデバイス固有のエンドポイントに接続
 
 4. 拡張機能マーケットプレースから [Azure IoT Tools](https://aka.ms/azure-iot-tools) を探してインストールします。
 
-    ![Azure IoT Tools のインストール](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+    ![拡張機能マーケットプレースでの Azure IoT Tools を示すスクリーンショット。](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
     または、この URL をコピーしてブラウザー ウィンドウに貼り付けます: `vscode:extension/vsciot-vscode.azure-iot-tools`
 
@@ -362,7 +362,7 @@ IoT Hub の device-to-cloud (D2C) メッセージは、[Azure IoT Tools](https:/
 
 1. **[出力]** ウィンドウで、IoT Hub への受信 D2C メッセージを確認できます。
 
-    ![D2C メッセージ](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+    ![IoT Hub への受信 D2C メッセージを示すスクリーンショット。](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
 
 ## <a name="review-the-code"></a>コードの確認
 

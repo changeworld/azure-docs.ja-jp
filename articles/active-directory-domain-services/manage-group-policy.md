@@ -1,7 +1,7 @@
 ---
 title: Azure AD Domain Services でのグループ ポリシーの作成と管理 | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインで組み込みのグループ ポリシー オブジェクト (GPO) を編集し、独自のカスタム ポリシーを作成する方法について説明します。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: deefcb66e05199896e8997d707a06e45f397adec
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040080"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963739"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインのグループ ポリシーを管理する
 
@@ -90,7 +90,7 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 
 1. グループ ポリシー管理エディター ツールが開き、 *[アカウント ポリシー]* などの GPO をカスタマイズできるようになります。
 
-    ![必要に応じて設定を構成する GPO をカスタマイズする](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![グループ ポリシー管理エディターのスクリーンショット。](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
     完了したら、 **[ファイル] > [保存]** を選択してポリシーを保存します。 コンピューターの既定では、90 分ごとにグループ ポリシーが更新され、加えた変更が適用されます。
 

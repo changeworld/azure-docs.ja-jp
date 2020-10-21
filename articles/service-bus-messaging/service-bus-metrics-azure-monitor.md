@@ -2,13 +2,13 @@
 title: Azure Monitor での Azure Service Bus メトリック | Microsoft Docs
 description: この記事では、Azure Monitor を使用して Service Bus エンティティ (キュー、トピック、およびサブスクリプション) を監視する方法について説明します。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065014"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598127"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor での Azure Service Bus メトリック
 
@@ -93,7 +93,7 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|アクティブな接続|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|アクティブな接続|名前空間および名前空間内のエンティティでのアクティブな接続の数。 このメトリックの値は、特定の時点の値です。 その時点の直後にアクティブになった接続は、メトリックに反映されない場合があります。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 |開かれている接続数 |開かれている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 |切断された接続数 |閉じられている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 
@@ -147,7 +147,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
     2. アラートの**説明**を入力します。
     3. アラートの**重要度**を選択します。 
 
-        ![[アラートの詳細]](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![[ルールの作成] ページのスクリーンショット。 [アラートの詳細を定義します] が展開され、アラート ルール名前、説明、重要度のフィールドが強調表示されています。](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. **[ルールの作成]** ページで、 **[アクション グループを定義します]** を展開し、 **[新しいアクション グループ]** を選択し、 **[アクション グループの追加]** ページで次のアクションを実行します。 
     1. アクション グループの名前を入力します。
     2. アクション グループの短い名前を入力します。 
@@ -161,7 +161,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
         2. **電子メール アドレス**を入力します。 
         3. **[OK]** を選択します。
 
-            ![[アラートの詳細]](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![[アクション グループの追加] ページのスクリーンショット。 名前が "Send email" でアクションの種類が電子メール/SMS/プッシュ/音声であるアクションが、グループに追加されています。](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. **[アクション グループの追加]** ページで、 **[OK]** を選択します。 
 1. **[ルールの作成]** ページで、 **[アラート ルールの作成]** を選択します。 
 

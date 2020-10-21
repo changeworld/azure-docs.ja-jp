@@ -3,19 +3,19 @@ title: さまざまなソースからのデータ フィードを Metrics Adviso
 titleSuffix: Azure Cognitive Services
 description: Metrics Advisor にさまざまなデータ フィードを追加する
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324469"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046912"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>さまざまなデータ ソースからデータ フィードを Metrics Advisor に追加する
 
@@ -133,7 +133,7 @@ JSON ファイルごとに 1 つのタイムスタンプのみが許可されま
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
-* **接続文字列**:Azure Data Explorer (Kusto) から接続文字列を取得する方法については、[接続文字列の表示とコピー](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto)に関する記事を参照してください。
+* **接続文字列**:Metrics Advisor では、Azure AD アプリケーション認証を使用して Azure Data Explorer (Kusto) へのアクセスをサポートします。 Azure AD アプリケーションを作成して登録し、Azure Data Explorer データベースへのアクセスを承認する必要があります。 接続文字列を取得するには、[Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) のドキュメントをご覧ください。
 
 * **Query**: データを取得して多次元時系列データに編成するには、[Kusto クエリ言語](https://docs.microsoft.com/azure/data-explorer/kusto/query)に関する記事を参照してください。 クエリでは、変数 `@StartTime` と `@EndTime` を使用できます。 これらは `yyyy-MM-dd HH:mm:ss` に書式設定する必要があります。
 

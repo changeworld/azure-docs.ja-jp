@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289888"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598110"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の計画
 
@@ -36,7 +36,6 @@ Azure Time Series Insights では、従量課金制のビジネス モデルが�
 ## <a name="the-gen2-environment"></a>Gen2 環境
 
 Azure Time Series Insights Gen2 環境をプロビジョニングするときは、次の 2 つの Azure リソースを作成します。
-
 
 * Azure Time Series Insights Gen2 環境
 * Azure ストレージ アカウント
@@ -69,10 +68,7 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 
 **Timestamp** プロパティも重要です。 イベント ソースを追加する際に、このプロパティを指定できます。 各イベント ソースには、時間の経過と共にイベント ソースを追跡するために使用されるオプションの Timestamp プロパティがあります。 Timestamp の値は大文字と小文字が区別され、各イベント ソースの個々の仕様に書式設定される必要があります。
 
-> [!TIP]
-> イベント ソースの書式設定と解析の要件を確認します。
-
-空白のままにすると、イベント ソースのイベント エンキュー時間が、イベント タイムスタンプとして使用されます。 履歴データまたはバッチ処理されたイベントを送信する場合は、既定のイベント エンキュー時間より、Timestamp プロパティをカスタマイズすることが役立ちます。 詳細については、[Azure IoT Hub にイベント ソースを追加する](./time-series-insights-how-to-add-an-event-source-iothub.md)方法に関するページを参照してください。
+空白のままにすると、イベントが IoT ハブまたはイベント ハブにエンキューされた時刻が、イベントのタイムスタンプとして使用されます。 通常、ユーザーは、タイムスタンプ プロパティをカスタマイズし、ハブ エンキュー時刻ではなく、センサーまたはタグによって読み取りが生成された時刻を使用する必要があります。 詳細およびタイム ゾーン オフセットの読み取りについては、「[イベント ソースのタイムスタンプ](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp)」を参照してください。
 
 ## <a name="understand-the-time-series-model"></a>タイム シリーズ モデルについて
 
@@ -91,14 +87,14 @@ Azure Time Series Insights にイベントを送信する方法を確認でき�
 * タイム シリーズ モデルにメタデータを格納します。
 * タイム シリーズ モード、インスタンス フィールド、およびイベントに、必要な情報 (タイム シリーズ ID や Timestamp プロパティなど) のみが含まれるようにします。
 
-詳細については、[イベントの調整](./time-series-insights-send-events.md#supported-json-shapes)に関するページを参照してください。
+詳細およびイベントがフラット化および格納される方法については、「[JSON のフラット化とエスケープの規則](./concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
-- [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
-- Azure Time Series Insights Gen2 での[データ インジェスト](./concepts-ingestion-overview.md)についてさらに確認します。
-- Azure Time Series Insights Gen2 での[データ ストレージ](./concepts-storage.md)についての記事を確認します。
-- Azure Time Series Insights Gen2 での[データ モデリング](./concepts-model-overview.md)について確認します。
+* [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
+* [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
+* Azure Time Series Insights Gen2 での[データ インジェスト](./concepts-ingestion-overview.md)についてさらに確認します。
+* Azure Time Series Insights Gen2 での[データ ストレージ](./concepts-storage.md)についての記事を確認します。
+* Azure Time Series Insights Gen2 での[データ モデリング](./concepts-model-overview.md)について確認します。

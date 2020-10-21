@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: d81d26c4cf975a20f31b4b4546c1477ed1a630e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614073"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048323"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -38,15 +38,15 @@ Visual Studio 2019 では、 _[ファイル] > [新規作成] > [プロジェク
 
 関数アプリの名前を指定して、 _[作成]_ を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: 新しいプロジェクトを構成する":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 関数アプリの種類で *[イベント グリッド トリガー]* を選択して、 _[作成]_ を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: Azure 関数のプロジェクトのトリガー ダイアログ":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 関数アプリを作成すると、Visual Studio によって、プロジェクト フォルダーの **function.cs** ファイルにコード サンプルが自動的に入力されます。 この短い Azure 関数は、イベントをログに記録するために使用されます。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: サンプル コードが表示されたプロジェクト ウィンドウ":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Event Grid トリガーを使用して Azure 関数を作成する
 
@@ -160,19 +160,19 @@ namespace adtIngestFunctionSample
 > [!IMPORTANT] 
 > Azure 関数を発行すると、Azure Digital Twins とは関係なく、サブスクリプションに追加料金が発生します。
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: Azure 関数を発行する":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 発行先として **[Azure]** を選択し、 **[次へ]** を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: Azure 関数発行ダイアログで、Azure を選択する":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: 関数発行ダイアログで、コンピューターに基づいて Azure Function App (Windows) または (Linux) を選択する":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: 関数発行ダイアログで、新しい Azure 関数を作成する":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: 関数発行ダイアログで、フィールドに入力し、[作成] を選択する":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: 関数発行ダイアログで、一覧から関数アプリを選択し、完了する":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 次のページで、新しい関数アプリの適切な名前、リソース グループ、その他の詳細を入力します。
 Functions アプリから Azure Digital Twins にアクセスできるようにするには、システムマネージド ID を割り当て、Azure Digital Twins インスタンスにアクセスできるアクセス許可を付与する必要があります。
@@ -200,7 +200,7 @@ _principalId_ 値を次のコマンドで使用して、関数アプリの ID �
 ```azurecli 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
-最後に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 環境変数の設定の詳細については、「[*環境変数*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)」を参照してください。 
+最後に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 環境変数の設定の詳細については、「[*環境変数*](/sandbox/functions-recipes/environment-variables)」を参照してください。 
 
 > [!TIP]
 > Azure Digital Twins インスタンスの URL を作成するには、Azure Digital Twins インスタンスの *hostName* の先頭に *https://* を追加します。 インスタンスのすべてのプロパティと共に hostName を表示する場合は、`az dt show --dt-name <your-Azure-Digital-Twins-instance>` を実行できます。
@@ -214,48 +214,45 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 [Azure portal](https://portal.azure.com/) で、前に作成した関数アプリの名前を使用して、検索バーで "_関数アプリ_" を検索します。 一覧から "*関数アプリ*" を選択します。 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure portal: 関数アプリを検索する":::
-
-関数アプリ ウィンドウの左側のナビゲーション バーで _[ID]_ を選択して、マネージド ID を有効にします。
-_[システム割り当て済み]_ タブで、 _[状態]_ を [オン] に切り替えて、"_保存_" します。 _[システム割り当てマネージド ID を有効化する]_ というポップアップが表示されます。
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ" します。 _[システム割り当てマネージド ID を有効化する]_ というポップアップが表示されます。
 _[はい]_ ボタンを選択します。 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure portal: システム マネージド ID を有効にする":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 関数が Azure Active Directory に正常に登録されたことを通知で確認できます。
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure portal: 通知":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 また、次のセクションで使用するので、 _[ID]_ ページに表示される**オブジェクト ID** を記録しておきます。
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="後で使用するオブジェクト ID をコピーする":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Azure portal を使用してアクセス ロールを割り当てる
 
-_[Azure ロールの割り当て]_ ボタンを選択し、[Azure ロールの割り当て] ページを開きます。 次に、 _[+ ロールの割り当ての追加 (プレビュー)]_ を選択します。
+_[Azure ロールの割り当て]_ ボタンを選択し、 *[Azure ロールの割り当て]* ページを開きます。 次に、 _[+ ロールの割り当ての追加 (プレビュー)]_ を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal: ロールの割り当てを追加する":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
-_[ロールの割り当ての追加 (プレビュー)]_ ウィンドウが表示されたら、以下を選択します
+_[ロールの割り当ての追加 (プレビュー)]_ ページが開かれたら、以下を選択します。
 
 * _スコープ_: リソース グループ
 * _[サブスクリプション]_ : Azure サブスクリプションを選択します
 * _[リソース グループ]_ : ドロップダウンからリソース グループを選択します
 * _[ロール]_ : ドロップダウンから _[Azure Digital Twins 所有者 (プレビュー)]_ を選択します
 
-_[保存]_ ボタンを選択して、詳細を保存します。
+次に、 _[保存]_ ボタンを押して詳細を保存します。
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure portal: ロールの割り当ての追加 (プレビュー)":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Azure portal を使用してアプリケーションの設定を構成する
 
-環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 詳細については、「[*環境変数*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)」を参照してください。 Digital Twins インスタンスにアクセスするためのアプリケーション設定は、環境変数として公開されます。 
+環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 詳細については、「[*環境変数*](/sandbox/functions-recipes/environment-variables)」を参照してください。 Digital Twins インスタンスにアクセスするためのアプリケーション設定は、環境変数として公開されます。 
 
 アプリケーションの設定を作成するには、ADT_INSTANCE_URL が必要です。
 
 ADT_INSTANCE_URL は、インスタンス ホスト名に **_https://_** を追加することによって取得できます。 Azure portal の検索バーでインスタンスを検索することにより、Digital Twins インスタンス ホスト名を見つけることができます。 次に、左側のナビゲーション バーの _[概要]_ を選択して、 _[ホスト名]_ を表示します。 この値をコピーして、アプリケーションの設定を作成します。
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure portal: [概要] -> ホスト名をコピーして _[値]_ フィールドで使用する。":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 これで、次の手順に従って、アプリケーションの設定を作成できるようになりました。
 
@@ -263,9 +260,9 @@ ADT_INSTANCE_URL は、インスタンス ホスト名に **_https://_** を追�
 * 左側のナビゲーション バーで _[構成]_ を選択して、新しいアプリケーション設定を作成します
 * _[アプリケーションの設定]_ タブで、 _[+ 新しいアプリケーション設定]_ を選択します
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure portal: 既存の Azure 関数を検索する":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal: アプリケーションの設定を構成する":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 開いたウィンドウで、上でコピーした値を使用して、アプリケーションの設定を作成します。 \
 _[名前]_ : ADT_SERVICE_URL \
@@ -273,19 +270,19 @@ _[値]_ : https://{Azure Digital Twins ホスト名}
 
 _[OK]_ を選択して、アプリケーションの設定を作成します。
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure portal: アプリケーションの設定を追加する。":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 _[名前]_ フィールドでアプリケーション名を使用して、アプリケーションの設定を確認できます。 その後、 _[保存]_ ボタンを選択して、アプリケーションの設定を保存します。
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal: 作成したアプリケーションを表示し、アプリケーションを再起動する":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 アプリケーションの設定を変更したら、アプリケーションを再起動する必要があります。 _[続行]_ を選択して、アプリケーションを再起動します。
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal: アプリケーションの設定を保存する":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 _[通知]_ アイコンを選択することで、アプリケーションの設定が更新されたことを確認できます。 アプリケーションの設定が作成されていない場合は、上記のプロセスに従って、アプリケーションの設定の追加を再度試みることができます。
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure portal: アプリケーションの設定の更新に関する通知":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: 新しいプロジェクト ダイアログ":::
 
 ## <a name="next-steps"></a>次のステップ
 

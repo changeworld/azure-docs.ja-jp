@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803995"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014564"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 
@@ -35,7 +35,9 @@ Azure Synapse Link for Azure Cosmos DB により、Azure Cosmos DB と Azure Syn
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure Synapse Link が有効になっているアカウントでは、バックアップと復元はサポートされますか?
 
-プレビューでは、Azure Synapse Link が有効になっているデータベース アカウントに対して、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とする運用環境のワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
+分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 
+
+データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントに対して Azure Synapse Link 機能を無効にすることはできますか?
 

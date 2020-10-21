@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617927"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978375"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のタイム ゾーン
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "91617927"
 
 ## <a name="limitations"></a>制限事項
 
-- 既存のマネージド インスタンスのタイム ゾーンは変更できません。
+- 既存のマネージド インスタンスのタイム ゾーンは変更できません。 対処方法として、適切なタイム ゾーンで新しいマネージド インスタンスを作成し、手動バックアップおよび復元を実行するか、[クロスインスタンスのポイントインタイム リストア](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database) (推奨) を実行する方法があります。
 - SQL Server エージェントのジョブから起動される外部プロセスでは、インスタンスのタイム ゾーンは確認されません。
 
 ## <a name="list-of-supported-time-zones"></a>サポートされているタイム ゾーンの一覧

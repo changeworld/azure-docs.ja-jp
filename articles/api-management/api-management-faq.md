@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050335"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542276"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -53,7 +53,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 * HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、TLS 相互認証を使用します。
-* バックエンド サービスで IP ホワイトリストを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままであり、[IP ドキュメントに関する記事](api-management-howto-ip-addresses.md)に説明されているいくつかの注意事項があります。
+* バックエンド サービスで IP フィルタリングを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままであり、[IP ドキュメントに関する記事](api-management-howto-ip-addresses.md)に説明されているいくつかの注意事項があります。
 * API Management インスタンスを Azure Virtual Network に接続します。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。

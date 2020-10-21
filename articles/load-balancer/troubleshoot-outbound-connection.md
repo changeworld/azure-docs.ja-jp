@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: cd98d5b8d2d4a959a48bfb04fe2eb9e16c4113c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851138"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628997"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>アウトバウンド接続エラーのトラブルシューティング
 
@@ -44,7 +44,7 @@ SNAT に使用される一時ポートの需要は、アプリケーションで
 エフェメラル ポートには 4 分間のアイドル タイムアウトが設定されています (調整不可)。 再試行の頻度が高すぎた場合、不足が自動的に解消されることはありません。 そのため、アプリケーションがトランザクションを再試行する方法と頻度を考慮することは、設計において非常に重要です。
 
 ## <a name="assign-a-public-ip-to-each-vm"></a><a name="assignilpip"></a>各 VM にパブリック IP を割り当てる
-パブリック IP アドレスを割り当てると、シナリオが [VM に対するパブリック IP](load-balancer-outbound-connections.md) に変わります。 この VM で、VM ごとに使用されるパブリック IP のすべてのエフェメラル ポートを使用できます。 (パブリック IP のエフェメラル ポートが、それぞれのバックエンド プールに関連付けられているすべての VM で共有されるシナリオとは対照的です。)パブリック IP アドレスの追加コストや、大量の IP アドレスを個別にホワイトリスト登録することの潜在的な影響など、考慮すべきトレードオフがあります。
+パブリック IP アドレスを割り当てると、シナリオが [VM に対するパブリック IP](load-balancer-outbound-connections.md) に変わります。 この VM で、VM ごとに使用されるパブリック IP のすべてのエフェメラル ポートを使用できます。 (パブリック IP のエフェメラル ポートが、それぞれのバックエンド プールに関連付けられているすべての VM で共有されるシナリオとは対照的です。)パブリック IP アドレスの追加コストや、大量の IP アドレスを個別にフィルター処理することの潜在的な影響など、考慮すべきトレードオフがあります。
 
 >[!NOTE] 
 >このオプションは、worker ロールでは使用できません。

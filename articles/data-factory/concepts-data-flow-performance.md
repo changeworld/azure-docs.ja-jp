@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370880"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874834"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -260,6 +260,10 @@ CosmosDB に書き込む場合、データ フローの実行中にスループ�
 #### <a name="sorting-before-joins"></a>結合前の並べ替え
 
 SSIS などのツールでのマージ結合とは異なり、結合変換は強制的なマージ結合操作ではありません。 結合キーを使用する場合、変換前に並べ替えを行う必要はありません。 Azure Data Factory チームでは、マッピング データ フローで並べ替え変換を使用することはお勧めしません。
+
+### <a name="window-transformation-performance"></a>ウィンドウ変換のパフォーマンス
+
+[ウィンドウ変換](data-flow-window.md)では、変換設定の ```over()``` 句の一部として選択された列の値によってデータがパーティション分割されます。 ウィンドウ変換で公開されている非常に一般的な集計関数と分析関数が多数あります。 ただし、```rank()``` または行番号 ```rowNumber()``` の順位付けを目的としてデータセット全体に対するウィンドウを生成するユースケースの場合は、代わりに[ランク変換](data-flow-rank.md)と[代理キー変換](data-flow-surrogate-key.md)を使用することをお勧めします。 これらの変換のほうが、これらの関数を使用した完全なデータセットに対する操作のパフォーマンスが優れています。
 
 ### <a name="repartitioning-skewed-data"></a>非対称のデータのパーティション再分割
 

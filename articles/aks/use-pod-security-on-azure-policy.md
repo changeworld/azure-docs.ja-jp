@@ -3,20 +3,18 @@ title: Azure Kubernetes Service (AKS) の Azure Policy によるポッドのセ�
 description: Azure Kubernetes Service (AKS) で Azure Policy を使用してポッドをセキュリティ保護する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a1fafdf1db29917982bbf136de45237459712bcd
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440878"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073463"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+# <a name="secure-pods-with-azure-policy"></a>Azure Policy を使用したポッドのセキュリティ保護
 
 AKS クラスターのセキュリティを強化するために、ポッドに付与される機能と、会社のポリシーに対して違反となる内容を制御できます。 このアクセスは、AKS の [Azure Policy アドオン][kubernetes-policy-reference]によって提供される組み込みのポリシーを使用して定義されます。 ルート特権など、ポッドの仕様のセキュリティ面をさらに制御することにより、より厳密なセキュリティを確保し、クラスターにデプロイされている内容を確認することができます。 ポッドがポリシーで指定された条件を満たしていない場合、Azure Policy ではポッドの開始を禁止したり、違反を示すフラグを設定したりすることができます。 この記事では、Azure Policy を使用して AKS でのポッドのデプロイを制限する方法について説明します。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -29,11 +27,10 @@ Azure Policy を使用して AKS ポッドをセキュリティ保護するに�
 このドキュメントでは、リンク先の手順で以下がデプロイされていることを前提としています。
 
 * `az provider register` を使用して `Microsoft.ContainerService` および `Microsoft.PolicyInsights` のリソース プロバイダーが登録されている
-* `az feature register` を使用して `AKS-AzurePolicyAutoApprove` プレビュー機能フラグが登録されている
-* Azure CLI と `aks-preview` 拡張機能バージョン 0.4.53 以上がインストールされている
-* サポートされている 1.15 以上のバージョンの AKS クラスターと Azure Policy アドオンがインストールされている
+* Azure CLI 2.12 以降
+* 1\.15 以上のバージョンの AKS クラスターと Azure Policy アドオンがインストールされている
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>AKS 用の Azure Policy でポッドをセキュリティ保護する方法の概要 (プレビュー)
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks"></a>AKS 用の Azure Policy でポッドをセキュリティ保護する方法の概要
 
 >[!NOTE]
 > このドキュメントでは、Azure Policy を使用してポッドをセキュリティ保護する方法について詳しく説明します。これは、[プレビュー段階の Kubernetes ポッド セキュリティ ポリシー機能](use-pod-security-policies.md)の後継の機能です。
@@ -51,10 +48,38 @@ Azure Policy アドオンを使用することにより、AKS クラスターで
 
 ## <a name="limitations"></a>制限事項
 
-* プレビュー期間中、1 つのクラスターでの実行は、Kubernetes 用の Azure Policy 20 個を含む 200 のポッドに制限されます。
-* AKS マネージド ポッドを含む[一部のシステム名前空間](#namespace-exclusion)は、ポリシーの評価から除外されます。
-* Windows ポッドでは、[セキュリティ コンテキストがサポートされていません](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)。そのため、ルート特権を許可しないといった多くの Azure ポリシーは Linux ポッドにのみ適用され、Windows ポッドにエスカレートすることはできません。
-* ポッドのセキュリティ ポリシーと AKS 用 Azure Policy アドオンの両方を同時に有効にすることはできません。 ポッドのセキュリティ ポリシーが有効になっているクラスターに Azure Policy アドオンをインストールする場合は、[こちら](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster)の手順に従ってポッドのセキュリティ ポリシーを無効にします。
+Kubernetes クラスターの Azure Policy アドオンに、次の一般的な制限事項が適用されます。
+
+- Kubernetes の Azure Policy アドオンは、Kubernetes バージョン **1.14** 以降でサポートされています。
+- Kubernetes の Azure Policy アドオンは、Linux ノード プールにのみデプロイできます
+- 組み込みのポリシー定義のみがサポートされます
+- クラスターごとのポリシー単位での非対応レコードの最大数:**500**
+- サブスクリプションごとの非対応レコードの最大数:**100 万**
+- Azure Policy アドオン以外の Gatekeeper のインストールは、サポートされていません。 Azure Policy アドオンを有効にする前に、以前の Gatekeeper インストールによってインストールされたすべてのコンポーネントをアンインストールします。
+- [非対応の理由](../governance/policy/how-to/determine-non-compliance.md#compliance-reasons)は、この[リソース プロバイダー モード](../governance/policy/concepts/definition-structure.md#resource-provider-modes)には利用できません。
+
+AKS の Azure Policy アドオンにのみ、次の制限事項が適用されます。
+
+- [AKS Pod セキュリティ ポリシー (プレビュー) ](use-pod-security-policies.md)と AKS の Azure Policy アドオンの両方を同時に有効にすることはできません。 
+- 評価版の Azure Policy アドオンによって自動的に除外される名前空間は _kube-system_、_gatekeeper-system_、および _aks-periscope_ です。
+
+### <a name="recommendations"></a>推奨事項
+
+Azure Policy アドオンを使用する場合の一般的な推奨事項を次に示します。
+
+- Azure Policy アドオンでは、3 つの Gatekeeper コンポーネントを実行する必要があります。1 つの監査ポッドと 2 つの Webhook ポッドのレプリカです。 これらのコンポーネントは、監査および適用の操作を必要とするクラスター内での Kubernetes リソースとポリシー割り当ての数が増えるにつれて、より多くのリソースを消費します。
+
+  - 最大 20 の制約を持つ 1 つのクラスター内のポッド数が 500 を下回る場合:コンポーネントごとに 2 つの vCPU と 350 MB のメモリ。
+  - 最大 40 の制約を持つ 1 つのクラスター内のポッド数が 500 を上回る場合:コンポーネントごとに 3 つの vCPU と 600 MB のメモリ。
+
+次の推奨事項は、AKS と Azure Policy アドオンにのみ適用されます。
+
+- `CriticalAddonsOnly` テイントとシステム ノード プールを使用して、Gatekeeper ポッドをスケジュールします。 詳細については、[システム ノード プールの使用](use-system-pools.md#system-and-user-node-pools)に関するページを参照してください。
+- AKS クラスターから送信トラフィックをセキュリティで保護します。 詳細については、[クラスター ノードのエグレス トラフィックの制御](limit-egress-traffic.md)に関する記事をご覧ください。
+- クラスターで `aad-pod-identity` が有効になっている場合、Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この構成の場合、Metadata エンドポイントに要求が行われると、ポッドで `aad-pod-identity` が使用されていない場合でも NMI により要求がインターセプトされます。 CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを `aad-pod-identity` に通知するよう、AzurePodIdentityException CRD を構成できます。 _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドは、AzurePodIdentityException CRD を構成することで、`aad-pod-identity` で除外してください。 詳細については、[特定のポッドまたはアプリケーションの aad-pod-identity の無効化](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)に関するページをご覧ください。
+  例外を構成するには、[mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml) をインストールします。
+
+Azure Policy アドオンでは、CPU とメモリのリソースを操作する必要があります。 これらの要件は、クラスターのサイズが大きくなるにつれて増加します。 Azure Policy アドオンを使用する場合の一般的なガイダンスについては、[Azure Policy の推奨事項][policy-recommendations]に関するページをご覧ください。
 
 ## <a name="azure-policies-to-secure-kubernetes-pods"></a>Kubernetes ポッドをセキュリティ保護するための Azure ポリシー
 
@@ -98,7 +123,7 @@ Kubernetes 用の Azure Policy には、ポッド、[ベースライン](https:/
 |---|---|---|---|
 |コンテナーで使用される AppArmor プロファイルを定義する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | 省略可能 | 省略可能 |
 |読み取り専用ではないマウントを許可する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | 省略可能 | 省略可能 |
-|特定の FlexVolume ドライバーに制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | 省略可能 - FlexVolume ドライバーを制限するだけで、"定義されたボリュームの種類の使用を制限する" で設定されているものは対象外の場合に、使用します | 適用外 - 制限付きのイニシアチブには、すべての FlexVolume ドライバーを禁止する "定義されたボリュームタイプの使用を制限する" が含まれます。 |
+|特定の FlexVolume ドライバーに制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | 省略可能 - FlexVolume ドライバーを制限するだけで、"定義されたボリュームの種類の使用を制限する" で設定されているものは対象外の場合に、使用します | 適用外 - 制限付きのイニシアチブには、すべての FlexVolume ドライバーを禁止する "定義されたボリューム タイプの使用を制限する" が含まれます |
 
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>マネージド AKS クラスターに対してサポートされていない組み込みポリシー
 
@@ -125,14 +150,14 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > kube-system などの管理名前空間内のポッドは、クラスターを正常な状態に維持するために実行する必要があります。既定の除外された名前空間のリストから必要な名前空間を削除すると、必須システム ポッドが原因でポリシー違反が発生する可能性があります。
 
-AKS では、DNS 解決などの重要なサービスを提供するために、クラスターでシステム ポッドを実行する必要があります。 ポッド機能を制限するポリシーは、システムポッドの安定性に影響を与える可能性があります。 このため、次の名前空間は、**作成、更新、およびポリシー監査中の受付要求においてポリシーの評価から除外されます**。 この結果、これらの名前空間への新しいデプロイは Azure policy から強制的に除外されます。
+AKS では、DNS 解決などの重要なサービスを提供するために、クラスターでシステム ポッドを実行する必要があります。 ポッド機能を制限するポリシーは、システムポッドの安定性に影響を与える可能性があります。 結果として、次の名前空間は、**作成、更新、およびポリシー監査中の受付要求においてポリシーの評価から除外されます**。 この結果、これらの名前空間への新しいデプロイは Azure policy から強制的に除外されます。
 
 1. kube-system
 1. gatekeeper-system
 1. azure-arc
 1. aks-periscope
 
-追加したカスタム名前空間は、作成、更新、および監査中に評価から除外することができます。 これは、承認された名前空間で実行され、監査違反のトリガーを避ける必要がある特殊なポッドがある場合に使用します。
+追加したカスタム名前空間は、作成、更新、および監査中に評価から除外することができます。 これらの除外は、承認された名前空間で実行され、監査違反のトリガーを避ける必要がある特殊なポッドがある場合に使用されます。
 
 ## <a name="apply-the-baseline-initiative"></a>ベースライン イニシアチブの適用
 
@@ -292,7 +317,7 @@ Azure portal から Azure Policy アドオンを削除する方法について�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、特権アクセスが使用されないように特権ポッドのデプロイを制限する Azure ポリシーの適用方法について説明しました。 適用できるポリシーは多数あります。たとえば、ボリュームの使用を制限するポリシーなどです。 利用可能なオプションの詳細については、[Kubernetes 用 Azure Policy の参照ドキュメント][kubernetes-policy-reference]をご覧ください。
+この記事では、特権アクセスが使用されないように特権ポッドのデプロイを制限する Azure ポリシーの適用方法について説明しました。 ボリュームの使用を制限するポリシーなど、適用できるポリシーは多数あります。 利用可能なオプションの詳細については、[Kubernetes 用 Azure Policy の参照ドキュメント][kubernetes-policy-reference]をご覧ください。
 
 ポッド ネットワーク トラフィックの制限の詳細については、「[Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護][network-policies]」を参照してください。
 
@@ -304,10 +329,14 @@ Azure portal から Azure Policy アドオンを削除する方法について�
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity
+[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
 
 <!-- LINKS - internal -->
+[policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
+[policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
-[policy-samples]: policy-samples.md#microsoftcontainerservice
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
