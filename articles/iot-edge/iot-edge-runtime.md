@@ -4,17 +4,17 @@ description: デバイス上のモジュール、セキュリティ、通信、�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4e4895b227bfc699e94155515e829d0bf33aaf9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016956"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043053"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -32,7 +32,7 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能の実行を�
 
 ![ランタイムによる分析情報とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
 
-IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムの部品である 2 つのコンポーネントによって実行されます。 *IoT Edge ハブ*は通信を担当し、*IoT Edge エージェント*は、モジュールを展開し、監視します。
+IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムの部品である 2 つのコンポーネントによって実行されます。 *IoT Edge ハブ*は通信を担当し、*IoT Edge エージェント*は、モジュールを展開し、監視します。
 
 IoT Edge ハブと IoT Edge エージェントはどちらも、IoT Edge デバイスで実行される他のモジュールと同様のモジュールです。 これらは、*ランタイム モジュール*と呼ばれる場合もあります。
 
@@ -49,7 +49,7 @@ IoT Edge ソリューションが使用する帯域幅を減らすために、Io
 
 ![IoT Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです](./media/iot-edge-runtime/Gateway.png)
 
-IoT Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、IoT Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、IoT Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 詳細については、[オフライン機能](offline-capabilities.md)に関するページを参照してください。
+IoT Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、IoT Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、IoT Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 詳細については、[オフライン機能](offline-capabilities.md)に関するページを参照してください。
 
 ### <a name="module-communication"></a>モジュール通信
 
@@ -71,7 +71,7 @@ IoT Edge ハブを使用することで、モジュール間の通信が容易�
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)、または [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
+ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C#](/dotnet/api/microsoft.azure.devices.client.moduleclient)、[C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、[Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)、または [Node.js](/javascript/api/azure-iot-device/moduleclient)) の API リファレンスを参照してください。
 
 IoT Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定するのはソリューション開発者です。 ルーティング規則はクラウドで定義され、そのモジュール ツインの中で IoT Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 詳細については、[モジュールのデプロイと IoT Edge へのルートの確立の方法の学習](module-composition.md)に関する記事をご覧ください。
 
@@ -87,7 +87,7 @@ IoT Edge エージェントは、Azure IoT Edge ランタイムを構成する�
 
 * **settings.image** – IoT Edge エージェントがモジュールを起動するために使用するコンテナー イメージ。 イメージがパスワードで保護されている場合、IoT Edge エージェントは、コンテナー レジストリの資格情報を使用して構成されている必要があります。 コンテナー レジストリの資格情報は、配置マニフェストを使用してリモートで構成するか、IoT Edge のプログラム フォルダー内の `config.yaml` ファイルを更新することで、IoT Edge デバイス自体で構成できます。
 * **settings.createOptions** – モジュールのコンテナーを起動したときに、Moby コンテナー デーモンに直接渡される文字列。 このプロパティでオプションを追加することにより、ポート転送またはモジュール コンテナーへのボリュームのマウントなどの詳細な構成を設定できます。  
-* **status** – IoT Edge エージェントがモジュールを設定する状態。 IoT Edge によってデバイス上のすべてのモジュールを直ちに起動する必要があるユーザーが大半のため、この値は通常、*実行中*に設定されます。 ただし、モジュールの初期状態を "停止済み" に指定しておき、IoT Edge エージェントにモジュールを起動するよう指示するタイミングまで待機することもできます。 IoT Edge エージェントは、各モジュールの状態を、報告されるプロパティに格納してクラウドに報告します。 期待されるプロパティと報告されたプロパティの間に差がある場合は、デバイスの動作が不適切であることを示しています。 次の状態がサポートされています。
+* **status** – IoT Edge エージェントがモジュールを設定する状態。 IoT Edge によってデバイス上のすべてのモジュールを直ちに起動する必要があるユーザーが大半のため、この値は通常、*実行中*に設定されます。 ただし、モジュールの初期状態を "停止済み" に指定しておき、IoT Edge エージェントにモジュールを起動するよう指示するタイミングまで待機することもできます。 IoT Edge エージェントは、各モジュールの状態を、報告されるプロパティに格納してクラウドに報告します。 期待されるプロパティと報告されたプロパティの間に差がある場合は、デバイスの動作が不適切であることを示しています。 次の状態がサポートされています。
 
   * ダウンロード中
   * 実行中
@@ -124,6 +124,22 @@ IoT Edge エージェントは、IoT Edge デバイスのセキュリティ上�
 
 Azure IoT Edge セキュリティ フレームワークについて詳しくは、[IoT Edge セキュリティ マネージャー](iot-edge-security-manager.md)に関する記事をご覧ください。
 
+## <a name="runtime-quality-telemetry"></a>ランタイム品質テレメトリ
+
+IoT Edge を使用すると、ホスト ランタイムおよびシステム モジュールから匿名テレメトリを収集し、製品の品質を向上させることができます。 この情報はランタイム品質テレメトリと呼ばれます。 収集されたテレメトリは、デバイスからクラウドへのメッセージとして IoT Edge エージェントから IoT Hub に定期的に送信されます。 これらのメッセージは、お客様の通常のテレメトリには表示されず、メッセージ クォータは使用されません。
+
+IoT Edge エージェントとハブからは、デバイスのパフォーマンスを理解するために収集できるメトリックが生成されます。 これらのメトリックのサブセットは、ランタイム品質テレメトリの一部として IoT Edge Agent によって収集されます。 ランタイム品質テレメトリ用に収集されたメトリックには、タグ `ms_telemetry` のラベルが付けられます。 使用できるすべてのメトリックについては、「[組み込みメトリックへのアクセス](how-to-access-built-in-metrics.md)」を参照してください。
+
+デバイス名やモジュール名など、個人または組織について特定可能な情報は、ランタイム品質のテレメトリの匿名性を確保するために、アップロード前に削除されます。
+
+IoT Edge エージェントによって 1 時間ごとにテレメトリが収集され、24 時間ごとに 1 つのメッセージが IoT Hub に送信されます。
+
+デバイスからのランタイム テレメトリの送信をオプトアウトする場合は、次の 2 つの方法があります。
+
+* **edgeAgent** の `SendRuntimeQualityTelemetry` 環境変数を `false` に設定します。または、
+* デプロイ時に Azure portal のオプションをオフにします。
+
 ## <a name="next-steps"></a>次のステップ
 
-[Azure IoT Edge モジュールについて](iot-edge-modules.md)
+* [Azure IoT Edge モジュールについて](iot-edge-modules.md)
+* [IoT Edge ランタイム メトリックの概要](how-to-access-built-in-metrics.md)

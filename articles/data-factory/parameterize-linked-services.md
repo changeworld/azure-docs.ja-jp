@@ -6,18 +6,19 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b3aadab1b4af80f98c57a279b69606a02846e996
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716845"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91276461"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 リンクされたサービスをパラメーター化し、実行時に動的な値を渡せるようになりました。 たとえば、同じ論理 SQL サーバー上の異なるデータベースに接続する場合に、リンクされたサービスの定義内でデータベース名をパラメーター化することができるようになりました。 これにより、論理 SQL サーバー上のデータベースごとに、リンクされたサービスを作成する必要がなくなります。 リンクされたサービスの定義内で、他のプロパティをパラメーター化することもできます (たとえば、*ユーザー名*など)。
@@ -33,7 +34,8 @@ ms.locfileid: "88716845"
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
-現在のところ、リンクされたサービスのパラメーター化は、次のデータ ストアを対象に、Data Factory UI でサポートされています。 その他のすべてのデータ ストアについては、 **[接続]** タブで **[コード]** アイコンを選択し、JSON エディターを使用することで、リンクされたサービスをパラメーター化できます。
+任意の種類のリンクされたサービスをパラメーター化できます。
+リンクされたサービスを UI で作成する場合、Data Factory は、次の種類のコネクタに対して組み込みのパラメーター化エクスペリエンスを提供します。 リンクされたサービスの作成/編集ブレードで、新しいパラメーターのオプションを検索し、動的なコンテンツを追加できます。
 
 - Amazon Redshift
 - Azure Cosmos DB (SQL API)
@@ -45,6 +47,13 @@ ms.locfileid: "88716845"
 - SQL Server
 - 汎用 HTTP
 - 汎用 REST
+
+その他の種類の場合は、UI で JSON を編集して、リンクされたサービスをパラメーター化できます。
+
+- リンクされたサービスの作成/編集ブレードで > 下部にある "詳細" を展開し > "JSON 形式で動的な内容を指定する" ためのチェックボックスをオンにして > リンクされたサービスの JSON ペイロードを指定します。 
+- または、パラメーター化せずにリンクされたサービスを作成した後で、[管理ハブ](author-visually.md#management-hub) > リンクされたサービス > 特定のリンクされたサービスを検索 > "コード" (ボタン {}) をクリックして JSON を編集します。 
+
+` parameters` セクションを追加してパラメーターを定義し、` @{linkedService().paraName} ` を使用してパラメーターを参照するには、[JSON サンプル](#json)を参照してください。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 

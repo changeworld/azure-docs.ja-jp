@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704592"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742419"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
@@ -125,7 +125,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 11. サービスの **[デバイス]** ブレードに移動します。 リソースが多数ある場合は、 **[すべてのリソース]** 、サービス名 (必要に応じて検索)、 **[デバイス]** の順にクリックします。
 12. **[デバイス]** ブレードで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。 デバイスは**セットアップの準備が完了している**状態になります。
     
-    ![デバイスの登録](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![デバイスをデプロイする](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>手順 2:デバイスを iSCSI サーバーとして構成する
 
@@ -138,7 +138,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. デバイスをクリックすると、デバイスのセットアップの準備が完了していることを示すバナー メッセージが表示されます。
    
-    ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![デバイスを iSCSI サーバーとして構成 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. デバイスのコマンド バーで **[構成]** をクリックします。 これにより **[構成]** ブレードが開きます。 **[構成]** ブレードで、次の操作を行います。
    
    * iSCSI サーバー名は自動的に設定されます。
@@ -146,13 +146,13 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    * 32 文字の暗号化キーを指定し、後で参照できるように、キー管理アプリケーションに記録します。
    * デバイスで使用するストレージ アカウントを選択します。 このサブスクリプションでは、既存のストレージ アカウントを選択したり、 **[追加]** をクリックして別のサブスクリプションのアカウントを選択したりできます。
      
-     ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![デバイスを iSCSI サーバーとして構成 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. **[構成]** をクリックして、iSCSI サーバーのセットアップを完了します。
    
-    ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![デバイスを iSCSI サーバーとして構成 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. iSCSI サーバーの作成が進行中であることが通知されます。 iSCSI サーバーが正常に作成されると、 **[デバイス]** ブレードが更新され、対応するデバイスの状態が "**オンライン**" になります。
    
-    ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![デバイスを iSCSI サーバーとして構成 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>手順 3:ボリュームを追加する
 
@@ -169,17 +169,17 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
      
      一方、階層化ボリュームはシン プロビジョニングされます。 階層化ボリュームを作成した場合、領域の約 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。 たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。 このため、これはデバイスのすべてのローカル領域が不足すると、階層化共有をプロビジョニングできないことを意味します (10% は利用できないため)。
      
-     ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![ボリュームを追加する 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * **[接続済みのホスト]** をクリックし、このボリュームに接続する iSCSI イニシエーターに対応するアクセス制御レコード (ACR) を選択して、 **[選択]** をクリックします。 <br><br> 
 3. 新しい接続済みホストを追加するには、 **[新規追加]** をクリックし、ホストの名前とその iSCSI 修飾名 (IQN) を入力して、 **[追加]** をクリックします。 IQN がない場合は、「[付録 A: Windows Server ホストの IQN を取得する](#appendix-a-get-the-iqn-of-a-windows-server-host)」をご覧ください。
    
-      ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![ボリュームを追加する 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. ボリュームの構成が完了したら、 **[OK]** をクリックします。 指定した設定でボリュームが作成され、通知が表示されます。 既定では、監視とバックアップがボリュームに対して有効になります。
    
-     ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![ボリュームを追加する 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. ボリュームが正常に作成されたことを確認するには、 **[ボリューム]** ブレードに移動します。 ボリュームが一覧表示されます。
    
-   ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![ボリュームを追加する 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>手順 4:ボリュームをマウント、初期化、フォーマットする
 

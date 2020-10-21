@@ -5,19 +5,19 @@ description: 自動フェールオーバー グループを使用して、サー
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2, devx-track-azurecli
+ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076516"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627229"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ ms.locfileid: "89076516"
   
 - **初期シード処理**
 
-  データベース、エラスティック プール、またはマネージド インスタンスをフェールオーバー グループに追加する場合、データ レプリケーションが開始される前に、初期シード処理フェーズがあります。 初期シード処理フェーズは、最も時間がかかり、最も負荷の高い操作です。 初期シード処理が完了すると、データは同期され、その後はそれ以降のデータ変更のみがレプリケートされます。 初期シード処理が完了するまでにかかる時間は、データのサイズ、レプリケートされたデータベースの数、およびフェールオーバー グループ内のエンティティ間のリンクの速度によって異なります。 通常の状況での一般的なシード処理の速度は、SQL Database では 50 から 500 GB/時、SQL Managed Instance では 18 から 35 GB/時になります。 シード処理は、すべてのデータベースに対して並列で実行されます。 提示したシード処理速度とデータベースの数およびデータの合計サイズを使用して、データ レプリケーションが開始される前に初期シード処理フェーズにかかる時間を見積もることができます。
+  データベース、エラスティック プール、またはマネージド インスタンスをフェールオーバー グループに追加する場合、データ レプリケーションが開始される前に、初期シード処理フェーズがあります。 初期シード処理フェーズは、最も時間がかかり、最も負荷の高い操作です。 初期シード処理が完了すると、データは同期され、その後はそれ以降のデータ変更のみがレプリケートされます。 初期シード処理が完了するまでにかかる時間は、データのサイズ、レプリケートされたデータベースの数、およびフェールオーバー グループ内のエンティティ間のリンクの速度によって異なります。 通常の環境において可能なシード処理の速度は、SQL Database では最大 500 GB/時、SQL Managed Instance では最大 360 GB/時になります。 シード処理は、すべてのデータベースに対して並列で実行されます。
 
-  SQL Managed Instance の場合は、初期シード処理フェーズの時間を見積もるときに、2 つのインスタンス間の Express Route リンクの速度も考慮する必要があります。 2 つのインスタンス間のリンクの速度が、必要なものより遅い場合、シード処理の時間が特に影響を受ける可能性があります。 提示したシード処理速度、データベースの数、データの合計サイズ、およびリンク速度を使用して、データ レプリケーションが開始される前に初期シード処理フェーズにかかる時間を見積もることができます。 たとえば、100 GB のデータベースが 1 つの場合、リンクが 1 時間あたり 35 GB をプッシュできるのであれば、初期シード処理フェーズにかかる時間は 2.8 から 5.5 時間程度になります。 リンクが転送できるのが 1 時間あたり 10 GB のみの場合、100 GB のデータベースのシード処理には約 10 時間かかります。 レプリケートするデータベースが複数ある場合、シード処理は並列で実行されます。そして、低速リンク速度と組み合わせると、すべてのデータベースからのデータの並列シード処理が使用可能なリンク帯域幅を超えている場合は、初期シード処理の時間が大幅に長くなることがあります。 2 つのインスタンス間のネットワーク帯域幅が制限されていて、複数のマネージド インスタンスをフェールオーバー グループに追加する場合は、複数のマネージド インスタンスを 1 つずつ順番にフェールオーバー グループに追加することを検討してください。
+  SQL Managed Instance の場合は、初期シード処理フェーズの時間を見積もるときに、2 つのインスタンス間の Express Route リンクの速度を考慮してください。 2 つのインスタンス間のリンクの速度が、必要なものより遅い場合、シード処理の時間が特に影響を受ける可能性があります。 提示したシード処理速度、データベースの数、データの合計サイズ、およびリンク速度を使用して、データ レプリケーションが開始される前に初期シード処理フェーズにかかる時間を見積もることができます。 たとえば、100 GB のデータベースが 1 つの場合、リンクで 1 時間あたり 84 GB をプッシュでき、他のデータベースにシードしていないのであれば、初期シード処理フェーズにかかる時間は約 1.2 時間になります。 リンクが転送できるのが 1 時間あたり 10 GB のみの場合、100 GB のデータベースのシード処理には約 10 時間かかります。 レプリケートするデータベースが複数ある場合、シード処理は並列で実行されます。そして、低速リンク速度と組み合わせると、すべてのデータベースからのデータの並列シード処理が使用可能なリンク帯域幅を超えている場合は、初期シード処理の時間が大幅に長くなることがあります。 2 つのインスタンス間のネットワーク帯域幅が制限されていて、複数のマネージド インスタンスをフェールオーバー グループに追加する場合は、複数のマネージド インスタンスを 1 つずつ順番にフェールオーバー グループに追加することを検討してください。 2 つのマネージド インスタンスの間に適切なサイズのゲートウェイ SKU があり、企業ネットワークの帯域幅で許される場合は、最大 360 GB/時の速度を実現できます。  
 
 - **DNS ゾーン**
 
@@ -153,7 +153,7 @@ ms.locfileid: "89076516"
 
 自動フェールオーバー グループはプライマリ サーバーに構成する必要があり、それを別の Azure リージョンのセカンダリ サーバーに接続します。 グループには、これらのサーバーのすべてまたは一部のデータベースを含めることができます。 次の図に、複数のデータベースと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
-![自動フェールオーバー](./media/auto-failover-group-overview/auto-failover-group.png)
+![図では、複数のデータベースと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成が示されています。](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > フェールオーバー グループに SQL Database のデータベースを追加する詳細なステップバイステップのチュートリアルについては、[フェールオーバー グループへの SQL Database の追加](failover-group-add-single-database-tutorial.md)に関するページを参照してください。
@@ -217,7 +217,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
-![自動フェールオーバー](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![自動フェールオーバーの図](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > フェールオーバー グループを使用するための SQL Managed Instance の追加に関する詳細なステップバイステップのチュートリアルについては、[フェールオーバー グループへのマネージド インスタンスの追加](../managed-instance/failover-group-add-instance-tutorial.md)に関するページを参照してください。
@@ -232,6 +232,10 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 > サブネットに作成された最初のマネージド インスタンスにより、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。
 
 プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ SQL Managed Instance の作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)」を参照してください。
+
+### <a name="using-geo-paired-regions"></a>geo ペア リージョンの使用
+
+パフォーマンス上の理由により、両方のマネージド インスタンスを、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にデプロイします。 geo ペア リージョンに存在するマネージド インスタンスは、ペアになっていないリージョンと比較すると、パフォーマンスがはるかに優れています。 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>2 つのインスタンス間のレプリケーション トラフィックを有効にする
 
@@ -355,7 +359,11 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL Managed Instance の 2 つのインスタンスは、異なる Azure リージョンにある必要があります。
 - SQL Managed Instance の 2 つのインスタンスは同じサービス レベルである必要があり、ストレージ サイズも同じである必要があります。
 - SQL Managed Instance のセカンダリ インスタンスは空 (ユーザー データベースなし) である必要があります。
-- SQL Managed Instance のインスタンスによって使用される仮想ネットワークは、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポートされません。
+- SQL Managed Instance のインスタンスによって使用される仮想ネットワークは、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポート対象ですが、次の注記で説明する制限事項があります。
+
+   > [!IMPORTANT]
+   > [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
+
 - 2 つの SQL Managed Instance VNet に、重複する IP アドレスを含めることはできません。
 - 他のマネージド インスタンスのサブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します。
 

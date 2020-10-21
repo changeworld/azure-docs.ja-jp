@@ -1,18 +1,18 @@
 ---
 title: IoT プラグ アンド プレイのデジタル ツインを理解する
-description: IoT プラグ アンド プレイ プレビューでデジタル ツインがどのように使用されるかを理解する
+description: IoT プラグ アンド プレイによってデジタル ツインがどのように使用されるかを理解する
 author: prashmo
 ms.author: prashmo
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1908abfb3d0ea20c69a68344d54076c6760e9e63
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352044"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046470"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>IoT プラグ アンド プレイのデジタル ツインを理解する
 
@@ -34,7 +34,7 @@ Digital Twin API は、コンポーネント、プロパティ、コマンドな
 
 デバイス ツインでは、書き込み可能なプロパティの状態は、desired セクションと reported セクションに分割されます。 すべての読み取り専用プロパティは、reported セクション内で使用できます。
 
-デジタル ツインには、プロパティの現在の状態と目的の状態を示す統合ビューがあります。 特定のプロパティの同期状態は、対応するルートレベルまたはコンポーネント `$metadata` セクションに格納されます。
+デジタル ツインには、プロパティの現在の状態と目的の状態を示す統合ビューがあります。 特定のプロパティの同期状態は、対応する既定のコンポーネント `$metadata` セクションに格納されます。
 
 ### <a name="digital-twin-json-format"></a>デジタル ツインの JSON 形式
 
@@ -51,9 +51,9 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 | `$metadata.{propertyName}.ackCode` | [必須、書き込み可能なプロパティ専用] デジタル ツインを実装するデバイス アプリによって返される `ack` コード |
 | `$metadata.{propertyName}.ackDescription` | [省略可能、書き込み可能なプロパティ専用] デジタル ツインを実装するデバイス アプリによって返される `ack` の説明 |
 | `$metadata.{propertyName}.lastUpdateTime` | IoT Hub によって、デバイスによるプロパティの最後の更新のタイムスタンプが保持されます。 タイムスタンプは UTC で、ISO8601 形式 (YYYY-MM-DDTHH:MM:SS.mmmZ) でエンコードされています |
-| `{componentName}` | コンポーネントのプロパティ値とメタデータを含む JSON オブジェクト。ルート オブジェクト同様。 |
+| `{componentName}` | コンポーネントのプロパティ値とメタデータを含む JSON オブジェクト。 |
 | `{componentName}.{propertyName}` | JSON でのコンポーネントのプロパティ値 |
-| `{componentName}.$metadata` | コンポーネントのメタデータ情報。ルートレベルの `$metadata` と似たものです。 |
+| `{componentName}.$metadata` | コンポーネントのメタデータ情報。 |
 
 #### <a name="device-twin-sample"></a>デバイス ツインのサンプル
 
@@ -171,7 +171,7 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 #### <a name="writable-property"></a>書き込み可能なプロパティ
 
-デバイスに、ルートレベルの以下の書き込み可能なプロパティがあるとします。
+デバイスには、既定のコンポーネントに以下の書き込み可能なプロパティがあるとします。
 
 ```json
 {
@@ -307,7 +307,7 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ## <a name="digital-twin-apis"></a>Digital Twin API
 
-Azure Digital Twins には、デバイスのデジタル ツインを管理するための **Get Digital Twin**、**Update Digital Twin**、**Invoke Component Command**、および **Invoke Command** が用意されています。 [REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) は直接使用することも、[サービス SDK](../iot-pnp/libraries-sdks.md) を通じて使用することもできます。
+Azure Digital Twins には、デバイスのデジタル ツインを管理するための **Get Digital Twin**、**Update Digital Twin**、**Invoke Component Command**、および **Invoke Command** が用意されています。 [REST API](/rest/api/iothub/service/digitaltwin) は直接使用することも、[サービス SDK](../iot-pnp/libraries-sdks.md) を通じて使用することもできます。
 
 ## <a name="digital-twin-change-events"></a>デジタル ツインの変更イベント
 
@@ -374,11 +374,14 @@ content-encoding:utf-8
 ]
 ```
 
+> [!NOTE]
+> ツイン変更通知メッセージは、デバイスとデジタル ツインの両方の変更通知で有効になっている場合、二重になります。
+
 ## <a name="next-steps"></a>次のステップ
 
 ここでは、デジタル ツインについて説明しました。その他のリソースを次に示します。
 
 - [IoT プラグ アンド プレイの Digital Twin API の使用方法](howto-manage-digital-twin.md)
 - [ソリューションからデバイスを操作する](quickstart-service-node.md)
-- [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT エクスプローラー](howto-use-iot-explorer.md)

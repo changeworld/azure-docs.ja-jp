@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 332c33ce46298e5338587cd4d001466d30c1a9e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930858"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999317"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -38,7 +38,7 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 |リリース状態:|プレビュー|
 |価格:|Free|
 |必要なロールとアクセス許可:|割り当てを編集するための**所有者**または**セキュリティ管理者**<br>推奨事項を表示するための**閲覧者**|
-|サポートされているクラスター|Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。|
+|サポートされているクラスター:|Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -58,48 +58,21 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン**�
 
     1. いずれかのセキュリティ コントロールから、推奨事項を選択して、アドオンをインストールできるリソースを確認し、 **[修復]** を選択します。 
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="**Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります** という推奨事項の詳細ページ":::
-
-1. アドオンのインストールが完了してから約 30 分後に、Security Center は、関連する各セキュリティ コントロールに、次の推奨事項についてのクラスターの正常性状態を表示します。
-
-    > [!TIP]
-    > 一部の推奨事項にはパラメーターが含まれており、それらを効果的に使用するために、Azure Policy を使用してカスタマイズする必要があります。 たとえば、**コンテナー イメージは信頼されたレジストリからのみデプロイする必要があります**という推奨事項のメリットを得るには、信頼されたレジストリを定義する必要があります。
-    > 
-    > 構成を必要とする推奨事項に必要なパラメーターを入力していない場合、ワークロードは異常と表示されます。
-
-    | 推奨事項の名前                                                                   | セキュリティ コントロール                         | 構成が必要 |
-    |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | コンテナーの CPU とメモリの制限を適用する必要があります (プレビュー)                          | DDoS 攻撃からのアプリケーションの保護 | No                     |
-    | 特権コンテナーの使用を避けます (プレビュー)                                     | アクセスおよびアクセス許可の管理            | No                     |
-    | コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要があります (プレビュー)     | アクセスおよびアクセス許可の管理            | No                     |
-    | 特権エスカレーションを使用するコンテナーは避ける必要があります (プレビュー)                       | アクセスおよびアクセス許可の管理            | No                     |
-    | コンテナーをルート ユーザーとして実行しないようにします (プレビュー)                           | アクセスおよびアクセス許可の管理            | No                     |
-    | 機密性の高いホストの名前空間を共有するコンテナーは避ける必要があります (プレビュー)              | アクセスおよびアクセス許可の管理            | No                     |
-    | コンテナーで最小限の特権を持つ Linux 機能を適用する必要があります (プレビュー)       | アクセスおよびアクセス許可の管理            | **はい**                |
-    | ポッド HostPath ボリューム マウントの使用は既知のリストに制限する必要があります (プレビュー)    | アクセスおよびアクセス許可の管理            | **はい**                |
-    | コンテナーは許可されたポートでのみリッスンする必要があります (プレビュー)                              | 承認されていないネットワーク アクセスの制限     | **はい**                |
-    | サービスは許可されたポートでのみリッスンする必要があります (プレビュー)                                | 承認されていないネットワーク アクセスの制限     | **はい**                |
-    | ホスト ネットワークとポートの使用を制限する必要があります (プレビュー)                     | 承認されていないネットワーク アクセスの制限     | **はい**                |
-    | コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要があります (プレビュー) | セキュリティ構成の修復        | **はい**                |
-    | コンテナー イメージは信頼されたレジストリからのみデプロイする必要があります (プレビュー)            | 脆弱性の修復                | **はい**                |
-
-
-1. カスタマイズする必要があるパラメーターが含まれた推奨事項では、次のようにパラメーターを設定します。
-
-    1. Security Center のメニューから、 **[セキュリティ ポリシー]** を選択します。
-    1. 関連するサブスクリプションを選択します。
-    1. **[Security Center の既定のポリシー]** セクションで、 **[有効なポリシーの表示]** を選択します。
-    1. "ASC の既定値" を選択します。
+        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="推奨事項 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**" を選択します。
     1. **[パラメーター]** タブを開き、必要に応じて値を変更します。
     1. **[確認と保存]** を選択します。
     1. **[保存]** を選択します。
 
 
-1. 推奨事項のいずれかを適用するには、Security Center の [セキュリティ ポリシー] の **[パラメーター]** タブで **[拒否]** に設定します。
+1. 推奨事項を適用するには、 
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy パラメーターの [拒否] オプション":::
+    1. 推奨事項の詳細ページを開き、 **[拒否]** を選択します。
 
-    これにより、AKS クラスターに対する準拠していない要求が拒否されます。
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="推奨事項 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**":::
+
+        これにより、スコープを設定したペインが開きます。 
+
+    1. スコープを設定したら、 **[Change to deny]\(拒否への変更\)** を選択します。
 
 1. クラスターに適用される推奨事項を確認するには、次の手順に従います。
 
@@ -109,12 +82,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン**�
 
 1. ワークロード保護セットから推奨事項を表示すると、影響を受けるポッド ("Kubernetes コンポーネント") の数がクラスターの横に表示されます。 特定のポッドの一覧を表示するには、クラスターを選択し、 **[アクションの実行]** を選択します。
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="K8s の推奨事項の影響を受けるポッドの表示"::: 
-
-1. 適用をテストするには、次の 2 つの Kubernetes デプロイを使用します。
-
-    - 1 つは、ワークロード保護の推奨事項のバンドルに準拠した正常なデプロイ用です。
-    - もう 1 つは、推奨事項の "*いずれか*" に準拠していない異常なデプロイ用です。
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="推奨事項 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**" に準拠していない異常なデプロイ用です。
 
     サンプル .yaml ファイルをそのままデプロイするか、独自のワークロードを修復するための参照として使用します (手順 VIII)。  
 
