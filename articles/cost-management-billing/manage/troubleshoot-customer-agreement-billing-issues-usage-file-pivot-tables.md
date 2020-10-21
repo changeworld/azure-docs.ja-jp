@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: 2ca4affaeae7f19cf3c913b5dfcf89a04e5bc628
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 32c0779f4086574aeaf8d38ea675f80fbd2c1ec7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026531"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132229"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>使用状況ファイルのピボット テーブルを使用して MCA の請求に関する問題をトラブルシューティングする
 
@@ -27,13 +27,13 @@ ms.locfileid: "92026531"
 
 使用状況ファイルの情報を使用すると、使用状況の問題をより深く理解し、診断することができます。 使用状況ファイルは、コンマ区切り (CSV) 形式で生成されます。 使用状況ファイルは大きな CSV ファイルになる可能性があるため、Excel のようなスプレッドシート アプリケーションでピボット テーブルとして操作および表示する方が簡単です。 この記事の例では Excel を使用しますが、必要な任意のスプレッドシート アプリケーションを使用できます。
 
-使用状況ファイルにアクセスしてダウンロードできるのは、課金プロファイル所有者、共同作成者、閲覧者、請求書管理者のみです。 詳細については、「[Microsoft 顧客契約に関する使用量のダウンロード](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-your-microsoft-customer-agreement)」を参照してください。 
+使用状況ファイルにアクセスしてダウンロードできるのは、課金プロファイル所有者、共同作成者、閲覧者、請求書管理者のみです。 詳細については、「[Microsoft 顧客契約に関する使用量のダウンロード](./download-azure-invoice-daily-usage-date.md#download-usage-for-your-microsoft-customer-agreement)」を参照してください。 
 
 ## <a name="get-the-data-and-format-it"></a>データの取得と書式設定
 
 Azure 使用状況ファイルは CSV 形式であるため、Excel で使用できるようにデータを準備する必要があります。 データをテーブルとして書式設定するには、次の手順に従います。
 
-1. 「[Azure portal で使用状況をダウンロードする](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)」の手順に従って、使用状況ファイルをダウンロードします。
+1. 「[Azure portal で使用状況をダウンロードする](./download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)」の手順に従って、使用状況ファイルをダウンロードします。
 1. Excel でファイルを開きます。
 1. 書式設定されていないデータは、次の例のようになります。  
     :::image type="content" source="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" alt-text="書式設定されていないデータを示す例" lightbox="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" :::

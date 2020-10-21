@@ -7,18 +7,18 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405124"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150966"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR Service は運用環境で利用できますか?
 
-はい。[ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) と [ASP.NET SignalR](https://docs.microsoft.com/aspnet/signalr/overview/getting-started/introduction-to-signalr) のサポートは両方ともすべて一般公開されています。
+はい。[ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) と [ASP.NET SignalR](/aspnet/signalr/overview/getting-started/introduction-to-signalr) のサポートは両方ともすべて一般公開されています。
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>複数のアプリケーション サーバーが存在する場合、クライアント メッセージはすべてのサーバーに送信されますか? それとも 1 つのサーバーだけに送信されますか?
 
@@ -48,7 +48,7 @@ Azure SignalR Service SDK の場合、`HubConnectionContext context` は論理�
 
 Azure SignalR Service は、ASP.NET Core SignalR が既定でサポートする 3 つの転送をすべて提供します。 これは構成できません。 Azure SignalR Service によって、すべてのクライアント接続の接続と転送が処理されます。
 
-「[ASP.NET Core SignalR の構成](https://docs.microsoft.com/aspnet/core/signalr/configuration#configure-allowed-transports-1)」に記載されているように、クライアント側の転送を構成することができます。
+「[ASP.NET Core SignalR の構成](/aspnet/core/signalr/configuration#configure-allowed-transports-1)」に記載されているように、クライアント側の転送を構成することができます。
 
 ## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-shown-in-the-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Azure portal に表示されるメッセージ数や接続数などのメトリックの意味を教えてください。 集計の種類としてどれを選べばよいでしょうか?
 

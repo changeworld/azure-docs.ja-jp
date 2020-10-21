@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: aac5e35f3d0c42e97069ecb38fedaadcdc7794dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9f5e1ba52390191409d8da4bc4c41faaa859a4a8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001844"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125613"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - スマート メーター アプリのアーキテクチャ
 
@@ -28,7 +28,7 @@ ms.locfileid: "87001844"
 
 ## <a name="smart-meters-and-connectivity"></a>スマート メーターと接続性 
 
-スマート メーターは、すべてのエネルギー アセットの中でも最も重要なデバイスの 1 つです。 これを使ってエネルギー消費データを記録し、監視やその他のユース ケース (請求書や需要応答など) のために公共事業体に伝達できます。 メーターの種類に基づいて、ゲートウェイ、またはその他の中間デバイスや中間システム (エッジ デバイス、ヘッドエンド システムなど) を使用して IoT Central に接続できます。 直接接続できないデバイスを接続するには、IoT Central デバイス ブリッジを構築します。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)で確認できます。 
+スマート メーターは、すべてのエネルギー アセットの中でも最も重要なデバイスの 1 つです。 これを使ってエネルギー消費データを記録し、監視やその他のユース ケース (請求書や需要応答など) のために公共事業体に伝達できます。 メーターの種類に基づいて、ゲートウェイ、またはその他の中間デバイスや中間システム (エッジ デバイス、ヘッドエンド システムなど) を使用して IoT Central に接続できます。 直接接続できないデバイスを接続するには、IoT Central デバイス ブリッジを構築します。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](../core/howto-build-iotc-device-bridge.md)で確認できます。 
 
 
 ## <a name="iot-central-platform"></a>IoT Central プラットフォーム
@@ -42,4 +42,4 @@ IoT Central プラットフォームには、次の 2 つの拡張オプショ�
 ## <a name="next-steps"></a>次のステップ
 
 * アーキテクチャについて学習したので、次は[スマート メーター アプリを無料で作成します](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* IoT Central の詳細については、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)に関する記事を参照してください
+* IoT Central の詳細については、[IoT Central の概要](../index.yml)に関する記事を参照してください

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6fa70eba5875c32d41fa1cfc8daf9b1cdf8f19df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83599111"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132739"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューのクォータ
 
@@ -26,7 +26,7 @@ Azure Static Web Apps のプレビューには、次のクォータがありま�
 | 含まれる帯域幅          | 100 GB/月 |
 | 超過帯域幅           | 使用不可      |
 | Azure サブスクリプションあたりのアプリ数 | 10               |
-| アプリのサイズ                    | 100 MB           |
+| アプリのサイズ                    | 250 MB           |
 | 実稼働前の環境数 | 1                |
 | カスタム ドメイン              | 1                |
 | 承認<br><br>カスタム ロールとルーティング規則を使用 | 招待されてロールを割り当てられるエンドユーザーの最大数は 25 人 |

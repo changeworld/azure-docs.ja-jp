@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442498"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132586"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -25,15 +25,15 @@ Microsoft Enterprise Azure のお客様は、REST API を使用して使用状�
 
 ### <a name="available-apis"></a>利用可能な API
 
-**Balance and Summary** - [Balance and Summary API](../../billing/billing-enterprise-api-balance-summary.md) では、残高、新規購入、Azure Marketplace サービス料金、精算、および超過料金に関する情報の月次概要が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Balance and Summary (Enterprise のお客様向けの Reporting API - Balance and Summary)](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)」を参照してください。
+**Balance and Summary** - [Balance and Summary API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) では、残高、新規購入、Azure Marketplace サービス料金、精算、および超過料金に関する情報の月次概要が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Balance and Summary (Enterprise のお客様向けの Reporting API - Balance and Summary)](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)」を参照してください。
 
-**Usage Details** - [Usage Detail API](../../billing/billing-enterprise-api-usage-detail.md) では、登録別の毎日の消費量の内訳と見積料金が提供されます。 この結果には、インスタンス、測定、および部署に関する情報も含まれています。 この API には、請求期間、または指定した開始日と終了日でクエリを実行できます。 詳細については、「[Reporting APIs for Enterprise customers - Usage Details (Enterprise のお客様向けの Reporting API - Usage Details)](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)」を参照してください。
+**Usage Details** - [Usage Detail API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) では、登録別の毎日の消費量の内訳と見積料金が提供されます。 この結果には、インスタンス、測定、および部署に関する情報も含まれています。 この API には、請求期間、または指定した開始日と終了日でクエリを実行できます。 詳細については、「[Reporting APIs for Enterprise customers - Usage Details (Enterprise のお客様向けの Reporting API - Usage Details)](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)」を参照してください。
 
-**Marketplace Store Charge** - [Marketplace Store Charge API](../../billing/billing-enterprise-api-marketplace-storecharge.md) では、指定された請求期間または開始日から終了日までの使用量に基づく Marketplace 料金の日別内訳が返されます。 詳細については、「[Reporting APIs for Enterprise customers - Marketplace Store Charge (Enterprise のお客様向けの Reporting API - Marketplace Store Charge)](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)」を参照してください。
+**Marketplace Store Charge** - [Marketplace Store Charge API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) では、指定された請求期間または開始日から終了日までの使用量に基づく Marketplace 料金の日別内訳が返されます。 詳細については、「[Reporting APIs for Enterprise customers - Marketplace Store Charge (Enterprise のお客様向けの Reporting API - Marketplace Store Charge)](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)」を参照してください。
 
 **Price sheet** - [Price Sheet API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) では、登録と請求期間に対する各測定に適用される課金率が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Price Sheet (Enterprise のお客様向けの Reporting API - Price Sheet)](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)」を参照してください。
 
-**Billing Periods** - [Billing Periods API](../../billing/billing-enterprise-api-billing-periods.md) では、登録の消費量データが記載された請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marktplace Charges および PriceSheet という 4 セットのデータの API ルートを示すプロパティが含まれています。 詳細については、「[Reporting APIs for Enterprise customers - Billing Periods (Enterprise のお客様向けの Reporting API - Billing Periods)](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)」を参照してください。
+**Billing Periods** - [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) では、登録の消費量データが記載された請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marktplace Charges および PriceSheet という 4 セットのデータの API ルートを示すプロパティが含まれています。 詳細については、「[Reporting APIs for Enterprise customers - Billing Periods (Enterprise のお客様向けの Reporting API - Billing Periods)](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)」を参照してください。
 
 ### <a name="enable-api-data-access"></a>API データ アクセスを有効にする
 

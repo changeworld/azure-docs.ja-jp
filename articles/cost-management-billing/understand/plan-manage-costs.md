@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336968"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150113"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure のコストの管理を計画する
 
@@ -24,7 +24,7 @@ ms.locfileid: "91336968"
 - サービスを追加する前に[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や Azure 価格シートを使用することで、また、サービスを追加している間は Azure portal で推定コストを把握します。
 - [予算](../costs/tutorial-acm-create-budgets.md)、[アラート](../costs/cost-mgt-alerts-monitor-usage-spending.md)、[コスト分析](../costs/quick-acm-cost-analysis.md)を使用してコストを監視します。
 - 請求書に記載されている請求金額について、[詳しい使用状況ファイル](../manage/download-azure-invoice-daily-usage-date.md)と比較して確認します。
-- [Billing](https://docs.microsoft.com/rest/api/billing/) API と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用して課金およびコストのデータを独自のレポート システムに統合します。
+- [Billing](/rest/api/billing/) API と [Consumption](/rest/api/consumption/) API を使用して課金およびコストのデータを独自のレポート システムに統合します。
 - マイクロソフト エンタープライズ契約 (EA)、クラウド ソリューション プロバイダー (CSP)、Azure スポンサー プランのお客様向けに別途用意されているリソースおよびツールを使用します。
 - [Azure 無料アカウント](https://azure.microsoft.com/free/)で利用できる[最も人気の高い Azure サービスを 12 か月間無料](../manage/create-free-services.md)で活用します。 下記の推奨事項に加えて、[無料アカウントの課金の回避](../manage/avoid-charges-free-account.md)に関する記事もご覧ください。
 
@@ -125,7 +125,7 @@ Azure portal で、VM の自動シャットダウンと Advisor の推奨事項�
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Billing および Consumption API と統合する
 
-Azure の [Billing](https://docs.microsoft.com/rest/api/billing/) と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用して、請求データとコスト データをプログラムから入手することもできます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](../manage/usage-rate-card-overview.md)」をご覧ください。
+Azure の [Billing](/rest/api/billing/) と [Consumption](/rest/api/consumption/) API を使用して、請求データとコスト データをプログラムから入手することもできます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](../manage/usage-rate-card-overview.md)」をご覧ください。
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> その他のリソースと特殊なケース
 

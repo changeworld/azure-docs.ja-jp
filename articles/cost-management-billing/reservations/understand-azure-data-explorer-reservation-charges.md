@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: af2dc8378d1f1fe952a568ecb4bd89d088e3e3d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383126"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147242"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Azure Data Explorer に予約割引が適用されるしくみについて
 
@@ -70,4 +70,4 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 * [Azure の予約の管理](manage-reserved-vm-instance.md)  
 * [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 * [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
-* [CSP サブスクリプションの予約の使用状況について](https://docs.microsoft.com/partner-center/azure-reservations)
+* [CSP サブスクリプションの予約の使用状況について](/partner-center/azure-reservations)

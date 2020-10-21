@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326608"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131073"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
 Microsoft Azure portal または Azure アカウント センターで新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 この短いガイドでは、サインアップ プロセスの手順と、各ステップでの一般的な問題について説明します。
 
 > [!NOTE]
-> 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)」を参照してください。
+> 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](./troubleshoot-sign-in-issue.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -76,8 +76,8 @@ InPrivate ブラウズはどうですか。
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>次のようなメッセージが表示される: "現在のアカウントの種類はサポートされていません"
 
-この問題は、[アンマネージドの Azure AD ディレクトリ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)にアカウントが登録されているために、組織の Azure AD ディレクトリにはアカウントが存在しない場合に発生します。
-この問題を解決するには、別のアカウントを使用して Azure アカウントにサインアップするか、アンマネージド AD ディレクトリの引き継ぎを行ってください。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)」を参照してください。
+この問題は、[アンマネージドの Azure AD ディレクトリ](../../active-directory/users-groups-roles/directory-self-service-signup.md)にアカウントが登録されているために、組織の Azure AD ディレクトリにはアカウントが存在しない場合に発生します。
+この問題を解決するには、別のアカウントを使用して Azure アカウントにサインアップするか、アンマネージド AD ディレクトリの引き継ぎを行ってください。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../../active-directory/users-groups-roles/domains-admin-takeover.md)」を参照してください。
 
 ## <a name="identity-verification-by-phone"></a>電話による本人確認
 
@@ -107,7 +107,7 @@ InPrivate ブラウズはどうですか。
 
 #### <a name="credit-card-declined-or-not-accepted"></a>クレジット カードが拒否されます
 
-バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)」を参照してください。
+バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](./troubleshoot-declined-card.md)」を参照してください。
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>請求先住所がクレジット カード フォームでサポートされていない
 
@@ -144,7 +144,7 @@ InPrivate ブラウズはどうですか。
 サインイン資格情報が正しいことを確認します。 次に、特典プログラムを使用する資格があることを確認します。
 - MSDN
   - [MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)で資格の状態を確認します。
-  - 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/library/aa493452.aspx)にお問い合わせください。
+  - 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](/previous-versions/mappoint/aa493452(v=msdn.10))にお問い合わせください。
 - Microsoft for Startups
   - [Microsoft for Startups ポータル](https://startups.microsoft.com/#start-two)にサインインして、Microsoft for Startups の資格の状態を確認します。
   - 状態を確認できない場合は、[Microsoft for Startups フォーラム](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)で質問してください。
@@ -161,10 +161,10 @@ Azure イン オープン プランのサブスクリプションを作成する
 
 Azure の請求とサブスクリプションに関するその他のトラブルシューティング記事
 
-- [拒否されたカード](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [サブスクリプションのサインインの問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [サブスクリプションが見つからない](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Enterprise コスト ビューが無効になっている](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [拒否されたカード](./troubleshoot-declined-card.md)
+- [サブスクリプションのサインインの問題](./troubleshoot-sign-in-issue.md)
+- [サブスクリプションが見つからない](./no-subscriptions-found.md)
+- [Enterprise コスト ビューが無効になっている](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>お問い合わせ
 
@@ -172,4 +172,4 @@ Azure の請求とサブスクリプションに関するその他のトラブ�
 
 ## <a name="find-out-more-about-azure-cost-management"></a>Azure Cost Management の詳細を探す
 
-- [Azure Cost Management および Billing のドキュメント](https://docs.microsoft.com/azure/cost-management-billing)
+- [Azure Cost Management および Billing のドキュメント](../index.yml)

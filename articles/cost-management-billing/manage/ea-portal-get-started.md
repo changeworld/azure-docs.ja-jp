@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 617351d5d1bdf9b6528803552e2d34766e9ab217
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371951"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132654"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 
@@ -561,7 +561,7 @@ Azure EA 加入契約において、必要な数の部署を作成できます�
 
 部署とサブスクリプションを作成した後、使用状況レポートにデータを表示できます。 この情報は、部署レベルで使用状況を追跡し、コストを管理し、支出を管理するのに役立ちます。
 
-Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) に関するページを参照してください。
+Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](./ea-portal-rest-apis.md) に関するページを参照してください。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>利用量クォータを設定して、制限に近づいたらアラートを受け取ることはできますか?
 
@@ -573,7 +573,7 @@ Reporting API を使用して、使用状況データにアクセスすること
 
 "_リソース グループ_" と "_タグ_" を使用している場合、この情報はサービス レベルで追跡され、詳細な使用状況のダウンロード (CSV) ファイルでアクセスできます。 Azure エンタープライズ ポータルの[使用状況レポートのダウンロード](https://ea.azure.com/report/downloadusage)を参照してください。
 
-API で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) に関するページを参照してください。
+API で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](./ea-portal-rest-apis.md) に関するページを参照してください。
 
 > [!NOTE]
 > タグを適用できるのは、Azure Resource Manager の操作をサポートするリソースのみです。 仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルなど) を使用して作成した場合、そのリソースにタグを適用することはできません。 タグ付けをサポートするには、Resource Manager を介してこれらのリソースを再デプロイする必要があります。 その他のすべてのリソースでは、タグ付けがサポートされています。

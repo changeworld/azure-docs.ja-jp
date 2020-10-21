@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447932"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150089"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 
@@ -29,7 +29,7 @@ Microsoft Partner Agreement の課金アカウントには、ビジネスで使�
 
 ![Microsoft Partner Agreement の課金階層を示した図](./media/mpa-overview/mpa-hierarchy.svg)
 
-組織の**全体管理者**ロールおよび**管理エージェント** ロールを持つユーザーは、課金アカウント、課金プロファイル、および顧客を管理できます。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)に関するページを参照してください。
+組織の**全体管理者**ロールおよび**管理エージェント** ロールを持つユーザーは、課金アカウント、課金プロファイル、および顧客を管理できます。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)に関するページを参照してください。
 
 ## <a name="billing-profiles"></a>課金プロファイル
 
@@ -47,7 +47,7 @@ Microsoft 顧客契約に同意し、Azure プランを持っている顧客を�
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>コストを表示できるポリシーを有効にする
 
-顧客の組織のユーザーが Azure 使用量の従量課金制のコストを表示および分析できるかどうかを制御するポリシーを適用します。 既定では、このポリシーは無効になっており、ユーザーはコストを表示できません。 有効にすると、サブスクリプションに対する適切な [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) アクセス権を持つユーザーは、サブスクリプションのコストを表示および分析できます。
+顧客の組織のユーザーが Azure 使用量の従量課金制のコストを表示および分析できるかどうかを制御するポリシーを適用します。 既定では、このポリシーは無効になっており、ユーザーはコストを表示できません。 有効にすると、サブスクリプションに対する適切な [Azure RBAC](../../role-based-access-control/overview.md) アクセス権を持つユーザーは、サブスクリプションのコストを表示および分析できます。
 
 ポリシーを有効にするには:
 
@@ -69,7 +69,7 @@ Microsoft 顧客契約に同意し、Azure プランを持っている顧客を�
 
 ## <a name="resellers"></a>リセラー
 
-CSP の [2 層モデル](https://docs.microsoft.com/partner-center)の間接プロバイダーは、Azure portal で顧客のサブスクリプションを作成するときにリセラーを選択できます。 作成後、顧客はリセラーでフィルター処理されたサブスクリプションの一覧を表示し、Azure コスト分析でリセラーごとの顧客のコストを分析することができます。
+CSP の [2 層モデル](/partner-center)の間接プロバイダーは、Azure portal で顧客のサブスクリプションを作成するときにリセラーを選択できます。 作成後、顧客はリセラーでフィルター処理されたサブスクリプションの一覧を表示し、Azure コスト分析でリセラーごとの顧客のコストを分析することができます。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft Partner Agreement へのアクセスの確認
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ CSP の [2 層モデル](https://docs.microsoft.com/partner-center)の間接プ�
 請求先アカウントの詳細については、次の記事を参照してください。
 
 - [ 用に追加の Azure サブスクリプションを作成する](../manage/create-subscription.md)
-- [Azure Billing API シリーズ](https://docs.microsoft.com/rest/api/billing/)を使用して、課金データを独自のレポート システムに統合する
-- [パートナー向けの Azure Cost Management のクイックスタート ガイド](https://go.microsoft.com/fwlink/?linkid=2106482)
+- [Azure Billing API シリーズ](/rest/api/billing/)を使用して、課金データを独自のレポート システムに統合する
+- [パートナー向けの Azure Cost Management のクイックスタート ガイド](../costs/get-started-partners.md)

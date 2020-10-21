@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017014"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132552"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -25,13 +25,13 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 パートナー ID をリンクする前に、次のオプションのいずれかを使用することで、顧客の Azure リソースに対するアクセス権を顧客から与えてもらう必要があります。
 
-- **ゲスト ユーザー**: 顧客は、貴社をゲスト ユーザーとして追加し、Azure ロールを割り当てることができます。 詳細については、[別のディレクトリからのゲスト ユーザーの追加](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)に関する記事を参照してください。
+- **ゲスト ユーザー**: 顧客は、貴社をゲスト ユーザーとして追加し、Azure ロールを割り当てることができます。 詳細については、[別のディレクトリからのゲスト ユーザーの追加](../../active-directory/external-identities/what-is-b2b.md)に関する記事を参照してください。
 
 - **ディレクトリ アカウント**: 貴社の顧客は、顧客のディレクトリ内に貴社のユーザー アカウントを作成し、任意の Azure ロールを割り当てることができます。
 
 - **サービス プリンシパル**: 貴社の顧客は、貴社の組織から顧客のディレクトリ内にアプリまたはスクリプトを追加し、Azure ロールを割り当てることができます。 アプリまたはスクリプトの ID は、サービス プリンシパルと呼ばれます。
 
-- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、「[Azure の委任されたリソース管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)」を参照してください。
+- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、「[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)」を参照してください。
 
 ## <a name="link-to-a-partner-id"></a>パートナー ID へリンク
 
@@ -55,7 +55,7 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 1. [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell モジュールをインストールします。
 
-2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[PowerShell を使用したサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)に関するページを参照してください。
+2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[PowerShell を使用したサインイン](/powershell/azure/authenticate-azureps)に関するページを参照してください。
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[Azure CLI を使用したサインイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[Azure CLI を使用したサインイン](/cli/azure/authenticate-azure-cli)に関するページを参照してください。
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -152,9 +152,9 @@ C:\ az managementpartner delete --partner-id 12345
 
 レポートに顧客が表示されないのは、次の理由によります。
 
-1. リンクされたユーザー アカウントに、顧客の Azure サブスクリプションまたはリソースに対する [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) がありません。
+1. リンクされたユーザー アカウントに、顧客の Azure サブスクリプションまたはリソースに対する [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) がありません。
 
-2. ユーザーに [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) のアクセス権が付与されている Azure サブスクリプションで、使用量が発生していません。
+2. ユーザーに [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) のアクセス権が付与されている Azure サブスクリプションで、使用量が発生していません。
 
 **パートナー ID のリンクは、Azure Stack で動作しますか。**
 

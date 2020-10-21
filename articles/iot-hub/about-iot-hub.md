@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87428970"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148837"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -40,7 +40,7 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 
 * ユーザーは、デバイスのアクセスを完全に制御でき、デバイスごとのレベルで接続を制御できます。
 
-* [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) は、デバイスの初期起動時に、正しい IoT ハブに対してデバイスを自動的にプロビジョニングします。
+* [IoT Hub Device Provisioning Service](../iot-dps/index.yml) は、デバイスの初期起動時に、正しい IoT ハブに対してデバイスを自動的にプロビジョニングします。
 
 * 複数の認証の種類により、さまざまなデバイス機能がサポートされています。
 
@@ -64,13 +64,13 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 
 IoT Hub を他の Azure サービスと統合して、完全なエンド ツー エンドのソリューションを構築できます。 たとえば、次のようなサービスを使います。
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) を使うと、信頼性が高く、スケーラブルかつ安全な方法で重要なイベントに迅速に対応できます。
+* [Azure Event Grid](../event-grid/index.yml) を使うと、信頼性が高く、スケーラブルかつ安全な方法で重要なイベントに迅速に対応できます。
 
-* [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) は、ビジネス プロセスを自動化します。
+* [Azure Logic Apps](../logic-apps/index.yml) は、ビジネス プロセスを自動化します。
 
 * [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md) は、機械学習と AI モデルをソリューションに追加します。
 
-* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) は、デバイスからのデータ ストリーミングに対してリアルタイムの分析計算を実行します。
+* [Azure Stream Analytics](../stream-analytics/index.yml) は、デバイスからのデータ ストリーミングに対してリアルタイムの分析計算を実行します。
 
 ## <a name="configure-and-control-your-devices"></a>デバイスの構成と制御
 
@@ -88,7 +88,7 @@ IoT Hub を他の Azure サービスと統合して、完全なエンド ツー 
 
 ## <a name="connect-your-devices"></a>デバイスの接続
 
-[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) のライブラリを使うと、デバイス上で実行して IoT Hub と対話するアプリケーションを作成できます。 複数の Linux ディストリビューション、Windows、リアルタイム オペレーティング システムなどのプラットフォームがサポートされています。 以下の言語がサポートされています。
+[Azure IoT device SDK](./iot-hub-devguide-sdks.md) のライブラリを使うと、デバイス上で実行して IoT Hub と対話するアプリケーションを作成できます。 複数の Linux ディストリビューション、Windows、リアルタイム オペレーティング システムなどのプラットフォームがサポートされています。 以下の言語がサポートされています。
 
 * C
 * C#
@@ -108,7 +108,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 ソリューションがサポートされているどのプロトコルも使用できない場合は、カスタム プロトコルをサポートするように IoT Hub を拡張できます。
 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) を使って、エッジでプロトコル変換を実行するためのフィールド ゲートウェイを作成します。
+* [Azure IoT Edge](../iot-edge/index.yml) を使って、エッジでプロトコル変換を実行するためのフィールド ゲートウェイを作成します。
 
 * [Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)をカスタマイズして、クラウドでのプロトコル変換を実行します。
 

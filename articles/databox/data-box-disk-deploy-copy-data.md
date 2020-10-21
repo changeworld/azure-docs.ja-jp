@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766845"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125339"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ ms.locfileid: "91766845"
 
 データのコピーに分割コピー ツールを使用しなかった場合は、お客様のデータを検証する必要があります。 データを確認するには、次の手順を実行します。
 
-1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 これは Windows 環境でのみ使用できます。 Linux ユーザーは、ディスクにコピーされたソース データが[前提条件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)を満たしていることを検証する必要があります。
+1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 これは Windows 環境でのみ使用できます。 Linux ユーザーは、ディスクにコピーされたソース データが[前提条件](./data-box-disk-limits.md)を満たしていることを検証する必要があります。
     
     ![Data Box Disk 検証ツールの出力](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ ms.locfileid: "91766845"
 1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。
 2. オプション 2 を使用して、ファイルを検証し、チェックサムを生成します。 データのサイズによっては、この手順にしばらく時間がかかることがあります。 検証とチェックサムの生成の間にエラーが発生した場合は、通知が表示され、エラー ログへのリンクも提供されます。
 
-    データ検証の詳細については、「[データの検証](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)」を参照してください。 検証中にエラーが発生する場合は、[検証エラーのトラブルシューティング](data-box-disk-troubleshoot.md)に関する記事を参照してください。
+    データ検証の詳細については、「[データの検証](#validate-data)」を参照してください。 検証中にエラーが発生する場合は、[検証エラーのトラブルシューティング](data-box-disk-troubleshoot.md)に関する記事を参照してください。
 
 ::: zone-end

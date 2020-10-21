@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: ab13c9494ee04d112cec93af9efaab43705297bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fac992ba0d6be945fcb3184d27394ff58d98c44c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319522"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151028"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -102,6 +102,6 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 このクイック スタートでは、Maven を使ってリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次に、Java Azure Functions を一から作成する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [Java と Maven を使用して初めての関数を作成する](../azure-functions/functions-create-first-java-maven.md)
+> [Java と Maven を使用して初めての関数を作成する](../azure-functions/functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java%252cprogramming-language-java)
 
 [問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)

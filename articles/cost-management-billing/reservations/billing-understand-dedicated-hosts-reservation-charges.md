@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689458"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148367"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Azure Dedicated Host への Azure 予約割引の適用
 
@@ -36,17 +36,16 @@ Azure Dedicated Host での予約インスタンスによって、専用ホス�
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-- [Azure の予約とは](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Azure の予約とは](./save-compute-costs-reservations.md)
 
-- [Azure Dedicated Host の使用](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure Dedicated Host の使用](../../virtual-machines/dedicated-hosts.md)
 
 - [専用ホストの価格](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Azure の予約の管理](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Azure の予約の管理](./manage-reserved-vm-instance.md)
 
-- [従量課金制サブスクリプションの予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [従量課金制サブスクリプションの予約使用量について](./understand-reserved-instance-usage.md)
 
-- [エンタープライズ加入契約の予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [エンタープライズ加入契約の予約使用量について](./understand-reserved-instance-usage-ea.md)
 
-- [CSP サブスクリプションの予約の使用状況について](https://docs.microsoft.com/partner-center/azure-reservations)
-
+- [CSP サブスクリプションの予約の使用状況について](/partner-center/azure-reservations)

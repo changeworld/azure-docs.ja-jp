@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89050507"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150975"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -64,7 +64,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ### <a name="build-the-executable-file"></a>実行可能ファイルの作成
 
-例として MacOS の osx.10.13 x64 を使用します。 他のプラットフォームで作成する方法については、[こちらを参照](https://docs.microsoft.com/dotnet/core/rid-catalog)してください。
+例として MacOS の osx.10.13 x64 を使用します。 他のプラットフォームで作成する方法については、[こちらを参照](/dotnet/core/rid-catalog)してください。
 
 ```bash
 cd AzureSignalR-samples/samples/Serverless/

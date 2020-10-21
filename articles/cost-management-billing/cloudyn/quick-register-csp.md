@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1cbdeb09a1f3182aef9dcc6445c5b5e22e2448ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985509"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132348"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
@@ -29,7 +29,7 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
 > Cloudyn 登録を完了できるのは、CSP 直接パートナーと CSP 間接プロバイダーだけです。
 >
 > 認証とデータ アクセスには、パートナー センター API の構成が必要です。 API アクセスをプロビジョニングするには、パートナー センターのグローバル管理者アカウントが必要です。
-> 詳細については、[パートナー センター API への接続](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx)に関する記事を参照してください。
+> 詳細については、[パートナー センター API への接続](/partner-center/develop/set-up-api-access-in-partner-center)に関する記事を参照してください。
 >
 > CSP 間接リセラーは、CSP 間接プロバイダーが Cloudyn に登録した後で、Cloudyn にアクセスできるようになります。 その後、CSP 間接リセラーは、Cloudyn アクセスを Azure のお客様とサブスクリプションに提供できます。
 >
