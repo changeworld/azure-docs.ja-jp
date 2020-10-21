@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines 上の SQL Server に関するドキュメントの変更 | Microsoft Docs
+title: Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 description: Azure Virtual Machines 上の SQL Server のさまざまなリリースにおける新機能と機能改善について説明します。
 services: virtual-machines-windows
 author: MashaMSFT
@@ -7,21 +7,28 @@ ms.author: mathoma
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: virtual-machines-sql
-ms.topic: conceptual
+ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/20/2020
-ms.openlocfilehash: 5f0ba27a0964f08b32e1af19d6f578b3f41ee300
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/21/2020
+ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91758644"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) をデプロイできます。 この記事では、[Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化に関連するドキュメントの変更をまとめます。 
+
+## <a name="september-2020"></a>2020 年 9 月
+
+| [変更点] | 詳細 |
+| --- | --- |
+| **自動 RP 登録** | [自動登録](sql-vm-resource-provider-automatic-registration.md)機能を有効にして、サブスクリプションに既にデプロイされているすべての SQL Server VM と、今後追加されるすべての SQL Server VM を、自動的に登録できるようになりました。  | 
+
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -83,7 +90,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | **名前付きインスタンスのサポートの可否** | 既定のインスタンスが適切にアンインストールされている場合、名前付きインスタンスで [SQL Server IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md#installation)を使用できるようになりました。 | 
 | **ポータルの機能強化** | SQL Server VM をデプロイするための Azure portal エクスペリエンスは、より使いやすくなるように改良されています。 詳細については、SQL Server VM のデプロイに関する簡単な[クイックスタート](sql-vm-create-portal-quickstart.md)と、より包括的な[ハウツー](create-sql-vm-portal.md) ガイドを参照してください。|
 | **ポータルの改善** | [Azure portal](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider) を使用して、SQL Server VM のライセンス モデルを従量課金制からライセンス持ち込みに変更できるようになりました。|
-| **Azure CLI を使用した SQL Server VM への可用性グループのデプロイの簡素化** | 可用性グループを Azure の SQL Server VM にデプロイすることが以前より簡単になりました。 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) を使用すると、Windows フェールオーバー クラスター、内部ロード バランサー、および可用性グループのリスナーのすべてをコマンド ラインから作成できます。 詳細については、「[Azure CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する](availability-group-az-cli-configure.md)」を参照してください。 | 
+| **Azure CLI を使用した SQL Server VM への可用性グループのデプロイの簡素化** | 可用性グループを Azure の SQL Server VM にデプロイすることが以前より簡単になりました。 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) を使用すると、Windows フェールオーバー クラスター、内部ロード バランサー、および可用性グループのリスナーのすべてをコマンド ラインから作成できます。 詳細については、「[Azure CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する](availability-group-az-cli-configure.md)」を参照してください。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 

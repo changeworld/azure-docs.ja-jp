@@ -263,6 +263,8 @@
           items:
             - name: サーバーレベルの IP ファイアウォール規則
               href: database/firewall-create-server-level-portal-quickstart.md
+        - name: GitHub のアクション
+          href: database/connect-github-actions-sql-db.md
     - name: チュートリアル
       items:
         - name: データベースの設計

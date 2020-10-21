@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229397"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91760565"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -43,7 +43,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 * **arm-templates** フォルダー。多数の Azure Resource Manager テンプレートが含まれます。 この記事でテンプレートについて説明します。
 * **client-application** フォルダー。[ffmpeg による Azure Batch .NET ファイル処理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)サンプルのコピーです。 これはこの記事では必要ありません。
-* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) です。
+* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) です。
 * **pipelines** フォルダー。 これには、構築プロセスを示す YAML ファイルが含まれています。 これはこの記事で説明します。
 
 このセクションでは、バージョン管理と Resource Manager テンプレートの設計に習熟していることを前提としています。 これらの概念になじみがない場合は、以下のページで詳細を確認してください。
@@ -291,7 +291,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 インフラストラクチャとソフトウェアはコードとして定義でき、同じリポジトリに一緒に配置できます。
 
-このソリューションでは、アプリケーション パッケージとして ffmpeg を使用します。 ffmpeg パッケージは[ここで](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)ダウンロードできます。
+このソリューションでは、アプリケーション パッケージとして ffmpeg を使用します。 ffmpeg パッケージは[ここで](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip)ダウンロードできます。
 
 ![Git リポジトリの構造の例](media/batch-ci-cd/git-repository.jpg)
 
