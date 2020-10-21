@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 9519b9a5dec898a0905310de02ef9fad3d282a65
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1e9d44561d79c411bdff167acad4f37c21251e23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290533"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951742"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure Resource Manager リソース グループを管理する
 
@@ -204,15 +204,15 @@ Export-AzResourceGroup `
 ]
 ```
 
-テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](https://aka.ms/exportTemplateViaAdf)」を参照してください。
+テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
 
-クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](https://aka.ms/migrateclassicresourcetoarm)必要があります。
+クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)必要があります。
 
 詳細については、「[Azure portal のテンプレートへの単一および複数リソースのエクスポート](../templates/export-template-portal.md)」を参照してください。
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、[RBAC と Azure PowerShell を使用したアクセスの管理](../../role-based-access-control/role-assignments-powershell.md)に関する記事をご覧ください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

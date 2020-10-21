@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: f9b5380fa219d768651703eeb9fe445fcd215332
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e9a4f7266522fc17c33e2086af6cb7367bbed39e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91650682"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>ラングリング データ フローを使用してデータを準備する
 
@@ -25,13 +25,13 @@ ms.locfileid: "85921775"
 
 Azure Data Factory でラングリング データ フローを作成するには、2 つの方法があります。 1 つ目の方法は、プラス記号のアイコンをクリックし、Factory リソースのウィンドウで **[データ フロー]** を選択することです。
 
-![ラングリング](media/wrangling-data-flow/tutorial7.png)
+![ファクトリ リソース ペインでの [データ フロー] を示すスクリーンショット。](media/wrangling-data-flow/tutorial7.png)
 
 もう 1 つの方法は、パイプライン キャンバスのアクティビティ ウィンドウで行います。 **[移動と変換]** アコーディオンを開き、 **[データ フロー]** アクティビティをキャンバスにドラッグします。
 
 どちらの方法でも、開いたサイド ウィンドウで **[Create new data flow]\(新しいデータ フローの作成\)** を選択し、 **[Wrangling data flow]\(ラングリング データ フロー\)** を選択します。 [OK] をクリックします。
 
-![ラングリング](media/wrangling-data-flow/tutorial1.png)
+![[Wrangling data flow]\(ラングリング データ フロー\) オプションが強調表示されているスクリーンショット。](media/wrangling-data-flow/tutorial1.png)
 
 ## <a name="author-a-wrangling-data-flow"></a>ラングリング データ フローを作成する
 
@@ -44,21 +44,21 @@ Azure Data Factory でラングリング データ フローを作成するに�
 
 **[作成]** をクリックして、Power Query Online マッシュアップ エディターを開きます。
 
-![ラングリング](media/wrangling-data-flow/tutorial5.png)
+![Power Query Online マッシュアップ エディターを開く [作成] ボタンを示すスクリーンショット。](media/wrangling-data-flow/tutorial5.png)
 
-コーディング不要のデータ準備を使用して、ラングリング データ フローを作成します。 使用できる関数の一覧については、[変換関数](wrangling-data-flow-functions.md)/に関するページを参照してください
+コーディング不要のデータ準備を使用して、ラングリング データ フローを作成します。 使用できる関数の一覧については、[変換関数](wrangling-data-flow-functions.md)に関するページを参照してください。
 
-![ラングリング](media/wrangling-data-flow/tutorial6.png)
+![ラングリング データ フローを作成するためのプロセスを示すスクリーンショット。](media/wrangling-data-flow/tutorial6.png)
 
 ## <a name="running-and-monitoring-a-wrangling-data-flow"></a>ラングリング データ フローを実行して監視する
 
 ラングリング データ フローのパイプライン デバッグ実行を実行するには、パイプライン キャンバスで **[デバッグ]** をクリックします。 データ フローを発行すると、 **[Trigger Now]\(今すぐトリガー\)** によって、最後に発行されたパイプラインのオンデマンド実行が実行されます。 ラングリング データ フローは、既存のすべての Azure Data Factory トリガーを使用してスケジュールできます。
 
-![ラングリング](media/wrangling-data-flow/tutorial3.png)
+![ラングリング データ フローを追加する方法を示すスクリーンショット。](media/wrangling-data-flow/tutorial3.png)
 
 **[監視]** タブに移動し、トリガーされたラングリング データ フロー アクティビティの実行の出力を視覚化します。
 
-![ラングリング](media/wrangling-data-flow/tutorial2.png)
+![トリガーされたラングリング データ フロー アクティビティの実行の出力を示すスクリーンショット。](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

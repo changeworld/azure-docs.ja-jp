@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: fcd59cb3bf42dc843387043d982e6c43d665784d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89486843"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91716133"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -98,7 +98,7 @@ Gen2 でアプリケーションとワークロードが安定していること
 |データの編成|[階層構造の名前空間](data-lake-storage-namespace.md)<br>ファイルとフォルダーのサポート|[階層構造の名前空間](data-lake-storage-namespace.md)<br>コンテナー、ファイル、フォルダーのサポート |
 |geo 冗長| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、[ZRS](../common/storage-redundancy.md#zone-redundant-storage)、[GRS](../common/storage-redundancy.md#geo-redundant-storage)、[RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
 |認証|[AAD マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)<br>[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)<br>[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共有アクセス キー](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
-|承認|管理 - [RBAC](../../role-based-access-control/overview.md)<br>データ – [ACL](data-lake-storage-access-control.md)|管理 – [RBAC](../../role-based-access-control/overview.md)<br>データ - [ACL](data-lake-storage-access-control.md)、[RBAC](../../role-based-access-control/overview.md) |
+|承認|管理 - [Azure RBAC](../../role-based-access-control/overview.md)<br>データ – [ACL](data-lake-storage-access-control.md)|管理 – [Azure RBAC](../../role-based-access-control/overview.md)<br>データ - [ACL](data-lake-storage-access-control.md)、[Azure RBAC](../../role-based-access-control/overview.md) |
 |暗号化 – 保存データ|サーバー側 - [Microsoft マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)または[カスタマー マネージド](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) キー|サーバー側 - [Microsoft マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)または[カスタマー マネージド](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) キー|
 |VNET のサポート|[VNET 統合](../../data-lake-store/data-lake-store-network-security.md)|[サービス エンドポイント](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[プライベート エンドポイント](../common/storage-private-endpoints.md)|
 |開発者エクスペリエンス|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、[.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、[Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、[Python](../../data-lake-store/data-lake-store-data-operations-python.md)、[PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、[Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|一般公開 - [REST](/rest/api/storageservices/data-lake-storage-gen2)、[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)<br>パブリック プレビュー - [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、[PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|

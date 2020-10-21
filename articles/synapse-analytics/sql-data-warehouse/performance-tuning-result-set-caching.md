@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378527"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362267"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>結果セットのキャッシュを使用したパフォーマンスのチューニング
 
@@ -56,11 +56,11 @@ WHERE request_id  = <'request_id'>;
 
 結果セットのキャッシュを無効にして実行されたクエリの出力例を次に示します。
 
-![Query-steps-with-rsc-disabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+![場所の種類やコマンドなどのクエリ結果が示されたスクリーンショット。](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
 
 結果セットのキャッシュを有効にして実行されたクエリの出力例を次に示します。
 
-![Query-steps-with-rsc-enabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
+![.dbo が呼び出された select * from [D W ResultCache D b] コマンドがあるクエリ結果を示すスクリーンショット。](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>キャッシュされた結果が使用される場合
 

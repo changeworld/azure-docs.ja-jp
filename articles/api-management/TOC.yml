@@ -80,6 +80,8 @@
       href: self-hosted-gateway-overview.md
     - name: 可観測性
       href: observability.md
+    - name: Resource Manager テンプレートを使用した CI/CD
+      href: devops-api-development-templates.md
 - name: 操作方法ガイド
   items:
     - name: API の定義

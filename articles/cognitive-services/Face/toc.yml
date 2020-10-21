@@ -89,6 +89,8 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
     - name: サンプル
       items:
         - name: Face のサンプル

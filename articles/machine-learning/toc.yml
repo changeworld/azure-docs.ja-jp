@@ -520,9 +520,6 @@
           href: how-to-debug-pipelines.md
         - name: パイプライン データを Application Insights にログする
           href: how-to-log-pipelines-application-insights.md
-        - name: 並列実行ステップの使用
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
         - name: 並列実行ステップのデバッグとトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md

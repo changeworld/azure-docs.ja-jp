@@ -9,21 +9,17 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Azure API for FHIR をデプロイする - ポータル
-      href: fhir-paas-portal-quickstart.md
-    - name: Azure API for FHIR をデプロイする - PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: Azure API for FHIR をデプロイする - CLI
-      href: fhir-paas-cli-quickstart.md
-    - name: Azure API for FHIR をデプロイする - ARM テンプレート
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: FHIR Server for Azure をデプロイする - ポータル
-      href: fhir-oss-portal-quickstart.md
-    - name: FHIR Server for Azure をデプロイする - PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: FHIR Server for Azure をデプロイする - CLI
-      href: fhir-oss-cli-quickstart.md
+    - name: Azure API for FHIR をデプロイする
+      expanded: false
+      items:
+        - name: ポータルの使用
+          href: fhir-paas-portal-quickstart.md
+        - name: PowerShell の使用
+          href: fhir-paas-powershell-quickstart.md
+        - name: CLI の使用
+          href: fhir-paas-cli-quickstart.md
+        - name: ARM テンプレートの使用
+          href: fhir-paas-arm-template-quickstart.md
     - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする - ポータル
       href: iot-fhir-portal-quickstart.md
 - name: チュートリアル
@@ -93,6 +89,8 @@
       href: find-identity-object-ids.md
     - name: Azure API for FHIR® で診断ログを有効にする
       href: enable-diagnostic-logging.md
+    - name: 診断設定を使用して Azure IoT Connector for FHIR (プレビュー) のメトリックをエクスポートする
+      href: iot-metrics-diagnostics-export.md
     - name: Azure API for FHIR のトークンを取得する - CLI
       href: get-healthcare-apis-access-token-cli.md
     - name: Azure IoT Connector for FHIR (プレビュー) のエラーのトラブルシューティングを行う

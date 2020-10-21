@@ -1,0 +1,428 @@
+---
+title: Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
+description: Log Analytics のデータ エクスポートを使用すると、選択したテーブルのデータを収集する際に Log Analytics ワークスペースから Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。
+ms.subservice: logs
+ms.topic: conceptual
+ms.custom: references_regions
+author: bwren
+ms.author: bwren
+ms.date: 10/14/2020
+ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055938"
+---
+# <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
+Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
+
+## <a name="overview"></a>概要
+Log Analytics ワークスペースのデータ エクスポートを構成すると、ワークスペースで選択されたテーブルに送信された新しいデータはすべて、自動的に、1 時間ごとにストレージ アカウントにエクスポートされるか、ほぼリアルタイムで対象のイベント ハブにエクスポートされます。
+
+![データ エクスポートの概要](media/logs-data-export/data-export-overview.png)
+
+含まれるテーブルのすべてのデータが、フィルターを使用せずにエクスポートされます。 たとえば、*SecurityEvent* テーブルに対してデータ エクスポート ルールを構成すると、その構成時点から、*SecurityEvent* テーブルに送信されたすべてのデータがエクスポートされます。
+
+
+## <a name="other-export-options"></a>その他のエクスポート オプション
+Log Analytics ワークスペースのデータ エクスポートでは、Log Analytics ワークスペースからデータが連続してエクスポートされます。 特定のシナリオでデータをエクスポートするその他のオプションには、次のようなものがあります。
+
+- ロジック アプリを使用したログ クエリからのスケジュールされたエクスポート。 これはデータ エクスポート機能に似ていますが、フィルター処理または集計されたデータを Azure Storage に送信できます。 ただし、この方法には[ログ クエリの制限](../service-limits.md#log-analytics-workspaces)が適用されます。「[ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージへデータをアーカイブする](logs-export-logic-app.md)」を参照してください。
+- ロジック アプリを使用したワンタイム エクスポート。 「[Logic Apps および Power Automate の Azure Monitor Logs コネクタ](logicapp-flow-connector.md)」を参照してください。
+- PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)」を参照してください。
+
+
+## <a name="current-limitations"></a>現在の制限
+
+- 構成は、現在、CLI または REST 要求を使用してのみ行うことができます。 Azure portal または PowerShell を使用することはできません。
+- 現在、サポート対象のテーブルは、以下の (#supported-tabes) セクションに記載されているものに限定されています。 サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはエクスポートされません。 存在しないテーブルがデータ エクスポート ルールに含まれている場合、"*Table <tableName> does not exist in the workspace (テーブル <tableName> がワークスペースに存在しません)* " エラーで失敗します。
+- Log Analytics ワークスペースは、以下を除くすべてのリージョンに配置できます。
+  - スイス北部
+  - スイス西部
+  - Azure Government リージョン
+- エクスポート先のストレージ アカウントまたはイベント ハブは、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。
+- エクスポートするテーブルの名前は、ストレージ アカウントでは 60 文字以内、イベント ハブでは 47 文字以内にする必要があります。 これよりも長い名前のテーブルはエクスポートされません。
+
+> [!NOTE]
+> Log Analytics のデータ エクスポートでは、Azure Data Lake Storage Gen2 で現在プレビュー段階にある追加 BLOB としてデータが書き込まれます。 このストレージへのエクスポートを構成する前に、サポート リクエストを開く必要があります。 このリクエストには、次の詳細を使用してください。
+> - [問題の種類]: [技術]
+> - サブスクリプション:該当するサブスクリプション
+> - サービス:Data Lake Storage Gen2
+> - リソース:対象のリソース名
+> - 概要: Log Analytics のデータ エクスポートからのデータを受け入れるためのサブスクリプション登録のリクエスト。
+> - 問題の種類:接続
+> - 問題のサブタイプ:接続の問題
+
+## <a name="data-completeness"></a>データの完全性
+データ エクスポートでは、エクスポート先が使用できない場合に最大 30 分間、データ送信の再試行が続行されます。 30 分経ってもまだ使用できない場合、データは、エクスポート先が使用可能になるまで破棄されます。
+
+## <a name="cost"></a>コスト
+現在、データ エクスポート機能に追加料金は発生しません。 データ エクスポートの価格は、後で発表され、課金が始まる前に通知されます。 通知期間後もデータ エクスポートを引き続き使用することを選択した場合は、該当する料金が適用されます。
+
+## <a name="export-destinations"></a>エクスポート先
+
+### <a name="storage-account"></a>ストレージ アカウント
+データは、1 時間ごとにストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+
+ストレージ アカウントの BLOB パスは、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
+
+ストレージ アカウントのデータ形式は [JSON 行](diagnostic-logs-append-blobs.md)です。 つまり、各レコードは改行で区切られ、外部のレコード配列や JSON レコード間のコンマはありません。 
+
+[![ストレージのサンプル データ](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
+
+Log Analytics のデータ エクスポートでは、時間ベースのアイテム保持ポリシーで *allowProtectedAppendWrites* 設定が有効になっている場合に、不変ストレージ アカウントに追加 BLOB を書き込むことができます。 これにより、追加 BLOB への新しいブロックの書き込みが許可される一方で、不変性の保護とコンプライアンスは維持されます。 「[保護された追加 BLOB の書き込みを許可する](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)」を参照してください。
+
+### <a name="event-hub"></a>イベント ハブ
+データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、すべてのテーブルをそれにエクスポートすることができます。
+
+多くの場合、エクスポートされるデータの量は時間の経過と共に増加します。そのため、より高い転送速度を処理し、調整シナリオやデータ待ち時間を回避するために、イベント ハブのスケールを拡大する必要があります。 Event Hubs の自動インフレ機能を使用して、自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たす必要があります。 詳細については、「[Azure Event Hubs のスループット ユニットを自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」参照してください。
+
+
+## <a name="prerequisites"></a>前提条件
+Log Analytics のデータ エクスポートを構成する前に、次の前提条件が揃っている必要があります。
+
+- ストレージ アカウントまたはイベント ハブは既に作成済みで、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。 対象のデータを他のストレージ アカウントにレプリケートする必要がある場合は、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md)のいずれかを使用できます。  
+- ストレージ アカウントは StorageV1 または StorageV2 である必要があります。 従来のストレージはサポートされていません  
+- 選択したネットワークからのアクセスを許可するように対象のストレージ アカウントを構成した場合は、対象のストレージへの書き込みを Azure Monitor に許可するようそのストレージ アカウントの設定に例外を追加する必要があります。
+
+## <a name="enable-data-export"></a>データ エクスポートを有効にする
+Log Analytics のデータ エクスポートを有効にするには、次の手順を実行する必要があります。 それぞれの詳細については、以降のセクションを参照してください。
+
+- リソースプロバイダーを登録する。
+- 信頼された Microsoft サービスを許可する。
+- エクスポートするテーブルとそのエクスポート先を定義するデータ エクスポート ルールを 1 つ以上作成する。
+
+### <a name="register-resource-provider"></a>リソース プロバイダーの登録
+Log Analytics のデータ エクスポートを有効にするには、次の Azure リソース プロバイダーを対象のサブスクリプションに登録する必要があります。 
+
+- Microsoft.Insights
+
+このリソース プロバイダーは、おそらくほとんどの Azure Monitor ユーザー用に既に登録されています。 確認するには、Azure portal で **[サブスクリプション]** に移動します。 対象のサブスクリプションを選択し、メニューの **[設定]** セクションで **[リソース プロバイダー]** をクリックします。 **Microsoft.Insights** を見つけます。 その状態が **[登録済み]** の場合は、既に登録されています。 そうでない場合は、 **[登録]** をクリックして登録します。
+
+また、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」で説明されているように、リソース プロバイダーを登録するために使用可能な方法のいずれかを使用できます。 PowerShell を使用したサンプル コマンドを次に示します。
+
+```PowerShell
+Register-AzResourceProvider -ProviderNamespace Microsoft.insights
+```
+
+### <a name="allow-trusted-microsoft-services"></a>信頼された Microsoft サービスを許可する
+選択したネットワークからのアクセスを許可するように対象のストレージ アカウントが構成した場場合は、そのアカウントへの書き込みを Azure Monitor に許可するための例外を追加する必要があります。 対象のストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** から、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択します。
+
+[![ストレージ アカウントの [ファイアウォールと仮想ネットワーク]](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
+
+
+### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
+データ エクスポート ルールでは、すべてのテーブルまたは特定のテーブル セットから 1 つのエクスポート先にエクスポートするデータを定義します。 複数のエクスポート先に送信する必要がある場合は、複数のルールを作成します。
+
+CLI を使用してストレージ アカウントに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。
+
+```azurecli
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+```
+
+CLI を使用してイベント ハブに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。
+
+```azurecli
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+```
+
+REST API を使用してデータ エクスポート ルールを作成するには、次の要求を使用します。 この要求では、ベアラー トークン承認とコンテンツ タイプ application/json を使用する必要があります。
+
+```rest
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
+```
+
+この要求の本文では、テーブルのエクスポート先を指定します。 ストレージ アカウントを対象とした REST 要求のサンプル本文を次に示します。
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
+        },
+        "tablenames": [
+"table1",
+    "table2" 
+        ],
+        "enable": true
+    }
+}
+```
+
+イベント ハブを対象とした REST 要求のサンプル本文を次に示します。
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.EventHub/namespaces/eventhub-namespaces-name"
+        },
+        "tablenames": [
+            "table1",
+            "table2"
+        ],
+        "enable": true
+    }
+}
+
+```
+
+
+## <a name="view-data-export-configuration"></a>データ エクスポートの構成を表示する
+CLI を使用してデータ エクスポート ルールの構成を表示するには、次のコマンドを使用します。
+
+```azurecli
+az monitor log-analytics workspace data-export show --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
+```
+
+REST API を使用してデータ エクスポート ルールの構成を表示するには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
+
+```rest
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
+```
+
+## <a name="disable-an-export-rule"></a>エクスポート ルールを無効にする
+テストの実行中など、データを一定期間保持する必要がないときにエクスポートを停止できるように、エクスポート ルールを無効にすることができます。 CLI を使用してデータ エクスポート ルールを無効にするには、次のコマンドを使用します。
+
+```azurecli
+az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
+```
+
+REST API を使用してデータ エクスポート ルールを無効にするには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
+
+```rest
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
+Authorization: Bearer <token>
+Content-type: application/json
+
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
+        },
+        "tablenames": [
+"table1",
+    "table2" 
+        ],
+        "enable": false
+    }
+}
+```
+
+## <a name="delete-an-export-rule"></a>エクスポート ルールを削除する
+CLI を使用してデータ エクスポート ルールを削除するには、次のコマンドを使用します。
+
+```azurecli
+az monitor log-analytics workspace data-export delete --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
+```
+
+REST API を使用してデータ エクスポート ルールを削除するには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
+
+```rest
+DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
+```
+
+## <a name="view-all-data-export-rules-in-a-workspace"></a>ワークスペース内のすべてのデータ エクスポート ルールを表示する
+CLI を使用してワークスペース内のすべてのデータ エクスポート ルールを表示するには、次のコマンドを使用します。
+
+```azurecli
+az monitor log-analytics workspace data-export list --resource-group resourceGroupName --workspace-name workspaceName
+```
+
+REST API を使用してワークスペース内のすべてのデータ エクスポート ルールを表示するには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
+
+```rest
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
+```
+
+## <a name="unsupported-tables"></a>サポート対象外のテーブル
+サポート対象外のテーブルがデータ エクスポート ルールに含まれている場合、構成は成功しますが、そのテーブルのデータはエクスポートされません。 そのテーブルが後でサポートされるようになると、その時点でテーブルのデータがエクスポートされます。
+
+存在しないテーブルがデータ エクスポート ルールに含まれている場合、"*Table <tableName> does not exist in the workspace (テーブル <tableName> がワークスペースに存在しません)* " エラーで失敗します。
+
+
+## <a name="supported-tables"></a>サポート対象のテーブル
+サポート対象のテーブルは、現在、以下に記載されているものに限定されています。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、その他のテーブルのサポートが追加されると更新されます。
+
+
+| テーブル | 制限事項 |
+|:---|:---|:---|
+| AADDomainServicesAccountLogon | |
+| AADDomainServicesAccountManagement | |
+| AADDomainServicesDirectoryServiceAccess | |
+| AADDomainServicesLogonLogoff | |
+| AADDomainServicesPolicyChange | |
+| AADDomainServicesPrivilegeUse | |
+| AADManagedIdentitySignInLogs | |
+| AADNonInteractiveUserSignInLogs | |
+| AADProvisioningLogs | |
+| AADServicePrincipalSignInLogs | |
+| ADAssessmentRecommendation | |
+| ADFActivityRun | |
+| ADFPipelineRun | |
+| ADFTriggerRun | |
+| ADReplicationResult | |
+| ADSecurityAssessmentRecommendation | |
+| ADTDigitalTwinsOperation | |
+| ADTEventRoutesOperation | |
+| ADTModelsOperation | |
+| ADTQueryOperation | |
+| ADXCommand | |
+| ADXQuery | |
+| AegDeliveryFailureLogs | |
+| AegPublishFailureLogs | |
+| アラート: |部分的なサポート。 このテーブルに対するデータの一部は、ストレージ アカウントを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| 異常 | |
+| ApiManagementGatewayLogs | |
+| AppCenterError | |
+| AppPlatformSystemLogs | |
+| AppServiceAppLogs | |
+| AppServiceAuditLogs | |
+| AppServiceConsoleLogs | |
+| AppServiceFileAuditLogs | |
+| AppServiceHTTPLogs | |
+| AppServiceIPSecAuditLogs | |
+| AppServicePlatformLogs | |
+| AuditLogs | |
+| AutoscaleEvaluationsLog | |
+| AutoscaleScaleActionsLog | |
+| AWSCloudTrail | |
+| AzureAssessmentRecommendation | |
+| AzureDevOpsAuditing | |
+| BehaviorAnalytics | |
+| BlockchainApplicationLog | |
+| BlockchainProxyLog | |
+| BlockchainProxyLog | |
+| CommonSecurityLog | |
+| CommonSecurityLog | |
+| ComputerGroup | |
+| ConfigurationData | 部分的なサポート。 データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| ContainerImageInventory | |
+| ContainerInventory | |
+| ContainerLog | |
+| ContainerLog | |
+| ContainerNodeInventory | |
+| ContainerServiceLog | |
+| CoreAzureBackup | |
+| DatabricksAccounts | |
+| DatabricksClusters | |
+| DatabricksDBFS | |
+| DatabricksInstancePools | |
+| DatabricksJobs | |
+| DatabricksNotebook | |
+| DatabricksSecrets | |
+| DatabricksSQLPermissions | |
+| DatabricksSSH | |
+| DatabricksWorkspace | |
+| DnsEvents | |
+| DnsInventory | |
+| Dynamics365Activity | |
+| イベント | 部分的なサポート。 このテーブルに対するデータの一部は、ストレージ アカウントを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| ExchangeAssessmentRecommendation | |
+| ExchangeAssessmentRecommendation | |
+| FailedIngestion | |
+| FunctionAppLogs | |
+| HDInsightAmbariClusterAlerts | |
+| HDInsightAmbariSystemMetrics | |
+| HDInsightGatewayAuditLogs | |
+| HDInsightHadoopAndYarnLogs | |
+| HDInsightHadoopAndYarnMetrics | |
+| HDInsightHBaseLogs | |
+| HDInsightHBaseMetrics | |
+| HDInsightHiveAndLLAPLogsSample | |
+| HDInsightKafkaLogs | |
+| HDInsightKafkaMetrics | |
+| HDInsightOozieLogs | |
+| HDInsightSecurityLogs | |
+| HDInsightSparkApplicationEvents | |
+| HDInsightSparkBlockManagerEvents | |
+| HDInsightSparkEnvironmentEvents | |
+| HDInsightSparkEventsLog | |
+| HDInsightSparkExecutorEvents | |
+| HDInsightSparkExtraEvents | |
+| HDInsightSparkJobEvents | |
+| HDInsightSparkLogs | |
+| HDInsightSparkSQLExecutionEvents | |
+| HDInsightSparkStageEvents | |
+| HDInsightSparkStageTaskAccumulables | |
+| HDInsightSparkTaskEvents | |
+| HDInsightStormLogs | |
+| HDInsightStormMetrics | |
+| HDInsightStormTopologyMetrics | |
+| Heartbeat | |
+| HuntingBookmark | |
+| InsightsMetrics | 部分的なサポート。 データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| IntuneAuditLogs | |
+| IntuneDeviceComplianceOrg | |
+| IntuneOperationalLogs | |
+| KubeEvents | |
+| KubeHealth | |
+| KubeMonAgentEvents | |
+| KubeNodeInventory | |
+| KubePodInventory | |
+| KubeServices | |
+| KubeServices | |
+| LAQueryLogs | |
+| McasShadowItReporting | |
+| MicrosoftAzureBastionAuditLogs | |
+| MicrosoftDataShareReceivedSnapshotLog | |
+| MicrosoftDataShareSentSnapshotLog | |
+| MicrosoftDataShareShareLog | |
+| MicrosoftHealthcareApisAuditLogs | |
+| NWConnectionMonitorDestinationListenerResult | |
+| NWConnectionMonitorDNSResult | |
+| NWConnectionMonitorPathResult | |
+| NWConnectionMonitorPathResult | |
+| NWConnectionMonitorTestResult | |
+| NWConnectionMonitorTestResult | |
+| OfficeActivity | 部分的なサポート。 データの一部は、Webhook を介して Office 365 から Log Analytics に取り込まれます。 現在、このデータはエクスポートされません。 |
+| 操作 | 部分的なサポート。 データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| Perf | 部分的なサポート。 現在、Windows のパフォーマンス データのみがサポートされています。 現在、Linux のパフォーマンス データはエクスポートされません。 |
+| ProtectionStatus | |
+| SCCMAssessmentRecommendation | |
+| SCOMAssessmentRecommendation | |
+| SecurityAlert | |
+| SecurityBaseline | |
+| SecurityBaselineSummary | |
+| SecurityDetection | |
+| SecurityEvent | |
+| SecurityIncident | |
+| SecurityIoTRawEvent | |
+| SecurityNestedRecommendation | |
+| SecurityRecommendation | |
+| SfBAssessmentRecommendation | |
+| SfBOnlineAssessmentRecommendation | |
+| SharePointOnlineAssessmentRecommendation | |
+| SignalRServiceDiagnosticLogs | |
+| SigninLogs | |
+| SPAssessmentRecommendation | |
+| SQLAssessmentRecommendation | |
+| SucceededIngestion | |
+| SynapseGatewayEvents | |
+| SynapseRBACEvents | |
+| syslog | 部分的なサポート。 このテーブルに対するデータの一部は、ストレージ アカウントを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| ThreatIntelligenceIndicator | |
+| 更新 | 部分的なサポート。 データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| UpdateRunProgress | |
+| UpdateSummary | |
+| 使用方法 | |
+| UserAccessAnalytics | |
+| UserPeerAnalytics | |
+| Watchlist | |
+| WindowsEvent | |
+| WindowsFirewall | |
+| WireData | 部分的なサポート。 データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、このデータはエクスポートされません。 |
+| WorkloadMonitoringPerf | |
+| WorkloadMonitoringPerf | |
+| WVDAgentHealthStatus | |
+| WVDCheckpoints | |
+| WVDConnections | |
+| WVDErrors | |
+| WVDFeeds | |
+| WVDManagement | |
+
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Data Explorer からエクスポートされたデータのクエリを実行する](azure-data-explorer-query-storage.md)。

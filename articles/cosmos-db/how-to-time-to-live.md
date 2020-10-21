@@ -4,15 +4,15 @@ description: Azure Cosmos DB でコンテナーと項目の Time to Live を構�
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/27/2020
+ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 5a310dca40b8f5fea074c0cd3c75751d62ccb8f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297897"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951929"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 
@@ -116,7 +116,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>SDK を使用してコンテナーの Time to Live を設定する
 
-コンテナーの Time to Live を設定するには、秒単位で期間を示す 0 以外の正の数を指定する必要があります。 構成された TTL 値に基づいて、項目 `_ts` の最終変更タイムスタンプより後のコンテナー内の項目はすべて削除されます。
+コンテナーの Time to Live を設定するには、秒単位で期間を示す 0 以外の正の数を指定する必要があります。 構成された TTL 値に基づいて、項目 `_ts` の最終変更タイムスタンプより後のコンテナー内の項目はすべて削除されます。 必要に応じて、`TimeToLivePropertyPath` を設定できます。この場合、システムによって生成される `_ts` プロパティの代わりに別のプロパティが使用され、TTL に基づいて、削除する項目が決定されます。
 
 ### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a> .NET SDK
 

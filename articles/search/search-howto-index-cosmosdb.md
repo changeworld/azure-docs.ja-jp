@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9402b1d38457c979f00d05f56b8ed45d2d37dfca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9b3353d3ba1af572b118001691e38af497f6f1fd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91290043"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -72,9 +72,11 @@ Azure Cognitive Search サービス ページのコマンド バーから[ウィ
 
 + **[Name]** は データ ソースの名前です。 作成されたら、その他のワークロード用に選択できます。
 
-+ **[Cosmos DB アカウント]** は、`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` の形式を使用した、Cosmos DB からのプライマリまたはセカンダリの接続文字列である必要があります。
-    + バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション**は、Azure portal の Cosmos DB アカウントに `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb` の形式を使用します
-    + **Gremlin グラフと Cassandra テーブル**の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。
++ **Cosmos DB アカウント**は、次のいずれかの形式にする必要があります。
+    1. Cosmos DB からの `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` の形式のプライマリまたはセカンダリ接続文字列。
+        + バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション**は、Azure portal の Cosmos DB アカウントに `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb` の形式を使用します
+        + **Gremlin グラフと Cassandra テーブル**の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。
+    1.  アカウント キーを含まない `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)` の形式のマネージド ID 接続文字列。 この接続文字列形式を使用するには、[マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する](search-howto-managed-identities-cosmos-db.md)ための手順に従います。
 
 + **[Database]** は、アカウントからの既存のデータベースです。 
 
@@ -183,7 +185,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `cosmosdb`である必要があります。 |
-|**credentials** | 必須。 Cosmos DB の接続文字列でなければなりません。<br/><br/>**SQL コレクション**の接続文字列の形式は次のとおりです: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション**は、接続文字列に `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb` の形式を使用します<br/><br/>**Gremlin グラフと Cassandra テーブル**の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/><br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Cognitive Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
+|**credentials** | 必須。 Cosmos DB 接続文字列形式またはマネージド ID 接続文字列形式のいずれかに従う必要があります。<br/><br/>**SQL コレクション**の場合、接続文字列は次のいずれかの形式に従います。 <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>アカウント キーを含まない `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` の形式のマネージド ID 接続文字列。 この接続文字列形式を使用するには、[マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する](search-howto-managed-identities-cosmos-db.md)ための手順に従います。<br/><br/>バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション**は、接続文字列に次のいずれかの形式を使用します。 <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>アカウント キーを含まない `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` の形式のマネージド ID 接続文字列。 この接続文字列形式を使用するには、[マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する](search-howto-managed-identities-cosmos-db.md)ための手順に従います。<br/><br/>**Gremlin グラフと Cassandra テーブル**の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/><br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Cognitive Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
 | **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
 | **dataChangeDetectionPolicy** | 推奨。 「[変更されたドキュメントのインデックス作成](#DataChangeDetectionPolicy)」セクションを参照してください。|
 |**dataDeletionDetectionPolicy** | 省略可能。 「[削除されたドキュメントのインデックス作成](#DataDeletionDetectionPolicy)」セクションを参照してください。|

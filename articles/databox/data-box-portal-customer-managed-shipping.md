@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142538"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951912"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal で Azure Data Box の自己管理型の発送を使用する
 
@@ -41,7 +41,7 @@ Data Box を注文するときに、自己管理型の発送オプションを�
 2. 発送の種類を選択する時に、 **[Self-managed shipping]\(自己管理型の発送\)** オプションを選択します。 このオプションは、「前提条件」で説明されているように、サポートされているリージョンでのみ使用できます。
 
 3. 発送先住所を入力したら、確認して注文を完了する必要があります。
-   ![自己管理型の発送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![自己管理の出荷 2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. デバイスの準備が完了し、その電子メール通知を受け取ったら、受け取りをスケジュールします。
 
@@ -78,7 +78,7 @@ Data Box を注文するときに、自己管理型の発送オプションを�
 
 9. 返却の予定を受け取ると、Azure portal に表示されるその注文の状態が **[Ready to receive at Azure datacenter]\(Azure データセンターで受け取る準備が完了しました\)** になります。 **[Schedule drop-off]\(返却のスケジュール\)** の指示に従って、デバイスを返却します。
 
-   ![認証コードの表示](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![認証コードの表示 2](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. ID と認証コードが検証され、データセンターにデバイスを返却すると、注文ステータスが **[Received]\(返却済み\)** になります。
 

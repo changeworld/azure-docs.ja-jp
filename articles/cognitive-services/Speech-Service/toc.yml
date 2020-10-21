@@ -229,6 +229,8 @@
   items:
     - name: 意図認識のドキュメント
       href: index-intent-recognition.yml
+    - name: 意図認識の概要
+      href: intent-recognition.md
     - name: 意図認識のクイックスタート
       href: quickstarts/intent-recognition.md
     - name: 操作方法ガイド
@@ -578,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: リソース
   items:
-    - name: サポート
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger ドキュメント
       href: swagger-documentation.md
     - name: ソブリン クラウド

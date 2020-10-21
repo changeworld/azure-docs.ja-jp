@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: ad8fd20d744f7aaa113b4c46f8ca0f05a6cc6951
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6b097aa0adb39e1576e8771bbae8707348351a82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902846"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91740124"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -19,15 +19,15 @@ ms.locfileid: "90902846"
 
 ## <a name="prerequisites"></a>前提条件
 
-- マスター サーバーとして使用される [Azure Database for MySQL サーバー ](quickstart-create-mysql-server-database-using-azure-portal.md)。
+- ソース サーバーとして使用される [Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
 > [!IMPORTANT]
-> 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 マスター サーバーがこれらの価格レベルのいずれかを確認します。
+> 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次の手順を使用して作成できます。
 
@@ -43,11 +43,11 @@ ms.locfileid: "90902846"
 
 5. レプリカ サーバーの名前を入力します。
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL - レプリカ名":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
-6. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。
+6. レプリカ サーバーの場所を選択します。 既定の場所は、ソース サーバーの場所と同じです。
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL - レプリカの場所":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
    > [!NOTE]
    > レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
@@ -55,71 +55,71 @@ ms.locfileid: "90902846"
 7. **[OK]** を選択して、レプリカの作成を確認します。
 
 > [!NOTE]
-> マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカ サーバーは、マスター サーバーと同じリソース グループおよび同じサブスクリプションに常に作成されます。 レプリカ サーバーを別のリソース グループや別のサブスクリプションに作成したい場合は、作成後に[レプリカ サーバーを移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)します。 レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をマスターと同じかそれ以上の値にしておくようお勧めします。
+> マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカ サーバーは、ソース サーバーと同じリソース グループおよび同じサブスクリプションに常に作成されます。 レプリカ サーバーを別のリソース グループや別のサブスクリプションに作成したい場合は、作成後に[レプリカ サーバーを移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)します。 レプリカが確実にマスターに追随できるように、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。
 
 レプリカ サーバーを作成すると、**レプリケーション** ブレードから表示できます。
 
-   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL - レプリカの一覧":::
+   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 ## <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 マスターとレプリカの間のレプリケーションを停止すると、取り消すことができません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
+> サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
 
-Azure Portal からマスターとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
+Azure portal からソースとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
 
-1. Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。 
+1. Azure portal で、ソースの Azure Database for MySQL サーバーを選択します。 
 
 2. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 
 3. レプリケーションを停止するレプリカ サーバーを選択します。
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL - レプリケーション選択サーバーの停止":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 4. **[レプリケーションを停止する]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL - レプリケーションの停止":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 5. **[OK]** をクリックして停止したいレプリケーションを確認します。
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL - レプリケーション確認の停止":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 ## <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します
 
 読み取りレプリカ サーバーを Azure Portal から削除するには、次の手順を使用します。
 
-1. Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。
+1. Azure portal で、ソースの Azure Database for MySQL サーバーを選択します。
 
 2. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 
 3. 削除するレプリカ サーバーを選択します。
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL - レプリカ選択サーバーの停止":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 4. **[レプリカの削除]** を選択します
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL - レプリカの削除":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 5. レプリカの名前を入力して、 **[削除]** をクリックし、レプリカの削除を確定します。  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL - レプリカ確定の削除":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
-## <a name="delete-a-master-server"></a>マスター サーバーを削除します
+## <a name="delete-a-source-server"></a>ソース サーバーを削除する
 
 > [!IMPORTANT]
-> マスター サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、マスター サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
+> ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
-マスター サーバーを Azure Portal から削除するには、次の手順を使用します。
+ソース サーバーを Azure portal から削除するには、次の手順を使用します。
 
-1. Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。
+1. Azure portal で、ソースの Azure Database for MySQL サーバーを選択します。
 
 2. **[概要]** ページから **[削除]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL - マスターの削除":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
-3. マスター サーバーの名前を入力して、 **[削除]** をクリックし、マスターの削除を確定します。  
+3. ソース サーバーの名前を入力して、 **[削除]** をクリックし、ソース サーバーの削除を確定します。  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL - マスターの削除":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 ## <a name="monitor-replication"></a>レプリケーションを監視します
 
@@ -129,15 +129,15 @@ Azure Portal からマスターとレプリカ サーバー間のレプリケー
 
 3. 利用可能なメトリックのドロップダウンリストから、 **秒単位のレプリケーションのラグ** を選択します。
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="レプリケーションのラグを選択します":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 4. 表示する時間の範囲を選択します。 次の図では、30 分間の時間範囲を選択しています。
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="時間範囲を選択します":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 5. 選択した時間範囲のレプリケーションのラグを表示します。 次の図では、過去 30 分間が表示されます。
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="時間範囲を選択します":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
 ## <a name="next-steps"></a>次のステップ
 

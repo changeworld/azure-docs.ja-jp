@@ -84,6 +84,8 @@
           href: request-limits.md
     - name: リソース
       items:
+        - name: サポートとヘルプのオプション
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: コード サンプル (GitHub)
           href: 'https://aka.ms/TranslatorGitHub'
         - name: よく寄せられる質問
@@ -94,8 +96,6 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: コンプライアンス
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
   items:
     - name: 概要
@@ -148,6 +148,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: リソース
       items:
+        - name: サポートとヘルプのオプション
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: 用語集
           href: custom-translator/glossary.md
         - name: よく寄せられる質問
@@ -158,5 +160,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 暗号化
           href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324149"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362131"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL Database へのレプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 
 ## <a name="replication-architecture"></a>レプリケーション アーキテクチャ  
 
-![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![図には、異なるリージョンにある複数のサブスクライバー クラスターを含む Azure SQL Database と、パブリッシャー、Logread 実行可能ファイル、およびリモート クラスターに接続するディストリビューター実行可能ファイルを含むオンプレミスの Azure 仮想マシンがあるレプリケーション アーキテクチャが示されています。](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>シナリオ  
 

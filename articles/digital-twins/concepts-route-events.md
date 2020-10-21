@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800468"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044294"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -21,7 +21,7 @@ Azure Digital Twins は、**イベント ルート**を使用して、サービ�
 プレビュー期間中は、Azure Digital Twins データを送信する主なケースが 2 つあります。
 * Azure Digital Twins グラフの 1 つのツインから別のツインにデータを送信する。 たとえば、あるデジタル ツインのプロパティが変更された際、それに応じて別のデジタル ツインに通知し、更新する必要がある場合があります。
 * データを下流のデータ サービスに送信して、追加のストレージまたは処理 (*データ エグレス*とも呼ばれます) を行います。 たとえば、
-  - 病院は、Azure Digital Twins イベント データを [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md) に送信して、一括分析に関連するイベントの時系列データを記録することができます。
+  - 病院は、Azure Digital Twins イベント データを [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) に送信して、一括分析に関連するイベントの時系列データを記録することができます。
   - [Azure Maps](../azure-maps/about-azure-maps.md) を既に使用している企業は、Azure Digital Twins を使用してソリューションを強化することが必要になる場合があります。 Azure Digital Twins を設定した後、Azure Map を迅速に有効にしたり、ツイン グラフの[デジタル ツイン](concepts-twins-graph.md)として Azure Map エンティティを Azure Digital Twins に配置したり、Azure Maps と Azure Digital Twins データを組み合わせて活用して強力なクエリを実行したりすることができます。
 
 イベント ルートは、これらの両方のシナリオで使用されます。
@@ -55,7 +55,9 @@ Azure Digital Twins は、**イベント ルート**を使用して、サービ�
 * イベント ハブ
 * Service Bus
 
-エンドポイントは、コントロール プレーン API ([Azure Digital Twins CLI](how-to-use-cli.md)でサポートされている)、または Azure portal 経由で設定されます。 エンドポイント定義は次を示します。
+エンドポイントを作成するには、Azure Digital Twins [**コントロール プレーン API**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、[**CLI コマンド**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)、または [**Azure portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) を使用できます。 
+
+エンドポイントを定義するときは、次を指定する必要があります。
 * エンドポイントの名前
 * エンドポイントの種類 (Event Grid、イベント ハブ、または Service Bus)
 * 認証するプライマリ接続文字列およびセカンダリ接続文字列 
@@ -69,15 +71,24 @@ Azure Digital Twins は、**イベント ルート**を使用して、サービ�
 
 ## <a name="create-an-event-route"></a>イベント ルートを作成する
  
-イベント ルートは、次の [.NET (C#) SDK](how-to-use-apis-sdks.md) 呼び出しを使用してクライアント アプリケーションで作成されます。 
+イベント ルートを作成するには、Azure Digital Twins [**コントロール プレーン API**](how-to-manage-routes-apis-cli.md#create-an-event-route)、[**CLI コマンド**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)、または [**Azure portal**](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。 
+
+次に示すのは、`CreateEventRoute` [.NET (C#) SDK](how-to-use-apis-sdks.md) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
-* `endpoint-name` は、イベント ハブ、Event Grid、Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
+1. まず、`EventRoute` オブジェクトが作成され、コンストラクターはエンドポイントの名前を受け取ります。 この `endpointName` フィールドは、Event Hub、Event Grid、または Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
 
-`EventRoutes.Add` に渡されるイベント ルート オブジェクトは、[**filter** パラメーター](./how-to-manage-routes-apis-cli.md#filter-events)を使用して、このルートに続くイベントの種類を制限することもできます。
+2. また、イベント ルート オブジェクトには [**Filter** ](./how-to-manage-routes-apis-cli.md#filter-events)フィールドがあります。このルートの後に続くイベントの種類を制限するために使用できます。 `true` のフィルターを使用すると、追加のフィルター処理を適用せずにルートが有効になります (`false` のフィルターによって、ルートは無効になります)。 
+
+3. このイベント ルート オブジェクトは、ルートの名前と共に `CreateEventRoute` に渡されます。
+
+> [!TIP]
+> すべての SDK 関数に同期バージョンと非同期バージョンがあります。
 
 ルートは、[Azure Digital Twins CLI](how-to-use-cli.md) を使用して作成することもできます。
 

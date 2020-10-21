@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897450"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91408017"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>解釈可能性: 自動機械学習のモデルの説明 (プレビュー)
 
@@ -33,7 +33,7 @@ ms.locfileid: "90897450"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 解釈可能性の機能。 `pip install azureml-interpret azureml-contrib-interpret` を実行して、必要なパッケージを取得します。
+- 解釈可能性の機能。 `pip install azureml-interpret` を実行して、必要なパッケージを取得します。
 - 自動 ML の実験の作成に関する知識。 Azure Machine Learning SDK の使用方法について詳しくは、この[回帰モデルのチュートリアル](tutorial-auto-train-models.md)を最後まで読むか、または[自動 ML の実験を構成する](how-to-configure-auto-train.md)方法に関する記事を参照してください。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>最良のモデルのトレーニング中の解釈可能性
@@ -53,7 +53,7 @@ ms.locfileid: "90897450"
 `ExplanationClient` を使用して、`best_run` の成果物ストアからエンジニアリングされた特徴の説明をダウンロードできます。 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -99,7 +99,7 @@ AutoML モデルの説明を生成するには、`MimicWrapper` クラスを使�
 また、MimicWrapper は、エンジニアリングされた説明のアップロード先となる `automl_run` オブジェクトを受け取ります。
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,

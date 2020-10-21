@@ -125,6 +125,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
+    - name: Cloud Shell のセキュリティ ベースライン
+      href: ../../cloud-shell/security-baseline.md
     - name: Cognitive Services のセキュリティ ベースライン
       href: ../../cognitive-services/security-baseline.md
     - name: Container Instances のセキュリティ ベースライン

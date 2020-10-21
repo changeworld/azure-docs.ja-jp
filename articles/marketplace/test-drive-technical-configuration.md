@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: a7afaf0da3bbb021d76c2d109cb385d86fd7c860
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91409478"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -30,7 +30,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **同時実行体験版の最大数** (必須) – 体験版を同時に使用できる顧客の最大数を設定します。 体験版がアクティブになっている間、各同時ユーザーは Dynamics 365 のライセンスを消費します。そのため、設定された上限に対応するうえで十分な数のライセンスを確実に使用可能にしてください。 推奨値は 3 から 5 です。
 
-- **[体験版の期間]** (必須) – 体験版が有効である時間数を入力します。 この時間が経過すると、セッションが終了し、ライセンスが消費されなくなります。 オファーの複雑さに応じて、2 時間から 24 時間までの値にすることをお勧めします。 この期間は、整数の時間でのみ設定できます (たとえば、"2" 時間は有効ですが、"1.5" は有効ではありません)。 ユーザーは、時間を使い切った後に体験版にもう一度アクセスしたい場合、新しいセッションを要求できます。
+- **[体験版の期間]** (必須) – 体験版が有効である時間数 (1 時間以上) を入力します。 この時間が経過すると、セッションが終了し、ライセンスが消費されなくなります。 オファーの複雑さに応じて、2 時間から 24 時間までの値にすることをお勧めします。 この期間は、整数の時間でのみ設定できます (たとえば、"2" 時間は有効ですが、"1.5" は有効ではありません)。 ユーザーは、時間を使い切った後に体験版にもう一度アクセスしたい場合、新しいセッションを要求できます。
 
 - **インスタンス URL** (必須) – 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: `https://testdrive.crm.dynamics.com`)。
 
@@ -48,7 +48,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **同時実行体験版の最大数** (必須) – 体験版を同時に使用できる顧客の最大数を設定します。 これらの体験版は既にデプロイされており、顧客はデプロイを待つことなくそれらにすぐにアクセスできます。
 
-- **体験版の期間** (必須) – 体験版がアクティブな状態であり続ける期間の長さを時間数で入力します。 この期間が終わると、体験版は自動的に終了します。
+- **[体験版の期間]** (必須) – 体験版が有効である時間数 (1 時間以上) を入力します。 この期間が終わると、体験版は自動的に終了します。
 
 - **Azure リソース グループ名** (必須) – ロジック アプリの体験版が保存される [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)名を入力します。
 
@@ -74,7 +74,7 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 - **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選んでから、一覧表示される**アプリケーション ID** 番号を探します (`50c464d3-4930-494c-963c-1e951d15360e` など)。
 
-- **Azure AD アプリ クライアントのシークレット** (必須) – ご利用の Azure AD アプリケーションの[クライアント シークレット](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 値をコピーする前に、ページから移動しないでください。
+- **Azure AD アプリ クライアントのシークレット** (必須) – ご利用の Azure AD アプリケーションの[クライアント シークレット](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 値をコピーする前に、ページから移動しないでください。
 
 ## <a name="test-drive-listings"></a>体験版のリスト登録
 

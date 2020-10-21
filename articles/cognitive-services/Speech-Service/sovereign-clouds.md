@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
 ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78228081"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>ソブリン クラウドを使用した音声サービス
@@ -24,7 +24,7 @@ ms.locfileid: "78228081"
 米国連邦政府、州政府、地方自治体、部族政府およびそれらのパートナーだけが、審査された米国市民によって運営が管理されているこの専用インスタンスにアクセスすることができます。
 - リージョン:US Gov バージニア州
 - SpeechSDK の SR: *config.FromHost("wss://virginia.stt.speech.azure.us", "\<your-key\>");*
-- SpeechSDK の TTS:*config.FromHost("https[]()://virginia.tts.speech.azure.us", "\<your-key\>");*
+- SpeechSDK の TTS: *config.FromHost("https[]()://virginia.tts.speech.azure.us", "\<your-key\>");*
 - 認証トークン: https[]()://virginia.api.cognitive.microsoft.us/sts/v1.0/issueToken
 - Azure Portal: https://portal.azure.us  
 - Custom Speech ポータル: https://virginia.cris.azure.us/Home/CustomSpeech
@@ -44,8 +44,8 @@ ms.locfileid: "78228081"
   - フランス語 (fr-*)
   - ドイツ語 (de-*)
   - ヒンディー語
-  - 韓国語
-  - ロシア語
+  - Korean
+  - Russian
   - スペイン語 (es-*)
 
 ## <a name="microsoft-azure-china"></a>Microsoft Azure China
@@ -73,7 +73,7 @@ ms.locfileid: "78228081"
   - フランス語 (fr-*)
   - ドイツ語 (de-*)
   - ヒンディー語
-  - 韓国語
-  - ロシア語
+  - Korean
+  - Russian
   - スペイン語 (es-*)
 

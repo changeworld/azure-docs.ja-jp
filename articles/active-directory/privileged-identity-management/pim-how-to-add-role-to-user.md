@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533844"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -51,7 +51,7 @@ ms.locfileid: "90985178"
 
 1. **[ロール]** を選択して、Azure AD のアクセス許可のロール一覧を表示します。
 
-    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![[割り当ての追加] 操作が選択されている [ロール] ページのスクリーンショット。](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. **[割り当ての追加]** を選択して、 **[割り当ての追加]** ページを開きます。
 
