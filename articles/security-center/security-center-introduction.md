@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742079"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332010"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -120,10 +120,6 @@ Security Center は、ブルートフォース攻撃への露出を制限する�
 ### <a name="protect-data-services"></a>データ サービスの保護
 
 Security Center には、Azure SQL 内のデータの自動分類を実行するために役立つ機能が含まれています。 また、Azure SQL と Storage サービス全体の潜在的な脆弱性の評価と、それらを緩和する方法の推奨事項を取得することもできます。
-
-### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT およびハイブリッド クラウド ワークロードを保護する
-
-Defender for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、脅威に対するインテリジェントな保護と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Defender for IoT](../defender-for-iot/index.yml) に関するページを参照してください。
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 

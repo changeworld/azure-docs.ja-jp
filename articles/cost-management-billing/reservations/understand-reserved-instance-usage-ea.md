@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e51363ff2f3782b77288f9dc1fcb8e59e9ffe0c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682010"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151797"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -55,7 +55,7 @@ Azure の使用状況データで使用できるその他の情報が変更さ�
 - Term: 12 か月間または 36 か月間。
 - RINormalizationRatio: AdditionalInfo で使用できます。 これは、予約が使用状況レコードに適用される比率です。 予約でインスタンス サイズの柔軟性が有効になっている場合は、他のサイズに適用できます。 この値は、予約が使用状況レコードに適用された比率を示します。
 
-[フィールド定義を参照してください](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[フィールド定義を参照してください](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API を使用して Azure の従量課金と予約の使用状況データを取得する
 
@@ -71,7 +71,7 @@ Usage Details API への呼び出しの例を次に示します。
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-{billingPeriodId} と {enrollmentId} の詳細については、「[Usage Details – List](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)」 (使用方法の詳細 – 一覧) の API 記事を参照してください。
+{billingPeriodId} と {enrollmentId} の詳細については、「[Usage Details – List](/rest/api/consumption/usagedetails/list)」 (使用方法の詳細 – 一覧) の API 記事を参照してください。
 
 メトリックとフィルターに関する次の表の情報は、予約の一般的な問題の解決に役立ちます。
 

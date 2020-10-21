@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001418"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091425"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
@@ -33,7 +33,7 @@ ms.locfileid: "89001418"
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -205,7 +205,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 ### <a name="authenticate-the-client"></a>クライアントを認証する
 
-次のコードでは、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するには、[TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) メソッドを使用します。 `TryParse` が成功すると、`storageAccount` 変数が初期化され、`true` が返されます。
+次のコードでは、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するには、[TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) メソッドを使用します。 `TryParse` が成功すると、`storageAccount` 変数が初期化され、`true` が返されます。
 
 このコードを `ProcessAsync` メソッド内に追加します。
 

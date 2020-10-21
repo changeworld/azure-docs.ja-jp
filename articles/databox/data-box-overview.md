@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206224"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123564"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは何ですか?
 
@@ -144,7 +144,7 @@ Data Box は、サービスが展開されているリージョン、デバイ�
 
 - **サービスの提供状況** - Data Box をインポートまたはエクスポートの注文で使用する場合、リージョン別の提供状況を確認するには、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box のエクスポート機能は現在プレビューの段階です。 
 
-    インポートの注文の場合、Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。 
+    インポートの注文の場合、Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](../azure-government/documentation-government-welcome.md)」を参照してください。 
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、サービスが使用可能なすべての Azure リージョンで利用できます。
 
@@ -154,7 +154,3 @@ Data Box は、サービスが展開されているリージョン、デバイ�
 - [Data Box のシステム要件](data-box-system-requirements.md)を確認する。
 - [Data Box の制限事項](data-box-limits.md)を理解する。
 - Azure portal で [Azure Data Box](data-box-quickstart-portal.md) をすばやく展開する。
-
-
-
-

@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f12c1f20e01cb67adff2c83c7262f92daf8da969
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371696"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151494"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -115,4 +115,4 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](reserved-instance-windows-software-costs.md)
-- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
+- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)

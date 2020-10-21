@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/17/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 01fdaa95dd396e5545b65bada2a9d6410169230b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 789bd2f62673e7faf562d3a407bf2f0a4fd861bf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052462"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125494"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>クイック スタート:Azure からデータをエクスポートするために Azure Data Box の使用を開始する
 
@@ -28,7 +28,7 @@ ms.locfileid: "90052462"
 
 * Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
   * Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
-  * Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
+  * Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](/azure/cloud-solution-provider/overview/azure-csp-overview)です。
   * Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。
 
 * Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
@@ -96,7 +96,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 この工程にかかる時間は、実際のデータのサイズおよびネットワークの速度によって異なります。
 
-1. Windows クライアントを使用する場合は、Robocopy などの SMB 互換のファイル コピー ツールを使用します。 NFS のホストの場合、`cp` コマンドまたは `rsync` を使用してデータをコピーします。 Robocopy を使用してデータをコピーする方法の詳細については、[Robocopy](https://technet.microsoft.com/library/ee851678.aspx) を参照してください。
+1. Windows クライアントを使用する場合は、Robocopy などの SMB 互換のファイル コピー ツールを使用します。 NFS のホストの場合、`cp` コマンドまたは `rsync` を使用してデータをコピーします。 Robocopy を使用してデータをコピーする方法の詳細については、[Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) を参照してください。
 2. デバイス共有に接続し、ホスト コンピューターへのデータのコピーを開始します。
 <!-- 1. Connect to the device shares using the path:`\\<IP address of your device>\ShareName`. To get the share access credentials, go to the **Connect & copy** page in the local web UI of the Data Box. --> 
 

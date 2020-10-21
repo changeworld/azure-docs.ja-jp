@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371744"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149393"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -104,8 +104,8 @@ Cost Management API シリーズまたは Billing API シリーズを使用し�
 
 |API | [変更点]  |
 |---------|---------|
-|[Billing Accounts - List](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Billing Accounts - List API では、古い課金アカウントの agreementType は **MicrosoftOnlineServiceProgram** でしたが、新しい課金アカウントの agreementType は **MicrosoftCustomerAgreement** になります。 agreementType に依存している場合は、更新してください。 |
-|[Invoices - List By Billing Subscription](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | この API を使用すると、お使いのアカウントが更新される前に生成された請求書のみが返されます。 新しい課金アカウントで生成される請求書を取得するには、[Invoices - List By Billing Account](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API を使用する必要があります。 |
+|[Billing Accounts - List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Billing Accounts - List API では、古い課金アカウントの agreementType は **MicrosoftOnlineServiceProgram** でしたが、新しい課金アカウントの agreementType は **MicrosoftCustomerAgreement** になります。 agreementType に依存している場合は、更新してください。 |
+|[Invoices - List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | この API を使用すると、お使いのアカウントが更新される前に生成された請求書のみが返されます。 新しい課金アカウントで生成される請求書を取得するには、[Invoices - List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API を使用する必要があります。 |
 
 ## <a name="additional-information"></a>関連情報
 

@@ -7,18 +7,18 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4387a1aa5b22c9808f36364b71f89a71736958b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aba6ea467788c51d179ef9377243efb6035b6f98
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689475"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148352"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Azure Reservation コストのチャージ バック
 
 マイクロソフト エンタープライズ契約および Microsoft 顧客契約の課金閲覧者は、予約の分散コスト データを表示できます。 コスト データを使用して、サブスクリプション、リソース グループ、リソース、またはタグの金額をパートナーにチャージ バックできます。 償却されたデータにおいて実行価格は、比例配分された時間単位の予約コストです。 コストは、その日のリソースごとの予約の使用状況における合計コストです。
 
-個々のサブスクリプションを持つユーザーは、使用状況ファイルから分散コスト データを取得できます。 リソースの予約割引を受けると、使用状況ファイルの *AdditionalInfo* セクションに予約の詳細が含まれます。 詳細については、[Azure portal からの利用状況のダウンロード](https://docs.microsoft.com/azure/cost-management-billing/understand/download-azure-daily-usage#download-usage-from-the-azure-portal-csv)に関するページを参照してください。
+個々のサブスクリプションを持つユーザーは、使用状況ファイルから分散コスト データを取得できます。 リソースの予約割引を受けると、使用状況ファイルの *AdditionalInfo* セクションに予約の詳細が含まれます。 詳細については、[Azure portal からの利用状況のダウンロード](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv)に関するページを参照してください。
 
 ## <a name="get-reservation-charge-back-data-for-chargeback"></a>チャージバック用の予約チャージ バック データを取得する
 

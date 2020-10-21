@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272518"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165240"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -140,7 +140,7 @@ Microsoft パートナーの共有記憶域とデータ レプリケーション
 
 ## <a name="connectivity"></a>接続
 
-Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスでは、[分散ネットワーク名 (DNN)](hadr-distributed-network-name-dnn-configure.md) または[仮想ネットワーク名 (VNN) と Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を使用して、現在どのノードでクラスター化されたリソースが所有されているかに関係なく、SQL Server インスタンスにトラフィックをルーティングします。 特定の機能と DNN を SQL Server FCI と共に使用する場合は、追加の考慮事項があります。 詳細については、[DNN と SQL Server FCI の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
+Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスでは、[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) または[仮想ネットワーク名 (VNN) と Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を使用して、現在どのノードでクラスター化されたリソースが所有されているかに関係なく、SQL Server インスタンスにトラフィックをルーティングします。 特定の機能と DNN を SQL Server FCI と共に使用する場合は、追加の考慮事項があります。 詳細については、[DNN と SQL Server FCI の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
 
 クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
 

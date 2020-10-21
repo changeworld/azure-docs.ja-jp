@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742385"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123910"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>チュートリアル:Azure Data Box から SMB 経由でデータをコピーする (プレビュー)
 
@@ -82,7 +82,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     ![エクスプローラーで共有に接続する 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
-Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients)」を参照してください 
+Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients)」を参照してください 
 
 ```console
 sudo mount -t nfs -o vers=2.1 169.254.143.85:/exportbvtdataset2_BlockBlob /home/databoxubuntuhost/databox
@@ -119,4 +119,3 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に発送する](./data-box-deploy-export-picked-up.md)
-

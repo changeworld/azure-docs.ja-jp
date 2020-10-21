@@ -13,12 +13,12 @@ ms.custom:
 - devx-track-java
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 2a12c916b6f81f21574c4b9dc748a279c22f199f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd23483997b94f16e926c2849e0879b41316fba3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87315616"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148900"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)
 
@@ -140,7 +140,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、Android デバイスから送信されるメッセージを監視します。
+このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、Android デバイスから送信されるメッセージを監視します。
 
 1. Azure Cloud Shell を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
 

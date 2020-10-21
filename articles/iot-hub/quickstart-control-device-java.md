@@ -15,12 +15,12 @@ ms.custom:
 - mqtt
 - devx-track-java
 ms.date: 06/21/2019
-ms.openlocfilehash: 3c6a8285c672e6683a259b2a65be4e6ecbd4aafa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2865d0fc082244e1b135275ecda58edc5649d82b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322280"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150716"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>クイック スタート:Azure IoT ハブに接続されたデバイスを Java で制御する
 
@@ -32,7 +32,7 @@ ms.locfileid: "87322280"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)」の「**長期サポート**」で「**Java 8**」を選択します。
+* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](/java/azure/jdk/?view=azure-java-stable)」の「**長期サポート**」で「**Java 8**」を選択します。
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 

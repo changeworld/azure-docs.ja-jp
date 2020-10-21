@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 6ae5c4f20cc42ee3865726973a81e2ba90aeaf33
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569000"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093839"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>クイック スタート:配置テンプレートを使用して Azure Synapse ワークスペースを作成する
 

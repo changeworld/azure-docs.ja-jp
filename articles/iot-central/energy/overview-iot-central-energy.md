@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90970437"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127354"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>IoT Central を使用してエネルギー ソリューションを構築する 
 
@@ -66,6 +66,6 @@ Azure サブスクリプションやコミットメントなしで、[無料で�
 ## <a name="next-steps"></a>次のステップ
 エネルギー ソリューションの構築を始めるには:
 * アプリケーション テンプレートを無料で作成する: [スマート メーター アプリ](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)、[ソーラー パネル アプリ](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* [スマート メーター監視アプリの概念](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)を確認します
-* [ソーラー パネル監視アプリの概念](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)を確認します
-* [IoT Central プラットフォーム](https://docs.microsoft.com/azure/iot-central/)を確認します
+* [スマート メーター監視アプリの概念](./concept-iot-central-smart-meter-app.md)を確認します
+* [ソーラー パネル監視アプリの概念](./concept-iot-central-solar-panel-app.md)を確認します
+* [IoT Central プラットフォーム](../index.yml)を確認します

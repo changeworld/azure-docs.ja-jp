@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c7aa4b90d52ac52a9f879d9e5cc16ec93818b70d
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 143bc89518ff1811ad6789f71fcf7a9267e99f73
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939734"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097441"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "91939734"
 このクイック スタートを完了するには、以下が必要です。
 
 - <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> および <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 以降がインストールされている Windows コンピューターが必要です。 Visual Studio インストールには、**ユニバーサル Windows プラットフォーム開発**ワークロードと **Windows 10 SDK (10.0.18362.0 以降)** コンポーネントが含まれている必要があります。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> もインストールする必要があります。
-- [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイスが必要です。 [Windows 10 May 2020 Update](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020) がデバイスにインストールされている必要があります。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** を選択します。
+- [開発者モード](/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイスが必要です。 [Windows 10 May 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020) がデバイスにインストールされている必要があります。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** を選択します。
 - アプリで **SpatialPerception** 機能を有効にする必要があります。 この設定は、 **[ビルド設定]**  >  **[プレーヤーの設定]**  >  **[発行の設定]**  >  **[機能]** にあります。
 - アプリで **[Virtual Reality Supported]\(サポートされている仮想現実\)** を **Windows Mixed Reality SDK** と共に有効にする必要があります。 この設定は、 **[ビルド設定]**  >  **[プレーヤーの設定]**  >  **[XR Settings]\(XR 設定\)** にあります。
 

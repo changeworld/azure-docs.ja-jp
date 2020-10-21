@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962991"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124587"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
@@ -30,7 +30,7 @@ Azure Communication Services の**グループ チャットのヒーロー サ�
 このサンプルのクイックスタートでは、サンプルをローカル コンピューターで実行する前に、サンプルがどのように動作するかを学習します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
 
 > [!IMPORTANT]
-> [GitHub からサンプルをダウンロードする](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+> [GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>概要
 
@@ -98,12 +98,12 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
+Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 >[!div class="nextstepaction"] 
->[GitHub からサンプルをダウンロードする](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+>[GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 詳細については、次の記事を参照してください。
 

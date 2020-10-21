@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336957"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149374"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Azure サブスクリプションの課金所有権の譲渡の概要
 
@@ -63,7 +63,7 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 
 ## <a name="resources-transferred-with-subscriptions"></a>サブスクリプションを使用して譲渡されたリソース
 
-VM、ディスク、Web サイトなどのすべてのリソースが、新しいアカウントに譲渡されます。 しかし、別の Azure AD テナント内のアカウントにサブスクリプションを譲渡する場合、そのサブスクリプションへの[管理者ロール](../manage/add-change-subscription-administrator.md)と [Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)は譲渡されません。 また、[アプリの登録](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)とテナント固有のその他のサービスも、サブスクリプションと共に譲渡されることはありません。
+VM、ディスク、Web サイトなどのすべてのリソースが、新しいアカウントに譲渡されます。 しかし、別の Azure AD テナント内のアカウントにサブスクリプションを譲渡する場合、そのサブスクリプションへの[管理者ロール](../manage/add-change-subscription-administrator.md)と [Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)は譲渡されません。 また、[アプリの登録](../../active-directory/develop/quickstart-register-app.md)とテナント固有のその他のサービスも、サブスクリプションと共に譲渡されることはありません。
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>アカウントの所有権を別の国または地域に譲渡する
 
@@ -99,7 +99,7 @@ Azure portal で、サブスクリプション内のリソースにアクセス�
 [Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)が譲渡中に削除された場合でも、元の所有者アカウントのユーザーは、次のような他のセキュリティ メカニズムを通じて、引き続きサブスクリプションにアクセスできます。
 
 * サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「[Azure の管理証明書の作成とアップロード](../../cloud-services/cloud-services-certs-create.md)」をご覧ください。
-* Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
+* Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)」を参照してください。
 * Azure Virtual Machines などのサービス用のリモート アクセス資格情報。
 
 譲渡先でリソースへのアクセスを制限する必要がある場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。 ほとんどのリソースを更新することができます。 [Azure portal](https://portal.azure.com) にサインインし、[ハブ] メニューで **[すべてのリソース]** を選択します。 次に、リソースを選択します。 次に、リソースのページで **[設定]** を選択します。 ここで、既存のシークレットを表示して更新できます。

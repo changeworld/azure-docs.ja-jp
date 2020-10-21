@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906801"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320490"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
@@ -44,7 +44,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Static Web Apps でできること
 
-- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) などの JavaScript フレームワークとライブラリを使用した**最新の Web アプリケーションの構築**、または [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) を使用した WebAssembly アプリケーションの作成。
+- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) などの JavaScript フレームワークとライブラリを使用した**最新の Web アプリケーションの構築**、または [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) を使用した WebAssembly アプリケーションの作成。
 - [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) などのフレームワークを使用した**静的サイトの発行**。
 - [Next.js](deploy-nextjs.md) や [Nuxt.js](deploy-nuxtjs.md) などのフレームワークを使用した **Web アプリケーションのデプロイ**。
 

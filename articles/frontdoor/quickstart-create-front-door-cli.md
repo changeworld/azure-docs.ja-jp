@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: 6aa960837a3bfc7f8a04ca1f554fb10d635c2ea2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348260"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275616"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>クイックスタート:Azure CLI を使用して高可用性を実現するグローバル Web アプリケーションのための Front Door を作成する
 
@@ -46,7 +46,7 @@ Azure で、関連するリソースをリソース グループに割り当て�
 
 このクイックスタートでは、2 つのリソース グループが必要です。 1 つは*米国中部*、もう 1 つは*米国中南部*に必要です。
 
-[az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) を使用して、次のようにリソース グループを作成します。
+[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) を使用して、次のようにリソース グループを作成します。
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ az group create \
 
 Web アプリを作成する前に、2 つの App Service プランを、1 つは*米国中部*に、もう 1 つは*米国中南部*に作成する必要があります。
 
-[az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true) を使用して App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true) を使用して App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 次のコマンドを実行すると、前の手順の各 App Service プランに Web アプリが作成されます。 Web アプリ名は、グローバルに一意である必要があります。
 
-[az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true) を使用して Web アプリを作成します。
+[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true) を使用して Web アプリを作成します。
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ az webapp create \
 
 次のように実行して、既定の負荷分散設定、正常性プローブ、およびルーティング規則を持つ基本的な Front Door を作成します。
 
-[az network front-door create](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true) を使用して Front Door を作成します。
+[az network front-door create](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true) を使用して Front Door を作成します。
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Web ブラウザーを開き、コマンドで取得したホスト名を入力�
 
 Front Door で作成したリソースが不要になった場合は、両方のリソース グループを削除します。 リソース グループを削除すると、Front Door とそのすべての関連リソースも削除されます。 
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) を使用します。
+リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) を使用します。
 
 ```azurecli-interactive
 az group delete \

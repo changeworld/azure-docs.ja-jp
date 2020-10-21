@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767633"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075401"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "91767633"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk)。
+- バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](/java/azure/jdk)。
 - [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
@@ -188,7 +188,7 @@ ms.locfileid: "91767633"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](https://docs.microsoft.com/java/azure/spring-framework/)」を参照してください。 Java Spring アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](/java/azure/spring-framework/)」を参照してください。 Java Spring アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [動的な構成を有効にする](./enable-dynamic-configuration-java-spring-app.md)

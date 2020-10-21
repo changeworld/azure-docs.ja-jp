@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666111"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131923"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -69,7 +69,7 @@ Azure サブスクリプションの課金所有権を受け取った場合は�
 1. サービス管理者、共同管理者、Azure ロールの割り当てを確認して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)」と「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
    1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../../cloud-services/cloud-services-certs-create.md) を参照してください。
-   1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
+   1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)」を参照してください。
    1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。
 1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure Portal](https://portal.azure.com) で更新できます。 詳細については、「[Azure アカウントにパートナー ID をリンクする](link-partner-id.md)」を参照してください
 

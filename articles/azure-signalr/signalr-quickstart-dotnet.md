@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408371"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150986"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
 
-Azure SignalR Service は [SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) に基づいており、ASP.NET SignalR との互換性は 100% では**ありません**。 Azure SignalR Service は、最新の ASP.NET Core テクノロジに基づいて ASP.NET SignalR データ プロトコルを再実装しています。 ASP.NET SignalR に対して Azure SignalR Service を使用する場合、ASP.NET SignalR の一部の機能はサポートされません。たとえば、Azure SignalR はクライアントが再接続したときにメッセージを再生しません。 また、Forever Frame の転送や JSONP はサポートされていません。 ASP.NET SignalR アプリケーションを SignalR Service と共に使用するには、いくらかのコード変更や適切なバージョンの依存ライブラリが必要になります。
+Azure SignalR Service は [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) に基づいており、ASP.NET SignalR との互換性は 100% では**ありません**。 Azure SignalR Service は、最新の ASP.NET Core テクノロジに基づいて ASP.NET SignalR データ プロトコルを再実装しています。 ASP.NET SignalR に対して Azure SignalR Service を使用する場合、ASP.NET SignalR の一部の機能はサポートされません。たとえば、Azure SignalR はクライアントが再接続したときにメッセージを再生しません。 また、Forever Frame の転送や JSONP はサポートされていません。 ASP.NET SignalR アプリケーションを SignalR Service と共に使用するには、いくらかのコード変更や適切なバージョンの依存ライブラリが必要になります。
 
-ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリストについては、[バージョンの違いに関するドキュメント](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)を参照してください。
+ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリストについては、[バージョンの違いに関するドキュメント](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)を参照してください。
 
 このクイック スタートでは、ASP.NET と Azure SignalR Service を使用して同じような[チャット ルーム アプリケーション](./signalr-quickstart-dotnet-core.md)を作成する方法を学びます。
 

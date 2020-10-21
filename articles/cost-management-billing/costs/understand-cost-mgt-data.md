@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683183"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132314"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -110,7 +110,7 @@ Azure Cost Management は、個々のサービスによって送信される各�
 
 - タグはリソースに直接適用される必要があり、親リソース グループから暗黙的に継承されることはありません。
 - リソース タグは、リソース グループにデプロイされたリソースでのみサポートされます。
-- デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
+- デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。「[Azure リソースでのタグのサポート](../../azure-resource-manager/management/tag-support.md)」を参照してください。
 - リソース タグは、タグの適用時に使用状況データにのみ含まれます。タグは履歴データには適用されません。
 - リソース タグは、データが更新された後に Cost Management でのみ使用できます。「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
 - リソース タグは、リソースがアクティブまたは実行中であり、使用状況レコードが生成されている場合 (たとえば、VM が割り当て解除されていない場合) に Cost Management でのみ使用できます。
@@ -121,7 +121,7 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 
 - タグがリソースに直接適用されたか。
 - タグが 24 時間以上前に適用されたか。 「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
-- リソースの種類でタグがサポートされているか。 2019 年 12 月 1 日の時点で、次のリソースの種類では、使用状況データのタグはサポートされていません。 サポート対象の完全な一覧については、「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
+- リソースの種類でタグがサポートされているか。 2019 年 12 月 1 日の時点で、次のリソースの種類では、使用状況データのタグはサポートされていません。 サポート対象の完全な一覧については、「[Azure リソースでのタグのサポート](../../azure-resource-manager/management/tag-support.md)」を参照してください。
     - Azure Active Directory B2C ディレクトリ
     - Azure Bastion
     - Azure ファイアウォール
@@ -185,4 +185,4 @@ Cost Management に表示されるコストは丸められます。 クエリ AP
 
 ## <a name="see-also"></a>関連項目
 
-- Cost Management の最初のクイック スタートをまだ完了していない場合は、[コスト分析の開始](../../cost-management/quick-acm-cost-analysis.md)に関する記事をご覧ください。
+- Cost Management の最初のクイック スタートをまだ完了していない場合は、[コスト分析の開始](./quick-acm-cost-analysis.md)に関する記事をご覧ください。

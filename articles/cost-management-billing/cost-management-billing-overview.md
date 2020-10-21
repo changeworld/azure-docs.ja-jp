@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: ''
-ms.openlocfilehash: 7f4585d7199b44c82df9a03ea3244885da72d2fa
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e5f49fb48cfc9be9cfb6970641ad7b4b3c06fb5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685172"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131056"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Cost Management と Billing とは
 
@@ -112,7 +112,7 @@ Cost Management は、コスト分析、予算、推奨事項、コスト管理�
 Azure には、Azure Cost Management と Billing の機能セットに含まれていない、その他のツールもあります。 しかし、それらはコスト管理のプロセスにおいて重要な役割を果たしています。 これらのツールの詳細については、次のリンクを参照してください。
 
 - [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/) - このツールを使用して初期クラウド コストを概算できます。
-- [Azure Migrate](../migrate/migrate-overview.md) - Azure による置換ソリューションから現在のデータ センター ワークロードを評価し、必要な分析情報を取得します。
+- [Azure Migrate](/azure/cost-management-billing/migrate-services-overview) - Azure による置換ソリューションから現在のデータ センター ワークロードを評価し、必要な分析情報を取得します。
 - [Azure Advisor](../advisor/advisor-overview.md) - 使用されていない VM を識別し、Azure 予約インスタンス購入に関する推奨事項を受け取ります。
 - [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/) - 現在のオンプレミスの Windows Server または SQL Server のライセンスを Azure の VM 用に使用し、コストを節約します。
 

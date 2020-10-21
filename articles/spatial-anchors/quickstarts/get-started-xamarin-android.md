@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: ab414b877bd2d098c6e340267ff579fb58aec9d9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540372"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097322"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin Android アプリを作成する
 
@@ -37,10 +37,10 @@ ms.locfileid: "91540372"
     - <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
     - <a href="https://git-lfs.github.com/">Git LFS</a>。
   - macOS を使っている場合:
-    - 最新バージョンの <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
+    - 最新バージョンの <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
     - <a href="https://git-scm.com/download/mac" target="_blank">Git for macOS</a>。
     - <a href="https://git-lfs.github.com/">Git LFS</a>。
-- 適切なプラットフォームに最新バージョンの Xamarin.Android がインストールされ、実行されていること。 Xamarin.Android のインストールガイドについては、[Xamarin.Android のインストール](https://docs.microsoft.com/xamarin/android/get-started/installation/index)に関するガイドを参照してください。
+- 適切なプラットフォームに最新バージョンの Xamarin.Android がインストールされ、実行されていること。 Xamarin.Android のインストールガイドについては、[Xamarin.Android のインストール](/xamarin/android/get-started/installation/index)に関するガイドを参照してください。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
   - コンピューターが Android デバイスと通信するには、追加のデバイス ドライバーが必要になることがあります。 詳細については、[このページ](https://developer.android.com/studio/run/device.html)を参照してください。
 - アプリでは、ARCore **1.8** をターゲットにする必要があります。

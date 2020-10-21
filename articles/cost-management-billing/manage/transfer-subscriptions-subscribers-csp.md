@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371407"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132365"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91371407"
 要求が承認されると、CSP は顧客に対して結合された請求書を提供できます。 CSP のサブスクリプション譲渡の詳細については、「[MPA アカウントに Azure サブスクリプションの課金所有権を取得する](mpa-request-ownership.md)」を参照してください。
 
 >[!IMPORTANT]
-> EA サブスクリプションを CSP パートナーに譲渡した後は、以前に EA サブスクリプションに適用されたすべてのクォータの増加が既定値にリセットされます。 サブスクリプションの譲渡後に追加のクォータが必要な場合は、CSP プロバイダーに[クォータの増加](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests)の要求を送信してもらってください。 
+> EA サブスクリプションを CSP パートナーに譲渡した後は、以前に EA サブスクリプションに適用されたすべてのクォータの増加が既定値にリセットされます。 サブスクリプションの譲渡後に追加のクォータが必要な場合は、CSP プロバイダーに[クォータの増加](../../azure-portal/supportability/regional-quota-requests.md)の要求を送信してもらってください。 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>CSP パートナーへの他のサブスクリプション譲渡
 
@@ -42,7 +42,7 @@ ms.locfileid: "91371407"
 1. 開始する前に、すべての Azure リソースをソース サブスクリプションから宛先サブスクリプションに移動できることを[検証](/rest/api/resources/resources/validatemoveresources)します。  
     サブスクリプション間で移動することができない Azure リソースもあります。 移動できる Azure リソースの完全な一覧については、「[リソースの移動操作のサポート](../../azure-resource-manager/management/move-support-resources.md)」を参照してください。
     > [!IMPORTANT]
-    >  - Azure CSP は Azure Resource Manager のリソースにのみ対応しています。 ソース サブスクリプションのいずれかの Azure リソースが Azure クラシック デプロイ モデルを使って作成されている場合は、移行前にそれらを [Azure Resource Manager](https://docs.microsoft.com/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm) に移す必要があります。 Web ページを表示するには、パートナーである必要があります。
+    >  - Azure CSP は Azure Resource Manager のリソースにのみ対応しています。 ソース サブスクリプションのいずれかの Azure リソースが Azure クラシック デプロイ モデルを使って作成されている場合は、移行前にそれらを [Azure Resource Manager](/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm) に移す必要があります。 Web ページを表示するには、パートナーである必要があります。
 
 1. すべてのソース サブスクリプション サービスが Azure Resource Manager モデルを使用していることを確認します。 次に、[Azure Resource Move](../../azure-resource-manager/management/move-resource-group-and-subscription.md) を使用して、ソース サブスクリプションから宛先サブスクリプションにリソースを譲渡します。
     > [!IMPORTANT]
