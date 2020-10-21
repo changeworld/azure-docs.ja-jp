@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255842"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850043"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>チュートリアル:Oracle Fusion ERP を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -56,11 +56,11 @@ Azure AD での自動ユーザー プロビジョニング用に Oracle Fusion E
 
 2. 左上隅にある [Navigator]\(ナビゲーター\) をクリックします。 **[Tools]\(ツール\)** で **[Security Console]\(セキュリティ コンソール\)** を選択します。
 
-    ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Oracle Fusion E R P 管理コンソールの [Navigator]\(ナビゲーター\) ページのスクリーンショット。[Tools]\(ツール\) と [Security Console]\(セキュリティ コンソール\) が強調表示されています。" border="false":::
 
 3. **[Users]\(ユーザー\)** に移動します。
     
-    ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Oracle Fusion E R P 管理コンソールの [Navigator]\(ナビゲーター\) ページのスクリーンショット。[Tools]\(ツール\) と [Security Console]\(セキュリティ コンソール\) が強調表示されています。" border="false":::
 
 4. Oracle Fusion ERP 管理コンソールにログインするために使用する、管理者ユーザー アカウントのユーザー名とパスワードを保存します。 Azure portal で、これらの値を Oracle Fusion ERP アプリケーションの [プロビジョニング] タブの **[管理ユーザー名]** フィールドと **[パスワード]** フィールドに入力する必要があります。
 
@@ -116,7 +116,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Oracle
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/`」と入力します。 前の手順で取得した管理者ユーザー名とパスワードを **[管理者ユーザー名]** フィールドと **[パスワード]** フィールドに入力します。 Azure AD と Oracle Fusion ERP 間の **[テスト接続]** をクリックします。 
 
-    ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Oracle Fusion E R P 管理コンソールの [Navigator]\(ナビゲーター\) ページのスクリーンショット。[Tools]\(ツール\) と [Security Console]\(セキュリティ コンソール\) が強調表示されています。" border="false":::
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
@@ -126,11 +126,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Oracle
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Oracle Fusion ERP]\(Azure Active Directory ユーザーを Oracle Fusion ERP に同期する\)** を選択します。
 
-    ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Oracle Fusion E R P 管理コンソールの [Navigator]\(ナビゲーター\) ページのスクリーンショット。[Tools]\(ツール\) と [Security Console]\(セキュリティ コンソール\) が強調表示されています。" border="false"::: が表示されています。
 
 9. **[属性マッピング]** セクションで、Azure AD から Oracle Fusion ERP に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Oracle Fusion ERP のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Oracle Fusion E R P 管理コンソールの [Navigator]\(ナビゲーター\) ページのスクリーンショット。[Tools]\(ツール\) と [Security Console]\(セキュリティ コンソール\) が強調表示されています。" border="false":::
 
 10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to Oracle Fusion ERP]\(Azure Active Directory グループを Oracle Fusion ERP に同期する\)** を選択します。
 

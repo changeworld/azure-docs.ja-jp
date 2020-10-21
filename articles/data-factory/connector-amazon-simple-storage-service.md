@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: b010a90929a5eb905f21ebe23aa971f05d210941
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/14/2020
+ms.openlocfilehash: f9907b746c1dceb0b0e847c09ea4a549138f0064
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282699"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047728"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -47,10 +47,9 @@ ms.locfileid: "91282699"
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
-Amazon S3 からデータをコピーするには、次のアクセス許可が付与されている必要があります。
+Amazon S3 からデータをコピーするには、Amazon S3 オブジェクト操作に対する次のアクセス許可が付与されている必要があります: `s3:GetObject` および `s3:GetObjectVersion`。
 
-- **コピー アクティビティの実行の場合**: Amazon S3 オブジェクト操作のための `s3:GetObject` と `s3:GetObjectVersion`。
-- **Data Factory GUI 作成の場合**: Amazon S3 バケット操作のための `s3:ListAllMyBuckets` と `s3:ListBucket`/`s3:GetBucketLocation`。 接続のテストやファイル パスのブラウズなどの操作にもアクセス許可が必要です。 これらのアクセス許可を付与しない場合、リンクされたサービス作成ページでテスト接続をスキップし、データセット設定でパスを直接指定してください。
+Data Factory UI を使用して作成する場合は、リンクされたサービスへの接続のテストやルートからの参照などの操作に対して、追加の `s3:ListAllMyBuckets` および `s3:ListBucket`/`s3:GetBucketLocation` アクセス許可が必要です。 これらのアクセス許可を付与しない場合は、UI から [ファイル パスへの接続をテスト] または [指定されたパスから参照] オプションを選択できます。
 
 Amazon S3 のアクセス許可の完全な一覧については、[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)に関する AWS サイトのページを参照してください。
 
@@ -166,8 +165,8 @@ Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設�
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                                          |
-| enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
-| partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/>- プレフィックスを使用する場合、パーティションのルート パスは最後の "/" の前のサブパスです。 <br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
+| enablePartitionDiscovery | パーティション分割されているファイルの場合、ファイル パスからのパーティションを解析し、追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
+| partitionRootPath | パーティション検出が有効になっている場合、パーティション分割されているフォルダーをデータ列として読み取る目的で絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソースでファイルのデータセットまたはリストにあるファイル パスを使用するとき、パーティション ルート パスはデータセットに構成されているパスになります。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/>- プレフィックスを使用する場合、パーティションのルート パスは最後の "/" の前のサブパスです。 <br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティション ルート パスを "root/folder/year=2020" として指定する場合、コピー アクティビティによって、ファイル内の列に加え、さらに 2 つの列、`month` と `day` がそれぞれ値 "08" と "27" で生成されます。<br/>- パーティション ルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
 | maxConcurrentConnections | データ ストアへのコンカレント接続数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                                          |
 
 **例:**

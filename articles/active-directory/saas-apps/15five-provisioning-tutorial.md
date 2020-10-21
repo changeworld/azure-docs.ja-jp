@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331218"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850134"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>チュートリアル:15Five を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,19 +54,19 @@ Azure AD での自動ユーザー プロビジョニング用に 15Five を構�
 
 1. [15Five 管理コンソール](https://my.15five.com/)にサインインします。 **[機能] > [統合]** の順に移動します。
 
-    ![15Five 管理コンソール](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
 
 2.  **[SCIM 2.0]** をクリックします。
 
-    ![15Five 管理コンソール](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
 
 3.  **[SCIM integration]\(SCIM 統合\) > [Generate OAuth token]\(OAuth トークンの生成\)** の順に移動します。
 
-    ![15Five での SCIM の追加](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
 
 4.  **[SCIM 2.0 base URL]\(SCIM 2.0 ベース URL\)** と **[アクセス トークン]** の値をコピーします。 この値を、Azure portal の 15Five アプリケーションの [プロビジョニング] タブにある **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
     
-    ![15Five での SCIM の追加](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから 15Five を追加する
 

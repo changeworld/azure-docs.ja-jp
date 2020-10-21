@@ -4,12 +4,12 @@ description: Azure Migrate サービスに対するサポートの設定およ�
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612114"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627953"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -92,9 +92,12 @@ Canada | カナダ中部またはカナダ東部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
 韓国 | 韓国中部または韓国南部
+スイス | スイス北部
 イギリス | 英国南部または英国西部
 United States | 米国中部または米国西部 2
 
+> [!NOTE]
+> スイス地域については、REST API ユーザーに限りスイス西部が利用でき、承認済みのサブスクリプションが必要となります。
 
 ## <a name="supported-geographies-azure-government"></a>サポートされている地域 (Azure Government)
 

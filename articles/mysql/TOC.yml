@@ -85,6 +85,8 @@
               href: connect-cpp.md
             - name: Go
               href: connect-go.md
+            - name: GitHub のアクション
+              href: quickstart-mysql-github-actions.md
     - name: チュートリアル
       items:
         - name: データベースの設計

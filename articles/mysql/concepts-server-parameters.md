@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258542"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627348"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -54,6 +54,12 @@ MySQL では、従来からすべてのクライアント接続にスレッド�
 
 > [!IMPORTANT]
 > 運用環境で有効にする前に、スレッド プールをテストしてください。 
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+Azure Database for MySQL の場合、バイナリ ログは常に有効になっています (つまり、`log_bin` が ON に設定されています)。 トリガーを使用したい場合、"*SUPER 特権を持っておらず、バイナリ ログが有効になっています (より安全度の低い `log_bin_trust_function_creators` 変数を使用することもできます)* " のようなエラーが表示されます。 
+
+バイナリ ログ形式は常に**行**であり、サーバーへのすべての接続では**常に**行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログを使用すると、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、[`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) を安全に **TRUE** に設定できます。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -214,7 +220,7 @@ Lower_case_table_name は既定で 1 に設定されます。MySQL 5.6 および
 このパラメーターは、`init_connect` を使用してセッション レベルで設定できます。 セッション レベルで **innodb_strict_mode** を設定するには、「[設定パラメーターが一覧に含まれていない](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)」を参照してください。
 
 > [!NOTE]
-> 読み取りレプリカ サーバーがある場合は、マスター サーバーのセッション レベルで **innodb_strict_mode** をオフに設定すると、レプリケーションが中断されます。 読み取りレプリカがある場合は、このパラメーターをオフに設定されたままにすることをお勧めします。
+> 読み取りレプリカ サーバーがある場合は、ソース サーバーのセッション レベルで **innodb_strict_mode** をオフに設定すると、レプリケーションが中断されます。 読み取りレプリカがある場合は、このパラメーターをオフに設定されたままにすることをお勧めします。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

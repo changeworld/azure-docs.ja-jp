@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330334"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893749"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure Database Migration Service を使用した Azure DB for MySQL へのオンライン移行の問題と制限事項
 
@@ -82,12 +82,12 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
 
     **回避策**:主キーを、LOB ではない他のデータ型または列に置き換えます。
 
-- **制限事項**:ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
+- **制限事項**:ラージ オブジェクト (LOB) 列の長さが [LOB サイズを制限する] パラメーターを超える場合 (64 KB を超えてはなりません)、ターゲットでデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **回避策**:32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
+    **回避策**:64 KB を超える LOB オブジェクトがある場合は、[無制限の LOB サイズを許可する] パラメーターを使用します。 [無制限の LOB サイズを許可する] パラメーターを使用した移行は、[LOB サイズを制限する] パラメーターを使用した移行よりも低速になることに注意してください。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL からオンラインで移行するときの制限事項
 

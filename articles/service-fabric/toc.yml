@@ -108,7 +108,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: セキュリティ
+    - name: Security
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -140,7 +140,7 @@
       href: service-fabric-application-scenarios.md
     - name: Architecture
       href: service-fabric-architecture.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -930,7 +930,7 @@
     - name: リリース ノート
       href: release-notes.md
     - name: サンプル コード
-      href: 'https://aka.ms/servicefabricsamples'
+      href: /samples/browse/?products=azure
     - name: サポート オプション
       href: service-fabric-support.md
     - name: Service Fabric のバージョン

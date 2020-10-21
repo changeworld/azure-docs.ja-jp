@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001946"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91758307"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB のサービス SAS を作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "89001946"
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-新しい [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) を作成します。 その後、[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) を呼び出して、SAS トークン文字列が取得されます。 
+サービス SAS は、アカウント アクセス キーを使用して署名されます。 SAS の署名に使用される資格情報を作成するには、[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) クラスを使用します。 次に、新しい [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) オブジェクトを作成し、[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) を呼び出して SAS トークン文字列を取得します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
@@ -86,7 +86,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-新しい [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) を作成します。 その後、[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) を呼び出して、SAS トークン文字列が取得されます。 
+サービス SAS は、アカウント アクセス キーを使用して署名されます。 SAS の署名に使用される資格情報を作成するには、[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) クラスを使用します。 次に、新しい [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) オブジェクトを作成し、[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) を呼び出して SAS トークン文字列を取得します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 
@@ -136,6 +136,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]

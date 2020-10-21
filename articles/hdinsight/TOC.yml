@@ -647,6 +647,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: IoT Hub と共に Apache Kafka を使用する
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Confluent スキーマ レジストリ
+              href: ./kafka/schema-registry.md
             - name: ストリーミング パイプラインを作成する
               items:
                 - name: Apache Spark、Apache Kafka、Azure Cosmos DB
@@ -845,6 +847,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Apache Hive ログによってヘッド ノードのディスク領域全体が占有される
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: Hive のセキュリティ オプション
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: ML サービス
   items:
     - name: 概要

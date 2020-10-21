@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962419"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742606"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
@@ -42,7 +42,7 @@ App Service 内では、任意のネットワークに含まれていて、443 �
 - 通常はファイアウォールに穴を開ける必要はありません。 接続はすべて、標準的な Web ポート経由の発信です。
 - ネットワーク レベルの機能であるため、アプリで使用される言語とエンドポイントで使用されるテクノロジに依存しません。
 - 単一のアプリから複数のネットワークにアクセスするために使用できます。 
-- Windows アプリ向けには GA でサポートされており、Linux アプリ向けにはプレビュー段階です。
+- Windows ネイティブ アプリ向けには GA でサポートされており、Linux アプリ向けにはプレビュー段階です。 Windows コンテナー アプリではサポートされていません。
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>ハイブリッド接続で実行できないこと ###
 

@@ -1,27 +1,22 @@
 ---
-title: Azure AD アプリ プロキシを使用したリモート デスクトップの発行 | Microsoft Docs
-description: RDS でアプリ プロキシを構成する方法について説明します
+title: Azure Active Directory アプリケーション プロキシを使用したリモート デスクトップの公開
+description: リモート デスクトップ サービス (RDS) でアプリ プロキシを構成する方法について説明します
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
-ms.custom: it-pro
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396762"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015278"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -146,6 +141,6 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 2. [RDS トラフィックをアプリケーション プロキシに転送する](#direct-rds-traffic-to-application-proxy)手順で、手順 8 全体をスキップします。
 
 ## <a name="next-steps"></a>次のステップ
-
-[Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-integrate-with-sharepoint-server.md)
-[Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security.md)
+- [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-integrate-with-sharepoint-server.md)
+- [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security.md)
+- [複数のアプリ サーバーの負荷分散に関するベスト プラクティス](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

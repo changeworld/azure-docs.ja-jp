@@ -8,18 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930912"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015926"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+* 感情分析 v3.x のモデル バージョン `2020-04-01` から、ヒンディー語がサポートされています。 
+* v3 言語エンドポイントのモデル バージョン `2020-09-01` では、言語検出と正確性が強化されています。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="general-api-updates"></a>一般的な API の更新
+
+* Text Analytics v3.1 パブリック プレビュー用の新しい URL がリリースされました。これにより、次の固有表現認識 v3 エンドポイントの更新がサポートされます。 
+    * `/pii` エンドポイントには、応答 JSON に新しい `redactedText` プロパティが含まれるようになりました。これにより、入力テキストで検出された PII エンティティは、それらのエンティティの文字ごとに `*` で置き換えられます。
+    * `/linking` エンドポイントには、リンクされたエンティティの応答 JSON に `bingID` プロパティが含まれるようになりました。
+* 次の Text Analytics preview API エンドポイントは、2020 年 9 月 4 日に廃止されました。
+    * v2.1 プレビュー
+    * v3.0 プレビュー
+    * v3.0 プレビュー 1
+    
+> [!div class="nextstepaction"]
+> [Text Analytics API v3.1 プレビュー 2 の詳細情報](quickstarts/text-analytics-sdk.md)
+
+### <a name="text-analytics-for-health-container-updates"></a>Text Analytics for Health コンテナーの更新
+
+次の更新は、Text Analytics for Health コンテナーの 9 月リリースのみに固有のものです。
+* 新しいモデル バージョン `2020-09-03` を含む、タグ `1.1.013530001-amd64-preview` が付いた新しいコンテナー イメージが containerpreview リポジトリにリリースされました。 
+* このモデル バージョンでは、エンティティ認識、省略形の検出、および待ち時間の改善に関する機能強化が行われています。
+
+> [!div class="nextstepaction"]
+> [Text Analytics for Health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -31,7 +60,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 * 公開されている[データ制限](concepts/data-limits.md)を超える v3 API 要求に対して、HTTP 400 エラーが返されるようになりました。 
 * オフセットを返すエンドポイントでは、オプションの `stringIndexType` パラメーターがサポートされるようになりました。このパラメーターは、サポートされている[文字列インデックス スキーム](concepts/text-offsets.md)と一致するように、返された `offset` と `length` の値を調整します。
 
-### <a name="text-analytics-for-health-container-august-updates"></a>Text Analytics for health コンテナーの 8 月の更新
+### <a name="text-analytics-for-health-container-updates"></a>Text Analytics for Health コンテナーの更新
 
 次の更新は、Text Analytics health コンテナーの 8 月のリリースのみに固有のものです。
 
@@ -163,9 +192,9 @@ JSON 応答に含まれる次のプロパティの名前が変更されていま
 
 #### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
-* 個人情報エンティティ型の認識に対する[新しいエンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) (英語のみ)
+* 個人情報エンティティ型の認識に対する[新しいエンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) (英語のみ)
 
-* [エンティティの認識](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)と[エンティティのリンク](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)に対する個別のエンドポイント。
+* [エンティティの認識](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)と[エンティティのリンク](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)に対する個別のエンドポイント。
 
 * [モデル バージョン](concepts/model-versioning.md) `2019-10-01`。次のものが含まれます。
     * テキストで見つかるエンティティの検出と分類の拡張。 
@@ -177,7 +206,7 @@ JSON 応答に含まれる次のプロパティの名前が変更されていま
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>感情分析 v3 のパブリック プレビュー
 
-* センチメントを分析するための[新しいエンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)。
+* センチメントを分析するための[新しいエンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment)。
 * [モデル バージョン](concepts/model-versioning.md) `2019-10-01`。次のものが含まれます。
 
     * API のテキストの分類とスコア付けの精度および詳細の大幅な改善。

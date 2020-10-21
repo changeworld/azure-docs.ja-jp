@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650990"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91759092"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -166,7 +166,7 @@ ms.locfileid: "89650990"
 | ジンバブエ                            | ZW        | USD          |
 |   |   |   |
 
-\* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由の商業マーケットプレースでは USD が使用されます。
+\* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由のコマーシャル マーケットプレースでは USD が使用されます。
 
 \** Free および BYOL VM イメージのみ。
 
@@ -181,7 +181,7 @@ ms.locfileid: "89650990"
 
 オファーの価格は、常に現地通貨で顧客に表示されます。 パートナー センターで選択した価格は、パートナー センターに価格を保存したときの為替レートに従って、顧客の現地通貨に換算されます。 オンライン ストアで顧客に表示される価格は、オファーを再発行しない限り変更されません。
 
-Microsoft では、顧客からは顧客の現地通貨で支払いを受け取り、皆様には皆様の現地通貨で支払います。 Microsoft では、購入日の為替レートを使用して、顧客の現地通貨を皆様の現地通貨に換算します。
+Microsoft は、顧客からはその現地通貨で支払いを受け取り、皆様にはパートナー センターで選択されている通貨で支払います。 Microsoft は、購入日の為替レートを使用して、顧客の現地通貨を換算します。
 
 > [!NOTE]
 > Microsoft では、Microsoft Treasury 為替レートを使用してオファー価格を換算します。

@@ -40,6 +40,8 @@
       href: quickstart-create-workspace.md
     - name: Azure CLI を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace-cli.md
+    - name: Azure PowerShell を使用して Synapse ワークスペースを作成する
+      href: quickstart-create-workspace-powershell.md
     - name: テンプレートを使用したデプロイ
       href: quickstart-deployment-template-workspaces.md
     - name: Synapse Studio を使用する
@@ -128,7 +130,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark プール履歴サーバー
               href: ./spark/apache-spark-history-server.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -248,7 +250,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Architecture
+            - name: アーキテクチャ
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md
@@ -388,7 +390,7 @@
           items:
             - name: SQL プール向けのモデル スコアリング ウィザード
               href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: Azure AutoML を使用して回帰実験を実行する (DW でのスコアリング)
+            - name: Azure AutoML を使用して回帰実験を実行する
               href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: ツール統合 (AI、ETL、BI)
       items:
@@ -483,9 +485,9 @@
             - name: Cosmos DB の Azure Synapse Link に接続する
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Power BI とサーバーレス SQL プールを使用した Azure Cosmos DB の分析
-              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: サーバーレス SQL プールを使用して Azure Cosmos DB のデータにクエリを実行する
-              href: ./sql/query-cosmos-db-analytical-store.md
+              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
@@ -925,7 +927,7 @@
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
       href: /rest/api/synapse/

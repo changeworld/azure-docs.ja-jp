@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0af8df35bc2cc323e5165b973c889a0ab10f4cbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf779918dbfb9f7b95096f3a5efcc8e64f09c403
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304905"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850509"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>チュートリアル:iPass SmartConnect を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -114,11 +114,11 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to iPass SmartConnect]\(Azure Active Directory ユーザーを iPass SmartConnect に同期する\)** を選択します。
 
-    ![iPass SmartConnect ユーザーのマッピング](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/usermapping.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Synchronize Azure Active Directory Users to iPass SmartConnect]\(Azure Active Directory ユーザーを iPass SmartConnect に同期する\) が表示されています。" border="false":::
 
 9. **[属性マッピング]** セクションで、Azure AD から iPass SmartConnect に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で iPass SmartConnect のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![iPass SmartConnect ユーザーのマッピング](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Synchronize Azure Active Directory Users to iPass SmartConnect]\(Azure Active Directory ユーザーを iPass SmartConnect に同期する\) が表示されています。" border="false":::
 
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。

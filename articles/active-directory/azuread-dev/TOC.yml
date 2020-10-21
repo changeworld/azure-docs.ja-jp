@@ -97,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: iOS での SSO の有効化
               href: howto-v1-enable-sso-ios.md
-            - name: SAML ベースの SSO のデバッグ
-              href: howto-v1-debug-saml-sso-issues.md
         - name: 要求の構成
           items:
             - name: ロール要求の構成

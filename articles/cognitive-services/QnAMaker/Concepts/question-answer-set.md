@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースの設計 - QnA Maker
-description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA ペアに関連付けられている省略可能なメタデータで構成されます。
+description: QnA Maker でナレッジ ベースを設計する方法について説明します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b2661b61e0422f796813be0908d866028ee128a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992999"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776903"
 ---
 # <a name="question-and-answer-pair-concepts"></a>質問と回答のペアの概念
 

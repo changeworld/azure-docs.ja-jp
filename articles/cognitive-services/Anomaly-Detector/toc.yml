@@ -74,16 +74,8 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: リソース
   items:
-    - name: サポート
-      items:
-        - name: サポートを受ける
-          href: 'https://aka.ms/adsupport'
-        - name: Stack Overflow
-          href: 'https://aka.ms/adso'
-        - name: MSDN
-          href: 'https://aka.ms/admsdn'
-        - name: ユーザーの声
-          href: 'https://aka.ms/aduservoice'
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: 価格
       href: 'https://aka.ms/adpricing'
     - name: リージョン別の提供状況

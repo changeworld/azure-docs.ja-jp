@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/17/2020
+ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57ead9636b7218ecfc7d72bb605b469d6a7d1ac6
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536359"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530420"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity プロジェクトでの Azure Spatial Anchors の構成
 
@@ -57,7 +57,7 @@ Unity 用の Azure Spatial Anchors は、現在、Unity Package Manager (UPM) �
 1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Player]\(プレーヤー\)** の順に移動します。
 2. **[プレーヤー設定]** の **[インスペクター] パネル**で、**Android** アイコンを選択します。
 3. **[ビルド]** セクションで、 **[カスタム メイン Gradle テンプレート]** チェックボックスをオンにして、`Assets\Plugins\Android\mainTemplate.gradle` でカスタム Gradle テンプレートを生成します。
-4. `mainTemplate.gradle` ファイルをテキスト エディターで開きます。 
+4. `mainTemplate.gradle` ファイルをテキスト エディターで開きます。
 5. `dependencies` セクションに、次の依存関係を貼り付けます。
 
     ```gradle
@@ -72,10 +72,10 @@ Unity 用の Azure Spatial Anchors は、現在、Unity Package Manager (UPM) �
 ### <a name="import-the-asset-package"></a>[アセット パッケージをインポートする](#tab/UnityAssetPackage)
 
 > [!WARNING]
-> Azure Spatial Anchors SDK の Unity アセット パッケージの配布は、SDK バージョン 2.5.0 後に非推奨とされます。
+> Azure Spatial Anchors SDK の Unity アセット パッケージ ディストリビューションは、バージョン 2.5.0 で非推奨とされ、2.6.0 では使用できなくなりました。
 
-1. [GitHub リリース](https://github.com/Azure/azure-spatial-anchors-samples/releases)から対象とするバージョンの `AzureSpatialAnchors.unitypackage` ファイルをダウンロードします。 
-2. [こちら](https://docs.unity3d.com/Manual/AssetPackagesImport.html)の指示に従って、Unity アセット パッケージをプロジェクトにインポートします。    
+1. [GitHub リリース](https://github.com/Azure/azure-spatial-anchors-samples/releases)から対象とするバージョンの `AzureSpatialAnchors.unitypackage` ファイルをダウンロードします。
+2. [こちら](https://docs.unity3d.com/Manual/AssetPackagesImport.html)の指示に従って、Unity アセット パッケージをプロジェクトにインポートします。
 
 ---
 

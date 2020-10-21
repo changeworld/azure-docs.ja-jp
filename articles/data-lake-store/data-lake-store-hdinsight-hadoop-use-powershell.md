@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048852"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856978"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を (追加のストレージとして) 使用する HDInsight クラスターを作成する
 
@@ -29,7 +29,7 @@ Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を**追加の�
 > Data Lake Storage Gen1 を HDInsight クラスターの追加ストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Data Lake Storage Gen1 を既存の HDInsight クラスターに追加のストレージとして追加することは、複雑なプロセスであり、エラーも発生しやすくなります。
 >
 
-サポートされている種類のクラスターでは、Data Lake Storage Gen1 を既定のストレージまたは追加のストレージ アカウントとして使用できます。 Data Lake Storage Gen1 を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage Blob (WASB) のままであり、クラスター関連のファイル (ログなど) は引き続きその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Storage Gen1 アカウントに格納することができます。 Data Lake Storage Gen1 を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
+サポートされている種類のクラスターでは、Data Lake Storage Gen1 を既定のストレージまたは追加のストレージ アカウントとして使用できます。 Data Lake Storage Gen1 を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Blob Storage (WASB) のままであり、クラスター関連のファイル (ログなど) は引き続きその既定のストレージに書き込まれますが、同時に処理対象のデータを Data Lake Storage Gen1 に格納することができます。 Data Lake Storage Gen1 を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>HDInsight クラスター記憶域で Data Lake Storage Gen1 を使用する
 
@@ -39,7 +39,7 @@ HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事�
 
 PowerShell を使用して、Data Lake Storage Gen1 を使用するように HDInsight を構成するには、次の手順が必要です。
 
-* Data Lake Storage Gen1 アカウントを作成する
+* Data Lake Storage Gen1 アカウントを作成する 
 * Data Lake Storage Gen1 へのロールベースのアクセスの認証を設定する
 * Data Lake Storage Gen1 への認証を使用して HDInsight クラスターを作成する
 * クラスター上でテスト ジョブを実行する
@@ -57,7 +57,7 @@ PowerShell を使用して、Data Lake Storage Gen1 を使用するように HDI
 
     **Azure AD 管理者でない場合**は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Storage Gen1 で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する 
 Data Lake Storage Gen1 アカウントを作成するには、次の手順に従います。
 
 1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力します。 ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
@@ -77,10 +77,10 @@ Data Lake Storage Gen1 アカウントを作成するには、次の手順に従
     ```
 
    > [!NOTE]
-   > Data Lake Storage Gen1 リソース プロバイダーの登録時に `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Storage Gen1 のホワイトリストに登録されていない可能性があります。 こちらの[手順](data-lake-store-get-started-portal.md)に従って Data Lake Storage Gen1 で Azure サブスクリプションを有効にしていることを確認してください。
+   > Data Lake Storage Gen1 リソース プロバイダーの登録時に `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Storage Gen1 で承認されていない可能性があります。 こちらの[手順](data-lake-store-get-started-portal.md)に従って Data Lake Storage Gen1 で Azure サブスクリプションを有効にしていることを確認してください。
    >
    >
-2. Data Lake Storage Gen1 アカウントは、Azure リソース グループに関連付けられます。 まず、Azure リソース グループを作成します。
+2. Data Lake Storage Gen1 を使用するストレージ アカウントは、Azure リソース グループに関連付けられます。 まず、Azure リソース グループを作成します。
 
     ```azurepowershell
     $resourceGroupName = "<your new resource group name>"
@@ -97,10 +97,10 @@ Data Lake Storage Gen1 アカウントを作成するには、次の手順に従
     ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
     ```
 
-3. Data Lake Storage Gen1 アカウントを作成します。 指定するアカウント名には、小文字と数字のみを含める必要があります。
+3. Data Lake Storage Gen1 を使用するストレージ アカウントを作成します。 指定するアカウント名には、小文字と数字のみを含める必要があります。
 
     ```azurepowershell
-    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    $dataLakeStorageGen1Name = "<your new storage account with Data Lake Storage Gen1 name>"
     New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
     ```
 
@@ -132,7 +132,7 @@ Data Lake Storage Gen1 アカウントを作成するには、次の手順に従
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 へのロールベースのアクセスの認証を設定する
 
-すべての Azure サブスクリプションは Azure Active Directory と関連付けられます。 Azure Portal か Azure Resource Manager API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初にその Azure Active Directory での認証を実行する必要があります。 Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。  サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。 このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Data Lake Storage Gen1 アカウント) へのアクセス権を付与する方法を説明します。
+すべての Azure サブスクリプションは Azure Active Directory と関連付けられます。 Azure Portal か Azure Resource Manager API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初にその Azure Active Directory での認証を実行する必要があります。 Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。  サービスの場合は、サービス プリンシパルにより、Azure Active Directory (Azure AD) 内のサービスが識別されます。 このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight などのアプリケーション サービスに Azure のリソース (先ほど作成した Data Lake Storage Gen1 を使用するストレージ アカウント) へのアクセス権を付与する方法を説明します。
 
 Data Lake Storage Gen1 の Active Directory 認証を設定するには、次のタスクを行う必要があります。
 
@@ -197,7 +197,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
      $objectId = $servicePrincipal.Id
     ```
 
-3. Data Lake Storage Gen1 フォルダーおよび HDInsight クラスターからアクセスするファイルへのアクセス権をサービス プリンシパルに付与します。 次のスニペットは、Data Lake Storage Gen1 アカウントのルート (サンプル データ ファイルをコピーした場所) およびファイル自体へのアクセスを提供します。
+3. Data Lake Storage Gen1 フォルダーおよび HDInsight クラスターからアクセスするファイルへのアクセス権をサービス プリンシパルに付与します。 次のスニペットは、Data Lake Storage Gen1 を使用するストレージ アカウントのルート (サンプル データ ファイルをコピーした場所) とファイル自体へのアクセスを提供します。
 
     ```azurepowershell
     Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
@@ -206,7 +206,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Data Lake Storage Gen1 を追加のストレージとして使用する HDInsight Linux クラスターを作成する
 
-ここでは、Data Lake Storage Gen1 を追加のストレージとして使用する HDInsight Hadoop Linux クラスターを作成します。 このリリースでは、HDInsight クラスターと Data Lake Storage Gen1 アカウントは同じ場所にある必要があります。
+ここでは、Data Lake Storage Gen1 を追加のストレージとして使用する HDInsight Hadoop Linux クラスターを作成します。 このリリースでは、HDInsight クラスターと Data Lake Storage Gen1 を使用するストレージ アカウントは同じ場所にある必要があります。
 
 1. 最初に、サブスクリプションのテナント ID を取得します。 この情報は後で必要になります。
 
@@ -214,7 +214,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
     $tenantID = (Get-AzContext).Tenant.TenantId
     ```
 
-2. このリリースでは、Hadoop クラスターの場合、Data Lake Storage Gen1 はクラスターの追加のストレージとしてのみ使用できます。 既定のストレージは、Azure Storage BLOB (WASB) のままです。 そのため、クラスターに必要なストレージ アカウントとストレージ コンテナーを最初に作成します。
+2. このリリースでは、Hadoop クラスターの場合、Data Lake Storage Gen1 はクラスターの追加のストレージとしてのみ使用できます。 既定のストレージは、Azure Blob Storage (WASB) のままです。 そのため、クラスターに必要なストレージ アカウントとストレージ コンテナーを最初に作成します。
 
     ```azurepowershell
     # Create an Azure storage account
@@ -245,8 +245,8 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
     コマンドレットが正常に完了すると、クラスターの詳細を一覧表示する出力が表示されます。
 
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを使用する HDInsight クラスターでテスト ジョブを実行する
-HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Storage Gen1 にアクセス可能であるかどうかをテストできます。 これを行うには、前に Data Lake Storage Gen1 アカウントにアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターでテスト ジョブを実行する
+HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Storage Gen1 にアクセス可能であるかどうかをテストできます。 これを行うには、先ほど Data Lake Storage Gen1 を使用するストレージ アカウントにアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
 このセクションでは、作成した HDInsight Linux クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。
 
@@ -290,10 +290,10 @@ Data Lake Storage Gen1 を使用するように HDInsight クラスターを構�
 * クラスターへの SSH アクセスに Windows クライアントを使用する場合は、「[Windows での PuTTY から HDInsight (Hadoop) で SSH を使用します](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 * クラスターへの SSH アクセスに Linux クライアントを使用する場合は、「[Windows、Linux、Unix、または OS X から HDInsight (Hadoop) で SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-接続されたら、次の HDFS ファイルシステム コマンドを使用して、Data Lake Storage Gen1 アカウント内のファイルを一覧表示します。
+接続されたら、次の HDFS ファイルシステム コマンドを使用して、Data Lake Storage Gen1 を使用するストレージ アカウント内のファイルを一覧表示します。
 
 ```azurepowershell
-hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<storage account with Data Lake Storage Gen1 name>.azuredatalakestore.net:443/
 ```
 
 これにより、以前に Data Lake Storage Gen1 にアップロードしたファイルが一覧表示されます。
@@ -307,7 +307,7 @@ Found 1 items
 `hdfs dfs -put` コマンドを使用して Data Lake Storage Gen1 にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
 ## <a name="see-also"></a>参照
-* [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [ポータル:Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

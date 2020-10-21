@@ -101,8 +101,10 @@
   items:
     - name: アプリの統合
       items:
-        - name: アプリケーションを登録する
+        - name: Web アプリケーションの登録
           href: tutorial-register-applications.md
+        - name: シングルページ アプリケーション (SPA) を登録する
+          href: tutorial-register-spa.md
         - name: SAML サービス プロバイダーを登録する
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'

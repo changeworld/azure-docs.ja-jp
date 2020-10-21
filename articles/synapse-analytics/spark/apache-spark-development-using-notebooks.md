@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612808"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893086"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
@@ -34,7 +34,7 @@ Azure Synapse Studio ノートブックでは、次のことができます。
 
 ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを**オブジェクト エクスプローラー**から Azure Synapse ワークスペースにインポートすることもできます。 Azure Synapse Studio ノートブックでは、標準の Jupyter Notebook IPYNB ファイルを認識することができます。
 
-![synapse-create-import-notebook](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![インポートによるノートブックの作成](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
 ## <a name="develop-notebooks"></a>ノートブックを開発する
 
@@ -80,7 +80,7 @@ Azure Synapse Studio ノートブックでは、次の 4 つの Apache Spark 言
 
 次の図は、**Spark(Scala)** ノートブックで、 **%%pyspark** マジック コマンドを使用する PySpark クエリ、または **%%sql** マジック コマンドでの SparkSQL クエリの記述方法の例です。 ノートブックの第一言語が PySpark に設定されていることに注目してください。
 
-   ![synapse-spark-magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![Synapse spark マジック コマンド](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>一時テーブルを使用して言語間でデータを参照する
 
@@ -90,8 +90,8 @@ Synapse Studio ノートブックでは、異なる言語間でデータや変�
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.option("format", "DW connector predefined type")
-   scalaDataFrame.registerTempTable( "mydataframetable" )
+   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
 2. セル 2 で、Spark SQL を使用してデータに対してクエリを実行します。
@@ -125,12 +125,12 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 テキスト セル ツールバーの書式ボタンを使用して、一般的なマークダウン アクションを実行することができます。 これには、テキストを太字にする、テキストを斜体にする、コード スニペットを挿入する、順序指定されていないリストを挿入する、順序指定されているリストを挿入する、URL からイメージを挿入するなどが含まれます。
 
-  ![synapse-text-cell-toolbar](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![Synapse テキスト セル ツールバー](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 ### <a name="undo-cell-operations"></a>セルの操作を元に戻す
-**[元に戻す]** ボタンをクリックするか、**Ctrl + Z** キーを押して、最新のセルの操作を取り消します。 これで、最新の 20 個の過去のセル アクションを元に戻すことができます。 
+**[元に戻す]** ボタンを選択するか、**Ctrl + Z** キーを押して、最新のセルの操作を取り消します。 これで、最新の 20 個の過去のセル アクションを元に戻すことができます。 
 
-   ![synapse-undo-cells](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![Synapse セルを元に戻す](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
 ### <a name="move-a-cell"></a>セルを移動する
 
@@ -149,13 +149,13 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
    ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
 ### <a name="collapse-a-cell-input"></a>セル入力を折りたたむ
-現在のセルの下部にある矢印ボタンをクリックして、折りたたみます。 これを展開するには、セルが折りたたまれている状態で矢印ボタンをクリックします。
+現在のセルの下部にある矢印ボタンを選択して、折りたたみます。 これを展開するには、セルが折りたたまれている状態で矢印ボタンを選択します。
 
    ![collapse-cell-input](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
 ### <a name="collapse-a-cell-output"></a>セル出力を折りたたむ
 
-現在のセル出力の左上にある**出力の折りたたみ** ボタンをクリックして、折りたたみます。 これを展開するには、セル出力が折りたたまれている状態で **[Show cell output]\(セル出力の表示\)** をクリックします。
+現在のセル出力の左上にある**出力の折りたたみ**ボタンを選択して、折りたたみます。 これを展開するには、セル出力が折りたたまれている状態で **[Show cell output]\(セル出力の表示\)** を選択します。
 
    ![collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
@@ -180,7 +180,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 
 ### <a name="run-all-cells"></a>すべてのセルを実行する
-現在のノートブック内のすべてのセルを順に実行するには、 **[すべて実行]** ボタンをクリックします。
+現在のノートブック内のすべてのセルを順に実行するには、 **[すべて実行]** ボタンを選択します。
 
    ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
@@ -192,7 +192,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 
 ### <a name="cancel-all-running-cells"></a>実行中のすべてのセルを取り消す
-実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンをクリックします。 
+実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンを選択します。 
    ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 ### <a name="cell-status-indicator"></a>セルの状態インジケーター
@@ -204,7 +204,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 ### <a name="spark-progress-indicator"></a>Spark 進行状況インジケーター
 
 Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 コード セルは、Spark プールに対してリモートで実行されます。 Spark ジョブの進行状況インジケーターは、リアルタイムの進行状況バーで示されます。これは、ジョブの実行状態を把握するのに役立ちます。
-ジョブごとまたはステージごとのタスク数は、Spark ジョブの並列レベルを識別するのに役立ちます。 また、ジョブ (またはステージ) の名前のリンクをクリックすることで、特定のジョブ (またはステージ) の Spark UI をさらに掘り下げて調べることもできます。
+ジョブごとまたはステージごとのタスク数は、Spark ジョブの並列レベルを識別するのに役立ちます。 また、ジョブ (またはステージ) の名前のリンクを選択することで、特定のジョブ (またはステージ) の Spark UI をさらに掘り下げて調べることもできます。
 
 
 ![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -215,7 +215,7 @@ Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 
 
 [![session-management](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
-Spark セッションの構成パネルで Spark セッション レコメンダーを使用できるようになりました。 セッション構成パネルから Spark プールを直接選択して、使用しているノードの数と、使用可能な残りの Executor の数を確認できます。 これらの情報は、セッションのサイズを何度も変更する代わりに、適切に設定するのに役立ちます。
+Spark セッションの構成パネルで Spark セッション レコメンダーを使用できるようになりました。 セッション構成パネルから Spark プールを直接選択して、使用しているノードの数と、使用可能な残りの Executor の数を確認できます。 この情報を参考にすれば、セッションのサイズを何度も変更しなくても、適切に設定することができます。
 
 ![session-recommend](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
@@ -277,23 +277,24 @@ df = spark.read.option("header", "true") \
 
 表形式の結果ビューには、横棒グラフ、折れ線グラフ、円グラフ、散布図、および面グラフを作成するためのオプションが表示されます。 コードを記述しなくても、データを視覚化できます。 グラフは **[グラフのオプション]** でカスタマイズできます。 
 
-既定では、 **%%sql** マジック コマンドの出力が、レンダリングされたテーブル ビューに表示されます。 Spark DataFrame または Resilient Distributed Dataset (RDD) 関数で <code>display(df)</code> を呼び出して、レンダリングされたテーブル ビューを生成することができます。
+既定では、 **%%sql** マジック コマンドの出力が、レンダリングされたテーブル ビューに表示されます。 Spark DataFrame、Pandas DataFrames、List または Resilient Distributed Dataset (RDD) 関数で <code>display(df)</code> を呼び出して、レンダリングされたテーブル ビューを生成することができます。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
 ### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>大規模なデータセットから組み込みグラフを視覚化する 
 
-既定では、<code>display(df)</code> 関数は、グラフを表示するためにデータの最初の 1000 行のみを取得します。 **[Aggregation over all results]\(すべての結果の集計\)** をオンにして **[適用]** ボタンをクリックすると、データセット全体からグラフが生成されます。 グラフの設定が変更されると Spark ジョブがトリガーされます。計算を完了してグラフを表示するのにしばらく時間がかかります。 
+既定では、<code>display(df)</code> 関数は、グラフを表示するためにデータの最初の 1000 行のみを取得します。 **[Aggregation over all results]\(すべての結果の集計\)** をオンにして **[適用]** ボタンを選択すると、データセット全体からグラフが生成されます。 グラフの設定が変更されると Spark ジョブがトリガーされます。計算を完了してグラフを表示するのにしばらく時間がかかります。 
     [![builtin-charts-aggregation-all](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
+
 ### <a name="visualize-data-statistic-information"></a>データの統計情報を視覚化する
-<code>display(df, summary = true)</code> を使用すると、各列の列名、列の種類、一意の値、欠損値など、特定の Spark DataFrame の統計の概要を確認できます。 また、特定の列を選択して、最小値、最大値、平均値、標準偏差を表示することもできます。
+<code>display(df, summary = True)</code> を使用すると、各列の列名、列の種類、一意の値、欠損値など、特定の Spark DataFrame の統計の概要を確認できます。 また、特定の列を選択して、最小値、最大値、平均値、標準偏差を表示することもできます。
     [ ![builtin-charts-summary](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png) ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML または対話型のライブラリをレンダリングする
 
-**displayHTML()** を使用して、HTML または対話型のライブラリ (**ボケ**など) をレンダリングすることができます。
+JavaScript、CSS、D3、対話型のライブラリ (**bokeh** など) を含む HTML コードは、**displayHTML()** を使用してレンダリングすることができます。
 
 次の図は、**ボケ**を使用して、マップ上にグリフをプロットする例です。
 
@@ -360,23 +361,23 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>ノートブックをパイプラインに追加する
 
-右上隅にある **[パイプラインへの追加]** ボタンをクリックして、ノートブックを既存のパイプラインに追加するか、新しいパイプラインを作成します。
+右上隅にある **[パイプラインへの追加]** ボタンを選択して、ノートブックを既存のパイプラインに追加するか、新しいパイプラインを作成します。
 
-![add-to-pipeline](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+![ノートブックをパイプラインに追加する](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>パラメーター セルを指定する
 
-ノートブックをパラメーター化するには、右端にある省略記号 (...) を選択して、追加のセル アクション メニューにアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
+ノートブックをパラメーター化するには、省略記号 (...) を選択して、右端にある追加のセル アクション メニューにアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
 
 ![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-パラメーター セルが検索され、このセルは実行時に渡されるパラメーターの既定値として扱われます。 実行エンジンは、既定値を上書きするために、パラメーター セルの下に入力パラメーターを持つ新しいセルを追加します。 パラメーター セルが指定されていない場合、挿入されたセルがノートブックの上部に挿入されます。
+パラメーター セルが検索され、このセルは実行時に渡されるパラメーターの既定値として扱われます。 実行エンジンは、既定値を上書きするために、入力パラメーターを含んだ新しいセルをパラメーター セルの下に追加します。 パラメーター セルが指定されていない場合、挿入されたセルがノートブックの上部に挿入されます。
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>パイプラインからパラメーター値を割り当てる
 
 パラメーターを使ってノートブックを作成すると、Azure Synapse Notebook アクティビティを使用して、パイプラインからそれを実行できます。 アクティビティをパイプライン キャンバスに追加した後、 **[設定]** タブの **[基本パラメーター]** セクションで、パラメーターの値を設定できます。 
 
-![assign-parameter](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![パラメーターを割り当てる](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
 パラメーター値を割り当てるときは、[パイプライン式言語](../../data-factory/control-flow-expression-language-functions.md) または [システム変数](../../data-factory/control-flow-system-variables.md)を使用できます。
 
@@ -386,11 +387,11 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 
 Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモーダル ユーザー インターフェイスがあります。 キーボードの動作は、ノートブック セルのモードによって異なります。 Synapse Studio ノートブックでは、特定のコード セルに対して、コマンド モードと編集モードという 2 つのモードがサポートされます。
 
-1. 入力を求めるテキスト カーソルがない場合、セルはコマンド モードになります。 セルがコマンド モードの場合、ノートブックを全体として編集できますが、個々のセルに入力することはできません。 `ESC` キーを押すか、マウスを使用してセルのエディター領域の外側をクリックし、コマンド モードに入ります。
+1. 入力を求めるテキスト カーソルがない場合、セルはコマンド モードになります。 セルがコマンド モードの場合、ノートブックを全体として編集できますが、個々のセルに入力することはできません。 `ESC` キーを押すか、マウスを使用してセルのエディター領域の外側を選択し、コマンド モードに入ります。
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域をクリックし、編集モードに入ります。
+2. 編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域を選択し、編集モードに入ります。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

@@ -4,21 +4,21 @@ description: Defender for IoT の機能とサービスを使用したセキュ�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 09ee0f9d5bd6e789d8acd4c70db866983beb1119
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: c4c92bfa25d9c43d3c654fbd1f23e242effc7577
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932667"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851205"
 ---
 # <a name="defender-for-iot-security-alerts"></a>Defender for IoT のセキュリティ アラート
 
@@ -28,7 +28,7 @@ Defender for IoT では、高度な分析と脅威インテリジェンスを使
 
 この記事では、IoT Hub や IoT デバイスでトリガーできる組み込みアラートの一覧を示します。
 組み込みアラートのほかに、Defender for IoT を使用すると、IoT Hub やデバイスの予想される動作に基づいてカスタム アラートを定義することもできます。
-詳細については、[カスタマイズ可能なアラート](concept-customizable-security-alerts.md)に関するページを参照してください。
+詳細については、[カスタマイズ可能なアラート](concept-customizable-security-alerts.md)に関する記事を参照してください。
 
 ## <a name="built-in-alerts-for-iot-devices"></a>IoT デバイス用の組み込みアラート
 

@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812558"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056159"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
-* アプリケーションの所有者
+* アプリケーションの所有者は、自分が所有するアプリケーションのログを表示できます
 * セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、アプリケーション管理者、クラウド アプリケーション管理者のいずれかのロールであるユーザー
 * グローバル管理者
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 プロビジョニング ログから、次の情報を得ることができます。
 
 * ServiceNow で正常に作成されたグループ
-* アマゾン ウェブ サービスからロールがインポートされた方法
+* アマゾン ウェブ サービスからインポートされたロール
 * DropBox で作成に失敗したユーザー
 
 [Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[監視]** セクションで **[プロビジョニング ログ]** を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
@@ -211,7 +211,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-- 報告されたプロビジョニング データは、Premium Edition の場合は 30 日間、Free Edition の場合は 7 日間、Azure portal に保存されます。プロビジョニング ログはログ分析のために発行して、30 日間を超えても保存することができます。 
+- 報告されたプロビジョニング データは、Premium Edition の場合は 30 日間、Free Edition の場合は 7 日間、Azure portal に保存されます。プロビジョニング ログは[ログ分析](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)のために発行して、30 日間を超えても保存することができます。 
 
 - [変更 ID] 属性は、一意の識別子として使用できます。 これは、たとえば製品サポートとやり取りするときに便利です。
 
