@@ -7,16 +7,16 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832979"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400776"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、Office 365 Outlook のメール、連絡先、カレンダーを管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Office 365 Outlook コネクタ](/connectors/office365connector/)を使用すると、ロジック アプリを構築することで Office 365 を管理する自動化されたタスクとワークフローを作成できます。 たとえば、次のタスクを自動化します。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Office 365 Outlook コネクタ](/connectors/office365connector/)を使用すると、ロジック アプリを構築することで職場または学校アカウントを管理する自動化されたタスクとワークフローを作成できます。 たとえば、次のタスクを自動化します。
 
 * メールの取得、送信、返信を行う。 
 * カレンダーで会議をスケジュールする。
@@ -31,9 +31,9 @@ ms.locfileid: "87832979"
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。 
 
-* [Office 365 アカウント](https://www.office.com/)
+* [職場または学校アカウント](https://www.office.com/)
 
-* Office 365 Outlook アカウントにアクセスするロジック アプリ。 Office 365 Outlook トリガーを使用してワークフローを開始するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 Office 365 Outlook アクションをワークフローに追加するには、ロジック アプリにトリガーが既に存在している必要があります。
+* 職場または学校アカウントにアクセスするためのロジック アプリ。 Office 365 Outlook トリガーを使用してワークフローを開始するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 Office 365 Outlook アクションをワークフローに追加するには、ロジック アプリにトリガーが既に存在している必要があります。
 
 ## <a name="add-a-trigger"></a>トリガーの追加
 
@@ -45,7 +45,7 @@ ms.locfileid: "87832979"
    
    ![ロジック アプリを開始するトリガーの選択](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. サインインを求められた場合は、ロジック アプリがアカウントに接続できるように、Office 365 の資格情報を入力します。 それ以外の場合、接続が既に存在する場合は、トリガーのプロパティに関する情報を指定します。
+1. サインインを求められた場合は、職場または学校の資格情報を入力して、お使いのアカウントにロジック アプリが接続できるようにします。 それ以外の場合、接続が既に存在する場合は、トリガーのプロパティに関する情報を指定します。
 
    > [!NOTE]
    > サインイン資格情報を変更した場合でも、接続は取り消されるまで期限切れとはなりません。 詳細については、「[Azure Active Directory における構成可能なトークンの有効期間](../active-directory/develop/active-directory-configurable-token-lifetimes.md)」を参照してください。
@@ -78,7 +78,7 @@ ms.locfileid: "87832979"
 
    ![ロジック アプリで実行するアクションの選択](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. サインインを求められた場合は、ロジック アプリがアカウントに接続できるように、Office 365 の資格情報を入力します。 それ以外の場合、接続が既に存在する場合は、アクションのプロパティに関する情報を指定します。
+1. サインインを求められた場合は、職場または学校の資格情報を入力して、お使いのアカウントにロジック アプリが接続できるようにします。 それ以外の場合、接続が既に存在する場合は、アクションのプロパティに関する情報を指定します。
 
    > [!NOTE]
    > サインイン資格情報を変更した場合でも、接続は取り消されるまで期限切れとはなりません。 詳細については、「[Azure Active Directory における構成可能なトークンの有効期間](../active-directory/develop/active-directory-configurable-token-lifetimes.md)」を参照してください。

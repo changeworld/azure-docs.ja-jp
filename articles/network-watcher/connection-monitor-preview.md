@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0cb51cd224145e7fe359e2b14a87ed2b87b18c26
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91408872"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>接続モニター (プレビュー) によるネットワーク接続の監視
 
@@ -30,11 +30,11 @@ ms.locfileid: "87563026"
 
 - フロントエンド Web サーバー VM と、多層アプリケーション内のデータベース サーバー VM が通信している。 2 つの VM 間のネットワーク接続を確認したい。
 - 米国東部リージョンの VM から、米国中部リージョンの VM に ping を実行して、リージョン間のネットワーク待ち時間を比較したい。
-- ワシントン州シアトルと、バージニア州アッシュバーンに複数のオンプレミス オフィス サイトがある。 オフィス サイトは Office 365 の URL に接続している。 Office 365 URL のユーザーについて、シアトルとアッシュバーンの間で待機時間を比較する。
+- ワシントン州シアトルと、バージニア州アッシュバーンに複数のオンプレミス オフィス サイトがある。 オフィス サイトは Microsoft 365 の URL に接続している。 Microsoft 365 URL のユーザーについて、シアトルとアッシュバーンの間で待機時間を比較する。
 - ハイブリッド アプリケーションで Azure Storage エンドポイントに接続する必要がある。 オンプレミスのサイトと Azure アプリケーションは、同じ Azure Storage エンドポイントに接続する。 オンプレミス サイトの待機時間と、Azure アプリケーションの待機時間を比較したい。
 - オンプレミスのセットアップと、クラウド アプリケーションがホストされている Azure VM 間の接続を確認したい。
 
-プレビュー フェーズの接続モニターでは、Network Watcher の[接続モニター](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint)機能と、Network Performance Monitor (NPM) の[サービス接続モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)機能の 2 つが組み合わされています。
+プレビュー フェーズでは、接続モニターは 2 つの機能の長所を兼ね備えています。Network Watcher の[接続モニター](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint)機能と Network Performance Monitor (NPM) の[サービス接続モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、[ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)、および[パフォーマンス モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor)機能です。
 
 接続モニター (プレビュー) の利点を次に示します。
 
@@ -87,16 +87,15 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
 接続モニターでは、一定の間隔で通信が監視されます。 それにより、到達可能性と待機時間の変化が通知されます。 また、ソース エージェントとターゲット エンドポイントの間の現在および過去のネットワーク トポロジを確認することもできます。
 
-監視エージェントがインストールされている Azure VM またはオンプレミス コンピューターを、ソースにすることができます。 ターゲット エンドポイントとしては、Office 365 URL、Dynamics 365 URL、カスタム URL、Azure VM リソース ID、IPv4、IPv6、FQDN、または任意のドメイン名を使用できます。
+監視エージェントがインストールされている Azure VM またはオンプレミス コンピューターを、ソースにすることができます。 ターゲット エンドポイントとしては、Microsoft 365 URL、Dynamics 365 URL、カスタム URL、Azure VM リソース ID、IPv4、IPv6、FQDN、または任意のドメイン名を使用できます。
 
 ### <a name="access-connection-monitor-preview"></a>接続モニター (プレビュー) にアクセスする
 
 1. Azure portal のホーム ページで、 **[Network Watcher]** に移動します。
 1. 左側の **[監視]** セクションで、 **[接続モニター (プレビュー)]** を選択します。
 1. 接続モニター (プレビュー) で作成されたすべての接続モニターが表示されます。 接続モニターの従来のエクスペリエンスで作成された接続モニターを表示するには、 **[接続モニター]** タブに移動します。
-
-    ![接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット](./media/connection-monitor-2-preview/cm-resource-view.png)
-
+    
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>接続モニターを作成する
 
@@ -156,7 +155,7 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
 テスト構成で選択したプロトコルに基づいて、接続モニター (プレビュー) により、ソースとターゲットのペアに対する一連のチェックが実行されます。 チェックは、選択したテストの頻度に従って実行されます。
 
-HTTP を使用した場合、サービスにより、応答コードを返した HTTP 応答の数が計算されます。 その結果によって、失敗したチェックの割合が判定されます。 RTT を計算するため、サービスでは HTTP の呼び出しと応答の間の時間が測定されます。
+HTTP を使用した場合、サービスにより、有効な応答コードを返した HTTP 応答の数が計算されます。 有効な応答コードは、PowerShell と CLI を使用して設定できます。 その結果によって、失敗したチェックの割合が判定されます。 RTT を計算するため、サービスでは HTTP の呼び出しと応答の間の時間が測定されます。
 
 TCP または ICMP を使用した場合、サービスでは、パケット損失率を計算して、失敗したチェックの割合が決定されます。 RTT を計算するため、サービスでは、送信されたパケットに対する受信確認 (ACK) を受け取るのにかかった時間が測定されます。 ネットワーク テスト用に Traceroute データを有効にした場合は、オンプレミスのネットワークに対するホップバイホップの損失と待ち時間を確認できます。
 
@@ -166,7 +165,11 @@ TCP または ICMP を使用した場合、サービスでは、パケット損�
 
 * **合格** – 失敗したチェックの割合および RTT の実際の値が、指定したしきい値を超えていません。
 * **失敗** – 失敗したチェックの割合または RTT の実際の値が、指定したしきい値を超えました。 しきい値が指定されていない場合は、失敗したチェックの割合が 100 のときに、テストは失敗状態になります。
-* **警告** – 失敗したチェックの割合に対して条件が指定されませんでした。 条件が指定されていない場合は、接続モニター (プレビュー) によって自動的にしきい値が割り当てられます。 そのしきい値を超えると、テストの状態は警告に変わります。
+* **警告** – 
+     * しきい値が指定され、チェックがしきい値の 80% を超えて失敗したことを接続モニター (プレビュー) が観察した場合、テストは警告としてマークされます。
+     * しきい値が指定されていない場合は、接続モニター (プレビュー) によって自動的にしきい値が割り当てられます。 そのしきい値を超えると、テストの状態は警告に変わります。 TCP テストまたは ICMP テストでのラウンド トリップ時間については、しきい値は 750 ミリ秒です。 チェック失敗の割合については、しきい値は 10% です。 
+* **不確定**  – Log Analytics ワークスペース内にデータはありません。  メトリックをチェックします。 
+* **実行されていません**  – テスト グループを無効にすることによって無効にされています。  
 
 ### <a name="data-collection-analysis-and-alerts"></a>データの収集、分析、アラート
 
@@ -192,77 +195,71 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 
 一覧は、以下に基づいてフィルター処理できます。
 
-* **最上位のフィルター** – サブスクリプション、リージョン、タイムスタンプ、ソース、ターゲットの種類を選択します。 下の図のボックス 2 を参照してください。
-* **状態ベースのフィルター** – 接続モニター、テスト グループ、またはテストの状態によるフィルターです。 下の図の矢印 3 を参照してください。
-* **カスタム フィルター** – 汎用検索を行うには、 **[すべて選択]** を選択します。 特定のエンティティで検索するには、ドロップダウン リストから選択します。 下の図の矢印 4 を参照してください。
+* **最上位のフィルター** – テキスト、エンティティ型 (接続モニター、テスト グループ、またはテスト) のタイムスタンプおよび範囲によってリストを検索します。 範囲には、サブスクリプション、リージョン、ソース、ターゲットの種類が含まれます。 下の図のボックス 1 を参照してください。
+* **状態ベースのフィルター** – 接続モニター、テスト グループ、またはテストの状態によるフィルターです。 下の図のボックス 2 を参照してください。
+* **アラート ベースのフィルター** – 接続モニター リソースに対して発生するアラートによるフィルターです。 下の図のボックス 3 を参照してください。
 
-![接続モニター (プレビュー) で接続モニター、テスト グループ、テストのビューをフィルター処理する方法を示すスクリーンショット](./media/connection-monitor-2-preview/cm-view.png)
-
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+    
 たとえば、接続モニター (プレビュー) でソース IP が 10.192.64.56 であるすべてのテストを確認するには:
 1. ビューを **[テスト]** に変更します。
 1. 検索フィールドに、「*10.192.64.56*」と入力します
-1. ドロップダウン リストで、 **[ソース]** を選択します。
+1. 最上位フィルターの **[範囲]** で、 **[ソース]** を選択します。
 
 接続モニター (プレビュー) でソース IP が 10.192.64.56 である失敗したテストだけを表示するには、次のようにします。
 1. ビューを **[テスト]** に変更します。
 1. 状態ベースのフィルターで、 **[失敗]** を選択します。
 1. 検索フィールドに、「*10.192.64.56*」と入力します
-1. ドロップダウン リストで、 **[ソース]** を選択します。
+1. 最上位フィルターの **[範囲]** で、 **[ソース]** を選択します。
 
 接続モニター (プレビュー) でターゲットが outlook.office365.com である失敗したテストだけを表示するには:
 1. ビューを **[テスト]** に変更します。
 1. 状態ベースのフィルターで、 **[失敗]** を選択します。
 1. 検索フィールドに、「*outlook.office365.com*」と入力します
-1. ドロップダウン リストで、 **[ターゲット]** を選択します。
+1. 最上位フィルターの **[範囲]** で、 **[宛先]** を選択します。
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
-   ![ターゲット Outlook.Office365.com に対する失敗したテストのみを表示するようにフィルター処理されたビューを示すスクリーンショット](./media/connection-monitor-2-preview/tests-view.png)
-
+接続モニター、テスト グループ、またはテストが失敗した理由を知るには、[reason] という名前の列をクリックします。  これにより、違反したしきい値 (チェックが失敗した割合または RTT) と関連する診断メッセージがわかります。
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+    
 接続モニターの RTT の傾向と失敗したチェックの割合を表示するには:
-1. 調査する接続モニターを選択します。 既定では、監視データはテスト グループ別に整理されています。
+1. 調査する接続モニターを選択します。
 
-   ![テスト グループ別に表示された、接続モニターのメトリックを示すスクリーンショット](./media/connection-monitor-2-preview/cm-drill-landing.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
-1. 調査するテスト グループを選択します。
+1. 次のセクションが表示されます。  
+    1. Essentials - 選択した接続モニターのリソース固有のプロパティ。 
+    1. Summary - 
+        1. RTT の集計された傾向線と、接続モニターのすべてのテストに対する失敗したチェックの割合。 詳細を表示する特定の時間を設定できます。
+        1. RTT または失敗したチェックの割合に基づいて、テスト グループ、ソース、宛先全体の上位 5 件が表示されます。 
+    1. テスト グループ、ソース、宛先、およびテスト構成のタブ - 接続モニターのテスト グループ、ソース、または宛先の一覧が表示されます。 失敗したテストをチェックし、RTT を集計し、失敗した割合の値をチェックします。  後で戻ってデータを表示することもできます。 
+    1. Issues - 接続モニターの各テストのホップ レベルの問題。 
 
-   ![テスト グループを選択する場所を示すスクリーンショット](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
-    RTT または失敗したチェックの割合に基づいて、テスト グループの失敗したテストの上位 5 件が表示されます。 テストごとに、RTT と失敗したチェックの割合の傾向線が表示されます。
-1. 一覧からテストを選択するか、調査する別のテストを選択します。 時間間隔と失敗したチェックの割合について、しきい値と実際の値が表示されます。 RTT の場合、しきい値、平均値、最小値、および最大値が表示されます。
+1. そのための方法は次のとおりです。
+    * [すべてのテストを表示] をクリック - 接続モニターのすべてのテストを表示します。
+    * すべてのテスト グループ、テスト構成、ソースおよび宛先の表示をクリック - それぞれに特有の詳細を表示します。 
+    * テスト グループ、テスト構成、ソース、または宛先を選択 - そのエンティティ内のすべてのテストを表示します。
 
-   ![RTT と失敗したチェックの割合のテスト結果を示すスクリーンショット](./media/connection-monitor-2-preview/cm-drill-charts.png)
-
-1. さらに多くのデータを表示するには、期間を変更します。
-1. ソース、ターゲット、またはテスト構成を表示するには、ビューを変更します。 
-1. 失敗したテストに基づいてソースを選択し、失敗したテストの上位 5 件を調査します。 たとえば、接続モニターで関連するテストを調査する場合は、 **[View by]\(表示方法\)**  >  **[ソース]** および **[View by]\(表示方法\)**  >  **[ターゲット]** を選択します。
-
-   ![失敗したテストの上位 5 つのパフォーマンス メトリックを示すスクリーンショット](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+1. [すべてのテストを表示] ビューから、次のことができます。
+    * テストを選択し、比較をクリックします。
+    
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    
+    * クラスターを使用して、VNET、サブネットなどの複合リソースを、その子リソースに展開します。
+    * トポロジをクリックし、任意のテストのトポロジを表示します。
 
 テスト グループの RTT の傾向と失敗したチェックの割合を表示するには:
-
 1. 調査するテスト グループを選択します。 
-
-    既定では、監視データは、ソース、ターゲット、およびテスト構成 (テスト) ごとに整理されています。 後で、テスト グループからソース、ターゲット、またはテスト構成にビューを変更できます。 次に、失敗したテストの上位 5 件を調査するエンティティを選択します。 たとえば、選択した接続モニターで関連するテストを調査するには、ビューをソースとターゲットに変更します。
-1. 調査するテストを選択します。
-
-   ![テストを選択する場所を示すスクリーンショット](./media/connection-monitor-2-preview/tg-drill.png)
-
-    時間間隔と失敗したチェックの割合について、しきい値と実際の値が表示されます。 RTT の場合、しきい値、平均値、最小値、および最大値が表示されます。 また、選択したテストに対して生成されたアラートも表示されます。
-1. さらに多くのデータを表示するには、期間を変更します。
+1. 接続モニターと類似のものが表示されます。要点、概要、テスト グループのテーブル、ソース、宛先、およびテスト構成です。 接続モニターの場合と同様に、これらの間を移動します。
 
 テストの RTT の傾向と失敗したチェックの割合を表示するには:
-1. 調査するソース、ターゲット、テスト構成を選択します。
+1. 調査するテストを選択します。 ネットワーク トポロジと、失敗した割合とラウンド トリップ時間をチェックするためのエンド ツー エンドの傾向グラフが表示されます。 特定された問題を確認するには、トポロジでパスの任意のホップを選択します。 (これらのホップは Azure リソースです)。現在、この機能は、オンプレミスのネットワークに対しては使用できません。
 
-    時間間隔と失敗したチェックの割合について、しきい値と実際の値が表示されます。 RTT の場合、しきい値、平均値、最小値、および最大値が表示されます。 また、選択したテストに対して生成されたアラートも表示されます。
-
-   ![テストのメトリックを示すスクリーンショット](./media/connection-monitor-2-preview/test-drill.png)
-
-1. ネットワーク トポロジを表示するには、 **[トポロジ]** を選択します。
-
-   ![ネットワーク トポロジのタブを示すスクリーンショット](./media/connection-monitor-2-preview/test-topo.png)
-
-1. 特定された問題を確認するには、トポロジでパスの任意のホップを選択します。 (これらのホップは Azure リソースです)。現在、この機能は、オンプレミスのネットワークに対しては使用できません。
-
-   ![[トポロジ] タブで選択したホップ リンクを示すスクリーンショット](./media/connection-monitor-2-preview/test-topo-hop.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Log Analytics でのログ クエリ
 
@@ -272,7 +269,7 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 
 接続モニター (プレビュー) エクスペリエンスの前に作成された接続モニターでは、全部で次の 4 つメトリックを使用できます: 失敗したプローブの割合、AverageRoundtripMs、ChecksFailedPercent (プレビュー)、RoundTripTimeMs (プレビュー)。 接続モニター (プレビュー) エクスペリエンスで作成された接続モニターでは、" *(プレビュー)* " というタグが付いたメトリックに対してのみデータを使用できます。
 
-![接続モニター (プレビュー) のメトリックを示すスクリーンショット](./media/connection-monitor-2-preview/monitor-metrics.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 メトリックを使用するときは、リソースの種類を Microsoft.Network/networkWatchers/connectionMonitors に設定します
 
@@ -283,24 +280,27 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 | ChecksFailedPercent (プレビュー) | チェックの失敗率 (%) (プレビュー) | パーセント | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
 | RoundTripTimeMs (プレビュー) | ラウンド トリップ時間 (ミリ秒) (プレビュー) | ミリ秒 | Average | ソースとターゲットの間で送信されたチェックの RTT。 これは平均値ではありません。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Azure Monitor でのメトリック アラート
+#### <a name="metric-based-alerts-for-connection-monitor"></a>接続モニターのメトリック ベースのアラート
 
-Azure Monitor でアラートを作成するには:
+接続モニターでメトリック アラートを作成するには、次の方法を使用します。 
 
-1. 接続モニター (プレビュー) で作成した接続モニター リソースを選択します。
-1. 接続モニターの信号の種類として **[メトリック]** が表示されていることを確認します。
-1. **[条件の追加]** で、 **[シグナル名]** として **[ChecksFailedPercent(Preview)]** または **[RoundTripTimeMs(Preview)]** を選択します。
-1. **[シグナルの種類]** として、 **[メトリック]** を選択します。 たとえば、 **[ChecksFailedPercent(Preview)]** を選択します。
-1. メトリックのすべてのディメンションが一覧表示されます。 ディメンション名とディメンション値を選択します。 たとえば、 **[送信元アドレス]** を選択し、接続モニターのソースの IP アドレスを入力します。
-1. **[アラート ロジック]** に、次の詳細を入力します。
-   * **[条件タイプ]** : **静的**。
-   * **[条件]** と **[しきい値]** 。
-   * **[集約粒度] と [評価の頻度]** : 接続モニター (プレビュー) で 1 分ごとにデータを更新します。
-1. **[アクション]** で、アクション グループを選択します。
-1. アラートの詳細を指定します。
-1. アラート ルールを作成します。
+1. 接続モニター (プレビュー) では、接続モニターの作成時に [Azure portal を使用](connection-monitor-preview-create-using-portal.md#) 
+1. 接続モニター (プレビュー) から、ダッシュボードで [警告の構成] を使用 
+1. Azure Monitor から - Azure Monitor でアラートを作成するには: 
+    1. 接続モニター (プレビュー) で作成した接続モニター リソースを選択します。
+    1. 接続モニターの信号の種類として **[メトリック]** が表示されていることを確認します。
+    1. **[条件の追加]** で、 **[シグナル名]** として **[ChecksFailedPercent(Preview)]** または **[RoundTripTimeMs(Preview)]** を選択します。
+    1. **[シグナルの種類]** として、 **[メトリック]** を選択します。 たとえば、 **[ChecksFailedPercent(Preview)]** を選択します。
+    1. メトリックのすべてのディメンションが一覧表示されます。 ディメンション名とディメンション値を選択します。 たとえば、 **[送信元アドレス]** を選択し、接続モニターのソースの IP アドレスを入力します。
+    1. **[アラート ロジック]** に、次の詳細を入力します。
+        * **[条件タイプ]** : **静的**。
+        * **[条件]** と **[しきい値]** 。
+        * **[集約粒度] と [評価の頻度]** : 接続モニター (プレビュー) で 1 分ごとにデータを更新します。
+    1. **[アクション]** で、アクション グループを選択します。
+    1. アラートの詳細を指定します。
+    1. アラート ルールを作成します。
 
-   !["ソース アドレス" と "ソース エンド ポイント名" が強調して示されている Azure Monitor の [ルールの作成] 領域を示すスクリーンショット](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>ネットワークの問題を診断する
 
@@ -347,3 +347,8 @@ Azure ネットワークの問題は、ネットワーク トポロジで確認�
 * システム ルートまたは UDR が原因でトラフィックが停止した。
 * ゲートウェイの接続で BGP が有効になっていない。
 * ロード バランサーで DIP プローブがダウンする。
+
+## <a name="next-steps"></a>次の手順
+    
+   * [Azure portal を使用して接続モニター (プレビュー) を作成する方法](connection-monitor-preview-create-using-portal.md)について説明する  
+   * [ARMClient を使用して接続モニター (プレビュー) を作成する方法](connection-monitor-preview-create-using-arm-client.md)について説明する  

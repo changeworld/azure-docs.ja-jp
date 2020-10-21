@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475738"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439253"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps および Power Automate の Azure Monitor Logs コネクタ
 [Azure Logic Apps](../../logic-apps/index.yml) と [Power Automate](https://flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
@@ -68,7 +68,7 @@ Azure portal で **[Logic Apps]** に移動し、 **[追加]** をクリック�
 
 **[Azure Log Analytics – Run query and visualize results]\(Azure Log Analytics – クエリを実行して結果を視覚化する\)** をクリックします。
 
-![クエリの実行と結果の視覚化のアクション](media/logicapp-flow-connector/select-query-action-visualize.png)
+![ロジック アプリ デザイナーのステップに追加される新しいアクションのスクリーンショット。 [アクションの選択] の下に Azure Monitor Logs が強調表示されています。](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Azure Monitor Logs アクションの追加
@@ -87,7 +87,7 @@ Event
 
 **[時間の範囲]** で *[クエリに設定します]* を選択し、 **[グラフの種類]** で **[HTML Table]\(HTML テーブル\)** を選択します。
    
-![クエリの実行と結果の視覚化のアクション](media/logicapp-flow-connector/run-query-visualize-action.png)
+![[クエリを実行して結果を視覚化する] という名前の新しい Azure Monitor Logs アクションの設定のスクリーンショット。](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 メールは、現在の接続に関連付けられているアカウントによって送信されます。 別のアカウントを指定するには、 **[接続の変更]** をクリックします。
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ad0ad7b1ff2f0b706595daf8b8c93f480f0e00b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 68d2ed0d6702a42f44e502f2f7d3a91c0221ff6a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421715"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91440952"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -68,7 +68,7 @@ RADIUS サーバーは、オンプレミスまたは Azure VNet にデプロイ�
 
 RADIUS サーバーは、他の外部 ID システムと統合することもできます。 これにより、多要素認証のオプションなど、P2S VPN 向けの多数の認証オプションを利用できるようになります。
 
-![ポイント対サイト](./media/point-to-site-about/p2s.png "ポイント対サイト")
+![オンプレミス サイトを使用したポイント対サイト VPN を示す図。](./media/point-to-site-about/p2s.png)
 
 ## <a name="what-are-the-client-configuration-requirements"></a>クライアントの構成要件について
 

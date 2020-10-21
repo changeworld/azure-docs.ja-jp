@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897405"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530631"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -201,6 +201,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. ワークスペース内の **[実験]** ノードを展開します。
 1. 実行する実験を右クリックします。
 1. アクティビティ バーの **[実験の実行]** アイコンを選択します。
+1. 実験をローカルで実行するか、リモートで実行するかを選択します。 実験をローカルで実行およびデバッグする詳細については、[デバッグ ガイド](how-to-debug-visual-studio-code.md)に関する項を参照してください。
 1. サブスクリプションを選択します。
 1. Azure ML ワークスペースを選択して、実験を実行します。
 1. 実験を選択します。

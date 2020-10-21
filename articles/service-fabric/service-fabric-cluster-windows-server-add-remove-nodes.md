@@ -1,19 +1,20 @@
 ---
 title: スタンドアロン Service Fabric クラスターでノードを追加または削除する
 description: Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258726"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842922"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server を実行するスタンドアロン Service Fabric クラスターでノードを追加または削除する
-[Windows Server マシンでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへのノードの追加や削除が必要になることがあります。 この記事では、これを実行する詳細の手順について説明します。 ノード機能の追加/削除は、ローカル デプロイ クラスターではサポートされていない点に注意してください。
+[Windows Server マシンでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、この記事で説明するように、クラスターへのノードの追加や削除が必要になることがあります。
+
+> [!NOTE]
+> ノードの追加と削除機能は、ローカル開発クラスターではサポートされていません。
 
 ## <a name="add-nodes-to-your-cluster"></a>クラスターへのノードの追加
 
@@ -132,7 +133,7 @@ ms.locfileid: "86258726"
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>クラスターからのノードの種類の削除
-ノードの種類を削除する前に、そのノードの種類を参照しているノードがないことを再確認してください。 このようなノードを削除してから、対応するノードの種類を削除します。 すべての対応するノードを削除したら、クラスター構成から NodeType を削除し、[Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を使用して構成のアップグレードを開始できます。
+ノードの種類を削除する前に、そのノードの種類を参照しているノードがないかどうかを調べてください。 このようなノードを削除してから、対応するノードの種類を削除します。 すべての対応するノードを削除したら、クラスター構成から NodeType を削除し、[Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を使用して構成のアップグレードを開始できます。
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>クラスターのプライマリ ノードの置き換え

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ca2284e3e2f581d1935a8978d26fd674154d581b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549390"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333516"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>チュートリアル:Atlassian Cloud を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -49,11 +49,12 @@ ms.locfileid: "88549390"
 
 1. [[Atlassian Organization Manager]\(Atlassian Organization Manager\)](https://admin.atlassian.com) **> [select the org]\(組織の選択\) > [directory]\(ディレクトリ\)** に移動します。
 
-    ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+    ![[ディレクトリ] オプションが強調表示された [管理] ページのスクリーンショット。](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
 2. **[ユーザーのプロビジョニング]** をクリックし、 **[ディレクトリを作成する]** をクリックします。 **[Directory base URL] (ディレクトリ ベース URL)** と **[Bearer Token] (ベアラー トークン)** をコピーします。これは、Azure AD ポータルの Atlassian Cloud アプリケーションで、[プロビジョニング] タブの **[テナントの URL]** フィールドと **[シークレット トークン]** フィールドに入力します。
 
-    ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+    ![[ユーザー プロビジョニング] オプションが強調表示された [管理] ページのスクリーンショット。](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png)![[トークンの作成] ページのスクリーンショット。](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    ![デモの時間ディレクトリ トークン ページのスクリーンショット。](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
 
 ## <a name="step-3-add-atlassian-cloud-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Atlassian Cloud を追加する
@@ -85,11 +86,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションで、Atlassian Cloud のアカウントから先ほど取得した **[テナントの URL]** と **[シークレット トークン]** を入力します。 **[テスト接続]** をクリックして、Azure AD から Atlassian Cloud への接続を確保します。 接続できない場合は、使用中の Atlassian Cloud アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 

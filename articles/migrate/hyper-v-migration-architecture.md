@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185874"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362199"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V のレプリケーションのしくみ
 
@@ -30,7 +30,7 @@ Azure Migrate Server Migration は、オンプレミスのワークロードと�
 
 ## <a name="architectural-components"></a>アーキテクチャ コンポーネント
 
-![Architecture](./media/hyper-v-replication-architecture/architecture.png)
+![図に、Microsoft Azure への HTTPS データ チャネルがある元の Hyper-V ネットワークと、表内の詳細な説明が示されています。](./media/hyper-v-replication-architecture/architecture.png)
 
 
 

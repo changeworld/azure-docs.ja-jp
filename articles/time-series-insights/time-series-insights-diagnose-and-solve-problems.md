@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046448"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530138"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境の問題を診断して解決する
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Time Series Insights 環境で発生する可能性がある問題について説明します。 この記事では、考えられる原因と解決のためのソリューションを示します。
 
@@ -66,8 +69,8 @@ Azure Time Series Insights Explorer にデータが表示されるのは、環�
 
 イベント ソースに古いイベントがある場合、次の 2 つのうちいずれかの方法で調整にアプローチできます。
 
-- イベント ソースのリテンション期間を変更して、Azure Time Series Insights に表示したくない古いイベントが除去されるようにします。
-- プロビジョニングする環境サイズを大きくして (ユニット数)、古いイベントのスループットを増やします。 前の例では、同じ S1 環境を 1 日あたり 5 ユニットに増やすと、その環境で 1 日以内に追いつくはずです。 安定状態でのイベント生成が 1 日あたり 100 万イベント以下である場合は、Azure Time Series Insights で追いついた後、イベント容量を 1 ユニットに減らすことができます。
+* イベント ソースのリテンション期間を変更して、Azure Time Series Insights に表示したくない古いイベントが除去されるようにします。
+* プロビジョニングする環境サイズを大きくして (ユニット数)、古いイベントのスループットを増やします。 前の例では、同じ S1 環境を 1 日あたり 5 ユニットに増やすと、その環境で 1 日以内に追いつくはずです。 安定状態でのイベント生成が 1 日あたり 100 万イベント以下である場合は、Azure Time Series Insights で追いついた後、イベント容量を 1 ユニットに減らすことができます。
 
 適用される調整制限は、環境の SKU のタイプと容量に基づきます。 環境内のすべてのイベント ソースで、この容量が共有されます。 IoT Hub またはイベント ハブのイベント ソースが適用される制限を超えるデータをプッシュする場合は、調整が行われ、タイム ラグが発生します。
 
@@ -128,12 +131,12 @@ Azure Time Series Insights でデータが取り込まれなくなったのに�
 
 次の値は表示されません。
 
-- *(abc)* :Azure Time Series Insights がデータ値を文字列として読み取っていることを示します。
-- *カレンダー アイコン*:Azure Time Series Insights がデータ値を日時値として読み取っていることを示します。
-- *#* :Azure Time Series Insights がデータ値を整数として読み取っていることを示します。
+* *(abc)* :Azure Time Series Insights がデータ値を文字列として読み取っていることを示します。
+* *カレンダー アイコン*:Azure Time Series Insights がデータ値を日時値として読み取っていることを示します。
+* *#* :Azure Time Series Insights がデータ値を整数として読み取っていることを示します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Time Series Insights で待機時間を緩和する方法](time-series-insights-environment-mitigate-latency.md)を確認します。
+* [Azure Time Series Insights で待機時間を緩和する方法](time-series-insights-environment-mitigate-latency.md)を確認します。
 
-- [Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。
+* [Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。

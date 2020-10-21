@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876786"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530155"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -199,11 +199,11 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 4. PySpark カーネルをインストールするためのプロンプトが、ウィンドウの右下隅に表示されます。 PySpark のインストールを続行するには **[インストール]** ボタンをクリックします。この手順をスキップするには、 **[スキップ]** をクリックします。
 
-   ![PySpark カーネルをインストールする](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![PySpark のインストールをスキップするオプションを示すスクリーンショット。](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. 後でインストールする必要がある場合は、 **[ファイル]**  >  **[基本設定]**  >  **[設定]** に移動し、 **[Hdinsight:Pyspark のインストールをスキップする]** をオフにします。 
     
-    ![PySpark カーネルをインストールする](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![[Pyspark のインストールのスキップを有効にする] オプションを示すスクリーンショット。](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. 手順 4 でインストールが正常に完了した場合、ウィンドウの右下隅に "PySpark が正常にインストールされました" というメッセージ ボックスが表示されます。 **[再読み込み]** ボタンをクリックして、ウィンドウを再度読み込みます。
     ![正常にインストールされた PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)

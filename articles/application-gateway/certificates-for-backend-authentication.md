@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 64f2abd2a42fb15b994803a48b97679ee8927233
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594426"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362714"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 
@@ -37,7 +37,7 @@ TLS/SSL 証明書から公開キー .cer ファイルをエクスポートしま
 
 1. 証明書から .cer ファイルを取得するには、 **[ユーザー証明書の管理]** を開きます。 証明書を探して右クリックします (通常は Current User\Personal\Certificates にあります)。 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
 
-   ![エクスポート](./media/certificates-for-backend-authentication/export.png)
+   ![証明書が選択されている証明書管理者と、[すべてのタスク]、[エクスポート] が選択されているコンテキスト メニューを示すスクリーンショット。](./media/certificates-for-backend-authentication/export.png)
 
 2. ウィザードで **[次へ]** をクリックします。
 
@@ -53,19 +53,19 @@ TLS/SSL 証明書から公開キー .cer ファイルをエクスポートしま
 
 5. **[エクスポートするファイル]** で、 **[参照]** をクリックして証明書をエクスポートする場所を選択します。 **[ファイル名]** に証明書ファイルの名前を指定します。 次に、 **[次へ]** をクリックします。
 
-   ![参照](./media/certificates-for-backend-authentication/browse.png)
+   ![エクスポートするファイルを指定する証明書のエクスポート ウィザードが表示されているスクリーンショット。](./media/certificates-for-backend-authentication/browse.png)
 
 6. **[完了]** をクリックして、証明書をエクスポートします。
 
-   ![[完了]](./media/certificates-for-backend-authentication/finish.png)
+   ![ファイル エクスポートの完了後の証明書のエクスポート ウィザードが表示されているスクリーンショット。](./media/certificates-for-backend-authentication/finish.png)
 
 7. 証明書が正常にエクスポートされました。
 
-   ![Success](./media/certificates-for-backend-authentication/success.png)
+   ![成功を示すメッセージが表示された証明書のエクスポート ウィザードを示すスクリーンショット。](./media/certificates-for-backend-authentication/success.png)
 
    エクスポートされた証明書は次のようになります。
 
-   ![エクスポート済み](./media/certificates-for-backend-authentication/exported.png)
+   ![証明書のシンボルを示すスクリーンショット。](./media/certificates-for-backend-authentication/exported.png)
 
 8. メモ帳を使ってエクスポートした証明書を開くと、この例のようなものが表示されます。 青で示したセクションには、Application Gateway にアップロードされる情報が含まれます。 証明書をメモ帳で開いてもこのように表示されない場合は、通常、Base-64 エンコードの X.509 (.CER) 形式を使ってエクスポートしなかったことを意味します。 また、別のテキスト エディターを使う場合は、一部のエディターでは意図しない書式設定がバックグラウンドで行われる場合があることに注意してください。 これにより、この証明書から Azure にテキストをアップロードすると問題が発生する可能性があります。
 

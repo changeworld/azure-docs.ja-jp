@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778835"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930154"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web 認証ライブラリ
 
@@ -44,6 +44,7 @@ Microsoft Identity Web は、アプリのニーズに応じたモジュール型
 - [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) - メイン パッケージ。 Microsoft Identity Web を使用するすべてのアプリに必要です。
 - [Microsoft.Identity.Web.UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) - 省略可能。 Web アプリに対するユーザーのサインインとサインアウトおよび関連付けられているコントローラーの UI を追加します。
 - [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) - 省略可能。 Microsoft Graph API との簡単な対話機能を提供します。
+- [Microsoft.Identity.Web.MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) - 省略可能。 Microsoft Graph API [ベータ版エンドポイント](/graph/api/overview?view=graph-rest-beta&preserve-view=true)との簡単な対話機能を提供します。
 
 #### <a name="project-templates"></a>プロジェクト テンプレート
 
@@ -69,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHub
 
-Microsoft Identity Web は、GitHub でホストされているオープンソース プロジェクトです。[AzureAD/microsoft-identity-web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true)
+Microsoft Identity Web は、GitHub でホストされているオープンソース プロジェクトです。<a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft-identity-web<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 [リポジトリ wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) には追加のドキュメントが含まれています。ヘルプが必要な場合、またはバグを発見した場合は、[問題を報告](https://github.com/AzureAD/microsoft-identity-web/issues)できます。
 
@@ -98,8 +99,8 @@ Microsoft ID Web の動作を確認するには、次の Blazor Server のチュ
 
 GitHub の Microsoft Identity Web wiki には、ライブラリのさまざまな側面に関する広範なリファレンス ドキュメントが含まれています。 たとえば、証明書の使用状況、増分同意、条件付きアクセスのリファレンスは、次の場所にあります。
 
-- [Microsoft.Identity.Web での証明書の使用](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true) (GitHub)
-- [増分同意と条件付きアクセス](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true) (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Microsoft.Identity.Web での証明書の使用<span class="docon docon-navigate-external x-hidden-focus"></span></a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">増分同意と条件付きアクセス<span class="docon docon-navigate-external x-hidden-focus"></span></a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

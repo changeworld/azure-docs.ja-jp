@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320729"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996421"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
@@ -32,21 +32,29 @@ Azure Stack Edge Pro のシステム要件は次のとおりです。
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
+## <a name="supported-azure-storage-accounts"></a>サポートされる Azure Storage アカウント
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>サポートされる階層化ストレージ アカウント
+## <a name="supported-edge-storage-accounts"></a>サポートされる Edge ストレージ アカウント
 
-Azure Stack から管理する場合、次の階層型ストレージ アカウントが SMB/NFS/REST インターフェイスでサポートされます。
+次の Edge ストレージ アカウントは、デバイスの REST インターフェイスでサポートされます。 Edge ストレージ アカウントがデバイス上に作成されます。 詳細については、[Edge ストレージ アカウント](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)に関する記事を参照してください。
 
 |Type  |ストレージ アカウント  |説明  |
 |---------|---------|---------|
 |Standard     |GPv1:ブロック BLOB         |         |
-|    |  Blob ストレージ:ブロック BLOB       | NAS でのみサポート     |
 
-*ページ BLOB と Azure Files は現在、Azure Stack でサポートされていません。
-**ホット層とコールド層は Azure Stack に存在しません。 データがアップロードされた後、データをアーカイブ層に移動するには Azure PowerShell を使用します。 詳細な手順については、[Azure PowerShell を使用した BLOB 層の設定]()に関するページを参照してください。
+*ページ BLOB と Azure Files は現在サポートされていません。
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>サポートされるローカル Azure Resource Manager ストレージ アカウント
+
+これらのストレージ アカウントは、ローカル Azure Resource Manager に接続するときに、デバイスのローカル API を使用して作成されます。 次のストレージ アカウントがサポートされます。
+
+|Type  |ストレージ アカウント  |説明  |
+|---------|---------|---------|
+|Standard     |GPv1:ブロック BLOB、ページ BLOB        | SKU の種類が Standard_LRS       |
+|Premium     |GPv1:ブロック BLOB、ページ BLOB        | SKU の種類が Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>サポートされているストレージの種類
 
