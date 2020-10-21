@@ -40,6 +40,8 @@
       href: reference.md
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 言語のサポート

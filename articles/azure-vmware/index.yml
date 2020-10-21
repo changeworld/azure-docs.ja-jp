@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 09/21/2020
-  ms.openlocfilehash: 197cf8ca3f819a83d13869a43c3685bba916ce4f
-  ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+  ms.date: 10/19/2020
+  ms.openlocfilehash: 31b3ad9c33ffd07b62067de3aa46333608522f97
+  ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/12/2020
-  ms.locfileid: "91949107"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92172141"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -36,14 +36,12 @@ landingContent:
       url: concepts-role-based-access-control.md
     - text: プライベート クラウドのアップグレード
       url: concepts-upgrades.md
-- title: Azure VMware Solution のデプロイ
+- title: 作業開始
   linkLists:
-  - linkListType: get-started
+  - linkListType: deploy
     links:
-    - text: デプロイ前のプロセス
+    - text: 展開を計画する
       url: production-ready-deployment-steps.md
-    - text: デプロイ前のチェック リスト
-      url: pre-deployment-checklist.md
     - text: 1 - Azure VMware Solution のデプロイ
       url: deploy-azure-vmware-solution.md
     - text: 2 - オンプレミスに接続する
@@ -64,14 +62,16 @@ landingContent:
       url: tutorial-nsx-t-network-segment.md
     - text: オンプレミスからプライベート クラウドへのピアリング
       url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: VMware HCX をデプロイして構成する
-      url: tutorial-deploy-vmware-hcx.md
     - text: プライベート クラウドをスケーリングする
       url: tutorial-scale-private-cloud.md
 - title: Azure VMware Solution を拡張する
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure VMware Solution を有効にする
+      url: enable-azure-vmware-solution.md
+    - text: 予約インスタンスを使用してコストを削減する
+      url: reserved-instance.md
     - text: 移行評価
       url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: DHCP の管理
@@ -80,5 +80,49 @@ landingContent:
       url: disaster-recovery-for-virtual-machines.md
     - text: コンテンツ ライブラリを介して VM をデプロイする
       url: ./deploy-vm-content-library.md
-    - text: パブリック IP 機能を使用する
+    - text: GitHub Enterprise Server を設定する
+      url: github-enterprise-server.md
+    - text: パブリック IP の使用
       url: public-ip-usage.md
+    - text: IPSec トンネルを作成する
+      url: create-ipsec-tunnel.md
+- title: Azure のネイティブ統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: API Management
+      url: concepts-api-management.md
+    - text: ハブ アンド スポーク
+      url: concepts-hub-and-spoke.md
+    - text: Azure Backup Server
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: VM のライフサイクル管理
+      url: lifecycle-management-of-azure-vmware-solution-vms.md
+    - text: Application Gateway
+      url: protect-azure-vmware-solution-with-application-gateway.md
+    - text: Traffic Manager
+      url: deploy-traffic-manager-balance-workloads.md
+- title: VMware ソリューション
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: vRealize Operations の設定
+      url: vrealize-operations-for-azure-vmware-solution.md
+    - text: VMware Horizon をデプロイする
+      url: azure-vmware-solution-horizon.md
+- title: VMware のエコシステム
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: VM のバックアップ ソリューション
+      url: ecosystem-back-up-vms.md
+- title: リソース
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.vmware
+    - text: デプロイまたはプロビジョニングのエラーに関するヘルプの表示
+      url: fix-deployment-provisioning-failures.md
+    - text: よく寄せられる質問
+      url: faq.md

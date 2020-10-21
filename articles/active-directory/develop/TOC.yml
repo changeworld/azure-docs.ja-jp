@@ -75,6 +75,8 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript - 認証コード フロー
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript - 暗黙的フロー
@@ -123,6 +125,9 @@
       href: authentication-flows-app-scenarios.md
     - name: ID プラットフォームのベスト プラクティス
       href: identity-platform-integration-checklist.md
+    - name: モバイル シングル サインオン (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: アプリケーションのシナリオ
       displayName: App scenarios
       items:
@@ -291,10 +296,8 @@
           items:
             - name: アカウントとテナント プロファイル
               href: accounts-overview.md
-            - name: 承認エージェント
-              href: authorization-agents.md
-            - name: 仲介型認証
-              href: brokered-auth.md
+            - name: MSAL Android での SSO
+              href: msal-android-single-sign-on.md
             - name: Azure AD B2C との統合
               href: msal-android-b2c.md
             - name: MSAL.Android への移行
