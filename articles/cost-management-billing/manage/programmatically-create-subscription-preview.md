@@ -9,12 +9,12 @@ ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1ddd471746224c2084fa11a74d8fcee3b5bd3d5b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c63733a66a2bb4e320a24649dfe82eac259e79ae
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026584"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131107"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>プレビュー API を使用してプログラムで Azure サブスクリプションを作成する
 
@@ -103,7 +103,7 @@ ObjectId                               | PrincipalName
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
+[az billing enrollment-account list](/cli/azure/billing) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
 ```azurecli-interactive
 az billing enrollment-account list

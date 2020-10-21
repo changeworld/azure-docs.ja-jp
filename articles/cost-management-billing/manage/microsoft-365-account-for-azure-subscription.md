@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 255fbe4036c83618dd0131b262d13709ab7f9c2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370336"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131889"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Microsoft 365 アカウントを使用して Azure のサブスクリプションにサインアップする
 
-Microsoft 365 サブスクリプションがある場合は、Microsoft 365 アカウントを使用して Azure サブスクリプションを作成できます。 Microsoft 365 のユーザー名とパスワードを使用して [Azure portal](https://portal.azure.com/) にサインインします。 仮想マシンを設定するか、他の Azure サービスを使用する場合は、Azure サブスクリプションにサインアップする必要があります。 他のユーザーと Azure サブスクリプションを共有し、[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure サブスクリプションとリソースへのアクセスを管理できます](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+Microsoft 365 サブスクリプションがある場合は、Microsoft 365 アカウントを使用して Azure サブスクリプションを作成できます。 Microsoft 365 のユーザー名とパスワードを使用して [Azure portal](https://portal.azure.com/) にサインインします。 仮想マシンを設定するか、他の Azure サービスを使用する場合は、Azure サブスクリプションにサインアップする必要があります。 他のユーザーと Azure サブスクリプションを共有し、[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure サブスクリプションとリソースへのアクセスを管理できます](../../role-based-access-control/role-assignments-portal.md)。
 
 既に Microsoft 365 アカウントと Azure サブスクリプションの両方がある場合は、[Microsoft 365 テナントを Azure サブスクリプションに関連付ける](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)方法に関するページを参照してください。
 
@@ -57,4 +57,4 @@ Microsoft 365 と Azure では、ユーザーとサブスクリプションの�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のユーザーと Azure サブスクリプションを共有し、[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure サブスクリプションとリソースへのアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+- 他のユーザーと Azure サブスクリプションを共有し、[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure サブスクリプションとリソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)。

@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972293"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126568"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した政府機関ソリューションの構築
 
@@ -78,4 +78,4 @@ Azure IoT Central アプリケーション テンプレートを使用してス�
 * [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)について
 * [水消費量のモニタリングの概念](./concepts-waterconsumptionmonitoring-architecture.md)について
 * [接続された廃棄物管理の概念](./concepts-connectedwastemanagement-architecture.md)について  
-* IoT Central の詳細については、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)を参照してください 
+* IoT Central の詳細については、[IoT Central の概要](../core/overview-iot-central.md)を参照してください

@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925047"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131957"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
@@ -30,7 +30,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 |---------|---------|
 |Enterprise Agreement (EA) |  マイクロソフト エンタープライズ契約の加入契約におけるアカウント オーナー ロール。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。    |
 |Microsoft 顧客契約 (MCA) |  請求書セクション、課金プロファイル、または課金アカウントにおける所有者ロールまたは投稿者ロール。 または、請求書セクションにおける Azure サブスクリプションの作成者ロール。  詳細については、「[サブスクリプションの課金ロールとタスク](understand-mca-roles.md#subscription-billing-roles-and-tasks)」を参照してください。    |
-|Microsoft Partner Agreement (MPA) |   CSP パートナー組織の全体管理者ロールおよび管理者エージェント ロール。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)に関するページを参照してください。  Azure サブスクリプションを作成するためには、ユーザーがパートナー テナントにサインインする必要があります。   |
+|Microsoft Partner Agreement (MPA) |   CSP パートナー組織の全体管理者ロールおよび管理者エージェント ロール。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)に関するページを参照してください。  Azure サブスクリプションを作成するためには、ユーザーがパートナー テナントにサインインする必要があります。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portal にサブスクリプションを作成する
 
@@ -79,7 +79,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 
 - [Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)
 - [新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [リソースの整理と管理のための管理グループを作成する](../../governance/management-groups/create.md)
+- [リソースの整理と管理のための管理グループを作成する](../../governance/management-groups/create-management-group-portal.md)
 - [Azure のサブスクリプションの取り消し](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。

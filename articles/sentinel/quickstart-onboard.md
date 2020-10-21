@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057520"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106979"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -52,7 +52,6 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
     | オーストラリア | オーストラリア |
     | イギリス | イギリス |
     | Canada | Canada |
-    | アジア太平洋 | アジア太平洋 (シンガポール) |
     | 日本 | 日本 |
     |
 

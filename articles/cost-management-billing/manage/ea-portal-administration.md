@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 33a53fa46d7d07183b77f2608d44f8ea5d0d2804
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371917"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132263"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -71,13 +71,13 @@ Azure EA Portal は、Azure EA のコストと使用状況を管理するのに�
 
 各ロールには、さまざまなレベルのアクセス権と特権があります。
 
-ユーザー ロールの詳細については、[「エンタープライズ ユーザー ロール」](https://docs.microsoft.com/azure/billing/billing-ea-portal-get-started#enterprise-user-roles)を参照してください。
+ユーザー ロールの詳細については、[「エンタープライズ ユーザー ロール」](./ea-portal-get-started.md#enterprise-user-roles)を参照してください。
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA アカウントを追加する
 
 Azure EA アカウントは、Azure EA Portal における組織単位です。 これは、サブスクリプションの管理に使用されるほか、レポートにも使用されます。 Azure サービスにアクセスして使用するには、自分でアカウントを作成するか、誰かにアカウントを作成してもらう必要があります。
 
-Azure アカウントの詳細については、「[アカウントの追加](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account)」を参照してください。
+Azure アカウントの詳細については、「[アカウントの追加](./ea-portal-get-started.md#add-an-account)」を参照してください。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test オファー
 

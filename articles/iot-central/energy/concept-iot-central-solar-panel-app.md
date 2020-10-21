@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c94109746545a1f7ff33534ca3ec54f55357281
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 00ef6cf6d4149f139876cb0c2d845133ba00157c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316036"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127508"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - ソーラー パネル アプリのアーキテクチャ
 
@@ -29,7 +29,7 @@ ms.locfileid: "91316036"
 
 ## <a name="solar-panels-and-connectivity"></a>ソーラー パネルと接続 
 
-ソーラー パネルは、再生可能エネルギーの重要なソースの 1 つです。 ソーラー パネルの種類と設定に応じて、ゲートウェイまたは他の中間デバイスや独自のシステムを使用して接続できます。 直接接続できないデバイスを接続するように IoT Central デバイス ブリッジを構築する必要がある場合があります。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)で確認できます。 
+ソーラー パネルは、再生可能エネルギーの重要なソースの 1 つです。 ソーラー パネルの種類と設定に応じて、ゲートウェイまたは他の中間デバイスや独自のシステムを使用して接続できます。 直接接続できないデバイスを接続するように IoT Central デバイス ブリッジを構築する必要がある場合があります。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](../core/howto-build-iotc-device-bridge.md)で確認できます。 
 
 
 
@@ -43,4 +43,4 @@ IoT Central プラットフォームには、次の 2 つの拡張オプショ�
 ## <a name="next-steps"></a>次のステップ
 
 * アーキテクチャについて学習したので、次は[ソーラー パネル アプリを無料で作成](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)します。
-* IoT Central の詳細については、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)に関する記事を参照してください
+* IoT Central の詳細については、[IoT Central の概要](../index.yml)に関する記事を参照してください

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664955"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072120"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Communication Services でのイベント処理
 
@@ -36,9 +36,9 @@ Azure Communication Services から出力されるイベントの種類は次の
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | Communication Service に関連付けられた電話番号によって SMS が受信されたときに発行されます。 |
 | Microsoft.Communication.SMSDeliveryReportReceived           | Communication Service によって送信された SMS の配信レポートを受信したときに発行されます。     |
-| Microsoft.Communication.ChatMessageReceived*                | 自分がメンバーになっているチャット スレッド内のユーザーのメッセージを受信したときに発行されます。        |
-| Microsoft.Communication.ChatMessageEdited*                   | ユーザーがメンバーになっているチャット スレッド内でメッセージが編集されたときに発行されます。                |
-| Microsoft.Communication.ChatMessageDeleted*                  | ユーザーがメンバーになっているチャット スレッド内でメッセージが削除されたときに発行されます。               |
+| Microsoft.Communication.ChatMessageReceived                | 自分がメンバーになっているチャット スレッド内のユーザーのメッセージを受信したときに発行されます。        |
+| Microsoft.Communication.ChatMessageEdited                   | ユーザーがメンバーになっているチャット スレッド内でメッセージが編集されたときに発行されます。                |
+| Microsoft.Communication.ChatMessageDeleted                  | ユーザーがメンバーになっているチャット スレッド内でメッセージが削除されたときに発行されます。               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | チャット スレッドの作成時にユーザーがメンバーとして追加されたときに発行されます。           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | ユーザーがメンバーになっているチャット スレッドが削除されたときに発行されます。                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | ユーザーがメンバーになっているチャット スレッドのプロパティが更新されたときに発行されます。              |
@@ -47,7 +47,6 @@ Azure Communication Services から出力されるイベントの種類は次の
 
 Azure portal または Azure CLI を使用して、Communication Services リソースによって発行されたイベントをサブスクライブできます。 「[Communication Services での SMS イベントの処理方法](../quickstarts/telephony-sms/handle-sms-events.md)」を参照してイベントの処理を開始します
 
-*これらのイベントがトリガーされるように、"メッセージの送信" API 呼び出しで "送信者名" を指定していることを確認してください。
 
 ## <a name="event-subjects"></a>イベントの件名
 

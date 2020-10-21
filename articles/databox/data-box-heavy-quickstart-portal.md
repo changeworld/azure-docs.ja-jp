@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920791"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122825"
 ---
 ::: zone target = "docs"
 
@@ -124,7 +124,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
  
 1. 両方の 40 Gbps データ インターフェイスを並列で使用して、両方のデバイス ノードにデータをコピーします。
 
-    - Windows ホストを使用する場合は、[Robocopy](https://technet.microsoft.com/library/ee851678.aspx) などの SMB 互換のファイル コピー ツールを使用します。
+    - Windows ホストを使用する場合は、[Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) などの SMB 互換のファイル コピー ツールを使用します。
     - NFS のホストの場合、`cp` コマンドまたは `rsync` を使用してデータをコピーします。
 2. `\\<IP address of your device>\ShareName` というパスを使用して、デバイス上の共有に接続します。 共有アクセス資格情報を取得するには、Data Box Heavy のローカル Web UI にある **[接続とコピー]** ページに移動します。
 3. 共有とフォルダーの名前、そしてデータが、[Azure Storage と Data Box Heavy サービスの制限](data-box-heavy-limits.md)に記載されているガイドラインに従っていることを確認します。

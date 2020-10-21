@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446459"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131464"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
-コスト管理は、クラウドへの投資の価値を最大化するために不可欠な要素の 1 つです。 さまざまなシナリオにおいて、コストの可視性、レポート、およびコスト ベースのオーケストレーションが、継続的な事業運営に不可欠となります。 [Azure Cost Management API](https://docs.microsoft.com/rest/api/consumption/) の一連の API は、このようなシナリオのそれぞれをサポートします。 これらの API から使用状況の詳細がわかるので、インスタンス レベルのコストを細分化して調べることができます。
+コスト管理は、クラウドへの投資の価値を最大化するために不可欠な要素の 1 つです。 さまざまなシナリオにおいて、コストの可視性、レポート、およびコスト ベースのオーケストレーションが、継続的な事業運営に不可欠となります。 [Azure Cost Management API](/rest/api/consumption/) の一連の API は、このようなシナリオのそれぞれをサポートします。 これらの API から使用状況の詳細がわかるので、インスタンス レベルのコストを細分化して調べることができます。
 
-予算はコスト管理の一部として一般的に使用されます。 Azure では、範囲を限定して予算を管理することができます。 たとえば、予算のビューをサブスクリプション、リソース グループ、またはリソースのコレクションに基づいて絞り込むことができます。 予算 API を使用して、予算のしきい値に達したときに電子メールで通知を受け取ることに加えて、[Azure Monitor のアクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)を使用して、予算に関するイベントの発生時に一連のアクションをトリガーし、オーケストレーションの下で実行することもできます。
+予算はコスト管理の一部として一般的に使用されます。 Azure では、範囲を限定して予算を管理することができます。 たとえば、予算のビューをサブスクリプション、リソース グループ、またはリソースのコレクションに基づいて絞り込むことができます。 予算 API を使用して、予算のしきい値に達したときに電子メールで通知を受け取ることに加えて、[Azure Monitor のアクション グループ](../../azure-monitor/platform/action-groups.md)を使用して、予算に関するイベントの発生時に一連のアクションをトリガーし、オーケストレーションの下で実行することもできます。
 
 予算に関する一般的なシナリオの例を考えてみます。この企業は重要度の低いワークロードを実行しており、所定の予算を超えないように管理することと、毎月受け取る請求書の金額を予測可能な範囲で維持することを必要としています。 このシナリオでは、Azure 環境の一部であるリソースを、コストに基づいてオーケストレーションすることが必要になります。 このシナリオでは、サブスクリプションの毎月の予算を 1,000 ドルと設定します。 また、いくつかのオーケストレーションをトリガーするように通知のしきい値を設定します。 まず、コストしきい値を 80% に設定し、これに達したときにリソース グループ **Optional** ("必須ではない") 内のすべての VM を停止します。 次に、コストしきい値 100% に達したときに、すべての VM インスタンスを停止します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "91446459"
 
 ## <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) は、リソース管理タスクのほとんどをスクリプトで処理できるサービスです。このタスクはスケジュールに従って実行することも、オンデマンドで実行することもできます。 このシナリオでは、[Azure Automation Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) を作成し、これを使用して VM を停止します。 このシナリオの構築には、[ギャラリー](https://docs.microsoft.com/azure/automation/automation-runbook-gallery)にある [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) というグラフィカル Runbook を使用します。 この Runbook を Azure アカウントにインポートして発行すると、予算のしきい値に達したときに VM を停止できるようになります。
+[Azure Automation](../../automation/automation-intro.md) は、リソース管理タスクのほとんどをスクリプトで処理できるサービスです。このタスクはスケジュールに従って実行することも、オンデマンドで実行することもできます。 このシナリオでは、[Azure Automation Runbook](../../automation/automation-runbook-types.md) を作成し、これを使用して VM を停止します。 このシナリオの構築には、[ギャラリー](../../automation/automation-runbook-gallery.md)にある [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) というグラフィカル Runbook を使用します。 この Runbook を Azure アカウントにインポートして発行すると、予算のしきい値に達したときに VM を停止できるようになります。
 
 ### <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "91446459"
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>Stop Azure V2 VMs Runbook をインポートする
 
-[Azure Automation Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) を使用して、[Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) グラフィカル Runbook をギャラリーからインポートします。
+[Azure Automation Runbook](../../automation/automation-runbook-types.md) を使用して、[Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) グラフィカル Runbook をギャラリーからインポートします。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com/) にサインインします。
 1. Automation アカウントを開くために、 **[すべてのサービス]**  >  **[Automation アカウント]** を選択します。 Automation アカウントを選択します。
@@ -60,7 +60,7 @@ ms.locfileid: "91446459"
 1. Runbook のインポート処理が完了したら、 **[編集]** を選択します。グラフィカル Runbook エディターと発行オプションが表示されます。  
     ![Azure - グラフィカル Runbook の編集](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. **[発行]** を選択して Runbook を発行し、確認を要求されたら **[はい]** を選択します。 Runbook を発行すると、既存の発行済みバージョンよりもドラフト バージョンがオーバーライドされるようになります。 この例では、Runbook を作成したばかりであるため、発行済みバージョンはまだありません。
-    Runbook の発行の詳細については、[グラフィカル Runbook の作成](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical)に関するページを参照してください。
+    Runbook の発行の詳細については、[グラフィカル Runbook の作成](../../automation/learn/automation-tutorial-runbook-graphical.md)に関するページを参照してください。
 
 ## <a name="create-webhooks-for-the-runbook"></a>Runbook に対する Webhook を作成する
 
@@ -91,7 +91,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>オーケストレーションのための Azure ロジック アプリを作成する
 
-Logic Apps は、プロセスをワークフローとして構築、スケジューリング、自動化し、企業や組織の間でアプリ、データ、システム、サービスを統合する際に役立つサービスです。 このシナリオで作成する[ロジック アプリ](https://docs.microsoft.com/azure/logic-apps/)は、作成したオートメーション Webhook を呼び出すだけでなく、その他の処理も行います。
+Logic Apps は、プロセスをワークフローとして構築、スケジューリング、自動化し、企業や組織の間でアプリ、データ、システム、サービスを統合する際に役立つサービスです。 このシナリオで作成する[ロジック アプリ](../../logic-apps/index.yml)は、作成したオートメーション Webhook を呼び出すだけでなく、その他の処理も行います。
 
 指定したしきい値に達したときに通知をトリガーするように、予算を設定することができます。 複数のしきい値を指定して、それぞれに達したときに通知を受け取るようにしたい場合に、ロジック アプリを利用すると、到達したしきい値に基づいて異なるアクションを実行することができます。 この例でのシナリオでは、複数の種類の通知を受け取ります。最初の通知は予算の 80% に達したとき、2 つ目の通知は予算の 100% に達したときに受け取ります。 ロジック アプリを使用して、リソース グループ内のすべての VM をシャットダウンします。 まず、**Optional** しきい値である 80% に達します。その後で、2 つ目のしきい値に達すると、サブスクリプション内のすべての VM がシャットダウンされます。
 
@@ -122,11 +122,11 @@ Logic Apps は、プロセスをワークフローとして構築、スケジュ
 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。 アクションとは、トリガーの後に発生するステップすべてを指します。
 
 1. **[Logic Apps デザイナー]** 領域の **[テンプレート]** で、 **[空のロジック アプリ]** を選択します。
-1. [トリガー](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を追加するために、**Logic Apps デザイナー**の検索ボックスに「http 要求」と入力して、 **[要求 - HTTP 要求の受信時]** という名前のトリガーを見つけて選択します。  
+1. [トリガー](../../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加するために、**Logic Apps デザイナー**の検索ボックスに「http 要求」と入力して、 **[要求 - HTTP 要求の受信時]** という名前のトリガーを見つけて選択します。  
     ![Azure - ロジック アプリ - Http トリガー](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。  
     ![Azure - 新しいステップ - アクションの追加](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. **Logic Apps デザイナー**の検索ボックスに「JSON の解析」と入力して検索し、 **[データ操作] - [JSON の解析]** [アクション](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を見つけて選択します。  
+1. **Logic Apps デザイナー**の検索ボックスに「JSON の解析」と入力して検索し、 **[データ操作] - [JSON の解析]** [アクション](../../logic-apps/logic-apps-overview.md#logic-app-concepts)を見つけて選択します。  
     ![Azure - ロジック アプリ -JSON の解析アクションの追加](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. 「JSON の解析」ペイロードの**コンテンツ**名として「Payload」と入力とするか、動的なコンテンツから "Body" タグを使用します。
 1. **[JSON の解析]** ボックスで **[サンプルのペイロードを使用してスキーマを生成する]** オプションを選択します。  
@@ -311,7 +311,7 @@ Cost Management の[予算機能](../costs/tutorial-acm-create-budgets.md)を使
     ```
 1. **[Send]** をクリックして要求を送信します。
 
-これで、[budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) を呼び出すために必要なものはすべてそろいました。 budgets API リファレンスには、特定の要求に関する次のような追加の詳細情報が記載されています。
+これで、[budgets API](/rest/api/consumption/budgets) を呼び出すために必要なものはすべてそろいました。 budgets API リファレンスには、特定の要求に関する次のような追加の詳細情報が記載されています。
 
 - **budgetName** - 複数の予算がサポートされています。  予算名は一意である必要があります。
 - **category** - **Cost** と **Usage** のいずれかであることが必要です。 API では、コストと使用の両方の予算がサポートされています。

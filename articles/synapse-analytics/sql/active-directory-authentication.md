@@ -4,16 +4,17 @@ description: Azure Active Directory を使用して SQL Database、Managed Insta
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4f1d955999ce44e8ef3d511d67d6a64c98120b62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a3bd565b26d011e6186cc6957769db57f9cd1c9c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289414"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093414"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 

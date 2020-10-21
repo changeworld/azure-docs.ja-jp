@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972225"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122153"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>患者の継続的なモニタリングのアーキテクチャ
 
@@ -33,11 +33,11 @@ ms.locfileid: "90972225"
 
 ### <a name="mobile-phone-gateway"></a>携帯電話ゲートウェイ
 
-携帯電話アプリケーションの主な機能は、医療機器から BLE データを収集し、それを IoT Central に伝達することです。 また、患者は、このアプリの指示に従ってデバイスのセットアップを行ったり、個人の健康データを閲覧したりします。 ソリューションによっては、タブレット ゲートウェイや、病院の部屋に据え付けられた静的ゲートウェイが使用される場合もあります。 アプリケーション開発作業を開始するための出発点としては、Android および iOS 用のオープンソースのサンプル モバイル アプリケーションを使用できます。 詳細については、[IoT Central CPM (Continuous Patient Monitoring) モバイル アプリ](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)に関するページを参照してください。
+携帯電話アプリケーションの主な機能は、医療機器から BLE データを収集し、それを IoT Central に伝達することです。 また、患者は、このアプリの指示に従ってデバイスのセットアップを行ったり、個人の健康データを閲覧したりします。 ソリューションによっては、タブレット ゲートウェイや、病院の部屋に据え付けられた静的ゲートウェイが使用される場合もあります。 アプリケーション開発作業を開始するための出発点としては、Android および iOS 用のオープンソースのサンプル モバイル アプリケーションを使用できます。 詳細については、[IoT Central CPM (Continuous Patient Monitoring) モバイル アプリ](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)に関するページを参照してください。
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>Azure API for FHIR にエクスポートする&reg;
 
-Azure IoT Central は HIPAA に準拠し、HITRUST&reg; 認定を受けています。 [Azure API for FHIR](../../healthcare-apis/overview.md) を使用して他のサービスに患者の健康データを送信することもできます。 Azure API for FHIR は、臨床医療データを対象とした標準ベースの API です。 [Azure IoT Connector for FHIR](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart) を介すことで、IoT Central からの継続的なデータ エクスポート先として Azure API for FHIR を使用することができます。
+Azure IoT Central は HIPAA に準拠し、HITRUST&reg; 認定を受けています。 [Azure API for FHIR](../../healthcare-apis/overview.md) を使用して他のサービスに患者の健康データを送信することもできます。 Azure API for FHIR は、臨床医療データを対象とした標準ベースの API です。 [Azure IoT Connector for FHIR](../../healthcare-apis/iot-fhir-portal-quickstart.md) を介すことで、IoT Central からの継続的なデータ エクスポート先として Azure API for FHIR を使用することができます。
 
 ### <a name="machine-learning"></a>機械学習
 

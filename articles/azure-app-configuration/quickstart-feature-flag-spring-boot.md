@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 94f3fd9f9c66082beace47d675539e9f73c21e83
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824198"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075537"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -23,7 +23,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* バージョン 8 を含む、サポートされている [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk)。
+* バージョン 8 を含む、サポートされている [Java Development Kit SDK](/java/azure/jdk)。
 * [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-an-app-configuration-instance"></a>App Configuration インスタンスを作成する
@@ -304,7 +304,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して Spring Boot Web アプリの機能を管理しました。
+このクイックスタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)を介して Spring Boot Web アプリの機能を管理しました。
 
 * [機能管理](./concept-feature-management.md)の詳細を確認します。
 * [機能フラグを管理](./manage-feature-flags.md)します。

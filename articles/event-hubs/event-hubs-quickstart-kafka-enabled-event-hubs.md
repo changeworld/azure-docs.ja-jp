@@ -3,12 +3,12 @@ title: クイック スタート:Kafka プロトコルを使用した Azure Even
 description: クイック スタート:この記事では、Kafka のプロトコルおよび API を使用して、Azure Event Hubs にストリーム配信する方法に関する情報を示します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e87d9b1e4a444695d64dc6acfa0e29f7b72e37f2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90061549"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319344"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>クイック スタート:Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング
 このクイックスタートでは、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Event Hubs と通信する方法を説明します。 
@@ -22,7 +22,7 @@ ms.locfileid: "90061549"
 
 * [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関する記事を読む。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-* [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7 以降](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * Maven バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
 * [Git](https://www.git-scm.com/)
 
@@ -103,4 +103,4 @@ ms.locfileid: "90061549"
 Event Hubs Kafka クラスターにイベントがある場合は、コンシューマーからそれらの受信を開始します。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介しました。 詳細については、「[Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)」を参照してください。 
+この記事では、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介しました。 詳細については、「[Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)」を参照してください。

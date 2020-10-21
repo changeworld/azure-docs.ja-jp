@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87439560"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331925"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats (プレビュー) の概要
 
@@ -43,7 +43,7 @@ Datahub は、拡張可能な API プラットフォームとして設計され�
 
 Azure FarmBeats アクセラレータは、Datahub 上に構築されるサンプル Web アプリケーションです。 アクセラレータにより、ユーザー インターフェイスとモデルの開発を即座に開始できます。 Azure FarmBeats アクセラレータでは、Azure FarmBeats の API シリーズを使用します。 アクセラレータは、取り込んだセンサー データをグラフとして視覚化し、モデル出力をマップとして視覚化します。 たとえば、アクセラレータを使用すると、ファームをすばやく作成し、そのファームの植生指数マップやセンサー配置マップを簡単に取得できます。
 
-## <a name="role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC)
 
 管理者は、事前に定義されたロールのいずれかを使用して Azure FarmBeats のアクセス ルールを定義できます。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。 Azure FarmBeats には、ユーザー向けとパートナー向けの 2 種類の役割があります。
 

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360696"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132127"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 
@@ -27,7 +27,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 - **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)または [Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)にサインアップしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。 Microsoft 顧客契約には、最大 20 のサブスクリプションを含めることができます。 詳細については、「[Get started with your billing account for Microsoft Customer Agreement (Microsoft Customer Agreement の請求先アカウントの概要)](../understand/mca-overview.md)」をご覧ください。
 
-- **Microsoft Partner Agreement**: Microsoft Partner Agreement の課金アカウントは、クラウド ソリューション プロバイダー (CSP) パートナーが新しいコマース エクスペリエンスで顧客を管理する目的で作成します。 パートナーが Azure portal で課金アカウントを管理するためには、[Azure プラン](https://docs.microsoft.com/partner-center/purchase-azure-plan)に少なくとも 1 件の顧客が必要です。 詳細については、[Microsoft Partner Agreement の課金アカウントの概要](../understand/mpa-overview.md)に関するページを参照してください。
+- **Microsoft Partner Agreement**: Microsoft Partner Agreement の課金アカウントは、クラウド ソリューション プロバイダー (CSP) パートナーが新しいコマース エクスペリエンスで顧客を管理する目的で作成します。 パートナーが Azure portal で課金アカウントを管理するためには、[Azure プラン](/partner-center/purchase-azure-plan)に少なくとも 1 件の顧客が必要です。 詳細については、[Microsoft Partner Agreement の課金アカウントの概要](../understand/mpa-overview.md)に関するページを参照してください。
 
 請求先アカウントの種類を確認するには、「[請求先アカウントの種類を確認する](#check-the-type-of-your-account)」を参照してください。
 

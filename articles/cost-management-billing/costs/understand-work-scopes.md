@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372359"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132297"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -180,7 +180,7 @@ AWS 統合が完了した後、「[AWS のコストと使用状況レポート�
 
 *グローバル管理者*および*管理エージェント*のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
-Azure Cost Management は、顧客が Microsoft 顧客契約を保持している場合には、CSP パートナーの顧客をサポートします。 Microsoft 顧客契約をまだ結んでいない CSP サポート顧客ついては、[パートナー センター](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)に関するページを参照してください。
+Azure Cost Management は、顧客が Microsoft 顧客契約を保持している場合には、CSP パートナーの顧客をサポートします。 Microsoft 顧客契約をまだ結んでいない CSP サポート顧客ついては、[パートナー センター](/azure/cloud-solution-provider/overview/partner-center-overview)に関するページを参照してください。
 
 CSP スコープの管理グループは、Cost Management ではサポートされません。 CSP サブスクリプションを利用していて、コスト分析でそのスコープを管理グループに設定した場合、次のようなエラーが表示されます。
 
