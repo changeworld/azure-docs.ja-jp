@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448392"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341891"
 ---
 # <a name="using-custom-security-policies"></a>カスタム セキュリティ ポリシーの使用
 
@@ -21,7 +21,7 @@ ms.locfileid: "91448392"
 
 この機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明されている規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
 
-[Azure Policy のドキュメント](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)で説明されているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
+[Azure Policy のドキュメント](../governance/policy/concepts/definition-structure.md#definition-location)で説明されているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>イニシアティブをサブスクリプションに追加するには 
 
@@ -136,7 +136,7 @@ Azure Security Center で提供される組み込みの推奨事項には、重�
 }
   ```
 
-securityCenter プロパティを使用する別の例については、[REST API のドキュメントのこちらのセクション](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)をご覧ください。
+securityCenter プロパティを使用する別の例については、[REST API のドキュメントのこちらのセクション](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -146,4 +146,4 @@ securityCenter プロパティを使用する別の例については、[REST AP
 その他の関連資料については、次の記事を参照してください。 
 
 - [セキュリティ ポリシーの概要](tutorial-security-policy.md)
-- [組み込みのセキュリティ ポリシーの一覧](security-center-policy-definitions.md)
+- [組み込みのセキュリティ ポリシーの一覧](./policy-reference.md)

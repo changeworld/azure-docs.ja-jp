@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でインポートされた CSV ファイ
 description: Azure Migrate Server Assessment でインポートされた CSV ファイルを使用して、Azure への移行のためにオンプレミスのサーバーを検出する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604225"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308385"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>チュートリアル:インポートされた CSV ファイルを使用してサーバーを評価する
 
@@ -203,4 +203,4 @@ Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentO
 
 > [!div class="checklist"]
 > * Azure Migrate プロジェクトを作成しました。 
-> * インポートされた CSV ファイルを使用してサーバーを検出しました。 次に、[VMware VM を Azure VM に移行](tutorial-assess-vmware.md)するための評価を実行します。
+> * インポートされた CSV ファイルを使用してサーバーを検出しました。 次に、[VMware VM を Azure VM に移行](./tutorial-assess-vmware-azure-vm.md)するための評価を実行します。

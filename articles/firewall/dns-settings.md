@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610644"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132008"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall の DNS 設定 (プレビュー)
 
@@ -57,6 +57,7 @@ DNS プロキシを構成するには、ファイアウォールのプライベ�
 3. **[DNS サーバー]** で、 **[カスタム]** を選択します。
 4. ファイアウォールのプライベート IP アドレスを入力します。
 5. **[保存]** を選択します。
+6. 新しい DNS サーバー設定が割り当てられるように、仮想ネットワークに接続されている VM を再起動します。 再起動されるまで、VM は現在の DNS 設定を使用し続けます。
 
 #### <a name="enable-dns-proxy-preview"></a>DNS プロキシを有効にする (プレビュー)
 

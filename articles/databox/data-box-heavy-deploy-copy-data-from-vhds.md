@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951436"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127201"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box Heavy を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -38,7 +38,7 @@ ms.locfileid: "91951436"
 4. 次の事項を確認済みであること。
 
     - [「Azure オブジェクトのサイズ制限」のマネージド ディスク サイズ](data-box-heavy-limits.md#azure-object-size-limits)のサポート状況。
-    - [Azure マネージド ディスクの概要](/azure/virtual-machines/windows/managed-disks-overview)。 
+    - [Azure マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)。 
 
 ## <a name="connect-to-data-box-heavy"></a>Data Box Heavy に接続する
 
@@ -182,4 +182,3 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Heavy を Microsoft に発送する](./data-box-heavy-deploy-picked-up.md)
-

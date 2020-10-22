@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92dd191c8bfe590f6dab392ff679e5d7712ae6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921094"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143847"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -35,7 +35,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 サービス プロバイダーの管理者は、次の 2 つの方法で、顧客のテナントにある Log Analytics ワークスペースにアクセスできます。
 
-- 顧客は、サービス プロバイダーから個々のユーザーを [Azure Active Directory のゲスト ユーザー (B2B)](../../active-directory/b2b/what-is-b2b.md) として追加できます。 サービス プロバイダーの管理者は、これらのワークスペースにアクセスするために、Azure portal 内の各顧客のディレクトリにサインインする必要があります。 そのためには、顧客がサービス プロバイダーの管理者ごとに個別のアクセスを管理する必要もあります。
+- 顧客は、サービス プロバイダーから個々のユーザーを [Azure Active Directory のゲスト ユーザー (B2B)](../../active-directory/external-identities/what-is-b2b.md) として追加できます。 サービス プロバイダーの管理者は、これらのワークスペースにアクセスするために、Azure portal 内の各顧客のディレクトリにサインインする必要があります。 そのためには、顧客がサービス プロバイダーの管理者ごとに個別のアクセスを管理する必要もあります。
 - スケーラビリティと柔軟性を高めるために、サービス プロバイダーは [Azure Lighthouse](../../lighthouse/overview.md) の [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)機能を使用して、顧客のテナントにアクセスできます。 この方法では、サービス プロバイダーの管理者はサービス プロバイダーのテナント内の Azure AD ユーザー グループに含まれます。このグループには、各顧客のオンボード プロセス中にアクセス権が付与されます。 これらの管理者はその後、各顧客のテナントに個別にログインするのではなく、独自のサービス プロバイダーのテナント内から各顧客のワークスペースにアクセスできます。 この方法で顧客の Log Analytics ワークスペースのリソースにアクセスすると、顧客側で必要な作業が減り、同じサービス プロバイダーで管理されている複数の顧客を対象にしたデータの収集および分析が [Azure Monitor ブック](./workbooks-overview.md)などのツールで簡単に行えるようになります。 詳細については、[顧客のリソースの大規模な監視](../../lighthouse/how-to/monitor-at-scale.md)に関する記事をご覧ください。
 
 分散アーキテクチャの利点は次のとおりです。
@@ -81,7 +81,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Resource Manager テンプレート](template-workspace-configuration.md)を使用してワークスペースの作成および構成を自動化する
+* [Resource Manager テンプレート](../samples/resource-manager-workspace.md)を使用してワークスペースの作成および構成を自動化する
 
 * [PowerShell](./powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する
 

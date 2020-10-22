@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946224"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341264"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
@@ -30,7 +30,7 @@ ID に関連するアクティビティと構成を監視することで、イ�
 
 Azure Security Center には、組織の ID とセキュリティの要件を確実に満たすための 2 つの専用のセキュリティ コントロールがあります。 
 
- - **アクセスとアクセス許可の管理** - [最小特権アクセス モデル](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)を採用し、ユーザーが各自の仕事を遂行するために必要なアクセス許可のみを付与することをお勧めします。 このコントロールには、リソースへのアクセスを制御するための[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を実装するための推奨事項も含まれます。
+ - **アクセスとアクセス許可の管理** - [最小特権アクセス モデル](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)を採用し、ユーザーが各自の仕事を遂行するために必要なアクセス許可のみを付与することをお勧めします。 このコントロールには、リソースへのアクセスを制御するための[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を実装するための推奨事項も含まれます。
  
  - **MFA の有効化** - [MFA](https://www.microsoft.com/security/business/identity/mfa) を有効にすると、アカウントのセキュリティが強化され、しかもユーザーはそれまでと同様、シングル サインオンでほとんどすべてのアプリケーションに対して認証を行うことができます。
 
@@ -84,7 +84,7 @@ MFA が有効になっていないアカウントを確認するには、次の 
     > アカウントは、アカウント所有者のプライバシーを保護するために、アカウント名ではなくオブジェクト ID として表示されます。
 
 > [!TIP]
-> 別の方法として、Security Center の REST API メソッド [Assessments - Get](https://docs.microsoft.com/rest/api/securitycenter/assessments/get) を使用できます。
+> 別の方法として、Security Center の REST API メソッド [Assessments - Get](/rest/api/securitycenter/assessments/get) を使用できます。
 
 
 ## <a name="next-steps"></a>次の手順

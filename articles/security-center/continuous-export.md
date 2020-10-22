@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ffc74e05d6cbe7722b9bf293c1a1e75a7de1b879
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945289"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342061"
 ---
 # <a name="continuously-export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項を連続的にエクスポートする
 
@@ -80,7 +80,7 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>REST API を使用して連続エクスポートを構成する
 
-連続エクスポートは、Azure Security Center の[自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の可能な宛先のいずれかにエクスポートするためのルールを作成または更新します。
+連続エクスポートは、Azure Security Center の[自動化 API](/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の可能な宛先のいずれかにエクスポートするためのルールを作成または更新します。
 
 - Azure Event Hub
 - Log Analytics ワークスペース
@@ -97,7 +97,7 @@ API には、Azure portal からは使用できない追加の機能が用意さ
     > [!TIP]
     > API を使用して複数のエクスポート構成を設定した場合や、API のみのパラメーターを使用した場合、それらの追加機能は Security Center UI に表示されません。 代わりに、他の構成が存在することを通知するバナーが表示されます。
 
-自動化 API の詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/securitycenter/automations)を参照してください。
+自動化 API の詳細については、[REST API のドキュメント](/rest/api/securitycenter/automations)を参照してください。
 
 
 
@@ -163,7 +163,7 @@ Azure Security Center のデータを Log Analytics ワークスペースの内�
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>エクスポートされたアラートと推奨事項を Azure Monitor で表示する
 
-場合によっては、エクスポートされたセキュリティ アラートや推奨事項を [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) で表示することもできます。 
+場合によっては、エクスポートされたセキュリティ アラートや推奨事項を [Azure Monitor](../azure-monitor/platform/alerts-overview.md) で表示することもできます。 
 
 Azure Monitor は、診断ログ、メトリック アラート、および Log Analytics ワークスペース クエリに基づくカスタム アラートなど、さまざまな Azure アラートの統合されたアラート エクスペリエンスを提供します。
 
@@ -173,13 +173,13 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
     ![Azure Monitor の [アラート] ページ](./media/continuous-export/azure-monitor-alerts.png)
 
-1. ルールの作成ページで、([Azure Monitor でログ アラート ルール](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)を構成するのと同じ方法で) 新しいルールを構成します。
+1. ルールの作成ページで、([Azure Monitor でログ アラート ルール](../azure-monitor/platform/alerts-unified-log.md)を構成するのと同じ方法で) 新しいルールを構成します。
 
     * **[リソース]** には、セキュリティ アラートと推奨事項のエクスポート先の Log Analytics ワークスペースを選択します。
 
     * **[条件]** には、 **[Custom log search]\(カスタム ログ検索\)** を選択します。 表示されたページで、クエリ、ルックバック期間、および頻度の期間を構成します。 検索クエリでは、「*SecurityAlert*」または「*Securityalert*」と入力して、Log Analytics への連続エクスポート機能を有効にしたときに Security Center が連続してエクスポートするデータ型に対してクエリを実行できます。 
     
-    * 必要に応じて、トリガーする[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)を構成します。 アクション グループは、メール送信、ITSM チケット、Webhook などをトリガーできます。
+    * 必要に応じて、トリガーする[アクション グループ](../azure-monitor/platform/action-groups.md)を構成します。 アクション グループは、メール送信、ITSM チケット、Webhook などをトリガーできます。
     ![Azure Monitor のアラート ルール](./media/continuous-export/azure-monitor-alert-rule.png)
 
 これで、アクション グループの自動トリガーが設定された (指定されている場合)、新しい Azure Security Center アラートまたは推奨事項 (構成されている連続エクスポート ルールと Azure Monitor アラート ルールに定義されている条件によって決まります) が Azure Monitor アラートに表示されるようになります。
@@ -214,7 +214,7 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 関連資料については、次のドキュメントを参照してください。 
 
 - [ワークフローの自動化テンプレート](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)の詳細を確認します。
-- [Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)
-- [Azure Sentinel のドキュメント](https://docs.microsoft.com/azure/sentinel/)
-- [Azure Monitor のドキュメント](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure Event Hubs のドキュメント](../event-hubs/index.yml)
+- [Azure Sentinel のドキュメント](../sentinel/index.yml)
+- [Azure Monitor のドキュメント](../azure-monitor/index.yml)
 - [データ型スキーマをエクスポートする](https://aka.ms/ASCAutomationSchemas)

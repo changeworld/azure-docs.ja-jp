@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532603"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342078"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -29,7 +29,7 @@ ms.locfileid: "91532603"
 |リリース状態:|一般提供 (GA)|
 |価格:|**コンテナー レジストリ用の Azure Defender** の課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
 |サポートされているレジストリとイメージ:|![はい](./media/icons/yes-icon.png) パブリック インターネットからアクセスでき、シェル アクセスを提供する、Linux でホストされている ACR レジストリ。<br>![いいえ](./media/icons/no-icon.png) Windows でホストされている ACR レジストリ。<br>![いいえ](./media/icons/no-icon.png) 'プライベート' レジストリ - パブリック インターネットからこのレジストリにアクセスできることが Security Center によって求められます。 現在、ファイアウォール、サービス エンドポイント、または Azure Private Link などのプライベート エンドポイントによってアクセスが制限されたレジストリへの接続、このようなレジストリのスキャンは、Security Center ではサポートされていません。<br>![いいえ](./media/icons/no-icon.png) [Docker スクラッチ](https://hub.docker.com/_/scratch/) イメージのようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、OS は含まれない "ディストリビューションレス" イメージ。|
-|必要なロールとアクセス許可:|**セキュリティ閲覧者**と [Azure Container Registry 閲覧者ロール](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|必要なロールとアクセス許可:|**セキュリティ閲覧者**と [Azure Container Registry 閲覧者ロール](../container-registry/container-registry-roles.md)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
