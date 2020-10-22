@@ -9,18 +9,18 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 77327689911a0fc36df14f69ef4d48e5cb120375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 832147fd06dbc7439500b911efbbde6d9b1d81fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067758"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123064"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で IoT Central アプリケーションを作成および管理するのではなく、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) を使用してアプリケーションを管理できます。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で IoT Central アプリケーションを作成および管理するのではなく、[Azure PowerShell](/powershell/azure/) を使用してアプリケーションを管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,14 +28,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-ローカル コンピューターで Azure PowerShell を実行する場合は、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。 Azure PowerShell をローカルで実行する場合は、この記事のコマンドレットを試す前に、**Connect-AzAccount** コマンドレットを使用して Azure にサインインします。
+ローカル コンピューターで Azure PowerShell を実行する場合は、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-az-ps)」を参照してください。 Azure PowerShell をローカルで実行する場合は、この記事のコマンドレットを試す前に、**Connect-AzAccount** コマンドレットを使用して Azure にサインインします。
 
 > [!TIP]
 > PowerShell コマンドを別の Azure サブスクリプションで実行する必要がある場合は、「[アクティブなサブスクリプションを変更する](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription)」を参照してください。
 
 ## <a name="install-the-iot-central-module"></a>IoT Central モジュールのインストール
 
-次のコマンドを実行して、[IoT Central モジュール](https://docs.microsoft.com/powershell/module/az.iotcentral/)がお使いの PowerShell 環境にインストールされていることを確認します。
+次のコマンドを実行して、[IoT Central モジュール](/powershell/module/az.iotcentral/)がお使いの PowerShell 環境にインストールされていることを確認します。
 
 ```powershell
 Get-InstalledModule -name Az.I*
@@ -49,7 +49,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-[New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) コマンドレットを使用して、Azure サブスクリプションで IoT Central アプリケーションを作成します。 次に例を示します。
+[New-AzIotCentralApp](/powershell/module/az.iotcentral/New-AzIotCentralApp) コマンドレットを使用して、Azure サブスクリプションで IoT Central アプリケーションを作成します。 次に例を示します。
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -81,11 +81,11 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central アプリケーションの表示
 
-[Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) コマンドレットを使用して、IoT Central アプリケーションを一覧表示し、メタデータを表示します。
+[Get-AzIotCentralApp](/powershell/module/az.iotcentral/Get-AzIotCentralApp) コマンドレットを使用して、IoT Central アプリケーションを一覧表示し、メタデータを表示します。
 
 ## <a name="modify-an-application"></a>アプリケーションの変更
 
-[Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) コマンドレットを使用して、IoT Central アプリケーションのメタデータを更新します。 アプリケーションの表示名を変更する場合の例を次に示します。
+[Set-AzIotCentralApp](/powershell/module/az.iotcentral/set-aziotcentralapp) コマンドレットを使用して、IoT Central アプリケーションのメタデータを更新します。 アプリケーションの表示名を変更する場合の例を次に示します。
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -95,7 +95,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>アプリケーションの削除
 
-[Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) コマンドレットを使用して、IoT Central アプリケーションを削除します。 次に例を示します。
+[Remove-AzIotCentralApp](/powershell/module/az.iotcentral/Remove-AzIotCentralApp) コマンドレットを使用して、IoT Central アプリケーションを削除します。 次に例を示します。
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

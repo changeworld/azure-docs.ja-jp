@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77560222"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127150"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>チュートリアル:データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする (プレビュー)
 
@@ -64,7 +64,7 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
     |**コピー先ストレージ アカウント**    |データのアップロード先となるターゲット ストレージ アカウントを一覧から選択します。         |
     |**送信先の種類**       |ターゲット ストレージの種類を一覧から選択します。 **[ブロック BLOB]** 、 **[ページ BLOB]** 、または **[Azure ファイル]** です。        |
     |**コピー先コンテナー/共有**    |自分のコピー先ストレージ アカウントにおけるデータのアップロード先にしたいコンテナーまたは共有の名前を入力します。 この名前には、共有名またはコンテナー名を使用できます。 たとえば、`myshare` または `mycontainer` を使用します。 `sharename\directory_name` または `containername\virtual_directory_name` の形式で名前を入力することもできます。        |
-    |**パターンに一致するファイルのコピー**    | 次の 2 つの方法でファイル名の一致パターンを入力できます。<ul><li>**ワイルドカード式を使用:** ワイルドカード式でサポートされるのは `*` と `?` だけです。 たとえば、`*.vhd` という式は、拡張子が `.vhd` であるすべてのファイルと一致します。 同様に、`*.dl?` は、拡張詞が `.dl` であるか、または `.dl` で始まる (`.dll` など) すべてのファイルと一致します。 さらに、`*foo` は、名前が `foo` で終わるすべてのファイルと一致します。<br>ワイルドカード式はフィールドに直接入力することができます。 フィールドに入力する値は、既定でワイルドカード式として扱われます。</li><li>**正規表現を使用:** POSIX ベースの正規表現がサポートされます。 たとえば、正規表現 `.*\.vhd` は、拡張子が `.vhd` であるすべてのファイルと一致します。 正規表現には、`<pattern>` を直接 `regex(<pattern>)` として指定します。 正規表現の詳細については、[正規表現言語のクイック リファレンス](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)を参照してください。</li><ul>|
+    |**パターンに一致するファイルのコピー**    | 次の 2 つの方法でファイル名の一致パターンを入力できます。<ul><li>**ワイルドカード式を使用:** ワイルドカード式でサポートされるのは `*` と `?` だけです。 たとえば、`*.vhd` という式は、拡張子が `.vhd` であるすべてのファイルと一致します。 同様に、`*.dl?` は、拡張詞が `.dl` であるか、または `.dl` で始まる (`.dll` など) すべてのファイルと一致します。 さらに、`*foo` は、名前が `foo` で終わるすべてのファイルと一致します。<br>ワイルドカード式はフィールドに直接入力することができます。 フィールドに入力する値は、既定でワイルドカード式として扱われます。</li><li>**正規表現を使用:** POSIX ベースの正規表現がサポートされます。 たとえば、正規表現 `.*\.vhd` は、拡張子が `.vhd` であるすべてのファイルと一致します。 正規表現には、`<pattern>` を直接 `regex(<pattern>)` として指定します。 正規表現の詳細については、[正規表現言語のクイック リファレンス](/dotnet/standard/base-types/regular-expression-language-quick-reference)を参照してください。</li><ul>|
     |**ファイルの最適化**              |この機能が有効な場合、1 MB 未満のファイルがインジェスト中に圧縮されます。 この圧縮により、小さなファイルのデータをより高速にコピーできるようになります。 さらに、ファイル数がディレクトリ数を大幅に超えている場合は、時間が大幅に節約されます。        |
  
 4. **[スタート]** を選択します。 入力が検証され、検証が成功した場合にジョブが開始されます。 ジョブが開始されるまでに､数分かかる場合があります。
@@ -147,4 +147,3 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Heavy デバイスを Microsoft に発送する](./data-box-heavy-deploy-picked-up.md)
-

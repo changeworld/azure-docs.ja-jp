@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957462"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107472"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -75,7 +75,7 @@ Arnold 2017 コマンド ライン|kick.exe|ARNOLD_2017_EXEC|
 
 他のワークロードと同様に、レンダリング アプリケーションのシステム要件はさまざまで、ジョブとプロジェクトによってパフォーマンス要件は異なります。  Azure では、最小のコスト、価格とパフォーマンスの最適なバランス、最高のパフォーマンスなど、ユーザーの要件に応じて各種 VM ファミリを利用できます。
 Arnold などの一部のレンダリング アプリケーションは CPU ベースです。V-Ray や Blender Cycles は CPU か GPU、またはその両方を使用する場合があります。
-利用可能な VM ファミリと VM のサイズについて詳しくは、「[VM の種類とサイズ](../virtual-machines/windows/sizes.md)」をご覧ください。
+利用可能な VM ファミリと VM のサイズについて詳しくは、「[VM の種類とサイズ](../virtual-machines/sizes.md)」をご覧ください。
 
 ### <a name="low-priority-vms"></a>優先順位の低い VM
 

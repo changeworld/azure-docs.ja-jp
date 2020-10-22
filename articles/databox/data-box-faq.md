@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b65d1be9fa3ddb28a216d51e91ce2a8b20f15e6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051170"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127184"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -236,8 +236,8 @@ A.  データを Data Box にコピーする場合、そのデータがブロッ
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
 A.  コンテナー名に大文字が使われている場合、それらの名前は自動的に小文字へと変換されます。 名前が他の方式に準拠していない場合 (特殊文字やその他の言語など)、アップロードは失敗します。 共有、コンテナー、ファイルの名前付けに関するベスト プラクティスの詳細については、次を参照してください。
-- [Naming and referencing shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
-- [ブロック BLOB とページ BLOB の規則](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
+- [Naming and referencing shares](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
+- [ブロック BLOB とページ BLOB の規則](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Q. Data Box にコピーしたデータを検証する方法を教えてください。
 A.  データのコピーが完了したら、 **[配送の準備]** を実行すると、データが検証されます。 Data Box は、検証の処理中にファイルのリストとデータのチェックサムを生成します。 ファイルのリストをダウンロードすれば、ソース データ内のファイルに対してリストを検証できます。 詳細については、「[配送の準備](data-box-deploy-picked-up.md#prepare-to-ship)」を参照してください。

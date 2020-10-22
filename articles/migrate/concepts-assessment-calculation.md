@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment での Azure VM の評価
 description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275525"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319310"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>サーバー評価の概要 (Azure VM への移行)
 
@@ -54,7 +54,7 @@ Server Assessment を使用して作成した評価は、特定の時点のデ�
 
 アプライアンスによるマシンの検出が開始されたら、評価するマシンをグループにまとめて、評価の種類 **Azure VM** でそのグループに対する評価を実行できます。
 
-[VMware](tutorial-prepare-vmware.md)、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)向けのチュートリアルに従って、これらの手順を試すことができます。
+[VMware](./tutorial-discover-vmware.md)、[Hyper-V](./tutorial-discover-hyper-v.md)、または[物理サーバー](./tutorial-discover-physical.md)向けのチュートリアルに従って、これらの手順を試すことができます。
 
 ## <a name="how-do-i-assess-with-imported-data"></a>インポートされたデータを使用して評価する方法
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 および全 SP | Azure は完全サポートを提供し
 Windows Server 2012 および全 SP | Azure は完全サポートを提供します。 | Azure に対応。
 Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供します。| Azure に対応。
 Windows Server 2008 (32 ビットおよび 64 ビット) | Azure は完全サポートを提供します。 | Azure に対応。
-Windows Server 2003 および Windows Server 2003 R2 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。 | Azure に条件付きで対応。 Azure に移行する前に OS のアップグレードを検討してください。
+Windows Server 2003 および Windows Server 2003 R2 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) が必要です。 | Azure に条件付きで対応。 Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1、MS-DOS | これらのオペレーティング システムは、サポート終了日を過ぎています。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に OS をアップグレードすることをお勧めします。
 Windows 7、Windows 8、Windows 10 | Azure は、[Visual Studio サブスクリプションにのみ](../virtual-machines/windows/client-images.md)サポートを提供します。 | Azure に条件付きで対応。
 Windows 10 Pro | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応。
@@ -297,6 +297,6 @@ Azure Migrate でのパフォーマンスベースの Azure VM の各評価に�
 
 評価作成のベストプラクティスを[確認](best-practices-assessment.md)します。 
 
-- [VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md)、[物理サーバー](tutorial-prepare-physical.md)の評価を実行する方法について説明します。
-- [CSV ファイルでインポート](tutorial-assess-import.md)されたサーバーを評価する方法について説明します。
+- [VMware VM](./tutorial-discover-vmware.md)、[Hyper-V VM](./tutorial-discover-hyper-v.md)、[物理サーバー](./tutorial-discover-physical.md)の評価を実行する方法について説明します。
+- [CSV ファイルでインポート](./tutorial-discover-import.md)されたサーバーを評価する方法について説明します。
 - [依存関係の視覚化](concepts-dependency-visualization.md)について説明します。

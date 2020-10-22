@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322399"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108407"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor では、[System Center Operations Manager、Zabbix、Nagios などの監視ツール](https://aka.ms/managing-alerts-other-monitoring-services)で生成されたアラートを含め、[アラートを大規模に管理する](https://aka.ms/azure-alerts-overview)ための強化機能がサポートされるようになりました。
+>  Azure Monitor では、[System Center Operations Manager、Zabbix、Nagios などの監視ツール](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json)で生成されたアラートを含め、[アラートを大規模に管理する](./alerts-overview.md)ための強化機能がサポートされるようになりました。
 >  
 
 
@@ -120,4 +120,3 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](./alerts-overview.md) に関するページを参照してください。
-

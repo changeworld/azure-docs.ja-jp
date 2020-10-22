@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570007"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320225"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL Hyperscale サーバー グループのトラブルシューティング
 この記事では、サーバー グループのトラブルシューティングに使用できるいくつかの手法について説明します。 この記事に加えて、[Kibana](monitor-grafana-kibana.md) を使用してログを検索する方法や、[Grafana](monitor-grafana-kibana.md) を使用してサーバー グループに関するメトリックを視覚化する方法についても必要になる場合があります。 
@@ -51,13 +51,13 @@ azdata arc postgres server create --help
 
 ### <a name="install-tools"></a>ツールをインストールする
 
-Azure Data Studio でノートブックを実行するために使用しているクライアント コンピューターに、Azure Data Studio、`kubectl`、および `azdata` をインストールします。 これを行うには、[クライアント ツールのインストール](install-client-tools.md)に関する手順に従ってください。
+Azure Data Studio でノートブックを実行するために使用しているクライアント コンピューターに、Azure Data Studio、`kubectl`、および [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] をインストールします。 これを行うには、[クライアント ツールのインストール](install-client-tools.md)に関する手順に従ってください。
 
 ### <a name="update-the-path-environment-variable"></a>PATH 環境変数を更新する
 
 これらのツールをこのクライアント コンピューターの任意の場所から呼び出すことができることを確認します。 たとえば、Windows クライアント コンピューターで PATH システム環境変数を更新し、kubectl をインストールしたフォルダーを追加します。
 
-### <a name="sign-in-with-azdata"></a>`azdata` でサインインする
+### <a name="sign-in-with-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] でサインインする
 
 Azure Data Studio を起動する前に、このクライアント コンピューターから Arc データ コントローラーにサインインします。 これを行うには、次のようにコマンドを実行します。
 

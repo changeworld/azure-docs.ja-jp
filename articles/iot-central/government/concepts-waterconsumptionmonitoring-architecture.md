@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3a64ca5b0c2a092f895873e097ea6beb9a235a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57dfec33beef6a9b5a6a3cd8edc43cae32d62e33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77017702"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123013"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>水消費量監視の参照アーキテクチャ 
 
@@ -34,7 +34,7 @@ ms.locfileid: "77017702"
 ## <a name="devices-and-connectivity"></a>デバイスと接続 
 このセクションでは、水質の監視や水消費量の監視など、スマート ウォーター ソリューションに使用されるデバイスを、総称してスマート ウォーター デバイスと呼びます。 スマート ウォーター デバイスには、流量計、水質モニター、スマート バルブ、漏れ検出器などがあります。
 
-スマート ウォーター ソリューションで使用されるデバイスは、一般的にサードパーティのネットワーク オペレーターを通じて省電力広域ネットワーク (LPWAN) を介して接続されます。 これらの種類のデバイスについては、[Azure IoT Central デバイス ブリッジ](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)を使用して、Azure IoT Central の IoT アプリケーションにご自分のデバイス データを送信することができます。 または、IP 対応で IoT Central に直接接続することができるデバイス ゲートウェイを使用することもできます。
+スマート ウォーター ソリューションで使用されるデバイスは、一般的にサードパーティのネットワーク オペレーターを通じて省電力広域ネットワーク (LPWAN) を介して接続されます。 これらの種類のデバイスについては、[Azure IoT Central デバイス ブリッジ](../core/howto-build-iotc-device-bridge.md)を使用して、Azure IoT Central の IoT アプリケーションにご自分のデバイス データを送信することができます。 または、IP 対応で IoT Central に直接接続することができるデバイス ゲートウェイを使用することもできます。
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central は、IoT ソリューションを迅速に起動して実行できる IoT アプリ プラットフォームです。 サードパーティのサービスを使用して、ソリューションをブランド化、カスタマイズ、統合することができます。
@@ -54,4 +54,4 @@ IoT データを使用して、水道施設内でさまざまな種類のビジ�
 ## <a name="next-steps"></a>次のステップ
 * [水消費量の IoT Central アプリケーションを作成する](./tutorial-water-consumption-monitoring.md)方法を学習する
 * [IoT Central 政府機関テンプレート](./overview-iot-central-government.md)の詳細を学習する
-* IoT Central の詳細については、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)に関する記事を参照してください
+* IoT Central の詳細については、[IoT Central の概要](../core/overview-iot-central.md)に関する記事を参照してください

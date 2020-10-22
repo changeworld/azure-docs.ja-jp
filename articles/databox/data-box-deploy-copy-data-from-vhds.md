@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739869"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124015"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -38,7 +38,7 @@ ms.locfileid: "91739869"
 4. 次の事項を確認済みであること。
 
     - [「Azure オブジェクトのサイズ制限」のマネージド ディスク サイズ](data-box-limits.md#azure-object-size-limits)のサポート状況。
-    - [Azure マネージド ディスクの概要](/azure/virtual-machines/windows/managed-disks-overview)。 
+    - [Azure マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)。 
 
 5. Data Box によって Azure Storage にデータが転送されたことを確認するまでソース データのコピーを保持していること。
 
@@ -183,4 +183,3 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に発送する](./data-box-deploy-picked-up.md)
-

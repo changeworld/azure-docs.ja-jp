@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167608"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278183"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Cassandra API についてよく寄せられる質問
 
@@ -79,11 +79,11 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>プライマリ キーは、Azure Cosmos DB のパーティション キーの概念と対応していますか?
 
-はい。パーティション キーは、適切な場所にエンティティを配置するために使用されます。 Azure Cosmos DB では、物理パーティションに格納されている適切な論理パーティションを見つけるために使用されます。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。 ここで重要な点は、論理パーティションは 20 GB の制限を超えないようにすることです。
+はい。パーティション キーは、適切な場所にエンティティを配置するために使用されます。 Azure Cosmos DB では、物理パーティションに格納されている適切な論理パーティションを見つけるために使用されます。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)」の記事でわかりやすく説明されています。 ここで重要な点は、論理パーティションは 20 GB の制限を超えないようにすることです。
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>パーティションがいっぱいになったという通知が表示された場合はどうなりますか?
 
-Azure Cosmos DB はサービス レベル アグリーメント (SLA) に基づくシステムです。 待機時間、スループット、可用性、一貫性が保証され、無制限のスケールが提供されます。 この無制限のストレージは、主要な概念としてパーティション分割を使用し、データの水平スケールアウトに基づいています。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
+Azure Cosmos DB はサービス レベル アグリーメント (SLA) に基づくシステムです。 待機時間、スループット、可用性、一貫性が保証され、無制限のスケールが提供されます。 この無制限のストレージは、主要な概念としてパーティション分割を使用し、データの水平スケールアウトに基づいています。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)」の記事でわかりやすく説明されています。
 
 論理パーティションあたりのエンティティ数または項目数に関する 20 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (20 GB を超える) データが偏っている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択すると、データの分散が改善されます。
 

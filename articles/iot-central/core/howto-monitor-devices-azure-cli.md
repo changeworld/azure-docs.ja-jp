@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015978"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122962"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
@@ -22,11 +22,11 @@ ms.locfileid: "90015978"
 
 Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に送信されるメッセージを確認し、デバイス ツインでの変更を観察します。 このツールを使用し、デバイスの接続状態をデバッグし、観察し、クラウドに達しないデバイス メッセージの問題や、ツイン変更に応答しないデバイスの問題を診断できます。
 
-[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>前提条件
 
-+ Azure CLI がインストールされており、バージョンが 2.7.0 以降であること。 `az --version` を実行し、Azure CLI のバージョンを確認してください。 インストールと更新の方法は [Azure CLI ドキュメント](https://docs.microsoft.com/cli/azure/install-azure-cli)でご確認いただけます。
++ Azure CLI がインストールされており、バージョンが 2.7.0 以降であること。 `az --version` を実行し、Azure CLI のバージョンを確認してください。 インストールと更新の方法は [Azure CLI ドキュメント](/cli/azure/install-azure-cli)でご確認いただけます。
 + Azure の職場または学校アカウント。IoT Central アプリケーションにユーザーとして追加されます。
 
 ## <a name="install-the-iot-central-extension"></a>IoT Central 拡張機能をインストールする

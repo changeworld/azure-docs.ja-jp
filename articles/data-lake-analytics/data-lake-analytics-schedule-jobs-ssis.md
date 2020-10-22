@@ -1,19 +1,16 @@
 ---
 title: SSIS を使用した Azure Data Lake Analytics U-SQL ジョブのスケジュール設定
 description: SQL Server Integration Services を使用し、インライン スクリプトで、あるいは U-SQL クエリ ファイルから U-SQL ジョブのスケジュールを設定する方法について説明します。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318706"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221453"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -21,16 +18,16 @@ ms.locfileid: "91318706"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Integration Services 用の Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) では、[Azure Data Lake Analytics タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)と、Azure Data Lake Analytics サービスへの接続に役立つ[ Azure Data Lake Analytics 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)が提供されています。 このタスクを使用するには、以下がインストールされていることを確認します。
+[Integration Services 用の Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud) では、[Azure Data Lake Analytics タスク](/sql/integration-services/control-flow/azure-data-lake-analytics-task)と、Azure Data Lake Analytics サービスへの接続に役立つ[ Azure Data Lake Analytics 接続マネージャー](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager)が提供されています。 このタスクを使用するには、以下がインストールされていることを確認します。
 
-- [Visual Studio の SQL Server Data Tools (SSDT) をダウンロードし、インストールする](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
-- [Integration Services (SSIS) 用の Azure Feature Pack のインストール](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
+- [Visual Studio の SQL Server Data Tools (SSDT) をダウンロードし、インストールする](/sql/ssdt/download-sql-server-data-tools-ssdt)
+- [Integration Services (SSIS) 用の Azure Feature Pack のインストール](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)
 
 ## <a name="azure-data-lake-analytics-task"></a>Azure Data Lake Analytics タスク
 
 Azure Data Lake Analytics タスクにより、ユーザーは Azure Data Lake Analytics アカウントに U-SQL ジョブを送信することができます。 
 
-Azure Data Lake Analytics タスクの構成方法については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)を参照してください。
+Azure Data Lake Analytics タスクの構成方法については、[こちら](/sql/integration-services/control-flow/azure-data-lake-analytics-task)を参照してください。
 
 ![SSIS での Azure Data Lake Analytics タスク](./media/data-lake-analytics-schedule-jobs-ssis/data-lake-analytics-azure-data-lake-analytics-task-in-ssis.png)
 
@@ -61,13 +58,13 @@ SSIS パッケージのデザイン ビューで、**Azure Data Lake Store フ�
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store ファイル システム タスクを構成する
 
 1. **[操作]** を **[CopyFromADLS]** に設定します。
-2. **[AzureDataLakeConnection]** を設定します。Azure Data Lake Store 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)を参照してください。
+2. **[AzureDataLakeConnection]** を設定します。Azure Data Lake Store 接続マネージャーの詳細については、[こちら](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)を参照してください。
 3. **[AzureDataLakeDirectory]** を設定します。 U-SQL スクリプトが格納されているフォルダーをポイントします。 Azure Data Lake Store アカウントのルート フォルダーからの相対パスを使用します。
 4. **[展開先]** を、ダウンロードした U-SQL スクリプトをキャッシュするフォルダーに設定します。 このフォルダー パスは、U-SQL ジョブを送信するために Foreach ループ コンテナーで使用されます。 
 
 ![Azure Data Lake Store ファイル システム タスクを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
-Azure Data Lake Store ファイル システム タスクの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-store-file-system-task?view=sql-server-2017)を参照してください。
+Azure Data Lake Store ファイル システム タスクの詳細については、[こちら](/sql/integration-services/control-flow/azure-data-lake-store-file-system-task)を参照してください。
 
 ### <a name="configure-foreach-loop-container"></a>Foreach ループ コンテナーを構成する
 
@@ -102,9 +99,9 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
-3. **[AzureDataLakeAnalyticsConnection]** を、ジョブの送信先となる Azure Data Lake Analytics アカウントに設定します。 Azure Data Lake Analytics 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)を参照してください。
+3. **[AzureDataLakeAnalyticsConnection]** を、ジョブの送信先となる Azure Data Lake Analytics アカウントに設定します。 Azure Data Lake Analytics 接続マネージャーの詳細については、[こちら](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager)を参照してください。
 
-4. その他のジョブ構成を設定します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
+4. その他のジョブ構成を設定します。 [詳細については、こちらを参照してください](/sql/integration-services/control-flow/azure-data-lake-analytics-task)。
 
 5. **[式]** を使用して、U-SQL ジョブの名前を動的に設定します。
 
@@ -117,7 +114,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 Azure Feature Pack の **Azure BLOB のダウンロード タスク**を使用すると、Azure Blob Storage 内の U-SQL ファイルを使用することができます。 このアプローチを使用すると、クラウドでスクリプトを使用することができます。
 
-手順は「[シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する](#scenario-2-use-u-sql-files-in-azure-data-lake-store)」と同じです。 Azure Data Lake Store ファイル システム タスクを Azure BLOB のダウンロード タスクに変更します。 Azure BLOB のダウンロード タスクの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)を参照してください。
+手順は「[シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する](#scenario-2-use-u-sql-files-in-azure-data-lake-store)」と同じです。 Azure Data Lake Store ファイル システム タスクを Azure BLOB のダウンロード タスクに変更します。 Azure BLOB のダウンロード タスクの詳細については、[こちら](/sql/integration-services/control-flow/azure-blob-download-task)を参照してください。
 
 制御フローは次のようになります。
 
@@ -162,10 +159,10 @@ U-SQL スクリプト内の U-SQL 変数の値を動的に設定する必要が�
 - 現在の日時に基づいて入力と出力のファイル パス変数を動的に設定します。
 - ストアド プロシージャのパラメーターを設定します。
 
-U-SQL スクリプトのパラメーターの設定方法については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration)を参照してください。
+U-SQL スクリプトのパラメーターの設定方法については、[こちら](/sql/integration-services/control-flow/azure-data-lake-analytics-task#parameter-mapping-page-configuration)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure での SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-- [Integration Services (SSIS) 用の Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [Azure Data Factory を使用した U-SQL ジョブのスケジュール設定](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Azure での SSIS パッケージの実行](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
+- [Integration Services (SSIS) 用の Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud)
+- [Azure Data Factory を使用した U-SQL ジョブのスケジュール設定](../data-factory/transform-data-using-data-lake-analytics.md)

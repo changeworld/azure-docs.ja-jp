@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056159"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319723"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -215,7 +215,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 - [変更 ID] 属性は、一意の識別子として使用できます。 これは、たとえば製品サポートとやり取りするときに便利です。
 
-- プロビジョニング データを CSV ファイルとしてダウンロードするオプションは現在ありませんが、[Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) を使用してデータをエクスポートできます。
+- プロビジョニング データを CSV ファイルとしてダウンロードするオプションは現在ありませんが、[Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) を使用してデータをエクスポートできます。
 
 - ユーザーがスコープに含まれていない場合、スキップされたイベントが表示されることがあります。 同期スコープがすべてのユーザーとグループに設定されているときは特にこれが予想されます。 Microsoft のサービスでは、スコープ外であっても、テナント内のすべてのオブジェクトが評価されます。 
 
@@ -245,10 +245,10 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |DuplicateSourceEntries | 複数のユーザーに、構成済みの一致する属性があると検出されたため、操作を完了できませんでした。 重複しているユーザーを削除するか、[ここ](../app-provisioning/customize-application-attributes.md)で説明されているように、属性マッピングを再構成します。|
 |ImportSkipped | 各ユーザーを評価するときに、ソース システムからユーザーをインポートするよう試みます。 このエラーが発生するのは一般的に、インポートするユーザーが、属性マッピングで定義されている一致するプロパティを持っていない場合です。 一致する属性のユーザー オブジェクトに値が指定されていない場合、スコープ、一致、またはエクスポートの変更を評価することはできません。 このエラーが発生したとしても、このユーザーのスコープがまだ評価されていないため、ユーザがスコープ内にあることを示すものではないことに注意してください。|
 |EntrySynchronizationSkipped | プロビジョニング サービスによってソース システムに対するクエリが正常に実行され、ユーザーが識別されました。 ユーザーに対してこれ以上の操作は行われず、スキップされました。 スキップの原因としては、ユーザーがスコープ外にあるか、ユーザーがターゲット システムに既に存在していて、それ以上の変更は必要ないためです。|
-|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| GET 要求を実行してユーザーまたはグループを取得すると、複数のユーザーまたはグループが応答で受信されました。 応答で受信すると想定していたユーザーまたはグループは 1 つだけです。 [たとえば](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)、グループを取得するための GET 要求を実行してメンバーを除外するフィルターを指定したときに、SCIM エンドポイントがメンバーを返した場合、このエラーがスローされます。|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| GET 要求を実行してユーザーまたはグループを取得すると、複数のユーザーまたはグループが応答で受信されました。 応答で受信すると想定していたユーザーまたはグループは 1 つだけです。 [たとえば](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)、グループを取得するための GET 要求を実行してメンバーを除外するフィルターを指定したときに、SCIM エンドポイントがメンバーを返した場合、このエラーがスローされます。|
 
 ## <a name="next-steps"></a>次のステップ
 
 * [ユーザー プロビジョニングの状態を確認する](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](../app-provisioning/application-provisioning-config-problem.md)
-* [プロビジョニング ログ グラフ API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [プロビジョニング ログ グラフ API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

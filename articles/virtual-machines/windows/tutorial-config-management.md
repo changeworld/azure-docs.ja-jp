@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448863"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216438"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
 
-Azure [Change Tracking](../../automation/change-tracking.md) と [Update Management](../../automation/update-management/update-mgmt-overview.md) を使用すると、Azure の Windows 仮想マシンの変更を簡単に識別し、それらの VM のオペレーティング システムの更新を管理できます。
+Azure [Change Tracking](../../automation/change-tracking/overview.md) と [Update Management](../../automation/update-management/overview.md) を使用すると、Azure の Windows 仮想マシンの変更を簡単に識別し、それらの VM のオペレーティング システムの更新を管理できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -112,10 +112,10 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 | --- | --- |
 | **名前** |更新プログラムの展開を識別する一意の名前を入力します。 |
 |**オペレーティング システム**| **Linux** か **Windows** を選択します。|
-| **更新するグループ** |Azure でホストされている VM の場合は、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義します。 このクエリは、展開に含めるための、Azure でホストされている VM の動的なグループを構築します。 </br></br>Azure でホストされていない VM の場合は、既存の保存された検索条件を選択します。 この検索では、展開に含めるこれらの VM のグループを選択できます。 </br></br> 詳しくは、[動的グループ](../../automation/update-management/update-mgmt-groups.md)に関するページをご覧ください。|
+| **更新するグループ** |Azure でホストされている VM の場合は、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義します。 このクエリは、展開に含めるための、Azure でホストされている VM の動的なグループを構築します。 </br></br>Azure でホストされていない VM の場合は、既存の保存された検索条件を選択します。 この検索では、展開に含めるこれらの VM のグループを選択できます。 </br></br> 詳しくは、[動的グループ](../../automation/update-management/configure-groups.md)に関するページをご覧ください。|
 | **更新するマシン** |**[保存した検索条件]** 、 **[Imported group]\(インポートしたグループ\)** 、または **[マシン]** を選択します。<br/><br/>**[マシン]** を選択した場合は、ドロップダウン リストから個々のマシンを選択できます。 各マシンの準備状況は、表の **[エージェントの更新の準備]** 列に示されます。</br></br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
 |**更新プログラムの分類**|必要なすべての更新プログラムの分類を選択します。|
-|**更新プログラムの包含/除外**|このオプションを選択すると、 **[包含/除外]** ペインが開きます。 含める更新プログラムおよび除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、「[更新プログラムのデプロイをスケジュールする](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)」を参照してください。 |
+|**更新プログラムの包含/除外**|このオプションを選択すると、 **[包含/除外]** ペインが開きます。 含める更新プログラムおよび除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、「[更新プログラムのデプロイをスケジュールする](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment)」を参照してください。 |
 |**スケジュール設定**|開始する時刻を選択し、 **[1 回]** または **[定期的]** のいずれかを選択します。|
 | **事前スクリプトと事後スクリプト**|展開の前後に実行するスクリプトを選択します。|
 | **メンテナンス期間** | 更新プログラムに対して設定された分数を入力します。 有効な値の範囲は 30 から 360 分です。 |

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: f6274769814a6d4aee4648c5e18237438c6c2af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a9723b2fbe908be3cae79302834e2020190336
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376732"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210893"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -66,18 +66,18 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-translation-configuration"></a>翻訳構成を作成する
 
-Speech SDK を使用して翻訳サービスを呼び出すには、[`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。
+Speech SDK を使用して翻訳サービスを呼び出すには、[`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。
 
 > [!NOTE]
 > 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
-[`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) を初期化するには、次に示すようないくつかの方法があります。
+[`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を初期化するには、次に示すようないくつかの方法があります。
 
 * サブスクリプションの場合: キーと、それに関連付けられたリージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-キーとリージョンを使用して [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) を作成する方法を見てみましょう。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
+キーとリージョンを使用して [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を作成する方法を見てみましょう。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
 
 ```javascript
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -85,15 +85,15 @@ const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSu
 
 ## <a name="initialize-a-translator"></a>翻訳ツールを初期化する
 
-[`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) を作成したら、次の手順として、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) を初期化します。 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) を初期化する場合は、それを自分の `speechTranslationConfig` に渡す必要があります。 これにより、翻訳サービスによってお客様の要求を検証するために必要とされる資格情報が提供されます。
+[`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を作成したら、次の手順として、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) を初期化します。 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) を初期化する場合は、それを自分の `speechTranslationConfig` に渡す必要があります。 これにより、翻訳サービスによってお客様の要求を検証するために必要とされる資格情報が提供されます。
 
-ご利用のデバイスの既定のマイクから提供された音声を翻訳している場合、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) は次のようになります。
+ご利用のデバイスの既定のマイクから提供された音声を翻訳している場合、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) は次のようになります。
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) を作成し、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) を初期化するときに `audioConfig` パラメーターを指定する必要があります。
+オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) を作成し、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) を初期化するときに `audioConfig` パラメーターを指定する必要があります。
 
 > [!TIP]
 > [自分のオーディオ入力デバイスのデバイス ID を取得する方法の詳細](../../../how-to-select-audio-input-devices.md)。
@@ -104,7 +104,7 @@ const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfig);
 ```
 
-マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 ただし、これを行うことができるのは **Node.js** を対象とする場合のみであり、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) を作成するときに、`fromDefaultMicrophoneInput`を呼び出すのではなく、`fromWavFileOutput` を呼び出して `filename` パラメーターを渡します。
+マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 ただし、これを行うことができるのは **Node.js** を対象とする場合のみであり、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) を作成するときに、`fromDefaultMicrophoneInput`を呼び出すのではなく、`fromWavFileOutput` を呼び出して `filename` パラメーターを渡します。
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -113,10 +113,10 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 ## <a name="translate-speech"></a>音声を翻訳する
 
-Speech SDK for JavaScript の [TranslationRecognizer クラス](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest)では、音声翻訳に使用できるいくつかの手法が公開されています。
+Speech SDK for JavaScript の [TranslationRecognizer クラス](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true)では、音声翻訳に使用できるいくつかの手法が公開されています。
 
 * 単発の翻訳 (非同期) - 非ブロッキング (非同期) モードで翻訳を実行します。 これにより、1 つの発話が翻訳されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
-* 継続的翻訳 (非同期) - 継続的な翻訳操作を非同期に開始します。 ユーザーはイベントに登録し、さまざまなアプリケーションの状態を処理します。 非同期の継続的翻訳を停止するには、[`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync) を呼び出します。
+* 継続的翻訳 (非同期) - 継続的な翻訳操作を非同期に開始します。 ユーザーはイベントに登録し、さまざまなアプリケーションの状態を処理します。 非同期の継続的翻訳を停止するには、[`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) を呼び出します。
 
 > [!NOTE]
 > [音声認識モードを選択](../../../how-to-choose-recognition-mode.md)する方法の詳細情報。
@@ -132,7 +132,7 @@ speechTranslationConfig.addTargetLanguage("de");
 
 ### <a name="single-shot-recognition"></a>単発の認識
 
-[`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognizeonceasync) を使用した非同期の単発翻訳の例を次に示します。
+[`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) を使用した非同期の単発翻訳の例を次に示します。
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -140,7 +140,7 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-結果を処理するコードを記述する必要があります。 このサンプルでは、ドイツ語に翻訳するための [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?view=azure-node-latest) を評価しています。
+結果を処理するコードを記述する必要があります。 このサンプルでは、ドイツ語に翻訳するための [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?view=azure-node-latest&preserve-view=true) を評価しています。
 
 ```javascript
 recognizer.recognizeOnceAsync(
@@ -179,20 +179,20 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>継続的翻訳
 
-継続的翻訳は、単発の認識よりも少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 翻訳を停止するには、[`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的翻訳を実行する方法の例を次に示します。
+継続的翻訳は、単発の認識よりも少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 翻訳を停止するには、[`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的翻訳を実行する方法の例を次に示します。
 
-入力を定義し、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) を初期化することから始めましょう。
+入力を定義し、[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) を初期化することから始めましょう。
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) から送信されたイベントをサブスクライブします。
+[`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) から送信されたイベントをサブスクライブします。
 
-* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognizing):中間的な翻訳結果を含むイベントのシグナル。
-* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognized):最終的な翻訳結果を含むイベントのシグナル (翻訳の試行が成功したことを示す)。
-* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#sessionstopped):翻訳セッション (操作) の終了を示すイベントのシグナル。
-* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#canceled):キャンセルされた翻訳結果を含むイベントのシグナル (結果としてキャンセルされた翻訳の試行または直接的なキャンセル要求、あるいは、転送またはプロトコルの失敗を示す)。
+* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognizing):中間的な翻訳結果を含むイベントのシグナル。
+* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognized):最終的な翻訳結果を含むイベントのシグナル (翻訳の試行が成功したことを示す)。
+* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#sessionstopped):翻訳セッション (操作) の終了を示すイベントのシグナル。
+* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#canceled):キャンセルされた翻訳結果を含むイベントのシグナル (結果としてキャンセルされた翻訳の試行または直接的なキャンセル要求、あるいは、転送またはプロトコルの失敗を示す)。
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -221,7 +221,7 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-すべてが設定されると、[`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#startcontinuousrecognitionasync) を呼び出すことができます。
+すべてが設定されると、[`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) を呼び出すことができます。
 
 ```javascript
 // Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
@@ -232,13 +232,13 @@ recognizer.startContinuousRecognitionAsync();
 
 ## <a name="choose-a-source-language"></a>ソース言語を選択する
 
-音声翻訳の 1 つの一般的なタスクに、入力 (またはソース) 言語の指定があります。 入力言語をイタリア語に変更する場合の方法を見てみましょう。 コード内で、使用している [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) を見つけて、そのすぐ下に次の行を追加します。
+音声翻訳の 1 つの一般的なタスクに、入力 (またはソース) 言語の指定があります。 入力言語をイタリア語に変更する場合の方法を見てみましょう。 コード内で、使用している [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を見つけて、そのすぐ下に次の行を追加します。
 
 ```javascript
 speechTranslationConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-[`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest#speechrecognitionlanguage) プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている[ロケールまたは言語](../../../language-support.md)のリストの**ロケール**列に任意の値を指定できます。
+[`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true#speechrecognitionlanguage) プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている[ロケールまたは言語](../../../language-support.md)のリストの**ロケール**列に任意の値を指定できます。
 
 ## <a name="choose-one-or-more-target-languages"></a>1 つ以上のターゲット言語を選択する
 

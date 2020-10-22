@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262669"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278039"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 
@@ -94,5 +94,5 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Cosmos DB のファイアウォールを構成するには、[ファイアウォールのサポート](firewall-support.md)に関する記事を参照してください。
-* 仮想ネットワーク サービス エンドポイントを構成するには、[VNet サービス エンドポイントを使用してアクセスをセキュリティで保護する](vnet-service-endpoint.md)方法に関する記事をご覧ください。
+* Azure Cosmos DB のファイアウォールを構成するには、[ファイアウォールのサポート](how-to-configure-firewall.md)に関する記事を参照してください。
+* 仮想ネットワーク サービス エンドポイントを構成するには、[VNet サービス エンドポイントを使用してアクセスをセキュリティで保護する](how-to-configure-vnet-service-endpoint.md)方法に関する記事をご覧ください。

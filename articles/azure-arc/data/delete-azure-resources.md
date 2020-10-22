@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 46c1df8a175657e20dce984d0c8825ae99170246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe7b39d0e47965a9603b276960d48d6d3063073
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761653"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108254"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
@@ -97,4 +97,4 @@ az resource delete --name <data controller name> --resource-type Microsoft.Azure
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Azure CLI を使用したリソース グループの削除
 
-Azure CLI を使用して、[リソース グループを削除する](/azure/azure-resource-manager/management/delete-resource-group)こともできます。
+Azure CLI を使用して、[リソース グループを削除する](../../azure-resource-manager/management/delete-resource-group.md)こともできます。

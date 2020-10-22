@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203512"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124171"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -35,9 +35,9 @@ USB 3.0 で接続したディスクでテストしたところ、ディスクの
 
 Azure Storage サービスの制限と共有、コンテナー、およびファイルの名前付けのベスト プラクティスに関する最新情報については、以下のページをご覧ください。
 
-- [Naming and referencing containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (コンテナーの名前付けと参照)
-- [Naming and referencing shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
-- [Block blobs and page blob conventions](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (ブロック BLOB とページ BLOB に関する規則)
+- [Naming and referencing containers](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (コンテナーの名前付けと参照)
+- [Naming and referencing shares](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
+- [Block blobs and page blob conventions](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (ブロック BLOB とページ BLOB に関する規則)
 
 > [!IMPORTANT]
 > Azure Storage サービスの制限を超えているファイル/ディレクトリ、または Azure Files/BLOB の名前付け規則に準拠していないファイル/ディレクトリは、Data Box サービスを通じて Azure Storage に取り込まれません。
@@ -64,7 +64,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 | データの種類             | 既定の制限          |
 |--------------------------|------------------------|
-| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
+| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure オブジェクトのサイズ制限

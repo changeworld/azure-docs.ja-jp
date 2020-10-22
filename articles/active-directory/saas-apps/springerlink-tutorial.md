@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a203bbd65c07d21c7d96b59c57b441748ed5b9a9
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372512"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
 
@@ -97,7 +97,7 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Springer Link のドメインと URL] のシングル サインオン情報](common/idp-relay.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-relay.png)
 
     a. **[識別子]** テキスト ボックスに、`https://fsso.springer.com` という URL を入力します。
 
@@ -109,7 +109,7 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
 5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Springer Link のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
     **[サインオン URL]** ボックスに、`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com` という形式で URL を入力します。
 

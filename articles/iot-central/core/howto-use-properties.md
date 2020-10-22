@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999760"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123785"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションでプロパティを使用する
 
@@ -152,7 +152,7 @@ Azure IoT Central アプリケーションで、クラウドのプロパティ�
 
 既定では、プロパティは読み取り専用です。 読み取り専用のプロパティは、デバイスがプロパティ値の更新を Azure IoT Central アプリケーションに報告することを意味します。 Azure IoT Central アプリケーションでは、読み取り専用のプロパティの値を設定することはできません。
 
-Azure IoT Central では、デバイス ツインを使用して、デバイスと Azure IoT Central アプリケーションの間でプロパティ値を同期します。 デバイスのプロパティ値では、デバイス ツインによってレポートされるプロパティが使用されます。 詳細については、[デバイス ツイン](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)に関するページを参照してください。
+Azure IoT Central では、デバイス ツインを使用して、デバイスと Azure IoT Central アプリケーションの間でプロパティ値を同期します。 デバイスのプロパティ値では、デバイス ツインによってレポートされるプロパティが使用されます。 詳細については、[デバイス ツイン](../../iot-hub/tutorial-device-twins.md)に関するページを参照してください。
 
 デバイス機能モデルからの次のスニペットは、読み取り専用のプロパティ型の定義を示しています。
 
@@ -250,7 +250,7 @@ hubClient.getTwin((err, twin) => {
 | `'ac': 5xx` | エラー | 要求された変更の処理中に、デバイスで予期しないエラーが発生しました。 |
 
 
-デバイス ツインの詳細については、「[バックエンド サービスからデバイスを構成する](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)」を参照してください。
+デバイス ツインの詳細については、「[バックエンド サービスからデバイスを構成する](../../iot-hub/tutorial-device-twins.md)」を参照してください。
 
 オペレーターが Azure IoT Central アプリケーションで書き込み可能なプロパティを設定すると、アプリケーションではデバイス ツインによって必要とされるプロパティを使用して、デバイスに値を送信します。 次に、デバイスによってデバイス ツインの reported プロパティが使用され、応答が行われます。 Azure IoT Central は、reported プロパティの値を受け取ると、"**承認済み**" の状態でプロパティ ビューを更新します。
 

@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081000"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123339"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
 
@@ -27,7 +27,7 @@ Azure IoT Central V3 用の Power BI ソリューションを使用して、IoT 
 - フィルターを適用して、特定のデバイスによって送信されたデータに絞り込む
 - テーブル内の最新のテレメトリ データを表示する
 
-このソリューションは、[継続的データ エクスポート](howto-export-data-blob-storage.md)の Azure BLOB ストレージ アカウントからデータを読み取るパイプラインを設定します。 このパイプランでは、Azure Functions、Azure Data Factory、Azure SQL Database を使用して、データの処理と変換が行われます。 PBIX ファイルとしてダウンロードする Power BI レポートで、データの視覚化と分析が可能です。 リソースはすべて Azure サブスクリプション内に作成されるため、ニーズに合わせて各コンポーネントをカスタマイズできます。
+このソリューションは、[継続的データ エクスポート](./howto-export-data.md)の Azure BLOB ストレージ アカウントからデータを読み取るパイプラインを設定します。 このパイプランでは、Azure Functions、Azure Data Factory、Azure SQL Database を使用して、データの処理と変換が行われます。 PBIX ファイルとしてダウンロードする Power BI レポートで、データの視覚化と分析が可能です。 リソースはすべて Azure サブスクリプション内に作成されるため、ニーズに合わせて各コンポーネントをカスタマイズできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ Azure IoT Central V3 用の Power BI ソリューションを使用して、IoT 
 - Power BI Pro (ダッシュボードを他のユーザーと共有する場合)。
 
 > [!NOTE]
-> バージョン 2 の IoT Central アプリケーションを使おうとしている場合は、以前のバージョンのドキュメントのサイトで、「[Azure IoT Central データを Power BI ダッシュボードに視覚化する](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi)」を参照してください。
+> バージョン 2 の IoT Central アプリケーションを使おうとしている場合は、以前のバージョンのドキュメントのサイトで、「[Azure IoT Central データを Power BI ダッシュボードに視覚化する](/previous-versions/azure/iot-central/core/howto-connect-powerbi)」を参照してください。
 
 ## <a name="install"></a>インストール
 

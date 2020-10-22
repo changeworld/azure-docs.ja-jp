@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cdc9e242c2254cafaf0af75bcb8f8879cf3eb58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287830"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127013"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
 
@@ -33,7 +33,7 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 
 | カテゴリ              | 説明 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL サーバーレス](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | [お問い合わせ](mailto:cosmosdbsynapselink@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB) |
+| **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | ✓ |
 | **Azure Cosmos DB API サポート** | サポートされている Azure Cosmos DB API の種類 | SQL / MongoDB | SQL / MongoDB |
 | **Object**  |Azure Cosmos DB コンテナーを直接指す、作成できるテーブルなどのオブジェクト| データフレーム、ビュー、テーブル | 表示 |
 | **読み取り**    | 読み取り可能な Azure Cosmos DB コンテナーのタイプ | OLTP / HTAP | HTAP  |

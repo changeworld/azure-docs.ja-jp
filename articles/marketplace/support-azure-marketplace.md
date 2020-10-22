@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329756"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275424"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
@@ -45,6 +45,6 @@ Microsoft コマーシャル マーケットプレースの発行元としての
 ## <a name="next-steps"></a>次のステップ
 
 * [コマーシャル マーケットプレース公開ガイドのページ](index.yml)を参照してください。
-* 詳細については、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](partner-center-portal/support.md)」を参照してください。
+* 詳細については、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](support.md)」を参照してください。
 
 ---

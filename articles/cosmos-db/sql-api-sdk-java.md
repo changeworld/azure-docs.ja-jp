@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1061cd7a37cbe9ce5ea360de22594d6eb4c0c2f5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569941"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275305"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -232,7 +232,7 @@ ms.locfileid: "91569941"
 * ドキュメントの有効期限 (TTL) サポートを追加しました。
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* [パーティション分割コレクション](partition-data.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
+* [パーティション分割コレクション](partitioning-overview.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
 
 ### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * 他の SDK と一貫性を維持するため、リトル エンディアンのハッシュ値を生成する HashPartitionResolver のバグを修正しました。

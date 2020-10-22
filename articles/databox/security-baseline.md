@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225606"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127099"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box 用の Azure セキュリティ ベースライン
 
 Azure Data Box 用の Azure セキュリティ ベースラインには、ご自身のデプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -70,9 +70,9 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: ガイダンス: Azure Data Box によって使用されるエンドポイントはすべて、Microsoft によって管理されます。 オンプレミスのシステムにデプロイする追加のコントロールについては、お客様が責任を負うものとします。
 
-* [Azure Data Box のセキュリティについて](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Azure Data Box のセキュリティについて](./data-box-security.md)
 
-* [Azure Data Box のポート情報](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [Azure Data Box のポート情報](./data-box-system-requirements.md#port-requirements)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -120,7 +120,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -134,7 +134,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: Data Box の注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
 
-* [Azure Data Box の追跡とイベントのログ記録について](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box の追跡とイベントのログ記録について](./data-box-logs.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -144,7 +144,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: Data Box の注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
 
-* [Azure Data Box の追跡とイベントのログ記録について](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box の追跡とイベントのログ記録について](./data-box-logs.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -170,7 +170,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: Data Box の注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
 
-* [Azure Data Box の追跡とイベントのログ記録について](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box の追跡とイベントのログ記録について](./data-box-logs.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -180,7 +180,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**:  Data Box の注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
 
-* [Azure Data Box の追跡とイベントのログ記録について](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box の追跡とイベントのログ記録について](./data-box-logs.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -212,17 +212,17 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
 **ガイダンス**: ご利用の Azure Data Box への管理アクセス権を持つユーザー アカウントのインベントリを維持します。 サブスクリプションの Azure portal にある ID およびアクセス管理 (IAM) ウィンドウを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、マネージド ID に適用されます。注文が最初に作成されたときに、注文にアクセスできるユーザーを制御できます。 さまざまな範囲の Azure ロールを設定して、Data Box の注文へのアクセスを制御します。 Azure ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
 
-* [カスタム ロールについて](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [カスタム ロールについて](../role-based-access-control/custom-roles.md)
 
-* [ブック用に Azure RBAC を構成する方法](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [ブック用に Azure RBAC を構成する方法](../sentinel/quickstart-get-visibility.md)
 
-* [注文に対するアクセス制御のセットアップ方法を理解する](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [注文に対するアクセス制御のセットアップ方法を理解する](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center の監視**: いいえ
 
@@ -245,9 +245,9 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](../security-center/security-center-identity-access.md)
 
-* [Azure Policy を使用する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -273,9 +273,9 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: Azure Multi-Factor Authentication (MFA) 対応の特権アクセス ワークステーション (PAW) を使用して、ログインし、Azure Data Box の注文を構成します。
 
-* [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
+* [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-* [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -287,9 +287,9 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 また、Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-* [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -299,7 +299,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -309,7 +309,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 **ガイダンス**: Azure Active Directory (AD) を中央認証および承認システムとして使用します (該当する場合)。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -321,9 +321,9 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 Data Box アプライアンスの場合、これはリアルタイムではサポートされません。 ジョブの終了時にログを確認できます。
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -339,9 +339,9 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 Azure Data Box サービス ログは Log Analytics ワークスペースに書き込まれません。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -351,11 +351,11 @@ Azure Data Box サービス ログは Log Analytics ワークスペースに書�
 
 **ガイダンス**: コントロール プレーン (Azure portal など) でのアカウント ログイン動作の逸脱については、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure AD のリスクの高いサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD のリスクの高いサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -365,7 +365,7 @@ Azure Data Box サービス ログは Log Analytics ワークスペースに書�
 
 **ガイダンス**: カスタマー ロックボックスは、現在 Azure Data Box ではサポートされていません。
 
-* [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -373,7 +373,7 @@ Azure Data Box サービス ログは Log Analytics ワークスペースに書�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -389,7 +389,7 @@ Azure Data Box サービス ログは Log Analytics ワークスペースに書�
 
 Azure へのデータのアップロード中に、Data Box のアプライアンスと、データのアップロードに使用されるサービスが分離されます。
 
-* [Azure Data Box の使用を開始する方法](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Azure Data Box の使用を開始する方法](./data-box-quickstart-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -399,7 +399,7 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 **ガイダンス**: Microsoft では、Azure Data Box の基盤となるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。 Data Box が顧客サイトにある場合は、ベスト プラクティスに従って、転送される機密データが確実に保護されるようにしてください。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -409,9 +409,9 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 **ガイダンス**: Microsoft では、Azure Data Box の基盤となるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。 Data Box が顧客サイトにある場合は、ベスト プラクティスに従って、転送される機密データが確実に保護されるようにしてください。
 
-* [Azure Data Box でのデータ移行について](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [Azure Data Box でのデータ移行について](./data-box-faq.md)
 
-* [Data Box セキュリティの概要](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box セキュリティの概要](./data-box-security.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -421,7 +421,7 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 **ガイダンス**: 現在使用できません。データの識別、分類、損失防止機能は、Azure Data Box ではまだご利用いただけません。Microsoft は、Azure Data Box の基盤となるインフラストラクチャを管理し、顧客データの損失や漏えいを防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -431,9 +431,9 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 **ガイダンス**: Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。 また、Data Box 閲覧者ロールと Data Box 共同作成者ロールをリソース レベルで定義することもできます。
 
-* [Azure Data Box の使用を開始する方法を理解する](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Azure Data Box の使用を開始する方法を理解する](./data-box-quickstart-portal.md)
 
-* [アクセス制御の設定方法を理解する](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [アクセス制御の設定方法を理解する](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -443,7 +443,7 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。 Microsoft では、Azure Data Box の基盤となるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -455,9 +455,9 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 Azure Data Box では、保存データの AES 256 ビット暗号化が実装されています。さらに、Azure Data Box は、デバイスのロックに使用されたデバイス ロック解除キー (デバイス パスワードとも呼ばれる) を、暗号化キーにより保護します。 既定では、Data Box の注文のデバイス ロック解除キーは、Microsoft マネージド キーを使って暗号化されます。 デバイス ロック解除キーをさらに制御するために、カスタマー マネージド キーを提供することもできます。 カスタマー マネージド キーは、Azure Key Vault で作成して格納する必要があります。
 
-* [Data Box データ保護について](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box データ保護について](./data-box-security.md)
 
-* [Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -467,7 +467,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: Azure Data Box およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -475,7 +475,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -519,7 +519,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
@@ -605,7 +605,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -629,7 +629,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -715,7 +715,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: カスタマー マネージド キーは、Azure Key Vault で作成して格納する必要があります。
 
-* [Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する方法](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する方法](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -725,7 +725,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: 適用できません。Azure Data Box ではマネージド ID は利用されません。
 
-* [マネージド ID がサポートされる Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [マネージド ID がサポートされる Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -743,7 +743,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -773,7 +773,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -809,7 +809,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -831,9 +831,9 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-* [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -853,7 +853,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -863,9 +863,9 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -875,7 +875,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -883,7 +883,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -899,5 +899,5 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

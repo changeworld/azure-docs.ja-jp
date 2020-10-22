@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446176"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108849"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -62,7 +62,7 @@ Log Analytics データで収集されたログのメトリックを機能させ
 
  メトリック アラートは、Azure portal、Resource Manager テンプレート、REST API、PowerShell、Azure CLI を使用して作成および管理することができます。 ログのメトリック アラートはメトリック アラートの一種であるため、前提条件が満たされたら、指定した Log Analytics ワークスペースに対してログのメトリック アラートを作成できます。 ペイロード スキーマ、適用されるクォータ制限、課金価格など、[メトリック アラート](./alerts-metric-near-real-time.md)の特性と機能はすべて、ログのメトリック アラートにも適用されます。
 
-手順の詳細とサンプルについては、[メトリック アラートの作成と管理](https://aka.ms/createmetricalert)に関するページをご覧ください。 具体的には、ログのメトリック アラートでは、メトリック アラートを管理する手順に従います。次の点に注意してください。
+手順の詳細とサンプルについては、[メトリック アラートの作成と管理](./alerts-metric.md)に関するページをご覧ください。 具体的には、ログのメトリック アラートでは、メトリック アラートを管理する手順に従います。次の点に注意してください。
 
 - メトリック アラートのターゲットが有効な "*Log Analytics ワークスペース*" であることを確認します。
 - 選択した "*Log Analytics ワークスペース*" のメトリック アラート用に選択したシグナルの種類が**メトリック**であることを確認します。
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - [メトリック アラート](alerts-metric.md)の詳細を確認します。
 - [Azure でのログ アラート](./alerts-unified-log.md)について学習します。
 - [Azure のアラート](alerts-overview.md)について確認します。
-

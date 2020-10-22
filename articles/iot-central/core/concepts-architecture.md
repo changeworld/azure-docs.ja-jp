@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337145"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126175"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
@@ -104,7 +104,7 @@ Azure IoT Central は、デバイス接続を可能にするクラウド ゲー�
 - デバイスの管理。
 - セキュリティ保護されたデバイス接続。
 
-IoT Hub の詳細については、[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) に関するページを参照してください。
+IoT Hub の詳細については、[Azure IoT Hub](../../iot-hub/index.yml) に関するページを参照してください。
 
 Azure IoT Central でのデバイス接続の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
 
