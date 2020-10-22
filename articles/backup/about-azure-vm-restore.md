@@ -3,12 +3,12 @@ title: Azure 仮想マシン復元プロセスについて
 description: Azure Backup サービスで Azure Virtual Machines を復元する方法を説明します
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985329"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171764"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM の復元について
 
@@ -32,7 +32,7 @@ ms.locfileid: "90985329"
 - **可用性 (レプリケーションの種類)** :Azure Backup では、ストレージ/データの高可用性を維持するため、2 種類のレプリケーションが提供されます。
   - [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) では、データセンターのストレージ スケール ユニットにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
   - [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
-  - [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 ZRS にダウンタイムはありません。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とし、なおかつダウンタイムが許されない重要なワークロードは、ZRS にバックアップすることができます。
+  - [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 ZRS にダウンタイムはありません。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とし、なおかつダウンタイムが許されない重要なワークロードは、ZRS にバックアップすることができます。
 
 - **リージョンをまたがる復元 (CRR)** :[復元オプション](./backup-azure-arm-restore-vms.md#restore-options)の 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) で Azure VM を復元できます。
 

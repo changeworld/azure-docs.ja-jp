@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268555"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093261"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -564,7 +564,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
-2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)に関するページをご覧ください。
+2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md#manage-devices)に関するページをご覧ください。
 3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。 フェデレーション環境では、登録に失敗し、デバイスを同期するように AAD Connect が構成されている場合にのみ、この問題が発生する可能性があります。
 4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
 

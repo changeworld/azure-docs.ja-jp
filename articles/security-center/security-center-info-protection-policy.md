@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: aa73fed0af0d6cd7154118d8987f42e55814e25a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6991c222590b52ca4dadb2b9f5a9661bf731c4c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448935"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340837"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
@@ -78,8 +78,8 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>Azure PowerShell を使用した SQL 情報保護の管理
 
-- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy):有効なテナント SQL 情報保護ポリシーを取得します。
-- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy):有効なテナント SQL 情報保護ポリシーを設定します。
+- [Get-AzSqlInformationProtectionPolicy](/powershell/module/az.security/get-azsqlinformationprotectionpolicy):有効なテナント SQL 情報保護ポリシーを取得します。
+- [Set-AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy):有効なテナント SQL 情報保護ポリシーを設定します。
  
 ## <a name="next-steps"></a>次のステップ
  

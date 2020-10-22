@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892560"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092904"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
 
@@ -50,7 +50,7 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 
 2. サービスのカスタム ドメインを設定します。[カスタム ドメインに関する資料](spring-cloud-tutorial-custom-domain.md)に従って、これら 2 つの既存のサービス インスタンスのカスタム ドメインを設定します。 設定が正常に完了すると、両方のサービス インスタンスがカスタム ドメインの bcdr-test.contoso.com にバインドされます。
 
-3. Traffic Manager と 2 つのエンドポイントを作成します。[Azure portal を使用して Traffic Manager プロファイルを作成します](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile)。
+3. Traffic Manager と 2 つのエンドポイントを作成します。[Azure portal を使用して Traffic Manager プロファイルを作成します](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 
 Traffic Manager プロファイルは次のとおりです。
 * Traffic Manager の DNS 名: `http://asc-bcdr.trafficmanager.net`
@@ -68,4 +68,3 @@ Traffic Manager プロファイルは次のとおりです。
 ## <a name="next-steps"></a>次の手順
 
 * [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
- 

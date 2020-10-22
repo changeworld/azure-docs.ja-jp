@@ -9,12 +9,12 @@ ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: caa343b0715e3e4b33c45fcc9ba6441533c3d056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42598b6471ea29c779b1863852169c4a1025e229
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858508"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097458"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -44,7 +44,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-[CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) クラスの詳細を確認してください。
+[CloudSpatialAnchorSession](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) クラスの詳細を確認してください。
 
 ```csharp
     CloudSpatialAnchorSession cloudSession;
@@ -54,7 +54,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-[SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) クラスの詳細を確認してください。
+[SessionConfiguration](/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) クラスの詳細を確認してください。
 
 ```csharp
     this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -68,7 +68,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-[TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) デリゲートの詳細を確認してください。
+[TokenRequiredDelegate](/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) デリゲートの詳細を確認してください。
 
 ```csharp
     this.cloudSession.TokenRequired += (object sender, TokenRequiredEventArgs args) =>
@@ -118,7 +118,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-[Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) メソッドの詳細を確認してください。
+[Start](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) メソッドの詳細を確認してください。
 
 ```csharp
 #if UNITY_ANDROID || UNITY_IOS
@@ -134,7 +134,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-[ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) メソッドの詳細を確認してください。
+[ProcessFrame](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) メソッドの詳細を確認してください。
 
 ```csharp
 #if UNITY_ANDROID || UNITY_IOS
@@ -156,7 +156,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-[SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) デリゲートの詳細を確認してください。
+[SessionUpdatedDelegate](/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) デリゲートの詳細を確認してください。
 
 ```csharp
     this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args) =>
@@ -170,7 +170,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-[CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) クラスの詳細を確認してください。
+[CloudSpatialAnchor](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) クラスの詳細を確認してください。
 
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
@@ -206,7 +206,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-[GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) メソッドの詳細を確認してください。
+[GetSessionStatusAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) メソッドの詳細を確認してください。
 
 ```csharp
     SessionStatus value = await this.cloudSession.GetSessionStatusAsync();
@@ -216,7 +216,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-[AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) プロパティの詳細を確認してください。
+[AppProperties](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) プロパティの詳細を確認してください。
 
 ```csharp
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor() { LocalAnchor = localAnchor };
@@ -227,7 +227,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-[UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) メソッドの詳細を確認してください。
+[UpdateAnchorPropertiesAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) メソッドの詳細を確認してください。
 
 ```csharp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -237,7 +237,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-[GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) メソッドの詳細を確認してください。
+[GetAnchorPropertiesAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) メソッドの詳細を確認してください。
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
@@ -250,7 +250,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-[Expiration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) プロパティの詳細を確認してください。
+[Expiration](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) プロパティの詳細を確認してください。
 
 ```csharp
     cloudAnchor.Expiration = DateTimeOffset.Now.AddDays(7);
@@ -258,7 +258,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-[CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) メソッドの詳細を確認してください。
+[CreateWatcher](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) メソッドの詳細を確認してください。
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -268,7 +268,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-[AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) デリゲートの詳細を確認してください。
+[AnchorLocatedDelegate](/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) デリゲートの詳細を確認してください。
 
 ```csharp
     this.cloudSession.AnchorLocated += (object sender, AnchorLocatedEventArgs args) =>
@@ -297,7 +297,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-[DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) メソッドの詳細を確認してください。
+[DeleteAnchorAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) メソッドの詳細を確認してください。
 
 ```csharp
     await this.cloudSession.DeleteAnchorAsync(cloudAnchor);
@@ -306,7 +306,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-[Stop](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) メソッドの詳細を確認してください。
+[Stop](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) メソッドの詳細を確認してください。
 
 ```csharp
     this.cloudSession.Stop();
@@ -314,7 +314,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-[Reset](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) メソッドの詳細を確認してください。
+[Reset](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) メソッドの詳細を確認してください。
 
 ```csharp
     this.cloudSession.Reset();
@@ -322,7 +322,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
 
-[Dispose](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) メソッドの詳細を確認してください。
+[Dispose](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) メソッドの詳細を確認してください。
 
 ```csharp
     this.cloudSession.Dispose();

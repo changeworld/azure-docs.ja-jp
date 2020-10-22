@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: ffe368d763ee93d1864f0f807cbe18b8ebfe41c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ddc428a1b2228c7e6e15093c12deb25ddd65c27
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851658"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281021"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 
@@ -97,6 +97,6 @@ Press any key to exit...
 
 * [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB のパフォーマンスを向上させるクライアント構成オプション](performance-tips.md)
-* [Azure Cosmos DB でのサーバー側のパーティション分割](partition-data.md)
+* [Azure Cosmos DB でのサーバー側のパーティション分割](partitioning-overview.md)
 
 

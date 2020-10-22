@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803825"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203672"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -88,7 +88,7 @@ REST API コマンドを頻繁に送信しすぎるとサーバーでスロッ�
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC で記録された動画にライブ エクスペリエンスの品質が反映されていない
 
-動画は [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) を介して HoloLens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
+動画は [Mixed Reality Capture (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers) を介して HoloLens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
 * 動画のフレームレートが 60 Hz ではなく 30 Hz に制限されている。
 * 動画の画像に [Late Stage Reprojection](../overview/features/late-stage-reprojection.md) の処理ステップが実行されないため、動画が途切れているように見える。
 

@@ -3,12 +3,12 @@ title: Azure Service Bus のネットワーク セキュリティ
 description: この記事では、サービス タグ、IP ファイアウォール規則、サービス エンドポイント、プライベート エンドポイントなどのネットワークセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766395"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310458"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus のネットワーク セキュリティ 
 この記事では、Azure Service Bus で次のセキュリティ機能を使用する方法について説明します。 
@@ -22,7 +22,7 @@ ms.locfileid: "91766395"
 ## <a name="service-tags"></a>サービス タグ
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、[サービス タグの概要](../virtual-network/service-tags-overview.md)に関する記事を参照してください。
 
-サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース*" または "*ターゲット*" フィールドにサービス タグ名 (たとえば **ServiceBus**) を指定すると、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース*" または "*ターゲット*" フィールドにサービス タグ名 (たとえば **ServiceBus**) を指定すると、対応するサービスのトラフィックを許可または拒否できます。
 
 | サービス タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|

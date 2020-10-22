@@ -3,12 +3,12 @@ title: MABS サーバーのバックアップ
 description: Microsoft Azure Backup サーバー (MABS) をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946581"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172127"
 ---
 # <a name="back-up-the-mabs-server"></a>MABS サーバーのバックアップ
 
@@ -184,9 +184,9 @@ MABS サーバーはまだ動作していて、記憶域プールには問題が
 
 MABS とは関係なく、ネイティブの SQL Server バックアップを使用して MABS データベースをローカル ディスクにバックアップすることができます。
 
-- SQL Server のバックアップに関する概要については、[こちら](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)を参照してください。
+- SQL Server のバックアップに関する概要については、[こちら](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)を参照してください。
 
-- クラウドへの SQL Server のバックアップの詳細については、[こちら](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)を参照してください。
+- クラウドへの SQL Server のバックアップの詳細については、[こちら](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)を参照してください。
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>MABS によって保護されている共有にバックアップする
 
@@ -238,9 +238,9 @@ MABS とは関係なく、ネイティブの SQL Server バックアップを使
 
 SQL Server のネイティブ バックアップを使用すると、他の SQL Server データベースと同じように MABS データベースをバックアップすることができます。
 
-- SQL Server のバックアップに関する概要については、[こちら](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)を参照してください。
+- SQL Server のバックアップに関する概要については、[こちら](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)を参照してください。
 
-- クラウドへの SQL Server のバックアップの詳細については、[こちら](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)を参照してください。
+- クラウドへの SQL Server のバックアップの詳細については、[こちら](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)を参照してください。
 
 ### <a name="recover-the-mabs-database"></a>MABS データベースを復旧する
 

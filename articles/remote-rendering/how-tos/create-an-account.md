@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb321aeeae1f0ef5aaadce22e228024895176143
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318094"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202652"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering アカウントを作成する
 
@@ -101,7 +101,7 @@ Azure Remote Rendering サービスのアカウントを作成するには、次
 
 3 つのロールをすべて追加した場合、Azure Remote Rendering アカウントは、システムによって割り当てられたマネージド サービス ID を使用してストレージ アカウントにアクセスできます。
 > [!IMPORTANT]
-> Azure ロールの割り当ては Azure Storage によってキャッシュされるため、Remote Rendering アカウントへのアクセスを許可してから、ストレージ アカウントへのアクセスに使用できるようになるまでに、最大 30 分の遅延が発生する場合があります。 詳細については、[ロールベースのアクセス制御に関するドキュメント](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected)をご覧ください。
+> Azure ロールの割り当ては Azure Storage によってキャッシュされるため、Remote Rendering アカウントへのアクセスを許可してから、ストレージ アカウントへのアクセスに使用できるようになるまでに、最大 30 分の遅延が発生する場合があります。 詳細については、[ロールベースのアクセス制御に関するドキュメント](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

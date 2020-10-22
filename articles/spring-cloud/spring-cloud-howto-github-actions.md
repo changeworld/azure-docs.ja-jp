@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906946"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093975"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD
 
 GitHub Actions は、自動化されたソフトウェア開発ライフサイクル ワークフローをサポートします。 Azure Spring Cloud 用 GitHub Actions を使用すると、リポジトリに構築、テスト、パッケージ化、リリース、および Azure へのデプロイを行うワークフローを作成できます。 
 
 ## <a name="prerequisites"></a>前提条件
-この例には [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
+この例には [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub リポジトリを設定して認証する
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Maven プラグインを使用してデプロイする
-もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
+もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](./spring-cloud-quickstart.md)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ jobs:
 ## <a name="next-steps"></a>次のステップ
 
 * [Spring Cloud GitHub アクションの Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory のサービス プリンシパル](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Azure Active Directory のサービス プリンシパル](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [GitHub Actions for Azure](https://github.com/Azure/actions/)

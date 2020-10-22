@@ -4,12 +4,12 @@ description: この記事では、Microsoft Azure Backup Server (MABS) と DPM (
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324945"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172578"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ
 
@@ -39,7 +39,7 @@ ms.locfileid: "91324945"
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>ウイルス対策ソフトウェアの除外を構成するための推奨事項はありますか。
 
-はい。ウイルス対策の除外を構成することをお勧めします。 DPM の除外については、「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://docs.microsoft.com/system-center/dpm/run-antivirus-server)」を参照してください。 MABS の除外については、「[MABS サーバー用ウイルス対策ソフトウェアの構成](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)」を参照してください。
+はい。ウイルス対策の除外を構成することをお勧めします。 DPM の除外については、「[DPM サーバーでのウイルス対策ソフトウェアの実行](/system-center/dpm/run-antivirus-server)」を参照してください。 MABS の除外については、「[MABS サーバー用ウイルス対策ソフトウェアの構成](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)」を参照してください。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware および Hyper-V のバックアップ
 

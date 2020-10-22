@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981327"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201054"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
@@ -54,7 +54,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 1. ExpressRoute 回線に VNET がピアリングされているサブスクリプションを [Azure Portal](https://portal.azure.com) で選択します。 **[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
 
    >[!NOTE]
-   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。 既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。 既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![ポータル](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 冗長性のため、ExpressRoute 接続の両側に、少なくとも 2 つのエージェントをインストールすることをお勧めします (たとえば、オンプレミス、Azure VNET)。 エージェントは Windows Server (2008 SP1 以降) にインストールする必要があります。 Windows デスクトップ OS や Linux OS を使用した ExpressRoute 回線の監視はサポートされていません。 次の手順を使用してエージェントをインストールします。
    
   >[!NOTE]
-  >SCOM でプッシュされるエージェント ([MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx) を含む) は、Azure でホストされている場合に場所を一貫して検出できないことがあります。 ExpressRoute を監視するために Azure VNET でこれらのエージェントを使用しないことをお勧めします。
+  >SCOM でプッシュされるエージェント ([MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12)) を含む) は、Azure でホストされている場合に場所を一貫して検出できないことがあります。 ExpressRoute を監視するために Azure VNET でこれらのエージェントを使用しないことをお勧めします。
   >
 
 1. ExpressRoute の監視に使用する各サーバーに対し、**セットアップ**を実行してエージェントをインストールします。 監視に使用するサーバーとしては、VM とオンプレミスとがあり、どちらもインターネット アクセスが必須です。 エージェントは、オンプレミスに少なくとも 1 つインストールすると共に、Azure で監視する各ネットワーク セグメントにつき 1 つインストールする必要があります。
@@ -118,7 +118,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3: プロキシ設定の構成 (省略可能)
 
-Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
+Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../azure-monitor/platform/agent-windows.md)」を参照してください。
 
 コントロール パネルを使って Microsoft Monitoring Agent のプロキシ設定を構成するには:
 
@@ -161,7 +161,7 @@ PowerShell スクリプトを実行して、Network Performance Monitor に必�
 
 Azure 内のエージェント サーバーを監視するには、NPM の代理トランザクションに使用されるポートの TCP トラフィックを許可するようにネットワーク セキュリティ グループ (NSG) 規則を構成する必要があります。 既定のポートは 8084 です。 これにより、Azure VM にインストールされている監視エージェントが、オンプレミスの監視エージェントと通信できるようになります。
 
-NSG の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-create-nsg-arm-portal.md)に関するページを参照してください。
+NSG の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/tutorial-filter-network-traffic.md)に関するページを参照してください。
 
 >[!NOTE]
 >この手順に進む前に、エージェント (オンプレミス サーバー エージェントと Azure サーバー エージェントの両方) がインストール済みであること、また PowerShell スクリプトを実行済みであることを確認してください。

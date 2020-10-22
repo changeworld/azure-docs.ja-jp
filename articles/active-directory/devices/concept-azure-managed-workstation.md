@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601386"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093312"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
@@ -64,7 +64,7 @@ ms.locfileid: "90601386"
 * SWIFT 支払い端末などの機密性の高いワークステーション
 * 企業機密を扱うワークステーション
 
-リスクを軽減するには、これらのアカウントが使用されている特権ワークステーションに対して、管理者特権でのセキュリティ制御を実装する必要があります。 詳細については、「[Azure Active Directory 機能のデプロイ ガイド](../fundamentals/active-directory-deployment-checklist-p2.md)」、[Microsoft 365 ロードマップ](https://aka.ms/o365secroadmap)および[特権アクセスのセキュリティ保護のロードマップ](https://aka.ms/sparoadmap)に関するページを参照してください。
+リスクを軽減するには、これらのアカウントが使用されている特権ワークステーションに対して、管理者特権でのセキュリティ制御を実装する必要があります。 詳細については、「[Azure Active Directory 機能のデプロイ ガイド](../fundamentals/active-directory-deployment-checklist-p2.md)」、[Microsoft 365 ロードマップ](/microsoft-365/security/office-365-security/security-roadmap)および[特権アクセスのセキュリティ保護のロードマップ](/windows-server/identity/securing-privileged-access/securing-privileged-access)に関するページを参照してください。
 
 ## <a name="why-use-dedicated-workstations"></a>専用のワークステーションを使用する理由
 

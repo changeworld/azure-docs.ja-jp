@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906930"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090830"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud と Azure の負荷分散ソリューションを統合する
 
@@ -28,10 +28,10 @@ Azure には、さまざまな負荷分散ソリューションが既に用意�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Spring Cloud:[ Azure Spring Cloud サービスを作成する方法](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
-* Azure Traffic Manager:[Traffic Manager を作成する方法](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure App Gateway:[アプリケーション ゲートウェイを作成する方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Azure Front Door:[フロント ドアを作成する方法](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure Spring Cloud:[ Azure Spring Cloud サービスを作成する方法](./spring-cloud-quickstart.md)
+* Azure Traffic Manager:[Traffic Manager を作成する方法](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure App Gateway:[アプリケーション ゲートウェイを作成する方法](../application-gateway/quick-create-portal.md)
+* Azure Front Door:[フロント ドアを作成する方法](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>Azure Spring Cloud と Azure Traffic Manager を統合する
 
@@ -92,6 +92,6 @@ Azure Spring Cloud サービスと統合し、バックエンド プールを構
     ![フロント ドア 2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [Traffic Manager を作成する方法](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [アプリケーション ゲートウェイを作成する方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [フロント ドアを作成する方法](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [Traffic Manager を作成する方法](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [アプリケーション ゲートウェイを作成する方法](../application-gateway/quick-create-portal.md)
+* [フロント ドアを作成する方法](../frontdoor/quickstart-create-front-door.md)

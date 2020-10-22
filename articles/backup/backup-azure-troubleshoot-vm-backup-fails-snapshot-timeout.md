@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1711652434be3d9937c8199bc1999273ef58e4d0
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182039"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170291"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -103,7 +103,6 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 
 このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/states-lifecycle.md#provisioning-states)」を参照してください。
 
-- VMSnapshot 拡張機能が失敗の状態になっている場合は、失敗した拡張機能を右クリックして削除します。 オンデマンド バックアップをトリガーする。 このアクションにより、拡張機能が再インストールされ、バックアップ ジョブが実行されます。  <br>
 - 他の拡張機能が失敗状態にあると、バックアップが干渉される可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。
 - VM のプロビジョニング状態が更新中の状態になっている場合は、バックアップが妨げられる可能性があります。 正常であることを確認してから、バックアップ操作を再試行してください。
 

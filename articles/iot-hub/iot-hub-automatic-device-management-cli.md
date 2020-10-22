@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21d8f513ea0f749f0318b9bc5926a746f840505b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024967"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147833"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI を使用した IoT デバイス/モジュールの自動管理
 
@@ -36,7 +36,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。 
 
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
+* ご使用の環境内の [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
 
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-cli)。
 
@@ -136,7 +136,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 * --**hub-name** - 構成が作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
-* --**target-condition** - どのデバイスまたはモジュールがこの構成の対象となるかを指定する対象の条件を入力します。 自動デバイス構成の場合、条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。 自動モジュール構成の場合、条件は、モジュール ツイン タグまたはモジュール ツインの目的のプロパティに基づきます。 たとえば、`from devices.modules where tags.environment='test'` または `from devices.modules where properties.reported.chillerProperties.model='4000x'` です。
+* --**target-condition** - どのデバイスまたはモジュールがこの構成の対象となるかを指定する対象の条件を入力します。  自動デバイス構成の場合、条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。  たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。  自動モジュール構成の場合、条件は、モジュール ツイン タグまたはモジュール ツインの目的のプロパティに基づきます。 たとえば、`from devices.modules where tags.environment='test'` または `from devices.modules where properties.reported.chillerProperties.model='4000x'` です。
 
 * --**priority** - 正の整数にする必要があります。 同じデバイスまたはモジュールで複数の構成がターゲットとなっている場合は、優先度の数値が最も大きい構成が適用されます。
 
@@ -155,7 +155,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
-コマンド ウィンドウで構成を調べます。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
+コマンド ウィンドウで構成を調べます。  **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
 
 * **targetedCount** - ターゲット条件と一致する IoT Hub 内のデバイス ツインまたはモジュール ツインの数を指定するシステム メトリックです。
 
@@ -235,8 +235,8 @@ az iot hub configuration delete --config-id [configuration id] \
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)
 
 IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次を参照してください。 
 
-* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning Service](../iot-dps/index.yml)

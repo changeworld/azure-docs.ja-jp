@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fd7431b19ed21ee9cf76b6c2fe190b3f31cacf6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020883"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281045"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
@@ -82,7 +82,7 @@ S3 コレクションを使用している場合、2500 RU/秒の単一パーテ
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>20 GB を超えるストレージが必要な場合はどうすればよいですか?
 
-S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 20 GB のストレージを使用)、Azure Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](sql-api-partition-data.md)に関するページをご覧ください。 
+S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 20 GB のストレージを使用)、Azure Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)に関するページをご覧ください。 
 
 <a name="change-before"></a>
 
@@ -132,6 +132,6 @@ EA をご使用の場合は、現在の契約が終了するまで価格は保�
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
 
-1.  [Cosmos DB でのデータのパーティション分割](sql-api-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
+1.  [Cosmos DB でのデータのパーティション分割](partitioning-overview.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
 2.  [Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
 3.  [要求ユニット](request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。

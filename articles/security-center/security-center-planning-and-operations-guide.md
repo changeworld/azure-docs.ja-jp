@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713795"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341245"
 ---
 # <a name="planning-and-operations-guide"></a>計画と運用のガイド
 このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -135,7 +135,7 @@ Azure Security Center では、Log Analytics エージェントを使用して�
 
 ### <a name="agent"></a>エージェント
 
-セキュリティ ポリシーで自動プロビジョニングを有効にすると、サポートされているすべての Azure VM と作成される新しい VM に Log Analytics エージェント ([Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) または [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) の場合) がインストールされます。 VM またはコンピューターに Log Analytics エージェントが既にインストールされている場合、Azure Security Center は、現在インストールされているエージェントを活用します。 エージェントのプロセスは、他への影響が少なく設計されているため、VM のパフォーマンスに対する影響もごくわずかです。
+セキュリティ ポリシーで自動プロビジョニングを有効にすると、サポートされているすべての Azure VM と作成される新しい VM に Log Analytics エージェント ([Windows](../azure-monitor/platform/agent-windows.md) または [Linux](../azure-monitor/learn/quick-collect-linux-computer.md) の場合) がインストールされます。 VM またはコンピューターに Log Analytics エージェントが既にインストールされている場合、Azure Security Center は、現在インストールされているエージェントを活用します。 エージェントのプロセスは、他への影響が少なく設計されているため、VM のパフォーマンスに対する影響もごくわずかです。
 
 Windows 用 Log Analytics エージェントでは、TCP ポート 443 を使用する必要があります。 詳細については、[トラブルシューティングに関する記事](security-center-troubleshooting-guide.md)を参照してください。
 
@@ -217,7 +217,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 ![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-このページには、攻撃が発生した時刻、ソース ホスト名、標的となった VM に関する詳細情報のほか、推奨される手順も表示されます。 状況によっては、攻撃元の情報が空白になっていることもあります。 このような動作の詳細については、「 [Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) 」を参照してください。
+このページには、攻撃が発生した時刻、ソース ホスト名、標的となった VM に関する詳細情報のほか、推奨される手順も表示されます。 状況によっては、攻撃元の情報が空白になっていることもあります。 このような動作の詳細については、「 [Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) 」を参照してください。
 
 侵害されたシステムを特定したら、以前に作成した[ワークフローの自動化](workflow-automation.md)を実行できます。 これらは、アラートによってトリガーされた場合に Security Center から実行できるプロシージャのコレクションです。
 
@@ -233,6 +233,6 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-integration.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://docs.microsoft.com/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

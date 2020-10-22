@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983008"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147742"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
-このチュートリアルでは、Visual Studio Tools を活用し、[App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリを[デバッグ モード](/visualstudio/debugger/)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+このチュートリアルでは、Visual Studio Tools を活用し、[App Service](./overview.md) のアプリを[デバッグ モード](/visualstudio/debugger/)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
 
 学習内容:
 
@@ -49,7 +49,7 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
    >
    >
 
-    Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
+    Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 2. **サーバー エクスプローラー**で **[Azure]** を展開し、 **[App Service]** を展開します。
 3. [Azure App Service での ASP.NET Web アプリの作成](quickstart-dotnet-framework.md)に関するページで作成したアプリを含むリソース グループを展開し、アプリ ノードを右クリックして、 **[設定の表示]** をクリックします。
 
@@ -125,7 +125,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
     }
     ```
 
-1. `ViewBag.Message` の行に[ブレークポイントを設定](https://docs.microsoft.com/visualstudio/debugger/)します。
+1. `ViewBag.Message` の行に[ブレークポイントを設定](/visualstudio/debugger/)します。
 
 1. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、 **[発行]** をクリックします。
 
@@ -158,7 +158,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 2. ContosoAdsWebJob プロジェクトで、 *Functions.cs*を開きます。
 
-3. `GnerateThumbnail` メソッドの最初のステートメントに[ブレークポイントを設定](https://docs.microsoft.com/visualstudio/debugger/)します。
+3. `GnerateThumbnail` メソッドの最初のステートメントに[ブレークポイントを設定](/visualstudio/debugger/)します。
 
     ![ブレークポイントの設定](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -223,7 +223,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](https://docs.microsoft.com/visualstudio/debugger/just-my-code)」をご覧ください。
+* デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](/visualstudio/debugger/just-my-code)」をご覧ください。
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
 * 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」を参照してください。
 
@@ -312,7 +312,7 @@ Web ジョブでアプリケーション ログを作成する方法について
     ```
 
 `WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
-1. Web.config ファイルの `<system.web>` に、次のような <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
+1. Web.config ファイルの `<system.web>` に、次のような <a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">trace 要素</a>を追加します。
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -463,7 +463,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -582,7 +582,7 @@ Azure App Service のアプリのトラブルシューティングの詳細に�
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
 
 * [ASP.NET サイト上の Azure フォーラム](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [Microsoft Q&A での Azure フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+* [Microsoft Q&A での Azure フォーラム](/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio でのデバッグ

@@ -3,12 +3,12 @@ title: Hyper-V 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して Hyper-V VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a12785ea3791366badb907498796a73c2c993623
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448095"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314162"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
 
@@ -118,7 +118,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
    
    PIN を使用したサインインはサポートされていません。
 3. 正常にログインしたら、Web アプリに戻ります。 
-4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-hyper-v.md#prepare-azure)が付与されている場合、アプライアンスの登録が開始されます。
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 

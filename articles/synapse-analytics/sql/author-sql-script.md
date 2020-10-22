@@ -4,16 +4,17 @@ description: Azure Synapse Studio (プレビュー) の SQL スクリプトの�
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 9d130c2a2db9ccead7180b6248398a84fcb34c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd00c5033d0435b24d4cfb9f413b5afe74da6774
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441240"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089011"
 ---
 # <a name="using-sql-script-in-azure-synapse-studio-preview"></a>Azure Synapse Studio (プレビュー) での SQL スクリプトの使用
 

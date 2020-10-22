@@ -8,18 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75976617"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144402"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Azure Resource Manager テンプレートを使って IoT ハブとコンシューマー グループを作成する方法を学習します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Resource Manager の作成の詳細については、[Azure Resource Manager のドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/)に関する記事をご覧ください。
+Azure Resource Manager テンプレートを使って IoT ハブとコンシューマー グループを作成する方法を学習します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Resource Manager の作成の詳細については、[Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)に関する記事をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-テンプレートでは、3 つのエンドポイント (eventhub、cloud-to-device、messaging) を持つ Azure Iot ハブとコンシューマー グループが作成されます。 テンプレートの他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)」をご覧ください。 Iot Hub テンプレートのスキーマについては、[こちら](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)をご覧ください。
+テンプレートでは、3 つのエンドポイント (eventhub、cloud-to-device、messaging) を持つ Azure Iot ハブとコンシューマー グループが作成されます。 テンプレートの他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)」をご覧ください。 Iot Hub テンプレートのスキーマについては、[こちら](/azure/templates/microsoft.devices/iothub-allversions)をご覧ください。
 
 テンプレートをデプロイするには複数の方法があります。  このチュートリアルでは、Azure PowerShell を使います。
 
@@ -71,11 +71,11 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
+[lnk-rest-api]: /rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/management/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-iotedge]: ../iot-edge/quickstart-linux.md

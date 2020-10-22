@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェント – FAQ
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fb9e3993d6f56833e43a4d451c0865b7fd732d3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182515"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172511"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 
@@ -32,7 +32,7 @@ Azure portal で、お使いのコンテナーの **[プロパティ]** に移�
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>パスフレーズに許可されるのは、どのような文字ですか。
 
-パスフレーズでは、ASCII 文字セットで [ASCII 値が 127 以下](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)の文字を使用する必要があります。
+パスフレーズでは、ASCII 文字セットで [ASCII 値が 127 以下](/office/vba/language/reference/user-interface-help/character-set-0127)の文字を使用する必要があります。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。
 

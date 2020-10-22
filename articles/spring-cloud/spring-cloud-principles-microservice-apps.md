@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906867"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090677"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring マイクロサービス アプリ用の Java とベ基本 OS
 
@@ -46,7 +46,7 @@ Azul Systems では、基本オペレーティング システムに対する変
     * Ubuntu 20.04 LTS (Focal Fossa) です。 アプリは Ubuntu の最新 LTS バージョン上で継続的に使用できます。
     * 「[Ubuntu 20.04 LTS (Focal Fossa)](http://releases.ubuntu.com/focal/)」を参照してください。
 * サポートされている Java ランタイムをローカル開発用にダウンロードするにはどうすればよいですか。 
-    * 「[Azure 用の JDK および Azure Stack をインストールする](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)」を参照してください
+    * 「[Azure 用の JDK および Azure Stack をインストールする](/azure/developer/java/fundamentals/java-jdk-install)」を参照してください
 * Java ランタイム レベルの問題についてサポートを受けるにはどうすればよいですか。
     * Azure サポートでサポート チケットを開いてください。
  
@@ -57,4 +57,4 @@ Azul Systems では、基本オペレーティング システムに対する変
 ## <a name="next-steps"></a>次のステップ
 
 * [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
-* [Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)

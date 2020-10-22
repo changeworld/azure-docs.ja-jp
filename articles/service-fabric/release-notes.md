@@ -5,19 +5,19 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 467018e57a0783839cb9495fcc6df89aad9daa8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bfca7def313fc701798ff96d0ed4b18ca13ef60
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280610"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313870"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">トラブルシューティング ガイド</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題点の追跡</a> 
-- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">サポート オプション</a> 
-- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">サポートされているバージョン</a> 
+- <a href="/azure/service-fabric/service-fabric-support" target="blank">サポート オプション</a> 
+- <a href="/azure/service-fabric/service-fabric-versions" target="blank">サポートされているバージョン</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">コード サンプル</a>
 
 この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
@@ -86,11 +86,11 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 これは Service Fabric の最新リリースであり、主要な機能と機能強化が組み込まれています。
 
 ### <a name="key-announcements"></a>重要な発表
- - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)** ](./service-fabric-keyvault-references.md)[マネージド ID](./concepts-managed-identity.md) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
+ - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)** ](./service-fabric-keyvault-references.md)[マネージド ID](./concepts-managed-identity.md) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
      
 - **ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる[ステートレス サービスの最小インスタンス数](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
   
-- [**ユーザー サービスのリソース制限**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services)ユーザーは、ノード上のユーザー サービスのリソース制限を設定して、Service Fabric システム サービスのリソース不足などのシナリオを防ぐことができます。 
+- [**ユーザー サービスのリソース制限**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services)ユーザーは、ノード上のユーザー サービスのリソース制限を設定して、Service Fabric システム サービスのリソース不足などのシナリオを防ぐことができます。 
   
 - 特定の種類のレプリカの[**非常に高いサービス移動コスト**](./service-fabric-cluster-resource-manager-movement-cost.md)。 移動コストが非常に高いレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ移動されます。 "非常に高い" 移動コストの使用が妥当である状況、およびその他の考慮事項については、リンク先のドキュメントを参照してください。
   

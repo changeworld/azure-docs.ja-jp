@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563898"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093091"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -62,7 +62,7 @@ FAQ:「[Azure AD デバイス管理の FAQ](faq.md)」および「[設定とデ�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)し、プロジェクトにおけるその利害関係者の役割がよく理解されていることを確認します。 
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)し、プロジェクトにおけるその利害関係者の役割がよく理解されていることを確認します。 
 
 このプランでは、次の利害関係者をリストに追加します。
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892641"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094060"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -176,12 +176,12 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 
 * [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)に関するページ
 
-* [Azure メトリックス エクスプローラーの概要](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)
 
-* [診断設定でログとメトリックを分析する](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [診断設定でログとメトリックを分析する](./diagnostic-services.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
+* [チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する](./spring-cloud-tutorial-alerts-action-groups.md)
 
-* [Azure Spring Cloud のクォータとサービス プラン](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
+* [Azure Spring Cloud のクォータとサービス プラン](./spring-cloud-quotas.md)

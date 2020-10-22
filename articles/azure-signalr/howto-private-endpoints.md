@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84302144"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152331"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Azure SignalR Service のプライベート エンドポイントを使用する
 
@@ -82,8 +82,8 @@ Azure SignalR Service のプライベート エンドポイントに推奨され
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
 
-- [Azure 仮想ネットワーク内のリソースの名前解決](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [プライベート エンドポイントの DNS 構成](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
 
@@ -198,7 +198,7 @@ Free レベルの Azure SignalR Service のプライベート エンドポイン
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>プライベート エンドポイントがあるサブネットのネットワーク セキュリティ グループ規則
 
-現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用される NSG 規則は、プライベート エンドポイントに適用されます。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
+現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用される NSG 規則は、プライベート エンドポイントに適用されます。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

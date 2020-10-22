@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575182"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205321"
 ---
 # <a name="configure-the-model-conversion"></a>モデルの変換を構成する
 
@@ -258,7 +258,7 @@ ms.locfileid: "91575182"
 ### <a name="texture-sizes"></a>テクスチャのサイズ
 
 シナリオの種類によっては、テクスチャ データの量がメッシュ データのために使用されるメモリを上回る場合があります。 写真測量モデルにその可能性があります。
-変換構成には、テクスチャを自動的にスケールダウンする方法は用意されていません。 必要であれば、クライアント側の処理前の手順として、テクスチャのスケーリングを実行する必要があります。 ただし、変換手順では、適切な[テクスチャ圧縮形式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)の選択は実行されます。
+変換構成には、テクスチャを自動的にスケールダウンする方法は用意されていません。 必要であれば、クライアント側の処理前の手順として、テクスチャのスケーリングを実行する必要があります。 ただし、変換手順では、適切な[テクスチャ圧縮形式](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)の選択は実行されます。
 
 * 不透明の色テクスチャでは `BC1`
 * アルファ チャネル付きのソースの色テクスチャでは `BC7`

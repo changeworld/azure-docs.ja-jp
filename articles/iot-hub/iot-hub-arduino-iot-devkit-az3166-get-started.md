@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5147d6d7f1bd1fcd43835f6a66196c7642ad4ff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839556"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151953"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -33,7 +33,7 @@ ms.locfileid: "91839556"
 
 DevKit をお持ちでない場合は、 [DevKit シミュレーター](https://azure-samples.github.io/iot-devkit-web-simulator/)を使用するか、[DevKit を購入](https://aka.ms/iot-devkit-purchase)してください。
 
-DevKit のすべてのチュートリアルのソース コードは、[コード サンプル ギャラリー](https://docs.microsoft.com/samples/browse/?term=mxchip)に関するページにあります。
+DevKit のすべてのチュートリアルのソース コードは、[コード サンプル ギャラリー](/samples/browse/?term=mxchip)に関するページにあります。
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -267,7 +267,7 @@ Azure portal から Azure IoT Hub とデバイスをプロビジョニングす�
 
     ![サブスクリプションの選択](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
 
-1. [リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology)を選択するか、新しく作成します。
+1. [リソース グループ](../azure-resource-manager/management/overview.md#terminology)を選択するか、新しく作成します。
 
     ![リソース グループの選択](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892575"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093040"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -27,7 +27,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 監視するログ カテゴリとメトリック カテゴリを選択します。
 
 > [!TIP]
-> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
+> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
 
 ## <a name="logs"></a>ログ
 
@@ -38,7 +38,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 ## <a name="metrics"></a>メトリック
 
-メトリックの完全な一覧については、[Spring Cloud のメトリック](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)に関する記事を参照してください。
+メトリックの完全な一覧については、[Spring Cloud のメトリック](./spring-cloud-concept-metrics.md#user-metrics-options)に関する記事を参照してください。
 
 まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
 
@@ -110,7 +110,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 > [!NOTE]
 > `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
-Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](../azure-monitor/log-query/query-language.md)」を参照してください。
+Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 ### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する
 
@@ -131,7 +131,7 @@ Log Analytics で使用されるクエリ言語の詳細については、「[Az
 1. アプリケーション ログを確認するには、**insights-logs-applicationconsole** という名前のイベント ハブを検索します。
 1. アプリケーション メトリックを確認するには、**insights-metrics-pt1m** という名前のイベント ハブを検索します。
 
-イベント ハブへの診断情報の送信の詳細については、「[Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs)」を参照してください。
+イベント ハブへの診断情報の送信の詳細については、「[Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)」を参照してください。
 
 ## <a name="analyze-the-logs"></a>ログの分析
 

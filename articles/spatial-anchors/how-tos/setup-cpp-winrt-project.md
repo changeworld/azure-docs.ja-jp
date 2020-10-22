@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 710f023a64f66e486bb2db9c08807af3431d0016
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43d5c1ae03c359dcbef21f8e7ba3205bc6ab0004
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87812264"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096115"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>C++/WinRT HoloLens プロジェクトでの Azure Spatial Anchors の構成
 
@@ -25,7 +25,7 @@ ms.locfileid: "87812264"
 
 HoloLens および C++/WinRT 用の Spatial Anchors は、[Microsoft.Azure.SpatialAnchors.WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet パッケージを使用して配布されます。
 
-[こちら](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio)の手順に従い、Visual Studio の NuGet パッケージ マネージャーを使用して、お使いのプロジェクトに [Microsoft.Azure.SpatialAnchors.WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet パッケージをインストールします。
+[こちら](/nuget/consume-packages/install-use-packages-visual-studio)の手順に従い、Visual Studio の NuGet パッケージ マネージャーを使用して、お使いのプロジェクトに [Microsoft.Azure.SpatialAnchors.WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet パッケージをインストールします。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: バックアップ センターを使用してバックアップ資産を
 description: バックアップ センターを使用して、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614337"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173796"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>バックアップ センターを使用してバックアップ資産を管理する
 
@@ -26,15 +26,15 @@ ms.locfileid: "91614337"
 
 ## <a name="azure-policies-for-backup"></a>バックアップ用の Azure ポリシー
 
-バックアップに使用できるすべての [Azure ポリシー](https://docs.microsoft.com/azure/governance/policy/overview)を表示するには、 **[バックアップ用の Azure ポリシー]** メニュー項目を選択します。 これにより、サブスクリプションとリソース グループへの割り当てに使用できる、組み込みとカスタムのすべての[バックアップ用の Azure ポリシー定義](policy-reference.md)が表示されます。
+バックアップに使用できるすべての [Azure ポリシー](../governance/policy/overview.md)を表示するには、 **[バックアップ用の Azure ポリシー]** メニュー項目を選択します。 これにより、サブスクリプションとリソース グループへの割り当てに使用できる、組み込みとカスタムのすべての[バックアップ用の Azure ポリシー定義](policy-reference.md)が表示されます。
 
-いずれかの定義を選択すると、スコープに[ポリシーを割り当てる](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy)ことができます。
+いずれかの定義を選択すると、スコープに[ポリシーを割り当てる](../governance/policy/tutorials/create-and-manage.md#assign-a-policy)ことができます。
 
 ![Azure ポリシー定義を選択する](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
 ## <a name="backup-compliance"></a>バックアップ コンプライアンス
 
-[バックアップ コンプライアンス] メニュー項目をクリックすると、Azure 環境に割り当てたさまざまな組み込みのポリシーに従って、リソースの[コンプライアンス](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data)を表示できます。 すべてのポリシーに準拠しているリソースの割合、および 1 つ以上の非対応リソースを持つポリシーを表示できます。
+[バックアップ コンプライアンス] メニュー項目をクリックすると、Azure 環境に割り当てたさまざまな組み込みのポリシーに従って、リソースの[コンプライアンス](../governance/policy/how-to/get-compliance-data.md)を表示できます。 すべてのポリシーに準拠しているリソースの割合、および 1 つ以上の非対応リソースを持つポリシーを表示できます。
 
 ![バックアップ コンプライアンスの表示](./media/backup-center-govern-environment/azure-policy-compliance.png)
 

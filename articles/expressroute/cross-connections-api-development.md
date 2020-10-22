@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397850"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202482"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API の開発と統合
 
@@ -30,7 +30,7 @@ expressRouteCrossConnections リソースへの移行のメリット:
 
 * ExpressRoute パートナー向けの今後の機能強化はすべて、ExpressRouteCrossConnection リソースで利用可能になる予定です。
 
-* パートナーは、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を expressRouteCrossConnection リソースに適用できます。 これらの制御では、expressRouteCrossConnection リソースと add/update/delete ピアリングの構成を変更できるユーザー アカウントへのアクセス許可を定義できます。
+* パートナーは、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を expressRouteCrossConnection リソースに適用できます。 これらの制御では、expressRouteCrossConnection リソースと add/update/delete ピアリングの構成を変更できるユーザー アカウントへのアクセス許可を定義できます。
 
 * expressRouteCrossConnection リソースでは、ExpressRoute 接続のトラブルシューティングに役立つ可能性のある API が公開されています。 これには、ARP テーブル、BGP ルート テーブルの概要、および BGP ルート テーブルの詳細が含まれます。 この機能は、従来のデプロイ API ではサポートされていません。
 
@@ -51,7 +51,7 @@ Partner API に対して開発を行うには、ExpressRoute パートナーは�
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2.Dev_Provider サブスクリプションを登録して expressRouteCrossConnections API にアクセスする
 
-expressRouteCrossConnections API にアクセスするためには、パートナー サブスクリプションが **Microsoft.Network Resource Provider** に登録されている必要があります。 「[Azure リソース プロバイダーと種類](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)」の記事にある手順に従って、登録プロセスを完了します。
+expressRouteCrossConnections API にアクセスするためには、パートナー サブスクリプションが **Microsoft.Network Resource Provider** に登録されている必要があります。 「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の記事にある手順に従って、登録プロセスを完了します。
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3.Azure Resource Manager REST API の呼び出し用に認証を設定する
 
@@ -59,8 +59,8 @@ expressRouteCrossConnections API にアクセスするためには、パート�
 
 認証プロセスには、2 つの主な手順があります。
 
-1. [クライアントを登録する](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)。
-2. [アクセス要求を作成する](https://docs.microsoft.com/rest/api/azure/#create-the-request)。
+1. [クライアントを登録する](/rest/api/azure/#register-your-client-application-with-azure-ad)。
+2. [アクセス要求を作成する](/rest/api/azure/#create-the-request)。
 
 ### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4.クライアント アプリケーションに対するネットワーク共同作成者のアクセス許可を提供する
 
@@ -76,12 +76,12 @@ expressRouteCrossConnections API にアクセスするためには、パート�
 
 ### <a name="5-develop"></a>5.開発
 
-[expressRouteCrossConnections API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) に対する開発を行います。
+[expressRouteCrossConnections API](/rest/api/expressroute/expressroutecrossconnections) に対する開発を行います。
 
 ## <a name="rest-api"></a>REST API
 
-REST API のドキュメントについては、[ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) に関する記事を参照してください。
+REST API のドキュメントについては、[ExpressRoute CrossConnections REST API](/rest/api/expressroute/expressroutecrossconnections) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-すべての ExpressRoute REST API に関する詳細については、「[ExpressRoute REST API](https://docs.microsoft.com/rest/api/expressroute/)」を参照してください。
+すべての ExpressRoute REST API に関する詳細については、「[ExpressRoute REST API](/rest/api/expressroute/)」を参照してください。

@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97142e0c512f4f95235ad08c94c852906d3efd8
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660852"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095858"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション
 Azure Active Directory (Azure AD) Connect を使用すると、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD でフェデレーションを構成できます。 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。また、企業ネットワーク上では、パスワードを再度入力する必要はありません。 AD FS によるフェデレーション オプションを使用すると、AD FS の新しいインストールをデプロイすることも、Windows Server 2012 R2 ファームの既存のインストールを指定することもできます。
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) Connect を使用すると、オンプレミ�
 | **Azure AD Connect ユーザーのサインイン オプション** | |
 | [ユーザー サインイン オプションについて](plan-connect-user-signin.md) |さまざまなユーザー サインイン オプションと、各オプションが Azure サインイン ユーザー エクスペリエンスに及ぼす影響について説明します。 |
 | **Azure AD Connect を使用した AD FS のインストール** | |
-| [前提条件](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Azure AD Connect 経由の正常な AD FS インストールの前提条件を確認します。 |
+| [前提条件](how-to-connect-install-custom.md#ad-fs-configuration-prerequisites) |Azure AD Connect 経由の正常な AD FS インストールの前提条件を確認します。 |
 | [AD FS ファームの構成](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Azure AD Connect を使用して、新しい AD FS ファームをインストールします。 |
 | [代替ログイン ID を使用して Azure AD とフェデレーションする](how-to-connect-fed-management.md#alternateid) | 代替ログイン ID を使用してフェデレーションを構成する  |
 | **AD FS 構成の変更** | |

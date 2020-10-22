@@ -3,12 +3,12 @@ title: Azure Migrate を使用して Azure に移行するために多数の VMw
 description: Azure Migrate サービスを使用して Azure に移行するために多数の VMware VM を評価する方法について説明します。
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171904"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314111"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure への移行のために多数の VMware VM を評価する
 
@@ -26,7 +26,7 @@ ms.locfileid: "87171904"
 
 
 > [!NOTE]
-> 大規模な評価を行う前に、いくつかの VM を評価するための概念実証を試す場合は、[チュートリアル シリーズ](tutorial-prepare-vmware.md)に従ってください
+> 大規模な評価を行う前に、いくつかの VM を評価するための概念実証を試す場合は、[チュートリアル シリーズ](./tutorial-discover-vmware.md)に従ってください
 
 ## <a name="plan-for-assessment"></a>評価の計画
 
@@ -78,7 +78,7 @@ ms.locfileid: "87171904"
 2. Azure Migrate とやり取りするために、自分の Azure アカウントのアクセス許可を設定します。
 3. 評価用に VMware を準備します。
 
-[このチュートリアル](tutorial-prepare-vmware.md)の手順に従って、これらの設定を構成します。
+[このチュートリアル](./tutorial-discover-vmware.md)の手順に従って、これらの設定を構成します。
 
 
 ## <a name="create-a-project"></a>プロジェクトの作成
@@ -96,7 +96,7 @@ ms.locfileid: "87171904"
 1. 移行計画に備えて評価をレビューします。
 
 
-[このチュートリアル](tutorial-assess-vmware.md)の手順に従って、これらの設定を構成します。
+[このチュートリアル](./tutorial-assess-vmware-azure-vm.md)の手順に従って、これらの設定を構成します。
     
 
 ## <a name="next-steps"></a>次のステップ

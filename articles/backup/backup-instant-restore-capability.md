@@ -4,12 +4,12 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000381"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173923"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -60,6 +60,8 @@ ms.locfileid: "89000381"
 ## <a name="configure-snapshot-retention"></a>スナップショットのリテンション期間の構成
 
 ### <a name="using-azure-portal"></a>Azure Portal の使用
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Azure portal の **VM バックアップ ポリシー** ウィンドウ ( **[インスタント リストア]** セクションの下) にフィールドが追加されているのを確認できます。 特定のバックアップ ポリシーに関連付けられているすべての VM の **[VM Backup Policy]\(VM バックアップ ポリシー\)** ウィンドウで、スナップショットの保持期間を変更することができます。
 

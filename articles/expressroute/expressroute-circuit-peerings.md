@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566502"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202346"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
@@ -70,7 +70,7 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
 
 ## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute の正常性
 
-[Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) を使用して、ExpressRoute 回線の可用性、VNet の接続、および帯域幅の使用状況を監視できます。
+[Network Performance Monitor](../networking/network-monitoring-overview.md) (NPM) を使用して、ExpressRoute 回線の可用性、VNet の接続、および帯域幅の使用状況を監視できます。
 
 NPM は、Azure プライベート ピアリングと Microsoft ピアリングの正常性を監視します。 詳細については、こちらの[ブログ](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/)を参照してください。
 

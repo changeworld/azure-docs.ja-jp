@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906884"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088603"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud でサーキット ブレーカー ダッシュボードを使用する
 
@@ -42,7 +42,7 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>Azure Spring Cloud インスタンスをプロビジョニングする
-手順「[Azure CLI でサービス インスタンスをプロビジョニングする](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)」に従ってください。
+手順「[Azure CLI でサービス インスタンスをプロビジョニングする](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)」に従ってください。
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Azure Spring Cloud にアプリケーションをデプロイする
 これらのアプリでは **Config Server** は使用されません。そのため、Azure Spring Cloud 用に **Config Server** を設定する必要はありません。  次のように作成してデプロイします。
@@ -82,6 +82,6 @@ Hystrix メトリック ストリームには、`test-endpoint` からアクセ�
 Web アプリとして、Hystrix ダッシュボードが `test-endpoint` 上で機能している必要があります。 正常に機能していない場合は、次の 2 つの理由が考えられます。1 つは、`test-endpoint` を使用したことで、ベース URL が `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` から変更されたため。もう 1 つは Web アプリで静的リソースに絶対パスが使用されているため。 `test-endpoint` で動作させるには、フロントエンド ファイル内の <base> を手動で編集することが必要になる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure CLI でサービス インスタンスをプロビジョニングする](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Azure CLI でサービス インスタンスをプロビジョニングする](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する](./spring-cloud-tutorial-prepare-app-deployment.md)
 ::: zone-end
