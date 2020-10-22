@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database 用の組み込みポリシー定義
 description: Azure SQL Database および SQL Managed Instance 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8f18ced3e27357d38908c12caf17a325af997a7d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8e6bae47a18cac40845b50aa4508c165092d2ca3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826610"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320065"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用の Azure Policy 組み込み定義
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

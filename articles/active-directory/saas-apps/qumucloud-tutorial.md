@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 37005176452ba75f6b79af7ab1bf9faab5402f51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c75e2f635c14556cfd08ab73a66d8ebc30aeb8e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548935"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>チュートリアル: Azure Active Directory と Qumu Cloud の統合
 
@@ -101,7 +101,7 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Qumu Cloud のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.qumucloud.com/saml/SSO` の形式で URL を入力します。
 
@@ -109,7 +109,7 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Qumu Cloud のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.qumucloud.com` という形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
 6. Qumu Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 7. その他に、Qumu Cloud アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -131,9 +131,9 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639836"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277508"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -77,7 +77,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure Relay** | Microsoft.Relay/namespaces | namespace |
 |**Azure Event Grid** | Microsoft.EventGrid/topics    | topic |
 |**Azure Event Grid** | Microsoft.EventGrid/domains    | domain |
-|**Azure WebApps** | Microsoft.Web/sites    | sites |
+|**Azure App Service** | Microsoft.Web/sites    | sites |
 |**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | ワークスペース |
 |**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
 |**Azure Monitor** | Microsoft.Insights/privateLinkScopes    | azuremonitor |

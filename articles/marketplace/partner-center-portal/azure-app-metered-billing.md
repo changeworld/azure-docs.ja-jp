@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320053"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280454"
 ---
 # <a name="managed-application-metered-billing"></a>マネージド アプリケーションの従量制課金 
 
@@ -117,7 +117,7 @@ Marketplace の測定サービスで使用されるディメンションは、�
 * お客様の側でのエラーまたはバグが原因でエスカレートする必要がある問題 (例: 間違った使用状況イベント)。
 * 従量制課金に関連するその他の問題。
 
-「[パートナー センターでの商業マーケットプレース プログラムのサポート](./support.md)」の手順に従って、公開元のサポート オプションを理解し、Microsoft のサポート チケットを開きます。
+「[パートナー センターでの商業マーケットプレース プログラムのサポート](../support.md)」の手順に従って、公開元のサポート オプションを理解し、Microsoft のサポート チケットを開きます。
 
 ## <a name="next-steps"></a>次のステップ
 

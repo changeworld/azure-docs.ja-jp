@@ -2,16 +2,15 @@
 title: 複数ユーザーのための Azure Data Lake Analytics のセキュリティ保護
 description: Azure Data Lake Analytics でジョブの実行に複数のユーザーを構成する方法を説明します。
 ms.service: data-lake-analytics
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
-ms.openlocfilehash: 9006a22c588a7f1456585d40da0b4345145c6d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52bdd80dba1d5de150f403199fbd5c14d188a410
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132485"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220144"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のジョブ情報へのユーザー アクセスを構成します。 
 

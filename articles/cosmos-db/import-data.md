@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 66eee67ae191d764228a85aaf1e63eae43208cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537737"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278150"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
@@ -344,7 +344,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 ## <a name="import-to-the-sql-api-bulk-import"></a><a id="SQLBulkTarget"></a>SQL API へのインポート (一括インポート)
 
-Azure Cosmos DB 一括インポーターを使用すると、Azure Cosmos DB ストアド プロシージャによって使用可能な任意のソース オプションからインポートできるようになり、効率が向上します。 このツールは、1 つの単一パーティション Azure Cosmos コンテナーへのインポートをサポートします。 また、データが複数の単一パーティションの Azure Cosmos コンテナーにパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関する記事をご覧ください。 このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。  
+Azure Cosmos DB 一括インポーターを使用すると、Azure Cosmos DB ストアド プロシージャによって使用可能な任意のソース オプションからインポートできるようになり、効率が向上します。 このツールは、1 つの単一パーティション Azure Cosmos コンテナーへのインポートをサポートします。 また、データが複数の単一パーティションの Azure Cosmos コンテナーにパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)に関する記事をご覧ください。 このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。  
 
 :::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="JSON ファイル ソース オプションのスクリーンショット - データベース移行ツール":::
 
@@ -403,7 +403,7 @@ Azure Cosmos DB 一括インポーターには、次の詳細オプションが�
 
 ## <a name="import-to-the-sql-api-sequential-record-import"></a><a id="SQLSeqTarget"></a>SQL API へのインポート (シーケンシャル レコードのインポート)
 
-Azure Cosmos DB シーケンシャル レコード インポーターを使用すると、レコードで使用可能なソース オプションからレコード単位でインポートできます。 ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。 このツールは、単一の Azure Cosmos コンテナー (単一パーティション コンテナーと複数パーティション コンテナーの両方) へのインポートをサポートします。 また、複数の単一パーティション Azure Cosmos コンテナー全体、または複数パーティション Azure Cosmos コンテナー全体でデータがパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関する記事をご覧ください。
+Azure Cosmos DB シーケンシャル レコード インポーターを使用すると、レコードで使用可能なソース オプションからレコード単位でインポートできます。 ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。 このツールは、単一の Azure Cosmos コンテナー (単一パーティション コンテナーと複数パーティション コンテナーの両方) へのインポートをサポートします。 また、複数の単一パーティション Azure Cosmos コンテナー全体、または複数パーティション Azure Cosmos コンテナー全体でデータがパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)に関する記事をご覧ください。
 
 :::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="JSON ファイル ソース オプションのスクリーンショット - データベース移行ツール":::
 

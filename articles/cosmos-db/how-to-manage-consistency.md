@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330589"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279609"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -288,8 +288,9 @@ item = client.ReadItem(doc_link, options)
 データの競合を管理する方法について学習するか、Azure Cosmos DB に関する次の主要概念に進んでください。 次の記事をご覧ください。
 
 * [Azure Cosmos DB の整合性レベル](consistency-levels.md)
-* [リージョン間の競合の管理](how-to-manage-conflicts.md)
 * [パーティション分割とデータ分散](partition-data.md)
+* [リージョン間の競合の管理](how-to-manage-conflicts.md)
+* [パーティション分割とデータ分散](partitioning-overview.md)
 * [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [高可用性](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729000"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319821"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric マネージド クラスターに関してよく寄せられる質問
 
@@ -41,7 +41,7 @@ SLA は、現在の Service Fabric リソース モデルから変更されま�
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Basic SKU と Standard SKU のクラスターでは何が違いますか?
 
-Basic SKU クラスターを使用すると、ほとんどの構成が Service Fabric リソース プロバイダーによって提供されます。 Basic SKU クラスターは、テスト環境および運用前環境での使用が意図されています。 Standard SKU クラスターを使用すると、ユーザーがニーズを満たすようにクラスターを構成できます。 詳細については、「[Service Fabric マネージド クラスターの SKU](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus)」を参照してください。
+Basic SKU クラスターを使用すると、ほとんどの構成が Service Fabric リソース プロバイダーによって提供されます。 Basic SKU クラスターは、テスト環境および運用前環境での使用が意図されています。 Standard SKU クラスターを使用すると、ユーザーがニーズを満たすようにクラスターを構成できます。 詳細については、「[Service Fabric マネージド クラスターの SKU](./overview-managed-cluster.md#service-fabric-managed-cluster-skus)」を参照してください。
 
 ## <a name="cluster-deployment-and-management"></a>クラスターのデプロイと管理
 
@@ -66,7 +66,7 @@ Basic SKU クラスターを使用すると、ほとんどの構成が Service F
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスター用のローカル開発エクスペリエンスはありますか?
 
-ローカル開発エクスペリエンスは、既存の Service Fabric クラスターから変更されていません。 ローカル開発エクスペリエンスの詳細については、[.NET アプリケーションの作成](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-dotnet)に関する記事を参照してください。
+ローカル開発エクスペリエンスは、既存の Service Fabric クラスターから変更されていません。 ローカル開発エクスペリエンスの詳細については、[.NET アプリケーションの作成](./service-fabric-quickstart-dotnet.md)に関する記事を参照してください。
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>アプリケーションを Azure Resource Manager リソースとしてデプロイできますか?
 

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cbdeca41746099643fb06ff5861a39b2e032b33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974396"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126705"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -93,7 +93,7 @@ ms.locfileid: "90974396"
 
 エクスポート先となる既存の Azure Storage アカウントがない場合は、次の手順に従います。
 
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](../../storage/blobs/storage-quickstart-blobs-portal.md)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/common/storage-account-create.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
 
     |パフォーマンス レベル|アカウントの種類|
     |-|-|

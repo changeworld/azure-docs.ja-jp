@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 8a21fecbe39008a79b60bdc9f133c3540d440207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a467da5d249ee1c1c49a4630d281c914506690e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545082"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>チュートリアル: Azure Active Directory と Soonr Workplace の統合
 
@@ -99,7 +99,7 @@ Soonr Workplace で Azure AD シングル サインオンを構成するには�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Soonr Workplace のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/metadata` の形式で URL を入力します。
 
@@ -107,7 +107,7 @@ Soonr Workplace で Azure AD シングル サインオンを構成するには�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Soonr Workplace のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/SSO` という形式で URL を入力します。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 用の組み込みポリシー定義
 description: Azure Spring Cloud 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: ffbd4f3b030a807bd6b72795e71b92dc2764b65e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 754166132caa7abcf27f5fc42c897097be9460bd
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818860"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330327"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Spring Cloud 用の Azure Policy 組み込み定義
 

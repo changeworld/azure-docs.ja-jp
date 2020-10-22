@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f45a1481661aa350815560d795ab7411f99545
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979496"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317840"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ
 
@@ -154,7 +154,7 @@ ms.locfileid: "90979496"
 
 ## <a name="programmatic-administration"></a>プログラムによる管理
 
-Microsoft Graph を使用して、アクセス パッケージ、カタログ、ポリシー、要求、および割り当てを管理することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、[エンタイトルメント管理 API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta ) を呼び出すことができます。
+Microsoft Graph を使用して、アクセス パッケージ、カタログ、ポリシー、要求、および割り当てを管理することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、[エンタイトルメント管理 API](/graph/tutorial-access-package-api?view=graph-rest-beta) を呼び出すことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

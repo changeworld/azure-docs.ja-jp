@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015638"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276975"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プル モデル
 
@@ -112,7 +112,7 @@ while (iteratorForThePartitionKey.HasMoreResults)
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-コンテナーの FeedRange の一覧を取得すると、[物理パーティション](partition-data.md#physical-partitions)ごとに 1 つの `FeedRange` が得られます。
+コンテナーの FeedRange の一覧を取得すると、[物理パーティション](partitioning-overview.md#physical-partitions)ごとに 1 つの `FeedRange` が得られます。
 
 次に、`FeedRange` を使用して `FeedIterator` を作成することにより、複数のマシンやスレッドの変更フィードの処理を並列化できます。 前の例では、コンテナー全体または単一のパーティション キーに対応する 1 つの `FeedIterator` を取得する方法を示しましたが、FeedRanges を使用して、変更フィードを並列処理できる複数の FeedIterator を取得することも可能です。
 

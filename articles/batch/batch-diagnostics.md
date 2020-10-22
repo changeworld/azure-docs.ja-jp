@@ -4,12 +4,12 @@ description: プールやタスクなど Azure Batch アカウント リソー�
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848689"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108101"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -105,7 +105,7 @@ Azure portal に新しい診断設定を作成するには、次の手順に従�
 6. **[ServiceLog]** 、 **[AllMetrics]** 、またはその両方を選択します。
 7. **[保存]** を選択して診断設定を作成します。
 
-[Azure portal で Azure Monitor を使用して収集を有効にする](../azure-monitor/platform/diagnostic-settings.md)ことで、診断設定を構成することもでき、これを行うには、[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-settings-template.md)を使用するか、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
+[Azure portal で Azure Monitor を使用して収集を有効にする](../azure-monitor/platform/diagnostic-settings.md)ことで、診断設定を構成することもでき、これを行うには、[Resource Manager テンプレート](../azure-monitor/samples/resource-manager-diagnostic-settings.md)を使用するか、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする
 

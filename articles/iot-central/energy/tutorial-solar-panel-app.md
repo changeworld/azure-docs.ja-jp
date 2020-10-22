@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c0f4c4deaa57b1414a3ef55226e4c451b53ba72c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 145aefbe5a31d71ae614826c63d285c37ac03571
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971303"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123927"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>チュートリアル:ソーラーパネル監視アプリ テンプレートの作成とチュートリアル 
 
@@ -108,6 +108,6 @@ Adatum は、ソーラー パネルを監視および管理する架空のエネ
 ## <a name="next-steps"></a>次のステップ
 * ソーラー パネル アプリのアーキテクチャの詳細について概念に関する記事を確認します 
 > [!div class="nextstepaction"]
-> <bpt id="p1">[</bpt>the concept article<ept id="p1">](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)</ept>
+> <bpt id="p1">[</bpt>the concept article<ept id="p1">](./concept-iot-central-solar-panel-app.md)</ept>
 * ソーラー パネル アプリケーション テンプレートを無料で作成する: [ソーラー パネル アプリ](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* IoT Central の詳細について、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)を参照する
+* IoT Central の詳細について、[IoT Central の概要](../index.yml)を参照する

@@ -4,12 +4,12 @@ description: 共通アラート スキーマの理解、使用すべき理由と
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539484"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108832"
 ---
 # <a name="common-alert-schema"></a>共通アラート スキーマ
 
@@ -39,7 +39,7 @@ ms.locfileid: "86539484"
 
 また、新しいスキーマにより、Azure portal と Azure mobile app の両方で、より優れたアラート使用エクスペリエンスを可能にします。 
 
-[Webhooks、Logic Apps、Azure Functions、Automation Runbooks のスキーマ定義について説明します。](https://aka.ms/commonAlertSchemaDefinitions)
+[Webhooks、Logic Apps、Azure Functions、Automation Runbooks のスキーマ定義について説明します。](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > 次のアクションでは、共通アラート スキーマはサポートされません。ITSM Connector。
@@ -120,5 +120,5 @@ ms.locfileid: "86539484"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義。](https://aka.ms/commonAlertSchemaDefinitions)
-- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](./alerts-common-schema-integrations.md) 
+- [Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義。](./alerts-common-schema-definitions.md)
+- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](./alerts-common-schema-integrations.md)

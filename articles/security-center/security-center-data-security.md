@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018272"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339477"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 
@@ -51,7 +51,7 @@ Microsoft は、防止と検出の機能を強化するために、複数のテ�
 ## <a name="manage-data-collection-from-machines"></a>仮想マシンからデータ収集を管理する
 Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Security Center で、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシン上に Log Analytics エージェントが Security Center によってプロビジョニングされます。
 
-Log Analytics エージェントは、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://docs.microsoft.com/windows/win32/etw/event-tracing-portal) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Log Analytics エージェントは、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また、Log Analytics エージェントによって、プロセス作成イベントとコマンド ラインの監査が有効化されます。
+Log Analytics エージェントは、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](/windows/win32/etw/event-tracing-portal) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Log Analytics エージェントは、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また、Log Analytics エージェントによって、プロセス作成イベントとコマンド ラインの監査が有効化されます。
 
 Azure Defender を使用していない場合は、セキュリティ ポリシーで仮想マシンからのデータ収集を無効にすることもできます。 Azure Defender によって保護されているサブスクリプションには、データ収集が必須です。 データ収集が無効になっていても、VM ディスクのスナップショットとアーティファクトの収集は引き続き有効になります。
 
@@ -85,7 +85,7 @@ Azure Defender を使用していない場合は、セキュリティ ポリシ�
 | [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)                       | セキュリティに関するすべてのアラート、承認された Security Center の [Just-In-Time](security-center-just-in-time.md) アクセス要求、[適応型アプリケーション制御](security-center-adaptive-application.md)によって生成されたすべてのアラート。|
 | [Azure Monitor ログ](../azure-monitor/platform/data-platform.md)                      | すべてのセキュリティ アラート。                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | セキュリティ アラート、セキュリティに関する推奨事項、脆弱性評価の結果、セキュリティで保護されたスコア情報、コンプライアンス チェックのステータスなど。                                                                       |
-| [Azure Security Center REST API](https://docs.microsoft.com/rest/api/securitycenter/) | セキュリティ アラート、セキュリティに関する推奨事項など。                                                                                                                                                                |
+| [Azure Security Center REST API](/rest/api/securitycenter/) | セキュリティ アラート、セキュリティに関する推奨事項など。                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>次のステップ

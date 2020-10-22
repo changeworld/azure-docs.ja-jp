@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c8fb60a4b549a7203057dd60298d2ae0540450d6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803791"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122655"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
 
@@ -45,7 +45,7 @@ IoT Central アプリケーションでは、デバイス テンプレートは�
 - Visual Studio Code を使用してデバイス機能モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス機能モデルを手動でインポートしてから、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
 - Visual Studio Code を使用してデバイス機能モデルを作成します。 モデルからデバイス コードを実装し、デバイス優先接続を使用して実際のデバイスを IoT Central アプリケーションに接続します。 IoT Central は、パブリック リポジトリからデバイス機能モデルを検索してインポートします。 その後、IoT Central アプリケーションが必要とするクラウド プロパティ、カスタマイズ、およびダッシュボードをデバイス テンプレートに追加できます。
 
-また、[REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) または [CLI](howto-manage-iot-central-from-cli.md) を使用して、IoT Central アプリケーションにデバイス テンプレートを追加することもできます。
+また、[REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) または [CLI](howto-manage-iot-central-from-cli.md) を使用して、IoT Central アプリケーションにデバイス テンプレートを追加することもできます。
 
 一部の[アプリケーション テンプレート](concepts-app-templates.md)には、アプリケーション テンプレートでサポートされるシナリオで役に立つデバイス テンプレートが既に含まれてます。 例については、「[ストア内の分析のアーキテクチャ](../retail/store-analytics-architecture.md)」を参照してください。
 

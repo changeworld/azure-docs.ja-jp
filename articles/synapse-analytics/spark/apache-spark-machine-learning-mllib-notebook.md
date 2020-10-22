@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540321"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369337"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -286,7 +286,7 @@ plt.show()
 
 - [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)
+- [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
 > Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) エクスペリエンスを使用してください。

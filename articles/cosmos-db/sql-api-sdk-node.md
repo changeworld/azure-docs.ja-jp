@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 106f446c56377c1211d04e388608cd31e2aeef23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3834b1890cb20b717462c4cb8ed1f779570c675
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804216"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275222"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -353,7 +353,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * ドキュメントの有効期限 (TTL) 機能のサポートを追加しました。
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* [パーティション分割コレクション](partition-data.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
+* [パーティション分割コレクション](partitioning-overview.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
 
 ### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました。

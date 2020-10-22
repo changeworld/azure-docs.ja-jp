@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019982"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279627"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>複数の Cosmos DB 用 Azure Functions トリガーの作成
 
@@ -24,7 +24,7 @@ ms.locfileid: "89019982"
 
 [Azure Functions](../azure-functions/functions-overview.md) を使用してサーバーレス アーキテクチャを構築する際は、サイズが大きく実行時間の長い関数ではなく、連携する小さい関数のセットを作成することを[お勧めします](../azure-functions/functions-best-practices.md#avoid-long-running-functions)。
 
-[Cosmos DB 用 Azure Functions トリガー](./change-feed-functions.md)を使用してイベントベースのサーバーレス フローを構築する際に、特定の [Azure Cosmos コンテナー](./databases-containers-items.md#azure-cosmos-containers)に新しいイベントがあるたびに複数のことを実行したくなる状況に直面します。 トリガーするアクションが互いに独立している場合、理想的な解決策として、実行したい**アクションごとに 1 つの Cosmos DB 用 Azure Functions トリガーを作成**し、すべてで同一の Azure Cosmos コンテナーに対する変更をリッスンします。
+[Cosmos DB 用 Azure Functions トリガー](./change-feed-functions.md)を使用してイベントベースのサーバーレス フローを構築する際に、特定の [Azure Cosmos コンテナー](./account-databases-containers-items.md#azure-cosmos-containers)に新しいイベントがあるたびに複数のことを実行したくなる状況に直面します。 トリガーするアクションが互いに独立している場合、理想的な解決策として、実行したい**アクションごとに 1 つの Cosmos DB 用 Azure Functions トリガーを作成**し、すべてで同一の Azure Cosmos コンテナーに対する変更をリッスンします。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>複数のトリガーのコンテナーの最適化
 

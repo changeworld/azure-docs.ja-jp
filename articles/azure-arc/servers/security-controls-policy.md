@@ -1,15 +1,15 @@
 ---
 title: Azure Arc 対応サーバー (プレビュー) 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Arc 対応サーバー (プレビュー) 用の Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7829a2e75b60f641af96a0e70b5e05d1d86deb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57d6a3a39ef28af8b350063c2f9f79117c8db0d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826060"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320158"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Azure Arc 対応サーバー用の Azure Policy 規制コンプライアンス コントロール
 
