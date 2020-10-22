@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b076c757c8f86941c79da4f0be598aaa5ea6761
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773507"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317959"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -84,7 +84,7 @@ Azure AD Connect クラウド プロビジョニングのパブリック プレ�
  
 IT 管理者またはエンド ユーザーがアクセスできる BitLocker 回復キーを読み取ると、Azure Active Directory によって、回復キーにアクセスしたユーザーをキャプチャする監査ログが生成されるようになりました。 同じ監査で、BitLocker キーが関連付けられていたデバイスの詳細が提供されます。
 
-エンド ユーザーは、[マイ アカウントを使用して回復キーにアクセスする](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key)ことができます。 IT 管理者は、[BitLocker 回復キー API (ベータ)](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta,) または Azure AD ポータルを使用して、回復キーにアクセスできます。 詳細については、[Azure AD ポータルでの BitLocker キーの表示またはコピー](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)に関する記事を参照してください。
+エンド ユーザーは、[マイ アカウントを使用して回復キーにアクセスする](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key)ことができます。 IT 管理者は、[BitLocker 回復キー API (ベータ)](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) または Azure AD ポータルを使用して、回復キーにアクセスできます。 詳細については、[Azure AD ポータルでの BitLocker キーの表示またはコピー](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)に関する記事を参照してください。
 
 ---
 
@@ -412,7 +412,7 @@ Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) の[修正プログ�
  
 条件付きアクセスでのクライアント アプリ条件の GA リリースにより、新しいポリシーが既定で、すべてのクライアント アプリケーションに適用されるようになりました。 これには、レガシ認証クライアントが含まれます。 既存のポリシーは変更されませんが、ポリシーによって提供されるクライアント アプリを簡単に確認できるように、"*構成の "はい、いいえ"* " の切り替えは既存のポリシーから削除されます。 
 
-新しいポリシーを作成するときは、従来の認証をまだ使用しているユーザーとサービス アカウントを除外してください。そうしないと、ブロックされます。 [詳細については、こちらを参照してください](https://aka.ms/caclientapps)。
+新しいポリシーを作成するときは、従来の認証をまだ使用しているユーザーとサービス アカウントを除外してください。そうしないと、ブロックされます。 [詳細については、こちらを参照してください](../conditional-access/concept-conditional-access-conditions.md)。
  
 ---
 
@@ -978,7 +978,7 @@ Microsoft Graph ディレクトリ オブジェクト API シリーズに新し�
 **サービス カテゴリ:** アプリ プロビジョニング  
 **製品の機能:** ID ライフサイクル管理
  
-Workday Writeback プロビジョニング アプリを強化し、勤務先電話番号と携帯電話番号の属性の書き戻しがサポートされるようになりました。 メールとユーザー名に加えて、電話番号の値が Azure AD から Workday にフローするように Workday Writeback プロビジョニング アプリを構成できるようになりました。 電話番号の書き戻しを構成する方法の詳細については、[Workday Writeback](https://aka.ms/WorkdayWriteback) アプリのチュートリアルを参照してください。 
+Workday Writeback プロビジョニング アプリを強化し、勤務先電話番号と携帯電話番号の属性の書き戻しがサポートされるようになりました。 メールとユーザー名に加えて、電話番号の値が Azure AD から Workday にフローするように Workday Writeback プロビジョニング アプリを構成できるようになりました。 電話番号の書き戻しを構成する方法の詳細については、[Workday Writeback](../saas-apps/workday-writeback-tutorial.md) アプリのチュートリアルを参照してください。 
 
 ---
 
@@ -1025,7 +1025,7 @@ Azure AD B2C の新しいアプリの登録エクスペリエンスの一般提�
 
 Azure AD B2C のアプリの登録エクスペリエンスは、Azure AD テナント向けの一般的な[アプリの登録エクスペリエンス](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/)に基づいていますが、Azure AD B2C 向けにカスタマイズされています。 従来の "アプリケーション" エクスペリエンスは今後非推奨となる予定です。
 
-詳細については、[Azure AD B2C の新しいアプリの登録エクスペリエンス](https://aka.ms/b2cappregtraining)に関するページを参照してください。
+詳細については、[Azure AD B2C の新しいアプリの登録エクスペリエンス](../../active-directory-b2c/app-registrations-training-guide.md)に関するページを参照してください。
 
 ---
 
@@ -1051,7 +1051,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、Azure AD テナ�
 
 **製品の機能:** ID のセキュリティ & 保護
 
-継続的アクセス評価は新しいセキュリティ機能です。これを使うと、Azure AD でイベント (ユーザー アカウントの削除など) が発生した場合に、Azure AD アクセス トークンを利用する証明書利用者に対してほぼリアルタイムでポリシーを適用できるようになります。 この機能は、最初に Teams と Outlook のクライアント向けにロールアウトされます。 詳細については、Microsoft の[ブログ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)と[ドキュメント](./concept-fundamentals-continuous-access-evaluation.md)をご覧ください。
+継続的アクセス評価は新しいセキュリティ機能です。これを使うと、Azure AD でイベント (ユーザー アカウントの削除など) が発生した場合に、Azure AD アクセス トークンを利用する証明書利用者に対してほぼリアルタイムでポリシーを適用できるようになります。 この機能は、最初に Teams と Outlook のクライアント向けにロールアウトされます。 詳細については、Microsoft の[ブログ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)と[ドキュメント](../conditional-access/concept-continuous-access-evaluation.md)をご覧ください。
 
 ---
 
@@ -1127,7 +1127,7 @@ B2B の招待機能は拡張中であり、今後、B2B コラボレーション
 
 [SincroPool Apps](https://www.sincropool.com/)、[SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/)、[Float](../saas-apps/float-tutorial.md)、[LMS365](https://lms.365.systems/)、[IWT Procurement Suite](../saas-apps/iwt-procurement-suite-tutorial.md)、[Lunni](https://lunni.fi/)、[EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md)、[Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft)、[Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md)、[Microsoft 365 Mover](https://app.mover.io/login)、[Speaker Engage](https://speakerengage.com/login.php)、[Honestly](../saas-apps/honestly-tutorial.md)、[Ally](../saas-apps/ally-tutorial.md)、[DutyFlow](https://app.dutyflow.nl/)、[AlertMedia](../saas-apps/alertmedia-tutorial.md)、[gr8 People](../saas-apps/gr8-people-tutorial.md)、[Pendo](../saas-apps/pendo-tutorial.md)、[HighGround](../saas-apps/highground-tutorial.md)、[Harmony](../saas-apps/harmony-tutorial.md)、[Timetabling Solutions](../saas-apps/timetabling-solutions-tutorial.md)、[SynchroNet CLICK](../saas-apps/synchronet-click-tutorial.md)、[empower](https://www.made-in-office.com/en/)、[Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md)、[Litmus](../saas-apps/litmus-tutorial.md)、[GroupTalk](https://recorder.grouptalk.com/)、[Frontify](../saas-apps/frontify-tutorial.md)、[MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md)、[TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md)、[COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/)、[Nitro Productivity Suite](../saas-apps/nitro-productivity-suite-tutorial.md) 、[Trend Micro Web Security(TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1211,7 +1211,7 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 - 管理単位内の Azure AD ユーザーのみに対して管理アクセス許可を含むロールを割り当てる
 - 必要に応じてユーザーとグループで管理単位を設定する
 
-詳細については、「[Azure Active Directory での管理単位の管理 (プレビュー)](https://aka.ms/AdminUnitsDocs)」をご覧ください。
+詳細については、「[Azure Active Directory での管理単位の管理 (プレビュー)](../users-groups-roles/directory-administrative-units.md)」をご覧ください。
 
 ---
 
@@ -1282,7 +1282,7 @@ Azure AD 管理ポータルのエクスペリエンスにおいて、CSV ファ�
 
 **製品の機能:**
 
-ストア マネージャーなどの現場のマネージャーが、マイ スタッフを使用して、自分のスタッフ メンバーが Azure AD アカウントにアクセスできるようにすることができます。 組織では、パスワードのリセットや電話番号の変更などの一般的なタスクを、中央のヘルプデスクに頼る代わりに現場のマネージャーに委任することができます。 マイ スタッフを使用すると、自分のアカウントにアクセスできないユーザーが数回のクリックでアクセスを回復することができ、ヘルプデスクや IT スタッフは必要ありません。 詳細については、「[マイ スタッフを使用してユーザーを管理する (プレビュー)](https://aka.ms/MyStaffAdminDocs)」および「[マイ スタッフでユーザーの管理を委任する (プレビュー)](https://aka.ms/MyStaffUserDocs)」をご覧ください。
+ストア マネージャーなどの現場のマネージャーが、マイ スタッフを使用して、自分のスタッフ メンバーが Azure AD アカウントにアクセスできるようにすることができます。 組織では、パスワードのリセットや電話番号の変更などの一般的なタスクを、中央のヘルプデスクに頼る代わりに現場のマネージャーに委任することができます。 マイ スタッフを使用すると、自分のアカウントにアクセスできないユーザーが数回のクリックでアクセスを回復することができ、ヘルプデスクや IT スタッフは必要ありません。 詳細については、「[マイ スタッフを使用してユーザーを管理する (プレビュー)](../users-groups-roles/my-staff-configure.md)」および「[マイ スタッフでユーザーの管理を委任する (プレビュー)](../user-help/my-staff-team-manager.md)」をご覧ください。
 
 ---
 

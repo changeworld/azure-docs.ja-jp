@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 716e3766fdd7c1999efa12456346862a9902d7a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855717"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108713"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合
 
@@ -33,7 +33,7 @@ Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネット
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の仮想ネットワーク統合のシナリオ
 
-Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定の仮想ネットワークとサブネットから Data Lake Storage Gen1 アカウントへのアクセスを制限できます。 指定された仮想ネットワーク サブネットにアカウントがロックされた後は、Azure の他の仮想ネットワークや VM はアクセスが許可されません。 Data Lake Storage Gen1 仮想ネットワーク統合では、機能上、[仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)と同じシナリオが可能になります。 以下のセクションでは、いくつかの主な違いについて詳しく説明します。 
+Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定の仮想ネットワークとサブネットから Data Lake Storage Gen1 アカウントへのアクセスを制限できます。 指定された仮想ネットワーク サブネットにアカウントがロックされた後は、Azure の他の仮想ネットワークや VM はアクセスが許可されません。 Data Lake Storage Gen1 仮想ネットワーク統合では、機能上、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)と同じシナリオが可能になります。 以下のセクションでは、いくつかの主な違いについて詳しく説明します。 
 
 ![Data Lake Storage Gen1 仮想ネットワーク統合のシナリオ図](media/data-lake-store-network-security/scenario-diagram.png)
 
@@ -42,9 +42,9 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>Data Lake Storage Gen1 仮想ネットワーク統合による最適なルーティング
 
-仮想ネットワーク サービス エンドポイントの主な利点は、ご利用の仮想ネットワークからの[最適なルーティング](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits)です。 Data Lake Storage Gen1 アカウントに対して同じルートの最適化を実行できます。 次に示す、仮想ネットワークから Data Lake Storage Gen1 アカウントへの[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)を使用します。
+仮想ネットワーク サービス エンドポイントの主な利点は、ご利用の仮想ネットワークからの[最適なルーティング](../virtual-network/virtual-network-service-endpoints-overview.md#key-benefits)です。 Data Lake Storage Gen1 アカウントに対して同じルートの最適化を実行できます。 次に示す、仮想ネットワークから Data Lake Storage Gen1 アカウントへの[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#user-defined)を使用します。
 
-**Data Lake Storage パブリック IP アドレス** - ターゲット Data Lake Storage Gen1 アカウントのパブリック IP アドレスを使用します。 Data Lake Storage Gen1 アカウントの IP アドレスを特定するには、アカウントの [DNS 名を解決](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)します。 アドレスごとに個別のエントリを作成してください。
+**Data Lake Storage パブリック IP アドレス** - ターゲット Data Lake Storage Gen1 アカウントのパブリック IP アドレスを使用します。 Data Lake Storage Gen1 アカウントの IP アドレスを特定するには、アカウントの [DNS 名を解決](./data-lake-store-connectivity-from-vnets.md#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)します。 アドレスごとに個別のエントリを作成してください。
 
 ```azurecli
 # Create a route table for your resource group.
@@ -65,7 +65,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 仮想ネットワークでファイアウォール ソリューションを使用し、宛先アカウントの URL に基づいてアウトバウンド トラフィックをフィルター処理します。 承認された Data Lake Storage Gen1 アカウントにのみアクセスできるようにします。
 
 考えられる選択肢としては、以下のようなものがあります。
-- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): 仮想ネットワークに [Azure ファイアウォールをデプロイして構成](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)します。 アウトバウンドの Data Lake Storage トラフィックを保護し、承認されている既知のアカウントの URL にロックダウンします。
+- [Azure Firewall](../firewall/overview.md): 仮想ネットワークに [Azure ファイアウォールをデプロイして構成](../firewall/tutorial-firewall-deploy-portal.md)します。 アウトバウンドの Data Lake Storage トラフィックを保護し、承認されている既知のアカウントの URL にロックダウンします。
 - [ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) ファイアウォール: 特定の商用ファイアウォール ベンダーのみ、管理者によって利用が許可されている場合があります。 Azure Marketplace で入手できるネットワーク仮想アプライアンス ファイアウォール ソリューションを使用して、同じ機能を実行します。
 
 > [!NOTE]
@@ -77,7 +77,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
  
 - 新しい HDInsight クラスターを作成し、仮想ネットワーク統合が有効な Data Lake Storage Gen1 アカウントを選択すると、プロセスは失敗します。 最初に、仮想ネットワーク規則を無効にします。 または、Data Lake Storage アカウントの **[ファイアウォールと仮想ネットワーク]** ブレードで、 **[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択します。 その後、最終的に仮想ネットワーク規則を再度有効にするか、 **[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択解除する前に、HDInsight クラスターを作成します。 詳細については、「[例外](#exceptions)」セクションを参照してください。
 
-- Data Lake Storage Gen1 仮想ネットワーク統合は、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に対応していません。
+- Data Lake Storage Gen1 仮想ネットワーク統合は、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に対応していません。
   
 - 仮想ネットワークが有効な Data Lake Storage Gen1 アカウントのファイルとフォルダーのデータにポータルからアクセスすることはできません。 この制限には、仮想ネットワーク内の VM からのアクセスや、データ エクスプローラーの使用などのアクティビティが含まれます。 アカウント管理アクティビティは、引き続きご利用いただけます。 仮想ネットワークが有効な Data Lake Storage アカウントのファイルとフォルダーのデータには、ポータル以外のすべてのリソース経由でアクセスできます。 これらのリソースには、SDK アクセスや PowerShell スクリプトのほか、アクセス元がポータルでないその他の Azure サービスが該当します。 
 
@@ -87,7 +87,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
 1.  Azure portal に移動し、ご利用の Azure アカウントにサインインします。
  
-2.  ご利用のサブスクリプションに[新しい仮想ネットワークを作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)します。 または、既存の仮想ネットワークに移動できます。 仮想ネットワークは、Data Lake Storage Gen 1 アカウントと同じリージョンに属している必要があります。
+2.  ご利用のサブスクリプションに[新しい仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 または、既存の仮想ネットワークに移動できます。 仮想ネットワークは、Data Lake Storage Gen 1 アカウントと同じリージョンに属している必要があります。
  
 3.  **[仮想ネットワーク]** ブレードで、 **[サービス エンドポイント]** を選択します。
  

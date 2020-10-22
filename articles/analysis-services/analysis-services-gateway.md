@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016095"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107608"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 
@@ -29,22 +29,6 @@ Azure Analysis Services の場合、ゲートウェイの初回のセットア�
 - **ゲートウェイ リソースを Azure 内に作成する**: この手順では、Azure にゲートウェイ リソースを作成します。
 
 - **サーバーにゲートウェイ リソースを接続する**: ゲートウェイ リソースを用意したら、それとサーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じリージョンにあることが条件です。
-
-
-
-## <a name="how-it-works"></a>しくみ
-組織のコンピューターにインストールしたゲートウェイは、Windows サービス **オンプレミスのデータ ゲートウェイ**として実行されます。 このローカル サービスは、Azure Service Bus を通して Gateway Cloud Service に登録されます。 次に、Azure サブスクリプション用のオンプレミス データ ゲートウェイ リソースを作成します。 Azure Analysis Services サーバーは、Azure ゲートウェイ リソースに接続されます。 サーバー上のモデルが、クエリや処理を行うためにオンプレミスのデータ ソースに接続する必要がある場合、クエリとデータ フローは、ゲートウェイ リソース、Azure Service Bus、ローカルのオンプレミスのデータ ゲートウェイ サービスを経由してデータ ソースに接続します。 
-
-![しくみ](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-クエリとデータ フロー:
-
-1. クエリは、オンプレミス データ ソースに対する暗号化された資格情報を使用して、クラウド サービスによって作成されます。 その後、処理のためにゲートウェイのキューに送信されます。
-2. ゲートウェイ クラウド サービスはクエリを分析して、[Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/) に要求をプッシュします。
-3. オンプレミス データ ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。
-4. ゲートウェイは、クエリを取得し、資格情報を復号化し、その資格情報によってデータ ソースに接続します。
-5. ゲートウェイは、実行するためにクエリをデータ ソースに送信します。
-6. 結果が、データ ソースからゲートウェイを経て、クラウド サービスとサーバーに返送されます。
 
 ## <a name="installing"></a>インストール
 
@@ -76,16 +60,6 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 | *. msftncsi.com |443 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
 | dc.services.visualstudio.com    |443 |テレメトリを収集するために AppInsights によって使用されます。 |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>Azure Service Bus との HTTPS 通信の強制
-
-ダイレクト TCP ではなく HTTPS を使用して Azure Service Bus と通信するようにゲートウェイに強制できます。ただし、これを行うと、パフォーマンスが大幅に低下します。 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ファイルの値を `AutoDetect` から `Https` に変更することで、このファイルを変更できます。 このファイルは、通常は *C:\Program Files\On-premises data gateway* に配置されます。
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>次のステップ 
 

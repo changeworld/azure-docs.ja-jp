@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210222"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108237"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -256,7 +256,7 @@ Azure でビルド パイプラインを作成するには、`az functionapp dev
 
     - Azure DevOps のプロジェクト管理者である必要があります。
 
-    - 十分なアクセス許可を持つ GitHub 個人用アクセス トークン (PAT) を作成するためのアクセス許可が必要です。 詳細については、[GitHub PAT アクセス許可の要件](https://aka.ms/azure-devops-source-repos)に関するセクションを参照してください。
+    - 十分なアクセス許可を持つ GitHub 個人用アクセス トークン (PAT) を作成するためのアクセス許可が必要です。 詳細については、[GitHub PAT アクセス許可の要件](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)に関するセクションを参照してください。
 
     - 自動生成された YAML ファイルをコミットできるように、GitHub リポジトリのマスター ブランチにコミットするためのアクセス許可が必要です。
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adc3b4542b6eba0cc0df7d93ac2cabbf7c1c144a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489903"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216591"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -33,7 +33,7 @@ ms.locfileid: "89489903"
 
 ### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有:
 
-* Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成できます。
+* Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](../storage/common/storage-account-create.md)を作成できます。
 * ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。
 * ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
 
@@ -141,4 +141,4 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けて[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを行ってください。 
+このチュートリアルでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けて[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを行ってください。

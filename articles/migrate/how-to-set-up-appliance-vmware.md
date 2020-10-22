@@ -3,12 +3,12 @@ title: VMware 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f20bb77c29d98ab4e3549bfed43d47d1f1f7dc0c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448655"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318214"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
@@ -58,7 +58,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
-3. アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの[設定](./tutorial-assess-vmware.md#verify-security)と一致する必要があります。
+3. アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの[設定](./tutorial-discover-vmware.md#verify-security)と一致する必要があります。
 
 
 
@@ -117,7 +117,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
    
    PIN を使用したサインインはサポートされていません。
 3. 正常にログインしたら、Web アプリに戻ります。 
-4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-vmware.md#prepare-azure)が付与されている場合、アプライアンスの登録が開始されます。
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](./tutorial-discover-vmware.md#prepare-an-azure-user-account)が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 
@@ -126,7 +126,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 VM の構成データとパフォーマンス データを検出するには、アプライアンスを vCenter Server に接続する必要があります。
 
 1. **[ステップ 1:Provide vCenter Server credentials]\(ステップ 1: vCenter Server の資格情報を指定する\)** で、 **[資格情報の追加]** をクリックして資格情報のフレンドリ名を指定し、vCenter Server インスタンスでの VM の検出にアプライアンスで使用される vCenter Server またはクラスターの **[ユーザー名]** と **[パスワード]** を追加します。
-    - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
+    - [前のチュートリアル](./tutorial-discover-vmware.md#create-an-account-to-access-vcenter)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
     - 検出を特定の VMware オブジェクト (vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM) にスコーピングする場合、Azure Migrate によって使用されるアカウントを制限するには、[この記事](set-discovery-scope.md)の手順を参照してください。
 1. **[ステップ 2:Provide vCenter Server details]\(ステップ 2: VCenter Server の詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、ドロップダウンから資格情報のフレンドリ名を選択し、vCenter Server インスタンスの **IP アドレスまたは FQDN** を指定します。 **[ポート]** を既定 (443) のまま使用することも、vCenter Server でリッスンするカスタム ポートを指定して **[保存]** をクリックしることもできます。
 1. [保存] をクリックすると、アプライアンスは、指定された資格情報を使用して vCenter Server への接続の検証を試み、vCenter Server の IP アドレスまたは FQDN に対して**検証状態**を表に表示します。
@@ -145,4 +145,4 @@ VM の構成データとパフォーマンス データを検出するには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[VMware の評価](tutorial-assess-vmware.md)と[エージェントレスの移行](tutorial-migrate-vmware.md)に関するチュートリアルを確認します。
+[VMware の評価](./tutorial-assess-vmware-azure-vm.md)と[エージェントレスの移行](tutorial-migrate-vmware.md)に関するチュートリアルを確認します。

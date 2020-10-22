@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723862"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107965"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
@@ -68,7 +68,7 @@ ms.locfileid: "88723862"
 現在、DCR を作成する方法は 2 つあります。
 
 - [Azure portal を使用](data-collection-rule-azure-monitor-agent.md)してデータ収集ルールを作成し、1 つまたは複数の仮想マシンに関連付けます。
-- データ収集ルールを JSON で直接編集し、[REST API を使用して送信します](https://docs.microsoft.com/rest/api/monitor/datacollectionrules)。
+- データ収集ルールを JSON で直接編集し、[REST API を使用して送信します](/rest/api/monitor/datacollectionrules)。
 
 ## <a name="sample-data-collection-rule"></a>データ収集ルールのサンプル
 以下のデータ収集ルールのサンプルは Azure 管理エージェントを使用した仮想マシン用で、次の詳細が含まれています。

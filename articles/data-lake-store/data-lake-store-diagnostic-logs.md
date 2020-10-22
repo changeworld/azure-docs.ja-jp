@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4476e20772c0736f35c074b200ea9fd47a0ae81c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575539"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109172"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -46,7 +46,7 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
         
         * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Monitor サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Azure Monitor ログの使用についての詳細は、「[Azure Monitor のログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」をご覧ください。
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Monitor サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Azure Monitor ログの使用についての詳細は、「[Azure Monitor のログ検索で収集されたデータの表示または分析](../azure-monitor/log-query/get-started-portal.md)」をご覧ください。
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
@@ -182,7 +182,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | StreamName |String |操作が実行されたパス |
 
 ## <a name="samples-to-process-the-log-data"></a>ログ データ処理のサンプル
-Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
+Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/log-query/get-started-portal.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
 
 ```
 search *
@@ -196,4 +196,3 @@ Azure Data Lake Storage Gen1 には、ログ データを処理および分析�
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
-

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968406"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108016"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータの送信先を指定します。 この記事では、Azure Monitor エージェントを使用して、仮想マシンからデータを収集するデータ収集ルールを作成する方法について説明します。
@@ -61,13 +61,13 @@ Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクシ�
 > [!NOTE]
 > データ収集ルールと関連付けが作成されたら、データが送信先に送信されるまでに最大で 5 分かかることがあります。
 
-## <a name="createusingrestapi"></a>REST API を使用して作成する
-REST API を使用して DCR と関連付けを作成するには、次の手順に従います。 
-1.  [サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) に示されている JSON 形式を使用して、DCR ファイルを手動で作成します。
-2.  [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples) を使用してルールを作成します。
-3.  [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples) を使用して、データ収集ルールと各仮想マシンの関連付けを作成します。
+## <a name="create-using-rest-api"></a>REST API を使用して作成する
+REST API を使用して DCR と関連付けを作成するには、次の手順に従います。  
+1. 1.
+2.   [サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) に示されている JSON 形式を使用して、DCR ファイルを手動で作成します。
+3. 2.
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>  [REST API](/rest/api/monitor/datacollectionrules/create#examples) を使用してルールを作成します。
 
-- [Azure Monitor エージェント](azure-monitor-agent-overview.md)の詳細を確認します。
-- [データ収集ルール](data-collection-rule-overview.md)の詳細を確認します。
+- 3.
+-   [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples) を使用して、データ収集ルールと各仮想マシンの関連付けを作成します。

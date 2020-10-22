@@ -2,15 +2,14 @@
 title: ジョブ ブラウザーとジョブ ビューを使用する - Azure Data Lake Analytics
 description: この記事では、Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用方法について説明します。
 ms.service: data-lake-analytics
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282614"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218682"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics ジョブに対してジョブ ブラウザーとジョブ ビューを使用
 Azure Data Lake Analytics サービスは、送信されたジョブをクエリ ストアにアーカイブします。 この記事では、Azure Data Lake Tools for Visual Studio のジョブ ブラウザーとジョブ ビューを使用して過去のジョブ情報を検索する方法について説明します。 

@@ -4,12 +4,12 @@ description: Azure Batch の Linux 仮想マシンのプールで並列コンピ
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6cd8a13d67c1ce169e6c9300f7ee017fd3a59d96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146336"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108067"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -25,7 +25,7 @@ Batch でコンピューティング ノードのプールを作成する場合�
 
 **Cloud Services の構成** では、Windows コンピューティング ノード *のみ*が提供されます。 使用可能なコンピューティング ノードのサイズについては、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。使用可能なオペレーティング システムについては、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」を参照してください。 Azure Cloud Services ノードを含むプールを作成する場合は、前に示した記事に記載されているノード サイズと OS ファミリを指定します。 Windows コンピューティング ノードのプールの場合は、Cloud Services が最もよく使用されます。
 
-**仮想マシン構成** では、Linux と Windows の両方のコンピューティング ノード イメージが提供されます。 使用可能なコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) を参照してください。 仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズ、仮想マシン イメージの参照、およびノードにインストールする Batch ノード エージェント SKU を指定する必要があります。
+**仮想マシン構成** では、Linux と Windows の両方のコンピューティング ノード イメージが提供されます。 使用可能なコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)」(Windows) を参照してください。 仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズ、仮想マシン イメージの参照、およびノードにインストールする Batch ノード エージェント SKU を指定する必要があります。
 
 ### <a name="virtual-machine-image-reference"></a>仮想マシン イメージの参照
 

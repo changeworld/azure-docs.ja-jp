@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99d11f6cffa42aa706a863c3061583eab3f98f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4e23a9d5334af5ebdaab2ef15a5c39f232095
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552256"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>チュートリアル:Azure Active Directory と Quantum Workplace の統合
 
@@ -99,11 +99,11 @@ Quantum Workplace で Azure AD シングル サインオンを構成するには
 
 4. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-    ![[Quantum Workplace のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Quantum Workplace のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://auth.quantumworkplace.com/Account/Login`」と入力します。
 

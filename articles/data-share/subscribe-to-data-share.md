@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489920"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216574"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
@@ -34,7 +34,7 @@ ms.locfileid: "89489920"
 
 ### <a name="receive-data-into-a-storage-account"></a>ストレージ アカウントへのデータの受信: 
 
-* Azure Storage アカウント: [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)をまだお持ちでない場合は、作成できます。 
+* Azure Storage アカウント: [Azure Storage アカウント](../storage/common/storage-account-create.md)をまだお持ちでない場合は、作成できます。 
 * ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
 * ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。  
 
@@ -62,7 +62,7 @@ ms.locfileid: "89489920"
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターへのデータの受信:  
 
-* データ プロバイダーの Data Explorer クラスターと同じ Azure データ センター内の Azure Data Explorer クラスター: まだお持ちでない場合は、[Azure Data Explorer クラスター](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)を作成できます。 データ プロバイダーのクラスターの Azure データ センターがわからない場合は、後でこの手順の中でクラスターを作成できます。
+* データ プロバイダーの Data Explorer クラスターと同じ Azure データ センター内の Azure Data Explorer クラスター: まだお持ちでない場合は、[Azure Data Explorer クラスター](/azure/data-explorer/create-cluster-database-portal)を作成できます。 データ プロバイダーのクラスターの Azure データ センターがわからない場合は、後でこの手順の中でクラスターを作成できます。
 * Azure Data Explorer クラスターに書き込む権限。これは、*Microsoft.Kusto/clusters/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
 * Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
 

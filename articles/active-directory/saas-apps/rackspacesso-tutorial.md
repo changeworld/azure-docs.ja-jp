@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 991201429bdc09a03ddc46c5beb9d0f4d6744ed5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548893"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108628"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル:Azure Active Directory と Rackspace SSO の統合
 
@@ -101,11 +101,11 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![image](common/upload-metadata.png)
+    ![スクリーンショットは、[メタデータ ファイルをアップロードする] リンクを含む、[基本的な SAML 構成] を示しています。](common/upload-metadata.png)
 
     b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    ![image](common/browse-upload-metadata.png)
+    ![スクリーンショットは、ファイルを選択してアップロードできるダイアログ ボックスを示しています。](common/browse-upload-metadata.png)
 
     c. メタデータ ファイルが正常にアップロードされると、必要な URL が自動的に設定されます。
 

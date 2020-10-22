@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071161"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108475"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -143,7 +143,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 * `PipelineVariable`
 * `OutVariable` 
 
-詳細については、「[About CommonParameters (共通パラメーターについて)](https://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。
+詳細については、「[About CommonParameters (共通パラメーターについて)](/powershell/module/microsoft.powershell.core/about/about_commonparameters)」を参照してください。
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding の例: HTTP 応答
 
@@ -560,7 +560,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 この環境変数は、関数アプリの[アプリ設定](functions-app-settings.md)で設定します。
 
-使い方によっては、Durable Functions によってスケーラビリティが大幅に向上する場合があります。 詳細については、[Durable Functions のアプリケーション パターン](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)に関する記事を参照してください。
+使い方によっては、Durable Functions によってスケーラビリティが大幅に向上する場合があります。 詳細については、[Durable Functions のアプリケーション パターン](./durable/durable-functions-overview.md?tabs=powershell#application-patterns)に関する記事を参照してください。
 
 >[!NOTE]
 > "使用可能な実行空間がないため、要求がキューに置かれています" という警告が表示される場合がありますが、これはエラーではありません。 このメッセージは、要求がキューに登録されていて、前の要求が完了したときに処理されることを通知するものです。

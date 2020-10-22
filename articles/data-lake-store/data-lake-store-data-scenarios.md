@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441053"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109257"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -48,9 +48,9 @@ ms.locfileid: "89441053"
 
 使用できるツールは次のとおりです。
 
-* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md)。Event Hubs に取り込まれたイベントは、Azure Data Lake Storage Gen1 出力を使用して Azure Data Lake Storage Gen1 に書き込むことができます。
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-define-outputs.md)。Event Hubs に取り込まれたイベントは、Azure Data Lake Storage Gen1 出力を使用して Azure Data Lake Storage Gen1 に書き込むことができます。
 * [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Storage Gen1 に直接データを書き込むことができます。
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。Event Hubs からイベントを受け取り、[Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Storage Gen1 に書き込むことができます。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。Event Hubs からイベントを受け取り、[Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Storage Gen1 に書き込むことができます。
 
 ### <a name="relational-data"></a>リレーショナル データ
 リレーショナル データベースのデータもソースとして扱うことができます。 一定の期間を経て、リレーショナル データベースには大量のデータが収集されます。ビッグ データのパイプラインを介して処理すると、これらのデータから重要な知見が得られます。 このようなデータを Data Lake Storage Gen1 に移動する場合は、次のツールを使用できます。
@@ -131,4 +131,4 @@ Data Lake Storage Gen1 でデータが利用できるようになったら、サ
 ![Data Lake Storage Gen1 のデータを視覚化する](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage Gen1 のデータを視覚化する")
 
 * まず、[Azure Data Factory を使って、Data Lake Storage Gen1 から Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを移動](../data-factory/copy-activity-overview.md)できます。
-* その後、[Power BI を Azure Synapse Analytics と統合](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md)して、データを視覚的に表現できます。
+* その後、[Power BI を Azure Synapse Analytics と統合](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)して、データを視覚的に表現できます。

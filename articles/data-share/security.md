@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.openlocfilehash: 10f31b74b461941b15f13e45f90b5fbc408c90fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d815c27ecc7825f0bc1e6772654b094a799b63d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86108415"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216557"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Azure Data Share のセキュリティの概要
 
@@ -23,12 +23,8 @@ Azure Data Share では、保存時と転送中のデータを保護するため
 
 Azure Data Share のリソース レベルでアクセス制御を設定し、承認されたユーザーだけによってアクセスされることを保証できます。 
 
-Azure Data Share では、データ共有に使用されているデータ ストアにアクセスするために、マネージド ID (以前の MSI) が利用されます。 データ プロバイダーとデータ コンシューマーの間で資格情報が交換されることはありません。 マネージド ID の詳細については、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) に関する記事を参照してください。 データを共有するために必要なロールとアクセス許可の詳細については、[ロールとアクセス許可](concepts-roles-permissions.md)に関する記事を参照してください。
+Azure Data Share では、データ共有に使用されているデータ ストアにアクセスするために、マネージド ID (以前の MSI) が利用されます。 データ プロバイダーとデータ コンシューマーの間で資格情報が交換されることはありません。 マネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) に関する記事を参照してください。 データを共有するために必要なロールとアクセス許可の詳細については、[ロールとアクセス許可](concepts-roles-permissions.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。
-
-
-
-

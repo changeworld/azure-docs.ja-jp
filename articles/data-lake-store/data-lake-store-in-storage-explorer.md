@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508794"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108747"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する
 
-[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer 上で Data Lake Storage Gen1 を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Storage Gen1 のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
+[Azure Data Lake Storage Gen1](./data-lake-store-overview.md) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer 上で Data Lake Storage Gen1 を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Storage Gen1 のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
 
 もう 1 つの利点は、Data Lake Storage Gen1 データを管理するためにサブスクリプションのアクセス許可が不要であることです。 Storage Explorer では、アクセス許可が付与されていれば、 **[Local and Attached]\(ローカルで接続済み\)** ノードに Data Lake Storage Gen1 パスをアタッチできます。
 
@@ -24,7 +24,7 @@ ms.locfileid: "85508794"
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial)に関するページを参照してください。
-* Data Lake Storage Gen1 アカウント。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)に関する記事をご覧ください。
+* Data Lake Storage Gen1 アカウント。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](./data-lake-store-get-started-portal.md)に関する記事をご覧ください。
 
 ## <a name="install-storage-explorer"></a>Storage Explorer のインストール
 
@@ -195,7 +195,7 @@ URL がある場合は、エクスプローラーまたはブラウザーのア�
 ## <a name="next-steps"></a>次のステップ
 
 * [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
-* [Azure Storage Explorer で Azure Cosmos DB を管理する](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)方法を学習します。
-* [Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照します。
-* [Azure Data Lake Storage Gen1 の使用を開始する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
+* [Azure Storage Explorer で Azure Cosmos DB を管理する](../cosmos-db/storage-explorer.md)方法を学習します。
+* [Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)を参照します。
+* [Azure Data Lake Storage Gen1 の使用を開始する](./data-lake-store-overview.md)。
 * [Azure Storage Explorer で Azure Cosmos DB を使用する方法に関する YouTube ビデオ](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)を視聴します。

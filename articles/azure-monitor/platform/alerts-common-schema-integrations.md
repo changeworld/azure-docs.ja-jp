@@ -4,12 +4,12 @@ description: 共通アラートのスキーマを利用してすべてのアラ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322093"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108883"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>共通アラート スキーマを Logic Apps と統合する方法
 
@@ -17,7 +17,7 @@ ms.locfileid: "87322093"
 
 ## <a name="overview"></a>概要
 
-[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)では、さまざまな種類のアラート全体に標準化された拡張可能な JSON スキーマが提供されます。 共通アラート スキーマは、Webhook、Runbook、およびロジック アプリを通じたプログラムを使用した活用に最適です。 この記事では、1 つのロジック アプリを作成して、すべてのアラートを処理する方法について説明します。 同じ原則を、他のプログラムによる方法にも適用できます。 この記事で説明されているロジック アプリでは、['必須' フィールド](alerts-common-schema-definitions.md#essentials)用に明確に定義された変数が作成されます。また、[アラートの種類](alerts-common-schema-definitions.md#alert-context)に固有のロジックの操作方法についても説明します。
+[共通アラート スキーマ](./alerts-common-schema.md)では、さまざまな種類のアラート全体に標準化された拡張可能な JSON スキーマが提供されます。 共通アラート スキーマは、Webhook、Runbook、およびロジック アプリを通じたプログラムを使用した活用に最適です。 この記事では、1 つのロジック アプリを作成して、すべてのアラートを処理する方法について説明します。 同じ原則を、他のプログラムによる方法にも適用できます。 この記事で説明されているロジック アプリでは、['必須' フィールド](alerts-common-schema-definitions.md#essentials)用に明確に定義された変数が作成されます。また、[アラートの種類](alerts-common-schema-definitions.md#alert-context)に固有のロジックの操作方法についても説明します。
 
 
 ## <a name="prerequisites"></a>前提条件 
@@ -138,5 +138,4 @@ ms.locfileid: "87322093"
 ## <a name="next-steps"></a>次のステップ
 
 * [アクション グループについて学習します](./action-groups.md)。
-* [共通アラート スキーマについて学習します](https://aka.ms/commonAlertSchemaDocs)。
-
+* [共通アラート スキーマについて学習します](./alerts-common-schema.md)。

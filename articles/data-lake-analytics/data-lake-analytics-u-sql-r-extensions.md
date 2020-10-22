@@ -1,17 +1,16 @@
 ---
 title: Azure Data Lake Analytics で R を使用した U-SQL スクリプトの拡張
 description: Azure Data Lake Analytics を使用して U-SQL スクリプトで R コードを実行する方法を説明します。 ファイルから R コード インラインまたは参照を埋め込みます。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127402"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218002"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で R コードを使用した U-SQL スクリプトの拡張
 
@@ -212,4 +211,4 @@ OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
-* [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
+* [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](./data-lake-analytics-u-sql-get-started.md)

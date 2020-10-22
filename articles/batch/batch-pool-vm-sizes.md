@@ -4,12 +4,12 @@ description: Azure Batch プールのコンピューティング ノード用に
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271309"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107506"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -24,7 +24,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ### <a name="pools-in-virtual-machine-configuration"></a>仮想マシン構成のプール
 
-仮想マシン構成の Batch プールでは、ほぼすべての VM サイズ ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)) がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
+仮想マシン構成の Batch プールでは、ほぼすべての VM サイズ ([Linux](../virtual-machines/sizes.md)、[Windows](../virtual-machines/sizes.md)) がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
 
 | VM シリーズ  | サポートされるサイズ |
 |------------|---------|

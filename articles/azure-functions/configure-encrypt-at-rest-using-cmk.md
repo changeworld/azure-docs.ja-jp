@@ -3,12 +3,12 @@ title: 保存時にアプリケーション ソースを暗号化する
 description: Azure Storage でアプリケーション データを暗号化し、パッケージ ファイルとしてデプロイします。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282332"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108033"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用し、保存中のアプリケーション データを暗号化する
 
@@ -22,7 +22,7 @@ ms.locfileid: "87282332"
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
-最初に、[Azure Storage アカウントを作成し](../storage/common/storage-account-create.md)、[それをカスタマー マネージド キーを使用して暗号化します](../storage/common/encryption-customer-managed-keys.md)。 ストレージ アカウントが作成された後、[Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用してパッケージ ファイルをアップロードします。
+最初に、[Azure Storage アカウントを作成し](../storage/common/storage-account-create.md)、[それをカスタマー マネージド キーを使用して暗号化します](../storage/common/customer-managed-keys-overview.md)。 ストレージ アカウントが作成された後、[Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用してパッケージ ファイルをアップロードします。
 
 次に、Storage Explorer を使用して [SAS を生成します](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)。 
 

@@ -1,22 +1,20 @@
 ---
 title: Azure Data Lake Analytics の定期的なジョブをデバッグする
 description: Azure Data Lake Tools for Visual Studio Code を使って異常な定期的ジョブをデバッグする方法について説明します。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.openlocfilehash: 86d5134e257d2dae642eceb933a78047773b25a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129952"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219175"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
 
-この記事では、[Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) を使って定期的なジョブの問題のトラブルシューティングを行う方法を示します。 パイプラインと定期的なジョブについて詳しくは、[Azure Data Lake と Azure HDInsight のブログ](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)をご覧ください。
+この記事では、[Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) を使って定期的なジョブの問題のトラブルシューティングを行う方法を示します。 パイプラインと定期的なジョブについて詳しくは、[Azure Data Lake と Azure HDInsight のブログ](/archive/blogs/azuredatalake/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy)をご覧ください。
 
 通常、定期的なジョブは同じクエリ ロジックと似た入力データを共有します。 たとえば、毎週月曜日の午前 8 時に実行して 前週のアクティブなユーザーをカウントする定期的なジョブがあるとします。 これらのジョブのスクリプトはクエリ ロジックを含む 1 つのスクリプト テンプレートを共有します。 これらのジョブの入力は過去 1 週間の使用状況データです。 同じクエリ ロジックを共有して入力が似ていると、通常はこれらのジョブのパフォーマンスは似ていて安定しています。 定期的なジョブのいずれかで突然異常な実行、障害、速度低下が大量に発生した場合は、次のことを行います。
 

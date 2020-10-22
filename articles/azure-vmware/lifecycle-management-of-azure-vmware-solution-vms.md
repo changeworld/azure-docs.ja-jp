@@ -3,12 +3,12 @@ title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950365"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216251"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -53,8 +53,8 @@ Azure VMware Solution VM は、MMA (Log Analytics エージェントまたは OM
 Azure Automation の **Azure Update Management** は、ハイブリッド環境の Windows マシンと Linux マシンのオペレーティング システムの更新プログラムを管理します。 パッチ適用のコンプライアンス状況を監視し、パッチ適用の逸脱を修復するためにアラートを Azure Monitor に転送します。 Azure Update Management は、保存されたデータを使用して VM 上の更新の状態を評価するために、Log Analytics ワークスペースに接続される必要があります。
 - Azure Update Management に Log Analytics を追加するには、まず [Azure Automation アカウントを作成する](../automation/automation-create-standalone-account.md)必要があります。
 - Log Analytics ワークスペースを Automation アカウントにリンクするには、「[Log Analytics ワークスペースと Automation アカウント](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)」を参照してください。
-- VM に対して Azure Update Management を有効にするには、「[Automation アカウントから Update Management を有効にする](../automation/update-management/update-mgmt-enable-automation-account.md)」を参照してください。
-- Azure Update Management に VM を追加したら、[VM に更新プログラムをデプロイして結果を確認する](../automation/update-management/update-mgmt-deploy-updates.md)ことができます。 
+- VM に対して Azure Update Management を有効にするには、「[Automation アカウントから Update Management を有効にする](../automation/update-management/enable-from-automation-account.md)」を参照してください。
+- Azure Update Management に VM を追加したら、[VM に更新プログラムをデプロイして結果を確認する](../automation/update-management/deploy-updates.md)ことができます。 
 
 **Azure Security Center** は、クラウドとオンプレミスのハイブリッド ワークロード全体に対して高度な脅威保護を提供します。 Azure VMware Solution VM の脆弱性を評価し、必要に応じてアラートを発生させます。 このセキュリティ アラートは、解決のために Azure Monitor に転送できます。
 - Azure Security Center はデプロイを必要としません。 詳細については、[仮想マシンでサポートされている機能](../security-center/security-center-services.md)の一覧に関するページを参照してください。

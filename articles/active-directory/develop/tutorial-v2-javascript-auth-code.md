@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665873"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216132"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -30,8 +30,6 @@ ms.locfileid: "91665873"
 > * Microsoft ID プラットフォーム エンドポイントから取得したアクセス トークンを必要とする Microsoft Graph または独自 API の呼び出し
 
 MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.0 よりも強化されています。 MSAL.js 2.0 では、暗黙的フローはサポートされて**いません**。
-
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -120,13 +118,13 @@ MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく�
 ```
 msal-spa-tutorial/
 ├── app
-│   ├── authConfig.js
-│   ├── authPopup.js
-│   ├── authRedirect.js
-│   ├── graphConfig.js
-│   ├── graph.js
-│   ├── index.html
-│   └── ui.js
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
 └── server.js
 ```
 

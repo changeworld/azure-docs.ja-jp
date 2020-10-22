@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 5d5f46c4f078038b91881000cf8a6b67000683e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078631"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109138"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して Microsoft ピアリングにルート フィルターを構成する
 
@@ -126,7 +126,7 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 :::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
 
 
-## <a name="clean-up-resources"></a><a name="delete"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ルート フィルターを削除するには、 **[削除]** ボタンを選択します。 この操作を行う前に、ルート フィルターが確実にどの回線にも関連付けられていないようにします。
 

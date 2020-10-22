@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 98b7923728616473186eeeeb2a2f03bfece9fae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fef9eb49b10008c86ee044a199ae69a43585f4f3
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398547"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217973"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 
@@ -35,14 +35,13 @@ Azure CLI を使用して Resource Manager デプロイ モデルでの VPN ゲ�
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
-
 ## <a name="azure-portal-classic"></a>Azure Portal (クラシック)
 
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
 ## <a name="powershell-classic"></a>PowerShell (クラシック)
 
-PowerShell を使用してクラシック デプロイ モデルでの VPN ゲートウェイ接続を確認するには、Azure PowerShell コマンドレットの最新バージョンをインストールします。 [Service Management](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) モジュールをダウンロードし、インストールしてください。 'Add-AzureAccount' を使用して、クラシック デプロイ モデルにログインします。
+PowerShell を使用してクラシック デプロイ モデルでの VPN ゲートウェイ接続を確認するには、Azure PowerShell コマンドレットの最新バージョンをインストールします。 [Service Management](/powershell/azure/servicemanagement/install-azure-ps?#azure-service-management-cmdlets) モジュールをダウンロードし、インストールしてください。 'Add-AzureAccount' を使用して、クラシック デプロイ モデルにログインします。
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 

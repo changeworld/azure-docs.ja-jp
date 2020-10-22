@@ -1,21 +1,18 @@
 ---
 title: Azure Data Lake Analytics コードをテストする方法
 description: Azure Data Lake Analytics 用の U-SQL および拡張 C# コードのテスト ケースを追加する方法について説明します。
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129918"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219209"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics コードのテスト
 
@@ -112,7 +109,7 @@ UDO 関数を呼び出した後、C# assert 関数を使用したスキーマお
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Azure Pipelines でのテスト ケースの実行<a name="run-test-cases-in-azure-devops"></a>
 
-**U-SQL スクリプト テスト プロジェクト**と **C# UDO テスト プロジェクト**はどちらも、C# 単体テスト プロジェクトを継承します。 Azure Pipelines の [Visual Studio テスト タスク](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts)では、これらのテスト ケースを実行できます。
+**U-SQL スクリプト テスト プロジェクト**と **C# UDO テスト プロジェクト**はどちらも、C# 単体テスト プロジェクトを継承します。 Azure Pipelines の [Visual Studio テスト タスク](/azure/devops/pipelines/test/getting-started-with-continuous-testing)では、これらのテスト ケースを実行できます。
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Azure Pipelines での U-SQL テスト ケースの実行
 

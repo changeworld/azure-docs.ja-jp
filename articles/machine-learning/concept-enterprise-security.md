@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302623"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207939"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -376,6 +376,10 @@ Machine Learning コンピューティングはマネージド コンピュー�
 Azure Policy の詳細については、[ のドキュメント](/azure/governance/policy/overview)を参照してください。
 
 Azure Machine Learning に固有のポリシーの詳細については、[Azure Policy でのコンプライアンスの監査と管理](how-to-integrate-azure-policy.md)に関するページを参照してください。
+
+## <a name="resource-locks"></a>リソース ロック
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

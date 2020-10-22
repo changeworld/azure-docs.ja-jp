@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f3e965b1141bb7cf49b191c828b7dd0f3ed3fba8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 623ad70572683103edb0a824830be6bbba6c8c35
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278364"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369048"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Azure Monitor のログ アラート ルール用の Resource Manager テンプレートのサンプル
 この記事には、Azure Monitor でログ クエリ アラートを作成および構成するための [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)のサンプルが含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
@@ -36,7 +36,7 @@ ms.locfileid: "91278364"
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Resource ID of the Log Analytisc workspace."
+                "description": "Resource ID of the Log Analytics workspace."
             }
         },
         "location": {

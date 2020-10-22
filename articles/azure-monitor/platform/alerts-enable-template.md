@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb44b7133e5644991d7413f4f824a8b55ffdd75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87849021"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108373"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
 
@@ -400,6 +400,5 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 
 ## <a name="next-steps"></a>次の手順
 * [アラートの詳細を確認します](alerts-overview.md)
-* [診断の設定を追加](./diagnostic-settings-template.md) します
+* [診断の設定を追加](../samples/resource-manager-diagnostic-settings.md) します
 * JSON の構文とプロパティについては、[Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) テンプレート リファレンスをご覧ください。
-

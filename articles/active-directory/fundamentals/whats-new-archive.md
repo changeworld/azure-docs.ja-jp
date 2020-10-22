@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2e13fe634db49dcc3f015eb90410c3b7753c8363
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449992"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318057"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -96,7 +96,7 @@ Azure AD B2B コラボレーション機能は、21Vianet (Azure China 21Vianet)
 
 [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)、[Zoho One China](../saas-apps/zoho-one-china-tutorial.md)、[PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/)、[Profit.co SAML App](../saas-apps/profitco-saml-app-tutorial.md)、[iPoint Service Provider](../saas-apps/ipoint-service-provider-tutorial.md)、[contexxt.ai SPHERE](https://contexxt-sphere.com/login)、[Wisdom By Invictus](../saas-apps/wisdom-by-invictus-tutorial.md)、[Flare Digital Signage](https://spark-dev.pixelnebula.com/login)、[Logz.io - Cloud Observability for Engineers](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md)、[SpectrumU](../saas-apps/spectrumu-tutorial.md)、[BizzContact](https://bizzcontact.app/)、[Elqano SSO](../saas-apps/elqano-sso-tutorial.md)、[MarketSignShare](http://www.signshare.com/)、[CrossKnowledge Learning Suite](../saas-apps/crossknowledge-learning-suite-tutorial.md)、[Netvision Compas](../saas-apps/netvision-compas-tutorial.md)、[FCM HUB](../saas-apps/fcm-hub-tutorial.md)、[RIB A/S Byggeweb Mobile](https://apps.apple.com/us/app/docia/id529058757)、[GoLinks](../saas-apps/golinks-tutorial.md)、[Datadog](../saas-apps/datadog-tutorial.md)、[Zscaler B2B User Portal](../saas-apps/zscaler-b2b-user-portal-tutorial.md)、[LIFT](../saas-apps/lift-tutorial.md)、[Planview Enterprise One](../saas-apps/planview-enterprise-one-tutorial.md)、[WatchTeams](https://www.devfinition.com/)、[Aster](https://demo.asterapp.io/login)、[Skills Workflow](../saas-apps/skills-workflow-tutorial.md)、[Node Insight](https://admin.nodeinsight.com/AADLogin.aspx)、[IP Platform](../saas-apps/ip-platform-tutorial.md)、[InVision](../saas-apps/invision-tutorial.md)、[Pipedrive](../saas-apps/pipedrive-tutorial.md)、[Showcase Workshop](https://app.showcaseworkshop.com/)、[Greenlight Integration Platform](../saas-apps/greenlight-integration-platform-tutorial.md)、[Greenlight Compliant Access Management](../saas-apps/greenlight-compliant-access-management-tutorial.md)、[Grok Learning](../saas-apps/grok-learning-tutorial.md)、[Miradore Online](https://login.online.miradore.com/)、[Khoros Care](../saas-apps/khoros-care-tutorial.md)、[AskYourTeam](../saas-apps/askyourteam-tutorial.md)、[TruNarrative](../saas-apps/trunarrative-tutorial.md)、[Smartwaiver](https://www.smartwaiver.com/m/user/sw_login.php?wms_login)、[Bizagi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md)、[insuiteX](https://www.insuite.jp/)、[sybo](https://www.systexsoftware.com.tw/)、[Britive](../saas-apps/britive-tutorial.md)、[WhosOffice](../saas-apps/whosoffice-tutorial.md)、[E-days](../saas-apps/e-days-tutorial.md)、[Kollective SDN](https://portal.kollective.app/login)、[Witivio](https://app.witivio.com/)、[Playvox](https://my.playvox.com/login)、[Korn Ferry 360](../saas-apps/korn-ferry-360-tutorial.md)、[Campus Café](../saas-apps/campus-cafe-tutorial.md)、[Catchpoint](../saas-apps/catchpoint-tutorial.md)、[Code42](../saas-apps/code42-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -116,7 +116,7 @@ Azure AD B2B コラボレーション機能が Azure Government テナント間�
 **サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
  
-Azure AD ログとの Azure Monitor 統合が Azure Government で利用できるようになりました。 Azure AD ログ (監査ログとサインイン ログ) をストレージ アカウント、イベント ハブ、Log Analytics にルーティングすることができます。 Azure AD のシナリオについては、[詳細なドキュメント](https://aka.ms/aadlogsinamd)と[レポートと監視のデプロイ計画](../reports-monitoring/plan-monitoring-and-reporting.md)に関するページを確認してください。
+Azure AD ログとの Azure Monitor 統合が Azure Government で利用できるようになりました。 Azure AD ログ (監査ログとサインイン ログ) をストレージ アカウント、イベント ハブ、Log Analytics にルーティングすることができます。 Azure AD のシナリオについては、[詳細なドキュメント](../reports-monitoring/concept-activity-logs-azure-monitor.md)と[レポートと監視のデプロイ計画](../reports-monitoring/plan-monitoring-and-reporting.md)に関するページを確認してください。
 
 ---
 
@@ -126,7 +126,7 @@ Azure AD ログとの Azure Monitor 統合が Azure Government で利用でき�
 **サービス カテゴリ:** Identity Protection  
 **製品の機能:** ID のセキュリティ & 保護
 
-[Microsoft Azure Government ポータル](https://portal.azure.us/)で、更新された [Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs)  エクスペリエンスをロールアウトしました。 詳しくは、[お知らせブログの投稿](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)をご覧ください。
+[Microsoft Azure Government ポータル](https://portal.azure.us/)で、更新された [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)  エクスペリエンスをロールアウトしました。 詳しくは、[お知らせブログの投稿](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)をご覧ください。
 
 ---
 
@@ -220,7 +220,7 @@ Azure AD サービスの信頼性を確保するために、ユーザーのパ�
 - すべてのユーザーが安全にアクセスできるよう MFA を完了できることを確認する
 - 管理者ロールに対して MFA を必須にする
 
-これらの新しい改善アクションでは、ユーザーまたは管理者をディレクトリ全体での MFA のために登録し、組織のニーズに合った適切な一連のポリシーを確立する必要があります。 主な目的は、すべてのユーザーと管理者が多要素またはリスクベースの本人確認プロンプトで認証できるようにしながら、柔軟性を高めることです。 これには、Microsoft がユーザーに MFA を要求するタイミングを決定するセキュリティの既定値群の設定や、スコープに基づく決定を適用する複数のポリシーの使用などの形態があります。 これらの改善アクションの更新の一環として、ベースライン保護ポリシーはスコアの計算に含まれなくなります。 [Microsoft セキュリティ スコアに関する最新情報をご覧ください](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide)。
+これらの新しい改善アクションでは、ユーザーまたは管理者をディレクトリ全体での MFA のために登録し、組織のニーズに合った適切な一連のポリシーを確立する必要があります。 主な目的は、すべてのユーザーと管理者が多要素またはリスクベースの本人確認プロンプトで認証できるようにしながら、柔軟性を高めることです。 これには、Microsoft がユーザーに MFA を要求するタイミングを決定するセキュリティの既定値群の設定や、スコープに基づく決定を適用する複数のポリシーの使用などの形態があります。 これらの改善アクションの更新の一環として、ベースライン保護ポリシーはスコアの計算に含まれなくなります。 [Microsoft セキュリティ スコアに関する最新情報をご覧ください](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide)。
 
 ---
 
@@ -232,7 +232,7 @@ Azure AD サービスの信頼性を確保するために、ユーザーのパ�
  
 Microsoft では、Azure AD Domain Services をご利用のお客さまより、インスタンスのパフォーマンス レベルをより柔軟に選択したいというフィードバックをいただいておりました。 2020 年 2 月 1 日より、動的モデル (オブジェクト数に基づいて Azure AD のパフォーマンスと価格を決定するモデル) から自己選択モデルへの切り替えを行いました。 これにより、お客様は環境に合ったパフォーマンス レベルを選択できるようになりました。 この変更により、リソース フォレストなどの新しいシナリオや、毎日のバックアップなどの Premium 機能をも有効にすることができます。 すべての SKU でオブジェクト数は無制限になりましたが、各レベルでのオブジェクト数の提案は引き続き提供されます。
 
-**お客様による早急な対応は必要はありません。** 既存のお客様については、2020 年 2 月 1 日時点で使用していた動的レベルによって、新しい既定のレベルが決まります。 この変更による、価格やパフォーマンスへの影響はありません。 今後、Azure AD DS をご利用のお客様は、ディレクトリのサイズとワークロードの特性の変化に応じて、パフォーマンス要件を評価する必要があります。 サービス レベル間の切り替え操作は引き続きダウンタイムなしで行われ、お客様がディレクトリの拡張に応じて新しいレベルに自動的に移動されることはなくなります。 さらに、価格の引き上げは行われず、新しい価格は現在の課金モデルに従います。 詳細については、[Azure AD DS SKU のドキュメント](https://docs.microsoft.com/azure/active-directory-domain-services/administration-concepts#azure-ad-ds-skus) および [Azure AD Domain Services の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory-ds/)を参照してください。
+**お客様による早急な対応は必要はありません。** 既存のお客様については、2020 年 2 月 1 日時点で使用していた動的レベルによって、新しい既定のレベルが決まります。 この変更による、価格やパフォーマンスへの影響はありません。 今後、Azure AD DS をご利用のお客様は、ディレクトリのサイズとワークロードの特性の変化に応じて、パフォーマンス要件を評価する必要があります。 サービス レベル間の切り替え操作は引き続きダウンタイムなしで行われ、お客様がディレクトリの拡張に応じて新しいレベルに自動的に移動されることはなくなります。 さらに、価格の引き上げは行われず、新しい価格は現在の課金モデルに従います。 詳細については、[Azure AD DS SKU のドキュメント](../../active-directory-domain-services/administration-concepts.md#azure-ad-ds-skus) および [Azure AD Domain Services の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory-ds/)を参照してください。
 
 ---
  
@@ -244,10 +244,10 @@ Microsoft では、Azure AD Domain Services をご利用のお客さまより、
  
 2020 年 2 月に、フェデレーションがサポートされる次の 31 の新しいアプリがアプリ ギャラリーに追加されました。 
 
-[IamIP Patent Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/iamip-patent-platform-tutorial)、[Experience Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/experience-cloud-tutorial)、[NS1 SSO For Azure](https://docs.microsoft.com/azure/active-directory/saas-apps/ns1-sso-azure-tutorial)、[Barracuda Email Security Service](https://ess.barracudanetworks.com/sso/azure)、[ABa Reporting](https://myaba.co.uk/client-access/signin/auth/msad)、[In Case of Crisis - Online Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/in-case-of-crisis-online-portal-tutorial)、[BIC Cloud Design](https://docs.microsoft.com/azure/active-directory/saas-apps/bic-cloud-design-tutorial)、[Beekeeper Azure AD Data Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/beekeeper-azure-ad-data-connector-tutorial)、[Korn Ferry Assessments](https://www.kornferry.com/solutions/kf-digital/kf-assess)、[Verkada Command](https://docs.microsoft.com/azure/active-directory/saas-apps/verkada-command-tutorial)、[Splashtop](https://docs.microsoft.com/azure/active-directory/saas-apps/splashtop-tutorial)、[Syxsense](https://docs.microsoft.com/azure/active-directory/saas-apps/syxsense-tutorial)、[EAB Navigate](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-tutorial)、[New Relic (Limited Release)](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)、[Thulium](https://admin.thulium.com/login/instance)、[Ticket Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/ticketmanager-tutorial)、[Template Chooser for Teams](https://links.officeatwork.com/templatechooser-download-teams)、[Beesy](https://www.beesy.me/index.php/site/login)、[Health Support System](https://docs.microsoft.com/azure/active-directory/saas-apps/health-support-system-tutorial)、[MURAL](https://app.mural.co/signup)、[Hive](https://docs.microsoft.com/azure/active-directory/saas-apps/hive-tutorial)、[LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview)、[Wakelet](https://wakelet.com/login)、[Firmex VDR](https://docs.microsoft.com/azure/active-directory/saas-apps/firmex-vdr-tutorial)、[ThingLink for Teachers and Schools](https://www.thinglink.com/)、[Coda](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial)、[NearpodApp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product)、[WEDO](https://docs.microsoft.com/azure/active-directory/saas-apps/wedo-tutorial)、[InvitePeople](https://invitepeople.com/login)、[Reprints Desk - Article Galaxy](https://docs.microsoft.com/azure/active-directory/saas-apps/reprints-desk-article-galaxy-tutorial)、[TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)
+[IamIP Patent Platform](../saas-apps/iamip-patent-platform-tutorial.md)、[Experience Cloud](../saas-apps/experience-cloud-tutorial.md)、[NS1 SSO For Azure](../saas-apps/ns1-sso-azure-tutorial.md)、[Barracuda Email Security Service](https://ess.barracudanetworks.com/sso/azure)、[ABa Reporting](https://myaba.co.uk/client-access/signin/auth/msad)、[In Case of Crisis - Online Portal](../saas-apps/in-case-of-crisis-online-portal-tutorial.md)、[BIC Cloud Design](../saas-apps/bic-cloud-design-tutorial.md)、[Beekeeper Azure AD Data Connector](../saas-apps/beekeeper-azure-ad-data-connector-tutorial.md)、[Korn Ferry Assessments](https://www.kornferry.com/solutions/kf-digital/kf-assess)、[Verkada Command](../saas-apps/verkada-command-tutorial.md)、[Splashtop](../saas-apps/splashtop-tutorial.md)、[Syxsense](../saas-apps/syxsense-tutorial.md)、[EAB Navigate](../saas-apps/eab-navigate-tutorial.md)、[New Relic (Limited Release)](../saas-apps/new-relic-limited-release-tutorial.md)、[Thulium](https://admin.thulium.com/login/instance)、[Ticket Manager](../saas-apps/ticketmanager-tutorial.md)、[Template Chooser for Teams](https://links.officeatwork.com/templatechooser-download-teams)、[Beesy](https://www.beesy.me/index.php/site/login)、[Health Support System](../saas-apps/health-support-system-tutorial.md)、[MURAL](https://app.mural.co/signup)、[Hive](../saas-apps/hive-tutorial.md)、[LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview)、[Wakelet](https://wakelet.com/login)、[Firmex VDR](../saas-apps/firmex-vdr-tutorial.md)、[ThingLink for Teachers and Schools](https://www.thinglink.com/)、[Coda](../saas-apps/coda-tutorial.md)、[NearpodApp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product)、[WEDO](../saas-apps/wedo-tutorial.md)、[InvitePeople](https://invitepeople.com/login)、[Reprints Desk - Article Galaxy](../saas-apps/reprints-desk-article-galaxy-tutorial.md)、[TeamViewer](../saas-apps/teamviewer-tutorial.md)
 
  
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
  
@@ -259,13 +259,13 @@ Microsoft では、Azure AD Domain Services をご利用のお客さまより、
  
 新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
 
-- [Mixpanel](https://docs.microsoft.com/azure/active-directory/saas-apps/mixpanel-provisioning-tutorial)
-- [TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-provisioning-tutorial)
-- [Azure Databricks](https://docs.microsoft.com/azure/active-directory/saas-apps/azure-databricks-scim-connector-provisioning-tutorial)
-- [PureCloud by Genesys](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-provisioning-tutorial)
-- [Zapier](https://docs.microsoft.com/azure/active-directory/saas-apps/zapier-provisioning-tutorial)
+- [Mixpanel](../saas-apps/mixpanel-provisioning-tutorial.md)
+- [TeamViewer](../saas-apps/teamviewer-provisioning-tutorial.md)
+- [Azure Databricks](/azure/databricks/administration-guide/users-groups/scim/aad)
+- [PureCloud by Genesys](../saas-apps/purecloud-by-genesys-provisioning-tutorial.md)
+- [Zapier](../saas-apps/zapier-provisioning-tutorial.md)
 
-自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関するページをご覧ください。
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)に関するページをご覧ください。
 
 ---
  
@@ -275,9 +275,9 @@ Microsoft では、Azure AD Domain Services をご利用のお客さまより、
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
-Microsoft は、ハイブリッド環境での FIDO2 セキュリティ キーの Azure AD サポートのパブリック プレビューを発表しました。 ユーザーは、FIDO2 セキュリティ キーを使用して Hybrid Azure AD 参加済み Windows 10 デバイスにサインインし、オンプレミスとクラウドのリソースにシームレスにサインオンできるようになりました。 Azure AD 参加済みデバイスの FIDO2 サポートのパブリック プレビューを最初にローンチして以来、ハイブリッド環境のサポートは、パスワードレス認証をご利用のお客様からのご要望に最も多い機能でした。 生体認証や公開キーおよび秘密キーの暗号化などの高度なテクノロジーを使用したパスワードレス認証は、セキュリティを担保しつつ、利便性と使いやすさを提供します。 このパブリック プレビューにより、FIDO2 セキュリティ キーのような最新の認証を使用して、従来の Active Directory リソースにアクセスできるようになりました。 詳細については、「[オンプレミスのリソースへの SSO](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)」を参照してください。 
+Microsoft は、ハイブリッド環境での FIDO2 セキュリティ キーの Azure AD サポートのパブリック プレビューを発表しました。 ユーザーは、FIDO2 セキュリティ キーを使用して Hybrid Azure AD 参加済み Windows 10 デバイスにサインインし、オンプレミスとクラウドのリソースにシームレスにサインオンできるようになりました。 Azure AD 参加済みデバイスの FIDO2 サポートのパブリック プレビューを最初にローンチして以来、ハイブリッド環境のサポートは、パスワードレス認証をご利用のお客様からのご要望に最も多い機能でした。 生体認証や公開キーおよび秘密キーの暗号化などの高度なテクノロジーを使用したパスワードレス認証は、セキュリティを担保しつつ、利便性と使いやすさを提供します。 このパブリック プレビューにより、FIDO2 セキュリティ キーのような最新の認証を使用して、従来の Active Directory リソースにアクセスできるようになりました。 詳細については、「[オンプレミスのリソースへの SSO](../authentication/howto-authentication-passwordless-security-key-on-premises.md)」を参照してください。 
 
-使用を開始するには、「[テナントの FIDO2 セキュリティ キーを有効にする](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)」で詳しい手順を参照してください。 
+使用を開始するには、「[テナントの FIDO2 セキュリティ キーを有効にする](../authentication/howto-authentication-passwordless-security-key.md)」で詳しい手順を参照してください。 
 
 ---
  
@@ -287,7 +287,7 @@ Microsoft は、ハイブリッド環境での FIDO2 セキュリティ キー�
 **サービス カテゴリ:** マイ プロファイル/アカウント  
 **製品の機能:** エンド ユーザー エクスペリエンス
  
-すべてのエンド ユーザー アカウント管理のニーズに対応する機能を 1 か所に統合するマイ アカウントが一般公開されました。 エンド ユーザーは、URL から、または新しいマイ アプリ エクスペリエンスのヘッダーから、この新しいサイトにアクセスできます。 新しいエクスペリエンスで提供されるすべてのセルフサービス機能の詳細については、「[マイ アカウント ポータルの概要](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)」を参照してください。
+すべてのエンド ユーザー アカウント管理のニーズに対応する機能を 1 か所に統合するマイ アカウントが一般公開されました。 エンド ユーザーは、URL から、または新しいマイ アプリ エクスペリエンスのヘッダーから、この新しいサイトにアクセスできます。 新しいエクスペリエンスで提供されるすべてのセルフサービス機能の詳細については、「[マイ アカウント ポータルの概要](../user-help/my-account-portal-overview.md)」を参照してください。
 
 ---
  
@@ -297,7 +297,7 @@ Microsoft は、ハイブリッド環境での FIDO2 セキュリティ キー�
 **サービス カテゴリ:** マイ プロファイル/アカウント  
 **製品の機能:** エンド ユーザー エクスペリエンス
  
-新しいマイ アカウントのエンド ユーザーエクスペリエンスの URL は、来月中に `https://myaccount.microsoft.com` に更新されます。 エクスペリエンスと、エンド ユーザーに提供されるアカウントのすべてのセルフサービス機能の詳細については「[マイ アカウント ポータルのヘルプ](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)」を参照してください。
+新しいマイ アカウントのエンド ユーザーエクスペリエンスの URL は、来月中に `https://myaccount.microsoft.com` に更新されます。 エクスペリエンスと、エンド ユーザーに提供されるアカウントのすべてのセルフサービス機能の詳細については「[マイ アカウント ポータルのヘルプ](../user-help/my-account-portal-overview.md)」を参照してください。
 
 ---
 
@@ -358,7 +358,7 @@ Microsoft は、ハイブリッド環境での FIDO2 セキュリティ キー�
 
 [JOSA](../saas-apps/josa-tutorial.md)、[Fastly Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md)、[Terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md)、[Spintr SSO](../saas-apps/spintr-sso-tutorial.md)、[Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik)、[SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access)、[Upshotly](../saas-apps/upshotly-tutorial.md)、[LeaveBot](https://leavebot.io/#home)、[DataCamp](../saas-apps/datacamp-tutorial.md)、[TripActions](../saas-apps/tripactions-tutorial.md)、[SmartWork](https://www.intumit.com/english/SmartWork.html)、[Dotcom-Monitor](../saas-apps/dotcom-monitor-tutorial.md)、[SSOGEN - Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE](../saas-apps/ssogen-tutorial.md)、[Hosted MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md)、[Yuhu Property Management Platform](../saas-apps/yuhu-property-management-platform-tutorial.md)、[LumApps](https://sites.lumapps.com/login)、[Upwork Enterprise](../saas-apps/upwork-enterprise-tutorial.md)、[Talentsoft](../saas-apps/talentsoft-tutorial.md)、[SmartDB for Microsoft Teams](http://teams.smartdb.jp/login/)、[PressPage](../saas-apps/presspage-tutorial.md)、[ContractSafe Saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md)、[Maxient Conduct Manager Software](../saas-apps/maxient-conduct-manager-software-tutorial.md)、[Helpshift](../saas-apps/helpshift-tutorial.md)、[PortalTalk 365](https://www.portaltalk.com/)、[CoreView](https://portal.coreview.com/)、[Squelch Cloud Office365 Connector](https://laxmi.squelch.io/login)、[PingFlow Authentication](https://app-staging.pingview.io/)、[ PrinterLogic SaaS](../saas-apps/printerlogic-saas-tutorial.md)、[Taskize Connect](../saas-apps/taskize-connect-tutorial.md)、[Sandwai](https://app.sandwai.com/)、[EZRentOut](../saas-apps/ezrentout-tutorial.md)、[AssetSonar](../saas-apps/assetsonar-tutorial.md)、[Akari Virtual Assistant](https://akari.io/akari-virtual-assistant/)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -392,7 +392,7 @@ Microsoft は、ハイブリッド環境での FIDO2 セキュリティ キー�
 
 Azure AD で、信頼できる ID ソースとして SAP SuccessFactors を統合できるようになりました。 この統合により、ID ライフサイクル全体の自動化が促進されます。たとえば、新規採用や退職などの人事イベントに基づいて Azure AD アカウントのプロビジョニングを制御できるようになります。
 
-Azure AD への SAP SuccessFactors の受信プロビジョニングを設定する方法については、[SAP SuccessFactors の自動プロビジョニングを構成する](https://aka.ms/SAPSuccessFactorsInboundTutorial)チュートリアルを参照してください。
+Azure AD への SAP SuccessFactors の受信プロビジョニングを設定する方法については、[SAP SuccessFactors の自動プロビジョニングを構成する](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)チュートリアルを参照してください。
 
 ---
 
@@ -580,7 +580,7 @@ Azure AD エンタイトルメント管理を使用すると、従業員だけ�
 
 [Airtable](../saas-apps/airtable-tutorial.md)、[Hootsuite](../saas-apps/hootsuite-tutorial.md)、[Blue Access for Members (BAM)](../saas-apps/blue-access-for-members-tutorial.md)、[Bitly](../saas-apps/bitly-tutorial.md)、[Riva](../saas-apps/riva-tutorial.md)、[ResLife Portal](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=)、[NegometrixPortal Single Sign On (SSO)](../saas-apps/negometrixportal-tutorial.md)、[TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279)、[Motus](../saas-apps/motus-tutorial.md)、[MyAryaka](../saas-apps/myaryaka-tutorial.md)、[BlueMail](https://loginself1.bluemail.me/)、[Beedle](https://teams-web.beedle.co/#/)、[Visma](../saas-apps/visma-tutorial.md)、[OneDesk](../saas-apps/onedesk-tutorial.md)、[Foko Retail](../saas-apps/foko-retail-tutorial.md)、[Qmarkets Idea & Innovation Management](../saas-apps/qmarkets-idea-innovation-management-tutorial.md)、[Netskope User Authentication](../saas-apps/netskope-user-authentication-tutorial.md)、[uniFLOW Online](../saas-apps/uniflow-online-tutorial.md)、[Claromentis](../saas-apps/claromentis-tutorial.md)、[Jisc Student Voter Registration](../saas-apps/jisc-student-voter-registration-tutorial.md)、[e4enable](https://portal.e4enable.com/)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -616,7 +616,7 @@ Azure AD アプリケーション ギャラリーが更新され、プロビジ�
 
 開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API ベータ版では、**2020 年 1 月 10 日**頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
 
-新しい riskDetection API の詳細については、[リスク検出 API のリファレンス ドキュメント](https://aka.ms/RiskDetectionsAPI)をご覧ください。
+新しい riskDetection API の詳細については、[リスク検出 API のリファレンス ドキュメント](/graph/api/resources/riskdetection)をご覧ください。
 
 ---
 
@@ -645,7 +645,7 @@ Chrome 80 ブラウザーがリリースされる数週間前に、アプリケ�
 
 Azure AD アカウントを持つユーザーはアプリケーション登録ポータル (apps.dev.microsoft.com) を使用してアプリケーションを登録したり、管理したりできなくなります。また、Azure portal のアプリの登録 (レガシ) エクスペリエンスでアプリケーションを登録したり、管理したりできなくなります。
 
-新しいアプリの登録エクスペリエンスの詳細については、「[トレーニング ガイド: Azure portal でのアプリの登録](../develop/app-registrations-training-guide-for-app-registrations-legacy-users.md)」を参照してください。
+新しいアプリの登録エクスペリエンスの詳細については、「[トレーニング ガイド: Azure portal でのアプリの登録](../develop/quickstart-register-app.md)」を参照してください。
 
 ---
 
@@ -741,7 +741,7 @@ Azure AD B2C では、月間アクティブ ユーザー (MAU) の課金がサ�
 
 [In Case of Crisis – Mobile](../saas-apps/in-case-of-crisis-mobile-tutorial.md)、[Juno Journey](../saas-apps/juno-journey-tutorial.md)、[ExponentHR](../saas-apps/exponenthr-tutorial.md)、[Tact](https://tact.ai/assistant/)、[OpusCapita Cash Management](http://cm1.opuscapita.com/tenantname)、[Salestim](https://prd.salestim.io/forms)、[Learnster](../saas-apps/learnster-tutorial.md)、[Dynatrace](../saas-apps/dynatrace-tutorial.md)、[HunchBuzz](https://login.hunchbuzz.com/integrations/azure/process)、[Freshworks](../saas-apps/freshworks-tutorial.md)、[eCornell](../saas-apps/ecornell-tutorial.md)、[ShipHazmat](../saas-apps/shiphazmat-tutorial.md)、[Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md)、[Contentful](../saas-apps/contentful-tutorial.md)、[Bindtuning](https://bindtuning.com/login)、[HireVue Coordinate – Europe](https://www.hirevue.com/)、[HireVue Coordinate - USOnly](https://www.hirevue.com/)、[HireVue Coordinate - US](https://www.hirevue.com/)、[WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup)、[Cloudmore](../saas-apps/cloudmore-tutorial.md)、[Visit.org](../saas-apps/visitorg-tutorial.md)、[Cambium Xirrus EasyPass Portal](https://login.xirrus.com/azure-signup)、[Paylocity](../saas-apps/paylocity-tutorial.md)、[Mail Luck!](../saas-apps/mail-luck-tutorial.md)、[Teamie](https://theteamie.com/)、[Velocity for Teams](https://velocity.peakup.org/teams/login)、[SIGNL4](https://account.signl4.com/manage)、[EAB Navigate IMPL](../saas-apps/eab-navigate-impl-tutorial.md)、[ScreenMeet](https://console.screenmeet.com/)、[Omega Point](https://pi.ompnt.com/)、[Speaking Email for Intune (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune)、[Speaking Email for Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct)、[ExactCare SSO](../saas-apps/exactcare-sso-tutorial.md)、[iHealthHome Care Navigation System](https://ihealthnav.com/account/signin)、[Qubie](https://qubie.azurewebsites.net/static/adminTab/authorize.html)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -844,7 +844,7 @@ Azure AD Domain Services (Azure AD DS) を更新し、新しく強化された�
 
 [ScheduleLook](https://schedulelook.bbsonlineservices.net/)、[MS Azure SSO Access for Ethidex Compliance Office&trade; - Single  sign-on](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md)、[iServer Portal](../saas-apps/iserver-portal-tutorial.md)、[SKYSITE](../saas-apps/skysite-tutorial.md)、[Concur Travel and Expense](../saas-apps/concur-travel-and-expense-tutorial.md)、[WorkBoard](../saas-apps/workboard-tutorial.md)、`https://apps.yeeflow.com/`, [ARC Facilities](../saas-apps/arc-facilities-tutorial.md)、[Luware Stratus Team](https://stratus.emea.luware.cloud/login)、[Wide Ideas](https://wideideas.online/wideideas/)、[Prisma Cloud](../saas-apps/prisma-cloud-tutorial.md)、[JDLT Client Hub](https://clients.jdlt.co.uk/login)、[RENRAKU](../saas-apps/renraku-tutorial.md)、[SealPath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive)、[Prisma Cloud](../saas-apps/prisma-cloud-tutorial.md)、`https://app.penneo.com/`、`https://app.testhtm.com/settings/email-integration`、[Cintoo Cloud](https://aec.cintoo.com/login)、[Whitesource](../saas-apps/whitesource-tutorial.md)、[Hosted Heritage Online SSO](../saas-apps/hosted-heritage-online-sso-tutorial.md)、[IDC](../saas-apps/idc-tutorial.md)、[CakeHR](../saas-apps/cakehr-tutorial.md)、[BIS](../saas-apps/bis-tutorial.md)、[Coo Kai Team Build](https://ms-contacts.coo-kai.jp/)、[Sonarqube](../saas-apps/sonarqube-tutorial.md)、[Adobe Identity Management](../saas-apps/tutorial-list.md)、[Discovery Benefits SSO](../saas-apps/discovery-benefits-sso-tutorial.md)、[Amelio](https://app.amelio.co/)、`https://itask.yipinapp.com/`
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -983,7 +983,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 **種類:** 新機能 **サービス カテゴリ:** Azure リソースのマネージド ID **製品の機能:** 開発者エクスペリエンス
 
-ユーザー割り当てマネージド ID が Virtual Machines と Virtual Machine Scale Sets で一般提供されました。 この一環として、Azure では、使用中のサブスクリプションで信頼され、1 つまたは複数の Azure サービス インスタンスに割り当てることができる ID を Azure AD テナントで作成できます。 ユーザー割り当てマネージド ID の詳細については、[Azure リソースのマネージド ID とは](https://aka.ms/azuremanagedidentity)に関する記事を参照してください。
+ユーザー割り当てマネージド ID が Virtual Machines と Virtual Machine Scale Sets で一般提供されました。 この一環として、Azure では、使用中のサブスクリプションで信頼され、1 つまたは複数の Azure サービス インスタンスに割り当てることができる ID を Azure AD テナントで作成できます。 ユーザー割り当てマネージド ID の詳細については、[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)に関する記事を参照してください。
 
 ---
 
@@ -993,7 +993,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 モバイル アプリを組織に登録しているユーザーは、Microsoft Authenticator アプリからの通知に同意するか、モバイル アプリまたはハードウェア トークンからのコードを入力すると、自分のパスワードをリセットできるようになりました。
 
-詳細については、[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](https://aka.ms/authappsspr)に関する記事をご覧ください。 ユーザー エクスペリエンスの詳細については、[職場または学校のパスワードのリセットの概要](../user-help/active-directory-passwords-reset-register.md)に関する記事をご覧ください。
+詳細については、[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](../authentication/concept-sspr-howitworks.md)に関する記事をご覧ください。 ユーザー エクスペリエンスの詳細については、[職場または学校のパスワードのリセットの概要](../user-help/active-directory-passwords-reset-register.md)に関する記事をご覧ください。
 
 ---
 
@@ -1015,7 +1015,7 @@ Azure AD Authentication ライブラリ (ADAL.NET) バージョン 5.0.0-preview
 
 [Civic Platform](../saas-apps/civic-platform-tutorial.md)、[Amazon Business](../saas-apps/amazon-business-tutorial.md)、[ProNovos Ops Manager](../saas-apps/pronovos-ops-manager-tutorial.md)、[Cognidox](../saas-apps/cognidox-tutorial.md)、[Viareport's Inativ Portal (Europe)](../saas-apps/viareports-inativ-portal-europe-tutorial.md)、[Azure Databricks](https://azure.microsoft.com/services/databricks)、[Robin](../saas-apps/robin-tutorial.md)、[Academy Attendance](../saas-apps/academy-attendance-tutorial.md)、[Priority Matrix](https://sync.appfluence.com/pmwebng/)、[Cousto MySpace](https://cousto.platformers.be/account/login)、[Uploadcare](https://uploadcare.com/accounts/signup/)、[Carbonite Endpoint Backup](../saas-apps/carbonite-endpoint-backup-tutorial.md)、[CPQSync by Cincom](../saas-apps/cpqsync-by-cincom-tutorial.md)、[Chargebee](../saas-apps/chargebee-tutorial.md)、[deliver.media&trade; Portal](https://portal.deliver.media)、[Frontline Education](../saas-apps/frontline-education-tutorial.md)、[F5](https://www.f5.com/products/security/access-policy-manager)、[stashcat AD connect](https://www.stashcat.com)、[Blink](../saas-apps/blink-tutorial.md)、[Vocoli](../saas-apps/vocoli-tutorial.md)、[ProNovos Analytics](../saas-apps/pronovos-analytics-tutorial.md)、[Sigstr](../saas-apps/sigstr-tutorial.md)、[Darwinbox](../saas-apps/darwinbox-tutorial.md)、[Watch by Colors](../saas-apps/watch-by-colors-tutorial.md)、[Harness](../saas-apps/harness-tutorial.md)、[EAB Navigate Strategic Care](../saas-apps/eab-navigate-strategic-care-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1074,7 +1074,7 @@ Azure Monitor を設定する方法については、[Azure Monitor の Azure AD
 
 2019 年 9 月 25 日に、ユーザー セキュリティ情報の登録と管理のためのセキュリティ情報エクスペリエンスのうち、機能強化されていない前のバージョンを無効にし、新しい[機能強化されたバージョン](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)のみを有効にします。 つまり、ユーザーは以前のエクスペリエンスを使用できなくなります。
 
-機能強化されたセキュリティ情報エクスペリエンスについては、[管理者ドキュメント](https://aka.ms/securityinfodocs) と [ユーザー ドキュメント](https://aka.ms/securityinfoguide)を参照してください。
+機能強化されたセキュリティ情報エクスペリエンスについては、[管理者ドキュメント](../authentication/concept-registration-mfa-sspr-combined.md) と [ユーザー ドキュメント](../user-help/security-info-setup-signin.md)を参照してください。
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>この新しいエクスペリエンスを有効にするには、次の操作を行う必要があります。
 
@@ -1168,7 +1168,7 @@ Azure AD のお客様は、組織のユーザーとグループに対する FIDO
 
 [Ungerboeck Software](../saas-apps/ungerboeck-software-tutorial.md)、[Bright Pattern Omnichannel Contact Center](../saas-apps/bright-pattern-omnichannel-contact-center-tutorial.md)、[Clever Nelly](../saas-apps/clever-nelly-tutorial.md)、[AcquireIO](../saas-apps/acquireio-tutorial.md)、[Looop](https://www.looop.co/schedule-a-demo/)、[productboard](../saas-apps/productboard-tutorial.md)、[MS Azure SSO Access for Ethidex Compliance Office&trade;](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md)、[Hype](../saas-apps/hype-tutorial.md)、[Abstract](../saas-apps/abstract-tutorial.md)、[Ascentis](../saas-apps/ascentis-tutorial.md)、[Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html)、[Wandera](../saas-apps/wandera-tutorial.md)、[TwineSocial](https://twinesocial.com/)、[Kallidus](../saas-apps/kallidus-tutorial.md)、[HyperAnna](../saas-apps/hyperanna-tutorial.md)、[PharmID WasteWitness](https://pharmid.com/)、[i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)、[JFrog Artifactory](../saas-apps/jfrog-artifactory-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1346,7 +1346,7 @@ Microsoft Graph 用の新しい riskDetections API のパブリック プレビ�
 
 [Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md)、[Otsuka Shokai](../saas-apps/otsuka-shokai-tutorial.md)、[ANAQUA](../saas-apps/anaqua-tutorial.md)、[Azure VPN Client](https://portal.azure.com/)、[ExpenseIn](../saas-apps/expensein-tutorial.md)、[Helper Helper](../saas-apps/helper-helper-tutorial.md)、[Costpoint](../saas-apps/costpoint-tutorial.md)、[GlobalOne](../saas-apps/globalone-tutorial.md)、[Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/)、[Skore](https://app.justskore.it/)、[Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-tutorial.md)、[CyberArk SAML Authentication](../saas-apps/cyberark-saml-authentication-tutorial.md)、[Scrible Edu](https://www.scrible.com/sign-in/#/create-account)、[PandaDoc](../saas-apps/pandadoc-tutorial.md)、[Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial)、[Proptimise OS](https://proptimise.co.uk/software/)、[Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md)、Oracle Access Manager for Oracle Retail Merchandising、Oracle Access Manager for Oracle E-Business Suite、Oracle IDCS for E-Business Suite、Oracle IDCS for PeopleSoft、Oracle IDCS for JD Edwards
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1494,7 +1494,7 @@ Risky Users API を使用して、ユーザーのリスク履歴を取得し、�
 
 [Freedcamp](../saas-apps/freedcamp-tutorial.md)、[Real Links](../saas-apps/real-links-tutorial.md)、[Kianda](https://app.kianda.com/sso/OpenID/AzureAD/)、[Simple Sign](../saas-apps/simple-sign-tutorial.md)、[Braze](../saas-apps/braze-tutorial.md)、[Displayr](../saas-apps/displayr-tutorial.md)、[Templafy](../saas-apps/templafy-tutorial.md)、[Marketo Sales Engage](https://toutapp.com/login)、[ACLP](../saas-apps/aclp-tutorial.md)、[OutSystems](../saas-apps/outsystems-tutorial.md)、[Meta4 Global HR](../saas-apps/meta4-global-hr-tutorial.md)、[Quantum Workplace](../saas-apps/quantum-workplace-tutorial.md)、[Cobalt](../saas-apps/cobalt-tutorial.md)、[webMethods API Cloud](../saas-apps/webmethods-integration-cloud-tutorial.md)、[RedFlag](https://pocketstop.com/redflag/)、[Whatfix](../saas-apps/whatfix-tutorial.md)、[Control](../saas-apps/control-tutorial.md)、[JOBHUB](../saas-apps/jobhub-tutorial.md)、[NEOGOV](../saas-apps/neogov-tutorial.md)、[Foodee](../saas-apps/foodee-tutorial.md)、[MyVR](../saas-apps/myvr-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1624,7 +1624,7 @@ Azure AD アクティビティ ログの視覚化に関するフィードバッ�
 
 [SAP Fiori](../saas-apps/sap-fiori-tutorial.md)、[HRworks Single Sign-On](../saas-apps/hrworks-single-sign-on-tutorial.md)、[Percolate](../saas-apps/percolate-tutorial.md)、[MobiControl](../saas-apps/mobicontrol-tutorial.md)、[Citrix NetScaler](../saas-apps/citrix-netscaler-tutorial.md)、[Shibumi](../saas-apps/shibumi-tutorial.md)、[Benchling](../saas-apps/benchling-tutorial.md)、[MileIQ](https://mileiq.onelink.me/991934284/7e980085)、[PageDNA](../saas-apps/pagedna-tutorial.md)、[EduBrite LMS](../saas-apps/edubrite-lms-tutorial.md)、[RStudio Connect](../saas-apps/rstudio-connect-tutorial.md)、[AMMS](../saas-apps/amms-tutorial.md)、[Mitel Connect](../saas-apps/mitel-connect-tutorial.md)、[Alibaba Cloud (ロールベースの SSO)](../saas-apps/alibaba-cloud-service-role-based-sso-tutorial.md)、[Certent Equity Management](../saas-apps/certent-equity-management-tutorial.md)、[Sectigo Certificate Manager](../saas-apps/sectigo-certificate-manager-tutorial.md)、[GreenOrbit](../saas-apps/greenorbit-tutorial.md)、[Workgrid](../saas-apps/workgrid-tutorial.md)、[monday.com](../saas-apps/mondaycom-tutorial.md)、[SurveyMonkey Enterprise](../saas-apps/surveymonkey-enterprise-tutorial.md)、[Indiggo](https://indiggolead.com/)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1718,7 +1718,7 @@ Azure AD B2C でカスタム ポリシーを作成できるようになりまし
 
 [ISEC7 Mobile Exchange Delegate](https://www.isec7.com/english/)、[MediusFlow](https://office365.cloudapp.mediusflow.com/)、[ePlatform](../saas-apps/eplatform-tutorial.md)、[Fulcrum](../saas-apps/fulcrum-tutorial.md)、[ExcelityGlobal](../saas-apps/excelityglobal-tutorial.md)、[Explanation-Based Auditing System](../saas-apps/explanation-based-auditing-system-tutorial.md)、[Lean](../saas-apps/lean-tutorial.md)、[Powerschool Performance Matters](../saas-apps/powerschool-performance-matters-tutorial.md)、[Cinode](https://cinode.com/)、[Iris Intranet](../saas-apps/iris-intranet-tutorial.md)、[Empactis](../saas-apps/empactis-tutorial.md)、[SmartDraw](../saas-apps/smartdraw-tutorial.md)、[Confirmit Horizons](../saas-apps/confirmit-horizons-tutorial.md)、[TAS](../saas-apps/tas-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1728,9 +1728,9 @@ Azure AD B2C でカスタム ポリシーを作成できるようになりまし
 
 次のアプリでのユーザー アカウントの作成、更新、および削除を自動化します。
 
-[Zscaler](https://aka.ms/ZscalerProvisioning)、[Zscaler Beta](https://aka.ms/ZscalerBetaProvisioning)、[Zscaler One](https://aka.ms/ZscalerOneProvisioning)、[Zscaler 2](https://aka.ms/ZscalerTwoProvisioning)、[Zscaler 3](https://aka.ms/ZscalerThreeProvisioning)、[Zscaler ZSCloud](https://aka.ms/ZscalerZSCloudProvisioning)、[Atlassian Cloud](https://aka.ms/atlassianCloudProvisioning)
+[Zscaler](../saas-apps/zscaler-provisioning-tutorial.md)、[Zscaler Beta](../saas-apps/zscaler-beta-provisioning-tutorial.md)、[Zscaler One](../saas-apps/zscaler-one-provisioning-tutorial.md)、[Zscaler 2](../saas-apps/zscaler-two-provisioning-tutorial.md)、[Zscaler 3](../saas-apps/zscaler-three-provisioning-tutorial.md)、[Zscaler ZSCloud](../saas-apps/zscaler-zscloud-provisioning-tutorial.md)、[Atlassian Cloud](../saas-apps/atlassian-cloud-provisioning-tutorial.md)
 
-自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD での SaaS アプリケーションへのユーザー プロビジョニングの自動化](https://aka.ms/ProvisioningDocumentation)に関するページを参照してください。
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD での SaaS アプリケーションへのユーザー プロビジョニングの自動化](../app-provisioning/user-provisioning.md)に関するページを参照してください。
 
 ---
 
@@ -1854,7 +1854,7 @@ Azure AD アクセス レビューを使用してアクセス レビューを作
 
 [Euromonitor Passport](../saas-apps/euromonitor-passport-tutorial.md)、[MindTickle](../saas-apps/mindtickle-tutorial.md)、[FAT FINGER](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7)、[AirStack](../saas-apps/airstack-tutorial.md)、[Oracle Fusion ERP](../saas-apps/oracle-fusion-erp-tutorial.md)、[IDrive](../saas-apps/idrive-tutorial.md)、[Skyward Qmlativ](../saas-apps/skyward-qmlativ-tutorial.md)、[Brightidea](../saas-apps/brightidea-tutorial.md)、[AlertOps](../saas-apps/alertops-tutorial.md)、[Soloinsight-CloudGate SSO](../saas-apps/soloinsight-cloudgate-sso-tutorial.md)、Permission Click、[Brandfolder](../saas-apps/brandfolder-tutorial.md)、[StoregateSmartFile](../saas-apps/smartfile-tutorial.md)、[Pexip](../saas-apps/pexip-tutorial.md)、[Stormboard](../saas-apps/stormboard-tutorial.md)、[Seismic](../saas-apps/seismic-tutorial.md)、[Share A Dream](https://www.shareadream.org/how-it-works)、[Bugsnag](../saas-apps/bugsnag-tutorial.md)、[webMethods Integration Cloud](../saas-apps/webmethods-integration-cloud-tutorial.md)、[Knowledge Anywhere LMS](../saas-apps/knowledge-anywhere-lms-tutorial.md)、[OU Campus](../saas-apps/ou-campus-tutorial.md)、[Periscope Data](../saas-apps/periscope-data-tutorial.md)、[Netop Portal](../saas-apps/netop-portal-tutorial.md)、[smartvid.io](../saas-apps/smartvid.io-tutorial.md)、[PureCloud by Genesys](../saas-apps/purecloud-by-genesys-tutorial.md)、[ClickUp Productivity Platform](../saas-apps/clickup-productivity-platform-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1960,7 +1960,7 @@ Azure AD、Microsoft アカウント (MSA)、Google フェデレーションな�
 
 [Firstbird](../saas-apps/firstbird-tutorial.md)、[Folloze](../saas-apps/folloze-tutorial.md)、[Talent Palette](../saas-apps/talent-palette-tutorial.md)、[Infor CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md)、[Cisco Umbrella](../saas-apps/cisco-umbrella-tutorial.md)、[Zscaler Internet Access Administrator](../saas-apps/zscaler-internet-access-administrator-tutorial.md)、[Expiration Reminder](../saas-apps/expiration-reminder-tutorial.md)、[InstaVR Viewer](../saas-apps/instavr-viewer-tutorial.md)、[CorpTax](../saas-apps/corptax-tutorial.md)、[Verb](https://app.verb.net/login)、[OpenLattice](https://openlattice.com/agora)、[TheOrgWiki](https://www.theorgwiki.com/signup)、[Pavaso Digital Close](../saas-apps/pavaso-digital-close-tutorial.md)、[GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md)、[Cloud Service PICCO](../saas-apps/cloud-service-picco-tutorial.md)、[AuditBoard](../saas-apps/auditboard-tutorial.md)、[iProva](../saas-apps/iprova-tutorial.md)、[Workable](../saas-apps/workable-tutorial.md)、[CallPlease](https://webapp.callplease.com/create-account/create-account.html)、[GTNexus SSO System](../saas-apps/gtnexus-sso-module-tutorial.md)、[CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md)、[Deskradar](../saas-apps/deskradar-tutorial.md)、[Coralogixv](../saas-apps/coralogix-tutorial.md)、[Signagelive](../saas-apps/signagelive-tutorial.md)、[ARES for Enterprise](../saas-apps/ares-for-enterprise-tutorial.md)、[K2 for Office 365](https://www.k2.com/O365)、[Xledger](https://www.xledger.net/)、[iDiD Manager](../saas-apps/idid-manager-tutorial.md)、[HighGear](../saas-apps/highgear-tutorial.md)、[Visitly](../saas-apps/visitly-tutorial.md)、[Korn Ferry ALP](../saas-apps/korn-ferry-alp-tutorial.md)、[Acadia](../saas-apps/acadia-tutorial.md)、[Adoddle cSaas Platform](../saas-apps/adoddle-csaas-platform-tutorial.md)<!-- , [CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/cafexportal-meetings-tutorial), [MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)-->
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -1978,7 +1978,7 @@ Azure AD Identity Protection のパブリック プレビュー オファリン�
 
 - リスクの高いユーザーとリスクの高いサインインの間での製品全体の配置
 
-機能強化の詳細については、[Azure Active Directory Identity Protection (更新済み) の概要](https://aka.ms/IdentityProtectionDocs)に関するページを参照してください。 製品内のプロンプトを介して、詳しく学習することや自分の考えを共有することができます。
+機能強化の詳細については、[Azure Active Directory Identity Protection (更新済み) の概要](../identity-protection/overview-identity-protection.md)に関するページを参照してください。 製品内のプロンプトを介して、詳しく学習することや自分の考えを共有することができます。
 
 ---
 
@@ -2180,7 +2180,7 @@ PIM と利用可能な電子メール通知の詳細については、「[PIM �
 
 [CoreStack](https://cloud.corestack.io/site/login)、[HubSpot](../saas-apps/hubspot-tutorial.md)、[GetThere](../saas-apps/getthere-tutorial.md)、[Gra-Pe](../saas-apps/grape-tutorial.md)、[eHour](https://getehour.com/try-now)、[Consent2Go](../saas-apps/consent2go-tutorial.md)、[Appinux](../saas-apps/appinux-tutorial.md)、[DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview)、[Useall](../saas-apps/useall-tutorial.md)、[Infinite Campus](../saas-apps/infinitecampus-tutorial.md)、[Alaya](https://alayagood.com)、[HeyBuddy](../saas-apps/heybuddy-tutorial.md)、[Wrike SAML](../saas-apps/wrike-tutorial.md)、[Drift](../saas-apps/drift-tutorial.md)、[Zenegy for Business Central 365](https://accounting.zenegy.com/)、[Everbridge Member Portal](../saas-apps/everbridge-tutorial.md)、[IDEO](https://profile.ideo.com/users/sign_up)、[Ivanti Service Manager (ISM)](../saas-apps/ivanti-service-manager-tutorial.md)、[Peakon](../saas-apps/peakon-tutorial.md)、[Allbound SSO](../saas-apps/allbound-sso-tutorial.md)、[Plex Apps - Classic Test](https://test.plexonline.com/signon)、[Plex Apps – Classic](https://www.plexonline.com/signon)、[Plex Apps - UX Test](https://test.cloud.plex.com/sso)、[Plex Apps – UX](https://cloud.plex.com/sso)、[Plex Apps – IAM](https://accounts.plex.com/)、[CRAFTS - Childcare Records, Attendance, & Financial Tracking System](https://getcrafts.ca/craftsregistration)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -2202,7 +2202,7 @@ Azure AD のログを Azure Log Analytics に転送できるようになりま�
 
 [My Award Points](../saas-apps/myawardpoints-tutorial.md)、[Vibe HCM](../saas-apps/vibehcm-tutorial.md)、ambyint、[MyWorkDrive](../saas-apps/myworkdrive-tutorial.md)、[BorrowBox](../saas-apps/borrowbox-tutorial.md)、Dialpad、[ON24 Virtual Environment](../saas-apps/on24-tutorial.md)、[RingCentral](../saas-apps/ringcentral-tutorial.md)、[Zscaler Three](../saas-apps/zscaler-three-tutorial.md)、[Phraseanet](../saas-apps/phraseanet-tutorial.md)、[Appraisd](../saas-apps/appraisd-tutorial.md)、[Workspot Control](../saas-apps/workspotcontrol-tutorial.md)、[Shuccho Navi](../saas-apps/shucchonavi-tutorial.md)、[Glassfrog](../saas-apps/glassfrog-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -2329,7 +2329,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 
 この新しい機能を設定すると、Windows 7、Windows 8、または Windows 8.1 を実行しているデバイスの**ロック**画面から自分のパスワードをリセットするためのリンクがユーザーに表示されます。 そのリンクをクリックすると、ユーザーには、Web ブラウザーを介する場合と同じパスワードのリセット フローが示されます。
 
-詳細については、[Windows 7、8、8.1 からパスワードのリセットを有効にする方法](https://aka.ms/ssprforwindows78)に関するページを参照してください
+詳細については、[Windows 7、8、8.1 からパスワードのリセットを有効にする方法](../authentication/howto-sspr-windows.md)に関するページを参照してください
 
 ---
 
@@ -2353,7 +2353,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 
 [Uberflip](../saas-apps/uberflip-tutorial.md)、[Comeet Recruiting Software](../saas-apps/comeetrecruitingsoftware-tutorial.md)、[Workteam](../saas-apps/workteam-tutorial.md)、[ArcGIS Enterprise](../saas-apps/arcgisenterprise-tutorial.md)、[Nuclino](../saas-apps/nuclino-tutorial.md)、[JDA Cloud](../saas-apps/jdacloud-tutorial.md)、[Snowflake](../saas-apps/snowflake-tutorial.md)、NavigoCloud、[Figma](../saas-apps/figma-tutorial.md)、join.me、[ZephyrSSO](../saas-apps/zephyrsso-tutorial.md)、[Silverback](../saas-apps/silverback-tutorial.md)、Riverbed Xirrus EasyPass、[Rackspace SSO](../saas-apps/rackspacesso-tutorial.md)、Enlyft SSO for Azure、SurveyMonkey、[Convene](../saas-apps/convene-tutorial.md)、[dmarcian](../saas-apps/dmarcian-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -2471,7 +2471,7 @@ PIM と Azure リソースについて詳しくは、「[Privileged Identity Man
 
 [Hornbill](../saas-apps/hornbill-tutorial.md)、[Bridgeline Unbound](../saas-apps/bridgelineunbound-tutorial.md)、[Sauce Labs - Mobile and Web Testing](../saas-apps/saucelabs-mobileandwebtesting-tutorial.md)、[Meta Networks Connector](../saas-apps/metanetworksconnector-tutorial.md)、[Way We Do](../saas-apps/waywedo-tutorial.md)、[Spotinst](../saas-apps/spotinst-tutorial.md)、[ProMaster (by Inlogik)](../saas-apps/promaster-tutorial.md)、SchoolBooking、[4me](../saas-apps/4me-tutorial.md)、[Dossier](../saas-apps/dossier-tutorial.md)、[N2F - Expense reports](../saas-apps/n2f-expensereports-tutorial.md)、[Comm100 Live Chat](../saas-apps/comm100livechat-tutorial.md)、[SafeConnect](../saas-apps/safeconnect-tutorial.md)、[ZenQMS](../saas-apps/zenqms-tutorial.md)、[eLuminate](../saas-apps/eluminate-tutorial.md)、[Dovetale](../saas-apps/dovetale-tutorial.md)。
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -2513,7 +2513,7 @@ Azure Active Directory (Azure AD) の設計が更新され、以下のサービ�
 - メール アドレス: azure-noreply@microsoft.com
 - 表示名:Microsoft Azure
 
-新しい電子メール デザインのいくつかの例と詳細は、「[Azure AD PIM の電子メール通知](https://go.microsoft.com/fwlink/?linkid=2005832)」で参照してください。
+新しい電子メール デザインのいくつかの例と詳細は、「[Azure AD PIM の電子メール通知](../privileged-identity-management/pim-email-notifications.md)」で参照してください。
 
 ---
 
@@ -2557,7 +2557,7 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
 
 [Innovation Hub](../saas-apps/innovationhub-tutorial.md)、[Leapsome](../saas-apps/leapsome-tutorial.md)、[Certain Admin SSO](../saas-apps/certainadminsso-tutorial.md)、PSUC Staging、[iPass SmartConnect](../saas-apps/ipasssmartconnect-tutorial.md)、[Screencast-O-Matic](../saas-apps/screencast-tutorial.md)、PowerSchool Unified Classroom、[Eli Onboarding](../saas-apps/elionboarding-tutorial.md)、[Bomgar Remote Support](../saas-apps/bomgarremotesupport-tutorial.md)、[Nimblex](../saas-apps/nimblex-tutorial.md)、[Imagineer WebVision](../saas-apps/imagineerwebvision-tutorial.md)、[Insight4GRC](../saas-apps/insight4grc-tutorial.md)、[SecureW2 JoinNow Connector](../saas-apps/securejoinnow-tutorial.md)、[Kanbanize](../saas-apps/kanbanize-tutorial.md)、[SmartLPA](../saas-apps/smartlpa-tutorial.md)、[Skills Base](../saas-apps/skillsbase-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -2571,7 +2571,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS �
 
 - [Bonusly](../saas-apps/bonusly-provisioning-tutorial.md)
 
-ユーザー プロビジョニングをサポートする Azure AD ギャラリーのすべてのアプリケーションの一覧については、[Azure Active Directory と SaaS アプリケーションの統合](https://aka.ms/appstutorial)に関する記事を参照してください。
+ユーザー プロビジョニングをサポートする Azure AD ギャラリーのすべてのアプリケーションの一覧については、[Azure Active Directory と SaaS アプリケーションの統合](../saas-apps/tutorial-list.md)に関する記事を参照してください。
 
 ---
 
@@ -2673,7 +2673,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 **種類:** 変更の計画 **サービス カテゴリ:** レポート **製品の機能:** 監視とレポート
 
-セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](https://aka.ms/aadreportsapi) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、**2018 年 6 月 26日**までに行われます。
+セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](../reports-monitoring/concept-reporting-api.md) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、**2018 年 6 月 26日**までに行われます。
 
 お使いのアプリに Azure AD アクティビティ ログ API を使っているものがある場合は、以下の手順に従って、変更後にアプリで問題が発生しないことを確認してください。
 
@@ -2737,7 +2737,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 [Skytap](../saas-apps/skytap-tutorial.md)、[Settling music](../saas-apps/settlingmusic-tutorial.md)、[SAML 1.1 Token enabled LOB App](../saas-apps/saml-tutorial.md)、[Supermood](../saas-apps/supermood-tutorial.md)、[Autotask](../saas-apps/autotaskendpointbackup-tutorial.md)、[Endpoint Backup](../saas-apps/autotaskendpointbackup-tutorial.md)、[Skyhigh Networks](../saas-apps/skyhighnetworks-tutorial.md)、Smartway2、[TonicDM](../saas-apps/tonicdm-tutorial.md)、[Moconavi](../saas-apps/moconavi-tutorial.md)、[Zoho One](../saas-apps/zohoone-tutorial.md)、[SharePoint on-premises](../saas-apps/sharepoint-on-premises-tutorial.md)、[ForeSee CX Suite](../saas-apps/foreseecxsuite-tutorial.md)、[Vidyard](../saas-apps/vidyard-tutorial.md)、[ChronicX](../saas-apps/chronicx-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
@@ -2753,7 +2753,7 @@ Azure AD Password Protection を使用して、簡単に推測できるパスワ
 - 最も一般的に使用されている 500 を超えるパスワード一覧のパスワードと、それらのパスワードの 100 万を超える代替文字のバリエーションを、ユーザーが使用しないようにする。
 - Azure AD およびオンプレミスの Windows Server AD の両方に対して、Azure AD ポータルの単一の場所から Azure AD Password Protection を管理する。
 
-Azure AD Password Protection の詳細については、「[組織内の不適切なパスワードを排除する](https://aka.ms/aadpasswordprotectiondocs)」を参照してください。
+Azure AD Password Protection の詳細については、「[組織内の不適切なパスワードを排除する](../authentication/concept-password-ban-bad.md)」を参照してください。
 
 ---
 
@@ -2783,7 +2783,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 組織に Azure Multi-Factor Authentication (MFA) をデプロイする方法に関する新しいステップ バイ ステップ ガイドを公開しました。
 
-MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](https://aka.ms/DeploymentPlans) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
+MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](./active-directory-deployment-plans.md) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 
 ---
 
@@ -2857,7 +2857,7 @@ Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加�
 
 **種類:** 新機能 **サービス カテゴリ:** その他 **製品の機能:** GoLocal
 
-ヨーロッパのお客様は、プライバシー法とヨーロッパの法律を満たすために、各自のデータをヨーロッパ内にとどめる必要があり、ヨーロッパのデータセンターの外部にデータをレプリケートすることはできません。 こちらの[記事](https://go.microsoft.com/fwlink/?linkid=872328)に、ヨーロッパ内に保存される ID 情報の具体的詳細と、ヨーロッパのデータセンターの外部で保存される情報の詳細が説明されています。
+ヨーロッパのお客様は、プライバシー法とヨーロッパの法律を満たすために、各自のデータをヨーロッパ内にとどめる必要があり、ヨーロッパのデータセンターの外部にデータをレプリケートすることはできません。 こちらの[記事](./active-directory-data-storage-eu.md)に、ヨーロッパ内に保存される ID 情報の具体的詳細と、ヨーロッパのデータセンターの外部で保存される情報の詳細が説明されています。
 
 ---
 
@@ -2873,7 +2873,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS �
 
 - [Zendesk](../saas-apps/zendesk-provisioning-tutorial.md)
 
-Azure AD ギャラリーにある、ユーザー プロビジョニングをサポートするすべてのアプリケーションの一覧については、[https://aka.ms/appstutorial](https://aka.ms/appstutorial) を参照してください。
+Azure AD ギャラリーにある、ユーザー プロビジョニングをサポートするすべてのアプリケーションの一覧については、[https://aka.ms/appstutorial](../saas-apps/tutorial-list.md) を参照してください。
 
 ---
 
@@ -2913,7 +2913,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 
 [AwardSpring](../saas-apps/awardspring-tutorial.md)、Infogix Data3Sixty Govern、[Yodeck](../saas-apps/infogix-tutorial.md)、[Jamf Pro](../saas-apps/jamfprosamlconnector-tutorial.md)、[KnowledgeOwl](../saas-apps/knowledgeowl-tutorial.md)、[Envi MMIS](../saas-apps/envimmis-tutorial.md)、[LaunchDarkly](../saas-apps/launchdarkly-tutorial.md)、[Adobe Captivate Prime](../saas-apps/adobecaptivateprime-tutorial.md)、[Montage Online](../saas-apps/montageonline-tutorial.md)、[まなびポケット](../saas-apps/manabipocket-tutorial.md)、OpenReel、[Arc Publishing - SSO](../saas-apps/arc-tutorial.md)、[PlanGrid](../saas-apps/plangrid-tutorial.md)、[iWellnessNow](../saas-apps/iwellnessnow-tutorial.md)、[Proxyclick](../saas-apps/proxyclick-tutorial.md)、[Riskware](../saas-apps/riskware-tutorial.md)、[Flock](../saas-apps/flock-tutorial.md)、[Reviewsnap](../saas-apps/reviewsnap-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。
 
 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
@@ -2925,7 +2925,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 
 Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービス パスワード リセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (ADFS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
 
-デプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](https://aka.ms/DeploymentPlans) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
+デプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](./active-directory-deployment-plans.md) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 
 ---
 
@@ -3008,7 +3008,7 @@ Connect Health で、U/P ログインの失敗のしきい値を超える IP ア
 - 特定の IP アドレスが U/P ログイン失敗のしきい値 (時間単位または日単位) をいつ超えたかを示す、電子メール ベースのアラート。
 - データの詳しい分析を実行するためのダウンロード オプション
 
-詳細については、[危険な IP のレポート](https://aka.ms/aadchriskyip)に関するページを参照してください。
+詳細については、[危険な IP のレポート](../hybrid/how-to-connect-health-adfs.md)に関するページを参照してください。
 
 ---
 
@@ -3058,7 +3058,7 @@ Azure AD B2B コラボレーションで共有とコラボレーションを行�
 
 Criterion HCM、[FiscalNote](../saas-apps/fiscalnote-tutorial.md)、[Secret Server (On-Premises)](../saas-apps/secretserver-on-premises-tutorial.md)、[Dynamic Signal](../saas-apps/dynamicsignal-tutorial.md)、[mindWireless](../saas-apps/mindwireless-tutorial.md)、[OrgChart Now](../saas-apps/orgchartnow-tutorial.md)、[Ziflow](../saas-apps/ziflow-tutorial.md)、[AppNeta Performance Monitor](../saas-apps/appneta-tutorial.md)、[Elium](../saas-apps/elium-tutorial.md)、[Fluxx Labs](../saas-apps/fluxxlabs-tutorial.md)、[Cisco Cloud](../saas-apps/ciscocloud-tutorial.md)、Shelf、[SafetyNet](../saas-apps/safetynet-tutorial.md)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。
 
 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
@@ -3149,7 +3149,7 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
 
 - [アプリケーションベースの条件付きアクセスの設定](../conditional-access/app-based-conditional-access.md)
 
-- [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)
+- [Managed Browser ポリシーの構成](/mem/intune/apps/manage-microsoft-edge)
 
 ---
 
@@ -3201,7 +3201,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
 
 [Boxcryptor](../saas-apps/boxcryptor-tutorial.md)、[CylancePROTECT](../saas-apps/cylanceprotect-tutorial.md)、Wrike、[SignalFx](../saas-apps/signalfx-tutorial.md)、Assistant by FirstAgenda、[YardiOne](../saas-apps/yardione-tutorial.md)、Vtiger CRM、inwink、[Amplitude](../saas-apps/amplitude-tutorial.md)、[Spacio](../saas-apps/spacio-tutorial.md)、[ContractWorks](../saas-apps/contractworks-tutorial.md)、[Bersin](../saas-apps/bersin-tutorial.md)、[Mercell](../saas-apps/mercell-tutorial.md)、[Trisotech Digital Enterprise Server](../saas-apps/trisotechdigitalenterpriseserver-tutorial.md)、[Qumu Cloud](../saas-apps/qumucloud-tutorial.md)。
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。
 
 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
@@ -3485,9 +3485,9 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 
 2018 年 1 月に、フェデレーションをサポートする次の新しいアプリがアプリ ギャラリーに追加されました。
 
-[IBM OpenPages](https://go.microsoft.com/fwlink/?linkid=864698)、[OneTrust Privacy Management Software](https://go.microsoft.com/fwlink/?linkid=861660)、[Dealpath](https://go.microsoft.com/fwlink/?linkid=863526)、IriusRisk Federated Directory、[Fidelity NetBenefits](https://go.microsoft.com/fwlink/?linkid=864701)。
+[IBM OpenPages](../saas-apps/ibmopenpages-tutorial.md)、[OneTrust Privacy Management Software](../saas-apps/onetrust-tutorial.md)、[Dealpath](../saas-apps/dealpath-tutorial.md)、IriusRisk Federated Directory、[Fidelity NetBenefits](../saas-apps/fidelitynetbenefits-tutorial.md)。
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。
 
 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
@@ -3639,9 +3639,9 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 2017 年 12 月に、フェデレーションを使用した以下の新規アプリのサポートが、アプリ ギャラリーに追加されました。
 
-[Accredible](https://go.microsoft.com/fwlink/?linkid=863523)、Adobe Experience Manager、[EFI Digital StoreFront](https://go.microsoft.com/fwlink/?linkid=861685)、[Communifire](https://go.microsoft.com/fwlink/?linkid=861676) CybSafe、[FactSet](https://go.microsoft.com/fwlink/?linkid=863525)、[IMAGE WORKS](https://go.microsoft.com/fwlink/?linkid=863517)、[MOBI](https://go.microsoft.com/fwlink/?linkid=863521)、[MobileIron Azure AD integration](https://go.microsoft.com/fwlink/?linkid=858027)、[Reflektive](https://go.microsoft.com/fwlink/?linkid=863518)、[SAML SSO for Bamboo by resolution GmbH](https://go.microsoft.com/fwlink/?linkid=863520)、[SAML SSO for Bitbucket by resolution GmbH](https://go.microsoft.com/fwlink/?linkid=863519)、[Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522)、WebHR、Zenegy Azure AD Integration。
+[Accredible](../saas-apps/accredible-tutorial.md)、Adobe Experience Manager、[EFI Digital StoreFront](../saas-apps/efidigitalstorefront-tutorial.md)、[Communifire](../saas-apps/communifire-tutorial.md) CybSafe、[FactSet](../saas-apps/factset-tutorial.md)、[IMAGE WORKS](../saas-apps/imageworks-tutorial.md)、[MOBI](../saas-apps/mobi-tutorial.md)、[MobileIron Azure AD integration](../saas-apps/mobileiron-tutorial.md)、[Reflektive](../saas-apps/reflektive-tutorial.md)、[SAML SSO for Bamboo by resolution GmbH](../saas-apps/bamboo-tutorial.md)、[SAML SSO for Bitbucket by resolution GmbH](../saas-apps/bitbucket-tutorial.md)、[Vodeclic](../saas-apps/vodeclic-tutorial.md)、WebHR、Zenegy Azure AD Integration。
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。
 
 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」を参照してください。
 
@@ -3804,7 +3804,7 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
 
 詳細については、次を参照してください。
 
-- [Intune で macOS デバイス用のデバイス コンプライアンス ポリシーを作成する](https://aka.ms/macoscompliancepolicy)
+- [Intune で macOS デバイス用のデバイス コンプライアンス ポリシーを作成する](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Azure AD の条件付きアクセス](../conditional-access/overview.md)
 
 ---
@@ -3895,7 +3895,7 @@ Azure Portal では次の機能が提供されています。
 
 **種類:** 修正済み **サービス カテゴリ:** マイ アプリ **製品の機能:** シングル サインオン
 
-Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](../manage-apps/configure-password-single-sign-on-non-gallery-applications-problems.md#manually-capture-sign-in-fields-for-an-app)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
+Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](../manage-apps/troubleshoot-password-based-sso.md#manually-capture-sign-in-fields-for-an-app)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
 
 サービスの問題により、この機能は一時的に無効化されていました。 問題が解決されたため、サインイン フィールドの自動検出が再び利用可能になりました。
 
