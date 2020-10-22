@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974413"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126739"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)
 
@@ -63,7 +63,7 @@ ms.locfileid: "90974413"
 
 エクスポート先となる既存の Azure Storage アカウントがない場合は、次の手順に従います。
 
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](../../storage/blobs/storage-quickstart-blobs-portal.md)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/common/storage-account-create.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
 
     |パフォーマンス レベル|アカウントの種類|
     |-|-|
@@ -156,7 +156,7 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
 
 このメッセージには、送信元デバイスのデバイス ID は含まれていません。
 
-Azure Stream Analytics クエリのメッセージ データからデバイス ID を取得するには、[GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) 関数を使用します。 たとえば、「[Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](./howto-create-custom-rules.md)」のクエリを参照してください。
+Azure Stream Analytics クエリのメッセージ データからデバイス ID を取得するには、[GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue) 関数を使用します。 たとえば、「[Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](./howto-create-custom-rules.md)」のクエリを参照してください。
 
 Azure Databricks または Apache Spark のワークスペースでデバイス ID を取得するには、[systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md) を使用します。 たとえば、「[Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](./howto-create-custom-analytics.md)」の Databricks ワークスペースを参照してください。
 
@@ -557,7 +557,7 @@ Blob Storage の場合は、最後のものが書き込まれてから以降の�
 
 "*デバイス*" と "*デバイス テンプレート*" のストリームが有効になっているプレビュー アプリケーションに既存のデータ エクスポートがある場合は、**2020 年 6 月 30 日**までにそのエクスポートを更新してください。 この要件は、Azure Blob Storage、Azure Event Hubs、および Azure Service Bus へのエクスポートに適用されます。
 
-2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[デバイス プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[デバイス クラウド プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)および[デバイス テンプレート](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)のオブジェクトと一致します。
+2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](/rest/api/iotcentral/devices/get)、[デバイス プロパティ](/rest/api/iotcentral/devices/getproperties)、[デバイス クラウド プロパティ](/rest/api/iotcentral/devices/getcloudproperties)および[デバイス テンプレート](/rest/api/iotcentral/devicetemplates/get)のオブジェクトと一致します。
 
 **デバイス**については、古いデータ形式と新しいデータ形式の間で主に次のような違いがあります。
 - デバイスの `@id` は削除され、`deviceId` の名前は `id` に変更されます 

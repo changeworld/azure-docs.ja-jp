@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327620"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150916"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 
@@ -356,13 +356,13 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 ### <a name="configure-function-app-for-authentication"></a>認証のために関数アプリを構成する
 
-これまで、チャット アプリは匿名で動作しています。 Azure では、[App Service 認証](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)を使用してユーザーを認証します。 認証済みユーザーのユーザー ID またはユーザー名を *SignalRConnectionInfo* バインドに渡して、ユーザーとして認証される接続情報を生成することができます。
+これまで、チャット アプリは匿名で動作しています。 Azure では、[App Service 認証](../app-service/overview-authentication-authorization.md)を使用してユーザーを認証します。 認証済みユーザーのユーザー ID またはユーザー名を *SignalRConnectionInfo* バインドに渡して、ユーザーとして認証される接続情報を生成することができます。
 
 メッセージを送信すると、アプリは接続されているすべてのクライアントに送信するか、特定のユーザーに認証されているクライアントにのみ送信するかをアプリが決定できます。
 
 1. VS Code で **negotiate/function.json** を開きます。
 
-1. `{headers.x-ms-client-principal-name}` のように、[バインド式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)を *SignalRConnectionInfo* バインドの *userId* プロパティに挿入します。 これで、認証済みユーザーのユーザー名に値が設定されます。 属性は次のようになります。
+1. `{headers.x-ms-client-principal-name}` のように、[バインド式](../azure-functions/functions-triggers-bindings.md)を *SignalRConnectionInfo* バインドの *userId* プロパティに挿入します。 これで、認証済みユーザーのユーザー名に値が設定されます。 属性は次のようになります。
 
     ```json
     {
@@ -431,11 +431,11 @@ App Service 認証は、Azure Active Directory、Facebook、Twitter、Microsoft 
 
 1. 選択したログイン プロバイダーのドキュメントに従って構成を完了します。
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
-    - [Microsoft アカウント](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
-    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
+    - [Azure Active Directory](../app-service/configure-authentication-provider-aad.md)
+    - [Facebook](../app-service/configure-authentication-provider-facebook.md)
+    - [Twitter](../app-service/configure-authentication-provider-twitter.md)
+    - [Microsoft アカウント](../app-service/configure-authentication-provider-microsoft.md)
+    - [Google](../app-service/configure-authentication-provider-google.md)
 
 ### <a name="update-the-web-app"></a>Web アプリを更新する
 
@@ -517,4 +517,3 @@ CORS 設定は **local.settings.json** にありますが、Azure の関数ア�
 > [Azure Functions を使用してリアルタイム アプリをビルドする](signalr-concept-azure-functions.md)
 
 [問題がある場合は、お知らせください。](https://aka.ms/asrs/qsauth)
-

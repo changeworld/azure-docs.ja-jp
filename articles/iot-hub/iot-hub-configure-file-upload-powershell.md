@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60318462"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142273"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -27,11 +27,11 @@ ms.locfileid: "60318462"
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
-* [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* [Azure PowerShell コマンドレット](/powershell/azure/install-Az-ps)。
 
-* Azure IoT Hub。 IoT Hub がない場合は、[New-AzIoTHub コマンドレット](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub)を使用するか、ポータルを使用して、[IoT Hub を作成](iot-hub-create-through-portal.md)できます。
+* Azure IoT Hub。 IoT Hub がない場合は、[New-AzIoTHub コマンドレット](/powershell/module/az.iothub/new-aziothub)を使用するか、ポータルを使用して、[IoT Hub を作成](iot-hub-create-through-portal.md)できます。
 
-* Azure ストレージ アカウント。 Azure ストレージ アカウントがない場合は、[Azure Storage PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.storage/)を使用するか、ポータルを使用して[ストレージ アカウントを作成](../storage/common/storage-create-storage-account.md)できます
+* Azure ストレージ アカウント。 Azure ストレージ アカウントがない場合は、[Azure Storage PowerShell コマンドレット](/powershell/module/az.storage/)を使用するか、ポータルを使用して[ストレージ アカウントを作成](../storage/common/storage-account-create.md)できます
 
 ## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
 
@@ -136,5 +136,5 @@ Azure IoT Hub の管理についてさらに学習するには、次のリンク
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)
 * [IoT ソリューションの徹底的なセキュリティ保護](../iot-fundamentals/iot-security-ground-up.md)

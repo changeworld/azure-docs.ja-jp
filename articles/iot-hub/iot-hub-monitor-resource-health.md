@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fec74938adea4058041766a5c28c5a5200aa189e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438401"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146560"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -36,7 +36,7 @@ IoT Hub には、IoT リソースの状態を把握するために利用でき�
 
 Azure Monitor は、Azure リソースの診断情報を提供します。これは、IoT Hub 内で実行される操作を監視できることを意味します。
 
-Azure Monitor が監視する特定のメトリックとイベントの詳細については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」と「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/diagnostic-logs-schema.md)」を参照してください。
+Azure Monitor が監視する特定のメトリックとイベントの詳細については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」と「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/resource-logs-schema.md)」を参照してください。
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -122,7 +122,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 
 #### <a name="routes"></a>ルート
 
-[メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) カテゴリでは、メッセージ ルートの評価時に発生するエラーと、IoT Hub によって認識されるエンドポイントの正常性を追跡します。 このカテゴリには、以下のようなイベントが含まれます。
+[メッセージ ルーティング](./iot-hub-devguide-messages-d2c.md) カテゴリでは、メッセージ ルートの評価時に発生するエラーと、IoT Hub によって認識されるエンドポイントの正常性を追跡します。 このカテゴリには、以下のようなイベントが含まれます。
 
 * "未定義" に評価されるルール、
 * IoT Hub がエンドポイントをデッドとしてマークしている、または
@@ -170,7 +170,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
             "level": "Error",
             "resultType": "Event status",
             "resultDescription": "MessageDescription",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"batching\":\"0\",\"messageSizeInBytes\":\"<messageSizeInBytes>\",\"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\",\"partitionId\":\"1\"}", 
+            "properties": "{\"deviceId\":\"<deviceId>\",\"batching\":\"0\",\"messageSizeInBytes\":\"<messageSizeInBytes>\",\"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\",\"partitionId\":\"1\"}", 
             "location": "Resource location"
         }
     ]
@@ -514,66 +514,66 @@ AzureDiagnostics
 
 ```csharp
 class Program
-{ 
-    static string connectionString = "{your AMS eventhub endpoint connection string}";
-    static string monitoringEndpointName = "{your AMS event hub endpoint name}";
-    static EventHubClient eventHubClient;
+{ 
+    static string connectionString = "{your AMS eventhub endpoint connection string}";
+    static string monitoringEndpointName = "{your AMS event hub endpoint name}";
+    static EventHubClient eventHubClient;
     //This is the Diagnostic Settings schema
-    class AzureMonitorDiagnosticLog
-    {
-        string time { get; set; }
-        string resourceId { get; set; }
-        string operationName { get; set; }
-        string category { get; set; }
-        string level { get; set; }
-        string resultType { get; set; }
-        string resultDescription { get; set; }
-        string durationMs { get; set; }
-        string callerIpAddress { get; set; }
-        string correlationId { get; set; }
-        string identity { get; set; }
-        string location { get; set; }
-        Dictionary<string, string> properties { get; set; }
-    };
+    class AzureMonitorDiagnosticLog
+    {
+        string time { get; set; }
+        string resourceId { get; set; }
+        string operationName { get; set; }
+        string category { get; set; }
+        string level { get; set; }
+        string resultType { get; set; }
+        string resultDescription { get; set; }
+        string durationMs { get; set; }
+        string callerIpAddress { get; set; }
+        string correlationId { get; set; }
+        string identity { get; set; }
+        string location { get; set; }
+        Dictionary<string, string> properties { get; set; }
+    };
 
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Monitoring. Press Enter key to exit.\n");
-        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName);
-        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds;
-        CancellationTokenSource cts = new CancellationTokenSource();
-        var tasks = new List<Task>();
-        foreach (string partition in d2cPartitions)
-        {
-            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
-        }
-        Console.ReadLine();
-        Console.WriteLine("Exiting...");
-        cts.Cancel();
-        Task.WaitAll(tasks.ToArray());
-    }
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Monitoring. Press Enter key to exit.\n");
+        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName);
+        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds;
+        CancellationTokenSource cts = new CancellationTokenSource();
+        var tasks = new List<Task>();
+        foreach (string partition in d2cPartitions)
+        {
+            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
+        }
+        Console.ReadLine();
+        Console.WriteLine("Exiting...");
+        cts.Cancel();
+        Task.WaitAll(tasks.ToArray());
+    }
 
-    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
-    {
-        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
-        while (true)
-        {
-            if (ct.IsCancellationRequested)
-            {
-                await eventHubReceiver.CloseAsync();
-                break;
-            }
-            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10));
-            if (eventData != null)
-            {
-                string data = Encoding.UTF8.GetString(eventData.GetBytes());
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
-                var deserializer = new JavaScriptSerializer();
-                //deserialize json data to azure monitor object
-                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result);
-            }
-        }
-    }
+    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+    {
+        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
+        while (true)
+        {
+            if (ct.IsCancellationRequested)
+            {
+                await eventHubReceiver.CloseAsync();
+                break;
+            }
+            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10));
+            if (eventData != null)
+            {
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
+                var deserializer = new JavaScriptSerializer();
+                //deserialize json data to azure monitor object
+                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result);
+            }
+        }
+    }
 }
 ```
 

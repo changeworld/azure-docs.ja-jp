@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3910b6ffcce6c5bc4a8d565071c4b07db9e3ff63
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488305"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279022"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -4767,7 +4767,21 @@ xpath('<xml>', '<xpath>')
 
 この `'items'` XML 文字列があるとします。 
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 この例では、XPath 式 `'/produce/item/name'` を渡して、`'items'` XML 文字列内の `<name></name>` ノードに一致するノードを検索し、それらのノード値を含む配列を返します。
 
@@ -4799,7 +4813,21 @@ xpath('<xml>', '<xpath>')
 
 この例では、`items` XML 文字列に、`expired='true'` と `expired='false'` の属性も含まれているとします。
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 この例では、XPath 式 `'//name[@expired]'` を渡して、`expired` 属性を持つすべての `name` 要素を検索します。
 
@@ -4811,7 +4839,21 @@ xpath('<xml>', '<xpath>')
 
 この例では、`items` XML 文字列に属性 `expired = 'true'` のみが含まれているとします。
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 この例では、XPath 式 `'//name[@expired = 'true']'` を渡して、属性 `expired = 'true'` を持つすべての `name` 要素を検索します。
 
@@ -4826,7 +4868,21 @@ xpath('<xml>', '<xpath>')
 * `expired='true' price='12'`
 * `expired='false' price='40'`
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true' price='12'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false' price='40'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 この例では、XPath 式 `'//name[price>35]'` を渡して、`price > 35` を持つすべての `name` 要素を検索します。
 
@@ -4838,7 +4894,21 @@ xpath('<xml>', '<xpath>')
 
 この例では、`items` XML 文字列が例 1 と同じであるとします。
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 この例では `<count></count>` ノードと一致するノードを検索し、`sum()` 関数でそれらのノードの値を追加します。
 
@@ -4850,7 +4920,9 @@ xpath('<xml>', '<xpath>')
 
 この例では、次の XML 文字列があるとします。これには、XML ドキュメントの名前空間 `xmlns="http://contoso.com"` が含まれています。
 
-`"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
+```xml
+<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+```
 
 これらの式では、XPath 式 `/*[name()="file"]/*[name()="location"]` または `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` を使用して、`<location></location>` ノードに一致するノードを検索します。 これらの例は、Logic App デザイナーまたは式エディターで使用する構文を示しています。
 

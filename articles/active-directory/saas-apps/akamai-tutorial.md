@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329518"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
 
@@ -26,9 +26,9 @@ ms.locfileid: "91329518"
 * ユーザーが自分の Azure AD アカウントを使用して Akamai に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
-Azure Active Directory と Akamai Enterprise Application Access の統合により、クラウドまたはオンプレミスでホストされているレガシ アプリケーションにシームレスにアクセスできます。 この統合ソリューションでは、レガシ アプリケーションにアクセスするために [Azure AD 条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)、[Azure AD Identity Governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview) など、Azure Active Directory の最新機能をすべて活用できます。その際、アプリの変更やエージェントのインストールは不要です。
+Azure Active Directory と Akamai Enterprise Application Access の統合により、クラウドまたはオンプレミスでホストされているレガシ アプリケーションにシームレスにアクセスできます。 この統合ソリューションでは、レガシ アプリケーションにアクセスするために [Azure AD 条件付きアクセス](../conditional-access/overview.md)、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)、[Azure AD Identity Governance](../governance/identity-governance-overview.md) など、Azure Active Directory の最新機能をすべて活用できます。その際、アプリの変更やエージェントのインストールは不要です。
 
 次の図は、Akamai EAA が安全なハイブリッド アクセスの広範なシナリオに適しているようすを示しています。
 
@@ -589,14 +589,14 @@ ID プロバイダーを割り当てます。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Akamai を試す](https://aad.portal.azure.com/)

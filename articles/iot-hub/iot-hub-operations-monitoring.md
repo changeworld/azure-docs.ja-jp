@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022022"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139337"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
@@ -191,7 +191,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>監視エンドポイントへの接続
 
-IoT Hub での監視エンドポイントは、Event Hub と互換性のあるエンドポイントです。 Event Hub で動作する任意のメカニズムを使用して、このエンドポイントから監視メッセージを読み取ることができます。 次のサンプルで作成される基本的なリーダーは、高スループットのデプロイには適していません。 Event Hubs からのメッセージを処理する方法の詳細については、「 [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) 」のチュートリアルを参照してください。
+IoT Hub での監視エンドポイントは、Event Hub と互換性のあるエンドポイントです。 Event Hub で動作する任意のメカニズムを使用して、このエンドポイントから監視メッセージを読み取ることができます。 次のサンプルで作成される基本的なリーダーは、高スループットのデプロイには適していません。 Event Hubs からのメッセージを処理する方法の詳細については、「 [Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) 」のチュートリアルを参照してください。
 
 監視エンドポイントに接続するには、接続文字列とエンドポイント名が必要です。 次の手順は、ポータルで必要な値を検索する方法を示しています。
 
@@ -271,4 +271,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
 
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)

@@ -4,12 +4,12 @@ description: Azure Container Instances のイメージとシークレットを�
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922236"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148665"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -34,7 +34,7 @@ ms.locfileid: "87922236"
 
 ソリューションを利用して、プライベート レジストリ内のコンテナー イメージをスキャンし、潜在的な脆弱性を識別します。 さまざまなソリューションの脅威検出の深さを理解することが重要です。
 
-たとえば、Azure Container Registry を必要に応じて [Azure Security Center と統合](../security-center/azure-container-registry-integration.md)して、レジストリにプッシュされたすべての Linux イメージを自動的にスキャンします。 Azure Security Center の統合 Qualys スキャナーにより、イメージの脆弱性が検出され、それらが分類され、修復のガイダンスが提供されます。
+たとえば、Azure Container Registry を必要に応じて [Azure Security Center と統合](../security-center/defender-for-container-registries-introduction.md)して、レジストリにプッシュされたすべての Linux イメージを自動的にスキャンします。 Azure Security Center の統合 Qualys スキャナーにより、イメージの脆弱性が検出され、それらが分類され、修復のガイダンスが提供されます。
 
 [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) や [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) などのセキュリティの監視とイメージ スキャンのソリューションは、Azure Marketplace からも入手できます。  
 
@@ -138,7 +138,7 @@ ms.locfileid: "87922236"
 
 ご使用の Kubernetes クラスター、コンテナー レジストリ、およびコンテナー イメージを含むコンテナー エコシステムへの管理アクセスの正確な監査証跡を維持します。 これらのログは、監査のために必要な場合があり、セキュリティ インシデント後の法的証拠として役に立ちます。 Azure ソリューションには次のものがあります。
 
-* クラスター環境のセキュリティ構成を監視し、セキュリティに関する推奨事項を生成するための [Azure Kubernetes Service と Azure Security Center との統合](../security-center/azure-kubernetes-service-integration.md)
+* クラスター環境のセキュリティ構成を監視し、セキュリティに関する推奨事項を生成するための [Azure Kubernetes Service と Azure Security Center との統合](../security-center/defender-for-kubernetes-introduction.md)
 * [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)
 * [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) のリソース ログ
 

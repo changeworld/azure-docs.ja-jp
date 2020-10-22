@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085911"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145398"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -392,4 +392,3 @@ A:利用規約では、認証に https://tokenprovider.termsofuse.identitygovern
 ## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する](require-tou.md)
-- [Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)

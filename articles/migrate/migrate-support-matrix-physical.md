@@ -3,12 +3,12 @@ title: Azure Migrate での物理サーバーの評価のサポート
 description: Azure Migrate Server Assessment での物理サーバーの評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f7dea69c78bb038c06e5cb276628eba0381bb2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660339"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319299"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -74,4 +74,4 @@ Azure Government で、[このスクリプトを使用して](deploy-appliance-s
 
 ## <a name="next-steps"></a>次のステップ
 
-[物理サーバーの評価を準備します](tutorial-prepare-physical.md)。
+[物理サーバーの評価を準備します](./tutorial-discover-physical.md)。

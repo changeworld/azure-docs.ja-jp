@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992853"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145273"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -291,11 +291,7 @@ Azure Active Directory では、[ネームド ロケーション](location-condi
 
 ### <a name="plan-your-policy-deployment"></a>ポリシーのデプロイを計画する
 
-環境用の新しいポリシーの準備ができたら、望ましくない結果を避けるために、各ポリシーをリリース前に必ず確認してください。 ポリシーの適用方法と問題の回避方法に関する重要な情報について、次のドキュメントを参照してください。
-
-* [知っておくべきこと](best-practices.md)
-
-* [避けるべきこと](best-practices.md)
+環境用の新しいポリシーの準備ができたら、望ましくない結果を避けるために、各ポリシーをリリース前に必ず確認してください。
 
 ## <a name="common-policies"></a>一般的なポリシー
 
@@ -462,10 +458,6 @@ CA ポリシーの場所の条件によって、アクセス制御設定をユ�
 ### <a name="terms-of-use"></a>使用条件
 
 環境内の特定のクラウド アプリへのアクセス前に、使用条件 (ToU) を受け入れてもらうことでユーザーから同意を得ることができます。 この[使用条件を作成するためのクイック スタート](require-tou.md)に関する記事に従ってください。
-
-### <a name="classic-policies"></a>クラシック ポリシー
-
-[Azure portal](https://portal.azure.com/) の [Azure Active Directory] > [セキュリティ] > [条件付きアクセス] で CA ポリシーを見つけることができます。 このページを使用して作成されていない古い CA ポリシーが、組織に存在している場合もあります。 これらのポリシーはクラシック ポリシーと呼ばれます。 [Azure portal へのこれらのクラシック ポリシーの移行を検討すること](best-practices.md)をお勧めします。
 
 ## <a name="troubleshoot-conditional-access"></a>条件付きアクセスのトラブルシューティングを行う
 

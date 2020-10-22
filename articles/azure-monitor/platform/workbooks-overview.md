@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932398"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143632"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
@@ -97,7 +97,7 @@ ms.locfileid: "91932398"
 
 ![基になる Kusto クエリのスクリーンショット](./media/workbooks-overview/kusto.png)
 
-右側にある他の **[編集]** ボタンをクリックすると、マークダウンベースの[テキスト ボックス](workbooks-visualizations.md#text)、[パラメーターの選択](workbooks-parameters.md) UI 要素、その他の[グラフまたは視覚化の種類](workbooks-visualizations.md)など、ブックを構成する主要なコンポーネントがいくつか表示されます。 
+右側にある他の **[編集]** ボタンをクリックすると、マークダウンベースの[テキスト ボックス](workbooks-text-visualizations.md)、[パラメーターの選択](workbooks-parameters.md) UI 要素、その他の[グラフまたは視覚化の種類](#visualizations)など、ブックを構成する主要なコンポーネントがいくつか表示されます。 
 
 作成済みのテンプレートを編集モードで調べ、ニーズに合わせて変更を加えたうえで独自のカスタム ブックを保存することは、Azure Monitor ブックでできることを知るための優れた方法です。
 
@@ -129,5 +129,5 @@ ms.locfileid: "91932398"
 
 ## <a name="next-step"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
+* ブックの豊富な視覚化オプションの学習を[開始](#visualizations)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake Tools for Visual Studio Code の使用
 description: Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126484"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221249"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
@@ -22,7 +20,7 @@ ms.locfileid: "87126484"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Data Lake Tools for VS Code では、Windows、Linux、および macOS がサポートされます。 U-SQL のローカル実行とローカル デバッグは Windows でのみ動作します。
+Azure Data Lake Tools for VS Code では、Windows、Linux、および macOS がサポートされます。  U-SQL のローカル実行とローカル デバッグは Windows でのみ動作します。
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -67,15 +65,15 @@ U-SQL を操作するには、U-SQL ファイルまたはフォルダーを開�
 4. 次のコードを 無題-1 ファイルに入力します：
 
    ```usql
-   @departments  =
-       SELECT * FROM
-           (VALUES
-               (31,    "Sales"),
-               (33,    "Engineering"),
-               (34,    "Clerical"),
-               (35,    "Marketing")
-           ) AS
-                 D( DepID, DepName );
+   @departments  =
+       SELECT * FROM
+           (VALUES
+               (31,    "Sales"),
+               (33,    "Engineering"),
+               (34,    "Clerical"),
+               (35,    "Marketing")
+           ) AS
+                 D( DepID, DepName );
    ```
 
    OUTPUT @departments     TO "/Output/departments.csv" USING Outputters.Csv();
@@ -146,7 +144,7 @@ Azure Data Lake Tools は、複数のカスタム コードをサポートして
 
 ## <a name="work-with-assemblies"></a>アセンブリの操作
 
-アセンブリの開発に関する情報については、「[Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください。
+アセンブリの開発に関する情報については、「[Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発]()」を参照してください。
 
 Data Lake Analytics カタログには、Data Lake Tools を使用してカスタム コード アセンブリを登録できます。
 

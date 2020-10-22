@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883095"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151642"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK を利用したモバイル デバイス向け開発
 
-モノのインターネット (IoT) のモノは､センサーやマイクロコントローラ､スマート デバイス､インダストリアル ゲートウェイ､モバイル デバイスまで､それぞれに異なる機能を持つ広範囲のデバイスを意味します｡  モバイル デバイスは IoT デバイスになります｡device-to-cloud テレメトリを送信し､クラウドによって管理されます｡  バックエンド サービス アプリケーションを実行するデバイスにもなります｡この場合は､その他の IoT デバイスを管理します｡  どちらの場合も、[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) を利用して、モバイル デバイスで機能するアプリケーションを開発できます。  
+モノのインターネット (IoT) のモノは､センサーやマイクロコントローラ､スマート デバイス､インダストリアル ゲートウェイ､モバイル デバイスまで､それぞれに異なる機能を持つ広範囲のデバイスを意味します｡  モバイル デバイスは IoT デバイスになります｡device-to-cloud テレメトリを送信し､クラウドによって管理されます｡  バックエンド サービス アプリケーションを実行するデバイスにもなります｡この場合は､その他の IoT デバイスを管理します｡  どちらの場合も、[Azure IoT Hub SDK](./iot-hub-devguide-sdks.md) を利用して、モバイル デバイスで機能するアプリケーションを開発できます。  
 
 ## <a name="develop-for-native-ios-platform"></a>ネイティブ iOS プラットフォーム向け開発
 
@@ -52,5 +52,5 @@ Gradle および Android Studio を使用して Android デバイス上でデバ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [IoT Hub REST API リファレンス](https://docs.microsoft.com/rest/api/iothub/)
+* [IoT Hub REST API リファレンス](/rest/api/iothub/)
 * [Azure IoT C SDK ソース コード](https://github.com/Azure/azure-iot-sdk-c)

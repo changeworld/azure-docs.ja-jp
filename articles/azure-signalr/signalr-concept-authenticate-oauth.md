@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294253"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151232"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
 
@@ -48,7 +48,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 * [GitHub](https://github.com/) で作成されたアカウント
 * [Git](https://git-scm.com/)
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [構成済みの Azure Cloud Shell](../cloud-shell/quickstart.md)
 * GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。
 
 ## <a name="create-an-oauth-app"></a>OAuth アプリを作成する
@@ -388,7 +388,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 ## <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
-このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい Web アプリを [Azure App Service](https://docs.microsoft.com/azure/app-service/) に作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
+このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい Web アプリを [Azure App Service](../app-service/index.yml) に作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
 
 このセクションの手順では、Azure CLI の *signalr* 拡張機能を使用します。 次のコマンドを実行して、Azure CLI の *signalr* 拡張機能をインストールします。
 

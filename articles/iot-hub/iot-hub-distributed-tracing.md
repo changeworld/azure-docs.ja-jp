@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462039"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152142"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -93,7 +93,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="clone-the-source-code-and-initialize"></a>ソース コードを複製し、初期化する
 
-1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
+1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](/cpp/build/vscpp-step-0-installation?view=vs-2019)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
 
 1. [CMake](https://cmake.org/) をインストールします。 コマンド プロンプトから `cmake -version` と入力して、これが `PATH` に含まれていることを確認してください。
 
@@ -115,7 +115,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
     cmake ..
     ```
 
-    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
+    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
@@ -234,7 +234,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 ### <a name="bulk-update-for-multiple-devices"></a>複数のデバイスの一括更新
 
-複数のデバイスの分散トレース サンプリング構成を更新するには、[自動デバイス構成](iot-hub-auto-device-config.md)を使用します。 次のツイン スキーマに従う必要があります。
+複数のデバイスの分散トレース サンプリング構成を更新するには、[自動デバイス構成](./iot-hub-automatic-device-management.md)を使用します。 次のツイン スキーマに従う必要があります。
 
 ```json
 {
@@ -260,7 +260,7 @@ IoT Hub によって記録されたすべてのトレースを表示するには
 
 ### <a name="query-using-log-analytics"></a>Log Analytics を使用してクエリを実行する
 
-[診断ログで Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
+[診断ログで Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
 
 ```Kusto
 // All distributed traces 
@@ -282,7 +282,7 @@ Log Analytics で表示されるログの例
 
 ### <a name="application-map"></a>アプリケーション マップ
 
-IoT メッセージのフローを可視化するために、アプリケーション マップのサンプル アプリを設定します。 サンプル アプリでは、Azure Function と Event Hub を使用して[アプリケーション マップ](../application-insights/app-insights-app-map.md)に分散トレース ログが送信されます。
+IoT メッセージのフローを可視化するために、アプリケーション マップのサンプル アプリを設定します。 サンプル アプリでは、Azure Function と Event Hub を使用して[アプリケーション マップ](../azure-monitor/app/app-map.md)に分散トレース ログが送信されます。
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GitHub でのサンプルの入手</a>
@@ -295,11 +295,11 @@ IoT メッセージのフローを可視化するために、アプリケーシ�
 
 ### <a name="context"></a>Context
 
-Microsoft 独自の[参照アーキテクチャ](https://aka.ms/iotrefarchitecture) (英語のみ) を含む多くの IoT ソリューションは、通常、[マイクロサービス アーキテクチャ](https://docs.microsoft.com/azure/architecture/microservices/)のバリアントに準拠しています。 IoT ソリューションが複雑になるにつれて、数多くのマイクロサービスを使用することになります。 それらのマイクロサービスは、Azure のものである場合とそうでない場合があります。 IoT メッセージのドロップまたはスローダウンが発生している場所を正確に特定することは困難になる可能性があります。 たとえば、5 つの異なる Azure サービスと 1,500 台のアクティブ デバイスを使用する IoT ソリューションがあるとします。 device-to-cloud メッセージがデバイスごとに毎秒 10 件送信されますが (合計で毎秒 15,000 メッセージ)、Web アプリには毎秒 10,000 件のメッセージしか表示されません。 どこに問題がありますか。 どのようにして原因を見つけることができるのでしょうか。
+Microsoft 独自の[参照アーキテクチャ](https://aka.ms/iotrefarchitecture) (英語のみ) を含む多くの IoT ソリューションは、通常、[マイクロサービス アーキテクチャ](/azure/architecture/microservices/)のバリアントに準拠しています。 IoT ソリューションが複雑になるにつれて、数多くのマイクロサービスを使用することになります。 それらのマイクロサービスは、Azure のものである場合とそうでない場合があります。 IoT メッセージのドロップまたはスローダウンが発生している場所を正確に特定することは困難になる可能性があります。 たとえば、5 つの異なる Azure サービスと 1,500 台のアクティブ デバイスを使用する IoT ソリューションがあるとします。 device-to-cloud メッセージがデバイスごとに毎秒 10 件送信されますが (合計で毎秒 15,000 メッセージ)、Web アプリには毎秒 10,000 件のメッセージしか表示されません。 どこに問題がありますか。 どのようにして原因を見つけることができるのでしょうか。
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>マイクロサービス アーキテクチャでの分散トレース パターン
 
-異なるサービス間での IoT メッセージのフローを再構築するには、各サービスで、メッセージを一意に識別する*関連付け ID* を伝達する必要があります。 一元管理されたシステムで収集されると、ユーザーは関連付け ID を使用してメッセージのフローを確認できます。 この方法は、[分散トレース パターン](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)と呼ばれます。
+異なるサービス間での IoT メッセージのフローを再構築するには、各サービスで、メッセージを一意に識別する*関連付け ID* を伝達する必要があります。 一元管理されたシステムで収集されると、ユーザーは関連付け ID を使用してメッセージのフローを確認できます。 この方法は、[分散トレース パターン](/azure/architecture/microservices/logging-monitoring#distributed-tracing)と呼ばれます。
 
 Microsoft は、分散トレースのより広範な採用をサポートするために、[分散トレースの W3C 標準の提案](https://w3c.github.io/trace-context/)に寄与しています。
 
@@ -328,5 +328,5 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 ## <a name="next-steps"></a>次のステップ
 
 - マイクロサービスの一般的な分散トレース パターンについて詳しくは、[マイクロサービス アーキテクチャ パターン: 分散トレース](https://microservices.io/patterns/observability/distributed-tracing.html)に関するページを参照してください。
-- 分散トレース設定を多数のデバイスに適用するための構成を設定するには、「[多数の IoT デバイスの構成と監視](iot-hub-auto-device-config.md)」を参照してください。
+- 分散トレース設定を多数のデバイスに適用するための構成を設定するには、「[多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)」を参照してください。
 - Azure Monitor の詳細については、「[Azure Monitor とは](../azure-monitor/overview.md)」を参照してください。

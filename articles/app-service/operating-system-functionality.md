@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080200"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150152"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
-この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
+この記事では、 [Azure App Service](./overview.md)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
 
 > [!NOTE] 
 > App Service の [Linux アプリ](overview.md#app-service-on-linux)は、独自のコンテナーで実行されます。 ホスト オペレーティング システムへのアクセスは許可されていません。コンテナーにはルート アクセスが可能です。 同様に、[Windows コンテナーで実行されるアプリ](quickstart-custom-container.md?pivots=container-windows)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 
@@ -126,4 +126,3 @@ App Service では、VM インスタンスへのリモート デスクトップ 
 ## <a name="more-information"></a>詳細情報
 
 [Azure App Service サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - App Service の実行環境に関する最新の情報。 このページは、App Service の開発チームによって直接管理されます。
-

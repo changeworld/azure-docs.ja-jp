@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 0800c0d6fb2cf57b919d29ac354d2d89c06c7aeb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b4458a2b37a3da83591e101344d08c3090868696
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946526"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341806"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする
 
@@ -60,7 +60,7 @@ Security Center は、Microsoft Graph Security API とすぐに統合できま�
 この API を使用して、**テナント全体** (およびその他の多くの Microsoft セキュリティ製品のデータ) から、サードパーティ製の SIEM と その他の一般的なプラットフォームにアラートをストリーミングできます。
 
 - **Splunk Enterprise と Splunk Cloud** - [Splunk 用の Microsoft Graph Security API アドオンを使用します](https://splunkbase.splunk.com/app/4564/) 
-- **Power BI** - [Power BI Desktop で Microsoft Graph Security API に接続します](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-graph-security)
+- **Power BI** - [Power BI Desktop で Microsoft Graph Security API に接続します](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow** - [ServiceNow Store から Microsoft Graph Security API アプリケーションをインストールして構成する手順に従います](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar** - [Microsoft Graph API を介した Azure Security Center 用の IBM のデバイス サポート モジュール](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
 - **Palo Alto Networks**、**Anomali**、**Lookout**、**InSpark** など - [Microsoft Graph Security API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)

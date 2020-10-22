@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90525018"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150885"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>チュートリアル:Blazor Server チャット アプリを構築する
 
@@ -361,7 +361,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
 
 ## <a name="publish-to-azure"></a>Azure に発行する
 
-   現時点で、Blazor アプリはローカルの SignalR で動作していますが、Azure App Service にデプロイするときは、[Azure SignalR Service](https://docs.microsoft.com/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) の使用をお勧めします。そうすることで、Blazor Server アプリを多数のコンカレント SignalR 接続にスケールアップすることができます。 さらに、SignalR サービスのグローバル リーチと高パフォーマンスのデータ センターは、地理的条件による待機時間の短縮に役立ちます。
+   現時点で、Blazor アプリはローカルの SignalR で動作していますが、Azure App Service にデプロイするときは、[Azure SignalR Service](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) の使用をお勧めします。そうすることで、Blazor Server アプリを多数のコンカレント SignalR 接続にスケールアップすることができます。 さらに、SignalR サービスのグローバル リーチと高パフォーマンスのデータ センターは、地理的条件による待機時間の短縮に役立ちます。
 
 > [!IMPORTANT]
 > Blazor Server アプリでは、UI の状態がサーバー側で維持されます。そのため、この場合サーバーの固定が必須となります。 アプリ サーバーが 1 台である場合、必然的にサーバーの固定が保証されます。 しかしアプリ サーバーが複数存在する場合、クライアントのネゴシエーションと接続の相手となるサーバーが変化し、Blazor アプリで UI エラーが生じる可能性があります。 そこで、次のように `appsettings.json` でサーバーの固定を有効にする必要があります。
@@ -385,7 +385,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
 
    Azure SignalR Service が Azure 上にあればアプリがそれに自動的に切り替わるよう、サービス依存関係によって以下が実行されます。
 
-   * Azure SignalR Service を使用するように [`HostingStartupAssembly`](https://docs.microsoft.com/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) を更新する。
+   * Azure SignalR Service を使用するように [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) を更新する。
    * Azure SignalR Service NuGet パッケージの参照を追加する。
    * プロファイル プロパティを更新して、依存関係の設定を保存する。
    * 選択内容に応じてシークレット ストアを構成する。
@@ -423,10 +423,10 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    }
    ```
 
-1. `appsetting.json` または[シークレット マネージャー](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=visual-studio#secret-manager) ツールで、Azure SignalR Service の `ConnectionString` を構成します。
+1. `appsetting.json` または[シークレット マネージャー](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager) ツールで、Azure SignalR Service の `ConnectionString` を構成します。
 
 > [!NOTE]
-> 手順 2 の代わりに、SignalR SDK への [`HostingStartupAssembly`](https://docs.microsoft.com/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) を使用することもできます。
+> 手順 2 の代わりに、SignalR SDK への [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) を使用することもできます。
 > 
 > 1. Azure SignalR Service を有効にするための構成を `appsetting.json` に追加します。
 >    ```js
@@ -470,4 +470,4 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [ASP.NET Core Blazor](https://docs.microsoft.com/aspnet/core/blazor)
+* [ASP.NET Core Blazor](/aspnet/core/blazor)

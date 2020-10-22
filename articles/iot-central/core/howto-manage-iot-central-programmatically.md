@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/19/2020
 ms.topic: how-to
-ms.openlocfilehash: ba0ee0a610299bbe6b7e550f204cd2fd50d6d71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773793c7681890098fea1a37cc5b9912c0ecb75c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83748631"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122996"
 ---
 # <a name="manage-iot-central-programmatically"></a>プログラムによる IoT Central の管理
 
@@ -35,7 +35,7 @@ SDK リポジトリとパッケージ インストール コマンドを次の�
 
 ## <a name="samples"></a>サンプル
 
-[Azure IoT Central ARM SDK サンプル](https://docs.microsoft.com/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) リポジトリには、Azure IoT Central アプリケーションの作成、更新、一覧表示、および削除を行う方法を示す複数のプログラミング言語のコード サンプルがあります。
+[Azure IoT Central ARM SDK サンプル](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) リポジトリには、Azure IoT Central アプリケーションの作成、更新、一覧表示、および削除を行う方法を示す複数のプログラミング言語のコード サンプルがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

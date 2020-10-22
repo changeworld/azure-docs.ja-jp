@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 9c95760d03db976b59537adcecbe39a942b72126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 178ad169c1b576458f38b440ca79f4bb9eb012f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86209118"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124913"
 ---
 # <a name="use-customer-lockbox-for-azure-data-box-preview"></a>Azure Data Box のカスタマー ロックボックスを使用する (プレビュー)
 
@@ -76,7 +76,6 @@ Azure Data Box は、顧客データを Azure との間で転送するために�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Microsoft Azure 用カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Microsoft Azure 用カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)
 
 <!--- [Approve, audit support access requests to VMs using Customer Lockbox for Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/)-->
-

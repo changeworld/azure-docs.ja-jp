@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d9f08840165e7e4cf4d13e9a66cbb59489a2b3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974264"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150214"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP および MySQL アプリを構築する
 
@@ -153,7 +153,7 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 ## <a name="create-mysql-in-azure"></a>Azure に MySQL を作成する
 
-この手順では、MySQL データベースを [Azure Database for MySQL](/azure/mysql) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
+この手順では、MySQL データベースを [Azure Database for MySQL](../mysql/index.yml) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -163,7 +163,7 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest&preserve-view=true#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
 
-次のコマンドの *\<mysql-server-name>* プレースホルダーを一意のサーバー名で置き換え、 *\<admin-user>* プレースホルダーをユーザー名で置き換え、 *\<admin-password>* プレースホルダーをパスワードで置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql-server-name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 MySQL DB SKU の選択について詳しくは、「[Azure Database for MySQL サーバーの作成](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)」をご覧ください。
+次のコマンドの *\<mysql-server-name>* プレースホルダーを一意のサーバー名で置き換え、 *\<admin-user>* プレースホルダーをユーザー名で置き換え、 *\<admin-password>* プレースホルダーをパスワードで置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql-server-name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 MySQL DB SKU の選択について詳しくは、「[Azure Database for MySQL サーバーの作成](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server)」をご覧ください。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1

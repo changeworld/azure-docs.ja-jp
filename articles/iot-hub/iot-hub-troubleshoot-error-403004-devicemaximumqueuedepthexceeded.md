@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fc5029f26e5d615502925c4def4e2973c118f38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421066ef30e23a79b26f97939cdfffb5be83afb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029989"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148245"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
@@ -38,4 +38,4 @@ HTTPS を使用するクラウドからデバイスへのメッセージに関�
 
 または、デバイス側のロジックを強化して、キューに格納されたメッセージの完了、拒否、または破棄を迅速に行うこと、有効期限を短縮すること、または送信するメッセージ数を減らすことを検討します。 [C2D メッセージの有効期限](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live)に関するセクションを参照してください。
 
-最後に、[Purge Queue API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) を使用して、上限に達する前に保留中のメッセージを定期的にクリーンアップすることを検討してください。
+最後に、[Purge Queue API](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) を使用して、上限に達する前に保留中のメッセージを定期的にクリーンアップすることを検討してください。

@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327567"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146682"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
 
-[コンシューマー グループ](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)は、イベント ストリームへの独立したビューを提供します。これにより、アプリと Azure サービスは、同じイベント ハブのエンドポイントからデータを別々に使用することができます。 このセクションでは、Web アプリがデータの読み取りに使用する IoT ハブの組み込みエンドポイントにコンシューマー グループを追加します。
+[コンシューマー グループ](../event-hubs/event-hubs-features.md#event-consumers)は、イベント ストリームへの独立したビューを提供します。これにより、アプリと Azure サービスは、同じイベント ハブのエンドポイントからデータを別々に使用することができます。 このセクションでは、Web アプリがデータの読み取りに使用する IoT ハブの組み込みエンドポイントにコンシューマー グループを追加します。
 
 IoT ハブの組み込みエンドポイントにコンシューマー グループを追加するには、次のコマンドを実行します。
 
@@ -156,11 +156,11 @@ Web アプリがブラウザー クライアントにブロードキャストし
 
 ## <a name="host-the-web-app-in-app-service"></a>App Service で Web アプリをホストする
 
-[Azure App Service の Web Apps 機能](https://docs.microsoft.com/azure/app-service/overview) は、Web アプリをホストするためのサービスとしてのプラットフォーム (PAAS) を提供します。 Azure App Service でホストされている Web アプリは、継続的デプロイやパッケージ管理などの Azure とパートナーの DevOps ソリューションだけでなく、追加のセキュリティ、負荷分散、スケーラビリティなどの強力な Azure の機能の恩恵を受けることができます。 Azure App Service は、多くの一般的な言語で開発されて、Windows や Linux のインフラストラクチャにデプロイされた Web アプリをサポートします。
+[Azure App Service の Web Apps 機能](../app-service/overview.md) は、Web アプリをホストするためのサービスとしてのプラットフォーム (PAAS) を提供します。 Azure App Service でホストされている Web アプリは、継続的デプロイやパッケージ管理などの Azure とパートナーの DevOps ソリューションだけでなく、追加のセキュリティ、負荷分散、スケーラビリティなどの強力な Azure の機能の恩恵を受けることができます。 Azure App Service は、多くの一般的な言語で開発されて、Windows や Linux のインフラストラクチャにデプロイされた Web アプリをサポートします。
 
-このセクションでは、App Service で Web アプリをプロビジョニングし、Azure CLI コマンドを使用してそれにコードをデプロイします。 [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) のドキュメントで、使用されているコマンドの詳細を確認できます。 始める前に、[IoT ハブにリソース グループを追加する](#add-a-consumer-group-to-your-iot-hub)、[IoT ハブのサービス接続文字列を取得する](#get-a-service-connection-string-for-your-iot-hub)、および [GitHub から Web アプリをダウンロードする](#download-the-web-app-from-github)の各手順を完了していることを確認してください。
+このセクションでは、App Service で Web アプリをプロビジョニングし、Azure CLI コマンドを使用してそれにコードをデプロイします。 [az webapp](/cli/azure/webapp?view=azure-cli-latest) のドキュメントで、使用されているコマンドの詳細を確認できます。 始める前に、[IoT ハブにリソース グループを追加する](#add-a-consumer-group-to-your-iot-hub)、[IoT ハブのサービス接続文字列を取得する](#get-a-service-connection-string-for-your-iot-hub)、および [GitHub から Web アプリをダウンロードする](#download-the-web-app-from-github)の各手順を完了していることを確認してください。
 
-1. [App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)は、App Service でホストされているアプリを実行するための一連のコンピューティング リソースを定義します。 このチュートリアルでは、Developer/Free のレベルを使用して Web アプリをホストします。 Free レベルでは、Web アプリは、他のお客様のアプリを含めた他の App Service アプリとの共有 Windows リソースで実行されます。 Azure では、Web アプリを Linux コンピューティング リソースにデプロイする App Service プランも提供されています。 使用したい App Service プランが既にある場合は、この手順をスキップできます。
+1. [App Service プラン](../app-service/overview-hosting-plans.md)は、App Service でホストされているアプリを実行するための一連のコンピューティング リソースを定義します。 このチュートリアルでは、Developer/Free のレベルを使用して Web アプリをホストします。 Free レベルでは、Web アプリは、他のお客様のアプリを含めた他の App Service アプリとの共有 Windows リソースで実行されます。 Azure では、Web アプリを Linux コンピューティング リソースにデプロイする App Service プランも提供されています。 使用したい App Service プランが既にある場合は、この手順をスキップできます。
 
    Windows の Free レベルを使用して App Service プランを作成するには、次のコマンドを実行します。 IoT ハブが所属するものと同じリソース グループを使用します。 サービス プラン名には、大文字と小文字、数字、ハイフンを含めることができます。
 
@@ -187,7 +187,7 @@ Web アプリがブラウザー クライアントにブロードキャストし
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. コードを App Service にデプロイするには、[ユーザー レベルのデプロイ資格情報](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を使用します。 ユーザー レベルのデプロイ資格情報は、Azure 資格情報とは異なり、Web アプリへの Git のローカルおよび FTP デプロイに使用されます。 それらは一度設定すると、お使いの Azure アカウント内のすべてのサブスクリプションのすべての App Service アプリで有効になります。 以前にユーザー レベルのデプロイ資格情報を設定している場合は、それらを使用できます。
+5. コードを App Service にデプロイするには、[ユーザー レベルのデプロイ資格情報](../app-service/deploy-configure-credentials.md)を使用します。 ユーザー レベルのデプロイ資格情報は、Azure 資格情報とは異なり、Web アプリへの Git のローカルおよび FTP デプロイに使用されます。 それらは一度設定すると、お使いの Azure アカウント内のすべてのサブスクリプションのすべての App Service アプリで有効になります。 以前にユーザー レベルのデプロイ資格情報を設定している場合は、それらを使用できます。
 
    ユーザー レベルのデプロイ資格情報を以前に設定していない場合やパスワードを思い出せない場合は、次のコマンドを実行してください。 デプロイ ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュに対して '@' シンボルを含めることはできません。 プロンプトが表示されたら、新しいパスワードを入力して確認します。 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。
 

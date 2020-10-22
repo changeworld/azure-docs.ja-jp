@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: f3ecf8ef22d3f1d66b7148b809475a830c7e9f13
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259015"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318591"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
@@ -28,8 +28,8 @@ Azure Data Share は、さまざまなデータ ストアとの間で共有す�
 | Azure BLOB ストレージ |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL データベース |パブリック プレビュー | |
-| Azure Synapse Analytics (以前の Azure SQL DW) |パブリック プレビュー | |
+| Azure SQL データベース |✓ | |
+| Azure Synapse Analytics (以前の Azure SQL DW) |✓ | |
 | Azure Data Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>データ ストアのサポート マトリックス

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497048"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127082"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>チュートリアル:Power BI プロバイダー ダッシュボードを構築する
 
@@ -44,14 +44,14 @@ ms.locfileid: "86497048"
 
 * Azure IoT Central の患者の継続的なモニタリング アプリケーション テンプレート。 まだない場合は、[アプリケーション テンプレートの展開](overview-iot-central-healthcare.md)に関する記事の手順に従って展開できます。
 
-* Azure [Event Hubs 名前空間とイベント ハブ](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
+* Azure [Event Hubs 名前空間とイベント ハブ](../../event-hubs/event-hubs-create.md)。
 
-* イベント ハブにアクセスするためのロジック アプリ。 Azure Event Hubs トリガーを使用してロジック アプリを起動するには、[空のロジック アプリ](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)が必要です。
+* イベント ハブにアクセスするためのロジック アプリ。 Azure Event Hubs トリガーを使用してロジック アプリを起動するには、[空のロジック アプリ](../../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。
 
-* Power BI サービス アカウント。 まだない場合は、[Power BI サービスの無料試用版アカウントを作成する](https://app.powerbi.com/)ことができます。 これまで Power BI を使ったことがない場合は、[Power BI の使用開始](https://docs.microsoft.com/power-bi/service-get-started)に関する記事を参照してください。
+* Power BI サービス アカウント。 まだない場合は、[Power BI サービスの無料試用版アカウントを作成する](https://app.powerbi.com/)ことができます。 これまで Power BI を使ったことがない場合は、[Power BI の使用開始](/power-bi/service-get-started)に関する記事を参照してください。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs への継続的データ エクスポートをセットアップする
-最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure イベント ハブへの継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
+最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure イベント ハブへの継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](../core/howto-export-data.md)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI ストリーミング データセットを作成する
 
@@ -72,10 +72,10 @@ ms.locfileid: "86497048"
     >[!div class="mx-imgBorder"] 
     >![データセットの値を入力する](media/enter-dataset-values.png)
 
-Power BI でのデータセットのストリーミングについて詳しくは、「[Power BI のリアルタイム ストリーミング](https://docs.microsoft.com/power-bi/service-real-time-streaming)」をご覧ください。
+Power BI でのデータセットのストリーミングについて詳しくは、「[Power BI のリアルタイム ストリーミング](/power-bi/service-real-time-streaming)」をご覧ください。
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>ロジック アプリを Azure Event Hubs に接続する
-ロジック アプリを Azure Event Hubs に接続するには、[Azure Event Hubs と Azure Logic Apps でのイベントの送信](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)に関するドキュメントに記載されている手順に従ってください。 いくつかの推奨されるパラメーターを次に示します。
+ロジック アプリを Azure Event Hubs に接続するには、[Azure Event Hubs と Azure Logic Apps でのイベントの送信](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action)に関するドキュメントに記載されている手順に従ってください。 いくつかの推奨されるパラメーターを次に示します。
 
 |パラメーター|値|
 |---|---|
@@ -91,7 +91,7 @@ Power BI でのデータセットのストリーミングについて詳しく�
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>ロジック アプリから Power BI にデータをストリーミングする
 次のステップでは、イベント ハブからのデータを解析して、前に作成した Power BI データセットにストリーミングします。
 
-1. これを行う前に、デバイスからイベント ハブに送信される JSON ペイロードを理解しておく必要があります。 そのためには、この[サンプル スキーマ](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry)を確認し、自分のスキーマに合わせて変更するか、[Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)を使用してメッセージを調べます。 患者の継続的なモニタリング アプリケーションを使用している場合、メッセージは次のようになります。
+1. これを行う前に、デバイスからイベント ハブに送信される JSON ペイロードを理解しておく必要があります。 そのためには、この[サンプル スキーマ](../core/howto-export-data.md#telemetry-format)を確認し、自分のスキーマに合わせて変更するか、[Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)を使用してメッセージを調べます。 患者の継続的なモニタリング アプリケーションを使用している場合、メッセージは次のようになります。
 
 **Smart Vitals Patch テレメトリ**
 

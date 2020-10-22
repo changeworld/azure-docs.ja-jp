@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673395"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151716"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK を使用した Android Things プラットフォーム向けの開発
 
-[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) では、Windows、Linux、OSX、MBED、および Android や iOS のようなモバイル プラットフォームなどの人気のあるプラットフォーム向けの、最上位のサポートを提供します。  IoT の展開において選択の幅を広げ、柔軟性を高めるための取り組みの一環として、Java SDK では [Android Things](https://developer.android.com/things/) プラットフォームもサポートされています。  開発者は、デバイス側では Android Things オペレーティング システムの利点を活用しながら、数百万台のデバイスの同時接続までスケーリングする中央メッセージ ハブとして [Azure IoT Hub](about-iot-hub.md) を使用できます。
+[Azure IoT Hub SDK](./iot-hub-devguide-sdks.md) では、Windows、Linux、OSX、MBED、および Android や iOS のようなモバイル プラットフォームなどの人気のあるプラットフォーム向けの、最上位のサポートを提供します。  IoT の展開において選択の幅を広げ、柔軟性を高めるための取り組みの一環として、Java SDK では [Android Things](https://developer.android.com/things/) プラットフォームもサポートされています。  開発者は、デバイス側では Android Things オペレーティング システムの利点を活用しながら、数百万台のデバイスの同時接続までスケーリングする中央メッセージ ハブとして [Azure IoT Hub](about-iot-hub.md) を使用できます。
 
 このチュートリアルでは、Azure IoT Java SDK を使用して Android Things 上のデバイス側アプリケーションをビルドする手順について説明します。
 

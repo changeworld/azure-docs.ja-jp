@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 352da24b36124ff0446a81c1ecbc584da545bb16
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84976576"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142197"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>IoT Hub でのカスタマー マネージド キーを使用した保存データの暗号化
 
@@ -24,6 +24,6 @@ IoT Hub では、Bring Your Own Key (BYOK) とも呼ばれているカスタマ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [IoT Hub の詳細を確認する](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)
+* [IoT Hub の詳細を確認する](./about-iot-hub.md)
 
-* [Azure Key Vault の詳細を確認する](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault の詳細を確認する](../key-vault/general/overview.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800502"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143924"
 ---
 # <a name="azure-resource-logs"></a>Azure リソース ログ
 Azure リソース ログは、Azure リソース内で実行された操作に関する分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。 既定では、リソース ログは収集されません。 各 Azure リソースのリソース ログを、[Azure Monitor ログ](data-platform-logs.md)で使用するために Log Analytics ワークスペースに送信したり、Azure の外部に転送するために Azure Event Hubs に送信したり、アーカイブ用に Azure Storage に送信したりするために、各 Azure リソースの診断設定を作成する必要があります。
@@ -27,7 +27,7 @@ Azure リソース ログは、Azure リソース内で実行された操作に�
 - ログ クエリを使用して複雑な分析を実行し、ログ データから詳細な分析情報を得ます。
 - 複雑なアラート ロジックを持つログ アラートを使用します。
 
-リソース ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](diagnostic-settings.md)。 このデータは、「[Azure Monitor Logs の構造](../log-query/logs-structure.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
+リソース ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](diagnostic-settings.md)。 このデータは、「[Azure Monitor Logs の構造](./data-platform-logs.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
 
 - Azure 診断 - 書き込まれたすべてのデータが _AzureDiagnostics_ テーブルに含められます。
 - リソース固有 - データは、リソースのカテゴリごとに個別のテーブルに書き込まれます。
