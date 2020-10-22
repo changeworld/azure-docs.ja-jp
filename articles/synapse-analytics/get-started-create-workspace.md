@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b33fa6ea3b5aa5933c1f969f1f1a07aaec79373
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850381"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173319"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 

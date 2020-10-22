@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27395fe377972f51c849f8a61f51a628612ed54d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613784"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202669"
 ---
 # <a name="textures"></a>テクスチャ
 
@@ -89,12 +89,12 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 
 ## <a name="api-documentation"></a>API のドキュメント
 
-* [C# Texture クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
-* [C# RemoteManager.LoadTextureAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
-* [C# RemoteManager.LoadTextureFromSASAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
-* [C++ Texture クラス](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
-* [C++ RemoteManager::LoadTextureAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
-* [C++ RemoteManager::LoadTextureFromSASAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
+* [C# Texture クラス](/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C# RemoteManager.LoadTextureAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C# RemoteManager.LoadTextureFromSASAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C++ Texture クラス](/cpp/api/remote-rendering/texture)
+* [C++ RemoteManager::LoadTextureAsync()](/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C++ RemoteManager::LoadTextureFromSASAsync()](/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>次のステップ
 

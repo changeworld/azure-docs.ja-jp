@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
-ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398088"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202550"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute パブリック ピアリングを作成して管理する
 
@@ -30,7 +30,7 @@ ms.locfileid: "89398088"
 
 ## <a name="connectivity"></a>接続
 
-接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 ExpressRoute 回線が Azure ピアリングに対して有効になっている場合は、[Azure 内で使用されているパブリック IP の範囲](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に回線経由でアクセスできます。
+接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 ExpressRoute 回線が Azure ピアリングに対して有効になっている場合は、[Azure 内で使用されているパブリック IP の範囲](../virtual-network/public-ip-addresses.md#public-ip-addresses)に回線経由でアクセスできます。
 
 パブリック ピアリングが有効になると、ほとんどの Azure サービスに接続できます。 ルートをアドバタイズするサービスを選択することはできません。
 
@@ -60,7 +60,7 @@ ms.locfileid: "89398088"
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Azure パブリック ピアリングでは、各 BGP セッションに 1 つの NAT IP アドレスが関連付けられます。 NAT IP アドレスが 2 つより多い場合には、Microsoft ピアリングに移行します。 Microsoft ピアリングを使用すると、独自の NAT 割り当てを構成したり、選択的なプレフィックス アドバタイズのルート フィルターを使用したりできます。 詳細については、「[Microsoft ピアリングに移行する](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)」を参照してください。
+> Azure パブリック ピアリングでは、各 BGP セッションに 1 つの NAT IP アドレスが関連付けられます。 NAT IP アドレスが 2 つより多い場合には、Microsoft ピアリングに移行します。 Microsoft ピアリングを使用すると、独自の NAT 割り当てを構成したり、選択的なプレフィックス アドバタイズのルート フィルターを使用したりできます。 詳細については、「[Microsoft ピアリングに移行する](./how-to-move-peering.md)」を参照してください。
 >
 
 ## <a name="custom-route-filters"></a>カスタム ルート フィルター

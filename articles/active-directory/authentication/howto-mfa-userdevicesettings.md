@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2006422d3516aa67076233b0b4b9d3e7c58a7232
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968635"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166516"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-factor Authentication のユーザー設定の管理
 
@@ -36,8 +36,8 @@ Azure Multi-Factor Authentication のユーザーを管理しやすくするた�
       > ユーザーの現在登録されている認証方法は、管理者が MFA を再登録する必要がある場合は削除されません。 ユーザーが MFA を再登録した後、セキュリティ情報を確認し、使用できなくなった以前に登録された認証方法を削除することをお勧めします。
    
    - **[MFA セッションの取り消し]** では、ユーザーの記憶済み MFA セッションがクリアされ、デバイス上のポリシーによって次回要求されたときに MFA を実行するように要求されます。
-
-   ![Azure portal から認証方法を管理する](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+   
+    :::image type="content" source="media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png" alt-text="Azure portal から認証方法を管理する":::
 
 ## <a name="delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する
 

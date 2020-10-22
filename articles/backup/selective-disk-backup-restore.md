@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシン バックアップ ソ�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271377"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174102"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -240,6 +240,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Azure portal を使用すると、VM バックアップの詳細ペインとバックアップ ジョブの詳細ペインから、含まれているディスクと除外されているディスクを表示できます。  復元時に、復元する復旧ポイントを選択すると、その復旧ポイントのバックアップ ディスクを表示できます。
 

@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 40a2cd5898ede7fc30db9a8475c5ab7cc68095ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5c41b98d52a4b8182fb162c3bfa9a08c0df5e15
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337638"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171849"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 

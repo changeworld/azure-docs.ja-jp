@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930290"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166932"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
 
@@ -36,7 +36,7 @@ Text Analytics API の感情分析機能では、テキストを評価し、各�
 | Linux ベースの [Docker コンテナー](text-analytics-how-to-install-containers.md) | X  |  |
 | 意見マイニング                            |                       | X                                 |
 
-### <a name="sentiment-scoring-and-labeling"></a>センチメント スコアとラベル付け
+## <a name="sentiment-scoring-and-labeling"></a>センチメント スコアとラベル付け
 
 Sentiment Analysis v3 では、文レベルとドキュメント レベルで返されるセンチメント ラベルとそれぞれの信頼度スコアがテキストに適用されます。 
 
@@ -51,7 +51,7 @@ Sentiment Analysis v3 では、文レベルとドキュメント レベルで返
 
 信頼度スコアは、1 から 0 の範囲で割り当てられます。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 各ドキュメントまたは各文で、ラベル (positive、negative、neutral) に関連付けられた予測スコアは合計で 1 になります。
 
-### <a name="opinion-mining"></a>意見マイニング
+## <a name="opinion-mining"></a>意見マイニング
 
 意見マイニングは、バージョン 3.1-preview.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
 

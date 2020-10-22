@@ -5,12 +5,12 @@ services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89656991"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173650"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -22,19 +22,18 @@ ms.locfileid: "89656991"
 
 **Azure CLI**:この記事のコマンド ラインの例は [Azure CLI](/cli/azure/) を使用し、Bash シェル用にフォーマットされています。 ローカルに [Azure CLI をインストール](/cli/azure/install-azure-cli)するほかに、[Azure Cloud Shell][cloud-shell-bash] を使用することもできます。
 
+## <a name="limitations"></a>制限事項
+
+* コンテナー グループのデプロイ時に、イメージをプルするために、同じコンテナー グループに構成されている[マネージド ID](container-instances-managed-identity.md) を使用して Azure Container Registry に対して認証を行うことはできません。
+* 現時点では、Azure Virtual Network にデプロイされた [Azure Container Registry](../container-registry/container-registry-vnet.md) からイメージをプルすることはできません。
+
 ## <a name="configure-registry-authentication"></a>レジストリの認証を構成する
 
 "ヘッドレス" サービスとアプリケーションへのアクセスを提供する運用シナリオでは、[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して、レジストリ アクセスを構成することをお勧めします。 サービス プリンシパルを使用すると、コンテナー イメージに [Azure ロールベースのアクセス制御 (Azure RBAC)](../container-registry/container-registry-roles.md) を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
 
 Azure Container Registry は、追加の[認証オプション](../container-registry/container-registry-authentication.md)を提供します。
 
-> [!NOTE]
-> コンテナー グループのデプロイ時に、イメージをプルするために、同じコンテナー グループに構成されている[マネージド ID](container-instances-managed-identity.md) を使用して Azure Container Registry に対して認証を行うことはできません。
-
-> [!NOTE]
-> 現時点では、Azure Virtual Network にデプロイされた [Azure Container Registry](../container-registry/container-registry-vnet.md) からイメージをプルすることはできません。
-
-次のセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。 
+次のセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。
 
 ### <a name="create-key-vault"></a>キー コンテナーの作成
 

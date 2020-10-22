@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 087147038286bd7363fcc0eb3812abccc6ef9206
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318026"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201836"
 ---
 # <a name="security-control-v2-asset-management"></a>セキュリティ コントロール V2: アセット管理
 
@@ -150,7 +150,7 @@ Windows および Linux VM からのインベントリ情報の収集を自動�
 
 - [Azure Security Center の適応型アプリケーション制御を使用する方法](../../security-center/security-center-adaptive-application.md)
 
-- [Azure Automation Change Tracking と Inventory の概要](../../automation/change-tracking.md)
+- [Azure Automation Change Tracking と Inventory の概要](../../automation/change-tracking/overview.md)
 
 - [Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 

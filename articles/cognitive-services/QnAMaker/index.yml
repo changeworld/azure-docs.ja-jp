@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker のドキュメント
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
-  ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: d82dcd03ce64c76a84811b5789ee5460ba089641
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "84628028"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372074"
 landingContent:
 - title: QnA Maker について
   linkLists:
@@ -122,9 +122,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - text: トラブルシューティング
       url: troubleshooting.md
-    - text: Stack Overflow で質問する
-      url: https://stackoverflow.com/questions/tagged/QnAMaker
-    - text: UserVoice によるサービスへの影響
-      url: https://cognitive.uservoice.com/forums/578689-qna-maker-api

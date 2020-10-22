@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: f5cb8119e5429c4684030aaee2e6ffa99c92e2d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6123ae0298dbfd334b5563dff80422e8552b61b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260939"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173304"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics の使用を開始する
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566179"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202057"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "89566179"
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
 
-Azure PowerShell を使用して、Azure Resource Manager テンプレートをデプロイすることで、ExpressRoute 回線を作成する方法について説明します。 Resource Manager テンプレートの開発に関する詳細については、[Resource Manager ドキュメント](/azure/azure-resource-manager/)と[テンプレート リファレンス](/azure/templates/microsoft.network/expressroutecircuits)をご覧ください。
+Azure PowerShell を使用して、Azure Resource Manager テンプレートをデプロイすることで、ExpressRoute 回線を作成する方法について説明します。 Resource Manager テンプレートの開発に関する詳細については、[Resource Manager ドキュメント](../azure-resource-manager/index.yml)と[テンプレート リファレンス](/azure/templates/microsoft.network/expressroutecircuits)をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 

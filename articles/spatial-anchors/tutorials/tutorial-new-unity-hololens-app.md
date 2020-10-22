@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee7a0ca1abedd2f80cd8f5fe66e603315a10966f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939530"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096540"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -25,7 +25,7 @@ ms.locfileid: "91939530"
 
 1. <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 以降</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、**Windows 10 SDK (10.0.18362.0 以降)** コンポーネント、および <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> がインストールされた Windows マシン。
 2. [Visual Studio Marketplace](https://marketplace.visualstudio.com/) から Visual Studio 用の [C++/WinRT Visual Studio 拡張機能 (VSIX)](https://aka.ms/cppwinrt/vsix) をインストールする必要があります。
-3. [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 May 2020 Update](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020 ) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
+3. [開発者モード](/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 May 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -89,7 +89,7 @@ ms.locfileid: "91939530"
 **[プロジェクト]** ウィンドウに球のプレハブが作成されているのがわかります。
 
 ## <a name="trying-it-out"></a>試してみる
-問題ないことをテストするために、**Unity** でアプリをビルドし、**Visual Studio** でそれをデプロイします。 そのためには、「[**MR Basics 100: Getting started with Unity (MR の基本 100: Unity の概要)」** コース](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)の 6 章に従ってください。 Unity のスタート画面、そしてクリアな表示が示されます。
+問題ないことをテストするために、**Unity** でアプリをビルドし、**Visual Studio** でそれをデプロイします。 そのためには、「[**MR Basics 100: Getting started with Unity (MR の基本 100: Unity の概要)」** コース](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)の 6 章に従ってください。 Unity のスタート画面、そしてクリアな表示が示されます。
 
 ## <a name="place-an-object-in-the-real-world"></a>現実世界でのオブジェクトの配置
 アプリを使用してオブジェクトを作成し、配置しましょう。 [アプリのデプロイ](#trying-it-out)時に作成した Visual Studio ソリューションを開きます。
@@ -208,7 +208,7 @@ Azure Spatial Anchors アカウント識別子、キー、ドメインを作成�
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-**Visual Studio** で自分のアプリをもう一度実行します。 頭を動かしてみてから、エア タップして球体を配置します。 十分なフレームを取得すると、球体が黄色に変わり、クラウドのアップロードが開始されます。 アップロードの完了後に、球体は青色になります。 必要に応じて、**Visual Studio** 内でのデバッグ中に[出力ウィンドウ](https://docs.microsoft.com/visualstudio/ide/reference/output-window)を使用して、アプリによって送信されるログ メッセージを監視することもできます。 ログ メッセージを表示するには、Visual Studio からアプリの `Debug` 構成をデプロイしてください。 `RecommendedForCreateProgress` をウォッチすることができます。アップロードが完了すると、クラウドから返されたアンカー識別子を確認できます。
+**Visual Studio** で自分のアプリをもう一度実行します。 頭を動かしてみてから、エア タップして球体を配置します。 十分なフレームを取得すると、球体が黄色に変わり、クラウドのアップロードが開始されます。 アップロードの完了後に、球体は青色になります。 必要に応じて、**Visual Studio** 内でのデバッグ中に[出力ウィンドウ](/visualstudio/ide/reference/output-window)を使用して、アプリによって送信されるログ メッセージを監視することもできます。 ログ メッセージを表示するには、Visual Studio からアプリの `Debug` 構成をデプロイしてください。 `RecommendedForCreateProgress` をウォッチすることができます。アップロードが完了すると、クラウドから返されたアンカー識別子を確認できます。
 
 > [!NOTE]
 > "DllNotFoundException: Unable to load DLL 'AzureSpatialAnchors': The specified module could not be found. (DllNotFoundException: DLL 'AzureSpatialAnchors' を読み込めません: 指定されたモジュールが見つかりません)" が表示される場合、ソリューションを**削除**してもう一度**ビルド**する必要があります。

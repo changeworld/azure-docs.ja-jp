@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849491"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102780"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -63,7 +63,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 
 ### <a name="third-party-images"></a>サード パーティのイメージ
 
-プールは、Azure Marketplace に発行されたサード パーティのイメージを使用して作成できます。 ユーザー サブスクリプション モードの Batch アカウントを使用すると、特定のサード パーティのイメージでプールを作成する場合、"Marketplace での購入資格の確認のため、割り当てに失敗しました" というエラーが表示されることがあります。 このエラーを解決するには、イメージの発行者によって設定された条項に同意します。 これを行うには、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) または [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms) を使用します。
+プールは、Azure Marketplace に発行されたサード パーティのイメージを使用して作成できます。 ユーザー サブスクリプション モードの Batch アカウントを使用すると、特定のサード パーティのイメージでプールを作成する場合、"Marketplace での購入資格の確認のため、割り当てに失敗しました" というエラーが表示されることがあります。 このエラーを解決するには、イメージの発行者によって設定された条項に同意します。 これを行うには、[Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) または [Azure CLI](/cli/azure/vm/image/terms) を使用します。
 
 ### <a name="azure-region-dependency"></a>Azure リージョンの依存関係
 

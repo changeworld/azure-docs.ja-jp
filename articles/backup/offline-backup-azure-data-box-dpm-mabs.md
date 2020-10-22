@@ -3,12 +3,12 @@ title: DPM および MABS の Azure Data Box を使用したオフライン バ�
 description: Azure Data Box を使用して、DPM および MABS からオフラインで初期バックアップ データをシード処理することができます。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271496"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172219"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
 
@@ -18,7 +18,7 @@ ms.locfileid: "91271496"
 
 この記事では、Azure Data Box を使用して、DPM および MABS から Azure Recovery Services コンテナーに初期バックアップ データをオフラインでシード処理する方法について説明します。
 
-[Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) を使うと、大規模な初期 DPM または MABS バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシード処理できます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。 現在、この機能はプレビュー段階にあります。
+[Azure Data Box](../databox/data-box-overview.md) を使うと、大規模な初期 DPM または MABS バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシード処理できます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。 現在、この機能はプレビュー段階にあります。
 
 Azure Data Box に基づくオフライン バックアップには、[Azure Import/Export サービスに基づくオフライン バックアップ](backup-azure-backup-server-import-export.md)に比べて、次の 2 つの利点があります。
 
@@ -39,8 +39,8 @@ Azure Data Box に基づくオフライン バックアップには、[Azure Imp
 
 | サーバー 1 台あたりのバックアップ データ サイズ (MARS による圧縮後)\* | サポートされている Azure Data Box SKU |
 | --- | --- |
-| \<= 7.2 TB | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7.2 TB かつ <= 80 TB\*\* | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| \<= 7.2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
+| > 7.2 TB かつ <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 \* 一般的な圧縮率は 10% から 20% の間です <br>
 \*\* 1 つのデータ ソースの初期バックアップ データが 80 TB を超えると予想される場合は、[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) にご連絡ください。
@@ -64,7 +64,7 @@ DPM または MABS で実行されている MARS エージェントは、[最新
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box デバイスを注文して受け取る
 
-オフライン バックアップをトリガーする前に、必要な Data Box デバイスが確実に "*配信済み*" の状態になるようにします。 要件に最適な SKU を注文するには、「[バックアップ データのサイズとサポートされている Data Box SKU](#backup-data-size-and-supported-data-box-skus)」を参照してください。 Data Box デバイスを注文して受け取るには、[こちらの記事](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)の手順に従ってください。
+オフライン バックアップをトリガーする前に、必要な Data Box デバイスが確実に "*配信済み*" の状態になるようにします。 要件に最適な SKU を注文するには、「[バックアップ データのサイズとサポートされている Data Box SKU](#backup-data-size-and-supported-data-box-skus)」を参照してください。 Data Box デバイスを注文して受け取るには、[こちらの記事](../databox/data-box-disk-deploy-ordered.md)の手順に従ってください。
 
 > [!IMPORTANT]
 > **[アカウントの種類]** として *[BlobStorage]* を選択しないでください。 DPM または MABS サーバーには、ページ BLOB をサポートするアカウントが必要ですが、これは、 *[BlobStorage]* が選択されているとサポートされません。 Azure Data Box ジョブのターゲット ストレージ アカウントを作成するときは、 **[アカウントの種類]** として **[Storage V2 (general purpose v2)]\(Storage V2 (汎用 V2)\)** を選択します。
@@ -77,14 +77,14 @@ Azure Data Box デバイスを受け取ったら、注文した Azure Data Box S
 
 ### <a name="setup-azure-data-box-disk"></a>Azure Data Box Disk をセットアップする
 
-1 つまたは複数の Azure Data Box Disk (それぞれ最大 8 TB) を注文した場合は、[こちら](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)に記載されている手順に従って、Data Box Disk を開梱、接続、ロック解除してください。
+1 つまたは複数の Azure Data Box Disk (それぞれ最大 8 TB) を注文した場合は、[こちら](../databox/data-box-disk-deploy-set-up.md)に記載されている手順に従って、Data Box Disk を開梱、接続、ロック解除してください。
 
 > [!NOTE]
 > DPM または MABS サーバーに USB ポートがない可能性があります。 そのようなシナリオでは、Azure Data Box Disk を別のサーバーまたはクライアントに接続し、デバイスのルートをネットワーク共有として公開することができます。
 
 ## <a name="setup-azure-data-box"></a>Azure Data Box をセットアップする
 
-Azure Data Box (最大 100 TB) を注文した場合は、[こちら](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)に記載されている手順に従って Data Box を設定してください。
+Azure Data Box (最大 100 TB) を注文した場合は、[こちら](../databox/data-box-deploy-set-up.md)に記載されている手順に従って Data Box を設定してください。
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>ローカル システムとして Azure Data Box をマウントする
 
@@ -100,7 +100,7 @@ DPM または MABS サーバーはシステム コンテキストで動作する
    ```
 
 4. 上記のコマンドの結果として開かれるコマンド ウィンドウは、ローカル システム コンテキストにあります。 このコマンド ウィンドウを使用して、Azure ページ BLOB 共有をネットワーク ドライブとして Windows サーバーにマウントする手順を行います。
-5. [こちら](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box)の手順に従って、DPM または MABS サーバーを NFS 経由で Data Box デバイスに接続し、ローカル システムのコマンド プロンプトで次のコマンドを実行して、Azure ページ BLOB 共有をマウントします。
+5. [こちら](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box)の手順に従って、DPM または MABS サーバーを NFS 経由で Data Box デバイスに接続し、ローカル システムのコマンド プロンプトで次のコマンドを実行して、Azure ページ BLOB 共有をマウントします。
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
@@ -110,7 +110,7 @@ DPM または MABS サーバーはシステム コンテキストで動作する
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Azure Data Box デバイスに初期バックアップ データを転送する
 
-1. DPM または MABS サーバーで、[新しい保護グループを作成する](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)手順に従います。 既存の保護グループにオンライン保護を追加する場合は、既存の保護グループを右クリックし、 **[オンライン保護の追加]** を選択して、**手順 8** から開始します。
+1. DPM または MABS サーバーで、[新しい保護グループを作成する](/system-center/dpm/create-dpm-protection-groups)手順に従います。 既存の保護グループにオンライン保護を追加する場合は、既存の保護グループを右クリックし、 **[オンライン保護の追加]** を選択して、**手順 8** から開始します。
 2. **[グループ メンバーの選択]** ページで、バックアップするコンピューターとソースを指定します。
 3. **[データ保護方法の選択]** ページで、短期および長期バックアップを処理する方法を指定します。 必ず、 **[オンライン保護を利用する]** を選択してください。
 
@@ -163,7 +163,7 @@ DPM または MABS サーバーはシステム コンテキストで動作する
     > ![USB ドライブ](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
     > たとえば、ディスクのパスが `\\mydomain\myserver\disk1\` で、*disk1* に *PageBlob* というディレクトリが含まれている場合、DPM または MABS サーバー ウィザードで指定するパスは `\\mydomain\myserver\disk1\` になります。
-    > [Azure Data Box の 100 TB デバイスをセットアップ](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)する場合は、デバイスへのネットワーク パスとして `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` を指定します。
+    > [Azure Data Box の 100 TB デバイスをセットアップ](./offline-backup-azure-data-box.md#set-up-azure-data-box)する場合は、デバイスへのネットワーク パスとして `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` を指定します。
 
 15. **[次へ]** を選択します。 **[概要]** ページで、設定を確認し、 **[グループの作成]** を選択します。
 
@@ -193,8 +193,8 @@ DPM または MABS サーバーはシステム コンテキストで動作する
 
 Azure Data Box Disk へのデータ バックアップが成功したら、これらの手順に従います。
 
-- [こちらの記事](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)の手順に従って、Azure Data Box Disk を Azure に発送します。 Azure Data Box の 100 TB デバイスを使用した場合は、[これらの手順](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)に従って Azure Data Box を Azure に発送してください。
-- Azure portal で [Data Box ジョブを監視](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)します。 Azure Data Box ジョブが "*完了*" になると、DPM または MABS サーバーによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
+- [こちらの記事](../databox/data-box-disk-deploy-picked-up.md)の手順に従って、Azure Data Box Disk を Azure に発送します。 Azure Data Box の 100 TB デバイスを使用した場合は、[これらの手順](../databox/data-box-deploy-picked-up.md)に従って Azure Data Box を Azure に発送してください。
+- Azure portal で [Data Box ジョブを監視](../databox/data-box-disk-deploy-upload-verify.md)します。 Azure Data Box ジョブが "*完了*" になると、DPM または MABS サーバーによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
 
   > [!NOTE]
   > DPM または MABS サーバーによって、保護グループの作成時にスケジュールされた時刻にバックアップがトリガーされます。 しかし、これらのジョブでは、ジョブが完了するまで "*Azure Data Box ジョブの完了を待機中*" というフラグが設定されます。

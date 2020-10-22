@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca6b39852668e1b545ce576ac0d04a208e2058e8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965422"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165513"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション
 
@@ -36,7 +36,7 @@ Azure Multi-Factor Authentication または SSPR の場合、ユーザーは、�
 
 ユーザーが、携帯電話番号をディレクトリに表示したくなく、それでもパスワードのリセットにその番号を使いたい場合は、管理者がその電話番号をディレクトリに設定しないようにする必要があります。 一方、ユーザーは、[https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) の統合されたセキュリティ除法登録で **[認証用電話]** 属性を設定する必要があります。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
 
-![電話番号が設定された認証方法を示す Azure portal のスクリーンショット](media/concept-authentication-methods/user-authentication-methods.png)
+:::image type="content" source="media/concept-authentication-methods/user-authentication-methods.png" alt-text="電話番号が設定された認証方法を示す Azure portal のスクリーンショット":::
 
 Microsoft では、SMS または音声ベースの Multi-Factor Authentication プロンプトを常に同一番号で配信するとは限りません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国/地域ではショート コードをサポートしていません。
 

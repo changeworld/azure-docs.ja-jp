@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321851"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167655"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -138,7 +138,7 @@ ms.locfileid: "91321851"
 
 この設定は [logging](#logging) の子です。
 
-[サンプリング オプション](./functions-monitoring.md#configure-sampling)など、Application Insights のオプションを制御します。
+[サンプリング オプション](./configure-monitoring.md#configure-sampling)など、Application Insights のオプションを制御します。
 
 完全な JSON 構造については、前の [サンプル host.json ファイル](#sample-hostjson-file) を参照してください。
 
@@ -310,7 +310,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
-|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)」をご覧ください。 |
 |console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
 

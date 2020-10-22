@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044200"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171910"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -370,7 +370,7 @@ az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <
 '
 ```
 
-Azure portal で、次の情報を含めた GUID を指定した後に、メソッド名 `UploadModuleLogs` と次の JSON ペイロードを指定してメソッドを呼び出します。
+Azure portal で、次の情報を含めた GUID を指定した後に、メソッド名 `GetTaskStatus` と次の JSON ペイロードを指定してメソッドを呼び出します。
 
 ```json
     {

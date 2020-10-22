@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192815"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101649"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight と Azure Data Lake Storage Gen1 上の Storm に対するパフォーマンス チューニング ガイダンス
 
@@ -22,8 +22,8 @@ Azure Storm トポロジのパフォーマンスを調整する際に考慮す�
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関する記事をご覧ください。
 * Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* **Data Lake Storage Gen1 上で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview) に関する記事を参照してください。
-* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)に関する記事をご覧ください。  
+* **Data Lake Storage Gen1 上で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](../hdinsight/storm/apache-storm-overview.md) に関する記事を参照してください。
+* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](./data-lake-store-performance-tuning-guidance.md)に関する記事をご覧ください。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>トポロジの並列処理のチューニング
 
@@ -130,6 +130,6 @@ Data Lake Storage Gen1 によって提供される帯域幅の制限に達した
 2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;トポロジ名&gt;/&lt;ポート&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Storage Gen1 調整の例外を監視します。
 
 ## <a name="next-steps"></a>次のステップ
-Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)を参照してください。
+Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
 
 実行できる他のサンプルについては、[GitHub のこちらのサンプル](https://github.com/hdinsight/storm-performance-automation)を参照してください。

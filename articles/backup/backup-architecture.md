@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614004"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173278"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -45,7 +45,7 @@ Azure Backup を使用すると、バックアップされたデータはコン�
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
   - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md#locally-redundant-storage)。
   - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md#geo-redundant-storage)。
-  - **ゾーン冗長ストレージ (ZRS)** : [可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 [詳細情報](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **ゾーン冗長ストレージ (ZRS)** : [可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 [詳細情報](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - 既定では、Recovery Services コンテナーでは GRS が使用されます。
 
 Recovery Services コンテナーには、次の追加機能があります。

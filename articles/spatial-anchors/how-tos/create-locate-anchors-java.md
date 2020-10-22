@@ -9,12 +9,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 59cd363482674fc62cb5c94712d3902871a940be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b9199668b50ad0bfa4a6ac34073ea2835405edb
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321192"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097509"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Java で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -44,7 +44,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-[CloudSpatialAnchorSession](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession) クラスの詳細を確認してください。
+[CloudSpatialAnchorSession](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession) クラスの詳細を確認してください。
 
 ```java
     private CloudSpatialAnchorSession mCloudSession;
@@ -54,7 +54,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-[SessionConfiguration](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.sessionconfiguration) クラスの詳細を確認してください。
+[SessionConfiguration](/java/api/com.microsoft.azure.spatialanchors.sessionconfiguration) クラスの詳細を確認してください。
 
 ```java
     mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
@@ -68,7 +68,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-[TokenRequiredListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.tokenrequiredlistener) インターフェイスの詳細を確認してください。
+[TokenRequiredListener](/java/api/com.microsoft.azure.spatialanchors.tokenrequiredlistener) インターフェイスの詳細を確認してください。
 
 ```java
     mCloudSession.addTokenRequiredListener(args -> {
@@ -116,7 +116,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-[start](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.start) メソッドの詳細を確認してください。
+[start](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.start) メソッドの詳細を確認してください。
 
 ```java
     mCloudSession.setSession(mSession);
@@ -125,7 +125,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-[processFrame](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) メソッドの詳細を確認してください。
+[processFrame](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) メソッドの詳細を確認してください。
 
 ```java
     mCloudSession.processFrame(mSession.update());
@@ -133,7 +133,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-[SessionUpdatedListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.sessionupdatedlistener) インターフェイスの詳細を確認してください。
+[SessionUpdatedListener](/java/api/com.microsoft.azure.spatialanchors.sessionupdatedlistener) インターフェイスの詳細を確認してください。
 
 ```java
     mCloudSession.addSessionUpdatedListener(args -> {
@@ -149,7 +149,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-[CloudSpatialAnchor](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor) クラスの詳細を確認してください。
+[CloudSpatialAnchor](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor) クラスの詳細を確認してください。
 
 ```java
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -198,7 +198,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-[getSessionStatusAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) メソッドの詳細を確認してください。
+[getSessionStatusAsync](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) メソッドの詳細を確認してください。
 
 ```java
     Future<SessionStatus> sessionStatusFuture = mCloudSession.getSessionStatusAsync();
@@ -230,7 +230,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-[getAppProperties](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.getappproperties) メソッドの詳細を確認してください。
+[getAppProperties](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.getappproperties) メソッドの詳細を確認してください。
 
 ```java
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor();
@@ -244,7 +244,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-[updateAnchorPropertiesAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) メソッドの詳細を確認してください。
+[updateAnchorPropertiesAsync](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) メソッドの詳細を確認してください。
 
 ```java
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -276,7 +276,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-[getAnchorPropertiesAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) メソッドの詳細を確認してください。
+[getAnchorPropertiesAsync](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) メソッドの詳細を確認してください。
 
 ```java
     Future<CloudSpatialAnchor> getAnchorPropertiesFuture = mCloudSession.getAnchorPropertiesAsync("anchorId");
@@ -308,7 +308,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-[setExpiration](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.setexpiration) メソッドの詳細を確認してください。
+[setExpiration](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.setexpiration) メソッドの詳細を確認してください。
 
 ```java
     Date now = new Date();
@@ -321,7 +321,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-[createWatcher](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) メソッドの詳細を確認してください。
+[createWatcher](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) メソッドの詳細を確認してください。
 
 ```java
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -331,7 +331,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-[AnchorLocatedListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.anchorlocatedlistener) インターフェイスの詳細を確認してください。
+[AnchorLocatedListener](/java/api/com.microsoft.azure.spatialanchors.anchorlocatedlistener) インターフェイスの詳細を確認してください。
 
 ```java
     mCloudSession.addAnchorLocatedListener(args -> {
@@ -358,7 +358,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-[deleteAnchorAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) メソッドの詳細を確認してください。
+[deleteAnchorAsync](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) メソッドの詳細を確認してください。
 
 ```java
     Future deleteAnchorFuture = mCloudSession.deleteAnchorAsync(cloudAnchor);
@@ -367,7 +367,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-[stop](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) メソッドの詳細を確認してください。
+[stop](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) メソッドの詳細を確認してください。
 
 ```java
     mCloudSession.stop();
@@ -375,7 +375,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-[reset](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) メソッドの詳細を確認してください。
+[reset](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) メソッドの詳細を確認してください。
 
 ```java
     mCloudSession.reset();
@@ -383,7 +383,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-java.md)]
 
-[close](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.close) メソッドの詳細を確認してください。
+[close](/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.close) メソッドの詳細を確認してください。
 
 ```java
     mCloudSession.close();

@@ -5,21 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e61767b9b8d904eae9a247f48d2d781fd0c95192
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565857"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202720"
 ---
 # <a name="configure-authentication"></a>認証を構成する。
 
-Azure Remote Rendering には、[Azure Spatial Anchors (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp) と同じ認証メカニズムが使用されます。 REST API を正常に呼び出すには、クライアントで以下の内 *1 つ*を設定する必要があります。
+Azure Remote Rendering には、[Azure Spatial Anchors (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp) と同じ認証メカニズムが使用されます。 REST API を正常に呼び出すには、クライアントで以下の内 *1 つ*を設定する必要があります。
 
 * **AccountKey**: Azure portal の Remote Rendering アカウントの [キー] タブで取得できます。 アカウント キーは、開発、またはプロトタイプ作成でのみ推薦されます。
     ![アカウント ID](./media/azure-account-primary-key.png)
 
-* **AuthenticationToken**: Azure AD トークンであり、[MSAL ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)を使用して取得できます。 ユーザー資格情報を受け入れ、これらの資格情報を使用してアクセス トークンを取得するには、複数の異なるフローが使用できます。
+* **AuthenticationToken**: Azure AD トークンであり、[MSAL ライブラリ](../../active-directory/develop/msal-overview.md)を使用して取得できます。 ユーザー資格情報を受け入れ、これらの資格情報を使用してアクセス トークンを取得するには、複数の異なるフローが使用できます。
 
 * **MRAccessToken**: MR トークンであり、Azure Mixed Reality Security Token Service (STS) から取得できます。 次の呼び出しのような REST 呼び出しを使用して、`https://sts.mixedreality.azure.com` エンドポイントから取得されます。
 
@@ -44,7 +44,7 @@ Azure Remote Rendering には、[Azure Spatial Anchors (ASA)](https://docs.micro
 
 開発時には、短時間でプロトタイプを作成するためにアカウント キーを使用することをお勧めします。 組み込みのアカウント キーを使用してアプリケーションを運用環境に出荷しないことをお勧めします。 推奨される方法は、ユーザーベースまたはサービスベースの Azure AD 認証方法を使用することです。
 
- Azure AD 認証については、[Azure Spatial Anchors (ASA)](https://docs.microsoft.com/azure/spatial-anchors/) サービスに関するページの「[Azure AD ユーザー認証](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)」セクションを参照してください。
+ Azure AD 認証については、[Azure Spatial Anchors (ASA)](../../spatial-anchors/index.yml) サービスに関するページの「[Azure AD ユーザー認証](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)」セクションを参照してください。
 
  詳細については、「[チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護 - Azure Active Directory 認証](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)」を参照してください
 

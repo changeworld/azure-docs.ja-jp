@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489138"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165810"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -29,6 +29,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 現在、AKS クラスターは、次のリージョンの可用性ゾーンを使用して作成できます。
 
 * オーストラリア東部
+* カナダ中部
 * 米国中部
 * 米国東部 2
 * 米国東部

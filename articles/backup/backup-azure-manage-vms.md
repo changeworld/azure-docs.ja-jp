@@ -3,12 +3,12 @@ title: Azure VM のバックアップを管理および監視する
 description: Azure Backup サービスを使用して Azure VM のバックアップを管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2052d80428af89862b5348943b446f1b800ab36f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145435"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174092"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -24,6 +24,8 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 ダッシュボードを使用し、個々の VM にドリルダウンして、バックアップを管理できます。 マシンのバックアップを開始するには、ダッシュボードでコンテナーを開きます。
 
 ![スライダーのある完全なダッシュボード ビュー](./media/backup-azure-manage-vms/bottom-slider.png)
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="view-vms-on-the-dashboard"></a>ダッシュボードで VM を表示する
 

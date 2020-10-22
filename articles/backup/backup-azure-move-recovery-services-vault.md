@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056431"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171607"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -178,7 +178,7 @@ Azure Backup が有効になっている Azure 仮想マシンを移動する場
   - バックアップされたデータの復元は、古いコンテナー内の有効期限が切れていない復旧ポイントに対してのみ可能です。
   - データの新しい初期レプリカを新しいコンテナーに作成する必要があります。
 
-- Azure VM の場合は、古いコンテナー内の VM に対して[保護を停止してデータを保持](backup-azure-manage-vms.md#stop-protecting-a-vm)し、VM を別のリソース グループに移動してから、新しいコンテナー内の VM を保護することができます。 VM を別のリソース グループに移動するための[ガイダンスと制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)に関するページを参照してください。
+- Azure VM の場合は、古いコンテナー内の VM に対して[保護を停止してデータを保持](backup-azure-manage-vms.md#stop-protecting-a-vm)し、VM を別のリソース グループに移動してから、新しいコンテナー内の VM を保護することができます。 VM を別のリソース グループに移動するための[ガイダンスと制限事項](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md)に関するページを参照してください。
 
   VM を保護できるのは、一度に 1 つのコンテナーのみになります。 ただし、新しいリソース グループ内の VM は別の VM と見なされるため、新しいコンテナーで保護できます。
 

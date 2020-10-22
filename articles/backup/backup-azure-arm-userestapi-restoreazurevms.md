@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506680"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174029"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -122,7 +122,7 @@ X-Powered-By: ASP.NET
 ***バックアップ項目のすべての復元操作は同じ *POST* API を使用して実行されます。復元シナリオでは、要求本文のみが変更されます。***
 
 > [!IMPORTANT]
-> さまざまな復元オプションとその依存関係の詳細については [こちら](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)に記載されています。 確認してからこれらの操作のトリガーに進んでください。
+> さまざまな復元オプションとその依存関係の詳細については [こちら](./backup-azure-arm-restore-vms.md#restore-options)に記載されています。 確認してからこれらの操作のトリガーに進んでください。
 
 復元操作のトリガーは、*POST* 要求です。 API について詳しくは、["復元のトリガー" REST API](/rest/api/backup/restores/trigger) に関するページをご覧ください。
 
@@ -246,7 +246,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 ### <a name="restore-disks-selectively"></a>選択的にディスクを復元する
 
-[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
+[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](/rest/api/backup/recoverypoints/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
 
 ```json
 {

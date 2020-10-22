@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986506"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172748"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -37,6 +37,8 @@ ms.locfileid: "90986506"
 
 * **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](#install-the-vm-agent)が必要な場合があります。
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
@@ -45,7 +47,7 @@ ms.locfileid: "90986506"
 
 * コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
 * コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) を使用できます。
-* [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。
+* [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。
 
 ストレージ レプリケーションの種類を変更にするには、次の手順に従います。
 
