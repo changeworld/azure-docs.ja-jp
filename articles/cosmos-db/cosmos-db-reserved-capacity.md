@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90a4e86360916ba4b3dace0861fd1c6f7cd9b459
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118935"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567113"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
@@ -46,7 +46,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 - **期間** (1 年または 3 年)
 - **請求頻度** (毎月または前払い)
-- **スループットの種類** (RU とマルチマスター RU の比較)
+- **スループットの種類** (RU/秒とマルチリージョン書き込み RU/秒)
 
 また、推奨のスコープを 1 つのリソース グループ、1 つのサブスクリプション、または Azure の登録全体に限定することができます。 
 
@@ -66,7 +66,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 4. 次の表で説明するように、必須フィールドに入力します。
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="予約容量フォームに入力する":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="予約容量に関する推奨事項":::
 
    |フィールド  |説明  |
    |---------|---------|
@@ -74,7 +74,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
    |サブスクリプション  |   Azure Cosmos DB の予約容量の支払いに使用するサブスクリプションです。 選択したサブスクリプションの支払方法が、コストの課金で使用されます。 サブスクリプションは、次のいずれかの種類である必要があります。 <br/><br/>  マイクロソフト エンタープライズ契約 (オファー番号:MS-AZR-0017P または MS-AZR-0148P):エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 <br/><br/> 従量課金制料金の個別サブスクリプション (オファー番号:MS-AZR-0003P または MS-AZR-0023P):従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。    |
    | リソース グループ | 予約容量割引が適用されるリソース グループ。 |
    |期間  |   1 年間または 3 年間。   |
-   |スループットの種類   |  スループットは、要求ユニットとしてプロビジョニングされます。 両方の設定 (1 つのリージョンの書き込みと複数のリージョンの書き込み) のプロビジョニング済みスループットの予約を購入できます。 スループットの種類は、2 つの値から選択できます。1 時間あたり 100 RU/秒と 1 時間あたり 100 マルチマスター RU/秒です。|
+   |スループットの種類   |  スループットは、要求ユニットとしてプロビジョニングされます。 両方の設定 (1 つのリージョンの書き込みと複数のリージョンの書き込み) のプロビジョニング済みスループットの予約を購入できます。 スループットの種類は、2 つの値から選択できます。1 時間あたり 100 RU/秒と 1 時間あたり 100 マルチリージョン書き込み RU/秒です。|
    | 予約容量ユニット| 予約するスループットの量です。 リージョンごとのすべての Cosmos DB リソース (データベースやコンテナーなど) に必要なスループットを決定することで、この値を計算できます。 次に、Cosmos データベースに関連付けるリージョンの数を掛け合わせます。 次に例を示します。5 つのリージョンがあり、すべてのリージョンが 100万 RU/秒である場合は、予約容量の購入に 500万 RU/秒を選択します。 |
 
 
@@ -82,7 +82,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 6. **[購入予約]** ウィンドウで、予約の割引と価格を確認します。 この予約価格は、すべてのリージョンでスループットがプロビジョニングされている Azure Cosmos DB リソースに適用されます。  
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="予約容量の概要":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="予約容量に関する推奨事項":::
 
 7. **[Review + buy]\(レビュー + 購入\)** 、 **[今すぐ購入]** の順に選択します。 購入が成功すると、次のようなページが表示されます。
 

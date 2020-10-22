@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641825"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91318179"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -46,7 +46,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | すべてのオペレーティング システムを、移行のために評価することができます。  |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-
+| **Storage** | ローカル ディスク、DAS、JBOD、記憶域スペース、CSV、SMB。 VHD/VHDX が格納されているこれらの Hyper-V ホスト記憶域がサポートされています。 <br/> IDE および SCSI 仮想コントローラーがサポートされています| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
 

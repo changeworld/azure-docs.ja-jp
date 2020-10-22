@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660965"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295040"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -306,7 +306,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 2.  [今すぐインストール] をクリックして、ツールのダウンロードとインストールを開始します。
 3.  [I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory]\(Office 365、Azure、または Azure Active Directory を使用するその他のサービスとのフェデレーションを設定できません\) を選択します。
 4.  ツールがダウンロードされて実行されると、[接続診断] ウィンドウが表示されます。 ツールが示す手順に従って、フェデレーションの接続をテストします。
-5.  接続アナライザーによって、サインインする SAML 2.0 IDP が開かれます。テストするユーザー プリンシパルの資格情報を入力します。![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  接続アナライザーによって、サインインする SAML 2.0 IDP が開かれます。テストするユーザー プリンシパルの資格情報を入力します。![SAML 2.0 IDP のサインイン ウィンドウを示すスクリーンショット。](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  フェデレーション テストのサインイン ウィンドウでは、SAML 2.0 ID プロバイダーとフェデレーションするように構成されている Azure AD テナントのアカウント名とパスワードを入力する必要があります。 ツールは、これらの資格情報を使用してサインインを試行し、サインインの試行中に実行したテストの詳細な結果を出力として提示します。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. このウィンドウには、テストの失敗した結果を示しています。 [詳細結果をレビュー] クリックすると、実行された各テストの結果に関する情報が表示されます。 結果を共有するためにディスクに保存することもできます。

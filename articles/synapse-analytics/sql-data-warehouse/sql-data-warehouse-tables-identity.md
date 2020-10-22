@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121325"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876007"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL プールで IDENTITY を使用して代理キーを作成する
 
@@ -26,7 +26,8 @@ ms.locfileid: "88121325"
 
 テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。
 > [!NOTE]
-> Synapse SQL の IDENTITY 値は、ユーザーが明示的に "SET IDENTITY_INSERT ON" と重複する値を挿入するか IDENTITY を再シードする場合は、一意であるとは限りません。 詳細については、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」を参照してください。 
+> Azure Synapse Analytics では、IDENTITY 値は各ディストリビューションで自動的に増加し、他のディストリビューションの IDENTITY 値と重複しません。  Synapse の IDENTITY 値は、ユーザーが明示的に "SET IDENTITY_INSERT ON" と重複する値を挿入するか IDENTITY を再シードする場合は、一意であるとは限りません。 詳細については、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」を参照してください。 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
 

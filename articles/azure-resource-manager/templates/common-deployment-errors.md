@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用した Azure へのリソースの�
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650950"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372240"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -34,6 +34,7 @@ ms.locfileid: "89650950"
 | DeploymentNameLengthLimitExceeded | デプロイ名は、64 文字までに制限されています。  | |
 | DeploymentFailed | DeploymentFailed エラーは、そのエラーを解決するために必要な詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
 | DeploymentQuotaExceeded | リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 | [デプロイ数が 800 を超えたときのエラーを解決する](deployment-quota-exceeded.md) |
+| DeploymentSizeExceeded | テンプレートを簡略化して、サイズを小さくします。 | [テンプレートのサイズ エラーの解決](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS レコード名は、一意の名前にする必要があります。 別の番号を入力します。 | |
 | ImageNotFound | VM イメージの設定を確認してください。 |  |
 | InUseSubnetCannotBeDeleted | リソースを更新しようとするときにこのエラーが発生することがありますが、リソースを削除して作成すると、要求が処理されます。 変更されていないすべての値を指定してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,6 +50,7 @@ ms.locfileid: "89650950"
 | InvalidSubscriptionRegistrationState | リソース プロバイダーにサブスクリプションを登録してください。 | [登録を解決する](error-register-resource-provider.md) |
 | InvalidTemplate | テンプレートの構文にエラーがないか確認してください。 | [無効なテンプレートを解決する](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | テンプレートを簡略化して、サイズを小さくします。 | [テンプレートのサイズ エラーの解決](error-job-size-exceeded.md) |
 | LinkedAuthorizationFailed | デプロイ先のリソース グループと同じテナントに自分のアカウントが属しているかどうかを確認してください。 | |
 | LinkedInvalidPropertyId | リソースのリソース ID が正しく解決されていません。 リソース ID に必要なすべての値 (サブスクリプション ID、リソース グループ名、リソースの種類、親リソース名 (必要な場合)、リソース名など) を指定しているかどうかを確認してください。 | |
 | LocationRequired | リソースの場所を指定します。 | [場所を設定する](resource-location.md) |

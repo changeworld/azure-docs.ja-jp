@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894428"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613545"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro デバイスを管理する
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro FPGA デバイスを管理する
 
 Azure Stack Edge Pro ソリューションを使用すると、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクについて、いくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
@@ -43,16 +43,16 @@ Azure Stack Edge Pro ソリューションを使用すると、データを処�
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-ご使用の IoT Edge デバイスと、そのデバイスに接続できるダウンストリーム デバイスとの間にセキュリティで保護された接続を確立するために、IoT Edge 証明書をアップロードすることもできます。 インストールする必要がある IoT Edge 証明書は 3 つあります ( *.pem* 形式)。
+ご使用の IoT Edge デバイスと、そのデバイスに接続できるダウンストリーム デバイスとの間にセキュリティで保護された接続を確立するために、IoT Edge 証明書をアップロードすることもできます。 次の 3 つのファイル (" *.pem*" 形式) をインストールする必要があります。
 
 - ルート CA 証明書または所有者 CA
 - デバイス CA 証明書
-- デバイス キー証明書
+- デバイスの秘密キー 
 
 このコマンドレットを使用して、IoT Edge 証明書をインストールする例を次に示します。
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 このコマンドレットを実行するときは、ネットワーク共有のためのパスワードを指定するよう求められます。
 

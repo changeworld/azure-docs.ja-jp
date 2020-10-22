@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab, vanto
+ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871447"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628368"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 - [Azure VNet ピアリング](../../virtual-network/virtual-network-peering-overview.md)
 - VNet 間 VPN ゲートウェイ ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続性の観点から言えば、ピアリングされた仮想ネットワーク内の仮想マシンであっても、同じ仮想ネットワーク内の仮想マシンであっても、待機時間に顕著な違いはありません。そのため、ピアリングが推奨されます。 仮想ネットワーク ピアリングは、同じリージョン内のネットワークに制限されます。  
+ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続性の観点から言えば、ピアリングされた仮想ネットワーク内の仮想マシンであっても、同じ仮想ネットワーク内の仮想マシンであっても、待機時間に顕著な違いはありません。そのため、ピアリングが推奨されます。 仮想ネットワーク ピアリングは、同じリージョン内のネットワーク間でサポートされます。 グローバル仮想ネットワーク ピアリングもサポート対象ですが、次の注記で説明する制限事項があります。  
 
 > [!IMPORTANT]
-> SQL Managed Instance の仮想ネットワーク ピアリングのシナリオは、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
+> [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
 
 ## <a name="connect-from-on-premises"></a>オンプレミスからの接続 
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 6e17e2a6e5c9151080facc3a2dd8c1a18c0580fe
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.reviewer: jrasnick, sstein
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982170"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91596969"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,13 +25,16 @@ Azure SQL Database と Azure SQL Managed Instance 内のデータベースのパ
 
 Azure SQL Database には、パフォーマンスを向上させるために、インテリジェントなパフォーマンス チューニングの推奨設定と自動チューニング オプションを提供するデータベース アドバイザーが多数用意されています。 また、Query Performance Insight では、単一データベースとプールされたデータベースの CPU と IO の使用率が最も高いクエリについての詳細が表示されます。
 
-Azure SQL Database と Azure SQL Managed Instance では、データベースやソリューションのパフォーマンスのトラブルシューティングを行い、これらを最大化するのに役立つ、人工知能によって支えられる高度な監視およびチューニング機能が提供されます。 使用と分析 (具体的には [SQL Analytics](../../azure-monitor/insights/azure-sql.md) を使用) のために、複数の宛先のいずれかに対してこれらの [Intelligent Insights](intelligent-insights-overview.md) およびその他のデータベース リソース ログとメトリックの[ストリーミング エクスポート](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を構成することを選択できます。 Azure SQL Analytics は、1 つのビューですべてのデータベースのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 エクスポートできるログとメトリックの一覧については、[エクスポートの診断テレメトリ](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)に関するページをご覧ください
+Azure SQL Database と Azure SQL Managed Instance では、データベースやソリューションのパフォーマンスのトラブルシューティングを行い、これらを最大化するのに役立つ、人工知能によって支えられる高度な監視およびチューニング機能が提供されます。 使用と分析 (具体的には [SQL Analytics](../../azure-monitor/insights/azure-sql.md) を使用) を行うために、複数の宛先のいずれかに対して、これらの [Intelligent Insights](intelligent-insights-overview.md)、およびその他のデータベース リソース ログとメトリックの[ストリーミング エクスポート](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を構成することを選択できます。 Azure SQL Analytics は、1 つのビューですべてのデータベースのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 エクスポートできるログとメトリックの一覧については、[エクスポートの診断テレメトリ](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)に関するページをご覧ください
 
-最後に、SQL Server には、[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)や[動的管理ビュー (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) など、SQL Database および SQL Managed Instance で使用される独自の監視機能と診断機能が用意されています。 さまざまなパフォーマンスの問題を監視するスクリプトについては、[DMV を使用した監視](monitoring-with-dmvs.md)に関する記事をご覧ください。
+SQL Server には、[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)や[動的管理ビュー (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) など、SQL Database と SQL Managed Instance によって使用される独自の監視機能と診断機能が用意されています。 さまざまなパフォーマンスの問題を監視するスクリプトについては、[DMV を使用した監視](monitoring-with-dmvs.md)に関する記事をご覧ください。
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure portal の監視およびチューニング機能
 
-Azure portal では、Azure SQL Database と Azure SQL Managed Instance により、リソース メトリックの監視が提供されます。 また、Azure SQL Database ではデータベース アドバイザーが提供され、Query Performance Insight ではクエリ チューニングの推奨設定とクエリ パフォーマンスの分析情報が提供されます。 最後に、Azure portal では、[論理 SQL サーバー](logical-servers.md)と、その単一およびプールされたデータベースに対して自動化を有効にすることができます。
+Azure portal では、Azure SQL Database と Azure SQL Managed Instance により、リソース メトリックの監視が提供されます。 Azure SQL Database はデータベース アドバイザーを提供し、Query Performance Insight はクエリ チューニングの推奨設定とクエリ パフォーマンスの分析情報を提供しています。 Azure portal では、[論理 SQL サーバー](logical-servers.md)、およびその単一データベースとプールされたデータベースに対して自動チューニングを有効にすることができます。
+
+> [!NOTE]
+> 使用率が非常に低いデータベースは、ポータルに実際の使用量より少なく表示されることがあります。 double 値を最も近い整数値に変換する場合のテレメトリ生成方法が理由で、0.5 未満の特定の使用量は 0 に丸められます。これにより、生成されたテレメトリの細分性は低下します。 詳細については、「[使用率が低いデータベースおよびエラスティック プールのメトリックの 0 への丸め処理](#low-database-and-elastic-pool-metrics-rounding-to-zero)」を参照してください。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database と Azure SQL Managed Instance のリソースの監視
 
@@ -46,6 +49,33 @@ Azure SQL Database には、単一データベースとプールされたデー�
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Azure SQL Database 内の Query Performance Insight
 
 [Query Performance Insight](query-performance-insight-use.md) では、単一データベースとプールされたデータベースに対して実行するクエリのうち、最も負荷が高いものと実行時間が長いもののパフォーマンスが Azure portal に示されます。
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>使用率が低いデータベースおよびエラスティック プールのメトリックの 0 への丸め処理
+
+2020 年 9 月以降、使用率が非常に低いデータベースは、ポータルに実際の使用量より少なく表示されることがあります。 double 値を最も近い整数値に変換する場合のテレメトリ生成方法が理由で、0.5 未満の特定の使用量は 0 に丸められます。これにより、生成されたテレメトリの細分性は低下します。
+
+次に例を示します。1 分間に 4 つのデータ ポイント 0.1、0.1、0.1、0.1 があると考えてみましょう。これらの低値は 0、0、0、0 に切り捨てられ、平均は 0 であると示されます。 データ ポイントのいずれかが 0.5 より大きい場合は、0.1、0.1、0.9、0.1 となり、これらは 0、0、1、0 に丸められ、平均は 0.25 であると表示されます。
+
+影響を受けるデータベースのメトリックは次のとおりです。
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+影響を受けるエラスティック プールのメトリックは次のとおりです。
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>パフォーマンスの問題のインテリジェントな評価を生成する
 

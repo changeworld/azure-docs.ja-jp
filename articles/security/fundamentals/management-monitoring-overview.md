@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448351"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91395772"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
@@ -66,7 +66,7 @@ Multi-Factor Authentication を使えば、シンプルなサインイン プロ
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
+Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Microsoft 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
 
 * 任意の環境間 (VPN IP) ネットワーク。
 * ポイント ツー ポイントのイーサネット ネットワーク。

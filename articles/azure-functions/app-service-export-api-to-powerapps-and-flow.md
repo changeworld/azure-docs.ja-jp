@@ -4,16 +4,16 @@ description: App Service でホストされる API を PowerApps および Micro
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015087"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054799"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) は、ユーザーのデータに接続して異なるプラットフォーム間で動作するカスタム ビジネス アプリを作成して使うためのサービスです。 [Microsoft Flow](/learn/modules/get-started-with-flow/index) は、ユーザーが好むアプリとサービスの間でワークフローとビジネス プロセスを簡単に自動化できるようにします。 PowerApps と Microsoft Flow のどちらにも、Office 365、Dynamics 365、Salesforce などのデータ ソースへのさまざまな組み込みコネクタが付属しています。 状況によっては、アプリとフローのビルダーから、組織でビルドされたデータソースと API に接続したい場合もあります。
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) は、ユーザーのデータに接続して異なるプラットフォーム間で動作するカスタム ビジネス アプリを作成して使うためのサービスです。 [Power Automate](/learn/modules/get-started-with-flow/index) は、ユーザーが好むアプリとサービスの間でワークフローとビジネス プロセスを簡単に自動化できるようにします。 PowerApps と Microsoft Flow のどちらにも、Office 365、Dynamics 365、Salesforce などのデータ ソースへのさまざまな組み込みコネクタが付属しています。 状況によっては、アプリとフローのビルダーから、組織でビルドされたデータソースと API に接続したい場合もあります。
 
 同様に、組織内での API の利用範囲を広げるには、アプリとフローのビルダーで API を使用できるようにする必要があります。 この記事では、[Azure Functions](../azure-functions/functions-overview.md) または [Azure App Service](../app-service/overview.md) を使って構築した API をエクスポートする方法を示します。 エクスポートされた API は、PowerApps や Microsoft Flow で組み込みのコネクタのように使用される*カスタム コネクタ*になります。
 

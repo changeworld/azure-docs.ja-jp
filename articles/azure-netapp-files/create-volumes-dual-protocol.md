@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 8/11/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459999"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963518"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -28,7 +28,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
 ## <a name="before-you-begin"></a>開始する前に 
 
-* あらかじめ容量プールを設定しておく必要があります。  
+* あらかじめ容量プールを作成しておく必要があります。  
     「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
 * サブネットが Azure NetApp Files に委任されている必要があります。  
     「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
@@ -38,6 +38,19 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 * 「[Active Directory 接続の要件](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)」を満たしていることを確認します。 
 * DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンのポインター (PTR) レコードを追加します。 そうしないと、デュアルプロトコル ボリュームの作成は失敗します。
 * NFS クライアントが最新であり、オペレーティング システムの最新の更新プログラムが実行されていることを確認します。
+* AD で Active Directory (AD) LDAP サーバーが稼働していることを確認します。 そのためには、AD マシンで [Active Directory ライトウェイト ディレクトリ サービス (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) ロールをインストールして構成します。
+* 自己署名ルート CA 証明書を生成してエクスポートするには、[Active Directory 証明書サービス (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) ロールを使用して、AD に証明機関 (CA) が作成されていることを確認します。   
+* デュアル プロトコル ボリュームでは、現在 Azure Active Directory Domain Services (AADDS) はサポートされていません。  
+* デュアル プロトコル ボリュームで使用される NFS のバージョンは、NFSv3 です。 そのため、次の考慮事項が適用されます。
+    * デュアル プロトコルは、NFS クライアントからの Windows ACL 拡張属性 `set/get` をサポートしていません。
+    * NFS クライアントは、NTFS セキュリティ スタイルのアクセス許可を変更することはできません。また、Windows クライアントは、UNIX 形式のデュアル プロトコル ボリュームのアクセス許可を変更することはできません。   
+
+    次の表は、セキュリティ スタイルとその効果について説明しています。  
+    
+    | セキュリティ スタイル    | アクセス許可を変更できるクライアント   | クライアントが使用できるアクセス許可  | 結果の有効なセキュリティ スタイル    | ファイルにアクセスできるクライアント     |
+    |-  |-  |-  |-  |-  |
+    | UNIX  | NFS   | NFSv3 モード ビット   | UNIX  | NFS と Windows   |
+    | NTFS  | Windows   | NTFS ACL     | NTFS  |NFS と Windows|
 
 ## <a name="create-a-dual-protocol-volume"></a>デュアルプロトコル ボリュームを作成する
 
@@ -51,7 +64,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
         ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。   
 
-        ボリューム名として `default` を使用することはできません。
+        `default` または `bin` をボリューム名として使用することはできません。
 
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
@@ -60,6 +73,11 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
         ボリュームに割り当てられる論理ストレージの量を指定します。  
 
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
+
+    * **スループット (MiB/秒)**    
+        ボリュームが手動 QoS 容量プールで作成されている場合は、ボリュームに必要なスループットを指定します。   
+
+        ボリュームが自動 QoS 容量プールで作成されている場合は、このフィールドに表示される値は (クォータ x サービス レベルのスループット) です。   
 
     * **Virtual Network**  
         ボリュームへのアクセス元となる Azure 仮想ネットワーク (VNet) を指定します。  
@@ -105,9 +123,9 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Active Directory 証明機関の公開ルート証明書をアップロードする  
 
-1.  「[証明機関をインストールする](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)」に従って、ADDS 証明機関をインストールして構成します。 
+1.  「[証明機関をインストールする](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)」に従って、ADDS 証明機関をインストールして構成します。 
 
-2.  「[MMC スナップインを使用して証明書を参照する](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)」に従って、MMC スナップインと証明書マネージャー ツールを使用します。  
+2.  「[MMC スナップインを使用して証明書を参照する](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)」に従って、MMC スナップインと証明書マネージャー ツールを使用します。  
     証明書マネージャー スナップインを使用して、ローカル デバイスのルートまたは発行元の証明書を検索します。 証明書管理スナップイン コマンドは、次のいずれかの設定から実行する必要があります。  
     * ドメインに参加し、ルート証明書がインストールされている Windows ベースのクライアント 
     * ルート証明書を含むドメイン内の別のマシン  
@@ -131,6 +149,11 @@ Active Directory ユーザーとコンピューター MMC スナップインを�
 
 ![Active Directory の属性エディター](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
+LDAP ユーザーおよび LDAP グループには、次の属性を設定する必要があります。 
+* LDAP ユーザーに必要な属性:   
+    `uid`: Alice、`uidNumber`: 139、`gidNumber`: 555、`objectClass`: posixAccount
+* LDAP グループに必要な属性:   
+    `objectClass`: "posixGroup"、`gidNumber`: 555
 
 ## <a name="configure-the-nfs-client"></a>NFS クライアントを構成する 
 
@@ -139,4 +162,4 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 ## <a name="next-steps"></a>次の手順  
 
 * [デュアルプロトコルに関する FAQ](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md) 
+* [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)

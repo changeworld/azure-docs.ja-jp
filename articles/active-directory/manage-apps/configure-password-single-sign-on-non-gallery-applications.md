@@ -1,25 +1,25 @@
 ---
-title: Azure AD アプリに対してパスワードベースのシングル サインオンを構成する方法
-description: Microsoft ID プラットフォーム (Azure AD) の Azure AD アプリケーションに対してパスワードベースのシングル サインオン (SSO) を構成する方法
+title: Azure Active Directory におけるアプリに対するパスワードベースのシングル サインオン (SSO) について理解する
+description: Azure Active Directory におけるアプリに対するパスワードベースのシングル サインオン (SSO) について理解する
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049062"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598327"
 ---
-# <a name="configure-password-based-single-sign-on"></a>パスワードベースのシングル サインオンの構成
+# <a name="understand-password-based-single-sign-on"></a>パスワードベースのシングル サインオンについて理解する
 
-アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースの SSO を設定します。 別のオプションとして、パスワードベースの SSO があります。 この記事では、パスワードベースの SSO オプションについて詳しく説明します。 
+アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースまたは OIDC ベースの SSO を構成します。 別のオプションとして、パスワードベースの SSO があります。 この記事では、パスワードベースの SSO オプションについて詳しく説明します。 
 
 このオプションは、HTML のサインイン ページを備えたあらゆる Web サイトで利用できます。 パスワードベースの SSO はパスワード保管とも呼ばれます。 パスワードベースの SSO では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスとパスワードを管理できます。 これは、複数のユーザーが 1 つのアカウント (組織のソーシャル メディア アプリ アカウントなど) を共有する必要がある場合にも便利です。
 
@@ -39,12 +39,12 @@ ms.locfileid: "89049062"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure AD を ID プロバイダー (IdP) として使用し、シングル サインオン (SSO) を設定することは、使用するアプリケーションに応じて単純な場合もあれば複雑な場合もあります。 アプリケーションの中には、わずか数回のアクションで設定できるものもあれば、詳細な構成が必要なものもあります。 詳細な構成が必要なものもあります。 短時間で利用できるようにするには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 追加しようとしているアプリケーションが単純なものであれば、おそらくこの記事を読む必要はありません。 追加しようとしているアプリケーションでカスタム構成が必要であり、パスワードベースの SSO を使用する必要がある場合は、この記事をお読みください。
+Azure AD を ID プロバイダー (IdP) として使用し、シングル サインオン (SSO) を構成することは、使用するアプリケーションに応じて単純な場合もあれば複雑な場合もあります。 一部のアプリケーションは、わずかのアクションで構成できます。 詳細な構成が必要なものもあります。 短時間で理解するには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 追加しようとしているアプリケーションが単純なものであれば、おそらくこの記事を読む必要はありません。 追加しようとしているアプリケーションでカスタム構成が必要であり、パスワードベースの SSO を使用する必要がある場合は、この記事をお読みください。
 
 > [!IMPORTANT] 
 > 一部のシナリオでは、**エンタープライズ アプリケーション**内のアプリケーションのナビゲーションに**シングル サインオン** オプションが表示されません。 
 >
-> アプリケーションが**アプリの登録**を使用して登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
+> **アプリの登録**を使用してアプリケーションが登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が構成されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
 >
 > ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
 
@@ -60,7 +60,7 @@ Azure AD を ID プロバイダー (IdP) として使用し、シングル サ�
 
 URL を入力したら、 **[保存]** を選択します。 Azure AD は、サインイン ページのユーザー名とパスワードの入力フィールドの HTML を解析します。 試行に成功すれば完了です。
  
-次の手順は、[アプリケーションへのユーザーまたはグループの割り当て](methods-for-assigning-users-and-groups.md)です。 ユーザーとグループを割り当てたら、アプリケーションにサインインするユーザーのために使用する資格情報を指定できます。 **[ユーザーとグループ]** を選択し、目的のユーザーまたはグループの行のチェック ボックスをオンにして、 **[資格情報の更新]** を選択します。 最後に、そのユーザーまたはグループのために使用するユーザー名とパスワードを入力します。 これを行わない場合、起動時に自分で資格情報を入力するように求めるプロンプトがユーザーに対して表示されます。
+次の手順は、[アプリケーションへのユーザーまたはグループの割り当て](methods-for-assigning-users-and-groups.md)です。 ユーザーとグループを割り当てたら、アプリケーションにサインインするユーザーのために使用する資格情報を指定できます。 **[ユーザーとグループ]** を選択し、目的のユーザーまたはグループの行のチェック ボックスをオンにして、 **[資格情報の更新]** を選択します。 最後に、そのユーザーまたはグループのために使用するユーザー名とパスワードを入力します。 そうしない場合、ユーザーは起動時に自分で資格情報を入力するように求められます。
  
 
 ## <a name="manual-configuration"></a>手動構成

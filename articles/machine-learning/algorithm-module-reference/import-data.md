@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907941"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372597"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
@@ -56,7 +56,7 @@ ms.locfileid: "90907941"
 
 1. **[データ ソース]** を選択し、データ ソースの種類を選択します。 HTTP またはデータストアの場合もあります。
 
-    データストアを選択する場合、Azure Machine Learning ワークスペースに既に登録されている既存のデータストアを選択するか、新しいデータストアを作成できます。 次に、データストアにインポートするデータのパスを定義します。 パスを簡単に参照するには、 **[パスの参照]** をクリックします。![import-data-path](media/module/import-data-path.png)
+    データストアを選択する場合、Azure Machine Learning ワークスペースに既に登録されている既存のデータストアを選択するか、新しいデータストアを作成できます。 次に、データストアにインポートするデータのパスを定義します。 パスを簡単に参照するには、 **[パスの参照]** をクリックします。![スクリーンショットに、パスの選択ダイアログ ボックスを開く、参照パス リンクが示されています。](media/module/import-data-path.png)
 
 1. プレビュー スキーマを選択して、含める列にフィルターを適用します。 解析オプションで、区切り記号などの詳細設定を定義することもできます。
 

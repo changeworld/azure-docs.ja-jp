@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017474"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072035"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>チュートリアル:Azure AD から Workday への属性の書き戻しを構成する
 このチュートリアルの目的は Azure AD から Workday に属性を書き戻すために必要な手順を説明することです。 Workday Writeback プロビジョニング アプリは、次の Workday 属性に対する値の割り当てをサポートします。
@@ -144,16 +144,31 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
+1. **[スコープ]** ドロップダウンで **[すべてのユーザーとグループを同期する]** を選択します。 このオプションを使用すると、Writeback アプリによって、すべてのユーザーのマップされた属性が、 **[マッピング]**  ->  **[ソース オブジェクト スコープ]** で定義されたスコープ規則に従って Azure AD から Workday に書き戻されます。 
+
+   > [!div class="mx-imgBorder"]
+   > ![書き戻しのスコープを選択する](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Workday の Writeback プロビジョニング アプリでは、 **[割り当てられたユーザーとグループのみを同期する]** オプションはサポートされていません。
+ 
+
 2. **[保存]** をクリックします。
 
 3. この操作により初期同期が開始されます。これに要する時間はソース ディレクトリのユーザー数に応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
 
-4. 好きなときに、Azure Portal の **[監査ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、ソースからインポートされたユーザーやターゲット アプリケーションにエクスポートされたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。  
+4. 好きなときに、Azure portal の **[プロビジョニング ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、ソースからインポートされたユーザーやターゲット アプリケーションにエクスポートされたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。  
 
 5. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに概要レポートが出力されます。
 
      > [!div class="mx-imgBorder"]
      > ![プロビジョニングの進行状況バー](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
+
+* Writeback アプリでは、**Communication_Usage_Type_ID** および **Phone_Device_Type_ID** の各パラメーターに定義済みの値が使用されます。 Workday テナントで、これらの属性に別の値が使用されている場合、書き戻し操作は成功しません。 回避策として、Workday の Type_ID を更新することをお勧めします。 
+* Writeback アプリがセカンダリ電話番号を更新するように構成されている場合、Workday の既存のセカンダリ電話番号は置き換えられません。 新しいセカンダリ電話番号が worker レコードに追加されます。 この動作に対する回避策はありません。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

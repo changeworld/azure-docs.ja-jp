@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/25/2020
+ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647550"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369010"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -168,6 +168,8 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 * [ISE 領域における Logic Apps の受信および送信アドレス](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
 
+* [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルにあります](https://www.microsoft.com/download/details.aspx?id=56519)
+
 * Azure SQL、Storage、Service Bus、および Event Hub のサービス エンドポイントは有効にする必要があります。これは、ファイアウォールを経由してこれらのサービスにトラフィックを送信することはできないためです。
 
 <a name="create-environment"></a>
@@ -282,6 +284,21 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    > [!IMPORTANT]
    > ISE の作成後に使用可能になるマネージド ISE コネクタは、ロジック アプリ デザイナーのコネクタ ピッカーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを ISE に追加](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
+
+   > [!IMPORTANT]
+   > マネージド ISE コネクタは現在のところ、[タグ](../azure-resource-manager/management/tag-support.md)に対応していません。 タグ付けを強制するポリシーを設定した場合、ISE コネクタを追加しようすると  
+   > 失敗し、次の例のようなエラーが出ることがあります。 
+   > 
+   > ```json
+   > {
+   >    "error": { 
+   >       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+   >       "message": "The tags are not supported in the managed API 'azureblob'."
+   >    }
+   > }
+   > ```
+   > ISE コネクタを追加するには、ポリシーを無効にするか、削除しする必要があります。
+   > 
 
 ## <a name="next-steps"></a>次のステップ
 

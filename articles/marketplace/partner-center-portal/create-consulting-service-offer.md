@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646844"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91709072"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
@@ -25,7 +25,7 @@ ms.locfileid: "89646844"
 コマーシャル マーケットプレースに公開する利点:
 
 - Microsoft のブランドを使用して、会社の宣伝ができる。
-- AppSource 上で 1 億を超える Office 365 および Dynamics 365 ユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織にリーチできる可能性がある。
+- AppSource 上では 1 億を超える Microsoft 365 および Dynamics 365 のユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織に接触できる可能性がある。
 - これらのマーケット プレースから質の高い潜在顧客を得ることができる。
 - Microsoft のフィールド チームとテレセールス チームによりサービスを宣伝してもらえる。
 
@@ -76,10 +76,10 @@ ms.locfileid: "89646844"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
-- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
-- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
+- [コマーシャル マーケットプレース オファーからの顧客リード](commercial-marketplace-get-customer-leads.md)
+- [リード管理についてよく寄せられる質問](../lead-management-faq.md#common-questions-about-lead-management)
+- [リード構成エラーのトラブルシューティング](../lead-management-faq.md#publishing-config-errors)
+- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -146,7 +146,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 <br>Microsoft AppSource でのオファー情報の表示例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Microsoft AppSource でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -202,7 +202,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
@@ -247,7 +247,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 オファーの必須セクションをすべて完了したら、レビューおよび公開のためにそのオファーを送信することができます。
 
-1. コンサルティング サービス オファーを公開する準備ができたら、 **[レビューと公開]** をクリックします。
+1. コンサルティング サービス オファーを公開する準備ができたら、 **[レビューと公開]** を選択します。
 2. 最終送信ページで詳細を確認します。
 3. オファーの詳細のいずれかで説明が必要だと思われる場合は、必要に応じて認定チームへのメモを書き込んでください。
 4. 準備ができたら、 **[送信]** を選択します

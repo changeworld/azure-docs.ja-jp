@@ -1,18 +1,18 @@
 ---
 title: Azure リージョンを移動する - Azure portal - Azure Database for PostgreSQL - Single Server
 description: 読み取りレプリカと Azure portal を使用して、Azure Database for PostgreSQL サーバーをリージョン間で移動します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 00cd291824eabfe8e1b43f35bc3618bfd793077d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567609"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707661"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for Azure Database for PostgreSQL - Single Server を別のリージョンに移動する
 
@@ -47,11 +47,11 @@ Azure portal を使用してターゲット リージョンにリージョン間
 1. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 1. **[レプリカの追加]** を選択します。
 1. レプリカ サーバーの名前を入力します。
-1. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
+1. レプリカ サーバーの場所を選択します。 既定の場所は、プライマリ サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
 1. **[OK]** を選択して、レプリカの作成を確認します。 レプリカの作成中に、ソース サーバーからレプリカにデータがコピーされます。 ソース サーバーのサイズに比例して、作成時間が数分になる場合があります。
 
 >[!NOTE]
-> 作成されたレプリカでは、マスター サーバーのファイアウォール規則と VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+> 作成されたレプリカでは、プライマリ サーバーのファイアウォール規則と VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
 
 ## <a name="move"></a>詳細ビュー
 

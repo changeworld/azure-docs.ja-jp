@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052173"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575964"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5.1 のインストール
 
@@ -60,15 +60,15 @@ Update 5.1 には、中断なしのセキュリティ更新プログラムが含
 
 2. **[デバイスの設定]**  >  **[デバイスの更新プログラム]** の順に移動します。
 
-    ![[デバイスの更新プログラム] をクリック](./media/storsimple-8000-install-update-51/update2.png)
+    ![[設定] ブレードのスクリーンショット。[デバイスの更新] オプションのコールアウトが示されています。](./media/storsimple-8000-install-update-51/update2.png)
 
 3. 新しい更新プログラムが利用できる場合は、通知が表示されます。 または、 **[デバイスの更新プログラム]** ブレードで **[更新プログラムのスキャン]** をクリックします。 利用可能な更新プログラムをスキャンするジョブが作成されます。 ジョブが正常に完了すると、その旨が通知されます。
 
-    ![[デバイスの更新プログラム] をクリック](./media/storsimple-8000-install-update-51/update3.png)
+    ![[設定] ブレードのスクリーンショット。[デバイスの更新] オプションのコールアウトが示され、[デバイスの更新] ブレードでは [新しい通常の更新プログラムを利用できます] というメッセージがコールアウトされています。](./media/storsimple-8000-install-update-51/update3.png)
 
 4. 更新プログラムをデバイスに適用する前に、リリース ノートを確認することをお勧めします。 **[更新プログラムのインストール]** をクリックすると、更新プログラムが適用されます。 **[定期更新プログラムの確認]** ブレードで、更新プログラムを適用する前に完了する必要のある前提条件を確認します。 デバイスを更新する準備ができたことを示すチェック ボックスをオンにし、 **[インストール]** をクリックします。
 
-    ![[デバイスの更新プログラム] をクリック](./media/storsimple-8000-install-update-51/update4.png)
+    ![[デバイスの更新] ブレードのスクリーンショット。[更新プログラムのインストール] オプションのコールアウトと、[定期的な更新プログラムの確認] の同意オプションと [インストール] オプションのコールアウトが示されています。](./media/storsimple-8000-install-update-51/update4.png)
 
 5. 一連の前提条件のチェックが開始されます。 これらのチェックは次のとおりです。
    
@@ -80,17 +80,17 @@ Update 5.1 には、中断なしのセキュリティ更新プログラムが含
 
 7. 事前チェックが正常に完了したら、更新ジョブが作成されます。 更新ジョブが正常に作成されると、通知されます。
    
-    ![Update job creation](./media/storsimple-8000-install-update-51/update6.png)
+    ![[ソフトウェアの更新ジョブを開始しています] という通知のスクリーンショット。](./media/storsimple-8000-install-update-51/update6.png)
    
     その後、更新プログラムがデバイスに適用されます。
 
 9. 更新の完了には数時間かかります。 更新ジョブを選択し、 **[詳細]** をクリックすると、ジョブの詳細をいつでも表示できます。
 
-    ![Update job creation](./media/storsimple-8000-install-update-51/update8.png)
+    ![[デバイスの更新] ブレードのスクリーンショット。[ソフトウェア更新プログラムのダウンロードとインストールが進行中です] オプションのコールアウトと、[更新プログラムのインストール] ブレードが表示されています。](./media/storsimple-8000-install-update-51/update8.png)
 
      **[デバイスの設定]、[ジョブ]** の順に移動して、更新ジョブの進行状況を監視することもできます。 **[ジョブ]** ブレードで、更新の進行状況を確認できます。
 
-     ![Update job creation](./media/storsimple-8000-install-update-51/update7.png)
+     ![[設定] ブレードのスクリーンショット。[ジョブ] のコールアウトが表示され、[ジョブ] ブレードに更新の進行状況が示されています。](./media/storsimple-8000-install-update-51/update7.png)
 
 10. ジョブが完了したら、 **[デバイスの設定]、[デバイスの更新プログラム]** の順に移動します。 ソフトウェアのバージョンが更新されています。
 

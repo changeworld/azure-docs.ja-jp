@@ -1,19 +1,19 @@
 ---
 title: Azure Files ネットワーク エンドポイントの構成 | Microsoft Docs
-description: Azure Files のネットワーク オプションの概要。
+description: Azure File ネットワーク エンドポイントを構成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a38528e32061f57e3239ef4be26cdd437f4f8746
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078594"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612831"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
 
@@ -32,7 +32,7 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 - この記事では、既に Azure サブスクリプションが作成されていることを前提としています。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - この記事では、オンプレミスから接続するストレージ アカウントに Azure ファイル共有が既に作成されていることを前提としています。 Azure ファイル共有を作成する方法については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」をご覧ください。
 - Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
 ## <a name="endpoint-configurations"></a>エンドポイント構成
 

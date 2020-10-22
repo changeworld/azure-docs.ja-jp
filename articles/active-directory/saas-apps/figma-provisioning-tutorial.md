@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322038"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850904"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>チュートリアル:Figma を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,23 +53,23 @@ Azure AD での自動ユーザー プロビジョニング用に Figma からプ
 
 1. [Figma 管理コンソール](https://www.Figma.com/)にサインインします。 お使いのテナントの横にある歯車アイコンをクリックします。
 
-    ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Figma 管理コンソールのスクリーンショット。A A D Scim Test という名前のテナントが表示されています。テナントの横にある歯車アイコンが強調表示されています。" border="false":::
 
 2. **[General]\(全般\) > [Update Log in Settings]\(ログイン設定の更新\)** に移動します。
 
-    ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma 管理コンソールのスクリーンショット。A A D Scim Test という名前のテナントが表示されています。テナントの横にある歯車アイコンが強調表示されています。" border="false":::
 
 3. **テナント ID** をコピーします。 この値を使用して、Azure portal で Figma アプリケーションの [プロビジョニング] タブ内の **[テナント URL]** フィールドに入力される SCIM エンドポイント URL を構築します。
 
-    ![Figma でのトークンの作成](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma 管理コンソールのスクリーンショット。A A D Scim Test という名前のテナントが表示されています。テナントの横にある歯車アイコンが強調表示されています。" border="false":::
 
 4. 下にスクロールし、 **[Generate API Token]\(API トークンの生成\)** をクリックします。
 
-    ![Figma でのトークンの作成](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma 管理コンソールのスクリーンショット。A A D Scim Test という名前のテナントが表示されています。テナントの横にある歯車アイコンが強調表示されています。" border="false":::
 
 5. **[API Token]\(API トークン\)** 値をコピーします。 この値を、Azure portal で Figma アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。 
 
-    ![Figma でのトークンの作成](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma 管理コンソールのスクリーンショット。A A D Scim Test という名前のテナントが表示されています。テナントの横にある歯車アイコンが強調表示されています。" border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>ギャラリーから Figma を追加する
 

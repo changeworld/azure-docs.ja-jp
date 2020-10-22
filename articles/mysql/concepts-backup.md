@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418587"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057537"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
 
@@ -19,18 +19,29 @@ Azure Database for MySQL は、サーバーのバックアップを自動的に�
 
 ## <a name="backups"></a>バックアップ
 
-Azure Database for MySQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) を使用します。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 [必要に応じて](howto-restore-server-portal.md#set-backup-configuration)最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+Azure Database for MySQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 [必要に応じて](howto-restore-server-portal.md#set-backup-configuration)最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
 
 これらのバックアップ ファイルはユーザーに公開されておらず、エクスポートできません。 これらのバックアップは、Azure Database for MySQL の復元操作にのみ使用できます。 [mysqldump](concepts-migrate-dump-restore.md) を使用して、データベースをコピーできます。
 
-### <a name="backup-frequency"></a>バックアップ頻度
+バックアップの種類と頻度は、サーバーのバックエンド ストレージによって異なります。
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>最大 4 TB のストレージを持つサーバー
+### <a name="backup-type-and-frequency"></a>バックアップの種類と頻度
 
-最大 4 TB の最大ストレージをサポートするサーバーでは、完全バックアップは毎週 1 回実行されます。 差分バックアップは 1 日に 2 回実行されます。 トランザクション ログ バックアップは 5 分ごとに実行されます。
+#### <a name="basic-storage-servers"></a>Basic ストレージ サーバー
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>最大 16 TB のストレージを持つサーバー
-[Azure リージョン](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)のサブセットでは、新しくプロビジョニングされたすべてのサーバーで最大 16 TB のストレージがサポートされます。 これらの大規模なストレージ サーバー上のバックアップは、スナップショット ベースです。 初回の完全スナップショット バックアップは、サーバーの作成直後にスケジュールされます。 最初の完全スナップショット バックアップは、サーバーのベース バックアップとして保持されます。 以降のスナップショット バックアップでは、差分バックアップのみが行われます。 
+Basic ストレージは、[Basic レベルのサーバー](concepts-pricing-tiers.md)をサポートするバックエンド ストレージです。 Basic ストレージ サーバー上のバックアップは、スナップショットベースです。 完全なデータベース スナップショットは毎日実行されます。 Basic ストレージ サーバーでは差分バックアップは実行されず、すべてのスナップショット バックアップはデータベースの完全バックアップのみです。 
+
+トランザクション ログ バックアップは 5 分ごとに実行されます。 
+
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>最大 4 TB のストレージを持つ汎用ストレージ サーバー
+
+汎用ストレージは、[General Purpose](concepts-pricing-tiers.md) および [Memory Optimized レベル](concepts-pricing-tiers.md)のサーバーをサポートするバックエンド ストレージです。 最大 4 TB までの汎用ストレージを持つサーバーでは、完全バックアップは毎週 1 回実行されます。 差分バックアップは 1 日に 2 回実行されます。 トランザクション ログのバックアップは 5 分ごとに実行されます。最大 4 TB のストレージを持つ汎用ストレージのバックアップは、スナップショット ベースではなく、バックアップ時に IO 帯域幅を消費します。 4 TB のストレージ上にある大規模なデータベース (1 TB 以上) の場合は、次の点を行うことを視野に入れてください 
+
+- バックアップ IO のために、より多くの IOP をプロビジョニングする
+- または、任意の [Azure リージョン](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)で基となるストレージ インフラストラクチャが利用可能な場合は、最大 16 TB のストレージがサポートされる汎用ストレージに移行することもできます。 最大 16 TB のストレージがサポートされる汎用ストレージの場合、追加料金は発生しません。 16 TB のストレージへの移行については、Azure portal からサポート チケットを開いてください。 
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>最大 16 TB のストレージを持つ汎用ストレージ サーバー
+[Azure リージョン](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)のサブセットでは、新しくプロビジョニングされたすべてのサーバーで最大 16 TB のストレージを持つ汎用ストレージがサポートされます。 つまり、最大 16 TB のストレージは、それがサポートされているすべての[リージョン](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)のデフォルトの汎用ストレージです。 これらの最大 16 TB のストレージ サーバー上のバックアップは、スナップショット ベースです。 初回の完全スナップショット バックアップは、サーバーの作成直後にスケジュールされます。 最初の完全スナップショット バックアップは、サーバーのベース バックアップとして保持されます。 以降のスナップショット バックアップでは、差分バックアップのみが行われます。 
 
 差分スナップショット バックアップは、少なくとも 1 日実行されます。 差分スナップショット バックアップは、固定のスケジュールでは実行されません。 差分スナップショット バックアップは 24 時間ごとに実行されます。ただし、前回の差分バックアップ以降、トランザクション ログ (MySQL の binlog) が 50 GB を超える場合は除きます。 1 日に最大 6 個の差分スナップショットを生成できます。 
 
@@ -71,7 +82,7 @@ Azure Database for MySQL で復元を実行すると、元のサーバーのバ�
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からサーバーのリソースを保護するために、[管理ロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)を利用できます。
+> 削除されたサーバーを復元できるのは、削除から **5 日**以内のみです。その後、バックアップが削除されます。 データベースのバックアップは、サーバーをホストしている Azure サブスクリプションからのみアクセスおよび復元できます。 削除されたサーバーを復元するには、[文書化されている手順](howto-restore-dropped-server.md)を参照してください。 管理者は、デプロイ後の誤削除や予期せぬ変更からサーバーのリソースを保護するために、[管理ロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)を利用できます。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 

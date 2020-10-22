@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440594"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995350"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -186,10 +186,11 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 ソース データ ストアからシンクにデータをコピーするだけでなく、シンクにコピーする追加データ列を追加するように構成することもできます。 次に例を示します。
 
 - ファイルベースのソースからコピーする場合は、相対ファイル パスを、データの取得元ファイルをトレースするための追加列として保存します。
+- 指定されたソース列を別の列として複製します。 
 - ADF 式を含む列を追加して、パイプライン名/パイプライン ID などの ADF システム変数をアタッチするか、上流アクティビティの出力から他の動的な値を保存します。
 - 静的な値を持つ列を、下流の使用ニーズに応じて追加します。
 
-コピーアクティビティ ソース タブの構成は次のとおりです。 
+コピー アクティビティ ソース タブの構成は次のとおりです。また、定義されている列名を使用して、通常どおりのコピー アクティビティ [スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)で追加の列をマッピングすることもできます。 
 
 ![コピー アクティビティで列を追加する](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| additionalColumns | シンクにコピーするデータ列を追加します。<br><br>`additionalColumns` 配列の各オブジェクトは追加列を表します。 `name` は列名を定義します。また、`value` はその列のデータ値を示します。<br><br>使用できるデータ値:<br>-  **`$$FILEPATH`** -予約済み変数。データセットで指定されたフォルダー パスへのソース ファイルの相対パスが格納されることを示します。 ファイルベースのソースに適用されます。<br>- **式**<br>- **静的な値** | いいえ |
+| additionalColumns | シンクにコピーするデータ列を追加します。<br><br>`additionalColumns` 配列の各オブジェクトは追加列を表します。 `name` は列名を定義します。また、`value` はその列のデータ値を示します。<br><br>使用できるデータ値:<br>-  **`$$FILEPATH`** -予約済み変数。データセットで指定されたフォルダー パスへのソース ファイルの相対パスが格納されることを示します。 ファイルベースのソースに適用されます。<br>-  **`$$COLUMN:<source_column_name>`** - 予約変数パターンは、指定されたソース列を別の列として複製することを示します<br>- **式**<br>- **静的な値** | いいえ |
 
 **例:**
 
@@ -218,6 +219,10 @@ Data Factory を使用すると、ソース データ ストアからシンク �
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",

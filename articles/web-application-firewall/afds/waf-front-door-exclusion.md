@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921794"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018646"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Front Door Service の除外リストを使用する Web アプリケーション ファイアウォール (WAF) 
 
@@ -46,6 +46,17 @@ WAF ポータルの **[管理されているルール]** から **[除外の管�
 
 管理されているルール セット内のすべてのルール、特定のルール グループのルール、または前の例に示したように単一のルールに除外リストを適用できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Web アプリケーション ファイアウォールのログに基づいて除外を定義する
+ 「[Azure Web アプリケーション ファイアウォールの監視とログ記録](waf-front-door-monitor.md)」には、ブロックされた要求に一致したものの詳細が示されています。 ヘッダー値、Cookie 値、POST 引数値、またはクエリの引数値で、一部のルールについて擬陽性が発生する場合は、要求の該当する部分をルールの適用対象から除外できます。 次の表に、WAF ログの値と対応する除外条件の例を示します。
+
+|WAF ログの matchVariableName    |ポータルでのルール除外条件|
+|--------|------|
+|CookieValue:SOME_NAME  |要求の Cookie 名が SOME_NAME と等しい|
+|HeaderValue:SOME_NAME  |要求のヘッダー名が SOME_NAME と等しい|
+|PostParamValue:SOME_NAME|  要求本文の POST 引数名が SOME_NAME と等しい|
+|QueryParamValue:SOME_NAME| クエリ文字列の引数名が SOME_NAME と等しい|
+
+
+## <a name="next-steps"></a>次の手順
 
 WAF 設定を構成したら、WAF ログを表示する方法を確認します。 詳細については、[Front Door の診断](../afds/waf-front-door-monitor.md)に関するページを参照してください。

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825327"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839692"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの設定方法
 
@@ -73,7 +73,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     プライマリ キャッシュとセカンダリ キャッシュの両方の **[概要]** ブレードで、リンクの状態を表示することもできます。
 
-    ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![プライマリ キャッシュとセカンダリ キャッシュのリンク状態を表示する方法を強調表示するスクリーンショット。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
     レプリケーション プロセスが完了すると、 **[リンクの状態]** が「**成功**」に変わります。
 

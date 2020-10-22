@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495740"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015568"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Azure Data Lake Storage でデータが使用できるようになったら、Azure Machine Learning のデータストアを使用して、[Azure Storage サービスに接続](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)します。 次の手順に従って、データストアと対応するデータセットを作成します。
 
-1. Azure portal から、または [Azure Machine Learning Studio](https://ml.azure.com/) にサインインして、Azure Machine learning Studio を起動します。
+1. Azure portal から、または [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインして、Azure Machine learning スタジオを起動します。
 
 1. **管理** セクションの左ウィンドウで **データストア** をクリックし、**New Datastore\(新しいデータストア\)** をクリックします。
 
@@ -90,7 +90,7 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. 先に作成したデータセットをキャンバスにドラッグします。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="キャンバス上のデータセット モジュールのスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット":::
 
 ## <a name="clean-the-data"></a>データを整理する
 
@@ -100,13 +100,13 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. **[データ変換] < [操作]** の **[Select Columns in Dataset]\(データセットの列の選択\)** モジュールをキャンバスにドラッグします。 このモジュールを **[データセット]** モジュールに接続します。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="キャンバス上の列選択モジュールのスクリーンショット。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
 
 1. モジュールをクリックして、プロパティ ウィンドウを開きます。 [列の編集] をクリックして、削除する列を指定します。
 
 1. 2 つの列が除外されます: CustomerAlternateKey と GeographyKey。 **[保存]**
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="削除される列を示すスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット":::
 
 ## <a name="build-the-model"></a>モデルを構築する
 
@@ -116,7 +116,7 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. プロパティ ウィンドウで、 **[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\)** に「0.8」と入力します。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="0.8 の分割比を示すスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット":::
 
 1. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
 
@@ -124,9 +124,9 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. [モデルのトレーニング] の [プロパティ] ウィンドウの **[ラベル列]** オプションで、[列の編集] を選択します。 予測する列として **[BikeBuyer]** 列を選択し、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="選択されたラベル列 BikeBuyer を示すスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット":::
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="2 クラス ブースト デシジョン ツリー モジュールとデータの分割モジュールに接続されているモデルのトレーニング モジュールを示すスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット":::
 
 ## <a name="score-the-model"></a>モデルにスコアを付ける
 
@@ -142,11 +142,11 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. **[送信]** をクリックして、パイプラインの実行を設定します。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="キャンバス上の残りのすべてのモジュールのスクリーンショット。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
 1. 実行が完了したら、 **[モデルの評価]** モジュールを右クリックし、 **[Visualize Evaluation results]\(評価結果の視覚化\)** をクリックします。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="結果のスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Azure Machine Learning インターフェイスの左ウィンドウのスクリーンショット":::
 
 指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。 これらのメトリックを見ると、最初のモデルの方が 2 つ目のものよりもパフォーマンスが優れていることがわかります。 最初のモデルの予測を確認するには、[モデルのスコア付け] モジュールを右クリックし、[Visualize Scored dataset]\(スコア付けされたデータセットの視覚化\) をクリックして予測される結果を表示します。
 

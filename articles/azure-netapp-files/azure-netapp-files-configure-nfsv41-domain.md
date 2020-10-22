@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325625"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072154"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する
 
@@ -26,11 +26,11 @@ NFSv4 では、認証ドメインの概念が導入されています。 Azure N
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>ユーザー/グループ マッピングの既定の動作
 
-NFSv4 ドメインは `localdomain` に設定されているため、ルート マッピングの既定値は `nobody` ユーザーになります。 Azure NetApp Files NFSv4.1 ボリュームをルートとしてマウントすると、次のようなファイルのアクセス許可が表示されます。  
+NFSv4 ドメインは既定では `localdomain` に設定されているため、ルート マッピングの既定値は `nobody` ユーザーになります。 Azure NetApp Files NFSv4.1 ボリュームをルートとしてマウントすると、次のようなファイルのアクセス許可が表示されます。  
 
 ![NFSv4.1 のユーザー/グループ マッピングの既定の動作](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-上の例に示ように、`file1` のユーザーは `root` であるべきですが、既定では `nobody` にマップされています。  この記事では、`file1` ユーザーを `root` に設定する方法について説明します。  
+上の例に示ように、`file1` のユーザーは `root` であるべきですが、既定では `nobody` にマップされています。  この記事では、`idmap Domain` 設定を `defaultv4iddomain.com` に変更することによって、`file1` ユーザーを `root` に設定する方法について説明します。  
 
 ## <a name="steps"></a>手順 
 

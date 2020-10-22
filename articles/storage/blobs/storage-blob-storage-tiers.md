@@ -3,17 +3,17 @@ title: BLOB のホット、クール、アーカイブ アクセス層 - Azure S
 description: Azure Blob Storage のホット、クール、およびアーカイブ アクセス層について説明します。 階層制御がサポートされるストレージ アカウントを確認します。 ブロック BLOB ストレージ オプションを比較します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226184"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460732"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -248,6 +248,10 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 **ホット、クール、アーカイブのアクセス層は、どのリージョンで利用できるのですか。**
 
 ホット アクセス層とクール アクセス層は、BLOB レベルの階層制御と共に、すべてのリージョンでご利用いただけます。 アーカイブ ストレージは、初めは提供されるリージョンが限定されます。 詳細なリストについては、[Azure のリージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
+
+**ホット、クール、アーカイブ アクセス層では、どの冗長オプションがサポートされていますか?**
+
+ホットとクール層では、すべての冗長性オプションがサポートされています。 アーカイブ層では、LRS、GRS、RA-GRS のみがサポートされます。 ZRS、GZRS、RA-GZRS は、アーカイブ層ではサポートされていません。
 
 **クール アクセス層の BLOB の動作と、ホット アクセス層の BLOB の動作は異なりますか。**
 

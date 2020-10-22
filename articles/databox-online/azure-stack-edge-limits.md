@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904453"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992766"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro の制限
 
@@ -27,12 +27,16 @@ Microsoft Azure Stack Edge Pro ソリューションを配置および操作す�
 
 次の表では、Azure Stack Edge Pro デバイスの制限について説明します。 
 
+次の表では、Azure Stack Edge デバイスの制限について説明します。
+
 | 説明 | 値 |
 |---|---|
 |いいえ。 デバイスあたりのファイル数 |1 億 |
-|いいえ。 デバイスあたりの共有数 |24 |
 |いいえ。 コンテナーあたりの共有数 |1 |
+|最大の デバイスあたり共有エンドポイントと REST エンドポイントの数| 24 |
+|最大の デバイスあたり階層化ストレージ アカウント数| 24|
 |1 つの共有に書き込まれる最大サイズ ファイル| 5 TB |
+|最大のデバイスあたりリソース グループ数| 800 |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 

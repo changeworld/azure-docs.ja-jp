@@ -1,14 +1,14 @@
 ---
 title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576899"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -194,12 +194,24 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 |`{<field>,"Equals":"127.0.0.1"}` |なし |すべて一致 |1 つの配列要素が true (127.0.0.1 == 127.0.0.1) として、もう 1 つが false (127.0.0.1 == 192.168.1.1) として評価されるので、**Equals** 条件が _false_ になり、効果はトリガーされません。 |
 |`{<field>,"Equals":"10.0.4.1"}` |なし |すべて一致 |両方の配列要素が false (10.0.4.1 == 127.0.0.1 および 10.0.4.1 == 192.168.1.1) として評価されるので、**Equals** 条件が _false_ になり、効果はトリガーされません。 |
 
-## <a name="the-append-effect-and-arrays"></a>append 効果と配列
+## <a name="modifying-arrays"></a>配列の変更
 
-[append 効果](../concepts/effects.md#append)の動作は、**details.field** が **\[\*\]** エイリアスであるかどうかに応じて異なります。
+[append](../concepts/effects.md#append) と [modify](../concepts/effects.md#modify) により、作成時または更新時にリソースのプロパティが変更されます。 配列プロパティを操作する場合、これらの効果の動作は、操作で **\[\*\]** エイリアスを変更しようとしているかどうかによって異なります。
 
-- **\[\*\]** エイリアスでない場合、append は配列全体を **value** プロパティに置き換えます
-- **\[\*\]** エイリアスである場合、append は **value** プロパティを既存の配列に追加するか、新しい配列を作成します
+> [!NOTE]
+> エイリアスによる `modify` 効果の使用は、現在**プレビュー**段階にあります。
+
+|エイリアス |結果 | 結果 |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | 欠落している場合、Azure Policy により、効果の詳細に指定された配列全体が追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `add` 操作による `modify` | 欠落している場合、Azure Policy により、効果の詳細に指定された配列全体が追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `addOrReplace` 操作による `modify` | 欠落している場合、Azure Policy により、効果の詳細に指定された配列全体が追加されるか、既存の配列が置き換えられます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Policy により、効果の詳細に指定された配列メンバーが追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `add` 操作による `modify` | Azure Policy により、効果の詳細に指定された配列メンバーが追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `addOrReplace` 操作による `modify` | Azure Policy により、既存のすべての配列メンバーが削除され、効果の詳細に指定された配列メンバーが追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Policy により、各配列メンバーの `action` プロパティに値が追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `add` 操作による `modify` | Azure Policy により、各配列メンバーの `action` プロパティに値が追加されます。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `addOrReplace` 操作による `modify` | Azure Policy により、各配列メンバーの既存の `action` プロパティが追加されるか、または置き換えられます。 |
 
 詳細については、「[Append の例](../concepts/effects.md#append-examples)」を参照してください。
 

@@ -3,12 +3,12 @@ title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 30d27f3f9c559fd149bd45f303127e0eec40b878
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014644"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173861"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
@@ -51,7 +51,7 @@ Azure Backup を使用して Azure VM をバックアップするとき、保存
 
 **暗号化** | **詳細** | **サポート**
 --- | --- | ---
-**SSE** | SSE では、Azure Storage により、データを格納する前に自動的に暗号化することで、保存中の暗号化が提供されます。 Azure Storage では、取得前にデータの暗号化解除も行われます。 Azure Backup では、次の 2 種類の Storage Service Encryption を使用した VM のバックアップがサポートされています。<li> **プラットフォーム マネージド キーを使用した SSE**:この暗号化は、お使いの VM の全ディスクの既定です。 詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)を参照してください。<li> **カスタマー マネージド キーを使用した SSE**. CMK では、ユーザーがディスクの暗号化に使用するキーを管理します。 詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)を参照してください。 | Azure Backup では、Azure VM の保存中の暗号化のために SSE が使用されます。
+**SSE** | SSE では、Azure Storage により、データを格納する前に自動的に暗号化することで、保存中の暗号化が提供されます。 Azure Storage では、取得前にデータの暗号化解除も行われます。 Azure Backup では、次の 2 種類の Storage Service Encryption を使用した VM のバックアップがサポートされています。<li> **プラットフォーム マネージド キーを使用した SSE**:この暗号化は、お使いの VM の全ディスクの既定です。 詳細については、[こちら](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)を参照してください。<li> **カスタマー マネージド キーを使用した SSE**. CMK では、ユーザーがディスクの暗号化に使用するキーを管理します。 詳細については、[こちら](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)を参照してください。 | Azure Backup では、Azure VM の保存中の暗号化のために SSE が使用されます。
 **Azure Disk Encryption** | Azure Disk Encryption では Azure VM の OS とデータ ディスクの両方が暗号化されます。<br/><br/> Azure Disk Encryption は、シークレットとしてキー コンテナーで保護されている BitLocker 暗号化キー (BEK) と統合されます。 Azure Disk Encryption は、Azure Key Vault キー暗号化キー (KEK) とも統合されます。 | Azure Backup では、BEK のみで、または BEK と KEK を併用して、暗号化されたマネージドおよびアンマネージド Azure VM のバックアップがサポートされます。<br/><br/> BEK と KEK の両方がバックアップされて暗号化されます。<br/><br/> KEK と BEK がバックアップされるため、必要に応じて、必要なアクセス許可を持つユーザーは、キーとシークレットをキー コンテナーに復元できます。 ユーザーは、暗号化された VM を復旧することもできます。<br/><br/> 暗号化されたキーとシークレットは、承認されていないユーザーによって、または Azure によって読み取ることはできません。
 
 マネージドおよびアンマネージド Azure VM の場合、Backup では、BEK のみで暗号化された VM と、BEK と KEK を併用して暗号化された VM の両方がサポートされます。
@@ -105,6 +105,13 @@ Azure Backup では、バックアップ スケジュールに従ってスナッ
 - **断片化したディスク:** ディスクの変更が連続していると、バックアップ操作は速くなります。 変更がディスク全体に分散および断片化している場合、バックアップは遅くなります。
 - **ディスク チャーン:** 増分バックアップが実行されている保護されたディスクで毎日のチャーンが 200 GB を超える場合、バックアップの完了に時間がかかる (8 時間を超える) 可能性があります。
 - **バックアップのバージョン:** (インスタント リストア バージョンと呼ばれる) 最新バージョンの Backup では、変更の識別に、チェックサム比較より最適化されたプロセスが使用されます。 ただし、インスタント リストアを使用していて、バックアップ スナップショットを削除した場合、バックアップはチェックサム比較に切り替わります。 この場合、バックアップ操作は 24 時間を超えます (または失敗します)。
+
+### <a name="restore-performance"></a>復元のパフォーマンス
+
+以下の一般的なシナリオは、合計復元時間に影響を与える可能性があります。
+
+- 合計復元時間は、1 秒あたりの出入力操作数 (IOPS) とストレージ アカウントのスループットに依存します。
+- 合計復元時間は、ターゲットのストレージ アカウントに他のアプリケーションの読み取りや書き込み操作が読み込まれる場合、影響を受けることがあります。 復元操作を改善するには、他のアプリケーション データが読み込まれないストレージ アカウントを選択します。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

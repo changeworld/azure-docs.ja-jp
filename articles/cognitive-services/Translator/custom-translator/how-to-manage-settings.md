@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510518"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757029"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 
@@ -51,6 +51,8 @@ ms.locfileid: "88510518"
 
     ![[新しいワークスペースの作成] ダイアログ](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>カスタム翻訳ツールでは、 [対応 VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) 内に作成された Translator Text API リソース (別名: Azure サブスクリプション キー) 用のワークスペースを作成することはできません。
 
 ### <a name="modify-existing-key"></a>既存のキーを変更する
 
@@ -61,7 +63,7 @@ ms.locfileid: "88510518"
 
 3. ダイアログに翻訳サブスクリプション用のキーを入力し、[保存] ボタンをクリックします。
 
-    ![サブスクリプション キーを追加する方法](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![サブスクリプション キーを追加する方法のダイアログ](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>ワークスペースを管理する
 

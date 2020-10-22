@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542157"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841358"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -87,6 +87,7 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
 1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。
     1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 [仮想ネットワークの分離とプライバシー](how-to-enable-virtual-network.md#machine-learning-studio)について理解を深める。
+    1. 表形式データセットの場合は、'timeseries' 特性を指定して、データセットに対する時間に関連する操作を有効にできます。 [timeseries 特性をデータセットに追加する](how-to-monitor-datasets.md#studio-dataset)方法を確認してください。
 1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
 1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](#profile)についてさらに理解を深める。
 1. **[作成]** を選択して、データセットの作成を完了します。

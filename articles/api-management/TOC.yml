@@ -58,12 +58,10 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
-        - name: 組み込みのセキュリティ制御
-          href: api-management-security-controls.md
     - name: サブスクリプション
       href: api-management-subscriptions.md
     - name: バージョン

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567538"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -25,11 +25,11 @@ ms.locfileid: "89230834"
 
 グローバル パラメーターを作成するには、 *[管理]* セクションの *[グローバル パラメーター]* タブに移動します。 **[新規]** を選択して作成サイド ナビゲーションを開きます。
 
-![グローバル パラメーターを作成する](media/author-global-parameters/create-global-parameter-1.png)
+![グローバルパラメーターを作成するために選択した [新規] ボタンを強調表示しているスクリーンショット。](media/author-global-parameters/create-global-parameter-1.png)
 
 サイド ナビゲーションで、名前を入力し、データ型を選択して、パラメーターの値を指定します。
 
-![グローバル パラメーターを作成する](media/author-global-parameters/create-global-parameter-2.png)
+![新しいグローバル パラメーターの名前、データ型、値を追加する場所を示すスクリーンショット。](media/author-global-parameters/create-global-parameter-2.png)
 
 グローバル パラメーターが作成されたら、パラメーターの名前をクリックすると編集できます。 複数のパラメーターを一度に変更するには、 **[すべて編集]** を選択します。
 

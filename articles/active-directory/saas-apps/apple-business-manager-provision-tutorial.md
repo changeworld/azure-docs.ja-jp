@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: c4ac4a17e577ea69f4359e1e9b321e5fcc839697
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761430"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941094"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Apple Business Manager を構成する
 
@@ -151,15 +151,16 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [Apple Business Manager で SCIM を使用するための必要条件を確認する](URL=https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
-* [Apple Business Manager でのユーザー ID の用途](URL=https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
-* [SCIM を使用して Apple Business Manager にユーザーをインポートする](URL=https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
-* [Apple Business Manager で SCIM ユーザー アカウントの競合を解決する](URL=https://support.apple.com/guide/apple-business-manager/apd313013d12)
-* [Apple Business Manager に表示される Azure AD のアカウントを削除する](URL=https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
-* [Apple Business Manager で SCIM のアクティビティを表示する](URL=https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
-* [Apple Business Manager で既存の SCIM トークンと接続を管理する](URL=https://support.apple.com/guide/apple-business-manager/apdc9a823611)
-* [Apple Business Manager で SCIM 接続を解除する](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61)* [Apple Business Manager で既存の SCIM トークンと接続を管理する](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [Apple Business Manager での SCIM 接続のトラブルシューティング](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [Apple Business Manager で SCIM を使用するための必要条件を確認する](https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
+* [Apple Business Manager でのユーザー ID の用途](https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
+* [SCIM を使用して Apple Business Manager にユーザーをインポートする](https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
+* [Apple Business Manager で SCIM ユーザー アカウントの競合を解決する](https://support.apple.com/guide/apple-business-manager/apd313013d12)
+* [Apple Business Manager に表示される Azure AD のアカウントを削除する](https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
+* [Apple Business Manager で SCIM のアクティビティを表示する](https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
+* [Apple Business Manager で既存の SCIM トークンと接続を管理する](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
+* [Apple Business Manager で SCIM 接続を切断する](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
+* [Apple Business Manager で既存の SCIM トークンと接続を管理する](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
+* [Apple Business Manager での SCIM 接続のトラブルシューティング](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>次のステップ
 

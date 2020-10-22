@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 10/09/2020
+ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205557"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999973"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -28,22 +28,32 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
 仮想ネットワーク (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードで構成します。 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Premium キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure portal だけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできることにご注意ください。 Azure Cache for Redis の作成について詳しくは、[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 
-Premium 価格レベルを選択すると、キャッシュと同じサブスクリプションと場所にある VNet を選択することで、Redis VNet 統合を構成できます。 新しい VNet を使用するには、まず [Azure portal を使用した仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)のページまたは [Azure portal を使用した仮想ネットワーク (クラシック) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)のページの手順に従って VNet を作成した後、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードに戻り、Premium キャッシュを作成して構成します。
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="リソースの作成。":::
+   
+2. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-新しいキャッシュ用に VNet を構成するには、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードの **[仮想ネットワーク]** をクリックし、ドロップダウン リストから目的の VNet を選択します。
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="リソースの作成。" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **サブスクリプション** | ドロップダウンでご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
+   | **リソース グループ** | ドロップダウンでリソース グループを選択するか、 **[新規作成]** を選択して新しいリソース グループ名を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
+   | **場所** | ドロップダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
+   | **キャッシュの種類** | ドロップダウンで Premium キャッシュを選択し、Premium 機能を構成します。 詳細については、「[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。 |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](cache-overview.md)に関するページを参照してください。 |
 
-![仮想ネットワーク][redis-cache-vnet]
+4. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンをクリックします。
 
-**[サブネット]** ドロップダウン リストから目的のサブネットを選択します。  必要に応じて、 **[静的 IP アドレス]** を指定します。 **[静的 IP アドレス]** フィールドは省略可能です。指定しない場合は、選択したサブネットから 1 つが選択されます。
+5. **[ネットワーク]** タブで、接続方法として **[仮想ネットワーク]** を選択します。 新しい仮想ネットワークを使用するには、まず [Azure portal を使用した仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページまたは「[Azure portal を使用した仮想ネットワーク (クラシック) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従ってそれを作成した後、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードに戻り、Premium キャッシュを作成して構成します。
 
 > [!IMPORTANT]
 > Azure Cache for Redis を Resource Manager VNet にデプロイする場合、キャッシュは、Azure Cache for Redis インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。 Resource Manager VNet で他のリソースが含まれる Resource Manager VNet のサブネットに Azure Cache for Redis をデプロイしようとすると、そのデプロイは失敗します。
 > 
 > 
 
-![仮想ネットワーク][redis-cache-vnet-ip]
+   | 設定      | 推奨値  | 説明 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Virtual Network** | ドロップダウンでご利用の仮想ネットワークを選択します。 | ご自分のキャッシュと同じサブスクリプションと場所に存在する仮想ネットワークを選択します。 | 
+   | **サブネット** | ドロップダウンでサブネットを選択します。 | サブネットのアドレス範囲は CIDR 表記である必要があります (例: 192.168.1.0/24)。 仮想ネットワークのアドレス空間に含まれている必要があります。 | 
+   | **静的 IP アドレス** | (省略可能) 静的 IP アドレスを入力します。 | 静的 IP を指定しなかった場合は、IP アドレスが自動的に選ばれます。 | 
 
 > [!IMPORTANT]
 > Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
@@ -52,7 +62,19 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 > 
 > 
 
-キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
+6. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンをクリックします。
+
+7. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。 
+
+8. **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンをクリックします。
+
+9. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
+
+10.  **[確認および作成]** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
+
+11. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
+
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]**  ページで進行状況を監視できます。  **[状態]**  に **[実行中]** と表示されている場合は、キャッシュを使用する準備ができています。 キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
 
 ![仮想ネットワーク][redis-cache-vnet-info]
 

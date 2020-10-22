@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440526"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951090"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -74,7 +74,7 @@ ms.locfileid: "89440526"
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3 と Azure Blob の "**プレフィックス**" を使用します。 プレフィックス フィルターは、データ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
@@ -128,7 +128,7 @@ ms.locfileid: "89440526"
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3 と Azure Blob の "**プレフィックス**" を使用します。 プレフィックス フィルターは、データ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095553"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850593"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -62,7 +62,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 ## <a name="application-fqdn-filtering-rules"></a>アプリケーションの FQDN のフィルタリング規則
 
-ワイルド カードも含まれる完全修飾ドメイン名 (FQDN) の指定された一覧に、送信 HTTP/S トラフィックまたは Azure SQL トラフィック (プレビュー) を制限できます。 この機能に TLS 終了は必要ありません。
+ワイルド カードも含まれる完全修飾ドメイン名 (FQDN) の指定された一覧に、送信 HTTP/S トラフィックまたは Azure SQL トラフィックを制限できます。 この機能に TLS 終了は必要ありません。
 
 ## <a name="network-traffic-filtering-rules"></a>ネットワーク トラフィックのフィルタリング規則
 
@@ -101,7 +101,11 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
-すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 詳細については、[「Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。
+すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 Azure Monitor ログのサンプルについては、「[Azure Firewall の Azure Monitor ログ](log-analytics-samples.md)」をご覧ください。
+
+詳細については、[「Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。 
+
+Azure Firewall ブックにより、Azure Firewall のデータ分析のための柔軟なキャンバスが提供されます。 これを使用して、Azure portal 内で高度な視覚的レポートを作成できます。 詳細については、「[Azure Firewall ブックを使用してログを監視する](firewall-workbook.md)」をご覧ください。
 
 ## <a name="forced-tunneling"></a>強制トンネリング
 

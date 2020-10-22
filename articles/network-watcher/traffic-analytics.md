@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967502"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951589"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -58,62 +59,106 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 ## <a name="supported-regions-nsg"></a>サポートされているリージョン:NSG 
 
 NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
-
-* カナダ中部
-* 米国中西部
-* 米国東部
-* 米国東部 2
-* 米国中北部
-* 米国中南部
-* 米国中部
-* 米国西部
-* 米国西部 2
-* フランス中部
-* 西ヨーロッパ
-* 北ヨーロッパ
-* ブラジル南部
-* 英国西部
-* 英国南部
-* オーストラリア東部
-* オーストラリア南東部
-* 東アジア
-* 東南アジア
-* 韓国中部
-* インド中部
-* インド南部
-* 東日本 
-* 西日本
-* US Gov バージニア州
-* 中国東部 2
+:::row:::
+   :::column span="":::
+      オーストラリア中部  
+      オーストラリア東部  
+      オーストラリア南東部  
+      ブラジル南部  
+      カナダ中部  
+      カナダ東部  
+      インド中部  
+      米国中部  
+      中国東部 2  
+      中国北部 2  
+   :::column-end:::
+   :::column span="":::
+      東アジア  
+      米国東部  
+      米国東部 2  
+      米国東部 2 EUAP  
+      フランス中部  
+      東日本  
+      西日本  
+      韓国中部  
+      韓国南部  
+      米国中北部  
+   :::column-end:::
+   :::column span="":::
+      北ヨーロッパ  
+      南アフリカ北部  
+      米国中南部  
+      インド南部  
+      東南アジア  
+      スイス北部  
+      スイス西部  
+      英国南部  
+      英国西部  
+      USGov アリゾナ  
+   :::column-end:::
+   :::column span="":::
+      USGov テキサス  
+      USGov バージニア州  
+      USNat 東部  
+      USNat 西部  
+      USSec 東部  
+      USSec 西部  
+      米国中西部  
+      西ヨーロッパ  
+      米国西部  
+      米国西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>サポートされているリージョン:Log Analytics ワークスペース
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
-* カナダ中部
-* 米国中西部
-* 米国東部
-* 米国東部 2
-* 米国中北部
-* 米国中南部
-* 米国中部
-* 米国西部
-* 米国西部 2
-* 米国中部
-* フランス中部
-* 西ヨーロッパ
-* 北ヨーロッパ
-* ブラジル南部
-* 英国西部
-* 英国南部
-* オーストラリア東部
-* オーストラリア南東部
-* 東アジア
-* 東南アジア
-* 韓国中部
-* インド中部
-* 東日本
-* US Gov バージニア州
-* 中国東部 2
+:::row:::
+   :::column span="":::
+      オーストラリア中部  
+      オーストラリア東部  
+      オーストラリア南東部  
+      ブラジル南部  
+      カナダ中部  
+      インド中部  
+      米国中部  
+      中国東部 2  
+      東アジア  
+      米国東部  
+   :::column-end:::
+   :::column span="":::
+      米国東部 2  
+      米国東部 2 EUAP  
+      フランス中部  
+      ドイツ中西部  
+      東日本  
+      韓国中部  
+      米国中北部  
+      北ヨーロッパ  
+      南アフリカ北部  
+      米国中南部  
+   :::column-end:::
+   :::column span="":::
+      東南アジア  
+      スイス北部  
+      スイス西部  
+      アラブ首長国連邦中部  
+      英国南部  
+      英国西部  
+      USGov アリゾナ  
+      USGov バージニア州  
+      USNat 東部  
+      USNat 西部  
+   :::column-end:::
+   :::column span="":::
+      USSec 東部  
+      USSec 西部  
+      米国中西部  
+      西ヨーロッパ  
+      米国西部  
+      米国西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>前提条件
 

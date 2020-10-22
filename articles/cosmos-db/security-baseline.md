@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401624"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569533"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 用の Azure セキュリティ ベースライン
 
@@ -290,7 +290,7 @@ Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対
 
 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出することもできます。 
 
-さらに、Azure Cosmos DB での一部のアクションを、Azure Active Directory およびアカウント固有のマスター キーで制御することもできます。  'disableKeyBasedMetadataWriteAccess' アカウント設定を使用してキー アクセスを制御します。
+さらに、Azure Cosmos DB での一部のアクションを、Azure Active Directory およびアカウント固有の主キーで制御することもできます。  'disableKeyBasedMetadataWriteAccess' アカウント設定を使用してキー アクセスを制御します。
 
 Azure Cosmos DB のロールベースのアクセス制御の概要: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Azure Cosmos DB アクション (Microsoft.DocumentDB 名前空間) を使用し
 
 Azure Active Directory で新しいロールを作成する: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-PowerShell を使用して Azure Active Directory でディレクトリ ロールを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+PowerShell を使用して Azure Active Directory でディレクトリ ロールを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-PowerShell を使用して Azure Active Directory でディレクトリ ロールのメンバーを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+PowerShell を使用して Azure Active Directory でディレクトリ ロールのメンバーを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 ユーザー アクセスをデータ操作のみに制限する: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ PowerShell を使用して Azure Active Directory でディレクトリ ロー�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**:Azure AD または Azure Cosmos DB に関しては、既定または空白のパスワードの概念は存在しません。 代わりに、Azure Cosmos DB では、2 種類のキー (マスター キーとリソース トークン) を使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 キーは、いつでも再生成することができます。
+**ガイダンス**:Azure AD または Azure Cosmos DB に関しては、既定または空白のパスワードの概念は存在しません。 代わりに、Azure Cosmos DB では、2 種類のキー (主キーとリソース トークン) を使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 キーは、いつでも再生成することができます。
 
 Azure Cosmos DB のデータへのアクセスのセキュリティ保護の概要: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -640,7 +640,7 @@ Azure Security Center でサポートされている使用可能な機能: https
 
 Azure Resource Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Azure ロールベースのアクセス制御の概要: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 - Cosmos DB は仮想ネットワーク サービス エンドポイントを使用する必要がある
 
-使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -811,7 +811,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 **ガイダンス**:Cosmos DB または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Azure Key Vault のシークレットを復元する方法:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1066,7 +1066,7 @@ NIST の出版物を参照してください。IT の計画と機能に関する
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 

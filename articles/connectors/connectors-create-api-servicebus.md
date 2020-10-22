@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526529"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996343"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -79,7 +79,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
    **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
 
     > [!NOTE]
-    > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回のトリガー実行時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オートコンプリート トリガーの同時実行を変更しないようにします。変更すると、ロジック アプリが調整状態になったときに、メッセージが重複する可能性があります。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、次のポーリング間隔でもロジック アプリが調整状態のままである場合、メッセージはまだ完了していない可能性があります。
+    > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回の Service Bus 呼び出し時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オートコンプリート トリガーの同時実行を変更しないようにします。変更すると、ロジック アプリが調整状態になったときに、メッセージが重複する可能性があります。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、次のポーリング間隔でもロジック アプリが調整状態のままである場合、メッセージはまだ完了していない可能性があります。
 
 1. トリガーを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次の手順に従います。
 
@@ -162,6 +162,10 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 相互関係のあるメッセージを特定の順序で送信する必要がある場合は、[Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、["*シーケンシャルなコンボイ*" パターン](/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
 
 ロジック アプリを作成するとき、シーケンシャルなコンボイ パターンを実装する **Correlated in-order delivery using service bus sessions** テンプレートを選択できます。 詳細については、[関連のあるメッセージを順番に送信する](../logic-apps/send-related-messages-sequential-convoy.md)方法に関するページを参照してください。
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>ロジック アプリの更新の有効化が遅延する
+
+Service Bus トリガーのポーリング間隔が短い場合 (10 秒など)、ロジック アプリの更新が最大 10 分間有効にならないことがあります。 この問題を回避するには、ロジック アプリを更新する前に、ポーリング間隔を 30 秒や 1 分などの大きな値に一時的に増やすことができます。 更新を行った後、ポーリング間隔を元の値にリセットできます。 
 
 <a name="connector-reference"></a>
 

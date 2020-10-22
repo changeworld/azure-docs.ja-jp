@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627076"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールをアップグレードしてパフォーマンスを最適化する
 
@@ -114,7 +114,7 @@ SQL プールを最新世代の Azure ハードウェアとストレージ ア�
 
    > [!NOTE]
    > [タスク] タブに **[Gen2 にアップグレードします]** カードが表示されない場合は、お使いのサブスクリプションの種類が現在のリージョンで制限されています。
-   > [サポート チケットを提出](sql-data-warehouse-get-started-create-support-ticket.md)し、サブスクリプションをホワイトリストに登録してもらってください。
+   > [サポート チケットを提出](sql-data-warehouse-get-started-create-support-ticket.md)し、サブスクリプションの承認を受けてください。
 
 3. アップグレードの前に、ワークロードの実行が完了し、休止していることを確認します。 SQL プールがコンピューティング最適化 Gen2 階層 SQL プールとしてオンラインに戻るまで、数分間のダウンタイムが発生します。 **[アップグレード] を選択します**。
 

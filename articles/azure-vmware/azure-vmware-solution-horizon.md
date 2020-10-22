@@ -3,12 +3,12 @@ title: Azure VMware Solution 上に Horizon をデプロイする
 description: Azure VMware Solution 上に VMware Horizon をデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729051"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078886"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上に Horizon をデプロイする 
 
@@ -110,17 +110,17 @@ Azure Virtual Network から Azure プライベート クラウド/SDDC への�
 
 ここで説明する基本的な例のバリエーションは、オンプレミスのリソースへの接続をサポートすることになります。 これは、デスクトップにアクセスしたり、仮想デスクトップ アプリケーション トラフィックを生成したり、CPA を使用してオンプレミスの Horizon ポッドに接続したりするユーザーである可能性があります。
 
-次の図は、その方法を示しています。 企業ネットワークを Azure Virtual Network に接続するには、ExpressRoute が必要です。 また、Global Reach を使用して、企業ネットワークを各プライベート クラウド/SDDC に接続する必要があります。これにより、SDDC から ExpressRoute およびオンプレミスのリソースへの接続が可能になります。
+次の図は、その方法を示しています。  企業ネットワークを Azure Virtual Network に接続するには、ExpressRoute が必要です。  また、Global Reach を使用して、企業ネットワークを各プライベート クラウド/SDDC に接続する必要があります。これにより、SDDC から ExpressRoute およびオンプレミスのリソースへの接続が可能になります。
 
 :::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Azure VMware Solution 上の Horizon と Horizon Cloud on Azure の違い" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>複数のリージョンにわたる Azure VMware Solution 上の複数の Horizon ポッド
 
-別の Horizon ポッドの例として、複数のポッド間での Horizon のスケーリングを示す例を見てみましょう。 この例では、2 つの異なるリージョンに 2 つの Horizon ポッドをデプロイし、CPA を使用してそれらをフェデレーションします。 ネットワーク構成は前の例と似ていますが、リージョン間リンクがいくつかあります。 
+別の Horizon ポッドの例として、複数のポッド間での Horizon のスケーリングを示す例を見てみましょう。  この例では、2 つの異なるリージョンに 2 つの Horizon ポッドをデプロイし、CPA を使用してそれらをフェデレーションします。  ネットワーク構成は前の例と似ていますが、リージョン間リンクがいくつかあります。 
 
-各リージョンの Azure Virtual Network を別のリージョンのプライベート クラウド/SDDC に接続する必要があります。これにより、CPA フェデレーションの一部である Horizon 接続サーバーで、管理下にあるすべてのデスクトップに接続できるようになります。 この構成にプライベート クラウド/SDDC を追加すると、全体で 24,000 のセッションに拡張できるようになります。 
+各リージョンの Azure Virtual Network を別のリージョンのプライベート クラウド/SDDC に接続する必要があります。これにより、CPA フェデレーションの一部である Horizon 接続サーバーで、管理下にあるすべてのデスクトップに接続できるようになります。  この構成にプライベート クラウド/SDDC を追加すると、全体で 24,000 のセッションに拡張できるようになります。 
 
-この例では複数のリージョンを示していますが、同じリージョンに 2 つの Horizon ポッドをデプロイする場合も同じ原則が適用されます。 2 つ目の Horizon ポッドが "*別の Azure Virtual Network*" にデプロイされていることを確認する必要があることに注意してください。 最後に、前の単一ポッドの例と同じように、お客様の ExpressRoute と Global Reach を使用して、企業ネットワークとオンプレミスのポッドをこのマルチポッド/リージョンの例に接続できます。
+この例では複数のリージョンを示していますが、同じリージョンに 2 つの Horizon ポッドをデプロイする場合も同じ原則が適用されます。 2 つ目の Horizon ポッドが "*別の Azure Virtual Network*" にデプロイされていることを確認する必要があることに注意してください。  最後に、前の単一ポッドの例と同じように、お客様の ExpressRoute と Global Reach を使用して、企業ネットワークとオンプレミスのポッドをこのマルチポッド/リージョンの例に接続できます。
 
 :::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware Solution 上の Horizon と Horizon Cloud on Azure の違い" border="false":::
 
@@ -173,7 +173,7 @@ Azure VMware Solution のホスト インスタンスは標準化されている
 
 ## <a name="horizon-on-azure-vmware-solution-licensing"></a>Azure VMware Solution 上の Horizon のライセンス 
 
-Azure VMware Solution 上の Horizon の実行コストには、4 つのコンポーネントがあります。 
+Azure VMware Solution 上の Horizon の実行コストには、4 つのコンポーネントがあります。 
 
 ### <a name="azure-vmware-solution-capacity-cost"></a>Azure VMware Solution の容量コスト
 
@@ -197,11 +197,14 @@ VMware EUC 営業チームと協力して、ニーズに応じた Horizon ライ
 
 Horizon インフラストラクチャ VM は、標準のデプロイ アーキテクチャに基づいて、接続サーバー、UAG、App Volume Manager で構成され、お客様の Azure Virtual Network にデプロイされます。 Azure で高可用性 (HA)、Microsoft SQL、または Microsoft Active Directory (AD) サービスをサポートするには、追加の Azure ネイティブ インスタンスが必要です。 次に示すのは、2,000 デスクトップ デプロイの例に基づく Azure インスタンスの一覧です。 
 
+>[!NOTE]
+>エラーを処理できるようにするには、接続数に必要な数よりも 1 つ多いサーバーをデプロイしてください (n+1)。 接続サーバー、UAG、および App Volumes Manager の最小推奨インスタンス数は 2 であり、必要な数は環境でサポートされるユーザーの量に基づいて増加します。  1 つの接続サーバーでサポートされるセッションの最大数は 4,000 ですが、ベスト プラクティスとして 2,000 をお勧めします。 ポッドあたり最大 7 つの接続サーバーがサポートされており、推奨されるポッドあたりの合計アクティブ セッション数は 12,000 です。 最新の数値については、[VMware Horizon 7 のサイズ制限と推奨事項に関する VMware サポート技術情報の記事](https://kb.vmware.com/s/article/2150348)を参照してください。
+
 | Horizon インフラストラクチャ コンポーネント | Azure インスタンス | 必要なインスタンスの数 (2,000 デスクトップの場合)    | 解説  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| 接続サーバー                | D4sv3          | 2       | *HA 用のインスタンス 1 つを含む*             |    
-| UAG                              | F2sv2          | 2       | *HA 用のインスタンス 1 つを含む*             |
-| App Volume Manager              | D4sv3          | 2       | *HA 用のインスタンス 1 つを含む*             |
+| 接続サーバー                | D4sv3          | 2       | *上記の「注」を参照*                         |    
+| UAG                              | F2sv2          | 2       | *上記の「注」を参照*                         |
+| App Volume Manager              | D4sv3          | 2       | *上記の「注」を参照*                         |
 | クラウド コネクタ                  | D4sv3          | 1       |                                          |
 | AD コントローラー                    | D4sv3          | 2       | *Azure で MSFT AD サービスを使用するオプション* |
 | MS-SQL Database                  | D4sv3          | 2       | *Azure で SQL サービスを使用するオプション*     |

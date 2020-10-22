@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087811"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397115"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query を使用して Excel を Apache Hadoop に接続する
 
@@ -23,7 +23,7 @@ ms.locfileid: "86087811"
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * Windows 10、7、Windows Server 2008 R2、またはそれ以降のオペレーティング システムを実行しているワークステーション。
-* Office 2016、Office 2013 Professional Plus、Office 365 ProPlus、Excel 2013 Standalone、または Office 2010 Professional Plus。
+* 企業向け Microsoft 365 アプリ、Office 2016、Office 2013 Professional Plus、Excel 2013 Standalone、または Office 2010 Professional Plus。
 
 ## <a name="install-microsoft-power-query"></a>Microsoft Power Query のインストール
 

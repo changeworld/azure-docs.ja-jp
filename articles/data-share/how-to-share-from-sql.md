@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/02/2020
+ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89490073"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761925"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -33,13 +33,14 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 * Data Share リソースの作成用とは異なる Azure サブスクリプションにソース Azure データ ストアが存在する場合、Azure データ ストアがあるサブスクリプションで [Microsoft.DataShare リソースプロバイダー](concepts-roles-permissions.md#resource-provider-registration)を登録してください。 
 
 ### <a name="prerequisites-for-sql-source"></a>SQL ソースの前提条件
+SQL ソースからデータを共有するための前提条件の一覧を次に示します。 [ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成することもできます。
 
 * 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse)。
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
 * データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
-    1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
-    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share リソースのマネージド ID を db_datareader として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
+    1. Azure portal で、SQL サーバーに移動し、自分自身を Azure Active Directory 管理者に設定します。
+    1. [クエリ エディター](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
+    1. 次のスクリプトを実行し、Data Share リソースのマネージド ID を db_datareader として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
@@ -49,10 +50,11 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 
 * 共有するテーブルまたはビューに移動して選択するための "db_datareader" アクセス権を持つ Azure SQL Database ユーザー。 
 
-* クライアント IP SQL Server のファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+* SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
-    1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。
-    1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。 
+    1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
+    1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
+    1. **[保存]** をクリックします。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -62,11 +64,11 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 
 Azure リソース グループに Azure Data Share リソースを作成します。
 
-1. ポータルの左上隅にあるメニュー ボタンを選択して、 **[リソースの作成]** (+) を選択します。
+1. ポータルの左上隅にあるメニュー ボタンを選択し、 **[リソースの作成]** (+) を選択します。
 
 1. *Data Share* を検索します。
 
-1. [Data Share] を選択し、 **[作成]** を選択します。
+1. Data Share を選択し、 **[作成]** を選択します。
 
 1. Azure Data Share リソースの基本的な詳細に、次の情報を入力します。 
 
@@ -147,13 +149,13 @@ Azure Storage へのデータを受信することを選択する場合、前提
 * ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL ターゲットの前提条件
-Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。
+Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。 [ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成することもできます。
 
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
 * データ共有リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
-    1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
-    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
+    1. Azure portal で、SQL サーバーに移動し、自分自身を Azure Active Directory 管理者に設定します。
+    1. [クエリ エディター](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
+    1. 次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -163,10 +165,11 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
         ```      
         *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
 
-* クライアント IP SQL Server のファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+* SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
-    1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。
-    1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL ターゲットにデータを受信するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。 
+    1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
+    1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
+    1. **[保存]** をクリックします。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -231,6 +234,49 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
 ### <a name="view-history"></a>履歴を表示する
 この手順は、スナップショットベースの共有にのみ適用されます。 スナップショットの履歴を表示するには、 **[履歴]** タブを選択します。ここには、過去 30 日間に生成されたすべてのスナップショットの履歴があります。 
+
+## <a name="supported-data-types"></a>サポートされるデータ型
+SQL ソースからデータを共有するとき、スナップショットの処理時には、SQL Server のデータ型から Azure Data Share の中間データ型への、以下のマッピングが使用されます。 
+
+| SQL Server のデータ型 | Azure Data Share の中間データ型 |
+|:--- |:--- |
+| bigint |Int64 |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
+| INT |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
+| smalldatetime |DateTime |
+| smallint |Int16 |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Int16 |
+| UNIQUEIDENTIFIER |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |String |
+
+>[!NOTE]
+> 1. 10 進の中間型にマップされるデータ型の場合、スナップショットでは、現在、最大 28 の有効桁数がサポートされています。 28 よりも大きな有効桁数を必要とするデータがある場合は、文字列に変換することを検討してください。 
+> 1.  Azure SQL データベースから Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、「[Synapse SQL プールでのテーブルのデータ型](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types)」を参照してください。 
+
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Share サービスを使用してストレージ アカウントからデータを共有および受信する方法について学習しました。 他のデータ ソースからの共有の詳細については、[サポートされているデータ ストア](supported-data-stores.md)に関するページに進んでください。

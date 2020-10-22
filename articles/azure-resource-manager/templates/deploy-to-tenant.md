@@ -2,13 +2,13 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/24/2020
+ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468557"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372393"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>テナント レベルでリソースを作成する
 
@@ -24,7 +24,7 @@ Azure ポリシーでは、以下を使用します。
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-ロールベースのアクセス制御では、以下を使用します。
+Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を使用します。
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -42,7 +42,7 @@ Azure ポリシーでは、以下を使用します。
 * [instructions](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
-### <a name="schema"></a>スキーマ
+## <a name="schema"></a>スキーマ
 
 テナントのデプロイに使用するスキーマは、リソース グループのデプロイ用のスキーマとは異なります。
 
@@ -78,11 +78,23 @@ Azure Active Directory の全体管理者には、ロールを割り当てるア
 
 これで、テンプレートをデプロイするために必要なアクセス許可がプリンシパルに付与されました。
 
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+テナントにデプロイするときに、テナントまたは管理グループ、サブスクリプション、およびリソース グループをテナントでターゲットにすることができます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+テンプレートのリソース セクション内で定義されたリソースは、テナントに適用されます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+テナント内で管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
 ## <a name="deployment-commands"></a>デプロイ コマンド
 
 テナントのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドとは異なります。
 
-Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create) を使用します。
+Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -109,56 +121,6 @@ REST API の場合は、「[デプロイ - テナントのスコープでの作�
 デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
-
-## <a name="deployment-scopes"></a>デプロイのスコープ
-
-テナントにデプロイするときに、テナントまたは管理グループ、サブスクリプション、およびリソース グループをテナントでターゲットにすることができます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
-
-テンプレートのリソース セクション内で定義されたリソースは、テナントに適用されます。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        tenant-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-テナント内で管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
 
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 

@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights を使用した .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3d02b6e70d0832b92ae88db237b4c554b92e7f3b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816393"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875072"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -44,7 +44,7 @@ ms.locfileid: "91816393"
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3.0 ワーカー サービス アプリケーション
 
-完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)で共有されています
+完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)で共有されています
 
 1. [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) をダウンロードしてインストールします
 2. Visual Studio の新しいプロジェクト テンプレートまたはコマンド ライン `dotnet new worker` を使用して、新しいワーカー サービス プロジェクトを作成します
@@ -136,7 +136,7 @@ ms.locfileid: "91816393"
 
 ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タスクの作成方法については、[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true)のドキュメントで説明されています。
 
-完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
+完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
 
 1. アプリケーションに [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 2. この例のように、`ConfigureServices()` メソッドに `services.AddApplicationInsightsTelemetryWorkerService();` を追加します。
@@ -223,7 +223,7 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
 
 この記事の冒頭で説明したように、新しいパッケージを使用して、通常のコンソール アプリケーションからでも Application Insights Telemetry を有効にすることができます。 このパッケージは [`NetStandard2.0`](/dotnet/standard/net-standard) を対象としているため、.NET Core 2.0 以上と、.NET Framework 4.7.2 以上のコンソール アプリで使用できます。
 
-完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)で共有されています
+完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)で共有されています
 
 1. アプリケーションに [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 
@@ -333,19 +333,18 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 次の例のように `ApplicationInsightsServiceOptions` を `AddApplicationInsightsTelemetryWorkerService` に渡すことで、いくつかの一般的な設定を変更できます。
 
 ```csharp
-    using Microsoft.ApplicationInsights.WorkerService;
+using Microsoft.ApplicationInsights.WorkerService;
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions aiOptions
-                    = new Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions();
-        // Disables adaptive sampling.
-        aiOptions.EnableAdaptiveSampling = false;
+public void ConfigureServices(IServiceCollection services)
+{
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    // Disables adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
 
-        // Disables QuickPulse (Live Metrics stream).
-        aiOptions.EnableQuickPulseMetricStream = false;
-        services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
-    }
+    // Disables QuickPulse (Live Metrics stream).
+    aiOptions.EnableQuickPulseMetricStream = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+}
 ```
 
 この SDK の `ApplicationInsightsServiceOptions` は、ASP.NET Core SDK の `Microsoft.ApplicationInsights.AspNetCore.Extensions` ではなく、名前空間 `Microsoft.ApplicationInsights.WorkerService` にあることに注意してください。
@@ -364,7 +363,37 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 
 ### <a name="sampling"></a>サンプリング
 
-ワーカー サービス向け Application Insights SDK では、固定レートとアダプティブ サンプリングの両方がサポートされます。 アダプティブ サンプリングは、既定で有効になっています。 ワーカー サービス用のサンプリングの構成は、[ASP.NET Core アプリケーション](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)の場合と同じように行われます。
+ワーカー サービス向け Application Insights SDK では、固定レートとアダプティブ サンプリングの両方がサポートされます。 アダプティブ サンプリングは、既定で有効になっています。 サンプリングは、 [ApplicationInsightsServiceOptions](#using-applicationinsightsserviceoptions) の `EnableAdaptiveSampling` オプションを使用して無効にすることができます。
+
+追加のサンプリング設定を構成するには、次の例を使用できます。
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.WorkerService;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    
+    // Disable adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+
+    // Add Adaptive Sampling with custom settings.
+    // the following adds adaptive sampling with 15 items per sec.
+    services.Configure<TelemetryConfiguration>((telemetryConfig) =>
+        {
+            var builder = telemetryConfig.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond: 15);
+            builder.Build();
+        });
+    //...
+}
+```
+
+詳細については、[サンプリング](#sampling)のドキュメントを参照してください。
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers の追加
 
@@ -532,15 +561,17 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>サンプル アプリケーション
 
-[.NET Core コンソール アプリケーション](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
+[.NET Core コンソール アプリケーション](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
 
-[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
+[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
 
-[.NET Core 3.0 ワーカー サービス](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
+[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
-[コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+* [コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet)
+
+最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./release-notes.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

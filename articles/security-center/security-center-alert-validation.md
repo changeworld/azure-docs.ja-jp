@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center でのアラートの検証 (EICAR テスト ファイル) | Microsoft Docs
-description: このドキュメントは、Azure Security Center でセキュリティ アラートを検証する場合に役立ちます。
+title: Azure Security Center でのアラートの検証 | Microsoft Docs
+description: Azure Security Center でセキュリティ アラートが正しく構成されていることを検証する方法について説明します
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91438812"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340820"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -26,12 +26,6 @@ ms.locfileid: "91438812"
 ## <a name="what-are-security-alerts"></a>セキュリティの警告とは何か
 アラートは、Security Center がリソース上の脅威を検出したときに生成する通知です。 アラートは優先順位を付けられ、問題の迅速な調査に必要な情報と共に一覧表示されます。 Security Center は、攻撃をどのように修復できるかに関する推奨事項も提供します。
 詳細については、[Security Center のセキュリティ アラート](security-center-alerts-overview.md)および[セキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)に関する記事をご覧ください
-
-## <a name="alert-validation"></a>アラートの検証
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>Windows VM 上でのアラートの検証 <a name="validate-windows"></a>
 
@@ -74,4 +68,4 @@ Kubernetes のノードとクラスターの防御の詳細については、「
 * [Azure Security Center による Azure Key Vault 脅威検出](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md) - Security Center で、アラートの管理とセキュリティ インシデントへの対応を行う方法について説明しています。
 * 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center のセキュリティ アラートの概要](security-center-alerts-type.md) - さまざまな種類のセキュリティ アラートについて説明しています。
+* [Azure Security Center のセキュリティ アラートの概要](./security-center-alerts-overview.md) - さまざまな種類のセキュリティ アラートについて説明しています。

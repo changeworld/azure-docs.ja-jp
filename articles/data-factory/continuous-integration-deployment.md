@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531221"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616909"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -30,10 +30,6 @@ Azure Data Factory では、継続的インテグレーションと継続的デ�
 
 -    Data Factory と [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) の統合を利用した自動化されたデプロイ
 -    Data Factory UX と Azure Resource Manager の統合を利用した Resource Manager テンプレートの手動アップロード。
-
-この機能とデモを 9 分間で紹介する、次のビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -212,13 +208,17 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 * 自動化された CI/CD を使用していて、Resource Manager のデプロイ中にいくつかのプロパティを変更したいが、プロパティが既定でパラメーター化されていない。
 * ファクトリが非常に大きく、既定の Resource Manager テンプレートが許容されるパラメーターの上限 (256) よりも多いために無効である。
 
-既定のパラメーター化テンプレートをオーバーライドするには、Git ブランチのルート フォルダーに **arm-template-parameters-definition.json** という名前のファイルを作成します。 正確なファイル名を使用する必要があります。
+既定のパラメーター化テンプレートをオーバーライドするには、管理ハブにアクセスし、ソース管理セクションの **[パラメーター化テンプレート]** を選択します。 **[テンプレートの編集]** を選択して、パラメーター化テンプレート コード エディターを開きます。 
 
-   ![カスタム パラメーター ファイル](media/continuous-integration-deployment/custom-parameters.png)
+![カスタム パラメーターの管理](media/author-management-hub/management-hub-custom-parameters.png)
+
+カスタム パラメーター化テンプレートでは、Git ブランチのルート フォルダーに **arm-template-parameters-definition.json** という名前のファイルが作成されます。 正確なファイル名を使用する必要があります。
+
+![カスタム パラメーター ファイル](media/continuous-integration-deployment/custom-parameters.png)
 
 コラボレーション ブランチから発行すると、Data Factory では、このファイルを読み取り、その構成を利用してパラメーター化するプロパティが生成されます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
 
-Resource Manager テンプレートをエクスポートすると、Data Factory により、コラボレーション ブランチからだけでなく、現在作業中のどのブランチからでもこのファイルを読み取られます。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。
+Resource Manager テンプレートをエクスポートすると、Data Factory により、コラボレーション ブランチでなく、現在作業中のどのブランチからでもこのファイルを読み取られます。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。
 
 > [!NOTE]
 > カスタム パラメーター化テンプレートでは、ARM テンプレート パラメーターの制限である 256 が変更されることはありません。 これにより、パラメーター化されたプロパティの数を選択して減らすことができます。
@@ -461,7 +461,13 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>例: 既存の Azure Databricks 対話型クラスター ID のパラメーター化
@@ -553,7 +559,7 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 -   **デプロイ前とデプロイ後のスクリプト**。 CI/CD の Resource Manager のデプロイ手順の前に、トリガーの停止と再起動やクリーンアップの実行など、特定のタスクを完了する必要があります。 デプロイ タスクの前後に PowerShell スクリプトを使用することをお勧めします。 詳細については、「[アクティブなトリガーを更新する](#updating-active-triggers)」を参照してください。 データ ファクトリ チームは、このページの終わりに使用する[スクリプトを提供](#script)しています。
 
 -   **統合ランタイムと共有**。 統合ランタイムは頻繁には変更されず、CI/CD のすべてのステージで類似しています。 そのため、Data Factory では、CI/CD のすべてのステージで統合ランタイムの名前と種類を同じにすることが求められます。 すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。
+
+-   **マネージド プライベート エンドポイント デプロイ**。 プライベート エンドポイントがファクトリに既に存在している場合、同じ名前と変更されたプロパティを持つプライベート エンドポイントを含む ARM テンプレートをデプロイしようとすると、デプロイが失敗します。 つまり、既にファクトリに存在するものと同じプロパティを持つ限り、プライベート エンド ポイントを正常にデプロイできます。 環境によってプロパティが異なる場合は、そのプロパティをパラメーター化し、デプロイ時にそれぞれの値を指定することでオーバーライドできます。
 
 -   **Key Vault**。 リンクされているサービスを使用するとき、その接続情報が Azure Key Vault に格納されている場合、キー コンテナーを環境別に保持することが推奨されます。 キー コンテナーごとに個別のアクセス許可レベルを構成することもできます。 たとえば、運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 このアプローチに従う場合は、すべてのステージで同じシークレット名を保持することをお勧めします。 同じシークレット名を保持する場合、CI/CD 環境全体で各接続文字列をパラメーター化する必要はありません。変わるのは別個のパラメーターであるキー コンテナーの名前だけだからです。
 

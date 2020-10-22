@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 02/01/2020
+ms.date: 10/14/2020
 ms.author: victorh
-ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 789a60c80d14301c107824d178a3566d358d287f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143836"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056397"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要
 
@@ -62,4 +62,4 @@ adatum.com/payments URI は、注意が必要な場所です。 そのため、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell を使用して、サイトごとのポリシーと URI ごとのポリシーを作成します。
+- [Azure PowerShell を使用して、サイトごとと URI ごとのポリシーを作成します](per-site-policies.md)。

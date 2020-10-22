@@ -2,17 +2,14 @@
 title: Visual Studio の CodeLens における Application Insights Telemetry | Microsoft Docs
 description: Visual Studio の CodeLens を使用して Application Insights の要求と例外のテレメトリにすばやくアクセスします。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932653"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio の CodeLens における Application Insights テレメトリ
 Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。 [ Application Insights](./app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
@@ -68,9 +65,6 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 * CodeLens の詳細ビューの左上隅で Application Insights リソースの名前を選択して、CodeLens データのソースとなるリソースを変更します。
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
-|  |  |
-| --- | --- |
-| **[Visual Studio での Application Insights の操作](./visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio-codelens/34.png) |
-| **[データの追加](./asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/visual-studio-codelens/64.png) |
-| **[Application Insights ポータルの操作](./overview-dashboard.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/visual-studio-codelens/62.png) |
+* **[Visual Studio での Application Insights の操作](./visual-studio.md)** 。 テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 
+* **[Application Insights ポータルの操作](./overview-dashboard.md)** 。 ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 
 

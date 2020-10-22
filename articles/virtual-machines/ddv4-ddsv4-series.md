@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 370e9e0df2a4fc2ee4aca43c01bfe0a98077d189
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649909"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018850"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 および Ddsv4 シリーズ
 
-Ddv4 および Ddsv4 シリーズは、ハイパースレッド構成の Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) プロセッサ上で実行され、ほとんどの汎用ワークロードに対してより優れた価値提案が提供されています。 持続する 3.4 GHz の全コア ターボ クロック速度を特徴とし、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)、および [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) の機能を備えています。 また、[Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html) がサポートされています。 これらの新しい VM サイズでは、50% 大きいローカル ストレージが使用されるほか、[Gen2 VM](./linux/generation-2.md) の [Dv3/Dsv3](./dv3-dsv3-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上します。
+Ddv4 および Ddsv4 シリーズは、ハイパースレッド構成の Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) プロセッサ上で実行され、ほとんどの汎用ワークロードに対してより優れた価値提案が提供されています。 3\.4 GHz の全コア ターボ クロック速度を特徴とし、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)、[Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) の機能を備えています。 また、[Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html) がサポートされています。 これらの新しい VM サイズでは、50% 大きいローカル ストレージが使用されるほか、[Gen2 VM](./generation-2.md) の [Dv3/Dsv3](./dv3-dsv3-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上します。
 
 D シリーズのユース ケースには、エンタープライズ級のアプリケーション、リレーショナル データベース、メモリ内キャッシュ、分析があります。
 
@@ -28,15 +28,13 @@ Ddv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 
 新しい Ddv4 VM のサイズには、高速で大規模なローカル SSD ストレージ (最大 2400 GiB) が含まれており、低待機時間で高速のローカル ストレージを利用するアプリケーション向けに設計されています。そのようなアプリケーションとしては、一時ストレージへの高速な読み取り/書き込みを必要とするものや、キャッシュまたは一時ファイル用の一時ストレージを必要とするものなどがあります。 Ddv4 VM には Standard SSD および Standard HDD ストレージを接続できます。 リモート データ ディスク ストレージは、仮想マシンとは別に課金されます。
 
-ACU: 195-210
-
-Premium Storage: サポートされていません
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション: サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br> 
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -57,15 +55,13 @@ Ddv4 シリーズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上�
  > [!NOTE]
  >Ddsv4 サイズの価格および課金の計算方法は、Ddv4 シリーズと同じです。
 
-ACU: 195-210
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション:サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+<br> 
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|

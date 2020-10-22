@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703169"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448637"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -60,13 +60,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 9. 仮想マシンをデプロイしたら、ポータルの上部にある検索ボックスに「*myPublicIpAddress*」と入力します。 検索結果に **myPublicIpAddress** が表示されたら、それを選びます。
 10. 次の図に示すように、割り当てられているパブリック IP アドレスと、そのアドレスが **myVM** 仮想マシンに割り当てられていることが表示されます。
 
-    ![パブリック IP アドレスの表示](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![スクリーンショットは、IP アドレスと名前が強調表示された [パブリック IP アドレス] ウィンドウを示しています。 ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure では、仮想マシンを作成したリージョンで使用されるアドレスからパブリック IP アドレスが割り当てられます。 Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519)、[US Government](https://www.microsoft.com/download/details.aspx?id=57063)、[China](https://www.microsoft.com/download/details.aspx?id=57062)、および [Germany](https://www.microsoft.com/download/details.aspx?id=57064) クラウドの範囲 (プレフィックス) の一覧をダウンロードできます。
 
 11. **[構成]** を選択して、割り当てが **[静的]** であることを確認します。
 
-    ![パブリック IP アドレスの表示](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![スクリーンショットは、構成項目が選択された [パブリック IP アドレス] ウィンドウを示しています。](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > 仮想マシンのオペレーティング システム内の IP アドレス設定は変更しないでください。 オペレーティング システムは、Azure のパブリック IP アドレスを認識しません。 プライベート IP アドレスの設定をオペレーティング システムに追加できますが、必要でない限り、この操作は行わないことをお勧めします。必要な場合は、[オペレーティング システムへのプライベート IP アドレスの追加](virtual-network-network-interface-addresses.md#private)に関する記事を読んだ後で行うことをお勧めします。

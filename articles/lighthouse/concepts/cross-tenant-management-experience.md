@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 09/10/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602389"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970641"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -35,10 +35,12 @@ Azure Lighthouse を使用すると、テナントによって異なるアカウ
 
 Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription)では、返されたサブスクリプションが管理対象のテナントと管理側テナントのどちらに属しているかを識別できるように、各サブスクリプションの `HomeTenantId` と `ManagedByTenantIds` 属性が表示されます。
 
-同様に、[az account list](/cli/azure/account#az-account-list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。
+同様に、[az account list](/cli/azure/account#az-account-list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。 Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
 
-> [!TIP]
-> Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
+Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/get) コマンドと [Subscriptions - List](/rest/api/resources/subscriptions/list) コマンドに `ManagedByTenant` が含まれています。
+
+> [!NOTE]
+> Azure Lighthouse に関連するテナント情報に加え、これらの API で表示されるテナントには、Azure Databricks または Azure マネージド アプリケーションのパートナー テナントが反映されることがあります。
 
 また、Azure Lighthouse タスクの実行に固有の API も用意されています。 詳細については、**リファレンス**を参照してください。
 
@@ -48,7 +50,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
 
 [Azure Arc](../../azure-arc/index.yml):
 
-- ハイブリッド サーバーを大規模に管理する - [Azure Arc 対応サーバー (プレビュー)](../../azure-arc/servers/overview.md):
+- ハイブリッド サーバーを大規模に管理する - [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md):
   - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Azure 外の Windows Server または Linux コンピューターを管理する](../../azure-arc/servers/onboard-portal.md)
   - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
   - 顧客のハイブリッド環境全体に同じポリシー セットが提供されていることを確認する
@@ -120,6 +122,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
   - アダプティブ ネットワーク強化を使用してネットワーク セキュリティ グループの構成を強化する
   - サーバーで、適応型アプリケーション制御の対象とすべきアプリケーションとプロセスのみが実行されるようにする
   - ファイルの整合性の監視 (FIM) を使用して、重要なファイルとレジストリ エントリに対する変更を監視する
+- サブスクリプション全体を管理テナントに委任する必要があることにご注意ください。Azure Security Center シナリオは、委任されたリソース グループではサポートされません。
 
 [Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 

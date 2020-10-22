@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 25f110f27ec9ac55420f624b5eea4555e482e7f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419756"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708358"
 ---
 # <a name="consulting-service-offers"></a>コンサルティング サービス オファー
 
@@ -22,7 +22,7 @@ ms.locfileid: "89419756"
 
 ## <a name="compare-consulting-services"></a>コンサルティング サービスの比較
 
-コマーシャル マーケットプレースのオンライン ストア (Microsoft AppSource および Azure Marketplace) は、ソリューションの種類やクラウド製品に合わせたものであり、顧客が必要なものを見つけるのに役立ちます。 各オンライン ストアには、公開による投資を最大限に活かすための特別な公開オプションが用意されています。 2 つのオンライン ストアの違いの詳細については、「[Microsoft AppSource と Azure Marketplace の比較](comparing-appsource-azure-marketplace.md)」を参照してください。
+コマーシャル マーケットプレースのオンライン ストア (Microsoft AppSource および Azure Marketplace) は、ソリューションの種類やクラウド製品に合わせたものであり、顧客が必要なものを見つけるのに役立ちます。 各オンライン ストアには、公開による投資を最大限に活かすための特別な公開オプションが用意されています。 AppSource と Azure Marketplace の違いの詳細については、「[コマーシャル マーケットプレースのオンライン ストア](overview.md#commercial-marketplace-online-stores)」を参照してください。
 
 Dynamics 365、Power Apps、Power BI に基づくコンサルティング サービス オファーは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF ファイルをダウンロードしてください。
 

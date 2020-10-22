@@ -3,12 +3,12 @@ title: Virtual WAN でパブリック IP 機能を使用する方法
 description: この記事では、Azure Virtual WAN でパブリック IP 機能を使用する方法について説明します。
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744683"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048306"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>Azure Virtual WAN でパブリック IP 機能を使用する方法
 
@@ -29,9 +29,9 @@ Azure VMware Solution のプライベート クラウド デプロイの一環�
 
 ## <a name="prerequisites"></a>前提条件
 
--   Azure VMware Solution 環境
-
--   Azure VMware Solution 環境で実行されている Web サーバー。
+- Azure VMware Solution 環境
+- Azure VMware Solution 環境で実行されている Web サーバー。
+- Virtual WAN ハブのデプロイ用の重複しない新しい IP 範囲 (通常は `/24`)。
 
 ## <a name="reference-architecture"></a>参照アーキテクチャ
 
@@ -62,15 +62,15 @@ Web サーバーによって、その要求が受信され、要求された情�
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-2.  既定値をそのまま使用するか変更してから、 **[作成]** を選択します。
+1. 既定値をそのまま使用するか変更してから、 **[作成]** を選択します。
 
-   -  仮想ワイド エリア ネットワーク リソース グループ
+   - 仮想ワイド エリア ネットワーク リソース グループ
 
-   -  仮想ワイド エリア ネットワーク名
+   - 仮想ワイド エリア ネットワーク名
 
-   -  仮想ハブ アドレス ブロック
+   - 仮想ハブ アドレス ブロック (重複しない新しい IP 範囲を使用)
 
-   -  パブリック IP の数 (1 から 100)
+   - パブリック IP の数 (1 から 100)
 
 すべてのコンポーネントのデプロイが完了するまで、約 1 時間かかります。 このデプロイは、この Azure VMware Solution 環境用の今後のすべてのパブリック IP をサポートするために 1 回だけ実行する必要があります。  
 

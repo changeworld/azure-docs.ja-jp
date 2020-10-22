@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbd274f6b039ef4492068d939c755ab279c2830a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286555"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069988"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -324,13 +324,23 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. **[保存]** をクリックします。
+1. **[スコープ]** を選択します。 以下のオプションのいずれかを選択できます。 
+   * **すべてのユーザーとグループを同期する**:すべてのユーザーのマップされた属性を **[マッピング]** の **[ソース オブジェクト スコープ]** に定義されているスコープ規則に従って Azure AD から SuccessFactors に書き戻す予定の場合、このオプションを使用します。 
+   * **割り当てられたユーザーとグループのみを同期する**: **[アプリケーション]** の **[管理]** の **[ユーザーとグループ]** メニュー オプションでこのアプリケーションに割り当てたユーザーのみのマップされた属性を書き戻す予定の場合、このオプションを選択します。 これらのユーザーは、 **[マッピング]** の **[ソース オブジェクト スコープ]** で定義されているスコープ規則にも制約されます。
 
-3. この操作により初期同期が開始されます。所要時間は SuccessFactors テナントのユーザー数に応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
+   > [!div class="mx-imgBorder"]
+   > ![書き戻しのスコープを選択する](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
 
-4. 好きなときに、Azure Portal の **[監査ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、Employee Central から読み取られたユーザーや、その後 Active Directory に追加または更新されたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。 
+   > [!NOTE]
+   > SuccessFactors Writeback プロビジョニング アプリでは "グループ割り当て" がサポートされていません。 "ユーザー割り当て" のみがサポートされています。 
 
-5. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
+1. **[保存]** をクリックします。
+
+1. この操作により初期同期が開始されます。所要時間は Azure AD テナントのユーザー数と操作に定義されているスコープに応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
+
+1. 好きなときに、Azure Portal の **[プロビジョニング ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 プロビジョニング ログには、プロビジョニング サービスによって実行される個々の同期イベントがすべて一覧表示されます。 
+
+1. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
    > [!div class="mx-imgBorder"]
    > ![プロビジョニングの進行状況バー](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

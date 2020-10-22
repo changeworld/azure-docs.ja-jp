@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800264"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598292"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -66,6 +66,7 @@ ms.locfileid: "87800264"
 * Azure 固有の RHEL ドキュメント:
   * [RHEL 高可用性クラスターに関するポリシーをサポート - クラスター メンバーとしての Microsoft Azure Virtual Machines](https://access.redhat.com/articles/3131341)
   * [Microsoft Azure 上で Red Hat Enterprise Linux 7.4 (およびそれ以降) の高可用性クラスターをインストールして構成する](https://access.redhat.com/articles/3252491)
+  * [RHEL 8 の導入に関する考慮事項 - 高可用性とクラスター](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [RHEL 7.6 上の Pacemaker で SAP S/4HANA ASCS/ERS と Standalone Enqueue Server 2 (ENSA2) を構成する](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>クラスターのインストール
@@ -78,7 +79,7 @@ ms.locfileid: "87800264"
 
 次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
-1. **[A]** 登録します
+1. **[A]** 登録します。 RHEL 8.x の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
 
    使用する仮想マシンを登録し、それを、RHEL 7 リポジトリを含むプールに追加します。
 
@@ -88,9 +89,9 @@ ms.locfileid: "87800264"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回請求されます。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については[こちら](../redhat/byos.md)を参照してください。
+   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。これは、PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回です。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については[こちら](../redhat/byos.md)を参照してください。
 
-1. **[A]** SAP のリポジトリ用に RHEL を有効にします
+1. **[A]** SAP のリポジトリ用に RHEL を有効にします。 RHEL 8.x の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
 
    必要なパッケージをインストールするには、次のリポジトリを有効にします。
 
@@ -108,6 +109,7 @@ ms.locfileid: "87800264"
 
    > [!IMPORTANT]
    > リソースの停止に失敗した場合や、クラスター ノードが互いに通信できなくなった場合に、お客様がフェールオーバー時間の高速化の恩恵を受けられるよう、次のバージョン (またはこれら以降) の Azure Fence Agent をお勧めします。  
+   > RHEL 7.7 以降では、使用可能な最新バージョンの fence-agents パッケージを使用  
    > RHEL 7.6: fence-agents-4.2.1-11.el7_6.8  
    > RHEL 7.5: fence-agents-4.0.11-86.el7_5.8  
    > RHEL 7.4: fence-agents-4.0.11-66.el7_4.12  
@@ -165,15 +167,23 @@ ms.locfileid: "87800264"
 
 1. **[1]** Pacemaker クラスターを作成します
 
-   次のコマンドを実行し、ノードを認証してクラスターを作成します。 トークンを 30000 に設定してメモリ保持メンテナンスを可能にします。 詳細については、[Linux のこの記事][virtual-machines-linux-maintenance]を参照してください。
-
+   次のコマンドを実行し、ノードを認証してクラスターを作成します。 トークンを 30000 に設定してメモリ保持メンテナンスを可能にします。 詳細については、[Linux のこの記事][virtual-machines-linux-maintenance]を参照してください。  
+   
+   **RHEL 7. x**でクラスターを構築する場合は、次のコマンドを使用します。  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   **RHEL 8.X** でクラスターを構築する場合は、次のコマンドを使用します。  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   次のコマンドを実行して、クラスターの状態を確認します。  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +198,22 @@ ms.locfileid: "87800264"
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** 予想される票を設定します
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** 予想される票を設定します。 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > マルチノード クラスター (2 つ以上のノードを持つクラスター) をビルドする場合は、投票を 2 に設定しないでください。    
 
 1. **[1]** 同時フェンス アクションを許可します
 
@@ -211,7 +226,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. [https://resources.azure.com](<https://portal.azure.com>) に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
+   [プロパティ] にアクセスして、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [New Registration]\(新規登録\) をクリックします
 1. 名前を入力し、[Accounts in this organization directory only]\(この組織ディレクトリ内のアカウントのみ\) を選択します 
@@ -219,8 +234,8 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
    サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. [Certificates and Secrets]\(証明書とシークレット\) を選択し、[New client secret]\(新しいクライアント シークレット\) をクリックします
 1. 新しいキーの説明を入力し、[Never expires]\(有効期限なし\) を選択して [追加] をクリックします
-1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. [概要] を選択します。 アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. ノードを値に設定します。 この値は、サービス プリンシパルの**パスワード**として使用します
+1. [概要] を選択します。 アプリケーション ID をメモしておきます。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
@@ -276,12 +291,17 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-次のコマンドを使用してフェンス デバイスを構成します。
-
 > [!NOTE]
 > 'pcmk_host_map' のオプションは、RHEL ホスト名と Azure ノード名が同一でない場合のみ、このコマンドで必要です。 このコマンドの太字のセクションを参照してください。
 
+RHEL **7.X** の場合は、次のコマンドを使用してフェンス デバイスを構成します。    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+RHEL **8.X** の場合は、次のコマンドを使用してフェンス デバイスを構成します。  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

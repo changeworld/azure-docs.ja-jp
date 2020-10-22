@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228275"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715162"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
@@ -380,13 +380,13 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD には、ストレージ アカウント内のリソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。  セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用します。 アプリケーション設計において、BLOB ストレージへのアクセスのために Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 Shared Access Signature (SAS) を作成してください。
+**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure には、ストレージ アカウント内のリソースに対するクライアントのアクセスをきめ細かく制御する Azure ロールベースのアクセス制御 (Azure RBAC) が用意されています。  セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用します。 アプリケーション設計において、BLOB ストレージへのアクセスのために Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 Shared Access Signature (SAS) を作成してください。
 
 - [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Azure portal で RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure portal で Azure RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループ、ストレージ アカウントを使用して分離を実装します。  ストレージ アカウントを制限して、使用されるネットワークの種類とサブセットに基づいて、アプリケーションやエンタープライズ環境で求められるストレージ アカウントへのアクセス レベルを制御できます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 Azure AD RBAC を使用して Azure Storage へのアクセスを制御できます。 また、プライベート エンドポイントを構成してセキュリティを強化することもできます。仮想ネットワークとサービスの間のトラフィックは Microsoft のバックボーン ネットワークを経由することで、パブリック インターネットからの露出が排除されます。 
+**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループ、ストレージ アカウントを使用して分離を実装します。  ストレージ アカウントを制限して、使用されるネットワークの種類とサブセットに基づいて、アプリケーションやエンタープライズ環境で求められるストレージ アカウントへのアクセス レベルを制御できます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 Azure RBAC を使用して Azure Storage へのアクセスを制御できます。 また、プライベート エンドポイントを構成してセキュリティを強化することもできます。仮想ネットワークとサービスの間のトラフィックは Microsoft のバックボーン ネットワークを経由することで、パブリック インターネットからの露出が排除されます。 
 
 - [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -534,13 +534,13 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (Azure AD) では、ロールベースのアクセス制御 (RBAC) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。 
+**ガイダンス**:Azure Active Directory (Azure AD) では、Azure ロールベースのアクセス制御 (Azure RBAC) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。 
 
 - [Azure Storage アカウントに Azure ロールを割り当てる方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Azure portal で RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure portal で Azure RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [AAD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

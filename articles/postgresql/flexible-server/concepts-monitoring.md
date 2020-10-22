@@ -1,19 +1,19 @@
 ---
 title: 監視とメトリック - Azure Database for PostgreSQL - フレキシブル サーバー
 description: この記事では、Azure Database for PostgreSQL - フレキシブル サーバーの監視およびメトリックの機能について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930867"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707848"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>メトリックを監視する - Azure Database for PostgreSQL - フレキシブル サーバー
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでメトリックを監視する
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
@@ -29,6 +29,7 @@ PostgreSQL フレキシブル サーバーでは以下のメトリックを使�
 
 |メトリック|メトリックの表示名|ユニット|説明|
 |---|---|---|---|
+| active_connections | アクティブな接続 | Count | サーバーへの接続数。 | 
 | backup_storage_used | 使用済みバックアップ ストレージ | バイト | 使用されたバックアップ ストレージの量。 このメトリックは、サーバーに設定されているバックアップ保持期間に基づいて保持されているすべてのデータベースの完全バックアップ、差分バックアップ、ログ バックアップによって使用されるストレージの合計を表します。 バックアップの頻度はサービスによって管理されます。 geo 冗長ストレージの場合、バックアップ ストレージの使用量は、ローカル冗長ストレージの 2 倍になります。 |
 | connections_failed | 失敗した接続 | Count | 失敗した接続数。 |
 | connections_succeeded | Succeeded Connections (成功した接続) | Count | 成功した接続数。 |

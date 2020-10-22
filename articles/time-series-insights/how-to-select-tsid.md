@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289873"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91595536"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -23,7 +23,7 @@ ms.locfileid: "87289873"
 
 ## <a name="choose-a-time-series-id"></a>タイム シリーズ ID の選択
 
-適切な時系列 ID を選択することが重要です。 タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 これは、Azure Time Series Insights Gen2 環境を作成するときに必要です。 
+適切な時系列 ID を選択することが重要です。 タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 これは、Azure Time Series Insights Gen2 環境を作成する場合に必要です。
 
 > [!IMPORTANT]
 > 時系列 ID：
@@ -36,11 +36,11 @@ ms.locfileid: "87289873"
 
 従うべき主なベストプラクティスは、次のとおりです：
 
-* 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
+多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
 * タイム シリーズ ID は、[タイム シリーズ モデル](./concepts-model-overview.md)のリーフ ノード レベルで一意である必要があります。
 * 時系列 ID のプロパティ名文字列の文字制限は、128 です。 時系列 ID のプロパティ値の場合、文字数の制限は 1024 です。
 * 時系列 ID の一意のプロパティ値がない場合は、null 値として扱われ、一意性制約と同じルールに従います。
-* 時系列 ID が複雑な JSON オブジェクト内で入れ子になっている場合、プロパティ名を指定するとき、イングレス [フラット化ルール](./concepts-json-flattening-escaping-rules.md)に従います。 例 [B](concepts-json-flattening-escaping-rules.md#example-b) を確認してください。 
+* 時系列 ID が複雑な JSON オブジェクト内で入れ子になっている場合、プロパティ名を指定するとき、イングレス [フラット化ルール](./concepts-json-flattening-escaping-rules.md)に従います。 例 [B](concepts-json-flattening-escaping-rules.md#example-b) を確認してください。
 * 時系列 ID として最大 *3* 個のキー プロパティも選択できます。 これらの組み合わせは、時系列 ID を表す複合キーになります。  
   > [!NOTE]
   > 3 個のキー プロパティは文字列である必要があります。
@@ -75,7 +75,7 @@ ms.locfileid: "87289873"
 ```
 
 Azure portal では、次のようにして、複合キーを入力できます：
- 
+
 [![環境に合わせてタイム シリーズ ID を構成します。](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
   > [!NOTE]

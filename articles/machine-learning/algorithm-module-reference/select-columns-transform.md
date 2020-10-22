@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893629"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945595"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform (列変換の選択)
 
@@ -46,8 +46,14 @@ Select Columns Transform (列変換の選択) を使用して、一連の列を�
 
    *入力データセットは接続しないでください。* 代わりに、[Apply Transformation](apply-transformation.md) (変換の適用) モジュールを追加し、特徴選択変換の出力を接続します。
 
+   パイプライン構造は次のようになります。
+
+   > [!div class="mx-imgBorder"]
+   > ![サンプル パイプライン](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > [Filter Based Feature Selection](filter-based-feature-selection.md) (フィルターに基づく特徴選択) をスコアリング データセットに適用しても、同じ結果が得られるわけではありません。 特徴選択は値に基づくため、異なる列セットが選択される可能性があります。その場合、スコアリング操作は失敗します。
+    
 7. パイプラインを送信します。
 
 列選択を保存してから適用するこのプロセスにより、同じデータ スキーマをトレーニングとスコアリングに使用することができます。

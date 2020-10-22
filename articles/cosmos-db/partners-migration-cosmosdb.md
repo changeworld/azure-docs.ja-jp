@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290083"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707780"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 
-NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB ソリューションをサポートする多くの経験豊かなシステム インテグレーター パートナーおよびツールから選択できます。 
+NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB ソリューションをサポートする多くの経験豊かなシステム インテグレーター パートナーおよびツールから選択できます。 この記事では、Azure Cosmos DB を使用するソリューションまたはサービスを持つパートナーの一覧を示します。 この一覧は、時間の経過と共に変化します。Microsoft は、これらのパートナーのソリューションに対して行われた変更や更新について一切責任を負いません。
 
-## <a name="systems-integrator-partners"></a>システム インテグレーター パートナー
+## <a name="systems-integrator-and-tooling-partners"></a>システム インテグレーターとツール パートナー
 
 |**パートナー**  |**対応分野と強み**  |**サポートされている国/地域**  |
 |---------|---------|---------|

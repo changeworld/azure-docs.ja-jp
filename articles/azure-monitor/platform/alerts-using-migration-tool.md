@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852125"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91358663"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
@@ -49,7 +49,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
 
 1. **[新しいルールに移行]** を選択して移行ランディング ページに移動します。 このページには、ご利用のすべてのサブスクリプションとそれらの移行状態の一覧が表示されます。
 
-    ![移行のランディング](media/alerts-migration/migration-landing.png "ルールの移行")
+    ![スクリーンショットに [アラート ルールの移行] ページが示されています。](media/alerts-migration/migration-landing.png "ルールの移行")
 
     ツールを使用して移行できるサブスクリプションはすべて、 **[移行準備完了]** とマークされます。
 
@@ -60,7 +60,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
 
     結果としてのページには、一度に 1 つのサブスクリプションについて移行されるクラシック アラート ルールの詳細が表示されます。 **[Download the migration details for this subscription]\(このサブスクリプションについて移行の詳細をダウンロードする\)** を選択して、詳細を CSV 形式で取得することもできます。
 
-    ![移行のプレビュー](media/alerts-migration/migration-preview.png "移行のプレビュー")
+    ![スクリーンショットに、このサブスクリプションの移行の詳細をダウンロードするためのリンクがある [アラート ルールの移行] ページが示されており、移行通知用のメールを指定できます。](media/alerts-migration/migration-preview.png "移行のプレビュー")
 
 1. 移行状態の通知を受け取るメール アドレスを 1 つまたは複数指定します。 移行が完了したとき、またはご自分で何らかのアクションを行っていただく必要がある場合は、電子メールが届きます。
 
@@ -69,7 +69,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
     > [!IMPORTANT]
     > サブスクリプションの移行プロセスを開始したら、そのサブスクリプション用のクラシック アラート ルールを編集することも作成することもできなくなります。 この制限により、新しいルールへの移行中にご利用のクラシック アラート ルールへの変更が失われることはありません。 ご利用のクラシック アラート ルールに変更を加えることはできませんが、移行が完了するまで、それらの実行およびアラートの提供は続行されます。 サブスクリプションの移行が完了したら、クラシック アラート ルールはこれ以上使用できなくなります。
 
-    ![移行の確認](media/alerts-migration/migration-confirm.png "移行の開始の確認")
+    ![スクリーンショットに、続行する前に詳細を確認するリンクがある重要な情報を含む移行の確認プロンプトが示されています。](media/alerts-migration/migration-confirm.png "移行の開始の確認")
 
 1. 移行が完了したとき、またはご自分でアクションを行っていただく必要がある場合は、前に指定したアドレスに電子メールが届きます。 ポータル内の移行ランディング ページからも定期的に状態を確認できます。
 

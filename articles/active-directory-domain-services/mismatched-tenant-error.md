@@ -2,7 +2,7 @@
 title: Azure AD Domain Services でのディレクトリの不一致エラーを修正する | Microsoft Docs
 description: Azure AD Domain Services でのディレクトリの不一致エラーの意味とその解決方法について説明します
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 0e21009341857cc6de3cb7aa411445bc10e6827e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: joflore
+ms.openlocfilehash: 0c2a6ee4ee5c92122e896e62485479d50c660c7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223484"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968074"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>既存の Azure Active Directory Domain Services のマネージド ドメインでのディレクトリの不一致エラーを解決する
 
@@ -28,11 +28,11 @@ Azure Active Directory Domain Services (Azure AD DS) マネージド ドメイ�
 
 ディレクトリの不一致エラーは、Azure AD DS マネージド ドメインと仮想ネットワークが 2 つの異なる Azure AD テナントに属している場合に発生します。 たとえば、Contoso の Azure AD テナントで実行される *aaddscontoso.com* というマネージド ドメインがあるとします。 しかし、マネージド ドメインの Azure 仮想ネットワークは、Fabrikam の Azure AD テナントの一部です。
 
-Azure はロールベースのアクセス制御 (RBAC) を使用して、リソースへのアクセスを制限します。 Azure AD テナントで Azure AD DS を有効にすると、資格情報ハッシュがそのマネージド ドメインに同期されます。 この操作を行うには、ユーザーが Azure AD ディレクトリのテナント管理者である必要があり、資格情報へのアクセスが制御される必要があります。
+リソースへのアクセスを制限するために、Azure ロールベースのアクセス制御 (Azure RBAC) が使用されます。 Azure AD テナントで Azure AD DS を有効にすると、資格情報ハッシュがそのマネージド ドメインに同期されます。 この操作を行うには、ユーザーが Azure AD ディレクトリのテナント管理者である必要があり、資格情報へのアクセスが制御される必要があります。
 
 Azure 仮想ネットワークにリソースをデプロイし、トラフィックを制御するには、マネージド ドメインをデプロイする仮想ネットワークに対する管理特権が必要です。
 
-RBAC が安定して動作し、Azure AD DS が使用するすべてのリソースへのアクセスを保護するには、マネージド ドメインと仮想ネットワークが同じ Azure AD テナントに属している必要があります。
+Azure RBAC が安定して動作し、Azure AD DS が使用するすべてのリソースへのアクセスを保護するには、マネージド ドメインと仮想ネットワークが同じ Azure AD テナントに属している必要があります。
 
 デプロイには、次の規則が適用されます。
 

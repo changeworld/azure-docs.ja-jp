@@ -4,14 +4,14 @@ description: Azure portal または Azure CLI を使用して Azure HPC Cache �
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497227"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613053"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -28,6 +28,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 * **[開始]** と [ **[停止]** ](#stop-the-cache) - キャッシュ操作を再開または中断します
 * [ **[フラッシュ]** ](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
 * [ **[フラッシュ]** ](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
+* [ **[診断の収集]** ](#collect-diagnostics) - デバッグ情報をアップロードします
 * **[最新の情報に更新]** - 概要ページを再読み込みします
 * [ **[削除]** ](#delete-the-cache) - キャッシュを完全に破棄します
 
@@ -196,6 +197,16 @@ $
 ```
 
 ---
+
+## <a name="collect-diagnostics"></a>診断を収集する
+
+**[診断の収集]** ボタンをクリックすると、トラブルシューティングのために、システム情報を収集して Microsoft Service and Support にアップロードするプロセスを手動で開始できます。 重大なキャッシュの問題が発生した場合、キャッシュによって同じ診断情報が自動的に収集され、アップロードされます。
+
+Microsoft Service and Support に要請された場合は、このコントロールを使用します。
+
+ボタンをクリックした後に、 **[はい]** をクリックしてアップロードを確定します。
+
+![[診断収集の開始] ポップアップ確認メッセージのスクリーンショット。 既定のボタン [はい] が強調表示されています。](media/diagnostics-confirm.png)
 
 ## <a name="delete-the-cache"></a>キャッシュの削除
 

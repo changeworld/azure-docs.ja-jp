@@ -4,18 +4,18 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 04/23/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8068d6ebe67dee1408420441aacd83726a1986df
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bcb5f61c93bd4c3ff7c0f81ae808807f7deb71df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434267"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766090"
 ---
 # <a name="automation-account-authentication-overview"></a>Automation アカウントの認証の概要
 
-Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。 タスクの自動化には Runbook を使用できるほか、管理対象が Azure 以外のタスクであれば Hybrid Runbook Worker を使用することもできます。 どちらの環境も、Azure サブスクリプション内で必要な最低限の権限だけで、操作対象のリソースに安全にアクセスするためのアクセス許可が必要です。
+Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。 タスクの自動化には Runbook を使用できるほか、Azure 以外で管理する必要があるビジネスや運用プロセスがあれば Hybrid Runbook Worker を使用することもできます。 どの環境においても、必要な最低限の権限だけで操作対象のリソースに安全にアクセスするためのアクセス許可が必要です。
 
 この記事では、Azure Automation でサポートされる認証シナリオを紹介すると共に、基本的な取り組み方を管理対象の環境ごとに説明します。
 
@@ -29,9 +29,44 @@ Azure Automation を初めて開始するときに、少なくとも 1 つの Au
 
 Azure Automation で Azure Resource Manager と PowerShell コマンドレットを使用してリソースに対して作成するすべてのタスクは、Azure Active Directory (Azure AD) の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。
 
-## <a name="run-as-account"></a>実行アカウント
+## <a name="run-as-accounts"></a>実行アカウント
 
-PowerShell コマンドレットを使用して Azure のリソースを管理するための認証は、Azure Automation の実行アカウントによって提供されます。 実行アカウントを作成すると、新しいサービス プリンシパル ユーザーが Azure AD に作成され、サブスクリプション レベルでこのユーザーに共同作成者ロールが割り当てられます。 Azure VM 上で Hybrid Runbook Worker を使用する Runbook の場合は、実行アカウントの代わりに[マネージド ID による Runbook の認証](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用して Azure リソースに対して認証できます。
+Azure Automation の実行アカウントを使用すると、Azure Resource Manager リソースまたはクラシック デプロイ モデルにデプロイされたリソースを管理するための認証を行うことができるようになります。 Azure Automation には、次の 2 種類の実行アカウントがあります。
+
+* Azure 実行アカウント
+* Azure クラシック実行アカウント
+
+これら 2 つのデプロイ モデルの詳細については、「[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)」を参照してください。
+
+>[!NOTE]
+>Azure Cloud Solution Provider (CSP) サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されませんが、Azure 実行アカウントは作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページを参照してください。
+
+### <a name="run-as-account"></a>実行アカウント
+
+Azure 実行アカウントの Azure リソースは、Azure の Azure Resource Manager デプロイと管理サービスに基づいて管理されます。
+
+実行アカウントを作成すると、次のタスクが実行されます。
+
+* 自己署名証明書を含む Azure AD アプリケーションを作成し、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。また、現在のサブスクリプションにおける、このアカウントの[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロールが割り当てられます。 証明書の設定は、所有者や他の任意のロールに変更できます。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
+
+* 指定された Automation アカウントに `AzureRunAsCertificate` という名前の Automation 証明書資産を作成します。 証明書資産には、Azure AD アプリケーションで使用される証明書の秘密キーが保持されます。
+
+* 指定された Automation アカウントに `AzureRunAsConnection` という名前の Automation 接続資産を作成します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
+
+### <a name="azure-classic-run-as-account"></a>Azure クラシック実行アカウント
+
+Azure クラシック実行アカウントを使用すると、クラシック デプロイ モデルに基づいて Azure クラシック リソースを管理できます。 この種類の実行アカウントを作成または更新するには、サブスクリプションの共同管理者である必要があります。
+
+Azure クラシック実行アカウントを作成すると、次のタスクが実行されます。
+
+* サブスクリプションに管理証明書を作成します。
+
+* 指定された Automation アカウントに `AzureClassicRunAsCertificate` という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
+
+* 指定された Automation アカウントに `AzureClassicRunAsConnection` という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、および証明書資産名が保持されます。
+
+>[!NOTE]
+>Automation アカウントを作成するとき、Azure クラシック実行アカウントは既定では同時に作成されません。 このアカウントは、[実行アカウントの管理](manage-runas-account.md#create-a-run-as-account-in-azure-portal)に関する記事に記載されている手順に従って、個別に作成されています。
 
 ## <a name="service-principal-for-run-as-account"></a>実行アカウント用のサービス プリンシパル
 
@@ -44,6 +79,8 @@ PowerShell コマンドレットを使用して Azure のリソースを管理�
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用した Runbook の認証
 
 データセンター内の Hybrid Runbook Worker で、または AWS などの他のクラウド環境内にあるコンピューティング サービスに対して実行される Runbook は、Runbook が Azure のリソースを認証するために通常使用される方法と同じものを使用することはできません。 これは、これらのリソースは Azure の外部で実行しており、そのため、ローカルにアクセスするリソースに対する認証を行うには Automation で定義されている個別のセキュリティ資格情報を必要とするためです。 runbook worker を使用した Runbook の認証について詳しくは、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照してください。
+
+Azure VM 上で Hybrid Runbook Worker を使用する Runbook の場合は、実行アカウントの代わりに[マネージド ID による Runbook の認証](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用して Azure リソースに対して認証できます。
 
 ## <a name="next-steps"></a>次のステップ
 

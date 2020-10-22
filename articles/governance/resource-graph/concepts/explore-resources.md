@@ -1,18 +1,18 @@
 ---
 title: Azure リソースの探索
 description: Resource Graph クエリ言語を使用してリソースを探索し、それらがどのように接続されているかを確認する方法について説明します。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056586"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056244"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
-Azure Resource Graph では、し、Azure リソースを迅速かつ大規模に探索および確認する機能が提供されています。 迅速に応答するよう設計されており、ご利用の環境のほか、Azure リソースを構成するプロパティの詳細を確認する優れた手段となっています。
+Azure Resource Graph では、し、Azure リソースを迅速かつ大規模に探索および確認する機能が提供されています。 迅速に応答するよう設計されており、ご利用の環境のほか、Azure リソース上に存在するプロパティの詳細を確認する優れた手段となっています。
 
 ## <a name="explore-virtual-machines"></a>仮想マシンの詳細を確認する
 
@@ -104,7 +104,7 @@ JSON 結果は次の例のように構成されます。
 ]
 ```
 
-プロパティは、仮想マシン リソース自体に関する追加情報 (SKU、OS、ディスク、タグなどのすべての情報)、およびリソースが属しているリソース グループとサブスクリプションに関する追加情報を提供します。
+プロパティによって、仮想マシン リソース自体に関する追加情報が指定されます。 これらのプロパティには、オペレーティング システム、ディスク、タグ、およびリソース グループとそのメンバーであるサブスクリプションが含まれます。
 
 ### <a name="virtual-machines-by-location"></a>場所別の仮想マシン
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>プレミアム マネージド ディスクに接続された仮想マシン
 
-これらの **Standard_B2S** 仮想マシンに接続されているプレミアム マネージド ディスクの詳細情報を得るには、これらのマネージド ディスクのリソース ID を提供するようにクエリを拡張します。
+これらの **Standard_B2s** 仮想マシンに接続されているプレミアム マネージド ディスクの詳細情報を得るには、これらのマネージド ディスクのリソース ID が返されるようにクエリを拡張します。
 
 ```kusto
 Resources

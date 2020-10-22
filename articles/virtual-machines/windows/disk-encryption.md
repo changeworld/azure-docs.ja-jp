@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 07916b7f7e5d0f1e755ae9759a16541eede45a41
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274777"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950484"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>PowerShell 用 Azure Disk Storage のサーバー側暗号化
 
@@ -76,7 +76,7 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+マネージド ディスクが利用できるすべてのリージョンで二重暗号化が利用できます。
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>サーバー側の暗号化と Azure ディスク暗号化の比較
 

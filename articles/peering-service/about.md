@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871342"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400181"
 ---
 # <a name="azure-peering-service-overview"></a>Azure Peering Service の概要
 
-Azure Peering Service は、Office 365、Dynamics 365、サービスとしてのソフトウェア (SaaS) サービス、Azure、パブリック インターネット経由でアクセス可能な Microsoft サービスなど、Microsoft クラウド サービスへのお客様の接続を強化するネットワーク サービスです。 Microsoft は、世界中のインターネット サービス プロバイダー (ISP)、インターネット交換パートナー (IXP)、およびソフトウェアで定義されたクラウド インターコネクト (SDCI) プロバイダーと提携しており、お客様から Microsoft ネットワークへの最適なルーティングにより、信頼性が高く、高パフォーマンスのパブリック接続を提供しています。
+Azure Peering Service は、Microsoft 365、Dynamics 365、サービスとしてのソフトウェア (SaaS) サービス、Azure、パブリック インターネット経由でアクセス可能な Microsoft サービスなど、Microsoft クラウド サービスへのお客様の接続を強化するネットワーク サービスです。 Microsoft は、世界中のインターネット サービス プロバイダー (ISP)、インターネット交換パートナー (IXP)、およびソフトウェアで定義されたクラウド インターコネクト (SDCI) プロバイダーと提携しており、お客様から Microsoft ネットワークへの最適なルーティングにより、信頼性が高く、高パフォーマンスのパブリック接続を提供しています。
 
 Peering Service では、お客様は特定のリージョンで適切に接続されたパートナー サービス プロバイダーを選択できます。 パブリック接続は、クラウド サービスからエンドユーザーの場所まで、信頼性を高めて待ち時間を最小限に抑えられるように最適化されています。
 
@@ -50,7 +50,7 @@ Peering Service は、Azure ExpressRoute や VPN 製品などのプライベー�
 
 ## <a name="background"></a>バックグラウンド
 
-Office 365、Dynamics 365、およびその他の Microsoft SaaS サービスは、複数の Microsoft データセンターでホストされ、任意の地理的な場所からアクセスできます。 Microsoft グローバル ネットワークには、世界中に Microsoft Edge ポイント オブ プレゼンス (PoP) の場所があり、ここでサービス プロバイダーを通じてエンド ユーザーに接続できます。 
+Microsoft 365、Dynamics 365、およびその他の Microsoft SaaS サービスは、複数の Microsoft データセンターでホストされ、任意の地理的な場所からアクセスできます。 Microsoft グローバル ネットワークには、世界中に Microsoft Edge ポイント オブ プレゼンス (PoP) の場所があり、ここでサービス プロバイダーを通じてエンド ユーザーに接続できます。 
 
 Microsoft およびパートナー サービス プロバイダーは、Peering Service 接続に登録されているプレフィックスのトラフィックが、確実に Microsoft グローバル ネットワーク上の最も近い Microsoft Edge PoP の場所に出入りするようにします。 Microsoft は、Peering Service 接続に登録されているプレフィックスから送信するネットワーク トラフィックが、確実に Microsoft のグローバル ネットワーク上で最も近い Microsoft Edge PoP の場所を使用するようにします。
 

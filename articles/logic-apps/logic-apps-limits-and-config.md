@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/03/2020
-ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 10/02/2020
+ms.openlocfilehash: 0705336056ff7c60afddd866b5c65694098a32db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91744068"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -221,12 +221,12 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 * [Developer SKU と Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) の両方にわたる任意の[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内の統合アカウントを含む、合計 1,000 個の統合アカウント。
 
-* [Developer か Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) かに関係なく、各 ISE は、合計 5 個の統合アカウントに制限されています。
+* [Developer か Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) かに関係なく、各 ISE は、合計 20 個の統合アカウントに制限されています。
 
   | ISE SKU | 統合アカウントの制限 |
   |---------|----------------------------|
-  | **Premium** | 合計 5 個。[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみ (無料の Standard アカウント 1 つを含む)。 Free または Basic アカウントは使用できません。 |
-  | **開発者** | 合計 5 個。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 アカウントに制限) と [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) の組み合わせ、またはすべて Standard アカウント。 Basic アカウントは使用できません。 [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
+  | **Premium** | 合計 20 個。[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみ (無料の Standard アカウント 1 つを含む)。 Free または Basic アカウントは使用できません。 |
+  | **開発者** | 合計 20 個。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 アカウントに制限) と [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) の組み合わせ、またはすべて Standard アカウント。 Basic アカウントは使用できません。 [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
   |||
 
 ISE に含まれている統合アカウント以外に追加する統合アカウントには、追加コストが適用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
@@ -283,7 +283,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | デコードおよびエンコードに適用 |
+| AS2 | v2 - 100 MB<br>v1 - 25 MB | v2 - 200 MB <br>v1 - 25 MB | デコードおよびエンコードに適用 |
 | X12 | 50 MB | 50 MB | デコードおよびエンコードに適用 |
 | EDIFACT | 50 MB | 50 MB | デコードおよびエンコードに適用 |
 ||||
@@ -349,6 +349,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 | 米国東部 2 | 40.84.25.234、40.79.44.7、40.84.59.136、40.70.27.253 |
 | フランス中部 | 52.143.162.83、20.188.33.169、52.143.156.55、52.143.158.203 |
 | フランス南部 | 52.136.131.145、52.136.129.121、52.136.130.89、52.136.131.4 |
+| ドイツ北部 | 51.116.211.29、51.116.208.132、51.116.208.37、51.116.208.64 |
 | 東日本 | 13.71.146.140、13.78.84.187、13.78.62.130、13.78.43.164 |
 | 西日本 | 40.74.140.173、40.74.81.13、40.74.85.215、40.74.68.85 |
 | 韓国中部 | 52.231.14.182、52.231.103.142、52.231.39.29、52.231.14.42 |
@@ -411,6 +412,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 | 米国東部 2 | 40.84.30.147、104.208.155.200、104.208.158.174、104.208.140.40、40.70.131.151、40.70.29.214、40.70.26.154、40.70.27.236 | 40.70.146.208 - 40.70.146.223、52.232.188.154、104.208.233.100、104.209.247.23、52.225.129.144、40.65.220.25、40.70.151.96 - 40.70.151.127 |
 | フランス中部 | 52.143.164.80、52.143.164.15、40.89.186.30、20.188.39.105、40.89.191.161、40.89.188.169、40.89.186.28、40.89.190.104 | 40.79.130.208 - 40.79.130.223、40.89.135.2、40.89.186.239、40.79.148.96 - 40.79.148.127 |
 | フランス南部 | 52.136.132.40、52.136.129.89、52.136.131.155、52.136.133.62、52.136.139.225、52.136.130.144、52.136.140.226、52.136.129.51 | 40.79.178.240 - 40.79.178.255、52.136.133.184、52.136.142.154、40.79.180.224 - 40.79.180.255 |
+| ドイツ北部 | 51.116.211.168、51.116.208.165、51.116.208.175、51.116.208.192、51.116.208.200、51.116.208.222、51.116.208.217、51.116.208.51 | 51.116.211.212、51.116.60.192 - 51.116.60.223、51.116.59.16 - 51.116.60.31 |
 | 東日本 | 13.71.158.3、13.73.4.207、13.71.158.120、13.78.18.168、13.78.35.229、13.78.42.223、13.78.21.155、13.78.20.232 | 13.71.153.19、13.78.108.0 - 13.78.108.15、40.115.186.96、13.73.21.230、40.79.189.64 - 40.79.189.95 |
 | 西日本 | 40.74.140.4、104.214.137.243、138.91.26.45、40.74.64.207、40.74.76.213、40.74.77.205、40.74.74.21、40.74.68.85 | 40.74.100.224 - 40.74.100.239、40.74.130.77、104.215.61.248、104.215.27.24、40.80.180.64 - 40.80.180.95 |
 | 韓国中部 | 52.231.14.11、52.231.14.219、52.231.15.6、52.231.10.111、52.231.14.223、52.231.77.107、52.231.8.175、52.231.9.39 | 52.231.18.208 - 52.231.18.223、52.141.36.214、52.141.1.104、20.44.29.64 - 20.44.29.95 |

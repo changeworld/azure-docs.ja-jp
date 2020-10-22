@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91741807"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "87927183"
  
 2. テストが完了すると、結果が表示されます。 テストが失敗すると、推奨される操作の URL が表示されます。 URL をクリックすると、推奨される操作を表示することができます。 
  
-    ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![[ユーザーの追加] をクリックする 2](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>サポート パッケージの収集
@@ -47,11 +47,11 @@ ms.locfileid: "87927183"
 
 1. ローカル Web UI で、 **[トラブルシューティング]、[サポート]** の順に移動します。 **[サポート パッケージの作成]** をクリックします。 システムでサポート パッケージの収集が開始されます。 パッケージの収集には数分かかる場合があります。
 
-    ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![[ユーザーの追加] をクリックする 3](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. サポート パッケージが作成されたら、 **[サポート パッケージのダウンロード]** をクリックします。 圧縮されたパッケージが、お客様が選択したパスにダウンロードされます。 そのパッケージを解凍してください。
 
-    ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![[ユーザーの追加] をクリックする 4](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>ログを使用したトラブルシューティング
 
@@ -59,7 +59,7 @@ ms.locfileid: "87927183"
 
 1. エラー ファイルを表示するには、共有に移動し、内容を表示する共有をクリックします。 
 
-      ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![[ユーザーの追加] をクリックする 5](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. "_Microsoft Data Box Gateway フォルダー_" をクリックします。 このフォルダーには、次の 2 つのサブフォルダーがあります。
 

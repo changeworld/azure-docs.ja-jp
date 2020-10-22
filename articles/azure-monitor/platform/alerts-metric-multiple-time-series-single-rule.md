@@ -4,14 +4,14 @@ description: 複数の時系列に対して 1 つのアラート ルールを使
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f7ca91ca49d9357285e1307c5051ef5685ad24c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704482"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>1 つのメトリック アラート ルールで複数の時系列を監視する
 
@@ -174,6 +174,11 @@ ms.locfileid: "88186782"
 メトリック アラート ルールを作成する場合、提供される価格の見積もりは、選択された機能と、ルールの構成および現在のメトリック値から決定される監視対象の時系列数に基づきます。 しかし、月額料金は時系列の実際の評価に基づいているため、一部の時系列に評価するデータがない場合や、アラート ルールで動的にスケーリングできる機能が使用されている場合は、元の見積りとは異なる可能性があります。
 
 たとえば、多次元機能を利用していて、多数の次元値の組み合わせが選択されている場合、アラート ルールで高価格の見積もりが表示される可能性があるため、多くの時系列が監視されることになります。 しかし、次元値の組み合わせによって生成される時系列の一部に、実際に評価するデータが含まれていない場合、そのアラート ルールの実際の料金が低くなる可能性があります。
+
+## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>1 つのアラート ルールによって監視される時系列の数
+
+超過コストを回避するために、各アラート ルールでは既定で最大 5,000 の時系列を監視できます。 サブスクリプションからこの制限を引き上げるには、サポート チケットを開いてください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

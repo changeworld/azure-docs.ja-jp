@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893396"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966408"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning の操作
 
 多くの操作とタスクのための Azure Machine Learning の組み込みアクションがあります。 完全な一覧については、[Azure リソース プロバイダーの操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)に関するページを参照してください。
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>Azure Machine Learning での MLflow 操作
+
+この表では、MLflow 操作を実行するために作成されたカスタム ロールのアクションに追加する必要があるアクセス許可スコープについて説明します。
+
+| MLflow 操作 | Scope |
+| --- | --- |
+| ワークスペース追跡ストア内のすべての実験の一覧表示、ID による実験の取得、名前による実験の取得 | Microsoft.MachineLearningServices/workspaces/experiments/read |
+| 名前を指定した実験の作成、実験のタグの設定、削除対象としてマークされた実験の復元| Microsoft.MachineLearningServices/workspaces/experiments/write | 
+| 実験の削除 | Microsoft.MachineLearningServices/workspaces/experiments/delete |
+| 実行および関連するデータとメタデータの取得、特定の実行について指定したメトリックのすべての値の一覧の取得、実行の成果物の一覧表示 | Microsoft.MachineLearningServices/workspaces/experiments/runs/read |
+| 実験内での新しい実行の作成、実行の削除、削除された実行の復元、現在の実行におけるメトリックのログ記録、実行のタグの設定、実行のタグの削除、実行に使用されるパラメーター (キーと値のペア) のログ記録、実行のためのメトリック、パラメーター、タグのバッチのログ記録、実行の状態の更新 | Microsoft.MachineLearningServices/workspaces/experiments/runs/write |
+| 名前による登録済みモデルの取得、レジストリ内のすべての登録済みモデルの一覧の取得、登録済みモデルの検索、各要求ステージの最新バージョンのモデル、登録済みモデルのバージョンの取得、モデルのバージョンの検索、モデルのバージョンの成果物が格納されている URI の取得、実験 ID による実行の検索 | Microsoft.MachineLearningServices/workspaces/models/read |
+| 新しい登録済みモデルの作成、登録済みモデルの名前または説明の更新、既存の登録済みモデルの名前の変更、モデルの新しいバージョンの作成、モデルのバージョンの説明の更新、いずれかのステージへの登録済みモデルの移行 | Microsoft.MachineLearningServices/workspaces/models/write |
+| 登録済みモデルとそのすべてのバージョンの削除、登録済みモデルの特定のバージョンの削除 | Microsoft.MachineLearningServices/workspaces/models/delete |
+
 
 ## <a name="create-custom-role"></a>カスタム ロールの作成
 
@@ -141,7 +157,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | パイプライン エンドポイントを公開する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` が可能なカスタム ロール |
 | AKS/ACI リソースに登録済みモデルを配置する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` が可能なカスタム ロール |
 | 配置された AKS エンドポイントに対するスコアリング | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory 認証を使用していない場合) または `"/workspaces/read"` (トークン認証を使用している場合) が可能なカスタム ロール |
-| 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` が可能なカスタム ロール |
+| 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` が可能なカスタム ロール |
 | 新しいカスタム ロールを作成する | 所有者、共同作成者、または `Microsoft.Authorization/roleDefinitions/write` が可能なカスタム ロール | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 
 > [!TIP]
@@ -253,6 +269,46 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
         ]
     }
     ```
+     
+* __MLflow Data Scientist Custom__:データ科学者が、以下を**除く**、MLflow AzureML でサポートされているすべての操作を実行できます。
+
+   * コンピューティングの作成
+   * 実稼働 AKS クラスターへのモデルの配置
+   * 運用環境でのパイプライン エンドポイントの配置
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __MLOps Custom__:サービス プリンシパルにロールを割り当て、それを使用して MLOps パイプラインを自動化することができます。 たとえば、既に公開されているパイプラインに対して実行を送信するには、次のようにします。
 

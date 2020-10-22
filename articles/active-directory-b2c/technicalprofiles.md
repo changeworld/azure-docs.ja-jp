@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203148"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948274"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,8 +84,8 @@ ms.locfileid: "85203148"
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
-| DisplayName | 1:1 | ユーザーに表示できる技術プロファイルの名前。 |
-| Description | 0:1 | ユーザーに表示できる技術プロファイルの説明。 |
+| DisplayName | 1:1 | 技術プロファイルの表示名。 |
+| Description | 0:1 | 技術プロファイルの説明。 |
 | Protocol | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
 | Metadata | 0:1 | トランザクション中にエンドポイントと通信するためにプロトコルによって利用されるキー/値ペアのコレクション。 |
 | InputTokenFormat | 0:1 | 入力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 `JWT` 値は、IETF 仕様に従って JSON Web トークンを表します。 `SAML11` 値は、OASIS 仕様に従って SAML 1.1 セキュリティ トークンを表します。  `SAML2` 値は、OASIS 仕様に従って SAML 2.0 セキュリティ トークンを表します。 |

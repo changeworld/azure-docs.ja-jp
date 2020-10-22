@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900276"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567147"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB の分析ストア (プレビュー) とは
 
@@ -52,7 +52,7 @@ Azure Cosmos DB コンテナーで分析ストアを有効にすると、コン�
 
 次の図では、Azure Cosmos DB でのトランザクション行ストアと分析列ストアの比較を示します。
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB でのトランザクション行ストアと分析列ストアの比較" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="オペレーショナル テーブルの例" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析ワークロードの分離されたパフォーマンス
 
@@ -60,7 +60,7 @@ Azure Cosmos DB コンテナーで分析ストアを有効にすると、コン�
 
 ### <a name="auto-sync"></a>自動同期
 
-自動同期とは、Azure Cosmos DB の完全に管理された機能のことであり、オペレーショナル データの挿入、更新、削除が、5 分以内にほぼリアルタイムで、トランザクション ストアから分析ストアに自動的に同期されます。
+自動同期とは、Azure Cosmos DB の完全に管理された機能のことであり、オペレーショナル データの挿入、更新、削除が、ほぼリアルタイムでトランザクション ストアから分析ストアに自動的に同期されます。 自動同期の待機時間は通常 2 分以内です。 コンテナーを多数備えた共有スループット データベースの場合は、個々のコンテナーの自動同期の待機時間が長くなり、最大で 5 分かかる可能性があります。 この待機時間がお客様のシナリオにどのように適合するかについて、詳細を把握したいと考えています。 そのため、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)までご連絡ください。
 
 自動同期機能と分析ストアの併用により、主に次のような利点があります。
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-入れ子になったオブジェクト `address` 内のリーフ プロパティ `streetName` は、分析ストア スキーマで列 `address.object.streetName.int32` として表されます。 データ型は、サフィックスとして列に追加されます。 このように、リーフ プロパティ `streetNo` の値が "123" (文字列であることに注意してください) であるトランザクション ストアに、別のドキュメントが追加された場合、以前に書き込まれた列の型を変更することなく、分析ストアのスキーマが自動的に進化します。 "123" のこの値が格納されている `address.object.streetName.string` として分析ストアに追加された新しい列。
+入れ子になったオブジェクト `address` 内のリーフ プロパティ `streetNo` は、分析ストア スキーマで列 `address.object.streetNo.int32` として表されます。 データ型は、サフィックスとして列に追加されます。 このように、リーフ プロパティ `streetNo` の値が "123" (文字列であることに注意してください) であるトランザクション ストアに、別のドキュメントが追加された場合、以前に書き込まれた列の型を変更することなく、分析ストアのスキーマが自動的に進化します。 "123" のこの値が格納されている `address.object.streetNo.string` として分析ストアに追加された新しい列。
 
 **データ型とサフィックスのマップ**
 
@@ -171,7 +171,7 @@ salary: 1000000
 
 ### <a name="security"></a>セキュリティ
 
-分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証にはマスター キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
+分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>複数の Azure Synapse Analytics ランタイムのサポート
 

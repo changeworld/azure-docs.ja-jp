@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7e0f74f98adcc8a4e8aabc96f7f35c9c55ae277f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421537"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536360"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対する要求を承認または拒否する
 
@@ -58,7 +58,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 1. 承認する要求を見つけて選択します。 承認または拒否のページが表示されます。
 
-    ![申請の承認 - 詳細と [根拠] ボックスを含む承認または拒否のウィンドウ](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![[申請の承認 - Azure AD ロール] ページを示すスクリーンショット。](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
 1. **[理由]** ボックスに、業務上の正当な理由を入力します。
 

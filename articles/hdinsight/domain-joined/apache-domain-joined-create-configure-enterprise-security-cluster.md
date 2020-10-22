@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536071"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -192,11 +192,11 @@ Active Directory テナント管理者を作成します。
 
 1. **[Azure AD に接続]** ページで、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 Active Directory テナントを構成するときに作成したユーザー名 `fabrikamazureadmin@hdifabrikam.com` を使用します。 **[次へ]** を選択します。
 
-    ![[Azure AD に接続] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+    ![[Azure AD への接続] ページ。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
 1. **[Active Directory ドメイン サービスへの接続]** ページで、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 前に作成したユーザー名 `HDIFabrikam\HDIFabrikamAdmin` とそのパスワードを使用します。 **[次へ]** を選択します。
 
-   ![[Azure AD に接続] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
+   ![[AD DS への接続] ページ。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. **[Azure AD サインインの構成]** ページで、 **[次へ]** を選択します。
    ![[Azure AD サインインの構成] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 

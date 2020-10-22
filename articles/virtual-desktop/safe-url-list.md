@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291111"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875106"
 ---
 # <a name="safe-url-list"></a>安全な URL リスト
 
@@ -19,17 +19,19 @@ Windows Virtual Desktop のデプロイが正しく機能するように、特�
 
 ## <a name="virtual-machines"></a>仮想マシン
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の URL に対するアクセスが必要です。
+Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure コマーシャル クラウドで次の URL に対するアクセスが必要です。
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
 |*.wvd.microsoft.com|443|サービス トラフィック|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|エージェントと SXS スタックの更新|AzureCloud|
-|*.core.windows.net|443|エージェント トラフィック|AzureCloud|
-|*.servicebus.windows.net|443|エージェント トラフィック|AzureCloud|
 |gcs.prod.monitoring.core.windows.net|443|エージェント トラフィック|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|エージェント トラフィック|AzureCloud|
+|*xt.blob.core.windows.net|443|エージェント トラフィック|AzureCloud|
+|*eh.servicebus.windows.net|443|エージェント トラフィック|AzureCloud|
+|*xt.table.core.windows.net|443|エージェント トラフィック|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows のライセンス認証|インターネット|
+|mrsglobalsteus2prod.blob.core.windows.net|443|エージェントと SXS スタックの更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal のサポート|AzureCloud|
 | 169.254.169.254 | 80 | [Azure Instance Metadata Service エンドポイント](../virtual-machines/windows/instance-metadata-service.md) | 該当なし |
 | 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/security-overview.md#azure-platform-considerations) | 該当なし |
@@ -39,16 +41,33 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 >
 >サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Windows Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
 
-次の表は、Azure 仮想マシンからアクセスできるオプションの URL の一覧です。
+Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure Government クラウドで次の URL に対するアクセスが必要です。
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
-|*.microsoftonline.com|443|Microsoft オンライン サービスへの認証|なし|
+|*.wvd.microsoft.us|443|サービス トラフィック|WindowsVirtualDesktop|
+|gcs.monitoring.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
+|monitoring.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
+|fairfax.warmpath.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
+|*xt.blob.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
+|*.servicebus.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
+|*xt.table.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
+|Kms.core.usgovcloudapi.net|1688|Windows のライセンス認証|インターネット|
+|mrsglobalstugviffx.core.usgovcloudapi.net|443|エージェントと SXS スタックの更新|AzureCloud|
+|wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure portal のサポート|AzureCloud|
+| 169.254.169.254 | 80 | [Azure Instance Metadata Service エンドポイント](../virtual-machines/windows/instance-metadata-service.md) | 該当なし |
+| 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/security-overview.md#azure-platform-considerations) | 該当なし |
+
+次の表は、Azure 仮想マシンからアクセスできるオプションの URL の一覧です。
+
+|Address|アウトバウンド TCP ポート|目的|Azure Gov|
+|---|---|---|---|
+|*.microsoftonline.com|443|Microsoft オンライン サービスへの認証|login.microsoftonline.us|
 |*.events.data.microsoft.com|443|テレメトリ サービス|なし|
 |www.msftconnecttest.com|443|OS がインターネットに接続されているかどうかの検出|なし|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows Update|なし|
-|login.windows.net|443|Microsoft Online Services、Microsoft 365 へのサインイン|なし|
-|*.sfx.ms|443|OneDrive クライアント ソフトウェアの更新|なし|
+|login.windows.net|443|Microsoft Online Services、Microsoft 365 へのサインイン|login.microsoftonline.us|
+|*.sfx.ms|443|OneDrive クライアント ソフトウェアの更新|oneclient.sfx.ms|
 |*.digicert.com|443|証明書失効の確認|なし|
 
 >[!NOTE]
@@ -66,15 +85,15 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 
 使用するリモート デスクトップ クライアントから、次の URL にアクセスできる必要があります。
 
-|Address|アウトバウンド TCP ポート|目的|クライアント|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|サービス トラフィック|All|
-|*.servicebus.windows.net|443|データのトラブルシューティング|All|
-|go.microsoft.com|443|Microsoft の FWLink|All|
-|aka.ms|443|Microsoft URL 短縮ツール|All|
-|docs.microsoft.com|443|ドキュメント|All|
-|privacy.microsoft.com|443|プライバシー ステートメント|All|
-|query.prod.cms.rt.microsoft.com|443|クライアント更新|Windows デスクトップ|
+|Address|アウトバウンド TCP ポート|目的|クライアント|Azure Gov|
+|---|---|---|---|---|
+|*.wvd.microsoft.com|443|サービス トラフィック|All|*.wvd.microsoft.us|
+|*.servicebus.windows.net|443|データのトラブルシューティング|All|*.servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft の FWLink|All|なし|
+|aka.ms|443|Microsoft URL 短縮ツール|All|なし|
+|docs.microsoft.com|443|ドキュメント|All|なし|
+|privacy.microsoft.com|443|プライバシー ステートメント|All|なし|
+|query.prod.cms.rt.microsoft.com|443|クライアント更新|Windows デスクトップ|None|
 
 >[!IMPORTANT]
 >信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。

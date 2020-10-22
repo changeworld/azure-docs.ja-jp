@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613766"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -112,6 +112,10 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 
 アクション グループでは、Azure アラートのアクションをトリガーする再利用可能なモジュール化された方法が提供されます。 Azure Portal で、アクション グループと、メトリック アラート、アクティビティ ログ アラート、および Azure Log Analytics アラートを使用できます。
 
+> [!NOTE]
+> ITSM 接続を作成したら、同期プロセスに対して作成されたコネクタが終了するまで 30 分待機する必要があります
+> 
+
 次の手順に従います。
 
 1. Azure Portal で、 **[監視]** をクリックします。
@@ -137,6 +141,10 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 > [!NOTE]
 >
 > ITSM アクションの価格については、アクション グループの[価格ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
+
+> [!NOTE]
+>
+> ITSM アクションを使用して送信する場合、アラート ルール定義の短い説明フィールドは 40 文字に制限されます。
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する

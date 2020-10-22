@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527311"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534201"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -26,6 +26,8 @@ Log Analytics ワークスペースには次の情報が示されます。
 * データ ストレージの地理的な場所。
 * 推奨される設計戦略のいずれかに従ってさまざまなユーザーにアクセス権を付与することによるデータの分離。
 * [価格レベル](./manage-cost-storage.md#changing-pricing-tier)、[リテンション期間](./manage-cost-storage.md#change-the-data-retention-period)、[データ キャッピング](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)などの設定の構成のスコープ。
+
+ワークスペースは、物理クラスターでホストされます。 既定で、システムによってこれらのクラスターが作成され管理されています。 4 TB/日以上を取り込むユーザーは、ワークスペース用の独自の専用クラスターを作成することが期待されます。これにより、制御の強化とインジェスト レートの向上を実現できます。
 
 この記事では、設計と移行に関する考慮事項の詳しい概要、アクセス制御の概要、および IT 組織に推奨される設計の実装について説明します。
 
@@ -125,27 +127,15 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 
 ポータル、PowerShell、または Resource Manager テンプレートを使用してアクセス制御モードを変更する方法については、「[アクセス制御モードを構成する](manage-access.md#configure-access-control-mode)」を参照してください。
 
-## <a name="ingestion-volume-rate-limit"></a>取り込みボリュームと取り込み率の制限
+## <a name="scale-and-ingestion-volume-rate-limit"></a>スケールとインジェスト ボリューム レートの制限
 
-Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ボリューム レート制限は、マルチテナント環境における突然のインジェスト スパイクから Azure Monitor の顧客を隔離するためのものです。 ワークスペースでは、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が定義されており、これは約 **6 GB/分** (非圧縮) に変換されます。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 ボリューム レート制限は、[診断設定](diagnostic-settings.md)、[Data Collector API](data-collector-api.md) またはエージェントを使用して Azure リソースから送信されたかどうかにかかわらず、すべてのインジェスト データに適用されます。
+Azure Monitor とは、毎月増加するペタバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ワークスペースは、それらの記憶域スペースに制限されず、ペタバイト単位のデータまで拡大できます。 スケーリングのためにワークスペースを分割する必要はありません。
 
-ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、その引き上げをリクエストできます。 
+Azure Monitor ユーザーとそのバックエンド インフラストラクチャを保護および分離するために、スパイクやフラッドの状況から保護するように設計された既定のインジェスト レート制限があります。 レート制限の既定値は約 **6 GB/分**であり、通常のインジェストを可能にするように設計されています。 インジェスト ボリュームの制限の測定の詳細については、「[Azure Monitor サービスの制限](../service-limits.md#data-ingestion-volume-rate)」を参照してください。
 
-ワークスペースでインジェスト ボリューム レート制限に近づいたときまたは達したときに通知を受けるには、ゼロより大きい結果数、5 分の評価期間、5 分の頻度のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
+取り込みが 4 TB/日に満たないユーザーは、通常これらの制限に達することはありません。 大量のボリュームを取り込むか、または通常の運用の一部としてスパイクが発生するユーザーは、インジェスト レート制限を引き上げることができる[専用クラスター](../log-query/logs-dedicated-clusters.md)に移行することを検討してください。
 
-インジェストボリューム レートがしきい値の 80% に到達:
-```Kusto
-Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
-```
-
-インジェストボリューム レートがしきい値に到達:
-```Kusto
-Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
-```
+インジェスト レート制限がアクティブになっているか、またはしきい値の 80% に達した場合、ワークスペースの *Operation* テーブルにイベントが追加されます。 それを監視し、アラートを作成することをお勧めします。 詳細については「[データ インジェストのボリューム レート](../service-limits.md#data-ingestion-volume-rate)」を参照してください。
 
 
 ## <a name="recommendations"></a>推奨事項

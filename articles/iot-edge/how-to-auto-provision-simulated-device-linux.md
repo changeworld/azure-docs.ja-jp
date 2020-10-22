@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447820"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046045"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -33,7 +33,7 @@ ms.locfileid: "91447820"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Hyper-V 対応の](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) Windows 開発マシン。 この記事では、Ubuntu Server VM を実行中の Windows 10 を使用します。
+* [Hyper-V 対応の](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) Windows 開発マシン。 この記事では、Ubuntu Server VM を実行中の Windows 10 を使用します。
 * アクティブな IoT Hub。
 
 > [!NOTE]
@@ -178,11 +178,36 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。 IoT Edge ランタイムを仮想マシンにインストールします。
 
-デバイスの種類に合った記事を参照する前に、DPS の **ID スコープ**とデバイスの**登録 ID** を確認してください。 Ubuntu サーバーの例をインストールした場合は、**x64** の手順を使用してください。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
+[Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge.md)に関するページにある手順に従い、その後、この記事に戻ってデバイスをプロビジョニングします。
 
-セキュリティ デーモンを構成する手順まで進んだら、[オプション 2 の自動プロビジョニング](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning)を選択し、TPM 構成証明用に構成してください。
+## <a name="configure-the-device-with-provisioning-information"></a>プロビジョニング情報を使用してデバイスを構成する
 
-[Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)
+ランタイムがデバイスにインストールされたら、デバイス プロビジョニング サービスと IoT Hub に接続するために使用される情報でデバイスを構成します。
+
+1. 前のセクションで集めた DPS **ID スコープ**とデバイスの**登録 ID** を把握しておきます。
+
+1. IoT Edge デバイスで構成ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+1. ファイルのプロビジョニング構成セクションを見つけます。 TPM プロビジョニング行のコメントを解除し、他にもプロビジョニング行があれば、それらのコメントが解除されていることを確認します。
+
+   `provisioning:` の行の先頭には空白文字を入れず、入れ子の項目には 2 つの空白でインデントする必要があります。
+
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "tpm"
+       registration_id: "<REGISTRATION_ID>"
+   ```
+
+1. `scope_id` と `registration_id` の値を DPS およびデバイス情報で更新します。
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge に TPM へのアクセス権を付与する
 

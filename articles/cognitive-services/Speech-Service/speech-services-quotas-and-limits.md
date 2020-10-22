@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/30/2020
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690138"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567164"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Speech Services のクォータと制限
 
@@ -36,6 +36,7 @@ ms.locfileid: "88690138"
 | **バッチ文字起こしの最大入力 BLOB サイズ** | 該当なし | 2.5 GB |
 | **バッチ文字起こしの最大 BLOB コンテナー サイズ** | 該当なし | 5 GB |
 | **バッチ文字起こしのコンテナーごとの BLOB の最大数** | 該当なし | 10000 |
+| **バッチ文字起こしの文字起こし要求あたりの最大ファイル数 (入力として複数のコンテンツ URL を使用する場合)** | 該当なし | 1000  |
 | **同時実行されるバッチ文字起こしのジョブの最大数** | 該当なし | 2000  |
 
 <sup>1</sup> **Free (F0)** 価格レベルについては、[価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)で月額料金に関するページを参照してください。<br/>

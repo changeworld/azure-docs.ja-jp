@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613928"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -133,7 +133,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. **[属性マッピング]** セクションで、Azure AD から Tableau Online に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Tableau Online のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
 
-    ![Tableau Online の一致するユーザー属性](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau Online の一致するユーザー属性](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Tableau]\(Azure Active Directory グループを Tableau に同期する\)** を選択します。
 
@@ -163,7 +163,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」を参照してください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="change-log"></a>ログの変更
+* 09/30/2020 - ユーザー用の "authSetting" 属性のサポートを追加。
+
+## <a name="additional-resources"></a>その他の技術情報
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

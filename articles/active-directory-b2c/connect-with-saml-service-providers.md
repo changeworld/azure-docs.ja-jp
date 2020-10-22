@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740379"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998108"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -437,6 +437,24 @@ SAML テスト アプリでテストに使用できる完全なサンプル ポ�
 
 次の SAML 証明書利用者 (RP) シナリオは、現在サポートされていません。
 * ID プロバイダーがサインオンを開始しました。この場合、ID プロバイダーは ADFS などの外部 ID プロバイダーです。
+
+## <a name="saml-token"></a>SAML トークン
+
+SAML トークンは、サインインが成功した後に Azure AD B2C によって発行されるセキュリティ トークンです。 これには、ユーザー、トークンの対象となるサービス プロバイダー、署名、有効期間に関する情報が含まれます。 次の表は、Azure AD B2C によって発行される SAML トークンで予期できる要求とプロパティの一覧です。
+
+|要素  |プロパティ  |Notes  |
+|---------|---------|---------|
+|`<Response>`| `ID` | 応答の自動生成一意識別子。 | 
+|`<Response>`| `InResponseTo` | このメッセージの応答先となる SAML 要求の ID。 | 
+|`<Response>` | `IssueInstant` | 応答の発行の瞬間。 時刻値は UTC でエンコードされます。    トークンの有効期間の設定を変更するには、SAML トークン発行者の技術プロファイルの `TokenNotBeforeSkewInSeconds` [メタデータ](saml-issuer-technical-profile.md#metadata)を設定します。 | 
+|`<Response>` | `Destination`| この応答の送信先のアドレスを示す URI 参照。 値は、SAML 要求 `AssertionConsumerServiceURL` と同じです。 | 
+|`<Response>` `<Issuer>` | |トークン発行者を識別します。 これは、SAML トークン発行者の `IssuerUri` [メタデータ](saml-issuer-technical-profile.md#metadata)    によって定義される任意の URI です     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`         |         |トークンによって情報がアサートされるプリンシパルです (ユーザー オブジェクト ID など)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`         | `Format` | 文字列ベースの識別子情報の分類を表す URI 参照。 既定では、このプロパティは省略されます。 証明書利用者 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) を設定して、`urn:oasis:names:tc:SAML:2.0:nameid-format:transient` などの `NameID` 形式を指定できます。 |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |トークンが有効になる時刻。 時刻値は UTC でエンコードされます。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 トークンの有効期間の設定を変更するには、SAML トークン発行の技術プロファイルの `TokenNotBeforeSkewInSeconds` [メタデータ](saml-issuer-technical-profile.md#metadata)を設定します。 |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | トークンが無効になる時刻。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 この値は `NotBefore` の 15 分後であり、変更することはできません。|
+|`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |対象ユーザーを識別する URI 参照。 トークンの受信者を示します。 値は、SAML 要求 `AssertionConsumerServiceURL` と同じです。|
+|`<Response>` `<Assertion>` `<AttributeStatement>` `<Attribute>` の コレクション | | [証明書利用者の技術プロファイル](relyingparty.md#technicalprofile)出力要求で構成されているアサーション コレクション (要求)。 出力要求の `PartnerClaimType` を設定することにより、アサーションの名前を構成できます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

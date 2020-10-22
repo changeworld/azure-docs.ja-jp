@@ -4,15 +4,15 @@ description: Azure Monitor、ストレージ同期サービス、および Windo
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/05/2019
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271058"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448004"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
@@ -35,8 +35,10 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 Azure File Sync のメトリックは既定で有効になっており、15 分ごとに Azure Monitor に送信されます。
 
 **Azure Monitor で Azure File Sync メトリックを表示する方法**
-- **Azure portal** で **[ストレージ同期サービス]** に移動し、 **[メトリック]** をクリックします。
-- **[メトリック]** ドロップダウンをクリックし、表示するメトリックを選択します。
+1. **Azure portal** で **[ストレージ同期サービス]** に移動し、 **[メトリック]** をクリックします。
+2. **[メトリック]** ドロップダウンをクリックし、表示するメトリックを選択します。
+
+![Azure File Sync のメトリックのスクリーンショット](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
 Azure Monitor では、Azure File Sync の次のメトリックを使用できます。
 
@@ -58,15 +60,15 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 **Azure File Sync のアラートを作成する方法**
 
-- **Azure portal** で、 **[ストレージ同期サービス]** に移動します。 
-- [監視] セクションで **[アラート]** をクリックし、 **[+ 新しいアラート ルール]** をクリックします。
-- **[条件の選択]** をクリックし、アラートに関する次の情報を指定します。 
+1. **Azure portal** で、 **[ストレージ同期サービス]** に移動します。 
+2. [監視] セクションで **[アラート]** をクリックし、 **[+ 新しいアラート ルール]** をクリックします。
+3. **[条件の選択]** をクリックし、アラートに関する次の情報を指定します。 
     - **メトリック**
     - **ディメンション名**
     - **アラート ロジック**
-- **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
-- **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
-- **[アラート ルールの作成]** をクリックして、アラートを作成します。  
+4. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
+5. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+6. **[アラート ルールの作成]** をクリックして、アラートを作成します。  
 
 次の表に、監視するシナリオの例とアラートに使用する適切なメトリックを示します。
 
@@ -96,6 +98,8 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 ポータルで**登録済みサーバーの正常性**を表示するには、 **[ストレージ同期サービス]** の **[登録済みサーバー]** セクションに移動します。
 
+![登録済みサーバーの正常性のスクリーンショット](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
+
 - **登録済みサーバー**の状態が **[オンライン]** である場合、サーバーは正常にサービスと通信しています。
 - **登録済みサーバー**の状態が **[オフラインのようです]** である場合、ストレージ同期モニター プロセス (AzureStorageSyncMonitor.exe) が実行されていないか、またはサーバーが Azure File Sync サービスにアクセスできません。 詳細については、[トラブルシューティングのドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)を参照してください。
 
@@ -103,7 +107,9 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 ポータルで**サーバー エンドポイント**の正常性を表示するには、 **[ストレージ同期サービス]** の **[同期グループ]** セクションに移動し、**同期グループ**を選択します。
 
-- ポータルの**サーバー エンドポイントの正常性**と**同期アクティビティ**は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である (ファイルが適用される) 限り、ポータルには同期が正常な状態として引き続き表示されます。 イベント ID 9302 は同期の進行状況イベントであり、同期セッションが完了するとイベント ID 9102 がログに記録されます。  詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。 同期が進行していないことが原因でポータルにエラーが表示された場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
+![サーバー エンドポイントの正常性のスクリーンショット](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
+
+- ポータルの**サーバー エンドポイントの正常性**と**同期アクティビティ**は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である (ファイルが適用される) 限り、ポータルにはサーバー エンドポイントが**正常**な状態として引き続き表示されます。 イベント ID 9302 は同期の進行状況イベントであり、同期セッションが完了するとイベント ID 9102 がログに記録されます。  詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。 サーバー エンドポイントの正常性に **[エラー]** または **[アクティビティなし]** が表示される場合は、ガイダンスとして[トラブルシューティング ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参照してください。
 - ポータルで**同期されていないファイル**の数は、サーバーのテレメトリ イベント ログに記録されているイベント ID 9121 に基づいています。 このイベントは、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 アイテム単位のエラーを解決するには、「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
 - ポータルで**クラウドの階層化の効率性**を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 クラウドの階層化の効率性について提供されるデータは、サーバーのテレメトリ イベント ログに記録されるイベント ID 9071 に基づいています。 詳細については、「[クラウドの階層化の概要](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)」を参照してください。
 - ポータルで**階層化されていないファイル**および**呼び戻しエラー**を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 **階層化されていないファイル**は、サーバーのテレメトリ イベント ログに記録されるイベント ID 9003 に基づいており、**呼び戻しエラー**は、イベント ID 9006 に基づいています。 階層化または呼び戻しに失敗したファイルを調査するには、「[階層に失敗したファイルのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier)」と「[呼び戻しに失敗したファイルのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)」を参照してください。
@@ -142,7 +148,7 @@ Azure File Sync エージェントがインストールされている **Windows
 
 - イベント ID 9121 は、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 このイベントを使用して、このエラーとの同期に失敗したファイルの数を確認します (**PersistentCount** と **TransientCount**)。 持続的なアイテム単位のエラーを調査する必要があります。「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
 
-- アクティブな同期セッションがある場合は、5 分から 10 分ごとにイベント ID 9302 がログに記録されます。 現在の同期セッションが進行中 (**AppliedItemCount が 0 より大きい**) かどうかを確認するには、このイベントを使用します。 同期が進行していない場合、同期セッションは最終的に失敗するはずです。イベント ID 9102 はエラーと共にログに記録されます。 詳細については、[同期の進行に関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)をご覧ください。
+- アクティブな同期セッションがある場合は、5 分から 10 分ごとにイベント ID 9302 がログに記録されます。 このイベントを使用して、同期される項目の数 (**TotalItemCount**)、それまでに同期された項目の数 (**AppliedItemCount**)、項目単位のエラーのために同期に失敗した項目の数 (**PerItemErrorCount**) を判断します。 同期が進行していない場合 (**AppliedItemCount=0**)、同期セッションは最終的に失敗し、イベント ID 9102 はエラーと共にログに記録されます。 詳細については、[同期の進行に関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)をご覧ください。
 
 登録済みサーバーの正常性
 
@@ -248,6 +254,7 @@ Azure File Sync エージェントがインストールされている **Windows
      - 集計の種類: **[最大]**  
      - しきい値 (バイト単位):**1** 
      - 評価基準:集計の細分性 = **1 時間** | 評価の頻度 = **30 分ごと** 
+        - メトリックは 15 から 20 分ごとに Azure Monitor に送信されることにご注意ください。 **評価の頻度**を 30 分未満に設定しないでください (偽のアラートが生成されます)。
      - **[完了]** をクリック 
 8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
 9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。

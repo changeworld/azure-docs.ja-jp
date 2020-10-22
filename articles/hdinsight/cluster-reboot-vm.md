@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089974"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91928981"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>HDInsight クラスターの VM を再起動する
 
@@ -31,8 +31,8 @@ Azure HDInsight クラスターには、クラスター ノードとして仮想
 - ノードの一時ディスクが満杯である。
 - VM 上のプロセス テーブルには、プロセスが完了しているエントリが多数あるが、"終了状態" と示されている。
 
-> [!WARNING]
-> **HBase** と **Kafka** クラスターの VM を再起動する場合は、再起動によってデータが失われる可能性があるため、注意してください。
+> [!NOTE]
+> 再起動によってデータが失われる可能性があるため、**HBase** クラスターと **Kafka** クラスターでは VM を再起動できません。
 
 ## <a name="use-powershell-to-reboot-vms"></a>PowerShell を使用して VM を再起動する
 

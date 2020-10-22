@@ -1,7 +1,7 @@
 ---
-title: コンテナーを構成する - Computer Vision
+title: 読み取り OCR コンテナーを構成する - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: この記事では、Computer Vision のテキスト認識コンテナーに必須の設定とオプションの設定を構成する方法を説明します。
+description: この記事では、Computer Vision の読み取り OCR コンテナーに必須の設定とオプションの設定を構成する方法を説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 674c906a4316ec92101f3f2028a57aa82db3f504
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982001"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536241"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker コンテナーを構成する
+# <a name="configure-read-ocr-docker-containers"></a>読み取り OCR Docker コンテナーを構成する
 
-`docker run` コマンドの引数を使用することによって、Computer Vision コンテナーのランタイム環境を構成します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
+`docker run` コマンドの引数を使用することによって、Computer Vision の読み取り OCR コンテナーのランタイム環境を構成します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -33,10 +33,12 @@ ms.locfileid: "90982001"
 
 |必須|設定|目的|
 |--|--|--|
-|いいえ|ReadEngineConfig:ResultExpirationPeriod|結果の有効期限 (時間)。 既定値は 48 時間です。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 たとえば、`resultExpirationPeriod=1` の場合、プロセスの 1 時間後に、システムによって認識結果がクリアされます。 `resultExpirationPeriod=0` の場合、結果が取得された後に、システムによって認識結果がクリアされます。|
-|いいえ|Cache:Redis|結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合は、キャッシュが "*必要*" です。|
-|いいえ|Queue:RabbitMQ|タスクをディスパッチするための RabbitMQ を有効にします。 この設定は、ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合に便利です。|
-|いいえ|Storage::DocumentStore::MongoDB|永続的な結果ストレージ用に MongoDB を有効にします。|
+|いいえ|ReadEngineConfig:ResultExpirationPeriod| v2.0 コンテナーのみ。 結果の有効期限 (時間)。 既定値は 48 時間です。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 たとえば、`resultExpirationPeriod=1` の場合、プロセスの 1 時間後に、システムによって認識結果がクリアされます。 `resultExpirationPeriod=0` の場合、結果が取得された後に、システムによって認識結果がクリアされます。|
+|いいえ|Cache:Redis| v2.0 コンテナーのみ。 結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合は、キャッシュが "*必要*" です。|
+|いいえ|Queue:RabbitMQ|v2.0 コンテナーのみ。 タスクをディスパッチするための RabbitMQ を有効にします。 この設定は、ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合に便利です。|
+|いいえ|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | v3.x コンテナーのみ。 別のワーカーが処理しているときにメッセージが非表示になる時間。 |
+|いいえ|Storage::DocumentStore::MongoDB|v2.0 コンテナーのみ。 永続的な結果ストレージ用に MongoDB を有効にします。 |
+|いいえ|Storage:ObjectStore:AzureBlob:ConnectionString| v3.x コンテナーのみ。 Azure BLOB ストレージの接続文字列。 |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
@@ -118,29 +120,6 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 次の Docker の例は、読み取りコンテナーに関するものです。
 
 
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-### <a name="basic-example"></a>基本的な例
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="logging-example"></a>ログの例 
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-Logging:Console:LogLevel:Default=Information
-```
-
 # <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 ### <a name="basic-example"></a>基本的な例
@@ -159,6 +138,53 @@ ApiKey={API_KEY}
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
 mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+
+### <a name="basic-example"></a>基本的な例
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+### <a name="logging-example"></a>ログの例 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
+
+### <a name="basic-example"></a>基本的な例
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>ログの例 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182017"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973871"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -108,7 +108,7 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![サポート パッケージの編集](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![サポート パッケージの編集 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 入力を求められたら、変更したサポート パッケージの暗号化パスフレーズを入力します。
    
     ```powershell

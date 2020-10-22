@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090384"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542378"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B AS2 メッセージを受信して確認する
 
@@ -111,7 +111,7 @@ ms.locfileid: "87090384"
 
    以上で、条件を満たしている場合と満たしていない場合のパスを含む条件図形が表示されます。
 
-   ![意思決定パスを含む条件図形](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+   ![条件図形と空のパスを示すスクリーンショット。](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
 
 1. 次に、評価する条件を指定します。 **[値の選択]** ボックスに、次の式を入力します。
 
@@ -119,7 +119,7 @@ ms.locfileid: "87090384"
 
    中央のボックスの比較演算が `is equal to` に設定されていることを確認します。 右側のボックスに、値 `Expected` を入力します。 式をこのトークンとして解決するには、[デザイナー] と [コード ビュー] を切り替えます。
 
-   ![意思決定パスを含む条件図形](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+   ![条件が追加された条件図形を示すスクリーンショット。](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. 次に、**AS2 デコード** アクションが成功したかどうかを返す応答を指定します。
 

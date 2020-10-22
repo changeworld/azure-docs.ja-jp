@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
-ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.reviewer: hirsin, jesakowi, jmprieur, marsma
+ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
+ms.openlocfilehash: 79475414f6785474596beae208fefae81a673dea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705692"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842684"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -48,15 +48,15 @@ OAuth 2.0 では、これらの種類のアクセス許可は "*スコープ*" �
 * `Calendars.ReadWrite` を使用したユーザーの予定表への書き込み
 * `Mail.Send` を使用したユーザーとしてのメールの送信
 
-アプリでは、通常、Microsoft ID プラットフォーム承認エンドポイントへの要求でスコープを指定することにより、これらのアクセス許可を要求します。 ただし、特定の高い特権アクセス許可は、管理者が同意することによってのみ付与することができ、[管理者同意エンドポイント](v2-permissions-and-consent.md#admin-restricted-permissions)を使用して要求/付与できます。 詳細については、後の説明を参照してください。
+アプリでは、通常、Microsoft ID プラットフォーム承認エンドポイントへの要求でスコープを指定することにより、これらのアクセス許可を要求します。 ただし、特定の高い特権アクセス許可は、管理者が同意することによってのみ付与することができ、[管理者同意エンドポイント](#admin-restricted-permissions)を使用して要求/付与できます。 詳細については、後の説明を参照してください。
 
 ## <a name="permission-types"></a>アクセス許可の種類
 
 Microsoft ID プラットフォームでは、**委任されたアクセス許可**と**アプリケーションのアクセス許可**という 2 種類のアクセス許可がサポートされています。
 
-* **委任されたアクセス許可**は、サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、ターゲット リソースの呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 一部の委任されたアクセス許可には管理者以外のユーザーでも同意できますが、一部の高い特権のアクセス許可では[管理者の同意](v2-permissions-and-consent.md#admin-restricted-permissions)が必要です。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+* **委任されたアクセス許可**は、サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、ターゲット リソースの呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 一部の委任されたアクセス許可には管理者以外のユーザーでも同意できますが、一部の高い特権のアクセス許可では[管理者の同意](#admin-restricted-permissions)が必要です。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
-* **アプリケーションのアクセス許可**は、サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。  アプリケーションのアクセス許可には、[管理者だけが同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)できます。
+* **アプリケーションのアクセス許可**は、サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。  アプリケーションのアクセス許可には、[管理者だけが同意](#requesting-consent-for-an-entire-tenant)できます。
 
 "_有効なアクセス許可_" は、アプリがターゲット リソースに要求を行うときに付与されるアクセス許可です。 アプリに付与される委任されたアクセス許可とアプリケーションのアクセス許可の違い、およびターゲット リソースへの呼び出しを行うときの有効なアクセス許可について理解しておくことが重要です。
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 これにより、登録されているすべてのアクセス許可の同意画面が生成され (同意と `/.default` の前述の説明に基づいて適用される場合)、アクセス トークンではなく、id_token が返されます。  この動作は、ADAL から MSAL に移行する特定のレガシー クライアントのために存在するものであり、Microsoft ID プラットフォーム エンドポイントを対象とする新しいクライアントでは使用**しないでください**。
 
+### <a name="client-credentials-grant-flow-and-default"></a>クライアント資格情報付与フローと /.default
+
+`./default` のもう 1 つの用途は、Web API を呼び出すための[クライアント資格情報](v2-oauth2-client-creds-grant-flow.md)付与フローを使用するデーモン アプリのような非対話型アプリケーションで、アプリケーションのアクセス許可 (または "*ロール*") を要求する場合です。
+
+Web API についてのアプリケーションのアクセス許可 (ロール) を作成する方法については、「[ご利用のアプリケーションにアプリ ロールを追加する](howto-add-app-roles-in-azure-ad-apps.md)」を参照してください。
+
+クライアント アプリでのクライアント資格情報要求には `scope={resource}/.default` を含める**必要があります**。 `{resource}` は、アプリが呼び出す予定の Web API です。 個々のアプリケーションのアクセス許可 (ロール) を使用したクライアント資格情報要求の発行は、サポートされて**いません**。 返されるアクセス トークンには、その Web API に付与されているすべてのアプリケーションのアクセス許可 (ロール) が含まれます。
+
+アプリケーション向けの管理者の同意の付与など、定義するアプリケーションのアクセス許可にアクセス権を付与するには、「[クイックスタート:Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)」を参照してください。
+
 ### <a name="trailing-slash-and-default"></a>末尾のスラッシュと /.default
 
 一部のリソース URI には、末尾のスラッシュ (`https://contoso.com` ではなく `https://contoso.com/`) があるため、トークンの検証で問題が発生する可能性があります。  これは主に、リソース URI の末尾にスラッシュがあり、トークンが要求されたときに存在している必要がある Azure Resource Management (`https://management.azure.com/`) のトークンを要求するときに発生します。  したがって、`https://management.azure.com/` のトークンを要求し、`/.default` を使用する場合は、`https://management.azure.com//.default` を要求する必要があります。二重スラッシュに注意してください。
@@ -311,3 +321,8 @@ response_type=token            //code or a hybrid flow is also possible here
 ## <a name="troubleshooting-permissions-and-consent"></a>アクセス許可と同意のトラブルシューティング
 
 アプリケーションの所有者やユーザーによる同意プロセスの間に予期しないエラーが発生する場合は、こちらの記事「[アプリケーションに同意すると、予期しないエラーが発生する](../manage-apps/application-sign-in-unexpected-user-consent-error.md)」のトラブルシューティング手順をご覧ください。
+
+## <a name="next-steps"></a>次のステップ
+
+* [ID トークン | Microsoft ID プラットフォーム](id-tokens.md)
+* [アクセス トークン | Microsoft ID プラットフォーム](access-tokens.md)

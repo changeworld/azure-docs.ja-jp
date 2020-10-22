@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538910"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Azure Database for MySQL を使用してアプリケーションを構築するためのベスト プラクティス 
 
@@ -69,9 +69,9 @@ Azure portal を使用して、MySQL サーバーの[パスワードをリセッ
 最初に再試行する前に、5 秒間待つことをお勧めします。 その後、待機時間を 60 秒まで段階的に増やして、各再試行を行います。 再試行の最大回数を制限します。その時点で、アプリケーションによって操作が失敗したと見なされ、さらに調査できるようになります。 詳細については、[接続エラーをトラブルシューティングする方法](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues)に関する記事を参照してください。 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>フェールオーバーを軽減するために読み取りレプリケーションを有効にする
-フェールオーバー シナリオには、[データイン レプリケーション](https://docs.microsoft.com/azure/mysql/howto-data-in-replication)を使用できます。 読み取りレプリカを使用する場合、マスター サーバーとレプリカ サーバー間で自動フェールオーバーは発生しません。 
+フェールオーバー シナリオには、[データイン レプリケーション](https://docs.microsoft.com/azure/mysql/howto-data-in-replication)を使用できます。 読み取りレプリカを使用している場合、ソースとレプリカのサーバー間で自動フェールオーバーは発生しません。 
 
-レプリケーションは非同期であるため、マスターとレプリカの間に遅延が発生します。 ネットワーク遅延は、マスター サーバーで実行されているワークロードのサイズやデータ センター間の待機時間など、多数の要因によって影響を受ける可能性があります。 ほとんどの場合、レプリカの遅延は数秒から数分の範囲になります。
+レプリケーションは非同期であるため、ソースとレプリカの間にラグがあります。 ネットワーク ラグは、ソース サーバーで実行されているワークロードのサイズやデータセンター間の待機時間など、さまざまな要因によって影響を受ける可能性があります。 ほとんどの場合、レプリカの遅延は数秒から数分の範囲になります。
 
 ## <a name="database-deployment"></a>データベースのデプロイ 
 

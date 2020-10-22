@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897541"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776087"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -24,14 +24,15 @@ ms.locfileid: "90897541"
 
 > [!div class="checklist"]
 > - 仮想ネットワーク内のリソースから Studio にアクセスします。
+> - ストレージ アカウントのプライベート エンドポイントを構成します。
 > - 仮想ネットワーク内に格納されているデータへのアクセス権を Studio に付与します。
-> - Studio によるストレージのセキュリティへの影響について確認します。
+> - Studio によるストレージのセキュリティへの影響について理解します。
 
 この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートからなるシリーズのパート 5 です。 まずは[パート 1:VNet の概要](how-to-network-security-overview.md)に関するページを読んで、アーキテクチャ全体を理解することを強くお勧めします。 
 
 このシリーズの他の記事は次のとおりです。
 
-[1.VNet の概要](how-to-network-security-overview.md) > [2.ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > [3.トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md) > [4.推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md) > [5.Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+[1.VNet の概要](how-to-network-security-overview.md) > [2.ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > [3.トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md) > [4.推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md) > **5.Studio の機能を有効にする**
 
 
 > [!IMPORTANT]
@@ -46,7 +47,7 @@ ms.locfileid: "90897541"
 
 + [Private Link が有効になっている Azure Machine Learning ワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) (既存)。
 
-+ [仮想ネットワークに追加された Azure ストレージ アカウント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) (既存)。
++ [仮想ネットワークに追加された Azure ストレージ アカウント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) (既存)。
 
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>VNet 内のリソースから Studio にアクセスする
 
@@ -56,8 +57,7 @@ ms.locfileid: "90897541"
 
 ## <a name="access-data-using-the-studio"></a>Studio を使用したデータへのアクセス
 
-データが仮想ネットワークに格納されている場合、データへのアクセス権を Studio に付与するには、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用するようにストレージ アカウントを構成する必要があります。
-
+[サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)が設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)を使用してデータへのアクセス権を Studio に付与するようにストレージ アカウントを構成する必要があります。
 
 マネージド ID を有効にしないと、次のエラー `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` が発生し、さらに次の操作が無効になります。
 
@@ -66,13 +66,15 @@ ms.locfileid: "90897541"
 * AutoML 実験の送信
 * ラベル付けプロジェクトの開始
 
+> [!NOTE]
+> [ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-labeling)では、仮想ネットワークの内側でセキュリティ保護された既定のストレージ アカウントはサポートされていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でセキュリティ保護できます。 
+
 スタジオでは、仮想ネットワーク内の次のデータストアの種類からのデータの読み取りがサポートされています。
 
 * Azure BLOB
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
 * Azure SQL データベース
-
 
 ### <a name="configure-datastores-to-use-managed-identity"></a>マネージド ID を使用するようにデータストアを構成する
 
@@ -104,7 +106,7 @@ __Azure Blob ストレージ__では、ワークスペース マネージド ID 
 
 仮想ネットワーク内のデータ アクセスの制御には、RBAC と POSIX スタイルのアクセス制御リスト (ACL) の両方を使用できます。
 
-RBAC を使用するには、ワークスペース マネージド ID を [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のロールに追加します。 詳細については、[ロールベースのアクセス制御](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control)に関するページを参照してください。
+RBAC を使用するには、ワークスペース マネージド ID を [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のロールに追加します。 詳細については、[Azure のロールベースのアクセス制御](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control)に関するページを参照してください。
 
 ACL を使用する場合は、他のセキュリティ原則の場合と同様に、ワークスペース マネージド ID にアクセス権を割り当てることができます。 詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 

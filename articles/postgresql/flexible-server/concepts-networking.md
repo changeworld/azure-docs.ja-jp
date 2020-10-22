@@ -1,17 +1,17 @@
 ---
 title: ネットワークの概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure Database for PostgreSQL のフレキシブル サーバー デプロイ オプションの接続およびネットワークのオプションについて説明します
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 38dd103189446e287f3d62d93344ed89a364d238
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930823"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708783"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>ネットワークの概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -62,7 +62,7 @@ PostgreSQL フレキシブル サーバーで仮想ネットワークを使用�
 
    PostgreSQL フレキシブル サーバーは、PostgreSQL フレキシブル サーバー専用に**委任された**サブネット内に存在する必要があります。 この委任は、Azure Database for PostgreSQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。 サブネットを委任するには、その委任プロパティを Microsoft.DBforPostgreSQL/flexibleServers として割り当てます。
 
-プライベート アクセス (VNet 統合) を使用するフレキシブル サーバーを [Azure portal](how-to-manage-virtual-network-portal.md) または [Azure CLI](how-to-manage-virtual-network-cli.md) で作成する方法を参照してください。
+* **ネットワーク セキュリティ グループ (NSG)** ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。 詳細については、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)に関するページを参照してください。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>サポートされない仮想ネットワークのシナリオ
@@ -71,6 +71,7 @@ PostgreSQL フレキシブル サーバーで仮想ネットワークを使用�
 * サブネットにリソースを配置すると、そのサブネットのサイズ (アドレス空間) を増やすことはできません
 * 複数のリージョンにまたがる Vnet のピアリングはサポートされていません
 
+プライベート アクセス (VNet 統合) を使用するフレキシブル サーバーを [Azure portal](how-to-manage-virtual-network-portal.md) または [Azure CLI](how-to-manage-virtual-network-cli.md) で作成する方法を参照してください。
 
 ## <a name="public-access-allowed-ip-addresses"></a>パブリック アクセス (許可された IP アドレス)
 パブリック アクセスの方法には、次のような特性があります。
@@ -107,12 +108,9 @@ Microsoft Azure Database for PostgreSQL サーバー サービスに期待どお
 ## <a name="hostname"></a>Hostname (ホスト名)
 選択するネットワーク オプションに関係なく、フレキシブル サーバーに接続する場合は常に、ホスト名として完全修飾ドメイン名 (FQDN) を使用することをお勧めします。 サーバーの IP アドレスが静的のままであることは保証されていません。 FQDN を使用すると、接続文字列を変更せずに済みます。 
 
-IP が変更されるシナリオの 1 つは、ゾーン冗長 HA を使用していて、プライマリとセカンダリの間でフェールオーバーが発生する場合です。 FQDN を使用すると、同じ接続文字列を使用して接続をシームレスに再試行できます。
-
 例
 * 推奨 `hostname = servername.postgres.database.azure.com`
-* `hostname = 10.0.0.4` (プライベート アドレス) や `hostname = 40.2.45.67` (パブリック アドレス) の使用を避ける
-
+* 可能であれば、`hostname = 10.0.0.4` (プライベート アドレス) または `hostname = 40.2.45.67` (パブリック アドレス) の使用は避けてください
 
 
 ## <a name="tls-and-ssl"></a>TLS と SSL

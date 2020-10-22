@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 0eacddfa56e46363c926aa1e8b35865676209577
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055551"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058490"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -196,6 +196,8 @@ speechConfig!.setPropertyTo(
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -228,6 +230,10 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
 |                         | `style="empathetic"`      | 思いやりと理解を示します               |
+| `en-US-JennyNeural`     | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
+|                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
+|                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+| `en-US-GuyNeural`       | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
@@ -432,7 +438,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
 
-カスタム辞書を使用して単語の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
+カスタム辞書を使用して語句の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
 
 ```xml
   <lexeme>
@@ -442,6 +448,14 @@ speechConfig!.setPropertyTo(
   <lexeme>
     <grapheme>ScotlandMV</grapheme> 
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
+
+また、頭字語または略語に対して期待される `alias` を直接指定することもできます。 次に例を示します。
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>Scotland Media Wave</alias> 
   </lexeme>
 ```
 
@@ -524,7 +538,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 | `contour` |ニューラル音声と標準音声の両方で音調がサポートされるようになりました。 音調とは音の高さの変化です。 この変化は、音声出力において指定の時間位置にあるターゲットの配列として表わされます。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | `range` | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
 | `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
-| `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 | 省略可能 |
+| `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 duration では、標準の音声のみがサポートされます。| 省略可能 |
 | `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する

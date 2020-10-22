@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332966"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057894"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -126,7 +126,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 > - 同期の問題がレポートされなくても、ハブとメンバーとの間でデータの損失が生じる可能性があります。
 > - 同期に失敗する可能性があります。主キーの変更で、追跡しているテーブルに、同期元からの存在しない行が含まれることが原因です。
 
-- スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
+- 同期のメンバーとハブの両方に対してスナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
 
 ### <a name="general-limitations"></a>一般的な制限事項
 
@@ -136,7 +136,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - サポートされている精度は秒に対してのみであるため、次のデータの種類を主キーとして使用するときは注意してください。time、datetime、datetime2、datetimeoffset。
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
 - Azure Active Directory 認証はサポートされていません。
-- 名前が同じでスキーマが異なるテーブル (たとえば、dbo.customers や sales.customers など) はサポートされていません。
+- 名前が同じでスキーマが異なるテーブル (たとえば dbo.customers と sales.customers) がある場合は、一方のテーブルのみを同期に追加できます。
 - ユーザー定義データ型の列はサポートされていません
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
 

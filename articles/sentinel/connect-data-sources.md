@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895793"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627144"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -45,17 +45,22 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
 - **サービス間の統合**:<br> AWS や Microsoft サービスなどの一部のサービスはネイティブに接続されるので、標準統合用の Azure 基盤を利用して、ほんの数回のクリックで次のソリューションを接続できます。
     - [アマゾン ウェブ サービス - CloudTrail](connect-aws.md)
-    - [Azure アクティビティ](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) - 監査ログとサインイン ログ
+    - [Azure アクティビティ](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
+    - [Azure DDoS Protection](connect-azure-ddos-protection.md)
+    - [Azure Defender for IoT](connect-asc-iot.md) (以前の Azure Security Center for IoT)
     - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Firewall](connect-azure-firewall.md)
     - [Azure Security Center](connect-azure-security-center.md) - Azure Defender ソリューションからのアラート
+    - [Azure Web Application Firewall (WAF)](connect-azure-waf.md) (以前の Microsoft WAF)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [ドメイン ネーム サーバー](connect-dns.md)
-    - [Office 365](connect-office-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - MDATP 生データが含まれます
     - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前の Microsoft Defender Advanced Threat Protection)
-    - [Microsoft Web アプリケーション ファイアウォール](connect-microsoft-waf.md)
+    - [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
+    - [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md) (以前の Office 365 Advanced Threat Protection)
+    - [Office 365](connect-office-365.md) (現在は Teams も対象)
     - [Windows ファイアウォール](connect-windows-firewall.md)
     - [Windows セキュリティ イベント](connect-windows-security-events.md)
 
@@ -67,9 +72,14 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Okta SSO](connect-okta-single-sign-on.md)
+    - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 ログ](connect-perimeter-81-logs.md)
+    - [Proofpoint TAP](connect-proofpoint-tap.md)
+    - [Qualys VM](connect-qualys-vm.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
+    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
     - [Zimperium](connect-zimperium-mtd.md)
 
 
@@ -79,7 +89,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
     Azure Sentinel エージェントは実際には Log Analytics エージェントであり、CEF 形式のログが、Log Analytics で取り込むことのできる形式に変換されます。 アプライアンスの種類により、エージェントは、アプライアンス上に直接、または専用の Linux ベースのログ フォワーダー上にインストールされます。 Linux 用エージェントは、UDP 経由で Syslog デーモンからイベントを受信しますが、Linux マシンで大量の Syslog イベントを収集することが予想される場合は、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
 
-    - **ファイアウォール、プロキシ、エンドポイント:**
+    - **ファイアウォール、プロキシ、エンドポイント - CEF:**
         - [AI Vectra 検出](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
@@ -87,15 +97,23 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [F5 ASM](connect-f5.md)
         - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto Networks](connect-paloalto.md)
+        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
-        - [その他の CEF アプライアンス](connect-common-event-format.md)
-        - [その他の Syslog アプライアンス](connect-syslog.md)
+        - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Zscaler](connect-zscaler.md)
+        - [その他の CEF ベースのアプライアンス](connect-common-event-format.md)
+    - **ファイアウォール、プロキシ、エンドポイント - Syslog:**
+        - [Infoblox NIOS](connect-infoblox.md)
+        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
+        - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
+        - [Symantec VIP](connect-symantec-vip.md)
+        - [その他の Syslog ベースのアプライアンス](connect-syslog.md)
     - DLP ソリューション
     - [脅威インテリジェンス プロバイダー](connect-threat-intelligence.md)
     - [DNS マシン](connect-dns.md) - DNS マシンに直接インストールされたエージェント
+    - [Azure Stack VM](connect-azure-stack.md)
     - Linux サーバー
     - その他のクラウド
     

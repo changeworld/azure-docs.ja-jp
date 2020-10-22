@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853376"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612122"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
-Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資格情報付与](v2-oauth2-client-creds-grant-flow.md)フローや [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) (OBO) フローなどで、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
+Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資格情報付与](v2-oauth2-client-creds-grant-flow.md)フローや [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) (OBO) フローなど、クライアント シークレットを使用できるあらゆる場所で、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
 
 アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) アサーションです。
 
 ## <a name="assertion-format"></a>アサーションの形式
 
-アサーションを計算するには、自分が選択した言語の多数の JWT ライブラリの中からいずれかを使用できます。 この情報は、トークンによって[ヘッダー](#header)、[要求](#claims-payload)、および[署名](#signature)で伝達されます。
+アサーションを計算するには、自分が選択した言語の多数ある JWT ライブラリの中からいずれかを使用できます。[MSAL は、`.WithCertificate()` のこのような使用をサポートしています](msal-net-client-assertions.md)。 この情報は、トークンによって[ヘッダー](#header)、[要求](#claims-payload)、および[署名](#signature)で伝達されます。
 
 ### <a name="header"></a>ヘッダー
 
@@ -40,14 +40,14 @@ Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資�
 
 ### <a name="claims-payload"></a>要求 (ペイロード)
 
-| パラメーター |  解説 |
-| --- | --- |
-| `aud` | Audience:`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` である必要があります。 |
-| `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。 短い有効期限 (10 分から 1 時間) を使用することをお勧めします。|
-| `iss` | 発行者:client_id (クライアント サービスの "*アプリケーション (クライアント) ID*") である必要があります。 |
-| `jti` | GUID: JWT ID |
-| `nbf` | 期間の開始日時: トークンの使用開始日。 時刻は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、アサーションが作成された時刻までの秒数で表されます。 |
-| `sub` | 件名:`iss` の場合、client_id (クライアント サービスの "*アプリケーション (クライアント) ID*") である必要があります。 |
+要求の種類 | 値 | 説明
+---------- | ---------- | ----------
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[[RFC 7519、セクション 4.1.3]](https://tools.ietf.org/html/rfc7519#section-4.1.3) を参照してください。  この場合、その受信者はログイン サーバー (login.microsoftonline.com) です。
+exp | 1601519414 | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [[RFC 7519、セクション 4.1.4]](https://tools.ietf.org/html/rfc7519#section-4.1.4) を参照してください。  これにより、そのときまでアサーションを使用できるようになるため、間隔を短く (最大でも `nbf` の 5 ～ 10 分後に) してください。  Azure AD では、現在 `exp` の時刻に制限は設定されていません。 
+iss | {ClientID} | "iss" (発行者) 要求では、JWT を発行したプリンシパル (この場合はクライアント アプリケーション) を指定します。  GUID (アプリケーション ID) を使用します。
+jti | (Guid) | "jti" (JWT ID) 要求は、JWT の一意の識別子を提供します。 識別子の値は、同じ値が誤って異なるデータ オブジェクトに割り当てられる可能性が無視できるほど低くなる方法で割り当てる必要があります。複数の発行者を使用するアプリケーションの場合は、異なる発行者が生成した値が競合しないように防ぐ必要があります。 "jti" 値は大文字と小文字が区別される文字列です。 [[RFC 7519、セクション 4.1.7]](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+nbf | 1601519114 | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。 [[RFC 7519、セクション 4.1.5]](https://tools.ietf.org/html/rfc7519#section-4.1.5)  現在の時刻を使用するのが適切です。 
+sub | {ClientID} | "sub" (主題) 要求では、JWT の件名 (この場合はお使いのアプリケーション) を指定します。 `iss` と同じ値を使用します。 
 
 ### <a name="signature"></a>署名
 
@@ -126,7 +126,18 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 3. 編集内容をアプリケーション マニフェストに保存した後、そのマニフェストを Microsoft ID プラットフォームにアップロードします。
 
    `keyCredentials` プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
+   
+## <a name="using-a-client-assertion"></a>クライアント アサーションの使用
 
-## <a name="next-steps"></a>次の手順
+クライアント アサーションは、クライアント シークレットが使用されるあらゆる場所で使用できます。  そのため、たとえば、[認証コード フロー](v2-oauth2-auth-code-flow.md)では、`client_secret` を渡して、要求がアプリから送信されていることを証明することができます。 これを `client_assertion` パラメーターと `client_assertion_type` パラメーターに置き換えることができます。 
+
+| パラメーター | [値] | 説明|
+|-----------|-------|------------|
+|`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| これは固定値であり、証明書の資格情報を使用していることを示します。 |
+|`client_assertion`| JWT |これは、上記で作成した JWT です。 |
+
+## <a name="next-steps"></a>次のステップ
+
+1 行のコードで、[このシナリオを MSAL.NET ライブラリで処理](msal-net-client-assertions.md)します。
 
 GitHub の [Microsoft ID プラットフォームを使用した .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)のコード サンプルは、アプリケーションで独自の資格情報が認証に使用される方法を示しています。 また、`New-SelfSignedCertificate` PowerShell コマンドレットを使用した[自己署名証明書の作成](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)方法も示しています。 さらに、サンプル リポジトリ内の[アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)を使用して、証明書の作成やサムプリントの計算などを実行することもできます。

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982040"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653351"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
@@ -35,7 +35,7 @@ Azure IoT Central の [Application Manager]\(アプリケーション マネー�
 
 Azure IoT Central アプリケーションを作成するには、左側のメニューの **[Build]\(ビルド\)** を選択します。 いずれかの業界テンプレートを選択するか、 **[カスタム アプリ]** を選択して最初からアプリケーションを作成します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、 **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
-![CSP 用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4.png)
+![[IoT アプリケーションをビルドする] ページを示すスクリーンショット。[ビルド] ボタンが選択されています。](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![CSP 用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4-1.png)
 

@@ -10,13 +10,13 @@ ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: 034fbf991c97ba7b9f51b5508c35df1889280562
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/02/2020
+ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897897"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667862"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -89,7 +89,7 @@ Azure Kubernetes Service では、さまざまな Kubernetes バージョンを�
 
 ### <a name="available-and-default-versions"></a>使用可能なバージョンと既定のバージョン
 
-AKS の使用可能なバージョンと既定のバージョンを確認するには、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) コマンド [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions) を使用します。 たとえば、次のコマンドは、米国西部リージョンで使用可能なバージョンを返します。
+AKS の使用可能なバージョンと既定のバージョンを確認するには、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) コマンド [az aks get-versions](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_versions) を使用します。 たとえば、次のコマンドは、米国西部リージョンで使用可能なバージョンを返します。
 
 ```azurecli-interactive
 az aks get-versions -l westus -o table
@@ -184,9 +184,9 @@ aks_target.wait_for_completion(show_output = True)
 この例で使われているクラス、メソッド、パラメーターの詳細については、次のリファレンス ドキュメントをご覧ください。
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
+* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-詳細については、[az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ Azure サブスクリプションに既に AKS クラスターがあり、その
 > [!WARNING]
 > ワークスペースから同じ AKS クラスターに対して複数のアタッチメントを同時に作成することは避けてください。 たとえば、2 つの異なる名前を使用して 1 つの AKS クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 >
-> TLS やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
+> TLS やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
-* [AKS クラスターの作成 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [AKS クラスターの作成 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
+* [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
 * [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 次の例では、既存の AKS クラスターをワークスペースにアタッチする方法を示します。
@@ -247,9 +247,9 @@ aks_target.wait_for_completion(show_output = True)
 
 この例で使われているクラス、メソッド、パラメーターの詳細については、次のリファレンス ドキュメントをご覧ください。
 
-* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
+* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -271,13 +271,38 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-詳細については、[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) に関するリファレンスをご覧ください。
+詳細については、[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) に関するリファレンスをご覧ください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 ポータルで AKS クラスターをアタッチする方法の詳細については、[Azure Machine Learning Studio でのコンピューティング先の作成](how-to-create-attach-compute-studio.md#inference-clusters)に関するページを参照してください。
 
 ---
+
+## <a name="detach-an-aks-cluster"></a>AKS クラスターをデタッチする
+
+ワークスペースからクラスターをデタッチするには、次のいずれかの方法を使用します。
+
+> [!WARNING]
+> Azure Machine Learning スタジオ、SDK、または機械学習のための Azure CLI 拡張機能を使用して AKS クラスターをデタッチしても、**AKS クラスターは削除されません**。 クラスターを削除する方法については、[AKS と共に Azure CLI を使用する](/azure/aks/kubernetes-walkthrough#delete-the-cluster)方法に関するページをご覧ください。
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+aks_target.detach()
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+既存のクラスターをワークスペースからデタッチするには、次のコマンドを使います。 `myaks` を、ワークスペースにアタッチされている AKS クラスターの名前に置き換えます。 `myresourcegroup` は、ワークスペースが含まれているリソース グループに置き換えます。 `myworkspace` は、ワークスペースの名前に置き換えます。
+
+```azurecli
+az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure Machine Learning スタジオで、 __[コンピューティング]__ 、 __[推論クラスター]__ 、削除するクラスターの順に選択します。 __[デタッチ]__ リンクを使用して、クラスターをデタッチします。
 
 ## <a name="next-steps"></a>次のステップ
 

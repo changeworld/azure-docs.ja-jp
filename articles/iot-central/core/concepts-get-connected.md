@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018191"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714243"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -99,13 +99,13 @@ X.509 証明書を使用してデバイスをアプリケーションに接続�
 
 1. **[プライマリ証明書] ページ**で、プライマリの X.509 証明書をアップロードします。 これは、ルートまたは中間証明書です。
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="プライマリ証明書のスクリーンショット":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="X.509 登録グループの追加のスクリーンショット":::
 
-1. **確認コード**を使用して、使用しているツールで確認コードを生成します。 次に、 **[検証]** を選択して検証証明書をアップロードします。
+1. **[確認コードを生成する]** をクリックすると、使用しているツールで検証証明書を生成するためのコードが生成されます。 次に、 **[検証]** を選択して検証証明書をアップロードします。
 
 1. 検証が成功すると、次の確認メッセージが表示されます。
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="検証済みのプライマリ証明書のスクリーンショット":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="X.509 登録グループの追加のスクリーンショット":::
 
 証明書の所有権を検証して、証明書のアップロード担当者が証明書の秘密キーを持っていることを確認します。
 
@@ -147,7 +147,7 @@ X.509 登録グループにアップロードしたルートまたは中間証�
 
 1. **SAS-IoT-Devices** 登録グループからグループ プライマリ キーをコピーします。
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="SAS-IoT-Devices 登録グループのグループ プライマリ キー":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="X.509 登録グループの追加のスクリーンショット":::
 
 1. `az iot central device compute-device-key` コマンドを使用してデバイスの SAS キーを生成します。 前の手順で得たグループ プライマリ キーを使用します。 デバイス ID は小文字にする必要があります。
 

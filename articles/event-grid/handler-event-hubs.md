@@ -3,12 +3,12 @@ title: Azure Event Grid イベントに対するイベント ハンドラーと�
 description: Azure Event Grid イベントのイベント ハンドラーとしてイベント ハブを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fa8fdd66eb153f6a972753eb359261100f19cd15
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629626"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのイベント ハブ
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Event Hubs** はその 1 つです。 
@@ -24,7 +24,7 @@ Event Grid からのイベントが速すぎて、ソリューションで処理
 | [Resource Manager テンプレート:Event Grid カスタム トピックを作成し、イベント ハブにイベントを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
 
 ## <a name="message-properties"></a>メッセージのプロパティ
-Event Grid からのイベントのイベント ハンドラーとして**イベント ハブ**を使用する場合は、次のメッセージ ヘッダーを設定します。 
+Event Grid からのイベントのイベント ハンドラーとして**イベント ハブ**を使用する場合、メッセージ ヘッダーでは次のプロパティを受け取ります。 
 
 | プロパティ名 | 説明 |
 | ------------- | ----------- | 

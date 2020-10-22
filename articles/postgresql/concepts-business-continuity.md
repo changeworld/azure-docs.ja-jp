@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710908"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939870"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -29,10 +29,9 @@ Azure Database for PostgreSQL により、geo リストアを開始し、別の�
 | :------------: | :-------: | :-----------------: | :------------------: |
 | バックアップからのポイントインタイム リストア | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント |
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | RTO - 変動 <br/>RPO < 1 時間 | RTO - 変動 <br/>RPO < 1 時間 |
-| 読み取りレプリカ | RTO - 分単位 <br/>RPO < 5 分 | RTO - 分単位 <br/>RPO < 5 分| RTO - 分単位 <br/>RPO < 5 分|
+| 読み取りレプリカ | RTO - 分単位 <br/>RPO < 5 分* | RTO - 分単位 <br/>RPO < 5 分*| RTO - 分単位 <br/>RPO < 5 分*|
 
-> [!IMPORTANT]
-> ここで説明されている予想される RTO と RPO は、参考のためのものです。 これらのメトリックに対して SLA は提供されません。
+\* RPO は、プライマリ データベースのワークロードやリージョン間の待ち時間など、さまざまな要因によって高くなることがあります。 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 

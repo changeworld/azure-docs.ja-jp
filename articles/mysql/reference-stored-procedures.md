@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067698"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542480"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL の管理ストアド プロシージャ
 
@@ -21,17 +21,17 @@ ms.locfileid: "80067698"
 
 データイン レプリケーションでは、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスで実行中の MySQL サーバーから Azure Database for MySQL サービスにデータを同期することができます。
 
-次のストアド プロシージャは、マスターとレプリカ間のデータイン レプリケーションの設定または削除に使用されます。
+次のストアド プロシージャは、ソースとレプリカの間のデータイン レプリケーションを設定または削除するために使用されます。
 
 |**ストアド プロシージャ名**|**入力パラメーター**|**出力パラメーター**|**使用上の注意**|
 |-----|-----|-----|-----|
 |*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_host<br/>master_log_file<br/>master_log_file<br/>master_ssl_ca|該当なし|SSL モードを使用してデータを転送するには、CA 証明書のコンテキストを master_ssl_ca パラメーターに渡します。 </br><br>SSL を使用せずにデータを転送するには、空の文字列を master_ssl_ca パラメーターに渡します。|
 |*mysql.az_replication _start*|該当なし|該当なし|レプリケーションを開始します。|
 |*mysql.az_replication _stop*|該当なし|該当なし|レプリケーションを停止します。|
-|*mysql.az_replication _remove_master*|該当なし|該当なし|マスターとレプリカ間のレプリケーション関係を削除します。|
+|*mysql.az_replication _remove_master*|該当なし|該当なし|ソースとレプリカの間のレプリケーション関係を削除します。|
 |*mysql.az_replication_skip_counter*|該当なし|該当なし|1 つのレプリケーション エラーをスキップします。|
 
-Azure Database for MySQL 内でマスターとレプリカの間のデータイン レプリケーションを設定するには、[データイン レプリケーションを構成する方法](howto-data-in-replication.md)を参照してください。
+Azure Database for MySQL 内でソースとレプリカの間のデータイン レプリケーションを設定するには、[データイン レプリケーションを構成する方法](howto-data-in-replication.md)を参照してください。
 
 ## <a name="other-stored-procedures"></a>その他のストアド プロシージャ
 

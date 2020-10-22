@@ -1,14 +1,14 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651934"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91744017"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -33,7 +33,7 @@ ms.locfileid: "89651934"
 
 ## <a name="overriding-locking-states"></a>ロック状態をオーバーライドする
 
-通常、サブスクリプションに対する適切な[ロールベースのアクセス制御](../../../role-based-access-control/overview.md) (RBAC) を持つユーザー (所有者ロールのユーザーなど) が、リソースの変更や削除を許可されることはありえます。 ただし、デプロイされた割り当ての一部として Azure Blueprints によってロックが適用されている場合は、このアクセスは許可されません。 **読み取り専用**オプションまたは**削除しない**オプションを使用して割り当てが設定されている場合、サブスクリプション所有者であっても、ブロックされたアクションを保護されたリソースに対して実行することはできません。
+通常、サブスクリプションに対する適切な [Azure ロールベースのアクセス制御](../../../role-based-access-control/overview.md) (Azure RBAC) を持つユーザー ('所有者' ロールのユーザーなど) が、リソースの変更や削除を許可されることはありえます。 ただし、デプロイされた割り当ての一部として Azure Blueprints によってロックが適用されている場合は、このアクセスは許可されません。 **読み取り専用**オプションまたは**削除しない**オプションを使用して割り当てが設定されている場合、サブスクリプション所有者であっても、ブロックされたアクションを保護されたリソースに対して実行することはできません。
 
 このセキュリティ対策により、定義済みのブループリントの一貫性と作成目的で設計された環境が、偶発的またはプログラムによる削除や変更から保護されます。
 
@@ -101,7 +101,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 ## <a name="how-blueprint-locks-work"></a>ブループリントのロックのしくみ
 
-ブループリントの割り当て時には、**読み取り専用**オプションまたは**削除しない**オプションがその割り当てによって選択された場合、RBAC [拒否割り当て](../../../role-based-access-control/deny-assignments.md)の拒否アクションがアーティファクト リソースに適用されます。 この拒否アクションは、ブループリント割り当てのマネージド ID によって追加され、アーティファクト リソースから削除するには、同じマネージド ID を使用する必要があります。 このセキュリティ対策により、ロック メカニズムが強制されて、Azure Blueprints 外からブループリントのロックを解除できなくなります。
+ブループリントの割り当て時には、**読み取り専用**オプションまたは**削除しない**オプションがその割り当てによって選択された場合、Azure RBAC [拒否割り当て](../../../role-based-access-control/deny-assignments.md)の拒否アクションがアーティファクト リソースに適用されます。 この拒否アクションは、ブループリント割り当てのマネージド ID によって追加され、アーティファクト リソースから削除するには、同じマネージド ID を使用する必要があります。 このセキュリティ対策により、ロック メカニズムが強制されて、Azure Blueprints 外からブループリントのロックを解除できなくなります。
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="リソースグループのアクセス制御 (I A M) ページと [拒否割り当て] タブのスクリーンショット。" border="false":::
 
@@ -109,8 +109,8 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 |モード |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|[読み取り専用] |**\*** |**\*/read** |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
-|削除しない |**\*/delete** | |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
+|[読み取り専用] |**\*** |**\*/read**<br />**Microsoft.Authorization/locks/delete**<br />**Microsoft.Network/virtualNetwork/subnets/join/action** |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
+|削除しない |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**Microsoft.Network/virtualNetwork/subnets/join/action** |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager では、ロール割り当ての詳細が最大 30 分間キャッシュされます。 そのため、ブループリント リソースに対する拒否割り当ての拒否アクションは、すぐには完全に反映されない場合があります。 その間は、ブルー プリントのロックで保護しようとしたリソースが削除される可能性もあります。
@@ -161,7 +161,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>拒否割り当てからアクションを除外する
 
-ブループリント割り当ての[拒否割り当て](../../../role-based-access-control/deny-assignments.md)で[プリンシパルを除外する](#exclude-a-principal-from-a-deny-assignment)場合と同様に、特定の [RBAC 操作](../../../role-based-access-control/resource-provider-operations.md)を除外することができます。 **properties.locks** ブロック内の **excludedPrincipals** と同じ場所に **excludedActions** を追加できます。
+ブループリント割り当ての[拒否割り当て](../../../role-based-access-control/deny-assignments.md)で[プリンシパルを除外する](#exclude-a-principal-from-a-deny-assignment)場合と同様に、特定の [Azure リソース プロバイダーの操作](../../../role-based-access-control/resource-provider-operations.md)を除外することができます。 **properties.locks** ブロック内の **excludedPrincipals** と同じ場所に **excludedActions** を追加できます。
 
 ```json
 "locks": {
@@ -177,7 +177,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 },
 ```
 
-**excludedPrincipals** は明示的である必要がありますが、**excludedActions** エントリでは、RBAC 操作のワイルドカード検索に `*` を使用できます。
+**excludedPrincipals** は明示的である必要がありますが、**excludedActions** エントリでは、リソースプロバイダー操作のワイルドカード検索に `*` を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

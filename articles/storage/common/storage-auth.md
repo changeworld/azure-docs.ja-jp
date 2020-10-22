@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029537"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714428"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure Storage 内のデータへのアクセスの承認
 
@@ -33,11 +33,11 @@ ms.locfileid: "87029537"
 
 ここでは、各認証オプションについて簡単に説明します。
 
-- BLOB とキュー用の **Azure Active Directory (Azure AD) 統合**。 Azure AD には、ストレージ アカウント内のリソースに対するクライアントのアクセスを制御するロールベースのアクセス制御 (RBAC) が用意されています。 BLOB とキューに対する Azure AD 統合の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
+- BLOB とキュー用の **Azure Active Directory (Azure AD) 統合**。 Azure には、ストレージ アカウント内のリソースに対するクライアントのアクセスを制御する Azure ロールベースのアクセス制御 (Azure RBAC) が用意されています。 BLOB とキューに対する Azure AD 統合の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
 
-- Azure Files の **Azure Active Directory Domain Services (Azure AD DS) 認証**。 Azure Files では、Azure AD DS を介したサーバー メッセージ ブロック (SMB) の ID ベースの承認がサポートされています。 RBAC を使用して、ストレージ アカウント内の Azure Files リソースへのクライアントのアクセスを細かく制御できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)のページを参照してください。
+- Azure Files の **Azure Active Directory Domain Services (Azure AD DS) 認証**。 Azure Files では、Azure AD DS を介したサーバー メッセージ ブロック (SMB) の ID ベースの承認がサポートされています。 Azure RBAC を使用して、ストレージ アカウント内の Azure Files リソースへのクライアントのアクセスを細かく制御できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)のページを参照してください。
 
-- Azure Files 用の**オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS) 認証 (プレビュー)** 。 Azure Files では、AD DS を使用した SMB での ID ベースの承認がサポートされています。 AD DS 環境は、オンプレミス マシンまたは Azure VM でホストできます。 Files への SMB アクセスは、ドメインに参加しているマシン (オンプレミスまたは Azure) からの AD DS 資格情報を使用してサポートされます。 共有レベルのアクセス制御には RBAC の組み合わせを、ディレクトリまたはファイル レベルのアクセス許可の適用には NTFS DACL を使用できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)のページを参照してください。
+- Azure Files 用の**オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS) 認証 (プレビュー)** 。 Azure Files では、AD DS を使用した SMB での ID ベースの承認がサポートされています。 AD DS 環境は、オンプレミス マシンまたは Azure VM でホストできます。 Files への SMB アクセスは、ドメインに参加しているマシン (オンプレミスまたは Azure) からの AD DS 資格情報を使用してサポートされます。 共有レベルのアクセス制御には Azure RBAC の組み合わせを、ディレクトリまたはファイル レベルのアクセス許可の適用には NTFS DACL を使用できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)のページを参照してください。
 
 - BLOB、ファイル、キュー、およびテーブル用の**共有キー認証**。 共有キーを使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求にヘッダーを渡します。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key/)に関するページを参照してください。
 - BLOB、ファイル、キュー、およびテーブル用の**共有アクセス署名**。 共有アクセス署名 (SAS) には、ストレージ アカウント内のリソースに対する制限付きの委任アクセス機能があります。 署名が有効な期間、または付与するアクセス許可に制約を追加すると、柔軟にアクセスを管理できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。

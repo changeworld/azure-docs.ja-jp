@@ -3,17 +3,17 @@ title: 複数リージョン環境での Azure Cosmos SDK の可用性の診断�
 description: 複数リージョン環境で操作する場合の Azure Cosmos SDK の可用性の動作について、詳しく説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/16/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0c717aca88095df05fc7927f3c3d6e2d481925d2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708470"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743966"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>複数リージョン環境での Azure Cosmos SDK の可用性の診断とトラブルシューティング
 
@@ -25,14 +25,36 @@ ms.locfileid: "90708470"
 * .NET V3 SDK の [CosmosClientOptions.ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) または [CosmosClientOptions.ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) プロパティ。
 * Java V4 SDK の [CosmosClientBuilder.preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) メソッド。
 * Python SDK の [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) パラメーター。
+* JS SDK の [CosmosClientOptions.ConnectionPolicy.preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) パラメーター。
 
-単一書き込みリージョン アカウントの場合、すべての書き込み操作は常にその書き込みリージョンに送られるため、優先リージョンの一覧は読み取り操作にのみ適用されます。 複数書き込みリージョン アカウントの場合、優先設定一覧は読み取りおよび書き込み操作に影響します。
+リージョンの優先設定を設定すると、クライアントは、次の表に示すようにリージョンに接続します。
 
-優先リージョンを設定しない場合、リージョンの優先順位は [Azure Cosmos DB リージョン一覧の順序](distribute-data-globally.md)によって定義されます。
+|アカウントの種類 |読み取り |書き込み |
+|------------------------|--|--|
+| 単一の書き込みリージョン | 優先リージョン | プライマリ リージョン  |
+| 複数の書き込みリージョン | 優先リージョン | 優先リージョン  |
+
+優先リージョンを設定していない場合は、次のようになります。
+
+|アカウントの種類 |読み取り |書き込み |
+|------------------------|--|--|
+| 単一の書き込みリージョン | プライマリ リージョン | プライマリ リージョン |
+| 複数の書き込みリージョン | プライマリ リージョン  | プライマリ リージョン  |
+
+> [!NOTE]
+> プライマリ リージョンとは、[Azure Cosmos アカウント リージョン一覧](distribute-data-globally.md)の最初のリージョンを指します
 
 次のシナリオのいずれかが発生すると、Azure Cosmos SDK を使用するクライアントではログが公開され、**操作の診断情報**の一部として再試行情報が含まれます。
 
-## <a name="removing-a-region-from-the-account"></a><a id="remove region"></a>アカウントからのリージョンの削除
+* .NET V2 SDK の応答の *RequestDiagnosticsString* プロパティ。
+* .NET V3 SDK の応答と例外の *Diagnostics* プロパティ。
+* Java V4 SDK の応答と例外の *getDiagnostics()* メソッド。
+
+優先順位において次のリージョンを決定する際、SDK クライアントではアカウント リージョンの一覧が使用され、優先リージョン (存在する場合) が優先されます。
+
+これらのイベント中の SLA 保証に関する包括的な詳細については、「[可用性に関する SLA](high-availability.md#slas-for-availability)」を参照してください。
+
+## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>アカウントからのリージョンの削除
 
 Azure Cosmos アカウントからリージョンを削除すると、アカウントをアクティブに使用している SDK クライアントでは、バックエンドの応答コードを介してリージョンの削除が検出されます。 次に、クライアントによってリージョンのエンドポイントは使用不可とマークされます。 クライアントによって現在の操作が再試行され、以降のすべての操作は優先順に次のリージョンに永続的にルーティングされます。
 
@@ -40,7 +62,7 @@ Azure Cosmos アカウントからリージョンを削除すると、アカウ�
 
 Azure Cosmos SDK クライアントでは、5 分ごとにアカウント構成が読み取られ、認識しているリージョンが更新されます。
 
-リージョンを削除して後でアカウントに追加し直した場合、追加したリージョンの優先度が高くなると、SDK はそのリージョンを永続的に使用するように切り替わります。 追加されたリージョンが検出された後、それ以降のすべての要求はそのリージョンに送信されます。
+リージョンを削除して後でアカウントに追加し直した場合、SDK 構成のリージョンの優先順位において、追加したリージョンの方が現在接続されているリージョンより高いと、SDK はそのリージョンを永続的に使用するように切り替わります。 追加されたリージョンが検出された後、それ以降のすべての要求はそのリージョンに送信されます。
 
 Azure Cosmos アカウントに割り当てられていないリージョンに接続するようにクライアントを構成した場合、優先リージョンは無視されます。 後でそのリージョンを追加すると、クライアントはそれを検出し、そのリージョンに永続的に切り替わります。
 
@@ -50,7 +72,7 @@ Azure Cosmos アカウントに割り当てられていないリージョンに�
 
 ## <a name="regional-outage"></a>リージョンの停止
 
-アカウントが単一書き込みリージョンであり、書き込み操作中にリージョンの停止が発生した場合、動作は[手動フェールオーバー](#manual-failover-single-region)と同様です。 読み取り要求または複数書き込みリージョン アカウントの場合、動作は[リージョンの削除](#remove region)と同様です。
+アカウントが単一書き込みリージョンであり、書き込み操作中にリージョンの停止が発生した場合、動作は[手動フェールオーバー](#manual-failover-single-region)と同様です。 読み取り要求または複数書き込みリージョン アカウントの場合、動作は[リージョンの削除](#remove-region)と同様です。
 
 ## <a name="session-consistency-guarantees"></a>セッションの整合性の保証
 
@@ -64,6 +86,7 @@ Azure Cosmos SDK クライアントが TCP プロトコルを使用するよう�
 
 ## <a name="next-steps"></a>次の手順
 
+* [可用性の SLA](high-availability.md#slas-for-availability) を確認する。
 * 最新の [.NET SDK](sql-api-sdk-dotnet-standard.md) を使用する
 * 最新の [Java SDK](sql-api-sdk-java-v4.md) を使用する
 * 最新の [Python SDK](sql-api-sdk-python.md) を使用する

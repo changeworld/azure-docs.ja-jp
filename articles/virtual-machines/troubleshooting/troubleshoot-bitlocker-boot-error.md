@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088532"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91404903"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
@@ -43,7 +43,7 @@ ms.locfileid: "87088532"
 
 ## <a name="solution"></a>解決策
 
-この問題を解決するには、VM を停止して割り当てを解除した後、再起動します。 この操作によって、VM は、Azure Key Vault から BEK ファイルを取得した後、それを暗号化されたディスクに保存します。 
+この問題を解決するには、VM を停止して割り当てを解除した後、これを起動します。 この操作によって、VM は、Azure Key Vault から BEK ファイルを取得した後、それを暗号化されたディスクに保存します。 
 
 この方法で問題が解決しない場合は、次の手順で BEK ファイルを手動で復元します。
 

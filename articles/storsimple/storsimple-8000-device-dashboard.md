@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512043"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766252"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスでデバイスの概要を使用する
 
@@ -86,7 +86,7 @@ StorSimple デバイス ブレードには、StorSimple デバイスを管理す
 
 * **[容量]** タイルには、デバイスにプロビジョニング済みのプライマリ ストレージの容量と残りのプライマリ ストレージの容量が表示されます。これらは、デバイスが使用できるストレージの総容量に対する数値です。 **[プロビジョニング済み]** は、使用のための準備および割り当てが完了しているストレージ容量を、 **[残り]** は、このデバイス全体でプロビジョニングできる残りの容量を示します。 
 
-    ![使用状況タイル](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![使用状況タイル 2](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     容量が階層化ストレージとローカル固定ボリュームにどのようにプロビジョニングされているかを確認するには、このタイルをクリックします。 **[Remaining Tiered]\(残りの階層型容量\)** は、クラウドを含めてプロビジョニングするために使用できる容量です。 **[Remaining Local]\(残りのローカル容量\)** は、このディスクに接続されているディスクに残っている容量です。
 

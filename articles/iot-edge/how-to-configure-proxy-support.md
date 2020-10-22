@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500370"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045960"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -25,7 +25,7 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 1. [**デバイスに IoT Edge ランタイムをインストールする**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge のインストール スクリプトによってインターネットからパッケージとファイルが取得されるので、デバイスではこれらの要求を行うためにプロキシ サーバーを介して通信する必要があります。 Windows デバイスの場合、インストール スクリプトには[オフライン インストール](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) オプションもあります。
+   IoT Edge のインストール スクリプトによってインターネットからパッケージとファイルが取得されるので、デバイスではこれらの要求を行うためにプロキシ サーバーを介して通信する必要があります。 Windows デバイスの場合、インストール スクリプトにはオフライン インストール オプションもあります。
 
    この手順は、最初に設定するときに IoT Edge デバイスを構成するための 1 回限りのプロセスです。 IoT Edge ランタイムを更新するときにも同じ接続が必要です。
 
@@ -65,7 +65,7 @@ IoT Edge デバイスが Windows または Linux のどちらで動作してい�
 
 ### <a name="linux-devices"></a>Linux デバイス
 
-Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。
+Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)」の手順に従います。
 
 ### <a name="windows-devices"></a>Windows デバイス
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 オフライン インストールなど、Windows インストール オプションの詳細については、[Windows への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-windows.md)に関するページを参照してください。
+プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 Windows インストール パラメーターの詳細については、「[Windows 上の IoT Edge 用の PowerShell スクリプト](reference-windows-scripts.md)」を参照してください。
 
 ## <a name="configure-the-daemons"></a>デーモンを構成する
 
@@ -108,7 +108,7 @@ Moby は Docker 上に構築されるため、環境変数を使用して Moby �
 お使いの IoT Edge デバイス オペレーティング システムに該当する記事を選択します。
 
 * [Linux で Docker デーモンを構成する](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux デバイス上の Moby デーモンは Docker の名前を保持します。
-* [Windows で Docker デーモンを構成する](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows デバイス上の Moby デーモンは iotedge-moby と呼ばれます。 名前が異なるのは、Docker Desktop と Moby の両方が 1 台の Windows デバイスで並列実行される可能性があるためです。
+* [Windows で Docker デーモンを構成する](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows デバイス上の Moby デーモンは iotedge-moby と呼ばれます。 名前が異なるのは、Docker Desktop と Moby の両方が 1 台の Windows デバイスで並列実行される可能性があるためです。
 
 ### <a name="iot-edge-daemon"></a>IoT Edge デーモン
 

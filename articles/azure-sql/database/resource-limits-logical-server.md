@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 06/10/2020
-ms.openlocfilehash: eac5814eb977a01135ad2fcd9551b3475673dbca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691749"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058252"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database と Azure Synapse Analytics サーバーのリソース制限
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -98,18 +98,18 @@ ms.locfileid: "84691749"
 
 |解決策|説明|
 | :----- | :----- |
-|メモリ許可のサイズを小さくする|メモリ許可の詳細については、[SQL Server メモリ許可の理解](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595)に関するブログ記事をご覧ください。 過度に大きなメモリ許可を回避するための一般的な解決策は、[統計](https://docs.microsoft.com/sql/relational-databases/statistics/statistics)を最新の状態に保つことです。 これにより、クエリ エンジンによるメモリ消費量がより正確に推定されるため、不必要に大きいメモリ許可を回避できます。</br></br>互換性レベル 140 以降が使用されているデータベースでは、データベース エンジンにより、[バッチ モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback)を使用したメモリ許可サイズの自動調整が行われる場合があります。 互換性レベル 150 以降が使用されているデータベースでは、より一般的な行モードのクエリに対して、データベースエンジンにより、[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)が同じように使用されます。 この組み込み機能を使用すると、不必要に大きなメモリ許可が原因のメモリ不足エラーを回避できます。|
+|メモリ許可のサイズを小さくする|メモリ許可の詳細については、[SQL Server メモリ許可の理解](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595)に関するブログ記事をご覧ください。 過度に大きなメモリ許可を回避するための一般的な解決策は、[統計](https://docs.microsoft.com/sql/relational-databases/statistics/statistics)を最新の状態に保つことです。 これにより、クエリ エンジンによるメモリ消費量がより正確に推定されるため、不必要に大きいメモリ許可を回避できます。</br></br>互換性レベル 140 以降が使用されているデータベースでは、データベース エンジンにより、[バッチ モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)を使用したメモリ許可サイズの自動調整が行われる場合があります。 互換性レベル 150 以降が使用されているデータベースでは、より一般的な行モードのクエリに対して、データベースエンジンにより、[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)が同じように使用されます。 この組み込み機能を使用すると、不必要に大きなメモリ許可が原因のメモリ不足エラーを回避できます。|
 |クエリ プラン キャッシュのサイズを小さくする|クエリの実行ごとにクエリ プランがコンパイルされないように、データベース エンジンにより、クエリ プランがメモリ内にキャッシュされます。 1 回だけ使用されるキャッシュ プランによって発生するクエリ プラン キャッシュの肥大化を回避するには、OPTIMIZE_FOR_AD_HOC_WORKLOADS [データベース スコープ構成](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)を有効にします。|
 |ロック メモリのサイズを小さくする|データベース エンジンにより、[ロック](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine)にメモリが使用されます。 可能であれば、大量のロックを取得し、ロック メモリの消費量が高くなる可能性のある大きなトランザクションは避けてください。|
 
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>ユーザー ワークロードと内部プロセスによるリソース使用量
 
-各データベースのユーザー ワークロードによる CPU とメモリの使用量は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ビューの `avg_cpu_percent` 列と `avg_memory_usage_percent` 列で報告されます。 エラスティック プールの場合、プール レベルのリソース消費は、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビューで報告されます。 ユーザー ワークロードの CPU 消費量は、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`cpu_percent` Azure Monitor メトリックによって報告されます。
+各データベースのユーザー ワークロードによる CPU とメモリの使用量は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューの `avg_cpu_percent` 列と `avg_memory_usage_percent` 列で報告されます。 エラスティック プールの場合、プール レベルのリソース消費は、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビューで報告されます。 ユーザー ワークロードの CPU 消費量は、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`cpu_percent` Azure Monitor メトリックによって報告されます。
 
 Azure SQL Database には、高可用性とディザスター リカバリー、データベースのバックアップと復元、監視、クエリ ストア、自動チューニングなどの中核的なサービス機能を実装するための、コンピューティング リソースが必要です。システムでは、[リソース ガバナンス](#resource-governance) メカニズムを使用して、これらの内部プロセス用にリソース全体の特定の限られた部分が確保されます。これにより、ユーザーのワークロードで残りのリソースを使用できるようになります。 内部プロセスでコンピューティング リソースが使用されていない場合は、システムによってユーザーのワークロードで使用できるようになります。
 
-ユーザー ワークロードと内部プロセスによる CPU とメモリの使用量の合計は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ビューの `avg_instance_cpu_percent` 列と `avg_instance_memory_percent` 列で報告されます。 このデータは、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`sqlserver_process_core_percent` および `sqlserver_process_memory_percent` Azure Monitor メトリックによって報告されます。
+ユーザー ワークロードと内部プロセスによる CPU とメモリの使用量の合計は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューの `avg_instance_cpu_percent` 列と `avg_instance_memory_percent` 列で報告されます。 このデータは、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`sqlserver_process_core_percent` および `sqlserver_process_memory_percent` Azure Monitor メトリックによって報告されます。
 
 ユーザー ワークロードと内部プロセスによる最近のリソース消費の詳細な内訳は、[sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) および [sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) ビューで報告されます。 これらのビューで参照されているリソース プールとワークロード グループの詳細については、「[リソース管理](#resource-governance)」を参照してください。 これらのビューでは、関連付けられているリソース プールおよびワークロード グループにおける、ユーザー ワークロードと特定の内部プロセスによるリソース使用量が報告されます。
 
@@ -137,11 +137,11 @@ Azure SQL Database のリソース管理は、本質的に階層化されてい�
 
 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューから返される IOPS およびスループットの最小値および最大値は、保証としてではなく、制限/上限として機能します。 さらに、リソース管理によって、特定のストレージ待機時間が保証されるわけではありません。 特定のユーザーのワークロードに対して実現できる最適な待機時間、IOPS、スループットは、IO リソース管理の上限だけではなく、使用される最大 IO サイズや基になるストレージの機能にも依存します。 SQL Database で使用される IO のサイズは、512 KB から 4 MB の間で変動します。 IOPS 制限の適用という目的のために、Azure Storage 内でデータ ファイルを備えるデータベースに例外が発生した場合は、サイズに関係なくどの IO も考慮されます。 その場合、Azure Storage IO の説明に従って、256 KB より大規模な IO は、複数の 256 KB の IO として考慮されます。
 
-Azure Storage 内のデータ ファイルを使用する Basic、Standard、General Purpose データベースでは、IOPS のこの数値を累積的に提供できる十分なデータ ファイルがデータベースにない場合、データがファイル間で均等に分散されていない場合、または、基本となる BLOB のパフォーマンス レベルによって IOPS/スループットがリソース管理の制限より下に制限される場合、`primary_group_max_io` 値に到達することはありません。 同様に、頻繁なトランザクション コミットによって生成された小規模なログ IO では、基になる Azure ストレージ BLOB 上の IOPS 制限があるため、ワークロードによって `primary_max_log_rate` 値に到達することはありません。
+Azure Storage 内のデータ ファイルを使用する Basic、Standard、General Purpose の各データベースでは、IOPS のこの数値を累積的に提供できる十分なデータ ファイルがデータベースにない場合、データがファイル間で均等に分散されていない場合、または基本となる BLOB のパフォーマンス レベルによって IOPS/スループットがリソース管理の制限より下に制限される場合、`primary_group_max_io` 値に到達することはありません。 同様に、頻繁なトランザクション コミットによって生成された小規模なログ IO では、基になる Azure Storage BLOB 上に IOPS 制限があるため、ワークロードによって `primary_max_log_rate` 値に到達することはありません。 Azure Premium Storage を使用するデータベースの場合、Azure SQL Database では、データベースのサイズに関係なく、必要な IOPS/スループットを取得するのに十分な大容量のストレージ BLOB が使用されます。 大規模なデータベースの場合、合計 IOPS/スループット容量を増やすために複数のデータファイルが作成されます。
 
 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビュー上で報告される `avg_data_io_percent` および `avg_log_write_percent` などのリソース使用率の値は、リソース管理の上限の割合として計算されています。 そのため、リソース管理以外の要素によって IOPS/スループットが制限される場合は、報告されるリソース使用率が 100% を下回ったままであっても、IOPS/スループットのフラット化とワークロードの増加に伴う待機時間の増加が見られる可能性があります。
 
-データベース ファイルごとの読み取りおよび書き込みの IOPS、スループット、および待機時間を確認するには、[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 関数を使用します。 この関数では、`avg_data_io_percent` に対しては考慮されないバックグラウンド IO を含む、データベースに対するすべての IO が網羅されますが、基になるストレージの IOPS とスループットが使用され、監視されているストレージの待機時間に影響を及ぼす可能性があります。 また、この関数では、IO リソース管理によって発生する可能性のある読み取りと書き込みの追加の待機時間も、それぞれ `io_stall_queued_read_ms` 列と `io_stall_queued_write_ms` 列に表示されます。
+データベース ファイルごとの読み取りおよび書き込みの IOPS、スループット、および待機時間を確認するには、[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 関数を使用します。 この関数では、`avg_data_io_percent` に対しては考慮されないバックグラウンド IO を含む、データベースに対するすべての IO が網羅されますが、基になるストレージの IOPS とスループットが使用され、監視されているストレージの待機時間に影響を及ぼす可能性があります。 この関数では、IO リソース管理によって発生する可能性のある読み取りと書き込みの追加の待機時間も、それぞれ `io_stall_queued_read_ms` 列と `io_stall_queued_write_ms` 列に表示されます。
 
 ### <a name="transaction-log-rate-governance"></a>トランザクション ログ速度ガバナンス
 
@@ -173,6 +173,14 @@ Azure Storage 内のデータ ファイルを使用する Basic、Standard、Gen
 - 最大 96 MB/秒のログ速度を実現したり、異なるサービス レベルに切り替えるには、より高いサービス レベルにスケールアップします。 [Hyperscale](service-tier-hyperscale.md) サービス レベルでは、選択したサービス レベルに関係なく、100 MB/秒のログ速度が提供されます。
 - ETL プロセスでのステージング データなど、読み込まれるデータが一時的なデータである場合、tempdb に読み込むことができます (ログ記録が最小限に抑えられます)。
 - 分析シナリオでは、クラスター化列ストアの対象テーブルに読み込みます。 この場合は圧縮されるため、必要なログ速度が小さくなります。 この手法では CPU 使用率が増加し、クラスター化列ストア インデックスからメリットを得られるデータ セットにのみ適用できます。
+
+### <a name="storage-space-governance"></a>ストレージ スペースのガバナンス
+
+Premium および Business Critical のサービス レベルでは、データ ログ ファイルとトランザクション ログ ファイルは、データベースまたはエラスティック プールをホストしているマシンのローカル SSD ボリュームに格納されます。 このため、IOPS とスループットが高くなり、IO 待機時間が短くなります。 このローカル ボリュームのサイズは、ハードウェアの機能によって異なり、有限です。 特定のマシンでは、ローカル ボリュームの領域は、`tempdb`、オペレーティング システム、管理ソフトウェア、監視データ、ログなどを含む顧客データベースによって消費されます。データベースの作成、削除、および領域の使用量の増減に応じて、マシン上のローカル領域の消費量は時間の経過と共に変動します。 
+
+マシンで使用可能な空き領域が不足していることがシステムによって検出され、データベースまたはエラスティック プールが領域不足である場合、十分な空き領域がある別のマシンにデータベースまたはエラスティック プールが移動します。このため、構成されたサービス目標の最大サイズ制限一杯まで使用することが可能になります。 この移動処理は、データベースのスケーリング操作と同様にオンラインで実行され、操作終了時の短時間 (秒単位) のフェールオーバーなど、 これと同様の[影響](single-database-scale.md#impact)を与えます。 このフェールオーバーにより、開いている接続が終了され、トランザクションがロールバックされるので、その時点でデータベースを使用しているアプリケーションに影響を与える可能性があります。
+
+データは物理的に別のマシンにコピーされるため、より大きなデータベースを移動するにはかなりの時間が必要になることがあります。 その間、大規模なユーザー データベースやエラスティック プール、または `tempdb` データベースによるローカル領域の使用量が非常に急速に増加している場合は、領域が不足する危険性が高くなります。 システムでは、領域不足エラーと不要なフェールオーバーを回避するために、データベースの移動がバランスの取れた方法で開始されます。
 
 ## <a name="next-steps"></a>次のステップ
 

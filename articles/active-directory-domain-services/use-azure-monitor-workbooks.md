@@ -1,20 +1,20 @@
 ---
 title: Azure AD Domain Services で Azure Monitor ブックを使用する | Microsoft Docs
 description: Azure Monitor ブックを使用して、セキュリティ監査を確認し、Azure Active Directory Domain Services のマネージド ドメインの問題を把握する方法について説明します。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722740"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967071"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
@@ -58,7 +58,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com*)。
 1. 左側のメニューで、 **[監視] > [ブック]** を選択します。
 
-    ![Azure portal で [ブック] メニュー オプションを選択する](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![セキュリティの概要レポートとアカウント アクティビティ レポートを選択する箇所が強調表示されている画面のスクリーンショット。](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. **[Security Overview Report]\(セキュリティの概要レポート\)** を選択します。
 1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。

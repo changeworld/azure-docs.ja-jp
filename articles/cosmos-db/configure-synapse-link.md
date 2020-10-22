@@ -1,52 +1,52 @@
 ---
 title: Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
-description: Azure Cosmos アカウントの Synapse Link を有効にする方法、分析ストアを有効にしたコンテナーを作成する方法、Synapse ワークスペースに Azure Cosmos データベースを接続する方法、クエリを実行する方法について説明します。
+description: Azure Cosmos DB アカウントの Synapse Link を有効にする方法、分析ストアを有効にしたコンテナーを作成する方法、Synapse ワークスペースに Azure Cosmos データベースを接続する方法、クエリを実行する方法について説明します。
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a375656f579e626d8f41afe49adc3f2ebdb3b27d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891711"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757845"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
 
-Azure Cosmos DB の Synapse Link は、クラウド ネイティブのハイブリッド トランザクションと分析処理 (HTAP) の機能です。これを使用すると、Azure Cosmos DB のオペレーショナル データに対して準リアルタイムの分析を実行できます。 Synapse Link によって、Azure Cosmos DB と Azure Synapse Analytics の間の緊密でシームレスな統合が実現します。
+[Azure Synapse Link for Azure Cosmos DB](synapse-link.md) は、クラウド ネイティブのハイブリッド トランザクションと分析処理 (HTAP) の機能です。これを使用すると、Azure Cosmos DB のオペレーショナル データに対してリアルタイムに近い分析を実行できます。 Synapse Link によって、Azure Cosmos DB と Azure Synapse Analytics の間の緊密でシームレスな統合が実現します。
 
 > [!IMPORTANT]
-> Azure Synapse Link を使用するには、サポートされているリージョンのいずれかで Azure Cosmos アカウントと Azure Synapse Analytics ワークスペースを確実にプロビジョニングしてください。 Azure Synapse Link は現在、次の Azure リージョンでご利用いただけます。米国中西部、米国東部、米国西部 2、北ヨーロッパ、西ヨーロッパ、米国中南部、東南アジア、オーストラリア東部、米国東部 2、英国南部。
+> Azure Synapse Link を使用するには、サポートされているリージョンのいずれかで Azure Cosmos DB アカウントと Azure Synapse Analytics ワークスペースを確実にプロビジョニングしてください。 Azure Synapse Link は現在、次の Azure リージョンでご利用いただけます。米国中西部、米国東部、米国西部 2、北ヨーロッパ、西ヨーロッパ、米国中南部、東南アジア、オーストラリア東部、米国東部 2、英国南部。
 
-Azure Cosmos DB の Synapse Link を使用して分析クエリを実行するには、次の手順に従います。
+Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo DB コレクション用の Azure Cosmos DB API で使用できます。 Azure Cosmos DB の Azure Synapse Link を使用して分析クエリを実行するには、次の手順に従います。
 
-* [Azure Cosmos アカウントの Synapse Link を有効にする](#enable-synapse-link)
-* [分析ストアが有効な Azure Cosmos コンテナーを作成する](#create-analytical-ttl)
-* [Azure Cosmos データベースを Synapse ワークスペースに接続する](#connect-to-cosmos-database)
+* [Azure Cosmos DB アカウントの Synapse Link を有効にする](#enable-synapse-link)
+* [分析ストアが有効な Azure Cosmos DB コンテナーを作成する](#create-analytical-ttl)
+* [Azure Cosmos DB データベースを Synapse ワークスペースに接続する](#connect-to-cosmos-database)
 * [Synapse Spark を使用して分析ストアにクエリを実行する](#query-analytical-store-spark)
 * [Synapse SQL サーバーレスを使用して分析ストアのクエリを実行する](#query-analytical-store-sql-on-demand)
 * [Synapse SQL サーバーレスを使用して Power BI のデータを分析して視覚化する](#analyze-with-powerbi)
 
-## <a name="enable-azure-synapse-link-for-azure-cosmos-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos アカウントの Azure Synapse Link を有効にする
+## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos DB アカウントの Azure Synapse Link を有効にする
 
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. [新しい Azure アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos アカウントを選択します。
+1. [新しい Azure アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos DB アカウントを選択します。
 
-1. Azure Cosmos アカウントに移動して、 **[機能]** ペインを開きます。
+1. Azure Cosmos DB アカウントに移動して、 **[機能]** ペインを開きます。
 
 1. 機能一覧から **[Synapse Link]** を選択します。
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Synapse Link プレビュー機能の検索":::
 
-1. 次に、ご利用のアカウントで Synapse Link を有効にするように求めるメッセージが表示されます。 [有効化] を選択します。
+1. 次に、ご利用のアカウントで Synapse Link を有効にするように求めるメッセージが表示されます。 **[有効化]** を選択します。 処理が完了するまでに 1 ～ 5 分かかることがあります。
 
-   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Synapse Link 機能の有効化":::
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Synapse Link プレビュー機能の検索":::
 
 1. これで、ご利用のアカウントで Synapse Link を使用できるようになりました。 次に、分析ストアが有効なコンテナーを作成して、トランザクション ストアから分析ストアへのオペレーショナル データのレプリケートを自動的に開始する方法について確認します。
 
@@ -64,15 +64,17 @@ Azure Cosmos DB の Synapse Link を使用して分析クエリを実行する�
 
 1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos Explorer](https://cosmos.azure.com/) にサインインします。
 
-1. Azure Cosmos アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
+1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
 1. **[新しいコンテナー]** を選択し、データベースの名前、コンテナー、パーティション キー、スループットの詳細を入力します。 **[分析ストア]** オプションをオンにします。 分析ストアを有効にすると、`AnalyicalTTL` プロパティが既定値の -1 (無限のリテンション期間) に設定されたコンテナーが作成されます。 この分析ストアでは、レコードのすべての履歴バージョンが保持されます。
 
-   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Azure Cosmos コンテナーの分析ストアを有効にする":::
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Synapse Link プレビュー機能の検索":::
 
-1. このアカウントで以前に Synapse Link を有効にしていない場合は、分析ストアが有効なコンテナーを作成するための前提条件であるため、これを行うように求めるメッセージが表示されます。 プロンプトが表示されたら、 **[Enable Synapse Link]\(Synapse Link を有効にする\)** を選択します。
+1. このアカウントで以前に Synapse Link を有効にしていない場合は、分析ストアが有効なコンテナーを作成するための前提条件であるため、これを行うように求めるメッセージが表示されます。 プロンプトが表示されたら、 **[Enable Synapse Link]\(Synapse Link を有効にする\)** を選択します。 処理が完了するまでに 1 ～ 5 分かかることがあります。
 
 1. **[OK]** を選択して、分析ストアが有効な Azure Cosmos コンテナーを作成します。
+
+1. コンテナーが作成されたら、Data Explorer の [ドキュメント] のすぐ下にある **[設定]** をクリックして分析ストアが有効になっていることを確認し、 **[分析ストアの Time-to-Live]** オプションがオンになっているかどうかを確認します。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -170,7 +172,7 @@ Azure portal を使用して分析ストアが有効なコンテナーを作成�
 
 1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos Explorer](https://cosmos.azure.com/) にサインインします。
 
-1. Azure Cosmos アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
+1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
 1. 分析ストアが有効になっている既存のコンテナーを選択します。 それを展開し、次の値を変更します。
 
@@ -215,7 +217,7 @@ Synapse Spark を使用してクエリを実行する方法については、[Az
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a>Synapse SQL サーバーレスを使用して分析ストアのクエリを実行する
 
-Synapse SQL サーバーレス (以前は **SQL オンデマンド**と呼ばれていたプレビュー機能) を使用すると、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータのクエリを実行して分析できます。 トランザクション ワークロードのパフォーマンスに影響を与えることなく、凖リアルタイムでデータを分析できます。 T-SQL インターフェイスを使用して分析ストアおよび統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。 詳細については、[Synapse SQL サーバーレスを使用した分析ストアのクエリ](../synapse-analytics/sql/on-demand-workspace-overview.md)に関する記事を参照してください。
+Synapse SQL サーバーレス (以前は **SQL オンデマンド**と呼ばれていたプレビュー機能) を使用すると、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータのクエリを実行して分析できます。 トランザクション ワークロードのパフォーマンスに影響を与えることなく、凖リアルタイムでデータを分析できます。 T-SQL インターフェイスを使用して分析ストアおよび統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。 詳細については、[Synapse SQL サーバーレスを使用した分析ストアのクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアの使用は、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
@@ -226,7 +228,7 @@ Synapse Link for Azure Cosmos DB 上に Synapse SQL サーバーレス データ
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-[Azure Resource Manager テンプレート](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store)では、SQL API の Synapse Link が有効な Azure Cosmos アカウントを作成します。 このテンプレートでは、分析 TTL を有効にして構成されたコンテナーと、手動または自動スケールのスループットを使用するオプションで、1 つのリージョンにコア (SQL) API アカウントを作成します。 このテンプレートをデプロイするには、readme ページで **[Azure に配置する]** をクリックします。
+[Azure Resource Manager テンプレート](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store)では、SQL API の Synapse Link が有効な Azure Cosmos DB アカウントを作成します。 このテンプレートでは、分析 TTL を有効にして構成されたコンテナーと、手動または自動スケールのスループットを使用するオプションで、1 つのリージョンにコア (SQL) API アカウントを作成します。 このテンプレートをデプロイするには、readme ページで **[Azure に配置する]** をクリックします。
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Azure Synpase Link の使用を開始する - サンプル
 

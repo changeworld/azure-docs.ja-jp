@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708214"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91666774"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLI を使って仮想ネットワーク サービス エンドポイント ポリシーで Azure Storage アカウントへのデータの流出を管理する
 
@@ -252,7 +252,7 @@ az storage account network-rule add \
 
 Azure サービス エンドポイント ポリシーは、Azure Storage でのみ使用できます。 そのため、この例のセットアップでは、このサブネット上の *Microsoft.Storage* のサービス エンドポイントを有効にします。
 
-サービス エンドポイント ポリシーは、サービス エンドポイントに適用されます。 まず、サービス エンドポイント ポリシーを作成します。 次に、このサブネットに対してホワイトリストに登録する Azure Storage アカウントのポリシー定義をこのポリシーのもとで作成します。
+サービス エンドポイント ポリシーは、サービス エンドポイントに適用されます。 まず、サービス エンドポイント ポリシーを作成します。 次に、このサブネットに対して承認される Azure Storage アカウントのポリシー定義をこのポリシーのもとで作成します
 
 サービス エンドポイント ポリシーを作成する
 

@@ -1,16 +1,14 @@
 ---
 title: スタンドアロン Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にするには、スタンドアロン Service Fabric の定期バックアップと復元機能を使用します。
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: dd91b8eb120de24d752073fd80157e9d2a663594
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538587"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>標準的な Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -18,11 +16,11 @@ ms.locfileid: "90531323"
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Service Fabric は、信頼性に優れた分散型のマイクロサービス ベースのクラウド アプリケーションの開発と管理を簡単にする分散システム プラットフォームです。 ステートレスなマイクロ サービスとステートフルなマイクロ サービスの両方を実行できます。 ステートフル サービスは、要求と応答、または完全なトランザクションを超えて変更可能な信頼できる状態を維持できます。 災害が原因でステートフル サービスの長時間のダウンや情報の損失が発生した場合、再開後にサービスの提供を続行するためには、最新のバックアップの状態を復元する必要があります。
+Service Fabric は、信頼性に優れた分散型のマイクロサービス ベースのクラウド アプリケーションの開発と管理を簡単にする分散システム プラットフォームです。 ステートレスなマイクロ サービスとステートフルなマイクロ サービスの両方を実行できます。 ステートフル サービスは、要求と応答、または完全なトランザクションを超えて変更可能な信頼できる状態を維持できます。 災害が原因でステートフル サービスの長時間のダウンや情報の損失が発生した場合、再開後にサービスの提供を続行するためには、最新のバックアップの状態を復元することが必要な場合があります。
 
 Service Fabric は、複数のノードの状態をレプリケートして、サービスの高可用性を確保します。 クラスター内の 1 つのノードに障害が発生しても、サービスは引き続き利用できます。 ただし、広範な障害が発生した場合でも、サービス データの信頼性を確保しておくことをお勧めします。
  
-たとえば、次のような状況を防ぐために、サービスでそのデータをバックアップすることが望まれます。
+たとえば、次のような状況を防ぐために、サービスでそのデータをバックアップすることが必要な場合があります。
 - Service Fabric クラスター全体の完全な損失。
 - サービス パーティションのレプリカの過半数の完全な損失。
 - 状態が誤って削除されたり、破損したりするなどの管理エラー。 例: 十分な権限を持つ管理者が誤ってサービスを削除した。
@@ -39,7 +37,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
     - Azure Storage
     - ファイル共有 (オンプレミス)
 - バックアップを列挙する
-- パーティションのアドホック バックアップをトリガーする
+- パーティションの計画外バックアップをトリガーする
 - 以前のバックアップを使用してパーティションを復元する
 - バックアップを一時停止する
 - バックアップの保有期間を管理する (予定)
@@ -48,14 +46,14 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 * Service Fabric のバージョンが 6.4 以降の Fabric クラスター。 必要なパッケージのダウンロード手順については、この[記事](service-fabric-cluster-creation-for-windows-server.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得するか自己署名証明書を作成する方法については、[こちらの記事](service-fabric-windows-cluster-x509-security.md)を参照してください。
 
-* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 Net Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
-* 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
+* 構成の呼び出しを行うため、Microsoft.ServiceFabric.PowerShell.Http モジュール [プレビュー] をインストールします。
 
 ```powershell
-    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+    Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
 
-* Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
+* Microsoft.ServiceFabric.PowerShell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
 
 ```powershell
 
@@ -106,13 +104,13 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
     }
     ```
 
-4. 上記の変更でクラスター構成ファイルを更新したら、その変更を適用してデプロイ/アップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
+4. 上記の変更でクラスター構成ファイルを更新したら、その変更を適用してデプロイおよびアップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
 
 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化
 Reliable Stateful サービスと Reliable Actors の定期バックアップを有効にする手順について説明します。 これらの手順は、以下を前提としています。
-- クラスターが "_バックアップと復元サービス_" で設定されている。
+- クラスターがバックアップと復元の各サービスで構成されている。
 - Reliable Stateful サービスがクラスターにデプロイされている。 このクイックスタート ガイドでは、アプリケーションの URI は `fabric:/SampleApp` であり、このアプリケーションに属する Reliable Stateful サービスの URI は `fabric:/SampleApp/MyStatefulService` です。 このサービスは 1 つのパーティションでデプロイされ、パーティション ID は `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7` です。  
 
 ### <a name="create-backup-policy"></a>バックアップ ポリシーを作成する
@@ -122,7 +120,7 @@ Reliable Stateful サービスと Reliable Actors の定期バックアップを
 バックアップ ストレージ用に、ファイル共有を作成し、そのファイル共有にすべての Service Fabric のノード マシンに対する読み取り/書き込みアクセス権を付与します。 この例では、`BackupStore` という名前の共有が `StorageServer` 上に存在すると想定します。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.PowerShell.Http モジュールを使用した PowerShell
 
 ```powershell
 
@@ -177,7 +175,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 アプリケーションのデータ保護要件を満たすポリシーを定義した後、バックアップ ポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.PowerShell.Http モジュールを使用した PowerShell
 
 ```powershell
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
@@ -203,7 +201,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![アプリケーションのバックアップの有効化][3] 
 
-2. 最後に希望のポリシーを選択して、[バックアップの有効化] をクリックします。
+2. 最後に希望のポリシーを選択して、 *[バックアップの有効化]* を選択します。
 
     ![ポリシーの選択][4]
 
@@ -217,7 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 _GetBackups_ API を使用して、アプリケーションの Reliable Stateful サービスと Reliable Actors に属するすべてのパーティションに関連付けられているバックアップを列挙できます。 要件に応じて、アプリケーション、サービス、またはパーティションのバックアップを列挙できます。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.PowerShell.Http モジュールを使用した PowerShell
 
 ```powershell
     Get-SFApplicationBackupList -ApplicationId WordCount     

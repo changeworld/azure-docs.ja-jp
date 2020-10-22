@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055417"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530614"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -73,15 +73,15 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 1. **[構成]** を選択し、現在のスロットで固定する設定名を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Azure portal でスロットのアプリケーション設定を構成します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. **[デプロイ スロットの設定]** を選択し、 **[OK]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="デプロイ スロットの設定を構成します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. [設定] セクションが表示されなくなったら、 **[保存]** を選択して変更を保持します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="デプロイ スロットの設定を保存します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 ## <a name="deployment"></a>デプロイ
 
@@ -102,11 +102,11 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 1. **[デプロイ スロット]** を選択し、 **[+ スロットの追加]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Azure Functions デプロイ スロットを追加します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. スロットの名前を入力して、 **[追加]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Azure Functions デプロイ スロットに名前を付けます。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 ## <a name="swap-slots"></a>スロットをスワップする
 
@@ -115,11 +115,11 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 1. 関数アプリに移動します。
 1. **[デプロイ スロット]** を選択し、 **[スワップ]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="デプロイ スロットをスワップします。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. スワップの構成設定を確認して、 **[スワップ]** を選択します。
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="デプロイ スロットをスワップします。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 スワップ操作の実行中は、操作にしばらく時間がかかる場合があります。
 
@@ -137,15 +137,15 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 1. **[削除]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Azure portal でデプロイ スロットを削除します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. 削除するデプロイ スロットの名前を入力し、 **[削除]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Azure portal でデプロイ スロットを削除します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. [削除の確認] ウィンドウを閉じます。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="デプロイ スロットの削除の確認。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 ## <a name="automate-slot-management"></a>スロット管理を自動化する
 
@@ -174,7 +174,7 @@ App Service プランで実行されている関数アプリでは、スロッ�
 
 1. アップグレードするプランを選択するか、新しいプランを作成します。
 
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Azure portal で App Service プランを変更します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. **[OK]** を選択します。
 

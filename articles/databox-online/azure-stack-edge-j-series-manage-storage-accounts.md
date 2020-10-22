@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d3378b08ace73b2bc9a10286abf5a48f3063ba7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904539"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743507"
 ---
 # <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の Edge ストレージ アカウントを管理する
 
@@ -93,7 +93,7 @@ Edge ストレージ アカウントを削除するには、次の手順のよ�
 
 2. 確認を求められたら、 **[はい]** を選択します。
 
-    ![ストレージ キーの同期を選択](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
+    ![ストレージ キーの同期を選択 2](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

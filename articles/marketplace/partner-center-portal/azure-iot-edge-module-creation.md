@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815778"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708341"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
@@ -78,9 +78,9 @@ ms.locfileid: "88815778"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
-- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
+- [コマーシャル マーケットプレース オファーからの顧客リード](commercial-marketplace-get-customer-leads.md)
+- [リード管理についてよく寄せられる質問](../lead-management-faq.md#common-questions-about-lead-management)
+- [リード構成エラーのトラブルシューティング](../lead-management-faq.md#publishing-config-errors)
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
 続行する前に、 **[下書きの保存]** を選択します。
@@ -194,7 +194,7 @@ IoT Edge モジュールのオファーには、説明の一番下に、次の�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
@@ -242,7 +242,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure Marketplace の検索結果におけるオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Azure Marketplace の検索結果でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -252,7 +252,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure portal でのオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Azure portal でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -263,7 +263,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure portal の検索結果におけるオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Azure portal の検索結果でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -362,7 +362,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 Azure Marketplace でのプランの詳細の例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Azure Marketplace でのプランの詳細を示しています。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -372,7 +372,7 @@ Azure Marketplace でのプランの詳細の例を次に示します (表示さ
 
 <br>Azure portal でのプランの詳細の例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Azure portal でのプラン詳細を示しています。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -413,7 +413,7 @@ Azure Marketplace でのプランの詳細の例を次に示します (表示さ
 
 **[Azure Container Registry の管理者ユーザー名]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている[管理者ユーザー名](../../container-registry/container-registry-authentication.md#admin-account)を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 任意で、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-description"></a>コールアウトの説明
 
@@ -421,7 +421,7 @@ Azure Marketplace でのプランの詳細の例を次に示します (表示さ
 
 <br>**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Azure portal のアクセス キー画面の画像。":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -429,7 +429,7 @@ Azure Marketplace でのプランの詳細の例を次に示します (表示さ
 2. ユーザー名
 3. Password
 
-**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
+**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。 設定した名前は変更できません。 アカウント内のオファー別に一意の名前を使用します。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新しいバージョンのオファーのイメージ タグ
 
@@ -466,7 +466,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 - 名前 #1:ACCEPT_EULA
 - 値 #1:Y
 
-**既定のコンテナー作成オプション**。 コンテナー作成オプションでは、IoT Edge モジュールの Docker コンテナーの作成が指示されます。 IoT Edge では、Docker エンジン API のコンテナー作成オプションがサポートされています。 すべてのオプションは「[List containers](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)」(コンテナーの一覧) をご覧ください。 作成オプション フィールドは有効に JSON、エスケープなし、512 文字未満にする必要があります。
+**既定のコンテナー作成オプション**。 コンテナー作成オプションでは、IoT Edge モジュールの Docker コンテナーの作成が指示されます。 IoT Edge では、Docker エンジン API のコンテナー作成オプションがサポートされています。 すべてのオプションは「[List containers](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)」(コンテナーの一覧) をご覧ください。 作成オプション フィールドは有効な JSON、エスケープなし、512 文字未満にする必要があります。
 
 たとえば、モジュールでポートをバインドする必要がある場合、次の作成オプションを定義します。
 

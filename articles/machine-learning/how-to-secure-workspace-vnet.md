@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
-ms.date: 07/07/2020
+ms.author: peterlu
+author: peterclu
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 4dc1f86ce7dbb060c747c4433f0c2b871ce5582d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, contperfq4, tracking-python, contperfq1
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907645"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776046"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 
@@ -57,17 +57,16 @@ Azure Private Link では、プライベート エンドポイントを使用し
 
 プライベート リンク ワークスペースの設定の詳細については、「[Private Link を構成する方法](how-to-configure-private-link.md)」を参照してください。
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure のストレージ アカウントをサービス エンドポイントで保護する
 
-## <a name="secure-azure-storage-accounts"></a>Azure Storage アカウントをセキュリティで保護する
-
-このセクションでは、サービス エンドポイントを使用して Azure ストレージ アカウントをセキュリティで保護する方法について説明します。 ただし、プライベート エンドポイントを使用して Azure Storage をセキュリティで保護することもできます。 詳細については、「[Azure Storage のプライベート エンドポイントを使用する](../storage/common/storage-private-endpoints.md)」を参照してください。
+Azure Machine Learning では、サービス エンドポイントまたはプライベート エンドポイントを使用するようにストレージ アカウントを構成できます。 このセクションでは、サービス エンドポイントを使用して Azure ストレージ アカウントをセキュリティで保護する方法について説明します。 プライベート エンドポイントについては、次のセクションを参照してください。
 
 > [!IMPORTANT]
 > Azure Machine Learning 用の "_既定のストレージ アカウント_" と、"_既定以外のストレージ アカウント_" は、どちらも仮想ネットワークに配置できます。
 >
 > 既定のストレージ アカウントは、ワークスペースを作成するときに自動的にプロビジョニングされます。
 >
-> 既定以外のストレージ アカウントの場合、[`Workspace.create()` 関数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)の `storage_account` パラメーターを使用すると、Azure リソース ID によってカスタム ストレージ アカウントを指定できます。
+> 既定以外のストレージ アカウントの場合、[`Workspace.create()` 関数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true)の `storage_account` パラメーターを使用すると、Azure リソース ID によってカスタム ストレージ アカウントを指定できます。
 
 仮想ネットワーク内のワークスペースに Azure ストレージ アカウントを使用するには、次の手順を使用します。
 
@@ -95,9 +94,21 @@ Azure Private Link では、プライベート エンドポイントを使用し
 
    [![Azure portal 内の [ファイアウォールと仮想ネットワーク] ウィンドウ](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Azure のストレージ アカウントをプライベート エンドポイントで保護する
+
+Azure Machine Learning では、サービス エンドポイントまたはプライベート エンドポイントを使用するようにストレージ アカウントを構成できます。 ストレージ アカウントでプライベート エンドポイントが使用される場合、既定のストレージ アカウントにプライベート エンドポイントを 2 つ構成する必要があります。
+1. **BLOB** ターゲット サブリソースのあるプライベート エンドポイント。
+1. **ファイル** ターゲット サブリソースのあるプライベート エンドポイント (ファイル共有)。
+
+![プライベート エンドポイント構成ページのスクリーンショット。BLOB オプションとファイル オプションを確認できます。](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+既定のストレージでは**ない**ストレージ アカウントにプライベート エンドポイントを構成するには、追加するストレージ アカウントに相当する**ターゲット サブリソース** タイプを選択します。
+
+詳細については、「[Azure Storage のプライベート エンドポイントを使用する](../storage/common/storage-private-endpoints.md)」を参照してください。
+
 ## <a name="secure-datastores-and-datasets"></a>データストアとデータセットをセキュリティで保護する
 
-このセクションでは、仮想ネットワークの SDK エクスペリエンスにデータストアとデータセットの使用状況を使用する方法について説明します。 スタジオ エクスペリエンスの詳細については、[仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)方法に関するページを参照してください。
+このセクションでは、仮想ネットワークの SDK エクスペリエンスでデータストアとデータセットを使用する方法について説明します。 スタジオ エクスペリエンスの詳細については、[仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)方法に関するページを参照してください。
 
 SDK を使用してデータにアクセスするには、データが格納されている個々のサービスで求められる認証方法を使用する必要があります。 たとえば、Azure Data Lake Store Gen2 にアクセスするためにデータストアを登録する場合は、「[Azure Storage サービスに接続する](how-to-access-data.md#azure-data-lake-storage-generation-2)」に記載されているサービス プリンシパルを引き続き使用する必要があります。
 
@@ -176,9 +187,11 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
 
 * トレーニングまたは推論に使用されるストレージ アカウントとコンピューティング ターゲットと同じ仮想ネットワークとサブネット内に Azure Container Registry が存在している必要があります。
 
-* Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-sdk.md#amlcompute)が含まれている必要があります。
+* Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が含まれている必要があります。
 
     ACR が仮想ネットワークの背後にある場合、Azure Machine Learning でそれを使用して Docker イメージを直接構築することはできません。 代わりに、コンピューティング クラスターを使用してイメージが構築されます。
+
+* 仮想ネットワークで Azure Machine Learning と共に ACR を使用する前に、この機能を有効にするため、サポート インシデントを開始する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 これらの要件が満たされたら、次の手順を使用して Azure Container Registry を有効にします。
 
@@ -215,7 +228,7 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
     > [!IMPORTANT]
     > ストレージ アカウント、コンピューティング クラスター、および Azure Container Registry のすべてが、仮想ネットワークと同じサブネット内に存在する必要があります。
     
-    詳細については、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) メソッド リファレンスを参照してください。
+    詳細については、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) メソッド リファレンスを参照してください。
 
 1. 次の Azure Resource Manager テンプレートを適用します。 このテンプレートによって、お使いのワークスペースで ACR と通信できるようになります。
 
@@ -271,9 +284,9 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 4 パートの仮想ネットワーク シリーズのパート 1 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、全 4 パートからなる仮想ネットワーク シリーズのパート 1 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
 
 * [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [パート 5: Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)

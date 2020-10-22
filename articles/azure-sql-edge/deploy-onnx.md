@@ -8,15 +8,15 @@ ms.technology: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 07/14/2020
-ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/13/2020
+ms.openlocfilehash: 8da0b34339f2ac03f50e2dcb1a4ed13cc2ea9785
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298907"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075435"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>ONNX モデルを使用してデプロイと予測を行う
+# <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>ONNX モデルおよび SQL 機械学習を使用したデプロイと予測
 
 モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge](onnx-overview.md) または [Azure SQL Managed Instance (プレビュー)](../azure-sql/managed-instance/machine-learning-services-overview.md) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
 
@@ -72,14 +72,14 @@ y_train = pd.DataFrame(df.iloc[:,df.columns.tolist().index(target_column)])
 print("\n*** Training dataset x\n")
 print(x_train.head())
 
-print("\n*** Training dataset y\n")
+print("\n**_ Training dataset y\n")
 print(y_train.head())
 ```
 
 **出力**:
 
 ```text
-*** Training dataset x
+**_ Training dataset x
 
         CRIM    ZN  INDUS  CHAS    NOX     RM   AGE     DIS  RAD    TAX  \
 0  0.00632  18.0   2.31   0.0  0.538  6.575  65.2  4.0900  1.0  296.0
@@ -95,7 +95,7 @@ print(y_train.head())
 3     18.7  394.63   2.94  
 4     18.7  396.90   5.33  
 
-*** Training dataset y
+_*_ Training dataset y
 
 0    24.0
 1    21.6
@@ -137,15 +137,15 @@ from sklearn.metrics import r2_score, mean_squared_error
 y_pred = model.predict(x_train)
 sklearn_r2_score = r2_score(y_train, y_pred)
 sklearn_mse = mean_squared_error(y_train, y_pred)
-print('*** Scikit-learn r2 score: {}'.format(sklearn_r2_score))
-print('*** Scikit-learn MSE: {}'.format(sklearn_mse))
+print('_*_ Scikit-learn r2 score: {}'.format(sklearn_r2_score))
+print('_*_ Scikit-learn MSE: {}'.format(sklearn_mse))
 ```
 
 **出力**:
 
 ```text
-*** Scikit-learn r2 score: 0.7406426641094094
-*** Scikit-learn MSE: 21.894831181729206
+**_ Scikit-learn r2 score: 0.7406426641094094
+_*_ Scikit-learn MSE: 21.894831181729206
 ```
 
 ## <a name="convert-the-model-to-onnx"></a>モデルを ONNX に変換する
@@ -177,7 +177,7 @@ def convert_dataframe_schema(df, drop=None, batch_axis=False):
 
 ```python
 # Convert the scikit model to onnx format
-onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train))
+onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train), final_types=[('variable1',FloatTensorType([1,1]))])
 # Save the onnx model locally
 onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
@@ -208,8 +208,8 @@ onnx_r2_score = r2_score(y_train, y_pred)
 onnx_mse = mean_squared_error(y_train, y_pred)
 
 print()
-print('*** Onnx r2 score: {}'.format(onnx_r2_score))
-print('*** Onnx MSE: {}\n'.format(onnx_mse))
+print('_*_ Onnx r2 score: {}'.format(onnx_r2_score))
+print('_*_ Onnx MSE: {}\n'.format(onnx_mse))
 print('R2 Scores are equal' if sklearn_r2_score == onnx_r2_score else 'Difference in R2 scores: {}'.format(abs(sklearn_r2_score - onnx_r2_score)))
 print('MSE are equal' if sklearn_mse == onnx_mse else 'Difference in MSE scores: {}'.format(abs(sklearn_mse - onnx_mse)))
 print()
@@ -218,8 +218,8 @@ print()
 **出力**:
 
 ```text
-*** Onnx r2 score: 0.7406426691136831
-*** Onnx MSE: 21.894830759270633
+**_ Onnx r2 score: 0.7406426691136831
+_*_ Onnx MSE: 21.894830759270633
 
 R2 Scores are equal
 MSE are equal

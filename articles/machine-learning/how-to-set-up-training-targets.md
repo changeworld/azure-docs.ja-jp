@@ -1,5 +1,5 @@
 ---
-title: コンピューティング先にトレーニングの実行を送信する
+title: トレーニングの実行を構成する
 titleSuffix: Azure Machine Learning
 description: さまざまなトレーニング環境 (コンピューティング先) で機械学習モデルをトレーニングします。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
 services: machine-learning
@@ -8,46 +8,41 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907596"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708239"
 ---
-# <a name="submit-a-training-run-to-a-compute-target"></a>コンピューティング先にトレーニングの実行を送信する
+# <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
-この記事では、さまざまなトレーニング環境 ([コンピューティング先](concept-compute-target.md)) を使用して機械学習モデルをトレーニングする方法について説明します。
+この記事では、モデルをトレーニングするために Azure Machine Learning の実行を構成して送信する方法について説明します。
 
-トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning では、トレーニング スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
+トレーニングの場合は、ローカル コンピューター上で開始し、後でクラウドベースのクラスターにスケール アウトするのが一般的です。 Azure Machine Learning では、トレーニング スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
 
 必要なのは、**スクリプト実行構成**内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (1.13.0 以降)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)、`ws`
-* コンピューティング先、`my_compute_target`。  コンピューティング先は次のものを使用して作成します。
-  * [Python SDK](how-to-create-attach-compute-sdk.md) 
-  * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
+* コンピューティング先、`my_compute_target`。  [コンピューティング ターゲットを作成する](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>スクリプト実行構成とは
+[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) は、トレーニングの実行を実験の一部として送信するのに必要な情報を構成するために使用されます。
 
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
+ScriptRunConfig オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
 
 * **source_directory**:トレーニング スクリプトが格納されているソース ディレクトリ
-* **script**:トレーニング スクリプトを示します
-* **run_config**:トレーニングが行われる場所が順に定義される[実行構成](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)。 `run_config` では、トレーニング スクリプトの実行時に使用するコンピューティング先と環境を指定します。  
-
-## <a name="whats-an-environment"></a>環境とは
-
-Azure Machine Learning [環境](concept-environments.md)は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。 また、実行時間 (Python、Spark、または Docker) も指定します。  
-
-環境は、`ScriptRunConfig` 内の `run_config` オブジェクトで指定されます。
+* **script**:実行するトレーニング スクリプト
+* **compute_target**: 実行が行われるコンピューティング ターゲット
+* **環境**: スクリプトを実行する場合に使用する環境
+* および、いくつかの構成可能な追加のオプション (詳細については、該当する[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)を参照してください)
 
 ## <a name="train-your-model"></a><a id="submit"></a>モデルをトレーニングする
 
@@ -55,13 +50,12 @@ Azure Machine Learning [環境](concept-environments.md)は、機械学習トレ
 
 1. 実行する実験を作成する
 1. スクリプトが実行される環境を作成する
-1. コンピューティング先と環境を参照するスクリプト実行構成を作成する
+1. コンピューティング ターゲットと環境を指定する ScriptRunConfig を作成する
 1. 実行の送信
 1. 実行が完了するまで待機する
 
 または、次のことができます。
 
-* [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。
 * [ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)用の HyperDrive 実行を送信します。
 * [VS Code 拡張機能](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)を介して実験を送信します。
 
@@ -73,71 +67,81 @@ Azure Machine Learning [環境](concept-environments.md)は、機械学習トレ
 from azureml.core import Experiment
 
 experiment_name = 'my_experiment'
-
 experiment = Experiment(workspace=ws, name=experiment_name)
 ```
 
-## <a name="create-an-environment"></a>環境の作成
+## <a name="select-a-compute-target"></a>コンピューティング ターゲットを選択する
 
-キュレーションされた環境には、既定でお使いのワークスペースで使用できる Python パッケージのコレクションが含まれています。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備コストを下げます。 リモート コンピューティング先の場合は、一般的なキュレーション環境のいずれかを使用して開始できます。
+トレーニング スクリプトを実行するコンピューティング ターゲットを選択します。 ScriptRunConfig でコンピューティング ターゲットが指定されていない場合、または `compute_target='local'` である場合は、Azure ML によってスクリプトがローカルで実行されます。 
+
+この記事のコード例では、「前提条件」セクションのコンピューティング ターゲット `my_compute_target` が既に作成されていることを前提としています。
+
+## <a name="create-an-environment"></a>環境の作成
+Azure Machine Learning [環境](concept-environments.md)は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、Docker イメージ、環境変数、およびソフトウェア設定が指定されます。 また、実行時間 (Python、Spark、または Docker) も指定されます。
+
+独自の環境を定義することも、Azure ML のキュレーションされた環境を使用することもできます。 [キュレーションされた環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment)とは、ワークスペース内で既定で使用できる定義済みの環境です。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備コストを下げます。 利用可能なキュレーション環境の完全な一覧については、「[Azure Machine Learning のキュレーションされた環境](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments)」を参照してください。
+
+リモート コンピューティング先の場合は、一般的なキュレーション環境のいずれかを使用して開始できます。
 
 ```python
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
+myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
 環境の詳細については、「[Azure Machine Learning でソフトウェア環境を作成して使用する](how-to-use-environments.md)」をご覧ください。
   
-### <a name="local-compute-target"></a>ローカル コンピューティング先
+### <a name="local-compute-target"></a><a name="local"></a>ローカル コンピューティング先
 
 コンピューティング先が**ローカル コンピューター**である場合は、スクリプトが実行される Python 環境で、必要なすべてのパッケージが使用できることをユーザー自身で確認する必要があります。  `python.user_managed_dependencies` を使用すると、現在の Python 環境 (または指定したパス上の Python) を使用できます。
 
 ```python
 from azureml.core import Environment
 
-# Editing a run configuration property on-fly.
-my_environment = Environment("user-managed-env")
-
-my_environment.python.user_managed_dependencies = True
+myenv = Environment("user-managed-env")
+myenv.python.user_managed_dependencies = True
 
 # You can choose a specific Python environment by pointing to a Python path 
-#my_environment.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
+# myenv.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
 ```
 
-## <a name="create-script-run-configuration"></a>スクリプト実行構成を作成する
+## <a name="create-the-script-run-configuration"></a>スクリプトの実行構成を作成する
 
-コンピューティング先 (`compute_target`) と環境 (`my_environment`) が用意できたので、`project_folder` ディレクトリにあるトレーニング スクリプト (`train.py`) を実行するスクリプト実行構成を作成します。
+コンピューティング先 (`my_compute_target`) と環境 (`myenv`) が用意できたので、`project_folder` ディレクトリにあるトレーニング スクリプト (`train.py`) を実行するスクリプト実行構成を作成します。
 
 ```python
 from azureml.core import ScriptRunConfig
 
-script_run_config = ScriptRunConfig(source_directory=project_folder, script='train.py')
+src = ScriptRunConfig(source_directory=project_folder,
+                      script='train.py',
+                      compute_target=my_compute_target,
+                      environment=myenv)
 
 # Set compute target
+# Skip this if you are running on your local computer
 script_run_config.run_config.target = my_compute_target
-
-# Set environment.   If you don't do this, a default environment will be created.
-script_run_config.run_config.environment = my_environment
 ```
 
-また、実行用のフレームワークを設定することもできます。
+環境を指定しないと、既定の環境が自動的に作成されます。
 
-* HDI クラスターの場合:
-    ```python
-    src.run_config.framework = "pyspark"
-    ```
+トレーニング スクリプトに渡したいコマンドライン引数を用意している場合は、ScriptRunConfig コンストラクターの **`arguments`** パラメーター (`arguments=['--arg1', arg1_val, '--arg2', arg2_val]`など) を使用してそれらを指定することができます。
 
-* リモート仮想マシンの場合:
-    ```python
-    src.run_config.framework = "python"
-    ```
+実行に対する既定の最大許容時間をオーバーライドしたい場合は、 **`max_run_duration_seconds`** パラメーターを使用してそれを行うことができます。 この値よりも時間がかかる場合は、システムによって自動的に実行のキャンセルが試みられます。
+
+### <a name="specify-a-distributed-job-configuration"></a>分散ジョブの構成を指定する
+分散トレーニング ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true)、[TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)、および [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true) があります。 
+
+Horovod、TensorFlow、PyTorch の各分散ジョブの実行の詳細と例については、以下を参照してください。
+
+* [TensorFlow モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
+* [PyTorch モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
 
 ## <a name="submit-the-experiment"></a>実験を送信する
 
 ```python
-run = experiment.submit(config=script_run_config)
+run = experiment.submit(config=src)
+run.wait_for_completion(show_output=True)
 ```
 
 > [!IMPORTANT]
@@ -147,17 +151,24 @@ run = experiment.submit(config=script_run_config)
 > 
 > スナップショットの詳細については、「[スナップショット](concept-azure-machine-learning-architecture.md#snapshots)」をご覧ください。
 
+> [!IMPORTANT]
+> **特殊フォルダー** *outputs* および *logs* の 2 つのフォルダーは、Azure Machine Learning によって特別に扱われます｡ トレーニング中に、ルート ディレクトリを基準にした *outputs* と *logs* というフォルダー (それぞれ `./outputs` と `./logs`) にファイルを書き込んだ場合、それらのファイルは自動的に実行履歴にアップロードされて、実行が完了すると、それらのファイルにアクセスできるようになります。
+>
+> トレーニング中に成果物 (モデル ファイル、チェックポイント、データ ファイル、プロット画像など) を作成するには、`./outputs` フォルダーにそれら成果物を書き込みます。
+>
+> 同様に、トレーニング実行のログを `./logs` フォルダーに書き込むこともできます。 Azure Machine Learning の [ TensorBoard 統合](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/tensorboard/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb)を利用するには､このフォルダーに TensorBoard のログを書き込むようにします｡ 実行中に、TensorBoard を起動して、それらログをストリーミングできます｡  過去のどの実行についても､後でログを復元することができます。
+>
+> たとえば､リモート トレーニングの実行後に *outputs*フォルダーに書き込まれたファイルをローカル コンピューターには､次のコードを使用します。 `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
-<a id="gitintegration"></a>
-
-## <a name="git-tracking-and-integration"></a>Git の追跡と統合
+## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Git の追跡と統合
 
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 詳細については、「[Azure Machine Learning との Git 統合](concept-train-model-git-integration.md)」を参照してください。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 
-さまざまなコンピューティング先を使用したトレーニングの例については、以下のノートブックをご覧ください。
-* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+さまざまなトレーニング シナリオでの実行の構成例については、次のノートブックを参照してください。
+* [さまざまなコンピューティング ターゲット上でのトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [ML フレームワークを使用したトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
@@ -165,7 +176,8 @@ run = experiment.submit(config=script_run_config)
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:モデルのトレーニング](tutorial-train-models-with-aml.md)に関する記事では、マネージド コンピューティング先を使用してモデルをトレーニングします。
-* より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。?view=azure-ml-py&preserve-view=true)
+* [Scikit-learn](how-to-train-scikit-learn.md)、[TensorFlow](how-to-train-tensorflow.md)、[PyTorch](how-to-train-pytorch.md) など、特定の ML フレームワークを使用してモデルをトレーニングする方法を参照してください。
+* より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
-* [RunConfiguration クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true)の SDK リファレンスを確認します。
+* [ScriptRunConfig クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK リファレンスを表示します。
 * [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)

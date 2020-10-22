@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450398"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -133,16 +133,16 @@ Log Analytics ワークスペースに VMware のタイルが表示されます�
 
 ESXi ホスト名をクリックすると、その ESXi ホストからの情報が表示されます。 イベント タイプで結果を絞り込む場合は、検索クエリに `“ProcessName_s=EVENT TYPE”` を追加します。 検索フィルターで **ProcessName** を選択できます。 これにより、情報が絞り込まれます。
 
-![詳細表示](./media/vmware/eventhostdrilldown.png)
+![VMware Monitoring ダッシュボード ビューの [イベント数あたりの ESXi ホスト] および [イベントの種類ごとの明細] ブレードのスクリーンショット。](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>高い VM アクティビティの検索
 どの ESXi ホストでも、仮想マシンを作成および削除することができます。 ESXi ホストで作成される VM の数を把握することは、管理者にとって役立ちます。 これはまた、パフォーマンスと容量計画を理解するのにも役立ちます。 VM アクティビティ イベントの追跡は、環境を管理する際に非常に重要です。
 
-![詳細表示](./media/vmware/vmactivities1.png)
+![VMware Monitoring ダッシュボードの [仮想マシンのアクティビティ] ブレードのスクリーンショット。ESXi ホストによる VM の作成と削除のグラフが表示されます。](./media/vmware/vmactivities1.png)
 
 ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi ホスト名をクリックします。
 
-![詳細表示](./media/vmware/createvm.png)
+![ESXi ホストによって作成された各仮想マシンのデータ行を含むテーブルが表示されている、VMware Monitoring ダッシュボードのウィンドウのスクリーンショット。](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>一般的なログ クエリ
 このソリューションには、ESXi ホストの管理に役立つその他の便利なクエリ (高いストレージ使用量、ストレージの待機時間、パスの障害など) も含まれています。

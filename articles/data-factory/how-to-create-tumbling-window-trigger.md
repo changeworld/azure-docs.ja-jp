@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996688"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856487"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -147,7 +147,7 @@ ms.locfileid: "83996688"
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>バックフィル シナリオでのウィンドウの実行順序
 
-トリガーの startTime が過去の場合、M=(CurrentTime- TriggerStartTime)/TriggerSliceSize という数式に基づき、トリガーはトリガーのコンカレンシーを考慮して、{M} 回のバックフィル (過去分) の実行を並行して生成してから、今後の実行を行います。 ウィンドウの実行順序は、最も古い間隔から最も新しい間隔までの間で決定論的となります。 現時点では、この動作を変更することはできません。
+トリガーの startTime が過去の場合、M=(CurrentTime- TriggerStartTime)/TumblingWindowSize という数式に基づき、トリガーはトリガーのコンカレンシーを考慮して、{M} 回のバックフィル (過去分) の実行を並行して生成してから、今後の実行を行います。 ウィンドウの実行順序は、最も古い間隔から最も新しい間隔までの間で決定論的となります。 現時点では、この動作を変更することはできません。
 
 ### <a name="existing-triggerresource-elements"></a>既存の TriggerResource 要素
 

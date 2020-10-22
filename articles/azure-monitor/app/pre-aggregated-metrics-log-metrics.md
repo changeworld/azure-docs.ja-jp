@@ -6,20 +6,20 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9aba1e5b469e04c6c6d047f78cd202a073e5a769
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516942"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539131"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
-この記事では、ログに基づく "従来の" Application Insights メトリックと、現在パブリック プレビューの段階である事前に集計されたメトリックとの違いについて説明します。 Application Insights のユーザーは両方の種類のメトリックを利用でき、各メトリックではアプリケーションの正常性、診断および分析の監視における一意の値が示されます。 アプリケーションをインストルメント化する開発者は、アプリケーションのサイズ、予想されるテレメトリの量、メトリックの精度とアラートに関するビジネス要件に応じて、特定のシナリオに最適な種類のメトリックを決めることができます。
+この記事では、ログに基づく "従来の" Application Insights メトリックと、事前に集計されたメトリックとの違いについて説明します。 Application Insights のユーザーは両方の種類のメトリックを利用でき、各メトリックではアプリケーションの正常性、診断および分析の監視における一意の値が示されます。 アプリケーションをインストルメント化する開発者は、アプリケーションのサイズ、予想されるテレメトリの量、メトリックの精度とアラートに関するビジネス要件に応じて、特定のシナリオに最適な種類のメトリックを決めることができます。
 
 ## <a name="log-based-metrics"></a>ログベースのメトリック
 
-最近まで、Application Insights でテレメトリ データ モデルを監視するアプリケーションは、要求、例外、依存関係呼び出し、ページ ビューなど、事前に定義された種類の少数のイベントのみに基づいていました。開発者は SDK を使用して、(SDK を明示的に呼び出すコードを記述することで) これらのイベントを手動で出力することも、自動インストルメンテーションからのイベントの自動収集を利用することもできます。 いずれの場合も、収集されたすべてのイベントが Application Insights バックエンドでログとして格納され、Azure portal の Application Insights ブレードは、ログからのイベントベースのデータを視覚化するための分析および診断ツールとして動作します。
+これまで、Application Insights でテレメトリ データ モデルを監視するアプリケーションは、要求、例外、依存関係呼び出し、ページ ビューなど、事前に定義された種類の少数のイベントのみに基づいていました。開発者は SDK を使用して、(SDK を明示的に呼び出すコードを記述することで) これらのイベントを手動で出力することも、自動インストルメンテーションからのイベントの自動収集を利用することもできます。 いずれの場合も、収集されたすべてのイベントが Application Insights バックエンドでログとして格納され、Azure portal の Application Insights ブレードは、ログからのイベントベースのデータを視覚化するための分析および診断ツールとして動作します。
 
 ログを使用してイベントの完全なセットを保持することで、優れた分析および診断の値が得られます。 たとえば、特定の URL に対する要求の正確な数と、これらの呼び出しを行った個別のユーザーの数を取得できます。 また、任意のユーザー セッションの例外や依存関係呼び出しを含む、詳細な診断トレースを取得できます。 この種の情報があれば、アプリケーションの正常性や使用状況をより詳細に把握でき、アプリに関する問題の診断に必要な時間を短縮できます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "86516942"
 > [!IMPORTANT]
 > Application Insights では、ログベースのメトリックと事前に集計されたメトリックの両方が共存します。 2 つを区別するため、Application Insights UX では、事前に集計されたメトリックを "標準メトリック (プレビュー)" と呼ぶようになり、イベントからの従来のメトリックは "ログベースのメトリック" という名前に変更されました。
 
-新しい SDK (.NET 用の [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 以降) では、テレメトリ量の削減手法が適用される前に、収集時にメトリックが事前に集計されます。 つまり、新しいメトリックの精度が、最新の Application Insights SDK を使用する際にサンプリングやフィルター処理に影響を受けることはありません。
+新しい SDK (.NET 用の [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 以降) では、収集時にメトリックが事前に集計されます。 これは、[既定で送信される標準メトリック](../platform/metrics-supported.md#microsoftinsightscomponents)に適用されるため、正確性がサンプリングやフィルター処理の影響を受けることはありません。 また、[GetMetric](./api-custom-events-metrics.md#getmetric) を使用して送信されるカスタム メトリックにも適用されるため、データ インジェストが減り、コストが削減されます。
 
 事前に集計しない SDK の場合 (つまり、古いバージョンの Application Insights SDK、またはブラウザー インストルメンテーションの場合)、Application Insights バックエンドでは引き続き、Application Insights イベント収集エンドポイントによって受信されるイベントを集計することで、新しいメトリックが設定されます。 つまり、ネットワーク経由で送信されるデータの量を減らせる利点はありませんが、引き続き事前に集計されたメトリックを使用でき、収集時にメトリックを事前に集計しない SDK でのほぼリアルタイムのディメンション アラートのパフォーマンスとサポートが向上します。
 

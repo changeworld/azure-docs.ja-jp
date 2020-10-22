@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715409"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
@@ -100,7 +100,7 @@ WebDeploy で発行プロファイルの資格情報がブロックされてい�
 
 ### <a name="disable-access-to-the-api"></a>API へのアクセスを無効にする
 
-前のセクションの API は、Azure ロールベースのアクセス制御 (RBAC) によってサポートされます。つまり、[カスタム ロールを作成](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)し、低い特権を持つユーザーをこのロールに割り当てると、これらのユーザーはどのサイトでも基本認証を有効化できなくなります。 カスタム ロールを構成するには、[こちらの手順を実行します](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
+前のセクションの API は、Azure ロールベースのアクセス制御 (Azure RBAC) によってサポートされます。つまり、[カスタム ロールを作成](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)し、低い特権を持つユーザーをこのロールに割り当てると、これらのユーザーはどのサイトでも基本認証を有効化できなくなります。 カスタム ロールを構成するには、[こちらの手順を実行します](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
 
 また、[Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) を使用して成功した認証要求を監査し、[Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) を使用してサブスクリプション内のすべてのサイトにこの構成を適用することもできます。
 

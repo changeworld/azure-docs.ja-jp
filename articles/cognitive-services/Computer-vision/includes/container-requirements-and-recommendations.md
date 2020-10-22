@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: bffdb7b33fc7da38b6985edc3948b848f417a497
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3ab5462cc2b368bd1518606b03c8ec1027bc31c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982077"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397192"
 ---
 > [!NOTE]
 > 要件と推奨事項は、29 行におよぶ合計 803 文字のビジネス レターのスキャン画像 (8 MB) を使用した、1 秒あたり 1 つの要求というベンチマークに基づいています。
@@ -22,6 +22,7 @@ ms.locfileid: "90982077"
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
+| Read 2.0-preview | 1 コア、8 GB のメモリ |  8 コア、16 GB のメモリ |
 | Read 3.0-preview | 8 コア、16 GB のメモリ | 8 コア、24 GB のメモリ |
 | Read 3.1-preview | 8 コア、16 GB のメモリ | 8 コア、24 GB のメモリ |
 

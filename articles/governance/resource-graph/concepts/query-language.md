@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 08/24/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65304ca1241b2c8a1f9541580e7ee8434dd5b6eb
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426403"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578531"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -125,7 +125,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 |[distinct](/azure/kusto/query/distinctoperator) |[特定の別名の個別の値の表示](../samples/starter.md#distinct-alias-values) | |
 |[extend](/azure/kusto/query/extendoperator) |[仮想マシンの数 (OS の種類別)](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[サブスクリプション名を含むキー コンテナー](../samples/advanced.md#join) |サポートされる結合フレーバー: [innerunique ](/azure/kusto/query/joinoperator#default-join-flavor)、[inner ](/azure/kusto/query/joinoperator#inner-join)、[leftouter ](/azure/kusto/query/joinoperator#left-outer-join)。 1 つのクエリでは `join` が 3 つに制限されます。 ブロードキャスト結合などのカスタム結合方法は使用できません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
-|[limit](/azure/kusto/query/limitoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`take` のシノニム |
+|[limit](/azure/kusto/query/limitoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`take` のシノニム。 [Skip](./work-with-data.md#skipping-records) と一緒に機能しません。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | レガシ演算子では、代わりに `mv-expand` を使用します。 _RowLimit_ の最大は 400 です。 既定値は 128 です。 |
 |[mv-expand](/azure/kusto/query/mvexpandoperator) |[特定の書き込み場所を含む Cosmos DB を一覧表示する](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ の最大は 400 です。 既定値は 128 です。 |
 |[order](/azure/kusto/query/orderoperator) |[名前で並べ替えられたリソースの一覧表示](../samples/starter.md#list-resources) |`sort` のシノニム |
@@ -133,7 +133,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 |[project-away](/azure/kusto/query/projectawayoperator) |[結果から列を除外する](../samples/advanced.md#remove-column) | |
 |[sort](/azure/kusto/query/sortoperator) |[名前で並べ替えられたリソースの一覧表示](../samples/starter.md#list-resources) |`order` のシノニム |
 |[summarize](/azure/kusto/query/summarizeoperator) |[Azure リソースの数](../samples/starter.md#count-resources) |簡略化された最初のページのみ |
-|[take](/azure/kusto/query/takeoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`limit` のシノニム |
+|[take](/azure/kusto/query/takeoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`limit` のシノニム。 [Skip](./work-with-data.md#skipping-records) と一緒に機能しません。 |
 |[top](/azure/kusto/query/topoperator) |[名前とその OS の種類による最初の 5 つの仮想マシンの表示](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[2 つのクエリの結果を結合して 1 つの結果にする](../samples/advanced.md#unionresults) |1 つのテーブルを使用できます:_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. 1 つのクエリでは `union` 分岐が 3 つに制限されます。 `union` 分岐テーブルのあいまい解決は許可されていません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
 |[where](/azure/kusto/query/whereoperator) |[ストレージを含むリソースの表示](../samples/starter.md#show-storage) | |

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056168"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072307"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -73,6 +73,8 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>デバイス テレメトリ スキーマ
 
@@ -163,6 +165,10 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
   "metadataVersion": "1"
 }]
 ```
+
+
+> [!WARNING]
+> デバイス作成イベントに関連付けられている*ツイン データ*は既定の構成であるため、新しく作成されたデバイスの実際の `authenticationType` とその他のデバイス プロパティは、それらに依存*させない*ようにしてください。 新しく作成されたデバイスの `authenticationType` とその他のデバイス プロパティについては、Azure IoT SDK で提供されている Register Manager API を使用してください。
 
 各プロパティの詳しい説明については、「[IoT Hub の Azure Event Grid イベント スキーマ](../event-grid/event-schema-iot-hub.md)」をご覧ください。
 

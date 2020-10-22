@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743915"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Azure App Service でアプリをスケールアップする
 
@@ -36,7 +36,7 @@ App Service の個々のプランの価格と機能の詳細については、 [
 ## <a name="scale-up-your-pricing-tier"></a>価格レベルのスケールアップ
 
 > [!NOTE]
-> **PremiumV2** レベルにスケールアップするには、「[Configure PremiumV2 tier for App Service (App Service 向け PremiumV2 レベルの構成)](app-service-configure-premium-tier.md)」をご覧ください。
+> **PremiumV3** レベルにスケールアップするには、[App Service 向け PremiumV3 レベルの構成](app-service-configure-premium-tier.md)に関するページをご覧ください。
 >
 
 1. ブラウザーで、[Azure Portal][portal] を開きます。
@@ -78,7 +78,7 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
 ## <a name="more-resources"></a>その他のリソース
 
 [手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md)  
-[App Service の PremiumV2 レベルの構成](app-service-configure-premium-tier.md)
+[App Service の PremiumV3 レベルの構成](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

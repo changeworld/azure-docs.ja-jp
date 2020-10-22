@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256893"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073735"
 ---
 # <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
 [発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -58,7 +58,7 @@ ms.locfileid: "91256893"
     アプリの登録は、このテナントの別のユーザー アカウント、個人またはコンシューマー アカウント、または別のテナントを使用して作成された可能性があります。 アプリの登録が作成されたテナントで、正しいアカウントを使用してサインインしていることを確認します。
 
 - **多要素認証に関連するエラーが発生します。どうすればよいですか。** 
-    [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)が有効になっていることを確認します。サインインに使用しているユーザーと、このシナリオには必要です。 たとえば、MFA には次のような条件があります。
+    [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)が有効になっており、かつサインインに使用しているユーザーとこのシナリオに**必要**であることを確認します。 たとえば、MFA には次のような条件があります。
     - サインインに使用しているユーザーには常に必要です
     - [Azure の管理に必要です](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - サインインに使用している[この種類の管理者には必要です](../conditional-access/howto-conditional-access-policy-admin-mfa.md)。
@@ -226,7 +226,9 @@ Graph API 経由で検証が実行され、指定されたアプリケーショ�
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-検証済みの発行者をアプリに追加しようとする前に多要素認証が実行されていない場合に発生します。 詳しくは、「[一般的な問題](#common-issues)」をご覧ください。
+検証済みの発行者をアプリに追加しようとする前に多要素認証が実行されていない場合に発生します。 詳しくは、「[一般的な問題](#common-issues)」をご覧ください。 注:確認済み発行者を追加するときは、同じセッションで MFA を行う必要があります。 MFA が有効になっていても、そのセッションで行う必要がない場合、要求は失敗します。   
+
+次のようなエラー メッセージが表示されます。"管理者によって構成が変更されたか、自分が新しい場所に移動したため、続行するには多要素認証を使用する必要があります。"
 
 ## <a name="next-steps"></a>次のステップ
 

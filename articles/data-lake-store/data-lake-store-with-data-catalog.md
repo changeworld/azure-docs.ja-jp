@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515135"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578514"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
 この記事では、Azure Data Lake Storage Gen1 と Azure Data Catalog を統合し、データを Data Catalog と統合することで組織内で検出できるようにする方法について説明します。 データのカタログ化の詳細については、「 [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)」を参照してください。 Data Catalog を使用できるシナリオを理解するには、「 [Azure Data Catalog の一般的なシナリオ](../data-catalog/data-catalog-common-scenarios.md)」を参照してください。
@@ -52,12 +52,12 @@ ms.locfileid: "85515135"
 
     c. **[登録されるオブジェクト]** ボックスには、Azure Data Catalog に登録するファイルとフォルダーがリストされます。
 
-    ![データ構造の表示](./media/data-lake-store-with-data-catalog/view-data-structure.png "データ構造の表示")
+    ![[Microsoft Azure Data Catalog] の [ストアのアカウント] ダイアログボックスのスクリーンショット。](./media/data-lake-store-with-data-catalog/view-data-structure.png "データ構造の表示")
 1. このチュートリアルでは、ディレクトリ内のすべてのファイルを登録する必要があります。 そのため、![オブジェクトの移動](./media/data-lake-store-with-data-catalog/move-objects.png "オブジェクトの移動")ボタンをクリックして、すべてのファイルを **[登録するオブジェクト]** ボックスに移動します。
 
     データは組織全体のデータ カタログに登録されるため、後でデータをすばやく見つけるために使用できるメタデータをいくつか追加することをお勧めします。 たとえば、データの所有者 (データをアップロードするユーザー) の電子メール アドレスを追加したり、データを識別するタグを追加したりすることができます。 以下の画面キャプチャには、データに追加するタグが示されています。
 
-    ![データ構造の表示](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "データ構造の表示")
+    ![[Microsoft Azure Data Catalog] の [ストアのアカウント] ダイアログボックスのスクリーンショット。呼び出されているデータにタグが追加されています。](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "データ構造の表示")
 
     **[登録]** をクリックします。
 1. 次のキャプチャ画面は、データが Data Catalog に正常に登録されたことを示しています。

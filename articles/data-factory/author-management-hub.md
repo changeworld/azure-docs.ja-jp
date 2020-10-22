@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851990"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570633"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory の管理ハブ
 
@@ -56,7 +56,7 @@ Azure Data Factory UX の *[管理]* タブによってアクセスされる管�
 
 トリガーは、パイプラインの実行をいつ開始するかを決定します。 現在、トリガーは、ウォール クロック スケジュールに基づくことも、定期的な間隔で実行することも、イベントに依存することもできます。 詳細については、「[トリガー実行](concepts-pipeline-execution-triggers.md#trigger-execution)」を参照してください。 管理ハブでは、トリガーの現在の状態を作成、編集、削除、または表示できます。
 
-![カスタム パラメーターの管理](media/author-management-hub/management-hub-triggers.png)
+![トリガーの現在の状態を作成、編集、削除、または表示する場所を示すスクリーンショット。](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>グローバル パラメーター
 

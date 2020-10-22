@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908025"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450127"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -57,8 +57,11 @@ if spec is None:
 > [!NOTE]
 > プレインストール一覧に含まれていないパッケージを必要とする Python スクリプトの実行モジュールがパイプラインに複数含まれている場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。
 
+> [!WARNING]
+> Python スクリプトの実行モジュールでは、Java、PyODBC などの "apt-get" のようなコマンドを使用して、追加のネイティブ ライブラリに依存するパッケージのインストールをサポートしていません。これは、このモジュールが、プレインストールされた Python のみの、管理者以外のアクセス許可を持つ単純な環境で実行されるためです。  
+
 ## <a name="upload-files"></a>ファイルをアップロードする
-Python スクリプトの実行モジュールでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
+Python スクリプトの実行モジュールでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
 
 次の例は、Python スクリプトの実行モジュールでイメージ ファイルをアップロードする方法を示しています。
 
@@ -140,7 +143,10 @@ Python スクリプトの実行モジュールには、出発点として利用�
 
     デザイナーに対しては 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
 
-6. パイプラインを送信します。Python スクリプトだけを実行する場合は、このモジュールを選択して **[選択項目の実行]** を選択してください。
+    > [!WARNING]
+    > **Python スクリプトの実行モジュール**で、データベースまたはその他の外部ストレージに接続することは**お勧めしません**。 [データのインポート モジュール](./import-data.md)と[データのエクスポート モジュール](./export-data.md)を使用できます。     
+
+6. パイプラインを送信します。
 
     すべてのデータおよびコードが仮想マシンに読み込まれ、指定した Python 環境を使用して実行されます。
 

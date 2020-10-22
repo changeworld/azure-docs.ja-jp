@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: a-sakand
 author: skandil
-ms.openlocfilehash: 22f5ab332c52a3b567b37089def6e4a494a15d29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d801971ca62c416c66608b40aab3e8052fe941a1
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309474"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931412"
 ---
 # <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 

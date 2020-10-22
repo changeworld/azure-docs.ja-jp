@@ -2,21 +2,21 @@
 title: テンプレート スペックの概要
 description: テンプレート スペックを作成し、組織内の他のユーザーと共有する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fad7ca60e98dcaabc5f6fc106e0d2c1b77085d67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227884"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91728473"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager テンプレート スペック (プレビュー)
 
-テンプレート スペックは、後でデプロイするために Azure に Azure Resource Manager テンプレート (ARM テンプレート) を格納するための新しいリソースの種類です。 このリソースの種類を使用すると、ARM テンプレートを組織内の他のユーザーと共有できます。 他の Azure リソースと同じように、ロールベースのアクセス制御 (RBAC) を使用してテンプレート スペックを共有できます。
+テンプレート スペックは、後でデプロイするために Azure に Azure Resource Manager テンプレート (ARM テンプレート) を格納するためのリソースの種類です。 このリソースの種類を使用すると、ARM テンプレートを組織内の他のユーザーと共有できます。 他の Azure リソースと同じように、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してテンプレート スペックを共有できます。
 
-**Microsoft.Resources/templateSpecs** は、テンプレート スペックの新しいリソースの種類です。 これは、メイン テンプレートと、リンクされた任意の数のテンプレートで構成されます。 Azure によって、テンプレート スペックはリソース グループに安全に格納されます。 Template Specs では、[バージョン管理](#versioning)がサポートされています。
+**Microsoft.Resources/templateSpecs** は、テンプレート スペックのリソースの種類です。 これは、メイン テンプレートと、リンクされた任意の数のテンプレートで構成されます。 Azure によって、テンプレート スペックはリソース グループに安全に格納されます。 Template Specs では、[バージョン管理](#versioning)がサポートされています。
 
 テンプレート スペックをデプロイするには、PowerShell、Azure CLI、Azure portal、REST およびその他のサポートされている SDK およびクライアントなど、標準の Azure ツールを使用します。 テンプレートの場合と同じコマンドを使用します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "89227884"
 
 現在、GitHub リポジトリまたはストレージ アカウントにテンプレートがある場合に、テンプレートを共有して使用しようとすると、いくつかの問題が発生します。 ユーザーがテンプレートをデプロイするには、テンプレートがローカルであるか、テンプレートの URL にパブリックにアクセスできる必要があります。 この制限を回避するには、テンプレートのコピーをデプロイする必要があるユーザーと共有するか、リポジトリまたはストレージ アカウントへのアクセスを開きます。 ユーザーがテンプレートのローカル コピーを所有している場合は、これらのコピーが最終的に元のテンプレートから分岐する可能性があります。 リポジトリまたはストレージ アカウントにパブリックにアクセスできるようにすると、意図しないユーザーがテンプレートにアクセスできてしまう可能性があります。
 
-テンプレート スペックを使用する利点は、正規のテンプレートを作成し、組織内のチームと共有できることです。 テンプレート スペックは、Azure Resource Manager をデプロイする際に使用できますが、RBAC アクセス許可を持っていないユーザーはアクセスできないため、セキュリティで保護されています。 ユーザーがテンプレートをデプロイするのに必要なのは、そのテンプレート スペックへの読み取りアクセス権のみです。そのため、他のユーザーに変更を許可することなくテンプレートを共有できます。
+テンプレート スペックを使用する利点は、正規のテンプレートを作成し、組織内のチームと共有できることです。 テンプレート スペックは、Azure Resource Manager をデプロイする際に使用できますが、Azure RBAC アクセス許可を持っていないユーザーはアクセスできないため、セキュリティで保護されています。 ユーザーがテンプレートをデプロイするのに必要なのは、そのテンプレート スペックへの読み取りアクセス権のみです。そのため、他のユーザーに変更を許可することなくテンプレートを共有できます。
 
 テンプレート スペックに含まれるテンプレートは、組織の要件とガイダンスに従うように組織の管理者が検証する必要があります。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89227884"
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateJsonFile ./mainTemplate.json
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateFile ./mainTemplate.json
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -165,7 +165,7 @@ az deployment group create \
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Versions.Id
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG `

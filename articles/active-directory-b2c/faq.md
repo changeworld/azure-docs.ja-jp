@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270667"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054765"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -29,9 +29,9 @@ Azure AD 拡張機能が動作しない一般的な理由は 2 つあります�
 
 Azure AD と Azure AD B2C は、別個の製品であるため、同じテナントで共存させることはできません。 Azure AD テナントは、組織を表します。 Azure AD B2C テナントは、証明書利用者アプリケーションで使用される ID のコレクションを表します。 **[Azure AD B2C] > [ID プロバイダー]** で **[新しい OpenID Connect プロバイダー]** を追加するか、またはカスタム ポリシーを使用して、Azure AD B2C で Azure AD にフェデレーションして、組織の従業員の認証を許可することができます。
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Office 365 に提供することはできますか。
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Microsoft 365 に提供することはできますか?
 
-Azure AD B2C は、Microsoft Office 365 のユーザーの認証に使用できません。 Azure AD は、SaaS アプリへの従業員のアクセスを管理するための Microsoft のソリューションであり、その目的で設計された機能 (ライセンス付与や条件付きアクセスなど) を備えています。 Azure AD B2C には、Web およびモバイル アプリケーションを構築するための ID およびアクセスの管理プラットフォームが用意されています。 Azure AD テナントにフェデレーションするように Azure AD B2C を構成すると、Azure AD テナントでは、Azure AD B2C に依存するアプリケーションへの従業員のアクセスが管理されます。
+Azure AD B2C は、Microsoft 365 のユーザーの認証に使用できません。 Azure AD は、SaaS アプリへの従業員のアクセスを管理するための Microsoft のソリューションであり、その目的で設計された機能 (ライセンス付与や条件付きアクセスなど) を備えています。 Azure AD B2C には、Web およびモバイル アプリケーションを構築するための ID およびアクセスの管理プラットフォームが用意されています。 Azure AD テナントにフェデレーションするように Azure AD B2C を構成すると、Azure AD テナントでは、Azure AD B2C に依存するアプリケーションへの従業員のアクセスが管理されます。
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C のローカル アカウントとは何ですか。 それらは、Azure AD の職場または学校アカウントとはどのような点が異なるのですか。
 
@@ -149,7 +149,6 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. 各ユーザーを順に選択します (ただし、現在サインインに使用している*サブスクリプション管理者*ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. **[管理]** の下で **[ユーザー設定]** を選択します。
-1. 表示される場合は、 **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。

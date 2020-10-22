@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618643"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840491"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>バッチ処理を使用して Azure SQL Database アプリケーションと Azure SQL Managed Instance アプリケーションのパフォーマンスを強化する方法
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -291,9 +291,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 **DataAdapter** クラスを使用すると、**DataSet** オブジェクトに変更を加えたうえで、その変更を各種の操作 (INSERT、UPDATE、DELETE) として送信することができます。 この方法で **DataAdapter** を使用する場合、それぞれの操作について個別に呼び出しが行われることに注意してください。 パフォーマンスを強化するためには、 **UpdateBatchSize** プロパティを使用して、一回のバッチで処理する操作の数を指定します。 詳細については、 [DataAdapter を使用したバッチ操作の実行](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters)に関するページを参照してください。
 
-### <a name="entity-framework"></a>Entity framework
+### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6) がバッチ処理対応になりました。
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) ではバッチ処理がサポートされます。
 
 ### <a name="xml"></a>XML
 

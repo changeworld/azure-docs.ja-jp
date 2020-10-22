@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91269745"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
 
@@ -40,7 +40,7 @@ ms.locfileid: "87078716"
 
 1. 作成するロジック アプリに関する情報を指定します。次に例を示します。
 
-   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![[ロジック アプリ] のスクリーンショット。[作成] ウィンドウにサンプル情報が入力されています。](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
@@ -121,7 +121,7 @@ ISE でカスタム コネクタを使用するには、ISE 内から直接こ�
 
 1. **[統合サービス環境]** セクションの **[場所]** 一覧から、ロジック アプリで使用しているものと同じ ISE を選択し、 **[作成]** を選択します。次に例を示します。
 
-   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
+   ![[Logic Apps カスタム コネクタの作成] ウィンドウのスクリーンショット。サンプル情報が入力されています。](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. 新しいカスタム コネクタを選択し、 **[編集]** を選択します。次に例を示します。
 

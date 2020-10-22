@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850695"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>チュートリアル:Looop を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -55,11 +55,11 @@ Azure AD での自動ユーザー プロビジョニング用に Looop を構成
 
 1. [Looop 管理コンソール](https://app.looop.co/#/login) にサインインし、 **[アカウント]** を選択します。 **[アカウントの設定]** で **[認証]** を選択します。
 
-    ![Looop での SCIM の追加](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Looop 管理コンソールのスクリーンショット。[アカウント] タブが強調表示され、開いています。[アカウント設定] の [認証] が強調表示されています。" border="false":::
 
 2. **[SCIM integration]\(SCIM 統合\)** の下にある **[Reset Token]\(トークンのリセット\)** をクリックして、新しいトークンを生成します。
 
-    ![Looop での SCIM の追加](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理コンソールのスクリーンショット。[アカウント] タブが強調表示され、開いています。[アカウント設定] の [認証] が強調表示されています。" border="false":::
 
 3. **SCIM エンドポイント**と**トークン**をコピーします。 これらの値は、Azure portal の Looop アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力されます。 
 

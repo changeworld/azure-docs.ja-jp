@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204455"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961682"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -155,11 +155,11 @@ StorSimple ボリュームは、次のいずれかです。
    3. **プロビジョニング容量**を増やす。 **プロビジョニング容量** は、増やすことしかできません。 ボリュームを作成した後で小さくすることはできません。
    4. **[接続済みのホスト]** で、ACR を変更することができます。 ACR を変更するには、ボリュームがオフラインになっている必要があります。
 
-       ![ボリュームをオフラインにする影響を確認する](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![ボリュームをオフラインにする影響を確認する 2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. **[保存]** をクリックして変更を保存します。 確認を求められたら、 **[はい]** をクリックします。 ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。 ボリュームが正常に更新されると、成功メッセージが表示されます。
 
-    ![ボリュームをオフラインにする影響を確認する](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![ボリュームをオフラインにする影響を確認する 3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. ボリュームを拡張する場合は、Windows ホスト コンピューターで次の手順を実行します。
    
@@ -215,7 +215,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 デバイスの表形式のリストから、変更しようしているボリュームがあるデバイスを選択します。 **[設定]、[ボリューム]** の順にクリックします。
 
-    ![[ボリューム] ブレードに移動する](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![[ボリューム] ブレードに移動する 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. ボリュームの表形式のリストからボリュームを選択し、右クリックしてコンテキスト メニューを開きます。 **[変更]** を選択します。
 
@@ -249,7 +249,7 @@ StorSimple ボリュームは、次のいずれかです。
    
     1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 デバイスの表形式のリストから、変更しようしているボリュームがあるデバイスを選択します。 **[設定]、[ボリューム]** の順にクリックします。
 
-        ![[ボリューム] ブレードに移動する](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![[ボリューム] ブレードに移動する 3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. ボリュームの表形式のリストからボリュームを選択し、右クリックしてコンテキスト メニューを開きます。 **[オフラインにする]** を選択し、変更するボリュームをオフラインにします。
 
@@ -257,7 +257,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 3. **[オフラインにする]** ブレードで、ボリュームをオフラインにする影響を確認し、対応するチェック ボックスをオンにします。 **[オフラインにする]** をクリックします。 
 
-    ![ボリュームをオフラインにする影響を確認する](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![ボリュームをオフラインにする影響を確認する 4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       ボリュームがオフラインになると通知されます。 ボリュームの状態も、オフラインへと更新されます。
       
@@ -277,7 +277,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 デバイスの表形式のリストから、変更しようしているボリュームがあるデバイスを選択します。 **[設定]、[ボリューム]** の順にクリックします。
 
-    ![[ボリューム] ブレードに移動する](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![[ボリューム] ブレードに移動する 4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. 削除するボリュームの状態を確認します。 削除するボリュームがオフラインでない場合は、最初にそれをオフラインにします。 「 [ボリュームをオフラインにする](#take-a-volume-offline)」の手順に従ってください。
 4. ボリュームがオフラインになったら、ボリュームを選択し、右クリックしてコンテキスト メニューを開き、 **[削除]** を選択します。

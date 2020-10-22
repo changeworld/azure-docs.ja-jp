@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー違反やブループリント パラメーター関数などの、ブループリントを作成、割り当て、および削除するときの問題をトラブルシューティングする方法について説明します。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651317"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058286"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -59,7 +59,7 @@ ms.locfileid: "89651317"
 
 #### <a name="resolution"></a>解像度
 
-関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
+関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints サービスによって成果物に配置され、意図したとおりに動的になります。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
 ## <a name="delete-errors"></a>削除エラー
 

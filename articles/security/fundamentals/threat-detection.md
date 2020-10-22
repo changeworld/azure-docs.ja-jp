@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 78043e3d95a94d0e9be810164b31ef031234d620
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541024"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399603"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -64,13 +64,13 @@ Azure の Identity Protection によってユーザーのアカウントや ID �
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-組織内のアクセスは、[Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) を使用して管理、制御、監視することができます。 その機能には、Azure AD をはじめとする Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
+組織内のアクセスは、[Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) を使用して管理、制御、監視することができます。 この機能には、Azure AD とその他の Microsoft オンライン サービス (Microsoft 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 ![Azure AD Privileged Identity Management の図](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PIM は以下のことに役立ちます。
 
--   Azure AD 管理者に関するアラートとレポートを受け取り、Office 365 や Intune などの Microsoft Online Services にジャスト イン タイム (JIT) で管理アクセスを行う。
+-   Azure AD 管理者に関するアラートとレポートを受け取り、Microsoft 365 や Intune などの Microsoft オンライン サービスにジャスト イン タイム (JIT) で管理アクセスを行う。
 
 -   管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する。
 
@@ -155,7 +155,7 @@ Security Center には、シグネチャ ベースの手法とは比較になら
 
 Microsoft は、膨大なグローバル脅威インテリジェンスにアクセスできます。
 
-Azure、Office 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、および Microsoft セキュリティ レスポンス センター (MSRC) などの複数のソースから製品利用統計情報が送られてきます。
+Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、および Microsoft セキュリティ レスポンス センター (MSRC) などの複数のソースから製品利用統計情報が送られてきます。
 
 ![脅威インテリジェンスの検索結果](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +190,7 @@ Azure、Office 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com�
 
 -   **悪質な PowerShell スクリプト**: 攻撃者が標的の仮想マシン上で悪質なコードを実行するために、さまざまな目的で PowerShell を使用することがあります。 疑わしい活動の兆候がないか、PowerShell のアクティビティは Security Center によって調査されます。
 
--   **送信方向の攻撃**:攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。 たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。 Security Center では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。 スパムが検出された場合、Security Center では、普通ではない電子メール トラフィックと Office 365 から得られたインテリジェンスとの相関を明らかにすることで、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかも判断します。
+-   **送信方向の攻撃**:攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。 たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。 Security Center では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。 スパムが検出された場合、Security Center では、普通ではない電子メール トラフィックと Microsoft 365 から得られたインテリジェンスとの相関を明らかにすることで、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかも判断します。
 
 ### <a name="anomaly-detection"></a>異常検出
 

@@ -4,17 +4,17 @@ description: このページでは、Azure SQL Database と Azure SQL Managed In
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.topic: conceptual
+ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987287"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448858"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のクォータの増加を要求する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 1. **[Purchase Model]\(購入モデル\)** と、 **[Expected Consumption]\(予想使用量\)** の詳細を入力します。
 
-   ![リージョン アクセスの要求](./media/quota-increase-request/quota-details-whitelisting.png)
+   ![リージョン アクセスの要求](./media/quota-increase-request/quota-request.png)
 
 ### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> リージョンへの M シリーズ アクセスを有効にする
 
@@ -118,7 +118,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 1. **[場所の選択]** リストで、使用する Azure リージョンを選択します。 クォータは、各リージョンのサブスクリプション単位となります。
 
 
-   ![リージョン アクセスの要求](./media/quota-increase-request/quota-m-series.png)
+   ![M シリーズのリージョン アクセスの要求](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL Managed Instance のクォータの種類
 

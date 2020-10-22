@@ -1,14 +1,14 @@
 ---
 title: ハイブリッド マシンを大規模に Azure に接続する
 description: この記事では、サービス プリンシパルを使用して、Azure Arc 対応サーバーを使用する Azure にマシンを接続する方法について説明します。
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 545d8abd6dd17e1e413852735c096ddc9261b972
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908337"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91713419"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 
@@ -67,7 +67,7 @@ PowerShell を使用してサービス プリンシパルを作成するには�
 > **Id** プロパティではなく、サービス プリンシパルの **ApplicationId** プロパティを使用するようにしてください。
 >
 
-**Azure Connected Machine のオンボード** ロールには、マシンのオンボードに必要なアクセス許可のみが含まれています。 リソース グループまたはサブスクリプションを含めることをそのスコープに許可するため、サービス プリンシパルのアクセス許可を割り当てることができます。 ロールの割り当てを追加するには、「[Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」または「[Azure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
+**Azure Connected Machine のオンボード** ロールには、マシンのオンボードに必要なアクセス許可のみが含まれています。 リソース グループまたはサブスクリプションを含めることをそのスコープに許可するため、サービス プリンシパルのアクセス許可を割り当てることができます。 ロール割り当てを追加する方法については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」か「[Azure CLI を使用して Azure でのロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>エージェントをインストールして Azure に接続する
 
@@ -139,6 +139,8 @@ azcmagent connect \
 
 ## <a name="next-steps"></a>次のステップ
 
+* トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
+
 - [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
-- [[Log Analytics エージェント]](../../azure-monitor/platform/log-analytics-agent.md) の詳細を確認します。 オペレーティング システムとワークロードの監視データを収集したい場合、それを Automation Runbook や機能 (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-intro.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-intro.md) などの他の Azure サービスを使用する場合に必要になります。

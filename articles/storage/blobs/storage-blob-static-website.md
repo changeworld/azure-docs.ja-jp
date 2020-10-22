@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ea88ad4d349d6a7aedd4e1e3bc8dc804683292
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 952d0acb00a25fe7d84738825cbad017e5b18029
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326084"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892695"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -60,7 +60,7 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 サーバーが 404 エラーを返し、Web サイトを有効にしたときに、エラー ドキュメントを指定していない場合、既定の 404 ページがユーザーに返されます。
 
 > [!NOTE]
-> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、静的な Web サイトではサポートされません。
+> [Azure Storage でのクロス オリジン リソース共有 (CORS) のサポート](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)は、静的な Web サイトではサポートされていません。
 
 ### <a name="regional-codes"></a>リージョン コード
 

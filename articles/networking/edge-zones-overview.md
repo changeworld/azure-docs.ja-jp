@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260067"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329576"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge Zone プレビューについて
 
@@ -74,7 +74,7 @@ Azure Edge Zone with Carrier は携帯電話会社のデータセンターにデ
 
 Edge Zone は次の事業者と連携して提供されます。
 
-- AT&T (アトランタ、ダラス、およびロサンゼルス) 
+- AT&T (アトランタ、ダラス、およびロサンゼルス)
 
 5G ネットワークに接続する最適化されたスケーラブルなアプリケーションを開発している ISV は、超低待機時間のプラットフォーム、モバイル、および接続されたシナリオをビルドして実験するときに、AT&T で Azure Edge Zones の新しいロサンゼルス プレビューの場所を使用できるようになりました。 セキュリティで保護された高帯域幅の接続を利用するには、早期導入者プログラムに登録します。
 
@@ -86,9 +86,9 @@ Edge Zone は次の事業者と連携して提供されます。
 
 Azure Private Edge Zone は、オンプレミスに配置される、占有領域の小さい Azure の拡張機能です。 Azure Private Edge Zone は、[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) プラットフォームが基になっています。 これにより、オンプレミスにデプロイされたコンピューティング サービスとストレージ サービスに、短い待機時間でアクセスすることができます。 また、Private Edge Zone を使用すると、ISV のアプリケーションや仮想化されたネットワーク機能 (VNF) を、[Azure マネージド アプリケーション](https://azure.microsoft.com/services/managed-applications/)として、オンプレミスの仮想マシンやコンテナーと共にデプロイすることができます。 このような VNF には、モバイル パケット コア、ルーター、ファイアウォール、SD-WAN アプライアンスなどを含めることができます。 Azure Private Edge Zone には、クラウドネイティブのオーケストレーション ソリューションが付属しており、VNF とアプリケーションのライフサイクルを Azure portal から管理できます。
 
-Azure Private Edge Zone を使用すると、Azure でアプリケーションを構築およびデプロイするときと同じ使い慣れたツールを使用し、オンプレミスでアプリケーションを開発してデプロイすることができます。 
+Azure Private Edge Zone を使用すると、Azure でアプリケーションを構築およびデプロイするときと同じ使い慣れたツールを使用し、オンプレミスでアプリケーションを開発してデプロイすることができます。
 
-次のこともできます。 
+次のこともできます。
 
 - プライベート モバイル ネットワーク (プライベート LTE、プライベート 5G) を実行します。
 - ファイアウォールのようなセキュリティ機能を実装します。
@@ -113,6 +113,7 @@ Private Edge Zone を使用してエンドツーエンドのソリューショ�
 ##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>モバイル ネットワーク用の仮想化 Evolved Packet Core (vEPC)
 
 - [Affirmed Networks](https://www.affirmednetworks.com/)
+- [Celona](https://www.celona.io/azure-edge)
 - [Druid Software](https://www.druidsoftware.com/)
 - [Expeto](https://www.expeto.io/)
 - [Mavenir](https://mavenir.com/)
@@ -121,12 +122,15 @@ Private Edge Zone を使用してエンドツーエンドのソリューショ�
 
 ##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>移動無線パートナー
 
+- [Celona](https://www.celona.io/azure-edge)
 - [Commscope Ruckus](https://support.ruckuswireless.com/)
 
 ##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN ベンダー
 
+- [128 Technology](https://www.128technology.com/)
 - [NetFoundry](https://netfoundry.io/)
 - [Nuage Networks (Nokia)](https://www.nuagenetworks.net/)
+- [Versa Networks](https://www.versa-networks.com/)
 - [VMware SD-WAN (Velocloud)](https://www.velocloud.com/)
 
 ##### <a name="router-vendors"></a><a name="router-vendors"></a>ルーター ベンダー
@@ -158,10 +162,10 @@ Private Edge Zone を使用してエンドツーエンドのソリューショ�
 
 ![Private Edge Zone のプライベート モバイル ネットワーク](./media/edge-zones-overview/mobile-networks.png "Private Edge Zone のプライベート モバイル ネットワーク")
 
-Private Edge Zone にプライベート モバイル ネットワークをデプロイできるようになりました。 プライベート モバイル ネットワークを使用すると、ビジネス クリティカルなアプリケーションに必要な、待機時間が非常に短く高容量で信頼性の高い、セキュリティで保護されたワイヤレス ネットワークを実現できます。 
+Private Edge Zone にプライベート モバイル ネットワークをデプロイできるようになりました。 プライベート モバイル ネットワークを使用すると、ビジネス クリティカルなアプリケーションに必要な、待機時間が非常に短く高容量で信頼性の高い、セキュリティで保護されたワイヤレス ネットワークを実現できます。
 
-プライベート モバイル ネットワークでは、次のようなシナリオを実現することができます。 
-- 倉庫内の無人搬送車 (AGV) の命令や制御。 
+プライベート モバイル ネットワークでは、次のようなシナリオを実現することができます。
+- 倉庫内の無人搬送車 (AGV) の命令や制御。
 - スマート ファクトリ内のロボット間のリアルタイム通信。
 - 拡張現実と仮想現実のエッジ アプリケーション。
 
@@ -174,7 +178,7 @@ Microsoft では、このプロセスのあらゆる側面を支援するパー�
 #### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>Private Edge Zones での SD-WAN
 
 ![Private Edge Zones での SD-WAN](./media/edge-zones-overview/sd-wan.png "Private Edge Zones での SD-WAN")
- 
+
 SD-WAN を使うと、次のような利点のあるエンタープライズ レベルのワイド エリア ネットワーク (WAN) を作成できます。
 
 - 帯域幅の増加
@@ -183,7 +187,7 @@ SD-WAN を使うと、次のような利点のあるエンタープライズ レ
 - [信頼性]
 - ポリシー管理
 - 広範なネットワークの可視性
-    
+
 SD-WAN により、冗長性のある中央コントローラーからの調整されたシームレスなブランチ オフィス接続が、低い所有コストで実現されます。
 Private Edge Zone の SD-WAN を使うと、CapEx 中心モデルから、サービスとしてのソフトウェア (SaaS) モデルに移行し、IT 予算を減らすことができます。 任意の SD-WAN パートナー、オーケストレーター、またはコントローラーを使用して、新しいサービスを有効にし、それらをネットワーク全体に直ちに伝達することができます。
 

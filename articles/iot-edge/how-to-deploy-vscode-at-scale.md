@@ -9,16 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134039"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043818"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code を使用して大規模 IoT Edge モジュールをデプロイする
 
-Visual Studio Code を使用して **IoT Edge の自動デプロイ**を作成し、多数のデバイスの進行中のデプロイを一括管理できます。 IoT Edge の自動展開は、IoT Hub の[自動デバイス管理](/azure/iot-hub/iot-hub-automatic-device-management)機能の一部です。 デプロイは動的なプロセスであり、複数のモジュールを複数デバイスにデプロイすることができます。 また、モジュールの状態と正常性をトラッキングし、必要に応じて変更を加えることもできます。
+Visual Studio Code を使用して **IoT Edge の自動デプロイ**を作成し、多数のデバイスの進行中のデプロイを一括管理できます。 IoT Edge の自動展開は、IoT Hub の[自動デバイス管理](../iot-hub/iot-hub-automatic-device-management.md)機能の一部です。 デプロイは動的なプロセスであり、複数のモジュールを複数デバイスにデプロイすることができます。 また、モジュールの状態と正常性をトラッキングし、必要に応じて変更を加えることもできます。
 
 詳細については、「[1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動展開について](module-deployment-monitoring.md)」を参照してください。
 
@@ -27,7 +27,10 @@ Visual Studio Code を使用して **IoT Edge の自動デプロイ**を作成�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
-* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#register-with-visual-studio-code)。
+* 1 つまたは複数の IoT Edge デバイス。
+
+  IoT Edge デバイスがセットアップされていない場合は、Azure 仮想マシンで作成できます。 クイックスタートの記事のいずれかの手順に従って、[仮想 Linux デバイスを作成](quickstart-linux.md)するか、[仮想 Windows デバイスを作成](quickstart.md)します。
+
 * [Visual Studio Code](https://code.visualstudio.com/)。
 * Visual Studio Code 用の [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)
 
@@ -57,13 +60,16 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
 
 例として、1 つのモジュールでの基本的な配置マニフェストを次に示します。
 
+>[!NOTE]
+>このサンプルのデプロイ マニフェストでは、IoT Edge エージェントとハブにスキーマ バージョン 1.1 を使用します。 スキーマ バージョン1.1 は IoT Edge バージョン 1.0.10 と共にリリースされ、モジュールの起動順序やルートの優先順位付けなどの機能を使用できます。
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -92,7 +98,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
           },
           "modules": {
             "SimulatedTemperatureSensor": {
-              "version": "1.0",
+              "version": "1.1",
               "type": "docker",
               "status": "running",
               "restartPolicy": "always",
@@ -223,8 +229,8 @@ Visual Studio Code でデバイス ツインを編集して、タグを構成す
   | パラメーター | 説明 |
   | --- | --- |
   | デプロイ ID | IoT ハブに作成されるデプロイの名前です。 デプロイに一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /` |
-  | ターゲット条件 | ターゲット条件を入力し、このデプロイのターゲットとなるデバイスを決定します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、「`tags.environment='test' and properties.reported.devicemodel='4000x'`」 のように入力します。|
-  | Priority |  正の整数。 複数のデプロイが同じデバイスをターゲットしている場合には、優先度の数値が最も大きいデプロイが適用されます。 |
+  | ターゲット条件 | ターゲット条件を入力し、このデプロイのターゲットとなるデバイスを決定します。  条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、「`tags.environment='test' and properties.reported.devicemodel='4000x'`」 のように入力します。 |
+  | 優先度 |  正の整数。 複数のデプロイが同じデバイスをターゲットしている場合には、優先度の数値が最も大きいデプロイが適用されます。 |
 
   優先度を指定すると、ターミナルは次のような出力を表示します。
 

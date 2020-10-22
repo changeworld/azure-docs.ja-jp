@@ -3,12 +3,12 @@ title: Visual Studio でリソース グループ プロジェクトを作成、
 description: Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372648"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
@@ -370,7 +370,7 @@ AzureRM モジュール スクリプトの場合は、Visual Studio を使用し
 
    ![カスタム ダッシュボード](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-RBAC グループを使用して、ダッシュボードへのアクセスを管理できます。 また、デプロイした後で、ダッシュボードの外観をカスタマイズすることもできます。 ただし、リソース グループを再デプロイすると、ダッシュボードはテンプレートの既定の状態にリセットされます。 ダッシュボードの作成について詳しくは、「[プログラムによる Azure ダッシュボードの作成](../../azure-portal/azure-portal-dashboards-create-programmatically.md)」をご覧ください。
+ダッシュボードへのアクセスを管理するには、Azure のロールベースのアクセス制御 (RBAC) を使用します。 また、デプロイした後で、ダッシュボードの外観をカスタマイズすることもできます。 ただし、リソース グループを再デプロイすると、ダッシュボードはテンプレートの既定の状態にリセットされます。 ダッシュボードの作成について詳しくは、「[プログラムによる Azure ダッシュボードの作成](../../azure-portal/azure-portal-dashboards-create-programmatically.md)」をご覧ください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

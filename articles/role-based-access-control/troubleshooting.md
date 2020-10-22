@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382578"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91665993"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -63,7 +63,7 @@ $ras.Count
 
     このエラーを解決する可能性がある 2 つの方法があります。 最初の方法は、ディレクトリ内のデータを読み取ることができるように、[Directory Readers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) ロールをサービス プリンシパルに割り当てることです。
 
-    このエラーを解決する 2 番目の方法は、`--assignee` ではなく `--assignee-object-id` パラメーターを使用して、ロールの割り当てを作成することです。 `--assignee-object-id` を使用すると、Azure CLI で Azure AD 検索がスキップされます。 ロールを割り当てるユーザー、グループ、またはアプリケーションのオブジェクト ID を取得する必要があります。 詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md#new-service-principal)」を参照してください。
+    このエラーを解決する 2 番目の方法は、`--assignee` ではなく `--assignee-object-id` パラメーターを使用して、ロールの割り当てを作成することです。 `--assignee-object-id` を使用すると、Azure CLI で Azure AD 検索がスキップされます。 ロールを割り当てるユーザー、グループ、またはアプリケーションのオブジェクト ID を取得する必要があります。 詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)」を参照してください。
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>サブスクリプションを別のディレクトリに譲渡する
 
-- サブスクリプションを別の Azure AD ディレクトリに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
+- サブスクリプションを別の Azure AD ディレクトリに譲渡する手順については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](transfer-subscription.md)」をご覧ください。
 - 別の Azure AD ディレクトリにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD ディレクトリから**完全**に削除され、ターゲット Azure AD ディレクトリに移行されることはありません。 ターゲット ディレクトリでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
 - Azure AD グローバル管理者であり、ディレクトリ間で譲渡された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
 
@@ -99,11 +99,17 @@ $ras.Count
 - アクセス許可エラー "オブジェクト ID のクライアントは、スコープに対するアクションの実行を承認されていません (コード: AuthorizationFailed)" が、リソースを作成しようとすると発生する場合は、選択したスコープでリソースへの書き込みアクセス許可を持つロールを割り当てられたユーザーで、現在サインインしていることを確認します。 たとえば、リソース グループ内の仮想マシンを管理するには、そのリソース グループ (または親スコープ) に対する[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを持っている必要があります。 各組み込みロールに対するアクセス許可の一覧については、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
 - サポート チケットを作成または更新しようとすると "サポート要求を作成するためのアクセス許可がありません" というアクセス許可エラーが発生する場合は、現在サインインしているユーザーに、`Microsoft.Support/supportTickets/write` アクセス許可を持つロール ([サポート リクエスト共同作成者](built-in-roles.md#support-request-contributor)など) が割り当てられていることを確認します。
 
+## <a name="move-resources-with-role-assignments"></a>ロールが割り当てられているリソースを移動する
+
+Azure ロールがリソース (または子リソース) に直接割り当てられており、そのリソースを移動する場合、ロールの割り当ては移動されず、孤立します。 移動した後は、ロールの割り当てを再作成する必要があります。 最終的に、孤立したロールの割り当ては自動的に削除されますが、ベスト プラクティスとして、リソースを移動する前にロールの割り当てを削除しておくことをお勧めします。
+
+リソースの移動方法について詳しくは、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」をご覧ください。
+
 ## <a name="role-assignments-with-identity-not-found"></a>ID が見つからないロールの割り当て
 
 Azure portal のロールの割り当ての一覧で、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、**不明**な種類の**見つからない ID** として表示されている場合があります。
 
-![Web アプリ リソース グループ](./media/troubleshooting/unknown-security-principal.png)
+![Azure のロールの割り当ての一覧に ID が見つからない](./media/troubleshooting/unknown-security-principal.png)
 
 ID は、次の 2 つの理由で見つからない可能性があります。
 
@@ -144,7 +150,7 @@ CanDelegate        : False
 }
 ```
 
-セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) を参照してください
+セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-role-assignment) を参照してください
 
 PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 次の出力は、エラー メッセージの例を示しています。
 

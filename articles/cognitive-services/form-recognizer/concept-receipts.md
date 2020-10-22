@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751973"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761449"
 ---
 # <a name="receipt-concepts"></a>レシートの概念
 
@@ -74,10 +74,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
   > 言語の入力 
   >
   > 事前構築済みレシート v2.1-preview.1 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.1 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
-  
- ### <a name="input-requirements"></a>入力要件 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>Analyze Receipt の操作
 
@@ -456,7 +453,10 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 ## <a name="next-steps"></a>次のステップ
 
-- クイックスタートに従って、[Python でのレシート API のクイックスタート](./quickstarts/python-receipts.md)を開始します。
-- [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api) について学習します。
-- [Form Recognizer](overview.md) の詳細を確認します。
+- 選択した言語で Form Recognizer を使用してレシート処理アプリの作成を開始するには、[Form Recognizer クライアント ライブラリのクイックスタート](quickstarts/client-library.md)を完了します。
+- または、[Receipt API Python クイックスタート](./quickstarts/python-receipts.md)に従って、REST API を使用してレシートを認識します。
 
+## <a name="see-also"></a>関連項目
+
+* [Form Recognizer とは](./overview.md)
+* [REST API リファレンス ドキュメント](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)

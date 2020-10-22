@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526852"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91266294"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect クラウド プロビジョニングがサポートされているトポロジとシナリオ
 この記事では、Azure AD Connect クラウド プロビジョニングを使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とシナリオのみが含まれています。
@@ -34,7 +34,7 @@ ms.locfileid: "90526852"
 - ソース アンカーに使用される属性を変更することはできません。
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>単一のフォレスト、単一の Azure AD テナント
-![単一のフォレストと単一のテナントのトポロジ](media/plan-cloud-provisioning-topologies/single-forest.png)
+![単一のフォレストと単一のテナントのトポロジを示す図。](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 最も単純なトポロジは、1 つのオンプレミス フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。  このシナリオの例については、[チュートリアル:単一のフォレストと単一の Azure AD テナント](tutorial-single-forest.md)に関する記事を参照してください
 
@@ -45,7 +45,7 @@ ms.locfileid: "90526852"
 一般的なトポロジは、複数の AD フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>既存のフォレストを使用した Azure AD Connect、クラウド プロビジョニングを使用した新しいフォレスト
-![単一のフォレストと単一のテナントのトポロジ](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![既存のフォレストと新しいフォレストのトポロジを示す図。](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 このシナリオは複数フォレストのシナリオに似ていますが、これには既存の Azure AD Connect 環境が関係し、Azure AD Connect クラウド プロビジョニングを使用して新しいフォレストに導入されます。  このシナリオの例については、[チュートリアル:1 つの Azure AD テナントを持つ既存のフォレスト](tutorial-existing-forest.md)を参照してください。
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708953"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -27,8 +27,8 @@ ms.locfileid: "90033015"
 
 | リソース | 既定の制限 |
 | --- | --- |
-| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます |
-| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます |
+| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます |
+| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます |
 | (論理) パーティションあたりの最大 RU | 10,000 |
 | すべての項目にわたる、(論理) パーティションあたりの最大ストレージ | 20 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
@@ -79,8 +79,8 @@ Azure portal、Azure PowerShell、Azure CLI、および Azure Resource Manager �
 
 | リソース | 既定の制限 |
 | --- | --- |
-| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます|
-| リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます|
+| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます|
+| リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます|
 
 > [!NOTE]
 > リージョン内フェールオーバーは、単一リージョン書き込みのアカウントにのみ適用されます。 複数リージョン書き込みのアカウントには、書き込みリージョンの変更に関する制限は必要ないか、または存在しません。
@@ -120,7 +120,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | 一意キー制約あたりのパスの最大数|16 <sup>*</sup>|
 | 最大 TTL 値 |2147483647|
 
-<sup>*</sup> これらのコンテナーあたりの制限はいずれも、Azure サポートに連絡することによって増やすことができます。
+<sup>*</sup> これらのコンテナーあたりの制限はいずれも、[Azure サポート リクエスト](create-support-request-quota-increase.md)を作成することによって増やすことができます。
 
 ## <a name="per-item-limits"></a>項目あたりの制限
 
@@ -137,6 +137,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | プロパティ値の最大長 | 実質的に無制限 |
 | 文字列のプロパティ値の最大長 | 実質的に無制限 |
 | 数値のプロパティ値の最大長 | IEEE754 倍精度 64 ビット |
+| 埋め込みオブジェクト/配列の入れ子の最大レベル | 128 |
 | 最大 TTL 値 |2147483647|
 
 パーティション キー値と ID 値に関する長さの制限および 2 MB の全体的なサイズ制限を除き、プロパティの数や入れ子の深さなどの項目ペイロードに制限はありません。 RU の消費を削減するために、大きな、または複雑な項目構造を持つコンテナーのインデックス作成ポリシーを構成することが必要になる場合があります。 実際の例や大きな項目を管理するためのパターンについては、[Cosmos DB での項目のモデル化](how-to-model-partition-example.md)に関するページを参照してください。
@@ -154,13 +155,13 @@ Azure Cosmos DB は、コンテナー、項目、データベースなどのリ�
 
 クエリなどの操作が実行タイムアウトまたは応答サイズの制限に達すると、その操作は、実行を再開するために結果のページと継続トークンをクライアントに返します。 1 つのクエリをページや継続にまたがって実行できる期間に実質的に制限はありません。
 
-Cosmos DB は HMAC を承認のために使用します。 コンテナー、パーティション キー、項目などのリソースへのきめ細かなアクセス制御のために、マスター キーまたは[リソース トークン](secure-access-to-data.md)のどちらかを使用できます。 次の表は、Cosmos DB での承認トークンの制限の一覧を示しています。
+Cosmos DB は HMAC を承認のために使用します。 コンテナー、パーティション キー、項目などのリソースへのきめ細かなアクセス制御のために、主キーまたは[リソース トークン](secure-access-to-data.md)のどちらかを使用できます。 次の表は、Cosmos DB での承認トークンの制限の一覧を示しています。
 
 | リソース | 既定の制限 |
 | --- | --- |
-| マスター トークンの最大有効期限 | 15 分  |
+| プライマリ トークンの最大有効期限 | 15 分  |
 | リソース トークンの最小有効期限 | 10 分  |
-| リソース トークンの最大有効期限 | 既定では 24 時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます|
+| リソース トークンの最大有効期限 | 既定では 24 時間。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます|
 | トークン承認の最大クロック スキュー| 15 分 |
 
 Cosmos DB は、書き込み中のトリガーの実行をサポートしています。 このサービスでは、書き込み操作あたり最大 1 つのプリトリガーと 1 つのポストトリガーがサポートされます。
@@ -202,7 +203,7 @@ Cosmos DB は、[SQL](how-to-sql-query.md) を使用した項目のクエリを�
 | コンテナーあたりの除外される最大パス| 500 |
 | 複合インデックスの最大プロパティ| 8 |
 
-<sup>*</sup> これらの SQL クエリの制限を引き上げるには、Azure サポートに連絡してください。
+<sup>*</sup> これらの SQL クエリの制限はいずれも、[Azure サポート リクエスト](create-support-request-quota-increase.md)を作成することによって増やすことができます。
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API に固有の制限
 
@@ -216,7 +217,7 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 | MongoDB 操作の最大実行時間| 30 秒 |
 | サーバー側の接続を終了するためのアイドル状態の接続のタイムアウト* | 30 分 |
 
-\* クライアント アプリケーションではドライバー設定内のアイドル状態の接続のタイムアウトを 2 から 3 分に設定することをお勧めします。これは、[Azure LoadBalancer の既定のタイムアウトが 4 分である](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)ためです。  このタイムアウトにより、クライアント マシンと Azure Cosmos DB 間の中間ロード バランサーによってアイドル状態の接続が閉じられないようになります。
+\* クライアント アプリケーションではドライバー設定内のアイドル状態の接続のタイムアウトを 2 から 3 分に設定することをお勧めします。これは、[Azure LoadBalancer の既定のタイムアウトが 4 分である](../load-balancer/load-balancer-tcp-idle-timeout.md)ためです。  このタイムアウトにより、クライアント マシンと Azure Cosmos DB 間の中間ロード バランサーによってアイドル状態の接続が閉じられないようになります。
 
 ## <a name="try-cosmos-db-free-limits"></a>Cosmos DB 無料試用版の制限
 

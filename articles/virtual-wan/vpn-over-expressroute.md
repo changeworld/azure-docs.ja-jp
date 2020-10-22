@@ -1,18 +1,18 @@
 ---
 title: ExpressRoute の暗号化を構成する:Azure Virtual WAN 向けの ExpressRoute 経由の IPsec
-description: このチュートリアルでは、Azure Virtual WAN を使用して、ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を作成する方法を学習します。
+description: Azure Virtual WAN を使用して、ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を作成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827971"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079056"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute の暗号化:Virtual WAN 向けの ExpressRoute 経由の IPsec
 

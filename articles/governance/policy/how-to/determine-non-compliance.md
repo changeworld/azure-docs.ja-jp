@@ -1,14 +1,14 @@
 ---
 title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
-ms.date: 07/06/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648578"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541273"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -104,11 +104,17 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 |現在の値は、ターゲット値と一致してはなりません (大文字/小文字を区別しない)。 |notMatchInsensitively、または matchInsensitively **ではない** |
 |ポリシー定義の効果の詳細と一致する関連リソースがありません。 |**then.details.type** で定義されている種類のリソース、およびポリシー ルールの **if** 部分に定義されているリソースに関連したリソースが存在しません。 |
 
+## <a name="component-details-for-resource-provider-modes"></a>リソース プロバイダー モードのコンポーネントの詳細
+
+[リソース プロバイダー モード](../concepts/definition-structure.md#resource-manager-modes)による割り当てについては、_準拠していない_リソースを選択して、詳細なビューを開きます。 **[コンポーネント コンプライアンス]** タブの下に、割り当てられたポリシーのリソース プロバイダー モードに固有の追加情報があり、_準拠していない_**コンポーネント**と**コンポーネント ID** が表示されます。
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[リソース コンプライアンス] タブの 'ポリシー準拠状況の詳細' リンクのスクリーンショット。" border="false":::
+
 ## <a name="compliance-details-for-guest-configuration"></a>ゲスト構成のコンプライアンスの詳細
 
-"_ゲスト構成_" カテゴリの "_auditIfNotExists_" ポリシーについては、VM 内で評価された設定が複数存在する可能性があり、設定ごとの詳細を表示する必要があります。 たとえば、パスワード ポリシーの一覧を監査していて、そのうちの 1 つだけが "_非準拠_" の状態の場合は、対応していない特定のパスワード ポリシーとその理由を把握しておく必要があります。
+_ゲスト構成_カテゴリの _auditIfNotExists_ ポリシーについては、仮想マシン内で評価された複数の設定が存在する可能性があり、設定ごとの詳細を表示する必要があります。 たとえば、パスワード ポリシーの一覧を監査していて、そのうちの 1 つだけが "_非準拠_" の状態の場合は、対応していない特定のパスワード ポリシーとその理由を把握しておく必要があります。
 
-また、VM に直接アクセスしてサインインできない可能性があるのに、その VM が "_非準拠_" である理由をレポートしなければなりません。
+また、仮想マシンに直接サインインするアクセス権を持たない可能性もありますが、仮想マシンが_準拠していない_理由についてレポートする必要があります。
 
 ### <a name="azure-portal"></a>Azure portal
 

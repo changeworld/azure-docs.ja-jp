@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207797"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961835"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Device Manager サービスを使用して StorSimple アラートを表示および管理する
 
@@ -75,7 +75,7 @@ StorSimple デバイスごとに、アラート状態について電子メール
 
 5. 構成が完了したら、 **[保存]** をクリックします。 確認を求められたら、 **[はい]** をクリックします。
 
-     ![Alerts test notification email sent](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![送信されたアラート テスト通知電子メール 2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>アラートの表示と追跡
 

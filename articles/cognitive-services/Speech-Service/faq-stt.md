@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397761"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -29,7 +29,7 @@ ms.locfileid: "88661522"
 
 **Q:ベースライン モデルの使用はどこから開始できますか。**
 
-**A**: 最初に、[サブスクリプション キー](get-started.md)を取得します。 事前にデプロイされたベースライン モデルに対して REST 呼び出しを実行する方法については、「[REST API](rest-apis.md)」を参照してください。 WebSocket を使用する場合は、[SDK](speech-sdk.md) をダウンロードしてください。
+**A**: 最初に、[サブスクリプション キー](overview.md#try-the-speech-service-for-free)を取得します。 事前にデプロイされたベースライン モデルに対して REST 呼び出しを実行する方法については、「[REST API](rest-apis.md)」を参照してください。 WebSocket を使用する場合は、[SDK](speech-sdk.md) をダウンロードしてください。
 
 **Q:カスタム音声モデルを常にビルドする必要はありますか。**
 
@@ -152,17 +152,17 @@ ms.locfileid: "88661522"
 
 **A**: 単語のリストをアップロードすると、それらの単語はボキャブラリに追加されますが、それらの単語の一般的な使用方法はシステムに伝わりません。 すべての発話または発話の一部 (ユーザーが言いそうな文や語句) を指定すると、言語モデルはその新しい単語とその使用方法を学習します。 カスタム言語モデルは、システムに新しい単語を追加するだけでなく、新しいアプリケーションに対して既知の単語の確度を調整するのに便利です。 すべての発話を指定すると、システムがより学習できるようになります。
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>テナント モデル (Office 365 データを使用した Custom Speech)
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>テナント モデル (Microsoft 365 データを使用した Custom Speech)
 
 **Q:テナント モデルに含まれている情報と、その作成方法を教えてください。**
 
-**A:** テナント モデルは、組織内の誰でも見ることができる[パブリック グループ](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)のメールとドキュメントを使用して構築されます。
+**A:** テナント モデルは、組織内の誰でも見ることができる[パブリック グループ](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)のメールとドキュメントを使用して構築されます。
 
 **Q:テナント モデルでは、どのような音声エクスペリエンスが向上しますか。**
 
 **A:** テナント モデルを有効にし、作成して発行すると、Speech サービスを使用して構築されたエンタープライズ アプリケーションの認識を改善するために使用されます。また、企業へのメンバーシップを示すユーザーの Azure AD トークンも渡されます。
 
-音声サービス アプリケーションのテナント モデルを作成しても、Office 365 に組み込まれている音声エクスペリエンス (ディクテーションや PowerPoint キャプションなど) は変更されません。
+音声サービス アプリケーションのテナント モデルを作成しても、Microsoft 365 に組み込まれている音声エクスペリエンス (ディクテーションや PowerPoint キャプションなど) は変更されません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースの編集 - QnA Maker
 description: QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコンテンツを管理することができます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054013"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776546"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>ナレッジベースで QnA ペアを編集する
 
@@ -72,7 +74,7 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 
     > [!div class="mx-imgBorder"]
-    > ![リッチテキスト エディターを使用して、パブリックにアクセスできるイメージと、その代替テキストを追加します。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![インプレース エディターのスクリーンショット。パブリック アクセスできるイメージの URL を確認できます。イメージの代替テキストが入力されています。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. 回答のテキストを選択してからツールバーの [リンク] アイコンを選択するか、ツールバーのリンク アイコンを選択してから新しいテキストと URL を入力して、URL へのリンクを追加します。
 

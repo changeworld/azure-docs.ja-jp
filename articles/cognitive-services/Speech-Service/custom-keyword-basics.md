@@ -1,5 +1,5 @@
 ---
-title: カスタム キーワードを作成する - Speech サービス
+title: キーワード作成クイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: デバイスは常にキーワード (またはフレーズ) をリッスンしています。 ユーザーがキーワードを読み上げると、ユーザーが読み上げを止めるまで、デバイスは後続のすべての音声をクラウドに送信します。 キーワードをカスタマイズすることは、デバイスを差別化し、ブランドを強化する上で効果的な方法です。
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919014"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667695"
 ---
-# <a name="custom-keyword-basics"></a>カスタム キーワードの基本
+# <a name="get-started-with-custom-keyword"></a>Custom Keyword の概要
 
-この記事では、Speech Studio と Speech SDK を使用してカスタム キーワードを操作する方法の基本について説明します。 キーワードは、音声で製品を有効できるようにする単語または短い語句です。 Speech Studio でキーワード モデルを作成した後、アプリケーションの Speech SDK で使用するモデル ファイルをエクスポートします。
+このクイックスタートでは、Speech Studio と Speech SDK を使用してカスタム キーワードを操作する方法の基本について説明します。 キーワードは、音声で製品を有効できるようにする単語または短い語句です。 Speech Studio でキーワード モデルを作成した後、アプリケーションの Speech SDK で使用するモデル ファイルをエクスポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順では、Speech サブスクリプションと Speech SDK が必要です。 まだサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](get-started.md)。 SDK を入手するには、ご利用のプラットフォームの[インストール ガイド](quickstarts/setup-platform.md)を参照してください。
+この記事の手順では、Speech サブスクリプションと Speech SDK が必要です。 まだサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](overview.md#try-the-speech-service-for-free)。 SDK を入手するには、ご利用のプラットフォームの[インストール ガイド](quickstarts/setup-platform.md)を参照してください。
 
 ## <a name="create-a-keyword-in-speech-studio"></a>Speech Studio でキーワードを作成する
 

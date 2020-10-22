@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: a69a58da85cf1ee03046626bb076c5cd44196279
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828712"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993255"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Policy を使用して大規模に Azure Monitor をデプロイする
 Azure Monitor の一部の機能は構成を 1 回または限られた回数行うだけで済みますが、それ以外の機能については監視するリソースごとに繰り返す必要があります。 この記事では、Azure Policy を使用して Azure Monitor を大規模に実装し、監視がすべての Azure リソースに対して確実に一貫して正確に構成されるようにする方法について説明します。
@@ -33,7 +33,7 @@ Azure Policy は、次の表に示されるオブジェクトで構成されま�
 | 割り当て | ポリシー定義またはイニシアティブは、スコープに割り当てられるまで有効になりません。 たとえば、ポリシーをリソース グループに割り当てて、そのリソースに作成されたすべてのリソースに適用するか、サブスクリプションに適用してそのサブスクリプションのすべてのリソースに適用します。  詳細については、「[Azure Policy の割り当ての構造](../governance/policy/concepts/assignment-structure.md)」を参照してください。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 用の組み込みポリシー定義
-Azure Policy には、Azure Monitor に関連するいくつかの定義があらかじめ組み込まれています。 これらのポリシー定義は、既存のサブスクリプションに割り当てることも、独自のカスタム定義を作成するための基礎として使用することもできます。 **[監視]** カテゴリの組み込みポリシーの完全な一覧については、[Azure Monitor 用の Azure Policy 組み込みポリシー定義](samples/policy-samples.md)に関するページを参照してください。
+Azure Policy には、Azure Monitor に関連するいくつかの定義があらかじめ組み込まれています。 これらのポリシー定義は、既存のサブスクリプションに割り当てることも、独自のカスタム定義を作成するための基礎として使用することもできます。 **[監視]** カテゴリの組み込みポリシーの完全な一覧については、[Azure Monitor 用の Azure Policy 組み込みポリシー定義](./samples/policy-reference.md)に関するページを参照してください。
 
 監視に関連する組み込みポリシー定義を表示するには、次の手順を実行します。
 
@@ -41,7 +41,7 @@ Azure Policy には、Azure Monitor に関連するいくつかの定義があ�
 2. **[定義]** を選択します。
 3. **[種類]** で *[組み込み]* を選択し、 **[カテゴリ]** で *[監視]* を選択します。
 
-  ![組み込みのポリシー定義](media/deploy-scale/builtin-policies.png)
+  ![監視カテゴリおよび組み込みの種類のポリシー定義の一覧を示す Azure portal 内の [Azure Policy Definitions]\(Azure Policy 定義\) ページのスクリーンショット。](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>診断設定
@@ -54,7 +54,7 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 
 たとえば、次の画像は、Data Lake Analytics の組み込みの診断設定ポリシー定義を示しています。
 
-  ![組み込みのポリシー定義](media/deploy-scale/builtin-diagnostic-settings.png)
+  ![Data Lake Analytics 用の 2 つの組み込み診断設定ポリシー定義を示す [Azure Policy Definitions]\(Azure Policy 定義\) ページの部分的なスクリーンショット。](media/deploy-scale/builtin-diagnostic-settings.png)
 
 ### <a name="custom-policy-definitions"></a>カスタム ポリシー定義
 組み込みポリシーがないリソースの種類の場合、カスタム ポリシー定義を作成する必要があります。 これは、既存の組み込みポリシーをコピーし、リソースの種類に合わせて変更することによって、Azure portal で手動で行えます。 ただし、PowerShell ギャラリーにあるスクリプトを使用して、プログラムによってポリシーを作成する方が効率的です。
@@ -109,7 +109,7 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 ### <a name="assignment"></a>割り当て 
 監視対象のリソースのスコープに応じて、イニシアティブを Azure 管理グループ、サブスクリプション、またはリソース グループに割り当てます。 [管理グループ](../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に特に役立ちます。
 
-![イニシアチブ割り当て](media/deploy-scale/initiative-assignment.png)
+![Azure portal 内の [Diagnostic settings to Log Analytics workspace]\(Log Analytics ワークスペースに対する診断設定\) の [イニシアティブの割り当て] セクションにある [基本] タブの設定のスクリーンショット。](media/deploy-scale/initiative-assignment.png)
 
 イニシアティブ パラメーターを使用すると、イニシアティブ内のすべてのポリシー定義に対して 1 回でワークスペースまたはその他の詳細を指定することができます。 
 
@@ -146,7 +146,7 @@ Azure Policy インターフェイスを使用してこれらのイニシアテ�
 ### <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 Azure Policy を使用して仮想マシン スケール セットの監視を有効にするには、監視するリソースのスコープに応じて、Azure 管理グループ、サブスクリプション、またはリソース グループに対して、**仮想マシン スケール セットに対して Azure Monitor を有効にする**イニシアティブを割り当てます。 [管理グループ](../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に特に役立ちます。
 
-![イニシアチブ割り当て](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+![Azure portal 内の [イニシアティブの割り当て] ページのスクリーンショット。 [イニシアティブ定義] は [Virtual Machine Scale Sets 用の Azure Monitor の有効化] に設定されています。](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
 データの送信先となるワークスペースを選択します。 このワークスペースには、[]()の説明に従って、*VMInsights* ソリューションがインストールされている必要があります。
 

@@ -1,17 +1,17 @@
 ---
 title: 監視とチューニング - Azure Database for PostgreSQL - 単一サーバー
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) の監視およびチューニング機能について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708715"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
@@ -38,7 +38,7 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 |network_bytes_egress|Network Out|バイト|アクティブな接続全体のネットワーク送信。|
 |network_bytes_ingress|Network In|バイト|アクティブな接続全体のネットワーク受信。|
 |backup_storage_used|使用済みバックアップ ストレージ|バイト|使用されているバックアップ ストレージの量。 このメトリックは、サーバーに設定されているバックアップ保持期間に基づいて保持されているすべてのデータベースの完全バックアップ、差分バックアップ、ログ バックアップによって使用されるストレージの合計を表します。 バックアップの頻度はサービスによって管理され、[概念に関する記事](concepts-backup.md)で説明されています。 geo 冗長ストレージの場合、バックアップ ストレージの使用量は、ローカル冗長ストレージの 2 倍になります。|
-|pg_replica_log_delay_in_bytes|Max Lag Across Replicas (レプリカ間の最大ラグ)|バイト|マスターと最も遅れているレプリカの間のバイト単位でのラグ。 このメトリックは、マスター サーバーのみで使用できます。|
+|pg_replica_log_delay_in_bytes|Max Lag Across Replicas (レプリカ間の最大ラグ)|バイト|プライマリと最も遅れているレプリカの間のバイト単位でのラグ。 このメトリックは、プライマリ サーバーのみで使用できます。|
 |pg_replica_log_delay_in_seconds|Replica Lag (レプリカ ラグ)|Seconds|最後に再生されたトランザクションからの時間。 このメトリックは、レプリカ サーバーのみで使用できます。|
 
 ## <a name="server-logs"></a>サーバー ログ

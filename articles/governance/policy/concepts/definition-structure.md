@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330283"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074262"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -104,17 +104,17 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="resource-provider-modes"></a>リソース プロバイダーのモード
 
-次のリソースプロバイダー ノードが完全サポートされています。
+次のリソース プロバイダーのモードが完全にサポートされています。
 
 - Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" です。
 
 現在、**プレビュー**として次のリソース プロバイダー モードがサポートされています。
 
 - [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用する定義では、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。 このモデルは "_非推奨_" です。
-- [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。
+- [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。 これらのポリシー定義の詳細については、「[Azure Key Vault と Azure Policy を統合する](../../../key-vault/general/azure-policy.md)」を参照してください。
 
 > [!NOTE]
-> リソースプロバイダー モードは、組み込みのポリシー定義にのみ対応しています。
+> リソース プロバイダーのモードでは、組み込みのポリシー定義のみがサポートされており、[適用除外](./exemption-structure.md)はサポートされていません。
 
 ## <a name="metadata"></a>Metadata
 
@@ -226,7 +226,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
+        "effect": "deny | audit | modify | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -306,6 +306,9 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `type`
 - `location`
   - 場所に依存しないリソースに対しては **global** を使用します。
+- `id`
+  - 評価されているリソースのリソース ID を返します。
+  - 例: `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - リソースで有効になっている[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の種類を返します。
 - `tags`
@@ -606,8 +609,20 @@ Azure Policy では、次の種類の効果をサポートしています。
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **range**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
+    - **targetRange**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
+
+    指定した IP アドレスの範囲にターゲット IP アドレスの範囲が含まれているかどうかを返します。 空の範囲、または IP ファミリ間の混合は許可されておらず、評価エラーが発生します。
+
+    サポートされる形式:
+    - 単一の IP アドレス (例: `10.0.0.0`、`2001:0DB8::3:FFFE`)
+    - CIDR 範囲 (例: `10.0.0.0/24`、`2001:0DB8::/110`)
+    - 開始 IP アドレスと終了 IP アドレスで定義される範囲 (例: `192.168.0.1-192.168.0.9`、`2001:0DB8::-2001:0DB8::3:FFFF`)
+
+
 #### <a name="policy-function-example"></a>ポリシー関数の例
 
 このポリシー規則の例では、`resourceGroup` リソース関数を使用して **name** プロパティを取得します。ここでは、`concat` 配列およびオブジェクト関数と組み合わせて、リソース グループ名で始まるリソース名を指定する `like` 条件を作成します。

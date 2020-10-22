@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715636"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055972"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
@@ -345,6 +345,49 @@ az storage account or-policy create \
     -resource-group <resource-group> \
     --source-account <source-account-name> \
     --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>BLOB のレプリケーションの状態を確認する
+
+Azure portal、PowerShell、または Azure CLI を使用して、ソース アカウントの BLOB のレプリケーションの状態を確認できます。 レプリケーションが完了するか失敗するまで、オブジェクト レプリケーションのプロパティは設定されません。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Azure portal でソース アカウントの BLOB のレプリケーションの状態を確認するには、次の手順に従います。
+
+1. Azure portal でソース アカウントに移動します。
+1. ソース BLOB が含まれているコンテナーを探します。
+1. BLOB を選択して、そのプロパティを表示します。 BLOB が正常にレプリケートされている場合は、状態が *[完了]* に設定されていることが **[オブジェクト レプリケーション]** セクションに示されます。 このコンテナーのオブジェクト レプリケーションを管理するルールのレプリケーション ポリシー ID と ID も表示されます。
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用してソース アカウントの BLOB のレプリケーションの状態を確認するには、次の例に示すように、オブジェクト レプリケーションの **ReplicationStatus** プロパティの値を取得します。 山かっこ内の値は、実際の値に置き換えてください。
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI を使用してソース アカウントの BLOB のレプリケーションの状態を確認するには、次の例に示すように、オブジェクト レプリケーションの **status** プロパティの値を取得します。
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
 ```
 
 ---

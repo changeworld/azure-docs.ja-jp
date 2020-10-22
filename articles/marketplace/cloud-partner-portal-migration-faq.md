@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607503"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369911"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -28,7 +28,7 @@ Cloud パートナー ポータルはパートナー センターに切り替え
 | オファーの公開とオファーの管理のエクスペリエンス | オファーのデータは Cloud パートナー ポータルからパートナー センターに移行されました。 オファーにはパートナー センターでアクセスするようになり、向上したユーザー エクスペリエンスと直感的なインターフェイスが提供されます。 方法については、「[コマーシャル マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)」を参照してください。 |
 | コマーシャル マーケットプレースでのオファーの利用可能性 | 変更はありません。 オファーがコマーシャル マーケットプレースで公開されている場合は、引き続き公開されます。 |
 | 新しい購入とデプロイ | 変更はありません。 顧客は、中断なしでオファーの購入とデプロイを続けることができます。 |
-| 支払い | すべての購入とデプロイは、引き続き通常どおり支払われ続けます。 詳細については、「[コマーシャル マーケットプレースでの支払いの受け取り](partner-center-portal/get-paid.md)」を参照してください。 |
+| 支払い | すべての購入とデプロイは、引き続き通常どおり支払われ続けます。 詳細については、「[コマーシャル マーケットプレースでの支払いの受け取り](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context)」を参照してください。 |
 | 既存の [Cloud パートナー ポータル API](cloud-partner-portal-api-overview.md) との API の統合 | 既存の Cloud パートナー ポータル API は引き続きサポートされており、既存の統合は引き続き機能します。 詳細については、「[Cloud パートナー ポータル REST API はまだサポートされていますか?](#are-the-cloud-partner-portal-rest-apis-still-supported)」を参照してください。 |
 | Analytics | パートナー センターで分析を表示することにより、引き続き売上を監視し、パフォーマンスを評価し、コマーシャル マーケットプレースのオファーを最適化することができます。 CPP とパートナー センターで分析レポートを表示する方法には違いがあります。 たとえば、CPP の **[販売者分析情報]** には、使用量ベースのプランと使用量ベースではないプランのデータを表示する **[注文と使用状況]** タブがありますが、パートナー センターには、 **[注文]** ページに SaaS オファー用の別のタブがあります。 詳細については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](partner-center-portal/analytics.md)」を参照してください。 |
 |||
@@ -162,7 +162,9 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 - プラン設定ページ
 - [プランのリスト] ページ
 - [プランの可用性] ページ
-- 次に示すように、[技術的な構成] ページを計画します。 ![![パートナー センターの [技術的な構成] ページを示すスクリーンショット](media/cpp-pc-faq/technical-configuration.png "パートナー センターの [技術的な構成] ページを示す")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- 技術的な構成を計画するページ (以下を参照)
+
+![![パートナー センターの [技術的な構成] ページを示すスクリーンショット](media/cpp-pc-faq/technical-configuration.png "パートナー センターの [技術的な構成] ページを示す")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 オファー ID がオファーの左側のナビゲーション バーに表示されるようになりました。
 

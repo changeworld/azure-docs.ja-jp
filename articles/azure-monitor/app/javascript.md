@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328906"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876211"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -200,6 +200,41 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
 | enableUnhandledPromiseRejectionTracking | false | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。
 
+## <a name="enable-time-on-page-tracking"></a>ページ滞在時間の追跡を有効にする
+
+`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
+
+## <a name="enable-correlation"></a>関連付けを有効にする
+
+関連付けにより、分散トレースを有効にするデータが生成および送信され、[アプリケーション マップ](../app/app-map.md)、[エンド ツー エンド トランザクション ビュー](../app/app-map.md#go-to-details)、その他の診断ツールが強化されます。
+
+次の例は、関連付けを有効にするために必要なすべての構成を示しており、それに続いてシナリオ固有の注意事項があります。
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+
+サーバー側は、これらのヘッダーが存在する接続を受け入れる必要があります。 サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
+
+Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
+
+> [!NOTE]
+> 2020 年以降にリリースされた OpenTelemtry または Application Insights SDK を使用している場合は、[WC3 TraceContext](https://www.w3.org/TR/trace-context/) を使用することをお勧めします。 [こちら](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の構成ガイダンスを参照してください。
+
 ## <a name="single-page-applications"></a>シングル ページ アプリケーション
 
 既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され**ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
@@ -208,49 +243,13 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 > [!NOTE]
 > `enableAutoRouteTracking: true` は、React プラグインを使用して**いない**場合にのみ使用します。 いずれも、ルートの変更時、新しい PageViews を送信できます。 両方が有効になっている場合、PageViews が重複して送信されることがあります。
 
-## <a name="configuration-autotrackpagevisittime"></a>構成: autoTrackPageVisitTime
-
-`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
-
 ## <a name="extensions"></a>拡張機能
 
 | 拡張機能 |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
-| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
-
-## <a name="correlation"></a>相関関係
-
-クライアントからサーバー側への相関関係は、次に対してサポートされます。
-
-- XHR/AJAX 要求 
-- フェッチ要求 
-
-クライアントからサーバー側への相関関係は、`GET` および `POST` 要求に対しては**サポートされません**。
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>クライアント AJAX とサーバー要求の間でコンポーネント間の相関関係を有効にする
-
-`CORS` の相関関係を有効にするには、クライアントは 2 つの追加の要求ヘッダー `Request-Id` と `Request-Context` を送信する必要があり、サーバー側では、これらのヘッダーがある接続を受け入れられる必要があります。 これらのヘッダーの送信は、JavaScript SDK 構成内に `enableCorsCorrelation: true` を設定することによって有効になります。 
-
-サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
-
-Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
-
-クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
+| [Angular](javascript-angular-plugin.md) |
 
 ## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
 

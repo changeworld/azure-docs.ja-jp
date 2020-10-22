@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509758"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356887"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>クラウドの一貫性を実現する ARM テンプレートを開発する
 
@@ -655,7 +655,7 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 次の図では、統合開発環境 (IDE) を使用するチームの開発プロセスの典型的な例を示します。 タイムラインの異なる段階で、異なる種類のテストが実行されます。 ここでは 2 人の開発者が同じソリューションで作業していますが、このシナリオは単独開発者や大規模なチームにも等しく適用されます。 通常、各開発者は中央リポジトリのローカル コピーを作成し、同じファイルの作業をしている可能性がある他の開発者に影響を与えることなく、ローカルのコピーを使用して作業できます。
 
-![ワークフロー](./media/templates-cloud-consistency/workflow.png)
+![ローカル IDE での並列の 2 つのセットの単体テストと統合テストを示す図。これは、CI/CD 開発フローにマージされ、単体テスト、統合テスト、テスト デプロイ、デプロイの順に遷移します。](./media/templates-cloud-consistency/workflow.png)
 
 テストと自動化については次のヒントを考慮してください。
 

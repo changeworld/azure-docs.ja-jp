@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058684"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777107"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Azure セキュリティ ベンチマークの概要
+# <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure Security Benchmark (V2) の概要
 
 Azure セキュリティベンチマーク (ASB) は、Azure 上のワークロード、データ、およびサービスのセキュリティを強化するための規範的なベスト プラクティスと推奨事項を提供します。
 
@@ -24,6 +24,7 @@ Azure セキュリティベンチマーク (ASB) は、Azure 上のワークロ�
 - **クラウド導入フレームワーク** – [戦略](/azure/cloud-adoption-framework/strategy/define-security-strategy)、[ロールと責任](/azure/cloud-adoption-framework/organize/cloud-security)、[Azure のセキュリティに関する上位 10 件のベスト プラクティス](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)、[リファレンス実装](/azure/cloud-adoption-framework/ready/enterprise-scale/)など、セキュリティに関するガイダンスです。
 - **Azure Well-Architected フレームワーク** – Azure での[ワークロードのをセキュリティ保護](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local)に関するガイダンスです。
 - **Microsoft セキュリティのベスト プラクティス** – Azure での例を使用した[推奨事項](/security/compass/microsoft-security-compass-introduction)です。
+
  Azure セキュリティ ベンチマークの対象は、クラウド中心のコントロール領域です。 これらのコントロールは、Center for Internet Security (CIS) コントロール バージョン 7.1 および米国標準技術研究所 (NIST) SP800-53 で説明されているような、よく知られたセキュリティ ベンチマークと一貫性があります。
 Azure セキュリティ ベンチマークには、次のコントロールが含まれます。
 
@@ -38,10 +39,8 @@ Azure セキュリティ ベンチマークには、次のコントロールが�
 | [インシデント対応 (IR)](security-controls-v2-incident-response.md) | インシデント対応では、Azure Security Center や Sentinel などの Azure サービスを使用してインシデント対応プロセスを自動化するなど、インシデント対応のライフ サイクル (準備、検出と分析、インシデント発生後のアクティビティ) におけるコントロールを対象とします。 |
 | [体制と脆弱性の管理 (PV)](security-controls-v2-posture-vulnerability-management.md) | 体制と脆弱性の管理では、脆弱性のスキャン、侵入テスト、修復、Azure リソースでのセキュリティ構成の追跡、レポート、修正など、Azure のセキュリティ体制を評価し改善するためのコントロールに重点を置きます。 |
 | [エンドポイント セキュリティ (ES)](security-controls-v2-endpoint-security.md) | エンドポイント セキュリティでは、Azure 環境でのエンドポイントに対するエンドポイントの検出と応答 (EDR) およびマルウェア対策サービスの使用など、エンドポイントの検出および応答でのコントロールを対象とします。 |
-| [バックアップと回復 (BR)](security-controls-v2-backup-recovery.md) | バックアップと回復では、さまざまなサービス レベルでのデータと構成のバックアップが確実に実行、検証、および保護されるようにするコントロールを対象とします。 |
+| [バックアップと回復 (BR)](security-controls-v2-backup-recovery.md) | バックアップと回復により、データと構成のバックアップがさまざまなサービス レベルで確実に実行、検証、保護されるようにコントロールがカバーされています。 |
 | [ガバナンスと戦略 (GS)](security-controls-v2-governance-strategy.md) | ガバナンスと戦略では、セキュリティ アシュアランスをガイドし維持するための整合性のあるセキュリティ戦略と文書化されたガバナンス アプローチを実現するためのガイダンスを提供します。たとえば、さまざまなクラウド セキュリティ機能、統一された技術的戦略、およびサポート ポリシーおよび標準に応じたロールと責任を確立します。 |
-
-[スプレッドシート形式](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)で Azure セキュリティ ベンチマークをダウンロードすることもできます。
 
 ## <a name="azure-security-benchmark-recommendations"></a>Azure セキュリティ ベンチマークの推奨事項
 
@@ -52,14 +51,18 @@ Azure セキュリティ ベンチマークには、次のコントロールが�
 - **NIST SP800-53 r4 ID**:この推奨事項に対応する NIST SP800-53 r4 (中) コントロール。
 - **[詳細]** :推奨事項の根拠と、その実装方法に関するガイダンスへのリンク。 推奨事項が Azure Security Center によってサポートされている場合は、その情報も一覧表示されます。
 - **責任**: お客様またはサービス プロバイダー、あるいはその両方が、この推奨事項の実装に責任があるかどうか。 セキュリティ責任は、パブリック クラウドで共有されます。 一部のセキュリティ コントロールはクラウド サービス プロバイダーのみが使用できるため、プロバイダーはそれらに対処する必要があります。 これらは一般的な見解です。個々のサービスによっては、責任が Azure セキュリティ ベンチマークに記載されているものと異なることがあります。 これらの違いについては、個々のサービスのベースラインの推奨事項で説明されています。
-- **顧客のセキュリティ上の利害関係者**:お客様の組織でそれぞれのコントロールについて説明責任を持つ、責任を負う、または助言が求められるセキュリティ職能。 これは、会社のセキュリティ組織構造と、Azure セキュリティに関連して設定したロールと責任に応じて、組織ごとに異なる可能性があります。
+- **顧客のセキュリティ上の利害関係者**:お客様の組織でそれぞれのコントロールについて説明責任を持つ、責任を負う、または助言が求められる[セキュリティ職能](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)。 これは、会社のセキュリティ組織構造と、Azure セキュリティに関連して設定したロールと責任に応じて、組織ごとに異なる可能性があります。
 
 > [!NOTE]
 > ASB と業界のベンチマーク (NIST や CIS など) のコントロール マッピングは、NIST または CIS で定義されているコントロール要件に完全または部分的に対応するために特定の Azure 機能を使用できるということを示しているにすぎません。 このように実装しても、CIS または NIST の対応するコントロールに完全に準拠することには必ずしもならないので注意してください。
 
 Azure セキュリティ ベンチマークの取り組みに関するフィードバックと積極的な参加をお待ちしております。 Azure セキュリティ ベンチマーク チームに直接情報を提供したい場合は、 https://aka.ms/AzSecBenchmark のフォームに入力してください
 
+## <a name="download"></a>ダウンロード
 
+[スプレッドシート形式](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)で Azure セキュリティ ベンチマークをダウンロードできます。
+
+## <a name="next-steps"></a>次のステップ 
 - 最初セキュリティ コントロールを参照してください。[ネットワークのセキュリティ](security-control-network-security.md)
 - 「[Azure セキュリティ ベンチマークの概要](introduction.md)」を読む
-- [Azure セキュリティ ベンチマーク v2 の Excel スプレッドシート](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)をダウンロードする
+- [Azure セキュリティの基礎](../fundamentals/index.yml)について学習する

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826062"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532155"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
@@ -96,7 +96,7 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
    たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。
 
-   ![HTTP アクション](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![スクリーンショットには、延期期限アクションの後に、POST メソッドを含む H T T P アクションが示されています。](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. 完了したら、ロジック アプリを保存します。
 
@@ -155,7 +155,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
    たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。
 
-   ![HTTP アクション](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![スクリーンショットには、POST メソッドを含む H T T P アクションが示されています。](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. 完了したら、ロジック アプリを保存します。
 

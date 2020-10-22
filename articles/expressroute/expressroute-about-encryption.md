@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 46f0a0e86c5db612f440bcf631329d2800251dab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996847"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute の暗号化
  
@@ -37,10 +37,8 @@ MACsec の暗号化と復号は、Microsoft が使用するルーターのハー
 IPsec は [IETF 標準](https://tools.ietf.org/html/rfc6071)です。 インターネット プロトコル (IP) レベルまたはネットワーク レイヤー 3 でデータを暗号化します。 お使いのオンプレミス ネットワークと Azure でお使いの仮想ネットワーク (VNET) の間でエンドツーエンドの接続を暗号化する目的で IPsec を利用できます。 以下でその他のよくあるご質問をご覧ください。
 ### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>自分の ExpressRoute Direct ポートでは、MACsec に加えて IPsec を有効にできますか。
 はい。 MACsec の場合、ユーザーと Microsoft との間の物理的な接続がセキュリティで保護されます。 IPsec の場合、ユーザーと Azure でお使いの仮想ネットワークの間のエンドツーエンド接続がセキュリティで保護されます。 いずれも個別に有効にすることができます。 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Azure VPN ゲートウェイを使用し、自分のオンプレミス ネットワークと自分の Azure 仮想ネットワークの間で IPsec トンネルを設定できますか。
-はい。 お使いの ExpressRoute 回線の Microsoft ピアリング経由でこの IPsec トンネルを設定できます。 Microsoft の[構成ガイド](site-to-site-vpn-over-microsoft-peering.md)に従ってください。
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Azure VPN ゲートウェイを利用し、Azure プライベート ピアリング経由で IPsec トンネルを設定できます。
-Azure Virtual WAN を採用する場合は、[次の手順](../virtual-wan/vpn-over-expressroute.md)に従って、エンドツーエンド接続を暗号化することができます。 通常の Azure VNET がある場合は、ご利用の VNET にサードパーティの VPN ゲートウェイをデプロイし、それとご利用のオンプレミスの VPN ゲートウェイの間に IPsec トンネルを確立することができます。
+はい。 Azure Virtual WAN を採用する場合は、[次の手順](../virtual-wan/vpn-over-expressroute.md)に従って、エンドツーエンド接続を暗号化することができます。 通常の Azure VNET を使用している場合は、[こちらの手順](../vpn-gateway/site-to-site-vpn-private-peering.md)に従って、Azure VPN ゲートウェイとオンプレミスの VPN ゲートウェイの間に IPsec トンネルを確立することができます。
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>自分の ExpressRoute 接続で IPsec を有効にすると、どのようなスループットが得られますか。
 Azure VPN ゲートウェイが使用されている場合、[こちらでパフォーマンス数値](../vpn-gateway/vpn-gateway-about-vpngateways.md)をご確認ください。 サードパーティ製の VPN ゲートウェイが使用されている場合、パフォーマンス数値についてはベンダーにお問い合わせください。
 

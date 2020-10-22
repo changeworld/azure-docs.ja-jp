@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5b1e5c73f3d43ca2627729149256f3e9362d58c2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bd50a007b73438a5776cf6ecdb1074dc9980c537
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91713701"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
@@ -29,7 +29,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、優れたアクセス制御 (RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](/azure/azure-resource-manager/resource-group-overview)」を参照してください。 | - |
+| Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、優れた Azure ロールベースのアクセス制御 (Azure RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と認可などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](/azure/azure-resource-manager/resource-group-overview)」を参照してください。 | - |
 | すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
 | BLOB データの論理的な削除を有効にする | 論理的な削除を有効にすると、BLOB データが削除された後でも復旧することができます。 論理的な削除の詳細については、「[Azure Storage Blob の論理的な削除](storage-blob-soft-delete.md)」を参照してください。 | - |
 | ビジネスに不可欠なデータを不変 BLOB に保存する | BLOB データを WORM (Write Once, Read Many) 状態で保存するように、訴訟ホールドと時間ベースの保持ポリシーを構成します。 保持期間中は、不変の状態で保存された BLOB を読み取ることはできますが、変更や削除を行うことはできません。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。 | - |
@@ -40,7 +40,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | Azure Active Directory (Azure AD) を使用して BLOB データへのアクセスを承認する | Azure AD では、BLOB ストレージへの要求を承認するために、共有キーによる優れたセキュリティと使いやすさが実現されます。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](../common/storage-auth-aad.md)に関するページを参照してください。 | - |
-| RBAC を使用して Azure AD セキュリティ プリンシパルにアクセス許可を割り当てる場合は、最小限の特権の原則を念頭に置く | ユーザー、グループ、またはアプリケーションにロールを割り当てる場合は、そのセキュリティ プリンシパルに対して、それぞれのタスクを実行するために必要なアクセス許可のみを付与します。 リソースへのアクセスを制限することで、意図しない、または悪意のあるデータの誤用を防ぐことができます。 | - |
+| Azure RBAC を使用して Azure AD セキュリティ プリンシパルにアクセス許可を割り当てる場合は、最小限の特権の原則を念頭に置く | ユーザー、グループ、またはアプリケーションにロールを割り当てる場合は、そのセキュリティ プリンシパルに対して、それぞれのタスクを実行するために必要なアクセス許可のみを付与します。 リソースへのアクセスを制限することで、意図しない、または悪意のあるデータの誤用を防ぐことができます。 | - |
 | ユーザー委任 SAS を使用して、クライアントによる BLOB データへのアクセスを制限する | ユーザー委任 SAS は、Azure Active Directory (Azure AD) 資格情報と、SAS に指定されたアクセス許可によっても保護されます。 ユーザー委任 SAS は、スコープと機能についてはサービス SAS に似ていますが、セキュリティの点では、サービス SAS よりも優れています。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 | - |
 | Azure Key Vault を使用してアカウント アクセス キーをセキュリティで保護する | Azure Storage への要求を承認するには、Azure AD を使用することをお勧めします。 ただし、共有キー認証を使用する必要がある場合は、Azure Key Vault を使用してアカウント キーをセキュリティで保護します。 キーは、アプリケーションと共に保存するのではなく、実行時に Key Vault から取得できます。 Azure Key Vault の詳細については、[Key Vault の概要](../../key-vault/general/overview.md)ページを参照してください。 | - |
 | アカウント キーを定期的に再生成する | アカウント キーを定期的に交換することで、悪意のあるアクターにデータが公開されるリスクが軽減されます。 | - |

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263234"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075707"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に Always On 可用性グループを作成するための前提条件
 
@@ -420,6 +420,10 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 7. "corp.contoso.com ドメインへようこそ" のメッセージが表示されたら、 **[OK]** を選択します。
 8. **[閉じる]** を選択し、ポップアップ ダイアログで **[今すぐ再起動]** を選択します。
 
+## <a name="add-accounts"></a>アカウントの追加
+
+各 VM の管理者としてインストール アカウントを追加し、SQL Server 内のインストール アカウントとローカル アカウントにアクセス許可を付与して、SQL Server サービス アカウントを更新します。 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>各クラスター VM に Corp\Install ユーザーを管理者として追加する
 
 各仮想マシンをドメインのメンバーとして再起動した後で、**CORP\Install** をローカルの Administrators グループのメンバーとして追加します。
@@ -438,16 +442,6 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 7. **[OK]** を選択して **[管理者のプロパティ]** ダイアログ ボックスを閉じます。
 8. 以上の手順を **sqlserver-1** と **cluster-fsw** にも繰り返します。
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
-
-各 SQL Server VM で、SQL Server サービス アカウントを設定します。 ドメイン アカウントの構成時に作成したアカウントを使用します。
-
-1. **[SQL Server 構成マネージャー]** を開きます。
-2. SQL Server サービスを右クリックし、 **[プロパティ]** を選択します。
-3. アカウントとパスワードを設定します。
-4. もう一方の SQL Server VM についても同じ手順を繰り返します。  
-
-SQL Server 可用性グループでは、各 SQL Server VM をドメイン アカウントとして実行する必要があります。
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>各 SQL Server VM にインストール アカウント用のサインインを作成する
 
@@ -467,13 +461,54 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 1. ドメイン管理者のネットワーク資格情報を入力します。
 
-1. インストール アカウントを使用します。
+1. インストール アカウント (CORP\install) を使用します。
 
 1. サインインを **sysadmin** 固定サーバー ロールのメンバーに設定します。
 
 1. **[OK]** を選択します。
 
 もう一方の SQL Server VM についても、上の手順を繰り返します。
+
+### <a name="configure-system-account-permissions"></a>システム アカウントのアクセス許可を構成する
+
+システム アカウント用のアカウントを作成し、適切なアクセス許可を付与するには、各 SQL Server インスタンスで次の手順を実行します。
+
+1. 各 SQL Server インスタンスで、`[NT AUTHORITY\SYSTEM]` 用のアカウントを作成します。 次のスクリプトはこのアカウントを作成します。
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. 各 SQL Server インスタンスで、次のアクセス許可を `[NT AUTHORITY\SYSTEM]` に付与します。
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   次のスクリプトは、これらのアクセス許可を付与します。
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
+
+各 SQL Server VM で、SQL Server サービス アカウントを設定します。 ドメイン アカウントの構成時に作成したアカウントを使用します。
+
+1. **[SQL Server 構成マネージャー]** を開きます。
+2. SQL Server サービスを右クリックし、 **[プロパティ]** を選択します。
+3. アカウントとパスワードを設定します。
+4. もう一方の SQL Server VM についても同じ手順を繰り返します。  
+
+SQL Server 可用性グループでは、各 SQL Server VM をドメイン アカウントとして実行する必要があります。
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>両方の SQL Server VM にフェールオーバー クラスター機能を追加する
 
@@ -524,35 +559,6 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 2 つ目の SQL Server VM についても同じ手順を繰り返します。
 
-## <a name="configure-system-account-permissions"></a>システム アカウントのアクセス許可を構成する
-
-システム アカウント用のアカウントを作成し、適切なアクセス許可を付与するには、各 SQL Server インスタンスで次の手順を実行します。
-
-1. 各 SQL Server インスタンスで、`[NT AUTHORITY\SYSTEM]` 用のアカウントを作成します。 次のスクリプトはこのアカウントを作成します。
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. 各 SQL Server インスタンスで、次のアクセス許可を `[NT AUTHORITY\SYSTEM]` に付与します。
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   次のスクリプトは、これらのアクセス許可を付与します。
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>次のステップ
 

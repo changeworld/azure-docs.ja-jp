@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970680"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91443885"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
    ![Advisor settings](./media/database-advisor-find-recommendations-portal/settings.png)
 2. 自動化するアクションを選択します。
 
-   ![推奨インデックス](./media/database-advisor-find-recommendations-portal/server.png)
+   ![自動化するアクションをどこで選択するかを示したスクリーンショット。](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > **DROP_INDEX** オプションは現在パーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。
@@ -139,7 +139,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 
 一覧内で処理中の推奨事項をクリックすると、その詳細が表示されます。
 
-![推奨インデックス](./media/database-advisor-find-recommendations-portal/operations.png)
+![インプロセスの推奨事項の一覧を示すスクリーンショット。](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>推奨事項を元に戻す
 

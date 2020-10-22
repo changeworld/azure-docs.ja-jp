@@ -2,13 +2,13 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 10/05/2020
+ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605177"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91729119"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
@@ -37,7 +37,7 @@ Azure ポリシーでは、以下を使用します。
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-ロールベースのアクセス制御では、以下を使用します。
+Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を使用します。
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -52,7 +52,9 @@ Azure ポリシーでは、以下を使用します。
 
 サブスクリプションを管理する場合は、以下を使用します。
 
+* [Advisor 構成](/azure/templates/microsoft.advisor/configurations)
 * [budgets](/azure/templates/microsoft.consumption/budgets)
+* [Change Analysis プロファイル](/azure/templates/microsoft.changeanalysis/profile)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [tags](/azure/templates/microsoft.resources/tags)
 
@@ -62,7 +64,7 @@ Azure ポリシーでは、以下を使用します。
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>スキーマ
+## <a name="schema"></a>スキーマ
 
 サブスクリプション レベルのデプロイに使用するスキーマは、リソース グループのデプロイ用のスキーマと異なります。
 
@@ -77,6 +79,20 @@ https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTem
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+サブスクリプションにデプロイする場合、1 つのサブスクリプション、およびそのサブスクリプション内の任意のリソース グループを対象にすることができます。 ターゲット サブスクリプションとは異なるサブスクリプションにデプロイすることはできません。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+テンプレートのリソース セクション内で定義されたリソースは、サブスクリプションに適用されます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+サブスクリプション内のリソース グループを対象にするには、入れ子になったデプロイを追加して、`resourceGroup` プロパティを含めます。 次の例では、入れ子になったデプロイは `rg2` という名前のリソース グループを対象としています。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+この記事では、さまざまなスコープにリソースをデプロイする方法を示すテンプレートを用意しています。 リソース グループを作成し、そこにストレージ アカウントをデプロイするテンプレートについては、「[リソース グループとリソースを作成する](#create-resource-group-and-resources)」を参照してください。 リソース グループを作成してロックを適用し、そのリソース グループにロールを割り当てるテンプレートについては、「[アクセス制御](#access-control)」を参照してください。
 
 ## <a name="deployment-commands"></a>デプロイ コマンド
 
@@ -112,49 +128,6 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
 デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
-
-## <a name="deployment-scopes"></a>デプロイのスコープ
-
-サブスクリプションにデプロイする場合、1 つのサブスクリプション、およびそのサブスクリプション内の任意のリソース グループを対象にすることができます。 ターゲット サブスクリプションとは異なるサブスクリプションにデプロイすることはできません。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
-
-テンプレートのリソース セクション内で定義されたリソースは、サブスクリプションに適用されます。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-サブスクリプション内のリソース グループを対象にするには、入れ子になったデプロイを追加して、`resourceGroup` プロパティを含めます。 次の例では、入れ子になったデプロイは `rg2` という名前のリソース グループを対象としています。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-この記事では、さまざまなスコープにリソースをデプロイする方法を示すテンプレートを用意しています。 リソース グループを作成し、そこにストレージ アカウントをデプロイするテンプレートについては、「[リソース グループとリソースを作成する](#create-resource-group-and-resources)」を参照してください。 リソース グループを作成してロックを適用し、そのリソース グループにロールを割り当てるテンプレートについては、「[アクセス制御](#access-control)」を参照してください。
 
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 

@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286004"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91404784"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU 仮想マシンを使用してラボを設定する
 
@@ -38,6 +38,9 @@ ms.locfileid: "87286004"
 | ---- | ----- | --- | ----------- | 
 | Small GPU (視覚化) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
 | Medium GPU (視覚化) | -&nbsp;12&nbsp;コア<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
+
+> [!NOTE]
+> クラスルーム ラボを作成する際、これらの VM サイズの一部が一覧に表示されない場合があります。 このリストの内容は、ラボの場所の現在の容量に基づいて表示されます。 ラボ アカウントの作成者が、[ラボの作成者にラボの場所の選択を許可している](allow-lab-creator-pick-lab-location.md)場合は、ラボに対して別の場所を選択し、VM サイズが表示されるかどうかを確認してください。 VM を利用できるリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/?products=virtual-machines)」を参照してください。
 
 ## <a name="ensure-that-the-appropriate-gpu-drivers-are-installed"></a>適切な GPU ドライバーがインストールされていることを確認する
 ラボ VM の GPU 機能を利用するには、適切な GPU ドライバーがインストールされていることを確認します。  ラボ作成ウィザードで、GPU の VM サイズを選択するときに、 **[GPU ドライバーをインストールする]** オプションを選択できます。  

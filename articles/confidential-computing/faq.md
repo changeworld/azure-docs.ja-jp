@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987986"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848910"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure Confidential Computing についてよく寄せられる質問
 
@@ -56,6 +56,10 @@ DC-Series VM は、より古い Intel SGX を搭載した 6 コア Intel プロ�
 **DCsv2 仮想マシンは世界中で利用できますか?**
 
 いいえ。 現時点では、これらの仮想マシンは一部のリージョンでのみ利用できます。 利用できるリージョンの最新情報については、[リージョン別製品ページ](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)をご覧ください。 
+
+**これらのマシンではハイパースレッディングは無効にされますか?**
+
+すべての Azure Confidential Computing クラスターでは、ハイパースレッディングが無効にされます。
 
 **Open Enclave SDK を DCsv2 仮想マシンにインストールするにはどうすればよいですか。**
    

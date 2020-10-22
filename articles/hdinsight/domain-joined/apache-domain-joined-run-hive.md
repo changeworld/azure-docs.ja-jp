@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202592"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397829"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -22,7 +22,7 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
 ## <a name="prerequisites"></a>前提条件
 
 * Enterprise セキュリティ パッケージを使用している HDInsight クラスター。 [ESP を使用した HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
-* Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされたワークステーション。
+* 企業向け Microsoft 365 アプリ、Office 2016、Office 2013 Professional Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされたワークステーション。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger 管理 UI への接続
 **Ranger 管理 UI に接続するには**

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653802"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079226"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>コア Azure Storage サービスの概要
 
@@ -111,7 +111,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 Azure Storage に対するすべての要求が承認される必要があります。 Azure Storage では、次の認証方法がサポートされています。
 
-- **BLOB とキュー データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage では、ロールベースのアクセス制御 (RBAC) を使用した BLOB サービスと Queue サービスに対する Azure AD の認証と承認をサポートされています。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](storage-auth-aad.md)に関するページを参照してください。
+- **BLOB とキュー データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用した BLOB サービスと Queue サービスに対する Azure AD の認証と承認をサポートされています。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](storage-auth-aad.md)に関するページを参照してください。
 - **SMB を使用した Azure Files の Azure Active Directory 認証。** Azure Files では、Azure Active Directory Domain Services (Azure AD DS) またはオンプレミスの Active Directory Domain Services (プレビュー) のどちらかを使用した SMB (サーバー メッセージ ブロック) 経由の ID ベースの承認がサポートされます。 ドメインに参加している Windows VM は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。 詳細については、「[SMB アクセスに対する Azure Files ID ベース認証サポートの概要](../files/storage-files-active-directory-overview.md)」および「[Azure Files のデプロイの計画](../files/storage-files-planning.md#identity)」を参照してください。
 - **共有キーによる承認。** Azure Storage の BLOB、ファイル、キュー、テーブルの各サービスでは、共有キーによる承認がサポートされます。 共有キーによる承認を使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求を含むヘッダーを渡します。 詳細については、[共有キーによる承認](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
 - **Shared Access Signature (SAS) を使用した承認。** Shared Access Signature (SAS) は、ストレージ リソースの URI に追加できるセキュリティ トークンを含む文字列です。 セキュリティ トークンには、アクセスの許可や間隔などの制約をカプセル化します。 詳細については、[共有アクセス署名 (SAS) の使用](storage-sas-overview.md)に関するページを参照してください。
@@ -173,8 +173,7 @@ Azure Storage へのデータの移動または Azure Storage からのデータ
 - [ストレージ用 Azure CLI コマンドレット](https://docs.microsoft.com/cli/azure/storage)
 - [AzCopy コマンド ライン ユーティリティ](https://aka.ms/downloadazcopy)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
-- [Azure Storage クライアント ツール](../storage-explorers.md)
-- [Azure 開発者ツール](https://azure.microsoft.com/tools/)
+- [Azure Storage 用 Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ## <a name="next-steps"></a>次のステップ
 

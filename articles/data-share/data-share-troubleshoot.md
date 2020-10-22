@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 08/14/2020
-ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 10/02/2020
+ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257795"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761534"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
@@ -58,34 +58,15 @@ Azure データ ストアからデータを共有または受信するために�
 
 初めて Azure データ ストアからデータを共有または受信する場合は、"*Microsoft.Authorization/ロールの割り当て/書き込み*" のアクセス許可も必要です。これは通常、所有者ロールにあります。 自分で Azure データ ストア リソースを作成した場合でも、自動的に自分がそのリソースの所有者になることはありません。 適切なアクセス許可を使用すると、Azure Data Share サービスによって、データ共有リソースのマネージド ID に、データ ストアへのアクセス権が自動的に付与されます。 このプロセスは、有効になるまでに数分かかる場合があります。 この遅延のためにエラーが発生する場合は、数分後にもう一度やり直してください。
 
-SQL ベースの共有には、追加のアクセス許可が必要です。 詳細については、「SQL ベースの共有のトラブルシューティング」をご覧ください。
-
-## <a name="troubleshooting-sql-based-sharing"></a>SQL ベースの共有のトラブルシューティング
-
-"ユーザー x は SQL Database に存在しません"
-
-SQL ベースのソースからデータセットを追加するときにこのエラーが発生する場合は、SQL Database で Azure Data Share マネージド ID のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
-
-```sql
-    create user "<share_acct_name>" from external provider; 
-    exec sp_addrolemember db_datareader, "<share_acct_name>";
-```      
-SQL ベースのターゲットにデータセットをマップするときにこのエラーが発生する場合は、SQL Server で Azure Data Share マネージド ID のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
-
-```sql
-    create user "<share_acc_name>" from external provider; 
-    exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-    exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-    exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-```
-*<share_acc_name>* は、ご自分の Data Share リソースの名前であることに注意してください。      
-
-[データの共有](share-your-data.md)および[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルに記載されているすべての前提条件に従っていることを確認してください。
+SQL ベースの共有には、追加のアクセス許可が必要です。 前提条件の詳細な一覧については、[SQL ソースからの共有](how-to-share-from-sql.md)に関するページを参照してください。
 
 ## <a name="snapshot-failed"></a>スナップショットの失敗
-スナップショットは、さまざまな理由により失敗する可能性があります。 詳細なエラー メッセージを確認するには、スナップショットの開始時刻をクリックした後、各データセットの状態をクリックします。 
+スナップショットは、さまざまな理由により失敗する可能性があります。 詳細なエラー メッセージを確認するには、スナップショットの開始時刻をクリックした後、各データセットの状態をクリックします。 スナップショットが失敗する理由は次のとおりです。
 
-エラー メッセージがアクセス許可に関連している場合は、Data Share サービスに必要なアクセス許可があることを確認します。 詳細については、[ロールと要件](concepts-roles-permissions.md)に関する記事をご覧ください。 初めてスナップショットを取得する場合は、Azure データ ストアへのアクセス権が Data Share リソースに付与されるまでに数分かかることがあります。 数分待ってからもう一度やり直してください。
+* Data Share に、ソース データ ストアからの読み取り、またはターゲット データ ストアへの書き込みのアクセス許可がありません。 アクセス許可要件の詳細については、[役割と要件](concepts-roles-permissions.md)に関するページを参照してください。 初めてスナップショットを取得する場合は、Azure データ ストアへのアクセス権が Data Share リソースに付与されるまでに数分かかることがあります。 数分待ってからもう一度やり直してください。
+* ソースまたはターゲット データ ストアへの Data Share の接続がファイアウォールによってブロックされています。
+* 共有データセット、もしくはソースまたはターゲット データ ストアが削除されています。
+* SQL 共有の場合、スナップショット プロセスまたはターゲット データ ストアでデータ型がサポートされていません。 詳細については、[SQL ソースからの共有](how-to-share-from-sql.md#supported-data-types)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

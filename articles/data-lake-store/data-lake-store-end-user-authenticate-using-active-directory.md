@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511308"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578548"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -97,15 +97,15 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 2. アプリケーションの **[設定]** ブレードで、 **[必要なアクセス許可]** をクリックし、 **[追加]** をクリックします。
 
-    ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![[設定] ブレードを示すスクリーンショット。[リダイレクト URI] オプションが呼び出され、実際の URI が呼び出されている [リダイレクト URI] ブレードが表示されています。](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. **[API アクセスの追加]** ブレードで、 **[API を選択します]** をクリックします。 **[Azure Data Lake]** をクリックし、 **[選択]** をクリックします。
 
-    ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![[API を選択します] オプションが呼び出されている [API アクセスの追加] ブレードと、[Azure Data Lake] オプションと [選択] オプションが呼び出されている [API を選択します] ブレードのスクリーンショット。](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  **[API アクセスの追加]** ブレードで、 **[アクセス許可の選択]** をクリックします。 **[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、 **[選択]** をクリックします。
 
-    ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![[アクセス許可の選択] オプションが呼び出されている [API アクセスの追加] ブレードと、[Have full access to the Azure Data Lake service]\(Azure Data Lake サービスへのフル アクセス\) オプションと [選択] オプションが呼び出されている [アクセスの有効化] ブレードのスクリーンショット。](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     **[Done]** をクリックします。
 

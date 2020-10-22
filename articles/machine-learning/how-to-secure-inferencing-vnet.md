@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
-ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 359c2a27099ca298076edc255b8c30e226af0a18
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: peterlu
+author: peterclu
+ms.date: 10/12/2020
+ms.custom: contperfq4, tracking-python, contperfq1
+ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882956"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972511"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -32,12 +32,13 @@ ms.locfileid: "90882956"
 > [!div class="checklist"]
 > - 既定の Azure Kubernetes Service (AKS) クラスター
 > - プライベート AKS クラスター
+> - プライベート リンクを使用する AKS クラスター
 > - Azure Container Instances (ACI)
 
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関する記事を参照して、一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについて理解してください。
++ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、[ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照してください。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
 
@@ -80,11 +81,17 @@ ms.locfileid: "90882956"
 
    ![Azure Machine Learning:Machine Learning コンピューティングの仮想ネットワークの設定](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. 仮想ネットワークを制御する NSG グループに、仮想ネットワークの外部から呼び出すことができるように、スコア付けエンドポイントに対して有効になっているインバウンド セキュリティ規則があることを確認します。
+1. Web サービスとしてのモデルを AKS にデプロイすると、推論要求を処理するスコアリング エンドポイントが作成されます。 仮想ネットワークを制御する NSG グループに、スコアリング エンドポイントの IP アドレスに対して有効になっているインバウンド セキュリティ規則があることを確認します (仮想ネットワークの外部から呼び出す場合)。
+
+    スコアリング エンドポイントの IP アドレスを確認するには、デプロイされたサービスのスコアリング URI を確認します。 スコアリング URI の表示の詳細については、[Web サービスとしてデプロイされたモデルを使用する](how-to-consume-web-service.md#connection-information)ことに関する記事をご覧ください。
+
    > [!IMPORTANT]
    > NSG に対しては既定のアウトバウンド規則のままにします。 詳細については、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)」の既定のセキュリティ規則をご覧ください。
 
    [![インバウンド セキュリティ規則](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+
+    > [!IMPORTANT]
+    > スコアリング エンドポイントのイメージに表示される IP アドレスは、デプロイによって異なります。 1 つの AKS クラスターに対して同じ IP がすべてのデプロイで共有されますが、各 AKS クラスターには異なる IP アドレスが割り当てられます。
 
 また、Azure Machine Learning SDK を使用して仮想ネットワークに Azure Kubernetes Service を追加することもできます。 仮想ネットワークに既に AKS クラスターがある場合は、[AKS にデプロイする方法](how-to-deploy-and-where.md)に関するページで説明されているように、ワークスペースにアタッチすることができます。 次のコードでは、`mynetwork` という名前の仮想ネットワークの `default` サブネットに新しい AKS インスタンスが作成されます。
 
@@ -108,11 +115,24 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論 (モデルのスコアリング) を実行できるようになります。 詳細については、[AKS へのデプロイ方法](how-to-deploy-and-where.md)に関するページをご覧ください。
 
-## <a name="private-aks-cluster"></a>プライベート AKS クラスター
+## <a name="secure-vnet-traffic"></a>VNet トラフィックをセキュリティ保護する
+
+AKS クラスターと仮想ネットワークの間のトラフィックを分離するには、次の 2 つの方法があります。
+
+* __プライベート AKS クラスター__: この方法では、Azure Private Link を使用して、VNet 内に AKS クラスターのプライベート エンドポイントを作成します。
+* __内部 AKS ロード バランサー__: この方法では、VNet の内部 IP アドレスを使用するようにクラスターのロード バランサーを構成します。
+
+> [!WARNING]
+> どちらの構成も、方法は違いますが、達成する目標 (VNet 内の AKS クラスターへのトラフィックをセキュリティで保護すること) は同じです。 **どちらか一方を使用し、両方は使用しないでください**。
+
+### <a name="private-aks-cluster"></a>プライベート AKS クラスター
 
 既定では AKS クラスターには、パブリック IP アドレスを持つコントロール プレーンまたは API サーバーがあります。 プライベート AKS クラスターを作成することによって、プライベート コントロール プレーンを使用するように AKS を構成できます。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
 プライベート AKS クラスターを作成したら、Azure Machine Learning で使用する[仮想ネットワークにクラスターをアタッチします](how-to-create-attach-kubernetes.md)。
+
+> [!IMPORTANT]
+> プライベート リンクが有効な AKS クラスターを Azure Machine Learning と共に使用する前に、この機能を有効にするためにサポート インシデントを開始する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 ## <a name="internal-aks-load-balancer"></a>内部 AKS ロード バランサー
 
@@ -120,7 +140,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 プライベート ロード バランサーを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
 
-### <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
+#### <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
 
 > [!IMPORTANT]
 > 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する_ネットワーク共同作成者_ロールを付与する必要があります。 これは、内部ロード バランサーをプライベート IP に変更する前に行う必要があります。
@@ -152,16 +172,17 @@ aks_target = ComputeTarget.create(workspace=ws,
     ```
 AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](/azure/aks/internal-lb)」を参照してください。
 
-### <a name="enable-private-load-balancer"></a>プライベート ロード バランサーを有効にする
+#### <a name="enable-private-load-balancer"></a>プライベート ロード バランサーを有効にする
 
 > [!IMPORTANT]
-> Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。
+> Azure Machine Learning スタジオで Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 Python SDK を使用する場合、または機械学習用の Azure CLI 拡張機能を使用する場合は、内部ロード バランサーを使用して作成できます。
 
-次のコード スニペットは、__新しい AKS クラスターを作成__し、プライベート IP/内部ロード バランサーを使用するように更新する方法を示しています。
+次の例では、SDK と CLI を使用して、__プライベート IP または内部ロード バランサーで新しい AKS クラスターを作成する__方法を示します。
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import azureml.core
-from azureml.core.compute.aks import AksUpdateConfiguration
 from azureml.core.compute import AksCompute, ComputeTarget
 
 # Verify that cluster does not exist already
@@ -175,7 +196,7 @@ except:
     # Subnet to use for AKS
     subnet_name = "default"
     # Create AKS configuration
-    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    prov_config=AksCompute.provisioning_configuration(load_balancer_type="InternalLoadBalancer")
     # Set info for existing virtual network to create the cluster in
     prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
     prov_config.vnet_name = "myvnetname"
@@ -188,44 +209,21 @@ except:
     aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
-    
-    # Update AKS configuration to use an internal load balancer
-    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
-    aks_target.update(update_config)
-    # Wait for the operation to complete
-    aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
+```azurecli
+az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-コマンドによって参照される `body.json` ファイルの内容は、次の JSON ドキュメントに似ています。
+詳細については、[az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
 
-```json
-{ 
-    "location": "<region>", 
-    "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
-        "computeType": "AKS", 
-        "provisioningState": "Succeeded", 
-        "properties": { 
-            "loadBalancerType": "InternalLoadBalancer", 
-            "agentCount": <agent-count>, 
-            "agentVmSize": "vm-size", 
-            "clusterFqdn": "<cluster-fqdn>" 
-        } 
-    } 
-} 
-```
+---
 
-ワークスペースに__既存のクラスターを接続する__場合は、アタッチ操作が完了するまで待ってから、ロード バランサーを構成する必要があります。
+ワークスペースに__既存のクラスターを接続する__場合は、アタッチ操作が完了するまで待ってから、ロード バランサーを構成する必要があります。 クラスターのアタッチの詳細については、「[既存の AKS クラスターをアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
 
-クラスターのアタッチの詳細については、「[既存の AKS クラスターをアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
-
-既存のクラスターをアタッチした後、プライベート IP を使用するようにクラスターを更新できます。
+既存のクラスターをアタッチした後、内部ロード バランサーまたはプライベート IP を使用するようにクラスターを更新できます。
 
 ```python
 import azureml.core
@@ -260,7 +258,7 @@ Azure Container Instances は、モデルのデプロイ時に動的に作成さ
     > [!IMPORTANT]
     > 委任を有効にする場合は、 __[サブネットをサービスに委任]__ の値として `Microsoft.ContainerInstance/containerGroups` を使用します。
 
-2. [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) を使用してモデルをデプロイします。`vnet_name` パラメーターと `subnet_name` パラメーターを使用します。 これらのパラメーターには、委任を有効にした仮想ネットワークの名前とサブネットを設定します。
+2. [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) を使用してモデルをデプロイします。`vnet_name` パラメーターと `subnet_name` パラメーターを使用します。 これらのパラメーターには、委任を有効にした仮想ネットワークの名前とサブネットを設定します。
 
 
 ## <a name="next-steps"></a>次のステップ

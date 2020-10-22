@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480455"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996372"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Azure Monitor for VMs のブックを使用した対話型レポートの作成
 
-ブックでは、テキスト、 [ログ クエリ](../log-query/query-language.md)、メトリック、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
+ブックでは、テキスト、 [ログ クエリ](/azure/data-explorer/kusto/query/)、メトリック、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
 
 Workbooks は次のようなシナリオで便利です。
 
@@ -66,7 +66,7 @@ Workbooks は次のようなシナリオで便利です。
 
 ブックには、**編集モード**と**閲覧モード**の 2 つのモードがあります。 新しいブックを最初に起動したときは、**編集モード**でブックが開きます。 このモードでは、他の方法では非表示になるステップやパラメーターも含め、ブックのすべてのコンテンツが表示されます。 **閲覧モード**では、簡素化されたレポート スタイルのビューが表示されます。 閲覧モードでは、レポートの作成時に生じた複雑さを排除できます。変更が必要な場合は、数回クリックするだけで元になるメカニズムを表示できます。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![編集コントロールが強調表示されている編集モードの新しいブックを表示している Azure Monitor の Virtual Machines ブック セクションのスクリーンショット。](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. セクションの編集が完了したら、セクションの左下隅にある **[編集完了]** をクリックします。
 
@@ -102,7 +102,7 @@ Workbooks は次のようなシナリオで便利です。
 
 各セクションには独自の詳細設定があります。これらの設定には、 **[パラメーターの追加]** ボタンの右側にある設定 ![ブック セクション編集コントロール](media/vminsights-workbooks/006-settings.png) アイコンからアクセスできます。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/007-settings-expanded.png)
+![Azure Monitor の Virtual Machines ブック セクションの [詳細設定] ダイアログのスクリーンショット。 ダイアログを開くアイコンが強調表示されています。](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ Workbooks は次のようなシナリオで便利です。
 
 ブックの最初のセクションは、ログ クエリ データに基づいています。 2 番目のセクションもログ クエリ データに基づいていますが、最初のテーブルで行を選択すると、グラフの内容が対話形式で更新されます。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![作成済みブックの TCP トラフィックを示す Azure Monitor の Virtual Machines セクションのスクリーンショット。](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 その動作は、テーブルのログ クエリの詳細設定で、 **[項目が選択されている場合、パラメーターをエクスポートします]** を有効にすることによって可能になります。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/009-settings-export.png)
+![[項目が選択されている場合、パラメーターをエクスポートします] オプションがオンになっている Virtual Machines ブックの [詳細設定] ダイアログのスクリーンショット。](media/vminsights-workbooks/009-settings-export.png)
 
 行を選択すると、2 番目のログ クエリで、エクスポートされた値が使用され、セクションの見出しやグラフで使用される値のセットが作成されます。 行を選択しないと、セクションの見出しとグラフが表示されません。 
 
@@ -141,7 +141,7 @@ VMConnection
 
 仮想マシンのデータをブックに取り込んで、CPU のパフォーマンスをグリッドで表示している例を次に示します。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/010-metrics-grid.png)
+![Azure Monitor の仮想マシン ブックのメトリック セクションのスクリーンショット。 各仮想マシンの CPU パフォーマンスがグラフィカルに表示されています。](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>パラメーター セクションを追加する
 
@@ -180,11 +180,11 @@ VMConnection
 
 接続の概要レポートに表示されるパラメーターを見てみましょう。 **[方向]** の横の編集記号をクリックします。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Azure Monitor でのレポート パラメーターの追加と編集のためのセクションのスクリーンショット。 Direction パラメーターの [編集] アイコンが選択されています。](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 これにより、 **[パラメーターの編集]** メニュー項目が表示されます。
 
-![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![[パラメーターの編集] ダイアログのスクリーンショット。 パラメーター名は Direction、パラメーターの型はドロップダウンで、JSON からのデータの取得が選択されています。](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 JSON では、コンテンツを含む任意のテーブルを生成することができます。 たとえば、次の JSON では、ドロップダウンの 2 つの値が生成されます。
 

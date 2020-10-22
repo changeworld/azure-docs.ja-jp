@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984884"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616926"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する 
 
@@ -74,7 +74,7 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 
 - このアーキテクチャでは、データの移行は AWS Direct Connect と Azure Express Route 間のプライベート ピアリング リンクを介して行われるので、データがパブリック インターネット経由で転送されることはありません。  この場合、AWS VPC と Azure Virtual ネットワークを使用する必要があります。 
 - このアーキテクチャを実現するには、Azure 仮想ネットワーク内の Windows VM に ADF セルフホステッド統合ランタイムをインストールする必要があります。  セルフホステッド IR VM を手動でスケールアップするか、複数の VM (最大 4 ノード) にスケールアウトすることで、ネットワークとストレージの IOPS/帯域幅を完全に活用できます。 
-- HTTPS 経由でのデータ転送は許容できても、ソース S3 へのネットワーク アクセスを特定の IP 範囲にロックしたい場合は、AWS VPC を削除し、プライベート リンクを HTTPS に置き換えることで、このアーキテクチャのバリエーションを採用できます。  Azure 仮想マシンとセルフホステッド IR を Azure VM 上で保持し、ホワイトリスト登録のためにパブリックにルーティング可能な静的 IP を持つことができるようにします。 
+- HTTPS 経由でのデータ転送は許容できても、ソース S3 へのネットワーク アクセスを特定の IP 範囲にロックしたい場合は、AWS VPC を削除し、プライベート リンクを HTTPS に置き換えることで、このアーキテクチャのバリエーションを採用できます。  Azure 仮想マシンとセルフホステッド IR を Azure VM 上で保持し、フィルター処理のためにパブリックにルーティング可能な静的 IP を持つことができるようにします。 
 - 初回のスナップショット移行と差分の移行は、このアーキテクチャを使用して実現できます。 
 
 ## <a name="implementation-best-practices"></a>実装のベスト プラクティス 

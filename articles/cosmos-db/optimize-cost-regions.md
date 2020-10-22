@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d98c9a7e58f08d9ad63183805cd6cd0d2ab3b3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72753315"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570169"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 
@@ -25,7 +25,7 @@ ms.locfileid: "72753315"
 
 ## <a name="costs-for-multiple-write-regions"></a>複数の書き込みリージョンにおけるコスト
 
-マルチマスター システムでは、書き込み操作に利用できる正味 RU が `N` 倍になります (`N` は書き込みリージョンの数)。 単一リージョンの書き込みとは異なり、すべてのリージョンが書き込み可能となるため、競合の解決をサポートする必要があります。 ライターのワークロード量は増加しています。 コスト計画の観点から、`M` RU/秒に相当する書き込みを全世界で実行するためには、コンテナー レベルまたはデータベース レベルで M `RUs` をプロビジョニングする必要があります。 その後、望ましい数のリージョンを追加し、書き込みに使用することで、`M` RU に相当する書き込みを全世界で実行できます。 
+マルチリージョン書き込みシステムでは、書き込み操作に利用できる正味 RU が `N` 倍になります (`N` は書き込みリージョンの数)。 単一リージョンの書き込みとは異なり、すべてのリージョンが書き込み可能となるため、競合の解決をサポートする必要があります。 ライターのワークロード量は増加しています。 コスト計画の観点から、`M` RU/秒に相当する書き込みを全世界で実行するためには、コンテナー レベルまたはデータベース レベルで M `RUs` をプロビジョニングする必要があります。 その後、望ましい数のリージョンを追加し、書き込みに使用することで、`M` RU に相当する書き込みを全世界で実行できます。 
 
 ### <a name="example"></a>例
 

@@ -2,14 +2,14 @@
 title: Azure Batch プール内のコンピューティング ノードの自動スケール
 description: クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849794"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -648,6 +648,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>プールの自動スケーリング イベントを使用して自動スケールの実行履歴を取得する
+[PoolAutoScaleEvent](batch-pool-autoscale-event.md) に対してクエリを実行して、自動スケーリングの履歴を確認することもできます。 このイベントは、Batch サービスによって生成され、自動スケールの数式の評価と実行が発生するたびに記録します。これは、潜在的な問題のトラブルシューティングに役立ちます。
+
+PoolAutoScaleEvent のサンプル イベント:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>自動スケールの数式の例
 
 さまざまな方法でプールのコンピューティング リソースの量を調整する、いくつかの数式を見ていきます。
@@ -691,7 +709,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>例 3: 並列タスクの説明
 
-この C# の例では、タスクの数に基づいてプール サイズを調整します。 また、この数式では、プールに設定されている [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) 値が考慮されます。 このアプローチは、プールで[並列タスクの実行](batch-parallel-node-tasks.md)が有効になっている場合に便利です。
+この C# の例では、タスクの数に基づいてプール サイズを調整します。 この数式では、プールに設定されている [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 値が考慮されます。 このアプローチは、プールで[並列タスクの実行](batch-parallel-node-tasks.md)が有効になっている場合に便利です。
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +717,7 @@ $NodeDeallocationOption = taskcompletion;
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

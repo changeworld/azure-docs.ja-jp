@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931966"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317686"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
 分散型サービス拒否 (DDoS) Protection の有効と無効を切り替える方法と、テレメトリを使用して Azure DDoS Protection Standard で DDoS 攻撃を軽減する方法について説明します。 DDoS Protection Standard は、Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられた Azure リソース (仮想マシン、ロード バランサー、アプリケーション ゲートウェイなど) を保護します。 DDoS Protection Standard とその機能の詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。
 
-このチュートリアルの手順を始める前に、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられたアカウントを使って、Azure portal (https://portal.azure.com ) にログインします。
+このチュートリアルの手順を始める前に、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions-and-restrictions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられたアカウントを使って、Azure portal (https://portal.azure.com ) にログインします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -191,7 +191,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
     - **[ストレージ アカウントへのアーカイブ]** :データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[リソース ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **[イベント ハブへのストリーム]** :ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへのリソース ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **[Log Analytics への送信]** :Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-1. Azure analytics ダッシュボードでフロー ログ データを表示するには、 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip からサンプル ダッシュボードをインポートします。
+1. Azure analytics ブックでフロー ログ データを表示するには、 https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook からサンプル ダッシュボードをインポートします。
 
 フロー ログには次のフィールドがあります。 
 - 発信元 IP
@@ -225,7 +225,7 @@ DDoS 攻撃の検出と軽減に対して表示される 2 つの特定のアラ
 
 アラートには、攻撃、地域および脅威インテリジェンス情報、修復手順の下にあるパブリック IP アドレスの全般的な情報が含まれます。
 
-## <a name="permissions"></a>アクセス許可
+## <a name="permissions-and-restrictions"></a>権限と制限事項
 
 DDoS 保護プランに関する作業を行うには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
@@ -237,6 +237,9 @@ DDoS 保護プランに関する作業を行うには、使用するアカウン
 | Microsoft.Network/ddosProtectionPlans/join/action | DDoS 保護プランを結合する              |
 
 仮想ネットワークに対する DDoS 保護を有効にするには、使うアカウントに[仮想ネットワークの適切なアクション](manage-virtual-network.md#permissions)も割り当てられている必要があります。
+
+### <a name="azure-policy"></a>Azure Policy
+さまざまなサブスクリプションをお持ちで、コスト管理のために Azure DDoS Protection Standard の単一プランがテナント全体にデプロイされるようにしたいお客様は、Azure Policy を使用して [Azure DDoS Protection Standard プランの作成を制限](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy)することができます。 サブスクリプションが以前に例外としてマークされていない限り、このポリシーにより、あらゆる DDoS プランの作成がブロックされます。 DDoS プランがデプロイされているがデプロイすべきではなく、コンプライアンス違反としてマークされているすべてのサブスクリプションの一覧もこのポリシーによって表示されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

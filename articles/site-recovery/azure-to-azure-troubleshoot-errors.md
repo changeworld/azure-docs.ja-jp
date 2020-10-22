@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397965"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -197,11 +197,11 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 
 #### <a name="possible-cause"></a>考えられる原因
 
-Office 365 認証と ID IP4 エンドポイントへの接続を確立できません。
+Microsoft 365 認証と ID IP4 エンドポイントへの接続を確立できません。
 
 #### <a name="fix-the-problem"></a>問題の解決
 
-Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要がありました。
+Azure Site Recovery では、認証のために Microsoft 365 の IP 範囲にアクセスする必要がありました。
 Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
@@ -281,14 +281,14 @@ VM のレプリケーション状態をもう一度正常にするには、デ�
 1. **[レプリケートされたアイテム]**  >  _[VM 名]_  >  **[ディスク]** にアクセスします。
 1. 保護されていないディスクを選択し、 **[レプリケーションを有効にする]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="VM ディスクのレプリケーションを有効にする。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-error。":::
 
 #### <a name="to-dismiss-the-warning"></a>警告を無視するには、次の手順に従います。
 
 1. **[レプリケートされたアイテム]**  >  _[VM 名]_ に移動します。
 1. **[概要]** セクションで警告を選択し、 **[OK]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="新規ディスクの警告を無視する。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-error。":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>VM がコンテナーから削除され、完了時に情報が表示された (エラー コード 150225)
 
@@ -309,7 +309,7 @@ Site Recovery によって仮想マシンが保護されると、ソース仮想
 
 1. VM または VM リソース グループから、ロックを削除します。 たとえば次の図で、`MoveDemo` という名前の VM のリソース ロックを削除する必要があります。
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
 1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名**を指定します。
@@ -334,7 +334,7 @@ Site Recovery を使用して Azure VM のレプリケーションを有効に�
 
 1. VM または VM リソース グループから、ロックを削除します。 たとえば次の図で、`MoveDemo` という名前の VM のリソース ロックを削除する必要があります。
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
 1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名**を指定します。
@@ -367,7 +367,7 @@ Azure VM 上に古い Site Recovery 構成が存在する場合、レプリケ�
 
 1. VM または VM リソース グループにロックが設定されている場合、ロックを削除します。 たとえば次の図で、`MoveDemo` という名前の VM のリソース ロックを削除する必要があります。
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
 1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名**を指定します。
@@ -404,17 +404,17 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 ディザスター リカバリー構成中に、ソース VM が仮想ネットワークの一部であり、かつ同じ仮想ネットワークの別の VM が既にターゲット リソース グループ内のネットワークにマップされている場合は、既定で [ネットワークの選択] ドロップダウン リスト ボックスを使用できません (淡色表示されます)。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="ネットワーク選択リストを使用できない。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-error。":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>問題 2:以前に VM を保護した後、レプリケーションを無効にした
 
 VM のレプリケーションを無効にしても、ネットワーク マッピングは削除されません。 VM が保護されていた Recovery Service コンテナーからマッピングを削除する必要があります。 **[Recovery Services コンテナー]** を選択し、 **[管理]**  >  **[Site Recovery インフラストラクチャ]**  >  **[For Azure virtual machines] (Azure 仮想マシンの場合)**  >  **[ネットワーク マッピング]** に移動します。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="ネットワーク マッピングの削除。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-error。":::
 
 ディザスター リカバリーのセットアップ中に構成されたターゲット ネットワークが、初期セットアップ後で、かつ VM が保護された後に変更される場合があります。 **ネットワーク マッピングを変更する**には、ネットワーク名を選択します。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="ネットワーク マッピングの変更。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-error。":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ または VSS (エラー コード 151025)
@@ -437,7 +437,7 @@ COM+ システム アプリケーションとボリューム シャドウ コピ
 1. Windows の "サービス" コンソールを開きます。
 1. COM+ システム アプリケーションとボリューム シャドウ コピー サービスの **[スタートアップの種類]** が **[無効]** に設定されていないことを確認します。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="COM+ システム アプリケーションとボリューム シャドウ コピー サービスのスタートアップの種類を確認する。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-error。":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>サポートされていないマネージド ディスクのサイズ (エラー コード 150172)
 

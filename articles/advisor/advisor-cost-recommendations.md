@@ -2,17 +2,17 @@
 title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654040"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075911"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
-Azure Advisor は、アイドル状態にあるリソースや活用されていないリソースを識別することによって Azure を最適化し、総合的な Azure の支出を削減します。 コストに関する推奨事項は、Advisor ダッシュボードの **[コスト]** タブで取得できます。
+Azure Advisor は、アイドル状態にあるリソースや活用されていないリソースを識別することによって Azure を最適化し、総合的な Azure の支出を削減します。  コストに関する推奨事項は、Advisor ダッシュボードの **[コスト]** タブで取得できます。
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する 
 
@@ -20,7 +20,7 @@ Azure Advisor は、アイドル状態にあるリソースや活用されてい
 
 推奨されるアクションは、評価対象のリソースに基づき、シャットダウンかサイズ変更になります。
 
-次の両方のステートメントが当てはまる場合、Advisor の高度な評価モデルでは仮想マシンのシャットダウンが検討されます。 
+次のすべてのステートメントが当てはまる場合、Advisor の高度な評価モデルでは仮想マシンのシャットダウンが検討されます。 
 - CPU 使用率の最大値の P95th が3% 未満である。 
 - 7 日間にわたるネットワーク使用率が 2% 未満である。
 - メモリ不足がしきい値より低い
@@ -59,8 +59,8 @@ Advisor は、次のリソースについて過去 30 日間の使用パター�
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB の予約容量
 Advisor は過去 30 日間の Azure Cosmos DB の使用パターンを分析し、コストを最適化するために予約容量の購入を推奨します。 予約容量を使用することにより、Azure Cosmos DB の時間単位の使用量を事前に購入して、従量課金制よりもコストを削減できます。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格が使用され、また過去 30 日間に観察された使用パターンから推定されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。
 
-### <a name="sql-paas-reserved-capacity"></a>SQL PaaS の予約容量
-Advisor では、過去 30 日間における SQL PaaS のエラスティック データベース プールと SQL Managed Instance の使用パターンが分析されます。 その後、コストを最適化するための予約容量の購入が推奨されます。 予約容量を使用すると、SQL DB の時間単位の使用量を事前に購入することで、SQL のコンピューティング コストを削減できます。 SQL ライセンスは別途課金され、予約によって割引されることはありません。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格が使用され、また過去 30 日間に観察された使用パターンから推定されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL Database と SQL Managed Instance の予約容量
+Advisor では、過去 30 日間における SQL データベースと SQL Managed Instance の使用パターンが分析されます。 その後、コストを最適化するための予約容量の購入が推奨されます。 予約容量を使用すると、SQL DB の時間単位の使用量を事前に購入することで、SQL のコンピューティング コストを削減できます。 SQL ライセンスは別途課金され、予約によって割引されることはありません。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格が使用され、また過去 30 日間に観察された使用パターンから推定されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。 詳細については、「[SQL Database と SQL Managed Instance の予約容量](../azure-sql/database/reserved-capacity-overview.md)」を参照してください。
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service 登録料の予約容量
 Advisor は、過去 30 日間の Azure App Service 分離環境の登録料使用パターンを分析し、コストを最適化するための予約容量の購入を推奨します。 予約容量を使用すると、分離環境の登録料について時間単位の使用量を事前に購入することで、従量課金制よりもコストを削減できます。 予約容量は、App Service インスタンスではなく、登録料にのみ適用されることに注意してください。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対するコスト削減の見積もりを計算するために、過去 30 日間の使用パターンに基づく 3 年分の予約価格が使用されます。
@@ -111,6 +111,7 @@ Advisor で、テーブル キャッシュ ポリシーを短くすることに�
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
+* [Advisor スコア](azure-advisor-score.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)

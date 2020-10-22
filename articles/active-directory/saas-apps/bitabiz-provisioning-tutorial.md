@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329195"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849344"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>チュートリアル:BitaBIZ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,11 +54,11 @@ Azure AD での自動ユーザー プロビジョニング用に BitaBIZ を構�
 
 1. [BitaBIZ 管理コンソール](https://www.bitabiz.com/login?lang=en)にサインインします。 **[SETUP ADMIN]\(管理設定\)** をクリックします。
 
-    ![BitaBIZ 管理コンソール](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="BitaBIZ 管理コンソールのスクリーンショット。[Setup admin]\(管理設定\) が強調表示されています。" border="false":::
 
 2.  **[INTEGRATION]\(統合\)** に移動します。
 
-    ![BitaBIZ 管理コンソール](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="BitaBIZ 管理コンソールのスクリーンショット。[Setup admin]\(管理設定\) が強調表示されています。" border="false":::
 
 2.  **[Microsoft Azure AD Provisioning]\(Microsoft Azure AD のプロビジョニング\)** に移動します。  自動ユーザー プロビジョニングで **[Enabled]\(有効\)** を選択します。 **[SCIM Provisioning endpoint URL]\(SCIM プロビジョニング エンドポイント URL\)** および **[Bearer Token]\(ベアラー トークン\)** の値をコピーします。 これらの値を、Azure portal の BitaBIZ アプリケーションの [プロビジョニング] タブの [テナント URL] および [シークレット トークン] フィールドに入力します。
 

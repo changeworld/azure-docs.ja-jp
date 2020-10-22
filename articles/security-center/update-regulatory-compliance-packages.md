@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445858"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078104"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ
 
@@ -84,6 +84,31 @@ NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official および UK NHS、Canada
     > 新しく追加された標準がコンプライアンス ダッシュボードに表示されるまでに数時間かかることがあります。
 
     [![古い Azure CIS と新しい Azure CIS が表示された規制コンプライアンス ダッシュボード](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
+
+
+## <a name="removing-a-standard-from-your-dashboard"></a>ダッシュボードから標準を削除する
+
+提供されている規制基準に組織に関連していないものが含まれている場合、簡単なプロセスで UI から削除することができます。 これにより、規制へのコンプライアンス ダッシュボードをさらにカスタマイズし、ユーザーに該当する標準にのみ焦点を当てることができます。
+
+標準を削除するには:
+
+1. Security Center のメニューから、 **[セキュリティ ポリシー]** を選択します。
+
+1. 標準を削除する、該当するサブスクリプションを選択します。
+
+    > [!NOTE]
+    > サブスクリプションから標準を削除することはできますが、管理グループからは削除できません。 
+
+    [セキュリティ ポリシー] ページが開きます。 選択したサブスクリプションの、既定のポリシー、業界標準と規制基準、および作成したカスタム イニシアチブが表示されます。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Azure Security Center の規制へのコンプライアンス ダッシュボードから規制基準を削除する":::
+
+1. 削除する標準に対応する **[無効]** を選択します。 確認ウィンドウが表示されます。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Azure Security Center の規制へのコンプライアンス ダッシュボードから規制基準を削除する":::
+
+1. **[はい]** を選択します。 標準が削除されます。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 91455e4797324f28f911dd8a928410517a951728
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531748"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946146"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | コピー アクティビティのソースの type プロパティは **ParquetSink** に設定する必要があります。 | はい      |
+| type          | コピー アクティビティ シンクの type プロパティには **ParquetSink** を設定する必要があります。 | はい      |
 | formatSettings | プロパティのグループ。 後の **Parquet の書き込み設定**に関する表を参照してください。 |    いいえ      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
 
@@ -108,6 +108,7 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 | ファイル名を格納する列 | ソース ファイル名とパスを使用して新しい列を作成します | no | String | rowUrlColumn |
 | 完了後 | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no | 削除: `true` または `false` <br> 移動: `[<from>, <to>]` | purgeFiles <br> moveFiles |
 | 最終更新日時でフィルター処理 | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択 | no | Timestamp | modifiedAfter <br> modifiedBefore |
+| [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>ソースの例
 
@@ -126,7 +127,7 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-properties"></a>シンクのプロパティ
 
-次の表に、Parquet ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+次の表に、Parquet シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[設定]** タブで編集できます。
 
 | 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
 | ---- | ----------- | -------- | -------------- | ---------------- |
@@ -155,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>データ型のサポート
 
-Parquet の複合データ型は、現在サポートされていません (MAP、LIST、STRUCT など)。
+Parquet 複合データ型 (MAP、LIST、STRUCT など) は、現在、コピー アクティビティではなくデータ フローでのみサポートされています。 データ フローで複合型を使用するには、データセットにファイル スキーマをインポートしないで、データセット内のスキーマを空白のままにしておきます。 次に、ソース変換で、プロジェクションをインポートします。
 
 ## <a name="using-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの使用
 

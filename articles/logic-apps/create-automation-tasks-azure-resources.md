@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993110"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201122"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>自動化タスクを作成して Azure リソースを管理し、コストを監視する (プレビュー)
 
@@ -30,6 +30,7 @@ ms.locfileid: "90993110"
 | すべての Azure リソース | **リソースの月額料金を送信** |
 | Azure の仮想マシン | 補足: <p>- **仮想マシンを電源オフ** <br>- **仮想マシンを起動** |
 | Azure Storage アカウント | 補足: <p>- **古い BLOB の削除** |
+| Azure Cosmos DB | さらに、 <p>- **クエリ結果を電子メールで送信** |
 |||
 
 この記事では、次のタスクを完了する方法について説明します。
@@ -40,11 +41,13 @@ ms.locfileid: "90993110"
 
 * タスクを更新したり、ロジック アプリ デザイナーでタスクの基になるワークフローをカスタマイズしたりできるように、[タスクを編集](#edit-task)します。
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>自動化タスクと Azure Automation の違い
 
-現時点では、リソース レベルでのみ自動化タスクを作成し、タスクの実行履歴を表示して、タスクの基になるロジック アプリ ワークフローを編集することができます。これは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) サービスを利用しています。
+現時点では、リソース レベルでのみ自動化タスクを作成し、タスクの実行履歴を表示して、タスクの基になるロジック アプリ ワークフローを編集することができます。これは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) サービスを利用しています。 自動化タスクは、[Azure Automation](../automation/automation-intro.md) よりも基本的で軽量です。
 
-[Azure Automation](../automation/automation-intro.md) は、Azure 環境と非 Azure 環境を一貫性をもって管理するクラウドベースのオートメーションと構成サービスです。 このサービスは、[Runbook](../automation/automation-runbook-execution.md) を使用して[プロセスをオーケストレーションするためのプロセスの自動化](../automation/automation-intro.md#process-automation)、[変更追跡とインベントリ](../automation/change-tracking.md)を含む構成管理、更新管理、共有機能、および異種環境機能で構成されています。 Automation は、ワークロードとリソースのデプロイ、運用、使用停止を完全に制御します。
+これに対し、Azure Automation は、Azure および Azure 以外の環境にわたって一貫性のある管理をサポートする、クラウドベースのオートメーションおよび構成のサービスです。 このサービスは、[Runbook](../automation/automation-runbook-execution.md) を使用して[プロセスをオーケストレーションするためのプロセスの自動化](../automation/automation-intro.md#process-automation)、[変更追跡とインベントリ](../automation/change-tracking/overview.md)を含む構成管理、更新管理、共有機能、および異種環境機能で構成されています。 Automation は、ワークロードとリソースのデプロイ、運用、使用停止を完全に制御します。
 
 ## <a name="prerequisites"></a>前提条件
 

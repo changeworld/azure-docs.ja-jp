@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 12a187b29737ba9388d9b33ac8bcfedf1339c059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d4c29cdb9cf24f87df4acc3556b318a1079810a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253785"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91443621"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,20 +32,20 @@ ms.locfileid: "85253785"
 2. マスクする機微なデータを含むデータベースの設定ページに移動します。
 3. データベースの **[セキュリティ]** セクションの下にある **[動的データ マスキング]** ブレードをクリックします。
 
-   ![ナビゲーション ウィンドウ](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
+   ![動的データマスクが強調表示されている [セキュリティ] セクションを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
 
 4. **動的データ マスク**構成ページには、推奨エンジンがマスク対象として推奨したデータベース列がいくつか表示される場合があります。 推奨を受け入れるには、1 つまたは複数の列の **[マスクの追加]** をクリックします。その列の既定タイプに基づきマスクが作成されます。 マスク機能を変更できます。その場合、マスク ルールをクリックし、マスク フィールド形式を別の形式に変更します。 必ず **[保存]** をクリックして設定を保存します。
 
-    ![ナビゲーション ウィンドウ](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
+    ![動的データ マスクの構成ページを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
 
 5. データベースの列にマスクを追加するには、 **[動的データ マスク]** 構成ページの一番上にある **[マスクの追加]** をクリックし、 **[マスク ルールの追加]** 構成ページを開きます。
 
-    ![ナビゲーション ウィンドウ](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
+    ![[マスク ルールの追加] 構成ページを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
 6. **[スキーマ]** 、 **[テーブル]** 、 **[列]** を選択し、マスクする指定のフィールドを定義します。
 7. 機密データのマスク カテゴリの一覧から**マスク方法を選択**します。
 
-    ![ナビゲーション ウィンドウ](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
+    ![[マスク方法の選択] セクションの下にある機密データのマスキングのカテゴリを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
 
 8. データ マスク ルール ページの **[追加]** をクリックして、動的データ マスク ポリシーのマスク ルールのセットを更新します。
 9. マスクから除外し、マスクされていない機密データへのアクセスを与える SQL ユーザーまたは Azure Active Directory (Azure AD) の ID を入力します。 ユーザーをセミコロンで区切った一覧にします。 管理者特権を持つユーザーは常にマスクされていない元のデータにアクセスできます。

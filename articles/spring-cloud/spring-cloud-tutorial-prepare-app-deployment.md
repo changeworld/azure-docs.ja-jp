@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906830"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092802"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
@@ -23,7 +23,7 @@ Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール�
 この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」を参照してください。
 
 >[!Note]
-> Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
+> Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
 
 ##  <a name="supported-versions"></a>サポートされているバージョン
 
@@ -99,7 +99,7 @@ POM ファイルが構成されているときにアプリケーションを Azu
 
 Azure Spring Cloud で稼働できるのは、Spring または Java アプリケーションのみです。
 
-Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
+Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot と Spring Cloud のバージョン
 
@@ -210,6 +210,8 @@ Spring Boot 2.1 を使用している場合は、次の依存関係を pom.xml �
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> 構成に `server.port` を指定しないでください。 Azure Spring Cloud では、この設定が固定ポート番号にオーバーライドされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Azure Spring Cloud の機能を有効にするためのその他の推奨される依存関係
 
@@ -227,6 +229,7 @@ Spring Boot 2.1 を使用している場合は、次の依存関係を pom.xml �
 ```
 
 サービス レジストリ サーバーのエンドポイントは、アプリで環境変数として自動的に挿入されます。 その後、アプリケーションによって、アプリケーション自体がサービス レジストリ サーバーに登録され、他の依存マイクロサービスが検出されます。
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注釈
 
@@ -302,9 +305,9 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-starte
  さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [アプリケーションのログとメトリックを分析する](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
-* [構成サーバーを設定する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Azure Spring Cloud で分散トレースを使用する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [アプリケーションのログとメトリックを分析する](./diagnostic-services.md)
+* [構成サーバーを設定する](./spring-cloud-tutorial-config-server.md)
+* [Azure Spring Cloud で分散トレースを使用する](./spring-cloud-tutorial-distributed-tracing.md)
 * [Spring クイックスタート ガイド](https://spring.io/quickstart)
 * [Spring Boot のドキュメント](https://spring.io/projects/spring-boot)
 

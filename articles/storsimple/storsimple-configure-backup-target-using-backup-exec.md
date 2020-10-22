@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036932"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710381"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -409,15 +409,15 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 4.  **[Storage] \(ストレージ)** ドロップダウン リストから、アーカイブ ジョブでデータを格納する StorSimple ボリュームを選択します。
 
-    ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![[Storage]\(ストレージ\) を選択する必要があるリストを示すスクリーンショット。](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  **[Verify] \(検証)** を選択し、 **[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。
 
-    ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![[Do not verify data for this job]\(このジョブのデータは検証しない\) オプションを選択する場所を示すスクリーンショット。](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
 6.  **[OK]** を選択します。
 
-    ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![バックアップ定義のプロパティを示すスクリーンショット。](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  **[バックアップ]** の欄で新しいステージを追加します。 ソースには**増分**を使用します。 ターゲットには、増分バックアップ ジョブをアーカイブする StorSimple ボリュームを選択します。 手順 1 - 6 を繰り返します。
 

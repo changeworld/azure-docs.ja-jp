@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986577"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766678"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 
@@ -52,7 +52,7 @@ ms.locfileid: "90986577"
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>アカウントを作成して構成する
 
-Azure portal で Automation アカウントを作成すると、[実行](../automation/manage-runas-account.md#types-of-run-as-accounts)アカウントが自動的に作成されます。 このアカウントは、次の操作を実行します。
+Azure portal で Automation アカウントを作成すると、[実行](../automation/automation-security-overview.md#run-as-accounts)アカウントが自動的に作成されます。 このアカウントは、次の操作を実行します。
 
 * 自己署名証明書を使用して Azure Active Directory (Azure AD) アプリケーションを作成する。 実行アカウント自体には、既定で毎年更新する必要がある証明書があります。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725088"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399688"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Network Watcher と Grafana を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する
 
@@ -199,7 +199,7 @@ NSG フロー ログを含む ElasticSearch インデックスから読み取る
 
 次のスクリーンショットは、最上位のフローとその頻度を示すグラフとチャートを示しています。 フローは、NSG ルールごと、および決定別のフローごとにも表示されます。 Grafana はカスタマイズの自由度が高いため、特定の監視ニーズに合わせてダッシュボードを作成することをお勧めします。 次の例は、一般的なダッシュボードを示しています。
 
-![ダッシュボード グラフ](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![NSG ルールによってセグメント化されたフローを含むサンプル グラフ構成を示すスクリーンショット。](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>まとめ
 

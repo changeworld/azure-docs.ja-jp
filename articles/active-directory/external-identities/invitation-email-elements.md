@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907456"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439836"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -75,7 +75,21 @@ ms.locfileid: "87907456"
 フッターには、送信された招待に関する詳細情報が含まれています。 招待された人が将来の招待をブロックするためのオプションが常にあります。 組織に[プライバシーに関する声明が設けられている](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)場合、声明へのリンクがここに表示されます。  それ以外の場合は、組織によってプライバシーに関する声明が設けられていないことが示されます。
 
 ![メールのフッター セクションの画像](media/invitation-email-elements/footer-section.png)
- 
+
+### <a name="blocking-an-organization-unsubscribing"></a>組織をブロックする (購読解除)
+
+組織からの招待には、フッターに**今後の招待をブロックする**オプションが含まれています。 ゲスト ユーザーはこのリンクを選択し、組織から今後届く招待をブロックできます。 この操作により、[https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) にあるユーザーの登録解除リストにも組織が追加されます。
+
+### <a name="viewing-organizations-youve-blocked"></a>ブロックしている組織を表示する
+
+ゲスト ユーザーはブロックされている組織を次の手順で表示またはエクスポートできます。
+
+1. [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) に移動します。
+2. メール アドレスを入力し、サインイン手順に従い、メールでワンタイム パスコード認証を行います。
+3. ブロックしている組織を表示するか、コピーと貼り付けで名前をエクスポートします。
+   > [!NOTE]
+   > ブロックしている組織に対して再度招待することを許可する場合、組織を選択し、 **[次へ]** を選択します。
+
 ## <a name="how-the-language-is-determined"></a>言語が決定される方法
 
 招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。

@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41a21545939c5d15c8e2c4034a9648e98aa5a73e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 175c9efd02665bf0212d7078a2ec2767ed1be6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280285"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850984"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する
 
@@ -35,7 +35,7 @@ BLOB インデックスがパブリック プレビューであるため、.NET 
 
 1. Visual Studio プロジェクトをセットアップして、.NET 用 Azure Blob Storage クライアント ライブラリ v12 の使用を開始します。 詳細については、[.NET クイックスタート](storage-quickstart-blobs-dotnet.md)を参照してください
 
-2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.5.0-preview.6** 以降をプロジェクトにインストールします。 コマンド ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` を実行することもできます
+2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.7.0-preview.1** 以降をプロジェクトにインストールします。 コマンド ```Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1``` を実行することもできます
 
    詳細については、「[パッケージを検索してインストールする](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)」を参照してください。
 
@@ -87,7 +87,7 @@ static async Task BlobIndexTagsOnCreate()
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
 
           // Blob index tags to upload
-          CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
+          AppendBlobCreateOptions appendOptions = new AppendBlobCreateOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
               { "Sealed", "false" },
@@ -255,10 +255,10 @@ static async Task FindBlobsByTagsExample()
           // Find Blobs given a tags query
           Console.WriteLine("Find Blob by Tags query: " + queryToUse + Environment.NewLine);
 
-          List<FilterBlobItem> blobs = new List<FilterBlobItem>();
-          await foreach (FilterBlobItem filterBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
+          List<TaggedBlobItem> blobs = new List<TaggedBlobItem>();
+          await foreach (TaggedBlobItem taggedBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
           {
-              blobs.Add(filterBlobItem);
+              blobs.Add(taggedBlobItem);
           }
 
           foreach (var filteredBlob in blobs)

@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449747"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
-この記事では、Data Box および Data Box Heavy デバイスで実行できる一部の構成と管理タスクについて説明します。 Data Box および Data Box Heavy デバイスの管理は、Azure portal UI およびデバイスのローカル Web UI を介して行えます。 この記事では、ローカル Web UI を使用して実行できるタスクについて説明します。
+この記事では、Data Box および Data Box Heavy デバイスで実行される一部の構成と管理タスクについて説明します。 Data Box および Data Box Heavy デバイスの管理は、Azure portal UI およびデバイスのローカル Web UI を介して行えます。 この記事では、ローカル Web UI を使用して実行されるタスクについて説明します。
 
 Data Box および Data Box Heavy のローカル Web UI は、デバイスの初期構成に使用されます。 ローカル Web UI を使用して、デバイスのシャットダウンまたは再起動、診断テストの実行、ソフトウェアの更新、コピー ログの表示、および Microsoft サポートのログ パッケージの生成を行うこともできます。 2 つの独立したノードを備えた Data Box Heavy デバイスでは、デバイスの各ノードに対応する 2 つの別個のローカル Web UI にアクセスできます。
 
@@ -202,6 +202,49 @@ Azure デバイスで SMB 署名を有効にするには、次のようにしま
 4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
 5. **[Restart]\(再起動\)** をクリックします。
 
+## <a name="enable-backup-operator-privileges"></a>バックアップ オペレーターの特権を有効にする
+
+Web UI ユーザーは、既定で SMB 共有に対するバックアップ オペレーター特権を持っています。 これが不要の場合、 **[バックアップ オペレーターの特権を有効にする]** を使用して、特権を無効または有効にします。
+
+詳細については、[Active Directory セキュリティ グループ](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)に関する記事のバックアップ オペレーターを参照してください。
+
+Azure デバイスでバックアップ オペレーターの特権を有効にするには、次の操作を行います。
+
+1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
+
+   ![Data Box の設定を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. バックアップ オペレーターの特権を**有効にします**。
+
+   ![バックアップ オペレーターの特権を有効にする](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
+
+3. **[適用]** を選択します。
+4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+5. **[Restart]\(再起動\)** をクリックします。
+
+## <a name="enable-acls-for-azure-files"></a>Azure Files の ACL を有効にする
+
+ファイルのメタデータは、ユーザーが SMB 経由で Data Box にデータをアップロードすると、既定で転送されます。 メタデータには、アクセス制御リスト (ACL)、ファイル属性、およびタイムスタンプが含まれます。 この機能を使用しない場合は、 **[Azure Files の ACL]** を使用して、この機能を無効にするか有効にします。
+
+<!--For more information about metadata that is transferred, see [Preserving the ACLs and metadata with Azure Data Box](./data-box-local-web-ui-admin.md#enable-backup-operator-privileges) - IN DEVELOPMENT-->
+
+> [!Note]
+> ファイルを使用してメタデータを転送するには、バックアップ オペレーターである必要があります。 この機能を使用する場合は、Web UI のローカル ユーザーがバックアップ オペレーターであることを確認してください。 「[バックアップ オペレーターの特権を有効にする](#enable-backup-operator-privileges)」を参照してください。
+
+Azure Files からの ACL の転送を有効にするには、次のようにします。
+
+1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
+
+    ![Data Box の設定を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. Azure Files の ACL を**有効にします**。
+
+     ![Azure Files の ACL を有効にする](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
+  
+3. **[適用]** を選択します。
+4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+5. **[Restart]\(再起動\)** をクリックします。
+
 ## <a name="enable-tls-11"></a>TLS 1.1 を有効にする
 
 既定の Azure Data Box では、トランスポート層セキュリティ (TLS) 1.1 より安全性が高いため、TLS 1.2 が暗号化に使用されます。 ただし、ユーザーまたはクライアントがブラウザーを使用して TLS 1.2 がサポートされていないデータにアクセスする場合は、TLS 1.1 を有効にすることができます。
@@ -212,7 +255,7 @@ Azure デバイスで TLS 1.1 を有効にするには、次のようにしま�
 
 1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
 
-    ![[設定] を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box の設定を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. TLS 1.1 を **[有効]** にします。
 

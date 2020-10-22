@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949900"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042968"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT プラグ アンド プレイ デバイスを認定する方法
 
@@ -42,18 +42,18 @@ IoT プラグ アンド プレイで実行されるアプリケーション コ�
 - IoT プラグ アンド プレイ規則に従ったテレメトリ、プロパティ、またはコマンドを実装する。
 - デバイスと [DTDL v2](https://aka.ms/dtdl) モデルとのやりとりについて説明する。
 - モデル、および必要なすべてのインターフェイスを [Azure IoT パブリック モデル リポジトリに発行する](https://devicemodels.azureiotsolutions.com/)
-- DPS プロビジョニング ペイロードで [DPS 登録](concepts-developer-guide.md#dps-payload)中にモデル ID を送信する。
-- [MQTT 接続](concepts-developer-guide.md#model-id-announcement)中にモデル ID を知らせる。
+- DPS プロビジョニング ペイロードで [DPS 登録](concepts-developer-guide-device-csharp.md#dps-payload)中にモデル ID を送信する。
+- [MQTT 接続](concepts-developer-guide-device-csharp.md#model-id-announcement)中にモデル ID を知らせる。
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Azure IoT 拡張機能 CLI でテストする
 
-Azure Certified Device ポータルを通じて認定を行うためにデバイスを送信する前に、[Azure IoT CLI 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest)を使用して、デバイスの実装がモデルと一致することを確認できます。
+Azure Certified Device ポータルを通じて認定を行うためにデバイスを送信する前に、[Azure IoT CLI 拡張機能](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest)を使用して、デバイスの実装がモデルと一致することを確認できます。
 
 次の手順は、CLI を使用して認定テストを準備し、実行する方法を示しています。
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールする
 
-インストール手順を参照し、ご利用の環境に [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を設定します。
+インストール手順を参照し、ご利用の環境に [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) を設定します。
 
 Azure IoT 拡張機能をインストールするには、次のコマンドを実行します。
 
@@ -61,7 +61,7 @@ Azure IoT 拡張機能をインストールするには、次のコマンドを�
 az extension add --name azure-iot
 ```
 
-詳細については、「[Azure IoT の Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest)」を参照してください。
+詳細については、「[Azure IoT の Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 ### <a name="create-a-new-product-test"></a>新しい製品のテストを作成する
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> CLI を使用する場合は、サブスクリプションに[サインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)必要があります。
+> CLI を使用する場合は、サブスクリプションに[サインインする](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)必要があります。
 
 コマンドからの JSON 出力には、デバイスを接続するときに使用する `primaryKey`、`registrationId`、`scopeID` が含まれています。
 
@@ -166,9 +166,6 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 次の手順では、[Azure Certified Device ポータル](https://aka.ms/acdp)を使用して、オンボード、製品の詳細の登録、ファースト ステップ ガイドの送信、および認定テストを行う方法を示します。
 
-> [!NOTE]
-> このドキュメントの執筆時点では、ポータルで [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)への発行はサポートされていません。
-
 ### <a name="onboarding"></a>オンボード
 
 [認定ポータル](https://aka.ms/acdp)を使用するには、職場または学校のテナントからの Azure Active Directory を使用する必要があります。
@@ -203,6 +200,14 @@ Azure IoT パブリック モデル リポジトリにモデルを発行する�
 1. 接続してインターフェイスを検出します。 デバイスは、DPS 経由で Azure IoT 認定サービスに接続する必要があります。 使用する認証方法 (x.509 証明書、対称キー、またはトラステッド プラットフォーム モジュール) を選び、デバイス アプリケーションを DPS 情報で更新します。
 1. インターフェイスを確認します。 インターフェイスを確認し、それぞれにテストに適したペイロード入力があることを確かめます。
 1. テストします。 システムにより、各デバイス モデルがテストされ、モデルに記述されているテレメトリ、プロパティ、およびコマンドが IoT プラグ アンド プレイ規則に従っていることが確認されます。 テストが完了したら、 **[ログの表示]** リンクを選択して、デバイスからのテレメトリと、IoT Hub デバイス ツインのプロパティに送信された生データを確認します。
+
+### <a name="submit-and-publish"></a>送信と発行
+
+最後に必要なステージは、レビューのためにプロジェクトを送信することです。 この手順では、Azure Certified Device チーム メンバーに、デバイスとマーケティングの詳細やファースト ステップ ガイドを含め、網羅性を目的としてプロジェクトをレビューするように通知します。 チーム メンバーは、事前に質問に関して指定された会社のメール アドレスに問い合わせたり、承認前に要求を編集したりできます。
+
+デバイスで認定の一環としてさらに手動による検証が必要な場合は、現時点で通知を受け取ります。
+
+デバイスが認定されると、製品概要ページの **[Publish to catalog]\(カタログに発行\)** 機能を使用して、Azure Certified Device カタログに製品の詳細を発行することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

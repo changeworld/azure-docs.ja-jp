@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0394a7db6776e00ea031a2f40ab4de01540982a6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080212"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856689"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
@@ -21,11 +21,11 @@ ms.locfileid: "86080212"
 
 ## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>HDInsight クラスターのための適切なストレージ システムを選択する
 
-オンプレミスの Apache Hadoop ファイル システム (HDFS) のディレクトリ構造は、Azure Storage または Azure Data Lake Storage 内に再作成できます。 計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。 どちらのサービスも、HDInsight クラスターの既定のファイル システムと追加のファイル システムの両方として使用できます。 HDInsight クラスターとストレージ アカウントは、同じリージョンに置く必要があります。
+オンプレミスの Apache Hadoop ファイル システム (HDFS) のディレクトリ構造は、Azure Blob Storage または Azure Data Lake Storage 内に再作成できます。 計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。 どちらのサービスも、HDInsight クラスターの既定のファイル システムと追加のファイル システムの両方として使用できます。 HDInsight クラスターとストレージ アカウントは、同じリージョンに置く必要があります。
 
 ### <a name="azure-storage"></a>Azure Storage
 
-HDInsight クラスターは Azure Storage 内の blob コンテナーを既定のファイル システムまたは別のファイル システムのいずれかとして使用できます。 Standard レベルのストレージ アカウントは HDInsight クラスターで使用するようにサポートされています。 Premier レベルはサポートされていません。 既定の BLOB コンテナーには、ジョブ履歴やログなどのクラスター固有の情報が格納されます。 1 つの BLOB コンテナーを複数のクラスターの既定のファイル システムとして共有することはサポートされていません。
+HDInsight クラスターは Azure Storage 内の blob コンテナーを既定のファイル システムまたは別のファイル システムのいずれかとして使用できます。  Standard レベルのストレージ アカウントは HDInsight クラスターで使用するようにサポートされています。 Premier レベルはサポートされていません。 既定の BLOB コンテナーには、ジョブ履歴やログなどのクラスター固有の情報が格納されます。  1 つの BLOB コンテナーを複数のクラスターの既定のファイル システムとして共有することはサポートされていません。
 
 作成プロセスで定義されたストレージ アカウントとそのそれぞれのキーは、クラスター ノードの `%HADOOP_HOME%/conf/core-site.xml` に格納されます。 これらは Ambari UI の HDFS の構成で「Custom core site (カスタム コア サイト)」セクションからもアクセスできます。 ストレージ アカウント キーは既定で暗号化されており、カスタムの復号スクリプトを使用してキーを復号化してから Hadoop デーモンに渡されます。 Hive、MapReduce、Hadoop ストリーミング、Pig などを含むジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。
 
@@ -37,7 +37,7 @@ Azure Storage は、geo レプリケーションすることが可能です。 g
 |---|---|
 |`wasb:///`|暗号化されていない通信を使用して既定のストレージにアクセスします。|
 |`wasbs:///`|暗号化された通信を使用して既定のストレージにアクセスします。|
-|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|既定以外のストレージ アカウントを使用して通信するときに使用します。 |
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|既定以外のストレージ アカウントを使用して通信するときに使用します。 |
 
 [Standard ストレージ アカウントのスケーラビリティ ターゲット](../../storage/common/scalability-targets-standard-account.md)に関する記事には、Azure Storage アカウントの現在の制限が記載されています。 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。
 
@@ -81,20 +81,20 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage は、HDFS と POSIX スタイルのアクセス制御モデルを実装します。 これはきめ細やかなアクセス制御のための AAD との最高クラスの統合を提供します。 格納できるデータのサイズや、大量の並行分析を実行するための機能の制限はありません。
+Azure Data Lake Storage Gen1 には、HDFS と POSIX スタイルのアクセス制御モデルが実装されます。 これにより、きめ細やかなアクセス制御のための Azure AD との最高クラスの統合が提供されます。 格納できるデータのサイズや、大量の並行分析を実行するための機能の制限はありません。
 
 詳細については、次の記事を参照してください。
 
-- [Azure portal を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Azure HDInsight クラスターで Data Lake Storage を使用する](../hdinsight-hadoop-use-data-lake-store.md)
+- [Azure portal を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 は、最新のストレージ製品です。 Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage の第 1 世代からのコア機能を統合します。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
+Azure Data Lake Storage Gen2 は、最新のストレージ製品です。 これによって、Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage Gen1 の第 1 世代からのコア機能が統合されます。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
 
-ADLS Gen 2 は  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
+Azure Data Lake Storage Gen 2 は、 [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
 
-Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、 [階層構造の名前空間](../../storage/data-lake-storage/namespace.md) を追加することです。 階層構造により、ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
+Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、 [階層構造の名前空間](../../storage/data-lake-storage/namespace.md) を追加することです。  階層構造により、ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
 
 以前は、パフォーマンス、管理、およびセキュリティの領域では、クラウドベース分析は妥協する必要がありました。 Azure Data Lake Storage (ADLS) Gen2 の主要機能は次のとおりです。
 
@@ -144,7 +144,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 > プロバイダー パス プロパティは、core-site.xml のクラスター レベルでキーを格納する代わりに、次のように distcp コマンド ラインに追加することもできます。
 
 ```bash
-hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
+hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
 ## <a name="restrict-azure-storage-data-access-using-sas"></a>SAS を使用して Azure Storage データ アクセスを制限する
@@ -193,23 +193,23 @@ Azure での SAS トークンの使用に関して、3 つの重要なことを�
 
 ## <a name="use-data-encryption-and-replication"></a>データの暗号化およびレプリケーションを使用する
 
-Azure Storage に書き込まれるすべてのデータは、 [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して自動的に暗号化されます。 Azure Storage アカウント内のデータは、高可用性のため常にレプリケートされます。 ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。
+Azure Storage に書き込まれるすべてのデータは、 [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して自動的に暗号化されます。 Azure Storage アカウント内のデータは、高可用性のため常にレプリケートされます。  ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。
 
 - [ローカル冗長ストレージ (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [ゾーン冗長ストレージ (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [geo 冗長ストレージ (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/storage-redundancy.md)
 
-Azure Data Lake Storage はローカル冗長ストレージ (LRS) を提供しますが、ディザスター リカバリー計画のニーズに合った頻度で、別のリージョン内の別の Data Lake Storage アカウントに重要なデータをコピーする必要もあります。  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、[Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) など、データをコピーするさまざまな方法があります。 また、誤って削除されないように、Data Lake Storage アカウントのアクセス ポリシーを適用することをお勧めします。
+Azure Storage によってローカル冗長ストレージ (LRS) が提供されますが、ディザスター リカバリー プランのニーズに合った頻度で、別のリージョン内の別の Azure Storage アカウントに重要なデータをコピーする必要もあります。   [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、[Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) など、データをコピーするさまざまな方法があります。  また、誤って削除されないように、Azure Storage アカウントのアクセス ポリシーを適用することもお勧めします。
 
 詳細については、次の記事を参照してください。
 
 - [Azure Storage のレプリケーション](../../storage/common/storage-redundancy.md)
-- [Azure Data Lake Storage (ADLS) 向けの障害ガイダンス](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+- [Azure Data Lake Storage Gen1 (ADLS) 向けのディザスター ガイダンス](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>クラスターに Azure Storage アカウントを追加する
 
-HDInsight の作成プロセス時に、既定のファイル システムとして Azure Storage アカウントまたは Azure Data Lake Storage アカウントが選択されます。 クラスター作成プロセス時またはクラスターが作成された後に、この既定のストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションからストレージ アカウントをさらに追加することもできます。
+HDInsight の作成プロセス時に、既定のファイル システムとして Azure Storage アカウント、Azure Data Lake Storage Gen1、または Azure Data Lake Storage Gen2 が選択されます。 クラスター作成プロセス時またはクラスターが作成された後に、この既定のストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションからストレージ アカウントをさらに追加することもできます。
 
 次のいずれかの方法でストレージ アカウントを追加できます。
 - Ambari HDFS Config Advanced Custom core-site Add the storage Account Name を指定し、サービスの再起動を指定します

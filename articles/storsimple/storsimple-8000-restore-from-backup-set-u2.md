@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527831"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972018"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
@@ -115,7 +115,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
    
 4. **[バックアップ カタログ]** タブに戻り、バックアップ セットを選択します。 右クリックし、コンテキスト メニューの **[復元]** を選択します。
 
-    ![バックアップ セットの一覧](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![バックアップ セットの一覧 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. 確認を求められます。 復元情報を確認し、確認のチェック ボックスをオンにします。
    
@@ -123,7 +123,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 
 7. **[復元]** をクリックします。 復元ジョブが開始されます。このジョブは、 **[ジョブ]** ページに表示されます。
 
-   ![確認ページ](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![確認ページ 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 復元操作が完了した後、ボリュームの内容がバックアップからのボリュームで置き換えられていることを確認します。
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617878"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973310"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ SQL Server で有効になっている、ドキュメントに記載されてい
 
 ### <a name="distributed-transactions"></a>分散トランザクション
 
-MSDTC も[エラスティック トランザクション](../database/elastic-transactions-overview.md)も現在、SQL Managed Instance ではサポートされていません。
+[分散トランザクション](../database/elastic-transactions-overview.md)の部分的なサポートは、現在パブリック プレビューの段階です。 サポートされるシナリオは次のとおりです。
+* 参加要素が[サーバー信頼グループ](https://aka.ms/mitrusted-groups)に含まれる Azure SQL Managed Instance のみのトランザクション。
+* .NET (TransactionScope クラス) および Transact-SQL から開始されたトランザクション。
+
+現在、Azure SQL Managed Instance では、MSDTC オンプレミスまたは Azure Virtual Machines で定期的にサポートされている他のシナリオはサポートされていません。
 
 ### <a name="extended-events"></a>拡張イベント
 

@@ -2,13 +2,13 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605228"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372427"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
@@ -32,7 +32,7 @@ Azure ポリシーでは、以下を使用します。
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-ロールベースのアクセス制御では、以下を使用します。
+Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を使用します。
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -45,7 +45,7 @@ Azure ポリシーでは、以下を使用します。
 
 * [tags](/azure/templates/microsoft.resources/tags)
 
-### <a name="schema"></a>スキーマ
+## <a name="schema"></a>スキーマ
 
 管理グループのデプロイに使用するスキーマは、リソース グループのデプロイ用のスキーマとは異なります。
 
@@ -60,6 +60,30 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+管理グループにデプロイする場合は、デプロイ コマンドで指定された管理グループを対象にするか、テナント内の別の管理グループを選択することができます。
+
+テンプレートのリソース セクション内で定義されたリソースは、デプロイ コマンドで指定された管理グループに適用されます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+別の管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。 `scope` プロパティを `Microsoft.Management/managementGroups/<mg-name>` という形式の値に設定します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+また、管理グループ内のサブスクリプションやリソース グループを対象にすることもできます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+管理グループ内のサブスクリプションを対象にするには、入れ子になったデプロイと `subscriptionId` プロパティを使用します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+そのサブスクリプション内のリソース グループを対象にするには、入れ子になった別のデプロイと `resourceGroup` プロパティを追加します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+サブスクリプション内にリソース グループを作成し、そのリソース グループにストレージ アカウントをデプロイするために、管理グループのデプロイを使用するには、「[サブスクリプションとリソース グループにデプロイする](#deploy-to-subscription-and-resource-group)」を参照してください。
 
 ## <a name="deployment-commands"></a>デプロイ コマンド
 
@@ -94,97 +118,6 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
-
-## <a name="deployment-scopes"></a>デプロイのスコープ
-
-管理グループにデプロイする場合は、デプロイ コマンドで指定された管理グループ、またはテナント内の他の管理グループを対象にすることができます。 また、管理グループ内のサブスクリプションやリソース グループを対象にすることもできます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
-
-テンプレートのリソース セクション内で定義されたリソースは、デプロイ コマンドで指定された管理グループに適用されます。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        management-group-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-別の管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "nestedDeployment",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-different-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-管理グループ内のサブスクリプションを対象にするには、入れ子になったデプロイと `subscriptionId` プロパティを使用します。 そのサブスクリプション内のリソース グループを対象にするには、入れ子になった別のデプロイと `resourceGroup` プロパティを追加します。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "westus2",
-      "subscriptionId": "00000000-0000-0000-0000-000000000000",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedRG",
-              "resourceGroup": "rg2",
-              "properties": {
-                "mode": "Incremental",
-                "template": {
-                  nested-template-with-resources-in-resource-group
-                }
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-サブスクリプション内にリソース グループを作成し、そのリソース グループにストレージ アカウントをデプロイするために、管理グループのデプロイを使用するには、「[サブスクリプションとリソース グループにデプロイする](#deploy-to-subscription-and-resource-group)」を参照してください。
 
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 

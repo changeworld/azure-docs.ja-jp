@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67672174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742334"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -65,7 +65,7 @@ ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft �
 * オンプレミスからクラウド アプリケーションへのネットワーク トポロジの検出
 * 容量計画、帯域幅の使用率分析
 * プライマリ パスとセカンダリ パス両方の監視とアラート
-* ExpressRoute を介した Office 365 や Dynamics 365 などの Azure サービスへの接続の監視
+* ExpressRoute を介した Microsoft 365 や Dynamics 365 などの Azure サービスへの接続の監視
 * VNet への接続性の低下の検出
 
 ![リージョン間のトラフィックを示すマップ](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft �
 * 世界中の複数のユーザーの場所からアプリケーションへの到達可能性をテストする
 * 基幹業務アプリケーションと SaaS アプリケーションのネットワーク待機時間とパケット損失を特定する
 * アプリケーション パフォーマンス低下の原因になっている可能性があるネットワーク上のホット スポットを特定する
-* Microsoft Office 365、Dynamics 365、Skype for Business、その他の Microsoft サービス用の組み込みテストを使って、Office 365 アプリケーションへの到達可能性を監視する
+* Microsoft 365、Dynamics 365、Skype for Business、その他の Microsoft サービス用の組み込みテストを使って、Microsoft 365 アプリケーションへの到達可能性を監視する
 
 詳細については、次の記事を参照してください。
 
@@ -103,7 +103,7 @@ Traffic Analytics は、クラウド ネットワーク上のユーザとアプ�
 
 Traffic Analytics は、組織のネットワーク アクティビティを監査し、アプリケーションとデータをセキュリティで保護し、ワークロードのパフォーマンスを最適化し、コンプライアンスを維持するために役立つ実用的な情報を提供します。
 
-![リージョン間のトラフィックを示すマップ](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![リージョン間のトラフィックを示すマップ 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 関連リンク:
 * [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](https://aka.ms/trafficanalyticsdocs)、[FAQ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)

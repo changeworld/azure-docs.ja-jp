@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434403"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444485"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -89,19 +89,19 @@ Azure portal を使用して SQL Managed Instance に Azure AD の読み取り�
 
 3. Azure AD の統合に使用する SQL Managed Instance に移動します。
 
-   ![aad](./media/authentication-aad-configure/aad.png)
+   ![選択された SQL マネージド インスタンスの [Active Directory 管理者] ページを開いている Azure portal のスクリーンショット。](./media/authentication-aad-configure/aad.png)
 
 4. Active Directory 管理者ページの上部でバナーを選択し、現在のユーザーにアクセス許可を付与します。
 
-    ![アクセス許可の付与 (ポータル)](./media/authentication-aad-configure/grant-permissions.png)
+    ![Active Directory にアクセスするためのアクセス許可を SQL マネージド インスタンスに付与するダイアログのスクリーンショット。 [アクセス許可の付与] ボタンが選択されています。](./media/authentication-aad-configure/grant-permissions.png)
 
 5. 操作が正常に完了すると、右上隅に次の通知が表示されます。
 
-    ![success](./media/authentication-aad-configure/success.png)
+    ![Active Directory の読み取りアクセス許可がマネージド インスタンスに対して正常に更新されたことを確認する通知のスクリーンショット。](./media/authentication-aad-configure/success.png)
 
 6. これで、SQL Managed Instance に対する Azure AD 管理者を選択できるようになります。 選択するには、[Active Directory 管理者] ページで **[管理者の設定]** を選択します。
 
-    ![管理者の設定](./media/authentication-aad-configure/set-admin.png)
+    ![選択された SQL マネージド インスタンスの [Active Directory 管理者] ページで [管理者の設定] が強調表示されているスクリーンショット。](./media/authentication-aad-configure/set-admin.png)
 
 7. Azure AD 管理者ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから、 **[選択]** を選択します。
 
@@ -111,7 +111,7 @@ Azure portal を使用して SQL Managed Instance に Azure AD の読み取り�
 
 8. [Active Directory 管理者] ページの上部にある **[保存]** を選択します。
 
-    ![[保存]](./media/authentication-aad-configure/save.png)
+    ![上部で [管理者の設定] と [管理者の削除] のボタンの横に [保存] ボタンがある [Active Directory 管理者] ページのスクリーンショット。](./media/authentication-aad-configure/save.png)
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 

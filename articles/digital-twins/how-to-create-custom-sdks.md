@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324231"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970131"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
 現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#)、JavaScript、および Java を対象としています。 これらの SDK と一般的な API については、「["*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自のデータ プレーン SDK を生成する方法について説明します。
 
 >[!NOTE]
-> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく[コントロール プレーンの Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)を使用して、この記事の手順を実行します。
+> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく、[コントロール プレーンの Swagger フォルダー]] (https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) ) の最新**コントロール プレーン Swagger** (OpenAPI) ファイルを使用して、この記事の手順を実行します。
 
 ## <a name="set-up-your-machine"></a>コンピューターをセットアップする
 
 SDK を生成するには、次のものが必要です。
 * [AutoRest](https://github.com/Azure/autorest)、バージョン 2.0.4413 (バージョン 3 は現在サポートされていません)
 * [Node.js](https://nodejs.org) (AutoRest の前提条件として)
-* Azure Digital Twins [データ プレーン Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) (*digitaltwins.json* という名前)、および例を含む付属のフォルダー。 ローカル コンピューターに Swagger ファイルと例のフォルダーをダウンロードします。
+* [データ プレーンの Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新 Azure Digital Twins **データ プレーン Swagger** (OpenAPI) ファイル、および例を含む付属のフォルダー。  ローカル コンピューターに Swagger ファイル (*digitaltwins.json*) と例のフォルダーをダウンロードします。
 
 お使いのコンピューターに上記の一覧にあるものがすべて備わったら、AutoRest を使用して SDK を作成することができます。
 

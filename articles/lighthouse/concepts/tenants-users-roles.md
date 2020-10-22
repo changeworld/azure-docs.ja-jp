@@ -3,12 +3,12 @@ title: Azure Lighthouse のシナリオにおけるテナント、ロール、�
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163307"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399246"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 
@@ -43,7 +43,7 @@ ms.locfileid: "88163307"
 - [Azure portal の [マイ カスタマー] ページを表示](../how-to/view-manage-customers.md)する必要があるすべてのユーザーには、必ず[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または閲覧者アクセスを含む別の組み込みロール) を付与します。
 
 > [!IMPORTANT]
-> Azure AD グループのアクセス許可を追加するためには、 **[グループの種類]** を **[Office 365]** ではなく、 **[セキュリティ]** にする必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+> Azure AD グループのアクセス許可を追加するためには、 **[グループの種類]** を **[セキュリティ]** に設定する必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

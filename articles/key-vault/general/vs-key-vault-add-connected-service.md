@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378867"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448130"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -189,6 +189,9 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 | .NET; NuGet | Azure.Identity |
 | .NET; NuGet | Azure.Security.KeyVault.Keys |
 | .NET; NuGet | Azure.Security.KeyVault.Secrets |
+
+> [!IMPORTANT] 
+> 既定では、Azure.Identity 1.1.1 がインストールされます。これは、Visual Studio 資格情報をサポートしていません。 パッケージ参照を手動で 1.2+ に更新すると、Visual Studio 資格情報を使用することができます。
 
 ### <a name="added-files-for-aspnet-framework"></a>ASP.NET Framework の追加されるファイル
 

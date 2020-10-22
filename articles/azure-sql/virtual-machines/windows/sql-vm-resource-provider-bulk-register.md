@@ -7,23 +7,27 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/21/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d1d74f1240f919bb20d8893755a86abc19fa828
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533803"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761262"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の複数の SQL 仮想マシンを SQL VM リソースプロバイダーに登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 この記事では、Azure 内のご自分の SQL Server 仮想マシン (VM) を、`Register-SqlVMs` PowerShell コマンドレットを使用して、SQL VM リソースプロバイダーに一括登録する方法について説明します。
+
+この記事では、SQL Server VM を一括で登録する方法について説明します。 また、[すべての SQL Server VM を自動的に](sql-vm-resource-provider-automatic-registration.md)登録したり、[個別に](sql-vm-resource-provider-register.md)登録したりすることができます。 
+
+## <a name="overview"></a>概要
 
 `Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットは、仮想マシンを "_ライトウェイト_" 管理モードで登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
 

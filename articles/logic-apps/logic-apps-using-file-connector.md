@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/13/2019
-ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.date: 10/08/2020
+ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659929"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873236"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
@@ -22,6 +22,9 @@ Azure Logic Apps とファイル システム コネクタを使用すると、�
 - ファイルを作成、取得、追加、更新、削除する。
 - フォルダーまたはルート フォルダー内のファイルをリストする。
 - ファイルの内容とメタデータを取得します。
+
+  > [!IMPORTANT]
+  > 現在、ファイル システム コネクタは、Windows オペレーティング システム上の Windows ファイル システムのみをサポートしています。  
 
 この記事では、Dropbox にアップロードされているファイルをファイル共有にコピーして電子メールを送信するシナリオを例に、オンプレミスのファイル システムに接続する方法を紹介します。 オンプレミスのシステムに安全に接続してアクセスするために、ロジック アプリでは、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)が使用されます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 コネクタ固有の技術情報については、[ファイル システム コネクタ リファレンス](/connectors/filesystem/)に関する記事を参照してください。
 

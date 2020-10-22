@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888709"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094009"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -45,7 +45,7 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 Azure Spring Cloud には、次の既知の制限があります。
     
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
-* `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は、1025 に上書きされます。
+* `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は上書きされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
 * Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
 
 ### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。 
@@ -54,7 +54,7 @@ Azure Spring Cloud には、次の既知の制限があります。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](../azure-portal/supportability/how-to-create-azure-support-request.md)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
 
 ## <a name="development"></a>開発
 
@@ -70,9 +70,9 @@ Azure Spring Cloud は、Java 8 および 11 をサポートしています。 �
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Spring Cloud アプリケーションのログとメトリックはどこで表示できますか?
 
-[アプリの概要] タブと [[Azure Monitor]](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) タブでメトリックを探してください。
+[アプリの概要] タブと [[Azure Monitor]](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) タブでメトリックを探してください。
 
-Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
+Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 
@@ -106,7 +106,7 @@ Azure CLI を使用して、Spring Cloud の診断設定を削除できます。
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud では、どのバージョンの Java ランタイムがサポートされていますか?
 
-Azure Spring Cloud では、2020 年 6 月現在での最新ビルドである Java 8 ビルド 252 と Java 11 ビルド 7 が含まれる Java LTS バージョンがサポートされています。 「[Azure 用の JDK および Azure Stack をインストールする](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
+Azure Spring Cloud では、2020 年 6 月現在での最新ビルドである Java 8 ビルド 252 と Java 11 ビルド 7 が含まれる Java LTS バージョンがサポートされています。 「[Azure 用の JDK および Azure Stack をインストールする](/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
 
 ### <a name="who-built-these-java-runtimes"></a>これらの Java ランタイムはだれがビルドしたのですか?
 
@@ -118,14 +118,14 @@ LTS と MTS の JDK リリースには、四半期ごとのセキュリティ更
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 LTS バージョンと Java 11 LTS バージョンのサポート期間を教えてください。
 
-[Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)に関する記事を参照してください。
+[Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)に関する記事を参照してください。
 
 * Java 8 LTS は 2030 年 12 月までサポートされます。
 * Java 11 LTS は 2027 年 9 月までサポートされます。
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>サポートされている Java ランタイムをローカル開発用にダウンロードするにはどうすればよいですか?
 
-「[Azure 用の JDK および Azure Stack をインストールする](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
+「[Azure 用の JDK および Azure Stack をインストールする](/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>古い Java ランタイムの削除ポリシーとは何ですか?
 
@@ -136,7 +136,7 @@ LTS と MTS の JDK リリースには、四半期ごとのセキュリティ更
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Java ランタイム レベルの問題についてサポートを受けるにはどうすればよいですか?
 
-Azure サポートでサポート チケットを開くことができます。  [Azure サポート リクエストを作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)に関する記事を参照してください。
+Azure サポートでサポート チケットを開くことができます。  [Azure サポート リクエストを作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>アプリを実行するためのオペレーティング システムは何ですか?
 

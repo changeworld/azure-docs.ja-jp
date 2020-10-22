@@ -4,12 +4,12 @@ description: Azure Backup を使用した Azure VM 上での SQL Server デー�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500336"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461225"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -101,6 +101,10 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
 [自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出が通常は 8 時間ごとに実行されるためです。 ただし、次の図に示すように、 **[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出して保護できます。
 
   ![新しく追加されたデータベースを手動で検出する](./media/backup-azure-sql-database/view-newly-added-database.png)
+  
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>TDE (Transparent Data Encryption) が有効になっているデータベースを保護し、バックアップ プロセス全体を通してデータベースを暗号化したままにすることはできますか?
+
+はい、Azure Backup では、TDE が有効になった SQL Server データベースまたはサーバーのバックアップがサポートされます。 キーが Azure によって管理される [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) と、キーがユーザーによって管理される (BYOK) TDE がサポートされます。  バックアップでは、バックアップ プロセスの一環として SQL 暗号化は実行されないため、バックアップ時にデータベースが暗号化されたままになります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,25 +4,25 @@ description: Azure セキュリティ ベンチマーク V2 ID 管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bcd88f9f21c68f7f6cdda7299ac97d67e97dc009
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059096"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757938"
 ---
-# <a name="security-control-identity-management"></a>セキュリティ コントロールID 管理
+# <a name="security-control-v2-identity-management"></a>セキュリティ コントロール V2:ID 管理
 
 ID 管理は、Azure Active Directory を使用して、セキュリティで保護された ID とアクセスの制御を確立するためのコントロールを対象とします。 これには、シングル サインオン、強力な認証、アプリケーションのマネージド ID (およびサービスの原則)、条件付きアクセス、およびアカウントの異常監視の使用が含まれます。
 
-## <a name="id-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>ID-1: Azure Active Directory を中央 ID および認証システムとして標準化する
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1:Azure Active Directory を中央 ID および認証システムとして標準化する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-1 | 16.1、16.2、16.4、16.5 | IA-2、IA-8、AC-2、AC-3 |
+| IM-1 | 16.1、16.2、16.4、16.5 | IA-2、IA-8、AC-2、AC-3 |
 
 Azure Active Directory (Azure AD) は、Azure の既定の ID およびアクセス管理サービスです。 Azure AD で標準化して、次のものでの組織の ID とアクセス管理のガバナンスを行う必要があります。
 - Azure portal、Azure Storage、Azure Virtual Machines (Linux と Windows)、Azure Key Vault、PaaS、SaaS アプリケーションなどの Microsoft クラウド リソース。
@@ -45,9 +45,9 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [ID とキー](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
+- [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -55,11 +55,11 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-2-manage-application-identities-securely-and-automatically"></a>ID-2: アプリケーション ID を安全かつ自動的に管理する
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2:アプリケーション ID を安全かつ自動的に管理する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-2 | N/A | AC-2、AC-3、IA-2、IA-4、IA-9 |
+| IM-2 | N/A | AC-2、AC-3、IA-2、IA-4、IA-9 |
 
 サービスや自動化などの人間以外のアカウントでは、リソースにアクセスしたりコードを実行したりするために、より強力な人間のアカウントを作成するのではなく、Azure のマネージド ID を使用します。 Azure マネージド ID によって、Azure AD 認証をサポートする Azure のサービスとリソースに対して認証を行うことができます。 認証は事前に定義されたアクセス許可規則によって有効になり、ソース コードまたは構成ファイル内でハードコーディングされた資格情報を使用せずに済みます。 
 
@@ -77,17 +77,17 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [ID とキー](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>ID-3: アプリケーションのアクセスに Azure AD シングル サインオン (SSO) を使用する
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3:アプリケーションのアクセスに Azure AD シングル サインオン (SSO) を使用する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-3 | 4.4. | IA-2、IA-4 |
+| IM-3 | 4.4. | IA-2、IA-4 |
 
 Azure AD により、Azure リソース、クラウド アプリケーション、オンプレミス アプリケーションに対する ID とアクセスの管理が提供されます。 ID およびアクセスの管理は、従業員などの企業 ID だけでなく、パートナー、ベンダー、サプライヤーなどの外部 ID にも適用されます。
 
@@ -97,19 +97,19 @@ Azure AD シングル サインオン (SSO) を使用して、オンプレミス
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [ID とキー](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>ID-4: すべての Azure Active Directory ベースのアクセスに強力な認証制御を使用する
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4:すべての Azure Active Directory ベースのアクセスに強力な認証制御を使用する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-4 | 4.2、4.4、4.5、11.5、12.11、16.3 | AC-2、AC-3、IA-2、IA-4 |
+| IM-4 | 4.2、4.4、4.5、11.5、12.11、16.3 | AC-2、AC-3、IA-2、IA-4 |
 
 Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。  
 - 多要素認証:Azure AD MFA を有効にして、MFA のセットアップに対する Azure Security Center ID とアクセス管理の推奨事項に従います。 MFA は、サインインの条件とリスク要因に基づいて、すべてのユーザー、選択されたユーザー、またはユーザー単位のレベルで適用できます。 
@@ -132,19 +132,19 @@ Azure AD 認証に従来のパスワード ベースの認証がまだ使用さ�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [ID とキー](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-5-monitor-and-alert-on-account-anomalies"></a>ID-5: アカウントの異常を監視してアラートを出す
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5:アカウントの異常を監視してアラートを出す
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
+| IM-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
 
 Azure AD には、次のデータ ソースが用意されています。 
 -   サインイン - サインイン レポートは、マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報を提供します。
@@ -169,7 +169,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../../security-center/security-center-identity-access.md)
 
-- [Azure Security Center の脅威インテリジェンス保護モジュールでのアラート](//azure/security-center/alerts-reference)
+- [Azure Security Center の脅威インテリジェンス保護モジュールでのアラート](/azure/security-center/alerts-reference)
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -179,17 +179,17 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-6-restrict-azure-resource-access-based-on-conditions"></a>ID-6: 条件に基づいて Azure リソースへのアクセスを制限する
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6:条件に基づいて Azure リソースへのアクセスを制限する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-6 | N/A | AC-2、AC-3 |
+| IM-6 | N/A | AC-2、AC-3 |
 
 特定の IP 範囲からのユーザー ログインに対する MFA の使用の要求など、ユーザー定義の条件に基づく、より詳細なアクセス制御のために、Azure AD の条件付きアクセスを使用します。 詳細な認証セッションの管理は、さまざまなユース ケースに対する Azure AD 条件付きアクセス ポリシーによって使用することもできます。 
 
@@ -201,9 +201,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [ID とキー](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -211,29 +211,33 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="id-7-eliminate-unintended-credential-exposure"></a>ID-7: 意図しない資格情報の公開を排除する
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7:意図しない資格情報の公開を排除する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-7 | 18.1、18.7 | IA-5 |
+| IM-7 | 18.1、18.7 | IA-5 |
 
-コード内で資格情報を特定する資格情報スキャナーを実装します。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。
+コード内で資格情報を特定する Azure DevOps 資格情報スキャナーを実装します。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。
+
+GitHub の場合、ネイティブ シークレット スキャン機能を使用して、コード内で資格情報やその他の形式のシークレットを識別できます。
 
 - [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
+- [GitHub シークレット スキャン](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-8-secure-user-access-to-legacy-applications"></a>ID-8: レガシ アプリケーションへのユーザー アクセスをセキュリティで保護する
+## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8:レガシ アプリケーションへのユーザー アクセスをセキュリティで保護する
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| ID-8 | 14.6 | AC-2、AC-3、SC-11 |
+| IM-8 | 14.6 | AC-2、AC-3、SC-11 |
 
 レガシ アプリケーションとそれらによって格納および処理されるデータに対し、最新のアクセス制御とセッション監視が使用されていることを確認します。 レガシ アプリケーションへのアクセスには VPN がよく使用されますが、多くの場合、基本的なアクセス制御と限られたセッション監視しか行われません。
 
@@ -247,11 +251,10 @@ Azure AD アプリケーション プロキシを使用すると、Azure AD 条�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
-

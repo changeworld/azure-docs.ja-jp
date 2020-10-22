@@ -1,14 +1,14 @@
 ---
 title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 765a3853bbd3ee21bfc2a4aca5d5adb03f413e30
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658766"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058099"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -68,7 +68,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 1. 管理グループの下に子管理グループやサブスクリプションがないこと。 サブスクリプションまたは管理グループを別の管理グループに移動するには、[階層内での管理グループおよびサブスクリプションの移動](#moving-management-groups-and-subscriptions)に関する記事を参照してください。
 
 1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、 **[IAM]** を選択します。 Azure ロールの詳細については、  
-   [RBAC によるアクセスおよびアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事を参照してください。
+   [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="delete-in-the-portal"></a>ポータルでの削除
 
@@ -211,9 +211,9 @@ az account management-group show --name 'Contoso' -e -r
 
 **例外**: ターゲットまたは既存の親管理グループがルート管理グループである場合、この管理の要件は必要ありません。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
 
-サブスクリプションの所有者ロールが現在の管理グループから継承される場合、移動先は制限されます。 サブスクリプションは、所有者ロールを持つ別の管理グループにのみ移動できます。 サブスクリプションの所有者ではなくなってしまうので、ご自分が共同作成者である管理グループには移動できません。 サブスクリプションの所有者ロールに (管理グループから継承しているのではなく) 直接割り当てられている場合、ご自分が共同作成者である任意の管理グループに移動できます。
+サブスクリプションの所有者ロールが現在の管理グループから継承される場合、移動先は制限されます。 サブスクリプションは、所有者ロールを持つ別の管理グループにのみ移動できます。 サブスクリプションの所有者ではなくなってしまうので、ご自分が共同作成者である管理グループにサブスクリプションを移動できません。 サブスクリプションの所有者ロールに直接割り当てられている場合、ご自分が共同作成者である任意の管理グループに移動できます。
 
-現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、 **[IAM]** を選択します。 Azure ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事を参照してください。
+現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、 **[IAM]** を選択します。 Azure ロールの詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
 ## <a name="move-subscriptions"></a>サブスクリプションの移動 
 
@@ -349,7 +349,7 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 管理グループについて詳しくは、以下をご覧ください。
 
-- [管理グループを作成して Azure リソースを整理する](./create.md)
+- [管理グループを作成して Azure リソースを整理する](./create-management-group-portal.md)
 - [管理グループを変更、削除、または管理する方法](./manage.md)
 - [Azure PowerShell Resources モジュールで管理グループを確認する](/powershell/module/az.resources#resources)
 - [REST API で管理グループを確認する](/rest/api/resources/managementgroups)

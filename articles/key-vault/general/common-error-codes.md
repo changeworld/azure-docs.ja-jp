@@ -1,0 +1,39 @@
+---
+title: Azure Key Vault の一般的なエラー コード | Microsoft Docs
+description: Azure Key Vault の一般的なエラー コード
+services: key-vault
+author: sebansal
+tags: azure-resource-manager
+ms.service: key-vault
+ms.subservice: general
+ms.topic: reference
+ms.date: 09/29/2020
+ms.author: mbaldwin
+ms.openlocfilehash: 25c79229a09db912903fba825f0d48f571880745
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876810"
+---
+# <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault の一般的なエラー コード
+
+Azure Key Vault に対して操作を実行した結果、返される可能性があるエラー コードを次の表に示します
+
+| エラー コード | ユーザー メッセージ |
+|--|--|
+| VaultAlreadyExists |  指定されたキー コンテナーは (論理的に削除された状態であるか、または別のサブスクリプションに) 既に存在します。 |
+| VaultNameNotValid |  コンテナー名は 24 文字の英数字で、アルファベットで始める必要があります |
+| AccessDenied |  この操作を行うためのアクセス許可がアクセス ポリシーにない可能性があります。 |
+| ForbiddenByFirewall |  クライアント アドレスは承認されておらず、呼び出し元は信頼できるサービスではありません。 |
+| ConflictError |  同じ項目に対して複数の操作を要求しています。  |
+| RegionNotSupported |  このリソースでは、指定された Azure リージョンはサポートされていません。 |
+| SkuNotSupported |  このリソースでは、指定された SKU の種類はサポートされていません。 |
+| ResourceNotFound |  指定した Azure リソースが見つかりません。 |
+| CertificateExpired |  証明書の有効期限と有効期間を確認してください。 |
+
+
+## <a name="next-steps"></a>次の手順
+
+- 「[Azure Key Vault 開発者ガイド](developers-guide.md)」を参照する
+- 「[Key Vault に対する認証](authentication.md)」の詳細を参照する

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053056"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575573"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する (プレビュー)
 
@@ -159,34 +159,34 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 **[Use XML file]\(XML ファイルを使用\)** を選択した場合は、エクスポートする特定のコンテナーと BLOB (ページおよびブロック) を指定できます。 XML の書式設定については、[サンプル XML ファイル テーブル](#sample-xml-file)を参照してください。 次の手順は、データのエクスポートに XML ファイルを使用する方法を示しています。
 
 1. **[Export type]\(エクスポートの種類\)** には、 **[Use XML file]\(XML ファイルを使用\)** を選択します。 これは、エクスポートする特定の BLOB と Azure ファイルを指定する XML ファイルです。 XML ファイルを追加するには、 **[Click here to select an XML file]\(ここをクリックして XML ファイルを選択\)** を選択します。
-     ![XML file (XML ファイル)](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![[Click here to select an XML file]\(ここをクリックして XML ファイルを選択\) が強調表示された [Select export option]\(エクスポート オプションの選択\) のスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. **[+ Container]\(+ コンテナー\)** を選択して、コンテナーを作成します。
-    ![XML file (XML ファイル)](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![[コンテナー] セクションのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. Azure portal の右側から表示される **[New Container]\(新しいコンテナー\)** タブで、コンテナーの名前を追加します。 名前は小文字にする必要があり、数字とダッシュ '-' を含めることができます。 次に、ドロップダウン リスト ボックスから **[Public access level]\(パブリック アクセス レベル\)** を選択します。 他のユーザーがデータにアクセスできないようにするため、 **[Private (non anonymous access)]\(プライベート (非匿名アクセス))\** を選択することをお勧めします。 コンテナーのアクセス レベルの詳細については、[コンテナーのアクセス許可](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)に関する記事を参照してください。
 
-   ![XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![[プライベート (匿名アクセスなし)] オプションが選択されていることを示す [新しいコンテナー] タブのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
 4. **［作成］** を選択します
 
-   ![XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![[作成] オプションが強調表示された [新しいコンテナー] タブのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
    コンテナーが正常に作成されると、次のメッセージが表示されます。
 
-   ![XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   !["ストレージ コンテナーが正常に作成されました" というメッセージのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
 
 5. 作成したコンテナーを選択し、ダブルクリックします。
 
-   ![XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![myprivatetestcontainer コンテナーが強調表示された [コンテナー] セクションのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
 6. コンテナーをダブルクリックすると、コンテナーのプロパティ ビューが表示されます。 ここで、エクスポートする BLOB や Azure ファイルの一覧が含まれる XML ファイルを添付 (または参照) します。 **[アップロード]** を選択します。
 
-   ![XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![[アップロード] オプションが強調表示された [BLOB のアップロード] ダイアログ ボックスのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
 7. これで、XML ファイルがコンテナーに追加されました。 この XML で指定した BLOB と Azure ファイルのみがエクスポートされます。
 
-   ![XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![[注文] ウィザードのスクリーンショット。[次へ: セキュリティ] オプションが強調表示されています。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>注文を追跡する
 

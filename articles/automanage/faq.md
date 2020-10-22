@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931678"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714959"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問
 
@@ -33,10 +33,13 @@ Azure Automanage を有効にするための前提条件は次のとおりです
 - ユーザーは正しいアクセス許可を持っている必要があります
 - スケール セット以外の VM のみ
 - VM が異なるサブスクリプションの Log Analytics ワークスペースにリンクしていてはなりません
+- 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
 
-**Automanage を有効にするために必要な RBAC アクセス許可は何ですか?**
+**Automanage を有効にするために必要な Azure RBAC アクセス許可は何ですか?**
 
-ユーザーは所有者ロールを持っている必要があります。 または、共同作成者ロールとユーザー アクセス管理者ロールの両方を持っているユーザーも、Automanage を適用できます。
+既存の Automanage アカウントを使用して VM で Automanage を有効にする場合は、VM が存在するリソース グループに対する共同作成者ロールが必要です。
+
+有効にするときに新しい Automanage アカウントを使用する場合は、サブスクリプションに対する所有者ロール、または共同作成者とユーザー アクセス管理者のロールが必要です。
 
 
 **どのリージョンがサポートされていますか?**
@@ -48,6 +51,9 @@ Azure Automanage を有効にするための前提条件は次のとおりです
 
 Automanage を使用すると、VM のライフサイクル全体を通して、[こちら](virtual-machines-best-practices.md)の一覧に記載されているサービスの登録、構成、監視が行われます。
 
+**Azure Automanage は Azure Arc 対応 VM で動作しますか?**
+
+現在、Automanage では、Arc 対応 VM はサポートされていません。
 
 **Azure Automanage の構成をカスタマイズできますか?**
 
@@ -82,6 +88,11 @@ Automanage は、選択した新規および既存の VM をクリックして�
 **Automanage アカウントとは何ですか?**
 
 Automanage アカウントは、自動化された操作が行われるセキュリティ コンテキストまたは ID を提供する MSI (管理サービス ID) です。
+
+
+**Automanage を有効にすると、選択した VM 以外のその他の VM にも影響がありますか?**
+
+VM が既存の Log Analytics ワークスペースにリンクされている場合は、そのワークスペースを再利用して次のソリューションを適用します。Change Tracking、インベントリ、Update Management。 そのワークスペースに接続されているすべての VM で、これらのソリューションが有効になります。
 
 
 **自分の VM の構成プロファイルを変更できますか?**

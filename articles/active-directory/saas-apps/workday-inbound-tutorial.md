@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974362"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541290"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -129,7 +129,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 1. 検索ボックスに「セキュリティ グループの作成」と入力し、 **[Create Security Group (セキュリティ グループの作成)]** をクリックします。
 
    > [!div class="mx-imgBorder"]
-   > ![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity グループ")
+   > ![検索ボックスに "create security group" (セキュリティ グループの作成) と入力し、検索結果に [Create Security Group - Task]\(セキュリティ グループの作成 -タスク\) と表示されたことを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. **[セキュリティ グループの作成]** タスクを完了します。 
 
    * Workday のセキュリティ グループには次の 2 種類があります。
@@ -154,7 +154,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 1. 検索ボックスに「**Domain Security Configuration**」と入力し、 **[Domain Security Configuration Report]\(ドメイン セキュリティ構成レポート)** リンクをクリックします。  
    >[!div class="mx-imgBorder"]
-   >![ドメインのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
+   >![検索ボックスに "domain security configuration" (ドメイン セキュリティ構成) と表示され、結果に "Domain Security Configuration - Report" (ドメイン セキュリティ構成 - レポート) と表示されたスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
 2. **[Domain]\(ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
    * *External Account Provisioning*
    * *Worker Data:Workers*
@@ -166,10 +166,10 @@ Workday から Active Directory へのユーザー プロビジョニングを�
    * *Workday アカウント*
    
      >[!div class="mx-imgBorder"]
-     >![ドメインのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_07.png "ドメイン セキュリティ ポリシー")  
+     >![[Domain]\(ドメイン\) テキスト ボックス内に "External Account" (外部アカウント) がある [Domain Security Configuration]\(ドメイン セキュリティ構成\) レポートを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_07.png "ドメイン セキュリティ ポリシー")  
 
      >[!div class="mx-imgBorder"]
-     >![ドメインのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_08.png "ドメイン セキュリティ ポリシー") 
+     >![ドメインの一覧が選択されている [Domain Security Configuration]\(ドメイン セキュリティ構成\) レポートを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_08.png "ドメイン セキュリティ ポリシー") 
 
      **[OK]** をクリックします。
 
@@ -179,7 +179,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 4. **[Edit Domain Security Policy Permissions]\(ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、 **[Integration Permissions]\(統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
    >[!div class="mx-imgBorder"]
-   >![アクセス許可の編集](./media/workday-inbound-tutorial/wd_isu_10.png "アクセス許可の編集")  
+   >![[Integration Permissions]\(統合アクセス許可\) セクションが強調表示されていることを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_10.png "アクセス許可の編集")  
 
 5. [+] 記号をクリックし、**Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
 
@@ -210,12 +210,12 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 1. 検索ボックスに「**Business Process Policy**」と入力し、 **[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集)** タスクのリンクをクリックします。  
 
    >[!div class="mx-imgBorder"]
-   >![ビジネス プロセスのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_12.png "ビジネス プロセスのセキュリティ ポリシー")  
+   >![検索ボックスに "Business Process Policy" と表示され、[Edit Business Process Security Policy - Task]\(ビジネス プロセス セキュリティ ポリシーの編集 - タスク\) が選択されたスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_12.png "ビジネス プロセスのセキュリティ ポリシー")  
 
 2. **[Business Process Type]\(ビジネス プロセスの種類)** テキストボックスで、 *[Contact]* を検索し、 **[Work Contact Change]** ビジネス プロセスを選択して **[OK]** をクリックします。
 
    >[!div class="mx-imgBorder"]
-   >![ビジネス プロセスのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_13.png "ビジネス プロセスのセキュリティ ポリシー")  
+   >![[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集\) ページと、[Business Process Type]\(ビジネス プロセスの種類\) メニューで [Work Contact Change] が選択されたことを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_13.png "ビジネス プロセスのセキュリティ ポリシー")  
 
 3. **[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集)** ページで、 **[Change Work Contact Information (Web Service)]\(勤務先の連絡先情報の変更 (Web サービス))** セクションまで下へスクロールします。
     
@@ -415,7 +415,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗する場合は、エージェントのセットアップで構成された Workday 資格情報と AD 資格情報が有効であることを再確認します。
 
      >[!div class="mx-imgBorder"]
-     >![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     >![資格情報を入力した [プロビジョニング] ページを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_1.png)
 
    * 資格情報が正常に保存されると、 **[マッピング]** セクションに既定のマッピング **[Synchronize Workday Workers to On Premises Active Directory]\(Workday の社員をオンプレミスの Active Directory に同期する\)** が表示されます
 
@@ -480,7 +480,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 1. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
    >[!div class="mx-imgBorder"]
-   >![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   >![[保存] アクションが選択された [属性マッピング] ページを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Workday と Active Directory との間の属性マッピングの例と、一般的に使用される式を次に示します
 
@@ -942,11 +942,11 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023*) が検出�
 
   "*イベント ID = 2*" のエクスポート操作のタイムスタンプに対応する HTTP POST レコードを探します。 このレコードには、プロビジョニング サービスからプロビジョニング エージェントに送信された属性値が含まれます。
 
-  [![SCIM の追加](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="'Provisioning Agent' ログで 'HTTP POST' レコードを示すスクリーンショット。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   上記のイベントの直後に、AD アカウント作成操作の応答をキャプチャする別のイベントがあるはずです。 このイベントから、AD で作成された新しい objectGuid が返され、プロビジョニング サービスの TargetAnchor 属性として設定されます。
 
-  [![SCIM の追加](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="'Provisioning Agent' ログで 'HTTP POST' レコードを示すスクリーンショット。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>マネージャーの更新操作のログの概要
 
@@ -1040,14 +1040,14 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 5. **[External]\(外部\)** を選択し、手順 2. でダウンロードした Human_Resources WSDL ファイルを選択します。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![Workday Studio で開いている "Human_Resources" ファイルを示すスクリーンショット。](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. **[Location]\(場所\)** フィールドを `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` に設定します。ただし、"IMPL-CC" の部分は実際のインスタンス タイプに、"TENANT" の部分は実際のテナント名に置き換えてください。
 
 7. **[Operation]\(操作\)** を **[Get_Workers]** に設定します。
 
 8.    [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name\@tenant の形式で指定し、 **[WS-Security UsernameToken]** オプションはオンのままにしてください。
-   ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+   ![[Username]\(ユーザー名\) と [Password]\(パスワード\) が入力され、[WS-Security Username Token] が選択された [Security]\(セキュリティ\) タブを示すスクリーンショット。](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. **[OK]** を選択します。
 
@@ -1086,7 +1086,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 13. Workday Studio のコマンド バーで **[File]\(ファイル\) > [Open File...]\(ファイルを開く...\)** を選択し、保存した XML ファイルを開きます。 この操作で、Workday Studio の XML エディターにファイルが開きます。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    !["Workday Studio X M L エディタ" で X M L ファイルが開いたスクリーンショット。](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. ファイル ツリーで、 **[/env:Envelope] > [env:Body] > [wd:Get_Workers_Response] > [wd:Response_Data] > [wd:Worker]** の順に移動して、該当するユーザーのデータを特定します。
 
@@ -1112,7 +1112,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 5. **[Edit attribute list for Workday]\(Workday の属性リストの編集\)** を選択します。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![[Edit attribute list for Workday]\(Workday の属性リストの編集\) アクションが強調表示されている [Workday to Azure A D User Provisioning - Provisioning]\(Workday から Azure AD へのユーザー プロビジョニング - プロビジョニング\) ページを示すスクリーンショット。](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. 属性リストの一番下にある入力フィールドまでスクロールします。
 

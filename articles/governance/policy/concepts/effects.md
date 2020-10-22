@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 09/15/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252006"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873950"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -98,7 +98,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="audit-evaluation"></a>Audit の評価
 
-Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非準拠としてマークされます。
+Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 新規および更新されたリソースの場合、Azure Policy によってアクティビティ ログに `Microsoft.Authorization/policies/audit/action` 操作が追加され、リソースは非準拠とマークされます。
 
 ### <a name="audit-properties"></a>Audit のプロパティ
 
@@ -145,7 +145,7 @@ AuditIfNotExists は、**if** 条件に一致するリソースに_関連する_
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists の評価
 
-AuditIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、監査が発生します。 Audit 効果と同じ方法で、Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加されます。 トリガーされた場合、**if** 条件を満たしているリソースは、非準拠としてマークされているリソースです。
+AuditIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、監査が発生します。 新規および更新されたリソースの場合、Azure Policy によってアクティビティ ログに `Microsoft.Authorization/policies/audit/action` 操作が追加され、リソースは非準拠とマークされます。 トリガーされた場合、**if** 条件を満たしているリソースは、非準拠としてマークされているリソースです。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists のプロパティ
 

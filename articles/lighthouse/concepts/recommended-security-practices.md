@@ -3,12 +3,12 @@ title: 推奨セキュリティ プラクティス
 description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163273"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399382"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -28,7 +28,7 @@ ms.locfileid: "88163273"
 管理しやすくするため、顧客のリソースを管理するうえで必要なロールごとに Azure Active Directory (Azure AD) グループを使用します。 そうすることで、各ユーザーに直接アクセス許可を割り当てずに、必要に応じて個々のユーザーをグループに追加したり、グループから削除したりすることができます。
 
 > [!IMPORTANT]
-> Azure AD グループのアクセス許可を追加するためには、 **[グループの種類]** を **[Office 365]** ではなく、 **[セキュリティ]** にする必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+> Azure AD グループのアクセス許可を追加するには、 **[グループの種類]** を **[セキュリティ]** に設定する必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 アクセス許可の体系を作成する際は、ユーザーがジョブの完了に必要なアクセス許可のみを持ち、不注意によるエラーの可能性が低くなるように、必ず最小限の特権の原則に従ってください。
 

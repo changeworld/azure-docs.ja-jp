@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/20/2020
+ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595582"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108815"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -37,7 +37,9 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Automation/automationAccounts | はい| いいえ | [Automation アカウント](./metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | いいえ | いいえ | |
 |Microsoft.Batch/batchAccounts | [はい] | いいえ | [Batch アカウント](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft.Cache/Redis | はい | いいえ | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/Redis | はい | はい | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.ClassicCompute/domainNames/slots/roles | いいえ | いいえ | [従来の Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
+|Microsoft.ClassicCompute/virtualMachines | いいえ | いいえ | [従来の仮想マシン](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | [はい] | いいえ | [ストレージ アカウント (クラシック)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
 |Microsoft.ClassicStorage/storageAccounts/blobServices | [はい] | いいえ | |
 |Microsoft.ClassicStorage/storageAccounts/fileServices | [はい] | いいえ | |
@@ -50,16 +52,16 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.ContainerRegistry/registries | × | いいえ | [コンテナー レジストリ](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft.ContainerService/managedClusters | はい | いいえ | [マネージド クラスター](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Microsoft.DataBoxEdge/dataBoxEdgeDevices | はい | ○ | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
-|Microsoft.DataFactory/datafactories| はい| いいえ | [データ ファクトリ V1](./metrics-supported.md#microsoftdatafactorydatafactories) |
-|Microsoft.DataFactory/factories |はい | × | [データ ファクトリ V2](./metrics-supported.md#microsoftdatafactoryfactories) |
-|Microsoft.DataShare/accounts | [はい] | × | |
+|Microsoft.DataFactory/datafactories| [はい]| × | [データ ファクトリ V1](./metrics-supported.md#microsoftdatafactorydatafactories) |
+|Microsoft.DataFactory/factories |はい | いいえ | [データ ファクトリ V2](./metrics-supported.md#microsoftdatafactoryfactories) |
+|Microsoft.DataShare/accounts | [はい] | いいえ | |
 |Microsoft.DBforMariaDB/servers | × | いいえ | [DB for MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
-|Microsoft.DBforMySQL/servers | × | いいえ |[DB for MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft.DBforMySQL/servers | いいえ | いいえ |[DB for MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
 |Microsoft.DBforPostgreSQL/flexibleServers | はい | いいえ | |
 |Microsoft.DBforPostgreSQL/servers | いいえ | いいえ | [DB for PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | いいえ | いいえ | [DB for PostgreSQL V2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
 |Microsoft.DBforPostgreSQL/singleservers | いいえ | いいえ | [DB for PostgreSQL (単一サーバー)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
-|Microsoft.Devices/IotHubs | [はい] | いいえ |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
+|Microsoft.Devices/IotHubs | はい | いいえ |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| はい | いいえ | [デバイス プロビジョニング サービス](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft.DigitalTwins/digitalTwinsInstances | はい | いいえ | |
 |Microsoft.DocumentDB/databaseAccounts | はい | いいえ | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
@@ -72,7 +74,7 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Insights/Components | はい | いいえ | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
 |Microsoft.KeyVault/vaults | はい |はい |[資格情報コンテナー](./metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Kusto/Clusters | はい |いいえ |[Data Explorer クラスター](./metrics-supported.md#microsoftkustoclusters)|
-|Microsoft.Logic/integrationServiceEnvironments | はい | × |[統合サービス環境](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
+|Microsoft.Logic/integrationServiceEnvironments | はい | いいえ |[統合サービス環境](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft.Logic/workflows | × | いいえ |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces | はい | いいえ | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft.Maps/accounts | はい | いいえ | [Maps アカウント](./metrics-supported.md#microsoftmapsaccounts) |
@@ -93,18 +95,18 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.OperationalInsights/workspaces| はい | いいえ | [Log Analytics ワークスペース](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Microsoft.Peering/peerings | はい | いいえ | [ピアリング](./metrics-supported.md#microsoftpeeringpeerings) |
 |Microsoft.Peering/peeringServices | はい | いいえ | [Peering Services](./metrics-supported.md#microsoftpeeringpeeringservices) |
-|Microsoft.PowerBIDedicated/capacities | × | いいえ | [Capacities](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
-|Microsoft.Relay/namespaces | はい | いいえ | [リレー](./metrics-supported.md#microsoftrelaynamespaces) |
-|Microsoft.Search/searchServices | いいえ | いいえ | [検索サービス](./metrics-supported.md#microsoftsearchsearchservices) |
-|Microsoft.ServiceBus/namespaces | はい | × | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
+|Microsoft.PowerBIDedicated/capacities | いいえ | いいえ | [Capacities](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft.Relay/namespaces | はい | × | [リレー](./metrics-supported.md#microsoftrelaynamespaces) |
+|Microsoft.Search/searchServices | × | いいえ | [検索サービス](./metrics-supported.md#microsoftsearchsearchservices) |
+|Microsoft.ServiceBus/namespaces | はい | いいえ | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
 |Microsoft.Sql/managedInstances | × | ○ | [SQL マネージド インスタンス](./metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft.Sql/servers/databases | いいえ | ○ | [SQL Database](./metrics-supported.md#microsoftsqlserversdatabases) |
-|Microsoft.Sql/servers/elasticPools | × | ○ | [SQL エラスティック プール](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft.Storage/storageAccounts |はい | いいえ | [ストレージ アカウント](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Sql/servers/elasticPools | いいえ | ○ | [SQL エラスティック プール](./metrics-supported.md#microsoftsqlserverselasticpools) |
+|Microsoft.Storage/storageAccounts |はい | × | [ストレージ アカウント](./metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | はい| いいえ | [Blob service](./metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StorageCache/caches | はい | × | |
-|Microsoft.StorageSync/storageSyncServices | はい | × | [ストレージ同期サービス](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
-|Microsoft.StreamAnalytics/streamingjobs | はい | × | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft.StorageSync/storageSyncServices | はい | いいえ | [ストレージ同期サービス](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
+|Microsoft.StreamAnalytics/streamingjobs | はい | いいえ | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
 |Microsoft.VMWareCloudSimple/virtualMachines | はい | いいえ | [CloudSimple 仮想マシン](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft.Web/hostingEnvironments/multiRolePools | はい | いいえ | [App Service Environment マルチロール プール](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | はい | いいえ | [App Service Environment ワーカー プール](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
@@ -117,7 +119,7 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 ## <a name="payload-schema"></a>ペイロード スキーマ
 
 > [!NOTE]
-> [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。このスキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードによって Webhook の統合を実現できることです。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
+> [共通アラート スキーマ](./alerts-common-schema.md)を使用することもできます。このスキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードによって Webhook の統合を実現できることです。 [共通アラート スキーマの定義については、こちらを参照してください。](./alerts-common-schema-definitions.md)
 
 
 適切に構成された[アクション グループ](./action-groups.md)が使用されている場合、POST 操作には、すべての新しいメトリック アラートに対する以下の JSON ペイロードとスキーマが含まれます。
@@ -178,4 +180,3 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 * 新しい[アラート エクスペリエンス](./alerts-overview.md)の詳細について学習します。
 * [Azure でのログ アラート](./alerts-unified-log.md)について学習します。
 * [Azure のアラート](./alerts-overview.md)について確認します。
-

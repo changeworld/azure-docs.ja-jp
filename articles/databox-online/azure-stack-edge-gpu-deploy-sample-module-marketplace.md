@@ -1,6 +1,6 @@
 ---
 title: Azure Marketplace から Microsoft Azure Stack Edge Pro デバイスに GPU モジュールをデプロイする | Microsoft Docs
-description: ローカル UI からコンピューティングを有効化し、Azure Stack Edge Pro デバイスでコンピューティングの準備をする方法について説明します。
+description: Azure Stack Edge Pro GPU デバイスに GPU 対応 IoT モジュールをデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899951"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91760061"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>GPU 対応 IoT モジュールを Azure Marketplace から Microsoft Azure Stack Edge Pro GPU デバイスにデプロイする
 
@@ -55,7 +55,7 @@ ms.locfileid: "90899951"
 
 4.  **[続行]** を選択して、プロバイダーの使用条件とプライバシー ポリシーを確認します。 
 
-    ![サンプル モジュールの入手](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
+    ![サンプル モジュールの入手 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
 5. Microsoft Azure Stack Edge Pro デバイスのデプロイに使用したサブスクリプションを選択します。
 
@@ -89,7 +89,7 @@ ms.locfileid: "90899951"
 
 13. モジュールが Azure portal の IoT Hub にデプロイされていることを確認します。 デバイスを選択し、  **[モジュールの設定]**   を選択します。モジュールは  **[IoT Edge モジュール]**   セクションに表示されます。
 
-    ![作成の選択](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
+    ![作成の選択 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
 ## <a name="monitor-the-module"></a>モジュールの監視  
 

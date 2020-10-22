@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594261"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570381"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -49,11 +49,11 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 
 | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 これは、[プライベート クラスター](private-clusters.md)では必要ありません|
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 これは、[プライベート クラスター](private-clusters.md)では必要ありません |
 | **`*:123`** または **`ntp.ubuntu.com:123`** (Azure Firewall ネットワーク規則を使用している場合)  | UDP      | 123     | Linux ノードでのネットワーク タイム プロトコル (NTP) の時刻同期に必要です。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | カスタム DNS サーバーを使用している場合は、クラスター ノードからそれらにアクセスできることを確認する必要があります。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
+| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。 これは、[プライベート クラスター](private-clusters.md)では必要ありません  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure Global に必要な FQDN とアプリケーションの規則 
 
@@ -132,7 +132,7 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 
 | 送信先 FQDN                                                               | Port          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
+| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
 
 これらの FQDN をブロックして許可しない場合、[ノード イメージのアップグレード](node-image-upgrade.md)または[クラスターのアップグレード](upgrade-cluster.md)を行うと、ノードは OS の更新プログラムのみを受け取ります。
 
@@ -205,10 +205,7 @@ Azure Dev Spaces が有効になっている AKS クラスターの場合、次�
 | `storage.googleapis.com` | **`HTTPS:443`** | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
 
 
-### <a name="azure-policy-preview"></a>Azure Policy (プレビュー)
-
-> [!CAUTION]
-> 以下の一部の機能はプレビュー段階です。  この記事の推奨事項は、機能がパブリック プレビューおよび将来のリリース段階に移行するときに、変更される可能性があります。
+### <a name="azure-policy"></a>Azure Policy
 
 #### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則 
 
@@ -219,7 +216,6 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。 (現在 AKS でプレビュー段階) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 (現在 AKS でプレビュー段階) |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Firewall を使用してエグレス トラフィックを制限する
 
@@ -766,7 +762,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 AKS 投票アプリが表示されます。 この例では、ファイアウォールのパブリック IP は `52.253.228.132` でした。
 
 
-![aks-vote](media/limit-egress-traffic/aks-vote.png)
+![[Cats]、[Dogs]、[Reset] のボタンと合計値が表示されている A K S 投票アプリを示すスクリーンショット。](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする

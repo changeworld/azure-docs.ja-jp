@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889340"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076251"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する
 
@@ -113,7 +113,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 前�
 1. **Create** をクリックしてください。
 
 > [!NOTE]
-> Time Series Insights エクスプローラーへの[アクセスを他のユーザーに許可する](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)ことができます。
+> Time Series Insights エクスプローラーへの[アクセスを他のユーザーに許可する](../time-series-insights/concepts-access-policies.md#grant-data-access)ことができます。
 
 ## <a name="start-a-simulation"></a>シミュレーションの開始
 
@@ -137,7 +137,7 @@ Time Series Insights エクスプローラーは、テレメトリを視覚化�
 
 1. 左側の条件パネルで、 **[メジャー]** として **[温度]** を選択し、 **[分割基準]** の値として **[iothub-connection-device-id]** を選択します。
 
-    ![Time Series Insights エクスプローラーでのクエリ](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![[メジャー] と [分割基準] の値が強調表示されている Time Series Insights の [条件] パネルを示すスクリーンショット。](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
 1. グラフを右クリックし、 **[イベントの探索]** を選択します。
 

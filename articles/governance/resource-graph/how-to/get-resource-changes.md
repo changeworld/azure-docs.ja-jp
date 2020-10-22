@@ -1,14 +1,14 @@
 ---
 title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056569"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057571"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -279,7 +279,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**beforeSnapshot** と **afterSnapshot** はそれぞれ、スナップショットが取られた時刻と、その時点のプロパティを提供ます。 変更は、これらのスナップショット間のある時点で発生しました。 上記の例を見ると、変更されたプロパティは **supportsHttpsTrafficOnly** であったことが分かります。
+**beforeSnapshot** と **afterSnapshot** はそれぞれ、スナップショットが取られた時刻と、その時点のプロパティを提供ます。 変更は、これらのスナップショット間のある時点で発生しました。 前の例を見ると、変更されたプロパティは **supportsHttpsTrafficOnly** であったことが分かります。
 
 結果を比較するには、**resourceChanges** の **changes** プロパティを使用するか、**resourceChangeDetails** で各スナップショットの**コンテンツ**部分を評価して相違点を確認します。 スナップショットを比較すると、**timestamp**は、予期されているにもかかわらず、常に違いとして示されています。
 

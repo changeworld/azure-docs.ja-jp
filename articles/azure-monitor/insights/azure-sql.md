@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.date: 02/21/2020
+ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318030"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397081"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -90,11 +90,11 @@ Azure Monitor に一部のメトリックまたはログがストリーム配信
 
 データベースの Azure SQL Analytics タイルが選択されると、監視ダッシュボードが表示されます。
 
-![Azure SQL Analytics の概要](./media/azure-sql/azure-sql-sol-overview.png)
+![監視ダッシュボードを示すスクリーンショット。](./media/azure-sql/azure-sql-sol-overview.png)
 
 タイルのいずれかを選択すると、特定のパースペクティブでドリルダウン レポートが開きます。 パースペクティブを選択すると、ドリル ダウン レポートが開きます。
 
-![Azure SQL Analytics のタイムアウト](./media/azure-sql/azure-sql-sol-metrics.png)
+![特定の視点にドリルダウンするレポートのスクリーンショット。](./media/azure-sql/azure-sql-sol-metrics.png)
 
 このビューの各パースペクティブは、サブスクリプション、サーバー、エラスティック プール、およびデータベース レベルの概要を提供します。 さらに、各パースペクティブは、右側にパースペクティブ特定のレポートを示します。 一覧からサブスクリプション、サーバー、プール、またはデータベースを選択するとドリル ダウンが続行されます。
 
@@ -230,6 +230,9 @@ AzureMetrics
 > - 出力は、定義された time_range 内で storage_threshold より上のデータベース リソースの一覧です。
 
 #### <a name="alert-on-intelligent-insights"></a>Intelligent Insights に対するアラート
+
+> [!IMPORTANT]
+> データベースのパフォーマンスに問題が良好のとき、Intelligent Insights が生成されていない場合、このクエリは失敗し、"rootCauseAnalysis_s" という名前のスカラー式を解決できませんというエラー メッセージが表示されます。 この動作は、データベースに Intelligent Insights が存在しないあらゆる場合で想定されます。
 
 ```
 let alert_run_interval = 1h;

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448569"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する
 
@@ -101,7 +101,7 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 
 サービス名が正しく指定されたレコードと、指定されていないレコードがあります。   **[検索結果]** は、 **[WMI Performance Adapter]** の名前の一部が選択されなかったことを示しています。  **[概要]** では、**Windows Modules Installer** ではなく **Modules Installer** を検出したレコードが 1 つあることが示されています。  
 
-![[検索結果]](media/custom-fields/search-results-01.png)
+![[検索結果] ウィンドウでサービス名の一部が強調表示され、[概要] で正しくないサービス名が 1 つ強調表示されているスクリーンショット。](media/custom-fields/search-results-01.png)
 
 まず **WMI Performance Adapter** レコードから始めます。  そのレコードの編集アイコンをクリックし、 **[この選択内容の変更]** をクリックします。  
 
@@ -113,7 +113,7 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 
 **WMI Performance Adapter** のエントリが修正されたことを確認し、Log Analytics にもその情報が使用され、**Windows Module Installer** のレコードが修正されたことを確認できます。
 
-![[検索結果]](media/custom-fields/search-results-02.png)
+![[検索結果] ウィンドウで完全なサービス名が強調表示され、[概要] で正しいサービス名が強調表示されているスクリーンショット。](media/custom-fields/search-results-02.png)
 
 これで、**Service_CF** が作成されているものの、どのレコードにも追加されていないことを検証するクエリを実行できるようになりました。 これは、カスタム フィールドが既存のレコードに対して動作しないことが原因です。そのため、新しいレコードが収集されるのを待つ必要があります。
 

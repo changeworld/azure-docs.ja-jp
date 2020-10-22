@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: ba079e76ea806bb12bff16eb636d0fa21b0e152b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461733"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448524"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復旧
 
@@ -86,11 +86,11 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。 選択したスコープにあるワークスペースの一覧が表示されます。
 3. 左上のメニューにある **[回復]** をクリックして、論理的な削除状態にあり回復可能なワークスペースを含むページを開きます。
 
-   ![ワークスペースを回復させる](media/delete-workspace/recover-menu.png)
+   ![Azure portal の、メニュー バーの [回復] が強調表示されている Log Analytics ワークスペース画面のスクリーンショット。](media/delete-workspace/recover-menu.png)
 
 4. ワークスペースを選択し、 **[回復]** をクリックしてそのワークスペースを回復させます。
 
-   ![ワークスペースを回復させる](media/delete-workspace/recover-workspace.png)
+   ![Azure portal の、ワークスペースが強調表示され、[回復] ボタンが選択されている [削除された Log Analytics ワークスペースの回復] ダイアログのスクリーンショット。](media/delete-workspace/recover-workspace.png)
 
 
 ### <a name="powershell"></a>PowerShell

@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377320"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172835"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -20,6 +20,12 @@ ms.locfileid: "89377320"
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>作成時にバックアップの対象として有効にできるのは、どの VM イメージですか。
 
 VM を作成するときに、[サポートされているオペレーティング システム](backup-support-matrix-iaas.md#supported-backup-actions)を実行している VM に対してバックアップを有効にできます。
+
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>最初のバックアップの完了に長い時間がかかるのはなぜですか?
+
+初回バックアップは常に完全バックアップとなります。所要時間は、データのサイズと、いつバックアップが処理されるかによって異なります。 <br>
+バックアップのパフォーマンスを向上させる方法については、[バックアップのベストプラクティス](./backup-azure-vms-introduction.md#best-practices)、[バックアップに関する考慮事項](./backup-azure-vms-introduction.md#backup-and-restore-considerations)、および「[バックアップ パフォーマンス](./backup-azure-vms-introduction.md#backup-performance)」を参照してください<br>
+増分バックアップの合計バックアップ時間は 24 時間未満ですが、初回バックアップではそうはならないことがあります。
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。
 
@@ -73,7 +79,7 @@ Azure Backup サービスによって作成されたリソース グループを
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
 
-はい、Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。
+はい、Azure Backup では、[Standard SSD マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)がサポートされています。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
 
@@ -103,7 +109,7 @@ Azure Backup では、Azure 仮想マシン バックアップ ソリューシ�
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>バックアップ中にテナントの変更が発生した場合、マネージド ID は保持されますか。
 
-[テナントの変更](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection)が発生した場合、バックアップを再び機能させるには、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を無効にしてから再度有効にする必要があります。
+[テナントの変更](/azure/devops/organizations/accounts/change-azure-ad-connection)が発生した場合、バックアップを再び機能させるには、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を無効にしてから再度有効にする必要があります。
 
 ## <a name="restore"></a>復元
 
@@ -155,6 +161,10 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 はい。VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、こちらの[記事](./backup-azure-arm-restore-vms.md#post-restore-steps)を参照してください
 
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>復元操作の完了に長い時間がかかるのはなぜですか?
+
+合計復元時間は、ストレージ アカウントの 1 秒あたりの入出力操作数 (IOPS) とスループットによって変わります。 合計復元時間は、ターゲットのストレージ アカウントに他のアプリケーションの読み取りや書き込み操作が読み込まれる場合、影響を受けることがあります。 復元操作を改善するには、他のアプリケーション データが読み込まれないストレージ アカウントを選択します。
+
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 
 ### <a name="what-happens-if-i-modify-a-backup-policy"></a>バックアップ ポリシーを変更した場合は、どのようになりますか。
@@ -189,7 +199,7 @@ VM を新しいリソース グループに移動した後は、その VM を同
 
 古い VM の復元ポイントは、必要な場合は復元のために使用できるようになります。 このバックアップ データが不要な場合は、データの削除によって古い VM の保護を停止できます。
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>同じバックアップ ポリシーに関連付けることができる VM 数の上限はありますか。
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>同じバックアップ ポリシーに関連付けることができる VM 数の上限はありますか。
 
 はい。ポータルから同じバックアップ ポリシーに関連付けることができる VM は最大 100 個です。 VM が 100 個を上回る場合、同じスケジュールまたは異なるスケジュールで複数のバックアップ ポリシーを作成することをお勧めします。
 
@@ -197,6 +207,6 @@ VM を新しいリソース グループに移動した後は、その VM を同
 
 現在、保有期間の設定は、VM に割り当てられているバックアップ ポリシーに基づいて、バックアップ項目 (VM) レベルで表示できます。
 
-バックアップの保有期間の設定を表示する方法の 1 つとして、Azure portal で VM のバックアップ項目の[ダッシュボード](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard)にアクセスする方法があります。 そのバックアップ ポリシーへのリンクを選択すると、その VM に関連付けられている日次、週次、月次、年次のすべての保有ポイントの保有期間を表示するのに役立ちます。
+バックアップの保有期間の設定を表示する方法の 1 つとして、Azure portal で VM のバックアップ項目の[ダッシュボード](./backup-azure-manage-vms.md#view-vms-on-the-dashboard)にアクセスする方法があります。 そのバックアップ ポリシーへのリンクを選択すると、その VM に関連付けられている日次、週次、月次、年次のすべての保有ポイントの保有期間を表示するのに役立ちます。
 
-また、[バックアップ エクスプローラー](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer)を使用して、すべての VM の保有期間の設定を 1 つのウィンドウに表示することもできます。 任意の Recovery Services コンテナーからバックアップ エクスプローラーに移動し、 **[バックアップ項目]** タブに移動して [詳細ビュー] を選択して、各 VM の詳細な保有期間の情報を確認します。
+また、[バックアップ エクスプローラー](./monitor-azure-backup-with-backup-explorer.md)を使用して、すべての VM の保有期間の設定を 1 つのウィンドウに表示することもできます。 任意の Recovery Services コンテナーからバックアップ エクスプローラーに移動し、 **[バックアップ項目]** タブに移動して [詳細ビュー] を選択して、各 VM の詳細な保有期間の情報を確認します。

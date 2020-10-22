@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033525"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149093"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -38,7 +38,7 @@ ms.locfileid: "90033525"
 
 プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT ハブ用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)を使用したり、[組み込みのエンドポイントにデータを送信しないようにルーティングを構成](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)したりすることで、IoT ハブのパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
 
-![IoT Hub のパブリック エンドポイント](./media/virtual-network-support/virtual-network-ingress.png)
+![IoT Hub 仮想ネットワークのエグレス](./media/virtual-network-support/virtual-network-ingress.png)
 
 続行する前に、確実に次の前提条件が満たされているようにしてください。
 
@@ -92,7 +92,7 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 
 1. **[状態]** の下で **[オン]** を選択し、 **[保存]** をクリックします。
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub のマネージド ID を有効にする方法を示すスクリーンショット":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub 用にプライベート エンドポイントを追加する場所を示すスクリーンショット":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT ハブに割り当てる
 
@@ -224,7 +224,7 @@ IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをル�
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>ファイルのアップロードのためのストレージ アカウントへのエグレス接続
 
-IoT Hub のファイルのアップロード機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、デバイスと IoT Hub の両方をストレージ アカウントに接続する必要があります。 ストレージ アカウントにファイアウォールの制限が適用されている場合、デバイスでは、サポートされているストレージ アカウントのいずれかのメカニズム ([プライベート エンドポイント](../private-link/create-private-endpoint-storage-portal.md)、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)、または[ファイアウォールのダイレクト構成](../storage/common/storage-network-security.md)を含む) を使用して接続する必要があります。 同様に、ストレージ アカウントにファイアウォールの制限が適用されている場合は、信頼された Microsoft サービスの例外を使用して、ストレージ リソースにアクセスするように IoT Hub を構成する必要があります。 このため、IoT Hub にはマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
+IoT Hub のファイルのアップロード機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、デバイスと IoT Hub の両方をストレージ アカウントに接続する必要があります。 ストレージ アカウントにファイアウォールの制限が適用されている場合、デバイスでは、サポートされているストレージ アカウントのいずれかのメカニズム ([プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)、または[ファイアウォールのダイレクト構成](../storage/common/storage-network-security.md)を含む) を使用して接続する必要があります。 同様に、ストレージ アカウントにファイアウォールの制限が適用されている場合は、信頼された Microsoft サービスの例外を使用して、ストレージ リソースにアクセスするように IoT Hub を構成する必要があります。 このため、IoT Hub にはマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -236,7 +236,7 @@ IoT Hub のファイルのアップロード機能を使用すると、デバイ
 
 4. IoT Hub のリソース ページで、 **[ファイルのアップロード]** タブに移動します。
 
-5. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、 **[ファイル通知の設定]** 、 **[SAS TTL]** 、 **[既定の TTL]** 、 **[最大配信回数]** を必要に応じて構成します。 ストレージ エンドポイントに対する **[認証の種類]** として、 **[ID ベース]** を選択します。 **[作成]** ボタンをクリックします。
+5. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、 **[ファイル通知の設定]** 、 **[SAS TTL]** 、 **[既定の TTL]** 、 **[最大配信回数]** を必要に応じて構成します。 ストレージ エンドポイントに対する **[認証の種類]** として、 **[ID ベース]** を選択します。 **[作成]** ボタンをクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、**すべてのネットワーク**からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
 
 これで、ファイルのアップロード用のストレージ エンドポイントが、ハブのシステム割り当て ID を使用するように設定され、ファイアウォールの制限に関係なく、ストレージ リソースにアクセスするためのアクセス許可が付与されました。
 
@@ -252,7 +252,7 @@ IoT Hub では、顧客指定のストレージ BLOB 間で、デバイスの情
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
-これで、[インポートとエクスポート ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) (一括インポートとエクスポート機能を使用する方法については、こちらを参照してください) に Azure IoT REST API を使用できるようになりました。 要求本文に `storageAuthenticationType="identityBased"` を指定し、ストレージ アカウントの入力および出力 URL として `inputBlobContainerUri="https://..."` と `outputBlobContainerUri="https://..."` をそれぞれ使用する必要があります。
+これで、[インポートとエクスポート ジョブの作成](/rest/api/iothub/service/jobs/getimportexportjobs) (一括インポートとエクスポート機能を使用する方法については、こちらを参照してください) に Azure IoT REST API を使用できるようになりました。 要求本文に `storageAuthenticationType="identityBased"` を指定し、ストレージ アカウントの入力および出力 URL として `inputBlobContainerUri="https://..."` と `outputBlobContainerUri="https://..."` をそれぞれ使用する必要があります。
 
 Azure IoT Hub SDK では、サービス クライアントのレジストリ マネージャーでもこの機能がサポートされます。 次のコード スニペットでは、C# SDK を使用してインポート ジョブまたはエクスポート ジョブを開始する方法を示しています。
 
@@ -295,4 +295,4 @@ IoT Hub の機能の詳細について、下記のリンク使用してくださ
 
 * [メッセージ ルーティング](./iot-hub-devguide-messages-d2c.md)
 * [ファイルのアップロード](./iot-hub-devguide-file-upload.md)
-* [デバイスの一括デインポートとエクスポート](./iot-hub-bulk-identity-mgmt.md) 
+* [デバイスの一括デインポートとエクスポート](./iot-hub-bulk-identity-mgmt.md)

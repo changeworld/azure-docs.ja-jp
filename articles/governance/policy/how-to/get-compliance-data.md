@@ -1,14 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895427"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873627"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -22,7 +22,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 コンプライアンスの報告方法を説明する前に、コンプライアンス情報がいつ更新されるかと、評価サイクルをトリガーする頻度とイベントについて説明します。
 
 > [!WARNING]
-> コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」をご覧ください)。
+> コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切な Azure ロールベースのアクセス制御 (Azure RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における Azure RBAC アクセス許可](../overview.md#azure-rbac-permissions-in-azure-policy)」をご覧ください)。
 
 ## <a name="evaluation-triggers"></a>評価のトリガー
 
@@ -46,7 +46,37 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 ### <a name="on-demand-evaluation-scan"></a>オンデマンドの評価スキャン
 
-サブスクリプションまたはリソース グループの評価スキャンは、Azure CLI、Azure PowerShell、または REST API への呼び出しを使用して開始できます。 このスキャンは非同期プロセスです。
+サブスクリプションまたはリソース グループの評価スキャンは、Azure CLI、Azure PowerShell、または REST API への呼び出しを使用して、または [Azure Policy Compliance Scan GitHub アクション](https://github.com/marketplace/actions/azure-policy-compliance-scan)を使用して開始できます。
+このスキャンは非同期プロセスです。
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>オンデマンド評価スキャン - GitHub アクション
+
+[Azure Policy Compliance Scan アクション](https://github.com/marketplace/actions/azure-policy-compliance-scan)を使用して、1 つまたは複数のリソース、リソース グループ、またはサブスクリプションに対して [GitHub ワークフロー](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows)からオンデマンドの評価スキャンをトリガーし、リソースのコンプライアンス状態に基づいてワークフローをゲートします。 また、スケジュールされた時刻に実行するようにワークフローを構成することもできます。これにより、最新のコンプライアンス状態を都合のよいタイミングで取得できます。 必要に応じて、この GitHub アクションでは、スキャンされたリソースのコンプライアンス状態に関するレポートを生成し、詳細な分析やアーカイブを行うことができます。
+
+次の例では、サブスクリプションに対してコンプライアンス スキャンを実行しています。 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+詳細とワークフローのサンプルについては、[Azure Policy Compliance Scan リポジトリの GitHub アクション](https://github.com/Azure/policy-compliance-scan)を参照してください。
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>オンデマンド評価スキャン - Azure CLI
 
@@ -133,12 +163,13 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 | リソースの状態 | 結果 | ポリシーの評価 | コンプライアンスの状態 |
 | --- | --- | --- | --- |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 準拠していない |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 対応 |
-| 新規 | Audit、AuditIfNotExist\* | True | 準拠していない |
-| 新規 | Audit、AuditIfNotExist\* | False | 対応 |
+| 新機能か更新された機能か | Audit、Modify、AuditIfNotExist | True | 非準拠 |
+| 新機能か更新された機能か | Audit、Modify、AuditIfNotExist | False | 対応 |
+| Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | True | 非準拠 |
+| Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | False | 対応 |
 
-\* Modify、Append、DeployIfNotExist、および AuditIfNotExist の各効果では、IF ステートメントが TRUE である必要があります。 また、非準拠となるには、既存の条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
+> [!NOTE]
+> DeployIfNotExist 効果と AuditIfNotExist 効果が非準拠となるためには、IF ステートメントが TRUE で、存在条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
 
 たとえば、ContosoRG というリソース グループがあり、このリソース グループの一部のストレージ アカウント (赤で強調表示されているアカウント) がパブリック ネットワークに公開されているとします。
 
@@ -148,7 +179,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 この例では、セキュリティ リスクに注意する必要があります。 これで、作成したポリシー割り当てが、ContosoRG リソース グループ内のすべての包含されて適用除外でないストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を**非準拠**に変更します。
 
-:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G リソース グループ内のストレージ アカウント コンプライアンスの図。" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
    Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。 ストレージ アカウント 1 と 3 は、それらの下に緑色のチェックマークが表示されるようになりましたが、ストレージ アカウント 2、4、および 5 は、それらの下に赤い警告記号が表示されるようになりました。
 :::image-end:::
 
@@ -159,12 +190,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 - **未開始**:ポリシーまたはリソースの評価サイクルが開始されていません。
 - **未登録**:Azure Policy リソース プロバイダーが登録されていないか、ログインしたアカウントにコンプライアンス データを読み取るアクセス許可がありません。
 
-Azure Policy では、定義内の **type** と **name** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**、**非準拠**、**適用除外**のいずれかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべての包含されて適用除外でないリソースが適用可能と見なされ、評価されます。
+Azure Policy では、定義内の **type**、**name**、または **kind** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**、**非準拠**、**適用除外**のいずれかの状態になります。 **type**、**name**、または **kind** のいずれかが定義の唯一のプロパティである場合は、すべての包含されて適用除外でないリソースが適用可能と見なされ、評価されます。
 
 コンプライアンス対応率は、**準拠**および**適用除外**のリソースを "_総リソース数_" で割って算出されます。 "_総リソース数_" は、**準拠**、**非準拠**、**適用除外**、および**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**または**適用除外**の個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。
 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[コンプライアンス] ページのポリシー コンプライアンスの詳細のスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
 > [!NOTE]
 > Azure Policy の規制コンプライアンスはプレビュー機能です。 SDK とポータルのページからのコンプライアンス プロパティは、有効化されているイニシアチブごとに異なります。 詳細については、[規制コンプライアンス](../concepts/regulatory-compliance.md)に関する記事をご覧ください
@@ -173,27 +204,27 @@ Azure Policy では、定義内の **type** と **name** フィールドを使�
 
 Azure portal には、環境のコンプライアンス状態を視覚化して理解するためのグラフィカルなエクスペリエンスが表示されます。 **[ポリシー]** ページの **[概要]** オプションでは、ポリシーとイニシアティブの両方のコンプライアンスに関して、利用可能なスコープの詳細が表示されます。 コンプライアンス状態および割り当てごとの数と共に、過去 7 日間のコンプライアンスを示すグラフが含まれます。 **[コンプライアンス]** ページには、この同じ情報の大部分 (グラフを除く) が含まれていますが、フィルター処理と並べ替えのオプションが追加されています。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="フィルター処理のオプションと詳細が表示されている [コンプライアンス] ページのスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
 ポリシーまたはイニシアティブは異なるスコープに割り当てることができるため、表には、各割り当てのスコープと割り当てられた定義の種類が含まれます。 各割り当ての準拠していないリソースおよび準拠していないポリシーの数も提供されます。 表のポリシーまたはイニシアティブを選択すると、その特定の割り当てのコンプライアンスに関する詳しい情報が表示されます。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="数とリソース コンプライアンスの詳細が表示されている [ポリシー準拠状況の詳細] ページのスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
 **[リソース コンプライアンス]** タブのリソース リストには、現在の割り当てに対する既存のリソースの評価状態が表示されます。 タブでは既定で **[非対応]** に設定されますが、これをフィルター処理することができます。
-リソースの作成要求によってトリガーされるイベント (追加、監査、拒否、デプロイ) は、 **[イベント]** タブに表示されます。
+リソースの作成要求によってトリガーされるイベント (追加、監査、拒否、デプロイ、変更) は、 **[イベント]** タブに表示されます。
 
 > [!NOTE]
 > AKS エンジン ポリシーの場合、表示されるリソースはリソース グループです。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="[ポリシー準拠状況の詳細] ページの [イベント] タブのスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
-[リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes) リソースについては、 **[リソースのコンプライアンス]** タブで、リソースを選択するか、行を右クリックして **[ポリシー準拠状況の詳細]** を選択すると、コンポーネントのコンプライアンスの詳細が表示されます。 このページには、このリソースに割り当てられているポリシー、イベント、コンポーネント イベント、変更履歴を表示するためのタブも用意されています。
+<a name="component-compliance"></a> [リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes) リソースについては、 **[リソースのコンプライアンス]** タブで、リソースを選択するか、行を右クリックして **[ポリシー準拠状況の詳細]** を選択すると、コンポーネントのコンプライアンスの詳細が表示されます。 このページには、このリソースに割り当てられているポリシー、イベント、コンポーネント イベント、変更履歴を表示するためのタブも用意されています。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[Component Compliance]\(コンポーネントのコンプライアンス\) タブと、リソース プロバイダー モードの割り当てに対するコンプライアンスの詳細のスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
 リソースのコンプライアンス ページに戻って、詳細情報を収集するイベントの行を右クリックし、 **[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Policy アクティビティおよび評価のアクティビティ ログのスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
 ### <a name="understand-non-compliance"></a>コンプライアンス違反の把握
 
@@ -605,12 +636,17 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-例:特定の日付以降に発生した、準拠していない仮想ネットワーク リソースに関連するイベントを取得する。
+例:特定の日付以降に発生した、準拠していない仮想ネットワーク リソースに関連するイベントを取得し、CSV オブジェクトに変換し、ファイルにエクスポートする。
 
 ```azurepowershell-interactive
-PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+$policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2020-09-19'
+$policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
+```
 
-Timestamp                  : 5/19/2018 5:18:53 AM
+`$policyEvents` オブジェクトの出力は次のようになります。
+
+```output
+Timestamp                  : 9/19/2020 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Network/virtualNetworks/RG-Tags-vnet
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -642,9 +678,9 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../azure-monitor/log-query/log-query-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../azure-monitor/log-query/log-query-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、新規および更新されたリソースの評価から非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="AzureActivity テーブルに Azure Policy アクションを表示している Azure Monitor ログのスクリーンショット。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

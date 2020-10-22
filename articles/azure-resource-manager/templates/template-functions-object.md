@@ -2,23 +2,25 @@
 title: テンプレート関数 - オブジェクト
 description: Azure Resource Manager テンプレートでオブジェクトを操作するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: 632e92bb798a5e8469079ef4693b7f321617f88c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676796"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977886"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM テンプレート用のオブジェクト関数
 
 Resource Manager には、Azure Resource Manager (ARM) テンプレートでオブジェクトを操作する関数が複数用意されています。
 
 * [contains](#contains)
+* [createObject](#createobject)
 * [empty](#empty)
 * [intersection](#intersection)
 * [json](#json)
 * [length](#length)
+* [null](#null)
 * [union](#union)
 
 ## <a name="contains"></a>contains
@@ -29,7 +31,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -102,6 +104,58 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 | arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
+## <a name="createobject"></a>createObject
+
+`createObject(key1, value1, key2, value2, ...)`
+
+キーと値からオブジェクトを作成します。
+
+### <a name="parameters"></a>パラメーター
+
+| パラメーター | 必須 | 型 | [説明] |
+|:--- |:--- |:--- |:--- |
+| key1 |いいえ |string |キーの名前です。 |
+| value1 |いいえ |int、boolean、string、object、または array |キーの値。 |
+| 追加のキー |いいえ |string |キーの追加の名前。 |
+| 追加の値 |いいえ |int、boolean、string、object、または array |キーの追加の値。 |
+
+この関数では、偶数個のパラメーターを指定する必要があります。 各キーには、一致する値が必要です。
+
+### <a name="return-value"></a>戻り値
+
+各キーと値のペアを持つオブジェクト。
+
+### <a name="example"></a>例
+
+次の例では、さまざまな種類の値からオブジェクトが作成されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "newObject": {
+            "type": "object",
+            "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
+        }
+    }
+}
+```
+
+既定値を使用した場合の前の例の出力は、次の値を持っている `newObject` という名前のオブジェクトです。
+
+```json
+{
+  "intProp": 1,
+  "stringProp": "abc",
+  "boolProp": true,
+  "arrayProp": ["a", "b", "c"],
+  "objectProp": {"key1": "value1"}
+}
+```
+
 ## <a name="empty"></a>empty
 
 `empty(itemToTest)`
@@ -110,7 +164,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -175,7 +229,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
@@ -237,40 +291,58 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 `json(arg1)`
 
-JSON オブジェクトを返します。
+有効な JSON 文字列を JSON データ型に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |string |JSON に変換する値。 |
+| arg1 |はい |string |JSON に変換する値。 文字列は、適切に書式設定された JSON 文字列である必要があります。 |
 
 ### <a name="return-value"></a>戻り値
 
-**null** が指定された場合は、指定された文字列の JSON オブジェクト、または空のオブジェクト。
+指定された文字列の JSON データ型。**null** が指定された場合は空のオブジェクト。
 
 ### <a name="remarks"></a>解説
 
 JSON オブジェクトにパラメーター値または変数を含める必要がある場合、 [concat](template-functions-string.md#concat)関数を使用し、関数に渡す文字列を作成します。
 
+[null()](#null) を使用して null 値を取得することもできます。
+
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)では、json 関数を使用する方法を示します。 オブジェクトを表す文字列を渡すか、値が不要な場合は **null** を使用することができます。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)では、json 関数を使用する方法を示します。 空のオブジェクトに **null** を渡すことができることに注意してください。
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "jsonObject1": {
+        "jsonEmptyObject": {
             "type": "string",
             "defaultValue": "null"
         },
-        "jsonObject2": {
+        "jsonObject": {
             "type": "string",
             "defaultValue": "{\"a\": \"b\"}"
         },
-        "testValue": {
+        "jsonString": {
+            "type": "string",
+            "defaultValue": "\"test\""
+        },
+        "jsonBoolean": {
+            "type": "string",
+            "defaultValue": "true"
+        },
+        "jsonInt": {
+            "type": "string",
+            "defaultValue": "3"
+        },
+        "jsonArray": {
+            "type": "string",
+            "defaultValue": "[[1,2,3 ]"
+        },
+        "concatValue": {
             "type": "string",
             "defaultValue": "demo value"
         }
@@ -278,17 +350,33 @@ JSON オブジェクトにパラメーター値または変数を含める必要
     "resources": [
     ],
     "outputs": {
-        "jsonOutput1": {
+        "emptyObjectOutput": {
             "type": "bool",
-            "value": "[empty(json(parameters('jsonObject1')))]"
+            "value": "[empty(json(parameters('jsonEmptyObject')))]"
         },
-        "jsonOutput2": {
+        "objectOutput": {
             "type": "object",
-            "value": "[json(parameters('jsonObject2'))]"
+            "value": "[json(parameters('jsonObject'))]"
         },
-        "paramOutput": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[json(parameters('jsonString'))]"
+        },
+        "booleanOutput": {
+            "type": "bool",
+            "value": "[json(parameters('jsonBoolean'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[json(parameters('jsonInt'))]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[json(parameters('jsonArray'))]"
+        },
+        "concatObjectOutput": {
             "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
+            "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
         }
     }
 }
@@ -298,9 +386,13 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 | 名前 | Type | 値 |
 | ---- | ---- | ----- |
-| jsonOutput1 | Boolean | True |
-| jsonOutput2 | Object | {"a": "b"} |
-| paramOutput | Object | {「a」:「値のデモ」}
+| emptyObjectOutput | Boolean | True |
+| objectOutput | Object | {"a": "b"} |
+| stringOutput | String | テスト |
+| booleanOutput | Boolean | True |
+| intOutput | Integer | 3 |
+| arrayOutput | Array | [ 1, 2, 3 ] |
+| concatObjectOutput | Object | { "a": "demo value" } |
 
 ## <a name="length"></a>length
 
@@ -310,7 +402,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |array、string、または object |要素の数を取得するために使用する配列、文字の数を取得するために使用する文字列、またはルート レベル プロパティの数を取得するために使用するオブジェクト。 |
 
@@ -378,6 +470,44 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 | stringLength | int | 13 |
 | objectLength | int | 4 |
 
+## <a name="null"></a>null
+
+`null()`
+
+null を返します。
+
+### <a name="parameters"></a>パラメーター
+
+null 関数では、パラメーターは受け入れられません。
+
+### <a name="return-value"></a>戻り値
+
+常に null である値。
+
+### <a name="example"></a>例
+
+次の例では、null 関数を使用しています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(null())]"
+        },
+    }
+}
+```
+
+前の例からの出力は次のようになります。
+
+| 名前 | Type | 値 |
+| ---- | ---- | ----- |
+| emptyOutput | Bool | True |
+
 ## <a name="union"></a>union
 
 `union(arg1, arg2, arg3, ...)`
@@ -386,7 +516,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |

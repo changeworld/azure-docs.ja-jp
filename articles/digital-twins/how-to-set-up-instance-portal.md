@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280028"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047405"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -32,11 +32,13 @@ ms.locfileid: "89280028"
 
 Azure portal に入ったら、Azure サービスのホーム ページ メニューで _[リソースの作成]_ を選択して開始します。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
 
-検索ボックスで "*Azure Digital Twins*" を検索し、結果から **[Azure Digital Twins (Preview)]\(Azure Digital Twins (プレビュー)\)** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
+検索ボックスで &quot;*Azure Digital Twins*" を検索し、結果から **[Azure Digital Twins (Preview)]\(Azure Digital Twins (プレビュー)\)** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure Digital Twins サービスのページから [作成] を選択する":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 以下の *[リソースの作成]* ページで、次に示した値を入力します。
 * **サブスクリプション**:使用している Azure サブスクリプション
@@ -44,7 +46,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 * **[場所]** :デプロイする Azure Digital Twins 対応のリージョン。 リージョンのサポートに関する詳細については、"[*リージョン別の利用可能な Azure 製品 (Azure Digital Twins)* ](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)" に関するページを参照してください。
 * **[リソース名]** : Azure Digital Twins インスタンスの名前。 新しいインスタンスの名前は、サブスクリプションのリージョン内で一意である必要があります (つまり、サブスクリプションのリージョン内に、選択した名前を既に使用している別の Azure Digital Twins インスタンスが存在する場合は、異なる名前を選択するよう求められます)。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="説明に示された値を入力して Azure Digital Twins リソースを作成する":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 終わったら、 _[確認と作成]_ を選択します。 これにより、[概要] ページへ遷移します。ここでは、入力したインスタンスの詳細を確認して、 _[作成]_ を押します。 
 
@@ -52,7 +56,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 *[作成]* を押した後は、ポータル アイコン バーの Azure 通知にインスタンスのデプロイの状態が表示されます。 この通知はデプロイが成功した時点で示され、作成したインスタンスを表示するための _[リソースに移動]_ ボタンを選択できるようになります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="デプロイの成功の表示と [リソースに移動] ボタンの強調表示がある Azure 通知のビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 また、デプロイが失敗した場合は、その理由が通知に示されます。 エラー メッセージの通知内容を確認して、インスタンスの作成を再試行します。
 
@@ -61,7 +67,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 インスタンスの *[概要]* ページで、 *[名前]* 、 *[リソース グループ]* 、および *[ホスト名]* をメモします。 これらはすべて、Azure Digital Twins インスタンスの操作を続行する際に必要になる可能性がある重要な値です。 他のユーザーがそのインスタンスに対してプログラミングする場合は、これらの値を彼らと共有する必要があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="インスタンスの [概要] ページの重要な値の強調表示":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 これで、Azure Digital Twins インスタンスの準備が完了しました。 次に、適切な Azure ユーザーにそれを管理するためのアクセス許可を付与します。
 
@@ -71,7 +79,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 最初に、Azure portal 上の Azure Digital Twins インスタンスのページを開きます。 インスタンスのメニューから *[アクセス制御 (IAM)]* を選択します。 *[ロールの割り当てを追加する]* にある *[追加]* ボタンを選択します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="[アクセス制御 (IAM)] ページからロールの割り当てを追加することを選ぶ":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 次の *[ロールの割り当てを追加する]* ページで、値を入力します (Azure サブスクリプションにおいて[十分なアクセス許可](#prerequisites-permission-requirements)を持つユーザーが完了する必要があります)。
 * **ロール**: ドロップダウン メニューから *[Azure Digital Twins 所有者 (プレビュー)]* を選択します
@@ -80,7 +90,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="[ロールの割り当てを追加する] ダイアログに表示されたフィールドへの入力":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -92,7 +104,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 *[アクセス制御 (IAM)] > [ロールの割り当て]* 下で設定したロールの割り当てを確認できます。 *[Azure Digital Twins 所有者 (プレビュー)]* のロールの一覧に、ユーザーが表示されます。 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal での Azure Digital Twins インスタンスのロールの割り当てのビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 これで、Azure Digital Twins インスタンスの準備が完了し、これを管理するためのアクセス許可が割り当てられました。 次に、それにアクセスするためのクライアント アプリのアクセス許可を設定します。
 
@@ -102,7 +116,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 まず、Azure portal 上で [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に移動します (このリンクを使用するか、ポータルの検索バーを使って検索できます)。 サービス メニューから *[アプリの登録]* 、 *[+ 新しい登録]* の順に選択します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="[アプリの登録] メニュー オプションと [+ 新しい登録] ボタンが強調表示されている Azure portal 上の Azure AD サービス ページのビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 以下の *[アプリケーションの登録]* ページで、要求される次の値を入力します。
 * **Name**:登録に関連付ける Azure AD アプリケーションの表示名
@@ -111,7 +127,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 完了したら、 *[登録]* ボタンを押します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="説明に示された値が入力されている [アプリケーションの登録] ページのビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 登録の設定が完了したら、ポータルによって詳細ページにリダイレクトされます。
 
@@ -121,18 +139,22 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 アプリ登録のポータル ページで、メニューから *[API のアクセス許可]* を選択します。 以下のアクセス許可ページで、 *[+ アクセス許可の追加]* ボタンを押します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="[API のアクセス許可] メニュー オプションと [+ アクセス許可の追加] ボタンが強調表示されている Azure portal 上のアプリの登録のビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
 
-以下の *[API アクセス許可の要求]* ページで、 *[所属する組織で使用している API]* タブに切り替えて、"*azure digital twins*" を探します。 検索結果から "*Azure Digital Twins*" を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを続行します。
+検索ボックスで &quot;*Azure Digital Twins*" を探します。 検索結果から _**Azure Digital Twins**_ を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを進めます。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Azure Digital Twins が表示された [API アクセス許可の要求] ページの検索結果のビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
 
->[!NOTE]
-> Azure Digital Twins の以前の (2020 年 7 月より前の) パブリック プレビューで作成されたサービス インスタンスがサブスクリプション内にまだある場合は、代わりに *Azure Smart Spaces Service* を検索する必要があります。 これは同じ API セットの古い名前であり、操作手順に変更はありません。
+検索ボックスで &quot;*Azure Digital Twins*" が上記のスクリーンショットと同じであることに注意してください)。この手順の他に、操作手順に変更はありません。
+> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 次に、これらの API に対して付与するアクセス許可を選択します。 **[Read (1)]\(読み取り (1)\)** アクセス許可を展開して、 *[Read.Write]\(読み取り.書き込み\)* と示されたチェック ボックスをオンにし、このアプリ登録に読み取りおよび書き込みのアクセス許可を付与します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Azure Digital Twins API の [Read.Write]\(読み取り.書き込み\) アクセス許可を選択した [API アクセス許可の要求] ページのビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 完了したら、 *[アクセス許可の追加]* を押します。
 
@@ -140,21 +162,25 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 *[API のアクセス許可]* ページに戻り、読み取り/書き込みのアクセス許可が反映された Azure Digital Twins のエントリがあることを確認します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure Digital Twins に対する [Read/Write Access]\(読み取り/書き込みアクセス\) が表示された、Azure AD アプリ登録の API のアクセス許可のポータル ビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 また、アプリ登録の *manifest.json* 内で Azure Digital Twins への接続を検証できます。これは、API のアクセス許可を追加したときに、Azure Digital Twins 情報によって自動的に更新されました。
 
 これを行うには、メニューから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 値は、次のスクリーンショットの値と一致している必要があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD アプリ登録のためのマニフェストのポータル ビュー。requiredResourceAccess 下で入れ子になっている resourceAppId 値 の 0b07f429-9f4b-4714-9392-cc5e8e80c8b0、および resourceAccess > id 値の 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+
+検索ボックスで &quot;*Azure Digital Twins*":::
 
 ### <a name="collect-important-values"></a>重要な値を収集する
 
 次に、メニュー バーから *[概要]* を選択して、アプリ登録の詳細を表示します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="アプリ登録の重要な値のポータル ビュー":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
 
-**実際の**ページに表示される、"*アプリケーション (クライアント) ID*" と "*ディレクトリ (テナント) ID*" をメモしておきます。 これらの値は、後で [Azure Digital Twins API に対してクライアント アプリを認証する](how-to-authenticate-client.md)ために必要になります。 自分がこのようなアプリケーションのコードの作成を担当しない場合は、これらの値をその担当者に共有する必要があります。
+検索ボックスで &quot;*Azure Digital Twins*" をメモしておきます。 これらの値は、後で [Azure Digital Twins API に対してクライアント アプリを認証する](how-to-authenticate-client.md)ために必要になります。 自分がこのようなアプリケーションのコードの作成を担当しない場合は、これらの値をその担当者に共有する必要があります。
 
 ### <a name="other-possible-steps-for-your-organization"></a>組織でのその他の考えられる手順
 
@@ -163,7 +189,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
 
 または、クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法を確認します。

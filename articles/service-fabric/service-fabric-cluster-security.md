@@ -4,12 +4,12 @@ description: Azure Service Fabric クラスターのセキュリティ シナリ
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261069"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946197"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 
@@ -134,7 +134,7 @@ Azure でホストされているパブリック ネットワークにデプロ�
 
 ### <a name="client-authentication-certificates-optional"></a>クライアント認証証明書 (省略可能)
 
-管理者またはユーザーのクライアント操作用に、任意の数の証明書を追加で指定できます。 相互認証が必要な場合、クライアントはこの証明書を使用できます。 通常、クライアント証明書はサードパーティの CA から発行されません。 代わりに、通常は、現在のユーザーの所在地の個人用ストアには、ルート機関が配置したクライアント証明書が含まれています。 証明書には、**クライアント認証**の**目的**の値が必要です。  
+管理者またはユーザーのクライアント操作用に、任意の数の証明書を追加で指定できます。 相互認証が必要な場合、クライアントはこれらの証明書を使用できます。 通常、クライアント証明書はサードパーティの CA から発行されません。 代わりに、通常は、現在のユーザーの所在地の個人用ストアには、ルート機関が配置したクライアント証明書が含まれています。 証明書には、**クライアント認証**の**目的**の値が必要です。  
 
 既定では、クラスター証明書には管理者クライアント特権があります。 これらの追加のクライアント証明書は、クラスターにインストールしてはいけませんが、クラスター構成で許可されるものとして指定されます。  ただし、クラスターに接続して操作を行うには、クライアント マシンにクライアント証明書をインストールする必要があります。
 

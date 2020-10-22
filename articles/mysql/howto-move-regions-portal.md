@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c9751a303afc947fd682558236751c69f107dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567572"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542514"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーを別のリージョンに移動する
 
@@ -38,11 +38,11 @@ Azure portal を使用してターゲット リージョンにリージョン間
 1. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 1. **[レプリカの追加]** を選択します。
 1. レプリカ サーバーの名前を入力します。
-1. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
+1. レプリカ サーバーの場所を選択します。 既定の場所は、ソース サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
 1. **[OK]** を選択して、レプリカの作成を確認します。 レプリカの作成中に、ソース サーバーからレプリカにデータがコピーされます。 ソース サーバーのサイズに比例して、作成時間が数分になる場合があります。
 
 >[!NOTE]
-> 作成されたレプリカでは、マスター サーバーの VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+> 作成されたレプリカでは、ソース サーバーの VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
 
 ## <a name="move"></a>詳細ビュー
 

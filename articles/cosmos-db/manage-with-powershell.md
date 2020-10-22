@@ -1,22 +1,22 @@
 ---
-title: PowerShell を使用して Azure Cosmos DB を作成および管理する
-description: Azure PowerShell を使用して Azure Cosmos アカウント、データベース、コンテナー、およびスループットを管理します。
+title: PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
+description: PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/13/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486478"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840882"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
 
-以下のガイドでは、PowerShell を使用して、アカウント、データベース、コンテナー、スループットなど、Azure Cosmos DB リソースの管理をスクリプト処理および自動化する方法について説明します。
+以下のガイドでは、PowerShell を使用して、Cosmos アカウント、データベース、コンテナー、スループットなど、Azure Cosmos DB Core (SQL) API リソースの管理をスクリプト処理および自動化する方法について説明します。
 
 > [!NOTE]
 > この記事のサンプルでは、[Az.CosmosDB](/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 最新の変更については、[Az.CosmosDB](/powershell/module/az.cosmosdb) API リファレンス ページを参照してください。
@@ -28,6 +28,9 @@ ms.locfileid: "87486478"
 ## <a name="getting-started"></a>作業の開始
 
 [Azure PowerShell のインストールおよび構成方法][powershell-install-configure]に関する記事の指示に従ってインストールし、PowerShell で Azure アカウントにサインインします。
+
+> [!IMPORTANT]
+> Azure Cosmos DB リソースの名前を変更することはできません。これは、Azure Resource Manager がリソース URI と連携する方法に違反するためです。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos アカウント
 
@@ -52,16 +55,18 @@ ms.locfileid: "87486478"
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
-$locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
 $apiKind = "Sql"
 $consistencyLevel = "BoundedStaleness"
 $maxStalenessInterval = 300
 $maxStalenessPrefix = 100000
+$locations = @()
+$locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
 
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations `
+    -LocationObject $locations `
     -Name $accountName `
     -ApiKind $apiKind `
     -EnableAutomaticFailover:$true `
@@ -71,7 +76,7 @@ New-AzCosmosDBAccount `
 ```
 
 * `$resourceGroupName` Cosmos アカウントのデプロイ先となる Azure リソース グループ。 あらかじめ存在している必要があります。
-* `$locations` データベース アカウントのリージョン。書き込みリージョンを先頭として、フェールオーバー優先度順に指定します。
+* `$locations` データベース アカウントのリージョン。`FailoverPriority 0` を持つリージョンが書き込みリージョンです。
 * `$accountName` Azure Cosmos アカウントの名前。 小文字で一意の名前にする必要があります。使用できるのは、英数字と "-" 文字のみで、長さは 3 から 31 文字としてください。
 * `$apiKind` 作成する Cosmos アカウントの種類。 詳細については、[Cosmos DB の API](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis) に関するページを参照してください。
 * `$consistencyPolicy`、`$maxStalenessInterval`、`$maxStalenessPrefix` Azure Cosmos アカウントの既定の一貫性レベルと設定。 詳細については、[Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事をご覧ください。
@@ -107,7 +112,7 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 * 既定の一貫性ポリシーを変更する
 * IP 範囲フィルターを変更する
 * 仮想ネットワーク構成を変更する
-* マルチマスターを有効にする
+* 複数リージョンの書き込みを有効にする
 
 > [!NOTE]
 > Azure Cosmos アカウントに対し、リージョン (`locations`) の追加 (または削除) と他のプロパティの変更を同時に行うことはできません。 リージョンの変更は、アカウントに対する他のあらゆる変更とは別の操作として実行する必要があります。
@@ -117,33 +122,33 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 ```azurepowershell-interactive
 # Create account with two regions
 $resourceGroupName = "myResourceGroup"
-$locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
 $apiKind = "Sql"
 $consistencyLevel = "Session"
 $enableAutomaticFailover = $true
+$locations = @()
+$locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
 
 # Create the Cosmos DB account
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations `
+    -LocationObject $locations `
     -Name $accountName `
     -ApiKind $apiKind `
     -EnableAutomaticFailover:$enableAutomaticFailover `
     -DefaultConsistencyLevel $consistencyLevel
 
 # Add a region to the account
-$locations2 = @("West US 2", "East US 2", "South Central US")
-$locationObjects2 = @()
-$i = 0
-ForEach ($location in $locations2) {
-    $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ }
-}
+$locationObject2 = @()
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "South Central US" -FailoverPriority 2 -IsZoneRedundant 0
 
 Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
-    -LocationObject $locationObjects2
+    -LocationObject $locationObject2
 
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
@@ -151,23 +156,21 @@ Write-Host "When region was added, press any key to continue."
 $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | OUT-NULL
 $HOST.UI.RawUI.Flushinputbuffer()
 
-# Remove a region from the account
-$locations3 = @("West US 2", "South Central US")
-$locationObjects3 = @()
-$i = 0
-ForEach ($location in $locations3) {
-    $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ }
-}
+# Remove West US region from the account
+$locationObject3 = @()
+$locationObject3 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locationObject3 += New-AzCosmosDBLocationObject -LocationName "South Central US" -FailoverPriority 1 -IsZoneRedundant 0
 
 Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
-    -LocationObject $locationObjects3
+    -LocationObject $locationObject3
 
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a>Azure Cosmos アカウントの複数の書き込みリージョンを有効にする
+
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a>Azure Cosmos アカウントの複数の書き込みリージョンを有効にする
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -176,13 +179,13 @@ $enableAutomaticFailover = $false
 $enableMultiMaster = $true
 
 # First disable automatic failover - cannot have both automatic
-# failover and multi-master on an account
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableAutomaticFailover:$enableAutomaticFailover
 
-# Now enable multi-master
+# Now enable multi-region writes
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -220,7 +223,7 @@ Update-AzCosmosDBAccount `
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a> アカウント キーの一覧表示
 
-Azure Cosmos アカウントを作成すると、アカウントにアクセスする際の認証に使用できる 2 つのマスター アクセス キーが生成されます。 また、読み取り専用操作を認証するための読み取り専用キーも生成されます。
+Azure Cosmos アカウントを作成すると、Azure Cosmos アカウントにアクセスする際の認証に使用できる 2 つのプライマリ アクセス キーが生成されます。 また、読み取り専用操作を認証するための読み取り専用キーも生成されます。
 アクセス キーが 2 つ提供されるため、Azure Cosmos アカウントを中断することなく、キーの再生成とローテーションを 1 つずつ行うことができます。
 Cosmos DB アカウントには、2 つの読み取り/書き込みキー (プライマリおよびセカンダリ) と、2 つの読み取り専用キー (プライマリおよびセカンダリ) が存在します。
 
@@ -274,8 +277,8 @@ $accountName = "mycosmosaccount"
 $enableAutomaticFailover = $true
 $enableMultiMaster = $false
 
-# First disable multi-master - cannot have both automatic
-# failover and multi-master on an account
+# First disable multi-region writes - cannot have both automatic
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -350,6 +353,7 @@ Get-AzResourceLock `
 * [Azure Cosmos DB データベースを作成する](#create-db)
 * [共有スループットで Azure Cosmos DB データベースを作成する](#create-db-ru)
 * [Azure Cosmos DB データベースのスループットを取得する](#get-db-ru)
+* [データベースのスループットを自動スケーリングに移行する](#migrate-db-ru)
 * [アカウント内のすべての Azure Cosmos DB データベースを一覧表示する](#list-db)
 * [単一の Azure Cosmos DB データベースを取得する](#get-db)
 * [Azure Cosmos DB データベースを削除する](#delete-db)
@@ -395,6 +399,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>データベースのスループットを自動スケーリングに移行する
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>アカウント内のすべての Azure Cosmos DB データベースを取得する
@@ -478,6 +496,7 @@ Remove-AzResourceLock `
 * [自動スケーリングを使用して Azure Cosmos DB コンテナーを作成する](#create-container-autoscale)
 * [大きいパーティション キーで Azure Cosmos DB コンテナーを作成する](#create-container-big-pk)
 * [Azure Cosmos DB コンテナーのスループットを取得する](#get-container-ru)
+* [コンテナーのスループットを自動スケーリングに移行する](#migrate-container-ru)
 * [カスタム インデックス作成を使用して Azure Cosmos DB コンテナーを作成する](#create-container-custom-index)
 * [インデックス作成を無効にして Azure Cosmos DB コンテナーを作成する](#create-container-no-index)
 * [一意のキーと TTL を使用して Azure Cosmos DB コンテナーを作成する](#create-container-unique-key-ttl)
@@ -563,6 +582,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>コンテナーのスループットを自動スケーリングに移行する
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>カスタム インデックス ポリシーを使用して Azure Cosmos DB コンテナーを作成する

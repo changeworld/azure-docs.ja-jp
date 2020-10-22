@@ -1,23 +1,23 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Direct を構成する: CLI'
-description: 世界中のピアリングの場所で Microsoft のグローバル ネットワークに直接接続するため、Azure CLI を使用して Azure ExpressRoute Direct を構成する方法について説明します。
+description: Microsoft のグローバル ネットワークに直接接続するために、Azure CLI を使用して Azure ExpressRoute Direct を構成する方法について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395963"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569829"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
-Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所を通じて Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
@@ -209,6 +209,14 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    }  
    ```
 
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>認可状 (LOA) を生成する
+
+最近作成された ExpressRoute Direct リソース名、リソース グループ名、および LOA を作成する顧客名を入力し、ドキュメントを格納するファイルの場所を (必要に応じて) 定義します。 ファイル パスが参照されていない場合、ドキュメントは現在のディレクトリにダウンロードされます。
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
+
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>リンクの AdminState を変更する
 
 このプロセスは、レイヤー 1 のテストを実行するために使用します。 各交差接続が適切にパッチされ、各ルーター内のプライマリおよびセカンダリのポートに入力されていることを確認してください。
@@ -285,9 +293,10 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
 ExpressRoute Direct では、ここで説明するシナリオをサポートするためだけの回線帯域幅を追加で使用できます。 帯域幅は、40 Gbps および 100 Gbps です。
 
-**SkuTier** には Local、Standard、または Premium を使用できます。
+**SkuTier** は Local、Standard、または Premium にできます。
 
-ExpressRoute Direct では無制限がサポートされていないため、**SkuFamily** には MeteredData のみを使用できます。
+**SkuFamily** は MeteredData のみにすることができます。 ExpressRoute Direct では、Unlimited はサポートされていません。
+
 ExpressRoute Direct リソース上に回線を作成します。
 
   ```azurecli

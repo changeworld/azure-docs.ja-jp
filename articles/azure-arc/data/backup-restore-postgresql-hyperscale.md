@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931550"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071440"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループでのバックアップと復元
 
@@ -52,7 +52,7 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの完全バッ�
     }
 ...
 ```
-"backups" というセクションが表示される場合は、サーバー グループはバックアップ ストレージ クラスを使用するように構成されていることを意味するので、バックアップを作成して復元する準備ができています。 "backups" セクションが表示されない場合は、サーバー グループをいったん削除し、再作成してバックアップ ストレージ クラスを構成する必要があります。 現時点では、サーバー グループを作成した後で、バックアップ ストレージ クラスを構成することはまだできません。
+そのコマンドの出力の "backups" セクションにストレージ クラスの名前が示されている場合、バックアップ ストレージ クラスを使用するようにサーバー グループが構成されているということであり、自動的にバックアップを作成し、復元する準備ができています。 "backups" セクションが表示されない場合は、サーバー グループをいったん削除し、再作成してバックアップ ストレージ クラスを構成する必要があります。 現時点では、サーバー グループを作成した後で、バックアップ ストレージ クラスを構成することはまだできません。
 
 >[!IMPORTANT]
 >サーバー グループによってバックアップ ストレージ クラスが使用されるように既に構成されている場合は、次の手順をスキップし、「手動で完全バックアップを実行する」に直接進みます。
@@ -82,19 +82,22 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>手動で完全バックアップを実行する
 
+
 次に、手動で完全バックアップを実行します。
+
+> [!CAUTION]
+> **Azure Kubernetes Service (AKS) のみをご利用の場合:** Azure Kubernetes Service (AKS) でホストされているサーバー グループのバックアップを作成できない問題については認識しております。 その修正には既に取り組んでおります。 今後のリリースまたは更新で更新プログラムが配布されるまでは、バックアップを作成する前にサーバー グループのポッドを削除する必要があります。 サーバー グループのポッドごとに (**kubectl get pods -n \<namespace name>** を実行することでポッドをリストアップします)、**kubectl delete pod \<server group pod name> -n \<namespace name>** を実行し、ポッドを削除します。 サーバー グループに含まれていないポッドは削除しないでください。 ポッドを削除しても、データが危険にさらされることはありません。 すべてのポッドがオンラインに戻り、STATUS=RUNNING になるまで待ち、それからバックアップを作成してください。 ポッドの状態は、上記の kubectl get pods コマンドの出力で確認できます。
+
 
 サーバー グループのデータ フォルダーとログ フォルダー全体の完全バックアップを行うには、次のコマンドを実行します。
 
 ```console
-azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
+azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
 ```
 各値の説明:
 - __name__ は、バックアップの名前を示します
 - __server-name__ は、サーバー グループを示します
 - __no wait__ は、バックアップの完了を待たずに、ユーザーがこのコマンド ライン ウィンドウを継続して使用できるようにすることを示します
-
->**注**:復元に使用できるバックアップの一覧を表示するコマンドでは、バックアップが実行された日時はまだ表示されません。 そのため、日付と時刻の情報を含む名前を (--name パラメーターを使用して) バックアップに付けることをお勧めします。
 
 このコマンドを使用すると、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを構成するすべてのノードで、分散完全バックアップが調整されます。 つまり、コーディネーター ノードとワーカー ノードのすべてのデータがバックアップされます。
 
@@ -134,10 +137,12 @@ azdata arc postgres backup list --server-name postgres01
 
 次のような出力が返されます。
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+タイムスタンプには、バックアップが作成された時点が UTC で示されます。
 
 ## <a name="restore-a-backup"></a>バックアップを復元する
 

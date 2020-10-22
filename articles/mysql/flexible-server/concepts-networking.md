@@ -1,17 +1,17 @@
 ---
 title: ネットワークの概要 - Azure Database for MySQL フレキシブル サーバー
 description: Azure Database for MySQL のフレキシブル サーバー デプロイ オプションの接続およびネットワークのオプションについて説明します
-author: rachel-msft
-ms.author: raagyema
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 48265856e5e745e05f6625766f9cd0c9b15c90a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930846"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708664"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL の接続およびネットワークの概念 - フレキシブル サーバー (プレビュー)
 
@@ -62,6 +62,8 @@ Azure Database for MySQL フレキシブル サーバーのネットワーク �
 
    MySQL フレキシブル サーバーは、MySQL フレキシブル サーバーでの使用のためにのみ**委任された**サブネット内に存在する必要があります。 この委任は、Azure Database for MySQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。 その委任プロパティを Microsoft.DBforMySQL/flexibleServers として割り当てて、サブネットを委任します。
 
+* **ネットワーク セキュリティ グループ (NSG)** ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。 詳細については、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)に関するページを参照してください。
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>サポートされない仮想ネットワークのシナリオ
 * パブリック エンドポイント (またはパブリック IP あるいは DNS) - 仮想ネットワークにデプロイされたフレキシブル サーバーに、パブリック エンドポイントを設けることはできません
@@ -83,7 +85,7 @@ Azure Database for MySQL フレキシブル サーバーのネットワーク �
 IP アドレスへのアクセス許可を付与することは、ファイアウォール規則と呼ばれます。 許可されていない IP アドレスから接続が試みられた場合、発信元のクライアントにエラーが表示されます。
 
 
-### <a name="allowing-all-azure-ip-addresses"></a>すべての Azure IP アドレスを許可する
+### <a name="allowing-all-azure-ip-addresses"></a>Azure のすべての IP アドレスの許可
 ご使用の Azure サービスに対して固定の発信 IP アドレスが使用できない場合は、すべての Azure データセンターの IP アドレスからの接続を有効にすることを検討できます。
 
 > [!IMPORTANT]
@@ -108,11 +110,9 @@ Microsoft Azure Database for MySQL サーバー サービスに対するアク�
 ## <a name="hostname"></a>Hostname (ホスト名)
 選択するネットワーク オプションに関係なく、フレキシブル サーバーに接続する場合は常に、ホスト名として完全修飾ドメイン名 (FQDN) を使用することをお勧めします。 サーバーの IP アドレスが静的のままであることは保証されていません。 FQDN を使用すると、接続文字列を変更せずに済みます。 
 
-IP が変更されるシナリオの 1 つは、ゾーン冗長 HA を使用していて、プライマリとセカンダリの間でフェールオーバーが発生する場合です。 FQDN を使用すると、同じ接続文字列を使用して接続をシームレスに再試行できます。
-
 例
-* 推奨される `hostname = servername.mysql.database.azure.com`
-* `hostname = 10.0.0.4` (プライベート アドレス) や `hostname = 40.2.45.67` (パブリック IP) の使用を避ける
+* 推奨 `hostname = servername.mysql.database.azure.com`
+* 可能な場合は `hostname = 10.0.0.4` (プライベート アドレス) や `hostname = 40.2.45.67` (パブリック IP) の使用を避ける
 
 
 

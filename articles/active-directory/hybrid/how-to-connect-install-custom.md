@@ -10,43 +10,49 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662347"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578286"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
-Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
+Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。  たとえば、複数のフォレストがある場合、またはオプションの機能を構成する場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
 
 Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。 また、「 [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)」で説明されているとおりに必要なアカウントが利用できることを確認してください。
 
-カスタマイズした設定が対象のトポロジに適さない場合は (DirSync をアップグレードする場合など)、関連ドキュメントでその他のシナリオを確認してください。
-
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム設定を使用したインストール
+
 ### <a name="express-settings"></a>簡単設定
-このページで **[カスタマイズ]** をクリックして、カスタム設定を使用したインストールを開始します。
+このページで **[カスタマイズ]** をクリックして、カスタム設定を使用したインストールを開始します。  このドキュメントの残りの部分では、カスタム インストールのさまざまなウィザード画面について説明します。  次のリンクを使用すると、特定のウィザード画面の情報にすばやく移動できます。
+
+- [必須コンポーネントのインストール](#install-required-components)
+- [ユーザーのサインイン](#user-sign-in)
+- [Azure への接続](#connect-to-azure-ad)
+- [[同期] セクションのページ](#pages-under-the-sync-section)
 
 ### <a name="install-required-components"></a>必須コンポーネントのインストール
-同期サービスをインストールするとき、オプションの構成セクションをオフのままにすると、Azure AD Connect によってすべてが自動的に設定されます。 これにより、SQL Server 2012 Express LocalDB インスタンスの設定、適切なグループの作成、アクセス許可の割り当てが行われます。 既定値を変更する場合は、次の表を利用すると、任意で使用できる構成オプションについて把握することができます。
+同期サービスをインストールするとき、オプションの構成セクションをオフのままにすると、Azure AD Connect によってすべてが自動的に設定されます。 これにより、SQL Server 2012 Express LocalDB インスタンスの設定、適切なグループの作成、アクセス許可の割り当てが行われます。 既定値を変更する場合は、該当するチェック ボックスをオンにして行うことができます。  次の表は、これらのオプションの概要と、追加情報へのリンクを示しています。 
 
 ![必須コンポーネント](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | オプションの構成 | 説明 |
 | --- | --- |
+|カスタム インストール先を指定する| Azure AD Connect の既定のインストール パスを変更できます。|
 | 既存の SQL Server を使用する |SQL Server 名とインスタンス名を指定することができます。 使用するデータベース サーバーが既にある場合は、このオプションを選択します。 SQL Server で参照が有効になっていない場合は、 **[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。  次に、Azure AD Connect データベースの名前を指定します。  SQL 権限によって、新しいデータベースが作成されるか、SQL 管理者が事前にデータベースを作成する必要があるかどうかが決まります。  SQL SA 権限がある場合は、[既存のデータベースを使用したインストール方法](how-to-connect-install-existing-database.md)に関するページをご覧ください。  権限 (DBO) が委任されている場合は、「[SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール](how-to-connect-install-sql-delegation.md)」をご覧ください。 |
 | 既存のサービス アカウントを使用する |既定では、同期サービスで使用する仮想サービス アカウントが Azure AD Connect によって使用されます。 リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、**管理されたサービス アカウント**か、ドメイン内のサービス アカウントとパスワードが必要です。 このような場合は、使用するアカウントを入力します。 サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。  「[Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md#adsync-service-account)」を参照してください。 </br></br>最新のビルドでは、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできます。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。|
 | カスタム同期グループを指定する |既定では、同期サービスのインストール時に、Azure AD Connect によってサーバーに対してローカルな 4 つのグループが作成されます。 これらのグループは、管理者グループ、オペレーター グループ、参照グループ、パスワード再設定グループです。 ここでは独自のグループを指定できます。 グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。 |
+|同期設定をインポート (プレビュー)|別のバージョンの Azure AD Connect から設定をインポートできます。  詳しくは、「[Azure AD Connect 構成設定のインポートとエクスポート](how-to-connect-import-export-config.md)」を参照してください。|
 
 ### <a name="user-sign-in"></a>ユーザーのサインイン
 必要なコンポーネントがインストールされると、ユーザーによるシングル サインオンの方法を選択するように求められます。 次の表に、指定できるオプションの簡単な説明を示します。 サインイン方法の詳細については、[ユーザーのサインイン](plan-connect-user-signin.md)に関するページを参照してください。
 
-![User Sign in](./media/how-to-connect-install-custom/usersignin4.png)
+![[ユーザーのサインイン] ページで "パスワード ハッシュの同期" が選択されたことを示すスクリーンショット。](./media/how-to-connect-install-custom/usersignin4.png)
 
 | シングル サインオン オプション | 説明 |
 | --- | --- |
@@ -75,7 +81,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 ### <a name="connect-your-directories"></a>ディレクトリの接続
 Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントのフォレスト名と資格情報が必要です。
 
-![ディレクトリの接続](./media/how-to-connect-install-custom/connectdir01.png)
+![[ディレクトリの接続] ページを示すスクリーンショット。](./media/how-to-connect-install-custom/connectdir01.png)
 
 フォレスト名を入力し、 **[ディレクトリの追加]** をクリックすると、ポップアップ ダイアログが表示され、次のオプションの指定が求められます。
 
@@ -167,7 +173,7 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 >
 >最新バージョンの Azure AD Connect をダウンロードするには、[ここ](https://www.microsoft.com/download/details.aspx?id=47594)をクリックしてください。
 
-![オプション機能](./media/how-to-connect-install-custom/optional2.png)
+ ![オプション機能](./media/how-to-connect-install-custom/optional2a.png)
 
 > [!WARNING]
 > 現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
@@ -300,7 +306,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>フェデレーションする Azure AD ドメインの選択
 この構成を使用して、AD FS と Azure AD のフェデレーション関係をセットアップします。 Azure AD にセキュリティ トークンを発行するように AD FS を構成し、この特定の AD FS インスタンスからのトークンを信頼するように Azure AD を構成します。 初期インストールでは、このページで 1 つのドメインしか構成できません。 後で Azure AD Connect をもう一度実行すると、追加のドメインを構成できます。
 
-![Azure AD ドメイン](./media/how-to-connect-install-custom/adfs6.png)
+![[Azure AD ドメイン] ページを示すスクリーンショット。](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>フェデレーション用に選択された Azure AD ドメインの検証
 フェデレーション対象のドメインを選択すると、Azure AD Connect によって、検証されていないドメインを検証するために必要な情報が提供されます。 この情報を使用する方法については、[ドメインの追加と検証](../fundamentals/add-custom-domain.md)に関するページを参照してください。
@@ -320,7 +326,7 @@ Azure AD Connect との PingFederate の構成は簡単であり、必要なの�
 ### <a name="verify-the-domain"></a>ドメインの検証
 PingFederate でフェデレーションを選択すると、フェデレーションするドメインを検証するように求められます。  ドロップダウン ボックスでドメインを選択します。
 
-![ドメインの確認](./media/how-to-connect-install-custom/ping1.png)
+![[Azure AD ドメイン] で "contoso.com" ドメインが選択されたことを示すスクリーンショット。](./media/how-to-connect-install-custom/ping1.png)
 
 ### <a name="export-the-pingfederate-settings"></a>PingFederate 設定のエクスポート
 
@@ -379,7 +385,7 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 
 ![完了](./media/how-to-connect-install-custom/completed.png)
 
-![確認](./media/how-to-connect-install-custom/adfs7.png)
+![Verify (英語の可能性あり)](./media/how-to-connect-install-custom/adfs7.png)
 
 エンド ツー エンド認証の成功を検証するには、以下の 1 つ以上のテストを手動で実行する必要があります。
 
@@ -394,7 +400,7 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>"The ADSync database already contains data and cannot be overwritten (ADSync データベースに既にデータが含まれており、上書きできません)"
 Azure AD Connect をカスタム インストールし、 **[必須コンポーネントのインストール]** ページで **[既存の SQL サーバーを使用する]** オプションを選択すると、 **"The ADSync database already contains data and cannot be overwritten. (ADSync データベースに既にデータが含まれており、上書きできません。) Please remove the existing database and try again. (既存のデータベースを削除してからやり直してください。)"** と表示されるエラーが発生することがあります。
 
-![エラー](./media/how-to-connect-install-custom/error1.png)
+![[必須コンポーネントのインストール] ページを示すスクリーンショット。](./media/how-to-connect-install-custom/error1.png)
 
 これは、上のテキスト ボックスで指定した SQL サーバーの SQL インスタンスに、**ADSync** という名前のデータベースが既に存在するためです。
 
@@ -415,7 +421,7 @@ Azure AD Connect をカスタム インストールし、 **[必須コンポー�
 
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
 
-インストールの結果有効になった機能について詳しくは、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
+インストールの結果有効になった機能については、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
 
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](how-to-connect-sync-feature-scheduler.md)に関するページを参照してください。
 

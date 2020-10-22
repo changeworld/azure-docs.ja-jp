@@ -1,20 +1,22 @@
 ---
 title: マークダウン形式 - QnA Maker
 description: QnA Maker の回答テキストで使用できるマークダウン形式の一覧を次に示します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652757"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777366"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker の回答テキストでサポートされるマークダウン形式
 
 QnA Maker では、回答テキストがマークダウンとして格納されます。 マークダウンには、さまざまな決まりごとがあります。 回答テキストを確実に取得して正しく表示するために、このリファレンスをご利用ください。
 
-Markdown の検証については、 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(使ってみる\)** 機能があります。
+Markdown の検証については、 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(試してみる\)** 機能があります。
 
 ## <a name="when-to-use-rich-text-editing-versus-markdown"></a>リッチテキスト編集を使用する場合と Markdown を使用する場合の比較
 
@@ -35,10 +37,10 @@ QnA Maker の回答テキストで使用できるマークダウン形式の一�
 |リンクの URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (ハイパーリンク) の書式設定](./media/qnamaker-concepts-datasources/format-url.png)|
 |\* 公開画像の URL|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![公開画像の URL の書式設定 ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |取り消し線|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![取り消し線の書式設定](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|太字と斜体|`***text***`|`How can I create a ***QnA Maker*** bot?`|![太字と斜体の書式設定](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|リンクの太字の URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![太字の URL の書式設定](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|太字と斜体|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![太字と斜体の書式設定](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|リンクの太字の URL|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![太字の URL の書式設定](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |リンクの斜体の URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![斜体の URL の書式設定](./media/qnamaker-concepts-datasources/format-url-italics.png)|
-|マークダウン記号のエスケープ|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![斜体の URL の書式設定](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|マークダウン記号のエスケープ|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![マークダウン記号のエスケープの形式。](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |番号付きリスト|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>上の例では、マークダウンに組み込まれた自動番号付けを使用しています。<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>上の例では明示的な番号付けを使用しています。|![番号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |記号付きリスト|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![記号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |入れ子になったリスト|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>番号付きリストと記号付きリストを一緒に入れ子にすることができます。 タブ `\t` は、子要素のインデント レベルを示します。|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![入れ子になった記号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![入れ子になった番号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|

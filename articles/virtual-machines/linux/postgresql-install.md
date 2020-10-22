@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267253"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397098"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。 PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンのコンカレンシー制御など、エンタープライズ対応の機能が含まれます。 また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます). 12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
@@ -164,7 +164,7 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 
     次の出力が表示されます。
 
-![image](./media/postgresql-install/no1.png)
+![データベースを初期化した後の出力を示すスクリーンショット。](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>PostgreSQL のセットアップ
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![image](./media/postgresql-install/no2.png)
+![インストール プレフィックスとデータ ディレクトリを示すスクリーンショット。](./media/postgresql-install/no2.png)
 
 実行可能なようにファイルを変更します。
 
@@ -207,7 +207,7 @@ PostgreSQL のエンドポイントがオンかどうかを確認します。
 
 次の出力が表示されます。
 
-![image](./media/postgresql-install/no3.png)
+![PostgreSQL のエンドポイントがオンであることを示すスクリーンショット。](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Postgres データベースへの接続
 postgres ユーザーに再び切り替えます。
@@ -246,11 +246,11 @@ CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1
 
 テーブルが正常に作成された場合、次が表示されます。
 
-![image](./media/postgresql-install/no4.png)
+![テーブルが正常に作成されたときに表示されるメッセージを示すスクリーンショット。](./media/postgresql-install/no4.png)
 
 次のコマンドを使用して、テーブルの構造をチェックすることもできます。
 
-![image](./media/postgresql-install/no5.png)
+![テーブルの構造をチェックするためのコマンドを示すスクリーンショット。](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>テーブルにデータを追加する
 最初に、行に情報を挿入します。
@@ -261,7 +261,7 @@ INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Cassero
 
 次のように出力されます。
 
-![image](./media/postgresql-install/no6.png)
+![追加した行の情報を示すスクリーンショット。](./media/postgresql-install/no6.png)
 
 テーブルにさらに人を追加することもできます。 オプションをいくつか次に示します。独自に作成することもできます。
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 出力は次のようになります。
 
-![image](./media/postgresql-install/no7.png)
+![テーブルを表示するためのコマンドからの出力を示すスクリーンショット。](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>テーブルのデータの削除
 テーブル内のデータを削除するには、次のコマンドを使用します。

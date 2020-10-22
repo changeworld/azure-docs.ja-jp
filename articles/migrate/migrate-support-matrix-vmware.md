@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate Server Assessment を使用した VMware VM の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667794"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -45,7 +45,7 @@ VMware VM を Azure に移行する場合は、[移行のサポート マトリ�
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
 
-Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.md)を使用して検出と評価を行います。 アプライアンスを VMWare VM としてデプロイするには、OVA テンプレートを使用するか、vCenter Server にインポートするか、[PowerShell スクリプト](deploy-appliance-script.md)を使用します。
+Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.md)を使用して検出と評価を行います。 アプライアンスを VMware VM としてデプロイするには、OVA テンプレートを使用するか、vCenter Server にインポートするか、[PowerShell スクリプト](deploy-appliance-script.md)を使用します。
 
 - VMware の[アプライアンスの要件](migrate-appliance.md#appliance---vmware)を確認してください。
 - Azure Government では、[スクリプトを使用して](deploy-appliance-script-government.md)アプライアンスをデプロイする必要があります。
@@ -85,14 +85,13 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 --- | --- 
 **デプロイ前** | Server Assessment ツールがプロジェクトに追加された状態で、Azure Migrate プロジェクトを準備する必要があります。<br/><br/>  オンプレミスの VMware マシンを検出するには、Azure Migrate アプライアンスをセットアップした後、依存関係の視覚化をデプロイします。<br/><br/> 初めてプロジェクトを作成する方法については[こちら](create-manage-projects.md)を参照してください。<br/> 既存のプロジェクトに評価ツールを追加方法については[こちら](how-to-assess.md)を参照してください。<br/> VMware VM の評価用に Azure Migrate アプライアンスを設定する方法を[参照](how-to-set-up-appliance-vmware.md)してください。
 **サポートされているマシン** | 現在、VMware VM のみでサポートされています。
-**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)。
+**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)。<br/>Microsoft Windows Server 2008 (32 ビット)。 PowerShell がインストールされている。
 **vCenter サーバーの資格情報** | 依存関係の可視化には、読み取り専用アクセス権を持ち、[仮想マシン] > [ゲスト操作] の権限が有効な vCenter Server アカウントが必要です。
 **Windows VM のアクセス許可** |  依存関係の分析の場合、Windows VM にアクセスするには、Azure Migrate アプライアンスで使用できるドメイン管理者アカウントまたはローカル管理者アカウントが必要です。
-**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Linux アカウント** | 依存関係の分析の場合、Linux マシンの Azure Migrate アプライアンスには Root 特権を持つユーザー アカウントが必要です。<br/><br/> また、ユーザー アカウントには /bin/netstat および /bin/ls ファイルに対する次の権限が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。 これらの機能は次のコマンドで設定します。 <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
+**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。<br/> SUSE Linux Enterprise Server 11 以降
+**Linux アカウント** | 依存関係を分析するため、Linux コンピューターでは、Azure Migrate アプライアンスにルート ユーザー アカウントが必要になります<br/><br/> また、ユーザー アカウントには /bin/netstat および /bin/ls ファイルに対する次の権限が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。 これらの機能は次のコマンドで設定します。 <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
 **必要なエージェント** | 分析するマシンにエージェントは必要ありません。
 **VMware ツール** | 分析する各 VM に VMware ツール (10.2 以降) がインストールされ、実行されている必要があります。
-
 **PowerShell** | Windows VM には、PowerShell バージョン 2.0 以降がインストールされている必要があります。
 **ポート アクセス** | 分析する VM を実行している ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874290"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>ビデオ分析 - オブジェクトとモーション検出アプリケーションのアーキテクチャ
 
@@ -41,4 +41,4 @@ IoT Edge LVA ゲートウェイ モジュールでは、カメラを新しいデ
 
 ## <a name="next-steps"></a>次の手順
 
-推奨される次の手順は、[Azure IoT Central でビデオ分析アプリケーションを作成する](tutorial-video-analytics-create-app.md)方法を確認することです。
+推奨される次の手順は、[ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して IoT Central アプリケーションをデプロイする方法](tutorial-video-analytics-deploy.md)を確認することです。

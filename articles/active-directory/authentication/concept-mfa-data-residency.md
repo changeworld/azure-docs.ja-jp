@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 09/24/2020
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 25322ad9a5d57094f44ccbad312091214ae8dcac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970657"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965286"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のデータの保存場所と顧客データ
 
@@ -28,7 +28,7 @@ Azure Multi-Factor Authentication サービスには、米国、ヨーロッパ�
 
 * 電話を使用する多要素認証は、米国のデータセンターから発信され、グローバル プロバイダーによってルーティングされます。
 * ヨーロッパやオーストラリアなどの他のリージョンからの汎用ユーザー認証要求は、現在ユーザーの場所に基づいて処理されています。
-* Microsoft Authenticator アプリを使用したプッシュ通知は、ユーザーの場所に基づいて、リージョンのデータセンターから送信されます。
+* Microsoft Authenticator アプリを使用したプッシュ通知は、現在、ユーザーの場所に基づいて、リージョンのデータセンターで処理されています。
     * Apple プッシュ通知などのデバイス ベンダー固有のサービスは、ヨーロッパの外部にある可能性があります。
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication によって保存される個人データ

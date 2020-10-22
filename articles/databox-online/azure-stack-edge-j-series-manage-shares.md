@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904690"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952269"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の共有を管理する
+# <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の共有を管理する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -65,7 +65,7 @@ ms.locfileid: "90904690"
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
-    ![[共有の追加] を選択する](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
+    ![[共有の追加] を選択する 2](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
 2. **[共有の追加]** で共有設定を指定します。 共有の一意の名前を指定します。
     
@@ -125,7 +125,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。
 
-    ![共有を選択する](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
+    ![共有を選択する 2](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
 2. 共有の一覧で、マウントを解除する共有を選択します。 マウントを解除する共有がどのモジュールからも使用されていないことを確認する必要があります。 共有がモジュールによって使用されている場合、該当するモジュールで問題が発生します。 **[マウント解除]** を選択します。
 
@@ -145,7 +145,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1. 共有の一覧で、削除したい共有を選択してクリックします。
 
-    ![共有を選択する](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
+    ![共有を選択する 3](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
 
 2. **[削除]** をクリックします。
 
@@ -169,7 +169,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1.  Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
 
-    ![共有を選択する](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
+    ![共有を選択する 4](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
 
 2.  **[最新の情報に更新]** をクリックします。 
 

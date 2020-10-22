@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP、Azure HANA、ストレージ Ultra Disk、Premium Storage
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440696"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978256"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -229,7 +229,7 @@ Ultra Disk によって、自分のサイズ、IOPS、ディスク スループ�
 Ultra Disk のその他の利点は、Premium Storage と比較して読み取り待ち時間が短いことです。 読み取り待機時間が短いということは、HANA の起動時間とその後のメモリへのデータの読み込みを短縮する必要がある場合に利点があります。 Ultra Disk ストレージの利点は、HANA によってセーブポイントが書き込まれているときにも感じることができます。 
 
 > [!NOTE]
-> Ultra Disk は、まだ、すべての Azure リージョンには存在しておらず、すべての種類の VM がサポートされているわけでもありません。 使用可能な Ultra Disk、サポートされている VM ファミリの詳細については、「[Azure で利用できるディスクの種類](../../windows/disks-types.md#ultra-disk)」を参照してください。
+> Ultra Disk は、まだ、すべての Azure リージョンには存在しておらず、すべての種類の VM がサポートされているわけでもありません。 使用可能な Ultra Disk、サポートされている VM ファミリの詳細については、「[Azure で利用できるディスクの種類](../../disks-types.md#ultra-disk)」を参照してください。
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>純粋な Ultra Disk 構成を使用した運用環境で推奨されるストレージ ソリューション
 この構成では、 **/hana/data** ボリュームと **/hana/log** ボリュームを別々に保持します。 推奨値は、[SAP TDI ストレージに関するホワイトペーパー](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) で推奨されているように SAP HANA およびストレージ構成に対して VM の種類を認定するために SAP が用意している KPI から導出されます。
@@ -266,69 +266,13 @@ Ultra Disk のその他の利点は、Premium Storage と比較して読み取�
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp Files 上の NFS v4.1 ボリューム
-Azure NetApp Files には、 **/hana/shared**、 **/hana/data**、 **/hana/log** の各ボリュームに使用できるネイティブ NFS 共有が用意されています。 **/hana/data** および **/hana/log** のボリュームに ANF ベースの NFS 共有を使用するには、v4.1 NFS プロトコルを使用する必要があります。 共有が ANF ベースの場合、 **/hana/data** および **/hana/log** ボリュームに NFS プロトコル v3 を使用することはできません。 
-
-> [!IMPORTANT]
-> Azure NetApp Files に実装されている NFS v3 プロトコルの使用は、 **/hana/data** および **/hana/log** ではサポートされて**いません**。 機能的観点から、 **/hana/data** および **/hana/log** ボリュームには、NFS 4.1 の使用が必須となります。 一方、 **/hana/shared** ボリュームの場合、機能的観点から NFS v3 または NFS v4.1 プロトコルを使用できます。
-
-### <a name="important-considerations"></a>重要な考慮事項
-SAP Netweaver および SAP HANA 用に Azure NetApp Files を検討するときは、以下の重要な考慮事項に注意してください。
-
-- 最小容量プールは 4 TiB です。  
-- 最小ボリューム サイズは 100 GiB です。
-- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](../../../virtual-network/virtual-network-peering-overview.md)内に存在する必要があります。  
-- 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
-- Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。  
-- Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
-- Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。  
-- 待ち時間を短縮するには、仮想マシンを Azure NetApp ストレージに近い場所にデプロイすることが重要です。 
-- 仮想マシン上の <b>sid</b>adm のユーザー ID と `sapsys` のグループ ID は、Azure NetApp Files の構成と一致している必要があります。 
-
-> [!IMPORTANT]
-> SAP HANA ワークロードにとって、待ち時間の短縮は重要です。 Microsoft の担当者と協力して、仮想マシンと Azure NetApp Files ボリュームが確実に近接してデプロイされるようにします。  
-
-> [!IMPORTANT]
-> 仮想マシンと Azure NetApp の構成の間で、<b>sid</b>adm のユーザー ID と、`sapsys` のグループ ID が一致しない場合は、仮想マシンにマウントされた Azure NetApp ボリューム上のファイルのアクセス許可が `nobody` として表示されます。 Azure NetApp Files に[新しいシステムをオンボード](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)するときに、正しい <b>sid</b>adm のユーザー ID と `sapsys` のグループ ID を指定していることを確認してください。
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files 上の HANA データベースのサイズ指定
-
-Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム サイズとサービス レベルの機能です。 
-
-Azure で SAP のインフラストラクチャを設計する際には、SAP による最小ストレージ スループット要件に注意する必要があります。これは、最小スループット特性につながります。
-
-- I/O サイズが 1 MB で、250 MB/秒の **/hana/log** で読み取り/書き込みを有効にする  
-- I/O サイズが 16 MB および 64 MB の **/hana/data** で、少なくとも 400 MB/秒の読み取りアクティビティを有効にする  
-- I/O サイズが 16 MB および 64 MB の **/hana/data** で、少なくとも 250 MB/秒の書き込みアクティビティを有効にする  
-
-ボリューム クォータの 1 TiB あたりの [Azure NetApp Files スループットの上限](../../../azure-netapp-files/azure-netapp-files-service-levels.md)は次のとおりです。
-- Premium Storage 層 - 64 MiB/秒  
-- Ultra ストレージ層 - 128 MiB/秒  
-
-> [!IMPORTANT]
-> 1 つの NFS ボリュームにデプロイする容量に関係なく、スループットは、仮想マシンでコンシューマーによって活用される毎秒 1.2 から 1.4 GB までの帯域幅範囲にとどまるものと予想されます。 これは、ANF プランの基礎アーキテクチャと NFS 関連の Linux セッション上限に関係があります。 「[Azure NetApp Files のパフォーマンス ベンチマークのテスト結果](../../../azure-netapp-files/performance-benchmarks-linux.md)」という記事に記載されているパフォーマンスとスループットの数値は、1 つの共有 NFS ボリュームと複数のクライアント VM (結果として複数のセッション) に対して行われたものです。 このシナリオは、SAP で測定するシナリオとは異なります。 その場合、ANF でホストされている NFS ボリュームに対して 1 つの VM からの スループットを測定します。
-
-データとログの SAP 最小スループット要件を満たすため、および `/hana/shared` のガイドラインに従うと、推奨されるサイズは次のようになります。
-
-| ボリューム | サイズ<br /> Premium ストレージ層 | サイズ<br /> Ultra ストレージ層 | サポートされる NFS プロトコル |
-| --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v4.1 |
-| /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
-| /hana/shared | 4 ワーカー ノードあたり最大 (512 GB、1xRAM) | 4 ワーカー ノードあたり最大 (512 GB、1xRAM) | v3 または v4.1 |
+HANA 用 ANF の詳細については、「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)」を参照してください。
 
 
-> [!NOTE]
-> ここで説明されている Azure NetApp Files のサイズ設定の推奨事項は、SAP がそのインフラストラクチャ プロバイダーに表明している最小要件を満たすことを目標としています。 実際の顧客のデプロイとワークロードのシナリオでは、これらは十分ではない場合があります。 これらの推奨事項は開始点として利用し、ご自分の固有のワークロードの要件に合わせて調整してください。  
-
-そのため、Ultra Disk Storage 用に記載されているのと同様の ANF ボリューム用のスループットをデプロイすることを検討してください。 また、Ultra ディスク テーブルの場合と同じように、さまざまな VM SKU のボリュームに対して記載されているサイズも考慮してください。
-
-> [!TIP]
-> Azure NetApp Files ボリュームは、ボリュームを `unmount` したり、仮想マシンを停止したり、SAP HANA を停止したりすることなく、動的にサイズ変更することができます。 これにより、予想されるスループット要求と予期しないスループット要求の両方を柔軟に満たすことができます。
-
-ANF でホストされる NFS v4.1 ボリュームを使用して、スタンバイ ノードを含む SAP HANA スケールアウト構成をデプロイする方法については、[SUSE Linux Enterprise Server 上に Azure VM のスタンバイ ノードと Azure NetApp Files を使用して SAP HANA をスケールアウトする方法](./sap-hana-scale-out-standby-netapp-files-suse.md)に関するドキュメントを参照してください。
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Storage を使用する、コストを意識したソリューション
-これまでこのドキュメントの「[Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)」セクションで説明した Azure Premium Storage ソリューションは、SAP HANA の運用がサポートされるシナリオに向けられていました。 運用のサポートが可能な構成の特性の 1 つは、SAP HANA データと再実行ログのボリュームを 2 つの異なるボリュームに分離することです。 このような分離の理由として、これらのボリュームでのワークロード特性が異なっていることが挙げられます。 また、推奨される運用構成では、さまざまな種類のキャッシュ、または異なる種類の Azure ブロック ストレージが必要とされる場合があります。 Azure ブロック ストレージを使用する運用がサポートされる構成は、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に準拠することもターゲットになります。  運用環境以外のシナリオの場合、運用システムでは考慮される考慮事項の一部が、よりローエンドの非運用システムには当てはまらない可能性があります。 結果として、HANA のデータとログ ボリュームを組み合わせることができます。 ただし、運用システムで必要とされている一定のスループットや待機時間の KPI を結局満たせないなど、最終的に何らかの問題が生じることがあります。 このような環境でコストを削減するために考えられる別の方法は、[Azure Standard SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)を使用することです。 ただしこれは、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) を無効にする選択肢です。 
+これまでこのドキュメントの「[Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)」セクションで説明した Azure Premium Storage ソリューションは、SAP HANA の運用がサポートされるシナリオに向けられていました。 運用のサポートが可能な構成の特性の 1 つは、SAP HANA データと再実行ログのボリュームを 2 つの異なるボリュームに分離することです。 このような分離の理由として、これらのボリュームでのワークロード特性が異なっていることが挙げられます。 また、推奨される運用構成では、さまざまな種類のキャッシュ、または異なる種類の Azure ブロック ストレージが必要とされる場合があります。 Azure ブロック ストレージを使用する運用がサポートされる構成は、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に準拠することもターゲットになります。  運用環境以外のシナリオの場合、運用システムでは考慮される考慮事項の一部が、よりローエンドの非運用システムには当てはまらない可能性があります。 結果として、HANA のデータとログ ボリュームを組み合わせることができます。 ただし、運用システムで必要とされている一定のスループットや待機時間の KPI を結局満たせないなど、最終的に何らかの問題が生じることがあります。 このような環境でコストを削減するために考えられる別の方法は、[Azure Standard SSD ストレージ](./planning-guide-storage.md#azure-standard-ssd-storage)を使用することです。 ただしこれは、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) を無効にする選択肢です。 
 
 このような構成に向けた、より低コストの代替構成は次のようになります。
 

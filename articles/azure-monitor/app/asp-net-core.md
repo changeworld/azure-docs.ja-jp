@@ -4,12 +4,12 @@ description: ASP.NET Core Web アプリケーションの可用性、パフォ�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803593"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875123"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -134,7 +134,7 @@ Microsoft.ApplicationInsights.AspNetCore バージョン [2.15.0](https://www.nu
 
 ### <a name="ilogger-logs"></a>ILogger ログ
 
-重大度が `Warning` 以上の `ILogger` で出力されたログは、自動的にキャプチャされます。 Application Insights によってキャプチャされるログ レベルをカスタマイズする場合は、[ILogger のドキュメント](ilogger.md#control-logging-level)に従ってください。
+既定の構成で `ILogger` 重大度`Warning`以上のログを収集します。 この構成は[カスタマイズできます](#how-do-i-customize-ilogger-logs-collection)。
 
 ### <a name="dependencies"></a>依存関係
 
@@ -397,7 +397,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>自動的に収集されないテレメトリを追跡するにはどうすればよいですか?
 
-コンストラクター インジェクションを使用して `TelemetryClient` のインスタンスを取得し、そのインスタンスで必須の `TrackXXX()` メソッドを呼び出します。 ASP.NET Core アプリケーションで新しい `TelemetryClient` インスタンスを作成することはお勧めしません。 `TelemetryClient` のシングルトン インスタンスが `DependencyInjection` コンテナーに既に登録されており、それによって `TelemetryConfiguration` がテレメトリの残りの部分と共有されます。 新しい `TelemetryClient` インスタンスの作成は、残りのテレメトリとは別の構成が必要な場合にのみ推奨されます。
+コンストラクター インジェクションを使用して `TelemetryClient` のインスタンスを取得し、そのインスタンスで必須の `TrackXXX()` メソッドを呼び出します。 ASP.NET Core アプリケーションで新しい `TelemetryClient` または `TelemetryConfiguration` のインスタンスを作成することはお勧めしません。 `TelemetryClient` のシングルトン インスタンスが `DependencyInjection` コンテナーに既に登録されており、それによって `TelemetryConfiguration` がテレメトリの残りの部分と共有されます。 新しい `TelemetryClient` インスタンスの作成は、残りのテレメトリとは別の構成が必要な場合にのみ推奨されます。
 
 次の例では、コントローラーから追加のテレメトリを追跡する方法を確認できます。
 
@@ -423,6 +423,40 @@ public class HomeController : Controller
 ```
 
 Application Insights でのカスタム データ レポートについては、[Application Insights カスタム メトリック API リファレンス](./api-custom-events-metrics.md)に関するページを参照してください。 同様の方法を使用して、[GetMetric API](./get-metric.md) を使用して Application Insights にカスタム メトリックを送信することもできます。
+
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>ILogger logs コレクションをカスタマイズする方法
+
+既定では、重大度 `Warning` 以上のログのみが自動的にキャプチャされます。 この動作を変更するには、次に示すように、プロバイダー `ApplicationInsights` のログ構成を明示的にオーバーライドします。
+次の構成では、ApplicationInsights は重大度 `Information` 以上のすべてのログをキャプチャできます。
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+次のような場合は、ApplicationInsights プロバイダーによって `Information` ログがキャプチャされないことに注意してください。 これは、SDK によって既定のログフィルターが追加され、`Warning` 以降のみをキャプチャするように `ApplicationInsights` を指示するためです。 このため、ApplicationInsights には明示的なオーバーライドが必要です。
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+詳細については「[ILogger configuration](ilogger.md#control-logging-level)」を参照してください。
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>一部の Visual Studio テンプレートでは、Application Insights を有効にする目的で UseApplicationInsights() 拡張メソッドが IWebHostBuilder で使用されていました。 この使用方法は今でも有効ですか?
 
@@ -477,7 +511,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
-* [コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
+* [コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet)
 
 最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./release-notes.md)。
 

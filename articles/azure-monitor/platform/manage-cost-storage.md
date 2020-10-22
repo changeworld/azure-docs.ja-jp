@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595653"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044107"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -46,9 +46,9 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics 専用クラスター
 
-Log Analytics 専用クラスターは、ワークスペースのコレクションを単一の管理された Azure Data Explorer クラスターに集約し、[カスタマー マネージド キー](customer-managed-keys.md)などの高度なシナリオをサポートします。  Log Analytics 専用クラスターは最低 1000 GB/日の容量予約価格モデルのみをサポートします。従量課金制の価格と比較して 25% 割引です。 予約レベルを超える使用量は、従量課金制で請求されます。 クラスターの容量予約には、予約レベルが増加した後の 31 日間のコミットメント期間があります。 コミットメント期間中は、容量予約レベルを下げることはできませんが、いつでも増やすことができます。 詳細については、[Log Analytics クラスターの作成](customer-managed-keys.md#create-cluster-resource)と、[それへのワークスペースの関連付け](customer-managed-keys.md#workspace-association-to-cluster-resource)に関するページを参照してください。  
+Log Analytics 専用クラスターは、ワークスペースのコレクションを単一の管理された Azure Data Explorer クラスターに集約し、[カスタマー マネージド キー](customer-managed-keys.md)などの高度なシナリオをサポートします。  Log Analytics 専用クラスターには、1000 GB/日以上に構成されている必要がある容量予約価格モデルを使用します。 この容量レベルでは、従量課金制の価格と比較して、25% の割引があります。 予約レベルを超える使用量は、従量課金制で請求されます。 クラスターの容量予約には、予約レベルが増加した後の 31 日間のコミットメント期間があります。 コミットメント期間中は、容量予約レベルを下げることはできませんが、いつでも増やすことができます。 ワークスペースがクラスターに関連付けられている場合、それらのワークスペースのデータ インジェストの課金は、構成されている容量予約レベルを使用したクラスター レベルで行われます。 詳細については、[Log Analytics クラスターの作成](customer-managed-keys.md#create-cluster-resource)と、[それへのワークスペースの関連付け](customer-managed-keys.md#workspace-association-to-cluster-resource)に関するページを参照してください。 容量予約の価格情報については、[Azure Monitor の価格に関するページ]( https://azure.microsoft.com/pricing/details/monitor/)を参照してください。  
 
-クラスター容量予約レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定し、1000 GB/日以上の値を 100 GB/日の単位で設定できます。 詳細は「[Azure Monitor のカスタマー マネージド キー](customer-managed-keys.md#create-cluster-resource)」にあります。 クラスターで 2000 GB/日を超える予約が必要な場合は、[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) にお問い合わせください。
+クラスター容量予約レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成します。 `Capacity` は GB 単位で指定し、1000 GB/日以上の値を 100 GB/日の単位で設定できます。 詳細は「[Azure Monitor のカスタマー マネージド キー](customer-managed-keys.md#create-cluster-resource)」にあります。 クラスターで 2000 GB/日を超える予約が必要な場合は、[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) にお問い合わせください。
 
 クラスターでの使用については、2 つの課金モードがあります。 これらは、[ご自分のクラスターを構成する](customer-managed-keys.md#cmk-management)ときに、`billingType` パラメーターで指定できます。 次の 2 つのモードがあります。 
 
@@ -56,7 +56,7 @@ Log Analytics 専用クラスターは、ワークスペースのコレクショ
 
 2. **ワークスペース**: ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](https://docs.microsoft.com/azure/security-center/) からのノードごとの割り当てを考慮した後)。1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも少ない場合、ワークスペースごとに容量予約分として取り込まれたデータに対して有効な 1 GB あたりの容量予約料金で課金され、容量予約の未使用分についてはクラスター リソースに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも多い場合、ワークスペースごとにその日に取り込まれたデータの容量予約分について課金され、ワークスペースごとに容量予約を超えて取り込まれたデータ分について課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約を超えている場合、クラスター リソースに課金されることはありません。
 
-クラスター課金オプションでは、データ保持は引き続きワークスペース レベルで課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられているかどうかに関係なく、クラスターの課金が開始されることに注意してください。 また、クラスターに関連付けられているワークスペースの価格レベルはなくなりました。
+クラスター課金オプションでは、データ保有はワークスペースごとに課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられているかどうかに関係なく、クラスターの課金が開始されることに注意してください。 また、クラスターに関連付けられているワークスペースの価格レベルはなくなりました。
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>ご利用の環境を管理するためのコストの見積もり 
 
@@ -102,7 +102,7 @@ Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azur
 
 スタンドアロン価格レベルでの使用量は、取り込まれたデータ ボリューム単位で請求されます。 これは **Log Analytics** サービス上で報告され、メーターには "分析対象データ" という名前が付けられています。 
 
-ノードごとの価格レベルは、1 時間単位の細分性で監視対象の VM (ノード) ごとに課金されます。 監視対象のノードごとに、ワークスペースには 1 日あたり 500 MB の課金されないデータが割り当てられます。 この割り当ては、ワークスペース レベルで集計されます。 集計される 1 日のデータ割り当てを超えて取り込まれたデータは、データ超過分として GB 単位で課金されます。 請求書では、ワークスペースがノードごとの価格レベルの場合、サービスはログ分析の利用状況の**洞察と分析**になることに注意してください。 使用量は、次の 3 つのメーターで報告されます。
+ノードごとの価格レベルは、1 時間単位の細分性で監視対象の VM (ノード) ごとに課金されます。 監視対象のノードごとに、ワークスペースには 1 日あたり 500 MB の課金されないデータが割り当てられます。 この割り当ては、1 時間ごとの細分性で計算され、毎日ワークスペース レベルで集計されます。 集計される 1 日のデータ割り当てを超えて取り込まれたデータは、データ超過分として GB 単位で課金されます。 請求書では、ワークスペースがノードごとの価格レベルの場合、サービスはログ分析の利用状況の**洞察と分析**になることに注意してください。 使用量は、次の 3 つのメーターで報告されます。
 
 1. ノード: これは、ノード * 月の単位での監視対象ノード (VM) 数に対応した使用量です。
 2. ノードごとの超過データ: これは、集計されたデータの割り当てを超える取り込まれたデータの GB 数です。
@@ -125,6 +125,10 @@ Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azur
 
 > [!NOTE]
 > OMS E1 Suite、OMS E2 Suite、または OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の*ノード単位*の価格レベルを選択します。
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics と Security Center
+
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/) の課金は Log Analytics の課金と密接に結び付けられています。 Security Center では、一連の[セキュリティ データの種類](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent、SecurityAlert、Securityalert、SecurityBaselineSummary、Securityalert、Securityalert、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) と、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、Update および UpdateSummary データの種類に対して 500 MB/ノード/日の割り当てが行われます。 ワークスペースがレガシのノードごとの価格レベルにある場合、Security Center と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
@@ -234,12 +238,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 データ制限のしきい値に達したら Azure Portal に視覚的な合図が表示されますが、この動作は、早急な措置を必要とする運用上の問題を管理する方法と、必ずしも一致していない場合があります。  アラート通知を受け取るには、Azure Monitor で新しいアラート ルールを作成します。  詳細については、[アラートを作成、表示、管理する方法](alerts-metric.md)に関するページをご覧ください。
 
-最初は、次のようにアラートを設定することをお勧めします。
+はじめに、`_LogOperation` 関数を使用して、`Operation` テーブルのクエリを実行するアラートの推奨される設定を次に示します。 
 
 - ターゲット:お客様の Log Analytics リソースを選択します
 - 条件: 
    - シグナル名: カスタム ログ検索
-   - 検索クエリ: Operation | where Detail has 'OverQuota'
+   - 検索クエリ: `_LogOperation | where Detail has 'OverQuota'`
    - ベース: 結果の数
    - 条件: より大きい
    - しきい値: 0
@@ -283,6 +287,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
+
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>レガシのノードごとの価格レベルによって課金されるノード
+
+[レガシのノードごとの価格レベル](#legacy-pricing-tiers)では、1 時間ごとの細分性でノードに課金され、一連のセキュリティ データの種類のみを送信するノードはカウントされません。 その毎日のノードのカウントは、次のクエリに近くなります。
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+請求書の単位数は、クエリで `billableNodeMonthsPerDay` によって表されるノード * 月の単位になります。 ワークスペースに Update Management ソリューションがインストールされている場合は、上記のクエリの where 句の一覧に Update および UpdateSummary データの種類を追加します。 最後に、上記のクエリで表されていないソリューションのターゲット設定を使用した場合に、実際の課金アルゴリズムにいくらかの複雑さが加わります。 
+
 
 > [!TIP]
 > 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)、これらの `find` クエリは多用しないようにします。 **コンピューターごと**の結果が不要な場合は、Usage データ型に関するクエリを実行します (下記参照)。

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068831"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074415"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -184,11 +184,36 @@ AKS クラスターの作成時には、ユーザーに代わってリソース�
 
 これは、通常、サービス プリンシパルの資格情報の有効期限が切れているためです。 [AKS クラスターの資格情報を更新してください。](update-credentials.md)
 
+## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API サーバーの許可された IP 範囲を使用しているときに、オートメーション/開発用コンピューター/ツールからクラスター API にアクセスできません。 この問題を解決するにはどうすればよいですか。
+
+これには、使用されているオートメーション/開発用コンピューター/ツール システムの IP または IP 範囲を `--api-server-authorized-ip-ranges` に含める必要があります。 「[許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する](api-server-authorized-ip-ranges.md)」の「IP を見つける方法」のセクションを参照してください。
+
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API サーバーの許可された IP 範囲で構成されているクラスターについてのリソースを、Azure portal の Kubernetes リソース ビューアーで表示できません。 この問題を解決するにはどうすればよいですか。
+
+[Kubernetes リソース ビューアー](kubernetes-portal.md) には、ローカル クライアント コンピューターや (ポータルが閲覧されている) IP アドレスの範囲へのアクセスを含めるための `--api-server-authorized-ip-ranges` が必要です。 「[許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する](api-server-authorized-ip-ranges.md)」の「IP を見つける方法」のセクションを参照してください。
+
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>エグレス トラフィックを制限した後、エラーが表示されました
 
 AKS クラスターからのエグレス トラフィックを制限するときには、AKS 向けの[必須および任意の推奨される](limit-egress-traffic.md)送信ポート、ネットワーク規則と FQDN、アプリケーション規則があります。 設定がこれらの規則のいずれかと競合している場合、特定の `kubectl` コマンドが正しく機能しません。 また、AKS クラスターの作成時にエラーが表示されることがあります。
 
 必須または任意の推奨される送信ポート、ネットワーク規則と FQDN、およびアプリケーション規則のいずれとも、ご利用の設定が競合していないことを確認します。
+
+## <a name="im-receiving-429---too-many-requests-errors"></a>"429 - 要求が多すぎます" エラーが表示されました 
+
+Azure 上の kubernetes クラスター (AKS または no) でスケールアップまたはスケールダウンが頻繁に行われる場合、またはクラスター オートスケーラー (CA) が使用される場合、これらの操作によって多数の HTTP 呼び出しが発生し、その結果、割り当てられたサブスクリプションのクォータを超えてエラーが発生する可能性があります。 エラーは次のようになります。
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+これらの調整エラーの詳細については、[こちら](../azure-resource-manager/management/request-limits-and-throttling.md)と[こちら](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)を参照してください。
+
+AKS エンジニアリング チームでは、多くの機能強化が含まれている 1.18 以上のバージョンを実行することをお勧めします。 これらの機能強化の詳細については、[こちら](https://github.com/Azure/AKS/issues/1413)と[こちら](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)を参照してください。
+
+これらの調整エラーはサブスクリプション レベルで測定されることを考慮すると、これらは次の場合にも発生する可能性があります。
+- GET 要求を行うサードパーティ製のアプリケーションがある ( アプリケーションの監視など)。これらの呼び出しの頻度を減らすことをお勧めします。
+- VMSS に AKS クラスター/ノード プールが多数ある場合。 通常、ある特定のサブスクリプションで 20 から 30 未満のクラスターを設定することをお勧めします。
+
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
 

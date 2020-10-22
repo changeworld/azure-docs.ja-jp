@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954657"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569491"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Apache Cassandra、MongoDB、HBase、エンジンなどの OSS NoSQL データ�
 
 Azure Cosmos DB のサーバーレス プロビジョニング モデルでは、データベース インフラストラクチャを余分にプロビジョニングする必要がなくなります。 Azure Cosmos DB リソースは、特殊な構成やライセンスを必要とすることなく提供されます。 その結果、Azure Cosmos DB でサポートされるアプリケーションを実行する際に、OSS NoSQL データベースと比べて、総保有コストが 70% も節約できます。 リアルタイムのいくつかの例については、[お客様事例](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)をご覧ください。 Azure Cosmos DB 価格モデルのその他の利点は次のとおりです。
 
-* **価格の優れた価値:** 市場アナリスト、お客様、およびパートナーは、お客様が自ら、または他のベンダーを介してソリューションを実装する際に得られるものと比べてはるかに低い価格で、Azure Cosmos DB によって提供されるすべての機能のより優れた価値を確認しています。 グローバル分散、マルチマスター、明確に定義された直感的な整合性モデル、自動インデックス作成などのデータベース機能は、Azure Cosmos DB で大幅に簡略化され、複雑さ、オーバーヘッド、ダウンタイムはありません。
+* **価格の優れた価値:** 市場アナリスト、お客様、およびパートナーは、お客様が自ら、または他のベンダーを介してソリューションを実装する際に得られるものと比べてはるかに低い価格で、Azure Cosmos DB によって提供されるすべての機能のより優れた価値を確認しています。 グローバル分散、マルチリージョンの書き込み、明確に定義された直感的な整合性モデル、自動インデックス作成などのデータベース機能は、複雑さ、オーバーヘッド、ダウンタイムがなく、Azure Cosmos DB で大幅に簡略化されています。
 
 * **NoSQL DevOps の管理が不要:** Azure Cosmos DB では、DevOps を採用し、デプロイを管理したり、メンテナンス、スケーリング、修正プログラムを適用したりする必要はありせん。 オンプレミスやクラウド インフラストラクチャでホストされている OSS NoSQL クラスターで行うすべてのワークロードを実行できます。
 

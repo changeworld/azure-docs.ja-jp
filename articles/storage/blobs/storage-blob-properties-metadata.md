@@ -4,21 +4,21 @@ description: .NET クライアント ライブラリを使用して、システ�
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1501b61e930b7554063356335b967583c0a3ff5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008439"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399127"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
 
-BLOB コンテナーは、そこに含まれているデータに加えて、システム プロパティとユーザー定義メタデータをサポートしています。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して、システム プロパティとユーザー定義メタデータを管理する方法について説明します。
+BLOB コンテナーは、そこに含まれているデータに加えて、システム プロパティとユーザー定義メタデータをサポートしています。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して、システム プロパティとユーザー定義メタデータを管理する方法について説明します。
 
 ## <a name="about-properties-and-metadata"></a>プロパティとメタデータについて
 
@@ -168,7 +168,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) または [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) メソッドを呼び出して [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) コレクションを設定した後、値を読み取ります。
+メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) または [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) メソッドを呼び出して [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) コレクションを設定した後、値を読み取ります。 **GetProperties** メソッドでは、1 回の呼び出しで BLOB のプロパティとメタデータが取得されます。 これは、[BLOB のプロパティの取得](/rest/api/storageservices/get-blob-properties)と [BLOB のメタデータの取得](/rest/api/storageservices/get-blob-metadata)を個別に呼び出す必要がある REST API と異なり ます。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

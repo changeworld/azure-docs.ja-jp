@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: ea8d4180a6e820e72f5ca0ce7e7acaf13348ae67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b1fdec12b99edc952d24b0b3cc21bad24ec7554
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262499"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569725"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
 
@@ -32,21 +32,29 @@ ms.locfileid: "85262499"
 
 1. **[Azure Active Directory]** ウィンドウを開き、 **[アプリの登録]** ウィンドウに移動し、 **[新規登録]** を選択します。 
 
-   :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Active Directory での新しいアプリケーションの登録":::
+   :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
 
 1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
 
-   * **[名前]** – アプリケーションの名前を指定します。"sampleApp" などの任意の名前を指定できます。
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp" などの任意の名前を指定できます。
    * **[サポートされているアカウントの種類]** – **[Accounts in this organizational directory only (Default Directory)]\(この組織のディレクトリ内のアカウントのみ (既定のディレクトリ))** を選択して、現在のディレクトリ内のリソースがこのアプリケーションにアクセスできるようにします。 
    * **[リダイレクト URL]** – アプリケーションの種類として **[Web]** を選択し、そのアプリケーションがホストされている URL を指定します。任意の URL を指定できます。 この例では、`https://sampleApp.com` などのテスト URL を指定できます。アプリが存在しなくてもかまいません。
 
-   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="サンプル Web アプリケーションの登録":::
+   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+
+1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
+
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
 
 1. フォームに入力したら **[登録]** を選択します。
 
 1. アプリが登録されたら、 **[Application(client) ID] (アプリケーション (クライアント) ID)** と **[オブジェクト ID]** を書き留めておきます。これらの詳細は、次の手順で使用します。 
 
-   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="アプリケーションおよびオブジェクト ID を取得する":::
+   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+
+1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
+
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
 
 ## <a name="install-the-azuread-module"></a>AzureAD モジュールをインストールする
 
@@ -63,7 +71,7 @@ ms.locfileid: "85262499"
    Set-AzContext $context 
    ```
 
-1. [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) モジュールをインストールしてインポートします。
+1. [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールをインストールしてインポートします。
 
    ```powershell
    Install-Module AzureAD
@@ -99,7 +107,11 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 上のコマンドでは、次のスクリーンショットのような出力が表示されます。
 
-:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="証明書ベースの資格情報の作成での出力":::
+:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+
+1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
+
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>新しい ID を使用するように Azure Cosmos アカウントを構成する
 
@@ -109,7 +121,11 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 1. **[追加]** および **[ロールの割り当ての追加]** を選択します。 次のスクリーンショットに示すように、 **[共同作成者]** ロールを使用して、前の手順で作成した sampleApp を追加します。
 
-   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="新しい ID を使用するように Azure Cosmos アカウントを構成する":::
+   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+
+1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
+
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
 
 1. フォームに入力したら **[保存]** を選択します。
 
@@ -148,9 +164,13 @@ Azure portal から、証明書ベースの資格情報を Azure AD 内のクラ
       -Type "Keys"
    ```
 
-前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ マスター キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
+前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ 主キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
 
-:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Azure AD でのキー取得の呼び出しを検証する":::
+:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+
+1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
+
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
 
 ## <a name="access-the-keys-from-a-c-application"></a>C# アプリケーションからキーにアクセスする 
 
@@ -236,11 +256,13 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-次のスクリーンショットに示すように、このスクリプトではプライマリおよびセカンダリ マスター キーが出力されます。
+次のスクリーンショットに示すように、このスクリプトではプライマリおよびセカンダリ 主キーが出力されます。
 
-:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="csharp アプリケーションの出力":::
+:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
 
-前のセクションと同様に、キー取得要求イベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
+1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
+
+   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440543"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324333"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -124,31 +124,35 @@ ms.locfileid: "89440543"
 
 ## <a name="staged-copy"></a>ステージング コピー
 
-ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間のステージング ストアとして Blob Storage を使用できます。 ステージングは、特に次のような場合に役立ちます。
+ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間ステージング ストアとして Azure Blob Storage または Azure Data Lake Storage Gen2 を使用することを選択できます。 ステージングは、特に次のような場合に役立ちます。
 
-- **PolyBase を使用して、さまざまなデータ ストアから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを取り込む。** Azure Synapse Analytics では、大量のデータを Azure Synapse Analytics に読み込むための高スループットのメカニズムとして、PolyBase が使用されます。 ソース データが Blob Storage または Azure Data Lake Store にあることと追加の条件を満たすことが必要です。 Blob Storage または Azure Data Lake Store 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Azure Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用して、データが Azure Synapse Analytics に効率的に読み込まれます。 詳細については、[PolyBase を使用した Azure Synapse Analytics へのデータの読み込み](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)に関する記事を参照してください。
+- **PolyBase を介してさまざまなデータ ストアから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを取り込む、Snowflake との間でデータをコピーする、または Amazon Redshift/HDFS からデータを効率的に取り込む。** 詳細については以下を参照してください。
+  - PolyBase を使用して Azure Synapse Analytics にデータを[読み込む](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)
+  - [Snowflake コネクタ](connector-snowflake.md)
+  - [Amazon Redshift コネクタ](connector-amazon-redshift.md)
+  - [HDFS コネクタ](connector-hdfs.md)
+- **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない。** たとえば、オンプレミスのデータ ストアから Azure SQL Database または Azure Synapse Analytics にデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ステージング コピーにセルフホステッド統合ランタイムを利用し、まずポート 443 で HTTP または HTTPS を介してステージング ストレージにデータをコピーし、次にステージングから SQL Database または Azure Synapse Analytics にデータを読み込むことができます。 このフローでは、ポート 1433 を有効にする必要はありません。
 - **ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアからクラウド データ ストアへのコピー) の実行に少し時間がかかる場合がある。** パフォーマンスを向上させるため、ステージング コピーを使用してオンプレミスのデータを圧縮することで、クラウド内のステージング データ ストアにデータを移動する時間を短縮できます。 その後、データは、ターゲット データ ストアに読み込む前に、ステージング ストアで圧縮を解除できます。
-- **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない。** たとえば、オンプレミスのデータ ストアから Azure SQL Database シンクまたは Azure Synapse Analytics シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ステージング コピーは、セルフホステッド統合ランタイムを利用して、まずポート 443 で HTTP または HTTPS 経由で Blob Storage ステージング インスタンスにデータをコピーします。 次に、Blob Storage ステージングから SQL Database または Azure Synapse Analytics にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
 
 ### <a name="how-staged-copy-works"></a>ステージング コピーのしくみ
 
-ステージング機能を有効にすると、最初にデータがソース データ ストアからステージング Blob Storage (独自に用意) にコピーされます。 次に、データは、ステージング データ ストアからシンク データ ストアにコピーされます。 Azure Data Factory では、2 段階のフローが自動的に管理されます。 Azure Data Factory ではまた、データ移動の完了後、ステージング ストレージから一時データが消去されます。
+ステージング機能をアクティブにすると、まずデータがソース データ ストアからステージング ストレージにコピーされます (ご自分の Azure Blob または Azure Data Lake Storage Gen2 が使用されます)。 次に、データはステージングからシンクのデータ ストアにコピーされます。 Azure Data Factory のコピー アクティビティを使用すると、2 段階のフローが自動的に管理され、データの移動が完了した後は、ステージング ストレージから一時データがクリーンアップされます。
 
 ![ステージング コピー](media/copy-activity-performance/staged-copy.png)
 
-ステージング ストアを使用したデータ移動を有効にすると、ソース データ ストアから中間またはステージング データ ストアにデータを移動する前にデータを圧縮し、中間またはステージング データ ストアからシンク データ ストアにデータを移動する前にそのデータの圧縮を解除するかどうかを指定できます。
+ステージング ストアを使用したデータ移動をアクティブにすると、ソース データ ストアからステージング ストアにデータを移動する前にデータを圧縮し、中間データ ストアまたはステージング データ ストアからシンク データ ストアにデータを移動する前に圧縮を解除するかどうかを指定できます。
 
 現在のところ、ステージング コピーの使用に関係なく、異なるセルフホステッド統合ランタイムで接続されている 2 つのデータ ストア間でデータをコピーできません。 このようなシナリオの場合、コピー元からステージングにコピーし、その後、ステージングからシンクにコピーするよう、明示的につながれた 2 つのコピー アクティビティを構成できます。
 
 ### <a name="configuration"></a>構成
 
-コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータを Blob Storage にステージングするかどうかを指定します。 **enableStaging** を `TRUE` に設定した場合は、次の表に記載されている追加のプロパティを指定する必要があります。 ステージング用に Azure Storage または Storage Shared Access Signature のリンクされたサービスがない場合は、作成する必要もあります。
+コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータをストレージにステージングするかどうかを指定します。 **enableStaging** を `TRUE` に設定した場合は、次の表に記載されている追加のプロパティを指定する必要があります。 
 
 | プロパティ | 説明 | 既定値 | 必須 |
 | --- | --- | --- | --- |
 | enableStaging |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
-| linkedServiceName |[AzureStorage ](connector-azure-blob-storage.md#linked-service-properties) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを表します。 <br/><br/> PolyBase を使用してデータを Azure Synapse Analytics に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
-| path |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
+| linkedServiceName |[Azure Blob ストレージ](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) リンク サービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを示します。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
+| path |ステージング データを格納するパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 |該当なし |いいえ |
 | enableCompression |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ |
 
 >[!NOTE]
@@ -159,25 +163,24 @@ ms.locfileid: "89440543"
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

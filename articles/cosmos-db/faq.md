@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213093"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570355"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -40,7 +40,7 @@ Azure Cosmos DB は、Microsoft によってグローバルに配布されるマ
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB は HIPAA に準拠していますか?
 
-はい。Azure Cosmos DB は HIPAA に準拠しています。 HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。 詳細については、[Microsoft トラスト センター](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)を参照してください。
+はい。Azure Cosmos DB は HIPAA に準拠しています。 HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)を参照してください。
 
 ### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Azure Cosmos DB のストレージの制限を教えてください。
 
@@ -85,7 +85,7 @@ Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユー�
 
 Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
 
-* アカウント アクセスは、個人用 Microsoft アカウント (MSA) に許可することができます。 Active Directory (AAD) アカウントや会社の AAD テナントに属するアカウントは使用しないでください。これらのアカウントには、アクセスの許可をブロックする制限が設定されている場合があります。
+* アカウント アクセスは、個人用 Microsoft アカウント (MSA) に許可することができます。 Azure Active Directory (Azure AD) アカウントや会社の Azure AD テナントに属するアカウントは使用しないでください。これらのアカウントには、アクセスの許可をブロックする制限が設定されている場合があります。
 * SQL、Gremlin API、Table アカウントのサブスクリプションあたり 1 つの[プロビジョニング スループットのコンテナー](./set-throughput.md#set-throughput-on-a-container)。
 * MongoDB アカウントのサブスクリプションあたり最大 3 つの[プロビジョニング スループットのコレクション](./set-throughput.md#set-throughput-on-a-container)。
 * サブスクリプションあたり 1 つの[プロビジョニング スループットのデータベース](./set-throughput.md#set-throughput-on-a-database)。 プロビジョニング スループットのデータベースには、任意の数のコンテナーを含めることができます。
@@ -102,9 +102,9 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 
 Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブスクリプションにサインアップします。 サインアップ後、Azure サブスクリプションに Azure Cosmos DB アカウントを追加できます。
 
-### <a name="what-is-a-master-key"></a>マスター キーとは何ですか?
+### <a name="what-is-a-primary-key"></a>主キーとは
 
-マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 マスター キーを配布するときには十分な注意が必要です。 プライマリ マスター キーとセカンダリ マスター キーは、[Azure Portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#list-account-keys)」を参照してください。
+主キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 主キーを配布するときには十分な注意が必要です。 プライマリ主キーとセカンダリ主キーは、[Azure portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#list-account-keys)」を参照してください。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>PreferredLocations として設定できるリージョンを教えてください。
 

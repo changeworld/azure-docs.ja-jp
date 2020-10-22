@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: f6872ff362777f4357b2b4345d0535bc940eda66
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8f0c15c2b401992ebe90bbd982bd80ee1ad9ec36
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982894"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444211"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ PowerShell スクリプトをニーズに合わせてカスタマイズして、
 
 - **[Azure Automation - ジョブの作成]** – PowerShell スクリプトを実行して Azure Automation Runbook 内の自動チューニング推奨情報を取得するために使用します。
 - **[Azure Automation - ジョブ出力の取得]** – 実行した PowerShell スクリプトの出力を取得するために使用します。
-- **[Office 365 Outlook – 電子メールの送信]** – 電子メールを送信します。 電子メールは、フロー作成者の Office 365 アカウントを使用して送信されます。
+- **[Office 365 Outlook – 電子メールの送信]** – 電子メールを送信します。 電子メールは、フロー作成者の職場または学校アカウントを使用して送信されます。
 
 Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使ってみる](https://docs.microsoft.com/flow/getting-started)」をご覧ください。
 

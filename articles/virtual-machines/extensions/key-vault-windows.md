@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ab89e0da3d4512cef9741ec97e9d772c852beb4b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 2595c79c024ea7583f6c6a263dcf4f6034ba6df9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804097"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072290"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -31,6 +31,11 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>前提条件
+  - 証明書を持つ Key Vault インスタンス。 [Key Vault の作成](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)に関するページを参照してください
+  - VM/VMSS には [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) が割り当てられている必要があります
+  - Key Vault アクセス ポリシーは、シークレットの `get` および `list` アクセス許可を使用して、VM/VMSS マネージド ID が証明書の秘密の部分を取得できるように設定する必要があります。 [Key Vault に対して認証を行う方法](/azure/key-vault/general/authentication)に関するページと「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy-cli)」を参照してください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -101,6 +106,10 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の証明書の更新が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 拡張機能は、個々の VM または仮想マシン スケール セットにデプロイできます。 スキーマと構成は、両方のテンプレートの種類に共通です。 
 
 仮想マシン拡張機能の JSON の構成は、テンプレートの仮想マシン リソースのフラグメント内に入れ子にする必要があります (具体的には、仮想マシン テンプレートの場合は `"resources": []` オブジェクト、仮想マシン スケール セットの場合は `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` オブジェクト)。
+
+ > [!NOTE]
+> VM 拡張機能では、Key Vault に対する認証のために、システムまたはユーザーのマネージド ID が割り当てられている必要があります。  [Key Vault に対して認証を行う方法と Key Vault アクセス ポリシー](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)に関するページを参照してください。
+> 
 
 ```json
     {
@@ -196,9 +205,9 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
    ```azurecli
         # Start the deployment
-        az vmss extension set -n "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -g "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
@@ -206,8 +215,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 次の制限/要件に注意してください。
 - Key Vault の制限:
   - デプロイ時に存在している必要があります 
-  - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 「[Key Vault に対して認証を行う方法](/azure/key-vault/general/authentication)」および「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy-cli)」をご覧ください。
-
+  - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)に関するページと「[Key Vault アクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-cli.md)」を参照してください。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

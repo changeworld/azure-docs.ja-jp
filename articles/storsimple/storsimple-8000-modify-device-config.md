@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514675"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962889"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
@@ -61,7 +61,7 @@ StorSimple デバイス マネージャー サービスに接続されている 
 
 デバイスは、クラウド ストレージ サービス プロバイダーで認証を行うために時刻を同期する必要があります。 デバイスの時刻の設定を変更するには、dバイスの **[全般設定]** ブレードを使用します。
 
-![[全般設定] 内のデバイスの説明](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![[全般設定] 内のデバイスの説明 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  ドロップダウン リストからタイム ゾーンを選択します。 最大 2 台のネットワーク タイム プロトコル (NTP) サーバーを指定できます。
 

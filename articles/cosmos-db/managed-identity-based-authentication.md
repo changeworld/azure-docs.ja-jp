@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997729"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566620"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 
@@ -35,7 +35,7 @@ ms.locfileid: "88997729"
 
 1. **[ID]** タブで、システム ID の **[状態]** を **[オン]** にし、 **[保存]** を選択します。 **[ID]** ウィンドウは次のようになります。  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="システム ID の [状態] が [オン] に設定されていることを示すスクリーンショット。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Azure Cosmos アカウントへのアクセスを許可する
 
@@ -47,7 +47,7 @@ ms.locfileid: "88997729"
 |[Cosmos DB アカウントの閲覧者ロール](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。 読み取りキーの取得を許可します。 |
 
 > [!IMPORTANT]
-> Azure Cosmos DB でのロールベースのアクセス制御のサポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、マスター キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
+> Azure Cosmos DB でのロールベースのアクセス制御のサポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、主キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
 
 > [!TIP] 
 > ロールを割り当てるときは、必要なアクセス権のみを割り当ててください。 サービスがデータの読み取りのみを必要とする場合は、マネージド ID に **Cosmos DB アカウントの閲覧者**ロールを割り当てます。 最小特権アクセスの重要性についての詳細は、「[特権アカウントの公開時間を短縮する](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)」の記事を参照してください。
@@ -58,19 +58,19 @@ ms.locfileid: "88997729"
 
 1. Azure portal にサインインし、Azure Cosmos DB アカウントに移動します。 **[アクセス管理 (IAM)]** ウィンドウ、 **[ロールの割り当て]** タブの順に開きます。
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="[アクセス制御] ウィンドウと [ロールの割り当て] タブを示すスクリーンショット。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。":::
 
 1. **[+ 追加]**  >  **[ロール割り当ての追加]** の順に選択します。
 
 1. **[ロールの割り当ての追加]** ウィンドウが右側に表示されます。
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="[ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。":::
 
    * **ロール**: **[DocumentDB Account Contributor]** を選択します。
    * **アクセスの割り当て先**: **[システム割り当てマネージド ID]** の選択のサブセクションで、 **[関数アプリ]** を選択します。
    * **Select**:このウィンドウには、サブスクリプション内の、 **[マネージド システム ID]** を持つすべての関数アプリが表示されます。 この場合は、 **[FishTankTemperatureService]** 関数アプリを選択します。 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="例が表示された [ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。":::
 
 1. 関数アプリを選択したら、 **[保存]** を選択します。
 

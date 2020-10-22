@@ -10,20 +10,18 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450237"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期リテンション - Azure SQL Database と Azure SQL Managed Instance
 
-多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database と Azure SQL Managed Instance の[自動バックアップ](automated-backups-overview.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期保有 (LTR) 機能を使用すると、指定された SQL Database と SQL Managed Instance の完全バックアップを、最大で 10 年間、Azure Blob Storage で読み取りアクセス geo 冗長ストレージを使って格納することができます。 その後、任意のバックアップを新しいデータベースとして復元できます。
-
-さらに、SQL Managed Instance によって[構成可能なバックアップ ストレージの冗長性](automated-backups-overview.md#backup-storage-redundancy)が導入されます。これにより、ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (RA-GRS) のいずれかの[ストレージ BLOB](../../storage/common/storage-redundancy.md) を柔軟に選択することができます。 このオプションは現在、マネージド インスタンスの作成プロセス中にのみ使用でき、リソースがプロビジョニングされた後に変更することはできません。
+多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database と Azure SQL Managed Instance の[自動バックアップ](automated-backups-overview.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期保有 (LTR) 機能を使用すると、指定された SQL Database と SQL Managed Instance の完全バックアップを、最大で 10 年間、[冗長性を設定](automated-backups-overview.md#backup-storage-redundancy)して Azure Blob Storage に格納することができます。 その後、任意のバックアップを新しいデータベースとして復元できます。
 
 長期リテンションは Azure SQL Database に対して有効にすることができ、Azure SQL Managed Instance に対しては限定パブリック プレビュー段階にあります。 この記事では、長期リテンションの概念の概要を説明します。 長期リテンションを構成するには、[Azure SQL Database LTR の構成](long-term-backup-retention-configure.md)と [Azure SQL Managed Instance LTR の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページを参照してください。 
 

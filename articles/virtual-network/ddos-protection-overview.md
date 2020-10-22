@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 90dbc0b888c6d6eeed97a676024abc9cc0dca6fe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017168"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371186"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -61,7 +61,7 @@ DDoS Protection Standard の機能には、次のものが含まれます。
 
 DDoS Protection Standard は実際のトラフィック使用率を監視し、それを DDoS ポリシーで定義されたしきい値と常に比較します。 そのトラフィックしきい値を超えた場合は、DDoS 軽減策が自動的に開始されます。 トラフィックがしきい値未満に戻ると、その軽減策は削除されます。
 
-![対応策](./media/ddos-protection-overview/mitigation.png)
+![図は、顧客から始まり、Azure portal を経由して DDoS Protection Standard を通過し、パブリック IP アドレスを経由してポリシー生成を通過し、2 つのパブリック IP アドレスで終わる流れになっています。](./media/ddos-protection-overview/mitigation.png)
 
 軽減策の実行中、保護されたリソースに送信されたトラフィックは DDoS Protection サービスによってリダイレクトされ、次のようないくつかのチェックが実行されます。
 
@@ -81,3 +81,4 @@ Microsoft は [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoi
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure DDoS Protection Standard を構成する](manage-ddos-protection.md)
+- [Azure DDoS Protection の価格](https://azure.microsoft.com/pricing/details/ddos-protection/)

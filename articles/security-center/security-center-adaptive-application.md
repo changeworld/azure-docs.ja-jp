@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439010"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339715"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -52,7 +52,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
-|サポートされているマシン:|![Yes](./media/icons/yes-icon.png) Windows および Linux を実行する Azure と Azure 以外のマシン<br>![Yes](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) マシン|
+|サポートされているマシン:|![Yes](./media/icons/yes-icon.png) Windows および Linux を実行する Azure と Azure 以外のマシン<br>![Yes](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) マシン|
 |必要なロールとアクセス許可:|**セキュリティ閲覧者**および**閲覧者**のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを表示できます<br>**共同作成者**および**セキュリティ管理者**のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを編集できます|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
@@ -85,7 +85,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
     - **推奨なし** - アプリケーションの許可リストが定義されておらず、機能がサポートされていないマシン。 マシンは次の理由により、このタブに表示される場合があります。
       - Log Analytics エージェントが欠落している
       - Log Analytics エージェントによってイベントが送信されていない
-      - GPO またはローカル セキュリティ ポリシーによって既存の [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ポリシーが有効になっている Windows マシンである
+      - GPO またはローカル セキュリティ ポリシーによって既存の [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ポリシーが有効になっている Windows マシンである
 
       > [!TIP]
       > マシンのグループごとに固有の推奨事項を定義するには、Security Center では少なくとも 2 週間分のデータが必要です。 最近作成されたか、Azure Defender でのみ最近有効にされたサブスクリプションに属しているマシンは、 **[推奨なし]** タブの下に表示されます。
@@ -150,6 +150,23 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 1. 変更を適用するには、 **[保存]** を選択します。
 
 
+## <a name="review-and-edit-a-groups-settings"></a>グループの設定を確認して編集する
+
+1. グループの詳細と設定を表示するには、 **[グループ設定]** を選択します
+
+    このウィンドウには、グループの名前 (変更可能)、OS の種類、場所、およびその他の関連する詳細が表示されます。
+
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開く" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+
+    > [!IMPORTANT]
+    > [ファイルの種類の保護モード] 設定の **[強制]** オプションは、**すべての**シナリオで淡色表示されます。 現時点では、利用できる強制オプションはありません。 
+    >
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開く":::
+
+1. 必要に応じて、グループの名前やファイルの種類の保護モードを変更します。
+
+1. **[適用]** を選択し、 **[保存]** を選択します。
+
 
 
 ## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>[適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある] 推奨事項への対応
@@ -207,7 +224,7 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 適応型アプリケーション制御をプログラムで管理するには、REST API を使用します。 
 
-完全な API のドキュメントは[こちら](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)にあります。
+完全な API のドキュメントは[こちら](/rest/api/securitycenter/adaptiveapplicationcontrols)にあります。
 
 REST API から使用できる関数をいくつか以下に示します。
 

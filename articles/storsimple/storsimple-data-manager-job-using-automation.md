@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514925"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743609"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 
@@ -41,7 +41,7 @@ ms.locfileid: "85514925"
 
 2. 新しい Automation アカウントを追加するには、 **[+ 追加]** をクリックします。
 
-    ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Automation 実行アカウントを作成する 2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. **[Automation アカウントの追加]** で、次のようにします。
 
@@ -52,7 +52,7 @@ ms.locfileid: "85514925"
    5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
    6. ダッシュボードでのクイック アクセス用のリンクを取得するには、 **[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
 
-      ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Automation 実行アカウントを作成する 3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       Automation アカウントが正常に作成されると、その旨が通知されます。
     

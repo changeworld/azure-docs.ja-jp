@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319947"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851273"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Federated Directory を構成する
 
@@ -53,24 +53,24 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Federa
 
 1. [Federated Directory Admin Console](https://federated.directory/of) にサインインします
 
-    ![Federated Directory のチュートリアル](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
 
 2. **[Directories]\(ディレクトリ\) > [User directories]\(ユーザー ディレクトリ\)** に移動して、テナントを選択します。 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
 
 3.  永続的なベアラー トークンを生成するには、 **[Directory Keys]\(ディレクトリ キー\) > [Create New Key]\(新しいキーの作成\)** に移動します。 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
 
 4. ディレクトリ キーを作成します。 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
     
 
 5. **[アクセス トークン]** 値をコピーします。 この値を、Azure portal で Federated Directory アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>ギャラリーから Federated Directory を追加する
 
@@ -96,15 +96,15 @@ Azure AD で自動ユーザー プロビジョニング用に Federated Director
 
 5. 個別のブラウザーで、以下で強調表示されている **URL** に移動します。 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
 
 6. **[LOG IN]\(ログイン\)** をクリックします。
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
 
 7.  Federated Directory は OpenIDConnect アプリなので、Microsoft 職場アカウントを使用して Federated Directory にログインすることを選択します。
     
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
  
 8. 認証に成功した後、同意ページの同意プロンプトを受け入れます。 その後、ご使用のテナントにアプリケーションが自動的に追加され、Federated Directory アカウントにリダイレクトされます。
 
@@ -146,12 +146,12 @@ Azure AD で自動ユーザー プロビジョニング用に Federated Director
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Federated Directory]\(Azure Active Directory ユーザーを Federated Directory に同期する\)** を選択します。
 
-    ![Federated Directory のチュートリアル](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
     
     
 11. **[属性マッピング]** セクションで、Azure AD から Federated Directory に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Federated Directory のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Federated Directory のチュートリアル](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="会社名を入力するためのフィールドを示す Federated Directory 管理コンソールのスクリーンショット。サインイン ボタンも表示されています。" border="false":::
     
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。

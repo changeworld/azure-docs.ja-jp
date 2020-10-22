@@ -1,24 +1,24 @@
 ---
 title: 論理レプリケーションと論理デコード - Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコードの使用について説明します
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932590"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707865"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコード
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
-Azure Database for PostgreSQL - フレキシブル サーバーでは、PostgreSQL の論理レプリケーションと論理デコードの機能がサポートされています。
+Azure Database for PostgreSQL - フレキシブル サーバーでは、Postgres バージョン 11 に対する PostgreSQL の論理レプリケーションと論理デコードの機能がサポートされています。
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの比較
 論理レプリケーションと論理デコードには、似ている点がいくつかあります。 両方とも
@@ -43,7 +43,11 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、PostgreS
 1. サーバー パラメーター `wal_level` を `logical` に設定します。
 2. サーバーを再起動して `wal_level` の変更を適用します。
 3. PostgreSQL のインスタンスで、接続しているリソースからのネットワーク トラフィックが許可されていることを確認します。
-4. レプリケーション コマンドを実行するときは、管理者ユーザーを使用します。
+4. 管理者ユーザーのレプリケーションのアクセス許可を付与します。
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの使用
 
@@ -54,7 +58,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、PostgreS
 
 論理レプリケーションを試すために使用できるサンプル コードを次に示します。
 
-1. パブリッシャーに接続します。 テーブルを作成し、データをいくつか追加します。
+1. パブリッシャー データベースに接続します。 テーブルを作成し、データをいくつか追加します。
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、PostgreS
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. サブスクライバーに接続します。 パブリッシャーと同じスキーマでテーブルを作成します。
+3. サブスクライバー データベースに接続します。 パブリッシャーと同じスキーマでテーブルを作成します。
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. 前に作成したパブリケーションに接続するサブスクリプションを作成します。
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. これで、サブスクライバーのテーブルに対してクエリを実行できるようになります。 パブリッシャーからデータを受信したことがわかります。
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 値が大きくなって通常のしきい値を超えたときに通知を受け取るには、フレキシブル サーバーのメトリック **Maximum Used Transaction IDs (使用されるトランザクション ID の最大数)** および **Storage Used (使用済みストレージ)** に[アラートを設定します](howto-alert-on-metrics.md)。 
 
-## <a name="read-replicas"></a>読み取りレプリカ
-現在、Azure Database for PostgreSQL の読み取りレプリカは、フレキシブル サーバーではサポートされていません。
+## <a name="limitations"></a>制限事項
+* **読み取りレプリカ** - Azure Database for PostgreSQL の読み取りレプリカは、現在のところ、フレキシブル サーバーではサポートされていません。
+* **スロットと HA フェールオーバー** - プライマリ サーバー上の論理レプリケーション スロットは、セカンダリ AZ 内のスタンバイ サーバーでは使用できません。 これは、サーバーでゾーン冗長高可用性オプションが使用されている場合に当てはまります。 スタンバイ サーバーへのフェールオーバーが発生した場合、論理レプリケーション スロットは、スタンバイ上で使用可能になりません。
 
 ## <a name="next-steps"></a>次のステップ
 * [ネットワーク オプション](concepts-networking.md)の詳細を確認する

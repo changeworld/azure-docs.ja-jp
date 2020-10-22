@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532190"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91620088"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動スケーリングする
 
@@ -68,11 +68,11 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
 > [!Important]
 > Azure HDInsight 自動スケーリング機能は、Spark および Hadoop クラスター向けに 2019 年 11 月 7 日に一般提供され、プレビュー バージョンの機能では利用できない機能強化が追加されました。 2019 年 11 月 7 日より前に Spark クラスターを作成済みで、クラスター上で自動スケーリング機能を使用する場合、推奨されるパスは、新しいクラスターを作成し、新しいクラスター上で自動スケーリングを有効にすることです。
 >
-> Interactive Query (LLAP) の自動スケーリングは、2020 年 8 月 27 日に一般公開されました。 HBase クラスターはまだプレビュー段階です。 自動スケーリングは、Spark、Hadoop、Interactive Query、および HBase クラスター上でのみ使用できます。
+> Interactive Query (LLAP) の自動スケーリングは、2020 年 8 月 27 日に HDI 4.0 用に一般公開されました。 HBase クラスターはまだプレビュー段階です。 自動スケーリングは、Spark、Hadoop、Interactive Query、および HBase クラスター上でのみ使用できます。
 
 次の表では、自動スケーリング機能と互換性のあるクラスターの種類とバージョンについて説明します。
 
-| Version | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
+| Version | Spark | Hive | Interactive Query | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3.6 (ESP なし) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
 | HDInsight 4.0 (ESP なし) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
@@ -251,7 +251,7 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 
 ### <a name="prepare-for-scaling-down"></a>スケール ダウンを準備する
 
-クラスターのスケール ダウン プロセス中、自動スケーリングはターゲット サイズを満たすためにノードを使用停止にします。 これらのノードでタスクが実行中の場合、自動スケーリングはそれらのタスクが完了するまで待機します。 各ワーカー ノードは HDFS でのロールも果たすため、一時データは残りのノードに移動されます。 残りのノードに、すべての一時データをホストするのに十分なスペースがあることを確認します。
+クラスターのスケール ダウン プロセス中、自動スケーリングはターゲット サイズを満たすためにノードを使用停止にします。 これらのノードでタスクが実行中の場合、自動スケーリングは、Spark および Hadoop クラスターに対してタスクが完了するまで待機します。 各ワーカー ノードは HDFS でのロールも果たすため、一時データは残りのノードに移動されます。 残りのノードに、すべての一時データをホストするのに十分なスペースがあることを確認します。
 
 実行中のジョブは続行されます。 保留中のジョブは、少ない数の使用可能ワーカー ノードでスケジューリングされるのを待ちます。
 
@@ -265,7 +265,7 @@ Hadoop クラスターの自動スケーリングでは、HDFS の使用状況�
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>ピーク時の使用状況シナリオに対する Hive 構成の同時実行クエリの最大合計数を設定する
 
-Ambari では、Hive 構成の*同時実行クエリの最大合計数*は、自動スケーリング イベントによって変更されません。 つまり Hive Server 2 Interactive Service は、LLAP デーモンの数が負荷やスケジュールに基づいてスケールアップまたはスケールダウンされた場合でも、任意の時点で指定された数の同時実行クエリのみを処理できます。 一般的には、手動による介入を避けられるように、ピーク時の使用状況シナリオに合わせてこの構成を設定することをお勧めします。
+Ambari では、Hive 構成の*同時実行クエリの最大合計数*は、自動スケーリング イベントによって変更されません。 つまり Hive Server 2 Interactive Service は、Interactive Query デーモンの数が負荷やスケジュールに基づいてスケールアップまたはスケールダウンされた場合でも、任意の時点で指定された数の同時実行クエリのみを処理できます。 一般的には、手動による介入を避けられるように、ピーク時の使用状況シナリオに合わせてこの構成を設定することをお勧めします。
 
 ただし、ワーカー ノードが少ししかなく、同時実行クエリの最大合計数の値が非常に高く構成されている場合に、Hive サーバー 2 の再起動エラーが発生することがあります。 少なくとも、指定された数の Tez AM に対応できるワーカー ノードの最小数が必要です (同時実行クエリの最大合計数の構成と同じ)。 
 
@@ -275,11 +275,11 @@ Ambari では、Hive 構成の*同時実行クエリの最大合計数*は、自
 
 HDInsight の自動スケーリングは、ノード ラベル ファイルを使用して、タスクを実行する準備がノードでできているかどうかを判断します。 ノード ラベル ファイルは、3 つのレプリカを持つ HDFS に格納されます。 クラスターサイズが大幅にスケールダウンされ、一時データが大量にある場合、3 つのレプリカすべてが削除される可能性はわずかです。 これが発生すると、クラスターはエラー状態になります。
 
-### <a name="llap-daemons-count"></a>LLAP デーモンの数
+### <a name="interactive-query-daemons-count"></a>Interactive Query デーモン数
 
-自動スケーリングが有効な LLAP クラスターでは、自動スケーリングの上下イベントによって、アクティブなワーカー ノードの数に合わせて LLAP デーモンの数もスケールアップまたはスケールダウンされます。 デーモンの数の変化は、Ambari の `num_llap_nodes` 構成には保持されません。 Hive サービスが手動で再起動された場合は、次に、Ambari の構成に従って LLAP デーモンの数がリセットされます。
+自動スケーリングが有効な Interactive Query クラスターでは、自動スケーリングの上下イベントによって、アクティブなワーカー ノードの数に合わせて Interactive Query デーモンの数もスケールアップまたはスケールダウンされます。 デーモンの数の変化は、Ambari の `num_llap_nodes` 構成には保持されません。 Hive サービスが手動で再起動された場合は、Ambari の構成に従って Interactive Query デーモンの数がリセットされます。
 
-LLAP サービスが手動で再起動された場合、*Advanced hive-interactive-env* の下の `num_llap_node` 構成 (Hive LLAP デーモンを実行するために必要なノードの数) を手動で変更し、現在アクティブなワーカー ノードの数と一致させる必要があります。
+Interactive Query サービスが手動で再起動された場合、*Advanced hive-interactive-env* の下の `num_llap_node` 構成 (Hive Interactive Query デーモンを実行するために必要なノードの数) を手動で変更し、現在アクティブなワーカー ノードの数と一致させる必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

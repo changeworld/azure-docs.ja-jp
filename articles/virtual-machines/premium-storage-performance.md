@@ -4,15 +4,15 @@ description: Azure Premium SSD マネージド ディスクを使用する高パ
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650719"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978664"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -130,7 +130,7 @@ PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論
 | **最大メモリ** |アプリケーションをスムーズに実行するために必要なメモリ容量。 |% Committed Bytes in Use |Use vmstat |
 | **最大CPU** |アプリケーションをスムーズに実行するために必要な CPU 量。 |% Processor time |% 使用率 |
 
-詳細については、「[iostat](https://linux.die.net/man/1/iostat)」と「[PerfMon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)」をご覧ください。
+詳細については、「[iostat](https://linux.die.net/man/1/iostat)」と「[PerfMon](/windows/win32/perfctrs/performance-counters-portal)」をご覧ください。
 
 
 
@@ -305,45 +305,11 @@ Premium Storage データ ディスクの ReadOnly キャッシュを構成す�
 
 ## <a name="optimize-performance-on-linux-vms"></a>Linux VM のパフォーマンスの最適化
 
-キャッシュが **ReadOnly** または **None** に設定されているすべての Premium SSD や Ultra Disks で、ファイル システムをマウントするときに "バリア" を無効にする必要があります。 これらのキャッシュ設定では Premium Storage ディスクへの書き込みの耐久性が保証されるため、このシナリオではバリアが必要ありません。 書き込み要求が正常に完了した時点で、データは永続的なストアに書き込まれた状態になっています。 "バリア" を無効にするには、次のいずれかの方法を使用します。 ファイル システムに応じて選択してください。
-  
-* **reiserFS** の場合、バリアを無効にするには、`barrier=none` マウント オプションを使用します (バリアを有効にするには、`barrier=flush` を使用します)。
-* **ext3/ext4** の場合、バリアを無効にするには、`barrier=0` マウント オプションを使用します (バリアを有効にするには、`barrier=1` を使用します)。
-* **XFS** の場合、バリアを無効にするには、`nobarrier` マウント オプションを使用します (バリアを有効にするには、`barrier` を使用します)。
-* キャッシュが **ReadWrite** に設定されている Premium Storage ディスクの場合は、書き込みの耐久性のためにバリアを有効にしてください。
-* VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する汎用一意識別子 (UUID) 参照で /etc/fstab を更新する必要があります。 詳細については、[Linux VM への管理ディスクの追加](./linux/add-disk.md)に関する記事を参照してください。
+すべての Premium SSD や Ultra Disks では、データが失われる可能性のあるキャッシュがないことがわかっている場合、パフォーマンスを向上させるために、ディスク上のファイル システムの "バリア" を無効にすることができる場合があります。  Azure ディスク キャッシュが ReadOnly または None に設定されている場合、バリアを無効にすることができます。  ただし、キャッシュが ReadWrite に設定されている場合は、書き込み耐久性を維持するためにバリアを有効にしたままにしておく必要があります。  バリアは通常、デフォルトで有効になっていますが、ファイル システムの種類に応じて、以下のいずれかの方法でバリアを無効にすることができます。
 
-Premium SSD では、次の Linux ディストリビューションが検証されました。 Premium SSD のパフォーマンスと安定性を向上させるには、VM をこれらのバージョン以降のいずれかにアップグレードすることをお勧めします。 
-
-バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが Microsoft の検証によって判明しています。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
-
-| Distribution | Version | サポートされるカーネル | 詳細 |
-| --- | --- | --- | --- |
-| Ubuntu | 12.04 以降| 3.2.0-75.110+ | &nbsp; |
-| Ubuntu | 14.04 以降| 3.13.0-44.73+  | &nbsp; |
-| Debian | 7.x、8.x またはそれ以降| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 以降| 3.12.36-38.1+ | &nbsp; |
-| SUSE | SLES 11 SP4 以降| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ 以降| 3.18.4+ | &nbsp; |
-| CentOS | 6.5、6.6、6.7、7.0、またはそれ以降| &nbsp; | [LIS4 が必須](https://www.microsoft.com/download/details.aspx?id=55106) <br> "*次のセクションの注を参照してください*" |
-| CentOS | 7.1+ 以降| 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://www.microsoft.com/download/details.aspx?id=55106) <br> "*次のセクションの注を参照してください*" |
-| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+、またはそれ以降 | &nbsp; | &nbsp; |
-| Oracle | 6.0+、7.2+、またはそれ以降 | &nbsp; | UEK4 または RHCK |
-| Oracle | 7.0-7.1 以降 | &nbsp; | UEK4 または RHCK と [LIS 4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4-6.7 以降 | &nbsp; | UEK4 または RHCK と [LIS 4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 用 LIS ドライバー
-
-OpenLogic CentOS VM を実行している場合は、次のコマンドを実行して、最新のドライバーをインストールしてください。
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-場合によっては、上記のコマンドによってカーネルもアップグレードされます。 カーネルの更新が必要な場合は、再起動後に上記のコマンドを再実行して、Microsoft-HYPER-V パッケージのインストールを完了する必要があります。
-
+* **reiserFS** の場合、barrier=none マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier=flush を使用します。
+* **ext3/ext4** の場合、barrier=0 マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier=1 を使用します。
+* **XFS** の場合、nobarrier マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier を使用します。  新しいバージョンの Linux カーネルでは、XFS ファイル システムの設計によって耐久性が常に確保されているため、バリアを無効にしても効果がないことに注意してください。  
 
 ## <a name="disk-striping"></a>ディスク ストライピング
 
@@ -377,7 +343,7 @@ Azure では、超並列のプラットフォームとして Premium Storage が
 
 たとえば、SQL Server を使用するアプリケーションが、大規模なクエリとインデックス操作を同時に実行しているとします。 大規模なクエリよりも、インデックス操作のパフォーマンスを高める必要があると仮定します。 このような場合、インデックス操作の MAXDOP 値を、クエリの MAXDOP 値よりも大きい値に設定します。 これにより、SQL Server は大規模なクエリに割り当てることができるプロセッサよりも多くのプロセッサをインデックス操作に利用できます。 SQL Server が各操作に使用するスレッドの数を制御するわけではないことに注意してください。 制御できるのは、マルチスレッド専用のプロセッサの最大数です。
 
-SQL Server の [並列処理の次数](https://technet.microsoft.com/library/ms188611.aspx) の詳細をご覧ください。 アプリケーションのマルチスレッドに影響を与えるこのような設定とパフォーマンスを最適化する構成を確認してください。
+SQL Server の [並列処理の次数](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) の詳細をご覧ください。 アプリケーションのマルチスレッドに影響を与えるこのような設定とパフォーマンスを最適化する構成を確認してください。
 
 ## <a name="queue-depth"></a>キューの深さ
 

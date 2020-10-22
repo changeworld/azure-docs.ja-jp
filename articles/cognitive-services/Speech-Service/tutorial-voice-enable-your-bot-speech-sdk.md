@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 073fab4aee084513db4ca05af6c12087c0a8f911
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934465"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206375"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -158,7 +158,7 @@ Speech リソースを作成するには、以下の手順に従います。
 4. プロジェクトが読み込まれたら、<kbd>F5</kbd> キーを押してプロジェクトをビルドして実行します。
 5. ブラウザーが起動し、このような画面が表示されます。
     > [!div class="mx-imgBorder"]
-    > [![echobot-running-on-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "localhost で実行されている EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
+    > [![スクリーンショットに、ボットの準備ができましたというメッセージが表示されたエコー ボット ページが示されています。](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "localhost で実行されている EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Bot Framework Emulator を使用してボット サンプルをテストする
 
@@ -174,7 +174,7 @@ Speech リソースを作成するには、以下の手順に従います。
    ```
    [接続] を押します。
 4. ボットにより、"Hello and welcome!" というあいさつが行われます。 メッセージが表示されます。 任意のテキスト メッセージを入力し、ボットからの応答を受け取ることを確認します。
-5. エコー ボット インスタンスとの交信の様子は、次のようになります。[![bot-framework-emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework Emulator")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. エコー ボット インスタンスとの交信の様子は、次のようになります。[![スクリーンショットに、Bot Framework Emulator が示されています。](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework Emulator")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>ボットを Azure App Service にデプロイする
 
@@ -412,7 +412,7 @@ Speech SDK では、カスタム キーワードのアクティブ化がサポ�
 
 Windows 音声アシスタント クライアントのソース コード内で、これらのファイルを調べて、キーワード検出を有効にするために使用されているコードを確認します。
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest&preserve-view=true#fromfile-string-) の呼び出しが含まれています。
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>(省略可能) 言語とボットの音声を変更する

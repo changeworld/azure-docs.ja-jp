@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31257d795dbd06da65e3d07e18a16d9bdf7e782a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385265"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961104"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してセッションの動作を構成する
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C) で[シングル サインオン (SSO)
 次のプロパティを使用して、Web アプリケーション セッションを管理できます。
 
 - **[Web アプリのセッションの有効期間 (分)]** - 認証の成功時にユーザーのブラウザーに格納される Azure AD B2C のセッション Cookie の有効期間。
-    - 既定値 =  86400 秒 (1440 分)。
-    - 最小値 (この値を含む) = 900 秒 (15 分)。
-    - 最大値 (この値を含む) = 86400 秒 (1440 分)。
+  - 既定値 =  86400 秒 (1440 分)。
+  - 最小値 (この値を含む) = 900 秒 (15 分)。
+  - 最大値 (この値を含む) = 86400 秒 (1440 分)。
 - **[Web アプリのセッション タイムアウト]** - [セッションの有効期限の種類](session-overview.md#session-expiry-type)、 *[ローリング]* または *[絶対]* 。 
 - **[シングル サインオン構成]** - Azure AD B2C テナント内の複数のアプリとユーザー フローにまたがるシングル サインオン (SSO) の動作の[セッション スコープ](session-overview.md#session-scope)。 
 
@@ -44,18 +44,42 @@ Azure Active Directory B2C (Azure AD B2C) で[シングル サインオン (SSO)
 </UserJourneyBehaviors>
 ```
 
-## <a name="single-sign-out"></a>シングル サインアウト
+## <a name="configure-sign-out-behavior"></a>サインアウトの動作を構成する
 
-### <a name="configure-the-applications"></a>アプリケーションを構成する
+### <a name="secure-your-logout-redirect"></a>ログアウトのリダイレクトをセキュリティで保護する
+
+ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡され、 **[ログアウト要求に ID トークンが必要]** が有効になっている場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URL と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。 
+
+ログアウト要求で ID トークンを要求するには、[RelyingParty](relyingparty.md) 要素内に **UserJourneyBehaviors** 要素を追加します。 次に、**SingleSignOn** 要素の **EnforceIdTokenHintOnLogout** を `true` に設定します。 **UserJourneyBehavors** 要素は、次の例のようになります。
+
+```xml
+<UserJourneyBehaviors>
+  <SingleSignOn Scope="Tenant" EnforceIdTokenHintOnLogout="true"/>
+</UserJourneyBehaviors>
+```
+
+アプリケーション ログアウト URL を構成するには:
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録]** を選択してから、アプリケーションを選択します。
+1. **[認証]** を選択します。
+1. **[ログアウト URL]** テキスト ボックスに、ログアウト後のリダイレクト URI を入力し、 **[保存]** を選択します。
+
+### <a name="single-sign-out"></a>シングル サインアウト
+
+#### <a name="configure-the-applications"></a>アプリケーションを構成する
 
 Azure AD B2C のサインアウト エンドポイントにユーザーをリダイレクトすると (OAuth2 と SAML プロトコルの両方)、Azure AD B2C によってユーザーのセッションがブラウザーからクリアされます。  [シングル サインアウト](session-overview.md#single-sign-out)を使用できるようにするには、Azure portal からアプリケーションの `LogoutUrl` を設定します。
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. ページの右上隅のアカウントをクリックして、Azure AD B2C のディレクトリを選択します。
 1. 左側のメニューで **[Azure AD B2C]** 、 **[アプリの登録]** の順に選択し、対象のアプリケーションを選択します。
-1. **[設定]** 、 **[プロパティ]** の順に選択して、 **[ログアウト URL]** テキスト ボックスを探します。 
+1. **[認証]** を選択します。
+1. **[ログアウト URL]** テキスト ボックスに、ログアウト後のリダイレクト URI を入力し、 **[保存]** を選択します。
 
-### <a name="configure-the-token-issuer"></a>トークン発行者を構成する 
+#### <a name="configure-the-token-issuer"></a>トークン発行者を構成する 
 
 シングル サインアウトをサポートするには、JWT と SAML の両方のトークン発行者技術プロファイルで次を指定する必要があります。
 

@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f5f920f14a556d63f433b36658d7b265d51a28d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905466"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340378"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
-Azure Security Center には、さまざまなリソースの種類に対する各種のアラートがあります。 Azure Security Center では、Azure にデプロイされたリソースに対して、またオンプレミス環境とハイブリッド クラウド環境にデプロイされたリソースに対してもアラートが生成されます。
+Security Center には、さまざまなリソースの種類に対する各種のアラートがあります。 Azure Security Center では、Azure にデプロイされたリソースに対して、またオンプレミス環境とハイブリッド クラウド環境にデプロイされたリソースに対してもアラートが生成されます。
 
 セキュリティ アラートは、高度な検出によってトリガーされ、Azure Defender でのみ使用できます。 無料試用版が提供されています。 **[Pricing & settings]\(価格と設定\)** ページからアップグレードできます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
@@ -85,10 +85,17 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 
 こうしたさまざまな取り組みを通じて、これまでできなかったような検出が可能となり、検出の精度が向上しています。しかもその恩恵はすぐに得ることができます。ユーザーが措置を講じる必要はありません。
 
+## <a name="export-alerts"></a>アラートのエクスポート
+
+アラートを Security Center の外部で表示するために、次のようなさまざまなオプションが用意されています。
+
+- アラート ダッシュボードの **[CSV レポートのダウンロード]** により、1 回で CSV にエクスポートできます。
+- [価格と設定] の **[連続エクスポート]** を使用すると、セキュリティ アラートと推奨設定の Log Analytics ワークスペースおよび Event Hubs へのストリームを構成できます。 [連続エクスポートの詳細](continuous-export.md)
+- **Azure Sentinel コネクタ**は、Azure Defender のアラートを Azure Security Center から Azure Sentinel にストリーミングします。 [Sentinel を使用した Azure Security Center の接続に関する詳細](../sentinel/connect-azure-security-center.md)
+
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、Security Center で利用できるさまざまな種類のアラートについて説明しました。 詳細については、次を参照してください。
 
-- **Azure Activity Log 内のセキュリティ アラート** - Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください
-
+- **Azure Activity Log 内のセキュリティ アラート** - Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md#view-the-activity-log)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください

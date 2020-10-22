@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514613"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91447373"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -107,24 +107,19 @@ CNAME が他の DNS サービス内にあり、Azure リソースを示してい
 - 少なくとも Azure サブスクリプションへの閲覧者レベルのアクセス権
 - Azure Resource Graph への読み取りアクセス権
 
-組織のテナントのグローバル管理者である場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権を昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)」のガイダンスを使用して、組織のすべてのサブスクリプションへのアクセス権が付与されるようにアカウントを昇格させます。
+組織のテナントのグローバル管理者である場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権を昇格させる](../../role-based-access-control/elevate-access-global-admin.md)」のガイダンスを使用して、組織のすべてのサブスクリプションへのアクセス権が付与されるようにアカウントを昇格させます。
 
 
 > [!TIP]
-> Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 大規模な Azure リソース データセットを処理する方法について[参照してください](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)。 
+> Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 
+> 
+> 大規模な Azure リソース データセットを処理する方法について[参照してください](../../governance/resource-graph/concepts/work-with-data.md)。
 > 
 > このツールでは、サブスクリプションのバッチ処理を使用してこれらの制限を回避しています。
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
-スクリプトには 2 つのバージョンがあり、両方のバージョンで同じ入力パラメーターが使用され、同様の出力が生成されます。
-
-|スクリプト  |情報  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |並列モードは、PowerShell バージョン 7 以降でのみサポートされています。それ以外のバージョンでは、シリアル モードが実行されます。|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |このスクリプトでは [Windows Workflow](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview) が使用されるため、PowerShell デスクトップ/バージョン 6 未満でのみサポートされています。|
-
-詳細については、GitHub https://aka.ms/DanglingDNSDomains から PowerShell スクリプトをダウンロードしてください。
+PowerShell スクリプト (**Get-DanglingDnsRecords.ps1**) の詳細を確認し、GitHub (https://aka.ms/DanglingDNSDomains ) からダウンロードしてください。
 
 ## <a name="remediate-dangling-dns-entries"></a>未解決の DNS エントリを修復する 
 
@@ -152,7 +147,7 @@ DNS ゾーンをレビューし、未解決の CNAME レコードまたは乗っ
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS エイリアス レコードの使用
 
-Azure DNS の[エイリアス レコード](https://docs.microsoft.com/azure/dns/dns-alias#scenarios)では、DNS レコードと Azure リソースのライフサイクルを結合することで、未解決の参照が防止できるようになります。 たとえば、パブリック IP アドレスまたは Traffic Manager プロファイルをポイントするエイリアス レコードとして修飾されている DNS レコードについて考えます。 これらの基になるリソースを削除すると、DNS エイリアス レコードが空のレコード セットになります。 削除されたリソースは参照されなくなります。 エイリアス レコードを使用して保護できるものには制限があることに注意してください。 現在の、この一覧の制限は次のとおりです。
+Azure DNS の[エイリアス レコード](../../dns/dns-alias.md#scenarios)では、DNS レコードと Azure リソースのライフサイクルを結合することで、未解決の参照が防止できるようになります。 たとえば、パブリック IP アドレスまたは Traffic Manager プロファイルをポイントするエイリアス レコードとして修飾されている DNS レコードについて考えます。 これらの基になるリソースを削除すると、DNS エイリアス レコードが空のレコード セットになります。 削除されたリソースは参照されなくなります。 エイリアス レコードを使用して保護できるものには制限があることに注意してください。 現在の、この一覧の制限は次のとおりです。
 
 - Azure Front Door
 - Traffic Manager プロファイル
@@ -161,7 +156,7 @@ Azure DNS の[エイリアス レコード](https://docs.microsoft.com/azure/dns
 
 現時点で提供されているサービス内容は限られていますが、サブドメインの乗っ取りを防ぐため、可能な限りエイリアス レコードを使用することをお勧めします。
 
-Azure DNS のエイリアス レコードの機能に関する詳細については、[こちら](https://docs.microsoft.com/azure/dns/dns-alias#capabilities)を参照してください。
+Azure DNS のエイリアス レコードの機能に関する詳細については、[こちら](../../dns/dns-alias.md#capabilities)を参照してください。
 
 
 
@@ -171,7 +166,7 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
 これらのレコードによって、他の誰かが CNAME エントリにある同じ名前の Azure App Service を作成することを阻止するわけではありません。 ドメイン名の所有権を証明することができない脅威アクターが、トラフィックを受信したりコンテンツを制御したりすることはできません。
 
-既存のカスタム DNS 名を Azure App Service にマップする方法については、[こちら](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain)を参照してください。
+既存のカスタム DNS 名を Azure App Service にマップする方法については、[こちら](../../app-service/app-service-web-tutorial-custom-domain.md)を参照してください。
 
 
 
@@ -185,13 +180,13 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
     - サービスを停止するときに、必要なチェック事項の一覧に "DNS エントリの削除" を含めます。
 
-    - カスタム DNS エントリがあるすべてのリソースに対して[削除ロック](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)をかけます。 削除ロックは、リソースがプロビジョニング解除される前にマッピングを削除する必要があることを示すインジケーターとして機能します。 このような対策は、社内の教育プログラムと組み合わせて初めて機能します。
+    - カスタム DNS エントリがあるすべてのリソースに対して[削除ロック](../../azure-resource-manager/management/lock-resources.md)をかけます。 削除ロックは、リソースがプロビジョニング解除される前にマッピングを削除する必要があることを示すインジケーターとして機能します。 このような対策は、社内の教育プログラムと組み合わせて初めて機能します。
 
 - **検出手順を作成する:**
 
     - DNS レコードを定期的に確認して、サブドメインがすべて以下の Azure リソースにマップされていることを確認します。
 
-        - 存在しているかどうか - DNS ゾーンに対して、*.azurewebsites.net や *.cloudapp.azure.com などの Azure サブドメインを指すリソースのクエリを実行します (詳しくは[このリファレンス リスト](azure-domains.md)を参照してください)。
+        - 存在しているかどうか - DNS ゾーンに対して、*.azurewebsites.net や *.cloudapp.azure.com などの Azure サブドメインを指すリソースのクエリを実行します (詳しくは、[Azure ドメインのリファレンス リスト](azure-domains.md)を参照してください)。
         - 所有者が自分であるかどうか - DNS サブドメインが対象としているすべてのリソースを所有していることを確認します。
 
     - Azure の完全修飾ドメイン名 (FQDN) エンドポイントとアプリケーション所有者のサービス カタログを維持します。 サービス カタログをビルドするには、次の Azure Resource Graph クエリ スクリプトを実行します。 このスクリプトからは、アクセスできるリソースの FQDN エンドポイント情報が表示され、それらが CSV ファイルに出力されます。 テナントのあらゆるサブスクリプションにアクセスできる場合、このスクリプトでは、次のサンプル スクリプトで確認できるように、それらすべてのサブスクリプションが考慮されます。 特定のサブスクリプション セットに結果を制限するには、画像のようにスクリプトを編集します。
@@ -207,8 +202,8 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
 サブドメインの乗っ取りを防ぐために使用できる関連のサービスと Azure の機能の詳細については、以下のページを参照してください。
 
-- [カスタム ドメインのエイリアス レコードを使用した Azure DNS のサポート](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [Azure DNS で未解決の DNS レコードを防ぐ](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [クイック スタート: Azure PowerShell を使用して最初の Resource Graph クエリを実行します](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [クイック スタート: Azure PowerShell を使用して最初の Resource Graph クエリを実行します](../../governance/resource-graph/first-query-powershell.md)

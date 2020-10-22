@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950121"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776138"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
@@ -104,6 +104,8 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 成功した場合の応答は、OData JSON 形式の ID リスク検出とその関連データのコレクションです。必要に応じてこのデータを解析し、処理できます。
 
 ### <a name="sample"></a>サンプル
+
+このサンプルでは、共有シークレットを使用して認証を行う方法を示します。 運用環境では、コードにシークレットを格納することは一般的に好ましくありません。 組織は、Azure リソース用マネージド ID を使用して、これらの資格情報をセキュリティで保護することができます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」という記事を参照してください。
 
 以下に示したコードは、PowerShell を使って認証と API 呼び出しを行う例です。  
 該当するクライアント ID、秘密キー、テナントのドメインを追加してください。

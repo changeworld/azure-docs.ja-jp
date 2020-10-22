@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999820"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91307451"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -43,7 +43,7 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -211,6 +211,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 19 | OMI パッケージのインストールが失敗しました | 
 | 20 | SCX パッケージのインストールが失敗しました |
 | 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
+| 52 | 依存関係が不足しているため、この拡張機能は失敗しました | 不足している依存関係に関する詳細情報を出力とログで確認します。 |
+| 53 | 構成パラメーターが不足しているか正しくないため、この拡張機能は失敗しました | 正しくない処理に関する詳細情報を出力とログで確認します。 さらに、ワークスペース ID が正しいこと、およびコンピューターがインターネットに接続されていることを確認します。 |
 | 55 | Azure Monitor サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
 
 その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../azure-monitor/platform/vmext-troubleshoot.md)に関する記事を参照してください。

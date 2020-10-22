@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010768"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839046"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis で Redis コマンドライン ツールを使用する方法
 
@@ -72,7 +72,7 @@ stunnel を使用してキャッシュに接続するには､*redis-cli.exe* �
 redis-cli.exe -p 6380 -a YourAccessKey
 ```
 
-![stunnel と redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
+![キャッシュへの接続が成功したことを示すスクリーンショット。](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
 **安全度の低い**非 TLS ポート経由でテスト用キャッシュを使用する場合は､`redis-cli.exe` を実行して､*ホスト名*と*ポート*､*アクセス キー* (プライマリかセカンダリ) を指定することでテスト用キャッシュに接続できます｡
 

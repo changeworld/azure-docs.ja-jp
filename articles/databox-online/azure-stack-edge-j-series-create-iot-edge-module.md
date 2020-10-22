@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891186"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952201"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上のファイルを移動する C# IoT Edge モジュールを開発する
 
@@ -259,7 +259,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
  
 3. 資格情報を提供すると、モジュール イメージを Azure Container Registry にプッシュできます。 VS Code エクスプローラーで、**module.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution] (IoT Edge ソリューションのビルドとプッシュ)** を選択します。
 
-    ![IoT Edge ソリューションをビルドしてプッシュする](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![IoT Edge ソリューションをビルドしてプッシュする 2](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Visual Studio Code でソリューションをビルドすると、統合ターミナルで 2 つのコマンドが実行されます。docker build と docker push です。 この 2 つのコマンドによって、ご自身のコードがビルドされ、CSharpModule.dll がコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。
 

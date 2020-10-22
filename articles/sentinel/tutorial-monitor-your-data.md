@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826559"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843075"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>チュートリアル: データの視覚化と監視
 
@@ -62,7 +62,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 ## <a name="create-new-workbook"></a>新しいブックを作成する
 
 1. 新しいブックを最初から作成するには、 **[ブック]** 、 **[Add workbook]\(ブックの追加\)** の順に選択します。
-  ![ブックに移動](./media/tutorial-monitor-data/create-workbook.png)
+  ![新しいブック画面を示すスクリーンショット。](./media/tutorial-monitor-data/create-workbook.png)
 
 1. ブックを編集するには、 **[編集]** を選択し、必要に応じてテキスト、クエリ、およびパラメーターを追加します。 ブックをカスタマイズする方法の詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/platform/workbooks-overview.md)」を参照してください。 
 
@@ -72,7 +72,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 
 1. 組織内の他のユーザーがブックを使用できるようにする場合は、 **[保存先]** で **[共有レポート]** を選択します。 このブックを自分だけが使用できるようにする場合は、 **[個人用レポート]** を選択します。
 
-1. ワークスペース内のブックを切り替えるには、任意のブックの上部ウィンドウで **[開く]** ![ブックの切り替え](./media/tutorial-monitor-data/switch.png) を選択します。 右側に表示されるウィンドウで、ブックを切り替えます。
+1. ワークスペース内のブックを切り替えるには、ブックの上部ウィンドウで、![ブックを開くための **[開く]** アイコン](./media/tutorial-monitor-data/switch.png)を選択できます。 右側に表示されるウィンドウで、ブックを切り替えます。
 
    ![ブックの切り替え](./media/tutorial-monitor-data/switch-workbooks.png)
 

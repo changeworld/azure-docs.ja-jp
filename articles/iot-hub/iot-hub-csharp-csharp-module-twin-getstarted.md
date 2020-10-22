@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: e990d122367581c785b411f3f6d3c39b334a14fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3d683ada6401c4ba4f2e232948e9712643339fd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998579"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533470"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT Hub モジュール ID とモジュール ツイン (.NET) の概要
 
@@ -70,7 +70,7 @@ ms.locfileid: "88998579"
 
 1. **Microsoft.Azure.Devices.Client** を検索して選択し、 **[インストール]** を選択します。
 
-    ![Azure IoT Hub .NET service SDK の現在のバージョンをインストールする](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    !["Microsoft.Azure.Devices.Client" が選択されて、[インストール] ボタンが強調表示されているスクリーンショット。](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 

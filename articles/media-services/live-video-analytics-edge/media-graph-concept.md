@@ -3,12 +3,12 @@ title: メディア グラフの概念 - Azure
 description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567080"
 ---
 # <a name="media-graph"></a>メディア グラフ
 
@@ -70,7 +70,7 @@ IoT Edge の Live Video Analytics では、メディア グラフ内の次の種
 
 #### <a name="rtsp-source"></a>RTSP ソース 
 
-RTSP ソース ノードを使用すると、[RTSP] (https://tools.ietf.org/html/rfc2326 サーバー) からメディアを取り込むことができます。 監視と IP ベースのカメラは、RTSP (リアルタイム ストリーミング プロトコル) と呼ばれるプロトコルでデータを送信します。これは、携帯電話やビデオ カメラなどの他の種類のデバイスとは異なります。 このプロトコルは、サーバー (カメラ) とクライアントの間のメディア セッションを確立して制御するために使用されます。 メディア グラフの RTSP ソース ノードはクライアントとして機能し、RTSP サーバーとのセッションを確立できます。 ほとんどの [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)などの多くのデバイスには、組み込みの RTSP サーバーがあります。 [ONVIF](https://www.onvif.org/) は、[プロファイル G、S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 準拠デバイスの定義で RTSP をサポートするように指示します。 RTSP ソース ノードでは、認証された接続を有効にするための資格情報と共に RTSP URL を指定する必要があります。
+RTSP ソース ノードを使用すると、[RTSP](https://tools.ietf.org/html/rfc2326 server) からメディアを取り込むことができます。 監視と IP ベースのカメラは、RTSP (リアルタイム ストリーミング プロトコル) と呼ばれるプロトコルでデータを送信します。これは、携帯電話やビデオ カメラなどの他の種類のデバイスとは異なります。 このプロトコルは、サーバー (カメラ) とクライアントの間のメディア セッションを確立して制御するために使用されます。 メディア グラフの RTSP ソース ノードはクライアントとして機能し、RTSP サーバーとのセッションを確立できます。 ほとんどの [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)などの多くのデバイスには、組み込みの RTSP サーバーがあります。 [ONVIF](https://www.onvif.org/) は、[プロファイル G、S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 準拠デバイスの定義で RTSP をサポートするように指示します。 RTSP ソース ノードでは、認証された接続を有効にするための資格情報と共に RTSP URL を指定する必要があります。
 
 #### <a name="iot-hub-message-source"></a>IoT Hub メッセージのソース 
 

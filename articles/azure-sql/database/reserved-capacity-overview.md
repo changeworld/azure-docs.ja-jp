@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321596"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058269"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>予約容量を使用してリソースのコストを節約する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 コンピューティング リソースの予約をコミットすることで、Azure SQL Database および SQL Managed Instance のコストを従量課金制より節約できます。 予約容量では、SQL Database や SQL Managed Instance の 1 年間または 3 年間の使用を確約することで、コンピューティング コストの大幅な割引を受けることができます。 予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。
 
-特定のデータベースまたはマネージド インスタンスに予約を割り当てる必要はありません。 一致する既に実行されている既存のデプロイや、新たにデプロイされたデプロイに対して、特典が自動的に適応されます。 予約を購入することで、1 年間または 3 年間のコンピューティング コストの使用を確約したことになります。 予約を購入するとすぐに、予約の属性に一致するコンピューティング料金は従量課金制で課金されなくなります。 予約には、サービスに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金がデータベースまたはマネージド インスタンスに適用されます。 予約は自動更新されません。 価格の詳細については、[予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
+特定のデータベースまたはマネージド インスタンスに予約を割り当てる必要はありません。 一致する既に実行されている既存のデプロイや、新たにデプロイされたデプロイに対して、特典が自動的に適応されます。 予約を購入することで、1 年間または 3 年間のコンピューティング コストの使用を確約したことになります。 予約を購入するとすぐに、予約の属性に一致するコンピューティング料金は従量課金制で課金されなくなります。 
+
+予約は、プライマリのコンピューティング レプリカと課金対象のセカンダリ コンピューティング レプリカの両方に適用されますが、本サービスに関連付けられているソフトウェア、ネットワーク、ストレージの料金には適用されません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金がデータベースまたはマネージド インスタンスに適用されます。 予約は自動更新されません。 価格の詳細については、[予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
 
 予約容量は [Azure portal](https://portal.azure.com) で購入できます。 予約の支払いは、[前払いまたは月払い](../../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
@@ -32,6 +34,9 @@ ms.locfileid: "91321596"
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。 予約容量。
 
 エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
+
+> [!NOTE]
+> 予約容量を購入しても、特定のインフラストラクチャ リソース (仮想マシンまたはノード) が事前に割り当てられたり予約されたりすることはありません。
 
 ## <a name="determine-correct-size-before-purchase"></a>購入前に正しいサイズを決定する
 

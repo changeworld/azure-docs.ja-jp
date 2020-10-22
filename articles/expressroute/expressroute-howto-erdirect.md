@@ -1,22 +1,22 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Direct を構成する'
-description: 世界中のピアリングの場所で Microsoft のグローバル ネットワークに直接接続するため、Azure PowerShell を使用して Azure ExpressRoute Direct を構成する方法について説明します。
+description: Microsoft のグローバル ネットワークに直接接続するために、Azure PowerShell を使用して Azure ExpressRoute Direct を構成する方法について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c4ce764f50f85ef9979d5a14235759c16228f6b7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396031"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569841"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
-ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳細については、[ExpressRoute Direct](expressroute-erdirect-about.md) に関するページを参照してください。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所を通じて Microsoft のグローバル ネットワークに直接接続できます。 詳細については、[ExpressRoute Direct](expressroute-erdirect-about.md) に関するページを参照してください。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
@@ -155,9 +155,22 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>リンクの管理状態を変更する
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>認可状 (LOA) を生成する
 
-  このプロセスは、レイヤー 1 のテストを実施して、各相互接続がプライマリとセカンダリの各ルーターに適切に接続されていることを確認するために使用する必要があります。
+最近作成された ExpressRoute Direct リソースを参照し、LOA を作成する顧客名を入力し、ドキュメントを格納するファイルの場所を (必要に応じて) 定義します。 ファイル パスが参照されていない場合、ドキュメントは現在のディレクトリにダウンロードされます。
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **出力例**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+   ```
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>リンクの管理状態を変更する
+   
+このプロセスは、レイヤー 1 のテストを実施して、各相互接続がプライマリとセカンダリの各ルーターに適切に接続されていることを確認するために使用する必要があります。
 1. ExpressRoute Direct の詳細を取得します。
 
    ```powershell
@@ -227,13 +240,13 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>回線を作成する
 
-既定では、ExpressRoute Direct リソースがあるサブスクリプション内に 10 個の回線を作成できます。 これはサポートによって増やすことができます。 プロビジョニング済みの帯域幅と使用済みの帯域幅の両方を追跡してください。 プロビジョニング済み帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。使用済み帯域幅は、基になる物理インターフェイスの物理的な使用量です。
+既定では、ExpressRoute Direct リソースがあるサブスクリプション内に 10 個の回線を作成できます。 この制限はサポートによって増やすことができます。 プロビジョニング済みの帯域幅と使用済みの帯域幅の両方を追跡してください。 プロビジョニング済み帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。使用済み帯域幅は、基になる物理インターフェイスの物理的な使用量です。
 
-ExpressRoute Direct には、前述したシナリオをサポートするために利用できるだけの追加の回線帯域幅があります。 次のとおりです。40 Gbps と 100 Gbps です。
+ExpressRoute Direct には、前述したシナリオをサポートするために利用できるだけの追加の回線帯域幅があります。 これらの帯域幅は、40 Gbps および 100 Gbps です。
 
-**SkuTier** には Local、Standard、または Premium を使用できます。
+**SkuTier** は Local、Standard、または Premium にできます。
 
-ExpressRoute Direct では無制限がサポートされていないため、**SkuFamily** には MeteredData のみを使用できます。
+**SkuFamily** は MeteredData のみにすることができます。 ExpressRoute Direct では、Unlimited はサポートされていません。
 
 ExpressRoute Direct リソース上に回線を作成します。
 

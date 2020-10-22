@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446691"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -48,7 +48,7 @@ Azure Machine Learning を使用すると、クラウド内のデータに簡単
 
 次の図は、この推奨ワークフローの視覚的なデモンストレーションを示しています。
 
-![データの概念図](./media/concept-data/data-concept-diagram.svg)
+![Azure ストレージ サービスからデータストアに遷移し、そこからデータセットに遷移することを示す図。 データセットからモデル トレーニングに遷移し、そこからデータ ドリフトに遷移して、データセットに戻ります。](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>データストア
 
@@ -67,7 +67,7 @@ Azure Machine Learning データストアには、Azure ストレージ サー�
 
 ## <a name="datasets"></a>データセット
 
-Azure Machine Learning データセットは、ストレージ サービス内のデータを指定する参照です。 これらはデータのコピーではありません。Azure Machine Learning データセットを作成すると、データ ソースの場所への参照とそのメタデータのコピーを作成できます。 
+Azure Machine Learning のデータセットは、データのコピーではありません。 データセットを作成すると、ストレージ サービスのデータへの参照とそのメタデータのコピーが作成されます。 
 
 データセットは遅延評価され、データは既存の場所に残るため:
 

@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526563"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314773"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -42,7 +42,7 @@ Azure Migrate アプライアンスに関する詳細を示します。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
-アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。 これらの [URL](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) が、Azure に接続するためのアプライアンスのホワイトリストに登録されていることを確認します。
+アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。 これらの [URL](./migrate-appliance.md#url-access) が、Azure に接続するためのアプライアンスで承認されていることを確認します。
 
 - Azure Migrate レプリケーション トラフィックに Azure ExpressRoute を使用するには、Microsoft ピアリングまたは既存のパブリック ピアリングが必要です (新しい ER 作成では、パブリック ピアリングは非推奨となっています)。
 - プライベート ピアリング (のみ) が有効になっている Azure ExpressRoute 経由のレプリケーションはサポートされていません。

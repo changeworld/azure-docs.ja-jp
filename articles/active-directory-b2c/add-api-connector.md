@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828242"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854360"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-**[Azure Active Directory]**  >  **[外部 ID]**  >  **[カスタムのユーザー属性]** のエクスペリエンスで一覧表示されるユーザー プロパティとカスタム属性だけが、要求で送信できます。
+**[Azure AD B2C]** の **[ユーザー属性]** のエクスペリエンスで一覧表示されるユーザー プロパティとカスタム属性だけが、要求で送信できます。
 
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)」を参照してください。
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>ベスト プラクティスとトラブルシューティングの方法
 
 ### <a name="using-serverless-cloud-functions"></a>サーバーレス クラウド機能の使用
-Azure Functions の HTTP トリガーなどのサーバーレス機能を使用すると、API コネクタで使用する API エンドポイントを簡単に作成することができます。 サーバーレス クラウド機能を使用して、たとえば検証ロジックを実行したり、特定のドメインへのサインアップを制限したりすることができます。 より複雑なシナリオには、サーバーレス クラウド機能を使用して、他の Web API、ユーザー ストア、および他のクラウド サービスを呼び出して起動することもできます。
+Azure Functions の HTTP トリガーなどのサーバーレス機能を使用すると、API コネクタで使用する API エンドポイントを簡単に作成することができます。 サーバーレス クラウド機能を使用して、[たとえば](code-samples.md#api-connectors)、検証ロジックを実行したり、特定の電子メール ドメインへのサインアップを制限したりすることができます。 より複雑なシナリオには、サーバーレス クラウド機能を使用して、他の Web API、ユーザー ストア、および他のクラウド サービスを呼び出して起動することもできます。
 
 ### <a name="best-practices"></a>ベスト プラクティス
 次のことを確認します。
@@ -314,4 +314,4 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 
 ## <a name="next-steps"></a>次の手順
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- [Azure Function クイックスタート サンプル](code-samples.md#api-connectors)を使用する。

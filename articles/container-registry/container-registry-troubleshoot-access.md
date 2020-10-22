@@ -2,13 +2,13 @@
 title: レジストリに関するネットワークの問題のトラブルシューティング
 description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 10/01/2020
+ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226932"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148468"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -22,6 +22,7 @@ ms.locfileid: "88226932"
 * イメージをプッシュまたはプルできず、Azure CLI エラー `Could not connect to the registry login server` が発生する
 * レジストリから Azure Kubernetes Service または別の Azure サービスにイメージをプルできない
 * HTTPS プロキシの背後にあるレジストリにアクセスできず、エラー `Error response from daemon: login attempt failed with status: 403 Forbidden` が発生する
+* 仮想ネットワーク設定を構成できず、エラー `Failed to save firewall and virtual network settings for container registry` が発生する
 * Azure portal でレジストリ設定にアクセスまたは表示できないか、Azure CLI を使用してレジストリを管理できない
 * 仮想ネットワークの設定またはパブリック アクセス規則を追加または変更できない
 * ACR タスクによるイメージのプッシュまたはプルができない
@@ -32,7 +33,7 @@ ms.locfileid: "88226932"
 * クライアントのファイアウォールまたはプロキシによってアクセスが妨げられている - [解決策](#configure-client-firewall-access)
 * レジストリのパブリック ネットワーク アクセス規則によってアクセスが妨げられている - [解決策](#configure-public-access-to-registry)
 * 仮想ネットワークの構成によってアクセスが妨げられている - [解決策](#configure-vnet-access)
-* Azure Security Center をプライベート エンドポイントまたはサービス エンドポイントを持つレジストリと統合しようとしている - [解決策](#configure-image-scanning-solution)
+* Azure Security Center または特定の他の Azure サービスをプライベート エンドポイント、サービス エンドポイント、またはパブリック IP アクセス規則を持つレジストリと統合しようとしている - [解決策](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>詳しい診断 
 
@@ -47,7 +48,7 @@ ms.locfileid: "88226932"
 
 ### <a name="configure-client-firewall-access"></a>クライアント ファイアウォール アクセスを構成する
 
-クライアン トファイアウォールまたはプロキシ サーバーの背後からレジストリにアクセスするには、レジストリの REST エンドポイントおよびデータ エンドポイントにアクセスするようにファイアウォール規則を構成します。 [専用データ エンドポイント](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)が有効になっている場合は、次にアクセスするための規則が必要です。
+クライアント ファイアウォールまたはプロキシ サーバーの背後からレジストリにアクセスするには、レジストリのパブリック REST エンドポイントおよびデータ エンドポイントにアクセスするようにファイアウォール規則を構成します。 [専用データ エンドポイント](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)が有効になっている場合は、次にアクセスするための規則が必要です。
 
 * REST エンドポイント: `<registryname>.azurecr.io`
 * データ エンドポイント: `<registry-name>.<region>.data.azurecr.io`
@@ -86,7 +87,11 @@ Private Link のプライベート エンドポイントまたはサービス �
 
 レジストリへのサービス エンドポイントが構成されている場合は、そのネットワーク サブネットからのアクセスを許可するネットワーク規則がレジストリに追加されていることを確認します。 サービス エンドポイントによって、ネットワーク内の仮想マシンおよび AKS クラスターからのアクセスのみがサポートされます。
 
+別の Azure サブスクリプションの仮想ネットワークを使用してレジストリ アクセスを制限する場合は、必ずそのサブスクリプションに `Microsoft.ContainerRegistry` リソース プロバイダーを登録してください。 Azure portal、Azure CLI、またはその他の Azure ツールを使用して Azure Container Registry の[リソース プロバイダーを登録します](../azure-resource-manager/management/resource-providers-and-types.md)。
+
 Azure Firewall または同様のソリューションがネットワークに構成されている場合は、AKS クラスターなどの他のリソースからのエグレス トラフィックが、レジストリ エンドポイントに到達できるようになっていることを確認します。
+
+プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。 DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。
 
 関連リンク:
 
@@ -96,17 +101,22 @@ Azure Firewall または同様のソリューションがネットワークに�
 * [Kubernetes: DNS 解決のデバッグ](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>イメージ スキャン ソリューションを構成する
+### <a name="configure-service-access"></a>サービス アクセスを構成する
 
-レジストリがプライベート エンドポイントまたはサービス エンドポイントで構成されている場合、現在、イメージ スキャンのために Azure Security Center と統合することはできません。 必要に応じて、次のような、Azure Marketplace で使用できるその他のイメージ スキャン ソリューションを構成します。
+現在、Azure Security Center では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json)を実行することはできません。 また、次のサービスのリソースは、ネットワーク制限があるコンテナー レジストリにアクセスできません。
 
-* [Aqua Cloud Native Security Platform](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Twistlock Enterprise Edition](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure DevOps Services 
+* Azure Container Instances
+* Azure Container Registry タスク
+
+コンテナー レジストリに対するこれらの Azure サービスのアクセスや統合が必要な場合は、ネットワークの制限を解除します。 たとえば、レジストリのプライベート エンドポイントを削除するか、レジストリのパブリック アクセス規則を削除または変更します。
 
 関連リンク:
 
-* [Security Center による Azure Container Registry のイメージ スキャン](../security-center/azure-container-registry-integration.md)
+* [Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
 * [フィードバック](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)の提供
+* [パブリック IP ネットワーク ルールを構成する](container-registry-access-selected-networks.md)
+* [Azure Private Link を使用して Azure Container Registry にプライベートで接続する](container-registry-private-link.md)
 
 
 ## <a name="advanced-troubleshooting"></a>高度なトラブルシューティング
@@ -128,7 +138,5 @@ Azure Firewall または同様のソリューションがネットワークに�
   * [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md) 
   * [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 * [コミュニティ サポート](https://azure.microsoft.com/support/community/) オプション
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [サポート チケットを開く](https://azure.microsoft.com/support/create-ticket/)
-
-

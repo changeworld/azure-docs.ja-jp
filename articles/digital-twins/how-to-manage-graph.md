@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326543"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048442"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -74,7 +74,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
-グラフ内の特定のツインのリレーションシップの一覧にアクセスするには、以下を使用できます。
+グラフ内の特定のツインからの**発信**リレーションシップの一覧にアクセスするには、以下を使用できます。
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -102,7 +102,7 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
+        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
         return null;
     }
 }
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 取得したリレーションシップを使用して、グラフ内の他のツインに移動できます。 これを行うには、返されたリレーションシップから `target` フィールドを読み取り、それを `GetDigitalTwin` への次の呼び出しの ID として使用します。 
 
-### <a name="find-relationships-to-a-digital-twin"></a>デジタル ツインとのリレーションシップを見つける
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>デジタル ツインとの受信リレーションシップを見つける
 
-Azure Digital Twins には、特定のツインとのすべての受信リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
+Azure Digital Twins には、特定のツインとのすべての**受信**リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
-前のコード サンプルでは、発信リレーションシップの検索に重点を置いていました。 次の例は似ていますが、代わりに受信リレーションシップを検索します。 また、これらは検出後に削除されます。
+前のコード サンプルは、ツインからの発信リレーションシップの検索に焦点を合わせていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。
 
 `IncomingRelationship` の呼び出しからは、リレーションシップ全体が返されないことに注意してください。
 
@@ -200,7 +200,7 @@ static async Task<bool> CreateRoom(string id, double temperature, double humidit
     }
     catch (ErrorResponseException e)
     {
-        Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
+        Console.WriteLine($"**_ Error creating twin {id}: {e.Response.StatusCode}"); 
         return false;
     }
 }
@@ -225,7 +225,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
     }
     catch (ErrorResponseException e)
     {
-        Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
+        Console.WriteLine($"_*_ Error creating twin {id}: {e.Response.StatusCode}"); 
         return false;
     }
 }
@@ -247,7 +247,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 | room    | Room21 | Floor02 | contains | … |
 | room    | Room22 | Floor02 | contains | … |
 
-次のコードでは、[Microsoft Graph API](https://docs.microsoft.com/graph/overview) を使用してスプレッドシートを読み取り、結果から Azure Digital Twins ツイン グラフを作成しています。
+次のコードでは、[Microsoft Graph API](/graph/overview) を使用してスプレッドシートを読み取り、結果から Azure Digital Twins ツイン グラフを作成しています。
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;

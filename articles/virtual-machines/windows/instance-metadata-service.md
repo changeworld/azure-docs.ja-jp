@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 49840c2591bc1a991920b00aec020d4f652c9a50
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086710"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168394"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -47,13 +47,15 @@ IMDS のクエリ方法のその他の例については、[Azure Instance Metad
 **Request**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01 | ConvertTo-Json
 ```
+> [!NOTE]
+> `-NoProxy` フラグを使用できるのは、PowerShell 6 以上のみです。 プロキシを設定していない場合は、フラグを省略できます。
 
 **Response**
 
 > [!NOTE]
-> 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
+> 応答は JSON 文字列です。 `ConvertTo-Json` コマンドレットを使用して、再フォーマット用の REST クエリをパイプします。
 
 ```json
 {
@@ -250,8 +252,8 @@ offer | VM イメージのオファーの情報。Azure イメージ ギャラ�
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 plan | VM が Azure Marketplace イメージである場合、[プラン](/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
-platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
-platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
+platformUpdateDomain |  VM を実行中の[更新ドメイン](../manage-availability.md) | 2017-04-02
+platformFaultDomain | VM を実行中の[障害ドメイン](../manage-availability.md) | 2017-04-02
 provider | VM のプロバイダー | 2018-10-01
 publicKeys | VM とパスに割り当てられた[公開キーのコレクション](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM イメージの発行元 | 2017-04-02
@@ -730,7 +732,7 @@ Add-Type -AssemblyName System.Security
 $signedCms = New-Object -TypeName System.Security.Cryptography.Pkcs.SignedCms
 $signedCms.Decode($signature);
 $content = [System.Text.Encoding]::UTF8.GetString($signedCms.ContentInfo.Content)
-Write-Host "Attested data: " $conten
+Write-Host "Attested data: " $content
 $json = $content | ConvertFrom-Json
 # Do additional validation here
 ```

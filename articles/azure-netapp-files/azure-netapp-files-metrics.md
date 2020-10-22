@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 80746d7cef4bb0a70c6bb9eb6ff2e053ea6c7a0a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824693"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017524"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
@@ -86,6 +86,9 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>ボリューム レプリケーション メトリック
+
+> [!NOTE] 
+> ネットワーク転送サイズ (たとえば、*ボリューム レプリケーションの転送の合計*メトリック) が、リージョン間レプリケーションのソース ボリュームまたはターゲット ボリュームと異なる場合があります。 この動作は、ネットワーク転送コストを最小限に抑えるために効率的なレプリケーション エンジンが使用された結果です。
 
 - "*Is volume replication status healthy*" (ボリューム レプリケーションの状態は正常です)   
     レプリケーションのリレーションシップの条件。 正常な状態は、`1` によって示されます。 異常な状態は、`0` によって示されます。

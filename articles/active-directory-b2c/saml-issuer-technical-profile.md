@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521214"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961240"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML トークン発行者用の技術プロファイルを定義する
 
@@ -37,6 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
+    <Item Key="TokenNotBeforeSkewInSeconds">600</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -58,6 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 | --------- | -------- | ----------- |
 | IssuerUri | いいえ | SAML 応答に表示される発行者名。 この値は、証明書利用者アプリケーションに構成されているものと同じ名前にする必要があります。 |
 | XmlSignatureAlgorithm | いいえ | SAML アサーションに署名するために Azure AD B2C で使用されるメソッド。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 SAML 応答を構成するには、[証明書利用者の SAML メタデータ](relyingparty.md#metadata)に関する記事を参照してください。|
+|TokenNotBeforeSkewInSeconds| いいえ| 有効期間の開始をマークするタイムスタンプの傾斜を整数で指定します。 この数値が大きいほど、証明書利用者に対して要求が発行された時間について、有効期間がより遡って開始されます。 たとえば、TokenNotBeforeSkewInSeconds が 60 秒に設定されていて、トークンが 13:05:10 UTC に発行された場合、トークンは 13:04:10 UTC から有効になります。 既定値は 0 です。 最大値は 3600 (1 時間) です。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

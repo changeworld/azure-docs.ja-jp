@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91611522"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -51,7 +51,7 @@ VM およびインスタンス イメージは、最大で VM キャッシュの
 また、エフェメラル ディスクでは、VM サイズで Premium Storage がサポートされていることも必要です。 通常 (常にではありませんが)、 サイズには DSv2 や EsV3 のように名前に `s` があります。 詳細については、[Azure の VM サイズ](sizes.md)に関する記事で Premium Storage をサポートするサイズの詳細を参照してください。
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>プレビュー - エフェメラル OS ディスクを一時ディスクに保存できるようになりました
-エフェメラル OS ディスクは、VM キャッシュに加え、VM の一時ディスクまたはリソース ディスクに保存できるようになりました。 つまり、これからは、VM にキャッシュがないか、キャッシュが十分でなくても、Dav3、Dav4、Eav4、Eav3 など、エフェメラル OS ディスクを保存する一時ディスクまたはリソース ディスクがあれば、エフェメラル OS ディスクを使用できます。 また、VM に十分なキャッシュと一時領域がある場合、[DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) という名前の新しいプロパティを使用し、エフェメラル OS ディスクを格納する場所を指定できるようになります。 現在、この機能はプレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 始めるには、[アクセスをリクエスト](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)してください。
+エフェメラル OS ディスクは、VM キャッシュに加え、VM の一時ディスクまたはリソース ディスクに保存できるようになりました。 つまり、これからは、VM にキャッシュがないか、キャッシュが十分でなくても、Dav3、Dav4、Eav4、Eav3 など、エフェメラル OS ディスクを保存する一時ディスクまたはリソース ディスクがあれば、エフェメラル OS ディスクを使用できます。 また、VM に十分なキャッシュと一時領域がある場合、[DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) という名前の新しいプロパティを使用し、エフェメラル OS ディスクを格納する場所を指定できるようになります。 この機能を使用すると、Windows VM がプロビジョニングされる場合に、OS ディスクに配置されるページファイルが構成されます。 現在、この機能はプレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 始めるには、[アクセスをリクエスト](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)してください。
 
 ## <a name="powershell"></a>PowerShell
 

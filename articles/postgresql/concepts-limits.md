@@ -1,18 +1,18 @@
 ---
 title: 制限 - Azure Database for PostgreSQL - Single Server
 description: この記事では、接続数やストレージ エンジンのオプションなど、Azure Database for PostgreSQL - Single Server の制限について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76836458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707525"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の制限
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) 層の詳細については、[価格レベル](concepts-pricing-tiers.md)の記事を参照してください。
@@ -31,7 +31,7 @@ ms.locfileid: "76836458"
 |General Purpose| 16| 950| 945|
 |General Purpose| 32| 1500| 1495|
 |General Purpose| 64| 1900| 1895|
-|メモリ最適化| 2| 該当なし| 295|
+|メモリ最適化| 2| 300| 295|
 |メモリ最適化| 4| 500| 495|
 |メモリ最適化| 8| 960| 955|
 |メモリ最適化| 16| 1900| 1895|
@@ -66,6 +66,11 @@ PostgreSQL 接続はアイドル状態でも、約 10 MB のメモリを占有�
 
 ### <a name="utf-8-characters-on-windows"></a>Windows での UTF-8 文字
 - 一部のシナリオにおいて、Windows 上のオープン ソース PostgreSQL では UTF-8 文字が完全にはサポートされません。これは、Azure Database for PostgreSQL に影響するためです。 詳細については、[PostgreSQL アーカイブ内の Bug #15476](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) のスレッドを参照してください。
+
+### <a name="gss-error"></a>GSS エラー
+**GSS** に関連するエラーが表示される場合は、Azure Postgres Single Server でまだ完全にサポートされていない新しいクライアントまたはドライバーのバージョンを使用している可能性があります。 このエラーは、[JDBC ドライバー バージョン 42.2.15 および 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) に影響することがわかっています。
+   - 更新は 11 月末までに完了する予定です。 それまでの間は、動作するドライバー バージョンを使用することを検討してください。
+   - または、GSS 要求を無効にすることを検討してください。  `gssEncMode=disable` のような接続パラメーターを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 - [各価格レベルで使用できる内容](concepts-pricing-tiers.md)について理解します

@@ -4,21 +4,21 @@ description: Go-To-Market Services - このセクションでは、公開元が�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705556"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91368267"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
 Microsoft コマーシャル マーケットプレースに発行した後は、オファーが成功していることを確認する必要があります。 オファーの成長を加速させるために必要なセールス、技術、マーケティングのベネフィットが用意されています。
 
-オファーが Microsoft AppSource または Azure Marketplace で有効になったら、[パートナー センター](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)に進み、資格のあるマーケティング、セールス、技術のベネフィットにアクセスし、アクティベートします。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
+オファーが Microsoft AppSource または Azure Marketplace で有効になったら、[パートナー センター](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)に進み、資格のあるマーケティング、セールス、技術のベネフィットにアクセスし、アクティベートします。 Marketplace 報酬に登録して、パートナー センターでベネフィットをアクティブにする方法の概要については、Marketplace 報酬の[デモ ビデオ](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4)をご覧ください。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
 
 ## <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -44,13 +44,12 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 2. パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
 3. 営業とマーケティングのベネフィットを有効にするには、会社のマーケティングの連絡先を割り当てます。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
 4. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
-
     1. 一覧からユーザーを選択します。 割り当てるユーザーが一覧にない場合は、 **[アカウント設定]** で新しいユーザーを追加できます。
     1. 会社のパートナー センター アカウントに関連付けられているメール アドレスとは異なるユーザーのメール アドレスを入力します。 指定されたマーケティングの連絡先のメール アドレスには、Marketplace Rewards のベネフィットを使用するための手順がメールで送信されます。
     1. このマーケティングの連絡先の窓口となる電話番号と使用する言語を入力します。 この情報の入力が完了したら、 **[ユーザーの割り当て]** を選択します。
     1. マーケティングの連絡先を更新した後、使用を開始するベネフィットに対して **[アクティブにする]** を選択します。 ベネフィットをアクティブにすると、1 週間以内に Rewards チームのメンバーからマーケティングの連絡先に連絡を差し上げます。
 
-**技術上のベネフィット**
+### <a name="technical-benefits"></a>技術上のメリット
 
 1. 技術上のベネフィットを使用すると、クラウドおよびハイブリッド ソリューションのプリセールス、設計、デプロイ、アプリ開発の各段階で技術的なサポートを依頼できます。 サポートを依頼するには、依頼フォームに入力して、 **[要求の送信]** を選択します。
 2. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
@@ -79,7 +78,7 @@ Microsoft AppSource または Azure Marketplace でトランザクション可�
 
 これらのベネフィットは、マーケティング、販売、および技術アクティビティでのサポートを目的としています。これにより、より多くの訪問者を取得し、より多くの潜在顧客を獲得し、より多くのビジネスを変換することができます。
 
-発行されたオファーを所有しているすべてのパートナーは、専任のエンゲージメント マネージャーと協力して、コマーシャル マーケットプレース オファーのポートフォリオに対して最も価値の高いアクティビティを選択します。 このエンゲージメントはオファーごとに常に最新の状態であり、パートナーの会社の幅広いマーケティングおよび販売戦略のタイミングに合わせて、アクティビティおよびアクティビティのタイミングを選択できます。 
+発行されたオファーを所有しているすべてのパートナーは、専任のエンゲージメント マネージャーと協力して、コマーシャル マーケットプレース オファーのポートフォリオに対して最も価値の高いアクティビティを選択します。 このエンゲージメントはオファーごとに常に最新の状態であり、パートナーの会社の幅広いマーケティングおよび販売戦略のタイミングに合わせて、アクティビティおよびアクティビティのタイミングを選択できます。
 
 ![マーケティングのベネフィット](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -97,23 +96,23 @@ Microsoft AppSource または Azure Marketplace でトランザクション可�
 
 ### <a name="publisher-agreement"></a>発行元契約
 
-このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
+このページで説明されているすべてのアクティビティは、Microsoft [発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
 
 ### <a name="cancellation-policy"></a>キャンセルに関するポリシー
 
-[リストおよび試用版](determine-your-listing-type.md)の発行元は、オファーの発行ごとにアクティビティにオプトインまたはオプトアウトできます。 パートナーは、いつでもエンゲージメントをオプトアウトすることができます。 
+[リストおよび試用版](determine-your-listing-type.md)の発行元は、オファーの発行ごとにアクティビティにオプトインまたはオプトアウトできます。 パートナーは、いつでもエンゲージメントをオプトアウトすることができます。
 
-Microsoft は、次のような発行元に対する Marketplace 報酬ベネフィットを取り消して終了する権利を留保します。 
+Microsoft は、次のような発行元に対する Marketplace 報酬ベネフィットを取り消して終了する権利を留保します。
 
 * マーケットプレース リストを使用して違法なアクティビティに関わっている。
 * 不正であると判明しているか、またはそう確信される購入を受信している。
-* 商用マーケットプレースから除外された。 
+* 商用マーケットプレースから除外された。
 * オファーを使用して、著作権または商標法に違反するマーケティング コンテンツやその他のコンテンツを公開している。
 * [Azure スポンサー プラン プログラム](https://azure.microsoft.com/offers/ms-azr-0036p/)のポリシーに違反した。これには、独自の内部運用やビットコイン マイニングに Azure スポンサー プランを使用することが含まれますが、それだけではありません。
 
 Microsoft は、以下の場合に Marketplace Rewards を取り消して終了する権利を留保します。
 
-* 購入を行ったお客様が、誤ってその行為を行い、購入のキャンセルを希望している。 
+* 購入を行ったお客様が、誤ってその行為を行い、購入のキャンセルを希望している。
 * パートナーの製品を使用する前に、お客様がキャンセルを行う。
 
 ### <a name="offer-availability"></a>オファーの利用可能性
@@ -124,10 +123,7 @@ Microsoft は、以下の場合に Marketplace Rewards を取り消して終了�
 
 ## <a name="next-steps"></a>次のステップ
 
-[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にサインインして、オファーを作成または構成します。
-
-[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)で Marketplace 報酬ベネフィットを有効にします。
-
-[利用可能なセルフサービス リソース](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)を確認します。
-
-[Microsoft AppSource および Azure Marketplace のコミュニティ フォーラム](https://aka.ms/MarketplaceCommunity)にサインアップし、関連するトピックについて学習したり、ディスカッションに参加したりすることができます。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にサインインして、オファーを作成または構成します。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)で Marketplace 報酬ベネフィットを有効にします。
+- [利用可能なセルフサービス リソース](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)を確認します。
+- [Microsoft AppSource および Azure Marketplace のコミュニティ フォーラム](https://aka.ms/MarketplaceCommunity)にサインアップし、関連するトピックについて学習したり、ディスカッションに参加したりすることができます。

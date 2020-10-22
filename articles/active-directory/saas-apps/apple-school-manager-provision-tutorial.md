@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: a6543c56f7170f674a227421575ba7f842fb29a8
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761426"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757454"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Apple School Manager を構成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "90761426"
 1. Apple School Manager で、管理者、サイト マネージャー、またはユーザー マネージャーの役割を持つアカウントを使用してサインインします。
 2. サイドバーの下部にある [設定] をクリックし、[組織の設定] の下にある [データ ソース] をクリックしてから、[データ ソースに接続] をクリックします。
 3. SCIM の横にある [接続] をクリックし、警告を注意深く読んでから、[コピー] をクリックし、その後で [閉じる] をクリックします。
-[[Connect to SCIM] ウィンドウ。トークンとその下に [コピー] ボタンが表示されている。] テナント URL を Apple Business Manager から Azure AD にコピーできるように、このウィンドウは開いたままにしておきます (https://federation.apple.com/feeds/school/scim )。
+[[Connect to SCIM] ウィンドウ。トークンとその下に [コピー] ボタンが表示されている。] テナント URL を Apple Business Manager から Azure AD にコピーできるように、このウィンドウは開いたままにしておきます (https://federation.apple.com/feeds/school/scim )
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -152,15 +152,16 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [Apple School Manager で SCIM を使用するための必要条件を確認する](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [Apple School Manager でのユーザー ID の用途](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [SCIM を使用して Apple School Manager にユーザーをインポートする](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [Apple School Manager で SCIM ユーザー アカウントの競合を解決する](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [Apple School Manager に表示される Azure AD のアカウントを削除する](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [Apple School Manager で SCIM のアクティビティを表示する](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [Apple School Manager で既存の SCIM トークンと接続を管理する](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [Apple School Manager で SCIM 接続を解除する](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)[Apple School Manager で既存の SCIM トークンと接続を管理する](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Apple School Manager での SCIM 接続のトラブルシューティング](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [Apple School Manager で SCIM を使用するための必要条件を確認する](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [Apple School Manager でのユーザー ID の用途](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [SCIM を使用して Apple School Manager にユーザーをインポートする](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [Apple School Manager で SCIM ユーザー アカウントの競合を解決する](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [Apple School Manager に表示される Azure AD のアカウントを削除する](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [Apple School Manager で SCIM のアクティビティを表示する](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [Apple School Manager で既存の SCIM トークンと接続を管理する](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [Apple School Manager で SCIM 接続を解除する](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [Apple School Manager で既存の SCIM トークンと接続を管理する](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Apple School Manager での SCIM 接続のトラブルシューティング](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>次のステップ
 

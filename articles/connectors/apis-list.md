@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488832"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400810"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -136,7 +136,7 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 | [![Azure Service Bus マネージド コネクタ][azure-service-bus-icon]<br>**Azure Service Bus**][azure-service-bus-doc] | Logic Apps で最もよく使用されているコネクタを使用して非同期メッセージ、セッション、およびトピック サブスクリプションを管理します。 |
 | [![SQL Server マネージド コネクタ][sql-server-icon]<br>**SQL Server**][sql-server-doc] | オンプレミスの SQL Server、またはクラウド内の Azure SQL Database に接続して、レコードの管理、ストアド プロシージャの実行、クエリの実行を行えるようにします。 |
 | [![Azure Blob Storage マネージド コネクタ][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | ストレージ アカウントに接続して、BLOB コンテンツの作成と管理ができるようにします。 |
-| [![Office 365 Outlook マネージド コネクタ][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | Office 365 メール アカウントに接続して、メール、タスク、カレンダー イベントおよび会議、連絡先、要求などの作成と管理ができるようにします。 |
+| [![Office 365 Outlook マネージド コネクタ][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | 職場または学校のメール アカウントに接続して、メール、タスク、カレンダー イベントおよび会議、連絡先、要求などの作成と管理ができるようにします。 |
 | [![SFTP-SSH マネージド コネクタ][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | SSH を使用してインターネットからアクセス可能な SFTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 |
 | [![SharePoint Online マネージド コネクタ][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | SharePoint Online に接続して、ファイル、添付ファイル、フォルダーなどを管理できるようにします。 |
 | [![Azure キュー マネージド コネクタ][azure-queues-icon]<br>**Azure <br>Queues**][azure-queues-doc] | Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします。 |
@@ -588,7 +588,7 @@ Azure Logic Apps でコネクタを使用して特定のリソースに接続す
 [instagram-doc]: ./connectors-create-api-instagram.md "Instagram に接続します。イベントをトリガーしたり、イベントに対するアクションを実行したりします。"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "通信のために Mandrill に接続します。"
 [mysql-doc]: /connectors/mysql/ "オンプレミスの MySQL データベースに接続して、データの読み取りと書き込みができるようにします"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Office 365 アカウントに接続して、電子メールの送受信、予定表と連絡先の管理などができるようにします"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "職場または学校アカウントに接続して、電子メールの送受信、予定表と連絡先の管理などができるようにします"
 [onedrive-doc]: ./connectors-create-api-onedrive.md "個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧表示などができるようにします"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "ビジネス向けの Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧表示などができるようにします"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Oracle データベースに接続して、行の追加、挿入、削除などができるようにします"

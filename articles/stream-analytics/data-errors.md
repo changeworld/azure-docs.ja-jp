@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053152"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072001"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics データ エラー
 
@@ -211,6 +211,10 @@ ms.locfileid: "88053152"
 ```
 
 ## <a name="output-data-errors"></a>出力データ エラー
+
+Azure Stream Analytics では、構成に応じて、出力シンクへの I/O 要求の有無にかかわらず、出力データ エラーを特定できます。 たとえば、Azure テーブル出力を使用するときに、`PartitionKey` などの必須の列が不足していることを、I/O 要求を行わずに特定できます。 ただし、SQL 出力の制約違反には、I/O 要求が必要です。
+
+出力シンクへの呼び出しを行った後にのみ検出できるデータ エラーがいくつかあり、これにより、処理が遅くなる可能性があります。 これを解決するには、ジョブの構成またはデータ エラーを引き起こしているクエリを変更します。
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 

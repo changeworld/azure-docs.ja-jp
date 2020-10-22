@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2d6d00ea06bb362d82b5fbdff658b729eed17cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091704fabb7b50a0c83625c6ae46d9a807f01ffc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258986"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961036"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -46,6 +46,24 @@ Azure Active Directory B2C (Azure AD B2C) で[シングル サインオン (SSO)
     ![Azure portal のセッション動作プロパティの設定](./media/session-behavior/session-behavior.png)
 
 8. **[保存]** をクリックします。
+
+## <a name="configure-sign-out-behavior"></a>サインアウト動作の構成
+
+### <a name="secure-your-logout-redirect"></a>ログアウトのリダイレクトをセキュリティで保護する
+
+ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡され、 **[ログアウト要求に ID トークンが必要]** が有効になっている場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URI と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。 ログアウト要求で ID トークンを求めるようにするには、以下の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[ユーザー フロー]** を選択します。
+1. あらかじめ作成しておいたユーザー フローを開きます。
+1. **[プロパティ]** を選択します。
+1. **[ログアウト要求に ID トークンが必要]** を有効にします。
+1. **[Azure AD B2C]** に戻ります。
+1. **[アプリの登録]** を選択してから、お客様のアプリケーションを選択します。
+1. **[認証]** を選択します。
+1. **[ログアウト URL]** テキスト ボックスに、ログアウト後のリダイレクト URI を入力し、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

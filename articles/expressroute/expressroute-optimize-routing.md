@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395232"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653385"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。
@@ -27,7 +27,7 @@ Microsoft ピアリングまたはパブリック ピアリングを使用する
 
 次のシナリオ例について考えてみます。
 
-![ExpressRoute ケース 1 の問題 - 顧客から Microsoft への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![ExpressRoute ケース 1 の問題を示す図 - 顧客から Microsoft への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 上の例では、ExpressRoute パスを優先するには、次のように Local Preference を構成します。 
 

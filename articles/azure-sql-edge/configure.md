@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888388"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446947"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge の構成
 
@@ -33,7 +33,8 @@ Azure SQL Edge では、SQL Edge コンテナーの構成に使用できるい�
 次の新しい環境変数が Azure SQL Edge に追加されました。 
 
 | 環境変数 | 説明 | 値 |     
-|-----|-----| ---------- |   
+|-----|-----| ---------- | 
+| **PlanId** | 初期化中に使用される Azure SQL Edge SKU を指定します。 この環境変数は、Azure IoT Edge を使用して Azure SQL Edge をデプロイする場合にのみ必要です。 | **sde-developer-on-iot-edge** または **asde-premium-on-iot-edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | 使用状況および診断データの収集を有効または無効にします。 | TRUE または FALSE |  
 | **MSSQL_TELEMETRY_DIR** | 使用状況および診断データ コレクションの監査ファイルのターゲット ディレクトリを設定します。 | SQL Edge コンテナー内のフォルダーの場所。 このフォルダーは、マウント ポイントまたはデータ ボリュームのいずれかを使用してホスト ボリュームにマップできます。 | 
 | **MSSQL_PACKAGE** | デプロイする dacpac または bacpac パッケージの場所を指定します。 | dacpac パッケージまたは bacpac パッケージが格納されているフォルダー、ファイル、または SAS URL。 詳細については、[SQL Edge での SQL Database DACPAC および BACPAC パッケージのデプロイ](deploy-dacpac.md)に関するページをご覧ください。 |

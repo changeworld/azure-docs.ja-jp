@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894577"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342282"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -33,7 +33,7 @@ Azure Security Center では、選択したポリシーに基づいてセキュ�
 
 Security Center では、セキュリティ ポリシーを操作するための次のオプションが提供されます。
 
-* **組み込みの既定のポリシーの表示と編集** - Security Center を有効にすると、"ASC の既定値" という名前の組み込みイニシアチブが、Security Center のすべての登録済みサブスクリプションに自動的に割り当てられます。 このイニシアティブをカスタマイズするために、イニシアティブ内の個々のポリシーを有効または無効にすることができます。 [組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照して、すぐに使用できるオプションを確認してください。
+* **組み込みの既定のポリシーの表示と編集** - Security Center を有効にすると、"ASC の既定値" という名前の組み込みイニシアチブが、Security Center のすべての登録済みサブスクリプションに自動的に割り当てられます。 このイニシアティブをカスタマイズするために、イニシアティブ内の個々のポリシーを有効または無効にすることができます。 [組み込みのセキュリティ ポリシー](./policy-reference.md)の一覧を参照して、すぐに使用できるオプションを確認してください。
 
 * **独自のカスタム ポリシーの追加** - サブスクリプションに適用されているセキュリティ イニシアティブをカスタマイズする場合は、Security Center で行うことができます。 作成したポリシーにマシンが従っていない場合は、推奨事項が提供されます。 カスタム ポリシーを作成して割り当てる手順については、[カスタム セキュリティ ポリシーの使用](custom-security-policies.md)に関する記事をご覧ください。
 
@@ -46,7 +46,7 @@ Security Center でセキュリティ ポリシーを表示するには:
 
 1. **Security Center** ダッシュボードで **[セキュリティ ポリシー]** を選択します。
 
-    ![[ポリシー管理] ウィンドウ](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="[ポリシー管理] ページ&quot;:::
 
    **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
 
@@ -57,7 +57,7 @@ Security Center でセキュリティ ポリシーを表示するには:
    ![ポリシー ページ](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > 既定のポリシーの横に "MG 継承済み" というラベルがある場合、そのポリシーが管理グループに割り当てられており、表示しているサブスクリプションに継承されていることを意味します。
+    > 既定のポリシーの横に &quot;MG 継承済み" というラベルがある場合、そのポリシーが管理グループに割り当てられており、表示しているサブスクリプションに継承されていることを意味します。
 
 
 1. このページで使用可能なオプションから選択します。
@@ -68,8 +68,19 @@ Security Center でセキュリティ ポリシーを表示するには:
 
     1. 既定のポリシーを表示して編集するには、 **[有効なポリシーの表示]** を選択し、下記の説明に従って操作を進めます。 
 
-       ![ポリシー画面](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="[ポリシー管理] ページ&quot;:::
+
+   **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
+
+1. ポリシーを参照するサブスクリプションまたは管理グループを選択します。
+
+1. そのサブスクリプションまたは管理グループのセキュリティ ポリシー ページが表示されます。 利用可能な割り当て済みのポリシーが表示されます。
+
+   ![ポリシー ページ](./media/tutorial-security-policy/security-policy-page.png)
+
+    > [!NOTE]
+    > 既定のポリシーの横に &quot;MG 継承済み":::
+
        この **[セキュリティ ポリシー]** 画面には、選択したサブスクリプションまたは管理グループに割り当てられているポリシーによって実行されたアクションが反映されます。
        
        * 上部のリンクを使用して、サブスクリプションまたは管理グループに適用されているポリシー**割り当て**を開きます。 これらのリンクを使用すると、割り当てにアクセスしたり、ポリシーを編集または無効化したりすることができます。 たとえば、特定のポリシー割り当てによってエンドポイントが実質的に保護されないようになっていることがわかった場合は、リンクを使用してそのポリシーを編集または無効化します。
@@ -131,8 +142,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 ## <a name="next-steps"></a>次のステップ
 この記事では、セキュリティ ポリシーについて説明しました。 関連情報については、次の記事をご覧ください。
 
-* PowerShell を使用してポリシーを設定する手順については、「[クイック スタート: Azure PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する](../governance/policy/assign-policy-powershell.md)」をご覧ください。
-
-* Azure Policy でセキュリティ ポリシーを編集する方法については、「[コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)」をご覧ください。
-
-* Azure Policy を使用して、サブスクリプションまたは管理グループでポリシーを設定する方法については、[Azure Policy の概要](../governance/policy/overview.md)に関する記事をご覧ください。
+- [PowerShell を使用してポリシーを設定する方法を確認する](../governance/policy/assign-policy-powershell.md) - 
+- [Azure Policy でセキュリティ ポリシーを編集する方法を確認する](../governance/policy/tutorials/create-and-manage.md) - 
+- [Azure Policy を使用して、サブスクリプションまたは管理グループにポリシーを設定する方法を確認する](../governance/policy/overview.md)
+- [管理グループ内のすべてのサブスクリプションで Security Center を有効にする方法を確認する](onboard-management-group.md)

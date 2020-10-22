@@ -3,12 +3,12 @@ title: Windows のグループ ポリシー ベースラインからゲスト構
 description: Windows Server 2019 セキュリティ ベースラインからグループ ポリシーをポリシー定義に変換する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547770"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893375"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
 
@@ -87,7 +87,7 @@ PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、お�
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Policy ゲスト構成を作成する
 
-次の手順では、ファイルを BLOB ストレージに発行します。 
+次の手順はファイルを Azure Blob Storage に発行することです。 
 
 1. 次のスクリプトには、このタスクを自動化するために使用できる関数が含まれています。 `publish` 関数で使用されるコマンドには `Az.Storage` モジュールが必要であることに注意してください。
 

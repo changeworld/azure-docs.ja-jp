@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256451"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850678"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>チュートリアル:MindTickle を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -115,11 +115,11 @@ Azure AD で自動ユーザー プロビジョニング用に MindTickle を構�
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to MindTickle]\(Azure Active Directory ユーザーを MindTickle に同期する\)** を選択します。
 
-    ![MindTickle のユーザー マッピング](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Azure Active Directory ユーザーを MindTickle に同期する] が表示されています。" border="false":::
 
 9. **[属性マッピング]** セクションで、Azure AD から MindTickle に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で MindTickle のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![MindTickle のユーザー マッピング](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Azure Active Directory ユーザーを MindTickle に同期する] が表示されています。" border="false":::
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

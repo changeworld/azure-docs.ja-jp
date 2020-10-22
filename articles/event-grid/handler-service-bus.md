@@ -3,12 +3,12 @@ title: Azure Event Grid イベントに対するイベント ハンドラーと�
 description: Azure Event Grid のイベントに対するイベント ハンドラーとして Service Bus のキューとトピックを使用する方法を説明します。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440798"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91629507"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしての Service Bus のキューとトピック
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Service Bus** はその 1 つです。 
@@ -51,7 +51,7 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="message-properties"></a>メッセージのプロパティ
-Event Grid からのイベントのイベント ハンドラーとして**Service Bus のトピックまたはキュー**を使用する場合は、次のメッセージ ヘッダーを設定します。 
+Event Grid からのイベントのイベント ハンドラーとして**サービス バス トピックまたはキュー**を使用する場合、メッセージ ヘッダーでは次のプロパティを受け取ります。 
 
 | プロパティ名 | 説明 |
 | ------------- | ----------- | 

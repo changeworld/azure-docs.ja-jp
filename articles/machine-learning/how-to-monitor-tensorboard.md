@@ -5,17 +5,17 @@ description: TensorBoard を起動して実験の実行履歴を視覚化し、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: maxluk
-ms.author: maxluk
+author: minxia
+ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: da5c128b9e0befd69e1ded6b47644a3c64b8f657
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2ed8910db8b903dab3b81d9db6c9b5798d2b6b69
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905041"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542055"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
@@ -25,7 +25,7 @@ ms.locfileid: "90905041"
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) は、実験の構造とパフォーマンスを調査して把握するための Web アプリケーションスイートです。
 
 Azure Machine Learning の実験で TensorBoard を起動する方法は、実験の種類に応じて異なります。
-+ TensorBoard で使用可能なログ ファイルが実験でネイティブに出力される場合 (PyTorch、Chainer、TensorFlow などの実験)、実験の実行履歴から [TensorBoard を直接起動](#direct)できます。 
++ TensorBoard で使用可能なログ ファイルが実験でネイティブに出力される場合 (PyTorch、Chainer、TensorFlow などの実験)、実験の実行履歴から [TensorBoard を直接起動](#launch-tensorboard)できます。 
 
 + TensorBoard で使用可能なファイルがネイティブで出力されない実験 (Scikit-learn や Azure Machine Learning などの実験) の場合は、[`export_to_tensorboard()` メソッド](#export)を使用して実行履歴を TensorBoard ログとしてエクスポートし、そこから TensorBoard を起動します。 
 
@@ -35,30 +35,22 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
 ## <a name="prerequisites"></a>前提条件
 
 * TensorBoard を起動して実験の実行履歴を表示するには、あらかじめ実験でログ記録を有効にして、そのメトリックとパフォーマンスを追跡しておく必要があります。  
-
 * このドキュメントのコードは、次のいずれの環境でも実行できます。 
-
     * Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
-
         * 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-
         * ノートブック サーバー上の samples フォルダーで、次のディレクトリに移動して、完成したノートブックと展開されたノートブックの 2 つを見つけます。
-            * **how-to-use-azureml > training-with-deep-learning > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
-
-            * **how-to-use-azureml > track-and-monitor-experiments > tensorboard.ipynb**
-
+            * **how-to-use-azureml > track-and-monitor-experiments > tensorboard > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
+            * **how-to-use-azureml > track-and-monitor-experiments > tensorboard > tensorboard > tensorboard.ipynb**
     * 独自の Jupyter Notebook サーバー
        * `tensorboard` extra を使用して [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) をインストールする
         * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。  
         * [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
-  
-<a name="direct"></a>
 
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>オプション 1: 実行履歴を TensorBoard で直接表示する
 
 このオプションは、PyTorch、Chainer、TensorFlow の実験など、TensorBoard で使用可能なログ ファイルをネイティブに出力する実験に有効です。 対象の実験がこれに当てはまらない場合は、代わりに [`export_to_tensorboard()` メソッド](#export)を使用してください。
 
-次のコード例では、TensorFlow のリポジトリにある [MNIST デモ実験](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py)を、リモートのコンピューティング先である Azure Machine Learning コンピューティングで使用します。 次に、SDK のカスタム [TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)を使用してモデルをトレーニングしてから、この TensorFlow 実験 (つまり、TensorBoard イベント ファイルをネイティブに出力する実験) に対して TensorBoard を起動します。
+次のコード例では、TensorFlow のリポジトリにある [MNIST デモ実験](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py)を、リモートのコンピューティング先である Azure Machine Learning コンピューティングで使用します。 次に、TensorFlow モデルのトレーニングのための実行を構成して開始してから、この TensorFlow の実験に対して TensorBoard が開始します。
 
 ### <a name="set-experiment-name-and-create-project-folder"></a>実験名を設定してプロジェクト フォルダーを作成する
 
@@ -92,9 +84,9 @@ MNIST のコード ファイル mnist_with_summaries.py 全体に、`tf.summary.
 
  ### <a name="configure-experiment"></a>実験を構成する
 
-以下では、実験を構成し、ログ用とデータ用のディレクトリを設定します。 これらのログは Artifact サービスにアップロードされます。このサービスには、後で TensorBoard からアクセスします。
+以下では、実験を構成し、ログ用とデータ用のディレクトリを設定します。 これらのログは実行履歴にアップロードされ、後で TensorBoard からアクセスします。
 
->[!Note]
+> [!Note]
 > この TensorFlow の例では、TensorFlow をローカル コンピューターにインストールする必要があります。 さらに、TensorBoard はローカル コンピューターで実行されるため、TensorBoard モジュール (TensorFlow に付属) にこのノートブックのカーネルからアクセスできることが必要です。
 
 ```Python
@@ -113,9 +105,9 @@ if not path.exists(data_dir):
 
 os.environ["TEST_TMPDIR"] = data_dir
 
-# Writing logs to ./logs results in their being uploaded to Artifact Service,
+# Writing logs to ./logs results in their being uploaded to the run history,
 # and thus, made accessible to our TensorBoard instance.
-script_params = ["--log_dir", logs_dir]
+args = ["--log_dir", logs_dir]
 
 # Create an experiment
 exp = Experiment(ws, experiment_name)
@@ -127,7 +119,7 @@ exp = Experiment(ws, experiment_name)
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
 
-cluster_name = "cpucluster"
+cluster_name = "cpu-cluster"
 
 cts = ws.compute_targets
 found = False
@@ -151,19 +143,23 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="submit-run-with-tensorflow-estimator"></a>TensorFlow エスティメーターを使用して実行を送信する
+### <a name="configure-and-submit-training-run"></a>トレーニングの実行を構成して送信する
 
-TensorFlow エスティメーターには、コンピューティング先で TensorFlow トレーニング ジョブを起動する簡単な方法が用意されています。 これは、ジェネリック [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) クラスを介して実装されています。これは、任意のフレームワークをサポートするために使用できます。 ジェネリック エスティメーターを使用したモデルのトレーニングの詳細については、[エスティメーターを使用した Azure Machine Learning によるモデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
+ScriptRunConfig オブジェクトを作成することによって、トレーニング ジョブを構成します。
 
 ```Python
-from azureml.train.dnn import TensorFlow
+from azureml.core import ScriptRunConfig
+from azureml.core import Environment
 
-tf_estimator = TensorFlow(source_directory=exp_dir,
-                          compute_target=compute_target,
-                          entry_script='mnist_with_summaries.py',
-                          script_params=script_params)
+# Here we will use the TensorFlow 2.2 curated environment
+tf_env = Environment.get(ws, 'AzureML-TensorFlow-2.2-GPU')
 
-run = exp.submit(tf_estimator)
+src = ScriptRunConfig(source_directory=exp_dir,
+                      script='mnist_with_summaries.py',
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=tf_env)
+run = exp.submit(src)
 ```
 
 ### <a name="launch-tensorboard"></a>TensorBoard を起動する
@@ -184,8 +180,8 @@ tb.start()
 tb.stop()
 ```
 
->[!Note]
- この例では TensorFlow を使用しましたが、PyTorch または Chainer モデルでも TensorBoard を同じように簡単に使用できます。 TensorBoard を実行するマシンでは TensorFlow を使用可能にする必要がありますが、PyTorch または Chainer コンピューテーションを実行するマシンではこれは必要ではありません。 
+> [!Note]
+> この例では TensorFlow を使用しましたが、PyTorch または Chainer でも TensorBoard を同じように簡単に使用できます。 TensorBoard を実行するマシンでは TensorFlow を使用可能にする必要がありますが、PyTorch または Chainer コンピューテーションを実行するマシンではこれは必要ではありません。 
 
 
 <a name="export"></a>
@@ -273,11 +269,11 @@ export_to_tensorboard(root_run, logdir)
 root_run.complete()
 ```
 
->[!Note]
- `export_to_tensorboard(run_name, logdir)` のように実行名を指定することで、特定の実行を TensorBoard にエクスポートすることもできます。
+> [!Note]
+> `export_to_tensorboard(run_name, logdir)` のように実行名を指定することで、特定の実行を TensorBoard にエクスポートすることもできます。
 
 ### <a name="start-and-stop-tensorboard"></a>TensorBoard を起動および停止する
-この実験の実行履歴がエクスポートされたら、[start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#&preserve-view=truestart-start-browser-false-) メソッドを使用して TensorBoard を起動できます。 
+この実験の実行履歴がエクスポートされたら、[start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-start-browser-false-) メソッドを使用して TensorBoard を起動できます。 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -289,7 +285,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-完了したら、必ず TensorBoard オブジェクトの [stop()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#&preserve-view=truestop--) メソッドを呼び出してください。 そうしないと、ノートブック カーネルをシャットダウンするまで、TensorBoard は実行したままになります。 
+完了したら、必ず TensorBoard オブジェクトの [stop()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestop--) メソッドを呼び出してください。 そうしないと、ノートブック カーネルをシャットダウンするまで、TensorBoard は実行したままになります。 
 
 ```python
 tb.stop()

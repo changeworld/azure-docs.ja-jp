@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485942"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856784"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -32,7 +32,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 - [Windows 64 ビット](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32 ビット](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
 - [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 これらのファイルは、zip ファイル (Windows および Mac) または tar ファイル (Linux) として圧縮されます。 Linux 上で tar ファイルをダウンロードして圧縮を解除するには、お使いの Linux ディストリビューションのドキュメントを参照してください。
 
@@ -50,7 +50,9 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 
 特定のコマンドの情報を知るには、単にコマンドの名前を含めてください (例: `azcopy list -h`)。
 
-![インライン ヘルプ](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+> [!div class="mx-imgBorder"]
+> ![インライン ヘルプ](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
 
 各コマンドとコマンド パラメーターの詳細なリファレンス ドキュメントについては、「[azcopy](storage-ref-azcopy.md)」を参照してください
 
@@ -94,7 +96,7 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 - Resource group
 - サブスクリプション
 
-ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+ロールを確認して割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。

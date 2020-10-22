@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322519"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973702"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -136,7 +136,7 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ マネ�
 
 第 1 世代のイメージでは、OS ディスクではなく、データ ディスクに対してのみ GPT パーティション分割を使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
 
-[第 2 世代のイメージ](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)では、データ ディスクだけでなく、OS ディスクでも GPT パーティション分割を使用できます。
+[第 2 世代のイメージ](./generation-2.md)では、データ ディスクだけでなく、OS ディスクでも GPT パーティション分割を使用できます。
 
 **どのような種類のディスクでスナップショットがサポートされますか。**
 
@@ -241,7 +241,7 @@ API バージョン 2019-07-01 以上を使用して作成されたすべての�
 
 **マネージド ディスクにアップロードするにはどうすればよいですか?**
 
-[creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) の [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) プロパティを "Upload" に設定することでマネージド ディスクを作成してから、それにデータをアップロードします。
+[creationData](/rest/api/compute/disks/createorupdate#creationdata) の [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption) プロパティを "Upload" に設定することでマネージド ディスクを作成してから、それにデータをアップロードします。
 
 **VM がアップロード状態にある間、その VM にディスクを接続できますか?**
 
@@ -396,13 +396,19 @@ Premium ディスクと Standard ディスクのどちらの場合も、Azure �
 
 いいえ、アンマネージド ディスクまたはページ BLOB には、どのサイズの Standard SSD マネージド ディスクも使用できません。
 
-**オペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
+**Gen1 VM 上のオペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
 
-オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム ディスクについて Azure でサポートされている最大サイズは、4 TiB です。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。
+Gen1 オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 ただし、Gen1 OS ディスクでは MBR のみが、データ ディスクでは GPT のみがサポートされています。 最大 4 TiB の OS ディスクを割り当てることができますが、MBR (パーティションの種類) では、オペレーティング システムに対してこのディスク領域の最大 2 TiB のみを使用できます。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。
+
+**Gen2 VM 上のオペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
+
+Gen2 オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、GUID パーティション テーブル (GPT) です。 Gen2 VM では、最大 4 TiB の OS ディスクがサポートされています。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。
+
 
 **オペレーティング システムとデータ ディスクでサポートされている最大アンマネージド ディスク サイズはどれくらいですか?**
 
-オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム アンマネージド ディスクについて Azure でサポートされている最大サイズは、4 TiB です。 アンマネージド データ ディスクについては、Azure では最大で 4 TiB までサポートされています。
+アンマネージド ディスクを使用するオペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。  最大 4 TiB の OS ディスクを割り当てることができますが、MBR (パーティションの種類) では、オペレーティング システムに対してこのディスク領域の最大 2 TiB のみを使用できます。 マネージド データ ディスクについて、Azure では最大 4 TiB がサポートされています。
+
 
 **サポートされている最大ページ BLOB サイズはどれくらいですか?**
 
@@ -421,7 +427,7 @@ Azure でサポートされている最大ページ BLOB サイズは、8 TB (8,
 
 **アンマネージド ディスクまたはページ BLOB では、P4 および P6 ディスク サイズがサポートされていますか?**
 
-P4 (32 GiB) および P6 (64 GiB) ディスク サイズは、アンマネージド ディスクおよびページ BLOB の既定のディスク階層としてはサポートされていません。 ディスクをこれらの層にマッピングするために、P4 および P6 に対して [BLOB 階層の設定](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)を明示的に行う必要があります。 ディスク サイズまたはコンテンツの長さが 32 GiB 未満、または BLOB 階層設定がなく 32 GiB ～ 64 GiB の間のアンマネージド ディスクまたはページ BLOB をデプロイする場合は、 500 IOPS および 100 MiB/秒の P10 およびマッピングされた価格レベル上に着地し続けます。
+P4 (32 GiB) および P6 (64 GiB) ディスク サイズは、アンマネージド ディスクおよびページ BLOB の既定のディスク階層としてはサポートされていません。 ディスクをこれらの層にマッピングするために、P4 および P6 に対して [BLOB 階層の設定](/rest/api/storageservices/set-blob-tier)を明示的に行う必要があります。 ディスク サイズまたはコンテンツの長さが 32 GiB 未満、または BLOB 階層設定がなく 32 GiB ～ 64 GiB の間のアンマネージド ディスクまたはページ BLOB をデプロイする場合は、 500 IOPS および 100 MiB/秒の P10 およびマッピングされた価格レベル上に着地し続けます。
 
 **64 GiB 未満の既存の Premium マネージド ディスクが、小規模ディスクが使用できるようになる (2017 年 6 月 15 日ごろ) より前に作成された場合は、どのように課金されますか?**
 
@@ -491,6 +497,6 @@ Private Links を使用して、対象の Azure 仮想ネットワークのみ�
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 
-質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事の末尾のコメントに、質問を投稿することができます。 この記事に関して、Azure Storage チームやその他のコミュニティのメンバーとやり取りするには、MSDN の [Azure Storage に関する Microsoft Q&A ページ](https://docs.microsoft.com/answers/products/azure?product=storage)をご利用ください。
+質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事の末尾のコメントに、質問を投稿することができます。 この記事に関して、Azure Storage チームやその他のコミュニティのメンバーとやり取りするには、[Azure Storage に関する Microsoft Q&A ページ](/answers/products/azure?product=storage)をご利用ください。
 
 機能についてのご要望がある場合は、ご要望やアイデアを [Azure Storage フィードバック フォーラム](https://feedback.azure.com/forums/217298-storage)までお送りください。

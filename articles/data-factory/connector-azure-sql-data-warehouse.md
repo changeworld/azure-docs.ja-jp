@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.openlocfilehash: 408f58b44bbe1ff8be7498b33a1209f4488c2ccc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332153"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951980"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータのコピーと変換を行う
 
@@ -564,7 +564,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 
 ソース データが PolyBase とネイティブに互換性がない場合は、中間ステージング Azure Blob または Azure Data Lake Storage Gen2 を介したデータのコピーを有効にします (Azure Premium Storage は使用できません)。 この場合、Azure Data Factory によって、PolyBase のデータ形式要件を満たすようにデータが自動的に変換されます。 その後、PolyBase を使用して、データが Azure Synapse Analytics に読み込まれます。 最後に、ストレージから一時データがクリーンアップされます。 ステージング経由でのデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
-この機能を使用するには、中間ストレージが含まれる Azure Storage アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。 その後、次のコードで示すように、コピー アクティビティの `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
+この機能を使用するには、中間ストレージとして Azure Storage アカウントを参照する**アカウント キーまたはマネージド ID の認証**を使用して、[Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。
 
 >[!IMPORTANT]
 >VNet サービス エンドポイントを使用してステージング Azure Storage が構成されている場合は、マネージド ID 認証を使用する必要があります。「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 Data Factory で必要な構成については、[Azure Blob - マネージド ID 認証](connector-azure-blob-storage.md#managed-identity)に関するセクションと [Azure Data Lake Storage Gen2 - マネージド ID 認証](connector-azure-data-lake-storage.md#managed-identity)に関するセクションを参照してください。
@@ -831,7 +831,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double                         |
-| イメージ                                 | Byte[]                         |
+| image                                 | Byte[]                         |
 | INT                                   | Int32                          |
 | money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |

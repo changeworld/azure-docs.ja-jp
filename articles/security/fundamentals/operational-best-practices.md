@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629796"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943868"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -116,7 +116,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: 最も優先順位が高い項目から、Security Center の[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
 
 **ベスト プラクティス**: Security Center のアラートを、セキュリティ情報およびイベント管理 (SIEM) ソリューションに統合します。   
-**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[セキュリティ アラートと推奨事項のエクスポート](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
+**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[SIEM、SOAR、または IT Service Management ソリューションへのアラートのストリーミング](../../security-center/export-to-siem.md)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
 
 **ベスト プラクティス**: Azure ログを SIEM に統合します。   
 **詳細**: [データの収集とエクスポートに Azure Monitor](/azure/azure-monitor/overview#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。

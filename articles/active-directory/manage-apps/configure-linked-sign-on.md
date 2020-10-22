@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory でリンクされたサインオンを構成する
-description: Azure AD でリンクされたサインオンを構成します。
+title: Azure Active Directory のリンクされたサインオンの概要
+description: Azure Active Directory のリンクされたサインオンの概要について説明します。
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641978"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073973"
 ---
-# <a name="configure-linked-sign-on"></a>リンクされたサインオンの構成
+# <a name="understand-linked-sign-on"></a>リンクされたサインオンの概要
 
-アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースの SSO を設定します。 他に、**リンク**というオプションがあります。 この記事では、リンクのオプションについて詳しく説明します。
+アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースまたは OIDC ベースの SSO を構成しました。 他に、**リンク**というオプションがあります。 この記事では、リンクのオプションについて詳しく説明します。
 
 **[リンク]** オプションを使用すると、ユーザーが組織の[マイ アプリ](https://myapps.microsoft.com/)、または Office 365 ポータルでアプリを選択するときにターゲットとなる場所を構成できます。
 
@@ -33,12 +33,12 @@ ms.locfileid: "88641978"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-短時間で利用できるようにするには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 シングル サインオンを構成するクイックスタートでは、 **[リンク]** オプションも表示されます。 
+短時間で理解するには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 シングル サインオンを構成するクイックスタートでは、 **[リンク]** オプションも表示されます。 
 
-**[リンク]** オプションは Azure AD を使用したサインオン機能を提供しません。 このオプションは、[マイ アプリ](https://myapps.microsoft.com/)、または Microsoft 365 アプリ ランチャーでアプリを選択したときにユーザーが送信される場所が設定されるだけです。
+**[リンク]** オプションは Azure AD を使用したサインオン機能を提供しません。 このオプションは、[マイ アプリ](https://myapps.microsoft.com/)、または Microsoft 365 アプリ ランチャーでアプリを選択したときにユーザーが送信される場所が設定されるだけです。  このサインインでは Azure AD を通じたサインオン機能は提供されないため、リンクされたシングル サインオンで構成されたアプリケーションで条件付きアクセスを使用することはできません。
 
 > [!IMPORTANT] 
-> 一部のシナリオでは、**エンタープライズ アプリケーション**内のアプリケーションのナビゲーションに **[シングル サインオン]** オプションが表示されません。 
+> 一部のシナリオでは、**エンタープライズ アプリケーション**内のアプリケーションのナビゲーションに**シングル サインオン** オプションが表示されません。 
 >
 > アプリケーションが**アプリの登録**を使用して登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
 >

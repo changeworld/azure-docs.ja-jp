@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e5fb00eadaa8d1702b46a03c03b55bbd0ef693f6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a7a77cc18ddc1ab8664d49aa3c2ac049a683ed3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646695"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710636"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -39,7 +39,8 @@ ms.locfileid: "89646695"
 **[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
-- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- 発行元 ID と組み合わせたオファー ID の長さは 40 文字未満である必要があります。
+- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できません。 たとえば、発行元 ID が testpublisherid で、ここに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` になります。
 - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
 **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
@@ -56,11 +57,11 @@ ms.locfileid: "89646695"
 
 #### <a name="get-it-now-free"></a>Get it now (今すぐ入手する) (無料)
 
-顧客に対して、プランを無料で使用できるものとしてリスト登録します。そのために、アプリにアクセスできる有効な (*http* または *https* で始まる) URL を指定します。  たとえば、`https://contoso.com/my-app` のように指定します。
+無料でオファーの一覧を顧客に提示します。
 
 #### <a name="free-trial-listing"></a>Free trial (無料試用版) (一覧)
 
-顧客が試用版を入手できる有効な (`http` または `https` で始まる) URL を示すことにより、無料試用版へのリンクを使用して顧客にオファーを一覧表示します。 たとえば、「 `https://contoso.com/trial/my-app` 」のように入力します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
+無料試用版のリンクを含めて、オファーの一覧を顧客に提示します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
 
 > [!NOTE]
 > 試用版リンクからアプリケーションが受信するトークンは、そのアプリのアカウント作成を自動化するためのユーザー情報を Azure Active Directory (Azure AD) を介して取得するためだけに使用できます。 このトークンを使用した認証には、Microsoft アカウントはサポートされません。
@@ -186,7 +187,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します。
 
 このセクションでは、顧客にオファーを表示するときに使用されるロゴや画像を指定できます。 画像はすべて .png 形式である必要があります。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899022"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839947"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU を備えた Azure Stack Edge Pro の技術仕様とコンプライアンス 
 
@@ -79,20 +79,20 @@ Mellanox カードの詳細を次に示します。
 
 ## <a name="storage-specifications"></a>Storage の仕様
 
-Azure Stack Edge Pro デバイスには、それぞれ 1.6 TB の容量を持つ 5 つの 2.5 インチ NVMe DC P4610 SSD が搭載されています。 ブート ドライブは 240 GB の SATA SSD です。 デバイスで利用できる容量の合計は約 8.28 TB となります。 次の表は、デバイスのストレージ容量の一覧です。
+Azure Stack Edge Pro デバイスには、それぞれ 1.6 TB の容量を持つ 5 つの 2.5 インチ NVMe DC P4610 SSD が搭載されています。 ブート ドライブは 240 GB の SATA SSD です。 デバイスで利用できる容量の合計は約 4.19 TB です。 次の表は、デバイスのストレージ容量の一覧です。
 
 |     仕様                          |     値             |
 |--------------------------------------------|-----------------------|
-|    ブート SATA ソリッドステート ドライブ (SSD)      |    1                  |
 |    NVMe SSD の数                     |    5                  |
-|    ブート SSD 容量                       |    240 GB             |
 |    単一の NVMe SSD 容量                |    1.6 TB             |
-|    合計容量                          |    8.28 TB            |
-|    合計の使用可能な容量*                  |    7\.95 TB 以下          |
+|    ブート SATA ソリッドステート ドライブ (SSD)      |    1                  |
+|    ブート SSD 容量                       |    240 GB             |
+|    合計容量                          |    8.0 TB             |
+|    合計の使用可能な容量*                  |    約 4.19 TB          |
 |    SAS コントローラー                          |    HBA330 12 Gbps     |
 
 
-**容量の一部は内部仕様のために予約されています。*
+*"*パリティの回復性と、内部使用のための領域予約の後。* "
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

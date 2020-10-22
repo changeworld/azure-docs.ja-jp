@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321889"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403128"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -108,7 +108,7 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
     ![Microsoft Teams アクション](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams アクション")
 
-12. Microsoft Teams アクションを構成します。 **Logic Apps デザイナー**により、Office 365 アカウントを認証するよう求められます。 メッセージ送信先の **[Team Id] (チーム ID)** と **[Channel Id] (チャネル ID)** を選択します。
+12. Microsoft Teams アクションを構成します。 **Logic Apps デザイナー**により、職場または学校のアカウントを認証するよう求められます。 メッセージ送信先の **[Team Id] (チーム ID)** と **[Channel Id] (チャネル ID)** を選択します。
 
 13. 静的テキストと、動的コンテンツ内の \<fields\> への参照の組み合わせを使用してメッセージを構成します。 次のテキストをコピーして **[メッセージ]** フィールドに貼り付けます。
 

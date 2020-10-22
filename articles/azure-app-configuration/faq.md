@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587346"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074959"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 
@@ -43,9 +43,13 @@ App Configuration は強固なセキュリティを備えていますが、そ�
 
 はい。 App Configuration は、そこに格納されているすべてのキー値を暗号化し、ネットワーク通信を暗号化します。 キー名とラベルは、構成データを取得するためのインデックスとして使用され、暗号化されません。
 
+## <a name="where-does-data-stored-in-app-configuration-reside"></a>App Configuration に格納されているデータはどこにありますか。 
+
+App Configuration に格納されている顧客データは、顧客の App Configuration ストアが作成されたリージョンに置かれています。 データ回復性のために App Configuration によって[ペアリングされているリージョン](../best-practices-availability-paired-regions.md)にデータがレプリケートされることがありますが、[Azure のデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)により定義される Geo の外に顧客データが移されたり、レプリケートされたりすることはありません。 顧客とエンド ユーザーには、場所を問わず、顧客データのグローバルな移動、コピー、アクセスが許可されます。
+
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>App Configuration と Azure App Service 設定は何が違うのですか?
 
-Azure App Service では、App Service インスタンスごとにアプリ設定を定義できます。 これらの設定は、環境変数としてアプリケーション コードに渡されます。 必要に応じて、特定のデプロイ スロットに設定を関連付けることができます。 詳細については、「[アプリ設定の構成](/azure/app-service/configure-common#configure-app-settings)」を参照してください。
+Azure App Service では、App Service インスタンスごとにアプリ設定を定義できます。 これらの設定は、環境変数としてアプリケーション コードに渡されます。 必要に応じて、特定のデプロイ スロットに設定を関連付けることができます。 詳細については、「[アプリ設定の構成](../app-service/configure-common.md#configure-app-settings)」を参照してください。
 
 対照的に、Azure App Configuration では、複数のアプリ間で共有できる設定を定義できます。 これには、App Service で実行されるアプリや、その他のプラットフォームが含まれます。 ご利用のアプリケーション コードからこれらの設定へのアクセスは、(.NET と Java の場合) 構成プロバイダーから、Azure SDK から、あるいは REST API 経由で直接、行われます。
 
@@ -90,7 +94,7 @@ App Configuration のどちらのレベルにも、構成設定、機能フラ�
     Standard レベルのストアの場合、毎日最初の 20 万件の要求が 1 日あたりの料金に含まれます。 追加の要求は超過分として課金されます。
 
 - **サービス レベル アグリーメント**: Standard レベルには、99.9% の可用性の SLA があります。 Free レベルには SLA がありません。
-- **セキュリティ機能**: どちらのレベルにも、Microsoft のマネージド キーを使用した暗号化、HMAC または Azure Active Directory を介した認証、RBAC サポート、およびマネージド ID などの基本的なセキュリティ機能が含まれています。 Standard レベルでは、Private Link のサポートや、カスタマー マネージド キーによる暗号化など、より高度なセキュリティ機能が提供されます。
+- **セキュリティ機能**: どちらのレベルにも、Microsoft のマネージド キーを使用した暗号化、HMAC または Azure Active Directory を介した認証、Azure RBAC サポート、およびマネージド ID などの基本的なセキュリティ機能が含まれています。 Standard レベルでは、Private Link のサポートや、カスタマー マネージド キーによる暗号化など、より高度なセキュリティ機能が提供されます。
 - **コスト**: Standard レベルのストアには、毎日の使用料金があります。 また、1 日の割り当てを超えた要求に対しては超過料金が発生します。 Free レベルのストアを使用する場合、コストはかかりません。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>ストアを Free レベルから Standard レベルにアップグレードすることはできますか? ストアを Standard レベルから Free レベルにダウングレードすることはできますか?

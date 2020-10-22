@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183719"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743575"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 
@@ -69,7 +69,7 @@ Azure 関数を作成するには、次の手順を実行します。
      
 10. [関数] ウィンドウで _.csx_ ファイルを実行します。
 
-    ![新しい C# 関数を作成する](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![新しい C# 関数を作成する 2](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     次の手順に従います。
 
@@ -191,7 +191,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
     2. **[+ 追加]** をクリックします。
         
-        ![[ファイルの表示] リンク](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![新しい関数の追加、ファイルの追加](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
     3. 「**project.json**」と入力し、**Enter** キーを押します。 **project.json** ファイルに、次のコードを貼り付けます。
 
@@ -211,7 +211,7 @@ Azure 関数を作成するには、次の手順を実行します。
     
     4. **[保存]** をクリックします。
 
-        ![[ファイルの表示] リンク](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![新しい関数プロジェクト json](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 Azure 関数が作成されました。 この関数は、データ変換ジョブによって新しい BLOB が生成されるたびにトリガーされます。
 

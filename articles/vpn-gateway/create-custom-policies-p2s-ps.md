@@ -8,14 +8,14 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 852ff5e6ad847ff33f8e32b4c3d9f8b325b80716
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663546"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743694"
 ---
-# <a name="create-and-set-custom-ipsec-policies-for-point-to-site"></a>ポイント対サイトのカスタム IPsec ポリシーの作成と設定
+# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>ポイント対サイトのカスタム IPsec ポリシーの作成と設定 (プレビュー)
 
 ご使用の環境で、暗号化のカスタム IPsec ポリシーが必要な場合は、必要な設定を使用して、ポリシー オブジェクトを簡単に構成することができます。 この記事は、カスタム ポリシー オブジェクトを作成し、PowerShell を使用して設定する場合に役立ちます。
 

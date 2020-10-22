@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 10/12/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116083"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993170"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -89,7 +89,7 @@ ms.locfileid: "87116083"
 Application Insights で新しいログが確認できるようになるまで、少し時間がかかります (通常は 5 分以内)。
 
 1. [Azure Portal](https://portal.azure.com) で作成した Application Insights リソースを開きます。
-1. **[概要]** メニューで、 **[分析]** を選択します。
+1. **[概要]** ページで **[ログ]** を選択します。
 1. Application Insights で新しいタブを開きます。
 
 次に示すのは、ログを確認するために使用できるクエリの一覧です。

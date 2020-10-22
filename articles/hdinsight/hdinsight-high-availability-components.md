@@ -6,24 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609167"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842582"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight でサポートされている高可用性サービス
 
- 分析コンポーネントに最適な可用性レベルを提供するために、HDInsight は、重要なサービスの高可用性 (HA) を保証するための独自のアーキテクチャを使用して開発されました。 このアーキテクチャの一部のコンポーネントは、自動フェールオーバーを提供するために Microsoft によって開発されました。 その他のコンポーネントは、特定のサービスをサポートするためにデプロイされる標準の Apache コンポーネントです。 この記事では、HDInsight の HA サービス モデルのアーキテクチャ、HDInsight で HA サービスのフェールオーバーをサポートする方法、および他のサービス中断から復旧するためのベストプラクティスについて説明します。
+分析コンポーネントに最適な可用性レベルを提供するために、HDInsight は、重要なサービスの高可用性 (HA) を保証するための独自のアーキテクチャを使用して開発されました。 このアーキテクチャの一部のコンポーネントは、自動フェールオーバーを提供するために Microsoft によって開発されました。 その他のコンポーネントは、特定のサービスをサポートするためにデプロイされる標準の Apache コンポーネントです。 この記事では、HDInsight の HA サービス モデルのアーキテクチャ、HDInsight で HA サービスのフェールオーバーをサポートする方法、および他のサービス中断から復旧するためのベストプラクティスについて説明します。
  
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
 > Microsoft は、多様性を尊重する環境をサポートします。 この記事には、_スレーブ_という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
-
 
 ## <a name="high-availability-infrastructure"></a>高可用性インフラストラクチャ
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017704"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91395976"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション
-マルチテナント アプリケーションは共有リソースであり、"それぞれ異なるテナント内のユーザー" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、さまざまなテナントからのアプリケーションのユーザーはすべて、ユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。
+マルチテナント アプリケーションは共有リソースであり、"それぞれ異なるテナント内のユーザー" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、さまざまなテナントからのアプリケーションのユーザーはすべて、ユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Microsoft 365、Outlook.com、visualstudio.com です。
 
 アプリケーション プロバイダーの観点から、マルチテナント方式の主なメリットは運用とコストの効率にあります。 アプリケーションの 1 つのバージョンで、多くのテナント/顧客のニーズを満たすことができるため、監視、パフォーマンスのチューニング、ソフトウェアのメンテナンス、データのバックアップなどのシステム管理タスクを統合することが可能です。
 

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931647"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779210"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,19 +72,19 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>ユーザーおよび PSTN と 1:n の通話を行う
-> [!WARNING]
-> PSTN 通話は、現在プライベート プレビュー段階にあります。 アクセスするには、[早期導入者プログラムに申し込みます](https://aka.ms/ACS-EarlyAdopter)。
+
 ユーザーおよび PSTN 番号と 1:n の通話を行うには、両方の通話先に対する CommunicationUser と電話番号を指定する必要があります。
+
 PSTN 通話を許可するように Communication Services リソースを構成する必要があります。
 ```js
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>ビデオ カメラを使用して 1:1 の通話を行う
+### <a name="place-a-11-call-with-video-camera"></a>ビデオ カメラを使用して 1:1 の通話を行う
 > [!WARNING]
 > 現在、発信ローカル動画ストリームは 1 つしか使用できません。
 動画通話を行うには、deviceManager の `getCameraList` API を使用してローカル カメラを列挙する必要があります。
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ const call = callClient.call(['acsUserId'], placeCallOptions);
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 通話の間に、通話のプロパティにアクセスしてさまざまな操作を実行し、動画やオーディオに関連する設定を管理できます。
 
 ### <a name="call-properties"></a>通話のプロパティ
-* この通話の一意の ID を取得します。
+* この通話の一意の ID (文字列) を取得します。
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* 通話の他の参加者について知るには、`call` インスタンスの `remoteParticipant` コレクションを調べます。
+* 通話の他の参加者について知るには、`call` インスタンスの `remoteParticipant` コレクションを調べます。 配列には、リスト `RemoteParticipant` オブジェクトが含まれています
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* 通話が着信の場合の呼び出し元の ID。
+* 通話が着信の場合の呼び出し元の ID。 ID は `Identifier` 型の 1 つです
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * 通話の状態を取得します。
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 これにより、通話の現在の状態を表す文字列が返されます。
@@ -153,35 +153,34 @@ const callState: CallState = call.state;
 * 特定の通話が終了した理由を確認するには、`callEndReason` プロパティを調べます。
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* 現在の通話が着信通話かどうかを確認するには、`isIncoming` プロパティを調べます。これは `Boolean` を返します。
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  現在マイクがミュートされているかどうかを確認するには、`muted` プロパティを調べます。これは `Boolean` を返します。
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* 現在の通話が着信通話かどうかを確認するには、`isIncoming` プロパティを調べます
+* 画面共有ストリームが特定のエンドポイントから送信されているかどうかを確認するには、`isScreenSharingOn` プロパティを調べます。これは `Boolean` を返します。
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  現在マイクがミュートされているかどうかを確認するには、`muted` プロパティを調べます。
+* アクティブなビデオ ストリームを調べるには、`localVideoStreams` コレクションを確認します。これには、`LocalVideoStream` オブジェクトが含まれています
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* 画面共有ストリームが特定のエンドポイントから送信されているかどうかを確認するには、`isScreenSharingOn` プロパティを調べます。
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* アクティブな動画ストリームを調べるには、`localVideoStreams` コレクションを確認します。
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ await call.unmute();
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,15 +253,16 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 * このリモート参加者の識別子を取得します。
 ID は "Identifier" 型の 1 つです
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * このリモート参加者の状態を取得します。
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 状態は次のいずれかです
 * "Idle" - 初期状態です
@@ -275,28 +275,27 @@ const state: RemoteParticipantState = remoteParticipant.state;
 参加者が通話を終了した理由を確認するには、`callEndReason` プロパティを調べます。
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* このリモート参加者がミュートされているかどうかを確認するには、`isMuted` プロパティを調べます。これは `Boolean` を返します
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* このリモート参加者が話しているかどうかを確認するには、`isSpeaking` プロパティを調べます。これは `Boolean` を返します
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* このリモート参加者がミュートされているかどうかを確認するには、`isMuted` プロパティを調べます。
+* 特定の参加者がこの通話で送信しているすべてのビデオ ストリームを調べるには、`videoStreams` コレクションを確認します。これには、`RemoteVideoStream` オブジェクトが含まれています
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* このリモート参加者が話しているかどうかを確認するには、`isSpeaking` プロパティを調べます。
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* 特定の参加者がこの通話で送信しているすべての動画ストリームを調べるには、`videoStreams` コレクションを確認します。
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,13 +311,12 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>通話から参加者を削除する
 
 通話から参加者を削除するには (ユーザーまたは電話番号のいずれか)、`removeParticipant` を呼び出します。
-"identifier" 型のいずれかを渡す必要があります。参加者が通話から削除されると、非同期的に解決されます。
+"Identifier" 型のいずれかを渡す必要があります。これは、参加者が通話から削除されると、非同期的に解決されます。
 参加者は、`remoteParticipants` コレクションからも削除されます。
 
 ```js
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 リモート参加者の動画ストリームと画面共有ストリームの一覧を取得するには、`videoStreams` コレクションを調べます。
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```
@@ -365,12 +362,12 @@ if (remoteParticipantStream.isAvailable) {
 ### <a name="remote-video-stream-properties"></a>リモート動画ストリームのプロパティ
 リモート動画ストリームには次のプロパティがあります。
 
-* `Id` - リモート動画ストリームの ID です
+* `Id` - リモート ビデオ ストリームの ID です
 ```js
 const id: number = remoteVideoStream.id;
 ```
 
-* `StreamSize` - リモート動画ストリームのサイズ (幅と高さ)
+* `StreamSize` - リモート ビデオ ストリームのサイズ (幅と高さ) です
 ```js
 const size: {width: number; height: number} = remoteVideoStream.size;
 ```

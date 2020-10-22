@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540627"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855006"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
@@ -68,10 +68,8 @@ Azure Arc エージェントが機能するには、次のプロトコル、ポ�
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | エージェントが Azure に接続してクラスターを登録するために必要です                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント                                      |
-| `https://docker.io`                                                                                            | コンテナー イメージをプルするために必要です                                                                                         |
-| `https://github.com`、git://github.com                                                                         | GitOps リポジトリの例は、GitHub でホストされています。 構成エージェントには、指定する git エンドポイントへの接続が必要です。 |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager トークンをフェッチして更新するために必要です                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です                                                                  |
+| `https://mcr.microsoft.com`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  システムによって割り当てられたマネージド ID 証明書をプルするために必須                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する:
@@ -183,17 +181,36 @@ AzureArcTest1  eastus      AzureArcTest
     az -v
     ```
 
-    送信プロキシを使用してエージェントを設定するには、`connectedk8s` 拡張機能のバージョン 0.2.3 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
+    送信プロキシを使用してエージェントを設定するには、`connectedk8s` 拡張機能のバージョン 0.2.5 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
 
-2. プロキシ パラメーターを指定して connect コマンドを実行します。
+2. 送信プロキシ サーバーを使用するには、Azure CLI に必要な環境変数を設定します。
+
+    * bash を使用している場合、適切な値で次のコマンドを実行します。
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * PowerShell を使用している場合、適切な値で次のコマンドを実行します。
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
+
+3. プロキシ パラメーターを指定して connect コマンドを実行します。
 
     ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. --proxy-skip-range で excludedCIDR を指定することは、エージェントのクラスター内通信が切断されないようにするために重要です。
-> 2. 上記のプロキシ仕様は、現在、sourceControlConfiguration で使用される Flux ポッドではなく、Arc エージェントに対してのみ適用されます。 Arc 対応の Kubernetes チームはこの機能に積極的に取り組んでいるため、間もなく利用できるようになります。
+> 2. ほとんどの送信プロキシ環境では --proxy-http、--proxy-https、--proxy-skip-range が求められますが、プロキシからの信頼されている証明書を、エージェント ポッドの信頼されている証明書ストアに挿入する必要がある場合は、--proxy-cert のみが必要となります。
+> 3. 上記のプロキシ仕様は現在、sourceControlConfiguration で使用される Flux ポッドではなく、Arc エージェントに対してのみ適用されます。 Arc 対応の Kubernetes チームはこの機能に積極的に取り組んでいるため、間もなく利用できるようになります。
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Kubernetes 用 Azure Arc エージェント
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321358"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848859"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 |**アップタイム SLA**|99.99%|99.99%|99.99%|
 |**最大バックアップ保有期間**|7 日|35 日|35 日|
 |**CPU**|低|低、中、高|中、高|
-|**IO スループット (概算)** |DTU あたり 1-5 IOPS| DTU あたり 1-5 IOPS | DTU あたり 25 IOPS|
+|**IOPS (概算)** \* |DTU あたり 1-5 IOPS| DTU あたり 1-5 IOPS | DTU あたり 25 IOPS|
 |**IO 待機時間 (概算)**|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
 |**列ストア インデックス作成** |該当なし|S3 以上|サポートされています|
 |**インメモリ OLTP**|該当なし|該当なし|サポートされています|
 
+\* データ ファイルに対するすべての読み取り IOPS と書き込み IOPS (バックグラウンド IO を含む) (チェックポイントと LAZY WRITER)
+
 > [!IMPORTANT]
-> Basic、Standard S0、S1、S2 サービス レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
+> Basic、S0、S1、S2 のサービス目標では、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス目標をお勧めします。 
 >
->データ ストレージに関しては、Basic、Standard S0 および S1 サービス レベルは Standard ページ BLOB に配置されます。 Standard ページ BLOB は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
+> Basic、S0、および S1 のサービス目標では、データベース ファイルは Azure Standard Storage に格納されます。ここでは、ハード ディスク ドライブ (HDD) ベースのストレージ メディアが使用されます。 これらのサービス目標は、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
 >
+
+> [!TIP]
+> データベースまたはエラスティック プールに対する実際の[リソース管理](resource-limits-logical-server.md#resource-governance)の制限を確認するには、[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューを照会します。
 
 > [!NOTE]
 > Azure 無料アカウントと組み合わせて Azure SQL Database の無料のデータベースを Basic サービス レベルで取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。

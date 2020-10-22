@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 10/07/2020
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d0f7b693eab275e232454cdf92f77b9ecfac1af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 321b80e8aa86703cad16e70af46d016b9dc6555f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802635"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048000"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v3 for SQL API:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -43,6 +43,7 @@ ms.locfileid: "91802635"
 |**サンプル**|[.NET コード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
 |**開始するには**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
+|**Entity Framework Core のチュートリアル**|[Azure Cosmos DB プロバイダーを使用する Entity Framework Core](/ef/core/providers/cosmos/#get-started)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]

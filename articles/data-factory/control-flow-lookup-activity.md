@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/14/2020
+ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270442"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044073"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -31,7 +31,7 @@ ms.locfileid: "91270442"
 
 次のデータ ソースがルックアップ アクティビティでサポートされています。 
 
-検索アクティビティでは、最大 5,000 行を返すことができます。結果セットにそれを超えるレコードが含まれている場合は、最初の 5,000 行が返されます。 検索アクティビティの出力でサポートされる最大サイズは約 4 MB で、サイズがこの制限を超えるとアクティビティは失敗します。 現時点では、タイムアウト前のルックアップ アクティビティの最長期間は 1 時間です。
+検索アクティビティでは、最大 5,000 行を返すことができます。結果セットにそれを超えるレコードが含まれている場合は、最初の 5,000 行が返されます。 検索アクティビティの出力でサポートされる最大サイズは約 4 MB で、サイズがこの制限を超えるとアクティビティは失敗します。 現時点では、タイムアウト前のルックアップ アクティビティの最長期間は 24 時間です。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 

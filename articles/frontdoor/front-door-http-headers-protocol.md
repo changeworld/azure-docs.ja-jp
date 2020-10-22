@@ -9,19 +9,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cd721f13ffa128e83072819a20b17f305118b13c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399516"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91626294"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front Door での HTTP ヘッダー プロトコルのサポート
 この記事では、呼び出しパスの各部で Front Door がサポートするプロトコルの概要を示します (画像を参照)。 以下のセクションでは、Front Door がサポートする HTTP ヘッダーについて詳しく説明します。
 
-![Azure Front Door の HTTP ヘッダー プロトコル][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure Front Door の HTTP ヘッダー プロトコル":::
 
 >[!IMPORTANT]
 >この記事に記載されていない HTTP ヘッダーは、Front Door では認定されていません。
@@ -31,7 +31,7 @@ Front Door では、受信した要求のほとんどのヘッダーが変更な
 
 ## <a name="front-door-to-backend"></a>Front Door からバックエンド
 
-Front Door では、制限により削除されない限り、受信した要求に存在するヘッダーが含められます。 Front Door では、次のヘッダーも追加されます。
+Front Door では、制限により削除されない限り、受信した要求のヘッダーが含められます。 Front Door では、次のヘッダーも追加されます。
 
 | ヘッダー  | 例と説明 |
 | ------------- | ------------- |
@@ -40,11 +40,13 @@ Front Door では、制限により削除されない限り、受信した要求
 | X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> TCP 接続に関連付けられた、ソケットの IP アドレス (現在の要求の送信元) を表します。 要求のクライアント IP アドレスは、ユーザーが任意に上書きできるので、ソケットの IP アドレスと同じではない場合もあります。|
 | X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Front Door によって提供される要求を示す一意の参照文字列です。 これは、アクセス ログの検索に使用されるため、トラブルシューティングにおいて重要です。|
 | X-Azure-RequestChain |  X-Azure-RequestChain: hops=1 </br> Front Door が要求ループの検出に使用するヘッダーであり、ユーザーはそれに対する依存関係を取得することはできません。 |
+| X-Azure-FDID | X-Azure-FDID:55ce4ed1-4b06-4bf1-b40e-4638452104da<br/> 特定の Front Door リソースからの要求を識別する参照文字列です。 この値は、Azure portal で確認することも、管理 API を使用して取得することもできます。 このヘッダーを IP ACL と組み合わせて使用して、特定の Front Door リソースからの要求のみを受け入れるようにエンドポイントをロック ダウンすることができます。 [詳細](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)については、FAQ を参照してください。 |
 | X-Forwarded-For | X-Forwarded-For: 127.0.0.1 </br> X-Forwarded-For (XFF) HTTP ヘッダー フィールドは、HTTP プロキシまたはロード バランサーを経由して Web サーバーに接続しているクライアントの発信元 IP アドレスを識別することがよくあります。 既存の XFF ヘッダーがあった場合、Front Door はそのヘッダーにクライアント ソケット IP を追加するか、クライアント ソケット IP を使用した XFF ヘッダーを追加します。 |
 | X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> X-Forwarded-Host HTTP ヘッダー フィールドは、Host HTTP 要求ヘッダー内でクライアントによって要求された元のホストを識別するために一般的に使用される方法です。 これは、要求を処理するバックエンド サーバーによって Front Door からのホスト名が異なる場合があるからです。 |
 | X-Forwarded-Proto | X-Forwarded-Proto: http </br> X-Forwarded-Proto HTTP ヘッダー フィールドは、HTTP 要求の発信元のプロトコルを識別するために使用されることがよくあります。Front Door は、構成に基づいて HTTPS を使用してバックエンドと通信することがあるからです。 これは、リバース プロキシへの要求が HTTP である場合でも当てはまります。 |
 | X-FD-HealthProbe | X-FD-HealthProbe HTTP ヘッダー フィールドは、Front Door からの正常性プローブを識別するために使用されます。 このヘッダーが 1 に設定されている場合、要求は正常性プローブです。 X-Forwarded-Host ヘッダー フィールドを使用して、特定の Front Door からの厳密なアクセスが必要な場合に使用できます。 |
 |X-Azure-FDID | X-Azure-FDID ヘッダー: 437c82cd-360a-4a54-94c3-5ff707647783 </br> このフィールドには、受信した要求の送信元の Front Door を特定できる frontdoorID が含まれています。 このフィールドは、Azure Front Door Service によって設定されます。 | 
+
 
 ## <a name="front-door-to-client"></a>Front Door からクライアント
 
@@ -52,12 +54,9 @@ Front Door では、制限により削除されない限り、受信した要求
 
 | ヘッダー  | 例 |
 | ------------- | ------------- |
-| X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> これは、Front Door によって提供される要求を示す一意の参照文字列です。 これは、アクセス ログの検索に使用されるため、トラブルシューティングにおいて重要です。|
+| X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> これは Front Door によって処理される要求を識別する一意の参照文字列です。アクセス ログの検索に使用されるため、トラブルシューティングには非常に重要です。|
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Front Door を作成する](quickstart-create-front-door.md)
 - [Front Door のしくみ](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

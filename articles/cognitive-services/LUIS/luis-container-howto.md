@@ -1,27 +1,29 @@
 ---
-title: Docker コンテナー - LUIS
+title: LUIS 用の Docker コンテナーのインストールと実行
 titleSuffix: Azure Cognitive Services
-description: LUIS コンテナーでは、お客様のトレーニング済みアプリまたは発行済みアプリを Docker コンテナーに読み込んで、コンテナーの API エンドポイントからクエリ予測を利用することができます。
+description: LUIS コンテナーを使用して、トレーニングまたは公開されたアプリを読み込み、オンプレミスでその予測にアクセスできます。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: オンプレミス、Docker、コンテナー
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889518"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460987"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
+# <a name="install-and-run-docker-containers-for-luis"></a>LUIS 用の Docker コンテナーのインストールと実行
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+コンテナーを使用すると、独自の環境で LUIS を使用できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、LUIS コンテナーをダウンロード、インストール、実行する方法について学習します。
 
 Language Understanding (LUIS) コンテナーは、トレーニング済みまたは発行された Language Understanding モデルを読み込みます。 Docker コンテナーは、[LUIS アプリ](https://www.luis.ai)としてコンテナーの API エンドポイントからクエリ予測にアクセスできるようにします。 コンテナーからクエリ ログを収集し、それらを Language Understanding アプリに再度アップロードすることで、アプリの予測正確性を高めることができます。
 

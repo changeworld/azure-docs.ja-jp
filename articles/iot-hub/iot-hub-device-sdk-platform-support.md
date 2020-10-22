@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423084"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152224"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート
 
@@ -60,7 +60,7 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 | OS                  | コンパイラ                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2.7.*、3.5 以降 |
-| MacOS High Sierra   | Python 2.7.*、3.5 以降 |
+| macOS High Sierra   | Python 2.7.*、3.5 以降 |
 | Windows 10 ファミリ   | Python 2.7.*、3.5 以降 |
 
 非同期 API は Python バージョン 3.5.3 以降でのみサポートされます。バージョン 3.7 以降を使用することをお勧めします。
@@ -74,7 +74,7 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 デスクトップおよびサーバー SKU   | .NET Core 2.1、.NET Framework 4.5.1、または .NET Framework 4.7 |
 
-.NET SDK は、[Azure Device Agent](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) を含む Windows IoT Core、または [RPC を使用して UWP アプリケーションと通信できるカスタム NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/) でも使用できます。
+.NET SDK は、[Azure Device Agent](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) を含む Windows IoT Core、または [RPC を使用して UWP アプリケーションと通信できるカスタム NTService](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/) でも使用できます。
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
@@ -120,11 +120,11 @@ Microsoft では数多くのパートナーと連携して、Azure IoT のテス
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK を使用せずに IoT Hub に接続する
 
-IoT Hub デバイス SDK を使用できない場合は、HTTPS の要求と応答を送受信できる任意のアプリケーションから、[IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/) を使用して IoT Hub に直接接続できます。
+IoT Hub デバイス SDK のいずれかを使用できない場合は、サポートされている通信プロトコルを使用して IoT Hub に直接接続できます。 詳しくは、「[Azure IoT SDK を使用せずに開発する](iot-hub-devguide-no-sdk.md)」を参照してください。
 
 ## <a name="support-and-other-resources"></a>サポートとその他のリソース
 
-Azure IoT device SDK の使用中に問題が発生した場合は、以下にまとめてあるいくつかの方法でサポートを求めることができます。 すべてのサポート オプションの詳細については、[Azure IoT のサポートとヘルプのオプション](https://aka.ms/iothelp)を参照してください。 
+Azure IoT device SDK の使用中に問題が発生した場合は、以下にまとめてあるいくつかの方法でサポートを求めることができます。 すべてのサポート オプションの詳細については、[Azure IoT のサポートとヘルプのオプション](../iot-fundamentals/iot-support-help.md)を参照してください。 
 
 **バグの報告** – デバイス SDK のバグは、関連する GitHub プロジェクトの問題ページで報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
 
@@ -138,7 +138,7 @@ Azure IoT device SDK の使用中に問題が発生した場合は、以下に�
 
 * [Azure IoT Hub Python SDK の問題](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**技術的な質問** – [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) と [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) の両方で、*azure-iot-sdk* を利用して技術的な質問をすることができます。
+**技術的な質問** – [Microsoft Q&A](/answers/topics/azure-iot-sdk.html) と [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) の両方で、*azure-iot-sdk* を利用して技術的な質問をすることができます。
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) から新しいサポート要求を直接作成することで、Microsoft カスタマー サポート チームとやり取りすることができます。
 

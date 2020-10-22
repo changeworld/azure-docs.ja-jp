@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904470"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777209"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の共有を管理する
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の共有を管理する
 
 この記事では、Azure Stack Edge Pro の共有を管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行うことができます。 Azure portal を使用し、共有に関連付けられているストレージ アカウントの共有を追加、削除、更新したり、ストレージ キーを同期したりすることができます。
 
@@ -74,7 +74,7 @@ ms.locfileid: "90904470"
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
-   ![[共有の追加] を選択する](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![[共有の追加] を選択する 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. **[共有の追加]** で共有設定を指定します。 共有の一意の名前を指定します。
     
@@ -106,7 +106,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に**無効**と表示されます。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![共有を選択する 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. **[マウント]** を選択します。
 
@@ -130,7 +130,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![共有を選択する 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. 共有の一覧で、マウントを解除する共有を選択します。 マウントを解除する共有がどのモジュールからも使用されていないことを確認する必要があります。 共有がモジュールによって使用されている場合、該当するモジュールで問題が発生します。 **[マウント解除]** を選択します。
 
@@ -150,7 +150,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1. 共有の一覧で、削除したい共有を選択してクリックします。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![共有を選択する 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. **[削除]** をクリックします。
 
@@ -175,7 +175,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 1. Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![共有を選択する 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. **[最新の情報に更新]** をクリックします。
 

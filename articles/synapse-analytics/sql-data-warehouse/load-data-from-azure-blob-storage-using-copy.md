@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442983"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371526"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>チュートリアル:ニューヨークのタクシー データセットを読み込む
 
@@ -91,7 +91,7 @@ SQL プールは、定義された一連の[コンピューティング リソ�
 
 11. デプロイ プロセスを監視するために、ツール バーの **[通知]** を選択します。
   
-     ![通知 (notification)](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![スクリーンショットは、[デプロイ中] と表示された [通知] ペインが開いている Azure portal を示しています。](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360159"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway のカスタム エラー ページを作成する
 
@@ -48,7 +48,7 @@ Application Gateway では、既定のエラー ページを表示する代わ�
 
 1. ポータルの Application Gateway に移動し、Application Gateway を選択します。
 
-    ![ag-overview](media/custom-error/ag-overview.png)
+    ![スクリーンショットはアプリケーション ゲートウェイの [概要] ページを示しています。](media/custom-error/ag-overview.png)
 2. **[リスナー]** をクリックして、エラー ページを指定する特定のリスナーに移動します。
 
     ![Application Gateway のリスナー](media/custom-error/ag-listener.png)

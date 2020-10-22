@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331881"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015006"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -80,6 +80,14 @@ Azure には、Azure Digital Twins リソースへのアクセス承認用に、
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 
 Azure Digital Twins によって、データ センターに書き込まれる場合の保存データおよび転送中データが暗号化され、アクセス時に復号化されます。 この暗号化は、Microsoft が管理する暗号化キーを使用して行われます。
+
+## <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
+
+現在、Azure Digital Twins では**クロスオリジン リソース共有 (CORS)** がサポートされていません。 このため、ブラウザー アプリ、[API Management (APIM)](../api-management/api-management-key-concepts.md) インターフェイス、または [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) コネクタから REST API を呼び出すと、ポリシー エラーが表示される場合があります。
+
+このエラーを解決するには、次のいずれかの操作を行います。
+* メッセージから CORS ヘッダー `Access-Control-Allow-Origin` を削除します。 このヘッダーは、応答を共有できるかどうかを示します。 
+* または、CORS プロキシを作成し、それを通じて Azure Digital Twins REST API 要求を行います。 
 
 ## <a name="next-steps"></a>次のステップ
 

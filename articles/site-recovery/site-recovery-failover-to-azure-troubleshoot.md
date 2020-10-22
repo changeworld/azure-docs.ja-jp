@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91355042"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -84,8 +84,8 @@ SSH の問題に関する詳細なトラブルシューティング手順につ�
 
 Azure でフェールオーバーされた VM で **[接続]** ボタンが淡色表示され、Express Route またはサイト間 VPN 接続を使用して Azure に接続されない場合は、次の操作を実行します。
 
-1. **[仮想マシン]**  >  **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![ネットワーク インターフェイス](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. **[仮想マシン]**  >  **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![仮想マシンのネットワーク ページのスクリーンショット。ネットワーク インターフェイスの名前が選択されています。](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![ネットワーク インターフェイスの IP 構成ページのスクリーンショット。IP 構成の名前が選択されています。](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. パブリック IP アドレスを有効にするには、 **[有効にする]** をクリックします。 ![IP の有効化](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. **[必要な設定の構成]**  >  **[新規作成]** をクリックします。 ![新規作成](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. パブリック アドレスの名前を入力し、 **[SKU]** と **[割り当て]** の既定のオプションを選択し、 **[OK]** をクリックします。

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931646"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082161"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,12 +43,12 @@ allprojects {
     }
 }
 ```
-次に、モジュール レベルの build.gradle で、次の行を dependencies セクションに追加します
+次に、お使いのモジュール レベルの build.gradle で、次の行を dependencies セクションに追加します
 
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -81,10 +81,10 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>発信通話を行って、グループ通話に参加する
 
-通話を作成して開始するには、`CallClient.call()` メソッドを呼び出して、通話先の `Identifier` を指定する必要があります。
-グループ通話に参加するには、`CallClient.join()` メソッドを呼び出して、groupId を指定する必要があります。 グループ ID は、GUID または UUID 形式にする必要があります。
+通話を作成して開始するには、`CallAgent.call()` メソッドを呼び出して、通話先の `Identifier` を指定する必要があります。
+グループ通話に参加するには、`CallAgent.join()` メソッドを呼び出して、groupId を指定する必要があります。 グループ ID は、GUID または UUID 形式にする必要があります。
 
-通話の作成と開始は同期的に行います。 通話インスタンスを使用すると、通話のすべてのイベントをサブスクライブできます。
+通話の作成と開始は同期的に行われます。 通話インスタンスを使用すると、通話のすべてのイベントをサブスクライブできます。
 
 ### <a name="place-a-11-call-to-a-user"></a>ユーザーと 1:1 の通話を行う
 別の Communication Services ユーザーと通話するには、`callAgent` で `call` メソッドを呼び出し、`communicationUserId` キーを使用してオブジェクトを渡します。
@@ -106,10 +106,10 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>ビデオ カメラを使用して 1:1 の通話を行う
+### <a name="place-a-11-call-with-video-camera"></a>ビデオ カメラを使用して 1:1 の通話を行う
 > [!WARNING]
 > 現在、サポートされている発信ローカル動画ストリームは 1 つだけです。動画を使用して通話を行うには、`deviceManager` `getCameraList` API を使用して、ローカル カメラを列挙する必要があります。
 目的のカメラを選択したら、それを使用して `LocalVideoStream` インスタンスを構築し、それを `call` メソッドへの `localVideoStream` 配列内の項目として、`videoOptions` に渡します。
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>プッシュ通知
+## <a name="push-notifications"></a>プッシュ通知
 
 ### <a name="overview"></a>概要
-モバイル プッシュ通知は、モバイル デバイスで受け取るポップアップ通知です。 通話に関しては、Microsoft では VoIP (ボイス オーバー IP 通話) プッシュ通知に注目しています。 プッシュ通知に登録し、プッシュ通知を処理し、プッシュ通知を登録解除する機能が提供される予定です。
+モバイル プッシュ通知は、モバイル デバイスに表示されるポップアップ通知です。 通話に関しては、VoIP (ボイス オーバー IP 通話) でのプッシュ通知に焦点を絞ります。 プッシュ通知の登録を行い、プッシュ通知を処理してから、プッシュ通知を登録解除します。
 
-### <a name="prerequisite"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Cloud Messaging (FCM) が有効になっている Firebase アカウントを設定してあり、Firebase Cloud Messaging を Azure Notification Hubs (ANH) インスタンスに接続しているものとします。 詳細については、[Azure への Firebase の接続](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started)に関するページを参照してください。
-また、このチュートリアルでは、Android Studio バージョン 3.6 以降を使用してアプリケーションがビルドされているものとします。
+このセクションを完了するには、Firebase アカウントを作成し、Cloud Messaging (FCM) を有効にします。 Firebase Cloud Messaging が Azure Notification Hub (ANH) インスタンスに接続されていることを確認します。 手順については、[Firebase の Azure への接続](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started)に関するページを参照してください。
+このセクションでは、Android Studio バージョン 3.6 以降が使用され、アプリケーションがビルドされていることを想定しています。
 
-FCM からの通知メッセージを受信できるためには、Android アプリケーションに対する一連のアクセス許可が必要です。 AndroidManifest.xml ファイルで、 *<manifest ...>* の直後、または *</application>* タグの下に、次のアクセス許可のセットを追加します
+Firebase Cloud Messaging から通知メッセージを受信するには、Android アプリケーションに対する一連のアクセス許可が必要です。 お使いの `AndroidManifest.xml` ファイルの *<manifest ...>* の直後、または *</application>* タグの下に、次の一連のアクセス許可を追加します。
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ FCM からの通知メッセージを受信できるためには、Android ア�
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>プッシュ通知に登録する
+### <a name="register-for-push-notifications"></a>プッシュ通知に登録する
 
-- アプリケーションでプッシュ通知に登録するには、デバイス登録トークンを使用して *CallAgent* インスタンスで registerPushNotification() を呼び出す必要があります。
+プッシュ通知を登録するには、アプリケーションは、デバイス登録トークンを使用して *CallAgent* インスタンスの `registerPushNotification()` を呼び出す必要があります。
 
-- デバイス登録トークンを取得する方法
-1. まだ行っていない場合は、アプリケーション モジュールの *build.gradle* ファイルの *dependencies* セクションに次の行を追加して、Firebase クライアント ライブラリを追加します。
+デバイス登録トークンを取得するには、お使いのアプリケーション モジュールの *build.gradle* ファイルの `dependencies` セクションに次の行を追加して、Firebase クライアント ライブラリを追加します。
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. プロジェクト レベルの *build.gradle* ファイル で、*dependencies* セクションに以下を追加します (まだない場合)
+まだない場合は、お使いのプロジェクト レベルの *build.gradle* ファイルの `dependencies` セクションに以下を追加します。
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. ファイルの先頭に次のプラグインを追加します (まだない場合)
+まだない場合、ファイルの先頭に次のプラグインを追加します。
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. ツール バーの *[今すぐ同期]* を選択します
+ツール バーの *[今すぐ同期]* を選択します。 次のコード スニペットを追加し、クライアント アプリケーション インスタンス用に Firebase Cloud Messaging クライアント ライブラリで生成されたデバイス登録トークンを取得します。メイン Activity のヘッダーには、インスタンス用に次の import を必ず追加するようにしてください。 これらは、スニペットでトークンを取得するために必要です。
 
-5. クライアント アプリケーション インスタンスの FCM クライアント ライブラリによって生成されたデバイス登録トークンを取得するには、次のコード スニペットを追加します 
-- これらのインポートを、インスタンスのメイン アクティビティのヘッダーに追加します。 これらは、スニペットでトークンを取得するために必要です
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- トークンを取得するにはこのスニペットを追加する
+
+トークンを取得するには、このスニペットを追加します。
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. 着信通話プッシュ通知用の通話サービス クライアント ライブラリに、デバイス登録トークンを登録します
+着信通話プッシュ通知用の通話サービス クライアント ライブラリに、デバイス登録トークンを登録します。
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -216,12 +218,11 @@ catch(Exception e) {
 }
 ```
 
-### <a name="push-notification-handling"></a>プッシュ通知の処理
+### <a name="push-notification-handling"></a>プッシュ通知を処理する
 
-- 着信通話プッシュ通知を受信するには、ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
+着信通話プッシュ通知を受信するには、ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
 
-1. FCM からペイロードを取得するには、次の手順のようにする必要があります。
-- 新しいサービスを作成し ([ファイル] > [新規] > [サービス] > [サービス])、*FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張して、*onMessageReceived* メソッドをオーバーライドします。 このメソッドは、FCM によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
+Firebase Cloud Messaging からペイロードを取得するには、*FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- また、次のサービス定義を AndroidManifest.xml ファイルの <application> タグ内に追加します。
+次のサービス定義を `AndroidManifest.xml` ファイルの <application> タグ内に追加します。
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- ペイロードを取得したら、*CallAgent* インスタンスで *handlePushNotification* メソッドを呼び出すことによって処理されるように、*Communication Services* のクライアント ライブラリに渡すことができます。
+取得したペイロードは、Communication Services のクライアント ライブラリに渡し、`CallAgent` インスタンスで `handlePushNotification` メソッドを呼び出して処理されるようにできます。
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 プッシュ通知メッセージの処理が成功し、すべてのイベント ハンドラーが適切に登録されると、アプリケーションによって発信されます。
 
-### <a name="unregister-push-notification"></a>プッシュ通知の登録を解除する
+### <a name="unregister-push-notifications"></a>プッシュ通知の登録を解除する
 
-- アプリケーションでは、プッシュ通知の登録をいつでも解除できます。 callAgent で `unregisterPushNotification()` メソッドを呼び出すだけです。
+アプリケーションによって、プッシュ通知の登録はいつでも解除できます。 登録を解除するには、callAgent で `unregisterPushNotification()` メソッドを呼び出します。
 
 ```java
 try {
@@ -281,70 +283,82 @@ catch(Exception e) {
 通話の間に、通話のプロパティにアクセスしてさまざまな操作を実行し、動画やオーディオに関連する設定を管理できます。
 
 ### <a name="call-properties"></a>通話のプロパティ
-* この通話の一意の ID を取得します。
+
+この通話の一意の ID を取得します。
+
 ```java
 String callId = call.getCallId();
 ```
 
-* 通話の他の参加者について知るには、`call` インスタンスの `remoteParticipant` コレクションを調べます。
+通話の他の参加者について知るには、`call` インスタンスの `remoteParticipant` コレクションを調べます。
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* 通話が着信の場合の呼び出し元の ID。
+通話が着信の場合の呼び出し元の ID です。
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* 通話の状態を取得します。
+通話の状態を取得します。 
+
 ```java
 CallState callState = call.getState();
 ```
-通話の現在の状態を表す文字列が返されます。
+
+これにより、通話の現在の状態を表す文字列が返されます。
 * "None" - 通話の初期状態です
 * "Incoming" - 通話を着信中であり、受諾または拒否する必要があることを示します
 * "Connecting" - 通話が発信または受諾された後の初期遷移状態です
 * "Ringing" - 発信通話の場合 - リモート参加者に対して通話が発信されていることを示します。そちら側ではこれは "Incoming" です
-* "EarlyMedia" - 通話が接続される前に、アナウンスが再生されている状態を示します
+* "EarlyMedia" - 通話が接続される前の、アナウンスの再生状態を示します
 * "Connected" - 通話は接続されています
 * "Hold" - 通話は保留になっており、ローカル エンドポイントとリモート参加者の間でメディアは送信されていません
 * "Disconnecting" - 通話は、"Disconnected" 状態になる前の移行状態です
 * "Disconnected" - 通話の最終状態です
 
 
-* 通話が終了した理由を確認するには、`callEndReason` プロパティを調べます。
-それにはコードとサブコードが含まれています (ドキュメントへの TODO リンク)
+通話が終了した理由を確認するには、`callEndReason` プロパティを調べます。 これには、コードとサブコードが含まれます。 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* 現在の通話が着信通話かどうかを確認するには、`isIncoming` プロパティを調べます。
+現在の通話が着信通話かどうかを確認するには、`isIncoming` プロパティを調べます。
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  現在マイクがミュートされているかどうかを確認するには、`muted` プロパティを調べます。
+現在マイクがミュートされているかどうかを確認するには、`muted` プロパティを調べます。
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* アクティブな動画ストリームを調べるには、`localVideoStreams` コレクションを確認します。
+アクティブな動画ストリームを調べるには、`localVideoStreams` コレクションを確認します。
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>ミュートとミュート解除
+
 ローカル エンドポイントをミュートまたはミュート解除するには、非同期 API の `mute` と `unmute` を使用できます。
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>ローカル動画の送信を開始および停止する
-動画を開始するには、`deviceManager` オブジェクトの `getCameraList` API を使用して、カメラを列挙する必要があります。
-次に、目的のカメラを渡して `LocalVideoStream` の新しいインスタンスを作成し、それを引数として `startVideo` API に渡します
+
+動画を開始するには、`deviceManager` オブジェクトの `getCameraList` API を使用して、カメラを列挙する必要があります。 次に、目的のカメラを渡して `LocalVideoStream` の新しいインスタンスを作成し、それを引数として `startVideo` API に渡します。
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 動画の送信が正常に開始されると、通話インスタンスの `localVideoStreams` コレクションに `LocalVideoStream` インスタンスが追加されます。
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 ローカル動画を停止するには、`localVideoStreams` コレクションで使用可能な `localVideoStream` インスタンスを渡します。
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -383,9 +399,9 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 特定のリモート参加者には、プロパティのセットとコレクションが関連付けられています。
 
 * このリモート参加者の識別子を取得します。
-ID は "Identifier" 型の 1 つです
+ID は "Identifier" 型の 1 つです。
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * このリモート参加者の状態を取得します。
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 リモート参加者からの `RemoteVideoStream` をレンダリングするには、`OnVideoStreamsUpdated` イベントをサブスクライブする必要があります。
-イベント内では、`isAvailable` プロパティが true に変化すると、リモート参加者が現在ストリームを送信していることを示します。そうなったら、`Renderer` の新しいインスタンスを作成した後、非同期の `createView` API を使用して新しい `RendererView` を作成し、アプリケーションの UI のどこかに `view.target` をアタッチします。
+
+イベント内で `isAvailable` プロパティが true に変更された場合、リモート参加者が現在ストリームを送信していることを示します。 それが発生したら、`Renderer` の新しいインスタンスを作成し、非同期 `createView` API を使用して新しい `RendererView` を作成し、お使いのアプリケーションの UI の任意の場所に `view.target` をアタッチします。
+
 リモート ストリームの使用可能性が変わるたびに、レンダラー全体を破棄するか、特定の `RendererView` を破棄するか、それらを保持するかを選択できますが、これによって空の動画フレームが表示されます。
 
 ```java
@@ -499,7 +517,7 @@ Renderer オブジェクトには次の API があります
 // Create a view for a video stream
 renderer.createView()
 ```
-* レンダラーと、このレンダラーに関連付けられているすべての `RendererView` を破棄します
+* レンダラーと、このレンダラーに関連付けられているすべての `RendererView` を破棄します。 UI から関連付けられているすべてのビューを削除したときに呼び出します。
 ```java
 renderer.dispose()
 ```

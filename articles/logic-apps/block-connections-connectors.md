@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172083"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310035"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Azure Logic Apps でコネクタによって作成された接続をブロックする
 
@@ -121,7 +121,7 @@ Azure Logic Apps で、制限されたリソースまたは未承認のリソー
 
 1. **[ポリシー定義]** で、次の例で説明しているプロパティに基づいて、ポリシー定義の情報を指定します。
 
-   ![ポリシー定義のプロパティ](./media/block-connections-connectors/policy-definition-create-connections-1.png)
+   ![[ポリシー定義] のプロパティを示すスクリーンショット。](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
@@ -180,7 +180,7 @@ Azure Logic Apps で、制限されたリソースまたは未承認のリソー
 
    **[POLICY RULE]\(ポリシー ルール\)** ボックスに次のように表示されます。
 
-   ![ポリシー定義のルール](./media/block-connections-connectors/policy-definition-create-connections-2.png)
+   ![ポリシー ルールの例が表示された [POLICY RULE]\(ポリシー ルール\) ボックスを示すスクリーンショット。](./media/block-connections-connectors/policy-definition-create-connections-2.png)
 
    複数のコネクタの場合は、次のように条件を追加できます。
 
@@ -224,7 +224,7 @@ Azure Policy 定義の詳細については、次のトピックを参照して�
 
 * [Policy の定義の構造](../governance/policy/concepts/definition-structure.md)
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
-* [Azure Logic Apps 用の Azure Policy 組み込みポリシー定義](../logic-apps/policy-samples.md)
+* [Azure Logic Apps 用の Azure Policy 組み込みポリシー定義](./policy-reference.md)
 
 <a name="create-policy-connector-usage"></a>
 
@@ -311,7 +311,7 @@ Azure Policy 定義の詳細については、次のトピックを参照して�
 
 * [Policy の定義の構造](../governance/policy/concepts/definition-structure.md)
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
-* [Azure Logic Apps 用の Azure Policy 組み込みポリシー定義](../logic-apps/policy-samples.md)
+* [Azure Logic Apps 用の Azure Policy 組み込みポリシー定義](./policy-reference.md)
 
 <a name="create-policy-assignment"></a>
 

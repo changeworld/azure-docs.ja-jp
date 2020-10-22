@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228632"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460800"
 ---
 # <a name="soft-delete-for-containers-preview"></a>コンテナーの論理的な削除 (プレビュー)
 
@@ -42,11 +42,7 @@ BLOB データのエンド ツー エンド保護では、次のデータ保護�
 
 ## <a name="about-the-preview"></a>プレビューについて
 
-次のリージョンでは、コンテナーの論理的な削除をプレビューでご利用いただけます。
-
-- フランス中部
-- カナダ東部
-- カナダ中部
+すべてのパブリック Azure リージョンで、コンテナーの論理的な削除をプレビューでご利用いただけます。
 
 > [!IMPORTANT]
 > コンテナーの論理的な削除のプレビューは、非運用環境での使用のみを意図しています。 運用環境のサービス レベル契約(SLA) は現在使用できません。

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799198"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537006"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>[Security info (preview)] (セキュリティ情報 (プレビュー)) ページからアプリ パスワードを作成する
 
@@ -59,7 +59,7 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 
 4. アプリ パスワードを必要とするアプリの名前を入力し、 **[次へ]** を選択します。
 
-    ![アプリの名前が表示されている [アプリ パスワード] ページ](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![アプリの名前が入力された、[アプリ パスワード] ページを表示するスクリーンショット。](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. **[パスワード]** ボックスのテキストをコピーし、そのパスワードを、アプリ (この例では Outlook 2010) のパスワード エリアに貼り付けた後、 **[完了]** を選択します。
 

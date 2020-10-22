@@ -1,38 +1,36 @@
 ---
 title: Azure Pipelines とテンプレートを使用した CI/CD
-description: Visual Studio で Azure リソース グループのデプロイ プロジェクトを使用して Resource Manager テンプレートをデプロイし、Azure Pipelines での継続的インテグレーションを設定する方法を説明します。
+description: Azure Resource Manager テンプレートを使用して、Azure Pipelines で継続的インテグレーションを構成する方法について説明します。 PowerShell スクリプトを使用する方法、またはファイルをステージングの場所にコピーしてそこからデプロイする方法を示します。
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 10/01/2020
+ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084653"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653402"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合
 
-Visual Studio には、Azure Resource Manager テンプレートを作成し、それを Azure サブスクリプションにデプロイするための Azure リソース グループ プロジェクトが用意されています。 このプロジェクトは、継続的インテグレーションと継続的デプロイ (CI/CD) のために Azure Pipelines と統合できます。
+Azure Resource Manager テンプレート (ARM テンプレート) を Azure Pipelines と統合して、継続的インテグレーションと継続的配置 (CI/CD) を行うことができます。 チュートリアル「[Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」では、[ARM テンプレート デプロイ タスク](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) を使用して GitHub リポジトリからテンプレートをデプロイする方法を示しています。 この方法は、リポジトリから直接テンプレートをデプロイする場合に使用できます。
 
-Azure Pipelines を使用してテンプレートをデプロイする方法は 2 つあります。
+この記事では、Azure Pipelines を使用してテンプレートをデプロイする 2 つの方法について説明します。 この記事では、次の方法について説明します。
 
-* **Azure PowerShell スクリプトを実行するタスクを追加する**。 このオプションでは、Visual Studio プロジェクトに含まれているのと同じスクリプト (Deploy-AzureResourceGroup.ps1) を使用するため、開発ライフ サイクル全体で一貫性が保たれるという利点があります。 このスクリプトでは、プロジェクトの成果物が、Resource Manager からアクセスできるストレージ アカウントにステージされます。 成果物とはプロジェクト内の項目のことで、リンクされたテンプレート、スクリプト、アプリケーション バイナリなどが該当します。 その後、スクリプトによってテンプレートがデプロイされます。
+* **Azure PowerShell スクリプトを実行するタスクを追加する**。 このオプションでは、ローカル テストの実行時に使用したものと同じスクリプトを使用するため、開発ライフ サイクル全体で一貫性が保たれるという利点があります。 スクリプトによってテンプレートがデプロイされますが、他の操作を実行することもできます (パラメーターとして使用する値の取得など)。
 
-* **コピー タスクとデプロイ タスクを追加する**。 このオプションでは、プロジェクト スクリプトに代わる便利な方法が提供されます。 パイプラインに 2 つのタスクを構成します。 一方のタスクで成果物をステージし、もう一方のタスクでテンプレートをデプロイします。
+   Visual Studio には、PowerShell スクリプトを含む [Azure リソース グループ プロジェクト](create-visual-studio-deployment-project.md)が用意されています。 このスクリプトでは、プロジェクトの成果物が、Resource Manager からアクセスできるストレージ アカウントにステージされます。 成果物とはプロジェクト内の項目のことで、リンクされたテンプレート、スクリプト、アプリケーション バイナリなどが該当します。 プロジェクトのスクリプトを引き続き使用する場合は、この記事に示されている PowerShell スクリプト タスクを使用します。
 
-このトピックでは、両方の方法を説明します。
+* **コピー タスクとデプロイ タスクを追加する**。 このオプションでは、プロジェクト スクリプトに代わる便利な方法が提供されます。 パイプラインに 2 つのタスクを構成します。 1 つのタスクによって、成果物がアクセス可能な場所にステージングされます。 もう 1 つのタスクによって、その場所からテンプレートがデプロイされます。
 
 ## <a name="prepare-your-project"></a>プロジェクトを準備する
 
-この記事は、Visual Studio プロジェクトと Azure DevOps 組織でパイプラインを作成する準備ができていることを前提としています。 準備ができていることを確認する手順は次のとおりです。
+この記事は、ARM テンプレートと Azure DevOps 組織でパイプラインを作成する準備ができていることを前提としています。 準備ができていることを確認する手順は次のとおりです。
 
-* Azure DevOps 組織があること。 ない場合は、[無料で作成](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)してください。 チームに Azure DevOps 組織が既にある場合は、使用する Azure DevOps プロジェクトの管理者であることを確認します。
+* Azure DevOps 組織があること。 ない場合は、[無料で作成](/azure/devops/pipelines/get-started/pipelines-sign-up)してください。 チームに Azure DevOps 組織が既にある場合は、使用する Azure DevOps プロジェクトの管理者であることを確認します。
 
-* Azure サブスクリプションへの[サービス接続](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)が構成済みであること。 パイプライン内のタスクは、サービス プリンシパルの ID で実行されます。 接続を作成する手順については、「[DevOps プロジェクトを作成する](deployment-tutorial-pipeline.md#create-a-devops-project)」を参照してください。
+* Azure サブスクリプションへの[サービス接続](/azure/devops/pipelines/library/connect-to-azure)が構成済みであること。 パイプライン内のタスクは、サービス プリンシパルの ID で実行されます。 接続を作成する手順については、「[DevOps プロジェクトを作成する](deployment-tutorial-pipeline.md#create-a-devops-project)」を参照してください。
 
-* **Azure リソース グループ** スタート テンプレートから作成された Visual Studio プロジェクトがあること。 この種類のプロジェクトを作成する方法の詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](create-visual-studio-deployment-project.md)」を参照してください。
-
-* Visual Studio プロジェクトが [Azure DevOps プロジェクトに接続されている](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops)こと。
+* プロジェクトのインフラストラクチャを定義する [ARM テンプレート](quickstart-create-templates-use-visual-studio-code.md)があること。
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 
@@ -56,27 +54,32 @@ Azure PowerShell タスクまたはファイルのコピーとデプロイのタ
 
 ## <a name="azure-powershell-task"></a>Azure PowerShell タスク
 
-このセクションでは、プロジェクト内の PowerShell スクリプトを実行する 1 つのタスクを使用して、継続的デプロイを構成する方法を示します。 次の YAML ファイルでは、[Azure PowerShell タスク](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)が作成されます。
+このセクションでは、プロジェクト内の PowerShell スクリプトを実行する 1 つのタスクを使用して、継続的デプロイを構成する方法を示します。 テンプレートをデプロイする PowerShell スクリプトが必要な場合は、[Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) または [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1) を参照してください。
 
-```yaml
+次の YAML ファイルでは、[Azure PowerShell タスク](/azure/devops/pipelines/tasks/deploy/azure-powershell)が作成されます。
+
+```yml
+trigger:
+- master
+
 pool:
-  name: Hosted Windows 2019 with VS2019
-  demands: azureps
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzurePowerShell@3
+- task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'demo-deploy-sp'
-    ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
-    azurePowerShellVersion: LatestVersion
+    azureSubscription: 'script-connection'
+    ScriptType: 'FilePath'
+    ScriptPath: './Deploy-Template.ps1'
+    ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
+    azurePowerShellVersion: 'LatestVersion'
 ```
 
-タスクを `AzurePowerShell@3` に設定した場合、パイプラインでは、AzureRM モジュールのコマンドを使用して接続が認証されます。 既定では、Visual Studio プロジェクトの PowerShell スクリプトでは、AzureRM モジュールが使用されます。 [Az モジュール](/powershell/azure/new-azureps-module-az)が使用されるようにスクリプトを更新した場合は、タスクを `AzurePowerShell@4` に設定します。
+タスクを `AzurePowerShell@5` に設定すると、パイプラインで [Az モジュール](/powershell/azure/new-azureps-module-az)が使用されます。 スクリプトで AzureRM モジュールを使用している場合は、タスクを `AzurePowerShell@3` に設定します。
 
 ```yaml
 steps:
-- task: AzurePowerShell@4
+- task: AzurePowerShell@3
 ```
 
 `azureSubscription` には、作成したサービス接続の名前を指定します。
@@ -92,69 +95,45 @@ inputs:
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-成果物のステージが不要な場合は、デプロイに使用するリソース グループの場所と名前のみを渡します。 まだリソース グループがない場合は、Visual Studio スクリプトによって作成されます。
+`ScriptArguments` に、スクリプトで必要なパラメーターを指定します。 次の例では、スクリプトのパラメーターをいくつか示していますが、お使いのスクリプトではパラメーターをカスタマイズする必要があります。
 
 ```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
+ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-既存のストレージ アカウントに成果物をステージする必要がある場合は、以下を使用します。
+**[保存]** を選択すると、ビルド パイプラインが自動的に実行されます。 ビルド パイプラインの概要に戻り、状態を監視します。
 
-```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
-```
-
-タスクを作成する方法を説明したので、次はパイプラインを編集する手順を見ていきましょう。
-
-1. パイプラインを開き、YAML の内容に置き換えます。
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-     demands: azureps
-
-   steps:
-   - task: AzurePowerShell@3
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-       ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName 'stage3a4176e058d34bb88cc'
-       azurePowerShellVersion: LatestVersion
-   ```
-
-1. **[保存]** を選択します。
-
-   ![パイプラインの保存](./media/add-template-to-azure-pipelines/save-pipeline.png)
-
-1. コミットのメッセージを指定し、直接**マスター**にコミットします。
-
-1. **[保存]** を選択すると、ビルド パイプラインが自動的に実行されます。 ビルド パイプラインの概要に戻り、状態を監視します。
-
-   ![結果の表示](./media/add-template-to-azure-pipelines/view-results.png)
+![結果の表示](./media/add-template-to-azure-pipelines/view-results.png)
 
 現在実行中のパイプラインを選択し、タスクについての詳細を確認できます。 完了すると、各ステップの結果が表示されます。
 
 ## <a name="copy-and-deploy-tasks"></a>コピーとデプロイのタスク
 
-このセクションでは、成果物のステージとテンプレートのデプロイを行う 2 つのタスクを使用して、継続的デプロイを構成する方法を示します。
+このセクションでは、2 つのタスクを使用して継続的配置を構成する方法を示します。 最初のタスクでは成果物をストレージ アカウントにステージングし、2 番目のタスクではテンプレートをデプロイします。
 
-次の YAML は、[Azure ファイル コピー タスク](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)を示しています。
+ファイルをストレージ アカウントにコピーするには、サービス接続のサービス プリンシパルに、ストレージ BLOB データ共同作成者またはストレージ BLOB データ所有者のロールが割り当てられている必要があります。 詳細については、「[AzCopy を使ってみる](../../storage/common/storage-use-azcopy-v10.md)」を参照してください。
 
-```yaml
-- task: AzureFileCopy@3
-  displayName: 'Stage files'
+次の YAML は、[Azure ファイル コピー タスク](/azure/devops/pipelines/tasks/deploy/azure-file-copy)を示しています。
+
+```yml
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
   inputs:
-    SourcePath: 'AzureResourceGroup1'
-    azureSubscription: 'demo-deploy-sp'
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
     Destination: 'AzureBlob'
-    storage: 'stage3a4176e058d34bb88cc'
-    ContainerName: 'democontainer'
-    outputStorageUri: 'artifactsLocation'
-    outputStorageContainerSasToken: 'artifactsLocationSasToken'
-    sasTokenTimeOutInMinutes: '240'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
 ```
 
-お使いの環境に合わせて、このタスクの複数の部分を変更します。 `SourcePath` は、パイプライン ファイルを基準とした成果物の場所を示します。 この例では、ファイルはプロジェクト名であった `AzureResourceGroup1` という名前のフォルダーにあります。
+お使いの環境に合わせて、このタスクの複数の部分を変更します。 `SourcePath` は、パイプライン ファイルを基準とした成果物の場所を示します。
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
@@ -173,92 +152,82 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
+ファイル コピー タスクを作成したら、タスクを追加して、ステージング済みのテンプレートをデプロイすることができます。
+
 次の YAML は、[Azure Resource Manager テンプレートのデプロイ タスク](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)を示しています。
 
 ```yaml
-- task: AzureResourceGroupDeployment@2
-  displayName: 'Deploy template'
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    ConnectedServiceName: 'demo-deploy-sp'
-    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'Central US'
+    location: 'West US'
     templateLocation: 'URL of the file'
-    csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-    csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-    overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
     deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
 ```
 
-お使いの環境に合わせて、このタスクの複数の部分を変更します。
+このタスクのいくつかの部分を詳細に説明します。
 
-- `deploymentScope`:デプロイのスコープを、`Management Group`、`Subscription`、および `Resource Group` のオプションから選択します。 このチュートリアルでは、 **[リソース グループ]** を使用します。 スコープの詳細については、「[デプロイのスコープ](deploy-rest.md#deployment-scope)」を参照してください。
+- `deploymentScope`:デプロイのスコープを、`Management Group`、`Subscription`、および `Resource Group` のオプションから選択します。 スコープの詳細については、「[デプロイのスコープ](deploy-rest.md#deployment-scope)」を参照してください。
 
-- `ConnectedServiceName`:作成したサービス接続の名前を指定します。
+- `azureResourceManagerConnection`:作成したサービス接続の名前を指定します。
 
-    ```yaml
-    ConnectedServiceName: '<your-connection-name>'
-    ```
-
-- `subscriptionName`:ターゲット サブスクリプション ID を指定します。 このプロパティは、リソース グループのデプロイ スコープとサブスクリプションのデプロイ スコープにのみ適用されます。
+- `subscriptionId`:ターゲット サブスクリプション ID を指定します。 このプロパティは、リソース グループのデプロイ スコープとサブスクリプションのデプロイ スコープにのみ適用されます。
 
 - `resourceGroupName` および `location`: デプロイ先となるリソース グループの名前と場所を指定します。 リソース グループがない場合は、タスクによって作成されます。
 
-    ```yaml
-    resourceGroupName: '<resource-group-name>'
-    location: '<location>'
-    ```
-
-デプロイ タスクは、`WebSite.json` という名前のテンプレートと WebSite.parameters.json という名前のパラメーター ファイルにリンクしています。 ご自分のテンプレートとパラメーター ファイルの名前を使用します。
-
-タスクを作成する方法を説明したので、次はパイプラインを編集する手順を見ていきましょう。
-
-1. パイプラインを開き、YAML の内容に置き換えます。
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-
-   steps:
-   - task: AzureFileCopy@3
-     displayName: 'Stage files'
-     inputs:
-       SourcePath: 'AzureResourceGroup1'
-       azureSubscription: 'demo-deploy-sp'
-       Destination: 'AzureBlob'
-       storage: 'stage3a4176e058d34bb88cc'
-       ContainerName: 'democontainer'
-       outputStorageUri: 'artifactsLocation'
-       outputStorageContainerSasToken: 'artifactsLocationSasToken'
-       sasTokenTimeOutInMinutes: '240'
-    - task: AzureResourceGroupDeployment@2
-      displayName: 'Deploy template'
-      inputs:
-        deploymentScope: 'Resource Group'
-        ConnectedServiceName: 'demo-deploy-sp'
-        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'demogroup'
-        location: 'Central US'
-        templateLocation: 'URL of the file'
-        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
-        deploymentMode: 'Incremental'
+   ```yml
+   resourceGroupName: '<resource-group-name>'
+   location: '<location>'
    ```
 
-1. **[保存]** を選択します。
+- `csmFileLink`:ステージング済みのテンプレートのリンクを指定します。 値を設定する場合は、ファイル コピー タスクから返された変数を使用します。 次の例では、mainTemplate.json という名前のテンプレートにリンクしています。 **templates** という名前のフォルダーが含められています。このフォルダーは、ファイル コピー タスクによってファイルがコピーされた場所であるためです。 パイプラインで、テンプレートへのパスとテンプレートの名前を指定します。
 
-1. コミットのメッセージを指定し、直接**マスター**にコミットします。
+   ```yml
+   csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+   ```
 
-1. **[保存]** を選択すると、ビルド パイプラインが自動的に実行されます。 ビルド パイプラインの概要に戻り、状態を監視します。
+パイプラインは次のようになります。
 
-   ![結果の表示](./media/add-template-to-azure-pipelines/view-results.png)
+```yml
+trigger:
+- master
 
-現在実行中のパイプラインを選択し、タスクについての詳細を確認できます。 完了すると、各ステップの結果が表示されます。
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
+    Destination: 'AzureBlob'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'demogroup'
+    location: 'West US'
+    templateLocation: 'URL of the file'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
+    deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
+```
+
+**[保存]** を選択すると、ビルド パイプラインが自動的に実行されます。 ビルド パイプラインの概要に戻り、状態を監視します。
 
 ## <a name="next-steps"></a>次のステップ
 
-ARM テンプレートで Azure Pipelines を使用するステップ バイ ステップのプロセスについては、「[チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」を参照してください。
+GitHub Actions で ARM テンプレートを使用する方法の詳細については、「[GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435611"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057758"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage にアクセスする
 
@@ -65,7 +65,6 @@ ms.locfileid: "89435611"
 
 - App Service の Azure Storage は、App Service on Linux と Web App for Containers では**プレビュー段階**にあります。 **運用シナリオ**では**サポートされていません**。
 - App Service の Azure Storage は、**Azure Files コンテナー** (読み取り/書き込み) と **Azure Blob コンテナー** (読み取り専用) のマウントをサポートしています。
-- App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール**構成の使用を**サポートしていません**。
 - App Service の Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
 - アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
@@ -91,7 +90,7 @@ Azure Files 共有にリンクする他のすべてのディレクトリにつ�
 
 [Azure Storage アカウント、ファイル共有、ディレクトリ](#prerequisites)を作成したら、Azure Storage を使用してアプリを構成できるようになります。
 
-ストレージ アカウントを App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類としては、AzureBlob または AzureFiles を使用できます。 この例では、AzureFiles が使用されています。 マウント パス設定は、Azure Storage からマウントするフォルダーに対応します。 "/" に設定すると、Azure Storage 全体がマウントされます。
+ストレージ アカウントを App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類としては、AzureBlob または AzureFiles を使用できます。 この例では、AzureFiles が使用されています。 マウント パス設定は、Azure Storage にマウントするコンテナー内のフォルダーに対応します。 "/" に設定すると、Azure Storage にコンテナー全体がマウントされます。
 
 
 > [!CAUTION]

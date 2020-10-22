@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91744136"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -109,7 +109,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 #### <a name="to-regenerate-the-service-registration-key"></a>サービス登録キーを再生成するには
 1. **[StorSimple デバイス マネージャー]** ブレードで、 **[管理]&gt;** **[キー]** の順に移動します。
    
-   ![キー ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![再度 [キー] ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **[キー]** ブレードで、 **[再生成]** をクリックします。
    
    ![[再生成] をクリック](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,7 +118,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
    ![キーの再生成の確定](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 新しいサービス登録キーが表示されます。
    
-    ![キーの再生成の確定](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![追加のキーの再生成の確定](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
 

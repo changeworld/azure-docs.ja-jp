@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.date: 10/13/2020
+ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405243"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019861"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -127,7 +127,7 @@ ADF UI で高速カスタム セットアップを使用して Azure-SSIS IR を
 
 #### <a name="running-cmdkey-command"></a>cmdkey コマンドを実行する
 
-高速カスタム セットアップで種類として **[cmdkey コマンドの実行]** を選択した場合は、Azure-SSIS IR で Windows cmdkey コマンドを実行できます。 これを行うには、対象のコンピューター名またはドメイン名、ユーザー名またはアカウント名、およびパスワードまたはアカウント キーを、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** の各テキスト ボックスにそれぞれ入力します。 これにより、SQL Server、ファイル共有、または Azure Files のアクセス資格情報を Azure-SSIS IR に保持できます。 たとえば、Azure Files にアクセスするには、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** にそれぞれ、`YourAzureStorageAccountName.file.core.windows.net`、`azure\YourAzureStorageAccountName`、および `YourAzureStorageAccountKey` を入力します。 これは、ローカル コンピューターで Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) コマンドを実行する場合と似ています。
+高速カスタム セットアップで種類として **[cmdkey コマンドの実行]** を選択した場合は、Azure-SSIS IR で Windows cmdkey コマンドを実行できます。 これを行うには、対象のコンピューター名またはドメイン名、ユーザー名またはアカウント名、およびパスワードまたはアカウント キーを、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** の各テキスト ボックスにそれぞれ入力します。 これにより、SQL Server、ファイル共有、または Azure Files のアクセス資格情報を Azure-SSIS IR に保持できます。 たとえば、Azure Files にアクセスするには、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** にそれぞれ、`YourAzureStorageAccountName.file.core.windows.net`、`azure\YourAzureStorageAccountName`、および `YourAzureStorageAccountKey` を入力します。 これは、ローカル コンピューターで Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) コマンドを実行する場合と似ています。 現在のところ、cmdkey コマンドを実行する高速カスタム セットアップ 1 つだけがサポートされます。 複数の cmdkey コマンドを実行するには、代わりに標準カスタム セットアップを使用します。
 
 #### <a name="adding-environment-variables"></a>環境変数を追加する
 
@@ -143,7 +143,7 @@ ADF UI で高速カスタム セットアップを使用して Azure-SSIS IR を
 
    * **[SentryOne の Task Factory]** コンポーネントを選択した場合は、Azure-SSIS IR に SentryOne の [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2020.1.3** です。
 
-   * **[oh22 の HEDDA.IO]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [HEDDA.IO](https://hedda.io/ssis-component/) データ品質またはクレンジング コンポーネントをインストールできます。 これを行うには、事前にサービスを購入する必要があります。 現在の統合バージョンは **1.0.14** です。
+   * **[oh22 の HEDDA.IO]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [HEDDA.IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) データ品質またはクレンジング コンポーネントをインストールできます。 これを行うには、事前にサービスを購入する必要があります。 現在の統合バージョンは **1.0.14** です。
 
    * **[oh22 の SQLPhonetics.NET]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.45** です。
 
@@ -175,7 +175,7 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -242,6 +242,16 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
            $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
        }
+       if($ExpressCustomSetup -eq "CData.Standard")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "CData.Extended")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -288,6 +298,8 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
       * *.NET FRAMEWORK 3.5* フォルダー。これには、ご利用の Azure-SSIS IR の各ノードに以前のバージョンの .NET Framework をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。 一部のカスタム コンポーネントでは、このバージョンが必要になる場合があります。
 
       * *BCP* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に、SQL Server コマンドライン ユーティリティ (*MsSqlCmdLnUtils.msi*) をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。 これらのユーティリティの 1 つは、一括コピー プログラム (*bcp*) です。
+
+      * *DNS SUFFIX* フォルダー。これには、Azure-SSIS IR からの DNS クエリで使用する前に、独自の DNS サフィックス (たとえば *test.com*) を修飾されていない単一ラベル ドメイン名に追加し、それを完全修飾ドメイン名 (FQDN) に変換するためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。
 
       * *EXCEL* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に一部の C# アセンブリとライブラリをインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。 スクリプト タスクでこれらを使用すると、Excel ファイルの読み取りと書き込みを動的に行うことができます。 
       

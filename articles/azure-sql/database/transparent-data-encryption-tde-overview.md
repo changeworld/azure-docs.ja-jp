@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 06/15/2020
-ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 10/12/2020
+ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836685"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945993"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance および Azure Synapse Analytics の透過的なデータ暗号化
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Azure SQL Database と Azure Synapse の場合、TDE 保護機能は[サーバ�
 > SQL Database で新しく作成されたすべてのデータベースは、サービスによって管理される透過的なデータ暗号化を使用して既定で暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の SQL Managed Instance データベースは、既定では暗号化されません。 復元によって作成された SQL Managed Instance データベースでは、ソースから暗号化の状態が継承されます。
 
 > [!NOTE]
-> TDE を使用して、SQL Database の **master** データベースを暗号化することはできません。  **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。
+> TDE を使用して Azure SQL Database および Azure SQL Managed Instance の**マスター** データベースを暗号化することはできません。 **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。
 
 ## <a name="service-managed-transparent-data-encryption"></a>サービスによって管理された Transparent Data Encryption
 

@@ -1,14 +1,14 @@
 ---
 title: サービス プロバイダーを表示し、管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
-ms.date: 08/12/2020
+ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167166"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974398"
 ---
 # <a name="view-and-manage-service-providers"></a>サービス プロバイダーを表示し、管理する
 
@@ -76,7 +76,9 @@ Azure portal の **[サービス プロバイダー]** ページにアクセス�
 
 顧客は、Azure Lighthouse に委任されているサブスクリプションやリソース グループを可視化できます。 これは、多数のサブスクリプションを所有している顧客や、管理タスクを実行するユーザーが多い顧客にとって特に有用です。
 
-管理テナントへのスコープの委任を監査するための [Azure Policy 組み込みポリシー定義](../../governance/policy/samples/built-in-policies.md#lighthouse)が用意されています。 監査対象のすべてのサブスクリプションが含まれている管理グループに対して、このポリシーを割り当てることができます。 このポリシーに対するコンプライアンスを確認すると、(ポリシーが割り当てられている管理グループ内の) 委任されたサブスクリプションやリソース グループ が非コンプライアンス状態として表示されます。 結果を見直して、想定外の委任が発生していないことを確認できます。
+[管理テナントへのスコープの委任を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)ための [Azure Policy 組み込みポリシー定義](../../governance/policy/samples/built-in-policies.md#lighthouse)が用意されています。 監査対象のすべてのサブスクリプションが含まれている管理グループに対して、このポリシーを割り当てることができます。 このポリシーに対するコンプライアンスを確認すると、(ポリシーが割り当てられている管理グループ内の) 委任されたサブスクリプションやリソース グループ が非コンプライアンス状態として表示されます。 結果を見直して、想定外の委任が発生していないことを確認できます。
+
+別の[組み込みポリシー定義](../../governance/policy/samples/built-in-policies.md#lighthouse)を使用して、[特定の管理テナントへの委任を制限](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json)できます。 委任を制限するすべてのサブスクリプションが含まれる管理グループにも、このポリシーを同様に適用できます。 ポリシーをデプロイした後、指定したテナント以外のテナントにサブスクリプションを委任しようとすると、拒否されます。
 
 ポリシーを割り当ててコンプライアンス状態の結果を表示する方法の詳細については、「[クイック スタート: ポリシー割り当てを作成する](../../governance/policy/assign-policy-portal.md)」を参照してください。
 

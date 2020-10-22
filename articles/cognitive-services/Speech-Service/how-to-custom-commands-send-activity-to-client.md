@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360108"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839216"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>クライアント アプリケーションへのカスタム コマンド アクティビティの送信
 
@@ -154,7 +154,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. `turn on the tv` と言います
 1. テレビの表示状態が "オン" に変わるはずです。
    > [!div class="mx-imgBorder"]
-   > ![アクティビティの送信のペイロード](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![テレビの表示状態が現在オンになっていることを示すスクリーンショット。](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>次のステップ
 

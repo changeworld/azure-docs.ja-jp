@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435373"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951997"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御
 
@@ -42,7 +42,7 @@ Azure SQL Database と Azure Synapse Analytics の論理 Azure SQL Server を [A
 
 ## <a name="allow-azure-services"></a>Azure サービスを許可する
 
-[Azure portal で](single-database-create-quickstart.md)論理 SQL サーバーを作成するときは、この設定をオフのままにします。
+[Azure portal で](single-database-create-quickstart.md)論理 SQL サーバーを新しく作成するときには、この設定は既定で**オフ**になります。 この設定は、パブリック サービス エンドポイントを使用した接続が許可されている場合に表示されます。
 
 この設定は、次のように、論理 SQL サーバーを作成した後にファイアウォール ウィンドウで変更することもできます。
   

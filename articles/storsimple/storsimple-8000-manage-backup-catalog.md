@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514753"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961597"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple デバイス マネージャー サービスを使用してバックアップ カタログを管理する
 ## <a name="overview"></a>概要
@@ -75,11 +75,11 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
       
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-      ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![[バックアップ カタログ] に移動 2](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. バックアップ セットを選択して展開します。 そこに含まれるボリューム別のバックアップ セットを確認できます。 バックアップ セットのコンテキスト メニュー (右クリック) から **[復元]** および **[削除]** オプションを使用できます。 選択したバックアップ セットには、これらのアクションのいずれかを実行できます。
 
-    ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![[バックアップ カタログ] に移動 3](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>バックアップ セットの削除
 関連付けられているデータを保持する必要がない場合は、バックアップを削除します。 バックアップ セットを削除するには次の手順を実行します。
@@ -95,19 +95,19 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
       
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-      ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![[バックアップ カタログ] に移動 4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. バックアップ セットを選択して展開します。 そこに含まれるボリューム別のバックアップ セットを確認できます。 バックアップ セットのコンテキスト メニュー (右クリック) から **[復元]** および **[削除]** オプションを使用できます。 選択したバックアップ セットを右クリックしてコンテキスト メニューの **[削除]** を選択します。
 
-    ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![[バックアップ カタログ] に移動 5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. 確認を求められたら、表示された情報を確認して、 **[削除]** をクリックします。 選択したバックアップが完全に削除されます。
 
-    ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![[バックアップ カタログ] に移動 6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. 削除する場合、実行時と正常に終了した後に通知されます。 削除が完了したら、このページでクエリを更新します。 削除したバックアップ セットは、バックアップ セットの一覧には表示されません。
 
-    ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![[バックアップ カタログ] に移動 7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [[バックアップ カタログ] ページを使用してバックアップ セットからデバイスを復元する方法](storsimple-8000-restore-from-backup-set-u2.md)。

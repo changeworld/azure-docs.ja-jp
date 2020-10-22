@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484954"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616858"
 ---
 # <a name="data-access-strategies"></a>データ アクセス戦略
 
@@ -38,10 +38,10 @@ ms.locfileid: "89484954"
 ## <a name="data-access-strategies-through-azure-data-factory"></a>Azure Data Factory によるデータ アクセス戦略
 
 * **[Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)** - Azure Data Factory マネージド仮想ネットワーク内に Azure Integration Runtime を作成できます。それはプライベート エンドポイントを使用して、サポートされているデータ ストアに安全に接続します。 マネージド仮想ネットワークとデータ ソース間のトラフィックは Microsoft のバックボーン ネットワークを経由して送信され、パブリック ネットワークには公開されません。
-* **[信頼できるサービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure Storage (Blob、ADLS Gen2) では、限定された信頼できる Azure プラットフォーム サービスがストレージ アカウントに安全にアクセスできるようにするファイアウォール構成がサポートされています。 信頼できるサービスでは、マネージド ID の認証が適用されます。これにより、マネージド ID を使用してホワイトリストに登録されていない限り、他のデータ ファクトリがこのストレージに接続できないようにします。 詳細については、 **[このブログ](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** を参照してください。 そのため、これは非常に安全であり、推奨されます。 
+* **[信頼できるサービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure Storage (Blob、ADLS Gen2) では、限定された信頼できる Azure プラットフォーム サービスがストレージ アカウントに安全にアクセスできるようにするファイアウォール構成がサポートされています。 信頼できるサービスでは、マネージド ID の認証が適用されます。このため、マネージド ID を使用して承認されていない限り、他のデータ ファクトリはこのストレージに接続できません。 詳細については、 **[このブログ](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** を参照してください。 そのため、これは非常に安全であり、推奨されます。 
 * **一意の静的 IP** - Data Factory コネクタの静的 IP を取得するには、セルフホステッド統合ランタイムを設定する必要があります。 このメカニズムにより、他のすべての IP アドレスからのアクセスを確実にブロックできるようになります。 
 * **[静的 IP 範囲](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** - Azure Integration Runtime の IP アドレスを使用して、ストレージ内にそれをリストすることを許可します (たとえば、S3、Salesforce など)。 これにより、データ ストアに接続できる IP アドレスが確実に制限されますが、認証規則や承認規則にも依存します。
-* **[サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 指定された Azure サービス (Azure Data Factory など) からの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 これは、Virtual Network の IaaS でホストされるデータ ストアのデータ アクセスをホワイトリストに登録する場合に便利です。
+* **[サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 指定された Azure サービス (Azure Data Factory など) からの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 これは、Virtual Network の IaaS でホストされるデータ ストアのデータ アクセスをフィルター処理する場合に便利です。
 * **Azure サービスを許可する** - 一部のサービスでは、このオプションを選択すると、すべての Azure サービスに接続することを許可できます。 
 
 Azure Integration Runtime とセルフホステッド統合ランタイムのデータ ストアでサポートされているネットワーク セキュリティ メカニズムの詳細については、次の 2 つの表を参照してください。  

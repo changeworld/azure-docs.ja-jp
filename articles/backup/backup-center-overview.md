@@ -2,13 +2,13 @@
 title: バックアップ センターの概要
 description: この記事では、Azure のバックアップ センターの概要を示します。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614286"
 ---
 # <a name="overview-of-backup-center"></a>バックアップ センターの概要
 
@@ -39,7 +39,11 @@ ms.locfileid: "90993226"
 
 **[バックアップ インスタンス]** タイルには、バックアップ資産のすべてのバックアップ インスタンスの概要が表示されます。 たとえば、保護の対象として構成されているインスタンスの数と、論理的に削除された状態のバックアップ インスタンスの数を比較して確認できます。 このタイルで数字を選択すると、バックアップ インスタンスの詳細情報を表示でき、具体的なデータ ソースの種類と保護の状態を確認できます。
 
-次の手順に従って、バックアップ センターで提供されるさまざまな機能と、それらの機能を使用してバックアップ資産を効率的に管理する方法をご確認ください。
+バックアップ センターの機能を理解するには、次のビデオをご覧ください。
+
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+[次の手順](#next-steps)に従って、バックアップ センターで提供されるさまざまな機能と、それらの機能を使用してバックアップ資産を効率的に管理する方法を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

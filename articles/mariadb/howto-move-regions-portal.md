@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: abb692f71a3ed69c6779b6141c9098dc94c75c4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542429"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB サーバーを別のリージョンに移動する
 
@@ -38,11 +38,11 @@ Azure portal を使用してターゲット リージョンにリージョン間
 1. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 1. **[レプリカの追加]** を選択します。
 1. レプリカ サーバーの名前を入力します。
-1. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
+1. レプリカ サーバーの場所を選択します。 既定の場所は、ソース サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
 1. **[OK]** を選択して、レプリカの作成を確認します。 レプリカの作成中に、ソース サーバーからレプリカにデータがコピーされます。 ソース サーバーのサイズに比例して、作成時間が数分になる場合があります。
 
 >[!NOTE]
-> 作成されたレプリカでは、マスター サーバーの VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+> 作成されたレプリカでは、ソース サーバーの VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
 
 ## <a name="move"></a>詳細ビュー
 

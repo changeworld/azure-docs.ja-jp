@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614041"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449322"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -73,15 +73,15 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
 
    - リソースが 1 つの場合は、リソースのメニューで、 **[監視]** の **[診断設定]** をクリックします。
 
-        ![診断設定](media/diagnostic-settings/menu-resource.png)
+        ![Azure portal のリソース メニューの [監視] セクションのスクリーンショット。[診断設定] が強調表示されています。](media/diagnostic-settings/menu-resource.png)
 
    - リソースが 1 つまたは複数の場合は、Azure Monitor メニューで、 **[設定]** の **[診断設定]** をクリックし、次にリソースをクリックします。
 
-      ![診断設定](media/diagnostic-settings/menu-monitor.png)
+        ![[Azure Monitor] メニューの [設定] セクションのスクリーンショット。[診断設定] が強調表示されています。](media/diagnostic-settings/menu-monitor.png)
 
    - アクティビティ ログの場合は、 **[Azure Monitor]** メニューの **[アクティビティ ログ]** 、 **[診断設定]** の順にクリックします。 アクティビティ ログのレガシ構成が無効になっていることを確認してください。 詳細については、「[既存の設定を無効にする](./activity-log.md#legacy-collection-methods)」を参照してください。
 
-        ![診断設定](media/diagnostic-settings/menu-activity-log.png)
+        ![[Azure Monitor] メニューのスクリーンショット。アクティビティ ログが選択されており、[監視 - アクティビティ ログ] メニュー バーで [診断設定] が強調表示されています。](media/diagnostic-settings/menu-activity-log.png)
 
 2. 選択したリソースの設定が存在しない場合は、設定を作成するように求められます。 **[診断設定の追加]** をクリックします。
 

@@ -1,6 +1,6 @@
 ---
 title: 脅威を検出するためのカスタム分析ルールを Azure Sentinel を使用して作成する | Microsoft Docs
-description: このチュートリアルでは、セキュリティ上の脅威を検出するカスタム分析ルールを、Azure Sentinel を使用して作成する方法について説明します。
+description: このチュートリアルでは、セキュリティ上の脅威を検出するカスタム分析ルールを、Azure Sentinel を使用して作成する方法について説明します。 イベントのグループ化とアラートのグループ化を利用し、自動無効化について理解します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605900"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91617181"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>チュートリアル:脅威を検出するためのカスタム分析規則を作成する
 
@@ -53,13 +53,15 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 
       異常な数のリソースが Azure アクティビティで作成されたときにアラートを発するサンプル クエリを次に示します。
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > クエリの長さは 1 から 10,000 文字にする必要があります。また、"search \*" または "union \*" を含めることはできません。
+        > [!NOTE]
+        > クエリの長さは 1 から 10,000 文字にする必要があります。また、"search \*" または "union \*" を含めることはできません。
 
     1. クエリ結果のパラメーターを Azure Sentinel で認識されるエンティティにリンクするには、 **[エンティティのマップ]** セクションを使用します。 これらのエンティティにより、 **[Incident settings]\(インシデントの設定\)** タブでのインシデントへのアラートのグループ化など、詳細な分析のための基礎が形成されます。
   
@@ -69,8 +71,12 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 
        1. **[次の時間分の過去のデータを参照します]** の設定では、クエリの対象となるデータの期間を決定します。たとえば、過去 10 分間や過去 6 時間のデータのクエリを実行できます。
 
-       > [!NOTE]
-       > これら 2 つの設定は、ある程度まで互いに独立しています。 間隔より長い期間をカバーする短い間隔でクエリを実行できますが (重複するクエリがある場合)、カバレッジ期間を超える間隔でクエリを実行することはできません。そうしないと、クエリ カバレッジ全体にギャップが生じることになります。
+          > [!NOTE]
+          > **クエリ間隔とルックバック期間**
+          > - これら 2 つの設定は、ある程度まで互いに独立しています。 間隔より長い期間をカバーする短い間隔でクエリを実行できますが (重複するクエリがある場合)、カバレッジ期間を超える間隔でクエリを実行することはできません。そうしないと、クエリ カバレッジ全体にギャップが生じることになります。
+          >
+          > **インジェストの遅延**
+          > - ソースでのイベントの生成と Azure Sentinel へのインジェストの間で発生する可能性がある**待機時間**を考慮し、データが重複せずに完全にカバーされるようにするために、Azure Sentinel では、スケジュールされた時間から **5 分間遅延**して、スケジュールされた分析ルールが実行されます。
 
     1. ベースラインを定義するには、 **[アラートのしきい値]** セクションを使用します。 たとえば、クエリが実行されるたびに 1,000 件を超える結果が返される場合にのみアラートを生成するルールが必要な場合は、 **[クエリ結果件数でアラートを生成する]** を **[次の値より大きい]** に設定し、数値の 1,000 を入力します。 これは必須フィールドなので、ベースラインを設定しない場合、つまりアラートですべてのイベントを登録する場合は、数値のフィールドに「0」を入力します。
     
@@ -134,6 +140,43 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 
 > [!NOTE]
 > Azure Sentinel で生成されたアラートは、 [Microsoft Graph Security](https://aka.ms/securitygraphdocs) を通じて使用できます。 詳細については、 [Microsoft Graph のセキュリティ アラートのドキュメント](https://aka.ms/graphsecurityreferencebetadocs)を参照してください。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>スケジュールされたルールの実行に失敗するか、名前に「自動無効化」が追加される
+
+スケジュールされたクエリ ルールの実行が失敗することはめったにありませんが、発生する可能性があります。 Azure Sentinel は、具体的な障害の種類とそれを引き起こした状況に基づいて、障害を一時的または永続的として事前に分類します。
+
+#### <a name="transient-failure"></a>一時的な障害
+
+一時的な障害は、一時的な状況が原因で発生し、すぐに正常な状況に戻ります。その時点で、ルールの実行は成功します。 Azure Sentinel によって一時的として分類される障害の例を次に示します。
+
+- ルール クエリの実行に時間がかかりすぎて、タイムアウトになった。
+- データ ソースと Log Analytics 間、または Log Analytics と Azure Sentinel 間の接続に問題がある。
+- その他の新規および不明な障害は一時的なものと見なされます。
+
+一時的な障害が発生した場合、Azure Sentinel では、(ある時点まで) 毎回増分するように事前定義された間隔で、ルールの実行が再試行し続けられます。 その後、ルールは次回のスケジュールされた時刻にのみ再び実行されます。 一時的な障害が原因で、ルールが自動的に無効になることはありません。
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>永続的な障害 - ルールの自動無効化
+
+永続的な障害は、ルールの実行を許可する条件が変更されたことが原因で発生します。これは、ユーザーの介入なしでは元の状態に戻りません。 永続的として分類される障害の例をいくつか次に示します。
+
+- (ルール クエリが運用されている) ターゲット ワークスペースが削除された。
+- (ルール クエリが運用されている) ターゲット テーブルが削除された。
+- Azure Sentinel がターゲット ワークスペースから削除された。
+- ルール クエリで使用される関数が有効ではなくなった (変更または削除された)。
+- ルール クエリのいずれかのデータ ソースに対するアクセス許可が変更された。
+- ルール クエリのいずれかのデータ ソースが削除または切断された。
+
+**同じルールに対して同じ種類の永続的な障害が事前に指定されている回数連続して発生した場合**、Azure Sentinel ではルールの実行が停止され、次の手順も実行されます。
+
+- ルールを無効にします。
+- ルールの名前の先頭に「**自動無効化**」という単語を追加します。
+- 障害 (および無効化) の理由をルールの説明に追加します。
+
+ルールの一覧を名前で並べ替えると、自動無効化されたルールがあるかどうかを簡単に確認することができます。 自動無効化されたルールは、一覧の先頭付近にあります。
+
+SOC マネージャーは、自動無効化されたルールがあるかどうかについて、ルールの一覧を定期的に確認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

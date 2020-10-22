@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961875"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708154"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -47,7 +47,7 @@ Azure Pipelines、Jenkins、エディター プラグインなどのデプロイ
 
 運用スロットに対しては継続的デプロイを有効にしないでください。 代わりに、運用ブランチ (多くの場合、マスター) を非運用スロットにデプロイします。 ベース ブランチをリリースする準備ができたら、それを運用スロットにスワップします。 運用環境にデプロイするのではなく、運用環境にスワップすると、ダウンタイムの発生が抑えられ、もう一度スワップすることで変更をロールバックすることができます。 
 
-![スロットの使用状況の図](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Dev、ステージング、およびマスター ブランチ間のフローとそれらのデプロイ先のスロットを示す図。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>コンテナーを継続的にデプロイする
 

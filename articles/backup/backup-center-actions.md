@@ -3,12 +3,12 @@ title: バックアップ センターを使用してアクションを実行す
 description: この記事では、バックアップ センターを使用してアクションを実行する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993462"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854428"
 ---
 # <a name="perform-actions-using-backup-center"></a>バックアップ センターを使用してアクションを実行する
 
@@ -70,7 +70,7 @@ ms.locfileid: "90993462"
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーを復元する場合
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[復元]** を選択します。
-2. バックアップするデータソースの種類 (この場合は Azure Database for PostgreSQL サーバー) を選択します。
+2. 復元するデータソースの種類 (この場合は Azure Database for PostgreSQL サーバー) を選択します。
 
     ![Azure Database for PostgreSQL サーバーの復元のためのデータソースを選択する](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 

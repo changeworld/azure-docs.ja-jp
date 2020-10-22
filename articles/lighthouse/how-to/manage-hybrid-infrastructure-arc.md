@@ -1,14 +1,14 @@
 ---
 title: Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 description: Azure の外部で顧客のマシンと Kubernetes クラスターを効果的に管理する方法について説明します。
-ms.date: 09/15/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ffbe9019398896c594b7cb0e0424d2b5f4dc37a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605313"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336617"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 
@@ -16,19 +16,16 @@ ms.locfileid: "90605313"
 
 [Azure Arc](../../azure-arc/overview.md) を使用すると、オンプレミス、エッジ、マルチクラウドにまたがる複雑な分散環境を簡素化し、任意の場所に Azure サービスをデプロイし、Azure の管理を任意のインフラストラクチャに拡張することができます。
 
-[Azure Arc 対応サーバー (プレビュー)](../../azure-arc/servers/overview.md) を使用すると、顧客は、ネイティブの Azure 仮想マシンを管理する場合と同じ方法で、企業ネットワーク上の Azure の外部でホストされている Windows および Linux マシンを管理できます。 ハイブリッド マシンを Azure にリンクすると、接続され、Azure でリソースとして扱われるようになります。 サービス プロバイダーでは、このような非 Azure マシンを顧客の Azure リソースと共に管理できます。
+[Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用すると、顧客は、ネイティブの Azure 仮想マシンを管理する場合と同じ方法で、企業ネットワーク上の Azure の外部でホストされている Windows および Linux マシンを管理できます。 ハイブリッド マシンを Azure にリンクすると、接続され、Azure でリソースとして扱われるようになります。 サービス プロバイダーでは、このような非 Azure マシンを顧客の Azure リソースと共に管理できます。
 
 [Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md) を使用すると、顧客は、Azure の内部または外部で Kubernetes クラスターを接続して構成できるようになります。 Kubernetes クラスターを Azure Arc に接続すると、Azure portal に表示され、Azure Resource Manager ID とマネージド ID が付与されます。 クラスターは、標準の Azure サブスクリプションに接続され、リソース グループ内に存在し、他の Azure リソースと同様にタグを受け取ることができます。
 
-このトピックでは、サービス プロバイダーが Azure Arc 対応サーバー (プレビュー) と Azure Arc 対応 Kubernetes (プレビュー) をスケーラブルな方法で使用し、管理対象のすべての顧客テナントを可視化して、顧客のハイブリッド環境を管理する方法の概要について説明します。
+このトピックでは、サービス プロバイダーが Azure Arc 対応サーバーと Azure Arc 対応 Kubernetes (プレビュー) をスケーラブルな方法で使用し、管理対象のすべての顧客テナントを可視化して、顧客のハイブリッド環境を管理する方法の概要について説明します。
 
 > [!TIP]
 > このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers-preview"></a>ハイブリッド サーバーを大規模に管理する - Azure Arc 対応サーバー (プレビュー)
-
-> [!NOTE]
-> Azure Arc 対応サーバーは現在プレビュー段階です。 現時点では、運用環境のワークロード用にはお勧めしません。
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>ハイブリッド サーバーを大規模に管理する - Azure Arc 対応サーバー
 
 サービス プロバイダーの場合、顧客が [Azure Connected Machine エージェント](../../azure-arc/servers/agent-overview.md)を使用してサブスクリプションに接続する、Azure の外部のオンプレミスの Windows Server または Linux マシンを管理できます。
 

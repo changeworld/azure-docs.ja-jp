@@ -1,6 +1,6 @@
 ---
 title: Shared Access Signature を使用してアクセスを制限する - Azure HDInsight
-description: Azure Storage の BLOB に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。
+description: Azure Blob Storage に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006315"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856566"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Blob Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
-HDInsight には、クラスターに関連付けられた Azure Storage アカウントのデータへのフル アクセス権があります。 BLOB コンテナーで Shared Access Signature を使って、データへのアクセスを制限できます。 Shared Access Signature (SAS) は、データへのアクセスを制限できる Azure Storage アカウントの機能です。 たとえば、データに読み取り専用のアクセス権を提供します。
+HDInsight には、クラスターに関連付けられた Azure Blob Storage アカウントのデータへのフル アクセス権があります。 BLOB コンテナーで Shared Access Signature を使って、データへのアクセスを制限できます。 Shared Access Signature (SAS) は、データへのアクセスを制限できる Azure Blob Storage アカウントの機能です。 たとえば、データに読み取り専用のアクセス権を提供します。
 
 > [!IMPORTANT]  
 > Apache Ranger を使うソリューションでは、ドメインに参加している HDInsight を使うことを検討してください。 詳しくは、「[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure.md)」をご覧ください。
@@ -39,7 +39,7 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 
 * C# を使用する場合は、Visual Studio のバージョンが 2013 以降である必要があります。
 
-* ストレージ アカウントの URI スキーム。 このスキームは、Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。
+* ストレージ アカウントの URI スキーム。 このスキームは、Azure Blob Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は `abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。
 
 * Shared Access Signature の追加先となる既存の HDInsight クラスター。 ない場合は、Azure PowerShell を使用してクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
 
