@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261258"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276117"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを照会する
 
@@ -19,7 +19,7 @@ ms.locfileid: "85261258"
 
 ## <a name="in-partition-query"></a>インパーティション クエリ
 
-コンテナーのデータのクエリを実行するとき、クエリでパーティション キー フィルターを指定すると、Azure Cosmos DB によってクエリが自動的に最適化されます。 クエリは、フィルターで指定されているパーティション キーの値に対応する[物理パーティション](partition-data.md#physical-partitions)にルーティングされます。
+コンテナーのデータのクエリを実行するとき、クエリでパーティション キー フィルターを指定すると、Azure Cosmos DB によってクエリが自動的に最適化されます。 クエリは、フィルターで指定されているパーティション キーの値に対応する[物理パーティション](partitioning-overview.md#physical-partitions)にルーティングされます。
 
 たとえば、`DeviceId` に対する等値フィルターが含まれる次のようなクエリについて考えます。 `DeviceId` でパーティション分割されたコンテナーに対してこのクエリを実行すると、1 つの物理パーティションにフィルターされます。
 
@@ -61,7 +61,7 @@ Azure Cosmos DB SDK 1.9.0 以降では、並列クエリ実行オプションが
 
 - **MaxBufferedItemCount**:クエリの待ち時間とクライアント側のメモリ使用率のバランスを調整します。 このオプションを省略するか -1 に設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
-Azure Cosmos DB ではクロスパーティション クエリを並列化できるため、クエリの待機時間は通常、システムによって[物理パーティション](partition-data.md#physical-partitions)が追加されると適切にスケーリングされます。 一方、RU 使用量は、物理パーティションの合計数が増えるにつれて大幅に増加します。
+Azure Cosmos DB ではクロスパーティション クエリを並列化できるため、クエリの待機時間は通常、システムによって[物理パーティション](partitioning-overview.md#physical-partitions)が追加されると適切にスケーリングされます。 一方、RU 使用量は、物理パーティションの合計数が増えるにつれて大幅に増加します。
 
 クロスパーティション クエリを実行する場合、基本的には個別の物理パーティションごとに異なるクエリが実行されます。 クロスパーティション クエリでは、インデックスが利用可能な場合は使用されますが、インパーティション クエリほど効率的ではありません。
 

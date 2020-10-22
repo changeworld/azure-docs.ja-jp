@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289805"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339800"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -28,6 +28,50 @@ ms.locfileid: "91289805"
 - 新機能
 - バグの修正
 - 非推奨の機能
+
+
+## <a name="april-2020"></a>2020 年 4 月
+
+4 月の更新プログラムには次のものが含まれます。
+- [動的コンプライアンス パッケージの一般提供の開始](#dynamic-compliance-packages-are-now-generally-available)
+- [Azure Security Center Free レベルへの ID に関する推奨事項の追加](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
+
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>動的コンプライアンス パッケージの一般提供の開始
+
+Azure Security Center の規制コンプライアンス ダッシュボードに、追加の業界および規制の標準を追跡するための**動的コンプライアンス パッケージ**が追加されました (一般提供開始)。
+
+動的コンプライアンス パッケージは、Security Center のセキュリティ ポリシー ページからサブスクリプションまたは管理グループに追加できます。 標準またはベンチマークをオンボードすると、評価として、マップされた関連するすべてのコンプライアンス データと共に、標準が規制コンプライアンス ダッシュボードに表示されます。 オンボードされた標準の概要レポートがダウンロードできるようになります。
+
+次のような標準を追加できるようになりました。
+
+- **NIST SP 800-53 R4**
+- **SWIFT CSP CSCF-v2020**
+- **UK OFFICIAL および UK NHS**
+- **カナダ連邦の PBMM**
+- **Azure CIS 1.1.0 (新規)** (Azure CIS 1.1.0 のより完全な表現)
+
+さらに、**Azure セキュリティ ベンチマーク**が最近追加されました。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 追加の標準が使用可能になると、ダッシュボードでサポートされます。  
+ 
+詳しくは、「[規制コンプライアンス ダッシュボードでの動的コンプライアンス パッケージへの更新](update-regulatory-compliance-packages.md)」を参照してください。
+
+
+### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Azure Security Center Free レベルへの ID に関する推奨事項の追加
+
+Azure Security Center Free レベルで、ID とアクセスのセキュリティに関する推奨事項の一般提供が開始されました。 これは、クラウドのセキュリティ体制管理 (CSPM) 機能を無料化する取り組みの一環です。 これまで、これらの推奨事項を利用できるのは、Standard 価格レベルだけでした。
+
+ID とアクセスに関する推奨事項の例を次に示します。
+
+- "ご利用のサブスクリプションに対して所有者アクセス許可があるアカウントでは、MFA を有効にする必要があります。"
+- "お使いのサブスクリプションに、最大 3 人の所有者を指定する必要があります。"
+- "非推奨のアカウントは、ご利用のサブスクリプションから削除する必要があります。"
+
+Free 価格レベルのサブスクリプションをお持ちのお客様は、ID とアクセスのセキュリティについて評価されることがなかったため、この変更により、セキュア スコアに影響が生じます。
+
+詳しくは、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identity)」を参照してください。
+
+詳しくは、[ID とアクセスの監視](security-center-identity-access.md)に関するページを参照してください。
+
 
 
 ## <a name="march-2020"></a>2020 年 3 月
@@ -49,7 +93,7 @@ Azure Security Center のワークフロー自動化機能の一般提供が開�
 
 ワークフローを実行するための Security Center の自動および手動機能の詳細については、「[ワークフローの自動化](workflow-automation.md)」を参照してください。
 
-詳しくは、[ロジック アプリの作成](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)に関するページを参照してください。
+詳しくは、[ロジック アプリの作成](../logic-apps/logic-apps-overview.md)に関するページを参照してください。
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure Security Center と Windows Admin Center の統合
@@ -170,7 +214,7 @@ Azure Storage 用 Threat Protection は、Microsoft 脅威インテリジェン�
 
 ワークフローを実行するための Security Center の自動および手動機能の詳細については、「[ワークフローの自動化](workflow-automation.md)」をご覧ください。
 
-Logic Apps の作成方法については、[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) に関する記事をご覧ください。
+Logic Apps の作成方法については、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) に関する記事をご覧ください。
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>大量のリソースのクイック修正の一般提供を開始
@@ -226,9 +270,9 @@ Azure Virtual Machines の脆弱性評価の詳細については、[こちら](
 
 IaaS VM 上で実行されている SQL DB の脅威からの保護と脆弱性評価の、Azure Security Center によるサポートのプレビューが開始されました。
 
-[脆弱性評価](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 Azure セキュリティ スコアの一部としてセキュリティ体制が可視化され、セキュリティの問題を解決してデータベースの防御機能を強化するための手順が含まれます。
+[脆弱性評価](../azure-sql/database/sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 Azure セキュリティ スコアの一部としてセキュリティ体制が可視化され、セキュリティの問題を解決してデータベースの防御機能を強化するための手順が含まれます。
 
-[Advanced Threat Protection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) では、SQL Server へのアクセスや SQL Server の悪用を試みる、害を及ぼす可能性のある通常とは異なる試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、異常なデータベース アクセス パターンに対してアクション指向のセキュリティ通知を提供します。 このようなアラートからは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨されるアクションが提示されます。
+[Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md) では、SQL Server へのアクセスや SQL Server の悪用を試みる、害を及ぼす可能性のある通常とは異なる試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、異常なデータベース アクセス パターンに対してアクション指向のセキュリティ通知を提供します。 このようなアラートからは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨されるアクションが提示されます。
 
 
 ### <a name="support-for-custom-policies-preview"></a>カスタム ポリシーのサポート (プレビュー)
@@ -302,7 +346,7 @@ VM で JIT を有効にする場合は、保護するポート、ポートを開
 
 要求は Azure アクティビティ ログに記録されるので、アクセスの監視と監査を簡単に行うことができます。 Just-In-Time ページは、JIT が有効になっている既存の VM や JIT が推奨される VM をすばやく特定する際にも役立ちます。
 
-Azure Firewall の詳細については、[こちら](https://docs.microsoft.com/azure/firewall/overview)をご覧ください。
+Azure Firewall の詳細については、[こちら](../firewall/overview.md)をご覧ください。
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>セキュリティ体制を強化するシングル クリック修復 (プレビュー)

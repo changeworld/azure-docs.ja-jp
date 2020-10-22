@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f41dfa0889b7f0c34486eee5d16362f4c3c7360d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04745a618832285c44fe96affb0caa8d371a1a17
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894588"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340446"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Security Center 用の Azure セキュリティ ベースライン
 
@@ -20,7 +20,7 @@ ms.locfileid: "90894588"
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -72,7 +72,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags) 
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md) 
 
 - [Azure 仮想ネットワークの作成方法](../virtual-network/quick-create-portal.md) 
 
@@ -86,7 +86,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、リソース構成を監視し、Azure Security Center に関連するネットワーク リソースの変更を検出します。 Azure Monitor でアラートを作成して、重要なリソースへの変更が発生したときに通知を受け取ります。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view) 
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -96,7 +96,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
@@ -186,7 +186,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -194,9 +194,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Security Center におけるアクセス許可](security-center-permissions.md)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -260,7 +260,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure Active Directory セキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](security-center-identity-access.md)
 
@@ -294,7 +294,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure Active Directory では、古いアカウントの検出に役立つログが提供されます。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 Azure Security Center に関連するユーザー アクセスを定期的に確認して、適切なユーザーのみがアクセスを継続できるようにすることができます。 
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/) 
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -308,7 +308,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。  
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -318,7 +318,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure AD Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。 
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -330,13 +330,13 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、[Azure セキュリティ ベンチマークの「データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: タグは、Azure Security Center から重要なセキュリティ情報を格納する Log Analytics ワークスペースなどの Azure リソースの追跡を支援するために使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -352,11 +352,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Security Center でのデータ収集](security-center-enable-data-collection.md)
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription) 
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md) 
 
-- [管理グループを作成する方法](../governance/management-groups/create.md) 
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md) 
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -412,7 +412,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
@@ -426,7 +426,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
@@ -434,7 +434,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md) 
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -446,7 +446,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: タグは、Azure Security Center から重要なセキュリティ情報を格納する Log Analytics ワークスペースなどの Azure リソースの追跡を支援するために使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -461,11 +461,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -512,7 +512,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -530,13 +530,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、[Azure セキュリティ ベンチマークの「セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**: Azure Policy を使用して Azure Security Center およびその接続されたワークスペースの標準セキュリティ構成を定義し、実装します。 "Microsoft.OperationalInsights" および "Microsoft.Security" 名前空間の Azure Policy エイリアスを使用して、カスタム Azure Policy 定義を作成し、Security Center とその Log Analytics ワークスペースの構成を監査または適用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -562,7 +562,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:カスタム Azure Policy 定義、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。 
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
@@ -614,7 +614,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、[Azure セキュリティ ベンチマークの「マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
@@ -626,7 +626,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う 
 
@@ -656,9 +656,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Resource Manager でサポートされるテンプレート ファイルを使用して、定期的に復元を実行できることを確実にします。 バックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](../azure-monitor/platform/template-workspace-configuration.md)
+- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](../azure-monitor/samples/resource-manager-workspace.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -670,13 +670,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 また、Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。  Azure Storage を使用して Azure Resource Manager テンプレート バックアップを格納した場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
-- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [Key Vault で論理的な削除と消去保護を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) 
 
-- [Azure Storage Blob の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Storage Blob の論理的な削除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -684,7 +684,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -708,7 +708,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Security alerts in Azure Security Center](security-center-alerts-overview.md) 
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -758,7 +758,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、[Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -774,5 +774,5 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -3,12 +3,12 @@ title: Azure Migrate を使用したオンプレミス サーバーでのアプ�
 description: Azure Migrate Server Assessment を使用して、オンプレミス サーバー上のアプリ、ロール、および機能を検出する方法について説明します。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118649"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315212"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>マシンのアプリ、ロール、および機能を検出する
 
@@ -46,7 +46,7 @@ ms.locfileid: "86118649"
 
 ## <a name="verify-permissions"></a>アクセス許可の確認
 
-検出と評価のために [vCenter Server の読み取り専用アカウントを作成](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)しました。 読み取り専用アカウントには、アプリ検出用の VM と対話するために、 **[Virtual Machines]**  >  **[ゲスト操作]** に対して有効になっている特権が必要です。
+検出と評価のために [vCenter Server の読み取り専用アカウントを作成](./tutorial-discover-vmware.md#prepare-vmware)しました。 読み取り専用アカウントには、アプリ検出用の VM と対話するために、 **[Virtual Machines]**  >  **[ゲスト操作]** に対して有効になっている特権が必要です。
 
 ### <a name="add-the-user-account-to-the-appliance"></a>アプライアンスにユーザー アカウントを追加する
 

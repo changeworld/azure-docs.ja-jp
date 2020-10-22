@@ -3,12 +3,12 @@ title: Service Fabric プロジェクトの作成の次の手順
 description: Visual Studio で作成したアプリケーション プロジェクトについて説明します。  チュートリアルを使用してサービスを構築する方法を説明し、Service Fabric のサービスの開発について詳しく説明します。
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75349410"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314467"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。 この記事では、試してみるべきチュートリアル、プロジェクトの構成、その他の詳細情報、考えられる次のステップについて説明します。
@@ -24,7 +24,7 @@ Azure Service Fabric アプリケーションが作成されました。 この�
 - [Windows 上のゲスト実行可能サービス](quickstart-guest-app.md) 
 - [Windows コンテナー アプリケーション](service-fabric-get-started-containers.md) 
 
-[サンプル アプリケーション](https://aka.ms/servicefabricsamples)を試してみることもできます。
+[サンプル アプリケーション](/samples/browse/?products=azure)を試してみることもできます。
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>質問やフィードバックがある場合や  問題を報告する必要がある場合
 [よく寄せらせる質問](service-fabric-common-questions.md)に目を通し、Service Fabric で実行できる内容と使用方法に関する回答を確認します。
@@ -62,5 +62,3 @@ Service Fabric アプリケーションはさまざまなサービスで構成�
 - [Azure での Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用したクラスターの視覚化 (デプロイ済みのアプリケーションや物理的なレイアウトなど)
 - [サービスのアップグレードとバージョン管理](service-fabric-application-upgrade-tutorial.md)
-
-

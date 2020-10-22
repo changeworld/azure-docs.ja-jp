@@ -4,15 +4,15 @@ description: Azure の HPC VM と GPU VM のサイズに関する既知の問題
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 52050066aceef50e64c5887efb7b99da0b03f140
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a96042045eaab440d099f96782c020067eedfa18
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996263"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282124"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
@@ -39,10 +39,10 @@ Ubuntu VM イメージ上の cloud-init には、IB インターフェイスを�
     ```console
     sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
     network:
-        ethernets:
+      ethernets:
         eth0:
-            dhcp4: true
-        version: 2
+          dhcp4: true
+      version: 2
     EOF
     ```
 

@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843313"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320503"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -78,7 +78,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 ### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ 
 ネットワーク セキュリティ グループ (NSG) は、サブネット、VM、または特定 NIC の受信および送信のトラフィックを制御します。  既定では、複数の VM が同じ仮想ネットワークに配置される場合、それらの VM はポートを通じて相互に通信できます。  コンピューター間の通信を制限する必要がある場合、NSG を定義してネットワークをセグメント化することや、VM を相互に分離することができます。  クラスターに複数のノード タイプがある場合、異なるノード タイプに属するコンピューターが相互に通信するのを防ぐために、サブネットに NSG を適用できます。  
 
-詳細については、「[セキュリティ グループ](../virtual-network/security-overview.md)」を参照してください。
+詳細については、「[セキュリティ グループ](../virtual-network/network-security-groups-overview.md)」を参照してください。
 
 ## <a name="scaling"></a>Scaling
 

@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366723"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282474"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase から Azure Cosmos DB SQL API に移行する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB は、グローバルに分散された、スケーラブルな�
 
 * Azure Cosmos DB には、ドキュメント内に "ID" フィールドがありますが、Couchbase にはバケットの一部として ID があります。 "ID" フィールドは、パーティション全体で一意です。
 
-* Azure Cosmos DB は、パーティション分割またはシャーディングの手法を使用してスケーリングします。 つまり、データは複数のシャード/パーティションに分割されます。 これらのパーティション/シャードは、指定されたパーティション キー プロパティに基づいて作成されます。 パーティション キーを選択して、読み取りおよび書き込み操作を最適化することも、読み取り/書き込みを最適化することもできます。 詳細については、[パーティション分割](./partition-data.md)に関する記事をご覧ください。
+* Azure Cosmos DB は、パーティション分割またはシャーディングの手法を使用してスケーリングします。 つまり、データは複数のシャード/パーティションに分割されます。 これらのパーティション/シャードは、指定されたパーティション キー プロパティに基づいて作成されます。 パーティション キーを選択して、読み取りおよび書き込み操作を最適化することも、読み取り/書き込みを最適化することもできます。 詳細については、[パーティション分割](./partitioning-overview.md)に関する記事をご覧ください。
 
 * Azure Cosmos DB では、コレクション名が既に存在しているため、最上位の階層でコレクションを示す必要はありません。 この機能により、JSON 構造が非常に単純になります。 Couchbase と Azure Cosmos DB 間のデータ モデルの違いを示す例を次に示します。
 

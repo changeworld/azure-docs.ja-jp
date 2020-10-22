@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314489"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342333"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -59,9 +59,9 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 セキュリティ アラートの管理とリソースの保護については、次のリソースが参考になります。
 
 [アーティクル]    
-- [Azure Security Center でのセキュリティ ヘルスの監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-- [Azure Security Center でのネットワークの保護](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-- [Azure Security Center での Azure SQL サービスとデータの保護](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Azure Security Center でのセキュリティ ヘルスの監視](./security-center-monitoring.md)
+- [Azure Security Center でのネットワークの保護](./security-center-network-recommendations.md)
+- [Azure Security Center での Azure SQL サービスとデータの保護](./security-center-remediate-recommendations.md)
 
 
 ビデオ    
@@ -77,7 +77,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 * [Respond quickly to threats with next-generation security operation, and investigation (次世代のセキュリティ運用と調査を通じて脅威にすばやく対応する)](https://youtu.be/e8iFCz5RM4g)
 
 [アーティクル]    
-* [Azure Security Center を活用したインシデント対応](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
+* [Azure Security Center を活用したインシデント対応](./tutorial-security-incident.md)
 * [ワークフローの自動化による応答の自動化](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高度なクラウド防御
@@ -91,8 +91,8 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 * [Azure Security Center - アダプティブ アプリケーション制御](https://youtu.be/wWWekI1Y9ck)
 
 [アーティクル]    
-* [Just-In-Time を使用した仮想マシン アクセスの管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
-* [Azure Security Center におけるアダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Just-In-Time を使用した仮想マシン アクセスの管理](./security-center-just-in-time.md)
+* [Azure Security Center におけるアダプティブ アプリケーション制御](./security-center-adaptive-application.md)
 
 ## <a name="hands-on-activities"></a>実践アクティビティ
 
@@ -101,17 +101,17 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 * [Azure Security Center プレイブック:セキュリティのアラート](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Security Center のドキュメント ページ](https://docs.microsoft.com/azure/security-center/)
-* [Security Center REST API ドキュメント ページ](https://msdn.microsoft.com/library/mt704034.aspx)
-* [Azure Security Center のよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)
+* [Security Center のドキュメント ページ](./index.yml)
+* [Security Center REST API ドキュメント ページ](/previous-versions/azure/reference/mt704034(v=azure.100))
+* [Azure Security Center のよく寄せられる質問 (FAQ)](./faq-general.md)
 * [Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)
-* [ID に関するセキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [ネットワーク セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
-* [PaaS に関する推奨情報](https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [ID に関するセキュリティのベスト プラクティス](../security/fundamentals/identity-management-best-practices.md)
+* [ネットワーク セキュリティのベスト プラクティス](../security/fundamentals/network-best-practices.md)
+* [PaaS に関する推奨情報](../security/fundamentals/paas-deployments.md)
 * [コンプライアンス](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log Analytics のお客さまが Azure Security Center を使用してハイブリッド クラウド ワークロードを保護できるようになりました](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics のお客さまが Azure Security Center を使用してハイブリッド クラウド ワークロードを保護できるようになりました](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
 
 ## <a name="community-resources"></a>コミュニティ リソース
 
 * [Security Center UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Security Center の Q&A ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)
+* [Security Center の Q&A ページ](/answers/topics/azure-security-center.html)

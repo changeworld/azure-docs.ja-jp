@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 49ecf753b1dd547eab251222a6c2709d96e9c89b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767622"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146518"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
@@ -58,8 +58,8 @@ IoT Hub には、ハブの正常性の概要と、ハブに接続されている
 |devices.totalDevices|デバイスの総数 (非推奨)|Count|合計|IoT Hub に登録されたデバイスの数|なし|
 |devices.connectedDevices.<br>allProtocol|接続されているデバイス (非推奨) |Count|合計|IoT Hub に接続されているデバイスの数|なし|
 |d2c.telemetry.egress.<br>success|ルーティング: 配信されたテレメトリ メッセージ|Count|合計|IoT Hub ルーティングを使用して、メッセージがすべてのエンドポイントに正常に配信された回数。 メッセージが複数のエンドポイントにルーティングされている場合、この値は正常に配信されるたびに 1 つずつ増えます。 メッセージが同じエンドポイントに複数回配信されている場合、この値は正常に配信されるたびに 1 つずつ増えます。|なし|
-|d2c.telemetry.egress.<br>dropped|ルーティング: 破棄されたテレメトリ メッセージ |Count|合計|デッド エンドポイントであるため、メッセージが IoT Hub ルーティングで破棄された回数。 この値では、フォールバック ルートに配信されるメッセージはカウントされません。破棄されたメッセージはそこには配信されないためです。|なし|
-|d2c.telemetry.egress.<br>orphaned|ルーティング: 孤立したテレメトリ メッセージ |Count|合計|フォールバック ルートが無効にされたときにどのルーティング クエリにも一致しなかったため、IoT Hub ルーティングによってメッセージが孤立した回数。|なし|
+|d2c.telemetry.egress.<br>dropped|ルーティング: 破棄されたテレメトリ メッセージ |Count|合計|デッド エンドポイントであるため、メッセージが IoT Hub ルーティングで破棄された回数。 この値では、フォールバック ルートに配信されるメッセージはカウントされません。破棄されたメッセージはそこには配信されないためです。|なし|
+|d2c.telemetry.egress.<br>orphaned|ルーティング: 孤立したテレメトリ メッセージ |Count|合計|フォールバック ルートが無効にされたときにどのルーティング クエリにも一致しなかったため、IoT Hub ルーティングによってメッセージが孤立した回数。|なし|
 |d2c.telemetry.egress.<br>無効|ルーティング: 互換性のないテレメトリ メッセージ|Count|合計|エンドポイントと互換性がないため、IoT Hub ルーティングでメッセージを配信できなかった回数。 Iot Hub がエンドポイントにメッセージを配信しようとしたときに一時的でないエラーで失敗する場合は、メッセージにエンドポイントとの互換性がありません。 無効なメッセージは再試行されません。 この値に再試行回数は含まれません。|なし|
 |d2c.telemetry.egress.<br>fallback|ルーティング: フォールバックのために配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、フォールバック ルートに関連付けられているエンドポイントにメッセージが配信された回数。|なし|
 |d2c.endpoints.egress.<br>eventHubs|ルーティング: Event Hub に配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージがカスタム エンドポイント型の Event Hub に正常に配信された回数。 これには、組み込みエンドポイントへのメッセージ ルート (イベント) は含まれません。|なし|
@@ -139,4 +139,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
 
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)

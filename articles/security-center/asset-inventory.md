@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950739"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341925"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>資産インベントリ ツールと資産管理ツールを使用してリソースの調査と管理を行う
 
@@ -68,22 +68,22 @@ Security Center では、Azure リソースのセキュリティの状態が定�
     ![インベントリのエクスポート オプション](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > KQL のドキュメントでは、いくつかのサンプル データと単純なクエリを組み合わせたデータベースを使用して、この言語の「感触」をつかむことができます。 詳しくは、[KQL のチュートリアル](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)をご覧ください。
+    > KQL のドキュメントでは、いくつかのサンプル データと単純なクエリを組み合わせたデータベースを使用して、この言語の「感触」をつかむことができます。 詳しくは、[KQL のチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)をご覧ください。
 
 - **[資産管理オプション]** - インベントリでは、複雑な検出クエリを実行できます。 クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
 
     - フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします。
     - Security Center に新しいサーバーをオンボードする - **[非 Azure サーバーの追加]** ツールバー ボタンを使用します。
-    - Azure Logic Apps を使用してワークロードを自動化する - **[ロジック アプリのトリガー]** ボタンを使用して、1 つ以上のリソースでロジック アプリを実行します。 ロジック アプリを事前に準備し、関連するトリガーの種類 (HTTP 要求) を受け入れる必要があります。 [Logic Apps の詳細をご覧ください](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+    - Azure Logic Apps を使用してワークロードを自動化する - **[ロジック アプリのトリガー]** ボタンを使用して、1 つ以上のリソースでロジック アプリを実行します。 ロジック アプリを事前に準備し、関連するトリガーの種類 (HTTP 要求) を受け入れる必要があります。 [Logic Apps の詳細をご覧ください](../logic-apps/logic-apps-overview.md)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>資産インベントリのしくみ
 
-資産インベントリは、[Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/) を利用しています。ARG は、複数のサブスクリプションにまたがって Security Center のセキュリティ態勢データのクエリを実行できる Azure サービスです。
+資産インベントリは、[Azure Resource Graph (ARG)](../governance/resource-graph/index.yml) を利用しています。ARG は、複数のサブスクリプションにまたがって Security Center のセキュリティ態勢データのクエリを実行できる Azure サービスです。
 
 ARG は、大規模なクエリの実行機能によってリソースを効率的に探索できるように設計されています。
 
-資産インベントリで [Kusto クエリ言語 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) を使用すると、他のリソース プロパティで ASC データを相互参照して詳細な分析情報をすばやく作成できます。
+資産インベントリで [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) を使用すると、他のリソース プロパティで ASC データを相互参照して詳細な分析情報をすばやく作成できます。
 
 
 ## <a name="how-to-use-asset-inventory"></a>資産インベントリの使用方法
@@ -156,5 +156,5 @@ Security Center で監視されているすべてのリソースにエージェ�
 
 関連するツールの詳細については、以下のページをご覧ください。
 
-- [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-- [Kusto クエリ言語 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)
+- [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/)

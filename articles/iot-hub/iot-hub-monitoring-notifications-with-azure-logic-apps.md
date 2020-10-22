@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81680717"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146647"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -22,7 +22,7 @@ ms.locfileid: "81680717"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) は、ワークフローをオンプレミスとクラウド サービス、1 つ以上のエンタープライズ、およびさまざまなプロトコルにわたって調整するのに役立ちます。 ロジック アプリはトリガーで始まり、その後に、条件や反復子などの組み込みのコントロールを使用して順序付けることができる 1 つ以上のアクションが実行されます。 この柔軟性により、Logic Apps は IoT の監視シナリオのための理想的な IoT ソリューションになります。 たとえば、デバイスからのテレメトリ データが IoT Hub エンドポイントに到着したら、そのデータを Azure Storage BLOB に格納するためにロジック アプリ ワークフローを開始したり、データの異常を警告するために電子メール アラートを送信したり、デバイスから障害が報告された場合は技術者の訪問をスケジュールしたりすることができます。
+[Azure Logic Apps](../logic-apps/index.yml) は、ワークフローをオンプレミスとクラウド サービス、1 つ以上のエンタープライズ、およびさまざまなプロトコルにわたって調整するのに役立ちます。 ロジック アプリはトリガーで始まり、その後に、条件や反復子などの組み込みのコントロールを使用して順序付けることができる 1 つ以上のアクションが実行されます。 この柔軟性により、Logic Apps は IoT の監視シナリオのための理想的な IoT ソリューションになります。 たとえば、デバイスからのテレメトリ データが IoT Hub エンドポイントに到着したら、そのデータを Azure Storage BLOB に格納するためにロジック アプリ ワークフローを開始したり、データの異常を警告するために電子メール アラートを送信したり、デバイスから障害が報告された場合は技術者の訪問をスケジュールしたりすることができます。
 
 ## <a name="what-you-learn"></a>学習内容
 
@@ -104,7 +104,7 @@ Service Bus の名前空間とキューを作成します。 このトピック�
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>IoT ハブにカスタム エンドポイントとルーティング規則を追加する
 
-IoT ハブに Service Bus キューのカスタム エンドポイントを追加し、温度アラートを含むメッセージをそのエンドポイントに転送するためのメッセージ ルーティング規則を作成します。そこで、これらのメッセージはロジック アプリによって選択されます。 このルーティング規則では、ルーティング クエリ `temperatureAlert = "true"` を使用して、デバイス上で実行されているクライアント コードによって設定された `temperatureAlert` アプリケーション プロパティの値に基づいてメッセージを転送します。 詳細については、「[メッセージ プロパティに基づいたメッセージ ルーティング クエリ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties)」を参照してください。
+IoT ハブに Service Bus キューのカスタム エンドポイントを追加し、温度アラートを含むメッセージをそのエンドポイントに転送するためのメッセージ ルーティング規則を作成します。そこで、これらのメッセージはロジック アプリによって選択されます。 このルーティング規則では、ルーティング クエリ `temperatureAlert = "true"` を使用して、デバイス上で実行されているクライアント コードによって設定された `temperatureAlert` アプリケーション プロパティの値に基づいてメッセージを転送します。 詳細については、「[メッセージ プロパティに基づいたメッセージ ルーティング クエリ](./iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-properties)」を参照してください。
 
 ### <a name="add-a-custom-endpoint"></a>カスタム エンドポイントを追加する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601311"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312605"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -91,7 +91,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 #### <a name="on-premises-agents-logs-recommended-reading"></a>オンプレミスのエージェント ログに関する推奨資料
 
 - [アプリケーション プロキシのトラブルシューティング](../manage-apps/application-proxy-troubleshoot.md)
-- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect:パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
 - [Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)

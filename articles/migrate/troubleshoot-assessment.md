@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576593"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314740"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -26,11 +26,11 @@ ms.locfileid: "91576593"
 **問題点** | **解決策**
 --- | ---
 サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>Azure Migrate Server Migration を使用して、そのような VM の移行を処理することができます。 それにより、移行中に VM のブートの種類が BIOS に変換されます。
-条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](https://aka.ms/WSosstatement)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。
-サポートされていない Windows オペレーティング システム | Azure では、[特定の Windows OS バージョン](https://aka.ms/WSosstatement)のみがサポートされています。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
-条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。 詳細については、[こちらも](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment)参照してください。
+条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](/troubleshoot/azure/virtual-machines/server-software-support)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。
+サポートされていない Windows オペレーティング システム | Azure では、[特定の Windows OS バージョン](/troubleshoot/azure/virtual-machines/server-software-support)のみがサポートされています。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
+条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。 詳細については、[こちらも](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment)参照してください。
 動作が保証されていない Linux OS | マシンは Azure で起動する可能性がありますが、オペレーティング システムは Azure ではサポートされていません。 Azure に移行する前に、[サポートされている Linux バージョン](../virtual-machines/linux/endorsed-distros.md)へのアップグレードを検討してください。
-オペレーティング システムが不明です | VM のオペレーティング システムが、vCenter Server で "その他" として指定されました。 この動作により、Azure Migrate による VM の Azure 対応性の検証はブロックされます。 コンピューターを移行する前に、オペレーティング システムが Azure によって[サポートされている](https://aka.ms/azureoslist)ことを確認してください。
+オペレーティング システムが不明です | VM のオペレーティング システムが、vCenter Server で "その他" として指定されました。 この動作により、Azure Migrate による VM の Azure 対応性の検証はブロックされます。 コンピューターを移行する前に、オペレーティング システムが Azure によって[サポートされている](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements)ことを確認してください。
 サポートされていないビット バージョン | 32 ビット オペレーティング システムの VM は Azure で起動する可能性がありますが、Azure に移行する前に、64 ビットにアップグレードすることをお勧めします。
 Microsoft Visual Studio のサブスクリプションが必要です | コンピューターで実行されている Windows クライアント オペレーティング システムは、Visual Studio のサブスクリプションによってのみサポートされます。
 必要なストレージ パフォーマンスの VM が見つかりません | そのマシンに必要なストレージ パフォーマンス (1 秒あたりの入力/出力操作数 (IOPS) とスループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
@@ -48,7 +48,7 @@ Microsoft Visual Studio のサブスクリプションが必要です | コン�
 内部エラーが原因で 1 つ以上のディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
 内部エラーが原因で 1 つ以上のネットワーク アダプターの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
 オファー、通貨、予約インスタンスに対する VM サイズが見つかりませんでした | 選択された RI、オファー、通貨の組み合わせに対して VM サイズが見つからなかったため、マシンは不適切とマークされました。 評価のプロパティを編集して有効な組み合わせを選択し、評価を再計算します。 
-条件付きで対応しているインターネット プロトコル | Azure VMware Solution (AVS) の評価にのみ適用されます。 AVS では、IPv6 インターネット アドレスのファクターはサポートされていません。 マシンが IPv6 を使用して検出される場合の修復については、AVS チームにお問い合わせください。
+条件付きで対応しているインターネット プロトコル | Azure VMware Solution (AVS) の評価にのみ適用されます。 AVS では、IPv6 インターネット アドレスのファクターはサポートされていません。  マシンが IPv6 を使用して検出される場合の修復については、AVS チームにお問い合わせください。
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>不明とマークされるインポート ベースの AVS 評価で推奨される移行ツール
 
@@ -61,7 +61,7 @@ VMware VM および Hyper-V VM の場合、Server Assessment では、Server Ass
 - ギャップのため、オンプレミスの VM にインストールされている Linux OS のマイナー バージョンを検出できません。
 - たとえば、RHEL 6.10 の場合、現在の Server Assessment では、RHEL 6 のみが OS バージョンとして検出されます。 これは、Hyper-V ホストの vCenter Server では、Linux VM オペレーティング システム用のカーネル バージョンが提供されていないためです。
 -  特定のバージョンの Linux のみが Azure によって動作保証されるため、Linux VM は現在 Server Assessment において条件付き対応とマークされます。
-- オンプレミスの VM で実行されている Linux OS が Azure で動作保証済みかどうかは、[Azure Linux サポート](https://aka.ms/migrate/selfhost/azureendorseddistros)のページを参照して特定できます。
+- オンプレミスの VM で実行されている Linux OS が Azure で動作保証済みかどうかは、[Azure Linux サポート](../virtual-machines/linux/endorsed-distros.md)のページを参照して特定できます。
 -  ディストリビューションの動作保証を確認した後は、この警告を無視してかまいません。
 
 このギャップは、VMware VM で[アプリケーション検出](./how-to-discover-applications.md)を有効にすることで対処できます。 Server Assessment では、指定されたゲスト資格情報を使用して VM から検出されたオペレーティング システムが使用されます。 このオペレーティング システムのデータでは、Windows VM と Linux VM の両方の場合に適切な OS 情報が示されます。
@@ -107,7 +107,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
 
-信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
+信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](./concepts-assessment-calculation.md#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
 
 - 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を "再計算" してください。
  
@@ -115,7 +115,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 
 - Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
 
-信頼度レーティングに関する[詳細についてはこちら](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)をご覧ください。
+信頼度レーティングに関する[詳細についてはこちら](./concepts-assessment-calculation.md#confidence-ratings-performance-based)をご覧ください。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>オペレーティング システムのライセンスは Azure VM 評価に含まれていますか?
 
@@ -126,7 +126,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 Server Assessment では、オンプレミスのマシンのパフォーマンス データを継続的に収集し、それを使って Azure で VM の SKU とディスクの SKU を推奨します。 パフォーマンスベースのデータの収集方法を[確認](concepts-assessment-calculation.md#calculate-sizing-performance-based)してください。
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>予約インスタンス、VM アップタイム、割引 (%) の無効な組み合わせで作成されたことを示す警告が評価で表示されるのはなぜですか?
-[予約済みインスタンス] を選択すると、[割引 (%)] および [VM のアップタイム] プロパティは適用されません。 これらのプロパティの無効な組み合わせで評価が作成されたため、編集ボタンと再計算ボタンは無効になっています。 新しい評価を作成してください。 [詳細については、こちらを参照してください](https://go.microsoft.com/fwlink/?linkid=2131554)。
+[予約済みインスタンス] を選択すると、[割引 (%)] および [VM のアップタイム] プロパティは適用されません。 これらのプロパティの無効な組み合わせで評価が作成されたため、編集ボタンと再計算ボタンは無効になっています。 新しい評価を作成してください。 [詳細については、こちらを参照してください](./concepts-assessment-calculation.md#whats-an-assessment)。
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>物理サーバー上の一部のネットワーク アダプターのパフォーマンス データが表示されません
 
@@ -161,7 +161,7 @@ Windows VM の場合:
 
     ![MMA のステータス](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。 詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)のトラブルシューティング ガイドを参照してください。
+Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。 詳細については、[こちら](../azure-monitor/insights/service-map.md#post-installation-issues)のトラブルシューティング ガイドを参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 

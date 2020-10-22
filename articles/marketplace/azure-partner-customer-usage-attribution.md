@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261381"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282353"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -268,7 +268,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>サポートを受ける
 
-コマーシャル マーケットプレースのサポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](./partner-center-portal/support.md)」を参照してください。
+コマーシャル マーケットプレースのサポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](support.md)」を参照してください。
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>技術コンサルティングの要求を送信する方法
 

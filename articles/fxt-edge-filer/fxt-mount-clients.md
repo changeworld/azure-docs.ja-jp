@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231354"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340514"
 ---
 # <a name="tutorial-mount-the-cluster"></a>チュートリアル:クラスターのマウント
 
@@ -20,6 +20,7 @@ ms.locfileid: "86231354"
 このチュートリアルの内容:
 
 > [!div class="checklist"]
+>
 > * クライアント側の IP アドレスの範囲にわたってクライアントを負荷分散するための戦略
 > * クライアント側の IP アドレスおよび名前空間ジャンクションからマウント パスを作成する方法
 > * mount コマンドで使用する引数
@@ -108,6 +109,6 @@ mount コマンドのローカル パスは、ユーザーが指定できます�
 
 クライアントをマウントすると、ワークフローをテストしてクラスターの使用を開始できます。
 
-新しいクラウド コア ファイラーにデータを移動する必要がある場合、並列データ取り込みを使用することによってキャッシュ構造を利用します。 [vFXT クラスターへのデータの移動](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest)に関する記事でいくつかの方法が説明されています。 (Avere vFXT for Azure は、Azure FXT Edge Filer とよく似たキャッシュ技術を使用するクラウド ベースの製品です)。
+新しいクラウド コア ファイラーにデータを移動する必要がある場合、並列データ取り込みを使用することによってキャッシュ構造を利用します。 [vFXT クラスターへのデータの移動](../avere-vfxt/avere-vfxt-data-ingest.md)に関する記事でいくつかの方法が説明されています。 (Avere vFXT for Azure は、Azure FXT Edge Filer とよく似たキャッシュ技術を使用するクラウド ベースの製品です)。
 
 ハードウェアの問題をトラブルシューティングする必要がある場合は、「[Azure FXT Edge Filer のハードウェア状態を監視する](fxt-monitor.md)」をお読みください。
