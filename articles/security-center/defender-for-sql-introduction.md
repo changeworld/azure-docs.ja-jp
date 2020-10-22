@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449059"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342027"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
-Azure Defender for SQL には、Azure Security Center の[データ セキュリティ パッケージ](../azure-sql/database/advanced-data-security.md)を拡張して、データベースの場所を問わず、データベースとそのデータをセキュリティで保護する 2 つの Azure Defender プランが含まれています。 
+Azure Defender for SQL には、Azure Security Center の[データ セキュリティ パッケージ](../azure-sql/database/azure-defender-for-sql.md)を拡張して、データベースの場所を問わず、データベースとそのデータをセキュリティで保護する 2 つの Azure Defender プランが含まれています。 
 
 ## <a name="availability"></a>可用性
 
@@ -69,5 +69,5 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 関連資料については、次の記事をご覧ください。 
 
 - [Azure Defender for SQL servers on machines を有効にする方法](defender-for-sql-usage.md)
-- [Azure Defender for SQL database servers を有効にする方法](../azure-sql/database/advanced-data-security.md)
+- [Azure Defender for SQL database servers を有効にする方法](../azure-sql/database/azure-defender-for-sql.md)
 - [Azure Defender for SQL のアラートの一覧](alerts-reference.md#alerts-sql-db-and-warehouse)

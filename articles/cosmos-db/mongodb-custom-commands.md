@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409682"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282462"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
 
-次のドキュメントには、MongoDB 用の Azure Cosmos DB の API に固有のカスタム アクション コマンドが含まれています。 これらのコマンドを使用して、[Azure Cosmos DB 容量モデル](databases-containers-items.md)に固有のデータベース リソースを作成および取得できます。
+次のドキュメントには、MongoDB 用の Azure Cosmos DB の API に固有のカスタム アクション コマンドが含まれています。 これらのコマンドを使用して、[Azure Cosmos DB 容量モデル](account-databases-containers-items.md)に固有のデータベース リソースを作成および取得できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリへの投資を保持しながら、グローバル配布、自動シャーディング、高可用性、低待機時間の保証、自動化、保存時の暗号化、バックアップなど多くの Cosmos DB の利点を活用できます。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の [MongoDB クライアント ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 

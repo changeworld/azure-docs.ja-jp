@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018503"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142451"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>ジョブのスケジュールとブロードキャスト (.NET)
 
@@ -261,7 +261,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     ```
 
     > [!NOTE]
-    > クエリ構文の詳細については、[IoT Hub クエリ言語](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)に関するページを参照してください。
+    > クエリ構文の詳細については、[IoT Hub クエリ言語](./iot-hub-devguide-query-language.md)に関するページを参照してください。
     >
 
 1. 最後に、**Main** メソッドに次の行を追加します。
@@ -311,4 +311,4 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 * ファームウェアのリモートでのワイヤレス更新など、IoT Hub とデバイス管理パターンの作業を続けるには、[ファームウェア更新の実行方法に関するチュートリアル](tutorial-firmware-update.md)を参照してください。
 
-* Azure IoT Edge を使用したエッジ デバイスへの AI のデプロイについては、[IoT Edge の使用](../iot-edge/tutorial-simulate-device-linux.md)に関するページを参照してください。
+* Azure IoT Edge を使用したエッジ デバイスへの AI のデプロイについては、[IoT Edge の使用](../iot-edge/quickstart-linux.md)に関するページを参照してください。

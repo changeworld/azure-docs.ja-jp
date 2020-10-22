@@ -2,7 +2,6 @@
 title: Azure Security Center のアラートのスキーマ
 description: この記事では、Azure Security Center のセキュリティ アラートに使用されるさまざまなスキーマについて説明します。
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901348"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341942"
 ---
 # <a name="security-alerts-schemas"></a>セキュリティ アラートのスキーマ
 
@@ -25,9 +24,9 @@ ms.locfileid: "90901348"
 
 こうしたセキュリティ アラートは、Azure Security Center の **[脅威に対する保護]** ページで確認できるほか、次のような外部ツールを使用して確認することができます。
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) - Microsoft のクラウドネイティブの SIEM です。 Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [[Log Analytics ワークスペース]](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) に送信します。
-- サードパーティの SIEM - Security Center の[連続エクスポート](continuous-export.md) ツールを使用して、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) にデータを送信します。 その後、Event Hub のデータをサードパーティの SIEM に統合します。
-- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) - REST API を使用してアラートにアクセスする場合は、[Alerts API のオンライン ドキュメント](https://docs.microsoft.com/rest/api/securitycenter/alerts)を参照してください。
+- [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM です。 Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [[Log Analytics ワークスペース]](../azure-monitor/learn/quick-create-workspace.md) に送信します。
+- サードパーティの SIEM - Security Center の[連続エクスポート](continuous-export.md) ツールを使用して、[Azure Event Hubs](../event-hubs/index.yml) にデータを送信します。 その後、Event Hub のデータをサードパーティの SIEM に統合します。
+- [REST API](/rest/api/securitycenter/) - REST API を使用してアラートにアクセスする場合は、[Alerts API のオンライン ドキュメント](/rest/api/securitycenter/alerts)を参照してください。
 
 プログラムを使った方法でアラートを取り込む場合は、対象となるフィールドを検索するための適切なスキーマが必要です。 また、イベント ハブへのエクスポートを実行する場合や、汎用的な HTTP コネクタでワークフロー オートメーションをトリガーしようとしている場合は、JSON オブジェクトを適切に解析するためにスキーマを使用します。
 
@@ -61,7 +60,7 @@ Sentinel コネクタは、Azure Security Center からアラートを受け取�
 
 Security Center のアラートを使用して Sentinel のサポート案件またはインシデントを作成するには、以下に示した、それらのアラートのスキーマが必要となります。 
 
-Azure Sentinel の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/sentinel/)を参照してください。
+Azure Sentinel の詳細については、[こちらのドキュメント](../sentinel/index.yml)を参照してください。
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -173,7 +172,7 @@ Azure Security Center は、Azure のアクティビティ ログ内のイベン
 
 Microsoft Graph は、Microsoft 365 のデータとインテリジェンスにアクセスするための入口です。 Microsoft 365、Windows 10、Enterprise Mobility + Security の大量のデータにアクセスする目的で使用できる統合型プログラミング モデルを備えています。 Microsoft Graph の豊富なデータを使用して、数百万人のユーザーと対話する、組織やコンシューマー向けのアプリを作成できます。
 
-MS Graph に送信されるセキュリティ アラートのスキーマと JSON 表記は、[Microsoft Graph のドキュメント](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)でご覧いただけます。
+MS Graph に送信されるセキュリティ アラートのスキーマと JSON 表記は、[Microsoft Graph のドキュメント](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)でご覧いただけます。
 
 ---
 
@@ -184,7 +183,7 @@ MS Graph に送信されるセキュリティ アラートのスキーマと JSO
 
 Security Center の外部からセキュリティ アラートにアクセスする方法の詳細については、次のページを参照してください。
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) - Microsoft のクラウドネイティブの SIEM
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) - Microsoft のフル マネージドのリアルタイム データ インジェスト サービス
+- [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM
+- [Azure Event Hubs](../event-hubs/index.yml) - Microsoft のフル マネージドのリアルタイム データ インジェスト サービス
 - Security Center の[連続エクスポート機能](continuous-export.md)
-- [Log Analytics ワークスペース](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) - Azure Monitor のログ データは、Log Analytics ワークスペースという、データと構成情報を含んだコンテナーに格納されます。
+- [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md) - Azure Monitor のログ データは、Log Analytics ワークスペースという、データと構成情報を含んだコンテナーに格納されます。

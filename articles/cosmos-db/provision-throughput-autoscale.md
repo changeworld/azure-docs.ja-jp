@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b9d645a16a59e34d1915cf9febde6b1f8a789355
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570726"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282095"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>自動スケーリングのスループットを使用して Azure Cosmos コンテナーとデータベースを作成する
 
@@ -85,6 +85,6 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 * [自動スケーリングに関する FAQ](autoscale-faq.md) を確認する。
 * [手動および自動スケーリングのスループットから選択する](how-to-choose-offer.md)方法を確認する。
 * [Azure Cosmos データベースまたはコンテナー上で自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)方法を確認する。
-* Azure Cosmos DB での[パーティション分割](partition-data.md)について詳細を確認する。
+* Azure Cosmos DB での[パーティション分割](partitioning-overview.md)について詳細を確認する。
 
 

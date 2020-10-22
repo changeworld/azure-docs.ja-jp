@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876245"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107574"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio ダッシュボード
 
-[Azure Data Studio](https://aka.ms/azuredatastudio) では、Azure Arc リソースに関する情報を表示するために、Azure portal と同様のエクスペリエンスが提供されます。  これらのビューは**ダッシュボード**と呼ばれ、レイアウトとオプションは、Azure portal 内の特定のリソースについて見られるものと似ていますが、Azure に接続できない場合に環境内の情報がローカルに表示される柔軟性があります。
+[Azure Data Studio](/sql/azure-data-studio/what-is) では、Azure Arc リソースに関する情報を表示するために、Azure portal と同様のエクスペリエンスが提供されます。  これらのビューは**ダッシュボード**と呼ばれ、レイアウトとオプションは、Azure portal 内の特定のリソースについて見られるものと似ていますが、Azure に接続できない場合に環境内の情報がローカルに表示される柔軟性があります。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "91876245"
 
 ### <a name="prerequisites"></a>前提条件
 
-- [Azure Data Studio](https://aka.ms/getazuredatastudio) をダウンロードする
+- [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) をダウンロードする
 - Azure Arc 拡張機能がインストールされている
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>データ コントローラー サーバー API エンドポイントの URL を特定する

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440777"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339732"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションにセキュリティ ポリシーを適用することで、組織の大規模なセキュリティ体制を管理する方法について説明します。
@@ -33,10 +33,10 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 2. API 呼び出しを通じて管理グループを作成する。
 3. PowerShell を使用して管理グループを作成する。
 
-管理グループの概要について詳しくは、「[Organize your resources with Azure management groups](../azure-resource-manager/management-groups-overview.md)」(Azure 管理グループでリソースを整理する) の記事をご覧ください。
+管理グループの概要について詳しくは、「[Organize your resources with Azure management groups](../governance/management-groups/overview.md)」(Azure 管理グループでリソースを整理する) の記事をご覧ください。
 
 ## <a name="create-a-management-group-in-the-azure-portal"></a>Azure Portal で管理グループを作成する
-管理者は、管理グループ内にサブスクリプションを整理し、それらの管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 管理グループは Security Center をオンボードするのに必須のものではありませんが、管理グループを少なくとも 1 つ作成して、ルート管理グループが作成されるようにすることを強くお勧めします。 グループが作成されると、自分の Azure AD テナントの配下にあるすべてのサブスクリプションがそのグループにリンクされます。 PowerShell に関する操作説明と詳細については、「[リソースの整理と管理のための管理グループを作成する](../azure-resource-manager/management-groups-create.md)」をご覧ください。
+管理者は、管理グループ内にサブスクリプションを整理し、それらの管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 管理グループは Security Center をオンボードするのに必須のものではありませんが、管理グループを少なくとも 1 つ作成して、ルート管理グループが作成されるようにすることを強くお勧めします。 グループが作成されると、自分の Azure AD テナントの配下にあるすべてのサブスクリプションがそのグループにリンクされます。 PowerShell に関する操作説明と詳細については、「[リソースの整理と管理のための管理グループを作成する](../governance/management-groups/create-management-group-portal.md)」をご覧ください。
 
  
 1. [Azure portal](https://portal.azure.com) にサインインします。

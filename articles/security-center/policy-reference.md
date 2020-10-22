@@ -1,18 +1,18 @@
 ---
 title: Azure Security Center 用の組み込みポリシー定義
 description: Azure Security Center 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0c445dc882c40724c20c773b3a5e191fb06970a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7478199e4bb6f1e9ad986193370d4ea8610bd7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823143"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340905"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Security Center 用の Azure Policy 組み込み定義
 
@@ -52,5 +52,5 @@ Security Center によって監視される組み込みのポリシーの詳細�
 - [Azure Security Center 計画および運用ガイド](./security-center-planning-and-operations-guide.md):Azure Security Center で計画し、設計上の考慮事項を理解する方法について説明しています。
 - [Azure Security Center でのセキュリティ ヘルスの監視](./security-center-monitoring.md):Azure リソースの正常性を監視する方法について説明しています。
 - [Azure Security Center でのセキュリティの警告の管理と対応](./security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
-- [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-integration.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - [Azure Policy](../governance/policy/overview.md):Azure リソースの監査と管理について説明しています。

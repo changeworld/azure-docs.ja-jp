@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801326"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281056"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -26,7 +26,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 * データベースでスループットをプロビジョニングした場合は、そのデータベース内のすべてのコンテナー (コレクション/テーブル/グラフなど) が負荷に基づいてスループットを共有できます。 データベース レベルで予約されたスループットは、特定のコンテナーのセットでのワークロードに応じて不均一に共有されます。
 
-* コンテナーでスループットをプロビジョニングした場合は、そのコンテナーに対して SLA で裏付けられたスループットが保証されます。 コンテナーのすべての論理パーティションに負荷を均等に分散させるには、論理パーティション キーの選択が非常に重要です。 詳しくは、[パーティション分割](partitioning-overview.md)および[水平スケーリング](partition-data.md)に関する記事をご覧ください。
+* コンテナーでスループットをプロビジョニングした場合は、そのコンテナーに対して SLA で裏付けられたスループットが保証されます。 コンテナーのすべての論理パーティションに負荷を均等に分散させるには、論理パーティション キーの選択が非常に重要です。 詳しくは、[パーティション分割](partitioning-overview.md)および[水平スケーリング](partitioning-overview.md)に関する記事をご覧ください。
 
 プロビジョニング済みスループットの戦略の決定に関するガイドラインを次に示します。
 

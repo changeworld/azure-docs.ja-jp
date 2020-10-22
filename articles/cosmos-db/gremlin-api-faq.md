@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613984"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281563"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Gremlin API についてよく寄せられる質問
 
@@ -99,7 +99,7 @@ RU 課金は、結果セットではなく、走査の作業データ セット�
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API でグラフ データベースに与えられる最大スケールは何ですか。
 
-Azure Cosmos DB では、[水平方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコンテナーに関連付けられているパーティションの数により決定されます。 ただし、Gremlin API コンテナーには、大規模でも適切なパフォーマンスが得られるように、特定のガイドラインのセットがあります。 パーティション分割の詳細とベスト プラクティスについては、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事をご覧ください。
+Azure Cosmos DB では、[水平方向のパーティション分割](partitioning-overview.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコンテナーに関連付けられているパーティションの数により決定されます。 ただし、Gremlin API コンテナーには、大規模でも適切なパフォーマンスが得られるように、特定のガイドラインのセットがあります。 パーティション分割の詳細とベスト プラクティスについては、[Azure Cosmos DB でのパーティション分割](partitioning-overview.md)に関する記事をご覧ください。
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>C#/.NET 開発の場合、Microsoft.Azure.Graphs パッケージまたは Gremlin.NET を使用するべきですか。
 

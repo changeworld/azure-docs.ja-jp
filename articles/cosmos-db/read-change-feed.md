@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018971"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282066"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 
@@ -39,7 +39,7 @@ Azure Cosmos DB の変更フィードを使用するシナリオの多くでは�
 
 ### <a name="azure-functions"></a>Azure Functions
 
-変更フィードの使用にまだ慣れていない場合は、Azure Functions を使用するのが最も簡単な方法です。 シンプルな方法なので、変更フィードのほとんどのユース ケースで推奨されるオプションでもあります。 Azure Cosmos DB 用の Azure Functions トリガーを作成する場合、接続先のコンテナーを選択すれば、そのコンテナーに変更が加えられるたびに Azure Function がトリガーされます。 Azure Functions では、変更フィード プロセッサがバックグラウンドで使用されるため、変更処理がコンテナーの[パーティション](partition-data.md)間で自動的に並列化されます。
+変更フィードの使用にまだ慣れていない場合は、Azure Functions を使用するのが最も簡単な方法です。 シンプルな方法なので、変更フィードのほとんどのユース ケースで推奨されるオプションでもあります。 Azure Cosmos DB 用の Azure Functions トリガーを作成する場合、接続先のコンテナーを選択すれば、そのコンテナーに変更が加えられるたびに Azure Function がトリガーされます。 Azure Functions では、変更フィード プロセッサがバックグラウンドで使用されるため、変更処理がコンテナーの[パーティション](partitioning-overview.md)間で自動的に並列化されます。
 
 Azure Functions を使うと開発作業が簡単ですし、自分で変更フィード プロセッサをデプロイするよりもスピーディです。 トリガーは、Azure Functions ポータルを使用して作成することもできますし、SDK を使用してプログラムで作成することもできます。 Visual Studio と VS Code では、Azure Functions の作成がサポートされ、クロスプラットフォーム開発のために Azure Functions CLI を使用することもできます。 デスクトップでコードを記述してデバッグを行い、1 回のクリック操作で関数をデプロイできます。 詳しくは、[Azure Functions を使用したサーバーレス データベース コンピューティング](serverless-computing-database.md)および[変更フィードと Azure Functions の使用](change-feed-functions.md)に関する記事をご覧ください。
 

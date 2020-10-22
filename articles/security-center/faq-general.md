@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301450"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341687"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -62,7 +62,7 @@ Azure Security Center で有効になっているセキュリティ ポリシー
 Azure Security Center は、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
 
 * 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
-* 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とルール
+* 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)とルール
 * Web アプリケーションを対象とする攻撃から保護するための Web アプリケーション ファイアウォールをプロビジョニングする
 * 不足しているシステムの更新をデプロイする
 * 推奨基準と一致しない OS 構成に対処する

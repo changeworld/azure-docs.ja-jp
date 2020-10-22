@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 66cf408799b37de1160ec3a76ee11ff1ffbb770b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe31e67168c4eaf6fe94c056a96fdf695ea94fe4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801428"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279995"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET V3 SDK (Microsoft.Azure.Cosmos) のサンプル
 
@@ -54,7 +54,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 
 ## <a name="database-examples"></a>データベースのサンプル
 
-サンプルの *DatabaseManagement* プロジェクトの [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos データベースについて知るために、「[データベース、コンテナー、アイテムの操作](databases-containers-items.md)」を参照してください。
+サンプルの *DatabaseManagement* プロジェクトの [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos データベースについて知るために、「[データベース、コンテナー、アイテムの操作](account-databases-containers-items.md)」を参照してください。
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -65,7 +65,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 
 ## <a name="container-examples"></a>コンテナーの例
 
-サンプルの *ContainerManagement* プロジェクトの [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos コンテナーについて知るために、「[データベース、コンテナー、アイテムの操作](databases-containers-items.md)」を参照してください。
+サンプルの *ContainerManagement* プロジェクトの [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos コンテナーについて知るために、「[データベース、コンテナー、アイテムの操作](account-databases-containers-items.md)」を参照してください。
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -78,7 +78,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 
 ## <a name="item-examples"></a>項目の例
 
-サンプルの *ItemManagement* プロジェクトの [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos 項目について知るために、「[データベース、コンテナー、アイテムの操作](databases-containers-items.md)」を参照してください。
+サンプルの *ItemManagement* プロジェクトの [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos 項目について知るために、「[データベース、コンテナー、アイテムの操作](account-databases-containers-items.md)」を参照してください。
 
 | タスク | API リファレンス |
 | --- | --- |

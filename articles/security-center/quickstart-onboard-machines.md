@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993602"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340871"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
@@ -86,7 +86,7 @@ Azure Stack VM を追加するには、 **[エージェント管理]** ページ
 1. **Azure Stack** ポータルにログインし、 **[仮想マシン]** ページを開きます。
 1. Security Center で保護する仮想マシンを選択します。
     >[!TIP]
-    > Azure Stack に仮想マシンを作成する方法については、[Windows 仮想マシンの場合はこのクイック スタート](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)、[Linux 仮想マシンの場合はこのクイック スタート](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)を参照してください。
+    > Azure Stack に仮想マシンを作成する方法については、[Windows 仮想マシンの場合はこのクイック スタート](/azure-stack/user/azure-stack-quick-windows-portal)、[Linux 仮想マシンの場合はこのクイック スタート](/azure-stack/user/azure-stack-quick-linux-portal)を参照してください。
 1. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
 1. **[追加]** タブを選択します。 **[新しいリソース]** メニューに、使用可能な仮想マシン拡張機能の一覧が表示されます。
 1. **Azure Monitor, Update and Configuration Management** 拡張機能を選択し、 **[作成]** を選択します。 **[拡張機能のインストール]** 構成ページが開きます。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280514"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 
@@ -26,7 +26,7 @@ Azure Cosmos DB は、スキーマやセカンダリ インデックスを使用
 
 ## <a name="about-sql-query-execution"></a>SQL クエリの実行について
 
-Azure Cosmos DB では、データは任意の[ストレージ サイズまたは要求スループット](partition-data.md)に拡張できるコンテナーに格納されます。 Azure Cosmos DB は、プロビジョニング スループットの増加またはデータの増加に応じて、複数の物理パーティションにわたってデータをシームレスに拡張できます。 REST API またはサポートされている [SQL SDK](sql-api-sdk-dotnet.md) のいずれかを使用して任意のコンテナーに SQL クエリを発行できます。
+Azure Cosmos DB では、データは任意の[ストレージ サイズまたは要求スループット](partitioning-overview.md)に拡張できるコンテナーに格納されます。 Azure Cosmos DB は、プロビジョニング スループットの増加またはデータの増加に応じて、複数の物理パーティションにわたってデータをシームレスに拡張できます。 REST API またはサポートされている [SQL SDK](sql-api-sdk-dotnet.md) のいずれかを使用して任意のコンテナーに SQL クエリを発行できます。
 
 パーティション分割の概要: "city" などのパーティション キーを定義すると、複数の物理パーティションにわたるデータの分割方法が決定されます。 1 つのパーティション キーに属しているデータ (たとえば、"city" == "Seattle") は、1 つの物理パーティション内に格納されますが、1 つの物理パーティションには、通常、複数のパーティション キーが存在します。 パーティションが最大記憶域容量に達すると、サービスによってパーティションは新しい 2 つのパーティションにシームレスに分割され、これらのパーティション間でパーティション キーが均等に分割されます。 パーティションは一時的なもので、API は、パーティション キー ハッシュの範囲を表す "パーティション キー範囲" の抽象化を使用します。 
 
@@ -163,7 +163,7 @@ Azure Cosmos DB では、通常、最も実行時間が短く、効率的なク�
 
 すべてのパーティションを参照する必要があるクエリでは、待ち時間が長くなり、使用する RU 数が多くなります。 各パーティションは、すべてのプロパティに対して自動インデックス作成機能があるため、この場合、インデックスからクエリを効率的に実行できます。 並行処理オプションを使用すると、複数のパーティションにまたがってクエリを実行できます。
 
-パーティション分割とパーティション キーの詳細については、「[Azure Cosmos DB のパーティション分割](partition-data.md)」をご覧ください。
+パーティション分割とパーティション キーの詳細については、「[Azure Cosmos DB のパーティション分割](partitioning-overview.md)」をご覧ください。
 
 ### <a name="sdk-and-query-options"></a>SDK とクエリのオプション
 Azure Cosmos DB でクライアント側のパフォーマンスを最適化する方法については、「[パフォーマンスに関するヒント](performance-tips.md)」と「[パフォーマンス テスト](performance-testing.md)」を参照してください。 これには、最新の SDK を使用する、既定の接続数、ガベージ コレクション頻度などのプラットフォーム固有の構成を設定すること、Direct/TCP などの軽量な接続オプションを使用することが含まれます。 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514239"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143234"
 ---
 # <a name="upstream-settings"></a>アップストリームの設定
 
@@ -88,7 +88,7 @@ http://host.com/chat/api/messages/broadcast
 
 ## <a name="create-upstream-settings-via-resource-manager-template"></a>Resource Manager テンプレートを使用してアップストリームの設定を作成する
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を使用してアップストリームの設定を作成するには、`properties` プロパティで `upstream` プロパティを設定します。 次のスニペットは、アップストリームの設定を作成および更新するために `upstream` プロパティを設定する方法を示しています。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用してアップストリームの設定を作成するには、`properties` プロパティで `upstream` プロパティを設定します。 次のスニペットは、アップストリームの設定を作成および更新するために `upstream` プロパティを設定する方法を示しています。
 
 ```JSON
 {

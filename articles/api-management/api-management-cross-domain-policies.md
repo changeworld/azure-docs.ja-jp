@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 77d9d20f3321aa5bb6c5ea47a3949a82bdd1ad75
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071236"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131243"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -45,9 +45,7 @@ ms.locfileid: "92071236"
 
 ```xml
 <cross-domain>
-    <cross-domain>
         <allow-http-request-headers-from domain='*' headers='*' />
-    </cross-domain>
 </cross-domain>
 ```
 

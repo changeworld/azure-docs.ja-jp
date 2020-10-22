@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 0398c035eeac7d02ac38f798cb58c513279fc709
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819999"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368657"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -185,6 +185,7 @@ spec:
 1. シークレットを取得するためのアクセス許可をサービス プリンシパルに付与します。
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
+    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
     ```
 
 1. これで、対象のキー コンテナーからシークレットを読み取るためのアクセス許可が付与されたサービス プリンシパルが構成されました。 **$AZURE_CLIENT_SECRET** は、対象のサービス プリンシパルのパスワードです。 シークレット ストア CSI ドライバーからアクセスできる Kubernetes シークレットとして、対象のサービス プリンシパルの資格情報を追加します。
@@ -214,8 +215,6 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
-
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
@@ -239,6 +238,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
+    az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
     ```
 
 ## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>キー コンテナーからマウントされたシークレットを使用してポッドをデプロイする
@@ -311,8 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:
-          name: secrets-store-creds 
+        nodePublishSecretRef:           # Only required when using service principal mode
+          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 次のコマンドを実行してポッドをデプロイします。

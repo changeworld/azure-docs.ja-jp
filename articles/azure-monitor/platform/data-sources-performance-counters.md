@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955490"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131192"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -156,7 +156,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +164,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
