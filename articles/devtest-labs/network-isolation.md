@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのネットワークの分離
 description: Azure DevTest Labs でのネットワークの分離について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875510"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149149"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs でのネットワークの分離
 
@@ -57,7 +57,7 @@ ms.locfileid: "88875510"
  
    > [!div class="mx-imgBorder"]
    > ![Contoso テスト](./media/network-isolation/contoso-test.png)
-1. ストレージ アカウントで、[ファイアウォールと仮想ネットワーク] にアクセスし、[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します] のチェックボックスをオンにします。 [DevTest Labs は信頼された Microsoft サービスである](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)ため、このオプションを使用すると、ラボをネットワーク分離モードで正常に動作させることができます。 
+1. ストレージ アカウントで、[ファイアウォールと仮想ネットワーク] にアクセスし、[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します] のチェックボックスをオンにします。 [DevTest Labs は信頼された Microsoft サービスである](../storage/common/storage-network-security.md#trusted-microsoft-services)ため、このオプションを使用すると、ラボをネットワーク分離モードで正常に動作させることができます。 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso ラボ ファイアウォール](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ ms.locfileid: "88875510"
 
 また、これらの手順を自動化して、複数のラボに対してこの設定を構成することもできます。 
 
-[PowerShell と CLI を使用して Azure Storage の既定のネットワーク アクセス ルールを管理する方法の詳細を確認する](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[PowerShell と CLI を使用して Azure Storage の既定のネットワーク アクセス ルールを管理する方法の詳細を確認する](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>ネットワーク分離モードでラボを使用するときに覚えておくべきこと
 
@@ -82,7 +82,7 @@ ms.locfileid: "88875510"
 
 ネットワーク分離ラボの内部で、ラボのストレージ アカウントに VHD をアップロードしてカスタム イメージを作成するなどの操作を行うために、ラボ所有者は、許可されているエンドポイントからストレージ アカウントへのアクセスを明示的に有効にする必要があります。 そのためには、仮想マシンを作成し、その仮想マシンからラボのストレージ アカウントに安全にアクセスできるようにします。 
 
-[仮想マシンから非公開でストレージ アカウントにアクセスする方法の詳細を確認する](../private-link/create-private-endpoint-storage-portal.md)
+[仮想マシンから非公開でストレージ アカウントにアクセスする方法の詳細を確認する](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>ラボからの使用状況データのエクスポート 
 

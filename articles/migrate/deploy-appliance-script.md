@@ -3,12 +3,12 @@ title: スクリプトを使用して Azure Migrate アプライアンスを設�
 description: スクリプトを使用して Azure Migrate アプライアンスを設定する方法について
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438925"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317327"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>スクリプトを使用してアプライアンスを設定する
 
@@ -16,7 +16,7 @@ ms.locfileid: "91438925"
 
 VMware および Hyper-V VM 用のアプライアンスをデプロイするには、スクリプトを使用するか、または Azure portal からダウンロードしたテンプレートを使用します。 ダウンロードしたテンプレートを使用して VM を作成できない場合は、スクリプトを使用する方法が有用です。
 
-- テンプレートを使用するには、[VMware](tutorial-prepare-vmware.md) または [Hyper-V](tutorial-prepare-hyper-v.md) のチュートリアルに従ってください。
+- テンプレートを使用するには、[VMware](./tutorial-discover-vmware.md) または [Hyper-V](./tutorial-discover-hyper-v.md) のチュートリアルに従ってください。
 - 物理サーバー用のアプライアンスを設定する場合は、スクリプトのみ使用できます。 [こちらの記事](how-to-set-up-appliance-physical.md)に従ってください。
 - Azure Government クラウドでアプライアンスを設定するには、[こちらの記事](deploy-appliance-script-government.md)に従ってください。
 

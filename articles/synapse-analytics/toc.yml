@@ -44,8 +44,6 @@
       href: quickstart-create-workspace-powershell.md
     - name: テンプレートを使用したデプロイ
       href: quickstart-deployment-template-workspaces.md
-    - name: Synapse Studio を使用する
-      href: quickstart-synapse-studio.md
     - name: Power BI ワークスペースをリンクする
       href: quickstart-power-bi.md
     - name: プールを作成する
@@ -250,7 +248,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: アーキテクチャ
+            - name: Architecture
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md

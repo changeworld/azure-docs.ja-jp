@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568099"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282296"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -57,6 +57,7 @@ ms.locfileid: "91568099"
 |フィリピン語|  `fil`   |
 |フィンランド語|   `fi`    |
 |フランス語|    `fr`    |
+|フランス語 (カナダ)|   `fr-ca` |
 |ドイツ語|    `de`    |
 |ギリシャ語| `el`    |
 |グジャラート語|  `gu`    |
@@ -364,6 +365,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 |英語|
 |フィンランド語|
 |フランス語|
+|フランス語 (カナダ)|
 |ドイツ語|
 |グジャラート語|
 |ヒンディー語|
@@ -401,6 +403,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 |英語|
 |フィンランド語|
 |フランス語|
+|フランス語 (カナダ)|
 |ドイツ語|
 |ギリシャ語|
 |ヘブライ語|

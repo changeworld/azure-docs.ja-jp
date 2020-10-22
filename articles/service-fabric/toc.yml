@@ -108,7 +108,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: Security
+    - name: セキュリティ
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -140,7 +140,7 @@
       href: service-fabric-application-scenarios.md
     - name: Architecture
       href: service-fabric-architecture.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric クラスターのセキュリティ
           href: service-fabric-cluster-security.md
-        - name: 組み込みのセキュリティ制御
-          href: service-fabric-security-controls.md
         - name: Service Fabric での証明書ベースの認証
           href: cluster-security-certificates.md
         - name: Service Fabric での証明書管理

@@ -93,7 +93,7 @@
 - name: リファレンス
   items:
     - name: REST API のドキュメント
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: 呼び出し元ライブラリ (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: 呼び出し元ライブラリ (JS)

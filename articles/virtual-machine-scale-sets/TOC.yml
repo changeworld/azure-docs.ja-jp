@@ -203,8 +203,6 @@
           href: disk-encryption-overview.md
         - name: Azure セキュリティ ベースライン
           href: security-baseline.md
-        - name: 組み込みのセキュリティ制御
-          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: 監視
       href: ../azure-monitor/insights/monitor-vm-azure.md
