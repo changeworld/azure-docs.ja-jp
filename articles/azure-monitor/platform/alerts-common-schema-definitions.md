@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330878"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105993"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
-この記事では、Azure Monitor や、Webhooks、Azure Logic Apps、Azure Functions、Azure Automation Runbook の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
+この記事では、Azure Monitor や、Webhooks、Azure Logic Apps、Azure Functions、Azure Automation Runbook の[共通アラート スキーマ定義](./alerts-common-schema.md)について説明します。 
 
 すべてのアラート インスタンスでは、影響を受けたリソースおよびアラートの原因が記述されています。 これらのインスタンスは、共通スキーマの以下のセクションに記述されています。
 * **要点**: すべてのアラートの種類において共通の一連の標準化されたフィールド。これらのフィールドでは、アラート対象のリソースと、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
@@ -541,5 +541,5 @@ ms.locfileid: "91330878"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)について学習します。
-- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](./alerts-common-schema-integrations.md)について学習します。 
+- [共通アラート スキーマ](./alerts-common-schema.md)について学習します。
+- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](./alerts-common-schema-integrations.md)について学習します。

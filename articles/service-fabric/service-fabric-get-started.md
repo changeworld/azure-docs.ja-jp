@@ -5,19 +5,19 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 8665b49aebcb99ef3d3ded17e7e7653027aba21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651637"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316641"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
+> * [Mac OS X](service-fabric-get-started-mac.md)
 >
 >
 
@@ -94,8 +94,9 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 
 * [アプリケーションを作成、デプロイ、および管理する方法](service-fabric-tutorial-create-dotnet-app.md)
 * [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
-* [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
+* [GitHub での Service Fabric コード サンプルの確認](/samples/browse/?products=azure)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+* [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"

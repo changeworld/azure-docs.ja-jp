@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090282"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317373"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
@@ -126,7 +126,7 @@ Visual Studio、Azure DevOps、またはその他のソース管理および自�
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>コンテンツ タイプ、変換の処理
 
-Azure Logic Apps [ワークフロー定義言語](https://aka.ms/logicappsdocs)でさまざまな関数を使用して、複数のコンテンツ タイプにアクセスしたり、そのコンテンツ タイプを変換したりできます。 たとえば、文字列、JSON、および XML を、`@json()` および `@xml()` ワークフロー式に変換することができます。 Logic Apps エンジンではコンテンツ タイプが保持され、サービス間での無損失のコンテンツ転送がサポートされます。
+Azure Logic Apps [ワークフロー定義言語](./logic-apps-workflow-definition-language.md)でさまざまな関数を使用して、複数のコンテンツ タイプにアクセスしたり、そのコンテンツ タイプを変換したりできます。 たとえば、文字列、JSON、および XML を、`@json()` および `@xml()` ワークフロー式に変換することができます。 Logic Apps エンジンではコンテンツ タイプが保持され、サービス間での無損失のコンテンツ転送がサポートされます。
 
 * [Azure Logic Apps における各種コンテンツの扱い](../logic-apps/logic-apps-content-type.md) (`application/`、`application/octet-stream`、`multipart/formdata` など)
 * [Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド](../logic-apps/workflow-definition-language-functions-reference.md)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9457323b2642d0e7c5a623c13ec8440520bd5b8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88891778"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207514"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>チュートリアル:Remote Rendering を HoloLens Holographic アプリに統合する
 
@@ -33,7 +33,7 @@ ms.locfileid: "88891778"
 * アカウント情報 (アカウント ID、アカウント キー、サブスクリプション ID)。 アカウントをお持ちでない場合は、[アカウントを作成](../../../how-tos/create-an-account.md)してください。
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)。
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)。
-* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
+* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Visual Studio 用の Windows Mixed Reality アプリ テンプレート [(ダウンロード)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX)。

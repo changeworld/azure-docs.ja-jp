@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85081074"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317138"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure への移行について多数の物理サーバーを評価する
 
@@ -30,7 +30,7 @@ ms.locfileid: "85081074"
 
 
 > [!NOTE]
-> 大規模な評価を行う前に、いくつかのサーバーを評価して概念実証を試す場合は、[チュートリアル シリーズ](tutorial-prepare-physical.md)に従ってください。
+> 大規模な評価を行う前に、いくつかのサーバーを評価して概念実証を試す場合は、[チュートリアル シリーズ](./tutorial-discover-physical.md)に従ってください。
 
 ## <a name="plan-for-assessment"></a>評価の計画
 
@@ -64,7 +64,7 @@ ms.locfileid: "85081074"
 2. Azure Migrate とやり取りするために、自分の Azure アカウントのアクセス許可を設定します。
 3. 物理サーバーを準備します。
 
-[このチュートリアル](tutorial-prepare-physical.md)の手順に従って、これらの設定を構成します。
+[このチュートリアル](./tutorial-discover-physical.md)の手順に従って、これらの設定を構成します。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 

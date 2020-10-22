@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77523038"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104378"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -36,7 +36,7 @@ ms.locfileid: "77523038"
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
-[拡張機能の更新]: ./install-update-binding-extensions-manual.md
+[拡張機能の更新]: ./functions-bindings-register.md
 [Azure Tools 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 SignalR Service と Azure Functions を構成して一緒に使用する方法の詳細については、「[Azure Functions development and configuration with Azure SignalR Service (Azure SignalR Service を使用した Azure Functions の開発と構成)](../azure-signalr/signalr-concept-serverless-development-config.md)」を参照してください。
@@ -56,4 +56,4 @@ SignalR Service の注釈を Java 関数で使用するには、*azure-functions
 ## <a name="next-steps"></a>次のステップ
 
 - [サービス エンドポイント URL とアクセス トークンを返す (入力バインド)](./functions-bindings-signalr-service-input.md)
-- [SignalR Service メッセージを送信する (出力バインド)](./functions-bindings-signalr-service-output.md) 
+- [SignalR Service メッセージを送信する (出力バインド)](./functions-bindings-signalr-service-output.md)

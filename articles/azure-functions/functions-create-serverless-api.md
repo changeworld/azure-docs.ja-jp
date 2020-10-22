@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083023"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104752"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
@@ -75,7 +75,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
 - [Azure App Service](../app-service/overview.md) 内の API アプリ
-- [App Service on Linux](../app-service/containers/app-service-linux-intro.md) 内の Docker コンテナー
+- [App Service on Linux](../app-service/overview.md#app-service-on-linux) 内の Docker コンテナー
 - その他のホストされている API
 
 プロキシについて詳しくは、「[Azure Functions プロキシの操作]」をご覧ください。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5e52c09e6fc3d5e3d4210e213e0eb6af4e473559
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978022"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205032"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -750,7 +750,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [Azure Automation の概要](../../automation/automation-intro.md)
 
-* [Change Tracking ソリューションを使用して環境内の変更を追跡する](../../automation/change-tracking.md)
+* [Change Tracking ソリューションを使用して環境内の変更を追跡する](../../automation/change-tracking/overview.md)
 
 * [Azure Automation State Configuration の概要](../../automation/automation-dsc-overview.md)
 

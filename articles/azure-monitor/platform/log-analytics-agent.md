@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c09b50272ce73fe084e84d49be7d9d81cbe725aa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310001"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207140"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
@@ -51,7 +51,7 @@ Log Analytics エージェントには料金はかかりませんが、取り込
 Log Analytics エージェントは、データを Azure Monitor の Log Analytics ワークスペースに送信します。 Windows エージェントをマルチホーム化して、複数のワークスペースおよび System Center Operations Manager 管理グループにデータを送信できます。 Linux エージェントでは、ワークスペース、管理グループのどちらか 1 つの宛先にのみ送信できます。
 
 ## <a name="other-services"></a>その他のサービス
-Linux および Windows 用のエージェントは、Azure Monitor に接続するためだけのものではありません。 Azure Security Center や Azure Sentinel などの他のサービスは、エージェントと、その接続されている Log Analytics ワークスペースに依存します。 エージェントでは Azure Automation もサポートされており、Hybrid Runbook Worker ロールや、[Change Tracking](../../automation/change-tracking.md)、[Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
+Linux および Windows 用のエージェントは、Azure Monitor に接続するためだけのものではありません。 Azure Security Center や Azure Sentinel などの他のサービスは、エージェントと、その接続されている Log Analytics ワークスペースに依存します。 エージェントでは Azure Automation もサポートされており、Hybrid Runbook Worker ロールや、[Change Tracking](../../automation/change-tracking/overview.md)、[Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
 ## <a name="workspace-and-management-group-limitations"></a>ワークスペースと管理グループの制限事項
 
@@ -148,4 +148,3 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 * [データ ソース](agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。
-

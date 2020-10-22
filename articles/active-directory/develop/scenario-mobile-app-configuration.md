@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442753"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204220"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
@@ -160,7 +160,7 @@ Xamarin.iOS のブローカー認証を有効にするには、この記事の [
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>Android 向け MSAL に対するブローカーの有効化
 
-Android でブローカーを有効にする方法の詳細については、「[Android のブローカー認証](brokered-auth.md)」を参照してください。
+Android でブローカーを有効にする方法の詳細については、「[Android のブローカー認証](msal-android-single-sign-on.md)」を参照してください。
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL に対するブローカーの有効化
 

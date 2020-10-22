@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373370"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105041"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "87373370"
 Java および IntelliJ で関数を開発するには、次のソフトウェアをインストールします。
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-+ [Azure でサポートされている Java 8 用の Java Development Kit (JDK)](https://aka.ms/azure-jdks)
++ [Azure でサポートされている Java 8 用の Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition または Community Edition がインストールされていること
 + [Maven 3.5.0 以降](https://maven.apache.org/download.cgi)
 + 最新の [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)

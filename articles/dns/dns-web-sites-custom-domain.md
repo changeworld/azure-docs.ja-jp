@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252886"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316391"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -38,12 +38,9 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 > * カスタム ホスト名の Web アプリへの追加
 > * カスタム ホスト名のテスト
 
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -56,6 +53,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    2. ゾーンを Azure DNS に委任するには、[DNS ドメインの委任](dns-delegate-domain-azure-dns.md)に関する記事の手順に従います。
 
 ゾーンを作成し、それを Azure DNS に委任したら、カスタム ドメインのレコードを作成できます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>A レコードと TXT レコードの作成
 

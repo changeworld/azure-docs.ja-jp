@@ -3,14 +3,14 @@ title: Azure Automation への Windows Hybrid Runbook Worker のデプロイ
 description: この記事では、お使いのローカル データ センターまたはクラウド環境内の Windows ベースのマシン上で Runbook を実行するために使用できる Hybrid Runbook Worker をデプロイする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/20/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a03d14fa272f5f86af1caf0ce9537bbb186d13cc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660514"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204521"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -28,7 +28,7 @@ Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークス
 
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
 
-ワークスペースはあっても、それが Automation アカウントにリンクされていない場合は、Automation の機能を有効にすると、Hybrid Runbook Worker のサポートを含む Azure Automation の機能が追加されます。 Log Analytics ワークスペースで Azure Automation 機能のいずれかを有効にすると (具体的には、[Update Management](update-management/update-mgmt-overview.md) または[変更履歴とインベントリ](change-tracking.md))、worker コンポーネントがエージェント マシンに自動的にプッシュされます。
+ワークスペースはあっても、それが Automation アカウントにリンクされていない場合は、Automation の機能を有効にすると、Hybrid Runbook Worker のサポートを含む Azure Automation の機能が追加されます。 Log Analytics ワークスペースで Azure Automation 機能のいずれかを有効にすると (具体的には、[Update Management](update-management/update-mgmt-overview.md) または[変更履歴とインベントリ](change-tracking/overview.md))、worker コンポーネントがエージェント マシンに自動的にプッシュされます。
 
 > [!NOTE]
 > Update Management または変更履歴とインベントリ機能を有効にすると、Azure Automation では、Log Analytics ワークスペースと Automation アカウントのリンクに特定のリージョンのみがサポートされます。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。 いずれの機能でも有効にする前に、Azure Automation の [Azure の価格](https://azure.microsoft.com/pricing/details/automation/)情報を確認します。
@@ -175,7 +175,7 @@ Heartbeat
 
 検索結果には、マシンのハートビート レコードが表示されます。これにより、エージェントがサービスに接続され、レポートが送信されていることが示されます。 既定では、各エージェントからその割り当て済みのワークスペースにハートビート レコードが転送されます。 エージェントのインストールとセットアップを完了するには、次の手順を使用します。
 
-1. エージェント マシンを追加するには、この機能を有効にします。 Update Management と Azure VM については、「[Automation アカウントから Update Management を有効にする](update-management/update-mgmt-enable-automation-account.md)」、[Azure portal を参照して Update Management を有効にする方法](update-management/update-mgmt-enable-portal.md)に関するページ、「[Runbook から Update Management を有効にする](update-management/update-mgmt-enable-runbook.md)」、または「[Azure VM から Update Management を有効にする](update-management/update-mgmt-enable-vm.md)」を参照してください。 変更履歴と VM については「[Azure VM の有効化](automation-enable-changes-from-auto-acct.md#enable-azure-vms)」を、Azure 以外の VMについては「[ワークスペースでのマシンの有効化](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)」を参照してください。
+1. エージェント マシンを追加するには、この機能を有効にします。 Update Management と Azure VM については、「[Automation アカウントから Update Management を有効にする](update-management/update-mgmt-enable-automation-account.md)」、[Azure portal を参照して Update Management を有効にする方法](update-management/update-mgmt-enable-portal.md)に関するページ、「[Runbook から Update Management を有効にする](update-management/update-mgmt-enable-runbook.md)」、または「[Azure VM から Update Management を有効にする](update-management/update-mgmt-enable-vm.md)」を参照してください。 変更履歴と VM については「[Azure VM の有効化](change-tracking/enable-from-automation-account.md#enable-azure-vms)」を、Azure 以外の VMについては「[ワークスペースでのマシンの有効化](change-tracking/enable-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 
 2. Hybrid Runbook Worker のバージョンを確認するには、`C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` を参照し、**version** サブフォルダーを確認します。
 
@@ -214,7 +214,7 @@ Runbook は、Azure Automation 環境にインストールされているモジ�
 
 Hybrid Runbook Worker の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュール (特に `PowerShellGet` モジュール) をインストールする必要があります。 Windows PowerShell モジュールのインストールについては、「[Windows PowerShell](/powershell/scripting/developer/windows-powershell)」を参照してください。
 
-インストールされるモジュールは `PSModulePath` 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[PSModulePath にモジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)」を参照してください。
+インストールされるモジュールは `PSModulePath` 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[PSModulePath にモジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>オンプレミスの Windows マシンから Hybrid Runbook Worker を削除する
 

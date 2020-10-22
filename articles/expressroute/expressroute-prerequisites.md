@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569630"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204794"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -34,14 +34,14 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 * **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで[ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。 一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
 * **NAT**:Microsoft では、パブリック IP アドレスのみを Microsoft ピアリング経由で受け入れます。 オンプレミス ネットワークでプライベート IP アドレスを使用している場合、自社またはプロバイダーで [NAT を使用して](expressroute-nat.md)プライベート IP アドレスをパブリック IP アドレスに変換する必要があります。
 * **QoS**:Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。 自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。
-* **ネットワーク セキュリティ**: ExpressRoute を介して Microsoft Cloud に接続する場合は、[ネットワーク セキュリティ](../best-practices-network-security.md)について考慮してください。
+* **ネットワーク セキュリティ**: ExpressRoute を介して Microsoft Cloud に接続する場合は、[ネットワーク セキュリティ](/azure/cloud-adoption-framework/reference/networking-vdc)について考慮してください。
 
 ## <a name="microsoft-365"></a>Microsoft 365
 ExpressRoute で Microsoft 365 を有効にする予定がある場合は、以下のドキュメントで Microsoft 365 の要件の詳細について確認してください。
 
 * [Microsoft 365 向け Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [Microsoft 365 向け ExpressRoute を使用したルーティング](/microsoft-365/enterprise/routing-with-expressroute)
-* [ExpressRoute による高可用性とフェールオーバー](https://aka.ms/erhighavailability)
+* [ExpressRoute による高可用性とフェールオーバー](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [Microsoft 365 URL および IP アドレス範囲](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Microsoft 365 のネットワーク計画とパフォーマンスのチューニング](/microsoft-365/enterprise/network-planning-and-performance)
 * [Microsoft 365 のネットワークおよび移行の計画](/microsoft-365/enterprise/network-and-migration-planning)

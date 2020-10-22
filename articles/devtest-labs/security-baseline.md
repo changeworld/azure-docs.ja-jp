@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398324"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207293"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -264,7 +264,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 **ガイダンス:** 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-- [タグを作成して使用する方法](../azure-resource-manager/resource-group-using-tags.md)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -273,10 +273,10 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 **ガイダンス:** 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure DevTest Labs のインスタンスは、仮想ネットワークとサブネットで分離し、適切にタグ付けする必要があります。 
 
-- [追加の Azure サブスクリプションを作成する方法](../billing/billing-create-subscription.md)
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 - [DevTest Labs の仮想ネットワークを構成する方法](devtest-lab-configure-vnet.md)
-- [タグを作成して使用する方法](../azure-resource-manager/resource-group-using-tags.md)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 - [DevTest Labs のタグを作成して使用する方法](devtest-lab-add-tag.md)
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -380,7 +380,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **ガイダンス:** DevTest Labs 内でホストされている Windows および Linux VM に最新のセキュリティ更新プログラムが確実にインストールされるようにするには、Azure Update Management を使用します。 Windows VM については、Windows Update が有効になっていて、自動的に更新するよう設定されていることを確認します。 現在、この設定は DevTest Labs を通じて構成することはできませんが、ラボ管理者またはサブスクリプション管理者は、サブスクリプション内の基になるコンピューティング VM でこの設定を構成できます。 
 
 - [Azure で VM に対して Update Management を構成する方法](../automation/update-management/update-mgmt-overview.md)
-- [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/security-center-policy-definitions.md)
+- [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -444,7 +444,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **ガイダンス:** タグ付け、管理グループ、個別のサブスクリプション、および必要に応じて個別のラボを使用して、ラボやラボ関連のリソースを整理し、追跡することができます。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションからすばやく削除されるようにします。
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 - [DevTest Labs を使用してラボを作成する方法](devtest-lab-create-lab.md)
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 - [ラボのタグを構成する方法](devtest-lab-add-tag.md)
@@ -493,7 +493,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **ガイダンス:** Azure Automation は、ワークロードとリソースの展開、運用、および使用停止を完全に制御します。 サブスクリプション管理者は、Change Tracking を使用して、DevTest Labs でホストされている VM にインストールされているすべてのソフトウェアを識別できます。 独自のプロセスを実装するか、Azure Automation State Configuration を使用して、承認されていないソフトウェアを削除できます。
 
 - [Azure Automation の概要](../automation/automation-intro.md)
-- [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking.md)
+- [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking/overview.md)
 - [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 
 **Azure Security Center の監視:** 利用不可
@@ -517,7 +517,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 次の記事をご覧ください。 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/not-allowed-resource-types.md)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視:** はい
 
@@ -559,7 +559,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 - [DevTest Labs の仮想ネットワークの構成](devtest-lab-configure-vnet.md)
 - [Azure Firewall の概要](../firewall/overview.md)
 - [Web アプリケーション ファイアウォールの概要](../web-application-firewall/overview.md)
-- [ネットワーク セキュリティの概要](../virtual-network/security-overview.md)
+- [ネットワーク セキュリティの概要](../virtual-network/network-security-groups-overview.md)
 - [Azure Virtual Network の概要]()
 - [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)
 - [サブスクリプション決定ガイド](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 また、Microsoft によって公開された Azure Marketplace の仮想マシン イメージは、Microsoft によって管理および維持されます。
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 - [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [DevTest Labs でイメージ ファクトリを作成する方法](image-factory-create.md)
@@ -629,8 +629,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 **ガイダンス:** カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) (Azure DevOps に統合されている場合) で定義された特定のユーザー、組み込みセキュリティ グループ、またはグループに対するアクセス許可を付与または拒否できます。
 
-- [Azure Repos Git チュートリアル](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [アクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git チュートリアル](/azure/devops/repos/git/gitworkflow)
+- [アクセス許可とグループについて](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Azure DevTest Labs と Azure DevOps ワークフローの統合](devtest-lab-dev-ops.md)
 
 **Azure Security Center の監視:** 適用なし
@@ -681,7 +681,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 **ガイダンス:** Azure Security Center を使用して、コンテナーの OS と Docker の設定のベースライン スキャンを実行します。
 
-- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/security-center-container-recommendations.md)
+- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -692,7 +692,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 - [マネージド ID を構成して DevTest Labs に Azure Resource Manager 環境をデプロイする](use-managed-identities-environments.md)
 - [マネージド ID を構成して DevTest Labs に仮想マシンをデプロイする](enable-managed-identities-lab-vms.md)
-- [キー コンテナーを作成する方法](../key-vault/quick-create-portal.md)
+- [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 - [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
 - [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 

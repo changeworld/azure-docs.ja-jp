@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: 41bb72ba4c220a0dd2ebb93f2bd313a15d108faa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9dda384e2ef30808559d10012dea2909b2af0fd
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856281"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206936"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>チュートリアル:CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -35,13 +35,13 @@ ms.locfileid: "91856281"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
 * アクティブな ExpressRoute 回線が必要です。 
   * 手順に従って、 [ExpressRoute 回線を作成](howto-circuit-cli.md) し、接続プロバイダー経由で回線を有効にしてください。 
   * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](howto-routing-cli.md) に関する記事を参照してください。 
   * Azure プライベート ピアリングが構成されていることを確認します。 また、エンドツーエンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを確立しておく必要があります。
-  * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)します。 `--gateway-type ExpressRoute` を使用してください。
+  * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを構成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)します。 `--gateway-type ExpressRoute` を使用してください。
 * 最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。 標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。 
 * 単一の VNet を最大 4 つの ExpressRoute 回線にリンクできます。 次のプロセスを使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクすることができます。 Premium アドオンを使用すると、選択した帯域幅に応じて、10 を超える仮想ネットワークを ExpressRoute 回線に接続することもできます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。

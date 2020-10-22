@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650478"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207531"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -188,11 +188,11 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) 認証
 
-AAD 認証を使用すると、ARR を使用している個人またはグループをより制御された方法で特定することができます。 ARR には、アカウント キーを使用する代わりに、[アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)を受け入れるためのサポートが組み込まれています。 アクセス トークンは、期限付きのユーザー固有キーと考えることができます。そのキーによって解放されるのは、それを必要とする特定のリソースの特定の領域に限られます。
+AAD 認証を使用すると、ARR を使用している個人またはグループをより制御された方法で特定することができます。 ARR には、アカウント キーを使用する代わりに、[アクセス トークン](../../../../active-directory/develop/access-tokens.md)を受け入れるためのサポートが組み込まれています。 アクセス トークンは、期限付きのユーザー固有キーと考えることができます。そのキーによって解放されるのは、それを必要とする特定のリソースの特定の領域に限られます。
 
 **RemoteRenderingCoordinator** スクリプトには、**ARRCredentialGetter** という名前のデリゲートがあり、**AzureFrontendAccountInfo** オブジェクトを返すメソッドを保持しています。これは、リモート セッション管理の構成に使用されます。 **ARRCredentialGetter** に別のメソッドを割り当て、Azure サインイン フローを使用できるようにすることで、Azure アクセス トークンを含んだ **AzureFrontendAccountInfo** オブジェクトを生成できます。 このアクセス トークンは、サインインするユーザーに固有の情報です。
 
-1. [認証の構成方法に関するページの「デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従います。具体的には、Azure Spatial Anchors のドキュメント「[Azure AD ユーザー認証](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)」に記載された手順に従うことになります。 これには、新しい Azure Active Directory アプリケーションの登録や、ARR インスタンスへのアクセスの構成が含まれます。
+1. [認証の構成方法に関するページの「デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従います。具体的には、Azure Spatial Anchors のドキュメント「[Azure AD ユーザー認証](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)」に記載された手順に従うことになります。 これには、新しい Azure Active Directory アプリケーションの登録や、ARR インスタンスへのアクセスの構成が含まれます。
 1. 新しい AAD アプリケーションを構成したら、AAD アプリケーションが次の画像のようになっていることを確認します。
 
     **[AAD アプリケーション] -> [認証]** ![アプリの認証](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 
 このコードはまず、**AquireTokenSilent** を使用してサイレントにトークンを取得しようと試みます。 ユーザーが以前にこのアプリケーションに対する認証が完了していれば、成功となります。 成功しなかった場合、よりユーザーを巻き込んだ手法がとられます。
 
-このコードでは、[デバイス コード フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)を使用してアクセス トークンを取得します。 このフローによって、ユーザーはその Azure アカウントにコンピューターまたはモバイル デバイスでサインインし、得られたトークンを HoloLens アプリケーションに送り返すことができます。
+このコードでは、[デバイス コード フロー](../../../../active-directory/develop/v2-oauth2-device-code.md)を使用してアクセス トークンを取得します。 このフローによって、ユーザーはその Azure アカウントにコンピューターまたはモバイル デバイスでサインインし、得られたトークンを HoloLens アプリケーションに送り返すことができます。
 
 ARR の観点から見て、このクラスの最も重要な部分は次の行です。
 

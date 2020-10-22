@@ -3,12 +3,12 @@ title: Azure Migrate で評価ツールを追加する
 description: Azure Migrate で評価ツールを追加する方法について説明します。
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dee9ec2210bf6e04255b07cf641ced6807c8b5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86122117"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317364"
 ---
 # <a name="add-assessment-tools"></a>評価ツールの追加
 
@@ -60,4 +60,4 @@ ms.locfileid: "86122117"
 
 ## <a name="next-steps"></a>次のステップ
 
-[VMware](tutorial-prepare-vmware.md) VM、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)の Azure Migrate Server Assessment を使用した評価を試みます
+[VMware](./tutorial-discover-vmware.md) VM、[Hyper-V](./tutorial-discover-hyper-v.md)、または[物理サーバー](./tutorial-discover-physical.md)の Azure Migrate Server Assessment を使用した評価を試みます

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401420"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206290"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>パブリック ピアリングを Microsoft ピアリングに移行する
 
@@ -31,7 +31,7 @@ Microsoft ピアリングに接続するには、NAT を設定および管理す
 > [!Warning]
 > Microsoft にアドバタイズされる NAT IP プールはインターネットにアドバタイズしないでください。 他の Microsoft サービスへの接続が切断されます。
 
-Microsoft ピアリングを構成する前に、「[複数のネットワーク パスを使用した非対称ルーティング](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)」で、非対称ルーティングの注意事項を参照してください。
+Microsoft ピアリングを構成する前に、「[複数のネットワーク パスを使用した非対称ルーティング](./expressroute-asymmetric-routing.md)」で、非対称ルーティングの注意事項を参照してください。
 
 * パブリック ピアリングを使用していて、[Azure Storage](../storage/common/storage-network-security.md) または [Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md) へのアクセスに使用されるパブリック IP アドレスの IP ネットワーク ルールが現在ある場合は、Azure Storage アカウントまたは Azure SQL アカウントのパブリック IP アドレスの一覧に、Microsoft ピアリングを使用して構成された NAT IP プールを含める必要があります。<br>
 * ダウンタイムなしで Microsoft ピアリングに移行するには、この記事の手順をそれらが示されている順序で実行します。

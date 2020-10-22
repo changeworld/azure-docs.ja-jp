@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff69486ab24c999e40b0afc13c91d6f729c352a0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023773"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206562"
 ---
 # <a name="models"></a>モデル
 
@@ -120,10 +120,10 @@ ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<E
 
 ## <a name="api-documentation"></a>API のドキュメント
 
-* [C# RemoteManager.LoadModelAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
-* [C# RemoteManager.LoadModelFromSASAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
-* [C++ RemoteManager::LoadModelAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
-* [C++ RemoteManager::LoadModelFromSASAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
+* [C# RemoteManager.LoadModelAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager.LoadModelFromSASAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager::LoadModelAsync()](/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager::LoadModelFromSASAsync()](/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>次のステップ
 

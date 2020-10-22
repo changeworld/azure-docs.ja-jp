@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: df03fc3049deaf5ce57fda74ca98c748ace1fbbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930937"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206409"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Azure Automanage for virtual machines のベスト プラクティス
 
@@ -32,7 +32,7 @@ Automanage for virtual machines を使用すると、このような Azure サ�
 |Azure Security Center    |Azure Security Center は統合されたインフラストラクチャ セキュリティ管理システムであり、データ センターのセキュリティ体制を強化し、クラウド内のハイブリッド ワークロード全体にわたる高度な脅威保護が提供されます。 [詳細情報](../security-center/security-center-intro.md)。  VM が存在するサブスクリプションは、Automanage によって、Azure Security Center の Free レベルのオファリングに構成されます。 サブスクリプションが Azure Security Center に既にオンボードされている場合、自動管理ではサブスクリプションは再構成されません。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 |Microsoft Antimalware    |Azure に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 [詳細情報](../security/fundamentals/antimalware.md)。 |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |Yes    |
 |更新管理    |Azure Automation の Update Management を使用して、仮想マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。 [詳細情報](../automation/update-management/update-mgmt-overview.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
-|変更履歴とインベントリ    |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。  [詳細情報](../automation/change-tracking.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
+|変更履歴とインベントリ    |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。  [詳細情報](../automation/change-tracking/overview.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 |Azure Automation アカウント    |Azure Automation は、インフラストラクチャとアプリケーションのライフサイクル全体にわたる管理をサポートします。 [詳細情報](../automation/automation-intro.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 |Log Analytics ワークスペース    |Azure Monitor では、ログ データが Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは Azure リソースであり、データが収集、集計され、管理境界として機能するコンテナーです。 [詳細情報](../azure-monitor/platform/design-logs-deployment.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300104"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104140"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -243,7 +243,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 **テーブル レベルの RBAC** では他のアクセス許可に加えて、Log Analytics ワークスペースのデータをさらにきめ細かく定義できます。 この制御を使用すると、特定のユーザーのグループのみがアクセスできる特定のデータ型を定義できます。
 
-[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を使用したテーブル アクセス制御を実装して、ワークスペース内の特定の[テーブル](../log-query/logs-structure.md)に対するアクセスを付与します。 これらのロールは、ユーザーの[アクセス モード](design-logs-deployment.md#access-mode)とは関係なく、ワークスペースコンテキストまたはリソースコンテキストどちらかの[アクセス制御モード](design-logs-deployment.md#access-control-mode)のワークスペースに適用されます。
+[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を使用したテーブル アクセス制御を実装して、ワークスペース内の特定の[テーブル](./data-platform-logs.md)に対するアクセスを付与します。 これらのロールは、ユーザーの[アクセス モード](design-logs-deployment.md#access-mode)とは関係なく、ワークスペースコンテキストまたはリソースコンテキストどちらかの[アクセス制御モード](design-logs-deployment.md#access-control-mode)のワークスペースに適用されます。
 
 次の操作の[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成して、テーブル アクセス制御を定義します。
 

@@ -99,7 +99,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
           href: troubleshoot-saml-based-sso.md
+        - name: SAML ベースのシングル サインオンをデバッグする
+          href: debug-saml-sso-issues.md
         - name: ユーザーのサインインをトラブルシューティングする
           items:
             - name: 予期しない同意プロンプト

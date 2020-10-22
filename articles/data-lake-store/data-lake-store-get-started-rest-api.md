@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857187"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103494"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
-この操作は、 [ここ](https://docs.microsoft.com/rest/api/datalakestore/accounts/create)で定義されている REST API 呼び出しをベースにしています。
+この操作は、 [ここ](/rest/api/datalakestore/accounts/create)で定義されている REST API 呼び出しをベースにしています。
 
 次の cURL コマンドを使用します。 **\<yourstoragegen1name>** を、自分の Data Lake Storage Gen1 名に置き換えます。
 
@@ -57,7 +57,7 @@ curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: applicati
 ```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの削除
-この操作は、 [ここ](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete)で定義されている REST API 呼び出しをベースにしています。
+この操作は、 [ここ](/rest/api/datalakestore/accounts/delete)で定義されている REST API 呼び出しをベースにしています。
 
 Data Lake Storage Gen1 アカウントを削除するには、次の cURL コマンドを使用します。 **\<yourstoragegen1name>** を、自分の Data Lake Storage Gen1 アカウント名に置き換えます。
 
@@ -77,6 +77,5 @@ HTTP/1.1 200 OK
 * [REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Data Lake Storage Gen1 REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage Gen1 REST API リファレンス](/rest/api/datalakestore/)
 * [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
-

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70279449"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317175"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure への移行のために多数の Hyper-V VM を評価する
 
@@ -30,7 +30,7 @@ ms.locfileid: "70279449"
 
 
 > [!NOTE]
-> 大規模な評価を行う前に、いくつかの VM を評価するための概念実証を試す場合は、[チュートリアル シリーズ](tutorial-prepare-hyper-v.md)に従ってください
+> 大規模な評価を行う前に、いくつかの VM を評価するための概念実証を試す場合は、[チュートリアル シリーズ](./tutorial-discover-hyper-v.md)に従ってください
 
 ## <a name="plan-for-assessment"></a>評価の計画
 
@@ -66,7 +66,7 @@ ms.locfileid: "70279449"
 2. Azure Migrate とやり取りするために、自分の Azure アカウントのアクセス許可を設定します
 3. Hyper-V ホストと VM を準備します
 
-[このチュートリアル](tutorial-prepare-hyper-v.md)の手順に従って、これらの設定を構成します。
+[このチュートリアル](./tutorial-discover-hyper-v.md)の手順に従って、これらの設定を構成します。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 

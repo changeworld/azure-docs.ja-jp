@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 01c0b6f280b8179760c6ecc55fd7feca3ddf2080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038921"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104242"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor ログ内の標準列
-Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに一連のレコードとして格納され](../log-query/logs-structure.md)、各レコードが固有の列のセットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準列があります。 この記事では、これらの列について説明し、それらの列をクエリで使用する方法の例を示します。
+Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに一連のレコードとして格納され](./data-platform-logs.md)、各レコードが固有の列のセットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準列があります。 この記事では、これらの列について説明し、それらの列をクエリで使用する方法の例を示します。
 
 Application Insights のワークスペース ベースのアプリケーションではデータを Log Analytics ワークスペースに格納し、ワークスペース内の他のテーブルと同じ標準列を使用します。 クラシック アプリケーションではデータを個別に格納し、この記事で指定されている別の標準列を使用します。
 
@@ -212,4 +212,3 @@ union withsource = tt *
 - [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
 - [ログ クエリの作成](../log-query/get-started-queries.md)に関するレッスンを参照する。
 - [ログ クエリでのテーブルの結合](../log-query/joins.md)に関するレッスンを参照する。
-

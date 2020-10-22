@@ -3,16 +3,17 @@ title: Azure Machine Learning の Azure セキュリティ ベースライン
 description: Azure Machine Learning のセキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461021"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204335"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -720,7 +721,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 - [ファイルの整合性の監視を使用する方法](../security-center/security-center-file-integrity-monitoring.md)
 
-- [Azure Automation Change Tracking と Inventory の概要](../automation/change-tracking.md)
+- [Azure Automation Change Tracking と Inventory の概要](../automation/change-tracking/overview.md)
 
 - [Azure 仮想マシンのインベントリを有効にする方法](../automation/automation-tutorial-installed-software.md)
 
