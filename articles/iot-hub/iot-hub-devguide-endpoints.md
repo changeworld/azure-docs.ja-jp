@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019565"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152176"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -95,7 +95,7 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 
 IoT ソリューションでは、*フィールド ゲートウェイ*はデバイスと IoT Hub エンドポイントの間に配置され、 通常はデバイスの近くにあります。 デバイスは、そのデバイスでサポートされているプロトコルを使用してフィールド ゲートウェイと直接通信します。 フィールド ゲートウェイは、IoT Hub でサポートされているプロトコルを使用して IoT Hub エンドポイントに接続します。 フィールド ゲートウェイは、専用のハードウェア デバイス、またはカスタム ゲートウェイ ソフトウェアを実行する低電力コンピューターの場合があります。
 
-[Azure IoT Edge](/azure/iot-edge/) を使用してフィールド ゲートウェイを実装できます。 IoT Edge には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などが用意されています。
+[Azure IoT Edge](../iot-edge/index.yml) を使用してフィールド ゲートウェイを実装できます。 IoT Edge には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などが用意されています。
 
 ## <a name="next-steps"></a>次のステップ
 

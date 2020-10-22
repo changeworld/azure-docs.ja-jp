@@ -86,7 +86,7 @@
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
-      href: resource-manager-samples.md
+      href: templates-samples-sql.md
 - name: 概念
   items:
     - name: NoSQL とリレーショナル データベース
@@ -99,31 +99,17 @@
         - name: 一貫性レベル
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: consistency-levels.md
-        - name: 適切な整合性レベルの選択
-          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-          href: consistency-levels-choosing.md
-        - name: 整合性レベルと Azure Cosmos DB API
-          href: consistency-levels-across-apis.md
-        - name: 整合性、可用性、パフォーマンスのトレードオフ
-          href: consistency-levels-tradeoffs.md
         - name: 高可用性
           href: high-availability.md
-        - name: プロビジョニングされたスループットのグローバルなスケーリング
-          displayName: 'request units, RUs, RU'
-          href: scaling-throughput.md
         - name: 競合のタイプと解決ポリシー
           displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: グローバル配信 - 内部のしくみ
           href: global-dist-under-the-hood.md
-        - name: リージョン プレゼンス
-          href: regional-presence.md
     - name: パーティション分割
       items:
-        - name: パーティション分割の概要
-          href: partitioning-overview.md
         - name: パーティション分割と水平スケーリング
-          href: partition-data.md
+          href: partitioning-overview.md
         - name: 合成パーティション キー
           href: synthetic-partition-keys.md
     - name: 容量
@@ -389,6 +375,9 @@
                     - name: LTRIM
                       displayName: 'LTRIM, left trim, built-in functions'
                       href: sql-query-ltrim.md
+                    - name: REGEXMATCH
+                      displayName: 'REGEXMATCH, built-in functions'
+                      href: sql-query-regexmatch.md
                     - name: REPLACE
                       displayName: 'REPLACE, built-in functions'
                       href: sql-query-replace.md
@@ -486,13 +475,11 @@
         - name: LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
-    - name: Azure Cosmos アカウントの使用
-      href: account-overview.md
+    - name: Azure Cosmos DB リソース モデル
+      displayName: 'collection, document'
+      href: account-databases-containers-items.md
     - name: コンテナーとアイテム
       items:
-        - name: データベース、コンテナー、アイテムの操作
-          displayName: 'collection, document'
-          href: databases-containers-items.md
         - name: モデル ドキュメント データ
           displayName: document
           href: modeling-data.md
@@ -564,12 +551,11 @@
         - name: プロビジョニング スループット コストの最適化
           displayName: 'request units, RUs, RU'
           href: optimize-cost-throughput.md
-        - name: クエリ コストの最適化
-          href: optimize-cost-queries.md
+        - name: 要求コストの最適化
+          displayName: 'request, cost, read, write, query, queries, RUs, RU'
+          href: optimize-cost-reads-writes.md
         - name: ストレージ コストの最適化
           href: optimize-cost-storage.md
-        - name: 読み取りと書き込みのコストの最適化
-          href: optimize-cost-reads-writes.md
         - name: マルチリージョンのコストの最適化
           href: optimize-cost-regions.md
         - name: 開発とテストのコストの最適化
@@ -577,7 +563,7 @@
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティの概要
           href: database-security.md
@@ -586,11 +572,6 @@
         - name: データへのアクセスをセキュリティで保護する
           displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
-        - name: IP ファイアウォール
-          href: firewall-support.md
-        - name: 仮想ネットワークからのアクセス
-          displayName: service endpoint
-          href: vnet-service-endpoint.md
         - name: サービス タグ
           href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: ロールベースのアクセス制御
@@ -605,8 +586,6 @@
           href: security-baseline.md
     - name: エンタープライズ対応
       items:
-        - name: オンラインのバックアップとオンデマンドの復元
-          href: online-backup-and-restore.md
         - name: コンプライアンス
           href: compliance.md
         - name: Azure Policy のサポート
@@ -663,6 +642,8 @@
               href: cassandra-partitioning.md
             - name: セカンダリ インデックス
               href: cassandra-secondary-index.md
+            - name: 整合性レベルのマッピング
+              href: cassandra-consistency.md
         - name: 操作方法ガイド
           items:
             - name: Cassandra API への移行
@@ -675,6 +656,14 @@
                   href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Change Feed
               href: cassandra-change-feed.md
+            - name: コンテナーの作成 - Cassandra API
+              href: how-to-create-container-cassandra.md
+            - name: スループットのプロビジョニング - Cassandra API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-cassandra.md
+            - name: 要求ユニット使用量を確認する
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-cassandra.md
             - name: Spring Data の格納と管理
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra と Spark
@@ -700,12 +689,12 @@
                 - name: テーブル データをコピーする
                   href: cassandra-spark-table-copy-ops.md
             - name: Resource Manager テンプレートを使用して管理する
-              href: manage-cassandra-with-resource-manager.md
+              href: templates-samples-cassandra.md
               displayName: ARM
             - name: PowerShell を使用して管理する
-              href: powershell-samples.md
+              href: powershell-samples-cassandra.md
             - name: Azure CLI を使用して管理する
-              href: cli-samples.md
+              href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
         - name: 概要
@@ -760,6 +749,8 @@
               href: mongodb-feature-support.md
             - name: よく寄せられる質問
               href: mongodb-api-faq.md
+            - name: 整合性レベルのマッピング
+              href: mongodb-consistency.md
         - name: 操作方法ガイド
           items:
             - name: MongoDB API への移行
@@ -793,18 +784,28 @@
               href: mongodb-change-streams.md
             - name: データのインデックス作成を管理する
               href: mongodb-indexing.md
+            - name: コンテナーの作成 - MongoDB API
+              href: how-to-create-container-mongodb.md
+            - name: スループットのプロビジョニング - MongoDB API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-mongodb.md
+            - name: 要求ユニット使用量を確認する
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-mongodb.md
+            - name: クエリ パフォーマンスのトラブルシューティング
+              href: mongodb-troubleshoot-query.md
             - name: Spring Data の格納と管理
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB 拡張コマンド
               href: mongodb-custom-commands.md
               displayName: custom commands
             - name: Resource Manager テンプレートを使用して管理する
-              href: manage-mongodb-with-resource-manager.md
+              href: templates-samples-mongodb.md
               displayName: ARM
             - name: PowerShell を使用して管理する
-              href: powershell-samples.md
+              href: powershell-samples-mongodb.md
             - name: Azure CLI を使用して管理する
-              href: cli-samples.md
+              href: cli-samples-mongodb.md
             - name: 一般的な問題のトラブルシューティング
               href: mongodb-troubleshoot.md
     - name: Gremlin API
@@ -838,6 +839,10 @@
           items:
             - name: よく寄せられる質問
               href: gremlin-api-faq.md
+            - name: 応答ヘッダー
+              href: gremlin-headers.md
+            - name: 制限
+              href: gremlin-limits.md
         - name: 操作方法ガイド
           items:
             - name: グラフ データのモデリング
@@ -848,6 +853,14 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin クエリの最適化
               href: graph-execution-profile.md
+            - name: コンテナーの作成 - Gremlin API
+              href: how-to-create-container-gremlin.md
+            - name: スループットのプロビジョニング - Gremlin API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-gremlin.md
+            - name: 要求ユニット使用量を確認する
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-gremlin.md
             - name: リソース トークンの使用
               href: how-to-use-resource-tokens-gremlin.md
             - name: リージョン エンドポイントの使用
@@ -859,12 +872,12 @@
             - name: Spring Data の格納と管理
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Resource Manager テンプレートを使用して管理する
-              href: manage-gremlin-with-resource-manager.md
+              href: templates-samples-gremlin.md
               displayName: ARM
             - name: PowerShell を使用して管理する
-              href: powershell-samples.md
+              href: powershell-samples-gremlin.md
             - name: Azure CLI を使用して管理する
-              href: cli-samples.md
+              href: cli-samples-gremlin.md
         - name: リファレンス
           items:
             - name: レスポンス ヘッダー
@@ -927,15 +940,20 @@
           items:
             - name: Table API によるアプリの構築
               href: table-support.md
+            - name: コンテナーの作成 - Table API
+              href: how-to-create-container-table.md
+            - name: 要求ユニット使用量を確認する
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-table.md
             - name: Table Storage の設計ガイド
               href: table-storage-design-guide.md
             - name: Resource Manager テンプレートを使用して管理する
-              href: manage-table-with-resource-manager.md
+              href: templates-samples-table.md
               displayName: ARM
             - name: PowerShell を使用して管理する
-              href: powershell-samples.md
+              href: powershell-samples-table.md
             - name: Azure CLI を使用して管理する
-              href: cli-samples.md
+              href: cli-samples-table.md
         - name: リファレンス
           items:
             - name: .NET
@@ -971,7 +989,7 @@
         - name: Azure CLI の使用
           href: manage-with-cli.md
         - name: Resource Manager テンプレートの使用
-          href: manage-sql-with-resource-manager.md
+          href: manage-with-templates.md
           displayName: ARM
         - name: リージョン間の移動
           href: how-to-move-regions.md
@@ -1018,7 +1036,7 @@
               href: storage-explorer.md
             - name: Azure Cosmos Explorer を使ってデータを操作する
               href: data-explorer.md
-        - name: コンテナーを作成する
+        - name: コンテナーの作成 - SQL API
           href: how-to-create-container.md
         - name: 大規模なパーティション キーを備えたコンテナーを作成する
           href: large-partition-keys.md
@@ -1038,6 +1056,8 @@
           href: how-to-define-unique-keys.md
     - name: パフォーマンス
       items:
+        - name: 接続モード
+          href: sql-sdk-connection-modes.md
         - name: クエリ
           items:
             - name: クエリ実行メトリックの取得
@@ -1102,16 +1122,12 @@
               href: troubleshoot-java-async-sdk.md
     - name: 変更フィード
       items:
-        - name: Azure Cosmos DB トリガーのログ
-          href: how-to-configure-cosmos-db-trigger-logs.md
-        - name: Azure Cosmos DB トリガーの接続ポリシー
-          href: how-to-configure-cosmos-db-trigger-connection-policy.md
+        - name: Azure Cosmos DB トリガーの詳細な構成
+          href: how-to-configure-cosmos-db-trigger.md
         - name: 複数の Azure Cosmos DB トリガー
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング
           href: troubleshoot-changefeed-functions.md
-        - name: 変更フィード プロセッサの開始時刻
-          href: how-to-configure-change-feed-start-time.md
         - name: 変更フィード推定機能の使用
           href: how-to-use-change-feed-estimator.md
         - name: 変更フィード プロセッサ ライブラリからの移行
@@ -1154,7 +1170,7 @@
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md
@@ -1180,8 +1196,8 @@
           href: how-to-setup-cmk.md
     - name: エンタープライズ対応
       items:
-        - name: バックアップからデータを復元する
-          href: how-to-backup-and-restore.md
+        - name: オンラインのバックアップとオンデマンドの復元
+          href: online-backup-and-restore.md
         - name: クォータの増加を要求する
           href: create-support-request-quota-increase.md
     - name: モニター

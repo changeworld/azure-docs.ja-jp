@@ -12,12 +12,12 @@ metadata:
   author: mumian
   ms.author: jgao
   ms.date: 07/30/2020
-  ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: eda40d7dafa2c9946798067622e2732cf9de738d
+  ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87446731"
+  ms.lasthandoff: 10/20/2020
+  ms.locfileid: "92282491"
 landingContent:
 - title: ARM テンプレートについて
   linkLists:
@@ -49,18 +49,30 @@ landingContent:
       url: quickstart-create-templates-use-the-portal.md
     - text: テンプレートの作成 - VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
+    - text: テンプレート スペックの作成とデプロイ
+      url: quickstart-create-template-specs.md
   - linkListType: tutorial
     links:
     - text: 初心者向けチュートリアル
       url: template-tutorial-create-first-template.md
     - text: デプロイ
       url: deployment-tutorial-local-template.md
+    - text: テンプレート スペック
+      url: template-specs-create-linked.md
+    - text: 高度なテンプレート
+      url: template-tutorial-use-template-reference.md
+    - text: Deployment Manager
+      url: deployment-manager-tutorial.md
   - linkListType: learn
     links:
     - text: 一貫したインフラストラクチャ
       url: /learn/modules/create-azure-resource-manager-template-vs-code/
     - text: 複数の環境
       url: /learn/modules/modify-azure-resource-manager-template-reuse/
+    - text: デプロイの検証
+      url: /learn/modules/arm-template-test/
+    - text: テンプレートのデプロイ
+      url: /learn/modules/deploy-templates-command-line-github-actions/
 - title: テンプレートの開発
   linkLists:
   - linkListType: how-to-guide

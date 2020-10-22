@@ -3,12 +3,12 @@ title: Azure Migrate Server Migration についてよく寄せられる質問
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275542"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315232"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -34,8 +34,8 @@ Azure Migrate: Server Migration ツールでは、UEFI ベースのマシンは 
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6.x        | Y<br>                 _RHEL 8.x には[手動による準備](https://go.microsoft.com/fwlink/?linkid=2143939)が必要_   | Y                              | Y                                                          |
-| Cent OS 8.1、8.0、7.7、7.6、7.5、7.4、6.x               | Y<br>_Cent OS 8.x には[手動による準備](https://go.microsoft.com/fwlink/?linkid=2143939)が必要_ | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6.x        | Y<br>                 _RHEL 8.x には[手動による準備](./prepare-for-migration.md#linux-machines)が必要_   | Y                              | Y                                                          |
+| Cent OS 8.1、8.0、7.7、7.6、7.5、7.4、6.x               | Y<br>_Cent OS 8.x には[手動による準備](./prepare-for-migration.md#linux-machines)が必要_ | Y                              | Y                                                          |
 | Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Azure Migrate で作成した Recovery Services コンテナーをディザスター リカバリーのシナリオに使用することはできますか?
@@ -43,11 +43,11 @@ Azure Migrate: Server Migration ツールでは、UEFI ベースのマシンは 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>エージェントベースの移行用のレプリケーション アプライアンスはどこにインストールすればよいですか?
 
-レプリケーション アプライアンスは、専用のマシンにインストールする必要があります。 レプリケート対象のソース マシン、または以前にインストールした Azure Migrate 検出および評価アプライアンスに、レプリケーション アプライアンスをインストールすることはできません。 詳細については、[チュートリアル](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)をご覧ください。
+レプリケーション アプライアンスは、専用のマシンにインストールする必要があります。 レプリケート対象のソース マシン、または以前にインストールした Azure Migrate 検出および評価アプライアンスに、レプリケーション アプライアンスをインストールすることはできません。 詳細については、[チュートリアル](./tutorial-migrate-physical-virtual-machines.md)をご覧ください。
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>AWS EC2 インスタンスを Azure に移行するにはどうすればよいですか?
 
-AWS EC2 インスタンスを検出、評価、および Azure に移行する場合は、[こちらの記事](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines)をご覧ください。
+AWS EC2 インスタンスを検出、評価、および Azure に移行する場合は、[こちらの記事](./tutorial-migrate-aws-virtual-machines.md)をご覧ください。
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>Amazon Linux オペレーティング システムが動作している AWS VM を移行できますか?
 
@@ -79,18 +79,18 @@ Azure Migrate: Server Migration ツールには、ソース サーバー/VM を 
 移行オプションを決める際の考慮事項をいくつか次に示します。
 
 **エージェントレスの移行**では、移行されるソース VM/サーバー上にソフトウェア (エージェント) を展開する必要はありません。 エージェントレスのオプションは、仮想化プロバイダーによって提供される機能と統合することによってレプリケーションを調整します。
-エージェントレスのレプリケーション オプションは、[VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) と [Hyper-V VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) で使用できます。
+エージェントレスのレプリケーション オプションは、[VMware VM](./tutorial-migrate-vmware.md) と [Hyper-V VM](./tutorial-migrate-hyper-v.md) で使用できます。
 
 **エージェントベースの移行**では、移行されるソース VM/マシンに Azure Migrate ソフトウェア (エージェント) をインストールする必要があります。 エージェントベースのオプションは、レプリケーション機能に仮想化プラットフォームを使用しないため、x86/x64 アーキテクチャを実行しているすべてのサーバーと、エージェントベースのレプリケーション方法でサポートされているオペレーティングシステムのバージョンで使用できます。
 
-エージェントベースの移行オプションは、[VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)、[Hyper-V VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、[物理サーバー](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、[AWS で実行されている VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines)、GCP で実行されている VM、または別の仮想化プロバイダーで実行されている VM に使用できます。 エージェントベースの移行では、移行の目的でマシンを物理サーバーとして扱います。
+エージェントベースの移行オプションは、[VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理サーバー](./tutorial-migrate-physical-virtual-machines.md)、[AWS で実行されている VM](./tutorial-migrate-aws-virtual-machines.md)、GCP で実行されている VM、または別の仮想化プロバイダーで実行されている VM に使用できます。 エージェントベースの移行では、移行の目的でマシンを物理サーバーとして扱います。
 
 エージェントレスの移行は、サポートされているシナリオ (VMWare と Hyper-V) でのエージェントベースのレプリケーション オプションよりも利便性とシンプルさに優れていますが、次のユース ケースではエージェントベースのシナリオの使用をご検討ください。
 
 - IOPS の制約付き環境:エージェントレス レプリケーションでは、スナップショットを使用するため、ストレージの IOPS/帯域幅を消費します。 ご使用の環境でストレージ/IOPS に制約がある場合は、エージェントベースの移行方法が推奨されます。
 - VCenter Server がない場合は、VMware VM を物理サーバーとして扱い、エージェントベースの移行ワークフローを使用することができます。
 
-詳細については、[こちらの記事](https://docs.microsoft.com/azure/migrate/server-migrate-overview)を参照して、VMware 移行の移行オプションを比較してください。
+詳細については、[こちらの記事](./server-migrate-overview.md)を参照して、VMware 移行の移行オプションを比較してください。
 
 ## <a name="how-does-agentless-migration-work"></a>エージェントレスの移行はどのようなしくみになっていますか?
 
@@ -101,13 +101,13 @@ Azure Migrate: Server Migration には、Windows または Linux が動作して
 仮想マシンに対してレプリケーションが構成されている場合、最初に初期レプリケーション フェーズが実行されます。 初期レプリケーション中に、VM スナップショットが作成され、スナップショット ディスクからのデータの完全なコピーがサブスクリプション内のマネージド ディスクにレプリケートされます。 VM の初期レプリケーションが完了すると、レプリケーション プロセスは増分レプリケーション (差分レプリケーション) フェーズに移行します。 増分レプリケーション フェーズでは、最後に完了したレプリケーション サイクル以降に発生したデータ変更が定期的にレプリケートされて、レプリカ マネージド ディスクに適用されるため、レプリケーションは VM 上で発生する変更と同期した状態に保たれます。 VMware 仮想マシンの場合は、レプリケーション サイクル間の変更を追跡するために、VMware の変更ブロック追跡テクノロジが使用されます。 レプリケーション サイクルの開始時に、VM スナップショットが作成され、変更ブロック追跡を使用して、現在のスナップショットと最後に正常にレプリケートされたスナップショットの間の変更が取得されます。 このようにして、最後に完了したレプリケーション サイクル以降に変更されたデータのみをレプリケートして、VM のレプリケーションを同期した状態に保つ必要があります。各レプリケーション サイクルの最後に、スナップショットが解放され、仮想マシンに対してスナップショットの統合が実行されます。 同様に、Hyper-V 仮想マシンの場合は、連続するレプリケーション サイクル間の変更を追跡するために、Hyper-V レプリカの変更追跡エンジンが使用されます。
 レプリケートする仮想マシンで移行操作を実行するときに、オンプレミスの仮想マシンをシャットダウンして、最後の増分レプリケーションを実行することを選択すれば、データ損失を防ぐことができます。 移行オプションを実行すると、仮想マシンに対応するレプリカ マネージド ディスクが Azure での仮想マシンの作成に使用されます。
 
-作業を開始するには、[VMware のエージェントレスの移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware)と [Hyper-V のエージェントレスの移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)のチュートリアルをご覧ください。
+作業を開始するには、[VMware のエージェントレスの移行](./tutorial-migrate-vmware.md)と [Hyper-V のエージェントレスの移行](./tutorial-migrate-hyper-v.md)のチュートリアルをご覧ください。
 
 ## <a name="how-does-agent-based-migration-work"></a>エージェントベースの移行はどのようなしくみになっていますか?
 
 VMware 仮想マシンと Hyper-V 仮想マシン用のエージェントレスの移行オプションに加えて、Server Migration ツールには、物理サーバーで動作している Windows および Linux サーバー、または VMware、Hyper-V、AWS、Google Cloud Platform などで x86/x64 仮想マシンとして動作している Windows および Linux サーバーを移行するためのエージェントベースの移行オプションも用意されています。
 
-エージェントベースの移行方法では、移行されるサーバーにインストールされているエージェント ソフトウェアを使用して、サーバー データを Azure にレプリケートします。 レプリケーション プロセスでは、エージェントがレプリケーション アプライアンスまたは構成サーバーと呼ばれる専用のレプリケーション サーバー (またはスケールアウト プロセス サーバー) にレプリケーション データをリレーするオフロード アーキテクチャを使用します。 エージェントベースの移行オプションのしくみの[詳細](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture)をご覧ください。 
+エージェントベースの移行方法では、移行されるサーバーにインストールされているエージェント ソフトウェアを使用して、サーバー データを Azure にレプリケートします。 レプリケーション プロセスでは、エージェントがレプリケーション アプライアンスまたは構成サーバーと呼ばれる専用のレプリケーション サーバー (またはスケールアウト プロセス サーバー) にレプリケーション データをリレーするオフロード アーキテクチャを使用します。 エージェントベースの移行オプションのしくみの[詳細](./agent-based-migration-architecture.md)をご覧ください。 
 
 注:レプリケーション アプライアンスは、Azure Migrate の検出アプライアンスとは異なり、個別/専用のマシンにインストールする必要があります。
 
@@ -127,7 +127,7 @@ VM のレプリケーションが開始されると、初期レプリケーシ�
 
 ### <a name="agent-based-vmware-vm-migration"></a>エージェントベースの VMware VM の移行
 
-エージェントベースのレプリケーション方法では、環境をプロファイリングしてデータ変更頻度を求めたり、必要な帯域幅の要件を予測したりするのに Deployment Planner が役立ちます。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment)をご覧ください。 
+エージェントベースのレプリケーション方法では、環境をプロファイリングしてデータ変更頻度を求めたり、必要な帯域幅の要件を予測したりするのに Deployment Planner が役立ちます。 詳細については、[こちらの記事](./agent-based-migration-architecture.md#plan-vmware-deployment)をご覧ください。 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>エージェントレス VMware レプリケーションに対する Azure Migrate アプライアンスの使用においてレプリケーションを調整するにはどうすればよいですか?  
 
@@ -153,10 +153,10 @@ New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "Gateway
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>VMware/Hyper-V で動作している Windows Server 2003 を Azure に移行するにはどうすればよいですか?
 
-[Windows Server 2003 の延長サポート](https://go.microsoft.com/fwlink/?linkid=2140400)は、2015 年 7 月 14 日に終了しました。  Azure サポート チームでは、Azure での Windows Server 2003 の実行に関係する問題のトラブルシューティングを引き続き支援します。 ただし、このサポートは、OS レベルのトラブルシューティングや修正プログラムを必要としない問題に限定されます。
+[Windows Server 2003 の延長サポート](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support)は、2015 年 7 月 14 日に終了しました。  Azure サポート チームでは、Azure での Windows Server 2003 の実行に関係する問題のトラブルシューティングを引き続き支援します。 ただし、このサポートは、OS レベルのトラブルシューティングや修正プログラムを必要としない問題に限定されます。
 Azure クラウドの柔軟性と信頼性を効果的に活用できるようにするため、新しいバージョンの Windows Server が動作している Azure インスタンスにアプリケーションを移行することをお勧めします。
 
-それでも、Windows Server 2003 を Azure に移行することを選択した場合は、Azure Migrate: Server Migration ツールを使用できます (Windows Server が VMware または Hyper-V で実行されている VM の場合)。Windows Server 2003 マシンを移行用に準備する場合は、[こちらの記事](https://go.microsoft.com/fwlink/?linkid=2140302)をご覧ください。
+それでも、Windows Server 2003 を Azure に移行することを選択した場合は、Azure Migrate: Server Migration ツールを使用できます (Windows Server が VMware または Hyper-V で実行されている VM の場合)。Windows Server 2003 マシンを移行用に準備する場合は、[こちらの記事](./prepare-windows-server-2003-migration.md)をご覧ください。
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>テスト移行操作と移行操作の違いは何ですか?
 

@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995682"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164484"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
@@ -37,30 +38,42 @@ Azure Monitor for VMs を設定する方法は、次のとおりです。
 >[!NOTE]
 >このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
 
 Azure Monitor for VMs は、次のリージョンで Log Analytics ワークスペースをサポートします。
 
-- 米国中西部
-- 米国西部
-- 米国西部 2
-- 米国中南部
-- 米国東部
-- 米国東部 2
-- 米国中部
-- 米国中北部
-- US Gov アリゾナ州
-- US Gov バージニア州
-- カナダ中部
-- 英国南部
-- 北ヨーロッパ
-- 西ヨーロッパ
-- 東アジア
-- 東南アジア
-- インド中部
-- 東日本
-- オーストラリア東部
-- オーストラリア南東部
+- アフリカ
+  - 南アフリカ北部
+- アジア太平洋
+  - 東アジア
+  - 東南アジア
+- オーストラリア
+  - オーストラリア東部
+  - オーストラリア南東部
+- Azure Government
+  - US Gov アリゾナ州
+  - US Gov バージニア州
+- Canada
+  - カナダ中部
+- ヨーロッパ
+  - 北ヨーロッパ
+  - 西ヨーロッパ
+- インド
+  - インド中部
+- 日本
+  - 東日本
+- イギリス
+  - 英国南部
+- United States
+  - 米国中部
+  - 米国東部
+  - 米国東部 2
+  - 米国中北部
+  - 米国中南部
+  - 米国中西部
+  - 米国西部
+  - 米国西部 2
+
 
 >[!NOTE]
 >Azure VM は任意のリージョンで監視できます。 VM 自体は、Log Analytics ワークスペースでサポートされているリージョンに限定されません。

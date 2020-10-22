@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073701"
+ms.locfileid: "92091442"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -39,7 +39,7 @@ Azure は、サブスクリプション管理 (請求、割り当て調整、ア
 
 Azure portal で **[ヘルプとサポート]** にアクセスできます。 これは、Azure portal メニュー、グローバル ヘッダー、またはサービスのリソース メニューから使用できます。 サポート リクエストを提出するには、適切なアクセス許可が必要です。
 
-### <a name="role-based-access-control"></a>ロールベースのアクセス制御
+### <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
 サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)である必要があります。
 

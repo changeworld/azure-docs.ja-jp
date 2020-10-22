@@ -43,6 +43,12 @@
     - name: タグ ガバナンスを管理する
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: GitHub を使用してコードとしての Azure Policy を実装する
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: '次のことを学びます:Azure Policy を使用してリソースを制御および監査する'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: サンプル
   items:
     - name: インデックス
@@ -113,7 +119,7 @@
     - name: 規制コンプライアンス
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: コードとしてのポリシー ワークフローの設計
+    - name: コードとしての Azure Policy ワークフローを設計する
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes の統合

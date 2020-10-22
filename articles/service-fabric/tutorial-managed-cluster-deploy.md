@@ -4,12 +4,12 @@ description: このチュートリアルでは、テスト用に Service Fabric 
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410218"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316181"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターをデプロイする (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "91410218"
 
 * [Service Fabric SDK と PowerShell モジュール](service-fabric-get-started.md)をインストールします。
 
-* [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (以降) をインストールします。
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (以降) をインストールします。
 
 ## <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 
@@ -73,7 +73,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 * **クラスター名**:クラスターの一意の名前 (*mysfcluster* など) を入力します。
 * **管理パスワード**: クラスター内の基になる VM で RDP に使用する管理者のパスワードを入力します。
-* **クライアント証明書の拇印**:クラスターにアクセスするために使用するクライアント証明書の拇印を指定します。 証明書がない場合は、[証明書の設定と取得](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)に関する手順に従って、自己署名証明書を作成 ます。
+* **クライアント証明書の拇印**:クラスターにアクセスするために使用するクライアント証明書の拇印を指定します。 証明書がない場合は、[証明書の設定と取得](../key-vault/certificates/quick-create-portal.md)に関する手順に従って、自己署名証明書を作成 ます。
 * **クラスター SKU**:デプロイする [Service Fabric マネージド クラスターのタイプ](overview-managed-cluster.md#service-fabric-managed-cluster-skus)を指定します。 *Basic* SKU クラスターはテスト デプロイのみを目的としており、ノード タイプの追加や削除は許可されていません。
 
 ```powershell

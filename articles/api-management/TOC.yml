@@ -58,7 +58,7 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -160,6 +160,8 @@
       items:
         - name: 開発者ポータルについて
           href: api-management-howto-developer-portal.md
+        - name: 非推奨から新しい開発者ポータルへの移行
+          href: developer-portal-deprecated-migration.md
         - name: Azure AD による認証
           href: api-management-howto-aad.md
         - name: Azure AD B2C による認証
@@ -170,13 +172,13 @@
           href: api-management-howto-configure-notifications.md
         - name: コンソール OAuth サポートを有効にする
           href: api-management-howto-oauth2.md
-        - name: 従来のポータル - ポータルのカスタマイズ
+        - name: 非推奨のポータル - ポータルのカスタマイズ
           href: api-management-customize-styles.md
-        - name: 従来のポータル - ページとレイアウトの変更
+        - name: 非推奨のポータル - ページとレイアウトの変更
           href: api-management-modify-content-layout.md
-        - name: 従来のポータル - テンプレートを使用したカスタマイズ
+        - name: 非推奨のポータル - テンプレートを使用したカスタマイズ
           href: api-management-developer-portal-templates.md
-    - name: 従来のポータルのテンプレート
+    - name: 非推奨のポータルのテンプレート
       items:
         - name: データ モデル リファレンス
           href: api-management-template-data-model-reference.md

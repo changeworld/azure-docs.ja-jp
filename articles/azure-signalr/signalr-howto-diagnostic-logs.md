@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85131988"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151064"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR Service のリソース ログ
 
@@ -20,8 +20,8 @@ ms.locfileid: "85131988"
 ## <a name="prerequisites"></a>前提条件
 リソース ログを有効にするには、ログ データを格納する場所が必要になります。 このチュートリアルでは、Azure Storage と Log Analytics を使用します。
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) - ポリシー監査、スタティック分析、またはバックアップのリソース ログを保持します。
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
+* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) - ポリシー監査、スタティック分析、またはバックアップのリソース ログを保持します。
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Azure SignalR Service のリソース ログの設定
 

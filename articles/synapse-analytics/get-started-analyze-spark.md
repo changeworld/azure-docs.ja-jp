@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: ec6af7c23f781d25114794066a228adbfe7528d0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893542"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093618"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 

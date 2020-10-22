@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Cosmos DB のドキュメント
-summary: Azure Cosmos DB は、運用/分析ワークロード向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 スループット、コンピューティング、およびストレージを自動的にスケーリングすることで、マルチマスタリング機能を提供します。
+summary: Azure Cosmos DB - SLA によって裏付けられた速度と可用性、自動かつ即時のスケーラビリティ、MongoDB および Cassandra 用のオープンソース API を備えた高速 NoSQL データベース。
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB は、運用/分析ワークロード向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 スループット、コンピューティング、およびストレージを自動的にスケーリングすることで、マルチマスタリング機能を提供します。
+  description: Azure Cosmos DB - SLA によって裏付けられた速度と可用性、自動かつ即時のスケーラビリティ、MongoDB および Cassandra 用のオープンソース API を備えた高速 NoSQL データベース。
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 8f2dea260472da4178173d110c33d2681520cfce
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3daa7ed6e59230fe0f6c66e01982f6021f8e1ba7
+  ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91566722"
+  ms.lasthandoff: 10/20/2020
+  ms.locfileid: "92278439"
 landingContent:
 - title: Azure Cosmos DB について
   linkLists:
@@ -24,184 +24,78 @@ landingContent:
     links:
     - text: Azure Cosmos DB とは何ですか?
       url: introduction.md
-  - linkListType: concept
+  - linkListType: get-started
     links:
-    - text: MongoDB とのワイヤ プロトコルの互換性
-      url: mongodb-feature-support-36.md
-    - text: Apache Cassandra とのワイヤ プロトコルの互換性
-      url: cassandra-support.md
-    - text: Tinkerpop の Gremlin とのワイヤ プロトコルの互換性
-      url: gremlin-support.md
+    - text: NoSQL 対リレーショナル データベース
+      url: relational-nosql.md
+    - text: Azure Cosmos DB リソース モデル
+      url: account-databases-containers-items.md
+    - text: データのグローバル分散
+      url: distribute-data-globally.md
+    - text: パーティション分割
+      url: partitioning-overview.md
+    - text: スループットと要求ユニット
+      url: request-units.md
+    - text: データ モデリングとパーティション分割
+      url: how-to-model-partition-example.md
+    - text: サービス クォータ
+      url: concepts-limits.md
   - linkListType: quickstart
     links:
     - text: Azure Cosmos アカウントを作成する
       url: create-cosmosdb-resources-portal.md
-- title: グローバル配信
-  linkLists:
-  - linkListType: concept
+  - linkListType: video
     links:
-    - text: 概要
-      url: distribute-data-globally.md
-    - text: 一貫性レベル
-      url: consistency-levels.md
-    - text: 適切な整合性レベルの選択
-      url: consistency-levels-choosing.md
-    - text: 整合性レベルと API
-      url: consistency-levels-across-apis.md
-    - text: 整合性、可用性、パフォーマンスのトレードオフ
-      url: consistency-levels-tradeoffs.md
-    - text: 高可用性
-      url: high-availability.md
-    - text: 競合のタイプと解決ポリシー
-      url: conflict-resolution-policies.md
-    - text: 内部でのグローバル データ分散
-      url: global-dist-under-the-hood.md
-    - text: リージョン プレゼンス
-      url: regional-presence.md
-  - linkListType: how-to-guide
-    links:
-    - text: マルチリージョンの書き込みを構成する
-      url: how-to-multi-master.md
-    - text: 一貫性レベルを構成する
-      url: how-to-manage-consistency.md
-    - text: カスタム同期を実装する
-      url: how-to-manage-conflicts.md
-    - text: 競合解決ポリシーを構成する
-      url: how-to-manage-conflicts.md
-- title: データのパーティション分割とベスト プラクティス
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 概要
-      url: partitioning-overview.md
-    - text: パーティション分割と水平スケーリング
-      url: partition-data.md
-    - text: 合成パーティション キー
-      url: synthetic-partition-keys.md
-    - text: データ モデリング
-      url: modeling-data.md
-  - linkListType: how-to-guide
-    links:
-    - text: 大規模なパーティション キーを備えたコンテナーを作成する
-      url: large-partition-keys.md
-    - text: パーティション分割コンテナーに移行する
-      url: migrate-containers-partitioned-to-nonpartitioned.md
-- title: Cosmos DB リソースを作成および管理する
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Cosmos アカウントとは
-      url: account-overview.md
-    - text: Azure Cosmos のデータベース、コンテナー、および項目
-      url: databases-containers-items.md
-    - text: Cosmos DB におけるデータのインデックス作成方法
-      url: index-overview.md
-    - text: インデックス作成ポリシー, プロパティの追加と除外
-      url: index-policy.md
-    - text: Time to Live
-      url: time-to-live.md
-    - text: 一意のキー制約
-      url: unique-keys.md
-  - linkListType: how-to-guide
-    links:
-    - text: データベースを作成する
-      url: how-to-manage-database-account.md
-    - text: コンテナーを作成する
-      url: how-to-create-container.md
-    - text: コンテナーからデータのクエリを実行する
-      url: how-to-query-container.md
-    - text: コンテナーおよび項目の Time to Live を構成する
-      url: how-to-time-to-live.md
-    - text: インデックス作成ポリシーを構成する
-      url: how-to-manage-indexing-policy.md
-    - text: 一意のキーの定義
-      url: how-to-define-unique-keys.md
-    - text: エミュレーターをローカル開発に使用する
-      url: local-emulator.md
-    - text: Azure PowerShell を使用して管理する
-      url: manage-with-powershell.md
-    - text: Azure CLI を使用して管理する
-      url: manage-with-cli.md
-    - text: Resource Manager (ARM) テンプレートを使用して管理する
-      url: manage-sql-with-resource-manager.md
-- title: プロビジョニングされたスループット
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 要求ユニット
-      url: request-units.md
-    - text: データベースとコンテナー レベルのスループット
-      url: set-throughput.md
-  - linkListType: how-to-guide
-    links:
-    - text: 必要なスループットを見積もる
-      url: estimate-ru-with-capacity-planner.md
-    - text: データベースのスループットをプロビジョニングする
-      url: how-to-provision-database-throughput.md
-    - text: コンテナーのスループットをプロビジョニングする
-      url: how-to-provision-container-throughput.md
-    - text: 要求ユニットの料金を取得する
-      url: find-request-unit-charge.md
-    - text: Azure Functions タイマーを使用してスケーリングする
-      url: scale-on-schedule.md
-- title: SQL API を使用してアプリを構築する
+    - text: データ モデリング - アプリケーションの速度とパフォーマンスを向上させる
+      url: https://www.youtube.com/watch?v=wOWa8ecFo88
+- title: Azure Cosmos DB SQL API を使用する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: .NET コンソール アプリ
-      url: create-sql-api-dotnet.md
-    - text: Java アプリ
+    - text: .NET コンソール アプリを使用してデータを管理する
+      url: create-sql-api-dotnet-v4.md
+    - text: Java アプリを使用してデータを管理する
       url: create-sql-api-java.md
-    - text: Node.js アプリ
-      url: create-sql-api-nodejs.md
-    - text: Python アプリ
-      url: create-sql-api-python.md
-    - text: Xamarin アプリ
-      url: create-sql-api-xamarin-dotnet.md
+  - linkListType: concept
+    links:
+    - text: SQL クエリの使用を開始する
+      url: sql-query-getting-started.md
+    - text: 変更フィードとは
+      url: change-feed.md
   - linkListType: tutorial
     links:
-    - text: .NET Web アプリ
+    - text: データを管理するための .NET Web アプリを構築する
       url: sql-api-dotnet-application.md
     - text: 非同期 SDK を使用した Java アプリ
       url: sql-api-async-java-get-started.md
-    - text: 変更フィードを使用した Java アプリのサンプル
-      url: create-sql-api-java-changefeed.md
     - text: SQL クエリを使用してデータにクエリを実行する
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide
     links:
-    - text: Power BI でデータを視覚化する
-      url: powerbi-visualize.md
+    - text: クエリ パフォーマンスの調整
+      url: sql-api-query-metrics.md
     - text: ストアド プロシージャ、トリガー、UDF を定義する
       url: how-to-write-stored-procedures-triggers-udfs.md
-    - text: ストアド プロシージャ、トリガー、UDF を実行する
-      url: how-to-use-stored-procedures-triggers-udfs.md
-  - linkListType: reference
-    links:
-    - text: .NET
-      url: sql-api-sdk-dotnet.md
-    - text: Java
-      url: sql-api-sdk-java.md
-    - text: JavaScript
-      url: sql-api-sdk-node.md
-    - text: REST
-      url: /rest/api/cosmos-db/
-  - linkListType: learn
-    links:
-    - text: SQL API データを作成および管理する
-      url: /learn/modules/store-access-data-cosmos-table-api/
-- title: MongoDB API を使用してアプリを構築する
+- title: Azure Cosmos DB の MongoDB 用 API を使用する
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cosmos DB の MongoDB 用 API とは
+      url: mongodb-introduction.md
   - linkListType: quickstart
     links:
-    - text: .NET アプリ
+    - text: .NET アプリを使用してデータを管理する
       url: create-mongodb-dotnet.md
-    - text: Java アプリ
-      url: create-mongodb-java.md
-    - text: Node.js アプリ
-      url: create-mongodb-nodejs.md
-    - text: Python アプリ
-      url: create-mongodb-flask.md
+    - text: GoLang アプリを使用してデータを管理する
+      url: create-mongodb-go.md
+  - linkListType: concept
+    links:
+    - text: MongoDB とのワイヤ プロトコルの互換性
+      url: mongodb-feature-support-36.md
+    - text: MongoDB 拡張コマンド
+      url: mongodb-custom-commands.md
+    - text: ストリームを変更する
+      url: mongodb-change-streams.md
   - linkListType: tutorial
     links:
     - text: MongoDB シェルを使用してデータのクエリを実行する
@@ -210,26 +104,26 @@ landingContent:
     links:
     - text: データのインデックス作成を管理する
       url: mongodb-indexing.md
-    - text: Time to Live の設定
-      url: mongodb-time-to-live.md
     - text: Robo 3T を使用して接続する
       url: mongodb-robomongo.md
-- title: Gremlin API を使用してアプリを構築する
+- title: Azure Cosmos DB Gremlin API を使用する
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cosmos Gremlin API とは
+      url: graph-introduction.md
   - linkListType: quickstart
     links:
-    - text: Gremlin コンソールを使用する
+    - text: Gremlin コンソールを使用してデータを管理する
       url: create-graph-gremlin-console.md
-    - text: .NET アプリ
+    - text: .NET アプリを使用してデータを管理する
       url: create-graph-dotnet.md
-    - text: Java アプリ
-      url: create-graph-java.md
-    - text: Node.js アプリ
-      url: create-graph-nodejs.md
-    - text: Python アプリ
-      url: create-graph-python.md
-    - text: PHP アプリ
-      url: create-graph-php.md
+  - linkListType: concept
+    links:
+    - text: Tinkerpop の Gremlin とのワイヤ プロトコルの互換性
+      url: gremlin-support.md
+    - text: Gremlin API サービスの制限
+      url: gremlin-limits.md
   - linkListType: how-to-guide
     links:
     - text: グラフ データのモデリング
@@ -238,50 +132,34 @@ landingContent:
       url: graph-partitioning.md
     - text: Gremlin クエリの最適化
       url: graph-execution-profile.md
-  - linkListType: learn
-    links:
-    - text: グラフ データの格納とアクセス
-      url: /learn/modules/store-access-data-cosmos-graph-api/
-- title: Cassandra API を使用してアプリを構築する
+- title: Azure Cosmos DB Cassandra API を使用する
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cosmos DB の Cassandra API とは
+      url: cassandra-introduction.md
   - linkListType: quickstart
     links:
-    - text: .NET
-      url: create-cassandra-dotnet.md
-    - text: .NET Core
+    - text: .NET Core アプリを使用してデータを管理する
       url: create-cassandra-dotnet-core.md
-    - text: Java v3
-      url: create-cassandra-java.md
-    - text: Java v4
+    - text: Java アプリを使用してデータを管理する
       url: create-cassandra-java-v4.md
-    - text: Node.js
-      url: create-cassandra-nodejs.md
-    - text: Python
-      url: create-cassandra-python.md
+  - linkListType: concept
+    links:
+    - text: Apache Cassandra とのワイヤ プロトコルの互換性
+      url: cassandra-support.md
+    - text: エラスティック スケーリング
+      url: manage-scale-cassandra.md
+    - text: セカンダリ インデックス
+      url: cassandra-secondary-index.md
+    - text: パーティション分割
+      url: cassandra-partitioning.md
   - linkListType: how-to-guide
     links:
     - text: Spark から Cassandra API に接続する
       url: cassandra-spark-generic.md
-- title: パフォーマンスとコストを最適化する
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: スループット コスト
-      url: optimize-cost-throughput.md
-    - text: クエリ コスト
-      url: optimize-cost-queries.md
-    - text: Storage コスト
-      url: optimize-cost-storage.md
-    - text: 読み取りと書き込みのコスト
-      url: optimize-cost-reads-writes.md
-    - text: マルチリージョンのコスト
-      url: optimize-cost-regions.md
-    - text: クエリ パフォーマンス
-      url: sql-api-query-metrics.md
-  - linkListType: how-to-guide
-    links:
-    - text: データ モデリングを使用して最適化する
-      url: how-to-model-partition-example.md
+    - text: クエリ述語を使用した変更フィードのサポート
+      url: cassandra-change-feed.md?tabs=java
 - title: Cosmos DB にデータを移行する
   linkLists:
   - linkListType: tutorial
@@ -320,3 +198,15 @@ landingContent:
     links:
     - text: Azure Synapse Link を構成する
       url: configure-synapse-link.md
+- title: Azure Cosmos DB Table API を使用する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET アプリを使用してデータを管理する
+      url: create-table-dotnet.md
+    - text: Java アプリを使用してデータを管理する
+      url: create-table-java.md
+  - linkListType: concept
+    links:
+    - text: Table API と Azure Table Storage の違い
+      url: table-support.md

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090095"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315286"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure Migrate を使用した移行計画の作成
 
@@ -166,4 +166,4 @@ Azure へのフル スケールの移行を開始する前に、常に Azure Mig
 
 - Azure クラウド導入フレームワークでの [クラウド移行の工程](/azure/architecture/cloud-adoption/getting-started/migrate) を調査します。
 - Azure Migrate の[使用を開始](https://youtu.be/wFfq3YPxYHE)します。
-- [VMware VM](tutorial-assess-vmware.md) または [Hyper-V VM](tutorial-assess-hyper-v.md) の評価を作成します。
+- [VMware VM](./tutorial-assess-vmware-azure-vm.md) または [Hyper-V VM](tutorial-assess-hyper-v.md) の評価を作成します。

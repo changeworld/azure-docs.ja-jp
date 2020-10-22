@@ -9,18 +9,18 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280098"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093295"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
 BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。
 
-この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して BLOB を一覧表示する方法について説明します。  
+この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して BLOB を一覧表示する方法について説明します。  
 
 ## <a name="understand-blob-listing-options"></a>BLOB の一覧表示オプションについて
 
@@ -28,10 +28,10 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -65,7 +65,7 @@ BLOB の一覧をフィルター処理するには、`prefix` パラメーター
 
 結果と共に BLOB メタデータを返すことができます。 
 
-- .NET v12 SDK を使用している場合は、[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) 列挙型の **Metadata** 値を指定します。
+- .NET v12 SDK を使用している場合は、[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) 列挙型の **Metadata** 値を指定します。
 
 - .NET v11 SDK を使用している場合は、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 
@@ -153,7 +153,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-BLOB を階層的に一覧表示するには、[BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet) メソッドまたは [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) メソッドを呼び出します。
+BLOB を階層的に一覧表示するには、[BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy) メソッドまたは [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) メソッドを呼び出します。
 
 次の例では、階層型の一覧表示を使用し、オプションのセグメント サイズを指定して、指定したコンテナー内の BLOB を一覧表示し、BLOB 名をコンソール ウィンドウに出力します。
 

@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327686"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152174"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -103,7 +103,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」ページからダウンロードできます。
+> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」ページからダウンロードできます。
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>デバイス ストリーミング エンドポイントへの送信接続を許可する
@@ -119,7 +119,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」ページからダウンロードできます。
+> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」ページからダウンロードできます。
 >
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>デバイス ストリーム アクティビティ ログを使用してトラブルシューティングを行う
@@ -156,7 +156,7 @@ IoT Hub のデバイス ストリーム アクティビティのために Azure 
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT Hub デバイス ストリームのサンプル
 
-IoT Hub のページでは、2 つの[クイックスタート サンプル](/azure/iot-hub)を利用できます。 これらでは、アプリケーションでのデバイス ストリームの使用が示されています。
+IoT Hub のページでは、2 つの[クイックスタート サンプル](./index.yml)を利用できます。 これらでは、アプリケーションでのデバイス ストリームの使用が示されています。
 
 * "*エコー*" サンプルでは、(SDK API を直接呼び出すことによって) プログラムでデバイス ストリームを使用する方法を示しています。
 

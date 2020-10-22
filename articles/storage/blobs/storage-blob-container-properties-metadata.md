@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 115ab9767c23afd5876eb23821bd1283777cdb5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fb77179a00969da7a3dc372dc70c99cfe4220ca
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018928"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091000"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET を使用してコンテナーのプロパティとメタデータを管理する
 
-BLOB コンテナーは、そこに含まれているデータに加えて、システム プロパティとユーザー定義メタデータをサポートしています。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して、システム プロパティとユーザー定義メタデータを管理する方法について説明します。
+BLOB コンテナーは、そこに含まれているデータに加えて、システム プロパティとユーザー定義メタデータをサポートしています。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して、システム プロパティとユーザー定義メタデータを管理する方法について説明します。
 
 ## <a name="about-properties-and-metadata"></a>プロパティとメタデータについて
 

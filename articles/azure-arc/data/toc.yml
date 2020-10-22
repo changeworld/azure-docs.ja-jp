@@ -24,7 +24,7 @@
       items:
         - name: クライアント ツールのインストール
           href: install-client-tools.md
-        - name: azdata
+        - name: Azure Data CLI (azdata)
           items:
             - name: インストール
               href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
@@ -46,7 +46,7 @@
           href: create-data-controller-azure-data-studio.md
         - name: データ コントローラー リソースの作成 (ポータル)
           href: create-data-controller-resource-in-azure-portal.md
-        - name: データ コントローラーの作成 (azdata)
+        - name: データ コントローラーの作成 (Azure Data CLI)
           href: create-data-controller-using-azdata.md
         - name: Kubernetes を使用したデータ コントローラーの作成
           href: create-data-controller-using-kubernetes-native-tools.md

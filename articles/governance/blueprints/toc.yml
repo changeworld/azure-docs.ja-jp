@@ -31,6 +31,9 @@
     - name: ブループリント リソース ロックを使用した新しいリソースの保護
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: '次のことを学びます:Azure Blueprints を使用して複数のサブスクリプションを管理する'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: サンプル
   items:
     - name: インデックス

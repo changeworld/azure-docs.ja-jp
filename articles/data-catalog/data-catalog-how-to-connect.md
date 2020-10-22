@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081255"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151888"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
@@ -40,7 +40,7 @@ Azure Data Catalog ポータルでデータ ソースの "開く" メニュー�
 | Power Query |.xlsx |Excel 2016、Power Query for Excel アドインがインストールされている Excel 2010 または Excel 2013 |
 | Power BI Desktop |.pbix |Power BI Desktop (2016 年 7 月以降) |
 | SQL Server Data Tools |vsweb:// |SQL Server ツールがインストールされている Visual Studio 2013 Update 4 以降 |
-| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/library/ms156511.aspx)に関するページをご覧ください |
+| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](/sql/reporting-services/browser-support-for-reporting-services-and-power-view)に関するページをご覧ください |
 
 ## <a name="your-data-your-tools"></a>データ、ツール
 メニューで使用できるオプションは、現在選択されているデータ資産の種類によって異なります。 もちろん、使用可能なツールがすべて "開く" メニューに表示されるわけではありませんが、 それでも任意のクライアント ツールを使用してデータ ソースに簡単に接続できます。 **Azure Data Catalog** ポータルでデータ資産を選択すると、プロパティ ペインに完全な場所が表示されます。

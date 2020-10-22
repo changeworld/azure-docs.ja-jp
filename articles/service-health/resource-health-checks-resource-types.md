@@ -3,12 +3,12 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bbc7b03a508c9b156de039b4f8706f5063fd23b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447046"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316121"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -51,7 +51,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
 |実行されるチェック|
 |---|
-|<ul><li>運用スロットのデプロイがすべてのロール インスタンスで正常に実行されているかどうか</li><li>すべての VM インスタンスでロールが正常であるかどうか</li><li>クラウド サービスのロール内の各 VM の正常性状態はどうなっているか</li><li>プラットフォームまたは顧客が開始した操作により、VM の状態が変化したかどうか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li><li>実行されるチェックの[詳細](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services)</li></ul>|
+|<ul><li>運用スロットのデプロイがすべてのロール インスタンスで正常に実行されているかどうか</li><li>すべての VM インスタンスでロールが正常であるかどうか</li><li>クラウド サービスのロール内の各 VM の正常性状態はどうなっているか</li><li>プラットフォームまたは顧客が開始した操作により、VM の状態が変化したかどうか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li><li>実行されるチェックの[詳細](../cloud-services/resource-health-for-cloud-services.md)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |実行されるチェック|
@@ -257,4 +257,4 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="next-steps"></a>次の手順
 -  [Azure Service Health ダッシュボードの概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
 -  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
-- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](./alerts-activity-log-service-notifications-portal.md)に関するページを参照してください。 
+- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](./alerts-activity-log-service-notifications-portal.md)に関するページを参照してください。

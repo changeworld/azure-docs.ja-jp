@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331779"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315783"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "91331779"
 
 "The provided manifest file is invalid: Invalid OVF manifest entry" (指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェスト エントリ) というエラーを受け取る場合は、次のようにします。
 
-1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされていることを、そのハッシュ値をチェックして確認します。 [詳細については、こちらを参照してください](./tutorial-prepare-vmware.md)。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
+1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされていることを、そのハッシュ値をチェックして確認します。 [詳細については、こちらを参照してください](./tutorial-discover-vmware.md)。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでもデプロイが失敗する場合で、VMware vSphere クライアントを使って OVF ファイルをデプロイしている場合は、vSphere Web クライアントでデプロイしてみてください。 展開がそれでも失敗する場合は、別の Web ブラウザーをお試しください。
 3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、ESXi ホストに直接 OVA をデプロイしてみてください。
    - Web クライアント (https://<*ホスト IP アドレス*>/ui) を使用して (vCenter Server ではなく) ESXi ホストに直接接続します。

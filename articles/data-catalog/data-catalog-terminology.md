@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736287"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151451"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
 
@@ -39,7 +39,7 @@ Azure Data Catalog は、データ ソースとデータ資産を登録できる
 
 ## <a name="descriptive-metadata"></a>記述メタデータ
 
-記述メタデータは、データ資産の目的または意図を説明するメタデータです。 通常、記述メタデータは、カタログ ユーザーが Azure Data Catalog ポータルを使用して追加しますが、登録時にデータ ソースから抽出することもできます。 たとえば、SQL Server Analysis Services と SQL Server Reporting Services の場合は Description プロパティ、SQL Server データベースの場合は [ms_description 拡張プロパティ](https://technet.microsoft.com/library/ms190243.aspx)から、Azure Data Catalog 登録ツールで説明を抽出します (これらのプロパティに値が設定されている場合)。
+記述メタデータは、データ資産の目的または意図を説明するメタデータです。 通常、記述メタデータは、カタログ ユーザーが Azure Data Catalog ポータルを使用して追加しますが、登録時にデータ ソースから抽出することもできます。 たとえば、SQL Server Analysis Services と SQL Server Reporting Services の場合は Description プロパティ、SQL Server データベースの場合は [ms_description 拡張プロパティ](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))から、Azure Data Catalog 登録ツールで説明を抽出します (これらのプロパティに値が設定されている場合)。
 
 ## <a name="request-access"></a>アクセスの要求
 
@@ -86,4 +86,4 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート: Azure データ カタログを作成する](data-catalog-get-started.md) 
+[クイック スタート: Azure データ カタログを作成する](data-catalog-get-started.md)

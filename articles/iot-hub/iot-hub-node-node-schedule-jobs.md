@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: 2c5ce219e40117a2b656b7acab6dd68a1d20dffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251934"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151443"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>ジョブのスケジュールとブロードキャスト (Node.js)
 
@@ -300,4 +300,4 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 ファームウェアのリモートでのワイヤレス更新などの IoT Hub による他のデバイス管理パターンを確認するには、次の[ファームウェア更新の実行方法に関するチュートリアル](tutorial-firmware-update.md)を参照してください。
 
-引き続き IoT Hub の使用方法を確認するには、[Azure IoT Edge の使用](../iot-edge/tutorial-simulate-device-linux.md)に関する記事を参照してください。
+引き続き IoT Hub の使用方法を確認するには、[Azure IoT Edge の使用](../iot-edge/quickstart-linux.md)に関する記事を参照してください。

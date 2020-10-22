@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b03e3857bc5b01c25112f2a0d60c6468ecd42a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888489"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093924"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
 
@@ -22,7 +22,7 @@ Azure Spring Cloud では Azure CLI のログ ストリーミングを使って�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension)のインストール。
+* Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](/cli/azure/install-azure-cli)のインストール。
 * [Spring Cloud アプリ](./spring-cloud-quickstart.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
 
 > [!NOTE]
@@ -92,10 +92,4 @@ az spring-cloud app logs -h
 ## <a name="next-steps"></a>次のステップ
 * [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [診断設定でログとメトリックを分析する](./diagnostic-services.md)
-
- 
-
-
-
-
 

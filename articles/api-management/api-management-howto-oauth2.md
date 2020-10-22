@@ -11,21 +11,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2673bd181bc24d821b41ae1466c05a9593f154
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902260"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315734"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
 多くの API では、[OAuth 2.0](https://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
-
-> [!IMPORTANT]
-> OAuth 2.0 認証は、新しい開発者ポータルの対話型コンソールではまだ使用できません。
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>前提条件
 

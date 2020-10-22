@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312058"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152106"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "91312058"
 
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub アカウントにサインアップする</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
 - **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
     - **[ヘルプ]**  >  **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
     - **[ツール]**  >  **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。

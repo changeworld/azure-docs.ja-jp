@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d7d41a875d8e0c30085bafd346e316672359de26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039bea98090edcc5966be3cea54b31c61c18dc10
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374827"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92157777"
 ---
 :::row:::
     :::column span="3":::
@@ -25,7 +25,7 @@ ms.locfileid: "87374827"
 
 このパッケージを Android Studio プロジェクトから使用するには、次の変更を行います。
 
-1. プロジェクトレベルでの*build.grandle*ファイルで、`repository` セクションに次のものを追加します：
+1. プロジェクトレベルでの*build.grandle*ファイルで、`repositories` セクションに次のものを追加します：
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
