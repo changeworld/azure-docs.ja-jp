@@ -4,12 +4,12 @@ description: この記事では、Event Grid イベント ソースとして Azu
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
-ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f84146a0513d02484f8f84560e04a977fb3ef373
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340542"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145829"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Communication Services
 
@@ -23,7 +23,7 @@ ms.locfileid: "91340542"
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
-Event Grid は、[イベント サブスクリプション](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 
+Event Grid は、[イベント サブスクリプション](./concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 
 
 Azure Communication Services から出力されるイベントの種類は次のとおりです。
 
@@ -45,7 +45,7 @@ Azure Communication Services から出力されるイベントの種類は次の
 
 ## <a name="event-subjects"></a>イベントの件名
 
-すべての Communication Services イベントの `subject` フィールドは、イベントの対象となるユーザー、電話番号、またはエンティティを識別します。 単純な [Event Grid のフィルター処理](https://docs.microsoft.com/azure/event-grid/event-filtering)を可能にするために、共通プレフィックスが使用されます。
+すべての Communication Services イベントの `subject` フィールドは、イベントの対象となるユーザー、電話番号、またはエンティティを識別します。 単純な [Event Grid のフィルター処理](./event-filtering.md)を可能にするために、共通プレフィックスが使用されます。
 
 | 件名のプレフィックス                              | Communication Service エンティティ |
 | ------------------------------------------- | ---------------------------- |
@@ -345,6 +345,6 @@ Azure Communication Services から出力されるイベントの種類は次の
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Event Grid の概要については、[Event Grid の紹介](https://docs.microsoft.com/azure/event-grid/overview)に関する記事を参照してください。
-* Azure Event Grid の概念の概要については、[Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)に関する記事を参照してください。
-* Azure Event Grid のシステム トピックの概要については、「[Azure Event Grid でのシステム トピック](https://docs.microsoft.com/azure/event-grid/system-topics)」を参照してください。
+* Azure Event Grid の概要については、[Event Grid の紹介](./overview.md)に関する記事を参照してください。
+* Azure Event Grid の概念の概要については、[Event Grid の概念](./concepts.md)に関する記事を参照してください。
+* Azure Event Grid のシステム トピックの概要については、「[Azure Event Grid でのシステム トピック](./system-topics.md)」を参照してください。

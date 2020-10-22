@@ -3,12 +3,12 @@ title: 大規模なコンテナーの診断設定を構成する
 description: Azure Policy を使用して、特定のスコープ内のすべてのコンテナーに対してログ分析診断設定を構成します
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293086"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171530"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模なコンテナーの診断設定を構成する
 
@@ -27,6 +27,8 @@ Azure Backup によって提供されるレポート作成ソリューション�
 * 管理グループのスコープは、現在サポートされていません。
 
 * 組み込みのポリシーは、現在、国内のクラウドでは使用できません。
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="assigning-the-built-in-policy-to-a-scope"></a>組み込みポリシーをスコープに割り当てる
 

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506629"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171458"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -437,7 +437,7 @@ Azure VM が既にバックアップされている場合は、保護のポリ�
 > [!IMPORTANT]
 > 上記の要求本文は常に、除外するまたは含めるデータ ディスクの最終的なコピーです。 前の構成に "*追加*" されるわけではありません。 次に例を示します。最初に "データ ディスク 1 を除外する" として保護を更新し、その後に、"データ ディスク 2 を除外する" で保護を更新した場合、その後のバックアップでは "*データ ディスク 2 のみが除外*" され、データ ディスク 1 は含まれます。 これは、常に、その後のバックアップで含まれる、または除外される最終的な一覧です。
 
-除外される、または含まれるディスクの最新の一覧を取得するには、[こちら](https://docs.microsoft.com/rest/api/backup/protecteditems/get)に記載されている保護された項目の情報を取得してください。 応答には、データ ディスク LUN の一覧が示され、それらが含まれるかのか除外されるのかが示されます。
+除外される、または含まれるディスクの最新の一覧を取得するには、[こちら](/rest/api/backup/protecteditems/get)に記載されている保護された項目の情報を取得してください。 応答には、データ ディスク LUN の一覧が示され、それらが含まれるかのか除外されるのかが示されます。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>保護を停止するが既存のデータを保持する
 

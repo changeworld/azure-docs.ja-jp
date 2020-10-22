@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: b762b77788c3df05fbd0db349457abadcbe39b51
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766943"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147706"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -59,7 +59,7 @@ IoT Hub は JSON 形式だけでなく、[Apache Avro](https://avro.apache.org/)
 
 このエンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。既存のエンドポイントに応じて編集することはできません。 既存のエンドポイントのエンコード形式を切り替えるには、カスタム エンドポイントを削除してから必要な形式で再作成する必要があります。 便利な方法の 1 つとして、目的のエンコード形式で新しいカスタム エンドポイントを作成し、そのエンドポイントに並列ルートを追加する方法があります。 これにより、既存のエンドポイントを削除する前にデータを確認できます。
 
-エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint) を使用して選択できます。 次の画像は、Azure portal でエンコード形式を選択する方法を示しています。
+エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint) を使用して選択できます。 次の画像は、Azure portal でエンコード形式を選択する方法を示しています。
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -71,7 +71,7 @@ IoT Hub は、バッチが特定のサイズに達するか、または一定の
 
 任意のファイル名前付け規則を使用可能ですが、一覧で示されているすべてのトークンを使う必要があります。 書き込むデータがない場合、IoT ハブは空の BLOB に書き込みます。
 
-パーティションを前提にすることなくすべての BLOB またはファイルが確実に読み取られるようにするために、BLOB またはファイルは一覧表示してから反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 ガイダンスとして次のサンプルを参照してください。
+パーティションを前提にすることなくすべての BLOB またはファイルが確実に読み取られるようにするために、BLOB またはファイルは一覧表示してから反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 ガイダンスとして次のサンプルを参照してください。
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
@@ -115,12 +115,12 @@ IoT Hub エンドポイントとして使用される Service Bus のキュー�
 
 * [Service Bus キュー](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)からの読み取り
 
-* [Service Bus トピック](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)からの読み取り
+* [Service Bus トピック](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)からの読み取り
 
 
 ## <a name="fallback-route"></a>フォールバック ルート
 
-フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](/azure/event-hubs/) との互換性がある組み込みのイベント ハブ (**messages/events**) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
+フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](../event-hubs/index.yml) との互換性がある組み込みのイベント ハブ (**messages/events**) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
 
 Azure portal の [メッセージ ルーティング] ブレードで、フォールバック ルートを有効または無効にすることができます。 また、Azure Resource Manager で [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) を使用して、フォールバック ルート用にカスタム エンドポイントが使用されるようにすることもできます。
 
@@ -148,7 +148,7 @@ IoT Hub メッセージ ルーティングでは、エンドポイントへの�
 
 ## <a name="monitoring-and-troubleshooting"></a>監視とトラブルシューティング
 
-IoT Hub には、ハブの正常性と送信されたメッセージの概要を示す、ルーティングおよびエンドポイント関連のメトリックがいくつか用意されています。 [IoT Hub メトリック](iot-hub-metrics.md)に関するページには、IoT ハブで既定で有効になっているすべてのメトリックが一覧で示されています。 Azure Monitor の[診断設定](../iot-hub/iot-hub-monitor-resource-health.md)の**ルート**診断ログを使用すると、IoT Hub に認識されたエンドポイントの正常性とルーティング クエリの評価中に発生したエラーを追跡することができます。 REST API の [GetEndpointHealth](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得できます。 
+IoT Hub には、ハブの正常性と送信されたメッセージの概要を示す、ルーティングおよびエンドポイント関連のメトリックがいくつか用意されています。 [IoT Hub メトリック](iot-hub-metrics.md)に関するページには、IoT ハブで既定で有効になっているすべてのメトリックが一覧で示されています。 Azure Monitor の[診断設定](../iot-hub/iot-hub-monitor-resource-health.md)の**ルート**診断ログを使用すると、IoT Hub に認識されたエンドポイントの正常性とルーティング クエリの評価中に発生したエラーを追跡することができます。 REST API の [GetEndpointHealth](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得できます。 
 
 ルーティングのトラブルシューティングに関する詳細とサポートが必要な場合、[ルーティングのトラブルシューティング ガイド](troubleshoot-message-routing.md) ページを参照してください。
 

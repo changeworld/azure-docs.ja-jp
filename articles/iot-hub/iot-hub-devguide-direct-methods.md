@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: f68705309d15548dc9728686e2e0ecd6aaad3fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334108"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147803"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -55,7 +55,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 デバイスでのダイレクト メソッドの呼び出しは HTTPS 呼び出しであり、次で構成されます。
 
-* [API バージョン](https://docs.microsoft.com/rest/api/iothub/service/devices/invokemethod)が適合するデバイスに固有の*要求の URI*:
+* [API バージョン](/rest/api/iothub/service/devices/invokemethod)が適合するデバイスに固有の*要求の URI*:
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

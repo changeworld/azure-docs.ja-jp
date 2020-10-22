@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04f95372eb050c3eea08d50d4c9bdbd3a0232b1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759092"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282341"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -196,7 +196,7 @@ Microsoft は、顧客からはその現地通貨で支払いを受け取り、�
 
 - [Azure アプリケーション オファーを作成する](partner-center-portal/create-new-azure-apps-offer.md)
 - [Azure コンテナー オファーを作成する](partner-center-portal/create-azure-container-offer.md)
-- [Azure 仮想マシン オファーを作成する](partner-center-portal/azure-vm-create-offer.md)
+- [Azure 仮想マシン オファーを作成する](azure-vm-create.md)
 - [コンサルティング サービス オファーの作成](partner-center-portal/create-consulting-service-offer.md)
 - [Dynamics 365 for Customer Engagement & PowerApps オファーの作成](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations オファーの作成](partner-center-portal/create-new-operations-offer.md)

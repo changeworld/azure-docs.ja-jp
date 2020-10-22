@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e9eeca39dfbbefd36c9662aa0fc8b16d2c804158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ef3347b6f22d623571c8fe9cc8b156bfd92c411
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252988"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282555"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET のサンプル
 
@@ -53,7 +53,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 > 
 
 ## <a name="database-examples"></a>データベースのサンプル
-サンプルの *DatabaseManagement* プロジェクトの [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos データベースについて知るために、「[データベース、コンテナー、アイテムの操作](databases-containers-items.md)」を参照してください。 
+サンプルの *DatabaseManagement* プロジェクトの [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos データベースについて知るために、「[データベース、コンテナー、アイテムの操作](account-databases-containers-items.md)」を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -63,7 +63,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 | [データベースの削除](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L89) |[DocumentClient.DeleteDatabaseAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedatabaseasync) |
 
 ## <a name="collection-examples"></a>コレクションのサンプル
-サンプルの *CollectionManagement* プロジェクトの [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos コレクションについて知るために、「[データベース、コンテナー、アイテムの操作](databases-containers-items.md)」を参照してください。 
+サンプルの *CollectionManagement* プロジェクトの [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos コレクションについて知るために、「[データベース、コンテナー、アイテムの操作](account-databases-containers-items.md)」を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -74,7 +74,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 | [コレクションの削除](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L228) |[DocumentClient.DeleteDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync) |
 
 ## <a name="document-examples"></a>ドキュメントのサンプル
-サンプルの *DocumentManagement* プロジェクトの [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos ドキュメントについて知るために、「[データベース、コンテナー、アイテムの操作](databases-containers-items.md)」を参照してください。 
+サンプルの *DocumentManagement* プロジェクトの [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos ドキュメントについて知るために、「[データベース、コンテナー、アイテムの操作](account-databases-containers-items.md)」を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |

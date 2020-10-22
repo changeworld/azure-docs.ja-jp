@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 9c51ce726545d1c64d69c86c36fc69ea43c3b882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c63cee1c451918569e9b7aa2e76209e8069d86ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76279522"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167656"
 ---
-[Application Insights のメトリックを計算する](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator)ときに集計される関数呼び出しの数を指定します。 
+[Application Insights のメトリックを計算する](../articles/azure-functions/configure-monitoring.md#configure-the-aggregator)ときに集計される関数呼び出しの数を指定します。 
 
 ```json
 {

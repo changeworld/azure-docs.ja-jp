@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514749"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143258"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR Service のサービス モード
 
@@ -51,11 +51,11 @@ Azure SignalR サービスでは現在、**既定**、**サーバーレス**、*
 > [!NOTE]
 > REST API と WebSocket のどちらの方法も、SignalR Service の[管理 SDK](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md) でサポートされています。 .NET 以外の言語を使用している場合でも、この[仕様](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)に従って、REST API を手動で呼び出すことができます。
 >
-> Azure Functions を使用している場合は、[Azure Functions に対する SignalR Service のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) (以下では関数バインドと呼びます) を使用して、出力バインドとしてメッセージを送信できます。
+> Azure Functions を使用している場合は、[Azure Functions に対する SignalR Service のバインド](../azure-functions/functions-bindings-signalr-service.md) (以下では関数バインドと呼びます) を使用して、出力バインドとしてメッセージを送信できます。
 
 また、サーバー アプリケーションでクライアントからメッセージと接続イベントを受信することもできます。 サービスでは、Webhook を使用して、構成済みのエンドポイント (アップストリームと呼ばれます) にメッセージと接続イベントが配信されます。 既定モードと比較すると、持続性が保証されず、HTTP 要求は WebSocket 接続より効率が劣る場合があります。
 
-アップストリームを構成する方法の詳細については、こちらの[ドキュメント](https://docs.microsoft.com/azure/azure-signalr/concept-upstream)を参照してください。
+アップストリームを構成する方法の詳細については、こちらの[ドキュメント](./concept-upstream.md)を参照してください。
 
 次の図は、サーバーレス モードの動作を示したものです。
 

@@ -6,19 +6,19 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3179daec361aa287b79c5e9a468908d0ccdd2982
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759429"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143949"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor ビュー デザイナーからブックへの移行ガイド
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらはブックに移行されており、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 この記事は、ビュー デザイナーからブックへの移行を行う際に役立ちます。 
 
 
 ## <a name="workbooks-overview"></a>ブックの概要
-[ブック](../insights/vminsights-workbooks.md)では、テキスト、 [ログ クエリ](../log-query/query-language.md)、メトリック、パラメーターが、内容豊富な対話型レポートに組み合わされます。 Azure リソースに対して同じアクセス権を持つチーム メンバーがブックを編集することもできます。
+[ブック](../insights/vminsights-workbooks.md)では、テキスト、 [ログ クエリ](/azure/data-explorer/kusto/query/)、メトリック、パラメーターが、内容豊富な対話型レポートに組み合わされます。 Azure リソースに対して同じアクセス権を持つチーム メンバーがブックを編集することもできます。
 
 Workbooks は次のようなシナリオで便利です。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227714"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309148"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 用の Azure セキュリティ ベースライン
 
@@ -78,7 +78,7 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 * [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -488,7 +488,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
-* [カスタマー マネージド暗号化キーを構成する方法](../storage/common/storage-encryption-keys-portal.md)
+* [カスタマー マネージド暗号化キーを構成する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Windows での Azure Service Fabric クラスター ノードのディスク暗号化の有効化](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 * [Service Fabric クラスターでの制御された混乱の誘発](./service-fabric-controlled-chaos.md)
 
-* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -698,7 +698,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 * [Azure Storage の保存時の暗号化](../storage/common/storage-service-encryption.md)
 
-* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 

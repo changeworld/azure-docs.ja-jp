@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600502"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308952"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -60,7 +60,7 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 影響を受けたアカウントの問題を解決し、環境を保護するために、以下の操作を実行してください。
 
 1.  多要素認証とセルフサービス パスワード リセットに関する[情報が正しいことを検証](https://aka.ms/MFAValid)します。 
-2.  すべてのユーザーの[多要素認証を有効](https://aka.ms/MFAuth)にします。 
+2.  すべてのユーザーの[多要素認証を有効](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication)にします。 
 3.  この[修復スクリプト](https://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行します。 
 
     a. パスワードをリセットしてアカウントを保護し、アクティブなセッションを強制終了します。
@@ -85,8 +85,8 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 
 他にも、以下の作業が必要です。
 
-- [異常なアクティビティへの対処に関するこのガイダンス](https://aka.ms/fixaccount)を読み、実装します。 
-- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](https://aka.ms/improvesecurity)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](https://aka.ms/sccsearch)を活用することもできます。 
+- [異常なアクティビティへの対処に関するこのガイダンス](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account)を読み、実装します。 
+- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](https://aka.ms/sccsearch)を活用することもできます。 
 - すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
 ## <a name="next-steps"></a>次のステップ
