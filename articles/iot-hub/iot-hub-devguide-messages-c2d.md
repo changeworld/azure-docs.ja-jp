@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
-ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daf4fb2ab9650c3a68b8862fd391817d5ff626b0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81730008"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147757"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -147,7 +147,7 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 
     ![ポータルでの cloud-to-device メッセージングの構成オプションの設定](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**:[az iot hub update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) コマンドを使用します。
+* **Azure CLI**:[az iot hub update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) コマンドを使用します。
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

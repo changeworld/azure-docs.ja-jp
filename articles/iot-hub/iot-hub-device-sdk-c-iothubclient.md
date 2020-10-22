@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732600"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149133"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
 
@@ -28,7 +28,7 @@ ms.locfileid: "81732600"
 
 **IoTHubClient** SDK のサンプルを使用して、これらのトピックを説明します。 この内容に従って理解するには、C 用 Azure IoT device SDK に含まれている **iothub\_client\_sample\_http** と **iothub\_client\_sample\_amqp** の各アプリケーションを確認してください。以降のセクションで説明する内容はすべて、これらのサンプルで例示します。
 
-[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)に関するページで確認できます。
+[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](/azure/iot-hub/iot-c-sdk-ref/)に関するページで確認できます。
 
 ## <a name="the-lower-level-apis"></a>下位レベルの API
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 まず、**IoTHubMessage\_Properties** を呼び出してメッセージのハンドルを渡します。 返されるのは、プロパティを追加することができる **MAP\_HANDLE** 参照です。 最後に、MAP\_HANDLE への参照、プロパティ名、プロパティ値を取得する **Map\_AddOrUpdate** を呼び出します。 この API を使用すると、必要な数のプロパティを追加できます。
 
-イベントが **Event Hub**から読み込まれると、受信側はプロパティを列挙して対応する値を取得することができます。 たとえば、.NET では、 [EventData オブジェクトのプロパティ コレクション](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)にアクセスしてこれを実行することができます。
+イベントが **Event Hub**から読み込まれると、受信側はプロパティを列挙して対応する値を取得することができます。 たとえば、.NET では、 [EventData オブジェクトのプロパティ コレクション](/dotnet/api/microsoft.servicebus.messaging.eventdata)にアクセスしてこれを実行することができます。
 
 前の例では、IoT Hub に送信するイベントにプロパティを添付しています。 プロパティは IoT Hub から受信するメッセージに添付することもできます。 メッセージからプロパティを取得する必要がある場合は、メッセージのコールバック関数で次のようなコードを使用できます。
 
@@ -277,4 +277,4 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 IoT Hub 用の開発の詳細については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 
-IoT Hub の機能の詳細については、「[Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)」を参照してください。
+IoT Hub の機能の詳細については、「[Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)」を参照してください。

@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントベー
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffdbdba0aeae33b04195c5a6bf6aeaff5658424b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296146"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314718"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -391,7 +391,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：

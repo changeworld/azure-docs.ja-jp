@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 9c42d1d988bc280d5e62c24f109225d91cb446ce
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: fa87ee06e0ed01828148a58b2d2f754a40d8803a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893494"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088467"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>SQL オンデマンドを使用してデータを分析する
 

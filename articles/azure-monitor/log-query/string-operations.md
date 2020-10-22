@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/16/2018
-ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 7838f9f1febcab073633dbb4af011e99acbe22d3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75397462"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310292"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
@@ -74,8 +74,8 @@ print @"C:\backslash\not\escaped\with @ prefix"
 `!startswith_cs`  |右辺が左辺の先頭のサブシーケンスでない|はい        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |右辺が左辺の末尾のサブシーケンスである|いいえ             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |右辺が左辺の末尾のサブシーケンスでない|いいえ         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |右辺が左辺の末尾のサブシーケンスである|はい             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |右辺が左辺の末尾のサブシーケンスでない|はい         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |右辺が左辺の末尾のサブシーケンスである|はい             |`"Fabrikam" endswith_cs "kam"`
+`!endswith_cs`    |右辺が左辺の末尾のサブシーケンスでない|はい         |`"Fabrikam" !endswith_cs "brik"`
 `matches regex`|左辺には右辺の一致が含まれている        |はい           |`"Fabrikam" matches regex "b.*k"`
 `in`           |要素のいずれかに等しい       |はい           |`"abc" in ("123", "345", "abc")`
 `!in`          |要素のいずれとも等しくない   |はい           |`"bca" !in ("123", "345", "abc")`

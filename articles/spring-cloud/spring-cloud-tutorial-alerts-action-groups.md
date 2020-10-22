@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892534"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089980"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する方法
 
@@ -113,7 +113,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 このチュートリアルでは、Azure Spring Cloud アプリケーションのアラートとアクション グループを設定する方法について学習しました。 アクション グループの詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [アクション グループの SMS アラート動作](../azure-monitor/platform/alerts-sms-behavior.md)

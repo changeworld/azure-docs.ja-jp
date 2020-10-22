@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 1fc768890e932d1f17ad111b4681b75721ae1e06
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628419"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148100"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの配置
 
@@ -67,8 +67,8 @@ postgres01-2         3/3     Running   0          9h
 これらのポッドでは、それぞれ PostgreSQL インスタンスをホストしています。 これらは、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを共に形成しています。
 
 ```output
-Pod name    Role in the server group
-postgres01-0            Coordinator
+Pod name        Role in the server group
+postgres01-0  Coordinator
 postgres01-1    Worker
 postgres01-2    Worker
 ```

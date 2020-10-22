@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して、オンプレミ�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7cbd7939248686a251fdf56bf1a5f1acc952a3a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442297"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314080"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>チュートリアル:Server Assessment を使用して物理サーバーを検出する
 
@@ -208,7 +208,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
    
    PIN を使用したサインインはサポートされていません。
 3. 正常にログインしたら、Web アプリに戻ります。 
-4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可]()が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 
@@ -245,5 +245,3 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
 - Azure VM への移行のために[物理サーバーを評価](tutorial-assess-physical.md)します。
 - 検出中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---physical)します。
-
-

@@ -4,17 +4,17 @@ description: Service Fabric コンテナー サービスに証明書ファイル
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050745"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313696"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric で実行されているコンテナーに証明書ファイルをインポートする
 
 > [!NOTE]
-> Azure 上で実行されている Service Fabric クラスターの場合は、[Service Fabric アプリケーション マネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を使用して、コンテナー内からアプリケーション証明書をプロビジョニングすることをお勧めします。 マネージド ID により、シークレットと証明書がサービス レベルで分離され、アプリケーション証明書のプロビジョニングをインフラストラクチャのワークフローではなく、アプリケーションのワークフローの一部にすることができます。 CertificateRef メカニズムは、将来のリリースでは非推奨となる予定です。
+> Azure 上で実行されている Service Fabric クラスターの場合は、[Service Fabric アプリケーション マネージド ID](./concepts-managed-identity.md) を使用して、コンテナー内からアプリケーション証明書をプロビジョニングすることをお勧めします。 マネージド ID により、シークレットと証明書がサービス レベルで分離され、アプリケーション証明書のプロビジョニングをインフラストラクチャのワークフローではなく、アプリケーションのワークフローの一部にすることができます。 CertificateRef メカニズムは、将来のリリースでは非推奨となる予定です。
 
 証明書を指定して、コンテナー サービスをセキュリティで保護することができます。 Service Fabric には、コンテナー内のサービスから、Windows または Linux クラスター (バージョン 5.7 以降) のノードにインストールされている証明書にアクセスできるしくみがあります。 この証明書は、クラスターのすべてのノードの LocalMachine 下の証明書ストアにインストールする必要があります。 証明書に対応する秘密キーが利用可能、アクセス可能、および (Windows 上で) エクスポート可能である必要があります。 次のスニペットのように、証明書情報は `ContainerHostPolicies` タグのアプリケーション マニフェストで提供されます。
 

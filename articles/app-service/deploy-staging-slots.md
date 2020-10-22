@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962164"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150333"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
 
-実行している App Service プランのサービス レベルが **Standard**、**Premium**、または **Isolated** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、または API アプリを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) にデプロイするときに、既定の運用スロットではなく別個のデプロイ スロットを使用できます。 デプロイ スロットは、固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 
+実行している App Service プランのサービス レベルが **Standard**、**Premium**、または **Isolated** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、または API アプリを [Azure App Service](./overview.md) にデプロイするときに、既定の運用スロットではなく別個のデプロイ スロットを使用できます。 デプロイ スロットは、固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 
 
 非運用スロットにアプリケーションをデプロイすることには、次のメリットがあります。
 

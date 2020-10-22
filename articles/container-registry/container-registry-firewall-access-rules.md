@@ -3,12 +3,12 @@ title: ファイアウォール アクセス規則
 description: ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成します。これには、("ホワイトリスト登録") REST API およびデータ エンドポイントのドメイン名またはサービス固有の IP アドレス範囲へのアクセスを許可します。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246981"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148519"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する
 
@@ -113,7 +113,7 @@ ms.locfileid: "86246981"
 
 ## <a name="allow-access-by-service-tag"></a>サービス タグによるアクセスを許可する
 
-Azure 仮想ネットワークでは、ネットワーク セキュリティ規則を使用して、仮想マシンなどのリソースからコンテナー レジストリへのトラフィックをフィルター処理します。 Azure ネットワーク規則の作成を簡略化するには、**AzureContainerRegistry** の[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用します。 サービス タグは、グローバルまたは Azure リージョンごとに Azure サービスにアクセスするための IP アドレス プレフィックスのグループを表します。 アドレスが変更されると、タグは自動的に更新されます。 
+Azure 仮想ネットワークでは、ネットワーク セキュリティ規則を使用して、仮想マシンなどのリソースからコンテナー レジストリへのトラフィックをフィルター処理します。 Azure ネットワーク規則の作成を簡略化するには、**AzureContainerRegistry** の[サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)を使用します。 サービス タグは、グローバルまたは Azure リージョンごとに Azure サービスにアクセスするための IP アドレス プレフィックスのグループを表します。 アドレスが変更されると、タグは自動的に更新されます。 
 
 たとえば、Azure コンテナー レジストリへのトラフィックを許可するために、宛先が **AzureContainerRegistry** の送信ネットワーク セキュリティ グループの規則を作成します。 特定のリージョンでのみサービス タグへのアクセスを許可するには、次の形式でリージョンを指定します。**AzureContainerRegistry**.[*リージョン名*]
 
@@ -183,7 +183,7 @@ az acr show-endpoints --name myregistry
 
 * [Azure のネットワーク セキュリティのベスト プラクティス](../security/fundamentals/network-best-practices.md)について学習する
 
-* Azure 仮想ネットワークの[セキュリティ グループ](../virtual-network/security-overview.md)について学習する
+* Azure 仮想ネットワークの[セキュリティ グループ](../virtual-network/network-security-groups-overview.md)について学習する
 
 * コンテナー レジストリの [Private Link](container-registry-private-link.md) の設定について学習する
 

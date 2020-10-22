@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255198"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150228"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
 App Service Environment は、Virtual Network にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、物理的なアプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 このサブネットに NSG を適用すると、アップストリームにある 3 つの App Service Environment と、API バックエンドを含んだ 1 つの App Service Environment とにのみ、"apiase" 環境に対する呼び出しが許可されるようになります。
 
 ## <a name="additional-links-and-information"></a>その他のリンクおよび情報
-[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)に関する情報。
+[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)に関する情報。
 
 [送信 IP アドレス][NetworkArchitecture]と App Service 環境について。
 

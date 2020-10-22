@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892887"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088671"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>チュートリアル:Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)
 
@@ -27,7 +27,7 @@ ms.locfileid: "90892887"
 * Azure Spring Cloud の送受信ネットワーク通信を制御するための顧客への権限付与
 
 ## <a name="prerequisites"></a>前提条件
-[Azure portal でのリソース プロバイダーの登録](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)に関する記事の手順に従って、または次の az CLI コマンドを実行することによって、Azure Spring Cloud リソース プロバイダー `Microsoft.AppPlatform` を登録する必要があります。
+[Azure portal でのリソース プロバイダーの登録](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関する記事の手順に従って、または次の az CLI コマンドを実行することによって、Azure Spring Cloud リソース プロバイダー `Microsoft.AppPlatform` を登録する必要があります。
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform

@@ -3,12 +3,12 @@ title: Azure Migrate での検出、評価、および依存関係分析に関�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 074f58a2f6c24f106de6b2b5003ce2dfd428f356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577273"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312934"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -50,7 +50,7 @@ ms.locfileid: "91577273"
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
 
-信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
+信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](./concepts-assessment-calculation.md#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
 
 - 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を "再計算" してください。
  
@@ -58,7 +58,7 @@ ms.locfileid: "91577273"
 
 - Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
 
-信頼度レーティングに関する[詳細についてはこちら](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)をご覧ください。
+信頼度レーティングに関する[詳細についてはこちら](./concepts-assessment-calculation.md#confidence-ratings-performance-based)をご覧ください。
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成しているときに一部のグループが表示されません
 

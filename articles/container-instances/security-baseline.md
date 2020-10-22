@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393430"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148637"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
 
@@ -73,7 +73,7 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 * [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 * [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 * [サービス タグの概要と使用](../virtual-network/service-tags-overview.md) 
 
-* [アプリケーション セキュリティ グループの概要と使用](../virtual-network/security-overview.md#application-security-groups)
+* [アプリケーション セキュリティ グループの概要と使用](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry と Security Center の統合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center の監視**: はい
 
@@ -652,7 +652,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry と Security Center の統合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center の監視**: はい
 
@@ -664,7 +664,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry と Security Center の統合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center の監視**: はい
 
@@ -707,7 +707,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 * [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
 * [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
-* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry と Security Center の統合](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -825,7 +825,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Container Instances のコンテナーの監視とスキャンに関するセキュリティについての推奨事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry と Security Center の統合](../security-center/defender-for-container-registries-introduction.md)
 * [Azure Container Registry タスクの基本イメージの更新について](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 **ガイダンス**: Azure Key Vault で論理的な削除を有効にすれば、偶発的な削除や悪意のある削除からキーを保護することができます。
 
-* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 

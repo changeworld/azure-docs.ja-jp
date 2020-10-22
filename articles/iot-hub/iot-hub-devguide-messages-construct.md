@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766970"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147701"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -24,7 +24,7 @@ ms.locfileid: "91766970"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の device-to-cloud メッセージは、[Service Bus](/azure/service-bus-messaging/) の "*メッセージ*" というよりはむしろ [Event Hubs](/azure/event-hubs/) の "*イベント*" であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
+IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の device-to-cloud メッセージは、[Service Bus](../service-bus-messaging/index.yml) の "*メッセージ*" というよりはむしろ [Event Hubs](../event-hubs/index.yml) の "*イベント*" であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
 
 IoT Hub メッセージは、次のような構成です。
 

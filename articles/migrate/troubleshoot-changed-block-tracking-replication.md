@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871184"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314729"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -90,7 +90,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
     
     **パフォーマンス ベンチマーク テストを実行する手順:**
     
-      1. azcopy を[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2138966)します
+      1. azcopy を[ダウンロード](../storage/common/storage-use-azcopy-v10.md)します
         
       2. リソース グループでアプライアンス ストレージ アカウントを探します。 ストレージ アカウントは、migrategwsa\*\*\*\*\*\*\*\*\*\* のような名前です。 これは、上記のコマンドのパラメーター [account] の値です。
         
@@ -170,7 +170,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
     
     **パフォーマンス ベンチマーク テストを実行する手順:**
     
-      1. azcopy を[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2138966)します
+      1. azcopy を[ダウンロード](../storage/common/storage-use-azcopy-v10.md)します
         
       2. リソース グループでアプライアンス ストレージ アカウントを探します。 ストレージ アカウントは、migratelsa\*\*\*\*\*\*\*\*\*\* のような名前です。 これは、上記のコマンドのパラメーター [account] の値です。
         
@@ -295,4 +295,4 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 
 ## <a name="next-steps"></a>次の手順
 
-VM レプリケーションを続行し、[テスト移行](https://go.microsoft.com/fwlink/?linkid=2139333)を実行します。
+VM レプリケーションを続行し、[テスト移行](./tutorial-migrate-vmware.md#run-a-test-migration)を実行します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888467"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090711"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure Spring Cloud でステージング環境を設定する
 
@@ -22,7 +22,7 @@ ms.locfileid: "90888467"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure Spring Cloud アプリケーションの起動に関するチュートリアル](spring-cloud-quickstart-launch-app-portal.md)の PiggyMetrics アプリケーションを既にデプロイしてあることを前提としています。 PiggyMetrics は、"gateway"、"account-service"、"auth-service" という 3 つのアプリケーションで構成されます。  
+この記事では、[Azure Spring Cloud アプリケーションの起動に関するチュートリアル](./spring-cloud-quickstart.md)の PiggyMetrics アプリケーションを既にデプロイしてあることを前提としています。 PiggyMetrics は、"gateway"、"account-service"、"auth-service" という 3 つのアプリケーションで構成されます。  
 
 この例に別のアプリケーションを使用したい場合は、そのアプリケーションの公開部分に簡単な変更を加える必要があります。  その変更により、ステージング環境のデプロイが運用環境と区別されます。
 

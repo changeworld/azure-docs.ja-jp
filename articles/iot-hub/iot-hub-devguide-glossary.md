@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023468"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147788"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 
@@ -28,19 +28,19 @@ ms.locfileid: "87023468"
 
 ## <a name="automatic-device-management"></a>自動デバイス管理
 
-Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](iot-hub-auto-device-config.md)と [IoT Edge の自動展開](../iot-edge/how-to-deploy-at-scale.md)で構成されます。
+Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](./iot-hub-automatic-device-management.md)と [IoT Edge の自動展開](../iot-edge/how-to-deploy-at-scale.md)で構成されます。
 
 ## <a name="automatic-device-configuration"></a>自動デバイス構成
 
-ソリューション バックエンドは、[自動デバイス構成](iot-hub-auto-device-config.md)を使用することで、[デバイス ツイン](#device-twin)のセットに必要なプロパティを割り当て、システム メトリックとカスタム メトリックを使って状態を報告することができます。 
+ソリューション バックエンドは、[自動デバイス構成](./iot-hub-automatic-device-management.md)を使用することで、[デバイス ツイン](#device-twin)のセットに必要なプロパティを割り当て、システム メトリックとカスタム メトリックを使って状態を報告することができます。 
 
 ## <a name="azure-classic-cli"></a>Azure クラシック CLI
 
-[Azure クラシック CLI](../cli-install-nodejs.md) は、Microsoft Azure 上のリソースを作成したり、管理したりするためのクロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 このバージョンの CLI は、クラシック デプロイのみで使用してください。
+[Azure クラシック CLI](/cli/azure/install-classic-cli) は、Microsoft Azure 上のリソースを作成したり、管理したりするためのクロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 このバージョンの CLI は、クラシック デプロイのみで使用してください。
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。
+[Azure CLI](/cli/azure/install-az-cli2) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
 
@@ -72,7 +72,7 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 
-[Service Bus](../service-bus/index.md) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
+[Service Bus](../service-bus-messaging/index.yml) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -96,7 +96,7 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 
 ## <a name="configuration"></a>構成
 
-[自動デバイス構成](iot-hub-auto-device-config.md)のコンテキストでは、IoT Hub 内の構成は、デバイス ツインのセットに必要な構成を定義し、状態と進行状況を報告するためのメトリックのセットを提供します。
+[自動デバイス構成](./iot-hub-automatic-device-management.md)のコンテキストでは、IoT Hub 内の構成は、デバイス ツインのセットに必要な構成を定義し、状態と進行状況を報告するためのメトリックのセットを提供します。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -164,7 +164,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 
 ## <a name="device-rest-api"></a>デバイス REST API
 
-デバイスから [Device REST API](https://docs.microsoft.com/rest/api/iothub/device) を使用して、デバイスからクラウドへのメッセージを IoT Hub に送信し、[クラウドからデバイスへ](#cloud-to-device)のメッセージを IoT Hub から受信できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[デバイス SDK](#azure-iot-device-sdks) のいずれかを使用する必要があります。
+デバイスから [Device REST API](/rest/api/iothub/device) を使用して、デバイスからクラウドへのメッセージを IoT Hub に送信し、[クラウドからデバイスへ](#cloud-to-device)のメッセージを IoT Hub から受信できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[デバイス SDK](#azure-iot-device-sdks) のいずれかを使用する必要があります。
 
 ## <a name="device-provisioning"></a>デバイス プロビジョニング
 
@@ -184,7 +184,7 @@ IoT Hub は、アプリの IoT Hub への接続を有効にする複数の[エ�
 
 ## <a name="event-hubs-service"></a>Event Hubs サービス
 
-[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、拡張性の高いデータ イングレス サービスであり、1 秒間に数百万件のイベントを取り込むことができます。 このサービスを使用すれば、接続デバイスやアプリケーションが生成する膨大な量のデータを処理し、分析することができます。 IoT Hub サービスとの比較については、「[Comparison of Azure IoT Hub and Azure Event Hubs (Azure IoT Hub と Azure Event Hubs の比較)](iot-hub-compare-event-hubs.md)」を参照してください。
+[Event Hubs](../event-hubs/event-hubs-about.md) は、拡張性の高いデータ イングレス サービスであり、1 秒間に数百万件のイベントを取り込むことができます。 このサービスを使用すれば、接続デバイスやアプリケーションが生成する膨大な量のデータを処理し、分析することができます。 IoT Hub サービスとの比較については、「[Comparison of Azure IoT Hub and Azure Event Hubs (Azure IoT Hub と Azure Event Hubs の比較)](iot-hub-compare-event-hubs.md)」を参照してください。
 
 ## <a name="event-hub-compatible-endpoint"></a>Event Hub と互換性があるエンドポイント
 
@@ -226,7 +226,7 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub リソース REST API
 
-[IoT Hub リソース REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
+[IoT Hub リソース REST API](/rest/api/iothub/iothubresource) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
 
 ## <a name="iot-solution-accelerators"></a>IoT ソリューション アクセラレータ
 
@@ -304,7 +304,7 @@ SASL PLAIN は、AMQP プロトコルがセキュリティ トークンを転送
 
 ## <a name="service-rest-api"></a>サービス REST API
 
-ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service/configuration) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
+ソリューションのバックエンドから [Service REST API](/rest/api/iothub/service/configuration) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
 
 ## <a name="shared-access-signature"></a>共有アクセス署名
 

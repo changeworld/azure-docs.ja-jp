@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793283"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150583"
 ---
 # <a name="troubleshooting-message-routing"></a>メッセージ ルーティングのトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "84793283"
 **ルート**[診断ログ](iot-hub-monitor-resource-health.md#routes)を確認して、ルーティングとエンドポイントの[操作](#operation-names)に関する詳細情報を取得するか、エラーおよび関連する[エラー コード](#common-error-codes)を特定して問題をより深く理解します。 たとえば、ログ内の操作名 **RouteEvaluationError** は、メッセージ形式に問題があるため、ルートを評価できなかったことを示します。 この問題を軽減するには、特定の[操作名](#operation-names)に関するヒントを参考にしてください。 イベントがエラーとしてログに記録される場合、そのログにより、評価が失敗した理由に関する詳細情報も提供されます。 たとえば、操作名が **EndpointUnhealthy** の場合、[エラー コード](#common-error-codes) 403004 は、エンドポイントの領域が不足していることを示します。
 
 #### <a name="the-health-of-the-endpoint"></a>エンドポイントの正常性
-エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得するには、REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用します。 *Get Endpoint Health* API によって、最後にメッセージがエンドポイントに正常に送信された時刻、[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)、最新の既知のエラーの時刻、およびこのエンドポイントに対して送信が試行された最後の時刻に関する情報も提供されます。 特定の[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)に対して提供される軽減策を使用します。
+エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得するには、REST API の [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用します。 *Get Endpoint Health* API によって、最後にメッセージがエンドポイントに正常に送信された時刻、[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)、最新の既知のエラーの時刻、およびこのエンドポイントに対して送信が試行された最後の時刻に関する情報も提供されます。 特定の[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)に対して提供される軽減策を使用します。
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>組み込みのエンドポイントでのメッセージの受信が突然停止しました
 
@@ -52,9 +52,9 @@ ms.locfileid: "84793283"
 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 新しいルートが追加された場合に、確実にメッセージが組み込みのエンドポイントに引き続き流れるようにするには、"*イベント*" エンドポイントへのルートを構成します。 
 
 #### <a name="was-the-fallback-route-disabled"></a>フォールバック ルートは無効になっていましたか?
-フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](https://docs.microsoft.com/azure/event-hubs/) との互換性がある[組み込みのイベント ハブ](iot-hub-devguide-messages-read-builtin.md) (messages/events) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
+フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](../event-hubs/index.yml) との互換性がある[組み込みのイベント ハブ](iot-hub-devguide-messages-read-builtin.md) (messages/events) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
 
-Azure portal の [メッセージ ルーティング] ブレードで、フォールバック ルートを有効または無効にすることができます。 また、Azure Resource Manager で [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) を使用して、フォールバック ルート用にカスタム エンドポイントが使用されるようにすることもできます。
+Azure portal の [メッセージ ルーティング] ブレードで、フォールバック ルートを有効または無効にすることができます。 また、Azure Resource Manager で [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) を使用して、フォールバック ルート用にカスタム エンドポイントが使用されるようにすることもできます。
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>IoT Hub ルーティング エンドポイント対する最新の既知のエラー
 

@@ -8,16 +8,16 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908302"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088637"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
-Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
+Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
 ::: zone pivot="programming-language-csharp"
 この記事では、.NET Core Steeltoe アプリで分散トレースを使用できるようにする方法について説明します。
@@ -144,15 +144,15 @@ spring.sleuth.sampler.probability=0.5
 
 ## <a name="view-the-application-map"></a>アプリケーション マップを表示する
 
-**[分散トレース]** ページに戻り、 **[View application map]\(アプリケーション マップの表示\)** を選択します。 アプリケーションの視覚的表現と監視設定を確認します。 アプリケーション マップの使用方法については、「[アプリケーション マップ: 分散アプリケーションのトリアージ](https://docs.microsoft.com/azure/azure-monitor/app/app-map)」を参照してください。
+**[分散トレース]** ページに戻り、 **[View application map]\(アプリケーション マップの表示\)** を選択します。 アプリケーションの視覚的表現と監視設定を確認します。 アプリケーション マップの使用方法については、「[アプリケーション マップ: 分散アプリケーションのトリアージ](../azure-monitor/app/app-map.md)」を参照してください。
 
 ## <a name="use-search"></a>検索を使用する
 
-他の特定のテレメトリ項目に対するクエリを行うには、検索機能を使用します。 **[分散トレース]** ページで、 **[検索]** を選択します。 検索機能の使用方法の詳細については、「[Application Insights の検索の使用](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)」を参照してください。
+他の特定のテレメトリ項目に対するクエリを行うには、検索機能を使用します。 **[分散トレース]** ページで、 **[検索]** を選択します。 検索機能の使用方法の詳細については、「[Application Insights の検索の使用](../azure-monitor/app/diagnostic-search.md)」を参照してください。
 
 ## <a name="use-application-insights"></a>Application Insights を使用する
 
-Application Insights では、アプリケーション マップと検索機能の他に、監視機能が提供されます。 Azure portal でアプリケーションの名前を検索し、Application Insights ページを開いて監視情報を確認します。 これらのツールの使用方法の詳細については、「[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)」を参照してください。
+Application Insights では、アプリケーション マップと検索機能の他に、監視機能が提供されます。 Azure portal でアプリケーションの名前を検索し、Application Insights ページを開いて監視情報を確認します。 これらのツールの使用方法の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 ## <a name="disable-application-insights"></a>Application Insights を無効にする
 

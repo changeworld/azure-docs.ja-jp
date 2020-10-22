@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945772"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088756"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -26,7 +26,7 @@ ms.locfileid: "91945772"
 * Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照するか、既存のアプリを使用してください)。
 * GoDaddy などのドメイン プロバイダーの DNS レジストリへのアクセス権を持つドメイン名。
 * サードパーティ プロバイダーからのプライベート証明書 (つまり自己署名証明書)。 証明書はドメインと一致している必要があります。
-* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) のデプロイ済みインスタンス
+* [Azure Key Vault](../key-vault/general/overview.md) のデプロイ済みインスタンス
 
 ## <a name="import-certificate"></a>証明書のインポート
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>PFX で証明書ファイルを準備する (省略可能)
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 操作が完了したら、アプリを指す HTTPS URL のいずれかに移動します。 HTTP URL では機能しないことに注意してください。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [証明書のインポート](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Azure CLI を使用して Spring Cloud アプリを起動する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Azure Key Vault とは](../key-vault/general/overview.md)
+* [証明書のインポート](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [Azure CLI を使用して Spring Cloud アプリを起動する](./spring-cloud-quickstart.md)

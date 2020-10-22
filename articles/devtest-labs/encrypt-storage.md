@@ -3,12 +3,12 @@ title: Azure DevTest Labs のラボで使用される Azure ストレージ ア�
 description: Azure DevTest Labs のラボで使用される Azure ストレージの暗号化を構成する方法について説明します
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433509"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149313"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボで使用される Azure ストレージを暗号化する
 Azure DevTest Labs で作成されたすべてのラボは、関連付けられた Azure ストレージ アカウントを使用して作成されます。 ストレージ アカウントは、次の目的で使用されます。 
@@ -36,13 +36,13 @@ Azure DevTest Labs で作成されたすべてのラボは、関連付けられ�
 ## <a name="encrypt-the-lab-storage-account"></a>ラボ ストレージ アカウントを暗号化する
 Azure Storage によって、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage 暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 詳細については、「[保存データ向け Azure ストレージの暗号化](../storage/common/storage-service-encryption.md)」をご覧ください。
 
-ラボ ストレージ アカウント内のデータは **Microsoft マネージド キー**で暗号化されます。 Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 ラボのストレージ アカウントに対して独自のキーを使用して暗号化を管理する場合は、Azure Key Vault で**カスタマー マネージド キー**を指定して、Blob Storage および Azure Files でのデータの暗号化と暗号化の解除に使用できます。 カスタマー マネージド キーの詳細については、「[Azure Key Vault でカスタマー マネージド キーを使用して Azure Storage の暗号化を管理する](../storage/common/encryption-customer-managed-keys.md)」を参照してください。
+ラボ ストレージ アカウント内のデータは **Microsoft マネージド キー**で暗号化されます。 Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 ラボのストレージ アカウントに対して独自のキーを使用して暗号化を管理する場合は、Azure Key Vault で**カスタマー マネージド キー**を指定して、Blob Storage および Azure Files でのデータの暗号化と暗号化の解除に使用できます。 カスタマー マネージド キーの詳細については、「[Azure Key Vault でカスタマー マネージド キーを使用して Azure Storage の暗号化を管理する](../storage/common/customer-managed-keys-overview.md)」を参照してください。
 
 Azure Storage 暗号化用のカスタマー マネージド キーを構成する方法については、次の記事を参照してください。 
 
-- [Azure Portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
+- [Azure Portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>Azure Blob Storage のライフ サイクルを管理する
@@ -101,8 +101,6 @@ Azure Storage 暗号化用のカスタマー マネージド キーを構成す�
 ## <a name="next-steps"></a>次のステップ
 Azure Storage 暗号化用のカスタマー マネージド キーを構成する方法については、次の記事を参照してください。 
 
-- [Azure Portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure Portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)

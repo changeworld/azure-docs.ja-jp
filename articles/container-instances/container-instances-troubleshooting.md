@@ -4,12 +4,12 @@ description: Azure Container Instances をデプロイ、実行、または管�
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260750"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148619"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -198,7 +198,7 @@ Azure Container Instances では、キャッシュ メカニズムを使用し�
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>基になる Docker API に接続できないか、特権コンテナーを実行できない
 
-Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
+Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](/rest/api/container-instances/)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
 
 ### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないため、コンテナー グループの IP アドレスにアクセスできない
 

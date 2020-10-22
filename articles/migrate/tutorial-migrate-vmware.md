@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントレス
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530524"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310630"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -36,8 +36,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを始める前に、次の準備が必要です。
 
-1. [最初のチュートリアルを完了](tutorial-prepare-vmware.md)して、移行のために Azure と VMware を準備します。
-2. 2 番目のチュートリアルを完了して、Azure に移行する前に [VMware VM を評価](tutorial-assess-vmware.md)しておくことをお勧めしますが、必須ではありません。 
+1. [最初のチュートリアルを完了](./tutorial-discover-vmware.md)して、移行のために Azure と VMware を準備します。
+2. 2 番目のチュートリアルを完了して、Azure に移行する前に [VMware VM を評価](./tutorial-assess-vmware-azure-vm.md)しておくことをお勧めしますが、必須ではありません。 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Migrate Server Migration ツールを追加する
@@ -59,7 +59,7 @@ Azure Migrate プロジェクトをまだ設定していない場合は、ツー
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate Server Migration は、VMware VM の検出、評価、エージェントレス移行に使用される軽量の VMware VM アプライアンスを実行します。 [評価のチュートリアル](tutorial-assess-vmware.md)に従っている場合、アプライアンスは既に設定されています。 まだ設定していない場合は、次のいずれかの方法を使用して設定します。
+Azure Migrate Server Migration は、VMware VM の検出、評価、エージェントレス移行に使用される軽量の VMware VM アプライアンスを実行します。 [評価のチュートリアル](./tutorial-assess-vmware-azure-vm.md)に従っている場合、アプライアンスは既に設定されています。 まだ設定していない場合は、次のいずれかの方法を使用して設定します。
 
 - **OVA テンプレート**:ダウンロードした OVA テンプレートを使用して VMware VM 上に[設定](how-to-set-up-appliance-vmware.md)します。
 - **Script**: PowerShell インストーラ スクリプトを使用して VMware VM 上または物理マシン上に[設定](deploy-appliance-script.md)します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、この方法を使用してください。
@@ -210,7 +210,7 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：

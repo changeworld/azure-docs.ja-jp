@@ -4,12 +4,12 @@ description: サービス マニフェストにエンドポイント リソー�
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017592"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313568"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -158,7 +158,7 @@ HTTPS エンドポイントに必要な構成を示す ApplicationManifest の�
 
 Linux クラスターの場合、**MY** ストアは既定で **/var/lib/sfcerts** フォルダーになります。
 
-HTTPS エンドポイントを使用する完全なアプリケーションの例については、「[Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest)」をご覧ください。
+HTTPS エンドポイントを使用する完全なアプリケーションの例については、「[Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest)」をご覧ください。
 
 ## <a name="port-acling-for-http-endpoints"></a>HTTP エンドポイントのポート ACL 処理
 Service Fabric では、既定で選択された HTTP エンドポイントが自動で ACL 処理されます。 エンドポイントに [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) が関連付けられておらず、Service Fabric が管理者特権を持つアカウントを使用して実行するように構成されている場合は、自動で ACL 処理が実行されることは**ありません**。

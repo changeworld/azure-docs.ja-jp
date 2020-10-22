@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49496dbf1355ceee7619d93bcb0676892b7a212d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906910"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150570"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure IoT Hub 用の Azure セキュリティ ベースライン
 
@@ -33,9 +33,9 @@ Microsoft Azure IoT Hub 用の Azure セキュリティ ベースラインには
 望ましくないアクセスを回避するために、デバイスの開かれているハードウェア ポートを最小限に抑えます。 さらに、デバイスの物理的な改ざんを防止または検出するためのメカニズムを構築します。
 
 - [IoT 仮想ネットワークのサポート](virtual-network-support.md)
-- [IoT ネットワークのベスト プラクティス](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc#networking)
+- [IoT ネットワークのベスト プラクティス](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
 - [Azure Private Link の概要](../private-link/private-link-overview.md)
-- [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
+- [Azure ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -75,7 +75,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 - [Azure DDoS Protection Basic を管理する](../virtual-network/ddos-protection-overview.md)
 
-- [Azure Security Center での脅威の防止](../security-center/threat-protection.md)
+- [Azure Security Center での脅威の防止](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -138,7 +138,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 **ガイダンス**: Azure IoT Hub デプロイに関連付けられているネットワーク リソースを分類別に論理的に整理するために、それらのリソースにタグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -148,7 +148,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure IoT Hub に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -274,9 +274,9 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 **ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、ロールの割り当てを通じて Azure IoT Hub へのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -296,7 +296,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 また、Azure AD Privileged Identity Management および Azure Resource Manager を使用して、管理者アカウントへの Just-In-Time アクセスを有効にすることもできます。
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視**: はい
 
@@ -340,7 +340,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 **ガイダンス**: Azure Active Directory セキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
@@ -376,9 +376,9 @@ IoT Hub では、デバイスとサービスのアクセスのために、セキ
 
 環境内で疑わしいアクティビティや安全でないアクティビティが発生した場合にログやアラートを生成するには、Azure AD Privileged Identity Management (PIM) を使用します。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
-- [Azure AD Privileged Identity Management (PIM) をデプロイする](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management (PIM) をデプロイする](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center の監視**: はい
 
@@ -392,7 +392,7 @@ IoT Hub では、デバイスとサービスのアクセスのために、セキ
 
 [接続] カテゴリで未承認の接続試行を監視するためのユーザーの Azure Monitor 診断ログ。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [IoT hub の診断ログを構成する](iot-hub-monitor-resource-health.md)
 
@@ -404,7 +404,7 @@ IoT Hub では、デバイスとサービスのアクセスのために、セキ
 
 **ガイダンス**: Azure AD Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
   
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
   
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
   
@@ -430,7 +430,7 @@ IoT Hub では、デバイスとサービスのアクセスのために、セキ
 
 **ガイダンス**: 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
  
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -440,9 +440,9 @@ IoT Hub では、デバイスとサービスのアクセスのために、セキ
 
 **ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure RBAC を使用して Azure リソースへのアクセスを制御できます。
   
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -593,7 +593,7 @@ Azure IoT Hub によって、データセンターに書き込まれる際の保
 
 **ガイダンス**:タグを Azure リソースに適用して (すべてのリソースがタグをサポートしているわけではありませんが、ほとんどがサポートしています)、それらを論理的に分類に整理します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -603,11 +603,11 @@ Azure IoT Hub によって、データセンターに書き込まれる際の保
 
 **ガイダンス**: 必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
   
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
   
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
   
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -725,7 +725,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からのレコメンデーションを使用することもできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
@@ -769,8 +769,8 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 **ガイダンス**: Azure IoT Hub または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用外
 
@@ -830,8 +830,8 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 - [IoT Hub のセキュリティ トークン](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [IoT Hub にマネージド ID を使用する方法](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
-- [キー コンテナーを作成する方法](/azure/key-vault/quick-create-portal)
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/managed-identity)
+- [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
+- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -940,7 +940,7 @@ Microsoft マルウェア対策は、Azure サービス (Azure App Service な�
  
  
 - [Azure RBAC について](../role-based-access-control/overview.md)
-- [Azure Blob Storage の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Blob Storage の論理的な削除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用外
 
@@ -973,7 +973,7 @@ Microsoft マルウェア対策は、Azure サービス (Azure App Service な�
   
 - [Azure Security Center のセキュリティ アラート](../security-center/security-center-alerts-overview.md)
   
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1039,5 +1039,5 @@ Microsoft マルウェア対策は、Azure サービス (Azure App Service な�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

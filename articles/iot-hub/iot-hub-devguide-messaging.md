@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: e0466aa3497edf5f271c01944438c033bba152f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e25b9d6cbe8446fb2f10150f17f7e2b0ccf85d3c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327669"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147628"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
 
@@ -23,7 +23,7 @@ IoT Hub では、デバイスとの間で双方向通信を行うことができ
 
 ## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>IoT Hub への device-to-cloud メッセージの送信
 
-IoT Hub に組み込まれているサービス エンドポイントを使用することで、バックエンド サービスはデバイスからテレメトリ メッセージを読み取ることができます。 このエンドポイントは [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) と互換性があり、標準の IoT Hub SDK を使用して[この組み込みエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)ことができます。
+IoT Hub に組み込まれているサービス エンドポイントを使用することで、バックエンド サービスはデバイスからテレメトリ メッセージを読み取ることができます。 このエンドポイントは [Event Hubs](../event-hubs/index.yml) と互換性があり、標準の IoT Hub SDK を使用して[この組み込みエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)ことができます。
 
 また、IoT Hub では[カスタム エンドポイント](iot-hub-devguide-endpoints.md#custom-endpoints)もサポートされています。ユーザーはカスタム エンドポイントを定義することで、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用して、Azure サービスにデバイスのテレメトリ データとイベントを送信することができます。
 
@@ -39,9 +39,9 @@ IoT Hub のメッセージング機能の中心となる特性は、メッセー
 
 時系列のテレメトリとデバイス アプリからのアラートを送信するには device-to-cloud メッセージを使用し、デバイス アプリに一方向の通知を送信するには cloud-to-device メッセージを使用します。
 
-* device-to-cloud メッセージ、報告プロパティ、ファイルのアップロードのどれを選択するかについては、「[device-to-cloud 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance)」をご覧ください。
+* device-to-cloud メッセージ、報告プロパティ、ファイルのアップロードのどれを選択するかについては、「[device-to-cloud 通信に関するガイダンス](./iot-hub-devguide-d2c-guidance.md)」をご覧ください。
 
-* cloud-to-device メッセージ、必要とされるプロパティ、ダイレクト メソッドのどれを選択するかについては、「[cloud-to-device 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)」をご覧ください。
+* cloud-to-device メッセージ、必要とされるプロパティ、ダイレクト メソッドのどれを選択するかについては、「[cloud-to-device 通信に関するガイダンス](./iot-hub-devguide-c2d-guidance.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ba5a9561242219652d3f72300f0b0559cfb867b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74e9e3df1e532d23c99add39f5fd3b0d439c6e55
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504840"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281940"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルを作成する
 
@@ -36,7 +36,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 |**Azure Cosmos DB**| |
 | [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Cosmos DB アカウントを作成します。 |
@@ -48,5 +48,3 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
-
-Azure Cosmos DB のその他の PowerShell サンプル スクリプトについては、[Azure Cosmos DB の PowerShell スクリプト](../../../powershell-samples.md)に関する記事をご覧ください。

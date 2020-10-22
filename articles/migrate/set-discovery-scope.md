@@ -3,12 +3,12 @@ title: Azure Migrate を使用して VMware VM 検出範囲を設定する
 description: Azure Migrate を使って VMware VM の評価と移行の検出範囲を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919728"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314025"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM の検出範囲の設定
 
@@ -21,7 +21,7 @@ ms.locfileid: "88919728"
 
 ## <a name="before-you-start"></a>開始する前に
 
-Azure Migrate で検出に使用される vCenter ユーザー アカウントを設定していない場合は、ここで[評価](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)用または[エージェントレス移行](tutorial-prepare-vmware.md#assign-permissions-to-an-account)用にそれを行います。
+Azure Migrate で検出に使用される vCenter ユーザー アカウントを設定していない場合は、ここで[評価](./tutorial-discover-vmware.md#prepare-vmware)用または[エージェントレス移行](./migrate-support-matrix-vmware-migration.md#agentless-migration)用にそれを行います。
 
 
 ## <a name="assign-permissions-and-roles"></a>アクセス許可とロールを割り当てる

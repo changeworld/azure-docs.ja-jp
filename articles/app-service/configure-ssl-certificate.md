@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420882"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149077"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -145,8 +145,8 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | 場所 | App Service アプリと同じ場所を選択します。 |
 | Pricing tier | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
-| アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で、[Key Vault アクセス ポリシーの割り当て](/azure/key-vault/general/assign-access-policy-portal)の手順に従って構成できます。 |
-| 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](/azure/key-vault/general/network-security)」の手順に従って構成できます |
+| アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で、[Key Vault アクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)の手順に従って構成できます。 |
+| 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/general/network-security.md)」の手順に従って構成できます |
 
 コンテナーを選択したら、 **[Key Vault リポジトリ]** ページを閉じます。 **[手順 1: 格納]** オプションに、成功を示す緑色のチェック マークが表示されます。 次の手順のためにページは開いたままにしておきます。
 
@@ -189,7 +189,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 Azure Key Vault を使用して証明書を管理している場合は、[要件を満たしている](#private-certificate-requirements)限り、Key Vault から App Service に PKCS12 証明書をインポートすることができます。
 
 ### <a name="authorize-app-service-to-read-from-the-vault"></a>Key Vault から読み取る権限を App Service に与える
-既定では、App Service リソース プロバイダーは Key Vault にアクセスできません。 証明書のデプロイに Key Vault を使用するには、[Key Vault に読み取りアクセスする権限をリソース プロバイダーに与える](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)必要があります。 
+既定では、App Service リソース プロバイダーは Key Vault にアクセスできません。 証明書のデプロイに Key Vault を使用するには、[Key Vault に読み取りアクセスする権限をリソース プロバイダーに与える](../key-vault/general/assign-access-policy-cli.md)必要があります。 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd` は App Service のリソース プロバイダー サービス プリンシパル名です。これはすべての Azure サブスクリプションで同じです。 Azure Government クラウド環境の場合、リソース プロバイダー サービス プリンシパル名として代わりに `6a02c803-dafd-4136-b4c3-5a6f318b4714` を使用します。
 
@@ -378,11 +378,11 @@ App Service 証明書の削除は最終的なものであり、元に戻すこ�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 

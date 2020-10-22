@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077866"
+ms.locfileid: "92089368"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -55,7 +55,7 @@ ms.locfileid: "92077866"
 
 ![ダッシュボードの共有](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-**共有** を選択すると、発行先のサブスクリプションとリソースグループを選択するように求められます。 選択するサブスクリプションとリソース グループに書き込みアクセス権がなければなりません。 詳細については、[Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)を参照してください。
+**共有** を選択すると、発行先のサブスクリプションとリソースグループを選択するように求められます。 選択するサブスクリプションとリソース グループに書き込みアクセス権がなければなりません。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
 
 ![共有とアクセスに変更を加える](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: b22573fc98d4647c2b05763d9b67c37f6f023f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322722"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150775"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング
 
@@ -109,7 +109,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 * デバイスで MQTT プロトコルを使用している場合は、ポート 8883 が開いていることを確認します。 詳細については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-* [Azure IoT Hub に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)、または [Azure サポート](https://azure.microsoft.com/support/options/)から支援を受けてください。
+* [Azure IoT Hub に関する Microsoft Q&A 質問ページ](/answers/topics/azure-iot-hub.html)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)、または [Azure サポート](https://azure.microsoft.com/support/options/)から支援を受けてください。
 
 このガイドが役に立たなかった場合は、すべてのお客様のためにこのドキュメントを改善できるように、以下のフィードバック セクションでコメントを残してください。
 

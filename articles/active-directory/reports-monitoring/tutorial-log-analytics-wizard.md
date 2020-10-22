@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361910"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362571"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "91361910"
 
 - [アクティビティ ログを Log Analytics と統合する方法](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+- [Azure AD で緊急アクセス用アカウントを管理する](../roles/security-emergency-access.md)
 
 - [KQL クイック リファレンス](/azure/data-explorer/kql-quick-reference)
 

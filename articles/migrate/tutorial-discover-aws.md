@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して、AWS インスタ�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275457"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311272"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>チュートリアル:Server Assessment を使用して AWS インスタンスを検出する
 
@@ -224,7 +224,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
    
    PIN を使用したサインインはサポートされていません。
 3. 正常にログインしたら、Web アプリに戻ります。 
-4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](./tutorial-discover-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 

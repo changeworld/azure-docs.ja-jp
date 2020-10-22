@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 030a69c7eca70c081a1d9392bfa527f3386d7c2b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019727"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150607"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメントを使用する
 
@@ -386,7 +386,7 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの最初で **ContosoResourcesMsgEn** に設定されたことを思い出してください。
+リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの最初で **ContosoResourcesMsgEn** に設定されたことを思い出してください。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

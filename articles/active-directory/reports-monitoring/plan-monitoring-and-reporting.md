@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331201"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311231"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -73,7 +73,7 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)します。 また、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)します。 また、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 ### <a name="plan-communications"></a>連絡を計画する
 
@@ -133,7 +133,7 @@ Azure AD のアクティビティ ログ用の既製のビューをインスト�
 
 Azure イベント ハブにログをルーティングすると、サードパーティ製の SIEM ツールとの統合が可能になります。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせ、より豊富な環境分析情報を提供することができます。 
 
-ログをイベント ハブにストリーム配信する方法については、[こちら](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
+ログをイベント ハブにストリーム配信する方法については、[こちら](./tutorial-azure-monitor-stream-logs-to-event-hub.md)を参照してください。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視の運用とセキュリティを計画する
 

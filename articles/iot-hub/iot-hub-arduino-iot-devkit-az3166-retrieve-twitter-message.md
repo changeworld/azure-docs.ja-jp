@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356069"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147897"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -23,7 +23,7 @@ ms.locfileid: "91356069"
 
 ## <a name="what-you-need"></a>必要なもの
 
-[ファースト ステップ ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)に従って以下のことを行います。
+[ファースト ステップ ガイド](./iot-hub-arduino-iot-devkit-az3166-get-started.md)に従って以下のことを行います。
 
 * DevKit を Wi-Fi に接続する。
 * 開発環境を準備する。
@@ -207,4 +207,4 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
 ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続して、ツイートを取得する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
-* [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT リモート監視ソリューション アクセラレータの概要](/azure/iot-suite/)

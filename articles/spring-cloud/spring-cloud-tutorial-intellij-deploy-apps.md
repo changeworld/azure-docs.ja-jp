@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e5b8dc325fa7eaceaa0274029049f546db5b6995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6aa56eeab59dee3f080895d5f15285a2b2d41591
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888547"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088773"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
 
@@ -23,7 +23,7 @@ Azure Spring Cloud の IntelliJ プラグインでは、IntelliJ IDEA からの�
 この例を実行する前に、[基本的なクイックスタート](spring-cloud-quickstart.md)を試してみることができます。
 
 ## <a name="prerequisites"></a>前提条件
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable&preserve-view=true)
+* [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
 * [Maven 3.5.0 以降](https://maven.apache.org/download.cgi)
 * [IntelliJ IDEA、Community または Ultimate Edition、バージョン 2020.1 または 2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
@@ -57,7 +57,7 @@ IntelliJ **プラグイン** UI から Azure Toolkit for IntelliJ IDEA 3.35.0 �
     ![プロジェクトのインポート](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Azure Spring Cloud にデプロイする
-Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
+Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 1. IntelliJ のプロジェクト エクスプローラーでプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
 
@@ -104,5 +104,5 @@ Azure にデプロイするには、Azure アカウントでサインインし�
     ![ストリーミング ログの出力](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Spring Cloud 用に Spring アプリケーションを準備する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [Azure Toolkit for IntelliJ の詳細を確認する](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Azure Spring Cloud 用に Spring アプリケーションを準備する](./spring-cloud-tutorial-prepare-app-deployment.md)
+* [Azure Toolkit for IntelliJ の詳細を確認する](/azure/developer/java/toolkit-for-intellij/)

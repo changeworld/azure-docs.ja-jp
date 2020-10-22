@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664989"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088535"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Azure Spring Cloud アプリから Azure Functions を呼び出す
 
@@ -23,9 +23,9 @@ Azure Functions と App Service には、どちらも Azure Active Directory (Az
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
-* [Azure CLI バージョン 2.0.67 以上をインストールする](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Azure CLI バージョン 2.0.67 以上をインストールする](/cli/azure/install-azure-cli)
 * [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
-* [Azure Functions Core Tools バージョン 3.0.2009 以降をインストールする](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+* [Azure Functions Core Tools バージョン 3.0.2009 以降をインストールする](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -77,7 +77,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-Functions は HTTP エンドポイントを保護するために、既定ではキーベースの認証を使用します。 ここでは Azure AD Authentication を有効にすることで Functions へのアクセスを保護するため、[関数の承認レベルを anonymous に設定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger#secure-an-http-endpoint-in-production)する必要があります。
+Functions は HTTP エンドポイントを保護するために、既定ではキーベースの認証を使用します。 ここでは Azure AD Authentication を有効にすることで Functions へのアクセスを保護するため、[関数の承認レベルを anonymous に設定](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)する必要があります。
 
 ```json function.json
 {
@@ -124,7 +124,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>関数を呼び出すサンプル Spring Boot アプリを作成する
 
-このサンプルは、HTTP によってトリガーされる関数を呼び出します。まず、[MSI エンドポイント](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)にアクセス トークンを要求し、そのトークンを使用して関数の HTTP 要求を認証します。
+このサンプルは、HTTP によってトリガーされる関数を呼び出します。まず、[MSI エンドポイント](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http)にアクセス トークンを要求し、そのトークンを使用して関数の HTTP 要求を認証します。
 
 1. サンプル プロジェクトをクローンします。 
 
@@ -173,6 +173,6 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Azure リソース用マネージド ID の詳細](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [サービス間の呼び出し用にデーモン クライアント アプリケーションを構成する](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad#configure-a-daemon-client-application-for-service-to-service-calls)
+* [サービス間の呼び出し用にデーモン クライアント アプリケーションを構成する](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)

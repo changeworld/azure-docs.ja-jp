@@ -3,12 +3,12 @@ title: レジストリのパフォーマンスのトラブルシューティン�
 description: レジストリのパフォーマンスに関する一般的な問題の現象、原因、および対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88226936"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148414"
 ---
 # <a name="troubleshoot-registry-performance"></a>レジストリのパフォーマンスのトラブルシューティング
 
@@ -115,7 +115,5 @@ nslookup myregistry.azurecr.io
   * [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md)
   * [レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)
 * [コミュニティ サポート](https://azure.microsoft.com/support/community/) オプション
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [サポート チケットを開く](https://azure.microsoft.com/support/create-ticket/)
-
-
