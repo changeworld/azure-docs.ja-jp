@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272501"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164246"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -101,14 +101,14 @@ Azure Marketplace の SQL Server VM イメージは、SQL VM リソース プロ
 
 各仮想マシンで、SQL Server で使用されている Windows ファイアウォール TCP ポートを開きます。 既定では、このポートは 1433 です。 ただし、Azure VM のデプロイで SQL Server のポートを変更できるので、お使いの環境で使用している SQL Server ポートを開きます。 このポートは、Azure Marketplace からデプロイされた SQL Server イメージでは自動的に開かれます。 
 
-[ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)を使用する場合は、正常性プローブで使用されるポートも開く必要があります。 既定では、このポートは 59999 です。 ただし、ロード バランサーの作成時に指定する任意の TCP ポートを使用できます。 
+[ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)を使用する場合は、正常性プローブで使用されるポートも開く必要があります。 既定では、このポートは 59999 です。 ただし、ロード バランサーの作成時に指定する任意の TCP ポートを使用できます。 
 
 次の表では、FCI の構成に応じて、開くことが必要になる場合があるポートについて詳しく説明します。 
 
    | 目的 | Port | Notes
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | SQL Server の既定のインスタンスの通常のポートです。 ギャラリーからイメージを使用した場合、このポートが自動的に開きます。 </br> </br> **使用元**: すべての FCI 構成。 |
-   | 正常性プローブ | TCP 59999 | 開いている任意の TCP ポートです。 このポートを使用するように、ロード バランサーの[正常性プローブ](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe)とクラスターを構成します。 </br> </br> **使用元**: FCI とロード バランサー。 |
+   | 正常性プローブ | TCP 59999 | 開いている任意の TCP ポートです。 このポートを使用するように、ロード バランサーの[正常性プローブ](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe)とクラスターを構成します。 </br> </br> **使用元**: FCI とロード バランサー。 |
    | ファイル共有 | UDP 445 | ファイル共有サービスによって使用されるポート。 </br> </br> **使用元**: FCI と Premium ファイル共有。 |
 
 ## <a name="join-the-domain"></a>ドメインに参加する

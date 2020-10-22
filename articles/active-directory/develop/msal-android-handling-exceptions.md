@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/07/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: c0b08a6c1a784216abe2bd562109dbb1586252c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40c2bb0f529f9e0683c67bea884443458707f4f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119812"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206596"
 ---
 # <a name="handle-exceptions-and-errors-in-msal-for-android"></a>Android 用の MSAL で例外とエラーを処理する
 
@@ -30,7 +30,7 @@ Microsoft Authentication Library (MSAL) での例外は、アプリ開発者が�
 
 |Error クラス | 原因/エラー文字列| 処理方法 |
 |-----------|------------|----------------|
-|`MsalUiRequiredException`| <ul><li>`INVALID_GRANT`:アクセス トークンの引き換えに使用された更新トークンが無効であるか、期限切れになっているか、または取り消されています。 この例外は、パスワードが変更されたことが原因である可能性があります。 </li><li>`NO_TOKENS_FOUND`: アクセス トークンが存在していなくて、アクセス トークンを引き換えるための更新トークンが見つかりません。</li> <li>ステップアップが必須です<ul><li>MFA</li><li>要求が見つかりません</li></ul></li><li>条件付きアクセスによってブロックされています (たとえば、[認証ブローカー](./brokered-auth.md)のインストールが必須)</li><li>`NO_ACCOUNT_FOUND`:キャッシュ内にサイレント認証に使用できるアカウントがありません。</li></ul> |`acquireToken()` を呼び出すことで、ユーザーに対して、自分のユーザー名とパスワードを入力し、場合によっては、多要素認証に同意してそれを実行するように求めます。|
+|`MsalUiRequiredException`| <ul><li>`INVALID_GRANT`:アクセス トークンの引き換えに使用された更新トークンが無効であるか、期限切れになっているか、または取り消されています。 この例外は、パスワードが変更されたことが原因である可能性があります。 </li><li>`NO_TOKENS_FOUND`: アクセス トークンが存在していなくて、アクセス トークンを引き換えるための更新トークンが見つかりません。</li> <li>ステップアップが必須です<ul><li>MFA</li><li>要求が見つかりません</li></ul></li><li>条件付きアクセスによってブロックされています (たとえば、[認証ブローカー](./msal-android-single-sign-on.md)のインストールが必須)</li><li>`NO_ACCOUNT_FOUND`:キャッシュ内にサイレント認証に使用できるアカウントがありません。</li></ul> |`acquireToken()` を呼び出すことで、ユーザーに対して、自分のユーザー名とパスワードを入力し、場合によっては、多要素認証に同意してそれを実行するように求めます。|
 |`MsalDeclinedScopeException`|<ul><li>`DECLINED_SCOPE`: ユーザーまたはサーバーが受け入れていないスコープがあります。 要求されたスコープがサポートされていないか、認識されていないか、特定のアカウントでサポートされていない場合、サーバーによってスコープが拒否されることがあります。 </li></ul>| 開発者は、付与されたスコープで認証を続行するか、認証プロセスを終了するかを決定する必要があります。 `silentParametersForGrantedScopes` を渡し、`acquireTokenSilent` を呼び出すことによって、付与されたスコープに対してのみ取得トークン要求を再送信し、付与されたアクセス許可に関するヒントを提供するオプション。 |
 |`MsalServiceException`|<ul><li>`INVALID_REQUEST`: この要求に必須のパラメーターが含まれていないか、この要求に無効なパラメーターが含まれているか、この要求に複数回パラメーターが含まれているか、またはこの要求の形式が正しくありません。 </li><li>`SERVICE_NOT_AVAILABLE`: サービスがダウンしていることが原因で、500/503/506 エラー コードを表します。 </li><li>`UNAUTHORIZED_REQUEST`:クライアントは、認証コードの要求を許可されていません。</li><li>`ACCESS_DENIED`:リソース所有者または承認サーバーによって、要求が拒否されました。</li><li>`INVALID_INSTANCE`: `AuthorityMetadata` の検証に失敗しました</li><li>`UNKNOWN_ERROR`: サーバーに対する要求が失敗しましたが、エラーは発生せず、サービスから `error_description` が返されました。</li><ul>| この例外クラスは、サービスとの通信時に発生するエラーを表し、承認またはトークン エンドポイントからのものである可能性があります。 サーバー応答からのエラーと error_description は、MSAL によって読み取られます。 一般に、これらのエラーは、コード内またはアプリ登録ポータル内のいずれかでアプリ構成を修正することによって解決されます。 まれに、サービスの停止によってこの警告がトリガーされることがあります。これに対処するには、サービスが回復するのを待つしかありません。  |
 |`MsalClientException`|<ul><li> `MULTIPLE_MATCHING_TOKENS_DETECTED`:複数のキャッシュ エントリが見つかり、キャッシュからの正しいアクセスまたは更新トークンの識別が SDK でできません。 この例外は、通常、SDK でのトークンの格納に関するバグを示しているか、またはサイレント要求内にオーソリティが指定されていないために複数の一致するトークンが見つかったことを示しています。 </li><li>`DEVICE_NETWORK_NOT_AVAILABLE`: デバイス上に使用できるアクティブなネットワークがありません。 </li><li>`JSON_PARSE_FAILURE`: SDK で JSON 形式を解析できませんでした。</li><li>`IO_ERROR`: `IOException` が発生しました。デバイスまたはネットワーク エラーの可能性があります。 </li><li>`MALFORMED_URL`: URL の形式が正しくありません。 認証要求、オーソリティ、またはリダイレクト URI の構築時に発生した可能性があります。 </li><li>`UNSUPPORTED_ENCODING`: エンコードはデバイスでサポートされていません。 </li><li>`NO_SUCH_ALGORITHM`: [PKCE](https://tools.ietf.org/html/rfc7636) チャレンジの生成に使用されるアルゴリズムはサポートされていません。 </li><li>`INVALID_JWT`: サーバーから返された `JWT` が無効であるか、空であるか、または形式が正しくありません。 </li><li>`STATE_MISMATCH`: 承認応答からの状態が承認要求の状態と一致しませんでした。 承認要求の場合、リダイレクトから返された状態と、要求で送信されたものが SDK によって検証されます。 </li><li>`UNSUPPORTED_URL`: サポートされていない URL です。ADFS オーソリティの検証を実行できません。 </li><li> `AUTHORITY_VALIDATION_NOT_SUPPORTED`: オーソリティの検証において、オーソリティがサポートされていません。 この SDK では B2C オーソリティはサポートされていますが、B2C オーソリティの検証はサポートされていません。 既知のホストのみがサポートされます。 </li><li>`CHROME_NOT_INSTALLED`: Chrome がデバイスにインストールされていません。 SDK は、承認要求に Chrome カスタム タブを使用し (使用可能な場合)、Chrome ブラウザーにフォールバックされます。 </li><li>`USER_MISMATCH`: 取得トークン要求で指定されたユーザーが、サーバーから返されたユーザーと一致しません。</li></ul>|この例外クラスは、ライブラリに対してローカルな一般エラーを表します。 これらの例外に対処するには、要求を修正します。|
@@ -75,6 +75,6 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 }
 ```
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次の手順
 
 [ログ エラー](./msal-logging.md?tabs=android)に関する詳細情報

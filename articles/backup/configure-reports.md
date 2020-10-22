@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567436"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172455"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -30,6 +30,8 @@ ms.locfileid: "91567436"
 - お客様が、ご自分の顧客のサブスクリプションへの委任アクセス権を持つ [Azure Lighthouse](../lighthouse/index.yml) ユーザーである場合は、Azure Lighthouse でこれらのレポートを使用して、ご利用のすべてのテナントにわたってレポートを表示することができます。
 - 現時点では、データは最大で 100 個の Log Analytics ワークスペースにわたって (複数のテナントにわたって) バックアップ レポートで表示できます。
 - ログ バックアップ ジョブのデータは、現在レポートに表示されません。
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="get-started"></a>はじめに
 

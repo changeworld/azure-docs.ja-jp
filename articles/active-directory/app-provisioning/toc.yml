@@ -5,6 +5,8 @@
   items:
     - name: アプリケーションのプロビジョニングとは
       href: user-provisioning.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: チュートリアル
   expanded: true
   items:

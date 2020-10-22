@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767201"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146589"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
@@ -63,8 +63,8 @@ ms.locfileid: "91767201"
 | **方法** | **コマンド** |
 | ----- | -----| 
 | ポータル | [Azure Portal](https://portal.azure.com) | [メッセージ エンリッチメントのチュートリアル](tutorial-message-enrichments.md)をご覧ください | 
-| Azure CLI   | [az iot hub message-enrichment](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
+| Azure CLI   | [az iot hub message-enrichment](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 メッセージ エンリッチメントを追加しても、メッセージのルーティングに待機時間は追加されません。
 

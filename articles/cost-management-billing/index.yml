@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 01/01/2020
-  ms.openlocfilehash: 66d082c844e3c9c78bf8dbec09e52f8efaf1ee57
-  ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+  ms.date: 11/21/2020
+  ms.openlocfilehash: 4b3308b7475d9f1adc5446907e19d363fc4faca0
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/16/2020
-  ms.locfileid: "92132280"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92367025"
 landingContent:
 - title: コストの分析
   linkLists:
@@ -72,14 +72,10 @@ landingContent:
     links:
     - text: コストのアラートの使用
       url: costs/cost-mgt-alerts-monitor-usage-spending.md
-    - text: コストを割り当てる
-      url: costs/allocate-costs.md
     - text: Azure の請求書を表示してダウンロードする
       url: understand/download-azure-invoice.md
     - text: Azure の使用量と料金の表示とダウンロード
       url: understand/download-azure-daily-usage.md
-    - text: 外部サービスの料金を表示する
-      url: understand/understand-azure-marketplace-charges.md
 - title: コストを最適化する
   linkLists:
   - linkListType: concept
@@ -142,23 +138,3 @@ landingContent:
       url: understand/mca-download-tax-document.md
     - text: Microsoft 顧客契約の請求書の支払いを行う
       url: understand/pay-bill.md
-- title: 予約の購入
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 購入する予約の選択
-      url: reservations/determine-reservation-purchase.md
-    - text: 予約の交換と返金
-      url: reservations/exchange-and-refund-azure-reservations.md
-  - linkListType: how-to-guide
-    links:
-    - text: 予約の購入
-      url: reservations/prepare-buy-reservation.md
-    - text: 予約の管理
-      url: reservations/manage-reserved-vm-instance.md
-    - text: 予約購入の表示
-      url: reservations/view-purchase-refunds.md
-    - text: 予約のチャージバック
-      url: reservations/charge-back-usage.md
-    - text: 予約の更新
-      url: reservations/reservation-renew.md
