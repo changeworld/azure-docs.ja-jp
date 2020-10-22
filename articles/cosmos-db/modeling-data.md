@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136041"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278414"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ モデリング
 
@@ -440,6 +440,6 @@ Review documents:
 
 Azure Cosmos DB の詳細については、サービスの[ドキュメント](https://azure.microsoft.com/documentation/services/cosmos-db/)のページを参照してください。
 
-複数のパーティション間でデータをシャーディングする方法については、[Azure Cosmos DB でのデータのパーティション分割](sql-api-partition-data.md)に関するページを参照してください。
+複数のパーティション間でデータをシャーディングする方法については、[Azure Cosmos DB でのデータのパーティション分割](partitioning-overview.md)に関するページを参照してください。
 
 現実の例を使用して Azure Cosmos DB でデータをモデル化し、パーティション分割する方法については、「[現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法](how-to-model-partition-example.md)」を参照してください。

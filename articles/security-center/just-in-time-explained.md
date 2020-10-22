@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449011"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340021"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 
@@ -40,14 +40,14 @@ Azure portal (Security Center または Azure Virtual Machines) またはプロ�
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>ネットワーク セキュリティ グループと Azure Firewall での JIT の動作方法
 
-Just-In-Time VM アクセスを有効にすると、受信トラフィックをブロックする VM のポートを選択できます。 Security Center により、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) と [Azure Firewall 規則](https://docs.microsoft.com/azure/firewall/rule-processing)で選択したポートに対して "すべての受信トラフィックを拒否" 規則が存在することが保証されます。 これらの規則により、Azure VM の管理ポートへのアクセスが制限され、攻撃から保護されます。 
+Just-In-Time VM アクセスを有効にすると、受信トラフィックをブロックする VM のポートを選択できます。 Security Center により、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) と [Azure Firewall 規則](../firewall/rule-processing.md)で選択したポートに対して "すべての受信トラフィックを拒否" 規則が存在することが保証されます。 これらの規則により、Azure VM の管理ポートへのアクセスが制限され、攻撃から保護されます。 
 
 選択したポートに対して他の規則がすでに存在している場合は、既存の規則が新しい "すべての受信トラフィックを拒否" 規則よりも優先されます。 選択したポートに既存の規則がない場合は、NSG と Azure Firewall で新しい規則が優先されます。
 
-ユーザーが VM へのアクセス権を要求すると、Security Center によってそのユーザーが VM に対する [Azure ロール ベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) アクセス許可を持っているかどうかがチェックされます。 要求が承認されると、Security Center では、関連する IP アドレス (または範囲) から選択したポートへの受信トラフィックを指定された時間だけ許可するように、NSG および Azure Firewall が構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されている接続は中断されません。
+ユーザーが VM へのアクセス権を要求すると、Security Center によってそのユーザーが VM に対する [Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) アクセス許可を持っているかどうかがチェックされます。 要求が承認されると、Security Center では、関連する IP アドレス (または範囲) から選択したポートへの受信トラフィックを指定された時間だけ許可するように、NSG および Azure Firewall が構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されている接続は中断されません。
 
 > [!NOTE]
-> JIT では、[Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) によって制御される Azure Firewall によって保護されている VM はサポートされません。
+> JIT では、[Azure Firewall Manager](../firewall-manager/overview.md) によって制御される Azure Firewall によって保護されている VM はサポートされません。
 
 
 

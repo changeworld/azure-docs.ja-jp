@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440718"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342384"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する
 
@@ -35,7 +35,7 @@ JIT の動作と基になるロジックの詳細については、[Just-In-Time
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|[サーバー用 Azure Defender](defender-for-servers-introduction.md) が必要|
-|サポートされている VM:|![はい](./media/icons/yes-icon.png) Azure Resource Manager を介してデプロイされた VM。<br>![いいえ](./media/icons/no-icon.png) クラシック デプロイ モデルを使用してデプロイされた VM。 [これらのデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。<br>![いいえ](./media/icons/no-icon.png) [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) によって制御される Azure Firewall によって保護されている VM。|
+|サポートされている VM:|![はい](./media/icons/yes-icon.png) Azure Resource Manager を介してデプロイされた VM。<br>![いいえ](./media/icons/no-icon.png) クラシック デプロイ モデルを使用してデプロイされた VM。 [これらのデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。<br>![いいえ](./media/icons/no-icon.png) [Azure Firewall Manager](../firewall-manager/overview.md) によって制御される Azure Firewall によって保護されている VM。|
 |必要なロールとアクセス許可:|**閲覧者**と**セキュリティ閲覧者**ロールは、JIT の状態とパラメーターの両方を表示できます。<br>JIT で動作するカスタム ロールを作成するには、「[JIT を構成して使用するために必要なアクセス許可は何ですか?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)」を参照してください。<br>VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して、最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)を使用します。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
@@ -215,7 +215,7 @@ PowerShell を使用して Just-In-Time VM アクセスを有効にするには�
 
 Just-In-Time VM アクセス機能は、Azure Security Center API から使用できます。 構成済みの VM に関する情報を取得したり、新しい VM を追加したり、VM へのアクセス権を要求したりするには、この API を使用します。 
 
-詳細については、「[JIT ネットワーク アクセス ポリシー](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)」を参照してください。
+詳細については、「[JIT ネットワーク アクセス ポリシー](/rest/api/securitycenter/jitnetworkaccesspolicies)」を参照してください。
 
 
 --- 
@@ -335,7 +335,7 @@ PowerShell で以下を実行します。
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
     ```
 
-詳細については、[PowerShell コマンドレットに関するドキュメント](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview)を参照してください。
+詳細については、[PowerShell コマンドレットに関するドキュメント](/powershell/scripting/developer/cmdlet/cmdlet-overview)を参照してください。
 
 
 
@@ -345,7 +345,7 @@ PowerShell で以下を実行します。
 
 Just-In-Time VM アクセス機能は、Azure Security Center API から使用できます。 構成済みの VM に関する情報を取得したり、新しい VM を追加したり、VM へのアクセス権を要求したりするには、この API を使用します。 
 
-詳細については、「[JIT ネットワーク アクセス ポリシー](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)」を参照してください。
+詳細については、「[JIT ネットワーク アクセス ポリシー](/rest/api/securitycenter/jitnetworkaccesspolicies)」を参照してください。
 
 ---
 

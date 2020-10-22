@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271109"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342350"
 ---
 # <a name="get-help-with-your-system"></a>お使いのシステムでサポートを受ける
 
@@ -57,4 +57,4 @@ Avere vFXT のデプロイ中または使用中に問題が発生した場合、
 
 ## <a name="request-a-quota-increase"></a>クォータの増加を要求する
 
-Avere vFXT for Azure をデプロイするために必要な構成要素については、「[vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)」を参照してください。 Azure portal から[クォータ増加を要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)できます。
+Avere vFXT for Azure をデプロイするために必要な構成要素については、「[vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)」を参照してください。 Azure portal から[クォータ増加を要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)できます。

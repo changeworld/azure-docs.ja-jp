@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 657d3f84a1dd196733ed23dd3b68db92e4b35e25
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570684"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279462"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
@@ -517,5 +517,5 @@ Azure Cosmos DB の次の概念について学習しましょう。
 - [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 - [アプリケーションで複数リージョン書き込みを構成する方法](how-to-multi-master.md)。
-- [パーティション分割とデータ分散](partition-data.md)
+- [パーティション分割とデータ分散](partitioning-overview.md)
 - [Azure Cosmos DB のインデックス作成](indexing-policies.md)

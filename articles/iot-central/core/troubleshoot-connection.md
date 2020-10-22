@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322451"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127371"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -34,9 +34,9 @@ ms.locfileid: "89322451"
 
 `az cli` ツールと `azure-iot` 拡張機能をまだインストールしていない場合はインストールします。
 
-`az cli` のインストール方法については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+`az cli` のインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
-`azure-iot` 拡張機能を[インストール](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation)するには、次のコマンドを実行します。
+`azure-iot` 拡張機能を[インストール](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation)するには、次のコマンドを実行します。
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -155,7 +155,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 | 401 | 認証トークンを検証できません。 たとえば、有効期限切れの場合や、要求の URI に適用されない場合などです。 また、このエラー コードは、TPM 構成証明フローの過程でデバイスに返されます。 | 確実に正しい資格情報がデバイスに含まれるようにします。 |
 | 404 | デバイス プロビジョニング サービスのインスタンス、または登録などのリソースが存在しません。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)してください。 |
 | 412 | 要求の `ETag` が、RFC7232 に従って、既存のリソースの `ETag` と一致しません。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)してください。 |
-| 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)」を参照してください。 | メッセージの頻度を削減し、より多くのデバイス間で責任を分割します。 |
+| 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)」を参照してください。 | メッセージの頻度を削減し、より多くのデバイス間で責任を分割します。 |
 | 500 | 内部エラーが発生しました。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)して、さらにサポートを受けられるかどうかを確認します。 |
 
 ## <a name="payload-shape-issues"></a>ペイロードの形態の問題

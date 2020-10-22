@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444184"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367722"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する
 
@@ -65,7 +65,7 @@ Azure SQL に対する Azure AD 認証の詳細については、記事「[Azure
     詳細については、[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) コマンドを参照してください。
 
     > [!IMPORTANT]
-    > Azure SQL 論理サーバーに対して Azure AD ID を設定した場合は、その ID に[**ディレクトリ閲覧者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のアクセス許可を付与する必要があります。 その手順については、次のセクションで取り上げます。 この手順をスキップ**しない**でください。Azure AD 認証が機能しなくなります。
+    > Azure SQL 論理サーバーに対して Azure AD ID を設定した場合は、その ID に[**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)のアクセス許可を付与する必要があります。 その手順については、次のセクションで取り上げます。 この手順をスキップ**しない**でください。Azure AD 認証が機能しなくなります。
 
     - 過去に、[New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) コマンドに `AssignIdentity` パラメーターを使用して新しい SQL Server を作成してある場合は、Azure ファブリックでこのプロパティを有効にするために、後から別途 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) コマンドを実行する必要があります。
 

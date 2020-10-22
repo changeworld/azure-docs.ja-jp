@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904736"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340344"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
-Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Log Analytics エージェントへの移行後の Security Center の機能を表しています。
+Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](./security-center-enable-data-collection.md)」を参照してください。 この記事の情報は、Log Analytics エージェントへの移行後の Security Center の機能を表しています。
 
 ## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -91,14 +91,14 @@ Security Center では、Log Analytics エージェントを使用して、Azure
 | インストールに失敗しました - ローカル エージェントが既にインストールされています | Log Analytics エージェントのインストールに失敗しました。 ローカル エージェント (Log Analytics または System Center Operations Manager) が VM にインストール済みであることが Security Center によって検出されました。 1 つの VM が 2 つの異なるワークスペースの管理下に置かれるマルチホーム構成を避けるために、Log Analytics エージェントのインストールは停止されました。 | これには 2 とおりの解決方法があります。1 つは、[拡張機能を手動でインストール](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)して、それを目的のワークスペースに接続する方法です。 もう 1 つは、目的のワークスペースを既定のワークスペースとして設定し、エージェントの自動プロビジョニングを有効にする方法です。  [自動プロビジョニングの有効化](security-center-enable-data-collection.md)に関するページを参照してください。 |
 | エージェントがワークスペースに接続できません | Log Analytics エージェントはインストールされましたが、ネットワーク接続のために失敗しました。  エージェントに関して、インターネット アクセスがあること、または有効な HTTP プロキシが構成されていることを確認してください。 | 監視エージェントのネットワーク要件に関するページを参照してください。 |
 | エージェントの接続先ワークスペースが存在しないか不明です | VM にインストールされている Log Analytics エージェントが、接続先ワークスペースにアクセスできないことを Security Center が検出しました。 | この原因として 2 つのケースが考えられます。 まず、ワークスペースが削除されて現在は存在していないことが考えられます。 適切なワークスペースを備えたエージェントを再インストールするか、またはエージェントをアンインストールして、Security Center による自動プロビジョニング インストールが作動するようにしてください。 もう 1 つは、そのワークスペースを含んでいるサブスクリプションへのアクセス許可が Security Center にないケースです。 Microsoft Security Resource Provider にサブスクリプションへのアクセスを許可するためには、Security Center にそのサブスクリプションが必要です。 その対策として、Microsoft Security Resource Provider のサブスクリプションを登録します。 この作業は、API や PowerShell、ポータルから行うことができるほか、Security Center の **[概要]** ダッシュボードから、目的のサブスクリプションにフィルターを適用するだけでも実行できます。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。 |
-| エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータがレポートされているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 Linux のトラブルシューティングについては、「[Troubleshooting Guide for Log Analytics Agent for Linux (Log Analytics エージェント for Linux のトラブルシューティング ガイド)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)」を参照してください。 Windows のトラブルシューティングについては、「[Troubleshooting Windows Virtual Machines (Windows 仮想マシンのトラブルシューティング)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)」を参照してください。 |
+| エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータがレポートされているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 Linux のトラブルシューティングについては、「[Troubleshooting Guide for Log Analytics Agent for Linux (Log Analytics エージェント for Linux のトラブルシューティング ガイド)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)」を参照してください。 Windows のトラブルシューティングについては、「[Troubleshooting Windows Virtual Machines (Windows 仮想マシンのトラブルシューティング)](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support)」を参照してください。 |
 | エージェントがインストールされていません | データ収集が無効になっています。 | セキュリティ ポリシーでデータ収集を有効にするか、Log Analytics エージェントを手動でインストールしてください。 |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>監視エージェントのネットワーク要件のトラブルシューティング<a name="mon-network-req"></a>
 
 Security Center に接続して登録するエージェントには、ドメイン URL とポート番号を含むネットワーク リソースへのアクセスが必要です。
 
-* プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)に関する記事を参照してください。
+* プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](../azure-monitor/platform/agent-windows.md)に関する記事を参照してください。
 * インターネットへのアクセスを制限するファイアウォールでは、Log Analytics へのアクセスを許可するようにファイアウォールを構成する必要があります。 エージェントの設定で必要な操作はありません。
 
 次の表は、通信で必要なリソースを示しています。
@@ -124,7 +124,7 @@ Security Center に接続して登録するエージェントには、ドメイ�
 * 特定のアクセス制御リスト (ACL) がディスク アクセスを妨げている可能性があります。
 * ディスク領域の不足によって、ゲスト エージェントが正常に機能できなくなっている可能性があります。
 
-既定では、Microsoft マルウェア対策ユーザー インターフェイスは無効になっています。必要に応じてこれを有効にする方法の詳細については、[デプロイ後に ARM VM の Microsoft マルウェア対策ユーザー インターフェイスを有効にする方法](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/)に関するブログをご覧ください。
+既定では、Microsoft マルウェア対策ユーザー インターフェイスは無効になっています。必要に応じてこれを有効にする方法の詳細については、[デプロイ後に ARM VM の Microsoft マルウェア対策ユーザー インターフェイスを有効にする方法](/archive/blogs/azuresecurity/enabling-microsoft-antimalware-user-interface-post-deployment)に関するブログをご覧ください。
 
 ## <a name="troubleshooting-problems-loading-the-dashboard"></a>ダッシュボードの読み込みに関する問題のトラブルシューティング
 
@@ -132,7 +132,7 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 ## <a name="contacting-microsoft-support"></a>Microsoft サポートへの問い合わせ
 
-一部の問題は、この記事に示したガイドラインを使用して特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
+一部の問題は、この記事に示したガイドラインを使用して特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A ページ](/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
 
 ![Microsoft サポート](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -143,12 +143,12 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) 」 -- Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center のセキュリティ アラートの概要](security-center-alerts-type.md)
+* [Azure Security Center のセキュリティ アラートの概要](./security-center-alerts-overview.md)
 * [チュートリアル:セキュリティ インシデントへの対応](tutorial-security-incident.md)
 * [Azure Security Center でのアラートの検証](security-center-alert-validation.md)
 * [Azure Security Center での電子メール通知](security-center-provide-security-contact-details.md)
 * [Azure Security Center でのセキュリティ インシデントの処理](security-center-incident.md)
-* [Azure Security Center の検出機能](security-center-detection-capabilities.md)
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center の検出機能](./security-center-alerts-overview.md)
+* [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-integration.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://docs.microsoft.com/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

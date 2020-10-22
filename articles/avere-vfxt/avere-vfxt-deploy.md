@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272775"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342418"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -64,7 +64,7 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 
 * **[Controller username]\(コントローラーのユーザー名\)** - クラスター コントローラー VM のルート ユーザー名を設定します。
 
-* **[認証の種類]** - コントローラーへの接続に関して、パスワードまたは SSH 公開キーの認証を選択します。 SSH 公開キー方式が推奨されます。ヘルプが必要な場合は、[SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。
+* **[認証の種類]** - コントローラーへの接続に関して、パスワードまたは SSH 公開キーの認証を選択します。 SSH 公開キー方式が推奨されます。ヘルプが必要な場合は、[SSH キーを作成して使用する方法](../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。
 
 * **[パスワード]** または **[SSH 公開キー]** - お客様が選択した認証の種類に応じて、後続のフィールドで RSA 公開キーまたはパスワードを指定する必要があります。 この資格情報は、先ほど指定したユーザー名と組み合わせて使用されます。
 

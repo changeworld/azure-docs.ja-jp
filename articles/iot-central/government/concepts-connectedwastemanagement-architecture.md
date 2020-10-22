@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 763fb82e0725e5a98112af3a79856c3703a5c2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b061a6d3d7d2a6598d8ed7c48428d756db6e97d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77016087"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126277"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>接続された廃棄物監視の参照アーキテクチャ 
 
@@ -33,7 +33,7 @@ ms.locfileid: "77016087"
 水消費量の監視ソリューションで一般的に役立つ主要なコンポーネントについて見ていきましょう。
 
 ## <a name="devices-and-connectivity"></a>デバイスと接続 
-廃棄物入れのように、オープンな環境で使用されるデバイスは、サードパーティのネットワーク オペレーターを通じて省電力広域ネットワーク (LPWAN) を介して接続できます。 これらの種類のデバイスについては、[Azure IoT Central デバイス ブリッジ](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)を使用して、Azure IoT Central の IoT アプリケーションにご自分のデバイス データを送信することができます。 または、IP 対応で IoT Central に直接接続することができるデバイス ゲートウェイを使用することもできます。
+廃棄物入れのように、オープンな環境で使用されるデバイスは、サードパーティのネットワーク オペレーターを通じて省電力広域ネットワーク (LPWAN) を介して接続できます。 これらの種類のデバイスについては、[Azure IoT Central デバイス ブリッジ](../core/howto-build-iotc-device-bridge.md)を使用して、Azure IoT Central の IoT アプリケーションにご自分のデバイス データを送信することができます。 または、IP 対応で IoT Central に直接接続することができるデバイス ゲートウェイを使用することもできます。
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central は、IoT ソリューションを迅速に起動して実行できる IoT アプリ プラットフォームです。 サードパーティのサービスを使用して、ソリューションをブランド化、カスタマイズ、統合することができます。
@@ -51,5 +51,4 @@ IoT データを使用して、廃棄物施設内でさまざまなビジネス 
 ## <a name="next-steps"></a>次のステップ
 * [接続された廃棄物管理 IoT Central アプリケーションを作成](./tutorial-connected-waste-management.md)する方法の詳細
 * [IoT Central 政府機関テンプレート](./overview-iot-central-government.md)の詳細を学習する
-* IoT Central の詳細については、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)に関する記事を参照してください
-
+* IoT Central の詳細については、[IoT Central の概要](../core/overview-iot-central.md)に関する記事を参照してください

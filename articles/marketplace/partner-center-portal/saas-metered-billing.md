@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bcea36b99ae51da256d6b4fc49a4e3965a8c82c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378604"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279169"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>コマーシャル マーケットプレースの測定サービスを使用した SaaS の従量制課金
 
@@ -153,7 +153,7 @@ ms.locfileid: "89378604"
 - お客様の側でのエラーまたはバグが原因でエスカレートする必要がある問題 (例: 間違った使用状況イベント)。
 - 従量制課金に関連するその他の問題。
 
-公開元のサポート オプションを理解して、Microsoft のサポート チケットを開くには、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](./support.md)」の手順に従います。
+公開元のサポート オプションを理解して、Microsoft のサポート チケットを開くには、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](../support.md)」の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448482"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342095"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 
@@ -139,7 +139,7 @@ Security Center の REST API を使用して、アラート抑制ルールを作
 
 - **DELETE**: 既存のルールを削除します (ただし、そのルールによって既に無視されているアラートの状態は変更されません)。
 
-詳細と使用例については、[API のドキュメント](https://docs.microsoft.com/rest/api/securitycenter/)を参照してください。 
+詳細と使用例については、[API のドキュメント](/rest/api/securitycenter/)を参照してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

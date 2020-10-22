@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272792"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342401"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT システムの計画
 
@@ -109,7 +109,7 @@ Azure BLOB ストレージを使用する場合、ご利用のクラスターの
 
 ノードごとのディスク キャッシュを構成することができ、1,000 GB から 8,000 GB の範囲にすることができます。 Standard_E32s_v3 ノードの推奨キャッシュ サイズは、ノードあたり 4 TB です。
 
-これらの VM の追加情報については、次の Microsoft Azure ドキュメントを参照してください。[メモリ最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+これらの VM の追加情報については、次の Microsoft Azure ドキュメントを参照してください。[メモリ最適化済み仮想マシンのサイズ](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>アカウント クォータ
 

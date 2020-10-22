@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092526"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340531"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 
@@ -58,7 +58,7 @@ Azure HPC Cache を使用するには、キー コンテナーとキーがこれ
 
 * Azure HPC Cache を作成するユーザーは、[Key Vault の共同作成者ロール](../role-based-access-control/built-in-roles.md#key-vault-contributor)と同等のアクセス許可を持っている必要があります。 Azure Key Vault を設定および管理するには、同じアクセス許可が必要です。
 
-  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/key-vault-secure-your-key-vault.md)」を参照してください。
+  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/secure-your-key-vault.md)」を参照してください。
 
 ## <a name="1-set-up-azure-key-vault"></a>1.Azure Key Vault を設定する
 
@@ -66,7 +66,7 @@ Azure HPC Cache を使用するには、キー コンテナーとキーがこれ
 
 キャッシュの作成時に、キャッシュの暗号化に使用するコンテナー、キー、およびキーのバージョンを指定する必要があります。
 
-詳細については、[Azure Key Vault のドキュメント](../key-vault/key-vault-overview.md)を参照してください。
+詳細については、[Azure Key Vault のドキュメント](../key-vault/general/overview.md)を参照してください。
 
 > [!NOTE]
 > Azure Key Vault は、Azure HPC Cache と同じサブスクリプションを使用し、同じリージョンに存在する必要があります。 選択するリージョンで、[カスタマー マネージド キー機能がサポートされている](hpc-cache-overview.md#region-availability)ことを確認します。
@@ -92,7 +92,7 @@ Azure HPC Cache を作成する際には、暗号化キーのソースを指定�
 
 1. コンテナーを選択したら、使用可能なオプションから個々のキーを選択するか、新しいキーを作成します。 キーは、2,048 ビット RSA キーである必要があります。
 
-1. 選択したキーのバージョンを指定します。 バージョン管理の詳細については、[Azure Key Vault のドキュメント](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)を参照してください。
+1. 選択したキーのバージョンを指定します。 バージョン管理の詳細については、[Azure Key Vault のドキュメント](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)を参照してください。
 
 残りの仕様に進み、「[Azure HPC Cache を作成する](hpc-cache-create.md)」の説明に従ってキャッシュを作成します。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75441215"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279857"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成
 
@@ -58,7 +58,7 @@ ms.locfileid: "75441215"
 
 パーティション分割の概念の詳細については、次の記事を参照してください。
 
-* [論理パーティション](partition-data.md)の詳細を確認する。
+* [論理パーティション](partitioning-overview.md)の詳細を確認する。
 * [Azure Cosmos のコンテナーとデータベースのスループットをプロビジョニングする](set-throughput.md)方法の詳細を確認する。
 * [Azure Cosmos コンテナーのスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法を確認する。
 * [Azure Cosmos データベースのスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法を確認する。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80365505"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122979"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central アプリケーションでユーザーとロールを管理する
 
@@ -25,7 +25,7 @@ ms.locfileid: "80365505"
 
 ユーザーが Azure IoT Central アプリケーションにサインインしてアクセスするには、ユーザー アカウントが必要です。 Azure IoT Central では、Microsoft アカウントと Azure Active Directory アカウントがサポートされています。 Azure Active Directory グループは 現在 Azure IoT Central でサポートされていません。
 
-詳細は、「[Microsoft アカウントのヘルプ](https://support.microsoft.com/products/microsoft-account?category=manage-account)」と「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)」を参照してください。
+詳細は、「[Microsoft アカウントのヘルプ](https://support.microsoft.com/products/microsoft-account?category=manage-account)」と「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../../active-directory/fundamentals/add-users-azure-active-directory.md)」を参照してください。
 
 1. IoT Central アプリケーションにユーザーを追加するには、 **[管理]** セクションの **[ユーザー]** ページに移動します。
     

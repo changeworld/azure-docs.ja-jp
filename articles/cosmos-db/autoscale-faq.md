@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567589"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277962"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 
@@ -125,7 +125,7 @@ Shared スループット データベースの場合、最大 RU/秒を引き�
 - 時間 1: T=2: コンテナーは、1 秒で 1,000 RU を消費する要求の取得を開始します。 また、発生が不可欠な 200 RU 相当の TTL もあります。 課金対象の RU/秒は、引き続き 1,000 RU/秒です。 TTL がいつ発生しても、自動スケーリングのスケーリング ロジックには影響しません。
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>最大 RU/秒と物理パーティション間のマッピングとはどのようなものですか?
-最初に最大 RU/秒を選択すると、Azure Cosmos DB によって次のようにプロビジョニングされます: 最大 RU/秒 / 10,000 RU/秒 = 物理パーティションの数。 各[物理パーティション](partition-data.md#physical-partitions)は、最大 10,000 RU/秒と 50 GB のストレージをサポートできます。 ストレージのサイズが大きくなると、Azure Cosmos DB によってパーティションが自動的に分割され、ストレージの増加に対応するように物理パーティションが追加されます。または、ストレージが[関連付けられた上限を超えている](#what-is-the-storage-limit-associated-with-each-max-rus-option)場合は、最大 RU/秒が引き上げられます。 
+最初に最大 RU/秒を選択すると、Azure Cosmos DB によって次のようにプロビジョニングされます: 最大 RU/秒 / 10,000 RU/秒 = 物理パーティションの数。 各[物理パーティション](partitioning-overview.md#physical-partitions)は、最大 10,000 RU/秒と 50 GB のストレージをサポートできます。 ストレージのサイズが大きくなると、Azure Cosmos DB によってパーティションが自動的に分割され、ストレージの増加に対応するように物理パーティションが追加されます。または、ストレージが[関連付けられた上限を超えている](#what-is-the-storage-limit-associated-with-each-max-rus-option)場合は、最大 RU/秒が引き上げられます。 
 
 データベースまたはコンテナーの最大 RU/秒は、すべての物理パーティション全体で均等に分割されます。 そのため、1 つの物理パーティションでスケーリングできる合計スループットは次のようになります: データベースまたはコンテナーの最大 RU/秒 / 物理パーティションの数。 
 
@@ -147,5 +147,5 @@ Shared スループット データベースの場合、最大 RU/秒を引き�
 
 * [Azure Cosmos DB データベースまたはコンテナーで自動スケーリングを有効にする方法](how-to-provision-autoscale-throughput.md)について学習します。
 * [自動スケーリングを使用したプロビジョニング スループットの利点](provision-throughput-autoscale.md#benefits-of-autoscale)について学習します。
-* [論理および物理パーティション](partition-data.md)の詳細について学習します。
+* [論理および物理パーティション](partitioning-overview.md)の詳細について学習します。
                         
