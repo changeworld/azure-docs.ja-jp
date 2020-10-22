@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: e5c9540bed34de3cad5c74c7041c8d7e06aef9ca
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 68df6d6707ebe4f1a4b75a8005e746e2c1eba864
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946061"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341585"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
@@ -133,7 +133,7 @@ Security Center によって作成されたワークスペースを選択する�
 
 
 ## <a name="cross-subscription-workspace-selection"></a>クロス サブスクリプションのワークスペースの選択
-データの格納先となるワークスペースを選択するときには、ご利用のすべてのサブスクリプションにわたって、すべてのワークスペースを選択できます。 クロス サブスクリプションのワークスペースの選択を行うと、異なるサブスクリプションで実行されている仮想マシンからデータを収集し、選択したワークスペースに格納できます。 この選択は、社内で一元化されたワークスペースを使用していて、それをセキュリティ データの収集に使いたい場合に適しています。 ワークスペースを管理する方法について詳しくは、[ワークスペースのアクセス管理](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)に関するページをご覧ください。
+データの格納先となるワークスペースを選択するときには、ご利用のすべてのサブスクリプションにわたって、すべてのワークスペースを選択できます。 クロス サブスクリプションのワークスペースの選択を行うと、異なるサブスクリプションで実行されている仮想マシンからデータを収集し、選択したワークスペースに格納できます。 この選択は、社内で一元化されたワークスペースを使用していて、それをセキュリティ データの収集に使いたい場合に適しています。 ワークスペースを管理する方法について詳しくは、[ワークスペースのアクセス管理](../azure-monitor/platform/manage-access.md)に関するページをご覧ください。
 
 
 
@@ -174,9 +174,9 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
+> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
 > -  [適応型アプリケーション制御](security-center-adaptive-application.md)のデータ収集を有効にするために、Security Center は、ローカル AppLocker ポリシーを監査モードで構成して、すべてのアプリケーションを許可します。 これをきっかけとして AppLocker がイベントを生成するようになり、そのイベントが Security Center によって収集されて活用されます。 ただし、既に AppLocker ポリシーが構成されているマシンでは、このポリシーが構成されないので注意してください。 
-> - Windows フィルタリング プラットフォーム イベント ([イベント ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)) を収集するには、[[フィルタリング プラットフォームの接続の監査]](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection) を有効にする必要があります (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)。
+> - Windows フィルタリング プラットフォーム イベント ([イベント ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)) を収集するには、[[フィルタリング プラットフォームの接続の監査]](/windows/security/threat-protection/auditing/audit-filtering-platform-connection) を有効にする必要があります (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)。
 >
 
 フィルタリグ ポリシーを選択するには、次の手順に従います。
@@ -204,7 +204,7 @@ Security Center によって、Log Analytics エージェント拡張機能は�
 
 - 既存の VM 拡張機能が存在する<br>
     - Monitoring Agent が拡張機能としてインストールされている場合、拡張機能の構成では 1 つのワークスペースにのみレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"security" または "securityFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。  
-    - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)するテストを実行します。 または、Log Analytics ワークスペースを開いてワークスペースを選択し、対象の VM を選択して、Log Analytics エージェント接続を調べることもできます。 
+    - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)するテストを実行します。 または、Log Analytics ワークスペースを開いてワークスペースを選択し、対象の VM を選択して、Log Analytics エージェント接続を調べることもできます。 
     - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」をご覧ください。
  
 ### <a name="turn-off-automatic-provisioning"></a>自動プロビジョニングを無効にする<a name="offprovisioning"></a>
@@ -265,8 +265,8 @@ Log Analytics エージェントを手動でインストールして、Security 
 
 1. PowerShell を使用して拡張機能をデプロイするには、仮想マシンのドキュメントの手順を使用します。
 
-    - [Windows マシンの場合](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
-    - [Linux マシンの場合](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+    - [Windows マシンの場合](../virtual-machines/extensions/oms-windows.md?toc=%252fazure%252fazure-monitor%252ftoc.json#powershell-deployment)
+    - [Linux マシンの場合](../virtual-machines/extensions/oms-linux.md?toc=%252fazure%252fazure-monitor%252ftoc.json#azure-cli-deployment)
 
 
 

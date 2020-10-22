@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2abd5882e310b17c633a82009f44624fad156f14
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132349"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221130"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark コードについて
 
@@ -214,8 +214,8 @@ Spark のコストベースのクエリ オプティマイザーには、ヒン�
 ## <a name="next-steps"></a>次のステップ
 
 - [U-SQL 開発者向けの Spark データ形式について](understand-spark-data-formats.md)
-- [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
-- [ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)
+- [.NET for Apache Spark](/dotnet/spark/what-is-apache-spark-dotnet)
+- [ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
 - [Azure Data Factory での Spark アクティビティを使用したデータの変換](../data-factory/transform-data-using-spark.md)
 - [Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する](../data-factory/transform-data-using-hadoop-hive.md)
 - [Apache Spark とは - Azure HDInsight](../hdinsight/spark/apache-spark-overview.md)

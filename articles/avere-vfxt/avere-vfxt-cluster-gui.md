@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505615"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342435"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT クラスターへのアクセス
 
@@ -27,7 +27,7 @@ vFXT クラスターはプライベート仮想ネットワーク内にあるた
 > [!NOTE]
 > この記事では、クラスター コントローラー、またはクラスターの仮想ネットワーク内にある別の VM にパブリック IP アドレスを設定していることを前提としています。 この記事では、その VM をホストとして使用してクラスターにアクセスする方法について説明します。 仮想ネットワーク アクセスに VPN または ExpressRoute を使用している場合は、[Avere Control Panel への接続](#connect-to-the-avere-control-panel-in-a-browser)に関するセクションに進んでください。
 
-接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) の SSH キーのドキュメントをお読みください。 公開キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。
+接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](../virtual-machines/linux/ssh-from-windows.md) または [Linux](../virtual-machines/linux/mac-create-ssh-keys.md) の SSH キーのドキュメントをお読みください。 公開キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。
 
 ## <a name="create-an-ssh-tunnel"></a>SSH トンネルを作成する
 

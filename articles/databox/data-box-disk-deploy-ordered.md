@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c83e46932e8d2a28d8503fe3fb6514988c364d97
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950943"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125271"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -49,7 +49,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 サインイン先:
 
 * Data Box Disk を注文するための Azure portal (URL: https://portal.azure.com )。
-* または、Azure Government ポータル (URL: https://portal.azure.us )。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
+* または、Azure Government ポータル (URL: https://portal.azure.us )。 詳細については、[ポータルを使用して Azure Government に接続する](../azure-government/documentation-government-get-started-connect-with-portal.md)方法に関するページを参照してください。
 
 次の手順に従って、Data Box Disk を注文します。
 
@@ -83,7 +83,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
     |宛先 Azure リージョン| ストレージ アカウントのリージョンを選択します。<br> 現時点では、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアにおけるすべてのリージョンのストレージ アカウントがサポートされています。 |
     |推定データ サイズ (TB 単位)| 推定サイズを TB 単位で入力します。 <br>データ サイズに基づいて、Microsoft は適切な数の 8 TB SSD (使用可能な容量は 7 TB) を発送します。 <br>5 台のディスクの最大使用可能容量は最大 35 TB です。 |
     |ディスク パスキー| **[Azure 生成のパスキーではなくカスタム キーを使用]** をオンにした場合は、ディスク パスキーを指定します。 <br> 少なくとも 1 つの数字と 1 つの特殊文字を含む 12 から 32 文字の英数字で構成されたキーを入力します。 使用できる特殊文字は `@?_+` です。 <br> このオプションをスキップし、Azure によって生成されたパスキーを使用してディスクをロック解除することができます。|
-    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧からストレージ アカウントを選択します。 Data Box Disk は 1 つのストレージ アカウントのみにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br>仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box を信頼できるサービスとして追加する](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)方法を参照してください。|
+    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧からストレージ アカウントを選択します。 Data Box Disk は 1 つのストレージ アカウントのみにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br>仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box を信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法を参照してください。|
 
     保存先としてストレージ アカウントを使用している場合は、以下のようなスクリーンショットが表示されます。
 

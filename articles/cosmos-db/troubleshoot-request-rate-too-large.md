@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f8b1129c94ecf80efb60a13a0b80b1cc1817ff3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871090"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277160"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>Azure Cosmos DB の要求率が大きすぎる例外を診断してトラブルシューティングする
 "要求率が大きすぎる" というメッセージまたはエラー コード 429 は、要求が調整中であることを示しています。
@@ -24,7 +24,7 @@ ms.locfileid: "88871090"
 例外 429 の数を確認するには、[Azure Cosmos DB の監視](monitor-cosmos-db.md)に関するページを参照してください。
 
 #### <a name="cause"></a>原因:
-使用されたスループット (要求ユニット/秒) が、[プロビジョニングされたスループット](set-throughput.md)を超えました。 SDK は、指定された再試行ポリシーに基づいて要求を自動的に再試行します。 このエラーが頻繁に発生する場合、コレクションでスループットを増やすことを検討してください。 ポータルのメトリックを調べて、429 エラーが発生しているかどうかを確認します。 パーティション キーを調べて、[ストレージおよび要求ボリュームが均等に分散されていること](partition-data.md)を確認します。
+使用されたスループット (要求ユニット/秒) が、[プロビジョニングされたスループット](set-throughput.md)を超えました。 SDK は、指定された再試行ポリシーに基づいて要求を自動的に再試行します。 このエラーが頻繁に発生する場合、コレクションでスループットを増やすことを検討してください。 ポータルのメトリックを調べて、429 エラーが発生しているかどうかを確認します。 パーティション キーを調べて、[ストレージおよび要求ボリュームが均等に分散されていること](partitioning-overview.md)を確認します。
 
 #### <a name="solution"></a>解決方法:
 1. [ポータルまたは SDK](set-throughput.md) を使用して、プロビジョニングされているスループットを大きくします。

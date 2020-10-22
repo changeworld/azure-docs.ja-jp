@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342214"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>FAQ - 仮想マシンに関する質問
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>サポートされる仮想マシンのタイプは何ですか。
 
-監視と推奨事項は、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
+監視と推奨事項は、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](/azure/security-center/./azure-resource-manager/management/deployment-models)のどちらで作成された仮想マシン (VM) でも利用できます。
 
 サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
 
@@ -51,7 +51,7 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 Security Center は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 
 
 > [!NOTE]
-> Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。
+> Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](./security-center-enable-data-collection.md)」を参照してください。
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。

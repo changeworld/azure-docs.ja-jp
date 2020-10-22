@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b218f4c94e33d4a91b3981c66d3ac052c6caf7e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306567"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318126"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -87,7 +87,7 @@ ms.locfileid: "91306567"
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](https://aka.ms/deploymentplans)し、またそのプロジェクトの役割が明確になっていることを確認します。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)し、またそのプロジェクトの役割が明確になっていることを確認します。
 
 アクセス レビューの場合は、組織内の次のチームの代表者を含めることが考えられます。
 
@@ -182,7 +182,7 @@ ms.locfileid: "91306567"
 
 * グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Microsoft 365 (Microsoft Teams を含む) で作成されるもの)。
 
-* リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](/azure/active-directory/governance/entitlement-management-overview)。
+* リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](./entitlement-management-overview.md)。
 
 * Privileged Identity Management で定義された [Azure AD ロールと Azure リソース ロール](../privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
@@ -518,4 +518,3 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 * [Azure AD エンタイトルメント管理とは](entitlement-management-overview.md)
 
 * [Azure AD Privileged Identity Management とは](../privileged-identity-management/pim-configure.md)
-

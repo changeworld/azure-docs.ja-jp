@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611658"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123717"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する
 
@@ -222,8 +222,8 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 |受取済み     | デバイスは Azure データ センターで受け取られてスキャンされます。 <br> 出荷が検査されると、デバイスのアップロードが開始されます。      |
 |データのコピー     | データのコピーが進行中です。 Azure portal で、注文のコピーの進行状況を追跡します。 <br> データのコピーが完了するまでお待ちください。 |
 |完了       |注文が正常に完了しました。<br> オンプレミスのデータをサーバーから削除する前に、データが Azure に存在することを確認してください。         |
-|完了 (エラーあり)| データのコピーが完了しましたが、コピー中にエラーが発生しました。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 [アップロードがエラーで完了したときのコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)を参照してください。   |
-|完了 (警告あり)| データのコピーは完了しましたが、データは変更されました。 このデータには、ファイル名または BLOB 名を変更することによって修正された、重大ではない BLOB 名またはファイル名のエラーがあります。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 データの変更をメモします。 [アップロードが警告で完了したときのコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)を参照してください。   |
+|完了 (エラーあり)| データのコピーが完了しましたが、コピー中にエラーが発生しました。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 [アップロードがエラーで完了したときのコピー ログの例](./data-box-logs.md#upload-completed-with-errors)を参照してください。   |
+|完了 (警告あり)| データのコピーは完了しましたが、データは変更されました。 このデータには、ファイル名または BLOB 名を変更することによって修正された、重大ではない BLOB 名またはファイル名のエラーがあります。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 データの変更をメモします。 [アップロードが警告で完了したときのコピー ログの例](./data-box-logs.md#upload-completed-with-warnings)を参照してください。   |
 |Canceled            |注文はキャンセルされました。 <br> お客様によって注文がキャンセルされたか、またはエラーが発生したために、サービスによって注文がキャンセルされました。 注文を 90 日以内に満たすことができない場合も、注文が取り消されて通知されます。     |
 |クリーンアップ | デバイスディスク上のデータは消去されます。 デバイスのクリーンアップは、注文履歴が Azure portal でダウンロード可能なときに完了したと見なされます。|
 
@@ -238,9 +238,9 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 |処理済み     | 注文処理は完了しています。 注文に応じて、データセンターでデータ コピー用にデバイスが準備されます。 デバイス共有が作成されます。         |
 |データのコピーが進行中     | 指定された Azure Storage アカウントからデバイスへのデータ コピーが進行中です。 Azure portal で、注文のコピーの進行状況を追跡します。 <br> データのコピーが完了するまでお待ちください。 |
 |コピーが完了しました     | 指定された Azure Storage アカウントからデバイスへのデータ コピーが完了しました。 詳細ログ ファイル (注文でこのオプションが有効になっている場合) とコピー ログがご自分のストレージ アカウントに作成されます。 詳細ログには、デバイスにコピーされるすべてのファイルに関する情報 (名前、パス、計算チェックサム) が含まれています。 コピー ログには、エラーが発生したためにコピーできなかったファイルのリストを含む、コピー プロセスの概要が含まれています。<br> ストレージ アカウントのデータはそのまま維持されます。 |
-|コピーは完了しましたが、エラーが発生しました| データのコピーが完了しましたが、コピー中にエラーが発生しました。 <br> Azure portal に示されているパスを使用して、Azure Storage アカウントのコピー ログを確認してください。 [エラーが発生してダウンロードが完了した場合のコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)を参照してください。   |
-|コピーが完了しましたが、警告があります| Azure Storage アカウントからのデータのコピーは完了しましたが、データに重大ではないエラーがありました。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 重大ではないエラーをメモしておきます。 [警告が発生してダウンロードが完了した場合のコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)を参照してください。   |
-|エラーによりコピーが失敗しました| Azure Storage アカウントからのデータのコピーに失敗し、注文が終了しました。 デバイスは出荷されません。<br> Azure portal に示されているパスを使用して、Azure Storage アカウントのコピー ログを確認してください。 [エラーによりダウンロードが失敗した場合のコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)を参照してください。   |
+|コピーは完了しましたが、エラーが発生しました| データのコピーが完了しましたが、コピー中にエラーが発生しました。 <br> Azure portal に示されているパスを使用して、Azure Storage アカウントのコピー ログを確認してください。 [エラーが発生してダウンロードが完了した場合のコピー ログの例](./data-box-logs.md#upload-completed-with-errors)を参照してください。   |
+|コピーが完了しましたが、警告があります| Azure Storage アカウントからのデータのコピーは完了しましたが、データに重大ではないエラーがありました。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 重大ではないエラーをメモしておきます。 [警告が発生してダウンロードが完了した場合のコピー ログの例](./data-box-logs.md#upload-completed-with-warnings)を参照してください。   |
+|エラーによりコピーが失敗しました| Azure Storage アカウントからのデータのコピーに失敗し、注文が終了しました。 デバイスは出荷されません。<br> Azure portal に示されているパスを使用して、Azure Storage アカウントのコピー ログを確認してください。 [エラーによりダウンロードが失敗した場合のコピー ログの例](./data-box-logs.md#upload-completed-with-errors)を参照してください。   |
 |出荷しました     |注文は発送済みです。 出荷を追跡するには、ポータルの注文に表示されている追跡 ID を使用します。        |
 |配信済み     |出荷は、注文に指定された住所に配達済みです。        |
 |集荷されました     |返送する荷物が運送業者によって集荷されてスキャンされました。         |

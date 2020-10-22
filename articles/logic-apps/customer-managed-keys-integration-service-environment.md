@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400145"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318443"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -39,7 +39,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** プロパティが有効になっている Azure キー コンテナー。
 
-  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
+  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/customer-managed-keys-configure-key-vault.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
 
 * キー コンテナーで、次のプロパティ値を使用して作成されたキー。
 
@@ -52,7 +52,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
   ![カスタマー マネージド暗号化キーの作成](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  詳細については、[Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事、または Azure PowerShell コマンドの「[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)」を参照してください。
+  詳細については、[Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/customer-managed-keys-configure-key-vault.md)方法に関する記事、または Azure PowerShell コマンドの「[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)」を参照してください。
 
 * HTTPS PUT 要求で Logic Apps REST API を呼び出して ISE を作成するために使用できるツール。 たとえば、[Postman](https://www.getpostman.com/downloads/) を使用したり、このタスクを実行するロジック アプリを構築したりできます。
 
@@ -225,7 +225,7 @@ ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に�
 
    1. **[アクセス ポリシー]** ペインでの作業が終了したら、 **[保存]** を選択します。
 
-詳細については、[Key Vault で認証を行う方法](/azure/key-vault/general/authentication)に関する記事と [Key Vault のアクセス ポリシーの割り当て](/azure/key-vault/general/assign-access-policy-portal)に関する記事を参照してください。
+詳細については、[Key Vault で認証を行う方法](../key-vault/general/authentication.md)に関する記事と [Key Vault のアクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

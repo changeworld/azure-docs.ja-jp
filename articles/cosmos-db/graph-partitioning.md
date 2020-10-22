@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400504"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279731"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用
 
 Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケーリングによって大規模なグラフを処理する機能があります。 コンテナーは、ストレージとスループットに応じて個別にスケーリングできます。 グラフ データを格納するために自動的にスケーリングできるコンテナーを Azure Cosmos DB で作成できます。 データは、指定された**パーティション キー**に基づいて自動的に分散されます。
 
-コンテナーに格納されるサイズが 20 GB を超えることが予想される場合、または 1 秒間に 10,000 を超える数の要求ユニット (RU) を割り当てたい場合は、**パーティション分割が必要です**。 [Azure Cosmos DB のパーティション分割メカニズム](partition-data.md)と同じ一般原則が、以下で説明するグラフ固有の最適化でも適用されます。
+コンテナーに格納されるサイズが 20 GB を超えることが予想される場合、または 1 秒間に 10,000 を超える数の要求ユニット (RU) を割り当てたい場合は、**パーティション分割が必要です**。 [Azure Cosmos DB のパーティション分割メカニズム](partitioning-overview.md)と同じ一般原則が、以下で説明するグラフ固有の最適化でも適用されます。
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="グラフのパーティション分割" border="false":::
 
@@ -78,7 +78,7 @@ Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケ
 
 - **エッジに対してクエリを実行する場合は、可能な限り、送信方向を使用します**。 前述のように、エッジは、送信方向のそのソース頂点と一緒に格納されます。 したがって、このパターンを念頭においてデータとクエリを設計すると、クロス パーティション クエリを使用する可能性が最小限に抑えられます。 これに対して、`in()` クエリは常にコストのかかるファンアウト クエリになります。
 
-- **パーティション間でデータを均等に分散するパーティション キーを選択します**。 この決定は、ソリューションのデータ モデルに大きく依存します。 適切なパーティション キーの作成の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」を参照してください。
+- **パーティション間でデータを均等に分散するパーティション キーを選択します**。 この決定は、ソリューションのデータ モデルに大きく依存します。 適切なパーティション キーの作成の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)」を参照してください。
 
 - **パーティションの境界内でデータを取得するようにクエリを最適化します**。 最適なパーティション分割方法を決める場合は、クエリ パターンに合わせます。 1 つのパーティションからデータを取得するクエリでは、最大限のパフォーマンスを実現できます。
 
@@ -86,6 +86,6 @@ Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケ
 
 次に、以下の記事をお読みください。
 
-* [Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)について説明します。
+* [Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)について説明します。
 * [Gremlin API での Gremlin のサポート](gremlin-support.md)について説明します。
 * [Gremlin API の概要](graph-introduction.md)について説明します。
