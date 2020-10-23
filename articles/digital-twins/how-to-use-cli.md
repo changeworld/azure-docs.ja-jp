@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2c642b2441d1f30c31e707a237732e028f548ac5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298183"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047065"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI を使用する
 
@@ -35,13 +35,13 @@ CLI は、インスタンスの一般的な管理だけでなく、デプロイ�
 
 ## <a name="get-the-extension"></a>拡張機能を取得する
 
-Azure Digital Twins コマンドは、[Azure CLI の Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)の一部です。 これらのコマンドのリファレンス ドキュメントは、`az iot` コマンド セット [az dt](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest) の一部として参照できます。
+Azure Digital Twins コマンドは、[Azure CLI の Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)の一部です。 コマンドとその用途の完全な一覧は、`az iot` コマンド セット [*az dt* コマンド参照](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)の参照ドキュメントで参照できます。
 
-拡張機能の最新バージョンがあることを確認するには、次の手順に従ってください。 これらのコマンドは、[Azure Cloud Shell](../cloud-shell/overview.md) または [ローカルの Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)で実行できます。
+拡張機能の最新バージョンがあることを確認するには、次の手順に従ってください。 これらのコマンドは、[Azure Cloud Shell](../cloud-shell/overview.md) または [ローカルの Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)で実行できます。
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-CLI コマンドの代替方法として、API および SDK を使用して Azure Digital Twins インスタンスを管理する方法を参照してください。
-* [*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)
+CLI とその完全なコマンド セットを、参照ドキュメント:
+* [*az dt* コマンド参照](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)で確認する

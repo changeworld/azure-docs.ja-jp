@@ -3,16 +3,16 @@ title: Azure IoT Central アプリケーションでデバイス を作成して
 description: Azure IoT Central のジョブを使用すると、プロパティの更新やコマンドの実行などの一括デバイス管理機能を行うことができます。
 ms.service: iot-central
 services: iot-central
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 09/10/2020
+author: philmea
+ms.author: philmea
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 2b5fc349ae7d92bf36cfe9b1f3272cc1f4f7446b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060817"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017949"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでのジョブの作成と実行
 
@@ -32,11 +32,19 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 
 1. **[ジョブの種類]** として、 **[クラウド プロパティ]** 、 **[プロパティ]** 、または **[コマンド]** を選択します。
 
-    **プロパティ** のジョブ構成を設定するには、プロパティを選択し、新しい値を設定します。 **コマンド**のジョブ構成を設定するには、実行するコマンドを選択します。 プロパティ ジョブによって、複数のプロパティを設定できます。
+    **プロパティ** ジョブを構成するには、プロパティを選択し、その新しい値を設定します。 **コマンド** ジョブを構成するには、実行するコマンドを選択します。 プロパティ ジョブによって、複数のプロパティを設定できます。
 
     :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
 
     **[保存して終了]** を選択し、 **[ジョブ]** ページの保存されているジョブの一覧にジョブを追加 ます。 後から、保存されているジョブの一覧からジョブに戻ることができます。
+
+    **[次へ]** を選択して、 **[配信オプション]** ページに移動します。 **[配信オプション]** ページでは、このジョブの配信オプションを設定できます。 **[バッチ]** および **[Cancellation threshold]\(キャンセルしきい値\)** 。
+
+    バッチを使用すると、多数のデバイスに対してジョブを分散させることができます。 ジョブは複数のバッチに分割され、各バッチにはデバイスのサブセットが含まれます。 バッチはキューに入れられ、順番に実行されます。
+
+    キャンセルしきい値を使用すると、エラーの数が設定した制限を超えた場合に、ジョブを自動的にキャンセルできます。 しきい値は、ジョブ内のすべてのデバイス、または個々のバッチに適用できます。
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
 
     **[次へ]** を選択して、 **[レビュー]** ページに移動します。 **[レビュー]** ページには、ジョブ構成の詳細が表示されます。 **[実行]** を選択してジョブを送信します。
 
@@ -82,6 +90,7 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 | 保留中              | このジョブはデバイスでまだ実行が開始されていません。         |
 | 実行中              | このジョブはデバイスで現在実行中です。             |
 | 停止済み              | ユーザーがこのジョブを手動で停止しました。           |
+| Canceled             | このジョブは、 **[配信オプション]** ページで設定されたしきい値を超えたため、キャンセルされました。 |
 
 ステータス メッセージには、ジョブ内のデバイスの概要が続きます。 可能な*デバイスの状態*の値を次の表に示します。
 

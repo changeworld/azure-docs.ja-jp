@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fbff4cc067ce831e9d9f69a457f348a94257e86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489624"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076914"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -109,7 +109,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 <a name="required-ports"> </a> API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
 
-| ソース / ターゲット ポート | Direction          | トランスポート プロトコル |   [サービス タグ](../virtual-network/security-overview.md#service-tags) <br> ソース / ターゲット   | 目的 (\*)                                                 | 仮想ネットワークの種類 |
+| ソース / ターゲット ポート | Direction          | トランスポート プロトコル |   [サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags) <br> ソース / ターゲット   | 目的 (\*)                                                 | 仮想ネットワークの種類 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80]、443                  | 受信            | TCP                | INTERNET / VIRTUAL_NETWORK            | API Management へのクライアント通信                      | 外部             |
 | * / 3443                     | 受信            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure Portal と PowerShell 用の管理エンドポイント         | 外部 / 内部  |
@@ -153,7 +153,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 + **Azure Load Balancer**:サービスタグ `AZURE_LOAD_BALANCER` からの受信要求を許可することは、`Developer` SKU の要件ではありません (背後に 1 つのコンピューティング ユニットをデプロイするだけのため)。 ただし、Load Balancer からの正常性プローブのエラーでデプロイに失敗したために、`Premium` のような上位の SKU にスケーリングするときは、[168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) からの受信が重要になります。
 
-+ **Application Insights**:API Management で [Azure Application Insights](api-management-howto-app-insights.md) 監視が有効になっている場合は、Virtual Network から[テレメトリ エンドポイント](/azure/azure-monitor/app/ip-addresses#outgoing-ports)への送信接続を許可する必要があります。 
++ **Application Insights**:API Management で [Azure Application Insights](api-management-howto-app-insights.md) 監視が有効になっている場合は、Virtual Network から[テレメトリ エンドポイント](../azure-monitor/app/ip-addresses.md#outgoing-ports)への送信接続を許可する必要があります。 
 
 + **Express Route またはネットワーク仮想アプライアンスを使用したオンプレミスのファイアウォールへのトラフィックの強制トンネリング**: 顧客の一般的な構成では、API Management の委任されたサブネットからのすべてのトラフィックを、オンプレミスのファイアウォールまたはネットワーク仮想アプライアンスに強制的に流す、独自の既定のルート (0.0.0.0/0) が定義されています。 このトラフィック フローでは、Azure API Management を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。 これを解決するには、いくつかのことを実行する必要があります。
 
@@ -203,7 +203,7 @@ API Management の追加スケール ユニットごとに、さらに 2 つの 
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a>コントロール プレーンの IP アドレス
 
-IP アドレスは **Azure 環境**ごとに分かれています。 受信要求を許可する場合、**グローバル**とマークされたIP アドレスを、**リージョン**ごとの IP アドレスとともにホワイトリストに登録する必要があります。
+IP アドレスは **Azure 環境**ごとに分かれています。 受信要求を許可する場合、**グローバル**とマークされたIP アドレスは、**リージョン**ごとの IP アドレスと共に許可される必要があります。
 
 | **Azure 環境**|   **リージョン**|  **IP アドレス (IP address)**|
 |-----------------|-------------------------|---------------|
@@ -223,6 +223,7 @@ IP アドレスは **Azure 環境**ごとに分かれています。 受信要�
 | Azure Public| カナダ東部| 52.139.80.117|
 | Azure Public| アラブ首長国連邦北部| 20.46.144.85|
 | Azure Public| ブラジル南部| 191.233.24.179|
+| Azure Public| ブラジル南東部| 191.232.18.181|
 | Azure Public| 東南アジア| 40.90.185.46|
 | Azure Public| 南アフリカ北部| 102.133.130.197|
 | Azure Public| カナダ中部| 52.139.20.34|
@@ -271,7 +272,7 @@ IP アドレスは **Azure 環境**ごとに分かれています。 受信要�
 * [異なるデプロイ モデルの Virtual Network を PowerShell を使用して接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management で API Inspector を使用して呼び出しをトレースする方法](api-management-howto-api-inspector.md)
 * [Virtual Network についてよく寄せられる質問](../virtual-network/virtual-networks-faq.md)
-* [サービス タグ](../virtual-network/security-overview.md#service-tags)
+* [サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -284,6 +285,6 @@ IP アドレスは **Azure 環境**ごとに分かれています。 受信要�
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

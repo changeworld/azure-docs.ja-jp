@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231233"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056142"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 
@@ -100,16 +100,13 @@ AuditLogs
 
 5. アラートを構成し終えたら、 **[アラートの作成]** を選択して有効にします。 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Azure AD アクティビティ ログの事前構築済みビューをインストールし使用する
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Azure AD アクティビティ ログの事前構築済みブックを使用する
 
-Azure AD アクティビティ ログの事前構築済みログ分析ビューをダウンロードすることもできます。 ビューには、監査およびサインイン イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
+ブックには、監査、サインイン、プロビジョニングの各イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
 
-* **Azure AD Account Provisioning Events\(Azure AD アカウントのプロビジョニング イベント\)** :プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
-* **Sign-ins Events\(サインイン イベント\)** :このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
-* **Users Performing Consent\(ユーザ―実行の同意\)** :このビューは、すべての同意ベースのアプリケーションに対して、アプリケーションごとのサインインだけでなく、ユーザーによる同意、同意したユーザーによるサインインなど、ユーザーの同意に関連するレポートを表示します。 
-
-[Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](howto-install-use-log-analytics-views.md)方法を学習してください。 
-
+* **プロビジョニング分析**:この[ブック](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)には、プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートが表示されます。    
+* **Sign-ins Events\(サインイン イベント\)** :このブックには、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートが表示されます。
+* **分析情報への条件付きアクセス**:条件付きアクセスに関する分析情報とレポートの[ブック](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting)を使用すると、自分の組織内での一定期間にわたる条件付きアクセス ポリシーの影響を把握できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

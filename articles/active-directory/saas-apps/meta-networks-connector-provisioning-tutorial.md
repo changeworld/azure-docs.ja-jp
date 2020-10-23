@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273519"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849250"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>チュートリアル:Meta Networks Connector を構成して自動ユーザー プロビジョニングに対応させる
 
@@ -60,7 +60,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3.  **[API キー名]** と **[API キーの説明]** を設定します。
 
-    ![Meta Networks Connector のトークンの作成](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Meta Networks Connector 管理コンソールのスクリーンショット。Azure AD と API キーの [API キー名] 値と [API キーの説明] 値が強調表示されています。" border="false":::
 
 4.  **[グループ]** と **[ユーザー]** の **[書き込み]** をオンにします。
 
@@ -68,7 +68,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5.  **[追加]** をクリックします。 **[シークレット]** をコピーして保存します (それを表示できるのはこれが唯一のタイミングであるため)。 この値を、Azure portal で Meta Networks Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
 
-    ![Meta Networks Connector のトークンの作成](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Meta Networks Connector 管理コンソールのスクリーンショット。Azure AD と API キーの [API キー名] 値と [API キーの説明] 値が強調表示されています。" border="false":::
 
 6.  **[管理] > [設定] > [IdP] > [新規作成]** に移動して IdP を追加します。
 

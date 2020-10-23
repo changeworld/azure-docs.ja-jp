@@ -155,6 +155,8 @@
               href: concepts-infrastructure-double-encryption.md
             - name: セキュリティ ベースライン
               href: security-baseline.md
+        - name: Azure の計画メンテナンス
+          href: concepts-planned-maintenance-notification.md
         - name: ビジネス継続性
           items:
             - name: ビジネス継続性の概要
@@ -495,7 +497,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-configure-high-availability.md
-        - name: ネットワーク
+        - name: ネットワーキング
           items:
             - name: プライベート アクセス (VNet 統合)
               items:

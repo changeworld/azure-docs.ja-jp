@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839913"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHIR 用に Azure RBAC を構成する 
 
@@ -31,11 +31,11 @@ Azure RBAC を使用するには、データ プレーンに Azure サブスク�
 
 ユーザー、サービス プリンシパル、またはグループに FHIR データ プレーンへのアクセス権を付与するには、 **[アクセス制御 (IAM)]** をクリックし、 **[ロールの割り当て]** をクリックし、 **[+ 追加]** をクリックします。
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure ロールの割り当ての追加":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure RBAC モードの確認":::
 
 **[ロール]** の選択で、FHIR データ プレーンの組み込みのロールのいずれかを検索します。
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="組み込みの FHIR データ ロール":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Azure RBAC モードの確認":::
 
 次のいずれかを選択できます。
 
@@ -54,7 +54,7 @@ Azure API for FHIR では、決定事項が最大 5 分間キャッシュされ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、FHIR データ プレーンに Azure ロールを割り当てる方法について説明しました。 次に、Azure API for FHIR の追加設定について説明します。
+この記事では、FHIR データ プレーンに Azure ロールを割り当てる方法について説明しました。 Azure API for FHIR の追加設定については、以下を参照してください。
  
 >[!div class="nextstepaction"]
 >[Azure API for FHIR の追加設定](azure-api-for-fhir-additional-settings.md)

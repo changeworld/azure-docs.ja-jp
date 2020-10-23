@@ -2,23 +2,17 @@
 title: Azure 仮想マシン エージェントの概要
 description: Azure 仮想マシン エージェントの概要
 services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.author: mimckitt
+ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612835"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974908"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -70,11 +64,11 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>前提条件
 
-- Windows VM エージェントでは、.Net Framework 4.0 を使用して、少なくとも Windows Server 2008 SP2 (64 ビット) を実行する必要があります。 「[Azure の仮想マシン エージェントの最小バージョン サポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください
+- Windows VM エージェントでは、.NET Framework 4.0 を使用して、少なくとも Windows Server 2008 SP2 (64 ビット) を実行する必要があります。 「[Azure での仮想マシン エージェントの最小バージョン サポート](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください
 
-- VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」をご覧ください。
+- VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」を参照してください。
 
-- ゲスト VM 内で DHCP が有効になっていることを確認します。 これは、IaaS VM エージェントと拡張機能が機能するためのホストまたはファブリック アドレスを DHCP から取得するために必要です。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を使用してそれを構成し、VM 内の DHCP オプションが有効になっていることを確認する必要があります。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)をご覧ください。
+- ゲスト VM 内で DHCP が有効になっていることを確認します。 これは、IaaS VM エージェントと拡張機能が機能するためのホストまたはファブリック アドレスを DHCP から取得するために必要です。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を使用してそれを構成し、VM 内の DHCP オプションが有効になっていることを確認する必要があります。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)をご覧ください。
 
 
 ## <a name="detect-the-vm-agent"></a>VM エージェントの検出
@@ -87,7 +81,7 @@ Azure Resource Manager の PowerShell モジュールを使用して、Azure VM 
 Get-AzVM
 ```
 
-次の圧縮された出力例は、*OSProfile* の内部で入れ子になった *ProvisionVMAgent* プロパティを示しています。 このプロパティを使用すると、VM に VM エージェントかデプロイされているかどうかを判定できます。
+次の圧縮された出力例は、`OSProfile` の内部で入れ子になった *ProvisionVMAgent* プロパティを示しています。 このプロパティを使用すると、VM に VM エージェントかデプロイされているかどうかを判定できます。
 
 ```powershell
 OSProfile                  :
@@ -119,6 +113,15 @@ Windows 用 Azure VM エージェントは、Azure Marketplace からデプロ�
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows ゲスト エージェントの自動ログ収集
 Windows ゲスト エージェントには、一部のログを自動的に収集する機能があります。 この機能は、CollectGuestLogs.exe プロセスによって制御されます。 それは PaaS Cloud Services と IaaS Virtual Machines の両方のために存在し、その目的は、VM から診断ログをすばやく自動的に収集し、オフライン分析に使用できるようにすることです。 収集されるログは、イベント ログ、OS ログ、Azure ログ、および一部のレジストリ キーです。 VM のホストに転送される ZIP ファイルが生成されます。 その後、エンジニアリング チームやサポート担当者がこの ZIP ファイルを調べて、VM を所有しているお客様の要求に関する問題を調査できます。
+
+## <a name="guest-agent-and-osprofile-certificates"></a>ゲスト エージェントと OSProfile 証明書
+Azure VM エージェントによって、VM または仮想マシン スケール セットの `OSProfile` で参照される証明書がインストールされます。 ゲスト VM 内の証明書 MMC コンソールからこれらの証明書を手動で削除しても、ゲスト エージェントによって再び追加されることが予想されます。
+証明書を完全に削除するには、`OSProfile` から削除し、その後、ゲスト オペレーティング システム内から削除する必要があります。
+
+仮想マシンについては、[Remove-AzVMSecret]() を使用し、`OSProfile` から証明書を削除します。
+
+仮想マシン スケール セットの証明書に関する詳細については、仮想マシン スケール セットに関するページの「[非推奨の証明書を削除するにはどうすればよいですか?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)」を参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 VM 拡張機能の詳細については、「[Azure 仮想マシンの拡張機能と機能の概要](overview.md)」をご覧ください。

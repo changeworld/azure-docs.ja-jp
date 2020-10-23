@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320245"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960645"
 ---
 # <a name="linux-support"></a>Linux Support
 
-Linux シン クライアント パートナーによって提供される以下のサポートされているクライアントを使用して、Linux デバイスから Windows Virtual Desktop リソースにアクセスできます。 Microsoft は、多くのパートナーと協力して、より多くの Linux ベースのオペレーティング システムとデバイスで、Windows Virtual Desktop クライアントがサポートされるようにしています。 ここに記載されていない Linux プラットフォームで Windows Virtual Desktop のサポートが必要な場合は、[UserVoice ページ](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)からご連絡ください。
+Linux シン クライアント パートナーによって提供される [Web クライアント](connect-web.md)または以下のサポートされているクライアントを使用して、Linux デバイスから Windows Virtual Desktop リソースにアクセスできます。 Microsoft は、多くのパートナーと協力して、より多くの Linux ベースのオペレーティング システムとデバイスで、Windows Virtual Desktop クライアントがサポートされるようにしています。 ここに記載されていない Linux プラットフォームで Windows Virtual Desktop のサポートが必要な場合は、[UserVoice ページ](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)からご連絡ください。
 
 ## <a name="connect-with-your-linux-device"></a>Linux デバイスで接続する
 

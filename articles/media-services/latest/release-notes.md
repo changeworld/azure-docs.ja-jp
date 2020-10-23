@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425638"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015704"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -34,10 +34,9 @@ ms.locfileid: "89425638"
 ## <a name="known-issues"></a>既知の問題
 
 > [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 >
 > 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
-
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -60,7 +59,7 @@ ms.locfileid: "89425638"
 
 「[Azure AD を使用したエンド ツー エンドのコンテンツ保護](./azure-ad-content-protection.md)」というタイトルのチュートリアルを公開しました。
 
-### <a name="high-availablity"></a>高可用性
+### <a name="high-availability"></a>高可用性
 
 Media Services とビデオ オン デマンド (VOD) を使用した高可用性の[概要](./media-services-high-availability-encoding.md)と[サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)を公開しました。
 
@@ -155,7 +154,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
@@ -173,9 +172,9 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、廃止される予定です。 提供終了日については、この[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。
+お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、廃止される予定です。 提供終了日については、この[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。
 
-詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
+詳細については、[WAME から Media Encoder Standard への移行](../previous/migrate-windows-azure-media-encoder.md)と [AME から Media Encoder Standard への移行](../previous/migrate-azure-media-encoder.md)に関するページを参照してください。
  
 ## <a name="july-2019"></a>2019 年 7 月
 
@@ -224,7 +223,7 @@ Media Services が、韓国中部と韓国南部のリージョンで利用で�
 Media Services のパフォーマンス向上を含む更新が追加されました。
 
 * 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints.md)に関する記事を参照してください。
-* [エンコードの速度の向上](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+* [エンコードの速度の向上](concept-media-reserved-units.md)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
@@ -264,21 +263,21 @@ V3 API の GA リリースの更新プログラム:
 
 ## <a name="november-2018"></a>2018 年 11 月
 
-CLI 2.0 モジュールが、[Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50 で使用できるようになりました。
+CLI 2.0 モジュールが、[Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50 で使用できるようになりました。
 
 ### <a name="new-commands"></a>新しいコマンド
 
-- [az ams account](/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
+- [az ams account](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
+- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
+- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
+- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
+- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
+- [az ams job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
+- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
+- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
+- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
+- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
+- [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
 
 ### <a name="new-features-and-breaking-changes"></a>新機能と重大な変更
 

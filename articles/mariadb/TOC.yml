@@ -81,6 +81,8 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: Azure の計画メンテナンス
+      href: concepts-planned-maintenance-notification.md
     - name: ビジネス継続性
       items:
         - name: ビジネス継続性の概要
@@ -260,7 +262,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+      href: /answers/topics/azure-database-mariadb.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 機能をリクエストする

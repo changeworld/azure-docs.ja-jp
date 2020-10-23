@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042634"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019020"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -28,8 +28,10 @@ Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) �
 
 Azure Digital Twins では、DTDL "**_バージョン 2_**" が使用されます。 このバージョンの DTDL の詳細については、GitHub で次の仕様ドキュメントを参照してください: [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 Azure Digital Twins での DTDL "_バージョン 1_" の使用は、非推奨になっています。
 
-> [!TIP] 
-> DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。 Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
+> [!NOTE] 
+> DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。
+>
+> Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
 
 ## <a name="elements-of-a-model"></a>モデルの要素
 
@@ -75,6 +77,8 @@ DTDL モデルに Azure Digital Twins との互換性を与えるには、これ
 * Azure Digital Twins の DTDL では、"*コマンド*" を定義しないでください。
 * Azure Digital Twins では、単一レベルのコンポーネントの入れ子のみが許可されます。 これは、コンポーネントとして使用されているインターフェイスが、それ自体はコンポーネントを含められないことを意味します。 
 * インターフェイスは、他の DTDL インターフェイスの内部にインラインで定義することはできません。それらは、独自の ID を備えた個別の最上位レベルのエンティティとして定義する必要があります。 その後、別のインターフェイスがそのインターフェイスをコンポーネントとして含めるか、継承を通じて含めようとする場合は、その ID を参照できます。
+
+Azure Digital Twins では、プロパティまたはリレーションシップの `writable` 属性も監視されません。 これは DTDL 仕様に従って設定できますが、Azure Digital Twins では使用されません。 代わりに、これらは常に、Azure Digital Twins サービスに対する一般的な書き込みアクセス許可を持つ外部クライアントによって書き込み可能として扱われます。
 
 ## <a name="example-model-code"></a>モデル コードの例
 

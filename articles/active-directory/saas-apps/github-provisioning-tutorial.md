@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857539"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -28,6 +28,7 @@ ms.locfileid: "91358323"
 * Azure Active Directory テナント
 * [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)
 * 組織への Admin アクセス許可がある GitHub のユーザー アカウント
+* [GitHub Enterprise Cloud 組織用に構成された SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * [こちら](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)で説明しているように、組織に OAuth アクセスが提供されていることを確認します
 * 1 つの組織に対する SCIM のプロビジョニングは、組織レベルで SSO が有効になっている場合のみサポートされます
 
@@ -51,9 +52,6 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 ## <a name="configuring-user-provisioning-to-github"></a>GitHub へのユーザー プロビジョニングの構成
 
 このセクションでは、Azure AD を GitHub のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みユーザーのアカウントを GitHub で作成、更新、無効化する手順を説明します。
-
-> [!TIP]
-> GitHub では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Azure AD で GitHub への自動ユーザー アカウント プロビジョニングを構成する
 

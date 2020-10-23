@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566422"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077356"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -242,6 +242,9 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>ExpressRoute 回線に接続されている仮想ネットワークに対するインターネット接続をブロックできますか。
 
 はい。 既定ルート (0.0.0.0/0) をアドバタイズして仮想ネットワーク内にデプロイされた仮想マシンへのインターネット接続をすべてブロックし、すべてのトラフィックが ExpressRoute 回線を経由するようにルーティングすることができます。
+
+> [!NOTE]
+> アドバタイズされたルート 0.0.0.0/0 が (障害や設定ミスなどにより) アドバタイズされたルートから削除された場合、Azure によって、インターネットへ接続するための[システム ルート](../virtual-network/virtual-networks-udr-overview.md#system-routes)が接続された仮想ネットワーク上のリソースに提供されます。  インターネットへのエグレス トラフィックがブロックされていることを確認するため、インターネット トラフィックの送信拒否規則を持つネットワーク セキュリティ グループをすべてのサブネットに配置することをお勧めします。
 
 ただし、既定ルートをアドバタイズすると、Microsoft ピアリング経由で提供されるサービス (Azure ストレージや SQL DB など) へのトラフィックが強制的にオンプレミスにルーティングされます。 Microsoft ピアリング パス経由またはインターネット経由でトラフィックを Azure に返すようにルーターを構成する必要があります。 サービスのサービス エンドポイントを有効にした場合、サービスへのトラフィックはオンプレミスに強制されません。 トラフィックは Azure のバックボーン ネットワーク内にとどまります。 サービス エンドポイントの詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)」を参照してください。
 

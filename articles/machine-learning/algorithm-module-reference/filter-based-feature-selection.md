@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893796"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945704"
 ---
 # <a name="filter-based-feature-selection"></a>フィルターに基づく特徴選択
 
@@ -90,8 +90,14 @@ ms.locfileid: "90893796"
 
     - 特徴列よりも少ない数の結果列を指定した場合、特徴は降順のスコアによって順位付けされます。 返されるのは、上位の特徴のみです。 
 
-7.  パイプラインを送信するか、フィルターに基づく特徴選択モジュールを選択してから **[選択対象を実行]** を選択します。
+7.  パイプラインを送信します。
 
+> [!IMPORTANT]
+> 推論で **Filter Based Feature Selection (フィルターに基づく特徴選択)** を使用する場合、[Select Columns Transform (列変換の選択)](./select-columns-transform.md) を使用して特徴が選択された結果を格納し、[Apply Transformation (変換の適用)](./apply-transformation.md) を使用して特徴が選択された変換をスコア付け用データセットに適用する必要があります。
+>
+> 次のスクリーンショットを参照してパイプラインを構築し、スコア付けプロセスで列の選択が同じであることを確認します。
+> [!div class="mx-imgBorder"]
+> ![サンプル パイプライン](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>結果
 

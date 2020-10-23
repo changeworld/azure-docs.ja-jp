@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 1293534849c98cee51349bbefd3073cc8b94f876
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647215"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757777"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -52,7 +52,7 @@ ms.locfileid: "89647215"
 
 ### <a name="pandas-dataframe"></a>Pandas データフレーム
 
-ラベル付きデータセットは、`azureml-contrib-dataset` クラスの [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用して Pandas データフレーム に読み込むことができます。 次のシェル コマンドを使用して、このクラスをインストールします。 
+ラベル付きデータセットは、`azureml-contrib-dataset` クラスの [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用して Pandas データフレーム に読み込むことができます。 次のシェル コマンドを使用して、このクラスをインストールします。 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -61,13 +61,20 @@ pip install azureml-contrib-dataset
 >[!NOTE]
 >azureml.contrib 名前空間は、サービスの改善に伴って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なされる必要があります。
 
-Pandas データフレームに変換する場合、ファイル ストリームに対して次のファイル処理オプションが用意されています。
+Azure Machine Learning には、Pandas データフレームに変換する場合にファイル ストリームに対して次のファイル処理オプションが用意されています。
 * ダウンロード:データ ファイルをローカル パスにダウンロードします。
 * マウント: データ ファイルをマウント ポイントにマウントします。 マウントは、Azure Machine Learning ノートブック VM や Azure Machine Learning コンピューティングなど、Linux ベースのコンピューティングでのみ機能します。
 
+次のコードでは、`animal_labels` データセットは、以前にワークスペースに保存されたラベル付けプロジェクトからの出力です。
+
 ```Python
+import azureml.core
 import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
 from azureml.contrib.dataset import FileHandlingOption
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 animal_pd = animal_labels.to_pandas_dataframe(file_handling_option=FileHandlingOption.DOWNLOAD, target_path='./download/', overwrite_download=True)
 
 import matplotlib.pyplot as plt
@@ -80,10 +87,20 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision データセット
 
-`azureml-contrib-dataset` クラスの [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#&preserve-view=trueto-torchvision--) メソッドを使用して、ラベル付きデータセットを Torchvision データセットに読み込むことができます。 このメソッドを使用するには、[PyTorch](https://pytorch.org/) がインストールされている必要があります。 
+`azureml-contrib-dataset` クラスの [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) メソッドを使用して、ラベル付きデータセットを Torchvision データセットに読み込むことができます。 このメソッドを使用するには、[PyTorch](https://pytorch.org/) がインストールされている必要があります。 
+
+次のコードでは、`animal_labels` データセットは、以前にワークスペースに保存されたラベル付けプロジェクトからの出力です。
 
 ```python
+import azureml.core
+import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
+from azureml.contrib.dataset import FileHandlingOption
+
 from torchvision.transforms import functional as F
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 
 # load animal_labels dataset into torchvision dataset
 pytorch_dataset = animal_labels.to_torchvision()

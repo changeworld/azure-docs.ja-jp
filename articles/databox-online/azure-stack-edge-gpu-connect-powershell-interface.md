@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Stack Edge Pro デバイスに Windows PowerShell インターフェイス経由で接続し、管理する | Microsoft Docs
-description: Azure Stack Edge Pro に Windows PowerShell インターフェイス経由で接続し、管理する方法について説明します。
+title: Microsoft Azure Stack Edge Pro GPU デバイスに Windows PowerShell インターフェイス経由で接続して管理する | Microsoft Docs
+description: Azure Stack Edge Pro GPU に Windows PowerShell インターフェイス経由で接続して管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903520"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777777"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro GPU デバイスを管理する
 
@@ -127,7 +127,7 @@ Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数の
 
 この手順で Kubernetes クラスターが作成されて、Azure portal からコンピューティングを構成する前に、この構成を実行します。
 
-1. デバイスの PowerShell インターフェイスに接続します。
+1. [デバイスの PowerShell インターフェイスに接続します](#connect-to-the-powershell-interface)。
 1. デバイスの PowerShell インターフェイスから、次のように実行します。
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
@@ -425,7 +425,65 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+## <a name="connect-to-bmc"></a>BMC に接続する
 
+ベースボード管理コントローラー (BMC) は、デバイスをリモートで監視および管理するために使用されます。 このセクションでは、BMC の構成を管理するために使用できるコマンドレットについて説明します。 これらのコマンドレットを実行する前に、[デバイスの PowerShell インターフェイスに接続します](#connect-to-the-powershell-interface)。
+
+- `Get-HcsNetBmcInterface`:このコマンドレットを使用して、BMC のネットワーク構成プロパティ (`IPv4Address`、`IPv4Gateway`、`IPv4SubnetMask`、`DhcpEnabled` など) を取得します。 
+    
+    出力例を次に示します。
+    
+    ```powershell
+    [10.100.10.10]: PS>Get-HcsNetBmcInterface
+    IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+    -----------   ----------- -------------- -----------
+    10.128.53.186 10.128.52.1 255.255.252.0        False
+    [10.100.10.10]: PS>
+    ```
+- `Set-HcsNetBmcInterface`:このコマンドレットは、次の 2 つの方法で使用できます。
+
+    - コマンドレットを使用して、`UseDhcp` パラメーターに適切な値を使用することで、BMC の DHCP 構成を有効または無効にします。 
+
+        ```powershell
+        Set-HcsNetBmcInterface -UseDhcp $true
+        ```
+
+        出力例を次に示します。 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -UseDhcp $true
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address IPv4Gateway IPv4SubnetMask DhcpEnabled
+        ----------- ----------- -------------- -----------
+        10.128.54.8 10.128.52.1 255.255.252.0         True
+        [10.100.10.10]: PS>
+        ```
+
+    - このコマンドレットを使用して、BMC の静的構成を構成します。 `IPv4Address`、`IPv4Gateway`、および `IPv4SubnetMask` の値を指定できます。 
+    
+        ```powershell
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        ```        
+        
+        出力例を次に示します。 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -IPv4Address 10.128.53.186 -IPv4Gateway 10.128.52.1 -IPv4SubnetMask 255.255.252.0
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+        -----------   ----------- -------------- -----------
+        10.128.53.186 10.128.52.1 255.255.252.0        False
+        [10.100.10.10]: PS>
+        ```    
+
+- `Set-HcsBmcPassword`:`EdgeUser` の BMC パスワードを変更するには、このコマンドレットを使用します。 ユーザー名 `EdgeUser` の大文字と小文字は区別されます。
+
+    出力例を次に示します。 
+
+    ```powershell
+    [10.100.10.10]: PS> Set-HcsBmcPassword -NewPassword "Password1"
+    [10.100.10.10]: PS>
+    ```
 
 ## <a name="exit-the-remote-session"></a>リモート セッションを終了します。
 
@@ -433,4 +491,4 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure portal に [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。
+- Azure portal で [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) を配置します。

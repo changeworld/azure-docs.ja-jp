@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b5b7b45cc52d900e5ecde59e6a5ae203533286b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804624"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978868"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -21,7 +21,10 @@ IoT Edge デバイスにモジュールをデプロイするにはいくつか�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
-- IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md)。
+- IoT Edge デバイス。
+
+  IoT Edge デバイスを設定していない場合は、Azure 仮想マシンで作成できます。 クイックスタートの記事のいずれかの手順に従って、[仮想 Linux デバイスを作成](quickstart-linux.md)するか、[仮想 Windows デバイスを作成](quickstart.md)します。
+
 - Visual Studio Code からデプロイする場合は、[Visual Studio Code](https://code.visualstudio.com/) と [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 
 ## <a name="deploy-from-the-azure-portal"></a>Azure portal からデプロイする
@@ -206,7 +209,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
      - Windows コンテナーの場合、形式は **\<your storage path or volume>:C:/BlobRoot** です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: `my-volume:C:/BlobRoot`。
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する: `C:/ContainerData:C:/BlobRoot`。
-         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
+         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。 詳細については、「[ローカル ストレージとして SMB 共有を使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)」を参照してください。
 
      > [!IMPORTANT]
      > IoT Edge モジュールの Blob Storage の特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。

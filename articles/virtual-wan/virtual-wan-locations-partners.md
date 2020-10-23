@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801462"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014030"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -40,7 +40,7 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-次のパートナーが近い将来のロードマップに追加されることが予定されています。128 Technologies、Arista、Cisco Systems (Viptela)、F5 Networks、Oracle SD-WAN、SharpLink。
+次のパートナーは、パートナーのデバイスと Azure Virtual WAN VPN Gateway 間の IPsec 接続の自動化作業の範囲を示す、両社間で締結された条件概要書に基づき、当社のロードマップに記載されています:128 Technologies、Arista、F5 Networks、Oracle SD-WAN (Talari)、SharpLink。
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>仮想ハブ サービスを統合しているパートナー
 ブランチ オフィス IPSec 接続を自動化していることに加え、一部のパートナーは、Azure 仮想 WAN ハブに直接統合できる**ネットワーク仮想アプライアンス (NVA)** を提供しています。  これにより、お客様は仮想ハブ内の互換性のあるサードパーティ アプライアンスへのブランチ接続を終了することができます。  

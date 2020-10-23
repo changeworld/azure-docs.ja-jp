@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のサポート ポリシー、共�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888983"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892712"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -130,8 +130,7 @@ NSG のカスタマイズは、カスタム サブネット上でのみ行うこ
 
 ## <a name="stopped-or-de-allocated-clusters"></a>停止または割り当て解除されたクラスター
 
-前述のように、IaaS APIs/CLI/ポータルを使用してすべてのクラスター ノードを手動で割り当て解除すると、クラスターはサポートされなくなります。
-すべてのノードを停止/割り当て解除するためのサポートされる唯一の方法は、AKS クラスターを停止することです。この場合、クラスターの状態が最大 12 か月間保持されます。
+前述のように、IaaS API、CLI、ポータルを使用してすべてのクラスター ノードを手動で割り当て解除すると、クラスターはサポートされなくなります。 すべてのノードを停止または割り当て解除するためのサポートされる唯一の方法は、[AKS クラスターを停止する](start-stop-cluster.md#stop-an-aks-cluster)ことです。この場合、クラスターの状態が最大 12 か月間保持されます。
 
 12 か月以上停止したクラスターは、状態を保持しなくなります。 
 

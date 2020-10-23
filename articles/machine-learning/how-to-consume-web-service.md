@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756672"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966102"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -46,7 +46,9 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
 * `scoring_uri` - REST API のアドレス。
 * `swagger_uri` - OpenAPI 仕様のアドレス。 この URI は、スキーマの自動生成を有効にした場合に使用できます。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-デプロイされた Web サービスについてこの情報を取得する場合、次の 3 つの方法があります。
+デプロイされた Web サービスについてこの情報を取得する場合、次のいくつかの方法があります。
+
+# <a name="python"></a>[Python](#tab/python)
 
 * モデルをデプロイするときに、サービスに関する情報と共に `Webservice` オブジェクトが返されます。
 
@@ -72,6 +74,30 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+デプロイされたサービスの名前がわかっている場合は、[az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) コマンドを使用します。
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure Machine Learning スタジオで、 __[エンドポイント]__ 、 __[リアルタイム エンドポイント]__ 、エンドポイント名の順に選択します。 エンドポイントの詳細で、 __[REST エンドポイント]__ フィールドにスコアリング URI が含まれています。 __[Swagger URI]__ には、Swagger URI が含まれています。
+
+---
+
+次の表は、これらの URI の形態を示しています。
+
+| URI の種類 | 例 |
+| ----- | ----- |
+| スコアリング URI | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Swagger URI | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> IP アドレスはデプロイによって異なります。 各 AKS クラスターには、そのクラスターへのデプロイによって共有される独自の IP アドレスがあります。
 
 ### <a name="secured-web-service"></a>セキュリティで保護された Web サービス
 
@@ -268,7 +294,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>サービスを呼び出す (Go)
 
-この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```go
 package main
@@ -360,7 +386,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>サービスを呼び出す (Java)
 
-この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>サービスを呼び出す (Python)
 
-この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```python
 import requests

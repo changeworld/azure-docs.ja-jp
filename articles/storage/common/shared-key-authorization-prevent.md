@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088801"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715119"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure ストレージ アカウントの共有キーによる承認を禁止する (プレビュー)
 
@@ -219,7 +219,7 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 | Azure PowerShell | サポートされています。 Azure AD で BLOB またはキューの操作の PowerShell コマンドを承認する方法の詳細については、「[Azure AD の資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-active-directory-powershell.md)」または「[Azure AD 資格情報を使用して PowerShell コマンドを実行してキューのデータにアクセスする](../queues/authorize-active-directory-powershell.md)」を参照してください。 |
 | Azure CLI | サポートされています。 BLOB およびキューのデータにアクセスするために、Azure AD で Azure CLI コマンドを承認する方法については、[Azure AD 資格情報を使用して Azure CLI コマンドを実行して BLOB またはキューのデータにアクセスする方法](authorize-data-operations-cli.md)に関する記事を参照してください。 |
 | Azure IoT Hub | サポートされています。 詳細については、[IoT Hub による仮想ネットワークのサポート](../../iot-hub/virtual-network-support.md)に関する記事を参照してください。 |
-| Azure Cloud Shell | Azure Cloud Shell は、Azure portal の統合シェルです。 Azure Cloud Shell では、ストレージ アカウントの Azure ファイル共有で永続化するためのファイルがホストされています。 そのストレージ アカウントで共有キーによる承認が許可されていない場合、これらのファイルはアクセスできなくなります。 詳細については、「[Microsoft Azure Files ストレージの接続](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage)」を参照してください。 <br /><br /> Azure Cloud Shell でコマンドを実行して、共有キーによるアクセスが禁止されているストレージ アカウントを管理するには、最初に、ロールベースのアクセス制御 (RBAC) で、これらのアカウントに必要なアクセス許可が付与されていることを確認します。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 |
+| Azure Cloud Shell | Azure Cloud Shell は、Azure portal の統合シェルです。 Azure Cloud Shell では、ストレージ アカウントの Azure ファイル共有で永続化するためのファイルがホストされています。 そのストレージ アカウントで共有キーによる承認が許可されていない場合、これらのファイルはアクセスできなくなります。 詳細については、「[Microsoft Azure Files ストレージの接続](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage)」を参照してください。 <br /><br /> Azure Cloud Shell でコマンドを実行して、共有キーによるアクセスが禁止されているストレージ アカウントを管理するには、最初に、Azure ロールベースのアクセス制御 (Azure RBAC) で、これらのアカウントに必要なアクセス許可が付与されていることを確認します。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 |
 
 ## <a name="about-the-preview"></a>プレビューについて
 

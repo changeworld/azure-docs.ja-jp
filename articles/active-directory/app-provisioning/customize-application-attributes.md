@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/03/2019
+ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235226"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069876"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -129,7 +129,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
 - **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 - **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
-- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
+- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCIM 準拠アプリケーションへカスタム拡張属性をプロビジョニングする
 SCIM RFC ではコア ユーザーとグループ スキーマが定義されているだけでなく、スキーマの拡張をアプリケーションのニーズに合わせて使用することもできます。 カスタム属性を SCIM アプリケーションに追加するには、次の手順に従います。
@@ -316,11 +316,12 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 - Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません。
 - これらの主キー (通常は "ID") は、属性マッピングのターゲット属性として含めないでください。 
 - 通常、role 属性は、直接マッピングではなく、式を使用してマッピングする必要があります。 ロールのマッピングの詳細については、上記のセクションを参照してください。 
+- マッピングからグループを無効にすることはできますが、ユーザーの無効化はサポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
-- [属性マッピングの式の書き方](../app-provisioning/functions-for-customizing-application-data.md)
-- [ユーザーのプロビジョニング用のフィルターのスコープ](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 - [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](use-scim-to-provision-users-and-groups.md)
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)

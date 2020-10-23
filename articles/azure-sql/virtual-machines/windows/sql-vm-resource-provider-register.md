@@ -7,24 +7,30 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396966"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761313"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Azure の SQL Server VM を SQL VM リソース プロバイダー (RP) に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、Azure 内の SQL Server 仮想マシン (VM) を SQL VM リソース プロバイダー (RP) に登録する方法について説明します。 リソース プロバイダーに登録すると、仮想マシンのリソースとは別のリソースである、**SQL 仮想マシン**の "_リソース_" がサブスクリプション内に作成されます。 リソース プロバイダーから SQL Server VM を登録解除すると、**SQL 仮想マシン**の "_リソース_" は削除されますが、実際の仮想マシンは削除されません。 
+この記事では、Azure 内の SQL Server 仮想マシン (VM) を SQL VM リソース プロバイダー (RP) に登録する方法について説明します。 
+
+この記事では、SQL VM リソース プロバイダーに 1 つの SQL Server VM を登録する方法について説明します。 また、すべての SQL Server VM を[自動的に](sql-vm-resource-provider-automatic-registration.md)登録したり、[一括でスクリプト化](sql-vm-resource-provider-bulk-register.md)したりすることができます。
+
+## <a name="overview"></a>概要
+
+リソース プロバイダーに登録すると、仮想マシンのリソースとは別のリソースである、**SQL 仮想マシン**の "_リソース_" がサブスクリプション内に作成されます。 リソース プロバイダーから SQL Server VM を登録解除すると、**SQL 仮想マシン**の "_リソース_" は削除されますが、実際の仮想マシンは削除されません。
 
 Azure portal を介して SQL Server VM の Azure Marketplace イメージをデプロイすると、その SQL Server VM が自動的にリソースプロバイダーに登録されます。 ただし、Azure 仮想マシンに SQL Server を自分でインストールすること、またはカスタム VHD から Azure 仮想マシンをプロビジョニングすることを選択する場合は、次の目的で SQL Server VM をリソース プロバイダーに登録する必要があります。
 
@@ -58,7 +64,7 @@ SQL VM リソース プロバイダーを利用するには、最初に[サブ�
 SQL Server VM をリソース プロバイダーに登録するには、次のものが必要になります。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- パブリック クラウドまたは Azure Government クラウドにデプロイされた Azure Resource Model の [SQL Server VM](create-sql-vm-portal.md)。 
+- パブリック クラウドまたは Azure Government クラウドにデプロイされた Azure Resource Model の [Windows 仮想マシン](../../../virtual-machines/windows/quick-create-portal.md)と [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)。 
 - [Azure CLI](/cli/azure/install-azure-cli) または [PowerShell](/powershell/azure/new-azureps-module-az) の最新バージョン。 
 
 ## <a name="management-modes"></a>管理モード
@@ -328,11 +334,11 @@ Azure portal を使用してリソース プロバイダーから SQL Server VM 
 
 1. **[削除]** を選択します。 
 
-   ![SQL VM リソース プロバイダーの削除](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![上部のナビゲーションの [削除] を選択します](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. SQL 仮想マシンの名前を入力し、**仮想マシンの横にあるチェック ボックスをオフにします**。
 
-   ![SQL VM リソース プロバイダーの削除](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![実際の仮想マシンが削除されないように仮想マシンのボックスをオフにし、[削除] を選択して SQL VM リソースの削除を続行します](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > 仮想マシン名の横にあるチェックボックスをオフにしないと、仮想マシンが完全に "*削除*" されます。 リソース プロバイダーから SQL Server VM の登録を解除するが、"*実際の仮想マシンを削除しない*" 場合は、このチェックボックスをオフにしてください。 
@@ -342,7 +348,7 @@ Azure portal を使用してリソース プロバイダーから SQL Server VM 
 ### <a name="command-line"></a>コマンド ライン
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Azure CLI を使用してリソース プロバイダーから SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
+Azure CLI を使用してリソース プロバイダーから SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
 
 
 ```azurecli-interactive
@@ -400,7 +406,7 @@ SQL VM リソースプロバイダーへの登録時の既定の SQL 管理モ�
 
 はい。SQL VM リソース プロバイダーに登録すると、VM にエージェントがインストールされます。
 
-SQL Server IaaS 拡張機能は、そのエージェントを使用して SQL Server のメタデータにクエリを実行します。 エージェントがインストールされないのは、SQL VM リソース プロバイダーが NoAgent モードで登録されている場合だけです。
+SQL Server IaaS 拡張機能は、そのエージェントを使用して SQL Server のメタデータにクエリを実行します。 エージェントがインストールされないのは、SQL VM リソース プロバイダーが NoAgent モードで登録されている場合だけです
 
 **SQL VM リソース プロバイダーに登録すると、自分の VM 上の SQL Server が再起動されますか?**
 

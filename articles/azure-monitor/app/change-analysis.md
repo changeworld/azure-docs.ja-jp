@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540164"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992872"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -101,7 +101,7 @@ Azure Monitor では、変更分析はセルフサービスの**問題の診断�
 
    ![[アプリケーションのクラッシュ] ボタンのスクリーンショット](./media/change-analysis/application-changes.png)
 
-3. 変更分析を有効にするには、 **[今すぐ有効にする]** を選択します。
+3. このリンクから、Web アプリにスコープ指定された Application Change Aalysis UI につながります。 Web アプリのゲスト内の変更追跡が有効になっていない場合、バナーに従って、ファイルとアプリの設定の変更を取得します。
 
    ![[アプリケーションのクラッシュ] オプションのスクリーンショット](./media/change-analysis/enable-changeanalysis.png)
 
@@ -109,17 +109,39 @@ Azure Monitor では、変更分析はセルフサービスの**問題の診断�
 
     !["変更分析を有効にする" ユーザー インターフェイスのスクリーンショット](./media/change-analysis/change-analysis-on.png)
 
-5. 変更分析にアクセスするには、 **[問題の診断と解決]**  >  **[Availability and Performance]\(可用性とパフォーマンス\)**  >  **[アプリケーションのクラッシュ]** の順に選択します。 変更の種類を時系列でまとめたグラフと、その変更の詳細が表示されます。 既定では、当面の問題を解決できるように、過去 24 時間の変更が表示されます。
+5. 変更データは、 **[Web アプリのダウン]** および **[アプリケーションのクラッシュ]** 検出機能の選択でも使用でき ます。 変更の種類を時系列でまとめたグラフと、その変更の詳細が表示されます。 既定では、当面の問題を解決できるように、過去 24 時間の変更が表示されます。
 
      ![変更の差分ビューのスクリーンショット](./media/change-analysis/change-view.png)
 
-### <a name="enable-change-analysis-at-scale"></a>大規模な変更分析を有効にする
+
+
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>仮想マシンの問題の診断と解決
+
+仮想マシンの問題の診断と解決ツールにアクセスします。  **[トラブルシューティング ツール]** に移動し、ページの下を参照して **[最近の変更の分析]** を選択し、仮想マシンの変更内容を確認します。
+
+![VM の問題の診断と解決のスクリーンショット](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![トラブルシューティング ツールの変更アナライザー](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="activity-log-change-history"></a>アクティビティ ログ変更履歴
+アクティビティ ログの[変更履歴の表示](../platform/activity-log.md#view-change-history)機能では、アプリケーション変更分析サービス バックエンドを呼び出して、操作に関連付けられている変更を取得します。 **変更履歴**では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が直接呼び出されていましたが、バックエンドが交換され、アプリケーション変更分析が呼び出されるようになったため、返される変更に、[Azure リソースグラフ](../../governance/resource-graph/overview.md)からのリソースレベルの変更、 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) からのリソース プロパティ、App Services Web アプリなどの PaaS サービスからのゲスト内の変更が含まれるようになります。 アプリケーション変更分析サービスで、ユーザーのサブスクリプションの変更をスキャンできるようにするには、リソース プロバイダーを登録する必要があります。 **[変更履歴]** タブに初めて入ると、ツールによって **Microsoft.ChangeAnalysis** リソース プロバイダーの登録が自動的に開始されます。 登録後、**Azure Resource Graph** からの変更がすぐに利用できるようになり、過去 14 日間が対象になります。 ほかのソースからの変更は、サブスクリプションのオンボードから 4 時間後に使用できるようになります。
+
+![アクティビティ ログ変更履歴の統合](./media/change-analysis/activity-log-change-history.png)
+
+### <a name="vm-insights-integration"></a>VM Insights の統合
+[VM Insights](../insights/vminsights-overview.md) を有効にしているユーザーは、CPU やメモリなどのメトリック グラフでスパイクを発生させた可能性がある仮想マシンの変更内容を表示して、その原因を考えることができます。 変更データは、VM Insights のサイド ナビゲーションバーに統合されています。 ユーザーは、VM で変更が発生したかどうかを表示し、 **[変更の調査]** をクリックして、アプリケーション変更分析スタンドアロン UI で変更の詳細を表示できます。
+
+[![VM insights の統合](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
+
+
+
+## <a name="enable-change-analysis-at-scale"></a>大規模な変更分析を有効にする
 
 サブスクリプションに多数の Web アプリが含まれている場合、Web アプリのレベルでサービスを有効にすることは非効率的です。 サブスクリプション内のすべての Web アプリを有効にするには、次のスクリプトを実行します。
 
 前提条件:
 
-- PowerShell Az モジュール。 「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps?view=azps-2.6.0)」の手順に従います
+- PowerShell Az モジュール。 「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」の手順に従います
 
 次のスクリプトを実行します。
 
@@ -147,13 +169,25 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>仮想マシンの問題の診断と解決
+## <a name="troubleshoot"></a>トラブルシューティング
 
-仮想マシンの問題の診断と解決ツールにアクセスします。  **[トラブルシューティング ツール]** に移動し、ページの下を参照して **[最近の変更の分析]** を選択し、仮想マシンの変更内容を確認します。
+### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>[変更履歴] タブからの Microsoft.Change Analysis リソース プロバイダーの登録で問題が発生している
+アプリケーション変更分析との統合後、変更履歴を初めて表示すると、リソース プロバイダー **Microsoft.ChangeAnalysis** が自動的に登録されることがわかります。 まれに、次のような理由でこれが失敗する場合があります。
 
-![VM の問題の診断と解決のスクリーンショット](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+- **Microsoft.ChangeAnalysis リソース プロバイダーを登録するための十分なアクセス許可がありません**。 このエラー メッセージは、現在のサブスクリプションのロールに、関連付けられている **Microsoft.Support/register/action** スコープがないことを意味します。 これは、サブスクリプションの所有者ではなく、同僚を通じて共有アクセス許可を取得した場合に発生する可能性があります。 つまり、リソース グループへの表示アクセス権です。 これを解決するには、サブスクリプションの所有者に問い合わせて、**Microsoft.ChangeAnalysis** リソースプロバイダーを登録します。 これは、Azure portal の**サブスクリプション | リソース プロバイダー**から行うことができ、```Microsoft.ChangeAnalysis``` を検索し、UI で、または Azure PowerShell や Azure CLI を使用して登録します。
 
-![VM の問題の診断と解決のスクリーンショット](./media/change-analysis/analyze-recent-changes.png)
+    PowerShell を使用してリソース プロバイダーを登録します。 
+    ```PowerShell
+    # Register resource provider
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+    ```
+
+- **Microsoft.ChangeAnalysis リソース プロバイダーを登録できませんでした**。 このメッセージは、UI によってリソース プロバイダーの登録の要求が送信された直後に何かが失敗し、それがアクセス許可の問題に関係していないことを示しています。 一時的なインターネット接続の問題である可能性があります。 ページを更新し、インターネット接続を確認してみてください。 エラーが解決しない場合は、changeanalysishelp@microsoft.com にお問い合わせください
+
+- **予想以上に時間がかかっています**。 このメッセージは、登録に 2 分以上かかっていることを示しています。 これはめったにありませんが、必ずしも問題が発生したことを示しているわけではありません。 **サブスクリプション | リソース プロバイダー** に移動して、**Microsoft.ChangeAnalysis** リソースプロバイダーの登録状態を確認できます。 UI を使用して登録を解除し、再登録または更新してみて、それが役立つかどうかを確認できます。 問題が解決しない場合は、changeanalysishelp@microsoft.com にサポートについてお問い合わせください。
+    ![時間がかかりすぎる RP 登録のトラブルシューティング](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

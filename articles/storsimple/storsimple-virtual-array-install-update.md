@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0e661cb3c3bafa92a060b0fdfd899aa152b46a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507876"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977461"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>StorSimple Virtual Array に更新プログラムをインストールする - Azure Portal
 
@@ -77,26 +77,26 @@ ms.locfileid: "85507876"
 
 1. ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。
    
-    ![デバイスの更新](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![デバイスの更新 1](./media/storsimple-virtual-array-install-update/update1m.png)
 
 2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
-    ![デバイスの更新](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![デバイスの更新 2](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. 警告が表示されます。 これは単一ノード デバイスであることから、更新プログラムが適用された後にデバイスが再起動され、ダウンタイムが発生します。 チェック マーク アイコンをクリックします。
    
-   ![デバイスの更新](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![デバイスの更新 3](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. 更新プログラムが開始します。 デバイスが正常に更新されると、再起動されます。 この期間は、ローカル UI にはアクセスできません。
    
-    ![デバイスの更新](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![デバイスの更新 4](./media/storsimple-virtual-array-install-update/update5m.png)
 
 5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 0.3 では **10.0.0.0.0.10288.0** です。
    
    > [!NOTE]
    > ローカル Web UI と Azure Portal では、ソフトウェアのバージョンの表示方法が少し異なります。 たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10288** と表示され、Azure Portal では **10.0.10288.0** と表示されます。
    
-    ![デバイスの更新](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![デバイスの更新 5](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 

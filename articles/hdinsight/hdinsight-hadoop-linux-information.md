@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961814"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856587"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -101,15 +101,15 @@ Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあり�
 
 ほとんどの Hadoop ディストリビューションでは、データは HDFS に格納されます。 HDFS は、クラスター内のコンピューター上にあるローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
 
-HDInsight を使用する場合、データ ファイルは、Azure Blob Storage と必要に応じて Azure Data Lake Storage を使用して、適用性および回復性がある方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
+HDInsight を使用する場合、データ ファイルは、Azure Blob Storage と必要に応じて Azure Data Lake Storage Gen1 または Gen2 を使用して、適用性および回復性がある方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
 
 * 低コストの長期ストレージ。
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
 * 大きなファイル容量と適用性の高い大容量ストレージ。
 
-詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) に関するページを参照してください。
+詳細については、[Azure Blob Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) に関するページを参照してください。
 
-Azure Storage または Data Lake Storage を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドでは、Azure Storage 上または Data Lake Storage 上のどちらに格納されている場合でも、`/example/data` フォルダー内のファイルを一覧表示します。
+Azure Blob Storage または Data Lake Storage Gen1 または Gen2 を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドでは、Azure Storage 上または Data Lake Storage 上のどちらに格納されている場合でも、`/example/data` フォルダー内のファイルを一覧表示します。
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ HDInsight では、データ ストレージ リソース (Azure Blob Storage �
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-[**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) を使用する場合は、次のいずれかの URI スキームを使用します。
+[**Azure Data Lake Storage Gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md) を使用する場合は、次のいずれかの URI スキームを使用します。
 
 * `adl:///`:クラスターの既定の Data Lake Storage にアクセスします。
 
@@ -189,7 +189,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 HDInsight クラスターの外部からデータにアクセスする方法は複数あります。 データを操作するために使用できるユーティリティと SDK へのいくつかのリンクを次に示します。
 
-__Azure Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
+__Azure Blob Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2):Azure を操作するためのコマンド ライン インターフェイス コマンド。 インストール後、ストレージの使用方法については `az storage`、BLOB 特有のコマンドについては `az storage blob` をご覧ください。
 * [blobxfer.py](https://github.com/Azure/blobxfer):Azure Storage で BLOB を使用するための Python スクリプト。
@@ -203,7 +203,7 @@ __Azure Storage__ を使用している場合は、次のリンクを参照し�
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-__Azure Data Lake Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
+__Azure Data Lake Storage Gen1__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
 
 * [Web ブラウザー](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

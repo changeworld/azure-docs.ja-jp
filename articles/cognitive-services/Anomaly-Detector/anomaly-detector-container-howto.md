@@ -1,31 +1,36 @@
 ---
-title: Anomaly Detector API を使用するためのコンテナーをインストールして実行する方法
+title: Anomaly Detector API 向けの Docker コンテナーをインストールし、実行する
 titleSuffix: Azure Cognitive Services
-description: 異常検出 API の高度なアルゴリズムを使用して、コンテナーをインストールして使用する方法について説明します。
+description: Anomaly Detector API のアルゴリズムを使用し、Docker コンテナーを使用してオンプレミスのデータの異常を検出します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/28/2020
+ms.author: mbullwin
+ms.custom: cog-serv-seo-aug-2020
+keywords: オンプレミス, Docker, コンテナー, ストリーミング, アルゴリズム
+ms.openlocfilehash: e20ff5022b9b4a5b601160516f255af991a540c6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903546"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018612"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Anomaly Detector API 向けの Docker コンテナーをインストールし、実行する 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-Anomaly Detector には次のコンテナー機能があります。
+コンテナーを使用すると、独自の環境で Anomaly Detector API を使用できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Anomaly Detector コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-| 機能 | 特徴 |
-|--|--|
-| Anomaly Detector | <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データセット内の傾向変化点をバッチとして検出します。<li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
+Anomaly Detector には、API をオンプレミスで使用するための 1 つの Docker コンテナーが用意されています。 このコンテナーを以下のために使用します。
+* データに対して Anomaly Detector アルゴリズムを使用する。
+* ストリーミング データを監視し、リアルタイムで発生した異常を検出する。
+* バッチとして設定されたデータ全体で異常を検出します。 
+* データセット内の傾向変化点をバッチとして検出する。
+* 実際のデータに合うように異常検出アルゴリズムの感度を調整する。
 
 API の詳細情報については、以下を参照してください。
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

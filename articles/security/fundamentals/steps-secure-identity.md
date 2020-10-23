@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399807"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107812"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
-このドキュメントをご覧になっているお客様は、セキュリティの重要性を認識なさっていると思います。 おそらく、既に組織をセキュリティで保護する責任を負っていらっしゃるでしょう。 セキュリティの重要性を他の人に理解してもらう必要がある場合は、最新の [Microsoft セキュリティ インテリジェンス レポート](https://go.microsoft.com/fwlink/p/?linkid=2073747)を読むようご案内ください。
+このドキュメントをご覧になっているお客様は、セキュリティの重要性を認識なさっていると思います。 おそらく、既に組織をセキュリティで保護する責任を負っていらっしゃるでしょう。 セキュリティの重要性を他の人に理解してもらう必要がある場合は、最新の [Microsoft セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/business/security-intelligence-report)を読むようご案内ください。
 
 このドキュメントは、Azure Active Directory の機能を使用してセキュリティ体制を強化するのに役立ちます。そのために、サイバー攻撃への対策を組織に取り入れる 5 ステップのチェックリストが使用されます。
 

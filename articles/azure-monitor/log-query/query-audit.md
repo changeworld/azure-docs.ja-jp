@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91760163"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Monitor ログでの監査クエリ (プレビュー)
 ログ クエリの監査ログには、Azure Monitor で実行されるログ クエリに関するテレメトリが用意されています。 これには、クエリがいつ実行されたか、誰が実行したか、どのツールが使用されたか、クエリ テキスト、クエリの実行を説明するパフォーマンス統計などの情報が含まれています。
@@ -64,9 +64,13 @@ Resource Manager テンプレートの例は、「[Log Analytics ワークスペ
 
 ## <a name="considerations"></a>考慮事項
 
+- クエリは、ユーザー コンテキストで実行された場合にのみログに記録されます。 Azure 内のサービス間のものは、ログに記録されません。 この例外に含まれる 2 つの主なクエリのセットとしては、課金計算と自動アラート実行があります。 アラートの場合、記録されないのはスケジュールされたアラート クエリそのものだけであり、アラート作成画面でのアラートの初回実行はユーザー コンテキストで実行されるため、監査の目的に使用できます。 
 - Azure Data Explorer プロキシからのクエリでパフォーマンス統計を使用することはできません。 これらのクエリのその他すべてのデータは、引き続き設定されます。
 - [文字列リテラルを難読化する](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)文字列に対する *h* ヒントは、クエリ監査ログに影響しません。 クエリは、文字列が難読化されることなく、送信されたとおりにキャプチャされます。 このデータを表示するためのコンプライアンス権限を持つユーザーのみが、Log Analytics ワークスペースで利用可能なさまざまな RBAC モードを使用してそれを実行できるようにする必要があります。
 - 複数のワークスペースのデータを含むクエリの場合、クエリは、ユーザーがアクセスできるワークスペースでのみキャプチャされます。
+
+## <a name="costs"></a>コスト  
+Azure Diagnostic 拡張機能には料金はかかりませんが、取り込まれたデータの料金が発生する場合があります。 データの収集先については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

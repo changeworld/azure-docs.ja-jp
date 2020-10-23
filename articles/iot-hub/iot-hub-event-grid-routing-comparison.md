@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023807"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91767600"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub のメッセージ ルーティングと Event Grid の比較
 
@@ -32,7 +32,7 @@ Azure IoT Hub には、接続されたデバイスからデータをストリー
 
 | 機能 | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
 | ------- | --------------- | ---------- |
-| **デバイスのメッセージとイベント** | はい。利用統計情報にメッセージ ルーティングを使用できます。デバイス ツイン変更、デバイス ライフサイクル イベント (例: IoT Hub でのデバイスの作成時、削除時、接続時、接続解除時)、デジタル ツイン変更イベント ([IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部) にメッセージ ルーティングを使用できます。 | はい。Event Grid は利用統計情報とデバイス ライフサイクル イベントに使用できます。 ただし、Event Grid は、デバイス ツイン変更イベントとデジタル ツイン変更イベントには使用できません。 |
+| **デバイスのメッセージとイベント** | はい。利用統計情報にメッセージ ルーティングを使用できます。デバイス ツイン変更、デバイス ライフサイクル イベント (例: IoT Hub のデバイスが作成、削除、接続、切断されたとき)、デジタル ツイン変更イベント。 | はい。Event Grid は利用統計情報とデバイス ライフサイクル イベントに使用できます。 ただし、Event Grid は、デバイス ツイン変更イベントとデジタル ツイン変更イベントには使用できません。 |
 | **順序付け** | はい、イベントの順序付けは維持されます。  | いいえ、イベントの順序付けは保証されません。 | 
 | **フィルター処理** | メッセージ アプリケーション プロパティ、メッセージ システム プロパティ、メッセージ本文、デバイス ツインのタグおよびプロパティに基づく豊富なフィルター。 フィルター処理は、デジタル ツイン変更イベントには適用されません。 例については、[メッセージ ルーティングのクエリ構文](iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。 | 各イベントのイベントの種類、サブジェクトの種類、属性に基づくフィルター処理。 たとえば、[Event Grid サブスクリプションでのフィルター処理イベントの理解](../event-grid/event-filtering.md)に関するページを参照してください。 利用統計情報をサブスクライブしている場合、Event Grid に発行する前に、データに追加のフィルターを適用し、ご利用の IoT Hub のメッセージ プロパティ、メッセージ本文、デバイス ツインにフィルターを適用することができます。 [イベントのフィルター方法](../iot-hub/iot-hub-event-grid.md#filter-events)に関するページを参照してください。 |
 | **エンドポイント** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus キュー</li> <li>Service Bus トピック</li></ul><br>有料の IoT Hub SKU (S1、S2、S3) は、10 のカスタム エンドポイントに制限されます。 IoT Hub あたり 100 のルートを作成できます。 | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>ストレージ BLOB</li> <li>カスタム トピック</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>WebHook を通じたサード パーティのサービス</li></ul><br>IoT Hub ごとに 500 個のエンドポイントがサポートされます。 最新のエンドポイントの一覧については、[Event Grid のイベント ハンドラー](../event-grid/overview.md#event-handlers)に関する記事を参照してください。 |

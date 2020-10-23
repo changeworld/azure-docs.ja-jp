@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358965"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104803"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>アラートとスマート グループの状態を管理する
 
-Azure Monitor のアラートは[アラート状態と監視条件](https://aka.ms/azure-alerts-overview)を持つようになり、スマート グループも同様に[スマート グループの状態](https://aka.ms/smart-groups)を持つようになりました。 状態の変更は、アラートまたはスマート グループにそれぞれ関連付けられた履歴にキャプチャされるようになりました。 この記事では、アラートおよびスマート グループの両方について、状態を変更するプロセスを説明します。
+Azure Monitor のアラートは[アラート状態と監視条件](./alerts-overview.md)を持つようになり、スマート グループも同様に[スマート グループの状態](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)を持つようになりました。 状態の変更は、アラートまたはスマート グループにそれぞれ関連付けられた履歴にキャプチャされるようになりました。 この記事では、アラートおよびスマート グループの両方について、状態を変更するプロセスを説明します。
 
 ## <a name="change-the-state-of-an-alert"></a>アラートの状態を変更する
 
@@ -46,4 +46,3 @@ Azure Monitor のアラートは[アラート状態と監視条件](https://aka.
 
 1. これが完了すると、それぞれのスマート グループの履歴に状態の変更が記録されます。 この情報は、それぞれの詳細ページを開き、履歴のセクションを確認することによって表示できます。     
 ![スクリーンショットに、スマート グループの変更の履歴が示されています。](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

@@ -9,7 +9,7 @@
         - name: B2B ゲスト ユーザー アクセスとは
           href: what-is-b2b.md
         - name: Azure AD B2C とは
-          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
+          href: ../../active-directory-b2c/overview.md
     - name: クイックスタート
       items:
         - name: ポータルでゲスト ユーザーを追加する
@@ -137,13 +137,13 @@
         - name: よく寄せられる質問
           href: faq.md
         - name: サポートの利用
-          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md
         - name: Azure フィードバック フォーラム
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure のロードマップ
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: Microsoft Q&A 質問ページ
-          href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+          href: /answers/topics/azure-active-directory.html
         - name: 価格
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: 料金計算ツール

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: a6dc9aa70c55a0ed511a73570274c68708988451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331235"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851290"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>チュートリアル:4me を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -122,15 +122,15 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to 4me]\(Azure Active Directory ユーザーを 4me に同期する\)** を選択します。
 
-    ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to FourMe]\(Azure Active Directory ユーザーを FourMe に同期する\) が強調表示されています。" border="false":::
     
 11. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のユーザー アカウントとの照合に使用されます。 選択した一致する属性に対する[フィルター処理を 4me がサポートしている](https://developer.4me.com/v1/scim/users/)ことを確認してください。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to FourMe]\(Azure Active Directory ユーザーを FourMe に同期する\) が強調表示されています。" border="false":::
     
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to 4me]\(Azure Active Directory グループを 4me に同期する\)** を選択します。
 
-    ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to FourMe]\(Azure Active Directory ユーザーを FourMe に同期する\) が強調表示されています。" border="false":::
     
 13. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 

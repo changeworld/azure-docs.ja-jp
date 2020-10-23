@@ -2,26 +2,28 @@
 title: コンテナー ワークロード
 description: Azure Batch でコンテナー イメージからアプリを実行し、スケーリングする方法について説明します。 コンテナー タスクの実行をサポートするコンピューティング ノードのプールを作成します。
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018511"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843449"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
 Azure Batch を使用すると、Azure で大量のバッチ コンピューティング ジョブを実行し、また、その実行量を調整できます。 Batch タスクは Batch プール内の仮想マシン (ノード) で直接実行できますが、タスクがノード上の Docker と互換性のあるコンテナーで実行されるように Batch プールを設定することもできます。 この記事では、実行中のコンテナー タスクをサポートするコンピューティング ノードのプールを作成して、プールでコンテナー タスクを実行する方法について説明します。
 
-コンテナーの概念および Batch プールとジョブを作成する方法に精通しておく必要があります。 コード例では、Batch .NET と Python SDK を使用します。 また、Batch SDK、および Azure Portal などのツールを使用して、コンテナー対応の Batch プールを作成したり、コンテナー タスクを実行したりすることもできます。
+このコード例では、Batch .NET と Python SDK を使用します。 また、Batch SDK、および Azure Portal などのツールを使用して、コンテナー対応の Batch プールを作成したり、コンテナー タスクを実行したりすることもできます。
 
 ## <a name="why-use-containers"></a>コンテナーを使用する理由
 
 コンテナーを使用すると、Batch タスクを簡単に実行できます。アプリケーションを実行する目的で環境や依存関係を管理する必要はありません。 コンテナーにより、アプリケーションが、複数の異なる環境で実行できる、軽量で移植可能かつ自律的なユニットとしてデプロイされます。 たとえば、コンテナーをローカルで構築し、テストしてから、コンテナー イメージを Azure のレジストリなどにアップロードします。 コンテナー デプロイメント モデルにより、アプリケーションのランタイム環境が、そのアプリケーションをホストする場所がどこであっても、常に適切にインストールおよび構成されます。 Batch のコンテナー ベース タスクでは、アプリケーション パッケージ、リソース ファイルの管理、出力ファイルの管理など、コンテナー タスク以外の機能も活用されます。
 
 ## <a name="prerequisites"></a>前提条件
+
+コンテナーの概念および Batch プールとジョブを作成する方法に精通しておく必要があります。
 
 - **SDK バージョン**: 次のバージョンの時点で、Batch SDK ではコンテナー イメージをサポートしています。
   - Batch REST API バージョン 2017-09-01.6.0
@@ -282,6 +284,12 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 - コンテナー固有の設定を構成するには、タスク クラスの `ContainerSettings` プロパティを使用します。 これらの設定は、[TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) クラスによって定義されます。 `--rm` コンテナー オプションは Batch によって処理されるため、追加の `--runtime` オプションは必要ありません。
 
 - コンテナー イメージでタスクを実行する場合は、[クラウド タスク](/dotnet/api/microsoft.azure.batch.cloudtask)と[ジョブ マネージャー タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)にコンテナー設定が必要です。 ただし、[開始タスク](/dotnet/api/microsoft.azure.batch.starttask)、[ジョブの準備タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)、および[ジョブの解放タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)にはコンテナー設定は不要です (つまり、コンテナーのコンテキスト内で、またはノード上で直接実行できます)。
+
+- Windows の場合、タスクは [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) を `admin` に設定して実行する必要があります。 
+
+- Linux の場合、Batch ではユーザーおよびグループの権限がコンテナーにマップされます。 コンテナー内の任意のフォルダーへのアクセスに管理者権限が必要な場合は、管理者の昇格レベルを使用して、プール スコープとしてタスクを実行する必要がある場合があります。 これにより、Batch がコンテナー コンテキストでルートとしてタスクを実行するようになります。 そうしないと、管理者以外のユーザーがこれらのフォルダーにアクセスできない可能性があります。
+
+- GPU 対応ハードウェアを備えたコンテナー プールの場合、Batch ではコンテナー タスクに対して自動的に GPU が有効になります。そのため、`–gpus` 引数は含めないでください。
 
 ### <a name="container-task-command-line"></a>コンテナー タスクのコマンド ライン
 

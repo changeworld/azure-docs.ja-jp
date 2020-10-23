@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536750"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856196"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
 HDInsight クラスターを作成する際、次のいくつかの異なる Azure Storage サービスを選択できます。
 
-* [Azure ストレージ](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen2.md)
-* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
+* [HDInsight での Azure Blob Storage](./overview-azure-storage.md)
+* [HDInsight での Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen2.md)
+* [HDInsight での Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
 
 この記事では、これらのストレージの種類とそれらの固有の機能の概要を提供します。
 
@@ -58,7 +58,7 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 | 4.0 | Data Lake Storage Gen1 | Any | いいえ |
 | 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen1 | いいえ |
 
-*=すべてがクラスター アクセスに同じマネージド ID を使用するように設定されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
+*=すべてがクラスター アクセスに同じマネージド ID を使用するように設定されている限り、これは 1 つ以上の Data Lake Storage Gen2 である可能性があります。
 
 > [!NOTE]
 > Data Lake Storage Gen2 プライマリ ストレージは、Spark 2.1 または 2.2 クラスターではサポートされていません。
@@ -71,8 +71,8 @@ HDInsight が 1 つのリージョンにデータを格納するように正し�
  
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Storage の概要](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen1 の概要](./overview-data-lake-storage-gen1.md)
-* [Azure Data Lake Storage Gen2 の概要](./overview-data-lake-storage-gen2.md)
+* [HDInsight での Azure Storage の概要](./overview-azure-storage.md)
+* [HDInsight での Azure Data Lake Storage Gen1 の概要](./overview-data-lake-storage-gen1.md)
+* [HDInsight での Azure Data Lake Storage Gen2 の概要](./overview-data-lake-storage-gen2.md)
 * [Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure ストレージの概要](../storage/common/storage-introduction.md)

@@ -5,20 +5,42 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999617"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761143"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
 
 この記事を開始する前に、前の記事「[ID に共有レベルのアクセス許可を割り当てる](storage-files-identity-ad-ds-assign-permissions.md)」を完了し、共有レベルのアクセス許可が確実に設定されているようにしてください。
 
-RBAC に共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルで適切な Windows ACL を構成する必要があります。 RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで機能し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。 ユーザーがファイルまたはディレクトリにアクセスしようとしたときに、共有レベルとファイル/ディレクトリ レベルの両方のアクセス許可が適用されます。したがって、両方に違いがある場合は、最も制限の厳しい方だけが適用されます。 たとえば、ユーザーがファイル レベルで読み取り/書き込みアクセス権を持っているが、共有レベルでは読み取りアクセス権しかない場合は、そのファイルは読み取ることしかできません。 同じことはこの逆にも当てはまります。ユーザーが共有レベルで読み取り/書き込みアクセス権を持っていても、ファイル レベルでは読み取りアクセス権しか持っていない場合は、やはりファイルを読み取ることしかできません。
+Azure RBAC によって共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルで適切な Windows ACL を構成する必要があります。 Azure RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで機能し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。 ユーザーがファイルまたはディレクトリにアクセスしようとしたときに、共有レベルとファイル/ディレクトリ レベルの両方のアクセス許可が適用されます。したがって、両方に違いがある場合は、最も制限の厳しい方だけが適用されます。 たとえば、ユーザーがファイル レベルで読み取り/書き込みアクセス権を持っているが、共有レベルでは読み取りアクセス権しかない場合は、そのファイルは読み取ることしかできません。 同じことはこの逆にも当てはまります。ユーザーが共有レベルで読み取り/書き込みアクセス権を持っていても、ファイル レベルでは読み取りアクセス権しか持っていない場合は、やはりファイルを読み取ることしかできません。
+
+## <a name="azure-rbac-permissions"></a>Azure RBAC アクセス許可
+
+次の表は、この構成に関連する Azure RBAC アクセス許可を示しています。
+
+
+| 組み込みのロール  | NTFS アクセス許可  | 結果のアクセス  |
+|---------|---------|---------|
+|記憶域ファイル データの SMB 共有の閲覧者 | フル コントロール、変更、読み取り、書き込み、実行 | 読み取り & 実行  |
+|     |   Read |     Read  |
+|記憶域ファイル データの SMB 共有の共同作成者  |  フル コントロール    |  変更、読み取り、書き込み、実行 |
+|     |  変更         |  変更    |
+|     |  読み取り & 実行 |  読み取り & 実行 |
+|     |  Read           |  Read    |
+|     |  Write          |  Write   |
+|記憶域ファイル データの SMB 共有の管理者特権共同作成者 | フル コントロール  |  変更、読み取り、書き込み、編集、実行 |
+|     |  変更          |  変更 |
+|     |  読み取り & 実行  |  読み取り & 実行 |
+|     |  Read            |  Read   |
+|     |  Write           |  Write  |
+
+
 
 ## <a name="supported-permissions"></a>サポートされているアクセス許可
 
@@ -63,7 +85,7 @@ else
 
 ```
 
-Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)に関するページをご覧ください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)に関するページをご覧ください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
 
 ## <a name="configure-windows-acls"></a>Windows ACL を構成する
 

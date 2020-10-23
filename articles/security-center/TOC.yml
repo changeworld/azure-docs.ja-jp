@@ -131,10 +131,6 @@
           href: security-center-monitoring.md
         - name: 推奨事項のリファレンス一覧
           href: recommendations-reference.md
-        - name: ネットワーク リソースの保護
-          href: security-center-network-recommendations.md
-        - name: ID とアクセス権限の保護
-          href: security-center-identity-access.md
         - name: セキュリティに関する推奨事項の管理
           items:
             - name: レコメンデーションへの応答を自動化する
@@ -142,6 +138,10 @@
               href: workflow-automation.md
             - name: リソースを推奨事項から除外する
               href: exempt-resource.md
+        - name: ネットワーク リソースの保護
+          href: security-center-network-recommendations.md
+        - name: ID とアクセス権限の保護
+          href: security-center-identity-access.md
     - name: Azure Defender アラート
       items:
         - name: Azure Defender アラートの概要
@@ -170,7 +170,7 @@
         - name: 脆弱性のスキャン
           items:
             - name: マシン用の統合された VA スキャナー
-              displayName: 'qualys, vulnerability, arc'
+              displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: BYOL VA ソリューションで VM をスキャンする
               displayName: 'qualys, rapid7, vulnerability'
@@ -179,7 +179,7 @@
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: 特定の脆弱性の発見を無効にする
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, rapid7'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Just-In-Time VM アクセスを使用して管理ポートをセキュリティで保護する
           items:
@@ -187,20 +187,24 @@
               displayName: 'jit, management'
               href: just-in-time-explained.md
             - name: Just-In-Time アクセスの管理
-              displayName: 'jit, management'
+              displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: 統合された Microsoft Defender for Endpoint ライセンスを使用する
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
         - name: 適応型アプリケーション制御を管理する
+          displayName: 'aac, whitelist, allowlist, reviewgroup'
           href: security-center-adaptive-application.md
         - name: ファイルの整合性の監視を使用する
           items:
             - name: ファイルの整合性の監視の概要
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
             - name: ファイルの整合性の監視を使用してベースラインを比較する
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
         - name: アダプティブ ネットワークのセキュリティ強化機能を管理する
+          displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: Docker ホストのセキュリティを強化する
           displayName: containers

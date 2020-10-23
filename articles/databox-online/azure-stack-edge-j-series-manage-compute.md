@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890596"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743677"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU でコンピューティングを管理する
 
@@ -109,7 +109,7 @@ Azure portal を使用して、Azure Stack Edge Pro のコンピューティン�
 
 2. コンピューティング構成を削除した場合、コンピューティングをもう一度使用するときはデバイスを再構成する必要があります。 確認を求められたら、 **[はい]** を選択します。
 
-    ![[Remove compute]\(コンピューティングの削除\) の選択](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
+    ![[Remove compute]\(コンピューティングの削除\) の選択 2](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT デバイスと IoT Edge デバイスのアクセス キーの同期
 

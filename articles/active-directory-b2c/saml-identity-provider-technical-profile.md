@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/04/2020
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30c64e4cf467f4e505327414e15b23ee2c6d1543
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 4f2b4d6da8d4d69a44ca3aabd755c72fd87aaa8e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611645"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054901"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
@@ -166,7 +166,7 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 | 属性 |必須 | 説明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |はい | SAML メッセージを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、要求に署名し、ID プロバイダーに送信します。 |
-| SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |
+| SamlAssertionDecryption |いいえ | X509 証明書 (RSA キー セット)。 SAML ID プロバイダーは、証明書の公開部分を使用して、SAML 応答のアサーションを暗号化します。 Azure AD B2C は、証明書の非公開部分を使用してアサーションの暗号化を解除します。 |
 | MetadataSigning |いいえ | SAML データを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、メタデータに署名します。  |
 
 ## <a name="saml-entityid-customization"></a>SAML entityID のカスタマイズ

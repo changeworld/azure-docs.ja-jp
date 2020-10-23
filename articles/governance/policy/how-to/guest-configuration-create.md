@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728932"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893120"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは CI/CD 環境からパッケージをテストできます。 GuestConfiguration コマンドレット `Test-GuestConfigurationPackage` には、Azure マシンで使われるのと同じエージェントが開発環境に含まれます。 このソリューションを使って、有料のクラウド環境にリリースする前に、ローカル環境で統合テストを実行できます。
+構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは継続的インテグレーションおよび継続的デプロイ (CI/CD) 環境からパッケージをテストできます。 GuestConfiguration コマンドレット `Test-GuestConfigurationPackage` には、Azure マシンで使われるのと同じエージェントが開発環境に含まれます。 このソリューションを使って、有料のクラウド環境にリリースする前に、ローカル環境で統合テストを実行できます。
 
 エージェントは実際にローカル環境を評価しているため、ほとんどの場合、監査を計画しているのと同じ OS プラットフォームで Test- コマンドレットを実行する必要があります。 テストでは、コンテンツ パッケージに含まれているモジュールのみが使用されます。
 
@@ -233,7 +233,7 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-次の手順では、ファイルを BLOB ストレージに発行します。 次のスクリプトには、このタスクを自動化するために使用できる関数が含まれています。 `publish` 関数で使用されるコマンドには、`Az.Storage` モジュールが必要です。
+次の手順はファイルの Azure Blob Storage への発行です。 次のスクリプトには、このタスクを自動化するために使用できる関数が含まれています。 `publish` 関数で使用されるコマンドには、`Az.Storage` モジュールが必要です。
 
 ```azurepowershell-interactive
 function publish {

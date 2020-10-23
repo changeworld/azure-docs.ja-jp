@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883395"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91729102"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -97,10 +97,10 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
     > [!NOTE]
     > `nslookup` コマンドによって返された IP アドレスは、静的 IP アドレスではありません。 ただし、基になるデプロイが削除されるか別のクラスターに移動されるまでは変わりません。
-3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
 ### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>名前空間へのメッセージの送信または受信を行うクライアント IP はどこで確認できますか。
 まず、名前空間で [IP フィルター](event-hubs-ip-filtering.md)を有効にします。 
@@ -270,6 +270,20 @@ Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診�
 Event Hubs のテクニカル サポートについては、[Microsoft Q&A の Azure Service Bus に関する質問ページ](/answers/topics/azure-service-bus.html)を参照してください。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
+
+## <a name="azure-stack-hub"></a>Azure Stack Hub
+
+### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Azure Blob Storage をチェックポイント ストアとして使用するときに、特定のバージョンの Azure Storage SDK を対象にするにはどうすればよいですか?
+このコードを Azure Stack Hub で実行すると、特定の Storage API バージョンを対象としている場合を除き、実行時エラーが発生します。 これは、Event Hubs SDK では、Azure で利用できる最新の Azure Storage API が使用されますが、Azure Stack Hub プラットフォームではこれを利用できない可能性があるためです。 Azure Stack Hub でサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なる場合があります。 チェックポイント ストアとして Azure Blob Storage を使用している場合は、[Azure Stack Hub ビルドでサポートされている Azure Storage API バージョン](/azure-stack/user/azure-stack-acs-differences?#api-version)を確認し、コード内でそのバージョンを対象にします。 
+
+たとえば、Azure Stack Hub バージョン 2005 上で実行している場合、Storage サービスで利用できる最も高いバージョンは 2019-02-02 となります。 既定では、Event Hubs SDK クライアント ライブラリでは、Azure で利用できる最も高いバージョン (SDK のリリース時点では 2019-07-07) が使用されます。 この場合は、このセクションの手順に従うことに加え、Storage サービス API バージョン 2019-02-02 を対象とするコードを追加する必要もあります。 特定の Storage API バージョンを対象にする方法の例については、次の C#、Java、Python、および JavaScript/TypeScript 用のサンプルを参照してください。  
+
+コードから特定の Storage API バージョンを対象にする方法の例については、次の GitHub 上のサンプルを参照してください。 
+
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
+- Python - [同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[非同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
+- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) および [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
 ## <a name="next-steps"></a>次のステップ
 

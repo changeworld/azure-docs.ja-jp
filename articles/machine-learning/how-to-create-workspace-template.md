@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/27/2020
-ms.openlocfilehash: 1feb4432111ce517d49396eb2cb516b0463268d8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1978cfe6ea117a0d30df938c9e4ba1aeb48314fc
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883030"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057843"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
@@ -30,7 +30,14 @@ ms.locfileid: "90883030"
 
 * **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-* CLI からテンプレートを使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
+* CLI からテンプレートを使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
+
+* 一部のシナリオでは、サポート チケットを開く必要があります。 そのシナリオを次に示します。
+
+    * __カスタマーマネージド キー (CMK) を使用する Private Link 対応ワークスペース__
+    * __仮想ネットワークの背後にあるワークスペースの Azure Container Registry__
+
+    詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 ## <a name="workspace-resource-manager-template"></a>ワークスペースの Resource Manager テンプレート
 
@@ -272,7 +279,7 @@ New-AzResourceGroupDeployment `
 関連付けられたリソースが仮想ネットワークの背後にない場合、**privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
 
 > [!IMPORTANT]
-> Azure Private Link を使用した Azure Machine Learning ワークスペース用プライベート エンドポイントの作成は、現在パブリック プレビュー段階です。 この機能は、**米国東部**、**米国中南部**、および**米国西部 2** リージョンでのみご利用いただけます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

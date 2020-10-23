@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 05994a61b0afd0190e3fc1d4b841d576cec047f5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320683"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015847"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
@@ -42,7 +42,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 |**プリセット名**|**シナリオ**|**詳細**|
 |---|---|---|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG" と "ar-SY")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていない場合、または null 値に設定されている場合、自動言語検出では、最初に検出された言語が選択されて、ファイルの期間を通して選択された言語が使い続けられます。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 最初の言語が検出された後に、複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析: 標準|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG" と "ar-SY")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていない場合、または null 値に設定されている場合、自動言語検出では、最初に検出された言語が選択されて、ファイルの期間を通して選択された言語が使い続けられます。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 最初の言語が検出された後に、複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析: 基本|"このモードでは、音声からテキストへの文字起こしを作成し、VTT 字幕/キャプション ファイルを生成します。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。" サポートされている言語の一覧はこちらで確認できます: https://go.microsoft.com/fwlink/?linkid=2109463|
 |[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|オーディオとビデオの分析|オーディオとビデオの両方から分析情報 (リッチ メタデータ) を抽出し、JSON 形式のファイルを出力します。 ビデオ ファイルを処理するときにオーディオの分析情報のみを抽出するかどうかを指定できます。 詳細については、[ビデオの分析](analyze-videos-tutorial-with-api.md)に関するページを参照してください。|
 |[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|ビデオに存在する顔の検出|ビデオを分析して存在するすべての顔を検出するときに使用される設定について説明します。|
 

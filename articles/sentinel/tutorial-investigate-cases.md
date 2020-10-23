@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566337"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843109"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
@@ -119,11 +119,11 @@ ms.locfileid: "88566337"
 - [False Positive - incorrect data]\(偽陽性 - 不適切なデータ\)
 - [Undetermined]\(不明\)
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="[分類の選択] リストで使用できる分類が強調表示されているスクリーンショット。":::
 
 適切な分類を選択した後、 **[コメント]** フィールドに説明文を追加します。 これは、このインシデントを参照する必要がある場合に役立ちます。 完了したら **[適用]** をクリックすると、インシデントが閉じられます。
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="[分類の選択] リストで使用できる分類が強調表示されているスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Sentinel を使用して、インシデントの調査を開始する方法について説明しました。 [自動プレイブックを使用した脅威への対応](tutorial-respond-threats-playbook.md)に関するチュートリアルに進んでください。

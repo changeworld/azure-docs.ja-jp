@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d889b7dabc5d97a36f8b12bcff90cf3ad2069fb7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931642"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082132"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,21 +31,21 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
 Azure Communication Services 通話クライアント ライブラリとその依存関係 (AzureCore.framework と AzureCommunication.framework) をプロジェクトに追加します。
 
 > [!NOTE]
-> AzureCommunicationCalling SDK のリリースにより、bash スクリプト `BuildAzurePackages.sh` が見つかるようになります。 `sh ./BuildAzurePackages.sh` の実行時、このスクリプトによって、生成されたフレームワーク パッケージへのパスが示されます。これを、次のステップのサンプル アプリにインポートする必要があります。 スクリプトを実行する前に、Xcode コマンド ライン ツールを設定しておく必要があるので注意してください。Xcode を起動し、[設定] -> [場所] の順に選択します。 コマンド ライン ツールの Xcode バージョンを選択します。
+> AzureCommunicationCalling SDK のリリースにより、bash スクリプト `BuildAzurePackages.sh` が見つかるようになります。 `sh ./BuildAzurePackages.sh` の実行時、このスクリプトによって、生成されたフレームワーク パッケージへのパスが示されます。これを、次のステップのサンプル アプリにインポートする必要があります。 スクリプトを実行する前に、Xcode コマンド ライン ツールを設定しておく必要があるので注意してください。Xcode を起動し、[設定] -> [場所] の順に選択します。 コマンド ライン ツールの Xcode バージョンを選択します。 **BuildAzurePackages.sh スクリプトは Xcode 11.5 以降でのみ機能することに注意してください。**
 
 1. iOS 用の Azure Communication Services 通話クライアント ライブラリをダウンロードします。
 2. Xcode で、プロジェクト ファイルをクリックし、ビルド ターゲットを選択してプロジェクト設定エディターを開きます。
 3. **[全般]** タブで **[Frameworks, Libraries, and Embedded Content]\(フレームワーク、ライブラリ、埋め込みコンテンツ\)** セクションまでスクロールし、 **[+]** アイコンをクリックします。
 4. ダイアログの左下にある **[ファイルを追加]** を選択し、解凍されたクライアント ライブラリ パッケージの **AzureCommunicationCalling.framework** ディレクトリに移動します。
     1. **AzureCore.framework** と **AzureCommunication.framework** を追加するための最後の手順を繰り返します。
-5. プロジェクト設定エディターの **[ビルド設定]** タブを開き、 **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい**フレームワーク検索パス** エントリを追加します。
+5. プロジェクト設定エディターの **[ビルド設定]** タブを開き **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい**フレームワーク検索パス** エントリを追加します。
     1. 依存関係を含むフォルダーを指す別のフレームワーク検索パス エントリを追加します。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="XCode 内のフレームワーク検索パスの更新を示すスクリーンショット。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 内での新たな [新しいプロジェクト] ウィンドウの作成を示すスクリーンショット。":::
 
 ### <a name="request-access-to-the-microphone"></a>マイクへのアクセスを要求する
 
-デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` によって更新する必要があります。 関連付けられた値を `string` に設定します。これは、ユーザーからのアクセスの要求を求めるためにシステムによって使用されるダイアログに含められます。
+デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` によって更新する必要があります。 関連付けられた値は `string` に設定します。これは、ユーザーからのアクセスの要求を求めるためにシステムが使用するダイアログに含まれます。
 
 プロジェクト ツリーの `Info.plist` のエントリを右クリックし、 **[Open As]\(形式を指定して開く\)**  >  **[Source Code]\(ソース コード\)** の順に選択します。 最上位の `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
 
@@ -113,7 +113,7 @@ public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: ACSJoin
 - 手順 2:[Xcode] -> [Signing & Capabilities]\(署名と機能\) -> [Add Capability]\(機能の追加\) -> [Background Modes]\(バックグラウンド モード\)
 - 手順 3:[Background Modes]\(バックグラウンド モード\)-> [Voice over IP]\(ボイスオーバー IP\) と [リモート通知] を選択する
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Xcode での機能の追加方法を示すスクリーンショット。" lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Xcode 内での新たな [新しいプロジェクト] ウィンドウの作成を示すスクリーンショット。" lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>プッシュ通知に登録する
 
@@ -424,6 +424,8 @@ targetRemoteParticipantView.update(ACSScalingMode.fit)
 ```swift
 // [Bool] isRendering - indicating if stream is being rendered
 remoteVideoRenderer.isRendering()
+// [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
+remoteVideoRenderer.dispose()
 ```
 
 ## <a name="device-management"></a>デバイス管理

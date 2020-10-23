@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure VM 上の S
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: e3bfc5ab9a91ae3aee73d7ed24161acae60211ce
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a3ad68fcaaa820daca842d567ecd40f011df729f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022328"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946367"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -32,7 +32,7 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 | **HANA データベースのサイズ**     | HANA データベースのサイズ <= 2 TB (これは HANA システムのメモリ サイズではありません)               |                                                              |
 | **バックアップの種類**           | 完全バックアップ、差分バックアップ、ログ バックアップ                          | 増分、スナップショット                                       |
 | **復元の種類**          | サポートされている復元の種類については、SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照してください |                                                              |
-| **バックアップの制限**          | SAP HANA インスタンスごとに最大 2 TB の完全バックアップ サイズ         |                                                              |
+| **バックアップの制限**          | SAP HANA インスタンスごとに最大 2 TB の完全バックアップ サイズ (ソフト制限)         |                                                              |
 | **特殊な構成** |                                                              | SAP HANA + Dynamic Tiering <br>  LaMa を使用した複製        |
 
 ------

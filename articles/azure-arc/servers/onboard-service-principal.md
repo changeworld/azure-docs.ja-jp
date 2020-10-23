@@ -3,12 +3,12 @@ title: ハイブリッド マシンを大規模に Azure に接続する
 description: この記事では、サービス プリンシパルを使用して、Azure Arc 対応サーバーを使用する Azure にマシンを接続する方法について説明します。
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d789061c741b8a0da2edabcb56a67898ea28ec90
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713419"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108917"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 
@@ -143,4 +143,4 @@ azcmagent connect \
 
 - [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
-- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-intro.md) などの他の Azure サービスを使用する場合に必要になります。
+- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する場合に必要になります。

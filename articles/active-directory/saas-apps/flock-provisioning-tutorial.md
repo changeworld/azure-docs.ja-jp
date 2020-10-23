@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312594"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850882"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>チュートリアル:Flock を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,15 +54,15 @@ Azure AD での自動ユーザー プロビジョニング用に Flock を構成
 
 1. [Flock](https://web.flock.com/?) にログインします。 **[Settings]\(設定\) アイコン** >  **[Manage your team]\(チームの管理\)** をクリックします。
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Flock Web サイトのスクリーンショット。設定アイコンが強調表示されていて、そのショートカット メニューが表示されています。そのメニューで、[チームを管理する] が強調表示されています。" border="false":::
 
 2. **[Auth and Provisioning]\(認証とプロビジョニング\)** を選択します。
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock Web サイトのスクリーンショット。設定アイコンが強調表示されていて、そのショートカット メニューが表示されています。そのメニューで、[チームを管理する] が強調表示されています。" border="false":::
 
 3. **[API Token]\(API トークン\)** をコピーします。 これらの値は、Azure portal で Flock アプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** フィールドに入力します。
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock Web サイトのスクリーンショット。設定アイコンが強調表示されていて、そのショートカット メニューが表示されています。そのメニューで、[チームを管理する] が強調表示されています。" border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>ギャラリーから Flock を追加する
