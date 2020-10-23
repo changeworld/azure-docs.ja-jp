@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応のクラスター構成に対して GitOps を使用する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、コンテナー
-ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049965"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714184"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
@@ -23,17 +23,19 @@ GitOps では、Git リポジトリ内で Kubernetes 構成 (デプロイ、名�
 
 クラスターで実行されている `config-agent` は、Azure Arc 対応 Kubernetes リソースで新規または更新された `sourceControlConfiguration` の拡張リソースを監視し、Git リポジトリを監視するための Flux 演算子をデプロイし、`sourceControlConfiguration` に加えられた更新を伝達する役割を担います。 複数の `sourceControlConfiguration` リソースを同じ Azure Arc 対応 Kubernetes クラスター上の `namespace` スコープで作成し、マルチテナントを実現することもできます。 このような場合、各演算子はそれぞれの名前空間にのみ構成をデプロイできます。
 
-この Git リポジトリには、Namespace、ConfigMap、Deployment、DaemonSet などの有効な Kubernetes リソースを含めることができます。また、アプリケーションをデプロイするための Helm グラフを含めることもできます。 一般的なシナリオ セットとして、組織のベースライン構成の定義が含まれます。これには、一般的な RBAC ロールとバインド、監視エージェントまたはログ エージェント、またはクラスター全体のサービスが含まれる場合があります。
+この Git リポジトリには、Namespace、ConfigMap、Deployment、DaemonSet などの有効な Kubernetes リソースを含めることができます。また、アプリケーションをデプロイするための Helm グラフを含めることもできます。 一般的なシナリオ セットとして、組織のベースライン構成の定義が含まれます。これには、一般的な Azure ロールとバインド、監視またはログ エージェント、またはクラスター全体のサービスが含まれる場合があります。
 
 同じパターンを使用して、異機種混合の環境全体にデプロイされているような、より大規模なクラスターのコレクションを管理できます。 たとえば、組織のベースライン構成を定義するリポジトリが 1 つあり、それを一度に数十の Kubernetes クラスターに適用しているとします。 [Azure Policy では、スコープ (サブスクリプションまたはリソース グループ) にあるすべての Azure Arc 対応 Kubernetes リソースで、特定のパラメーター セットを使用して `sourceControlConfiguration` の作成を自動化](use-azure-policy.md)できます。
 
 このファースト ステップ ガイドでは、クラスターと管理者のスコープを使用して一連の構成を適用する方法について説明します。
 
+## <a name="before-you-begin"></a>開始する前に
+
+この記事では、Azure Arc 対応 Kubernetes に接続されたクラスターが既に存在することを前提としています。 接続されたクラスターが必要な場合は、[クラスターの接続についてのクイックスタート](./connect-cluster.md)のページを参照してください。
+
 ## <a name="create-a-configuration"></a>構成を作成する
 
-- リポジトリの例: <https://github.com/Azure/arc-k8s-demo>
-
-このリポジトリの例は、いくつかの名前空間をプロビジョニングし、共通のワークロードをデプロイし、チーム固有の構成を提供するクラスター オペレーターのペルソナを中心に構成されています。 このリポジトリを使用すると、クラスターに次のリソースが作成されます。
+本ドキュメントで使用されている[リポジトリの例](https://github.com/Azure/arc-k8s-demo)は、いくつかの名前空間をプロビジョニングし、共通のワークロードをデプロイし、チーム固有の構成を提供するクラスター オペレーターのペルソナを中心に構成されています。 このリポジトリを使用すると、クラスターに次のリソースが作成されます。
 
 **Namespace:** `cluster-config`、`team-a`、`team-b`
 **Deployment:** `cluster-config/azure-vote`
@@ -47,12 +49,7 @@ GitOps では、Git リポジトリ内で Kubernetes 構成 (デプロイ、名�
 `k8sconfiguration` の Azure CLI 拡張機能を使用して、接続されたクラスターを [Git リポジトリの例](https://github.com/Azure/arc-k8s-demo)にリンクしましょう。 この構成に `cluster-config` と名前を付け、`cluster-config` 名前空間にオペレーターを配置するようにエージェントに指示し、オペレーターに `cluster-admin` アクセス許可を与えます。
 
 ```console
-az k8sconfiguration create \
-    --name cluster-config \
-    --cluster-name AzureArcTest1 --resource-group AzureArcTest \
-    --operator-instance-name cluster-config --operator-namespace cluster-config \
-    --repository-url https://github.com/Azure/arc-k8s-demo \
-    --scope cluster --cluster-type connectedClusters
+az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
 **出力:**
@@ -159,7 +156,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 Azure CLI を使用して、`sourceControlConfiguration` の作成が成功したことを確認します。
 
 ```console
-az k8sconfiguration show --resource-group AzureArcTest --name cluster-config --cluster-name AzureArcTest1 --cluster-type connectedClusters
+az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 `sourceControlConfiguration` リソースは、コンプライアンスの状態、メッセージ、デバッグの情報によって更新されることにご注意ください。
@@ -302,7 +299,7 @@ kubectl -n itops get all
 > `sourceControlConfiguration` が削除されても、追跡対象の git リポジトリからのデプロイの結果としてクラスターに加えられた変更は削除されません。
 
 ```console
-az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
+az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 **出力:**

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924582"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400640"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware ディザスター リカバリーを設定する
 
-[CSP プログラム](https://partner.microsoft.com/cloud-solution-provider)は、Office 365、Enterprise Mobility Suite、Microsoft Azure など、Microsoft クラウド サービス向けの優れた連携による事例を促進します。 CSP により、パートナーは顧客とのエンド ツー エンドの関係を築き、顧客にとって最も重要な担当者になることができます。 パートナーは顧客の Azure サブスクリプションをデプロイし、サブスクリプションをカスタマイズされた独自の付加価値サービスと組み合わせることができます。
+[CSP プログラム](https://partner.microsoft.com/cloud-solution-provider)は、Microsoft 365、Enterprise Mobility Suite、Microsoft Azure など、Microsoft クラウド サービス向けの優れた連携による事例を促進します。 CSP により、パートナーは顧客とのエンド ツー エンドの関係を築き、顧客にとって最も重要な担当者になることができます。 パートナーは顧客の Azure サブスクリプションをデプロイし、サブスクリプションをカスタマイズされた独自の付加価値サービスと組み合わせることができます。
 
 [Azure Site Recovery](site-recovery-overview.md) を使用すると、パートナーは CSP を介して顧客のディザスター リカバリーを直接管理できます。 また、CSP を使用して Site Recovery 環境をセットアップし、顧客がセルフサービス方式で独自のディザスター リカバリーのニーズを管理できるようにすることも可能です。 どちらのシナリオでも、パートナーは Site Recovery と顧客の間の連絡役となります。 パートナーは顧客関係にサービスを提供し、Site Recovery の利用料金を顧客に請求します。
 

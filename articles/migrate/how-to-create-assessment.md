@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549800"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361094"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure VM の評価を作成する
 
@@ -43,7 +43,7 @@ Azure Migrate: Server Assessment を使用して Azure VM の評価を作成す�
 1. 評価を作成するための[ベスト プラクティス](best-practices-assessment.md)を確認します。
 2. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[評価]** をクリックします。
 
-    ![アクセス](./media/how-to-create-assessment/assess.png)
+    ![Azure Migrate Servers のスクリーンショット。[評価ツール] の下で [評価] が選択されています。](./media/how-to-create-assessment/assess.png)
 
 3. **[サーバーの評価]** で、評価の種類として [Azure VM] を選択し、検出ソースを選択し、評価名を指定します。
 

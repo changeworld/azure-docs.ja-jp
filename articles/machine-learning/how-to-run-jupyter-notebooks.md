@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460035"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 
@@ -80,15 +80,20 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 1. **[コンピューティング]** 先を選択するか、新しいものを作成し、それが実行されるまで待ちます。
 1. **[Open terminal]\(ターミナルを開く\)** アイコンを選択します。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="ターミナルを開きます":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="[新しいファイルの作成]":::
 
 1. アイコンが表示されない場合は、コンピューティング ターゲットの右側にある **[...]** を選択し、 **[ターミナルを開く]** を選択します。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="[...] の [Open terminal]\(ターミナルを開く\)":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="[新しいファイルの作成]":::
 
 
 詳細については、[Git リポジトリをワークスペース ファイル システムに複製する](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)方法に関する記事を参照してください。
 
+### <a name="copy-and-paste-in-terminal"></a>ターミナルでのコピーと貼り付け
+
+> * Windows: コピーの場合は `Ctrl-Insert`、貼り付けの場合は `Ctrl-Shift-v` または `Shift-Insert` を使用します。
+> * Mac OS: コピーの場合は `Cmd-c`、貼り付けの場合は `Cmd-v` を使用します。
+> * Firefox や IE ではクリップボードのアクセス許可が正しくサポートされない場合があります。
 
 ### <a name="share-notebooks-and-other-files"></a>ノートブックとその他のファイルを共有する
 
@@ -121,8 +126,7 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 1. すべてのノートブック セルを実行します。
 1. 新しいノートブックを実行するコードが含まれているセルを選択します。 たとえば、実験を送信するコードや、あるいはモデルを登録するコードなどです。
 1. セルのツールバーに表示される **[収集]** アイコンを選択します。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="スクリーンショット: [収集] アイコンを選択します":::
-1. 新しい "収集された" ノートブックの名前を入力します。  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="[新しいファイルの作成]" ノートブックの名前を入力します。  
 
 新しいノートブックにはコード セルのみが含まれており、収集するよう選択したセルと同じ結果を得るために必要なすべてのセルが含まれています。
 
@@ -132,7 +136,7 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 
 ノートブック ツール バーでメニューを選択し、 **[ファイル] &gt; [Save and checkpoint]\(保存とチェックポイント\)** の順に選択して、手動でノートブックを保存します。そうすると、ノートブックに関連付けられたチェックポイント ファイルが追加されます。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="ノートブック ツール バーの保存ツールのスクリーンショット":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="[新しいファイルの作成]":::
 
 すべてのノートブックは 30 秒ごとに自動保存されます。 自動保存では、チェックポイント ファイルではなく、最初の *ipynb* ファイルのみが更新されます。
  

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852363"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361502"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -71,7 +71,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
 
-![Security][security]
+![Azure Machine Learning Studio の [ユーザー] ページの設定のスクリーンショット。][security]
 
 役割が **[所有者]** に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
 
@@ -92,7 +92,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]** をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
    
-    ![データセット][datasets]
+    ![データセットのスクリーンショット。データ アクセス コードを生成します。][datasets]
 4. 表示されるウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
     ![[データ アクセス コードの生成] ボタン][dataset-access-code]

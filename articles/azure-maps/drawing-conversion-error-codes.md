@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681970"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361536"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Drawing Conversion のエラーと警告
 
@@ -35,9 +35,9 @@ Conversion サービスでは、無効なエンティティからマップ地物
 
 * 以下の 2 つの画像は、自己交差する多角形の例を示しています。
 
-     ![自己交差する多角形の例](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![自己交差する多角形の例 1](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![自己交差する多角形の例](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![自己交差する多角形の例 2](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * 閉じていないポリラインを示す画像を次に示します。 レイヤーが閉じたジオメトリのみをサポートしているとします。
 

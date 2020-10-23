@@ -6,13 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: contperfq1
+ms.date: 10/2/2020
+ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708437"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力
 
@@ -24,11 +25,11 @@ Stream Analytics ジョブの出力を作成、編集、テストするには、
 
 | 出力の種類 | パーティション分割 | セキュリティ | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory ユーザー </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|はい。有効にする必要があります。|SQL ユーザー認証 </br> MSI (プレビュー)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|いいえ|SQL ユーザー認証|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|はい|Azure Active Directory ユーザー </br> MSI|
+|[Azure SQL Database](sql-database-output.md)|はい、省略可能です。|SQL ユーザー認証 </br> MSI (プレビュー)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|はい|SQL ユーザー認証|
 |[Blob Storage と Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|はい|MSI </br> アクセス キー|
-|[Azure Event Hubs](event-hubs-output.md)|はい|アクセス キー|
+|[Azure Event Hubs](event-hubs-output.md)|はい。出力構成でパーティション キー列を設定する必要があります。|アクセス キー|
 |[Power BI](power-bi-output.md)|いいえ|Azure Active Directory ユーザー </br> MSI|
 |[Azure Table Storage](table-storage-output.md)|はい|アカウント キー|
 |[Azure Service Bus キュー](service-bus-queues-output.md)|はい|アクセス キー|
@@ -40,7 +41,7 @@ Stream Analytics ジョブの出力を作成、編集、テストするには、
 
 Stream Analytics では、Power BI を除くすべての出力用のパーティションがサポートされています。 パーティション キーと出力ライターの数の詳細については、関心がある特定の出力の種類に関する記事を参照してください。 前のセクションですべての出力に関する記事がリンクされています。  
 
-出力ライターの数は、クエリ内の `INTO <partition count>` ([INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関するページを参照してください) 句を使用して制御することができます。これは、目的のジョブ トポロジを実現するのに役立ちます。 出力アダプターがパーティション分割されていない場合は、ある入力パーティションにデータがないと、到着遅延時間までの遅延が発生します。 このような場合は、出力が 1 つのライターにマージされるため、ご使用のパイプラインにボトルネックが発生する可能性があります。 到着遅延ポリシーの詳細については、[Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)に関する記事を参照してください。
+また、パーティションの高度なチューニングとして、出力ライターの数は、クエリ内の `INTO <partition count>` ([INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関するページを参照してください) 句を使用して制御することができます。これは、目的のジョブ トポロジを実現するのに役立ちます。 出力アダプターがパーティション分割されていない場合は、ある入力パーティションにデータがないと、到着遅延時間までの遅延が発生します。 このような場合は、出力が 1 つのライターにマージされるため、ご使用のパイプラインにボトルネックが発生する可能性があります。 到着遅延ポリシーの詳細については、[Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)に関する記事を参照してください。
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 

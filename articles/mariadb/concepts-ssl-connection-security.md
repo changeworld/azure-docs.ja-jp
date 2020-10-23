@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: a108459985f235f0280354ef7b4fa0cb181f5dda
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: b23783080e976f70ba8c5e02f67dcee36bbc9c34
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054247"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444956"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での SSL/TLS 接続
 Azure Database for MariaDB では、Secure Sockets Layer (SSL) を使用して、データベース サーバーをクライアント アプリケーションに接続できます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -56,6 +56,17 @@ Azure Database for MariaDB には、クライアント接続に TLS バージョ
 > TLS の最小バージョンを強制すると、後で最小バージョンの強制を無効にすることはできません。
 
 Azure Database for MariaDB の TLS 設定を行う方法については、[TLS 設定の構成方法](howto-tls-configurations.md)に関するページを参照してください。
+
+## <a name="cipher-support-by-azure-database-for-mariadb"></a>Azure Database for MariaDB でサポートされる暗号
+
+SSL/TLS 通信の一部として、暗号スイートが検証され、サポートされている暗号スイートのみがデータベース サーバーとの通信を許可されます。 暗号スイートの検証は、[ゲートウェイ レイヤー](concepts-connectivity-architecture.md#connectivity-architecture)で制御され、ノード自体では明示的には行われません。 暗号スイートが以下の一覧に示されているスイートのいずれかと一致しない場合、受信クライアント接続は拒否されます。
+
+### <a name="cipher-suite-supported"></a>サポートされている暗号スイート
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>次のステップ
 - [サーバー ファイアウォール規則](concepts-firewall-rules.md)について説明します。

@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565167"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172231"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -398,9 +398,9 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 リージョン コードについては、[こちらの一覧](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)を参照してください。 各国のリージョンの URL 名前付け規則については、次のリンクを参照してください。
 
-- [中国](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [ドイツ](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov ](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov ](../azure-government/documentation-government-developer-guide.md)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>カスタム DNS サーバーの DNS レコードを追加する
 

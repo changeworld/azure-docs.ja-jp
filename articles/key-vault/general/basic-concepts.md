@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983291"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398512"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault の基本的な概念
 
@@ -23,7 +23,7 @@ Azure Key Vault は、シークレットを安全に保管し、それにアク�
 
 その他の重要な用語を次に示します。
 
-- **Tenant**: テナントは、Microsoft クラウド サービスの特定のインスタンスを所有および管理する組織です。 ほとんどの場合、この用語は、組織の Azure と Office 365 の一連のサービスを指すために使用されます。
+- **Tenant**: テナントは、Microsoft クラウド サービスの特定のインスタンスを所有および管理する組織です。 ほとんどの場合、この用語は、組織の Azure と Microsoft 365 の一連のサービスを指すために使用されます。
 
 - **コンテナーの所有者**:コンテナー所有者は、キー コンテナーを作成し、それにフル アクセスして制御することができます。 コンテナー所有者は、だれがシークレットとキーにアクセスしたかをログに記録するように監査を設定することもできます。 管理者は、キーのライフサイクルを制御できます。 新しいバージョンのキーへの切り替え、キーのバックアップ、および関連タスクを行うことができます。
 

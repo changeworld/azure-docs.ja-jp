@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用したレプリケーションからディ�
 description: Azure Site Recovery を使用したレプリケーションから Azure にディスクを除外する方法。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245400"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333666"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>ディザスター リカバリーからディスクを除外する
 
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 
 ソース VM におけるページング ファイルの設定は次のとおりです。
 
-![ソース仮想マシンにおけるページング ファイルの設定](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![[仮想メモリ] ダイアログのスクリーンショット。D: Drive [Pagefile ボリューム] の行が強調表示されており、ページング ファイル (MB) サイズが 3000-7000 になっています。](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. VM のレプリケーションを有効にします。
 2. レプリケーションから DB-Disk1 を除外します。
@@ -260,7 +260,7 @@ DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 
 Azure VM におけるページング ファイルの設定は次のとおりです。
 
-![Azure 仮想マシンにおけるページング ファイルの設定](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+![[仮想メモリ] ダイアログのスクリーンショット。C:Drive の行が強調表示されており、[システム管理] のページング ファイル サイズ設定を確認できます。](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>次のステップ

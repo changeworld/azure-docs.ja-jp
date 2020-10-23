@@ -1,52 +1,71 @@
 ---
 title: ストレージの概要 - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 のデータ ストレージについて説明します。
-author: esung22
-ms.author: elsung
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483271"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460830"
 ---
 # <a name="data-storage"></a>データ ストレージ
 
-Azure Time Series Insights Gen2 環境を作成するときは、次の 2 つの Azure リソースを作成します。
+この記事では、Azure Time Series Insights Gen2 でのデータ ストレージについて説明します。 ウォームおよびコールド、データの可用性、およびベスト プラクティスについて説明します。
 
-* ウォーム データ ストレージ用に構成できる Azure Time Series Insights Gen2 環境。
-* コールド データ ストレージ用の Azure Storage アカウント。
+## <a name="provisioning"></a>プロビジョニング
 
-ウォーム ストア内のデータは、[Time Series Query API](./time-series-insights-update-tsq.md) および [Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) を介してのみ使用できます。 ウォーム ストアには、Azure Time Series Insights Gen2 環境の作成時に選択された[保持期間](./time-series-insights-update-plan.md#the-preview-environment)内の最新のデータが含まれます。
+Azure Time Series Insights Gen2 環境を作成するときには、次のオプションがあります。
 
-Azure Time Series Insights Gen2 を使用すると、コールド ストア データが [Parquet ファイル形式](#parquet-file-format-and-folder-structure)で Azure BLOB ストレージに保存されます。 Azure Time Series Insights Gen2 ではこのコールド ストア データが排他的に管理されますが、標準の Parquet ファイルとして直接読み取ることができます。
+* コールド データ ストレージ:
+  * 環境に合わせて選択したサブスクリプションとリージョンに新しい Azure Storage リソースを作成します。
+  * 既存の Azure Storage アカウントをアタッチします。 このオプションは、Azure Resource Manager [テンプレート](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)から展開する場合にのみ使用でき、Azure portal には表示されません。
+* ウォーム データ ストレージ:
+  * ウォーム ストアはオプションであり、プロビジョニング時またはプロビジョニング後に有効または無効にすることができます。 ウォーム ストアを後で有効にする場合、コールド ストアに既にデータがあるときは、後述の[この](concepts-storage.md#warm-store-behavior)セクションを参照して、想定されている動作を理解してください。 ウォーム ストアのデータ保持期間は 7 ～ 31 日に構成でき、必要に応じて調整することもできます。
+
+イベントが取り込まれると、ウォーム ストア (有効な場合) とコールド ストアの両方でインデックスが付けられます。
+
+[![ストレージの概要](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
 
 > [!WARNING]
 > コールド ストア データが存在する Azure Blob ストレージ アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
 
 ## <a name="data-availability"></a>データの可用性
 
-Azure Time Series Insights Gen2 では、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが付けられた後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれたされるデータの量は、この可用性に影響を与える可能性があります。
+Azure Time Series Insights Gen2 では、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが付けられた後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれるデータの量とパーティションごとのスループット レートは、可用性に影響を与える可能性があります。 最適なパフォーマンスを得るには、イベント ソースの[スループットの制限](./concepts-streaming-ingress-throughput-limits.md)と[ベスト プラクティス](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices)を確認してください。 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)を構成することもできます。
 
 > [!IMPORTANT]
 > データが利用可能になるまでに最大 60 秒の時間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="warm-store"></a>ウォーム ストア
+
+ウォーム ストア内のデータは、[Time Series Query API](./time-series-insights-update-tsq.md)、[Azure Time Series Insights TSI エクスプローラー](./time-series-insights-update-explorer.md)、または [Power BI コネクタ](./how-to-connect-power-bi.md)を介してのみ使用できます。 ウォーム ストア クエリは無料であり、クォータはありませんが、同時要求数 [30 の制限](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits)があります。
+
+### <a name="warm-store-behavior"></a>ウォーム ストアの動作
+
+* 有効にすると、イベントのタイムスタンプに関係なく、環境にストリーミングされるすべてのデータがウォーム ストアにルーティングされます。 ストリーミング インジェスト パイプラインは、ほぼリアルタイムのストリーミング用に構築されており、履歴イベントの取り込みは[サポートされていません](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)。
+* 保持期間は、イベントのタイムスタンプではなく、ウォーム ストアでイベントにインデックスが付けられた時点に基づいて計算されます。 これは、イベントのタイムスタンプが将来のものであっても、保持期間が経過した後はデータがウォーム ストアで使用できなくなることを意味します。
+  * 例: 10 日間の天気予報を含むイベントが、7 日間の保持期間で構成されたウォーム ストレージ コンテナーに取り込まれ、インデックスが付けられます。 7 日が経過すると、ウォーム ストアでは予報にアクセスできなくなりますが、コールド ストアからは照会できます。
+* コールド ストレージで最近のデータに既にインデックスが付けられている既存の環境でウォーム ストアを有効にすると、このデータはウォーム ストアにバックフィルされないことに注意してください。
+* ウォーム ストアを有効にしたばかりで、最近のデータをエクスプローラーで表示するときに問題が発生している場合は、次のようにウォーム ストア クエリを一時的にオフにすることができます。
+
+   [![ウォーム クエリを無効にする](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+
+## <a name="cold-store"></a>コールド ストア
 
 このセクションでは、Azure Time Series Insights Gen2 に関連する Azure Storage の詳細について説明します。
 
 Azure Blob Storage の詳細については、[Storage Blob の概要](../storage/blobs/storage-blobs-introduction.md)に関する記事をご覧ください。
 
-### <a name="your-storage-account"></a>ストレージ アカウント
-
-Azure Time Series Insights Gen2 の環境を作成すると、Azure Storage アカウントが長期的なコールド ストアとして作成されます。  
+### <a name="your-cold-storage-account"></a>コールド ストレージ アカウント
 
 Azure Time Series Insights Gen2 では、Azure Storage アカウント内の各イベントのコピーが最大 2 つ保持されます。 1 つのコピーには、イベントがインジェスト時間によって並べ替えられて格納され、常に時間順に並べられた一連のイベントにアクセスできるようになります。 時間の経過と共に、Azure Time Series Insights Gen2 では、高パフォーマンスのクエリ用に最適化するために、データの再パーティション分割コピーも作成されます。
 

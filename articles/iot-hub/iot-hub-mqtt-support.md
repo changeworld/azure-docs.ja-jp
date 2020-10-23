@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: c4b8cbf9473fd605fc4367e88a6892a15bd25b1b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421409"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150782"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -53,9 +53,9 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 | Language | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
-| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 既定で MQTT をサポートします | 呼び出しに `websockets=True` を追加してクライアントを作成します |
 
 次のフラグメントでは、Azure IoT Node.js SDK を使用しているときに MQTT over WebSocket プロトコルを指定する方法を示しています。
@@ -103,6 +103,38 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * Python SDK では AMQP は サポートされていません。
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>Azure IoT SDK を使用しない MQTT を使用した C の例
+
+この [IoT MQTT サンプル リポジトリ](https://github.com/Azure-Samples/IoTMQTTSample)では、Azure IoT C SDK を使用せずに、IoT ハブでテレメトリ メッセージを送信し、イベントを受信する方法を示す C/C++ のデモ プロジェクトをいくつか紹介します。 
+
+これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブに実装されている MQTT ブローカーにメッセージを送信します。
+
+このリポジトリには、次のものが含まれます。
+
+**Windows の場合:**
+
+* TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
+
+* SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
+
+* DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
+
+* PnPMQTTWin32: IoT プラグ アンド プレイのデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)に関するページをご覧ください
+
+**Linux の場合:**
+
+* MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
+
+* LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
+
+**mosquitto_pub の場合:**
+
+このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
+
+* Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
+
+* Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT プロトコルの直接使用 (デバイスとして)
 
 デバイスでデバイス SDK を使用できない場合でも、MQTT プロトコルをポート 8883 で使用して、デバイスをパブリックのデバイス エンドポイントに接続できます。 **CONNECT** パケットの場合、デバイスでは次の値を使用する必要があります。
@@ -147,38 +179,6 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
 デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Azure IoT C SDK を使用せずに MQTT を使用した C コードの例
-
-この [IoT MQTT サンプル リポジトリ](https://github.com/Azure-Samples/IoTMQTTSample)では、Azure IoT C SDK を使用せずに、IoT ハブでテレメトリ メッセージを送信し、イベントを受信する方法を示す C/C++ のデモ プロジェクトをいくつか紹介します。 
-
-これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブに実装されている MQTT ブローカーにメッセージを送信します。
-
-このリポジトリには、次のものが含まれます。
-
-**Windows の場合:**
-
-* TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
-
-* SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
-
-* DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
-
-* PnPMQTTWin32: IoT プラグ アンド プレイのプレビュー版のデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、「[IoT プラグ アンド プレイ プレビュー](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)」をご覧ください
-
-**Linux の場合:**
-
-* MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
-
-* LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
-
-**mosquitto_pub の場合:**
-
-このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
-
-* Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
-
-* Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>MQTT プロトコルの直接使用 (モジュールとして)
 
@@ -451,4 +451,4 @@ IoT Hub のデプロイの計画に関する詳細については、以下をご
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)

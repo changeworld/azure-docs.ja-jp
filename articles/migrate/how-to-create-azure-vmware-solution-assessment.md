@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576712"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315250"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "91576712"
 - Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 - 評価を作成するには、[VMware](how-to-set-up-appliance-vmware.md) 用の Azure Migrate アプライアンスを設定する必要があります。これは、オンプレミスのマシンを検出して Azure Migrate: Server Assessment にメタデータとパフォーマンスデータを送信します。Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
-- コンマ区切り値 (CSV) 形式で[サーバーのメタデータをインポート](tutorial-assess-import.md)することもできます。
+- コンマ区切り値 (CSV) 形式で[サーバーのメタデータをインポート](./tutorial-discover-import.md)することもできます。
 
 
 ## <a name="azure-vmware-solution-avs-assessment-overview"></a>Azure VMware Solution (AVS) の評価の概要

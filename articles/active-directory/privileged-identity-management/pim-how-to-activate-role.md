@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055454"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317539"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールをアクティブ化する
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 # <a name="new-version"></a>[新しいバージョン](#tab/new)
 
-## <a name="activate-a-role"></a>ロールのアクティブ化
+## <a name="activate-a-role-for-new-version"></a>新しいバージョンのロールをアクティブ化する
 
 Azure AD ロールを想定する必要がある場合は、Privileged Identity Management で **[自分のロール]** を開いてアクティブ化を要求できます。
 
@@ -80,7 +80,7 @@ Azure AD ロールを想定する必要がある場合は、Privileged Identity 
 
     ![アクティブ化要求は承認通知待ち中](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>要求の状態を表示する
+## <a name="view-the-status-of-your-requests-for-new-version"></a>新しいバージョンの要求の状態を表示する
 
 保留中のアクティブ化要求の状態を表示することができます。
 
@@ -92,7 +92,7 @@ Azure AD ロールを想定する必要がある場合は、Privileged Identity 
 
 1. 右へスクロールして **[Request Status]\(要求の状態\)** 列を表示します。
 
-## <a name="cancel-a-pending-request"></a>保留中の要求をキャンセルする
+## <a name="cancel-a-pending-request-for-new-version"></a>新しいバージョンの保留要求をキャンセルする
 
 承認が要求されるロールのアクティブ化を必要としない場合、保留中の要求をいつでもキャンセルできます。
 
@@ -106,7 +106,7 @@ Azure AD ロールを想定する必要がある場合は、Privileged Identity 
 
    ![[キャンセル] アクションが強調表示された個人の要求の一覧](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot-for-new-version"></a>新しいバージョンの問題を解決する
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 

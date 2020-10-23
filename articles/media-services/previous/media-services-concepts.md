@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258029"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333785"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 
@@ -103,12 +103,11 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート Smooth Streaming ファイルにエンコードし、少なくとも 1 つの標準またはプレミアム ストリーミング エンドポイントを開始済み状態にする必要があります。
 
-Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
+Media Services により次のオンデマンド エンコーダーがサポートされています。これについてはこの記事で説明します。
 
 * [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
-* [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-サポートさえるエンコーダーについては、「 [エンコーダー](media-services-encode-asset.md)」をご覧ください
+サポートされているエンコーダーの詳細については、[エンコーダー](media-services-encode-asset.md)に関するページを参照してください。
 
 ## <a name="live-streaming"></a>ライブ ストリーミング
 Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。

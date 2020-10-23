@@ -8,14 +8,14 @@ ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
-ms.date: 08/14/2020
-ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.reviewer: sashan, moslake
+ms.date: 09/30/2020
+ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462209"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614429"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,11 @@ Fsv2 シリーズは、General Purpose レベルでのみサポートされて�
 - M シリーズは、Gen5 で提供されるよりも多くのメモリと高いコンピューティング制限を要求するワークロードのためのメモリ最適化のハードウェア オプションです。
 - M シリーズでは、仮想コアあたり 29 GB と最大 128 個の仮想コアを提供し、Gen5 に比べて、メモリ制限が 8 倍の 4 TB 近くまで増加します。
 
-M シリーズは Business Critical レベルでのみサポートされており、ゾーン冗長はサポートされていません。  サブスクリプションの種類は、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーである必要があります。 M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series-1)に関するセクションを参照してください。
+M シリーズは Business Critical レベルでのみサポートされており、ゾーン冗長はサポートされていません。  M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series-1)に関するセクションを参照してください。
+
+#### <a name="azure-offer-types-supported-by-m-series"></a>M シリーズでサポートされている Azure オファーの種類
+
+M シリーズにアクセスするには、サブスクリプションの種類を、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーにする必要があります。  M シリーズでサポートされている Azure オファーの種類の一覧については、[使用制限のない現在のオファー](https://azure.microsoft.com/support/legal/offer-details)を参照してください。
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

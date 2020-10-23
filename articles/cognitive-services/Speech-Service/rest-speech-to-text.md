@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934584"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532519"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
 [Speech SDK](speech-sdk.md) の代替手段となる Speech Services では、REST API を使用して音声テキスト変換を実行できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。 REST API は非常に制限されており、[Speech SDK](speech-sdk.md) を使用ができない場合にのみ使用する必要があります。
 
-Speech to Text REST API を使用する前に、次のことを理解してください。
+音声テキスト変換 REST API を使用する前に、次のことを考慮してください。
 
 * REST API を使用して音声を直接送信する要求には、最大 60 秒の音声のみを含めることができます。
 * Speech to Text REST API から返すことができるのは最終的な結果だけです。 結果を部分的に得ることはできません。
 
 それを超える長さの音声をアプリケーションで送信する必要がある場合は、[Speech SDK](speech-sdk.md) か、[バッチ文字起こし](batch-transcription.md)など、ファイルベースの REST API の使用を検討してください。
+
+> [!TIP]
+> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure)を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 

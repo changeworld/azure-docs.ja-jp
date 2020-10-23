@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB でデータをグローバルに分散させる
-description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、マルチマスター、フェールオーバー、データ復旧について学習します。
+description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、マルチリージョン書き込み、フェールオーバー、データ復旧について学習します。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85114743"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570182"
 ---
-# <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
+# <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる
 
 現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 これらのアプリケーションは、通常は複数のデータ センターにデプロイされ、グローバル分散型と呼ばれています。 グローバル分散型アプリケーションには、アプリケーションでそのユーザーの近くにあるデータのコピーを操作できるようにするために、世界中のデータを透過的にレプリケートできる、グローバルに分散されたデータベースが必要です。 
 
@@ -27,7 +27,7 @@ Azure Cosmos DB に関してご利用のアカウントに関連付けられる�
 
 ## <a name="key-benefits-of-global-distribution"></a>グローバル分散の主な利点
 
-**グローバルなアクティブ/アクティブ アプリの構築。** そのまったく新しいマルチマスター レプリケーション プロトコルにより、すべてのリージョンで書き込みと読み取りの両方がサポートされます。 マルチマスター機能には次の利点もあります。
+**グローバルなアクティブ/アクティブ アプリの構築。** そのまったく新しいマルチリージョン書き込みレプリケーション プロトコルにより、すべてのリージョンで書き込みと読み取りの両方がサポートされます。 マルチリージョン書き込み機能には次の利点もあります。
 
 - 無制限でエラスティックな書き込みと読み取りのスケーラビリティ。 
 - 全世界での 99.999% の読み取りおよび書き込みの可用性。
@@ -50,7 +50,7 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 以下の記事でグローバル分散の詳細についてご覧ください。
 
 * [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
-* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+* [アプリケーションで複数リージョン書き込みを構成する方法](how-to-multi-master.md)
 * [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [SQL API アカウント用のカスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

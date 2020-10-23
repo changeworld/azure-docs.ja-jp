@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542123"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -79,7 +79,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK のラップとラップ解除操作のためのより高速なアクセスを保証するために、Key Vault と Azure Database for PostgreSQL 単一サーバーが同じリージョンに存在することを確認します。
 * Azure KeyVault を**プライベート エンドポイントと選択されたネットワーク**のみにロックダウンし、*信頼された Microsoft* サービスのみがリソースを保護できるようにします。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Bring Your Own Key の概要を示す図":::
 
 カスタマーマネージド キーを構成する場合の推奨事項は次のとおりです。
 
@@ -121,9 +121,9 @@ Key Vault に対する十分なアクセス権を持つユーザーが、次の�
 
 Key Vault に格納されている顧客のマネージド キーで Azure Database for PostgreSQL 単一サーバーが暗号化された後、新しく作成されたサーバーのコピーも暗号化されます。 この新しいコピーは、ローカルまたは geo リストア操作を使用するか、読み取りレプリカを使用して作成することができます。 しかし、暗号化のための新しい顧客のマネージド キーを反映するように、コピーを変更することはできます。 カスタマーマネージド キーが変更された場合、最新のキーを使用してサーバーの古いバックアップが開始されます。
 
-復元中または読み取りレプリカの作成中にカスタマーマネージド データの暗号化を設定する際の問題を回避するには、マスターおよび復元またはレプリカ サーバーでこれらの手順に従うことが重要です。
+復元中または読み取りレプリカの作成中にカスタマー マネージド データの暗号化を設定する際の問題を回避するには、プライマリ サーバー、および復元サーバーまたはレプリカ サーバーでこれらの手順に従うことが重要です。
 
-* マスター Azure Database for PostgreSQL 単一サーバーから、復元または読み取りレプリカの作成プロセスを開始します。
+* プライマリ Azure Database for PostgreSQL 単一サーバーから、復元または読み取りレプリカの作成プロセスを開始します。
 * 新しく作成されたサーバー (復元またはレプリカ) は、アクセス不可状態のままにしておきます。これは、その一意の ID に Key Vault へのアクセス許可がまだ付与されていないためです。
 * 復元またはレプリカ サーバーで、カスタマーマネージド キーをデータ暗号化設定で再確認します。 これにより、新しく作成されたサーバーに、Key Vault に格納されているキーに対するラップとそのラップ解除のアクセス許可が確実に与えられます。
 

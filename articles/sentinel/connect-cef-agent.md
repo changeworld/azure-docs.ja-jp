@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631496"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -71,74 +71,131 @@ syslog デーモンを選択して、適切な説明を表示してください�
 
 1. **Log Analytics エージェントをダウンロードしてインストールする**
 
-    - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。<br>
-        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。
 
-    - Log Analytics エージェントをインストールします。<br>
-        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
-
-1. **Syslog デーモンを構成する**
-
-    1. syslog 構成ファイル `/etc/rsyslog.conf` を使用して TCP 通信用のポート 514 を開きます。
-
-    1. 特殊な構成ファイル `security-config-omsagent.conf` を syslog デーモン ディレクトリ `/etc/rsyslog.d/` に挿入して、CEF メッセージを TCP ポート 25226 で Log Analytics エージェントに転送するようにデーモンを構成します。
-
-        `security-config-omsagent.conf` ファイルの内容は次のとおりです。
-
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
         ```
 
-1. **Syslog デーモンを再起動する**
-
-    `service rsyslog restart`
+    - Log Analytics エージェントをインストールします。
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
 
 1. **ポート 25226 でリッスンして、CEF メッセージを Azure Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
 
-    1. Log Analytics エージェントの GitHub リポジトリから構成をダウンロードします。<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+    - Log Analytics エージェントの GitHub リポジトリから構成をダウンロードします。
 
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
-    1. Log Analytics エージェントを再起動します。<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+1. **Syslog デーモンを構成する**
+
+    - syslog 構成ファイル `/etc/rsyslog.conf` を使用して TCP 通信用のポート 514 を開きます。
+
+    - 特殊な構成ファイル `security-config-omsagent.conf` を syslog デーモン ディレクトリ `/etc/rsyslog.d/` に挿入して、CEF メッセージを TCP ポート 25226 で Log Analytics エージェントに転送するようにデーモンを構成します。
+
+        `security-config-omsagent.conf` ファイルの内容は次のとおりです。
+
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
+        ```
+
+1. **Syslog デーモンと Log Analytics エージェントを再起動する**
+
+    - rsyslog デーモンを再起動します。
+    
+        ```bash
+        service rsyslog restart
+        ```
+
+    - Log Analytics エージェントを再起動します。
+
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. ***Computer* フィールドのマッピングが想定どおりになっていることを確認する**
+
+    - 次のコマンドを実行してエージェントを再起動することにより、syslog ソースの *Computer* フィールドが Log Analytics エージェントで正しくマップされるようにします。
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng デーモン](#tab/syslogng)
 
 1. **Log Analytics エージェントをダウンロードしてインストールする**
 
-    - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。
 
-    - Log Analytics エージェントをインストールします。<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Log Analytics エージェントをインストールします。
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **ポート 25226 でリッスンして、CEF メッセージを Azure Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
+
+    - Log Analytics エージェントの GitHub リポジトリから構成をダウンロードします。
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **Syslog デーモンを構成する**
 
-    1. syslog 構成ファイル `/etc/syslog-ng/syslog-ng.conf` を使用して TCP 通信用のポート 514 を開きます。
+    - syslog 構成ファイル `/etc/syslog-ng/syslog-ng.conf` を使用して TCP 通信用のポート 514 を開きます。
 
-    1. 特殊な構成ファイル `security-config-omsagent.conf` を syslog デーモン ディレクトリ `/etc/syslog-ng/conf.d/` に挿入して、CEF メッセージを TCP ポート 25226 で Log Analytics エージェントに転送するようにデーモンを構成します。
+    - 特殊な構成ファイル `security-config-omsagent.conf` を syslog デーモン ディレクトリ `/etc/syslog-ng/conf.d/` に挿入して、CEF メッセージを TCP ポート 25226 で Log Analytics エージェントに転送するようにデーモンを構成します。
 
         `security-config-omsagent.conf` ファイルの内容は次のとおりです。
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. **Syslog デーモンを再起動する**
+1. **Syslog デーモンと Log Analytics エージェントを再起動する**
 
-    `service syslog-ng restart`
+    - syslog-ng デーモンを再起動します。
+    
+        ```bash
+        service syslog-ng restart
+        ```
 
-1. **ポート 25226 でリッスンして、CEF メッセージを Azure Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
+    - Log Analytics エージェントを再起動します。
 
-    1. Log Analytics エージェントの GitHub リポジトリから構成をダウンロードします。<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. ***Computer* フィールドのマッピングが想定どおりになっていることを確認する**
+
+    - 次のコマンドを実行してエージェントを再起動することにより、syslog ソースの *Computer* フィールドが Log Analytics エージェントで正しくマップされるようにします。
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 
-    1. Log Analytics エージェントを再起動します。<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
-
----
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Log Analytics エージェントをデプロイして、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。

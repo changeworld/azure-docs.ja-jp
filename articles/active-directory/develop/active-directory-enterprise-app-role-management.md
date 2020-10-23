@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116089"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704550"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -159,7 +159,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     a. **[編集]** アイコンをクリックして、 **[ユーザー属性と要求]** ダイアログを開きます。
 
-      ![[属性の追加] ボタン](./media/active-directory-enterprise-app-role-management/editattribute.png)
+      ![[ユーザー属性とクレーム] ダイアログ ボックスを開くために使用される [編集] アイコンが強調表示されているスクリーンショット。](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
     b. **[ユーザー要求の管理]** ダイアログで、 **[新しい要求の追加]** をクリックして、SAML トークン属性を追加します。
 

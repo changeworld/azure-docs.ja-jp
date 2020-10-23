@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182170"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460579"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 
@@ -80,7 +80,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
-**A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、電子メール通知がサブスクリプションの管理者に送信されます (サブスクリプションごとに 1 メール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
+**A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、電子メール通知がサービスの管理者に送信されます (サブスクリプションごとに 1 メール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
 
 **Q:ポータル、PowerShell、または CLI に計画メンテナンスの情報が表示されません。何がおかしいのでしょうか?**
 

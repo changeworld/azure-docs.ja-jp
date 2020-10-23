@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 8c5c4a6e5d8b2997d80c7263ba17a705d3846ed8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987394"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397047"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -30,6 +30,8 @@ ms.locfileid: "87987394"
 * 既存の AKS クラスターはマネージド ID に移行できません。
 * クラスターの**アップグレード**操作中は、マネージド ID が一時的に使用できなくなります。
 * マネージド ID が有効になっているクラスターのテナントの移動/移行はサポートされていません。
+* クラスターで `aad-pod-identity` が有効になっている場合、Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この構成の場合、Metadata エンドポイントに要求が行われると、ポッドで `aad-pod-identity` が使用されていない場合でも NMI により要求がインターセプトされます。 CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを `aad-pod-identity` に通知するよう、AzurePodIdentityException CRD を構成できます。 _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドは、AzurePodIdentityException CRD を構成することで、`aad-pod-identity` で除外してください。 詳細については、「[特定のポッドまたはアプリケーションの aad-pod-identity を無効にする](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)」を参照してください。
+  例外を構成するには、[mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml) をインストールします。
 
 ## <a name="summary-of-managed-identities"></a>マネージド ID の概要
 
@@ -38,7 +40,7 @@ AKS では、組み込みのサービスとアドオンに対して複数のマ�
 | ID                       | 名前    | 使用事例 | 既定のアクセス許可 | 独自の ID を使用する
 |----------------------------|-----------|----------|
 | コントロール プレーン | 非表示 | イングレス ロード バランサーや AKS マネージド パブリック IP などのマネージド ネットワーク リソース用に AKS によって使用されます | ノード リソース グループの共同作成者ロール | プレビュー
-| kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | ノード リソース グループの閲覧者ロール | 現在、サポートされていません
+| kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | 現在、サポートされていません
 | アドオン | AzureNPM | ID は必要ありません | NA | いいえ
 | アドオン | AzureCNI ネットワーク監視 | ID は必要ありません | NA | いいえ
 | アドオン | azurepolicy (ゲートキーパー) | ID は必要ありません | NA | いいえ
@@ -49,7 +51,7 @@ AKS では、組み込みのサービスとアドオンに対して複数のマ�
 | アドオン | イングレス アプリケーション ゲートウェイ | 必要なネットワーク リソースを管理します| ノード リソース グループの共同作成者ロール | いいえ
 | アドオン | omsagent | AKS メトリックを Azure Monitor に送信するために使用されます | 監視メトリック パブリッシャー ロール | いいえ
 | アドオン | 仮想ノード (ACIConnector) | Azure Container Instances (ACI) のために必要なネットワーク リソースを管理します | ノード リソース グループの共同作成者ロール | いいえ
-
+| OSS プロジェクト | aad-pod-identity | Azure Active Directory (AAD) を使用し、アプリケーションがクラウド リソースに安全にアクセスできるようにします | NA | https://github.com/Azure/aad-pod-identity#role-assignment でアクセス許可を付与するための手順。
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>マネージド ID を指定して AKS クラスターを作成する
 
@@ -132,13 +134,13 @@ az extension list
 az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -208,5 +210,5 @@ az aks create \
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create&preserve-view=true
+[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list&preserve-view=true

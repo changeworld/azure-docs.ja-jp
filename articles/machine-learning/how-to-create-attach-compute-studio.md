@@ -11,19 +11,22 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898113"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708397"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
 この記事では、Azure Machine スタジオでコンピューティング先を作成および管理する方法について説明します。  コンピューティング先の作成と管理は、次を利用して行うこともできます。
 
-* [Azure Machine Learning SDK](how-to-create-attach-compute-sdk.md) 
-* Azure Machine Learning 用 [CLI 拡張機能](reference-azure-machine-learning-cli.md#resource-management)
+* Azure Machine Learning SDK または Azure Machine Learning 用の CLI 拡張機能
+  * [コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
+  * [コンピューティング クラスター](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes Service クラスター](how-to-create-attach-kubernetes.md)
+  * [その他のコンピューティング リソース](how-to-attach-compute-targets.md)
 * Azure Machine Learning 用 [VS Code 拡張機能](how-to-manage-resources-vscode.md#compute-clusters)
 
 
@@ -56,11 +59,11 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 1. コンピューティング先がない場合は、ページの中央にある **[作成]** を選択します。
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="コンピューティング先を作成する":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="コンピューティング先の一覧を表示する":::
 
 1. コンピューティング リソースの一覧が表示されたら、一覧の上にある **[+新規]** を選択します。
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="[新規] の選択":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="コンピューティング先の一覧を表示する":::
 
 
 1. コンピューティングの種類のフォームに入力します。
@@ -74,14 +77,14 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 1. 一覧からコンピューティング先を選択することによって、作成操作の状態を表示します。
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="一覧からコンピューティングの状態を表示する":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="コンピューティング先の一覧を表示する":::
 
 
 ### <a name="compute-instance"></a>コンピューティング インスタンス
 
 [上の手順](#portal-create)を使用して、コンピューティング インスタンスを作成します。  その後、次のようにフォームに入力します。
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新しいコンピューティング インスタンスの作成":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="コンピューティング先の一覧を表示する":::
 
 
 |フィールド  |説明  |
@@ -107,7 +110,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 |ノードの最大数 | プロビジョニングするノードの最大数。 コンピューティングは、ジョブが送信されるときにこのノードの最大数まで自動スケーリングされます。 |
 |詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](how-to-enable-virtual-network.md#compute-instance)に関するページを参照してください。   また、リソースへのアクセスを許可するには、[マネージド ID](#managed-identity) をアタッチします。     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> マネージド ID を設定する
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> マネージド ID を設定する
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 

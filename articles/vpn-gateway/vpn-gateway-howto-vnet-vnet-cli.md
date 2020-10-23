@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91442147"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -70,7 +70,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 * [同じサブスクリプション内にある VNet:](#samesub)この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
-  ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![同じサブスクリプション内に存在する VNet における、VNet 間の手順を示す図。](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [異なるサブスクリプション内にある VNet:](#difsub)この構成の手順では、TestVNet1 と TestVNet5 を使用します。
 

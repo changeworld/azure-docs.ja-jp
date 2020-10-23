@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: シングル サインオン (SSO) とは
       href: what-is-single-sign-on.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: クイックスタート
   expanded: true
   items:
@@ -99,7 +101,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: Security
+        - name: セキュリティ
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md

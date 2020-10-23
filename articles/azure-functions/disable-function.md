@@ -4,18 +4,18 @@ description: Azure Functions で関数を無効または有効にする方法を
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213150"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91661025"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
 この記事では、Azure Functions で関数を無効にする方法について説明します。 関数を*無効にする*には、その関数用に定義された自動トリガーをランタイムが無視するようにします。 これにより、関数アプリ全体を停止することなく、特定の関数の実行を防ぐことができます。
 
-関数を無効にするに方法としては、`AzureWebJobs.<FUNCTION_NAME>.Disabled` の形式のアプリの設定を使用するようお勧めします。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[管理]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
+関数を無効にするに方法として推奨されるのは、アプリの設定で形式 `AzureWebJobs.<FUNCTION_NAME>.Disabled` を `true` に設定することです。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[管理]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
 
 > [!NOTE]  
 > この記事で説明されている方法を使用して、HTTP によってトリガーされる機能を無効にしても、ご利用のローカル コンピューター上で実行すると、エンドポイントにアクセスできる可能性があります。  
@@ -40,7 +40,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>ポータルを使用する
 
-関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用することもできます。 これらのボタンを機能させるには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定を作成および削除します。
+関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用することもできます。 `AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定の値を変更することでこれらのボタンは機能します。 この関数固有設定は、初めて無効にしたときに作成されます。
 
 ![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
 

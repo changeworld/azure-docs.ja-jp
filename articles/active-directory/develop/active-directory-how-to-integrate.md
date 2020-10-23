@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォームと統合する方法
+title: Microsoft ID プラットフォームと統合する方法 | Azure
+titleSuffix: Microsoft identity platform
 description: アプリケーションと Microsoft ID プラットフォームを統合する利点について学習し、簡略化されたサインイン、ID 管理、多要素認証、アクセスの制御などの機能についての情報を確認します。
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706168"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631411"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Microsoft ID プラットフォームとの統合
 
@@ -47,7 +48,7 @@ ms.locfileid: "90706168"
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他へのアクセスの取得
 
-**Microsoft ID プラットフォームは、Microsoft 365 やその他の Microsoft ビジネス サービスの承認サーバーです。**  アプリケーションへのサインイン方法として Microsoft ID プラットフォームをサポートしている場合、または OAuth 2.0 を使用して現在のユーザー アカウントを Azure AD ユーザー アカウントにリンクすることをサポートしている場合は、ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他の情報への読み書きアクセスを要求できます。 ユーザーの予定表にシームレスにイベントを書き込んだり、OneDrive のファイルを読み書きしたりできます。 [Microsoft 365 API へのアクセス](/previous-versions/office/office-365-api/)の詳細を確認してください。
+**Microsoft ID プラットフォームは、Microsoft 365 やその他の Microsoft ビジネス サービスの承認サーバーです。**  アプリケーションへのサインイン方法として Microsoft ID プラットフォームをサポートしている場合、または OAuth 2.0 を使用して現在のユーザー アカウントを Azure AD ユーザー アカウントにリンクすることをサポートしている場合は、ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他の情報への読み書きアクセスを要求できます。 ユーザーの予定表にシームレスにイベントを書き込んだり、OneDrive のファイルを読み書きしたりできます。 [Microsoft 365 API](/graph/overview) の詳細を参照してください。
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Azure と Microsoft 365 マーケットプレースでアプリケーションを宣伝する
 

@@ -1,32 +1,51 @@
 ---
-title: コンテナーをインストールして実行する方法 - Computer Vision
+title: Computer Vision から Read OCR Docker コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでの Computer Vision のコンテナーのダウンロード、インストール、および実行方法。
+description: Computer Vision からの Read OCR Docker コンテナーを使用して、イメージおよびドキュメントからオンプレミスでテキストを抽出します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.custom: seodec18
-ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: seodec18, cog-serv-seo-aug-2020
+keywords: オンプレミス、OCR、Docker、コンテナー
+ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982079"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536377"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Read コンテナーのインストールと実行 (プレビュー)
+# <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-*Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳細については、[Read](concept-recognizing-text.md#read-api) API のドキュメントを参照してください。
+*Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](concept-recognizing-text.md#read-api)に関する記事を参照してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
+## <a name="read-3x-containers"></a>Read 3.x コンテナー
+プレビューでは、2 つのバージョンの 3.x コンテナーが利用できます。 どちらのバージョンも、前のコンテナーに優る精度と機能が追加されています。
+
+Read 3.0-preview コンテナーでは、次のものが提供されています。
+* 精度の向上のための新しいモデル。
+* 同じドキュメント内での複数言語のサポート
+* サポート対象:オランダ語、英語、フランス語、ドイツ語、イタリア語、ポルトガル語、およびスペイン語。
+* ドキュメントとイメージの両方に対する 1 つの操作。
+* 大きなドキュメントとイメージのサポート。
+* 0 から 1 までの信頼度スコア。
+* 印刷および手書きの両方のテキストを含むドキュメントのサポート
+
+Read 3.1-preview コンテナーには v3.0-preview と同じ利点に加えて、次の機能が追加されています。
+
+* 簡体字中国語と日本語のサポート。
+* 印刷および手書きのテキストに対する信頼スコアとラベル。 
+* ドキュメント内の選択したページからのみテキストを抽出する機能。
+
+使用するコンテナーのバージョンを検討するときは、v3.1-preview が初期の状態のプレビューであることに注意してください。 現時点で Read 2.0 コンテナーを使用している場合は、 [移行ガイド](read-container-migration-guide.md)に関する記事を参照して、新しいバージョンの変更点を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,9 +57,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
+
 ## <a name="request-approval-to-run-the-container"></a>コンテナーを実行するための承認を要求する
 
-コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
+コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/csgate)に記入して送信します。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -71,6 +92,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
+| Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
@@ -88,6 +110,12 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
+```
+
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 ```
 
 ---
@@ -142,6 +170,23 @@ ApiKey={API_KEY}
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+このコマンドは、次の操作を行います。
+
+* コンテナー イメージから読み取りコンテナーを実行します。
+* 8 つの CPU コアと 16 ギガバイト (GB) のメモリを割り当てます。
+* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
+* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
 ---
 
 
@@ -172,11 +217,15 @@ ApiKey={API_KEY}
 
 # <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
-コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` で確認できます。
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` で確認できます。
 
 # <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` で確認できます。
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` で確認できます。
+
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
+
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` で確認できます。
 
 ---
 
@@ -330,6 +379,67 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 }
 ```
 
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
+
+Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v2.0/read/core/asyncBatchAnalyze` 操作と `GET /vision/v2.0/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
+
+Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
+
+![タブとスペース](media/tabs-vs-spaces.png)
+
+非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
+
+```http
+ content-length: 0
+ date: Fri, 13 Sep 2019 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+`operation-location` は完全修飾 URL であり、HTTP GET を介してアクセスされます。 次に示すのは、前の画像から `operation-location` URL を実行すると返される JSON 応答です。
+
+```json
+{
+  "status": "Succeeded",
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 2.42,
+      "width": 502,
+      "height": 252,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
+          "text": "Tabs VS",
+          "words": [
+            {
+              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
+              "text": "Tabs",
+              "confidence": "Low"
+            },
+            {
+              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
+              "text": "VS"
+            }
+          ]
+        },
+        {
+          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
+          "text": "Spaces",
+          "words": [
+            {
+              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
+              "text": "Spaces"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 ---
 
 > [!IMPORTANT]
@@ -345,7 +455,11 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 # <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-`POST /vision/v3.0/read/SyncAnalyze`
+`POST /vision/v3.0/read/syncAnalyze`
+
+# <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
+
+`POST /vision/v2.0/read/core/Analyze`
 
 ---
 

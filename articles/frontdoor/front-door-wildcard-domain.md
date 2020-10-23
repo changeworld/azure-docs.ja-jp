@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398751"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570331"
 ---
 # <a name="wildcard-domains"></a>ワイルドカード ドメイン
 
-頂点ドメインとサブドメイン以外に、Azure Front Door プロファイルのフロントエンド ホストやカスタム ドメインの一覧に、ワイルドカード ドメイン名をマップすることができます。 Azure Front Door の構成でワイルドカード ドメインを使用すると、API、アプリケーション、または Web サイト用の複数のサブドメインに対するトラフィック ルーティングの動作を、同じルーティング規則によって簡素化することができます。 各サブドメインを個別に追加または指定するように構成を変更する必要はありません。 たとえば、同じルーティング規則を使用し、ワイルドカード ドメイン `*.contoso.com` を追加することで、`customer1.contoso.com`、`customer2.contoso.com`、および `customerN.contoso.com` のルーティングを定義することができます。
+頂点ドメインとサブドメイン以外に、Azure Front Door プロファイルのフロントエンド ホストやカスタム ドメインに、ワイルドカード ドメインをマップすることもできます。 Azure Front Door の構成でワイルドカード ドメインを使用すると、API、アプリケーション、または Web サイト用の複数のサブドメインに対するトラフィック ルーティングの動作を、同じルーティング規則によって簡素化することができます。 各サブドメインを個別に追加または指定するように構成を変更する必要はありません。 たとえば、同じルーティング規則を使用し、ワイルドカード ドメイン `*.contoso.com` を追加することで、`customer1.contoso.com`、`customer2.contoso.com`、および `customerN.contoso.com` のルーティングを定義することができます。
 
 ワイルドカード ドメインがサポートされたことで解決される主なシナリオとしては、次のようなものがあります。
 
@@ -47,7 +47,7 @@ ms.locfileid: "89398751"
 - ワイルドカード ドメインが Azure Front Door プロファイルに追加された場合:
   - ワイルドカード ドメインを、その他の Azure Front Door プロファイルに追加することはできません。
   - ワイルドカード ドメインの第 1 レベルのサブドメインは、別の Azure Front Door プロファイル、または Azure Content Delivery Network プロファイルに追加することはできません。
-- ワイルドカード ドメインのサブドメインが Azure Front Door プロファイルまたは Azure Content Delivery Network プロファイルに追加された場合、そのワイルドカード ドメインを他の Azure Front Door プロファイルに追加することはできません。
+- ワイルドカード ドメインのサブドメインが Azure Front Door プロファイルまたは Azure Content Delivery Network プロファイルに既に追加されている場合、そのワイルドカード ドメインを他の Azure Front Door プロファイルに使用することはできません。
 - 2 つのプロファイル (Azure Front Door または Azure Content Delivery Network) にルート ドメインのサブドメインが複数ある場合、ワイルドカード ドメインはいずれのプロファイルにも追加できません。
 
 ## <a name="certificate-binding"></a>証明書バインド
@@ -72,7 +72,7 @@ WAF ポリシーは、他のドメインと同様に、ワイルドカード ド
 ルーティング規則を構成する際には、フロントエンド ホストとしてワイルドカード ドメインを選択できます。 また、ワイルドカード ドメインとサブドメインに対し、それぞれ異なるルート動作を適用することもできます。 「[Azure Front Door が要求をルーティング規則と照合する方法](front-door-route-matching.md)」で説明されているように、ドメインに対してどのルーティング規則が最も適合するかは、実行時に選択されます。
 
 > [!IMPORTANT]
-> ルーティング規則全体でパス パターンが一致している必要があります。一致しない場合、クライアントにエラーが表示されます。 たとえば、ルート 1 (バックエンド プール A にマッピング済み`*.foo.com/*`) とルート 2 (バックエンド プール B にマッピング済み`bar.foo.com/somePath/*`) などの 2 つのルーティング規則があるとします。 次に、`bar.foo.com/anotherPath/*` の要求が到着します。 Azure Front Door は、より具体的なドメイン一致に基づいてルート 2 を選択しますが、ルート全体で一致するパス パターンはみつかりません。
+> ルーティング規則全体でパス パターンが一致している必要があります。一致しない場合、クライアントにエラーが表示されます。 たとえば、ルート 1 (バックエンド プール A にマッピング済み`*.foo.com/*`) とルート 2 (バックエンド プール B にマッピング済み`/bar.foo.com/somePath/*`) などの 2 つのルーティング規則があるとします。 次に、`bar.foo.com/anotherPath/*` の要求が到着します。 Azure Front Door は、より具体的なドメイン一致に基づいてルート 2 を選択しますが、ルート全体で一致するパス パターンはみつかりません。
 
 ## <a name="next-steps"></a>次のステップ
 

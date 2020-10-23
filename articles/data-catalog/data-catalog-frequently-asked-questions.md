@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409021"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151955"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -55,7 +55,7 @@ Standard Edition の Data Catalog は、最大 100,000 の登録済みのデー�
 
 ## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>新しいカタログを作成しようとすると、エラー "*カタログは既に存在します*" が表示されるのはなぜですか?
 
-Power BI Pro ライセンス付きの Office 365 E5 を購入すると、Microsoft によってサブスクリプションのリージョンに既定のカタログが自動的に作成されます。 このカタログは、無料の SKU を使用します。 Office 365/Power BI ユーザー ライセンスは、Office 365 管理ページで管理されています。 
+Power BI Pro ライセンス付きの Office 365 E5 を購入すると、Microsoft によってサブスクリプションのリージョンに既定のカタログが自動的に作成されます。 このカタログは、無料の SKU を使用します。 Office 365 と Power BI のユーザー ライセンスは管理ページで管理されています。 
 
 ただし、この種類のデータ カタログは**管理者オプション**を備えていないため、 **Azure portal** に表示されません。 この種類のデータ カタログは削除できません。 同様に、データ カタログの名前変更も、別のリージョンへの移動もできません。 
 
@@ -87,7 +87,7 @@ Data Catalog でデータを登録するには、次の手順を実行します�
 >
 
 > [!NOTE]
-> ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Data Catalog データ ソース登録ツールはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない "*オンプレミス*" SQL Server リレーショナル データベースに対しては、Data Catalog データ ソース登録ツールはオブジェクトと列の **ms_description** 拡張プロパティから値を抽出します。 このプロパティは、SQL Azure ではサポートされていません。 詳細については、「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
+> ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Data Catalog データ ソース登録ツールはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない "*オンプレミス*" SQL Server リレーショナル データベースに対しては、Data Catalog データ ソース登録ツールはオブジェクトと列の **ms_description** 拡張プロパティから値を抽出します。 このプロパティは、SQL Azure ではサポートされていません。 詳細については、「[データベース オブジェクトでの拡張プロパティの使用](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))」を参照してください。
 >
 >
 
@@ -122,7 +122,7 @@ Data Catalog は、クラウドとオンプレミスの両方のデータ ソー
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>登録するデータ ソースから抽出するメタデータを追加したり、強化したりできますか?
 Data Catalog の機能の拡張に積極的に取り組んでいるところです。 登録時にデータ ソースからさらにメタデータを抽出する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) で、それを提案して (または既に提案されている場合は、賛成票を投じて) ください。 
 
-データ ソース登録ツールによってこのメタデータが抽出されないデータ ソースの列/スキーマ メタデータ、プレビュー、またはデータ プロファイルを含めたい場合は、Data Catalog API を使ってこのメタデータを追加できます。 詳しくは、[Azure Data Catalog の REST API](https://docs.microsoft.com/rest/api/datacatalog/) に関するページをご覧ください。
+データ ソース登録ツールによってこのメタデータが抽出されないデータ ソースの列/スキーマ メタデータ、プレビュー、またはデータ プロファイルを含めたい場合は、Data Catalog API を使ってこのメタデータを追加できます。 詳しくは、[Azure Data Catalog の REST API](/rest/api/datacatalog/) に関するページをご覧ください。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>特定のユーザーだけが検出できるように、登録されているデータ資産の可視性を制限するにはどうすればいいですか?
 Data Catalog で、データ資産を選択し、 **[所有権の取得]** ボタンをクリックします。 Data Catalog のデータ資産の所有者は、可視性設定を変更して、すべてのユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。 詳細については、「[Azure Data Catalog でデータ資産を管理する](data-catalog-how-to-manage.md)」をご覧ください。

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fee95a435b477639fe2b98cf2c9cbf500df5941
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369010"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310019"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -95,11 +95,11 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
    > [!NOTE]
    > アクセスする必要がある IP アドレスの数をシナリオで制限する必要がある場合は、1 つの ISE に対してこの方法を使用できます。 ファイアウォールまたは仮想ネットワーク アプライアンスの追加コストが、シナリオにとって妥当かどうかを検討してください。 [Azure Firewall の価格](https://azure.microsoft.com/pricing/details/azure-firewall/)の詳細を確認してください。
 
-* 新しい Azure 仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md#network-security-groups) を設定する必要はありません。
+* 新しい Azure 仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) を設定する必要はありません。
 
-* 既存の仮想ネットワークの場合は、*必要に応じて*[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md#network-security-groups) を設定して、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)することができます。 このルートを使用する場合、または既に NSG を使用している場合は、NSG の[この表に記載されているポート](#network-ports-for-ise)を開いてください。
+* 既存の仮想ネットワークの場合は、*必要に応じて*[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) を設定して、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)することができます。 このルートを使用する場合、または既に NSG を使用している場合は、NSG の[この表に記載されているポート](#network-ports-for-ise)を開いてください。
 
-  [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を設定する場合は、**TCP** プロトコルと **UDP** プロトコルの*両方*を使用するか、代わりに **[任意]** を選択する必要があります。そうしないと、プロトコルごとに個別のルールを作成する必要があります。 NSG セキュリティ規則では、これらのポートへのアクセスが必要な IP アドレスに対して開く必要があるポートが記述されています。 すべてのファイアウォール、ルーター、またはこれらのエンドポイント間に存在するその他の項目で、これらのポートがこれらの IP アドレスにアクセスできる状態になっていることも確認してください。
+  [NSG セキュリティ規則](../virtual-network/network-security-groups-overview.md#security-rules)を設定する場合は、**TCP** プロトコルと **UDP** プロトコルの*両方*を使用するか、代わりに **[任意]** を選択する必要があります。そうしないと、プロトコルごとに個別のルールを作成する必要があります。 NSG セキュリティ規則では、これらのポートへのアクセスが必要な IP アドレスに対して開く必要があるポートが記述されています。 すべてのファイアウォール、ルーター、またはこれらのエンドポイント間に存在するその他の項目で、これらのポートがこれらの IP アドレスにアクセスできる状態になっていることも確認してください。
 
 * ファイアウォールを経由してインターネットへのトラフィックをリダイレクトする強制トンネリングを設定した場合は、[強制トンネリングの追加要件](#forced-tunneling)を確認してください。
 

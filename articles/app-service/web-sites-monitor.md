@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959793"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148121"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
+[Azure App Service](./overview.md) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
 
 Azure portal では、アプリや App Service プランの "*クォータ*" と "*メトリック*" を確認したり、"*アラート*" および "*自動スケーリング*" ルール ベースのメトリックを設定したりすることができます。
 
@@ -58,7 +58,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 ## <a name="understand-metrics"></a>メトリックを理解する
 
 > [!NOTE]
-> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューへのアクセスが付与されていない場合、データは表示されません。
+> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。アプリが App Service Environment でホストされていない場合、データは表示されません。
 > 
 
 > [!IMPORTANT]

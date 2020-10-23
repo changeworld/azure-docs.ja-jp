@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629067"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398325"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする
 
@@ -75,7 +75,7 @@ ms.locfileid: "82629067"
     
 7. タンブリング ウィンドウ トリガーを追加してこのパイプラインを自動化すると、パイプラインで常に LastModifiedDate に基づいて新規および変更済みのファイルのみを定期的にコピーできます。  **[トリガーの追加]** 、 **[新規/編集]** の順に選択します。
 
-    ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![[トリガーの追加] を選択したときに表示される [新規/編集] メニュー オプションを強調表示したスクリーンショット。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
 8. **[Add Triggers]\(トリガーの追加\)** ウィンドウで **[+ 新規]** を選択します。
 
@@ -103,7 +103,7 @@ ms.locfileid: "82629067"
 
 14. 結果を確認します。 パイプラインが 15 分ごとに自動的にトリガーされ、パイプラインが実行されるたびにソース ストアの新規または変更済みのファイルのみがコピー先ストアにコピーされます。
 
-    ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![パイプラインがトリガーされたときに返される結果を示すスクリーンショット。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>次のステップ
 

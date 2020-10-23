@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018367"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445055"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ ms.locfileid: "89018367"
 
 ## <a name="configuring-secondary-database"></a>セカンダリ データベースの構成
 
-プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じコンピューティング サイズ (DTU または仮想コア) で作成することを強くお勧めします。 プライマリ データベースで書き込みワークロードの負荷が高くなっている場合、コンピューティング サイズがより小さなセカンダリはそのワークロードを維持できない可能性があります。 これにより、セカンダリで再実行ラグが発生し、セカンダリが利用不能となる可能性があります。 このようなリスクを軽減するために、アクティブ geo レプリケーションは、必要に応じてプライマリのトランザクション ログ速度をスロットルしてセカンダリが追い付けるようにします。
+プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じバックアップ ストレージの冗長性とコンピューティング サイズ (DTU または仮想コア) で作成することも強くお勧めします。 プライマリ データベースで書き込みワークロードの負荷が高くなっている場合、コンピューティング サイズがより小さなセカンダリはそのワークロードを維持できない可能性があります。 これにより、セカンダリで再実行ラグが発生し、セカンダリが利用不能となる可能性があります。 このようなリスクを軽減するために、アクティブ geo レプリケーションは、必要に応じてプライマリのトランザクション ログ速度をスロットルしてセカンダリが追い付けるようにします。
 
 バランスがとれていないセカンダリ構成の他の影響として、フェールオーバーの後、新しいプライマリのコンピューティング容量の不足のためにアプリケーションのパフォーマンスが低下する可能性があることが挙げられます。 その場合は、データベース サービスの目標を必要なレベルに拡張する必要があります。これには膨大な時間とコンピューティング リソースがかかる可能性があり、スケールアップ プロセスの最後には[高可用性](high-availability-sla.md)フェールオーバーが必要となります。
 
@@ -126,8 +126,13 @@ ms.locfileid: "89018367"
 
 セカンダリのコンピューティング サイズが低いため、プライマリで行われたトランザクション ログ速度のスロットリングは、HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO の待機の種類を使用して報告され、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) データベース ビューに表示されます。
 
+既定では、セカンダリにおけるバックアップ ストレージの冗長性は、プライマリ データベースと同じです。 別のバックアップ ストレージの冗長性を使用してセカンダリを構成することもできます。 バックアップは、常にプライマリ データベースで実行されます。 セカンダリが異なるバックアップ ストレージの冗長性で構成されている場合、セカンダリがプライマリに昇格されたときのフェールオーバー後に、新しいプライマリ (前のセカンダリ) で選択されたストレージの冗長性に従って、バックアップが課金されます。 
+
 > [!NOTE]
 > プライマリのトランザクション ログ速度は、セカンダリのコンピューティング サイズが小さいことに関連しない理由によりスロットルされる可能性があります。 この種類のスロットリングは、セカンダリのコンピューティング サイズがプライマリよりも同じかそれ以上である場合にも発生する可能性があります。 さまざまな種類のログ速度スロットリングの待機の種類などの詳細については、「[トランザクション ログ速度ガバナンス](resource-limits-logical-server.md#transaction-log-rate-governance)」を参照してください。
+
+> [!NOTE]
+> Azure SQL Database の構成可能なバックアップ ストレージの冗長性は、現在、東南アジア Azure リージョンでのみ、パブリック プレビューで利用できます。 プレビューでは、ソース データベースがローカル冗長またはゾーン冗長のバックアップの冗長性を使用して作成されている場合、別の Azure リージョンにセカンダリ データベースを作成することはできません。 
 
 SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](purchasing-models.md)に関するページをご覧ください。
 
@@ -248,9 +253,9 @@ RPO に関する遅延を監視するには、プライマリ データベース
 
 | コマンド | 説明 |
 | --- | --- |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |REMOVE SECONDARY ON SERVER を使用して、SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |REMOVE SECONDARY ON SERVER を使用して、SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |サーバー上の各データベースの、既存のレプリケーション リンクの情報をすべて返します。 |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |最新のレプリケーション時刻、最後のレプリケーションの遅延、および指定されたデータベースのレプリケーション リンクに関する他の情報を取得します。 |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |レプリケーション リンクの状態を含むすべてのデータベース操作の状態が表示されます。 |

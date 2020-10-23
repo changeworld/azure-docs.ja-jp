@@ -10,33 +10,35 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526342"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91249367"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hyperspace - Apache Spark 用のインデックス作成サブシステム
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace:Apache Spark 用のインデックス作成サブシステム
 
-Hyperspace では、Apache Spark ユーザーがデータセット (CSV、JSON、Parquet など) にインデックスを作成し、クエリやワークロードの高速化を期待してそれらを活用できるようになりました。
+Hyperspace では、Apache Spark ユーザーがデータセット (CSV、JSON、Parquet など) にインデックスを作成し、クエリやワークロードの高速化を期待してそれらを使用できるようになりました。
 
-この記事では、Hyperspace のシンプルさに焦点を当てて、その基本操作を明確に示し、ほぼ誰でもそれを使用できる方法について説明します。
+この記事では、Hyperspace の基本操作を明確に示し、そのシンプルさに焦点を当て、ほぼ誰でもそれを使用できる方法について説明します。
 
-免責事項:Hyperspace は、次の 2 つの状況下でワークロード/クエリを高速化するのに役立ちます。
+免責事項:Hyperspace は、次の 2 つの状況下でワークロードまたはクエリを高速化するのに役立ちます。
 
-* クエリに、選択度の高い述語に対するフィルター (100 万の候補行から一致する行を 100 行選択するなど) が含まれている
-* クエリに、負荷の大きいシャッフルを必要とする結合 (100 GB のデータセットを 10 GB のデータセットに結合するなど) が含まれている
+* クエリに、選択度の高い述語に対するフィルターが含まれている。 100 万の候補行から一致する行を 100 行選択する場合などです。
+* クエリに、負荷の大きいシャッフルを必要とする結合が含まれている。 100 GB のデータセットを 10 GB のデータセットに結合する場合などです。
 
 ケースバイケースで、ワークロードを注意深く監視して、インデックスの作成が役に立っているかどうかを確認することをお勧めします。
 
-このドキュメントは ノートブック形式 ([Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 用、[C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 用、[Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 用) でも使用できます。
+このドキュメントは ノートブック形式 ([Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 用、[C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 用、[Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 用) でも使用できます
 
 ## <a name="setup"></a>セットアップ
 
-まず、新しい Spark セッションを開始します。 このドキュメントは Hyperspace で提供できる機能を説明するだけのチュートリアルであるため、小さなデータセット上で Hyperspace が実行している処理を明確に説明できるように構成の変更を行います。 既定では、結合の一方の側のデータ サイズが小さい場合 (このチュートリアルで使用するサンプル データの場合)、Spark ではブロードキャスト結合を使用して結合のクエリを最適化します。 そのため、後で結合のクエリを実行するときに、Spark で並べ替えマージ結合が使用されるように、ブロードキャスト結合を無効にします。 これは主に、結合のクエリを高速化するために Hyperspace のインデックスを規模に応じて使用する方法を示すためのものです。
+まず、新しい Spark セッションを開始します。 このドキュメントは Hyperspace で提供できる機能を説明するだけのチュートリアルであるため、小さなデータセット上で Hyperspace が実行している処理を明確に説明できるように構成の変更を行います。 
 
-以下のセルを実行した結果の出力には、正常に作成された Spark セッションへの参照が表示され、変更後の結合の構成の値として "-1" が出力されます。これは、ブロードキャスト結合が正常に無効になったことを示しています。
+既定では、結合の一方の側のデータ サイズが小さい場合 (このチュートリアルで使用するサンプル データの場合)、Spark ではブロードキャスト結合を使用して結合のクエリを最適化します。 そのため、後で結合のクエリを実行するときに、Spark で並べ替えマージ結合が使用されるように、ブロードキャスト結合を無効にします。 これは主に、結合のクエリを高速化するために Hyperspace のインデックスを規模に応じて使用する方法を示すためのものです。
+
+次のセルを実行した結果の出力には、正常に作成された Spark セッションへの参照が表示され、変更後の結合の構成の値として "-1" が出力されます。これは、ブロードキャスト結合が正常に無効になったことを示しています。
 
 :::zone pivot = "programming-language-scala"
 
@@ -44,7 +46,7 @@ Hyperspace では、Apache Spark ユーザーがデータセット (CSV、JSON�
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -90,11 +92,11 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 
 ## <a name="data-preparation"></a>データの準備
 
-環境を準備するには、サンプル データ レコードを作成して、Parquet データ ファイルとして保存します。 実例には Parquet が使用されていますが、CSV などの他の形式を使用することもできます。 以降のセルでは、このサンプル データセットに Hyperspace のインデックスをいくつか作成する方法と、クエリの実行時に Spark でそれらを使用できるようにする方法を確認できます。
+環境を準備するには、サンプル データ レコードを作成して、Parquet データ ファイルとして保存します。 実例には Parquet が使用されていますが、CSV などの他の形式を使用することもできます。 以降のセルでは、このサンプル データセットに Hyperspace のインデックスをいくつか作成し、クエリの実行時に Spark でそれらを使用できるようにする方法を確認できます。
 
 このサンプル レコードは、部門 (department) と従業員 (employee) という 2 つのデータセットに対応しています。 生成されたデータ ファイルを保存するには、ストレージ アカウントで目的の場所を指すように "empLocation" と "deptLocation" の各パスを構成する必要があります。
 
-以下のセルを実行した結果の出力には、データセットの内容が 3 行 1 組のリストとして表示され、その後に各データセットの内容を適切な場所に保存するために作成されたデータフレームへの参照が表示されます。
+次のセルを実行した結果の出力には、データセットの内容が 3 行 1 組のリストとして表示され、その後に各データセットの内容を適切な場所に保存するために作成されたデータフレームへの参照が表示されます。
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,9 +242,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-上記で作成した Parquet ファイルの内容を確認して、予想されるレコードが正しい形式で含まれているかどうか確かめましょう。 後で、これらのデータ ファイルを使用して Hyperspace のインデックスを作成し、サンプル クエリを実行します。
+作成した Parquet ファイルの内容を確認して、予想されるレコードが正しい形式で含まれているかどうか確かめましょう。 後で、これらのデータ ファイルを使用して Hyperspace のインデックスを作成し、サンプル クエリを実行します。
 
-以下のセルを実行すると、出力に従業員および部門データフレームの行が表形式で表示されます。 14 人の従業員と 4 つの部門があり、それぞれが前のセルで作成した 3 行 1 組 のいずれかと一致しているはずです。
+次のセルを実行すると、従業員および部門データフレームの行を表形式で表示する出力が生成されます。 14 人の従業員と 4 つの部門があり、それぞれが前のセルで作成した 3 行 1 組 のいずれかと一致しているはずです。
 
 :::zone pivot = "programming-language-scala"
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -331,16 +333,20 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 Hyperspace では、永続的なデータ ファイルからスキャンされたレコードにインデックスを作成できます。 正常に作成されると、インデックスに対応するエントリが Hyperspace のメタデータに追加されます。 このメタデータは、後でクエリ処理中に適切なインデックスを検索して使用するために、(拡張機能を使用して) Apache Spark のオプティマイザーによって使用されます。
 
-インデックスが作成されると、いくつかのアクションを実行できます。
+インデックスが作成された後、いくつかのアクションを実行できます。
+
+* **基になるデータが変更された場合に最新の情報に更新する。** 既存のインデックスを最新の情報に更新して変更をキャプチャできます。
+* **インデックスが必要ない場合に削除する。** 論理的な削除を実行できます。つまり、インデックスは物理的には削除されませんが、"削除済み" とマークされるので、ワークロードで使用されなくなります。
+* **インデックスが不要になった場合にバキュームする。** インデックスをバキュームすることができます。これにより、インデックスの内容と関連するメタデータが Hyperspace のメタデータから物理的に完全に削除されます。
 
 最新の情報に更新。基になるデータが変更された場合に、それをキャプチャできるように既存のインデックスを最新の情報に更新します。
 削除。インデックスが必要ない場合に、論理的な削除を実行できます。つまり、インデックスは物理的には削除されませんが、"削除済み" とマークされるので、ワークロードで使用されなくなります。
-バキューム。インデックスが不要になった場合に、バキュームすることができます。これにより、インデックスの内容と関連するメタデータが Hyperspace のメタデータから物理的に完全に削除されます。
-以下のセクションでは、このようなインデックスの管理操作を Hyperspace で行う方法について説明します。
+
+以降のセクションでは、このようなインデックスの管理操作を Hyperspace で行う方法について説明します。
 
 最初に、必要なライブラリをインポートし、Hyperspace のインスタンスを作成する必要があります。 後で、このインスタンスを使用してさまざまな Hyperspace API を呼び出し、サンプル データにインデックスを作成したり、それらのインデックスを変更したりします。
 
-以下のセルを実行した結果の出力には、作成された Hyperspace インスタンスへの参照が表示されます。
+次のセルを実行した結果の出力には、作成された Hyperspace インスタンスへの参照が表示されます。
 
 :::zone pivot = "programming-language-scala"
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 Hyperspace のインデックスを作成するには、次の 2 つの情報を指定する必要があります。
 
-インデックスが作成されるデータを参照する Spark データフレーム。
-インデックス構成オブジェクト: IndexConfig。インデックスのインデックス名、インデックス付き列、および付加列を指定するものです。
-まず、サンプル データに Hyperspace のインデックスを 3 つ ("deptIndex1" および "deptIndex2" という名前の部門データセットに 2 つのインデックス、"empIndex" という名前の従業員データセットに 1 つのインデックス) 作成します。 インデックスごとに、その名前と、インデックス付き列と付加列の列リストをキャプチャするための対応する IndexConfig が必要です。 以下のセルを実行すると、これらの IndexConfig が作成され、出力にそれらが一覧表示されます。
+* インデックスが作成されるデータを参照する Spark データフレーム。
+* インデックス構成オブジェクト、IndexConfig。インデックスのインデックス名、インデックス付き列、および付加列を指定するものです。
+
+まず、サンプル データに Hyperspace のインデックスを 3 つ ("deptIndex1" および "deptIndex2" という名前の部門データセットに 2 つのインデックス、"empIndex" という名前の従業員データセットに 1 つのインデックス) 作成します。 インデックスごとに、その名前と、インデックス付き列と付加列の列リストをキャプチャするための対応する IndexConfig が必要です。 次のセルを実行すると、これらの IndexConfig が作成され、出力にそれらが一覧表示されます。
 
 > [!Note]
 > インデックス付き列は、フィルターまたは結合条件に表示される列です。 付加列は、ご自分の選択/プロジェクトに表示される列です。
@@ -454,8 +461,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
-次に、インデックス構成を使用して 3 つのインデックスを作成します。 このために、Hyperspace のインスタンスに対して "createIndex" コマンドを呼び出します。 このコマンドでは、インデックス構成と、インデックスが作成される行を含むデータフレームが必要です。 以下のセルを実行すると、3 つのインデックスが作成されます。
+次に、インデックス構成を使用して 3 つのインデックスを作成します。 このために、Hyperspace のインスタンスに対して "createIndex" コマンドを呼び出します。 このコマンドでは、インデックス構成と、インデックスが作成される行を含むデータフレームが必要です。 次のセルを実行すると、3 つのインデックスが作成されます。
 
 :::zone pivot = "programming-language-scala"
 
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>インデックスを一覧表示する
 
-以下のコードは、Hyperspace のインスタンスで使用可能なすべてのインデックスを一覧表示する方法を示しています。 ここでは、既存のインデックスに関する情報を Spark データフレームとして返す "indexes" API を使用するため、追加の操作を実行できます。 たとえば、このデータフレームに対して有効な操作を呼び出して、その内容を確認したり、それをさらに分析したり (特定のインデックスをフィルター処理したり、何らかの望ましいプロパティに従ってグループ化したりするなど) できます。
+次のコードは、Hyperspace のインスタンスで使用可能なすべてのインデックスを一覧表示する方法を示しています。 ここでは、既存のインデックスに関する情報を Spark データフレームとして返す "indexes" API を使用するため、追加の操作を実行できます。 
 
-以下のセルでは、データフレームの "show" アクションを使用してすべての行を出力し、インデックスの詳細を表形式で表示します。 インデックスごとに、Hyperspace によってメタデータに格納された、それに関するすべての情報を確認できます。 次のことがすぐにおわかりいただけます。
+たとえば、このデータフレームに対して有効な操作を呼び出して、その内容を確認したり、それをさらに分析したり (特定のインデックスをフィルター処理したり、何らかの望ましいプロパティに従ってグループ化したりするなど) できます。
 
-* "config.indexName"、"config.indexedColumns"、"config.includedColumns"、"status.status" は、ユーザーが通常参照するフィールドです。
-* "dfSignature" は、Hyperspace によって自動的に生成され、インデックスごとに一意です。 Hyperspace では、このシグネチャを内部的に使用してインデックスを維持し、クエリ時にそれを利用します。
+次のセルでは、データフレームの "show" アクションを使用してすべての行を出力し、インデックスの詳細を表形式で表示します。 インデックスごとに、Hyperspace によってメタデータに格納された、それに関するすべての情報を確認できます。 次のことがすぐにおわかりいただけます。
 
-以下の出力では、3 つのすべてのインデックスの状態が "ACTIVE" であり、その名前、インデックス付き列、および付加列が上記のインデックス構成で定義したものと一致しているはずです。
+* config.indexName、config.indexedColumns、config.includedColumns、status.status は、ユーザーが通常参照するフィールドです。
+* dfSignature は、Hyperspace によって自動的に生成され、インデックスごとに一意です。 Hyperspace では、このシグネチャを内部的に使用してインデックスを維持し、クエリ時にそれを利用します。
+
+
+次の出力では、3 つのすべてのインデックスの状態が "ACTIVE" であり、その名前、インデックス付き列、および付加列が上記のインデックス構成で定義したものと一致しているはずです。
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,9 +563,11 @@ hyperspace.Indexes().Show();
 
 ## <a name="delete-indexes"></a>インデックスを削除する
 
-既存のインデックスを削除するには、"deleteIndex" API を使用して、インデックス名を指定します。 インデックスの削除では論理的な削除が行われます。主に、Hyperspace のメタデータ内のインデックスの状態が "ACTIVE" から "DELETED" に更新されます。 これにより、削除されたインデックスが今後のすべてのクエリ最適化から除外され、Hyperspace ではどのクエリに対してもそのインデックスが選択されなくなります。 ただし、(論理的な削除であるため) 削除されたインデックスのインデックス ファイルは引き続き使用可能なままになっているため、ユーザーが望めば、そのインデックスを復元することが可能です。
+既存のインデックスを削除するには、"deleteIndex" API を使用して、インデックス名を指定します。 インデックスの削除では論理的な削除が行われます。主に、Hyperspace のメタデータ内のインデックスの状態が "ACTIVE" から "DELETED" に更新されます。 これにより、削除されたインデックスが今後のすべてのクエリ最適化から除外され、Hyperspace ではどのクエリに対してもそのインデックスが選択されなくなります。 
 
-以下のセルでは、"deptIndex2" という名前のインデックスを削除し、その後に Hyperspace のメタデータを一覧表示します。 出力は上記の「インデックスを一覧表示する」のセルと似ていますが、"deptIndex2" の状態が "DELETED" に変更されているはずです。
+ただし、(論理的な削除であるため) 削除されたインデックスのインデックス ファイルは引き続き使用可能なままになっているため、ユーザーが望めば、そのインデックスを復元することが可能です。
+
+次のセルでは、"deptIndex2" という名前のインデックスを削除し、その後に Hyperspace のメタデータを一覧表示します。 出力は上記の「インデックスを一覧表示する」のセルと似ていますが、"deptIndex2" の状態が "DELETED" に変更されているはずです。
 
 :::zone pivot = "programming-language-scala"
 
@@ -602,7 +613,7 @@ hyperspace.Indexes().Show();
 
 ## <a name="restore-indexes"></a>インデックスを復元する
 
-"restoreIndex" API を使用して、削除されたインデックスを復元できます。 これにより、最新バージョンのインデックスが ACTIVE 状態に戻り、クエリで再び使用できるようになります。 以下のセルは、"restoreIndex" の使用例を示しています。 "deptIndex1" を削除してから復元します。 出力では、最初に "deleteIndex" コマンドの呼び出し後に "deptIndex1" が "DELETED" 状態になり、"restoreIndex" の呼び出し後に "ACTIVE" 状態に戻ったことを示しています。
+"restoreIndex" API を使用して、削除されたインデックスを復元できます。 これにより、最新バージョンのインデックスが ACTIVE 状態に戻り、クエリで再び使用できるようになります。 次のセルは、"restoreIndex" の使用例を示しています。 "deptIndex1" を削除してから復元します。 出力では、最初に "deleteIndex" コマンドの呼び出し後に "deptIndex1" が "DELETED" 状態になり、"restoreIndex" の呼び出し後に "ACTIVE" 状態に戻ったことを示しています。
 
 :::zone pivot = "programming-language-scala"
 
@@ -666,9 +677,9 @@ hyperspace.Indexes().Show();
 
 ## <a name="vacuum-indexes"></a>インデックスをバキュームする
 
-"vacuumIndex" コマンドを使用して、物理的な削除 (削除されたインデックスのファイルとメタデータ エントリを完全に削除すること) を実行できます。 これが完了すると、すべてのインデックス ファイルが物理的に削除される (物理的な削除であるのはこのためです) ので、このアクションは元に戻せません。
+**vacuumIndex** コマンドを使用して、物理的な削除 (削除されたインデックスのファイルとメタデータ エントリを完全に削除すること) を実行できます。 この操作は、元に戻すことはできません。 これにより、すべてのインデックス ファイルが物理的に削除されます (物理的な削除であるのはこのためです)。
 
-以下のセルは、"deptIndex2" インデックスをバキュームし、バキューム後の Hyperspace のメタデータを示しています。 どちらも "ACTIVE" 状態になっている "deptIndex1" と "empIndex" の 2 つのインデックスのメタデータ エントリはありますが、"deptIndex2" のエントリはないことがおわかりいただけるはずです。
+次のセルは、"deptIndex2" インデックスをバキュームし、バキューム後の Hyperspace のメタデータを示しています。 どちらも "ACTIVE" 状態になっている "deptIndex1" と "empIndex" の 2 つのインデックスのメタデータ エントリはありますが、"deptIndex2" のエントリはないことがおわかりいただけるはずです。
 
 :::zone pivot = "programming-language-scala"
 
@@ -711,13 +722,14 @@ hyperspace.Indexes().Show();
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>Hyperspace を有効/無効にする
+## <a name="enable-or-disable-hyperspace"></a>Hyperspace を有効または無効にする
 
 Hyperspace には、Spark を用いてインデックスの使用を有効または無効にする API が備わっています。
 
-"enableHyperspace" コマンドを使用すると、Hyperspace の最適化ルールが Spark のオプティマイザーから見えるようになり、Hyperspace の既存のインデックスを利用してユーザーのクエリが最適化されます。
-"disableHyperspace" コマンドを使用すると、クエリの最適化中に Hyperspace のルールが適用されなくなります。 Hyperspace を無効にしても、作成されたインデックスは元の状態のままなので、影響を受けません。
-以下のセルは、これらのコマンドを使用して、Hyperspace を有効または無効にする方法を示しています。 出力には、構成が更新された既存の Spark セッションへの参照が表示されるだけです。
+* **enableHyperspace** コマンドを使用すると、Hyperspace の最適化ルールが Spark のオプティマイザーから見えるようになり、Hyperspace の既存のインデックスを利用してユーザーのクエリが最適化されます。
+* **disableHyperspace** コマンドを使用すると、クエリの最適化中に Hyperspace のルールが適用されなくなります。 Hyperspace を無効にしても、作成されたインデックスは元の状態のままなので、影響を受けません。
+
+次のセルは、これらのコマンドを使用して、Hyperspace を有効または無効にする方法を示しています。 出力には、構成が更新された既存の Spark セッションへの参照が表示されます。
 
 :::zone pivot = "programming-language-scala"
 
@@ -770,7 +782,7 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 クエリの処理中に Spark で Hyperspace のインデックスが使用されるようにするには、Hyperspace が有効になっていることを確認する必要があります。
 
-以下のセルでは、Hyperspace を有効にし、サンプル クエリの実行に使用する、サンプル データ レコードを含む 2 つのデータフレームを作成します。 データフレームごとに、いくつかのサンプル行が出力されます。
+次のセルでは、Hyperspace を有効にし、サンプル クエリの実行に使用する、サンプル データ レコードを含む 2 つのデータフレームを作成します。 データフレームごとに、いくつかのサンプル行が出力されます。
 
 :::zone pivot = "programming-language-scala"
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 Hyperspace には現在、次の 2 つのクエリ グループにインデックスを利用するためのルールがあります。
 
 * 検索または範囲選択のフィルター述語を含む選択クエリ。
-* 等価結合述語 (Equi-join) を含む結合クエリ。
+* 等価結合述語 (等結合) を含む結合クエリ。
 
 ## <a name="indexes-for-accelerating-filters"></a>フィルターを高速化するためのインデックス
 
-クエリの最初の例では、部門レコードに対して検索を行っています (以下のセルをご覧ください)。 SQL では、このクエリは次のようになります。
+クエリの最初の例では、次のセルに示されているように、部門レコードに対して検索を行っています。 SQL では、このクエリは次の例のようになります。
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-以下のセルを実行した結果の出力には、次のものが表示されます。
+次のセルを実行した結果の出力には、次のものが表示されます。
 
 * クエリの結果 (1 つの部門名)。
 * クエリを実行するために Spark で使用されたクエリ プラン。
 
-クエリ プランでは、プランの下部にある "FileScan" 演算子に、レコードの読み取り元のデータソースが表示されます。 このファイルの場所は、"deptIndex1" インデックスの最新バージョンへのパスを示しています。 これは、クエリに従い、Hyperspace の最適化ルールを使用して、Spark で実行時に適切なインデックスが利用されることになったことを示しています。
+クエリ プランでは、プランの下部にある **FileScan** 演算子に、レコードの読み取り元のデータソースが表示されます。 このファイルの場所は、"deptIndex1" インデックスの最新バージョンへのパスを示しています。 この情報は、クエリに従い、Hyperspace の最適化ルールを使用して、Spark で実行時に適切なインデックスが利用されることになったことを示しています。
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-2 番目の例は、部門レコードに対する範囲選択クエリです。 SQL では、このクエリは次のようになります。
+2 番目の例は、部門レコードに対する範囲選択クエリです。 SQL では、このクエリは次の例のようになります。
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-最初の例と同様に、以下のセルの出力には、クエリの結果 (2 つの部門の名前) とクエリ プランが表示されます。 FileScan 演算子に含まれるデータ ファイルの場所は、クエリの実行に "deptIndex1" が使用されたことを示しています。
+最初の例と同様に、次のセルの出力には、クエリの結果 (2 つの部門の名前) とクエリ プランが表示されます。 **FileScan** 演算子に含まれるデータ ファイルの場所は、クエリの実行に "deptIndex1" が使用されたことを示しています。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,16 +1053,14 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
-3 番目の例は、部門 ID で部門と従業員のレコードを結合するクエリです。 同等の SQL ステートメントを以下に示します。
+3 番目の例は、部門 ID で部門と従業員のレコードを結合するクエリです。 同等の SQL ステートメントを次に示します。
 
 ```sql
 SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-以下のセルを実行した結果の出力には、クエリの結果 (14 人の従業員の名前と各従業員が働いている部門の名前) が表示されます。 出力にはクエリ プランも含まれています。 2 つの FileScan 演算子のファイルの場所で、Spark がクエリの実行に "empIndex" と "deptIndex1" のインデックスを使用したことがどのように示されているかに注意してください。
+次のセルを実行した結果の出力には、クエリの結果 (14 人の従業員の名前と各従業員が働いている部門の名前) が表示されます。 出力にはクエリ プランも含まれています。 2 つの **FileScan** 演算子のファイルの場所で、Spark がクエリの実行に "empIndex" と "deptIndex1" のインデックスを使用したことがどのように示されているかに注意してください。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>API を説明する
 
-インデックスは非常に優れていますが、使用されているかどうかを確認するにはどうすればよいでしょうか。 Hyperspace では、ユーザーはクエリを実行する前に、元のプランと更新されたインデックス依存プランを比較できます。 コマンド出力を表示する場合は、html/プレーンテキスト/コンソール モードから選択できます。
+インデックスは非常に優れていますが、使用されているかどうかを確認するにはどうすればよいでしょうか。 Hyperspace では、ユーザーはクエリを実行する前に、元のプランと更新されたインデックス依存プランを比較できます。 コマンド出力を表示する場合は、HTML、プレーンテキスト、コンソール モードから選択できます。
 
 次のセルは、HTML を使用した例を示しています。 強調表示されたセクションは、元のプランと更新されたプランの違いを、使用されているインデックスと共に表しています。
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>インデックスを最新の情報に更新する
 
-インデックスの作成に使われた元のデータが変更された場合、そのインデックスではデータの最新の状態がキャプチャされなくなります。 "refreshIndex" コマンドを使用して、このような古くなったインデックスを最新の情報に更新できます。 これにより、インデックスが完全に再構築され、最新のデータ レコードに従って更新されます (心配ありません。他のノートブックでインデックスを増分更新する方法についても説明します)。
+インデックスの作成に使われた元のデータが変更された場合、そのインデックスではデータの最新の状態がキャプチャされなくなります。 **refreshIndex** コマンドを使用して、古くなったインデックスを最新の情報に更新できます。 このコマンドにより、インデックスが完全に再構築され、最新のデータ レコードに従って更新されます。 他のノートブックでインデックスを増分更新する方法について説明します。
 
-以下の 2 つのセルは、このシナリオの例を示しています。
+次の 2 つのセルは、このシナリオの例を示しています。
 
-* 最初のセルでは、元の部門データに部門を 2 つ追加します。 新しい部門が正しく追加されたことを確認するために、部門の一覧を読み取って出力します。 出力には、合計で 6 つの部門 (古い部門が 4 つと新しい部門が 2 つ) が表示されます。 "refreshIndex" を呼び出すと、"deptIndex1" が更新され、インデックスによって新しい部門がキャプチャされます。
-* 2 番目のセルでは、範囲選択クエリの例を実行します。 今度は、結果に 4 つの部門 が含まれているはずです。そのうちの 2 つは前に上記のクエリを実行したときに表示された部門で、2 つは追加したばかりの新しい部門です。
+* 最初のセルでは、元の部門データに部門を 2 つ追加します。 新しい部門が正しく追加されたことを確認するために、部門の一覧を読み取って出力します。 出力には、合計で 6 つの部門 (古い部門が 4 つと新しい部門が 2 つ) が表示されます。 **refreshIndex** を呼び出すと、"deptIndex1" が更新され、インデックスによって新しい部門がキャプチャされます。
+* 2 番目のセルでは、範囲選択クエリの例を実行します。 今度は、結果に 4 つの部門 が含まれているはずです。そのうちの 2 つは前に上記のクエリを実行したときに表示された部門で、2 つは追加した新しい部門です。
 
 ### <a name="specific-index-refresh"></a>特定のインデックスの更新
 

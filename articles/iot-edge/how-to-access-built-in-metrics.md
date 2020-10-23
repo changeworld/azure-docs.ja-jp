@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979289"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341568"
 ---
 # <a name="access-built-in-metrics"></a>組み込みのメトリックにアクセスする
 
 IoT Edge ランタイム コンポーネント (IoT Edge ハブと IoT Edge エージェント) を使用すると、[Prometheus の出力フォーマット](https://prometheus.io/docs/instrumenting/exposition_formats/)で組み込みのメトリックが生成されます。 これらのメトリックにリモートでアクセスして、IoT Edge デバイスの正常性を監視および把握します。
 
-リリース 1.0.10 からは、メトリックは既定で、**edgeHub** および **edgeAgent** のモジュール (`http://edgeHub:9600/metrics` および `http://edgeAgent:9600/metics`) の **ポート 9600** で自動的に公開されます。 既定では、これらのポートはホストにマップされません。
+リリース 1.0.10 からは、メトリックは既定で、**edgeHub** および **edgeAgent** のモジュール (`http://edgeHub:9600/metrics` および `http://edgeAgent:9600/metrics`) の **ポート 9600** で自動的に公開されます。 既定では、これらのポートはホストにマップされません。
 
 モジュールの `createOptions` からメトリック ポートを公開およびマップすることによって、ホストからメトリックにアクセスします。 次の例では、既定のメトリック ポートをホスト上のポート 9601 にマップしています。
 
 ```
 {
   "ExposedPorts": {
-    "9600/tcp": {},
+    "9600/tcp": {}
   },
   "HostConfig": {
     "PortBindings": {
@@ -110,7 +110,7 @@ Prometheus の出力フォーマットには、カウンター、ゲージ、ヒ
 | `edgeAgent_total_disk_write_bytes` | `module_name` | 種類: ゲージ<br> ディスクに書き込まれたバイト数 |
 | `edgeAgent_metadata` | `edge_agent_version`, `experimental_features`, `host_information` | 種類: ゲージ<br> デバイスに関する一般的なメタデータ。 値は常に 0 です。情報はタグでエンコードされます。 `experimental_features` と `host_information` が json オブジェクトであることに注意してください。 `host_information` は ```{"OperatingSystemType": "linux", "Architecture": "x86_64", "Version": "1.0.10~dev20200803.4", "Provisioning": {"Type": "dps.tpm", "DynamicReprovisioning": false, "AlwaysReprovisionOnStartup": true}, "ServerVersion": "19.03.6", "KernelVersion": "5.0.0-25-generic", "OperatingSystem": "Ubuntu 18.04.4 LTS", "NumCpus": 6, "Virtualized": "yes"}``` のように表示されます。 `ServerVersion` は Docker バージョンで、`Version` は IoT Edge セキュリティ デーモンのバージョンであることに注意してください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)
 * [IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ](module-edgeagent-edgehub.md)

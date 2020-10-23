@@ -2,26 +2,21 @@
 title: Kerberos の制約付き委任をトラブルシューティングする - アプリ プロキシ
 description: Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568720"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -165,7 +160,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 ## <a name="other-scenarios"></a>その他のシナリオ
 
-- Azure アプリケーション プロキシは、Kerberos チケットを要求したうえで、その要求をアプリケーションに送信します。 一部のサードパーティ製アプリケーションは、この認証方法を受け付けません。 これらのアプリケーションは、より従来のネゴシエーションを実行することが予想されます。 最初の要求は、匿名です。401 を介して、サポートするタイプの認証で応答することを、アプリケーションに許可します。
+- Azure アプリケーション プロキシは、Kerberos チケットを要求したうえで、その要求をアプリケーションに送信します。 一部のサードパーティ製アプリケーションは、この認証方法を受け付けません。 これらのアプリケーションは、より従来のネゴシエーションを実行することが予想されます。 最初の要求は、匿名です。401 を介して、サポートするタイプの認証で応答することを、アプリケーションに許可します。 この種類の Kerberos ネゴシエーションは、このドキュメントに記載されている手順に従って有効にすることができます。[シングル サインオンでの Kerberos の制約付き委任](application-proxy-configure-single-sign-on-with-kcd.md).
 - ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。 マルチホップ シナリオを構成するには、サポートの記事を参照してください。 [Kerberos 制約付き委任は、プロトコルの切り替えと複数ホップのシナリオを要求することがある](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)の記事です。
 
 ## <a name="next-steps"></a>次のステップ

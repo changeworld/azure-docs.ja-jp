@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/10/2020
+ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388529"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91664853"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>エラー コード:Azure Active Directory B2C
 
@@ -74,6 +74,7 @@ Azure Active Directory B2C サービスは、次のエラーを返すことが�
 | `AADB2C90086` | 指定された grant_type [{0}] はサポートされていません。 |
 | `AADB2C90087` | 指定された許可は、このバージョンのプロトコル エンドポイントに対して発行されていません。 |
 | `AADB2C90088` | 指定された許可は、このエンドポイントに対して発行されていません。 実際の値: {0} と予期される値: {1} |
+| `AADB2C90091` | ユーザーによるキャンセル。 |
 | `AADB2C90092` | 指定されたアプリケーション (ID '{0}') は、テナント '{1}' では無効です。 アプリケーションを有効にしてから、やり直してください。 |
 | `AADB2C90107` | ID '{0}' のアプリケーションが ID トークンを取得できません。openID スコープが要求で指定されていなかったか、またはアプリケーションにその権限がないことが原因です。 |
 | `AADB2C90108` | オーケストレーション手順 '{0}' では、CpimIssuerTechnicalProfileReferenceId が必要ですが、指定されていません。 |
@@ -142,10 +143,10 @@ Azure Active Directory B2C サービスは、次のエラーを返すことが�
 | `AADB2C90284` | 識別子 '{0}' のアプリケーションは同意が得られていないため、ローカル アカウントに使用できません。 |
 | `AADB2C90285` | 識別子 '{0}' を持つアプリケーションが見つかりませんでした。 |
 | `AADB2C90288` | テナント '{2}' の更新トークン取得に関して、TechnicalProfile '{1}' で参照されている ID '{0}' の UserJourney が、ポリシー '{3}' またはそのいずれかの基本ポリシーに存在しません。 |
-| `AADB2C90289` | ID プロバイダーへの接続でエラーが発生しました。 後でもう一度やり直してください。 |
+| `AADB2C90289` | ID プロバイダーへの接続でエラーが発生しました。 後で再度お試しください。 |
 | `AADB2C90296` | アプリケーションが正しく構成されていません。 アクセスしようとしているサイトの管理者に問い合わせてください。 |
 | `AADB2C99005` | この要求には、無効な文字 '{0}' を含む無効なスコープ パラメーターが含まれています。 |
-| `AADB2C99006` | Azure AD B2C で、アプリ ID が '{0}' の Extensions アプリが見つかりません。 詳細については、 https://go.microsoft.com/fwlink/?linkid=851224 にアクセスしてください。 |
+| `AADB2C99006` | Azure AD B2C で、アプリ ID が '{0}' の Extensions アプリが見つかりません。 詳細については、https://go.microsoft.com/fwlink/?linkid=851224 にアクセスしてください。 |
 | `AADB2C99011` | メタデータの値 '{0}' がポリシー '{2}' の TechnicalProfile '{1}' で指定されていません。 |
 | `AADB2C99013` | 指定された grant_type [{0}] と token_type [{1}] の組み合わせはサポートされていません。 |
 | `AADB2C99015` | テナント '{2}' のポリシー '{1}' のプロファイル '{0}' には、リソース所有者のパスワード資格情報フローに必要なすべての InputClaims がありません。 |

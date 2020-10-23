@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16d7965b8d42a6fdd6ebd68307b01b322cfa7cc6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad64d56899a9a54f4c8aede78ba6b4f2b77b8249
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285239"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331541"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -45,7 +45,7 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |オプション|説明|
 |--|--|
 |-h, --help|make コマンドのヘルプ コンテンツを表示します。 |
-|--quota-gb uint32|共有の最大サイズをギガバイト (GiB) 単位で指定します。0 は、ファイルサービスの既定のクォータを受け入れることを示します。|
+|--quota-gb uint32|共有の最大サイズをギガバイト (GB) 単位で指定します。0 は、ファイルサービスの既定のクォータを受け入れることを示します。|
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 

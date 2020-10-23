@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399807"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -82,7 +82,7 @@ Azure AD で直接 ID を作成した場合、[PowerShell を使用してユー�
 組織がパススルー認証またはフェデレーションによるハイブリッド ID ソリューションを使用する場合、次の 2 つの理由から、パスワード ハッシュ同期を有効にする必要があります。
 
 * Azure AD 管理の[資格情報が漏洩したユーザー](../../active-directory/reports-monitoring/concept-risk-events.md) レポートでは、"闇サイト" で公開されているユーザー名とパスワードのペアについて、警告を受け取れます。 驚くほど大量のパスワードが、後にセキュリティ侵害されるサードパーティ サイトでのパスワードの再利用、フィッシング、マルウェアによって漏洩しています。 Microsoft は、これらの漏洩した資格情報の多くを発見し、それらがお客様の組織の資格情報に一致する場合に、このレポートでお客様に報告します。しかしそのためには、[パスワード ハッシュの同期を有効にしておく](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)必要があります。
-* (たとえばランサムウェア攻撃で) オンプレミスの障害が発生した場合、[パスワード ハッシュ同期を使用するクラウド認証](choose-ad-authn.md)に切り替えることができます。このバックアップ認証方法では、Azure Active Directory による認証が構成されたアプリ (Office 365 など) へのアクセスを継続できます。 この場合、IT スタッフはオンプレミスの停止が解決されるまで、個人のメール アカウントに頼ってデータを共有する必要はありません。
+* (たとえばランサムウェア攻撃で) オンプレミスの障害が発生した場合、[パスワード ハッシュ同期を使用するクラウド認証](choose-ad-authn.md)に切り替えることができます。このバックアップ認証方法では、Azure Active Directory による認証が構成されたアプリ (Microsoft 365 など) へのアクセスを継続できます。 この場合、IT スタッフはオンプレミスの停止が解決されるまで、個人のメール アカウントに頼ってデータを共有する必要はありません。
 
 [パスワード ハッシュ同期](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)のしくみについて、詳しくご確認ください。
 
@@ -193,7 +193,7 @@ Azure AD の[セルフサービス パスワード リセット (SSPR)](../../ac
 
 ### <a name="implement-self-service-group-and-application-access"></a>セルフサービス グループとアプリケーションのアクセスを実装する
 
-Azure AD を使用すると、セキュリティ グループ、Office 365 グループ、アプリケーション ロール、アクセス パッケージ カタログを使用して、管理者以外のユーザーがリソースへのアクセスを管理できます。  [セルフサービス グループ管理](../../active-directory/users-groups-roles/groups-self-service-management.md)を使用すると、グループ所有者は、管理者ロールを割り当てられることなく、自分のグループを管理できます。 ユーザーは、自身の依頼の処理に管理者に頼らずに Office 365 グループを作成および管理することもでき、未使用のグループも自動的に期限切れになります。  [Azure AD エンタイトルメント管理](../../active-directory/governance/entitlement-management-overview.md)を使用すると、包括的なアクセス要求ワークフローと自動有効期限を使用して委任と可視化をさらに高めることができます。  管理者以外のユーザーが所有するグループ、Teams、アプリケーション、および SharePoint Online サイト用に独自のアクセス パッケージを構成する機能を、それらのユーザーに委任することができます。これには、従業員のマネージャーやビジネス パートナー スポンサーの承認者としての構成など、アクセスを承認する必要があるユーザー用のカスタム ポリシーを使用します。
+Azure AD を使用すると、セキュリティ グループ、Microsoft 365 グループ、アプリケーション ロール、アクセス パッケージ カタログを使用して、管理者以外のユーザーがリソースへのアクセスを管理できます。  [セルフサービス グループ管理](../../active-directory/users-groups-roles/groups-self-service-management.md)を使用すると、グループ所有者は、管理者ロールを割り当てられることなく、自分のグループを管理できます。 ユーザーは、自身の依頼の処理に管理者に頼らずに Microsoft 365 グループを作成および管理することもでき、未使用のグループも自動的に期限切れになります。  [Azure AD エンタイトルメント管理](../../active-directory/governance/entitlement-management-overview.md)を使用すると、包括的なアクセス要求ワークフローと自動有効期限を使用して委任と可視化をさらに高めることができます。  管理者以外のユーザーが所有するグループ、Teams、アプリケーション、および SharePoint Online サイト用に独自のアクセス パッケージを構成する機能を、それらのユーザーに委任することができます。これには、従業員のマネージャーやビジネス パートナー スポンサーの承認者としての構成など、アクセスを承認する必要があるユーザー用のカスタム ポリシーを使用します。
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD アクセス レビューを実装する
 

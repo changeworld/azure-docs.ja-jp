@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f107741dc3e601d0a46c295932a745c99dadb96d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225668"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328078"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS 用の Azure セキュリティ ベースライン
 
@@ -102,7 +102,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-- [Azure DNS での Azure RBAC について](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Azure DNS での Azure RBAC について](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Azure Security Center の監視**: はい
 
@@ -266,7 +266,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 - [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-- [Azure DNS での Azure RBAC について](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Azure DNS での Azure RBAC について](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Azure プライベート DNS での Azure RBAC について](dns-protect-private-zones-recordsets.md)
 

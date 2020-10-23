@@ -3,12 +3,12 @@ title: Azure Event Hubs リソースにアクセスするためのアプリケ�
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのアプリケーションを認証する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531525"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566331"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する
 Microsoft Azure では、Azure Active Directory (Azure AD) を利用して、リソースとアプリケーションの統合されたアクセス制御管理が提供されています。 Azure Event Hubs で Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` です (Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です)。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Event Hubs リソースへの要求を承認できます。
@@ -24,6 +24,8 @@ Azure には、Event Hubs データへの Azure AD と OAuth を使ったアク�
 - [Azure Event Hubs のデータ所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Event Hubs リソースへの完全なアクセス権を付与するには、このロールを使用します。
 - [Azure Event Hubs のデータ送信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Event Hubs リソースへの送信アクセス権を付与するには、このロールを使用します。
 - [Azure Event Hubs のデータ受信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Event Hubs リソースへの受信アクセス権を付与するには、このロールを使用します。   
+
+スキーマ レジストリの組み込みロールについては、[スキーマ レジストリのロール](schema-registry-overview.md#role-based-access-control)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > Microsoft のプレビュー リリースで、所有者または共同作成者ロールへの Event Hubs データ アクセス特権の追加がサポートされました。 しかし、所有者ロールと共同作成者ロールのデータ アクセス特権は受け入れられなくなりました。 所有者ロールまたは共同作成者ロールを使用している場合は、Azure Event Hubs データ所有者ロールの使用に切り替えてください。

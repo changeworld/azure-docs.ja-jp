@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611294"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340310"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -74,9 +74,9 @@ Azure BLOB コンテナーを定義するには、次の情報を入力します
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>アクセス制御ロールをアカウントに追加する
 
-Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ アカウントにキャッシュ サービスがアクセスすることを承認する場合、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) が使用されます。
+Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ アカウントにキャッシュ サービスがアクセスすることを承認する場合、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) が使用されます。
 
-ストレージ アカウント所有者は、"HPC Cache リソース プロバイダー" ユーザーの[ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)ロールと[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールを明示的に追加する必要があります。
+ストレージ アカウント所有者は、"HPC Cache リソース プロバイダー" ユーザーの[ストレージ アカウント共同作成者](../role-based-access-control/built-in-roles.md#storage-account-contributor)ロールと[ストレージ BLOB データ共同作成者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを明示的に追加する必要があります。
 
 この作業は事前に行えるほか、Blob Storage ターゲットを追加するページ上のリンクをクリックして行うこともできます。 ロールの設定を Azure 環境経由で反映させるとき、最大 5 分かかる場合があることにご留意ください。ロールの追加後、少し待ってからストレージ ターゲットを作成してください。
 

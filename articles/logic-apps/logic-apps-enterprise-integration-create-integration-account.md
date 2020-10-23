@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2007e2dd2df959698e62ac753689556c2f17c005
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520819"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570257"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -89,7 +89,7 @@ ms.locfileid: "86520819"
 
 1. リンクを終了するには、 **[保存]** を選択します。
 
-   ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
+   ![統合アカウントを選択するために [保存] を選択する場所を示すスクリーンショット。](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
 
    統合アカウントが正常にリンクされると、Azure によって確認メッセージが表示されます。
 

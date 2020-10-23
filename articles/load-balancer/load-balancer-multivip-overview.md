@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530830"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448104"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
@@ -64,8 +64,8 @@ DIP は受信フローの宛先です。 バックエンド プールで、各 V
 
 | ルール | フロントエンドのマッピング | バックエンド プールへ |
 | --- | --- | --- |
-| 1 |![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![緑のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![緑のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![紫のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![紫のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Azure Load Balancer の完全なマッピングは次のようになりました。
 
@@ -143,8 +143,8 @@ netsh interface ipv4 set interface “interfacename” weakhostsend=enabled
 
 | ルール | フロントエンド | バックエンド プールにマップ |
 | --- | --- | --- |
-| 1 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (VM1 と VM2) |
-| 2 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (VM1 と VM2) |
+| 1 |![緑の規則](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![緑のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (VM1 と VM2) |
+| 2 |![紫の規則](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![紫のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (VM1 と VM2) |
 
 次の表は、ロード バランサーの完全なマッピングを示します。
 
@@ -167,6 +167,6 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) 」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[送信接続](load-balancer-outbound-connections.md)」を参照して、送信接続の動作への複数のフロントエンドの影響を理解します。

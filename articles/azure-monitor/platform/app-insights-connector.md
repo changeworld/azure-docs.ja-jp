@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327108"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449421"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -83,9 +83,9 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 **[Application Insights]** タイルをクリックします。**Application Insights** ダッシュボードが開いて、次のブレードが表示されます。
 
-![Application Insights ダッシュボード](./media/app-insights-connector/app-insights-dash01.png)
+![アプリケーション、データ ボリューム、および可用性のブレードを表示する [Application Insights] ダッシュボードのスクリーンショット。](./media/app-insights-connector/app-insights-dash01.png)
 
-![Application Insights ダッシュボード](./media/app-insights-connector/app-insights-dash02.png)
+![サーバー要求、障害、および例外のブレードを表示する [Application Insights] ダッシュボードのスクリーンショット。](./media/app-insights-connector/app-insights-dash02.png)
 
 ダッシュボードには、次の表に示すブレードが含まれます。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 ブレードの一番下にある **[すべて表示]** をクリックするかブレード ヘッダーをクリックすると、すべてのレコードを返すログ検索を実行できます。
 

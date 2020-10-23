@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bfd3b2351a280f423ba0ef0b15318449554b5e3b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074383"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91595936"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
 
@@ -42,7 +42,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 1. Azure Cloud Shell を起動する
 2. az extension add/update を実行する
 3. az vm repair create を実行する
-4. 軽減ステップを実行する
+4. az vm repair run を実行するか、リスク軽減ステップを実行します。
 5. az vm repair restore を実行する
 
 その他のドキュメントと手順については、「[az vm repair](/cli/azure/ext/vm-repair/vm/repair)」をご覧ください。
@@ -59,7 +59,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
    CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
    
-   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set) を使用できます。
+   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) を使用できます。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
@@ -79,7 +79,13 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. 必要に応じて作成した修復 VM で軽減ステップを実行し、ステップ 5 に進みます。
+4. `az vm repair run` を実行します。 このコマンドでは、修復 VM を介して接続されているディスクで指定した修復スクリプトが実行されます。 使用しているトラブルシューティング ガイドで run-id が指定されている場合は、ここでそれを使用してください。それ以外の場合は、az vm repair list-scripts を使用して使用可能な修復スクリプトを確認できます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。 修復スクリプトに関する追加情報については、[修復スクリプト ライブラリ](https://github.com/Azure/repair-script-library)を参照してください。
+
+   ```azurecli-interactive
+   az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id lin-hello-world --verbose
+   ```
+
+   必要に応じて、修復 VM を使用して必要な手動のリスク軽減ステップを実行してから、手順 5 に進みます。
 
 5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。
 

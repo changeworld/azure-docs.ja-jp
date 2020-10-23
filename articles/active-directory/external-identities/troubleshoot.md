@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206298"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91354974"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
@@ -106,6 +106,20 @@ ID テナントが Just-In-Time (JIT) テナントまたはバイラル テナ�
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Azure US Government テナントでは、B2B コラボレーションのゲストユーザーを招待できません。
 
 Azure US Government クラウド内では、現在、B2B コラボレーションは、両方が Azure US Government クラウド内にあるテナント間と、両方が B2B コラボレーションをサポートしているテナント間でのみサポートされています。 Azure US Government クラウドの一部ではないテナント、または B2B コラボレーションをまだサポートしていないテナントにユーザーを招待すると、エラーが発生します。 詳細と制限事項については、「[Azure Active Directory Premium P1 と P2 のバリエーション](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)」を参照してください。
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Azure AD はテナント内で aad-extensions-app を見つけられないというエラーが表示される
+
+カスタム ユーザー属性やユーザー フローのようなセルフサービス サインアップ機能を使用する場合は、`aad-extensions-app. Do not modify. Used by AAD for storing user data.` という名前のアプリが自動的に作成されます。 これは、サインアップしたユーザーと収集されたカスタム属性に関する情報を格納するために、Azure AD External Identities によって使用されます。
+
+`aad-extensions-app` を誤って削除した場合、30 日以内なら復旧できます。 Azure AD PowerShell モジュールを使用して、アプリを復元できます。
+
+1. Azure AD PowerShell モジュールを起動し、`Connect-AzureAD` を実行します。
+1. 削除したアプリの復旧場所にする Azure AD テナントのグローバル管理者としてサインインします。
+1. PowerShell コマンド `Get-AzureADDeletedApplication` を実行します。
+1. 一覧で、表示名が `aad-extensions-app` で始まっているアプリケーションを見つけて、その `ObjectId` プロパティの値をコピーします。
+1. PowerShell コマンド `Restore-AzureADDeletedApplication -ObjectId {id}` を実行します。 コマンドの `{id}` の部分は、前の手順の `ObjectId` に置き換えます。
+
+これで、復元されたアプリが Azure Portal に表示されるはずです。
 
 ## <a name="next-steps"></a>次のステップ
 

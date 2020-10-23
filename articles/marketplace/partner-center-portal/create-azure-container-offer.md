@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649266"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91709106"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
@@ -80,10 +80,10 @@ ms.locfileid: "89649266"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
-- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
+- [コマーシャル マーケットプレース オファーからの顧客リード](commercial-marketplace-get-customer-leads.md)
+- [リード管理についてよく寄せられる質問](../lead-management-faq.md#common-questions-about-lead-management)
+- [リード構成エラーのトラブルシューティング](../lead-management-faq.md#publishing-config-errors)
+- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -180,7 +180,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 **[サポートの連絡先]** セクションで、 **[サポート Web サイト]** を指定します。ここで、グローバル Azure、Azure Government、またはその両方におけるオファーの提供状況に基づき、パートナーはオファーのサポートを検索できます。
 
-**[CSP プログラムの連絡先]** セクションで、リンク (**CSP プログラムのマーケティング資料**) を入力します。ここで、CSP パートナーはオファーのマーケティング資料を検索できます。
+**[CSP プログラムの連絡先]** セクションで、リンク (**CSP プログラムの宣材**) を入力します。このリンクでは、CSP パートナーはオファーの宣材を検索できます。
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
@@ -190,7 +190,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
@@ -223,19 +223,19 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 これは、Azure Marketplace の **[オファーのリスト登録]** ページを示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Azure Marketplace の [オファーのリスト登録] ページの画像。" :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。" :::
 
 これは、Azure Marketplace の検索結果を示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Azure Marketplace の検索結果の画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 これは、Azure portal の **[オファーのリスト登録]** ページを示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Azure portal の [オファーのリスト登録] ページの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 これは、Azure portal の検索結果を示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Azure portal の検索結果の画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 ## <a name="preview"></a>プレビュー
 
@@ -328,11 +328,11 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 以下はプラン詳細を閲覧するときの Azure Marketplace のフィールドです。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Azure Marketplace でプラン詳細を閲覧するときに表示されるフィールドの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 以下は Azure portal のプラン詳細です。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal のプラン詳細の画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 ### <a name="plan-availability"></a>プランの可用性
 
@@ -363,11 +363,11 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 **Azure Container Registry の管理者ユーザー名** – コンテナー イメージが含まれる Azure Container Registry にリンクされている[管理者ユーザー名](../../container-registry/container-registry-authentication.md#admin-account)) を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 必要に応じて、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 **Azure Container Registry のパスワード** - コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 **[コンテナー レジストリ]**  >  **[アクセス キー]** に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="[アクセス キー]メニューの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 **Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするときに、リポジトリの名前を含めます。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) >  **[リポジトリ]** ページに移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。
 

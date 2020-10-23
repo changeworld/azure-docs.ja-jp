@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97873c9f59dc0d99293d2b1ebaf87af309dbcf47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627144"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208296"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -158,8 +158,8 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | MCAS SecurityAlert  | [Microsoft Cloud App Security の接続](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon) に関する記事を参照してください。 |
-| ConfigurationData  | [VM インベントリの自動化](../automation/automation-vm-inventory.md)| &#10007; | |
-| ConfigurationChange  | [VM の追跡の自動化](../automation/change-tracking.md) | &#10007; | |
+| ConfigurationData  | [VM インベントリの自動化](../automation/change-tracking/overview.md)| &#10007; | |
+| ConfigurationChange  | [VM の追跡の自動化](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [F5 BIG-IP の接続](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |
 | McasShadowItReporting  |  | &#10007; | |
 | Barracuda_CL | [Barracuda の接続](connect-barracuda.md) | &#10003; | |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319238"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568048"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
 
@@ -70,7 +70,7 @@ ms.locfileid: "89319238"
 
 小売業者は、現在、顧客と企業の両方の需要を満たす、セキュリティで保護されたスケーラブルな eコマース ソリューションを構築する必要があります。 これらの eコマース ソリューションで、カスタマイズされた製品やオファーによって顧客を引き込み、取引を迅速かつ安全に処理し、フルフィルメントと顧客サービスに集中する必要があります。 最新の Synapse Link for Azure Cosmos DB と共に Azure Cosmos DB を使用することで、小売業者は、顧客向けにパーソナル化されたレコメンデーションをリアルタイムで生成できます。 次のアーキテクチャに示すように、小売業者は、低待機時間と調整可能な整合性の設定を使用して、ただちに分析情報を入手できます。
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="リアルタイム パーソナル化での Azure Synapse Link for Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="サプライ チェーン分析での Azure Synapse Link for Azure Cosmos DB" border="false":::
 
 Synapse Link for Azure Cosmos DB のユース ケース:
 
@@ -82,7 +82,7 @@ Synapse Link for Azure Cosmos DB のユース ケース:
 
 次のアーキテクチャでは、IoT 予測メンテナンスで Azure Synapse Link for Azure Cosmos DB のクラウド ネイティブ HTAP 機能を活用しています。
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IOT 予測メンテナンスでの Azure Synapse Link for Azure Cosmos DB" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="サプライ チェーン分析での Azure Synapse Link for Azure Cosmos DB" border="false" :::
 
 Synapse Link for Azure Cosmos DB のユース ケース:
 
@@ -92,7 +92,7 @@ Synapse Link for Azure Cosmos DB のユース ケース:
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>サンプル シナリオ: Azure Cosmos DB の HTAP
 
-約 10 年にわたって、エラスティックなスケーリング、ターンキー グローバル分散、マルチマスター レプリケーションを必要とするミッション クリティカルなアプリケーションに、多くの顧客が Azure Cosmos DB を使用してきました。その目的は、トランザクション ワークロードでの読み取りと書き込みの両方の遅延を少なくし、可能性を高めることです。
+約 10 年にわたって、エラスティックなスケーリング、ターンキー グローバル分散、マルチリージョン書き込みレプリケーションを必要とするミッション クリティカルなアプリケーションに、多くの顧客が Azure Cosmos DB を使用してきました。その目的は、トランザクション ワークロードでの読み取りと書き込みの両方の遅延を少なくし、可能性を高めることです。
  
 次の一覧に、Azure Cosmos DB を使用したオペレーション データでサポートされるさまざまなワークロード パターンの概要を示します。
 
@@ -104,17 +104,17 @@ Synapse Link for Azure Cosmos DB のユース ケース:
 
 Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクション ワークロードを強化できるだけでなく、過去のオペレーション データの準リアルタイム分析ワークロードを実行できます。 これは ETL の要件なしで実行され、トランザクション ワークロードからのパフォーマンスの分離が保証されます。
 
-次の図は、Azure Cosmos DB を使用したワークロード パターンを示しています。:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse Link for Azure Cosmos DB のワークロード パターン" border="false":::
+次の図は、Azure Cosmos DB を使用したワークロード パターンを示しています。:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="サプライ チェーン分析での Azure Synapse Link for Azure Cosmos DB" border="false":::
 
 ここでは、20 の国/地域にわたってグローバルな運用を行っている eコマース企業 CompanyXYZ の例を示し、在庫管理プラットフォームのトランザクションと分析の両方の要件に対応する単一のリアルタイム データベースとして Azure Cosmos DB を選択することの利点を示します。
 
 * CompanyXYZ の中核ビジネスは在庫管理システムに依存しています。このため、可用性と信頼性が中核となる要件です。 Azure Cosmos DB を使用することの利点:
 
-  * Azure インフラストラクチャとの緊密な統合と、透過的なマルチマスター グローバル レプリケーションにより、Azure Cosmos DB では、リージョン障害に対して業界最高水準の [99.999% の高可用性](high-availability.md)が実現されます。
+  * Azure インフラストラクチャとの緊密な統合と、透過的なマルチリージョン書き込みグローバル レプリケーションにより、Azure Cosmos DB では、リージョン障害に対して業界最高水準の [99.999% の高可用性](high-availability.md)が実現されます。
 
 * CompanyXYZ のサプライ チェーン パートナーは、地理的に離れた場所に存在しますが、各国での運用をサポートするために、世界中の製品在庫を 1 つのビューで表示しなければならない場合があります。 これには、他のサプライ チェーン パートナーが行った更新をリアルタイムで読み取ることができるという要件も含まれます。 また、他のパートナーとの競合を心配することなく、高いスループットで更新を実行できる必要もあります。 Azure Cosmos DB を使用することの利点:
 
-  * Azure Cosmos DB では、その固有のマルチマスター レプリケーション プロトコルと、ラッチフリーの書き込みに最適化されたトランザクション ストアにより、世界中のどこでも、99 パーセンタイルでのインデックス付きの読み取りと書き込みの両方の待機時間が 10 ミリ秒未満となることが保証されます。
+  * Azure Cosmos DB では、その固有のマルチリージョン書き込みレプリケーション プロトコルと、ラッチフリーの書き込みに最適化されたトランザクション ストアにより、世界中のどこでも、99 パーセンタイルでのインデックス付きの読み取りと書き込みの両方の待機時間が 10 ミリ秒未満となることが保証されます。
 
   * バッチ データとストリーミング データの両方の高スループットのインジェストが、トランザクション ストアでの[リアルタイムのインデックス作成](index-policy.md)により強化されます。
 

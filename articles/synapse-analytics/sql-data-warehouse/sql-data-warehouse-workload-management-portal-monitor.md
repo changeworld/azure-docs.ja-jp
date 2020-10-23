@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b0dc3af524b16430408f8a920c7477c412414d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362731"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics - ワークロード管理ポータル監視
 
@@ -59,7 +59,8 @@ WITH ( WORKLOAD_GROUP = 'wgPriority'
 メトリック 1: "*Effective min resource percent (有効な最小リソース割合)* " (Avg 集計、`blue line`)<br>
 メトリック 2: "*Workload group allocation by system percent (システム割合別のワークロード グループの割り当て)* " (Avg 集計、`purple line`)<br>
 フィルター: [ワークロード グループ] = `wgPriority`<br>
-![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) このグラフは、25% のワークロードの分離に対して平均で 10% しか使用されていないことを示しています。  この場合、`MIN_PERCENTAGE_RESOURCE` パラメーター値を 10 または 15 に小さくすると、システム上の他のワークロードでリソースを使用できるようになります。
+![グラフのスクリーンショット。2 つのメトリックとフィルターがあります。](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png)
+このグラフは、25% のワークロードの分離に対して平均で 10% しか使用されていないことを示しています。  この場合、`MIN_PERCENTAGE_RESOURCE` パラメーター値を 10 または 15 に小さくすると、システム上の他のワークロードでリソースを使用できるようになります。
 
 ### <a name="workload-group-bottleneck"></a>ワークロード グループのボトルネック
 
@@ -81,7 +82,8 @@ WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
 メトリック 2: "*Workload group allocation by max resource percent (最大リソース割合別のワークロード グループの割り当て)* " (Avg 集計、`purple line`)<br>
 メトリック 3: "*Workload group queued queries (ワークロード グループのキューに登録されたクエリ)* " (Sum 集計、`turquoise line`)<br>
 フィルター: [ワークロード グループ] = `wgDataAnalyst`<br>
-![bottle-necked-wg](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) このグラフは、9% のリソースの上限に対してこのワークロード グループの使用率が 90% を超えていることを示しています ("*Workload group allocation by max resource percent (最大リソース割合別のワークロード グループの割り当て) メトリック*" より)。  "*Workload group queued queries (ワークロード グループのキューに登録されたクエリ) メトリック*" に示されているように、クエリが常にキューに登録されています。  この場合、`CAP_PERCENTAGE_RESOURCE` を大きくして 9% を超える値にすると、より多くのクエリを同時に実行できるようになります。  `CAP_PERCENTAGE_RESOURCE` を大きくする場合は、使用可能なリソースが十分にあり、他のワークロード グループによって分離されていないことが前提となります。  "*Effective cap resource percent (有効な上限リソース割合) メトリック*" を確認して、上限が引き上げられていることを確認します。  さらにスループットが必要な場合は、`REQUEST_MIN_RESOURCE_GRANT_PERCENT` を大きくして 3 を超える値にすることも検討してください。  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` を大きくすると、クエリの実行速度が向上する可能性があります。
+![グラフのスクリーンショット。3 つのメトリックとフィルターがあります。](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png)
+このグラフは、9% のリソースの上限に対してこのワークロード グループの使用率が 90% を超えていることを示しています ("*Workload group allocation by max resource percent (最大リソース割合別のワークロード グループの割り当て) メトリック*" より)。  "*Workload group queued queries (ワークロード グループのキューに登録されたクエリ) メトリック*" に示されているように、クエリが常にキューに登録されています。  この場合、`CAP_PERCENTAGE_RESOURCE` を大きくして 9% を超える値にすると、より多くのクエリを同時に実行できるようになります。  `CAP_PERCENTAGE_RESOURCE` を大きくする場合は、使用可能なリソースが十分にあり、他のワークロード グループによって分離されていないことが前提となります。  "*Effective cap resource percent (有効な上限リソース割合) メトリック*" を確認して、上限が引き上げられていることを確認します。  さらにスループットが必要な場合は、`REQUEST_MIN_RESOURCE_GRANT_PERCENT` を大きくして 3 を超える値にすることも検討してください。  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` を大きくすると、クエリの実行速度が向上する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

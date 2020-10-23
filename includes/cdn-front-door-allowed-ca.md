@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67330751"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91269806"
 ---
 次の CA は、独自の証明書を作成するときに使用できます。
 
@@ -23,6 +23,7 @@ ms.locfileid: "67330751"
 - AME Infra CA 02
 - Ameroot
 - APCA-DM3P
+- Atos TrustedRoot 2011
 - Autopilot Root CA
 - Baltimore CyberTrust Root
 - Class 3 Public Primary Certification Authority
@@ -52,8 +53,12 @@ ms.locfileid: "67330751"
 - GlobalSign Root CA
 - Go Daddy Root Certificate Authority - G2
 - Go Daddy Secure Certificate Authority - G2
+- Let's Encrypt Authority X3
 - QuoVadis Root CA2 G3
 - RapidSSL RSA CA 2018
+- Security Communication RootCA1
+- Security Communication RootCA2
+- Security Communication RootCA3
 - Symantec Class 3 EV SSL CA - G3
 - Symantec Class 3 Secure Server CA - G4
 - Symantec Enterprise Mobile Root for Microsoft

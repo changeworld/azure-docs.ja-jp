@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319764"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356368"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -170,7 +170,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
 
 3. **コレクション**名と**データベース**名を追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="接続文字列を更新する":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="プロジェクトのビジュアル":::
  
 4. 編集したすべてのファイルの変更を保存します。  
 
@@ -180,7 +180,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
 
 7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、**データ エクスプローラー**の順に移動すると、**changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="ポータルで生成されたデータ":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="プロジェクトのビジュアル":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics のジョブを設定する
 
@@ -190,7 +190,7 @@ Azure Stream Analytics は、ストリーミング データをリアルタイ�
 
 2. 以下に示すように、 **[入力]** を選択します。  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="入力を作成する":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="プロジェクトのビジュアル":::
 
 3. **[+ ストリーム入力の追加]** を選択します。 次に、ドロップダウン メニューから **[イベント ハブ]** を選択します。  
 
@@ -222,7 +222,7 @@ Azure Stream Analytics は、ストリーミング データをリアルタイ�
 
 8. その後、**streamjob1** に戻り、 **[クエリの編集]** を選択します。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="クエリを編集する":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="プロジェクトのビジュアル":::
  
 9. クエリ ウィンドウに次のクエリを貼り付けます。 **AVERAGE PRICE** クエリは、ユーザーによって閲覧されたすべての商品の平均価格、ユーザーのカートに追加されたすべての商品の平均価格、ユーザーによって購入されたすべての商品の平均価格を計算します。 このメトリックは、e コマース企業が商品を販売する価格や投資する在庫を決定するのに役立ちます。 たとえば、閲覧された商品の平均価格が購入された商品の平均価格を大幅に上回る場合、企業はより価格の低い商品を在庫に追加することを選択する可能性があります。
 
@@ -315,7 +315,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
    これらのグラフを表示するダッシュボードの例は次のようになります。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="視覚化":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="プロジェクトのビジュアル":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>省略可能:eコマース サイトの視覚化
 
@@ -329,13 +329,13 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 2. **topItems** コレクションを選択し、 **[スケールと設定]** で、topItems が 30 秒ごとに更新されるように、 **[Time to Live]** を **[30 秒]** に設定します。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Time to Live":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="プロジェクトのビジュアル":::
 
 3. **topItems** コレクションに最も頻繁に購入された商品のデータを入力するには、**streamjob1** に戻り、新しい**出力**を追加します。 **[Cosmos DB]** を選択します。
 
 4. 以下の図に示すように、必須フィールドに入力します。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos の出力":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="プロジェクトのビジュアル":::
  
 5. ラボの前のパートでオプションの TOP 5 クエリを追加した場合は、パート 5a に進みます。 それ以外の場合は、パート 5b に進みます。
 

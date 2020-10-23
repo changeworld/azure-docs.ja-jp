@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825363"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448462"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -169,7 +169,7 @@ Service Map エージェントは、それらがインストールされてい�
 
 Service Map マップでは、プロセスとコンピューターの失敗した接続が表示されます。赤色の破線によって、クライアント システムがプロセスまたはポートへのアクセスに失敗したことが示されます。 サービス マップ エージェントがデプロイされているシステムで、接続を試みたが失敗した場合、失敗した接続はそのシステムから報告されます。 Service Map は、接続の確立に失敗した TCP ソケットを監視することで、このプロセスを測定します。 この失敗の原因としては、ファイアウォール、クライアントまたはサーバーの構成の問題、またはリモート サービスが利用できない状態であることが考えられます。
 
-![失敗した接続](media/service-map/failed-connections.png)
+![backup.pl プロセスとポート 4475 の間の接続に失敗したことを示す赤い破線が強調表示されている Service Map の一部のスクリーンショット。](media/service-map/failed-connections.png)
 
 失敗した接続を把握すると、トラブルシューティング、移行の検証、セキュリティ分析、および全体的なアーキテクチャの理解に役立ちます。 失敗した接続は無害な場合もありますが、多くの場合は問題を端的に示しています。たとえば、突然アクセスできなくなるフェールオーバー環境、クラウド移行後に通信できなくなった 2 つのアプリケーション層などです。
 
@@ -193,7 +193,7 @@ Service Map マップでは、プロセスとコンピューターの失敗し�
 
 サーバーの右上にある省略記号 (...) をクリックすると、そのサーバーのコンテキスト メニューが表示されます。
 
-![失敗した接続](media/service-map/context-menu.png)
+![Service Map のサーバーに対して開かれているコンテキスト メニューを示すスクリーンショット。 メニューには、[サーバー マップを読み込む] と [サーバー マップを読み込む] オプションがあります。](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>サーバー マップを読み込む
 
@@ -258,7 +258,7 @@ Service Map と Change Tracking との統合は、両方のソリューション
 
 **[Machine Change Tracking]\(マシン変更の追跡\)** ウィンドウには、すべての変更が新しい順に一覧表示されており、ログ検索へのリンクで追加の詳細情報を探すことができます。
 
-![[Machine Change Tracking]\(マシン変更の追跡\) ウィンドウ](media/service-map/change-tracking.png)
+![Service Map の [Machine Change Tracking]\(マシン変更の追跡\) ウィンドウのスクリーンショット。](media/service-map/change-tracking.png)
 
 次の図は、 **[Show in Log Analytics]\(Log Analytics で表示\)** を選択すると表示される ConfigurationChange イベントの詳細なビューです。
 
@@ -300,7 +300,7 @@ Service Map と Update Management との統合は、両方のソリューショ�
 
 **[Machine Updates]\(マシンの更新\)** ウィンドウには、選択したサーバーの Update Management ソリューションからのデータが表示されます。 このウィンドウには、選択した時間範囲における、サーバーに不足している更新プログラムの概要が一覧表示されます。
 
-![[Machine Change Tracking]\(マシン変更の追跡\) ウィンドウ](media/service-map/machine-updates.png)
+![Service Map の [[Machine Updates]\(マシンの更新\)] ウィンドウのスクリーンショット。](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 
@@ -571,7 +571,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解決方法 |
+| コード | 説明 | 解像度 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512926"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533640"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 
@@ -50,13 +50,13 @@ ms.locfileid: "87512926"
 
       ![Azure Cloud Shell アイコン](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. お客様の Azure アカウントにサブスクリプションが複数ある場合は、Azure NetApp Files のホワイトリストに登録されているものを選択します。
+2. お客様の Azure アカウントにサブスクリプションが複数ある場合は、Azure NetApp Files に対して承認されているものを選択します。
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. Azure Cloud Shell コンソールで次のコマンドを入力して、お客様のサブスクリプションがホワイトリストに登録されていることを確認します。
+3. Azure Cloud Shell コンソールで次のコマンドを入力して、お客様のサブスクリプションが承認されていることを確認します。
     
     ```azurepowershell
     az feature list | grep NetApp

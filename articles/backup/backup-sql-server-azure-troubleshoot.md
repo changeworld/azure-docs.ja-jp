@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513968"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332782"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -130,7 +130,7 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細については、こちらを参照してください](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細については、こちらを参照してください](/sql/relational-databases/backup-restore/recovery-models-sql-server)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -172,7 +172,7 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| - NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの発信アクセスを許可する必要があります。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。<br>- DNS が Azure エンドポイントを解決することを確認します。<br>- VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。<br>- 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
+VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| - NSG を使用して接続を制限する場合は、*AzureBackup* サービス タグを使用して、Azure Backup サービスへの発信アクセスを許可する必要があります。Azure AD (*AzureActiveDirectory*) サービスと Azure Storage(*Storage*) サービスも同様です。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。<br>- DNS が Azure エンドポイントを解決することを確認します。<br>- VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。<br>- 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
 
 ## <a name="re-registration-failures"></a>再登録エラー
 

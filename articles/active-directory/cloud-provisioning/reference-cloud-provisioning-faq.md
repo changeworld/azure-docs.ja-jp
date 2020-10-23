@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658374"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628674"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect クラウド プロビジョニングに関する FAQ
 
@@ -83,6 +83,18 @@ Exchange ハイブリッド展開機能を利用すると、オンプレミス�
 **Q:クラウド プロビジョニング エージェントでステージング サーバーを使用できますか。**
 
 いいえ。ステージング サーバーはサポートされていません。
+
+**Q:ゲスト ユーザー アカウントを同期させることはできますか?**
+
+いいえ、ゲスト ユーザー アカウントの同期はサポートされていません。
+
+**Q:クラウド プロビジョニングに対してスコープが指定されている OU から、Azure AD Connect に対してスコープが指定されている OU にユーザーを移動すると、どうなりますか?**
+
+ユーザーは削除され、再作成されます。  クラウド プロビジョニングに対してスコープが指定されている OU からのユーザーの移動は、削除操作として表示されます。  Azure AD Connect によって管理されている OU にユーザーが移動される場合は、Azure AD に再プロビジョニングされ、新しいユーザーが作成されます。
+
+**Q:クラウド プロビジョニング フィルターのスコープ内にある OU の名前の変更または OU の移動を行う場合、Azure AD で作成されたユーザーはどうなりますか?**
+
+Nothing。  OU の名前を変更したり、OU を移動したりしても、ユーザーは削除されません。
 
 ## <a name="next-steps"></a>次のステップ 
 

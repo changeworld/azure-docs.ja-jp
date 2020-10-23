@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870189"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460643"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用して Azure SQL Database にアクセスする (プレビュー)
 
@@ -60,15 +60,15 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
 
    ![Active Directory 管理者を追加する](./media/sql-db-output-managed-identity/add-admin.png)
 
-   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません。 「 [Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)」の「 **Azure AD の機能と制限事項** 」セクションでサポートされている管理者の一覧を参照してください。 ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。 また、選択されたユーザーまたはグループは、次のセクションで**包含データベース ユーザー**を作成することができるユーザーです。
+   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure Active Directory 管理者としてサポートされていないため選択できません。 「 [Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)」の「 **Azure Active Directory の機能と制限事項** 」セクションでサポートされている管理者の一覧を参照してください。 ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。 また、選択されたユーザーまたはグループは、次のセクションで**包含データベース ユーザー**を作成することができるユーザーです。
 
 1. **[Active Directory 管理者]** ページの **[保存]** を選択します。 管理者を変更するプロセスには数分かかります。
 
-   Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想マスター データベースに存在していてはいけません。 存在する場合、Azure AD 管理者のセットアップは失敗し、その作成がロールバックされて、管理者 (名前) が既に存在していることが示されます。 SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してそのユーザーとしてサーバーに接続しようとしても失敗します。 
+   Azure Active Directory 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想プライマリ データベースに存在していてはいけません。 存在する場合、Azure Active Directory 管理者のセットアップは失敗し、その作成がロールバックされて、管理者 (名前) が既に存在していることが示されます。 SQL Server 認証ユーザーは Azure Active Directory に属していないため、Azure Active Directory 認証を使用し、そのユーザーとしてサーバーに接続しようとしても失敗します。 
 
 ## <a name="create-a-contained-database-user"></a>包含データベース ユーザーを作成する
 
-次に、Azure Active Directory ID にマップされる SQL Database の包含データベース ユーザーを作成します。 包含データベース ユーザーは、master データベースに対するログインは持っていませんが、データベースに関連付けられているディレクトリ内の ID にマップされています。 Azure Active Directory の ID は、個々のユーザー アカウントでもグループ アカウントでもかまいません。 この場合は、Stream Analytics ジョブに対する包含データベース ユーザーを作成する必要があります。 
+次に、Azure Active Directory ID にマップされる SQL Database の包含データベース ユーザーを作成します。 包含データベース ユーザーは、プライマリ データベースに対するログインは持っていませんが、データベースに関連付けられているディレクトリ内の ID にマップされます。 Azure Active Directory の ID は、個々のユーザー アカウントでもグループ アカウントでもかまいません。 この場合は、Stream Analytics ジョブに対する包含データベース ユーザーを作成する必要があります。 
 
 1. SQL Server Management Studio を使用して SQL Database に接続します。 **[ユーザー名]** は、**ALTER ANY USER** アクセス許可を持っている Azure Active Directory ユーザーです。 たとえば、SQL Server で設定した管理者です。 **[Azure Active Directory - MFA で汎用]** 認証を使用します。 
 

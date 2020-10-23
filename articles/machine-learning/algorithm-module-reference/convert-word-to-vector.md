@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898609"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536734"
 ---
 # <a name="convert-word-to-vector-module"></a>Convert Word to Vector モジュール
 
@@ -27,9 +27,9 @@ ms.locfileid: "90898609"
 
 ### <a name="more-about-converting-words-to-vectors"></a>単語をベクトルに変換する方法の詳細
 
-一般に、単語をベクトルに変換すること (単語のベクトル化) は、自然言語処理 (NLP) のプロセスです。 そのプロセスでは、言語モデルまたは言語技法を使用して、単語がベクトル空間にマップされます。つまり、各単語が実数のベクトルで表現されます。 その一方で、類似した意味を持つ単語は同様の表現を持つことができます。
+ワードをベクターに変換すること (ワードのベクター化) は、自然言語処理 (NLP) のプロセスです。 このプロセスでは、言語モデルを使用して、ワードをベクター空間にマップします。 ベクター空間は、各ワードを実数のベクターで表現します。 また、類似した意味を持つワードは同様の表現を持つことができます。
 
-単語の埋め込みは、テキスト分類や感情分析などの NLP ダウンストリーム タスクの初期入力として使用できます。
+ワードの埋め込みは、テキスト分類やセンチメント分析などの NLP ダウンストリーム タスクの初期入力として使用できます。
 
 このモジュールでは、さまざまな単語埋め込みテクノロジの中で、広く使用されている 3 つの方法が実装されています。 Word2Vec と FastText の 2 つはオンライン トレーニング モデルです。 もう 1 つは事前トレーニング済みのモデルの glove-wiki-gigaword-100 です。 
 
@@ -37,9 +37,9 @@ ms.locfileid: "90898609"
 
 方法に関するいくつかの情報を次に示します。
 
-+ Word2Vec は、浅いニューラル ネットワークを使用して単語埋め込みを学習するための最も一般的な手法の 1 つです。 この理論について解説された次の論文を PDF でダウンロードできます: [『Efficient Estimation of Word Representations in Vector Space』、Mikolov、Tomas 他](https://arxiv.org/pdf/1301.3781.pdf)。このモジュールでの実装は、[Word2Vec 用の Gensim ライブラリ](https://radimrehurek.com/gensim/models/word2vec.html)に基づいています。
++ Word2Vec は、浅いニューラル ネットワークを使用して単語埋め込みを学習するための最も一般的な手法の 1 つです。 この理論について解説された次の論文を PDF でダウンロードできます: [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/pdf/1301.3781.pdf) このモジュールでの実装は、[Word2Vec 用の Gensim ライブラリ](https://radimrehurek.com/gensim/models/word2vec.html)に基づいています。
 
-+ FastText 理論について説明している次の論文を PDF でダウンロードできます: [『Enriching Word Vectors with Subword Information』、Bojanowski、Piotr 他](https://arxiv.org/pdf/1607.04606.pdf)。このモジュールでの実装は、[FastText 用の Gensim ライブラリ](https://radimrehurek.com/gensim/models/fasttext.html)に基づいています。
++ FastText 理論について説明している次の論文を PDF でダウンロードできます: [Enriching Word Vectors with Subword Information](https://arxiv.org/pdf/1607.04606.pdf) このモジュールでの実装は、[FastText 用の Gensim ライブラリ](https://radimrehurek.com/gensim/models/fasttext.html)に基づいています。
 
 + GloVe トレーニング済みモデルは glove-wiki-gigaword-100 です。 これは、Wikipedia のテキスト コーパスに基づく事前トレーニング済みベクトルのコレクションであり、56 億個のトークンと 40 万個の小文字化されたボキャブラリ単語が含まれます。 PDF でダウンロードできます。[GloVe:Global Vectors for Word Representation](https://nlp.stanford.edu/pubs/glove.pdf).
 
@@ -71,13 +71,13 @@ ms.locfileid: "90898609"
 
         既定のウィンドウ サイズは 5 です。
 
-    + **[Number of epochs]\(エポックの数\)** では、コーパス上のエポック (イテレーション) の数を指定します。 この設定は、Gensim の `iter` パラメーターに対応します。
+    + **[Number of epochs]\(エポックの数\)** では、コーパス上のエポック (イテレーション) の数を指定します。 Gensim の `iter` パラメーターに対応します。
 
         既定のエポック数は 5 です。
 
 6. **[Maximum vocabulary size]\(最大ボキャブラリ サイズ\)** では、生成されるボキャブラリに含まれる単語の最大数を指定します。
 
-    一意の単語がこの値よりも多い場合は、頻度の低いものが取り除かれます。
+    一意のワードが最大サイズよりも多い場合は、頻度の低いものが取り除かれます。
 
     既定のボキャブラリ サイズは 10,000 です。
 
@@ -93,11 +93,11 @@ ms.locfileid: "90898609"
 
 + **埋め込みを含むボキャブラリ**:生成されたボキャブラリと共に、各単語の埋め込みが格納されます。 1 つの次元が 1 つの列を占めます。
 
-次の例では、Convert Word to Vector モジュールがどのように動作するかを示します。 Azure Machine Learning で提供される前処理された Wikipedia SP 500 データセットに、既定の設定でこのモジュールを適用します。
+次の例では、Convert Word to Vector モジュールがどのように動作するかを示します。 ここでは、前処理された Wikipedia SP 500 データセットに対して、Convert Word to Vector が既定の設定で使用されています。
 
 ### <a name="source-dataset"></a>ソース データセット
 
-データセットには、カテゴリ列と共に、Wikipedia からフェッチされたフル テキストが含まれています。 代表的な例のほんの一部を次の表に示します。
+データセットには、カテゴリ列と共に、Wikipedia からフェッチされたフル テキストが含まれています。 代表的な例の一部を次の表に示します。
 
 |Text|
 |----------|
@@ -136,13 +136,13 @@ loop|-0.391421|0.52366|0.141503|-0.105423|0.084503|-0.018424|...|-0.0521
 
     この Convert Word to Vector モジュールでは、3 つの異なる戦略、2 つのオンライン トレーニング モデル、および 1 つの事前トレーニング済みモデルを提供しました。 オンライン トレーニング モデルでは、トレーニング データとして入力データセットが使用され、トレーニングの間にボキャブラリと単語ベクトルが生成されます。 事前トレーニング済みモデルは、Wikipedia や Twitter テキストなどのより大規模なテキスト コーパスによって既にトレーニングされています。 事前トレーニング済みモデルは、実際には単語と埋め込みのペアのコレクションです。  
 
-    Glove 事前トレーニング済みモデルを単語ベクトル化戦略として選択した場合は、入力データセットからボキャブラリが要約されて、事前トレーニング済みモデルから各単語の埋め込みベクトルが生成されます。 オンライン トレーニングを行わないと、事前トレーニング済みモデルを使用するときのトレーニング時間を短縮できます。 特に入力データセットのサイズが比較的小さい場合に、パフォーマンスが向上します。
+    Glove 事前トレーニング済みモデルでは、入力データセットからボキャブラリが要約されて、事前トレーニング済みモデルから各ワードの埋め込みベクトルが生成されます。 オンライン トレーニングを行わないと、事前トレーニング済みモデルを使用するときのトレーニング時間を短縮できます。 特に入力データセットのサイズが比較的小さい場合に、パフォーマンスが向上します。
 
 + 埋め込みサイズ:
 
-    一般に、よいパフォーマンスを実現するには、単語の埋め込みの長さを数百 (100、200、300 など) に設定します。 これは、埋め込みサイズが小さいと、ベクトル空間が小さくなり、単語埋め込みの衝突が発生する可能性があるからです。  
+    通常は、ワードの埋め込みの長さを数百に設定します。 たとえば、100、200、300 などです。 埋め込みサイズが小さいと、ベクター空間が小さくなり、ワード埋め込みの衝突が発生する可能性があります。  
 
-    事前トレーニング済みモデルでは、単語埋め込みの長さは固定されています。 この実装では、glove-wiki-gigaword-100 の埋め込みサイズは 100 です。
+    事前トレーニング済みモデルでは、ワード埋め込みの長さは固定されています。 この例では、glove-wiki-gigaword-100 の埋め込みサイズは 100 です。
 
 
 ## <a name="next-steps"></a>次のステップ

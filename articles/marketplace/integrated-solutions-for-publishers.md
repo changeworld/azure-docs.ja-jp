@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119533"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91660906"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -114,4 +114,4 @@ ms.locfileid: "86119533"
 
 ## <a name="next-steps"></a>次のステップ
 
-マーケットプレースでの統合ソリューションの購入については、[統合ソリューション](./integrated-solutions.md)に関する記事を参照してください。
+- [統合ソリューション申請フォーム](https://aka.ms/AA5qicu)

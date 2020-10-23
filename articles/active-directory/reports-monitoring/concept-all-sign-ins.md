@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340589"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319772"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory サインイン アクティビティ レポート - プレビュー
 
@@ -32,8 +32,8 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
     - **サインイン** – ユーザー、アプリケーション、管理対象リソースから Azure AD にサインインしてリソースにアクセスする場合に関する情報です。
     - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
 - **Security** 
-    - **リスクの高いサインイン** - [リスクの高いサインイン](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
-    - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](concept-user-at-risk.md)は、侵害された可能性があるユーザー アカウントの指標です。
+    - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
+    - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
 
 Azure Active Directory の従来のサインイン レポートには、対話型のユーザー サインインの概要が示されています。さらに、現在プレビュー段階にある 3 つの追加サインイン レポートが利用できるようになりました。
 
@@ -86,7 +86,7 @@ Azure Active Directory の従来のサインイン レポートには、対話�
 
 - **サービス プリンシパル サインイン** - ユーザーが関与しないアプリとサービス プリンシパルによるサインインです。 このサインインの場合、認証またはリソースへのアクセス用の資格情報が、アプリまたはサービスによって、それ自身のために提供されます。
 
-- **Azure リソースのマネージド ID によるサインイン** - Azure でシークレットが管理されている Azure リソースによるサインインです。 詳細については、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」を参照してください。 
+- **Azure リソースのマネージド ID によるサインイン** - Azure でシークレットが管理されている Azure リソースによるサインインです。 詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」を参照してください。 
 
 
 ![サインイン レポートの種類](./media/concept-all-sign-ins/sign-ins-report-types.png)
@@ -422,7 +422,7 @@ Azure portal のサインイン アクティビティ レポートには、プ�
 
 - Azure リソースのマネージド ID によるサインイン
 
-![ファイルをダウンロードする](./media/concept-all-sign-ins/download-files.png "ファイルをダウンロードする")
+![ファイルのダウンロード](./media/concept-all-sign-ins/download-files.png "ファイルのダウンロード")
 
 
 

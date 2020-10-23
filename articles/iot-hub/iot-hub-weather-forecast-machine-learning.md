@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777158"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145772"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で IoT ハブからのセンサー データを使用して天気予報を行う
 
@@ -46,7 +46,7 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 - [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) アカウント。
-- [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts)、**汎用 v2** アカウントが推奨されていますが、Azure Blob Storage をサポートするすべての Azure Storage アカウントも機能します。
+- [Azure Storage アカウント](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts)、**汎用 v2** アカウントが推奨されていますが、Azure Blob Storage をサポートするすべての Azure Storage アカウントも機能します。
 
 > [!Note]
 > この記事では、Azure Stream Analytics と他のいくつかの有料サービスを使用します。 Azure リージョン間でデータを転送する必要がある場合、Azure Stream Analytics に追加料金が発生します。 このため、リソース グループ、IoT Hub、Azure Storage アカウント、およびこのチュートリアルの後半で追加した Machine Learning Studio (classic) ワークスペースと Azure Stream Analytics ジョブがすべて同じ Azure リージョンにあることを確認することをお勧めします。 Azure Machine Learning Studio (classic) とその他の Azure サービスの地域サポートは、 「[Azure product availability by region (リージョン別の Azure 製品の可用性)」ページ](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)で確認できます。
@@ -215,7 +215,7 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897466"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708256"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
@@ -42,10 +42,9 @@ ms.locfileid: "90897466"
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>個人用コンピューターで特徴量の重要度の値を生成する 
 次の例は、Azure サービスに接続することなく、個人用コンピューターで解釈可能性パッケージを使用する方法を示しています。
 
-1. `azureml-interpret` パッケージと `azureml-contrib-interpret` パッケージをインストールします。
+1. `azureml-interpret` パッケージをインストールします。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. ローカルの Jupyter ノートブックでサンプル モデルをトレーニングします。
@@ -239,15 +238,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * リモート実行では、`ExplanationClient` を使用して解釈可能性のコンテキストをアップロードします。
 * ローカル環境では、後でコンテキストをダウンロードします。
 
-1. `azureml-interpret` パッケージと `azureml-contrib-interpret` パッケージをインストールします。
+1. `azureml-interpret` パッケージをインストールします。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. ローカルの Jupyter Notebook でトレーニング スクリプトを作成します。 たとえば、「 `train_explain.py` 」のように入力します。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -275,12 +273,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. Azure Machine Learning コンピューティングをコンピューティング先として設定し、トレーニング実行を送信します。 手順については、[Python SDK を使用したコンピューティング 先の作成](how-to-create-attach-compute-sdk.md#amlcompute)に関するページをご覧ください。 [ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)も役立つ可能性があります。
+1. Azure Machine Learning コンピューティングをコンピューティング先として設定し、トレーニング実行を送信します。 手順については、「[Azure Machine Learning コンピューティング クラスターの作成と管理](how-to-create-attach-compute-cluster.md)」を参照してください。 [ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)も役立つ可能性があります。
 
 1. ローカル環境の Jupyter Notebook で説明をダウンロードします。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -332,29 +330,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 [![視覚化ダッシュボードの ICE プロット](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> Jupyter カーネルが起動する前に、視覚化ダッシュボードのウィジェット拡張機能を必ず有効にしてください。
-
-* Jupyter Notebook
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 視覚化ダッシュボードを読み込むには、次のコードを使用します。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での視覚化
@@ -370,7 +351,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
   1. 特定の実験を選択して、その実験内のすべての実行を表示します。
   1. 実行を選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
-   [![視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![AzureML studio での [実験] の視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **[モデル]** ウィンドウ
   1. 「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。

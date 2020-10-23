@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1ad9630c69e06066e9edc12441d5a42b84b15804
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e3234289fe56286cb5ff0791d983dee6ec2aa4d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488672"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91544870"
 ---
 > [!NOTE]
-> 現在、Azure Security Center ではプライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)を実行することはできません。
+> 現在、Azure Security Center ではプライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)を実行することはできません。 Azure DevOps Services や Azure Container Instances を含む特定の Azure サービスのインスタンスも、ネットワークが制限されたコンテナー レジストリにアクセスすることはできません。

@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016250"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91651158"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations の機能検証
 
@@ -58,7 +58,7 @@ Microsoft 認定チームはビデオとファイルをレビューしてから�
 
     | フィールド | Image <img src="" width="400px">|
     | --- | --- |
-    | パッケージの概要 | [![[パッケージの概要] 画面](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
+    | パッケージの概要 | [![[パッケージの概要] ウィンドウを示すスクリーンショット。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>ソリューションの承認者</li></ul> | [![[パッケージの概要] 画面](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
     | パッケージの内容<ul><li>モデル</li><li>ソフトウェア配置可能パッケージ</li></ul> | [![[パッケージの内容] 画面 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER コンフィギュレーション</li><li>データベース バックアップ</li></ul><br>**[GER コンフィギュレーション]** セクションには、コンポーネントは必要ありません。 | [![[パッケージの内容] 画面 2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |

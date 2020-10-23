@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL のセキュリティ - 単一サーバー
 description: Azure Database for PostgreSQL のセキュリティ機能の概要 - 単一サーバー。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: b95e02046b2f05dd89ec8fce5da438380a8894e9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375791"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710483"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL のセキュリティ - 単一サーバー
 
@@ -54,6 +54,9 @@ Azure Database for PostgreSQL サーバーを作成するときに、管理者�
 
 [監査ログ](concepts-audit.md)を使うと、データベースのアクティビティを追跡できます。 
 
+## <a name="migrating-from-oracle"></a>Oracle からの移行
+
+Oracle では、テーブルおよびテーブルスペースのデータを暗号化するための Transparent Data Encryption (TDE) がサポートされています。 Azure for PostgreSQL では、データはさまざまなレイヤーで自動的に暗号化されます。 このページの「保存」セクションをご覧ください。また、[カスタマー マネージド キー](./concepts-data-encryption-postgresql.md)や[インフラストラクチャの二重暗号化](./concepts-infrastructure-double-encryption.md)などのさまざまなセキュリティのトピックも参照してください。 [Azure for PostgreSQL](./concepts-extensions.md) でサポートされている、[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html) 拡張機能を使用することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 - [IP](concepts-firewall-rules.md) または[仮想ネットワーク](concepts-data-access-and-security-vnet.md)のファイアウォール規則を有効にする

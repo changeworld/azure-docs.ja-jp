@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM 内の SQL Server
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926452"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174050"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 内の SQL Server のバックアップに関するサポート マトリックス
 
@@ -22,7 +22,7 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 **サポートされているデプロイ** | SQL Marketplace の Azure VM と、Marketplace 以外の (SQL Server が手動でインストールされる) VM がサポートされています。
 **サポートされているリージョン** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE)、オーストラリア中部 (AC)、オーストラリア中部 2 (AC) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS)、インド西部 <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部 <br> ドイツ北部、ドイツ中西部 <br> スイス北部、スイス西部 <br> フランス中部 <br> 中国東部、中国東部 2、中国北部、中国北部 2
 **サポートされているオペレーティング システム** | Windows Server 2019、Windows Server 2016、Windows Server 2012、Windows Server 2008 R2 SP1 <br/><br/> Linux は現在サポートされていません。
-**サポートされる SQL Server のバージョン** | SQL Server 2019、SQL Server 2017 (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)を参照)、SQL Server 2016 および SP (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)を参照)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。
+**サポートされる SQL Server のバージョン** | SQL Server 2019、SQL Server 2017 (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)を参照)、SQL Server 2016 および SP (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)を参照)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。<br><br>Express LocalDB のバージョンはサポートされていません。
 **サポートされている .NET バージョン** | VM にインストールされている .NET Framework 4.5.2 以降
 
 ## <a name="feature-considerations-and-limitations"></a>機能の考慮事項と制限事項
@@ -41,7 +41,7 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 * すべてのバックアップの種類 (完全、差分、ログ) と復旧モデル (簡易、完全、一括ログ) がサポートされています。
 * **読み取り専用**データベースについては、バックアップの種類として完全とコピーのみの完全をサポートしています。
 * SQL ネイティブの圧縮は、バックアップ ポリシーでユーザーが明示的に有効にした場合にサポートされます。 Azure Backup を使用すると、ユーザーが設定したこのコントロールの値に応じて、COMPRESSION または NO_COMPRESSION 句を使用してインスタンス レベルの既定値がオーバーライドされます。
-* TDE - 有効なデータベース バックアップがサポートされています。 TDE で暗号化されたデータベースを別の SQL Server に復元するには、まず[証明書を宛先サーバーに復元する](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)必要があります。 SQL Server 2016 以降のバージョンでは、TDE が有効になっているデータベースのバックアップの圧縮は使用できますが、[ここ](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)で説明されているように転送サイズは低くなります。
+* TDE - 有効なデータベース バックアップがサポートされています。 TDE で暗号化されたデータベースを別の SQL Server に復元するには、まず[証明書を宛先サーバーに復元する](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)必要があります。 SQL Server 2016 以降のバージョンでは、TDE が有効になっているデータベースのバックアップの圧縮は使用できますが、[ここ](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)で説明されているように転送サイズは低くなります。
 * ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。
 * SQL Server **フェールオーバー クラスター インスタンス (FCI)** はサポートされていません。
 * スタンドアロンの SQL Server インスタンスまたは SQL Always On 可用性グループをバックアップするために複数のバックアップ ソリューションを使用すると、バックアップに失敗する可能性があります。 そうしないようにしてください。 また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。

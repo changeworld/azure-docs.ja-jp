@@ -1,6 +1,6 @@
 ---
 title: Workday 属性のリファレンス
-description: SuccessFactors-HR ドリブン プロビジョニングによってサポートされる SuccessFactors の属性について説明します。
+description: XPATH クエリを使用して Workday からフェッチできる属性について説明します。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 4d6e5fb765125a4cf68c4939e7350feb84509bf2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068100"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91266566"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性のリファレンス
 
@@ -117,7 +117,7 @@ ms.locfileid: "90068100"
 
 次に示すように、接続 URL で WWS API v30.0 以上を使用している場合:
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday バージョン情報":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday バージョン情報なし":::
 
 この場合、プロビジョニング ジョブを有効にする前に、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の **[XPATH API expressions]\(XPATH API 式\)** を更新して、表の値を使用するようにしてください。 
 

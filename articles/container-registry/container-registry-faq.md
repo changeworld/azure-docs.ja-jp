@@ -3,14 +3,14 @@ title: よく寄せられる質問
 description: Azure Container Registry サービスに関連したよく寄せられる質問への回答
 author: sajayantony
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245368"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148532"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "88245368"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
 
-はい。 [Azure Security Center](../security-center/azure-container-registry-integration.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
+はい。 [Azure Security Center](../security-center/defender-for-container-registries-introduction.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
 
@@ -259,10 +259,10 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>匿名プル アクセスを有効にするにはどうすればよいですか?
 
-匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 レジストリに[スコープ マップ (ユーザー) またはトークン リソース](https://aka.ms/acr/repo-permissions)がある場合は、サポート チケットを生成する前にそれらを削除してください (システム スコープ マップは無視できます)。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 レジストリに[スコープ マップ (ユーザー) またはトークン リソース](./container-registry-repository-scoped-permissions.md)がある場合は、サポート チケットを生成する前にそれらを削除してください (システム スコープ マップは無視できます)。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
 
-
-
+> [!NOTE]
+> 既知のイメージをプルするために必要な API にのみ、匿名でアクセスできます。 タグ リストやリポジトリ リストなどの操作に関する他の API に匿名でアクセスすることはできません。
 
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
 
@@ -443,7 +443,7 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
 
 操作が許可されない可能性のあるいくつかのシナリオを次に示します。
-* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](https://aka.ms/acr/skus)にアップグレードしてください。
+* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](./container-registry-skus.md)にアップグレードしてください。
 * イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](./container-registry-image-lock.md) コマンドを使用して、現在の属性を表示できます。
 * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
 * レジストリが、その[ストレージの上限](container-registry-skus.md#service-tier-features-and-limits)に達した可能性があります。

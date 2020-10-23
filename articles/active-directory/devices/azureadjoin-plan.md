@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268229"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653215"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -184,9 +184,10 @@ Azure AD 参加済みデバイスでは、マシンの認証に依存するオ�
 
 Azure AD 参加済みデバイスにリモート デスクトップ接続を行うには、ホスト マシンが Azure AD 参加済みまたは Hybrid Azure AD 参加済みである必要があります。 参加していないデバイスまたは Windows 以外のデバイスからのリモート デスクトップはサポートされていません。 詳しくは、[Azure AD に参加しているリモート PC への接続](/windows/client-management/connect-to-remote-aadj-pc)に関する記事をご覧ください
 
-Windows 10 2004 更新プログラムを開始すると、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
+Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
 
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
+**注**:Azure AD 参加済みデバイスは、システム準備ツール (Sysprep) または同様のイメージング ツールを使用してデプロイすることはできません
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 

@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396690"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services での Windows テンプレート マシンの設定に関するガイド
 
@@ -61,7 +61,7 @@ Active Directory を使用していないマシン上では、ユーザーは、
 
 仮想マシンが Active Directory に接続されている場合は、既知のフォルダーを OneDrive に移動することを学生に自動的に求めるように、テンプレート マシンを設定できます。  
 
-まず、Office テナント ID を取得する必要があります。  詳しい手順については、「[Office 365 テナント ID を検索する](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)」を参照してください。  次の PowerShell を使用して、Office 365 テナント ID を取得することもできます。
+まず、組織 ID を取得する必要があります。  詳しい手順については、[「Microsoft 365 組織 ID を検索する」](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)を参照してください。  次の PowerShell を使用して、組織 ID を取得することもできます。
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -71,7 +71,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Office 365 テナント ID を取得したら、次の PowerShell を使用して、既知のフォルダーを OneDrive に移動することを求めるように OneDrive を設定します。
+組織 ID を取得したら、次の PowerShell を使用して、既知のフォルダーを OneDrive に移動することを求めるように OneDrive を設定します。
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -95,7 +95,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="silently-sign-in-users-to-onedrive"></a>OneDrive にユーザーをサイレント モードでサインインする
 
-OneDrive は、ログオンしているユーザーの Windows 資格情報で自動的にサインインするように設定できます。  自動サインインは、学生が Office 365 の学校の資格情報でサインインするクラスに便利です。
+OneDrive は、ログオンしているユーザーの Windows 資格情報で自動的にサインインするように設定できます。  自動サインインは、学生が学校の資格情報でサインインするクラスに便利です。
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -115,7 +115,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>自動的にダウンロードされるファイルの最大サイズを設定する
 
-この設定は、[OneDrive ファイル オンデマンド] が有効になっていないデバイスで、[Windows 資格情報を使用して OneDrive 同期クライアントにユーザーをサイレント モードでサインインする] と組み合わせて使用されます。 指定されたしきい値 (MB 単位) を超えている OneDrive を持つすべてのユーザーは、OneDrive 同期クライアント (OneDrive.exe) でファイルがダウンロードされる前に同期する必要があるフォルダーを選択するように求められます。  この例では、"1111-2222-3333-4444" は Office 365 テナント ID、0005000 では 5 GB のしきい値が設定されます。
+この設定は、[OneDrive ファイル オンデマンド] が有効になっていないデバイスで、[Windows 資格情報を使用して OneDrive 同期クライアントにユーザーをサイレント モードでサインインする] と組み合わせて使用されます。 指定されたしきい値 (MB 単位) を超えている OneDrive を持つすべてのユーザーは、OneDrive 同期クライアント (OneDrive.exe) でファイルがダウンロードされる前に同期する必要があるフォルダーを選択するように求められます。  この例では、"1111-2222-3333-4444" は組織 ID で、0005000 では 5 GB のしきい値が設定されます。
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -124,23 +124,23 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Microsoft Office 365 をインストールして構成する
+## <a name="install-and-configure-microsoft-365"></a>Microsoft 365 をインストールして構成する
 
-### <a name="install-microsoft-office-365"></a>Microsoft Office 365 をインストールする
+### <a name="install-microsoft-365"></a>Microsoft 365 をインストールする
 
-お使いのテンプレート マシンで Office が必要な場合は、[Office 展開ツール (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ) を使用して、Office をインストールすることをお勧めします。 [Office 365 クライアント構成サービス](https://config.office.com/)を使用して、再利用可能な構成ファイルを作成し、アーキテクチャ、必要となる Office の機能、その更新頻度を選択する必要があります。
+お使いのテンプレート マシンで Office が必要な場合は、[Office 展開ツール (ODT)](https://www.microsoft.com/download/details.aspx?id=49117) を使用して、Office をインストールすることをお勧めします。 [Microsoft 365 アプリ管理センター](https://config.office.com/)を使用して、再利用可能な構成ファイルを作成し、アーキテクチャ、必要となる Office の機能、その更新頻度を選択する必要があります。
 
-1. [Office 365 クライアント構成サービス](https://config.office.com/)に移動し、独自の構成ファイルをダウンロードします。
+1. [Microsoft 365 アプリ管理センター](https://config.office.com/)にアクセスし、独自の構成ファイルをダウンロードします。
 2. [Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)をダウンロードします。  ダウンロードされるファイルは `setup.exe` です。
 3. `setup.exe /download configuration.xml` を実行して、Office コンポーネントをダウンロードします。
 4. `setup.exe /configure configuration.xml` を実行して、Office コンポーネントをインストールします。
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Microsoft Office 365 の更新プログラム チャネルを変更する
+### <a name="change-the-microsoft-365-update-channel"></a>Microsoft 365 の更新プログラム チャネルを変更する
 
-Office 構成ツールを使用すれば、Office で更新プログラムを受信する頻度を設定することができます。 ただし、インストール後に Office で更新プログラムを受信する頻度を変更する必要がある場合は、更新プログラム チャネルの URL を変更することができます。 更新プログラム チャネル URL アドレスは「[組織内のデバイスの Office 365 ProPlus 更新チャネルを変更する](https://docs.microsoft.com/deployoffice/change-update-channels)」で見つけることができます。 以下の例は、月次更新チャネルを使用するように Office 365 を設定する方法を示しています。
+Office 構成ツールを使用すれば、Office で更新プログラムを受信する頻度を設定することができます。 ただし、インストール後に Office で更新プログラムを受信する頻度を変更する必要がある場合は、更新プログラム チャネルの URL を変更することができます。 更新プログラム チャネル URL アドレスは「[組織内のデバイスの Microsoft 365 アプリ更新チャネルを変更する](https://docs.microsoft.com/deployoffice/change-update-channels)」で見つけることができます。 以下の例は、月次更新チャネルを使用するように Microsoft 365 を設定する方法を示しています。
 
 ```powershell
-# Update to the Office 365 Monthly Channel
+# Update to the Microsoft 365 Monthly Channel
 Set-ItemProperty
     -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration\CDNBaseUrl"
     -Name "CDNBaseUrl"
@@ -228,7 +228,7 @@ Windows ストア アプリでの教育によく使用される、その他の�
 
 ## <a name="conclusion"></a>まとめ
 
-この記事では、効果的なクラスのために Windows テンプレート VM を準備する、省略可能な手順を示しました。  手順には、OneDrive のインストールと Office 365 のインストール、Windows 用の更新プログラムのインストールおよび Microsoft Store アプリ用の更新プログラムのインストールが含まれます。  また、クラスに最適なスケジュールに更新プログラムを設定する方法について説明しました。  
+この記事では、効果的なクラスのために Windows テンプレート VM を準備する、省略可能な手順を示しました。  手順には、OneDrive のインストールと Microsoft 365 のインストール、Windows 用の更新プログラムのインストールおよび Microsoft Store アプリ用の更新プログラムのインストールが含まれます。  また、クラスに最適なスケジュールに更新プログラムを設定する方法について説明しました。  
 
 ## <a name="next-steps"></a>次のステップ
 コスト管理に役立つ、Windows のシャットダウン動作を制御する方法に関する記事を参照してください。「[Windows シャットダウン動作の制御ガイド](how-to-windows-shutdown.md)」

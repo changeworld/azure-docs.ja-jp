@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンス
 description: Azure Migrate アプライアンスに対するサポートの概要について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084772"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450049"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -47,12 +47,12 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **サポートされるデプロイ** | OVA テンプレートを使用して VMware VM としてデプロイする。<br/><br/> PowerShell インストール スクリプトを使用して、VMware VM または物理マシンとしてデプロイする。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
-**OVA テンプレート** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140333)からダウンロードします<br/><br/> ダウンロード サイズは 11.6 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
+**OVA テンプレート** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140333)からダウンロードします<br/><br/> ダウンロード サイズは 11.9 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
 **PowerShell スクリプト** | この[記事](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)を参照してください。<br/><br/> 
 **ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/><br/> アプライアンスを VMware VM で実行する場合、vCenter Server に、要件を満たす VM を割り当てるのに十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。
 **VMware の要件** | アプライアンスを VMware VM としてデプロイする場合は、バージョン 5.5 以降を実行している ESXi ホストにデプロイする必要があります。<br/><br/> 5\.5、6.0、6.5、または 6.7 を実行する vCenter Server。
 **VDDK (エージェントレス移行)** | アプライアンスを VMware VM としてデプロイし、エージェントレスの移行を実行している場合は、VMware vSphere VDDK をアプライアンス VM にインストールする必要があります。
-**ハッシュ値 - OVA** | OVA テンプレートのハッシュ値を[確認](tutorial-assess-vmware.md#verify-security)します。
+**ハッシュ値 - OVA** | OVA テンプレートのハッシュ値を[確認](tutorial-discover-vmware.md#verify-security)します。
 **ハッシュ値 - PowerShell スクリプト** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 
 
@@ -67,11 +67,11 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **サポートされるデプロイ** | VHD テンプレートを使用して Hyper-V VM としてデプロイする。<br/><br/> PowerShell インストール スクリプトを使用して、Hyper-V VM または物理マシンとしてデプロイする。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | アプライアンスは、最大 5000 個の Hyper-V ホストを検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
-**VHD テンプレート** | VHD を含む zip 形式のフォルダー。 ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140422)からダウンロードします。<br/><br/> ダウンロード サイズは 10.4 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
+**VHD テンプレート** | VHD を含む zip 形式のフォルダー。 ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140422)からダウンロードします。<br/><br/> ダウンロード サイズは 8.91 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
 **PowerShell スクリプト** | この[記事](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)を参照してください。<br/><br/> 
-**ソフトウェア/ハードウェア***   |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、Hyper-V ホスト上に、アプライアンス VM 用の 16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、外部スイッチを割り当てるための十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
+**ソフトウェア/ハードウェア***   |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、ハードウェア要件を割り当てるのに十分なリソースが Hyper-V ホスト上に必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
 **Hyper-V の要件** | VHD テンプレートを使用してアプライアンスをデプロイする場合、Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/><br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。 
-**ハッシュ値 - VHD** | VHD テンプレートのハッシュ値。
+**ハッシュ値 - VHD** | VHD テンプレートのハッシュ値を[確認](tutorial-discover-hyper-v.md#verify-security)します。
 **ハッシュ値 - PowerShell スクリプト** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 
 
@@ -84,9 +84,9 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **サポートされるデプロイ** | PowerShell インストール スクリプトを使用して、専用物理マシンまたは VM としてデプロイする。 スクリプトはポータルからダウンロードできます。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | 1 つのアプライアンスで最大 1000 台の物理サーバーを検出できます。
-**PowerShell スクリプト** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-discover-physical.md)。<br/><br/> ダウンロード サイズは 85 MB です。
-**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/> Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。
-**ハッシュ値** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
+**PowerShell スクリプト** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-discover-physical.md)。<br/><br/> ダウンロード サイズは 85.8 MB です。
+**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域を搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/>_(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_
+**ハッシュ値** | PowerShell スクリプトのハッシュ値を[確認](tutorial-discover-physical.md#verify-security)します。
 
 ## <a name="url-access"></a>URL アクセス
 

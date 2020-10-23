@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587227"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372665"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -34,7 +34,7 @@ App Service プランでは、お客様が管理している専用のインフ�
 
 従量課金プランを使用する場合、Azure Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。 このサーバーレス プランではスケーリングが自動的に行われ、関数の実行中にのみコンピューティング リソースに対して料金が発生します。 従量課金プランでは、構成可能な期間が経過すると関数の実行はタイムアウトします。
 
-課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。
+課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 使用量は、関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。
 
 従量課金プランは既定のホスティング プランであり、次の利点があります。
 
@@ -58,7 +58,7 @@ Premium プランを使用すると、従量課金プランと同じように、
 
 Premium プランで関数アプリを作成する方法については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。
 
-Premium プランの課金は、実行や消費されたメモリごとの課金ではなく、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 1 つのプランにつき、少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 つまり、実行数に関係なく、アクティブなプランごとに最小の月額コストがかかります。 なお、Premium プランのすべての関数アプリでは、事前ウォーミングされたインスタンスとアクティブなインスタンスが共有されことに注意してください。
+Premium プランの課金は、実行や消費されたメモリごとの課金ではなく、インスタンス全体に割り当てられているコア秒数とメモリに基づいています。  Premium プランの場合、実行料金は発生しません。 1 つのプランにつき、少なくとも 1 つのインスタンスが常に割り当てられている必要があります。 その結果として、関数がアクティブかアイドル状態かに関係なく、アクティブなプラン別の月あたりコストが最も少なくなります。 Premium プランのすべての関数アプリで割り当てられたインスタンスが共有されることにご注意ください。
 
 次のような状況では、Azure Functions の Premium プランを検討してください。
 
@@ -79,12 +79,12 @@ Premium プランの課金は、実行や消費されたメモリごとの課金
 
 App Service プランの関数アプリに対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/overview-hosting-plans.md)」を参照してください。
 
-App Service プランでは、VM インスタンスを追加して、手動でスケールアウトできます。 自動スケーリングを有効にすることもできます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/manage-scale-up.md) に関するページを参照してください。 
+App Service プランを使用し、VM インスタンスを追加して、手動でスケールアウトできます。 自動スケーリングを有効にすることもできます。ただし、自動スケーリングは、Premium プランのエラスティック スケールより遅くなります。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/manage-scale-up.md) に関するページを参照してください。 
 
 App Service プランで JavaScript 関数を実行する場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#choose-single-vcpu-app-service-plans)に関するページをご覧ください。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-[App Service Environment](../app-service/environment/intro.md) (ASE) で実行すると、関数を完全に分離し、高スケールを活用できます。
+[App Service Environment](../app-service/environment/intro.md) (ASE) で実行すると、関数を完全に分離し、App Service Plan より多い数のインスタンスを活用できます。
 
 ### <a name="always-on"></a><a name="always-on"></a> 常にオン
 
@@ -121,6 +121,12 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)に関する記事をご覧ください。
+
+### <a name="in-region-data-residency"></a>リージョンのデータの保存場所
+
+顧客データをすべて 1 つのリージョン内に留める必要があるときは、関数アプリに関連付けられているストレージ アカウントは、[リージョン内冗長性](../storage/common/storage-redundancy.md)が与えられたアカウントにする必要があります。  リージョン内で冗長性を持つストレージ アカウントは、Durable Functions の [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) でも使用が求められることがあります。
+
+プラットフォームで管理されるその他の顧客データは、Load Balancer App Service Environment (ILB ASE) でホストしているとき、そのリージョン内にのみ格納されます。  詳細については [ASE ゾーンの冗長性](../app-service/environment/zone-redundancy.md#in-region-data-residency)に関するページを参照してください。
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>従量課金プランと Premium プランのしくみ
 
@@ -185,7 +191,7 @@ Python と Node.js のスケールインの詳細については、「[Azure Fun
 |**[従量課金プラン](#consumption-plan)**| 自動的にスケールし、関数が実行されている際のコンピューティング リソースに対してのみ課金されます。 従量課金プランでは、Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。<br/> ✔ 既定のホスティング プランです。<br/>✔ 関数の実行中にのみ課金されます。<br/>✔ 負荷が高い期間中であっても、自動的にスケールアウトされます。|  
 |**[Premium プラン](#premium-plan)**|需要に応じて自動的にスケーリングを行いながら、事前ウォーミングされたワーカーを使用して、アイドル状態になっても遅延なくアプリケーションを実行したり、より強力なインスタンスで実行したり、VNET に接続したりすることができます。 次の状況では、App Service プランのすべての機能に加えて、Azure Functions Premium プランを検討してください。 <br/>✔ 関数を継続的に、またはほぼ継続的に実行したい。<br/>✔ 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒の請求額は低い。<br/>✔ 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。<br/>✔ 従量課金プランで許可されている最大実行時間よりも長くコードを実行する必要がある。<br/>✔ 仮想ネットワーク接続など、Premium プランでのみ利用できる機能が必要である。|  
 |**[専用プラン](#app-service-plan)** <sup>1</sup>|App Service プラン内で、関数を通常の App Service プラン料金で実行します。 長期の操作や、より予測的なスケーリングやコストが必要な場合に適しています。 次のような状況では、App Service プランを検討してください。<br/>✔ 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。<br/>✔ 関数を実行するカスタム イメージを提供したい。|  
-|**[ASE](#app-service-plan)** <sup>1</sup>|App Service Environment (ASE) は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 ASE は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ 高スケール。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ 高いメモリ使用率。|  
+|**[ASE](#app-service-plan)** <sup>1</sup>|App Service Environment (ASE) は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 ASE は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ 高スケール。<br/>✔ コンピューティングの完全分離とセキュリティで保護されたネットワーク アクセス。<br/>✔ 高いメモリ使用率。|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes は、Kubernetes プラットフォーム上で実行される完全に分離された専用の環境を提供します。  Kubernetes は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ ハードウェア要件のカスタマイズ。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ ハイブリッド環境またはマルチクラウド環境で実行可能。<br/>✔ 既存の Kubernetes アプリケーションやサービスと並行して実行。|  
 
 <sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。

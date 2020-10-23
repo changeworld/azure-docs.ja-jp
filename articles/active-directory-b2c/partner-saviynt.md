@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708372"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91259138"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Saviynt と Azure Active Directory B2C を構成するチュートリアル
 
-このサンプル チュートリアルでは、Azure Active Directory (AD) B2C を [Saviynt](https://saviynt.com/) と統合する方法についてのガイダンスを提供します。 Saviynt の Security Manager プラットフォームは、1 つの統合されたプラットフォームであり、現在のビジネス ニーズに応じた可視性、セキュリティ、およびガバナンスを提供します。 Saviynt には、アプリケーションのリスクとガバナンス、インフラストラクチャ管理、特権アカウント管理、および顧客リスク分析が組み込まれています。
+このサンプル チュートリアルでは、Azure Active Directory (AD) B2C を [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) と統合する方法についてのガイダンスを提供します。 Saviynt の Security Manager プラットフォームは、1 つの統合されたプラットフォームであり、現在のビジネス ニーズに応じた可視性、セキュリティ、およびガバナンスを提供します。 Saviynt には、アプリケーションのリスクとガバナンス、インフラストラクチャ管理、特権アカウント管理、および顧客リスク分析が組み込まれています。
 
 このサンプル チュートリアルでは、Azure AD B2C ユーザーにきめ細かいアクセス制御ベースの委任管理を提供するように Saviynt を設定します。 Saviynt では、ユーザーが Azure AD B2C ユーザーを管理する権限を持っているかどうかを判断するために、次のチェックが実行されます。
 
@@ -46,7 +46,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 
 - [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) - 顧客のサインアップ、サインイン、およびプロファイルの管理方法のカスタム制御を可能にするサービスとして企業-消費者間 ID。
 
-- [Saviynt](https://saviynt.com/) - Azure AD B2C ユーザーのユーザー ライフサイクル管理とアクセス ガバナンスのためのきめ細かい委任管理機能を提供する ID ガバナンス プラットフォーム。  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) - Azure AD B2C ユーザーのユーザー ライフサイクル管理とアクセス ガバナンスのためのきめ細かい委任管理機能を提供する ID ガバナンス プラットフォーム。  
 
 - [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) - この API には、Saviynt で Azure AD B2C ユーザーと Azure AD B2C でのアクセスを管理するためのインターフェイスが用意されています。
 
@@ -73,7 +73,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C と Saviynt を構成する
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>Saviynt 用 Azure AD アプリケーションの作成
+### <a name="create-an-azure-ad-application-for-saviynt"></a>Saviynt 用 Azure AD アプリケーションを作成する
 
 1. [Azure portal](https://portal.azure.com/#home) にサインインします。
 
@@ -108,7 +108,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 
 15. Saviynt での設定を完了するには、テナント ID、クライアント ID、およびクライアント シークレットが必要です。
 
-### <a name="enabling-saviynt-to-delete-users"></a>Saviynt でユーザーを削除できるようにする
+### <a name="enable-saviynt-to-delete-users"></a>Saviynt でユーザーを削除できるようにする
 
 以下の手順では、Saviynt で Azure AD B2C 内のユーザー削除操作を実行できるようにする方法について説明します。
 

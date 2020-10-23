@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400691"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -306,7 +306,7 @@ Azure Active Directory (AD)、クラウド ソリューション プロバイダ
 
 ## <a name="manage-tenants"></a>テナントを管理する
 
-Azure Active Directory (AD) テナントは、Azure portal で設定される組織の表現です。このドキュメントでは、"職場アカウント" と呼んでいます。社内外のユーザーに対する Microsoft クラウド サービスの特定のインスタンスは、Azure AD テナントを通じて効率的に管理することができます。 所属する組織が Microsoft Cloud Service (Azure、Microsoft Intune、Office 365 など) に加入している場合、自動的に Azure AD テナントが作成されています。
+Azure Active Directory (AD) テナントは、Azure portal で設定される組織の表現です。このドキュメントでは、"職場アカウント" と呼んでいます。社内外のユーザーに対する Microsoft クラウド サービスの特定のインスタンスは、Azure AD テナントを通じて効率的に管理することができます。 所属する組織が Microsoft クラウド サービス (Azure、Microsoft Intune、Microsoft 365 など) にサブスクライブしている場合、自動的に Azure AD テナントが作成されています。
 
 パートナー センターで使用するテナントは複数設定することができます。 パートナー センター アカウントにおける**マネージャー** ロールのユーザーが、そのアカウントに対して Azure AD テナントを追加したり削除したりすることができます。  
 

@@ -1,20 +1,20 @@
 ---
 title: イメージ ディレクトリの分割
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で画像モデルのスコア付けモジュールを使用して、トレーニングされた画像モデルにより予測を生成する方法について説明します。
+description: Azure Machine Learning デザイナー (プレビュー) の Split Image Directory モジュールを使用して、画像ディレクトリの画像を 2 つの異なるセットに分割する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890260"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448683"
 ---
 # <a name="split-image-directory"></a>イメージ ディレクトリの分割
 
@@ -28,7 +28,7 @@ ms.locfileid: "90890260"
 
 2. それを、出力が画像ディレクトリであるモジュールに接続します。
 
-3. **[Fraction of images in the first output]\(最初の出力に含まれる画像の割合\)** を入力し、左の分割に入れるデータの割合を指定します。既定値は 0.9 です。
+3. **[Fraction of images in the first output]\(最初の出力に含まれる画像の割合\)** を入力し、左の分割に入れるデータの割合を指定します。既定値は 0.9 です。 割合の結果が整数でない場合、モジュールでは小さい方の近い整数が使用されます。
 
 
 ## <a name="technical-notes"></a>テクニカル ノート

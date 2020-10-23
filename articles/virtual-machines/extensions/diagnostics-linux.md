@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a0b2afa8b566ec82fc638291c43f3e0419f654c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448189"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -108,6 +108,35 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
+#### <a name="azure-cli-sample-for-installing-lad-30-extension-on-the-vmss-instance"></a>LAD 3.0 拡張機能を VMSS インスタンスにインストールするための Azure CLI のサンプル
+
+```azurecli
+#Set your Azure VMSS diagnostic variables correctly below
+$my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
+$my_linux_vmss=<your_azure_linux_vmss_name>
+$my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
+
+# Should login to Azure first before anything else
+az login
+
+# Select the subscription containing the storage account
+az account set --subscription <your_azure_subscription_id>
+
+# Download the sample Public settings. (You could also use curl or any web browser)
+wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
+
+# Build the VMSS resource ID. Replace storage account name and resource ID in the public settings.
+$my_vmss_resource_id=$(az vmss show -g $my_resource_group -n $my_linux_vmss --query "id" -o tsv)
+sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
+sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
+
+# Build the protected settings (storage account SAS token)
+$my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
+$my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
+
+# Finally tell Azure to install and enable the extension
+az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+```
 
 #### <a name="powershell-sample"></a>PowerShell のサンプル
 
@@ -190,7 +219,7 @@ Resource Manager テンプレート内の SAS トークンを取得するには�
 1. 前述のように、適切なセクションを作成します
 1. [SAS の生成] ボタンをクリックします。
 
-![image](./media/diagnostics-linux/make_sas.png)
+![スクリーンショットには、[Shared access signature] ページと、[SAS の生成] が表示されています。](./media/diagnostics-linux/make_sas.png)
 
 生成された SAS を storageAccountSasToken フィールドにコピーします。先頭の疑問符 ("?") を削除します。
 
@@ -748,7 +777,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 Azure ポータルを使用して、パフォーマンス データを表示したり、アラートを設定したりします。
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![スクリーンショットには、[使用されたディスク領域]\(Used disk space on\) メトリックが選択され、結果のグラフが Azure portal で表示されています。](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` データは常に Azure Storage テーブルに格納されます。 Azure Storage API は、さまざまな言語とプラットフォームで利用できます。
 
@@ -757,7 +786,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 さらに、次の UI ツールを使用して、Azure Storage のデータにアクセスすることもできます。
 
 * Visual Studio のサーバー エクスプローラー。
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
+* [スクリーンショットには、Azure Storage Exploref のコンテナーとテーブルが示されています](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 

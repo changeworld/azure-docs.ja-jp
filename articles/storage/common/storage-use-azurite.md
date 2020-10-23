@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001911"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331575"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
@@ -555,6 +555,12 @@ Azurite は Azure Storage エラー処理ロジックに合わせて調整され
 Azurite は、読み取りアクセス geo 冗長レプリケーション (RA-GRS) をサポートしています。 ストレージ リソースの場合、2 次拠点にアクセスするにはアカウント名に `-secondary` を付加します。 たとえば、Azurite で読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
+
+### <a name="table-support"></a>テーブル サポート
+
+Azurite でのテーブルのサポートは現在開発中であり、協力を歓迎しています。 最新の進行状況については、[Azurite V3 テーブル](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) プロジェクトを確認してください。
+
+持続的関数のサポートにはテーブルが必要です。
 
 ## <a name="azurite-is-open-source"></a>Azurite はオープンソースです
 

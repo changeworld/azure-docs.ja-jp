@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256256"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357218"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -106,7 +106,7 @@ Service Fabric Explorer を使用して、特定のアプリケーションの�
 ## <a name="event-store"></a>EventStore
 EventStore は Service Fabric Explorer と REST API で使用可能な Service Fabric プラットフォーム イベントを提供する、プラットフォームによって提供される機能です。 ノード、サービス、アプリケーション、クエリなどの各エンティティに対してクラスター内で行われていることの時刻に基づくスナップショット ビューを表示できます。 「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」で、EventStore の詳細を確認することもできます。   
 
-![EventStore][sfx-eventstore]
+![[イベント] が選択された [ノード] ウィンドウを示すスクリーンショット。][sfx-eventstore]
 
 >[!NOTE]
 >Service Fabric バージョン 6.4 の時点で、 EventStore は既定では有効になりません。Resource Manager テンプレートで有効にする必要があります。
