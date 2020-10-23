@@ -132,7 +132,7 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 管理操作の承認
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
@@ -235,10 +235,13 @@
                   href: ../common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: データを BLOB にインポートする
                   href: ../common/storage-import-export-data-to-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: データをファイルにインポートする
                   href: ../common/storage-import-export-data-to-files.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: BLOB からデータをエクスポートする
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: 操作方法
                   items:
                     - name: カスタマー マネージド キーを使用する
@@ -684,7 +687,7 @@
               href: data-lake-storage-introduction-abfs-uri.md
             - name: 階層型名前空間について
               href: data-lake-storage-namespace.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
