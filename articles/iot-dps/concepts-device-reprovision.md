@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975348"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842854"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub デバイスの再プロビジョニングの概念
 
@@ -32,7 +32,7 @@ Device Provisioning Service 内の再プロビジョニングのサポートで�
 
 デバイスの状態データは、[デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)とデバイスの機能で構成されています。 このデータは Device Provisioning Service インスタンスおよびデバイスが割り当てられている IoT Hub に格納されます。
 
-![Device Provisioning Service でのプロビジョニング](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Device Provisioning Service でプロビジョニングが機能する方法を示す図。](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 デバイスが Device Provisioning Service インスタンスで最初にプロビジョニングされる場合、次の手順が実行されます。
 
@@ -52,13 +52,13 @@ Device Provisioning Service 内の再プロビジョニングのサポートで�
 
 * **データの再プロビジョニングと移行**: このポリシーは新しい登録エントリの既定値です。 このポリシーは、登録エントリに関連付けられているデバイスが新しい要求 (1) を送信するときに処理されます。 登録エントリの構成に応じて、デバイスは別の IoT ハブに再割り当てされる可能性があります。 デバイスの割り当て先の IoT ハブが変更されると、最初の IoT ハブへのデバイスの登録は削除されます。 最初の IoT Hub から更新されたデバイスの状態情報は、新しい IoT Hub (2) に移行されます。 移行中、デバイスの状態は "**割り当てています**" と報告されます。
 
-    ![Device Provisioning Service でのプロビジョニング](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![登録エントリに関連付けられているデバイスが新しい要求を送信するときに処理されるポリシーを示す図。](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
 * **初期構成の再プロビジョニングとリセット**: このポリシーは、登録エントリに関連付けられているデバイスが新しいプロビジョニング要求 (1) を送信するときに処理されます。 登録エントリの構成に応じて、デバイスは別の IoT ハブに再割り当てされる可能性があります。 デバイスの割り当て先の IoT ハブが変更されると、最初の IoT ハブへのデバイスの登録は削除されます。 プロビジョニング サービス インスタンスが、デバイスがプロビジョニングされたときに受け取った初期構成のデータは、新しい IoT Hub (2) に提供されます。 移行中、デバイスの状態は "**割り当てています**" と報告されます。
 
     このポリシーは、IoT Hub を変更せずにファクトリ リセットに使用されることが多いです。
 
-    ![Device Provisioning Service でのプロビジョニング](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![登録エントリに関連付けられているデバイスが新しいプロビジョニング要求を送信するときにポリシーが処理される方法を示す図。](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **再プロビジョニングしない**: デバイスは別のハブに再プロビジョニングされることはありません。 このポリシーは、下位互換性を管理するために提供されます。
 

@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470070"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078580"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift 4 クラスター アプリケーションのバックアップを作成する
 
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 バックアップが正常に実行されると、`phase:Completed` が出力され、オブジェクトがストレージ アカウントのコンテナー内に配置されます。
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Velero を使用してスナップショットを含むバックアップを作成する
+
+Velero を使用してアプリケーションの永続ボリュームを含むアプリケーション バックアップを作成するには、アプリケーションが存在する名前空間を含める他に、バックアップの作成時に `snapshot-volumes=true` フラグを含める必要があります
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+バックアップの状態を確認するには、次を実行します。
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+バックアップが正常に実行されると、`phase:Completed` が出力され、オブジェクトがストレージ アカウントのコンテナー内に配置されます。
+
+Velero を使用してバックアップと復元を作成する方法の詳細については、[ネイティブな方法による OpenShift リソースのバックアップ](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)に関するページを参照してください
+
 ## <a name="next-steps"></a>次の手順
 
 この記事では、Azure Red Hat OpenShift 4 クラスター アプリケーションをバックアップしました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * Velero を使用して OpenShift v4 クラスター アプリケーションのバックアップを作成する
+> * Velero を使用してスナップショットを含む OpenShift v4 クラスター アプリケーションのバックアップを作成する
 
 
 次の記事に進み、Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する方法を確認してください。
 
 * [Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する](howto-create-a-restore.md)
+* [スナップショットを含む Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する](howto-create-a-restore.md)

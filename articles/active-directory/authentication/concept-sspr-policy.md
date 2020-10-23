@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 10/05/2020
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052717"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964997"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーとアカウント制限
 
@@ -41,11 +41,13 @@ Azure AD にサインインする必要があるユーザー アカウントは�
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD パスワード ポリシー
 
-パスワード ポリシーは、Azure AD で直接作成および管理されるすべてのユーザー アカウントに適用されます。 このパスワード ポリシーを変更することはできませんが、[Azure AD のパスワードを保護するためのカスタムの禁止パスワードを構成する](tutorial-configure-custom-password-protection.md)ことはできます。
+パスワード ポリシーは、Azure AD で直接作成および管理されるすべてのユーザー アカウントに適用されます。 これらのパスワード ポリシー設定の一部は変更できませんが、[Azure AD のパスワード保護用のカスタム禁止パスワード](tutorial-configure-custom-password-protection.md)またはアカウント ロックアウト パラメーターを構成することができます。
 
-パスワード ポリシーは、EnforceCloudPasswordPolicyForPasswordSyncedUsers を有効にしない限り、Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたユーザー アカウントに対して適用されません。
+既定では、間違ったパスワードを使用して 10 回サインインに失敗すると、アカウントはロックアウトされます。 ユーザーは 1 分間ロックされます。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。スマート ロックアウトのしきい値と期間を定義できます。
 
-次のパスワード ポリシー オプションが定義されています。
+Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPasswordSyncedUsers* を有効にしない限り、Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたユーザー アカウントに対して適用されません。
+
+次の Azure AD パスワード ポリシー オプションが定義されています。 特に明記されていない場合、これらの設定を変更することはできません。
 
 | プロパティ | 必要条件 |
 | --- | --- |
@@ -57,11 +59,10 @@ Azure AD にサインインする必要があるユーザー アカウントは�
 | パスワードの有効期限 (パスワードを無期限にします) |<ul><li>既定値: **false** (パスワードの有効期限が指定されていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
 | パスワード変更履歴 | ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは*できません*。 |
 | パスワード リセット履歴 | ユーザーが忘れたパスワードをリセットする場合、前回のパスワードを再度使用することが ''*できます*''。 |
-| アカウントのロックアウト | 正しくないパスワードでサインイン試行に 10 回失敗すると、ユーザーを 1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。 |
 
 ## <a name="administrator-reset-policy-differences"></a>管理者リセット ポリシーの相違点
 
-Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2 ゲート* パスワードのリセット ポリシーを適用します。 このポリシーは、ユーザーに対して定義したものとは異なる場合があります。また、このポリシーを変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
+既定で、管理者アカウントはセルフサービスのパスワード リセットが有効になっており、強力な既定の *2 ゲート* パスワード リセット ポリシーが適用されます。 このポリシーは、ユーザーに対して定義したものとは異なる場合があります。また、このポリシーを変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
 
 2 ゲート ポリシーでは、管理者にはセキュリティの質問を使用する機能がありません。
 
@@ -93,6 +94,8 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
 * 試用版サブスクリプションで 30 日が経過している、または
 * Azure AD テナント用に、*contoso.com* のようなカスタム ドメインが構成されている、または
 * Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
+
+[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell コマンドレットを使用して、管理者アカウントに対する SSPR の使用を無効にすることができます。 `-SelfServePasswordResetEnabled $False` パラメーターを使用すると、管理者の SSPR は無効になります。
 
 ### <a name="exceptions"></a>例外
 

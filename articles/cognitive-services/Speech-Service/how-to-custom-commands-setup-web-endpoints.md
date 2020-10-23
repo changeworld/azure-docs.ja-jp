@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362112"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843126"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -79,7 +79,7 @@ ms.locfileid: "91362112"
     **[シンプルなエディター]** に「`{SubjectDevice} is {OnOff}`」と入力します。
    
    > [!div class="mx-imgBorder"]
-   > ![成功時の Web エンドポイント アクションの呼び出し](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![[成功時] - [実行するアクション] 画面を示すスクリーンショット。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | 設定 | 推奨値 | 説明 |
    | ------- | --------------- | ----------- |
@@ -107,7 +107,7 @@ ms.locfileid: "91362112"
 - 成功時の応答\
 保存、トレーニング、テスト
    > [!div class="mx-imgBorder"]
-   > ![成功時の Web エンドポイント アクションの呼び出し](media/custom-commands/setup-web-endpoint-on-success-response.png)
+   > ![成功時の応答を示すスクリーンショット。](media/custom-commands/setup-web-endpoint-on-success-response.png)
 - 失敗時の応答\
 クエリ パラメーターの 1 つを削除し、保存、再トレーニング、およびテストを行います。
    > [!div class="mx-imgBorder"]

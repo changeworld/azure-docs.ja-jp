@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447742"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966136"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -209,73 +209,76 @@ Device Provisioning Service での登録の詳細については、[デバイス
 
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。
 
+[Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge.md)に関するページにある手順に従い、その後、この記事に戻ってデバイスをプロビジョニングします。
+
 DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.0.9 以降でのみサポートされています。
 
-デバイスをプロビジョニングする際には、次の情報が必要になります。
+## <a name="configure-the-device-with-provisioning-information"></a>プロビジョニング情報を使用してデバイスを構成する
+
+ランタイムがデバイスにインストールされたら、デバイス プロビジョニング サービスと IoT Hub に接続するために使用される情報でデバイスを構成します。
+
+次の情報を用意しておきます。
 
 * DPS の **ID スコープ**値。 Azure portal で、使用している DPS インスタンスの概要ページから、この値を取得できます。
 * デバイス上のデバイス ID 証明書チェーン ファイル。
 * デバイス上のデバイス ID キー ファイル。
-* オプションの登録 ID (指定しない場合、デバイス ID 証明書内の共通名から取得されます)。
+* 登録 ID (省略可能)。 指定しない場合、ID はデバイス ID 証明書内の共通名から取得されます。
 
 ### <a name="linux-device"></a>Linux デバイス
 
-以下のリンクを使用して、デバイスのアーキテクチャに適したコマンドを使ってデバイスに Azure IoT Edge ランタイムをインストールします。 セキュリティ デーモンの構成に関するセクションまで進んだら、X.509 の手動プロビジョニングではなく自動プロビジョニング用に IoT Edge ランタイムを構成します。 この記事にあるここまでのセクションを完了すると、必要なすべての情報と証明書ファイルが用意できます。
+1. IoT Edge デバイスで構成ファイルを開きます。
 
-[Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-X.509 証明書とキー情報を config.yaml ファイルに追加する場合、パスはファイル URI として指定する必要があります。 次に例を示します。
+1. ファイルのプロビジョニング構成セクションを見つけます。 DPS 対称キーのプロビジョニング行のコメントを解除し、他にもプロビジョニング行があれば、それらのコメントが解除されていることを確認します。
 
-* `file:///<path>/identity_certificate_chain.pem`
-* `file:///<path>/identity_key.pem`
+   `provisioning:` の行の先頭には空白文字を入れず、入れ子の項目には 2 つの空白でインデントする必要があります。
 
-構成ファイル内の X.509 自動プロビジョニングに関するセクションは、次のようになります。
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "x509"
+   #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
 
-```yaml
-# DPS X.509 provisioning configuration
-provisioning:
-  source: "dps"
-  global_endpoint: "https://global.azure-devices-provisioning.net"
-  scope_id: "<SCOPE_ID>"
-  attestation:
-    method: "x509"
-#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
-    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-```
+1. `scope_id`、`identity_cert`、`identity_pk` の値を DPS およびデバイス情報で更新します。
 
-`scope_id`、`identity_cert`、`identity_pk` のプレースホルダー値を、使用している DPS インスタンスのスコープ ID と、デバイス上の証明書チェーンおよびキー ファイルの場所を表す URI に置き換えます。 必要に応じてデバイスの `registration_id` を指定するか、この行をコメントアウトして、デバイスを ID 証明書の CN 名で登録します。
+   X.509 証明書とキー情報を config.yaml ファイルに追加する場合、パスはファイル URI として指定する必要があります。 次に例を示します。
 
-config.yaml ファイルを更新した後は、必ずセキュリティ デーモンを再起動します。
+   `file:///<path>/identity_certificate_chain.pem`
+   `file:///<path>/identity_key.pem`
 
-```bash
-sudo systemctl restart iotedge
-```
+1. 必要に応じてデバイスの `registration_id` を指定するか、この行をコメントアウトして、デバイスを ID 証明書の CN 名で登録します。
+
+1. デバイスで行ったすべての構成の変更が反映されるように、IoT Edge ランタイムを再起動します。
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows デバイス
 
-ID 証明書チェーンと ID キーを生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムを、手動プロビジョニングではなく、自動プロビジョニング用に構成します。
-
-Windows での IoT Edge のインストールの詳細については、コンテナーの管理や IoT Edge の更新などのタスクに関する前提条件や手順を含めて、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」を参照してください。
-
 1. 管理者モードで PowerShell ウィンドウを開きます。 IoT Edge をインストールするときは、PowerShell (x86) ではなく、PowerShell の AMD64 セッションを必ず使用してください。
 
-1. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。
+1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。そのため、`-DpsX509` フラグを使用し、X.509 証明書認証と共に自動プロビジョニングを使用します。
+
+   `{scope_id}`、`{identity cert chain path}`、`{identity key path}` のプレースホルダー値を、使用している DPS インスタンスの適切な値およびデバイス上のファイル パスに置き換えます。
+
+   ID 証明書の CN 名以外としてデバイス ID を設定する場合、`-RegistrationId {registration_id}` を追加します。
+
+   Windows で Linux コンテナーを使用している場合、`-ContainerOs Linux` パラメーターを追加します。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
-
-1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 自動プロビジョニングを使用するために `-Dps` フラグを使用する場合を除き、このコマンドでは、手動プロビジョニングが既定で設定されます。
-
-   `{scope_id}`、`{identity cert chain path}`、`{identity key path}` のプレースホルダー値を、使用している DPS インスタンスの適切な値およびデバイス上のファイル パスに置き換えます。 登録 ID を指定する場合は、`-RegistrationId {registration_id}` も含めて、プレースホルダーを適宜置き換えます。
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

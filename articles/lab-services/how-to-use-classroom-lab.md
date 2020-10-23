@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services でクラスルーム ラボにアクセスする方法 | Microsoft Docs
-description: クラスルーム ラボの登録、自分がアクセスできるすべてのラボの確認、ラボの VM の開始/停止、VM への接続の方法について説明します。
+description: クラスルーム ラボの登録、自分がアクセスできるすべてのラボの確認、ラボの VM の開始/停止、および VM への接続の方法について説明します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334057"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946112"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法
 この記事では、クラスルーム ラボを登録したり、自分がアクセスできるすべてのラボを確認したり、ラボの VM を開始または停止したり、VM に接続したりする方法について説明します。 

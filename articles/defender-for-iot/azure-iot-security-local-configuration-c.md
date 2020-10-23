@@ -4,21 +4,21 @@ description: Defender での C のエージェント ローカル構成につい
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: d96a73c3ba996fecf24a4232e1391f0b814be868
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930955"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851256"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json ファイルについて - C エージェント
 
@@ -42,7 +42,7 @@ Defender for IoT セキュリティ エージェントでは、ローカル構�
 | ID | "DPS"、"SecurityModule"、"Device" | 認証 ID - 認証が DPS を使用して行われる場合は DPS、認証がセキュリティ モジュールの資格情報を使用して行われる場合は SecurityModule、認証がデバイスの資格情報を使用して行われる場合は Device |
 | AuthenticationMethod | "SasToken"、"SelfSignedCertificate" | 認証用のユーザー シークレット - ユーザー シークレットが対称キーの場合は SasToken を選択します。シークレットが自己署名証明書の場合は SelfSignedCertificate を選択します  |
 | FilePath | ファイルへのパス (文字列) | 認証シークレットを含むファイルへのパス |
-| HostName | string | Azure Iot Hub のホスト名。 通常 <my-hub>.azure-devices.net |
+| HostName | string | Azure IoT ハブのホスト名。 通常 <my-hub>.azure-devices.net |
 | deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの) |
 | DPS | JsonObject | DPS 関連の構成 |
 | IDScope | string | DPS の ID スコープ |

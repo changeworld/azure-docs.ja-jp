@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903192"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952218"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
@@ -68,11 +68,11 @@ Kubernetes クラスターで Azure Arc を有効にする前に、サブスク�
 
 1. リソース プロバイダーを選択し、コマンド バーの上部から **[登録]** を選択します。 登録には数分かかります。 
 
-    ![Kubernetes リソース プロバイダーを登録する](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![Kubernetes リソース プロバイダーを登録する 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. リソース プロバイダーが登録されていることがわかるまで、UI を最新の情報に更新します。 両方のリソース プロバイダーに対してこのプロセスを繰り返します。
     
-    ![Kubernetes リソース プロバイダーを登録する](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![Kubernetes リソース プロバイダーを登録する 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 `az cli` を使用してリソース プロバイダーを登録することもできます。 詳細については、「[Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)」を参照してください
 

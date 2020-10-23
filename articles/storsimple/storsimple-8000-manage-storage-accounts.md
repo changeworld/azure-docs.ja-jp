@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515024"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978715"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 
@@ -33,7 +33,7 @@ StorSimple デバイス マネージャー サービス ブレードの **[構�
 
 このチュートリアルでは、ストレージ アカウント資格情報を追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。
 
- ![ストレージ アカウントの資格情報の一覧](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![ストレージ アカウントの資格情報の一覧 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 ストレージ アカウントには、クラウド サービス プロバイダーを使用してストレージ アカウントにアクセスするために StorSimple デバイスで使用される資格情報が含まれます。 Microsoft Azure ストレージ アカウントの場合、これらはアカウント名やプライマリ アクセス キーなどの資格情報です。 
 
@@ -102,7 +102,7 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
 
 1. StorSimple デバイス マネージャー サービスに移動します。 **[構成]** セクションで **[ストレージ アカウントの資格情報]** をクリックします。
 
-    ![ストレージ アカウントの資格情報](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![ストレージ アカウントの資格情報 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. **[ストレージ アカウントの資格情報]** ブレードで、ストレージ アカウント資格情報の一覧から編集する資格情報を選択してクリックします。 
 
@@ -159,11 +159,11 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
 
 3. **[...More]\(...その他\)** をクリックし、ローテーションを実行するために **[Sync access key]\(アクセスキーの同期\)** を選択します。   
 
-    ![キーの同期](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![キーの同期 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. StorSimple デバイス マネージャー サービスで、Microsoft Azure Storage サービスで以前に変更されたキーを更新する必要があります。 プライマリ アクセス キーが変更 (再生成) されている場合は、 **[プライマリ]** キーを選択します。 セカンダリ キーが変更されている場合は、 **[セカンダリ]** キーを選択します。 **[キーの同期]** をクリックします。
       
-      ![キーの同期](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![キーの同期 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 キーが正常に同期されると、通知が表示されます。
 

@@ -3,17 +3,17 @@ title: 負荷の急増に対応できる B シリーズ - Azure Virtual Machines
 description: 負荷の急増に対応できる B シリーズの Azure VM のサイズについて説明します。
 services: virtual-machines
 ms.subservice: sizes
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: ayshak
-ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: sttsinar
+ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654737"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968924"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -21,13 +21,14 @@ Web サーバー、概念実証、小規模なデータベース、開発ビル�
 
 B シリーズには、次の VM サイズが用意されています。
 
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション: サポートされています
-
-メモリ保持更新: サポートされています
+[Azure コンピューティング ユニット (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json):状況に応じて異なります*<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+<br>
+\* B シリーズの VM はバースト可能であるため、ACU の数はワークロードとコアの使用状況によって異なります。
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | VM のベース CPU パフォーマンス | VM の最大 CPU パフォーマンス | 初期のクレジット | 1 時間に蓄積されるクレジット | 蓄積できるクレジットの最大値 | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

@@ -1,17 +1,15 @@
 ---
 title: Azure とスタンドアロン Service Fabric クラスターの概要
 description: Windows Server または Linux を実行する任意の VM またはコンピューター上に Service Fabric クラスターを作成できます。 つまり、オンプレミスか、Microsoft Azure か、クラウド プロバイダーかに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75751150"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842599"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server と Linux での Azure とスタンドアロン Service Fabric クラスターの比較
 
@@ -28,7 +26,7 @@ Azure では、他の Azure の機能やサービスとの統合が提供され�
 * **Azure リソースとしての Service Fabric クラスター** : Service Fabric クラスターは Azure リソースなので、Azure の他の Azure リソースと同じようにモデル化できます。
 * **Azure インフラストラクチャとの統合** : Service Fabric は、OS、ネットワーク、およびその他のアップグレードに関して基になる Azure インフラストラクチャと連携するため、アプリケーションの可用性と信頼性が向上します。  
 * **診断**:Azure では、Azure Diagnostics および Azure Monitor ログとの統合が提供されます。
-* **自動スケール**:Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
+* **自動スケール:** Azure 上のクラスターの場合、仮想マシン スケール セットを通じて、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
 ## <a name="benefits-of-standalone-clusters"></a>スタンドアロン クラスターの利点
 

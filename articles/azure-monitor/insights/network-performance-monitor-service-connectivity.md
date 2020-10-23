@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761041"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -19,8 +19,8 @@ ms.locfileid: "87326105"
 
 サービス接続モニターを使用して次の機能を実行できます。 
 
-- 複数のブランチ オフィスまたは場所からアプリケーションおよびネットワーク サービスへのネットワーク接続を監視します。 アプリケーションやネットワーク サービスには、Office 365、Dynamics CRM、内部の基幹業務アプリケーション、SQL データベースなどが含まれます。
-- 組み込みテストを使って、Office 365 および Dynamics365 エンドポイントへのネットワーク接続を監視します。 
+- 複数のブランチ オフィスまたは場所からアプリケーションおよびネットワーク サービスへのネットワーク接続を監視します。 アプリケーションやネットワーク サービスには、Microsoft 365、Dynamics CRM、内部の基幹業務アプリケーション、SQL データベースなどが含まれます。
+- 組み込みテストを使って、Microsoft 365 および Dynamics 365 エンドポイントへのネットワーク接続を監視します。 
 - エンドポイントへの接続時に発生した応答時間、ネットワーク待機時間、パケット損失を確認します。
 - アプリケーション パフォーマンスの低下がネットワークに起因するものなのか、それともアプリケーション プロバイダー側の問題によるものなのかを確認します。
 - トポロジ マップ上の各ホップの影響を受けている待機時間を表示することによって、アプリケーション パフォーマンスの低下の原因となっている可能性があるネットワーク上のホット スポットを特定します。
@@ -99,7 +99,7 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
 問題の原因がネットワークであると判断した後は、 **[トポロジ]** ビュー リンクを選び、トポロジ マップ上で問題のホップを確認します。 次の図に例を示します。 ノードとアプリケーション エンドポイント間の合計待機時間である 105 ミリ秒のうち、96 ミリ秒は赤で囲まれたホップに起因しています。 問題のホップを特定したら、是正措置を実行できます。 
 
-![サービス接続モニターのテスト](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![サービス接続モニターのエンドポイント トポロジ](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>診断 
 

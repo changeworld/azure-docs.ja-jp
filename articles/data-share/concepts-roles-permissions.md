@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/02/2020
+ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513767"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761517"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
@@ -35,11 +35,10 @@ Data Share リソースのマネージド ID に割り当てられるロール�
 |Azure Blob Storage| ストレージ BLOB データ閲覧者 | ストレージ BLOB データ共同作成者
 |Azure Data Lake Gen1 | 所有者 | サポートされていません
 |Azure Data Lake Gen2 | ストレージ BLOB データ閲覧者 | ストレージ BLOB データ共同作成者
-|Azure SQL Server | SQL DB Contributor | SQL DB Contributor
 |Azure Data Explorer クラスター | Contributor | Contributor
 |
 
-SQL ベースの共有を行う場合、Azure SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 その SQL ユーザーに必要なアクセス許可の概要を次に示します。
+SQL ベースの共有を行う場合、Azure SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーを作成するには、Azure Active Directory の管理者権限が必要です。 その SQL ユーザーに必要なアクセス許可の概要を次に示します。
 
 |**SQL データベースの種類**|**データ プロバイダーの SQL ユーザーのアクセス許可**|**データ コンシューマーの SQL ユーザーのアクセス許可**|
 |---|---|---|
