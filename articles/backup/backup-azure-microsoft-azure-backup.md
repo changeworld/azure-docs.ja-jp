@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975501"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056703"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -200,6 +200,9 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
     ![ファイルのインストール場所の指定](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](/system-center/dpm/plan-long-and-short-term-data-storage)」を参照してください。
+
+    ディスク ストレージの容量の要件は、主に保護されるデータのサイズ、毎日の回復ポイントのサイズ、予想されるデータ成長率、および保持期間の目標によって異なります。 ディスク ストレージは、保護されるデータの 2 倍のサイズにすることをお勧めします。 毎日の回復ポイント サイズを保護データ サイズの 10% とし、保有期間を 10 日間と想定しています。 適切なサイズ見積もりを取得するには、[DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301) を確認します。 
+
 5. 制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** を選択します。
 
     ![強力なパスワードの指定](./media/backup-azure-microsoft-azure-backup/security-screen.png)

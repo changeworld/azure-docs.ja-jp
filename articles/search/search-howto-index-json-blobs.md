@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917994"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403638"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -45,7 +45,7 @@ JSON ドキュメントのインデックスを作成する最も簡単な方法
 
 検索サービスの [概要] ページでは、コマンド バーから[ウィザードを開始](search-import-data-portal.md)できます。
 
-   ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd2.png" alt-text="ポータルの [データのインポート] コマンド" border="false":::
 
 ### <a name="3---set-the-data-source"></a>3 - データ ソースを設定する
 
@@ -63,7 +63,7 @@ JSON ドキュメントのインデックスを作成する最も簡単な方法
    
 + **[ストレージ コンテナー]** では、使用するストレージ アカウントとコンテナー、またはコンテナーとして解決される接続文字列を指定する必要があります。 接続文字列は、Blob service のポータル ページで取得できます。
 
-   ![BLOB データ ソースの定義](media/search-howto-index-json/import-wizard-json-data-source.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="ポータルの [データのインポート] コマンド" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - ウィザードの [コンテンツのエンリッチ] ページをスキップする
 
@@ -81,7 +81,7 @@ JSON ドキュメントのインデックスを作成する最も簡単な方法
 
 時間をかけて選択内容を確認します。 ウィザードを実行すると、物理データ構造が作成されて、すべてのオブジェクトを削除して再作成しない限り、これらのフィールドを編集することはできません。
 
-   ![BLOB のインデックス定義](media/search-howto-index-json/import-wizard-json-index.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="ポータルの [データのインポート] コマンド" border="false":::
 
 ### <a name="6---create-indexer"></a>6 - インデクサーを作成する
 
@@ -89,7 +89,7 @@ JSON ドキュメントのインデックスを作成する最も簡単な方法
 
 インデクサーに慣れていないユーザーのために説明すると、"*インデクサー*" とは Azure Cognitive Search のリソースであり、外部データ ソースで検索可能なコンテンツのクロールを行います。 **データのインポート** ウィザードで出力されるインデクサーでは、JSON データ ソースがクロールされ、検索可能なコンテンツが抽出されて、Azure Cognitive Search のインデックスにインポートされます。
 
-   ![BLOB インデクサーの定義](media/search-howto-index-json/import-wizard-json-indexer.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="ポータルの [データのインポート] コマンド" border="false":::
 
 **[OK]** をクリックしてウィザードを実行し、すべてのオブジェクトを作成します。 インデックスの作成はすぐに開始されます。
 
@@ -280,10 +280,10 @@ Azure Cognitive Search 上にインデクサーを作成すると、データの
 
 .NET SDK は REST API と完全に同等です。 前の REST API セクションを確認し、概念、ワークフロー、要件を理解することをお勧めします。 その後は、次の .NET API リファレンス ドキュメントを参照して、マネージド コードで JSON インデクサーを実装できます。
 
-+ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index) 
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="parsing-modes"></a>
 
@@ -451,11 +451,13 @@ JSON ドキュメントの例に戻りましょう。
 > [!NOTE]
 > フィールド マッピングのパス内のソース フィールド名が、JSON に存在しないプロパティを参照している場合、そのマッピングはエラーなしでスキップされます。 これは、異なるスキーマを使用したドキュメントをサポートできるようにするためです (一般的なユース ケースです)。 検証機能がないため、フィールド マッピングの仕様を入力するときは、入力ミスをしないように注意する必要があります。
 >
->
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Cognitive Search の品質向上にご協力ください
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice](https://feedback.azure.com/forums/263029-azure-search/) までお寄せください。 既存の機能の使用方法でサポートが必要な場合、[Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870) に質問を投稿してください。
 
 ## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search のインデクサー](search-indexer-overview.md)
 + [Azure Blob Storage のインデックスを Azure Cognitive Search で作成する](search-howto-index-json-blobs.md)
 + [Azure Cognitive Search BLOB インデクサーを使用して CSV BLOB のインデックスを作成する](search-howto-index-csv-blobs.md)
-+ [チュートリアル:Azure Blob Storage で半構造化データを検索する](search-semi-structured-data.md)
++ [チュートリアル: Azure Blob Storage で半構造化データを検索する](search-semi-structured-data.md)

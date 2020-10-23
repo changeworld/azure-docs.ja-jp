@@ -4,12 +4,12 @@ description: Azure Functions のネットワークについてよく寄せられ
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385910"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538060"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -27,7 +27,7 @@ ms.locfileid: "87385910"
     * IP 制限下で[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を構成できます。これにより関数は特定の仮想ネットワークから受信トラフィックのみを受け付けるよう制限できます。
 * すべての HTTP トリガーを削除する。 一部のアプリケーションでは、単に HTTP トリガーを回避し、他のイベント ソースを使用して関数をトリガーするだけで十分です。
 
-Azure portal エディターから実行中の関数に直接アクセスする必要がある点に留意してください。 Azure portal からのコードの変更では、ポータルの参照に使用しているデバイスでその IP をホワイトリスト化する必要があります。 ただし、適切にネットワーク制限されたプラットフォーム機能タブの下にある機能は引き続き使用できます。
+Azure portal エディターから実行中の関数に直接アクセスする必要がある点に留意してください。 Azure portal からのコードの変更では、ポータルの参照に使用しているデバイスでその IP を承認済み一覧に追加する必要があります。 ただし、適切にネットワーク制限されたプラットフォーム機能タブの下にある機能は引き続き使用できます。
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>仮想ネットワークに対して自分の関数アプリを制限するにはどうすればよいですか?
 

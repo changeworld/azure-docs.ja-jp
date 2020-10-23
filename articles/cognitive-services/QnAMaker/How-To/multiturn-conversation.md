@@ -1,14 +1,16 @@
 ---
 title: 複数ターン会話 - QnA Maker
 description: プロンプトとコンテキストを使用して、一連の質問についてボットの複数ターンと呼ばれる複数回のターンを管理します。 複数ターンとは、前の質問のコンテキストが次の質問と応答に影響する会話をやりとりする機能です。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229348"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777806"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -52,7 +54,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
 複数ターン構造は、URL、PDF ファイル、または DOCX ファイルからのみ推論できます。 構造の例として、[Microsoft Surface ユーザー マニュアル PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)の画像を表示します。
 
-![![ユーザー マニュアル内の構造の例]\(../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+:::image type="content" source="../media/conversational-context/import-file-with-conversational-structure.png" alt-text="スクリーンショットに、ユーザー マニュアルの構造の例が示されています。" lightbox="../media/conversational-context/import-file-with-conversational-structure.png":::
 
 ### <a name="building-your-own-multi-turn-document"></a>独自の複数ターンのドキュメントのビルド
 
@@ -92,7 +94,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
 複数ターンのコンテキストが最初の列に表示されます。
 
-![!["Context (PREVIEW)" (コンテキスト (プレビュー) 列]\(../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="スクリーンショットに、ユーザー マニュアルの構造の例が示されています。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 上の画像では、 **#1** が列内で太字テキストで表示され、現在の質問を示しています。 親の質問は、行の最上位の項目です。 それより下のすべての質問は、リンクされた質問と応答のペアです。 これらの項目は選択できるので、直ちに他のコンテキスト項目に移動できます。
 
@@ -167,7 +169,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
     親の質問は、その選択肢の 1 つとして新しい質問を表示します。
 
-    ![![両方の質問の [コンテキスト] 列は、フォローアップ プロンプトの関係を示します]\(../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="スクリーンショットに、ユーザー マニュアルの構造の例が示されています。" lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. フォローアップ プロンプトを追加した後、上部のナビゲーション バーで **[Save and train]\(保存してトレーニング\)** を選択します。
 

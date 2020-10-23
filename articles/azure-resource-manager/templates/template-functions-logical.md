@@ -2,13 +2,13 @@
 title: テンプレート関数 - 論理
 description: Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677391"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978511"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM テンプレート用の論理関数
 
@@ -16,11 +16,13 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 * [and](#and)
 * [bool](#bool)
+* [false](#false)
 * [if](#if)
 * [not](#not)
 * [or](#or)
+* [true](#true)
 
-## <a name="and"></a>and
+## <a name="and"></a>および
 
 `and(arg1, arg2, ...)`
 
@@ -28,7 +30,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
@@ -66,7 +68,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -80,12 +82,17 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |ブール値に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
+
 変換後の値のブール値。
+
+### <a name="remarks"></a>解説
+
+[true ()](#true) と [false ()](#false) を使用してブール値を取得することもできます。
 
 ### <a name="examples"></a>例
 
@@ -119,12 +126,50 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
 | trueInt | Bool | True |
 | falseInt | Bool | False |
+
+## <a name="false"></a>false
+
+`false()`
+
+false を返します。
+
+### <a name="parameters"></a>パラメーター
+
+false 関数では、パラメーターは受け入れられません。
+
+### <a name="return-value"></a>戻り値
+
+常に false のブール値です。
+
+### <a name="example"></a>例
+
+次の例では、false の出力値が返されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+前の例からの出力は次のようになります。
+
+| 名前 | Type | [値] |
+| ---- | ---- | ----- |
+| falseOutput | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -134,7 +179,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | condition |はい |boolean |true か false かどうかを確認する値。 |
 | trueValue |はい | string、int、object、または array |条件が true の場合に返される値。 |
@@ -177,7 +222,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
 | noOutput | String | no |
@@ -239,7 +284,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |変換する値。 |
 
@@ -275,7 +320,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -300,11 +345,11 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
-## <a name="or"></a>or
+## <a name="or"></a>または
 
 `or(arg1, arg2, ...)`
 
@@ -312,7 +357,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
@@ -350,11 +395,49 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
+
+## <a name="true"></a>true
+
+`true()`
+
+true を返します。
+
+### <a name="parameters"></a>パラメーター
+
+true 関数では、パラメーターは受け入れられません。
+
+### <a name="return-value"></a>戻り値
+
+常に true のブール値です。
+
+### <a name="example"></a>例
+
+次の例では、true の出力値が返されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+前の例からの出力は次のようになります。
+
+| 名前 | Type | [値] |
+| ---- | ---- | ----- |
+| trueOutput | Bool | True |
 
 ## <a name="next-steps"></a>次のステップ
 

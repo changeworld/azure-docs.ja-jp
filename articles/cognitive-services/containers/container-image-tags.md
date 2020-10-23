@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369486"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services コンテナー イメージ タグ
 
@@ -120,6 +120,8 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | イメージ タグ            | Notes |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.5.0-amd64`         |       |
+| `2.4.0-amd64-preview` |       |
 | `2.3.1-amd64-preview` |       | 
 | `2.3.0-amd64-preview` |       |
 | `2.2.0-amd64-preview` |       |
@@ -137,6 +139,8 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | イメージ タグ            | Notes |
 |-----------------------|:------|
 | `latest`              |       |
+| `1.7.0-amd64`         |       |
+| `1.6.0-amd64-preview` |       |
 | `1.6.0-amd64-preview` |       |
 | `1.5.0-amd64-preview` |       |
 | `1.4.0-amd64-preview` |       |
@@ -145,13 +149,52 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 ## <a name="speech-to-text"></a>音声テキスト変換
 
 [音声テキスト変換][sp-stt]コンテナー イメージは `containerpreview.azurecr.io` コンテナー レジストリにあります。 `microsoft` リポジトリ内にあり、`cognitive-services-speech-to-text` という名前が付いています。 完全修飾コンテナー イメージ名は `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` です。
-音声テキスト変換イメージの*米国政府バージニア州*バージョンは、v2.4.0 でサポートされており、`containerpreview.azurecr.io/microsoft/fairfax/cognitive-services-speech-to-text` にあります。
+音声テキスト変換 v2.5.0 イメージは "*米国政府バージニア*" でサポートされています。 "*米国政府バージニア*" の課金エンドポイントと API キーでお試しください。
 
 このコンテナー イメージでは、次のタグを利用できます。
 
 | イメージ タグ                  | Notes                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | `en-US` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ar-ae`         | `ar-AE` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ar-eg`         | `ar-EG` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ar-kw`         | `ar-KW` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ar-qa`         | `ar-QA` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ar-sa`         | `ar-SA` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ca-es`         | `ca-ES` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-da-dk`         | `da-DK` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-de-de`         | `de-DE` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-en-au`         | `en-AU` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-en-ca`         | `en-CA` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-en-gb`         | `en-GB` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-en-in`         | `en-IN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-en-nz`         | `en-NZ` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-en-us`         | `en-US` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-es-es`         | `es-ES` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-es-mx`         | `es-MX` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-fi-fi`         | `fi-FI` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-fr-ca`         | `fr-CA` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-fr-fr`         | `fr-FR` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-gu-in`         | `gu-IN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-hi-in`         | `hi-IN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-it-it`         | `it-IT` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ja-jp`         | `ja-JP` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ko-kr`         | `ko-KR` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-mr-in`         | `mr-IN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-nb-no`         | `nb-NO` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-nl-nl`         | `nl-NL` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-pl-pl`         | `pl-PL` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-pt-br`         | `pt-BR` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-pt-pt`         | `pt-PT` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ru-ru`         | `ru-RU` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-sv-se`         | `sv-SE` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-ta-in`         | `ta-IN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-te-in`         | `te-IN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-th-th`         | `th-TH` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-tr-tr`         | `tr-TR` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-zh-cn`         | `zh-CN` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-zh-hk`         | `zh-HK` ロケールのコンテナー イメージ。 |
+| `2.5.0-amd64-zh-tw`         | `zh-TW` ロケールのコンテナー イメージ。 |
 | `2.4.0-amd64-ar-ae-preview` | `ar-AE` ロケールのコンテナー イメージ。 |
 | `2.4.0-amd64-ar-eg-preview` | `ar-EG` ロケールのコンテナー イメージ。 |
 | `2.4.0-amd64-ar-kw-preview` | `ar-KW` ロケールのコンテナー イメージ。 |
@@ -591,6 +634,87 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | イメージ タグ                                  | Notes                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | `en-US` ロケールと `en-US-AriaRUS` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-ar-eg-hoda`                    | `ar-EG` ロケールと `ar-EG-Hoda` 音声のコンテナー イメージ。            |
+| `1.7.0-amd64-ar-sa-naayf`                   | `ar-SA` ロケールと `ar-SA-Naayf` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-bg-bg-ivan`                    | `bg-BG` ロケールと `bg-BG-Ivan` 音声のコンテナー イメージ。            |
+| `1.7.0-amd64-ca-es-herenarus`               | `ca-ES` ロケールと `ca-ES-HerenaRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-cs-cz-jakub`                   | `cs-CZ` ロケールと `cs-CZ-Jakub` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-da-dk-hellerus`                | `da-DK` ロケールと `da-DK-HelleRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-de-at-michael`                 | `de-AT` ロケールと `de-AT-Michael` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-de-ch-karsten`                 | `de-CH` ロケールと `de-CH-Karsten` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-de-de-hedda`                   | `de-DE` ロケールと `de-DE-Hedda` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-de-de-heddarus`                | `de-DE` ロケールと `de-DE-Hedda` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-de-de-stefan-apollo`           | `de-DE` ロケールと `de-DE-Stefan-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-el-gr-stefanos`                | `el-GR` ロケールと `el-GR-Stefanos` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-en-au-catherine`               | `en-AU` ロケールと `en-AU-Catherine` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-en-au-hayleyrus`               | `en-AU` ロケールと `en-AU-HayleyRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-en-ca-heatherrus`              | `en-CA` ロケールと `en-CA-HeatherRUS` 音声のコンテナー イメージ。      |
+| `1.7.0-amd64-en-ca-linda`                   | `en-CA` ロケールと `en-CA-Linda` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-en-gb-george-apollo`           | `en-GB` ロケールと `en-GB-George-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-en-gb-hazelrus`                | `en-GB` ロケールと `en-GB-HazelRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-en-gb-susan-apollo`            | `en-GB` ロケールと `en-GB-Susan-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-en-ie-sean`                    | `en-IE` ロケールと `en-IE-Sean` 音声のコンテナー イメージ。            |
+| `1.7.0-amd64-en-in-heera-apollo`            | `en-IN` ロケールと `en-IN-Heera-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-en-in-priyarus`                | `en-IN` ロケールと `en-IN-PriyaRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-en-in-ravi-apollo`             | `en-IN` ロケールと `en-IN-Ravi-Apollo` 音声のコンテナー イメージ。     |
+| `1.7.0-amd64-en-us-benjaminrus`             | `en-US` ロケールと `en-US-BenjaminRUS` 音声のコンテナー イメージ。     |
+| `1.7.0-amd64-en-us-guy24krus`               | `en-US` ロケールと `en-US-Guy24kRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-en-us-aria24krus`              | `en-US` ロケールと `en-US-Aria24kRUS` 音声のコンテナー イメージ。      |
+| `1.7.0-amd64-en-us-ariarus`                 | `en-US` ロケールと `en-US-AriaRUS` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-en-us-zirarus`                 | `en-US` ロケールと `en-US-ZiraRUS` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-es-es-helenarus`               | `es-ES` ロケールと `es-ES-HelenaRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-es-es-laura-apollo`            | `es-ES` ロケールと `es-ES-Laura-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-es-es-pablo-apollo`            | `es-ES` ロケールと `es-ES-Pablo-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-es-mx-hildarus`                | `es-MX` ロケールと `es-MX-HildaRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-es-mx-raul-apollo`             | `es-MX` ロケールと `es-MX-Raul-Apollo` 音声のコンテナー イメージ。     |
+| `1.7.0-amd64-fi-fi-heidirus`                | `fi-FI` ロケールと `fi-FI-HeidiRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-fr-ca-caroline`                | `fr-CA` ロケールと `fr-CA-Caroline` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-fr-ca-harmonierus`             | `fr-CA` ロケールと `fr-CA-HarmonieRUS` 音声のコンテナー イメージ。     |
+| `1.7.0-amd64-fr-ch-guillaume`               | `fr-CH` ロケールと `fr-CH-Guillaume` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-fr-fr-hortenserus`             | `fr-FR` ロケールと `fr-FR-HortenseRUS` 音声のコンテナー イメージ。     |
+| `1.7.0-amd64-fr-fr-julie-apollo`            | `fr-FR` ロケールと `fr-FR-Julie-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-fr-fr-paul-apollo`             | `fr-FR` ロケールと `fr-FR-Paul-Apollo` 音声のコンテナー イメージ。     |
+| `1.7.0-amd64-he-il-asaf`                    | `he-IL` ロケールと `he-IL-Asaf` 音声のコンテナー イメージ。            |
+| `1.7.0-amd64-hi-in-hemant`                  | `hi-IN` ロケールと `hi-IN-Hemant` 音声のコンテナー イメージ。          |
+| `1.7.0-amd64-hi-in-kalpana-apollo`          | `hi-IN` ロケールと `hi-IN-Kalpana-Apollo` 音声のコンテナー イメージ。  |
+| `1.7.0-amd64-hi-in-kalpana`                 | `hi-IN` ロケールと `hi-IN-Kalpana` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-hr-hr-matej`                   | `hr-HR` ロケールと `hr-HR-Matej` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-hu-hu-szabolcs`                | `hu-HU` ロケールと `hu-HU-Szabolcs` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-id-id-andika`                  | `id-ID` ロケールと `id-ID-Andika` 音声のコンテナー イメージ。          |
+| `1.7.0-amd64-it-it-cosimo-apollo`           | `it-IT` ロケールと `it-IT-Cosimo-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-it-it-luciarus`                | `it-IT` ロケールと `it-IT-LuciaRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-ja-jp-ayumi-apollo`            | `ja-JP` ロケールと `ja-JP-Ayumi-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-ja-jp-harukarus`               | `ja-JP` ロケールと `ja-JP-HarukaRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-ja-jp-ichiro-apollo`           | `ja-JP` ロケールと `ja-JP-Ichiro-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-ko-kr-heamirus`                | `ko-KR` ロケールと `ko-KR-HeamiRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-ms-my-rizwan`                  | `ms-MY` ロケールと `ms-MY-Rizwan` 音声のコンテナー イメージ。          |
+| `1.7.0-amd64-nb-no-huldarus`                | `nb-NO` ロケールと `nb-NO-HuldaRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-nl-nl-hannarus`                | `nl-NL` ロケールと `nl-NL-HannaRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-pl-pl-paulinarus`              | `pl-PL` ロケールと `pl-PL-PaulinaRUS` 音声のコンテナー イメージ。      |
+| `1.7.0-amd64-pt-br-daniel-apollo`           | `pt-BR` ロケールと `pt-BR-Daniel-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-pt-br-heloisarus`              | `pt-BR` ロケールと `pt-BR-HeloisaRUS` 音声のコンテナー イメージ。      |
+| `1.7.0-amd64-pt-pt-heliarus`                | `pt-PT` ロケールと `pt-PT-HeliaRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-ro-ro-andrei`                  | `ro-RO` ロケールと `ro-RO-Andrei` 音声のコンテナー イメージ。          |
+| `1.7.0-amd64-ru-ru-ekaterinarus`            | `ru-RU` ロケールと `ru-RU-EkaterinaRUS` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-ru-ru-irina-apollo`            | `ru-RU` ロケールと `ru-RU-Irina-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-ru-ru-pavel-apollo`            | `ru-RU` ロケールと `ru-RU-Pavel-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-sk-sk-filip`                   | `sk-SK` ロケールと `sk-SK-Filip` 音声のコンテナー イメージ。           |
+| `1.7.0-amd64-sl-si-lado`                    | `sl-SI` ロケールと `sl-SI-Lado` 音声のコンテナー イメージ。            |
+| `1.7.0-amd64-sv-se-hedvigrus`               | `sv-SE` ロケールと `sv-SE-HedvigRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-ta-in-valluvar`                | `ta-IN` ロケールと `ta-IN-Valluvar` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-te-in-chitra`                  | `te-IN` ロケールと `te-IN-Chitra` 音声のコンテナー イメージ。          |
+| `1.7.0-amd64-th-th-pattara`                 | `th-TH` ロケールと `th-TH-Pattara` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-tr-tr-sedarus`                 | `tr-TR` ロケールと `tr-TR-SedaRUS` 音声のコンテナー イメージ。         |
+| `1.7.0-amd64-vi-vn-an`                      | `vi-VN` ロケールと `vi-VN-An` 音声のコンテナー イメージ。              |
+| `1.7.0-amd64-zh-cn-huihuirus`               | `zh-CN` ロケールと `zh-CN-HuihuiRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-zh-cn-kangkang-apollo`         | `zh-CN` ロケールと `zh-CN-Kangkang-Apollo` 音声のコンテナー イメージ。 |
+| `1.7.0-amd64-zh-cn-yaoyao-apollo`           | `zh-CN` ロケールと `zh-CN-Yaoyao-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-zh-hk-danny-apollo`            | `zh-HK` ロケールと `zh-HK-Danny-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-zh-hk-tracy-apollo`            | `zh-HK` ロケールと `zh-HK-Tracy-Apollo` 音声のコンテナー イメージ。    |
+| `1.7.0-amd64-zh-hk-tracyrus`                | `zh-HK` ロケールと `zh-HK-TracyRUS` 音声のコンテナー イメージ。        |
+| `1.7.0-amd64-zh-tw-hanhanrus`               | `zh-TW` ロケールと `zh-TW-HanHanRUS` 音声のコンテナー イメージ。       |
+| `1.7.0-amd64-zh-tw-yating-apollo`           | `zh-TW` ロケールと `zh-TW-Yating-Apollo` 音声のコンテナー イメージ。   |
+| `1.7.0-amd64-zh-tw-zhiwei-apollo`           | `zh-TW` ロケールと `zh-TW-Zhiwei-Apollo` 音声のコンテナー イメージ。   |
 | `1.6.0-amd64-ar-eg-hoda-preview`            | `ar-EG` ロケールと `ar-EG-Hoda` 音声のコンテナー イメージ。            |
 | `1.6.0-amd64-ar-sa-naayf-preview`           | `ar-SA` ロケールと `ar-SA-Naayf` 音声のコンテナー イメージ。           |
 | `1.6.0-amd64-bg-bg-ivan-preview`            | `bg-BG` ロケールと `bg-BG-Ivan` 音声のコンテナー イメージ。            |
@@ -616,8 +740,8 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `1.6.0-amd64-en-in-ravi-apollo-preview`     | `en-IN` ロケールと `en-IN-Ravi-Apollo` 音声のコンテナー イメージ。     |
 | `1.6.0-amd64-en-us-benjaminrus-preview`     | `en-US` ロケールと `en-US-BenjaminRUS` 音声のコンテナー イメージ。     |
 | `1.6.0-amd64-en-us-guy24krus-preview`       | `en-US` ロケールと `en-US-Guy24kRUS` 音声のコンテナー イメージ。       |
-| `1.6.0-amd64-en-us-aria24krus-preview`      | `en-US` ロケールと `en-US-Aria24kRUS` 音声のコンテナー イメージ。     |
-| `1.6.0-amd64-en-us-ariarus-preview`         | `en-US` ロケールと `en-US-AriaRUS` 音声のコンテナー イメージ。        |
+| `1.6.0-amd64-en-us-aria24krus-preview`      | `en-US` ロケールと `en-US-Aria24kRUS` 音声のコンテナー イメージ。      |
+| `1.6.0-amd64-en-us-ariarus-preview`         | `en-US` ロケールと `en-US-AriaRUS` 音声のコンテナー イメージ。         |
 | `1.6.0-amd64-en-us-zirarus-preview`         | `en-US` ロケールと `en-US-ZiraRUS` 音声のコンテナー イメージ。         |
 | `1.6.0-amd64-es-es-helenarus-preview`       | `es-ES` ロケールと `es-ES-HelenaRUS` 音声のコンテナー イメージ。       |
 | `1.6.0-amd64-es-es-laura-apollo-preview`    | `es-ES` ロケールと `es-ES-Laura-Apollo` 音声のコンテナー イメージ。    |
@@ -1007,22 +1131,22 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | イメージ タグ                                  | Notes                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | `de-DE` ロケールと `de-DE-KatjaNeural` 音声のコンテナー イメージ。     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | `en-AU` ロケールと `en-AU-NatashaNeural` 音声のコンテナー イメージ。   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | `en-CA` ロケールと `en-CA-ClaraNeural` 音声のコンテナー イメージ。     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | `en-GB` ロケールと `en-GB-LibbyNeural` 音声のコンテナー イメージ。     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | `en-GB` ロケールと `en-GB-MiaNeural` 音声のコンテナー イメージ。       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | `en-US` ロケールと `en-US-GuyNeural` 音声のコンテナー イメージ。       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | `es-ES` ロケールと `es-ES-ElviraNeural` 音声のコンテナー イメージ。    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | `es-MX` ロケールと `es-MX-DaliaNeural` 音声のコンテナー イメージ。     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | `fr-CA` ロケールと `fr-CA-SylvieNeural` 音声のコンテナー イメージ。    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | `fr-FR` ロケールと `fr-FR-DeniseNeural` 音声のコンテナー イメージ。    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | `it-IT` ロケールと `it-IT-ElsaNeural` 音声のコンテナー イメージ。      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | `ja-JP` ロケールと `ja-JP-NanamiNeural` 音声のコンテナー イメージ。    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | `ko-KR` ロケールと `ko-KR-SunHiNeural` 音声のコンテナー イメージ。     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | `pt-BR` ロケールと `pt-BR-FranciscaNeural` 音声のコンテナー イメージ。 |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | `zh-CN` ロケールと `zh-CN-XiaoxiaoNeural` 音声のコンテナー イメージ。  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | `de-DE` ロケールと `de-DE-KatjaNeural` 音声のコンテナー イメージ。     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | `en-AU` ロケールと `en-AU-NatashaNeural` 音声のコンテナー イメージ。   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | `en-CA` ロケールと `en-CA-ClaraNeural` 音声のコンテナー イメージ。     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | `en-GB` ロケールと `en-GB-LibbyNeural` 音声のコンテナー イメージ。     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | `en-GB` ロケールと `en-GB-MiaNeural` 音声のコンテナー イメージ。       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | `en-US` ロケールと `en-US-GuyNeural` 音声のコンテナー イメージ。       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | `es-ES` ロケールと `es-ES-ElviraNeural` 音声のコンテナー イメージ。    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | `es-MX` ロケールと `es-MX-DaliaNeural` 音声のコンテナー イメージ。     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | `fr-CA` ロケールと `fr-CA-SylvieNeural` 音声のコンテナー イメージ。    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | `fr-FR` ロケールと `fr-FR-DeniseNeural` 音声のコンテナー イメージ。    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | `it-IT` ロケールと `it-IT-ElsaNeural` 音声のコンテナー イメージ。      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | `ja-JP` ロケールと `ja-JP-NanamiNeural` 音声のコンテナー イメージ。    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | `ko-KR` ロケールと `ko-KR-SunHiNeural` 音声のコンテナー イメージ。     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | `pt-BR` ロケールと `pt-BR-FranciscaNeural` 音声のコンテナー イメージ。 |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | `zh-CN` ロケールと `zh-CN-XiaoxiaoNeural` 音声のコンテナー イメージ。  |
 
 ## <a name="key-phrase-extraction"></a>キー フレーズ抽出
 

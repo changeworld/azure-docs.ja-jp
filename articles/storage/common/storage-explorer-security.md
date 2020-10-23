@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: d9dea7cd0cc22cc8a1e0aa5c93ece76d689de0e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714380"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer セキュリティ ガイド
 
@@ -42,11 +42,11 @@ Azure Storage リソースにアクセスする最も簡単で安全な方法は
 
 このセクションでは、ストレージ リソースをセキュリティで保護するために使用できる 2 つの Azure AD ベースのテクノロジについて説明します。
 
-#### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
+#### <a name="azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC)
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure リソースに対するきめ細かいアクセス制御を提供します。 RBAC のロールとアクセス許可は、Azure portal から管理できます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure リソースに対するきめ細かいアクセス制御を提供します。 Azure のロールとアクセス許可は、Azure portal から管理できます。
 
-Storage Explorer は、ストレージ アカウント、BLOB、およびキューへの RBAC アクセスをサポートしています。 ファイル共有またはテーブルにアクセスする必要がある場合は、ストレージ アカウント キーを一覧表示するアクセス許可を付与する RBAC ロールを割り当てる必要があります。
+Storage Explorer では、ストレージ アカウント、BLOB、およびキューへの Azure RBAC アクセスがサポートされています。 ファイル共有またはテーブルにアクセスする必要がある場合は、ストレージ アカウント キーを一覧表示するアクセス許可を付与する Azure ロールを割り当てる必要があります。
 
 #### <a name="access-control-lists-acls"></a>アクセス制御リスト (ACL)
 
@@ -77,11 +77,11 @@ Storage Explorer で SAS を使用する場合は、次のガイドラインに�
 
 ### <a name="storage-account-keys"></a>ストレージ アカウント キー
 
-ストレージ アカウント キーは、ストレージ アカウント内のサービスとリソースへの無制限のアクセスを付与します。 このため、Storage Explorer のリソースにアクセスする際は、キーの使用を制限することをお勧めします。 代わりに、RBAC 機能または SAS を使用してアクセスを提供します。
+ストレージ アカウント キーは、ストレージ アカウント内のサービスとリソースへの無制限のアクセスを付与します。 このため、Storage Explorer のリソースにアクセスする際は、キーの使用を制限することをお勧めします。 代わりに、Azure RBAC 機能または SAS を使用してアクセスを提供します。
 
-一部の RBAC ロールは、ストレージ アカウント キーを取得するためのアクセス許可を付与します。 これらのロールを持つユーザーは、RBAC によって付与または拒否されたアクセス許可を効果的に回避できます。 必要な場合を除き、このアクセス許可を付与しないことをお勧めします。
+一部の Azure ロールによって、ストレージ アカウント キーを取得するためのアクセス許可が付与されます。 これらのロールを持つユーザーは、Azure RBAC によるアクセス許可の付与または拒否を事実上回避できます。 必要な場合を除き、このアクセス許可を付与しないことをお勧めします。
 
-Storage Explorer は、利用可能な場合、リクエストの認証にストレージ アカウント キーを使用しようとします。 この機能は、設定 ( **[サービス] > [ストレージ アカウント] > [Disable Usage of Keys]\(キーの使用を無効にする\)** ) から無効にできます。 一部の機能では、従来のストレージ アカウントの操作などの RBAC はサポートされていません。 これらの機能には引き続きキーが必要であり、この設定の影響は受けません。
+Storage Explorer は、利用可能な場合、リクエストの認証にストレージ アカウント キーを使用しようとします。 この機能は、設定 ( **[サービス] > [ストレージ アカウント] > [Disable Usage of Keys]\(キーの使用を無効にする\)** ) から無効にできます。 従来のストレージ アカウントの操作などの一部の機能では、Azure RBAC はサポートされていません。 これらの機能には引き続きキーが必要であり、この設定の影響は受けません。
 
 ストレージ リソースにアクセスするためにキーを使用する必要がある場合は、次のガイドラインに従うことをお勧めします。
 

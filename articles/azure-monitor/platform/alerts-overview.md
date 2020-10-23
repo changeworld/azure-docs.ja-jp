@@ -4,12 +4,12 @@ description: Azure でのアラートの概要です。 アラート、クラシ
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317142"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108798"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -84,7 +84,7 @@ Azure Monitor の監視データを使用してインフラストラクチャま
 
 *アラートの状態*は異なり、*監視条件*には依存しません。 アラートの状態は、ユーザーによって設定されます。 監視条件は、システムによって設定されます。 アラートが発生すると、アラートの監視条件は *Fired* に設定されます。アラート発生の原因になった状態が解消されると、監視条件は *Resolved* に設定されます。 
 
-アラートの状態は、ユーザーが変更するまで変わりません。 [アラートとスマート グループの状態を変更する方法](https://aka.ms/managing-alert-smart-group-states)について参照してください。
+アラートの状態は、ユーザーが変更するまで変わりません。 [アラートとスマート グループの状態を変更する方法](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)について参照してください。
 
 ## <a name="alerts-experience"></a>アラート エクスペリエンス 
 既定の [アラート] ページには、特定の時間枠内に作成されたアラートの概要が表示されます。 ここには、重大度ごとのアラートの合計が、重大度ごとの各状態にあるアラートの総数を識別する列と共に表示されます。 任意の重大度を選択すると、その重大度でフィルター処理された [[すべてのアラート]](#all-alerts-page) ページが開きます。
@@ -181,7 +181,7 @@ Azure Monitor の監視データを使用してインフラストラクチャま
 
 サブスクリプションに対して生成されたアラートをプログラムで照会したい場合があります。 たとえば、Azure portal の外部でカスタム ビューを作成したり、アラートを分析してパターンと傾向を特定したりする場合です。
 
-サブスクリプションに対して生成されたアラートをクエリするには、[Alert Management REST API](https://aka.ms/alert-management-api) を使用するか、[Azure Resource Graph](../../governance/resource-graph/overview.md) と [REST API for Resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)を使用します。
+サブスクリプションに対して生成されたアラートをクエリするには、[Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) を使用するか、[Azure Resource Graph](../../governance/resource-graph/overview.md) と [REST API for Resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)を使用します。
 
 リソース用の Resource Graph REST API を使用すると、大規模な警告インスタンスをクエリできます。 Resource Graph は、多くのサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。 
 
@@ -200,16 +200,16 @@ Azure Resource Graph Explorer を使用して、ポータルでこの Resource G
 
 照会は、アラートの[必須](alerts-common-schema-definitions.md#essentials)フィールドに対して行うことができます。
 
-[Alert Management REST API](https://aka.ms/alert-management-api) を使用すると、[アラート コンテキスト](alerts-common-schema-definitions.md#alert-context) フィールドなど、特定のアラートに関する詳細情報を取得できます。
+[Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) を使用すると、[アラート コンテキスト](alerts-common-schema-definitions.md#alert-context) フィールドなど、特定のアラートに関する詳細情報を取得できます。
 
 ## <a name="smart-groups"></a>スマート グループ
 
-スマート グループは機械学習アルゴリズムに基づくアラートの集計であり、アラートのノイズの削減とトラブルシューティングに役立ちます。 [スマート グループに関する詳細](https://aka.ms/smart-groups)および[スマート グループを管理する方法](https://aka.ms/managing-smart-groups)を参照してください。
+スマート グループは機械学習アルゴリズムに基づくアラートの集計であり、アラートのノイズの削減とトラブルシューティングに役立ちます。 [スマート グループに関する詳細](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)および[スマート グループを管理する方法](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [スマート グループの詳細](https://aka.ms/smart-groups)
+- [スマート グループの詳細](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [アクション グループの詳細](./action-groups.md)
-- [Azure でのアラート インスタンスの管理](https://aka.ms/managing-alert-instances)
-- [スマート グループの管理](https://aka.ms/managing-smart-groups)
+- [Azure でのアラート インスタンスの管理](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [スマート グループの管理](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [Azure アラートの価格についての詳細](https://azure.microsoft.com/pricing/details/monitor/)

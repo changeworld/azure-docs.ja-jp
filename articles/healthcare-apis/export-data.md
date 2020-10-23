@@ -1,20 +1,21 @@
 ---
 title: Azure API for FHIR で $export コマンドを呼び出してエクスポートを実行する
-description: この記事では、匿名化エクスポートを設定して使用する方法について説明します。
+description: この記事では、$export を使用して FHIR データをエクスポートする方法について説明します
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 433d3391e7b2b99d72ea71f1b4d48c3e04a46afc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 74fe09895f49cc9f7c3cdf6b6c97c1624c3e9c0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819977"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839828"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR データをエクスポートする方法
+
 
 一括エクスポート機能を使用すると、[FHIR 仕様](https://hl7.org/fhir/uv/bulkdata/export/index.html)に従って FHIR サーバーからデータをエクスポートできます。 
 
@@ -24,7 +25,7 @@ $export を使用する前に、Azure API for FHIR がそれを使用するよ�
 
 エクスポート用に Azure API for FHIR を構成すると、$export コマンドを使用して、サービスからデータをエクスポートできます。 データは、エクスポートの構成時に指定したストレージ アカウントに格納されます。 FHIR サーバーで $export コマンドを呼び出す方法については、[$export の仕様](https://hl7.org/Fhir/uv/bulkdata/export/index.html)に関するドキュメントを参照してください。 
 
-Azure API for FHIR の $export コマンドには、データのエクスポート先として構成されたストレージ アカウント内のコンテナーを指定する省略可能な _\_conatiner_ パラメーターを指定します。 コンテナーが指定されている場合は、そのコンテナーの名前を持つ新しいフォルダー内のそのコンテナーにデータがエクスポートされます。 コンテナーが指定されていない場合は、新しいコンテナーにデータがエクスポートされます。
+Azure API for FHIR の $export コマンドには、データのエクスポート先として構成されたストレージ アカウント内のコンテナーを指定する省略可能な _\_conatiner_ パラメーターを指定します。 コンテナーが指定されている場合は、その名前を持つ新しいフォルダー内のそのコンテナーにデータがエクスポートされます。 コンテナーが指定されていない場合は、ランダムに生成された名前を持つ新しいコンテナーにエクスポートされます。 
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 

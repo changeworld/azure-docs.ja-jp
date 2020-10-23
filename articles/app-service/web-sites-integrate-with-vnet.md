@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646610"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150147"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークと統合する
 
-この記事では、Azure App Service の VNet 統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットにルーティングできないネットワークに配置できます。 VNet 統合機能を使用すると、アプリは VNet 内のリソースにアクセスするか、VNet を通じてリソースにアクセスできます。 VNet 統合では、アプリにプライベートでアクセスすることはできません。
+この記事では、Azure App Service の VNet 統合機能と、それを [Azure App Service](./overview.md) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットにルーティングできないネットワークに配置できます。 VNet 統合機能を使用すると、アプリは VNet 内のリソースにアクセスするか、VNet を通じてリソースにアクセスできます。 VNet 統合では、アプリにプライベートでアクセスすることはできません。
 
 Azure App Service では、VNet 統合機能に次の 2 つのバリエーションがあります。
 
@@ -54,6 +54,10 @@ App Service 内のアプリは、worker ロールでホストされます。 Bas
 
 リージョン VNet 統合が有効になっているとき、アプリによるインターネットへの送信呼び出しは、通常と同じチャネル経由で行われます。 アプリのプロパティ ポータルに一覧表示される送信アドレスは、引き続きそのアプリによって使用されるアドレスです。 アプリに関する変更は、サービス エンドポイントのセキュリティ保護されたサービスつまり RFC 1918 アドレスへの呼び出しが、VNet に転送されることです。 WEBSITE_VNET_ROUTE_ALL が 1 に設定されている場合、すべての送信トラフィックを VNet 内に送信できます。
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` は、現在 Windows コンテナーではサポートされていません。
+> 
+
 この機能では、worker ごとに 1 つの仮想インターフェイスのみがサポートされます。 worker あたり 1 つの仮想インターフェイスは、App Service プランごとに 1 リージョンの VNet 統合があることを意味します。 同じ App Service プラン内のすべてのアプリで、同じ VNet 統合を使用できます。 アプリで追加の VNet に接続する必要がある場合は、別の App Service プランを作成する必要があります。 使用される仮想インターフェイスは、顧客が直接アクセスできるリソースではありません。
 
 このテクノロジが動作する方法の性質のために、VNet 統合で使用されるトラフィックは Azure Network Watcher や NSG フローのログには表示されません。
@@ -72,7 +76,8 @@ App Service 内のアプリは、worker ロールでホストされます。 Bas
 ゲートウェイが必要な VNet 統合は次の場合は使用できません。
 
 * Azure ExpressRoute で接続された VNet に対して。
-* Linux アプリから
+* Linux アプリから。
+* [Windows コンテナー](quickstart-custom-container.md)から。
 * サービス エンドポイントによって保護されているリソースにアクセスする場合。
 * ExpressRoute とポイント対サイトまたはサイト間 VPN の両方をサポートする共存ゲートウェイに対して。
 
@@ -139,11 +144,15 @@ VNet で定義されているルートが、アプリから VNet にトラフィ
 
 ゲートウェイが必要な VNet 統合機能の使用には、3 つの料金が関連します。
 
-* **App Service プランの価格レベルの料金**: アプリは、Standard、Premium、または PremiumV2 の App Service プランに属している必要があります。 コストについて詳しくは、「[App Service の価格][ASPricing]」をご覧ください。
+* **App Service プランの価格レベルの料金**: アプリは、Standard、Premium、PremiumV2、または PremiumV3 の App Service プランに属している必要があります。 コストについて詳しくは、「[App Service の価格][ASPricing]」をご覧ください。
 * **データ転送コスト**: VNet が同じデータ センター内にある場合でも、データのエグレスには料金がかかります。 これらの料金については、[データ転送価格の詳細][DataPricing]に関するページをご覧ください。
 * **VPN Gateway のコスト**: ポイント対サイト VPN に必要な仮想ネットワーク ゲートウェイに対して費用がかかります。 詳細については、「[VPN Gateway の価格][VNETPricing]」を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+> [!NOTE]
+> VNET 統合は、App Service の Docker Compose シナリオではサポートされていません。
+>
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
@@ -173,7 +182,7 @@ Commands:
     list : List the virtual network integrations used in an appservice plan.
 ```
 
-リージョン VNet 統合では Powershell のサポートも提供されていますが、サブネットの resourceID のプロパティ配列を使用して汎用のリソースを作成する必要があります
+リージョン VNet 統合では PowerShell のサポートも提供されていますが、サブネットの resourceID のプロパティ配列を使用して汎用のリソースを作成する必要があります
 
 ```azurepowershell
 # Parameters

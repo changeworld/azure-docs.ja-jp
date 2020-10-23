@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536224"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143227"
 ---
 # <a name="configure-network-access-control"></a>ネットワーク アクセス制御を構成する
 
@@ -62,4 +62,4 @@ Azure portal を使用して、Azure SignalR Service のネットワーク ア�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Private Link](/azure/private-link/private-link-overview) について学習します。
+[Azure Private Link](../private-link/private-link-overview.md) について学習します。

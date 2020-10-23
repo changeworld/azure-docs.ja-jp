@@ -3,12 +3,12 @@ title: Azure Active Directory を使用したアクセスを承認する
 description: この記事では、Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 101e40420493156c7b1a0c3c5b767eda023e62c6
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831840"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566263"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する
 Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -33,9 +33,13 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 ## <a name="azure-built-in-roles-for-azure-event-hubs"></a>Azure Event Hubs の Azure の組み込みロール
 Azure には、Event Hubs データへの Azure AD と OAuth を使ったアクセスを承認するために、次の Azure の組み込みロールが用意されています。
 
-- [Azure Event Hubs のデータ所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner):Event Hubs リソースへの完全なアクセス権を付与するには、このロールを使用します。
-- [Azure Event Hubs のデータ送信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender):Event Hubs リソースへの送信アクセス権を付与するには、このロールを使用します。
-- [Azure Event Hubs のデータ受信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver):Event Hubs リソースへの使用/受信アクセス権を付与するには、このロールを使用します。
+| Role | 説明 | 
+| ---- | ----------- | 
+| [Azure Event Hubs データ所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Event Hubs リソースへの完全なアクセス権を付与するには、このロールを使用します。 |
+| [Azure Event Hubs データ送信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Event Hubs リソースへの送信アクセス権を付与するには、このロールを使用します。 |
+| [Azure Event Hubs データ受信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Event Hubs リソースへの使用/受信アクセス権を付与するには、このロールを使用します。 |
+
+スキーマ レジストリの組み込みロールについては、[スキーマ レジストリのロール](schema-registry-overview.md#role-based-access-control)に関する記事を参照してください。
 
 ## <a name="resource-scope"></a>リソースのスコープ 
 セキュリティ プリンシパルに Azure ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。

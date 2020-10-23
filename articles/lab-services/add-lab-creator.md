@@ -3,12 +3,12 @@ title: Azure Lab Services でラボ作成者としてユーザーを追加する
 description: この記事では、Azure Lab Services でラボ アカウントのラボ作成者ロールにユーザーを追加する方法を紹介します。 ラボ作成者はこのラボ アカウントでラボを作成できます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444286"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399484"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントにラボ作成者を追加する
 この記事では、Azure Lab Services でラボ アカウントにラボ作成者としてユーザーを追加する方法を紹介します。 追加されたユーザーは、そのラボ アカウントでクラスルーム ラボを作成できます。 
@@ -31,7 +31,7 @@ ms.locfileid: "85444286"
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Microsoft 以外のアカウント ユーザーをラボ作成者として追加する
 ユーザーをラボ作成者として追加するには、そのユーザーのメール アカウントを使用します。 次の種類のメール アカウントを使用できます。
 
-- 大学の Office 365 Azure Active Directory (AAD) によって提供されるメール アカウント。 
+- 大学の Azure Active Directory (AAD) によって提供されるメール アカウント。
 - Microsoft のメール アカウント (`@outlook.com`、`@hotmail.com`、`@msn.com`、`@live.com` など)。
 - Microsoft 以外のメール アカウント (Yahoo または Google によって提供されるものなど)。 ただし、これらの種類のアカウントは、Microsoft アカウントとリンクされている必要があります。
 - GitHub アカウント。 このアカウントは、Microsoft アカウントとリンクされている必要があります。

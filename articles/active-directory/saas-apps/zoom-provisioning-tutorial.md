@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545983"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333445"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>チュートリアル:Zoom を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -52,19 +52,19 @@ ms.locfileid: "88545983"
 
 2. ページの右上隅にある **[管理]** に移動します。 
 
-    ![Zoom のインストール](media/zoom-provisioning-tutorial/zoom02.png)
+    ![[管理] オプションが強調表示された Zoom App Marketplace のスクリーンショット。](media/zoom-provisioning-tutorial/zoom02.png)
 
 3. 作成した Azure AD アプリに移動します。 
     
-    ![Zoom アプリ](media/zoom-provisioning-tutorial/zoom03.png)
+    ![Azure AD アプリが強調表示された [作成したアプリ] セクションのスクリーンショット。](media/zoom-provisioning-tutorial/zoom03.png)
 
 4. 左側のナビゲーション ウィンドウで、 **[アプリの資格情報]** を選択します。
 
-    ![Zoom アプリ](media/zoom-provisioning-tutorial/zoom04.png)
+    ![[アプリの資格情報] オプションが強調表示された左ナビゲーション ウィンドウのスクリーンショット。](media/zoom-provisioning-tutorial/zoom04.png)
 
 5. **JWT トークン**をコピーして保存します。 この値を、Azure portal で Zoom アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** フィールドに入力します。 新しい無期限のトークンが必要な場合は、新しいトークンを自動生成する有効期限を再構成する必要があります。 
 
-    ![Zoom のインストール](media/zoom-provisioning-tutorial/zoom05.png)
+    ![[アプリの資格情報] ページのスクリーンショット。](media/zoom-provisioning-tutorial/zoom05.png)
 
 ## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Zoom を追加する
 
@@ -95,11 +95,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.zoom.us/scim`」と入力します。 先ほど取得した **JWT トークン**の値を、 **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Zoom への接続を確認します。 接続できない場合は、使用中の Zoom アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

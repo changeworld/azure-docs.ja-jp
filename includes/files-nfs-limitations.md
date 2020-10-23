@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705216"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91644861"
 ---
 プレビュー段階では、NFS には次の制限事項があります。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90705216"
 - NFS 共有を作成するには、新しいストレージ アカウントを作成する必要があります。
 - 管理プレーン REST API のみがサポートされています。 データ プレーン REST API は使用できません。したがって、Storage Explorer などのツールは NFS 共有で動作せず、Azure portal で NFS 共有データを参照できません。
 - Premium レベルでのみ使用できます。
-- 現在、ローカル冗長ストレージでのみ使用できます。
+- 現在、ローカル冗長ストレージ (LRS) でのみ使用できます。
 
 ### <a name="azure-storage-features-not-yet-supported"></a>まだサポートされていない Azure Storage の機能
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449747"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127526"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -206,7 +206,7 @@ Azure デバイスで SMB 署名を有効にするには、次のようにしま
 
 Web UI ユーザーは、既定で SMB 共有に対するバックアップ オペレーター特権を持っています。 これが不要の場合、 **[バックアップ オペレーターの特権を有効にする]** を使用して、特権を無効または有効にします。
 
-詳細については、[Active Directory セキュリティ グループ](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)に関する記事のバックアップ オペレーターを参照してください。
+詳細については、[Active Directory セキュリティ グループ](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)に関する記事のバックアップ オペレーターを参照してください。
 
 Azure デバイスでバックアップ オペレーターの特権を有効にするには、次の操作を行います。
 

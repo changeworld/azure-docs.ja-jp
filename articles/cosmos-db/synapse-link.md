@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891478"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014547"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 
@@ -56,7 +56,7 @@ Azure Synapse Link を使うと、コスト効率のよいフル マネージド
 Azure Cosmos DB 分析ストアは、使用量ベースの価格モデルに従います。このモデルは、データ ストレージと、実行された分析の読み書き操作およびクエリに基づいています。 トランザクション ワークロードに対して現在行っているような、スループットのプロビジョニングは必要ありません。 Azure Synapse Analytics から高度なエラスティック コンピューティング エンジンを使用してデータにアクセスすることにより、ストレージとコンピューティングの実行のコスト効率が大幅に向上します。
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>ローカルに使用可能でグローバルに分散されたマルチ マスター データの分析
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>ローカルに使用可能でグローバルに分散されたマルチリージョン書き込みの分析
 
 Azure Cosmos DB のデータの最も近いリージョン コピーに対して、分析クエリを効率的に実行できます。 Azure Cosmos DB には、グローバルに分散された分析ワークロードとトランザクション ワークロードをアクティブ/アクティブ方式で実行するための最新の機能が用意されています。
 
@@ -116,13 +116,13 @@ Synapse Link は、次の場合にお勧めします。
 
 ## <a name="limitations"></a>制限事項
 
-* Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB の MongoDB 用 API に対してのみサポートされます。 Cassandra API のサポートは、現在、限定的なプレビュー段階にあります。 限定的なプレビューへのアクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
+* 現在 Azure Synapse Link for Azure Cosmos DB は、SQL API および Azure Cosmos DB の MongoDB 用 API に対してサポートされています。 Gremlin API と Table API に対してはサポートされていません。 Cassandra API のサポートはプライベート プレビュー段階にあります。詳細については、[Azure Synapse Link チーム](mailto:cosmosdbsynapselink@microsoft.com)にお問い合わせください。  
 
 * 現時点では、分析ストアは新しいコンテナーに対してのみ有効にすることができます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
 
-* Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
+* Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Synapse Link チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
 
-* プレビューでは、Synapse Link が有効になっているデータベース アカウントでは、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とするワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
+* 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB はコンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore)します。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。 
 
 * プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
 

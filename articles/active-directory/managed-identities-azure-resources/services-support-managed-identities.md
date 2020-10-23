@@ -4,19 +4,19 @@ description: Azure リソースのマネージド ID と Azure AD 認証をサ�
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 07/09/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: d0b9e2301a8bb9990f88db8d4d55ef7f97946174
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006782"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072171"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -212,6 +212,14 @@ Azure Logic Apps のために (それが提供されているリージョンで)
 - [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager テンプレート](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
+### <a name="azure-machine-learning"></a>Azure Machine Learning 
+
+マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | プレビュー | 利用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
+
+詳細については、「[Azure Machine Learning でマネージド ID を使用する](../../machine-learning/how-to-use-managed-identities.md)」を参照してください。
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -252,6 +260,12 @@ Azure Policy のために (それが提供されているリージョンで) マ
 
 詳細については、「[Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)」を参照してください。
 
+### <a name="azure-stack-edge"></a>Azure Stack Edge
+
+マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | Azure Stack Edge サービスが利用可能なリージョンで利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セット
 

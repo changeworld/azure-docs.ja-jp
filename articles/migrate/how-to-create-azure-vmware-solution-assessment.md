@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288857"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576712"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成する
 
@@ -56,7 +56,7 @@ Azure VMware Solution (AVS) の評価作成に使用できるサイズ変更の�
 
 2. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[評価]** をクリックします。
 
-    ![アクセス](./media/how-to-create-assessment/assess.png)
+    ![Azure Migrate Servers のスクリーンショット。[評価ツール] の下で [評価] が選択されています。](./media/how-to-create-assessment/assess.png)
 
 3. **[サーバーの評価]** で、評価の種類に "Azure VMware Solution (AVS)" を選択し、検出ソースを選択して評価名を指定します。
 
@@ -110,7 +110,7 @@ Azure VMware Solution (AVS) の評価の内容は次のとおりです。
     - **[Readiness 不明]** : オンプレミス環境から収集したメタデータが不十分なために、Azure Migrate がマシンの対応性を判断できませんでした。
 
 3. 推奨されるツールを確認します。
-    - **VMware HCX または Enterprise**: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
+    - **VMware HCX または Enterprise**: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
     - **不明**:CSV ファイルを介してインポートされたマシンの場合、既定の移行ツールは不明です。 VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 
 
 4. **[AVS 対応性]** の状態をクリックします。 VM 対応性の詳細を表示し、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を表示できます。

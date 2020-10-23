@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948965"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91630704"
 ---
 # <a name="networking"></a>ネットワーク
 
@@ -59,7 +59,7 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 
 ## <a name="network-security-rules"></a>ネットワーク セキュリティの規則
 
-ここでの基本的なルールは、Azure マネージド Service Fabric クラスターのセキュリティ ロックダウンに対する最小限のものです。 次のポートを開かなかったり、IP/URL をホワイトリストに登録しなかったりすると、クラスターの適切な動作が妨げられ、サポートされない可能性があります。 このルール セットでは、[OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)を使用する必要があります。そうでない場合は、追加のポートを開く必要があります。
+ここでの基本的なルールは、Azure マネージド Service Fabric クラスターのセキュリティ ロックダウンに対する最小限のものです。 次のポートを開かなかったり、IP/URL を許可しなかったりすると、クラスターの適切な動作が妨げられ、サポートされない可能性があります。 このルール セットでは、[OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)を使用する必要があります。そうでない場合は、追加のポートを開く必要があります。
 
 ### <a name="inbound"></a>着信 
 |Priority   |名前               |Port        |Protocol  |source             |到着地       |アクション   

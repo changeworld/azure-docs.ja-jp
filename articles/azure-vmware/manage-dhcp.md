@@ -3,12 +3,12 @@ title: DHCP を作成して管理する方法
 description: この記事では、Azure VMware Solution で DHCP を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069562"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332833"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Azure VMWare Solution で DHCP を作成して管理する方法
 
@@ -24,7 +24,7 @@ NSX マネージャーから **[ネットワーク]** タブに移動し、 **[I
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>DHCP サーバーを第 1 層ゲートウェイに接続します。
 
-1. **[Tier 1 Gateways]\(第 1 層ゲートウェイ\)** を選択し、ゲートウェイを選択して **[編集]** を選択します
+1. **[第 1 層ゲートウェイ]** を選択し、そのゲートウェイを選択して **[編集]** を選択します
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="DHCP サーバーの追加" border="true":::
 
@@ -56,7 +56,7 @@ DHCP サーバーを作成したら、それにネットワーク セグメン�
 
 ## <a name="create-dhcp-relay-service"></a>DHCP リレー サービスの作成
 
-1. NSX-T ウィンドウで **[ネットワーク]** タブを選択し、 **[IP Management]\(IP 管理\)** の下で **[DHCP]** を選択します。 **[サーバーの追加]** を選択します。 **[サーバーの種類]** で [DHCP Relay]\(DHCP リレー\) を選択し、中継サーバーのサーバー名と IP アドレスを入力します。 **[保存]** を選択して変更を保存します。
+1. NXT-T ウィンドウで **[ネットワーク]** タブを選択し、 **[IP Management]\(IP 管理\)** の下で **[DHCP]** を選択します。 **[サーバーの追加]** を選択します。 **[サーバーの種類]** で [DHCP Relay]\(DHCP リレー\) を選択し、中継サーバーのサーバー名と IP アドレスを入力します。 **[保存]** を選択して変更を保存します。
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP サーバーの追加" border="true":::
 

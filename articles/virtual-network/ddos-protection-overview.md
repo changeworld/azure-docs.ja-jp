@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087964ab64c94d5dfe223ce4e47355784003b627
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371186"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173344"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
 分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
 
-Azure DDoS Protection をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。 Azure のすべてのプロパティは、Azure のインフラストラクチャ DDoS (Basic) Protection によて保護されています。 Azure DDoS Protection Standard は、Basic サービス レベルに加えて、特に Azure Virtual Network リソースに合わせてチューニングされた追加の軽減機能を提供します。 
+Azure DDoS Protection をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。 Azure のすべてのプロパティは、Azure のインフラストラクチャ DDoS (Basic) Protection によて保護されています。  Azure DDoS Protection Standard は、Basic サービス レベルに加えて、特に Azure Virtual Network リソースに合わせてチューニングされた追加の軽減機能を提供します。 
 
-DDoS Protection Standard を有効にすることは簡単であり、アプリケーションの変更は必要ありません。 保護ポリシーは、専用のトラフィック監視および機械学習アルゴリズムによってチューニングされます。 ポリシーは、Azure Load Balancer、Azure Application Gateway、Azure Service Fabric のインスタンスなど、仮想ネットワーク内に展開されたリソースに関連付けられたパブリック IP アドレスに適用されますが、この保護は App Service 環境には適用されません。 攻撃中および履歴の表示のために、Azure Monitor ビューからリアルタイムのテレメトリを使用できます。 診断設定を使用して、多くの機能を持つ攻撃軽減分析を利用できます。 アプリケーション レイヤー保護は、[Azure Application Gateway Web アプリケーション ファイアウォール](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を通して、または Azure Marketplace からサードパーティ製のファイアウォールをインストールすることで、追加できます。 IPv4 と IPv6 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
+DDoS Protection Standard を有効にすることは簡単であり、アプリケーションの変更は必要ありません。 保護ポリシーは、専用のトラフィック監視および機械学習アルゴリズムによってチューニングされます。 ポリシーは、Azure Load Balancer、Azure Application Gateway、Azure Service Fabric のインスタンスなど、仮想ネットワーク内に展開されたリソースに関連付けられたパブリック IP アドレスに適用されますが、この保護は App Service 環境には適用されません。  攻撃中および履歴の表示のために、Azure Monitor ビューからリアルタイムのテレメトリを使用できます。 診断設定を使用して、多くの機能を持つ攻撃軽減分析を利用できます。 アプリケーション レイヤー保護は、[Azure Application Gateway Web アプリケーション ファイアウォール](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を通して、または Azure Marketplace からサードパーティ製のファイアウォールをインストールすることで、追加できます。 IPv4 と IPv6 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
 
-![DDoS Protection Basic と Standard](./media/ddos-protection-overview/ddoscomparison.png)
+![DDoS Protection Basic と Standard](./media/ddos-protection-overview/ddosfeatures.png)
 
 Azure DDoS Protection では、顧客データは保存されません。
 
@@ -41,8 +41,6 @@ DDoS Protection Standard は、次の種類の攻撃を軽減できます。
 DDoS Protection Standard は、仮想マシン、ロード バランサー、アプリケーション ゲートウェイに関連付けられたパブリック IP アドレスを含む、仮想ネットワーク内のリソースを保護します。 Application Gateway Web アプリケーション ファイアウォール、またはパブリック IP がある仮想ネットワークにデプロイされたサードパーティー製の Web アプリケーション ファイアウォールと組み合わせれば、DDoS Protection Standard は、レイヤー 3 からレイヤー 7 までの完全なリスク軽減機能を提供できます。
 
 ## <a name="ddos-protection-standard-features"></a>DDoS Protection Standard の機能
-
-![DDoS 機能](./media/ddos-protection-overview/ddosfeatures.png)
 
 DDoS Protection Standard の機能には、次のものが含まれます。
 

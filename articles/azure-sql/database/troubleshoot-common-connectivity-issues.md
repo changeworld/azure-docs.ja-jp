@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: dalechen
 ms.author: ninarn
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003918"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777073"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング
 
@@ -126,7 +126,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>接続再試行用の .NET SqlConnection パラメーター
 
-.NET Framework クラスの **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから SQL Database のデータベースに接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降 (または .NET Core) を使用してください。 機能の詳細については、[この Web ページ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)を参照してください。
+.NET Framework クラスの **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから SQL Database のデータベースに接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降 (または .NET Core) を使用してください。 この機能に関する詳細は、「[SqlConnection.ConnectionString Property](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true)」を参照してください。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.

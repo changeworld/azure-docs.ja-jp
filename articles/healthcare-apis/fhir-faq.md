@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978623"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056857"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -44,6 +44,10 @@ FHIR Server for Azure を実行している場合、基になるサービスに�
 
 開発の観点から言うと、すべての機能はまず、オープンソースの Microsoft FHIR Server for Azure にデプロイされます。 オープンソースでの検証後、PaaS の Azure API for FHIR ソリューションにリリースされます。 オープンソース リリースから PaaS リリースまでの時間は、機能の複雑さやその他ロードマップ上の優先度によって異なります。 
 
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Azure API for FHIR にリリースされる内容はどこで確認できますか?
+
+Azure API for FHIR にリリースされている内容の一部については、オープンソース FHIR サーバーの[リリース](https://github.com/microsoft/fhir-server/releases)を参照してください。 項目を管理サービスにリリースし、通常、オープンソースのリリース ページにそれらが掲載された 2 週間後に利用できるようにする場合に、Azure API for FHIR でそれらにタグ付けするようにしました。 また、独自の環境でテストする場合に、[ここに](https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md)ビルドをテストする方法に関する手順を掲載しました。 追加の管理サービスの更新を共有するための最適な方法を評価しています。
+
 ### <a name="what-is-smart-on-fhir"></a>SMART on FHIR とは何でしょうか?
 
 SMART (Substitutable Medical Applications and Reusable Technology) on FHIR は、FHIR サーバーやその他の医療 IT システム (電子カルテ、医療情報交換など) にパートナー アプリケーションを統合するための一連のオープン仕様です。 SMART on FHIR アプリケーションを作成することにより、多数の異なるシステムから確実にそのアプリケーションにアクセスして活用することができます。
@@ -65,6 +69,23 @@ SMART (Substitutable Medical Applications and Reusable Technology) on FHIR は�
 
 グループ エクスポートでは、[グループ リソース](https://www.hl7.org/fhir/group.html)のすべての特性ではなく、含まれている参照のみがグループからエクスポートされます。
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>Azure API for FHIR にバンドルを投稿することはできますか?
+
+現在、[バッチ バンドル](https://www.hl7.org/fhir/valueset-bundle-type.html)の投稿はサポートされていますが、Azure API for FHIR でのトランザクション バンドルの投稿はサポートされていません。 SQL によってサポートされているオープンソース FHIR サーバーを使用して、トランザクション バンドルを投稿できます。
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>Azure API for FHIR で 1 人の患者のすべてのリソースを取得するにはどうすればよいですか?
+
+Azure API for FHIR で、[コンパートメント検索](https://www.hl7.org/fhir/compartmentdefinition.html)をサポートしています。 これにより、特定の患者に関連するすべてのリソースを取得できます。 現時点で、コンパートメントには患者自体ではなく、患者に関連するすべてのリソースが含まれているため、結果に患者のリソースが必要な場合は、検索して、患者を取得する必要もあります。
+
+このいくつかの例を次に示します。
+
+* GET Patient/<id>/*
+* GET Patient/<id>/Observation
+* GET Patient/<id>/Observation?code=8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>ワークフロー内での Azure API for FHIR の使用例は、どこで確認できますか?
+
+[正常性アーキテクチャ GitHub ページ](https://github.com/microsoft/health-architectures)に使用可能な参照アーキテクチャのコレクションがあります。
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (プレビュー)
 

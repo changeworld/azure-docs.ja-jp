@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の移行のサポート
 description: Azure Migrate を使用した Hyper-V の移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051153"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91442305"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -38,12 +38,12 @@ ms.locfileid: "89051153"
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](../virtual-machines/linux/endorsed-distros.md) オペレーティング システム。 |
 **Windows Server 2003** | Windows Server 2003 を実行している VM では、移行の前に [Hyper-V 統合サービスをインストールする](prepare-windows-server-2003-migration.md)必要があります。 | 
-**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8。 その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#linux-machines)を行います。
+**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
 | **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整してください。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
-| **UEFI ブート**                  | サポートされています。 Azure Generation 2 VM でサポートされている VM サイズを確実に選択してください。  |
+| **UEFI ブート**                  | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。  |
 | **UEFI - セキュア ブート**         | 移行はサポートされません。|
-| **ディスク サイズ**                  | OS ディスク用に 2 TB、データ ディスク用に 4 TB。|
+| **ディスク サイズ**                  | OS ディスク (BIOS ブート) 用に 2 TB、OS ディスク (UEFI ブート) 用に 4 TB、データ ディスク用に 4 TB。|
 | **ディスクの数** | VM あたり最大で 16 台のディスク。|
 | **暗号化されたディスクまたはボリューム**    | 移行はサポートされません。|
 | **RDM またはパススルー ディスク**      | 移行はサポートされません。|

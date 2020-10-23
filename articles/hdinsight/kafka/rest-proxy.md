@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 508d054bc4eed88867bb6e3282edbafaae9a5247
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 97bd71dd5a70a867f45915a5a5f95f6513f2a824
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298047"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541732"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
@@ -63,11 +63,11 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
 
 1. Kafka クラスター作成ワークフローの実行中に、 **[セキュリティとネットワーク]** タブで、 **[Enable Kafka REST proxy]\(Kafka REST プロキシを有効にする\)** オプションをオンにします。
 
-     ![Kafka REST プロキシを有効にし、セキュリティ グループを選択する](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     ![[HDInsight クラスターの作成] ページが表示されているスクリーンショット。[セキュリティとネットワーク] が選択されています。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. **[セキュリティ グループの選択]** をクリックします。 セキュリティ グループの一覧から、REST プロキシにアクセスするセキュリティ グループを選択します。 検索ボックスを使用して、適切なセキュリティ グループを見つけることができます。 下部にある **[選択]** ボタンをクリックします。
 
-     ![Kafka REST プロキシを有効にし、セキュリティ グループを選択する](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     ![[HDInsight クラスターの作成] ページが表示されているスクリーンショット。セキュリティ グループを選択するためのオプションが示されています。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. 「[Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started)」の説明に従って、残りのステップを完了してクラスターを作成します。
 

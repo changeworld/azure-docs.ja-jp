@@ -7,24 +7,24 @@ ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987132"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91577511"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 このトピックでは、Azure SQL Database と Azure SQL Managed Instance の[自動フェールオーバー グループ](auto-failover-group-overview.md)を構成する方法について説明します。
 
-## <a name="single-database-in-azure-sql-database"></a>Azure SQL Database 内の単一データベース
+## <a name="single-database"></a>単一データベース
 
 Azure portal または PowerShell を使用して、フェールオーバー グループを作成し、そのグループに単一データベースを追加します。
 
@@ -192,7 +192,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 > [!IMPORTANT]
 > セカンダリ データベースを削除する必要がある場合は、削除する前にそれをフェールオーバー グループから削除します。 セカンダリ データベースをフェールオーバー グループから削除する前に削除すると、予期しない動作が発生する可能性があります。
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL Database 内のエラスティック プール
+## <a name="elastic-pool"></a>エラスティック プール
 
 Azure portal または PowerShell を使用して、フェールオーバー グループを作成し、そのグループにエラスティック プールを追加します。  
 
@@ -346,7 +346,9 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 Azure portal または PowerShell を使用して、Azure SQL Managed Instance 内の 2 つのマネージド インスタンス間にフェールオーバー グループを作成します。
 
-[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成するか、あるいは、各 SQL Managed Instance の仮想ネットワーク用のゲートウェイを作成し、2 つのゲートウェイを接続して、フェールオーバー グループを作成する必要があります。
+[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成するか、あるいは、各 SQL Managed Instance の仮想ネットワーク用のゲートウェイを作成し、2 つのゲートウェイを接続して、フェールオーバー グループを作成する必要があります。 
+
+パフォーマンス上の理由により、両方のマネージド インスタンスを、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にデプロイします。 geo のペアになっているリージョンに存在するマネージド インスタンスは、ペアになっていないリージョンと比較すると、パフォーマンスがはるかに優れています。 
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -360,6 +362,9 @@ Azure portal または PowerShell を使用して、Azure SQL Managed Instance �
 ### <a name="create-primary-virtual-network-gateway"></a>プライマリ仮想ネットワーク ゲートウェイを作成する
 
 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成していない場合は、Azure portal または PowerShell を使用して、プライマリ仮想ネットワーク ゲートウェイを作成できます。
+
+> [!NOTE]
+> ゲートウェイの SKU は、スループットのパフォーマンスに影響を与えます。 この記事では、最も基本的な SKU (`HwGw1`) を使用して、ゲートウェイをデプロイします。 上位の SKU (`VpnGw3` など) をデプロイして、より高いスループットを実現します。 使用可能なすべてのオプションについては、[ゲートウェイ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) に関する記事を参照してください。 
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307294"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839250"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Azure DevOps による継続的配置
 
@@ -72,7 +72,7 @@ ms.locfileid: "85307294"
 1. これらのスクリプトでは、リージョン `westus2` を使用していることを前提としている点にご注意ください。そうでない場合は、それに応じてタスクの引数を更新します。
 
     > [!div class="mx-imgBorder"]
-    > ![アクティビティの送信のペイロード](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![引数内のリージョン値を強調表示するスクリーンショット](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. [保存して実行] ボタンでドロップダウンを開き、[保存] をクリックします。
 

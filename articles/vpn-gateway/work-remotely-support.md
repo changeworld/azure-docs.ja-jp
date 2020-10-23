@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a70f7ccd1c3ca078bab0ff473283b505c0ded316
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441563"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91440829"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Gateway ポイント対サイトを使用したリモート作業
 
@@ -30,13 +30,13 @@ Azure ポイント対サイトのソリューションはクラウド ベース�
 
 次の表は、クライアント オペレーティング システムと、それらに使用できる認証オプションを示しています。 既に使用中のクライアント OS に基づいて認証方法を選択すると便利です。 たとえば、接続する必要があるクライアント オペレーティング システムが混在している場合は、証明書ベースの認証を使用する OpenVPN を選択します。 また、ポイント対サイト VPN は、ルート ベースの VPN ゲートウェイでのみサポートされていることに注意してください。
 
-![ポイント対サイト](./media/working-remotely-support/ostable.png "OS")
+![クライアントのオペレーティング システムと使用可能な認証オプションを示すスクリーンショット。](./media/working-remotely-support/ostable.png "OS")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>シナリオ 1 - ユーザーが Azure のリソースにのみアクセスする必要がある
 
 このシナリオでは、リモート ユーザーは、Azure 内のリソースにのみアクセスする必要があります。
 
-![ポイント対サイト](./media/working-remotely-support/scenario1.png "シナリオ 1")
+![Azure のリソースにのみアクセスする必要があるユーザー向けのポイント対サイト シナリオを示す図。](./media/working-remotely-support/scenario1.png "シナリオ 1")
 
 ユーザーが Azure リソースに安全に接続できるようにするために必要な手順は、大まかに次のとおりです。
 
@@ -55,7 +55,7 @@ Azure ポイント対サイトのソリューションはクラウド ベース�
 
 このシナリオでは、リモート ユーザーは、Azure とオンプレミスのデータ センター内のリソースにアクセスする必要があります。
 
-![ポイント対サイト](./media/working-remotely-support/scenario2.png "シナリオ 2")
+![Azure のリソースにアクセスする必要があるユーザー向けのポイント対サイト シナリオを示す図。](./media/working-remotely-support/scenario2.png "シナリオ 2")
 
 ユーザーが Azure リソースに安全に接続できるようにするために必要な手順は、大まかに次のとおりです。
 

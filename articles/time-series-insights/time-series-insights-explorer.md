@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487302"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568644"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Explorer
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Time Series Insights Gen1 [Explorer Web アプリ](https://insights.timeseries.azure.com/)の機能とオプションについて説明します。 Azure Time Series Insights Explorer は、サービスによって提供される強力なデータ可視化機能を備え、ご利用の環境からアクセスすることができます。
 
@@ -108,7 +111,7 @@ Azure Time Series Insights Explorer を使用するには、以下が必要で�
 
 1. 特定のクエリ内の固有のデータ系列や異常なデータ系列をすばやく見つけるには、**ヒートマップ**を使用します。 ヒートマップとして視覚化できるのは 1 つの検索期間だけです。
 
-    [![Time Series Insights エクスプローラー ヒートマップのグラフ作成](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [Time Series Insights Explorer のヒートマップ グラフ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. 選択または右クリックしてイベントを調査する場合は、 **[イベント]** パネルが使用可能になります。 ここでは、すべての未加工のイベントを確認したり、イベントを JSON または CSV ファイルとしてエクスポートしたりできます。 Azure Time Series Insights により、すべての生データが格納されます。
 

@@ -8,17 +8,17 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293045"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360788"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server のバックアップと復元
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -129,23 +129,23 @@ SQL Server 2016 以降では、マネージド バックアップに、スケジ
 
 | オプション | 自動バックアップ | SQL の Azure Backup | 手動バックアップ |
 |---|---|---|---|
-| 追加の Azure サービスが必要 |   | ![はい](./media/backup-restore/yes.png) |   |
-| Azure portal でのバックアップ ポリシーの構成 | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |   |
-| Azure portal でのデータベースの復元 |   | ![はい](./media/backup-restore/yes.png) |   |
-| 1 つのダッシュボードでの複数のサーバーの管理 |   | ![はい](./media/backup-restore/yes.png) |   |
-| ポイントインタイム リストア | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |
-| 15 分の復旧ポイント目標 (RPO) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |
-| 短期間のバックアップ保持ポリシー (日) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |   |
-| 長期間のバックアップ保持ポリシー (月、年) |   | ![はい](./media/backup-restore/yes.png) |   |
-| SQL Server Always On の組み込みサポート |   | ![はい](./media/backup-restore/yes.png) |   |
-| Azure Storage アカウントへのバックアップ | ![はい](./media/backup-restore/yes.png)(自動) | ![はい](./media/backup-restore/yes.png)(自動) | ![はい](./media/backup-restore/yes.png)(ユーザーが管理) |
-| ストレージとバックアップ ファイルの管理 | | ![はい](./media/backup-restore/yes.png) |  |
-| VM に接続されているディスクへのバックアップ |   |   | ![はい](./media/backup-restore/yes.png) |
-| 一元化されたカスタマイズ可能なバックアップ レポート |   | ![はい](./media/backup-restore/yes.png) |   |
-| エラーが発生した場合の統合電子メール アラート |   | ![はい](./media/backup-restore/yes.png) |   |
-| Azure Monitor ログに基づいた監視のカスタマイズ |   | ![はい](./media/backup-restore/yes.png) |   |
-| SSMS または Transact-SQL スクリプトを使用したバックアップ ジョブの監視 | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |
-| SSMS または Transact-SQL スクリプトを使用したデータベースの復元 | ![はい](./media/backup-restore/yes.png) |   | ![はい](./media/backup-restore/yes.png) |
+| 追加の Azure サービスが必要 |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure portal でのバックアップ ポリシーの構成 | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure portal でのデータベースの復元 |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| 1 つのダッシュボードでの複数のサーバーの管理 |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| ポイントインタイム リストア | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| 15 分の復旧ポイント目標 (RPO) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| 短期間のバックアップ保持ポリシー (日) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| 長期間のバックアップ保持ポリシー (月、年) |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| SQL Server Always On の組み込みサポート |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure Storage アカウントへのバックアップ | ![緑のチェックマーク。](./media/backup-restore/yes.png)(自動) | ![緑のチェックマーク。](./media/backup-restore/yes.png)(自動) | ![緑のチェックマーク。](./media/backup-restore/yes.png)(ユーザーが管理) |
+| ストレージとバックアップ ファイルの管理 | | ![緑のチェックマーク。](./media/backup-restore/yes.png) |  |
+| VM に接続されているディスクへのバックアップ |   |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| 一元化されたカスタマイズ可能なバックアップ レポート |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| エラーが発生した場合の統合電子メール アラート |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure Monitor ログに基づいた監視のカスタマイズ |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| SSMS または Transact-SQL スクリプトを使用したバックアップ ジョブの監視 | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| SSMS または Transact-SQL スクリプトを使用したデータベースの復元 | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>次のステップ
 
