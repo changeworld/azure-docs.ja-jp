@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534201"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107880"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -91,7 +91,7 @@ System Center Operations Manager 2012 R2 以降を使用している場合:
     > - Service Fabric
     > - Application Insights
     >
-    > ログがリソースに適切に関連付けられているかをテストするために、クエリを実行して、関心があるレコードを調べることができます。 正しいリソース ID が [_ResourceId](log-standard-properties.md#_resourceid) プロパティにあれば、リソース中心クエリでデータを使用できます。
+    > ログがリソースに適切に関連付けられているかをテストするために、クエリを実行して、関心があるレコードを調べることができます。 正しいリソース ID が [_ResourceId](./log-standard-columns.md#_resourceid) プロパティにあれば、リソース中心クエリでデータを使用できます。
 
 Azure Monitor では、ログ検索の実行コンテキストに応じて適切なモードが自動的に決定されます。 スコープは、常に Log Analytics の左上のセクションに表示されます。
 
@@ -164,4 +164,3 @@ Application Insights や Azure Monitor for VMs など、異なるチームによ
 ## <a name="next-steps"></a>次のステップ
 
 このガイドで推奨されているセキュリティのアクセス許可と制御を実装するには、[ログへのアクセスの管理](manage-access.md)に関する記事を参照してください。
-

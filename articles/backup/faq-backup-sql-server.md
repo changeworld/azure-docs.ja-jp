@@ -4,12 +4,12 @@ description: Azure Backup を使用した Azure VM 上での SQL Server デー�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461225"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172367"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -104,7 +104,7 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>TDE (Transparent Data Encryption) が有効になっているデータベースを保護し、バックアップ プロセス全体を通してデータベースを暗号化したままにすることはできますか?
 
-はい、Azure Backup では、TDE が有効になった SQL Server データベースまたはサーバーのバックアップがサポートされます。 キーが Azure によって管理される [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) と、キーがユーザーによって管理される (BYOK) TDE がサポートされます。  バックアップでは、バックアップ プロセスの一環として SQL 暗号化は実行されないため、バックアップ時にデータベースが暗号化されたままになります。
+はい、Azure Backup では、TDE が有効になった SQL Server データベースまたはサーバーのバックアップがサポートされます。 キーが Azure によって管理される [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) と、キーがユーザーによって管理される (BYOK) TDE がサポートされます。  バックアップでは、バックアップ プロセスの一環として SQL 暗号化は実行されないため、バックアップ時にデータベースが暗号化されたままになります。
 
 ## <a name="next-steps"></a>次のステップ
 
