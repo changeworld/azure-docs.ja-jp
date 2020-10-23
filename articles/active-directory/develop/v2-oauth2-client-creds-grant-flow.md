@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759072"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932585"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -52,8 +52,11 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 この種類の承認は、デーモンおよび個人の Microsoft アカウントを持つコンシューマー ユーザーが所有するデータにアクセスする必要があるサービス アカウントに共通しています。 組織が所有するデータでは、アプリケーションのアクセス許可を介して必要な承認を取得することをお勧めします。
 
-> [!NOTE]
-> この ACL ベースの認証パターンを有効にするために、Azure AD では、アプリケーションが別のアプリケーションのトークンを取得することを承認されている必要はありません。そのため、`roles` 要求なしにアプリ専用トークンを発行できます。 API を公開するアプリケーションは、トークンを受け入れるために、アクセス許可チェックを実装する必要があります。
+#### <a name="controlling-tokens-without-the-roles-claim"></a>`roles` 要求なしのトークンの制御
+
+この ACL ベースの認証パターンを有効にするために、Azure AD では、アプリケーションが別のアプリケーションのトークンを取得することを認可されている必要はありません。 そのため、`roles` 要求なしにアプリ専用トークンを発行できます。 API を公開するアプリケーションは、トークンを受け入れるために、アクセス許可チェックを実装する必要があります。
+
+アプリケーションに対するロールのないアプリケーション専用のアクセス トークンをアプリケーションが取得できないようにするには、[ユーザー割り当て要件がアプリに対して有効になるようにします](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 これにより、ロールが割り当てられていないユーザーとアプリケーションは、このアプリケーションのトークンを取得できなくなります。 
 
 ### <a name="application-permissions"></a>アプリケーションのアクセス許可
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009615"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000195"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -141,9 +141,9 @@ Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis
 
 `maxmemory` ポリシーの詳細については、「[Eviction policies (削除ポリシー)](https://redis.io/topics/lru-cache#eviction-policies)」をご覧ください。
 
-**maxmemory-reserved** 設定は、フェールオーバーに伴うレプリケーションなどのキャッシュ以外の操作のために予約されているメモリの量を、MB 単位で構成するものです。 この値を設定すると、負荷が変化するときでも、Redis サーバーの稼働状態がより安定します。 この値は、書き込みが大量に発生するワークロードに対しては、高く設定する必要があります。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
+**maxmemory-reserved** 設定は、フェールオーバーに伴うレプリケーションなどのキャッシュ以外の操作のために予約されているメモリの量をクラスター内のインスタンスあたりの MB 単位で構成するものです。 この値を設定すると、負荷が変化するときでも、Redis サーバーの稼働状態がより安定します。 この値は、書き込みが大量に発生するワークロードに対しては、高く設定する必要があります。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
-**[maxfragmentationmemory-reserved]** 設定では、メモリの断片化に対応するために予約されるメモリ量を MB 単位で構成します。 この値を設定すると、キャッシュがいっぱいになった場合や、キャッシュがほとんどいっぱいで断片化の割合が高い場合でも、Redis サーバーの動作がより安定します。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
+**maxfragmentationmemory-reserved** 設定では、メモリの断片化に対応するために予約されるメモリ量をクラスター内のインスタンスあたりの MB 単位で構成します。 この値を設定すると、キャッシュがいっぱいになった場合や、キャッシュがほとんどいっぱいで断片化の割合が高い場合でも、Redis サーバーの動作がより安定します。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
 新しいメモリ予約値 (**maxmemory-reserved** または **maxfragmentationmemory-reserved**) を選択する際には、この変更によってすでに大量のデータが入っているキャッシュがどのような影響を受けるのかを考慮する必要があります。 たとえば、53 GB のキャッシュに 49 GB のデータが入っているときに、予約値を 8 GB に変更した場合、この変更によりシステムで利用可能な最大メモリは 45 GB まで低下します。 現在の `used_memory` または `used_memory_rss` が新しい上限値の 45 GB よりも大きい場合、システムでは、`used_memory` と `used_memory_rss` の両方が 45 GB を下回るまでデータを削除しなければならなくなります。 削除することによってサーバーの負荷やメモリの断片化が増える可能性もあります。 `used_memory` や `used_memory_rss` などのキャッシュに関するメトリックの詳細については、「[使用可能なメトリックとレポート期間](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)」をご覧ください。
 
@@ -169,11 +169,11 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Cache for Redis Advisor
 **[Azure Cache for Redis Advisor]** ブレードにキャッシュに関する推奨事項が表示されます。 通常の操作中に推奨事項は表示されません。
 
-![Recommendations](./media/cache-configure/redis-cache-no-recommendations.png)
+![どこに推奨事項が表示されるかを示すスクリーンショット。](./media/cache-configure/redis-cache-no-recommendations.png)
 
 キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、 **[Azure Cache for Redis]** ブレードにアラートが表示されます。
 
-![Recommendations](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Azure Cache for Redis セクションのどこにアラートが表示されるかを示すスクリーンショット。](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 詳細情報は、 **[推奨事項]** ブレードで確認できます。
 
@@ -214,7 +214,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 
 ### <a name="redis-data-persistence"></a>Redis データの保持
-**[データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Cache for Redis では、[RDB の永続化](cache-how-to-premium-persistence.md#configure-rdb-persistence)または [AOF の永続化](cache-how-to-premium-persistence.md#configure-aof-persistence)を使用して Redis の永続化を行うことができます。
+**[データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Cache for Redis では、RDB の永続化または AOF の永続化を使用して Redis の永続化を行うことができます。
 
 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
 
@@ -314,7 +314,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するキャッシュのシャードを選択できます。
 
-![再起動](./media/cache-configure/redis-cache-reboot-cluster.png)
+![再起動するキャッシュのシャードをどこで選択するかを示すスクリーンショット。](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]** をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するシャードを選択し、 **[再起動]** をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
 
@@ -474,11 +474,11 @@ Redis コマンドの詳細については、[https://redis.io/commands](https:/
 
 Redis コンソールにアクセスするには、 **[Azure Cache for Redis]** ブレードの **[コンソール]** をクリックします。
 
-![Redis コンソール](./media/cache-configure/redis-console-menu.png)
+![[コンソール] ボタンが強調表示されているスクリーンショット。](./media/cache-configure/redis-console-menu.png)
 
 キャッシュ インスタンスに対してコマンドを発行するには、目的のコマンドをコンソールに入力します。
 
-![Redis コンソール](./media/cache-configure/redis-console.png)
+![入力コマンドと結果を含む Redis コンソールを示すスクリーンショット。](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>クラスター化された Premium キャッシュでの Redis コンソールの使用

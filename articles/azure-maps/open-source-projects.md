@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090518"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938341"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -39,8 +39,10 @@ ms.locfileid: "90090518"
 |-|-|
 | [Azure Maps アニメーション モジュール](https://github.com/Azure-Samples/azure-maps-animations) | Azure Maps Web SDK で使用するための、アニメーションの豊富なライブラリ。 |
 | [Azure Maps 位置情報コントロール モジュール](https://github.com/Azure-Samples/azure-maps-geolocation-control) | ブラウザーの位置情報 API を使用して地図上でユーザーを探すコントロールを提供する Azure Maps Web SDK モジュール。 |
+| [Azure Maps Gridded Data Source モジュール](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | グリッド領域のセルにデータ ポイントを集めるデータ ソースを提供する Azure Maps Web SDK のモジュール。 この操作は、テセレーション、データのビン分割、16 進数ビンなど、さまざまな名前で知られています。  |
 | [Azure Maps 全画面コントロール モジュール](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | 全画面表示モードで地図を表示するコントロールを提供する Azure Maps Web SDK モジュール。 |
 | [Azure Maps 選択コントロール モジュール](https://github.com/Azure-Samples/azure-maps-selection-control) | 描画ツールを使用して、またはルート範囲のポリゴンを要求することで、データ ソース内のデータを選択するためのコントロールを提供する Azure Maps Web SDK モジュール。 |
+| [Azure Maps Swipe Map モジュール](https://github.com/Azure-Samples/azure-maps-swipe-map) | 2 つの重複するマップ間でのスワイプを可能にする Azure Maps Web SDK 用のモジュール。2 つの重複するデータ セットを比較する目的に最適です。 |
 | [Azure Maps 同期マップ モジュール](https://github.com/Azure-Samples/azure-maps-sync-maps) | 2 つ以上の地図のカメラを同期する Azure Maps Web SDK モジュール。 |
 | [Azure Maps Services UI モジュール](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure Maps REST サービスをラップする Web UI コントロールのセット。 |
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561825"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91716080"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB アクセスの Azure Files ID ベース認証オプションの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,7 +46,7 @@ SMB を使用した Azure ファイル共有の Azure AD Domain Service 認証�
 
 -   **Azure ロールベースのアクセス制御 (Azure RBAC)**
 
-    Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して業務遂行に必要な最小限の権限をユーザーに付与することで、リソースへのアクセスを管理できます。 RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+    Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用して業務遂行に必要な最小限の権限をユーザーに付与することで、リソースへのアクセスを管理できます。 Azure RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="common-use-cases"></a>一般的なユース ケース
 
@@ -114,7 +114,7 @@ Azure AD DS 認証の場合、Azure AD Domain Services を有効にし、ファ�
 
 - まず、ストレージ アカウントを表すために Azure AD DS で ID を作成する必要はありません。 これは、バックグラウンドで有効化プロセスによって実行されます。
 
-- 2 つ目に、Azure AD に存在するすべてのユーザーを、認証および承認できます。 ユーザーは、クラウドのみまたはハイブリッドにすることができます。 Azure AD から Azure AD DS への同期は、ユーザー構成を必要とせずに、プラットフォームによって管理されます。 ただし、クライアントは Azure AD DS にドメイン参加している必要があり、Azure AD に参加も登録もできません。 
+- 2 つ目に、Azure AD に存在するすべてのユーザーを、認証および認可できます。 ユーザーは、クラウドのみまたはハイブリッドにすることができます。 Azure AD から Azure AD DS への同期は、ユーザー構成を必要とせずに、プラットフォームによって管理されます。 ただし、クライアントは Azure AD DS にドメイン参加している必要があり、Azure AD に参加も登録もできません。 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram (ダイアグラム)":::
 

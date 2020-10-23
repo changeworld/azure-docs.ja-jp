@@ -2,13 +2,13 @@
 title: テンプレート関数 - 配列
 description: Azure Resource Manager テンプレートで配列を操作するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: a5cf73203cf59a0b9f2b5f49c923d0a077c065fc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677850"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979140"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM テンプレート用の配列関数
 
@@ -278,12 +278,11 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |文字列、整数、配列、オブジェクト |配列の最初の値。 |
-| 残りの引数 |いいえ |文字列、整数、配列、オブジェクト |配列の残りの値。 |
+| args |いいえ |文字列、整数、配列、オブジェクト |配列内の値。 |
 
 ### <a name="return-value"></a>戻り値
 
-配列。
+配列。 パラメーターが指定されていない場合は、空の配列を返します。
 
 ### <a name="example"></a>例
 
@@ -321,6 +320,10 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
         "arrayArray": {
             "type": "array",
             "value": "[createArray(parameters('arrayToTest'))]"
+        },
+        "emptyArray": {
+            "type": "array",
+            "value": "[createArray()]"
         }
     }
 }
@@ -328,12 +331,13 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | Type | [値] |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
 | objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
 | arrayArray | Array | [["one", "two", "three"]] |
+| emptyArray | Array | [] |
 
 ## <a name="empty"></a>empty
 

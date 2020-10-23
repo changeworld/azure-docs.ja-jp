@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605735"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777791"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 
@@ -40,7 +40,7 @@ Azure Cosmos コンテナーに対してプロビジョニングされたスル�
 
 次のイメージは、物理パーティションによって、コンテナーの 1 つ以上の論理パーティションをホストする方法を示しています。
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="物理パーティション" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>データベースでスループットを設定する
 
@@ -75,7 +75,7 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 
 ワークロードでデータベース内のすべてのコレクションを削除および再作成する必要がある場合は、空のデータベースを削除し、コレクションの作成前に新しいデータベースを再作成することをお勧めします。 次の図は、物理パーティションで、データベース内のさまざまなコンテナーに属する 1 つ以上の論理パーティションをホストできる方法を示しています。
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="物理パーティション" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>データベースとコンテナーでスループットを設定する
 
@@ -84,7 +84,7 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 * *K* RU の標準 (手動) プロビジョニング済みスループットで、*Z* という名前の Azure Cosmos データベースを作成できます。 
 * 次に、データベース内に *A*、*B*、*C*、*D*、*E* という名前の 5 つのコンテナーを作成します。 コンテナー B を作成するときに、必ず **[Provision dedicated throughput for this container]\(このコンテナーの専用スループットをプロビジョニングする\)** オプションを有効にし、このコンテナーにプロビジョニングされているスループットの "*P*" RU を明示的に構成します。 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみであることに注意してください。 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="コンテナー レベルでのスループットの設定":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション":::
 
 * *K* RU のスループットは、*A*、*C*、*D*、*E* の 4 つのコンテナーにわたって共有されます。使用可能なスループットの正確な量は、*A*、*C*、*D*、*E* のそれぞれで異なります。 個々のコンテナーのスループットに対する SLA はありません。
 * コンテナー *B* は常に *P* RU のスループットを取得することが保証されます。 それは SLA によって裏付けられます。
@@ -105,11 +105,11 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 実際の最小 RU/秒は、アカウントの構成によって異なる場合があります。 [Azure Monitor メトリック](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)を使用して、プロビジョニングされたスループット (RU/秒) とリソース上のストレージの履歴を表示できます。
 
-コンテナーまたはデータベースの最小スループットは、SDK を使用してプログラムで取得するか、Azure portal でその値を表示することができます。 .NET SDK を使用する場合、[DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) メソッドで、プロビジョニング済みスループット値をスケールできます。 Java SDK を使用する場合、[RequestOptions.setOfferThroughput](sql-api-java-sdk-samples.md) メソッドを使用して、プロビジョニング済みスループット値をスケールできます。 
+コンテナーまたはデータベースの最小スループットは、SDK を使用してプログラムで取得するか、Azure portal でその値を表示することができます。 .NET SDK の使用時、[container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) メソッドで、プロビジョニング済みのスループット値をスケールできます。 Java SDK の使用時、[CosmosContainer.replaceProvisionedThroughput](sql-api-java-sdk-samples.md) メソッドで、プロビジョニング済みのスループット値をスケールできます。
 
-.NET SDK を使用する場合、[DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) メソッドを使用して、コンテナーまたはデータベースの最小スループットを取得できます。 
+.NET SDK の使用時、[Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) メソッドで、コンテナーまたはデータベースの最小スループットを取得できます。 
 
-コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 スループットを向上させるためにスケール操作を実行すると、必要なリソースをプロビジョニングするためのシステム タスクが原因で、より長い時間がかかる場合があります。 スケール操作の状態は、Azure portal で、または SDK を使用してプログラムで確認できます。 .NET SDK を使用する場合は、`DocumentClient.ReadOfferAsync` メソッドを使用して、スケール操作の状態を取得できます。
+コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 スループットを向上させるためにスケール操作を実行すると、必要なリソースをプロビジョニングするためのシステム タスクが原因で、より長い時間がかかる場合があります。 スケール操作の状態は、Azure portal で、または SDK を使用してプログラムで確認できます。 .NET SDK を使用する場合は、`Container.ReadThroughputAsync` メソッドを使用して、スケール操作の状態を取得できます。
 
 ## <a name="comparison-of-models"></a>モデルの比較
 次の表は、標準 (手動) のスループットをデータベースでプロビジョニングする場合と、コンテナーでプロビジョニングする場合とでの比較を示したものです。 

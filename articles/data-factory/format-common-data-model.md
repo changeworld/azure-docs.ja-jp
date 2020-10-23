@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905299"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042594"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,6 +51,8 @@ Common Data Model は、マッピング データ フローの[インライン �
 | コーパス フォルダー | コーパスのルートの場所 | はい (マニフェストを使用する場合) | String | corpusPath |
 | コーパス エンティティ | エンティティ参照のパス | はい | String | エンティティ |
 | [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
+
+ソース変換で使用するエンティティ定義がデータ フォルダーと同じディレクトリにある場合、[Use entity from corpus]\(コーパスのエンティティを使用する\) の選択を解除し、エンティティ参照として使用するエンティティを入力します。
 
 ### <a name="sink-settings"></a>シンクの設定
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323517"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851154"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>チュートリアル:Druva を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,15 +58,15 @@ Azure AD での自動ユーザー プロビジョニング用に Druva を構成
 
 2. **[管理]**  >  **[デプロイ]**  >  **[ユーザー]** に移動します。
 
-    ![Druva での SCIM の追加](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Druva 管理コンソールのスクリーンショット。[Manage]\(管理\) が強調表示され、[Manage]\(管理\) メニューが表示されています。そのメニューの [Deployments]\(デプロイ\) の下にある [Users]\(ユーザー\) が強調表示されています。" border="false":::
 
 3.  **[設定]** に移動します。 **[トークンの生成]** をクリックします。
 
-    ![Druva での SCIM の追加](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Druva 管理コンソールのスクリーンショット。[Manage]\(管理\) が強調表示され、[Manage]\(管理\) メニューが表示されています。そのメニューの [Deployments]\(デプロイ\) の下にある [Users]\(ユーザー\) が強調表示されています。" border="false":::
 
 4.  **[認証トークン]** 値をコピーします。 この値を、Azure portal で Druva アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
     
-    ![Druva での SCIM の追加](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Druva 管理コンソールのスクリーンショット。[Manage]\(管理\) が強調表示され、[Manage]\(管理\) メニューが表示されています。そのメニューの [Deployments]\(デプロイ\) の下にある [Users]\(ユーザー\) が強調表示されています。" border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>ギャラリーからの Druva の追加
 

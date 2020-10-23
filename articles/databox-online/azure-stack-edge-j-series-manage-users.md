@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904499"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743592"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する
 
@@ -74,7 +74,7 @@ ms.locfileid: "90904499"
 
 2. ユーザーの一覧でユーザーを選択し、 **[削除]** を選択します。 メッセージが表示されたら、削除を確定します。
 
-    ![削除するユーザーの選択](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
+    ![削除するユーザーの選択 2](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 
 ユーザーの一覧が更新され、ユーザーの削除が反映されます。
 

@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.date: 10/08/2020
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760255"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014241"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
-この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](https://docs.microsoft.com/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 
 ## <a name="general"></a>全般
@@ -322,7 +322,6 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 * サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
 * Application Insights で IP アドレスと geo ロケーション データが収集される方法の詳細については、こちらの[記事](./app/ip-collection.md)を参照してください。
 
-
 別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細については、こちらを参照してください](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 [Power BI を使用する](app/export-power-bi.md )と、要求テレメトリを地図上に表示できます。
@@ -398,6 +397,29 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Application Insights リソースを新しいリージョンに移動するにはどうすればよいですか?
+
+既存の Application Insights リソースをあるリージョンから別のリージョンに移動することは、**現在サポートされていません**。 収集した履歴データを新しいリージョンに**移行することはできません**。 唯一の部分的な回避策は次のとおりです。
+
+1. 新しいリージョンに新しい Application Insights リソース ([クラシック](app/create-new-resource.md)または[ワークスペースベース](/azure/azure-monitor/app/create-workspace-resource)) を作成します。
+2. 元のリソースに固有のすべての独自のカスタマイズを新しいリソースに再作成します。
+3. 新しいリージョン リソースの[インストルメンテーション キー](app/create-new-resource.md#copy-the-instrumentation-key)または[接続文字列](app/sdk-connection-string.md)を使用するようにアプリケーションを変更します。  
+4. 新しい Application Insights リソースで引き続きすべてが期待どおりに動作していることをテストして確認します。 
+5. この時点で、元のリソースを削除することができます。これにより、**すべての履歴データが失われ ます**。 または、そのデータ保有設定の期間中、履歴レポートの目的で元のリソースを保持します。
+
+新しいリージョンのリソースに対して、通常、手動で再作成または更新する必要がある独自のカスタマイズには、以下のものがありますが、これらに限定されるものではありません。
+
+- カスタム ダッシュボードとブックを再作成します。 
+- カスタム ログまたはメトリック アラートのスコープを再作成または更新します。 
+- 可用性アラートを再作成します。
+- ユーザーが新しいリソースにアクセスするために必要なカスタムのロールベースのアクセス制御 (RBAC) 設定を再作成します。 
+- インジェスト サンプリング、データ保有、日次上限、およびカスタム メトリックの有効化を含む設定をレプリケートします。 これらの設定は、 **[使用量と推定コスト]** ペインで制御します。
+- [リリース注釈](/azure/azure-monitor/app/annotations)、[ライブ メトリックとコントロール チャネルの保護](app/live-stream.md#secure-the-control-channel)など、API キーに依存するすべての統合。新しい API キーを生成し、関連する統合を更新する必要があります。 
+- クラシック リソースの連続エクスポートを再構成する必要があります。
+- ワークスペースベースのリソースの診断設定を再構成する必要があります。
+
+> [!NOTE]
+> 新しいリージョンで作成するリソースによってクラシック リソースが置き換えられる場合は、[新しいワークスペースベースのリソースを作成する](app/create-workspace-resource.md)ことのメリットを検討するか、または[既存のリソースをワークスペースベースに移行する](app/convert-classic-resource.md)ことをお勧めします。 
 
 ### <a name="automation"></a>オートメーション
 

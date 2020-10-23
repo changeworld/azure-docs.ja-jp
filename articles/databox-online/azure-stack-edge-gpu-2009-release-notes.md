@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 6f1199b29e3bdaa2200aeb7fe4f76c4c9d0d8e19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7ddc83874526a99383f94491771a81da2cde86d8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931246"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047303"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>GPU 搭載 Azure Stack Edge Pro の一般提供 (GA) リリースノート
 
@@ -21,13 +21,11 @@ ms.locfileid: "90931246"
 
 リリース ノートは継続的に更新されます。対応策を必要とする重大な問題が見つかった場合は、それらの問題が追加されます。 Azure Stack Edge Pro デバイスを配置する前に、リリース ノートに含まれている情報を注意深く確認してください。
 
-このアーティクルは、 **Azure Stack Edge Pro 2009** ソフトウェア リリースに適用されます。 
-
-<!--- This software release corresponds to software version number **2.1.1328.1904**-->
+この記事は、ソフトウェア バージョン番号 **2.1.1377.2170** にマップされる **Azure Stack Edge Pro 2010** リリースに適用されます。
 
 ## <a name="whats-new"></a>新機能
 
-Azure Stack Edge 2009 リリースでは、次の新機能が使用できます。 
+Azure Stack Edge 2010 リリースでは、次の新機能が使用できます。 
 
 - **ストレージ クラス** - このリリースでは、ストレージを動的にプロビジョニングできるストレージ クラスが追加されました。 詳細については、「[Azure Stack Edge Pro GPU デバイス上の Kubernetes ストレージ管理](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)」を参照してください。 
 - **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して Azure Stack Edge Pro デバイス上で実行されているアプリケーションの概要を取得すること、Kubernetes クラスター リソースの状態を表示すること、デバイスで発生したエラーを確認することができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、「[Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)」を参照してください。

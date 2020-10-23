@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669023"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044141"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>IoT Edge デバイスで証明書を管理する
 
@@ -33,10 +33,13 @@ ms.locfileid: "89669023"
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Windows](how-to-install-iot-edge-windows.md) または [Linux](how-to-install-iot-edge-linux.md) 上で実行されている IoT Edge デバイス。
+* IoT Edge デバイス。
+
+  IoT Edge デバイスがセットアップされていない場合は、Azure 仮想マシンで作成できます。 クイックスタートの記事のいずれかの手順に従って、[仮想 Linux デバイスを作成](quickstart-linux.md)するか、[仮想 Windows デバイスを作成](quickstart.md)します。
+
 * 自己署名したか、Baltimore、Verisign、DigiCert、GlobalSign などの信頼されている商用証明機関から購入したルート証明機関 (CA) の証明書がある。
 
-ルート証明機関がまだないものの、運用証明書を必要とする IoT Edge 機能を試してみたい (ゲートウェイ シナリオなど) 場合、「[デモ証明書を作成して IoT Edge デバイスの機能をテストする](how-to-create-test-certificates.md)」を参照してください。
+  ルート証明機関がまだないものの、運用証明書を必要とする IoT Edge 機能を試してみたい (ゲートウェイ シナリオなど) 場合、「[デモ証明書を作成して IoT Edge デバイスの機能をテストする](how-to-create-test-certificates.md)」を参照してください。
 
 ### <a name="create-production-certificates"></a>運用証明書を作成する
 
@@ -65,7 +68,7 @@ ms.locfileid: "89669023"
 
 1. 3 つの証明書とキー ファイルを IoT Edge デバイスにコピーします。
 
-   [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) のようなサービスや、[Secure copy protocol](https://www.ssh.com/ssh/scp/) のような関数を使用して、証明書ファイルを削除することができます。  IoT Edge デバイス自体で証明書を生成した場合は、この手順をスキップして、作業ディレクトリへのパスを使用することができます。
+   [Azure Key Vault](../key-vault/index.yml) のようなサービスや、[Secure copy protocol](https://www.ssh.com/ssh/scp/) のような関数を使用して、証明書ファイルを削除することができます。  IoT Edge デバイス自体で証明書を生成した場合は、この手順をスキップして、作業ディレクトリへのパスを使用することができます。
 
 1. IoT Edge セキュリティ デーモン構成ファイルを開きます。
 

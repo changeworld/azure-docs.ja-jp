@@ -1,23 +1,23 @@
 ---
-title: Azure Active Directory における属性マッピングの式を記述する
-description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。
+title: Azure Active Directory で属性マッピングの式を記述するためのリファレンス
+description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。 関数の参照一覧が含まれています。
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
+ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 14e3b23b4246f26e1ac59e0b12b043341546d0a0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235674"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018245"
 ---
-# <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>方法: Azure AD における属性マッピングの式を記述する
+# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD で属性マッピングの式を記述するためのリファレンス
 
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
 
@@ -25,9 +25,8 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 属性マッピングの式の構文は、Visual Basic のApplications (VBA) 関数に似ています。
 
-* 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
-  *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。 <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。*FunctionName(`<<argument 1>>`,`<<argument N>>`)*
+* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。*FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
@@ -43,11 +42,11 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 ---
 ### <a name="append"></a>Append
 
-**関数:**<br> Append(source, suffix)
+**関数:** Append(source, suffix)
 
-**説明:**<br> source 文字列値を受け取り、その末尾に suffix を追加します。
+**説明:** source 文字列値を受け取り、その末尾に suffix を追加します。
 
-**パラメーター:**<br> 
+**パラメーター:**
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -56,49 +55,52 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ---
 ### <a name="bitand"></a>BitAnd
-**関数:**<br> BitAnd(value1, value2)
+**関数:** BitAnd(value1, value2)
 
-**説明:**<br> この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
+**説明:** この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
 
-0 - value1 と value2 内の対応するビットの 1 つまたは両方が 0 の場合                                                  
-1 - 対応するビットの両方が 1 の場合。                                    
+- 0 - value1 と value2 内の対応するビットの 1 つまたは両方が 0 の場合
+- 1 - 対応するビットの両方が 1 の場合。
 
 つまり、両方のパラメーターの対応するビットが 1 の場合を除くすべてのケースで 0 を返します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value1** |必須 |num |value2 と共に AND で処理する数値|
 | **value2** |必須 |num |value1 と共に AND で処理する数値|
 
-**例:**<br>
-BitAnd(&HF, &HF7)                                                                                
-11110111 AND 00000111 = 00000111。BitAnd からは 7 が返されます。その 2 進数は 00000111 です。
+**例:** 
+`BitAnd(&HF, &HF7)`
+
+11110111 AND 00000111 = 00000111。`BitAnd` からは 7 が返されます。その 2 進数は 00000111 です。
 
 ---
 ### <a name="cbool"></a>CBool
-**関数:**<br> CBool(Expression)
+**関数:**  
+`CBool(Expression)`
 
-**説明:**<br> CBool からは、式の評価結果に基づいてブール値が返されます。 式の評価結果が 0 以外の値の場合は CBool によって True が返され、それ以外の場合は False が返されます。
+**説明:**  
+`CBool` からは、式の評価結果に基づいてブール値が返されます。 式の評価結果が 0 以外の値の場合は `CBool` によって *True* が返され、それ以外の場合は *False* が返されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |必須 | expression | 任意の有効な式 |
 
-**例:**<br>
-CBool([attribute1] = [attribute2])                                                                    
+**例:** 
+`CBool([attribute1] = [attribute2])`                                                                    
 両方の属性が同じ値を持つ場合は、True を返します。
 
 ---
 ### <a name="coalesce"></a>Coalesce
-**関数:**<br> Coalesce(source1, source2, ..., defaultValue)
+**関数:** Coalesce(source1, source2, ..., defaultValue)
 
-**説明:**<br> NULL ではない最初のソース値が返されます。 すべての引数が NULL で、defaultValue が存在する場合、defaultValue が返されます。 すべての引数が NULL で、defaultValue が存在しない場合、Coalesce からは NULL が返されます。
+**説明:** NULL ではない最初のソース値が返されます。 すべての引数が NULL で、defaultValue が存在する場合、defaultValue が返されます。 すべての引数が NULL で、defaultValue が存在しない場合、Coalesce からは NULL が返されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -107,43 +109,45 @@ CBool([attribute1] = [attribute2])
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
-**関数:**<br> ConvertToBase64(source)
+**関数:** ConvertToBase64(source)
 
-**説明:**<br> ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。
+**説明:** ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |base 64 に変換される文字列|
 
-**例:**<br>
-ConvertToBase64("Hello world!")                                                                                                        
+**例:** 
+`ConvertToBase64("Hello world!")`
+
 "SABlAGwAbABvACAAdwBvAHIAbABkACEA" を返します。
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**関数:**<br> ConvertToUTF8Hex(source)
+**関数:** ConvertToUTF8Hex(source)
 
-**説明:**<br> ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
+**説明:** ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |UTF8 Hex に変換される文字列|
 
-**例:**<br>
-ConvertToUTF8Hex("Hello world!")                                                                                                         
+**例:** 
+`ConvertToUTF8Hex("Hello world!")`
+
 48656C6C6F20776F726C6421 を返します。
 
 ---
 ### <a name="count"></a>Count
-**関数:**<br> Count(attribute)
+**関数:** Count(attribute)
 
-**説明:**<br> Count 関数は、複数値の属性内の要素数を返します。
+**説明:** Count 関数は、複数値の属性内の要素数を返します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -151,44 +155,47 @@ ConvertToUTF8Hex("Hello world!")
 
 ---
 ### <a name="cstr"></a>CStr
-**関数:**<br> CStr(value)
+**関数:** CStr(value)
 
-**説明:**<br> CStr 関数では、値が文字列データ型に変換されます。
+**説明:** CStr 関数では、値が文字列データ型に変換されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value** |必須 | 数値、参照、またはブール値 | 数値、参照属性、ブール値を指定できます。 |
 
-**例:**<br>
-CStr([dn])                                                            
+**例:** 
+`CStr([dn])`
+
 "cn=Joe,dc=contoso,dc=com" が返されます
 
 ---
 ### <a name="datefromnum"></a>DateFromNum
-**関数:**<br> DateFromNum(value)
+**関数:** DateFromNum(value)
 
-**説明:**<br> DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
+**説明:** DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value** |必須 | Date | DateTime 型に変換される AD 日付 |
 
-**例:**<br>
-DateFromNum([lastLogonTimestamp])                                                                                                   
-DateFromNum(129699324000000000)                                                            
-2012-01-01 23:00:00 を表す DateTime を返します。
+**例:** 
+`DateFromNum([lastLogonTimestamp])`
+
+`DateFromNum(129699324000000000)`
+
+2012 年 1 月 1 日の午後 11:00 を表す DateTime が返されます。
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**関数:**<br> FormatDateTime(source, inputFormat, outputFormat)
+**関数:** FormatDateTime(source, inputFormat, outputFormat)
 
-**説明:**<br> 1 つの形式の日付文字列を受け取り、別の形式に変換します。
+**説明:** 1 つの形式の日付文字列を受け取り、別の形式に変換します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -198,17 +205,17 @@ DateFromNum(129699324000000000)
 
 ---
 ### <a name="guid"></a>Guid
-**関数:**<br> Guid()
+**関数:** Guid()
 
-**説明:**<br> GUID 関数は、新しいランダムな GUID を生成します。
+**説明:** GUID 関数は、新しいランダムな GUID を生成します。
 
 ---
 ### <a name="iif"></a>IIF
-**関数:**<br> IIF(condition,valueIfTrue,valueIfFalse)
+**関数:** IIF(condition,valueIfTrue,valueIfFalse)
 
-**説明:**<br> IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
+**説明:** IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -216,16 +223,16 @@ DateFromNum(129699324000000000)
 | **valueIfTrue** |必須 |変数または文字列 | 条件の評価結果が true の場合に返される値。 |
 | **valueIfFalse** |必須 |変数または文字列 |条件の評価結果が false の場合に返される値。|
 
-**例:**<br>
-IIF([country]="USA",[country],[department])
+**例:** 
+`IIF([country]="USA",[country],[department])`
 
 ---
 ### <a name="instr"></a>InStr
-**関数:**<br> InStr(value1,value2,start,compareType)
+**関数:** InStr(value1, value2, start, compareType)
 
-**説明:**<br> InStr 関数は文字列内の最初の部分文字列を検索します。
+**説明:** InStr 関数は文字列内の最初の部分文字列を検索します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -234,68 +241,72 @@ IIF([country]="USA",[country],[department])
 | **start** |省略可能 |Integer |部分文字列の検索を開始する位置|
 | **compareType** |省略可能 |列挙型 |vbTextCompare か vbBinaryCompare になります |
 
-**例:**<br>
-InStr("The quick brown fox","quick")                                                                             
+**例:** 
+`InStr("The quick brown fox","quick")`
+
 評価結果は 5 になります。
 
-InStr("repEated","e",3,vbBinaryCompare)                                                                                  
+`InStr("repEated","e",3,vbBinaryCompare)`
+
 評価結果は 7 になります。
 
 ---
 ### <a name="isnull"></a>IsNull
-**関数:**<br> IsNull(Expression)
+**関数:** IsNull(Expression)
 
-**説明:**<br> 式の評価結果が Null の場合、IsNull 関数は true を返します。 属性の場合、Null は属性の不在によって表されます。
+**説明:** 式の評価結果が Null の場合、IsNull 関数は true を返します。 属性の場合、Null は属性の不在によって表されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |必須 |expression |評価の対象となる式 |
 
-**例:**<br>
-IsNull([displayName])                                                                                                
+**例:** 
+`IsNull([displayName])`
+
 属性がない場合は True が返されます。
 
 ---
 ### <a name="isnullorempty"></a>IsNullorEmpty
-**関数:**<br> IsNullOrEmpty(Expression)
+**関数:** IsNullOrEmpty(Expression)
 
-**説明:**<br> 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。
+**説明:** 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。
 この関数の逆の関数は IsPresent です。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |必須 |expression |評価の対象となる式 |
 
-**例:**<br>
-IsNullOrEmpty([displayName])                                               
+**例:** 
+`IsNullOrEmpty([displayName])`
+
 属性がないか、空の文字列の場合は True が返されます。
 
 ---
 ### <a name="ispresent"></a>IsPresent
-**関数:**<br> IsPresent(Expression)
+**関数:** IsPresent(Expression)
 
-**説明:**<br> 式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。 この関数の逆関数は IsNullOrEmpty です。
+**説明:** 式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。 この関数の逆関数は IsNullOrEmpty です。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |必須 |expression |評価の対象となる式 |
 
-**例:**<br>
-Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])
+**例:** 
+`Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
 ### <a name="isstring"></a>IsString
-**関数:**<br> IsString(Expression)
+**関数:** IsString(Expression)
 
-**説明:**<br> 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
+**説明:** 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -303,29 +314,29 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 ---
 ### <a name="item"></a>Item
-**関数:**<br> Item(attribute, index)
+**関数:** Item(attribute, index)
 
-**説明:**<br> Item 関数は複数値の文字列/属性から 1 つの項目を返します。
+**説明:** Item 関数は複数値の文字列/属性から 1 つの項目を返します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **attribute** |必須 |属性 |検索対象の複数値の属性 |
 | **インデックス** |必須 |Integer | 複数値の文字列内の項目のインデックス|
 
-**例:**<br>
-Item([proxyAddresses], 1)
+**例:** 
+`Item([proxyAddresses], 1)`
 
 ---
 ### <a name="join"></a>Join
-**関数:**<br> Join(separator, source1, source2, …)
+**関数:** Join(separator, source1, source2, …)
 
-**説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
+**説明:** Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
 
 source 値の 1 つが複数値属性である場合は、その属性のすべての値を結合し、separator 値で区切ります。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -334,31 +345,32 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 ---
 ### <a name="left"></a>Left
-**関数:**<br> Left(String,NumChars)
+**関数:** Left(String,NumChars)
 
-**説明:**<br> Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。 numChars = 0 の場合、空の文字列を返します。
+**説明:** Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。 numChars = 0 の場合、空の文字列を返します。
 numChars < 0 の場合、入力文字列を返します。
 string が null の場合、空の文字列を返します。
 string に含まれる文字数が numChars で指定した数より少ない場合は、string と同一の文字列 (パラメーター 1 のすべての文字が含まれる) が返されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **String** |必須 |属性 | 返される文字を含む文字列 |
 | **NumChars** |必須 |Integer | 文字列の先頭 (左端) から取得する文字数を示す値|
 
-**例:**<br>
-Left("John Doe", 3)                                                            
-"Joh" が返されます
+**例:** 
+`Left("John Doe", 3)`
+
+"Joh" を返します。
 
 ---
 ### <a name="mid"></a>Mid
-**関数:**<br> Mid(source, start, length)
+**関数:** Mid(source, start, length)
 
-**説明:**<br> source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
+**説明:** source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -368,11 +380,11 @@ Left("John Doe", 3)
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
-**関数:**<br> NormalizeDiacritics(source)
+**関数:** NormalizeDiacritics(source)
 
-**説明:**<br> 1 つの文字列引数が必要です。 文字列を返しますが、分音記号はそれ以外の同等の記号で置換されます。 通常、分音記号 (アクセント記号) を含む姓と名を、さまざまなユーザー識別子 (ユーザー プリンシパル名、SAM アカウント名、電子メール アドレスなど) で使用できる有効な値に変換するために使用します。
+**説明:** 1 つの文字列引数が必要です。 文字列を返しますが、分音記号はそれ以外の同等の記号で置換されます。 通常、分音記号 (アクセント記号) を含む姓と名を、さまざまなユーザー識別子 (ユーザー プリンシパル名、SAM アカウント名、電子メール アドレスなど) で使用できる有効な値に変換するために使用します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -380,11 +392,11 @@ Left("John Doe", 3)
 
 ---
 ### <a name="not"></a>Not
-**関数:**<br> Not(source)
+**関数:** Not(source)
 
-**説明:**<br> **source** のブール値を反転します。 **source** 値が "*True*" の場合は "*False*" を返します。 "False" の場合は "*True*" を返します。
+**説明:** **source** のブール値を反転します。 **source** 値が True の場合は False を返します。 そうでない場合は、True を返します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -392,48 +404,44 @@ Left("John Doe", 3)
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
-**関数:**<br> NumFromDate(value)
+**関数:** NumFromDate(value)
 
-**説明:**<br> NumFromDate 関数は、DateTime 値を、[accountExpires](/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
+**説明:** NumFromDate 関数は、DateTime 値を、[accountExpires](/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value** |必須 | String | サポートされる形式の日付と時刻の文字列。 サポートされる形式については、 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx をご覧ください。 |
 
-**例:**<br>
-* Workday の例 <br>
-  *2020-12-31-08:00* 形式の Workday の *ContractEndDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法を次に示します。 
+**例:**
+* Workday の例: *2020-12-31-08:00* 形式の Workday の *ContractEndDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法をここで示します。 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
-* SuccessFactors の例 <br>
-  *M/d/yyyy hh:mm:ss tt* 形式の SuccessFactors の *endDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法を次に示します。
+* SuccessFactors の例: *M/d/yyyy hh:mm:ss tt* 形式の SuccessFactors の *endDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法をここで示します。
   `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
-**関数:**<br> RemoveDuplicates(attribute)
+**関数:** RemoveDuplicates(attribute)
 
-**説明:**<br> RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
+**説明:** RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **attribute** |必須 |複数値の属性 |重複が削除される複数値の属性|
 
-**例:**<br>
-RemoveDuplicates([proxyAddresses])                                                                                                       
-重複する値がすべて削除された、校正済みの proxyAddress 属性が返されます
+**例:** 
+`RemoveDuplicates([proxyAddresses])` 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
 ---
 ### <a name="replace"></a>Replace
-**関数:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**関数:** Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
-**説明:**<br>
-文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
+**説明:** 文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
 
 * **oldValue** と **replacementValue** が指定された場合:
   
@@ -452,7 +460,7 @@ RemoveDuplicates([proxyAddresses])
   * **source** に値が指定されていない場合は、**source** を返します。
   * **source** に値がある場合、この関数で **regexPattern** が **source** の文字列に適用され、**regexGroupName** と一致するすべての値が **replacementAttributeName** に関連付けられた値に置き換えられます
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -466,9 +474,9 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
-**関数:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
+**関数:** SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
 
-**説明:**<br> 少なくとも 2 つの引数が必要です。引数は、式を使用して定義されている一意値生成ルールです。 関数では、各ルールが評価された後、生成された値の対象となるアプリ/ディレクトリでの一意性が確認されます。 最初に見つかった一意の値が返されます。 すべての値がターゲットに既に存在する場合、エントリはエスクローされて、理由が監査ログに記録されます。 渡すことができる引数の数に上限はありません。
+**説明:** 少なくとも 2 つの引数が必要です。引数は、式を使用して定義されている一意値生成ルールです。 関数では、各ルールが評価された後、生成された値の対象となるアプリ/ディレクトリでの一意性が確認されます。 最初に見つかった一意の値が返されます。 すべての値がターゲットに既に存在する場合、エントリはエスクローされて、理由が監査ログに記録されます。 渡すことができる引数の数に上限はありません。
 
 
  - これは最上位の関数であり、入れ子にはできません。
@@ -477,7 +485,7 @@ RemoveDuplicates([proxyAddresses])
  - 現在、この関数は "Workday to Active Directory User Provisioning" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
 
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -486,11 +494,11 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**関数:**<br> SingleAppRoleAssignment(appRoleAssignments)
+**関数:** SingleAppRoleAssignment(appRoleAssignments)
 
-**説明:**<br> 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。 
+**説明:** 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。 
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -498,11 +506,11 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="split"></a>Split
-**関数:**<br> Split(source, delimiter)
+**関数:** Split(source, delimiter)
 
-**説明:**<br> 指定された区切り記号文字を使用して、文字列を複数値の配列に分割します。
+**説明:** 指定された区切り記号文字を使用して、文字列を複数値の配列に分割します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -511,11 +519,11 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
-**関数:**<br> StripSpaces(source)
+**関数:** StripSpaces(source)
 
-**説明:**<br> source 文字列からすべての空白文字 (" ") を削除します。
+**説明:** source 文字列からすべての空白文字 (" ") を削除します。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -523,11 +531,11 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="switch"></a>Switch
-**関数:**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
+**関数:** Switch(source, defaultValue, key1, value1, key2, value2, …)
 
-**説明:**<br> **source** 値が **key** と一致するときに、その **key** の **value** を返します。 **source** 値がどの key とも一致しない場合は、**defaultValue** を返します。  **key** と **value** パラメーターは、常にペアで指定する必要があります。 この関数には、常に、偶数個のパラメーターを指定する必要があります。 この関数は、manager などの参照属性には使用しないでください。 
+**説明:** **source** 値が **key** と一致するときに、その **key** の **value** を返します。 **source** 値がどの key とも一致しない場合は、**defaultValue** を返します。  **key** と **value** パラメーターは、常にペアで指定する必要があります。 この関数には、常に、偶数個のパラメーターを指定する必要があります。 この関数は、manager などの参照属性には使用しないでください。 
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -538,11 +546,11 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="tolower"></a>ToLower
-**関数:**<br> ToLower(source, culture)
+**関数:** ToLower(source, culture)
 
-**説明:**<br> *source* 文字列値を受け取り、指定されたカルチャ ルールを使用して小文字に変換します。 *culture* 情報が指定されていない場合は、インバリアント カルチャが使用されます。
+**説明:** *source* 文字列値を受け取り、指定されたカルチャ ルールを使用して小文字に変換します。 *culture* 情報が指定されていない場合は、インバリアント カルチャが使用されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -551,11 +559,11 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="toupper"></a>ToUpper
-**関数:**<br> ToUpper(source, culture)
+**関数:** ToUpper(source, culture)
 
-**説明:**<br> *source* 文字列値を受け取り、指定されたカルチャ ルールを使用して大文字に変換します。 *culture* 情報が指定されていない場合は、インバリアント カルチャが使用されます。
+**説明:** *source* 文字列値を受け取り、指定されたカルチャ ルールを使用して大文字に変換します。 *culture* 情報が指定されていない場合は、インバリアント カルチャが使用されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -564,15 +572,15 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="word"></a>Word
-**関数:**<br> Word(String,WordNumber,Delimiters)
+**関数:** Word(String,WordNumber,Delimiters)
 
-**説明:**<br> Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。 delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
+**説明:** Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。 delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
 
 num < 1 の場合、空の文字列を返します。
 string が null の場合、空の文字列を返します。
 string に含まれる単語の数が指定より少ないか、区切り記号文字で識別されるどの単語も string に含まれていない場合は、空の文字列が返されます。
 
-**パラメーター:**<br> 
+**パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
@@ -580,24 +588,25 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 | **WordNumber** |必須 | Integer | 返すべき単語の番号を指定する数値|
 | **delimiters** |必須 |String| 単語を識別するために使用される区切り記号を表す文字列|
 
-**例:**<br>
-Word("The quick brown fox",3," ")                                                                                       
-"brown" を返します。
+**例:** 
+`Word("The quick brown fox",3," ")`
 
-Word("This,string!has&many separators",3,",!&#")                                                                       
-"has" が返されます
+"brown" が返されます。
+
+`Word("This,string!has&many separators",3,",!&#")`
+
+"has" が返されます。
 
 ---
 
 ## <a name="examples"></a>例
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする
-ユーザーの電子メールから既知のドメイン名をストリップして、ユーザー名を取得する必要があります。 <br>
-たとえば、ドメインが "contoso.com" の場合は、次の式を使用することができます。
+ユーザーの電子メールから既知のドメイン名をストリップして、ユーザー名を取得する必要があります。 たとえば、ドメインが "contoso.com" の場合は、次の式を使用することができます。
 
-**Expression:** <br>
+**式:**  
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**サンプル入力/出力:** <br>
+**サンプル入力/出力:** 
 
 * **入力** (mail): "john.doe@contoso.com"
 * **出力**: "john.doe"
@@ -605,10 +614,10 @@ Word("This,string!has&many separators",3,",!&#")
 ### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
 Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に追加のサフィックスを追加する必要があります。
 
-**Expression:** <br>
+**式:**  
 `Append([userPrincipalName], ".test")`
 
-**サンプル入力/出力:** <br>
+**サンプル入力/出力:** 
 
 * **入力**: (userPrincipalName): "John.Doe@contoso.com"
 * **出力**:  "John.Doe@contoso.com.test"
@@ -616,10 +625,10 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>姓の一部と名の一部を連結することでユーザー エイリアスを生成する
 ユーザーの名の最初の 3 文字とユーザーの姓の最初の 5 文字を取得することでユーザー エイリアスを生成する必要があります。
 
-**Expression:** <br>
+**式:**  
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
-**サンプル入力/出力:** <br>
+**サンプル入力/出力:** 
 
 * **入力** (givenName):"John"
 * **入力** (surname):"Doe"
@@ -628,10 +637,9 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 ### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
 アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
 
-**Expression:** <br>
-NormalizeDiacritics([givenName])
+**Expression:** NormalizeDiacritics([givenName])
 
-**サンプル入力/出力:** <br>
+**サンプル入力/出力:** 
 
 * **入力** (givenName):"Zoë"
 * **出力**:"Zoe"
@@ -639,19 +647,17 @@ NormalizeDiacritics([givenName])
 ### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
 コンマ区切りの一覧になっている文字列を受け取り、Salesforce の PermissionSets 属性などの複数値の属性にプラグインできる配列に分割する必要があります。 この例では、アクセス許可セットの一覧が、Azure AD の extensionAttribute5 に格納されています。
 
-**Expression:** <br>
-Split([extensionAttribute5], ",")
+**Expression:** Split([extensionAttribute5], ",")
 
-**サンプル入力/出力:** <br>
+**サンプル入力/出力:** 
 
 * **INPUT** (extensionAttribute5):"PermissionSetOne, PermisionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
-SaaS アプリケーションに特定の形式で日付を送信します。 <br>
-たとえば、ServiceNow 向けに日付の書式を設定します。
+SaaS アプリケーションに特定の形式で日付を送信します。 たとえば、ServiceNow 向けに日付の書式を設定します。
 
-**Expression:** <br>
+**Expression:** 
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
@@ -662,10 +668,9 @@ SaaS アプリケーションに特定の形式で日付を送信します。 <b
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
 
-Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 <br>
-都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
+Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
 
-**Expression:** <br>
+**式:**  
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **サンプル入力/出力:**
@@ -676,7 +681,7 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 ### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
 正規表現の値と一致する文字を見つけて削除する必要があります。
 
-**Expression:** <br>
+**Expression:** 
 
 Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
@@ -699,7 +704,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
 ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
 
-**Expression:** <br>
+**Expression:** 
 
 ```ad-attr-mapping-expr
     SelectUniqueValue( 
@@ -720,10 +725,10 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
 メール属性が存在する場合は、それをフローすることをおすすめします。 存在しない場合、代わりに userPrincipalName の値をフローしてください。
 
-**Expression:** <br>
+**式:**  
 `Coalesce([mail],[userPrincipalName])`
 
-**サンプル入力/出力:** <br>
+**サンプル入力/出力:** 
 
 * **入力** (mail):NULL
 * **入力** (userPrincipalName): "John.Doe@contoso.com"

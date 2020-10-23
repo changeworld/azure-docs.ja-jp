@@ -1,14 +1,14 @@
 ---
 title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651365"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876330"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -17,12 +17,16 @@ ms.locfileid: "89651365"
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
 **deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
-マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールが自動的にマネージド ID に付与されます。 マネージド ID の "_場所_" は、Azure Policy による操作に影響を与えません。
+マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 マネージド ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールが自動的にマネージド ID に付与されます。 SDK を使用している場合、マネージド ID にロールを手動で付与する必要があります。 マネージド ID の "_場所_" は、Azure Policy による操作に影響を与えません。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
 > [!IMPORTANT]
-> **deployIfNotExists** や **modify** で変更されたリソースがポリシー割り当てのスコープの範囲外の場合､あるいはテンプレートがポリシー割り当てのスコープの範囲外にあるリソース上のプロパティにアクセスした場合､その割り当ての管理対象 ID には[手動でアクセス権を付与](#manually-configure-the-managed-identity)する必要があります。さもないと､修復デプロイは失敗します。
+> 次のシナリオでは、割り当てのマネージド ID に[手動でアクセスを許可](#manually-configure-the-managed-identity)しないと、修復デプロイが失敗します。
+>
+> - 割り当てが SDK によって作成された場合
+> - **deployIfNotExists** または **modify** によって変更されたリソースがポリシー割り当ての範囲外である場合
+> - テンプレートがポリシー割り当ての範囲外のリソースのプロパティにアクセスする場合
 
 ## <a name="configure-policy-definition"></a>ポリシー定義を設定する
 

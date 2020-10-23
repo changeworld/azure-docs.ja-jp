@@ -4,12 +4,12 @@ description: コンテナー レジストリからイメージをダウンロー
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 47a3fb39693bf6143d4033eed437f65b7e63eabb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421426"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978681"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>アプリケーションでコンテナー イメージをダウンロードするためのリポジトリ資格情報を構成する
 
@@ -83,10 +83,6 @@ ClusterManifestTemplate.json ファイルの `Hosting` セクション内に追�
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
-          },
-          {
-        "name": "DefaultMSIEndpointForTokenAuthentication",
-        "value": "URI"
           }
         ]
       },
@@ -100,6 +96,9 @@ Service Fabric では、お使いのコンテナーのイメージをダウン�
 1. VM に対して*システム割り当てマネージド ID* が有効になっていることを確認します。
 
     ![Azure portal:仮想マシン スケール セット ID オプションを作成する](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> ユーザー割り当てマネージド ID の場合は、この手順をスキップします。 下の残りの手順は、スケール セットが単一のユーザー割り当てマネージド ID にのみ関連付けられている限り、同じように機能します。
 
 2. レジストリからイメージをプルするアクセス許可または読み取るアクセス許可を仮想マシンスケール セットに付与します。 Azure portal 内の Azure コンテナー レジストリの [Access Control (IAM)] ブレードで、仮想マシンに対する "*ロールの割り当て*" を追加します。
 
@@ -121,25 +120,6 @@ Service Fabric では、お使いのコンテナーのイメージをダウン�
 
     > [!NOTE]
     > `UseTokenAuthenticationCredentials` を true にし、さらにフラグ `UseDefaultRepositoryCredentials` を true に設定すると、デプロイ中にエラーが発生します。
-
-### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>Azure グローバル クラウドの外部でトークン資格情報を使用する
-
-トークンベースのレジストリ資格情報を使用すると、Service Fabric は仮想マシンの代わりに ACR に提示するトークンをフェッチします。 既定では、Service Fabric はグローバル Azure クラウド エンドポイントを対象とするトークンを要求されます。 別のクラウド インスタンス (Azure Germany、Azure Government など) にデプロイする場合は、パラメーター `DefaultMSIEndpointForTokenAuthentication` の既定値を上書きする必要があります。 特別な環境にデプロイする場合以外では、このパラメーターをオーバーライドしないでください。 する場合は、以下の既定
-
-```
-http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
-```
-
-を、環境に適したリソース エンドポイントで置き換えます。 たとえば [Azure Germany](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping) の場合、上書きは次のようになります。 
-
-```json
-{
-    "name": "DefaultMSIEndpointForTokenAuthentication",
-    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
-}
-```
-
-[仮想マシン スケール セットのトークンの取得に関する詳細を参照してください](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)。
 
 ## <a name="next-steps"></a>次のステップ
 

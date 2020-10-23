@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825489"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949852"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -50,7 +50,7 @@ ms.locfileid: "91825489"
 
 <sup>1</sup> 2017 年 12 月より前に作成された Basic サービスは、インデックスでの制限が低くなっています (15 ではなく 5)。 Basic レベルにのみ下限 (インデックスあたり 100 フィールド) があります。
 
-<sup>2</sup> 要素には上限があります。要素が多数あると、ストレージの使用率が高くなるためです。 複合コレクションの要素は、そのコレクションのメンバーとして定義されます。 たとえば、[部屋の複合コレクションが記載されているホテル ドキュメント](search-howto-complex-data-types.md#indexing-complex-types)があるとします。部屋コレクション内の各部屋は、1 つの要素として見なされます。 インデックス作成時は、インデックス作成エンジンによって、ドキュメント全体で最大 3,000 の要素が安全に処理されます。 [この制限](search-api-migration.md#upgrade-to-2019-05-06)は `api-version=2019-05-06` で導入され、文字列コレクションや複合フィールドではなく、複合コレクションにのみ適用されます。
+<sup>2</sup> 多数の要素があると、インデックスに必要なストレージは大幅に増えるため、要素には上限があります。 複合コレクションの要素は、そのコレクションのメンバーとして定義されます。 たとえば、[部屋の複合コレクションが記載されているホテル ドキュメント](search-howto-complex-data-types.md#indexing-complex-types)があるとします。部屋コレクション内の各部屋は、1 つの要素として見なされます。 インデックス作成時は、インデックス作成エンジンによって、ドキュメント全体で最大 3,000 の要素が安全に処理されます。 [この制限](search-api-migration.md#upgrade-to-2019-05-06)は `api-version=2019-05-06` で導入され、文字列コレクションや複合フィールドではなく、複合コレクションにのみ適用されます。
 
 <a name="document-limits"></a>
 
@@ -104,7 +104,7 @@ ms.locfileid: "91825489"
 ### <a name="shared-private-link-resource-limits"></a>共有プライベート リンク リソースの制限
 
 > [!NOTE]
-> インデクサーでは、[こちらのハウツー ガイド](search-indexer-howto-access-private.md)に説明されているように、[共有プライベート リンク リソース API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) を使用して管理されているプライベート エンドポイント経由で安全にリソースにアクセスできます。
+> インデクサーでは、[こちらのハウツー ガイド](search-indexer-howto-access-private.md)に説明されているように、[共有プライベート リンク リソース API](/rest/api/searchmanagement/sharedprivatelinkresources) を使用して管理されているプライベート エンドポイント経由で安全にリソースにアクセスできます。
 
 | リソース | Free | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 99c8ee79c51205c33d14328530f527ad8e3ff7b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085464"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997902"
 ---
 ## <a name="supported-distributions-and-drivers"></a>サポートされているディストリビューションとドライバー
 
@@ -33,7 +33,7 @@ Azure によって再頒布された GRID ドライバーは、NV シリーズ�
 
 | Distribution | Driver |
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 から 7.8、8.0、8.1<br/><br/>CentOS-based 7.6、7.7、8.0、8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11、ドライバー ブランチ R450|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 から 7.8、8.0、8.1<br/><br/>CentOS-based 7.6、7.7、8.0、8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.1、ドライバー ブランチ [R450](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
 
 > [!WARNING] 
 > サード パーティ製ソフトウェアを Red Hat 製品にインストールすると、Red Hat サポート条件に影響を与えることがあります。 [Red Hat のサポート技術情報記事](https://access.redhat.com/articles/1067)を参照してください。

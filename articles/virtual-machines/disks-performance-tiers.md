@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743728"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939019"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>マネージド ディスクのパフォーマンス レベル (プレビュー)
 
@@ -58,7 +58,7 @@ Azure Disk Storage には現在、短期間の予期しないトラフィック�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-マネージド ディスクのパフォーマンス レベルを調整する機能は、現在、米国中西部リージョンの Premium SSD でのみ使用できます。 
+管理ディスクのパフォーマンス レベルを調整できるかどうかは、現在、米国東部2、米国中南部、米国中西部、オーストラリア南部東部リージョンのプレミアム SSD でのみご利用いただけます。
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>ベースライン レベルよりも高いレベルで空のデータ ディスクを作成する
 

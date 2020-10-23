@@ -4,16 +4,16 @@ description: edgeAgent および edgeHub モジュール ツインの特定の�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546185"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978698"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 
@@ -33,7 +33,7 @@ IoT Edge エージェントのモジュール ツインは `$edgeAgent` と呼�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | はい |
+| schemaVersion | "1.0" または "1.1" のいずれかです。 バージョン 1.1 は IoT Edge バージョン 1.0.10 で導入されました。こちらが推奨されます。 | はい |
 | runtime.type | "docker" である必要がある | はい |
 | runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | はい |
 | runtime.settings.loggingOptions | IoT Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション](https://docs.docker.com/engine/admin/logging/overview/) | いいえ |
@@ -47,6 +47,7 @@ IoT Edge エージェントのモジュール ツインは `$edgeAgent` と呼�
 | systemModules.edgeHub.type | "docker" である必要がある | はい |
 | systemModules.edgeHub.status | "running" である必要がある | はい |
 | systemModules.edgeHub.restartPolicy | "always" である必要がある | はい |
+| systemModules.edgeHub.startupOrder | モジュールの起動順序を示す整数値。 0 が最初で、最大の整数 (4294967295) は最後です。 値が指定されていない場合、既定値は最大の整数になります。  | いいえ |
 | systemModules.edgeHub.settings.image | IoT Edge ハブのイメージの URI。 | はい |
 | systemModules.edgeHub.settings<br>.createOptions | IoT Edge ハブ コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | いいえ |
 | systemModules.edgeHub.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、マニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
@@ -54,6 +55,7 @@ IoT Edge エージェントのモジュール ツインは `$edgeAgent` と呼�
 | modules.{moduleId}.type | "docker" である必要がある | はい |
 | modules.{moduleId}.status | {"running" \| "stopped"} | はい |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | はい |
+| modules.{moduleId}.startupOrder | モジュールの起動順序を示す整数値。 0 が最初で、最大の整数 (4294967295) は最後です。 値が指定されていない場合、既定値は最大の整数になります。  | いいえ |
 | modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | いいえ |
 | modules.{moduleId}.env | モジュールに渡す環境変数の一覧。 次の形式を取ります: `"<name>": {"value": "<value>"}` | いいえ |
 | modules.{moduleId}.settings.image | モジュール イメージへの URI。 | はい |
@@ -107,7 +109,7 @@ IoT Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバ�
 
 | プロパティ | 説明 | デプロイ マニフェストに必要 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | はい |
+| schemaVersion | "1.0" または "1.1" のいずれかです。 バージョン 1.1 は IoT Edge バージョン 1.0.10 で導入されました。こちらが推奨されます。 | はい |
 | routes.{routeName} | IoT Edge ハブのルートを表す文字列。 詳細については、「[ルートの宣言](module-composition.md#declare-routes)」を参照してください。 | `routes` 要素は存在できますが、空です。 |
 | storeAndForwardConfiguration.timeToLiveSecs | ルーティング エンドポイント (IoT Hub またはローカル モジュール) から切断された場合に、IoT Edge ハブがメッセージを保持する秒数。 値には正の整数を指定できます。 | はい |
 

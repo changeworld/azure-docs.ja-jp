@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 60a5f62d4ea23db1052b2e40d10775dfaa33c632
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304088"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989763"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -22,6 +22,8 @@ ms.locfileid: "89304088"
 | Digital Twins | Azure Digital Twins インスタンス内のツインの数 | 200,000 | はい |
 | Digital Twins | 1 つのツインに対する着信リレーションシップの数 | 5,000 | いいえ |
 | Digital Twins | 1 つのツインからの発信リレーションシップの数 | 5,000 | いいえ |
+| Digital Twins | 1 つのツインの最大サイズ | 32 KB | いいえ |
+| Digital Twins API | 要求ペイロードの最大サイズ | 32 KB | いいえ | 
 | ルーティング | 1 つの Azure Digital Twins インスタンスのエンドポイントの数 | 6 | いいえ |
 | ルーティング | 1 つの Azure Digital Twins インスタンスのルート数 | 6 | はい |
 | モデル | 1 つの Azure Digital Twins インスタンス内のモデルの数 | 10,000 | はい |

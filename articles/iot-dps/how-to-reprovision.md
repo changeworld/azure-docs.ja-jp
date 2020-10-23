@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974906"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839794"
 ---
 # <a name="how-to-reprovision-devices"></a>デバイスを再プロビジョニングする方法
 
@@ -75,7 +75,7 @@ IoT ソリューションのライフサイクル中に、デバイスを IoT �
 
 4. **[保存]** をクリックして、変更に基づくデバイスの再プロビジョニングを有効にします。
 
-    ![登録割り当てポリシーを選択する](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![行った変更と [保存] ボタンが強調表示されているスクリーンショット。](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 
