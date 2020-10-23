@@ -1,35 +1,37 @@
 ### YamlMime:Landing
-title: Azure DevOps Starter のドキュメント
-summary: Azure DevOps Starter により、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
+title: Azure にデプロイするための DevOps Starter のドキュメント
+summary: DevOps Starter が提供する簡素化されたエクスペリエンスでは、既存のコードと Git リポジトリを利用したり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインやワークフローを作成したりすることができます。 DevOps Starter では、GitHub Actions ワークフローの作成がサポートされるようになりました。
 metadata:
-  title: Azure DevOps Starter のドキュメント
+  title: DevOps Starter のドキュメント
   description: 既存のコードと Git リポジトリを使用するか、サンプル アプリを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/24/2020
-  ms.openlocfilehash: 62e95192f25487be60ed0334054f200447fc64cb
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7521a5a57b6dd1c090fbc880033fc5fc0707419b
+  ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91855941"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92330684"
 landingContent:
-- title: Azure DevOps Starter について
+- title: DevOps Starter について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure DevOps Starter とは
+    - text: DevOps Starter とは
       url: overview.md
   - linkListType: video
     links:
-    - text: DevOps Starter のビデオ (8:53) を利用して CI/CD を作成する
+    - text: Azure DevOps を使用した DevOps Starter で CI/CD を作成する (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
-- title: CI/CD パイプラインの作成
+- title: CI/CD を構成する
   linkLists:
   - linkListType: quickstart
     links:
+    - text: GitHub Actions を使用した Node.js
+      url: /azure/devops-project/devops-starter-gh-nodejs
     - text: .NET
       url: ./azure-devops-project-aspnet-core.md
     - text: Node.js
@@ -44,10 +46,12 @@ landingContent:
       url: ./azure-devops-project-ruby.md
     - text: Go
       url: ./azure-devops-project-go.md
-- title: リリース パイプラインの作成
+- title: Azure にデプロイ
   linkLists:
   - linkListType: tutorial
     links:
+    - text: GitHub Actions を使用して Azure Web アプリにアプリをデプロイする
+      url: devops-starter-gh-web-app.md
     - text: GitHub で独自のコードを使用する
       url: azure-devops-project-vms.md
     - text: Azure Virtual Machines に ASP.NET アプリをデプロイする

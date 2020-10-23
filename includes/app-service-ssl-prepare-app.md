@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78301006"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169078"
 ---
 ## <a name="prepare-your-web-app"></a>Web アプリの準備
 
@@ -31,7 +31,7 @@ ms.locfileid: "78301006"
 
 **[App Services]** ページで、Web アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-ssl-prepare-app/select-app.png)
+![リストの最初のアプリが強調表示された、実行中のすべての Web アプリのリストを示す、Azure portal の [App Services] ページのスクリーンショット。](./media/app-service-ssl-prepare-app/select-app.png)
 
 Web アプリの管理ページが表示されます。  
 

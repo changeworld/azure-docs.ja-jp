@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371734"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116712"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -71,7 +71,7 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 | スキーマあたりのサイズ (バイト) | 1 MB |   
 | スキーマ グループあたりのプロパティの数 | 1024 |
 | グループ プロパティ キーあたりのサイズ (バイト) | 256 | 
-| グループ プロパティ キーあたりのサイズ (バイト) | 1024 | 
+| グループ プロパティ値あたりのサイズ (バイト) | 1024 | 
 
 
 #### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>**Standard** と **Dedicated** のレベルで異なる制限 

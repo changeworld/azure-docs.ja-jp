@@ -401,6 +401,8 @@
                       href: how-to-custom-commands-send-activity-to-client.md
                     - name: Web エンドポイントを設定する
                       href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: Custom Commands アプリをスキルとしてエクスポートする
+                      href: how-to-custom-commands-integrate-remote-skills.md
                 - name: 配置
                   items:
                     - name: Azure DevOps による継続的配置

@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Enterprise ユーザー管理のドキュメント - Azure AD
+summary: Azure AD で提供されるグループやライセンスなどのユーザー管理サービスは、優先順位の高いユーザー管理タスクを迅速に完了するのに役立ちます。 ライセンスの割り当て、グループまたはユーザーに対するアクセス権限のアプリケーションへの割り当て、ドメイン名の追加または管理を行います。
+metadata:
+  title: Azure Active Directory のユーザー、グループ、ライセンス、およびドメインに関するドキュメント
+  description: グループ、ドメイン名、ライセンスを使用して Azure AD 組織でユーザー認証を管理する方法について説明します。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: enterprise-users
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 3918c28d9657b077eefd5226be656ab6ad5a7dbf
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372732"
+landingContent:
+- title: エンタープライズ ユーザー管理について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ユーザー、グループ、ドメイン、ライセンス
+      url: directory-overview-user-model.md
+    - text: カスタム ロールの概要
+      url: ../roles/custom-overview.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Azure AD 組織からの独立
+      url: licensing-directory-independence.md
+    - text: グループを使用したアクセスの管理
+      url: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ユーザーの追加
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: グループの有効期限ポリシーの設定
+      url: groups-quickstart-expiration.md
+    - text: ユーザーへのライセンスの割り当て
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Azure AD ドメイン名の管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム ドメイン名を追加する
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: カスタム ドメイン名の管理
+      url: domains-manage.md
+- title: グループの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 動的グループの作成
+      url: groups-create-rule.md
+    - text: PowerShell でのグループ設定
+      url: groups-settings-v2-cmdlets.md
+    - text: グループの名前付けポリシーの設定
+      url: groups-naming-policy.md
+- title: ドメインの追加
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム ドメイン名を追加する
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: カスタム ドメイン名の管理
+      url: domains-manage.md

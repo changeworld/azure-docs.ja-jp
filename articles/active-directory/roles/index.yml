@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Azure AD ロールのドキュメント - Azure AD
+summary: Azure AD のロールベースのアクセス制御では、Azure AD リソースへのアクセスを管理します。 カスタム ロールの作成、管理単位を使用して管理スコープを制限するロールの割り当て、グループまたはユーザーに対するアクセス権限のアプリケーションへの割り当て、Privileged Identity Management (PIM) を使用した資格の管理、または ID 管理タスクを分散するアクセス許可の委任を行います。
+metadata:
+  title: Azure Active Directory ロールのドキュメント
+  description: Azure AD ロールを使用して組織内のアクセスを管理する方法について説明します。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: roles
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 16a64fd66ab391436f991b5f92f306f7ecf2eb58
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372767"
+landingContent:
+- title: Azure AD ロールについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: カスタム ロールの概要
+      url: custom-overview.md
+  - linkListType: concept
+    links:
+    - text: 管理の委任
+      url: concept-delegation.md
+    - text: Azure AD の管理単位について
+      url: administrative-units.md
+    - text: クラウド グループを使用してロールの割り当てを管理する
+      url: groups-concept.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 無制限のアプリの登録を作成するアクセス許可を付与する
+      url: quickstart-app-registration-limits.md
+- title: ロールを委任する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: タスク別にロールを委任する
+      url: delegate-by-task.md
+    - text: アプリケーション管理を委任する
+      url: delegate-app-roles.md
+- title: ユーザーにロールを割り当てる
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム ロールを作成する
+      url: custom-create.md
+    - text: Graph API を使用してロールを割り当てる
+      url: custom-assign-graph.md
+    - text: PowerShell を使用して割り当てる
+      url: custom-assign-powershell.md
+    - text: Graph API を使用してロールを割り当てる
+      url: custom-assign-graph.md
+- title: ロールをグループに割り当てる
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ロールを割り当て可能なグループを作成する
+      url: groups-create-eligible.md
+    - text: クラウド グループにロールを割り当てる
+      url: groups-assign-role.md
+    - text: グループを PIM の対象にする
+      url: groups-pim-eligible.md
+    - text: グループの割り当てを表示する
+      url: groups-view-assignments.md
+- title: 管理単位を使用してスコープを管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理単位を追加または削除する
+      url: admin-units-manage.md
+    - text: ユーザーを単位に割り当てる
+      url: admin-units-add-manage-users.md
+    - text: グループを単位に割り当てる
+      url: admin-units-add-manage-groups.md
+    - text: スコープを使用してグループを割り当てる
+      url: admin-units-assign-roles.md

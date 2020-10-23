@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/05/2019
+ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95c553d26a3e79b53106b933c629c5884c3e004c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84466961"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116747"
 ---
 | リソース | 移行先 | ハード制限 |
 |----------|--------------|------------|
@@ -27,7 +27,7 @@ ms.locfileid: "84466961"
 | ディレクトリ内のファイル システム オブジェクト (ディレクトリとファイル) の最大数 | 500 万オブジェクト | はい |
 | オブジェクト (ディレクトリとファイル) のセキュリティ記述子の最大サイズ | 64 KiB | はい |
 | ファイル サイズ | 100 GiB | いいえ |
-| 階層化するファイルの最小ファイル サイズ | V9:ファイル システムのクラスター サイズ (ダブルファイル システムクラスターのサイズ) に基づきます。 たとえば、ファイル システム クラスターのサイズが 4 KB の場合、ファイルの最小サイズは 8 KB になります。<br> V8 およびそれ以前:64 KiB  | はい |
+| 階層化するファイルの最小ファイル サイズ | V9 以降:ファイル システムのクラスター サイズ (ダブルファイル システムクラスターのサイズ) に基づきます。 たとえば、ファイル システム クラスターのサイズが 4 KB の場合、ファイルの最小サイズは 8 KB になります。<br> V8 およびそれ以前:64 KiB  | はい |
 
 > [!Note]  
 > Azure File Sync エンドポイントは、Azure ファイル共有のサイズにスケールアップできます。 Azure ファイル共有のサイズの上限に達した場合、同期は操作できません。

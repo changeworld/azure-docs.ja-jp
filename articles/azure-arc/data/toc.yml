@@ -66,8 +66,16 @@
       items:
         - name: Grafana および Kibana を使用した監視
           href: monitor-grafana-kibana.md
-        - name: メトリックとログのアップロード
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Azure Monitor へのアップロード
+          items:
+            - name: アップロードの前提条件
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: ログのアップロード
+              href: upload-logs.md
+            - name: メトリックのアップロード
+              href: upload-metrics.md
+            - name: 使用状況データのアップロード
+              href: upload-usage-data.md
         - name: インベントリ データベース インスタンス
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: データ コントローラーのユーザー名とパスワードの取得

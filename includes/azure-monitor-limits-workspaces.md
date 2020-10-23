@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91640015"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92323884"
 ---
 **データの収集量と保持期間** 
 
@@ -70,31 +70,7 @@ Azure Monitor とは、毎月増加するテラバイト単位のデータを送
 
 ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、その引き上げをリクエストできます。 
 
-ワークスペースでインジェスト ボリューム レート制限に近づいたときまたは達したときに通知を受けるには、ゼロより大きい結果数、5 分の評価期間、5 分の頻度のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](../articles/azure-monitor/platform/alerts-log.md)を作成します。
-
-インジェスト ボリューム レートがしきい値を超過
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Error"
-```
-
-インジェスト ボリューム レートがしきい値の 80% を超過
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Warning"
-```
-
-インジェスト ボリューム レートがしきい値の 70% を超過
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Info"
-```
+インジェストの制限に達するときに事前に通知されるようアラート ルールを作成するには、「[Azure Monitor で Log Analytics ワークスペースの正常性を監視する](../articles/azure-monitor/platform/monitor-workspace.md)」を参照してください。
 
 >[!NOTE]
 >Log Analytics を使用してきた期間の長さによっては、レガシ価格レベルにアクセスできることがあります。 詳細については、[Log Analytics のレガシ価格レベル](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)に関するページを参照してください。 

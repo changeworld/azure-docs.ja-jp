@@ -139,7 +139,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -1022,6 +1022,8 @@
           href: insights/container-insights-analyze.md
         - name: GPU パフォーマンスの監視
           href: insights/container-insights-gpu-monitoring.md
+        - name: ネットワーク構成の監視
+          href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
         - name: デプロイと HPA の監視
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: ライブ データを表示する
