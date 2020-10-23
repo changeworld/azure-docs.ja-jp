@@ -157,6 +157,8 @@
             - name: プライベート リンク
               href: concepts-data-access-and-security-private-link.md
               displayName: 'security, private link, private endpoint'
+        - name: Azure の計画メンテナンス
+          href: concepts-planned-maintenance-notification.md
         - name: ビジネス継続性
           items:
             - name: ビジネス継続性の概要
@@ -458,7 +460,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-maintenance-portal.md
-        - name: ネットワーク
+        - name: ネットワーキング
           items:
             - name: プライベート アクセス (VNet 統合)
               items:
