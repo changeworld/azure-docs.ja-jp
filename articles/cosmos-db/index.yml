@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 3daa7ed6e59230fe0f6c66e01982f6021f8e1ba7
-  ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+  ms.openlocfilehash: 7ee6db07facb1464428c6d1d8562fdd54216b883
+  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/20/2020
-  ms.locfileid: "92278439"
+  ms.lasthandoff: 10/23/2020
+  ms.locfileid: "92485768"
 landingContent:
 - title: Azure Cosmos DB について
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
     - text: データを管理するための .NET Web アプリを構築する
       url: sql-api-dotnet-application.md
     - text: 非同期 SDK を使用した Java アプリ
-      url: sql-api-async-java-get-started.md
+      url: ./create-sql-api-java.md
     - text: SQL クエリを使用してデータにクエリを実行する
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide
@@ -169,7 +169,7 @@ landingContent:
     - text: CQL シェル、Spark – Cassandra API
       url: cassandra-import-data.md
     - text: Azure Database Migration Service – MongoDB API
-      url: /azure/dms/tutorial-mongodb-cosmos-db
+      url: ../dms/tutorial-mongodb-cosmos-db.md
     - text: AzCopy、データ移行ツール – Table API
       url: table-import.md
   - linkListType: how-to-guide
