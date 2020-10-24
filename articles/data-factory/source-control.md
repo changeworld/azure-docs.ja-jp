@@ -78,15 +78,15 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 | 設定 | 説明 | 値 |
 |:--- |:--- |:--- |
-| **リポジトリの種類** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
+| **Repository Type** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
 | **Azure Active Directory** | Azure AD テナントの名前。 | `<your tenant name>` |
-| **Azure Repos 組織** | Azure Repos 組織の名前｡ Azure Repos 組織名は`https://{organization name}.visualstudio.com`で確認することができます｡ [Azure Repos 組織にサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | `<your organization name>` |
+| **Azure Repos Organization** | Azure Repos 組織の名前｡ Azure Repos 組織名は`https://{organization name}.visualstudio.com`で確認することができます｡ [Azure Repos 組織にサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | `<your organization name>` |
 | **ProjectName** | Azure Repos プロジェクトの名前。 Azure Repos プロジェクトの名前は `https://{organization name}.visualstudio.com/{project name}` で確認することができます｡ | `<your Azure Repos project name>` |
 | **RepositoryName** | Azure Repos コード リポジトリの名前｡ Azure Repos プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | `<your Azure Repos code repository name>` |
-| **コラボレーション ブランチ** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
-| **ルート フォルダー** | Azure Repos コラボレーション ブランチのルート フォルダー。 | `<your root folder name>` |
+| **Collaboration branch** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
+| **Root folder** | Azure Repos コラボレーション ブランチのルート フォルダー。 | `<your root folder name>` |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
-| **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
+| **Branch to import resource into** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
 
 > [!NOTE]
 > Microsoft Edge を使用していて、Azure DevOps アカウントのドロップダウンに値が表示されない場合は、 https://*.visualstudio.com を信頼済みサイト一覧に追加します。
@@ -145,15 +145,15 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 | **設定** | **説明**  | **Value**  |
 |:--- |:--- |:--- |
-| **リポジトリの種類** | Azure Repos コード リポジトリの種類。 | GitHub |
-| **GitHub Enterprise の使用** | GitHub Enterprise を選択するチェックボックス | オフ (既定値) |
-| **GitHub Enterprise の URL** | GitHub Enterprise ルート URL (ローカル GitHub Enterprise サーバーの場合は HTTPS である必要があります)。 (例: `https://github.mydomain.com`)。 **[Use GitHub Enterprise]\(GitHub Enterprise を使用する\)** がオンの場合にのみ必要です | `<your GitHub enterprise url>` |                                                           
-| **GitHub アカウント** | GitHub アカウント名。 この名前は、https:\//github.com/{アカウント名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。 | `<your GitHub account name>` |
-| **リポジトリ名**  | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。 | `<your repository name>` |
-| **コラボレーション ブランチ** | 発行に使用される GitHub コラボレーション ブランチ。 既定では、そのマスターです。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch>` |
-| **ルート フォルダー** | GitHub コラボレーション ブランチのルート フォルダー。 |`<your root folder name>` |
+| **Repository Type** | Azure Repos コード リポジトリの種類。 | GitHub |
+| **Use GitHub Enterprise** | GitHub Enterprise を選択するチェックボックス | オフ (既定値) |
+| **GitHub Enterprise URL** | GitHub Enterprise ルート URL (ローカル GitHub Enterprise サーバーの場合は HTTPS である必要があります)。 (例: `https://github.mydomain.com`)。 **[Use GitHub Enterprise]\(GitHub Enterprise を使用する\)** がオンの場合にのみ必要です | `<your GitHub enterprise url>` |                                                           
+| **GitHub account** | GitHub アカウント名。 この名前は、https:\//github.com/{アカウント名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。 | `<your GitHub account name>` |
+| **Repository Name**  | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。 | `<your repository name>` |
+| **Collaboration branch** | 発行に使用される GitHub コラボレーション ブランチ。 既定では、そのマスターです。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch>` |
+| **Root folder** | GitHub コラボレーション ブランチのルート フォルダー。 |`<your root folder name>` |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX 作成キャンバスからの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
-| **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
+| **Branch to import resource into** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
 
 ### <a name="known-github-limitations"></a>GitHub の既知の制限事項
 
