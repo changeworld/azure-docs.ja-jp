@@ -343,7 +343,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: パフォーマンスの最適化
               href: optimization.md
-            - name: ソフトウェア RAID を構成する
-              href: configure-raid.md
             - name: LVM を構成する
               href: configure-lvm.md
         - name: アタッチされていないディスクの検出 - CLI
