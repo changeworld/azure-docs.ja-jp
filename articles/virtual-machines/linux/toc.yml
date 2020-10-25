@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: パフォーマンスの最適化
               href: optimization.md
-            - name: LVM を構成する
-              href: configure-lvm.md
         - name: アタッチされていないディスクの検出 - CLI
           href: find-unattached-disks.md
         - name: アタッチされていないディスクの検出 - ポータル

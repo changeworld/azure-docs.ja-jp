@@ -497,7 +497,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-configure-high-availability.md
-        - name: ネットワーキング
+        - name: ネットワーク
           items:
             - name: プライベート アクセス (VNet 統合)
               items:
@@ -515,6 +515,14 @@
               items:
                 - name: TLS/SSL を使用して接続する
                   href: flexible-server/how-to-connect-tls-ssl.md
+        - name: サーバー パラメーターの構成
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-configure-server-parameters-portal.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: flexible-server/how-to-configure-server-parameters-cli.md
+              displayName: 'server parameters, cli'
         - name: 監視とログ
           items:
             - name: メトリックに基づいたアラートの作成
