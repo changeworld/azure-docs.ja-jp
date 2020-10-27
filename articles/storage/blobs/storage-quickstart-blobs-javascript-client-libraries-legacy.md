@@ -86,9 +86,9 @@ az storage account generate-sas \
 
 | パラメーター        | 値   | 説明  |
 |------------------|---------|---------|
-| *アクセス許可*    | racwdl  | この SAS は、*read (読み取り)* 、*append (追加)* 、*create (作成)* 、*write (書き込み)* 、*delete (削除)* 、および *list (一覧表示)* 機能を許可します。 |
-| *resource-types* | sco     | SAS の影響を受けるリソースは、*service (サービス)* 、*container (コンテナー)* 、および *object (オブジェクト)* です。 |
-| *services*       | b       | SAS の影響を受けるサービスは、*BLOB* サービスです。 |
+| *アクセス許可*    | racwdl  | この SAS は、 *read (読み取り)* 、 *append (追加)* 、 *create (作成)* 、 *write (書き込み)* 、 *delete (削除)* 、および *list (一覧表示)* 機能を許可します。 |
+| *resource-types* | sco     | SAS の影響を受けるリソースは、 *service (サービス)* 、 *container (コンテナー)* 、および *object (オブジェクト)* です。 |
+| *services*       | b       | SAS の影響を受けるサービスは、 *BLOB* サービスです。 |
 
 SAS が生成されたら、戻り値をコピーして、後の手順で使用できるように任意の場所に保存します。 Azure CLI 以外の方法で SAS を生成した場合は、先頭に `?` が付いていたら削除する必要があります。 この文字は URL 区切り記号であり、本トピックの後半にある、SAS を使用する URL テンプレートでは既に入力されています。
 
@@ -101,7 +101,7 @@ SAS が生成されたら、戻り値をコピーして、後の手順で使用�
 
 ### <a name="set-up-the-web-application"></a>Web アプリケーションをセットアップする
 
-初めに、VS Code で *azure-blobs-javascript* という名前の新しいフォルダーを作成し、開きます。 次に VS Code で新しいファイルを作成して以下の HTML を入力し、*azure-blobs-javascript* フォルダーに *index.html* という名前で保存します。
+初めに、VS Code で *azure-blobs-javascript* という名前の新しいフォルダーを作成し、開きます。 次に VS Code で新しいファイルを作成して以下の HTML を入力し、 *azure-blobs-javascript* フォルダーに *index.html* という名前で保存します。
 
 ```html
 <!DOCTYPE html>
@@ -127,9 +127,9 @@ SAS が生成されたら、戻り値をコピーして、後の手順で使用�
 
 ### <a name="configure-the-debugger"></a>デバッガーを構成する
 
-VS Code でデバッガー拡張機能を設定するには、 **[デバッグ] > [構成の追加]** の順に選択し、前の「前提条件」セクションでインストールした拡張機能に応じて **[Chrome]** または **[Edge]** を選択します。 この操作により、*launch.json* ファイルが作成され、エディターで開かれます。
+VS Code でデバッガー拡張機能を設定するには、 **[デバッグ] > [構成の追加]** の順に選択し、前の「前提条件」セクションでインストールした拡張機能に応じて **[Chrome]** または **[Edge]** を選択します。 この操作により、 *launch.json* ファイルが作成され、エディターで開かれます。
 
-次に、*launch.json* ファイルを編集して、下記のように `url` の値に `/index.html` を追加します。
+次に、 *launch.json* ファイルを編集して、下記のように `url` の値に `/index.html` を追加します。
 
 ```json
 {
@@ -159,7 +159,7 @@ VS Code でデバッガー拡張機能を設定するには、 **[デバッグ] 
 npx http-server
 ```
 
-このコマンドにより、*http-server* パッケージがインストールされてサーバーが起動され、前の手順で指定した URL を含む既定の URL を介して、現在のフォルダーが公開されます。
+このコマンドにより、 *http-server* パッケージがインストールされてサーバーが起動され、前の手順で指定した URL を含む既定の URL を介して、現在のフォルダーが公開されます。
 
 ### <a name="start-debugging"></a>デバッグを開始する
 
@@ -171,7 +171,7 @@ VS Code デバッガーをアタッチした状態で *index.html* をブラウ�
 
 ### <a name="add-the-blob-storage-client-library"></a>BLOB ストレージ クライアント ライブラリを追加する
 
-BLOB ストレージ API の呼び出しを有効にするには、まず [Azure Storage SDK for JavaScript - BLOB クライアント ライブラリをダウンロード](https://aka.ms/downloadazurestoragejsblob)し、この ZIP ファイルの中身を展開して、*azure-storage-blob.js* ファイルを *azure-blobs-javascript* フォルダー内に配置します。
+BLOB ストレージ API の呼び出しを有効にするには、まず [Azure Storage SDK for JavaScript - BLOB クライアント ライブラリをダウンロード](https://aka.ms/downloadazurestoragejsblob)し、この ZIP ファイルの中身を展開して、 *azure-storage-blob.js* ファイルを *azure-blobs-javascript* フォルダー内に配置します。
 
 次に、以下の HTML を *index.html* 内の `</body>` 終了タグの後に貼り付けて、プレースホルダーのコメントを置き換えます。
 
@@ -183,7 +183,7 @@ BLOB ストレージ API の呼び出しを有効にするには、まず [Azure
 </script>
 ```
 
-このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、*azure-storage-blob.js* スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
+このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、 *azure-storage-blob.js* スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
 
 各 BLOB ストレージ関数の詳細については、[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)を参照してください。 SDK の関数の中には、Node.js とブラウザーのいずれか一方でしか使用できないものがあることに注意してください。
 
@@ -293,7 +293,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル**一覧を更新しています。
+このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、 **ファイル** 一覧を更新しています。
 
 ### <a name="upload-blobs"></a>BLOB をアップロードする
 
@@ -349,7 +349,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-このコードでは、[blobURL.delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、**ファイル**一覧の内容を更新しています。
+このコードでは、[blobURL.delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、 **ファイル** 一覧の内容を更新しています。
 
 ### <a name="run-and-test-the-web-application"></a>Web アプリケーションを実行してテストする
 

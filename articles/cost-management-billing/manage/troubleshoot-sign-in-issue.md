@@ -32,7 +32,7 @@ ms.locfileid: "92132331"
 - 別のインターネット ブラウザーを使用します。
 - お使いのブラウザーで、プライベート ブラウズ モードを使用します。
 
-   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、 [Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
    - **Chrome の場合:** **Incognito** モードを選択します。
    - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
 
@@ -53,7 +53,7 @@ ms.locfileid: "92132331"
    - **Chrome の場合:** **[設定]** を選択し、 **[プライバシーとセキュリティ]** の **[閲覧データのクリア]** を選択します。
 - お使いのブラウザーの設定を既定にリセットします。
 - お使いのブラウザーのプライベート ブラウズ モードを使用します。 
-   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、 [Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
    - **Chrome の場合:** **Incognito** モードを選択します。
    - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
 

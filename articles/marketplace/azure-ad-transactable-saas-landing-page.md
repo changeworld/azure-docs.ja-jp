@@ -54,7 +54,7 @@ ID を使用するには、最初の手順として、ランディング ペー�
 
 作業を開始するには、[新しいアプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)に関する記事の手順に従います。 他の企業のユーザーがアプリにアクセスできるようにするには、アプリケーションを使用できるユーザーを指定するように求められたときに、マルチテナント オプションの 1 つを選択する必要があります。
 
-Microsoft Graph API に対してクエリを実行する場合は、[Web API にアクセスするように新しいアプリケーションを構成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)します。 このアプリケーションの API アクセス許可を選択する場合、オンボード プロセスをスムーズかつ自動的に実行するのに必要な購入者に関する基本情報は、**User.Read** の既定値で十分に収集できます。 **[needs admin consent]\(管理者の同意が必要\)** というラベルが付けられている API アクセス許可を要求しないでください。要求すると、管理者以外のユーザーは誰もランディング ページにアクセスできなくなります。
+Microsoft Graph API に対してクエリを実行する場合は、[Web API にアクセスするように新しいアプリケーションを構成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)します。 このアプリケーションの API アクセス許可を選択する場合、オンボード プロセスをスムーズかつ自動的に実行するのに必要な購入者に関する基本情報は、 **User.Read** の既定値で十分に収集できます。 **[needs admin consent]\(管理者の同意が必要\)** というラベルが付けられている API アクセス許可を要求しないでください。要求すると、管理者以外のユーザーは誰もランディング ページにアクセスできなくなります。
 
 オンボード プロセスやプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、Azure AD の[増分同意](https://aka.ms/incremental-consent)機能を使用することを検討します。この機能を使用すると、マーケットプレースからリダイレクトされたすべての購入者は最初、ランディング ページを操作できます。
 
@@ -62,7 +62,7 @@ Microsoft Graph API に対してクエリを実行する場合は、[Web API に
 
 Azure AD ログインが有効化されているシンプルな Web サイトを実装するサンプル アプリをいくつかご用意しています。 アプリケーションが Azure AD に登録されると、図 1 に示すように、一般的なアプリケーションの種類と開発スタックの一覧が **[クイック スタート]** ブレードに表示されます。 環境に合うものを選択し、ダウンロードとセットアップの手順に従います。
 
-"***図 1:Azure portal の [クイック スタート] ブレード***
+" ***図 1:Azure portal の [クイック スタート] ブレード***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Azure portal の [クイック スタート] ブレードの表示。":::
 

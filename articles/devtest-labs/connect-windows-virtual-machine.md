@@ -15,10 +15,10 @@ ms.locfileid: "86540601"
 
 ## <a name="connect-to-a-windows-vm"></a>Windows VM に接続する
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 検索バーで "**DevTest Labs**" を検索して選択します。 
+1. 検索バーで " **DevTest Labs** " を検索して選択します。 
 
     :::image type="content" source="./media/connect-windows-virtual-machine/search-select.png" alt-text="DevTest Labs の検索と選択":::    
-1. ラボの一覧で、目的の**ラボ**を選択します。
+1. ラボの一覧で、目的の **ラボ** を選択します。
 
     :::image type="content" source="./media/connect-windows-virtual-machine/select-lab.png" alt-text="DevTest Labs の検索と選択":::            
 1. ラボのホーム ページで、 **[仮想マシン]** の一覧から使用している Windows VM を選択します。 
@@ -27,7 +27,7 @@ ms.locfileid: "86540601"
 1. VM の **[仮想マシン]** ページで、ツール バーの **[接続]** を選択します。 VM が停止している場合は、最初に **[開始]** を選択して VM を起動します。
 
     :::image type="content" source="./media/connect-windows-virtual-machine/select-connect.png" alt-text="DevTest Labs の検索と選択":::                    
-1. Edge ブラウザーを使用している場合は、ブラウザーの下部に**ダウンロードした RDP ファイル**へのリンクが表示されます。 
+1. Edge ブラウザーを使用している場合は、ブラウザーの下部に **ダウンロードした RDP ファイル** へのリンクが表示されます。 
 
     :::image type="content" source="./media/connect-windows-virtual-machine/rdp-download.png" alt-text="DevTest Labs の検索と選択":::                        
 1. RDP ファイルを開き、VM の作成時に入力した VM の資格情報を入力します。 これで、Windows VM に接続されているはずです。 

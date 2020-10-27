@@ -164,7 +164,7 @@
       href: recovery-plan-overview.md
     - name: Azure への移行について
       href: migrate-overview.md
-    - name: Site Recovery を使用したロールベースのアクセス制御について
+    - name: Site Recovery での Azure ロールベースのアクセス制御について
       href: site-recovery-role-based-linked-access-control.md
     - name: セカンダリ オンプレミス サイトへのディザスター リカバリーについて
       items:

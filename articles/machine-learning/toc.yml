@@ -235,7 +235,7 @@
           displayName: policy
     - name: ワークスペースの作成と管理
       items:
-        - name: Azure Portal の使用
+        - name: Azure portal または Python SDK を使用する
           href: how-to-manage-workspace.md
         - name: Azure CLI の使用
           href: how-to-manage-workspace-cli.md

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/25/2020
 ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91361213"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
@@ -194,7 +194,7 @@ ms.locfileid: "91361213"
 
 1. 完了したら、ロジック アプリのワークフロー定義を保存します。 ([ファイル] メニュー > [保存]、または Ctrl + S キーを押す)
 
-1. ロジック アプリを Azure サブスクリプションにアップロードするように求めるメッセージが表示されたら、[**アップロード]** を選択します。
+1. ロジック アプリを Azure サブスクリプションにアップロードするように求めるメッセージが表示されたら、[ **アップロード]** を選択します。
 
    この手順では、ロジックアプリを [Azure portal](https://portal.azure.com)に発行します。これにより、ロジックが有効になり、Azure で実行されます。
 
@@ -224,7 +224,7 @@ Azure portal でロジック アプリを確認するには、次の手順を実
 
 ## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
 
-Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを*上書き*します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
+Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを *上書き* します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
 
 1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
 
@@ -263,7 +263,7 @@ Visual Studio Code では、既に Azure にデプロイされているロジッ
 
 1. 完了したら、変更を保存します。 ([ファイル] メニュー > [保存]、または Ctrl + S キーを押す)
 
-1. 変更内容をアップロードして Azure portal の既存のロジック アプリ*上書き*するように求められたら、 **[アップロード]** を選択します。
+1. 変更内容をアップロードして Azure portal の既存のロジック アプリ *上書き* するように求められたら、 **[アップロード]** を選択します。
 
    この手順では、[Azure portal](https://portal.azure.com) のロジック アプリのアップデートを発行します。
 

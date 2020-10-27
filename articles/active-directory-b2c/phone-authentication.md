@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 
 ## <a name="pricing"></a>価格
 
-ワンタイム パスワードは SMS テキスト メッセージを使用してお客様のユーザーに送信されるため、お客様は送信されたメッセージごとに課金される場合があります。 価格情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」の「**別料金**」セクションを参照してください。
+ワンタイム パスワードは SMS テキスト メッセージを使用してお客様のユーザーに送信されるため、お客様は送信されたメッセージごとに課金される場合があります。 価格情報については、「 [Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」の「 **別料金** 」セクションを参照してください。
 
 ## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>電話のサインアップとサインインのユーザー エクスペリエンス
 
@@ -60,7 +60,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 
 ![ユーザーが電話によるサインアップを開始](media/phone-authentication/phone-signup-start.png)
 
-1 回限りの確認コードがユーザーの電話番号に送信されます。 ユーザーは、サインアップ ページで**確認コード**を入力し、 **[コードの確認]** を選択します (ユーザーがコードを取得できなかった場合は、 **[新しいコードを送信します]** を選択できます)。
+1 回限りの確認コードがユーザーの電話番号に送信されます。 ユーザーは、サインアップ ページで **確認コード** を入力し、 **[コードの確認]** を選択します (ユーザーがコードを取得できなかった場合は、 **[新しいコードを送信します]** を選択できます)。
 
 ![ユーザーが電話のサインアップ時にコードを確認する](media/phone-authentication/phone-signup-verify-code.png)
 
@@ -108,7 +108,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 1. 各ファイル内で、文字列 `yourtenant` を、使用している Azure AD B2C テナントの名前に置き換えます。 たとえば、B2C テナントの名前が *contosob2c* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosob2c.onmicrosoft.com` になります。
 
-1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション (*IdentityExperienceFramework* と *ProxyIdentityExperienceFramework*) の**アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
+1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション ( *IdentityExperienceFramework* と *ProxyIdentityExperienceFramework* ) の **アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
 
 ## <a name="upload-the-policy-files"></a>ポリシー ファイルをアップロードする
 
@@ -128,7 +128,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
-1. **[カスタム ポリシー]** で、**[B2C_1A_SignUpOrSignInWithPhone]** を選択します。
+1. **[カスタム ポリシー]** で、 **[B2C_1A_SignUpOrSignInWithPhone]** を選択します。
 1. **[アプリケーションの選択]** で、前提条件の完了時に登録した *webapp1* アプリケーションを選択します。
 1. **[応答 URL の選択]** で、`https://jwt.ms` を選択します。
 1. **[今すぐ実行]** を選択し、電子メール アドレスまたは電話番号を使用してサインアップします。

@@ -90,6 +90,8 @@
       href: samples/calling-hero-sample.md
     - name: グループ チャットのヒーロー サンプル
       href: samples/chat-hero-sample.md
+    - name: Web 呼び出しのサンプル
+      href: samples/web-calling-sample.md
 - name: リファレンス
   items:
     - name: REST API のドキュメント

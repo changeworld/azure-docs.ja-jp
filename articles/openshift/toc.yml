@@ -18,6 +18,8 @@
   items:
     - name: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
       href: howto-create-private-cluster-4x.md
+    - name: Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する
+      href: howto-create-a-storageclass.md
     - name: Azure Red Hat OpenShift 4 クラスターのプル シークレットを更新する
       href: howto-add-update-pull-secret.md
     - name: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する

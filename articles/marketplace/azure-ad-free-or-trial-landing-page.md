@@ -49,7 +49,7 @@ ID を使用するための最初の手順として、ランディング ペー�
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Azure portal を使用して新しいアプリケーションを登録します
 
-作業を開始するには、[新しいアプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)に関するページの手順に従います。 他の会社のユーザーがこのアプリにアクセスできるようにするには、アプリケーションを使用できるユーザーを指定するよう求められたときに、**任意の組織のディレクトリ (任意の Azure AD ディレクトリ - マルチテナント) 内のアカウントと個人用の Microsoft アカウント (Skype や Xbox など)** を選択する必要があります。
+作業を開始するには、[新しいアプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)に関するページの手順に従います。 他の会社のユーザーがこのアプリにアクセスできるようにするには、アプリケーションを使用できるユーザーを指定するよう求められたときに、 **任意の組織のディレクトリ (任意の Azure AD ディレクトリ - マルチテナント) 内のアカウントと個人用の Microsoft アカウント (Skype や Xbox など)** を選択する必要があります。
 
 Microsoft Graph API にクエリを実行する予定がある場合は、[Web API にアクセスするように新しいアプリケーションを構成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)します。 このアプリケーションの API のアクセス許可を選択する場合、ユーザーに関する基本情報を収集してオンボード プロセスがスムーズかつ自動的に実行されるようにするには **User.Read** の既定値で十分です。 **[needs admin consent] (管理者の同意が必要)** というラベルが付いた API のアクセス許可を要求すると、管理者以外のすべてのユーザーがランディング ページにアクセスできなくなるため、この要求はしないでください。
 
@@ -59,7 +59,7 @@ Microsoft Graph API にクエリを実行する予定がある場合は、[Web A
 
 Microsoft は、Azure AD ログインが有効になった単純な Web サイトを実装するいくつかのサンプル アプリを提供してきました。 アプリケーションが Azure AD に登録されると、 **[クイック スタート]** ブレードには、一般的なアプリケーションの種類と開発スタックの一覧が表示されます (図 1)。 環境に適合するものを選択し、ダウンロードと設定の手順に従ってください。
 
-"***図 1:Azure portal の [クイック スタート] ブレード***
+" ***図 1:Azure portal の [クイック スタート] ブレード***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Azure portal の [クイック スタート] ブレードを示しています。":::
 
