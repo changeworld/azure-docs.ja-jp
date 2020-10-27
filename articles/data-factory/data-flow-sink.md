@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/27/2020
-ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 10/15/2020
+ms.openlocfilehash: 81ce3fae74a14c91db23c991ab0b53accd6568a6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828139"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107710"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -38,7 +38,7 @@ ms.locfileid: "91828139"
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> サポートされているシンクの種類
 
-Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する "*ステージング*" データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
+Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する " *ステージング* " データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
 
 | コネクタ | Format | データセット/インライン |
 | --------- | ------ | -------------- |
@@ -47,6 +47,7 @@ Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチ�
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties) <br> [差分 (プレビュー)](format-delta.md) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br/> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common Data Model (プレビュー)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br>✓/✓<br> ✓/- <br> -/✓ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Managed Instance (プレビュー)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
@@ -70,7 +71,7 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 
 ## <a name="field-mapping"></a>フィールドのマッピング
 
-シンクの **[マッピング]** タブ内では、Select 変換とほぼ同様に、受信列が書き込まれるかどうかを決定できます。 既定では、誤差のある列を含め、すべての入力列がマップされます。 これは、**自動マッピング**と呼ばれます。
+シンクの **[マッピング]** タブ内では、Select 変換とほぼ同様に、受信列が書き込まれるかどうかを決定できます。 既定では、誤差のある列を含め、すべての入力列がマップされます。 これは、 **自動マッピング** と呼ばれます。
 
 自動マッピングを無効にすると、固定列ベースのマッピングまたはルールベースのマッピングのいずれかを追加するオプションを利用できます。 ルールベースのマッピングでは、パターン マッチングを使用した式を作成でき、固定マッピングでは、論理列名と物理列名がマップされます。 ルールベースのマッピングの詳細については、[マッピング データ フローの列パターン](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)に関する記事を参照してください。
 

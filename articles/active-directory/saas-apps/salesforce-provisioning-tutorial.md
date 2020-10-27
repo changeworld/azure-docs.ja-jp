@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273298"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101768"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -71,21 +71,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションに次の構成設定を指定します。
 
-    a. **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce アカウント名を入力します。
+    a. **[管理ユーザー名]** ボックスに、Salesforce.com で **システム管理者** プロファイルが割り当てられている Salesforce アカウント名を入力します。
 
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
 6. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
+    ![[Settings]\(設定\) リンクが選択された状態を示すスクリーンショット。](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 7. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
+    ![[My Personal Information]\(私の個人情報\) の [Reset My Security Token]\(私のセキュリティ トークンのリセット\) が選択された状態を示すスクリーンショット。](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
 
 8. **[Reset Security Token]\(セキュリティ トークンのリセット\)** ページで、 **[Reset Security Token]\(セキュリティ トークンのリセット\)** ボタンをクリックします。
 
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
+    ![[Reset Security Token]\(セキュリティ トークンのリセット\) ページのスクリーンショット。[Reset Security Token]\(セキュリティ トークンのリセット\) の説明テキストとオプションが表示されています](./media/salesforce-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
 
 9. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce.com からの電子メールを探します。
 

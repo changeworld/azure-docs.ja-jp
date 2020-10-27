@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012553"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093346"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -16,7 +16,7 @@ ms.locfileid: "89012553"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>ID とユーザー アクセスの管理と制御
 
-Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (Azure RBAC)](./backup-rbac-rs-vault.md) を使用したきめ細かなアクセスを通して、マネージド型の操作を管理することができます。 RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
+Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (Azure RBAC)](./backup-rbac-rs-vault.md) を使用したきめ細かなアクセスを通して、マネージド型の操作を管理することができます。 Azure RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの[組み込みロール](../role-based-access-control/built-in-roles.md)が提供されます。
 
@@ -24,7 +24,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの[
 * バックアップ オペレーター - バックアップの削除とバックアップ ポリシーの管理を除き、共同作成者が行うすべての操作を行います
 * バックアップ リーダー - すべてのバックアップ管理操作を表示するアクセス許可
 
-[Azure Backup を管理するためのロールベースのアクセス制御](./backup-rbac-rs-vault.md)について確認してください。
+[Azure Backup を管理するための Azure ロールベースのアクセス制御](./backup-rbac-rs-vault.md)について確認してください。
 
 Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](./backup-security-controls.md)について確認してください。
 

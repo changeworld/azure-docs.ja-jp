@@ -1,20 +1,20 @@
 ---
 title: リンクされた Log Analytics ワークスペースでサポートされるリージョン
 description: この記事では、Azure Automation の特定の機能に関連している、Automation アカウントと Log Analytics ワークスペースとの間でサポートされているリージョン マッピングについて説明します。
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440662"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207327"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>リンクされた Log Analytics ワークスペースでサポートされるリージョン
 
-Azure Automation では、お使いのサーバーおよび仮想マシンで、Update Management、Change Tracking とインベントリ、Start/Stop VMs during off-hours の各機能を有効にすることができます。 これらの機能は、Log Analytics ワークスペースに依存しているため、ワークスペースを Automation アカウントにリンクする必要があります。 ただし、それらとリンクすることがサポートされているのは、特定のリージョンのみです。 一般に、これらの機能が有効になっていないワークスペースに Automation アカウントをリンクさせる予定の場合、マッピングは適用*されません*。
+Azure Automation では、お使いのサーバーおよび仮想マシンで、Update Management、Change Tracking とインベントリ、Start/Stop VMs during off-hours の各機能を有効にすることができます。 これらの機能は、Log Analytics ワークスペースに依存しているため、ワークスペースを Automation アカウントにリンクする必要があります。 ただし、それらとリンクすることがサポートされているのは、特定のリージョンのみです。 一般に、これらの機能が有効になっていないワークスペースに Automation アカウントをリンクさせる予定の場合、マッピングは適用 *されません* 。
 
 この記事では、Automation アカウントでこれらの機能を正常に有効にして使用するために、サポートされているマッピングについて説明します。
 
@@ -32,6 +32,7 @@ Azure Automation では、お使いのサーバーおよび仮想マシンで、
 |**米国**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**カナダ**||
 |CanadaCentral|CanadaCentral|
@@ -44,6 +45,7 @@ Azure Automation では、お使いのサーバーおよび仮想マシンで、
 |**ヨーロッパ**||
 |UKSouth|UKSouth|
 |西ヨーロッパ|西ヨーロッパ|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>2</sup>|USGovArizona|
@@ -86,5 +88,5 @@ Azure Automation では、お使いのサーバーおよび仮想マシンで、
 ## <a name="next-steps"></a>次のステップ
 
 * Update Management について、[Update Management の概要](../update-management/update-mgmt-overview.md)に関する記事で学習する。
-* Change Tracking とインベントリについて、「[変更履歴とインベントリの概要](../change-tracking.md)」で学習する。
+* Change Tracking とインベントリについて、「[変更履歴とインベントリの概要](../change-tracking/overview.md)」で学習する。
 * Start/Stop VMs during off-hours について、[Start/Stop VMs during off-hours の概要](../automation-solution-vm-management.md)に関する記事で学習する。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663168"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327639"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V レプリケーションのテスト結果
 
@@ -47,7 +47,7 @@ ms.locfileid: "73663168"
 * Hyper-V レプリカは、自己保持型のメモリ キャッシュを活用し、追跡に対する IOPS オーバーヘッドを最小化します。 復旧サイトにログを送信する時刻になる前に、メモリ内に VHDX への書き込みを格納し、ログ ファイルにフラッシュします。 あらかじめ設定された制限に書き込みが達した場合も、ディスク フラッシュが発生します。
 * 次のグラフは、レプリケーションに対する安定状態の IOPS オーバーヘッドを示しています。 レプリケーションによる IOPS オーバーヘッドは約 5% と、非常に低いことがわかります。
 
-  ![プライマリの結果](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![グラフは、レプリケーションに対する安定状態の IOPS オーバーヘッドを示しています。](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V レプリカは、ディスク パフォーマンスを最適化するために、プライマリ サーバー上のメモリを利用します。 次のグラフに示すように、プライマリ クラスター内にあるすべてのサーバー上のメモリ オーバーヘッドはわずかです。 示されているメモリ オーバーヘッドは、Hyper-V サーバーに装着されたメモリの合計と比較した、レプリケーションによって使用されるメモリの割合です。
 
@@ -55,20 +55,20 @@ Hyper-V レプリカは、ディスク パフォーマンスを最適化する�
 
 Hyper-V レプリカの CPU オーバーヘッドは最小限です。 グラフに示すように、レプリケーションのオーバーヘッドは 2 ～ 3% の範囲内です。
 
-![プライマリの結果](./media/hyper-v-vmm-performance-results/IC744915.png)
+![グラフはレプリケーションのオーバーヘッドが 2 から 3% の範囲内にあることを示しています。](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>セカンダリ サーバーのパフォーマンス
 
 Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、ストレージ操作の数を最適化できます。 グラフは、復旧サーバーのメモリ使用量をまとめたものです。 示されているメモリ オーバーヘッドは、Hyper-V サーバーに装着されたメモリの合計と比較した、レプリケーションによって使用されるメモリの割合です。
 
-![セカンダリの結果](./media/hyper-v-vmm-performance-results/IC744916.png)
+![グラフは、復旧サーバーのメモリ使用量をまとめたものです。](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 復旧サイトでの I/O 操作数は、プライマリ サイトでの書き込み操作の数と相関関係があります。 復旧サイトでの合計 I/O 操作数を、プライマリ サイトでの合計 I/O 操作数および書き込み操作数と比較してみましょう。 グラフでは、復旧サイトでの合計 IOPS は次のとおりになっています。
 
 * プライマリ サイトでの書き込み IOPS の約 1.5 倍
 * プライマリ サイトでの合計 IOPS の約 37%
 
-![セカンダリの結果](./media/hyper-v-vmm-performance-results/IC744917.png)
+![グラフは、プライマリとセカンダリのサイトでの IOPS の比較を示します。](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![セカンダリの結果](./media/hyper-v-vmm-performance-results/IC744918.png)
 
