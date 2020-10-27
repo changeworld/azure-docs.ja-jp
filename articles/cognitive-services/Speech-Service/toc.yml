@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: 会話の文字起こし
           items:
-            - name: 概要
-              items:
-                - name: 会話の文字起こしとは
-                  href: conversation-transcription.md
+            - name: 会話の文字起こしの概要
+              href: conversation-transcription.md
+            - name: リアルタイムでの会話の文字起こしのクイックスタート
+              href: how-to-use-conversation-transcription.md
             - name: 操作方法ガイド
               items:
                 - name: コール センターのシナリオに対応する
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: リアルタイムでの会話の文字起こし
-                  href: how-to-use-conversation-transcription.md
                 - name: 非同期での会話の文字起こし
                   href: how-to-async-conversation-transcription.md
             - name: リファレンス
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: マルチデバイスの会話
           items:
-            - name: 概要
-              items:
-                - name: マルチデバイスの会話とは
-                  href: multi-device-conversation.md
-            - name: クイック スタート
-              items:
-                - name: 会話を開始して参加する
-                  href: quickstarts/multi-device-conversation.md
+            - name: マルチデバイスの会話の概要
+              href: multi-device-conversation.md
+            - name: マルチデバイスの会話のクイックスタート
+              href: quickstarts/multi-device-conversation.md
             - name: リファレンス
               items:
                 - name: Speech SDK
@@ -363,12 +357,8 @@
       items:
         - name: 音声アシスタントのドキュメント
           href: index-voice-assistants.yml
-        - name: 概要
-          items:
-            - name: 音声アシスタントとは
-              href: voice-assistants.md
-            - name: 音声アシスタントのサンプル (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: 音声アシスタントの概要
+          href: voice-assistants.md
         - name: カスタム コマンド
           items:
             - name: カスタム コマンドとは

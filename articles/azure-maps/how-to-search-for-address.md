@@ -35,7 +35,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
 ## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>住所の緯度と経度を要求する (ジオコーディング)
 
-この例では、Azure Maps の [Get Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所を緯度および経度の座標に変換します。 このプロセスは*ジオコーディング*とも呼ばれています。 応答では、座標が返されるだけでなく、番地、郵便番号、地方自治体、国または地域の情報などの詳細な住所プロパティも返されます。
+この例では、Azure Maps の [Get Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所を緯度および経度の座標に変換します。 このプロセスは *ジオコーディング* とも呼ばれています。 応答では、座標が返されるだけでなく、番地、郵便番号、地方自治体、国または地域の情報などの詳細な住所プロパティも返されます。
 
 >[!TIP]
 >ジオコーディングする住所のセットがある場合は、[Post Search Address Batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。

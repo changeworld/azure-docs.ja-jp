@@ -14,6 +14,8 @@
   items:
     - name: 仮想ハブのセキュリティ保護 - ポータル
       href: secure-cloud-network.md
+    - name: 仮想ハブのセキュリティ保護 - PowerShell
+      href: secure-cloud-network-powershell.md
     - name: ハブ仮想ネットワークのセキュリティ保護 - ポータル
       href: secure-hybrid-network.md
 - name: 概念

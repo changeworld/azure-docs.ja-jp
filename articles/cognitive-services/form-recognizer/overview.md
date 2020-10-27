@@ -12,10 +12,10 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
 ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318961"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
@@ -96,7 +96,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 |名前 |説明 |
 |---|---|
-| **Train Custom Model**| 同じ種類の 5 つのフォームを使用して、フォームを分析する新しいモデルをトレーニングします。 手動でラベル付けしたデータを使ってトレーニングを行うには、_useLabelFile_ パラメーターを `true` に設定します。 |
+| **Train Custom Model**| 同じ種類の 5 つのフォームを使用して、フォームを分析する新しいモデルをトレーニングします。 手動でラベル付けしたデータを使ってトレーニングを行うには、 _useLabelFile_ パラメーターを `true` に設定します。 |
 | **Analyze Form** |ストリームとして渡された単一のドキュメントを分析し、カスタム モデルを使用してフォームからテキスト、キーと値のペア、テーブルを抽出します。  |
 | **Analyze Receipt** |単一のレシート ドキュメントを分析し、レシート内の主要な情報とその他のテキストを抽出します。|
 | **名刺を分析する** |名刺を分析し、主要な情報とテキストを抽出します。|
@@ -112,6 +112,6 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 Cognitive Services 全般に言えることですが、Form Recognizer サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クライアント ライブラリ クイックスタート](quickstarts/client-library.md)を完了します。

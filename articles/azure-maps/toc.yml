@@ -95,6 +95,8 @@
   items:
     - name: Maps のアカウントを管理する
       items:
+        - name: Resource Manager テンプレートを使用してアカウントを作成する
+          href: how-to-create-template.md
         - name: アカウントの管理
           href: how-to-manage-account-keys.md
         - name: 認証を管理する

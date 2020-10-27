@@ -61,8 +61,10 @@
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
-            - name: SQL Database での可用性ゾーン
-              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
+            - name: SQL Database の汎用サービス レベルでの可用性ゾーン
+              href: ../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview
+            - name: SQL Database の Premium および Business Critical サービス レベルでの可用性ゾーン
+              href: ../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability
         - name: ストレージ
           items:
             - name: ゾーン冗長ストレージ
