@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、GCP VM を Azu
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cd3bf225c6de0401aaa625cf3bb037b3beb58a35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716421"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315881"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) VM の検出、評価、および Azure への移行
 
@@ -44,12 +44,12 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
         - Linux マシンの場合:
             1. 各 Linux マシンにサインインします。
             2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
-            3. ファイルで、**PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
+            3. ファイルで、 **PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
             4. ファイルを保存して閉じます。 sshdサービスを再起動します。
     - ルート ユーザーを使用して Linux VM を検出する場合、VM でルート ログインが許可されることを確認してください。
         1. 各 Linux マシンにサインインします。
         2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
-        3. ファイルで、**PermitRootLogin** 行を見つけ、値を **yes** に変更します。
+        3. ファイルで、 **PermitRootLogin** 行を見つけ、値を **yes** に変更します。
         4. ファイルを保存して閉じます。 sshdサービスを再起動します。
 
 2. 次に、[このチュートリアル](./tutorial-assess-gcp.md)に従って Azure Migrate プロジェクトとアプライアンスを設定し、対象の GCP VM を検出して評価します。
@@ -81,7 +81,7 @@ Azure Migrate: Server Migration ツールを使用した移行のために Azure
 
 1. Azure portal でサブスクリプションを開き、 **[アクセス制御 (IAM)]** を選択します。
 2. **[アクセスの確認]** で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。
-3. **共同作成者**または**所有者**のアクセス許可を持っている必要があります。
+3. **共同作成者** または **所有者** のアクセス許可を持っている必要があります。
     - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
     - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
 
@@ -105,8 +105,8 @@ GCP から Azure への移行を準備するために、移行用のレプリケ
 
 Azure Migrate: Server Migration では、レプリケーション アプライアンスを使用してマシンを Azure にレプリケートします。 レプリケーション アプライアンスは、次のコンポーネントを実行します。
 
-- **構成サーバー**: 構成サーバーは、GCP VM と Azure の間の通信を調整し、データのレプリケーションを管理します。
-- **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、キャッシュ、圧縮、暗号化を使用してそれを最適化して、Azure のキャッシュ ストレージ アカウントに送信します。
+- **構成サーバー** : 構成サーバーは、GCP VM と Azure の間の通信を調整し、データのレプリケーションを管理します。
+- **プロセス サーバー** :プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、キャッシュ、圧縮、暗号化を使用してそれを最適化して、Azure のキャッシュ ストレージ アカウントに送信します。
 
 次のようにして、アプライアンスのデプロイの準備をします。
 
@@ -127,7 +127,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 Azure Migrate プロジェクトを設定し、そこに Server Migration ツールを追加します。
 
-1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
+1. Azure portal の **[すべてのサービス]** で、 **Azure Migrate** を検索します。
 2. **[サービス]** で **[Azure Migrate]** を選択します。
 3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
 4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
@@ -253,7 +253,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
 4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。 
-5. **[ゲストの資格情報]** では、前の[レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
+5. **[ゲストの資格情報]** では、前の [レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
  
     ![[レプリケート] 設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **[仮想マシン]** の **[評価から移行設定をインポートしますか?]** は、既定の設定である **[いいえ。移行設定を手動で指定します]** のままにしておきます。
@@ -275,10 +275,10 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 12. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
-    - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
-    - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
-    - **可用性ゾーン**:使用する可用性ゾーンを指定します。
-    - **可用性セット**:使用する可用性セットを指定します。
+    - **VM サイズ** : 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
+    - **OS ディスク** :VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
+    - **可用性ゾーン** :使用する可用性ゾーンを指定します。
+    - **可用性セット** :使用する可用性セットを指定します。
 
 ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
@@ -301,7 +301,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 ジョブの状態は、ポータルの通知で追跡できます。
 
-レプリケーションの状態を監視するには、**サーバーをレプリケートしています** をクリックします (**Azure Migrate: Server Migration** 内)。  
+レプリケーションの状態を監視するには、 **サーバーをレプリケートしています** をクリックします ( **Azure Migrate: Server Migration** 内)。  
 
 ![レプリケーションを監視します](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
@@ -324,7 +324,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     ![テスト移行](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
-4. **テスト移行**ジョブが開始されます。 ポータルの通知でジョブを監視します。
+4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
@@ -367,7 +367,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
@@ -399,7 +399,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 **回答:** EC2 VM を Azure に移行する前に、これらの変更を行うことが必要になる場合があります。
 
 - VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、GCP に固有のものである可能性があり、Azure への移行後には有効ではありません。  
-- 「[前提条件](#prerequisites)」セクションを確認して、オペレーティング システムに必要な変更があるかどうかを確認します
+- 「[前提条件](#prerequisites)」セクションを確認して、Azure に移行する前に、オペレーティング システムに必要な変更があるかどうかを判断します。
 - 最終的な移行の前に、必ずテスト移行を実行することをお勧めします。  
 
 ## <a name="next-steps"></a>次のステップ

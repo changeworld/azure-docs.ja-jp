@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611250"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096251"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -78,7 +78,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
 
 ## <a name="configure-the-application"></a>アプリケーションの構成
 
-1. *src/app* フォルダーで、次に示すように、*app.module.ts* を編集して、`MSALModule` を `imports` に追加し、`isIE` 定数を追加します。
+1. *src/app* フォルダーで、次に示すように、 *app.module.ts* を編集して、`MSALModule` を `imports` に追加し、`isIE` 定数を追加します。
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -124,7 +124,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
     |---------|---------|
     |Enter_the_Application_Id_Here|これは、アプリケーションの登録の **[概要]** ページの **[アプリケーション (クライアント) ID]** の値です。 |
     |Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。|
-    |Enter_the_Tenant_Info_Here| 次のいずれかのオプションに設定します。1) お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値をディレクトリ (テナント) ID またはテナント名 (例: "**contoso.microsoft.com**") に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。 |
+    |Enter_the_Tenant_Info_Here| 次のいずれかのオプションに設定します。1) お使いのアプリケーションで " *この組織のディレクトリ内のアカウント* " がサポートされる場合は、この値をディレクトリ (テナント) ID またはテナント名 (例: " **contoso.microsoft.com** ") に置き換えます。 アプリケーションで " *任意の組織のディレクトリ内のアカウント* " がサポートされる場合は、この値を **organizations** に置き換えます。 アプリケーションで " *任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント* " がサポートされる場合は、この値を **common** に置き換えます。 " *個人用の Microsoft アカウントのみ* " にサポートを制限するには、この値を **consumers** に置き換えます。 |
     |Enter_the_Redirect_Uri_Here|**http://localhost:4200** に置き換えます。|
 
     使用できる構成オプションの詳細については、[クライアント アプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。
@@ -194,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-次に、保護されたリソースのマップを `protectedResourceMap` として `MsalModule.forRoot()` に指定し、`consentScopes` にそれらのスコープを含めます。
+次に、保護されたリソースのマップを `protectedResourceMap` として `MsalModule.forRoot()` に指定し、`consentScopes` にそれらのスコープを含めます。 `protectedResourceMap` コレクションに指定する URL は、大文字と小文字が区別されます。
 
 ```javascript
 @NgModule({
@@ -318,7 +318,7 @@ Angular Material コンポーネント ライブラリを使用して UI を追�
     npm install
     npm start
     ```
-1. ブラウザーに「 **http://localhost:4200** 」または「 **http://localhost:{port}** 」と入力します。ここで、*port* は、Web サーバーがリッスンしているポートです。
+1. ブラウザーに「 **http://localhost:4200** 」または「 **http://localhost:{port}** 」と入力します。ここで、 *port* は、Web サーバーがリッスンしているポートです。
 
 
 ### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
@@ -331,7 +331,7 @@ Angular Material コンポーネント ライブラリを使用して UI を追�
 
 Microsoft Graph API には、ユーザーのプロファイルを読み取るための *user.read* スコープが必要です。 このスコープは既定で、登録ポータルに登録されているすべてのアプリケーションで自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 たとえば、Microsoft Graph API には、ユーザーの予定表を一覧表示するために *Calendars.Read* スコープが必要です。
 
-アプリケーションのコンテキストでユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。
+アプリケーションのコンテキストでユーザーの予定表にアクセスするには、 *Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、 *Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。
 
 >[!NOTE]
 >スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。

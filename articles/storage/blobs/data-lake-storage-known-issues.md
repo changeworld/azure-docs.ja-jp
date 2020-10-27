@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fee5427981cbd2c04a5ee88500a1aee77e2e5ffd
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876126"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282208"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -68,7 +68,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
+AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。  AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
 
 <a id="storage-explorer"></a>
 
@@ -84,7 +84,7 @@ ACL はまだサポートされていません。
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>サード パーティ製アプリケーション
+## <a name="third-party-applications"></a>サード パーティ製アプリケーション
 
 REST API を使用して動作するサード パーティ製アプリケーションは、Blob API を呼び出す Data Lake Storage Gen2 アプリケーションと一緒に使用すると、そのアプリケーションが動作するのと同じように引き続き動作します。
 
@@ -92,7 +92,11 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 
 コンテナーへの[匿名読み取りアクセス](storage-manage-access-to-resources.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
 
-## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Premium パフォーマンス BlockBlobStorage ストレージ アカウント
+### <a name="diagnostic-logs"></a>診断ログ
+
+リテンション期間の設定はまだサポートされていませんが、Azure Storage Explorer、REST、SDK などのサポートされているツールを使用して、ログを手動で削除することができます。
+
+## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Premium パフォーマンス BlockBlobStorage ストレージ アカウントに固有の問題
 
 ### <a name="diagnostic-logs"></a>診断ログ
 
@@ -108,8 +112,6 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 #Enable logging
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
-
-リテンション期間の設定はまだサポートされていませんが、Azure Storage Explorer、REST、SDK などのサポートされているツールを使用して、ログを手動で削除することができます。
 
 ### <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 

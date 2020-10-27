@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/02/2020
-ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761925"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217543"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -36,10 +36,10 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 SQL ソースからデータを共有するための前提条件の一覧を次に示します。 [ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成することもできます。
 
 * 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse)。
-* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
+* SQL サーバー上のデータベースに書き込む権限。これは、 *Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
 * データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal で、SQL サーバーに移動し、自分自身を Azure Active Directory 管理者に設定します。
-    1. [クエリ エディター](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
+    1. [クエリ エディター](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
     1. 次のスクリプトを実行し、Data Share リソースのマネージド ID を db_datareader として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
     
         ```sql
@@ -144,17 +144,17 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 ### <a name="prerequisites-for-target-storage-account"></a>ターゲット ストレージ アカウントの前提条件
 Azure Storage へのデータを受信することを選択する場合、前提条件の一覧を以下に示します。
 
-* Azure Storage アカウント: [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)をまだお持ちでない場合は、作成できます。 
-* ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
-* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。  
+* Azure Storage アカウント: [Azure Storage アカウント](../storage/common/storage-account-create.md)をまだお持ちでない場合は、作成できます。 
+* ストレージ アカウントに書き込む権限。これは、 *Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
+* ストレージ アカウントにロールの割り当てを追加する権限。これは、 *Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL ターゲットの前提条件
 Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。 [ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成することもできます。
 
-* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
+* SQL サーバー上のデータベースに書き込む権限。これは、 *Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
 * データ共有リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal で、SQL サーバーに移動し、自分自身を Azure Active Directory 管理者に設定します。
-    1. [クエリ エディター](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
+    1. [クエリ エディター](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
     1. 次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
 
         ```sql
@@ -179,7 +179,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
 1. 招待は、メールから開くことができるほか、Azure portal から直接開くこともできます。 
 
-   招待をメールから開くには、受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " **<yourdataprovider@domain.com> からの Azure Data Share の招待**" になっています。 **[招待を表示]** をクリックして、Azure で招待を確認します。 
+   招待をメールから開くには、受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " **<yourdataprovider@domain.com> からの Azure Data Share の招待** " になっています。 **[招待を表示]** をクリックして、Azure で招待を確認します。 
 
    Azure portal から直接招待を開くには、Azure portal で **[データ共有への招待]** を検索します。 Data Share の招待が一覧表示されます。
 
@@ -204,7 +204,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    これにより、Data Share アカウントに、受信した共有が表示されます。 
 
-   招待を受け入れたくない場合は、*[拒否]* を選択します。 
+   招待を受け入れたくない場合は、 *[拒否]* を選択します。 
 
 ### <a name="configure-received-share"></a>受信した共有を構成する
 データを受信する場所を構成するには、次の手順に従います。
@@ -228,7 +228,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    ![スナップショットのトリガー](./media/trigger-snapshot.png "スナップショットのトリガー") 
 
-1. 最終実行状態が "*成功*" の場合、ターゲット データ ストアに移動して、受信したデータを表示します。 **[データセット]** を選択して、ターゲット パスのリンクをクリックしてください。 
+1. 最終実行状態が " *成功* " の場合、ターゲット データ ストアに移動して、受信したデータを表示します。 **[データセット]** を選択して、ターゲット パスのリンクをクリックしてください。 
 
    ![コンシューマー データセット](./media/consumer-datasets.png "コンシューマー データセットのマッピング") 
 
@@ -275,9 +275,22 @@ SQL ソースからデータを共有するとき、スナップショットの�
 
 >[!NOTE]
 > 1. 10 進の中間型にマップされるデータ型の場合、スナップショットでは、現在、最大 28 の有効桁数がサポートされています。 28 よりも大きな有効桁数を必要とするデータがある場合は、文字列に変換することを検討してください。 
-> 1.  Azure SQL データベースから Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、「[Synapse SQL プールでのテーブルのデータ型](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types)」を参照してください。 
+> 1.  Azure SQL データベースから Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、「[Synapse SQL プールでのテーブルのデータ型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)」を参照してください。 
 
+## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted または動的データ マスク
+現時点では、Azure Data Share では、Always Encrypted が構成された Azure SQL データベースはサポートされていません。 
+
+動的データ マスクを使用するソース SQL テーブルの場合、データは受信側でマスクされて表示されます。
+
+## <a name="sql-snapshot-performance"></a>SQL スナップショットのパフォーマンス
+SQL スナップショットのパフォーマンスは、さまざまな要因の影響を受けます。 常に、独自のパフォーマンス テストを実施することをお勧めします。 パフォーマンスに影響するいくつかの要因の例を下に示します。
+
+* ソースとターゲットの SQL データ ストアのハードウェア構成 (仮想コア、メモリ、DWU など)。 
+* ソースとターゲットのデータ ストアへの同時アクセス。 同じ SQL データ ストアから複数のテーブルとビューを共有している場合、または複数のテーブルとビューを同じ SQL データ ストアに受信する場合、パフォーマンスに影響します。   
+* ソースとターゲットのデータ ストアの場所。 
+
+## <a name="troubleshoot-sql-snapshot-failure"></a>SQL スナップショット エラーのトラブルシューティング
+スナップショット エラーの最も一般的な原因は、Data Share にソースまたはターゲットのデータ ストアへのアクセス許可がないことです。 ソースまたはターゲットの SQL データ ストアへのアクセス許可を Data Share に付与するには、Azure Active Directory 認証を使用して SQL データベースに接続するときに、提供された SQL スクリプトを実行する必要があります。 その他の SQL スナップショット エラーをトラブルシューティングするには、[スナップショット エラーのトラブルシューティング](data-share-troubleshoot.md#snapshot-failed)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-Azure Data Share サービスを使用してストレージ アカウントからデータを共有および受信する方法について学習しました。 他のデータ ソースからの共有の詳細については、[サポートされているデータ ストア](supported-data-stores.md)に関するページに進んでください。
-
+Azure Data Share サービスを使用して SQL ソースからデータを共有および受信する方法について学習しました。 他のデータ ソースからの共有の詳細については、[サポートされているデータ ストア](supported-data-stores.md)に関するページに進んでください。

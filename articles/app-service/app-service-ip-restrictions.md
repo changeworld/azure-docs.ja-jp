@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962963"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168224"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限
 
@@ -36,7 +36,7 @@ Azure Virtual Network (VNet) からご自分の Web アプリへのアクセス�
 
 [アクセス制限] の UI では、アプリに対して定義されているアクセス制限規則の一覧を確認できます。
 
-![アクセス制限の一覧](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![選択したアプリに対して定義されているアクセス制限規則の一覧を示す、Azure portal の [アクセス制限] 画面のスクリーンショット。](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 一覧には、現在アプリに設定されているすべての制限が表示されます。 アプリに VNet 制限がある場合は、Microsoft.Web に対するサービス エンドポイントが有効かどうかが表に表示されます。 アプリに制限が定義されていない場合は、どこからでもアプリにアクセスできます。  
 
@@ -68,11 +68,11 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 任意の行をクリックして、既存のアクセス制限規則を編集できます。 優先順位の変更を含め、編集内容はすぐに有効になります。
 
-![アクセス制限規則を編集する](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![既存のアクセス制限規則のフィールドを示す、Azure portal の [IP 制限の編集] ダイアログのスクリーンショット。](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 規則を編集するとき、IP アドレス規則と Virtual Network 規則の間で種類を変更することはできません。 
 
-![アクセス制限規則を編集する](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![仮想ネットワーク規則の設定を示す、Azure portal の [IP 制限の編集] ダイアログのスクリーンショット。](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 規則を削除するには、規則の **[...]** をクリックし、 **[削除]** をクリックします。
 
@@ -80,9 +80,9 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 ## <a name="blocking-a-single-ip-address"></a>単一 IP アドレスのブロック ##
 
-最初の IP 制限規則を追加するとき、サービスは、2147483647 の優先順位で、明示的な "**すべて拒否**" 規則を追加します。 実際には、明示的な "**すべて拒否**" 規則は、最後に実行される規則となり、"**許可**" 規則を使用して明示的に許可されていないすべての IP アドレスへのアクセスをブロックします。
+最初の IP 制限規則を追加するとき、サービスは、2147483647 の優先順位で、明示的な " **すべて拒否** " 規則を追加します。 実際には、明示的な " **すべて拒否** " 規則は、最後に実行される規則となり、" **許可** " 規則を使用して明示的に許可されていないすべての IP アドレスへのアクセスをブロックします。
 
-ユーザーが、単一の IP アドレスまたは IP アドレス ブロックを明示的にブロックしたいが、その他のすべてのアクセスを許可したいシナリオでは、明示的な "**すべて許可**" 規則を追加する必要があります。
+ユーザーが、単一の IP アドレスまたは IP アドレス ブロックを明示的にブロックしたいが、その他のすべてのアクセスを許可したいシナリオでは、明示的な " **すべて許可** " 規則を追加する必要があります。
 
 ![単一 IP アドレスをブロックする](media/app-service-ip-restrictions/block-single-address.png)
 
@@ -90,7 +90,7 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 アプリへのアクセスを制御できるだけでなく、アプリによって使用される SCM サイトへのアクセスを制限することもできます。 SCM サイトは Web デプロイ エンドポイントであり、Kudu コンソールでもあります。 SCM サイトとアプリに異なるアクセス制限を割り当てることも、アプリと SCM サイトの両方に同じセットを使うこともできます。 チェック ボックスをオンにしてアプリと同じ制限にすると、すべてのものが空になります。チェック ボックスをオフにした場合は、以前に SCM サイトに対して行ったすべての設定が適用されます。 
 
-![アクセス制限の一覧](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![SCM サイトまたはアプリに対して設定されているアクセス制限がないことを示す、Azure portal の [アクセス制限] 画面のスクリーンショット。](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>アクセス制限規則のプログラムによる操作 ##
 

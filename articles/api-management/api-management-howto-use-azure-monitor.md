@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243241"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093584"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -59,7 +59,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. ドロップダウン リストで、関心のあるメトリックを選択します。 **Requests**など。 
+2. ドロップダウン リストで、関心のあるメトリックを選択します。 **Requests** など。 
 3. グラフには、API 呼び出しの合計数が表示されます。
 4. **[Requests]\(要求数\)** メトリックのディメンションを使用して、グラフをフィルター処理できます。 たとえば、 **[フィルターの追加]** をクリックし、 **[Backend Response Code]\(バックエンド応答コード\)** を選択し、値として「500」と入力します。 これで、API バックエンドで失敗した要求の数がグラフに表示されるようになりました。   
 
@@ -75,18 +75,18 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
 1. ページの下部にあるメニュー バーの **[アラート]** を選択します。
 
-    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![ページ下部付近にあるメニューの [アラート] を示すスクリーンショット。](./media/api-management-azure-monitor/alert-menu-item.png)
 
 2. このアラートに対して **[新しいアラート ルール]** をクリックします。
 3. **[条件の追加]** をクリックします。
 4. [シグナルの種類] ドロップダウンの **[メトリック]** を選択します。
 5. 監視するシグナルとして、 **[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
 
-    ![alerts](./media/api-management-azure-monitor/signal-type.png)
+    ![[シグナルの種類] フィールドと [Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\) のシグナル名が強調表示されているスクリーンショット。](./media/api-management-azure-monitor/signal-type.png)
 
 6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、 **[完了]** をクリックします。
 
-    ![alerts](./media/api-management-azure-monitor/threshold.png)
+    ![[シグナル ロジックの構成] ビューを示すスクリーンショット。](./media/api-management-azure-monitor/threshold.png)
 
 7. 既存のアクション グループを選択するか、新しいアクション グループを作成します。 次の例では、メールが管理者に送信されます。 
 

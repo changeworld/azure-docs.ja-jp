@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363224"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330174"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>プライベート DNS ゾーンとレコードを保護する方法
 
@@ -22,9 +22,9 @@ ms.locfileid: "91363224"
 
 この記事では、Azure DNS でプライベート DNS ゾーンとレコードをこのような変更から保護する方法について説明します。  Azure Resource Manager によって提供される次の 2 つの強力なセキュリティ機能を適用します: [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と[リソース ロック](../azure-resource-manager/management/lock-resources.md)。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-Azure のロールベースのアクセス制御 (Azure RBAC) では、Azure ユーザー、グループ、およびリソースのアクセス権を詳細に管理できます。 RBAC を使用すると、ユーザーが必要とするアクセス レベルを付与することができます。 RBAC を使用したアクセス管理の詳細については、[Azure ロールベースのアクセス制御の概要 (Azure RBAC)](../role-based-access-control/overview.md) に関するページを参照してください。
+Azure のロールベースのアクセス制御 (Azure RBAC) では、Azure ユーザー、グループ、およびリソースのアクセス権を詳細に管理できます。 Azure RBAC を使用すると、ユーザーが必要とするアクセス レベルを付与することができます。 Azure RBAC を使用したアクセス管理の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 
 ### <a name="the-private-dns-zone-contributor-role"></a>プライベート DNS ゾーンの共同作成者ロール
 
@@ -32,11 +32,11 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、Azure ユ
 
 リソース グループ *myPrivateDNS* には、Contoso Corporation 用の 5 つのゾーンが含まれています。 このリソース グループに対するプライベート DNS ゾーンの共同作成者アクセス許可を DNS 管理者に付与すると、管理者はこれらの DNS ゾーンを完全に制御できるようになります。 これは、不要なアクセス許可の付与を防ぐことができます。 DNS 管理者は、仮想マシンを作成または停止することはできません。
 
-RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-control/role-assignments-portal.md) を使用すると最も簡単に行うことができます。  
+Azure RBAC のアクセス許可は、[Azure portal から](../role-based-access-control/role-assignments-portal.md) 割り当てるのが最も簡単な方法です。  
 
 リソース グループの **[アクセス制御 (IAM)]** を開き、 **[追加]** を選択して、 **[プライベート DNS ゾーンの共同作成者]** ロールを選択します。 アクセス許可を付与する必要があるユーザーまたはグループを選択します。
 
-![Azure Portal を使用したリソース グループ レベルの RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
+![Azure Portal を使用したリソース グループ レベルの Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
 アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 
@@ -61,15 +61,15 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="private-zone-level-rbac"></a>プライベート ゾーン レベルの RBAC
+### <a name="private-zone-level-azure-rbac"></a>プライベート ゾーン レベルの Azure RBAC
 
 Azure RBAC のルールは、サブスクリプション、リソース グループ、または個々のリソースに適用できます。 このリソースは、個々の DNS ゾーンまたは個々のレコード セットのいずれかになります。
 
-たとえば、リソース グループ *myPrivateDNS* にゾーン *private.contoso.com* とサブゾーン *customers.private.contoso.com* が含まれているとします。 顧客アカウントごとに CNAME レコードが作成されています。 これらの CNAME レコードの管理に使用する管理者アカウントに、*customers.private.contoso.com* ゾーンにレコードを作成できるアクセス許可を割り当てます。 このアカウントは、*customers.private.contoso.com* のみを管理できます。
+たとえば、リソース グループ *myPrivateDNS* にゾーン *private.contoso.com* とサブゾーン *customers.private.contoso.com* が含まれているとします。 顧客アカウントごとに CNAME レコードが作成されています。 これらの CNAME レコードの管理に使用する管理者アカウントに、 *customers.private.contoso.com* ゾーンにレコードを作成できるアクセス許可を割り当てます。 このアカウントは、 *customers.private.contoso.com* のみを管理できます。
 
-ゾーン レベルの RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** を選択して、 **[プライベート DNS ゾーンの共同作成者]** ロールを選択します。 アクセス許可を付与する必要があるユーザーまたはグループを選択します。
+ゾーン レベルの Azure RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** を選択して、 **[プライベート DNS ゾーンの共同作成者]** ロールを選択します。 アクセス許可を付与する必要があるユーザーまたはグループを選択します。
 
-![Azure Portal を使用した DNS ゾーン レベルの RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
+![Azure Portal を使用した DNS ゾーン レベルの Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
 アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 
@@ -96,17 +96,17 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/privateDnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>レコード セット レベルの RBAC
+### <a name="record-set-level-azure-rbac"></a>レコード セット レベルの Azure RBAC
 
 アクセス許可は、レコード セット レベルで適用されます。  ユーザーには、必要とするエントリに対する制御が許可され、他の変更を行うことはできません。
 
-レコード セット レベルの RBAC アクセス許可は、Azure portal の [レコード セット] ページにある **[アクセス制御 (IAM)]** ボタンを使用して構成できます。
+レコード セット レベルの Azure RBAC アクセス許可は、Azure portal の [レコード セット] ページにある **[アクセス制御 (IAM)]** ボタンを使用して構成できます。
 
 ![[アクセス制御 (IAM)] ボタンを示すスクリーンショット。](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
 ![[ロールの割り当ての追加] が選択されている [アクセス制御] を示すスクリーンショット。](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
-レコード セット レベルの RBAC アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
+レコード セット レベルの Azure RBAC アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 
 ```azurepowershell-interactive
 # Grant permissions to a specific record set
@@ -188,13 +188,13 @@ az role create -inputfile <file path>
 
 作成したロールは、この記事で前述した組み込みロールの場合と同じ方法で割り当てることができます。
 
-カスタム ロールの作成、管理、および割り当ての方法の詳細については、「[Azure RBAC のカスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
+カスタム ロールの作成、管理、および割り当ての方法の詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ## <a name="resource-locks"></a>リソース ロック
 
 Azure Resource Manager は、別のタイプのセキュリティ制御をサポートしています。それはリソースをロックする機能です。 リソース ロックはリソースに適用され、すべてのユーザーおよびロールが対象になります。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/management/lock-resources.md)を参照してください。
 
-リソースのロックは 2 種類あります｡**CanNotDelete** と **ReadOnly** です。 これらは、プライベート DNS ゾーンまたは個別のレコード セットのいずれかに適用できます。  以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
+リソースのロックは 2 種類あります｡ **CanNotDelete** と **ReadOnly** です。 これらは、プライベート DNS ゾーンまたは個別のレコード セットのいずれかに適用できます。  以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
 
 ### <a name="protecting-against-all-changes"></a>あらゆる変更に対する保護
 
@@ -287,5 +287,5 @@ DNS ゾーン保護のための多層防御手法として、リソースのロ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* RBAC の操作の詳細については、「[Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)」を参照してください。
+* Azure RBAC の使用の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 * リソース ロックの操作の詳細については、「[Azure Resource Manager によるリソースのロック](../azure-resource-manager/management/lock-resources.md)」を参照してください。

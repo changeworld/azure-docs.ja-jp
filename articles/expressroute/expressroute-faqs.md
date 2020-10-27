@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077356"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202210"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -50,7 +50,7 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet はどのようにアドバタイズされますか?
 
-ExpressRoute ゲートウェイでは、Azure VNet の "*アドレス空間*" がアドバタイズされます。サブネット レベルで含めたり除外したりすることはできません。 アドバタイズされるのは、常に VNet アドレス空間です。 また、VNet ピアリングが使用され、ピアリングされた VNet で [リモート ゲートウェイを使用する] が有効な場合、ピアリングされた VNet のアドレス空間もアドバタイズされます。
+ExpressRoute ゲートウェイでは、Azure VNet の " *アドレス空間* " がアドバタイズされます。サブネット レベルで含めたり除外したりすることはできません。 アドバタイズされるのは、常に VNet アドレス空間です。 また、VNet ピアリングが使用され、ピアリングされた VNet で [リモート ゲートウェイを使用する] が有効な場合、ピアリングされた VNet のアドレス空間もアドバタイズされます。
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet からオンプレミスにアドバタイズできるプレフィックスの数はどのくらいですか?
 
@@ -80,12 +80,12 @@ ExpressRoute では、プライベート ピアリング、Microsoft ピアリ�
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 
-ExpressRoute 回線が Azure Microsoft ピアリングに対して有効になっている場合は、Azure 内で使用されている[パブリック IP アドレスの範囲](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に回線経由でアクセスできます。 Azure Microsoft ピアリングを使用すると、現在 Azure でホストされているサービスにアクセスできます (ご利用の回線の SKU によっては geo 制限があります)。 特定のサービスの可用性を検証するには、そのサービスに関するドキュメントを調べて、そのサービスに対して発行された予約済みの範囲があるかどうかを確認します。 次に、ターゲット サービスの IP 範囲を参照し、[Azure IP 範囲とサービス タグ – パブリック クラウド XML ファイル](https://www.microsoft.com/download/details.aspx?id=56519)に関するページに一覧されている範囲と比較します。 あるいは、問題のサービス用のサポート チケットを開いて、明確にすることもできます。
+ExpressRoute 回線が Azure Microsoft ピアリングに対して有効になっている場合は、Azure 内で使用されている[パブリック IP アドレスの範囲](../virtual-network/public-ip-addresses.md#public-ip-addresses)に回線経由でアクセスできます。 Azure Microsoft ピアリングを使用すると、現在 Azure でホストされているサービスにアクセスできます (ご利用の回線の SKU によっては geo 制限があります)。 特定のサービスの可用性を検証するには、そのサービスに関するドキュメントを調べて、そのサービスに対して発行された予約済みの範囲があるかどうかを確認します。 次に、ターゲット サービスの IP 範囲を参照し、[Azure IP 範囲とサービス タグ – パブリック クラウド XML ファイル](https://www.microsoft.com/download/details.aspx?id=56519)に関するページに一覧されている範囲と比較します。 あるいは、問題のサービス用のサポート チケットを開いて、明確にすることもできます。
 
 **サポート対象:**
 
 * [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
-* Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。
+* Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
 * IaaS (Virtual Machine、Virtual Network ゲートウェイ、Load Balancer など) の Azure パブリック IP アドレス  
@@ -118,7 +118,7 @@ Microsoft は、指定された 'アドバタイズされたパブリック プ�
 Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストされているため、お客様はその基礎となっている Azure リソース向け ExpressRoute のサポートを利用できます。 このサービス エンドポイントに接続できるのは、Dynamics 365/CD(CDS) 環境がホストされている Azure リージョンが、ルーター フィルターに含まれている場合です。
 
 > [!NOTE]
-> ExpressRoute 回線が同じ[地政学的リージョン](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)内にデプロイされている場合、Azure ExpressRoute 経由の Dynamics 365 接続には [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) は必要**ありません**。
+> ExpressRoute 回線が同じ [地政学的リージョン](./expressroute-locations-providers.md#expressroute-locations)内にデプロイされている場合、Azure ExpressRoute 経由の Dynamics 365 接続には [ExpressRoute Premium](#expressroute-premium) は必要 **ありません** 。
 
 ## <a name="data-and-connections"></a>データおよび接続
 
@@ -152,15 +152,15 @@ Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストさ
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>プライベート ピアリングに冗長性を確保するにはどうすればよいですか。
 
-異なるピアリングの場所から複数の ExpressRoute 回線を、または同じピアリングの場所からの最大 4 つの接続を同じ仮想ネットワークに接続することで、1 つの回線が使用できない状態になった場合の高可用性を確保することができます。 さらに、ローカル接続のいずれかに、[より大きな重み](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)を割り当てることで特定の回線を優先指定できます。 単一障害点を回避するために、少なくとも 2 つの ExpressRoute 回線をセットアップすることを強くお勧めします。 
+異なるピアリングの場所から複数の ExpressRoute 回線を、または同じピアリングの場所からの最大 4 つの接続を同じ仮想ネットワークに接続することで、1 つの回線が使用できない状態になった場合の高可用性を確保することができます。 さらに、ローカル接続のいずれかに、[より大きな重み](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection)を割り当てることで特定の回線を優先指定できます。 単一障害点を回避するために、少なくとも 2 つの ExpressRoute 回線をセットアップすることを強くお勧めします。 
 
-高可用性のための設計については[こちら](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)を、ディザスター リカバリーのための設計については[こちら](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)をご覧ください。  
+高可用性のための設計については[こちら](./designing-for-high-availability-with-expressroute.md)を、ディザスター リカバリーのための設計については[こちら](./designing-for-disaster-recovery-with-expressroute-privatepeering.md)をご覧ください。  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Microsoft ピアリングに冗長性を確保するにはどうすればよいですか。
 
-Microsoft ピアリングを使用して Azure のパブリック サービス (Azure Storage、Azure SQL など) にアクセスしているお客様や、Microsoft 365 向け Microsoft ピアリングを使用しているお客様には、単一障害点を回避するために、異なるピアリングの場所に複数の回線を導入することを強くお勧めします。 両方の回線で同じプレフィックスをアドバタイズして [AS PATH プリペンド](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)を使用するか、または異なるプレフィックスをアドバタイズしてオンプレミスからのパスを特定することができます。
+Microsoft ピアリングを使用して Azure のパブリック サービス (Azure Storage、Azure SQL など) にアクセスしているお客様や、Microsoft 365 向け Microsoft ピアリングを使用しているお客様には、単一障害点を回避するために、異なるピアリングの場所に複数の回線を導入することを強くお勧めします。 両方の回線で同じプレフィックスをアドバタイズして [AS PATH プリペンド](./expressroute-optimize-routing.md#solution-use-as-path-prepending)を使用するか、または異なるプレフィックスをアドバタイズしてオンプレミスからのパスを特定することができます。
 
-高可用性のための設計については[こちら](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)をご覧ください。
+高可用性のための設計については[こちら](./designing-for-high-availability-with-expressroute.md)をご覧ください。
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute に接続されている仮想ネットワークで高可用性を確保する方法
 
@@ -170,7 +170,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 オンプレミスから Azure へのパスが ExpressRoute 回線で確実に優先されるようにするには、お使いのルーターに *Local Preference* 属性を実装する必要があります。
 
-BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings)を参照してください。 
+BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings)を参照してください。 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
 
@@ -384,7 +384,7 @@ Microsoft 365 サービスでは、Premium アドオンを有効にする必要�
 はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Microsoft 365 サービスのエンドポイントにアクセスできます。 お客様の所在地のネットワークが ExpressRoute を介して Microsoft 365 サービスに接続するように構成されている場合は、組織のネットワーク チームに問い合わせてください。
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute で Microsoft 365 ネットワーク トラフィックの高可用性を計画するにはどうすればよいですか。
-「[Azure ExpressRoute の高可用性とフェールオーバー](https://aka.ms/erhighavailability)」に記載の推奨事項を参照してください。
+「[Azure ExpressRoute の高可用性とフェールオーバー](/microsoft-365/enterprise/network-planning-with-expressroute)」に記載の推奨事項を参照してください。
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US Government ExpressRoute 回線を通じて Office 365 US Government Community (GCC) サービスにアクセスすることはできますか。
 
@@ -417,3 +417,9 @@ Microsoft 365 サービスでは、Premium アドオンを有効にする必要�
 ## <a name="global-reach"></a><a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]
+
+## <a name="privacy"></a>プライバシー
+
+### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute サービスは顧客データを格納しますか。
+
+いいえ。

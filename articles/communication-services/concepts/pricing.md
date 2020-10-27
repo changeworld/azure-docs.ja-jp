@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761228"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126192"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Azure Communication Services の価格は、前払い料金のない従量課金制モデルに基づきます。 本サービスの消費と使用に対してのみ課金されます。
+Azure Communication Services の価格は、一般に従量課金制モデルに基づきます。
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>音声またはビデオによる通話と画面共有
 
@@ -51,7 +46,7 @@ Alice が、仕事仲間の Bob と Charlie とグループ通話を行いまし
 - 2 人の参加者 x 60 分 x 参加者あたり $0.004/分 = $0.48 [ビデオとオーディオの両方が同じ料金で課金されます]
 - 1 人の参加者 x 43 分 x 参加者あたり $0.004/分 = $0.172 [ビデオとオーディオの両方が同じ料金で課金されます]
 
-**グループ通話の総コスト**: $0.48 + $0.172 = $0.652
+**グループ通話の総コスト** : $0.48 + $0.172 = $0.652
 
 ## <a name="chat"></a>チャット
 
@@ -84,6 +79,16 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 ## <a name="price"></a>Price 
 
 テレフォニー サービスは分単位の価格となるのに対し、SMS はメッセージ単位の価格となります。 価格は、ご使用の番号の種類と場所、さらに通話と SMS メッセージの宛先によって決まります。
+
+### <a name="telephone-number-leasing"></a>電話番号のリース
+
+電話番号のリース料金は、前払いで毎月課金されます。
+
+|数値型   |月額料金   |
+|--------------|-----------|
+|ローカル (米国)     |1 ドル/月        |
+|無料電話番号 (米国) |2 ドル/月 |
+
 
 ### <a name="telephone-calling"></a>電話による通話
 

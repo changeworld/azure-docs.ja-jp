@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c1dd6f628e87792808d14db2c7bcc7f050923a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 332e9bcb959f355c34a1be97387845fda3effa29
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713193"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310983"
 ---
 # <a name="connectivity-modes-and-requirements"></a>接続モードと要件
 
@@ -26,7 +26,7 @@ Azure Arc 対応データ サービス環境から Azure への接続の程度�
 
 Azure Arc 対応データ サービスでは、2 つの異なる "接続モード" で Azure に接続するためのオプションが提供されます。直接接続と間接接続です。  これにより、Azure に送信されるデータの量や、ユーザーが Arc Data Controller とやり取りする方式を柔軟に選択できます。 選択した接続モードによっては、Azure Arc 対応データ サービスの一部の機能が利用できる場合と利用できない場合があります。
 
-重要な点として、Azure Arc 対応データ サービスが Azure に直接接続される場合、ユーザーは [Azure Resource Manager API](/rest/api/resources/)、Azure CLI、および Azure portal を使用して Azure Arc データ サービスを操作できます。 直接接続モードのエクスペリエンスは、プロビジョニング/プロビジョニング解除、スケーリング、構成などをすべて Azure portal で行う形で他の Azure サービスを使用する方法とほぼ同じです。  Azure Arc 対応データ サービスが Azure に間接的に接続される場合、Azure portal は読み取り専用ビューです。 デプロイした SQL マネージド インスタンスや Postgres Hyperscale インスタンスのインベントリとそれらの詳細を表示できますが、Azure portal でそれらに対してアクションを実行することはできません。  間接接続モードでは、すべてのアクションは、Azure Data Studio、Azure Data CLI、または kubectl などの Kubernetes ネイティブ ツールを使用してローカルで実行する必要があります。
+重要な点として、Azure Arc 対応データ サービスが Azure に直接接続される場合、ユーザーは [Azure Resource Manager API](/rest/api/resources/)、Azure CLI、および Azure portal を使用して Azure Arc データ サービスを操作できます。 直接接続モードのエクスペリエンスは、プロビジョニング/プロビジョニング解除、スケーリング、構成などをすべて Azure portal で行う形で他の Azure サービスを使用する方法とほぼ同じです。  Azure Arc 対応データ サービスが Azure に間接的に接続される場合、Azure portal は読み取り専用ビューです。 デプロイした SQL マネージド インスタンスや Postgres Hyperscale インスタンスのインベントリとそれらの詳細を表示できますが、Azure portal でそれらに対してアクションを実行することはできません。  間接接続モードでは、すべてのアクションは、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]、または kubectl などの Kubernetes ネイティブ ツールを使用してローカルで実行する必要があります。
 
 また、Azure Active Directory と Azure ロールベースのアクセス制御は、Azure への継続的な直接接続に依存して提供される機能であるため、直接接続モードでしか使用できません。
 
@@ -36,7 +36,7 @@ Azure Arc 対応データ サービスでは、2 つの異なる "接続モー�
 
 ||**間接接続**|**直接接続**|**非接続**|
 |---|---|---|---|
-|**説明**|間接接続モードでは、ほとんどの管理サービスは環境内でローカルに提供され、Azure に直接接続することはありません。  インベントリと請求の目的に_限って_、最小限のデータを Azure に送信する必要があります。 ファイルにエクスポートされて、少なくとも月に 1 回 Azure にアップロードされます。  Azure への直接または継続的な接続は必要ありません。  Azure への接続が必要な一部の機能とサービスは利用できなくなります。|直接接続モードでは、Azure との直接接続が確立できるときに利用可能なすべてのサービスが提供されます。 接続は常に、ご利用の環境_から_ Azure への方向で開始され、HTTPS/443 などの標準のポートとプロトコルを使用します。|どのような方法でも、Azure との間でデータを送受信することはできません。|
+|**説明**|間接接続モードでは、ほとんどの管理サービスは環境内でローカルに提供され、Azure に直接接続することはありません。  インベントリと請求の目的に _限って_ 、最小限のデータを Azure に送信する必要があります。 ファイルにエクスポートされて、少なくとも月に 1 回 Azure にアップロードされます。  Azure への直接または継続的な接続は必要ありません。  Azure への接続が必要な一部の機能とサービスは利用できなくなります。|直接接続モードでは、Azure との直接接続が確立できるときに利用可能なすべてのサービスが提供されます。 接続は常に、ご利用の環境 _から_ Azure への方向で開始され、HTTPS/443 などの標準のポートとプロトコルを使用します。|どのような方法でも、Azure との間でデータを送受信することはできません。|
 |**現在の可用性**| プレビューで利用可能。|将来的にはプレビューが予定されています。|現在サポートされていません。|
 |**一般的なユース ケース**|ビジネスまたは法令順守のポリシーにより、または外部からの攻撃やデータ流出の懸念により、データ センターのデータ領域との間で接続が許可されないオンプレミスのデータセンター。  一般的な例:金融機関、医療、政府。 <br/><br/>エッジ サイトから通常はインターネットに接続できないエッジ サイトの場所。  一般的な例: 石油/ガスまたは軍事分野のアプリケーション。  <br/><br/>接続が断続的で、長期間の停止があるエッジ サイトの場所。  一般的な例: スタジアム、クルーズ船。 | パブリック クラウドを使用している組織。  一般的な例:Azure、AWS、または Google Cloud。<br/><br/>通常はインターネット接続が存在し、許可されるエッジ サイトの場所。  一般的な例: 小売店、製造業。<br/><br/>データ センターのデータ領域とインターネットの間の接続に関して、比較的制限が緩いポリシーを持つ企業のデータ センター。  一般的な例:規制のない業種、中小企業|どのような状況でも一切のデータがデータ環境を出入りできない、真の "エアギャップ" 環境。 一般的な例: 最高機密の政府機関。|
 |**Azure にデータが送信されるしくみ**|請求およびインベントリ データを Azure に送信する方法には、次の 3 つのオプションがあります。<br><br> 1) セキュリティで保護されたデータ領域と Azure の両方に接続できる自動プロセスによって、データ領域からデータがエクスポートされます。<br><br>2) データ領域内の自動プロセスによってデータ領域からデータがエクスポートされ、セキュリティが低い方の領域に自動的にコピーされ、セキュリティが低い方の領域内の自動プロセスによってデータが Azure にアップロードされます。<br><br>3) セキュリティで保護された領域内のユーザーによってデータが手動でエクスポートされ、セキュリティで保護された領域から手動で持ち出されて、Azure に手動でアップロードされます。 <br><br>最初の 2 つのオプションは、頻繁な実行をスケジュールできる自動化された継続的プロセスであるため、Azure への接続が利用可能であれば、最小限の遅延で Azure にデータが送信されます。|データは自動的かつ継続的に Azure に送信されます。|データが Azure に送信されることはありません。|
@@ -46,14 +46,14 @@ Azure Arc 対応データ サービスでは、2 つの異なる "接続モー�
 |**機能**|**間接接続**|**直接接続**|
 |---|---|---|
 |**自動高可用性**|サポートされています|サポートされています|
-|**セルフサービス プロビジョニング**|サポートされています<br/>作成を行うには、Azure Data Studio、Azure Data CLI、Kubernetes ネイティブ ツール (helm、kubectl、oc など)、または Azure Arc 対応の Kubernetes GitOps プロビジョニングを使用します。|サポートされています<br/>間接接続モードの作成オプションに加えて、Azure portal、Azure Resource Manager API、Azure CLI、または ARM テンプレートを使用して作成することもできます。 **直接接続モードの保留中の可用性**
+|**セルフサービス プロビジョニング**|サポートされています<br/>作成を行うには、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]、Kubernetes ネイティブ ツール (helm、kubectl、oc など)、または Azure Arc 対応の Kubernetes GitOps プロビジョニングを使用します。|サポートされています<br/>間接接続モードの作成オプションに加えて、Azure portal、Azure Resource Manager API、Azure CLI、または ARM テンプレートを使用して作成することもできます。 **直接接続モードの保留中の可用性**
 |**柔軟なスケーラビリティ**|サポートされています|サポートされています<br/>**直接接続モードの保留中の可用性**|
 |**Billing**|サポートされています<br/>請求データは定期的にエクスポートされ、Azure に送信されます。|サポートされています<br/>請求データは自動的かつ継続的に Azure に送信され、ほぼリアルタイムで反映されます。 **直接接続モードの保留中の可用性**|
 |**在庫管理**|サポートされています<br/>インベントリ データは定期的にエクスポートされ、Azure に送信されます。|サポートされています<br/>インベントリ データは自動的かつ継続的に Azure に送信され、ほぼリアルタイムで反映されます。 **直接接続モードの保留中の可用性**|
 |**自動アップグレードとパッチ適用**|サポートされています<br/>データ コントローラーから Microsoft Container Registry (MCR) に直接アクセスできる必要があります。または、コンテナー イメージを MCR からプルして、データ コントローラーからアクセスできるローカルのプライベート コンテナー レジストリにプッシュする必要があります。|サポートされています<br/>**直接接続モードの保留中の可用性**|
-|**自動バックアップと復元**|サポートされています<br/>自動ローカル バックアップと復元。|サポートされています<br/>自動化されたローカルバックアップと復元に加えて、_必要に応じて_、長期間のオフサイト保持のためにバックアップを Azure Backup に送信することができます。 **直接接続モードの保留中の可用性**|
-|**監視**|サポートされています<br/>Grafana と Kibana のダッシュボードを使用したローカル監視。|サポートされています<br/>ローカルの監視ダッシュボードに加えて、_必要に応じて_、複数のサイトを 1 か所でまとめて監視するために、監視データとログを Azure Monitor に送信することができます。 **直接接続モードの保留中の可用性**|
-|**認証**|データ コントローラーとダッシュボードの認証には、ローカルのユーザー名/パスワードを使用します。 データベース インスタンスへの接続には、SQL および Postgres ログインまたは Active Directory を使用します。  Kubernetes API に対する認証には、K8s 認証プロバイダーを使用します。|間接接続モードの認証方法に加えて、またはその代わりに、_必要に応じて_ Azure Active Directory を使用できます。 **直接接続モードの保留中の可用性**|
+|**自動バックアップと復元**|サポートされています<br/>自動ローカル バックアップと復元。|サポートされています<br/>自動化されたローカルバックアップと復元に加えて、 _必要に応じて_ 、長期間のオフサイト保持のためにバックアップを Azure Backup に送信することができます。 **直接接続モードの保留中の可用性**|
+|**監視**|サポートされています<br/>Grafana と Kibana のダッシュボードを使用したローカル監視。|サポートされています<br/>ローカルの監視ダッシュボードに加えて、 _必要に応じて_ 、複数のサイトを 1 か所でまとめて監視するために、監視データとログを Azure Monitor に送信することができます。 **直接接続モードの保留中の可用性**|
+|**認証**|データ コントローラーとダッシュボードの認証には、ローカルのユーザー名/パスワードを使用します。 データベース インスタンスへの接続には、SQL および Postgres ログインまたは Active Directory を使用します。  Kubernetes API に対する認証には、K8s 認証プロバイダーを使用します。|間接接続モードの認証方法に加えて、またはその代わりに、 _必要に応じて_ Azure Active Directory を使用できます。 **直接接続モードの保留中の可用性**|
 |**ロールベースのアクセス制御 (RBAC)**|Kubernetes API では Kubernetes RBAC を使用します。 データベース インスタンスには SQL および Postgres RBAC を使用します。|必要に応じて、Azure Active Directory および Azure RBAC と統合できます。 **直接接続モードの保留中の可用性**|
 |**Azure Defender**|サポートされていません|将来的に予定されています|
 
@@ -73,7 +73,7 @@ Azure Arc 対応データ サービスでは、2 つの異なる "接続モー�
 |**Azure Active Directory (AD)**|お客様の環境 -> Azure -> お客様の環境|Optional|状況によりますが、Azure AD に対する支払いが既に発生している場合があります|直接のみ|認証に Azure AD を使用する場合は、常に Azure との接続が確立されている必要があります。 認証に Azure AD を使用しない場合は、Active Directory を介して Active Directory フェデレーション サービス (AD FS) を使用できます。 **直接接続モードの保留中の可用性**|
 |**バックアップ/復元**|お客様の環境 -> Azure -> お客様の環境|Optional|はい (ストレージ コストに関して)|直接のみ|バックアップをオフサイトで長期間保持するために、ローカルで取得したバックアップを Azure Backup に送信し、復元のためにローカル環境に戻すことができます。 **直接接続モードの保留中の可用性**|
 |**Azure Defender セキュリティ サービス**|お客様の環境 -> Azure -> お客様の環境|Optional|はい|直接のみ|**直接接続モードの保留中の可用性**|
-|**Azure portal からのプロビジョニングと構成の変更**|お客様の環境 -> Azure -> お客様の環境|省略可能|×|直接のみ|プロビジョニングと構成の変更は、Azure Data Studio または azdata CLI を使用してローカルで行うことができます。  直接接続モードでは、Azure portal からプロビジョニングと構成変更を行うこともできます。 **直接接続モードの保留中の可用性**|
+|**Azure portal からのプロビジョニングと構成の変更**|お客様の環境 -> Azure -> お客様の環境|省略可能|×|直接のみ|プロビジョニングと構成の変更は、Azure Data Studio または [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用してローカルで行うことができます。  直接接続モードでは、Azure portal からプロビジョニングと構成変更を行うこともできます。 **直接接続モードの保留中の可用性**|
 
 
 ## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>インターネット アドレス、ポート、暗号化、プロキシ サーバー サポートの詳細
@@ -83,10 +83,10 @@ Azure Arc 対応データ サービスでは、2 つの異なる "接続モー�
 |**名前**|**接続元**|**接続先**|**プロトコル**|**[ポート]**|**プロキシを使用可能**|**認証**|**ノート**|
 |---|---|---|---|---|---|---|---|
 |**Microsoft Container Registry (MCR)**|コンテナー イメージをプルする各 Kubernetes ノード上の Kubernetes kubelet。|`mcr.microsoft.com`|HTTPS|443|はい|なし|Microsoft Container Registry では、Azure Arc 対応データ サービスのコンテナー イメージをホストします。  これらのイメージを MCR からプルしてプライベート コンテナー レジストリにプッシュし、そのプライベート コンテナー レジストリからコンテナー イメージをプルするようにデータ コントローラーのデプロイ プロセスを構成できます。|
-|**Azure Resource Manager API**|Azure に接続しようとしている Azure Data Studio、Azure Data CLI、または Azure CLI を実行しているコンピューター。|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|はい|Azure Active Directory|一部の機能では、Azure との間でデータを送受信するために、Azure Data Studio、Azure Data CLI および Azure CLI が Azure Resource Manager API に接続します。|
-|**Azure Monitor API**|監視メトリックまたはログを Azure Monitor にアップロードしている Azure Data CLI または Azure CLI を実行しているコンピューター。|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|はい|Azure Active Directory|一部の機能では、Azure との間でデータを送受信するために、Azure Data Studio、Azure Data CLI および Azure CLI が Azure Resource Manager API に接続します。|
+|**Azure Resource Manager API**|Azure に接続しようとしている Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]、または Azure CLI を実行しているコンピューター。|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|はい|Azure Active Directory|一部の機能では、Azure との間でデータを送受信するために、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] および Azure CLI が Azure Resource Manager API に接続します。|
+|**Azure Monitor API**|監視メトリックまたはログを Azure Monitor にアップロードしている [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] または Azure CLI を実行しているコンピューター。|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|はい|Azure Active Directory|一部の機能では、Azure との間でデータを送受信するために、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] および Azure CLI が Azure Resource Manager API に接続します。|
 
 > [!NOTE]
-> 現時点では、Grafana および Kibana ダッシュボードへの、また Azure Data CLI からデータ コントローラー API へのブラウザー HTTPS/443 接続はすべて、自己署名証明書を使用して SSL で暗号化されます。  将来的には、これらの SSL 接続の暗号化用に独自の証明書を提供するための機能が利用可能になる予定です。
+> 現時点では、Grafana および Kibana ダッシュボードへの、また [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] からデータ コントローラー API へのブラウザー HTTPS/443 接続はすべて、自己署名証明書を使用して SSL で暗号化されます。  将来的には、これらの SSL 接続の暗号化用に独自の証明書を提供するための機能が利用可能になる予定です。
 
-Azure Data Studio および Azure Data CLI から Kubernetes API サーバーへの接続には、確立した Kubernetes 認証および暗号化が使用されます。  Azure Data Studio および Azure Data CLI を使用している各ユーザーは、Azure Arc 対応データ サービスに関連した多くのアクションを実行するために、Kubernetes API への認証された接続を持っている必要があります。
+Azure Data Studio および [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] から Kubernetes API サーバーへの接続には、確立した Kubernetes 認証および暗号化が使用されます。  Azure Data Studio および [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用している各ユーザーは、Azure Arc 対応データ サービスに関連した多くのアクションを実行するために、Kubernetes API への認証された接続を持っている必要があります。

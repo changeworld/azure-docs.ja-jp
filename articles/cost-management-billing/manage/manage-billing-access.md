@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371815"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166218"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
@@ -53,7 +53,7 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 
 1. **[コストの管理と請求]** で検索します。
 
-    ![Azure portal の検索を表示するスクリーンショット](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![[サービス] セクションの [コストの管理と請求] が強調表示されているスクリーンショット。](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** を選択する必要があります。
 
@@ -94,11 +94,11 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 1. **[選択]** テキストボックスに、追加するユーザーの名前またはメール アドレスを入力します。
 1. ユーザーを選択します。
 1. **[保存]** を選択します。
-    ![ロールの割り当て追加のクリックを示すスクリーンショット](./media/manage-billing-access/billing-save-role-assignment.png)
+    ![[保存] ボタンが強調表示されているスクリーンショット](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. しばらくすると、ユーザーにサブスクリプションの請求閲覧者ロールが割り当てられます。
 
-** EA のお客様の場合は、アカウント所有者または部門管理者がチーム メンバーに請求閲覧者ロールを割り当てることができます。 ただし、その請求閲覧者が部門またはアカウントの課金情報を表示する場合は、エンタープライズ管理者が Enterprise Portal で **AO ビューの請求額**または **DA ビューの請求額**のポリシーを有効にする必要があります。
+** EA のお客様の場合は、アカウント所有者または部門管理者がチーム メンバーに請求閲覧者ロールを割り当てることができます。 ただし、その請求閲覧者が部門またはアカウントの課金情報を表示する場合は、エンタープライズ管理者が Enterprise Portal で **AO ビューの請求額** または **DA ビューの請求額** のポリシーを有効にする必要があります。
 
 ## <a name="check-the-type-of-your-billing-account"></a>請求先アカウントの種類を確認する
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

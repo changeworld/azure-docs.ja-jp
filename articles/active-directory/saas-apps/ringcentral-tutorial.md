@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8539f3f2a5882f12f131c95b0c17efd3acba3cf
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542583"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105177"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 
@@ -42,7 +42,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RingCentral では、**IDP** によって開始される SSO がサポートされます
+* RingCentral では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-ringcentral-from-the-gallery"></a>ギャラリーからの RingCentral の追加
 
@@ -52,7 +52,7 @@ Azure AD への RingCentral の統合を構成するには、管理対象の Saa
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RingCentral**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **RingCentral** 」と入力します。
 1. 結果のパネルから **[RingCentral]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -78,16 +78,16 @@ RingCentral で Azure AD SSO を構成してテストするには、次の構成
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+1. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     1. **[メタデータ ファイルをアップロードします]** をクリックします。
-    1. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
-    1. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、 **[基本的な SAML 構成]** セクションに自動的に設定されます。
+    1. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    1. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、 **[基本的な SAML 構成]** セクションに自動的に設定されます。
 
     > [!Note]
-    > RingCentral SSO 構成ページで、**サービス プロバイダー メタデータ ファイル**を取得します。これについては後で説明します。
+    > RingCentral SSO 構成ページで、 **サービス プロバイダー メタデータ ファイル** を取得します。これについては後で説明します。
 
-1. **サービス プロバイダー メタデータ ファイル**がない場合は、次のフィールドに値を入力します。
+1. **サービス プロバイダー メタデータ ファイル** がない場合は、次のフィールドに値を入力します。
 
     a. **[識別子]** ボックスに次の URL を入力します。
   
@@ -139,7 +139,7 @@ RingCentral で Azure AD SSO を構成してテストするには、次の構成
 
 ## <a name="configure-ringcentral-sso"></a>RingCentral SSO の構成
 
-1. RingCentral 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. RingCentral 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -151,19 +151,19 @@ RingCentral で Azure AD SSO を構成してテストするには、次の構成
 
 1. 上部の **[ツール]** をクリックします。
 
-    ![image](./media/ringcentral-tutorial/ringcentral1.png)
+    ![RingCentral 企業サイトから選択された [ツール] を示すスクリーンショット。](./media/ringcentral-tutorial/ringcentral1.png)
 
 1. **[シングル サインオン]** に移動します。
 
-    ![image](./media/ringcentral-tutorial/ringcentral2.png)
+    ![[ツール] メニューから選択された [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/ringcentral-tutorial/ringcentral2.png)
 
 1. **[Single Sign-on]\(シングル サインオン\)** ページの **[SSO Configuration]\(SSO 構成\)** セクションで、 **[Step 1]\(ステップ 1\)** の **[Edit]\(編集\)** をクリックして、次の手順を実行します。
 
-    ![image](./media/ringcentral-tutorial/ringcentral3.png)
+    ![[Edit]\(編集\) を選択できる [S S O Configuration]\(S S O 構成\) ページを示すスクリーンショット。](./media/ringcentral-tutorial/ringcentral3.png)
 
 1. **[Set up Single Sign-on]\(シングル サインオンのセットアップ\)** ページで、次の手順を実行します。
 
-    ![image](./media/ringcentral-tutorial/ringcentral4.png)
+    ![I D P メタデータをアップロードできる [Set up Single Sign-On]\(シングル サインオンのセットアップ\) ページを示すスクリーンショット。](./media/ringcentral-tutorial/ringcentral4.png)
 
     a. **[Browse]\(参照\)** をクリックし、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
 
@@ -173,13 +173,13 @@ RingCentral で Azure AD SSO を構成してテストするには、次の構成
 
     d. **[保存]** をクリックします。
 
-    e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal 内でそれを **[基本的な SAML 構成]** セクションにアップロードして、 **[識別子]** と **[応答 URL]** を自動的に設定します。
+    e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして **サービス プロバイダー メタデータ ファイル** をダウンロードし、Azure portal 内でそれを **[基本的な SAML 構成]** セクションにアップロードして、 **[識別子]** と **[応答 URL]** を自動的に設定します。
 
-    ![image](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![[Download]\(ダウンロード\) を選択できる [S S O Configuration]\(S S O 構成\) ページを示すスクリーンショット。](./media/ringcentral-tutorial/ringcentral6.png) 
 
     f. 同じページで **[Enable SSO]\(SSO の有効化\)** セクションに移動し、次の手順を実行します。
 
-    ![image](./media/ringcentral-tutorial/ringcentral5.png)
+    ![構成を完了できる [Enable S S O]\(S S O の有効化\) セクションを示すスクリーンショット。](./media/ringcentral-tutorial/ringcentral5.png)
 
     * **[Enable SSO Service]\(SSO サービスを有効にする\)** を選択します。
 

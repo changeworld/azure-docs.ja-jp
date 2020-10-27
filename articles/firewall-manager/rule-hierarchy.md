@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893616"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331738"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Azure Firewall ポリシーを使用して規則の階層を定義する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88893616"
 Azure Firewall ポリシーを使用すると、規則の階層を定義し、コンプライアンスを適用することができます。
 
 - 子アプリケーション チーム ポリシーの上に中央の基本ポリシーをオーバーレイする階層構造を指定します。 基本ポリシーは優先順位が高く、子ポリシーの前に実行されます。
-- カスタムの役割ベースのアクセス制御 (RBAC) 定義を使用して、基本ポリシーを誤って削除することを防止し、サブスクリプションまたはリソース グループ内の規則コレクション グループへの選択的なアクセスを付与します。 
+- Azure のカスタムの役割定義を使用して、基本ポリシーを誤って削除することを防止し、サブスクリプションまたはリソース グループ内の規則コレクション グループへの選択的なアクセスを付与します。 
 
 ## <a name="solution-overview"></a>ソリューションの概要
 
@@ -97,7 +97,7 @@ Azure Firewall ポリシーを使用すると、規則の階層を定義し、�
 
    明示的にサブスクリプション ID を追加してください。それ以外の場合、サブスクリプションにロールをインポートできなくなります。
 7.  **Id**  プロパティ行を削除し、 **IsCustom**  プロパティを true に変更します。
-8.  **Name**  および  **Description**  の各プロパティを「*AZFM Rule Collection Group Author*」(AZFM 規則コレクション グループ作成者) と「*Users in this role can edit Firewall Policy rule collection groups*」(このロールのユーザーはファイアウォール ポリシー規則コレクション グループを編集できます) に変更します
+8.  **Name**  および  **Description**  の各プロパティを「 *AZFM Rule Collection Group Author* 」(AZFM 規則コレクション グループ作成者) と「 *Users in this role can edit Firewall Policy rule collection groups* 」(このロールのユーザーはファイアウォール ポリシー規則コレクション グループを編集できます) に変更します
 
 JSON ファイルは次の例のようになります。
 
@@ -153,7 +153,7 @@ Azure portal でカスタム ロールを確認することもできます。 �
 
 ### <a name="summary"></a>まとめ
 
-カスタム RBAC を使用したファイアウォール ポリシーを使用して、ファイアウォール ポリシー規則コレクション グループへの選択的アクセスを付与できるようになりました。
+カスタム役割を使用したファイアウォール ポリシーを使用して、ファイアウォール ポリシー規則コレクション グループへの選択的アクセスを付与できるようになりました。
 
 ユーザーには以下を行うアクセス許可がありません。
 - Azure Firewall またはファイアウォール ポリシーを削除する。

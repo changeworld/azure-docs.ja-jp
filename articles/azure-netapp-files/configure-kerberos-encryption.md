@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461480"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217050"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -59,7 +59,7 @@ NFSv4.1 クライアントの暗号化には、次の要件が適用されます
 
 1.  「[Active Directory 接続を作成する](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)」の手順に従います。  
 
-    Kerberos では、Active Directory に少なくとも 1 つのマシン アカウントを作成する必要があります。 指定したアカウント情報は、SMB "*と*" NFSv4.1 Kerberos の両方のボリュームのアカウントを作成するために使用されます。 このマシン アカウントは、ボリュームの作成時に自動的に作成されます。
+    Kerberos では、Active Directory に少なくとも 1 つのマシン アカウントを作成する必要があります。 指定したアカウント情報は、SMB " *と* " NFSv4.1 Kerberos の両方のボリュームのアカウントを作成するために使用されます。 このマシン アカウントは、ボリュームの作成時に自動的に作成されます。
 
 2.  **[Kerberos 領域]** で、 **[AD サーバー名]** と **[KDC IP]** アドレスを入力します。
 
@@ -75,7 +75,7 @@ NFSv4.1 Kerberos を構成すると、Active Directory に 2 つのコンピュ�
 * SMB 共有のコンピューター アカウント
 * NFSv4.1 のコンピューター アカウント。このアカウントは `NFS-` プレフィックスによって識別できます。 
 
-最初の NFSv4.1 Kerberos ボリュームを作成した後、次の PowerShell コマンドを使用して、暗号化の種類またはコンピューター アカウントを設定してください。
+最初の NFSv4.1 Kerberos ボリュームの作成後、次の PowerShell コマンドを使用して、そのコンピューター アカウントの暗号化の種類を設定します。
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 3. 新しいボリューム用のディレクトリ (マウント ポイント) を作成します。  
 
 4. コンピューター アカウントの既定の暗号化の種類を AES 256 に設定します。  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * このコマンドは、コンピューター アカウントごとに 1 回だけ実行する必要があります。
     * このコマンドの実行は、ドメイン コントローラーから、または [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) がインストールされている PC から行うことができます。 
-    * `$COMPUTERACCOUNT` 変数は、Kerberos ボリュームをデプロイしたときに Active Directory に作成されたコンピューター アカウントです。 これは、先頭に `NFS-` が付いているアカウントです。 
+    * `$NFSCOMPUTERACCOUNT` 変数は、Kerberos ボリュームをデプロイしたときに Active Directory に作成されたコンピューター アカウントです。 これは、先頭に `NFS-` が付いているアカウントです。 
     * `$ANFSERVICEACCOUNT` 変数は、コンピューター アカウントが作成された組織単位に対する管理を委任されている、特権のない Active Directory ユーザー アカウントです。 
 
 5. ホストでボリュームをマウントします。 

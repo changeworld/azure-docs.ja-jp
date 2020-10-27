@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542566"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
 
@@ -41,7 +41,7 @@ SmartRecruiters と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SmartRecruiters では、**SP と IDP** によって開始される SSO がサポートされます
+* SmartRecruiters では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-smartrecruiters-from-the-gallery"></a>ギャラリーから SmartRecruiters を追加する
 
@@ -67,7 +67,7 @@ Azure AD への SmartRecruiters の統合を構成するには、ギャラリー
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SmartRecruiters で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SmartRecruiters で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SmartRecruiters 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SmartRecruiters で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,7 +99,7 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[SmartRecruiters のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>` の形式で URL を入力します。
 
@@ -107,14 +107,14 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[SmartRecruiters のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>/login` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SmartRecruiters クライアント サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -134,21 +134,21 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
 1. **[Settings / Admin]\(設定 / 管理者\)** に移動します。
 
-    ![SmartRecruiters の構成](./media/smartrecruiters-tutorial/configure.png)
+    ![メニューから [Settings / Admin]\(設定/管理者\) が選択された画面のスクリーンショット。](./media/smartrecruiters-tutorial/configure.png)
 
 1. **[Configuration]\(構成\)** セクションで、 **[Web SSO]** をクリックします。
 
-    ![SmartRecruiters の構成](./media/smartrecruiters-tutorial/configure1.png)
+    ![[Configuration]\(構成\) から [Web S S O] が選択された画面のスクリーンショット。](./media/smartrecruiters-tutorial/configure1.png)
 
 1. **[Enable Web SSO]\(Web SSO を有効にする\)** をトグルします。
 
-    ![SmartRecruiters の構成](./media/smartrecruiters-tutorial/configure2.png)
+    ![[Enable Web S S O]\(Web S S O を有効にする\) コントロールのスクリーンショット。](./media/smartrecruiters-tutorial/configure2.png)
 
 1. **[構成]\(ID プロバイダー構成\)** で、次の手順に従います。
 
-    ![SmartRecruiters の構成](./media/smartrecruiters-tutorial/configure4.png)
+    ![[Identity Provider Configuration]\(ID プロバイダー構成\) のスクリーンショット。ここで、説明されている値を入力できます。](./media/smartrecruiters-tutorial/configure4.png)
 
-    a. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     b. Azure portal からダウンロードした **certificate(Base64)** をメモ帳で開き、その内容をコピーして **[Identity Provider certificate]\(ID プロバイダー証明書\)** ボックスに貼り付けます。
 
@@ -170,7 +170,7 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

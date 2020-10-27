@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642199"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108424"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -21,7 +21,7 @@ Python でのスタンドアロンの関数のサンプル プロジェクトに
 
 Azure Functions では、関数は入力を処理して出力を生成する Python スクリプト内のステートレスなメソッドであることが求められます。 既定で、ランタイムでは、このメソッドは `main()` と呼ばれるグローバル メソッドとして `__init__.py` ファイル内に実装されると想定されます。 また、[代替エントリ ポイントを指定する](#alternate-entry-point)こともできます。
 
-トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、*function.json* ファイル内で定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
+トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、 *function.json* ファイル内で定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -48,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="alternate-entry-point"></a>代替エントリ ポイント
 
-*function.json* ファイル内で `scriptFile` プロパティと `entryPoint` プロパティをオプションで指定することによって、関数の既定の動作を変更できます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、_main.py_ ファイル内の `customentry()` メソッドを使用するようにランタイムに指示が出されます。
+*function.json* ファイル内で `scriptFile` プロパティと `entryPoint` プロパティをオプションで指定することによって、関数の既定の動作を変更できます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、 _main.py_ ファイル内の `customentry()` メソッドを使用するようにランタイムに指示が出されます。
 
 ```json
 {
@@ -83,11 +83,11 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 ```
 メイン プロジェクト フォルダー (\_\_app\_\_) には、次のファイルを含めることができます。
 
-* *local.settings.json*:ローカルで実行するときに、アプリの設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。 詳細については、「[local.settings.file](functions-run-local.md#local-settings-file)」に関するページを参照してください。
-* *requirements.txt*:Azure に公開するときにシステムによってインストールされるパッケージの一覧が含まれます。
-* *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
-* *.funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
-* *Dockerfile*:(省略可能) [カスタム コンテナー](functions-create-function-linux-custom-image.md)でプロジェクトを発行するときに使用されます。
+* *local.settings.json* :ローカルで実行するときに、アプリの設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。 詳細については、「[local.settings.file](functions-run-local.md#local-settings-file)」に関するページを参照してください。
+* *requirements.txt* :Azure に公開するときにシステムによってインストールされるパッケージの一覧が含まれます。
+* *host.json* :関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
+* *.funcignore* :(省略可能) Azure に発行しないファイルを宣言します。
+* *Dockerfile* :(省略可能) [カスタム コンテナー](functions-create-function-linux-custom-image.md)でプロジェクトを発行するときに使用されます。
 
 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。
 
@@ -113,7 +113,7 @@ from __app__ import shared_code #(absolute)
 import __app__.shared_code #(absolute)
 ```
 
-以下のインポートは、同じファイル内からは "*機能しません*"。
+以下のインポートは、同じファイル内からは " *機能しません* "。
 
 ```python
 import example
@@ -295,21 +295,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 同様に、返される [HttpResponse] オブジェクトに応答メッセージの `status_code` および `headers` を設定できます。
 
-## <a name="scaling-and-concurrency"></a>スケーリングとコンカレンシー
+## <a name="scaling-and-performance"></a>スケーリングとパフォーマンス
 
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
+関数がどのように実行されるか、およびそのパフォーマンスが関数アプリのスケーリング方法にどのように影響するかを理解することが重要です。 これは、高パフォーマンスのアプリを設計する場合に特に重要です。 関数アプリを設計、作成、および構成する際に考慮する必要がある要素は次のとおりです。
 
-多くのアプリケーションでは、このスケーリング動作で十分です。 ただし、次のいずれかの特性を持つアプリケーションは、効果的にスケーリングできない場合があります。
+### <a name="horizontal-scaling"></a>水平スケーリング
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 関数は、さまざまなトリガー型の組み込みしきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 これらのしきい値は、ユーザーが構成することはできません。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
 
-- アプリケーションで多くの同時呼び出しを処理する必要がある。
-- アプリケーションが大量の I/O イベントを処理する。
-- アプリケーションが I/O バインドされている。
+### <a name="improving-throughput-performance"></a>スループットのパフォーマンスの向上
 
-そのような場合、非同期パターンを採用し、複数の言語ワーカー プロセスを使用することで、パフォーマンスをさらに向上させることができます。
+パフォーマンスを向上させる鍵は、アプリがリソースをどのように使用するかを理解し、それに応じて関数アプリを構成できるということです。
 
-### <a name="async"></a>非同期
+#### <a name="understanding-your-workload"></a>ワークロードを理解する
 
-Python はシングルスレッド ランタイムであるため、Python のホスト インスタンスは一度に 1 つの関数呼び出ししか処理できません。 大量の I/O イベントを処理するアプリケーションや、I/O バインドされているアプリケーションでは、関数を非同期に実行することによってパフォーマンスを向上させることができます。
+ほとんどの Azure Functions アプリケーションの場合、既定の構成が適しています。 ただし、ワークロード プロファイルに基づく構成を採用することで、アプリケーションのスループットのパフォーマンスを向上させることができます。 最初の手順は、実行しているワークロードの種類を理解することです。
+
+|| I/O バウンド ワークロード | CPU バウンド ワークロード |
+|--| -- | -- |
+|関数アプリの特性| <ul><li>アプリで多くの同時呼び出しを処理する必要がある。</li> <li> アプリは、ネットワーク呼び出しやディスクの読み取り/書き込みなど、大量の I/O イベントを処理します。</li> </ul>| <ul><li>アプリでは、イメージのサイズ変更など、長時間実行される計算が行われます。</li> <li>アプリでは、データの変換が行われます。</li> </ul> |
+|例| <ul><li>Web API</li><ul> | <ul><li>データ処理</li><li> 機械学習推論</li><ul>|
+
+ 
+> [!NOTE]
+>  実際の関数のワークロードは多くの場合、I/O と CPU バインドされたものが混在しているため、現実的な実稼働環境の負荷に応じてワークロードをプロファイリングすることをお勧めします。
+
+
+#### <a name="performance-specific-configurations"></a>パフォーマンス固有の構成
+
+関数アプリのワークロード プロファイルを理解したら、次は関数のスループット パフォーマンスを向上させるために使用できる構成を行います。
+
+##### <a name="async"></a>Async
+
+[Python はシングルスレッド ランタイムである](https://wiki.python.org/moin/GlobalInterpreterLock)ため、Python のホスト インスタンスは一度に 1 つの関数呼び出ししか処理できません。 大量の I/O イベントを処理するアプリケーションや、I/O バインドされているアプリケーションでは、関数を非同期に実行することによってパフォーマンスを著しく向上させることができます。
 
 関数を非同期に実行するには、`async def` ステートメントを使用します。これにより、[asyncio](https://docs.python.org/3/library/asyncio.html) を使用して関数が直接実行されます。
 
@@ -317,6 +334,21 @@ Python はシングルスレッド ランタイムであるため、Python の�
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+[aiohttp](https://pypi.org/project/aiohttp/) http クライアントを使用する HTTP トリガーを使用した関数の例を次に示します。
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 `async` キーワードを持たない関数は、自動的に asyncio スレッド プールで実行されます。
 
@@ -327,11 +359,25 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
+関数を非同期的に実行する利点を最大限に活用するには、コード内で使用されている I/O 操作/ライブラリにも async を実装する必要があります。 非同期として定義されている関数で同期 I/O 操作を使用すると、全体的なパフォーマンスが **低下する可能性が あります** 。
+
+非同期パターンを実装したクライアント ライブラリのいくつかの例を次に示します。
+- [aiohttp](https://pypi.org/project/aiohttp/) - asyncio の Http クライアント/サーバー 
+- [Streams API](https://docs.python.org/3/library/asyncio-stream.html) -ネットワーク接続を操作するための高レベルの async/await 対応プリミティブ
+- [Janus Queue](https://pypi.org/project/janus/) - Python 用のスレッドセーフな asyncio 対応キュー
+- [pyzmq](https://pypi.org/project/pyzmq/) -ZeroMQ 用の Python バインド
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
 
 既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカー プロセスの数を増やすことができます (最大 10)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。
 
+CPU バインド アプリの場合、言語ワーカーの数は、関数アプリごとに使用できるコアの数と同じかそれ以上である必要があります。 詳細については、「[利用可能インスタンス SKU](functions-premium-plan.md#available-instance-skus)」を参照してください。 
+
+I/O バインド アプリでも、使用可能なコア数を超えてワーカー プロセスの数を増やすことでメリットが得られる場合もあります。 ワーカー数を大きく設定し過ぎると、必要なコンテキスト切り替えの数が増えるため、全体的なパフォーマンスに影響する可能性があることに注意してください。 
+
 FUNCTIONS_WORKER_PROCESS_COUNT は、需要に応じてアプリケーションをスケールアウトするときに Functions が作成する各ホストに適用されます。
+
 
 ## <a name="context"></a>Context
 
@@ -655,7 +701,7 @@ Python 標準ライブラリには、各 Python ディストリビューショ�
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python worker の依存関係
 
-Functions Python worker は、特定のライブラリ セットを必要とします。 これらのライブラリは、関数内で使用することもできますが、Python 標準の一部ではありません。 対象の関数がこれらのライブラリのいずれかに依存している場合、Azure Functions の外部で実行したときにコードでそれらのライブラリを使用できない場合があります。 依存関係の詳細な一覧は、[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) ファイルの **install\_requires** セクションで確認できます。
+Functions Python worker は、特定のライブラリ セットを必要とします。 これらのライブラリは、関数内で使用することもできますが、Python 標準の一部ではありません。 対象の関数がこれらのライブラリのいずれかに依存している場合、Azure Functions の外部で実行したときにコードでそれらのライブラリを使用できない場合があります。 依存関係の詳細な一覧は、 [setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) ファイルの **install\_requires** セクションで確認できます。
 
 > [!NOTE]
 > 関数アプリの requirements.txt に `azure-functions-worker` エントリが含まれている場合は、それを削除します。 Functions worker は Azure Functions プラットフォームによって自動的に管理され、新しい機能とバグの修正のための更新が定期的に行われます。 古いバージョンの worker を requirements.txt に手動で組み込むと、予期しない問題が発生する可能性があります。

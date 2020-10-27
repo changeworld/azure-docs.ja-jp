@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377123"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116737"
 ---
 [Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
@@ -42,7 +42,7 @@ Model-View-Controller が組み込まれた ASP.NET Core Web アプリケーシ�
 
 ### <a name="configure-authentication-values"></a>認証の値の構成
 
-_ソリューション エクスプローラー_でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、_secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
+_ソリューション エクスプローラー_ でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、 _secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
 ```json
 {
@@ -53,7 +53,7 @@ _ソリューション エクスプローラー_でプロジェクトを右ク�
 }
 ```
 
-### <a name="install-active-directory"></a>Active Directory のインストール
+### <a name="install-active-directory-nuget-package"></a>Active Directory NuGet パッケージをインストールする
 
 以下のコードでは **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet パッケージのオブジェクトが使用されているため、プロジェクトにそのパッケージへの参照を追加する必要があります。
 
@@ -71,7 +71,7 @@ _Controllers\HomeController.cs_ を開き、ファイルの先頭の _using_ ス
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-ここで、_secrets.json_ から Azure AD 値を取得するようにコントローラーを構成します。 _HomeController_ クラスの先頭で、```public class HomeController : Controller {``` の後に、次のコードを追加します。
+ここで、 _secrets.json_ から Azure AD 値を取得するようにコントローラーを構成します。 _HomeController_ クラスの先頭で、```public class HomeController : Controller {``` の後に、次のコードを追加します。
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -142,7 +142,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>サンプル コンテンツの追加
-まず、_Views\Shared\Layout.cshtml_ を開きます。 ```</head>``` という行の前に、次のコードを追加します。
+まず、 _Views\Shared\Layout.cshtml_ を開きます。 ```</head>``` という行の前に、次のコードを追加します。
 
 ```html
 @RenderSection("Styles", required: false)
@@ -292,7 +292,7 @@ _Views\Home\Index.cshtml_ の末尾に、次のコードを追加します。
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-メニュー バーから **[デバッグ] > [デバッグの開始]** の順に選択するか、**F5** キーを押して、アプリケーションを起動します。
+メニュー バーから **[デバッグ] > [デバッグの開始]** の順に選択するか、 **F5** キーを押して、アプリケーションを起動します。
 
 ブラウザーの表示は次のようになります。
 

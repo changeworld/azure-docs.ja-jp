@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327716"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203485"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -131,9 +131,9 @@ SecurityEvent
 
 [max()](/azure/kusto/query/max-aggfunction)、[sum()](/azure/kusto/query/sum-aggfunction)、[count()](/azure/kusto/query/count-aggfunction)、[avg()](/azure/kusto/query/avg-aggfunction) などの集計コマンドには、そのロジックにより CPU への影響は小さくなるものもありますが、より複雑で、効率的な実行を可能にするヒューリスティックや推定が含まれるものもあります。 たとえば、[dcount ()](/azure/kusto/query/dcount-aggfunction) では、HyperLogLog アルゴリズムを使用することで、各値を実際にカウントすることなく、大規模なデータ セットの個別カウントに近い推定値が提供されます。また、パーセンタイル関数は、最も近いランク パーセンタイル アルゴリズムを使用して同様の概算を行います。 コマンドのいくつかには、影響を軽減するための省略可能なパラメーターが含まれています。 たとえば、[makeset ()](/azure/kusto/query/makeset-aggfunction) 関数には、CPU とメモリに大きく影響する、最大セット サイズを定義するための省略可能なパラメーターがあります。
 
-[join](/azure/kusto/query/joinoperator?pivots=azuremonitor) および [summarize](/azure/kusto/query/summarizeoperator) コマンドを使用すると、大規模なデータ セットを処理する際に CPU 使用率が高くなる可能性があります。 これらの複雑さは、summarize 内で `by` として使用されている列または join 属性として使用されている列に指定可能な値の数 ("*カーディナリティ*" と呼ばれます) に直接関連しています。 join および summarize の説明と最適化については、それぞれのドキュメント記事と最適化のヒントを参照してください。
+[join](/azure/kusto/query/joinoperator?pivots=azuremonitor) および [summarize](/azure/kusto/query/summarizeoperator) コマンドを使用すると、大規模なデータ セットを処理する際に CPU 使用率が高くなる可能性があります。 これらの複雑さは、summarize 内で `by` として使用されている列または join 属性として使用されている列に指定可能な値の数 (" *カーディナリティ* " と呼ばれます) に直接関連しています。 join および summarize の説明と最適化については、それぞれのドキュメント記事と最適化のヒントを参照してください。
 
-たとえば、次のクエリでは、**CounterPath** が常に 1 対 1 で **CounterName** および **ObjectName** にマップされるため、まったく同じ結果が得られます。 2 番目のクエリは、集計ディメンションが小さくなるにつれて、効率が高まります。
+たとえば、次のクエリでは、 **CounterPath** が常に 1 対 1 で **CounterName** および **ObjectName** にマップされるため、まったく同じ結果が得られます。 2 番目のクエリは、集計ディメンションが小さくなるにつれて、効率が高まります。
 
 ```Kusto
 //less efficient
@@ -197,7 +197,7 @@ SecurityEvent
 
 2,000KB を超えるデータを処理するクリエは、リソースを過度に消費するクエリと見なされます。 20,000KB を超えるデータを処理するクリエはリソースを酷使するクエリと見なされ、調整されることがあります。
 
-Azure Monitor ログでは、データにインデックスを付ける手段として、**TimeGenerated** 列が使用されます。 **TimeGenerated** の値をできるだけ狭い範囲に絞り込むと、処理すべきデータの量がかなり制限されることで、クエリのパフォーマンスが大幅に向上します。
+Azure Monitor ログでは、データにインデックスを付ける手段として、 **TimeGenerated** 列が使用されます。 **TimeGenerated** の値をできるだけ狭い範囲に絞り込むと、処理すべきデータの量がかなり制限されることで、クエリのパフォーマンスが大幅に向上します。
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>検索および和集合演算子を不必要に使わない
 
@@ -318,7 +318,7 @@ SecurityEvent
 
 ## <a name="time-span-of-the-processed-query"></a>処理されたクエリの期間
 
-Azure Monitor ログ内のすべてのログは、**TimeGenerated** 列に従ってパーティション分割されます。 アクセスされるパーティションの数は、期間に直接関係します。 時間範囲を短縮することは、迅速なクエリ実行を確実にするための最も効率的な方法となります。
+Azure Monitor ログ内のすべてのログは、 **TimeGenerated** 列に従ってパーティション分割されます。 アクセスされるパーティションの数は、期間に直接関係します。 時間範囲を短縮することは、迅速なクエリ実行を確実にするための最も効率的な方法となります。
 
 期間が 15 日間を超えるクエリは、リソースを過度に消費するクエリと見なされます。 期間が 90 日間を超えるクエリはリソースを酷使するクエリと見なされ、調整されることがあります。
 
@@ -329,7 +329,7 @@ Azure Monitor ログ内のすべてのログは、**TimeGenerated** 列に従っ
 
 ### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>すべてのサブクエリに TimeGenerated フィルターがあることを確認する
 
-たとえば、次のクエリでは、**Perf** テーブルで最終日のみがスキャンされますが、**Heartbeat** テーブルではその履歴すべて (最大 2 年間の場合があります) がスキャンされます。
+たとえば、次のクエリでは、 **Perf** テーブルで最終日のみがスキャンされますが、 **Heartbeat** テーブルではその履歴すべて (最大 2 年間の場合があります) がスキャンされます。
 
 ```Kusto
 Perf

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea69f1e634c66bff98462d41f3eeef19f8e15eb0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553616"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -41,7 +41,7 @@ Procore SSO と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Procore SSO では、**IDP** によって開始される SSO がサポートされます
+* Procore SSO では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-procore-sso-from-the-gallery"></a>ギャラリーからの Procore SSO の追加
 
@@ -61,13 +61,13 @@ Azure AD への Procore SSO の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Procore SSO**」と入力し、結果パネルから **[Procore SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Procore SSO** 」と入力し、結果パネルから **[Procore SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リスト内の Procore SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーを基に、Procore SSO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Procore SSO で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Procore SSO 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Procore SSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -101,7 +101,7 @@ Procore SSO で Azure AD シングル サインオンを構成するには、次
 
     ![[Procore SSO のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -121,21 +121,21 @@ Procore SSO で Azure AD シングル サインオンを構成するには、次
 
 2. [TOOLBOX] \(ツールボックス) ドロップ ダウンから **[Admin] \(管理)** をクリックして、SSO 設定ページを開きます。
 
-    ![Configure single sign-on](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![[Directory]\(ディレクトリ\) が選択された Procore の企業サイトを示すスクリーンショット。](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. 以下の説明に従って、各ボックスに値を貼り付けます。
 
-    ![Configure single sign-on](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![[Add a Person]\(ユーザーの追加\) ダイアログ ボックスを示すスクリーンショット。](./media/procoresso-tutorial/procore_setting_admin.png) 
 
     a. **[Single Sign On Issuer URL]\(シングル サインオン発行者 URL\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    b. **[SAML Sign On Target URL]\(SAML サインオン ターゲット URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[SAML Sign On Target URL]\(SAML サインオン ターゲット URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. 次に、先ほど Azure portal からダウンロードした**フェデレーション メタデータの XML** を開いて、**X509Certificate** という名前のタグ内の証明書をコピーします。 コピーした値を、 **[Single Sign On x509 Certificate] \(シングル サインオン x509 証明書)** ボックスに貼り付けます。
+    c. 次に、先ほど Azure portal からダウンロードした **フェデレーション メタデータの XML** を開いて、 **X509Certificate** という名前のタグ内の証明書をコピーします。 コピーした値を、 **[Single Sign On x509 Certificate] \(シングル サインオン x509 証明書)** ボックスに貼り付けます。
 
 4. **[Save Changes] \(変更を保存)** をクリックします。
 
-5. 上記の設定後、Procore へのログインで経由する**ドメイン名** (例: **contoso.com**) を [Procore のサポート チーム](https://support.procore.com/)に送信して、このドメインのフェデレーション SSO を有効化してもらう必要があります。
+5. 上記の設定後、Procore へのログインで経由する **ドメイン名** (例: **contoso.com** ) を [Procore のサポート チーム](https://support.procore.com/)に送信して、このドメインのフェデレーション SSO を有効化してもらう必要があります。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -153,7 +153,7 @@ Procore SSO で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -195,15 +195,15 @@ Procore SSO で Azure AD シングル サインオンを構成するには、次
 
 2. [TOOLBOX] \(ツールボックス) ドロップ ダウンで **[Directory] \(ディレクトリ)** をクリックして、企業のディレクトリ ページを開きます。
 
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![ツールボックスから [Directory]\(ディレクトリ\) が選択された Procore の企業サイトを示すスクリーンショット。](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. **[Add a Person] \(ユーザーの追加)** オプションをクリックしてフォームを開き、次の手順を実行します。
 
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_add.png)
+    ![ユーザー情報を入力できる [Add a person to Boylan Construction]\(Boylan Construction にユーザーを追加する\) を示すスクリーンショット。](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
+    a. **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta** ).
 
-    b. **[Last Name] \(姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon**).
+    b. **[Last Name] \(姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon** ).
 
     c. **[Email Address] \(メール アドレス)** ボックスに、ユーザーのメール アドレスを入力します (この例では BrittaSimon@contoso.com)。
 
@@ -213,11 +213,11 @@ Procore SSO で Azure AD シングル サインオンを構成するには、次
 
 4. 新しく追加された連絡先の詳細を確認して更新します。
 
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_check.png)
+    ![ユーザー設定を確認できる編集ページを示すスクリーンショット。](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. メールによる招待状が必要な場合は **[Save and Send Invitiation]\(保存して招待状を送信\)** を、直接保存する場合は **[Save]\(保存\)** をクリックして、ユーザー登録を完了します。
     
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_save.png)
+    ![招待状を保存して送信できる [Current Project Settings]\(現在のプロジェクトの設定\) を示すスクリーンショット。](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

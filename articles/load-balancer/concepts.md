@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 28c3e4ade2c78a1a77ef7263463803e40727ba8f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930919"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315301"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer のアルゴリズム
 
@@ -57,6 +57,7 @@ Load Balancer は、TCP、UDP、またはアプリケーション レイヤー�
 
 ## <a name="next-steps"></a>次のステップ
 
+- Azure Load Balancer を構成する[コンポーネント](components.md)について確認します。
 - Load Balancer の使用を始めるには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参考に Load Balancer を 1 つ作成し、カスタム IIS 拡張機能がインストールされている VM を作成して、Web アプリを VM 間で負荷分散します。
 - [Azure Load Balancer のアウトバウンド接続](load-balancer-outbound-connections.md)について学習する。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。

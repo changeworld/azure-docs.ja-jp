@@ -4,23 +4,33 @@ description: Azure Cosmos アカウントでファイアウォールをサポー
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ad53a90586ccf88c5c74326103997ca0a53cdf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814180"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279759"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
+
+アカウントに保存されているデータを保護するために、Azure Cosmos DB では、強固なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの認可モデルをサポートしています。 さらに、Azure Cosmos DB では、受信ファイアウォールをサポートするための IP ベースのアクセス制御に対応しています。 このモデルは、従来型データベース システムのファイアウォール規則に似ていますが、アカウントのセキュリティ水準がさらに高くなっています。 ファイアウォールを利用して、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos アカウントを構成することができます。 ただし、承認されているコンピューターのグループやサービスから Azure Cosmos データベースに格納されているデータにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
+
+## <a name="ip-access-control"></a><a id="ip-access-control-overview"></a>IP アクセス制御
+
+既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。 データ エクスプローラーを使用する場合は、Azure portal にアカウントへのアクセスを許可するだけでなく、ファイアウォール規則に現在の IP アドレスを追加するようファイアウォール設定を更新する必要もあります。 ファイアウォールの変更が反映されるまでに最大 15 分かかる場合があります。
+
+IP ベースのファイアウォールと、サブネットおよび VNET のアクセス制御を組み合わせることができます。 これらを組み合わせることで、パブリック IP を保持する任意のソースへのアクセスや、VNET 内の特定のサブネットからのアクセスを制限できます。 サブネットおよび VNET ベースのアクセス制御に関する詳細については、[仮想ネットワークから Azure Cosmos DB リソースへのアクセス](vnet-service-endpoint.md)に関するページを参照してください。
+
+端的に言えば、Azure Cosmos アカウントにアクセスするには、常に認証トークンが必要になります。 IP ファイアウォールおよび VNET アクセス制御リスト (ACL) が設定されていない場合は、認証トークンで Azure Cosmos アカウントにアクセスできます。 IP ファイアウォールまたは VNET ACL、あるいはその両方が Azure Cosmos アカウントに設定された後は、指定したソースから送信された要求 (認証トークンを備えている) のみが、有効な応答を取得します。 
 
 ご利用の Azure Cosmos DB アカウントに格納されたデータは、IP ファイアウォールを使用することによりセキュリティで保護することができます。 Azure Cosmos DB では、受信ファイアウォールをサポートするために IP ベースのアクセス制御に対応しています。 Azure Cosmos DB アカウント上で IP ファイアウォールを設定するには、次の方法のいずれかを使用できます。
 
 * Azure portal から
 * Azure Resource Manager テンプレートを使用した宣言による
-* Azure CLI または Azure PowerShell を介してプログラムで、**ipRangeFilter** プロパティを更新する。
+* Azure CLI または Azure PowerShell を介してプログラムで、 **ipRangeFilter** プロパティを更新する。
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
 
@@ -207,7 +217,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="sdks"></a>SDK
 
-許可リストに入っていないマシンから SDK を使用して Azure Cosmos DB リソースにアクセスすると、**許可されていません 403** という一般的な応答が返され、詳しい情報は示されません。 ご利用の Azure Cosmos DB アカウントに対する IP 許可リストを確認し、そのアカウントに正しいポリシー構成が確実に適用されるようにします。
+許可リストに入っていないマシンから SDK を使用して Azure Cosmos DB リソースにアクセスすると、 **許可されていません 403** という一般的な応答が返され、詳しい情報は示されません。 ご利用の Azure Cosmos DB アカウントに対する IP 許可リストを確認し、そのアカウントに正しいポリシー構成が確実に適用されるようにします。
 
 ### <a name="source-ips-in-blocked-requests"></a>ブロックされた要求内のソース IP
 
@@ -225,5 +235,5 @@ Azure Cosmos DB 用のサービス エンドポイントが有効にされてい
 
 ご利用の Azure Cosmos DB アカウントに対して仮想ネットワーク サービス エンドポイントを構成するには、次の記事を参照してください。
 
-* [ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネットのアクセス制御](vnet-service-endpoint.md)
+* [ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネットのアクセス制御](how-to-configure-vnet-service-endpoint.md)
 * [Azure Cosmos DB アカウント用の仮想ネットワークとサブネット ベースのアクセスを構成する](how-to-configure-vnet-service-endpoint.md)

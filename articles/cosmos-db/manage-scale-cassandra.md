@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87486512"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277683"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントをエラスティックにスケーリングする
 
@@ -62,7 +62,7 @@ Azure Cosmos DB の Cassandra 用 API には、さまざまなコントロール
 
 標準 (手動) またはプログラムによるスループットのプロビジョニングの方法に加えて、自動スケーリングでプロビジョニングされたスループットでも Azure Cosmos のコンテナーを構成することができます。 自動スケーリングでは、SLA を損なうことなく、消費ニーズに合わせて、指定された RU 範囲内で自動的かつ即座にスケールが行われます。 詳細については、[自動スケーリングで Azure Cosmos のコンテナーとデータベースを作成する](provision-throughput-autoscale.md)方法に関する記事を参照してください。
 
-この方法の利点は、これがシステムのスケーリング ニーズを管理する最も簡単な方法だということです。 これによりレート制限が**構成された RU 範囲内**に適用されないことが保証されます。 欠点は、システムのスケーリング ニーズが予測可能な場合、自動スケーリングは、スケーリング ニーズを処理する方法としては、前述のカスタムのコントロール プレーンまたは SDK レベルのアプローチを使用するよりもコスト効率に劣る可能性があることです。
+この方法の利点は、これがシステムのスケーリング ニーズを管理する最も簡単な方法だということです。 これによりレート制限が **構成された RU 範囲内** に適用されません。 欠点は、システムのスケーリング ニーズが予測可能な場合、自動スケーリングは、スケーリング ニーズを処理する方法としては、前述のカスタムのコントロール プレーンまたは SDK レベルのアプローチを使用するよりもコスト効率に劣る可能性があることです。
 
 CQL を使用して自動スケーリングの最大スループット (RU) を設定または変更するには、次を使用します (キースペース/テーブル名を適宜置き換えてください)。
 

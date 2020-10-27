@@ -3,17 +3,17 @@ title: 複数リージョン環境での Azure Cosmos SDK の可用性の診断�
 description: 複数リージョン環境で操作する場合の Azure Cosmos SDK の可用性の動作について、詳しく説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743966"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319374"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>複数リージョン環境での Azure Cosmos SDK の可用性の診断とトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "91743966"
 | 単一の書き込みリージョン | 優先リージョン | プライマリ リージョン  |
 | 複数の書き込みリージョン | 優先リージョン | 優先リージョン  |
 
-優先リージョンを設定していない場合は、次のようになります。
+**優先リージョンを設定しない** 場合、SDK クライアントは既定でプライマリ リージョンになります。
 
 |アカウントの種類 |読み取り |書き込み |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ ms.locfileid: "91743966"
 > [!NOTE]
 > プライマリ リージョンとは、[Azure Cosmos アカウント リージョン一覧](distribute-data-globally.md)の最初のリージョンを指します
 
-次のシナリオのいずれかが発生すると、Azure Cosmos SDK を使用するクライアントではログが公開され、**操作の診断情報**の一部として再試行情報が含まれます。
+通常の状況下では、SDK クライアントは優先リージョン (リージョンの優先設定が設定されている場合) またはプライマリ リージョン (優先設定が設定されていない場合) に接続され、以下のいずれかのシナリオが発生しない限り、操作はそのリージョンに限定されます。
+
+これらの場合、Azure Cosmos SDK を使用するクライアントではログが公開され、 **操作の診断情報** の一部として再試行情報が含まれます。
 
 * .NET V2 SDK の応答の *RequestDiagnosticsString* プロパティ。
 * .NET V3 SDK の応答と例外の *Diagnostics* プロパティ。
@@ -66,7 +68,7 @@ Azure Cosmos SDK クライアントでは、5 分ごとにアカウント構成�
 
 Azure Cosmos アカウントに割り当てられていないリージョンに接続するようにクライアントを構成した場合、優先リージョンは無視されます。 後でそのリージョンを追加すると、クライアントはそれを検出し、そのリージョンに永続的に切り替わります。
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>単一書き込みリージョン アカウントで書き込みリージョンをフェールオーバーする
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>単一書き込みリージョン アカウントで書き込みリージョンをフェールオーバーする
 
 現在の書き込みリージョンのフェールオーバーを開始すると、次の書き込み要求は既知のバックエンド応答で失敗します。 この応答が検出されると、クライアントでは、アカウントに対してクエリが実行され、新しい書き込みリージョンが学習され、現在の操作が再試行され、以降のすべての書き込み操作は永続的に新しいリージョンにルーティングされます。
 
@@ -76,7 +78,7 @@ Azure Cosmos アカウントに割り当てられていないリージョンに�
 
 ## <a name="session-consistency-guarantees"></a>セッションの整合性の保証
 
-[セッションの整合性](consistency-levels.md#guarantees-associated-with-consistency-levels)を使用する場合、クライアントでは、自身の書き込みを読み取ることができるように保証する必要があります。 読み取りリージョンの優先設定が書き込みリージョンと異なる単一書き込みリージョン アカウントでは、ユーザーが書き込みを発行し、ローカル リージョンから読み取りが実行されているときに、ローカル リージョンでまだデータのレプリケーションを受け取っていない場合があります (軽い制約の速度)。 このような場合、SDK によって読み取り操作に対する特定の障害が検出され、セッションの整合性を確保するためにハブ リージョンに対する読み取りが再試行されます。
+[セッションの整合性](consistency-levels.md#guarantees-associated-with-consistency-levels)を使用する場合、クライアントでは、自身の書き込みを読み取ることができるように保証する必要があります。 読み取りリージョンの優先設定が書き込みリージョンと異なる単一書き込みリージョン アカウントでは、ユーザーが書き込みを発行し、ローカル リージョンから読み取りが実行されているときに、ローカル リージョンでまだデータのレプリケーションを受け取っていない場合があります (軽い制約の速度)。 このような場合、SDK によって読み取り操作に対する特定の障害が検出され、セッションの整合性を確保するためにプライマリ リージョンに対する読み取りが再試行されます。
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP プロトコルでの一時的な接続の問題
 

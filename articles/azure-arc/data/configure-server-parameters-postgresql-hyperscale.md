@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbddfc84b3f71576cfd0299f2babec859b4ef1f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931334"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311064"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale のデータベース エンジン設定を設定する
 
@@ -45,9 +45,9 @@ ms.locfileid: "90931334"
 azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-engine-settings, --re}] {'<parameter name>=<parameter value>, ...'}
 ```
 
-## <a name="show-the-current-custom-values-of-the-parameters-settings"></a>パラメーター設定の現在のカスタム値を表示する
+## <a name="show-current-custom-values"></a>現在のカスタム値を表示する
 
-## <a name="with-azdata-cli-command"></a>azdata CLI コマンドを使用する場合
+### <a name="with-azure-data-cli-azdata-command"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] コマンドを使用する
 
 ```console
 azdata arc postgres server show -n <server group name>
@@ -74,77 +74,77 @@ engine": {
 ...
 ```
 
-## <a name="with-kubectl-command"></a>kubectl コマンドを使用する場合
+### <a name="with-kubectl-command"></a>kubectl コマンドを使用する場合
 
 以下の手順に従ってください。
 
-### <a name="1-retrieve-the-kind-of-custom-resource-definition-for-your-server-group"></a>1.サーバー グループのカスタム リソース定義の種類を取得する
+1. サーバー グループのカスタム リソース定義の種類を取得する
 
-次を実行します。
+   次を実行します。
 
-```console
-azdata arc postgres server show -n <server group name>
-```
+   ```console
+   azdata arc postgres server show -n <server group name>
+   ```
 
-次に例を示します。
+   次に例を示します。
 
-```console
-azdata arc postgres server show -n postgres01
-```
+   ```console
+   azdata arc postgres server show -n postgres01
+   ```
 
-このコマンドでは、設定したパラメーターを確認できるサーバー グループの仕様が返されます。 engine\settings セクションがない場合は、すべてのパラメーターが既定値で実行されていることになります。
+   このコマンドでは、設定したパラメーターを確認できるサーバー グループの仕様が返されます。 engine\settings セクションがない場合は、すべてのパラメーターが既定値で実行されていることになります。
 
-```
-> {
-  >"apiVersion": "arcdata.microsoft.com/v1alpha1",
-  >"**kind**": "**postgresql-12**",
-  >"metadata": {
-    >"creationTimestamp": "2020-08-25T14:32:23Z",
-    >"generation": 1,
-    >"name": "postgres01",
-    >"namespace": "arc",
-```
+   ```output
+   > {
+     >"apiVersion": "arcdata.microsoft.com/v1alpha1",
+     >"**kind**": "**postgresql-12**",
+     >"metadata": {
+       >"creationTimestamp": "2020-08-25T14:32:23Z",
+       >"generation": 1,
+       >"name": "postgres01",
+       >"namespace": "arc",  
+   ```
 
-ここで、フィールド"kind" を探し、値 (`postgresql-12` など) を控えておきます。
+   出力結果で、フィールド `kind` を探し、値 (`postgresql-12` など) を控えておきます。
 
-### <a name="2-describe-the-kubernetes-custom-resource-corresponding-to-your-server-group"></a>2.サーバー グループに対応する Kubernetes カスタム リソースを記述する 
+2. サーバー グループに対応する Kubernetes カスタム リソースを記述する 
 
-コマンドの一般的な形式は次のとおりです。
+   コマンドの一般的な形式は次のとおりです。
 
-```console
-kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
-```
+   ```console
+   kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
+   ```
 
-次に例を示します。
+   次に例を示します。
 
-```console
-kubectl describe postgresql-12 postgres01
-```
+   ```console
+   kubectl describe postgresql-12 postgres01
+   ```
 
-エンジン設定にカスタム値が設定されている場合は、それらが返されます。 次に例を示します。
+   エンジン設定にカスタム値が設定されている場合は、それらが返されます。 次に例を示します。
 
-```console
-Engine:
-...
+   ```output
+   Engine:
+   ...
     Settings:
       Default:
         autovacuum_vacuum_threshold:  65
-```
+   ```
 
-どのエンジン設定にもカスタム値を設定していない場合、結果セットの Engine Settings セクションは次のように空になります。
+   どのエンジン設定にもカスタム値を設定していない場合、`resultset` の Engine Settings セクションは次のように空になります。
 
-```console
-Engine:
-...
-    Settings:
-      Default:
-```
+   ```output
+   Engine:
+   ...
+       Settings:
+         Default:
+   ```
 
-## <a name="set-custom-values-for-the-engine-settings"></a>エンジン設定にカスタム値を設定する
+## <a name="set-custom-values-for-engine-settings"></a>エンジン設定にカスタム値を設定する
 
 以下のコマンドでは、PostgreSQL Hyperscale のコーディネーター ノードとワーカー ノードのパラメーターが同じ値に設定されます。 サーバー グループのロールごとにパラメーターを設定することはまだできません。 つまり、指定のパラメーターを、コーディネーター ノードで特定の値に構成し、ワーカーノードで別の値に構成することはまだできません。
 
-## <a name="set-a-single-parameter"></a>1 つのパラメーターを設定する
+### <a name="set-a-single-parameter"></a>1 つのパラメーターを設定する
 
 ```console
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
@@ -156,7 +156,7 @@ azdata arc server edit -n <server group name> -e <parameter name>=<parameter val
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 ```
 
-## <a name="set-multiple-parameters-with-a-single-command"></a>1 つのコマンドで複数のパラメーターを設定する
+### <a name="set-multiple-parameters-with-a-single-command"></a>1 つのコマンドで複数のパラメーターを設定する
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
@@ -168,7 +168,7 @@ azdata arc postgres server edit -n <server group name> -e '<parameter name>=<par
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
 ```
 
-## <a name="reset-a-parameter-to-its-default-value"></a>パラメーターを既定値にリセットする
+### <a name="reset-a-parameter-to-its-default-value"></a>パラメーターを既定値にリセットする
 
 パラメーターを既定値にリセットするには、値を指定せずにそれを設定します。 
 
@@ -178,7 +178,7 @@ azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connec
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
 ```
 
-## <a name="reset-all-parameters-to-their-default-values"></a>すべてのパラメーターを既定値にリセットする
+### <a name="reset-all-parameters-to-their-default-values"></a>すべてのパラメーターを既定値にリセットする
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '' -re
@@ -213,8 +213,6 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
 ```
-
-
 
 ## <a name="next-steps"></a>次のステップ
 - サーバー グループの[スケール アウト (ワーカー ノードの追加)](scale-out-postgresql-hyperscale-server-group.md) について確認する

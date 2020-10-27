@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664853"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215435"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>エラー コード:Azure Active Directory B2C
 
@@ -61,7 +61,8 @@ Azure Active Directory B2C サービスは、次のエラーを返すことが�
 | `AADB2C90055` | 要求で指定されたスコープ '{0}' は、'https://example.com/calendar.read ' などのリソースを指定する必要があります。 |
 | `AADB2C90057` | 指定されたアプリケーションは、OAuth 暗黙的フローを許可するよう構成されていません。 |
 | `AADB2C90058` | 指定されたアプリケーションは、パブリック クライアントを許可するよう構成されていません。 |
-| `AADB2C90067` | ログアウト後のリダイレクト URI '{0}' の形式が無効です。 'https://example.com/return ' のような HTTPS ベースの URL を指定するか、ネイティブ クライアント用には IETF ネイティブ クライアント URI 'urn:ietf:wg:oauth:2.0:oob' をご使用ください。 |
+| `AADB2C99059` | 指定された要求で code_challenge が提示される必要があります。 認可コード フローを使用するシングルページ アプリの場合に必要です。| 
+| `AADB2C90067` | ログアウト後のリダイレクト URI '{0}' の形式が無効です。 'https://example.com/return' のような HTTPS ベースの URL を指定するか、ネイティブ クライアント用には IETF ネイティブ クライアント URI 'urn:ietf:wg:oauth:2.0:oob' をご使用ください。 |
 | `AADB2C90068` | 指定されたアプリケーション (ID '{0}') はこのサービスに対して無効です。 B2C ポータルを通じて作成されたアプリケーションを使用して、やり直してください。 |
 | `AADB2C90075` | 手順 '{1}' で指定されたクレームの交換 '{0}' から、コード '{2}'、理由 '{3}' の HTTP エラー応答が返されました。 |
 | `AADB2C90077` | ユーザーには既存のセッションがなく、要求プロンプト パラメーターの値は '{0}' です。 |

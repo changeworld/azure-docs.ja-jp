@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938425"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313142"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行する
 
-Azure Database Migration Service を使用すると、[Azure Database for PostgreSQL - 単一サーバー](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) インスタンスから、同じまたは別のバージョンの Azure Database for PostgreSQL - 単一サーバー インスタンス、または Azure Database for PostgreSQL - フレキシブル サーバーに、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを Azure Database for PostgreSQL v10 から Azure Database for PostgreSQL - 単一サーバーに移行します。
+Azure Database Migration Service を使用すると、[Azure Database for PostgreSQL - 単一サーバー](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) インスタンスから、同じまたは別のバージョンの Azure Database for PostgreSQL - 単一サーバー インスタンス、または Azure Database for PostgreSQL - フレキシブル サーバーに、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、 **DVD Rental** サンプル データベースを Azure Database for PostgreSQL v10 から Azure Database for PostgreSQL - 単一サーバーに移行します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -60,8 +60,8 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 * Azure DB for PostgreSQL ソースで[論理レプリケーションを有効に](https://docs.microsoft.com/azure/postgresql/concepts-logical)します。 
 * ソースとして使用されている Azure Database for PostgreSQL インスタンスで、次のサーバー パラメーターを設定します。
 
-  * max_replication_slots = [スロットの数]。**10 スロット**に設定することをお勧めします
-  * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、**10 タスク**に設定することをお勧めします
+  * max_replication_slots = [スロットの数]。 **10 スロット** に設定することをお勧めします
+  * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、 **10 タスク** に設定することをお勧めします
 
 > [!NOTE]
 > 上記のサーバー パラメーターは静的であり、有効にするには Azure Database for PostgreSQL インスタンスを再起動する必要があります。 サーバー パラメーターの切り替えの詳細については、[Azure Database for PostgreSQL のサーバー パラメーターの構成](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)に関する記事を参照してください。
@@ -79,7 +79,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
 
-    たとえば、**dvdrental** データベース用のスキーマ ダンプ ファイルを作成するには、次のようにします。
+    たとえば、 **dvdrental** データベース用のスキーマ ダンプ ファイルを作成するには、次のようにします。
 
     ```
     pg_dump -o -h mypgserver-source.postgres.database.azure.com -U pguser@mypgserver-source -d dvdrental -s -O -x > dvdrentalSchema.sql
@@ -92,7 +92,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
     データベースの接続および作成方法の詳細については、「[Azure portal で Azure Database for PostgreSQL サーバーを作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)」または「[Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)」を参照してください。
 
     > [!NOTE]
-    > Azure Database for PostgreSQL - Hyperscale (Citus) のインスタンスには、**citus** という単一のデータベースのみがあります。
+    > Azure Database for PostgreSQL - Hyperscale (Citus) のインスタンスには、 **citus** という単一のデータベースのみがあります。
 
 3. スキーマ ダンプ ファイルを復元して作成したターゲット データベースに、スキーマをインポートします。
 
@@ -148,7 +148,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 6. ターゲット データベース内のトリガーを無効にするには、以下のスクリプトを実行します。
 
    > [!IMPORTANT]
-   > データ内のトリガー (insert または update) により、ソースからデータがレプリケートされる前にターゲットにデータの整合性が適用されます。 そのため、移行時は**ターゲットの**すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを再度有効にすることをお勧めします。
+   > データ内のトリガー (insert または update) により、ソースからデータがレプリケートされる前にターゲットにデータの整合性が適用されます。 そのため、移行時は **ターゲットの** すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを再度有効にすることをお勧めします。
 
     ```
     SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
@@ -165,7 +165,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 
     ![リソース プロバイダーの表示](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
 
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
+3. 移行を検索し、 **Microsoft.DataMigration** の右側にある **[登録]** を選択します。
 
     ![リソース プロバイダーの登録](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
 
@@ -201,7 +201,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、 **Azure Database Migration Service** を選択します。
 
       ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-search.png)
 
@@ -227,7 +227,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
     ![[Add Source Details]\(ソースの詳細の追加\) 画面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
     > [!NOTE]
-    > "サーバー名"、"サーバー ポート"、"データベース名" などの詳細については、**Azure Database for PostgreSQL** ポータルを参照してください。
+    > "サーバー名"、"サーバー ポート"、"データベース名" などの詳細については、 **Azure Database for PostgreSQL** ポータルを参照してください。
 
 2. **[保存]** を選択します。
 
@@ -258,7 +258,18 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 
 * **[移行の実行]** を選択します。
 
-    移行アクティビティ ウィンドウが表示され、アクティビティの **[状態]** が更新されて、 **[バックアップが進行中です]** と示されるはずです。
+移行アクティビティ ウィンドウが表示され、アクティビティの **[状態]** が更新されて、 **[バックアップが進行中です]** と示されるはずです。 Azure DB for PostgreSQL 9.5 または9.6 からアップグレードすると、次のエラーが発生する場合があります。
+
+**"A scenario reported an unknown error.28000: no pg_hba.conf entry for replication connection from host "40.121.141.121", user "sr" (シナリオで不明なエラーがレポートされました。28000: ホスト "40.121.141.121"、ユーザー "sr" からのレプリケーション接続のための pg_hba.conf エントリがありません)"**
+
+これは、必要な論理レプリケーション アーティファクトを作成するための適切な特権が PostgreSQL にないために起こります。 必要な特権を有効にするには、次の操作を行います。
+
+1. 移行元またはアップグレード元のソース Azure DB for PostgreSQL サーバーの [接続のセキュリティ] 設定を開きます。
+2. 名前が "_replrule" で終わる新しいファイアウォール規則を追加し、エラー メッセージの IP アドレスを開始 IP および終了 IP フィールドに追加します。 上記のエラーの場合は、次のようにします。
+> ファイアウォール規則 = sr_replrule、開始 IP = 40.121.141.121、終了 IP = 40.121.141.121
+
+3. [保存] をクリックして、変更を完了します。 
+4. DMS アクティビティを再試行します。 
 
 ## <a name="monitor-the-migration"></a>移行を監視する
 
@@ -266,10 +277,10 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 
      ![移行プロセスを監視する](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-monitor-migration.png)
 
-2. 移行が完了したら、 **[データベース名]** で、特定のデータベースを選択して、**データ全体の読み込み**および**増分データ同期**操作の移行状態を取得します。
+2. 移行が完了したら、 **[データベース名]** で、特定のデータベースを選択して、 **データ全体の読み込み** および **増分データ同期** 操作の移行状態を取得します。
 
    > [!NOTE]
-   > **データ全体の読み込み** には初回の読み込みの移行状態が表示され、**増分データ同期** には変更データ キャプチャ (CDC) の状態が表示されます。
+   > **データ全体の読み込み** には初回の読み込みの移行状態が表示され、 **増分データ同期** には変更データ キャプチャ (CDC) の状態が表示されます。
 
      ![データ全体の読み込みの詳細](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-full-data-load-details.png)
 
@@ -285,7 +296,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 
     ![[一括を完了する] 画面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. データベースの移行状態に **[完了]** と表示されたら、[順序を再作成](https://wiki.postgresql.org/wiki/Fixing_Sequences) (該当する場合) して、アプリケーションを Azure Database for PostgreSQL の新しいターゲット インスタンスに接続します。
+3. データベースの移行状態に **[完了]** と表示されたら、 [順序を再作成](https://wiki.postgresql.org/wiki/Fixing_Sequences) (該当する場合) して、アプリケーションを Azure Database for PostgreSQL の新しいターゲット インスタンスに接続します。
  
 > [!NOTE]
 > Azure Database Migration Service を使用すると、Azure Database for PostgreSQL - 単一サーバーのダウンタイムを短縮して、メジャー バージョンのアップグレードを実行できます。 最初に、目的とする高バージョンの PostgreSQL、ネットワーク設定およびパラメーターを使用して、ターゲット データベースを構成します。 上記の手順に従うことで、ターゲット データベースへの移行を開始することができます。 ターゲット データベース サーバーに切り替えると、そのターゲット データベース サーバーを指すようにアプリケーションの接続文字列を更新できます。 

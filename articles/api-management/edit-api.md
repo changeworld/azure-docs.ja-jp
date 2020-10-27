@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: d3ce7318266f3fbaf818e5bcfa245ce5f64d74ba
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4241ba55c464169257ec0a4b2d20eaa5e76534d5
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076931"
+ms.locfileid: "92092700"
 ---
 # <a name="edit-an-api"></a>API の編集
 
@@ -35,13 +35,13 @@ ms.locfileid: "92076931"
 
 ## <a name="edit-an-api-in-apim"></a>APIM で API を編集する
 
-![API の編集](./media/edit-api/edit-api001.png)
+![APIM で API を編集するプロセスが強調表示されているスクリーンショット。](./media/edit-api/edit-api001.png)
 
 1. **[API]** タブをクリックします。
 2. 前にインポートした API の 1 つを選びます。
 3. **[デザイン]** タブを選択します。
 4. 編集する操作を選びます。
-5. 操作の名前を変更するには、**[フロントエンド]** ウィンドウの**鉛筆**を選択します。
+5. 操作の名前を変更するには、 **[フロントエンド]** ウィンドウの **鉛筆** を選択します。
 
 ## <a name="update-the-swagger"></a>Swagger を更新する
 
@@ -50,7 +50,7 @@ ms.locfileid: "92076931"
 1. **[すべての操作]** を選択します
 2. **[フロントエンド]** ウィンドウの鉛筆をクリックします。
 
-    ![API の編集](./media/edit-api/edit-api002.png)
+    ![[フロントエンド] 画面の鉛筆アイコンが強調表示されているスクリーンショット。](./media/edit-api/edit-api002.png)
 
     API の Swagger が表示されます。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 0d36a09b67e110551470f3908800e77c35b1e3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843666"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173606"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>Azure Stack Edge Pro デバイスの障害に備える
 
@@ -66,7 +66,8 @@ Kubernetes または IoT Edge をデプロイしている場合は、アプリ�
 | サードパーティ製ソフトウェア           | ソリューションへの参照                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | https://www.cohesity.com/solution/cloud/azure/ <br> 詳細については、Cohesity にお問い合わせください。          |
-| Veritas                        | 詳細については、Veritas にお問い合わせください。   |
+| Commvault                      | https://www.commvault.com/azure <br> 詳細については、Commvault にお問い合わせください。          |
+| Veritas                        | http://veritas.com/azure <br> 詳細については、Veritas にお問い合わせください。   |
 
 
 ## <a name="protect-files-and-folders-on-vms"></a>VM 上のファイルとフォルダーの保護
@@ -78,10 +79,11 @@ Azure Stack Edge は、Azure Backup やその他のサードパーティのデ�
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure Backup 用の Microsoft Azure Recovery Services (MARS) エージェント | Windows        | [MARS エージェントについて](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows、Linux | [Microsoft Azure の統合、バックアップ、回復のソリューションの概要](https://www.cohesity.com/solution/cloud/azure) <br>詳細については、Cohesity にお問い合わせください。                          |
-| Veritas                 | Windows、Linux | 詳細については、Veritas にお問い合わせください。                    |
+| Commvault               | Windows、Linux | https://www.commvault.com/azure <br>詳細については、Commvault にお問い合わせください。                          |
+| Veritas                 | Windows、Linux | http://veritas.com/azure <br> 詳細については、Veritas にお問い合わせください。                    |
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[障害が発生した Azure Stack Edge Pro GPU デバイスから回復する](azure-stack-edge-gpu-recover-device-failure.md)」方法を確認します。
