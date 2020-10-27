@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84430666"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147879"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -32,9 +32,9 @@ IoT Edge シナリオをテストするためのデモ証明書を作成する�
 1. デバイスで証明書を生成するための[スクリプトを設定します](#set-up-scripts)。
 2. シナリオに応じて、他のすべての証明書の署名に使用する[ルート CA 証明書を作成します。](#create-root-ca-certificate)
 3. テストするシナリオに必要な証明書を生成します。
-   * IoT Hub Device Provisioning Service で自動プロビジョニングをテストするために、[IoT Edge デバイス ID 証明書を作成します](#create-iot-edge-device-identity-certificates)。
-   * 運用シナリオまたはゲートウェイ シナリオをテストするために、[IoT Edge デバイス CA 証明書を作成します](#create-iot-edge-device-ca-certificates)。
-   * ゲートウェイ シナリオで Iot Hub へのダウンストリーム デバイス認証をテストするために、[ダウンストリーム デバイス証明書を作成します](#create-downstream-device-certificates)。
+   * IoT Hub Device Provisioning Service を使用した自動プロビジョニング向けに、[IoT Edge デバイスの ID 証明書を作成します](#create-iot-edge-device-identity-certificates)。
+   * ゲートウェイ シナリオの IoT Edge デバイス向けに [IoT Edge デバイスの CA 証明書を作成します](#create-iot-edge-device-ca-certificates)。
+   * ゲートウェイ シナリオでダウンストリーム デバイスを認証するために、[ダウンストリーム デバイス証明書を作成します](#create-downstream-device-certificates)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,11 +53,11 @@ Windows デバイスでデモ用の証明書を作成するには、OpenSSL を�
 #### <a name="install-openssl"></a>OpenSSL のインストール
 
 証明書を生成するために使用するマシンに OpenSSL for Windows をインストールします。
-ご使用の Windows デバイスに既に OpenSSL がインストールされている場合は、この手順をスキップできますが、openssl.exe がご自分の PATH 環境変数で使用可能であることを確認してください。
+ご使用の Windows デバイスに既に OpenSSL がインストールされている場合は、openssl.exe がご自分の PATH 環境変数で使用可能であることを確認してください。
 
 OpenSSL のインストール方法はいくつかあり、以下のような選択肢があります。
 
-* **簡単:** [サードパーティの OpenSSL バイナリ](https://wiki.openssl.org/index.php/Binaries)を (たとえば、[SourceForge の OpenSSL から](https://sourceforge.net/projects/openssl/)) ダウンロードしてインストールします。 openssl.exe への完全なパスを PATH 環境変数に追加します。
+* **簡単:** [サードパーティの OpenSSL バイナリ](https://wiki.openssl.org/index.php/Binaries)を (たとえば、 [SourceForge の OpenSSL から](https://sourceforge.net/projects/openssl/)) ダウンロードしてインストールします。 openssl.exe への完全なパスを PATH 環境変数に追加します。
 
 * **推奨:** OpenSSL ソース コードをダウンロードし、お使いのコンピューター上または [vcpkg](https://github.com/Microsoft/vcpkg) 経由でバイナリをビルドします。 以下に示す指示では、vcpkg を使用してソース コードのダウンロード、コンパイル、および Windows コンピューターへの OpenSSL のインストールを、簡単な手順で実行します。
 
@@ -163,7 +163,7 @@ Windows デバイスでデモ用の証明書を作成するには、生成スク
    New-CACertsCertChain rsa
    ```
 
-   このスクリプト コマンドでは、証明書とキーのファイルが複数作成されますが、記事で**ルート CA 証明書**が求められた場合は次のファイルを使用します。
+   このスクリプト コマンドでは、証明書とキーのファイルが複数作成されますが、記事で **ルート CA 証明書** が求められた場合は次のファイルを使用します。
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
@@ -177,15 +177,15 @@ Windows デバイスでデモ用の証明書を作成するには、生成スク
    ./certGen.sh create_root_and_intermediate
    ```
 
-   このスクリプト コマンドでは、証明書とキーのファイルが複数作成されますが、記事で**ルート CA 証明書**が求められた場合は次のファイルを使用します。
+   このスクリプト コマンドでは、証明書とキーのファイルが複数作成されますが、記事で **ルート CA 証明書** が求められた場合は次のファイルを使用します。
 
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>IoT Edge デバイス ID 証明書の作成
 
-デバイス ID 証明書は、[Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml) を介して IoT Edge デバイスをプロビジョニングするために使用されます。
+デバイス ID 証明書は、Azure IoT Hub Device Provisioning Service (DPS) を介して IoT Edge デバイスをプロビジョニングするために使用されます。
 
-デバイス ID 証明書は、IoT Edge デバイス上の config.yaml ファイルの**プロビジョニング** セクションにあります。
+デバイス ID 証明書は、IoT Edge デバイス上の config.yaml ファイルの **プロビジョニング** セクションにあります。
 
 このセクションの手順を続ける前に、「[スクリプトの設定](#set-up-scripts)」セクションと「[ルート CA 証明書の作成](#create-root-ca-certificate)」セクションの手順に従います。
 
@@ -227,7 +227,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
 デバイス CA 証明書により、デバイスで実行されるモジュールのために証明書の作成が行われます。
 また、デバイス CA 証明書は、IoT Edge デバイスがダウンストリーム デバイスに対して ID を検証する手段であるため、ゲートウェイのシナリオにも必要です。
 
-デバイス CA の証明書は、IoT Edge デバイス上の config.yaml ファイルの**証明書**セクションにあります。
+デバイス CA の証明書は、IoT Edge デバイス上の config.yaml ファイルの **証明書** セクションにあります。
 
 このセクションの手順を続ける前に、「[スクリプトの設定](#set-up-scripts)」セクションと「[ルート CA 証明書の作成](#create-root-ca-certificate)」セクションの手順に従います。
 
@@ -247,8 +247,6 @@ New-CACertsEdgeDeviceIdentity "<name>"
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
 **New-CACertsEdgeDevice** コマンドに渡される名前は、config.yaml の hostname パラメーターや IoT Hub のデバイス ID と同じにしないでください。
-ユーザーが両方の場所で同じ名前を使用して IoT Edge を設定した場合に名前の競合を避けるため、スクリプトでは、証明書の名前に ".ca" という文字列を追加することで問題を回避します。
-ただし、ベスト プラクティスは、同じ名前の使用を避けることです。
 
 ### <a name="linux"></a>Linux
 
@@ -266,8 +264,6 @@ New-CACertsEdgeDeviceIdentity "<name>"
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
 **create_edge_device_certificate** コマンドに渡される名前は、config. yaml の hostname パラメーターや IoT Hub のデバイス ID と同じにしないでください。
-ユーザーが両方の場所で同じ名前を使用して IoT Edge を設定した場合に名前の競合を避けるため、スクリプトでは、証明書の名前に ".ca" という文字列を追加することで問題を回避します。
-ただし、ベスト プラクティスは、同じ名前の使用を避けることです。
 
 ## <a name="create-downstream-device-certificates"></a>ダウンストリーム デバイス証明書の作成
 

@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 50cbd1d28ca3f04b8963c58b443765d4280b14ed
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058082"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096625"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -57,6 +57,10 @@ ms.locfileid: "92058082"
 
 - ILR は、Azure VM バックアップによってバックアップされている Azure VM に対してサポートされています。 詳しくは、[こちらの記事](backup-azure-restore-files-from-vm.md)をご覧ください
 - ILR は、Azure Backup Server (MABS) または System Center DPM によってバックアップされているオンプレミスの VM のオンライン復旧ポイントに対してはサポートされていません。
+
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Recovery Services コンテナーからオンプレミスにデータを移動するにはどうすればよいですか。
+
+Data Box を使用して Recovery Services コンテナーからオンプレミスにデータを直接エクスポートすることはサポートされていません。 データはストレージ アカウントに復元する必要があります。その後、[Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) または [Import/Export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) を使ってオンプレミスに移動できます。
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 
@@ -172,7 +176,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 一般的に、回復ポイントのリテンション期間が長い製品では、バックアップ データが完全なポイントとして格納されます。
 
 - 完全なポイントは、ストレージ効率は *悪く* なりますが、簡単かつ迅速に復元できます。
-- 一方、増分コピーはストレージ効率が*向上*しますが、データのチェーンを復元する必要があり、復旧時間に影響します。
+- 一方、増分コピーはストレージ効率が *向上* しますが、データのチェーンを復元する必要があり、復旧時間に影響します。
 
 Azure Backup のストレージ アーキテクチャを使用すると、高速に復元するためにデータの格納を最適化し、ストレージ コストを低く抑えることで、両方の長所を生かすことができます。 これにより、送受信の帯域幅が効率的に使用されるようになります。 データ ストレージの量とデータ回復にかかる時間がどちらも最小限に抑えられます。 詳細については、[増分バックアップ](backup-architecture.md#backup-types)を参照してください。
 

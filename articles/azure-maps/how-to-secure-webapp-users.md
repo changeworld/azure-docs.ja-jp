@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319624"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090218"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>ユーザー サインインを使用した Web アプリケーションのセキュリティ保護
 
@@ -36,7 +36,7 @@ ms.locfileid: "91319624"
 
 3. アプリケーションの登録が完了したら、ユーザーに対してアプリケーション サインインが機能することを確認します。 サインインが機能するなら、アプリケーションに対して、Azure Maps REST API への委任されたアクセスを許可できます。
     
-4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可の追加](./media/how-to-manage-authentication/app-permissions.png)
@@ -59,7 +59,7 @@ ms.locfileid: "91319624"
    * AspNetCore 以外の実装などについては、Azure AD ドキュメントの「[アプリのトークンを取得する](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token)」を参照してください。
    * セキュリティで保護されたトークン エンドポイントは、認証され許可されているユーザーが Azure Maps REST API を呼び出せるように、アクセス トークンを返す役割を担います。
 
-8. ユーザーまたはグループの Azure ロール ベースのアクセス制御を構成します。 [ロール ベースのアクセスをユーザーに許可する](#grant-role-based-access-for-users-to-azure-maps)方法に関するセクションを参照してください。
+8. ユーザーまたはグループの Azure ロールベースのアクセス制御 (Azure RBAC) を構成します。 [ロールベースのアクセスをユーザーに許可する](#grant-role-based-access-for-users-to-azure-maps)方法に関するセクションを参照してください。
 
 9. セキュリティで保護されたトークン エンドポイントにアクセスするため、Azure Maps Web SDK を使用して Web アプリケーション ページを構成します。 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ description: メトリック アラートの用途と、Azure Monitor での機�
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578072"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342180"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -179,4 +179,5 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - [Azure Resource Manager のテンプレートを使ってメトリック アラートを配置する方法を学習する](./alerts-metric-create-templates.md)
 - [アクション グループの詳細について学習する](action-groups.md)
 - [動的しきい値の条件タイプの詳細について学習する](alerts-dynamic-thresholds.md)
+- [メトリック警告に関する問題のトラブルシューティングについて学習する](alerts-troubleshoot-metric.md)
 
