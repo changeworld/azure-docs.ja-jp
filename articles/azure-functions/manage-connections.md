@@ -4,12 +4,12 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213964"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168309"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -21,17 +21,17 @@ ms.locfileid: "88213964"
 
 この制限はインスタンスごとに適用されます。 より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
 
-トラブルシューティングを行う際には、関数アプリに対して Application Insights を有効にしたことを確認します。 Application Insights では、実行など、関数アプリのメトリックを表示できます。 詳細については、「[Application Insights でテレメトリを表示する](functions-monitoring.md#view-telemetry-in-application-insights)」を参照してください。  
+トラブルシューティングを行う際には、関数アプリに対して Application Insights を有効にしたことを確認します。 Application Insights では、実行など、関数アプリのメトリックを表示できます。 詳細については、「[Application Insights でテレメトリを表示する](analyze-telemetry-data.md#view-telemetry-in-application-insights)」を参照してください。  
 
 ## <a name="static-clients"></a>静的クライアント
 
-必要以上に多くの接続を保持しないようにするには、関数の呼び出しごとに新しいインスタンスを作成するのではなく、クライアント インスタンスを再利用します。 関数の記述に使用するどの言語でも、クライアント接続を再利用することをお勧めします。 たとえば、単一の静的クライアントを使用すると、[HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)、[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)、Azure Storage クライアントなどの .NET クライアントで接続を管理できます。
+必要以上に多くの接続を保持しないようにするには、関数の呼び出しごとに新しいインスタンスを作成するのではなく、クライアント インスタンスを再利用します。 関数の記述に使用するどの言語でも、クライアント接続を再利用することをお勧めします。 たとえば、単一の静的クライアントを使用すると、[HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true)、[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)、Azure Storage クライアントなどの .NET クライアントで接続を管理できます。
 
 Azure Functions アプリケーションでサービス固有のクライアントを使用する場合のガイドラインを次に示します。
 
-- 関数呼び出しごとに新しいクライアントを*作成しない*。
-- すべての関数呼び出しで使用できる単一の静的クライアントを*作成する*。
-- さまざまな関数が同じサービスを使用している場合は、共有ヘルパー クラスで単一の静的クライアントを作成することを*検討する*。
+- 関数呼び出しごとに新しいクライアントを *作成しない* 。
+- すべての関数呼び出しで使用できる単一の静的クライアントを *作成する* 。
+- さまざまな関数が同じサービスを使用している場合は、共有ヘルパー クラスで単一の静的クライアントを作成することを *検討する* 。
 
 ## <a name="client-code-examples"></a>クライアント コードの例
 
@@ -39,7 +39,7 @@ Azure Functions アプリケーションでサービス固有のクライアン�
 
 ### <a name="httpclient-example-c"></a>HttpClient の例 (C#)
 
-静的 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) インスタンスを作成する C# 関数コードの例を次に示します。
+静的 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) インスタンスを作成する C# 関数コードの例を次に示します。
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-.NET の [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) について、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
+.NET の [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) について、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
 
 ### <a name="http-agent-examples-javascript"></a>HTTP エージェントの例 (JavaScript)
 
@@ -103,7 +103,25 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+Functions v3 を使用する予定の場合は、Microsoft.Azure.DocumentDB.Core への参照が必要です。 コード内に参照を追加します。
 
+```cs
+#r "Microsoft.Azure.DocumentDB.Core"
+```
+また、トリガー用に "function.proj" という名前のファイルを作成し、次の内容を追加します。
+
+```cs
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.12.0" />
+    </ItemGroup>
+</Project>
+
+```
 ### <a name="cosmosclient-code-example-javascript"></a>CosmosClient のコード例 (JavaScript)
 [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) は、Azure Cosmos DB のインスタンスに接続します。 Azure Cosmos DB のドキュメントでは、[アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する](../cosmos-db/performance-tips.md#sdk-usage)ことが推奨されています。 次の例では、関数内でそれを行うパターンの 1 つを示します。
 
@@ -125,12 +143,12 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient の接続
 
-関数コードでは、SQL リレーショナル データベースに接続するために、.NET Framework Data Provider for SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) を使用できます。 これは、ADO.NET に依存するデータ フレームワーク ([Entity Framework](/ef/ef6/) など) の基になるプロバイダーでもあります。 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) や [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) の接続とは異なり、ADO.NET は接続プールを既定で実装します。 ただし、それでも接続を使い果たす可能性があるため、データベースへの接続を最適化する必要があります。 詳細については、「[SQL Server Connection Pooling (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)」(SQL Server の接続プーリング (ADO.NET)) をご覧ください。
+関数コードでは、SQL リレーショナル データベースに接続するために、.NET Framework Data Provider for SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) を使用できます。 これは、ADO.NET に依存するデータ フレームワーク ([Entity Framework](/ef/ef6/) など) の基になるプロバイダーでもあります。 [HttpClient](/dotnet/api/system.net.http.httpclient) や [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) の接続とは異なり、ADO.NET は接続プールを既定で実装します。 ただし、それでも接続を使い果たす可能性があるため、データベースへの接続を最適化する必要があります。 詳しくは、「[SQL Server の接続プール (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)」をご覧ください。
 
 > [!TIP]
-> Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の**接続文字列**コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を**アプリケーションの設定**に保存する必要があります。
+> Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の **接続文字列** コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を **アプリケーションの設定** に保存する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 静的クライアントが推奨される理由の詳細については、「[不適切なインスタンス化のアンチパターン](/azure/architecture/antipatterns/improper-instantiation/)」をご覧ください。
 

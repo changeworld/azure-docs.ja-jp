@@ -4,16 +4,16 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018799"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201513"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -23,23 +23,23 @@ Azure Analysis Services は、完全に管理されたサービスとしての�
 
 ![データ ソース](./media/analysis-services-overview/aas-overview-overall.png)
 
-**ビデオ:** 「[Azure Analysis Services Overview (Azure Analysis Services の概要)](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)」で、Azure Analysis Services が Microsoft の全体的な BI 機能とどのように調和しているかを確認してください。
+**ビデオ:** 「 [Azure Analysis Services Overview (Azure Analysis Services の概要)](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)」で、Azure Analysis Services が Microsoft の全体的な BI 機能とどのように調和しているかを確認してください。
 
 ## <a name="get-up-and-running-quickly"></a>スピーディな起動と実行
 
 Azure Portal から数分で[サーバーを作成する](analysis-services-create-server.md)ことができます。 また、Azure Resource Manager [テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)と PowerShell を使用して、宣言型のテンプレートを使用するサーバーを作成できます。 1 つのテンプレートを使用して、他の Azure コンポーネント (ストレージ アカウントや Azure Functions など) と共にサーバー リソースをデプロイできます。 
 
-**ビデオ:** 「[Automating deployment (デプロイの自動化)](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)」で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してください。
+**ビデオ:** 「 [Automating deployment (デプロイの自動化)](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)」で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してください。
 
 Azure Analysis Services とさまざまな Azure サービスを統合することにより、高度な分析ソリューションを構築できます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) との統合によって、重要なデータのセキュリティをロールベースのアクセスによって確保することができます。 [Azure Data Factory](../data-factory/introduction.md) パイプラインには、モデルにデータを読み込むアクティビティを含めることによって統合します。 [Azure Automation](../automation/automation-intro.md) や [Azure Functions](../azure-functions/functions-overview.md) を使用すると、カスタム コードによるモデルの軽量オーケストレーションを行うことができます。 
 
 ## <a name="the-right-tier-when-you-need-it"></a>必要に応じたレベルを選ぶ
 
-Azure Analysis Services は、**Developer** レベル、**Basic** レベル、および **Standard** レベルでご利用いただけます。 各レベルのプランのコストは、処理能力、クエリ処理ユニット (QPU)、およびメモリ サイズによって異なります。 サーバーの作成時に、レベル内のプランを選択します。 プランは、同一レベル内で変更することも、上位レベルにアップグレードすることもできますが、上位レベルから下位レベルにダウングレードすることはできません。
+Azure Analysis Services は、 **Developer** レベル、 **Basic** レベル、および **Standard** レベルでご利用いただけます。 各レベルのプランのコストは、処理能力、クエリ処理ユニット (QPU)、およびメモリ サイズによって異なります。 サーバーの作成時に、レベル内のプランを選択します。 プランは、同一レベル内で変更することも、上位レベルにアップグレードすることもできますが、上位レベルから下位レベルにダウングレードすることはできません。
 
 ### <a name="developer-tier"></a>Developer レベル
 
-このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 このレベルでは、SLA は適用されません。
+このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは *利用できません* 。 このレベルでは、SLA は適用されません。
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -48,7 +48,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 ### <a name="basic-tier"></a>Basic レベル
 
-このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能*は、このレベルではサポートされません*。  
+このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは *利用できません* 。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能 *は、このレベルではサポートされません* 。  
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -71,7 +71,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
 <a name="naar">1</a> - すべてのリージョンで利用できるわけではありません。   
-<a name="rec">2</a> - v2 が推奨されます。
+<a name="rec">2</a> - S8 と S9 は[非推奨](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/)とされます。 v2 が推奨されます。 
 
 ## <a name="availability-by-region"></a>リージョンごとの可用性
 
@@ -85,7 +85,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
+|米国東部 2     |     S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中北部     |     S8v2、S9v2    |    1     |
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
@@ -93,9 +93,9 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|米国西部     |    S8、S9、S8v2、S9v2   |    2  |
+|米国西部     |    S8v2、S9v2   |    2  |
 |米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|米国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
+|米国西部 2    |    S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
@@ -105,17 +105,18 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |北ヨーロッパ     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西ヨーロッパ    |   S8、S9、S8v2、S9v2  |  1  |
+|西ヨーロッパ    |   S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|オーストラリア東部     |    S8、S9、S8v2、S9v2    |    1     |
+|オーストラリア東部     |    S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、D1     |   1      |
+|東南アジア     |     S8v2、S9v2     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
@@ -126,7 +127,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>リソースをスケールアウトしてクエリの応答速度を高める
 
-スケールアウトにより、クライアント クエリは、クエリ プール内の複数の "*クエリ レプリカ*" に分散されます。 クエリ レプリカには、表形式モデルの同期コピーが格納されます。 クエリのワークロードを分散することによって、高クエリ ワークロード下における応答時間を短縮することができます。 モデルの処理操作をクエリ プールから切り離すことができるので、クライアントのクエリに処理操作による悪影響が及ぶことはありません。 
+スケールアウトにより、クライアント クエリは、クエリ プール内の複数の " *クエリ レプリカ* " に分散されます。 クエリ レプリカには、表形式モデルの同期コピーが格納されます。 クエリのワークロードを分散することによって、高クエリ ワークロード下における応答時間を短縮することができます。 モデルの処理操作をクエリ プールから切り離すことができるので、クライアントのクエリに処理操作による悪影響が及ぶことはありません。 
 
 クエリ プールは、追加分として最大 7 つのクエリ レプリカ (ご使用のサーバーを含めて合計 8 つ) で作成することができます。 プール内に作成できるクエリ レプリカの数は、選択したプランとリージョンによって異なります。 クエリ レプリカをサーバーのリージョンの外部に分散させることはできません。 クエリ レプリカは、お使いのサーバーと同じ料金で課金されます。
 
@@ -138,7 +139,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services が基礎
 
-Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。\* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて "*いません*"。
+Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。\* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて " *いません* "。
 
 インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 
 
@@ -250,7 +251,7 @@ Azure Analysis Services の表形式モデルは、SQL Server Analysis Services 
 
 この記事のような Analysis Services のドキュメントはオープン ソースです。 投稿方法の詳細については、[Docs 共同作成者ガイド](/contribute/)を参照してください。 
 
-Azure Analysis Services のドキュメントでは、[GitHub Issues](/teamblog/a-new-feedback-system-is-coming-to-docs) も使用されます。 製品またはドキュメントに関するフィードバックを提供できます。 記事の下部にある**フィードバック**をご利用ください。 GitHub Issues は、まだ Analysis Services 共通ドキュメントでは有効になっていません。 
+Azure Analysis Services のドキュメントでは、[GitHub Issues](/teamblog/a-new-feedback-system-is-coming-to-docs) も使用されます。 製品またはドキュメントに関するフィードバックを提供できます。 記事の下部にある **フィードバック** をご利用ください。 GitHub Issues は、まだ Analysis Services 共通ドキュメントでは有効になっていません。 
 
 ## <a name="blogs"></a>ブログ
 

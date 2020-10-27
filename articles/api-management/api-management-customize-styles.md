@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a654454c1ef3d5ea1ff7e6eb525bb153f7875c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430730"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168207"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>開発者ポータル ページのスタイルをカスタマイズする
 
@@ -29,9 +29,9 @@ Azure API Management で開発者ポータルをカスタマイズする最も�
 * 開発者ポータル全体のページ要素で使用されるスタイルを更新する (このガイドで説明します)
 * [ポータルで生成されたページで使用されるテンプレートを変更する](api-management-developer-portal-templates.md) (例: API ドキュメント、製品、ユーザー認証など)
 
-この記事では、従来の**開発者**ポータルのページで要素のスタイルをカスタマイズして、変更内容を表示する方法について説明します。
+この記事では、従来の **開発者** ポータルのページで要素のスタイルをカスタマイズして、変更内容を表示する方法について説明します。
 
-![スタイルのカスタマイズ](./media/modify-developer-portal-style/developer_portal.png)
+![レガシ開発者ポータルで設定を変更する場所を示すスクリーンショット。](./media/modify-developer-portal-style/developer_portal.png)
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -49,7 +49,7 @@ Azure API Management で開発者ポータルをカスタマイズする最も�
 2. **[概要]** ウィンドウの上部にある **[Developer portal (legacy)] (開発者ポータル (レガシ))** をクリックします。
 3. 画面の上部左側に、2 つのペイント ブラシでできたアイコンがあります。 このアイコンにカーソルを重ねると、ポータルのカスタマイズ メニューが開きます。
 
-    ![スタイルのカスタマイズ](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+    ![2 つのペイント ブラシでできたアイコンが強調表示されているスクリーンショット。](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
 4. メニューから **[スタイル]** を選択し、スタイルのカスタマイズ ウィンドウを開きます。
 
     ページに表示される **[スタイル]** を使用して、すべての要素をカスタマイズできます。

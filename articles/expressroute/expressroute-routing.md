@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569613"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204675"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -138,7 +138,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 * ユーザー定義のルーティングを使用して、インターネット接続を必要とするすべてのサブネットに対してインターネット接続を許可している。
 
 > [!NOTE]
-> デフォルト ルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) を参照してください。
+> デフォルト ルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) を参照してください。
 > 
 > 
 
@@ -258,6 +258,7 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype for Business Online |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | その他の Office 365 Online サービス |12076:5200 |
 
 ## <a name="next-steps"></a>次のステップ

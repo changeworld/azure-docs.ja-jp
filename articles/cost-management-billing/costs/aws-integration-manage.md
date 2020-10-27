@@ -3,18 +3,18 @@ title: Azure Cost Management での AWS のコストと使用状況の管理
 description: この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/16/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266210"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148962"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
@@ -22,7 +22,7 @@ Azure Cost Management のための AWS のコストおよび使用レポート�
 
 統合をまだ構成していない場合は、「[AWS の使用状況レポート統合の設定と構成](aws-integration-set-up-configure.md)」を参照してください。
 
-_開始する前に_:コスト分析に慣れていない場合は、「[コスト分析を使用したコストの調査と分析](quick-acm-cost-analysis.md)」クイックスタートを参照してください。 Azure での予算に慣れていない場合は、「[Azure の予算の作成と管理](tutorial-acm-create-budgets.md)」チュートリアルを参照してください。
+_開始する前に_ :コスト分析に慣れていない場合は、「 [コスト分析を使用したコストの調査と分析](quick-acm-cost-analysis.md)」クイックスタートを参照してください。 Azure での予算に慣れていない場合は、「[Azure の予算の作成と管理](tutorial-acm-create-budgets.md)」チュートリアルを参照してください。
 
 ## <a name="view-aws-costs-in-cost-analysis"></a>コスト分析での AWS のコストの表示
 
@@ -44,7 +44,7 @@ AWS のコストは、次のスコープのコストの分析で使用できま�
 
 プロバイダー (Azure と AWS) でグループ化された、コスト分析での管理グループのコストを示す例を次に示します。
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="コスト分析での四半期の Azure と AWS のコストを示す例" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="管理グループの下のリンクされたアカウントを示す [スコープの選択] ビューの例" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
 
 > [!NOTE]
 > 管理グループは、Microsoft 顧客契約 (MCA) のお客様に対して現在サポートされていません。 MCA のお客様は、コネクタを作成し、ご自身の AWS データを表示できます。 ただし、MCA のお客様は、管理グループの下の Azure のコストと AWS のコストをまとめて表示することはできません。
@@ -55,17 +55,17 @@ AWS のリンクされたアカウントのコストを表示するには、ス�
 
 AWS のリンクされたアカウントのスコープを選択する例を次に示します。
 
-:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="AWS のリンクされたアカウントを表示する [スコープの選択] ビューの例" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="管理グループの下のリンクされたアカウントを示す [スコープの選択] ビューの例" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>AWS 統合アカウントのコストの表示
 
 AWS 統合アカウントのコストを表示するには、スコープ ピッカーを開き、AWS 統合アカウントを選択します。 AWS 統合アカウントのスコープを選択する例を示します。
 
-:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="統合アカウントを示す [スコープの選択] ビューの例" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="管理グループの下のリンクされたアカウントを示す [スコープの選択] ビューの例" :::
 
 このスコープは、AWS 統合アカウントに関連付けられているすべての AWS のリンクされたアカウントの集計ビューを提供します。 サービス名別にグループ化された AWS 統合アカウントのコストの例を次に示します。
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="コスト分析で AWS 統合コストを示す例" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="管理グループの下のリンクされたアカウントを示す [スコープの選択] ビューの例" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>フィルター処理やグループ化に使用できるディメンション
 
@@ -95,7 +95,7 @@ AWS 統合アカウントのコストを表示するには、スコープ ピッ
 
 予算を使用して、組織において積極的にコストを管理し、説明責任を推進します。 予算は、AWS 統合アカウントとAWS のリンクされたアカウントのスコープに対して設定されます。 Cost Management で示される、AWS 統合アカウントの予算の例を次に示します。
 
-:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="AWS 統合アカウントの予算を示す例" :::
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="管理グループの下のリンクされたアカウントを示す [スコープの選択] ビューの例" :::
 
 ## <a name="aws-data-collection-process"></a>AWS データ コレクション処理
 
@@ -117,7 +117,7 @@ AWS API にアクセスすると、AWS で追加のコストが発生する場�
 
 - Cost Management の予算では、複数の通貨を持つ管理グループはサポートされていません。 複数の通貨を持つ管理グループには、予算評価が表示されません。 予算を作成するときに、複数の通貨を持つ管理グループを選択すると、エラー メッセージが表示されます。
 - クラウド コネクタは、AWS GovCloud (US)、AWS Gov、または AWS China はサポートしていません。
-- Cost Management は、AWS _使用状況コスト_のみを示します。 税、サポート、返金、RI、クレジット、その他の料金タイプはまだサポートされていません。
+- Cost Management は、AWS _使用状況コスト_ のみを示します。 税、サポート、返金、RI、クレジット、その他の料金タイプはまだサポートされていません。
 
 ## <a name="troubleshooting-aws-integration"></a>AWS 統合のトラブルシューティング
 
@@ -143,9 +143,9 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 このエラーは、Cost Management が AWS AssumeRole API を呼び出すことができないことを意味します。 この問題は、ロールの定義の問題が原因で発生する可能性があります。 次の条件が該当することを確認します。
 
 - 外部 ID は、ロールの定義とコネクタの定義のものと同じです。
-- ロールの種類は、**ユーザーまたはサード パーティに属する別の AWS アカウントに設定されます。**
+- ロールの種類は、 **ユーザーまたはサード パーティに属する別の AWS アカウントに設定されます。**
 - **[MFA を要求]** 選択項目はクリアされます。
-- AWS ロールの信頼される AWS アカウントは、_432263259397_ です。
+- AWS ロールの信頼される AWS アカウントは、 _432263259397_ です。
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>アクセス拒否で収集が失敗 - CUR レポート定義
 
@@ -176,6 +176,12 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 **エラー コード:** _ReportIsNotValid_
 
 このエラーは、AWS のコストと使用状況レポートの定義に関連しています。このレポートには固有の設定が必要です。[AWS でのコストと使用状況レポートの作成](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)に記載されている要件を参照してください。
+
+### <a name="internal-error-when-creating-connector"></a>コネクタを作成する際の内部エラー
+
+**エラー コード:** " _Create connector - Failed to create connector &lt;ConnectorName&gt;. (コネクタの作成 - コネクタ <コネクタ名> を作成できませんでした。)理由:内部エラーです。Please verify that the correct AWS properties were provided. (正しい AWS プロパティが指定されていることを確認してください。)_ "
+
+AWS コネクタとサブスクリプションが別々の管理グループに存在すると、このエラーが発生することがあります。 AWS コネクタとサブスクリプションは同じ管理グループに存在している必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

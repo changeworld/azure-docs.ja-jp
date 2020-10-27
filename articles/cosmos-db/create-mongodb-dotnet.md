@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 105578df0a37ba1d53df2be8ebed1d1f6d77499f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bffaca9db9a6ecefc9870a2e39ba86640d70b945
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89018792"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281733"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して .NET Web アプリを構築する 
 
@@ -27,7 +27,7 @@ ms.locfileid: "89018792"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
+Azure Cosmos DB は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
 
 このクイック スタートでは、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用して Cosmos アカウントを作成する方法を示します。 次に、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用してタスク リスト Web アプリを構築し、デプロイします。
 
@@ -53,7 +53,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
@@ -135,21 +135,21 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 2. **DAL** ディレクトリ内の **Dal.cs** ファイルを開きます。 
 
-3. ポータルの **username** 値をコピーし (コピー ボタンを使用して)、**Dal.cs** ファイル内の **username** の値に設定します。 
+3. ポータルの **username** 値をコピーし (コピー ボタンを使用して)、 **Dal.cs** ファイル内の **username** の値に設定します。 
 
-4. 次に、ポータルの **host** 値をコピーし、**Dal.cs** ファイル内の **host** の値に設定します。 
+4. 次に、ポータルの **host** 値をコピーし、 **Dal.cs** ファイル内の **host** の値に設定します。 
 
-5. 最後に、ポータルの **password** 値をコピーし、**Dal.cs** ファイル内の **password** の値に設定します。 
+5. 最後に、ポータルの **password** 値をコピーし、 **Dal.cs** ファイル内の **password** の値に設定します。 
 
 これで、Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
     
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
 
-2. NuGet の **[参照]** ボックスに「*MongoDB.Driver*」と入力します。
+2. NuGet の **[参照]** ボックスに「 *MongoDB.Driver* 」と入力します。
 
-3. 結果から、**MongoDB.Driver** ライブラリをインストールします。 これにより、MongoDB.Driver パッケージとすべての依存関係がインストールされます。
+3. 結果から、 **MongoDB.Driver** ライブラリをインストールします。 これにより、MongoDB.Driver パッケージとすべての依存関係がインストールされます。
 
 4. Ctrl + F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
 

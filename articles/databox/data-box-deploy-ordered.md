@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575301"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206799"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 #### <a name="install-the-cli-locally"></a>CLI をローカルにインストールする
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (バージョン 2.0.67 以降) をインストールします。 [MSI を使用してインストール](https://aka.ms/installazurecliwindows)することもできます。
+* [Azure CLI](/cli/azure/install-azure-cli) (バージョン 2.0.67 以降) をインストールします。 [MSI を使用してインストール](https://aka.ms/installazurecliwindows)することもできます。
 
 **Azure へのサインイン**
 
@@ -164,13 +164,13 @@ Windows PowerShell バージョン 6.2.4 以降がインストールされてい
     WSManStackVersion              3.0
 ```
 
-6\.2.4 よりも前のバージョンがインストールされている場合は、Windows PowerShell のバージョンをアップグレードする必要があります。 Windows PowerShell の最新バージョンをインストールするには、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7)に関するページを参照してください。
+6\.2.4 よりも前のバージョンがインストールされている場合は、Windows PowerShell のバージョンをアップグレードする必要があります。 Windows PowerShell の最新バージョンをインストールするには、[Azure PowerShell のインストール](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true)に関するページを参照してください。
 
 **Azure PowerShell および Data Box モジュールをインストールする**
 
 Azure PowerShell を使用して Azure Data Box を注文するには、Azure PowerShell モジュールをインストールする必要があります。 Azure PowerShell モジュールをインストールするには、次の手順を実行します。
 
-1. [Azure PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)をインストールします。
+1. [Azure PowerShell Az モジュール](/powershell/azure/new-azureps-module-az)をインストールします。
 2. 次に、`Install-Module -Name Az.DataBox` コマンドを使用して Az.DataBox をインストールします。
 
 ```azurepowershell
@@ -184,7 +184,7 @@ Version              Name                                Repository           De
 
 #### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Windows PowerShell コマンド ウィンドウを開き、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) コマンドを使用して Azure にサインインします。
+Windows PowerShell コマンド ウィンドウを開き、[Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) コマンドを使用して Azure にサインインします。
 
 ```azurepowershell
 PS C:\Windows> Connect-AzAccount
@@ -202,7 +202,7 @@ gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaa
 PS C:\Windows\System32>
 ```
 
-Windows PowerShell を使用して Azure にサインインする方法の詳細については、「[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)」を参照してください。
+Windows PowerShell を使用して Azure にサインインする方法の詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)」を参照してください。
 
 ---
 
@@ -213,7 +213,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 デバイスを注文するには、Azure portal で次の手順を実行します。
 
 1. Microsoft Azure 資格情報を使用して、次の URL にサインインします。[https://portal.azure.com](https://portal.azure.com)
-2. **[+ リソースの作成]** を選択し、*Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
+2. **[+ リソースの作成]** を選択し、 *Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
 
    ![[新規] セクションのスクリーンショット。検索フィールドに [Azure Data Box] と入っています。](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
@@ -251,15 +251,15 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 7. **[データの格納先]** タブで、 **[データの格納先]** を選択します。
 
-    格納先として**ストレージ アカウント**を使用している場合は、以下のようなスクリーンショットが表示されます。
+    格納先として **ストレージ アカウント** を使用している場合は、以下のようなスクリーンショットが表示されます。
 
     ![Azure Data Box のデータの格納先](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。
+    指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 新しい **汎用 v1 アカウント** 、 **汎用 v2 アカウント** 、または **Blob Storage アカウント** を作成することもできます。
 
     仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box を信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法を参照してください。
 
-    Data Box を使用して、オンプレミスの仮想ハード ディスク (VHD) から**マネージド ディスク**を作成する場合は、以下の情報も指定する必要があります。
+    Data Box を使用して、オンプレミスの仮想ハード ディスク (VHD) から **マネージド ディスク** を作成する場合は、以下の情報も指定する必要があります。
 
     |設定  |値  |
     |---------|---------|
@@ -273,14 +273,44 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
     **[Next:Security]\(次へ: セキュリティ\)** を選択して続行します。
 
-1. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
+    **[セキュリティ]** 画面では、自分のデバイスを使用してパスワードを共有でき、二重暗号化を使用することを選択できます。 
+
+    **[セキュリティ]** 画面の設定はすべてオプションです。 設定を変更しない場合は、既定の設定が適用されます。
+
+    ![Data Box インポート注文の [セキュリティ] 画面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+
+1. Azure Data Box で既定で使用される、システムによって生成されるパスワードを使用したくない場合は、 **[Bring your own password]\(独自のパスワードを使用する\)** を展開します。
+
+   システムによって生成されるパスワードは安全であるため、組織で特に必要な場合を除いて推奨されます。
+
+   ![Data Box インポート注文の展開された [Bring your own password]\(独自のパスワードを使用する\) オプション](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+
+   - 新しいデバイスに独自のパスワードを使用するには、 **[Set preference for the device password]\(デバイス パスワードの基本設定の設定\)** で、 **[Use your own password]\(独自のパスワードを使用する\)** を選択し、セキュリティ要件を満たすパスワードを入力します。
+   
+     ![Data Box インポートの [セキュリティ] 画面。独自のデバイス パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+
+   - 共有に独自のパスワードを使用するには:
+
+     1. **[Set preference for the share passwords]\(共有パスワードの基本設定の設定\)** で、 **[Use your own passwords]\(独自のパスワードを使用する\)** を選択し、次に **共有のパスワードを選択** します。
+     
+        ![Data Box インポートの [セキュリティ] 画面。独自の共有パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+
+     1. 注文内の各ストレージ アカウントのパスワードを入力します。 パスワードは、ストレージ アカウントのすべての共有で使用されます。
+     
+        すべてのストレージ アカウントに同じパスワードを使用するには、 **[Copy to all]\(すべてにコピー\)** を選択します。 終了したら、 **[保存]** を選択します。
+     
+        ![Data Box のインポート注文の共有パスワードを入力するための画面](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+       **[セキュリティ]** 画面で、 **[View of change passwords]\(変更パスワードの表示\)** を使用してパスワードを変更できます。
+
+1. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double-encryption (for highly secure environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。
+
+   ![Data Box のインポート注文の [セキュリティ] 画面。Data Box 注文に対してソフトウェアベースの暗号化を有効にする](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
 
    > [!NOTE]
    > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
-
-   ![Data Box インポートの [セキュリティ] 画面 (二重暗号化)](media/data-box-deploy-ordered/select-data-box-import-07c.png)
 
    **[Next:連絡先の詳細]** を選択して続行します。
 
@@ -296,7 +326,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 10. 配送の詳細が正常に検証されたら、 **[配送先住所の追加]** を選択します。 **[連絡先の詳細]** タブが再び表示されます。
 
-11. **[連絡先の詳細]** が表示されたら、1 つまたは複数のメール アドレスを追加します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
+11. **[連絡先の詳細]** に戻ったら、1 つまたは複数のメール アドレスを追加します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
 
     グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
 
@@ -338,7 +368,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
    |query| JMESPath クエリ文字列。 詳細については、「[JMESPath](http://jmespath.org/)」を参照してください。 | --query <string>|
    |verbose| 詳細ログを含めます。 | --verbose |
 
-2. 任意のコマンド プロンプトまたはターミナルで、[az data box job create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) を使用して Azure Data Box の注文を作成します。
+2. 任意のコマンド プロンプトまたはターミナルで、[az data box job create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) を実行して Azure Data Box の注文を作成します。
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -431,7 +461,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
    ```
 
-2. Data Box の注文の設定を書き留めます。 たとえば、個人情報や勤務先情報、サブスクリプション名、デバイス情報、発送情報があります。 PowerShell コマンドを実行して Data Box の注文を作成するときに、これらの設定をパラメーターとして使用する必要があります。 [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) に使用するパラメーターの設定を、次の表に示します。
+2. Data Box の注文の設定を書き留めます。 たとえば、個人情報や勤務先情報、サブスクリプション名、デバイス情報、発送情報があります。 PowerShell コマンドを実行して Data Box の注文を作成するときに、これらの設定をパラメーターとして使用する必要があります。 [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) に使用するパラメーターの設定を、次の表に示します。
 
     | 設定 (パラメーター) | 説明 |  値の例 |
     |---|---|---|
@@ -452,7 +482,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |CompanyName| 勤務先の会社の名前。| "Contoso, LTD" |
     |StorageAccountResourceId [必須]| データのインポート元の Azure Storage アカウント ID。| <AzStorageAccount>.id |
 
-3. 任意のコマンド プロンプトまたはターミナルで、[New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) を使用して Azure Data Box の注文を作成します。
+3. 任意のコマンド プロンプトまたはターミナルで、[New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) を使用して Azure Data Box の注文を作成します。
 
    ```azurepowershell
     PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
@@ -498,7 +528,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 ![処理された Data Box の注文](media/data-box-overview/data-box-order-status-processed.png)
 
-次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、**出荷済み**状態の注文が表示されます。
+次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、 **出荷済み** 状態の注文が表示されます。
 
 ![発送された Data Box の注文](media/data-box-overview/data-box-order-status-dispatched.png)
 
@@ -506,7 +536,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 ### <a name="track-a-single-order"></a>1 つの注文を追跡する
 
-Azure Data Box の既存の注文 1 つに関する追跡情報を取得するには、[az databox job show](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
+Azure Data Box の既存の注文 1 つに関する追跡情報を取得するには、[az databox job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +577,7 @@ Azure Data Box の既存の注文 1 つに関する追跡情報を取得する�
 
 ### <a name="list-all-orders"></a>すべての注文を一覧表示する
 
-複数のデバイスを注文した場合、[az databox job list](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) を実行することで、Azure Data Box の注文をすべて表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
+複数のデバイスを注文した場合、[az databox job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) を実行することで、Azure Data Box の注文をすべて表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
 それぞれの注文のタイム スタンプも表示されます。
 
 ```azurecli
@@ -590,7 +620,7 @@ az databox job list --resource-group <resource-group>
 
 ### <a name="track-a-single-order"></a>1 つの注文を追跡する
 
-Azure Data Box の既存の注文 1 つに関する追跡情報を取得するには、[Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
+Azure Data Box の既存の注文 1 つに関する追跡情報を取得するには、[Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
 
 > [!NOTE]
 > `Get-AzDataBoxJob` を使用すると、1 つの注文と複数の注文の両方を表示できます。 1 つの注文を表示する場合は、注文名を指定します。
@@ -623,7 +653,7 @@ Azure Data Box の既存の注文 1 つに関する追跡情報を取得する�
 
 ### <a name="list-all-orders"></a>すべての注文を一覧表示する
 
-複数のデバイスを注文した場合、[Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) を実行することで、Azure Data Box の注文をすべて表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
+複数のデバイスを注文した場合、[Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) を実行することで、Azure Data Box の注文をすべて表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
 それぞれの注文のタイム スタンプも表示されます。
 
 ```azurepowershell
@@ -666,7 +696,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>注文のキャンセル
 
-Azure Data Box の注文をキャンセルするには、[az databox job cancel](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel) を実行します。 注文のキャンセル理由を指定する必要があります。
+Azure Data Box の注文をキャンセルするには、[az databox job cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) を実行します。 注文のキャンセル理由を指定する必要があります。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +733,7 @@ Azure Data Box の注文をキャンセルするには、[az databox job cancel]
 
 ### <a name="delete-an-order"></a>注文を削除する
 
-Azure Data Box の注文をキャンセルした場合、[az databox job delete](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) を使用してその注文を削除できます。
+Azure Data Box の注文をキャンセルした場合、[az databox job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) を使用してその注文を削除できます。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -742,7 +772,7 @@ Azure Data Box の注文をキャンセルした場合、[az databox job delete]
 
 ### <a name="cancel-an-order"></a>注文のキャンセル
 
-Azure Data Box の注文をキャンセルするには、[Stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob) を実行します。 注文のキャンセル理由を指定する必要があります。
+Azure Data Box の注文をキャンセルするには、[Stop-AzDataBoxJob](/powershell/module/az.databox/stop-azdataboxjob) を実行します。 注文のキャンセル理由を指定する必要があります。
 
 ```azurepowershell
 Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
@@ -776,7 +806,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>注文を削除する
 
-Azure Data Box の注文をキャンセルした場合、[Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) を使用してその注文を削除できます。
+Azure Data Box の注文をキャンセルした場合、[Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) を使用してその注文を削除できます。
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

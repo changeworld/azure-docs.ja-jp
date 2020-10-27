@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858015"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342299"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -28,7 +28,7 @@ ms.locfileid: "91858015"
 
 ### <a name="windows-machines"></a>[**Windows マシン**](#tab/features-windows)
 
-|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**Azure Defender が必要**
+|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure Arc 対応マシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP の統合](security-center-wdatp.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
 |[仮想マシン行動分析 (およびセキュリティ アラート)](alerts-reference.md)|✔|✔|✔|はい|
@@ -42,9 +42,9 @@ ms.locfileid: "91858015"
 |[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
 |[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|はい|
-|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
-|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
 |ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
 |サードパーティの脆弱性評価|✔|-|-|いいえ|
 |[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
@@ -52,10 +52,10 @@ ms.locfileid: "91858015"
 
 ### <a name="linux-machines"></a>[**Linux マシン**](#tab/features-linux)
 
-|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**Azure Defender が必要**
+|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure Arc 対応マシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP の統合](security-center-wdatp.md)|-|-|-|はい|
-|[仮想マシン行動分析 (およびセキュリティ アラート)](security-center-alerts-iaas.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
+|[仮想マシン行動分析 (およびセキュリティ アラート)](./azure-defender.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|はい|
 |[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
 |[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
@@ -66,8 +66,8 @@ ms.locfileid: "91858015"
 |[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
 |[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|✔|✔|✔|はい|
-|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
 |[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|いいえ|
 |ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
 |サードパーティの脆弱性評価|✔|-|-|いいえ|
@@ -96,10 +96,10 @@ ms.locfileid: "91858015"
 | Trend Micro – Deep Security | Windows Server ファミリ  | いいえ | はい |
 | Symantec v12.1.1100 以降| Windows Server ファミリ  | いいえ | はい |
 | McAfee v10 以降 | Windows Server ファミリ  | いいえ | はい |
-| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい **\*** |
-| Sophos V9+| Linux Server ファミリ  | いいえ | はい  **\***  |
+| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい * *\** _ |
+| Sophos V9+| Linux Server ファミリ  | いいえ | はい  _*\**_  |
 
- **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
+ _ *\** * カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
 
 > [!NOTE]
 > Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) を検出するには、PowerShell (v3.0 またはそれ以降) の後で SCEP をインストールする必要があります。

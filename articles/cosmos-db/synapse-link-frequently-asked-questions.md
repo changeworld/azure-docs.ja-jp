@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014564"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104106"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 
@@ -98,6 +98,10 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 
 現時点では、データ項目がトランザクション ストアから分析ストアに自動的に反映される場合、それらのデータ項目を変換できません。 この制限によってシナリオが妨げられる場合は、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)に電子メールを送信してください。
 
+### <a name="is-analytical-store-supported-by-terraform"></a>Terraform で分析ストアはサポートされていますか?
+
+現在、Terraform では分析ストア コンテナーはサポートされていません。 詳細については、[Terraform GitHub の問題](https://github.com/hashicorp/terraform/issues)を確認してください。
+
 ## <a name="analytical-time-to-live-ttl"></a>分析の Time to live (TTL)
 
 ### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>分析データの TTL はコンテナーと項目の両方のレベルでサポートされますか?
@@ -118,7 +122,7 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 
 [Azure Cosmos DB 分析ストア](analytical-store-introduction.md)は、2020 年 8 月30 日までは、分析ストアに対する料金はかからずにパブリック プレビューで利用できます。 Synapse Spark と Synapse SQL は、[Synapse サービスの使用](https://azure.microsoft.com/pricing/details/synapse-analytics/)を通じて課金されます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>分析ストアでの認証にはどのような方法がありますか?
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936828"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221232"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>クイック スタート:C# を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -28,21 +28,20 @@ ms.locfileid: "88936828"
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション。
-
-- NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。 Visual Studio に NuGet パッケージをインストールするには、次の手順に従います。
-
-   1. **ソリューション エクスプローラー**でプロジェクトを右クリックします。
-   2. **[NuGet パッケージの管理]** を選択します。
-   3. *Newtonsoft.json* を探して選択し、パッケージをインストールします。
-
-- Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+- あるいは、Linux または MacOS を使用している場合は、[Visual Studio Code](https://code.visualstudio.com/) および [.NET Core](/dotnet/core/install/macos) を使用して、このクイックスタートに従うことができます
+- [無料の Azure アカウント](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
+1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 
+1. [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet パッケージを追加します。
+    1. **ソリューション エクスプローラー** でプロジェクトを右クリックします。
+    2. **[NuGet パッケージの管理]** を選択します。
+    3. *Newtonsoft.json* を探して選択し、パッケージをインストールします。
+1. 次に、メイン コード ファイルに次の名前空間を追加します。
     
     ```csharp
     using Newtonsoft.Json;

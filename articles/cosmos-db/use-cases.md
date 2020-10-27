@@ -6,15 +6,16 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114267"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331364"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
-この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
+
+この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。
 
 この記事を読むと、次の質問に回答できるようになります。 
 
@@ -24,7 +25,8 @@ ms.locfileid: "85114267"
 * Web およびモバイル アプリケーションで Azure Cosmos DB を使用する利点は何ですか?
 
 ## <a name="introduction"></a>はじめに
-[Azure Cosmos DB](../cosmos-db/introduction.md) は、Microsoft のグローバルに分散されたデータベース サービスです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。 
+
+[Azure Cosmos DB](../cosmos-db/introduction.md) は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。
 
 Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[Gremlin API](graph-introduction.md)、[Table API](table-introduction.md) を含むデータ アクセス用の多くの API を、ネイティブおよび拡張可能な方法でサポートします。 
 
@@ -40,6 +42,7 @@ Azure Cosmos DB を、グローバルな展開を視野に入れた高性能ア�
 このように、DocumentDB は大量の読み取り/書き込みを迅速に処理する必要がある Web アプリケーション、モバイル アプリケーション、ゲーム アプリケーション、IoT アプリケーションに有用です。
 
 ## <a name="iot-and-telematics"></a>IoT とテレマティックス
+
 IoT のユース ケースでは、データの取り込み、処理、および格納の方法にいくつかの共通パターンがあります。  まず、これらのシステムでは、さまざまなロケールのデバイス センサーから大量のデータを取り込む必要があります。 次に、これらのシステムではストリーミング データを処理および分析して、インサイトをリアルタイムで導き出しています。 その後、データはバッチ分析用にコールド ストレージにアーカイブされます。 Microsoft Azure では、Azure Cosmos DB、Azure Event Hubs、Azure Stream Analytics、Azure Notification Hub、Azure Machine Learning、Azure HDInsight、Power BI など、IoT のユース ケースに適用できる豊富なサービスを提供しています。 
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::

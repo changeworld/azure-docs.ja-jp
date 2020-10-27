@@ -102,10 +102,10 @@
         - name: MySQL で PHP Web アプリを作成する
           items:
             - name: コンテナーでの Wordpress と MySQL
-              href: ../app-service/containers/tutorial-multi-container-app.md
+              href: ../app-service/tutorial-multi-container-app.md
               maintainContext: true
             - name: PHP と MySQL
-              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              href: ../app-service/tutorial-php-mysql-app.md
               maintainContext: true
     - name: サンプル
       items:
@@ -114,7 +114,7 @@
         - name: Java 接続プール
           href: sample-scripts-java-connection-pooling.md
         - name: Azure Policy の組み込み
-          href: ./policy-samples.md
+          href: ./policy-reference.md
     - name: 概念
       items:
         - name: サーバー
@@ -427,6 +427,7 @@
             - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM テンプレート
+              displayName: Resource Manager
               href: flexible-server/quickstart-create-arm-template.md
         - name: 接続とクエリ
           items:
@@ -558,7 +559,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mysql.html'
+      href: /answers/topics/azure-database-mysql.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: ビデオ

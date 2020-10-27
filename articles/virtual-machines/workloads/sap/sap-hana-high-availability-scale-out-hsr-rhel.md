@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978107"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152122"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -57,7 +57,7 @@ ms.locfileid: "91978107"
 
 この記事では、Azure Red Hat Enterprise Linux 仮想マシン (VM) で HANA システム レプリケーション (HSR) と Pacemaker を使用して、高可用性 SAP HANA システムをスケールアウト構成でデプロイする方法について説明します。 提示されているアーキテクチャの共有ファイル システムは [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) によって提供され、NFS 経由でマウントされます。  
 
-構成例やインストール コマンドなどでは、HANA インスタンスは **03**、HANA システム ID は **HN1** です。 例は HANA 2.0 SP4 と Red Hat Enterprise Linux for SAP 7.6 に基づいています。 
+構成例やインストール コマンドなどでは、HANA インスタンスは **03** 、HANA システム ID は **HN1** です。 例は HANA 2.0 SP4 と Red Hat Enterprise Linux for SAP 7.6 に基づいています。 
 
 始める前に、次の SAP のノートとホワイトペーパーを参照してください。
 
@@ -120,9 +120,9 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 ### <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Azure portal を使用して Linux 仮想マシンをデプロイする
 1. Azure VM を展開します。  
 このドキュメントに示されている構成の場合は、次の 7 台の仮想マシンを展開します。 
-   - HANA レプリケーション サイト 1 の HANA DB ノードとして機能する 3 台の仮想マシン: **hana-s1-db1**、**hana-s1-db2**、**hana-s1-db3**  
-   - HANA レプリケーション サイト 2 の HANA DB ノードとして機能する 3 台の仮想マシン: **hana-s2-db1**、**hana-s2-db2**、**hana-s2-db3**  
-   - *マジョリティ メーカー*として機能する小規模な仮想マシン: **hana-s-mm**
+   - HANA レプリケーション サイト 1 の HANA DB ノードとして機能する 3 台の仮想マシン: **hana-s1-db1** 、 **hana-s1-db2** 、 **hana-s1-db3**  
+   - HANA レプリケーション サイト 2 の HANA DB ノードとして機能する 3 台の仮想マシン: **hana-s2-db1** 、 **hana-s2-db2** 、 **hana-s2-db3**  
+   - *マジョリティ メーカー* として機能する小規模な仮想マシン: **hana-s-mm**
 
    SAP DB HANA ノードとして展開される VM は、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)で公開されているように、SAP for HANA によって認定されている必要があります。 HANA DB ノードを展開するときは、[高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)が選択されていることを確認してください。  
   
@@ -131,22 +131,22 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    `/hana/data` および `/hana/log` 用のローカル マネージド ディスクを展開します。 `/hana/data` と `/hana/log` に推奨される最小ストレージ構成については、「[SAP HANA Azure VM のストレージ構成](./hana-vm-operations-storage.md)」を参照してください。
 
    各 VM のプライマリ ネットワーク インターフェイスを `client` 仮想ネットワーク サブネット内に展開します。  
-   Azure portal 経由で VM が展開されると、ネットワーク インターフェイス名が自動的に生成されます。 ここではわかりやすくするために、自動的に生成された `client` Azure 仮想ネットワーク サブネットに接続されたプライマリ ネットワーク インターフェイスを、**hana-s1-db1-client**、**hana-s1-db2-client**、**hana-s1-db3-client** などのように呼びます。  
+   Azure portal 経由で VM が展開されると、ネットワーク インターフェイス名が自動的に生成されます。 ここではわかりやすくするために、自動的に生成された `client` Azure 仮想ネットワーク サブネットに接続されたプライマリ ネットワーク インターフェイスを、 **hana-s1-db1-client** 、 **hana-s1-db2-client** 、 **hana-s1-db3-client** などのように呼びます。  
 
 
    > [!IMPORTANT]
    > 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、その種類に対応する OS リリースの一覧については、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページをご覧ください。 一覧表示されている VM の種類の詳細をクリックすると、その種類に対して SAP HANA でサポートされている OS のリリースの完全な一覧が表示されます。  
   
 
-2. HANA DB 仮想マシンごとに 1 つずつ、6 つのネットワーク インターフェイスを `inter` 仮想ネットワーク サブネットに作成します (この例では、**hana-s1-db1-inter**、**hana-s1-db2-inter**、**hana-s1-db3-inter**、**hana-s2-db1-inter**、**hana-s2-db2-inter**、**hana-s2-db3-inter** とします)。  
+2. HANA DB 仮想マシンごとに 1 つずつ、6 つのネットワーク インターフェイスを `inter` 仮想ネットワーク サブネットに作成します (この例では、 **hana-s1-db1-inter** 、 **hana-s1-db2-inter** 、 **hana-s1-db3-inter** 、 **hana-s2-db1-inter** 、 **hana-s2-db2-inter** 、 **hana-s2-db3-inter** とします)。  
 
-3. HANA DB 仮想マシンごとに 1 つずつ、6 つのネットワーク インターフェイスを `hsr` 仮想ネットワーク サブネットに作成します (この例では、**hana-s1-db1-hsr**、**hana-s1-db2-hsr**、**hana-s1-db3-hsr**、**hana-s2-db1-hsr**、**hana-s2-db2-hsr**、**hana-s2-db3-hsr** とします)。  
+3. HANA DB 仮想マシンごとに 1 つずつ、6 つのネットワーク インターフェイスを `hsr` 仮想ネットワーク サブネットに作成します (この例では、 **hana-s1-db1-hsr** 、 **hana-s1-db2-hsr** 、 **hana-s1-db3-hsr** 、 **hana-s2-db1-hsr** 、 **hana-s2-db2-hsr** 、 **hana-s2-db3-hsr** とします)。  
 
 4. 新しく作成した仮想ネットワーク インターフェイスを、対応する仮想マシンに接続します。  
 
     a. [Azure portal](https://portal.azure.com/#home) で仮想マシンに移動します。  
 
-    b. 左側のペインで、 **[Virtual Machines]** を選択します。 仮想マシン名でフィルター処理し (たとえば **hana-s1-db1**)、その仮想マシンを選択します。  
+    b. 左側のペインで、 **[Virtual Machines]** を選択します。 仮想マシン名でフィルター処理し (たとえば **hana-s1-db1** )、その仮想マシンを選択します。  
 
     c. **[概要]** ペインで、 **[停止]** を選択して仮想マシンの割り当てを解除します。  
 
@@ -154,7 +154,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     
     e. **[保存]** を選択します。 
  
-    f. 残りの仮想マシン (この例では **hana-s1-db2**、**hana-s1-db3**、**hana-s2-db1**、**hana-s2-db2**、**hana-s2-db3**) に対して、手順 b から e を繰り返します。
+    f. 残りの仮想マシン (この例では **hana-s1-db2** 、 **hana-s1-db3** 、 **hana-s2-db1** 、 **hana-s2-db2** 、 **hana-s2-db3** ) に対して、手順 b から e を繰り返します。
  
     g. 今のところ、仮想マシンは停止状態のままにしておきます。 次に、新しく接続されたすべてのネットワーク インターフェイスに対して[高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)を有効にします。  
 
@@ -188,15 +188,15 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    1. まず、フロントエンド IP プールを作成します。
 
       1. ロード バランサーを開き、 **[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
-      1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend**)。
-      1. **[割り当て]** を **[静的]** に設定し、IP アドレスを入力します (例: **10.23.0.18**)。
+      1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend** )。
+      1. **[割り当て]** を **[静的]** に設定し、IP アドレスを入力します (例: **10.23.0.18** )。
       1. **[OK]** を選択します。
       1. 新しいフロントエンド IP プールが作成されたら、プールの IP アドレスを書き留めます。
 
    1. 次に、バックエンド プールを作成し、すべてのクラスター VM をバックエンド プールに追加します。
 
       1. ロードバランサーを開き、 **[backend pools]\(バックエンド プール\)** を選択し、 **[Add]\(追加\)** を選択します。
-      1. 新しいバックエンド プールの名前を入力します (例: **hana-backend**)。
+      1. 新しいバックエンド プールの名前を入力します (例: **hana-backend** )。
       1. **[Add a virtual machine]\(仮想マシンの追加\)** を選択します。
       1. **[仮想マシン]** を選択します。
       1. SAP HANA クラスターの仮想マシンとその `client` サブネットの IP アドレスを選択します。
@@ -205,20 +205,23 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    1. 次に、正常性プローブを作成します。
 
       1. ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しい正常性プローブの名前を入力します (例: **hana-hp**)。
-      1. プロトコルとして **[TCP]** を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+      1. 新しい正常性プローブの名前を入力します (例: **hana-hp** )。
+      1. プロトコルとして **[TCP]** を選択し、ポート 625 **03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
       1. **[OK]** を選択します。
 
    1. 次に、負荷分散規則を作成します。
    
       1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しいロード バランサー規則の名前を入力します (例: **hana-lb**)。
-      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**、**hana-backend**、**hana-hp**)。
+      1. 新しいロード バランサー規則の名前を入力します (例: **hana-lb** )。
+      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend** 、 **hana-backend** 、 **hana-hp** )。
       1. **[HA ポート]** を選択します。
       1. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
-      1. **Floating IP を有効にします**。
+      1. **Floating IP を有効にします** 。
       1. **[OK]** を選択します。
 
+   > [!IMPORTANT]
+   > フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。    
+   
    > [!Note]
    > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
 
@@ -233,8 +236,8 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 この例では、次の Azure NetApp Files ボリュームが使用されています。 
 
-* ボリューム **HN1**-shared-s1 (nfs://10.23.1.7/**HN1**-shared-s1)
-* ボリューム **HN1**-shared-s2 (nfs://10.23.1.7/**HN1**-shared-s2)
+* ボリューム **HN1** -shared-s1 (nfs://10.23.1.7/ **HN1** -shared-s1)
+* ボリューム **HN1** -shared-s2 (nfs://10.23.1.7/ **HN1** -shared-s2)
 
 ## <a name="operating-system-configuration-and-preparation"></a>オペレーティング システムの構成と準備
 
@@ -319,7 +322,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     Nobody-Group = nobody
     ```
 
-3. **[AH]** `nfs4_disable_idmapping` を確認します。 これは、**Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
+3. **[AH]** `nfs4_disable_idmapping` を確認します。 これは、 **Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
    この手順は、Azure NetAppFiles NFSv4.1 を使用する場合にのみ必要です。  
 
     ```
@@ -477,9 +480,9 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 ### <a name="hana-installation-on-the-first-node-on-each-site"></a>各サイトの最初のノードへの HANA のインストール
 
-1. **[1]** 「[SAP HANA 2.0 のインストールと更新ガイド](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)」の指示に従って、SAP HANA をインストールします。 次の手順では、SITE 1 の最初のノードへの SAP HANA のインストールを示します。   
+1. **[1]** 「 [SAP HANA 2.0 のインストールと更新ガイド](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)」の指示に従って、SAP HANA をインストールします。 次の手順では、SITE 1 の最初のノードへの SAP HANA のインストールを示します。   
 
-   a。 HANA のインストール ソフトウェア ディレクトリから、**hdblcm** プログラムを `root` で起動します。 `internal_network` パラメーターを使用して、内部 HANA のノード間通信に使用されるサブネットのアドレス空間を渡します。  
+   a. HANA のインストール ソフトウェア ディレクトリから、 **hdblcm** プログラムを `root` で起動します。 `internal_network` パラメーターを使用して、内部 HANA のノード間通信に使用されるサブネットのアドレス空間を渡します。  
 
     ```
     ./hdblcm --internal_network=10.23.1.128/26
@@ -487,18 +490,18 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    b. プロンプトで次の値を入力します。
 
-     * **[Choose an action]\(アクションを選択する\)** : 「**1**」と入力します (インストールの場合)。
-     * **[Additional components for installation]\(追加でインストールするコンポーネント\)** : 「**2, 3**」と入力します。
+     * **[Choose an action]\(アクションを選択する\)** : 「 **1** 」と入力します (インストールの場合)。
+     * **[Additional components for installation]\(追加でインストールするコンポーネント\)** : 「 **2, 3** 」と入力します。
      * [installation path]\(インストール パス\): Enter キーを押します (既定値は /hana/shared)
      * **[Local Host Name]\(ローカル ホスト名\)** : Enter キーを押して既定値をそのまま使用します
-     * **[Do you want to add hosts to the system?]\(システムにホストを追加しますか?\)** : 「**n**」と入力します
-     * **[SAP HANA System ID]\(SAP HANA システム ID\)** : 「**HN1**」と入力します
-     * **[Instance number]\(インスタンス番号\)** [00]: 「**03**」と入力します
+     * **[Do you want to add hosts to the system?]\(システムにホストを追加しますか?\)** : 「 **n** 」と入力します
+     * **[SAP HANA System ID]\(SAP HANA システム ID\)** : 「 **HN1** 」と入力します
+     * **[Instance number]\(インスタンス番号\)** [00]: 「 **03** 」と入力します
      * **[Local Host Worker Group]\(ローカル ホスト ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
-     * **[Select System Usage / Enter index [4]\(システム用途の選択/インデックスを入力 [4]\)** \: 「**4**」と入力します (カスタム)
+     * **[Select System Usage / Enter index [4]\(システム用途の選択/インデックスを入力 [4]\)** \: 「 **4** 」と入力します (カスタム)
      * **[Location of Data Volumes]\(データ ボリュームの場所\)** [/hana/data/HN1]: Enter キーを押して既定値をそのまま使用します
      * **[Location of Log Volumes]\(ログ ボリュームの場所\)** [/hana/log/HN1]: Enter キーを押して既定値をそのまま使用します
-     * **[Restrict maximum memory allocation?]\(メモリの最大割り当てを制限しますか?\)** [n]: 「**n**」と入力します
+     * **[Restrict maximum memory allocation?]\(メモリの最大割り当てを制限しますか?\)** [n]: 「 **n** 」と入力します
      * **[Certificate Host Name For Host hana-s1-db1]\(ホスト hana-s1-db1 の証明書ホスト名\)** [hana-s1-db1]: Enter キーを押して既定値をそのまま使用します
      * **[SAP Host Agent User (sapadm) Password]\(SAP ホスト エージェント ユーザー (sapadm) のパスワード\)** : パスワードを入力します
      * **[Confirm SAP Host Agent User (sapadm) Password]\(SAP ホスト エージェント ユーザー (sapadm) のパスワードの確認\)** : パスワードを入力します
@@ -509,8 +512,8 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
      * **[Enter ID of User Group (sapsys)]\(ユーザー グループ (sapsys) の ID を入力\)** [79]: Enter キーを押して既定値をそのまま使用します
      * **[System Database User (system) Password]\(システム データベース ユーザー (system) のパスワード\)** : システムのパスワードを入力します
      * **[Confirm System Database User (system) Password]\(システム データベース ユーザー (system) のパスワードの確認\)** : システムのパスワードを入力します
-     * **[Restart system after machine reboot?]\(コンピューターの再起動後にシステムを再起動しますか?\)** [n]: 「**n**」と入力します 
-     * **[Do you want to continue (y/n)]\(続行しますか? (y/n)\)** : 概要を検証し、すべて問題がなさそうな場合は「**y**」と入力します
+     * **[Restart system after machine reboot?]\(コンピューターの再起動後にシステムを再起動しますか?\)** [n]: 「 **n** 」と入力します 
+     * **[Do you want to continue (y/n)]\(続行しますか? (y/n)\)** : 概要を検証し、すべて問題がなさそうな場合は「 **y** 」と入力します
 
 2. **[2]** 上記の手順を繰り返して、SITE 2 の最初のノードに SAP HANA をインストールします。   
 
@@ -563,7 +566,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    ```
 
 8. **[1]** セカンダリ HANA ノードをインストールします。 このステップでは、例として SITE 1 での手順を示します。  
-   a。 常駐の **hdblcm** プログラムを `root` で開始します。    
+   a. 常駐の **hdblcm** プログラムを `root` で開始します。    
     ```
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
@@ -571,9 +574,9 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    b. プロンプトで次の値を入力します。
 
-     * **[Choose an action]\(アクションを選択する\)** : 「**2**」と入力します (ホストの追加)
+     * **[Choose an action]\(アクションを選択する\)** : 「 **2** 」と入力します (ホストの追加)
      * **[Enter comma separated host names to add]\(追加するホストの名前をコンマ区切りで入力\)** : hana-s1-db2, hana-s1-db3
-     * **[Additional components for installation]\(追加でインストールするコンポーネント\)** : 「**2, 3**」と入力します。
+     * **[Additional components for installation]\(追加でインストールするコンポーネント\)** : 「 **2, 3** 」と入力します。
      * **[Enter Root User Name]\(ルート ユーザー名を入力\) [root]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
@@ -588,7 +591,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
      * **[Confirm SAP Host Agent User (sapadm) Password]\(SAP ホスト エージェント ユーザー (sapadm) のパスワードの確認\)** : パスワードを入力します
      * **[Certificate Host Name For Host hana-s1-db2]\(ホスト hana-s1-db2 の証明書ホスト名\)** [hana-s1-db2]: Enter キーを押して既定値をそのまま使用します
      * **[Certificate Host Name For Host hana-s1-db3]\(ホスト hana-s1-db3 の証明書ホスト名\)** [hana-s1-db3]: Enter キーを押して既定値をそのまま使用します
-     * **[Do you want to continue (y/n)]\(続行しますか? (y/n)\)** : 概要を検証し、すべて問題がなさそうな場合は「**y**」と入力します
+     * **[Do you want to continue (y/n)]\(続行しますか? (y/n)\)** : 概要を検証し、すべて問題がなさそうな場合は「 **y** 」と入力します
 
 9. **[2]** 上記の手順を繰り返して、SITE 2 にセカンダリ SAP HANA ノードをインストールします。   
 
@@ -596,7 +599,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 1. **[1]** SITE 1 でシステム レプリケーションを構成します。
 
-   **hn1**adm としてデータベースをバックアップします。
+   **hn1** adm としてデータベースをバックアップします。
 
     ```
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
@@ -933,7 +936,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    3. 次に、HANA インスタンス リソースを作成します。  
       > [!NOTE]
-      > この記事には、Microsoft が使用しなくなった " *スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。  
+      > この記事には、Microsoft が使用しなくなった " *スレーブ* " という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。  
  
       RHEL **7.x** クラスターを構築する場合は、次のコマンドを使用します。    
       ```
@@ -1002,7 +1005,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 1. テストを開始する前に、クラスターと SAP HANA システムのレプリケーション状態を確認します。  
 
-   a。 失敗したクラスター アクションがないことを確認します  
+   a. 失敗したクラスター アクションがないことを確認します  
      ```
      #Verify that there are no failed cluster actions
      pcs status
@@ -1065,9 +1068,9 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 2. ノードが NFS 共有 (`/hana/shared`) へのアクセスを失ったときの障害シナリオに備えてクラスター構成を検証します。  
 
-   SAP HANA リソース エージェントでは、フェールオーバー中の操作の実行は `/hana/shared` に保存されるバイナリに依存しています。 提示されている構成では、ファイル システム `/hana/shared` は NFS 経由でマウントされています。 実行できるテストは、`/hana/shared` ファイル システムを "*読み取り専用*" として再マウントすることです。 この方法では、アクティブなシステム レプリケーション サイトで `/hana/shared` へのアクセスが失われた場合に、クラスターがフェールオーバーされることを検証します。  
+   SAP HANA リソース エージェントでは、フェールオーバー中の操作の実行は `/hana/shared` に保存されるバイナリに依存しています。 提示されている構成では、ファイル システム `/hana/shared` は NFS 経由でマウントされています。 実行できるテストは、`/hana/shared` ファイル システムを " *読み取り専用* " として再マウントすることです。 この方法では、アクティブなシステム レプリケーション サイトで `/hana/shared` へのアクセスが失われた場合に、クラスターがフェールオーバーされることを検証します。  
 
-   **予測される結果**: `/hana/shared` を "*読み取り専用*" として再マウントすると、ファイル システムに対して読み取り/書き込み操作を実行する監視操作は失敗します。これは、ファイル システムへの書き込みができないためです。そして、HANA リソースのフェールオーバーがトリガーされます。 HANA ノードが NFS 共有へのアクセスを失った場合も、同じ結果が予想されます。  
+   **予測される結果** : `/hana/shared` を " *読み取り専用* " として再マウントすると、ファイル システムに対して読み取り/書き込み操作を実行する監視操作は失敗します。これは、ファイル システムへの書き込みができないためです。そして、HANA リソースのフェールオーバーがトリガーされます。 HANA ノードが NFS 共有へのアクセスを失った場合も、同じ結果が予想されます。  
      
    クラスター リソースの状態を確認するには、`crm_mon` または `pcs status` を実行します。 テスト開始前のリソースの状態:
       ```

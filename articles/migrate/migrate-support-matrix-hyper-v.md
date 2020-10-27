@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318179"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331976"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -46,7 +46,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | すべてのオペレーティング システムを、移行のために評価することができます。  |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-| **Storage** | ローカル ディスク、DAS、JBOD、記憶域スペース、CSV、SMB。 VHD/VHDX が格納されているこれらの Hyper-V ホスト記憶域がサポートされています。 <br/> IDE および SCSI 仮想コントローラーがサポートされています| 
+| **記憶域** | ローカル ディスク、DAS、JBOD、記憶域スペース、CSV、SMB。 VHD/VHDX が格納されているこれらの Hyper-V ホスト記憶域がサポートされています。 <br/> IDE および SCSI 仮想コントローラーがサポートされています| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
 
@@ -63,7 +63,7 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 **[デバイス]** | **接続**
 --- | ---
 **アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> ポート 443 (HTTPS) で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
-**Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) で、Hyper-V VM のメタデータとパフォーマンスのデータをプルするための受信接続。
+**Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) または 5986 (HTTPS) で、Hyper-V VM のメタデータとパフォーマンスのデータをプルするための受信接続。
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>エージェント ベースの依存関係の分析の要件
 
@@ -83,4 +83,4 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 ## <a name="next-steps"></a>次のステップ
 
-[Hyper-V VM の評価を準備する](tutorial-prepare-hyper-v.md)
+[Hyper-V VM の評価を準備する](./tutorial-discover-hyper-v.md)

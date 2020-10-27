@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716133"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102644"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -114,15 +114,15 @@ Gen2 でアプリケーションとワークロードが安定していること
 |||
 |---|---|
 |**リフト アンド シフト**|最も簡単なパターンです。 データ パイプラインがダウンタイムを許容できる場合に最適です。|
-|**増分コピー**|"*リフト アンド シフト*" に似ていますが、ダウンタイムは少なくなります。 コピーに時間がかかる大量のデータに適しています。|
+|**増分コピー**|" *リフト アンド シフト* " に似ていますが、ダウンタイムは少なくなります。 コピーに時間がかかる大量のデータに適しています。|
 |**デュアル パイプライン**|ダウンタイムをまったく許容できないパイプラインに最適です。|
-|**双方向同期**|"*デュアル パイプライン*" に似ていますが、より複雑なパイプラインに適した、いっそう段階的なアプローチです。|
+|**双方向同期**|" *デュアル パイプライン* " に似ていますが、より複雑なパイプラインに適した、いっそう段階的なアプローチです。|
 
 各パターンについて詳しく説明します。
  
 ### <a name="lift-and-shift-pattern"></a>リフト アンド シフト パターン
 
-これは最も簡単なパターンです。
+これは最も簡単なパターンです。 
 
 1. Gen1 へのすべての書き込みを停止します。
 
@@ -131,6 +131,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 3. インジェスト操作とワークロードで Gen2 をポイントします。
 
 4. Gen1 の使用を停止します。
+
+リフト アンド シフト パターンのサンプル コードについては、[リフト アンド シフト移行のサンプル](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md)を参照してください。
 
 > [!div class="mx-imgBorder"]
 > ![リフト アンド シフト パターン](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 4. Gen1 の使用を停止します。
 
+増分コピー パターンのサンプル コードについては、[増分コピー移行のサンプル](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)を参照してください。
+
+
 > [!div class="mx-imgBorder"]
 > ![増分コピー パターン](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 4. Gen1 へのすべての書き込みを停止し、Gen1 の使用を停止します。
 
+デュアル パイプライン パターンのサンプル コードについては、[デュアル パイプライン移行のサンプル](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md)を参照してください。
+
 > [!div class="mx-imgBorder"]
 > ![デュアル パイプライン パターン](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -192,6 +199,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 3. すべての移動が完了したら、Gen1 へのすべての書き込みを停止し、双方向レプリケーションをオフにします。
 
 4. Gen1 の使用を停止します。
+
+双方向同期パターンのサンプル コードについては、[双方向同期移行のサンプル](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md)を参照してください。
 
 > [!div class="mx-imgBorder"]
 > ![双方向パターン](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)

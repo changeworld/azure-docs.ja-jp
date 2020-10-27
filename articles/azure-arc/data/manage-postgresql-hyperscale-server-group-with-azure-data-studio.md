@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932603"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320234"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Data Studio を使用して、Azure Arc 対応の PostgreSQL Hyperscale サーバー グループを管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "90932603"
 ## <a name="prerequisites"></a>前提条件
 
 - [azdata、Azure Data Studio、Azure CLI をインストールする](install-client-tools.md)
-- Azure Data Studio に、**Azure Data CLI** および **Azure Arc** および **PostgreSQL** 拡張機能をインストールする
+- Azure Data Studio に、 **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** および **Azure Arc** および **PostgreSQL** 拡張機能をインストールする
 - [Azure Arc データ コントローラー](create-data-controller-using-azdata.md)を作成する
 - Azure Data Studio を起動する
 
@@ -61,9 +61,8 @@ PostgreSQL ダッシュボード ビュー:
 
 そのウィンドウの左側に複数のダッシュボードが表示されます。
 
-- **概要:** 名前、Azure サブスクリプション ID、構成、データベース エンジンのバージョン、Grafana および Kibana のエンドポイントなどのインスタンスに関する概要情報が表示されます。
+- **概要:** 名前、PostgreSQL 管理者ユーザー名、Azure サブスクリプション ID、構成、データベース エンジンのバージョン、Grafana および Kibana のエンドポイントなどのインスタンスに関する概要情報が表示されます。
 - **接続文字列:** psql、Node.js、PHP、Ruby などの PostgreSQL インスタンスに接続するために必要となる可能性があるさまざまな接続文字列が表示されます。
-- **プロパティ:** PostgreSQL 管理者のユーザー名、シャドウ リソースに関連付けられたリソース グループなどのさまざまなプロパティが表示されます。
 - **問題の診断と解決:** トラブルシューティング ノートブックを展開したときに、インスタンスのトラブルシューティングに役立つさまざまなリソースが表示されるランディング ページです
 - **新しいサポート要求:** パブリック プレビューの発表が開始されたら、サポート サービスからの支援を要求できるランディングページです。
 
@@ -77,8 +76,8 @@ PostgreSQL ダッシュボード ビュー:
 - **認証の種類:** Password
 - **ユーザー名:** たとえば、標準/既定の PostgreSQL 管理者ユーザー名を使用できます。 このフィールドでは、大文字と小文字が区別されることに注意してください。
 - **パスワード:** `azdata postgres server endpoint -n postgres01` コマンドの出力の psql 接続文字列に、PostgreSQL ユーザー名のパスワードがあります
-- **データベース名:** 接続先のデータベースの名前を設定します。 __既定__に設定できます
-- **サーバー グループ:** __既定__に設定できます
+- **データベース名:** 接続先のデータベースの名前を設定します。 __既定__ に設定できます
+- **サーバー グループ:** __既定__ に設定できます
 - **名前 (省略可能):** 空白のままにすることができます
 - **詳細:**
     - **ホスト IP アドレス:** Kubernetes クラスターのパブリック IP アドレスです

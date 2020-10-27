@@ -4,12 +4,12 @@ description: 計画ステージで収集した情報を使用して、Azure VMwa
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776427"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152037"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "91776427"
 ## <a name="create-the-jump-box"></a>ジャンプ ボックスを作成する
 
 >[!IMPORTANT]
->**[プライベート クラウドの作成]** 画面の初期プロビジョニング手順で **[Virtual Network]** オプションを空白のままにした場合は、このセクションを続行する**前**に、[VMware プライベート クラウドのネットワークを構成する](tutorial-configure-networking.md)ことに関するチュートリアルを完了してください。  
+>**[プライベート クラウドの作成]** 画面の初期プロビジョニング手順で **[Virtual Network]** オプションを空白のままにした場合は、このセクションを続行する **前** に、 [VMware プライベート クラウドのネットワークを構成する](tutorial-configure-networking.md)ことに関するチュートリアルを完了してください。  
 
 Azure VMware Solution のデプロイ後に、vCenter および NSX に接続する仮想ネットワークのジャンプ ボックスを作成します。 いったん ExpressRoute 回線と ExpressRoute Global Reach を構成したら、ジャンプ ボックスは必要ありません。  しかし、Azure VMware Solution 内の vCenter や NSX に接続するのに便利です。  
 
@@ -82,7 +82,7 @@ Azure VMware Solution 環境に新しいネットワーク セグメントを作
 
 「[アドバタイズされるネットワーク ルートを確認する](#verify-network-routes-advertised)」の手順に戻ります。 一覧に、前の手順で作成したネットワーク セグメントを表す追加のルートが表示されます。  
 
-仮想マシンの場合は、「[アドバタイズされる NSX-T セグメントを確認する](#verify-advertised-nsx-t-segment)」の手順で作成したセグメントを割り当てます。  
+仮想マシンには、「[Azure VMware Solution 上にネットワーク セグメントを作成する](#create-a-network-segment-on-azure-vmware-solution)」の手順で作成したセグメントを割り当てます。  
 
 DNS が必要なため、どの DNS サーバーを使用するかを特定します。  
 

@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619544"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331670"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
  
 このチュートリアルでは、シングル テナントの実装に関する完全な分析シナリオについて説明します。 シナリオでは、分析によって企業の賢明な意思決定を可能にする方法を示します。 各テナント データベースから抽出されたデータを使用した分析によって、テナントの動作 (Wingtip Tickets SaaS サンプル アプリケーションの使用など) に関する洞察を獲得します。 このシナリオには、次の 3 つの手順が含まれます。 
 
-1.  各テナント データベースから分析ストアにデータを**抽出**して分析ストアに**読み込みます**。
-2.  分析処理のために、**抽出されたデータを変換**します。
+1.  各テナント データベースから分析ストアにデータを **抽出** して分析ストアに **読み込みます** 。
+2.  分析処理のために、 **抽出されたデータを変換** します。
 3.  **ビジネス インテリジェンス** ツールを使用して、意思決定を支援する有益な洞察を引き出します。 
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -44,7 +44,7 @@ ms.locfileid: "91619544"
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千もの可能性があるデータベースに分散している場合、アクセスは複雑になります。 複雑さを軽減し、トランザクション データに対する分析クエリの影響を最小限に押さえる 1 つの方法は、目的に合うように設計された分析データベースまたはデータ ウェアハウスにデータを抽出することです。
 
-このチュートリアルでは、Wingtip Tickets SaaS アプリケーション用の完全な分析シナリオを紹介します。 最初に、*エラスティック ジョブ*を使用して、各テナント データベースからデータを抽出し、それを分析ストア内のステージング テーブルに読み込みます。 分析ストアには、SQL Database または SQL プールを使用できます。 大規模なデータ抽出には、[Azure Data Factory](../../data-factory/introduction.md) が推奨されます。
+このチュートリアルでは、Wingtip Tickets SaaS アプリケーション用の完全な分析シナリオを紹介します。 最初に、 *エラスティック ジョブ* を使用して、各テナント データベースからデータを抽出し、それを分析ストア内のステージング テーブルに読み込みます。 分析ストアには、SQL Database または SQL プールを使用できます。 大規模なデータ抽出には、[Azure Data Factory](../../data-factory/introduction.md) が推奨されます。
 
 次に、集計データを一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに変換します。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。  Wingtip Tickets では:
 
@@ -55,7 +55,7 @@ ms.locfileid: "91619544"
  
 ![architectureOverView](./media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-最後に、**PowerBI** を使用して分析ストアに対してクエリが実行され、テナントの動作と Wingtip Tickets アプリケーションの使用に関する洞察が強調表示されます。 以下を行うクエリを実行します。
+最後に、 **PowerBI** を使用して分析ストアに対してクエリが実行され、テナントの動作と Wingtip Tickets アプリケーションの使用に関する洞察が強調表示されます。 以下を行うクエリを実行します。
  
 - 各会場の相対的な人気を示す
 - さまざまなイベントのチケットの売上パターンを強調表示する
@@ -70,32 +70,32 @@ ms.locfileid: "91619544"
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
 - Wingtip Tickets SaaS Database Per Tenant アプリケーションをデプロイします。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](../../sql-database/saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
-- Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション [ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)を GitHub からダウンロードします。 ダウンロードの手順を参照してください。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除*してください。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
+- Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション [ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)を GitHub からダウンロードします。 ダウンロードの手順を参照してください。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除* してください。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 - Power BI Desktop をインストールします。 [Power BI Desktop のダウンロード](https://powerbi.microsoft.com/downloads/)
-- 追加のテナントのバッチをプロビジョニングします。[**テナントのプロビジョニングに関するチュートリアル**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)をご覧ください。
-- ジョブ アカウントとジョブ アカウント データベースを作成します。 適切な手順については、[**スキーマ管理に関するチュートリアル**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)をご覧ください。
+- 追加のテナントのバッチをプロビジョニングします。 [**テナントのプロビジョニングに関するチュートリアル**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)をご覧ください。
+- ジョブ アカウントとジョブ アカウント データベースを作成します。 適切な手順については、 [**スキーマ管理に関するチュートリアル**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)をご覧ください。
 
 ### <a name="create-data-for-the-demo"></a>デモ用のデータを作成する
 
-このチュートリアルでは、チケット売上データで分析を実行します。 現在の手順では、すべてのテナントのチケット データを生成します。  後で、分析用にこのデータを抽出します。 *前述のようにテナントのバッチをプロビジョニングし、相当量のデータを確保してください*。 十分な量のデータがあれば、さまざまなチケット購入パターンを明らかにすることができます。
+このチュートリアルでは、チケット売上データで分析を実行します。 現在の手順では、すべてのテナントのチケット データを生成します。  後で、分析用にこのデータを抽出します。 *前述のようにテナントのバッチをプロビジョニングし、相当量のデータを確保してください* 。 十分な量のデータがあれば、さまざまなチケット購入パターンを明らかにすることができます。
 
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* を開き、次の値を設定します。
-    - **$DemoScenario** = **1**: すべての会場でイベントのチケットを購入
+    - **$DemoScenario** = **1** : すべての会場でイベントのチケットを購入
 2. **F5** キーを押してスクリプトを実行し、各会場のすべてのイベントのチケット購入履歴を作成します。  スクリプトが数分間実行され、数万枚のチケットが生成されます。
 
 ### <a name="deploy-the-analytics-store"></a>分析ストアをデプロイする
 多くの場合、すべてのテナント データを保持する多数のトランザクション データベースが存在します。 多数のトランザクション データベースのテナント データを、1 つの分析ストアに集約する必要があります。 集約により、データの効率的なクエリが可能になります。 このチュートリアルでは、Azure SQL Database を使用して集約されたデータを格納します。
 
-次の手順では、**tenantanalytics** という分析ストアをデプロイします。 このチュートリアルで後ほど設定する、定義済みのテーブルもデプロイします。
+次の手順では、 **tenantanalytics** という分析ストアをデプロイします。 このチュートリアルで後ほど設定する、定義済みのテーブルもデプロイします。
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* を開きます。 
 2. 選択した分析ストアに合わせて、スクリプト内の $DemoScenario 変数を設定します。
     - 列ストアを使用せずに SQL Database を使用するには、 **$DemoScenario** = **2** を設定します
     - 列ストアを使用して SQL Database を使用するには、 **$DemoScenario** = **3** を設定します  
-3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
+3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト ( *Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
-アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。ログイン名として「*developer*」、パスワードとして「*P\@ssword1*」を使用します。 詳しいガイダンスについては、[入門チュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+アプリケーションをデプロイし、対象のテナント データを入力しました。次に、 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、 **tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。ログイン名として「 *developer* 」、パスワードとして「 *P\@ssword1* 」を使用します。 詳しいガイダンスについては、[入門チュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
+![SQL Server への接続に必要な情報を示すスクリーンショット。](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 オブジェクト エクスプローラーで次の手順を実行します。
 
@@ -107,16 +107,16 @@ ms.locfileid: "91619544"
 SSMS オブジェクト エクスプローラーで分析ストア ノードを展開して、次のデータベース項目を表示します。
 
 - **TicketsRawData** テーブルと **EventsRawData** テーブルには、テナント データベースから抽出した生データが保持されます。
-- スター スキーマ テーブルは、**fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events**、**dim_Dates** です。
+- スター スキーマ テーブルは、 **fact_Tickets** 、 **dim_Customers** 、 **dim_Venues** 、 **dim_Events** 、 **dim_Dates** です。
 - ストアド プロシージャは、生データ テーブルからスター スキーマ テーブルを設定するために使用します。
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
+![SSMS オブジェクト エクスプローラーに表示されているデータベース項目のスクリーンショット。](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>データの抽出 
 
 ### <a name="create-target-groups"></a>ターゲット グループを作成する 
 
-先に進む前に、ジョブ アカウントと jobaccount データベースがデプロイされていることを確認します。 次の一連の手順では、エラスティック ジョブを使用して各テナント データベースからデータを抽出し、データを分析ストアに保存します。 次に、2 番目のジョブでデータを細分化し、スター スキーマの各テーブルに格納します。 この 2 つのジョブは、それぞれ **TenantGroup**、**AnalyticsGroup** という名前の 2 つの異なるターゲット グループに対して実行されます。 抽出ジョブは、すべてのテナント データベースが含まれた TenantGroup に対して実行されます。 細分化ジョブは、分析ストアだけが含まれた AnalyticsGroup に対して実行されます。 次の手順に従って、ターゲット グループを作成します。
+先に進む前に、ジョブ アカウントと jobaccount データベースがデプロイされていることを確認します。 次の一連の手順では、エラスティック ジョブを使用して各テナント データベースからデータを抽出し、データを分析ストアに保存します。 次に、2 番目のジョブでデータを細分化し、スター スキーマの各テーブルに格納します。 この 2 つのジョブは、それぞれ **TenantGroup** 、 **AnalyticsGroup** という名前の 2 つの異なるターゲット グループに対して実行されます。 抽出ジョブは、すべてのテナント データベースが含まれた TenantGroup に対して実行されます。 細分化ジョブは、分析ストアだけが含まれた AnalyticsGroup に対して実行されます。 次の手順に従って、ターゲット グループを作成します。
 
 1. SSMS で、catalog-dpt-&lt;User&gt; の **jobaccount** データベースに接続します。
 2. SSMS で *…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql* を開きます。 
@@ -125,7 +125,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 ### <a name="extract-raw-data-from-all-tenants"></a>すべてのテナントから生データを抽出する
 
-"*チケット/顧客*" データでは、"*イベント/会場*" データよりも頻繁に大幅なデータ変更が発生すると考えられます。 そのため、チケット/顧客データは、イベント/会場データよりも頻繁に別途抽出することを検討します。 このセクションでは、次の 2 つのジョブを定義し、スケジュールします。
+" *チケット/顧客* " データでは、" *イベント/会場* " データよりも頻繁に大幅なデータ変更が発生すると考えられます。 そのため、チケット/顧客データは、イベント/会場データよりも頻繁に別途抽出することを検討します。 このセクションでは、次の 2 つのジョブを定義し、スケジュールします。
 
 - チケット/顧客データを抽出する。
 - イベント/会場データを抽出する。
@@ -156,7 +156,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 2. SSMS で *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql* を開きます。
 3. **F5** キーを押してスクリプトを実行します。このスクリプトにより、分析ストアで sp_ShredRawExtractedData ストアド プロシージャを呼び出すジョブが定義されます。
 4. ジョブを正常に実行するための十分な時間を確保します。
-    - jobs.jobs_execution テーブルの **Lifecycle** 列でジョブの状態を確認します。 先に進む前に、ジョブが**成功**したことを確認します。 ジョブが正常に完了すると、次の図のようにデータが表示されます。
+    - jobs.jobs_execution テーブルの **Lifecycle** 列でジョブの状態を確認します。 先に進む前に、ジョブが **成功** したことを確認します。 ジョブが正常に完了すると、次の図のようにデータが表示されます。
 
 ![細分化](./media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 
@@ -164,7 +164,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 ### <a name="visualize-tenant-data"></a>テナント データを視覚化する
 
-スター スキーマ テーブルのデータは、分析に必要なすべてのチケット売上データを提供します。 大規模なデータセットで傾向をわかりやすくするには、グラフを使用してデータを視覚化する必要があります。  このセクションでは、**Power BI** を使用して、抽出して整理したテナント データを操作し、視覚化する方法について説明します。
+スター スキーマ テーブルのデータは、分析に必要なすべてのチケット売上データを提供します。 大規模なデータセットで傾向をわかりやすくするには、グラフを使用してデータを視覚化する必要があります。  このセクションでは、 **Power BI** を使用して、抽出して整理したテナント データを操作し、視覚化する方法について説明します。
 
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
@@ -175,7 +175,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[Connect]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「 *developer* 」、パスワードとして「 *P\@ssword1* 」を入力します。 **[Connect]** をクリックします。  
 
     ![[SQL Server データベース] ダイアログを示すスクリーンショット。ここでは、ユーザー名とパスワードを入力できます。](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

@@ -4,22 +4,22 @@ description: Azure Defender for IoT サービスの使用を開始するため�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
+ms.date: 10/07/2020
+ms.author: rkarlin
 ms.custom: references_regions
-ms.openlocfilehash: 19263f8db58c8d20288d3ae74c24efd85667bc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0913dc48f807c26396a38e31d293877b4561b7d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930964"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089181"
 ---
 # <a name="azure-defender-for-iot-prerequisites"></a>Azure Defender for IoT の前提条件
 
@@ -27,61 +27,23 @@ ms.locfileid: "90930964"
 
 ## <a name="minimum-requirements"></a>最小要件
 
-- IoT Hub Standard レベル
-  - Azure ロールの**所有者**レベルの特権
-- [Log Analytics ワークスペース](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
-- Azure Security Center (推奨)
-  - Azure Security Center の使用は推奨事項であり、必須ではありません。 Azure Security Center がない場合、IoT Hub 内の他の Azure リソースを表示することはできません。
+- IoT および OT デバイスのエージェントレス監視 (CyberX テクノロジに基づく)
+    - SPAN ポート経由のトラフィック監視をサポートするネットワーク スイッチ
+    - NTA センサーのハードウェア アプライアンス。詳細については、[認定ハードウェア](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)に関するページをご覧ください
+    - Azure サブスクリプションの **共同作成者** ロール (コミットされたデバイスを定義するためのオンボード時にのみ必要)
+    - IoT Hub (Free または Standard レベル) の **共同作成者** ロール (クラウド接続管理用)
+- Azure IoT Hub によって管理されるマネージド IoT デバイスのセキュリティ
+    - IoT Hub (Standard レベル) の **共同作成者** ロール
+    - IoT Hub: **Azure Defender for IoT** フィーチャー トグルを有効にする必要があります
+    - デバイス レベルのセキュリティ モジュール サポートの場合  
+        - Defender for IoT エージェントでは、増え続けているデバイスとプラットフォームをサポートしています。[サポートされるプラットフォームのリスト](how-to-deploy-agent.md)に関するページをご覧ください
 
-## <a name="working-with-defender-for-iot-service"></a>Defender for IoT サービスの操作
-
-Defender for IoT の分析情報とレポートは、Azure IoT Hub と Azure Security Center を使用して入手できます。 Azure IoT Hub で Defender for IoT を有効にするには、**所有者**レベルの特権を持つアカウントが必要です。 IoT Hub で ASC for IoT を有効にすると、Defender for IoT の分析情報が、Azure IoT Hub では **[セキュリティ]** 機能として、Azure Security Center では **[IoT]** として表示されます。
 
 ## <a name="supported-service-regions"></a>サポートされているサービス リージョン
 
-Defender for IoT は、現在のところ次の Azure リージョン内の IoT Hub でサポートされています。
-
-- 米国中部
-- 米国東部
-- 米国東部 2
-- 米国中西部
-- 米国西部
-- 米国西部 2
-- 米国中南部
-- 米国中北部
-- カナダ中部
-- カナダ東部
-- 北ヨーロッパ
-- ブラジル南部
-- フランス中部
-- 英国西部
-- 英国南部
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 西日本
-- 東日本
-- オーストラリア南東部
-- オーストラリア東部
-- 東アジア
-- 東南アジア
-- 韓国中部
-- 韓国南部
-- インド中部
-- インド南部
+詳細については、[IoT Hub によりサポートされるリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)に関するページをご覧ください。 
 
 Defender for IoT では、ヨーロッパの全リージョンからのトラフィックがすべて西ヨーロッパ リージョンのデータ センターにルーティングされ、それ以外の全リージョンからのトラフィックがすべて米国中部リージョンのデータ センターにルーティングされます。
-
-## <a name="wheres-my-iot-hub"></a>自分の IoT Hub はどこにありますか?
-
-開始する前に、ご自分の IoT Hub の場所を確認して、サービスの提供状況を確認してください。
-
-1. IoT ハブを開きます。
-1. **[Overview]** をクリックします。
-1. 表示される場所が[サポートされているサービス リージョン](#supported-service-regions)のいずれかと一致することを確認します。
-
-## <a name="supported-platforms-for-agents"></a>エージェントでサポートされているプラットフォーム
-
-Defender for IoT エージェントによってサポートされるデバイスとプラットフォームのリストは増え続けています。 [サポートされているプラットフォームの一覧](how-to-deploy-agent.md)を参照して、既存または予定しているデバイス ライブラリを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

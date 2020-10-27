@@ -9,17 +9,17 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873100"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217067"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web アプリでプライベート エンドポイントを使用する
 
 > [!IMPORTANT]
-> プライベート エンドポイントは、次の App Service プランでホストされている Windows および Linux の Web アプリ (コンテナー化されているかどうかにかかわらず) で使用できます:**Isolated**、**PremiumV2**、**PremiumV3**、**Functions Premium** (Elastic Premium プランとも呼ばれます)。 
+> プライベート エンドポイントは、次の App Service プランでホストされている Windows および Linux の Web アプリ (コンテナー化されているかどうかにかかわらず) で使用できます: **Isolated** 、 **PremiumV2** 、 **PremiumV3** 、 **Functions Premium** (Elastic Premium プランとも呼ばれます)。 
 
 Azure Web アプリにプライベート エンドポイントを使用すると、プライベート ネットワーク内のクライアントが Private Link 経由で安全にアプリにアクセスできるようになります。 プライベート エンドポイントは、Azure VNet アドレス空間からの IP アドレスを使用します。 プライベート ネットワーク上のクライアントと Web アプリ間のネットワーク トラフィックは、VNet および Microsoft バックボーン ネットワーク上の Private Link を経由することで、パブリック インターネットにさらされないようにします。
 
@@ -86,12 +86,12 @@ Web アプリにプライベート エンドポイントを使用する場合は
 |cloudservicename.cloudapp.net|A|40.122.110.154|<-- このパブリック IP はプライベート エンドポイントではありません。403 エラーを受け取ります|
 
 テスト コンピューターのホスト エントリを変更できることをテストするには、プライベート DNS サーバーまたは Azure DNS プライベート ゾーンを設定する必要があります。
-作成する必要がある DNS ゾーンは、**privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
+作成する必要がある DNS ゾーンは、 **privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
 たとえば、名前解決は次のようになります。
 
 |名前 |Type |値 |注記 |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<-- Azure パブリック DNS にこのエントリが作成され、App Service がプライベートリンクを指すようになります。これは Microsoft によって管理されます|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<-- プライベート エンドポイントの IP アドレスを指すように、DNS システムでこのエントリを管理します|
 
 この DNS 構成の後、既定の名前 mywebappname.azurewebsites.net を使用してプライベートに Web アプリに接続できます。 既定の証明書が *.azurewebsites.net に対して発行されるため、この名前を使用する必要があります。

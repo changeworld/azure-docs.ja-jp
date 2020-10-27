@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e2040f52efae1955cf5a7b530358f2cec07b5fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef3b328f70b3f5d6ae1165e907566994d544edf4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396520"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089640"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -42,7 +42,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** では、 **[手動]** を選びます。
-1. ポリシー キーの**名前**を入力します。 たとえば、「 `SendGridSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `SendGridSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 1. **[キー使用法]** には **[署名]** を選択します。
 1. **［作成］** を選択します
@@ -212,15 +212,15 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 ## <a name="add-datauri-content-definition"></a>DataUri コンテンツ定義の追加
 
-`<BuildingBlocks>` 内の要求変換の下で、バージョン 2.0.0 データ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
+`<BuildingBlocks>` 内の要求変換の下で、バージョン 2.1.0 データ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
 ```xml
 <ContentDefinitions>
  <ContentDefinition Id="api.localaccountsignup">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountpasswordreset">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
   </ContentDefinition>
 </ContentDefinitions>
 ```
@@ -357,8 +357,8 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
       <Metadata>
         <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
@@ -374,8 +374,8 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
       <Metadata>
         <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
@@ -459,14 +459,14 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     ```XML
     <ContentDefinitions>
       <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
           <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
         </LocalizedResourcesReferences>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountpasswordreset">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
           <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
@@ -482,6 +482,41 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
+    
+## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
+
+Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。 
+
+```XML
+<LocalizedResources Id="api.custom-email.en">
+  <LocalizedStrings>
+    ...
+    <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+    <!-- Claims-->
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <!-- Email validation error messages-->
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+ローカライズされた文字列を追加した後に、LocalAccountSignUpWithLogonEmail と LocalAccountDiscoveryUsingEmailAddress の技術プロファイルから OTP 検証エラー メッセージのメタデータを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

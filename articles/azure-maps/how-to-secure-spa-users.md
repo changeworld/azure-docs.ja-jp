@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319692"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090286"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>ユーザー サインインでシングル ページ アプリケーションをセキュリティで保護する
 
@@ -34,7 +34,7 @@ ms.locfileid: "91319692"
 
 2. **[名前]** を入力して **[Support account type]\(サポートされるアカウントの種類\)** を選択し、リダイレクト URI を指定します。この URI は、トークンを発行する Azure AD URL を表し、マップ コントロールがホストされる URL でもあります。 詳細なサンプルについては、[Azure Maps Azure AD サンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)に関する記事を参照してください。 次に、 **[登録]** を選択します。  
 
-3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可の追加](./media/how-to-manage-authentication/app-permissions.png)
@@ -67,7 +67,7 @@ ms.locfileid: "91319692"
         </script>   
     ```
 
-7. ユーザーまたはグループの Azure ロール ベースのアクセス制御を構成します。 [RBAC を有効にするには、次のセクションを参照](#grant-role-based-access-for-users-to-azure-maps)してください。
+7. ユーザーまたはグループの Azure ロールベースのアクセス制御 (Azure RBAC) を構成します。 [Azure RBAC を有効にするには、次のセクションを参照](#grant-role-based-access-for-users-to-azure-maps)してください。
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

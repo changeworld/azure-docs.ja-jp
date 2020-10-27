@@ -4,18 +4,18 @@ description: この記事では、最新の Azure.Messaging.EventHubs パッケ�
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728507"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329323"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs との間でイベントを送受信する - .NET (Azure.Messaging.EventHubs) 
-このクイックスタートでは、**Azure.Messaging.EventHubs** .NET ライブラリを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
+このクイックスタートでは、 **Azure.Messaging.EventHubs** .NET ライブラリを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
 
 > [!IMPORTANT]
-> このクイックスタートでは、新しい **Azure.Messaging.EventHubs** ライブラリを使用します。 以前の **Microsoft.Azure.EventHubs** ライブラリを使用するクイックスタートについては、[Microsoft.Azure.EventHubs ライブラリを使用したイベントの送受信](event-hubs-dotnet-standard-get-started-send-legacy.md)に関するページを参照してください。 
+> このクイックスタートでは、新しい **Azure.Messaging.EventHubs** ライブラリを使用します。 以前の **Microsoft.Azure.EventHubs** ライブラリを使用するクイックスタートについては、 [Microsoft.Azure.EventHubs ライブラリを使用したイベントの送受信](event-hubs-dotnet-standard-get-started-send-legacy.md)に関するページを参照してください。 
 
 
 
@@ -24,9 +24,9 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 
 このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 
-- **Microsoft Azure サブスクリプション**。 Azure Event Hubs を含む Azure サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
-- **Microsoft Visual Studio 2019**。 Azure Event Hubs クライアント ライブラリでは、C# 8.0 で導入された新機能を利用しています。  以前のバージョンの C# 言語でライブラリを使用することもできますが、新しい構文は使用できません。 完全な構文を使用するには、[.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 以降および[言語バージョン](/dotnet/csharp/language-reference/configure-language-version#override-a-default) を `latest` に設定して、コンパイルすることをお勧めします。 Visual Studio を使用している場合、Visual Studio 2019 より前のバージョンには、C# 8.0 プロジェクトをビルドするために必要なツールとの互換性がありません。 無料の Community エディションを含む Visual Studio 2019 は、[こちら](https://visualstudio.microsoft.com/vs/)からダウンロードできます。
-- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列**を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
+- **Microsoft Azure サブスクリプション** 。 Azure Event Hubs を含む Azure サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
+- **Microsoft Visual Studio 2019** 。 Azure Event Hubs クライアント ライブラリでは、C# 8.0 で導入された新機能を利用しています。  以前のバージョンの C# 言語でライブラリを使用することもできますが、新しい構文は使用できません。 完全な構文を使用するには、[.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 以降および[言語バージョン](/dotnet/csharp/language-reference/configure-language-version#override-a-default) を `latest` に設定して、コンパイルすることをお勧めします。 Visual Studio を使用している場合、Visual Studio 2019 より前のバージョンには、C# 8.0 プロジェクトをビルドするために必要なツールとの互換性がありません。 無料の Community エディションを含む Visual Studio 2019 は、[こちら](https://visualstudio.microsoft.com/vs/)からダウンロードできます。
+- **Event Hubs 名前空間とイベント ハブを作成する** 。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、 **Event Hubs 名前空間用の接続文字列** を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
 
 ## <a name="send-events"></a>送信イベント 
 このセクションでは、イベント ハブにイベントを送信する .NET Core コンソール アプリケーションの作成方法を説明します。 
@@ -42,14 +42,14 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
     1. 次に、 **[次へ]** を選択します。 
 
         ![[新しいプロジェクト] ダイアログ ボックス](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
-1. プロジェクト名として「**EventHubsSender**」、ソリューション名として「**EventHubsQuickStart**」と入力し、 **[OK]** を選択してプロジェクトを作成します。 
+1. プロジェクト名として「 **EventHubsSender** 」、ソリューション名として「 **EventHubsQuickStart** 」と入力し、 **[OK]** を選択してプロジェクトを作成します。 
 
     ![[C#] > [コンソール] アプリ](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
 1. メニューから **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 
-1. 次のコマンドを実行して、**Azure.Messaging.EventHubs** NuGet パッケージをインストールします。
+1. 次のコマンドを実行して、 **Azure.Messaging.EventHubs** NuGet パッケージをインストールします。
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
@@ -61,6 +61,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Messaging.EventHubs;
@@ -129,17 +130,17 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 
 1. ソリューション エクスプローラー ウィンドウで、 **[EventHubQuickStart]** ソリューションを右クリックし、 **[追加]** をポイントして、 **[新しいプロジェクト]** を選択します。 
 1. **[コンソール アプリ (.NET Core)]** を選択し、 **[次へ]** を選択します。 
-1. **[プロジェクト名]** に「**EventHubsReceiver**」と入力し、 **[作成]** を選択します。 
+1. **[プロジェクト名]** に「 **EventHubsReceiver** 」と入力し、 **[作成]** を選択します。 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
 1. メニューから **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 
-1. 次のコマンドを実行して、**Azure.Messaging.EventHubs** NuGet パッケージをインストールします。
+1. 次のコマンドを実行して、 **Azure.Messaging.EventHubs** NuGet パッケージをインストールします。
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
     ```
-1. 次のコマンドを実行して、**Azure.Messaging.EventHubs.Processor** NuGet パッケージをインストールします。
+1. 次のコマンドを実行して、 **Azure.Messaging.EventHubs.Processor** NuGet パッケージをインストールします。
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs.Processor
@@ -150,6 +151,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Storage.Blobs;
@@ -230,4 +232,4 @@ GitHub で次のサンプルを確認します。
 
 - [GitHub にある Event Hubs のサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [GitHub にあるイベント プロセッサのサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
-- [ロールベースのアクセス制御 (RBAC) のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+- [Azure ロールベースのアクセス制御 (Azure RBAC) のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

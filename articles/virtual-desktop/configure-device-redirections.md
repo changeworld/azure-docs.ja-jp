@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3441d7c7f42c58928bb97c945e7b1e7673f7afa
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876863"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328881"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 
@@ -50,7 +50,10 @@ PowerShell または Azure portal を使用してホスト プール用の RDP �
 - `camerastoredirect:s:*`: すべてのカメラをリダイレクトします。
 - `camerastoredirect:s:`: カメラのリダイレクトを無効にします。
 
-KSCATEGORY_VIDEO_CAMERA インターフェイスのセミコロンで区切られた一覧 (`camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` など) を使用して、特定のカメラをリダイレクトすることもできます。
+>[!NOTE]
+>`camerastoredirect:s:` プロパティが無効になっている場合でも、ローカル カメラは `devicestoredirect:s:` プロパティを介してリダイレクトされる可能性があります。 カメラのリダイレクトを完全に無効にするには、`camerastoredirect:s:` を設定し、`devicestoredirect:s:` を設定するか、カメラを含まないプラグ アンド プレイ デバイスのサブセットを定義します。
+
+KSCATEGORY_VIDEO_CAMERA インターフェイスのセミコロンで区切られた一覧 (`camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` など) を使用して、特定のカメラをリダイレクトすることもできます。 
 
 ### <a name="clipboard-redirection"></a>クリップボードのリダイレクト
 

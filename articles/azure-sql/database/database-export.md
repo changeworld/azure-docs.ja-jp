@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e62a7d9b9beb8ecdfaabdd44fdd547dd78d38f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443809"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328193"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 
@@ -34,7 +34,7 @@ ms.locfileid: "91443809"
 
   - コンピューティング サイズを一時的に増やします。
   - エクスポート中のすべての読み取りアクティビティと書き込みアクティビティを中止する。
-  - すべての大きなテーブルに null 以外の値を持つ [クラスター化インデックス](https://msdn.microsoft.com/library/ms190457.aspx) を使用する。 クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。 これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。 テーブルがエクスポート向けに最適化されているかを判断するための適切な方法として、**DBCC SHOW_STATISTICS** を実行し、*RANGE_HI_KEY* が null 以外の値であり、分布が適切であることを確認する方法があります。 詳細については、「[DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)」を参照してください。
+  - すべての大きなテーブルに null 以外の値を持つ [クラスター化インデックス](https://msdn.microsoft.com/library/ms190457.aspx) を使用する。 クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。 これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。 テーブルがエクスポート向けに最適化されているかを判断するための適切な方法として、 **DBCC SHOW_STATISTICS** を実行し、 *RANGE_HI_KEY* が null 以外の値であり、分布が適切であることを確認する方法があります。 詳細については、「[DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)」を参照してください。
 
 > [!NOTE]
 > BACPAC はバックアップおよび復元操作に使用するためのものでありません。 Azure では、すべてのユーザー データベースのバックアップが自動的に作成されます。 詳しくは、[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関するページと、[SQL Database のバックアップ](automated-backups-overview.md)に関するページをご覧ください。
@@ -48,9 +48,9 @@ Azure portal を使用して [Azure SQL Managed Instance](../managed-instance/sq
 
 1. [Azure Portal](https://portal.azure.com) を使用してデータベースをエクスポートするには、データベースのページを開き、ツールバーの **[エクスポート]** をクリックします。
 
-   ![データベースのエクスポート](./media/database-export/database-export1.png)
+   ![[エクスポート] ボタンが強調表示されているスクリーンショット。](./media/database-export/database-export1.png)
 
-2. BACPAC ファイル名を指定し、エクスポートに使用する既存の Azure ストレージ アカウントとコンテナーを選択した後、ソース データベースにアクセスするための適切な資格情報を指定します。 ここでは、Azure 管理者であっても SQL **サーバー管理者ログイン**が必要になります。Azure 管理者であることと、Azure SQL Database または Azure SQL Managed Instance で管理者のアクセス許可を持っていることは同じではないためです。
+2. BACPAC ファイル名を指定し、エクスポートに使用する既存の Azure ストレージ アカウントとコンテナーを選択した後、ソース データベースにアクセスするための適切な資格情報を指定します。 ここでは、Azure 管理者であっても SQL **サーバー管理者ログイン** が必要になります。Azure 管理者であることと、Azure SQL Database または Azure SQL Managed Instance で管理者のアクセス許可を持っていることは同じではないためです。
 
     ![データベースのエクスポート](./media/database-export/database-export2.png)
 
@@ -89,7 +89,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-エクスポート要求の状態を確認するには、[Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) コマンドレットを使用します。 要求直後にこれを実行すると、通常は、**Status : InProgress** が返されます。 **Status:Succeeded** が表示された場合、エクスポートは完了しています。
+エクスポート要求の状態を確認するには、[Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) コマンドレットを使用します。 要求直後にこれを実行すると、通常は、 **Status : InProgress** が返されます。 **Status:Succeeded** が表示された場合、エクスポートは完了しています。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

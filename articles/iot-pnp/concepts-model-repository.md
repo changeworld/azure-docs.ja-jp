@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042883"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131362"
 ---
 # <a name="device-model-repository"></a>デバイス モデル リポジトリ
 
@@ -24,20 +24,20 @@ DMR によって、デバイス ツイン モデル識別子 (DTMI) に基づい
 
 Microsoft によって、これらの特性を持つパブリック DMR がホストされます:
 
-- キュレーション モデル。 Microsoft によって、オープンな GitHub PR 検証ワークフローを使用して、使用可能なすべてのインターフェイスがレビューおよび承認されます。
+- キュレーション モデル。 Microsoft によって、GitHub のプル要求 (PR) 検証ワークフローを使用して、使用可能なすべてのインターフェイスがレビューおよび承認されます。
 - 不変性。  公開後、インターフェイスを更新することはできません。
-- ハイパースケール。 Microsoft によって、セキュリティで保護された拡張性の高いエンドポイントを作成するために必要なすべてのインフラストラクチャが提供されます。
+- ハイパースケール。 Microsoft は、デバイス モデルを公開して使用できる、安全でスケーラブルなエンドポイントを作成するために必要なインフラストラクチャを提供しています。
 
 ## <a name="custom-device-model-repository"></a>カスタム デバイス モデル リポジトリ
 
-ローカル ファイル システムやカスタム HTTP Web サーバーなどの任意のストレージ メディア内で同じ DMR パターンを使用して、カスタム DMR を作成できます。 DMR にアクセスするために使用するベース URL を変更するだけで、パブリック DRM と同じ方法でカスタム DMR からモデルを取得できます。
+ローカル ファイル システムやカスタム HTTP Web サーバーなどの任意のストレージ メディア内で同じ DMR パターンを使用して、カスタム DMR を作成できます。 DMR にアクセスするために使用するベース URL を変更するだけで、パブリック DMR と同じ方法でカスタム DMR からデバイス モデルを取得できます。
 
 > [!NOTE]
-> パブリック DMR 内でモデルを検証するために使用されるツールは、カスタム リポジトリ内で再利用できます。
+> Microsoft は、パブリック DMR のデバイス モデルを検証するためのツールを提供しています。 これらのツールはカスタム リポジトリで再利用できます。
 
 ## <a name="public-models"></a>パブリック モデル
 
-モデル リポジトリに格納されているパブリック デジタル ツイン モデルは、すべてのユーザーがアプリケーション内で使用および統合することができます。 パブリック モデルを使用すると、オープンなエコシステムでデバイス ビルダーおよびソリューション開発者が、IoT プラグ アンド プレイ デバイス モデルを共有したり、再利用したりすることができます。
+モデル リポジトリに格納されているパブリック デバイス モデルは、すべてのユーザーがアプリケーション内で使用および統合することができます。 パブリック デバイス モデルを使用すると、オープンなエコシステムでデバイス ビルダーおよびソリューション開発者が、IoT プラグ アンド プレイ デバイス モデルを共有したり、再利用したりすることができます。
 
 モデル リポジトリにモデルを公開してパブリックにする方法については、「[モデルを公開する](#publish-a-model)」のセクションを参照してください。
 
@@ -47,7 +47,7 @@ Microsoft によって、これらの特性を持つパブリック DMR がホ�
 
 ### <a name="resolve-models"></a>モデルを解決する
 
-プログラムを使用してこれらのインターフェイスにアクセスするには、dtmi を、パブリック エンドポイントのクエリに使用できる相対パスに変換する必要があります。 次のコード サンプルは、この方法を示します。
+プログラムを使用してこれらのインターフェイスにアクセスするには、DTMI を、パブリック エンドポイントのクエリに使用できる相対パスに変換する必要があります。 次のコード サンプルは、この方法を示します。
 
 DTMI を絶対パスに変換するには、`IsValidDtmi` と共に `DtmiToPath` 関数を使用します。
 
@@ -88,14 +88,14 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 1. パブリック GitHub リポジトリをフォークします: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)。
 1. フォークされたリポジトリをクローンします。 必要に応じて、新しいブランチを作成して、変更を `main` ブランチから分離します。
 1. フォルダーまたはファイル名の規則を使用して、新しいインターフェイスを `dtmi` フォルダーに追加します。 [add-model](#add-model) ツールを参照してください。
-1. [変更を検証するためのスクリプト](#validate-files)のセクションを使用して、モデルをローカルで検証します。
+1. [変更を検証するためのスクリプト](#validate-files)のセクションを使用して、デバイス モデルをローカルで検証します。
 1. 変更をローカルでコミットし、フォークにプッシュします。
-1. フォークから、`main` ブランチを対象とする PR を作成します。 「[Issue もしくはプル リクエストの作成](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request)」のドキュメントを参照してください。
-1. [PR 要件](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)を確認します。
+1. フォークから、`main` ブランチを対象とするプル要求を作成します。 「[Issue もしくはプル リクエストの作成](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request)」のドキュメントを参照してください。
+1. [プル要求の要件](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)を確認します。
 
-送信された新しいインターフェイスを検証し、PR がすべてのチェックを満たすことを確認する一連の GitHub アクションが PR によってトリガーされます。
+送信された新しいインターフェイスを検証し、プル要求がすべてのチェックを満たすことを確認する一連の GitHub アクションがプル要求によってトリガーされます。
 
-Microsoft によって、3 営業日以内にすべてのチェックが行われ、PR への応答が行われます。
+Microsoft によって、3 営業日以内にすべてのチェックが行われ、プル要求への応答が行われます。
 
 ### <a name="add-model"></a>add-model
 
@@ -109,7 +109,7 @@ Microsoft によって、3 営業日以内にすべてのチェックが行わ�
 
 ### <a name="local-validation"></a>ローカル検証
 
-PR を送信する前に、同じ検証チェックをローカルで実行して、問題を事前に診断することができます。
+プル要求を送信する前に、同じ検証チェックをローカルで実行して、問題を事前に診断することができます。
 
 #### <a name="validate-files"></a>validate-files
 
@@ -125,7 +125,7 @@ PR を送信する前に、同じ検証チェックをローカルで実行し�
 
 #### <a name="validate-models"></a>validate-models
 
-[DTDL 検証サンプル](https://github.com/Azure-Samples/DTDL-Validator)を実行して、モデルをローカルで検証できます。
+[DTDL 検証サンプル](https://github.com/Azure-Samples/DTDL-Validator)を実行して、デバイス モデルをローカルで検証できます。
 
 ## <a name="next-steps"></a>次のステップ
 

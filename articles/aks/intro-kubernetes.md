@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88003204"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167187"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -63,6 +63,12 @@ Azure Kubernetes Service では、複数の Kubernetes バージョンを提供�
 AKS は GPU 対応ノード プールの作成をサポートしています。 Azure は現在、単一または複数の GPU に対応する VM を提供しています。 GPU 対応 VM は、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを想定して設計されています。
 
 詳細については、[AKS での GPU の使用][aks-gpu]に関するページを参照してください。
+
+### <a name="confidential-computing-nodes-public-preview"></a>コンフィデンシャル コンピューティング ノード (パブリック プレビュー)
+
+AKS では、Intel SGX ベースのコンフィデンシャル コンピューティング ノード プール (DCSv2 VM) の作成をサポートしています。 コンフィデンシャル コンピューティング ノードを使用すると、ハードウェアベースの、信頼できる、分離された実行環境 (エンクレーブ) でコンテナーを実行できます。 コンテナー間の分離を、構成証明を通じたコード整合性と組み合わせることで、多層防御によるコンテナー セキュリティ戦略を支援できます。 コンフィデンシャル コンピューティング ノードは、機密コンテナー (既存の Docker アプリ) とエンクレーブ対応のコンテナーの両方をサポートします。
+
+詳細については、[AKS のコンフィデンシャル コンピューティング ノード][conf-com-node]に関するページを参照してください
 
 ### <a name="storage-volume-support"></a>ストレージ ボリュームのサポート
 
@@ -143,3 +149,4 @@ AKS のデプロイと管理の詳細については、Azure CLI のクイック
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
+[conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

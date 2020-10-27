@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715929"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167697"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -68,7 +68,7 @@ namespace MyNamespace
 
 - *スタートアップ クラスは設定と登録だけを目的とします。* スタートアップ プロセス中、スタートアップ時に登録されるサービスを使用しないでください。 たとえば、スタートアップ中に登録されているロガーにメッセージを記録しないでください。 登録プロセスのこの時点は、サービスを利用するには早すぎます。 `Configure` メソッドが実行されると、Functions ランタイムは追加の依存関係を引き続き登録します。これがサービスの動作に影響を与える可能性があります。
 
-- *依存関係挿入コンテナーでは、明示的に登録された型のみが保持されます*。 挿入可能な型として利用できる唯一のサービスは `Configure` メソッド内で設定されるサービスです。 結果的に、`BindingContext` や `ExecutionContext` のような Functions 固有の型は設定中に利用できず、また、挿入可能な型として利用できません。
+- *依存関係挿入コンテナーでは、明示的に登録された型のみが保持されます* 。 挿入可能な型として利用できる唯一のサービスは `Configure` メソッド内で設定されるサービスです。 結果的に、`BindingContext` や `ExecutionContext` のような Functions 固有の型は設定中に利用できず、また、挿入可能な型として利用できません。
 
 ## <a name="use-injected-dependencies"></a>挿入された依存関係を使用する
 
@@ -118,9 +118,9 @@ namespace MyNamespace
 
 Azure Functions アプリのサービス有効期間は [ASP.NET 依存関係挿入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)と同じになります。 Functions アプリの場合、各種サービス有効期間が次のように動作します。
 
-- **一時的**:一時的なサービスは、サービスが要求されるたびに作成されます。
-- **スコープ付き**:スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
-- **シングルトン**:シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`DocumentClient` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
+- **一時的** :一時的なサービスは、サービスが要求されるたびに作成されます。
+- **スコープ付き** :スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
+- **シングルトン** :シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`DocumentClient` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
 
 GitHub の[さまざまなサービスの有効期間のサンプル](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)を表示するか、ダウンロードします。
 
@@ -131,8 +131,8 @@ GitHub の[さまざまなサービスの有効期間のサンプル](https://gi
 Azure Functions によって Application Insights が自動的に追加されます。
 
 > [!WARNING]
-> - サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。環境によって提供されるサービスと競合するサービスが登録されます。
-> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。 独自の `TelemetryClient` インスタンスを構成する必要がある場合は、「[Azure Functions を監視する](./functions-monitoring.md#version-2x-and-later-2)」に示されているように、挿入された `TelemetryConfiguration` を使用して作成します。
+> - 環境によって提供されるサービスと競合するサービスが登録されるため、サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。
+> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。 独自の `TelemetryClient` インスタンスを構成する必要がある場合は、[C# 関数でカスタム テレメトリをログに記録する](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)方法に関するセクションに示されているように、挿入された `TelemetryConfiguration` を使用して作成します。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> および ILoggerFactory
 
@@ -287,11 +287,11 @@ namespace MyNamespace
 }
 ```
 
-`IFunctionsConfigurationBuilder` の `ConfigurationBuilder` プロパティに構成プロバイダーを追加します。 構成プロバイダーの使用の詳細については、「[ASP.NET Core での構成](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)」を参照してください。
+`IFunctionsConfigurationBuilder` の `ConfigurationBuilder` プロパティに構成プロバイダーを追加します。 構成プロバイダーの使用の詳細については、「[ASP.NET Core での構成](/aspnet/core/fundamentals/configuration/#configuration-providers)」を参照してください。
 
 `FunctionsHostBuilderContext` は `IFunctionsConfigurationBuilder.GetContext()` から取得されます。 このコンテキストを使用して現在の環境名を取得し、関数アプリ フォルダー内の構成ファイルの場所を解決します。
 
-既定では、*appsettings.json* などの構成ファイルは、関数アプリの出力フォルダーに自動的にコピーされません。 ファイルがコピーされるようにするため、次のサンプルと一致するように *.csproj* ファイルを更新します。
+既定では、 *appsettings.json* などの構成ファイルは、関数アプリの出力フォルダーに自動的にコピーされません。 ファイルがコピーされるようにするため、次のサンプルと一致するように *.csproj* ファイルを更新します。
 
 ```xml
 <None Update="appsettings.json">

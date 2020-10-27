@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3eae2a21c902b49b8e76fcb45e45577231e8b9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528579"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル: Azure Active Directory と Rollbar の統合
 
@@ -41,7 +41,7 @@ Rollbar と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Rollbar では、**SP と IDP** によって開始される SSO がサポートされます
+* Rollbar では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-rollbar-from-the-gallery"></a>ギャラリーからの Rollbar の追加
 
@@ -61,13 +61,13 @@ Azure AD への Rollbar の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Rollbar**」と入力し、結果ウィンドウで **[Rollbar]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Rollbar** 」と入力し、結果ウィンドウで **[Rollbar]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Rollbar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Rollbar で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Rollbar で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Rollbar 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Rollbar で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,7 +99,7 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Rollbar のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://saml.rollbar.com` という URL を入力します。
 
@@ -107,14 +107,14 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Rollbar のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://rollbar.com/<accountname>/saml/login/azure/` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Rollbar クライアント サポート チーム](mailto:support@rollbar.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -134,15 +134,15 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
 1. 右上の **[Profile Settings]\(プロファイル設定\)** をクリックし、 **[Account Name settings]\(アカウント名の設定\)** をクリックします。
 
-    ![構成](./media/rollbar-tutorial/general.png)
+    ![[Profile Settings]\(プロファイル設定\) から選択されたアカウント名の設定を示すスクリーンショット。](./media/rollbar-tutorial/general.png)
 
 1. [SECURITY]\(セキュリティ\) の **[Identity Provider]\(ID プロバイダー\)** をクリックします。
 
-    ![構成](./media/rollbar-tutorial/configure1.png)
+    ![[SECURITY]\(セキュリティ\) の [Identity Provider]\(ID プロバイダー\) が選択された画面のスクリーンショット。](./media/rollbar-tutorial/configure1.png)
 
 1. **[SAML Identity Provider]\(SAML ID プロバイダー\)** セクションで、次の手順に従います。
 
-    ![構成](./media/rollbar-tutorial/configure2.png)
+    ![[SAML Identity Provider]\(SAML ID プロバイダー\) を示すスクリーンショット。ここで、説明されている値を入力できます。](./media/rollbar-tutorial/configure2.png)
 
     a. **[SAML Identity Provider]\(SAML ID プロバイダー\)** ドロップダウンから **[AZURE]** を選択します。
 
@@ -152,7 +152,7 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
 1. 保存ボタンをクリックすると、次のような画面が表示されます。
 
-    ![構成](./media/rollbar-tutorial/configure3.png)
+    ![[SAML Identity Provider]\(SAML ID プロバイダー\) ページの結果を示すスクリーンショット。](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
     > 次の手順を行うには、最初に、Azure で自分自身を Rollbar アプリにユーザーとして追加する必要があります。
@@ -180,7 +180,7 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -233,11 +233,11 @@ Azure AD ユーザーが Rollbar にサインインできるようにするに�
 
 1. **[Invite Team Members]\(チーム メンバーの招待\)** をクリックします。
 
-    ![[ユーザーの招待]](./media/rollbar-tutorial/user2.png)
+    ![[Invite Team Members]\(チーム メンバーの招待\) オプションが選択された画面のスクリーンショット。](./media/rollbar-tutorial/user2.png)
 
-1. ボックスにユーザー名 (例: **brittasimon\@contoso.com**) を入力し、 **[Add/Invite]\(追加/招待\)** をクリックします。
+1. ボックスにユーザー名 (例: **brittasimon\@contoso.com** ) を入力し、 **[Add/Invite]\(追加/招待\)** をクリックします。
 
-    ![[ユーザーの招待]](./media/rollbar-tutorial/user3.png)
+    ![メンバーの [Add/Invite]\(追加/招待\) および指定されたアドレスを示すスクリーンショット。](./media/rollbar-tutorial/user3.png)
 
 1. ユーザーが招待状を受け取り、承認すると、システムにそのユーザーが作成されます。
 

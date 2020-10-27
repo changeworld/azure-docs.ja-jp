@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7cc19adcc4769baaf34a75ef7217de639d0a357c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1d1a7e760a709c7068f16ca415a00de424b7e339
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079039"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124085"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -51,7 +51,7 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 | IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!NOTE]
-> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
+> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、米国中部、ブラジル南部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
 >
 > その他のすべてのリージョンでは、最大 4 TB および最大 6000 IOPS のストレージがサポートされています。
 >
@@ -97,7 +97,7 @@ Azure Database for MySQL は、プロビジョニングされているサーバ�
 
 ## <a name="pricing"></a>価格
 
-最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mysql/)を参照してください。 必要な構成のコストについては、[Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MySQL]** を選択してオプションをカスタマイズします。
+最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mysql/)を参照してください。 必要な構成のコストについては、 [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MySQL]** を選択してオプションをカスタマイズします。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5001864bd80917aef6d8631fe2b5097b22afbe03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074806"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125784"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
@@ -71,7 +71,7 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 | IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!IMPORTANT]
-> 大容量ストレージは、現在、次のリージョンでパブリック プレビュー中です。米国東部、米国東部 2、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
+> 大容量ストレージは、現在、次のリージョンでパブリック プレビュー中です。米国東部、米国東部 2、ブラジル南部、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
 >
 > その他のすべてのリージョンでは、最大 4 TB および最大 6000 IOPS のストレージがサポートされています。
 >
@@ -108,7 +108,7 @@ Azure Database for MariaDB は、プロビジョニングされているサー�
 
 ## <a name="pricing"></a>価格
 
-最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。 必要な構成のコストについては、[Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MariaDB]** を選択してオプションをカスタマイズします。
+最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。 必要な構成のコストについては、 [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MariaDB]** を選択してオプションをカスタマイズします。
 
 ## <a name="next-steps"></a>次のステップ
 - [サービスの制限事項](concepts-limits.md)を確認します。

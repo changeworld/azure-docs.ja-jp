@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71c84b35c001be7fafdc2df53014050ae21dec63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931298"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320200"
 ---
 # <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc 対応データ サービスのログを取得する
 
@@ -22,48 +22,60 @@ ms.locfileid: "90931298"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Arc 対応データ サービスのログを取得するには、Azure Data CLI ツールが必要となります。 [インストール手順](./install-client-tools.md)
+先に進む前に、次のものが必要です。
 
-Azure Arc 対応データ サービスのコントローラー サービスに管理者としてログインできる必要があります。
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [インストール手順](./install-client-tools.md)。
+* Azure Arc 対応データ サービス コントローラーにサインインするための管理者アカウント。
 
 ## <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc 対応データ サービスのログを取得する
 
-トラブルシューティングのために、すべてのポッドまたは特定のポッドで Azure Arc 対応データ サービスのログを取得できます。  これを行うには、`kubectl logs` コマンドなどの標準の Kubernetes ツールを使用するか、この記事のように Azure Data CLI ツールを使用できます。Azure Data CLI ツールを使用すると、すべてのログを一度に簡単に取得できます。
+トラブルシューティングのために、すべてのポッドまたは特定のポッドで Azure Arc 対応データ サービスのログを取得できます。 これは、`kubectl logs` コマンドなどの標準の Kubernetes ツールを使用して実行できます。この記事では、すべてのログを一度に取得できる [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ツールを使用します。
 
-まず、データ コントローラーにログインしていることを確認します。
+1. 管理者アカウントでデータ コントローラーにサインインします。
 
-```console
-azdata login
-```
+   ```console
+   azdata login
+   ```
 
-その後、次のコマンドを実行してログをダンプします。
-```console
-azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+2. 次のコマンドを実行して、ログをダンプします。
 
-#Example:
-#azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
-```
+   ```console
+   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```
 
-既定では、ログ ファイルは現在の作業ディレクトリの "logs" という名前のサブディレクトリに作成されます。  `--target-folder` パラメーターを使用すると、ログ ファイルを別のディレクトリに出力できます。
+   次に例を示します。
 
-`--skip-compress` パラメーターを省略すると、ファイルを圧縮することができます。
+   ```console
+   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```
 
-`--exclude-dumps` を省略すると、メモリ ダンプをトリガーして含めることができますが、Microsoft サポートがメモリ ダンプを要請している場合を除き、これはお勧めしません。  メモリ ダンプを取得するには、データ コントローラーの作成時に、データ コントローラーの `allowDumps` 設定が `true` に設定されている必要があります。
+データ コントローラーによって、現在の作業ディレクトリの `logs` という名前のサブディレクトリにログ ファイルが作成されます。 
 
-必要に応じて、フィルターを選択し、名前によって特定のポッド (`--pod`) またはコンテナー (`--container`) のログのみを収集することもできます。
+## <a name="options"></a>オプション
 
-また、`--resource-kind` と `--resource-name` パラメーターを渡すことによって、特定のカスタム リソースのログを収集するフィルター処理を選択することもできます。  `resource-kind` パラメーターの値は、コマンド `kubectl get customresourcedefinition` で取得できるカスタム リソース定義名のいずれかにする必要があります。
+`azdata arc dc debug copy-logs` には、出力を管理するための次のオプションが用意されています。
+
+* `--target-folder` パラメーターを使用して、ログ ファイルを別のディレクトリに出力します。
+* `--skip-compress` パラメーターを省略することで、ファイルを圧縮します。
+* `--exclude-dumps` を省略することで、メモリ ダンプをトリガーして含めます。 Microsoft サポートがメモリ ダンプを要求していない限り、この方法は推奨されません。 メモリ ダンプを取得するには、データ コントローラーの作成時に、データ コントローラーの `allowDumps` 設定が `true` に設定されている必要があります。
+* 名前によって特定のポッド (`--pod`) またはコンテナー (`--container`) のログのみを収集するフィルター処理を行います。
+* `--resource-kind` と `--resource-name` パラメーターを渡すことによって、特定のカスタム リソースのログを収集するフィルター処理を行います。 `resource-kind` パラメーターの値は、`kubectl get customresourcedefinition` コマンド で取得できるカスタム リソース定義名のいずれかにする必要があります。
+
+これらのパラメーターを使用して、次の例の `<parameters>` を置き換えることができます。 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```
 
-#Example
+次に例を示します。
+
+```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-フォルダー階層の例。  フォルダー階層は、ポッド名、コンテナー、コンテナー内のディレクトリ階層によって整理されていることに注意してください。
+フォルダー階層の例。 フォルダー階層は、ポッド名、コンテナー、コンテナー内のディレクトリ階層によって整理されます。
 
-```console
+```output
 <export directory>
 ├───debuglogs-arc-20200827-180403
 │   ├───bootstrapper-vl8j2
@@ -181,3 +193,7 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
             ├───journal
             └───openvpn
 ```
+
+## <a name="next-steps"></a>次の手順
+
+[azdata arc dc debug copy-logs](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

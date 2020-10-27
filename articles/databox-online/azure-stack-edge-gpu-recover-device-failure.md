@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ef99ff874376e0d76e45e4b0b2c36a78d938130b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843663"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205580"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>障害が発生した Azure Stack Edge Pro GPU デバイスから回復する 
 
@@ -62,7 +62,8 @@ ms.locfileid: "91843663"
 | サードパーティ製ソフトウェア           | ソリューションへの参照                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> 詳細については、Cohesity にお問い合わせください。          |
-| Veritas                        | 詳細については、Veritas にお問い合わせください。   |
+| Commvault                      | https://www.commvault.com/azure <br> 詳細については、Commvault にお問い合わせください。 |
+| Veritas                        | http://veritas.com/azure <br> 詳細については、Veritas にお問い合わせください。   |
 
 交換用デバイスを完全に構成したら、ローカル ストレージ用にデバイスを有効にします。 
 
@@ -82,7 +83,8 @@ ms.locfileid: "91843663"
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure Backup 用の Microsoft Azure Recovery Services (MARS) エージェント | Windows        | [MARS エージェントについて](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows、Linux | [Microsoft Azure の統合、バックアップ、回復のソリューションの概要](https://www.cohesity.com/solution/cloud/azure) <br>詳細については、Cohesity にお問い合わせください。                          |
-| Veritas                 | Windows、Linux | 詳細については、Veritas にお問い合わせください。                    |
+| Commvault               | Windows、Linux | https://www.commvault.com/azure <br> 詳細については、Commvault にお問い合わせください。
+| Veritas                 | Windows、Linux | http://veritas.com/azure <br> 詳細については、Veritas にお問い合わせください。                    |
 
 交換用デバイスの構成が完全に済んだら、前に使用していた VM イメージを使用して VM を再展開できます。 
 

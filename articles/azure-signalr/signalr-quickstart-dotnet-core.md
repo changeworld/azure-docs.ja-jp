@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874018"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151013"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>クイック スタート:SignalR Service を使用してチャット ルームを作成する
 
-Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは当初 [SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) をベースとしたものでしたが、現在では、それ以降のバージョンがサポートされています。
+Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは当初 [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) をベースとしたものでしたが、現在では、それ以降のバージョンがサポートされています。
 
 この記事では、Azure SignalR Service の使用を開始する方法について説明します。 このクイック スタートでは、ASP.NET Core MVC Web アプリを使用してチャット アプリケーションを作成します。 このアプリでは、Azure SignalR Service との接続を確立して、リアルタイムのコンテンツ更新を可能にします。 Web アプリケーションをローカルでホストし、複数のブラウザー クライアントに接続します。 各クライアントは、他のすべてのクライアントにコンテンツ更新をプッシュできるようになります。 
 
@@ -42,9 +42,9 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
-このセクションでは、[.NET Core コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/dotnet/core/tools/) を使用して ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。 
+このセクションでは、[.NET Core コマンド ライン インターフェイス (CLI)](/dotnet/core/tools/) を使用して ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。 
 
-1. プロジェクトのフォルダーを作成します。 このクイック スタートでは、*E:\Testing\chattest* フォルダーを使用します。
+1. プロジェクトのフォルダーを作成します。 このクイック スタートでは、 *E:\Testing\chattest* フォルダーを使用します。
 
 2. 新しいフォルダーで、次のコマンドを実行してプロジェクトを作成します。
 
@@ -56,9 +56,9 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 ## <a name="add-secret-manager-to-the-project"></a>プロジェクトにシークレット マネージャーを追加します
 
-このセクションでは、プロジェクトに[シークレット マネージャー ツール](https://docs.microsoft.com/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業のための機密データをプロジェクト ツリーの外部に格納します。 このアプローチは、ソース コード内のアプリ シークレットが誤って共有されることを防止するのに役立ちます。
+このセクションでは、プロジェクトに[シークレット マネージャー ツール](/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業のための機密データをプロジェクト ツリーの外部に格納します。 このアプローチは、ソース コード内のアプリ シークレットが誤って共有されることを防止するのに役立ちます。
 
-1. *.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、*Microsoft.Extensions.SecretManager.Tools* を含めます。 また、*chattest.csproj* の次のコードに示すように `UserSecretsId` 要素も追加し、ファイルを保存します。
+1. *.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、 *Microsoft.Extensions.SecretManager.Tools* を含めます。 また、 *chattest.csproj* の次のコードに示すように `UserSecretsId` 要素も追加し、ファイルを保存します。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -92,7 +92,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     dotnet restore
     ```
 
-3. シークレット マネージャーに、*Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 
+3. シークレット マネージャーに、 *Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 
 
     このシークレットには、SignalR Service リソースにアクセスするための接続文字列が含められます。 *Azure:SignalR:ConnectionString* は、SignalR が接続を確立するために検索する既定の構成キーです。 次のコマンドにある値を SignalR Service リソースの接続文字列に置き換えます。
 
@@ -107,12 +107,13 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     このシークレットは、構成 API でアクセスされます。 構成名の中のコロン (:) は、サポートされているすべてのプラットフォーム上の構成 API で機能します。 [環境別の構成](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider)に関するページを参照してください。
 
 
-4. *Startup.cs* を開き、`AddSignalR()` メソッドを呼び出して Azure SignalR Service を使うように、`ConfigureServices` メソッドを更新します。
+4. *Startup.cs* を開き、`AddSignalR()` メソッドと `AddAzureSignalR()` メソッドを呼び出して Azure SignalR Service を使うように、`ConfigureServices` メソッドを更新します。
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAzureSignalR();
+        services.AddSignalR()
+                .AddAzureSignalR();
     }
     ```
 
@@ -141,7 +142,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 どちらのメソッドも、ASP.NET Core SignalR SDK によって提供される `Clients` インターフェイスを使用します。 このインターフェイスにより、接続されているすべてのクライアントにアクセスできるため、クライアントにコンテンツをプッシュできます。
 
-1. プロジェクト ディレクトリに、*Hub* という名前の新しいフォルダーを追加します。 新しいフォルダーに、*ChatHub.cs* という名前の新しいハブ コード ファイルを追加します。
+1. プロジェクト ディレクトリに、 *Hub* という名前の新しいフォルダーを追加します。 新しいフォルダーに、 *ChatHub.cs* という名前の新しいハブ コード ファイルを追加します。
 
 2. 次のコードを *ChatHub.cs* に追加してハブ クラスを定義し、ファイルを保存します。
 
@@ -167,9 +168,9 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 ### <a name="add-the-client-interface-for-the-web-app"></a>Web アプリのクライアント インターフェイスを追加する
 
-このチャット ルーム アプリのクライアント ユーザー インターフェイスは、*wwwroot* ディレクトリ内の *index.html* という名前のファイルに含まれている HTML と JavaScript で構成されます。
+このチャット ルーム アプリのクライアント ユーザー インターフェイスは、 *wwwroot* ディレクトリ内の *index.html* という名前のファイルに含まれている HTML と JavaScript で構成されます。
 
-*css/site.css* ファイルを[サンプル リポジトリ](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)の *wwwroot* フォルダーからコピーします。 プロジェクトの *css/site.css* を、コピーしたものに置き換えます。
+*css/site.css* ファイルを [サンプル リポジトリ](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)の *wwwroot* フォルダーからコピーします。 プロジェクトの *css/site.css* を、コピーしたものに置き換えます。
 
 *index.html* のメイン コードを次に示します。
 
@@ -325,7 +326,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 ## <a name="add-a-development-runtime-profile"></a>開発ランタイム プロファイルの追加
 
-このセクションでは、ASP.NET Core のための開発ランタイム環境を追加します。 詳細については、「[ASP.NET Core で複数の環境を使用する](https://docs.microsoft.com/aspnet/core/fundamentals/environments)」を参照してください。
+このセクションでは、ASP.NET Core のための開発ランタイム環境を追加します。 詳細については、「[ASP.NET Core で複数の環境を使用する](/aspnet/core/fundamentals/environments)」を参照してください。
 
 1. プロジェクト内に *Properties* という名前のフォルダーを作成します。
 
@@ -394,7 +395,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-**[名前でフィルター]** テキスト ボックスに、リソース グループの名前を入力します。 このクイックスタートの手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果の一覧の中のリソース グループで、省略記号 ( **[...]** ) > **[リソース グループの削除]** を選択します。
+**[名前でフィルター]** テキスト ボックスに、リソース グループの名前を入力します。 このクイックスタートの手順では、 *SignalRTestResources* という名前のリソース グループを使用しました。 結果の一覧の中のリソース グループで、省略記号 ( **[...]** ) > **[リソース グループの削除]** を選択します。
 
 ![リソース グループを削除するための選択](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 

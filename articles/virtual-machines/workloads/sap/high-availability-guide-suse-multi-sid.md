@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 434c2c33da73715b4ee8ce1d438626aa247d7431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba6a19b271943c7ecbe2254ef2544a5f576ad3d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442617"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167425"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -57,9 +57,9 @@ ms.locfileid: "89442617"
 この記事では、SUSE Linux Enterprise Server for SAP Applications を使用して、Azure VM の 2 ノード クラスターに複数の SAP NetWeaver または S4HANA 高可用性システム (つまりマルチ SID) をデプロイする方法について説明します。  
 
 この例の構成では (インストール コマンドなど)、3 つの SAP NetWeaver 7.50 システムを、1 つの 2 ノード高可用性クラスターにデプロイします。 SAP システムの SID は次のとおりです。
-* **NW1**: ASCS インスタンス番号 **00** および仮想ホスト名 **msnw1ascs**、ERS インスタンス番号 **02** および仮想ホスト名 **msnw1ers**。  
-* **NW2**: ASCS インスタンス番号 **10** および仮想ホスト名 **msnw2ascs**、ERS インスタンス番号 **12** および仮想ホスト名 **msnw2ers**。  
-* **NW3**: ASCS インスタンス番号 **20** および仮想ホスト名 **msnw3ascs**、ERS インスタンス番号 **22** および仮想ホスト名 **msnw3ers**。  
+* **NW1** : ASCS インスタンス番号 **00** および仮想ホスト名 **msnw1ascs** 、ERS インスタンス番号 **02** および仮想ホスト名 **msnw1ers** 。  
+* **NW2** : ASCS インスタンス番号 **10** および仮想ホスト名 **msnw2ascs** 、ERS インスタンス番号 **12** および仮想ホスト名 **msnw2ers** 。  
+* **NW3** : ASCS インスタンス番号 **20** および仮想ホスト名 **msnw3ascs** 、ERS インスタンス番号 **22** および仮想ホスト名 **msnw3ers** 。  
 
 この記事では、データベース層および SAP NFS 共有のデプロイについては説明しません。 この記事の例では、NFS クラスターがデプロイされているものとして、NW2 NFS 共有に対して仮想名 nw2-nfs、NW3 NFS 共有に対して nw3-nfs を使用しています。  
 
@@ -96,7 +96,7 @@ ms.locfileid: "89442617"
 ![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
-> Azure VM でゲスト オペレーティング システムとして SUSE Linux を使用する SAP ASCS/ERS のマルチ SID クラスタリングのサポートでは、同じクラスター上の SAP SID は **5 個**に制限されています。 新しい SID が追加されるたびに、複雑さが増します。 SAP エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、**サポートされていません**。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。 現在、マルチ SID クラスタリングは ASCS/ERS に対してのみサポートされています。  
+> Azure VM でゲスト オペレーティング システムとして SUSE Linux を使用する SAP ASCS/ERS のマルチ SID クラスタリングのサポートでは、同じクラスター上の SAP SID は **5 個** に制限されています。 新しい SID が追加されるたびに、複雑さが増します。 SAP エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、 **サポートされていません** 。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。 現在、マルチ SID クラスタリングは ASCS/ERS に対してのみサポートされています。  
 
 > [!TIP]
 > SAP ASCS/ERS のマルチ SID クラスタリングは、さらに複雑なソリューションです。 実装するのがいっそう複雑になります。 また、メンテナンス作業 (OS の修正プログラムの適用など) を行うときの管理労力も増加します。 実際の実装を始める前に、デプロイと、VM、NFS マウント、VIP、ロード バランサーの構成などの関連するすべてのコンポーネントを、時間をかけて慎重に計画してください。  
@@ -112,7 +112,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * NW2 の IP アドレス: 10.3.1.16
   * NW3 の IP アドレス: 10.3.1.13
 * プローブ ポート
-  * ポート 620<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620**00**、620**10**、620**20**
+  * ポート 620 <strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620 **00** 、620 **10** 、620 **20**
 * 負荷分散規則 - 
 * インスタンス (つまり、NW1/ASCS、NW2/ASCS、NW3/ASCS) ごとに 1 つ作成します。
   * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
@@ -132,7 +132,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * NW2 10.3.1.17 の IP アドレス
   * NW3 10.3.1.19 の IP アドレス
 * プローブ ポート
-  * ポート 621<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N# のプローブ ポートの場合は、621**02**、621**12**、621**22**
+  * ポート 621 <strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N# のプローブ ポートの場合は、621 **02** 、621 **12** 、621 **22**
 * 負荷分散規則 - インスタンス (つまり、NW1/ERS、NW2/ERS、NW3/ERS) ごとに 1 つ作成します。
   * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
   * Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
@@ -145,6 +145,8 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 * バックエンドの構成
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 > [!Note]
 > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
@@ -189,7 +191,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver のインストールを準備する
 
-1. 「[Azure portal 経由での手動による Azure Load Balancer のデプロイ](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)」の手順に従って、新しくデプロイされたシステム (つまり、**NW2**、**NW3**) の構成を、既存の Azure Load Balancer に追加します。 構成の IP アドレス、正常性プローブ ポート、負荷分散規則を調整します。  
+1. 「 [Azure portal 経由での手動による Azure Load Balancer のデプロイ](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)」の手順に従って、新しくデプロイされたシステム (つまり、 **NW2** 、 **NW3** ) の構成を、既存の Azure Load Balancer に追加します。 構成の IP アドレス、正常性プローブ ポート、負荷分散規則を調整します。  
 
 2. **[A]** 追加の SAP システムの名前解決を設定します。 DNS サーバーを使用するか、すべてのノードで `/etc/hosts` を変更することができます。 この例では、`/etc/hosts` ファイルを使用する方法を示します。  IP アドレスとホスト名を環境に合わせて調整します。 
 
@@ -232,7 +234,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
     sudo chattr +i /usr/sap/NW3/ERS22
    ```
 
-4. **[A]** クラスターにデプロイする追加の SAP システム用の /sapmnt/SID および /usr/sap/SID/SYS ファイル システムをマウントするように、`autofs` を構成します。 この例では、**NW2** と **NW3** です。  
+4. **[A]** クラスターにデプロイする追加の SAP システム用の /sapmnt/SID および /usr/sap/SID/SYS ファイル システムをマウントするように、`autofs` を構成します。 この例では、 **NW2** と **NW3** です。  
 
    クラスターにデプロイする追加の SAP システム用のファイル システムで、ファイル `/etc/auto.direct` を更新します。  
 
@@ -243,7 +245,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 ### <a name="install-ascs--ers"></a>ASCS/ERS をインストールする
 
-1. クラスターにデプロイする追加の SAP システムの ASCS インスタンス用に、仮想 IP と正常性プローブのクラスター リソースを作成します。 次に示す例は、高可用性 NFS サーバーを使用する、**NW2** と **NW3** の ASCS に対するものです。  
+1. クラスターにデプロイする追加の SAP システムの ASCS インスタンス用に、仮想 IP と正常性プローブのクラスター リソースを作成します。 次に示す例は、高可用性 NFS サーバーを使用する、 **NW2** と **NW3** の ASCS に対するものです。  
 
    > [!IMPORTANT]
    > 最近のテストで、バックログと 1 つの接続のみを処理するという制限があるため、netcat によって要求への応答が停止される状況があることが明らかになりました。 netcat リソースでは、Azure ロード バランサー要求のリッスンを停止し、フローティング IP は使用できなくなります。  
@@ -288,7 +290,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 2. **[1]** SAP NetWeaver ASCS をインストールします  
 
-   root として SAP NetWeaver ASCS をインストールします。そのとき、ASCS に対するロード バランサー フロントエンド構成の IP アドレスに対応する仮想ホスト名を使用します。 たとえば、システム **NW2** の場合、仮想ホスト名は <b>msnw2ascs</b>、<b>10.3.1.16</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>10</b>) になります。 システム **NW3** の場合、仮想ホスト名は <b>msnw3ascs</b>、<b>10.3.1.13</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>20</b>) になります。
+   root として SAP NetWeaver ASCS をインストールします。そのとき、ASCS に対するロード バランサー フロントエンド構成の IP アドレスに対応する仮想ホスト名を使用します。 たとえば、システム **NW2** の場合、仮想ホスト名は <b>msnw2ascs</b>、 <b>10.3.1.16</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>10</b>) になります。 システム **NW3** の場合、仮想ホスト名は <b>msnw3ascs</b>、 <b>10.3.1.13</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>20</b>) になります。
 
    sapinst パラメーターの SAPINST_REMOTE_ACCESS_USER を使用すると、root 以外のユーザーが sapinst に接続することを許可できます。 仮想ホスト名を使用して SAP をインストールするには、パラメーター SAPINST_USE_HOSTNAME を使用します。  
 
@@ -296,9 +298,9 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   インストールで /usr/sap/**SID**/ASCS**Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid**adm に設定し、グループを ASCS**Instance#** の sapsys に設定して、もう一度試してください。
+   インストールで /usr/sap/ **SID** /ASCS **Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid** adm に設定し、グループを ASCS **Instance#** の sapsys に設定して、もう一度試してください。
 
-3. **[1]** クラスターにデプロイする追加の SAP システムの ERS インスタンス用に、仮想 IP と正常性プローブのクラスター リソースを作成します。 次に示す例は、高可用性 NFS サーバーを使用する、**NW2** と **NW3** の ERS に対するものです。 
+3. **[1]** クラスターにデプロイする追加の SAP システムの ERS インスタンス用に、仮想 IP と正常性プローブのクラスター リソースを作成します。 次に示す例は、高可用性 NFS サーバーを使用する、 **NW2** と **NW3** の ERS に対するものです。 
 
    ```
     sudo crm configure primitive fs_NW2_ERS Filesystem device='nw2-nfs:/NW2/ASCSERS' directory='/usr/sap/NW2/ERS12' fstype='nfs4' \
@@ -338,7 +340,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 4. **[2]** SAP NetWeaver ERS をインストールします
 
-   root として SAP NetWeaver ERS を他のノードにインストールします。そのとき、ERS に対するロード バランサー フロントエンド構成の IP アドレスに対応する仮想ホスト名を使用します。 たとえば、システム **NW2** の場合、仮想ホスト名は <b>msnw2ers</b>、<b>10.3.1.17</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>12</b>) になります。 システム **NW3** の場合は、仮想ホスト名は <b>msnw3ers</b>、<b>10.3.1.19</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>22</b>) になります。 
+   root として SAP NetWeaver ERS を他のノードにインストールします。そのとき、ERS に対するロード バランサー フロントエンド構成の IP アドレスに対応する仮想ホスト名を使用します。 たとえば、システム **NW2** の場合、仮想ホスト名は <b>msnw2ers</b>、 <b>10.3.1.17</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>12</b>) になります。 システム **NW3** の場合は、仮想ホスト名は <b>msnw3ers</b>、 <b>10.3.1.19</b>、およびロード バランサーのプローブに使用したインスタンス番号 (たとえば <b>22</b>) になります。 
 
    sapinst パラメーターの SAPINST_REMOTE_ACCESS_USER を使用すると、root 以外のユーザーが sapinst に接続することを許可できます。 仮想ホスト名を使用して SAP をインストールするには、パラメーター SAPINST_USE_HOSTNAME を使用します。  
 
@@ -349,7 +351,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
    > [!NOTE]
    > SWPM SP 20 PL 05 以降を使用します。 これより下位のバージョンではアクセス許可が正しく設定されないため、インストールが失敗します。
 
-   インストールで /usr/sap/**NW2**/ERS**Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid**adm に設定し、グループを ERS**Instance#** フォルダーの sapsys に設定して、もう一度試してください。
+   インストールで /usr/sap/ **NW2** /ERS **Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid** adm に設定し、グループを ERS **Instance#** フォルダーの sapsys に設定して、もう一度試してください。
 
    新しくデプロイした SAP システムの ERS グループを別のクラスター ノードに移行する必要があった場合は、ERS グループに対する場所の制約を忘れずに削除してください。 制約を削除するには、次のコマンドを実行します (この例は、SAP システム **NW2** と **NW3** に対するものです)。  
 
@@ -396,7 +398,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
    # Autostart = 1
    ```
 
-6. **[A]** 新しくデプロイした SAP システムの SAP ユーザーを構成します (この例では、**NW2** と **NW3**)。 
+6. **[A]** 新しくデプロイした SAP システムの SAP ユーザーを構成します (この例では、 **NW2** と **NW3** )。 
 
    ```
    # Add sidadm to the haclient group
@@ -467,7 +469,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
     ```
 
    SAP では、SAP NW 7.52 の時点で、レプリケーションを含むエンキュー サーバー 2 のサポートが導入されました。 ABAP Platform 1809 以降では、エンキュー サーバー 2 が既定でインストールされます。 エンキュー サーバー 2 のサポートについては、SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) を参照してください。
-   エンキュー サーバー 2 アーキテクチャ ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) を使用する場合は、次のように、SAP systems **NW2** と **NW3** のリソースを定義します。
+   エンキュー サーバー 2 アーキテクチャ ( [ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) を使用する場合は、次のように、SAP systems **NW2** と **NW3** のリソースを定義します。
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -770,7 +772,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   次のコマンドを **nw2**adm として実行して、NW2 ASCS インスタンスを移行します。
+   次のコマンドを **nw2** adm として実行して、NW2 ASCS インスタンスを移行します。
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""

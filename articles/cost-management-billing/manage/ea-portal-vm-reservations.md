@@ -3,17 +3,17 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442447"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132535"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -22,6 +22,12 @@ ms.locfileid: "89442447"
 ## <a name="reservation-exchanges-and-refunds"></a>予約の交換と返金
 
 変化するニーズを満たすために、予約を同じ種類の別の予約と交換できます。 また、予約が不要になった場合は、最大で年間 50,000 米国ドルまでの払い戻しができます。 予約の交換または払い戻しを行うには、Azure portal を使用できます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
+
+### <a name="partial-refunds"></a>一部返金
+
+EA のお客様が予約を返却した場合、年額コミットメントではなく超過分を使用して購入金額の一部が返金されます。
+
+EA Portal には、前月における負の調整として、また今月における正の調整として返金が表示されます。 予約の交換についても同様に表示されます。 クレジット メモでは、元の請求書番号が引用されます。したがって、当初の購入額をクレジット メモで調整したければ、元の請求書番号を参照してください。
 
 ## <a name="reservation-costs-and-usage"></a>予約のコストと使用状況
 
@@ -57,9 +63,9 @@ Azure API を使用して、Azure サービスまたはソフトウェアの予�
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスを購入する方法
 
-Azure 予約仮想マシンインスタンスを購入するには、エンタープライズ Azure 加入契約管理者が _[予約インスタンス]_ 購入オプションを有効にする必要があります。 このオプションは、[Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブの _[加入契約の詳細]_ セクションにあります。
+Azure 予約仮想マシンインスタンスを購入するには、エンタープライズ Azure 加入契約管理者が _[予約インスタンス]_ 購入オプションを有効にする必要があります。 このオプションは、 [Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブの _[加入契約の詳細]_ セクションにあります。
 
-EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](https://go.microsoft.com/fwlink/?linkid=861721)に関するページを参照してください。
+EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](../../virtual-machines/windows/prepay-reserved-vm-instances.md)に関するページを参照してください。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>予約インスタンスの購入の詳細を表示する方法
 
@@ -76,7 +82,7 @@ EA 加入契約を有効にして、予約インスタンスを追加すると�
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>予約インスタンスの使用量の詳細を表示する方法
 
-予約インスタンスの使用量の詳細は、[Azure portal](https://aka.ms/reservations) に表示することができます。または、[Azure EA portal](https://ea.azure.com/) で、 _[レポート]_  >  _[使用状況の概要]_  > 、 _[Charges by Services]\(サービス別料金\)_ の順に移動して表示することもできます (課金情報を表示するアクセス権限を持つ EA のお客様の場合)。 予約インスタンスは、"Reservation" を含むサービス名で識別できます。たとえば、`Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)` と表示されます。
+予約インスタンスの使用量の詳細は、 [Azure portal](https://aka.ms/reservations) に表示することができます。または、 [Azure EA portal](https://ea.azure.com/) で、 _[レポート]_  >  _[使用状況の概要]_  > 、 _[Charges by Services]\(サービス別料金\)_ の順に移動して表示することもできます (課金情報を表示するアクセス権限を持つ EA のお客様の場合)。 予約インスタンスは、"Reservation" を含むサービス名で識別できます。たとえば、`Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)` と表示されます。
 
 使用状況の詳細と詳細レポートのダウンロード用 CSV には、予約インスタンスの使用量に関する追加情報が含まれます。 _[追加情報]_ フィールドは、予約インスタンスの使用量を確認するのに役立ちます。
 

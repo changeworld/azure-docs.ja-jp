@@ -6,18 +6,25 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710449"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123271"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) で TLS 接続を構成する
 
 Azure Database for PostgreSQL では、トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL)) を使用してクライアント アプリケーションを PostgreSQL サービスに接続することが推奨されます。 お使いのデータベース サーバーとクライアント アプリケーション間に TLS 接続を強制すると、サーバーとお使いのアプリケーション間のデータ ストリームを暗号化することにより、中間者 (man in the middle) 攻撃から保護するのに役立ちます。
 
 既定では、PostgreSQL データベース サービスは TLS 接続を要求するように構成されます。 クライアント アプリケーションで TLS 接続がサポートされていない場合は、TLS の要求を無効にすることもできます。
+
+>[!NOTE]
+> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2021 年 2 月 15 日 (02/15/2021) まで延長しました。
+
+> [!IMPORTANT] 
+> SSL ルート証明書は、2021 年 2 月 15 日 (02/15/2021) から期限切れになるように設定されています。 [新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)が使用されるようにアプリケーションを更新してください。 詳細については、[証明書の計画的な更新](concepts-certificate-rotation.md)に関するページをご覧ください
+
 
 ## <a name="enforcing-tls-connections"></a>TLS 接続の適用
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292981"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150809"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -21,7 +21,7 @@ Azure HDInsight には、エンタープライズ セキュリティ ニーズ�
 
 この記事では、セキュリティ ソリューションについて、境界セキュリティ、認証、承認、暗号化という従来からある 4 つの柱に分けて説明します。
 
-この記事では、**Azure HDInsight Enterprise セキュリティ パッケージ (ESP)** についても説明します。ESP は、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御を HDInsight のクラスターに提供します。
+この記事では、 **Azure HDInsight Enterprise セキュリティ パッケージ (ESP)** についても説明します。ESP は、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御を HDInsight のクラスターに提供します。
 
 ## <a name="enterprise-security-pillars"></a>エンタープライズ セキュリティの柱
 
@@ -82,14 +82,16 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 |  | クラスター内通信に TLS と IPSec を使用するには、[転送中の暗号化](./encryption-in-transit.md)の機能が有効になっていることを確認します。 | Customer |
 |  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
 |  | [カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
-| アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |
+| アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して [ESP を構成](apache-domain-joined-configure-using-azure-adds.md)するか、[HIB による OAuth 認証](identity-broker.md)を使用する| Customer |
 |  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | Customer |
 |  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | Customer |
 | オペレーティング システムのセキュリティ | 最新の安全な基本イメージを使用してクラスターを作成する | Customer |
 |  | [OS の修正プログラム](../hdinsight-os-patching.md)が定期的に適用されるようにする | Customer |
+|  | [VM に対し、CMK によるディスク暗号化](../disk-encryption.md)を行う | Customer |
 | ネットワークのセキュリティ | [仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)を構成する |
-|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../control-network-traffic.md)を構成する | Customer |
+|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../control-network-traffic.md)または[プライベート リンク](../hdinsight-private-link.md)を構成する | Customer |
 |  | ファイアウォールを使用して[送信トラフィックの制限](../hdinsight-restrict-outbound-traffic.md)を構成する | Customer |
+|  | クラスター ノード間で、[転送中の IPsec 暗号化](encryption-in-transit.md)を構成する | Customer |
 | 仮想化インフラストラクチャ | 該当なし | HDInsight (クラウド プロバイダー) |
 | 物理インフラのセキュリティ | 該当なし | HDInsight (クラウド プロバイダー) |
 

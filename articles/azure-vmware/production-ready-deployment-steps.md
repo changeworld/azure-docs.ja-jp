@@ -2,22 +2,23 @@
 title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/16/2020
+ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055088"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147978"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
-この記事では、デプロイ中に使用されるデータを特定して収集するための計画プロセスについて説明します。 [デプロイ前のチェックリストを使用](pre-deployment-checklist.md)して情報を文書化し、デプロイ時に簡単に参照できるようにします。  
+この記事では、デプロイ中に使用されるデータを特定して収集するための計画プロセスについて説明します。 デプロイを計画する際は、収集した情報をデプロイ中に参照しやすいよう必ず文書化してください。
 
 このクイック スタートのプロセスにより、仮想マシン (VM) の作成と移行のための運用準備ができた環境が得られます。 
 
 >[!IMPORTANT]
->Azure VMware Solution リソースを作成する前に、サポート チケットを提出して、ノードが割り当てられるようにする必要があります。 サポート チームがリクエストを受け取ると、リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」を参照してください。 
+>Azure VMware Solution リソースを作成する前に、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」の記事に従い、サポート チケットを提出してノードの割り当てを依頼してください。 サポート チームがリクエストを受け取ると、リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。 
+
 
 ## <a name="subscription"></a>サブスクリプション
 

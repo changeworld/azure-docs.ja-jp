@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4995f813bbfe7ef368f83085cdd61ab97fa330e8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552358"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108526"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>チュートリアル:Qlik Sense Enterprise と Azure Active Directory の統合
 
@@ -38,8 +38,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
-* Qlik Sense Enterprise では、**SP** によって開始される SSO がサポートされます。
-* Qlik Sense Enterprise では、**ジャストインタイム プロビジョニング**がサポートされます。
+* Qlik Sense Enterprise では、 **SP** によって開始される SSO がサポートされます。
+* Qlik Sense Enterprise では、 **ジャストインタイム プロビジョニング** がサポートされます。
 
 * Qlik Sense Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Qlik Sense Enterprise の統合を構成するには、ギャラ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Qlik Sense Enterprise**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Qlik Sense Enterprise** 」と入力します。
 1. 結果のパネルから **[Qlik Sense Enterprise]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -95,7 +95,7 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は実際のサインオン URL、識別子、応答 URL に変更してください。これらの値の取得方法については、このチュートリアルの後半の説明を参照するか、[Qlik Sense Enterprise クライアント サポート チーム](https://www.qlik.com/us/services/support)に問い合わせてください。 URL の既定のポートは 443 ですが、組織のニーズに合わせてカスタマイズできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -136,7 +136,7 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
     > [!NOTE]
     > IdP メタデータを Qlik Sense サーバーにアップロードする前にファイルを編集して情報を削除し、Azure AD と Qlik Sense サーバーの間の処理が正しく行われるようにする必要があります。
 
-    ![QlikSense][qs24]
+    ![Visual Studio Code ウィンドウとフェデレーション メタデータ X M L ファイルを示すスクリーンショット。][qs24]
 
     a. Azure Portal からダウンロードした FederationMetaData.xml ファイルを、テキスト エディターで開きます。
 
@@ -150,19 +150,19 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
 3. QMC で、メニュー項目の **[Virtual Proxies]** をクリックします。
 
-    ![QlikSense][qs6]
+    ![[CONFIGURE SYSTEM]\(構成システム\) から選択された仮想プロキシを示すスクリーンショット。][qs6]
 
 4. 画面の下部にある **[Create new]** ボタンをクリックします。
 
-    ![QlikSense][qs7]
+    ![[Create new]\(新規作成\) オプションを示すスクリーンショット。][qs7]
 
 5. [Virtual Proxies (仮想プロキシ)] 編集画面が表示されます。  画面の右側のメニューで、構成オプションを表示できます。
 
-    ![QlikSense][qs9]
+    ![[Properties]\(プロパティ\) から選択された [Identification]\(識別\) を示すスクリーンショット。][qs9]
 
 6. [Identification (識別)] メニュー オプションを選択し、Azure 仮想プロキシ構成の識別情報を入力します。
 
-    ![QlikSense][qs8]  
+    ![[Edit virtual proxy Identification]\(仮想プロキシ ID の編集\) セクションのスクリーンショット。ここで、説明されている値を入力できます。][qs8]  
 
     a. **[Description]** フィールドは、仮想プロキシ構成のフレンドリ名です。  値として説明を入力します。
 
@@ -174,7 +174,7 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
 7. [Authentication (認証)] メニュー オプションをクリックして表示します。  [Authentication (認証)] 画面が表示されます。
 
-    ![QlikSense][qs10]
+    ![[Edit virtual proxy]\(仮想プロキシの編集\) の [Authentication]\(認証\) セクションのスクリーンショット。ここで、説明されている値を入力できます。][qs10]
 
     a. **[Anonymous access mode]** ドロップ ダウンで、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。  既定のオプションは、[No anonymous user (匿名ユーザーを許可しない)] です。
 
@@ -184,11 +184,11 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
     d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
 
-    e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集**に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
+    e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集** に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります** 。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
 
     f. これらは Azure AD が Qlik Sense サーバーに送信する **UserID** を表します。  スキーマ リファレンス情報は、構成が終了した後に Azure アプリの画面から取得できます。  名前属性を使用するには、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
-    g. **ユーザー ディレクトリ**用の値を入力します。この値は、ユーザーが Azure AD を介して Qlik Sense サーバーで認証を行うときに、ユーザーにアタッチされます。  ハードコーディングされた値は**角かっこ []** で囲む必要があります。  Azure AD SAML アサーション内で送信される属性を使用するには、属性の名前をこのボックスに角かっこ **なし** で入力します。
+    g. **ユーザー ディレクトリ** 用の値を入力します。この値は、ユーザーが Azure AD を介して Qlik Sense サーバーで認証を行うときに、ユーザーにアタッチされます。  ハードコーディングされた値は **角かっこ []** で囲む必要があります。  Azure AD SAML アサーション内で送信される属性を使用するには、属性の名前をこのボックスに角かっこ **なし** で入力します。
 
     h. **[SAML signing algorithm]** で、仮想プロキシ構成用のサービス プロバイダー (この場合は Qlik Sense サーバー) 証明書の署名を設定します。  Microsoft Enhanced RSA and AES Cryptographic Provider を使用して生成された、信頼された証明書を Qlik Sense サーバーで使用する場合は、SAML 署名アルゴリズムを **[SHA-256]** に変更します。
 
@@ -196,59 +196,59 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
 8. **[LOAD BALANCING]** メニュー オプションをクリックして表示します。  [Load balancing (負荷分散)] 画面が表示されます。
 
-    ![QlikSense][qs11]
+    ![[Virtual proxy edit]\(仮想プロキシの編集\) 画面の [LOAD BALANCING]\(負荷分散\) を示すスクリーンショット。ここで、[Add new server node]\(新しいサーバー ノードの追加\) を選択できます。][qs11]
 
 9. **[Add new server node]** ボタンをクリックし、エンジン ノードまたは Qlik Sense が負荷分散のためにセッションを送信する複数のノードを選択して、 **[Add]** ボタンをクリックします。
 
-    ![QlikSense][qs12]
+    ![[Add server nodes to load balance on]\(負荷分散するサーバー ノードの追加\) ダイアログのサーバーの追加ボタンを示すスクリーンショット。][qs12]
 
 10. [Advanced (詳細設定)] メニュー オプションをクリックして表示します。 [Advanced (詳細設定)] 画面が表示されます。
 
-    ![QlikSense][qs13]
+    ![[Edit virtual proxy]\(仮想プロキシの編集\) の [Advanced]\(詳細設定\) 画面のスクリーンショット。][qs13]
 
     ホストの許可リストでは、Qlik Sense サーバーへの接続時に受け入れられるホスト名を指定します。  **ユーザーが Qlik Sense サーバーへ接続する際に指定するホスト名を入力します。** ホスト名は、[SAML host URI (SAML ホスト URI)] の値から "https://" を除いたものです。
 
 11. **[適用]** をクリックします。
 
-    ![QlikSense][qs14]
+    ![[Apply]\(適用\) ボタンのスクリーンショット。][qs14]
 
 12. [OK] をクリックし、仮想プロキシにリンクされているプロキシが再起動されることを示す警告メッセージを受け入れます。
 
-    ![QlikSense][qs15]
+    ![[Apply changes to virtual proxy]\(仮想プロキシに変更を適用する\) 確認メッセージのスクリーンショット。][qs15]
 
 13. 画面の右側に、[Associated items (関連項目)] メニューが表示されます。  **[Proxies]** メニュー オプションをクリックします。
 
-    ![QlikSense][qs16]
+    ![[Associated items]\(関連項目\) から選択された [Proxies]\(プロキシ\) のスクリーンショット。][qs16]
 
 14. [Proxies (プロキシ)] 画面が表示されます。  下部にある **[Link]** ボタンをクリックして、仮想プロキシにプロキシをリンクさせます。
 
-    ![QlikSense][qs17]
+    ![[Link]\(リンク\) ボタンのスクリーンショット。][qs17]
 
 15. この仮想プロキシ接続をサポートするプロキシ ノードを選択し、 **[Link]** ボタンをクリックします。  リンクを作成すると、そのプロキシが [Associated proxies (関連プロキシ)] の下に一覧表示されます。
 
-    ![QlikSense][qs18]
+    ![[Select proxy services]\(プロキシ サービスの選択\) のスクリーンショット。][qs18]
   
-    ![QlikSense][qs19]
+    ![[Virtual proxy associated items]\(仮想プロキシの関連項目\) ダイアログ ボックスの [Associated proxies]\(関連プロキシ\) のスクリーンショット。][qs19]
 
 16. 約 5 ～ 10 秒後に、QMC の更新メッセージが表示されます。  **[Refresh QMC]** ボタンをクリックします。
 
-    ![QlikSense][qs20]
+    !["Your session has ended (セッションが終了しました)" メッセージのスクリーンショット。][qs20]
 
 17. QMC が更新されたら、 **[Virtual Proxies]** メニュー項目をクリックします。 新しい SAML 仮想プロキシのエントリが画面の表に表示されます。  仮想プロキシのエントリをクリックします。
 
-    ![QlikSense][qs51]
+    ![1 件のエントリを含む [Virtual proxies]\(仮想プロキシ\) のスクリーンショット。][qs51]
 
 18. 画面の下部にある [Download SP metadata (SP メタデータのダウンロード)] ボタンがアクティブになります。  **[Download SP metadata]** ボタンをクリックして、メタデータをファイルに保存します。
 
-    ![QlikSense][qs52]
+    ![[Download S P metadata]\(S P メタデータのダウンロード\) ボタンのスクリーンショット。][qs52]
 
-19. SP メタデータ ファイルを開きます。  **entityID** エントリと **AssertionConsumerService** エントリを確認します。  これらの値は、Azure AD アプリケーション構成の**識別子**、**サインオン URL**、**応答 URL** に対応しています。 一致しない場合は Azure AD アプリケーションの構成の **[Qlik Sense Enterprise のドメインと URL]** セクションにこれらの値を貼り付けて、Azure AD アプリケーションの構成ウィザードで置換する必要があります。
+19. SP メタデータ ファイルを開きます。  **entityID** エントリと **AssertionConsumerService** エントリを確認します。  これらの値は、Azure AD アプリケーション構成の **識別子** 、 **サインオン URL** 、 **応答 URL** に対応しています。 一致しない場合は Azure AD アプリケーションの構成の **[Qlik Sense Enterprise のドメインと URL]** セクションにこれらの値を貼り付けて、Azure AD アプリケーションの構成ウィザードで置換する必要があります。
 
-    ![QlikSense][qs53]
+    ![EntityDescriptor が表示されたプレーンテキスト エディターのスクリーンショット。entityID と AssertionConsumerService が強調表示されている。][qs53]
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Qlik Sense Enterprise のテスト ユーザーの作成
 
-Qlik Sense Enterprise は**ジャストインタイム プロビジョニング**をサポートしているため、ユーザーは SSO 機能を使用すると、Qlik Sense Enterprise の "USERS" リポジトリに自動的に追加されます。 加えて、クライアントは QMC を使用して UDC (User Directory Connector) を作成することにより、任意の LDAP (Active Directory など) から Qlik Sense Enterprise にユーザーを事前設定することができます。
+Qlik Sense Enterprise は **ジャストインタイム プロビジョニング** をサポートしているため、ユーザーは SSO 機能を使用すると、Qlik Sense Enterprise の "USERS" リポジトリに自動的に追加されます。 加えて、クライアントは QMC を使用して UDC (User Directory Connector) を作成することにより、任意の LDAP (Active Directory など) から Qlik Sense Enterprise にユーザーを事前設定することができます。
 
 ### <a name="test-sso"></a>SSO のテスト
 

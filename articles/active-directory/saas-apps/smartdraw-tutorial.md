@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f99993792c2d5f4300025f26d8409207382553d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b4387252be7e0b76f6e0733d6fd4f95d39e2f0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527623"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SmartDraw の統合
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SmartDraw では、**SP と IDP** によって開始される SSO がサポートされます
-* SmartDraw では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* SmartDraw では、 **SP と IDP** によって開始される SSO がサポートされます
+* SmartDraw では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>ギャラリーから SmartDraw を追加する
 
@@ -50,7 +50,7 @@ Azure AD への SmartDraw の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SmartDraw**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SmartDraw** 」と入力します。
 1. 結果のパネルから **[SmartDraw]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>SmartDraw の Azure AD シングル サインオンの構成とテスト
@@ -140,7 +140,7 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-smartdraw-sso"></a>SmartDraw の SSO を構成する
 
-1. SmartDraw 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. SmartDraw 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -152,19 +152,19 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 
 1. [Manage your SmartDraw License]\(SmartDraw ライセンスの管理\) の下にある **[シングルサインオン]** をクリックします。
 
-    ![SmartDraw 構成](./media/smartdraw-tutorial/configure01.png)
+    ![[Manage your SmartDraw License]\(SmartDraw ライセンスの管理\) ダイアログ ボックスのスクリーンショット。ここでシングル サインオンを選択することができます。](./media/smartdraw-tutorial/configure01.png)
 
 1. [Configuration]\(構成\) ページで、次の手順を実行します。
 
-    ![SmartDraw 構成](./media/smartdraw-tutorial/configure02.png)
+    ![[Configuration]\(構成\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/smartdraw-tutorial/configure02.png)
 
     a. **[Your Domain (like acme.com)]\(ご使用のドメイン (acme.com など)\)** ボックスに、ご使用のドメインを入力します。
 
     b. インスタンスの **[Your SP Initiated Login Url will be]\(SP 開始ログイン URL\)** をコピーし、Azure portal の **[基本的な SAML 構成]** の [サインオン URL] ボックスに貼り付けます。
 
-    c. **[Security Groups to Allow SmartDraw Access]\(SmartDraw アクセスを許可するセキュリティ グループ\)** ボックスに、「**Everyone**」と入力します。
+    c. **[Security Groups to Allow SmartDraw Access]\(SmartDraw アクセスを許可するセキュリティ グループ\)** ボックスに、「 **Everyone** 」と入力します。
 
-    d. **[Your SAML Issuer Url]\(SAML 発行者の URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    d. **[Your SAML Issuer Url]\(SAML 発行者の URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
     e. Azure portal からダウンロードしたメタデータ XML ファイルをメモ帳で開き、その内容をコピーして **[Your SAML MetaData]\(SAML メタデータ\)** ボックスに貼り付けます。
 

@@ -3,16 +3,25 @@ title: お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止
 description: この記事では、コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815438"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216533"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法
 
-お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。 
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月に廃止されます。
+>
+> 2020 年 10 月の時点で、新しい 3.11 クラスターを作成することはできなくなります。
+> 既存の 3.11 クラスターは、2022 年 6 月までは引き続き動作しますが、その日以降はサポートされなくなります。
+>
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](../../openshift/tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:aro-feedback@microsoft.com)。
+
+お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 

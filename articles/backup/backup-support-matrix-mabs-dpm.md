@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332697"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276968"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -60,7 +60,7 @@ DPM/MABS は、次の表に要約されているようにデプロイできま�
 
 **デプロイ** | **サポート** | **詳細**
 --- | --- | ---
-**オンプレミスでデプロイ** | 物理サーバー<br/><br/>Hyper-V VM<br/><br/> VMware VM | DPM/MABS は、VMware VM としてインストールされている場合、VMware VM とそれらの VM 上で実行されているワークロードのみをバックアップします。
+**オンプレミスでデプロイ** | 物理サーバー<br/><br/>Hyper-V VM<br/><br/> VMware VM | 詳細については、[保護マトリックス](backup-mabs-protection-matrix.md)を参照してください。 
 **Azure Stack VM としてデプロイ** | MABS のみ | DPM を使用して Azure Stack VM をバックアップすることはできません。
 **Azure VM としてデプロイ** | Azure VM とそれらの VM 上で実行されているワークロードを保護します。 | Azure で実行されている DPM/MABS は、オンプレミスのコンピューターをバックアップできません。
 

@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01f10d3ba83d23478a7113cf4935181ee34959e3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998449"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125288"
 ---
 # <a name="enclave-aware-containers"></a>エンクレーブ対応コンテナー
 
@@ -51,14 +51,19 @@ Azure コンフィデンシャル コンピューティングと CCF を使っ�
 
 ONNX Runtime への ML モデルのリフトアンドシフトの概要については、[こちら](https://aka.ms/confidentialinference)を参照してください。
 
-## <a name="container-samples-implementations"></a>コンテナーのサンプル実装
+### <a name="edgeless-rt"></a>Edgeless RT
 
-[AKS におけるエンクレーブ対応コンテナーの Azure サンプル](https://github.com/Azure-Samples/enclave-aware-container-samples)
+Edgeless RT は、Open Enclave SDK をベースに作成されたオープンソース プロジェクトです。 Go や新たな C++ 機能のサポートが追加されています。 [こちら](https://github.com/edgelesssys/edgelessrt)から、使い慣れた VS Code 環境を使用して、機密性を確保した簡単な Go アプリケーションを体験してみましょう。 AKS における Edgeless アプリケーションについては、[こちら](https://github.com/edgelesssys/edgelessrt/blob/master/docs/ERTAzureAKSDeployment.md)の手順に従ってください。
+
+
+## <a name="container-based-sample-implementations"></a>コンテナー ベースのサンプル実装
+
+[AKS におけるエンクレーブ対応コンテナーの Azure サンプル](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
-[Confidential Containers]: /confidential-computing/containercompute/confidential-containers
+[DC 仮想マシン](/confidential-computing/virtual-machine-solutions)
+の[機密コンテナー](/confidential-computing/containercompute/confidential-containers)

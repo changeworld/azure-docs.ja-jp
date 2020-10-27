@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976880"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329834"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -25,7 +25,7 @@ Computer Vision の一部の機能では、複数の言語がサポートされ�
 
 Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、「[光学式文字認識 (OCR)](concept-recognizing-text.md)」を参照してください。
 
-|Language| 言語コード | OCR API | v3.1 の読み取り | v3.1-preview.2 の読み取り |
+|Language| 言語コード | OCR API | 3\.0 および 3.1 の読み取り | v3.2-preview.1 の読み取り |
 |:-----|:----:|:-----:|:---:|:---:|
 |アラビア語 | `ar`|✔ | | |
 |簡体中国語 | `zh-Hans`|✔ | |✔ |

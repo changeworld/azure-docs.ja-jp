@@ -10,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992111f6b28356d5220e27a80068acdaf80b4055
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75444682"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280502"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を活かしたドキュメント データベース、キー/値データベース、グラフ データベースをすばやく作成、照会できます。 
+Azure Cosmos DB は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 SLA によって裏付けられた速度と可用性、自動かつ即時のスケーラビリティ、さまざまな NoSQL エンジンに対応したオープンソース API を備えた最新のアプリを開発できます。
 
 このマルチパート チュートリアルに含まれるタスクは次のとおりです。
 

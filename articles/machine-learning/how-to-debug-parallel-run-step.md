@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 602babb3544093b7cd7c5b30ce4f4612148591cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315577"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216914"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep のデバッグとトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "91315577"
 
 ## <a name="testing-scripts-locally"></a>スクリプトのローカルでのテスト
 
-機械学習パイプラインについては、「[スクリプトのローカルでのテスト](how-to-debug-pipelines.md#debug-scripts-locally)」セクションを参照してください。 ParallelRunStep は、ML パイプラインのステップとして実行されるため、どちらにも同じ回答が当てはまります。
+機械学習パイプラインについては、「[スクリプトのローカルでのテスト](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)」セクションを参照してください。 ParallelRunStep は、ML パイプラインのステップとして実行されるため、どちらにも同じ回答が当てはまります。
 
 ## <a name="debugging-scripts-from-remote-context"></a>リモート コンテキストからのスクリプトのデバッグ
 
@@ -124,23 +124,25 @@ labels_path = args.labels_dir
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="***",
-    service_principal_id="***",
-    service_principal_password="***")
+    tenant_id="**_",
+    service_principal_id="_*_",
+    service_principal_password="_*_")
  
 ws = Workspace(
-    subscription_id="***",
-    resource_group="***",
-    workspace_name="***",
+    subscription_id="_*_",
+    resource_group="_*_",
+    workspace_name="_*_",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
-ds = Dataset.File.from_files(default_blob_store, '**path***')
-registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
+ds = Dataset.File.from_files(default_blob_store, '_*path**_')
+registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
+[Azure Machine Learning パイプラインを示す Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) に関するページを参照してください。
 
 * [azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) パッケージについては、SDK リファレンスを参照してください。 ParallelRunStep クラスのリファレンス [ドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true)を参照してください。
 

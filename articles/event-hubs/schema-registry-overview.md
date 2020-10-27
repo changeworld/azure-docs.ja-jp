@@ -4,12 +4,12 @@ description: この記事では、Azure Event Hubs での Schema Registry のサ
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938799"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330497"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに、Apache Avro のようなスキーマ駆動型の形式を使用してシリアル化または逆シリアル化された構造化データが含まれています。 送信側と受信側のどちらであっても、JSON スキーマのようなスキーマ ドキュメントでデータの整合性を検証したい場合があります。 スキーマ駆動型の形式の場合、メッセージ コンシューマーでスキーマを使用できるようにすることは、コンシューマーでデータを逆シリアル化できるようにするための前提条件です。 
@@ -17,8 +17,8 @@ ms.locfileid: "91938799"
 **Azure Schema Registry** は Event Hubs の機能で、イベント駆動型およびメッセージング中心のアプリケーション用のスキーマ ドキュメントの中央リポジトリとして機能します。 プロデューサーとコンシューマー アプリケーションの間でスキーマを管理して共有することなくデータを交換したり、それぞれ異なる速度で発展させることができる柔軟性を提供します。 また、Schema Registry には、再利用可能なスキーマのための単純なガバナンス フレームワークが用意されており、グループ化構成体 (スキーマ グループ) を使用してスキーマ間のリレーションシップを定義します。
 
 > [!NOTE]
-> - 現在、**Schema Registry** 機能は**プレビュー**段階にあります。運用環境のワークロードにはお勧めできません。
-> - この機能は **Standard** と **Dedicated** レベルでのみ使用でき、**Basic** レベルでは使用できません。
+> - 現在、 **Schema Registry** 機能は **プレビュー** 段階にあります。運用環境のワークロードにはお勧めできません。
+> - この機能は **Standard** と **Dedicated** レベルでのみ使用でき、 **Basic** レベルでは使用できません。
 
 Apache Avro のようなスキーマ駆動型のシリアル化フレームワークを使用すると、共有スキーマにシリアル化メタデータを外部化するすることで、JSON などのタグ付きの形式の場合と同様に、すべてのデータ セットに含まれる型情報およびフィールド名の、メッセージごとのオーバーヘッドを大幅に削減することもできます。 スキーマをイベントと一緒にイベント インフラストラクチャ内に保持しておくことで、シリアル化または逆シリアル化に必要なメタデータに常にアクセスできるため、スキーマを間違えることがありません。 
 
@@ -50,10 +50,10 @@ Avro シリアライザーを含む次のライブラリのいずれかを使用
 ## <a name="standard-vs-dedicated-limits"></a>Standard と Dedicated の制限
 Event Hubs の Standard レベルと Dedicated レベルの間で同じ、または異なる制限 (例: 名前空間内のスキーマ グループの数) については、[Schema Registry の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations)に関するページを参照してください
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
-プログラムを使用してスキーマ レジストリにアクセスする場合は、Azure Active Directory (Azure AD) にアプリケーションを登録し、ロールベースのアクセス制御 (RBAC) ロールのいずれかにアプリケーションのセキュリティ プリンシパルを追加する必要があります。
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
+プログラムを使用してスキーマ レジストリにアクセスする場合は、Azure Active Directory (Azure AD) にアプリケーションを登録し、Azure ロールベースのアクセス制御 (Azure RBAC) ロールのいずれかにアプリケーションのセキュリティ プリンシパルを追加する必要があります。
 
-| ロール | 説明 | 
+| Role | 説明 | 
 | ---- | ----------- | 
 | 所有者 | Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。 |
 | 共同作成者 | Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。 |

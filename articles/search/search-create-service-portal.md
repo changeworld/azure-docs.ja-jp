@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057724"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102814"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -94,7 +94,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 ### <a name="requirements"></a>必要条件
 
- AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンに検索サービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です*。
+ AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンに検索サービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です* 。
 
  事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
@@ -102,9 +102,9 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
 
-## <a name="choose-a-pricing-tier-sku"></a>価格レベル (SKU) を選択する
+## <a name="choose-a-pricing-tier"></a>Choose a pricing tier
 
-[Azure Cognitive Search は現在、複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)(Free、Basic、Standard)。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、 [価格レベルまたは SKU の選択](search-sku-tier.md) に関する記事をご覧ください。
+Azure Cognitive Search は現在、[複数の価格レベル](https://azure.microsoft.com/pricing/details/search/) (Free、Basic、Standard、ストレージ最適化) で提供されています。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、[価格レベルの選択](search-sku-tier.md) に関する記事を参照してください。
 
 運用環境のワークロードでは Basic と Standard が最も一般的な選択肢ですが、ほとんどのお客様は Free サービスから始めています。 レベルごとの主な違いは、パーティション サイズと速度、そして作成できるオブジェクトの数に対する制限です。
 
@@ -136,9 +136,9 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Cognitive Search サービスの Standard レベルを選択している場合は、レプリカとパーティションの 2 つのディメンションでご利用のサービスをスケーリングできます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
 
-***パーティション***を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
+***パーティション*** を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
 
-***レプリカ***を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
+***レプリカ*** を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
 
 リソースを追加すると、月ごとの請求が増加します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使うと、リソース追加の課金への影響を把握できます。 負荷に基づいてリソースを調整できることに注意してください。 たとえば、リソースを増やして完全な初期インデックスを作成した後、増分インデックス作成に適したレベルまでリソースを減らすことができます。
 

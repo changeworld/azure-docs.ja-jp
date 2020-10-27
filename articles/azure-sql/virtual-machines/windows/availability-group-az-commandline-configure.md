@@ -13,19 +13,21 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c591bfa911663503b3e8a9101910034c91a8251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298781"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168258"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Azure VM に SQL Server の可用性グループを構成する (PowerShell & Az CLI)
+# <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>PowerShell または Az CLI を使用して Azure VM で SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、[PowerShell](/powershell/scripting/install/installing-powershell) または [Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) を使用して、Windows フェールオーバー クラスターのデプロイ、クラスターへの SQL Server VM の追加、Always On 可用性グループの内部ロード バランサーおよびリスナーの作成を行う方法について説明します。 
+この記事では、[PowerShell](/powershell/scripting/install/installing-powershell) または [Azure CLI](/cli/azure/sql/vm) を使用して、Windows フェールオーバー クラスターのデプロイ、クラスターへの SQL Server VM の追加、Always On 可用性グループの内部ロード バランサーおよびリスナーの作成を行う方法について説明します。 
 
 可用性グループのデプロイは、引き続き SQL Server Management Studio (SSMS) または Transact-SQL (T-SQL) を使用して手動で実行されます。 
+
+この記事では PowerShell と Az CLI を使用して可用性グループ環境を構成しますが、 [Azure portal](availability-group-azure-portal-configure.md)から [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +35,7 @@ Always On 可用性グループを構成するには、次の前提条件を満�
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されているのと "*同じ*" 可用性セットまたは "*異なる*" 可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
+- [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されているのと " *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにある、1 つ以上のドメイン参加済みの、 [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
 - 最新バージョンの [PowerShell](/powershell/scripting/install/installing-powershell) または [Azure CLI](/cli/azure/install-azure-cli)。 
 - 2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 1 つは内部ロード バランサー用です。 もう 1 つは、可用性グループと同じサブネット内の可用性グループ リスナー用です。 既存のロード バランサーを使用している場合は、使用可能な IP アドレスが可用性グループ リスナー用に 1 つだけ必要です。 
 
@@ -41,7 +43,7 @@ Always On 可用性グループを構成するには、次の前提条件を満�
 
 Azure CLI を使用して Always On 可用性グループを構成するには、次のアカウントのアクセス許可が必要です。 
 
-- ドメインで**コンピューター オブジェクトを作成する**ためのアクセス許可を持っている既存のドメイン ユーザー アカウント。 たとえばドメイン管理者アカウントは、一般に十分なアクセス許可を持っています (例: account@domain.com)。 _クラスターを作成するには、このアカウントが、各 VM でローカル管理者グループに含まれている必要もあります。_
+- ドメインで **コンピューター オブジェクトを作成する** ためのアクセス許可を持っている既存のドメイン ユーザー アカウント。 たとえばドメイン管理者アカウントは、一般に十分なアクセス許可を持っています (例: account@domain.com)。 _クラスターを作成するには、このアカウントが、各 VM でローカル管理者グループに含まれている必要もあります。_
 - SQL Server を制御するドメイン ユーザー アカウント。 
  
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
@@ -62,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> 古いバージョンの Azure CLI を使用している場合は、エラー `az sql: 'vm' is not in the 'az sql' command group` が表示されることがあります。 このエラーを回避するには、[最新バージョンの Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をダウンロードしてください。
+> 古いバージョンの Azure CLI を使用している場合は、エラー `az sql: 'vm' is not in the 'az sql' command group` が表示されることがあります。 このエラーを回避するには、[最新バージョンの Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) をダウンロードしてください。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -82,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>クラスター メタデータを定義する
 
-Azure CLI の [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) コマンド グループは、可用性グループをホストする Windows Server フェールオーバー クラスター (WSFC) サービスのメタデータを管理するものです。 クラスター メタデータには、Active Directory ドメイン、クラスター アカウント、クラウド監視として使用されるストレージ アカウント、および SQL Server バージョンが含まれています。 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) を使用して WSFC のメタデータを定義し、最初の SQL Server VM が追加されたら、定義のとおりにクラスターが作成されるようにします。 
+Azure CLI の [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group) コマンド グループは、可用性グループをホストする Windows Server フェールオーバー クラスター (WSFC) サービスのメタデータを管理するものです。 クラスター メタデータには、Active Directory ドメイン、クラスター アカウント、クラウド監視として使用されるストレージ アカウント、および SQL Server バージョンが含まれています。 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) を使用して WSFC のメタデータを定義し、最初の SQL Server VM が追加されたら、定義のとおりにクラスターが作成されるようにします。 
 
 次のコード スニペットは、クラスターのメタデータを定義します。
 
@@ -127,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>クラスターに VM を追加する
 
-クラスターに最初の SQL Server VM を追加すると、クラスターが作成されます。 [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) コマンドは、前に指定された名前でクラスターを作成し、SQL Server VM にクラスター ロールをインストールした後、それらの VM をクラスターに追加します。 その後に `az sql vm add-to-group` コマンドを使用すると、新しく作成されたクラスターに SQL Server VM が追加されます。 
+クラスターに最初の SQL Server VM を追加すると、クラスターが作成されます。 [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) コマンドは、前に指定された名前でクラスターを作成し、SQL Server VM にクラスター ロールをインストールした後、それらの VM をクラスターに追加します。 その後に `az sql vm add-to-group` コマンドを使用すると、新しく作成されたクラスターに SQL Server VM が追加されます。 
 
 次のコード スニペットはクラスターを作成し、そこに最初の SQL Server VM を追加します。 
 
@@ -200,9 +202,11 @@ Microsoft によってフェールオーバー クラスターがサポートさ
 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)、[Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) のいずれかを使用して、通常どおりに可用性グループを手動で作成します。 
 
 >[!IMPORTANT]
-> この時点では、リスナーを作成 "*しないでください*"。これは、以降のセクションで Azure CLI を使用して行います。  
+> この時点では、リスナーを作成 " *しないでください* "。これは、以降のセクションで Azure CLI を使用して行います。  
 
 ## <a name="create-internal-load-balancer"></a>内部ロード バランサーを作成する
+
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
 
 Always On 可用性グループ リスナーには、Azure Load Balancer の内部インスタンスが必要です。 内部ロード バランサーでは、より高速なフェールオーバーと再接続を可能にする可用性グループ リスナー用の "フローティング" IP アドレスが提供されます。 可用性グループ内の SQL Server VM が同じ可用性セットの一部である場合は、Basic ロード バランサーを使用できます。 それ以外の場合は、Standard ロード バランサーを使用する必要があります。  
 
@@ -240,9 +244,9 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 ## <a name="create-listener"></a>リスナーを作成する
 
-可用性グループを手動で作成したら、[az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) を使用してリスナーを作成できます。 
+可用性グループを手動で作成したら、[az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) を使用してリスナーを作成できます。 
 
-"*サブネット リソース ID*" は、仮想ネットワーク リソースのリソース ID に追加された `/subnets/<subnetname>` の値です。 サブネット リソース ID を識別するには、次の操作を行います。
+" *サブネット リソース ID* " は、仮想ネットワーク リソースのリソース ID に追加された `/subnets/<subnetname>` の値です。 サブネット リソース ID を識別するには、次の操作を行います。
    1. [Azure portal](https://portal.azure.com) で、ご利用のリソース グループに移動します。 
    1. 仮想ネットワーク リソースを選択します。 
    1. **[設定]** ウィンドウで **[プロパティ]** を選択します。 
@@ -294,7 +298,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="modify-number-of-replicas"></a>レプリカの数を変更する 
-Azure でホストされている SQL Server VM に可用性グループをデプロイすると複雑さが増します。 リソースは、リソースプロバイダーおよび仮想マシン グループによって管理されるようになります。 このため、可用性グループにレプリカを追加したり、可用性グループからレプリカを削除したりする場合は、SQL Server VM に関する情報でリスナー メタデータを更新する手順が別途発生します。 可用性グループ内のレプリカの数を変更する場合は、[az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) コマンドを使用して、SQL Server VM のメタデータでリスナーを更新する必要もあります。 
+Azure でホストされている SQL Server VM に可用性グループをデプロイすると複雑さが増します。 リソースは、リソースプロバイダーおよび仮想マシン グループによって管理されるようになります。 このため、可用性グループにレプリカを追加したり、可用性グループからレプリカを削除したりする場合は、SQL Server VM に関する情報でリスナー メタデータを更新する手順が別途発生します。 可用性グループ内のレプリカの数を変更する場合は、[az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-update) コマンドを使用して、SQL Server VM のメタデータでリスナーを更新する必要もあります。 
 
 
 ### <a name="add-a-replica"></a>レプリカを追加する

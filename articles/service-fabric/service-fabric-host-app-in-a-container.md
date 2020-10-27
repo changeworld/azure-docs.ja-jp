@@ -3,12 +3,12 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c2e44db9bc813b346493b4d23b9f48b279e245b3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817634"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122065"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -30,14 +30,14 @@ ms.locfileid: "91817634"
 1. Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成します。
 2. Windows 10 でコンテナーを実行できるように、[Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) をインストールします。
 3. [Service Fabric ランタイムのバージョン 6.2 以降](service-fabric-get-started.md)と、[Service Fabric SDK のバージョン 3.1](service-fabric-get-started.md) 以降をインストールします。
-4. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、**Azure の開発**ワークロードと **ASP.NET と Web 開発**ワークロードをインストールします。
+4. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、 **Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
 5. [Azure PowerShell][link-azure-powershell-install] をインストールする
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter をダウンロードして実行する
 
 1. [Fabrikam Fiber CallCenter][link-fabrikam-github] というサンプル アプリケーションをダウンロードします。  **[download archive]\(アーカイブのダウンロード\)** リンクをクリックします。  *fabrikam.zip* ファイルの *sourceCode* ディレクトリにある *sourceCode.zip* ファイルを展開してから、お使いのコンピューターに *VS2015* ディレクトリを展開します。
 
-2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を**管理者**として起動し、[FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。  F5 キーを押して、アプリケーションをデバッグおよび実行します。
+2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を **管理者** として起動し、 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。  F5 キーを押して、アプリケーションをデバッグおよび実行します。
 
    ![ローカル ホストで実行されている Fabrikam Fiber CallCenter アプリケーション ホーム ページのスクリーンショット。 このページには、サポート コールの一覧が含まれるダッシュボードが表示されます。][fabrikam-web-page]
 
@@ -109,7 +109,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="update-the-web-config"></a>Web 構成の更新
 
-**FabrikamFiber.Web** プロジェクトに戻り、**web.config** ファイル内の接続文字列を更新し、コンテナー内の SQL Server を指定します。  前のスクリプトで作成したサーバー名の接続文字列の *Server* の部分を更新します。 "fab-fiber-751718376.database.windows.net" のようになっている必要があります。 次の XML では、更新する必要があるのは `connectionString` 属性だけです。`providerName` 属性と `name` 属性を変更する必要はありません。
+**FabrikamFiber.Web** プロジェクトに戻り、 **web.config** ファイル内の接続文字列を更新し、コンテナー内の SQL Server を指定します。  前のスクリプトで作成したサーバー名の接続文字列の *Server* の部分を更新します。 "fab-fiber-751718376.database.windows.net" のようになっている必要があります。 次の XML では、更新する必要があるのは `connectionString` 属性だけです。`providerName` 属性と `name` 属性を変更する必要はありません。
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
@@ -118,7 +118,7 @@ Write-Host "Server name is $servername"
 ```
 
 >[!NOTE]
->ローカル デバッグには、ホストからアクセスできる範囲であれば好きな SQL Server を使用できます。 ただし、**localdb** は `container -> host` 通信をサポートしていません。 Web アプリケーションのリリース ビルドを作成するときに別の SQL データベースを使用する場合は、*web.release.config* ファイルに別の接続文字列を追加します。
+>ローカル デバッグには、ホストからアクセスできる範囲であれば好きな SQL Server を使用できます。 ただし、 **localdb** は `container -> host` 通信をサポートしていません。 Web アプリケーションのリリース ビルドを作成するときに別の SQL データベースを使用する場合は、 *web.release.config* ファイルに別の接続文字列を追加します。
 
 ## <a name="run-the-containerized-application-locally"></a>コンテナーに格納されたアプリケーションをローカルで実行する
 
@@ -157,7 +157,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
 1. ソリューション エクスプローラーで **FabrikamFiber.CallCenterApplication** アプリケーション プロジェクトを右クリックし、 **[発行]** を選択します。
 2. サブスクリプションにアクセスできるように、Azure アカウントを使用してサインインします。
-3. **[接続のエンドポイント]** ドロップダウンを選択して、 **[新しいクラスターの作成...]** オプションを選択します。
+3. **[接続のエンドポイント]** のドロップダウンの下にある **[新しいクラスターの作成]** オプションを選択します。
 4. **[クラスターの作成]** ダイアログで、次のように設定を変更します。
 
     a. **[クラスター名]** フィールドでクラスターの名前を指定します。また、使用するサブスクリプションと場所を指定します。 クラスター リソース グループの名前をメモしておいてください。

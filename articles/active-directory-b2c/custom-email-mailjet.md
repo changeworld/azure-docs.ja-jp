@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f2608dafb77aeba98f188ec04f78649656ef969
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88584966"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089657"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 1. [Mailjet アカウントの作成](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)に関するページの設定手順に従います。
 1. 電子メールを送信できるようにするには、送信者のメール アドレスまたはドメインを[登録して確認](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)します。
-2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー**と**シークレット キー**を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
+2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、 **API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
@@ -44,14 +44,14 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 1. **[概要]** ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** では、 **[手動]** を選びます。
-1. ポリシー キーの**名前**を入力します。 たとえば、「 `MailjetApiKey` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-1. **[シークレット]** に、記録しておいた Mailjet の **API キー**を入力します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `MailjetApiKey` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **[シークレット]** に、記録しておいた Mailjet の **API キー** を入力します。
 1. **[キー使用法]** には **[署名]** を選択します。
 1. **［作成］** を選択します
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** では、 **[手動]** を選びます。
-1. ポリシー キーの**名前**を入力します。 たとえば、「 `MailjetSecretKey` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-1. **[シークレット]** に、記録しておいた Mailjet の**シークレット キー**を入力します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `MailjetSecretKey` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **[シークレット]** に、記録しておいた Mailjet の **シークレット キー** を入力します。
 1. **[キー使用法]** には **[署名]** を選択します。
 1. **［作成］** を選択します
 
@@ -59,7 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリシー キーに格納したら、Mailjet の[動的トランザクション テンプレート](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)を作成します。
 
-1. Mailjet サイトで、[トランザクション テンプレート](https://app.mailjet.com/templates/transactional) ページを開き、 **[Create a new template]\(新しいテンプレートを作成する\)** を選択します。
+1. Mailjet サイトで、 [トランザクション テンプレート](https://app.mailjet.com/templates/transactional) ページを開き、 **[Create a new template]\(新しいテンプレートを作成する\)** を選択します。
 1. **[By coding it in HTML]\(HTML でコーディング\)** を選択してから、 **[Code from scratch]\(最初からコーディング\)** を選びます。
 1. 「`Verification email`」のような一意のテンプレート名を入力し、 **[作成]** を選択します。
 1. HTML エディターに次の HTML テンプレートを貼り付けるか、独自のテンプレートを貼り付けます。 `{{var:otp:""}}` パラメーターと `{{var:email:""}}` パラメーターは、ワンタイム パスワード値とユーザー電子メール アドレスで動的に置換されます。
@@ -164,7 +164,7 @@ Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリ�
     1. **[Address]\(アドレス\)** では、ご自分のメール アドレスを選択します
     1. **[保存]** を選択します。
 1. 右上の **[Save & Publish]\(保存して発行\)** を選択してから、 **[Yes, publish changes]\(はい、変更を発行します\)** を選びます
-1. 後の手順で使用するために、作成したテンプレートの**テンプレート ID** を記録します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
+1. 後の手順で使用するために、作成したテンプレートの **テンプレート ID** を記録します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
 
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C の要求の種類を追加する
@@ -228,15 +228,15 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 ## <a name="add-datauri-content-definition"></a>DataUri コンテンツ定義の追加
 
-`<BuildingBlocks>` 内の要求変換の下で、バージョン 2.0.0 データ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
+`<BuildingBlocks>` 内の要求変換の下で、バージョン 2.1.0 データ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
 ```XML
 <ContentDefinitions>
  <ContentDefinition Id="api.localaccountsignup">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountpasswordreset">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
   </ContentDefinition>
 </ContentDefinitions>
 ```
@@ -374,8 +374,8 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
       <Metadata>
         <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
@@ -391,8 +391,8 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
       <Metadata>
         <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
@@ -479,14 +479,14 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     ```xml
     <ContentDefinitions>
       <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
           <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
         </LocalizedResourcesReferences>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountpasswordreset">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
           <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
@@ -502,6 +502,41 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
+    
+## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
+
+Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。 
+
+```XML
+<LocalizedResources Id="api.custom-email.en">
+  <LocalizedStrings>
+    ...
+    <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+    <!-- Claims-->
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <!-- Email validation error messages-->
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+ローカライズされた文字列を追加した後に、LocalAccountSignUpWithLogonEmail と LocalAccountDiscoveryUsingEmailAddress の技術プロファイルから OTP 検証エラー メッセージのメタデータを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

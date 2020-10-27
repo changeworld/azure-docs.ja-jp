@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048510"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331568"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
-Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 そのためには、個々の要素を**デジタル ツイン**としてモデル化し、それらを接続してナレッジ **グラフ**にまとめます。それにより、ライブ イベントに応答したり、照会された情報を返したりすることができます。
+Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 そのためには、個々の要素を **デジタル ツイン** としてモデル化し、それらを接続してナレッジ **グラフ** にまとめます。それにより、ライブ イベントに応答したり、照会された情報を返したりすることができます。
 
-このクイックスタートでは、[**Azure Digital Twins (ADT) エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)というサンプル アプリケーションを利用して、事前構築済みの Azure Digital Twins グラフを精査します。 ADT Explorer を使用すると、環境のデジタル表現をアップロードしたり、Azure Digital Twins の環境を表すために作成されたツインやグラフを視覚化したり、ブラウザーベースの視覚的な操作を通じてその他の管理アクティビティを実行したりできます。
+このクイックスタートでは、 [**Azure Digital Twins (ADT) エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)というサンプル アプリケーションを利用して、事前構築済みの Azure Digital Twins グラフを精査します。 ADT Explorer を使用すると、環境のデジタル表現をアップロードしたり、Azure Digital Twins の環境を表すために作成されたツインやグラフを視覚化したり、ブラウザーベースの視覚的な操作を通じてその他の管理アクティビティを実行したりできます。
 
 このクイックスタートには主に次の手順が含まれています。
 
@@ -39,26 +39,25 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 最後に、クイックスタートの間に使用するサンプルを 2 つダウンロードする必要もあります。
 * **ADT エクスプローラー** サンプル アプリケーション。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するメイン アプリが含まれています。 このアプリは、「[Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)」から入手できます。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、ZIP フォルダーが _**Azure_Digital_Twins__ADT__explorer.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
-* **Azure Digital Twins のサンプル シナリオ**。 ここには、ADT エクスプローラーに読み込んで操作することになる、事前構築済みの Azure Digital Twins グラフが含まれています。 シナリオを入手するには、こちらに移動してください: [Azure Digital Twins サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、ZIP フォルダーが _**Azure_Digital_Twins_samples.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
+* **Azure Digital Twins のサンプル シナリオ** 。 ここには、ADT エクスプローラーに読み込んで操作することになる、事前構築済みの Azure Digital Twins グラフが含まれています。 シナリオを入手するには、こちらに移動してください: [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、.ZIP フォルダーが _**Azure_Digital_Twins_end_to_end_samples.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins と ADT エクスプローラーを設定する
 
-Azure Digital Twins を操作する際の最初の手順は、**Azure Digital Twins インスタンス**の設定です。 サービスのインスタンスを作成すると、それにサンプル データを設定できるようになります (後でこのクイックスタートの中で行います)。
+Azure Digital Twins を操作する際の最初の手順は、 **Azure Digital Twins インスタンス** の設定です。 サービスのインスタンスを作成すると、それにサンプル データを設定できるようになります (後でこのクイックスタートの中で行います)。
 
 さらに、ADT エクスプローラーが自分のコンピューター上で動作し、Azure Digital Twins インスタンスにアクセスできるように、アクセス許可を設定します。 これで、サンプル アプリを使用して、インスタンスとそのデータを精査できるようになります。
 
-### <a name="set-up-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを設定する
+### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Azure Digital Twins インスタンスとアプリの登録を設定する
 
-まず、Azure Digital Twins インスタンスと、その操作を可能にするために必要な認証を設定します。 このためには、[*操作方法の手順に従うため、インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 推奨されるエクスペリエンスに応じて、[Azure portal](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md)、または [ Cloud Shell の自動デプロイ スクリプト サンプル](how-to-set-up-instance-scripted.md)用のセットアップに関する記事が用意されています。 すべてのバージョンの説明には、各手順が正しく完了し、新しいインスタンスを使用する準備ができていることを確認する手順も含まれています。
+まず、 **Azure Digital Twins インスタンスを設定** し、その操作を可能にするために必要な認証を設定します。 このためには、 [*操作方法の手順に従うため、インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 推奨されるエクスペリエンスに応じて、[Azure portal](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md)、または [ Cloud Shell の自動デプロイ スクリプト サンプル](how-to-set-up-instance-scripted.md)用のセットアップに関する記事が用意されています。 すべてのバージョンの説明には、各手順が正しく完了し、新しいインスタンスを使用する準備ができていることを確認する手順も含まれています。
+* Azure Digital Twins インスタンスの設定後、インスタンスの " **_ホスト名_** " ([ポータルで確認してください](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) が必要になります。
 
-このクイックスタートでは、インスタンスを設定したときの以下の値が必要になります。 これらの値を再度収集する必要がある場合は、以下のリンクを使用して、[Azure portal](https://portal.azure.com) でそれらを見つけるためのセットアップの記事の対応するセクションを参照してください。
-* Azure Digital Twins インスタンスの "**_ホスト名_**" ([ポータルで見つける](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD アプリ登録の "**_アプリケーション (クライアント) ID_**" ([ポータルで見つける](how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD アプリ登録の "**_ディレクトリ (テナント) ID_**" ([ポータルで見つける](how-to-set-up-instance-portal.md#collect-important-values))
+ADT Explorer アプリケーションを認証するには、 **アプリの登録** も設定する必要があります。 [*アプリの登録の作成方法*](how-to-create-app-registration.md)に関するページでの指示に従って設定します。 
+* アプリの登録が完了したら、登録の " **_アプリケーション (クライアント) ID_** " および " **_ディレクトリ (テナント) ID_** " ([ポータルで確認してください](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) が必要になります。
 
 ### <a name="set-adt-explorer-permissions"></a>ADT エクスプローラーのアクセス許可を設定する
 
-次に、作成した Azure Digital Twins インスタンスを ADT Explorer で操作するための準備を行います。これは、ローカルでホストされる Web アプリケーションです。 Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) ページにアクセスして、自分のアプリの登録の名前を一覧から選択します。
+次に、作成した Azure Digital Twins インスタンスを ADT Explorer で操作するための準備を行います。これは、ローカルでホストされる Web アプリケーションです。 Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) ページにアクセスして、前のセクションで作成した **アプリの登録** の名前を一覧から選択します。
 
 その登録のメニューから *[認証]* を選択し、 *[+ プラットフォームを追加]* をクリックします。
 
@@ -87,7 +86,7 @@ ADT エクスプローラーで使用される Web 構成の設定は、これ�
 
 次に、ADT エクスプローラー アプリケーションを実行し、自分の Azure Digital Twins インスタンス用に構成します。
 
-ダウンロードして解凍した、_**Azure_Digital_Twins__ADT__explorer**_ フォルダーに移動します。 *Azure_Digital_Twins__ADT__explorer/client/src* というフォルダーの場所でコマンド プロンプトを開きます。
+ダウンロードして解凍した、 _**Azure_Digital_Twins__ADT__explorer**_ フォルダーに移動します。 *Azure_Digital_Twins__ADT__explorer/client/src* というフォルダーの場所でコマンド プロンプトを開きます。
 
 `npm install` を実行して、必須の依存関係をすべてダウンロードします。
 
@@ -104,7 +103,7 @@ ADT エクスプローラーで使用される Web 構成の設定は、これ�
 「[前提条件](#prerequisites)」セクションで前もって収集した重要な情報を入力します。
 * アプリケーション (クライアント) ID
 * ディレクトリ (テナント) ID
-* Azure Digital Twins インスタンスの URL ("*https://<インスタンスのホスト名>* " という形式)
+* Azure Digital Twins インスタンスの URL (" *https://<インスタンスのホスト名>* " という形式)
 
 >[!NOTE]
 > 同じアイコンを選択して [サインイン] ボックスを呼び出すことで、この情報はいつでも再表示して編集することができます。 指定した値は維持されます。
@@ -118,13 +117,13 @@ Microsoft の *[要求されているアクセス許可]* ポップアップ ウ
 
 次に、ADT エクスプローラーにサンプル シナリオとグラフをインポートします。
 
-サンプル シナリオは、ダウンロードして解凍した _**Azure_Digital_Twins_samples**_ フォルダーに置かれているので、ここでこのフォルダーに移動する必要があります。
+サンプル シナリオは、ダウンロードして解凍した _**Azure_Digital_Twins_end_to_end_samples**_ フォルダーに置かれているので、ここでこのフォルダーに移動する必要があります。
 
 ### <a name="models"></a>モデル
 
 Azure Digital Twins ソリューションで実行する最初の手順は、対象となる環境のボキャブラリの定義です。 これは、カスタム [**モデル**](concepts-models.md)を作成して、実際の環境に存在するエンティティのタイプを記述することによって行います。 
 
-それぞれのモデルは、**Digital Twin Definition Language (DTDL)** という JSON-LD に似た言語で作成され、単一のエンティティ タイプがその "*プロパティ*"、"*テレメトリ*"、"*リレーションシップ*"、"*コンポーネント*" の観点から記述されます。 それらのモデルは後で、これらのタイプの特定のインスタンスを表すデジタル ツインの基礎として使用することになります。
+それぞれのモデルは、 **Digital Twin Definition Language (DTDL)** という JSON-LD に似た言語で作成され、単一のエンティティ タイプがその " *プロパティ* "、" *テレメトリ* "、" *リレーションシップ* "、" *コンポーネント* " の観点から記述されます。 それらのモデルは後で、これらのタイプの特定のインスタンスを表すデジタル ツインの基礎として使用することになります。
 
 通常、モデルを作成する際は、3 つの手順を実行します。
 1. モデルの定義を作成する (このクイックスタートでは、サンプル ソリューションの一環として既に完了しています)
@@ -141,7 +140,7 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. 表示されたファイル セレクター ボックスで、ダウンロードしたリポジトリの *Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp/models* フォルダーに移動します。
+1. 表示されたファイル セレクター ボックスで、ダウンロードしたリポジトリの *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp/models* フォルダーに移動します。
 2. *Room.json* と *Floor.json* を選択し、[OK] をクリックします。 (必要であれば他のモデルをアップロードすることもできますが、このクイックスタートでは使用しません。)
 3. Azure アカウントへのサインインを求めるポップアップ ダイアログに従います。
 
@@ -163,9 +162,9 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 ### <a name="twins-and-the-twin-graph"></a>ツインとツイン グラフ
 
-自分の Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に準拠した[**デジタル ツイン**](concepts-twins-graph.md)を追加できます。 
+自分の Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に準拠した [**デジタル ツイン**](concepts-twins-graph.md)を追加できます。 
 
-デジタル ツインは、農場のセンサー、車内の照明、(このクイックスタートで取り上げる) 建物内の部屋など、対象となるビジネス環境内の実際のエンティティを表します。 特定のモデル タイプのツインを複数作成して (同じ *Room* モデルを使用する複数の部屋など)、それらをリレーションシップで接続し、環境全体を表す**ツイン グラフ**に反映することができます。
+デジタル ツインは、農場のセンサー、車内の照明、(このクイックスタートで取り上げる) 建物内の部屋など、対象となるビジネス環境内の実際のエンティティを表します。 特定のモデル タイプのツインを複数作成して (同じ *Room* モデルを使用する複数の部屋など)、それらをリレーションシップで接続し、環境全体を表す **ツイン グラフ** に反映することができます。
 
 このセクションでは、接続された事前作成済みのツインをアップロードして、事前作成済みのグラフに反映します。 このグラフには、2 つのフロアと 2 つの部屋が含まれていて、次のレイアウトで接続されています。
 * *Floor0*
@@ -179,7 +178,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-ファイル セレクター ボックスで、*Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp* フォルダーに移動し、_**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
+ファイル セレクター ボックスで、 *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp* フォルダーに移動し、 _**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
 
 数秒後、ADT エクスプローラーで *[インポート]* ビューが開き、読み込みの対象となるグラフのプレビューが表示されます。
 
@@ -225,7 +224,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 ツインを選択すると、そのプロパティと値を *[PROPERTY EXPLORER]\(プロパティ エクスプローラー\)* ボックスに一覧表示できます。 
 
-次に示すのは、*Room0* のプロパティです。
+次に示すのは、 *Room0* のプロパティです。
 
 :::row:::
     :::column:::
@@ -237,7 +236,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 *Room0* の温度は **70** 度であることがわかります。
 
-次に示すのは、*Room1* のプロパティです。
+次に示すのは、 *Room1* のプロパティです。
 
 :::row:::
     :::column:::
@@ -253,9 +252,9 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 Azure Digital Twins の主な機能は、環境についての質問に答える[クエリ](concepts-query-language.md)をツイン グラフに対して容易に、かつ効率よく実行できることです。 
 
-グラフ内のツインに対してクエリを実行する方法の 1 つは、それらの "*プロパティ*" を条件にすることです。 プロパティをクエリの条件とすることにより、環境内で注意すべき外れ値を見つけるなど、さまざまな質問への答えが得やすくなります。
+グラフ内のツインに対してクエリを実行する方法の 1 つは、それらの " *プロパティ* " を条件にすることです。 プロパティをクエリの条件とすることにより、環境内で注意すべき外れ値を見つけるなど、さまざまな質問への答えが得やすくなります。
 
-このセクションでは、"_**自分の環境に存在するツインのうち、温度が 75 度を超えるツインをすべて知りたい**_" という質問に回答するクエリを実行します。
+このセクションでは、" _**自分の環境に存在するツインのうち、温度が 75 度を超えるツインをすべて知りたい**_ " という質問に回答するクエリを実行します。
 
 回答を得るためには、 *[QUERY EXPLORER]\(クエリ エクスプローラー\)* ボックスで次のクエリを実行します。
 
@@ -263,7 +262,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 ```
 
-先ほどツインのプロパティを確認したことを思い出してください。*Room0* の温度は **70** 度、*Room1* の温度は **80** 度です。 したがって、ここで結果として返されるのは _**Room1**_ だけです。
+先ほどツインのプロパティを確認したことを思い出してください。 *Room0* の温度は **70** 度、 *Room1* の温度は **80** 度です。 したがって、ここで結果として返されるのは _**Room1**_ だけです。
     
 :::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
@@ -272,11 +271,11 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 ## <a name="edit-data-in-the-graph"></a>グラフのデータを編集する
 
-グラフに表されたツインのプロパティは、ADT エクスプローラーを使用して編集できます。 このセクションでは、**Room0 の "_温度_" を 76 度に上げます**。
+グラフに表されたツインのプロパティは、ADT エクスプローラーを使用して編集できます。 このセクションでは、 **Room0 の " _温度_ " を 76 度に上げます** 。
 
 そのためには、 *[PROPERTY EXPLORER]\(プロパティ エクスプローラー\)* ボックスで *Room0* を選択し、そのプロパティ リストを呼び出します。
 
-このリストのプロパティは編集することができます。 温度の値 **70** を選択して、新しい値を入力できるようにします。 「**76**」と入力して *[保存]* アイコンをクリックすると、温度が **76** 度に更新されます。
+このリストのプロパティは編集することができます。 温度の値 **70** を選択して、新しい値を入力できるようにします。 「 **76** 」と入力して *[保存]* アイコンをクリックすると、温度が **76** 度に更新されます。
 
 :::row:::
     :::column:::
@@ -290,7 +289,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 ### <a name="query-to-see-the-result"></a>クエリを実行して結果を確認する
 
-グラフでの更新内容が *Room0* の温度に正常に登録されたことを確認するには、先ほどのクエリを再実行して、**温度が 75 度を超えるすべてのツインを環境から取得**します。
+グラフでの更新内容が *Room0* の温度に正常に登録されたことを確認するには、先ほどのクエリを再実行して、 **温度が 75 度を超えるすべてのツインを環境から取得** します。
 
 ```SQL
 SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
@@ -321,7 +320,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最後に、ローカル マシンにダウンロードしたプロジェクトのサンプル フォルダー (_**Azure_Digital_Twins__ADT__explorer**_ と _**Azure_Digital_Twins_samples**_) を削除します。 zip されているバージョンと解凍されたバージョンの両方を削除する必要がある場合があります。
+最後に、ローカル マシンにダウンロードしたプロジェクトのサンプル フォルダー ( _**Azure_Digital_Twins__ADT__explorer**_ と _**Azure_Digital_Twins_end_to_end_samples**_ ) を削除します。 zip されているバージョンと解凍されたバージョンの両方を削除する必要がある場合があります。
 
 ## <a name="next-steps"></a>次のステップ 
 

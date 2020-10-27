@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665397"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320718"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
@@ -40,13 +40,20 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 Communication Services はパススルー サービスとして Azure Notification Hub を使用することで、[直接送信](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API を使用してプラットフォーム固有のさまざまなプッシュ通知サービスと通信します。 これにより、既存の Azure Notification Hub のリソースと構成を再利用して、待ち時間が短く、信頼性の高い通話通知をアプリケーションに配信できます。
 
+> [!NOTE]
+> 現在、プッシュ通知の呼び出しのみがサポートされています。
+
 ### <a name="notification-hub-provisioning"></a>通知ハブのプロビジョニング 
 
-Notification Hubs を使用してクライアント デバイスにプッシュ通知を配信するには、Communication Services リソースと同じサブスクリプション内に[通知ハブを作成](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal)します。 Microsoft Azure Notification Hubs は、使用するプラットフォーム通知サービス用に構成する必要があります。 Notification Hubs からのプッシュ通知をクライアント アプリで取得するには、[Notification Hubs の使用](https://docs.microsoft.com/azure/notification-hubs/ios-sdk-get-started)に関する記事を参照し、ページの上部にあるドロップダウン リストでターゲット クライアント プラットフォームを選択します。
+Notification Hubs を使用してクライアント デバイスにプッシュ通知を配信するには、Communication Services リソースと同じサブスクリプション内に[通知ハブを作成](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal)します。 Microsoft Azure Notification Hubs は、使用するプラットフォーム通知サービス用に構成する必要があります。 Notification Hubs からのプッシュ通知をクライアント アプリで取得するには、[Notification Hubs の使用](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started)に関する記事を参照し、ページの上部にあるドロップダウン リストでターゲット クライアント プラットフォームを選択します。
+
+> [!NOTE]
+> 現在、APN および FCM プラットフォームがサポートされています。
 
 通知ハブを構成したら、Azure Resource Manager クライアントまたは Azure portal を使用してハブの接続文字列を指定することにより、Communication Services リソースにそれを関連付けることができます。 接続文字列には "送信" アクセス許可が含まれている必要があります。 ハブ専用の "送信" のみのアクセス許可を持つ別のアクセス ポリシーを作成することをお勧めします。 [Notification Hubs のセキュリティとアクセスのポリシー](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)に関する詳細を確認してください
 
-> 注:Apple Push Notification Service VOIP の通知を有効にするには、通知ハブの名前を、`.voip` サフィックスを持つアプリケーション バンドル ID に設定する必要があります。 「[Notification Hubs 経由で APNS VOIP を使用する](https://docs.microsoft.com/azure/notification-hubs/voip-apns)」を参照してください。
+> [!IMPORTANT]
+> Apple Push Notification Service VOIP の通知を有効にするには、通知ハブの名前を、`.voip` サフィックスを持つアプリケーション バンドル ID に設定する必要があります。 「[Notification Hubs 経由で APNS VOIP を使用する](https://docs.microsoft.com/azure/notification-hubs/voip-apns)」を参照してください。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Azure Resource Manager クライアントを使用して通知ハブを構成する
 
@@ -67,6 +74,9 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 ポータルで、Azure Communication Services リソースに移動します。 Communication Services リソース内で Communication Services ページの左側のメニューから [プッシュ通知] を選択し、前にプロビジョニングした通知ハブを接続します。 ここでは、接続文字列とリソース ID を指定する必要があります。
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Communication Services が Event Grid とどのように統合されるかを示す図。":::
+
+> [!NOTE]
+> Azure Notification ハブの接続文字列が更新されている場合は、Communication Services リソースも更新する必要があります。
 
 #### <a name="device-registration"></a>デバイス登録 
 

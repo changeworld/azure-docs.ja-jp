@@ -11,16 +11,16 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258916"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216530"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする
 
-このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーション (SPA) でユーザーをサインアップおよびサインインする方法を説明します。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用して、OAuth 2.0 の暗黙的な許可フローを使用するシングルページ アプリケーション (SPA) でユーザーをサインアップおよびサインインする方法を説明します。
 
 2 部構成のシリーズの最初の部分であるこのチュートリアルでは、次の作業を行います。
 
@@ -39,7 +39,7 @@ ms.locfileid: "91258916"
 このチュートリアルの手順を続ける前に、次の Azure AD B2C リソースを用意しておく必要があります。
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)
-* ご利用のテナントで[登録されているアプリケーション](tutorial-register-applications.md)
+* テナントに[登録されているアプリケーション](tutorial-register-spa.md) (暗黙的なフロー オプションを使用)
 * ご利用のテナントで[作成したユーザー フロー](tutorial-create-user-flows.md)
 
 さらに、ご利用のローカル開発環境には次のものが必要です。
@@ -51,7 +51,7 @@ ms.locfileid: "91258916"
 
 前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
 
-Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -60,19 +60,19 @@ Azure AD B2C テナントでアプリケーションを更新するには、Micr
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
 1. **[Web]** で **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力します。
-1. **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェックボックスをオンにし、 **[保存]** を選択します。
+1. **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェック ボックスをオンにし (まだの場合)、 **[保存]** を選択します。
 1. **[概要]** を選択します。
-1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために**アプリケーション (クライアント) ID** をメモしておきます。
+1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために **アプリケーション (クライアント) ID** をメモしておきます。
 
 #### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリケーション (レガシ)]** を選択し、*webapp1* アプリケーションを選択します。
+1. **[アプリケーション (レガシ)]** を選択し、 *webapp1* アプリケーションを選択します。
 1. **[応答 URL]** に「`http://localhost:6420`」を追加します。
 1. **[保存]** を選択します。
-1. プロパティ ページで、**アプリケーション ID** をメモします。 このアプリ ID は、後の手順でシングル ページ Web アプリケーションのコードを更新する際に使用します。
+1. プロパティ ページで、 **アプリケーション ID** をメモします。 このアプリ ID は、後の手順でシングル ページ Web アプリケーションのコードを更新する際に使用します。
 
 * * *
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 1. *JavaScriptSPA* フォルダー内の *authConfig.js* ファイルを開きます。
 1. `msalConfig` オブジェクト内で、次のように更新します。
     * 前の手順で記録した **アプリケーション (クライアント) ID** を持つ値で `clientId` を更新
-    * Azure AD B2C テナント名と、前提条件の一部として作成したサインアップ/サインイン ユーザー フローの名前 (*B2C_1_signupsignin1* など) で `authority` URI を更新
+    * Azure AD B2C テナント名と、前提条件の一部として作成したサインアップ/サインイン ユーザー フローの名前 ( *B2C_1_signupsignin1* など) で `authority` URI を更新
 
     ```javascript
     const msalConfig = {
@@ -162,7 +162,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="what-about-calling-the-api"></a>API の呼び出しについて
 
-サインイン後に **[Call API]\(API の呼び出し\)** ボタンを選択した場合は、API 呼び出しの結果ではなく、サインアップ/サインイン ユーザー フロー ページが表示されます。 "*お使いの*" Azure AD B2C テナントに登録されている Web API アプリケーションと通信するようにアプリケーションの API 部分をまだ構成していないため、これは予期されていることです。
+サインイン後に **[Call API]\(API の呼び出し\)** ボタンを選択した場合は、API 呼び出しの結果ではなく、サインアップ/サインイン ユーザー フロー ページが表示されます。 " *お使いの* " Azure AD B2C テナントに登録されている Web API アプリケーションと通信するようにアプリケーションの API 部分をまだ構成していないため、これは予期されていることです。
 
 この時点では、アプリケーションはデモ テナント (fabrikamb2c.onmicrosoft.com) に登録されている API とまだ通信しようとしています。そのテナントで認証されないため、サインアップ/サインイン ページが表示されます。
 

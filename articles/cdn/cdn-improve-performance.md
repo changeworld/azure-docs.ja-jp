@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358289"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148747"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -27,7 +27,7 @@ ms.locfileid: "91358289"
 ファイル圧縮を有効にするには、次の 2 つの方法があります。
 
 - 配信元サーバーで圧縮を有効にします。 この方法では、Azure CDN は圧縮ファイルを受け渡し、要求したクライアントに配信します。
-- CDN POP サーバーで直接、圧縮を有効にします (*即時圧縮*)。 この方法では、配信元サーバーで圧縮されていない場合でも、CDN でファイルが圧縮され、エンド ユーザーに渡されます。
+- CDN POP サーバーで直接、圧縮を有効にします ( *即時圧縮* )。 この方法では、配信元サーバーで圧縮されていない場合でも、CDN でファイルが圧縮され、エンド ユーザーに渡されます。
 
 > [!IMPORTANT]
 > Azure CDN 構成の変更がネットワーク全体に反映されるまでには時間がかかる可能性があります。 
@@ -42,7 +42,7 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 
 ### <a name="standard-cdn-profiles"></a>Standard CDN プロファイル 
 > [!NOTE]
-> このセクションは、**Azure CDN Standard from Microsoft** プロファイル、**Azure CDN Standard from Verizon** プロファイル、および **Azure CDN Standard from Akamai** プロファイルに適用されます。
+> このセクションは、 **Azure CDN Standard from Microsoft** プロファイル、 **Azure CDN Standard from Verizon** プロファイル、および **Azure CDN Standard from Akamai** プロファイルに適用されます。
 > 
 > 
 
@@ -73,7 +73,7 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 
 ### <a name="premium-cdn-profiles"></a>Premium CDN プロファイル
 > [!NOTE]
-> このセクションは、**Azure CDN Premium from Verizon** プロファイルだけに適用されます。
+> このセクションは、 **Azure CDN Premium from Verizon** プロファイルだけに適用されます。
 > 
 
 1. CDN プロファイルのページで、 **[管理]** を選択します。
@@ -112,6 +112,8 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 要求で複数の圧縮の種類がサポートされている場合、brotli 圧縮が優先されます。
 
 アセットの要求で gzip 圧縮が指定され、要求がキャッシュ ミスになった場合、Azure CDN は POP サーバー上で直接アセットの gzip 圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。
+
+配信元がチャンク転送エンコード (CTE) を使用して圧縮データを CDN POP に送信する場合、8 MB より大きい応答サイズはサポートされません。 
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN from Verizon プロファイル
 

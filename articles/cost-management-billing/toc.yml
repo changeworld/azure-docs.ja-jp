@@ -48,8 +48,6 @@
           href: costs/manage-automation.md
         - name: パートナー向け Cost Management
           href: costs/get-started-partners.md
-        - name: Cost Management と Cloudyn のいずれかを選択する
-          href: costs/choose-between-azure-cost-management-cloudyn.md
     - name: Reservations
       items:
         - name: Azure の予約とは
@@ -440,10 +438,6 @@
           href: cloudyn/overview.md
     - name: クイックスタート
       items:
-        - name: コスト データの表示
-          href: cloudyn/quick-register-azure-sub.md
-        - name: コスト データの表示 - EA
-          href: cloudyn/quick-register-ea.md
         - name: コスト データの表示 - CSP
           href: cloudyn/quick-register-csp.md
     - name: チュートリアル
@@ -468,8 +462,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: VM の拡張メトリックの追加
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: Google アカウントの接続
-          href: cloudyn/connect-google-account.md
         - name: AWS アカウントの接続
           href: cloudyn/connect-aws-account.md
         - name: ストレージ アカウントの構成

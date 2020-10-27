@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543110"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル: Azure Active Directory と Sequr の統合
 
@@ -41,7 +41,7 @@ Sequr と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Sequr では、**SP と IDP** によって開始される SSO がサポートされます
+* Sequr では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sequr-from-the-gallery"></a>ギャラリーからの Sequr の追加
 
@@ -61,13 +61,13 @@ Azure AD への Sequr の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Sequr**」と入力し、結果ウィンドウで **[Sequr]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Sequr** 」と入力し、結果ウィンドウで **[Sequr]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Sequr](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sequr で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Sequr で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Sequr 内の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 Sequr で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -111,7 +111,7 @@ Sequr で Azure AD シングル サインオンを構成するには、次の手
 
     b. **[リレー状態]** テキストボックスに、この値を取得します。これについてはチュートリアルの後半で説明しています。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -131,19 +131,19 @@ Sequr で Azure AD シングル サインオンを構成するには、次の手
 
 1. 左側のナビゲーション パネルから、 **[統合]** をクリックします。
 
-    ![Sequr 構成](./media/sequr-tutorial/configure1.png)
+    ![ナビゲーション パネルから [統合] が選択された画面のスクリーンショット。](./media/sequr-tutorial/configure1.png)
 
 1. **[シングル サインオン]** セクションまで下方向にスクロールして、 **[管理]** をクリックします。
 
-    ![Sequr 構成](./media/sequr-tutorial/configure2.png)
+    ![[管理] ボタンが選択されている [シングル サインオン] セクションのスクリーンショット。](./media/sequr-tutorial/configure2.png)
 
 1. **[シングル サインオンの管理]** セクションで、次の手順を実行します。
 
-    ![Sequr 構成](./media/sequr-tutorial/configure3.png)
+    ![[シングル サインオンの管理] セクションのスクリーンショット。ここで、説明されている値を入力できます。](./media/sequr-tutorial/configure3.png)
 
-    a. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. Azure Portal からダウンロードした**証明書**ファイルをドラッグ アンド ドロップするか、証明書のコンテンツを手動で入力します。
+    b. Azure Portal からダウンロードした **証明書** ファイルをドラッグ アンド ドロップするか、証明書のコンテンツを手動で入力します。
 
     c. 構成を保存した後に、[リレー状態] の値が生成されます。 **[リレー状態]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[リレー状態]** テキスト ボックスに貼り付けます。
 
@@ -165,7 +165,7 @@ Sequr で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

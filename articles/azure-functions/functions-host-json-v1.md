@@ -3,12 +3,12 @@ title: Azure Functions 1.x の host.json のリファレンス
 description: Azure Functions の v1 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757523"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167724"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x の host.json のリファレンス
 
@@ -230,7 +230,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="logger"></a>logger
 
-[ILogger object](functions-monitoring.md#write-logs-in-c-functions) から出力されたログまたは [context.log](functions-monitoring.md#write-logs-in-javascript-functions) ログのフィルターを制御します。
+[ILogger](functions-dotnet-class-library.md#ilogger) オブジェクトまたは [context.log](functions-reference-node.md#contextlog-method) によって書き込まれたログのフィルター処理を制御します。
 
 ```json
 {
@@ -340,7 +340,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 *バージョン 1.x*
 
-`TraceWriter` オブジェクトを使用して作成するログの構成設定。 [C# のログの記録](functions-reference-csharp.md#logging)と [Node.js のログの記録](functions-reference-node.md#writing-trace-output-to-the-console)に関するページを参照してください。
+`TraceWriter` オブジェクトを使用して作成するログの構成設定。 詳細については、[C# のログの記録] を参照してください。
 
 ```json
 {

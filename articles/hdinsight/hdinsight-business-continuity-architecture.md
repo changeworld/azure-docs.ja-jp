@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の事業継続性アーキテクチャ
+title: Azure HDInsight のビジネス継続性アーキテクチャ
 description: この記事では、HDInsight におけるさまざまな事業継続性アーキテクチャについて説明します
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856434"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207582"
 ---
-# <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight の事業継続性アーキテクチャ
+# <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight のビジネス継続性アーキテクチャ
 
 この記事では、Azure HDInsight で検討できる事業継続性アーキテクチャの例をいくつか示します。 災害発生時の機能低下に対する許容度は、アプリケーションによって異なるビジネス上の意思決定です。 アプリケーションによっては、一定期間、使用できなくなるか、または機能の制限や処理の遅延がありながら部分的に使用するということが許容される場合があります。 他のアプリケーションでは、機能の制限が一切許容されない場合もあります。
 
@@ -48,15 +48,17 @@ Hive のイベントベースのレプリケーションは、プライマリ �
 
 #### <a name="hive-active-primary-with-on-demand-secondary"></a>オンデマンド セカンダリを備えた Hive アクティブ プライマリ
 
-"*オンデマンド セカンダリを備えたアクティブ プライマリ*" のアーキテクチャでは、通常の操作中、アプリケーションからアクティブなプライマリ リージョンに書き込みが行われ、セカンダリ リージョンではクラスターがプロビジョニングされていません。 セカンダリ リージョンの SQL メタストアとストレージは永続化されており、HDInsight クラスターは、スケジュールされた Hive レプリケーションが実行される前にのみ、オンデマンドでスクリプト化およびデプロイされます。
+" *オンデマンド セカンダリを備えたアクティブ プライマリ* " のアーキテクチャでは、通常の操作中、アプリケーションからアクティブなプライマリ リージョンに書き込みが行われ、セカンダリ リージョンではクラスターがプロビジョニングされていません。 セカンダリ リージョンの SQL メタストアとストレージは永続化されており、HDInsight クラスターは、スケジュールされた Hive レプリケーションが実行される前にのみ、オンデマンドでスクリプト化およびデプロイされます。
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>スタンバイ セカンダリを備えた Hive アクティブ プライマリ
 
-"*スタンバイ セカンダリを備えたアクティブ プライマリ*" では、通常の操作中、アプリケーションからアクティブなプライマリ リージョンへ書き込みが行われ、読み取り専用モードのスケールダウンされたスタンバイ セカンダリ クラスターが実行されます。 通常の操作中は、リージョン固有の読み取り操作をセカンダリにオフロードすることができます。
+" *スタンバイ セカンダリを備えたアクティブ プライマリ* " では、通常の操作中、アプリケーションからアクティブなプライマリ リージョンへ書き込みが行われ、読み取り専用モードのスケールダウンされたスタンバイ セカンダリ クラスターが実行されます。 通常の操作中は、リージョン固有の読み取り操作をセカンダリにオフロードすることができます。
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+
+Hive レプリケーションとコード サンプルの詳細については、[Azure HDInsight クラスターでの Apache Hive レプリケーション](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication)に関する記事を参照してください。
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -206,6 +208,6 @@ Ranger メタストアは、データ承認を制御するための Ranger ポ�
 
 この記事で説明した項目の詳細については、次を参照してください。
 
-* [Azure HDInsight の事業継続性](./hdinsight-business-continuity.md)
+* [Azure HDInsight のビジネス継続性](./hdinsight-business-continuity.md)
 * [Azure HDInsight の高可用性ソリューション アーキテクチャのケース スタディ](./hdinsight-high-availability-case-study.md)
 * [Azure HDInsight における Apache Hive と HiveQL](./hadoop/hdinsight-use-hive.md)

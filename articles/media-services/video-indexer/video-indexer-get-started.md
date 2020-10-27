@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130757"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219792"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>クイック スタート:サインアップして最初のビデオをアップロードする方法
 
@@ -39,19 +39,23 @@ Video Indexer で使用できるファイル形式の一覧については、「
 ### <a name="upload-a-video"></a>ビデオをアップロードする
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。
-2. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
+1. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
 
     > [!NOTE]
     > ビデオの名前は、80 文字以下にする必要があります。
 
-    ![アップロード](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="アップロード":::
+1. ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。 進行状況が表示されます。 
 
-    ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="アップロード":::
+1. Video Indexer で分析が完了すると、ビデオへのリンクとビデオの内容の簡単な説明が記載されたメールが届きます。 人、話されたり書かれたりしている単語、トピック、名前付きエンティティなどです。
+1. 後でライブラリの一覧でビデオを検索し、さまざまな操作を実行できます。 検索、インデックスの再作成、編集などです。
 
-    ![アップロード完了](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="アップロード":::
+ 
 ## <a name="see-also"></a>関連項目
 
 詳細については、[ビデオのアップロードとインデックス作成](upload-index-videos.md)に関するページを参照してください。
@@ -60,7 +64,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 [API の使用開始](video-indexer-use-apis.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳しい紹介記事については、[概要ラボ](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)を参照してください。 
 
