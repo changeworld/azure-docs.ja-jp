@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 38f3aaeddbdedb073d83a64a508eb9f4578f1c97
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7aef08f4ba1948c32fe83a2d0064a21459c003b4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948427"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148958"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -49,7 +49,7 @@ ms.locfileid: "91948427"
 - [コピー中のファイル メタデータの保持](#preserving-metadata-during-copy)。
 
 >[!IMPORTANT]
->Azure Storage のファイアウォール設定で **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを有効にした場合で、なおかつ、Azure Integration Runtime を使用して BLOB ストレージに接続する場合は、[マネージド ID 認証](#managed-identity)を使用する必要があります。
+>Azure Storage のファイアウォール設定で **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを有効にした場合で、なおかつ、Azure Integration Runtime を使用して BLOB ストレージに接続する場合は、 [マネージド ID 認証](#managed-identity)を使用する必要があります。
 
 ## <a name="get-started"></a>はじめに
 
@@ -78,7 +78,7 @@ Data Factory では、ストレージ アカウント キー認証用の次の�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (下記の注を参照) に設定する必要があります。 |はい |
+| type | **type** プロパティは、 **AzureBlobStorage** (推奨) または **AzureStorage** (下記の注を参照) に設定する必要があります。 |はい |
 | connectionString | **connectionString** プロパティには、Storage に接続するために必要な情報を指定します。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -115,13 +115,13 @@ Data Factory では、ストレージ アカウント キー認証用の次の�
         "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -141,14 +141,14 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
 
 > [!NOTE]
->- Data Factory で、*サービスの Shared Access Signature* と*アカウントの Shared Access Signature* がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。
+>- Data Factory で、 *サービスの Shared Access Signature* と *アカウントの Shared Access Signature* がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。
 >- 後のデータセットの構成では、フォルダーのパスはコンテナー レベルから始まる絶対パスです。 SAS URI のパスに揃えて構成する必要があります。
 
 Data Factory では、Shared Access Signature 認証を使用するための次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (下記の注を参照) に設定する必要があります。 |はい |
+| type | **type** プロパティは、 **AzureBlobStorage** (推奨) または **AzureStorage** (下記の注を参照) に設定する必要があります。 |はい |
 | sasUri | BLOB、コンテナーなどの Storage リソースへの Shared Access Signature URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを **SecureString** として指定します。 自動ローテーションを使用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -188,13 +188,13 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.blob.core.windows.net/>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
             }
         },
         "connectVia": {
@@ -208,7 +208,7 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
 Shared Access Signature の URI を作成する際は、次の点に注意してください。
 
 - リンクされたサービス (読み取り、書き込み、読み取り/書き込み) がデータ ファクトリ内でどのように使用されているかに応じて、オブジェクトに対する適切な読み取り/書き込みアクセス許可を設定します。
-- **有効期限**を適切に設定します。 Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
+- **有効期限** を適切に設定します。 Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
 - URI は、必要に応じて、適切なコンテナーまたは BLOB で作成する必要があります。 Data Factory から特定の BLOB にアクセスするには、その BLOB の Shared Access Signature URI を使用します。 Data Factory で Blob Storage コンテナー内の BLOB を反復処理するには、そのコンテナーの Shared Access Signature URI を使用します。 アクセスするオブジェクトの数を後で変更する場合、または Shared Access Signature URI を更新する場合は必ず、リンクされたサービスを新しい URI で更新してください。
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
@@ -223,22 +223,22 @@ Azure Storage サービス プリンシパル認証の全般的な情報につ�
     - アプリケーション キー
     - テナント ID
 
-2. Azure BLOB ストレージでサービス プリンシパルに適切なアクセス許可を付与します。 ロールの詳細については、[RBAC を使用した Azure Storage データへのアクセス権の管理](../storage/common/storage-auth-aad-rbac.md)に関する記事をご覧ください。
+2. Azure BLOB ストレージでサービス プリンシパルに適切なアクセス許可を付与します。 ロールの詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
 
-    - **ソースとして**、**アクセス制御 (IAM)** で、少なくとも**ストレージ BLOB データ閲覧者**のロールを付与します。
-    - **シンクとして**、**アクセス制御 (IAM)** で、少なくとも**ストレージ BLOB データ共同作成者**のロールを付与します。
+    - **ソースとして** 、 **アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ閲覧者** のロールを付与します。
+    - **シンクとして** 、 **アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ共同作成者** のロールを付与します。
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
+| type | **type** プロパティは、 **AzureBlobStorage** に設定する必要があります。 |はい |
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
-| accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
+| accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。 **Storage** (汎用 v1)、 **StorageV2** (汎用 v2)、 **BlobStorage** 、または **BlockBlobStorage** 。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、 [Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、Azure portal の右上隅にマウス ポインターを合わせると取得できます。 | はい |
-| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、 **AzurePublic** 、 **AzureChina** 、 **AzureUsGovernment** 、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!NOTE]
@@ -280,10 +280,10 @@ Azure Storage 認証の全般的な情報については、「[Azure Active Dire
 
 1. ファクトリと共に生成されたマネージド ID オブジェクト ID の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
 
-2. Azure BLOB ストレージでマネージド ID にアクセス許可を付与します。 ロールの詳細については、[RBAC を使用した Azure Storage データへのアクセス権の管理](../storage/common/storage-auth-aad-rbac.md)に関する記事をご覧ください。
+2. Azure BLOB ストレージでマネージド ID にアクセス許可を付与します。 ロールの詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
 
-    - **ソースとして**、**アクセス制御 (IAM)** で、少なくとも**ストレージ BLOB データ閲覧者**のロールを付与します。
-    - **シンクとして**、**アクセス制御 (IAM)** で、少なくとも**ストレージ BLOB データ共同作成者**のロールを付与します。
+    - **ソースとして** 、 **アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ閲覧者** のロールを付与します。
+    - **シンクとして** 、 **アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ共同作成者** のロールを付与します。
 
 >[!IMPORTANT]
 >PolyBase を使用して (ソースまたはステージングとしての) BLOB ストレージから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込む場合、BLOB ストレージにマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントで BLOB ストレージを構成した場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
@@ -292,9 +292,9 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
+| type | **type** プロパティは、 **AzureBlobStorage** に設定する必要があります。 |はい |
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
-| accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
+| accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。 **Storage** (汎用 v1)、 **StorageV2** (汎用 v2)、 **BlobStorage** 、または **BlockBlobStorage** 。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 > [!NOTE]
@@ -332,7 +332,7 @@ Azure BLOB ストレージでは、形式ベースのデータセットの `loca
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | データセット内の location の **type** プロパティは、**AzureBlobStorageLocation** に設定する必要があります。 | はい      |
+| type       | データセット内の location の **type** プロパティは、 **AzureBlobStorageLocation** に設定する必要があります。 | はい      |
 | container  | BLOB コンテナー。                                          | はい      |
 | folderPath | 特定のコンテナーの下のフォルダーへのパス。 ワイルドカードを使用してフォルダーをフィルター処理する場合は、この設定をスキップし、アクティビティのソース設定でこれを指定します。 | いいえ       |
 | fileName   | 特定のコンテナーおよびフォルダー パスの下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定でこれを指定します。 | いいえ       |
@@ -384,7 +384,7 @@ Azure BLOB ストレージでは、形式ベースのコピー ソースの `sto
 | オプション 3: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定のコンテナーおよびフォルダー パス (またはワイルドカード フォルダー パス) の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 フォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
 | オプション 4: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用している場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
 | ***追加の設定:*** |  | |
-| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 **recursive** が **true** に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 **recursive** が **true** に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false** 。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
@@ -446,7 +446,7 @@ Azure BLOB ストレージでは、形式ベースのコピー シンクの `sto
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の **type** プロパティは **AzureBlobStorageWriteSettings** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
-| blockSizeInMB | ブロック BLOB にデータを書き込むために使用されるブロック サイズを MB 単位で指定します。 詳細は、[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) に関するページを参照してください。 <br/>指定できる値は、*4 MB から 100 MB* です。 <br/>既定では、ソース ストアの種類とデータに基づいて、Data Factory によってブロック サイズが自動的に決定されます。 BLOB ストレージへの非バイナリ コピーの場合、既定のブロック サイズは 100 MB なので、(最大) 4.95 TB のデータに収めることができます。 これは、データが大きくない場合、特に、ネットワーク接続が貧弱な状態でセルフホステッド統合ランタイムを使用し、操作のタイムアウトやパフォーマンスの問題が発生する場合は、最適ではない可能性があります。 `blockSizeInMB*50000` がデータを格納するのに十分な大きさであることを保証しつつ、ブロック サイズを明示的に指定できます。 そのようにしないと、コピー アクティビティの実行に失敗します。 | いいえ |
+| blockSizeInMB | ブロック BLOB にデータを書き込むために使用されるブロック サイズを MB 単位で指定します。 詳細は、[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) に関するページを参照してください。 <br/>指定できる値は、 *4 MB から 100 MB* です。 <br/>既定では、ソース ストアの種類とデータに基づいて、Data Factory によってブロック サイズが自動的に決定されます。 BLOB ストレージへの非バイナリ コピーの場合、既定のブロック サイズは 100 MB なので、(最大) 4.95 TB のデータに収めることができます。 これは、データが大きくない場合、特に、ネットワーク接続が貧弱な状態でセルフホステッド統合ランタイムを使用し、操作のタイムアウトやパフォーマンスの問題が発生する場合は、最適ではない可能性があります。 `blockSizeInMB*50000` がデータを格納するのに十分な大きさであることを保証しつつ、ブロック サイズを明示的に指定できます。 そのようにしないと、コピー アクティビティの実行に失敗します。 | いいえ |
 | maxConcurrentConnections | ストレージへのコンカレント接続数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |
 
 **例:**
@@ -488,7 +488,7 @@ Azure BLOB ストレージでは、形式ベースのコピー シンクの `sto
 
 このセクションでは、ワイルドカード フィルターを使用した結果のフォルダーのパスとファイル名の動作について説明します。
 
-| folderPath | fileName | recursive | ソースのフォルダー構造とフィルターの結果 (**太字**のファイルが取得されます)|
+| folderPath | fileName | recursive | ソースのフォルダー構造とフィルターの結果 ( **太字** のファイルが取得されます)|
 |:--- |:--- |:--- |:--- |
 | `container/Folder*` | (空、既定値を使用) | false | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `container/Folder*` | (空、既定値を使用) | true | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
@@ -507,7 +507,7 @@ Azure BLOB ストレージでは、形式ベースのコピー シンクの `sto
 
 ### <a name="some-recursive-and-copybehavior-examples"></a>recursive と copyBehavior の例
 
-このセクションでは、**recursive** 値と **copyBehavior** 値のさまざまな組み合わせでのコピー操作の動作について説明します。
+このセクションでは、 **recursive** 値と **copyBehavior** 値のさまざまな組み合わせでのコピー操作の動作について説明します。
 
 | recursive | copyBehavior | ソースのフォルダー構造 | ターゲットの結果 |
 |:--- |:--- |:--- |:--- |
@@ -589,7 +589,7 @@ Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 
 この場合、ソースとして指定された /data/sales の下のすべてのファイルは /backup/priorSales に移動されます。
 
 > [!NOTE]
-> ファイル操作は、パイプライン内のデータ フローの実行アクティビティを使用するパイプライン実行 (パイプラインのデバッグまたは実行) からデータ フローを開始する場合にのみ実行されます。 データ フロー デバッグ モードでは、ファイル操作は実行*されません*。
+> ファイル操作は、パイプライン内のデータ フローの実行アクティビティを使用するパイプライン実行 (パイプラインのデバッグまたは実行) からデータ フローを開始する場合にのみ実行されます。 データ フロー デバッグ モードでは、ファイル操作は実行 *されません* 。
 
 **[Filter by last modified]\(最終更新日時でフィルター処理\):** 最終更新日時の範囲を指定することで、処理するファイルをフィルター処理できます。 日時はすべて UTC 形式です。 
 
@@ -599,16 +599,16 @@ Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 
 
 ![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
 
-**Clear the folder**\(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
+**Clear the folder** \(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
 
-**File name option**\(ファイル名のオプション\):書き込み先のフォルダー内の書き込み先ファイルの命名方法を決定します。 ファイル名のオプションを次に示します。
-   * **既定**:Spark は PART の既定値に基づいて、ファイルに名前を付けることができます。
-   * **パターン**:パーティションごとに出力ファイルを列挙するパターンを入力します。 たとえば、**loans[n].csv** と入力すると、loans1.csv、loans2.csv のように作成されます。
-   * **Per partition**(パーティションあたり):パーティションごとに 1 つのファイル名を入力します。
-   * **As data in column**(列内のデータとして):出力ファイルを列の値に設定します。 パスは、書き込み先フォルダーではなく、データセット コンテナーからの相対パスです。 データセット内にフォルダー パスがある場合は、上書きされます。
-   * **Output to a single file**(1 つのファイルに出力する):パーティション分割された出力ファイルを単一の名前付きファイルに結合します。 パスは、データセット フォルダーからの相対パスです。 マージ操作は、ノード サイズによっては失敗する可能性があることに注意してください。 このオプションは、大きなデータセットには推奨されません。
+**File name option** \(ファイル名のオプション\):書き込み先のフォルダー内の書き込み先ファイルの命名方法を決定します。 ファイル名のオプションを次に示します。
+   * **既定** :Spark は PART の既定値に基づいて、ファイルに名前を付けることができます。
+   * **パターン** :パーティションごとに出力ファイルを列挙するパターンを入力します。 たとえば、 **loans[n].csv** と入力すると、loans1.csv、loans2.csv のように作成されます。
+   * **Per partition** (パーティションあたり):パーティションごとに 1 つのファイル名を入力します。
+   * **As data in column** (列内のデータとして):出力ファイルを列の値に設定します。 パスは、書き込み先フォルダーではなく、データセット コンテナーからの相対パスです。 データセット内にフォルダー パスがある場合は、上書きされます。
+   * **Output to a single file** (1 つのファイルに出力する):パーティション分割された出力ファイルを単一の名前付きファイルに結合します。 パスは、データセット フォルダーからの相対パスです。 マージ操作は、ノード サイズによっては失敗する可能性があることに注意してください。 このオプションは、大きなデータセットには推奨されません。
 
-**Quote all**\(すべてを引用符で囲む\):すべての値を引用符で囲むかどうかを決定します
+**Quote all** \(すべてを引用符で囲む\):すべての値を引用符で囲むかどうかを決定します
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -631,16 +631,16 @@ Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、**AzureBlob** に設定する必要があります。 |はい |
+| type | データセットの **type** プロパティは、 **AzureBlob** に設定する必要があります。 |はい |
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。 <br/><br/>ワイルドカード フィルターは、コンテナー名を除くパスに対してサポートされます。 使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 フォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br/><br/>例: myblobcontainer/myblobfolder/。 「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 |はい (Copy または Lookup アクティビティの場合)、いいえ (GetMetadata アクティビティの場合) |
-| fileName | 指定された **folderPath** 値の下にある BLOB の名前またはワイルドカード フィルター。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべての BLOB をポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>ファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに **fileName** の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティによって自動的に生成される BLOB 名のパターンは次のようになります: "*Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]* ". 次に例を示します。"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" <br/><br/>クエリの代わりにテーブル名を使用して表形式のソースからコピーする場合、名前のパターンは " *[table name].[format].[compression if configured]* " となります。 次に例を示します。"MyTable.csv" です。 |いいえ |
+| fileName | 指定された **folderPath** 値の下にある BLOB の名前またはワイルドカード フィルター。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべての BLOB をポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>ファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに **fileName** の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティによって自動的に生成される BLOB 名のパターンは次のようになります: " *Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]* ". 次に例を示します。"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" <br/><br/>クエリの代わりにテーブル名を使用して表形式のソースからコピーする場合、名前のパターンは " *[table name].[format].[compression if configured]* " となります。 次に例を示します。"MyTable.csv" です。 |いいえ |
 | modifiedDatetimeStart | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> この設定を有効にすると、大量のファイルのフィルター処理を実行する場合にデータ移動の全体的なパフォーマンスに影響することに注意してください。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。| いいえ |
 | modifiedDatetimeEnd | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> この設定を有効にすると、大量のファイルのフィルター処理を実行する場合にデータ移動の全体的なパフォーマンスに影響することに注意してください。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。| いいえ |
-| format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、 **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** 。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、および **ZipDeflate** です。<br/>サポートされるレベルは、 **Optimal** と **Fastest** です。 |いいえ |
 
 >[!TIP]
->フォルダーの下のすべての BLOB をコピーするには、**folderPath** のみを指定します。<br>特定の名前の単一の BLOB をコピーするには、フォルダー部分に **folderPath**、ファイル名に **fileName** を指定します。<br>フォルダーの下の BLOB のサブセットをコピーするには、フォルダー部分に **folderPath**、ワイルドカード フィルターで **fileName** を指定します。 
+>フォルダーの下のすべての BLOB をコピーするには、 **folderPath** のみを指定します。<br>特定の名前の単一の BLOB をコピーするには、フォルダー部分に **folderPath** 、ファイル名に **fileName** を指定します。<br>フォルダーの下の BLOB のサブセットをコピーするには、フォルダー部分に **folderPath** 、ワイルドカード フィルターで **fileName** を指定します。 
 
 **例:**
 
@@ -677,7 +677,7 @@ Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを **BlobSource** に設定する必要があります。 |はい |
-| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 **recursive** が **true** に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。<br/>使用可能な値: **true** (既定値) および **false**。 | いいえ |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 **recursive** が **true** に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。<br/>使用可能な値: **true** (既定値) および **false** 。 | いいえ |
 | maxConcurrentConnections | ストレージへのコンカレント接続数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ |
 
 **例:**

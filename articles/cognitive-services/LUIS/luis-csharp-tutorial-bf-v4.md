@@ -106,7 +106,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>LUIS に発話を送信し、応答を取得するコードを確認する
 
-1. ユーザーの発話を LUIS の予測エンドポイントに送信するには、**FlightBookingRecognizer.cs** ファイルを開きます。 これは、ボット内に入力されたユーザーの発話が LUIS に送信される場所です。 LUIS からの応答は、**RecognizeAsync** メソッドから返されます。
+1. ユーザーの発話を LUIS の予測エンドポイントに送信するには、 **FlightBookingRecognizer.cs** ファイルを開きます。 これは、ボット内に入力されたユーザーの発話が LUIS に送信される場所です。 LUIS からの応答は、 **RecognizeAsync** メソッドから返されます。
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -318,7 +318,7 @@ Visual Studio 2019 でボットを起動します。 ブラウザー ウィン�
 
 1. Bot Framework エミュレーターを起動し、 **[Open Bot]\(ボットを開く\)** を選択します。
 1. **[Open a bot]\(ボットを開く\)** ポップアップ ダイアログで、ボットの URL (`http://localhost:3978/api/messages` など) を入力します。 `/api/messages` ルートは、ボットの Web アドレスです。
-1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を入力します。これらは、ダウンロードしたボット コードのルートにある **appsettings.json** ファイル内にあります。次に **[接続]** を選択します。
+1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード** を入力します。これらは、ダウンロードしたボット コードのルートにある **appsettings.json** ファイル内にあります。次に **[接続]** を選択します。
 
 1. Bot Framework エミュレーターで、「`Book a flight from Seattle to Berlin tomorrow`」と入力すると、前のセクションの **[Test in Web Chat]\(Web チャットでのテスト\)** で受け取った応答と同じ基本ボットの応答が返されます。
 

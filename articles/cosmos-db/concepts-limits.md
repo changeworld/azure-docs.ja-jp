@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708953"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329374"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -19,7 +19,7 @@ ms.locfileid: "91708953"
 
 ## <a name="storage-and-database-operations"></a>ストレージとデータベースの操作
 
-サブスクリプションで Azure Cosmos アカウントを作成したら、[データベース、コンテナー、および項目を作成](databases-containers-items.md)することによってアカウント内のデータを管理できます。
+サブスクリプションで Azure Cosmos アカウントを作成したら、[データベース、コンテナー、および項目を作成](account-databases-containers-items.md)することによってアカウント内のデータを管理できます。
 
 ### <a name="provisioned-throughput"></a>プロビジョニング スループット
 
@@ -27,15 +27,15 @@ ms.locfileid: "91708953"
 
 | リソース | 既定の制限 |
 | --- | --- |
-| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます |
-| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます |
+| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](account-databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます |
+| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](account-databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます |
 | (論理) パーティションあたりの最大 RU | 10,000 |
 | すべての項目にわたる、(論理) パーティションあたりの最大ストレージ | 20 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
 | コンテナーあたりの最大ストレージ | 無制限 |
 | データベースあたりの最大ストレージ | 無制限 |
 | アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は非推奨になってきています) | 2 GB |
-| 1 GB あたりに必要な最小 RU | 10 RU/秒 |
+| 1 GB あたりに必要な最小 RU/秒 | 10 RU/秒<br>**注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。 |
 
 > [!NOTE]
 > ストレージまたはスループットにより高い制限が必要なパーティション キーを持つワークロードを管理するためのベスト プラクティスについては、「[合成パーティション キーの作成](synthetic-partition-keys.md)」を参照してください。
@@ -55,8 +55,8 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 | リソース | 既定の制限 |
 | --- | --- |
-| コンテナーあたりの最小 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| データベースあたりの最小 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| コンテナーあたりの最小 RU ([専用スループット プロビジョニング モード](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| データベースあたりの最小 RU ([共有スループット プロビジョニング モード](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | 共有スループット データベース内のコンテナーあたりの最小 RU | 100 |
 
 Cosmos DB は、SDK またはポータルを経由した、コンテナーまたはデータベースあたりのスループット (RU) のエラスティック スケーリングをサポートしています。 各コンテナーは、10 ～ 100 倍 (最小値～最大値) のスケール範囲内で同期的に、かつ直ちにスケーリングできます。 要求されたスループット値がこの範囲外である場合、スケーリングは非同期的に実行されます。 非同期のスケーリングは、要求されたスループットやコンテナー内のデータ ストレージ サイズに応じて、完了するまでに数分～数時間かかることがあります。  

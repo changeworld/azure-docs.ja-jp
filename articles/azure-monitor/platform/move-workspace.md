@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979683"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282857"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -39,10 +39,12 @@ ms.locfileid: "90979683"
 - Azure Security Center
 
 >[!IMPORTANT]
-> **Azure Sentinel のお客様:**
-> - Azure Sentinel がワークスペースにデプロイされた後に、そのワークスペースを他のリソース グループやサブスクリプションに移動することは、**現在はサポートされていません**。 
->
->   ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的です。ただし、繰り返しますが、サポートされておらず、ご自身の責任で行ってください。
+> **Azure Sentinel のお客様**
+> - Azure Sentinel がワークスペースにデプロイされた後に、そのワークスペースを他のリソース グループやサブスクリプションに移動することは、 **現在はサポートされていません** 。 
+> - ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的です。ただし、繰り返しますが、サポートされておらず、ご自身の責任で行ってください。
+> 
+> **警告**
+> - アクセス許可はワークスペースの Azure リソース ID に基づいており、ワークスペースの移動によって変更されるため、すべてのアラートは移動後に再作成する必要があります。 
 
 ### <a name="delete-solutions-in-azure-portal"></a>Azure portal でソリューションを削除する
 Azure portal を使用してソリューションを削除するには、次の手順を実行してください。

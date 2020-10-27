@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 71147352c5b75195ed0dff2b05acc5315f3183cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931639"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090796"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>Defender for IoT からのデータを Azure Sentinel に接続する (プレビュー)
 
-Azure Sentinel の Azure Security Center for IoT データ コネクタは、現在パブリック プレビューです。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure Sentinel の Azure Defender for IoT データ コネクタは、現在パブリック プレビュー段階にあります。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このガイドでは、Defender for IoT からのデータを Azure Sentinel に接続する方法について学習します。
 
@@ -32,15 +32,15 @@ Azure Sentinel の Azure Security Center for IoT データ コネクタは、現
 
 Defender for IoT からのアラートを接続して Azure Sentinel に直接ストリーム配信します。
 
+Microsoft では、最初のクラウドネイティブ SIEM である Azure Sentinel と、IoT と OT のネイティブ セキュリティを備えた最初の SIEM である Azure Defender for IoT をより緊密に統合することで、IT と産業ネットワーク全体でセキュリティを統合するためのより簡単なアプローチを提供しています。 Azure Sentinel の機械学習とこの統合を組み合わせることで、組織では、IT と OT の境界を越えることの多いマルチステージ攻撃を迅速に検出できます。 さらに、Azure Defender for IoT と Azure Sentinel のセキュリティ オーケストレーション、オートメーション、および応答 (SOAR) 機能との統合により、OT 向けに最適化された組み込みのプレイブックを使って応答と防止を自動化できます。 
+
 ## <a name="prerequisites"></a>前提条件
 
-- ワークスペースに対する**読み取り**アクセス許可と**書き込み**アクセス許可が必要です。
-- お使いの適切な IoT ハブで **Defender for IoT** を**有効**にする必要があります。
-- 接続先の **Azure IoT Hub** に対する**読み取り**アクセス許可と**書き込み**アクセス許可の両方が必要です。
-- さらに、**Azure IoT Hub リソース グループ**に対する**読み取り**アクセス許可と**書き込み**アクセス許可が必要です。
+- ワークスペースに対する **読み取り** アクセス許可と **書き込み** アクセス許可が必要です。
+- お使いの適切な IoT ハブで **Defender for IoT** を **有効** にする必要があります。
+- 接続先の **Azure IoT Hub** に対する **読み取り** アクセス許可と **書き込み** アクセス許可の両方が必要です。
+- さらに、 **Azure IoT Hub リソース グループ** に対する **読み取り** アクセス許可と **書き込み** アクセス許可が必要です。
 
-> [!NOTE]
-> 一般的な Azure リソース アラートを送信するには、お使いのサブスクリプションで Azure Security Center Standard レベルのライセンスが実行されている必要があります。 Defender for IoT に必要な Free レベルのライセンスでは、Defender for IoT 関連のアラートのみが Azure Sentinel に転送されます。
 
 ## <a name="connect-to-defender-for-iot"></a>Defender for IoT に接続する
 
@@ -53,11 +53,11 @@ Defender for IoT からのアラートを接続して Azure Sentinel に直接�
 > [!NOTE]
 >接続を変更した後、ハブ リストが更新されるまでに 10 秒以上かかる場合があります。
 
-## <a name="log-analytics-alert-display"></a>Log Analytics のアラートの表示
+## <a name="using-log-analytics-for-alert-display"></a>アラート表示に Log Analytics を使用する
 
 Log Analytics の適切なスキーマを使用して Defender for IoT のアラートを表示するには、次のようにします。
 
-1. **[ログ]**  >  **[SecurityInsights]**  >  **[SecurityAlert]** を開くか、**SecurityAlert** を検索します。
+1. **[ログ]**  >  **[SecurityInsights]**  >  **[SecurityAlert]** を開くか、 **SecurityAlert** を検索します。
 1. 次の kql フィルターを使用して、Defender for IoT によって生成されたアラートのみが表示されるようにします。
 
 ```kusto

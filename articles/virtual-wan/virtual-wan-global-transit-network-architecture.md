@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212704"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102325"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -29,7 +29,7 @@ ms.locfileid: "88212704"
 
 ![ハブ アンド スポーク](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
-"**図 1:グローバル トランジット ハブアンドスポーク ネットワーク**
+" **図 1:グローバル トランジット ハブアンドスポーク ネットワーク**
 
 図 1 で示すグローバル トランジット ネットワークの論理ビューでは、地理的に分散したユーザー、物理サイト、VNet が、クラウドでホストされたネットワーク ハブを介して相互接続されています。 このアーキテクチャでは、ネットワーク エンドポイント間の論理的な 1 ホップ トランジット接続が可能になります。
 
@@ -41,9 +41,9 @@ Azure Virtual WAN を使うと、VNet、ブランチ サイト、SaaS および 
 
 ![Azure Virtual WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
 
-"**図 2:グローバル トランジット ネットワークと Virtual WAN**
+" **図 2:グローバル トランジット ネットワークと Virtual WAN**
 
-Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure リージョンにおいてプロビジョニングされ、それにブランチ、VNet、リモート ユーザーを接続できます。 物理ブランチ サイトは、Premium ExpressRoute またはサイト間 VPN によってハブに接続されます。VNet は、VNet 接続によってハブに接続されます。リモート ユーザーは、ユーザー VPN (ポイント対サイト VPN) を使ってハブに直接接続できます。 また、Virtual WAN を使うと、あるリージョン内の VNet を別のリージョンの Virtual WAN ハブに接続できるリージョン間 VNet 接続もサポートされます。
+Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure リージョンにおいてプロビジョニングされ、それにブランチ、VNet、リモート ユーザーを接続できます。 物理ブランチ サイトは、Premium または Standard の ExpressRoute またはサイト間 VPN によってハブに接続されます。VNet は、VNet 接続によってハブに接続されます。リモート ユーザーは、ユーザー VPN (ポイント対サイト VPN) を使ってハブに直接接続できます。 また、Virtual WAN を使うと、あるリージョン内の VNet を別のリージョンの Virtual WAN ハブに接続できるリージョン間 VNet 接続もサポートされます。
 
 Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユーザー) の数が最も多いリージョンに Virtual WAN ハブを 1 つ作成した後、他のリージョン内にあるスポークをハブに接続します。 これは、エンタープライズ フットプリントの大部分が 1 つのリージョン内にあってリモート スポークの数が少ない場合に適したオプションです。  
   
@@ -53,7 +53,7 @@ Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユー�
 
 ![リージョン間](./media/virtual-wan-global-transit-network-architecture/figure3.png)
 
-"**図 3:Virtual WAN のリージョン間接続**
+" **図 3:Virtual WAN のリージョン間接続**
 
 1 つの Virtual WAN で複数のハブを有効にすると、ハブはハブ間リンクによって自動的に相互接続されるため、複数のリージョンに分散されたブランチと VNet の間のグローバル接続が可能になります。 
 
@@ -67,7 +67,7 @@ Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユー�
 
 ![Any-to-Any](./media/virtual-wan-global-transit-network-architecture/figure4.png)
 
-"**図 4:Virtual WAN のトラフィックのパス**
+" **図 4:Virtual WAN のトラフィックのパス**
 
 Azure Virtual WAN では、次のグローバル トランジット接続パスがサポートされています。 かっこ内の文字は図 4 に対応します。
 
@@ -87,7 +87,7 @@ Azure Virtual WAN では、次のグローバル トランジット接続パス�
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach と Virtual WAN
 
-ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 Virtual WAN を使うと、ExpressRoute 回線接続がサポートされます。 ExpressRoute を使って Virtual WAN にブランチ サイトを接続するには、1) Premium 回線、2) Global Reach が有効な場所に配置された回線が必要です。
+ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 Virtual WAN を使うと、ExpressRoute 回線接続がサポートされます。 ExpressRoute を使って Virtual WAN にブランチ サイトを接続するには、1) Premium または Standard 回線、2) Global Reach が有効な場所に配置された回線が必要です。
 
 ExpressRoute Global Reach は、ExpressRoute に対するアドオン機能です。 Global Reach を使用すると、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築できます。 ExpressRoute を使用して Azure Virtual WAN に接続されたブランチが相互に通信するには、ExpressRoute Global Reach が必要です。
 

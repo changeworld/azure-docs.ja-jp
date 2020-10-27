@@ -10,18 +10,24 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/21/2020
-ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758644"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168326"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) をデプロイできます。 この記事では、[Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化に関連するドキュメントの変更をまとめます。 
+
+## <a name="october-2020"></a>2020 年 10 月
+
+| [変更点] | 詳細 |
+| --- | --- |
+| **AG の DNN** | SQL Server 2019 CU8 以降向けに[分散ネットワーク名 (DNN) リスナー](availability-group-distributed-network-name-dnn-listener-configure.md)を構成して、従来の [VNN リスナー](availability-group-overview.md#connectivity)を置き換えることができるようになりました。これにより、Azure Load Balancer が必要なくなります。   | 
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -85,7 +91,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | **SQL VM リソースプロバイダーに対する変更** | 新しい SQL IaaS モードを使用して、[SQL Server VM を SQL VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)できます。 この機能には、[Windows Server 2008 のイメージ](sql-vm-resource-provider-register.md#management-modes)が含まれます。|
 | **Azure ハイブリッド特典を使用するライセンス持ち込みイメージ** | Azure Marketplace からデプロイされたライセンス持ち込みイメージを使用して、[ライセンスの種類を従量課金制に](licensing-model-azure-hybrid-benefit-ahb-change.md#remarks)切り替えることができるようになりました。| 
 | **Azure portal での新しい SQL Server VM の管理** | Azure portal で SQL Server VM を管理する新しい方法が導入されました。 詳細については、「[Azure portal で SQL Server VM を管理する](manage-sql-vm-portal.md)」を参照してください。  | 
-| **SQL Server 2008 および 2008 R2 の延長サポート** | "*そのまま*" Azure VM に移行することで、SQL Server 2008 および SQL Server 2008 R2 の[サポートを延長](sql-server-2008-extend-end-of-support.md)します。 | 
+| **SQL Server 2008 および 2008 R2 の延長サポート** | " *そのまま* " Azure VM に移行することで、SQL Server 2008 および SQL Server 2008 R2 の [サポートを延長](sql-server-2008-extend-end-of-support.md)します。 | 
 | **カスタム イメージのサポートの可否** | OS と SQL Server イメージをカスタマイズするために、[SQL Server IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md#installation)をインストールできるようになりました。これにより、機能が制限された[柔軟なライセンス](licensing-model-azure-hybrid-benefit-ahb-change.md)が提供されます。 対象のカスタム イメージを SQL VM リソースプロバイダーに登録するときに、ライセンスの種類として "AHUB" を指定します。 そうしないと、登録は失敗します。 | 
 | **名前付きインスタンスのサポートの可否** | 既定のインスタンスが適切にアンインストールされている場合、名前付きインスタンスで [SQL Server IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md#installation)を使用できるようになりました。 | 
 | **ポータルの機能強化** | SQL Server VM をデプロイするための Azure portal エクスペリエンスは、より使いやすくなるように改良されています。 詳細については、SQL Server VM のデプロイに関する簡単な[クイックスタート](sql-vm-create-portal-quickstart.md)と、より包括的な[ハウツー](create-sql-vm-portal.md) ガイドを参照してください。|
@@ -106,7 +112,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 
 ## <a name="additional-resources"></a>その他のリソース
 
-**Windows VM**:
+**Windows VM** :
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)
@@ -115,7 +121,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)
 
-**Linux VM**:
+**Linux VM** :
 
 * [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux 仮想マシンでの SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)
