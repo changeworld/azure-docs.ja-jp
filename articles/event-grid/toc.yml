@@ -248,13 +248,13 @@
           href: move-partner-namespaces-across-regions.md
     - name: セキュリティで保護
       items:
-        - name: プライベート エンドポイントの構成
+        - name: プライベート リンクを介してイベントを安全に公開する
           href: configure-private-endpoints.md
         - name: IP ファイアウォールの構成
           href: configure-firewall.md
         - name: Azure Active Directory による Webhook のセキュリティ保護
           href: secure-webhook-delivery.md
-        - name: マネージド ID を使用したイベント配信
+        - name: イベント配信、マネージド ID、およびプライベート リンク
           href: managed-service-identity.md
     - name: トラブルシューティング
       items:

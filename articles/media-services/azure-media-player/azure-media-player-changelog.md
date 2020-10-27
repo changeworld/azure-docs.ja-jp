@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315084"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370578"
 ---
 # <a name="changelog"></a>変更ログ
 
@@ -198,7 +198,7 @@ Apple デバイスの HLS 再生で "playsinline" を使用中、"LIVE" ボタ�
 
 ### <a name="changes"></a>[変更点] ###
 
-- [変更][ライブ キャプション] CEA キャプションの API 名を 608 から 708 に変更。 詳細については、[CEA708 キャプションの設定](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)に関するページを参照-->
+- [変更][ライブ キャプション] CEA キャプションの API 名を 608 から 708 に変更。 詳細については、[CEA708 キャプションの設定](/javascript/api/azuremediaplayer/cea708captionssettings)に関するページを参照-->
 
 ## <a name="220-official-release"></a>2.2.0 (公式リリース) ##
 
@@ -703,8 +703,8 @@ Apple デバイスの HLS 再生で "playsinline" を使用中、"LIVE" ボタ�
 - [バグ修正] [AzureHtml5JS] タイムスタンプに少しの狂いがあると、MPD の更新でライブ再生が凍結する
 - [バグ修正] [AzureHtml5JS] ライブ再生のいくつかの問題を軽減
 - [バグ修正] [AzureHtml5JS] ウィンドウ サイズのヒューリスティックがオンになっていて、なおかつ、より高解像度の画面に移動したときにバッファーをフラッシュ
-- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。"*AzureHtml5JS を使用しているときに Chrome から正しくイベントが送信されません。基になるブラウザーに問題があります。* "
-- [バグ修正] [AzureHtml5JS] 次の問題に対処するために、Safari でこのテクノロジを無効化。"*AzureHtml5JS テクノロジを使用した OSX Yosemite に関する再生の問題。MSE の実装に関する問題があります。一時的な軽減策: これらのユーザー エージェントのためのテクノロジとして FlashSS、SilverlightSS を適用*"
+- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。" *AzureHtml5JS を使用しているときに Chrome から正しくイベントが送信されません。基になるブラウザーに問題があります。* "
+- [バグ修正] [AzureHtml5JS] 次の問題に対処するために、Safari でこのテクノロジを無効化。" *AzureHtml5JS テクノロジを使用した OSX Yosemite に関する再生の問題。MSE の実装に関する問題があります。一時的な軽減策: これらのユーザー エージェントのためのテクノロジとして FlashSS、SilverlightSS を適用* "
 - [バグ修正] [FlashSS] エラーの発生後に loadstart が生成される
 
 ## <a name="020-beta"></a>0.2.0 (ベータ) ##
@@ -727,7 +727,7 @@ Apple デバイスの HLS 再生で "playsinline" を使用中、"LIVE" ボタ�
 - [バグ修正] 自動再生モードでの UI 読み込みエクスペリエンスを更新
 - [バグ修正] AMD ローダーの問題と define メソッドの競合
 - [バグ修正] WP 8.1 Cordova アプリの読み込みの問題
-- [バグ修正] 保護されたコンテンツ クエリ プラットフォーム (テクノロジ) によってサポートされる ProtectionType で、適切な再生テクノロジを選択。  "_Chrome (デスクトップ) と Safari 8 (OSX Yosemite) 上の PlayReady コンテンツが現在、Silverlight プレーヤーにフォールバックされない_" という既知の問題を修正しました。
+- [バグ修正] 保護されたコンテンツ クエリ プラットフォーム (テクノロジ) によってサポートされる ProtectionType で、適切な再生テクノロジを選択。  " _Chrome (デスクトップ) と Safari 8 (OSX Yosemite) 上の PlayReady コンテンツが現在、Silverlight プレーヤーにフォールバックされない_ " という既知の問題を修正しました。
 - [バグ修正] WinServer 2012 R2 でメディア ファンデーションが既定ではマシンにインストールされないために発生する例外がキャッチされない。  HTML ビデオ タグ API は実装されていないため、使おうとするとエラーがスローされます。 現在の軽減策は、エラーをスローする代わりに、そのエラーをキャッチして false を返すことです。
 - [バグ修正] 再生中の異常を防ぐため、シーク後または http エラー後は常に init セグメントを取得
 - [バグ修正] エラーが発生した場合、トラッキングによってシミュレートされる進行状況と時間の更新を無効化。

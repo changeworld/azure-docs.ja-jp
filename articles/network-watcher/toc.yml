@@ -45,7 +45,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: ネットワーク セキュリティ グループ ビュー
       href: network-watcher-security-group-view-overview.md
-    - name: ロールベースのアクセス制御のアクセス許可
+    - name: Azure ロールベースのアクセス制御のアクセス許可
       href: required-rbac-permissions.md
     - name: Security
       items:

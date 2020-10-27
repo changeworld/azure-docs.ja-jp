@@ -63,6 +63,7 @@
           href: protect-with-drm.md
         - name: Azure AD によるコンテンツの保護
           href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: リモート ファイルのエンコードとストリーム配信 (REST)
@@ -129,8 +130,8 @@
         - name: 概要
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: 変換およびジョブ
-          href: transforms-jobs-concept.md
+    - name: 変換およびジョブ
+      href: transforms-jobs-concept.md
     - name: ライブ ストリーミング
       items:
         - name: 概要
@@ -265,6 +266,8 @@
       items:
         - name: 変換を作成する
           href: cli-create-transform.md
+        - name: REST を使用して基本的なオーディオ変換を作成する
+          href: how-to-create-basic-audio-transform.md
         - name: ジョブを作成する
           href: cli-create-jobs.md
         - name: ローカル ファイルと .NET を使用してジョブ入力を作成する

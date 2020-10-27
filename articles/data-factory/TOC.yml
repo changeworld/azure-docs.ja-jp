@@ -167,7 +167,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -576,7 +576,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -704,7 +704,7 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB から Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
-            - name: スニペットを使用した重複除去と NULL チェック
+            - name: スニペットを使用した重複除去と null 値チェック
               href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: オンプレミスからの SSIS の移行
           items:
