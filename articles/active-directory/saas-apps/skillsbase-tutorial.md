@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e93827278fb501bc6d857d3cb39f9e0ba24d5d0a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552239"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル: Azure Active Directory と Skills Base の統合
 
@@ -44,8 +44,8 @@ Skills Base と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Skills Base では、**SP** Initiated SSO がサポートされます
-* Skills Base では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Skills Base では、 **SP** Initiated SSO がサポートされます
+* Skills Base では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-skills-base-from-the-gallery"></a>ギャラリーからの Skills Base の追加
 
@@ -65,13 +65,13 @@ Azure AD への Skills Base の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Skills Base**」と入力し、結果ウィンドウで **[Skills Base]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Skills Base** 」と入力し、結果ウィンドウで **[Skills Base]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の Skills Base](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Skills Base で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Skills Base で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Skills Base 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Skills Base で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -110,7 +110,7 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
     > [!NOTE]
     > Skills Base アプリケーションからサインオン URL を取得できます。 管理者としてログインし、[管理] > [設定] > [インスタンスの詳細] > [ショートカット] リンクに移動してください。 サインオン URL をコピーし、上のテキスト ボックスに貼り付けます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -134,16 +134,16 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
 
 3. **[Authentication]\(認証\)** ページの [Single Sign-On]\(シングル サインオン\) で、 **[SAML 2]** を選択します。
 
-    ![シングル](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![[Single Sign-On]\(シングル サインオン\) で SAML 2 が選択された [Authentication]\(認証\) ページのスクリーンショット。](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. **[Authentication]\(認証\)** ページで、次の手順を実行します。
 
-    ![シングル](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![[Authentication]\(認証\) ページのスクリーンショット。ここでは、説明されている値を入力することができます。](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. **[Status]\(状態\)** オプションの横にある **[Update IdP metadata]\(IdP メタデータの更新\)** をクリックし、Azure Portal からダウンロードしたメタデータ XML のコンテンツを、指定のテキストボックスに貼り付けます。
 
     > [!Note]
-    > Idp メタデータは、上のスクリーンショットに示すように、**メタデータ検証**ツールを使用して検証することもできます。
+    > Idp メタデータは、上のスクリーンショットに示すように、 **メタデータ検証** ツールを使用して検証することもできます。
 
     b. **[保存]** をクリックします。
 
@@ -163,7 +163,7 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

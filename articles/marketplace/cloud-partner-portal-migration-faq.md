@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369911"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331211"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -58,16 +58,16 @@ Cloud パートナー ポータルでよく使用されるページに対する�
 
 | クラウド パートナー ポータル | パートナー センター |
 | --- | --- |
-| **リンク**: https://cloudpartner.azure.com/ | **リンク**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory と https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **ナビゲーション**: 分析情報の支払いで提供される支払いレポート | **ナビゲーション**: パートナー センターで提供される支払いレポート – [支払い] アイコン |
+| **リンク** : https://cloudpartner.azure.com/ | **リンク** : https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory と https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **ナビゲーション** : 分析情報の支払いで提供される支払いレポート | **ナビゲーション** : パートナー センターで提供される支払いレポート – [支払い] アイコン |
 | **[スコープ]** :<ul><li>進行中の回収、回収済み、および支払い済みを対象に、品目ごとの取引が表示されます。</li><li>レポート - 発注書が作成された後のすべての品目が表示されます。これには、進行中の回収と進行中の課金、および回収の状態とまだ支払いの対象となっていない品目が含まれます。</li></ul> | **[スコープ]** :<ul><li>対象となる収益と見なされると品目が表示されます。</li><li>顧客が最初に Microsoft に支払いをすると、ISV に支払いレポートの開始が表示されます。</li><li>支払いレポートには、進行中の回収と進行中の課金は表示されません。</li></ul> |
-| **支払いの準備ができていない取引**:進行中の課金 | **支払いの準備ができていない取引**:次の見積支払: 支払いの状態は未処理の状態です。 |
+| **支払いの準備ができていない取引** :進行中の課金 | **支払いの準備ができていない取引** :次の見積支払: 支払いの状態は未処理の状態です。 |
 | **支払いの状態:** 該当なし | **支払いの状態:**<ul><li>未処理:収益は支払いの対象となります。</li><li>近日中:収益は、次回の月次支払いで発行元に送信されます。</li><li>送信済み:支払いが銀行に送信されました。</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Cloud パートナー ポータルで公開したオファーはどうなりますか?
 
-オファーはパートナー センターに移動され、パートナー センターにサインインした後でアクセスできます。ただし、Dynamics Nav Managed Service オファーと Cortana Intelligence オファーは除きます。 オファーがコマーシャル マーケットプレースで公開されていた場合、そのオファーは引き続き公開されており、顧客は引き続き中断なしで購入してデプロイすることができます。 詳細については、次の質問「**パートナー センターにはどのようなオファーが移動されましたか?** 」を参照してください。
+オファーはパートナー センターに移動され、パートナー センターにサインインした後でアクセスできます。ただし、Dynamics Nav Managed Service オファーと Cortana Intelligence オファーは除きます。 オファーがコマーシャル マーケットプレースで公開されていた場合、そのオファーは引き続き公開されており、顧客は引き続き中断なしで購入してデプロイすることができます。 詳細については、次の質問「 **パートナー センターにはどのようなオファーが移動されましたか?** 」を参照してください。
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>パートナー センターにはどのようなオファーが移動されましたか?
 
@@ -77,8 +77,8 @@ Dynamics Nav Managed Service オファーと Cortana Intelligence オファー�
 
 | プランの種類 <img src="" width=150px>| パートナー センターに移動されたか? <img src="" width=100px>| 次のステップ |
 | --- | --- | --- |
-| SaaS | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[コマーシャル マーケットプレースで新しい SaaS オファーを作成する](partner-center-portal/create-new-saas-offer.md)」を参照してください。 |
-| 仮想マシン | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure Marketplace で Azure 仮想マシン オファーを作成する](partner-center-portal/azure-vm-create-offer.md)」を参照してください。 |
+| SaaS | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[コマーシャル マーケットプレースの SaaS オファーの計画](plan-saas-offer.md)に関する記事を参照してください。 |
+| 仮想マシン | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[仮想マシン オファーの計画](marketplace-virtual-machines.md)に関する記事を参照してください。 |
 | Azure アプリケーション | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure アプリケーション オファーを作成する](partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。 |
 | Dynamics 365 Business Central | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
 | Dynamics 365 for Customer Engagement および PowerApps | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Customer Engagement & PowerApps オファーの作成](partner-center-portal/create-new-customer-engagement-offer.md)」を参照してください。 |
@@ -95,7 +95,7 @@ Dynamics Nav Managed Service オファーと Cortana Intelligence オファー�
 
 パートナー センターに表示される内容は、登録されているプログラム、属しているアカウント、割り当てられているユーザー ロールとアクセス許可によって異なります。 利用可能なパートナー センター プログラムは多数あり、複数のプログラムに登録されている可能性があります。 また、同じユーザー資格情報で複数のアカウントにアクセスできる可能性もあります。
 
-Cloud パートナー ポータルで作成したオファーは、パートナー センターでは**コマーシャル マーケットプレース** プログラムの下、およびオファーの作成に使用したアカウントの下にあります。 正しいプログラムと適切なアカウントを表示していることを確認するには、次の手順のようにします。 その他のトラブルシューティングのヒントについては、「[パートナー センター アカウントを管理する](https://docs.microsoft.com/partner-center/partner-center-account-setup)」を参照してください。
+Cloud パートナー ポータルで作成したオファーは、パートナー センターでは **コマーシャル マーケットプレース** プログラムの下、およびオファーの作成に使用したアカウントの下にあります。 正しいプログラムと適切なアカウントを表示していることを確認するには、次の手順のようにします。 その他のトラブルシューティングのヒントについては、「[パートナー センター アカウントを管理する](https://docs.microsoft.com/partner-center/partner-center-account-setup)」を参照してください。
 
 ### <a name="access-the-right-program-in-partner-center"></a>パートナー センターで正しいプログラムにアクセスする
 
@@ -127,7 +127,7 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>パートナー センターの使い方はどこでわかりますか?
 
-[コマーシャル マーケットプレースのドキュメント](index.yml)に移動し、**パートナー センターでのコマーシャル マーケット ポータル**に関するページを展開します。 パートナー センターでオファーを作成するためのヘルプ記事を表示するには、**新しいオファーの作成**に関するページを展開します。
+[コマーシャル マーケットプレースのドキュメント](index.yml)に移動し、 **パートナー センターでのコマーシャル マーケット ポータル** に関するページを展開します。 パートナー センターでオファーを作成するためのヘルプ記事を表示するには、 **新しいオファーの作成** に関するページを展開します。
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>公開とオファーの管理に関してどのような違いがありますか?
 
@@ -149,22 +149,22 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 ### <a name="branding-and-navigation-changes"></a>ブランド化とナビゲーションの変更
 
-ブランド化がいくつか変更されていることがわかります。 たとえば、*SKU* はパートナー センターでは "*プラン*" としてブランド化されています。
+ブランド化がいくつか変更されていることがわかります。 たとえば、 *SKU* はパートナー センターでは " *プラン* " としてブランド化されています。
 
 [![パートナー センターの [プラン] ページを示すスクリーンショット。](media/cpp-pc-faq/plans.png "パートナー センターの [プラン] ページを示す")](media/cpp-pc-faq/plans.png#lightbox)
 
 また、以前は Cloud パートナー ポータルの **[マーケットプレース]** または **[店頭の詳細]** (コンサルティング サービス、Power BI アプリ) ページで提供されていた情報は、パートナー センターでは **[オファー登録情報]** ページで収集されます。
 
-[![パートナー センターの [オファー登録情報] ページを示すスクリーンショット。](media/cpp-pc-faq/offer-listing.png "パートナー センターの [オファー登録情報] ページを示す")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![パートナー センターの [オファー登録情報] ページを示すスクリーンショット。(media/cpp-pc-faq/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 以前は Cloud パートナー ポータルの 1 ページで SKU に提供していた情報は、パートナー センターでは複数のページで収集できるようになりました。
 
-- プラン設定ページ
+- [プランのセットアップ] ページ
 - [プランのリスト] ページ
 - [プランの可用性] ページ
 - 技術的な構成を計画するページ (以下を参照)
 
-![![パートナー センターの [技術的な構成] ページを示すスクリーンショット](media/cpp-pc-faq/technical-configuration.png "パートナー センターの [技術的な構成] ページを示す")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![パートナー センターの技術的な構成ページを示す。](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 オファー ID がオファーの左側のナビゲーション バーに表示されるようになりました。
 

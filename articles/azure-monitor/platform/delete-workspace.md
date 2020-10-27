@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448524"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174152"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復旧
 
@@ -46,7 +46,7 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
-2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
+2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「 **Log Analytics** 」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 3. Log Analytics ワークスペースの一覧でワークスペースを選択して、中央のウィンドウの上部にある **[削除]** をクリックします。
 4. 過去 1 週間のワークスペースへのデータ インジェストを示す確認ページが表示されます。 確認するワークスペースの名前を入力し、 **[削除]** をクリックします。
 
@@ -83,7 +83,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
-2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。 選択したスコープにあるワークスペースの一覧が表示されます。
+2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「 **Log Analytics** 」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。 選択したスコープにあるワークスペースの一覧が表示されます。
 3. 左上のメニューにある **[回復]** をクリックして、論理的な削除状態にあり回復可能なワークスペースを含むページを開きます。
 
    ![Azure portal の、メニュー バーの [回復] が強調表示されている Log Analytics ワークスペース画面のスクリーンショット。](media/delete-workspace/recover-menu.png)
@@ -106,12 +106,15 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
  
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-ワークスペースを削除するには、少なくとも "*Log Analytics の共同作成者*" のアクセス許可が必要です。
+ワークスペースを削除するには、少なくとも " *Log Analytics の共同作成者* " のアクセス許可が必要です。
 
-* 削除されたワークスペースが論理的な削除状態で回復できるかどうかわからない場合は、*Log Analytics ワークスペース* ページの [[回復]](#recover-workspace) をクリックして、サブスクリプションごとに論理的に削除されたワークスペースの一覧を表示します。 完全に削除されたワークスペースは一覧に含まれません。
-* ワークスペースの作成時に "*このワークスペース名は既に使用されています*" または "*競合*" というエラー メッセージが表示される場合は、次の原因が考えられます。
+* 削除されたワークスペースが論理的な削除状態で回復できるかどうかわからない場合は、 *Log Analytics ワークスペース* ページの [[回復]](#recover-workspace) をクリックして、サブスクリプションごとに論理的に削除されたワークスペースの一覧を表示します。 完全に削除されたワークスペースは一覧に含まれません。
+* ワークスペースの作成時に " *このワークスペース名は既に使用されています* " または " *競合* " というエラー メッセージが表示される場合は、次の原因が考えられます。
   * ワークスペース名を使用できず、組織内の誰か、または他の顧客によって使用されている。
   * ワークスペースが過去 14 日以内に削除されており、その名前は論理的な削除期間にわたって予約されている。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。<br>
-     1. ワークスペースを[回復](#recover-workspace)します。
-     2. ワークスペースを[完全に削除](#permanent-workspace-delete)します。
-     3. 同じワークスペース名を使用して新しいワークスペースを作成します。
+    1. ワークスペースを[回復](#recover-workspace)します。
+    2. ワークスペースを[完全に削除](#permanent-workspace-delete)します。
+    3. 同じワークスペース名を使用して新しいワークスペースを作成します。
+* " *リソースが見つからない* " ことを示す 204 応答コードが表示された場合は、ワークスペースの削除操作の使用が連続して試行されていることが原因の可能性があります。 204 は空の応答で、通常はリソースが存在しないことを意味します。そのため、削除は何も行わずに完了します。
+  削除呼び出しがバックエンドで正常に完了した後、ワークスペースを復元して、前に示したいずれかの方法で、永続的な削除操作を完了することができます。
+

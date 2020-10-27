@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270713"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309780"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C で Identity Protection と条件付きアクセスを設定する
 
@@ -41,10 +41,12 @@ Azure AD B2C では、現在、次のリスク検出がサポートされてい�
 |リスク検出の種類  |説明  |
 |---------|---------|
 | 特殊な移動     | ユーザーの最近のサインインに基づき特殊と判断された場所からのサインイン。        |
-|匿名 IP アドレス     | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)        |
-|通常とは異なるサインイン プロパティ     | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。        |
+|匿名 IP アドレス     | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。        |
 |マルウェアにリンクした IP アドレス     | マルウェアにリンクした IP アドレスからのサインイン         |
-|Azure AD 脅威インテリジェンス     | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました        |
+|通常とは異なるサインイン プロパティ     | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。        |
+|ユーザーに対するセキュリティ侵害を管理者が確認しました    | 管理者は、ユーザーが侵害されたことを示しています。             |
+|パスワード スプレー     | パスワード スプレー攻撃を使用してサインインします。      |
+|Azure AD 脅威インテリジェンス     | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントのリスク イベントを表示する
 
@@ -130,7 +132,7 @@ Identity Protection のリスク検出に基づいて条件付きアクセス �
 
 4. **[活動]** で、 **[監査ログ]** を選択します。
 
-5. **[カテゴリ]** を **[B2C]** に設定し、 **[アクティビティのリソースの種類]** を **[IdentityProtection]** に設定することで、監査ログをフィルター処理します。 次に、**[適用]** を選択します。
+5. **[カテゴリ]** を **[B2C]** に設定し、 **[アクティビティのリソースの種類]** を **[IdentityProtection]** に設定することで、監査ログをフィルター処理します。 次に、 **[適用]** を選択します。
 
 6. 最大で過去 7 日間の監査アクティビティを確認します。 次の種類のアクティビティが含まれています。
 

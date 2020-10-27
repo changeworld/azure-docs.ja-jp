@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619034"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330106"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ geo リストア復旧プロセスでは、アプリケーションを展開し�
 
 3. PowerShell ウィンドウで復旧プロセスの状態を監視します。
 
-    ![復旧プロセス](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![復旧プロセスの状態を監視できる PowerShell ウィンドウを示すスクリーンショット。](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > 復旧ジョブのコードを調べるには、...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs フォルダーにある PowerShell スクリプトを確認します。
@@ -202,7 +202,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
   * テナントがオフラインの間にテナントのイベント ページを直接開いた場合は、テナントがオフラインであることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall を開いてみます。
 
-    ![復旧プロセス](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![オフライン イベントのページを示すスクリーンショット。](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>復旧リージョン内に新しいテナントをプロビジョニングする
 テナント データベースが復元される前であっても、復旧リージョン内に新しいテナントをプロビジョニングできます。 復旧リージョン内にプロビジョニングされた新しいテナント データベースは、復旧されたデータベースに後で復帰されます。   

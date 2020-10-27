@@ -13,35 +13,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: aaed6cd789ca6178410c05b940a8f498e2c067a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3de253ee6f45f9296d6b09189fe4bc488be36ad
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932654"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090065"
 ---
-# <a name="get-started-with-defender-for-iot"></a>Defender for IoT での作業を開始する
+# <a name="getting-started-with-azure-defender-for-iot"></a>Azure Defender for IoT を使用した作業の開始
 
-この記事では、Defender for IoT サービスのさまざまなコンポーネント、および 2 つの使用可能な展開オプションを使用してサービスを開始する方法について説明します。
+この記事では、Azure Defender for IoT を稼働させるために必要なデプロイとオンボードのプロセスについて説明します。 追加のステップも必要です。 これらのステップを理解し、付随するドキュメント内の情報を理解することをお勧めします。
 
-Azure RTOS 用のセキュリティ モジュールの概要を探している場合 [Azure RTOS 用のセキュリティ モジュールに関するクイックスタート](quickstart-azure-rtos-security-module.md)のセクションを参照してください。 
+すべてのステップを完了すると、Azure Defender for IoT センサーによってネットワークが監視されます。 ソリューションの設定方法によっては、オンプレミスの管理コンソールまたは IoT Hub に検出を送信することもできます。
 
-## <a name="deployment-options"></a>デプロイ オプション
+次のステップを実行して、Azure Defender for IoT を準備して実行します。
 
-IoT デバイスと環境の要件に最適なサービス シナリオを選択します。
+## <a name="1-set-up-azure"></a>1.Azure をセットアップする
 
-### <a name="built-in-deployment"></a>組み込みデプロイ
+- Azure アカウントを設定します。 詳細については、「[Azure アカウントの作成](https://docs.microsoft.com/learn/modules/create-an-azure-account/)」をご覧ください。
 
-シームレスな組み込みの展開オプションを使用することで、Defender for IoT を IoT Hub に迅速に統合し、IoT Hub の構成、デバイスの ID と管理、ハブとデバイス間の通信パターンのセキュリティ分析を行うことができます。
+- ファイアウォールまたはプロキシ:特定の接続を許可するように構成されているファイアウォールまたは同様の介在するネットワーク デバイスがある場合は、*.azure-devices.net:443 がファイアウォールまたはプロキシに開かれていることを確認します。 ワイルドカードがサポートされていない場合、または細かく制御する必要がある場合は、特定の IoT Hub FQDN を FW またはプロキシで開く必要があります。 詳しくは、「[リファレンス - IoT Hub エンドポイント](/azure/iot-hub/iot-hub-devguide-endpoints)」をご覧ください。
 
-IoT Hub の監視と推奨事項を備えた[組み込みデプロイ](iot-hub-integration.md)を開始します。
-    <br>
+## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2.センサーにハードウェア、ソフトウェア、オンボードをデプロイする
 
-### <a name="enhanced-deployment"></a>強化されたデプロイ
+- センサー ハードウェアを購入し、ソフトウェアをインストールします。 ここに記載されているステップに従ってください。詳細については、この記事、[Defender for IoT ハードウェアに関するガイド](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)、および[インストールに関するガイド](https://aka.ms/AzureDefenderforIoTInstallSensorISO)をご覧ください。
 
-強化されたセキュリティ機能のためには、IoT Hub セキュリティを有効にすることに加え Defender for IoT エージェントを展開することにより、エージェントベースのイベント収集、IoT デバイスからの主要なセキュリティ データの分析と脅威検出、および包括的セキュリティ体制管理の各機能が提供されます。
+  - センサーをインストールした後、センサーのサインイン資格情報を安全に記録します。 センサーにアクティブ化ファイルをアップロードするには、資格情報が必要です。
 
-エージェントベースの包括的な脅威保護とセキュリティ体制の管理ソリューションを備えた、[強化されたデプロイ](security-agents.md)を開始します。
+  - ローカルで管理されているセンサーを使用する場合は、センサーの IP アドレスまたはインストール時に定義したセンサー名を安全に記録します。 これは、Defender for IoT ポータルでのセンサー登録でセンサー名を作成するときに使用できます。 後からこれらを使用することで追跡が容易になり、また、Azure Defender for IoT ポータルにおける登録名と、センサーのコンソールに表示されるデプロイ済みセンサーの IP アドレスとの間で名前の一貫性が確保されます。
+
+- Defender for IoT ポータルにセンサーを登録し、センサー アクティブ化ファイルをダウンロードします。
+
+- アクティブ化ファイルをセンサーにアップロードします。
+
+## <a name="3-perform-network-setup-for-sensor-monitoring-and-management"></a>3.センサーの監視と管理のためにネットワークのセットアップを実行する
+
+- センサーをネットワークに接続します。 [ネットワーク セットアップ ガイド](https://aka.ms/AzureDefenderForIoTNetworkSetup)で説明されています。
+
+## <a name="4-start-discovering-your-network"></a>4.ネットワークの検出を開始する
+
+- センサー コンソールのシステム設定を調整します。
+
+- センサーをオンプレミスの管理コンソールに接続します。
+
+詳細については、[Azure Defender for IoT センサーのユーザー ガイド](https://aka.ms/AzureDefenderforIoTUserGuide)および[Defender for IoT オンプレミス管理コンソールのユーザー ガイド](https://aka.ms/DefenderForIoTManagementConsole)を参照してください。
+
+## <a name="5-populate-azure-sentinel-with-alert-information"></a>5.Azure Sentinel にアラート情報を設定する
+
+- Azure Sentinel にアラート情報を送信するには、Azure Sentinel を構成します。[Defender for IoT からのデータを Azure Sentinel に接続します](how-to-configure-with-sentinel.md)。
+ 
 
 ## <a name="next-steps"></a>次のステップ
 

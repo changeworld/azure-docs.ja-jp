@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460035"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221424"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 
@@ -109,6 +109,16 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 
 Notebook ツールバーから Jupyter または JupyterLab を起動することもできます。  Azure Machine Learning では、Jupyter または JupyterLab からの更新プログラムの提供やバグの修正は行われません。これは、Microsoft サポートの範囲に含まれないオープン ソース製品であるためです。
 
+### <a name="focus-mode"></a>フォーカス モード
+
+フォーカス モードを使用して現在のビューを拡張すると、アクティブなタブに集中できるようになります。 フォーカス モードでは、Notebook ファイル エクスプローラーが非表示になります。
+
+1. ターミナル ウィンドウのツールバーで、 **[フォーカス モード]**  を選択してフォーカス モードをオンにします。 ウィンドウの幅によっては、ツールバーの **[...]** メニュー項目の下にあります。
+1. フォーカス モードになっているときに標準ビューに戻るには、 **[標準ビュー]** を選択します。
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="[新しいファイルの作成]":::
+
+
 ### <a name="use-intellisense"></a>IntelliSense を使用する
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 これらの機能を使うと、数回のキーストロークだけで使用するコードの詳細を確認したり、入力するパラメーターを追跡したり、プロパティやメソッドの呼び出しを追加したりできます。  
@@ -121,7 +131,7 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 > 現在、この収集機能はパブリック プレビュー段階にあります。
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-ノートブックを作成しているうちに、一般的にはデータの探索やデバッグに使用したセルが溜まっていきます。 *収集*機能を使用すると、これらの不要なセルが含まれないクリーンなノートブックを作成できます。
+ノートブックを作成しているうちに、一般的にはデータの探索やデバッグに使用したセルが溜まっていきます。 *収集* 機能を使用すると、これらの不要なセルが含まれないクリーンなノートブックを作成できます。
 
 1. すべてのノートブック セルを実行します。
 1. 新しいノートブックを実行するコードが含まれているセルを選択します。 たとえば、実験を送信するコードや、あるいはモデルを登録するコードなどです。
@@ -138,7 +148,7 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="[新しいファイルの作成]":::
 
-すべてのノートブックは 30 秒ごとに自動保存されます。 自動保存では、チェックポイント ファイルではなく、最初の *ipynb* ファイルのみが更新されます。
+すべてのノートブックは 30 秒ごとに自動保存されます。  自動保存では、チェックポイント ファイルではなく、最初の *ipynb* ファイルのみが更新されます。
  
 ノートブックのメニューで **[チェックポイント]** を選択して、名前付きチェックポイントを作成し、保存されているチェックポイントにノートブックを戻すことができます。
 
@@ -156,12 +166,12 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 
 ## <a name="delete-a-notebook"></a>ノートブックを削除する
 
-**Samples** ノートブックを削除することは "*できません*"。  これらのノートブックは Studio の一部であり、新しい SDK が発行されるたびに更新されます。  
+**Samples** ノートブックを削除することは " *できません* "。  これらのノートブックは Studio の一部であり、新しい SDK が発行されるたびに更新されます。  
 
-**ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 "*できます*"。
+**ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 " *できます* "。
 
 * Studio で、フォルダーまたはファイルの末尾にある **[...]** を選択します。  必ずサポートされているブラウザー (Microsoft Edge、Chrome、または Firefox) を使用してください。
-* 任意の Notebook ツールバーから [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
+* 任意の Notebook ツールバーから [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
 * Jupyter または JupyterLab で付属のツールを使用します。
 
 ## <a name="run-an-experiment"></a>実験を実行する
@@ -173,7 +183,7 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 3. **［作成］** を選択します
 4. コンピューティング インスタンスがノートブックに自動的に接続され、セルを実行できるようになります。
 
-作成したコンピューティング インスタンスを表示および使用できるのは自分のみです。  **ユーザー ファイル**は VM とは別に格納され、ワークスペース内のすべてのコンピューティング インスタンス間で共有されます。
+作成したコンピューティング インスタンスを表示および使用できるのは自分のみです。  **ユーザー ファイル** は VM とは別に格納され、ワークスペース内のすべてのコンピューティング インスタンス間で共有されます。
 
 ### <a name="view-logs-and-output"></a>ログと出力を表示する
 
@@ -204,7 +214,7 @@ Notebook ツールバーを使用すると、ノートブックを実行する�
 
 Notebook によって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
 
-1. Notebook ツールバーの [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択します。
+1. Notebook ツールバーの [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択します。
 1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
     ```shell
     conda create --name newenv
@@ -221,6 +231,9 @@ Notebook によって、接続されたコンピューティング インスタ�
     conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+
+> [!NOTE]
+> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、 **現在実行中のカーネル** にパッケージを自動的にインストールします
 
 任意の[使用可能な Jupyter カーネル](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)をインストールできます。
 
@@ -245,7 +258,7 @@ Notebook によって、接続されたコンピューティング インスタ�
 
 ## <a name="find-compute-details"></a>コンピューティングの詳細を確認する 
 
-コンピューティング インスタンスの詳細については、[Studio](https://ml.azure.com) の**コンピューティング**に関するページを参照してください。
+コンピューティング インスタンスの詳細については、 [Studio](https://ml.azure.com) の **コンピューティング** に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,15 +4,15 @@ description: Azure Cosmos DB の組み込み SQL システム関数とユーザ�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18fdab8f4aa90e993f6802508c13a78565b9fa6e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870532"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279916"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>システム関数 (Azure Cosmos DB)
 
@@ -24,7 +24,7 @@ ms.locfileid: "74870532"
 |[日付と時刻関数](sql-query-date-time-functions.md)|日付と時刻関数では、UTC での現在の日付と時刻を、数値のタイムスタンプ (値はミリ秒単位の Unix エポック) または ISO 8601 形式に準拠した文字列という 2 つの形式で取得できます。 | [GetCurrentDateTime](sql-query-getcurrentdatetime.md)、[GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
 |[数学関数](sql-query-mathematical-functions.md)|一般に、各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。 | [ABS](sql-query-abs.md)、[ACOS](sql-query-acos.md)、[ASIN](sql-query-asin.md)、[ATAN](sql-query-atan.md)、[ATN2](sql-query-atn2.md)、[CEILING](sql-query-ceiling.md)、[COS](sql-query-cos.md)、[COT](sql-query-cot.md)、[DEGREES](sql-query-degrees.md)、[EXP](sql-query-exp.md)、[FLOOR](sql-query-floor.md)、[LOG](sql-query-log.md)、[LOG10](sql-query-log10.md)、[PI](sql-query-pi.md)、[POWER](sql-query-power.md)、[RADIANS](sql-query-radians.md)、[RAND](sql-query-rand.md)、[ROUND](sql-query-round.md)、[SIGN](sql-query-sign.md)、[SIN](sql-query-sin.md)、[SQRT](sql-query-sqrt.md)、[SQUARE](sql-query-square.md)、[TAN](sql-query-tan.md)、[TRUNC](sql-query-trunc.md) |
 |[空間関数](sql-query-spatial-functions.md)|空間関数は、空間オブジェクト入力値に対して演算を実行し、数値またはブール値を返します。 | [ST_DISTANCE](sql-query-st-distance.md)、[ST_INTERSECTS](sql-query-st-intersects.md)、[ST_ISVALID](sql-query-st-isvalid.md)、[ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)、[ST_WITHIN](sql-query-st-within.md) |
-|[文字列関数](sql-query-string-functions.md)|文字列関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。 | [CONCAT](sql-query-concat.md)、[CONTAINS](sql-query-contains.md)、[ENDSWITH](sql-query-endswith.md)、[INDEX_OF](sql-query-index-of.md)、[LEFT](sql-query-left.md)、[LENGTH](sql-query-length.md)、[LOWER](sql-query-lower.md)、[LTRIM](sql-query-ltrim.md)、[REPLACE](sql-query-replace.md)、[REPLICATE](sql-query-replicate.md)、[REVERSE](sql-query-reverse.md)、[RIGHT](sql-query-right.md)、[RTRIM](sql-query-rtrim.md)、[STARTSWITH](sql-query-startswith.md)、[StringToArray](sql-query-stringtoarray.md)、[StringToBoolean](sql-query-stringtoboolean.md)、[StringToNull](sql-query-stringtonull.md)、[StringToNumber](sql-query-stringtonumber.md)、[StringToObject](sql-query-stringtoobject.md)、[SUBSTRING](sql-query-substring.md)、[ToString](sql-query-tostring.md)、[TRIM](sql-query-trim.md)、[UPPER](sql-query-upper.md) |
+|[文字列関数](sql-query-string-functions.md)|文字列関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。 | [CONCAT](sql-query-concat.md)、[CONTAINS](sql-query-contains.md)、[ENDSWITH](sql-query-endswith.md)、[INDEX_OF](sql-query-index-of.md)、[LEFT](sql-query-left.md)、[LENGTH](sql-query-length.md)、[LOWER](sql-query-lower.md)、[LTRIM](sql-query-ltrim.md)、[REGEXMATCH](sql-query-regexmatch.md)[REPLACE](sql-query-replace.md)、[REPLICATE](sql-query-replicate.md)、[REVERSE](sql-query-reverse.md)、[RIGHT](sql-query-right.md)、[RTRIM](sql-query-rtrim.md)、[STARTSWITH](sql-query-startswith.md)、[StringToArray](sql-query-stringtoarray.md)、[StringToBoolean](sql-query-stringtoboolean.md)、[StringToNull](sql-query-stringtonull.md)、[StringToNumber](sql-query-stringtonumber.md)、[StringToObject](sql-query-stringtoobject.md)、[SUBSTRING](sql-query-substring.md)、[ToString](sql-query-tostring.md)、[TRIM](sql-query-trim.md)、[UPPER](sql-query-upper.md) |
 |[型チェック関数](sql-query-type-checking-functions.md)|型チェック関数を使用すると、SQL クエリ内の式の型をチェックできます。 | [IS_ARRAY](sql-query-is-array.md)、[IS_BOOL](sql-query-is-bool.md)、[IS_DEFINED](sql-query-is-defined.md)、[IS_NULL](sql-query-is-null.md)、[IS_NUMBER](sql-query-is-number.md)、[IS_OBJECT](sql-query-is-object.md)、[IS_PRIMITIVE](sql-query-is-primitive.md)、[IS_STRING](sql-query-is-string.md) |
 
 ## <a name="built-in-versus-user-defined-functions-udfs"></a>組み込み関数とユーザー定義関数 (UDF)

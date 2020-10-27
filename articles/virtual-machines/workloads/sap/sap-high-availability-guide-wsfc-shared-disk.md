@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c580e44cc827de46c7464ba5f316e6c515de2940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b3dc49e3e2d8492882507918a59edb0b9da41fcf
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977988"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167255"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -46,9 +46,12 @@ Azure Virtual Machines を使用した Windows Server フェールオーバー �
 
 Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 
 
-Azure Load Balancer サービスは、Azure に "*内部ロード バランサー*" を提供します。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 
+Azure Load Balancer サービスは、Azure に " *内部ロード バランサー* " を提供します。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 
 
 クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイします。 その後、内部ロード バランサーのプローブ ポートを使って、必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使って接続できます。 DNS サーバーがクラスター IP アドレスを解決し、内部ロード バランサーがクラスターのアクティブ ノードへのポート フォワーディングを処理します。
+
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 ![図 1: 共有ディスクを使わない Azure の Windows フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 
@@ -75,7 +78,7 @@ SAP ASCS/SCS インスタンスには、次のコンポーネントがありま�
 
 _プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有_
 
-高可用性の設定では、SAP ASCS/SCS インスタンスをクラスター化します。 "*クラスター化された共有ディスク*" (この例ではドライブ S) を使って、SAP ASCS/SCS ファイルと SAP グローバル ホスト ファイルを配置します。
+高可用性の設定では、SAP ASCS/SCS インスタンスをクラスター化します。 " *クラスター化された共有ディスク* " (この例ではドライブ S) を使って、SAP ASCS/SCS ファイルと SAP グローバル ホスト ファイルを配置します。
 
 ![図 3:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8002]
 
@@ -108,7 +111,7 @@ _共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
    - クラスター化されている
    - 専用の仮想/ネットワーク ホスト名を使用する
    - (A)SCS IP アドレスに加えて、Azure 内部ロード バランサーで構成するための ERS 仮想ホスト名の IP アドレスを必要とする
-   - 各クラスター ノードの**ローカル ディスク**にデプロイされるため、共有ディスクを必要としない
+   - 各クラスター ノードの **ローカル ディスク** にデプロイされるため、共有ディスクを必要としない
 
    > [!TIP]
    > エンキュー レプリケーション サーバー 1 と 2 (ERS1 と ERS2) の詳細については、次を参照してください。  
@@ -163,7 +166,7 @@ Azure 共有ディスクの制限事項の詳細については、Azure 共有�
 
 Windows Server 2016 と 2019 の両方がサポートされています (最新のデータ センター イメージを使用してください)。
 
-次の理由から、**Windows Server 2019 Datacenter** を使用することを強くお勧めします。
+次の理由から、 **Windows Server 2019 Datacenter** を使用することを強くお勧めします。
 - Windows 2019 フェールオーバー クラスター サービスは Azure に対応しています
 - Azure ホスト メンテナンスの統合と認識が追加され、Azure のスケジュール イベントを監視することでエクスペリエンスが向上しました。
 - 分散ネットワーク名を使用することができます (これは既定のオプションです)。 そのため、クラスター ネットワーク名に専用の IP アドレスを設定する必要がありません。 また、この IP アドレスを Azure 内部ロード バランサーで構成する必要もありません。 

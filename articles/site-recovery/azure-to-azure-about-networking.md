@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631343"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332044"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
@@ -29,7 +29,7 @@ ms.locfileid: "91631343"
 
 次の図は、Azure VM で実行しているアプリケーションの一般的な Azure 環境を示しています。
 
-![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Azure VM で実行されるアプリケーションの一般的な Azure 環境を示す図。](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 オンプレミス ネットワークから Azure への接続に Azure ExpressRoute または VPN 接続を使用している場合、環境は次のようになります。
 
@@ -40,13 +40,13 @@ ms.locfileid: "91631343"
 >[!IMPORTANT]
 > 認証済みプロキシを使用してネットワーク接続を制御することは、Site Recoery ではサポートされておらず、レプリケーションを有効にすることはできません。
 
+>[!NOTE]
+>- IP アドレス ベースのフィルター処理を実行して、送信接続を制御することはできません。
+>- 送信接続を制御するために Azure Site Recovery IP アドレスを Azure ルーティング テーブルに追加しないでください。
 
 ## <a name="outbound-connectivity-for-urls"></a>URL に対する送信接続
 
 送信接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の Site Recovery の URL を許可してください。
-
->[!NOTE]
-> IP アドレス ベースのフィルター処理を実行して、送信接続を制御することはできません。
 
 **URL** | **詳細**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 ## <a name="outbound-connectivity-using-service-tags"></a>サービスタグを使用した送信接続
 
-NSG を使用して送信接続を制御している場合は、次のサービス タグを許可する必要があります。
+NSG を使用して送信接続を制御すると同時に、次のサービス タグを許可する必要があります。
 
 - ソース リージョンのストレージ アカウントの場合:
     - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。

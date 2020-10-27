@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978494"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167340"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -162,8 +162,8 @@ ms.locfileid: "91978494"
 > ![Windows OS][Logo_Windows] Windows
 
 
-この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして "*クラスター共有ディスク*" を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。
-"*クラスター共有ディスク*" の 2 つの代替手段については、次のドキュメントを参照してください。
+この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして " *クラスター共有ディスク* " を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。
+" *クラスター共有ディスク* " の 2 つの代替手段については、次のドキュメントを参照してください。
 
 - [Azure 共有ディスク](../../windows/disks-shared.md)
 - クラスター化された共有ディスクをシミュレートする、[SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) を使用したミラー化ストレージの作成 
@@ -192,14 +192,17 @@ SAP ASCS/SCS クラスターの場合、Azure 可用性セットに 2 つの VM 
 | --- | --- | --- |---| ---|
 | 最初のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
 | 2 番目のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合**のみ**) | 該当なし | 該当なし |
+| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合 **のみ** ) | 該当なし | 該当なし |
 | ASCS クラスター ネットワーク名 | pr1-ascscl |10.0.0.43 | 該当なし | 該当なし |
-| ERS クラスター ネットワーク名 (ERS2 の場合**のみ**) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
+| ERS クラスター ネットワーク名 (ERS2 の場合 **のみ** ) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure 内部ロード バランサーを作成する
 
 SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](../../../load-balancer/load-balancer-overview.md)が必要です。 [Standard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) の使用を強くお勧めします。 
+
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。    
 
 
 次の一覧には、(A)SCS および ERS ロード バランサーの構成が示されています。 SAP ASCS と ERS2 の両方の構成は、同じ Azure ロード バランサーで実行されています。  
@@ -210,17 +213,17 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 - バックエンドの構成  
     (A)SCS および ERS クラスターに含める必要があるすべての仮想マシンを追加します。 この例では、VM の **pr1-ascs-0-10** と **pr1-ascs-0-ascs-11** です。
 - プローブ ポート
-    - ポート 620**nr** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションはそのままにしておきます
+    - ポート 620 **nr** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションはそのままにしておきます
 - 負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
     - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
-        - 32**nr** TCP
-        - 36**nr** TCP
-        - 39**nr** TCP
-        - 81**nr** TCP
-        - 5**nr**13 TCP
-        - 5**nr**14 TCP
-        - 5**nr**16 TCP
+        - 32 **nr** TCP
+        - 36 **nr** TCP
+        - 39 **nr** TCP
+        - 81 **nr** TCP
+        - 5 **nr** 13 TCP
+        - 5 **nr** 14 TCP
+        - 5 **nr** 16 TCP
 
     - [アイドル タイムアウト (分)] が最大値の 30 に設定され、[フローティング IP (ダイレクト サーバー リターン)] が有効になっていることを確認します。
 
@@ -234,17 +237,17 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
   VM は ILB バックエンド プールに既に追加されています。  
 
 - 2 番目のプローブ ポート
-    - ポート 621**nr**  
+    - ポート 621 **nr**  
     プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションはそのままにしておきます
 
 - 2 番目の負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
     - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
-        - 32**nr** TCP
-        - 33**nr** TCP
-        - 5**nr**13 TCP
-        - 5**nr**14 TCP
-        - 5**nr**16 TCP
+        - 32 **nr** TCP
+        - 33 **nr** TCP
+        - 5 **nr** 13 TCP
+        - 5 **nr** 14 TCP
+        - 5 **nr** 16 TCP
 
     - [アイドル タイムアウト (分)] が最大値の 30 に設定され、[フローティング IP (ダイレクト サーバー リターン)] が有効になっていることを確認します。
 
@@ -526,7 +529,7 @@ SIOS ソフトウェアをインストールする前に、DataKeeperSvc ドメ�
 
    ![図 41: 現在のターゲット ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義する][sap-ha-guide-figure-3041]
 
-   _ 現在のターゲット ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義する_
+   _現在のターゲット ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義する_
 
 6. 圧縮アルゴリズムを定義します。 この例では、レプリケーション ストリームを圧縮することをお勧めします。 特に再同期の状況では、レプリケーション ストリームを圧縮すると、再同期時間が大幅に短縮されます。 圧縮では仮想マシンの CPU および RAM リソースが使用されます。 圧縮率を大きくするほど、使われる CPU リソースの量も増えます。 この設定は後で調整できます。
 

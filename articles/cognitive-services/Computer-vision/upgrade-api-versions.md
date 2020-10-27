@@ -11,27 +11,28 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968941"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331840"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Read v2.x から Read v3.x へのアップグレード
 
 このガイドでは、既存のコンテナーまたはクラウド API コードを、Read v2.x から Read v3.0 および v3.1 プレビューにアップグレードする方法について説明します。
 
 ## <a name="determine-your-api-path"></a>API パスの決定
-次の表を使用し、移行先の Read 3.x のバージョンに基づいて、API パス内の**バージョン文字列**を確認します。
+次の表を使用し、移行先の Read 3.x のバージョンに基づいて、API パス内の **バージョン文字列** を確認します。
 
 |製品の種類| Version | 3\.x API パスのバージョン文字列 |
 |:-----|:----|:----|
-|サービス | Read 3.0 | **v3.0** |
-|コンテナー | Read 3.0 プレビュー | **v3.0** |
-|サービス/コンテナー | Read 3.1 プレビュー | **v3.1-preview.2** |
+|サービス | Read 3.0 または 3.1 | それぞれ **v3.0** または **v3.1** |
+|サービス | Read 3.2 プレビュー | **v3.2-preview.1** |
+|コンテナー | Read 3.0 プレビューまたは Read 3.1 プレビュー | それぞれ **v3.0** または **v3.1-preview.2** |
 
-次に、次のセクションを使用して操作を絞り込み、API パス内の**バージョン文字列**を表の値に置き換えます。 たとえば、**Read v3.1 プレビュー**のクラウドおよびコンテナー バージョンの場合は、API パスを **https://{endpoint}/vision/v3.1-preview.2/read/analyze[?language]** に更新します。
+
+次に、次のセクションを使用して操作を絞り込み、API パス内の **バージョン文字列** を表の値に置き換えます。 たとえば、 **Read v3.2 プレビュー** のクラウドおよびコンテナー バージョンの場合は、API パスを **https://{endpoint}/vision/v3.2-preview.1/read/analyze[?language]** に更新します。
 
 ## <a name="servicecontainer"></a>サービス/コンテナー
 
@@ -39,7 +40,7 @@ ms.locfileid: "91968941"
 
 |Read 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/<**バージョン文字列**>/read/analyze[?language]|
+|https://{endpoint}/vision/ **v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/< **バージョン文字列** >/read/analyze[?language]|
     
 新しい省略可能な _language_ パラメーターを使用できます。 ドキュメントの言語がわからない場合 (多言語である可能性がある場合) は、これを含めないでください。 
 
@@ -47,7 +48,7 @@ ms.locfileid: "91968941"
 
 |Read 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/operations**/{operationId}     |https://{endpoint}/vision/<**バージョン文字列**>/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/ **v2.0/read/operations** /{operationId}     |https://{endpoint}/vision/< **バージョン文字列** >/read/analyzeResults/{operationId}|
 
 ### <a name="get-read-operation-result-status-flag"></a>`Get Read Operation Result` ステータス フラグ
 
@@ -173,11 +174,11 @@ v3.0 では、次のように調整されています。
 ## <a name="service-only"></a>サービスのみ
 
 ### `Recognize Text`
-`Recognize Text` は "*プレビュー*" 操作であり、*Computer Vision API のすべてのバージョンで非推奨*になっています。 `Recognize Text` から `Read` (v3.0) または `Batch Read File` (v2.0、v2.1) に移行する必要があります。 v3.0 の `Read` には、テキスト認識に適した新しいモデルと追加機能が含まれているため、これが推奨されます。 `Recognize Text` から `Read` にアップグレードするには、次の手順を実行します。
+`Recognize Text` は " *プレビュー* " 操作であり、 *Computer Vision API のすべてのバージョンで非推奨* になっています。 `Recognize Text` から `Read` (v3.0) または `Batch Read File` (v2.0、v2.1) に移行する必要があります。 v3.0 の `Read` には、テキスト認識に適した新しいモデルと追加機能が含まれているため、これが推奨されます。 `Recognize Text` から `Read` にアップグレードするには、次の手順を実行します。
 
 |Recognize Text 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/recognizeText[?mode]**|https://{endpoint}/vision/<**バージョン文字列**>/read/analyze[?language]|
+|https://{endpoint}/vision/ **v2.0/recognizeText[?mode]**|https://{endpoint}/vision/< **バージョン文字列** >/read/analyze[?language]|
     
 _mode_ パラメーターは、`Read` ではサポートされていません。 手書きのテキストと印刷されたテキストの両方が自動的にサポートされます。
     
@@ -187,7 +188,7 @@ v3.0 では、新しい省略可能な _language_ パラメーターを使用で
 
 |Recognize Text 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/textOperations/** {operationId}|https://{endpoint}/vision/<**バージョン文字列**>/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/ **v2.0/textOperations/** {operationId}|https://{endpoint}/vision/< **バージョン文字列** >/read/analyzeResults/{operationId}|
 
 ### <a name="get-recognize-text-operation-result-status-flags"></a>`Get Recognize Text Operation Result` ステータス フラグ
 `Get Recognize Text Operation Result` の呼び出しが成功すると、JSON 本文の状態文字列フィールドが返されます。 
@@ -311,4 +312,4 @@ v3.x では、次のように調整されています。
 
 |Read 2.0 |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/core/Analyze**     |https://{endpoint}/vision/<**バージョン文字列**>/read/syncAnalyze[?language]|
+|https://{endpoint}/vision/ **v2.0/read/core/Analyze**     |https://{endpoint}/vision/< **バージョン文字列** >/read/syncAnalyze[?language]|

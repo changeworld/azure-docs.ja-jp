@@ -7,37 +7,37 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331755"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
-Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、**ロールベースのアクセス制御 (RBAC)** と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。 Azure の RBAC の一般的な原則については、[こちら](../role-based-access-control/overview.md)を参照してください。
+Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、 **Azure ロールベースのアクセス制御 (Azure RBAC)** と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。 Azure RBAC の一般的な原則については、[こちら](../role-based-access-control/overview.md)を参照してください。
 
 Azure Digital Twins では、保存データの暗号化もサポートされています。
 
-## <a name="granting-permissions-with-rbac"></a>RBAC を使用してアクセス許可を付与する
+## <a name="granting-permissions-with-azure-rbac"></a>Azure RBAC を使用してアクセス許可を付与する
 
-RBAC は、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) との統合を介して Azure Digital Twins に提供されます。
+Azure RBAC は、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) との統合を介して Azure Digital Twins に提供されます。
 
-RBAC を使用して、"*セキュリティ プリンシパル*" (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは Azure AD によって認証され、応答として OAuth 2.0 トークンを受け取ります。 このトークンは、Azure Digital Twins インスタンスへのアクセス要求を承認するために使用できます。
+Azure RBAC を使用して、" *セキュリティ プリンシパル* " (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは Azure AD によって認証され、応答として OAuth 2.0 トークンを受け取ります。 このトークンは、Azure Digital Twins インスタンスへのアクセス要求を承認するために使用できます。
 
 ### <a name="authentication-and-authorization"></a>認証と権限承認
 
-Azure AD では、アクセスは 2 段階のプロセスです。 セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーション) が Azure Digital Twins にアクセスしようとすると、要求は必ず "*認証*" され、"*承認*" されます。 
+Azure AD では、アクセスは 2 段階のプロセスです。 セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーション) が Azure Digital Twins にアクセスしようとすると、要求は必ず " *認証* " され、" *承認* " されます。 
 
-1. まず、セキュリティ プリンシパルの ID が "*認証*" され、OAuth 2.0 トークンが返されます。
-2. 次に、指定されたリソースへのアクセスを "*承認*" するために、トークンが要求の一部として Azure Digital Twins サービスに渡されます。
+1. まず、セキュリティ プリンシパルの ID が " *認証* " され、OAuth 2.0 トークンが返されます。
+2. 次に、指定されたリソースへのアクセスを " *承認* " するために、トークンが要求の一部として Azure Digital Twins サービスに渡されます。
 
-この認証手順では、実行時のアプリケーション要求に OAuth 2.0 アクセス トークンが含まれている必要があります。 アプリケーションが Azure エンティティ ([Azure Functions](../azure-functions/functions-overview.md) アプリなど) 内で実行されている場合、**マネージド ID** を使用してリソースにアクセスできます。 マネージド ID の詳細については、次のセクションを参照してください。
+この認証手順では、実行時のアプリケーション要求に OAuth 2.0 アクセス トークンが含まれている必要があります。 アプリケーションが Azure エンティティ ( [Azure Functions](../azure-functions/functions-overview.md) アプリなど) 内で実行されている場合、 **マネージド ID** を使用してリソースにアクセスできます。 マネージド ID の詳細については、次のセクションを参照してください。
 
 承認の手順では、セキュリティ プリンシパルに Azure ロールを割り当てる必要があります。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Digital Twins には、Azure Digital Twins リソースの一連のアクセス許可を含む Azure ロールが用意されています。 これらのロールについては、この記事の後半で説明します。
 
-Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの[*各種ロールの概要*](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
+Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの [*各種ロールの概要*](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
 #### <a name="authentication-with-managed-identities"></a>マネージド ID による認証
 
@@ -54,13 +54,13 @@ Azure には、Azure Digital Twins リソースへのアクセス承認用に、
 > [!TIP]
 > *Azure Digital Twins Reader (プレビュー)* ロールでは、リレーションシップの閲覧もサポートされるようになりました。
 
-組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの[*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「[*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
+組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの [*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「 [*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ロールを割り当てるには、次の 2 つの方法があります。
-* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する ([*Azure RBAC と Azure portal を使用したロールの割り当ての追加または削除*](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください)
+* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「 [*Azure portal を使用して Azure ロールの割り当てを追加または削除する*](../role-based-access-control/role-assignments-portal.md)」を参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
-この詳細な実行手順については、[*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
+この詳細な実行手順については、 [*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
 
 ### <a name="permission-scopes"></a>アクセス許可のスコープ
 
@@ -75,7 +75,7 @@ Azure には、Azure Digital Twins リソースへのアクセス承認用に、
 
 ### <a name="troubleshooting-permissions"></a>アクセス許可のトラブルシューティング
 
-ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、"[*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)* ](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
+ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、" [*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)*](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 
@@ -83,7 +83,7 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 ## <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
 
-現在、Azure Digital Twins では**クロスオリジン リソース共有 (CORS)** がサポートされていません。 このため、ブラウザー アプリ、[API Management (APIM)](../api-management/api-management-key-concepts.md) インターフェイス、または [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) コネクタから REST API を呼び出すと、ポリシー エラーが表示される場合があります。
+現在、Azure Digital Twins では **クロスオリジン リソース共有 (CORS)** がサポートされていません。 このため、ブラウザー アプリ、[API Management (APIM)](../api-management/api-management-key-concepts.md) インターフェイス、または [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) コネクタから REST API を呼び出すと、ポリシー エラーが表示される場合があります。
 
 このエラーを解決するには、次のいずれかの操作を行います。
 * メッセージから CORS ヘッダー `Access-Control-Allow-Origin` を削除します。 このヘッダーは、応答を共有できるかどうかを示します。 
@@ -93,6 +93,6 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 * [*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)に関するページで取り上げられている、動作中の概念について確認します。
 
-* クライアント アプリケーション コードからこれらの概念を操作する方法を、[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
+* クライアント アプリケーション コードからこれらの概念を操作する方法を、 [*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
 
-* 詳細については、「[Azure リソースの RBAC](../role-based-access-control/overview.md)」を参照してください。
+* [Azure RBAC](../role-based-access-control/overview.md) の詳細を確認します。

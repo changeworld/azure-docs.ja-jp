@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822400"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309796"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -22,18 +22,21 @@ ms.locfileid: "91822400"
 
 ライフサイクル管理ポリシーによって、以下を行えます。
 
-- パフォーマンスとコストを最適化するために、BLOB をよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
-- ライフサイクルの最後に BLOB を削除する
+- パフォーマンスを最適化するためにアクセスされた場合、BLOB をクールからホットに直ちに移行する 
+- コストを最適化するために、一定期間にわたってアクセスも変更もされていない場合、BLOB、BLOB のバージョン、BLOB のスナップショットをよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
+- ライフサイクルの最後に BLOB、BLOB のバージョン、BLOB のスナップショットを削除する
 - ストレージ アカウント レベルで 1 日に 1 回実行されるようにルールを定義する
 - コンテナーまたは BLOB のサブセットにルールを適用する (名前のプレフィックスまたは [ インデックス タグ](storage-manage-find-blobs.md)をフィルターとして使用)
 
 次のようなシナリオについて考えてみましょう。データがライフサイクルの初期段階には頻繁にアクセスされるものの、2 週間後にはたまにしか必要とされなくなります。 1 か月を超えると、そのデータ セットにはほとんどアクセスされなくなります。 このシナリオの初期段階ではホット ストレージが最適です。 ときどきアクセスされるデータにはクール ストレージが適しています。 1 か月以上が経過したデータに最も適しているのは、アーカイブ ストレージです。 データの古さを考慮してストレージ層を調整することで、ニーズに合った最も低コストのストレージ オプションを設計できます。 この移行を実現するために、ライフサイクル管理ポリシー ルールを使用して、古いデータをよりクールな層に移動することができます。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+>[!NOTE]
+>StorSimple で使用する場合など、データを読み取れるままにする必要がある場合は、BLOB をアーカイブ層に移動するポリシーを設定しないでください。
 
 ## <a name="availability-and-pricing"></a>可用性と料金
 
-ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、Blob Storage アカウント、Premium Block Blob Storage アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
+ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、Blob Storage アカウント、Premium Block Blob Storage アカウント、および Azure Data Lake Storage Gen2 アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
 ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
@@ -250,29 +253,41 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 - BLOB を最後に変更されたときから 30 日後にクール層に階層化する
 - BLOB を最後に変更されたときから 90 日後にアーカイブ層に階層化する
 - BLOB を最後に変更されたときから 2,555 日 (7 年) 後に削除する
-- BLOB のスナップショットを作成したときから 90 日後にスナップショットを削除する
+- 以前のバージョンの BLOB を作成から 90 日後に削除する
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -293,30 +308,30 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 | blobIndexMatch | 照合する BLOB インデックス タグ キーと値条件で構成されるディクショナリ値の配列。 各ルールには、最大 10 個の BLOB インデックス タグ条件を定義できます。 たとえば、ルールとして `https://myaccount.blob.core.windows.net/` の下にあるすべての BLOB を `Project = Contoso` に一致させたい場合、blobIndexMatch は `{"name": "Project","op": "==","value": "Contoso"}` になります。 | blobIndexMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。 | いいえ |
 
 > [!NOTE]
-> BLOB インデックスはパブリック プレビュー中であり、**カナダ中部**、**カナダ東部**、**フランス中部**、および**フランス南部**リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
+> BLOB インデックスはパブリック プレビュー中であり、 **カナダ中部** 、 **カナダ東部** 、 **フランス中部** 、および **フランス南部** リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 ### <a name="rule-actions"></a>ルールのアクション
 
 実行条件が満たされている場合、アクションはフィルター処理された BLOB に適用されます。
 
-ライフサイクル管理では、BLOB の階層化と削除、および BLOB スナップショットの削除がサポートされています。 BLOB または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
+ライフサイクル管理では、BLOB、以前の BLOB バージョン、および BLOB スナップショットの階層化と削除がサポートされています。 ベース BLOB、以前の BLOB バージョン、または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
 
-| アクション                      | ベース BLOB                                   | スナップショット      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | 現在ホット層にある BLOB をサポートします         | サポートされていません |
-| enableAutoTierToHotFromCool | 現在クール層にある BLOB をサポートします        | サポートされていません |
-| tierToArchive               | 現在ホット層またはクール層にある BLOB をサポートします | サポートされていません |
-| delete                      | `blockBlob` および `appendBlob` に対してサポートされています  | サポートされています     |
+| アクション                      | ベース BLOB                                  | スナップショット      | Version
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | `blockBlob` でサポート                  | サポートされています     | サポートされています     |
+| enableAutoTierToHotFromCool | `blockBlob` でサポート                  | サポートされていません | サポートされていません |
+| tierToArchive               | `blockBlob` でサポート                  | サポートされています     | サポートされています     |
+| delete                      | `blockBlob` および `appendBlob` に対してサポートされています | サポートされています     | サポートされています     |
 
 >[!NOTE]
 >同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。
 
-実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用して古さが追跡されます。BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
+実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用し、BLOB バージョンではバージョン作成時刻を使用し、BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
 
 | アクションの実行条件               | 条件値                          | 説明                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | 古さを日数で示す整数値 | ベース BLOB のアクションの条件                                              |
-| daysAfterCreationGreaterThan       | 古さを日数で示す整数値 | BLOB スナップショットのアクションの条件                                          |
+| daysAfterCreationGreaterThan       | 古さを日数で示す整数値 | BLOB バージョンおよび BLOB スナップショットのアクションの条件                         |
 | daysAfterLastAccessTimeGreaterThan | 古さを日数で示す整数値 | (プレビュー) 最終アクセス日時が有効になっているときのベース BLOB アクションの条件 |
 
 ## <a name="examples"></a>例
@@ -509,26 +524,35 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 }
 ```
 
-### <a name="delete-old-snapshots"></a>古いスナップショットを削除する
+### <a name="manage-versions"></a>バージョンの管理
 
-保存期間中に定期的に変更およびアクセスされるデータの場合、データの古いバージョンを追跡するためにスナップショットが使用されることがよくあります。 スナップショットの古さに基づいて古いスナップショットを削除するポリシーを作成できます。 スナップショットの古さは、スナップショットの作成時刻を評価することによって決定されます。 このポリシー ルールでは、スナップショットの作成時点から 90 日以上前の、コンテナー `activedata` 内のブロック BLOB のスナップショットを削除します。
+有効期間全体にわたって定期的に変更およびアクセスされるデータの場合は、BLOB ストレージのバージョン管理を有効にすることで、オブジェクトの以前のバージョンを自動的に管理できます。 ポリシーを作成して、以前のバージョンを階層化または削除することができます。 バージョンの古さは、バージョンの作成時刻を評価することによって決定されます。 このポリシー ルールは、バージョンの作成後 90 日以上経過したコンテナー `activedata` 内の以前のバージョンをクール層に階層化し、365 日またはそれ以前のバージョンを削除します。
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }

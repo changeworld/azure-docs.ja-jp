@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/30/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 2184a6e67b17f9fcaefc0a8e556ba81e839a2399
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 81cbbe06db2426cda8fde4a8fa0bca2cd8f097bb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598056"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144145"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -48,7 +48,7 @@ Azure 仮想マシン (VM) 上では、Azure VM HANA システム レプリケ�
 SAP HANA レプリケーション は、1 つのプライマリ ノードと、少なくとも 1 つのセカンダリ ノードで構成されています。 プライマリ ノードのデータに対する変更は、セカンダリ ノードに同期的または非同期的にレプリケートされます。
 
 この記事では、仮想マシンのデプロイおよび構成方法、クラスター フレームワークのインストール方法、SAP HANA システム レプリケーションのインストールおよび構成方法について説明します。
-サンプルの構成では、インストールのコマンドで、インスタンス番号として **03**、HANA システム ID として **HN1** が使用されています。
+サンプルの構成では、インストールのコマンドで、インスタンス番号として **03** 、HANA システム ID として **HN1** が使用されています。
 
 はじめに、次の SAP Note およびガイドを確認してください
 
@@ -123,19 +123,26 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 1. 仮想マシン 2 を作成します。  
    Red Hat Enterprise Linux 7.4 for SAP HANA 以降を使用します。 この例では、Red Hat Enterprise Linux 7.4 for SAP HANA のイメージを使用しています<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 手順 3 で作成した可用性セットを選択します。
 1. データ ディスクを追加します。
+
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。    
+
+> [!Note]
+> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
+
 1. Standard Load Balancer を使用している場合は、次の構成手順に従います。
    1. まず、フロントエンド IP プールを作成します。
 
       1. ロード バランサーを開き、 **[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
-      1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend**)。
-      1. **[Assignment]\(割り当て\)** を **[Static]\(静的\)** に設定し、IP アドレスを入力します (例: **10.0.0.13**)。
+      1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend** )。
+      1. **[Assignment]\(割り当て\)** を **[Static]\(静的\)** に設定し、IP アドレスを入力します (例: **10.0.0.13** )。
       1. **[OK]** を選択します。
       1. 新しいフロントエンド IP プールが作成されたら、プールの IP アドレスを書き留めます。
 
    1. 次に、バックエンド プールを作成します。
 
       1. ロードバランサーを開き、 **[backend pools]\(バックエンド プール\)** を選択し、 **[Add]\(追加\)** を選択します。
-      1. 新しいバックエンド プールの名前を入力します (例: **hana-backend**)。
+      1. 新しいバックエンド プールの名前を入力します (例: **hana-backend** )。
       1. **[Add a virtual machine]\(仮想マシンの追加\)** を選択します。
       1. ** 仮想マシン**を選択します。
       1. SAP HANA クラスターの仮想マシンとその IP アドレスを選択します。
@@ -144,36 +151,34 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    1. 次に、正常性プローブを作成します。
 
       1. ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しい正常性プローブの名前を入力します (例: **hana-hp**)。
-      1. プロトコルとして **[TCP]** を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+      1. 新しい正常性プローブの名前を入力します (例: **hana-hp** )。
+      1. プロトコルとして **[TCP]** を選択し、ポート 625 **03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
       1. **[OK]** を選択します。
 
    1. 次に、負荷分散規則を作成します。
    
       1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しいロード バランサー規則の名前を入力します (例: **hana-lb**)。
-      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**、**hana-backend**、**hana-hp**)。
+      1. 新しいロード バランサー規則の名前を入力します (例: **hana-lb** )。
+      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend** 、 **hana-backend** 、 **hana-hp** )。
       1. **[HA ポート]** を選択します。
       1. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
-      1. **Floating IP を有効にします**。
+      1. **Floating IP を有効にします** 。
       1. **[OK]** を選択します。
 
-   > [!Note]
-   > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
 
 1. または、Basic Load Balancer を使用するシナリオの場合は、次の構成手順に従います。
    1. ロードバランサーを構成します。 まず、フロントエンド IP プールを作成します。
 
       1. ロード バランサーを開き、 **[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
-      1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend**)。
-      1. **[Assignment]\(割り当て\)** を **[Static]\(静的\)** に設定し、IP アドレスを入力します (例: **10.0.0.13**)。
+      1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend** )。
+      1. **[Assignment]\(割り当て\)** を **[Static]\(静的\)** に設定し、IP アドレスを入力します (例: **10.0.0.13** )。
       1. **[OK]** を選択します。
       1. 新しいフロントエンド IP プールが作成されたら、プールの IP アドレスを書き留めます。
 
    1. 次に、バックエンド プールを作成します。
 
       1. ロードバランサーを開き、 **[backend pools]\(バックエンド プール\)** を選択し、 **[Add]\(追加\)** を選択します。
-      1. 新しいバックエンド プールの名前を入力します (例: **hana-backend**)。
+      1. 新しいバックエンド プールの名前を入力します (例: **hana-backend** )。
       1. **[Add a virtual machine]\(仮想マシンの追加\)** を選択します。
       1. 手順 3 で作成した可用性セットを選択します。
       1. SAP HANA クラスターの仮想マシンを選択します。
@@ -182,42 +187,42 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    1. 次に、正常性プローブを作成します。
 
       1. ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しい正常性プローブの名前を入力します (例: **hana-hp**)。
-      1. プロトコルとして **[TCP]** を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+      1. 新しい正常性プローブの名前を入力します (例: **hana-hp** )。
+      1. プロトコルとして **[TCP]** を選択し、ポート 625 **03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
       1. **[OK]** を選択します。
 
    1. SAP HANA 1.0 の場合は、負荷分散規則を作成します。
 
       1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**15)。
-      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
-      1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 15 を入力します。
+      1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3 **03** 15)。
+      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend** )。
+      1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3 **03** 15 を入力します。
       1. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
-      1. **Floating IP を有効にします**。
+      1. **Floating IP を有効にします** 。
       1. **[OK]** を選択します。
-      1. ポート 3**03**17 について、これらの手順を繰り返します。
+      1. ポート 3 **03** 17 について、これらの手順を繰り返します。
 
    1. SAP HANA 2.0 の場合は、システム データベースの負荷分散規則を作成します。
 
       1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**13)。
-      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
-      1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 13 を入力します。
+      1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3 **03** 13)。
+      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend** )。
+      1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3 **03** 13 を入力します。
       1. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
-      1. **Floating IP を有効にします**。
+      1. **Floating IP を有効にします** 。
       1. **[OK]** を選択します。
-      1. ポート 3**03**14 について、これらの手順を繰り返します。
+      1. ポート 3 **03** 14 について、これらの手順を繰り返します。
 
    1. SAP HANA 2.0 の場合は、まずテナント データベースの負荷分散規則を作成します。
 
       1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-      1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**40)。
-      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
-      1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 40 を入力します。
+      1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3 **03** 40)。
+      1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend** )。
+      1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3 **03** 40 を入力します。
       1. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
-      1. **Floating IP を有効にします**。
+      1. **Floating IP を有効にします** 。
       1. **[OK]** を選択します。
-      1. ポート 3**03**41 と 3**03**42 について、これらの手順を繰り返します。
+      1. ポート 3 **03** 41 と 3 **03** 42 について、これらの手順を繰り返します。
 
 SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント データベース](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) ガイドの[テナント データベースへの接続](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)に関する章または [SAP Note 2388694][2388694] を参照してください。
 
@@ -233,7 +238,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 * **[1]** :この手順はノード 1 にのみ適用されます。
 * **[2]** :この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
-1. **[A]** ディスク レイアウトの設定:**論理ボリューム マネージャー (LVM)** 。
+1. **[A]** ディスク レイアウトの設定: **論理ボリューム マネージャー (LVM)** 。
 
    データおよびログ ファイルを格納するボリュームには、LVM を使用することをお勧めします。 次の例は、仮想マシンに 4 つのデータ ディスクがアタッチされていて、これを使用して 2 つのボリュームを作成するということを前提としています。
 
@@ -303,7 +308,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** ディスク レイアウトの設定:**プレーン ディスク**。
+1. **[A]** ディスク レイアウトの設定: **プレーン ディスク** 。
 
    デモ システムの場合、ご自身の HANA のデータとログ ファイルを 1 つのディスクに配置することができます。 /dev/disk/azure/scsi1/lun0 にパーティションを作成し、xfs でフォーマットします。
 
@@ -354,13 +359,13 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    SAP HANA システム レプリケーションをインストールするには、<https://access.redhat.com/articles/3004101> の手順に従います。
 
    * HANA DVD から **hdblcm** プログラムを実行します。 プロンプトで次の値を入力します。
-   * Choose installation (インストールの選択):**1** を入力します。
-   * Select additional components for installation (追加でインストールするコンポーネントの選択):**1** を入力します。
+   * Choose installation (インストールの選択): **1** を入力します。
+   * Select additional components for installation (追加でインストールするコンポーネントの選択): **1** を入力します。
    * Enter Installation Path (インストール パスの入力) [/hana/shared]:Enter キーを押します。
    * Enter Local Host Name (ローカル ホスト名の入力) [..]:Enter キーを押します。
    * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?) (y/n) \[n]:Enter キーを押します。
-   * Enter SAP HANA System ID (SAP HANA のシステム ID を入力):HANA の SID を入力します。例:**HN1**。
-   * Enter Instance Number [00] \(インスタンス番号 (00) の入力):HANA のインスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「**03**」を入力します。
+   * Enter SAP HANA System ID (SAP HANA のシステム ID を入力):HANA の SID を入力します。例: **HN1** 。
+   * Enter Instance Number [00] \(インスタンス番号 (00) の入力):HANA のインスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「 **03** 」を入力します。
    * Select Database Mode / Enter Index (データベース モードの選択/インデックスの入力) [1]:Enter キーを押します。
    * Select System Usage / Enter Index [4] \(システム使用率の選択/インデックス (4) の入力):システムの使用率の値を選択します。
    * Enter Location of Data Volumes (データ ボリュームの場所の入力) [/hana/data/HN1]:Enter キーを押します。
@@ -378,7 +383,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):データベース ユーザーのパスワードを入力します。
    * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):確認用にデータベース ユーザーのパスワードを再入力します。
    * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?) \[n]:Enter キーを押します。
-   * Do you want to continue? (続行してもよろしいですか?) (y/n):概要を確認します。 「**y**」と入力して続行します。
+   * Do you want to continue? (続行してもよろしいですか?) (y/n):概要を確認します。 「 **y** 」と入力して続行します。
 
 1. **[A]** SAP Host Agent をアップグレードします。
 
@@ -504,7 +509,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 1. **[1]** 必要なユーザーを作成します。
 
-   root として次のコマンドを実行します。 太字の文字列 (HANA システム ID **HN1**、インスタンス番号 **03**) を、ご自身の SAP HANA のインストールの値に置き換えてください。
+   root として次のコマンドを実行します。 太字の文字列 (HANA システム ID **HN1** 、インスタンス番号 **03** ) を、ご自身の SAP HANA のインストールの値に置き換えてください。
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -556,7 +561,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 ## <a name="create-sap-hana-cluster-resources"></a>SAP HANA クラスター リソースの作成
 
-**すべてのノード**に、SAP HANA リソース エージェントをインストールします。 このパッケージを含むリポジトリを必ず有効にします。 RHEL 8. x HA が有効なイメージを使用している場合、追加のリポジトリを有効にする必要はありません。  
+**すべてのノード** に、SAP HANA リソース エージェントをインストールします。 このパッケージを含むリポジトリを必ず有効にします。 RHEL 8. x HA が有効なイメージを使用している場合、追加のリポジトリを有効にする必要はありません。  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -577,9 +582,9 @@ clone clone-max=2 clone-node-max=1 interleave=true
 次に、HANA リソースを作成します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった " *スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった " *スレーブ* " という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
-**RHEL 7. x**でクラスターを構築する場合は、次のコマンドを使用します。  
+**RHEL 7. x** でクラスターを構築する場合は、次のコマンドを使用します。  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 #
@@ -600,7 +605,7 @@ sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana
 sudo pcs property set maintenance-mode=false
 </code></pre>
 
-**RHEL 8. x**でクラスターを構築する場合は、次のコマンドを使用します。  
+**RHEL 8. x** でクラスターを構築する場合は、次のコマンドを使用します。  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 #
@@ -718,7 +723,7 @@ Resource Group: g_ip_HN1_03
 ### <a name="test-the-azure-fencing-agent"></a>Azure フェンス エージェントをテストする
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった " *スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。  
+> この記事には、Microsoft が使用しなくなった " *スレーブ* " という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。  
 
 テスト開始前のリソースの状態:
 

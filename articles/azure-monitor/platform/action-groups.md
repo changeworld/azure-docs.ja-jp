@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327733"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104395"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -21,8 +21,8 @@ ms.locfileid: "91327733"
 各アクションは次のプロパティで構成されます。
 
 * **[種類]** :実行される通知またはアクション。 たとえば、音声通話、SMS、電子メールの送信やさまざまな種類の自動化されたアクションのトリガーなどです。 この記事の後半の種類を参照してください。
-* **Name**:アクション グループ内の一意識別子。
-* **[詳細]** :*種類*によって異なる対応する詳細。
+* **Name** :アクション グループ内の一意識別子。
+* **[詳細]** : *種類* によって異なる対応する詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](./action-groups-create-resource-manager-template.md)」を参照してください。
 
@@ -55,19 +55,19 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 ### <a name="configure-notifications"></a>通知の構成
 
-1. **次へ:通知 >**  ボタンをクリックして、**通知** タブに移動するか、画面の上部にある **通知** タブを選択します。
+1. **次へ:通知 >**  ボタンをクリックして、 **通知** タブに移動するか、画面の上部にある **通知** タブを選択します。
 
 1. アラートがトリガーされたときに送信する通知の一覧を定義します。 通知ごとに次を指定します。
 
-    a. **通知の種類**:送信する通知の種類を選択します。 使用可能なオプションは次のとおりです。
+    a. **通知の種類** :送信する通知の種類を選択します。 使用可能なオプションは次のとおりです。
       * Azure Resource Manager ロールへの電子メール送信 - 特定のサブスクリプションレベルの ARM ロールに割り当てられているユーザーに電子メールを送信します。
       * 電子メール/SMS/プッシュ/音声 - 特定の受信者にこれらの通知の種類を送信します。
     
-    b. **Name**:通知の一意の名前を入力します。
+    b. **Name** :通知の一意の名前を入力します。
 
     c. **[詳細]** :選択した通知の種類に基づいて、電子メールアドレス、電話番号などを入力します。
     
-    d. **[共通アラート スキーマ]** : [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を有効にすることを選択できます。これは、Azure Monitor のすべてのアラート サービスにわたって 1 つの拡張可能で、かつ統合されたアラート ペイロードを持つ利点を提供します。
+    d. **[共通アラート スキーマ]** : [共通アラート スキーマ](./alerts-common-schema.md)を有効にすることを選択できます。これは、Azure Monitor のすべてのアラート サービスにわたって 1 つの拡張可能で、かつ統合されたアラート ペイロードを持つ利点を提供します。
 
     ![[通知] タブ](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 1. アラートがトリガーされたときにトリガーするアクションの一覧を定義します。 アクションごとに次の内容を指定します。
 
-    a. **アクションの種類**: Automation Runbook、Azure Function、ITSM、Logic App、Secure Webhook、Webhook を選択します。
+    a. **アクションの種類** : Automation Runbook、Azure Function、ITSM、Logic App、Secure Webhook、Webhook を選択します。
     
-    b. **Name**:アクションの一意の名前を入力します。
+    b. **Name** :アクションの一意の名前を入力します。
 
     c. **[詳細]** :アクションの種類に基づいて、Webhook の URI、Azure アプリ、ITSM 接続、または Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
     
-    d. **[共通アラート スキーマ]** : [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を有効にすることを選択できます。これは、Azure Monitor のすべてのアラート サービスにわたって 1 つの拡張可能で、かつ統合されたアラート ペイロードを持つ利点を提供します。
+    d. **[共通アラート スキーマ]** : [共通アラート スキーマ](./alerts-common-schema.md)を有効にすることを選択できます。これは、Azure Monitor のすべてのアラート サービスにわたって 1 つの拡張可能で、かつ統合されたアラート ペイロードを持つ利点を提供します。
     
     ![[アクション] タブ](./media/action-groups/action-group-3-actions.png)
 
@@ -131,7 +131,7 @@ Runbook ペイロードの制限については、[Azure サブスクリプシ�
 ### <a name="email-azure-resource-manager-role"></a>電子メールの Azure Resource Manager のロール
 サブスクリプションのロールのメンバーに電子メールを送信します。 電子メールはこのロールの **Azure AD ユーザー** メンバーにのみ送信されます。 Azure AD グループまたはサービス プリンシパルに電子メールが送信されることはありません。
 
-通知電子メールは、*標準の電子メール* アドレスにのみ送信されます。
+通知電子メールは、 *標準の電子メール* アドレスにのみ送信されます。
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
 
@@ -287,7 +287,32 @@ Webhook は、次のルールを使用して再処理されます。
 
 アクション グループには、限られた数の Webhook アクションを保持できます。
 
+### <a name="service-tag"></a>サービス タグ
+サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ActionGroup のネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
+1. [Azure サービス] の下の Azure portal で、" *ネットワーク セキュリティ グループ* " を検索します。
+2. **[追加]** をクリックして、ネットワーク セキュリティ グループを作成します。
+
+   1. リソース グループ名を追加し、" *インスタンスの詳細* " を入力します。
+   1. **[確認および作成]** をクリックして、 *[作成]* をクリックします。
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="ネットワーク セキュリティ グループの作成方法の例。"border="true":::
+
+3. [リソース グループ] にアクセスし、作成した " *ネットワーク セキュリティ グループ* " をクリックします。
+
+    1. *[受信セキュリティ規則]* を選択します。
+    1. **[追加]** をクリックします。
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
+
+4. 新しいウィンドウが右ペインに表示されます。
+    1.  ソースを選択します。" **サービス タグ** "
+    1.  [ソース サービス タグ]: **ActionGroup**
+    1.  **[追加]** をクリックします。
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
+
+ActionGroup に **サービス タグ** を使用すると、IP アドレスに対する頻繁な更新の複雑さを最小限に抑えることができます。
 
 ## <a name="next-steps"></a>次のステップ
 * 詳細については、「[SMS アラート動作](./alerts-sms-behavior.md)」を参照してください。  
@@ -296,4 +321,3 @@ Webhook は、次のルールを使用して再処理されます。
 * アラートの[レート制限](./alerts-rate-limiting.md)について学習します。
 * [アクティビティ ログ アラートの概要](./alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
 * [サービスの正常性通知が投稿されるたびにアラートを設定](../../service-health/alerts-activity-log-service-notifications-portal.md)する方法について学習します。
-

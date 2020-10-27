@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326781"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169389"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
@@ -67,6 +67,9 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Azure SQL Database または Managed Instance に接続する
 
+オンプレミス データ ゲートウェイまたは統合サービス環境を使用せずに Azure SQL Managed Instance にアクセスするには、[Azure SQL Managed Instance にパブリック エンドポイントをセットアップする](../azure-sql/managed-instance/public-endpoint-configure.md)必要があります。 パブリック エンドポイントによってポート 3342 が使用されるので、ロジック アプリからの接続を作成するときに、このポート番号を必ず指定します。
+
+
 [SQL トリガー](#add-sql-trigger)または [SQL アクション](#add-sql-action)を初めて追加するときに、データベースへの接続をまだ作成していない場合は、次の手順を実行するように求められます。
 
 1. **[認証の種類]** では、Azure SQL Database または Azure SQL Managed Instance のデータベースで必要であり、有効にされている認証を選択します。
@@ -77,7 +80,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- 作成されてデータベースに格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   この例では、**Azure AD 統合**を使用します。
+   この例では、 **Azure AD 統合** を使用します。
 
    ![[SQL Server] の接続ウィンドウを示すスクリーンショット。[認証の種類] の一覧が表示され、[AZURE AD 統合] が選択されています。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
@@ -121,7 +124,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- SQL Server で作成されて格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、[SQL Server 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)に関する記事を参照してください。 |
    |||
 
-   この例では、**Windows 認証**を使用します。
+   この例では、 **Windows 認証** を使用します。
 
    ![使用する認証の種類を選択する](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -134,7 +137,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | **ユーザー名** | はい | SQL サーバーおよびデータベースのユーザー名 |
    | **パスワード** | はい | SQL サーバーおよびデータベースのパスワード |
    | **サブスクリプション** |  はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの Azure サブスクリプション |
-   | **接続ゲートウェイ** | はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの名前 <p><p>**ヒント**:ゲートウェイが一覧に表示されない場合は、正しく[ゲートウェイを設定](../logic-apps/logic-apps-gateway-connection.md)していることを確認します。 |
+   | **接続ゲートウェイ** | はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの名前 <p><p>**ヒント** :ゲートウェイが一覧に表示されない場合は、正しく [ゲートウェイを設定](../logic-apps/logic-apps-gateway-connection.md)していることを確認します。 |
    |||
 
    > [!TIP]
@@ -211,13 +214,13 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
 サイズが大きすぎてコネクタが同時にすべての結果を返さない結果セットを操作する必要がある場合、または、結果セットのサイズと構造を詳細に制御したい場合があります。 このような大きな結果セットを処理する方法は、いくつかあります。
 
-* 結果を、より小さなセットとして管理しやすくするには、*改ページ位置の自動修正*をオンします。 詳細は、「[Get bulk data, records, and items by using pagination](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)」(改ページ位置の自動修正を使用した一括データ、レコードおよび項目) を参照してください。
+* 結果を、より小さなセットとして管理しやすくするには、 *改ページ位置の自動修正* をオンします。 詳細は、「[Get bulk data, records, and items by using pagination](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)」(改ページ位置の自動修正を使用した一括データ、レコードおよび項目) を参照してください。
 
 * 希望どおりの結果を編成するストアド プロシージャを作成します。
 
-  複数の行を取得または挿入する場合、ロジック アプリは、こちらの[制限](../logic-apps/logic-apps-limits-and-config.md)の中で "[*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、行を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。
+  複数の行を取得または挿入する場合、ロジック アプリは、こちらの [制限](../logic-apps/logic-apps-limits-and-config.md)の中で " [*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、行を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。
 
-  代わりに、SQL インスタンスで実行され、**SELECT - ORDER BY**ステートメントを使用して、望みどおりの方法で結果を整理する "[*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。
+  代わりに、SQL インスタンスで実行され、 **SELECT - ORDER BY** ステートメントを使用して、望みどおりの方法で結果を整理する " [*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。
 
   ソリューションの詳細については、次の記事を参照してください。
 
@@ -235,7 +238,7 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 
 1. デザイナーで、ストアド プロシージャを呼び出す操作の下にある **[新しいステップ]** を選択します。
 
-1. **[アクションの選択]** で、[ **[JSON の解析]** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) アクションを探して選択します。
+1. **[アクションの選択]** で、 [ **[JSON の解析]**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) アクションを探して選択します。
 
 1. **[JSON の解析]** アクションで、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
@@ -246,7 +249,17 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 
 1. デザイナーのツール バーで、 **[保存]** を選択します。
 
-1. JSON コンテンツのプロパティを参照するには、それらのプロパティを参照する編集ボックス内をクリックして、動的コンテンツの一覧を表示します。 一覧の [ **[JSON の解析]** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) の見出しの下で、目的の JSON コンテンツ プロパティのデータ トークンを選択します。
+1. JSON コンテンツのプロパティを参照するには、それらのプロパティを参照する編集ボックス内をクリックして、動的コンテンツの一覧を表示します。 一覧の [ **[JSON の解析]**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) の見出しの下で、目的の JSON コンテンツ プロパティのデータ トークンを選択します。
+
+## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
+
+接続の問題は普通に発生する可能性があるため、このような問題をトラブルシューティングして解決するには、「[SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)」を確認してください。 次に例をいくつか示します。
+
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
@@ -255,4 +268,3 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps の他のコネクタ](../connectors/apis-list.md)の詳細情報
-

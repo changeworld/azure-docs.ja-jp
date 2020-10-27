@@ -1,7 +1,7 @@
 ---
-title: ロールベースのアクセス制御 - Custom Vision
+title: Azure ロールベースのアクセス制御 - Custom Vision
 titleSuffix: Azure Cognitive Services
-description: この記事では、Custom Vision プロジェクトに対してロールベースのアクセス制御を構成する方法について説明します。
+description: この記事では、Custom Vision プロジェクトに対して Azure ロールベースのアクセス制御を構成する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826943"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146366"
 ---
-# <a name="role-based-access-control"></a>ロールベースのアクセス制御
+# <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-Custom Vision では、Azure リソースへの個々のアクセスを管理するための承認システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 RBAC を使用すると、チーム メンバーによって異なる Custom Vision プロジェクトに対するアクセス許可レベルを割り当てることができます。 RBAC の詳細については、「[Azure RBAC のドキュメント](https://docs.microsoft.com/azure/role-based-access-control/)」を参照してください。
+Custom Vision では、Azure リソースへの個々のアクセスを管理するための認可システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用すると、チーム メンバーによって異なる Custom Vision プロジェクトに対するアクセス許可レベルを割り当てることができます。 Azure RBAC の詳細については、「[Azure RBAC のドキュメント](https://docs.microsoft.com/azure/role-based-access-control/)」を参照してください。
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Custom Vision リソースへのロールの割り当ての追加
 
@@ -27,7 +27,7 @@ Azure RBAC は、Custom Vision リソースに割り当てることができま�
 1. [Azure portal](https://ms.portal.azure.com/) で **[すべてのサービス]** を選択します。 
 1. 次に、 **[Cognitive Services]** を選択し、特定の Custom Vision トレーニング リソースに移動します。
    > [!NOTE]
-   > また、リソース グループ、サブスクリプション、または管理グループ全体に対して RBAC を設定することもできます。 これを行うには、目的のスコープ レベルを選択し、目的の項目に移動します (たとえば、 **[リソース グループ]** を選択し、目的のリソース グループをクリックします)。
+   > また、リソース グループ、サブスクリプション、または管理グループ全体に対して Azure RBAC を設定することもできます。 これを行うには、目的のスコープ レベルを選択し、目的の項目に移動します (たとえば、 **[リソース グループ]** を選択し、目的のリソース グループをクリックします)。
 1. 左側のナビゲーション ウィンドウで **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当て]** タブを選択して、このスコープのロールの割り当てを表示します。
 1. **[追加]**  ->  **[ロール割り当ての追加]** の順に選択します。

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 17e3e8dca1c03f9783c0ca94350bb8a4ba5aca64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931110"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201904"
 ---
 # <a name="securing-azure-sql-edge"></a>Azure SQL Edge のセキュリティ保護
 
@@ -41,7 +41,7 @@ Azure SQL Edge のネットワーク プロトコルと TDS エンドポイン�
 ### <a name="authentication"></a>認証  
 認証は、ユーザーが本人の主張どおりの人物であることを証明するプロセスです。 Azure SQL Edge では現在、`SQL Authentication`メカニズムのみがサポートされています。
 
-- *SQL 認証*:
+- *SQL 認証* :
 
     SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Edge に接続するときに、そのユーザーを認証することを指します。 SQL Edge のデプロイ中に SQL の **sa** ログイン パスワードを指定する必要があります。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
 
@@ -92,8 +92,8 @@ Azure SQL および Microsoft SQL Server と同様に、Azure SQL Edge にも、
 
 Azure SQL Edge のセキュリティのベスト プラクティスには、安全なクライアント アプリケーションの作成が含まれています。 クライアント アプリケーションをネットワーク レイヤーで保護する方法の詳細については、「 [クライアント ネットワーク構成](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration)」を参照してください。
 
-### <a name="sql-server-security-catalog-views-and-functions"></a>SQL Server のセキュリティ カタログ ビューと関数  
- セキュリティ情報は、パフォーマンスや実用性に合わせて最適化されるいくつかのビューおよび関数で公開されます。 次の表に、セキュリティ ビューおよびセキュリティ関数に関する情報を示します。  
+### <a name="security-catalog-views-and-functions"></a>セキュリティ カタログ ビューと関数  
+セキュリティ情報は、パフォーマンスや実用性に合わせて最適化されるいくつかのビューおよび関数で公開されます。 次の表は、Azure SQL Edge でのセキュリティ ビューと関数に関する情報を示したものです。  
   
 |関数とビュー|リンク|  
 |---------------------------|---------|  
