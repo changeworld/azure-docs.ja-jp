@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41fb34055b9992b83a11bc3e4d47e3a389147860
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018596"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164229"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -70,7 +70,7 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<
 
 PowerShell 5.1 に Az または AzureRM モジュールをインストールするには、次の手順を実行します。
 
-1. 管理者特権のプロンプトで「**powershell**」と入力して、Enter キーを押します。
+1. 管理者特権のプロンプトで「 **powershell** 」と入力して、Enter キーを押します。
 2. 次のドキュメントに従って、最新の Az または AzureRM モジュールをインストールします。
     - [Az モジュール (.NET 4.7.2 が必要)](https://go.microsoft.com/fwlink/?linkid=2062890)
     - [AzureRM モジュール]( https://go.microsoft.com/fwlink/?linkid=856959)
@@ -93,7 +93,7 @@ Reset-StorageSyncServer
 > サーバーがクラスターの一部である場合は、省略可能な *Reset-StorageSyncServer -CleanClusterRegistration* パラメーターを使用して、クラスターの登録を削除することもできます。
 
 <a id="web-site-not-trusted"></a>**サーバーの登録時に多数の "Web サイトが信頼されていない" という応答が表示されます。なぜですか?**  
-このエラーは、サーバーの登録中に **Enhanced Internet Explorer Security** ポリシーが有効になった場合に発生します。 **Enhanced Internet Explorer Security** ポリシーを適切に無効にする方法の詳細については、「[Azure File Sync で使用する Windows Server の準備](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)」および[Azure File Sync のデプロイ方法](storage-sync-files-deployment-guide.md)に関する記事をご覧ください。
+このエラーは、サーバーの登録中に **Enhanced Internet Explorer Security** ポリシーが有効になった場合に発生します。 **Enhanced Internet Explorer Security** ポリシーを適切に無効にする方法の詳細については、「 [Azure File Sync で使用する Windows Server の準備](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)」および [Azure File Sync のデプロイ方法](storage-sync-files-deployment-guide.md)に関する記事をご覧ください。
 
 <a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
 サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:
@@ -108,9 +108,9 @@ Reset-StorageSyncServer
 このメッセージが表示されたときに、Azure ファイル共有が現在クラウド エンドポイントで使用されていない場合は、次の手順を完了して、Azure ファイル共有上の Azure File Sync メタデータをクリアします。
 
 > [!Warning]  
-> 現在クラウド エンドポイントによって使用されている Azure ファイル共有上のメタデータを削除すると、Azure File Sync の操作は失敗します。 
+> 現在クラウド エンドポイントによって使用されている Azure ファイル共有上のメタデータを削除すると、Azure File Sync の操作は失敗します。 
 
-1. Azure ポータルで、Azure ファイル共有に移動します。  
+1. Azure ポータルで、Azure ファイル共有に移動します。  
 2. Azure ファイル共有を右クリックし、 **[メタデータの編集]** を選択します。
 3. **[SyncService]** を右クリックし、 **[削除]** を選択します。
 
@@ -149,7 +149,7 @@ Reset-StorageSyncServer
 このエラーは、Azure File Sync が、圧縮されたシステム ボリューム情報フォルダーがあるボリューム上でサーバー エンドポイントをサポートしていないことが原因で発生します。 この問題を解決するには、システム ボリューム情報フォルダーを圧縮解除します。 システム ボリューム情報フォルダーがボリュームにある唯一の圧縮フォルダーである場合は、次の手順を実行します。
 
 1. [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) ツールをダウンロードします。
-2. 管理者特権でのコマンド プロンプトから次のコマンドを実行して、システム アカウントで実行されるコマンド プロンプトを起動します。**PsExec.exe -i -s -d cmd**
+2. 管理者特権でのコマンド プロンプトから次のコマンドを実行して、システム アカウントで実行されるコマンド プロンプトを起動します。 **PsExec.exe -i -s -d cmd**
 3. システム アカウントで実行されているコマンド プロンプトから、次のコマンドを入力し、Enter キーを押します。   
     **cd /d "drive letter:\System Volume Information"**  
     **compact /u /s**
@@ -297,7 +297,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 ### <a name="how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing"></a>同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか。
 特定の同期セッションに対して、サーバーの PerItemErrorCount またはポータルの [Files Not Syncing]\(同期していないファイル数\) の数が 0 より大きい場合は、何らかの項目の同期が失敗していることを意味します。ファイルやフォルダーに、同期を妨げる特性がある可能性があります。 これらの特性は、永続的で、同期を再開するためには明示的なアクション (たとえば、ファイル名やフォルダー名からサポートされていない文字を削除するなど) が必要な場合があります。 また、特性は一時的であり、ファイルやフォルダーの同期が自動的に再開される場合もあります。たとえば、開くハンドルを含むファイルは、ファイルが閉じられたときに自動的に同期を再開します。 Azure File Sync エンジンがそのような問題を検出すると、エラー ログが生成されます。これを解析して、現在正しく同期していない項目を一覧表示できます。
 
-これらのエラーを確認するには、**FileSyncErrorsReport.ps1** PowerShell スクリプト (Azure File Sync エージェントのエージェント インストール ディレクトリ内にあります) を実行して、開くハンドルやサポートされていない文字などの問題によって同期が失敗したファイルを識別します。 ItemPath フィールドは、ルート同期ディレクトリを基準としたファイルの相対的な場所を示します。 修復の手順については、下に示す一般的な同期エラーの一覧を参照してください。
+これらのエラーを確認するには、 **FileSyncErrorsReport.ps1** PowerShell スクリプト (Azure File Sync エージェントのエージェント インストール ディレクトリ内にあります) を実行して、開くハンドルやサポートされていない文字などの問題によって同期が失敗したファイルを識別します。 ItemPath フィールドは、ルート同期ディレクトリを基準としたファイルの相対的な場所を示します。 修復の手順については、下に示す一般的な同期エラーの一覧を参照してください。
 
 > [!Note]  
 > FileSyncErrorsReport.ps1 スクリプトから "ファイル エラーは見つかりませんでした" が返された場合、または同期グループの項目ごとのエラーが一覧表示されない場合は、次のいずれかの原因が考えられます。
@@ -734,7 +734,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **修復が必要か** | はい |
 
-ファイル単位の同期エラーが多数あると、同期セッションが失敗し始める可能性があります。 <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
+項目ごとのエラーで同期できないファイルが多数ある場合、同期セッションはこれらのエラーのいずれかで失敗します。 項目ごとのエラーを解決するには、「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか。](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」の説明にある手順を実行してください。 同期エラー ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED については、サポート ケースを開いてください。
 
 > [!NOTE]
 > Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。
@@ -843,7 +843,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 この問題を解決するには、次の手順を実行します。
 
 1. [Psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ツールをダウンロードします。
-2. 管理者特権でのコマンド プロンプトから次のコマンドを実行して、システム アカウントを使用してコマンド プロンプトを起動します。**PsExec.exe -i -s -d cmd** 
+2. 管理者特権でのコマンド プロンプトから次のコマンドを実行して、システム アカウントを使用してコマンド プロンプトを起動します。 **PsExec.exe -i -s -d cmd** 
 3. システム アカウントで実行されているコマンド プロンプトで、次のコマンドを実行して NT AUTHORITY\SYSTEM アカウントにシステム ボリューム情報フォルダーへのアクセス許可がないかどうか確認します: **cacls "drive letter:\system volume information" /T /C**
 4. NT AUTHORITY\SYSTEM アカウントにシステム ボリューム情報フォルダーへのアクセス許可がない場合は、次のコマンドを実行します: **cacls  "drive letter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
     - アクセス拒否により手順 #4 が失敗した場合は、次のコマンドを実行して、システム ボリューム情報フォルダーの所有権を取得し、その後、手順 #4 を繰り返します: **takeown /A /R /F "drive letter:\System Volume Information"**
@@ -995,16 +995,16 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。**  
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 1. 左側の目次で **[アクセス制御 (IAM)]** をクリックします。
-1. **[ロールの割り当て]** タブをクリックして、ストレージ アカウントにアクセスできるユーザーとアプリケーション (*サービス プリンシパル*) を一覧表示します。
-1. **Microsoft.StorageSync** または**ハイブリッド ファイル同期サービス** (古いアプリケーション名) が一覧に**閲覧者とデータ アクセス** ロールで表示されるか確認します。 
+1. **[ロールの割り当て]** タブをクリックして、ストレージ アカウントにアクセスできるユーザーとアプリケーション ( *サービス プリンシパル* ) を一覧表示します。
+1. **Microsoft.StorageSync** または **ハイブリッド ファイル同期サービス** (古いアプリケーション名) が一覧に **閲覧者とデータ アクセス** ロールで表示されるか確認します。 
 
     ![ストレージ アカウントのアクセス制御タブに表示された [Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\) サービス プリンシパルのスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
-    **Microsoft.StorageSync** または **ハイブリッド ファイル同期サービス**が一覧の表示されない場合は、次の手順を行います。
+    **Microsoft.StorageSync** または **ハイブリッド ファイル同期サービス** が一覧の表示されない場合は、次の手順を行います。
 
     - **[追加]** をクリックします。
     - **[ロール]** フィールドで、 **[閲覧者とデータ アクセス]** を選択します。
-    - **[選択]** フィールドに「**Microsoft.StorageSync**」と入力してロールを選択し、 **[保存]** をクリックします。
+    - **[選択]** フィールドに「 **Microsoft.StorageSync** 」と入力してロールを選択し、 **[保存]** をクリックします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1045,17 +1045,17 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 いずれかの障害パスで発生する可能性がある障害には 2 つの主要なクラスがあります。
 
 - クラウド ストレージの障害
-    - "*一時的なストレージ サービスの可用性の問題*"。 詳しくは、[Azure Storage のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/storage/v1_2/) に関するページをご覧ください。
-    - "*アクセスできない Azure ファイル共有*"。 この障害は通常、Azure ファイル共有がまだ同期グループ内のクラウド エンドポイントであるときにこれを削除した場合に発生します。
-    - "*アクセスできないストレージ アカウント*"。 この障害は通常、同期グループ内のクラウド エンドポイントである Azure ファイル共有がまだあるときにストレージ アカウントを削除した場合に発生します。 
+    - " *一時的なストレージ サービスの可用性の問題* "。 詳しくは、[Azure Storage のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/storage/v1_2/) に関するページをご覧ください。
+    - " *アクセスできない Azure ファイル共有* "。 この障害は通常、Azure ファイル共有がまだ同期グループ内のクラウド エンドポイントであるときにこれを削除した場合に発生します。
+    - " *アクセスできないストレージ アカウント* "。 この障害は通常、同期グループ内のクラウド エンドポイントである Azure ファイル共有がまだあるときにストレージ アカウントを削除した場合に発生します。 
 - サーバーの障害 
-  - "*Azure File Sync ファイル システム フィルター (StorageSync.sys) が読み込まれていない*"。 階層化/再呼び出し要求に応答するためには、Azure File Sync ファイル システム フィルターが読み込まれている必要があります。 フィルターが読み込まれない理由はいくつかありますが、最も一般的な理由は、管理者が手動でアンロードしたことです。 Azure File Sync が正常に機能するためには、Azure File Sync ファイル システム フィルターが常に読み込まれている必要があります。
-  - "*不足、破損、切断している再解析ポイント*"。 再解析ポイントは、ファイルの特別なデータ構造であり、次の 2 つの部分で構成されています。
+  - " *Azure File Sync ファイル システム フィルター (StorageSync.sys) が読み込まれていない* "。 階層化/再呼び出し要求に応答するためには、Azure File Sync ファイル システム フィルターが読み込まれている必要があります。 フィルターが読み込まれない理由はいくつかありますが、最も一般的な理由は、管理者が手動でアンロードしたことです。 Azure File Sync が正常に機能するためには、Azure File Sync ファイル システム フィルターが常に読み込まれている必要があります。
+  - " *不足、破損、切断している再解析ポイント* "。 再解析ポイントは、ファイルの特別なデータ構造であり、次の 2 つの部分で構成されています。
     1. Azure File Sync ファイル システム フィルター (StorageSync.sys) がファイルへの IO になんらかのアクションを行う必要があることをオペレーティング システムに示す再解析タグ。 
     2. 関連付けられているクラウド エンドポイント (Azure ファイル共有) 上のファイルの URI をファイル システムがフィルターすることを示す再解析データ。 
         
        再解析ポイントが破損する最も一般的な原因は、管理者がタグまたはそのデータを変更しようとしたことです。 
-  - "*ネットワーク接続性の問題*"。 ファイルを階層化または再呼び出しするには、サーバーにインターネット接続が必要です。
+  - " *ネットワーク接続性の問題* "。 ファイルを階層化または再呼び出しするには、サーバーにインターネット接続が必要です。
 
 次の各セクションでは、クラウド階層化の問題のトラブルシューティングを行い、問題がクラウド ストレージの問題かサーバーの問題かを確認する方法を示します。
 

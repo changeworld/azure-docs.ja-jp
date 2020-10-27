@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728660"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124188"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -50,23 +50,23 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 > ゾーン冗長ストレージは現在、[特定のリージョン](../../storage/common/storage-redundancy.md#zone-redundant-storage)でのみ利用できます。 
 
 > [!NOTE]
-> Azure SQL Database に対して構成可能なバックアップ ストレージの冗長性は、現在、東南アジア Azure リージョンでのみ、パブリック プレビューで利用できます。 この機能は、Hyperscale レベルではまだ使用できません。 
+> Azure SQL Database に対して構成可能なバックアップ ストレージの冗長性は、現在、東南アジアの Azure リージョンでのみ一般提供されています。 この機能は、Hyperscale レベルではまだ使用できません。 
 
 ### <a name="backup-usage"></a>バックアップの用途
 
 これらのバックアップを使用して、以下を行うことができます。
 
-- **既存データベースのポイントインタイム リストア** - Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、保持期間内の[過去の特定の時点に既存のデータベースを復元します](recovery-using-backups.md#point-in-time-restore)。 SQL Database では、この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されますが、元のデータベースが上書きされるのを防ぐため、別の名前が使用されます。 復元が完了したら、元のデータベースを削除することができます。 または、元のデータベースの[名前を変更](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)したうえで、復元されたデータベースの名前を元のデータベース名に変更してもかまいません。 SQL Managed Instance でも同様に、この操作により、同じリージョン、同じサブスクリプションの同じ、または異なるマネージド インスタンスに、データベースのコピーが作成されます。
+- **既存データベースのポイントインタイム リストア** - Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、保持期間内の [過去の特定の時点に既存のデータベースを復元します](recovery-using-backups.md#point-in-time-restore)。 SQL Database では、この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されますが、元のデータベースが上書きされるのを防ぐため、別の名前が使用されます。 復元が完了したら、元のデータベースを削除することができます。 または、元のデータベースの[名前を変更](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)したうえで、復元されたデータベースの名前を元のデータベース名に変更してもかまいません。 SQL Managed Instance でも同様に、この操作により、同じリージョン、同じサブスクリプションの同じ、または異なるマネージド インスタンスに、データベースのコピーが作成されます。
 - **削除されたデータベースのポイントインタイム リストア** - [削除されたデータベースを削除の時点に復元します](recovery-using-backups.md#deleted-database-restore)。または、保持期間内の特定の時点に復元します。 削除されたデータベースは、元のデータベースが作成されていたのと同じサーバーまたはマネージド インスタンスにのみ復元できます。 データベースを削除すると、データが失われないように、削除前にサービスによって最後のトランザクション ログ バックアップが取得されます。
 - **geo リストア** - [別の地理的リージョンにデータベースを復元します](recovery-using-backups.md#geo-restore)。 geo リストアを使用すると、プライマリ リージョンのデータベースまたはバックアップにアクセスできないときでも、地理的な災害から復旧できます。 任意の Azure リージョンの既存のサーバーまたはマネージド インスタンスに、新しいデータベースが作成されます。
    > [!IMPORTANT]
    > geo リストアは、geo 冗長バックアップ ストレージを使用して構成された SQL データベースまたはマネージド インスタンスでのみ利用できます。
-- **長期的バックアップからの復元** - データベースの長期保有ポリシー (LTR) が構成されている場合、単一データベースまたはプールされたデータベースの[特定の長期バックアップからデータベースを復元します](long-term-retention-overview.md)。 LTR により、[Azure portal](long-term-backup-retention-configure.md#using-the-azure-portal) または [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、以前のバージョンのデータベースを復元できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
+- **長期的バックアップからの復元** - データベースの長期保有ポリシー (LTR) が構成されている場合、単一データベースまたはプールされたデータベースの [特定の長期バックアップからデータベースを復元します](long-term-retention-overview.md)。 LTR により、[Azure portal](long-term-backup-retention-configure.md#using-the-azure-portal) または [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、以前のバージョンのデータベースを復元できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
 
 復元を実行するには、[バックアップからのデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Storage では、"*レプリケーション*" とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、"*データベース レプリケーション*" とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
+> Azure Storage では、" *レプリケーション* " とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、" *データベース レプリケーション* " とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
 
 次の例を使用して、バックアップの構成と復元の操作を試すことができます。
 

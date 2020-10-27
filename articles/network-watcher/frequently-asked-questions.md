@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471858"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123529"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Network Watcher に関してよく寄せられる質問 (FAQ)
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) サービスは、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツール スイートを提供します。 この記事では、そのサービスに関する一般的な質問への回答を示します。
@@ -81,6 +81,14 @@ Network Watcher 拡張機能は、VM からトラフィックを生成または�
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Network Watcher リソースを管理するにはどうすればよいですか？ 
 Network Watcher リソースは、Network Watcher のバックエンドサービスを表しており、Azure によって完全に管理されています。 お客様はその管理を行う必要はありません。 移動などの操作は、リソースではサポートされていません。 ただし、[リソースを削除することはできます](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)。 
 
+## <a name="service-availability-and-redundancy"></a>サービスの可用性と冗長性 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Network Watcher サービスにゾーン回復性はありますか? 
+はい。 Network Watcher サービスは、既定ではゾーン回復性を備えています。 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>どのように Network Watcher サービスにゾーン回復性を構成しますか? 
+ゾーン回復性を有効にするために、顧客による構成は必要ありません。 Network Watcher リソースのゾーン回復性は、既定で使用できるようになっており、サービス自体によって管理されます。 
+
 ## <a name="nsg-flow-logs"></a>NSG フロー ログ
 
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG フロー ログの機能
@@ -104,7 +112,7 @@ NSG フロー ログはサービス エンドポイントと互換性があり�
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>フロー ログのバージョン 1 と 2 の違い
-フロー ログ バージョン 2 では、"*フロー状態*" という概念が導入されており、転送するバイトとパケットに関する情報が保存されます。 詳細については、[こちら](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)を参照してください。
+フロー ログ バージョン 2 では、" *フロー状態* " という概念が導入されており、転送するバイトとパケットに関する情報が保存されます。 詳細については、[こちら](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
  - Network Watcher の使用を開始するためのいくつかのチュートリアルについては、[ドキュメントの概要のページ](https://docs.microsoft.com/azure/network-watcher/)を参照してください。

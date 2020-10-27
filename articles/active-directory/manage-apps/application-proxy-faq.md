@@ -1,5 +1,5 @@
 ---
-title: Azure AD アプリケーション プロキシに関してよく寄せられる質問 | Microsoft Docs
+title: Azure Active Directory アプリケーション プロキシに関してよく寄せられる質問
 description: Azure AD アプリケーション プロキシを使用して内部のオンプレミス アプリケーションをリモート ユーザーに公開する方法についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589165"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104565"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -48,7 +48,7 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 
 いいえ、現時点ではできません。 登録の試行は、常にユーザーのホーム テナントで行われます。
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>バックエンド アプリケーションが複数の Web サーバーでホストされ、ユーザー セッションの永続性 (持続性) が必要です。 セッションの永続化を実現するにはどうすればよいですか。 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>バックエンド アプリケーションが複数の Web サーバーでホストされ、ユーザー セッションの永続性 (持続性) が必要です。 セッションの永続化を実現するにはどうすればよいですか。 
 
 推薦事項に関しては、「[アプリケーション プロキシ コネクタとアプリケーションの高可用性と負荷分散](application-proxy-high-availability-load-balancing.md)」を参照してください。
 
@@ -83,7 +83,6 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
-
 
 ## <a name="application-configuration"></a>アプリケーションの構成
 
@@ -124,6 +123,12 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM 認証は Azure AD アプリケーション プロキシと連携していますか。
 
 NTLM 認証は、事前認証またはシングル サインオンの方法としては使用できません。 NTLM 認証は、クライアントと発行された Web アプリケーションの間で直接ネゴシエートできる場合にのみ使用できます。 NTLM 認証を使用すると、通常、ブラウザーにサインイン プロンプトが表示されます。
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>B2B IWA シングル サインオンのシナリオで、ログオン ID "オンプレミスのユーザー プリンシパル名" または "オンプレミスの SAM アカウント名" を使用できますか。
+
+いいえ。Azure AD のゲスト ユーザーには、前述のログオン ID で必要な属性がないため、これは機能しません。
+
+この場合、"ユーザー プリンシパル名" へのフォールバックが発生します。 B2B シナリオの詳細については、「[Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する](../external-identities/hybrid-cloud-to-on-premises.md)」を参照してください。
 
 ## <a name="pass-through-authentication"></a>パススルー認証
 
@@ -198,5 +203,5 @@ Windows Admin Center (WAC) または Remote Desktop Web クライアント (HTML
 1. ワイルドカードを使用して HTTP と HTTPS の両方の URL を個別のアプリケーションとして公開し、それぞれに異なるカスタム ドメインを指定します。 この構成は、外部 URL が異なるため可能です。
 
 2. ワイルドカード アプリケーションを使用して HTTPS URL を公開します。 次のアプリケーション プロキシの PowerShell コマンドレットを使用して、HTTP アプリケーションを個別に公開します。
-   - [アプリケーション プロキシ アプリケーションの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [アプリケーション プロキシ コネクタの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [アプリケーション プロキシ アプリケーションの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [アプリケーション プロキシ コネクタの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

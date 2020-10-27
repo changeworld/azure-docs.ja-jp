@@ -1,6 +1,6 @@
 ---
-title: Azure ガイド - Azure Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して、Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法について説明します。
+title: ARM テンプレートを使用した Azure キー コンテナーとコンテナーのアクセス ポリシーの作成
+description: この記事では、Azure Resource Manager テンプレートを使用して、Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法について説明します。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,27 +10,27 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cf19561005fe2e98b7b5cf6812ff9224fd9474dc
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804267"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282320"
 ---
-# <a name="how-to-create-azure-key-vault-and-vault-access-policy-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法
+# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法
 
-[Azure Key Vault](../general/overview.md) は、キー、パスワード、証明書、その他のシークレットなど、シークレットのための安全な保管場所を提供するクラウド サービスです。 このガイドでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイしてキー コンテナーを作成するプロセスを中心に取り上げます。
+[Azure Key Vault](../general/overview.md) は、キー、パスワード、証明書などのシークレット向けに Secure Store を提供するクラウド サービスです。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイしてキー コンテナーを作成するプロセスを説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事を完了するには:
+この記事の手順を完了するには、次のことが条件となります。
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
 
-## <a name="create-key-vault-resource-manager-template"></a>Key Vault Resource Manager テンプレートを作成する
+## <a name="create-a-key-vault-resource-manager-template"></a>Key Vault Resource Manager テンプレートを作成する
 
 次のテンプレートは、キー コンテナーを作成する基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。
 
@@ -87,9 +87,9 @@ ms.locfileid: "91804267"
 Key Vault テンプレート設定の詳細については、[Key Vault ARM テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)に関するページを参照してください。
 
 > [!IMPORTANT]
-> テンプレートが再デプロイされると、それによってキー コンテナー内の既存のアクセス ポリシーがオーバーライドされます。 キー コンテナーへのアクセスが失われないように、`accessPolicies` プロパティに既存のアクセス ポリシーを設定することをお勧めします。 
+> テンプレートが再デプロイされると、キー コンテナー内の既存のアクセス ポリシーがオーバーライドされます。 キー コンテナーへのアクセスが失われないように、`accessPolicies` プロパティに既存のアクセス ポリシーを設定することをお勧めします。 
 
-## <a name="add-access-policy-to-key-vault-resource-manager-template"></a>Key Vault Resource Manager テンプレートにアクセス ポリシーを追加する
+## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Key Vault Resource Manager テンプレートにアクセス ポリシーを追加する
 
 キー コンテナー テンプレート全体を再デプロイすることなく、既存のキー コンテナーにアクセス ポリシーをデプロイできます。 次のテンプレートは、アクセス ポリシーを作成する基本的な方法を示したものです。
 
@@ -162,19 +162,19 @@ Key Vault テンプレート設定の詳細については、[Key Vault ARM テ�
 ```
 Key Vault テンプレート設定の詳細については、[Key Vault ARM テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies)に関するページを参照してください。
 
-## <a name="other-available-key-vault-resource-manager-templates"></a>その他に使用可能な Key Vault Resource Manager テンプレート
+## <a name="more-key-vault-resource-manager-templates"></a>その他の Key Vault Resource Manager テンプレート
 
 Key Vault オブジェクトで使用できる Resource Manager テンプレートが他にもあります。
 
 | シークレット | [キー] | 証明書 |
 |--|--|--|
-|[クイックスタート](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<br>[参照](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|該当なし|該当なし|
+|<ul><li>[クイックスタート](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[参照](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|該当なし|該当なし|
 
-その他の Key Vault テンプレートについては、こちらを参照してください: [Key Vault Resource Manager リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)
+その他の Key Vault テンプレートについては、次を参照してください。[Key Vault Resource Manager リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)。
 
 ## <a name="deploy-the-templates"></a>テンプレートの配備
 
-Azure portal を使用すれば、次のガイドに記載された "エディターで独自のテンプレートを作成する" オプションを使用して上記のテンプレートをデプロイすることができます。[カスタム テンプレートからリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)
+Azure portal を使うと、次に示すように、 **[エディターで独自のテンプレートを作成する]** オプションを使って上記のテンプレートをデプロイできます。次のページに説明があります:「[カスタム テンプレートからリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)」。
 
 また、上記のテンプレートをファイルに保存し、次のコマンドを使用することもできます。[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) および [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create):
 
@@ -188,7 +188,7 @@ az group deployment create --resource-group ExampleGroup --template-file key-vau
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-後続のクイック スタートおよびチュートリアルで引き続き作業する予定がある場合は、これらのリソースをそのまま残しておくことができます。 リソースが不要になったら、リソース グループを削除します。これにより、キー コンテナーおよび関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには、次の手順を使用します。
+後続のクイックスタートおよびチュートリアルで引き続き作業する予定がある場合は、これらのリソースをそのまま残しておくことができます。 リソースが不要になった場合は、リソース グループを削除します。 グループを削除すると、キー コンテナーと関連リソースも削除されます。 Azure CLI または Azure PowerShell を使ってリソース グループを削除するには、次の手順を実行します。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -211,9 +211,9 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="resources"></a>リソース
 
-- [Azure Key Vault の概要](../general/overview.md)を確認する
-- [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Azure Key Vault の概要](../general/overview.md)を確認します。
+- [Azure リソース マネージャー](../../azure-resource-manager/management/overview.md)の詳細を確認します。
+- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認します。
 
 ## <a name="next-steps"></a>次の手順
 
