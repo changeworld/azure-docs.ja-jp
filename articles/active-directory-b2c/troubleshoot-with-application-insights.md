@@ -8,25 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993170"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132059"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
 この記事では、カスタム ポリシーの問題を診断できるよう、Active Directory B2C (Azure AD B2C) からログを収集する手順を説明します。 Application Insights は、例外を診断したり、アプリケーションのパフォーマンスの問題を視覚化したりするための手段を提供します。 Azure AD B2C には、Application Insights にデータを送信するための機能が含まれます。
 
-ここで説明する詳細なアクティビティ ログは、カスタム ポリシーを開発している間**だけ**、有効にする必要があります。
+ここで説明する詳細なアクティビティ ログは、カスタム ポリシーを開発している間 **だけ** 、有効にする必要があります。
 
 > [!WARNING]
-> 運用環境では開発モードを有効にしないでください。 ログを使うと、ID プロバイダーとの間で送受信されるすべての要求を収集できます。 開発者には、Application Insights ログで収集されるすべての個人データに対する責任があります。 これらの詳細ログは、ポリシーが**開発者モード**で配置されている場合にのみ収集されます。
+> 運用環境では、`DeploymentMode` を `Developer` に設定しないでください。 ログを使うと、ID プロバイダーとの間で送受信されるすべての要求を収集できます。 開発者には、Application Insights ログで収集されるすべての個人データに対する責任があります。 これらの詳細ログは、ポリシーが **開発者モード** で配置されている場合にのみ収集されます。
 
 ## <a name="set-up-application-insights"></a>Application Insights を設定する
 
@@ -43,7 +43,7 @@ ms.locfileid: "91993170"
 
 ## <a name="configure-the-custom-policy"></a>カスタム ポリシーを構成する
 
-1. 証明書利用者 (RP) ファイルを開きます (例: *SignUpOrSignin.xml*).
+1. 証明書利用者 (RP) ファイルを開きます (例: *SignUpOrSignin.xml* ).
 1. 次の属性を `<TrustFrameworkPolicy>` 要素に追加します:
 
    ```xml
@@ -52,14 +52,14 @@ ms.locfileid: "91993170"
    ```
 
 1. まだ存在しない場合は、子ノード `<UserJourneyBehaviors>` を `<RelyingParty>` ノードに追加します。 `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` の直後に配置する必要があります。
-1. 次のノードを `<UserJourneyBehaviors>` 要素の子として追加します。 必ず、`{Your Application Insights Key}` の部分を、前に記録した Application Insights の**インストルメンテーション キー**に置き換えます。
+1. 次のノードを `<UserJourneyBehaviors>` 要素の子として追加します。 必ず、`{Your Application Insights Key}` の部分を、前に記録した Application Insights の **インストルメンテーション キー** に置き換えます。
 
     ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * 処理パイプラインを通してテレメトリを迅速化するよう `DeveloperMode="true"` により Application Insights に指示されます。 開発には適していますが、大量のボリュームでは制限されます。
-    * `ClientEnabled="true"` を指定すると、ページ ビューとクライアント側エラーを追跡するための Application Insights クライアント側スクリプトが送信されます。 これらは、Application Insights ポータルの **browserTimings** テーブルで確認できます。 `ClientEnabled= "true"` を設定することにより、Application Insights がページ スクリプトに追加され、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 このフィールドは**オプション**であり、既定では `false` に設定されます。
+    * 処理パイプラインを通してテレメトリを迅速化するよう `DeveloperMode="true"` により Application Insights に指示されます。 開発には適していますが、大量のボリュームでは制限されます。 運用環境では、`DeveloperMode` を `false` に設定します。
+    * `ClientEnabled="true"` を指定すると、ページ ビューとクライアント側エラーを追跡するための Application Insights クライアント側スクリプトが送信されます。 これらは、Application Insights ポータルの **browserTimings** テーブルで確認できます。 `ClientEnabled= "true"` を設定することにより、Application Insights がページ スクリプトに追加され、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 このフィールドは **オプション** であり、既定では `false` に設定されます。
     * `ServerEnabled="true"` は、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。
 
     次に例を示します。
@@ -103,7 +103,32 @@ Application Insights で新しいログが確認できるようになるまで�
 
 クエリの実行について詳しくは、「[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="configure-application-insights-in-production"></a>運用環境で Application Insights を構成する
+
+運用環境のパフォーマンスとユーザー エクスペリエンスを向上させるには、重要ではないメッセージを無視するようにポリシーを構成することが重要です。 重大なエラー メッセージのみを Application Insights に送信するには、次の構成を使用します。 
+
+1. [TrustFrameworkPolicy](trustframeworkpolicy.md) の `DeploymentMode` 属性を `Production` に設定します。 
+
+   ```xml
+   <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+   TenantId="yourtenant.onmicrosoft.com"
+   PolicyId="B2C_1A_signup_signin"
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin"
+   DeploymentMode="Production"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+   ```
+
+1. [JourneyInsights](relyingparty.md#journeyinsights) の `DeveloperMode` を `false` に設定します。
+
+   ```xml
+   <UserJourneyBehaviors>
+     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="false" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   </UserJourneyBehaviors>
+   ```
+   
+1. ポリシーをアップロードしてテストします。
+
+## <a name="next-steps"></a>次の手順
 
 ID 開発者を支援するためのユーザー体験ビューアーがコミュニティによって開発されています。 このビューアーは、Application Insights インスタンスからデータを読み取り、ユーザー体験イベントの適切に構造化された表示を提供します。 ソース コードを入手し、独自のソリューションでデプロイできます。
 

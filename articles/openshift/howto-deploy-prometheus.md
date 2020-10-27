@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus, aro, openshift, メトリック, red hat
-ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80886890"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218614"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスターにスタンドアロンの Prometheus インスタンスをデプロイする
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月 30 日に廃止されます。 新しい Azure Red Hat OpenShift 3.11 クラスターの作成のサポートは、2020 年 11 月 30 日まで継続されます。 廃止された後、残っている Azure Red Hat OpenShift 3.11 クラスターは、セキュリティの脆弱性を防ぐためにシャットダウンされます。
+> 
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:arofeedback@microsoft.com)。
 
 この記事では、Azure Red Hat OpenShift クラスター内でサービス検索を使用するスタンドアロンの Prometheus インスタンスを構成する方法について説明します。
 
@@ -30,7 +36,7 @@ ms.locfileid: "80886890"
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>OC ツールを使ってクラスターにサインインする
 
-1. Web ブラウザーを開き、クラスターの Web コンソールに移動します (https://openshift.*random-id*.*region*.azmosa.io)。
+1. Web ブラウザーを開き、クラスターの Web コンソールに移動します (https://openshift. *random-id* . *region* .azmosa.io)。
 2. Azure の資格情報でサインインします。
 3. 右上隅にあるユーザー名を選択し、 **[Copy Login Command]\(ログイン コマンドのコピー\)** を選択します。
 4. 使用するターミナルにユーザー名を貼り付けます。
@@ -182,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>省略可能:サンプル アプリケーションをデプロイする
 
-すべては動作していますが、メトリック ソースがありません。 Prometheus の URL (https://prom-prometheus-project.apps.*random-id*.*region*.azmosa.io/) にアクセスします。 次のコマンドを使用して見つけることができます。
+すべては動作していますが、メトリック ソースがありません。 Prometheus の URL (https://prom-prometheus-project.apps. *random-id* . *region* .azmosa.io/) にアクセスします。 次のコマンドを使用して見つけることができます。
 
 ```
 oc get route prom -n prometheus-project
@@ -203,7 +209,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 詳しくは、 **[状態]**  >  **[ターゲット]** を選択してください。
 
 > [!NOTE]
-> 正常に取得されたすべてのターゲットについて、Prometheus によって up メトリックにデータ ポイントが追加されます。 左上隅にある **[Prometheus]** を選択し、式に「**up**」と入力して、 **[実行]** を選択します。
+> 正常に取得されたすべてのターゲットについて、Prometheus によって up メトリックにデータ ポイントが追加されます。 左上隅にある **[Prometheus]** を選択し、式に「 **up** 」と入力して、 **[実行]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

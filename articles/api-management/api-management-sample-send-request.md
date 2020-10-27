@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210360"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093278"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
@@ -178,7 +178,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 ### <a name="making-the-requests"></a>要求の作成
 操作を作成したら、その操作に特化したポリシーを構成できます。 
 
-![ダッシュボード操作](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![[ポリシー スコープ] 画面を示すスクリーンショット。](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 このためには、バックエンドに送信できるよう、まず受信要求のすべてのクエリ パラメーターを抽出します。 この例では、ダッシュボードには、期間に基づいて情報が表示されているので、`fromDate` と `toDate` のパラメーターがあります。 要求 URL から情報を抽出するには、`set-variable` ポリシーを使用します。
 

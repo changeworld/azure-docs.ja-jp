@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2020
-ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/16/2020
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269167"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317568"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -135,9 +135,9 @@ Azure AD OAuth を有効にする前に、以下の考慮事項について再�
 
 * ロジック アプリは、承認ポリシーの最大数に制限されている必要があります。 各承認ポリシーには、[クレーム](../active-directory/develop/developer-glossary.md#claim)の最大数もあります。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)に関するページを参照してください。
 
-* 承認ポリシーには、少なくとも**発行者**要求が含まれている必要があり、その Azure AD 発行者 ID の値は、`https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) のいずれかで始まります。
+* 承認ポリシーには、少なくとも **発行者** 要求が含まれている必要があり、その Azure AD 発行者 ID の値は、`https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) のいずれかで始まります。
 
-  たとえば、ロジック アプリに、**対象ユーザー**と**発行者**という 2 つのクレームの種類が必要な承認ポリシーがあるとします。 デコードされたアクセス トークンの、このサンプルの[ペイロード セクション](../active-directory/develop/access-tokens.md#payload-claims)には、両方のクレームの種類が含まれています。`aud` は**対象ユーザー**の値で、`iss` は**発行者**の値です。
+  たとえば、ロジック アプリに、 **対象ユーザー** と **発行者** という 2 つのクレームの種類が必要な承認ポリシーがあるとします。 デコードされたアクセス トークンの、このサンプルの [ペイロード セクション](../active-directory/develop/access-tokens.md#payload-claims)には、両方のクレームの種類が含まれています。`aud` は **対象ユーザー** の値で、`iss` は **発行者** の値です。
 
   ```json
   {
@@ -199,7 +199,7 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **ポリシー名** | はい | 承認ポリシーに使用する名前 |
-   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**クレーム**の一覧には、少なくとも**発行者**のクレームが含まれている必要があります。その値は、Azure AD 発行者 ID として、`https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
+   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**クレーム** の一覧には、少なくとも **発行者** のクレームが含まれている必要があります。その値は、Azure AD 発行者 ID として、`https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
    |||
 
 1. 別のクレームを追加するには、次のオプションから選択します。
@@ -316,20 +316,20 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 1. **[アクセス制御の構成]**  >  **[許可された着信 IP アドレス]** で、 **[特定の IP 範囲]** を選択します。
 
-1. **[トリガーの IP 範囲]** で、トリガーで受け入れられる IP アドレス範囲を指定します。
+1. **[トリガーの IP 範囲]** ボックスが表示されたら、トリガーで受け入れる IP アドレス範囲を指定します。 有効な IP 範囲では、 *x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
 
-   有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
+   たとえば、ロジック アプリを HTTP アクションを介して入れ子になったロジック アプリとしてのみ呼び出しできるようにするには、( **[他のロジック アプリ]** オプションではなく) **[特定の IP 範囲]** オプションを使用して、親ロジック アプリの [[送信 IP アドレス]](../logic-apps/logic-apps-limits-and-config.md#outbound) を入力します。
 
-お使いのロジック アプリを、入れ子にされたロジック アプリとしてのみトリガーするようにしたい場合は、 **[許可された着信 IP アドレス]** の一覧で **[他のロジック アプリのみ]** を選択します。 このオプションにより、ロジック アプリのリソースに空の配列が書き込まれます。 そのため、入れ子にされたロジック アプリをトリガーできるのは、Logic Apps サービス (親ロジック アプリ) からの呼び出しだけになります。
+   ただし、ロジック アプリを組み込みの [Azure Logic Apps アクション](../logic-apps/logic-apps-http-endpoint.md)を介して入れ子になったロジック アプリとしてのみ呼び出しできるようにするには、代わりに **[他のロジック アプリのみ]** オプションを選択します。 このオプションでは、ロジック アプリのリソースに空の配列が書き込まれ、他の "親" ロジック アプリからの呼び出しのみが組み込みの **Azure Logic Apps** アクションを介して入れ子になったロジック アプリをトリガーできることが求められます。
 
-> [!NOTE]
-> IP アドレスに関わらず、[Logic Apps REST API: Workflow Triggers - Run](/rest/api/logic/workflowtriggers/run) 要求または API Management を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-vs-authorization.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
+   > [!NOTE]
+   > 指定する IP アドレスに関わらず、[Logic Apps REST API: Workflow Triggers - Run](/rest/api/logic/workflowtriggers/run) 要求または API Management を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-vs-authorization.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
 
 <a name="restrict-inbound-ip-template"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで受信 IP 範囲を制限する
 
-[Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合、次の例のように、`accessControl` セクションを使用し、ロジック アプリのリソース定義に `triggers` および `actions` セクションを含めることで、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* 形式で IP 範囲を指定できます。
+[Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合、次の例のように、`accessControl` セクションを使用し、ロジック アプリのリソース定義に `triggers` および `actions` セクションを含めることで、 *x.x.x.x/x* または *x.x.x.x-x.x.x.x* 形式で IP 範囲を指定できます。
 
 ```json
 {
@@ -418,7 +418,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 1. **[コンテンツの IP 範囲]** で、入力と出力からの内容にアクセスできる IP アドレス範囲を指定します。
 
-   有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
+   有効な IP 範囲では、 *x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで IP 範囲を制限する
 
@@ -542,21 +542,21 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
   **[セキュリティで保護された出力] の設定**
 
-  トリガーまたはアクションで **[セキュリティで保護された出力]** を手動でオンにすると、Logic Apps により、実行履歴でその出力が非表示になります。 それらのセキュリティで保護された出力がダウンストリームのアクションで明示的に入力として使用されている場合、そのアクションの入力が実行履歴では非表示となりますが、アクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。
+  トリガーまたはアクションで **[セキュリティで保護された出力]** を手動でオンにすると、Logic Apps により、実行履歴でその出力が非表示になります。 それらのセキュリティで保護された出力がダウンストリームのアクションで明示的に入力として使用されている場合、そのアクションの入力が実行履歴では非表示となりますが、アクションの **[セキュリティで保護された入力]** の設定は " *有効になりません* "。
 
   ![入力としてのセキュリティで保護された出力とダウンストリームによるほとんどのアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
 
-  [作成]、[JSON の解析]、[応答] の各アクションには、 **[セキュリティで保護された入力]** の設定しかありません。 この設定をオンにした場合、それらのアクションの出力も非表示になります。 セキュリティで保護されたアップストリームの出力がそれらのアクションの入力として明示的に使用された場合、Logic Apps によってそれらのアクションの入力と出力は非表示となりますが、それらのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
+  [作成]、[JSON の解析]、[応答] の各アクションには、 **[セキュリティで保護された入力]** の設定しかありません。 この設定をオンにした場合、それらのアクションの出力も非表示になります。 セキュリティで保護されたアップストリームの出力がそれらのアクションの入力として明示的に使用された場合、Logic Apps によってそれらのアクションの入力と出力は非表示となりますが、それらのアクションの **[セキュリティで保護された入力]** の設定は " *有効になりません* "。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、" *そのダウンストリームのアクションの入力と出力は非表示になりません* "。
 
   ![入力としてのセキュリティで保護された出力とダウンストリームによる特定のアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
 
   **[セキュリティで保護された入力] の設定**
 
-  トリガーまたはアクションで **[セキュリティで保護された入力]** を手動でオンにすると、Logic Apps により、実行履歴でその入力が非表示になります。 そのトリガーまたはアクションからの表示可能な出力がダウンストリームのアクションの入力として明示的に使用されている場合、そのダウンストリームのアクションの入力が実行履歴では非表示となりますが、このアクションの **[セキュリティで保護された入力]** は "*有効にならず*"、そのアクションの出力が非表示になることもありません。
+  トリガーまたはアクションで **[セキュリティで保護された入力]** を手動でオンにすると、Logic Apps により、実行履歴でその入力が非表示になります。 そのトリガーまたはアクションからの表示可能な出力がダウンストリームのアクションの入力として明示的に使用されている場合、そのダウンストリームのアクションの入力が実行履歴では非表示となりますが、このアクションの **[セキュリティで保護された入力]** は " *有効にならず* "、そのアクションの出力が非表示になることもありません。
 
   ![セキュリティで保護された入力とダウンストリームのほとんどのアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  セキュリティで保護された入力を持つトリガーまたはアクションからの表示可能な出力が、[作成]、[JSON の解析]、[応答] の各アクションで明示的に使用された場合、これらのアクションの入力と出力は非表示となりますが、そのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
+  セキュリティで保護された入力を持つトリガーまたはアクションからの表示可能な出力が、[作成]、[JSON の解析]、[応答] の各アクションで明示的に使用された場合、これらのアクションの入力と出力は非表示となりますが、そのアクションの **[セキュリティで保護された入力]** の設定は " *有効になりません* "。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、" *そのダウンストリームのアクションの入力と出力は非表示になりません* "。
 
   ![セキュリティで保護された入力とダウンストリームの特定のアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -638,7 +638,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 次に、これらの `parameters` セクションについて詳しく説明します。
 
-* テンプレートの最上位の `parameters` セクションには、そのテンプレートが "*デプロイ*" 時に使用する値のパラメーターを定義します。 たとえば、特定のデプロイ環境の接続文字列がそのような値として考えられます。 これらの値は、独立した[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納できるので、値の変更も容易に行うことができます。
+* テンプレートの最上位の `parameters` セクションには、そのテンプレートが " *デプロイ* " 時に使用する値のパラメーターを定義します。 たとえば、特定のデプロイ環境の接続文字列がそのような値として考えられます。 これらの値は、独立した[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納できるので、値の変更も容易に行うことができます。
 
 * ロジック アプリのリソース定義内、かつワークフロー定義の外側にある `parameters` セクションでは、ワークフロー定義のパラメーターの値を指定します。 このセクションでは、テンプレートのパラメーターを参照するテンプレート式を使用して、それらの値を割り当てることができます。 これらの式は、デプロイ時に評価されます。
 
@@ -894,7 +894,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | 使用する認証の種類。 [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) で証明書を管理できます。 <p></p>**注**:カスタム コネクタでは、受信と送信両方の呼び出しに対して証明書ベースの認証はサポートされていません。 |
+| **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | 使用する認証の種類。 [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) で証明書を管理できます。 <p></p>**注** :カスタム コネクタでは、受信と送信両方の呼び出しに対して証明書ベースの認証はサポートされていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **パスワード** | `password`| いいえ | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
 |||||
@@ -969,7 +969,7 @@ Request トリガーでは、[Azure Active Directory Open Authentication](../act
 
 ### <a name="raw-authentication"></a>Raw 認証
 
-**[未加工]** オプションが使用可能な場合は、[OAuth 2.0 プロトコル](https://oauth.net/2/)に従っていない[認証スキーム](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml)を使用する必要があるときに、この認証の種類を使用できます。 この種類では、送信要求で送信する Authorization ヘッダーの値を手動で作成し、トリガーまたはアクションでそのヘッダー値を指定します。
+**[未加工]** オプションが使用可能な場合は、 [OAuth 2.0 プロトコル](https://oauth.net/2/)に従っていない [認証スキーム](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml)を使用する必要があるときに、この認証の種類を使用できます。 この種類では、送信要求で送信する Authorization ヘッダーの値を手動で作成し、トリガーまたはアクションでそのヘッダー値を指定します。
 
 たとえば、[OAuth 1.0 プロトコル](https://tools.ietf.org/html/rfc5849)に従う HTTPS 要求のヘッダーの例を次に示します。
 
@@ -1012,7 +1012,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 ### <a name="managed-identity-authentication"></a>マネージド ID の認証
 
-[特定のトリガーまたはアクション](#add-authentication-outbound)で [[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての*単一*の ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+[特定のトリガーまたはアクション](#add-authentication-outbound)で [[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての *単一* の ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
 1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 
@@ -1023,8 +1023,8 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
    | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **認証** | `type` | はい | **Managed Identity** <br>or <br>`ManagedServiceIdentity` | 使用する認証の種類 |
-   | **Managed Identity** | `identity` | はい | * **システム割り当てマネージド ID**。 <br>or <br>`SystemAssigned` <p><p>* <*user-assigned-identity-name*> | 使用するマネージド ID |
-   | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用の[アクセス トークン](../active-directory/develop/access-tokens.md)がすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**: **[対象ユーザー]** プロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と*正確に一致する*ようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
+   | **Managed Identity** | `identity` | はい | * **システム割り当てマネージド ID** 。 <br>or <br>`SystemAssigned` <p><p>* < *user-assigned-identity-name*> | 使用するマネージド ID |
+   | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用の[アクセス トークン](../active-directory/develop/access-tokens.md)がすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注** : **[対象ユーザー]** プロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要** :このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と *正確に一致する* ようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
    |||||
 
    たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ManagedServiceIdentity` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -1059,13 +1059,13 @@ Azure Logic Apps でコネクタを使用して特定のリソースに接続す
 
 * 独自のコードを実行したり、XML 変換を実行したりするには、それぞれ[インライン コード機能](../logic-apps/logic-apps-add-run-inline-code.md)を使用したり、[マップとして使用するアセンブリ](../logic-apps/logic-apps-enterprise-integration-maps.md)を提供したりするのではなく、[Azure 関数を作成して呼び出します](../logic-apps/logic-apps-azure-functions.md)。 また、分離要件に準拠するように、関数アプリのホスティング環境を設定します。
 
-  たとえば、影響レベル 5 の要件を満たすには、[**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/functions-scale.md#app-service-plan)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリに対するコンピューティング分離の上でのネットワークの分離と、最大のスケールアウト機能が提供されます。 詳細については、[Azure Government 影響レベル 5 分離ガイダンス - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions) に関するページを参照してください。
+  たとえば、影響レベル 5 の要件を満たすには、 [**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/functions-scale.md#app-service-plan)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリに対するコンピューティング分離の上でのネットワークの分離と、最大のスケールアウト機能が提供されます。 詳細については、[Azure Government 影響レベル 5 分離ガイダンス - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions) に関するページを参照してください。
 
   詳細については、以下のトピックを参照してください。<p>
 
   * [Azure App Service プラン](../app-service/overview-hosting-plans.md)
   * [Azure Functions のネットワーク オプション](../azure-functions/functions-networking-options.md)
-  * [仮想マシン用 Azure 専用ホスト](../virtual-machines/windows/dedicated-hosts.md)
+  * [仮想マシン用 Azure 専用ホスト](../virtual-machines/dedicated-hosts.md)
   * [Azure における仮想マシンの分離性](../virtual-machines/isolation.md)
   * [仮想ネットワークに専用の Azure サービスをデプロイする](../virtual-network/virtual-network-for-azure-services.md)
 

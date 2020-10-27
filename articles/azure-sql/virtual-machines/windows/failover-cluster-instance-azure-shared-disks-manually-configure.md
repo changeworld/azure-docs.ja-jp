@@ -1,5 +1,5 @@
 ---
-title: Azure 共有ディスクを使用して FCI を作成する (プレビュー)
+title: Azure 共有ディスクを使用して FCI を作成する
 description: Azure 共有ディスクを使用して、Azure Virtual Machines 上の SQL Server でフェールオーバー クラスター インスタンス (FCI) を作成します。
 services: virtual-machines
 documentationCenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6e32f183709aca8a78f8448f2d6e6b63a77f2133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272652"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168241"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "91272652"
 - Azure サブスクリプション。 [無料](https://azure.microsoft.com/free/)で開始しましょう。 
 - [2 台以上の Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。 [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md)と[近接通信配置グループ](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG) の両方がサポートされています。 PPG を使用する場合、すべてのノードが同じグループ内にある必要があります。
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
-- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
+- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps)。 
 
 
 ## <a name="add-azure-shared-disk"></a>Azure 共有ディスクを追加する
-共有ディスク機能を有効にしてマネージド Premium SSD ディスクをデプロイします。 `maxShares` に設定し、**クラスター ノードの数に合わせる**と、全 FCI ノード間でディスクが共有可能になります。 
+共有ディスク機能を有効にしてマネージド Premium SSD ディスクをデプロイします。 `maxShares` に設定し、 **クラスター ノードの数に合わせる** と、全 FCI ノード間でディスクが共有可能になります。 
 
 次の手順に従って、Azure 共有ディスクを追加します。 
 
@@ -157,7 +157,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
 1. **[テスト オプション]** で、 **[選択するテストのみを実行する]** を選択します。 
 1. **[次へ]** を選択します。
-1. **[テストの選択]** の下で、 **[記憶域]** を*除く*すべてのテストを選択します
+1. **[テストの選択]** の下で、 **[記憶域]** を *除く* すべてのテストを選択します
 
 ## <a name="test-cluster-failover"></a>クラスターのフェールオーバーをテストする
 
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を作成するか、または SQL Server 2019 CU2+ と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューできます。 
+現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)を作成するか、または SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
 
 ## <a name="limitations"></a>制限事項
 
@@ -221,12 +221,13 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="next-steps"></a>次のステップ
 
-[仮想ネットワーク名と Azure ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](hadr-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
+[仮想ネットワーク名と Azure ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
+
 
 Azure 共有ディスクがお客様に適した FCI 記憶域ソリューションでない場合は、代わりに [Premium ファイル共有](failover-cluster-instance-premium-file-share-manually-configure.md)または[記憶域スペース ダイレクト](failover-cluster-instance-storage-spaces-direct-manually-configure.md)を使用して FCI を作成することを検討してください。 
 
 詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。
 
-詳細情報 
+詳細については、次を参照してください。 
 - [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288921"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279078"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Synapse SQL でストアド プロシージャを使用する
 
-ソリューション開発のための Synapse SQL プール (データ ウェアハウス) でのストアド プロシージャの実装に関するヒント。
+ソリューション開発のための Synapse SQL プールでのストアド プロシージャの実装に関するヒント。
 
 ## <a name="what-to-expect"></a>ウィザードの内容
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-Synapse SQL では、INSERT ステートメントでストアド プロシージャの結果セットを使用することはできません。 使用できる別の方法があります。 例については、[一時テーブル](develop-tables-temporary.md)の記事を参照してください。
+Synapse SQL では、INSERT ステートメントでストアド プロシージャの結果セットを使用することはできません。 使用できる別の方法があります。 例については、プロビジョニングされた Synapse SQL プールの[一時テーブル](develop-tables-temporary.md)に関する記事を参照してください。
 
 ## <a name="limitations"></a>制限事項
 

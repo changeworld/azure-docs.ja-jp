@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804199"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276095"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB での改ページ
 
@@ -21,7 +21,7 @@ Azure Cosmos DB では、クエリ結果が複数のページにわたる場合�
 
 クエリ結果が複数のページに分割される場合があります。 各ページの結果は、別個のクエリ実行によって生成されます。 クエリ結果を 1 回の実行で返すことができない場合、Azure Cosmos DB では自動的に結果が複数のページに分割されます。
 
-`MaxItemCount` を設定すると、1 回のクエリで返される項目の最大数を指定できます。 `MaxItemCount` を要求ごとに指定することで、クエリ エンジンからその数以下の項目が返されることが保証されます。 クエリ実行ごとの結果の数を制限しない場合は、`MaxItemCount` を `-1` に設定できます。
+`MaxItemCount` を設定すると、1 回のクエリで返される項目の最大数を指定できます。 要求ごとに `MaxItemCount` を指定して、その数以下の項目を返すようにクエリ エンジンに指示します。 クエリ実行ごとの結果の数を制限しない場合は、`MaxItemCount` を `-1` に設定できます。
 
 また、他の理由でクエリ エンジンによってクエリ結果を複数ページに分割することが必要になる場合もあります。 これには以下が含まれます。
 

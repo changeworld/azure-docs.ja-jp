@@ -1,18 +1,18 @@
 ---
-title: Azure のロールとアクセス許可
+title: レジストリのロールとアクセス許可
 description: Azure のロールベースのアクセス制御 (Azure RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661386"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207956"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
-Azure Container Registry サービスは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する [組み込みの Azure ロール](../role-based-access-control/built-in-roles.md) のセットをサポートします。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) を使用して、レジストリを操作する必要があるユーザー、サービス プリンシパル、またはその他の ID に特定のアクセス許可を割り当てます。 レジストリに対するさまざまな操作権限を細かく設定した[カスタム ロール](#custom-roles)を定義することもできます。
+Azure Container Registry サービスは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する [組み込みの Azure ロール](../role-based-access-control/built-in-roles.md) のセットをサポートします。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) を使用して、たとえばコンテナー イメージをプッシュまたはプルするために、レジストリを操作する必要があるユーザー、サービス プリンシパル、またはその他の ID に特定のアクセス許可を割り当てます。 レジストリに対するさまざまな操作権限を細かく設定した[カスタム ロール](#custom-roles)を定義することもできます。
 
 | ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager) | [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [イメージ データを削除する](#delete-image-data) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -24,21 +24,27 @@ Azure Container Registry サービスは、Azure コンテナー レジストリ
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
+## <a name="assign-roles"></a>ロールを割り当てる
+
+既存のユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールの割り当てを追加するための手順の概要については、「[ロールの割り当てを追加する手順](../role-based-access-control/role-assignments-steps.md)」を参照してください。 Azure portal、Azure CLI、またはその他の Azure ツールを使用できます。
+
+サービス プリンシパルを作成する場合は、コンテナー レジストリなどの Azure リソースへのアクセスとアクセス許可も構成します。 Azure CLI を使用したスクリプトの例については、「[ サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md#create-a-service-principal)」を参照してください。
+
 ## <a name="differentiate-users-and-services"></a>ユーザーとサービスを区別する
 
 アクセス許可が適用されるときのベスト プラクティスは常に、タスクを実行できる範囲で最も限定的なアクセス許可のセットを人またはサービスに提供することです。 以下のアクセス許可セットでは、人およびヘッドレス サービスで使用できる機能のセットが示されています。
 
 ### <a name="cicd-solutions"></a>CI/CD ソリューション
 
-CI/CD ソリューションから `docker build` コマンドを自動化するときは、`docker push` の機能が必要です。 これらのヘッドレス サービス シナリオでは、**AcrPush** ロールを割り当てることをお勧めします。 このロールでは、さらに範囲の広い**共同作成者**ロールとは異なり、アカウントによる他のレジストリ操作の実行または Azure Resource Manager へのアクセスは禁止されます。
+CI/CD ソリューションから `docker build` コマンドを自動化するときは、`docker push` の機能が必要です。 これらのヘッドレス サービス シナリオでは、 **AcrPush** ロールを割り当てることをお勧めします。 このロールでは、さらに範囲の広い **共同作成者** ロールとは異なり、アカウントによる他のレジストリ操作の実行または Azure Resource Manager へのアクセスは禁止されます。
 
 ### <a name="container-host-nodes"></a>コンテナー ホスト ノード
 
-同様に、コンテナーを実行するノードでは、**AcrPull** ロールは必要ですが、**閲覧者**の機能は必要ないはずです。
+同様に、コンテナーを実行するノードでは、 **AcrPull** ロールは必要ですが、 **閲覧者** の機能は必要ないはずです。
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 拡張機能
 
-Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者**または**共同作成者**ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
+Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、 **閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
 
 ## <a name="access-resource-manager"></a>Resource Manager へのアクセス
 

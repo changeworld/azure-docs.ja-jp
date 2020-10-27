@@ -4,12 +4,12 @@ description: Azure Monitor for containers を使用して、自分のサブス�
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994503"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165402"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -28,7 +28,7 @@ ms.locfileid: "91994503"
 
 ## <a name="enable-using-azure-cli"></a>Azure CLI を使用して有効にする
 
-Azure CLI を使用して AKS クラスターの監視を有効にするには、次の手順のようにします。 この例では、ワークスペースを事前に作成したり、既存のワークスペースを指定したりする必要はありません。 このコマンドでは、リージョンにワークスペースがまだ存在しない場合、AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースが作成されるので、プロセスが簡単になります。  作成される既定のワークスペースは、*DefaultWorkspace-\<GUID>-\<Region>* のような形式になります。
+Azure CLI を使用して AKS クラスターの監視を有効にするには、次の手順のようにします。 この例では、ワークスペースを事前に作成したり、既存のワークスペースを指定したりする必要はありません。 このコマンドでは、リージョンにワークスペースがまだ存在しない場合、AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースが作成されるので、プロセスが簡単になります。  作成される既定のワークスペースは、 *DefaultWorkspace-\<GUID>-\<Region>* のような形式になります。
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -129,15 +129,13 @@ Azure Portal でいずれかの AKS クラスターから直接監視を有効�
 
 1. Azure Portal で **[すべてのサービス]** を選択します。
 
-2. リソースの一覧で、「**Containers**」と入力を開始します。  入力内容に基づいて、一覧がフィルター処理されます。
+2. リソースの一覧で、「 **Containers** 」と入力を開始します。  入力内容に基づいて、一覧がフィルター処理されます。
 
 3. **[Kubernetes サービス]** を選択します。
+    
+4. Kubernetes サービスの一覧で、サービスを選択します。
 
-    ![Kubernetes サービスのリンク](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. コンテナーの一覧で、コンテナーを選択します。
-
-5. コンテナーの概要ページで、 **[コンテナーの監視]** を選択します。
+5. Kubernetes サービスの概要ページで、 **[監視] - [分析情報]** を選択します。
 
 6. そのクラスターと同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、 **[コンテナーの Azure Monitor へのオンボード]** ページのドロップダウン リストでそれを選択します。
     このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。
@@ -257,9 +255,9 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     }
     ```
 
-4. AKS クラスターの **[AKS Overview]\(AKS の概要\)** ページの値を使用して、**aksResourceId** と **aksResourceLocation** の値を編集します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
+4. AKS クラスターの **[AKS Overview]\(AKS の概要\)** ページの値を使用して、 **aksResourceId** と **aksResourceLocation** の値を編集します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
 
-    AKS クラスターに指定されている既存のタグ値に一致するように、**aksResourceTagValues** の値を編集します。
+    AKS クラスターに指定されている既存のタグ値に一致するように、 **aksResourceTagValues** の値を編集します。
 
 5. このファイルを **existingClusterParam.json** としてローカル フォルダーに保存します。
 

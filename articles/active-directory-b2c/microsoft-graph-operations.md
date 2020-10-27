@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d898d3825fa40cbfd13337067c24cf14f9a544
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78184250"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102019"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C に使用可能な Microsoft Graph 操作
 
@@ -34,6 +34,15 @@ ms.locfileid: "78184250"
 
 Microsoft Graph API での Azure AD B2C ユーザー アカウントの管理の詳細については、「[Microsoft Graph での Azure AD B2C ユーザー アカウントの管理](manage-user-accounts-graph-api.md)」を参照してください。
 
+## <a name="user-phone-number-management"></a>ユーザーの電話番号の管理
+
+- [追加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
+- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
+- [アップデート](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
+- [削除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+
+Microsoft Graph API を使用したユーザーのサインイン電話番号の管理の詳細については、[B2C 認証方法](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)に関する記事を参照してください。
+
 ## <a name="identity-providers-user-flow"></a>ID プロバイダー（ユーザーフロー）
 
 Azure AD B2C テナントのユーザーフローで使用できる ID プロバイダーを管理します。
@@ -49,7 +58,7 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 サインアップ、サインイン、パスワードのリセット、プロファイルの更新のための事前構築されたポリシーを構成します。
 
 - [ユーザー フローの一覧表示](https://docs.microsoft.com/graph/api/identityuserflow-list)
-- [ユーザー フローの作成](https://docs.microsoft.com/graph/api/identityuserflow-post-userflows)
+- [ユーザー フローを作成する](https://docs.microsoft.com/graph/api/identityuserflow-post-userflows)
 - [ユーザー フローの取得](https://docs.microsoft.com/graph/api/identityuserflow-get)
 - [ユーザー フローの削除](https://docs.microsoft.com/graph/api/identityuserflow-delete)
 
@@ -65,9 +74,9 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 
 ## <a name="policy-keys"></a>ポリシー キー
 
-Identity Experience Framework では、カスタムポリシーで参照されているシークレットを格納して、コンポーネント間の信頼を確立します。 これらのシークレットは、対称キー/値または非対称キー/値にすることができます。 Azure portal では、これらのエンティティは**ポリシーキー**として表示されます。
+Identity Experience Framework では、カスタムポリシーで参照されているシークレットを格納して、コンポーネント間の信頼を確立します。 これらのシークレットは、対称キー/値または非対称キー/値にすることができます。 Azure portal では、これらのエンティティは **ポリシーキー** として表示されます。
 
-Microsoft Graph API のポリシー キーの最上位レベルのリソースは、[Trusted Framework Keyset](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset)です。 各 **キーセット** には、少なくとも1つの **キー**が含まれています。 キーを作成するには、最初に空のキーセットを作成してから、キーセットにキーを生成します。 手動シークレットを作成したり、証明書をアップロードしたり、または PKCS12 キーを使用したりすることができます。 キーには、生成されたシークレット、定義する文字列 (Facebook アプリケーション シークレットなど)、またはアップロードする証明書を指定できます。 キーセットに複数のキーがある場合、1つのキーのみがアクティブになります。
+Microsoft Graph API のポリシー キーの最上位レベルのリソースは、[Trusted Framework Keyset](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset)です。 各 **キーセット** には、少なくとも1つの **キー** が含まれています。 キーを作成するには、最初に空のキーセットを作成してから、キーセットにキーを生成します。 手動シークレットを作成したり、証明書をアップロードしたり、または PKCS12 キーを使用したりすることができます。 キーには、生成されたシークレット、定義する文字列 (Facebook アプリケーション シークレットなど)、またはアップロードする証明書を指定できます。 キーセットに複数のキーがある場合、1つのキーのみがアクティブになります。
 
 ### <a name="trust-framework-policy-keyset"></a>信頼フレームワーク ポリシー キーセット
 
@@ -85,7 +94,7 @@ Microsoft Graph API のポリシー キーの最上位レベルのリソース�
 - [X.509 証明書のアップロード](https://docs.microsoft.com/graph/api/trustframeworkkeyset-uploadcertificate)
 - [PKCS12 形式の証明書のアップロード](https://docs.microsoft.com/graph/api/trustframeworkkeyset-uploadpkcs12)
 
-## <a name="applications"></a>[アプリケーション]
+## <a name="applications"></a>アプリケーション
 
 - [List applications](https://docs.microsoft.com/graph/api/application-list)
 - [アプリケーションの作成](https://docs.microsoft.com/graph/api/resources/application)

@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076676"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165487"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 
@@ -34,14 +34,14 @@ ms.locfileid: "92076676"
 
 * アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
-* 自動スケールは、すべてのロールが**準備完了**状態の場合にのみ発生します。  
+* 自動スケールは、すべてのロールが **準備完了** 状態の場合にのみ発生します。  
 
 
 ## <a name="where-scale-is-located"></a>スケールの設定
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
 
 1. クラウド サービス ブレードの **[ロールとインスタンス]** タイルで、クラウド サービスの名前を選択します。   
-   **重要**:ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
+   **重要** :ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
 
     ![[ロールとインスタンス] タイルのスクリーンショット。WorkerRoleWithSBQueue 1 オプションが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **[スケール]** タイルを選択します。
@@ -49,11 +49,11 @@ ms.locfileid: "92076676"
     ![[操作] ページのスクリーンショット。[スケール] タイルが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自動スケール
-ロールのスケール設定を構成する際は、**手動**または**自動**のいずれかのモードを使用できます。 手動モードでは想定通りにスケールが行われるので、インスタンスの絶対数を設定します。 ただし、自動モードでは、スケールの方法とスケールの程度を制御するルールを設定できます。
+ロールのスケール設定を構成する際は、 **手動** または **自動** のいずれかのモードを使用できます。 手動モードでは想定通りにスケールが行われるので、インスタンスの絶対数を設定します。 ただし、自動モードでは、スケールの方法とスケールの程度を制御するルールを設定できます。
 
 **[スケールの基準]** オプションを **[スケジュールおよびパフォーマンス ルール]** に設定します。
 
-![プロファイルとルールを使用したクラウド サービスのスケール設定](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![[スケジュールおよびパフォーマンス ルール] オプションを示すスクリーンショット。](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. 既存のプロファイルです。
 2. 親プロファイルのルールを追加します。

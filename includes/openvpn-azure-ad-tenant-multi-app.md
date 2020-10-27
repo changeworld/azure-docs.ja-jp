@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/21/2020
+ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3d1c34fe0fc045e829c2ea9166664f06fd3127
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606762"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116753"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "90606762"
 
 ## <a name="2-create-tenant-users"></a><a name="users"></a>2.テナント ユーザーを作成する
 
-この手順では、2 つの Azure AD テナント ユーザーを作成します。全体管理者アカウントを 1 つと、マスター ユーザー アカウントを 1 つです。 マスター ユーザー アカウントは、マスター埋め込みアカウント (サービス アカウント) として使用されます。 Azure AD テナント ユーザー アカウントを作成する際には、作成するユーザーの種類に応じてディレクトリ ロールを調整します。 [この記事](../articles/active-directory/fundamentals/add-users-azure-active-directory.md)の手順を使用して、Azure AD テナントに対して少なくとも 2 人のユーザーを作成します。 作成するアカウントの種類 (下記) に応じて、**ディレクトリ ロール**を変更してください。
+この手順では、2 つの Azure AD テナント ユーザーを作成します。全体管理者アカウントを 1 つと、マスター ユーザー アカウントを 1 つです。 マスター ユーザー アカウントは、マスター埋め込みアカウント (サービス アカウント) として使用されます。 Azure AD テナント ユーザー アカウントを作成する際には、作成するユーザーの種類に応じてディレクトリ ロールを調整します。 [この記事](../articles/active-directory/fundamentals/add-users-azure-active-directory.md)の手順を使用して、Azure AD テナントに対して少なくとも 2 人のユーザーを作成します。 作成するアカウントの種類 (下記) に応じて、 **ディレクトリ ロール** を変更してください。
 
 * 全体管理者
 * User
@@ -43,7 +43,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
 2. ディレクトリ ID をコピーします。
 
-3. **全体管理者**ロールを割り当てられたユーザーとして、Azure portal にサインインします。
+3. **全体管理者** ロールを割り当てられたユーザーとして、Azure portal にサインインします。
 
 4. 次に、管理者の同意を与えます。 デプロイの場所に関連する URL をコピーし、ブラウザーのアドレス バーに貼り付けます。
 
@@ -71,7 +71,11 @@ Azure AD テナントで VPN クライアントを登録します。
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. メッセージが表示されたら、**全体管理者**アカウントを選択します。
+> [!NOTE]
+> Azure AD テナントにネイティブではないグローバル管理者アカウントを使用して同意を与える場合は、URL の "common" をAzure AD ディレクトリ ID に置き換えてください。 また、他の場合でも、"common" をディレクトリ ID に置き換える必要があることがあります。
+>
+
+5. メッセージが表示されたら、 **全体管理者** アカウントを選択します。
 
     ![ディレクトリ ID](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
 
@@ -79,7 +83,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
     ![[Permissions requested Accept for your organization] (アクセス許可は組織の同意を要求しています) というメッセージと、要求についての情報を示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
-7. Azure AD の **[エンタープライズ アプリケーション]** に、**Azure VPN** が表示されます。
+7. Azure AD の **[エンタープライズ アプリケーション]** に、 **Azure VPN** が表示されます。
 
      ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-vpn.png)
 
@@ -103,16 +107,16 @@ Azure AD テナントで VPN クライアントを登録します。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
-6. 必須フィールドに入力し、**[状態]** を **[有効]** にします。 **[スコープの追加]** をクリックします。
+6. 必須フィールドに入力し、 **[状態]** を **[有効]** にします。 **[スコープの追加]** をクリックします。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 
 7. **[API の公開]** をクリックし、 **[+ クライアント アプリケーションの追加]** をクリックします。  **[クライアント ID]** には、クラウドに基づいて次の値を入力します。
 
-    - Azure **Public** の場合、「**41b23e61-6c1e-4545-b367-cd054e0ed4b4**」と入力します
-    - Azure **Government** の場合、「**51bb15d4-3a4f-4ebf-9dca-40096fe32426**」と入力します
-    - Azure **Germany** の場合、「**538ee9e6-310a-468d-afef-ea97365856a9**」と入力します
-    - Azure **China 21Vianet** の場合、「**49f817b6-84ae-4cc0-928c-73f27289b3aa**」と入力します
+    - Azure **Public** の場合、「 **41b23e61-6c1e-4545-b367-cd054e0ed4b4** 」と入力します
+    - Azure **Government** の場合、「 **51bb15d4-3a4f-4ebf-9dca-40096fe32426** 」と入力します
+    - Azure **Germany** の場合、「 **538ee9e6-310a-468d-afef-ea97365856a9** 」と入力します
+    - Azure **China 21Vianet** の場合、「 **49f817b6-84ae-4cc0-928c-73f27289b3aa** 」と入力します
 
 8. **[アプリケーションの追加]** をクリックします。
 

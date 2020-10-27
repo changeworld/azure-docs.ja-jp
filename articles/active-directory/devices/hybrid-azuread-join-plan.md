@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269575"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097305"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -56,7 +56,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 - Windows 10
 - Windows Server 2016
-  - **注**:Azure 国内クラウドのお客様にはバージョン 1809 が必要です
+  - **注** :Azure 国内クラウドのお客様にはバージョン 1803 が必要です
 - Windows Server 2019
 
 Windows デスクトップ オペレーティング システムを実行しているデバイスの場合、サポートされているバージョンについてはこの記事「[Windows 10 リリース情報](/windows/release-information/)」を参照してください。 ベスト プラクティスとして、Microsoft は Windows 10 の最新バージョンにアップグレードすることをお勧めします。

@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4ebc5e44f491b5ff5950a13771fe3d7179b6fc9f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078155"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143092"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -21,7 +21,8 @@ ms.locfileid: "92078155"
 
 プライベート クラスターは、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンで利用できます。
 
-Private Link のサポートがないため、US Gov Texas は現在サポートされていません。
+> [!NOTE]
+> Azure Government サイトはサポートされていますが、Private Link のサポートがないため、US Gov テキサスは現在サポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +43,7 @@ az group create -l westus -n MyResourceGroup
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-*--enable-private-cluster*は、プライベート クラスターに必須のフラグです 
+*--enable-private-cluster* は、プライベート クラスターに必須のフラグです 
 
 ### <a name="advanced-networking"></a>[高度] ネットワーク  
 
@@ -58,7 +59,7 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-*--enable-private-cluster*は、プライベート クラスターに必須のフラグです 
+*--enable-private-cluster* は、プライベート クラスターに必須のフラグです 
 
 > [!NOTE]
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。

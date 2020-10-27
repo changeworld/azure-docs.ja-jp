@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273315"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101785"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル: Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -67,21 +67,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce Sandbox アカウント名を入力します。
+    a. **[管理ユーザー名]** ボックスに、Salesforce.com で **システム管理者** プロファイルが割り当てられている Salesforce Sandbox アカウント名を入力します。
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
 1. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-     ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
+     ![選択された [設定] リンクを示すスクリーンショット。](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 1. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
+    ![[自分の個人情報] の [個人のセキュリティ トークンのリセット] が選択された状態を示すスクリーンショット。](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
 
 1. **[セキュリティ トークンのリセット]** ページで、 **[セキュリティ トークンのリセット]** ボタンをクリックします。
 
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
+    ![[セキュリティ トークンのリセット] の説明文とオプションが表示された、[セキュリティ トークンのリセット] ページのスクリーンショット](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
 
 1. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce Sandbox.com からの電子メールを探します。
 

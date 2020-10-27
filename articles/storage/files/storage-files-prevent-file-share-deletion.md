@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50dbca7e32548380c6dbf338260b98ce59cda715
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527814"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122417"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure ファイル共有の誤削除を防ぐ
 
@@ -37,7 +37,7 @@ Azure ファイル共有の論理的な削除 (プレビュー) は、Azure File
 
 ### <a name="enabling-or-disabling-soft-delete"></a>論理的な削除の有効化または無効化
 
-ファイル共有の論理的な削除はストレージ アカウント レベルで有効です。このため、論理的な削除の設定は、ストレージ アカウント内のすべてのファイル共有に適用されます。 論理的な削除は、いつでも有効または無効にすることができます。 新しいストレージ アカウントを作成すると、ファイル共有の論理的な削除は既定で無効になります。 既存のストレージ アカウントについても、論理的な削除は既定で無効に設定されます。 Azure ファイル共有に対して [Azure ファイル共有のバックアップ](../../backup/azure-file-share-backup-overview.md)を構成してある場合、Azure ファイル共有の論理的な削除は、その共有のストレージ アカウントで自動的に有効になります。
+ファイル共有の論理的な削除はストレージ アカウント レベルで有効です。このため、論理的な削除の設定は、ストレージ アカウント内のすべてのファイル共有に適用されます。 論理的な削除は、いつでも有効または無効にすることができます。 この機能がパブリック プレビューの間に新しいストレージ アカウントを作成すると、ファイル共有の論理的な削除は既定で無効になります。 論理的な削除が一般公開されると、既定で有効になります。 既存のストレージ アカウントでは、論理的な削除は既定で無効のままになります。 Azure ファイル共有に対して [Azure ファイル共有のバックアップ](../../backup/azure-file-share-backup-overview.md)を構成してある場合、Azure ファイル共有の論理的な削除は、その共有のストレージ アカウントで自動的に有効になります。
 
 ファイル共有の論理的な削除が有効な状態で、一部のファイル共有を削除してから論理的な削除を無効にしても、その期間に共有が保存されていれば、それらのファイル共有に引き続きアクセスして回復できます。 論理的な削除を有効にするときは、保持期間も構成する必要があります。
 

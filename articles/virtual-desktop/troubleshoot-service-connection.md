@@ -3,15 +3,15 @@ title: Windows Virtual Desktop サービスの接続に関するトラブルシ�
 description: Windows Virtual Desktop テナント環境でサービス接続を設定するときの問題を解決する方法です。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089906"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108951"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
 
@@ -45,6 +45,13 @@ Windows Virtual Desktop クライアントの接続に関する問題を解決�
 このエラーは通常、ユーザーがサブスクリプションを 1 つの Azure AD テナントから別のテナントに移動した後に表示されます。 その結果、サービスは以前の Azure AD テナントに関連付けられたままになるため、ユーザーの割り当てを追跡できなくなります。
 
 これを解決するために必要なことは、ユーザーをアプリ グループに再割り当てすることだけです。
+
+これは、CSP プロバイダーによってサブスクリプションが作成されて顧客に譲渡された場合にも、発生する可能性があります。 これを解決するには、リソース プロバイダーを再登録します。
+
+1. Azure portal にサインインします。
+2. **[サブスクリプション]** に移動し、ご使用のサブスクリプションを選択します。
+3. ページの左側にあるメニューで、 **[リソース プロバイダー]** を選択します。
+4. **[Microsoft.DesktopVirtualization]** を見つけて選択し、 **[再登録]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

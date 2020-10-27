@@ -4,23 +4,23 @@ description: ダウンストリーム デバイスからの情報を処理でき
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/12/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048408"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147841"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
-この記事では、他のデバイスが IoT Hub と通信するための透過的なゲートウェイとして機能するように IoT Edge デバイスを構成するための詳細な手順を提供します。 この記事では、*IoT Edge ゲートウェイ* という用語は、透過的ゲートウェイとして構成された IoT Edge デバイスを指します。 詳細は、[「IoT Edge デバイスをゲートウェイとして使用する方法」](./iot-edge-as-gateway.md)を参照してください。
+この記事では、他のデバイスが IoT Hub と通信するための透過的なゲートウェイとして機能するように IoT Edge デバイスを構成するための詳細な手順を提供します。 この記事では、 *IoT Edge ゲートウェイ* という用語は、透過的ゲートウェイとして構成された IoT Edge デバイスを指します。 詳細は、[「IoT Edge デバイスをゲートウェイとして使用する方法」](./iot-edge-as-gateway.md)を参照してください。
 
 >[!NOTE]
 >現時点では:
@@ -31,8 +31,8 @@ ms.locfileid: "92048408"
 透過的なゲートウェイ接続を正常にセットアップするための 3 つの一般的な手順があります。 この記事では、最初の手順について説明します。
 
 1. **ゲートウェイ デバイスをサーバーとして構成し、ダウンストリーム デバイスが安全に接続できるようにします。ダウンストリーム デバイスからメッセージを受信するようにゲートウェイを設定し、適切な宛先にルーティングします。**
-2. ダウンストリーム デバイスのデバイス ID を作成して、IoT Hub で認証できるようにします。 ゲートウェイ デバイスを介してメッセージを送信するようにダウンストリーム デバイスを構成します。 詳細については、「[Azure IoT Hub に対するダウンストリーム デバイスの認証を行う](how-to-authenticate-downstream-device.md)」を参照してください。
-3. ダウンストリーム デバイスをゲートウェイ デバイスに接続し、メッセージの送信を開始します。 詳細については、「[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)」のページを参照してください。
+2. ダウンストリーム デバイスのデバイス ID を作成して、IoT Hub で認証できるようにします。 ゲートウェイ デバイスを介してメッセージを送信するようにダウンストリーム デバイスを構成します。 その手順については、「[Azure IoT Hub に対するダウンストリーム デバイスの認証を行う](how-to-authenticate-downstream-device.md)」を参照してください。
+3. ダウンストリーム デバイスをゲートウェイ デバイスに接続し、メッセージの送信を開始します。 その手順については、「[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)」を参照してください。
 
 デバイスがゲートウェイとして機能するためには、そのダウンストリーム デバイスに安全に接続する必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。 妥当なセキュリティを維持するために、ダウン ストリーム デバイスはゲートウェイ デバイスの ID を確認する必要があります。 この ID 検査により、お使いのデバイスが悪意のある可能性のあるゲートウェイに接続することを防止できます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92048408"
 デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、IoT Hub で [X.509 CA セキュリティ](../iot-hub/iot-hub-x509ca-overview.md)を 有効にするために使用するのと同じ証明書のセットアップを前提としています。これには、特定の IoT ハブ (IoT ハブのルート CA) に関連付けられた X.509 CA 証明書、およびこの CA と IoT Edge デバイスの CA によって署名された一連の証明書が使用されます。
 
 >[!NOTE]
->この記事全体で使用されている "*ルート CA 証明書*" という用語は、PKI 証明書チェーンの最上位機関の公開証明書を指し、必ずしもシンジケート化された認証局の証明書ルートではありません。 多くの場合、実際は中間 CA の公開証明書です。
+>この記事全体で使用されている " *ルート CA 証明書* " という用語は、PKI 証明書チェーンの最上位機関の公開証明書を指し、必ずしもシンジケート化された認証局の証明書ルートではありません。 多くの場合、実際は中間 CA の公開証明書です。
 
 次の手順では、証明書を作成し、ゲートウェイ上の適切な場所にインストールするプロセスについて説明します。 任意のマシンを使用して証明書を生成してから、その証明書をお使いの IoT Edge デバイスにコピーできます。
 
@@ -49,13 +49,15 @@ ms.locfileid: "92048408"
 
 IoT Edge がインストールされている Linux または Windows デバイス。
 
+準備ができたデバイスがない場合は、Azure 仮想マシンで作成できます。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](quickstart-linux.md)」の手順に従って IoT Hub を作成し、仮想マシンを作成して、IoT Edge ランタイムを構成します。 
+
 ## <a name="set-up-the-device-ca-certificate"></a>デバイス CA 証明書をセットアップする
 
 すべての IoT Edge ゲートウェイには、デバイス CA 証明書がインストールされている必要があります。 IoT Edge セキュリティ デーモンは、IoT Edge デバイス CA 証明書を使用してワークロード CA 証明書に署名します。この証明書は IoT Edge ハブのサーバー証明書に署名します。 ゲートウェイは、接続の開始時に、ダウンストリーム デバイスにサーバー証明書を提示します。 ダウンストリーム デバイスは、サーバー証明書がルート CA 証明書にロールアップされる証明書チェーンの一部であることを確認します。 このプロセスにより、ダウンストリーム デバイスは、ゲートウェイが信頼できるソースからのものであることを確認できます。 詳細については、[「Azure IoT Edge での証明書の使用方法について理解する」](iot-edge-certs.md)を参照してください。
 
 ![ゲートウェイ証明書の設定](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-ルート CA 証明書とデバイス CA 証明書 (およびその秘密キー) が、IoT Edge ゲートウェイ デバイス上に存在し、IoT Edge の config.yaml ファイルで構成されている必要があります。 この場合の "*ルート CA 証明書*" は、この IoT Edge シナリオに対する最上位の証明機関であることに注意してください。 ゲートウェイ デバイスの CA 証明書とダウンストリーム デバイスの証明書は、同じルート CA 証明書にロールアップする必要があります。
+ルート CA 証明書とデバイス CA 証明書 (およびその秘密キー) が、IoT Edge ゲートウェイ デバイス上に存在し、IoT Edge の config.yaml ファイルで構成されている必要があります。 この場合の " *ルート CA 証明書* " は、この IoT Edge シナリオに対する最上位の証明機関であることに注意してください。 ゲートウェイ デバイスの CA 証明書とダウンストリーム デバイスの証明書は、同じルート CA 証明書にロールアップする必要があります。
 
 >[!TIP]
 >ルート CA 証明書とデバイス CA 証明書を IoT Edge デバイスにインストールするプロセスの詳細については、「[IoT Edge デバイスで証明書を管理する](how-to-manage-device-certificates.md)」も参照してください。
@@ -68,24 +70,27 @@ IoT Edge がインストールされている Linux または Windows デバイ�
 
 運用シナリオでは、独自の証明機関を使用してこれらのファイルを生成する必要があります。 開発シナリオとテスト シナリオでは、デモ証明書を使用できます。
 
-1. デモ証明書を使用している場合は、次の手順を使用してファイルを作成します。
-   1. [ルート CA 証明書を作成します](how-to-create-test-certificates.md#create-root-ca-certificate)。 これらの手順を終えると、ルート CA 証明書ファイルが作成されます。
-      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+1. デモ証明書を使用している場合は、「[IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する](how-to-create-test-certificates.md)」の手順に従ってファイルを作成します。 そのページでは、以下の手順を実行する必要があります。
 
-   2. [IoT Edge デバイス CA 証明書を作成します](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates)。 これらの手順を終えると、デバイス CA 証明書とその秘密キーの 2 つのファイルが作成されます。
+   1. まず、デバイスで証明書を生成するためのスクリプトを設定します。
+   2. ルート CA 証明書を作成します。 それらの手順を終えると、ルート CA 証明書ファイルが作成されます。
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+   3. IoT Edge デバイスの CA 証明書を作成します。 それらの手順を終えると、デバイス CA 証明書とその秘密キーが作成されます。
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`、および
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. これらのファイルを別のコンピューターで作成した場合は、IoT Edge デバイスにコピーします。
+2. 別のマシンで証明書を作成した場合は、それらを IoT Edge デバイスにコピーします。
 
 3. お使いの IoT Edge デバイスで、セキュリティ デーモン構成ファイルを開きます。
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-4. ファイルの **certificates** セクションを見つけて、次のプロパティに対する値として 3 つのファイルへのファイル URI を指定します。
-   * **device_ca_cert**: デバイス CA 証明書
-   * **device_ca_pk**: デバイス CA 秘密キー
-   * **trusted_ca_certs**: ルート CA 証明書
+4. ファイルの **Certificate settings** セクションを見つけます。 **certificates:** で始まる 4 行をコメント解除し、以下のプロパティの値として、3 つのファイルへのファイル URI を指定します。
+   * **device_ca_cert** : デバイス CA 証明書
+   * **device_ca_pk** : デバイス CA 秘密キー
+   * **trusted_ca_certs** : ルート CA 証明書
+
+   **certificates:** の行の前に空白文字がないこと、および他の行が 2 つの空白でインデントされていることを確認します。
 
 5. ファイルを保存して閉じます。
 
@@ -120,12 +125,12 @@ IoT Edge ハブ モジュールをデプロイし、ダウンストリーム デ
 6. **[ルート]** ページで、ダウンストリーム デバイスからのメッセージを処理するためのルートが存在することを確認します。 次に例を示します。
 
    * モジュールやダウンストリーム デバイスからのすべてのメッセージを IoT Hub に送信するルート。
-       * **名前**: `allMessagesToHub`
-       * **値**: `FROM /messages/* INTO $upstream`
+       * **名前** : `allMessagesToHub`
+       * **値** : `FROM /messages/* INTO $upstream`
 
    * すべてのダウンストリーム デバイスからのすべてのメッセージを IoT Hub に送信するルート。
-      * **名前**: `allDownstreamToHub`
-      * **値**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **名前** : `allDownstreamToHub`
+      * **値** : `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
       IoT Edge モジュールからのメッセージとは異なり、ダウンストリーム デバイスからのメッセージにはモジュール ID が関連付けられていないため、このルートは機能します。 ルートの **WHERE** 句を使用すると、そのシステム プロパティが含まれるメッセージをフィルター処理で除外できます。
 
@@ -146,14 +151,6 @@ IoT Hub とのすべての通信は送信接続を介して行われるため、
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
-
-## <a name="enable-extended-offline-operation"></a>拡張オフライン操作の有効化
-
-IoT Edge ランタイムの [1.0.4 リリース](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4)以降、ゲートウェイ デバイスとそれに接続しているダウンストリーム デバイスを、拡張オフライン操作用に構成できるようになりました。
-
-この機能により、ローカル モジュールまたはダウンストリーム デバイスは、必要に応じて IoT Edge デバイスで再認証を行うことができ、IoT Hub から切断されていても、メッセージとメソッドを使用して相互に通信することができます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
-
-拡張オフライン機能を有効にするには、IoT Edge ゲートウェイ デバイスとそれに接続するダウンストリーム デバイスとの間で親子関係を確立します。 それらの手順については、このシリーズの次の記事「[Azure IoT Hub に対するダウンストリーム デバイスの認証を行う](how-to-authenticate-downstream-device.md)」で詳しく説明されています。
 
 ## <a name="next-steps"></a>次のステップ
 

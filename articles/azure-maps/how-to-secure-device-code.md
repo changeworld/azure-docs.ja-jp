@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319760"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090439"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>入力制約付きデバイスを Azure AD と Azure Maps REST API で保護する
 
@@ -25,7 +25,7 @@ ms.locfileid: "91319760"
 ## <a name="create-an-application-registration-in-azure-ad"></a>Azure AD でアプリケーションの登録を作成する
 
 > [!NOTE]
-> * **前提条件:** 「[シナリオ:Web API を呼び出すデスクトップ アプリ](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)」を読んでおくこと
+> * **前提条件:** 「 [シナリオ:Web API を呼び出すデスクトップ アプリ](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)」を読んでおくこと
 > * 次のシナリオでは、トークンを取得するために Web ブラウザーを使用しないデバイス コード フローを使用します。
 
 Azure AD でデバイス ベースのアプリケーションを作成して、Azure AD サインインを有効にします。 このアプリケーションには、Azure Maps REST API へのアクセスが許可されます。
@@ -45,7 +45,7 @@ Azure AD でデバイス ベースのアプリケーションを作成して、A
     > [!div class="mx-imgBorder"]
     > ![アプリケーションの登録をパブリック クライアントとして有効にする](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可を追加する](./media/how-to-manage-authentication/app-permissions.png)
@@ -55,7 +55,7 @@ Azure AD でデバイス ベースのアプリケーションを作成して、A
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可を選択する](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. ユーザーまたはグループの Azure ロール ベースのアクセス制御を構成します。 「[Azure Maps へのロール ベースのアクセスをユーザーに許可する](#grant-role-based-access-for-users-to-azure-maps)」を参照してください。
+6. ユーザーまたはグループの Azure ロールベースのアクセス制御 (Azure RBAC) を構成します。 「[Azure Maps に対するロールベースのアクセスをユーザーに許可する](#grant-role-based-access-for-users-to-azure-maps)」を参照してください。
 
 7. アプリケーションでトークン フローを取得するためのコードを追加します。実装の詳細については、「[デバイス コード フロー](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow)」を参照してください。 トークンを取得する場合、前の手順で選択したスコープ `user_impersonation` を参照します。
 
@@ -110,7 +110,7 @@ Access-Control-Expose-Headers: Location
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

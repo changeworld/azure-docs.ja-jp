@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976013"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171574"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -108,7 +108,7 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
 116 /home/site/wwwroot/app.jar
 ```
 
-JVM の 30 秒間の記録を開始するには、次のコマンドを実行します。 これにより、JVM がプロファイリングされて、*jfr_example.jfr* という名前の JFR ファイルがホーム ディレクトリに作成されます。 (116 は、ご自分の Java アプリの pid に置き換えてください。)
+JVM の 30 秒間の記録を開始するには、次のコマンドを実行します。 これにより、JVM がプロファイリングされて、 *jfr_example.jfr* という名前の JFR ファイルがホーム ディレクトリに作成されます。 (116 は、ご自分の Java アプリの pid に置き換えてください。)
 
 ```shell
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
@@ -541,16 +541,16 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 #### <a name="shared-server-level-resources"></a>共有のサーバーレベル リソース
 
-サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、[スタートアップ スクリプト](faq-app-service-linux.md#built-in-images)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
+サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、 [スタートアップ スクリプト](faq-app-service-linux.md#built-in-images)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
 
 スタートアップ スクリプトによって、server.xml ファイルへの [xsl 変換](https://www.w3schools.com/xml/xsl_intro.asp)が作成され、結果の xml ファイルが `/usr/local/tomcat/conf/server.xml` に出力されます。 スタートアップ スクリプトでは、apk を使用して libxslt をインストールする必要があります。 xsl ファイルとスタートアップ スクリプトは FTP 経由でアップロードできます。 以下にスタートアップ スクリプトの例を示します。
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 xsl ファイルの例は次のとおりです。 この xsl ファイルの例では、新しいコネクタ ノードが Tomcat server.xml に追加されます。
@@ -678,7 +678,7 @@ xsl ファイルの例は次のとおりです。 この xsl ファイルの例�
     ```
 
 1. 任意の FTP クライアントを使用して、JDBC ドライバー、`jboss-cli-commands.cli`、`startup_script.sh`、およびモジュール定義を `/site/deployments/tools/` にアップロードします。
-2. コンテナーの起動時に `startup_script.sh` を実行するようにサイトを構成します。 Azure portal で、 **[構成]**  >  **[一般設定]**  >  **[スタートアップ コマンド]** に移動します。 スタートアップ コマンド フィールドを `/home/site/deployments/tools/startup_script.sh` に設定します。 変更内容を**保存**します。
+2. コンテナーの起動時に `startup_script.sh` を実行するようにサイトを構成します。 Azure portal で、 **[構成]**  >  **[一般設定]**  >  **[スタートアップ コマンド]** に移動します。 スタートアップ コマンド フィールドを `/home/site/deployments/tools/startup_script.sh` に設定します。 変更内容を **保存** します。
 
 データソースが JBoss サーバーに追加されたことを確認するには、webapp に SSH で接続して、`$JBOSS_HOME/bin/jboss-cli.sh --connect` を実行します。 JBoss に接続したら、`/subsystem=datasources:read-resource` を実行してデータ ソースの一覧を表示します。
 
@@ -691,6 +691,10 @@ xsl ファイルの例は次のとおりです。 この xsl ファイルの例�
 App Service を使用すると、ユーザーは JVM のメジャー バージョン (Java 8 や Java 11 など) だけでなく、マイナー バージョン (1.8.0_232 や 11.0.5 など) も選択できます。 新しいマイナー バージョンが利用可能になったらマイナー バージョンを自動的に更新するように選択することもできます。 ほとんどの場合、運用サイトにおいては、固定されたマイナー JVM バージョンを使用する必要があります。 これにより、マイナー バージョンの自動更新の間に、予期しない停止が発生するのを防ぐことができます。
 
 マイナー バージョンの固定を選択した場合は、サイトの JVM のマイナー バージョンを定期的に更新する必要があります。 アプリケーションが新しいマイナー バージョンで確実に実行されるようにするには、ステージング スロットを作成し、ステージング サイトでマイナー バージョンをインクリメントします。 新しいマイナー バージョンでアプリケーションが正しく実行されることを確認したら、ステージング スロットと運用スロットを入れ替えることができます。
+
+## <a name="jboss-eap-hardware-options"></a>JBoss EAP のハードウェア オプション
+
+JBoss EAP は、Premium および Isolated のハードウェア オプションでのみ使用できます。 パブリック プレビュー中に Free、Shared、Basic、または Standard レベルで JBoss EAP サイトを作成したお客様は、予期しない動作を避けるために、Premium または Isolated のハードウェア レベルにスケールアップする必要があります。
 
 ## <a name="java-runtime-statement-of-support"></a>Java ランタイムのサポート ステートメント
 

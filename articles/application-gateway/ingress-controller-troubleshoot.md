@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207168"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168190"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>イングレス コントローラーに関する一般的な質問または問題のトラブルシューティング
 
@@ -85,15 +85,15 @@ AKS クラスターにアプリが正常にデプロイされると、新しい�
 [Cloud Shell](https://shell.azure.com/)`kubectl get pods -o wide` を使用して、ポッドの一覧を取得します。
 "test-agic-app-pod" という名前のポッドが作成されているはずです。 それには IP アドレスが割り当てられます。 このアドレスは、AKS で使用される Application Gateway の VNET 内にある必要があります。
 
-![ポッド](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![一覧に test-agic-app-pod が含まれるポッドの一覧を示す Azure Cloud Shell の Bash ウィンドウのスクリーンショット。](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 サービスの一覧を取得します: `kubectl get services -o wide`。 "test-agic-app-service" という名前のサービスが表示されるはずです。
 
-![ポッド](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![一覧に test-agic-app-pod が含まれるサービスの一覧を示す Azure Cloud Shell の Bash ウィンドウのスクリーンショット。](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 イングレスの一覧を取得します: `kubectl get ingress`。 "test-agic-app-ingress" という名前のイングレス リソースが作成されているはずです。 リソースのホスト名は "test.agic.contoso.com" になります。
 
-![ポッド](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![一覧に test-agic-app-ingress が含まれるイングレスの一覧を示す Azure Cloud Shell の Bash ウィンドウのスクリーンショット。](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
 ポッドの 1 つは AGIC です。 `kubectl get pods` を実行するとポッドの一覧が表示され、その 1 つは "ingress-azure" で始まっています。 `kubectl logs <name-of-ingress-controller-pod>` を使用してそのポッドのすべてのログを取得し、デプロイが成功したことを確認します。 デプロイが成功すると、ログに次の行が追加されます。
 ```
@@ -120,7 +120,7 @@ Application Gateway には、次の構成が適用されます。
 1. `kubectl get ingress` を使用して、Application Gateway のパブリック IP アドレスを取得します
 2. `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` を使用します
 
-![ポッド](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![cURL コマンドによってテスト アプリへの HTTP 接続が正常に確立されたことを示す Azure Cloud Shell の Bash ウィンドウのスクリーンショット。](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 `HTTP/1.1 200 OK` の結果では、Application Gateway と AKS と AGIC のシステムが想定どおりに動作していることが示されます。
 
@@ -132,7 +132,7 @@ Application Gateway イングレス コントローラー (AGIC) では、次の
 
 
 AGIC が想定どおりに機能するには、次のものが必要です。
-  1. AKS には、1 つ以上の正常な**ポッド**が必要です。
+  1. AKS には、1 つ以上の正常な **ポッド** が必要です。
      このことを、[Cloud Shell](https://shell.azure.com/) の `kubectl get pods -o wide --show-labels` で確認します。`apsnetapp` が含まれるポッドがある場合、出力は次のようになります。
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
@@ -141,7 +141,7 @@ AGIC が想定どおりに機能するには、次のものが必要です。
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. 1 つ以上の**サービス**。一致する `selector` ラベルで上のポッドを参照します。
+  2. 1 つ以上の **サービス** 。一致する `selector` ラベルで上のポッドを参照します。
      これを、[Cloud Shell](https://shell.azure.com/) の `kubectl get services -o wide` で確認します
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -150,7 +150,7 @@ AGIC が想定どおりに機能するには、次のものが必要です。
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. `kubernetes.io/ingress.class: azure/application-gateway` で注釈が付けられた**イングレス**。上のサービスを参照します。[Cloud Shell](https://shell.azure.com/) の `kubectl get ingress -o wide --show-labels` でこれを確認します
+  3. `kubernetes.io/ingress.class: azure/application-gateway` で注釈が付けられた **イングレス** 。上のサービスを参照します。 [Cloud Shell](https://shell.azure.com/) の `kubectl get ingress -o wide --show-labels` でこれを確認します
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 

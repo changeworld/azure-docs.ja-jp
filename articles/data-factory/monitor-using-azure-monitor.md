@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6862fa6c9dfa3e8ba26d6f07dc1d9096cf16f092
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563553"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151906"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -35,12 +35,12 @@ Azure Monitor では、ほとんどの Azure サービスに対して、基礎�
 Data Factory では、パイプライン実行データを 45 日間だけ格納します。 データをより長期間保持する場合は、Azure Monitor を使用してください。 Monitor を使用すると、診断ログを複数の異なるターゲットにルーティングして分析できます。
 
 * **[ストレージ アカウント]** : 監査や手動での検査のために、診断ログをストレージ アカウントに保存します。 診断設定を使用して、リテンション期間 (日数) を指定できます。
-* **イベント ハブ**: ログを Azure Event Hubs にストリーミングします。 ログは、パートナー サービス/カスタム分析ソリューション (Power BI など) への入力となります。
-* **Log Analytics**:ログを Log Analytics で分析します。 Data Factory を Azure Monitor と統合することは、次のシナリオで役立ちます。
+* **イベント ハブ** : ログを Azure Event Hubs にストリーミングします。 ログは、パートナー サービス/カスタム分析ソリューション (Power BI など) への入力となります。
+* **Log Analytics** :ログを Log Analytics で分析します。 Data Factory を Azure Monitor と統合することは、次のシナリオで役立ちます。
   * Data Factory から Monitor に発行された充実したメトリックのセットに対して、複雑なクエリを記述する必要がある場合。 Monitor を使用して、これらのクエリにカスタム アラートを作成できます。
   * データ ファクトリ全体を監視する必要があります。 複数のデータ ファクトリから 1 つの Monitor ワークスペースにデータをルーティングできます。
 
-ログを出力するリソースのサブスクリプションにないストレージ アカウントまたはイベント ハブ名前空間を使用することもできます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な ロールベースのアクセス制御 (RBAC) アクセス権限を持っている必要があります。
+ログを出力するリソースのサブスクリプションにないストレージ アカウントまたはイベント ハブ名前空間を使用することもできます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な Azure ロールベースのアクセス制御 (Azure RBAC) アクセス権限を持っている必要があります。
 
 ## <a name="configure-diagnostic-settings-and-workspace"></a>診断設定とワークスペースを構成する
 
@@ -80,7 +80,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
    ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを**強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
+    > Azure ログ テーブルには 500 個を超える列を含めることができないため、" _リソース固有モード_ " を選択することを **強くお勧めします** 。 詳細については、[Log Analytics の既知の制限](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
 
 1. **[保存]** を選択します。
 
@@ -94,7 +94,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
 * データ ファクトリ アクティビティの実行を種類別に詳しく表示する機能
 * データ ファクトリのトップ パイプライン、アクティビティ エラーの概要
 
-1. **Azure Marketplace** にアクセスして、 **[分析]** フィルターを選択し、**Azure Data Factory Analytics (プレビュー)** を検索します。
+1. **Azure Marketplace** にアクセスして、 **[分析]** フィルターを選択し、 **Azure Data Factory Analytics (プレビュー)** を検索します。
 
    !["Azure Marketplace" にアクセスして、「Analytics filter」と入力し、[Azure Data Factory Analytics (プレビュー)] を選択する](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
@@ -102,7 +102,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
 
    ![[Azure Data Factory Analytics (プレビュー)] の詳細](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. **[作成]** を選択し、**Log Analytics ワークスペース**を作成または選択します。
+1. **[作成]** を選択し、 **Log Analytics ワークスペース** を作成または選択します。
 
    ![新しいソリューションの作成](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
@@ -127,7 +127,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
 ![データ ファクトリによるパイプライン実行のグラフィック表示](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (プレビュー) では、診断ログが _リソース固有_ の宛先テーブルに送られます。 次のテーブルに対するクエリを作成できます: _ADFPipelineRun_、_ADFTriggerRun_、_ADFActivityRun_。
+> Azure Data Factory Analytics (プレビュー) では、診断ログが _リソース固有_ の宛先テーブルに送られます。 次のテーブルに対するクエリを作成できます: _ADFPipelineRun_ 、 _ADFTriggerRun_ 、 _ADFActivityRun_ 。
 
 ## <a name="data-factory-metrics"></a>Data Factory のメトリック
 
@@ -158,7 +158,7 @@ Azure Data Factory バージョン 2 で出力されるメトリックの一部�
 メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)」に記載された手順に従います。
 
 > [!NOTE]
-> 完了済みのトリガーされたアクティビティとパイプラインの実行からのイベントのみが出力されます。 進行中およびデバッグの実行は出力**されません**。 その一方で、呼び出しメソッドに関係なく、**すべての** SSIS パッケージ実行からのイベントが出力されます。これには、呼び出し方法に関係なく、完了済みのものと進行中のものが含まれます。 たとえば、SSMS、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して、ADF パイプラインでの Execute SSIS Package アクティビティのトリガーされたまたはデバッグの実行として、Azure 対応 SQL Server Data Tools (SSDT) のパッケージ実行を呼び出すことができます。
+> 完了済みのトリガーされたアクティビティとパイプラインの実行からのイベントのみが出力されます。 進行中およびデバッグの実行は出力 **されません** 。 その一方で、呼び出しメソッドに関係なく、 **すべての** SSIS パッケージ実行からのイベントが出力されます。これには、呼び出し方法に関係なく、完了済みのものと進行中のものが含まれます。 たとえば、SSMS、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して、ADF パイプラインでの Execute SSIS Package アクティビティのトリガーされたまたはデバッグの実行として、Azure 対応 SQL Server Data Tools (SSDT) のパッケージ実行を呼び出すことができます。
 
 ## <a name="data-factory-alerts"></a>Data Factory のアラート
 
@@ -617,7 +617,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 | **dataFactoryName**        | String | ADF の名前                                                 | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                             | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                         | `Informational` |
-| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID          | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する操作を示します) |
+| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID          | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する操作を示します) |
 | **contextDepth**           | String | イベント メッセージ コンテキストの深さ                              | `0` (0 はパッケージの実行が開始される前のコンテキストを示し、1 はエラーが発生したときのコンテキストを示します。これは、コンテキストがエラーから離れていくにつれて増加します) |
 | **packagePath**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトのパス      | `\Package` |
 | **contextType**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトの種類      | `60`([その他のコンテキストの種類](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)を参照) |
@@ -667,7 +667,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 | **dataFactoryName**        | String | ADF の名前                                               | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                           | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                       | `Informational` |
-| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する操作を示します) |
+| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する操作を示します) |
 | **messageTime**            | String | イベントメッセージが作成された時刻 (UTC 形式)          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | String | イベント メッセージの種類                                     | `70`([その他のメッセージ型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)を参照) |
 | **messageSourceType**      | String | イベント メッセージ ソースの種類                              | `20`([その他のメッセージ ソースの種類](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)を参照) |
@@ -716,7 +716,7 @@ SSIS IR での SSIS パッケージ実行により生成される実行可能フ
 | **dataFactoryName**        | String | ADF の名前                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                         | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                     | `Informational` |
-| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID      | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する実行を示します) |
+| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID      | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する実行を示します) |
 | **executionPath**          | String | 親パッケージから、実行されたコンポーネントまでの完全なパス          | `\Transformation\Data Flow Task` (このパスではコンポーネントの繰り返しもキャプチャされます) |
 | **startTime**              | String | 実行可能ファイルが実行前フェーズに入ったときの時刻 (UTC 形式)  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 実行可能ファイルが実行後フェーズに入ったときの時刻 (UTC 形式) | `2017-06-28T21:00:27.3534352Z` |
@@ -761,7 +761,7 @@ SSIS IR での SSIS パッケージ実行により生成されるデータ フ�
 | **dataFactoryName**        | String | ADF の名前                                                | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                            | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                        | `Informational` |
-| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID         | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する実行を示します) |
+| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID         | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する実行を示します) |
 | **packageName**            | String | 実行されたパッケージ ファイルの名前                              | `MyPackage.dtsx` |
 | **taskName**               | String | 実行されたデータ フロー タスクの名前                                 | `Data Flow Task` |
 | **subcomponentName**       | String | データ フロー コンポーネントの名前                                     | `Derived Column` |
@@ -809,7 +809,7 @@ SSIS IR での SSIS パッケージ実行により生成されるデータ フ�
 | **dataFactoryName**          | String | ADF の名前                                               | `MyADFv2` |
 | **integrationRuntimeName**   | String | SSIS IR の名前                                           | `MySSISIR` |
 | **level**                    | String | 診断ログのレベル                                       | `Informational` |
-| **executionId**              | String | SSISDB での特定の実行を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する実行を示します) |
+| **executionId**              | String | SSISDB での特定の実行を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する実行を示します) |
 | **packageName**              | String | 実行されたパッケージ ファイルの名前                             | `MyPackage.dtsx` |
 | **taskName**                 | String | 実行されたデータ フロー タスクの名前                                | `Data Flow Task` |
 | **dataflowPathIdString**     | String | データ フロー パスを追跡するための一意の ID                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -850,7 +850,7 @@ SSIS ワークロードをリフト アンド シフトするには、次をサ�
 - Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)
 - Azure SQL Managed Instance をホストとするファイル システム、Azure Files、SQL Server データベース (MSDB) のいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)
 
-プロビジョニングが完了すると、[Azure PowerShell を使うか、ADF ポータルの **[監視]** ハブで、SSIS IR の動作状態をチェック](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)できるようになります。 プロジェクト デプロイ モデルでは、SSIS パッケージ実行ログは SSISDB 内部テーブルまたはビューに格納されるため、SSMS などの指定されたツールを使用して、クエリ、分析、および視覚的な表示を実行できます。 パッケージ デプロイ モデルでは、SSIS パッケージ実行ログをファイル システムまたは Azure Files に CSV ファイルとして保存できますが、クエリ、分析、および視覚的な表示を実行する前に、指定された他のツールを使用して解析と処理を行う必要があります。
+プロビジョニングが完了すると、 [Azure PowerShell を使うか、ADF ポータルの **[監視]** ハブで、SSIS IR の動作状態をチェック](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)できるようになります。 プロジェクト デプロイ モデルでは、SSIS パッケージ実行ログは SSISDB 内部テーブルまたはビューに格納されるため、SSMS などの指定されたツールを使用して、クエリ、分析、および視覚的な表示を実行できます。 パッケージ デプロイ モデルでは、SSIS パッケージ実行ログをファイル システムまたは Azure Files に CSV ファイルとして保存できますが、クエリ、分析、および視覚的な表示を実行する前に、指定された他のツールを使用して解析と処理を行う必要があります。
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) の統合により、SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを、Azure portal でクエリ、分析、および視覚的に表示できるようになりました。 さらに、それらに関するアラートを生成することもできます。
 
@@ -862,17 +862,17 @@ SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメト
 
 SSIS 操作の[メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)は、SSIS IR の開始および停止操作の状態と特定の時点での SSIS パッケージ実行の状態を示すパフォーマンス カウンターまたは数値です。 それらは、[Azure Monitor の ADF メトリック](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)の一部です。
 
-Azure Monitor で ADF の診断設定とワークスペースを構成するときに、 _[AllMetrics]_ チェック ボックスをオンにすると、[Azure メトリックス エクスプローラーを使用した対話型分析](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)、[Azure ダッシュボードでの表示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)、および[準リアルタイムのアラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)のために SSIS 操作のメトリックを使用できるようになります。
+Azure Monitor で ADF の診断設定とワークスペースを構成するときに、 _[AllMetrics]_ チェック ボックスをオンにすると、 [Azure メトリックス エクスプローラーを使用した対話型分析](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)、 [Azure ダッシュボードでの表示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)、および [準リアルタイムのアラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)のために SSIS 操作のメトリックを使用できるようになります。
 
 ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
 ### <a name="ssis-operational-alerts"></a>SSIS 操作のアラート
 
-ADF ポータルから SSIS 操作のメトリックに関するアラートを生成するには、[ADF の **[監視]** ハブの **[アラートとメトリック]** ページを選択し、示される詳細な手順に従います](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)。
+ADF ポータルから SSIS 操作のメトリックに関するアラートを生成するには、 [ADF の **[監視]** ハブの **[アラートとメトリック]** ページを選択し、示される詳細な手順に従います](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)。
 
 ![ADF ポータルから SSIS 操作のアラートを生成](media/data-factory-monitor-oms/data-factory-monitor-alerts-ssis.png)
 
-Azure portal から SSIS 操作のメトリックに関するアラートを生成するには、[Azure の **[監視]** ハブの **[アラート]** ページを選択し、示される詳細な手順に従います](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-alerts)。
+Azure portal から SSIS 操作のメトリックに関するアラートを生成するには、 [Azure の **[監視]** ハブの **[アラート]** ページを選択し、示される詳細な手順に従います](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-alerts)。
 
 ![Azure portal から SSIS 操作のアラートを生成](media/data-factory-monitor-oms/azure-monitor-alerts-ssis.png)
 
@@ -903,7 +903,7 @@ Logs Analytics で SSIS IR 操作ログのクエリを実行するとき、そ�
 
 ![Log Analytics での SSIS IR パッケージ操作ログのクエリの実行](media/data-factory-monitor-oms/log-analytics-query.png)
 
-Logs Analytics で SSIS パッケージ実行ログのクエリを実行する場合、**OperationId**/**ExecutionId**/**CorrelationId** プロパティを使用してそれらを結合できます。 SSISDB への格納/T-SQL を使用した呼び出しが行われて**いない**パッケージに関連するすべての操作/実行の場合、**OperationId**/**ExecutionId** には常に `1` が設定されます。
+Logs Analytics で SSIS パッケージ実行ログのクエリを実行する場合、 **OperationId**/**ExecutionId**/**CorrelationId** プロパティを使用してそれらを結合できます。 SSISDB への格納/T-SQL を使用した呼び出しが行われて **いない** パッケージに関連するすべての操作/実行の場合、 **OperationId**/**ExecutionId** には常に `1` が設定されます。
 
 ![SSIS パッケージ実行ログに対する Log Analytics でのクエリの実行](media/data-factory-monitor-oms/log-analytics-query2.png)
 

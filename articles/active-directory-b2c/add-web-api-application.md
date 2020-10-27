@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5473730484240f2c813c9ae279e1516ed93a45c5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385962"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214959"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントに Web API アプリケーションを追加する
 
  アクセス トークンを提示するクライアント アプリケーションからの要求を Web API リソースが受け付けて応答できるように、ご利用のテナントに Web API リソースを登録します。 この記事では、Azure Active Directory B2C (Azure AD B2C) に Web API を登録する方法について説明します。
 
-アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -29,12 +29,12 @@ ms.locfileid: "85385962"
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. アプリケーションの**名前**を入力します。 たとえば、*webapi1* とします。
+1. アプリケーションの **名前** を入力します。 たとえば、 *webapi1* とします。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、お使いのアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 実稼働アプリケーションでは、リダイレクト URI とエンドポイントを `https://localhost:5000` のように設定します。 開発時またはテスト時には、トークンのデコードされたコンテンツを表示する Microsoft 所有の Web アプリケーションである `https://jwt.ms` にこれを設定できます (トークンのコンテンツがお使いのブラウザー外に出ることはありません)。 お使いの登録済みアプリケーションでは、いつでもリダイレクト URI を追加したり、変更したりすることができます。
 1. **[登録]** を選択します。
-1. ご自分の Web API のコードで使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
+1. ご自分の Web API のコードで使用するために、 **アプリケーション (クライアント) ID** を記録しておきます。
 
-JavaScript ベースのシングル ページ アプリケーション (SPA) など、暗黙的な許可フローを実装するアプリケーションがある場合は、次の手順に従ってフローを有効にすることができます。
+[JavaScript ベースのシングルページ アプリケーション (SPA)](tutorial-register-spa.md) など、暗黙的な許可フローを実装するアプリケーションがある場合は、次の手順に従ってフローを有効にすることができます。
 
 1. **[管理]** で、 **[認証]** を選択します。
 1. **[暗黙的な許可]** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。
@@ -46,7 +46,7 @@ JavaScript ベースのシングル ページ アプリケーション (SPA) な
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション (レガシ)]** を選択し、 **[追加]** を選択します。
-5. アプリケーションの名前を入力します。 たとえば、*webapi1* とします。
+5. アプリケーションの名前を入力します。 たとえば、 *webapi1* とします。
 6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** と **[暗黙的フローを許可する]** には、 **[はい]** を選択します。
 7. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 運用環境のアプリケーションでは、応答 URL を `https://localhost:44332` などの値に設定することになるでしょう。 テスト目的の場合は、応答 URL を `https://jwt.ms` に設定します。
 8. **[アプリケーション ID URI]** には、ご使用の Web API で使用される ID を入力します。 ドメインを含んだ完全な識別子 URI が自動的に生成されます。 たとえば、「 `https://contosotenant.onmicrosoft.com/api` 」のように入力します。
@@ -63,7 +63,7 @@ JavaScript ベースのシングル ページ アプリケーション (SPA) な
 
 ## <a name="grant-permissions"></a>[アクセス許可の付与]
 
-保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 たとえば「[チュートリアル: Azure Active Directory B2C にアプリケーションを登録する](tutorial-register-applications.md)」では、Azure AD B2C に *webapp1* という Web アプリケーションが登録されています。 このアプリケーションを使用して、Web API を呼び出すことができます。
+保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 たとえば「 [チュートリアル: Azure Active Directory B2C にアプリケーションを登録する](tutorial-register-applications.md)」では、Azure AD B2C に *webapp1* という Web アプリケーションが登録されています。 このアプリケーションを使用して、Web API を呼び出すことができます。
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 

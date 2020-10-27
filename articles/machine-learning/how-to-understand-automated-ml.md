@@ -1,32 +1,32 @@
 ---
-title: 自動 ML 結果の概要
+title: AutoML 実験結果の評価
 titleSuffix: Azure Machine Learning
-description: 自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。
+description: 自動機械学習の実験を実行するごとに、グラフとメトリックを確認し、評価する方法について説明します。
 services: machine-learning
 author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 12/05/2019
+ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, contperfq2
+ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315543"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092462"
 ---
-# <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
+# <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
+この記事では、自動機械学習 (AutoML) の実験結果を表示して評価する方法について説明します。 これらの実験は複数の実行で構成され、各実行でモデルが作成されます。 各モデルを評価するために、AutoML では実験の種類に固有のパフォーマンス メトリックとグラフが自動的に生成されます。 
 
-この記事では、自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。 
+たとえば、AutoML では、分類モデルと回帰モデルで異なるグラフが提供されます。 
 
-各項目の詳細情報
-+ [分類モデルのメトリックとグラフ](#classification)
-+ [回帰モデルのメトリックとグラフ](#regression)
-+ [モデルの解釈可能性と機能の重要性](#explain-model)
+|分類|回帰
+|---|---|
+|<li> [混同行列](#confusion-matrix) <li>[精度/再現率グラフ](#precision-recall-chart) <li> [受信者操作特性 (ROC)](#roc) <li> [リフト曲線](#lift-curve)<li> [ゲイン曲線](#gains-curve)<li> [調整プロット](#calibration-plot) | <li> [予測とTrue](#pvt) <li> [残差のヒストグラム](#histo)|
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,45 +37,31 @@ ms.locfileid: "91315543"
     * SDK を使用し、[分類モデル](how-to-auto-train-remote.md)または[回帰モデル](tutorial-auto-train-models.md)を作成する
     * [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md) を使用して、適切なデータをアップロードすることで分類または回帰モデルを作成します。
 
-## <a name="view-the-run"></a>実行を確認する
+## <a name="view-run-results"></a>実行結果の表示
 
-自動機械学習の実験を実行した後、機械学習ワークスペースで実行の履歴を確認できます。 
+自動機械学習の実験を実行した後、機械学習ワークスペースの [Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)から実行の履歴を確認できます。 
 
-1. ワークスペースに移動します。
+SDK の実験では、`RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用すると実行中に同じ結果が表示されます。
 
-1. ワークスペースの左側のパネルで、 **[実験]** を選択します。
+次の手順とアニメーションは、特定のモデルの実行履歴およびパフォーマンス メトリックとグラフをスタジオで表示する方法を示しています。
 
-   ![実験メニューのスクリーンショット](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
+![実行履歴およびモデルのパフォーマンス メトリックとグラフを表示する手順](./media/how-to-understand-automated-ml/view-run-metrics-ui.gif)
 
+スタジオで実行履歴とモデルのパフォーマンス メトリックとグラフを表示するには、次のようにします。 
+
+1. [スタジオにサインイン](https://ml.azure.com/)し、ワークスペースに移動します。
+1. ワークスペースの左側のパネルで、 **[実行]** を選択します。
 1. 実験の一覧で、探索する項目を選択します。
-
-   [![実験リスト](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
-
 1. 一番下のテーブルで、 **[実行]** を選択します。
+1. **[モデル]** タブで、調べるモデルの **[アルゴリズム名]** を選択します。
+1. **[メトリック]** タブで、そのモデルに対して評価するメトリックとグラフを選択します。 
 
-   [![実験の実行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. [モデル] で、詳しく調べるモデルの **[アルゴリズム名]** を選択します。
+<a name="classification"></a> 
 
-   [![実験モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
+## <a name="classification-performance-metrics"></a>分類のパフォーマンス メトリック
 
-`RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用した場合も、実行中に同じ結果が表示されます。
-
-## <a name="classification-results"></a><a name="classification"></a> 分類の結果
-
-Azure Machine Learning の自動機械学習機能を使用して構築するすべての分類モデルについて、次のようなメトリックとグラフを使用できます
-
-+ [Metrics](#classification-metrics)
-+ [混同行列](#confusion-matrix)
-+ [精度/再現率グラフ](#precision-recall-chart)
-+ [受信者操作特性 (ROC)](#roc)
-+ [リフト曲線](#lift-curve)
-+ [ゲイン曲線](#gains-curve)
-+ [調整プロット](#calibration-plot)
-
-### <a name="classification-metrics"></a>分類メトリック
-
-分類タスクの実行イテレーションごとに、次のメトリックが保存されます。
+次の表は、実験用に生成された各分類モデルに対して AutoML によって計算されるモデル パフォーマンス メトリックをまとめたものです。 
 
 メトリック|説明|計算|追加のパラメーター
 --|--|--|--
@@ -104,125 +90,126 @@ weighted_accuracy|重み付けされた精度は、それぞれの例に対し�
 
 AutoML によって、バイナリ メトリックと多クラス メトリックは区別されません。 データセットに 2 つのクラスがある場合でも、3 つ以上のクラスがある場合でも、同じ検証メトリックが報告されます。 ただし、一部のメトリックは多クラス分類を対象としています。 バイナリ データセットに適用した場合、これらのメトリックによってどのクラスも `true` クラスとして扱われません。 明らかに多クラス向けのメトリックには、`micro`、`macro`、または `weighted` がサフィックスとして付けられます。 例として、`average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC` などがあります。
 
-具体的な例で、この区別を明確にします。リコールを `tp / (tp + fn)` として計算する代わりに、多クラスの平均リコール (`micro`、`macro`、または `weighted`) は、二項分類データセットの両方のクラスの平均をとります。 これは、`true` クラスと `false` クラスのリコールを個別に計算してから、その 2 つの平均を取得することと同じです。
+たとえば、リコールを `tp / (tp + fn)` として計算する代わりに、多クラスの平均リコール (`micro`、`macro`、または `weighted`) は、二項分類データセットの両方のクラスの平均をとります。 これは、`true` クラスと `false` クラスのリコールを個別に計算してから、その 2 つの平均を取得することと同じです。
 
-<a name="confusion-matrix"></a>
+## <a name="confusion-matrix"></a>混同行列
 
-### <a name="confusion-matrix"></a>混同行列
+混同行列では、分類モデルのパフォーマンスが記述されます。 各行には、true のインスタンス、またはデータセット内の実際のクラスが表示され、各列には、モデルによって予測されたクラスのインスタンスが表示されます。 
 
-#### <a name="what-is-a-confusion-matrix"></a>混同行列とは何ですか？
-混同行列は、分類モデルのパフォーマンスの記述に使用します。 各行には、true のインスタンス、またはデータセット内の実際のクラスが表示され、各列には、モデルによって予測されたクラスのインスタンスが表示されます。 
+各混同行列では、自動 ML は、予測された各ラベル (列) の頻度を true ラベル (行) と比較して表示します。 色が濃いほど、行列の特定の部分のカウント数が大きくなります。 
 
-#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>自動 ML は、混同行列で何をしますか？
-分類問題の場合、Azure Machine Learning では作成された各モデルに対して混同行列が自動的に提供されます。 各混同行列では、自動 ML は、予測された各ラベル（列）の頻度を true ラベル（行）と比較して表示します。 色が濃いほど、行列の特定の部分のカウント数が大きくなります。 
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
 
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-データセットの実際の値と、モデルによって指定された予測値とを比較しています。 このため、モデルの値のほとんどが対角線に沿っている場合には、機械学習モデルの精度が高くなります。これは、モデルでは、正しい値が予測されていることを意味します。 モデルにクラス不均衡がある場合、混同行列は、バイアス モデルを検出するのに役立ちます。
+混同行列では、データセットの実際の値と、モデルによって指定された予測値が比較されます。 このため、モデルの値のほとんどが対角線に沿っている場合には、機械学習モデルの精度が高くなります。これは、モデルでは、正しい値が予測されていることを意味します。 モデルにクラス不均衡がある場合、混同行列は、バイアス モデルを検出するのに役立ちます。
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>例 1:精度のよくない分類モデル
+#### <a name="example-1-a-classification-model-with-poor-accuracy"></a>例 1:精度のよくない分類モデル
 ![精度のよくない分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>例 2:精度の高い分類モデル 
+#### <a name="example-2-a-classification-model-with-high-accuracy"></a>例 2:精度の高い分類モデル 
 ![精度の高い分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 ##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>例 3: モデル予測の精度が高く、高バイアスの分類モデル
 ![モデル予測の精度が高く、高バイアスの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>精度/再現率グラフ
-#### <a name="what-is-a-precision-recall-chart"></a>精度/再現率グラフとは何ですか？
-精度/再現率曲線は、モデルの精度と再現率の関係を示します。 精度という用語は、モデルがすべてのインスタンスに正しくラベルを付ける能力を表します。 再現率は、分類子が特定のラベルのすべてのインスタンスを見つける能力を表します。
 
-#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>自動 ML では、精度/再現率グラフを使用するとどうなりますか？
+## <a name="precision-recall-chart"></a>精度/再現率グラフ
+
+精度/再現率曲線は、モデルの精度と再現率の関係を示します。 精度という用語は、モデルがすべてのインスタンスに正しくラベルを付ける能力を表します。 再現率は、分類子が特定のラベルのすべてのインスタンスを見つける能力を表します。
 
 このグラフでは、各モデルの精度/再現率曲線を比較して、特定のビジネスの問題に対して精度と再現率の間の関係が許容できるモデルを特定できます。 このグラフでは、マクロ平均精度/再現率、ミクロ平均精度/再現率、およびモデルのすべてのクラスに関連付けられた精度/再現率が示されます。 
 
-マクロ平均では、各クラスとは無関係にメトリックを計算して、平均値を計算し、すべてのクラスを同等に扱います。 ただし、マイクロ平均は、すべてのクラスのコントリビューションを集計して平均を算出します。 データセットにクラスの不均衡が存在する場合、マイクロ平均が推奨されます。
+**マクロ平均** では、各クラスとは無関係にメトリックを計算して、平均値を計算し、すべてのクラスを同等に扱います。 ただし、 **マイクロ平均** は、すべてのクラスのコントリビューションを集計して平均を算出します。 データセットにクラスの不均衡が存在する場合、マイクロ平均が推奨されます。
 
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-ビジネス上の問題の目標によっては、理想的な精度の高い再現率曲線が異なる可能性があります。 いくつかの例を、次に示す
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+ビジネス上の問題の目標によっては、理想的な精度の高い再現率曲線が異なる可能性があります。 
 
 ##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>例 1:低精度で再現率が低い分類モデル
 ![低精度で再現率が低い分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
 ##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>例 2:最大 100% の精度と最大 100% の再現率を含む分類モデル 
 ![高精度で高再現率の分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
-<a name="roc"></a>
-### <a name="roc-chart"></a>ROC グラフ
 
-#### <a name="what-is-a-roc-chart"></a>ROC グラフとは何ですか？
+<a name="roc"></a>
+
+## <a name="roc-chart"></a>ROC グラフ
+
 受信者操作特性 (ROC) は、特定のモデルについて正しく分類されたラベルと間違って分類されたラベルを対比したプロットです。 多数派クラスによって少数派クラスからのコントリビューションが打ち消される可能性があるため、クラスの不均衡が大きいデータセットでモデルをトレーニングする場合、ROC 曲線はあまり有益ではありません。
 
-#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>自動 ML は、ROC グラフで何をしますか？
 ROC グラフの下の領域は、適切に分類されたサンプルの割合として視覚化できます。 ROC グラフの上級ユーザーは、曲線の下の領域を超えて、分類のしきい値または決定境界の関数として、真陽性率と偽陽性率を直感的に理解できます。
 
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
 100% の真陽性率と 0% の偽陽性率で左上隅に近づく ROC 曲線が最適なモデルになります。 ランダム モデルは、左下から右上隅までの平坦な線として表示されます。 ランダムよりも悪いと、y=x 線を下回ります。
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>例 1:低い true ラベルと高い false ラベルを持つ分類モデル
+#### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>例 1:低い true ラベルと高い false ラベルを持つ分類モデル
 ![低い true ラベルと高い false ラベルを持つ分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>例 2:高い true ラベルと低い false ラベルを持つ分類モデル
+#### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>例 2:高い true ラベルと低い false ラベルを持つ分類モデル
+
 ![高い true ラベルと低い false ラベルを持つ分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+
+
 <a name="lift-curve"></a>
-### <a name="lift-chart"></a>リフト チャート
-#### <a name="what-is-a-lift-chart"></a>リフト チャートとは何ですか？
-リフト チャートは、分類モデルのパフォーマンスの評価に使用されます。 リフト チャートには、ランダム モデルと比較して、モデルのパフォーマンスが何倍優れているかが示されます。 これにより、クラスの数を増やすと分類が困難になるという事実を考慮した相対的なパフォーマンスが得られます。 ランダム モデルでは、2 つのクラスを持つデータセットと比較して、10 個のクラスを持つデータセットからのサンプルの割合が、誤って予測されます。
 
-#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>自動 ML は、リフト チャートで何をしますか？
-Azure Machine Learning で自動的に作成されたモデルのリフトとベースラインを比較して、その特定のモデルでの値のゲインを確認できます。
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+## <a name="lift-chart"></a>リフト チャート
 
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>例 1:ランダム選択モデルよりも悪い分類モデル
+リフト チャートでは、分類モデルのパフォーマンスが評価されます。 リフト チャートには、ランダム モデルと比較して、モデルのパフォーマンスが何倍優れているかが示されます。 これにより、クラスの数を増やすと分類が困難になるという事実を考慮した相対的なパフォーマンスが得られます。 ランダム モデルでは、2 つのクラスを持つデータセットと比較して、10 個のクラスを持つデータセットからのサンプルの割合が、誤って予測されます。
+
+Azure Machine Learning で自動的に作成されたモデルのリフトとベースライン (ランダム モデル) を比較して、その特定のモデルでの値のゲインを確認できます。
+
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+
+より高いリフト曲線 (モデルがベースラインを上回っている) は、よりパフォーマンスが優れたモデルを示します。 
+
+#### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>例 1:ランダム選択モデルと比較してパフォーマンスが低い分類モデル
 ![ランダム選択モデルよりも悪い分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>例 2:ランダムに選択されたモデルよりパフォーマンスがよい分類モデル
+
+#### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>例 2:ランダムに選択されたモデルよりパフォーマンスがよい分類モデル
 ![より良いパフォーマンスの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+
 <a name="gains-curve"></a>
-### <a name="cumulative-gains-chart"></a>累積ゲイン チャート
-#### <a name="what-is-a-cumulative-gains-chart"></a>累積ゲイン チャートとは何ですか?
 
-累積ゲイン チャートによって、データの各部分の分類モデルのパフォーマンスが評価されます。 チャートには、データ セットの各パーセンタイルに対して、正確に分類されたサンプルの数が示されます。
+## <a name="cumulative-gains-chart"></a>累積ゲイン チャート
 
-#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>自動 ML は、ゲイン チャートで何をしますか？
-モデルからの望ましいゲインに対応するパーセンテージを使用して分類カットオフを選択するには、累積ゲイン チャートを使用します。 この情報では、付随するリフト チャートの結果を調べる別の方法が提供されます。
+累積ゲイン チャートによって、データの各部分の分類モデルのパフォーマンスが評価されます。 チャートには、データ セットの各パーセンタイルに対して、常に正しくないモデルと比較してどれだけ多くのサンプルが正確に分類されているかが示されます。 この情報では、付随するリフト チャートの結果を調べる別の方法が提供されます。
+
+累積ゲイン チャートは、モデルからの望ましいゲインに対応するパーセンテージを使って分類カットオフを選択するのに役立ちます。 累積ゲイン チャートとベースライン (正しくないモデル) を比較して、各信頼度パーセンタイルで正しく分類されたサンプルの割合を確認できます。
 
 #### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+
+リフト チャートと同様に、累積ゲインの曲線がベースラインを上回るほど、モデルのパフォーマンスは優れています。 さらに、累積ゲインの曲線がグラフの左上隅に近いほど、モデルが達成しているゲインはベースラインと比較して高くなります。 
+
 ##### <a name="example-1-a-classification-model-with-minimal-gain"></a>例 1:最小ゲイン チャートの分類モデル
-![最小ゲイン チャートの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+![最小ゲイン チャートの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 
 ##### <a name="example-2-a-classification-model-with-significant-gain"></a>例 2:大きなゲイン チャートの分類モデル
-![大きなゲイン チャートの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
-<a name="calibration-plot"></a>
-### <a name="calibration-chart"></a>調整グラフ
+![大きなゲイン チャートの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-#### <a name="what-is-a-calibration-chart"></a>調整グラフとは何ですか？
-調整プロットは、予測モデルの信頼度を示すために使用されます。 これを行うため、予測される確率と実際の確率の間の関係が示されます。"確率" は、特定のインスタンスがいくつかのラベルに属する可能性を表します。
-#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>自動 ML は、調整グラフで何をしますか？
+<a name="calibration-plot"></a>
+
+## <a name="calibration-chart"></a>調整グラフ
+
+調整プロットでは、予測モデルの信頼度が示されます。 これを行うため、予測される確率と実際の確率の間の関係が示されます。"確率" は、特定のインスタンスがいくつかのラベルに属する可能性を表します。
+
 すべての分類の問題について、マイクロ平均、マクロ平均、および特定の予測モデルの各クラスに対する調整ラインを確認できます。
 
-マクロ平均では、各クラスとは無関係にメトリックを計算して、平均値を計算し、すべてのクラスを同等に扱います。 ただし、マイクロ平均は、すべてのクラスのコントリビューションを集計して平均を算出します。 
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+**マクロ平均** では、各クラスとは無関係にメトリックを計算して、平均値を計算し、すべてのクラスを同等に扱います。 ただし、 **マイクロ平均** は、すべてのクラスのコントリビューションを集計して平均を算出します。 
+
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
 適切に調整されたモデルは、y=x の線と一致し、サンプルが各クラスに属する確率を正しく予測します。 過剰信頼モデルによって、0 と 1 に近い確率が過剰予測され、各サンプルのクラスが不確実であることはほぼありません。
 
-
-##### <a name="example-1-a-well-calibrated-model"></a>例 1:適切に調整されたモデル
+#### <a name="example-1-a-well-calibrated-model"></a>例 1:適切に調整されたモデル
 ![ より適切に調整されたモデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-##### <a name="example-2-an-over-confident-model"></a>例 2:過剰信頼モデル
+#### <a name="example-2-an-over-confident-model"></a>例 2:過剰信頼モデル
 ![過剰信頼モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a> 回帰結果
 
-Azure Machine Learning の自動機械学習機能を使用して構築するすべての回帰モデルについて、次のようなメトリックとグラフを使用できます
+<a name="regression"></a> 
 
-+ [Metrics](#reg-metrics)
-+ [予測とTrue](#pvt)
-+ [残差のヒストグラム](#histo)
+## <a name="regression-performance-metrics"></a>回帰のパフォーマンス メトリック
 
-
-### <a name="regression-metrics"></a><a name="reg-metrics"></a> 回帰メトリック
-
-回帰タスクまたは予測タスクの実行イテレーションごとに、次のメトリックが保存されます。
+次の表は、実験用に生成された回帰または予測の各モデルに対して AutoML によって計算されるモデル パフォーマンス メトリックをまとめたものです。 
 
 |メトリック|説明|計算|追加のパラメーター
 --|--|--|--|
@@ -238,39 +225,44 @@ normalized_root_mean_squared_error|正規化された平均平方二乗誤差は
 root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|なし|
 normalized_root_mean_squared_log_error|正規化された対数平均平方二乗誤差は、データの範囲で除算した対数平均平方二乗誤差です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|データの範囲で除算します|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> 予測とtrue グラフ
-#### <a name="what-is-a-predicted-vs-true-chart"></a>予測 VS とは何ですか。true グラフ？
-予測とTrue では、回帰問題に対する予測値とそれに相関する True 値の間の関係が示されます。 このグラフを使用してモデルのパフォーマンスを測定できます。予測値が y=x の線に近いほど、予測モデルの精度が高いことを示します。
+<a name="pvt"></a>
 
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>自動 ML は、予測 VS で何をしますか。true グラフ？
+## <a name="predicted-vs-true-chart"></a> 予測とtrue グラフ
+
+予測とTrue では、回帰問題に対する予測値とそれに相関する True 値の間の関係が示されます。 
+
 各実行の後で、各回帰モデルの予測と True のグラフを表示できます。 データのプライバシーを保護するため、値はビンにまとめられており、各ビンのサイズはグラフ領域の下部に棒グラフとして示されます。 許容誤差を示す明るい網掛け領域で、予測モデルをモデルの理想値と比較できます。
 
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>例 1:精度の低い分類モデル
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+このグラフを使用してモデルのパフォーマンスを測定できます。予測値が y=x の線に近いほど、予測モデルの精度が高いことを示します。
+
+#### <a name="example-1-a-classification-model-with-low-accuracy"></a>例 1:精度の低い分類モデル
 ![予測精度の低い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>例 2:精度の高い回帰モデル 
-[![予測精度が高い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+#### <a name="example-2-a-regression-model-with-high-accuracy"></a>例 2:精度の高い回帰モデル 
+![予測精度が高い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
+<a name="histo"></a> 
 
+## <a name="histogram-of-residuals-chart"></a>残差グラフのヒストグラム
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>残差グラフのヒストグラム
-#### <a name="what-is-a-residuals-chart"></a>残差グラフとは何ですか？
-残余は、予測と実際の値 (`y_pred - y_true`) の差です。 低バイアスでの許容誤差を示すため、残差のヒストグラムは 0 を中心とするベル曲線として成形する必要があります。 
-#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>自動 ML は、残渣チャートで何をしますか？
-自動 ML は、予測内のエラーの分布を示す残差グラフを自動的に提供します。
-#### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-通常、適切なモデルはほぼゼロを中心とした残差になります。
+自動 ML では、回帰モデルの予測に含まれるエラーの分布を示す残差グラフが自動的に提供されます。 残余は、予測と実際の値 (`y_pred - y_true`) の差です。 
 
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>例 1:エラーにバイアスを持つ回帰モデル
+### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
+低バイアスでの許容誤差を示すため、残差のヒストグラムはゼロを中心とするベル曲線として成形する必要があります。
+
+#### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>例 1:エラーにバイアスを持つ回帰モデル
 ![エラーにバイアスを持つ SA 回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>例 2:エラーがより均等に配分される回帰モデル
+#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>例 2:エラーがより均等に配分される回帰モデル
 ![エラーがより均等に配分される回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> モデルの解釈可能性と機能の重要性
+<a name="explain-model"></a>
+
+## <a name="model-interpretability-and-feature-importance"></a> モデルの解釈可能性と機能の重要性
 自動 ML は、実行に対する機械学習の解釈可能性ダッシュボードを提供します。
-解釈可能性機能の有効化の詳細については、自動 ML 実験で解釈可能性を有効にする[方法](how-to-machine-learning-interpretability-automl.md)を参照してください。
+
+解釈可能性機能の有効化の詳細については、「[解釈可能性: 自動機械学習のモデルの説明](how-to-machine-learning-interpretability-automl.md)」を参照してください。
 
 > [!NOTE]
 > 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。
@@ -278,4 +270,4 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 ## <a name="next-steps"></a>次のステップ
 
 + Azure Machine Learning の[自動機械学習](concept-automated-ml.md)について学習します。
-+ [自動機械学習モデルの説明](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) のサンプル ノートブックを試してください。
++ [自動機械学習モデルの説明](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)のサンプル ノートブックを試してください。

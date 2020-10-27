@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6f502374996f01363ad27ff10dff3b34964a3474
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018212"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220739"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -103,7 +103,7 @@ SSIS パッケージで、特定の静的パブリック IP アドレスのみ�
 
 次の図は、Azure-SSIS IR に必要な接続を示しています。
 
-![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
+![Azure-SSIS IR に必要な接続を示している図。](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
 ### <a name="set-up-permissions"></a><a name="perms"></a> アクセス許可を設定する
 
@@ -113,7 +113,7 @@ Azure-SSIS IR を作成するユーザーは、次のアクセス許可を持っ
 
   - 組み込みのネットワーク共同作成者ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
 
-  - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させながら、独自のパブリック IP アドレスを使用する場合は、_Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
+  - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させながら、独自のパブリック IP アドレスを使用する場合は、 _Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
 
 - SSIS IR を従来の仮想ネットワークに参加させる場合は、組み込みの従来の仮想マシン共同作成者ロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
 
@@ -169,7 +169,7 @@ Azure-SSIS IR によって使用されるサブネットに NSG を実装する�
 | Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
 |---|---|---|---|---|---|---|
 | 送信 | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
-| 送信 | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、「**Azure ExpressRoute または UDR を使用する**」のセクションを参照してください|
+| 送信 | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、「 **Azure ExpressRoute または UDR を使用する** 」のセクションを参照してください|
 | 送信 | TCP | VirtualNetwork | * | Sql | 1433、11000 ～ 11999 | (省略可能) この規則は、仮想ネットワーク内の Azure-SSIS IR のノードから、サーバーによってホストされている SSISDB にアクセスする場合にのみ必要です。 サーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 <br/><br/> この送信セキュリティ規則は、プライベート エンドポイントで構成された SQL Database または仮想ネットワーク内の SQL Managed Instance によってホストされている SSISDB には適用できません。 |
 | 送信 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000 ～ 11999 | (省略可能) この規則は、仮想ネットワーク内の Azure-SSIS IR のノードから、プライベート エンドポイントで構成された SQL Database または仮想ネットワーク内の SQL Managed Instance によってホストされている SSISDB にアクセスする場合にのみ必要です。 サーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 |
 | 送信 | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
@@ -356,11 +356,11 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して Azure Resou
 
    1. サブスクリプションを選択します。 
 
-   1. 左側の **[リソース プロバイダー]** を選択し、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
+   1. 左側の **[リソース プロバイダー]** を選択し、 **Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
 
    !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに[空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。 
+   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに [空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。 
 
 ### <a name="configure-a-classic-virtual-network"></a>従来の仮想ネットワークを構成する
 
@@ -384,7 +384,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
    ![仮想ネットワークで使用可能なアドレスの数](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
 
-1. **MicrosoftAzureBatch** を仮想ネットワークの**従来の仮想マシン共同作成者**ロールに参加させます。 
+1. **MicrosoftAzureBatch** を仮想ネットワークの **従来の仮想マシン共同作成者** ロールに参加させます。 
 
    1. 左側のメニューの **[アクセス制御 (IAM)]** を選択し、 **[ロール割り当て]** タブを選択します。 
 
@@ -392,7 +392,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
    1. **[ロールの割り当ての追加]** を選択します。
 
-   1. **[ロールの割り当ての追加]** ページで、 **[ロール]** に **[従来の仮想マシン共同作成者]** を選択します。 **[選択]** ボックスに「**ddbf3205-c6bd-46ae-8127-60eb93363864**」を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選択します。 
+   1. **[ロールの割り当ての追加]** ページで、 **[ロール]** に **[従来の仮想マシン共同作成者]** を選択します。 **[選択]** ボックスに「 **ddbf3205-c6bd-46ae-8127-60eb93363864** 」を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選択します。 
 
        ![[ロールの割り当ての追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
@@ -410,11 +410,11 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
    1. サブスクリプションを選択します。 
 
-   1. 左側の **[リソース プロバイダー]** を選択し、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
+   1. 左側の **[リソース プロバイダー]** を選択し、 **Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
 
    !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに[空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。 
+   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに [空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。 
 
 ### <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>Azure-SSIS IR を仮想ネットワークに参加させる
 
@@ -462,9 +462,9 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
       このチェック ボックスを選択した場合、次の手順を行います。
 
-      1. **[First static public IP address]\(最初の静的パブリック IP アドレス\)** では、Azure-SSIS IR の[要件を満たす](#publicIP)最初の静的パブリック IP アドレスを選択します。 まだお持ちでない場合は、 **[新規作成]** リンクをクリックして Azure portal で静的パブリック IP アドレスを作成してから、ここにある更新ボタンをクリックして、それを選択できるようにします。
+      1. **[First static public IP address]\(最初の静的パブリック IP アドレス\)** では、Azure-SSIS IR の [要件を満たす](#publicIP)最初の静的パブリック IP アドレスを選択します。 まだお持ちでない場合は、 **[新規作成]** リンクをクリックして Azure portal で静的パブリック IP アドレスを作成してから、ここにある更新ボタンをクリックして、それを選択できるようにします。
       
-      1. **[Second static public IP address]\(2 番目の静的パブリック IP アドレス\)** では、Azure-SSIS IR の[要件を満たす](#publicIP) 2 番目の静的パブリック IP アドレスを選択します。 まだお持ちでない場合は、 **[新規作成]** リンクをクリックして Azure portal で静的パブリック IP アドレスを作成してから、ここにある更新ボタンをクリックして、それを選択できるようにします。
+      1. **[Second static public IP address]\(2 番目の静的パブリック IP アドレス\)** では、Azure-SSIS IR の [要件を満たす](#publicIP) 2 番目の静的パブリック IP アドレスを選択します。 まだお持ちでない場合は、 **[新規作成]** リンクをクリックして Azure portal で静的パブリック IP アドレスを作成してから、ここにある更新ボタンをクリックして、それを選択できるようにします。
 
    1. **[VNet Validation]\(VNet の検証\)** を選択します。 検証が成功した場合は、 **[続行]** を選択します。 
 

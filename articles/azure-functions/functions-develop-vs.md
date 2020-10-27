@@ -4,12 +4,12 @@ description: Azure Functions Tools for Visual Studio 2019 を使用して、Azur
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612811"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167799"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -29,7 +29,7 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Functions Tools。 Azure Function Tools を追加するには、Visual Studio のインストールに **Azure 開発**ワークロードを含めます。 Azure Functions Tools は、Visual Studio 2017 以降の Azure 開発ワークロードで使用できます。
+- Azure Functions Tools。 Azure Function Tools を追加するには、Visual Studio のインストールに **Azure 開発** ワークロードを含めます。 Azure Functions Tools は、Visual Studio 2017 以降の Azure 開発ワークロードで使用できます。
 
 - Azure Storage アカウントなど、他の必要なリソースは、発行プロセス中にサブスクリプションに作成されます。
 
@@ -46,7 +46,7 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
     ![Functions ツールのバージョンを確認する](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. インストールされている **[バージョン]** をメモし、このバージョンを[リリース ノート](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)に記載されている最新バージョンと比較します。 
+1. インストールされている **[バージョン]** をメモし、このバージョンを [リリース ノート](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)に記載されている最新バージョンと比較します。 
 
 1. インストールされているバージョンが古い場合は、次のセクションの説明に従って Visual Studio でツールを更新します。
 
@@ -71,9 +71,9 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 Azure Functions プロジェクトを作成した後、プロジェクト テンプレートを使用して C# プロジェクトを作成し、`Microsoft.NET.Sdk.Functions` NuGet パッケージをインストールし、ターゲット フレームワークを設定します。 新しいプロジェクトには次のファイルが含まれます。
 
-* **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
+* **host.json** :Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+* **local.settings.json** :関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定が **[新しい場合はコピーする]** に設定されていることを確認します。 
@@ -104,7 +104,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 C# クラス ライブラリ関数では、関数で使用されるバインドはコードで属性を適用することで定義されます。 提供されているテンプレートから関数トリガーを作成する場合は、トリガー属性が適用されます。 
 
-1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 
+1. **ソリューション エクスプローラー** で、プロジェクト ノードを右クリックし、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 
 
 2. **[Azure 関数]** を選択し、クラスの **[名前]** を入力して **[追加]** を選択します。
 
@@ -229,11 +229,9 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 
 ## <a name="monitoring-functions"></a>関数の監視
 
-関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。 Application Insights を関数アプリに接続する方法については、「[Application Insights との統合を有効にする](configure-monitoring.md#enable-application-insights-integration)」を参照してください。
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
+Application Insights を使用した監視の詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

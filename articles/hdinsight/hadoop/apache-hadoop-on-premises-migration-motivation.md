@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072785"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331653"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -39,11 +39,11 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 - **ハードウェアと構成の管理** - HDInsight クラスターでは物理的なハードウェアやインフラストラクチャへの心配は不要です。 クラスターの構成さえ指定すれば、設定は Azure が行います。
 
-- **簡単に拡張できる** - HDInsight ではワークロードの [スケール](../hdinsight-administer-use-portal-linux.md)を増減できます。 データの再配布およびワークロードの再均衡化処理は、データ処理ジョブを中断することなく Azure が行います。
+- **簡単に拡張できる** - HDInsight ではワークロードの[スケール](../hdinsight-administer-use-portal-linux.md)を増減できます。 データの再配布およびワークロードの再均衡化処理は、データ処理ジョブを中断することなく Azure が行います。
 
-- **グローバルに利用可能** - HDInsight は、他のあらゆるビッグ データ分析サービスよりも多くの[リージョン](https://azure.microsoft.com/regions/services/)で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。
+- **グローバルに利用可能** - HDInsight は、他のあらゆるビッグ データ分析サービスよりも多くの [リージョン](https://azure.microsoft.com/regions/services/)で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。
 
-- **セキュリティとコンプライアンス** - HDInsight を使用すると、 [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)、 [暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、 [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な [コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
+- **セキュリティとコンプライアンス** - HDInsight を使用すると、[Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)、[暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、[Azure Active Directory](../domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な[コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
 
 - **バージョン管理を簡略化** - Azure HDInsight は Hadoop エコシステム コンポーネントのバージョンを管理し、最新の状態に保持します。 ソフトウェアの更新は、オンプレミスの展開では一般的に複雑なプロセスです。
 
@@ -51,9 +51,9 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 - **生産性** - お好みの開発環境で Hadoop および Spark 向けのさまざまなツールを使用できます。
 
-- **カスタム ツールまたはサードパーティ製のアプリケーションによる拡張機能** - HDInsight クラスターは、インストールされているコンポーネントを使用して拡張したり、Azure Marketplace から[ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 展開を使用することによって他のビッグ データ ソリューションと統合したりできます。
+- **カスタム ツールまたはサードパーティ製のアプリケーションによる拡張機能** - HDInsight クラスターは、インストールされているコンポーネントを使用して拡張したり、Azure Marketplace から[ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) デプロイを使用することによって他のビッグ データ ソリューションと統合したりできます。
 
-- **管理と監視が容易に** - Azure HDInsight は  [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md) と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
+- **管理と監視が容易に** - Azure HDInsight は [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
 
 - **他の Azure サービスとの統合** - HDInsight は、好評を博している以下の Azure サービスと簡単に統合できます。
 
@@ -89,7 +89,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 | **質問** | **例** | **回答** |
 |---|---|---|
-|**トピック**:**Environment**|||
+|**トピック** : **Environment**|||
 |クラスター ディストリビューションのバージョン|HDP 2.6.5、CDH 5.7|
 |ビッグ データ エコシステム コンポーネント|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |クラスターの種類|Hadoop、Spark、Confluent Kafka、Storm、Solr|
@@ -106,7 +106,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |ディザスター リカバリー / バックアップ|クラスターのバックアップ?|  
 |クラスターに依存するシステム|SQL Server、Teradata、Power BI、MongoDB|
 |サードパーティによる統合|Tableau、GridGain、Qubole、Informatica、Splunk|
-|**トピック**:**セキュリティ**|||
+|**トピック** : **セキュリティ**|||
 |境界セキュリティ|ファイアウォール|
 |クラスターの認証と承認|Active Directory、Ambari、Cloudera Manager、認証なし|
 |HDFS アクセス制御|  手動、ssh ユーザー|
@@ -121,7 +121,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 |**質問**|**例**|**回答**|
 |---|---|---|
-|**トピック**:**ワークロードと頻度**|||
+|**トピック** : **ワークロードと頻度**|||
 |MapReduce のジョブ|1 日 2 回の 10 個のジョブ||
 |Hive ジョブ|1 時間ごとに 100 個のジョブ||
 |Spark バッチ ジョブ|15 分ごとに 50 個のジョブ||
@@ -130,34 +130,34 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |ML モデルのトレーニング ジョブ|1 週間に 1 回 2 個ジョブ||
 |プログラミング言語|Python、Scala、Java||
 |スクリプトの作成|Shell、Python||
-|**トピック**:**データ**|||
+|**トピック** : **データ**|||
 |データ ソース|フラット ファイル、Json、Kafka、RDBMS||
 |データのオーケストレーション|Oozie ワークフロー、エアフロー||
 |メモリ内の検索|Apache Ignite、Redis||
 |データの保存先|HDFS、RDBMS、Kafka、MPP ||
-|**トピック**:**メタデータ**|||
+|**トピック** : **メタデータ**|||
 |Hive DB の種類|Mysql、Postgres||
 |Hive メタストアの数|2||
 |Hive テーブルの数|100||
 |Ranger ポリシーの数|20||
 |Oozie ワークフローの数|100||
-|**トピック**:**スケール**|||
+|**トピック** : **スケール**|||
 |レプリケーションを含むデータ ボリューム|100 TB||
 |日次インジェストの量|50 GB||
 |データ増加率|年 10%||
 |クラスター ノード増加率|年 5%
-|**トピック**:**クラスター使用率**|||
+|**トピック** : **クラスター使用率**|||
 |平均 CPU 使用率|60%||
 |平均メモリ使用率|75%||
 |使用済みディスク領域|75%||
 |平均ネットワーク 使用率|25%
-|**トピック**:**スタッフ**|||
+|**トピック** : **スタッフ**|||
 |管理者数|2||
 |開発者数|10||
 |エンド ユーザー数|100||
 |スキル|Hadoop、Spark||
 |移行作業に使用可能なリソース数|2||
-|**トピック**:**制限事項**|||
+|**トピック** : **制限事項**|||
 |現在の制限|待機時間が長い||
 |現在の課題|コンカレンシーの問題||
 
@@ -165,18 +165,18 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 |**質問**|**例**|**回答**|
 |---|---|---|
-|**トピック**:**インフラストラクチャ** |||
+|**トピック** : **インフラストラクチャ** |||
 | 優先リージョン|米国東部||
 |VNet を推奨しますか?|はい||
 |HA / DR が必要?|はい||
 |他のクラウド サービスと統合しますか?|ADF、CosmosDB||
-|**トピック**: **データの移動**  |||
+|**トピック** : **データの移動**  |||
 |初期読み込みの基本設定|DistCp、データ ボックス、ADF WANDisco||
 |データ転送の差分|DistCp、AzCopy||
 |進行中の増分のデータ転送|DistCp、Sqoop||
-|**トピック**: **監視とアラート** |||
+|**トピック** : **監視とアラート** |||
 |Azure 監視とアラートまたは統合サード パーティ監視の使用|Azure 監視とアラートの使用||
-|**トピック**: **セキュリティ設定** |||
+|**トピック** : **セキュリティ設定** |||
 |プライベートな保護済みのデータ パイプラインですか?|はい||
 |ドメイン参加済みクラスター (ESP) ですか?|     はい||
 |クラウドへのオンプレミス AD Sync ですか?|     はい||
@@ -185,11 +185,11 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |クラウドのみのユーザー?|                 はい||
 |MFA が必要ですか?|                       いいえ|| 
 |データの承認要件ですか?|  はい||
-|ロール ベースのアクセス制御?|        はい||
+|ロールベースのアクセス制御ですか?|        はい||
 |監査が必要ですか?|                  はい||
 |保存データの暗号化ですか?|          はい||
 |転送中のデータの暗号化ですか?|       はい||
-|**トピック**: **再アーキテクチャの設定** |||
+|**トピック** : **再アーキテクチャの設定** |||
 |1 つのクラスターまたは特定のクラスターの種類|特定のクラスターの種類||
 |併置されたストレージまたはリモート ストレージのどちらを指定するか?|リモート ストレージ||
 |データをリモートに保管するときにクラスター サイズを小さくするか?|クラスター サイズを小さくする||

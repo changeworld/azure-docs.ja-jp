@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273145"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310951"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio でデータ コントローラーを作成する
 
@@ -25,8 +25,8 @@ ms.locfileid: "91273145"
 ## <a name="prerequisites"></a>前提条件
 
 - Kubernetes クラスターにアクセスし、デプロイ先の Kubernetes クラスターを示すように kubeconfig ファイルを構成しておく必要があります。
-- [クライアント ツール](install-client-tools.md) (**Azure Arc** や **Azure Data CLI** と呼ばれる **Azure Data Studio** の拡張機能 など) をインストールする必要があります。
-- Azure Data Studio で Azure にログインする必要があります。  これを行うには、「CTRL/Command + SHIFT + P」と入力してコマンド テキスト ウィンドウを開き、「**Azure**」と入力します。  **Azure:サインイン**」を検索して選びます。   パネルの右上にある [+] アイコンをクリックして、Azure アカウントを追加します。
+- [クライアント ツールをインストールする](install-client-tools.md)必要があります。ツールには、 **Azure Data Studio** と、 **Azure Arc** と **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** という名前の Azure Data Studio 拡張機能が含まれます。
+- Azure Data Studio で Azure にログインする必要があります。  これを行うには、「CTRL/Command + SHIFT + P」と入力してコマンド テキスト ウィンドウを開き、「 **Azure** 」と入力します。  **Azure:サインイン** 」を検索して選びます。   パネルの右上にある [+] アイコンをクリックして、Azure アカウントを追加します。
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>展開ウィザードを使用して Azure Arc データ コントローラーをデプロイする
 
@@ -50,7 +50,7 @@ ms.locfileid: "91273145"
 10. Azure の場所を選択します。
    
 > [!NOTE]
-> ここで選択した Azure の場所は、データ コントローラーと管理されるデータベース インスタンスに関する*メタデータ*が格納される Azure 内の場所です。  実際には、データ コントローラーとデータベース インスタンスは、その場所がどこにあるのかに関係なく、Kubernetes クラスターに作成されます。
+> ここで選択した Azure の場所は、データ コントローラーと管理されるデータベース インスタンスに関する *メタデータ* が格納される Azure 内の場所です。  実際には、データ コントローラーとデータベース インスタンスは、その場所がどこにあるのかに関係なく、Kubernetes クラスターに作成されます。
 
 11.  ユーザー名とパスワードを入力し、データ コントローラー管理者ユーザー アカウントのパスワードを確認します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91273145"
 
 1.  **[次へ]** をクリックします。
 2.  **[ノートブックへのスクリプト]** をレビューしてクリックします。
-3.  **生成されたノートブックをレビューします**。  必要な変更 (ストレージ クラス名やサービスの種類など) を行います。
+3.  **生成されたノートブックをレビューします** 。  必要な変更 (ストレージ クラス名やサービスの種類など) を行います。
 4.  ノートブックの上部にある **[すべて実行]** をクリックします。
 
 ## <a name="monitoring-the-creation-status"></a>作成状態の監視

@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074262"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132484"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -17,7 +17,7 @@ Azure Policy によってリソースの規則が確立されます。 ポリシ
 
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、リソースに特定のタグを付けることを必須にすることもできます。 ポリシー割り当ては、子リソースによって継承されます。 リソース グループにポリシー割り当てが適用されると、そのリソース グループ内のすべてのリソースに適用されます。
 
-ポリシー定義の _policyRule_ スキーマは、[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
+ポリシー定義の _policyRule_ スキーマは、 [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
@@ -72,10 +72,10 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ## <a name="display-name-and-description"></a>表示名と説明
 
-**displayName** と **description** を使用して、ポリシー定義を識別し、定義が使用される際のコンテキストを指定します。 **displayName** の最大長は _128_ 文字で、**description** の最大長は _512_ 文字です。
+**displayName** と **description** を使用して、ポリシー定義を識別し、定義が使用される際のコンテキストを指定します。 **displayName** の最大長は _128_ 文字で、 **description** の最大長は _512_ 文字です。
 
 > [!NOTE]
-> ポリシー定義の作成または更新時、JSON の範囲外のプロパティにより **ID**、**型**、**名前**が定義され、JSON ファイルでは不要となります。 SDK 経由でポリシー定義を取得すると、JSON の一部として **ID**、**型**、**名前**プロパティが返されますが、いずれもポリシー定義に関連する読み取り専用情報となります。
+> ポリシー定義の作成または更新時、JSON の範囲外のプロパティにより **ID** 、 **型** 、 **名前** が定義され、JSON ファイルでは不要となります。 SDK 経由でポリシー定義を取得すると、JSON の一部として **ID** 、 **型** 、 **名前** プロパティが返されますが、いずれもポリシー定義に関連する読み取り専用情報となります。
 
 ## <a name="type"></a>Type
 
@@ -83,7 +83,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 - `Builtin`:これらのポリシー定義は、Microsoft によって提供および管理されます。
 - `Custom`:顧客によって作成されるすべてのポリシー定義にこの値があります。
-- `Static`:Microsoft に**所有権**がある[規制に関するコンプライアンス ポリシー](./regulatory-compliance.md)を示します。 これらのポリシー定義のコンプライアンス結果は、Microsoft インフラストラクチャでのサード パーティの監査の結果です。 Azure portal では、この値は **Microsoft マネージド**として表示されることがあります。 詳細については、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
+- `Static`:Microsoft に **所有権** がある [規制に関するコンプライアンス ポリシー](./regulatory-compliance.md)を示します。 これらのポリシー定義のコンプライアンス結果は、Microsoft インフラストラクチャでのサード パーティの監査の結果です。 Azure portal では、この値は **Microsoft マネージド** として表示されることがあります。 詳細については、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
 ## <a name="mode"></a>モード
 
@@ -98,19 +98,19 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 たとえば、リソース `Microsoft.Network/routeTables` では、タグと場所がサポートされ、両方のモードで評価されます。 ただし、リソース `Microsoft.Network/routeTables/routes` は、タグ付けできず、`Indexed` モードでは評価されません。
 
-ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
+ほとんどの場合、 **mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、 **mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
-タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**と**サブスクリプション**です。 リソース グループまたはサブスクリプションに対して場所またはタグを適用するポリシー定義では、**mode**を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型または `Microsoft.Resources/subscriptions` 型をターゲットにする必要があります。 例については、「[パターン: タグ - サンプル 1](../samples/pattern-tags.md)」を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
+タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は **リソース グループ** と **サブスクリプション** です。 リソース グループまたはサブスクリプションに対して場所またはタグを適用するポリシー定義では、 **mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型または `Microsoft.Resources/subscriptions` 型をターゲットにする必要があります。 例については、「[パターン: タグ - サンプル 1](../samples/pattern-tags.md)」を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
 
 ### <a name="resource-provider-modes"></a>リソース プロバイダーのモード
 
 次のリソース プロバイダーのモードが完全にサポートされています。
 
-- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" です。
+- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_ 、 _deny_ 、および _disabled_ を使用します。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は " _非推奨_ " です。
 
-現在、**プレビュー**として次のリソース プロバイダー モードがサポートされています。
+現在、 **プレビュー** として次のリソース プロバイダー モードがサポートされています。
 
-- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用する定義では、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。 このモデルは "_非推奨_" です。
+- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用する定義では、 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する **必要があります** 。 このモデルは " _非推奨_ " です。
 - [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。 これらのポリシー定義の詳細については、「[Azure Key Vault と Azure Policy を統合する](../../../key-vault/general/azure-policy.md)」を参照してください。
 
 > [!NOTE]
@@ -118,7 +118,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ## <a name="metadata"></a>Metadata
 
-オプションの `metadata` プロパティには、ポリシー定義に関する情報が格納されています。 お客様は `metadata` で組織にとって有用なすべてのプロパティと値を定義できます。 ただし、Azure Policy と組み込みで使用される_一般的_なプロパティがいくつかあります。
+オプションの `metadata` プロパティには、ポリシー定義に関する情報が格納されています。 お客様は `metadata` で組織にとって有用なすべてのプロパティと値を定義できます。 ただし、Azure Policy と組み込みで使用される _一般的_ なプロパティがいくつかあります。
 
 ### <a name="common-metadata-properties"></a>一般的なメタデータのプロパティ
 
@@ -128,7 +128,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `deprecated` (boolean):ポリシー定義が _deprecated_ とマークされているかどうかを示す true または false フラグです。
 
 > [!NOTE]
-> Azure Policy サービスは、`version`、`preview`、`deprecated` の各プロパティを使用して、組み込みのポリシー定義に対する変更のレベルや取り組み、状態を伝えます。 `version` の形式は `{Major}.{Minor}.{Patch}` です。 特定の状態 (_deprecated_、_preview_ など) は、`version` プロパティに追加されるほか、別のプロパティに **boolean** として追加されます。 Azure Policy が組み込みをバージョン管理する方法の詳細については、[組み込みのバージョン管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)に関する記事を参照してください。
+> Azure Policy サービスは、`version`、`preview`、`deprecated` の各プロパティを使用して、組み込みのポリシー定義に対する変更のレベルや取り組み、状態を伝えます。 `version` の形式は `{Major}.{Minor}.{Patch}` です。 特定の状態 ( _deprecated_ 、 _preview_ など) は、`version` プロパティに追加されるほか、別のプロパティに **boolean** として追加されます。 Azure Policy が組み込みをバージョン管理する方法の詳細については、[組み込みのバージョン管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)に関する記事を参照してください。
 
 ## <a name="parameters"></a>パラメーター
 
@@ -136,24 +136,24 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
 > [!NOTE]
-> パラメーターは、既存の割り当て済み定義に追加できます。 新しいパラメーターには、**defaultValue** プロパティを含める必要があります。 これにより、ポリシーまたはイニシアティブの既存の割り当てが間接的に無効になることを防ぎます。
+> パラメーターは、既存の割り当て済み定義に追加できます。 新しいパラメーターには、 **defaultValue** プロパティを含める必要があります。 これにより、ポリシーまたはイニシアティブの既存の割り当てが間接的に無効になることを防ぎます。
 
 ### <a name="parameter-properties"></a>パラメーターのプロパティ
 
 パラメーターには、ポリシー定義内で使用される次のプロパティがあります。
 
 - `name`:お使いのパラメーターの名前。 ポリシー規則内の `parameters` デプロイ関数によって使用されます。 詳しくは、[パラメーター値の使用](#using-a-parameter-value)に関するページをご覧ください。
-- `type`:パラメーターが **string**、**array**、**object**、**boolean**、**integer**、**float** **datetime** のどれであるかを決定します。
+- `type`:パラメーターが **string** 、 **array** 、 **object** 、 **boolean** 、 **integer** 、 **float** **datetime** のどれであるかを決定します。
 - `metadata`:Azure portal によって主に使用されるサブプロパティを定義して、ユーザー フレンドリな情報を表示します。
   - `description`:パラメーターが何に使用されるかの説明。 許可される値の例を提示するために使用できます。
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
   - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
-  - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
+  - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、 _true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
 - `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。
   割り当てられている既存のポリシー定義を更新するときは、必須です。
 - `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。
 
-たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
+たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、 **allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
 
 ```json
 "parameters": {
@@ -185,17 +185,17 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 }
 ```
 
-このサンプルでは、「[パラメーターのプロパティ](#parameter-properties)」に示されていた **allowedLocations** パラメーターを参照します。
+このサンプルでは、「 [パラメーターのプロパティ](#parameter-properties)」に示されていた **allowedLocations** パラメーターを参照します。
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
+`metadata` プロパティの中で、 **strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる " _リソースの種類_ " または許可される値を指定できます。 ある " _リソースの種類_ " が **strongType** に対して有効かどうかを確認するには、 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
 
-**Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 その種類には、次のようなものがあります。
+**Get-AzResourceProvider** によって返されない一部の " _リソースの種類_ " もサポートされています。 その種類には、次のようなものがあります。
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
-"_リソースの種類_" でない **strongType** の許可される値には、次のものがあります。
+" _リソースの種類_ " でない **strongType** の許可される値には、次のものがあります。
 
 - `location`
 - `resourceTypes`
@@ -209,16 +209,16 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 定義の場所が:
 
-- **サブスクリプション**の場合 - そのサブスクリプション内のリソースだけをポリシー定義に割り当てることができます。
-- **管理グループ**の場合 - 子管理グループと子サブスクリプション内のリソースだけをポリシー定義に割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する予定がある場合、その場所は各サブスクリプションを含む管理グループである必要があります。
+- **サブスクリプション** の場合 - そのサブスクリプション内のリソースだけをポリシー定義に割り当てることができます。
+- **管理グループ** の場合 - 子管理グループと子サブスクリプション内のリソースだけをポリシー定義に割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する予定がある場合、その場所は各サブスクリプションを含む管理グループである必要があります。
 
 詳細については、「[Azure Policy でのスコープについて](./scope.md#definition-location)」を参照してください。
 
 ## <a name="policy-rule"></a>ポリシー規則
 
-ポリシー規則は、**If** と **Then** ブロックで構成されています。 **If** ブロックでは、いつポリシーが適用されるかを指定する、1 つ以上の条件を定義します。 これらの条件に論理演算子を適用して、ポリシーのシナリオを細かく定義することができます。
+ポリシー規則は、 **If** と **Then** ブロックで構成されています。 **If** ブロックでは、いつポリシーが適用されるかを指定する、1 つ以上の条件を定義します。 これらの条件に論理演算子を適用して、ポリシーのシナリオを細かく定義することができます。
 
-**Then** ブロックでは、**If** 条件が満たされる場合に生じる効果を定義します。
+**Then** ブロックでは、 **If** 条件が満たされる場合に生じる効果を定義します。
 
 ```json
 {
@@ -239,9 +239,9 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `"allOf": [{condition or operator},{condition or operator}]`
 - `"anyOf": [{condition or operator},{condition or operator}]`
 
-**not** 構文は、条件の結果を反転します。 **allOf** 構文 (**And** 論理演算に似ています) では、すべての条件が真である必要があります。 **anyOf** 構文 (**Or** 論理演算に似ています) では、1 つ以上の条件が真である必要があります。
+**not** 構文は、条件の結果を反転します。 **allOf** 構文 ( **And** 論理演算に似ています) では、すべての条件が真である必要があります。 **anyOf** 構文 ( **Or** 論理演算に似ています) では、1 つ以上の条件が真である必要があります。
 
-論理演算子は、入れ子にすることができます。 次の例は、**allOf** 演算内で入れ子になっている **not** 演算を示しています。
+論理演算子は、入れ子にすることができます。 次の例は、 **allOf** 演算内で入れ子になっている **not** 演算を示しています。
 
 ```json
 "if": {
@@ -261,7 +261,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="conditions"></a>条件
 
-条件では、**field** または **value** アクセサーが特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
+条件では、 **field** または **value** アクセサーが特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -284,14 +284,14 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
   `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-**less**、**lessOrEquals**、**greater**、**greaterOrEquals** では、プロパティの種類が条件の種類と一致しない場合、エラーがスローされます。 文字列比較は、`InvariantCultureIgnoreCase` を使用して行われます。
+**less** 、 **lessOrEquals** 、 **greater** 、 **greaterOrEquals** では、プロパティの種類が条件の種類と一致しない場合、エラーがスローされます。 文字列比較は、`InvariantCultureIgnoreCase` を使用して行われます。
 
 **like** 条件と **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
 値に複数のワイルドカード (`*`) を指定することはできません。
 
-**match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。 **match** と **notMatch** では大文字と小文字が区別されますが、_stringValue_ を評価するその他すべての条件では大文字と小文字が区別されません。 大文字と小文字が区別されない代替手段は、**matchInsensitively** と **notMatchInsensitively** で使用できます。
+**match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。 **match** と **notMatch** では大文字と小文字が区別されますが、 _stringValue_ を評価するその他すべての条件では大文字と小文字が区別されません。 大文字と小文字が区別されない代替手段は、 **matchInsensitively** と **notMatchInsensitively** で使用できます。
 
-**\[\*\] エイリアス**配列フィールド値では、配列内の各要素は、要素間で論理**積**を使用して個別に評価されます。 詳細については、「[\[\*\] エイリアスの評価](../how-to/author-policies-for-arrays.md#evaluating-the--alias)」を参照してください。
+**\[\*\] エイリアス** 配列フィールド値では、配列内の各要素は、要素間で論理 **積** を使用して個別に評価されます。 詳細については、「[\[\*\] エイリアスの評価](../how-to/author-policies-for-arrays.md#evaluating-the--alias)」を参照してください。
 
 ### <a name="fields"></a>フィールド
 
@@ -315,7 +315,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `tags['<tagName>']`
   - この角かっこ構文では、ハイフン、ピリオド、スペースなどの区切り記号を含むタグ名がサポートされます。
   - **\<tagName\>** は、条件を検証するタグの名前です。
-  - 例: `tags['Acct.CostCenter']` (**Acct.CostCenter** がタグの名前)。
+  - 例: `tags['Acct.CostCenter']` ( **Acct.CostCenter** がタグの名前)。
 - `tags['''<tagName>''']`
   - この角かっこ構文では、2 個のアポストロフィでエスケープすることにより、アポストロフィが含まれるタグ名がサポートされます。
   - **'\<tagName\>'** は、条件を検証するタグの名前です。
@@ -329,7 +329,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 パラメーター値をタグ フィールドに渡すことができます。 タグ フィールドにパラメーターを渡すと、ポリシー割り当ての間のポリシー定義の柔軟性が向上します。
 
-次の例では、`concat` を使用して、**tagName** パラメーターの値で指定されているタグのタグ フィールド参照が作成されています。 そのタグが存在しない場合は、**modify** 効果が使用され、`resourcegroup()` 参照関数を使用することにより監査対象のリソースの親リソース グループで設定されている同じ名前付きタグの値を使用してタグが追加されます。
+次の例では、`concat` を使用して、 **tagName** パラメーターの値で指定されているタグのタグ フィールド参照が作成されています。 そのタグが存在しない場合は、 **modify** 効果が使用され、`resourcegroup()` 参照関数を使用することにより監査対象のリソースの親リソース グループで設定されている同じ名前付きタグの値を使用してタグが追加されます。
 
 ```json
 {
@@ -355,14 +355,14 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="value"></a>値
 
-条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
+条件は、 **value** を使用して形成することもできます。 **value** では、 [パラメーター](#parameters)、 [サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。 **value** は、サポートされる任意の [条件](#conditions)と組み合わせられます。
 
 > [!WARNING]
-> _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、[enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。
+> _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、 [enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。
 
 #### <a name="value-examples"></a>値の例
 
-このポリシー規則の例では、**value** を使用して `resourceGroup()` 関数の結果と `*netrg` の **like** 条件に対して返された **name** プロパティを比較します。 規則では、名前が `*netrg` で終わる任意のリソース グループ内で `Microsoft.Network/*` の **type** ではないリソースをすべて拒否します。
+このポリシー規則の例では、 **value** を使用して `resourceGroup()` 関数の結果と `*netrg` の **like** 条件に対して返された **name** プロパティを比較します。 規則では、名前が `*netrg` で終わる任意のリソース グループ内で `Microsoft.Network/*` の **type** ではないリソースをすべて拒否します。
 
 ```json
 {
@@ -383,7 +383,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 }
 ```
 
-このポリシー規則の例では、**value** を使用して、複数の入れ子になった関数の結果が `true` と **equals** になるかをチェックします。 規則では、3 つ以上のタグを持たないリソースをすべて拒否します。
+このポリシー規則の例では、 **value** を使用して、複数の入れ子になった関数の結果が `true` と **equals** になるかをチェックします。 規則では、3 つ以上のタグを持たないリソースをすべて拒否します。
 
 ```json
 {
@@ -402,7 +402,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 #### <a name="avoiding-template-failures"></a>テンプレート エラーの回避
 
-**value** で_テンプレート関数_を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
+**value** で _テンプレート関数_ を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
 
 ```json
 {
@@ -418,9 +418,9 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 }
 ```
 
-上述のポリシー規則の例では、[substring()](../../../azure-resource-manager/templates/template-functions-string.md#substring) を使用して **name** の最初の 3 文字を **abc** と比較しています。 **name** が 3 文字よりも短い場合、`substring()` 関数はエラーとなります。 このエラーにより、ポリシーは **deny** となります。
+上述のポリシー規則の例では、 [substring()](../../../azure-resource-manager/templates/template-functions-string.md#substring) を使用して **name** の最初の 3 文字を **abc** と比較しています。 **name** が 3 文字よりも短い場合、`substring()` 関数はエラーとなります。 このエラーにより、ポリシーは **deny** となります。
 
-3 文字よりも短い [name](../../../azure-resource-manager/templates/template-functions-logical.md#if) をエラーにせず、**name** の最初の 3 文字が **abc** と等しいかどうかを確認するには、代わりに **if()** 関数を使用します。
+3 文字よりも短い [name](../../../azure-resource-manager/templates/template-functions-logical.md#if) をエラーにせず、 **name** の最初の 3 文字が **abc** と等しいかどうかを確認するには、代わりに **if()** 関数を使用します。
 
 ```json
 {
@@ -436,11 +436,11 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 }
 ```
 
-変更したポリシー規則では、3 文字未満の値の `if()` を取得する前に、**によって**name `substring()`の長さが確認されます。 **name** が短すぎる場合、代わりに "not starting with abc"\(abc で開始されていません\) が返され、**abc** と比較されます。 **abc** で開始しない短い名前のリソースも、ポリシー規則でエラーとなりますが、評価時にはエラーが発生しなくなります。
+変更したポリシー規則では、3 文字未満の値の `if()` を取得する前に、 **によって** name `substring()`の長さが確認されます。 **name** が短すぎる場合、代わりに "not starting with abc"\(abc で開始されていません\) が返され、 **abc** と比較されます。 **abc** で開始しない短い名前のリソースも、ポリシー規則でエラーとなりますが、評価時にはエラーが発生しなくなります。
 
 ### <a name="count"></a>Count
 
-条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、**count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式の各 [\[\*\] alias](#understanding-the--alias) 配列メンバーを評価して _true_ の結果を合計し、式の演算子と比較します。 **count** 式は 1 つの **policyRule** 定義に最大 3 回まで追加できます。
+条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、 **count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式の各 [\[\*\] alias](#understanding-the--alias) 配列メンバーを評価して _true_ の結果を合計し、式の演算子と比較します。 **count** 式は 1 つの **policyRule** 定義に最大 3 回まで追加できます。
 
 **count** 式の構造は次の通りです。
 
@@ -459,9 +459,9 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 **count** では、次のプロパティを使用します。
 
 - **count.field** (必須):配列へのパスを含みます。また、配列のエイリアスである必要があります。 配列が含まれていない場合、式の評価は _false_ となり、条件式は考慮されません。
-- **count.where** (オプション):**count.field** の [\[\*\] alias](#understanding-the--alias) の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、"field" のパスを持つすべての配列メンバーの評価は _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。
+- **count.where** (オプション): **count.field** の [\[\*\] alias](#understanding-the--alias) の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、"field" のパスを持つすべての配列メンバーの評価は _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。
   このプロパティ内では、[論理演算子](#logical-operators)を使用して複雑な評価要件を作成できます。
-- **\<condition\>** (必須):値は、**count.where** 条件式を満たした項目数と比較されます。 数値の[条件](../concepts/definition-structure.md#conditions)を使用する必要があります。
+- **\<condition\>** (必須):値は、 **count.where** 条件式を満たした項目数と比較されます。 数値の[条件](../concepts/definition-structure.md#conditions)を使用する必要があります。
 
 #### <a name="count-examples"></a>カウントの例
 
@@ -553,12 +553,12 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 Azure Policy では、次の種類の効果をサポートしています。
 
 - **append** は定義済みのフィールド セットを要求に追加します。
-- **Audit**: アクティビティ ログ内に警告イベントを生成しますが、要求は失敗しません。
-- **AuditIfNotExists**: 関連するリソースが存在しない場合、アクティビティ ログに警告イベントを生成します
+- **Audit** : アクティビティ ログ内に警告イベントを生成しますが、要求は失敗しません。
+- **AuditIfNotExists** : 関連するリソースが存在しない場合、アクティビティ ログに警告イベントを生成します
 - **Deny** はアクティビティ ログでイベントを生成し、要求は失敗します
-- **DeployIfNotExists**: 関連するリソースが存在しない場合、リソースをデプロイします
-- **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
-- **Modify**: リソースで定義されているタグを追加、更新、または削除します。
+- **DeployIfNotExists** : 関連するリソースが存在しない場合、リソースをデプロイします
+- **Disabled** : リソースがポリシー規則に準拠しているかどうかを評価しません。
+- **Modify** : リソースで定義されているタグを追加、更新、または削除します。
 - **EnforceOPAConstraint** (非推奨): Azure 上の自己管理型 Kubernetes クラスター用に、Gatekeeper v3 を使用して Open Policy Agent アドミッション コントローラーを構成します
 - **EnforceRegoPolicy** (非推奨): Azure Kubernetes Service で Gatekeeper v2 を使用して Open Policy Agent アドミッション コントローラーを構成します
 
@@ -579,7 +579,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 - variables()
 
 > [!NOTE]
-> これらの関数は、**deployIfNotExists** ポリシー定義のテンプレートのデプロイの `details.deployment.properties.template` の部分で引き続き使用できます。
+> これらの関数は、 **deployIfNotExists** ポリシー定義のテンプレートのデプロイの `details.deployment.properties.template` の部分で引き続き使用できます。
 
 次の関数は、ポリシー規則で使用できますが、Azure Resource Manager テンプレート (ARM テンプレート) での使用方法とは異なります。
 
@@ -589,10 +589,10 @@ Azure Policy では、次の種類の効果をサポートしています。
 次の関数は、ポリシー ルールでのみ使用できます。
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 `yyyy-MM-ddTHH:mm:ss.fffffffZ` の文字列。
-  - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数。
+  - **dateTime** : [必須] 文字列 - ユニバーサル ISO 8601 日時形式 "yyyy-MM-ddTHH:mm:ss.FFFFFFFZ" の文字列
+  - **numberOfDaysToAdd** : [必須] 整数 - 追加する日数
 - `field(fieldName)`
-  - **fieldName**: [必須] 文字列 - 取得する[フィールド](#fields)の名前
+  - **fieldName** : [必須] 文字列 - 取得する [フィールド](#fields)の名前
   - If 条件による評価の対象となっている、リソースのそのフィールドの値を返します。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 - `requestContext().apiVersion`
@@ -612,8 +612,8 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 
 - `ipRangeContains(range, targetRange)`
-    - **range**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
-    - **targetRange**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
+    - **range** : [必須] 文字列 - IP アドレスの範囲を指定する文字列。
+    - **targetRange** : [必須] 文字列 - IP アドレスの範囲を指定する文字列。
 
     指定した IP アドレスの範囲にターゲット IP アドレスの範囲が含まれているかどうかを返します。 空の範囲、または IP ファミリ間の混合は許可されておらず、評価エラーが発生します。
 
@@ -655,7 +655,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 - Azure Resource Graph
 
-  `project` 演算子を使用して、リソースの **エイリアス**を表示します。
+  `project` 演算子を使用して、リソースの **エイリアス** を表示します。
 
   ```kusto
   Resources
@@ -718,8 +718,8 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 "通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。
 
-**\[\*\]** エイリアスにより、配列内の各要素の値および各要素の特定のプロパティとの比較が可能になります。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 もっと複雑なシナリオでは、[count](#count) 条件式を使用します。 例では、**ipRules\[\*\]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP の _value_ は検証されません。
-このサンプル規則では、**ipRules\[\*\].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
+**\[\*\]** エイリアスにより、配列内の各要素の値および各要素の特定のプロパティとの比較が可能になります。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 もっと複雑なシナリオでは、[count](#count) 条件式を使用します。 例では、 **ipRules\[\*\]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP の _value_ は検証されません。
+このサンプル規則では、 **ipRules\[\*\].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、 **effectType** が適用されます。
 
 ```json
 "policyRule": {

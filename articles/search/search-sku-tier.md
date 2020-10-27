@@ -1,23 +1,23 @@
 ---
-title: 価格レベル または SKU を選択する
+title: Choose a pricing tier
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search をプロビジョニングできる SKU は、Free、Basic、および Standard です。Standard は、さまざまなリソース構成および容量レベルで使用できます。
+description: Azure Cognitive Search をプロビジョニングできるレベルは、Free、Basic、および Standard です。Standard は、さまざまなリソース構成および容量レベルで使用できます。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948087"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101275"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
-Azure Cognitive Search サービスを作成すると、サービスの有効期間にわたって固定される価格レベル (つまり SKU) で[リソースが作成](search-create-service-portal.md)されます。 レベルには、Free、Basic、Standard、および Storage Optimized があります。 Standard と Storage Optimized は、いくつかの構成および容量で利用できます。
+Azure Cognitive Search サービスを作成すると、サービスの有効期間にわたって固定される価格レベルで[リソースが作成](search-create-service-portal.md)されます。 レベルには、Free、Basic、Standard、および Storage Optimized があります。 Standard と Storage Optimized は、いくつかの構成および容量で利用できます。
 
 ほとんどのお客様は、サービスを評価できるように、Free レベルから始めます。 評価後には、開発および運用環境用のデプロイのために上位レベルのいずれかに 2 つ目のサービスを作成するのが一般的です。
 
@@ -27,30 +27,30 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 
 | 機能 | 制限事項 |
 |---------|-------------|
-| [インデクサー](search-indexer-overview.md) | インデクサーは S3 HD では使用できません。 |
+| [インデクサー](search-indexer-overview.md) | インデクサーは S3 HD では使用できません。  |
 | [AI エンリッチメント](search-security-manage-encryption-keys.md) | Free レベルで実行されますが、推奨されていません。 |
 | [顧客が管理する暗号化キー](search-security-manage-encryption-keys.md) | Free レベルでは使用できません。 |
 | [IP ファイアウォール アクセス](service-configure-firewall.md) | Free レベルでは使用できません。 |
-| [Azure Private Link との統合](service-create-private-endpoint.md) | Free レベルでは使用できません。 |
+| [プライベート エンドポイント (Azure Private Link との統合)](service-create-private-endpoint.md) | 検索サービスへの受信接続の場合、Free レベルでは利用できません。 インデクサーによる他の Azure リソースへの送信接続の場合は、Free または S3 HD では使用できません。 スキルセットを使用するインデクサーの場合、Free、Basic、S1、S3 HD では使用できません。|
 
 ほとんどの機能は Free を含むすべてのレベルで利用できますが、リソースを集中的に使用する機能は、十分な容量が提供されない場合、適切に機能しない可能性があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 
-## <a name="tiers-skus"></a>レベル (SKU)
+## <a name="tiers"></a>層
 
 レベルは次の方法で区別されます。
 
 + インデックスおよびインデクサーの数量 (上限)
 + パーティション (物理ストレージ) のサイズと速度
 
-選択したレベルによって課金対象のレートが決まります。 次の Azure portal のスクリーンショットは、使用可能なレベルを示しています。価格は除外されていますが、ポータルと[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)で確認できます。 最も一般的なレベルは、**Free**、**Basic**、**Standard** です。
+選択したレベルによって課金対象のレートが決まります。 次の Azure portal のスクリーンショットは、使用可能なレベルを示しています。価格は除外されていますが、ポータルと[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)で確認できます。 最も一般的なレベルは、 **Free** 、 **Basic** 、 **Standard** です。
 
 **Free** は、クイックスタートやチュートリアルなど、小規模なプロジェクト用の限定された検索サービスを作成します。 内部的には、複数のサブスクライバー間でレプリカとパーティションが共有されます。 無料のサービスをスケーリングしたり、重要なワークロードを実行したりすることはできません。
 
-**Basic** と **Standard** は最も一般的に使用される課金対象のレベルで、**Standard** が既定値になっています。 自分の制御下の専用リソースを使用して、より大規模なプロジェクトのデプロイ、パフォーマンスの最適化、および容量の設定を行うことができます。
+**Basic** と **Standard** は最も一般的に使用される課金対象のレベルで、 **Standard** が既定値になっています。 自分の制御下の専用リソースを使用して、より大規模なプロジェクトのデプロイ、パフォーマンスの最適化、および容量の設定を行うことができます。
 
 ![Azure Cognitive Search の価格レベル](media/search-sku-tier/tiers.png "Azure Cognitive Search の価格レベル")
 
-一部のレベルは、特定の種類の作業向けに最適化されています。 たとえば、**Standard 3 High Density (S3 HD)** は、S3 用の "*ホスティング モード*" で、基になるハードウェアが多数の小さいインデックス用に最適化されており、マルチテナント シナリオ向けです。 S3 HD のユニットあたりの料金は S3 と同じですが、ハードウェアは数多くの小さいインデックスでの高速ファイル読み取り用に最適化されています。
+一部のレベルは、特定の種類の作業向けに最適化されています。 たとえば、 **Standard 3 High Density (S3 HD)** は、S3 用の " *ホスティング モード* " で、基になるハードウェアが多数の小さいインデックス用に最適化されており、マルチテナント シナリオ向けです。 S3 HD のユニットあたりの料金は S3 と同じですが、ハードウェアは数多くの小さいインデックスでの高速ファイル読み取り用に最適化されています。
 
 **Storage Optimized** レベルでは、Standard レベルより安い TB あたりの価格で、大容量のストレージが提供されます。 主なトレードオフとしてクエリの待ち時間が長くなるので、特定のアプリケーションの要件に対して妥当かどうかを確認する必要があります。  このレベルのパフォーマンスに関する考慮事項の詳細については、[パフォーマンスと最適化の考慮事項](search-performance-optimization.md)に関するページを参照してください。
 
@@ -98,7 +98,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 | 操作 | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | Free |
-| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
+| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成** で、 [imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
 | [組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 |
 | カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。 |
 
@@ -108,9 +108,9 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 ## <a name="billing-formula-r-x-p--su"></a>請求式 (R x P = SU)
 
-Azure Cognitive Search の操作について理解するための最も重要な課金の概念は、"*検索ユニット*" (SU) です。 Azure Cognitive Search は、インデックス作成とクエリについてレプリカとパーティションの両方に依存しているため、この片方のみを基準に課金しても意味がありません。 このため、この両方を合わせた単位に基づいて課金されます。
+Azure Cognitive Search の操作について理解するための最も重要な課金の概念は、" *検索ユニット* " (SU) です。 Azure Cognitive Search は、インデックス作成とクエリについてレプリカとパーティションの両方に依存しているため、この片方のみを基準に課金しても意味がありません。 このため、この両方を合わせた単位に基づいて課金されます。
 
-SU は、サービスによって使用される "*レプリカ*" と "*パーティション*" の積です **(R x P = SU)** 。
+SU は、サービスによって使用される " *レプリカ* " と " *パーティション* " の積です **(R x P = SU)** 。
 
 すべてのサービスは、最小値として、1 SU (1 つのレプリカと 1 つのパーティションの積) から開始します。 どのサービスも、最大値は 36 SU です。 この最大値に達するパターンは、いくつかあります。たとえば、6 パーティション x 6 レプリカ、3 パーティション x 12 レプリカなどです。 一般には、総容量よりも少ない量を使用します (たとえば、3 レプリカと 3 パーティションのサービスで、9 SU の課金)。 有効な組み合わせについては、「[パーティションとレプリカの組み合わせ](search-capacity-planning.md#chart)」の表を参照してください。
 
@@ -138,11 +138,11 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>容量の要件を評価する方法
 
-Azure Cognitive Search では、容量は*レプリカ*と*パーティション*で構成されています。
+Azure Cognitive Search では、容量は *レプリカ* と *パーティション* で構成されています。
 
 + レプリカは、検索サービスのインスタンスです。 各レプリカは、負荷分散されたインデックスのコピーを 1 つホストします。 たとえば、6 つのレプリカが存在するサービスでは、各インデックスの 6 つのコピーがサービスに読み込まれています。
 
-+ パーティションにインデックスが格納され、検索可能なデータが自動的に分割されます。 パーティションが 2 つの場合、インデックスは 2 つに分割され、パーティションが 3 つの場合は 3 分の 1 に分割されるといったぐあいです。 容量の点では、"*パーティション サイズ*" が、レベル間で大きな違いのある機能です。
++ パーティションにインデックスが格納され、検索可能なデータが自動的に分割されます。 パーティションが 2 つの場合、インデックスは 2 つに分割され、パーティションが 3 つの場合は 3 分の 1 に分割されるといったぐあいです。 容量の点では、" *パーティション サイズ* " が、レベル間で大きな違いのある機能です。
 
 > [!NOTE]
 > すべての Standard および Storage Optimized レベルで、[レプリカとパーティションを柔軟に組み合わせる](search-capacity-planning.md#chart)ことができます。そのバランスを変更することにより、[システムを速度またはストレージ量の点で最適化](search-performance-optimization.md)できます。 Basic レベルでは、最大で 3 つのレプリカが使用できるため可用性が高くなりますが、パーティションは 1 つのみです。 Free レベルでは、専用のリソースが提供されません。コンピューティング リソースは複数のサブスクライバー間で共用されます。
@@ -158,7 +158,7 @@ Azure Cognitive Search では、容量は*レプリカ*と*パーティション
 全文検索の場合、主要データ構造は[転置インデックス](https://en.wikipedia.org/wiki/Inverted_index)構造であり、ソース データとは異なる特性があります。 転置インデックスのサイズと複雑性はコンテンツによって決まり、必ずしもそれにフィードするデータ量によって決まるものではありません。 冗長性の高い大規模なデータ ソースは、変動の多いコンテンツを含む小さいデータセットよりも、インデックスのサイズが小さくなることがあります。 そのため、元のデータ セットのサイズに基づいてインデックスのサイズを推測できることはほとんどありません。
 
 > [!NOTE] 
-> インデックスとストレージの将来のニーズの見積もりは、当て推量のように感じられるかもしれませんが、行う価値があります。 あるレベルの容量が少なすぎることがわかった場合は、それより上のレベルで新しいサービスをプロビジョニングしたうえで、[インデックスを再読み込み](search-howto-reindex.md)する必要があります。 特定の SKU から別の SKU へのサービスのインプレース アップグレードを実行することはできません。
+> インデックスとストレージの将来のニーズの見積もりは、当て推量のように感じられるかもしれませんが、行う価値があります。 あるレベルの容量が少なすぎることがわかった場合は、それより上のレベルで新しいサービスをプロビジョニングしたうえで、[インデックスを再読み込み](search-howto-reindex.md)する必要があります。 特定のレベルから別のレベルへのサービスのインプレース アップグレードを実行することはできません。
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Free レベルでの見積もり

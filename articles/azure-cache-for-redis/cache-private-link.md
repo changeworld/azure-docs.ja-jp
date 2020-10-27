@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838655"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122706"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
@@ -21,8 +21,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション -  [無料アカウントを作成します](https://azure.microsoft.com/free/)
 
-> [!NOTE]
+> [!IMPORTANT]
 > プライベート エンドポイントを使用するには、Azure Cache for Redis インスタンスが 2020 年 7 月 28 日より後に作成されている必要があります。
+> 現在、geo レプリケーション、ファイアウォール規則、ポータル コンソールのサポート、クラスター化されたキャッシュごとの複数のエンドポイント、ファイアウォールと VNet の挿入されたキャッシュの永続化はサポートされていません。 
 >
 >
 
@@ -32,7 +33,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成 
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="[リソースの作成] を選択します。":::
 
@@ -103,6 +104,23 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]**  ページで進行状況を監視できます。  **[状態]**  に **[実行中]** と表示されている場合は、キャッシュを使用する準備ができています。 
     
+> [!IMPORTANT]
+> 
+> `publicNetworkAccess` フラグは既定で `Enabled` に設定されています。 
+> このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` に設定するには、次の PATCH 要求を使用します。
+> ```http
+> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+> {    "properties": {
+>        "publicNetworkAccess":"Disabled"
+>    }
+> }
+> ```
+>
+
+> [!IMPORTANT]
+> 
+> クラスター化されたキャッシュに接続するには、`publicNetworkAccess` を `Disabled` に設定する必要があり、プライベート エンドポイント接続は 1 つしか保持できません。 
+>
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>既存の Azure Cache for Redis インスタンスを使用してプライベート エンドポイントを作成する 
 
@@ -111,7 +129,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成 
 仮想ネットワークを作成するには、これらの手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
 
 2. **[新規]** ページで、 **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 
@@ -144,7 +162,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 プライベート エンドポイントを作成するには、これらの手順に従います。
 
-1. Azure portal で、**Azure Cache for Redis** を検索し、Enter キーを押すか、検索候補からそれを選択します。
+1. Azure portal で、 **Azure Cache for Redis** を検索し、Enter キーを押すか、検索候補からそれを選択します。
 
     :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="[リソースの作成] を選択します。":::
 
@@ -156,7 +174,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
     :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="[リソースの作成] を選択します。":::
 
-5. **[プライベート エンドポイントの作成] ページ**で、プライベート エンドポイントの設定を構成します。
+5. **[プライベート エンドポイントの作成] ページ** で、プライベート エンドポイントの設定を構成します。
 
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -179,7 +197,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 12.  **[確認および作成]** を選択します。  **[確認および作成]**   タブが表示され、Azure によって構成が検証されます。
 
-13. 緑色の**検証に成功**のメッセージが表示された後、 **[作成]** を選択します。
+13. 緑色の **検証に成功** のメッセージが表示された後、 **[作成]** を選択します。
 
 
 ## <a name="next-steps"></a>次の手順

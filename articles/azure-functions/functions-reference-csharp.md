@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205441"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164841"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-この記事では、C# スクリプト ( *.csx*) を使用した Azure Functions 開発の概要を示します。
+この記事では、C# スクリプト ( *.csx* ) を使用した Azure Functions 開発の概要を示します。
 
 Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Visual Studio クラス ライブラリ プロジェクトでの C# の使用](functions-develop-vs.md)に関するガイダンスをお探しの場合は、[C# 開発者向けリファレンス](functions-dotnet-class-library.md)のページをご覧ください。
 
@@ -56,7 +56,7 @@ Functions ランタイムの[バージョン 2.x およびそれ以降](function
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 
-入力または出力データは、*function.json* 構成ファイルの `name` プロパティを介して C# スクリプト関数パラメーターにバインドされます。 次の例は、キューによってトリガーされる関数の *function.json* ファイルと *run.csx* ファイルを示しています。 キュー メッセージからデータを受信するパラメーターの名前は `myQueueItem` です。これは `name` プロパティの値であるためです。
+入力または出力データは、 *function.json* 構成ファイルの `name` プロパティを介して C# スクリプト関数パラメーターにバインドされます。 次の例は、キューによってトリガーされる関数の *function.json* ファイルと *run.csx* ファイルを示しています。 キュー メッセージからデータを受信するパラメーターの名前は `myQueueItem` です。これは `name` プロパティの値であるためです。
 
 ```json
 {
@@ -117,9 +117,9 @@ POCO クラスでは、各プロパティにゲッターとセッターが定義
 
 ## <a name="reusing-csx-code"></a>.csx コードの再利用
 
-他の *.csx* ファイルで定義されたクラスとメソッドを、*run.csx* ファイルで使用できます。 そのためには、*run.csx* ファイル内で `#load` ディレクティブを使用します。 次の例では、`MyLogger` という名前のログ記録ルーチンが *myLogger.csx* 内で共有され、`#load` ディレクティブを使用して *run.csx* に読み込まれます。
+他の *.csx* ファイルで定義されたクラスとメソッドを、 *run.csx* ファイルで使用できます。 そのためには、 *run.csx* ファイル内で `#load` ディレクティブを使用します。 次の例では、`MyLogger` という名前のログ記録ルーチンが *myLogger.csx* 内で共有され、`#load` ディレクティブを使用して *run.csx* に読み込まれます。
 
-*run.csx*の例:
+*run.csx* の例:
 
 ```csharp
 #load "mylogger.csx"
@@ -133,7 +133,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-*mylogger.csx*の例:
+*mylogger.csx* の例:
 
 ```csharp
 public static void MyLogger(ILogger log, string logtext)
@@ -213,7 +213,7 @@ public class Order
 
 * `#load "mylogger.csx"` によって、関数フォルダーにあるファイルが読み込まれます。
 * `#load "loadedfiles\mylogger.csx"` によって、関数フォルダー内のフォルダーにあるファイルが読み込まれます。
-* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル ( *wwwroot*の直下) にあるフォルダーのファイルが読み込まれます。
+* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル ( *wwwroot* の直下) にあるフォルダーのファイルが読み込まれます。
 
 `#load` ディレクティブは、 *.csx* ファイルでのみ機能し、 *.cs* ファイルでは機能しません。
 
@@ -249,7 +249,17 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、「**Azure Functions を監視する**」の記事にある、「[C# 関数でログを書き込む](functions-monitoring.md#write-logs-in-c-functions)」をご覧ください。
+> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、.NET クラス ライブラリ開発者ガイドのドキュメント「[ILogger](functions-dotnet-class-library.md#ilogger)」を参照してください。
+
+### <a name="custom-metrics-logging"></a>カスタム メトリックのログ記録
+
+`ILogger` の `LogMetric` 拡張メソッドを使用して、Application Insights でカスタム メトリックを作成できます。 メソッド呼び出しの例を次に示します。
+
+```csharp
+logger.LogMetric("TestMetric", 1234);
+```
+
+.NET 用 Application Insights API を使用して `TrackMetric` を呼び出す代わりに、このコードを使用できます。
 
 ## <a name="async"></a>非同期
 
@@ -358,7 +368,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 ## <a name="referencing-custom-assemblies"></a>カスタム アセンブリの参照
 
-カスタム アセンブリを参照するために、*共有*アセンブリまたは*プライベート* アセンブリのいずれかを使用できます。
+カスタム アセンブリを参照するために、 *共有* アセンブリまたは *プライベート* アセンブリのいずれかを使用できます。
 
 * 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリをご自分の[関数アプリのルート フォルダー](functions-reference.md#folder-structure) (wwwroot) 内の `bin` という名前のフォルダーにアップロードします。
 
@@ -371,7 +381,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 関数のスクリプト ファイルを含むディレクトリは、アセンブリの変更を自動的に監視されています。 その他のディレクトリでアセンブリの変更を監視するには、[host.json](functions-host-json.md) の `watchDirectories` の一覧にそのディレクトリを追加します。
 
 ## <a name="using-nuget-packages"></a>NuGet パッケージを使用する
-2\.x およびそれ以降の C# 関数で NuGet パッケージを使用するには、*function.proj* ファイルを、関数アプリのファイルシステム内の関数フォルダーにアップロードします。 *Microsoft.ProjectOxford.Face* バージョン *1.1.0* への参照を追加する *function.proj* ファイルの例を次に示します。
+2\.x およびそれ以降の C# 関数で NuGet パッケージを使用するには、 *function.proj* ファイルを、関数アプリのファイルシステム内の関数フォルダーにアップロードします。 *Microsoft.ProjectOxford.Face* バージョン *1.1.0* への参照を追加する *function.proj* ファイルの例を次に示します。
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -407,7 +417,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ### <a name="using-a-functionproj-file"></a>function.proj ファイルの使用
 
 1. Azure ポータルで関数を開きます。 [ログ] タブには、パッケージのインストールの出力が表示されます。
-2. *function.proj* ファイルをアップロードするには、「Azure Functions developer reference (Azure Functions 開発者向けリファレンス)」の「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」にあるいずれかの方法を利用してください。
+2. *function.proj* ファイルをアップロードするには、「Azure Functions developer reference (Azure Functions 開発者向けリファレンス)」の「 [関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」にあるいずれかの方法を利用してください。
 3. *function.proj* ファイルがアップロードされた後、関数のストリーミング ログ内の出力は次の例のようになります。
 
 ```
@@ -445,11 +455,11 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>実行時のバインド
 
-C# および他の .NET 言語では、*function.json* の[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている入力バインドと出力バインドに関数コード内でバインドできます。
+C# および他の .NET 言語では、 *function.json* の [*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく [命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている入力バインドと出力バインドに関数コード内でバインドできます。
 
 次のように命令型のバインドを定義します。
 
-- 必要な命令型のバインドの *function.json* にエントリを**含めないで**ください。
+- 必要な命令型のバインドの *function.json* にエントリを **含めないで** ください。
 - 入力パラメーター [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) または [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) を渡します。
 - 次の C# パターンを使用してデータ バインドを実行します。
 
@@ -515,8 +525,8 @@ public static async Task Run(string input, Binder binder)
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAttributeTests.cs)、[`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | ストレージ キュー | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Storage Blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | ストレージ テーブル | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Storage Blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | ストレージ テーブル | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 ## <a name="next-steps"></a>次のステップ

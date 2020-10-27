@@ -13,18 +13,18 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421460"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275757"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
-現在、Microsoft ID プラットフォームによるシングル サインオン (SSO) は、Azure AD アプリ ギャラリー内の事前統合済みアプリケーションと、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでサポートされています。 ユーザーが Microsoft ID プラットフォームで SAML 2.0 プロトコルを使ってアプリケーションへのユーザー認証を行うと、Microsoft ID プラットフォームは、(HTTP POST を使用して) アプリケーションにトークンを送信します。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、"*要求*" と呼ばれる、ユーザーに関する情報が含まれています。
+現在、Microsoft ID プラットフォームによるシングル サインオン (SSO) は、Azure AD アプリ ギャラリー内の事前統合済みアプリケーションと、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでサポートされています。 ユーザーが Microsoft ID プラットフォームで SAML 2.0 プロトコルを使ってアプリケーションへのユーザー認証を行うと、Microsoft ID プラットフォームは、(HTTP POST を使用して) アプリケーションにトークンを送信します。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、" *要求* " と呼ばれる、ユーザーに関する情報が含まれています。
 
-*要求*とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](https://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
+*要求* とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](https://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
 
 既定では、Microsoft ID プラットフォームにより、ユーザーを一意に識別できる Azure AD のユーザー名 (別名: ユーザー プリンシパル名) を値として持つ `NameIdentifier` 要求を含む SAML トークンがアプリケーションに対して発行されます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
 
@@ -82,7 +82,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 
 また、Azure AD で定義したあらゆるクレームに定数 (静的) 値を割り当てることができます。 定数値は次の手順で割り当ててください。
 
-1. [Azure portal](https://portal.azure.com/) の **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、**編集**アイコンをクリックしてクレームを編集ます。
+1. [Azure portal](https://portal.azure.com/) の **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、 **編集** アイコンをクリックしてクレームを編集ます。
 
 1. 変更する必要があるクレームをクリックします。
 
@@ -131,9 +131,9 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 NameID 要求の変換では、結合は検証済みドメインに制限されます。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
 | **ToLowercase()** | 選択した属性の文字を小文字に変換します。 |
 | **ToUppercase()** | 選択した属性の文字を大文字に変換します。 |
-| **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
-| **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの従業員 ID が "000" で終わっている場合は従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.employeeid<br/>*値*: "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
-| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.email<br/>*Value* : "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
+| **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの従業員 ID が "000" で終わっている場合は従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.employeeid<br/>*値* : "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.country<br/>*値* : "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
 | **Extract() - 一致の後** | 指定した値との一致より後の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon" で、一致する値が "Finance_" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の前** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "BSimon_US" で、一致する値が "_US" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の間** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon_US" で、1 番目の一致する値が "Finance_"、2 番目の一致する値が "_US" である場合、要求の出力は "BSimon" です。 |
@@ -144,18 +144,18 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | **IfEmpty()** | 入力が null または空の場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの従業員 ID が空の場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1<br/>Parameter 3 (一致しない場合の出力): user.employeeid |
 | **IfNotEmpty()** | 入力が null または空ではない場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの従業員 ID が空ではない場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1 |
 
-他の変換が必要な場合は、[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
+他の変換が必要な場合は、 [Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
 
 ## <a name="emitting-claims-based-on-conditions"></a>条件に基づいた要求の出力
 
 ユーザーの種類とユーザーが属するグループに基づいて、要求のソースを指定することができます。 
 
 ユーザーの種類は次のとおりです。
-- **任意**: すべてのユーザーはアプリケーションへのアクセスが許可されています。
-- **メンバー**: テナントのネイティブ メンバー
-- **すべてのゲスト**: ユーザーは、Azure AD の有無にかかわらず、外部の組織から移行します。
-- **AAD ゲスト**: ゲスト ユーザーは、Azure AD を使用する別の組織に属します。
-- **外部のゲスト**: ゲスト ユーザーは、Azure AD のない外部組織に属します。
+- **任意** : すべてのユーザーはアプリケーションへのアクセスが許可されています。
+- **メンバー** : テナントのネイティブ メンバー
+- **すべてのゲスト** : ユーザーは、Azure AD の有無にかかわらず、外部の組織から移行します。
+- **AAD ゲスト** : ゲスト ユーザーは、Azure AD を使用する別の組織に属します。
+- **外部のゲスト** : ゲスト ユーザーは、Azure AD のない外部組織に属します。
 
 
 これが役立つのは、クレームのソースが、ゲストとアプリケーションにアクセスする従業員とで異なる場合です。 ユーザーが従業員である場合、NameID が user.email からソース化されるように指定できます。ただし、ユーザーがゲストの場合は、NameID は user.extensionattribute1 からソース化されます。
@@ -167,7 +167,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 3. ユーザーが属するグループを選択します。 特定のアプリケーションに対するすべての要求で、最大 50 個の一意のグループを選択できます。 
 4. クレームの値が取得される **[ソース]** を選択します。 ソース属性のドロップダウンからユーザー属性を選択するか、または要求として生成する前にユーザー属性に変換を適用することができます。
 
-条件を追加する順序は重要です。 Azure AD では、条件を上から下に評価し、要求に出力する値を決定しています。 
+条件を追加する順序は重要です。 Azure AD では、条件を上から下に評価し、要求に出力する値を決定しています。 式と一致する最後の値が要求に出力されます。
 
 たとえば、Britta Simon は Contoso テナントのゲスト ユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが次のように構成されている場合、Britta が Fabrikam にサインインしようとすると、Microsoft ID プラットフォームで次のように条件が評価されます。
 
