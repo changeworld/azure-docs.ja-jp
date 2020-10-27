@@ -38,7 +38,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 
 | プロパティ | 説明 |
 |:---|:---|
-| 名前 | シンクのわかりやすい名前。 シンクに送信するデータ ソースを指定するために構成で使用します。 |
+| Name | シンクのわかりやすい名前。 シンクに送信するデータ ソースを指定するために構成で使用します。 |
 | url  | \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\> の形式のイベント ハブの URL。          |
 | SharedAccessKeyName | イベント ハブに対する少なくとも**送信**権限を持つ共有アクセス ポリシーの名前。 |
 | SharedAccessKey     | イベント ハブに対する共有アクセス ポリシーのプライマリ キーまたはセカンダリ キー。 |
@@ -177,7 +177,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 ## <a name="next-steps"></a>次のステップ
 
 * [Event Hubs の概要](../../event-hubs/event-hubs-about.md)
-* [イベント ハブの作成](../../event-hubs/event-hubs-create.md)
+* [Event Hubs の作成](../../event-hubs/event-hubs-create.md)
 * [Event Hubs の FAQ](../../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->
