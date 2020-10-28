@@ -8,14 +8,20 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0abc086553f5e903a71bcfd0b6322bcee56d2d8b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816441"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216931"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスター内でプロジェクト、テンプレート、イメージ ストリームを管理する
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月 30 日に廃止されます。 新しい Azure Red Hat OpenShift 3.11 クラスターの作成のサポートは、2020 年 11 月 30 日まで継続されます。 廃止された後、残っている Azure Red Hat OpenShift 3.11 クラスターは、セキュリティの脆弱性を防ぐためにシャットダウンされます。
+> 
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:arofeedback@microsoft.com)。
 
 OpenShift Container Platform では、プロジェクトを使用して、関連するオブジェクトをグループ化および分離します。 管理者は、開発者に特定のプロジェクトへのアクセス権を付与したり、独自のプロジェクトの作成を許可したり、個々のプロジェクトへの管理権限を付与したりできます。
 
@@ -124,7 +130,7 @@ Azure Red Hat OpenShift では、`openshift` 名前空間内の既定のテン�
 
    `openshift` 名前空間内の個々のオブジェクトは、それに注釈 `openshift.io/reconcile-protect: "true"` を追加することで、更新プロセスから削除できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次のチュートリアルを試してください。
 > [!div class="nextstepaction"]

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570819"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314504"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
@@ -20,7 +20,7 @@ Kubernetes には、基本的な管理操作に使用できる Web ダッシュ�
 Kubernetes ダッシュボードの詳細については、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。 AKS では、バージョン2.0 以降のオープンソース ダッシュボードが使用されます。
 
 > [!WARNING]
-> **AKS ダッシュボード アドオンは廃止に設定されています。代わりに、[Azure portal の Kubernetes リソース ビュー (プレビュー)][kubernetes-portal] を使用してください。** 
+> **AKS ダッシュボード アドオンは廃止に設定されています。代わりに、 [Azure portal の Kubernetes リソース ビュー (プレビュー)][kubernetes-portal] を使用してください。** 
 > * 1\.18 より前のバージョンの Kubernetes を実行しているクラスターでは、Kubernetes ダッシュボードは既定で有効になっています。
 > * Kubernetes 1.18 以降で作成されたすべての新しいクラスターでは、ダッシュボード アドオンは既定で無効になります。 
  > * プレビューの Kubernetes 1.19 以降の AKS では、マネージド kube-dashboard アドオンのインストールはサポートされなくなりました。 
@@ -34,7 +34,7 @@ Kubernetes ダッシュボードの詳細については、[Kubernetes の Web U
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Kubernetes ダッシュボードを無効にする
 
-kube-dashboard アドオンは、**K8s 1.18 より前のクラスターでは既定で有効になります**。 次のコマンドを実行することで、アドオンを無効にすることができます。
+kube-dashboard アドオンは、 **K8s 1.18 より前のクラスターでは既定で有効になります** 。 次のコマンドを実行することで、アドオンを無効にすることができます。
 
 ``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
@@ -44,7 +44,7 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 
 クラスターで Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-browse] コマンドを使用します。 このコマンドでは、クラスターに kube-dashboard アドオンをインストールする必要があります。これは、Kubernetes 1.18 より前のバージョンを実行しているクラスターに既定で含まれています。
 
-次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
+次の例では、 *myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -102,9 +102,9 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>ダッシュボードにサインインする (Kubernetes 1.16 以降)
 
 > [!IMPORTANT]
-> [Kubernetes ダッシュボードの v1.10.1](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) の時点または Kubernetes v1.16 以降では、[そのリリースでのセキュリティ修正](https://github.com/kubernetes/dashboard/pull/3400)のため、リソースを取得するためにサービス アカウント "kubernetes-dashboard" を使用できなくなりました。 その結果、認証情報がない要求では、401 未承認エラーが返されます。 サービス アカウントから取得されたベアラー トークンは、この [Kubernetes ダッシュボードの例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)のようにまだ使用できますが、これは古いバージョンと比較してダッシュボード アドオンのログイン フローに影響します。
+> [Kubernetes ダッシュボードの v1.10.1](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) の時点または Kubernetes v1.16 以降では、[そのリリースでのセキュリティ修正](https://github.com/kubernetes/dashboard/pull/3400)のため、リソースを取得するためにサービス アカウント "kubernetes-dashboard" を使用できなくなりました。 その結果、認証情報がない要求では、[401 未承認エラー](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)が返されます。 サービス アカウントから取得されたベアラー トークンは、この [Kubernetes ダッシュボードの例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)のようにまだ使用できますが、これは古いバージョンと比較してダッシュボード アドオンのログイン フローに影響します。
 >
->まだ 1.16 より前のバージョンを実行している場合でも、"kubernetes-dashboard" サービス アカウントにアクセス許可を付与できますが、これは**推奨されません**。
+>まだ 1.16 より前のバージョンを実行している場合でも、"kubernetes-dashboard" サービス アカウントにアクセス許可を付与できますが、これは **推奨されません** 。
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
@@ -124,7 +124,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 
 **トークンを使用する**
 
-1. **Azure AD が有効ではないクラスター**では、`kubectl config view` を実行して、クラスターのユーザー アカウントに関連付けられているトークンをコピーします。
+1. **Azure AD が有効ではないクラスター** では、`kubectl config view` を実行して、クラスターのユーザー アカウントに関連付けられているトークンをコピーします。
 1. サインイン時にトークン オプションに貼り付けます。    
 1. [`Sign In`] をクリックします。
 
@@ -150,9 +150,9 @@ Kubernetes ダッシュボードによって管理タスクの複雑さを軽減
 
 1. 右上のウィンドウの **[作成]** ボタンを選択します。
 1. グラフィカル ウィザードを使用する場合は、 **[Create an app]** (アプリの作成) を選択します。
-1. デプロイの名前 (*nginx* など) を指定します
-1. 使用するコンテナー イメージの名前 (*nginx:1.15.5* など) を入力します。
-1. Web トラフィック用にポート 80 を公開するため、Kubernetes サービスを作成します。 **[サービス]** で、 **[外部]** を選択し、ポートとターゲット ポートの両方に「**80**」を入力します。
+1. デプロイの名前 ( *nginx* など) を指定します
+1. 使用するコンテナー イメージの名前 ( *nginx:1.15.5* など) を入力します。
+1. Web トラフィック用にポート 80 を公開するため、Kubernetes サービスを作成します。 **[サービス]** で、 **[外部]** を選択し、ポートとターゲット ポートの両方に「 **80** 」を入力します。
 1. 準備ができたら、 **[デプロイ]** を選択して、アプリケーションを作成します。
 
 ![Kubernetes Web ダッシュボードでアプリケーションをデプロイする](./media/kubernetes-dashboard/create-app.png)
@@ -179,14 +179,14 @@ Kubernetes ダッシュボードでは、基本的な監視メトリックおよ
 
 デプロイを編集するには
 
-1. 左側のメニューで **[デプロイメント]** を選択し、*nginx* デプロイメントを選択します。
+1. 左側のメニューで **[デプロイメント]** を選択し、 *nginx* デプロイメントを選択します。
 1. 右上のナビゲーション バーにある **[編集]** を選択します。
 1. 20 行あたりにある `spec.replica` 値を見つけます。 アプリケーションのレプリカの数を増やすには、この値を *1* から *3* に変更します。
 1. 準備ができたら、 **[更新]** を選択します。
 
 ![デプロイメントを編集してレプリカの数を更新する](./media/kubernetes-dashboard/edit-deployment.png)
 
-レプリカ セット内に新しいポッドが作成されるまで数分かかります。 左側のメニューで、 **[レプリカ セット]** を選択し、*nginx* レプリカ セットを選択します。 ポッドの一覧には、次の出力例に示すように、更新されたレプリカ数が反映されます。
+レプリカ セット内に新しいポッドが作成されるまで数分かかります。 左側のメニューで、 **[レプリカ セット]** を選択し、 *nginx* レプリカ セットを選択します。 ポッドの一覧には、次の出力例に示すように、更新されたレプリカ数が反映されます。
 
 ![レプリカ セットに関する情報の表示](./media/kubernetes-dashboard/view-replica-set.png)
 

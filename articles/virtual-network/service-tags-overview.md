@@ -10,24 +10,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863ab9b600b81006cdeb670811c61ed961e8c623
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983703"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170261"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
 
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
-サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース*"  または " *宛先*"  フィールドにサービス タグ名 (**ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース* "  または "  *宛先* "  フィールドにサービス タグ名 ( **ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
-サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、**インターネット**との間のトラフィックを拒否し、**AzureCloud** または他の特定の Azure サービスの[利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。
+サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、 **インターネット** との間のトラフィックを拒否し、 **AzureCloud** または他の特定の Azure サービスの [利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。
 
 ## <a name="available-service-tags"></a>利用可能なサービス タグ
 次の表には、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)の規則で使用できるすべてのサービス タグが含まれています。
@@ -38,7 +38,7 @@ ms.locfileid: "90983703"
 - [リージョン](https://azure.microsoft.com/regions) スコープをサポートしている。
 - [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) 規則で使用可能である。
 
-既定では、サービス タグにはクラウド全体の範囲が反映されます。 サービス タグによっては、対応する IP 範囲を指定されたリージョンに制限することで、より詳細な制御を実現することもできます。 たとえば、サービス タグ **Storage** はクラウド全体の Azure Storage を表していますが、**Storage.WestUS** を使用すると、WestUS リージョンのストレージ IP アドレスのみに範囲が限定されます。 次の表に、各サービス タグでそのようなリージョン スコープがサポートされるかどうかを示します。  
+既定では、サービス タグにはクラウド全体の範囲が反映されます。 サービス タグによっては、対応する IP 範囲を指定されたリージョンに制限することで、より詳細な制御を実現することもできます。 たとえば、サービス タグ **Storage** はクラウド全体の Azure Storage を表していますが、 **Storage.WestUS** を使用すると、WestUS リージョンのストレージ IP アドレスのみに範囲が限定されます。 次の表に、各サービス タグでそのようなリージョン スコープがサポートされるかどうかを示します。  
 
 | タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -46,15 +46,15 @@ ms.locfileid: "90983703"
 | **ApiManagement** | Azure API Management 専用デプロイのための管理トラフィック。 <br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Azure API Management サービス エンドポイントを表します。 これにより、顧客は API Management サービス上で構成された API、操作、ポリシー、NamedValues に対する管理操作を実行できるようになります。  | 受信 | はい | はい |
 | **ApplicationInsightsAvailability** | Application Insights の可用性。 | 受信 | いいえ | いいえ |
 | **AppConfiguration** | App Configuration。 | 送信 | いいえ | いいえ |
-| **AppService**    | Azure App Service。 このタグは、Web アプリのフロントエンドに対する送信セキュリティ規則で推奨されます。 | 送信 | はい | はい |
+| **AppService**    | Azure App Service。 このタグは、Web アプリと関数アプリに対して、送信セキュリティ規則で推奨されています。  | 送信 | はい | はい |
 | **AppServiceManagement** | App Service Environment 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureActiveDirectory** | Azure Active Directory。 | 送信 | いいえ | はい |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection。 | 送信 | いいえ | いいえ |
-| **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
+| **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、 **Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
 | **AzureCloud** | すべての[データセンター パブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)。 | 送信 | はい | はい |
-| **AzureCognitiveSearch** | Azure Cognitive Search。 <br/><br/>このタグまたはこのタグによってカバーされる IP アドレスは、データ ソースへのセキュリティで保護されたアクセスをインデクサーに付与するために使用できます。 詳細については、[インデクサーの接続に関するドキュメント](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)を参照してください。 <br/><br/> *注*:検索サービスの IP アドレスは、このサービス タグの IP 範囲の一覧に含まれておらず、またデータ ソースの IP ファイアウォール**にも追加される必要があります**。 | 受信 | いいえ | いいえ |
+| **AzureCognitiveSearch** | Azure Cognitive Search。 <br/><br/>このタグまたはこのタグによってカバーされる IP アドレスは、データ ソースへのセキュリティで保護されたアクセスをインデクサーに付与するために使用できます。 詳細については、[インデクサーの接続に関するドキュメント](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)を参照してください。 <br/><br/> *注* :検索サービスの IP アドレスは、このサービス タグの IP 範囲の一覧に含まれておらず、またデータ ソースの IP ファイアウォール **にも追加される必要があります** 。 | 受信 | いいえ | いいえ |
 | **AzureConnectors** | プローブ/バックエンド接続用の Azure Logic Apps コネクタ。 | 受信 | はい | はい |
 | **AzureContainerRegistry** | Azure Container Registry。 | 送信 | はい | はい |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 送信 | はい | はい |
@@ -64,19 +64,19 @@ ms.locfileid: "90983703"
 | **AzureDevSpaces** | Azure Dev Spaces。 | 送信 | いいえ | いいえ |
 | **AzureEventGrid** | Azure Event Grid。 | 両方 | いいえ | いいえ |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 両方 | いいえ | いいえ |
-| **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureFrontDoor.Frontend**、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
+| **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、 **AzureActiveDirectory** 、 **AzureFrontDoor.Frontend** 、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureIoTHub** | Azure IoT Hub。 | 送信 | いいえ | いいえ |
-| **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
+| **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、 **AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
 | **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これにはプローブ トラフィックのみが含まれ、バックエンド リソースへの実際のトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning | 両方 | いいえ | はい |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon、およびカスタム メトリック (GiG エンドポイント)。<br/><br/>*注:* Log Analytics では、このタグは **Storage** タグに依存します。 | 送信 | いいえ | はい |
-| **AzureOpenDatasets** | Azure Open Datasets。<br/><br/>*注:* このタグは、**AzureFrontDoor.Frontend** および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
+| **AzureOpenDatasets** | Azure Open Datasets。<br/><br/>*注:* このタグは、 **AzureFrontDoor.Frontend** および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzurePlatformDNS** | 基本インフラストラクチャ (既定) の DNS サービス。<br/><br>このタグを使用すると、既定の DNS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS)。これは基本的なインフラストラクチャ サービスです。<br/><br/>このタグを使用すると、既定の IMDS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzurePlatformLKM** | Windows のライセンスまたはキー管理サービス。<br/><br/>このタグを使用すると、ライセンスの既定値を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。  また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzureResourceManager** | Azure Resource Manager。 | 送信 | いいえ | いいえ |
 | **AzureSignalR** | Azure SignalR。 | 送信 | いいえ | いいえ |
-| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureKeyVault**、**EventHub**、**GuestAndHybridManagement**、および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
+| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注:* このタグは、 **AzureActiveDirectory** 、 **AzureKeyVault** 、 **EventHub** 、 **GuestAndHybridManagement** 、および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureTrafficManager** | Azure Traffic Manager プローブ IP アドレス。<br/><br/>Traffic Manager プローブ IP アドレスについて詳しくは、「[Traffic Manager についてよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)」をご覧ください。 | 受信 | いいえ | はい |  
 | **BatchNodeManagement** | Azure Batch 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **CognitiveServicesManagement** | Azure Cognitive Services のトラフィックのアドレス範囲。 | 両方 | いいえ | いいえ |
@@ -146,7 +146,7 @@ ms.locfileid: "90983703"
 >[Azure Public](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure China](https://www.microsoft.com/download/details.aspx?id=42064)、および [Azure Germany](https://www.microsoft.com/download/details.aspx?id=54770) については、この情報のサブセットが XML ファイルで公開されています。 これらの XML ダウンロードは、2020 年 6 月 30 日に非推奨となり、その後は使用できなくなります。 前のセクションの説明に従って、Discovery API または JSON ファイルのダウンロードの使用に移行してください。
 
 ### <a name="tips"></a>ヒント 
-- ある公開からその次の公開に更新されたかどうかは、JSON ファイル内の *changeNumber* の値の増加に注目することで理解できます。 各サブセクション (たとえば **Storage.WestUS**) には、変更が発生するたびに増えていく固有の *changeNumber* があります。 ファイルの *changeNumber* の最上位レベルは、サブセクションのいずれかが変更されると増加します。
+- ある公開からその次の公開に更新されたかどうかは、JSON ファイル内の *changeNumber* の値の増加に注目することで理解できます。 各サブセクション (たとえば **Storage.WestUS** ) には、変更が発生するたびに増えていく固有の *changeNumber* があります。 ファイルの *changeNumber* の最上位レベルは、サブセクションのいずれかが変更されると増加します。
 - サービス タグ情報を解析する方法の例 (WestUS のストレージについてのすべてのアドレス範囲を取得する方法など) については、[Service Tag Discovery API PowerShell](https://aka.ms/discoveryapi_powershell) のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ

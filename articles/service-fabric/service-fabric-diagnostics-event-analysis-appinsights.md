@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932449"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329578"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -32,7 +32,7 @@ Application Insights には、Service Fabric の使用時にすぐに利用で�
 
 前の図の右側のパネルでは、リスト内に要求およびイベントという 2 つの主要な種類のエントリがあります。 要求は、HTTP 要求を通じてアプリの API に対して行われた呼び出しです。イベントはカスタム イベントで、コード内の任意の場所に追加できるテレメトリとして機能します。 アプリケーションのインストルメント化については、「[カスタムのイベントとメトリックのための Application Insights API](../azure-monitor/app/api-custom-events-metrics.md)」で詳しく調べることができます。 要求をクリックすると、次の図に示すような詳細が表示されます。これには、Application Insights の Service Fabric NuGet パッケージで収集される Service Fabric 固有のデータが含まれます。 この情報はアプリケーションのトラブルシューティングと状態の確認に役立ち、このすべての情報を Application Insights 内で検索できます
 
-![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![詳細を示すスクリーンショット。これには、Application Insights の Service Fabric NuGet パッケージで収集される Server Fabric に固有のデータが含まれています。](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights には、取得したすべてのデータに対してクエリを実行するための指定ビューがあります。 [概要] ページの上部にある [メトリックス エクスプローラー] を選択して、Application Insights ポータルに移動します。 ここで、Kusto クエリ言語を使用して前述のカスタム イベント、要求、例外、パフォーマンス カウンター、その他のメトリックに対してクエリを実行できます。 次の例は、過去 1 時間のすべての要求を示しています。
 
@@ -48,7 +48,7 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,9 +65,9 @@ EventFlow と WAD は集計ソリューションとして使用することを�
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Azure portal で Application Insights のリソースを参照する
 
-イベントとログの出力として Application Insights を構成すると、数分後に Application Insights リソースに情報が表示されます。 Application Insights リソースに移動すると、Application Insights リソースのダッシュ ボードが表示されます。 Application Insights タスク バーの **[検索]** を選択すると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
+イベントとログの出力として Application Insights を構成すると、数分後に Application Insights リソースに情報が表示されます。 Application Insights リソースに移動すると、Application Insights リソースのダッシュ ボードが表示されます。 Application Insights タスク バーで *[検索]* を選択すると、受信した最新のトレースが表示され、それらのトレースをフィルター処理することができます。
 
-*メトリックス エクスプローラー*は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../azure-monitor/platform/metrics-charts.md)」を参照してください。
+*メトリックス エクスプローラー* は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../azure-monitor/platform/metrics-charts.md)」を参照してください。
 
 **[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
 

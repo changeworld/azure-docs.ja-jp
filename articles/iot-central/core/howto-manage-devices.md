@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperfq2
-ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850100"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170346"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -60,7 +60,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 アプリケーションに多数のデバイスを接続する場合は、CSV ファイルからデバイスを一括してインポートできます。 CSV ファイルには次の列とヘッダーが必要です
 
-* **IOTC_DeviceID** - デバイス ID は、すべて小文字にする必要があります。
+* **IOTC_DeviceID** - デバイス ID には、文字、数字、および `-` 文字を含めることができます。
 * **IOTC_DeviceName** - この列は省略可能です。
 
 アプリケーションにデバイスを一括登録する方法:

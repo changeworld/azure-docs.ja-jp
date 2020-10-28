@@ -7,23 +7,23 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 34afc732d64a7aa29261989cc790c8a113208d96
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047065"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331772"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI を使用する
 
-Azure portal で Azure Digital Twins インスタンスを管理できるだけでなく、Azure Digital Twins には**コマンドライン インターフェイス (CLI)** があり、次のように、このサービスを使用してほとんどの主なアクションを実行できます。
+Azure portal で Azure Digital Twins インスタンスを管理できるだけでなく、Azure Digital Twins には **コマンドライン インターフェイス (CLI)** があり、次のように、このサービスを使用してほとんどの主なアクションを実行できます。
 * Azure Digital Twins インスタンスの管理
 * モデルの管理
 * デジタル ツインの管理
 * ツイン リレーションシップの管理
 * エンドポイントの構成
 * [ルート](concepts-route-events.md)の管理
-* ロールベースのアクセス制御 (RBAC) を使用した[セキュリティ](concepts-security.md)の構成
+* Azure ロールベースのアクセス制御 (Azure RBAC) を使用した[セキュリティ](concepts-security.md)の構成
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

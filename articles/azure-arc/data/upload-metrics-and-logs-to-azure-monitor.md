@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952252"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320163"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>使用状況データ、メトリック、およびログを Azure Monitor にアップロードする
 
@@ -25,7 +25,7 @@ ms.locfileid: "91952252"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI (az) と Azure Data CLI (azdata) がインストールされている必要があります。  [ツールをインストールします](./install-client-tools.md)。
+Azure CLI (az) と [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] がインストールされている必要があります。  [ツールをインストールします](./install-client-tools.md)。
 
 Azure にデータをアップロードする前に、Azure サブスクリプションに Microsoft.AzureData リソース プロバイダーが登録されていることを確認する必要があります。
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 インベントリやリソースの使用状況などの使用状況情報は、次の 2 段階の方法で Azure にアップロードできます。
 
-1. 次のように、```azdata export``` コマンドを使用して使用状況データをエクスポートします。
+1. 次のように、`azdata export` コマンドを使用して使用状況データをエクスポートします。
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ az provider register -n Microsoft.AzureData --wait
    ```
    このコマンドにより、データ コントローラー上に作成されたすべての Azure Arc 対応データ リソース (SQL マネージド インスタンスや PostgreSQL ハイパースケール インスタンスなど) を含む `usage.json` ファイルが作成されます。
 
-2. ```azdata upload``` コマンドを使用して使用状況データをアップロードする
+2. `azdata upload` コマンドを使用して使用状況データをアップロードする
 
    > [!NOTE]
    > アップロードを実行する前に、Azure Arc データ コントローラーを作成してから少なくとも 24 時間お待ちください。
@@ -95,7 +95,7 @@ Azure Arc データ サービスを使用するサイトが複数ある場合は
 サービス プリンシパルを作成するには、次のコマンドを実行します。
 
 > [!NOTE]
-> サービス プリンシパルを作成するには、[Azure で一定のアクセス許可](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)を持っている必要があります。
+> サービス プリンシパルを作成するには、[Azure で一定のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)を持っている必要があります。
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

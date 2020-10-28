@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 7274627ccf0aaab29f3ca569568e0085d53f1dea
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818089"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277992"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
 
@@ -22,10 +22,10 @@ ms.locfileid: "91818089"
 
 ## <a name="the-scenario"></a>シナリオ
 
-この演習では、"*ユーザー*" が "*投稿*" を作成できるブログ作成プラットフォームのドメインについて考えます。 また、ユーザーは "*いいね!* " を付けたり、投稿に "*コメント*" を追加したりすることもできます。
+この演習では、" *ユーザー* " が " *投稿* " を作成できるブログ作成プラットフォームのドメインについて考えます。 また、ユーザーは " *いいね!* " を付けたり、投稿に " *コメント* " を追加したりすることもできます。
 
 > [!TIP]
-> "*斜体*" で強調されているいくつかの単語は、モデルで操作する必要がある "モノ" の種類を示します。
+> " *斜体* " で強調されているいくつかの単語は、モデルで操作する必要がある "モノ" の種類を示します。
 
 仕様への要件の追加:
 
@@ -327,7 +327,7 @@ function createComment(postId, comment) {
 - 投稿を置き換えます
 - 新しいコメントを追加します
 
-ストアド プロシージャはアトミック トランザクションとして実行されるので、`commentCount` の値とコメントの実際の数が常に同期することが保証されます。
+ストアド プロシージャはアトミック トランザクションとして実行されるので、`commentCount` の値とコメントの実際の数が常に同期します。
 
 新しいいいね! を追加するときも似たストアド プロシージャを呼び出して、`likeCount` を増分します。
 
@@ -417,9 +417,9 @@ function updateUsernames(userId, username) {
 
 このような状況について考慮する方法は、実際には単純です。
 
-1. この要求では、特定のユーザーに対するすべての投稿をフェッチしたいので、`userId` でフィルター処理を行う "*必要があります*"。
+1. この要求では、特定のユーザーに対するすべての投稿をフェッチしたいので、`userId` でフィルター処理を行う " *必要があります* "。
 1. それは、`userId` でパーティション分割されていない `posts` コンテナーに対して実行されるため、パフォーマンスがよくありません。
-1. 当然、このパフォーマンスの問題を解決するには、`userId` によってパーティション分割されて "*いる*" コンテナーに対して要求を実行します
+1. 当然、このパフォーマンスの問題を解決するには、`userId` によってパーティション分割されて " *いる* " コンテナーに対して要求を実行します
 1. そのようなコンテナーは既にあります。`users` コンテナーです。
 
 そこで、`users` コンテナーに投稿全体を複製することにより、2 番目のレベルの非正規化を導入します。 それを行うことで、パーティション分割されているディメンションが異なるだけの、投稿のコピーを実質的に取得し、その `userId` によっていっそう効率的に取得できるようになります。
@@ -586,6 +586,6 @@ function truncateFeed() {
 
 実用的なデータ モデリングとパーティション分割に関するこの概要の後は、ここで説明した概念を次の記事で確認できます。
 
-- [データベース、コンテナー、およびアイテムの操作](databases-containers-items.md)
+- [データベース、コンテナー、およびアイテムの操作](account-databases-containers-items.md)
 - [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 - [Azure Cosmos DB の変更フィード](change-feed.md)

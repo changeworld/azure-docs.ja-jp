@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612984"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344017"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -65,7 +65,7 @@ Blob Storage にだけアクセスできればよいのであれば、Azure に�
 
 単純な DNS サーバーを使用して、利用可能なすべてのキャッシュ マウント ポイント間でクライアント接続を負荷分散することもできます。
 
-Azure 仮想ネットワークと DNS サーバーの構成について詳しくは、「[Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)」を参照してください。
+Azure 仮想ネットワークと DNS サーバーの構成について詳しくは、「[Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -73,7 +73,7 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 * キャッシュ インスタンスで仮想ネットワーク インターフェイス (NIC) を作成できる必要があります。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
 
-* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。
+* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Blob Storage へのアクセス権をキャッシュに与えます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。
 
   ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
@@ -93,7 +93,7 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 * パフォーマンス: **Standard**
 * アカウントの種類: **StorageV2 (汎用 v2)**
-* レプリケーション:**ローカル冗長ストレージ (LRS)**
+* レプリケーション: **ローカル冗長ストレージ (LRS)**
 * アクセス層 (既定): **ホット**
 
 キャッシュと同じ場所にあるストレージ アカウントの使用をお勧めします。
@@ -110,7 +110,7 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 
 詳細については「 [NAS 構成と NFS ストレージ ターゲットの問題のトラブルシューティング](troubleshoot-nas.md) 」をご参照ください。
 
-* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングの詳細については、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) に関する追加ヘルプをご参照ください。
+* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](../expressroute/index.yml) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングの詳細については、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) に関する追加ヘルプをご参照ください。
 
 * **ポート アクセス:** キャッシュには、ストレージ システム上の特定の TCP/UDP ポートへのアクセスが必要です。 ストレージの種類によってポート要件は異なります。
 
@@ -143,7 +143,7 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 * **ディレクトリ アクセス:** ストレージ システム上で `showmount` コマンドを有効にします。 Azure HPC Cache でこのコマンドを使用して、ストレージ ターゲット構成が有効なエクスポートを指していることを確認します。また、複数のマウントが同じサブディレクトリにアクセスしないようにします (ファイルの競合が発生するリスクがあります)。
 
   > [!NOTE]
-  > NFS ストレージ システムが NetApp の ONTAP 9.2 オペレーティング システムを使用している場合は、 **`showmount` を有効にしないでください**。 [Microsoft サービスおよびサポートに問い合わせてください](hpc-cache-support-ticket.md)。
+  > NFS ストレージ システムが NetApp の ONTAP 9.2 オペレーティング システムを使用している場合は、 **`showmount` を有効にしないでください** 。 [Microsoft サービスおよびサポートに問い合わせてください](hpc-cache-support-ticket.md)。
 
   NFS ストレージ ターゲットの [トラブルシューティングのアーティクル](troubleshoot-nas.md#enable-export-listing) でディレクトリ リスト アクセスの詳細をご覧ください。
 

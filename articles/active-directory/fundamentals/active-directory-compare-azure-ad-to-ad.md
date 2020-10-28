@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: e71ed9655c7b195fea8a2eeeaa76d8a28717637f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c8cf84aa697512b6d1147bf853d30761792370b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318558"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207310"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory と Azure Active Directory の比較
 
@@ -39,7 +39,7 @@ Azure AD では、クラウドとオンプレミス全体のすべてのアプ�
 | 従来のアプリとレガシ アプリ| ほとんどのオンプレミス アプリでは、LDAP、Windows 統合認証 (NTLM と Kerberos)、またはヘッダーベースの認証を使用して、ユーザーへのアクセスを制御します。| Azure AD では、オンプレミスで実行されている [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) エージェントを使用して、これらの種類のオンプレミス アプリへのアクセスを提供できます。 この方法を利用して、Azure AD では、移行しているとき、またはレガシ アプリと共存する必要があるときに、Kerberos を使ってオンプレミスで Active Directory ユーザーを認証できます。 |
 | SaaS アプリ|Active Directory では、SaaS アプリがネイティブでサポートされず、AD FS などのフェデレーション システムを必要とします。|OAuth2、SAML、および WS-\* 認証をサポートしている SaaS アプリは、認証に Azure AD を使用するように統合できます。 |
 | 先進認証を使用した基幹業務 (LOB) アプリ|組織では Active Directory と共に AD FS を使用して、先進認証を必要とする LOB アプリをサポートできます。| 先進認証を必要とする LOB アプリは、認証に Azure AD を使用するように構成できます。 |
-| 中間層/デーモン サービス|オンプレミス環境で実行されているサービスは通常、AD サービス アカウントまたはグループ管理サービス アカウント (gMSA) を使用して実行されます。 これらのアプリでは、サービス アカウントのアクセス許可を継承します。| Azure AD には、クラウド内の他のワークロードを実行するための[マネージド ID](../managed-identities-azure-resources/index.yml) が用意されています。 これらの ID のライフサイクルは Azure AD によって管理され、リソース プロバイダーに関連付けられているため、他の目的でバックドア アクセスを取得するために使用することはできません。|
+| 中間層/デーモン サービス|オンプレミス環境で実行されているサービスは通常、AD サービス アカウントまたはグループ管理サービス アカウント (gMSA) を使用して実行されます。 これらのアプリでは、サービス アカウントのアクセス許可を継承します。| Azure AD には、クラウド内の他のワークロードを実行するための[マネージド ID](../managed-identities-azure-resources/index.yml) が用意されています。 これらの ID のライフサイクルは、Azure AD によって管理され、リソース プロバイダーに関連付けられています。そのため、他の目的でバックドア アクセスを取得するために使用することはできません。|
 | **デバイス**|||
 | モバイル|Active Directory では、サードパーティのソリューションを使用しないモバイル デバイスはネイティブにサポートされていません。| Microsoft のモバイル デバイス管理ソリューションである Microsoft Intune は、Azure AD と統合されています。 Microsoft Intune では、認証中に評価するために、ID システムにデバイスの状態情報を提供しています。 |
 | Windows デスクトップ|Active Directory では、グループ ポリシー、System Center Configuration Manager、またはその他のサードパーティのソリューションを使用して Windows デバイスを管理するために、デバイスをドメインに参加させる機能を提供しています。|Windows デバイスは、[Azure AD に参加する](../devices/index.yml)ことができます。 条件付きアクセスでは、認証プロセスの一部としてデバイスが Azure AD に参加しているかどうかを確認できます。 また、Windows デバイスは、[Microsoft Intune](/intune/what-is-intune) を使って管理することもできます。 この場合、条件付きアクセスでは、アプリへのアクセスを許可する前に、デバイスが準拠しているかどうか (最新のセキュリティ更新プログラムやウイルス署名など) を検討します。|

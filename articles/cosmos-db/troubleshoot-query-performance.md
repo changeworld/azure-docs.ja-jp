@@ -4,27 +4,27 @@ description: Azure Cosmos DB の SQL クエリに関する問題を特定、診�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089991"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277178"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 
-この記事では、Azure Cosmos DB のクエリのトラブルシューティングに関する一般的な推奨アプローチについて説明します。 この記事で説明されている手順により、クエリで発生する可能性がある問題を完全に防ぐことができると考えてはいけませんが、パフォーマンスに関する最も一般的なヒントを示してあります。 この記事は、Azure Cosmos DB Core (SQL) API の低速クエリまたはコストの高いクエリのトラブルシューティングのための出発点として使用してください。 また、[診断ログ](cosmosdb-monitor-resource-logs.md)を使用して、遅いクエリやスループットの消費量が多いクエリを特定することもできます。
+この記事では、Azure Cosmos DB のクエリのトラブルシューティングに関する一般的な推奨アプローチについて説明します。 この記事で説明されている手順により、クエリで発生する可能性がある問題を完全に防ぐことができると考えてはいけませんが、パフォーマンスに関する最も一般的なヒントを示してあります。 この記事は、Azure Cosmos DB Core (SQL) API の低速クエリまたはコストの高いクエリのトラブルシューティングのための出発点として使用してください。 また、[診断ログ](cosmosdb-monitor-resource-logs.md)を使用して、遅いクエリやスループットの消費量が多いクエリを特定することもできます。 Azure Cosmos DB の MongoDB 用 API を使用する場合、[Azure Cosmos DB の MongoDB 用 API クエリのトラブルシューティング ガイド](mongodb-troubleshoot-query.md)をご利用ください。
 
-Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類できます。
+Azure Cosmos DB でのクエリの最適化は、次のように大きく分類されています。
 
 - クエリの要求ユニット (RU) 使用量を削減する最適化
 - クエリの待機時間を短縮するだけの最適化
 
-クエリの RU 使用量を減らすことで、待機時間も短くなります。
+クエリの RU 使用量を減らすと、一般的に待機時間も短くなります。
 
 この記事では、[栄養データセット](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)を使用して再作成できる例を示します。
 
@@ -191,7 +191,7 @@ WHERE c.description = "Malabar spinach, cooked"
 
 **RU 使用量:** 2.98 RU
 
-書き込み可用性やパフォーマンスに影響を与えることなく、いつでもインデックス作成ポリシーにプロパティを追加できます。 新しいプロパティをインデックスに追加すると、そのプロパティを使用するクエリでは、使用可能な新しいインデックスが直ちに使用されます。 そのクエリでは、構築中に新しいインデックスが使用されます。 そのため、インデックスの再構築が行われている間、クエリ結果が不整合になる可能性があります。 新しいプロパティのインデックスが作成される場合、既存のインデックスのみを使用するクエリは、インデックスの再構築中に影響を受けません。 [インデックス変換の進行状況を追跡](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)できます。
+書き込みまたは読み取りの可用性に影響を与えることなく、いつでもインデックス作成ポリシーにプロパティを追加できます。 [インデックス変換の進行状況を追跡](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)できます。
 
 ### <a name="understand-which-system-functions-use-the-index"></a>インデックスを使用するシステム関数について理解する
 
@@ -469,7 +469,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="optimizations-that-reduce-query-latency"></a>クエリの待機時間を短縮する最適化
 
-多くの場合、クエリの待機時間がまだ長すぎるときは、RU 使用量が許容される可能性があります。 以下のセクションでは、クエリの待機時間を短縮するためのヒントの概要を説明します。 同じクエリを同じデータセットに対して複数回実行すると、毎回同じ RU 使用量が発生します。 ただし、クエリの待機時間はクエリの実行間隔によって異なる場合があります。
+多くの場合、クエリの待機時間がまだ長すぎるときは、RU 使用量が許容される可能性があります。 以下のセクションでは、クエリの待機時間を短縮するためのヒントの概要を説明します。 同じクエリを同じデータセットに対して複数回実行すると、一般的には毎回同じ RU 使用量が発生します。 ただし、クエリの待機時間はクエリの実行間隔によって異なる場合があります。
 
 ### <a name="improve-proximity"></a>近接性の向上
 
@@ -477,7 +477,7 @@ Azure Cosmos DB アカウントとは異なるリージョンから実行され�
 
 ### <a name="increase-provisioned-throughput"></a>プロビジョニングされたスループットの増加
 
-Azure Cosmos DB では、プロビジョニングされたスループットは要求ユニット (RU) で測定されます。 5 RU のスループットを使用するクエリがあると仮定します。 たとえば、1,000 RU をプロビジョニングする場合、そのクエリは 1 秒あたり 200 回実行できます。 スループットが十分でないときにクエリを実行しようとすると、Azure Cosmos DB によって HTTP 429 エラーが返されます。 現在の Core (SQL) API SDK では、短時間待機した後に、このクエリを自動的に再試行します。 スロットルされた要求にはさらに時間がかかるため、プロビジョニングされたスループットを増やすとクエリの待機時間が改善します。 Azure portal の **[メトリック]** ブレードで、[調整された要求の合計数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)を確認できます。
+Azure Cosmos DB では、プロビジョニングされたスループットは要求ユニット (RU) で測定されます。 5 RU のスループットを使用するクエリがあると仮定します。 たとえば、1,000 RU をプロビジョニングする場合、そのクエリは 1 秒あたり 200 回実行できます。 スループットが十分でないときにクエリを実行しようとすると、Azure Cosmos DB によって HTTP 429 エラーが返されます。 現在の Core (SQL) API SDK では、短時間待機した後に、このクエリを自動的に再試行します。 スロットルされた要求にはさらに時間がかかるため、プロビジョニングされたスループットを増やすとクエリの待機時間が改善します。 Azure portal の **[メトリック]** ブレードで、 [調整された要求の合計数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)を確認できます。
 
 ### <a name="increase-maxconcurrency"></a>MaxConcurrency の増加
 

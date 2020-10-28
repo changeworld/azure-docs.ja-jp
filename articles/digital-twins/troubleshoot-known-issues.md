@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047643"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311676"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -19,7 +19,7 @@ ms.locfileid: "92047643"
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>Cloud Shell の "400 Client Error:Bad Request"
 
-Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client Error:Bad Request for url: http://localhost:50342/oauth2/token" を受け取り、その後に完全なスタック トレースが示されることがあります。
+*https://shell.azure.com* で実行されている Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client Error: Bad Request for url http://localhost:50342/oauth2/token" を受け取り、その後で完全なスタック トレースが示される場合があります。
 
 Azure Digital Twins では特に、これは次のコマンド グループに影響します。
 * `az dt route`
@@ -30,11 +30,15 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 これは、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することによって解決できます。 この後、コマンドを再実行できるようになります。
 
-別の解決策としては、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
+または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。
+
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Cloud Shell アイコンが強調表示されている Azure portal と、ポータル ウィンドウの下部に表示されている Cloud Shell のビュー":::
+
+最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
 
 ### <a name="possible-causes"></a>考えられる原因
 
-これは Cloud Shell の既知の問題の結果です。"[*Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る*](https://github.com/Azure/azure-cli/issues/11749)"
+これは Cloud Shell の既知の問題の結果です。" [*Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る*](https://github.com/Azure/azure-cli/issues/11749)"
 
 これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定方式である[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 `az login` を実行するトラブルシューティングの手順では、マネージド ID 認証から別の認証方式に切り替えて、この問題を回避することができます。
 
@@ -42,9 +46,9 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
 
-ユーザーによっては、[*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)* ](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトでは失敗として示されませんが、*Azure Digital Twins 所有者 (プレビュー)* ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
+ユーザーによっては、 [*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)*](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトでは失敗として示されませんが、 *Azure Digital Twins 所有者 (プレビュー)* ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
 
-スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「[*ユーザー ロールの割り当てを確認する*](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。
+スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「 [*ユーザー ロールの割り当てを確認する*](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
@@ -60,7 +64,7 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
 
-**[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ**のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
+**[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ** のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
 
 これはライブラリの最新バージョンではありません。 最新バージョンは **1.2.2** です。
 
@@ -77,7 +81,7 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 ### <a name="possible-causes"></a>考えられる原因
 
-これは、最新版 `Azure.Identity` ライブラリ (バージョン **1.2.0**) の未解決問題に関連しています。[*InteractiveBrowserCredential の使用時に認証に失敗します*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
+これは、最新版 `Azure.Identity` ライブラリ (バージョン **1.2.0** ) の未解決問題に関連しています。 [*InteractiveBrowserCredential の使用時に認証に失敗します*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
 
 この問題は、Azure Digital Twins アプリケーションでバージョン **1.2.0** を使用している場合や、バージョンを指定せずにライブラリをプロジェクトに追加した場合 (これによっても最新バージョンが規定で使用されます) に発生します。
 

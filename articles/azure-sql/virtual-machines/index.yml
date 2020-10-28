@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 05/27/2020
-  ms.openlocfilehash: 5e5cb6e8ea2b09272ffcf0387312260fc2a6bf1d
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c951ab3d68b7ad6920941b54b1eb939f88f61e79
+  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91293698"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92792499"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 可用性グループ (Az CLI)
-      url: windows/availability-group-az-cli-configure.md
+      url: ./windows/availability-group-az-commandline-configure.md
     - text: クラスターを使用しない可用性グループ
       url: windows/availability-group-clusterless-workgroup-configure.md
     - text: FCI (記憶域スペース ダイレクト)
@@ -104,7 +104,7 @@ landingContent:
     - text: 初心者向け Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL の基礎
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL のハンズオン ラボ
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL の短期集中講座
@@ -140,8 +140,8 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309202"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173948"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
@@ -23,7 +23,7 @@ ms.locfileid: "91309202"
 > Text Analytics for Health コンテナーは最近更新されました。 最近の変更の詳細については、[新機能](../whats-new.md)に関する記事をご覧ください。 一覧にある新機能を使用するには、必ず最新のコンテナーをプルしてください。
 
 > [!IMPORTANT] 
-> Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、**Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。** Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 Microsoft では、Text Analytics for Health またはその機能に関連して提供されるすべての資料が、すべての医療目的に対して十分であること、またはすべての人の健康的または医療的な要件を満たすことについて、いっさい保証しません。 
+> Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、 **Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。** Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 Microsoft では、Text Analytics for Health またはその機能に関連して提供されるすべての資料が、すべての医療目的に対して十分であること、またはすべての人の健康的または医療的な要件を満たすことについて、いっさい保証しません。 
 
 
 Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストから関連する医療情報を抽出してラベル付けする、コンテナー化されたサービスです。  
@@ -227,7 +227,11 @@ docker-compose up
 
 
 ## <a name="example-api-request"></a>API 要求の例
-コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。
+コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。  また、コンテナーのエンドポイントに **デモ** を追加するとアクセス可能となるコンテナーに、視覚化ツールを提供しています。次に例を示します。
+
+```bash
+http://<serverURL>:5000/demo
+```
 
 次の cURL 要求の例を使用し、`serverURL` 変数を適切な値に置き換えて、デプロイしたコンテナーにクエリを送信します。
 
@@ -395,7 +399,7 @@ example.json
 
 ### <a name="relation-extraction-output"></a>関係抽出の出力
 
-関係抽出の出力には、関係の "*ソース*" とその "*ターゲット*" への URI 参照が含まれています。 関係ロールが `ENTITY` のエンティティは、`target` フィールドに割り当てられます。 関係ロールが `ATTRIBUTE` のエンティティは、`source` フィールドに割り当てられます。 省略形の関係には、双方向の `source` と `target` フィールドが含まれ、`bidirectional` は `true` に設定されます。 
+関係抽出の出力には、関係の " *ソース* " とその " *ターゲット* " への URI 参照が含まれています。 関係ロールが `ENTITY` のエンティティは、`target` フィールドに割り当てられます。 関係ロールが `ATTRIBUTE` のエンティティは、`source` フィールドに割り当てられます。 省略形の関係には、双方向の `source` と `target` フィールドが含まれ、`bidirectional` は `true` に設定されます。 
 
 ```json
 "relations": [

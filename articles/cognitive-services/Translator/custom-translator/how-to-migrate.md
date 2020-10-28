@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537988"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220875"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -55,7 +55,7 @@ ms.locfileid: "86537988"
 
 3. 適切なプロジェクトの [移行] リンクをクリックします。
 
-    ![Hub から移行する方法](media/how-to/how-to-migrate-from-hub.png)
+    ![選択したプロジェクトの [移行] ボタンが強調表示されているスクリーンショット。](media/how-to/how-to-migrate-from-hub.png)
 
 4. [移行] リンクをクリックするとフォームが表示され、以下の内容を入力できます。
    * お客様がカスタム トランスレーターに転送したいワークスペースを指定します。
@@ -76,7 +76,7 @@ ms.locfileid: "86537988"
 
 3. [設定] ページで [Migrate Workspace data to Custom Translator]\(ワークスペース データを Custom Translator に移行する\) をクリックします。
 
-    ![Hub から移行する方法](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![[Migrate Workspace data to Custom Translator]\(ワークスペース データを Custom Translator に移行する\) オプションが強調表示されているスクリーンショット。](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. 次のページで、以下の 2 つのオプションのいずれかを選択します。
 

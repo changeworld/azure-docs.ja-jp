@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 732f143c9cdc0d8fbfdcf1b24f5e73280e036285
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6251894018ceeb2a99ebb62939b6e446fea825a2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042617"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220722"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
@@ -155,6 +155,16 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
+正常に終了した場合、出力は次のようになります。
+
+```PowerShell
+DomainName:<yourDomainHere>
+NetBiosDomainName:<yourNetBiosDomainNameHere>
+ForestName:<yourForestNameHere>
+DomainGuid:<yourGUIDHere>
+DomainSid:<yourSIDHere>
+AzureStorageID:<yourStorageSIDHere>
+```
 ## <a name="next-steps"></a>次のステップ
 
 これで、ストレージ アカウントで機能が正常に有効になりました。 この機能を使用するには、共有レベルのアクセス許可を割り当てる必要があります。 次のセクションに進みます。

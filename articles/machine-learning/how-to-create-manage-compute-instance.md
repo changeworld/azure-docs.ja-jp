@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756621"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207089"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -42,7 +42,7 @@ Azure Machine Learning ワークスペースで[コンピューティング イ�
 
 ## <a name="create"></a>作成
 
-**推定所要時間**: 約 5 分です。
+**推定所要時間** : 約 5 分です。
 
 コンピューティング インスタンスの作成は、ワークスペースに対する 1 回限りのプロセスです。 このコンピューティングは、開発ワークステーションとして、またはトレーニング用のコンピューティング ターゲットとして再利用できます。 ワークスペースには複数のコンピューティング インスタンスをアタッチすることができます。
 
@@ -256,11 +256,12 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 * Python: インストール コードを追加して、Jupyter Notebook のセルで実行します。
 
 または、ターミナル ウィンドウからインストールすることもできます。 Python パッケージを **Python 3.6 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
+%pip マジック関数と %conda マジック関数を使用すると、Jupyter Notebook セッションで現在実行中のカーネルにパッケージが自動的にインストールされます。
 
 ## <a name="add-new-kernels"></a>新しいカーネルを追加する
 
 > [!WARNING]
->  コンピューティング インスタンスをカスタマイズするときは、**azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
+>  コンピューティング インスタンスをカスタマイズするときは、 **azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
 
 新しい Jupyter カーネルをコンピューティング インスタンスに追加するには、次のようにします。
 
@@ -289,6 +290,6 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [トレーニングの実行を送信する](how-to-set-up-training-targets.md) 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973276"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331704"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -37,7 +37,7 @@ Computer Vision の [Read API](https://westcentralus.dev.cognitive.microsoft.com
 * PDF の寸法は、17 x 17 インチ以下である必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
 
 ### <a name="read-32-preview-allows-selecting-pages"></a>Read 3.2 プレビューではページの選択が可能
-[Read 3.2 プレビュー API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) では、大規模な複数ページのドキュメントに対して、特定のページ番号またはページ範囲を入力パラメーターとして指定して、それらのページからのみテキストを抽出することができます。 これは、省略可能な言語パラメーターに加えて、新しい入力パラメーターです。
+[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) では、大規模な複数ページのドキュメントに対して、特定のページ番号またはページ範囲を入力パラメーターとして指定して、それらのページからのみテキストを抽出することができます。 これは、省略可能な言語パラメーターに加えて、新しい入力パラメーターです。
 
 > [!NOTE]
 > **言語の入力** 
@@ -50,7 +50,7 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.1/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Billing** 
@@ -129,23 +129,17 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 }
 ```
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Read 3.2 プレビューでのテキスト行スタイルの追加 (ラテン語系の言語のみ)
-[Read 3.2 プレビュー API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) では、各テキスト行のスタイルが印刷または手書きかどうかを分類する**外観**オブジェクトが、信頼スコアとともに出力されます。 この機能は、ラテン語系の言語でのみサポートされています。
+[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) では、各テキスト行のスタイルが印刷または手書きかどうかを分類する **外観** オブジェクトが、信頼スコアとともに出力されます。 この機能は、ラテン語系の言語でのみサポートされています。
 
-```json
-  "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.836
-            }
-```
-[Computer Vision OCR SDK クイックスタート](./quickstarts-sdk/client-library.md)と [Read REST API クイックスタート](./QuickStarts/CSharp-hand-text.md)を使用して、アプリケーションへの OCR 機能の統合を開始します。
+[Computer Vision Read OCR SDK クイックスタート](./quickstarts-sdk/client-library.md)と [Read REST API クイックスタート](./QuickStarts/CSharp-hand-text.md)に従って、アプリケーションへの OCR 機能の統合を開始します。
 
 ## <a name="supported-languages-for-print-text"></a>印刷テキストでサポートされている言語
-[Read 3.2 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) の印刷テキストの抽出でサポートされている言語は、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、オランダ語です。
+[Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) の印刷テキストの抽出でサポートされている言語は、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、オランダ語です。
 
 OCR でサポートされている言語の完全な一覧については、[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)に関する記事をご覧ください。
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Read 3.2 プレビューで追加された簡体字中国語と日本語
-[Read 3.2 API パブリック プレビュー](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)では、簡体字中国語と日本語のサポートが追加されています。 お客様のシナリオでさらに多くの言語をサポートする必要がある場合は、「[OCR API](#ocr-api)」セクションを参照してください。 
+[Read 3.2 API パブリック プレビュー](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)では、簡体字中国語と日本語のサポートが追加されています。 お客様のシナリオでさらに多くの言語をサポートする必要がある場合は、「[OCR API](#ocr-api)」セクションを参照してください。 
 
 ## <a name="supported-languages-for-handwritten-text"></a>手書きテキストに対してサポートされている言語
 現在、読み取り操作の手書きテキストの抽出でサポートされているのは、英語だけです。
@@ -154,7 +148,7 @@ OCR でサポートされている言語の完全な一覧については、[サ
 [Read 3.x REST API](./QuickStarts/CSharp-hand-text.md) は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Docker コンテナーを使用したオンプレミスのデプロイ
-[Read 2.0 Docker コンテナー (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
+[Read Docker コンテナー (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
 
 ## <a name="example-outputs"></a>出力例
 
@@ -201,7 +195,7 @@ Cognitive Services 全般に言えることですが、読み取り/OCR サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- C#、Java、JavaScript、または Python で [Computer Vision 3.0 SDK のクイックスタート](./quickstarts-sdk/client-library.md)を開始します。
-- C#、Java、JavaScript、または Python で [Read 3.1 REST API クイックスタート](./QuickStarts/CSharp-hand-text.md) を使用して、REST API の使用方法を学習します。
-- [Read 3.1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) について学習します。
-- 簡体字中国語と日本語のサポートが追加された [Read 3.2 パブリック プレビュー REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) について学習します。
+- C#、Java、JavaScript、または Python で、[Computer Vision Read SDK クイックスタート](./quickstarts-sdk/client-library.md)を開始します。
+- C#、Java、JavaScript、または Python で、[Read REST API クイックスタート](./QuickStarts/CSharp-hand-text.md)に従って、REST API の使用方法を学習します。
+- [Read REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) について学習します。
+- 簡体字中国語と日本語のサポートが追加された [Read 3.2 パブリック プレビュー REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) について学習します。

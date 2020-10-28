@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake Analytics の U-SQL ラインタイム エラーをトラブルシューティングする方法
 description: U-SQL ランタイム エラーをトラブルシューティングする方法について説明します。
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
-ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87475262"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216268"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>実行時の変更による U-SQL ランタイム エラーをトラブルシューティングする方法について説明します。
 

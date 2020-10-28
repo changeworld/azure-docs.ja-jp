@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766678"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329851"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 
 この記事では、Azure Automation と Logic Apps を使用して、ExpressRoute ゲートウェイからオンプレミス ネットワークにアドバタイズされるルートの数を常に監視する方法について説明します。 監視により、[200 ルートの制限](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering)を超えないようにすることができます。
 
-**Azure Automation** を使用すると、*Runbook* に格納されているカスタム PowerShell スクリプトの実行を自動化できます。 この記事の構成を使用する場合、Runbook には、1 つまたは複数の ExpressRoute ゲートウェイに対してクエリを行う PowerShell スクリプトが含まれます。 これは、リソース グループ、ExpressRoute ゲートウェイ名、オンプレミスでアドバタイズされたネットワーク プレフィックスの数を含むデータセットを収集します。
+**Azure Automation** を使用すると、 *Runbook* に格納されているカスタム PowerShell スクリプトの実行を自動化できます。 この記事の構成を使用する場合、Runbook には、1 つまたは複数の ExpressRoute ゲートウェイに対してクエリを行う PowerShell スクリプトが含まれます。 これは、リソース グループ、ExpressRoute ゲートウェイ名、オンプレミスでアドバタイズされたネットワーク プレフィックスの数を含むデータセットを収集します。
 
 **Azure Logic Apps** により、Azure Automation の Runbook を呼び出すカスタム ワークフローがスケジュールされます。 Runbook の実行には、ジョブが使用されます。 データ収集が実行されると、Azure Logic Apps ワークフローによってデータが分類され、事前に定義されたしきい値を超えるまたは下回るネットワーク プレフィックス数の一致条件に基づいて、宛先のメール アドレスに情報が送信されます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91766678"
 
 * [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に慣れている。
 
-* Azure PowerShell の使用に慣れている。 ExpressRoute ゲートウェイでネットワーク プレフィックスを収集するために、Azure PowerShell が必要です。 Azure PowerShell 全般の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0)を参照してください。
+* Azure PowerShell の使用に慣れている。 ExpressRoute ゲートウェイでネットワーク プレフィックスを収集するために、Azure PowerShell が必要です。 Azure PowerShell 全般の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/?view=azps-4.1.0)を参照してください。
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>注意事項と制限事項
 
@@ -58,7 +58,7 @@ Azure portal で Automation アカウントを作成すると、[実行](../auto
 
 * Azure AD でアプリケーションのサービス プリンシパル アカウントを作成する。
 
-* 使用されている Azure サブスクリプションの共同作成者ロール (RBAC) を自身に割り当てる。 このロールにより、Runbook を使用して Azure Resource Manager リソースが管理されます。
+* 使用されている Azure サブスクリプションの共同作成者ロール (Azure RBAC) を自身に割り当てる。 このロールにより、Runbook を使用して Azure Resource Manager リソースが管理されます。
 
 Automation アカウントを作成するには、特権とアクセス許可が必要です。 詳細については、「[Automation アカウントを作成するために必要なアクセス許可](../automation/automation-create-standalone-account.md#permissions-required-to-create-an-automation-account)」を参照してください。
 
@@ -70,7 +70,7 @@ Automation アカウントを作成するには、特権とアクセス許可が
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2.実行アカウントにロールを割り当てる
 
-既定では、**共同作成者**ロールが、**実行**アカウントによって使用されるサービス プリンシパルに割り当てられます。 サービス プリンシパルに割り当てられた既定のロールを維持することも、[組み込みロール](../role-based-access-control/built-in-roles.md) (閲覧者など) または[カスタム ロール](../active-directory/users-groups-roles/roles-create-custom.md)を割り当てることによってアクセス許可を制限することもできます。
+既定では、 **共同作成者** ロールが、 **実行** アカウントによって使用されるサービス プリンシパルに割り当てられます。 サービス プリンシパルに割り当てられた既定のロールを維持することも、[組み込みロール](../role-based-access-control/built-in-roles.md) (閲覧者など) または[カスタム ロール](../active-directory/users-groups-roles/roles-create-custom.md)を割り当てることによってアクセス許可を制限することもできます。
 
  次の手順を使用して、実行アカウントで使用されるサービス プリンシパルに割り当てられているロールを決定します。
 
@@ -90,7 +90,7 @@ Azure Automation の Runbook で PowerShell コマンドレットを実行する
 
    :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="Automation アカウントの追加":::
 
-2. ギャラリーを検索し、次のモジュールをインポートします。**Az.Accounts**、**Az.Network**、**Az.Automation**、および **Az.Profile**。
+2. ギャラリーを検索し、次のモジュールをインポートします。 **Az.Accounts** 、 **Az.Network** 、 **Az.Automation** 、および **Az.Profile** 。
 
    :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="Automation アカウントの追加" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
   
@@ -257,7 +257,7 @@ PowerShell スクリプトを実行すると、値の一覧が収集されます
 
 * 状態 (OK、ALERT、WARNING) の詳細な説明のアラート メッセージ
 
-PowerShell スクリプトでは、収集された情報が JSON 出力に変換されます。 Runbook では、PowerShell コマンドレット [Write-Output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)を出力ストリームとして使用して、情報をクライアントに通知します。
+PowerShell スクリプトでは、収集された情報が JSON 出力に変換されます。 Runbook では、PowerShell コマンドレット [Write-Output](/powershell/module/Microsoft.PowerShell.Utility/Write-Output)を出力ストリームとして使用して、情報をクライアントに通知します。
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4.Runbook を検証する
 
@@ -277,7 +277,7 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ### <a name="1-create-a-logic-app"></a>1.ロジック アプリを作成します
 
-**ロジック アプリ デザイナー**で、 **[空のロジック アプリ]** テンプレートを使用してロジック アプリを作成します。 手順については、[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)に関する記事を参照してください。
+**ロジック アプリ デザイナー** で、 **[空のロジック アプリ]** テンプレートを使用してロジック アプリを作成します。 手順については、[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)に関する記事を参照してください。
 
 :::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="Automation アカウントの追加":::
 
@@ -285,7 +285,7 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 すべてのロジック アプリは、トリガーによって開始されます。 トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動されるたびに、Azure Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
 
-事前に定義された時間スケジュールに基づいてロジック アプリを定期的に実行するには、組み込みの **[定期的なスケジュール]** をワークフローに追加します。 検索ボックスに「**スケジュール**」と入力します。 **[トリガー]** を選択します。 トリガーの一覧で、 **[定期的なスケジュール]** を選択します。
+事前に定義された時間スケジュールに基づいてロジック アプリを定期的に実行するには、組み込みの **[定期的なスケジュール]** をワークフローに追加します。 検索ボックスに「 **スケジュール** 」と入力します。 **[トリガー]** を選択します。 トリガーの一覧で、 **[定期的なスケジュール]** を選択します。
 
 :::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="Automation アカウントの追加":::
 
@@ -305,8 +305,8 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ロジック アプリは、コネクタを介して他のアプリ、サービス、およびプラットフォームにアクセスします。 このワークフローの次のステップでは、前に定義した Azure Automation アカウントにアクセスするコネクタを選択します。
 
-1. **Logic Apps デザイナー**で、 **[繰り返し]** の下にある **[新しいステップ]** を選択します。 **[アクションを選択してください]** と検索ボックスの下の **[すべて]** を選択します。
-2. 検索ボックスに、「**Automation Accounts**」と入力して検索します。 **[ジョブの作成]** を選択します。 **[ジョブの作成]** は、前に作成した Automation Runbook を起動するために使用されます。
+1. **Logic Apps デザイナー** で、 **[繰り返し]** の下にある **[新しいステップ]** を選択します。 **[アクションを選択してください]** と検索ボックスの下の **[すべて]** を選択します。
+2. 検索ボックスに、「 **Automation Accounts** 」と入力して検索します。 **[ジョブの作成]** を選択します。 **[ジョブの作成]** は、前に作成した Automation Runbook を起動するために使用されます。
 
    :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="Automation アカウントの追加":::
 
@@ -343,7 +343,7 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
    :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Automation アカウントの追加" lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
-4. JSON を解析するには、スキーマが必要です。 スキーマは、Automation Runbook の出力を使用して生成できます。 新しい Web ブラウザー セッションを開き、Automation Runbook を実行して出力を取得します。 **Logic Apps JSON の解析データ操作**アクションに戻ります。 ページの下部で、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
+4. JSON を解析するには、スキーマが必要です。 スキーマは、Automation Runbook の出力を使用して生成できます。 新しい Web ブラウザー セッションを開き、Automation Runbook を実行して出力を取得します。 **Logic Apps JSON の解析データ操作** アクションに戻ります。 ページの下部で、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
    :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="Automation アカウントの追加":::
 
@@ -359,7 +359,7 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ワークフローのこのステップでは、電子メールでアラームを送信する条件を作成します。 電子メールの本文メッセージの柔軟なカスタム書式設定のために、ワークフローに補助変数が導入されています。
 
-1. **[ジョブの出力を取得します] アクション**の下で、 **[新しいステップ]** を選択します。 検索ボックスで **[変数]** を探して選択します。
+1. **[ジョブの出力を取得します] アクション** の下で、 **[新しいステップ]** を選択します。 検索ボックスで **[変数]** を探して選択します。
 
    :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Automation アカウントの追加":::
 
@@ -373,13 +373,13 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7."For each" アクションを作成する
 
-JSON が解析されると、**JSON の解析データ操作**アクションによって、コンテンツが "*本文*" 出力に格納されます。 出力を処理するには、配列内の各項目に対して 1 つ以上のアクションを繰り返す "For each" ループを作成します。
+JSON が解析されると、 **JSON の解析データ操作** アクションによって、コンテンツが " *本文* " 出力に格納されます。 出力を処理するには、配列内の各項目に対して 1 つ以上のアクションを繰り返す "For each" ループを作成します。
 
 1. **[変数を初期化する]** の下で、 **[アクションの追加]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。
 
    :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Automation アカウントの追加":::
 
-2. **[アクション]** の一覧から、**For each - 制御**を選択します。
+2. **[アクション]** の一覧から、 **For each - 制御** を選択します。
 
    :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="Automation アカウントの追加":::
 
@@ -399,7 +399,7 @@ JSON が解析されると、**JSON の解析データ操作**アクションに
 
    :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Automation アカウントの追加" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
 
-7. ExpressRoute ゲートウェイが 2 つの BGP ピアにアドバタイズするネットワーク プレフィックス数の値を確認します。 ルートの数は、 **[動的なコンテンツ]** の "numRoutePeer1" および "numRoutePeer2" にあります。 [値] ボックスに、**numRoutePeer1** の値を入力します。
+7. ExpressRoute ゲートウェイが 2 つの BGP ピアにアドバタイズするネットワーク プレフィックス数の値を確認します。 ルートの数は、 **[動的なコンテンツ]** の "numRoutePeer1" および "numRoutePeer2" にあります。 [値] ボックスに、 **numRoutePeer1** の値を入力します。
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="Automation アカウントの追加":::
 

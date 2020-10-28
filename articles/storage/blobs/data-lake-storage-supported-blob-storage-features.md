@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2c7953ea7b85eca3628329b427f960f9466fd6b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618473"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316043"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -26,7 +26,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 > [!NOTE]
 > サポート レベルは、機能が Data Lake Storage Gen2 でどのようにサポートされているかのみを示します。 
 >
-> Data Lake Storage Gen2 向けの [Premium パフォーマンスの BlockBlobStorage アカウント](storage-blob-create-account-block-blob.md)は、現在パブリック プレビューの段階にあります。 これらの種類のアカウントのサポート レベルは、**BlockBlobStorage (Premium)** 列に表示されます。
+> Data Lake Storage Gen2 向けの [Premium パフォーマンスの BlockBlobStorage アカウント](storage-blob-create-account-block-blob.md)は、現在パブリック プレビューの段階にあります。 これらの種類のアカウントのサポート レベルは、 **BlockBlobStorage (Premium)** 列に表示されます。
 
 |BLOB ストレージ機能 |汎用 v2 |BlockBlobStorage (Premium) |関連記事 |
 |---------------|-------------------|---|
@@ -49,7 +49,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](storage-blob-soft-delete.md)|
 |blobfuse|プレビュー|まだサポートされていません|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |アカウントのフェールオーバー|まだサポートされていません|まだサポートされていません|[ディザスター リカバリーとアカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|BLOB コンテナーの ACL|まだサポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|まだサポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[コンテナー ACL の設定](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|BLOB コンテナーの ACL|サポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|サポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|この表の下に記載されている、関連する注意事項を参照してください。|
 |カスタマー指定のキー|まだサポートされていません|まだサポートされていません|[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)|
 |カスタム ドメイン|まだサポートされていません|まだサポートされていません|[カスタム ドメインを Azure Blob ストレージ エンドポイントにマップする](storage-custom-domain-name.md)|
 |暗号化スコープ|まだサポートされていません|まだサポートされていません|[暗号化スコープの作成と管理 (プレビュー)](encryption-scope-manage.md)|

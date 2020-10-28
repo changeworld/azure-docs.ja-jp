@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84431595"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281595"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra 用 Azure Cosmos DB API でフィードを変更する
 
-Cassandra 用 Azure Cosmos DB API の[変更フィード](change-feed.md) サポートは、Cassandra Query Language (CQL) のクエリ述語を通じて利用できます。 これらの述語条件を使用して、フィード変更 API に対してクエリを実行できます。 アプリケーションでは、CQL で必要とされる主キー (パーティション キーとも呼ばれます) を使用して、テーブルへの変更を取得できます。 その後、結果に基づいてさらにアクションを実行できます。 テーブルの行に加えた変更は、変更時刻順でキャプチャされ、並べ替え順序はパーティション キーごとに保証されます。
+Cassandra 用 Azure Cosmos DB API の[変更フィード](change-feed.md) サポートは、Cassandra Query Language (CQL) のクエリ述語を通じて利用できます。 これらの述語条件を使用して、フィード変更 API に対してクエリを実行できます。 アプリケーションでは、CQL で必要とされる主キー (パーティション キーとも呼ばれます) を使用して、テーブルへの変更を取得できます。 その後、結果に基づいてさらにアクションを実行できます。 テーブルの行に加えた変更は、変更時刻順かつ、パーティション キー別の並べ替え順序でキャプチャされます。
 
 次の例では、.NET を使用して Cassandra API キー スペース テーブル内のすべての行で変更フィードを取得する方法を示します。 述語 COSMOS_CHANGEFEED_START_TIME () は CQL 内で直接使用され、指定された開始時刻 (この場合は現在の日付/時刻) か変更フィードの項目をクエリします。 C# は[こちら](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)、および Java は[こちら](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)から、完全なサンプルをダウンロードすることができます。
 

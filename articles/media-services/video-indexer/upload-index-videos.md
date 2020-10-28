@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268827"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218958"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -72,15 +72,15 @@ Video Indexer で使用できるファイル形式の一覧については、「
 > ビデオの名前は、80 文字以下にする必要があります。
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。
-2. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
+1. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
 
-    ![アップロード](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="アップロード":::
+1. ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。
 
-    ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。
-
-    ![アップロード完了](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="アップロード":::
+1. Video Indexer で分析が完了すると、ビデオへのリンクとビデオの内容の簡単な説明が記載されたメールが届きます。 たとえば、人物、トピックス、OCR などが表示されます。
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>API を使用したアップロードとインデックス作成
 
@@ -140,7 +140,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 #### <a name="priority"></a>priority
 
-ビデオには、優先度に従って、Video Indexer によってインデックスが付けられます。 インデックスの優先度を指定するには、**priority** パラメーターを使用します。 有効な値は、**Low**、**Normal** (既定)、**High** です。
+ビデオには、優先度に従って、Video Indexer によってインデックスが付けられます。 インデックスの優先度を指定するには、 **priority** パラメーターを使用します。 有効な値は、 **Low** 、 **Normal** (既定)、 **High** です。
 
 **Priority** パラメーターは、有料アカウントだけでサポートされています。
 
@@ -148,7 +148,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします。 その後、インデックス作成とビデオの分析を行います。 Video Indexer が分析を完了すると、ビデオ ID を含んだ通知が送信されます。  
 
-[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、**実行中**状態である必要があります。
+[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、 **実行中** 状態である必要があります。
 
 SingleBitrate の場合、出力ごとに Standard Encoder コストが適用されます。 ビデオの高さが 720 以上の場合、Video Indexer によって 1280 x 720 としてエンコードされます。 それ以外の場合は、640 x 468 と指定されます。
 既定の設定は、[コンテンツに対応したエンコード](../latest/content-aware-encoding.md)です。
@@ -178,7 +178,7 @@ SingleBitrate の場合、出力ごとに Standard Encoder コストが適用さ
     * https://api-portal.videoindexer.ai/ に移動します
     * ログイン
     * **[製品]**  ->  **[承認]**  ->  **[[Authorization subscription]\(承認サブスクリプション\)]** に移動します。
-    * **主キー**をコピーします。
+    * **主キー** をコピーします。
 * ビデオの URL – インデックスを作成するビデオ/音声ファイルの URL。 URL はメディア ファイルを示している必要があります (HTML ページはサポートされていません)。 このファイルは URI の一部として提供されるアクセス トークンで保護することができます。また、ファイルを提供するエンドポイントは TLS 1.2 以降を使用してセキュリティで保護する必要があります。 URL はエンコードする必要があります。
 
 コード サンプルを正常に実行した結果には、分析情報ウィジェットの URL とプレーヤー ウィジェットの URL が含まれます。これにより、アップロードされた分析情報とビデオをそれぞれ調べることができます。 

@@ -1,17 +1,15 @@
 ---
 title: Azure CLI を使用して Azure Data Lake Analytics を管理する
 description: この記事では、Azure CLI を使用して、Data Lake Analytics のジョブ、データ ソース、ユーザーを管理する方法について説明します。
-services: data-lake-analytics
-ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320848"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220926"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
 
@@ -19,18 +17,17 @@ ms.locfileid: "91320848"
 
 Azure CLI を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。 他のツールを使用する管理のトピックを表示する場合は、上のタブ セレクターをクリックします。
 
-
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、次のリソースを用意する必要があります。
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* Azure CLI。 「 [Azure CLI のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」をご覧ください。
+- Azure CLI。 「 [Azure CLI のインストールと構成](/cli/azure/install-azure-cli)」をご覧ください。
 
-  * このデモを完了するためには、**プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
+  - このデモを完了するためには、 **プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 
-* `az login` コマンドを使用して認証し、使用するサブスクリプションを選択します。 職場か学校のアカウントを使用した認証の詳細については、「 [Azure CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)」をご覧ください。
+- `az login` コマンドを使用して認証し、使用するサブスクリプションを選択します。 職場か学校のアカウントを使用した認証の詳細については、「 [Azure CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)」をご覧ください。
 
    ```azurecli
    az login
@@ -46,11 +43,11 @@ Azure CLI を使用して、Azure Data Lake Analytics のアカウント、デ�
 
 ## <a name="manage-accounts"></a>アカウントの管理
 
-Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。 ジョブの実行時にのみ課金されます。  詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。  
+Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。 ジョブの実行時にのみ課金されます。  詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
 ### <a name="create-accounts"></a>アカウントの作成
 
-次のコマンドを実行して、Data Lake アカウントを作成します。 
+次のコマンドを実行して、Data Lake アカウントを作成します。
 
    ```azurecli
    az dla account create --account "<Data Lake Analytics account name>" --location "<Location Name>" --resource-group "<Resource Group Name>" --default-data-lake-store "<Data Lake Store account name>"
@@ -88,10 +85,10 @@ Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカ�
 
 Data Lake Analytics では、現在、2 つのデータ ソースがサポートされています。
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure ストレージ](../storage/common/storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure ストレージ](../storage/common/storage-introduction.md)
 
-Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Storage アカウントを指定する必要があります。 既定の Data Lake ストレージ アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 Analytics アカウントを作成したら、さらに Data Lake Storage アカウントや Azure Storage アカウントを追加することができます。 
+Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Storage アカウントを指定する必要があります。 既定の Data Lake ストレージ アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 Analytics アカウントを作成したら、さらに Data Lake Storage アカウントや Azure Storage アカウントを追加することができます。
 
 ### <a name="find-the-default-data-lake-store-account"></a>既定の Data Lake Store アカウントの検索
 
@@ -127,7 +124,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
    az dla account blob-storage update --access-key "<New Blob Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-### <a name="list-data-sources"></a>データ ソースの一覧表示:
+### <a name="list-data-sources"></a>データ ソースの一覧表示
 
 Data Lake Store アカウントを一覧表示するには:
 
@@ -143,7 +140,7 @@ BLOB ストレージ アカウントを一覧表示するには:
 
 !["dataLakeStoreAccounts:" 情報が強調表示された Azure CLI を示すスクリーンショット。](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### <a name="delete-data-sources"></a>データ ソースの削除:
+### <a name="delete-data-sources"></a>データ ソースの削除
 
 Data Lake Store アカウントを削除するには:
 
@@ -185,6 +182,7 @@ BLOB ストレージ アカウントを削除するには:
 >    ```
 
 ### <a name="cancel-jobs"></a>ジョブの取り消し
+
 list コマンドを使用してジョブ ID を検索した後、cancel を使用してそのジョブを取り消します。
 
    ```azurecli
@@ -212,7 +210,8 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-* [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-* [Azure  Portal を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)
-* [Azure Portal を使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+- [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
+- [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure  Portal を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)
+- [Azure Portal を使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

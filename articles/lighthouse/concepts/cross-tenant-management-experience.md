@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 10/12/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970641"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315928"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -42,7 +42,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 > [!NOTE]
 > Azure Lighthouse に関連するテナント情報に加え、これらの API で表示されるテナントには、Azure Databricks または Azure マネージド アプリケーションのパートナー テナントが反映されることがあります。
 
-また、Azure Lighthouse タスクの実行に固有の API も用意されています。 詳細については、**リファレンス**を参照してください。
+また、Azure Lighthouse タスクの実行に固有の API も用意されています。 詳細については、 **リファレンス** を参照してください。
 
 ## <a name="enhanced-services-and-scenarios"></a>強化されたサービスとシナリオ
 
@@ -69,6 +69,10 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - [オンプレミスのワークロード、Azure VM、Azure ファイル共有などから](../..//backup/backup-overview.md#what-can-i-back-up)顧客データをバックアップして復元する
 - [バックアップ エクスプローラー](../../backup/monitor-azure-backup-with-backup-explorer.md)を使用すると、バックアップ項目 (まだバックアップ対象として構成されていない Azure リソースを含む) の運用情報と、委任されたサブスクリプションの監視情報 (ジョブとアラート) を表示できます。 バックアップ エクスプローラーは、現在、Azure VM データに対してのみ使用できます。
 - 委任されたサブスクリプション全体で[バックアップ レポート](../../backup/configure-reports.md)を使用して、過去の傾向を追跡し、バックアップ ストレージの使用量を分析し、バックアップと復元を監査します。
+
+[Azure Blueprints](../../governance/blueprints/index.yml):
+
+- Azure Blueprints を使用して、リソース テンプレートおよびその他の成果物のデプロイを調整します (顧客のサブスクリプションを準備するには、[追加のアクセス](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/)が必要です)。
 
 [Azure Cost Management および Billing](../../cost-management-billing/index.yml):
 
@@ -149,7 +153,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 サポート リクエスト:
 
-- Azure portal で、委任されたリソースに対する[サポート リクエストを **[ヘルプとサポート]** で開く](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) (委任されたスコープで利用可能なサポート プランを選択する)
+- Azure portal で、委任されたリソースに対する [サポート リクエストを **[ヘルプとサポート]** で開く](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) (委任されたスコープで利用可能なサポート プランを選択する)
 
 ## <a name="current-limitations"></a>現在の制限
 
@@ -163,4 +167,4 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Resource Manager テンプレートを使用する](../how-to/onboard-customer.md)か[プライベートまたはパブリックのマネージド サービスのオファーを Azure Marketplace に公開する](../how-to/publish-managed-services-offers.md)ことで、Azure Lighthouse に顧客をオンボードします。
-- Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](../how-to/view-manage-customers.md)します。
+- Azure portal の **[マイ カスタマー]** に移動して、 [顧客を表示および管理](../how-to/view-manage-customers.md)します。

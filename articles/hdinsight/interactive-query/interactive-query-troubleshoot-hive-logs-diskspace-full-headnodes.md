@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943960"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220892"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>シナリオ:Apache Hive ログによって Azure HDInsight のヘッド ノードのディスク領域がいっぱいになる
 
@@ -23,7 +23,8 @@ ms.locfileid: "78943960"
 Apache Hive/LLAP クラスターで、不要なログによってヘッド ノードのディスク領域全体が占有されている。 そのため、次の問題が発生する可能性がある。
 
 1. ヘッド ノードに空き領域がないため、SSH アクセスが失敗する。
-2. Ambari によって "*HTTP エラー:503 サービス利用不可*" が返される。
+2. Ambari によって " *HTTP エラー:503 サービス利用不可* " が返される。
+3. HiveServer2 Interactive が再起動に失敗する
 
 この問題が発生すると、`ambari-agent` ログに次のように表示されます。
 ```
@@ -35,7 +36,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>原因
 
-Hive-log4j の詳細構成で、パラメーター *log4j.appender.RFA.MaxBackupIndex* が省略されています。 これにより、ログ ファイルが無限に生成されます。
+高度な hive-log4j 構成では、最後に変更された日付に基づき、30 日以上経過しているファイルに対して現在の既定の削除スケジュールが設定されます。
 
 ## <a name="resolution"></a>解像度
 
@@ -43,30 +44,28 @@ Hive-log4j の詳細構成で、パラメーター *log4j.appender.RFA.MaxBackup
 
 2. [Advanced]\(詳細\) 設定の `Advanced hive-log4j` セクションに移動します。
 
-3. `log4j.appender.RFA` パラメーターを RollingFileAppender に設定します。 
+3. `appender.RFA.strategy.action.condition.age` パラメーターを任意の期間に設定します。 14 日間の例: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. `log4j.appender.RFA.MaxFileSize` と `log4j.appender.RFA.MaxBackupIndex` を次のように設定します。
+4. 関連設定が表示されない場合、次の設定を追加してください。
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. 次に示すように、`hive.root.logger` を `INFO,RFA` に設定します。 既定の設定は DEBUG で、これによりログが非常に大きくなります。
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. 構成を保存し、必要なコンポーネントを再起動します。
 

@@ -4,15 +4,15 @@ description: Azure Cosmos DB .NET v3 SDK のパフォーマンスを向上させ
 author: j82w
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802992"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277308"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -39,13 +39,13 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
 
 ここに示す 4 種類のアプリケーションでは、既定で 32 ビットのホスト処理が使用されます。 アプリケーションの種類のホスト処理を 64 ビット処理に変更するには、次の手順に従います。
 
-- **実行可能アプリケーションの場合**: **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、[[プラットフォーム ターゲット]](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) を **x64** に設定します。
+- **実行可能アプリケーションの場合** : **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、 [[プラットフォーム ターゲット]](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) を **x64** に設定します。
 
-- **Vstest ベースのテスト プロジェクトの場合**:Visual Studio の **[テスト]** メニューで、 **[テスト]**  >  **[テストの設定]** の順に選択し、 **[既定のプロセッサ アーキテクチャ]** を **X64** に設定します。
+- **Vstest ベースのテスト プロジェクトの場合** :Visual Studio の **[テスト]** メニューで、 **[テスト]**  >  **[テストの設定]** の順に選択し、 **[既定のプロセッサ アーキテクチャ]** を **X64** に設定します。
 
-- **ローカルにデプロイされた ASP.NET Web アプリケーションの場合**: **[ツール]**  >  **[オプション]**  >  **[プロジェクトとソリューション]**  >  **[Web プロジェクト]** の順に選択し、 **[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** を選択します。
+- **ローカルにデプロイされた ASP.NET Web アプリケーションの場合** : **[ツール]**  >  **[オプション]**  >  **[プロジェクトとソリューション]**  >  **[Web プロジェクト]** の順に選択し、 **[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** を選択します。
 
-- **Azure にデプロイされた ASP.NET Web アプリケーションの場合**:Azure portal の **[アプリケーション設定]** で、**64 ビット**のプラットフォームを選択します。
+- **Azure にデプロイされた ASP.NET Web アプリケーションの場合** :Azure portal の **[アプリケーション設定]** で、 **64 ビット** のプラットフォームを選択します。
 
 > [!NOTE] 
 > 既定では、新しい Visual Studio プロジェクトは、 **[任意の CPU]** に設定されます。 **x86** に切り替わらないように、プロジェクトを **x64** に設定することをお勧めします。 **[任意の CPU]** に設定されたプロジェクトは、x86 のみの依存関係が追加されると、簡単に **x86** に切り替わる可能性があります。<br/>
@@ -67,32 +67,7 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
 
 **接続ポリシー:直接接続モードを使用する**
 
-クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間について、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続*モード*と接続*プロトコル*があります。 次の 2 つの接続モードを使用できます。
-
-   * 直接モード (既定)
-
-     直接モードは、[Microsoft.Azure.Cosmos/.NET V3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) を使用している場合は既定の接続モードであり、TCP プロトコルを介した接続がサポートされます。 直接モードでは、ゲートウェイ モードよりパフォーマンスが向上し、必要なネットワーク ホップ数が少なくなります。
-
-   * ゲートウェイ モード
-      
-     ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントが使用されるため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 
-     
-     ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 つまり、ネットワーク ホップ数が少ないため、直接モードの方がパフォーマンスが向上します。 ソケット接続の数に制限がある環境でアプリケーションを実行する場合、ゲートウェイ接続モードも推奨されます。
-
-     Azure Functions (特に[従量課金プラン](../azure-functions/functions-scale.md#consumption-plan)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。 Azure Functions アプリケーション内で他の HTTP ベースのクライアントも使用している場合は、ゲートウェイ モードの方がよい可能性があります。
-     
-直接モードで TCP プロトコルを使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えて 10000 ～ 20000 のポート範囲が開いていることを確認する必要があります。 [プライベート エンドポイント](./how-to-configure-private-endpoints.md)で直接モードを使用する場合は、TCP ポートの範囲全体 0 ～ 65535 が開いている必要があります。 標準 Azure VM 構成では、ポートは既定で開かれています。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 
-
-次の表は、さまざまな API で使用できる接続モードと、各 API で使用されるサービス ポートを示しています。
-
-|接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
-|---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443) <br><br> ポート 10250 は、geo レプリケーションを使用しない MongoDB インスタンスの既定の Azure Cosmos DB API にマップされ、ポート 10255 と 10256 は、geo レプリケーションを使用するインスタンスにマップされます。   |
-|直接    |     TCP    |  .NET SDK    | パブリック/サービス エンドポイントを使用する場合: 10000 ～ 20000 の範囲のポート<br><br>プライベート エンドポイントを使用する場合: 0 ～ 65535 の範囲のポート |
-
-Azure Cosmos DB では、HTTPS を介したシンプルなオープン RESTful プログラミング モデルが提供されます。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 TCP プロトコルでは、最初の認証とトラフィックの暗号化でトランスポート層セキュリティ (TLS) が使用されます。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
-
-SDK V3 の場合、`CosmosClientOptions` で `CosmosClient` インスタンスを作成するときに、接続モードを構成します。 直接モードが既定値であることに注意してください。
+.NET V3 SDK の既定の接続モードは直接です。 `CosmosClientOptions` で `CosmosClient` インスタンスを作成するときに、接続モードを構成します。  さまざまな接続オプションについては、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -102,10 +77,6 @@ new CosmosClientOptions
     ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
 });
 ```
-
-TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に常に HTTPS プロトコルが使用されます。
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="さまざまな接続モードとプロトコルを使用して、Azure Cosmos DB への接続を確立する" border="false":::
 
 **一時的なポートの不足**
 
@@ -126,7 +97,7 @@ TCP は直接モードでのみサポートされるため、ゲートウェイ 
 
 最短の待ち時間は、プロビジョニングされた Azure Cosmos DB エンドポイントと同じ Azure リージョン内に呼び出し元アプリケーションを配置することによって実現できます。 利用可能なリージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/#services)」をご覧ください。
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="さまざまな接続モードとプロトコルを使用して、Azure Cosmos DB への接続を確立する" border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="クライアントを同じリージョンに併置する" border="false":::
 
    <a id="increase-threads"></a>
 
@@ -163,7 +134,7 @@ Azure Functions で作業する場合、インスタンスは既存の[ガイド
 高負荷の作成ペイロードがあるワークロードでは、`EnableContentResponseOnWrite` 要求オプションを `false` に設定します。 サービスは、作成または更新されたリソースを SDK に返さなくなります。 通常、アプリケーションには作成済みのオブジェクトがあるため、サービスから返される必要はありません。 ヘッダー値には、まだ要求の料金と同様にアクセスできます。 応答コンテンツを無効にすると、SDK がメモリを割り当てたり応答の本文をシリアル化したりする必要がなくなるため、パフォーマンスを向上させることができます。 また、ネットワーク帯域幅の使用量も削減され、パフォーマンスがさらに向上します。  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource
@@ -171,7 +142,7 @@ itemResponse.Resource
 
 **待ち時間ではなくスループットを最適化するために一括処理を有効にする**
 
-ワークロードが大量のスループットを必要とし、待ち時間はそれほど重要ではないシナリオでは、*一括処理*を有効にします。 一括処理機能を有効にする方法と、その機能を使用する必要があるシナリオの詳細については、[一括処理の概要](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk)に関するページを参照してください。
+ワークロードが大量のスループットを必要とし、待ち時間はそれほど重要ではないシナリオでは、 *一括処理* を有効にします。 一括処理機能を有効にする方法と、その機能を使用する必要があるシナリオの詳細については、[一括処理の概要](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk)に関するページを参照してください。
 
 **ゲートウェイ モードを使用するときにホストあたりの System.Net MaxConnections を増やす**
 
@@ -183,13 +154,13 @@ SQL .NET SDK では、並列クエリがサポートされています。この�
 
 並列クエリには、要件に合わせてチューニングできる 2 つのパラメーターがあります。 
 
-- **MaxConcurrency**: 同時にクエリを実行できるパーティションの最大数を制御します。
+- **MaxConcurrency** : 同時にクエリを実行できるパーティションの最大数を制御します。
 
    並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティションからのデータは、クエリごとに順番に取得されます。 そのため、[SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) の `MaxConcurrency` をパーティションの数に設定すると、その他のすべてのシステムの条件が同じであれば、クエリのパフォーマンスを最善にできる可能性が最大になります。 パーティションの数がわからない場合は、並列処理の次数を高い数値に設定できます。 システムにより、並列処理の次数として最小値 (パーティションの数、ユーザー指定の入力) が選択されます。
 
     並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、それらのパーティションがクエリのパフォーマンスのボトルネックになります。
    
-- **MaxBufferedItemCount**:プリフェッチされる結果の数を制御します。
+- **MaxBufferedItemCount** :プリフェッチされる結果の数を制御します。
 
    並列クエリは、結果の現在のバッチがクライアントによって処理されている間に結果をプリフェッチするように設計されています。 このプリフェッチは、クエリの全体的な遅延の削減に役立ちます。 `MaxBufferedItemCount` パラメーターは、プリフェッチされる結果の数を制限します。 `MaxBufferedItemCount` を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
 
@@ -287,4 +258,4 @@ SDK はすべてこの応答を暗黙的にキャッチし、サーバーが指�
 ## <a name="next-steps"></a>次のステップ
 少数のクライアント コンピューターでの高パフォーマンス シナリオで Azure Cosmos DB の評価に使用されるサンプル アプリケーションについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 
-スケーリングと高パフォーマンスのためのアプリケーションの設計について詳しくは、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」をご覧ください。
+スケーリングと高パフォーマンスのためのアプリケーションの設計について詳しくは、「[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)」をご覧ください。

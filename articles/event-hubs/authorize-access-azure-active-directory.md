@@ -3,15 +3,15 @@ title: Azure Active Directory を使用したアクセスを承認する
 description: この記事では、Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566263"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332401"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する
-Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
+Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、セキュリティ プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 セキュリティ プリンシパル (ユーザーまたはアプリケーション) が Event Hubs リソースにアクセスしようとした場合、要求は承認される必要があります。 Azure AD では、リソースへのアクセスは 2 段階のプロセスです。 
@@ -39,18 +39,18 @@ Azure には、Event Hubs データへの Azure AD と OAuth を使ったアク�
 | [Azure Event Hubs データ送信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Event Hubs リソースへの送信アクセス権を付与するには、このロールを使用します。 |
 | [Azure Event Hubs データ受信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Event Hubs リソースへの使用/受信アクセス権を付与するには、このロールを使用します。 |
 
-スキーマ レジストリの組み込みロールについては、[スキーマ レジストリのロール](schema-registry-overview.md#role-based-access-control)に関する記事を参照してください。
+スキーマ レジストリの組み込みロールについては、[スキーマ レジストリのロール](schema-registry-overview.md#azure-role-based-access-control)に関する記事を参照してください。
 
 ## <a name="resource-scope"></a>リソースのスコープ 
 セキュリティ プリンシパルに Azure ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
 
 次の一覧で、Event Hubs リソースへのアクセスのスコープとして指定できるレベルを、最も狭いスコープから順に示します。
 
-- **コンシューマー グループ**:このスコープでは、ロールの割り当てはこのエンティティにのみ適用されます。 現時点で、Azure portal は、このレベルのセキュリティ プリンシパルに Azure ロールを割り当てることをサポートしていません。 
+- **コンシューマー グループ** :このスコープでは、ロールの割り当てはこのエンティティにのみ適用されます。 現時点で、Azure portal は、このレベルのセキュリティ プリンシパルに Azure ロールを割り当てることをサポートしていません。 
 - **[イベント ハブ]** : ロールの割り当ては、イベント ハブ エンティティとそれ以下のコンシューマー グループに適用されます。
-- **名前空間**:ロールの割り当ては、名前空間以下とそれに関連付けられているコンシューマー グループに対する Event Hubs のトポロジ全体にわたります。
+- **名前空間** :ロールの割り当ては、名前空間以下とそれに関連付けられているコンシューマー グループに対する Event Hubs のトポロジ全体にわたります。
 - **[リソース グループ]** :ロールの割り当ては、リソース グループのすべての Event Hubs リソースに適用されます。
-- **サブスクリプション**:ロールの割り当ては、サブスクリプションのすべてのリソース グループ内のすべての Event Hubs リソースに適用されます。
+- **サブスクリプション** :ロールの割り当ては、サブスクリプションのすべてのリソース グループ内のすべての Event Hubs リソースに適用されます。
 
 > [!NOTE]
 > - Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに注意してください。 
@@ -73,7 +73,7 @@ Azure には、Event Hubs データへの Azure AD と OAuth を使ったアク�
 
 ## <a name="next-steps"></a>次のステップ
 - Azure 組み込みロールをセキュリティ プリンシパルに割り当てる方法については、[Azure Active Directory を使用して Event Hubs リソースへのアクセスを認証する](authenticate-application.md)方法に関する記事を参照してください。
-- [RBAC を使用してカスタム ロールを作成する方法](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole)について学習します。
+- [Azure RBAC を使用してカスタム ロールを作成する方法](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole)について学習します。
 - [EH と共に Azure Active Directory を使用する方法](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)について学習します。
 
 次の関連記事を参照してください。

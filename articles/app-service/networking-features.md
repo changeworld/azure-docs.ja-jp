@@ -4,21 +4,21 @@ description: Azure App Service のネットワーク機能について、およ�
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743048"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207056"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
 Azure App Service のアプリケーションは、複数の方法でデプロイできます。 既定では、App Service でホストされているアプリはインターネットから直接アクセス可能になっており、到達先はインターネット上でホストされているエンドポイントに限定されています。 しかし、多くのお客様のアプリケーションでは、送受信のネットワーク トラフィックを制御する必要があります。 このようなニーズに応えるため、App Service にはさまざまな機能が用意されています。 ここで課題となるのは、特定の問題を解決するにあたってどの機能を使用すればよいか把握することです。 このドキュメントでは、いくつかのサンプル ユース ケースに基づいて、お客様が使用すべき機能を判断できるよう説明していきます。
 
-Azure App Service のデプロイの種類は、主に 2 つあります。 1 つはマルチテナント パブリック サービスであり、Free、Shared、Basic、Standard、Premium、PremiumV2、PremiumV3 の各価格レベルで App Service プランがホストされます。 もう 1 つはシングル テナント型の App Service Environment (ASE) であり、Isolated 価格レベルの App Service プランが Azure Virtual Network (VNet) 内で直接ホストされます。 使用する機能は、ご利用の環境がマルチテナント サービスと ASE のどちらであるかによって異なります。 
+Azure App Service のデプロイの種類は、主に 2 つあります。 1 つはマルチテナント パブリック サービスであり、Free、Shared、Basic、Standard、Premium、Premiumv2、Premiumv3 の各価格 SKU で App Service プランがホストされます。 もう 1 つはシングル テナント型の App Service Environment (ASE) であり、Isolated 価格レベルの App Service プランが Azure Virtual Network (VNet) 内で直接ホストされます。 使用する機能は、ご利用の環境がマルチテナント サービスと ASE のどちらであるかによって異なります。 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>マルチテナント型 App Service のネットワーク機能 
 
@@ -41,15 +41,15 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 | アプリの IP ベース SSL のニーズをサポートする | アプリに割り当てられたアドレス |
 | アプリ専用の非共有受信アドレス | アプリに割り当てられたアドレス |
 | アプリへのアクセスを明確に定義された一連のアドレスからのみに制限する | アクセス制限 |
-| アプリへのアクセスを VNet 内のリソースからのみに制限する | サービス エンドポイント </br> ILB ASE </br> プライベート エンドポイント (プレビュー) |
-| アプリを VNet 内の 1 つのプライベート IP で公開する | ILB ASE </br> Application Gateway 上の受信用プライベート IP とサービス エンドポイントの併用 </br> サービス エンドポイント (プレビュー) |
-| WAF によりアプリを保護する | Application Gateway + ILB ASE </br> Application Gateway とサービス エンドポイントの併用 </br> Azure Front Door とアクセス制限の併用 |
+| アプリへのアクセスを VNet 内のリソースからのみに制限する | サービス エンドポイント </br> ILB ASE </br> プライベート エンドポイント |
+| アプリを VNet 内の 1 つのプライベート IP で公開する | ILB ASE </br> プライベート エンドポイント </br> Application Gateway 上の受信用プライベート IP とサービス エンドポイントの併用 |
+| Web Application Firewall (WAF) を使用してアプリを保護する | Application Gateway + ILB ASE </br> Application Gateway とプライベート エンドポイントの併用 </br> Application Gateway とサービス エンドポイントの併用 </br> Azure Front Door とアクセス制限の併用 |
 | アプリへのトラフィックの負荷を複数のリージョンに分散させる | Azure Front Door とアクセス制限の併用 | 
 | 同一リージョン内でトラフィックの負荷を分散させる | [Application Gateway とサービス エンドポイントの併用][appgwserviceendpoints] | 
 
 以下の送信のユース ケースでは、App Service のネットワーク機能を使用して、アプリの送信アクセスに関するニーズを解決する方法の案を示します。 
 
-| 送信のユース ケース | 特徴量 |
+| 送信のユース ケース | 機能 |
 |---------------------|-------------------|
 | 同一リージョン内にある Azure Virtual Network のリソースにアクセスする | VNet 統合 </br> ASE |
 | 異なるリージョン内にある Azure Virtual Network のリソースにアクセスする | ゲートウェイが必要な VNet 統合 </br> ASE と VNet ピアリング |
@@ -62,11 +62,15 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 
 ### <a name="default-networking-behavior"></a>既定のネットワークの動作
 
-Azure App Service スケール ユニットでは、デプロイごとに多数のお客様をサポートしています。 Free と Shared の各価格レベルのプランでは、お客様のワークロードはマルチテナント worker 上でホストされます。 Basic 以上のプランでは、1 つの App Service プラン (ASP) 専用となるお客様のワークロードがホストされます。 たとえば、App Service プランが Standard の場合、このプラン内のアプリはすべて同一の worker 上で実行されます。 worker をスケールアウトした場合、その ASP 内にあるアプリはすべて、お使いの ASP 内にある各インスタンスの新規 worker 上にレプリケートされます。 PremiumV2 と PremiumV3 で使用される worker は、他のプラン用の worker とは異なります。 App Service デプロイごとに、その App Service デプロイ内のアプリに対するすべての受信トラフィックに使用される IP アドレスが 1 つ設定されます。 一方、送信呼び出しの実行には、4 から 11 個程度のアドレスが使用されます。 これらのアドレスは、該当する App Service デプロイ内にあるすべてのアプリで共有されます。 送信アドレスは、worker のタイプによって異なります。 つまり、Free、Shared、Basic、Standard、および Premium の各 ASP で使用されるアドレスは、PremiumV2 と PremiumV3 の ASP からの送信呼び出しに使用されるアドレスとは異なるということです。 アプリで使用されている受信アドレスと送信アドレスは、そのアプリのプロパティで確認できます。 IP ACL との依存関係をロックダウンする必要がある場合は、possibleOutboundAddresses を使用してください。 
+Azure App Service スケール ユニットでは、デプロイごとに多数のお客様をサポートしています。 Free と Shared の各価格レベルのプランでは、お客様のワークロードはマルチテナント worker 上でホストされます。 Basic 以上のプランでは、1 つの App Service プラン (ASP) 専用となるお客様のワークロードがホストされます。 たとえば、App Service プランが Standard の場合、このプラン内のアプリはすべて同一の worker 上で実行されます。 worker をスケールアウトした場合、その ASP 内にあるアプリはすべて、お使いの ASP 内にある各インスタンスの新規 worker 上にレプリケートされます。 
+
+#### <a name="outbound-addresses"></a>送信アドレス
+
+worker VM は、主に App Service 価格プラン別に分けられます。 Free、Shared、Basic、Standard、および Premium で使用される worker VM の種類はすべて同じです。 Premiumv2 は別の種類の VM 上にあります。 Premiumv3 はさらに別の種類の VM 上にあります。 VM ファミリが変更されるたびに、異なる送信アドレスのセットが存在します。 Standard から Premiumv2 にスケーリングすると、送信アドレスが変更されます。 Premiumv2 から Premiumv3 にスケーリングすると、送信アドレスが変更されます。 Standard から Premiumv2 にスケーリングするときに、受信と送信の両方のアドレスが変更される古いスケール ユニットがいくつかあります。 送信呼び出しを行うために使用されるアドレスは多数あります。 送信呼び出しを行うためにアプリによって使用される送信アドレスは、アプリの [プロパティ] に一覧表示されます。 これらのアドレスは、その App Service デプロイ内の同じ worker VM ファミリで実行されているすべてのアプリで共有されます。 アプリによってそのスケール ユニットで使用される可能性のあるすべてのアドレスを確認する場合は、それらを一覧表示する possibleOutboundAddresses という別のプロパティがあります。 
 
 ![アプリのプロパティ](media/networking-features/app-properties.png)
 
-App Service には、サービスの管理に使用されるエンドポイントがいくつも存在します。  これらのアドレスは別のドキュメントで公開されており、AppServiceManagement IP サービス タグにも表示されています。 AppServiceManagement タグは、こうしたトラフィックを許可する必要がある App Service Environment (ASE) でのみ使用されます。 App Service の受信アドレスは、AppService IP サービス タグで追跡されます。 App Service によって使用される送信アドレスが含まれる IP サービス タグはありません。 
+App Service には、サービスの管理に使用されるエンドポイントがいくつも存在します。  これらのアドレスは別のドキュメントで公開されており、AppServiceManagement IP サービス タグにも表示されています。 AppServiceManagement タグは、こうしたトラフィックを許可する必要がある App Service Environment でのみ使用されます。 App Service の受信アドレスは、AppService IP サービス タグで追跡されます。 App Service によって使用される送信アドレスが含まれる IP サービス タグはありません。 
 
 ![App Service の送受信図](media/networking-features/default-behavior.png)
 
@@ -85,7 +89,7 @@ App Service には、サービスの管理に使用されるエンドポイン�
 
 ### <a name="access-restrictions"></a>アクセス制限 
 
-アクセス制限機能を使用すると、送信元の IP アドレスに基づいて**受信**要求をフィルター処理できます。 このフィルター処理は、アプリが実行される worker ロールよりも上流にある、フロントエンド ロールで行われます。 フロントエンド ロールが worker よりも上流に存在することから、アクセス制限機能は、ネットワーク レベルでのアプリの保護機能と言えます。 この機能では、優先度順に評価されるアドレス ブロックの許可リストと拒否リストを作成できます。 これは、Azure のネットワークにあるネットワーク セキュリティ グループ (NSG) 機能と似ています。  この機能は、ASE とマルチテナント サービスのどちらでも使用できます。 ILB ASE で使用する場合は、プライベート アドレス ブロックからのアクセスを制限できます。
+アクセス制限機能を使用すると、送信元の IP アドレスに基づいて **受信** 要求をフィルター処理できます。 このフィルター処理は、アプリが実行される worker ロールよりも上流にある、フロントエンド ロールで行われます。 フロントエンド ロールが worker よりも上流に存在することから、アクセス制限機能は、ネットワーク レベルでのアプリの保護機能と言えます。 この機能では、優先度順に評価されるアドレス ブロックの許可リストと拒否リストを作成できます。 これは、Azure のネットワークにあるネットワーク セキュリティ グループ (NSG) 機能と似ています。  この機能は、ASE とマルチテナント サービスのどちらでも使用できます。 ILB ASE で使用する場合は、プライベート アドレス ブロックからのアクセスを制限できます。
 
 ![アクセス制限](media/networking-features/access-restrictions.png)
 
@@ -100,7 +104,7 @@ Azure Virtual Network (VNet) 内のリソースからのみアプリに到達で
 
 ### <a name="service-endpoints"></a>サービス エンドポイント
 
-サービス エンドポイントを使用すると、アプリに対する**受信**アクセスについて、送信元アドレスが選択したサブネット セットからのものであるアクセスのみに限定できます。 この機能は、IP アクセス制限と連携して動作します。 サービス エンドポイントを設定する場合のユーザー エクスペリエンスは、IP アクセス制限の場合と同じです。 パブリック アドレスおよび VNet 内のサブネットを指定して、許可と拒否のアクセス ルール リストを作成できます。 この機能は、次のようなシナリオをサポートしています。
+サービス エンドポイントを使用すると、送信元アドレスが選択したサブネット セットからのものである必要がある、アプリに対する **受信** アクセスをロック ダウンすることができます。 この機能は、IP アクセス制限と連携して動作します。 サービス エンドポイントは、リモート デバッグと互換性がありません。 アプリでリモート デバッグを使用するために、サービス エンドポイントが有効になっているサブネット内にクライアントを配置することはできません。 サービス エンドポイントを設定する場合のユーザー エクスペリエンスは、IP アクセス制限の場合と同じです。 パブリック アドレスおよび VNet 内のサブネットを指定して、許可と拒否のアクセス ルール リストを作成できます。 この機能は、次のようなシナリオをサポートしています。
 
 ![サービス エンドポイント](media/networking-features/service-endpoints.png)
 
@@ -111,14 +115,22 @@ Azure Virtual Network (VNet) 内のリソースからのみアプリに到達で
 
 アプリでのサービス エンドポイントの構成方法については、[サービス エンドポイントとアクセス制限の構成方法][serviceendpoints]に関するチュートリアルを参照してください。
 
-### <a name="private-endpoint-preview"></a>プライベート エンドポイント (プレビュー)
+### <a name="private-endpoints"></a>プライベート エンドポイント
 
-プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、Web アプリを実質的に VNet に取り込みます。 この機能は、Web アプリへの**受信フロー**専用です。
-[Azure Web アプリでのプライベート エンドポイントの使用 (プレビュー)][privateendpoints]
+プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、Web アプリを実質的に VNet に取り込みます。 この機能は、Web アプリへの **受信フロー** 専用です。
+[Azure Web アプリでのプライベート エンドポイントの使用][privateendpoints]
+
+プライベート エンドポイントを使用すると、次のようなシナリオが可能になります。
+
+* アプリへのアクセスを VNet 内のリソースからのみに制限する 
+* アプリを VNet 内の 1 つのプライベート IP で公開する 
+* WAF によりアプリを保護する 
+
+プライベート エンドポイントを使用すると、データ流出を防ぐことができます。これは、プライベート エンドポイントを超えて到達することができるのが、それが構成されているアプリのみであるためです。 
  
 ### <a name="hybrid-connections"></a>ハイブリッド接続
 
-App Service のハイブリッド接続を使用すると、指定した TCP エンドポイントに対してアプリから**送信**呼び出しを行うことができます。 エンドポイントには、オンプレミス、VNet 内、またはポート 443 で Azure への送信トラフィックを許可する任意の環境内にあるものを指定できます。 この機能を使用するには、ハイブリッド接続マネージャー (HCM) というリレー エージェントを、Windows Server 2012 以降のホストにインストールする必要があります。 HCM は、ポート 443 で Azure Relay に到達できる必要があります。 HCM は、ポータルにある App Service ハイブリッド接続の UI からダウンロードできます。 
+App Service のハイブリッド接続を使用すると、指定した TCP エンドポイントに対してアプリから **送信** 呼び出しを行うことができます。 エンドポイントには、オンプレミス、VNet 内、またはポート 443 で Azure への送信トラフィックを許可する任意の環境内にあるものを指定できます。 この機能を使用するには、ハイブリッド接続マネージャー (HCM) というリレー エージェントを、Windows Server 2012 以降のホストにインストールする必要があります。 HCM は、ポート 443 で Azure Relay に到達できる必要があります。 HCM は、ポータルにある App Service ハイブリッド接続の UI からダウンロードできます。 
 
 ![ハイブリッド接続のネットワーク フロー](media/networking-features/hybrid-connections.png)
 
@@ -132,13 +144,13 @@ App Service のハイブリッド接続機能は、Azure Relay のハイブリ�
 * 他の送信接続方法が対応していないシナリオに対応する
 * オンプレミスのリソースをアプリで容易に活用できる App Service 内においてデプロイを実行する 
 
-この機能を使用すると、受信ファイアウォールに穴を開けることなくオンプレミス リソースにアクセスできるため、開発者から高い人気を得ています。 App Service の他の送信ネットワーク機能は、Azure Virtual Networking とのつながりが非常に強くなっています。 ハイブリッド接続には VNet 経由という依存性がないため、より幅広いネットワークのニーズ向けに使用できます。 ただし、App Service のハイブリッド接続機能では、この接続上での操作は把握されないことに注意してください。 つまり、この接続は、メインフレーム上にあるデータベースや Web サービス、任意の TCP ソケットへのアクセスに使用できるということです。 本質的には、この機能は TCP パケットをトンネリングするものです。 
+この機能を使用すると、受信ファイアウォールに穴を開けることなくオンプレミス リソースにアクセスできるため、開発者から高い人気を得ています。 App Service の他の送信ネットワーク機能は、Azure Virtual Networking に関連しています。 ハイブリッド接続には VNet 経由という依存性がないため、より幅広いネットワークのニーズ向けに使用できます。 ただし、App Service のハイブリッド接続機能では、この接続上での操作は把握されないことに注意してください。 つまり、この接続は、メインフレーム上にあるデータベースや Web サービス、任意の TCP ソケットへのアクセスに使用できるということです。 本質的には、この機能は TCP パケットをトンネリングするものです。 
 
 ハイブリッド接続は、開発でよく利用されているだけでなく、非常に多くの運用アプリケーションでも使用されています。 Web サービスやデータベースへのアクセスには適していますが、非常に多くの接続を作成するような状況には向いていません。 
 
 ### <a name="gateway-required-vnet-integration"></a>ゲートウェイが必要な VNet 統合 
 
-App Service の "ゲートウェイが必要な VNet 統合" 機能を使用すると、アプリから Azure 仮想ネットワーク内に対して**送信**要求を実行できます。 この機能では、アプリが実行されているホストと VNet 上にある Virtual Network ゲートウェイが、ポイント対サイト VPN により接続されます。 この機能を構成すると、アプリには、各インスタンスに割り当てられているポイント対サイト アドレスのいずれかが付与されます。 この機能では、リージョンを問わず、クラシック VNet と Resource Manager VNet の双方でリソースにアクセスできます。 
+App Service の "ゲートウェイが必要な VNet 統合" 機能を使用すると、アプリから Azure 仮想ネットワーク内に対して **送信** 要求を実行できます。 この機能では、アプリが実行されているホストと VNet 上にある Virtual Network ゲートウェイが、ポイント対サイト VPN により接続されます。 この機能を構成すると、アプリには、各インスタンスに割り当てられているポイント対サイト アドレスのいずれかが付与されます。 この機能では、リージョンを問わず、クラシック VNet と Resource Manager VNet の双方でリソースにアクセスできます。 
 
 ![ゲートウェイが必要な VNet 統合](media/networking-features/gw-vnet-integration.png)
 
@@ -152,7 +164,7 @@ App Service の "ゲートウェイが必要な VNet 統合" 機能を使用す�
 
 ### <a name="vnet-integration"></a>VNet 統合
 
-ゲートウェイが必要な VNet 統合機能は非常に有用ですが、この機能でも、ExpressRoute を越えてリソースにアクセスするという課題は解決できません。 ExpressRoute 接続を越えて到達しなければならないことに加え、サービス エンドポイントで保護されたサービスに対して、アプリから呼び出しを実行できる必要もあります。 これら両方のニーズを解決するため、別の VNet 統合機能が追加されました。 この新しい VNet 統合機能では、アプリのバックエンドを、同じリージョン内にある Resource Manager VNet のサブネットに配置できます。 この機能は、もともと VNet 内に存在する App Service Environment からは利用できません。 この機能により以下が可能になります。
+ゲートウェイに必要な VNet 統合機能は便利ですが、それでも ExpressRoute を越えてのリソースへのアクセスは解決できません。 ExpressRoute 接続を越えて到達しなければならないことに加え、サービス エンドポイントで保護されたサービスに対して、アプリから呼び出しを実行できる必要もあります。 これら両方のニーズを解決するため、別の VNet 統合機能が追加されました。 この新しい VNet 統合機能では、アプリのバックエンドを、同じリージョン内にある Resource Manager VNet のサブネットに配置できます。 この機能は、もともと VNet 内に存在する App Service Environment からは利用できません。 この機能により以下が可能になります。
 
 * 同じリージョンにある Resource Manager VNet 内のリソースにアクセスする
 * サービス エンドポイントで保護されているリソースにアクセスする 
@@ -213,22 +225,58 @@ ASE があれば、専用のアプリを隔離したまま最適にホストで�
 
 ### <a name="create-multi-tier-applications"></a>多層アプリケーションを作成する
 
-多層アプリケーションとは、API バックエンド アプリにアクセスできるのがフロントエンド層のみに制限されているアプリケーションのことです。 多層アプリケーションを作成する方法には、次のものがあります。
+多層アプリケーションとは、API バックエンド アプリにアクセスできるのがフロントエンド層のみに制限されているアプリケーションのことです。 多層アプリケーションを作成するには、次の 2 つの方法があります。 いずれの場合もまず、VNet 統合を使用して、フロントエンド Web アプリを VNet 内のサブネットと接続します。 これにより、Web アプリから VNet への呼び出しを行うことができます。 フロントエンド アプリが VNet に接続された後、API アプリケーションへのアクセスをロック ダウンする方法を選ぶ必要があります。  次のようにすることができます。
 
-* VNet 統合を使用して、フロントエンド Web アプリのバックエンドを VNet 内のサブネットと接続する
-* サービス エンドポイントを使用して、API アプリへの受信トラフィックを、フロントエンド Web アプリで使用するサブネットからのトラフィックのみに制限する
+* 同じ ILB ASE でフロントエンドと API アプリの両方をホストし、アプリケーション ゲートウェイを使用してフロントエンド アプリをインターネットに公開する
+* マルチテナント サービスでフロントエンドを、ILB ASE でバックエンドをホストする
+* マルチテナント サービスでフロントエンドと API アプリの両方をホストする
 
-![多層アプリ](media/networking-features/multi-tier-app.png)
+多層アプリケーション用のフロントエンドと API アプリの両方をホストしている場合は、次のようにすることができます。
 
-別個のフロントエンド アプリで VNet 統合を使用し、サブネットで API アプリからサービス エンドポイントを使用することで、複数のフロントエンド アプリで同じ API アプリを使用できます。  
+VNet 内のプライベート エンドポイントで API アプリケーションを公開する
+
+![プライベート エンドポイントの 2 層アプリ](media/networking-features/multi-tier-app-private-endpoint.png)
+
+サービス エンドポイントを使用して、API アプリへの受信トラフィックを、フロントエンド Web アプリで使用するサブネットからのトラフィックのみに制限する
+
+![サービス エンドポイントのセキュリティ保護されたアプリ](media/networking-features/multi-tier-app.png)
+
+2 つの手法のトレードオフは次のとおりです。
+
+* サービス エンドポイントを使用する場合、API アプリへのトラフィックを統合サブネットに限定するだけで済みます。 これにより、API アプリはセキュリティで保護されますが、フロントエンド アプリから App Service の他のアプリにデータが流出する可能性は依然としてあります。
+* プライベート エンドポイントの場合、2 つのサブネットが使用されます。 これにより、複雑さが増します。 また、プライベート エンドポイントは最上位のリソースであり、管理するものが増えます。 プライベート エンドポイントを使用する利点は、データが流出する可能性がないことです。 
+
+いずれの手法も、複数のフロントエンドで機能します。 小規模な場合、フロントエンド統合サブネットで API アプリに対してサービス エンドポイントを有効にするだけであるため、サービス エンドポイントの方がはるかに使いやすくなります。 フロントエンド アプリをさらに追加する場合は、すべての API アプリを調整して、統合サブネットを使用してサービス エンドポイントを設定する必要があります。 プライベート エンドポイントを使用すると、より複雑になりますが、プライベート エンドポイントを設定した後に API アプリで何も変更する必要はありません。 
+
+### <a name="line-of-business-applications"></a>基幹業務アプリケーション
+
+基幹業務 (LOB) アプリケーションは、通常はインターネットからアクセスできるように公開されていない内部アプリケーションです。 これらのアプリケーションは、アクセスを厳密に制御できる企業ネットワーク内から呼び出されます。 ILB ASE を使用する場合、基幹業務アプリケーションを簡単にホストできます。 マルチテナント サービスを使う場合は、プライベート エンドポイントまたはサービス エンドポイントを Application Gateway と組み合わせて使用できます。 プライベート エンドポイントではなく、サービス エンドポイントで Application Gateway を使用する理由は 2 つあります。
+
+* LOB アプリで WAF 保護が必要である
+* LOB アプリの複数のインスタンスに負荷を分散する必要がある
+
+いずれも該当しない場合は、プライベート エンドポイントを使用することをお勧めします。 App Service で使用可能なプライベート エンドポイントの場合、VNet 内のプライベート アドレスでアプリを公開できます。 VNet に配置したプライベート エンドポイントには、ExpressRoute および VPN 接続を介して到達できます。 プライベート エンドポイントを構成すると、プライベート アドレスでアプリが公開されますが、オンプレミスからそのアドレスに到達するように DNS を構成する必要があります。 この作業を行うには、プライベート エンドポイントを含む Azure DNS プライベート ゾーンを、オンプレミスの DNS サーバーに転送する必要があります。 Azure DNS プライベート ゾーンでゾーンの転送はサポートされませんが、その目的での DNS サーバーの使用をサポートすることはできます。 この [DNS フォワーダー](https://azure.microsoft.com/resources/templates/301-dns-forwarder/)というテンプレートを使用すると、Azure DNS のプライベート ゾーンをオンプレミスの DNS サーバーに簡単に転送することができます。
+
+## <a name="app-service-ports"></a>App Service ポート
+
+App Service をスキャンすると、受信接続用に公開されているいくつかのポートが見つかります。 マルチテナント サービスでこれらのポートへのアクセスをブロックまたは制御する方法はありません。 公開されているポートは次のとおりです。
+
+| 用途 | Port |
+|----------|-------------|
+|  HTTP/HTTPS  | 80、443 |
+|  管理 | 454、455 |
+|  FTP/FTPS    | 21、990、10001-10020 |
+|  Visual Studio リモート デバッグ  |  4020、4022、4024 |
+|  Web 配置サービス | 8172 |
+|  インフラストラクチャの使用 | 7654、1221 |
 
 <!--Links-->
-[appassignedaddress]: ./configure-ssl-certificate.md
-[iprestrictions]: ./app-service-ip-restrictions.md
-[serviceendpoints]: ./app-service-ip-restrictions.md
-[hybridconn]: ./app-service-hybrid-connections.md
-[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
-[vnetintegration]: ./web-sites-integrate-with-vnet.md
-[networkinfo]: ./environment/network-info.md
-[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
-[privateendpoints]: ./networking/private-endpoint.md
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
+[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
+[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

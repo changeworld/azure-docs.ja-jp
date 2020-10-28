@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509687"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220858"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
 
@@ -70,12 +70,12 @@ ms.locfileid: "88509687"
 
 2. 正常にトレーニングが完了したモデルで、まだデプロイされていない場合は、[デプロイ] ボタンが表示されます。
 
-    ![モデルのデプロイ](media/how-to/how-to-deploy-model.png)
+    ![モデルをデプロイするための [デプロイ] ボタンが強調表示されているスクリーンショット。](media/how-to/how-to-deploy-model.png)
 
 3.  [デプロイ] をクリックします。
 4.  モデルをデプロイするリージョンの **[Deployed]\(デプロイ対象\)** を選択し、[保存] をクリックします。 複数のリージョンの **[Deployed]\(デプロイ対象\)** を選択することができます。
 
-    ![モデルのデプロイ](media/how-to/how-to-deploy-model-regions.png)
+    ![モデルをデプロイまたはデプロイ解除する場所を示すスクリーンショット。](media/how-to/how-to-deploy-model-regions.png)
 
 5.  モデルの状態は [状態] 列で確認できます。
 
@@ -90,7 +90,7 @@ ms.locfileid: "88509687"
 
 2. 正常にデプロイされたモデルには、 **[更新]** ボタンが表示されます。
 
-    ![モデルのデプロイ](media/how-to/how-to-update-undeploy-model.png)
+    ![デプロイ設定を更新するための [更新] ボタンが強調表示されているスクリーンショット。](media/how-to/how-to-update-undeploy-model.png)
 
 3.  **[Update]\(更新\)** を選択します。
 4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、 **[Save]\(保存\)** をクリックします。

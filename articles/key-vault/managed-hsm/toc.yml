@@ -75,6 +75,6 @@
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=key-vault'
     - name: ブログ
-      href: 'https://blogs.technet.com/b/kv/'
+      href: /archive/blogs/kv/
     - name: 製品フィードバック
       href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

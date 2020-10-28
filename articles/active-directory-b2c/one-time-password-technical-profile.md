@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418910"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172657"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -24,7 +24,7 @@ ms.locfileid: "89418910"
 
 Azure Active Directory B2C (Azure AD B2C) では、ワンタイム パスワードの生成と確認の管理がサポートされています。 技術プロファイルを使用してコードを生成し、後でそのコードを確認します。
 
-ワンタイム パスワード技術プロファイルでは、コードの確認中にエラー メッセージを返すこともできます。 **検証技術プロファイル**を使用して、ワンタイム パスワードとの統合を設計します。 検証技術プロファイルにより、コードを確認するためのワンタイム パスワード技術プロファイルを呼び出します。 検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージがセルフアサート ページに表示されます。
+ワンタイム パスワード技術プロファイルでは、コードの確認中にエラー メッセージを返すこともできます。 **検証技術プロファイル** を使用して、ワンタイム パスワードとの統合を設計します。 検証技術プロファイルにより、コードを確認するためのワンタイム パスワード技術プロファイルを呼び出します。 検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージがセルフアサート ページに表示されます。
 
 ## <a name="protocol"></a>Protocol
 
@@ -55,7 +55,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | --------- | -------- | ----------- |
 | identifier | はい | 後でコードを確認する必要があるユーザーを識別する識別子。 一般に、電子メール アドレスや電話番号など、コードが配信される宛先の識別子として使用されます。 |
 
-**InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
+**InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、 **InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
 ### <a name="output-claims"></a>出力クレーム
 
@@ -65,7 +65,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | --------- | -------- | ----------- |
 | otpGenerated | はい | セッションが Azure AD B2C によって管理される、生成されたコード。 |
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、 **OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 ### <a name="metadata"></a>Metadata
 
@@ -73,13 +73,15 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | いいえ | コードの有効期限までの時間 (秒)。 最小値: `60`、最大値: `1200`、既定値: `600`。 |
+| CodeExpirationInSeconds | いいえ | コードの有効期限までの時間 (秒)。 最小値: `60`、最大値: `1200`、既定値: `600`。 コード (`ReuseSameCode` を使用した同じコード、または新しいコード) が提供されるたびに、コードの有効期限が延長されます。  |
 | CodeLength | いいえ | コードの長さ。 既定値は `6` です。 |
 | CharacterSet | いいえ | 正規表現で使用するように書式設定された、コードの文字セット。 たとえば、「 `a-z0-9A-Z` 」のように入力します。 既定値は `0-9` です。 文字セットには、指定したセット内の少なくとも 10 個の異なる文字を含める必要があります。 |
 | NumRetryAttempts | いいえ | コードが無効と見なされるまでの確認の試行回数。 既定値は `5` です。 |
 | NumCodeGenerationAttempts | No | 識別子ごとの最大コード生成試行回数。 指定しない場合の既定値は 10 です。 |
 | 操作 | はい | 実行する操作。 指定できる値: `GenerateCode`。 |
-| ReuseSameCode | いいえ | 指定されたコードの有効期限が切れておらず、まだ有効である場合に、新しいコードを生成するのではなく、重複するコードを指定する必要があるかどうか。 既定値は `false` です。 |
+| ReuseSameCode | いいえ | 指定されたコードの有効期限が切れておらず、まだ有効である場合に、新しいコードを生成するのではなく、同じコードを指定する必要があるかどうか。 既定値は `false` です。  |
+
+
 
 ### <a name="example"></a>例
 
@@ -120,13 +122,13 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | identifier | はい | 以前にコードを生成したユーザーを識別する識別子。 一般に、電子メール アドレスや電話番号など、コードが配信される宛先の識別子として使用されます。 |
 | otpToVerify | はい | ユーザーによって指定された確認コード。 |
 
-**InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
+**InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、 **InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
 ### <a name="output-claims"></a>出力クレーム
 
 このプロトコル プロバイダーのコード確認中に提供される出力要求はありません。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、 **OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 ### <a name="metadata"></a>Metadata
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: 361ed04a6448bec18fac94ad90a33fe01a49e595
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974160"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201309"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 
@@ -28,9 +28,9 @@ ms.locfileid: "91974160"
 
 ## <a name="detach-a-data-disk-using-powershell"></a>PowerShell を使用してデータ ディスクを切断する方法
 
-PowerShell を使用するとデータ ディスクを "*ホット*" 削除することができますが、ディスクを VM からデタッチする前に、そのディスクをアクティブに使用しているものがないことを確認してください。
+PowerShell を使用するとデータ ディスクを " *ホット* " 削除することができますが、ディスクを VM からデタッチする前に、そのディスクをアクティブに使用しているものがないことを確認してください。
 
-この例では、**myResourceGroup** リソース グループの **myVM** VM から **myDisk** という名前のディスクを削除します。 最初に、[Remove-AzVMDataDisk](/powershell/module/az.compute/remove-azvmdatadisk) コマンドレットを使用してディスクを削除します。 次に、[Update-AzVM](/powershell/module/az.compute/update-azvm) コマンドレットを使用して仮想マシンの状態を更新して、データ ディスクを削除するプロセスを完了します。
+この例では、 **myResourceGroup** リソース グループの **myVM** VM から **myDisk** という名前のディスクを削除します。 最初に、[Remove-AzVMDataDisk](/powershell/module/az.compute/remove-azvmdatadisk) コマンドレットを使用してディスクを削除します。 次に、[Update-AzVM](/powershell/module/az.compute/update-azvm) コマンドレットを使用して仮想マシンの状態を更新して、データ ディスクを削除するプロセスを完了します。
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzVM `
@@ -48,13 +48,12 @@ Update-AzVM `
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 
-PowerShell を使用するとデータ ディスクを*ホット*削除することができますが、VM からデタッチする前に、そのディスクをアクティブに使用しているものがないことを確認してください。
+PowerShell を使用するとデータ ディスクを *ホット* 削除することができますが、VM からデタッチする前に、そのディスクをアクティブに使用しているものがないことを確認してください。
 
 1. 左側のメニューで **[Virtual Machines]** を選択します。
 1. 切断するデータディスクがある仮想マシンを選択します。
 1. **[設定]** で **[ディスク]** を選択します。
-1. **[ディスク]** ウィンドウの上部にある **[編集]** を選択します。
-1. **[ディスク]** ウィンドウで、デタッチしたいデータ ディスクの右端にある **[デタッチ]** ボタンを選択します。
+1. **[ディスク]** ウィンドウで、デタッチしたいデータ ディスクの右端にある **[X]** (削除) ボタンを選択します。
 1. ページの上部にある **[保存]** を選択して、変更を保存します。
 
 ディスクはストレージに残りますが、仮想マシンには接続されていません。

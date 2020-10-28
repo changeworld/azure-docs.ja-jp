@@ -4,12 +4,12 @@ description: 長期保有を指定した Azure Database for PostgreSQL のバッ
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993329"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173577"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -17,7 +17,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
 長期保有以外にも、このソリューションには次のような多くの機能があります。
 
-- Azure Active Directory とマネージド サービス ID (MSI) 認証を使用したデータベースへの RBAC ベースのアクセス。
+- Azure Active Directory とマネージド サービス ID (MSI) 認証を使用した、データベースへの Azure ロールベースのアクセス制御 (Azure RBAC)。
 - お客様の管理による個々のデータベース レベルでのスケジュール バックアップとオンデマンド バックアップ。
 - Postgres サーバーへのデータベース レベルでの復元、または BLOB ストレージへのデータベース レベルでの直接復元。
 - 長期保有。
@@ -45,7 +45,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
 ## <a name="backup-process"></a>バックアップ プロセス
 
-1. このソリューションでは、**pg_dump** を使用して、Azure PostgreSQL データベースのバックアップが作成されます。
+1. このソリューションでは、 **pg_dump** を使用して、Azure PostgreSQL データベースのバックアップが作成されます。
 
 2. バックアップする Azure PostgreSQL データベースを指定すると、サーバーとデータベースでバックアップ操作を実行するための適切な一連のアクセス許可とアクセス権があるかの検証が行われます。
 
@@ -55,7 +55,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
   
 5. 選択したデータベースに対して保護の構成をトリガーすると、バックアップ サービスにより、コーディネーターに対してバックアップ スケジュールとその他のポリシーの詳細が設定されます。
 
-6. スケジュールされた時刻になると、コーディネーターはプラグインと通信し、**pg_dump** を使用して Postgres サーバーからバックアップ データのストリーミングを開始します。
+6. スケジュールされた時刻になると、コーディネーターはプラグインと通信し、 **pg_dump** を使用して Postgres サーバーからバックアップ データのストリーミングを開始します。
 
 7. プラグインはバックアップ コンテナーにデータを直接送信するため、ステージングの場所は必要ありません。 データは Microsoft マネージド キーを使用して暗号化され、Azure Backup サービスによってストレージ アカウントに保存されます。
 
@@ -79,17 +79,17 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
         ![[開始: バックアップの構成] で、データソースの種類を選択する](./media/backup-azure-database-postgresql/initiate-configure-backup.png)
 
-    1. または、[[バックアップ コンテナー]](backup-vault-overview.md) ->  **[バックアップ]** に直接移動することもできます。
+    1. または、 [[バックアップ コンテナー]](backup-vault-overview.md) ->  **[バックアップ]** に直接移動することもできます。
 
         ![[バックアップ コンテナー] に移動する](./media/backup-azure-database-postgresql/backup-vaults.png)
 
         ![[バックアップ コンテナー] で [バックアップ] を選択する](./media/backup-azure-database-postgresql/backup-backup-vault.png)
 
-1. **[バックアップの構成]** で、Postgres データベースをバックアップする先の**バックアップ コンテナー**を選択します。 既にコンテナーのコンテキスト内である場合、この情報は事前に入力されます。
+1. **[バックアップの構成]** で、Postgres データベースをバックアップする先の **バックアップ コンテナー** を選択します。 既にコンテナーのコンテキスト内である場合、この情報は事前に入力されます。
 
     ![[バックアップの構成] でバックアップ コンテナーを選択する](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. **バックアップ ポリシー**を選択または作成します。
+1. **バックアップ ポリシー** を選択または作成します。
 
     ![バックアップ ポリシーを選択する](./media/backup-azure-database-postgresql/backup-policy.png)
 
@@ -103,7 +103,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
 1. サービスによって、選択したデータベースに対してこれらのチェックが実行され、選択した Postgres サーバーとデータベースをバックアップするためのアクセス許可がコンテナーにあるかどうかが検証されます。
     1. 続行するには、すべてのデータベースの **[バックアップの準備]** が **[成功]** にならなければなりません。
-    1. エラーがある場合、そのエラーを**修正**して**再検証**するか、選択からデータベースを削除します。
+    1. エラーがある場合、そのエラーを **修正** して **再検証** するか、選択からデータベースを削除します。
 
     ![修正する検証のエラー](./media/backup-azure-database-postgresql/validation-errors.png)
 
@@ -125,30 +125,30 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
     ![バックアップ ポリシーを追加する](./media/backup-azure-database-postgresql/add-backup-policy.png)
 
-1. 新しいポリシーの**名前**を入力します。
+1. 新しいポリシーの **名前** を入力します。
 
     ![ポリシー名を入力する](./media/backup-azure-database-postgresql/enter-policy-name.png)
 
-1. バックアップ スケジュールを定義します。 現時点では、**週単位**のバックアップがサポートされています。 単一または複数の曜日にバックアップをスケジュールできます。
+1. バックアップ スケジュールを定義します。 現時点では、 **週単位** のバックアップがサポートされています。 単一または複数の曜日にバックアップをスケジュールできます。
 
     ![バックアップ スケジュールを定義する](./media/backup-azure-database-postgresql/define-backup-schedule.png)
 
-1. **保持**の設定を定義します。 保持規則を 1 つ以上追加できます。 各保持規則は、特定のバックアップの入力と、それらのバックアップのデータ ストアと保持期間を前提とします。
+1. **保持** の設定を定義します。 保持規則を 1 つ以上追加できます。 各保持規則は、特定のバックアップの入力と、それらのバックアップのデータ ストアと保持期間を前提とします。
 
-1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。**バックアップ データ ストア** (ホット層) または**アーカイブ データ ストア** (プレビュー)。 次の **2 つの階層化オプション**のいずれかを選択することで、2 つのデータ ストア間でバックアップを階層化するタイミングを定義できます。
+1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。 **バックアップ データ ストア** (ホット層) または **アーカイブ データ ストア** (プレビュー)。 次の **2 つの階層化オプション** のいずれかを選択することで、2 つのデータ ストア間でバックアップを階層化するタイミングを定義できます。
 
     - バックアップとアーカイブの両方のデータ ストアに同時にバックアップ コピーを作成する場合は、 **[今すぐ]** コピーすることを選択します。
     - バックアップ データ ストアでバックアップが期限切れになったときにそのバックアップをアーカイブ データ ストアに移動する場合は、 **[On-expiry]\(期限切れ時\)** に移動することを選択します。
 
-1. 他の保持規則が存在しない場合、**既定の保持規則**が適用されます。既定値は 3 か月です。
+1. 他の保持規則が存在しない場合、 **既定の保持規則** が適用されます。既定値は 3 か月です。
 
-    - **バックアップ データ ストア**では、保持期間の範囲は 7 日から 10 年です。
-    - **アーカイブ データ ストア**では、保持期間の範囲は 6 か月から 10 年です。
+    - **バックアップ データ ストア** では、保持期間の範囲は 7 日から 10 年です。
+    - **アーカイブ データ ストア** では、保持期間の範囲は 6 か月から 10 年です。
 
     ![保持期間を編集する](./media/backup-azure-database-postgresql/edit-retention.png)
 
 >[!NOTE]
->保持規則は、事前に決められた優先順位で評価されます。 この優先順位は、高い方から順に**年単位**の規則、**月単位**の規則、**週単位**の規則となります。 他の規則が適用されない場合、既定の保持設定が適用されます。 たとえば、最初に成功した週単位のバックアップと、最初に成功した月単位のバックアップで、復旧ポイントが同じになる場合があります。 ただし、月単位の規則の優先順位は週単位の規則よりも高いため、最初に成功した月単位のバックアップに対応する保持が適用されます。
+>保持規則は、事前に決められた優先順位で評価されます。 この優先順位は、高い方から順に **年単位** の規則、 **月単位** の規則、 **週単位** の規則となります。 他の規則が適用されない場合、既定の保持設定が適用されます。 たとえば、最初に成功した週単位のバックアップと、最初に成功した月単位のバックアップで、復旧ポイントが同じになる場合があります。 ただし、月単位の規則の優先順位は週単位の規則よりも高いため、最初に成功した月単位のバックアップに対応する保持が適用されます。
 
 ## <a name="restore"></a>復元
 
@@ -165,7 +165,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
     ![[開始: 復元] で [データ ソースの種類] を選択する](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    1. または、 **[バックアップ コンテナー]**  ->  **[バックアップ インスタンス]** に直接移動することもできます。 復元するデータベースに対応する**バックアップ インスタンス**を選択します。
+    1. または、 **[バックアップ コンテナー]**  ->  **[バックアップ インスタンス]** に直接移動することもできます。 復元するデータベースに対応する **バックアップ インスタンス** を選択します。
 
     ![復元用のバックアップ インスタンス](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
@@ -173,15 +173,15 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
     ![[復元] を選択](./media/backup-azure-database-postgresql/select-restore.png)
 
-1. 選択したバックアップ インスタンスで使用できるすべての完全バックアップの一覧から**復旧ポイントを選択**します。 既定では、最新の復旧ポイントが選択されます。
+1. 選択したバックアップ インスタンスで使用できるすべての完全バックアップの一覧から **復旧ポイントを選択** します。 既定では、最新の復旧ポイントが選択されます。
 
     ![復旧ポイントを選択する](./media/backup-azure-database-postgresql/select-recovery-point.png)
 
     ![復旧ポイントの一覧](./media/backup-azure-database-postgresql/list-recovery-points.png)
 
-1. **復元のパラメーター**を入力します。 この時点で、次の 2 種類の復元から選択できます。 **[Restore as Database]\(データベースとして復元\)** と **[ファイルとして復元]** 。
+1. **復元のパラメーター** を入力します。 この時点で、次の 2 種類の復元から選択できます。 **[Restore as Database]\(データベースとして復元\)** と **[ファイルとして復元]** 。
 
-1. **データベースとして復元**: バックアップ データを復元して、ターゲット PostgreSQL サーバーに新しいデータベースを作成します。
+1. **データベースとして復元** : バックアップ データを復元して、ターゲット PostgreSQL サーバーに新しいデータベースを作成します。
 
     - ターゲット サーバーは、ソース サーバーと同じにすることができます。 ただし、元のデータベースの上書きはサポートされていません。
     - すべてのサブスクリプションのサーバーから、コンテナーと同じリージョン内のサーバーを選択できます。
@@ -189,7 +189,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
     ![データベースとして復元](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **ファイルとして復元**: バックアップ ファイルをターゲット ストレージ アカウント (BLOB) にダンプします。
+1. **ファイルとして復元** : バックアップ ファイルをターゲット ストレージ アカウント (BLOB) にダンプします。
 
     - すべてのサブスクリプションのストレージ アカウントから、コンテナーと同じリージョン内のストレージ アカウントを選択できます。
     - 選択したストレージ アカウントに対してフィルター処理されたコンテナーの一覧からターゲット コンテナーを選択します。
@@ -207,7 +207,7 @@ Azure Backup は、厳密なセキュリティ ガイドラインに準拠して
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>バックアップされた Azure PostgreSQL データベースを管理する
 
-**バックアップ インスタンス**で実行できる管理操作を次に示します。
+**バックアップ インスタンス** で実行できる管理操作を次に示します。
 
 ### <a name="on-demand-backup"></a>オンデマンド バックアップ
 
@@ -242,9 +242,9 @@ Azure Backup は、厳密なセキュリティ ガイドラインに準拠して
 
 ### <a name="usererrormsimissingpermissions"></a>UserErrorMSIMissingPermissions
 
-バックアップ コンテナー MSI に対して、バックアップまたは復元する PG サーバーの**読み取り**アクセス権を付与します。
+バックアップ コンテナー MSI に対して、バックアップまたは復元する PG サーバーの **読み取り** アクセス権を付与します。
 
-PostgreSQL データベースへのセキュリティで保護された接続を確立するために、Azure Backup では、[マネージド サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 認証モデルが使用されます。 したがって、バックアップ コンテナーは、ユーザーによって明示的にアクセス許可が付与されているリソースにのみアクセスできます。
+PostgreSQL データベースへのセキュリティで保護された接続を確立するために、Azure Backup では、[マネージド サービス ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 認証モデルが使用されます。 したがって、バックアップ コンテナーは、ユーザーによって明示的にアクセス許可が付与されているリソースにのみアクセスできます。
 
 システム MSI は、作成時に自動的にコンテナーに割り当てられます。 このコンテナー MSI に、データベースのバックアップ元となる PostgreSQL サーバーへのアクセス権を付与する必要があります。
 
@@ -280,13 +280,13 @@ Azure Active Directory で認証できるデータベース バックアップ �
 
 OSS サーバーに Active Directory 管理者を追加します。
 
-パスワードの代わりに Azure Active Directory で認証できるユーザーを使用してデータベースに接続する場合、この手順が必要です。 Azure Database for PostgreSQL の Azure AD 管理者ユーザーは **azure_ad_admin** ロールを所有します。 Azure AD で認証できる新しいデータベース ユーザーを作成できるのは、**azure_ad_admin** ロールのみです。
+パスワードの代わりに Azure Active Directory で認証できるユーザーを使用してデータベースに接続する場合、この手順が必要です。 Azure Database for PostgreSQL の Azure AD 管理者ユーザーは **azure_ad_admin** ロールを所有します。 Azure AD で認証できる新しいデータベース ユーザーを作成できるのは、 **azure_ad_admin** ロールのみです。
 
 1. サーバー ビューの左側のナビゲーション ウィンドウにある [Active Directory 管理者] タブに移動し、Active Directory 管理者として自分 (または他のユーザー) を追加します。
 
     ![Active Directory 管理者を設定する](./media/backup-azure-database-postgresql/set-admin.png)
 
-1. 必ず、AD 管理者ユーザー設定を**保存**してください。
+1. 必ず、AD 管理者ユーザー設定を **保存** してください。
 
     ![Active Directory 管理者ユーザー設定を保存する](./media/backup-azure-database-postgresql/save-admin-setting.png)
 
@@ -308,14 +308,14 @@ OSS サーバーに Active Directory 管理者を追加します。
 
     ![[ストレージ BLOB データ共同作成者] ロールを割り当てる](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. または、Azure CLI で [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment) コマンドを使用して、復元先の特定のコンテナーに詳細なアクセス許可を付与します。
+1. または、Azure CLI で [az role assignment create](/cli/azure/role/assignment) コマンドを使用して、復元先の特定のコンテナーに詳細なアクセス許可を付与します。
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id
     ```
 
-    1. assignee パラメーターをコンテナーの MSI の**アプリケーション ID** に置き換え、scope パラメーターで特定のコンテナーを参照します。
-    1. コンテナー MSI の**アプリケーション ID** を取得するには、 **[アプリケーションの種類]** で **[すべてのアプリケーション]** を選択します。
+    1. assignee パラメーターをコンテナーの MSI の **アプリケーション ID** に置き換え、scope パラメーターで特定のコンテナーを参照します。
+    1. コンテナー MSI の **アプリケーション ID** を取得するには、 **[アプリケーションの種類]** で **[すべてのアプリケーション]** を選択します。
 
         ![[すべてのアプリケーション] を選択する](./media/backup-azure-database-postgresql/select-all-applications.png)
 

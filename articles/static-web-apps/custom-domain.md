@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563349"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173683"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview にカスタム ドメインを設定する
 
@@ -29,11 +29,11 @@ Azure Static Web Apps では既定で、自動生成されたドメイン名が�
 
 アプリケーションに使用できる DNS 構成には、いくつかの種類があります。
 
-| 目的                                 | 手段                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| `www.example.com` または `blog.example.net` をサポートする| [CNAME レコードのマップ](#map-a-cname-record)           |
-| `example.com` をサポートします                          | [ルート ドメインの構成](#configure-a-root-domain) |
-| `www.example.com` へのすべてのサブドメインを参照      | [ワイルドカードのマップ](#map-a-wildcard-domain)            |
+| 目的 | 手段 |
+|--|--|
+| `www.example.com` または `blog.example.net` をサポートする | [CNAME レコードのマップ](#map-a-cname-record) |
+| `example.com` をサポートします | [ルート ドメインの構成](#configure-a-root-domain) |
+| `www.example.com` へのすべてのサブドメインを参照 | [ワイルドカードのマップ](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>CNAME レコードのマップ
 
@@ -46,6 +46,8 @@ CNAME レコードでは、あるドメインが別のドメインにマップ�
 1. _[Static Web Apps]\(Static Web Apps\)_ ページで、アプリの名前を選択します。
 
 1. メニューで **[カスタム ドメイン]** をクリックします。
+
+1. **[追加]** ボタンをクリックします。
 
 1. _[カスタム ドメイン]_ ウィンドウで、 **[値]** フィールドに URL をコピーします。
 
@@ -82,7 +84,7 @@ CNAME レコードでは、あるドメインが別のドメインにマップ�
 
 これで、カスタム ドメインが構成されました。DNS プロバイダーによって世界規模で変更が反映されるには、数時間かかる場合があります。 [dnspropagation.net](https://dnspropagation.net) に移動して、反映の状態を確認できます。 `www` を含めてお使いのカスタム ドメインを入力し、ドロップダウンから [CNAME] を選択して、 **[開始]** を選択します。
 
-DNS の変更が設定されると、Web サイトでは Static Web App の自動生成された URL (_random-name-123456789c.azurestaticapps.net_ など) が返されます。
+DNS の変更が設定されると、Web サイトでは Static Web App の自動生成された URL ( _random-name-123456789c.azurestaticapps.net_ など) が返されます。
 
 ## <a name="configure-a-root-domain"></a>ルート ドメインを構成する
 

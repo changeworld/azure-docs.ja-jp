@@ -1,16 +1,16 @@
 ---
 title: Bridge to Kubernetes への移行
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: Azure Dev Spaces から Bridge to Kubernetes への移行プロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Bridge to Kubernetes
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044702"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329800"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Bridge to Kubernetes への移行
 
@@ -50,7 +50,7 @@ Azure Dev Spaces と Bridge to Kubernetes には同様の機能があります�
 | **使いやすさ** |
 | Kubernetes および Docker アーティファクトからの独立  | いいえ  | はい   |
 | 変更の自動ロールバック、事後デバッグ  | いいえ  | はい   |
-| **環境** |
+| **サポートされているクライアント ツール** |
 | Visual Studio 2019 での動作  | はい  | はい   |
 | Visual Studio Code での動作  | はい  | はい   |
 | CLI での動作  | はい  | いいえ   |

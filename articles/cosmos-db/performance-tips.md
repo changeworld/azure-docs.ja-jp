@@ -4,15 +4,15 @@ description: Azure Cosmos DB .NET v2 SDK のパフォーマンスを向上させ
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802142"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277227"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB と .NET SDK v2 のパフォーマンスに関するヒント
 
@@ -69,28 +69,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 **接続ポリシー:直接接続モードを使用する**
 
-クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間について、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続 "*モード*" と接続 "*プロトコル*" があります。  次の 2 つのモードが用意されています。
-
-  * ゲートウェイ モード (既定値)
-      
-    ゲートウェイ モードは [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) の構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。 ゲートウェイ モードでは標準の HTTPS ポートと単一の DNS エンドポイントが使用されるため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢となります。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 つまり、ネットワーク ホップ数が少ないため、直接モードの方がパフォーマンスが向上します。 ソケット接続の数に制限がある環境でアプリケーションを実行する場合、ゲートウェイ接続モードも推奨されます。
-
-    Azure Functions (特に[従量課金プラン](../azure-functions/functions-scale.md#consumption-plan)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。 Azure Functions アプリケーション内で他の HTTP ベースのクライアントも使用している場合は、ゲートウェイ モードの方がよい可能性があります。
-
-  * 直接モード
-
-    直接モードは、TCP プロトコル経由の接続をサポートします。
-     
-直接モードで TCP を使用する場合は、Azure Cosmos DB で動的 TCP ポートが使用されるため、ゲートウェイ ポートに加えてポート範囲 10000 から 20000 を開いておく必要があります。 [プライベート エンドポイント](./how-to-configure-private-endpoints.md)で直接モードを使用する場合は、TCP ポートの全範囲である 0 から 65535 を開いておく必要があります。 これらのポートが開いていない場合に TCP プロトコルを使用しようとすると、[503 サービスを利用できません] エラーを受け取ります。 次の表は、さまざまな API で使用可能な接続モードと、各 API に使用されるサービス ポートを示しています。
-
-|接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
-|---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443) <br> ポート 10250 は、Geo レプリケーションを使用することなく、MongoDB インスタンスの既定の Azure Cosmos DB API にマップされます。 一方で、ポート 10255 と 10256 は、Geo レプリケーションを使用して、このインスタンスにマップされます。   |
-|直接    |     TCP    |  .NET SDK    | パブリック/サービス エンドポイントを使用する場合: 10000 から 20000 の範囲のポート<br>プライベート エンドポイントを使用する場合: 0 から 65535 の範囲のポート |
-
-Azure Cosmos DB では、HTTPS を介したシンプルなオープン RESTful プログラミング モデルが提供されます。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 TCP プロトコルでは、最初の認証とトラフィックの暗号化で TLS が使用されます。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
-
-Microsoft.Azure.DocumentDB SDK では、`ConnectionPolicy` パラメーターを使用して `DocumentClient` インスタンスを構築するときに接続モードを構成します。 直接モードを使用する場合は、`ConnectionPolicy` パラメーターを使用して `Protocol` を設定することもできます。
+.NET V2 SDK の既定の接続モードはゲートウェイです。 `ConnectionPolicy` パラメーターを使用して `DocumentClient` インスタンスを構築するときに接続モードを構成します。 直接モードを使用する場合、`ConnectionPolicy` パラメーターを使用して `Protocol` を設定する必要もあります。 さまざまな接続オプションについては、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。
 
 ```csharp
 Uri serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -102,10 +81,6 @@ new ConnectionPolicy
    ConnectionProtocol = Protocol.Tcp
 });
 ```
-
-TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に HTTPS プロトコルが常に使用され、`ConnectionPolicy` の `Protocol` の値は無視されます。
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB の接続ポリシー" border="false":::
 
 **一時的なポートの不足**
 
@@ -284,4 +259,4 @@ SDK はすべてこの応答を暗黙的にキャッチし、サーバーが指�
 
 少数のクライアント コンピューターでの高パフォーマンス シナリオで Azure Cosmos DB の評価に使用されるサンプル アプリケーションについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 
-スケーリングと高パフォーマンスのためのアプリケーションの設計について詳しくは、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」をご覧ください。
+スケーリングと高パフォーマンスのためのアプリケーションの設計について詳しくは、「[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)」をご覧ください。

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121721"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328761"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -24,7 +24,7 @@ ms.locfileid: "77121721"
 
 Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 このシステムではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 Azure DNS によって、ドメインに高速なパフォーマンスと高可用性が提供されます。
 
-Azure DNS は、Azure Resource Manager に基づいています。 Azure DNS では、ロールベースのアクセス制御、監査ログ、リソース ロックなどの Resource Manager 機能を利用できます。 ドメインとレコードは、Azure portal、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API と SDK を使用してサービスを統合できます。
+Azure DNS は、Azure Resource Manager に基づいています。 Azure DNS では、Azure ロールベースのアクセス制御、監査ログ、リソース ロックなどの Resource Manager 機能を利用できます。 ドメインとレコードは、Azure portal、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API と SDK を使用してサービスを統合できます。
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS の料金はいくらですか。
 
@@ -44,7 +44,7 @@ DNS 要求が有効な場合、Azure では 100% の時間において Azure DNS
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 たとえば、ドメイン contoso.com に、複数の DNS レコードが含まれることがあります。 これらのレコードに、メール サーバー用の mail.contoso.com と Web サイト用の www\.contoso.com が含まれることがあります。 これらのレコードは DNS ゾーン contoso.com でホストされます。
 
-ドメイン名は*単なる名前*です。 DNS ゾーンは、ドメイン名用の DNS レコードを含むデータ リソースです。 Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 また、インターネットからの DNS クエリに応答する DNS ネーム サーバーも提供します。
+ドメイン名は *単なる名前* です。 DNS ゾーンは、ドメイン名用の DNS レコードを含むデータ リソースです。 Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 また、インターネットからの DNS クエリに応答する DNS ネーム サーバーも提供します。
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Azure DNS を使用するために DNS ドメイン名を購入する必要がありますか。 
 
@@ -58,7 +58,7 @@ DNS ゾーンをグローバル DNS 階層にリンクするには、ドメイ�
 
 ### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Traffic Manager でドメイン名の apex に対してエイリアス レコードを使用するときに、何か制限はありますか。
 
-はい。 Azure Traffic Manager では静的パブリック IP アドレスを使用する必要があります。 静的 IP アドレスを使用して**外部エンドポイント** ターゲットを構成してください。 
+はい。 Azure Traffic Manager では静的パブリック IP アドレスを使用する必要があります。 静的 IP アドレスを使用して **外部エンドポイント** ターゲットを構成してください。 
 
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS では DNS ベースのトラフィック ルーティングまたはエンドポイント フェールオーバーがサポートされますか。
 
@@ -116,10 +116,10 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>エイリアス レコード セットのターゲットとしては、どのようなリソースがサポートされていますか。
 
-- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
-- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
-- **Azure Content Delivery Network (CDN) エンドポイントをポイントする**。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。
-- **同じゾーン内の別の DNS レコード セットをポイントする**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコード セットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
+- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする** 。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
+- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする** 。 DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
+- **Azure Content Delivery Network (CDN) エンドポイントをポイントする** 。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。
+- **同じゾーン内の別の DNS レコード セットをポイントする** 。 エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコード セットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Azure portal からエイリアス レコードを作成および更新できますか。
 
@@ -177,7 +177,7 @@ DNS ゾーンの移動に関する詳細と手順については、「[新しい
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>誤って削除されないように DNS ゾーンを保護するにはどうすればよいですか。
 
-Azure DNS の管理は、Azure Resource Manager を使用して行われます。 Azure DNS では、Azure Resource Manager が提供するアクセス制御機能を利用しています。 ロールベースのアクセス制御によって、DNS ゾーンとレコード セットに対する読み取りアクセスまたは書き込みアクセスを持つユーザーを制御します。 リソース ロックによって、DNS ゾーンとレコード セットを誤って変更または削除することを回避します。
+Azure DNS の管理は、Azure Resource Manager を使用して行われます。 Azure DNS では、Azure Resource Manager が提供するアクセス制御機能を利用しています。 Azure ロールベースのアクセス制御を使用すると、DNS ゾーンとレコード セットへの読み取りアクセスまたは書き込みアクセスを持つユーザーを制御できます。 リソース ロックによって、DNS ゾーンとレコード セットを誤って変更または削除することを回避します。
 
 詳細については、「[DNS ゾーンとレコードを保護する方法](dns-protect-zones-recordsets.md)」を参照してください。
 

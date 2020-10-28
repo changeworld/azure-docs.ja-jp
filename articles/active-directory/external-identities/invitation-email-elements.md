@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439836"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340619"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
 招待メールは、パートナーを B2B コラボレーション ユーザーとして Azure AD に参加させるための重要なコンポーネントです。 [B2B コラボレーションの使用について招待メールを送信することは必須ではありません](add-user-without-invite.md)が、送信すれと、招待を受け入れるかどうかを決定するために必要なすべての情報がユーザーに提供されます。 また、ユーザーが後でリソースに戻る必要がある場合に常に参照できるリンクも提供されます。
 
 ![B2B の招待メールを示すスクリーンショット](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> この新しいメール テンプレートはすべてのテナントへのロールアウトの途中であるため、一部のテナントではまだ古いデザインが使用されています。 2020 年 5 月末までには、すべてのテナントからの招待でこのテンプレートが使用されるようになります。
 
 ## <a name="explaining-the-email"></a>電子メールの説明
 
@@ -52,17 +49,11 @@ ms.locfileid: "91439836"
 
 ![メールに記載されるフィッシング詐欺の警告の画像](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>招待元の情報
+### <a name="inviters-information-and-invitation-message"></a>招待元の情報と招待メッセージ
 
-メールには、招待元と、招待元が招待を送信している組織に関する情報が含まれています。 これには、送信者の名前とメール アドレス、および組織に関連付けられている名前とプライマリ ドメインが含まれます。 この情報はすべて、招待された人が招待を受け入れるかどうかを情報に基づいて決定するのに役立ちます。
+このメールには、招待を送信する組織に関連付けられている名前とプライマリ ドメインが含まれています。 この情報は、招待された人が、招待を受け入れるかどうかを情報に基づいて決定するのに役立ちます。 [ディレクトリ、グループ、アプリにゲスト ユーザーを招待する](add-users-administrator.md)とき、または[招待 API を使用する](customize-invitation-api.md)ときに、招待元が招待の一部としてメッセージを含めた場合、メールのメイン セクションでメッセージが強調表示されます。 また、招待元が設定した場合は、招待元の名前とプロファイル イメージも含まれます。 メッセージ自体はテキスト領域であるため、セキュリティ上の理由から、HTML タグは処理されません。
 
-![メールに記載されている招待元の情報の画像](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>招待メッセージ
-
-[ディレクトリ、グループ、アプリにゲスト ユーザーを招待する](add-users-administrator.md)とき、または[招待 API を使用する](customize-invitation-api.md)ときに、招待元が招待の一部としてメッセージを含めた場合、メールのメイン セクションでメッセージが強調表示されます。 また、招待元が設定した場合は、招待元の名前とプロファイル イメージも含まれます。 メッセージ自体はテキスト領域であるため、セキュリティ上の理由から、HTML タグは処理されません。
-
-![メールでの招待メッセージの画像](media/invitation-email-elements/invitation-message.png)
+![メールでの招待メッセージの画像](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>同意ボタンとリダイレクト URL
 
@@ -78,7 +69,7 @@ ms.locfileid: "91439836"
 
 ### <a name="blocking-an-organization-unsubscribing"></a>組織をブロックする (購読解除)
 
-組織からの招待には、フッターに**今後の招待をブロックする**オプションが含まれています。 ゲスト ユーザーはこのリンクを選択し、組織から今後届く招待をブロックできます。 この操作により、[https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) にあるユーザーの登録解除リストにも組織が追加されます。
+組織からの招待には、フッターに **今後の招待をブロックする** オプションが含まれています。 ゲスト ユーザーはこのリンクを選択し、組織から今後届く招待をブロックできます。 この操作により、[https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) にあるユーザーの登録解除リストにも組織が追加されます。
 
 ### <a name="viewing-organizations-youve-blocked"></a>ブロックしている組織を表示する
 
@@ -94,10 +85,10 @@ ms.locfileid: "91439836"
 
 招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。
 
-- 招待の作成 API が使用されている場合は、[invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
--   ゲストの[ユーザー オブジェクト](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
--   ゲスト ユーザーのホーム テナントのプロパティで設定されている**通知言語** (Azure AD テナントの場合のみ)
--   リソース テナントのプロパティで設定されている**通知言語**
+- 招待の作成 API が使用されている場合は、 [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
+-   ゲストの [ユーザー オブジェクト](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
+-   ゲスト ユーザーのホーム テナントのプロパティで設定されている **通知言語** (Azure AD テナントの場合のみ)
+-   リソース テナントのプロパティで設定されている **通知言語**
 
 これらのいずれの設定も構成されていない場合、言語は既定で英語 (米国) になります。
 

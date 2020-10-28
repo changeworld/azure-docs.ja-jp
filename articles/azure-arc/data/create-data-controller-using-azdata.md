@@ -1,6 +1,6 @@
 ---
-title: Azure Data CLI (azdata) を使用してデータ コントローラーを作成する
-description: Azure Data CLI (azdata) を使用して、既に作成されている一般的なマルチノード Kubernetes クラスターに Azure Arc データ コントローラーを作成します。
+title: '[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用したデータ コントローラーの作成'
+description: '[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用して既に作成されている一般的なマルチノード Kubernetes クラスターに Azure Arc データ コントローラーを作成します。'
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5fac5987a36c425b9e130df17412e5ad902345
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761687"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310934"
 ---
-# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Data CLI (azdata) を使用して Azure Arc データ コントローラーを作成する
+# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用した Azure Arc データ コントローラーの作成
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "91761687"
 
 概要情報については、「[Azure Arc データ コントローラーを作成する](create-data-controller.md)」のトピックを確認してください。
 
-Azure Data CLI を使用して Azure Arc データ コントローラーを作成するには、Azure Data CLI をインストールしておく必要があります。
+[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用して Azure Arc データ コントローラーを作成するには、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] をインストールしておく必要があります。
 
-   [Azure Data CLI のインストール](install-client-tools.md)
+   [[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] をインストールする](install-client-tools.md)
 
 選択するターゲット プラットフォームに関係なく、データ コントローラー管理者ユーザーの作成の前に、次の環境変数を設定する必要があります。 これらの資格情報は、必要に応じて、データ コントローラーへの管理者アクセス権を持つ必要がある他のユーザーに提供できます。
 
@@ -244,7 +244,7 @@ azdata arc dc config replace --path ./custom/control.json --json-values spec.sec
 >   ここで使用する名前空間は、前の `oc adm policy add-scc-to-user` コマンドで使用したものと同じです。 たとえば `arc` とします。
 
 > [!NOTE]
->   `--path` パラメーターは、control.json ファイル自体ではなく、control.json ファイルを含む_ディレクトリ_を指している必要があります。
+>   `--path` パラメーターは、control.json ファイル自体ではなく、control.json ファイルを含む _ディレクトリ_ を指している必要があります。
 
 
 ```console

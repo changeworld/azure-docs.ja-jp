@@ -1,6 +1,6 @@
 ---
-title: Azure AD で既存のオンプレミス プロキシ サーバーと連携する| Microsoft Docs
-description: 既存のオンプレミス プロキシ サーバーと連携する方法について説明します。
+title: 既存のオンプレミス プロキシ サーバーおよび Azure Active Directory と連携する
+description: Azure Active Directory で既存のオンプレミス プロキシ サーバーと連携する方法について説明します。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077511"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208007"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -39,7 +38,7 @@ ms.locfileid: "88077511"
 
 オンプレミスのプロキシをバイパスして Azure サービスへの直接接続を使用するように、コネクタを構成できます。 管理する構成が 1 つ少なくて済むため、(ネットワーク ポリシーで許可されている場合) この方法をお勧めします。
 
-コネクタで送信プロキシの使用を無効にするには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。
+コネクタで送信プロキシの使用を無効にするには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、 *system.net* セクションを追加します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -77,7 +76,7 @@ ms.locfileid: "88077511"
 
 環境内で WPAD を有効にし、適切に構成している場合、コネクタは送信プロキシ サーバーを自動的に検出して使用を試みます。 一方で、送信プロキシを経由するようにコネクタを明示的に構成することができます。
 
-これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。 ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように、*proxyserver:8080* を変更します。 IP アドレスを使用している場合でも、値にはプレフィックス http:// を付ける必要があります。
+これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、 *system.net* セクションを追加します。 ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように、 *proxyserver:8080* を変更します。 IP アドレスを使用している場合でも、値にはプレフィックス http:// を付ける必要があります。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -114,15 +113,15 @@ ms.locfileid: "88077511"
 | URL | 用途 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | コネクタでは、これらの URL を使用して証明書が検証されます。 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | コネクタでは、証明書の検証にこれらの URL が使用されます。 |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
-ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。
 
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 
 * すべてのアクセス先に対するコネクタの送信アクセスを許可する。
-* [Azure データセンターの全 IP アドレス範囲](https://www.microsoft.com//download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。
+* Azure データセンターの全 IP アドレス範囲に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。 Azure データ センターの最新 IP 範囲をダウンロードするには、[https://download.microsoft.com](https://download.microsoft.com) に移動して、"Azure IP 範囲とサービス タグ" を検索します。 必ず関連するクラウドを選択してください。 たとえば、パブリック クラウドの IP 範囲は、"Azure IP 範囲とサービス タグ – パブリック クラウド" で見つかります。 米国政府のクラウドは、"Azure IP 範囲とサービス タグ - 米国政府のクラウド" で検索すると見つかります。
 
 #### <a name="proxy-authentication"></a>プロキシの認証
 
