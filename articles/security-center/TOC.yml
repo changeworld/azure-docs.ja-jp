@@ -17,13 +17,13 @@
     - name: 新機能
       items:
         - name: リリース ノート
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes.md
         - name: 今後予定されている重要な変更
-          displayName: 'release notes, changelog'
+          displayName: 'release notes, changelog, news'
           href: upcoming-changes.md
         - name: アーカイブされたリリース ノート (6 か月以上前)
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes-archive.md
     - name: Security Center の基礎
       items:
@@ -92,6 +92,7 @@
     - name: メール通知の設定
       href: security-center-provide-security-contact-details.md
     - name: ARM テンプレートを使用してアラートへの自動応答を作成する
+      displayName: Resource Manager
       href: quickstart-automation-alert.md
 - name: チュートリアル
   items:
@@ -238,6 +239,7 @@
           displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
           href: export-to-siem.md
         - name: Log Analytics ワークスペースまたは Azure イベント ハブへのエクスポート
+          displayName: continuous
           href: continuous-export.md
         - name: すべてのアラートの CSV レポートをダウンロードする
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations

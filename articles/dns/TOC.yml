@@ -18,6 +18,7 @@
         - name: パブリック ゾーンを作成する - CLI
           href: dns-getstarted-cli.md
         - name: パブリック ゾーンを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: dns-get-started-template.md
     - name: プライベート DNS
       items:
@@ -45,7 +46,7 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

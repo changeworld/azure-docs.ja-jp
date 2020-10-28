@@ -13,6 +13,7 @@
     - name: ExpressRoute 回線の作成 - CLI
       href: howto-circuit-cli.md
     - name: ExpressRoute 回線の作成 - ARM テンプレート
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: チュートリアル

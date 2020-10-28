@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 10/30/2019
-  ms.openlocfilehash: 0cb1d825c902cb616bfc1feac9274db87ec14342
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ba3439ab515539149bb53bcd38c7c646f9f2da07
+  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91283855"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92790850"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
@@ -164,7 +164,7 @@ landingContent:
     - text: 初心者向け Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL の基礎
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL のハンズオン ラボ
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL の短期集中講座
@@ -198,8 +198,8 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/
