@@ -474,6 +474,10 @@
               href: flexible-server/concepts-audit-logs.md
             - name: メトリック
               href: flexible-server/concepts-monitoring.md
+        - name: レプリケーション
+          items:
+            - name: 読み取りレプリカ
+              href: flexible-server/concepts-read-replicas.md
     - name: 操作方法ガイド
       items:
         - name: サーバーを管理する
@@ -536,6 +540,16 @@
               items:
                 - name: Azure portal
                   href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: サーバーの再起動
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-restart-server-portal.md
+        - name: レプリケーション
+          items:
+            - name: Azure portal を使用した読み取りレプリカの作成
+              href: flexible-server/how-to-read-replicas-portal.md
+            - name: 読み取りレプリカ Azure CLI の作成
+              href: flexible-server/how-to-read-replicas-cli.md
         - name: トラブルシューティング
           items:
             - name: 接続エラー
