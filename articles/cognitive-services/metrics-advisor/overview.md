@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047575"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890245"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Metrics Advisor (プレビュー) とは 
 
@@ -53,16 +53,14 @@ Metrics Advisor は異常が検出されるたびに、電子メール、Web、A
 ワークフローはシンプルです。データをオンボードした後、異常検出を微調整し、実際のシナリオに合った構成を作成します。
 
 1. Metrics Advisor 用の [Azure リソースを作成](../cognitive-services-apis-create-account.md)します。 
-2. デモ サイトをお試しください。サンプル データがあらかじめ構成されている Metrics Advisor インスタンスの例をご覧いただけます。 
-3. Web ポータルを使用して初めてのモニターを作成します。
+2. Web ポータルを使用して初めてのモニターを作成します。
     1. データをオンボードする
     2. 異常検出を微調整する
     3. アラートをサブスクライブする
     4. 診断の分析情報を表示する
-1. インスタンスをカスタマイズするには、REST API を使用します。
+3. インスタンスをカスタマイズするには、REST API を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [デモ サイト](quickstarts/explore-demo.md)を試用します。
 * クイックスタート「[Web で初めてのメトリックを監視する](quickstarts/web-portal.md)」を参照します。
 * クイックスタート「[REST API を使用してソリューションをカスタマイズする](quickstarts/rest-api.md)」を参照します。

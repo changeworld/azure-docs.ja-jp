@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166541"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789915"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Azure 仮想マシン上の Always On 可用性グループは、[オンプレ�
 
 ## <a name="vm-redundancy"></a>VM の冗長性 
 
-冗長性と高可用性を向上させるには、SQL Server VM を同じ[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)に配置するか、異なる[可用性ゾーン](/azure/availability-zones/az-overview)に配置する必要があります。
+冗長性と高可用性を向上させるには、SQL Server VM を同じ[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)に配置するか、異なる[可用性ゾーン](../../../availability-zones/az-overview.md)に配置する必要があります。
 
 可用性セットは、2 つが同じ可用性ゾーンに配置されないように構成されているリソースをグループ化したものです。 これにより、デプロイのロールアウト中にグループ内の複数のリソースに影響が及ぶのを防ぐことができます。 
 
@@ -74,7 +74,7 @@ Azure VM 上の SQL Server に可用性グループをデプロイするため�
 
 次の表は、使用可能なオプションの比較を示しています。 
 
-| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLI / PowerShell](availability-group-az-cli-configure.md)**|**[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)**|**[マニュアル](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLI / PowerShell](./availability-group-az-commandline-configure.md)**|**[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)**|**[マニュアル](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**SQL Server のバージョン** |2016 以降 |2016 以降|2016 以降|2012 以降|
 |**SQL Server のエディション** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
@@ -100,6 +100,6 @@ Azure IaaS VM ゲスト フェールオーバー クラスターでは、サー�
 
 ## <a name="next-steps"></a>次の手順
 
-[HADR のベスト プラクティス](hadr-cluster-best-practices.md)を確認し、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI または PowerShell](availability-group-az-cli-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用するか、または[手動](availability-group-manually-configure-prerequisites-tutorial.md)で可用性グループのデプロイを開始します。
+[HADR のベスト プラクティス](hadr-cluster-best-practices.md)を確認し、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI または PowerShell](./availability-group-az-commandline-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用するか、または[手動](availability-group-manually-configure-prerequisites-tutorial.md)で可用性グループのデプロイを開始します。
 
-また、[クラスターレス可用性グループ](availability-group-clusterless-workgroup-configure.md)または可用性グループを[複数のリージョン](availability-group-manually-configure-multiple-regions.md)にデプロイすることもできます。 
+また、[クラスターレス可用性グループ](availability-group-clusterless-workgroup-configure.md)または可用性グループを[複数のリージョン](availability-group-manually-configure-multiple-regions.md)にデプロイすることもできます。

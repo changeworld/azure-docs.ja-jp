@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-js
+ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 7401bc0661459e1322c9b2f2226d45794f814732
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef362b34fe99212ee6648830ac442e507515719f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91302946"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747521"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 
@@ -74,17 +74,17 @@ az extension add --name azure-iot
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+   **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
-   **MyDevice**: これは、登録するデバイスの名前です。 示されているように、**MyDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyDevice** : これは、登録するデバイスの名前です。 示されているように、 **MyDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-2. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"*サービス接続文字列*" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
+2. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、" *サービス接続文字列* " が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
 
-    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+    **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -131,7 +131,7 @@ az extension add --name azure-iot
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   ServiceConnectionString プレースホルダーを、サービス接続文字列に一致するように変更します。また、**MyDevice** を、これ以外の名前を指定した場合は、デバイス ID に一致するように変更します。
+   ServiceConnectionString プレースホルダーを、サービス接続文字列に一致するように変更します。また、 **MyDevice** を、これ以外の名前を指定した場合は、デバイス ID に一致するように変更します。
 
 * 解凍したプロジェクト フォルダーの `Quickstarts/device-streams-service` に移動し、ノードを使用してサンプルを実行します。
 

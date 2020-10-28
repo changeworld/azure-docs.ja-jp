@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008405"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787382"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Queue storage のパフォーマンスとスケーラビリティのチェックリスト
 
@@ -52,7 +52,7 @@ Azure Storage には、容量、トランザクション レート、および�
 
 運用中のアプリケーションがいずれかのスケーラビリティ ターゲットに近づいたり超過したりすると、トランザクション待機時間や調整が増加することがあります。 Azure Storage によってアプリケーションが調整されると、サービスが 503 (サーバー ビジー) または 500 (操作タイムアウト) のエラー コードを返し始めます。 スケーラビリティ ターゲットの制限内にとどまることでこれらのエラーを回避することは、アプリケーションのパフォーマンスを強化するうえで重要な部分です。
 
-Queue サービスのスケーラビリティ ターゲットの詳細については、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)に関するページを参照してください。
+Queue サービスのスケーラビリティ ターゲットの詳細については、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](./scalability-targets.md#scale-targets-for-queue-storage)に関するページを参照してください。
 
 ### <a name="maximum-number-of-storage-accounts"></a>ストレージ アカウントの最大数
 
@@ -128,7 +128,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 他のプログラミング言語については、対象の言語のドキュメントで接続数の上限の設定方法を確認してください。  
 
-詳細については、ブログ記事「[Web Services:Concurrent Connections (Web サービス: コンカレント接続数)](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)」を参照してください。  
+詳細については、ブログ記事「[Web Services:Concurrent Connections (Web サービス: コンカレント接続数)](/archive/blogs/darrenj/web-services-concurrent-connections)」を参照してください。  
 
 ### <a name="increase-minimum-number-of-threads"></a>スレッドの最小数を増やす
 
@@ -146,7 +146,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>クライアント ライブラリとツール
 
-パフォーマンスを最大限に引き出すためには必ず、Microsoft から提供される最新のクライアント ライブラリとツールを使用してください。 Azure Storage のクライアント ライブラリは、さまざまな言語に対応しています。 また、Azure Storage は PowerShell と Azure CLI をサポートします。 Microsoft はパフォーマンスに留意してこれらのクライアント ライブラリとツールを積極的に開発し、最新のサービス バージョンに遅れることなく対応して、数多くのパフォーマンスの実証済みプラクティスを内部で確実に処理できるように取り組んでいます。 詳細については、[Azure Storage のリファレンス ドキュメント](/azure/storage/#reference)を参照してください。
+パフォーマンスを最大限に引き出すためには必ず、Microsoft から提供される最新のクライアント ライブラリとツールを使用してください。 Azure Storage のクライアント ライブラリは、さまざまな言語に対応しています。 また、Azure Storage は PowerShell と Azure CLI をサポートします。 Microsoft はパフォーマンスに留意してこれらのクライアント ライブラリとツールを積極的に開発し、最新のサービス バージョンに遅れることなく対応して、数多くのパフォーマンスの実証済みプラクティスを内部で確実に処理できるように取り組んでいます。 詳細については、[Azure Storage のリファレンス ドキュメント](./reference.md)を参照してください。
 
 ## <a name="handle-service-errors"></a>サービス エラーの処理
 
@@ -184,7 +184,7 @@ Nagle のアルゴリズムは、ネットワーク パフォーマンスを向�
 
 ## <a name="use-update-message"></a>メッセージ更新の使用
 
-**メッセージ更新**操作を使用すると、非表示タイムアウトを長くしたり、メッセージの状態情報を更新したりすることができます。 ジョブの各ステップが完了するごとに次のキューにジョブを渡すワークフローよりも、**メッセージ更新**を使用した方がはるかに効率的です。 アプリケーションは、ジョブの各ステップが完了するたびに次のステップのメッセージを再キューイングするのではなく、ジョブ状態をメッセージに保存して、処理を継続することができます。 各**メッセージ更新**操作はスケーラビリティ ターゲットにカウントされることに留意してください。
+**メッセージ更新** 操作を使用すると、非表示タイムアウトを長くしたり、メッセージの状態情報を更新したりすることができます。 ジョブの各ステップが完了するごとに次のキューにジョブを渡すワークフローよりも、 **メッセージ更新** を使用した方がはるかに効率的です。 アプリケーションは、ジョブの各ステップが完了するたびに次のステップのメッセージを再キューイングするのではなく、ジョブ状態をメッセージに保存して、処理を継続することができます。 各 **メッセージ更新** 操作はスケーラビリティ ターゲットにカウントされることに留意してください。
 
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 

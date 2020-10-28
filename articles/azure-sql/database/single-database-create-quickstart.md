@@ -4,23 +4,23 @@ description: Azure portal、PowerShell、または Azure CLI を使用して、A
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1
+ms.custom: contperfq1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91263404"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791513"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
-このクイックスタートでは、Azure portal、PowerShell スクリプト、または Azure CLI スクリプトを使用して、Azure SQL Database に[単一データベース](single-database-overview.md)を作成します。 次に、Azure portal で**クエリ エディター**を使用して、データベースに対してクエリを実行します。
+このクイックスタートでは、Azure portal、PowerShell スクリプト、または Azure CLI スクリプトを使用して、Azure SQL Database に[単一データベース](single-database-overview.md)を作成します。 次に、Azure portal で **クエリ エディター** を使用して、データベースに対してクエリを実行します。
 
 
 
@@ -42,12 +42,12 @@ Azure portal で単一データベースを作成するため、このクイッ�
    ![Azure SQL に追加する](./media/single-database-create-quickstart/select-deployment.png)
 
 1. **[SQL データベースの作成]** フォームの **[基本]** タブにある **[プロジェクトの詳細]** で、目的の Azure **[サブスクリプション]** を選択します。
-1. **[リソース グループ]** で、 **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。
-1. **[データベース名]** に「*mySampleDatabase*」と入力します。
+1. **[リソース グループ]** で、 **[新規作成]** を選択し、「 *myResourceGroup* 」と入力して、 **[OK]** を選択します。
+1. **[データベース名]** に「 *mySampleDatabase* 」と入力します。
 1. **[サーバー]** で、 **[新規作成]** を選択し、 **[新しいサーバー]** フォームに次の値を入力します。
-   - **[サーバー名]** : 「*mysqlserver*」と入力し、一意にするためにいくつかの文字を追加します。 サーバー名は、サブスクリプション内で一意ではなく、Azure のすべてのサーバーに対してグローバルに一意である必要があるため、正確なサーバー名をここに示すことはできません。 mysqlserver12345 のように入力してから、利用可能かどうかをポータルで確認できます。
-   - **サーバー管理者ログイン**:「*azureuser*」と入力します。
-   - **パスワード**:要件を満たすパスワードを入力し、 **[パスワードの確認入力]** フィールドにもう一度入力します。
+   - **[サーバー名]** : 「 *mysqlserver* 」と入力し、一意にするためにいくつかの文字を追加します。 サーバー名は、サブスクリプション内で一意ではなく、Azure のすべてのサーバーに対してグローバルに一意である必要があるため、正確なサーバー名をここに示すことはできません。 mysqlserver12345 のように入力してから、利用可能かどうかをポータルで確認できます。
+   - **サーバー管理者ログイン** :「 *azureuser* 」と入力します。
+   - **パスワード** :要件を満たすパスワードを入力し、 **[パスワードの確認入力]** フィールドにもう一度入力します。
    - **[場所]** :ドロップダウン リストから場所を選択します。
 
    **[OK]** を選択します。
@@ -82,7 +82,7 @@ Azure portal で単一データベースを作成するため、このクイッ�
 
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
-Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けます。その後、**Enter** キーを押してそれを実行します。
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けます。その後、 **Enter** キーを押してそれを実行します。
 
 ## <a name="set-parameter-values"></a>パラメーターの値を設定する
 
@@ -107,7 +107,7 @@ endip=0.0.0.0
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name $resourceGroupName --location $location
@@ -167,7 +167,7 @@ Windows PowerShell を使用して、リソース グループ、サーバー、
 
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
-Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けます。その後、**Enter** キーを押してそれを実行します。
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けます。その後、 **Enter** キーを押してそれを実行します。
 
 ## <a name="set-parameter-values"></a>パラメーターの値を設定する
 
@@ -254,9 +254,9 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="query-the-database"></a>データベースのクエリを実行する
 
-データベースを作成したら、Azure portal で**クエリ エディター (プレビュー)** を使用してデータベースに接続し、データに対してクエリを実行します。
+データベースを作成したら、Azure portal で **クエリ エディター (プレビュー)** を使用してデータベースに接続し、データに対してクエリを実行します。
 
-1. ポータルで、**SQL データベース**を検索して選択し、リストからデータベースを選択します。
+1. ポータルで、 **SQL データベース** を検索して選択し、リストからデータベースを選択します。
 1. データベースのページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。
 1. サーバー管理者のログイン情報を入力し、 **[OK]** を選択します。
 
@@ -289,7 +289,7 @@ Azure portal を使用して **myResourceGroup** とそのすべてのリソー�
 
 1. ポータルで、 **[リソース グループ]** を検索して選択し、一覧から **[myResourceGroup]** を選択します。
 1. [リソース グループ] ページで、 **[リソース グループの削除]** を選択します。
-1. **[リソース グループ名を入力してください]** に「*myResourceGroup*」を入力し、 **[削除]** を選択します。
+1. **[リソース グループ名を入力してください]** に「 *myResourceGroup* 」を入力し、 **[削除]** を選択します。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -320,4 +320,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Cost Management を使用してコスト分析を開始する](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

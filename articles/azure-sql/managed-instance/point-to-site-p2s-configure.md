@@ -12,25 +12,25 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331908"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788368"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-このクイック スタートでは、オンプレミスのクライアント コンピューターからポイント対サイト接続を行い、[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して Azure SQL Managed Instance に接続する方法を示します。 ポイント対サイト接続の詳細については、「[ポイント対サイト VPN について](../../vpn-gateway/point-to-site-about.md)」を参照してください。
+このクイック スタートでは、オンプレミスのクライアント コンピューターからポイント対サイト接続を行い、[SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して Azure SQL Managed Instance に接続する方法を示します。 ポイント対サイト接続の詳細については、「[ポイント対サイト VPN について](../../vpn-gateway/point-to-site-about.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタート:
 
 - 「[マネージド インスタンスを作成する](instance-create-quickstart.md)」で作成したリソースを出発点として使用します。
-- オンプレミスのクライアント コンピューターには、PowerShell 5.1 と Azure PowerShell 1.4.0 以降をインストールしておく必要があります。 必要に応じて、[Azure PowerShell モジュールをインストールする](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)手順を参照してください。
-- オンプレミスのクライアント コンピューターには、最新版の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) をインストールしておく必要があります。
+- オンプレミスのクライアント コンピューターには、PowerShell 5.1 と Azure PowerShell 1.4.0 以降をインストールしておく必要があります。 必要に応じて、[Azure PowerShell モジュールをインストールする](/powershell/azure/install-az-ps#install-the-azure-powershell-module)手順を参照してください。
+- オンプレミスのクライアント コンピューターには、最新版の [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) をインストールしておく必要があります。
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>VPN ゲートウェイを仮想ネットワークに接続する
 

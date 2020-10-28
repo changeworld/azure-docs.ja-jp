@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 12c2652b4dcef46c5affde2c3fb9ef9288176eb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852261"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783302"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -31,15 +31,15 @@ Python 用 Azure Queue storage クライアント ライブラリ v12 を使用�
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-storage-queue/index)
+* [API リファレンス ドキュメント](/python/api/azure-storage-queue/index)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
 * [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [サンプル](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
 * [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
 
 ## <a name="setting-up"></a>設定
@@ -111,9 +111,9 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 これらのリソースとやり取りするには、以下の Python クラスを使用します。
 
-* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
-* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
-* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` クラスは、キューの [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) を呼び出したときに返される個々のオブジェクトを表します。
+* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
+* [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
+* [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` クラスは、キューの [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) を呼び出したときに返される個々のオブジェクトを表します。
 
 ## <a name="code-examples"></a>コード例
 
@@ -149,9 +149,9 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 新しいキューの名前を決定します。 次のコードでは、確実に一意になるように、キュー名に UUID 値を追加します。
 
 > [!IMPORTANT]
-> キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
+> キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
 
-[QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) クラスのインスタンスを作成します。 次に、[create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) メソッドを呼び出して、ストレージ アカウント内にキューを作成します。
+[QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient) クラスのインスタンスを作成します。 次に、[create_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) メソッドを呼び出して、ストレージ アカウント内にキューを作成します。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
@@ -171,7 +171,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 ### <a name="add-messages-to-a-queue"></a>メッセージをキューに追加する
 
-次のコード スニペットでは、[send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) メソッドを呼び出してキューにメッセージを追加します。 また、3 番目の `send_message` 呼び出しでは、返された [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) を保存します。 `saved_message` は、後でプログラムの中でメッセージの内容を更新する際に使用します。
+次のコード スニペットでは、[send_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) メソッドを呼び出してキューにメッセージを追加します。 また、3 番目の `send_message` 呼び出しでは、返された [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage) を保存します。 `saved_message` は、後でプログラムの中でメッセージの内容を更新する際に使用します。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
@@ -186,7 +186,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 ### <a name="peek-at-messages-in-a-queue"></a>キュー内のメッセージを表示する
 
-キュー内のメッセージを表示するには、[peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) メソッドを呼び出します。 `peek_messages` メソッドは、キューの先頭からメッセージを 1 つ以上取得しますが、メッセージの可視性は変更しません。
+キュー内のメッセージを表示するには、[peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) メソッドを呼び出します。 `peek_messages` メソッドは、キューの先頭からメッセージを 1 つ以上取得しますが、メッセージの可視性は変更しません。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
@@ -203,7 +203,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 ### <a name="update-a-message-in-a-queue"></a>キュー内のメッセージを更新する
 
-メッセージの内容を更新するには、[update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) メソッドを呼び出します。 メッセージの表示タイムアウトと内容は、`update_message` メソッドで変更できます。 メッセージの内容には UTF-8 でエンコードされた文字列を指定してください。最大サイズは 64 KB です。 先ほどこのコードの中で保存したメッセージの値を、新しい内容と共に渡します。 `saved_message` の値によって、更新するメッセージが識別されます。
+メッセージの内容を更新するには、[update_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) メソッドを呼び出します。 メッセージの表示タイムアウトと内容は、`update_message` メソッドで変更できます。 メッセージの内容には UTF-8 でエンコードされた文字列を指定してください。最大サイズは 64 KB です。 先ほどこのコードの中で保存したメッセージの値を、新しい内容と共に渡します。 `saved_message` の値によって、更新するメッセージが識別されます。
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -215,7 +215,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 ### <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 
-[receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) メソッドを呼び出して、先ほど追加したメッセージをダウンロードします。
+[receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) メソッドを呼び出して、先ほど追加したメッセージをダウンロードします。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
@@ -249,7 +249,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 ### <a name="delete-a-queue"></a>キューを削除する
 
-次のコードでは、[delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) メソッドを使用してキューを削除することにより、アプリによって作成されたリソースがクリーンアップされます。
+次のコードでは、[delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) メソッドを使用してキューを削除することにより、アプリによって作成されたリソースがクリーンアップされます。
 
 `try` ブロックの末尾に次のコードを追加してファイルを保存します。
 
@@ -268,7 +268,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 このアプリは、3 つのメッセージを作成して Azure のキューに追加します。 コードでは、キュー内のメッセージを一覧表示した後にそれらを取得して削除してから、最後にキューを削除します。
 
-コンソール ウィンドウで、*queues-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
+コンソール ウィンドウで、 *queues-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
 
 ```console
 python queues-quickstart-v12.py
@@ -314,7 +314,7 @@ Done
 チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Python 開発者向けの Azure](https://docs.microsoft.com/azure/python/)
+> [Python 開発者向けの Azure](/azure/python/)
 
 * 詳細については、「[Python 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)」を参照してください。
 * その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 Python クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples) ページを参照してください。

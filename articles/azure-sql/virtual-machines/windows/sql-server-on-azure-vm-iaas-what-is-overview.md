@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272159"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793094"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,9 @@ ms.locfileid: "91272159"
 
 [Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) では、オンプレミスのハードウェアを一切管理することなく全バージョンの SQL Server をクラウドで利用することができます。 また、SQL Server 仮想マシン (VM) によって従量課金制のライセンス コストが単純化されます。
 
-Azure 仮想マシンは、世界中のさまざまな[リージョン](https://azure.microsoft.com/regions/)で実行されます。 また、[マシンのサイズ](../../../virtual-machines/windows/sizes.md)も各種用意されています。 適切なバージョン、エディション、オペレーティング システムの SQL Server VM を仮想マシン イメージ ギャラリーで作成することができます。 これにより、仮想マシンは、多くの異なる SQL Server ワークロードに適した選択肢となります。
+Azure 仮想マシンは、世界中のさまざまな[リージョン](https://azure.microsoft.com/regions/)で実行されます。 また、[マシンのサイズ](../../../virtual-machines/sizes.md)も各種用意されています。 適切なバージョン、エディション、オペレーティング システムの SQL Server VM を仮想マシン イメージ ギャラリーで作成することができます。 これにより、仮想マシンは、多くの異なる SQL Server ワークロードに適した選択肢となります。
 
-SQL Server on Azure VM を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*SQL Server on Azure VM の概要*" に関するビデオをご覧ください。
+SQL Server on Azure VM を初めて使用する場合は、 [Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の " *SQL Server on Azure VM の概要* " に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>自動化された更新
@@ -42,7 +42,7 @@ Azure Virtual Machines 上の SQL Server では、[自動修正](automated-patch
 
 Azure Virtual Machines 上の SQL Server では、[自動バックアップ](automated-backup.md)を活用できます。これにより、データベースのバックアップが BLOB ストレージに定期的に作成されます。 また、この手法は手動で使用できます。 詳細については、「[Azure Storage を使用した SQL Server のバックアップと復元](azure-storage-sql-server-backup-restore-use.md)」を参照してください。
 
-Azure では、Azure VM で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ ソリューションも提供されています。 それはフル マネージド バックアップ ソリューションであり、Always On 可用性グループ、長期保有、特定の時点に復旧、一元的な管理と監視がサポートされています。 詳細については、[Azure VM での SQL Server に対する Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-sql-database) に関する記事をご覧ください。
+Azure では、Azure VM で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ ソリューションも提供されています。 それはフル マネージド バックアップ ソリューションであり、Always On 可用性グループ、長期保有、特定の時点に復旧、一元的な管理と監視がサポートされています。 詳細については、[Azure VM での SQL Server に対する Azure Backup](../../../backup/backup-azure-sql-database.md) に関する記事をご覧ください。
   
 
 ## <a name="high-availability"></a>高可用性
@@ -132,10 +132,10 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 - [SQL Server 仮想マシンを作成する](sql-vm-create-portal-quickstart.md)
 
 ## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM イメージの更新ポリシー
-Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](frequently-asked-questions-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、 [SQL Server VM の FAQ](frequently-asked-questions-faq.md#images) に関するページの「 **イメージ** 」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
-既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://docs.microsoft.com/sql/sql-server/sql-server-privacy)」を参照してください。
+既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](/sql/sql-server/sql-server-privacy)」を参照してください。
 
 ## <a name="related-products-and-services"></a>関連製品およびサービス
 ### <a name="windows-virtual-machines"></a>Windows Virtual Machines
@@ -150,7 +150,7 @@ Azure に保持される仮想マシン イメージは、サポートされる�
 * [Azure Portal での完全修飾ドメイン名の作成](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [SQL Server のドキュメント](https://docs.microsoft.com/sql/index)
+* [SQL Server のドキュメント](/sql/index)
 * [Azure SQL Database の比較](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
@@ -165,5 +165,5 @@ SQL Server VM についてよく寄せられる質問とその回答:
 
 IaaS の SQL Server で N 層アプリケーションを実行するための参照アーキテクチャを表示する
 
-* [SQL Server を使用した Azure の Windows N 層アプリケーション](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [SQL Server を使用した Azure の Windows N 層アプリケーション](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

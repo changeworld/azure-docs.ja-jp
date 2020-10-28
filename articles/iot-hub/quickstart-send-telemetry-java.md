@@ -14,13 +14,14 @@ ms.custom:
 - seo-java-september2019
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 05/26/2020
-ms.openlocfilehash: 53f20f5f909e8b24ba7279dabfb421053d5c5449
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 663c79ffb5f5ca9cca8e1df77fc2ccd73d9e4bac
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748593"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>クイック スタート:Azure IoT Hub にテレメトリを送信して Java アプリケーションで読み取る
 
@@ -32,7 +33,7 @@ ms.locfileid: "92150639"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](/java/azure/jdk/?view=azure-java-stable)」の「**長期サポート**」で「**Java 8**」を選択します。
+* Java SE Development Kit 8。 「 [Azure および Azure Stack の Java 長期サポート](/java/azure/jdk/?view=azure-java-stable)」の「 **長期サポート** 」で「 **Java 8** 」を選択します。
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
@@ -74,17 +75,17 @@ az extension add --name azure-iot
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+   **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
-   **MyJavaDevice**: これは、登録するデバイスの名前です。 示されているように、**MyJavaDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyJavaDevice** : これは、登録するデバイスの名前です。 示されているように、 **MyJavaDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
-2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの " _デバイス接続文字列_ " を取得します。
 
-    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+    **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -96,9 +97,9 @@ az extension add --name azure-iot
 
     この値は、このクイックスタートの後の方で使用します。
 
-3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
+3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの " _Event Hubs 互換エンドポイント_ "、" _Event Hubs 互換パス_ "、および " _サービス主キー_ " も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
-     **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+     **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}

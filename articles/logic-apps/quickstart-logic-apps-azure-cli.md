@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499553"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747171"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してロジック アプリを作成し、管理する
 
 このクイックスタートでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`) を使用してロジック アプリを作成し、管理する方法について説明します。 ロジック アプリ ワークフロー定義用の JSON ファイルを使用して、コマンド ラインからロジック アプリを作成することができます。 その後、コマンド ラインから、`list`、`show` (`get`)、`update`、`delete` などの操作を実行してロジック アプリを管理できます。
 
 > [!WARNING]
-> Azure CLI Logic Apps 拡張機能は、現在、"*試験段階*" であり、"*カスタマーサポートの対象外*" です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
+> Azure CLI Logic Apps 拡張機能は、現在、" *試験段階* " であり、" *カスタマーサポートの対象外* " です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,7 +61,7 @@ az group create --name testResourceGroup --location westus
 
 ## <a name="workflow-definition"></a>ワークフロー定義
 
-Azure CLI を使用して、[新しいロジック アプリを作成する](#create-logic-apps-from-cli)か、または[既存のロジック アプリを更新する](#update-logic-apps-from-cli)前に、ロジック アプリのワークフロー定義が必要です。 Azure portal で、**デザイナー** ビューから**コード ビュー**に切り替えると、ロジック アプリの基になるワークフロー定義を JSON 形式で表示できます。
+Azure CLI を使用して、[新しいロジック アプリを作成する](#create-logic-apps-from-cli)か、または[既存のロジック アプリを更新する](#update-logic-apps-from-cli)前に、ロジック アプリのワークフロー定義が必要です。 Azure portal で、 **デザイナー** ビューから **コード ビュー** に切り替えると、ロジック アプリの基になるワークフロー定義を JSON 形式で表示できます。
 
 コマンドを実行してロジック アプリを作成または更新する場合、ワークフロー定義は必須パラメーター (`--definition`) としてアップロードされます。 ワークフロー定義は、[ワークフロー定義言語のスキーマ](./logic-apps-workflow-definition-language.md)に従う JSON ファイルとして作成する必要があります。
 

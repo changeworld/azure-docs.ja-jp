@@ -9,20 +9,20 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 088300d4b6f92886310315b67763536e39cbb019
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319471"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789524"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対する Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Private Link を使用すると、**プライベート エンドポイント**を経由して Azure 内のさまざまな PaaS サービスに接続できます。 Private Link 機能をサポートしている PaaS サービスの一覧については、「[Private Link のドキュメント](../../private-link/index.yml)」ページを参照してください。 プライベート エンドポイントは、特定の [VNet](../../virtual-network/virtual-networks-overview.md) およびサブネット内のプライベート IP アドレスです。
+Private Link を使用すると、 **プライベート エンドポイント** を経由して Azure 内のさまざまな PaaS サービスに接続できます。 Private Link 機能をサポートしている PaaS サービスの一覧については、「[Private Link のドキュメント](../../private-link/index.yml)」ページを参照してください。 プライベート エンドポイントは、特定の [VNet](../../virtual-network/virtual-networks-overview.md) およびサブネット内のプライベート IP アドレスです。
 
 > [!IMPORTANT]
-> この記事は、Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。 この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。
+> この記事は、Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。 この記事は、 **Azure SQL Managed Instance** には適用され " *ません* "。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL Database に Private Link を設定する方法 
 
@@ -75,7 +75,7 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 
 ### <a name="check-connectivity-using-telnet"></a>Telnet を使用して接続を確認する
 
-[Telnet クライアント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)は、接続をテストするために使用できる Windows の機能です。 Windows OS のバージョンによっては、この機能を明示的に有効にする必要がある場合があります。 
+[Telnet クライアント](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)は、接続をテストするために使用できる Windows の機能です。 Windows OS のバージョンによっては、この機能を明示的に有効にする必要がある場合があります。 
 
 Telnet をインストールした後で、コマンド プロンプト ウィンドウを開きます。 Telnet コマンドを実行し、SQL Database 内のデータベースの IP アドレスとプライベート エンドポイントを指定します。
 
@@ -130,7 +130,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して接続を確認する
 > [!NOTE]
-> クライアント (`<server>.database.windows.net`) の接続文字列で、サーバーの**完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接、またはプライベート リンクの FQDN (`<server>.privatelink.database.windows.net`) を使用してログインを試みると、失敗します。 この動作は仕様によるものです。トラフィックは、プライベート エンドポイントによってリージョン内の SQL Gateway にルーティングされ、ログインに成功するためには、正しい FQDN を指定する必要があるためです。
+> クライアント (`<server>.database.windows.net`) の接続文字列で、サーバーの **完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接、またはプライベート リンクの FQDN (`<server>.privatelink.database.windows.net`) を使用してログインを試みると、失敗します。 この動作は仕様によるものです。トラフィックは、プライベート エンドポイントによってリージョン内の SQL Gateway にルーティングされ、ログインに成功するためには、正しい FQDN を指定する必要があるためです。
 
 ここに示す手順に従い、[SSMS を使用して SQL データベースに接続します](connect-query-ssms.md)。 SSMS を使用して SQL Database に接続したら、次のクエリを実行して、Azure VM のプライベート IP アドレスから接続していることを確認します。
 
@@ -149,14 +149,14 @@ SQL Database 内のデータベースに接続している Azure 仮想マシン
 1. VM のプライベート IP アドレスを使用して、SQL Database 内のデータベースへのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](vnet-service-endpoint-rule-overview.md)と[仮想ネットワークのファイアウォール規則](firewall-configure.md)に関する記事を参照してください。
 1. Azure VM で、次のように[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/manage-network-security-group.md) とサービス タグを使用して、送信接続の範囲を絞り込みます。
     - 米国西部にある SQL Database への接続のみを許可するように、サービス タグへのトラフィックを許可する NSG ルールを指定します (Service Tag = SQL.WestUs)
-    - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを (**高い優先度**で) 指定します (Service Tag = SQL)
+    - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを ( **高い優先度** で) 指定します (Service Tag = SQL)
 
 この設定が終了すると、Azure VM は米国西部リージョンにある SQL Database 内のデータベースにのみ接続できます。 ただし、接続は SQL Database 内の 1 つのデータベースに限定されません。 この VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョンの任意のデータベースに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。
 
 Private Link を使用することで、お客様が NSG のようなネットワーク アクセス制御を設定してプライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (SQL Database 内のデータベースなど) にしかアクセスできず、その他のリソースにはアクセスできません。 
 
 ## <a name="limitations"></a>制限事項 
-プライベート エンドポイントへの接続では、**プロキシ**のみが[接続ポリシー](connectivity-architecture.md#connection-policy)としてサポートされます。
+プライベート エンドポイントへの接続では、 **プロキシ** のみが [接続ポリシー](connectivity-architecture.md#connection-policy)としてサポートされます。
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>ピアリングされた仮想ネットワーク内の Azure VM からの接続 

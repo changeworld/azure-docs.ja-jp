@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939204"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783472"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -34,12 +34,12 @@ ms.locfileid: "91939204"
 * [API リファレンス ドキュメント](/dotnet/api/azure.storage.queues)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [サンプル](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
 * 使用するオペレーティング システム用の最新の [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 ランタイムではなく、必ず SDK を入手してください。
 
 ## <a name="setting-up"></a>設定
@@ -50,7 +50,7 @@ ms.locfileid: "91939204"
 
 *QueuesQuickstartV12* という名前の .NET Core アプリケーションを作成します。
 
-1. コンソール ウィンドウ (cmd、PowerShell、Bash など) 上で、`dotnet new` コマンドを使用し、*QueuesQuickstartV12* という名前の新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*Program.cs*。
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) 上で、`dotnet new` コマンドを使用し、 *QueuesQuickstartV12* という名前の新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。 *Program.cs* 。
 
    ```console
    dotnet new console -n QueuesQuickstartV12
@@ -77,7 +77,7 @@ dotnet add package Azure.Storage.Queues
 1. ご使用のエディターで *Program.cs* ファイルを開きます
 1. `Console.WriteLine("Hello World!");` ステートメントを削除します
 1. `using` ディレクティブを追加します
-1. [非同期コードをサポート](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)するように `Main` メソッドの宣言を更新します
+1. [非同期コードをサポート](/dotnet/csharp/whats-new/csharp-7#async-main)するように `Main` メソッドの宣言を更新します
 
 
 
@@ -334,7 +334,7 @@ Done
 チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [.NET および .NET Core 開発者向けの Azure](https://docs.microsoft.com/dotnet/azure/)
+> [.NET および .NET Core 開発者向けの Azure](/dotnet/azure/)
 
 * 詳細については、「[.NET 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)」を参照してください。
 * その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 .NET クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) ページを参照してください。

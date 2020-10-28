@@ -7,19 +7,19 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-js
-ms.openlocfilehash: 045589d3b1f0e376eaf854562d271a4483702997
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 35713a2e854cf65054d162ce0191bf2dfde4e90b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047898"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786141"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>クイックスタート: JavaScript 用 Azure Key Vault クライアント ライブラリ (v4)
 
 JavaScript 用 Azure Key Vault シークレットクライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
-[API リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API リファレンスのドキュメント](/javascript/api/overview/azure/key-vault-index) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ JavaScript 用 Azure Key Vault シークレットクライアント ライブラ
 このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
 ## <a name="setting-up"></a>設定
-このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)方法に関するページを参照してください。
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/javascript/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 

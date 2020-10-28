@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327509"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895203"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>クイックスタート: Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -50,7 +50,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
     | リソース グループ   | **[CreatePrivateEndpointQS-rg]** を選択します |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「 **myVNet** 」と入力します                                    |
-    | リージョン           | **\<your-web-app-region>** を選びます。 </br> Web アプリがデプロイされているリージョンを選択します。|
+    | リージョン           | **[西ヨーロッパ]** を選択します。|
 
 3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
 
@@ -94,14 +94,14 @@ bastion ホストは、プライベート エンドポイントをテストす�
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | 値                                          |
+    | 設定 | [値]                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
     | リソース グループ | **[CreatePrivateEndpointQS-rg]** を選択します |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「 **myVM** 」と入力します |
-    | リージョン | **\<your-web-app-region>** を選びます。 </br> Web アプリがデプロイされているリージョンを選択します。 |
+    | リージョン | **[西ヨーロッパ]** を選択します。 |
     | 可用性オプション | **[インフラストラクチャ冗長は必要ありません]** を選択します |
     | Image | **[Windows Server 2019 Datacenter - Gen1]** を選択します |
     | Azure Spot インスタンス | **[いいえ]**  を選択します |
@@ -115,7 +115,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -149,7 +149,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
     | Resource group | **[CreatePrivateEndpointQS-rg]** を選択します。 このリソース グループは、前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
     | 名前  | 「 **myPrivateEndpoint** 」と入力します。 |
-    | リージョン | **\<your-web-app-region>** を選びます。 </br> Web アプリがデプロイされているリージョンを選択します。 |
+    | リージョン | **[西ヨーロッパ]** を選択します。 |
 
 6. **[リソース]** タブを選択するか、ページ下部の **[次へ: リソース]** ボタンを選択します。
     

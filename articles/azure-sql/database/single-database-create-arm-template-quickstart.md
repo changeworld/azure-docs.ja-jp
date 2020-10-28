@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: d53f854bc3513a97398a92ee16c34a0a74650687
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e56d6558b3a80707a9f845740980f8ebbc87e35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91614055"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791496"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Database で単一データベースを作成する
 
@@ -85,7 +85,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 - オンプレミスまたはリモート ツールから単一データベースに接続するために、サーバー レベルのファイアウォール規則を作成します。 詳細については、「[サーバーレベルのファイアウォール規則を作成する](firewall-create-server-level-portal-quickstart.md)」を参照してください。
 - サーバーレベルのファイアウォール規則を作成した後に、いくつかの異なるツールと言語を使用して、データベースに[接続し、クエリを実行](connect-query-content-reference-guide.md)します。
   - [SQL Server Management Studio を使用して接続およびクエリを実行する](connect-query-ssms.md)
-  - [Azure Data Studio を使用して接続およびクエリを実行する](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+  - [Azure Data Studio を使用して接続およびクエリを実行する](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)
 - Azure CLI を使用して単一データベースを作成するには、「[Azure CLI のサンプル](az-cli-script-samples-content-guide.md)」をご覧ください。
 - Azure PowerShell を使用して単一データベースを作成するには、「[Azure PowerShell サンプル](powershell-script-content-guide.md)」をご覧ください。
 - ARM テンプレートを作成する方法については、[初めてのテンプレートの作成](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)に関するページをご覧ください。

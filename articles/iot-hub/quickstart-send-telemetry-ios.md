@@ -10,13 +10,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- devx-track-azurecli
 ms.date: 04/03/2019
-ms.openlocfilehash: c5df389d9bb22fca72f2ff3b65c417f592208d58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 728218959c385c768804f8890157a8b2ec794170
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87061565"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748610"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート:デバイスから IoT ハブへのテレメトリの送信 (iOS)
 
@@ -59,17 +60,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+   **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
-   **myiOSdevice**: これは、登録するデバイスの名前です。 示されているように、**myiOSdevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **myiOSdevice** : これは、登録するデバイスの名前です。 示されているように、 **myiOSdevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
    ```azurecli-interactive
    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
 
-1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの " _デバイス接続文字列_ " を取得します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+   **YourIoTHubName** : このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
@@ -95,7 +96,7 @@ CocoaPods は、サードパーティ製のライブラリを使用する iOS �
 cd quickstart/sample-device
 ```
 
-XCode が終了していることを確認し、次のコマンドを実行して、**podfile** ファイルで宣言されている CocoaPods をインストールします。
+XCode が終了していることを確認し、次のコマンドを実行して、 **podfile** ファイルで宣言されている CocoaPods をインストールします。
 
 ```sh
 pod install

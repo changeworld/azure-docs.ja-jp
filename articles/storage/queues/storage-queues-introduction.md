@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1ec251edf384e8032a67dc66982787d17c75dbd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87826502"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781466"
 ---
 # <a name="what-are-azure-queues"></a>Azure キューとは
 
@@ -35,11 +35,11 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 * **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。
 
-* **キュー:** キューは、メッセージのセットを格納します。 キュー名は小文字で指定する**必要があります**。 キューの名前付け規則については、「 [Naming Queues and Metadata (キューとメタデータの名前付け規則)](https://msdn.microsoft.com/library/azure/dd179349.aspx)」を参照してください。
+* **キュー:** キューは、メッセージのセットを格納します。 キュー名は小文字で指定する **必要があります** 。 キューの名前付け規則については、「 [Naming Queues and Metadata (キューとメタデータの名前付け規則)](/rest/api/storageservices/Naming-Queues-and-Metadata)」を参照してください。
 
 * **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。 バージョン 2017-07-29 より前では、許可される最大有効期間は 7 日間です。 バージョン 2017-07-29 以降では、最大有効期間を任意の正の数にすることができます。また、-1 は、メッセージが期限切れにならないことを示します。 このパラメーターを省略すると、既定の有効期間は 7 日になります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ストレージ アカウントの作成](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [ストレージ アカウントの作成](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)
 * [.NET を使用するキューの概要](storage-dotnet-how-to-use-queues.md)

@@ -7,13 +7,13 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 91e4e7de73d820c345b2973896d07d3479e49f9e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297149"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748097"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 
@@ -113,7 +113,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
    ```
 
-4. IoT ハブを作成するために、**resources** コレクションに次の行を追加します。 この JSON では、IoT ハブを作成するために最低限必要なプロパティを指定しています。 **name** と **location** の値は、別のファイルからパラメーターとして渡されます。 テンプレート内の IoT ハブに指定できるプロパティの詳細については、[Microsoft.Devices/IotHubs テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)に関する記事を参照してください。
+4. IoT ハブを作成するために、 **resources** コレクションに次の行を追加します。 この JSON では、IoT ハブを作成するために最低限必要なプロパティを指定しています。 **name** と **location** の値は、別のファイルからパラメーターとして渡されます。 テンプレート内の IoT ハブに指定できるプロパティの詳細については、[Microsoft.Devices/IotHubs テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)に関する記事を参照してください。
 
    ```json
         {
@@ -133,9 +133,9 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
    ``` 
 
-5. プロビジョニング サービスを作成するために、**resources** コレクションで IoT ハブの詳細が書かれた場所よりも下に次の行を追加します。 プロビジョニング サービスの **name** と **location** は、パラメーターとして渡されます。 **iotHubs** コレクションには、プロビジョニング サービスにリンクさせる IoT ハブを指定します。 リンクさせる IoT ハブのそれぞれには、少なくとも **connectionString** と **location** の 2 つのプロパティを指定する必要があります。 このほか、各 IoT ハブには **allocationWeight**、**applyAllocationPolicy** などのプロパティ、プロビジョニング サービスそのものには **allocationPolicy**、**authorizationPolicies** などのプロパティを、それぞれ設定できます。 詳細については、「[Microsoft.Devices/provisioningServices template reference (Microsoft.Devices/provisioningServices のテンプレート リファレンス)](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)」を参照してください。
+5. プロビジョニング サービスを作成するために、 **resources** コレクションで IoT ハブの詳細が書かれた場所よりも下に次の行を追加します。 プロビジョニング サービスの **name** と **location** は、パラメーターとして渡されます。 **iotHubs** コレクションには、プロビジョニング サービスにリンクさせる IoT ハブを指定します。 リンクさせる IoT ハブのそれぞれには、少なくとも **connectionString** と **location** の 2 つのプロパティを指定する必要があります。 このほか、各 IoT ハブには **allocationWeight** 、 **applyAllocationPolicy** などのプロパティ、プロビジョニング サービスそのものには **allocationPolicy** 、 **authorizationPolicies** などのプロパティを、それぞれ設定できます。 詳細については、「[Microsoft.Devices/provisioningServices template reference (Microsoft.Devices/provisioningServices のテンプレート リファレンス)](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)」を参照してください。
 
-   **dependsOn** プロパティを使用しているのは、Resource Manager がプロビジョニング サービスよりも先に IoT ハブを作成するようにするためです。 このテンプレートでは IoT ハブからプロビジョニング サービスへのリンクを指定するにあたって IoT ハブの接続文字列が必要なので、ハブとそのキーを最初に作成する必要があります。 テンプレートでは **concat**、**listKeys** などの関数を使用して、パラメーター化された変数から接続文字列を作成します。 詳細は、「[Azure Resource Manager テンプレートの関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)」を参照してください。
+   **dependsOn** プロパティを使用しているのは、Resource Manager がプロビジョニング サービスよりも先に IoT ハブを作成するようにするためです。 このテンプレートでは IoT ハブからプロビジョニング サービスへのリンクを指定するにあたって IoT ハブの接続文字列が必要なので、ハブとそのキーを最初に作成する必要があります。 テンプレートでは **concat** 、 **listKeys** などの関数を使用して、パラメーター化された変数から接続文字列を作成します。 詳細は、「[Azure Resource Manager テンプレートの関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)」を参照してください。
 
    ```json
         {

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ad26cba30986ee9a5f642755840ad5ec281219aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1446b501b9d91c94c12c82755d0e31f361f8cd8f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320287"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783421"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -31,15 +31,15 @@ JavaScript 用 Azure Queue storage クライアント ライブラリ v12 を使
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)
+* [API リファレンス ドキュメント](/javascript/api/@azure/storage-queue/)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
 * [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-queue)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [サンプル](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
 * 使用するオペレーティング システム用の最新の [Node.js](https://nodejs.org/en/download/)。
 
 ## <a name="setting-up"></a>設定
@@ -93,7 +93,7 @@ JavaScript 用 Azure Queue storage クライアント ライブラリ v12 を使
 npm install
 ```
 
- このコマンドにより、*package.json* ファイルが読み取られ、JavaScript パッケージ用 Azure Queue storage クライアント ライブラリ v12 と、それが依存しているすべてのライブラリがインストールされます。
+ このコマンドにより、 *package.json* ファイルが読み取られ、JavaScript パッケージ用 Azure Queue storage クライアント ライブラリ v12 と、それが依存しているすべてのライブラリがインストールされます。
 
 ### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
@@ -136,9 +136,9 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 これらのリソースとやり取りするには、以下の JavaScript クラスを使用します。
 
-* [QueueServiceClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
-* [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
-* [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` クラスは、キューの [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) を呼び出したときに返される個々のオブジェクトを表します。
+* [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
+* [QueueClient](/javascript/api/@azure/storage-queue/queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
+* [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` クラスは、キューの [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) を呼び出したときに返される個々のオブジェクトを表します。
 
 ## <a name="code-examples"></a>コード例
 
@@ -174,9 +174,9 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 新しいキューの名前を決定します。 次のコードでは、確実に一意になるように、キュー名に UUID 値を追加します。
 
 > [!IMPORTANT]
-> キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
+> キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
 
-[QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient) クラスのインスタンスを作成します。 次に、[create](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) メソッドを呼び出して、ストレージ アカウントにキューを作成します。
+[QueueClient](/javascript/api/@azure/storage-queue/queueclient) クラスのインスタンスを作成します。 次に、[create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) メソッドを呼び出して、ストレージ アカウントにキューを作成します。
 
 `main` 関数の末尾に次のコードを追加します。
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>メッセージをキューに追加する
 
-以下のコード スニペットでは、[sendMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) メソッドを呼び出してキューにメッセージを追加します。 また、3 番目の `sendMessage` 呼び出しでは、返された [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage) を保存します。 返された `sendMessageResponse` は、後でプログラムの中でメッセージの内容を更新する際に使用します。
+以下のコード スニペットでは、[sendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) メソッドを呼び出してキューにメッセージを追加します。 また、3 番目の `sendMessage` 呼び出しでは、返された [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage) を保存します。 返された `sendMessageResponse` は、後でプログラムの中でメッセージの内容を更新する際に使用します。
 
 `main` 関数の末尾に次のコードを追加します。
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>キュー内のメッセージを表示する
 
-キュー内のメッセージを表示するには、[peekMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) メソッドを呼び出します。 `peekMessages` メソッドは、キューの先頭からメッセージを 1 つ以上取得しますが、メッセージの可視性は変更しません。
+キュー内のメッセージを表示するには、[peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) メソッドを呼び出します。 `peekMessages` メソッドは、キューの先頭からメッセージを 1 つ以上取得しますが、メッセージの可視性は変更しません。
 
 `main` 関数の末尾に次のコードを追加します。
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>キュー内のメッセージを更新する
 
-メッセージの内容を更新するには、[updateMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) メソッドを呼び出します。 メッセージの表示タイムアウトと内容は、`updateMessage` メソッドで変更できます。 メッセージの内容には UTF-8 でエンコードされた文字列を指定してください。最大サイズは 64 KB です。 先ほどこのコードの中で保存した応答の `messageId` と `popReceipt` を、新しい内容と共に渡します。 `sendMessageResponse` プロパティによって、更新するメッセージが識別されます。
+メッセージの内容を更新するには、[updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) メソッドを呼び出します。 メッセージの表示タイムアウトと内容は、`updateMessage` メソッドで変更できます。 メッセージの内容には UTF-8 でエンコードされた文字列を指定してください。最大サイズは 64 KB です。 先ほどこのコードの中で保存した応答の `messageId` と `popReceipt` を、新しい内容と共に渡します。 `sendMessageResponse` プロパティによって、更新するメッセージが識別されます。
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 
-[receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) メソッドを呼び出して、先ほど追加したメッセージをダウンロードします。  `numberOfMessages` フィールドには、この呼び出しで受信する最大メッセージ数を渡します。
+[receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) メソッドを呼び出して、先ほど追加したメッセージをダウンロードします。  `numberOfMessages` フィールドには、この呼び出しで受信する最大メッセージ数を渡します。
 
 `main` 関数の末尾に次のコードを追加します。
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 メッセージは、受信して処理した後にキューから削除します。 ここでの処理は、単にメッセージをコンソールに表示するだけです。
 
-[deleteMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) メソッドを呼び出してメッセージを削除します。 明示的に削除されなかったメッセージは、最終的にキューに再表示され、別の機会に処理されることになります。
+[deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) メソッドを呼び出してメッセージを削除します。 明示的に削除されなかったメッセージは、最終的にキューに再表示され、別の機会に処理されることになります。
 
 `main` 関数の末尾に次のコードを追加します。
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>キューを削除する
 
-次のコードでは、[delete](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) メソッドを使用してキューを削除することにより、アプリによって作成されたリソースがクリーンアップされます。
+次のコードでは、[delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) メソッドを使用してキューを削除することにより、アプリによって作成されたリソースがクリーンアップされます。
 
 `main` 関数の末尾に次のコードを追加してファイルを保存します。
 
@@ -304,7 +304,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 このアプリは、3 つのメッセージを作成して Azure のキューに追加します。 コードでは、キュー内のメッセージを一覧表示した後にそれらを取得して削除してから、最後にキューを削除します。
 
-コンソール ウィンドウで、*queues-quickstart-v12.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
+コンソール ウィンドウで、 *queues-quickstart-v12.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
 
 ```console
 node queues-quickstart-v12.js
@@ -354,7 +354,7 @@ Done
 チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript のドキュメント](https://docs.microsoft.com/azure/developer/javascript/)
+> [Azure for JavaScript のドキュメント](/azure/developer/javascript/)
 
 * 詳細については、[JavaScript 用 Azure Storage キュー クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)に関するページを参照してください。
 * その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples) ページを参照してください。

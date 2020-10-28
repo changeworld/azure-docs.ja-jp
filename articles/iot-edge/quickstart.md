@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 7b732537d5b0ba517c5d638381c07f229c500081
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1c4ac7d36b568f68c67a99d078fd65515bbb21b0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107795"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747722"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>クイック スタート:初めての IoT Edge モジュールを仮想 Windows デバイスにデプロイする
 

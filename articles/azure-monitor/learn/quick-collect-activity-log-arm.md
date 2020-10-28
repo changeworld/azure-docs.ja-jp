@@ -3,16 +3,16 @@ title: Azure Resource Manager テンプレートを使用して Azure アクテ�
 description: ARM テンプレートを使用して Log Analytics ワークスペースと診断設定を作成し、アクティビティ ログを Azure Monitor ログに送信します。
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631853"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747037"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 
@@ -134,7 +134,7 @@ ms.locfileid: "91631853"
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ**、**workspaceName**、**location** のサンプルの値を、ご利用の環境に適した値に置き換えます。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
+CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ** 、 **workspaceName** 、 **location** のサンプルの値を、ご利用の環境に適した値に置き換えます。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -160,7 +160,7 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 
 ### <a name="validate-the-deployment"></a>デプロイの検証
 
-次のコマンドのいずれかを使用して、ワークスペースが作成されたことを確認します。 **リソース グループ**と **workspaceName** のサンプルの値を、先ほど使用した値に置き換えます。
+次のコマンドのいずれかを使用して、ワークスペースが作成されたことを確認します。 **リソース グループ** と **workspaceName** のサンプルの値を、先ほど使用した値に置き換えます。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -248,7 +248,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ**、**workspaceName**、**location** のサンプルの値を、ご利用の環境に適した値に置き換えます。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
+CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ** 、 **workspaceName** 、 **location** のサンプルの値を、ご利用の環境に適した値に置き換えます。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -281,7 +281,7 @@ az monitor diagnostic-settings show --resource '/subscriptions/00000000-0000-000
 
 ## <a name="retrieve-data-with-a-log-query"></a>ログ クエリを使用したデータの取得
 
-Log Analytics を使用してワークスペースからデータを取得するには、Azure portal を使用します。 Azure portal で、**モニター**を検索して選択します。
+Log Analytics を使用してワークスペースからデータを取得するには、Azure portal を使用します。 Azure portal で、 **モニター** を検索して選択します。
 
 ![Azure portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
@@ -289,7 +289,7 @@ Log Analytics を使用してワークスペースからデータを取得する
 
 ![Log Analytics のスコープ](media/quick-collect-activity-log/log-analytics-scope.png)
 
-クエリ ウィンドウで「`AzureActivity`」と入力し、 **[実行]** をクリックします。 これは、*AzureActivity* テーブル内のすべてのレコードが返される単純なクエリです。アクティビティ ログから送信されたすべてのレコードが含まれます。
+クエリ ウィンドウで「`AzureActivity`」と入力し、 **[実行]** をクリックします。 これは、 *AzureActivity* テーブル内のすべてのレコードが返される単純なクエリです。アクティビティ ログから送信されたすべてのレコードが含まれます。
 
 ![単純なクエリ](media/quick-collect-activity-log/query-01.png)
 

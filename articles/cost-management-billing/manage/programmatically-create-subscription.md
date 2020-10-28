@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28397d36a611f26544fefb9f4fa7593a0fdf3f73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014530"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748173"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure サブスクリプションを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "92014530"
 
 アカウント所有者に関連付けられた登録アカウントに追加されると、アカウントと登録の関係を使用してサブスクリプション料金の請求先が決定されます。 このアカウント内で作成されたすべてのサブスクリプションは、アカウントが含まれる EA 登録に課金されます。 サブスクリプションを作成するには、サブスクリプションを所有するための登録アカウントおよびユーザー プリンシパルに関する値を受け渡す必要があります。
 
-次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の*ホーム ディレクトリ*にログインしている必要があります。
+次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の *ホーム ディレクトリ* にログインしている必要があります。
 
 ### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
 
@@ -183,7 +183,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 `New-AzSubscriptionAlias` コマンドレットを含む最新バージョンのモジュールをインストールするには、`Install-Module Az.Subscription` を実行します。 PowerShellGet の最新バージョンをインストールするには、[PowerShellGet モジュールの取得](/powershell/scripting/gallery/installing-psget)に関するページを参照してください。
 
-課金スコープ `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"` を使用して、次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) コマンドを実行します。 
+課金スコープ `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"` を使用して、次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) コマンドを実行します。 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
@@ -400,7 +400,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>請求書セクションのサブスクリプションを作成する
 
-次の例では、*Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
+次の例では、 *Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
 
 ### <a name="rest"></a>[REST](#tab/rest-MCA)
 
@@ -463,7 +463,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 `New-AzSubscriptionAlias` コマンドレットを含む最新バージョンのモジュールをインストールするには、`Install-Module Az.Subscription` を実行します。 PowerShellGet の最新バージョンをインストールするには、[PowerShellGet モジュールの取得](/powershell/scripting/gallery/installing-psget)に関するページを参照してください。
 
-次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) コマンドと課金スコープ `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` を実行します。 
+次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) コマンドと課金スコープ `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` を実行します。 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
@@ -678,7 +678,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-a-customer"></a>顧客のサブスクリプションを作成する
 
-次の例では、*Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、*Wingtip* リセラーをそのサブスクリプションに関連付けます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx` を使用します。 
+次の例では、 *Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、 *Wingtip* リセラーをそのサブスクリプションに関連付けます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx` を使用します。 
 
 ### <a name="rest"></a>[REST](#tab/rest-MPA)
 
@@ -742,7 +742,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 `New-AzSubscriptionAlias` コマンドレットを含む最新バージョンのモジュールをインストールするには、`Install-Module Az.Subscription` を実行します。 PowerShellGet の最新バージョンをインストールするには、[PowerShellGet モジュールの取得](/powershell/scripting/gallery/installing-psget)に関するページを参照してください。
 
-課金スコープ `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"` を使用して、次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) コマンドを実行します。 
+課金スコープ `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"` を使用して、次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) コマンドを実行します。 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
@@ -958,7 +958,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-and-resource-group-with-a-template"></a>テンプレートを使用してサブスクリプションとリソース グループを作成する
 
-次の ARM テンプレートを使用すると、*Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
+次の ARM テンプレートを使用すると、 *Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
 
 #### <a name="request"></a>Request
 

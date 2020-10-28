@@ -2,18 +2,18 @@
 title: クイックスタート -  Java 用 Azure Key Vault クライアント ライブラリ
 description: Azure SDK クライアント ライブラリのクイックスタートを作成するための形式とコンテンツの基準を示します。
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019632"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786209"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -37,7 +37,7 @@ Java 用 Azure Key Vault シークレット クライアント ライブラリ�
 
 ## <a name="setting-up"></a>設定
 
-このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](https://docs.microsoft.com/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 

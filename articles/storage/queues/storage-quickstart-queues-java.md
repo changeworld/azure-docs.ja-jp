@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90015026"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783438"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -33,14 +33,14 @@ Java 用 Azure Queue storage クライアント ライブラリ v12 を使用す
 * [API リファレンス ドキュメント](/java/api/overview/azure/storage-queue-readme)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [サンプル](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [サンプル](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>設定
 
@@ -50,7 +50,7 @@ Java 用 Azure Queue storage クライアント ライブラリ v12 を使用す
 
 *queues-quickstart-v12* という名前の Java アプリケーションを作成します。
 
-1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven を使用し、*queues-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して "Hello world!" を作成します。 Java プロジェクト。
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven を使用し、 *queues-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して "Hello world!" を作成します。 Java プロジェクト。
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \

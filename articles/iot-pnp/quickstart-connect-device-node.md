@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: e9ab4f2639569537b7c5967235a926c567aca0d5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2342577fdd7e42f4b21d1f47348c39e3ed4a46e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747233"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-nodejs"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Node.js)
 
@@ -73,7 +73,7 @@ _simple_thermostat.js_ ファイルを開きます。 このファイルでは�
 main 関数では、すべてがどのようにまとめられているかを確認できます。
 
 1. 接続文字列からデバイスを作成するか、DPS を使用してデバイスをプロビジョニングします。
-1. IoT プラグ アンド プレイのデバイス モデルを指定するには、**modelID** オプションを使用します。
+1. IoT プラグ アンド プレイのデバイス モデルを指定するには、 **modelID** オプションを使用します。
 1. コマンド ハンドラーを有効にします。
 1. デバイスからハブにテレメトリを送信します。
 1. デバイス ツインを取得し、レポートされたプロパティを更新します。

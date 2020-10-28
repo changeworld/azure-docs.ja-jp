@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: 751e4dbace2b61f53ef9b8d9bef45aa6ce17f9ca
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 7fe5b8da0b6dfa69d04a5ad152aa34a8686d854f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047873"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786107"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -24,14 +24,14 @@ Python 用 Azure Key Vault シークレット クライアント ライブラリ
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Python 2.7 以降または 3.5.3 以降](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 以降または 3.5.3 以降](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
 
 ## <a name="set-up-your-local-environment"></a>ローカル環境を設定する
-このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](https://docs.microsoft.com/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 

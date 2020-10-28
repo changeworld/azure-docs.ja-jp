@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f7b1255553334bfaa75c5c0c96ecd36afa2c27f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be063105db2384f566e7c94d9f2e7a2bd808b15f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293766"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790136"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,9 +27,9 @@ ms.locfileid: "91293766"
 
 Azure Virtual Machines 上の SQL Server では、オンプレミスのハードウェアを一切管理することなく全バージョンの SQL Server をクラウドで利用することができます。 また、SQL Server VM によって従量課金制のライセンス料が単純化されます。
 
-Azure 仮想マシンは、世界中のさまざまな[リージョン](https://azure.microsoft.com/regions/)で実行されます。 また、[マシンのサイズ](../../../virtual-machines/windows/sizes.md)も各種用意されています。 適切なバージョン、エディション、オペレーティング システムの SQL Server VM を仮想マシン イメージ ギャラリーで作成することができます。 さまざまな SQL Server ワークロードに合った最適な仮想マシンを選ぶことができます。 
+Azure 仮想マシンは、世界中のさまざまな[リージョン](https://azure.microsoft.com/regions/)で実行されます。 また、[マシンのサイズ](../../../virtual-machines/sizes.md)も各種用意されています。 適切なバージョン、エディション、オペレーティング システムの SQL Server VM を仮想マシン イメージ ギャラリーで作成することができます。 さまざまな SQL Server ワークロードに合った最適な仮想マシンを選ぶことができます。 
 
-Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure VM の SQL Server の概要*" に関するビデオをご覧ください。
+Azure SQL を初めて使用する場合は、 [Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の " *Azure VM の SQL Server の概要* " に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> SQL Server VM の概要
@@ -55,7 +55,7 @@ Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ]
 
 SQL Server on Linux を構成するときには、データベース エンジン パッケージをインストールしてから、要件に応じてオプションのパッケージをインストールします。 ほとんどのパッケージは、SQL Server の Linux 仮想マシン イメージにより自動でインストールされます。 以下の表は、各ディストリビューションでインストールされているパッケージを示したものです。
 
-| Distribution | [データベース エンジン](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server エージェント](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [フルテキスト検索](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA アドオン](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Distribution | [データベース エンジン](/sql/linux/sql-server-linux-setup) | [ツール](/sql/linux/sql-server-linux-setup-tools) | [SQL Server エージェント](/sql/linux/sql-server-linux-setup-sql-agent) | [フルテキスト検索](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [HA アドオン](/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![RHEL とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
@@ -79,7 +79,7 @@ SQL Server on Linux を構成するときには、データベース エンジ�
 
 ### <a name="sql"></a>SQL
 
-* [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux)
+* [SQL Server on Linux のドキュメント](/sql/linux)
 * [Azure SQL Database の比較](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>次のステップ

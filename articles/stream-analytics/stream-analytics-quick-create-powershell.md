@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 997d74b1afc59e72b2c3fe7a7d47166d5efb8715
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89072980"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746879"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
@@ -78,7 +78,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
     az account set --subscription "<your subscription>"
     ```
 
-2. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、**MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
+2. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、 **MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
 
     ```azurecli
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
@@ -90,7 +90,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
+3. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、 **MyASAIoTDevice** という名前のデバイスを作成します。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -112,7 +112,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 次の Azure PowerShell コード ブロックでは、コマンドを使用して、ジョブの出力に使用される BLOB ストレージを作成します。 コードを理解するためにセクションを確認してください。
 
-1. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) コマンドレットを使用して、標準の汎用ストレージ アカウントを作成します。  この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効) を使用する、**myasaquickstartstorage** と呼ばれるストレージ アカウントを作成します。
+1. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) コマンドレットを使用して、標準の汎用ストレージ アカウントを作成します。  この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効) を使用する、 **myasaquickstartstorage** と呼ばれるストレージ アカウントを作成します。
 
 2. 使用されるストレージ アカウントを定義するストレージ アカウント コンテキスト `$storageAccount.Context` を取得します。 ストレージ アカウントを操作するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。
 

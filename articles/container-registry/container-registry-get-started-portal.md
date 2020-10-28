@@ -3,13 +3,13 @@ title: クイックスタート - ポータルでのレジストリの作成
 description: Azure portal を使用してプライベート Azure コンテナー レジストリを作成する方法について簡単に説明します。
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031810"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746683"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure コンテナー レジストリを作成する
 
@@ -35,7 +35,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 残りの設定は既定値のままにします。 次に、 **[Review + create]\(確認と作成\)** を選択します。 設定を確認したら **[作成]** を選択します。
 
-このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベル (SKU) の詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
+このクイック スタートでは、 *Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベル (SKU) の詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
 
 **"デプロイメントに成功しました"** というメッセージが表示されたら、ポータルでコンテナー レジストリを選択します。 
 
