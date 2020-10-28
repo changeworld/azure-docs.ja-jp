@@ -171,7 +171,7 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -317,16 +317,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Azure CLI の使用
               href: iot-hub-configure-file-upload-cli.md
-        - name: Azure Monitor のメトリック
-          href: iot-hub-metrics.md
-        - name: 診断ログの設定
-          href: iot-hub-monitor-resource-health.md
         - name: X.509 証明書によるハブのセキュリティ保護
           href: iot-hub-security-x509-get-started.md
         - name: IoT ハブのアップグレード
           href: iot-hub-upgrade.md
-        - name: メッセージのトレースを有効にする
-          href: iot-hub-distributed-tracing.md
         - name: IP フィルター処理を構成する
           href: iot-hub-ip-filtering.md
         - name: パブリック ネットワーク アクセスの管理
@@ -339,6 +333,16 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: IoT デバイスの一括インポートとエクスポート
           href: iot-hub-bulk-identity-mgmt.md
+    - name: モニター
+      items:
+        - name: IoT Hub の監視
+          href: monitor-iot-hub.md
+        - name: 監視データのリファレンス
+          href: monitor-iot-hub-reference.md
+        - name: メッセージのトレースを有効にする
+          href: iot-hub-distributed-tracing.md
+        - name: IoT Hub サービスとリソースの正常性
+          href: iot-hub-azure-service-health-integration.md
     - name: 実在のデバイスの使用
       items:
         - name: オンライン シミュレーターの使用

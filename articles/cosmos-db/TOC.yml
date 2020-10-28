@@ -59,13 +59,13 @@
         - name: ロールベースのアクセス制御
           displayName: rbac
           href: role-based-access-control.md
+        - name: Azure Policy のサポート
+          href: policy.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
-        - name: Azure Policy のサポート
-          href: policy.md
     - name: Azure Synapse Link を使用した分析
       items:
         - name: Cosmos DB の Azure Synapse Link
@@ -202,11 +202,14 @@
           href: templates-samples-sql.md
     - name: 概念
       items:
-        - name: モデル ドキュメント データ
-          displayName: document
-          href: modeling-data.md
-        - name: パーティション分割
+        - name: モデル化とパーティション分割
           items:
+            - name: モデル ドキュメント データ
+              displayName: document
+              href: modeling-data.md
+            - name: モデル化とパーティション分割 - 実例
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
             - name: 合成パーティション キー
               href: synthetic-partition-keys.md
         - name: SQL クエリ (SQL query)
@@ -631,13 +634,13 @@
           items:
             - name: プロビジョニング スループット
               items:
-                - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
+                - name: 標準 (手動) スループットのプロビジョニング - コンテナー
                   displayName: 'request units, RUs, RU, collection level'
                   href: how-to-provision-container-throughput.md
-                - name: データベースでの標準 (手動) スループットをプロビジョニングする
+                - name: 標準 (手動) スループットのプロビジョニング - データベース
                   displayName: 'request units, RUs, RU, shared throughput, database level'
                   href: how-to-provision-database-throughput.md
-                - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
+                - name: 自動スケーリングのスループットのプロビジョニング - データベースまたはコンテナー
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
                   href: how-to-provision-autoscale-throughput.md
                 - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
@@ -657,9 +660,6 @@
               href: large-partition-keys.md
             - name: コンテナーの照会
               href: how-to-query-container.md
-            - name: データのモデリングとパーティション分割 - 実際の例
-              displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
             - name: パーティション分割コンテナーへの移行
               href: migrate-containers-partitioned-to-nonpartitioned.md
             - name: Time to Live の構成
@@ -1179,8 +1179,6 @@
       items:
         - name: レスポンス ヘッダー
           href: gremlin-headers.md
-        - name: 制限
-          href: gremlin-limits.md
         - name: REST リソース プロバイダー
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager テンプレート

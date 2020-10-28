@@ -9,6 +9,8 @@
       href: whats-new-docs.md
     - name: Cognitive Services と機械学習
       href: cognitive-services-and-machine-learning.md
+    - name: Cognitive Services の開発オプション
+      href: cognitive-services-development-options.md
     - name: Cognitive Services のカスタム サブドメイン
       href: cognitive-services-custom-subdomains.md
     - name: 言語のサポート

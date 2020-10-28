@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 91e3ff9dc19fdc33699fc6237cb5b6e51dbb9b52
-  ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+  ms.openlocfilehash: 5459129d5d49324839bfe36e2031d5be8d1e0521
+  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/17/2020
-  ms.locfileid: "92148880"
+  ms.lasthandoff: 10/26/2020
+  ms.locfileid: "92545380"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -40,10 +40,10 @@ landingContent:
     links:
     - text: Node.js を使用したデバイス ツインの操作
       url: iot-hub-node-node-twin-getstarted.md
-    - text: IoT メトリックについて
-      url: iot-hub-metrics.md
-    - text: 診断ログ
-      url: iot-hub-monitor-resource-health.md
+    - text: IoT Hub の監視
+      url: monitor-iot-hub.md
+    - text: IoT Hub 監視データのリファレンス
+      url: monitor-iot-hub-reference.md
     - text: IoT との切断に関する監視、診断、およびトラブルシューティング
       url: iot-hub-troubleshoot-connectivity.md
 - title: ソリューションをスケール調整する

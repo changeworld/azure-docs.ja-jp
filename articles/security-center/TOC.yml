@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: Azure PaaS リソースを対象とする機能
           href: features-paas.md
-    - name: Security Center の最新情報
-      displayName: release notes
-      href: release-notes.md
+    - name: 新機能
+      items:
+        - name: リリース ノート
+          displayName: changelog
+          href: release-notes.md
+        - name: 今後予定されている重要な変更
+          displayName: 'release notes, changelog'
+          href: upcoming-changes.md
+        - name: アーカイブされたリリース ノート (6 か月以上前)
+          displayName: changelog
+          href: release-notes-archive.md
     - name: Security Center の基礎
       items:
         - name: Security Center の概要ページ
@@ -217,8 +225,13 @@
         - name: 情報の保護ポリシーをカスタマイズする
           href: security-center-info-protection-policy.md
     - name: コンテナー レジストリ用 Azure Defender を使用する
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
+      items:
+        - name: レジストリ イメージの脆弱性をスキャンする
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: 特定のイメージの脆弱性の検出結果を無効にする (プレビュー)
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
     - name: アラートと推奨事項のエクスポート
       items:
         - name: SIEM、SOAR、または ITSM へのエクスポート
@@ -272,8 +285,6 @@
           href: faq-vms.md
         - name: Azure Log Analytics の既存のユーザー
           href: faq-azure-monitor-logs.md
-    - name: Security Center の最新情報のアーカイブ
-      href: release-notes-archive.md
     - name: Azure ロードマップのブログ
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: エンドポイント保護の評価および推奨事項
