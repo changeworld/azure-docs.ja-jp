@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
 ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92131141"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure のクレジット カードの追加または更新
@@ -41,7 +41,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 次の手順に従って、サブスクリプションの既定のクレジット カードを新しいものに変更できます。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。  
+1. " **コスト管理 + 請求** " を検索します。  
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
 1. クレジット カードを追加するサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。  
@@ -57,7 +57,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 また、次の手順に従って、サブスクリプションの既定のクレジット カードをアカウントに保存済みのものに変更することもできます。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。  
+1. " **コスト管理 + 請求** " を検索します。  
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
 1. クレジット カードを追加するサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。
@@ -71,7 +71,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 クレジット カードを更新しても、番号が元のままである場合は、有効期限など、既存のクレジット カードの詳細情報を更新します。 カードの紛失、盗難、期限切れなどの理由でクレジット カード番号が変更された場合は、[支払い方法としてクレジット カードを追加する](#addcard)セクションの手順に従います。 CVV を更新する必要はありません。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。
+1. " **コスト管理 + 請求** " を検索します。
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
 1. **[支払い方法]** を選択します。
     ![[支払い方法の管理] オプションが選択されているスクリーンショット](./media/change-credit-card/payment-methods-blade-x.png)
@@ -143,7 +143,7 @@ Azure では、バーチャル カードやプリペイド カードはサポー
 
 ### <a name="how-do-i-change-the-tax-id"></a>税 ID を変更する方法を教えてください。
 
-税 ID を追加または更新するには、[Azure portal](https://portal.azure.com) のプロファイルを更新し、 **[納税記録]** を選択します。 この税 ID は、免税の計算に使用され、請求書に表示されます。
+税 ID を追加または更新するには、 [Azure portal](https://portal.azure.com) のプロファイルを更新し、 **[納税記録]** を選択します。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
 ## <a name="check-the-type-of-your-account"></a>アカウントの種類を確認する
 

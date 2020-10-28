@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231269"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742735"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -59,7 +59,7 @@ ms.locfileid: "86231269"
 
    Azure リソースはすべてリソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
-   このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、*streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
+   このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、 *streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus
@@ -71,7 +71,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
 
 次の Azure CLI コード ブロックは、ジョブに必要な入力データを準備するコマンドです。 コードを理解するためにセクションを確認してください。
 
-1. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、**MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
+1. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、 **MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
@@ -83,7 +83,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
+2. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、 **MyASAIoTDevice** という名前のデバイスを作成します。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 978fcb8c8cf9d2ffd929da5b76d7fd2ff109f420
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945135"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535860"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>クイック スタート:Azure portal 内で Azure Database for PostgreSQL - フレキシブル サーバーを作成する
 
@@ -29,7 +29,7 @@ Web ブラウザーを開き、[ポータル](https://portal.azure.com/)に移�
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
 
-Azure Database for PostgreSQL サーバーは、構成済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)内に作成されます。
+Azure Database for PostgreSQL サーバーは、構成済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md)内に作成されます。
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 
@@ -65,7 +65,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="メニューの [Azure Database for PostgreSQL]":::
 
-   既定では、**postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 (その他の既定のデータベースは **azure_maintenance** です。 その機能は、管理されたサービス プロセスをユーザーのアクションから分離することです。 このデータベースにはアクセスできません。)
+   既定では、 **postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 (その他の既定のデータベースは **azure_maintenance** です。 その機能は、管理されたサービス プロセスをユーザーのアクションから分離することです。 このデータベースにはアクセスできません。)
 
     > [!NOTE]
     > Azure Database for PostgreSQL サーバーとの接続では、ポート 5432 が通信に使用されます。 企業ネットワーク内から接続しようとしたときに、ポート 5432 での送信トラフィックがネットワークのファイアウォールで許可されていないことがあります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、サーバーに接続することはできません。
@@ -73,7 +73,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
 
-Azure Database for PostgreSQL サーバーを作成したときに、**postgres** という名前の既定のデータベースも作成されています。 データベース サーバーに接続するには、サーバーの完全な名前と管理者ログイン資格情報が必要です。 これらの値は、クイック スタートの前の手順でメモしてあるはずです。 メモしていなかった場合は、ポータルのサーバーの **[概要]** ページから、サーバー名とログイン情報を簡単に見つけることができます。
+Azure Database for PostgreSQL サーバーを作成したときに、 **postgres** という名前の既定のデータベースも作成されています。 データベース サーバーに接続するには、サーバーの完全な名前と管理者ログイン資格情報が必要です。 これらの値は、クイック スタートの前の手順でメモしてあるはずです。 メモしていなかった場合は、ポータルのサーバーの **[概要]** ページから、サーバー名とログイン情報を簡単に見つけることができます。
 
 サーバーの **[概要]** ページを開きます。 **[サーバー名]** と **[サーバー管理者ログイン名]** をメモしておきます。 各フィールドの上にカーソルを合わせると、テキストの右側にコピー シンボルが表示されます。 必要に応じてコピー シンボルを選択して値をコピーします。
 

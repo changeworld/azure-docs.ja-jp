@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: cd08b02cb3b67ce615ffa1003ee1e4441a281c17
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285069"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669742"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "92285069"
 - dacpac パッケージ (`Database.dacpac`) が格納された GitHub リポジトリ。 GitHub アカウントをお持ちでない場合は、[無料でサインアップ](https://github.com/join)できます。  
 - Azure SQL Database。
     - [クイック スタート:Azure SQL Database の単一データベースを作成する](single-database-create-quickstart.md)
-    - [既存の SQL Server データベースから dacpac パッケージを作成する方法](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+    - [既存の SQL Server データベースから dacpac パッケージを作成する方法](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 
 ## <a name="workflow-file-overview"></a>ワークフロー ファイルの概要
 
@@ -194,4 +194,4 @@ Azure SQL データベースとリポジトリが不要になったら、リソ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure と GitHub の統合に関する詳細](https://docs.microsoft.com/azure/developer/github/)
+> [Azure と GitHub の統合に関する詳細](/azure/developer/github/)

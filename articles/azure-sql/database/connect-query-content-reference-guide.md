@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4d0be745ef076ececbc5719a221f49b69d46c2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443921"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676098"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91443921"
 | クイック スタート | 説明 |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|このクイック スタートでは、SSMS を使用してデータベースに接続し、Transact-SQL ステートメントを使用してデータベース内のデータに対してクエリ、挿入、更新、削除を実行する方法について説明します。|
-|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|このクイック スタートでは、Azure Data Studio を使用してデータベースに接続した後、Transact-SQL (T-SQL) ステートメントを使用して、Azure Data Studio チュートリアルで使用される TutorialDB を作成する方法を示します。|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|このクイック スタートでは、Azure Data Studio を使用してデータベースに接続した後、Transact-SQL (T-SQL) ステートメントを使用して、Azure Data Studio チュートリアルで使用される TutorialDB を作成する方法を示します。|
 |[Azure Portal](connect-query-portal.md)|このクイック スタートでは、クエリ エディターを使用してデータベース (Azure SQL Database のみ) に接続し、Transact-SQL ステートメントを使用してデータベース内のデータに対してクエリ、挿入、更新、および削除を実行する方法について説明します。|
 |[Visual Studio Code](connect-query-vscode.md)|このクイック スタートでは、Visual Studio Code を使ってデータベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータに対してクエリ、挿入、更新、削除を実行する方法について説明します。|
 |[Visual Studio での .NET](connect-query-dotnet-visual-studio.md)|このクイックスタートでは、Visual Studio で .NET Framework を使って C# プログラムを作成してデータベースに接続し、Transact-SQL ステートメントを使用してデータに対してクエリを実行する方法について説明します。|
@@ -60,13 +60,13 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 
 さまざまなライブラリとフレームワークを使用して、Azure SQL Database または Azure SQL Managed Instance に接続できます。 C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽に始めるには、[開始にあたってのチュートリアル](https://aka.ms/sqldev)をご覧ください。 次に Linux、Windows、または macOS 上の Docker で SQL Server を使用してアプリを構築します。
 
-次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや*ドライバー*を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (旧称 SQL Data Warehouse) に接続できます。
+次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや *ドライバー* を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (旧称 SQL Data Warehouse) に接続できます。
 
 | Language | プラットフォーム | その他のリソース | ダウンロード | はじめに |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](/sql/connect/php/download-drivers-php-sql-server) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](/sql/connect/node-js/node-js-driver-for-sql-server/) | [インストール](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL ドライバー](/sql/connect/python/python-driver-for-sql-server/) | インストール オプション: <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](/sql/connect/ruby/ruby-driver-for-sql-server/) | [インストール](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
@@ -76,7 +76,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 
 | Language | プラットフォーム | ORM |
 | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows、Linux、macOS | [Entity Framework](/ef)<br>[Entity Framework Core](/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows、Linux、macOS | [Sequelize ORM](https://sequelize.org/) |
@@ -101,6 +101,6 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

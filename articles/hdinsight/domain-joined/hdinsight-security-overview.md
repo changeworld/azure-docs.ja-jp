@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150809"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537271"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -78,10 +78,10 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 | データ アクセス セキュリティ | Azure Data Lake Storage Gen1 および Gen2 対象の[アクセス制御リスト ACL](../../storage/blobs/data-lake-storage-access-control.md) を構成する  | Customer |
 |  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | Customer |
 |  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | Customer |
-|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
+|  | Cosmos DB と [Azure SQL DB](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) 用に [Azure 仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を構成する | Customer |
 |  | クラスター内通信に TLS と IPSec を使用するには、[転送中の暗号化](./encryption-in-transit.md)の機能が有効になっていることを確認します。 | Customer |
-|  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
-|  | [カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
+|  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/customer-managed-keys-configure-key-vault.md)を構成する | Customer |
+|  | [カスタマー ロックボックス](../../security/fundamentals/customer-lockbox-overview.md)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
 | アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して [ESP を構成](apache-domain-joined-configure-using-azure-adds.md)するか、[HIB による OAuth 認証](identity-broker.md)を使用する| Customer |
 |  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | Customer |
 |  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | Customer |
@@ -98,5 +98,5 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 ## <a name="next-steps"></a>次のステップ
 
 * [ESP を使用する HDInsight クラスターを計画する](apache-domain-joined-architecture.md)
-* [ESP を使用する HDInsight クラスターを構成する](apache-domain-joined-configure.md)
+* [ESP を使用する HDInsight クラスターを構成する](./apache-domain-joined-configure-using-azure-adds.md)
 * [ESP を使用する HDInsight クラスターを管理する](apache-domain-joined-manage.md)

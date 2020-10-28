@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b64fd82ab6050d6f4a9f0f91c2b8336ce03ab1d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3c18fcc0f4ff21eaaea2cbaf664e87d0ff33d60
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88211349"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537067"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>クイック スタート:.NET Framework アプリケーションで Azure Cache for Redis を使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "88211349"
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-ご自分のコンピューター上に *CacheSecrets.config* という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に置きます。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
+ご自分のコンピューター上に *CacheSecrets.config* という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に置きます。 このクイック スタートでは、 *CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
 
 *CacheSecrets.config* ファイルを編集し、次の内容を追加します。
 
@@ -63,12 +63,12 @@ Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージ�
 Install-Package StackExchange.Redis
 ```
 
-インストールが完了すると、*StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
+インストールが完了すると、 *StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
 
 
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
 
-Visual Studio で *App.config* ファイルを開き、*CacheSecrets.config* ファイルを参照する `appSettings` `file` 属性を含むように更新します。
+Visual Studio で *App.config* ファイルを開き、 *CacheSecrets.config* ファイルを参照する `appSettings` `file` 属性を含むように更新します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -92,7 +92,7 @@ using System.Configuration;
 
 Azure Cache for Redis への接続には、`ConnectionMultiplexer` クラスを使用します。 このクラスは、クライアント アプリ全体で共有して再利用する必要があります。 操作ごとに新しい接続を作成しないでください。 
 
-ソース コード内に資格情報を保存することは絶対に避けてください。 このサンプルを単純にするために、外部のシークレット構成ファイルのみを使用しています。 実際には [Azure Key Vault と証明書](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios)を使用することをお勧めします。
+ソース コード内に資格情報を保存することは絶対に避けてください。 このサンプルを単純にするために、外部のシークレット構成ファイルのみを使用しています。 実際には [Azure Key Vault と証明書](/rest/api/keyvault/certificate-scenarios)を使用することをお勧めします。
 
 *Program.cs* で、次のメンバーをコンソール アプリの `Program` クラスに追加します。
 
@@ -249,7 +249,7 @@ class Employee
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
 ![削除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
@@ -271,4 +271,4 @@ class Employee
 クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3cbda70fd836482448aa381f6e781ed15666f2c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843965"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675165"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Python を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "87843965"
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  Homebrew と Python、ODBC ドライバーと SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、[macOS での SQL Server を使用した Python アプリの作成](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関するページの手順 **1.2**、**1.3**、および **2.1** を使用します。
+  Homebrew と Python、ODBC ドライバーと SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、 [macOS での SQL Server を使用した Python アプリの作成](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関するページの手順 **1.2** 、 **1.3** 、および **2.1** を使用します。
 
   詳細については、[macOS の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)に関するページを参照してください。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87843965"
 ---
 
 > [!IMPORTANT]
-> この記事のスクリプトは、**Adventure Works** データベースを使用するように記述されています。
+> この記事のスクリプトは、 **Adventure Works** データベースを使用するように記述されています。
 
 > [!NOTE]
 > オプションで、Azure SQL マネージド インスタンスの使用を選択できます。
@@ -92,7 +92,7 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
 ## <a name="create-code-to-query-your-database"></a>データベースに対してクエリを実行するコードを作成する 
 
-1. 任意のテキスト エディターで新しいファイル (*sqltest.py*) を作成します。  
+1. 任意のテキスト エディターで新しいファイル ( *sqltest.py* ) を作成します。  
    
 1. 次のコードを追加します。 \<server>、\<database>、\<username>、\<password> は、使用する実際の値で置き換えてください。
    
@@ -130,6 +130,5 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Database で最初のデータベースを設計する](design-first-database-tutorial.md)
-- [SQL Server 用 Microsoft Python ドライバー](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
+- [SQL Server 用 Microsoft Python ドライバー](/sql/connect/python/python-driver-for-sql-server/)
 - [Python デベロッパー センター](https://azure.microsoft.com/develop/python/?v=17.23h)
-

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167051"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537951"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -66,7 +66,7 @@ Azure Database for MySQL フレキシブル サーバーは、データベース
 
 ## <a name="network-isolation"></a>ネットワーク分離
 
-Azure Database for MySQL フレキシブル サーバーに接続するには、2 つのネットワーク オプションがあります。 **プライベート アクセス (VNet 統合)** オプションと**パブリック アクセス (許可された IP アドレス)** オプションです。 
+Azure Database for MySQL フレキシブル サーバーに接続するには、2 つのネットワーク オプションがあります。 **プライベート アクセス (VNet 統合)** オプションと **パブリック アクセス (許可された IP アドレス)** オプションです。 
 
 * **プライベート アクセス (VNet 統合)** – お使いの [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) 内にフレキシブル サーバーをデプロイできます。 Azure の仮想ネットワークでは、非公開の、セキュリティで保護されたネットワーク通信が提供されます。 仮想ネットワーク内のリソースでは、プライベート IP アドレスを通した通信が可能です。
 
@@ -75,7 +75,7 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
    * VPN または ExpressRoute を使用して Azure 以外のリソースからフレキシブル サーバーに接続する
    * パブリック エンドポイントがない
 
-* **パブリック アクセス (許可された IP アドレス)** – パブリック エンドポイントを使用してフレキシブル サーバーをデプロイできます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可された IP アドレス" という表現は、サーバーに対するアクセス許可を付与することを選択する、ある範囲の IP を指しています。 これらのアクセス許可は、**ファイアウォール規則**と呼ばれます。
+* **パブリック アクセス (許可された IP アドレス)** – パブリック エンドポイントを使用してフレキシブル サーバーをデプロイできます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可された IP アドレス" という表現は、サーバーに対するアクセス許可を付与することを選択する、ある範囲の IP を指しています。 これらのアクセス許可は、 **ファイアウォール規則** と呼ばれます。
 
 詳細については、[ネットワークの概念](concepts-networking.md)に関する記事を参照してください。
 
@@ -99,7 +99,7 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
 
 詳細については、[フレキシブル サーバーへの暗号化された接続の使用方法](https://docs.mongodb.com/manual/tutorial/configure-ssl)に関する記事を参照してください。
 
-フレキシブル サーバーでは、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) 統合を使用して、サーバーに完全にプライベート アクセスできます。 Azure Virtual Network 内のサーバーには、プライベート IP アドレスを介してのみアクセスおよび接続できます。 VNet 統合では、パブリック アクセスが拒否され、パブリック エンドポイントを使用してサーバーに到達できません。 
+フレキシブル サーバーでは、[Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet) 統合を使用して、サーバーに完全にプライベート アクセスできます。 Azure Virtual Network 内のサーバーには、プライベート IP アドレスを介してのみアクセスおよび接続できます。 VNet 統合では、パブリック アクセスが拒否され、パブリック エンドポイントを使用してサーバーに到達できません。 
 
 詳細については、[ネットワークの概念](concepts-networking.md)に関する記事を参照してください。
 
@@ -115,7 +115,7 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
 このサービスでは、MySQL のコミュニティ バージョンが実行されます。 これにより、アプリケーションの完全な互換性が確保され、MySQL エンジン上で開発された既存のアプリケーションを単一サーバー サービスに移行するために必要なリファクタリング コストが最小限に抑えられます。 単一サーバーへの移行は、次のいずれかのオプションを使用して実行できます。
 
 - **ダンプと復元** – ユーザーがダウンタイムを許容できるオフライン移行では、mysqldump や mydumper などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、ダンプと復元を使用した移行に関する記事を参照してください。 
-- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) を利用できます。 
+- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、 [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) を利用できます。 
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 

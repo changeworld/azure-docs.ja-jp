@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a7d69ae15e72133e08b3e66de607aa06fefdbd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 161d1c95507d366ce00f75580a100fd2607675d9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87495388"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544020"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for MySQL サーバーの作成
 
 > [!TIP]
 > よりシンプルな [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI コマンド (現在はプレビュー段階) の使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md) をお試しください。
 
-このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) の [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) の [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -30,13 +30,13 @@ ms.locfileid: "87495388"
 ## <a name="prerequisites"></a>前提条件
 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用して、アカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの**サブスクリプション ID** を参照します。 
+[az login](/cli/azure/reference-index#az-login) コマンドを使用して、アカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。 
 
 ```azurecli-interactive
 az login
 ```
 
-[az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、**az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) を使用します。
+[az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、 **az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -62,13 +62,13 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver --lo
 name | mydemoserver | Azure Database for MySQL サーバーの一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
 resource-group | myresourcegroup | Azure リソース グループの名前を指定します。
 location | westus | サーバーの Azure の場所。
-admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** にすることはできません。
+admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 、 **public** にすることはできません。
 admin-password | *セキュリティで保護されたパスワード* | 管理者ユーザーのパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
 sku-name|GP_Gen5_2|価格レベルとコンピューティング構成の名前を入力します。 省略表現の {価格レベル} _{コンピューティング世代}_ {仮想コア} という規則に従います。 詳細については、[価格レベル](./concepts-pricing-tiers.md)に関するページを参照してください。
 
 >[!IMPORTANT] 
 >- サーバーの既定の MySQL バージョンは 5.7 です。 現在、5.6 と 8.0 のバージョンも使用できます。
->- **az mysql server create** コマンドのすべての引数を確認するには、この[リファレンス ドキュメント](/cli/azure/mysql/server#az-mysql-server-create)を参照してください。
+>- **az mysql server create** コマンドのすべての引数を確認するには、この [リファレンス ドキュメント](/cli/azure/mysql/server#az-mysql-server-create)を参照してください。
 >- サーバーでは、既定で SSL が有効になっています。 SSL の詳細については、[SSL 接続の構成](howto-configure-ssl.md)に関するページを参照してください
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成 
@@ -143,6 +143,6 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[Windows 上で PHP アプリと MySQL を構築する](../app-service/app-service-web-tutorial-php-mysql.md)
->[Linux 上で PHP アプリと MySQL を構築する](../app-service/containers/tutorial-php-mysql-app.md)
->[MySQL を使用して Java ベースの Spring アプリを構築する](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[Windows 上で PHP アプリと MySQL を構築する](../app-service/tutorial-php-mysql-app.md)
+>[Linux 上で PHP アプリと MySQL を構築する](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux)
+>[MySQL を使用して Java ベースの Spring アプリを構築する](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

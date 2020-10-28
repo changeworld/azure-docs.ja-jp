@@ -4,13 +4,13 @@ description: Azure portal と Azure CLI の両方を使用して、Web アプリ
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018748"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743784"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -22,9 +22,9 @@ App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local
 
 構成には [Azure portal](https://portal.azure.com) と Azure CLI のいずれかを使用できます。
 
-- **Azure portal**: 「[Azure portal で App Service アプリを構成する](configure-common.md)」で説明されているとおり、アプリの **[設定]**  >  **[構成]** ページを使用します。
+- **Azure portal** : 「 [Azure portal で App Service アプリを構成する](configure-common.md)」で説明されているとおり、アプリの **[設定]**  >  **[構成]** ページを使用します。
 
-- **Azure CLI**: 2 つのオプションがあります。
+- **Azure CLI** : 2 つのオプションがあります。
 
     - [Azure Cloud Shell](../cloud-shell/overview.md) でコマンドを実行します。これは、コード ブロックの右上隅にある **[試してみる]** ボタンを使用して開くことができます。
     - 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールしてコマンドをローカルで実行してから、[az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。
@@ -34,9 +34,9 @@ App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local
 
 ## <a name="configure-python-version"></a>Python バージョンの構成
 
-- **Azure portal**: Linux コンテナー向けに「[全般設定を構成する](configure-common.md#configure-general-settings)」で説明されているとおり、 **[構成]** ページで **[全般設定]** を使用します。
+- **Azure portal** : Linux コンテナー向けに「 [全般設定を構成する](configure-common.md#configure-general-settings)」で説明されているとおり、 **[構成]** ページで **[全般設定]** を使用します。
 
-- **Azure CLI**:
+- **Azure CLI** :
 
     -  [az webapp config show](/cli/azure/webapp/config#az_webapp_config_show) を使用して現在の Python バージョンを表示します。
     
@@ -69,7 +69,7 @@ Oryx と呼ばれる App Service のビルド システムでは、Git または
 
 1. `PRE_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド前スクリプトを実行します。
 1. `pip install -r requirements.txt` を実行します。 *requirements.txt* ファイルがプロジェクトのルート フォルダーに存在していなければなりません。 そうでないと、ビルド プロセスでエラーがレポートされます: "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。)
-1. (Django アプリを示す) リポジトリのルートに *manage.py* がある場合は、*manage.py collectstatic* を実行します。 ただし、`DISABLE_COLLECTSTATIC` 設定が `true` の場合、この設定はスキップされます。
+1. (Django アプリを示す) リポジトリのルートに *manage.py* がある場合は、 *manage.py collectstatic* を実行します。 ただし、`DISABLE_COLLECTSTATIC` 設定が `true` の場合、この設定はスキップされます。
 1. `POST_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド後スクリプトを実行します。
 
 既定では、`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND`、`DISABLE_COLLECTSTATIC` の設定は空です。 
@@ -90,7 +90,7 @@ App Service で Linux の Python アプリを実行、ビルドする方法の�
 > `SCM_DO_BUILD_DURING_DEPLOYMENT` という名前の設定に `true` または 1 が含まれている場合、デプロイ中に Oryx によってビルドが行われます。 この設定は、Git、Azure CLI コマンド `az webapp up`、Visual Studio Code を使用してデプロイする場合に true になります。
 
 > [!NOTE]
-> すべてのビルド前後のスクリプトで常に相対パスを使用してください。Oryx が動作するビルド コンテナーは、アプリが動作するランタイム コンテナーとは異なるためです。 コンテナー内のアプリ プロジェクト フォルダーの正確な配置場所 (たとえば、*site/wwwroot* といった配置場所) は指定しないようにします。
+> すべてのビルド前後のスクリプトで常に相対パスを使用してください。Oryx が動作するビルド コンテナーは、アプリが動作するランタイム コンテナーとは異なるためです。 コンテナー内のアプリ プロジェクト フォルダーの正確な配置場所 (たとえば、 *site/wwwroot* といった配置場所) は指定しないようにします。
 
 ## <a name="production-settings-for-django-apps"></a>Django アプリの運用設定
 
@@ -102,7 +102,7 @@ Azure App Service などの運用環境の場合、Django アプリは Django �
 | --- | --- |
 | `SECRET_KEY` | 「[環境変数としてのアプリ設定へのアクセス](#access-app-settings-as-environment-variables)」の説明のとおりに、App Service 設定の値を格納します。 また、[この値は "シークレット" として Azure Key Vault に格納](/azure/key-vault/secrets/quick-create-python)することもできます。 |
 | `DEBUG` | 値を 0 (false) にして App Service で `DEBUG` 設定を作成してから、その値を環境変数として読み込みます。 実際の開発環境では、値を 1 (true) にして `DEBUG` 環境変数を作成してください。 |
-| `ALLOWED_HOSTS` | 運用環境の Django では、*settings.py* の `ALLOWED_HOSTS` 配列にアプリの URL が含まれている必要があります。 この URL は、`os.environ['WEBSITE_HOSTNAME']` というコードを使用して実行時に取得できます。 App Service によって、`WEBSITE_HOSTNAME` 環境変数がアプリの URL に自動的に設定されます。 |
+| `ALLOWED_HOSTS` | 運用環境の Django では、 *settings.py* の `ALLOWED_HOSTS` 配列にアプリの URL が含まれている必要があります。 この URL は、`os.environ['WEBSITE_HOSTNAME']` というコードを使用して実行時に取得できます。 App Service によって、`WEBSITE_HOSTNAME` 環境変数がアプリの URL に自動的に設定されます。 |
 | `DATABASES` | データベースに接続するための App Service の設定を定義し、それらを環境変数として読み込んで [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) ディクショナリを設定します。 または、値 (特にユーザー名とパスワード) を [Azure Key Vault シークレット](/azure/key-vault/secrets/quick-create-python)として格納することもできます。 |
 
 ## <a name="container-characteristics"></a>コンテナーの特性
@@ -120,7 +120,7 @@ Python アプリは App Service にデプロイされると、[App Service Pytho
 
 - Django など、追加のパッケージをインストールするには、直接的な依存関係を指定したプロジェクトのルートに [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) ファイルを作成します。 そうすることで、App Service によって、それらの依存関係がプロジェクトのデプロイ時に自動的にインストールされます。
 
-    依存関係がインストールされるには、*requirements.txt* ファイルがプロジェクトのルートに "*なければなりません*"。 そうでないと、ビルド プロセスでエラーがレポートされます: "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。) このエラーが発生した場合は、自分の requirements ファイルの場所を確認してください。
+    依存関係がインストールされるには、 *requirements.txt* ファイルがプロジェクトのルートに " *なければなりません* "。 そうでないと、ビルド プロセスでエラーがレポートされます: "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。) このエラーが発生した場合は、自分の requirements ファイルの場所を確認してください。
 
 - App Service では、Web アプリの URL (`msdocs-hello-world.azurewebsites.net` など) を使用して、`WEBSITE_HOSTNAME` という名前の環境変数が自動的に定義されます。 また、アプリの名前 (`msdocs-hello-world` など) を使用して `WEBSITE_SITE_NAME` も定義されます。 
    
@@ -144,7 +144,7 @@ Django アプリの場合、App Service によってお客様のアプリ コー
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-スタートアップ コマンドをより細かくコントロールしたい場合、[カスタム スタートアップ コマンド](#customize-startup-command)を使用し、`<module>` を *wsgi.py* が含まれているフォルダーの名前に置き換えます。そのモジュールがプロジェクトのルートにない場合は `--chdir` 引数を追加してください。 たとえば、自分のプロジェクトのルートを基準として *knboard/backend/config* に *wsgi.py* が配置されている場合は、引数 `--chdir knboard/backend config.wsgi` を使用します。
+スタートアップ コマンドをより細かくコントロールしたい場合、 [カスタム スタートアップ コマンド](#customize-startup-command)を使用し、`<module>` を *wsgi.py* が含まれているフォルダーの名前に置き換えます。そのモジュールがプロジェクトのルートにない場合は `--chdir` 引数を追加してください。 たとえば、自分のプロジェクトのルートを基準として *knboard/backend/config* に *wsgi.py* が配置されている場合は、引数 `--chdir knboard/backend config.wsgi` を使用します。
 
 運用ログを有効にするには、[カスタム スタートアップ コマンド](#customize-startup-command)の例で示しているとおり、`--access-logfile` および `--error-logfile` パラメーターを追加します。
 
@@ -164,23 +164,23 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 
 ### <a name="default-behavior"></a>既定の動作
 
-カスタム コマンド、Django アプリ、または Flask アプリが App Service によって検出されない場合は、_opt/defaultsite_ フォルダーにある既定の読み取り専用アプリが実行されます。 既定のアプリは次のように表示されます。
+カスタム コマンド、Django アプリ、または Flask アプリが App Service によって検出されない場合は、 _opt/defaultsite_ フォルダーにある既定の読み取り専用アプリが実行されます。 既定のアプリは次のように表示されます。
 
 ![App Service on Linux の既定の Web ページ](media/configure-language-python/default-python-app.png)
 
 ## <a name="customize-startup-command"></a>スタートアップ コマンドのカスタマイズ
 
-この記事で前に述べたように、[Gunicorn の構成の概要](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)に関するページで説明されているとおり、プロジェクトのルートにある *gunicorn.conf.py* ファイルを使用して Gunicorn の構成設定を指定できます。
+この記事で前に述べたように、 [Gunicorn の構成の概要](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)に関するページで説明されているとおり、プロジェクトのルートにある *gunicorn.conf.py* ファイルを使用して Gunicorn の構成設定を指定できます。
 
-このような構成では十分でない場合は、スタートアップ コマンド ファイルでカスタム スタートアップ コマンドまたは複数のコマンドを指定して、コンテナーのスタートアップ動作をコントロールできます。 スタートアップ コマンド ファイルでは、*startup.sh*、*startup.cmd*、*startup.txt* など、任意の名前を使用することができます。
+このような構成では十分でない場合は、スタートアップ コマンド ファイルでカスタム スタートアップ コマンドまたは複数のコマンドを指定して、コンテナーのスタートアップ動作をコントロールできます。 スタートアップ コマンド ファイルでは、 *startup.sh* 、 *startup.cmd* 、 *startup.txt* など、任意の名前を使用することができます。
 
 どのコマンドでも、プロジェクトのルート フォルダーへの相対パスを使用する必要があります。
 
 スタートアップ コマンドまたはコマンド ファイルを指定するには:
 
-- **Azure portal**: アプリの **[構成]** ページを選択してから、 **[全般設定]** を選択します。 **[スタートアップ コマンド]** フィールドで、自分のスタートアップ コマンドの完全なテキスト、または自分のスタートアップ コマンド ファイルの名前を入力します。 次に、 **[保存]** を選択して変更を適用します。 Linux コンテナー用に「[全般設定を構成する](configure-common.md#configure-general-settings)」を参照してください。
+- **Azure portal** : アプリの **[構成]** ページを選択してから、 **[全般設定]** を選択します。 **[スタートアップ コマンド]** フィールドで、自分のスタートアップ コマンドの完全なテキスト、または自分のスタートアップ コマンド ファイルの名前を入力します。 次に、 **[保存]** を選択して変更を適用します。 Linux コンテナー用に「[全般設定を構成する](configure-common.md#configure-general-settings)」を参照してください。
 
-- **Azure CLI**: `--startup-file` パラメーターをスタートアップ コマンドまたはファイルに設定して、[az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) コマンドを使用します。
+- **Azure CLI** : `--startup-file` パラメーターをスタートアップ コマンドまたはファイルに設定して、 [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) コマンドを使用します。
 
     ```azurecli-interactive
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -188,11 +188,11 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
         
     `<custom-command>` は、自分のスタートアップ コマンドの完全なテキスト、または自分のスタートアップ コマンド ファイルの名前に置き換えます。
         
-App Service では、カスタム スタートアップ コマンドまたはファイルの処理中に発生したエラーが無視されて、Django および Flask アプリが検索されることでスタートアップ プロセスが続行されます。 想定どおりの動作にならない場合は、自分のスタートアップ コマンドまたはファイルに問題がないこと、スタートアップ コマンド ファイルがアプリのコードと共に App Service にデプロイされていることを確認してください。 [診断ログ](#access-diagnostic-logs)で詳細な情報を確認することもできます。 また、[Azure portal](https://portal.azure.com) でアプリの **[問題の診断と解決]** ページも確認してください。
+App Service では、カスタム スタートアップ コマンドまたはファイルの処理中に発生したエラーが無視されて、Django および Flask アプリが検索されることでスタートアップ プロセスが続行されます。 想定どおりの動作にならない場合は、自分のスタートアップ コマンドまたはファイルに問題がないこと、スタートアップ コマンド ファイルがアプリのコードと共に App Service にデプロイされていることを確認してください。 [診断ログ](#access-diagnostic-logs)で詳細な情報を確認することもできます。 また、 [Azure portal](https://portal.azure.com) でアプリの **[問題の診断と解決]** ページも確認してください。
 
 ### <a name="example-startup-commands"></a>スタートアップ コマンドの例
 
-- **Gunicorn 引数の追加**: 次の例では、Django アプリを起動するための Gunicorn コマンド ラインに `--workers=4` を追加します。 
+- **Gunicorn 引数の追加** : 次の例では、Django アプリを起動するための Gunicorn コマンド ラインに `--workers=4` を追加します。 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -202,7 +202,7 @@ App Service では、カスタム スタートアップ コマンドまたはフ
 
     詳細については、「[Running Gunicorn (Gunicorn の実行)」](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
 
-- **Django での運用ログの有効化**: `--access-logfile '-'` および `--error-logfile '-'` 引数をコマンド ラインに追加します。
+- **Django での運用ログの有効化** : `--access-logfile '-'` および `--error-logfile '-'` 引数をコマンド ラインに追加します。
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -213,7 +213,7 @@ App Service では、カスタム スタートアップ コマンドまたはフ
 
     詳細については、[Gunicorn のログ](https://docs.gunicorn.org/en/stable/settings.html#logging)に関するページ (docs.gunicorn.org) を参照してください。
     
-- **カスタムの Flask メイン モジュール**: 既定では、Flask アプリのメイン モジュールは *application.py* か *app.py* であると App Service によって想定されています。 メイン モジュールに別の名前を使用する場合は、スタートアップ コマンドをカスタマイズする必要があります。 たとえば、メイン モジュールが *hello.py* で、そのファイルにおける Flask アプリ オブジェクトの名前が `myapp` である Flask アプリがある場合、コマンドは次のようになります。
+- **カスタムの Flask メイン モジュール** : 既定では、Flask アプリのメイン モジュールは *application.py* か *app.py* であると App Service によって想定されています。 メイン モジュールに別の名前を使用する場合は、スタートアップ コマンドをカスタマイズする必要があります。 たとえば、メイン モジュールが *hello.py* で、そのファイルにおける Flask アプリ オブジェクトの名前が `myapp` である Flask アプリがある場合、コマンドは次のようになります。
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -225,7 +225,7 @@ App Service では、カスタム スタートアップ コマンドまたはフ
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **Gunicorn 以外のサーバーの使用**: 別の Web サーバー ([aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html) など) を使用する場合は、スタートアップ コマンドとして、またはスタートアップ コマンド ファイルで、適切なコマンドを使用します。
+- **Gunicorn 以外のサーバーの使用** : 別の Web サーバー ( [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html) など) を使用する場合は、スタートアップ コマンドとして、またはスタートアップ コマンド ファイルで、適切なコマンドを使用します。
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -282,9 +282,9 @@ Azure portal を使用してログにアクセスするには、アプリの左�
 
     - [ログ ストリーム](#access-diagnostic-logs)にエラー メッセージがないか調べます。
 
-- **ログ ストリームに "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。) と表示される。** Oryx のビルド プロセスで、*requirements.txt* ファイルの検出が失敗しました。
+- **ログ ストリームに "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。) と表示される。** Oryx のビルド プロセスで、 *requirements.txt* ファイルの検出が失敗しました。
 
-    - SSH または Kudu コンソールを使用して App Service に直接接続し、*requirements.txt* が *site/wwwroot* の直下に存在することを確認します。 存在しない場合は、ファイルが自分のリポジトリに存在していて、自分のデプロイに含まれている場所を作ります。 別のフォルダーに存在する場合は、それをルートに移動させてください。
+    - SSH または Kudu コンソールを使用して App Service に直接接続し、 *requirements.txt* が *site/wwwroot* の直下に存在することを確認します。 存在しない場合は、ファイルが自分のリポジトリに存在していて、自分のデプロイに含まれている場所を作ります。 別のフォルダーに存在する場合は、それをルートに移動させてください。
 
 ## <a name="next-steps"></a>次のステップ
 

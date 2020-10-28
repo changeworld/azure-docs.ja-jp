@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567811"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675701"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Education Hub に関してよく寄せられる質問
 
@@ -46,7 +46,7 @@ Microsoft Azure for Students サブスクリプションがあれば、特定の
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn とは何ですか?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) とは、Azure のテクノロジを自分のペースで学ぶことができる無料のオンライン学習プラットフォームです。 ラーニング パスを利用してモジュールを組み合わせ、基本的な事柄から開始して、その後、実世界の課題に対応する高度な手法へと進むことができます。
+[Microsoft Learn](/learn/) とは、Azure のテクノロジを自分のペースで学ぶことができる無料のオンライン学習プラットフォームです。 ラーニング パスを利用してモジュールを組み合わせ、基本的な事柄から開始して、その後、実世界の課題に対応する高度な手法へと進むことができます。
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Microsoft Azure for Students は、運用や開発専用に利用できますか?
 
@@ -97,7 +97,7 @@ Microsoft Azure for Students サブスクリプションがあれば、無料で
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn とは何ですか?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) とは、Azure のテクノロジを自分のペースで学ぶことができる無料のオンライン学習プラットフォームです。 ラーニング パスを利用してモジュールを組み合わせ、基本的な事柄から開始して、その後、実世界の課題に対応する高度な手法へと進むことができます。
+[Microsoft Learn](/learn/) とは、Azure のテクノロジを自分のペースで学ぶことができる無料のオンライン学習プラットフォームです。 ラーニング パスを利用してモジュールを組み合わせ、基本的な事柄から開始して、その後、実世界の課題に対応する高度な手法へと進むことができます。
 
 ## <a name="azure-academic-grant"></a>Azure Academic Grant
 
@@ -149,7 +149,7 @@ Azure コース クレジットは、Azure スポンサー プランをアクテ
 
 ### <a name="how-do-i-know-if-my-subscription-is-on-the-azure-course-credit-offer"></a>私のサブスクリプションが Azure コース クレジット プランの対象になっていることを確認する方法を教えてください。
 
-Azure portal のサブスクリプション ブレードで特定のサブスクリプションを見ると、そのプロパティの 1 つとして **[プラン名]** が表示されます。 サブスクリプションがコース クレジットにひも付けられていれば、そのプラン名が **Azure スポンサー プラン**となっているはずです。 **Azure スポンサー プラン**が表示されない場合は、サブスクリプションを変更するためにサポートにお問い合わせください。
+Azure portal のサブスクリプション ブレードで特定のサブスクリプションを見ると、そのプロパティの 1 つとして **[プラン名]** が表示されます。 サブスクリプションがコース クレジットにひも付けられていれば、そのプラン名が **Azure スポンサー プラン** となっているはずです。 **Azure スポンサー プラン** が表示されない場合は、サブスクリプションを変更するためにサポートにお問い合わせください。
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
 
@@ -252,8 +252,8 @@ Azure Dev Tools for Teaching へのサインイン試行に学校の資格情報
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>サブスクライバー ID を調べるにはどうすればよいですか?
 
-- **プログラムへの初回登録時**: サブスクライバー ID 番号は、お手元のサブスクリプション ウェルカム メールに記載されています。
-- **サブスクリプションを更新した場合**: サブスクライバー ID は、サブスクリプション管理者に送信された更新メールに記載されています。
+- **プログラムへの初回登録時** : サブスクライバー ID 番号は、お手元のサブスクリプション ウェルカム メールに記載されています。
+- **サブスクリプションを更新した場合** : サブスクライバー ID は、サブスクリプション管理者に送信された更新メールに記載されています。
 
 サブスクライバー ID は、Visual Studio Subscription ポータルでも確認できます。 サインイン後、 **[マイ アカウント]** ページの **[My Subscription]\(個人用サブスクリプション\)** を確認してください。
 
@@ -282,7 +282,7 @@ Azure Dev Tools for Teaching へのサインイン試行に学校の資格情報
 
 または、[Azure Dev Tools for Teaching の更新ページ](https://portal.azureforeducation.microsoft.com/)にアクセスして、更新プロセスを完了してください。
 
-サブスクリプションの有効期限日を確認するには、[Azure Dev Tools for Teaching 管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)にアクセスし、 **[サブスクリプション]** をご覧ください。
+サブスクリプションの有効期限日を確認するには、 [Azure Dev Tools for Teaching 管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)にアクセスし、 **[サブスクリプション]** をご覧ください。
 
 ### <a name="what-if-i-need-more-help"></a>さらにサポートが必要な場合はどうすればよいですか?
 

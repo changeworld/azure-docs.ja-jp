@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a248699b47cf99980c9490bf16c10e7196ee6ecf
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091085"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742700"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>クイック スタート:Azure Spring Cloud サービスのプロビジョニング
 
@@ -114,7 +114,7 @@ Azure Spring Cloud のインスタンス化は、Azure portal または Azure CL
     ![ASC アイコンでの追加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
-    - **サブスクリプション**:このリソースに対する課金用のサブスクリプションを選択します。
+    - **サブスクリプション** :このリソースに対する課金用のサブスクリプションを選択します。
     - **[リソース グループ]** :新しいリソース用に新しいリソース グループを作成することをお勧めします。 これが後の手順で **\<resource group name\>** として使用されることに注意してください。
     - **[サービスの詳細/名前]** : **\<service instance name\>** を指定します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
     - **[場所]** :自分のサービス インスタンスの場所を選択します。

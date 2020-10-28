@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006821"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675991"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>構成証明ポリシーを作成して署名する方法
 
@@ -36,7 +36,7 @@ issuancerules
  
 ご覧のように、ポリシー ファイルには次の 3 つのセグメントがあります。
 
-- **version**: 準拠している文法のバージョン番号です。 
+- **version** : 準拠している文法のバージョン番号です。 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ issuancerules
 
     現在サポートされているのはバージョン 1.0 のみです。
 
-- **authorizationrules**: Azure Attestation が **issuancerules** に進むべきかどうかを判断するために最初にチェックされる要求規則のコレクションです。 要求規則は、定義されている順に適用されます。
+- **authorizationrules** : Azure Attestation が **issuancerules** に進むべきかどうかを判断するために最初にチェックされる要求規則のコレクションです。 要求規則は、定義されている順に適用されます。
 
-- **issuancerules**: ポリシーに定義されている構成証明の結果に他の情報を追加する目的で評価される要求規則のコレクションです。 要求規則は、定義されている順に適用されます。省略することもできます。
+- **issuancerules** : ポリシーに定義されている構成証明の結果に他の情報を追加する目的で評価される要求規則のコレクションです。 要求規則は、定義されている順に適用されます。省略することもできます。
 
 詳細については、「[要求と要求規則](claim-rule-grammar.md)」を参照してください。
    
@@ -84,7 +84,7 @@ issuancerules
   };
   ```
 
-  入力要求セットに、type、value、issuer に一致する要求が含まれていた場合、permit() アクションによって、**issuancerules** を処理するようポリシー エンジンに伝えられます。
+  入力要求セットに、type、value、issuer に一致する要求が含まれていた場合、permit() アクションによって、 **issuancerules** を処理するようポリシー エンジンに伝えられます。
   
 5. **issuancerules** に要求規則を追加します。
 
@@ -128,8 +128,8 @@ issuancerules
      ```
 
 2. (省略可) ポリシーに署名します。 Azure Attestation では、次のアルゴリズムがサポートされます。
-     - **None**:ポリシーのペイロードは署名されません。
-     - **RS256**: ポリシーのペイロードに署名する際にサポートされるアルゴリズムです。
+     - **None** :ポリシーのペイロードは署名されません。
+     - **RS256** : ポリシーのペイロードに署名する際にサポートされるアルゴリズムです。
 
 3. JWS をアップロードして、ポリシーを検証します。
      - ポリシー ファイルに構文エラーがない場合、サービスによってポリシー ファイルが受理されます。
@@ -172,4 +172,4 @@ print(encoded.decode('utf-8'))
 
 ## <a name="next-steps"></a>次のステップ
 - [PowerShell を使用して Azure Attestation を設定する](quickstart-powershell.md)
-- [コード サンプルを使用して SGX エンクレーブの構成証明を行う](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [コード サンプルを使用して SGX エンクレーブの構成証明を行う](/samples/browse/?expanded=azure&terms=attestation)

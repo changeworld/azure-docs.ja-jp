@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87078118"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739328"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してロジック アプリ ワークフローを作成してデプロイする
 
@@ -30,9 +30,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートでは、[**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) を確認できます。
+このクイック スタートでは、 [**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、 [Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) を確認できます。
 
-クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](../connectors/apis-list.md#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
+クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の " [*組み込み* " アクション](../connectors/apis-list.md#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
 
 このテンプレートでは、次の Azure リソースを作成します。
 

@@ -7,13 +7,13 @@ ms.service: event-grid
 ms.topic: include
 ms.date: 08/17/2018
 ms.author: tomfitz
-ms.custom: include file
-ms.openlocfilehash: b48e5e28b15d17796138d493a7d9c628791df2e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 6c5ab187eb1307a95bbae4ff39d387221e094ea5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830132"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736871"
 ---
 ## <a name="enable-the-event-grid-resource-provider"></a>Event Grid リソース プロバイダーを有効にする
 

@@ -6,19 +6,20 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 0667e253d50ecc34acef822a928a95e49f13282e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: contentperfq2
+ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439787"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670433"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
-請求書による支払いに切り替えた場合、請求日から 30 日以内に小切手/電信送金で請求金額を支払うことになります。 Azure サブスクリプションの支払いを請求書で行う対象となるには、Azure サポートに要求を送信します。 要求が承認されると、[Azure portal](https://portal.azure.com) で請求書支払い (小切手/電信送金) に切り替えられます。
+請求書による支払いに切り替えた場合、請求日から 30 日以内に小切手/電信送金で請求金額を支払うことになります。 Azure サブスクリプションの支払いを請求書で行う対象となるには、Azure サポートに要求を送信します。 要求が承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えられます。
 
 > [!IMPORTANT]
 > * 請求書支払い (小切手/電信送金) は、会社を代表して Azure を使用しているお客様にのみ提供されます。
@@ -27,7 +28,7 @@ ms.locfileid: "91439787"
 
 ## <a name="request-to-pay-by-invoice"></a>請求書による支払いを要求する
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、サポート リクエストを発行します。 **[ヘルプとサポート]** を検索して選択します。
+1. Azure portal にアクセスして、サポート リクエストを発行します。 **[ヘルプとサポート]** を検索して選択します。
 
     ![Microsoft Azure portal で [ヘルプとサポート] を検索する](./media/pay-by-invoice/search-for-help-and-support.png)
 
@@ -67,7 +68,7 @@ ms.locfileid: "91439787"
      サブスクリプションの具体的なリージョンおよびシリーズ:<br>
 
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](change-azure-account-profile.md)」を参照してください。
-    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure portal](https://portal.azure.com) に移動します。
+    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。
 
 6. 連絡先情報と優先連絡方法を確認し、 **[作成]** を選択します。
 
@@ -77,13 +78,13 @@ ms.locfileid: "91439787"
 
 請求書による支払いが承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えることができます。
 
-Microsoft Online Services Program アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。 [アカウントの種類を確認する方法をご覧ください](#check-access-to-a-microsoft-customer-agreement)。
+Microsoft Online Services Program アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure サブスクリプションを小切手/電信送金に切り替える
 
-Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 *請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません*。
+Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 *請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません* 。
 
-1. [Azure portal](https://portal.azure.com) にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。
+1. Azure portal にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。
 
     ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/pay-by-invoice/search.png)
 
@@ -97,7 +98,7 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 課金プロファイルを小切手/電信送金に切り替えるには、次の手順に従います。 課金プロファイルの既定の支払い方法を変更できるのは、Azure にサインアップしたユーザーのみです。
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、課金情報を表示します。 **[コストの管理と請求]** を検索して選択します。
+1. Azure portal にアクセスして、課金情報を表示します。 **[コストの管理と請求]** を検索して選択します。
 1. メニューから **[課金プロファイル]** を選択します。
 
     ![[課金プロファイル] メニュー項目、[コストの管理と請求]、Microsoft Azure portal](./media/pay-by-invoice/billing-profile.png)
@@ -122,10 +123,6 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 * アカウント名と会社名の間での名前の相違
 * 名前の変更
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 

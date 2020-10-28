@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86515055"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672490"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>クイック スタート:Visual Studio Code を使って接続し、クエリを実行する 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,13 +45,13 @@ ms.locfileid: "86515055"
 
 ## <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
 
-必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、[Visual Studio Code のインストール](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code)に関するページおよび「[Visual Studio Code 用 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。
+必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、[Visual Studio Code のインストール](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code)に関するページおよび「[Visual Studio Code 用 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。
 
 ## <a name="configure-visual-studio-code"></a>Visual Studio Code を構成する
 
 ### <a name="macos"></a>**macOS**
 
-macOS では、mssql 拡張機能で使用される .NET Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。
+macOS では、mssql 拡張機能で使用される .NET Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、 **brew** と **OpenSSL** をインストールします。
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -99,13 +99,13 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 > [!IMPORTANT]
 > 続行する前に、サーバーおよびサインインの情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、プロファイルの作成をやり直さなければならなくなります。
 
-1. Visual Studio Code で、**Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
+1. Visual Studio Code で、 **Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
 
-2. **[MS SQL:Connect]\(MS SQL: 接続\)** を選択して、**Enter** キーを押します。
+2. **[MS SQL:Connect]\(MS SQL: 接続\)** を選択して、 **Enter** キーを押します。
 
 3. **[接続プロファイルの作成]** を選択します。
 
-4. プロンプトに従って、新しいプロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。
+4. プロンプトに従って、新しいプロファイルの接続プロパティを指定します。 それぞれの値を指定したら、 **Enter** キーを押して続行します。
 
    | プロパティ       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -115,13 +115,13 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
    | **ユーザー名** | ユーザー名 | サーバーを作成するために使用するサーバー管理者アカウントのユーザー名。 |
    | **パスワード (SQL ログイン)** | Password | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    | **パスワードを保存しますか?** | はい、いいえ | パスワードを毎回入力する手間を省くには、 **[はい]** を選択します。 |
-   | **このプロファイルの名前を入力してください** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 |
+   | **このプロファイルの名前を入力してください** | プロファイル名 ( **mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 |
 
    成功した場合、プロファイルが作成され接続されたことを示す通知が表示されます。
 
 ## <a name="query-data"></a>クエリ データ
 
-次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントによるクエリを実行して、カテゴリごとに上位 20 個の製品を照会します。
+次の [SELECT](/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントによるクエリを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
 1. エディター ウィンドウで、次の SQL クエリを貼り付けます。
 
@@ -138,7 +138,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="insert-data"></a>データの挿入
 
-次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
+次の [INSERT](/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -166,7 +166,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="update-data"></a>データの更新
 
-次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを実行して、追加された製品を更新します。
+次の [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを実行して、追加された製品を更新します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -180,7 +180,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="delete-data"></a>データの削除
 
-次の [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを実行して、新しい製品を削除します。
+次の [DELETE](/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを実行して、新しい製品を削除します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -195,4 +195,4 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 - SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する](connect-query-ssms.md)」を参照してください。
 - Azure portal を使用して接続と照会を行うには、「[クイック スタート: Azure portal の SQL クエリ エディターを使って接続とデータの照会を行う](connect-query-portal.md)」を参照してください。
-- Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](https://msdn.microsoft.com/magazine/mt809115)を参照してください。
+- Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension)を参照してください。

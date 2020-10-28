@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329530"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545023"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
-このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!IMPORTANT] 
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
@@ -28,17 +28,17 @@ ms.locfileid: "91329530"
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、 **[入力]** を選択して実行します。
 
-CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) コマンドを使用して、アカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの**サブスクリプション ID** を参照します。
+[az login](/cli/azure/reference-index#az-login) コマンドを使用して、アカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。
 
 ```azurecli-interactive
 az login
 ```
 
-[az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、**az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](https://docs.microsoft.com/cli/azure/account#az-account-list) を使用します。
+[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、 **az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>フレキシブル サーバーを作成する
 
-`az group create` コマンドを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)を作成し、このリソース グループ内に MySQL フレキシブル サーバーを作成します。 一意の名前を指定する必要があります。 次の例では、`eastus2` の場所に `myresourcegroup` という名前のリソース グループを作成します。
+`az group create` コマンドを使用して、[Azure リソース グループ](../../azure-resource-manager/management/overview.md)を作成し、このリソース グループ内に MySQL フレキシブル サーバーを作成します。 一意の名前を指定する必要があります。 次の例では、`eastus2` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-`az mysql flexible-server create` コマンドを使用して、フレキシブル サーバーを作成します。 1 つのサーバーに複数のデータベースを含めることができます。 次のコマンドでは、サービスの既定値と Azure CLI の[ローカル コンテキスト](https://docs.microsoft.com/cli/azure/local-context)からの値を使用してサーバーを作成します。 
+`az mysql flexible-server create` コマンドを使用して、フレキシブル サーバーを作成します。 1 つのサーバーに複数のデータベースを含めることができます。 次のコマンドでは、サービスの既定値と Azure CLI の[ローカル コンテキスト](/cli/azure/local-context)からの値を使用してサーバーを作成します。 
 
 ```azurecli
 az mysql flexible-server create
@@ -64,7 +64,7 @@ az mysql flexible-server create
 - 既定の接続方法は、自動生成された仮想ネットワークとサブネットを使用するプライベート アクセス (VNet 統合) です。
 
 > [!NOTE] 
-> サーバーの作成後に接続方法を変更することはできません。 たとえば、作成時に "*プライベート アクセス (VNet 統合)* " を選択した場合、作成後に*パブリック アクセス (使用できる IP アドレス)* に変更することはできません。 VNet 統合を使用してサーバーに安全にアクセスするには、プライベート アクセスを指定してサーバーを作成することを強くお勧めします。 プライベート アクセスの詳細については、[概念に関する記事](./concepts-networking.md)を参照してください。
+> サーバーの作成後に接続方法を変更することはできません。 たとえば、作成時に " *プライベート アクセス (VNet 統合)* " を選択した場合、作成後に *パブリック アクセス (使用できる IP アドレス)* に変更することはできません。 VNet 統合を使用してサーバーに安全にアクセスするには、プライベート アクセスを指定してサーバーを作成することを強くお勧めします。 プライベート アクセスの詳細については、[概念に関する記事](./concepts-networking.md)を参照してください。
 
 既定値を変更したい場合は、Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 
 
@@ -142,7 +142,7 @@ az mysql flexible-server show --resource-group myresourcegroup --name mydemoserv
 
 ## <a name="connect-using-mysql-command-line-client"></a>mysql コマンドライン クライアントを使用して接続する
 
-"*プライベート アクセス (VNet 統合)* " を指定してフレキシブル サーバーを作成したので、サーバーと同じ VNet 内のリソースからサーバーに接続する必要があります。 仮想マシンを作成して、作成された仮想ネットワークに追加できます。 
+" *プライベート アクセス (VNet 統合)* " を指定してフレキシブル サーバーを作成したので、サーバーと同じ VNet 内のリソースからサーバーに接続する必要があります。 仮想マシンを作成して、作成された仮想ネットワークに追加できます。 
 
 VM が作成されたら、コンピューターに SSH 接続して、一般的なクライアント ツールである **[mysql.exe](https://dev.mysql.com/downloads/)** コマンドライン ツールをインストールできます。
 

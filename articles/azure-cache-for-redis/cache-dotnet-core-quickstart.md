@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662368"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547726"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>クイック スタート:.NET Core アプリと Azure Cache for Redis を使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "89662368"
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-**ホスト名**と**プライマリ** アクセス キーをメモします。 これらの値は、後で *CacheConnection* のシークレットを構築するときに使用します。
+**ホスト名** と **プライマリ** アクセス キーをメモします。 これらの値は、後で *CacheConnection* のシークレットを構築するときに使用します。
 
 
 
@@ -47,9 +47,9 @@ dotnet new console -o Redistest
 
 ## <a name="add-secret-manager-to-the-project"></a>プロジェクトにシークレット マネージャーを追加します
 
-このセクションでは、プロジェクトに[シークレット マネージャー ツール](https://docs.microsoft.com/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
+このセクションでは、プロジェクトに[シークレット マネージャー ツール](/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
 
-*Redistest.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、*Microsoft.Extensions.SecretManager.Tools* を含めます。 また、`UserSecretsId` 要素を下記のように追加して、ファイルを保存します。
+*Redistest.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、 *Microsoft.Extensions.SecretManager.Tools* を含めます。 また、`UserSecretsId` 要素を下記のように追加して、ファイルを保存します。
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -64,7 +64,7 @@ dotnet new console -o Redistest
 </Project>
 ```
 
-次のコマンドを実行して、*Microsoft.Extensions.Configuration.UserSecrets* パッケージをプロジェクトに追加します。
+次のコマンドを実行して、 *Microsoft.Extensions.Configuration.UserSecrets* パッケージをプロジェクトに追加します。
 
 ```
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
@@ -107,13 +107,13 @@ private static void InitializeConfiguration()
 
 このセクションでは、.NET に [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) クライアントを使用するようにコンソール アプリを構成します。
 
-コマンド ウィンドウで、*Redistest* プロジェクト ディレクトリで次のコマンドを実行します。
+コマンド ウィンドウで、 *Redistest* プロジェクト ディレクトリで次のコマンドを実行します。
 
 ```
 dotnet add package StackExchange.Redis
 ```
 
-インストールが完了すると、*StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
+インストールが完了すると、 *StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
 
 
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
@@ -222,7 +222,7 @@ Azure Cache for Redis は .NET オブジェクトとプリミティブ データ
 
 オブジェクトをシリアル化する簡単な方法の 1 つは、[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) の `JsonConvert` シリアル化メソッドを使用して、JSON へおよび JSON からシリアル化する方法です。 このセクションでは、.NET オブジェクトをキャッシュに追加します。
 
-次のコマンドを実行して、*Newtonsoft.json* パッケージをアプリに追加します。
+次のコマンドを実行して、 *Newtonsoft.json* パッケージをアプリに追加します。
 
 ```
 dotnet add package Newtonsoft.json
@@ -295,7 +295,7 @@ dotnet run
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
 ![削除](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
@@ -317,4 +317,4 @@ dotnet run
 クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

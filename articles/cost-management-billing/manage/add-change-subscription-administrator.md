@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372308"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369660"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
@@ -73,7 +73,7 @@ Microsoft では、Azure RBAC を使用してリソースへのアクセスを�
 * [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)
 * [Azure での各種ロールについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
-* [Azure Active Directory での管理者ロールのアクセス許可](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+* [Azure Active Directory での管理者ロールのアクセス許可](../../active-directory/roles/permissions-reference.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

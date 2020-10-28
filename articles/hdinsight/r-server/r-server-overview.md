@@ -8,26 +8,26 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85849907"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536149"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
-Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、HDInsight での柔軟で分散型の分析方法にオンデマンドでアクセスできます。
+Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、 **ML Services** と呼ばれます。 この機能により、HDInsight での柔軟で分散型の分析方法にオンデマンドでアクセスできます。
 
 HDInsight の ML Services は、ほぼすべてのサイズのデータセットで R ベースの分析を行うための最新の機能を備えています。 データセットは、Azure BLOB または Data Lake ストレージのいずれかに読み込むことができます。 R ベースのアプリケーションは、8000 個以上のオープンソースの R パッケージを使用できます。 また、ScaleR (Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。
 
 エッジ ノードは、クラスターに接続して R スクリプトを実行するのに便利な場所です。 エッジ ノードでは、サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce を使用して、クラスターのノード間でそれらを実行することもできます。 Apache Spark のコンピューティング コンテキストも使用できます。
 
-分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、Azure 内の他の場所で運用化 (`operationalized`) することもできます。 具体的には、[Azure Machine Learning Studio (classic)](https://studio.azureml.net)、および [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用します。
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、Azure 内の他の場所で運用化 (`operationalized`) することもできます。 具体的には、[Azure Machine Learning Studio (classic)](https://studio.azureml.net)、および [Web サービス](../../machine-learning/classic/deploy-a-machine-learning-web-service.md)を使用します。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
-HDInsight で ML Services クラスターを作成するには、**ML Services** クラスターの種類を選択します。 ML Services クラスターの種類には、データ ノード上の ML Server と、エッジ ノードが含まれます。 エッジ ノードは、ML Services ベースの分析のランディング ゾーンとして機能します。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
+HDInsight で ML Services クラスターを作成するには、 **ML Services** クラスターの種類を選択します。 ML Services クラスターの種類には、データ ノード上の ML Server と、エッジ ノードが含まれます。 エッジ ノードは、ML Services ベースの分析のランディング ゾーンとして機能します。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>HDInsight で ML Services を選ぶ理由
 
@@ -35,7 +35,7 @@ HDInsight における ML Services のメリットは次のとおりです。
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft およびオープン ソースからの AI 革新
 
-  ML Services には、[RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)、[revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)、[microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) など、高い適応性を持つ分散型のアルゴリズム セットが含まれます。 これらのアルゴリズムは、物理メモリより大きいサイズのデータ サイズに対応しています。 また、分散された方法で、さまざまなプラットフォームで実行することができます。 製品に付属する Microsoft のカスタム [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)と [Python パッケージ](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)のコレクションの詳細をご覧ください。
+  ML Services には、[RevoscaleR](/machine-learning-server/r-reference/revoscaler/revoscaler)、[revoscalepy](/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)、[microsoftML](/machine-learning-server/python-reference/microsoftml/microsoftml-package) など、高い適応性を持つ分散型のアルゴリズム セットが含まれます。 これらのアルゴリズムは、物理メモリより大きいサイズのデータ サイズに対応しています。 また、分散された方法で、さまざまなプラットフォームで実行することができます。 製品に付属する Microsoft のカスタム [R パッケージ](/machine-learning-server/r-reference/introducing-r-server-r-package-reference)と [Python パッケージ](/machine-learning-server/python-reference/introducing-python-package-reference)のコレクションの詳細をご覧ください。
   
   ML Services は、Microsoft の革新技術とオープンソース コミュニティの貢献 (R、Python、AI ツールキット) を橋渡しします。 それは、すべて 1 つのエンタープライズ レベルのプラットフォーム上で行われます。 R または Python のすべてのオープン ソース機械学習パッケージが、Microsoft 独自の革新技術とサイド バイ サイドで動作できます。
 
@@ -43,7 +43,7 @@ HDInsight における ML Services のメリットは次のとおりです。
 
   従来のパラダイムと環境に依存する企業は、運用化に多くの時間と労力を費やすことになります。 その結果、モデルの変換時間、それらを有効で最新状態にしておくためのイテレーション、規制の承認、アクセス許可の管理などのコストと遅延が増加します。
 
-  ML Services は、エンタープライズ レベルの[運用化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)を提供します。 機械学習モデルが完成した後は、わずか数クリックで Web サービス API が生成されます。 これらの [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)はクラウドのサーバー グリッドでホストされ、基幹業務アプリケーションと統合できます。 弾力性のあるグリッドに展開できるので、バッチとリアルタイム スコアリングの両方について、ビジネスのニーズに合わせてシームレスに拡張できます。 方法については、[HDInsight での ML Services の運用化](r-server-operationalize.md)に関する記事をご覧ください。
+  ML Services は、エンタープライズ レベルの[運用化](/machine-learning-server/what-is-operationalization)を提供します。 機械学習モデルが完成した後は、わずか数クリックで Web サービス API が生成されます。 これらの [Web サービス](/machine-learning-server/operationalize/concept-what-are-web-services)はクラウドのサーバー グリッドでホストされ、基幹業務アプリケーションと統合できます。 弾力性のあるグリッドに展開できるので、バッチとリアルタイム スコアリングの両方について、ビジネスのニーズに合わせてシームレスに拡張できます。 方法については、[HDInsight での ML Services の運用化](r-server-operationalize.md)に関する記事をご覧ください。
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -60,9 +60,9 @@ HDInsight の ML Services には次の機能が含まれます。
 
 | 機能カテゴリ | 説明 |
 |------------------|-------------|
-| R 対応 | [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference): R で記述されたソリューション用であり、R のオープンソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。 |
-| Python 対応 | [Python モジュール](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference): Python で記述されたソリューション用であり、Python のオープン ソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。
-| [事前トレーニング済みモデル](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | ビジュアル分析とテキストのセンチメント分析に対応し、ユーザーが提供するデータをスコア付けできる状態になっています。 |
+| R 対応 | [R パッケージ](/machine-learning-server/r-reference/introducing-r-server-r-package-reference): R で記述されたソリューション用であり、R のオープンソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。 |
+| Python 対応 | [Python モジュール](/machine-learning-server/python-reference/introducing-python-package-reference): Python で記述されたソリューション用であり、Python のオープン ソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。
+| [事前トレーニング済みモデル](/machine-learning-server/install/microsoftml-install-pretrained-models) | ビジュアル分析とテキストのセンチメント分析に対応し、ユーザーが提供するデータをスコア付けできる状態になっています。 |
 | [展開と使用](r-server-operationalize.md) | サーバーを運用化 (`Operationalize`) し、Web サービスとしてソリューションを展開します。 |
 | [リモート実行](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | クライアント ワークステーションからネットワーク上の ML Services でリモート セッションを開始します。 |
 
@@ -96,7 +96,7 @@ Azure Machine Learning を使ってスコア付けを行うには、[AzureML](ht
 
 ### <a name="score-on-premises"></a>オンプレミスのスコア付け
 
-モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、ダウンロードし、逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「HDInsight でのスコア付け」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
+モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、ダウンロードし、逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「HDInsight でのスコア付け」で前述した方法を使用するか、[Web サービス](/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
 
 ## <a name="maintain-the-cluster"></a>クラスターの管理
 
@@ -112,7 +112,7 @@ ScaleR ライブラリ ルーチンを使用しているだけの場合は、通
 
 ML Services で使用可能なメモリは、MapReduce ジョブを実行しているときに変更できます。 クラスターを変更するには、クラスターに Apache Ambari UI を使用します。 Ambari UI の説明については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
-ML Services で使用できるメモリは、**RxHadoopMR** への呼び出しで Hadoop スイッチを使用して変更できます。
+ML Services で使用できるメモリは、 **RxHadoopMR** への呼び出しで Hadoop スイッチを使用して変更できます。
 
 ```r
 hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"

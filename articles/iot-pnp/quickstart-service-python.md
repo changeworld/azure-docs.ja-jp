@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946078"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741490"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>クイックスタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスを操作する (Python)
 
@@ -39,7 +39,7 @@ python --version
 pip install azure-iot-device
 ```
 
-次のコマンドを実行して、**azure-iot-hub** パッケージをインストールします。
+次のコマンドを実行して、 **azure-iot-hub** パッケージをインストールします。
 
 ```cmd/sh
 pip install azure-iot-hub
@@ -59,7 +59,7 @@ pip install azure-iot-hub
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
 
-1. このターミナル ウィンドウは、**デバイス** ターミナルとして使用されます。 複製したリポジトリのフォルダーに移動し、 */azure-iot-sdk-python/azure-iot-device/samples/pnp* フォルダーに移動します。
+1. このターミナル ウィンドウは、 **デバイス** ターミナルとして使用されます。 複製したリポジトリのフォルダーに移動し、 */azure-iot-sdk-python/azure-iot-device/samples/pnp* フォルダーに移動します。
 
 1. 次のコマンドを使用して、サンプルのサーモスタット デバイスを実行します。
 
@@ -77,19 +77,19 @@ pip install azure-iot-hub
 
 1. 複製された Python SDK リポジトリの */azure-iot-sdk-python/azure-iot-hub/samples* フォルダーに移動します。
 
-1. *registry_manager_pnp_sample.py* ファイルを開き、コードを確認します。 このサンプルは、**IoTHubRegistryManager** クラスを使用して IoT プラグ アンド プレイ デバイスと対話する方法を示しています。
+1. *registry_manager_pnp_sample.py* ファイルを開き、コードを確認します。 このサンプルは、 **IoTHubRegistryManager** クラスを使用して IoT プラグ アンド プレイ デバイスと対話する方法を示しています。
 
 > [!NOTE]
-> これらのサービス サンプルでは、**IoT Hub サービス クライアント**からの **IoTHubRegistryManager** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
+> これらのサービス サンプルでは、 **IoT Hub サービス クライアント** からの **IoTHubRegistryManager** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 ### <a name="get-the-device-twin"></a>デバイス ツインを取得する
 
 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
-* **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
+* **IOTHUB_CONNECTION_STRING** : 先ほどメモした IoT ハブ接続文字列。
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"`。
 
-このサンプルを実行するには、**サービス** ターミナルで次のコマンドを使用します。
+このサンプルを実行するには、 **サービス** ターミナルで次のコマンドを使用します。
 
 ```cmd/sh
 set IOTHUB_METHOD_NAME="getMaxMinReport"
@@ -107,7 +107,7 @@ The Model ID for this device is:
 dtmi:com:example:Thermostat;1
 ```
 
-次のスニペットは、*registry_manager_pnp_sample.py* からのサンプル コードを示しています。
+次のスニペットは、 *registry_manager_pnp_sample.py* からのサンプル コードを示しています。
 
 ```python
     # Create IoTHubRegistryManager
@@ -143,7 +143,7 @@ dtmi:com:example:Thermostat;1
     print("")
 ```
 
-以下の出力を示す**デバイス** ターミナルで更新が適用されていることを確認できます。
+以下の出力を示す **デバイス** ターミナルで更新が適用されていることを確認できます。
 
 ```cmd/sh
 the data in the desired properties patch was: {'targetTemperature': 42, '$version': 2}

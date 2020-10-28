@@ -3,14 +3,14 @@ title: クイック スタート:Python アプリを作成する
 description: Azure App Service で Linux コンテナーに初めての Python アプリをデプロイして、App Service の使用を開始します。
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813187"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741108"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -59,7 +59,7 @@ az --version
 az login
 ```
 
-このコマンドを実行すると、お客様の資格情報を収集するためにブラウザーが開かれます。 コマンドが完了すると、ご利用のサブスクリプションに関する情報を含んだ JSON 出力が表示されます。
+このコマンドを実行すると、お客様の資格情報を収集するためにブラウザーが開かれます。 コマンドが終了すると、ご利用のサブスクリプションに関する情報を含んだ JSON 出力が表示されます。
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
@@ -106,7 +106,7 @@ cd python-docs-hello-django
 
     [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、*python-docs-hello-world* フォルダーを開いていることを確認してください。
+    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、 *python-docs-hello-world* フォルダーを開いていることを確認してください。
 
 1. 開発サーバーを実行します。
 
@@ -116,7 +116,7 @@ cd python-docs-hello-django
     
     既定では、サーバーによって、アプリのエントリ モジュールが、サンプルで使用されている *app.py* 内にあると想定されています (別のモジュール名を使用する場合は、`FLASK_APP` 環境変数をその名前に設定します)。
 
-1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
+1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、 **Hello World!** というメッセージが表示されます。
 
     ![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
@@ -130,7 +130,7 @@ cd python-docs-hello-django
 
     [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、*python-docs-hello-django* フォルダーを開いていることを確認してください。
+    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、 *python-docs-hello-django* フォルダーを開いていることを確認してください。
     
 1. 開発サーバーを実行します。
 
@@ -138,7 +138,7 @@ cd python-docs-hello-django
     python manage.py runserver
     ```
 
-1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
+1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、 **Hello World!** というメッセージが表示されます。
 
     ![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
@@ -149,7 +149,7 @@ cd python-docs-hello-django
 
 ## <a name="deploy-the-sample"></a>サンプルのデプロイ
 
-`az webapp up` コマンドを使用して、ローカル フォルダー (*python-docs-hello-world*) にコードをデプロイします。
+`az webapp up` コマンドを使用して、ローカル フォルダー ( *python-docs-hello-world* ) にコードをデプロイします。
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -157,10 +157,10 @@ az webapp up --sku F1 --name <app-name>
 
 - `az` コマンドが認識されない場合は、「[初期環境を設定する](#set-up-your-initial-environment)」の説明に従って Azure CLI がインストールされていることを確認してください。
 - `webapp` コマンドが認識されない場合、それはご利用の Azure CLI のバージョンが 2.0.80 以上だからです。 そうでない場合は、最[新バージョンをインストール](/cli/azure/install-azure-cli)してください。
-- `<app_name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+- `<app_name>` を Azure 全体で一意の名前で置き換えます (" *有効な文字は、`a-z`、`0-9`、および `-` です* ")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 - `--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
 - 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location_name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
-- "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、*requirements.txt* ファイルがある *python-docs-hello-world* フォルダー (Flask) または *python-docs-hello-django フォルダー (Django)* でコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
+- "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、 *requirements.txt* ファイルがある *python-docs-hello-world* フォルダー (Flask) または *python-docs-hello-django フォルダー (Django)* でコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
 
 コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 次に、"http://&lt;app-name&gt;.azurewebsites.net でアプリを起動することができます" という内容のメッセージが表示されます。これは、Azure 上のアプリの URL です。
 

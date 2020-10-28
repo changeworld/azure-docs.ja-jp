@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 7a3da6b31f17a8be41ed435ecaa200e1d4fe3c0a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9719aea3a16a07f8c4ccbd21ea53c8b8982aefd5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87101203"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674986"
 ---
 # <a name="azure-for-students"></a>Microsoft Azure for Students
 
@@ -29,4 +29,4 @@ Azure for Students の使用条件の詳細については、[オファーの使
 - [ログイン エラーに関するヘルプを参照する](troubleshoot-login.md)
 - [ソフトウェアをダウンロードする (Azure for Students)](download-software.md)
 - [Azure for Students Starter の概要](azure-students-starter-program.md)
-- [Microsoft Learn: 無料のオンライン学習プラットフォーム](https://docs.microsoft.com/learn/)
+- [Microsoft Learn: 無料のオンライン学習プラットフォーム](/learn/)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 30cf90f6020ecd4eb560ac0fe2886ff03c552d13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825575"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669719"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Visual Studio で .NET および C# を使用して、Azure SQL Database または Azure SQL Managed Instance のデータベースに接続してクエリを実行します
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -66,11 +66,11 @@ ms.locfileid: "91825575"
    
 1. **[新しいプロジェクト]** ダイアログで、 **[Visual C#]** 、 **[コンソール アプリ (.NET Framework)]** の順に選択します。
    
-1. プロジェクトの名前に「*sqltest*」と入力して、 **[OK]** を選択します。 新しいプロジェクトが作成されます。 
+1. プロジェクトの名前に「 *sqltest* 」と入力して、 **[OK]** を選択します。 新しいプロジェクトが作成されます。 
    
 1. **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 
    
-1. **[NuGet パッケージ マネージャー]** で **[参照]** タブを選択し、**Microsoft.Data.SqlClient** を検索して選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** タブを選択し、 **Microsoft.Data.SqlClient** を検索して選択します。
    
 1. **[Microsoft.Data.SqlClient]** ページで **[インストール]** を選択します。 
    - プロンプトが表示されたら、 **[OK]** を選択してインストールを続行します。 
@@ -139,7 +139,7 @@ ms.locfileid: "91825575"
 
 ## <a name="run-the-code"></a>コードの実行
 
-1. アプリを実行するには、 **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、ツールバーの **[開始]** を選択するか、**F5** キーを押します。
+1. アプリを実行するには、 **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、ツールバーの **[開始]** を選択するか、 **F5** キーを押します。
 1. データベースの上位 20 のカテゴリ/製品行が返されていることを確認し、アプリ ウィンドウを閉じます。
 
 ## <a name="next-steps"></a>次のステップ
@@ -147,11 +147,10 @@ ms.locfileid: "91825575"
 - Windows/Linux/macOS 上で [.NET Core を使用して Azure SQL Database 内のデータベースに接続してクエリを実行する](connect-query-dotnet-core.md)方法について学びます。  
 - [Windows/Linux/macOS の .NET Core でのコマンド ラインの使用に関する概要](/dotnet/core/tutorials/using-with-xplat-cli)を把握します。
 - [SSMS を使用して Azure SQL Database に初めてのデータベースを設計](design-first-database-tutorial.md)する方法や [.NET を使用して Azure SQL Database に初めてのデータベースを設計](design-first-database-csharp-tutorial.md)する方法について学びます。
-- .NET の詳細については、[.NET のドキュメント](https://docs.microsoft.com/dotnet/)を参照してください。
+- .NET の詳細については、[.NET のドキュメント](/dotnet/)を参照してください。
 - 再試行ロジックの例:[ADO.NET を使用して Azure SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
-
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net

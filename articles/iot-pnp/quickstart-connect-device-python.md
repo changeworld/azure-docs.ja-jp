@@ -7,13 +7,13 @@ ms.date: 7/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574029"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737314"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Python)
 
@@ -37,7 +37,7 @@ python --version
 pip install azure-iot-device
 ```
 
-Python SDK IoT リポジトリをクローンし、**master** をチェックアウトします。
+Python SDK IoT リポジトリをクローンし、 **master** をチェックアウトします。
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-python
@@ -45,7 +45,7 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
 ## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
 
-*azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 このクイックスタートでは、*simple_thermostat.py* ファイルを使用します。 このサンプル コードでは、IoT プラグ アンド プレイ互換デバイスを実装し、Azure IoT Python デバイス クライアント ライブラリを使用します。
+*azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 このクイックスタートでは、 *simple_thermostat.py* ファイルを使用します。 このサンプル コードでは、IoT プラグ アンド プレイ互換デバイスを実装し、Azure IoT Python デバイス クライアント ライブラリを使用します。
 
 テキスト エディターで **simple_thermostat.py** ファイルを開きます。 次の点に注意してください。
 
@@ -61,13 +61,13 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
     1. デバイス SDK を使用してデバイス クライアントを作成し、IoT ハブに接続します。
 
-    1. プロパティを更新します。 使用している**サーモスタット** モデルでは、サーモスタット用の 2 つのプロパティとして `targetTemperature` と `maxTempSinceLastReboot` が定義されているため、これを使用することになります。 プロパティは、`device_client` で定義されている `patch_twin_reported_properties` メソッドを使用して更新されます。
+    1. プロパティを更新します。 使用している **サーモスタット** モデルでは、サーモスタット用の 2 つのプロパティとして `targetTemperature` と `maxTempSinceLastReboot` が定義されているため、これを使用することになります。 プロパティは、`device_client` で定義されている `patch_twin_reported_properties` メソッドを使用して更新されます。
 
     1. **execute_command_listener** 関数を使用して、コマンド要求のリッスンが開始されます。 この関数により、サービスからのコマンドをリッスンするように "リスナー" が設定されます。 リスナーを設定するときに、`method_name`、`user_command_handler`、および `create_user_response_handler` を指定します。
         - `user_command_handler` 関数では、コマンドを受信したときにデバイスによって行われる必要がある内容を定義します。 たとえば、アラームが鳴る場合、このコマンドを受信することの効果は、目を覚ますことです。 これは、呼び出されるコマンドの "効果" と考えてください。
         - `create_user_response_handler` 関数により、コマンドが正常に実行されたときに IoT ハブに送信される応答が作成されます。 たとえば、アラームが鳴る場合、スヌーズを押して応答します。これは、サービスに対するフィードバックです。 これは、サービスに与える返信と考えてください。 この応答はポータルで確認できます。
 
-    1. テレメトリの送信が開始されます。 pnp_methods.py ファイルには、**pnp_send_telemetry** が定義されています。 サンプル コードでは、ループを使用して、8 秒ごとにこの関数を呼び出しています。
+    1. テレメトリの送信が開始されます。 pnp_methods.py ファイルには、 **pnp_send_telemetry** が定義されています。 サンプル コードでは、ループを使用して、8 秒ごとにこの関数を呼び出しています。
 
     1. ユーザーが **Q** または **q** キーを押したら、すべてのリスナーとタスクを無効にし、ループを終了します。
 

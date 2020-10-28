@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936403"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669727"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:.NET Core (C#) を使用して Azure SQL Database または Azure SQL Managed Instance のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88936403"
 このクイックスタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使用してデータベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
 
 > [!TIP]
-> 次の Microsoft Learn モジュールは、[Azure SQL Database のデータベースに対してクエリを実行する ASP.NET アプリケーションを開発および構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習する際に役立ちます
+> 次の Microsoft Learn モジュールは、[Azure SQL Database のデータベースに対してクエリを実行する ASP.NET アプリケーションを開発および構成する](/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習する際に役立ちます
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ ms.locfileid: "88936403"
 - [お使いオペレーティング システム用の .NET Core](https://www.microsoft.com/net/core) がインストールされていること。
 
 > [!NOTE]
-> このクイック スタートでは、*mySampleDatabase* データベースを使用します。 別のデータベースを使いたい場合は、データベース参照を変更し、C# コードの `SELECT` クエリを変更する必要があります。
+> このクイック スタートでは、 *mySampleDatabase* データベースを使用します。 別のデータベースを使いたい場合は、データベース参照を変更し、C# コードの `SELECT` クエリを変更する必要があります。
 
 ## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
 
@@ -74,17 +74,17 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
     ![ADO.NET の接続文字列](./media/connect-query-dotnet-core/adonet-connection-string2.png)
 
-3. 使用する場合は、**ADO.NET** の接続文字列をコピーします。
+3. 使用する場合は、 **ADO.NET** の接続文字列をコピーします。
   
 ## <a name="create-a-new-net-core-project"></a>新しい .NET Core プロジェクトを作成する
 
-1. コマンド プロンプトを開き、**sqltest** という名前のフォルダーを作成します。 このフォルダーに移動して、次のコマンドを実行します。
+1. コマンド プロンプトを開き、 **sqltest** という名前のフォルダーを作成します。 このフォルダーに移動して、次のコマンドを実行します。
 
     ```cmd
     dotnet new console
     ```
 
-    このコマンドにより、初期 C# コード ファイル (**Program.cs**)、XML 構成ファイル (**sqltest.csproj**)、必要なバイナリなど、新しいアプリ プロジェクト ファイルが作成されます。
+    このコマンドにより、初期 C# コード ファイル ( **Program.cs** )、XML 構成ファイル ( **sqltest.csproj** )、必要なバイナリなど、新しいアプリ プロジェクト ファイルが作成されます。
 
 2. テキスト エディターで **sqltest.csproj** を開き、`<Project>` タグの間に次の XML を貼り付けます。 この XML により、依存関係として `System.Data.SqlClient` が追加されます。
 
@@ -96,7 +96,7 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
 ## <a name="insert-code-to-query-the-database-in-azure-sql-database"></a>Azure SQL Database のデータベースに対してクエリを実行するコードを挿入する
 
-1. テキスト エディターで、**Program.cs** を開きます。
+1. テキスト エディターで、 **Program.cs** を開きます。
 
 2. その内容を次のコードで置き換え、サーバー、データベース、ユーザー名、パスワードに実際の値を追加します。
 
@@ -207,4 +207,4 @@ namespace sqltest
 - [Windows/Linux/macOS の .NET Core でのコマンド ラインの使用に関する概要](/dotnet/core/tutorials/using-with-xplat-cli)
 - [.NET Framework と Visual Studio を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する](connect-query-dotnet-visual-studio.md)方法について学習します。  
 - [SSMS を使用して初めてのデータベースを設計する](design-first-database-tutorial.md)方法や、[C# と ADO.NET を使用してデータベースを設計して接続する](design-first-database-csharp-tutorial.md)方法について学習します。
-- .NET の詳細については、[.NET のドキュメント](https://docs.microsoft.com/dotnet/)を参照してください。
+- .NET の詳細については、[.NET のドキュメント](/dotnet/)を参照してください。

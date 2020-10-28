@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: contentperfq2
+ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447699"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668867"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク
 
@@ -27,9 +28,9 @@ ms.locfileid: "91447699"
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>サブスクリプションの支払い方法に移動する
 
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
+1. Azure Portal にアカウント管理者としてサインインします。
 
-1. "**コスト管理 + 請求**" を検索します。
+1. " **コスト管理 + 請求** " を検索します。
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
@@ -115,10 +116,10 @@ ms.locfileid: "91447699"
 
 Azure の使用制限により、クレジット額を超過する支出が防止されます。 Azure サブスクリプションに関連付けられた有効な支払方法がある限り、使用制限はいつでも削除できます。 複数月にわたるクレジットを含むサブスクリプション タイプ (Visual Studio Enterprise、Visual Studio Professional など) の場合、翌請求期間の開始時に使用制限を再度有効にできます。
 
-使用制限は、コミットメント プランや従量課金制価格を使用したサブスクリプションでは利用できません。 [Azure のサブスクリプションの種類と使用制限の利用の可否を網羅した一覧](https://azure.microsoft.com/support/legal/offer-details/)をご覧ください。
+使用制限は、コミットメント プランや従量課金制価格を使用したサブスクリプションでは利用できません。
 
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。
+1. Azure Portal にアカウント管理者としてサインインします。
+1. " **コスト管理 + 請求** " を検索します。
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
@@ -145,8 +146,8 @@ Azure の使用制限により、クレジット額を超過する支出が防�
 
 Azure イン オープン プランのライセンス サブスクリプションがある場合は、プロダクト キーを使用するか、クレジット カードでクレジットを購入することによって、Azure portal でサブスクリプションにクレジットを追加できます。
 
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。
+1. Azure Portal にアカウント管理者としてサインインします。
+1. " **コスト管理 + 請求** " を検索します。
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 

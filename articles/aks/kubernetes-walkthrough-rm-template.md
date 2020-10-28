@@ -4,13 +4,13 @@ description: Azure Resource Manager テンプレートを使用して Kubernetes
 services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
-ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 2695126b8ad515735907558e3c316b87ac5dfbdc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc,subject-armqs, devx-track-azurecli
+ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070743"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740277"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -90,16 +90,16 @@ az ad sp create-for-rbac --skip-assignment
 
     このクイック スタートでは、 *[OS ディスク サイズ GB]* 、 *[エージェント数]* 、 *[エージェント VM のサイズ]* 、 *[OS の種類]* 、および *[Kubernetes バージョン]* を既定値のままにしておいてください。 以下のテンプレート パラメーターに、独自の値を指定します。
 
-    * **サブスクリプション**:Azure サブスクリプションを選択します。
-    * **[リソース グループ]** : **[新規作成]** を選択します。 リソース グループの一意の名前 (*myResourceGroup* など) を入力し、 **[OK]** を選択します。
-    * **[場所]** :場所 (**米国東部**など) を選択します。
-    * **[クラスター名]** : AKS クラスターの一意の名前 (*myAKSCluster* など) を入力します。
-    * **[DNS プレフィックス]** : クラスターの一意の DNS プレフィックス (*myakscluster* など) を入力します。
-    * **[Linux Admin Username]\(Linux 管理者ユーザー名\)** : SSH を使用して接続するためのユーザー名 (*azureuser* など) を入力します。
-    * **[SSH RSA Public Key]\(SSH RSA 公開キー\)** : SSH キー ペアの "*公開*" 部分 (既定では、 *~/.ssh/id_rsa.pub* の内容) をコピーして貼り付けます。
+    * **サブスクリプション** :Azure サブスクリプションを選択します。
+    * **[リソース グループ]** : **[新規作成]** を選択します。 リソース グループの一意の名前 ( *myResourceGroup* など) を入力し、 **[OK]** を選択します。
+    * **[場所]** :場所 ( **米国東部** など) を選択します。
+    * **[クラスター名]** : AKS クラスターの一意の名前 ( *myAKSCluster* など) を入力します。
+    * **[DNS プレフィックス]** : クラスターの一意の DNS プレフィックス ( *myakscluster* など) を入力します。
+    * **[Linux Admin Username]\(Linux 管理者ユーザー名\)** : SSH を使用して接続するためのユーザー名 ( *azureuser* など) を入力します。
+    * **[SSH RSA Public Key]\(SSH RSA 公開キー\)** : SSH キー ペアの " *公開* " 部分 (既定では、 *~/.ssh/id_rsa.pub* の内容) をコピーして貼り付けます。
     * **[サービス プリンシパルのクライアント ID]** : `az ad sp create-for-rbac` コマンドから、サービス プリンシパルの *appId* をコピーして貼り付けます。
     * **[サービス プリンシパルのクライアント シークレット]** : `az ad sp create-for-rbac` コマンドから、サービス プリンシパルの *password* をコピーして貼り付けます。
-    * **上記の使用条件に同意する**: このボックスをオンにして同意します。
+    * **上記の使用条件に同意する** : このボックスをオンにして同意します。
 
     ![ポータルで Azure Kubernetes Service クラスターを作成するための Resource Manager テンプレート](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
@@ -129,7 +129,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-次の出力例は、前の手順で作成したノードを示しています。 すべてのノードの状態が "*準備完了*" であることを確認します。
+次の出力例は、前の手順で作成したノードを示しています。 すべてのノードの状態が " *準備完了* " であることを確認します。
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -257,14 +257,14 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
+最初に、 *azure-vote-front* サービスの *EXTERNAL-IP* が " *保留中* " として表示されます。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-*EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
+*EXTERNAL-IP* アドレスが " *保留中* " から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m

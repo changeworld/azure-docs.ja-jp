@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249504"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738104"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse マネージド プライベート エンドポイント (プレビュー)
 
@@ -52,6 +52,7 @@ SQL プールと SQL オンデマンドは、Azure Synapse ワークスペース
 この 2 つのマネージド プライベート エンドポイントは、Azure Synapse Studio に一覧表示されます。 左側のナビゲーションで **[管理]** を選択し、 **[Managed Virtual Networks]\(マネージド仮想ネットワーク\)** を選択すると、それらが Studio に表示されます。
 
 SQL プールを対象としたマネージド プライベート エンドポイントは *synapse-ws-sql--\<workspacename\>* で、SQL オンデマンドを対象にしたマネージド プライベート エンドポイントは *synapse-ws-sqlOnDemand--\<workspacename\>* です。
+
 ![SQL プールと SQL オンデマンドのマネージド プライベート エンドポイント](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Azure Synapse ワークスペースを作成すると、この 2 つのマネージド プライベート エンドポイントが自動的に作成されます。 この 2 つのマネージド プライベート エンドポイントに対して課金されることはありません。

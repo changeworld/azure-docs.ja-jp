@@ -3,13 +3,13 @@ title: Azure で Service Fabric 上に Linux コンテナー アプリを作成�
 description: このクイック スタートでは、アプリケーションの Docker イメージをビルドし、そのイメージをコンテナー レジストリにプッシュした後、Service Fabric クラスターにコンテナーをデプロイします。
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 27a21a685d8dc4aa92585ce49b21d1986a54209f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91541511"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741919"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -89,7 +89,7 @@ Service Fabric には、クラスターとそのアプリケーションを管�
 
 このクイック スタートでは、Service Fabric CLI と Service Fabric Explorer (Web ベースのツール) を使用します。 Service Fabric Explorer を使用するには、証明書の PFX ファイルをブラウザーにインポートする必要があります。 既定では、PFX ファイルにパスワードはありません。
 
-Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、 **[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、 **[あなたの証明書]** タブを選択します。次に、 **[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
+Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、 **[オプション]** をクリックします。 **環境設定** ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、 **[あなたの証明書]** タブを選択します。次に、 **[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
 
    ![Firefox での証明書のインストール](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -101,13 +101,13 @@ Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明�
     sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. インストール スクリプトを使用して投票アプリケーション定義をクラスターにコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。  PEM 証明書ファイルは、*install.sh* ファイルと同じディレクトリに置く必要があります。
+2. インストール スクリプトを使用して投票アプリケーション定義をクラスターにコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。  PEM 証明書ファイルは、 *install.sh* ファイルと同じディレクトリに置く必要があります。
 
     ```bash
     ./install.sh
     ```
 
-3. Web ブラウザーを開き、クラスターの Service Fabric Explorer エンドポイントに移動します。 エンドポイントの形式は、**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** です (例: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`)。 </br>
+3. Web ブラウザーを開き、クラスターの Service Fabric Explorer エンドポイントに移動します。 エンドポイントの形式は、 **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** です (例: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`)。 </br>
 
 4. **Applications** ノードを展開し、投票アプリケーションの種類と作成したインスタンスのエントリがあることを確認します。
 

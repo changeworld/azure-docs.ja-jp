@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fd7300fd21d20476305dc5404158f255d533ffed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537771"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539328"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91537771"
 ## <a name="prerequisite"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- [PowerShell Az モジュール](/powershell/azure/install-az-ps)。
 
 ## <a name="create-an-apache-spark-cluster-in-hdinsight"></a>HDInsight での Apache Spark クラスターの作成
 
@@ -36,7 +36,7 @@ ms.locfileid: "91537771"
 HDInsight クラスターの作成には、次の Azure オブジェクトとリソースの作成が含まれます。
 
 - Azure リソース グループ。 Azure リソース グループは、Azure リソースのコンテナーです。
-- Azure Storage アカウントまたは Azure Data Lake Storage。  各 HDInsight クラスターには、依存データ ストレージが必要です。 このクイックスタートでは、Azure Storage Blob をクラスター記憶域として使用するクラスターを作成します。 Data Lake Storage Gen2 の使用法の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+- Azure Storage アカウントまたは Azure Data Lake Storage。  各 HDInsight クラスターには、依存データ ストレージが必要です。 このクイックスタートでは、Azure Storage Blob をクラスター記憶域として使用するクラスターを作成します。 Data Lake Storage Gen2 の使用法の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 - HDInsight の各種クラスター。  このクイック スタートでは、Spark 2.3 クラスターを作成します。
 
 リソースを作成するには、PowerShell スクリプトを使います。 
@@ -167,14 +167,14 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
     ![カーネルの状態](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "カーネルの状態")
 
     Notebook を初めて起動すると、カーネルがバックグラウンドでいくつかのタスクを実行します。 カーネルの準備ができるまで待ちます。 
-1. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 コマンドを実行すると、クラスター上の Hive テーブルが一覧表示されます。
+1. 次のコードを空のセルに貼り付け、 **Shift + Enter** キーを押してコードを実行します。 コマンドを実行すると、クラスター上の Hive テーブルが一覧表示されます。
 
     ```PySpark
     %%sql
     SHOW TABLES
     ```
 
-    HDInsight の Spark クラスターで Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 `%%sql` により、プリセット `sqlContext` を使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターに既定で付属する Hive テーブル (**hivesampletable**) から先頭の 10 行を取得します。 結果が得られるまで約 30 秒かかります。 出力は次のようになります。
+    HDInsight の Spark クラスターで Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 `%%sql` により、プリセット `sqlContext` を使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターに既定で付属する Hive テーブル ( **hivesampletable** ) から先頭の 10 行を取得します。 結果が得られるまで約 30 秒かかります。 出力は次のようになります。
 
     ![HDInsight の Spark における Apache Hive クエリ](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "HDInsight Spark での Hive クエリ")
 

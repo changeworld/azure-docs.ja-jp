@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1377743fbaefdb812f18768307421fdae637ed54
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292389"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637583"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>クイック スタート:PowerShell を使用した Azure データ ファクトリの作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "91292389"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。
+このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに **コピー** します。 Azure Data Factory を使用してデータを **変換** する方法のチュートリアルについては、 [Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。
 
 > [!NOTE]
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
@@ -105,9 +105,9 @@ ms.locfileid: "91292389"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 
-* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、 **共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
 
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
@@ -115,8 +115,8 @@ ms.locfileid: "91292389"
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、ソース ストアとシンク ストアの両方として使用される Azure Storage のリンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
 
 >[!TIP]
->データ ストアの認証の種類として、このクイックスタートでは "*アカウント キー*" を使用しますが、サポートされている他の認証方法を選ぶこともできます。"*SAS URI*"、"*サービス プリンシパル*"、"*マネージド ID*" を必要に応じて使用してください。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)の対応するセクションを参照してください。
->さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
+>データ ストアの認証の種類として、このクイックスタートでは " *アカウント キー* " を使用しますが、サポートされている他の認証方法を選ぶこともできます。" *SAS URI* "、" *サービス プリンシパル* "、" *マネージド ID* " を必要に応じて使用してください。 詳細については、[この記事](./connector-azure-blob-storage.md#linked-service-properties)の対応するセクションを参照してください。
+>さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](./store-credentials-in-key-vault.md)を参照してください。
 
 1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します。まだ存在しない場合は、ADFv2QuickStartPSH フォルダーを作成してください。
 
@@ -163,9 +163,9 @@ ms.locfileid: "91292389"
 
 ## <a name="create-datasets"></a>データセットを作成する
 
-この手順では、**InputDataset** と **OutputDataset**。 これらのデータセットの種類は、**Binary** です。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。
-入力データセットは、入力フォルダーのソース データを表します。 入力データセットの定義では、ソース データを格納している BLOB コンテナー (**adftutorial**)、フォルダー (**input**)、およびファイル (**emp.txt**) を指定します。
-出力データセットは、ターゲットにコピーされるデータを表します。 出力データセットの定義では、データのコピー先の BLOB コンテナー (**adftutorial**)、フォルダー (**output**)、およびファイルを指定します。 
+この手順では、 **InputDataset** と **OutputDataset** 。 これらのデータセットの種類は、 **Binary** です。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。
+入力データセットは、入力フォルダーのソース データを表します。 入力データセットの定義では、ソース データを格納している BLOB コンテナー ( **adftutorial** )、フォルダー ( **input** )、およびファイル ( **emp.txt** ) を指定します。
+出力データセットは、ターゲットにコピーされるデータを表します。 出力データセットの定義では、データのコピー先の BLOB コンテナー ( **adftutorial** )、フォルダー ( **output** )、およびファイルを指定します。 
 1. 以下の内容を記述した **InputDataset.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します。
 
     ```json
@@ -190,7 +190,7 @@ ms.locfileid: "91292389"
     }
     ```
 
-2. データセット **InputDataset** を作成するには、**Set-AzDataFactoryV2Dataset** コマンドレットを実行します。
+2. データセット **InputDataset** を作成するには、 **Set-AzDataFactoryV2Dataset** コマンドレットを実行します。
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -231,7 +231,7 @@ ms.locfileid: "91292389"
     }
     ```
 
-4. **Set-AzDataFactoryV2Dataset** コマンドレットを実行して、**OutDataset** を作成します。
+4. **Set-AzDataFactoryV2Dataset** コマンドレットを実行して、 **OutDataset** を作成します。
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -306,7 +306,7 @@ ms.locfileid: "91292389"
     }
     ```
 
-2. パイプライン **Adfv2QuickStartPipeline** を作成するには、**Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
+2. パイプライン **Adfv2QuickStartPipeline** を作成するには、 **Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `

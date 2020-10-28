@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 963021e26036969a51f77641376c693e94ac5061
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460342"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536608"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリで Azure Cache for Redis を使用する 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91460342"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/dotnet)
-- **ASP.NET と Web 開発**ワークロードおよび **Azure の開発**ワークロードを含む、[Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+- **ASP.NET と Web 開発** ワークロードおよび **Azure の開発** ワークロードを含む、 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
@@ -39,7 +39,7 @@ ms.locfileid: "91460342"
 
     d. **.NET Framework 4.5.2** 以降が選択されていることを確認します。
 
-    e. **[名前]** ボックスで、プロジェクトに名前を付けます。 この例では、**ContosoTeamStats** という名前を使用しました。
+    e. **[名前]** ボックスで、プロジェクトに名前を付けます。 この例では、 **ContosoTeamStats** という名前を使用しました。
 
     f. **[OK]** を選択します。
    
@@ -59,7 +59,7 @@ ms.locfileid: "91460342"
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* ファイルを編集するには
 
-1. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
+1. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、 *CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
 
 1. *CacheSecrets.config* ファイルを編集します。 次の内容を追加します。
 
@@ -89,12 +89,12 @@ ms.locfileid: "91460342"
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>キャッシュ用のアプリ設定で web.config ファイルを更新する
 
-アプリケーションをローカルで実行すると、*CacheSecrets.config* 内の情報が、Azure Cache for Redis インスタンスへの接続に使われます。 後でこのアプリケーションを Azure にデプロイします。 そのときに、アプリケーションがこのファイルの代わりにキャッシュ接続情報の取得に使用するアプリ設定を Azure 内で構成します。 
+アプリケーションをローカルで実行すると、 *CacheSecrets.config* 内の情報が、Azure Cache for Redis インスタンスへの接続に使われます。 後でこのアプリケーションを Azure にデプロイします。 そのときに、アプリケーションがこのファイルの代わりにキャッシュ接続情報の取得に使用するアプリ設定を Azure 内で構成します。 
 
 *CacheSecrets.config* はアプリケーションと一緒に Azure にデプロイされず、アプリケーションのローカルなテストの間にだけ使われます。 キャッシュ データへの不正アクセスを防ぐため、この情報は可能な限り安全に保持してください。
 
 #### <a name="to-update-the-webconfig-file"></a>*web.config* ファイルを更新するには
-1. **ソリューション エクスプローラー**で、*web.config* ファイルをダブルクリックして開きます。
+1. **ソリューション エクスプローラー** で、 *web.config* ファイルをダブルクリックして開きます。
 
     ![web.config](./media/cache-web-app-howto/cache-web-config.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "91460342"
 * 変更前: `<appSettings>`
 * 変更後: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-`<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、*CacheSecrets.config* ファイルはデプロイされません。
+`<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、 *CacheSecrets.config* ファイルはデプロイされません。
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>StackExchange.Redis を使用するようにアプリケーションを構成するには
 
@@ -119,7 +119,7 @@ ms.locfileid: "91460342"
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>HomeController とレイアウトを更新するには
 
-1. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、*HomeController.cs* ファイルを開きます。
+1. **ソリューション エクスプローラー** で **Controllers** フォルダーを展開し、 *HomeController.cs* ファイルを開きます。
 
 2. キャッシュ クライアントとアプリの設定をサポートするために、次の 2 つの `using` ステートメントをファイルの先頭に追加します。
 
@@ -189,7 +189,7 @@ ms.locfileid: "91460342"
 
     ```
 
-4. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開します。 次に *_Layout.cshtml ファイル*を開きます。
+4. **ソリューション エクスプローラー** で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開します。 次に *_Layout.cshtml ファイル* を開きます。
 
     置換前のコード:
     
@@ -205,9 +205,9 @@ ms.locfileid: "91460342"
 
 ### <a name="to-add-a-new-rediscache-view"></a>新しい RedisCache ビューを追加するには
 
-1. **ソリューション エクスプローラー**で、 **[Views]** フォルダーを展開し、 **[Home]** フォルダーを右クリックします。 **[追加]**  >  **[ビュー...]** を選択します。
+1. **ソリューション エクスプローラー** で、 **[Views]** フォルダーを展開し、 **[Home]** フォルダーを右クリックします。 **[追加]**  >  **[ビュー...]** を選択します。
 
-2. **[ビューの追加]** ダイアログで、ビューの名前に「**RedisCache**」と入力します。 その後、 **[追加]** を選択します。
+2. **[ビューの追加]** ダイアログで、ビューの名前に「 **RedisCache** 」と入力します。 その後、 **[追加]** を選択します。
 
 3. *RedisCache.cshtml* ファイルのコードを次のコードに置き換えます。
 
@@ -249,7 +249,7 @@ ms.locfileid: "91460342"
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
-既定では、プロジェクトはテストとデバッグのためにアプリを [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) にローカルにホストするように構成されます。
+既定では、プロジェクトはテストとデバッグのためにアプリを [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) にローカルにホストするように構成されます。
 
 ### <a name="to-run-the-app-locally"></a>アプリをローカルで実行するには
 1. Visual Studio で **[デバッグ]**  >  **[デバッグの開始]** の順に選択してアプリをビルドし、テストとデバッグのためにアプリをローカルで起動します。
@@ -280,8 +280,8 @@ ms.locfileid: "91460342"
     | ------- | :---------------: | ----------- |
     | **アプリ名** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 必要に応じて、名前を一意にするためにタイムスタンプのサフィックスが追加される場合があります。 |
     | **サブスクリプション** | Azure サブスクリプションを選択します。 | 関連するホスティング料金は、このサブスクリプションに請求されます。 複数の Azure サブスクリプションがある場合は、適切なサブスクリプションを選択したことを確認します。|
-    | **リソース グループ** | キャッシュを作成したものと同じリソース グループを使います (*TestResourceGroup* など)。 | リソース グループは、すべてのリソースをグループとして管理するときに便利です。 後でアプリを削除する必要があるときは、グループを削除するだけで済みます。 |
-    | **[App Service プラン]** | **[新規]** を選択し、*TestingPlan* という名前で新しい App Service プランを作成します。 <br />キャッシュを作成するときに使ったものと同じ **[場所]** を使います。 <br />サイズでは **[Free]** を選びます。 | App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 |
+    | **リソース グループ** | キャッシュを作成したものと同じリソース グループを使います ( *TestResourceGroup* など)。 | リソース グループは、すべてのリソースをグループとして管理するときに便利です。 後でアプリを削除する必要があるときは、グループを削除するだけで済みます。 |
+    | **[App Service プラン]** | **[新規]** を選択し、 *TestingPlan* という名前で新しい App Service プランを作成します。 <br />キャッシュを作成するときに使ったものと同じ **[場所]** を使います。 <br />サイズでは **[Free]** を選びます。 | App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 |
 
     ![[App Service] ダイアログ ボックス](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
@@ -326,7 +326,7 @@ ms.locfileid: "91460342"
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 リソース グループの結果一覧で、 **[...]** を選択し、 **[リソース グループの削除]** を選択します。
+2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 リソース グループの結果一覧で、 **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
     ![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
