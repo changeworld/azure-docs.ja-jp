@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 01f10d3ba83d23478a7113cf4935181ee34959e3
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e459f654aa6824bc13b880f042d168b5b7cbafc0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125288"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368419"
 ---
 # <a name="enclave-aware-containers"></a>エンクレーブ対応コンテナー
 
@@ -65,5 +65,5 @@ Edgeless RT は、Open Enclave SDK をベースに作成されたオープンソ
 
 
 <!-- LINKS - internal -->
-[DC 仮想マシン](/confidential-computing/virtual-machine-solutions)
-の[機密コンテナー](/confidential-computing/containercompute/confidential-containers)
+[DC 仮想マシン](/azure/confidential-computing/virtual-machine-solutions)
+の[機密コンテナー](/azure/confidential-computing/confidential-containers)

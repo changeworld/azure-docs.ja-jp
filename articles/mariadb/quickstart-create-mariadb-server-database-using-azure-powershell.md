@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7db89d315e0df51aad7f4660ec5da64425eae2aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502258"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424444"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>クイック スタート:PowerShell を使用した Azure Database for MariaDB サーバーの作成
 
@@ -23,13 +23,13 @@ ms.locfileid: "87502258"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 > [!IMPORTANT]
 > Az.MariaDb PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります: `Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > Az.MariaDb PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-Azure Database for MariaDB サービスを初めて使用する場合は、**Microsoft.DBforMariaDB** リソースプロバイダーを登録する必要があります。
+Azure Database for MariaDB サービスを初めて使用する場合は、 **Microsoft.DBforMariaDB** リソースプロバイダーを登録する必要があります。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMariaDB
@@ -37,7 +37,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMariaDB
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプション ID を選択します。
+複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプション ID を選択します。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -45,9 +45,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、**myresourcegroup** という名前のリソース グループを**米国西部**リージョンに作成します。
+次の例では、 **myresourcegroup** という名前のリソース グループを **米国西部** リージョンに作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -70,7 +70,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 | SslEnforcement             | Enabled          | このサーバーに対して SSL を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | サーバーのストレージ容量 (単位はメガバイト)。 有効な StorageInMb は 5,120 MB 以上で、増分単位は 1,024 MB です。 ストレージ サイズの制限の詳細については、「[Azure Database for MariaDB の価格レベル](./concepts-pricing-tiers.md)」を参照してください。                                                                               |
 | Version                    | 5.7              | MariaDB のメジャー バージョン。                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | 管理者ログインのユーザー名。 これを **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** にすることはできません。                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | 管理者ログインのユーザー名。 これを **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 、 **public** にすることはできません。                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | セキュリティで保護された文字列形式の管理者ユーザーのパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。                                       |
 
 **Sku** パラメーターの値は、次の例のように、 **<価格レベル>\_<コンピューティング世代>\_<仮想コア数>** という規則に従います。
@@ -79,9 +79,9 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 - `-Sku GP_Gen5_32` は、"汎用、Gen 5、および 32 個の仮想コア" にマップされます。
 - `-Sku MO_Gen5_2` は、"メモリ最適化、Gen 5、および 2 個の仮想コア" にマップされます。
 
-リージョンおよびレベルごとの有効な **Sku** 値については、「[Azure Database for MariaDB の価格レベル](./concepts-pricing-tiers.md)」を参照してください。
+リージョンおよびレベルごとの有効な **Sku** 値については、「 [Azure Database for MariaDB の価格レベル](./concepts-pricing-tiers.md)」を参照してください。
 
-次の例では、**米国西部**リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MariaDB サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MariaDB サーバー管理者アカウントのパスワードであるため、これを記録しておきます。
+次の例では、 **米国西部** リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MariaDB サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MariaDB サーバー管理者アカウントのパスワードであるため、これを記録しておきます。
 
 > [!TIP]
 > サーバー名は DNS 名に対応しており、Azure 内でグローバルに一意であることが必要です。
@@ -100,7 +100,7 @@ New-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku G
 
 `New-AzMariaDbFirewallRule` コマンドレットを使用して、Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、`mysql` コマンドライン ツールや MariaDB Workbench などの外部アプリケーションが、Azure Database for MariaDB サービス ファイアウォールを経由してサーバーに接続できるようになります。
 
-次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、**AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
+次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、 **AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 
 ```azurepowershell-interactive
 New-AzMariaDbFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -ServerName mydemoserver -StartIPAddress 192.168.0.1 -EndIPAddress 192.168.0.1
@@ -111,7 +111,7 @@ New-AzMariaDbFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -Se
 
 ## <a name="configure-ssl-settings"></a>SSL 設定の構成
 
-既定では、サーバーとクライアント アプリケーション間で SSL 接続が適用されます。 この既定値では、インターネット上のデータ ストリームを暗号化することによって、"_インモーション_" データのセキュリティが確保されます。 このクイック スタートでは、サーバーの SSL 接続を無効にします。 詳細については、「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。
+既定では、サーバーとクライアント アプリケーション間で SSL 接続が適用されます。 この既定値では、インターネット上のデータ ストリームを暗号化することによって、" _インモーション_ " データのセキュリティが確保されます。 このクイック スタートでは、サーバーの SSL 接続を無効にします。 詳細については、「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。
 
 > [!WARNING]
 > 実稼働サーバーで SSL を無効にすることはお勧めしません。
@@ -139,7 +139,7 @@ mydemoserver.mariadb.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>mysql コマンドライン ツールを使用してサーバーに接続する
 
-`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MySQL コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
+`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MySQL コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、 [shell.azure.com](https://shell.azure.com/) にアクセスします。
 
 1. `mysql` コマンドライン ツールを使用してサーバーに接続します。
 

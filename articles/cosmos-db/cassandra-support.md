@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107489"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489321"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -208,7 +208,7 @@ Azure Cosmos DB の Cassandra API は、管理されたサービス プラット
 
 **Windows:**
 
-Windows を使用している場合は、[Linux 用の Windows ファイルシステム](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)を有効にすることをお勧めします。 その後、以下の linux コマンドを実行できます。
+Windows を使用している場合は、[Linux 用の Windows ファイルシステム](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)を有効にすることをお勧めします。 その後、以下の linux コマンドを実行できます。
 
 **Unix/Linux/Mac:**
 
@@ -255,7 +255,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一貫性のマッピング 
 
-Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](consistency-levels-across-apis.md#cassandra-mapping)に詳しく説明されています。
+Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](./cassandra-consistency.md#mapping-consistency-levels)に詳しく説明されています。
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 

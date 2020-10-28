@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108764"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487638"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 
@@ -32,7 +32,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 > [!NOTE]
 > CosmosDB を含め、さまざまな Azure プランを表示する基本的なサンプル Xamarin アプリのサンプル コードは、[こちら](https://github.com/xamarinhq/app-geocontacts)の GitHub でご覧いただけます。 このアプリでは、地理的に分散した連絡先を確認し、それらの連絡先がその場所を更新できるようにする方法が紹介されています。
 
-このクイックスタートでは、Azure portal を使用して、Azure Cosmos DB SQL API アカウント、ドキュメント データベース、およびコンテナーを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md) と [Xamarin](https://docs.microsoft.com/xamarin/) を基盤に [Xamarin.Forms](https://docs.microsoft.com/xamarin/) と [MVVM アーキテクチャ パターン](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)を使用して、todo リスト モバイル アプリを構築およびデプロイします。
+このクイックスタートでは、Azure portal を使用して、Azure Cosmos DB SQL API アカウント、ドキュメント データベース、およびコンテナーを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md) と [Xamarin](/xamarin/) を基盤に [Xamarin.Forms](/xamarin/) と [MVVM アーキテクチャ パターン](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)を使用して、todo リスト モバイル アプリを構築およびデプロイします。
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
 
@@ -177,7 +177,7 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 次の手順に、Visual Studio for Mac のデバッガーを使用してアプリを実行する方法を示します。
 
 > [!NOTE]
-> Android バージョンのアプリも使い方はまったく同じです。違いがある場合は以降の手順に示します。 Windows 上で Visual Studio を使用してデバッグする場合は、[iOS 用](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin)と [Android 用](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/)のドキュメントを参照してください。
+> Android バージョンのアプリも使い方はまったく同じです。違いがある場合は以降の手順に示します。 Windows 上で Visual Studio を使用してデバッグする場合は、[iOS 用](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin)と [Android 用](/xamarin/android/deploy-test/debugging/)のドキュメントを参照してください。
 
 1. 最初に、強調表示されているドロップダウンをクリックし、ToDoItems.iOS (iOS の場合) または ToDoItems.Android (Android の場合) を選択して、ターゲットとするプラットフォームを選択します。
 

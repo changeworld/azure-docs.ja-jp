@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945814"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476146"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバー
 
@@ -81,8 +81,8 @@ Azure Database for PostgreSQL のセキュリティ機能の詳細について�
 
 このサービスでは、PostgreSQL のコミュニティ バージョンが実行されます。 これにより、アプリケーションの完全な互換性が確保され、PostgreSQL エンジン上で開発された既存のアプリケーションを単一サーバー サービスに移行するために必要なリファクタリング コストが最小限に抑えられます。 単一サーバーへの移行は、次のいずれかのオプションを使用して実行できます。
 
-- **ダンプと復元** – ユーザーがダウンタイムを許容できるオフライン移行では、Pg_dump や Pg_restore などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、[ダンプと復元を使用した移行](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)に関するページを参照してください。
-- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、Azure Database Migration Service を利用できます。 [ポータル経由の DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) および [CLI を介した DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) に関するページを参照してください。
+- **ダンプと復元** – ユーザーがダウンタイムを許容できるオフライン移行では、Pg_dump や Pg_restore などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、[ダンプと復元を使用した移行](./howto-migrate-using-dump-and-restore.md)に関するページを参照してください。
+- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、Azure Database Migration Service を利用できます。 [ポータル経由の DMS](../dms/tutorial-postgresql-azure-postgresql-online-portal.md) および [CLI を介した DMS](../dms/tutorial-postgresql-azure-postgresql-online.md) に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 
@@ -98,4 +98,3 @@ Azure Database for PostgreSQL についての質問や提案は、Azure Database
 
 Azure Database for PostgreSQL 単一サーバー デプロイ モードの概要を確認したので、以下のことを行う準備ができました。
 - 最初のサーバーを作成する。
-  

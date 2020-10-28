@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397727"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370646"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -99,11 +99,11 @@ Azure AD ロールは、ディレクトリ内の Azure AD リソースの管理�
 
 | Azure AD ロール | アクセス許可 | Notes |
 | --- | --- | --- |
-| [全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
-| [ユーザー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>ユーザーとグループのすべての側面を作成および管理する</li><li>サポート チケットの管理</li><li>サービス正常性の監視</li><li>ユーザー、ヘルプデスク管理者、およびその他のユーザー管理者のパスワードを変更する</li></ul> |  |
-| [課金管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>購入する</li><li>サブスクリプションの管理</li><li>サポート チケットの管理</li><li>サービスの正常性を監視する</li></ul> |  |
+| [全体管理者](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
+| [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>ユーザーとグループのすべての側面を作成および管理する</li><li>サポート チケットの管理</li><li>サービス正常性の監視</li><li>ユーザー、ヘルプデスク管理者、およびその他のユーザー管理者のパスワードを変更する</li></ul> |  |
+| [課金管理者](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>購入する</li><li>サブスクリプションの管理</li><li>サポート チケットの管理</li><li>サービスの正常性を監視する</li></ul> |  |
 
-Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]** ブレードに表示されます。 すべての Azure AD ロールの一覧については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]** ブレードに表示されます。 すべての Azure AD ロールの一覧については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)」を参照してください。
 
 ![Azure portal での Azure AD ロール](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -120,7 +120,7 @@ Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]**
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Azure ロールと Azure AD ロールは重なり合うか
 
-既定では、Azure ロールと Azure AD ロールは、Azure と Azure AD にまたがっていません。 ただし、全体管理者が Azure portal で **[Azure リソースのアクセス管理]** スイッチを選択して自分のアクセスを昇格させた場合、全体管理者は特定のテナントのすべてのサブスクリプションに対する[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (Azure ロール) を許可されます。 ユーザー アクセス管理者ロールを使用すると、ユーザーは他のユーザーに Azure リソースに対するアクセス権を付与できます。 このスイッチは、サブスクリプションへのアクセス権を回復する場合に便利です。 詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](elevate-access-global-admin.md)」を参照してください。
+既定では、Azure ロールと Azure AD ロールは、Azure と Azure AD にまたがっていません。 ただし、全体管理者が Azure portal で **[Azure リソースのアクセス管理]** スイッチを選択して自分のアクセスを昇格させた場合、全体管理者は特定のテナントのすべてのサブスクリプションに対する [ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (Azure ロール) を許可されます。 ユーザー アクセス管理者ロールを使用すると、ユーザーは他のユーザーに Azure リソースに対するアクセス権を付与できます。 このスイッチは、サブスクリプションへのアクセス権を回復する場合に便利です。 詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](elevate-access-global-admin.md)」を参照してください。
 
 いくつかの Azure AD ロール (全体管理者ロールやユーザー管理者ロールなど) は、Azure AD と Microsoft 365 にまたがっています。 たとえば、全体管理者ロールのメンバーであれば、Azure AD および Microsoft 365 における全体管理者機能を持つことになります。たとえば、Microsoft Exchange や Microsoft SharePoint を変更する機能などです。 ただし、既定では、全体管理者は Azure リソースにアクセスできません。
 
@@ -129,5 +129,5 @@ Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]**
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](overview.md)
-- [Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)
 - [Azure の従来のサブスクリプション管理者](classic-administrators.md)

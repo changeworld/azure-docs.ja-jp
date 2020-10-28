@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e49ecf0f8e88e0de22117a5ed85b8352e73a2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020237"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487604"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする 
 
@@ -22,14 +22,14 @@ ms.locfileid: "89020237"
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 >  
 
 このクイックスタートでは、GitHub から例を複製することで、.NET と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Visual Studio 2019 をまだインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+Visual Studio 2019 をまだインストールしていない場合は、 **無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,7 +68,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
    ```
 
 > [!TIP]
-> 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](table-storage-how-to-use-dotnet.md)に関する記事を参照してください。
+> 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](./tutorial-develop-table-dotnet.md)に関する記事を参照してください。
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Visual Studio でサンプル アプリケーションを開く
 
@@ -102,7 +102,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
-1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 ウィンドウの右側にある [コピー] ボタンを使って**プライマリ接続文字列**をコピーします。
+1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 ウィンドウの右側にある [コピー] ボタンを使って **プライマリ接続文字列** をコピーします。
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="ソリューションを開く"
    }
@@ -114,7 +114,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 ## <a name="build-and-deploy-the-app"></a>アプリを構築してデプロイする
 
-1. Visual Studio の**ソリューション エクスプローラー**で **CosmosTableSamples** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の **ソリューション エクスプローラー** で **CosmosTableSamples** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="ソリューションを開く":::
 
@@ -173,4 +173,3 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 > [!div class="nextstepaction"]
 > [テーブル データを Table API にインポートする](table-import.md)
-

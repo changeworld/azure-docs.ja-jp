@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10e3f420a187d67e19392dd3647692b54a817fa5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ffa8e473fb084b2d5f0e7f59a07b3de50e04752e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090303"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475861"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 
@@ -35,7 +35,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 サンプルを実行するには、[Visual Studio](https://www.visualstudio.com/downloads/) または [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) と、有効な Azure CosmosDB アカウントが必要です。
 
-まだ Visual Studio を持っていない場合は、[Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[.NET によるモバイル開発]** のワークロードをインストールしてください。
+まだ Visual Studio を持っていない場合は、 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[.NET によるモバイル開発]** のワークロードをインストールしてください。
 
 Mac で作業したい場合は、[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) をダウンロードして、セットアップを実行します。
 
@@ -167,7 +167,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 
-3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列**の値をコピーし、**APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
+3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列** の値をコピーし、 **APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
 
 4. 接続文字列から `&replicaSet=globaldb` を削除します。 クエリ文字列からその値を削除しないと、ランタイム エラーが発生します。
 
@@ -180,11 +180,11 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. Visual Studio の**ソリューション エクスプローラー**で各プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. Visual Studio の **ソリューション エクスプローラー** で各プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2. **[Restore all NuGet packages]\(すべての NuGet パッケージの復元\)** をクリックします。
 3. **TaskList.Android** を右クリックして、 **[スタートアップ プロジェクトとして設定]** を選択します。
 4. F5 キーを押してアプリケーションのデバッグを開始します。
-5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
+5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
 6. **TaskList.iOS** プロジェクトを右クリックして、 **[スタートアップ プロジェクトとして設定]** を選択します。
 7. F5 キーを押してアプリケーションのデバッグを開始します。
 
@@ -206,4 +206,4 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Xamarin.Forms アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)
+> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

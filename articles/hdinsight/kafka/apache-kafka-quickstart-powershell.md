@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651371"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533004"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
+* インストール済みの PowerShell [Az モジュール](/powershell/azure/)。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -135,7 +135,7 @@ HDInsight クラスターの作成には最大で 20 分かかります。
 
 `-DisksPerWorkerNode` パラメーターは、HDInsight 上の Kafka のスケーラビリティを構成します。 HDInsight 上の Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Kafka は I/O が多いため、[Azure マネージド ディスク](../../virtual-machines/managed-disks-overview.md)を使ってノードごとに高いスループットと多くの記憶域を提供します。
 
-マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。 `-WorkerNodeSize` パラメーターを使って、VM の種類を設定することができます。 パラメーターの詳細については、「[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster)」ドキュメントを参照してください。
+マネージド ディスクの種類は、 __Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。 `-WorkerNodeSize` パラメーターを使って、VM の種類を設定することができます。 パラメーターの詳細については、「[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster)」ドキュメントを参照してください。
 
 (クラスターの作成時または作成後のスケーリングで) 32 個を超えるワーカー ノードを使うことを計画している場合は、`-HeadNodeSize` パラメーターを使って、コア数が 8 個以上、RAM が 14 GB 以上の VM サイズを指定する必要があります。 ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -147,7 +147,7 @@ HDInsight クラスターの作成には最大で 20 分かかります。
     ssh sshuser@mykafka-ssh.azurehdinsight.net
     ```
 
-2. クラスターに初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 プロンプトが表示されたら、「__yes__」と入力して、__Enter__ キーを押し、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加します。
+2. クラスターに初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 プロンプトが表示されたら、「 __yes__ 」と入力して、 __Enter__ キーを押し、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加します。
 
 3. メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
@@ -176,7 +176,7 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する
 
-Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" ホストについて理解しておく必要があります。 これらのホストは、Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
+Kafka を使うときは、 *Apache Zookeeper* ホストと " *ブローカー* " ホストについて理解しておく必要があります。 これらのホストは、Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
 
 このセクションでは、クラスターで Apache Ambari REST API からホスト情報を取得します。
 
@@ -232,15 +232,15 @@ Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" �
 
 ## <a name="manage-apache-kafka-topics"></a>Apache Kafka トピックの管理
 
-Kafka は、"*トピック*" にデータのストリームを格納します。 `kafka-topics.sh` ユーティリティを使って、トピックを管理できます。
+Kafka は、" *トピック* " にデータのストリームを格納します。 `kafka-topics.sh` ユーティリティを使って、トピックを管理できます。
 
-* **トピックを作成するには**、SSH 接続で次のコマンドを使います。
+* **トピックを作成するには** 、SSH 接続で次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    このコマンドを使用すると、`$KAFKAZKHOSTS` に格納されているホスト情報を使用して Zookeeper に接続されます。 次に、**test** という名前の Kafka トピックが作成されます。 
+    このコマンドを使用すると、`$KAFKAZKHOSTS` に格納されているホスト情報を使用して Zookeeper に接続されます。 次に、 **test** という名前の Kafka トピックが作成されます。 
 
     * このトピックに格納されるデータは、8 つのパーティションに分割されます。
 
@@ -250,7 +250,7 @@ Kafka は、"*トピック*" にデータのストリームを格納します。
         
         3 つの障害ドメインがあるリージョンでは、3 のレプリケーション係数により、レプリカを障害ドメインに分散できます。 2 つの障害ドメインのリージョンでは、4 のレプリケーション係数により、ドメイン全体に均等にレプリカが分散されます。
         
-        リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
+        リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
 
         Kafka は、Azure 障害ドメインを認識しません。 トピック用にパーティションのレプリカを作成すると、レプリカが適切に分散されず、高可用性が実現しない場合があります。
 
@@ -262,7 +262,7 @@ Kafka は、"*トピック*" にデータのストリームを格納します。
 
         * クラスターのスケールアップ
 
-* **トピックの一覧を表示するには**、次のコマンドを使います。
+* **トピックの一覧を表示するには** 、次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -270,7 +270,7 @@ Kafka は、"*トピック*" にデータのストリームを格納します。
 
     このコマンドは、Kafka クラスターで使用可能なトピックの一覧を表示します。
 
-* **トピックを削除するには**、次のコマンドを使います。
+* **トピックを削除するには** 、次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS
@@ -289,7 +289,7 @@ Kafka は、"*トピック*" にデータのストリームを格納します。
 
 ## <a name="produce-and-consume-records"></a>レコードの生成および消費
 
-Kafka では、トピック内に*レコード*が格納されます。 レコードは、*プロデューサー*によって生成され、*コンシューマー*によって消費されます。 プロデューサーとコンシューマーは "*Kafka ブローカー*" サービスと通信します。 HDInsight クラスターの各ワーカー ノードが、Kafka ブローカー ホストです。
+Kafka では、トピック内に *レコード* が格納されます。 レコードは、 *プロデューサー* によって生成され、 *コンシューマー* によって消費されます。 プロデューサーとコンシューマーは " *Kafka ブローカー* " サービスと通信します。 HDInsight クラスターの各ワーカー ノードが、Kafka ブローカー ホストです。
 
 先ほど作成した test トピックにレコードを格納し、コンシューマーを使用してそれらを読み取るには、次の手順に従います。
 
@@ -301,7 +301,7 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
    
     このコマンドの後ろには空の行があります。
 
-2. 空の行にテキスト メッセージを入力して、Enter キーを押します。 このようにメッセージをいくつか入力してから、**Ctrl + C** キーを使用して通常のプロンプトに戻ります。 各行が、個別のレコードとして Kafka トピックに送信されます。
+2. 空の行にテキスト メッセージを入力して、Enter キーを押します。 このようにメッセージをいくつか入力してから、 **Ctrl + C** キーを使用して通常のプロンプトに戻ります。 各行が、個別のレコードとして Kafka トピックに送信されます。
 
 3. トピックからレコードを読み取るには、SSH 接続から `kafka-console-consumer.sh` ユーティリティを使用します。
    

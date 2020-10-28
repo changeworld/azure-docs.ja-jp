@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011465"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425880"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>クイック スタート:.NET 用 Azure Storage SDK v11 を使用してキューを管理する
 
@@ -34,7 +34,7 @@ ms.locfileid: "89011465"
 - [.NET Core for Windows](https://www.microsoft.com/net/download/windows) または [.NET Framework](https://www.microsoft.com/net/download/windows) (Visual Studio for Windows に付属) をインストールする
 - [Visual Studio for Windows](https://www.visualstudio.com/) をインストールする。 .NET Core を使用する場合、Visual Studio のインストールは任意です。  
 
-.NET Core と .NET Framework の選択については、[サーバー アプリ用 .NET Core と .NET Framework の選択](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)に関するページを参照してください。
+.NET Core と .NET Framework の選択については、[サーバー アプリ用 .NET Core と .NET Framework の選択](/dotnet/standard/choosing-core-framework-server)に関するページを参照してください。
 
 ### <a name="linux"></a>Linux
 
@@ -56,7 +56,7 @@ ms.locfileid: "89011465"
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、*storage-queues-dotnet-quickstart* フォルダーを開き、*storage-queues-dotnet-quickstart.sln* をダブルクリックします。 
+このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、 *storage-queues-dotnet-quickstart* フォルダーを開き、 *storage-queues-dotnet-quickstart.sln* をダブルクリックします。 
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 
 ### <a name="windows"></a>Windows
 
-Visual Studio をエディターとして使用している場合は、**F5** キーを押して実行することができます。 
+Visual Studio をエディターとして使用している場合は、 **F5** キーを押して実行することができます。 
 
 それ以外の場合は、お使いのアプリケーションのディレクトリに移動し、`dotnet run` コマンドを使ってアプリケーションを実行します。
 
@@ -148,7 +148,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>接続文字列を解析してみる
 
-サンプルでは最初に、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するため、サンプルでは [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) メソッドが使用されます。 **TryParse** が成功すると、*storageAccount* 変数が初期化され、**true** が返されます。
+サンプルでは最初に、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するため、サンプルでは [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) メソッドが使用されます。 **TryParse** が成功すると、 *storageAccount* 変数が初期化され、 **true** が返されます。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -266,14 +266,14 @@ Azure キューを使用する .NET 開発については、以下の追加リ�
 
 ### <a name="binaries-and-source-code"></a>バイナリとソース コード
 
-- [.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)の最新バージョン用の NuGet パッケージをダウンロードします
+- [.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)の最新バージョン用の NuGet パッケージをダウンロードします
     - [共通](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [キュー](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - GitHub で [.NET クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net)を確認します。
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
 
-- .NET クライアント ライブラリの詳細については、[.NET API リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/storage)を参照してください。
+- .NET クライアント ライブラリの詳細については、[.NET API リファレンス](/dotnet/api/overview/azure/storage)を参照してください。
 - .NET クライアント ライブラリを使用して記述された [Queue Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues)を確認します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -281,6 +281,6 @@ Azure キューを使用する .NET 開発については、以下の追加リ�
 このクイック スタートでは、.NET を使用して、キューにメッセージを追加する方法、キューからメッセージをピークする方法、メッセージをデキューして処理する方法を説明しました。 
 
 > [!div class="nextstepaction"]
-> [アプリケーションと Azure Queue Storage の間で通信する](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [アプリケーションと Azure Queue Storage の間で通信する](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。

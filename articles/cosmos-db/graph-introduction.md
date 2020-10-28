@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279838"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490613"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Gremlin API の概要
 
@@ -32,7 +32,7 @@ Azure Cosmos DB Gremlin API で提供される差別化された機能は、次�
 
 * **弾力的にスケーラブルなスループットとストレージ**
 
-  実際のグラフは、1 つのサーバーの容量を超えてスケールする必要があります。 Azure Cosmos DB では、ストレージとプロビジョニングされたスループットの観点で実質的に無制限のサイズを持つことができる、水平方向にスケーラブルなグラフ データベースがサポートされています。 グラフ データベースのスケールが大きくなるにつれて、データは[グラフのパーティション分割](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning)を使用して自動的に分散されます。
+  実際のグラフは、1 つのサーバーの容量を超えてスケールする必要があります。 Azure Cosmos DB では、ストレージとプロビジョニングされたスループットの観点で実質的に無制限のサイズを持つことができる、水平方向にスケーラブルなグラフ データベースがサポートされています。 グラフ データベースのスケールが大きくなるにつれて、データは[グラフのパーティション分割](./graph-partitioning.md)を使用して自動的に分散されます。
 
 * **複数リージョンのレプリケーション**
 
@@ -52,7 +52,7 @@ Azure Cosmos DB Gremlin API で提供される差別化された機能は、次�
 
 * **インデックスの自動作成**
 
-  Azure Cosmos DB では、グラフのノード (頂点とも呼ばれます) や辺内のすべてのプロパティのインデックスが既定で自動的に作成されるため、スキーマや、セカンダリ インデックスの作成は不要です。 詳細については、[Azure Cosmos DB のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)に関する記事をご覧ください。
+  Azure Cosmos DB では、グラフのノード (頂点とも呼ばれます) や辺内のすべてのプロパティのインデックスが既定で自動的に作成されるため、スキーマや、セカンダリ インデックスの作成は不要です。 詳細については、[Azure Cosmos DB のインデックス作成](/azure/cosmos-db/index-overview)に関する記事をご覧ください。
 
 * **Apache TinkerPop との互換性**
 

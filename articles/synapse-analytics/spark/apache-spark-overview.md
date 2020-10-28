@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3c269f07c177d99e46dcc343b80979835b429b68
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87498924"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369354"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Apache Spark
 
@@ -45,7 +45,7 @@ Azure Synapse の Spark プールでは、フル マネージドの Spark サー
 
 Azure Synapse の Spark プールには、そのプールで利用できる次のコンポーネントが既定で含まれています。
 
-- [Spark Core](https://spark.apache.org/docs/latest/)。 Spark Core、Spark SQL、GraphX、MLlib が含まれます。
+- [Spark Core](https://spark.apache.org/docs/2.4.5/)。 Spark Core、Spark SQL、GraphX、MLlib が含まれます。
 - [Anaconda](https://docs.continuum.io/anaconda/)
 - [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 - [Nteract ノートブック](https://nteract.io/)
@@ -81,7 +81,7 @@ Synapse Analytics の Apache Spark の詳細については、次の記事を参
 - [クイック スタート: Azure Synapse の Spark プールを作成する](../quickstart-create-apache-spark-pool-portal.md)
 - [クイック スタート: Apache Spark ノートブックを作成する](../quickstart-apache-spark-notebook.md)
 - [チュートリアル:Apache Spark を使用した機械学習](./apache-spark-machine-learning-mllib-notebook.md)
-- [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)
+- [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/2.4.5/)
 
 > [!NOTE]
 > 公式の Apache Spark ドキュメントの一部では、Spark コンソールの使用を前提としていますが、このコンソールは Azure Synapse Spark では利用できません。ノートブックまたは IntelliJ のエクスペリエンスをご利用ください。

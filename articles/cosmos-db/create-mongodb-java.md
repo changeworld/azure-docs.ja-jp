@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87323640"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475959"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB の MongoDB API と Java を使ってコンソール アプリを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "87323640"
 
 ## <a name="add-a-collection"></a>コレクションの追加
 
-新しいデータベースに **db**、新しいコレクションに **coll** という名前を付けます。
+新しいデータベースに **db** 、新しいコレクションに **coll** という名前を付けます。
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -111,7 +111,7 @@ ms.locfileid: "87323640"
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. Azure Cosmos DB アカウントから **[クイック スタート]** を選択し、**Java** を選択して、接続文字列をクリップボードにコピーします。
+1. Azure Cosmos DB アカウントから **[クイック スタート]** を選択し、 **Java** を選択して、接続文字列をクリップボードにコピーします。
 
 2. *Program.java* ファイルを開き、MongoClientURI コンストラクターの引数を接続文字列で置き換えます。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
     
@@ -136,4 +136,4 @@ ms.locfileid: "87323640"
 このクイックスタートでは、Azure Cosmos DB API for Mongo DB アカウントを作成する方法や、データ エクスプローラーを使用してデータベースとコンテナーを追加する方法、Java コンソール アプリを使用してデータを追加する方法について説明しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
+> [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903754"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491327"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 
@@ -43,7 +43,7 @@ PostgreSQL コミュニティ エディションを搭載した Azure Database f
 
 Azure Database for PostgreSQL 単一サーバーは、最小限の要件でデータベースをカスタマイズできる、完全に管理されたデータベースサービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、単一の可用性ゾーンで 99.99% の可用性を備えた組み込みの高可用性を実現するよう最適化されています。 PostgreSQL 9.5、9.6、10、および 11 のコミュニティ バージョンをサポートしています。 このサービスは現時点で一般公開されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
-Single Server デプロイ オプションでは、次の 3 つの価格レベルが提供されます。Basic、汎用、メモリ最適化。 使用しているデータベースのワークロードをサポートするために、各レベルでは異なるリソース機能が提供されています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)に関するページを参照してください。
+Single Server デプロイ オプションでは、次の 3 つの価格レベルが提供されます。Basic、汎用、メモリ最適化。 使用しているデータベースのワークロードをサポートするために、各レベルでは異なるリソース機能が提供されています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](./concepts-pricing-tiers.md)に関するページを参照してください。
 
 単一サーバーは、修正プログラムの適用スケジュールや PostgreSQL のカスタム構成の設定を細かく制御する必要がない、自動化された修正プログラムの適用を処理するように設計された、クラウド ネイティブ アプリケーションに最適です。
 
@@ -72,7 +72,7 @@ Hyperscale (Citus) デプロイ オプションでは、次のことを実現で
 - 大規模なデータセットに対する応答を迅速化するため、これらのサーバー間でクエリを並列処理
 - マルチテナント アプリケーション、リアルタイムの運用分析、および高スループットのトランザクション ワークロードに対する優れたサポート
   
-PostgreSQL 向けにビルドされたアプリケーションでは、標準の[接続ライブラリ](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries)と最小限の変更により、Hyperscale (Citus) に対して分散クエリを実行できます。
+PostgreSQL 向けにビルドされたアプリケーションでは、標準の[接続ライブラリ](./concepts-connection-libraries.md)と最小限の変更により、Hyperscale (Citus) に対して分散クエリを実行できます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f81a44af4a90ccda1875c0a9f2bfaa8dc0b73441
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945807"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489695"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Azure で適切な PostgreSQL サーバー オプションを選択する
 
@@ -86,7 +86,7 @@ Azure Database for PostgreSQL を使用して、データベースを引き続�
 
 また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、まったく行わないで済みます。
 
-- Azure VM 上の PostgreSQL を使用する場合は、オペレーティング システムと PostgreSQL サーバー インスタンスの構成を全面的に制御できます。 VM を使用する場合は、オペレーティング システムとデータベース ソフトウェアの更新またはアップグレードをいつ行うかと、どのパッチを適用するかを決定します。 また、ウイルス対策アプリケーションなどの追加ソフトウェアをインストールするタイミングも決定します。 修正プログラムの適用、バックアップ、高可用性の実現を大幅に簡素化するために、自動化された機能がいくつか用意されています。 VM のサイズ、ディスクの数、ストレージの構成を制御できます。 詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)に関する記事を参照してください。
+- Azure VM 上の PostgreSQL を使用する場合は、オペレーティング システムと PostgreSQL サーバー インスタンスの構成を全面的に制御できます。 VM を使用する場合は、オペレーティング システムとデータベース ソフトウェアの更新またはアップグレードをいつ行うかと、どのパッチを適用するかを決定します。 また、ウイルス対策アプリケーションなどの追加ソフトウェアをインストールするタイミングも決定します。 修正プログラムの適用、バックアップ、高可用性の実現を大幅に簡素化するために、自動化された機能がいくつか用意されています。 VM のサイズ、ディスクの数、ストレージの構成を制御できます。 詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/sizes.md)に関する記事を参照してください。
 
 ## <a name="time-to-move-to-azure-postgresql-service-paas"></a>Azure PostgreSQL Service (PaaS) へ移行するタイミング
 
@@ -98,4 +98,3 @@ Azure Database for PostgreSQL を使用して、データベースを引き続�
 
 - [Azure Database for PostgreSQL の価格](https://azure.microsoft.com/pricing/details/postgresql/server/)に関するページをご覧ください。
 - まず、最初のサーバーを作成します。
-

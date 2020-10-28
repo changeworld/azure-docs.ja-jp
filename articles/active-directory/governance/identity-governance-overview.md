@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306465"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362452"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -42,7 +42,7 @@ Identity Governance は、オンプレミスであれクラウドであれ、従
 
 ## <a name="identity-lifecycle"></a>ID ライフサイクル
 
-Identity Governance により、組織は、*生産性* (従業員が組織に加わったときなどに、必要なリソースへのアクセスできるようになるまでの時間) と *セキュリティ* (従業員の雇用形態の変更などによって、時間の経過に伴いアクセス権をどのように変更すべきか) とのバランスを取ることができます。  ID ライフサイクル管理は ID 管理の基盤であり、大規模な効果的な管理には、アプリケーションの ID ライフサイクル管理インフラストラクチャの近代化が必要です。
+Identity Governance により、組織は、 *生産性* (従業員が組織に加わったときなどに、必要なリソースへのアクセスできるようになるまでの時間) と *セキュリティ* (従業員の雇用形態の変更などによって、時間の経過に伴いアクセス権をどのように変更すべきか) とのバランスを取ることができます。  ID ライフサイクル管理は ID 管理の基盤であり、大規模な効果的な管理には、アプリケーションの ID ライフサイクル管理インフラストラクチャの近代化が必要です。
 
 ![ID ライフサイクル](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -58,7 +58,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 通常、IT 部門は、アクセス承認の決定を管理職意思決定者に委任します。  さらに、ユーザー自身が IT 部門に関与していることがあります。  たとえば、ヨーロッパで会社のマーケティング アプリケーションで顧客の機密データにアクセスするユーザーは、会社のポリシーを把握している必要があります。 ゲスト ユーザーは、招待されている組織のデータの処理要件を理解していない可能性があります。
 
-組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリ](../saas-apps/tutorial-list.md)または [SCIM と統合されたアプリ](../app-provisioning/use-scim-to-provision-users-and-groups.md)と組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。  また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../external-identities/hybrid-cloud-to-on-premises.md)を制御することもできます。  それにより、[Azure AD アクセス レビュー](access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。   また、[Azure AD エンタイトルメント管理](entitlement-management-overview.md)を使用することで、グループとチームのメンバーシップ、アプリケーション ロール、SharePoint Online ロールのパッケージ全体で、ユーザーによるアクセス要求の方法を定義することができます。
+組織では、[動的グループ](../enterprise-users/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリ](../saas-apps/tutorial-list.md)または [SCIM と統合されたアプリ](../app-provisioning/use-scim-to-provision-users-and-groups.md)と組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。  また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../external-identities/hybrid-cloud-to-on-premises.md)を制御することもできます。  それにより、[Azure AD アクセス レビュー](access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。   また、[Azure AD エンタイトルメント管理](entitlement-management-overview.md)を使用することで、グループとチームのメンバーシップ、アプリケーション ロール、SharePoint Online ロールのパッケージ全体で、ユーザーによるアクセス要求の方法を定義することができます。
 
 ユーザーがアプリケーションにアクセスしようとすると、Azure AD は[条件付きアクセス](../conditional-access/index.yml)ポリシーを適用します。 条件付きアクセス ポリシーには、たとえば、[使用条件](../conditional-access/terms-of-use.md)を表示することと、[ユーザーがそれらの条件に確実に同意した](../conditional-access/require-tou.md)後でアプリケーションにアクセスできるようになることを含めることができます。
 
@@ -100,7 +100,7 @@ Identity Governance 機能についてフィードバックがありましたら
 すべての顧客にとって完璧なソリューションや推奨事項はありませんが、従業員の安全性と生産性を高めるために従うことを Microsoft が推奨するベースライン ポリシーについては、次の構成ガイドでもご覧いただけます。
 
 - [ID とデバイスのアクセスの構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [特権アクセスのセキュリティ保護](../users-groups-roles/directory-admin-roles-secure.md)
+- [特権アクセスのセキュリティ保護](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>付録 - Identity Governance の機能で管理するための最小特権ロール
 

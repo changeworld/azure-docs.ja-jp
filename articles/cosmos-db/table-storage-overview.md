@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7727dd2ae69fab75219c5d6d733db3f150061df3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318723"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477234"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 
@@ -30,10 +30,10 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
-* [.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要](table-storage-how-to-use-dotnet.md)
+* [.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要](./tutorial-develop-table-dotnet.md)
 
 * 利用可能な API の詳細については、Table service のリファレンス ドキュメントを参照してください。
 
-    * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [.NET 用ストレージ クライアント ライブラリ リファレンス](/dotnet/api/overview/azure/storage)
 
-    * [REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API リファレンス](/rest/api/storageservices/)

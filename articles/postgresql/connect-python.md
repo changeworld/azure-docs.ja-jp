@@ -8,19 +8,19 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91707899"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481195"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
 このクイックスタートでは、macOS、Ubuntu Linux、または Windows 上で Python を使用して Azure Database for PostgreSQL を操作します。 このクイックスタートでは、データベースに接続し、SQL ステートメントを使用してデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Python には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 > [!TIP]
-> PostgreSQL を使用する Django アプリケーションを構築する場合は、[PostgreSQL を使用した Django Web アプリのデプロイ](../app-service/containers/tutorial-python-postgresql-app.md)に関するチュートリアルを参照してください。
+> PostgreSQL を使用する Django アプリケーションを構築する場合は、[PostgreSQL を使用した Django Web アプリのデプロイ](../app-service/tutorial-python-postgresql-app.md)に関するチュートリアルを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,7 +42,7 @@ ms.locfileid: "91707899"
 Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 この情報は Azure portal から取得できます。
 
 1. [Azure portal](https://portal.azure.com/) で、ご利用の Azure Database for PostgreSQL サーバー名を検索して選択します。 
-1. サーバーの **[概要]** ページで、完全修飾**サーバー名**と**管理者ユーザー名**をコピーします。 完全修飾**サーバー名**は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、**管理者ユーザー名**は常に *\<my-admin-username>@\<my-server-name>* の形式になります。 
+1. サーバーの **[概要]** ページで、完全修飾 **サーバー名** と **管理者ユーザー名** をコピーします。 完全修飾 **サーバー名** は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、 **管理者ユーザー名** は常に *\<my-admin-username>@\<my-server-name>* の形式になります。 
    
    また、管理者パスワードも必要です。 忘れた場合は、このページでリセットできます。 
    
@@ -57,14 +57,14 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 1. ファイルにコード例を追加します。 コードで、次のように置き換えます。
    - `<server-name>` および `<admin-username>` を、Azure portal からコピーした値に指定します。
    - `<admin-password>` をサーバー パスワードに指定します。
-   - `<database-name>` を Azure Database for PostgreSQL データベースの名前に指定します。 サーバーの作成時に、*postgres* という名前の既定のデータベースが自動的に作成されています。 このデータベースの名前を変更することも、SQL コマンドを使用して新しいデータベースを作成することもできます。 
+   - `<database-name>` を Azure Database for PostgreSQL データベースの名前に指定します。 サーバーの作成時に、 *postgres* という名前の既定のデータベースが自動的に作成されています。 このデータベースの名前を変更することも、SQL コマンドを使用して新しいデータベースを作成することもできます。 
    
-1. ファイルに *.py* 拡張子を付けてプロジェクト フォルダーに保存します。たとえば、*postgres-insert.py* のように指定します。 Windows の場合は、ファイルを保存するときに UTF-8 エンコードを選択するようにしてください。 
+1. ファイルに *.py* 拡張子を付けてプロジェクト フォルダーに保存します。たとえば、 *postgres-insert.py* のように指定します。 Windows の場合は、ファイルを保存するときに UTF-8 エンコードを選択するようにしてください。 
    
 1. ファイルを実行するには、コマンドライン インターフェイスでプロジェクト フォルダーに移動し、「`python`」と入力して、その後にファイル名を入力します (例: `python postgres-insert.py`)。
 
 ## <a name="create-a-table-and-insert-data"></a>テーブルを作成してデータを挿入する
-次のコード例では、[psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 関数を使用して Azure Database for PostgreSQL データベースに接続し、SQL **INSERT** ステートメントを使用してデータを読み込みます。 [cursor. execute](http://initd.org/psycopg/docs/cursor.html#execute) 関数は、データベースに対して SQL クエリを実行します。 
+次のコード例では、 [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 関数を使用して Azure Database for PostgreSQL データベースに接続し、SQL **INSERT** ステートメントを使用してデータを読み込みます。 [cursor. execute](http://initd.org/psycopg/docs/cursor.html#execute) 関数は、データベースに対して SQL クエリを実行します。 
 
 ```Python
 import psycopg2
@@ -108,7 +108,7 @@ conn.close()
 :::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Azure Database for PostgreSQL サーバーの名前":::
 
 ## <a name="read-data"></a>データの読み取り
-次のコード例では、Azure Database for PostgreSQL データベースに接続し、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **SELECT** ステートメントを使用してデータを読み取ります。 この関数はクエリを受け取り、[cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) を使用して反復処理する結果セットを返します。 
+次のコード例では、Azure Database for PostgreSQL データベースに接続し、 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **SELECT** ステートメントを使用してデータを読み取ります。 この関数はクエリを受け取り、[cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) を使用して反復処理する結果セットを返します。 
 
 ```Python
 import psycopg2
@@ -142,7 +142,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>データの更新
-次のコード例では、Azure Database for PostgreSQL データベースに接続し、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **UPDATE** ステートメントを使用してデータを更新します。 
+次のコード例では、Azure Database for PostgreSQL データベースに接続し、 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **UPDATE** ステートメントを使用してデータを更新します。 
 
 ```Python
 import psycopg2
@@ -172,7 +172,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>データの削除
-次のコード例では、Azure Database for PostgreSQL データベースに接続し、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **DELETE** ステートメントを使用して、前に挿入したインベントリ項目を削除します。 
+次のコード例では、Azure Database for PostgreSQL データベースに接続し、 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **DELETE** ステートメントを使用して、前に挿入したインベントリ項目を削除します。 
 
 ```Python
 import psycopg2

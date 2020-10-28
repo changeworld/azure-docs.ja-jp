@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b0939191a8029ef30f17500bbaaa7eb32b5a6d7e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278365"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486550"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイックスタート: Spring Data Azure Cosmos DB v3 アプリを構築して Azure Cosmos DB SQL API データを管理する
 
@@ -36,9 +36,9 @@ ms.locfileid: "92278365"
 > Spring Data Azure Cosmos DB によって、SQL API のみがサポートされています。
 >
 > 他の Azure Cosmos DB API での Spring Data については、次の記事を参照してください。
-> * [Azure Cosmos DB での Apache Cassandra 用 Spring Data](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Azure Cosmos DB での Spring Data MongoDB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Azure Cosmos DB での Spring Data Gremlin](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Azure Cosmos DB での Apache Cassandra 用 Spring Data](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Azure Cosmos DB での Spring Data MongoDB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Azure Cosmos DB での Spring Data Gremlin](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -50,15 +50,15 @@ ms.locfileid: "92278365"
 
 ## <a name="introductory-notes"></a>概要
 
-"*Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
+" *Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB " *アカウント* " には 0個以上の " *データベース* " が含まれます。" *データベース* " (DB) には 0 個以上の " *コンテナー* " が含まれます。また、次の図に示すように、" *コンテナー* " には 0 個以上の項目が含まれます。
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
 
-データベース、コンテナー、項目の詳細については、[こちら](account-databases-containers-items.md)を参照してください。 "*プロビジョニング済みスループット*" や "*パーティション キー*" など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
+データベース、コンテナー、項目の詳細については、[こちら](account-databases-containers-items.md)を参照してください。 " *プロビジョニング済みスループット* " や " *パーティション キー* " など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
 
-プロビジョニング済みスループットは要求ユニット (*RU*) 単位で測定されます。RU には通貨価格が設定されており、アカウント運用コストの大きな決定要因となります。 プロビジョニング済みスループットはコンテナー単位またはデータベース単位で選択できますが、通常はコンテナーレベルのスループット仕様が推奨されます。 スループットのプロビジョニングの詳細については、[こちら](set-throughput.md)を参照してください。
+プロビジョニング済みスループットは要求ユニット ( *RU* ) 単位で測定されます。RU には通貨価格が設定されており、アカウント運用コストの大きな決定要因となります。 プロビジョニング済みスループットはコンテナー単位またはデータベース単位で選択できますが、通常はコンテナーレベルのスループット仕様が推奨されます。 スループットのプロビジョニングの詳細については、[こちら](set-throughput.md)を参照してください。
 
-Cosmos DB コンテナーに項目を挿入すると、要求を処理するためのストレージとコンピューティングが追加されて、データベースが水平方向に拡張されます。 ストレージとコンピューティングの容量は "*パーティション*" と呼ばれる個別の単位で追加されます。ドキュメント内の 1 つのフィールドを選択し、これを各ドキュメントをパーティションにマップするパーティション キーにする必要があります。 パーティションを管理する方法として、各パーティションに、パーティション キー値の範囲を超えて、ほぼ等しいスライスを割り当てます。そのため、比較的ランダムまたは均等に分散されたパーティション キーを選択することをお勧めします。 そうしないと、一部のパーティションに非常に多くの要求が集中し ("*ホット パーティション*")、他のパーティションは少数の要求しか受け取らない ("*コールド パーティション*") 状況が発生しますが、これは回避する必要があります。 パーティション分割の詳細については、[こちら](partitioning-overview.md)を参照してください。
+Cosmos DB コンテナーに項目を挿入すると、要求を処理するためのストレージとコンピューティングが追加されて、データベースが水平方向に拡張されます。 ストレージとコンピューティングの容量は " *パーティション* " と呼ばれる個別の単位で追加されます。ドキュメント内の 1 つのフィールドを選択し、これを各ドキュメントをパーティションにマップするパーティション キーにする必要があります。 パーティションを管理する方法として、各パーティションに、パーティション キー値の範囲を超えて、ほぼ等しいスライスを割り当てます。そのため、比較的ランダムまたは均等に分散されたパーティション キーを選択することをお勧めします。 そうしないと、一部のパーティションに非常に多くの要求が集中し (" *ホット パーティション* ")、他のパーティションは少数の要求しか受け取らない (" *コールド パーティション* ") 状況が発生しますが、これは回避する必要があります。 パーティション分割の詳細については、[こちら](partitioning-overview.md)を参照してください。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -107,7 +107,7 @@ dynamic.collection.name=spel-property-collection
 cosmos.queryMetricsEnabled=true
 ```
 
-Azure Cosmos DB アカウント、データベース、およびコンテナーを作成したら、構成ファイルの空欄を埋めるだけで、Spring Boot および Spring Data によって次の処理が自動的に実行されます。(1) URI とキーを使用して基となる Java SDK `CosmosClient` インスタンスを作成し、(2) データベースとコンテナーに接続します。 これで準備は完了です。**リソース管理コードはもう必要ありません。**
+Azure Cosmos DB アカウント、データベース、およびコンテナーを作成したら、構成ファイルの空欄を埋めるだけで、Spring Boot および Spring Data によって次の処理が自動的に実行されます。(1) URI とキーを使用して基となる Java SDK `CosmosClient` インスタンスを作成し、(2) データベースとコンテナーに接続します。 これで準備は完了です。 **リソース管理コードはもう必要ありません。**
 
 ### <a name="java-source"></a>Java ソース
 
