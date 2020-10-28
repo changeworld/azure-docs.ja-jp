@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/23/2020
   ms.author: trbye
-  ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 3f238f4b7ec76566939d6db712480e395c7a15ac
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401508"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92756988"
 landingContent:
 - title: ホスティングについて
   linkLists:
@@ -46,3 +46,9 @@ landingContent:
       url: sovereign-clouds.md
     - text: コンテナーの FAQ
       url: speech-container-faq.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

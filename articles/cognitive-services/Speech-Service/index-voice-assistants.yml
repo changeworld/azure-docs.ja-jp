@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
-  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+  ms.openlocfilehash: 188273221d13098af04f1afae04da1ecc0111740
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85299383"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92756968"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:
@@ -80,3 +80,9 @@ landingContent:
     links:
     - text: カスタム キーワードの名前付けのガイドライン
       url: speech-devices-sdk-kws-guidelines.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

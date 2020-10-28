@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: dcb851384f8e2aff60220d4e0002b10f930095a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963062"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756059"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -25,7 +25,7 @@ ms.locfileid: "91963062"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
+* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます ( *sample_data.zip* をダウンロードして展開します)。
 * Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -38,11 +38,11 @@ Visual Studio を使用して、新しい .NET Core アプリケーションを�
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-新しいプロジェクトを作成したら、**ソリューション エクスプローラー**でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.FormRecognizer` を検索します。 バージョン `3.0.0` を選択し、 **[インストール]** を選択します。 
+新しいプロジェクトを作成したら、 **ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.FormRecognizer` を検索します。 バージョン `3.0.0` を選択し、 **[インストール]** を選択します。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`formrecognizer-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`formrecognizer-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル ( *program.cs* ) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -63,6 +63,7 @@ Build succeeded.
  0 Error(s)
 ...
 ```
+---
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
@@ -71,8 +72,6 @@ Build succeeded.
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
-
----
 
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) にあり、このクイックスタートのコード例が含まれています。
@@ -84,7 +83,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 アプリケーションの **Program** クラスで、対象のリソースのキーとエンドポイントの変数を作成します。
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
 
@@ -102,7 +101,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
  - カスタム フォームを認識するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
  - モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。  フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。 [フォーム コンテンツを認識する](#recognize-form-content)例を参照してください。
- - Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。  これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を認識する](#recognize-receipts)例を参照してください。
+ - Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。 これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を認識する](#recognize-receipts)例を参照してください。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -135,7 +134,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 **Main** の下に、`AuthenticateClient` という名前の新しいメソッドを作成します。 これは、他のタスクで Form Recognizer サービスへの要求を認証するために使用します。 このメソッドには `AzureKeyCredential` オブジェクトが使用されているため、新しいクライアント オブジェクトを作成しなくても必要に応じて API キーを更新することができます。
 
 > [!IMPORTANT]
-> Azure portal からキーとエンドポイントを取得します。 「**前提条件**」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure portal からキーとエンドポイントを取得します。 「 **前提条件** 」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) が考えられます。
 
