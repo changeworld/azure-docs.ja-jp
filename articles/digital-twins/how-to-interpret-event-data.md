@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587635"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461024"
 ---
 # <a name="understand-event-data"></a>イベント データについて
 
-Azure Digital Twins のさまざまなイベントでは**通知**が生成されます。これにより、さまざまなアクションが発生したときにソリューション バックエンドが認識されるようになります。 これらは、この情報を基に操作が実行される Azure Digital Twins 内外のさまざまな場所に[ルーティング](concepts-route-events.md)されます。
+Azure Digital Twins のさまざまなイベントでは **通知** が生成されます。これにより、さまざまなアクションが発生したときにソリューション バックエンドが認識されるようになります。 これらは、この情報を基に操作が実行される Azure Digital Twins 内外のさまざまな場所に[ルーティング](concepts-route-events.md)されます。
 
 生成される通知にはいくつかの種類があり、通知メッセージの表示は、その通知の生成元のイベントの種類によって異なる場合があります。 この記事では、さまざまな種類のメッセージについての詳細と、表示される内容について説明します。
 
@@ -93,7 +93,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 ### <a name="digital-twin-life-cycle-notifications"></a>デジタル ツインのライフサイクル通知
 
-すべての[デジタル ツイン](concepts-twins-graph.md)は、[Azure Digital Twins 内の IoT Hub デバイス](how-to-ingest-iot-hub-data.md)を表すかどうかにかかわらず、通知を出力します。 これは、デジタル ツイン自体に関する**ライフサイクル通知**が理由です。
+すべての[デジタル ツイン](concepts-twins-graph.md)は、[Azure Digital Twins 内の IoT Hub デバイス](how-to-ingest-iot-hub-data.md)を表すかどうかにかかわらず、通知を出力します。 これは、デジタル ツイン自体に関する **ライフサイクル通知** が理由です。
 
 ライフサイクル通知は、次の場合にトリガーされます。
 * デジタル ツインの作成
@@ -106,7 +106,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | 名前 | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は、個別のイベントごとに一意です。 |
-| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
+| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 ( *myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
@@ -116,7 +116,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 #### <a name="body-details"></a>本文の詳細
 
-本文は、影響を受けるデジタル ツインで、JSON 形式で表されます。 このスキーマは、*Digital Twins リソース 7.1* です。
+本文は、影響を受けるデジタル ツインで、JSON 形式で表されます。 このスキーマは、 *Digital Twins リソース 7.1* です。
 
 作成イベントの場合、ペイロードには、リソースが作成された後のツインの状態が反映されます。したがって、`GET` 呼び出しと同様に、システムによって生成されたすべての要素を含める必要があります。
 
@@ -183,7 +183,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 ### <a name="digital-twin-relationship-change-notifications"></a>デジタル ツインのリレーションシップの変更通知
 
-**リレーションシップの変更通知**は、デジタル ツインのリレーションシップが作成、更新、または削除されたときにトリガーされます。 
+**リレーションシップの変更通知** は、デジタル ツインのリレーションシップが作成、更新、または削除されたときにトリガーされます。 
 
 #### <a name="properties"></a>Properties
 
@@ -192,7 +192,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | 名前    | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は個別のイベントごとに一意です |
-| `source` | Azure Digital Twins インスタンスの名前 (*mydigitaltwins.westus2.azuredigitaltwins.net など)* |
+| `source` | Azure Digital Twins インスタンスの名前 ( *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
@@ -202,7 +202,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 #### <a name="body-details"></a>本文の詳細
 
-本文は、リレーションシップのペイロードで、これも JSON 形式です。 これは、[DigitalTwins API](how-to-use-apis-sdks.md) を介して、リレーションシップの `GET` 要求と同じ形式を使用します。 
+本文は、リレーションシップのペイロードで、これも JSON 形式です。 これは、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を介して、リレーションシップの `GET` 要求と同じ形式を使用します。 
 
 "リレーションシップの更新" とは、リレーションシップのプロパティが変更されたことを意味します。 
 
@@ -237,7 +237,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 ### <a name="digital-twin-change-notifications"></a>デジタル ツインの変更通知
 
-**デジタル ツインの変更通知**は、次のようなデジタル ツインの更新時にトリガーされます。
+**デジタル ツインの変更通知** は、次のようなデジタル ツインの更新時にトリガーされます。
 * プロパティ値またはメタデータが変更した場合。
 * デジタル ツインまたはコンポーネント メタデータが変更された場合。 このシナリオの例として、デジタル ツインのモデルの変更が挙げられます。
 
@@ -248,7 +248,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | 名前    | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は個別のイベントごとに一意です |
-| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)*
+| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 ( *myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)*
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |

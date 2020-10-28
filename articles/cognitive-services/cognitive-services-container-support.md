@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e6a01192068617dcdb52e6160ffcf633d099bdf1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999693"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677441"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
@@ -45,12 +45,12 @@ Cognitive Services リソースは [Microsoft Azure](https://azure.microsoft.com
 
 ## <a name="features-and-benefits"></a>機能とメリット
 
-- **イミュータブル インフラストラクチャ**:DevOps チームを有効にすると、一貫性と信頼性のある既知のシステム パラメーターのセットを活用しながら、変更に適応できます。 コンテナーには、予測可能なエコシステム内でピボットして構成の誤差を回避できる柔軟性があります。
-- **データの制御**:Cognitive Services によってデータが処理される場所を選択します。 これは、クラウドにはデータを送信できないものの、Cognitive Services API にアクセスする必要がある場合に不可欠です。 ハイブリッド環境でデータ、管理、ID、セキュリティの整合性をサポートします。
-- **モデルの更新の制御**:ソリューションにデプロイされているモデルのバージョン管理と更新を柔軟に行うことができます。
-- **移植可能なアーキテクチャ**:Azure、オンプレミス、エッジにデプロイできる移植可能なアプリケーション アーキテクチャを作成できます。 コンテナーは、[Azure Kubernetes Service](../aks/index.yml)、[Azure Container Instances](../container-instances/index.yml)、または [Azure Stack](/azure-stack/operator) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイできます。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
-- **高スループット/低待ち時間**:お客様は、アプリケーションのロジックとデータに物理的に近い場所で Cognitive Services を実行できるようにすることで、高いスループットと低待ち時間の要件に合わせてスケーリングできます。 コンテナーでは、1 秒あたりのトランザクション数 (TPS) は制限されません。必要なハードウェア リソースを提供した場合は、コンテナーのスケールアップとスケールアウトの両方を行って需要を処理することができます。
-- **スケーラビリティ**:コンテナー化とコンテナー オーケストレーション ソフトウェア (Kubernetes など) がますます普及し、スケーラビリティは、技術進歩の最前線にあります。 スケーラブルなクラスター基盤の上に構築されたアプリケーション開発は、高可用性に対応します。
+- **イミュータブル インフラストラクチャ** :DevOps チームを有効にすると、一貫性と信頼性のある既知のシステム パラメーターのセットを活用しながら、変更に適応できます。 コンテナーには、予測可能なエコシステム内でピボットして構成の誤差を回避できる柔軟性があります。
+- **データの制御** :Cognitive Services によってデータが処理される場所を選択します。 これは、クラウドにはデータを送信できないものの、Cognitive Services API にアクセスする必要がある場合に不可欠です。 ハイブリッド環境でデータ、管理、ID、セキュリティの整合性をサポートします。
+- **モデルの更新の制御** :ソリューションにデプロイされているモデルのバージョン管理と更新を柔軟に行うことができます。
+- **移植可能なアーキテクチャ** :Azure、オンプレミス、エッジにデプロイできる移植可能なアプリケーション アーキテクチャを作成できます。 コンテナーは、[Azure Kubernetes Service](../aks/index.yml)、[Azure Container Instances](../container-instances/index.yml)、または [Azure Stack](/azure-stack/operator) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイできます。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
+- **高スループット/低待ち時間** :お客様は、アプリケーションのロジックとデータに物理的に近い場所で Cognitive Services を実行できるようにすることで、高いスループットと低待ち時間の要件に合わせてスケーリングできます。 コンテナーでは、1 秒あたりのトランザクション数 (TPS) は制限されません。必要なハードウェア リソースを提供した場合は、コンテナーのスケールアップとスケールアウトの両方を行って需要を処理することができます。
+- **スケーラビリティ** :コンテナー化とコンテナー オーケストレーション ソフトウェア (Kubernetes など) がますます普及し、スケーラビリティは、技術進歩の最前線にあります。 スケーラブルなクラスター基盤の上に構築されたアプリケーション開発は、高可用性に対応します。
 
 ## <a name="containers-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナー
 
@@ -58,19 +58,19 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 
 | サービス | サポートされている価格レベル | コンテナー | 説明 |
 |--|--|--|--|
-| [Anomaly Detector][ad-containers] | F0、S0 | **Anomaly-Detector** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求][request-access] |
-| [Computer Vision][cv-containers] | F0、S1 | **Read** OCR ([イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Read OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](./computer-vision/concept-recognizing-text.md)に関する記事を参照してください。<br>[アクセスの要求][request-access] |
+| [Anomaly Detector][ad-containers] | F0、S0 | **Anomaly-Detector** ( [イメージ](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求][request-access] |
+| [Computer Vision][cv-containers] | F0、S1 | **Read** OCR ( [イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Read OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](./computer-vision/concept-recognizing-text.md)に関する記事を参照してください。<br>[アクセスの要求][request-access] |
 | [Face][fa-containers] | F0、S0 | **Face** | Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。 |
 | [Form recognizer][fr-containers] | F0、S0 | **Form Recognizer** | Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。 |
-| [LUIS][lu-containers] | F0、S0 | **LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。 |
-| [Speech Service API][sp-containers-stt] | F0、S0 | **音声テキスト変換** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | 連続するリアルタイムの音声をテキストに書き起こします。 |
-| [Speech Service API][sp-containers-cstt] | F0、S0 | **カスタム音声テキスト変換** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。 |
-| [Speech Service API][sp-containers-tts] | F0、S0 | **テキスト読み上げ** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | テキストを自然な音声に変換します。 |
-| [Speech Service API][sp-containers-ctts] | F0、S0 | **カスタム テキスト読み上げ** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | カスタム モデルを使用してテキストを自然な音声に変換します。 |
-| [Speech Service API][sp-containers-ntts] | F0、S0 | **ニューラル テキスト読み上げ** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 |
-| [Text Analytics][ta-containers-keyphrase] | F0、S | **キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | 主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
-| [Text Analytics][ta-containers-language] | F0、S | **言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
-| [Text Analytics][ta-containers-sentiment] | F0、S | **感情分析 v3** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | 肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 このバージョンの感情分析からは、各ドキュメントとその中の文のセンチメント ラベル (たとえば、"*肯定的*"、"*否定的*") が返されます。 |
+| [LUIS][lu-containers] | F0、S0 | **LUIS** ( [イメージ](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。 |
+| [Speech Service API][sp-containers-stt] | F0、S0 | **音声テキスト変換** ( [イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | 連続するリアルタイムの音声をテキストに書き起こします。 |
+| [Speech Service API][sp-containers-cstt] | F0、S0 | **カスタム音声テキスト変換** ( [イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。 |
+| [Speech Service API][sp-containers-tts] | F0、S0 | **テキスト読み上げ** ( [イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | テキストを自然な音声に変換します。 |
+| [Speech Service API][sp-containers-ctts] | F0、S0 | **カスタム テキスト読み上げ** ( [イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | カスタム モデルを使用してテキストを自然な音声に変換します。 |
+| [Speech Service API][sp-containers-ntts] | F0、S0 | **ニューラル テキスト読み上げ** ( [イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 |
+| [Text Analytics][ta-containers-keyphrase] | F0、S | **キー フレーズ抽出** ( [イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | 主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
+| [Text Analytics][ta-containers-language] | F0、S | **言語検出** ( [イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
+| [Text Analytics][ta-containers-sentiment] | F0、S | **感情分析 v3** ( [イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | 肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 このバージョンの感情分析からは、各ドキュメントとその中の文のセンチメント ラベル (たとえば、" *肯定的* "、" *否定的* ") が返されます。 |
 | [Text Analytics][ta-containers-health] | F0、S | **Text Analytics for Health** | 構造化されていない臨床テキストから医療情報を抽出してラベル付けします。 |
 | [空間分析][spa-containers] | S0 | **空間分析** | リアルタイム ストリーミング ビデオを分析して、ユーザーとその動きの間の空間関係、および物理的な環境内のオブジェクトの相互作用を把握します。 |
 
@@ -95,11 +95,11 @@ Azure Cognitive Services コンテナーはお使いの Azure サブスクリプ
 
 Azure Cognitive Services コンテナーを使用するには、次の前提条件を満たしている必要があります。
 
-**Docker エンジン**: Docker エンジンをローカルにインストールしている必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms)、[Windows](https://docs.docker.com/docker-for-windows/) 上で Docker 環境を構成するパッケージが用意されています。 Windows では、Linux コンテナーをサポートするように Docker を構成する必要があります。 Docker コンテナーは、[Azure Kubernetes Service](../aks/index.yml) または [Azure Container Instances](../container-instances/index.yml) に直接デプロイできます。
+**Docker エンジン** : Docker エンジンをローカルにインストールしている必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms)、[Windows](https://docs.docker.com/docker-for-windows/) 上で Docker 環境を構成するパッケージが用意されています。 Windows では、Linux コンテナーをサポートするように Docker を構成する必要があります。 Docker コンテナーは、[Azure Kubernetes Service](../aks/index.yml) または [Azure Container Instances](../container-instances/index.yml) に直接デプロイできます。
 
 コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。
 
-**Microsoft Container Registry と Docker に関する知識**: レジストリ、リポジトリ、コンテナー、コンテナー イメージなどの Microsoft Container Registry と Docker の両方の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。
+**Microsoft Container Registry と Docker に関する知識** : レジストリ、リポジトリ、コンテナー、コンテナー イメージなどの Microsoft Container Registry と Docker の両方の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。
 
 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
 

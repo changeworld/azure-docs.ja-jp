@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 10/23/2020
 ms.author: erhopf
-ms.openlocfilehash: ba89db30e11b35840adada8fdfa6a9d15e0e79d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e43572a321968a0436cb7900578e80086d5cbe4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324486"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503302"
 ---
 # <a name="language-support-for-form-recognizer"></a>Form Recognizer の言語サポート
 

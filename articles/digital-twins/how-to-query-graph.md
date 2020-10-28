@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078478"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461279"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
-この記事では、[Azure Digital Twins クエリ言語](concepts-query-language.md)を使用して[ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する方法の例を示し、詳細に説明します。 グラフに対してクエリを実行するには、Azure Digital Twins の [**Query API**](how-to-use-apis-sdks.md) を使用します。
+この記事では、[Azure Digital Twins クエリ言語](concepts-query-language.md)を使用して[ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する方法の例を示し、詳細に説明します。 グラフに対してクエリを実行するには、Azure Digital Twins の [**Query API**](/rest/api/digital-twins/dataplane/query) を使用します。
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -54,7 +54,7 @@ SELECT COUNT()
 FROM DIGITALTWINS
 ``` 
 
-`WHERE` 句を追加することで、特定の条件に一致する項目の数をカウントします。 ツイン モデルの種類に基づいて適用されたフィルターを使用してカウントする例をいくつか次に示します (この構文の詳細については、後述する[ *「モデルでクエリを実行する」* ](#query-by-model)を参照してください)。
+`WHERE` 句を追加することで、特定の条件に一致する項目の数をカウントします。 ツイン モデルの種類に基づいて適用されたフィルターを使用してカウントする例をいくつか次に示します (この構文の詳細については、後述する [ *「モデルでクエリを実行する」*](#query-by-model)を参照してください)。
 
 ```sql
 SELECT COUNT() 
@@ -84,7 +84,7 @@ AND Room.$dtId IN ['room1', 'room2']
 >[!NOTE]
 >現時点では、複合プロパティはサポートされていません。 プロジェクションのプロパティが有効であることを確認するには、`IS_PRIMITIVE` チェックでプロジェクションを結合します。 
 
-プロジェクションを使用してツインとリレーションシップを返すクエリの例を次に示します。 次のクエリでは、ID が "*ABC*" の "*Factory*" が "*Factory.customer*" のリレーションシップを介して "*Consumer*" と関連付けられており、そのリレーションシップが "*Edge*" としてプロジェクションされるシナリオから、"*Consumer*"、"*Factory*"、"*Edge*" がプロジェクションされています。
+プロジェクションを使用してツインとリレーションシップを返すクエリの例を次に示します。 次のクエリでは、ID が " *ABC* " の " *Factory* " が " *Factory.customer* " のリレーションシップを介して " *Consumer* " と関連付けられており、そのリレーションシップが " *Edge* " としてプロジェクションされるシナリオから、" *Consumer* "、" *Factory* "、" *Edge* " がプロジェクションされています。
 
 ```sql
 SELECT Consumer, Factory, Edge 
@@ -93,7 +93,7 @@ JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC' 
 ```
 
-また、プロジェクションを使用してツインのプロパティを返すこともできます。 以下のクエリでは、"*Factory.customer*" のリレーションシップを介して、ID が "*ABC*" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされています。 
+また、プロジェクションを使用してツインのプロパティを返すこともできます。 以下のクエリでは、" *Factory.customer* " のリレーションシップを介して、ID が " *ABC* " の " *Factory* " に関連付けられている " *Consumers* " の " *Name* " プロパティがプロジェクションされています。 
 
 ```sql
 SELECT Consumer.name 
@@ -103,7 +103,7 @@ WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Consumer.name)
 ```
 
-また、プロジェクションを使用してリレーションシップのプロパティを返すこともできます。 前述の例と同様に、以下のクエリでは、"*Factory.customer*" のリレーションシップを介して、ID が "*ABC*" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされていますが、今回は、そのリレーションシップの 2 つのプロパティである *prop1* および *prop2* も返されます。 これは、リレーションシップに "*Edge*" という名前を付け、そのプロパティを収集することで行います。  
+また、プロジェクションを使用してリレーションシップのプロパティを返すこともできます。 前述の例と同様に、以下のクエリでは、" *Factory.customer* " のリレーションシップを介して、ID が " *ABC* " の " *Factory* " に関連付けられている " *Consumers* " の " *Name* " プロパティがプロジェクションされていますが、今回は、そのリレーションシップの 2 つのプロパティである *prop1* および *prop2* も返されます。 これは、リレーションシップに " *Edge* " という名前を付け、そのプロパティを収集することで行います。  
 
 ```sql
 SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
@@ -125,7 +125,7 @@ WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
 ```
 
-これは、上記と同じセットに対してクエリを実行する類似のクエリですが、"*Consumer.name*" プロパティのみが `consumerName` としてプロジェクションされ、完全な "*Factory*" はツインとしてプロジェクションされます。 
+これは、上記と同じセットに対してクエリを実行する類似のクエリですが、" *Consumer.name* " プロパティのみが `consumerName` としてプロジェクションされ、完全な " *Factory* " はツインとしてプロジェクションされます。 
 
 ```sql
 SELECT Consumer.name AS consumerName, Factory 
@@ -149,20 +149,20 @@ AND T.Temperature = 70
 > [!TIP]
 > デジタル ツインの ID のクエリ実行には、メタデータ フィールド `$dtId` を使用します。
 
-**特定のプロパティが定義されているかどうか**に基づいて Twins を取得することもできます。 次は、*Location* プロパティが定義されているツインを取得するクエリです。
+**特定のプロパティが定義されているかどうか** に基づいて Twins を取得することもできます。 次は、 *Location* プロパティが定義されているツインを取得するクエリです。
 
 ```sql
 SELECT *
 FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
-「[デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、"*タグ*" プロパティを使用してツインを取得する場合に役立ちます。 次は、*red* のタグが付いているツインをすべて取得するクエリです。
+「 [デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、" *タグ* " プロパティを使用してツインを取得する場合に役立ちます。 次は、 *red* のタグが付いているツインをすべて取得するクエリです。
 
 ```sql
 select * from digitaltwins where is_defined(tags.red) 
 ```
 
-**プロパティの型**に基づいてツインを取得することもできます。 次は、*Temperature* プロパティが数字であるツインを取得するクエリです。
+**プロパティの型** に基づいてツインを取得することもできます。 次は、 *Temperature* プロパティが数字であるツインを取得するクエリです。
 
 ```sql
 SELECT * FROM DIGITALTWINS T
@@ -171,7 +171,7 @@ WHERE IS_NUMBER(T.Temperature)
 
 ### <a name="query-by-model"></a>モデルでクエリを実行する
 
-`IS_OF_MODEL` 演算子を使用すると、ツインの[**モデル**](concepts-models.md)に基づいてフィルター処理できます。 継承がサポートされており、いくつかのオーバーロード オプションがあります。
+`IS_OF_MODEL` 演算子を使用すると、ツインの [**モデル**](concepts-models.md)に基づいてフィルター処理できます。 継承がサポートされており、いくつかのオーバーロード オプションがあります。
 
 `IS_OF_MODEL` の最も簡単な使用法では、`IS_OF_MODEL(twinTypeName)` のように `twinTypeName` パラメーターのみを受け取ります。
 このパラメーターで値を渡すクエリの例を次に示します。
@@ -203,7 +203,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>リレーションシップに基づくクエリ
 
-デジタル ツインの**リレーションシップ**に基づいてクエリを実行する場合、Azure Digital Twins クエリ言語には特殊な構文があります。
+デジタル ツインの **リレーションシップ** に基づいてクエリを実行する場合、Azure Digital Twins クエリ言語には特殊な構文があります。
 
 リレーションシップは `FROM` 句のクエリ スコープにプルされます。 "従来の" SQL 型言語との重要な違いは、この `FROM` 句の各式がテーブルではないことです。そうではなく、`FROM` 句はエンティティ間のリレーションシップのトラバーサルを表し、`JOIN` の Azure Digital Twins バージョンを使用して記述されます。 
 
@@ -219,7 +219,7 @@ Azure Digital Twins の[モデル](concepts-models.md)機能では、ツイン�
 
 リレーションシップを含むデータセットを取得するには、1 つの `FROM` ステートメントに続けて N 個の `JOIN` ステートメントを使用します。ここで、`JOIN` ステートメントは前の `FROM` または `JOIN` ステートメントの結果に関するリレーションシップを表します。
 
-リレーションシップベースのクエリの例を次に示します。 このコード スニペットを実行すると、*ID* プロパティが 'ABC' であるすべてのデジタル ツインと、*contains* リレーションシップを介してこれらのデジタル ツインに関連するすべてのデジタル ツインが選択されます。 
+リレーションシップベースのクエリの例を次に示します。 このコード スニペットを実行すると、 *ID* プロパティが 'ABC' であるすべてのデジタル ツインと、 *contains* リレーションシップを介してこれらのデジタル ツインに関連するすべてのデジタル ツインが選択されます。 
 
 ```sql
 SELECT T, CT
@@ -233,10 +233,10 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>リレーションシップのプロパティのクエリを実行する
 
-デジタル ツインに DTDL を介して記述されるプロパティが存在するのと同様に、リレーションシップにプロパティを含めることもできます。 **リレーションシップのプロパティに基づいて**ツインにクエリを実行できます。
+デジタル ツインに DTDL を介して記述されるプロパティが存在するのと同様に、リレーションシップにプロパティを含めることもできます。 **リレーションシップのプロパティに基づいて** ツインにクエリを実行できます。
 Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレーションシップにエイリアスを割り当てることで、リレーションシップのフィルター処理とプロジェクションを行うことができます。 
 
-例として、*reportedCondition* プロパティがある *servicedBy* リレーションシップを考えてみます。 次のクエリでは、プロパティを参照するために、このリレーションシップには 'R' という別名が与えられています。
+例として、 *reportedCondition* プロパティがある *servicedBy* リレーションシップを考えてみます。 次のクエリでは、プロパティを参照するために、このリレーションシップには 'R' という別名が与えられています。
 
 ```sql
 SELECT T, SBT, R
@@ -246,7 +246,7 @@ WHERE T.$dtId = 'ABC'
 AND R.reportedCondition = 'clean'
 ```
 
-上記の例では、*reportedCondition* が *servicedBy* リレーションシップ自体のプロパティであることに注意してください (*servicedBy* リレーションシップを持つ何らかのデジタル ツインではありません)。
+上記の例では、 *reportedCondition* が *servicedBy* リレーションシップ自体のプロパティであることに注意してください ( *servicedBy* リレーションシップを持つ何らかのデジタル ツインではありません)。
 
 ### <a name="query-with-multiple-joins"></a>複数の JOIN を使用したクエリ
 
@@ -266,7 +266,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 ### <a name="other-compound-query-examples"></a>その他の複合クエリの例
 
-結合演算子を使用して上記のクエリ タイプを**組み合わせ**、1 つのクエリに含める詳細を増やすことができます。 次に、複数のツイン記述子タイプに対して一度にクエリを実行する複合クエリの追加例をいくつか挙げます。
+結合演算子を使用して上記のクエリ タイプを **組み合わせ** 、1 つのクエリに含める詳細を増やすことができます。 次に、複数のツイン記述子タイプに対して一度にクエリを実行する複合クエリの追加例をいくつか挙げます。
 
 | 説明 | クエリ |
 | --- | --- |
@@ -312,7 +312,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 ## <a name="run-queries-with-an-api-call"></a>API 呼び出しを使用してクエリを実行する
 
-クエリ文字列を決定したら、**Query API** を呼び出して実行します。
+クエリ文字列を決定したら、 **Query API** を呼び出して実行します。
 次のコード スニペットは、クライアント アプリからのこの呼び出しを示しています。
 
 ```csharp
@@ -360,7 +360,7 @@ Azure Digital Twins でクエリを実行する際のヒントを次に示しま
 
 * モデル設計段階でクエリ パターンを検討します。 1 つのクエリで回答する必要があるリレーションシップが、単一レベルのリレーションシップとしてモデル化されていることを確認します。
 * グラフのトラバーサルから大きな結果セットが生成されない方法でプロパティを設計します。
-* 必要なクエリ数を大幅に減らすには、ツインの配列を構築し、`IN` 演算子を使用してクエリを実行します。 たとえば、"*Buildings*"(建物) に "*Floors*" (フロア) が含まれ、"*Floors*" に "*Rooms*" (部屋) が含まれるシナリオを考えてみます。 建物内の暑い部屋を見つけるには、次の方法があります。
+* 必要なクエリ数を大幅に減らすには、ツインの配列を構築し、`IN` 演算子を使用してクエリを実行します。 たとえば、" *Buildings* "(建物) に " *Floors* " (フロア) が含まれ、" *Floors* " に " *Rooms* " (部屋) が含まれるシナリオを考えてみます。 建物内の暑い部屋を見つけるには、次の方法があります。
 
     1. `contains` のリレーションシップに基づいて建物のフロアを見つけます
         ```sql

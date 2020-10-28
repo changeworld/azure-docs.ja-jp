@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 8/3/2020
 ms.author: baanders
 ms.openlocfilehash: d486b5e8486d2c3c1c343701e0f3f4d474738063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/23/2020
 ms.locfileid: "87809009"
 ---
 ## <a name="monitor-event-routes"></a>イベント ルートの監視
@@ -22,4 +22,4 @@ portal のホームページで、Azure Digital Twins インスタンスを検�
 
 ここから、インスタンスのメトリックを表示したり、カスタム ビューを作成したりできます。
 
-Azure Digital Twins メトリックの表示について詳しくは、[*Azure Monitor でメトリックを表示する方法*](../articles/digital-twins/troubleshoot-metrics.md)に関するページを参照してください。
+Azure Digital Twins メトリックの表示について詳しくは、 [*Azure Monitor でメトリックを表示する方法*](../articles/digital-twins/troubleshoot-metrics.md)に関するページを参照してください。

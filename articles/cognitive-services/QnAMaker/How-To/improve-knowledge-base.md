@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776495"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678368"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -22,7 +22,7 @@ ms.locfileid: "91776495"
 
 ## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
 
-提案された質問を表示するには、QnA Maker リソースに対して[アクティブ ラーニングを有効にする](use-active-learning.md)必要があります。
+提案された質問を表示するには、QnA Maker リソースに対して[アクティブ ラーニングを有効にする](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions)必要があります。
 
 ## <a name="view-suggested-questions"></a>提案された質問を表示する
 
@@ -38,7 +38,7 @@ ms.locfileid: "91776495"
 
     [![緑色のチェック マークまたは赤色の削除マークを選択して、アクティブ ラーニングの提案された代わりの質問を選択または拒否します。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    コンテキスト ツールバーの **[Add all] (すべて追加)** または **[Reject all] (すべて却下)** を選択することで、_すべての提案_ を追加または削除できます。
+    コンテキスト ツールバーの **[Add all] (すべて追加)** または **[Reject all] (すべて却下)** を選択することで、 _すべての提案_ を追加または削除できます。
 
 1. **[Save and train] (保存してトレーニング)** を選択し、ナレッジ ベースに変更を保存します。
 

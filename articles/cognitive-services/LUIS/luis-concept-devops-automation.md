@@ -22,10 +22,10 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 ソース コード管理 (SCM) システムで、次のイベント時に実行されるように自動ビルド パイプラインを構成します。
 
-1. [プル要求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) が発生したときにトリガーされる **PR ワークフロー**。 このワークフローでは、更新がマスター ブランチにマージされる*前に* PR の内容を検証します。
-1. マスター ブランチに更新がプッシュされたとき (たとえば、PR からの変更をマージしたとき) にトリガーされる **CI/CD ワークフロー**。 このワークフローでは、マスター ブランチに対するすべての更新の品質を保証します。
+1. [プル要求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) が発生したときにトリガーされる **PR ワークフロー** 。 このワークフローでは、更新がマスター ブランチにマージされる *前に* PR の内容を検証します。
+1. マスター ブランチに更新がプッシュされたとき (たとえば、PR からの変更をマージしたとき) にトリガーされる **CI/CD ワークフロー** 。 このワークフローでは、マスター ブランチに対するすべての更新の品質を保証します。
 
-**CI/CD ワークフロー**では、2 つの補完的な開発プロセスを組み合わせます。
+**CI/CD ワークフロー** では、2 つの補完的な開発プロセスを組み合わせます。
 
 * [継続的インテグレーション](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) は、共有リポジトリでコードを頻繁にコミットし、それに対して自動ビルドを実行するエンジニアリング手法です。 自動[テスト](luis-concept-devops-testing.md)のアプローチと継続的インテグレーションを組み合わせると、更新のたびに LUDown ソースがまだ有効であり LUIS アプリにインポートできることに加えて、ソリューションに必要な意図とエンティティがトレーニング済みアプリで認識できることを検証する一連のテストにそれが合格することを検証できます。
 
@@ -70,7 +70,7 @@ PR での更新がマスター ブランチにマージされた後に実行さ�
 * LUIS アプリ バージョンをトレーニングし、発行します。
 
   > [!NOTE]
-  > [自動ビルド ワークフローでのテストの実行](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow)に関するページで説明しているように、テスト中の LUIS アプリ バージョンを発行して、NLU.DevOps などのツールがアクセスできるようにする必要があります。 LUIS で LUIS アプリ用にサポートされている名前付き発行スロットは *staging* と *production* の 2 つだけですが、[バージョンを直接発行](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)して[バージョンによるクエリ](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3#changes-by-slot-name-and-version-name)を実行することもできます。 名前付き発行スロットを使用するという制限を回避するには、自動化ワークフローで直接バージョン発行を使用します。
+  > [自動ビルド ワークフローでのテストの実行](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow)に関するページで説明しているように、テスト中の LUIS アプリ バージョンを発行して、NLU.DevOps などのツールがアクセスできるようにする必要があります。 LUIS で LUIS アプリ用にサポートされている名前付き発行スロットは *staging* と *production* の 2 つだけですが、 [バージョンを直接発行](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)して [バージョンによるクエリ](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3#changes-by-slot-name-and-version-name)を実行することもできます。 名前付き発行スロットを使用するという制限を回避するには、自動化ワークフローで直接バージョン発行を使用します。
 
 * すべての[単体テスト](luis-concept-devops-testing.md)を実行します。
 
@@ -84,7 +84,7 @@ PR での更新がマスター ブランチにマージされた後に実行さ�
 
 CI/CD ワークフローの CD ジョブは、ビルドと自動ユニット テストの成功時に条件付きで実行されます。 そのジョブは、さらなるテストを実行できる環境に LUIS アプリケーションを自動的にデプロイするためのものです。
 
-いかに最適に LUIS アプリをデプロイするかに関する 1 つの推奨ソリューションは存在せず、プロジェクトに適したプロセスを実装する必要があります。 [LUIS DevOps テンプレート](https://github.com/Azure-Samples/LUIS-DevOps-Template) リポジトリでは、このための簡易なソリューションとして、*production* 発行スロットに[新しい LUIS アプリ バージョンを発行する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)という動作を実装しています。 簡易なセットアップでは、これで問題ありません。 ただし、*開発*、*ステージング*、*UAT* など、さまざまな運用環境を同時にサポートする必要がある場合、アプリごとに 2 つの名前付き発行スロットという制限は不十分さを露呈します。
+いかに最適に LUIS アプリをデプロイするかに関する 1 つの推奨ソリューションは存在せず、プロジェクトに適したプロセスを実装する必要があります。 [LUIS DevOps テンプレート](https://github.com/Azure-Samples/LUIS-DevOps-Template) リポジトリでは、このための簡易なソリューションとして、 *production* 発行スロットに [新しい LUIS アプリ バージョンを発行する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)という動作を実装しています。 簡易なセットアップでは、これで問題ありません。 ただし、 *開発* 、 *ステージング* 、 *UAT* など、さまざまな運用環境を同時にサポートする必要がある場合、アプリごとに 2 つの名前付き発行スロットという制限は不十分さを露呈します。
 
 アプリ バージョンをデプロイするためのその他のオプションには、以下のものがあります。
 

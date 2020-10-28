@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282296"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669634"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -165,8 +165,7 @@ ms.locfileid: "92282296"
 |パシュトウ語|    `ps`    |
 |ペルシャ語|   `fa`    |
 |ポーランド語|    `pl`    |
-|ポルトガル語 (ブラジル)|   `pt-br` |
-|ポルトガル語 (ポルトガル)| `pt-pt` |
+|Portuguese|    `pt`    |
 |ルーマニア語|  `ro`    |
 |ロシア語|   `ru`    |
 |セルビア語 (キリル)|    `sr-Cyrl`|

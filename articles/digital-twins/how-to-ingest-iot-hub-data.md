@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131498"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495817"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
 Azure Digital Twins は、IoT デバイスやその他のソースからのデータに基づいています。 Azure Digital Twins で使用するデバイス データの一般的なソースは [IoT Hub](../iot-hub/about-iot-hub.md) です。
 
-Azure Digital Twins にデータを取り込むプロセスとは、外部コンピューティング リソースを設定することです。たとえば、データを受け取り、[DigitalTwins API](how-to-use-apis-sdks.md) を使用してプロパティを設定したり、それに応じて、[デジタル ツイン](concepts-twins-graph.md)に対してテレメトリ イベントを発生させたりする [Azure 関数](../azure-functions/functions-overview.md)などです。 
+Azure Digital Twins にデータを取り込むプロセスとは、外部コンピューティング リソースを設定することです。たとえば、データを受け取り、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用してプロパティを設定したり、それに応じて、[デジタル ツイン](concepts-twins-graph.md)に対してテレメトリ イベントを発生させたりする [Azure 関数](../azure-functions/functions-overview.md)などです。 
 
 このハウツー ドキュメントでは、IoT Hub からテレメトリを取り込むことができる Azure 関数を作成するプロセスについて手順を追って説明します。
 
@@ -64,19 +64,15 @@ Azure Digital Twins にデータを取り込むプロセスとは、外部コン
 
 **このモデルをツイン インスタンスにアップロードする** には、Azure CLI を開き、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
 次に、 **このモデルを使用して 1 つのツインを作成** します。 次のコマンドを使用してツインを作成して、初期温度値を 0.0 に設定します。
 
-```azurecli
+```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ツイン作成コマンドが成功した場合の出力は、次のようになります。
 ```json
@@ -252,9 +248,7 @@ _[作成]_ ボタンを選択してイベント サブスクリプションを�
 
 上記のデバイス シミュレーターを実行中に、デジタル ツインの温度値が変化します。 Azure CLI で、次のコマンドを実行して、温度値を確認します。
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
 ```
 

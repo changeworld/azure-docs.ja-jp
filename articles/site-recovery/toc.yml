@@ -48,22 +48,6 @@
           href: tutorial-dr-drill-azure.md
         - name: Azure にフェールオーバーする
           href: vmware-azure-tutorial-failover-failback.md
-    - name: Azure への Azure VMware Solution ディザスター リカバリー
-      items:
-        - name: Azure を準備する
-          href: avs-tutorial-prepare-azure.md
-        - name: Azure VMware Solution を準備する
-          href: avs-tutorial-prepare-avs.md
-        - name: レプリケーションを設定する
-          href: avs-tutorial-replication.md
-        - name: ディザスター リカバリー訓練を実行する
-          href: avs-tutorial-dr-drill-azure.md
-        - name: Azure にフェールオーバーする
-          href: avs-tutorial-failover.md
-        - name: VM の再保護
-          href: avs-tutorial-reprotect.md
-        - name: Azure からのフェールバック
-          href: avs-tutorial-failback.md
     - name: Azure への Hyper-V VM のディザスター リカバリー
       items:
         - name: Azure を準備する
@@ -164,7 +148,7 @@
       href: recovery-plan-overview.md
     - name: Azure への移行について
       href: migrate-overview.md
-    - name: Site Recovery での Azure ロールベースのアクセス制御について
+    - name: Site Recovery を使用したロールベースのアクセス制御について
       href: site-recovery-role-based-linked-access-control.md
     - name: セカンダリ オンプレミス サイトへのディザスター リカバリーについて
       items:
@@ -176,6 +160,10 @@
           href: hyper-v-vmm-secondary-support-matrix.md
         - name: Hyper-V VM からセカンダリ サイトへのアーキテクチャ
           href: hyper-v-vmm-architecture.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: ハウツー ガイド
   items:
     - name: Azure 間のディザスター リカバリー

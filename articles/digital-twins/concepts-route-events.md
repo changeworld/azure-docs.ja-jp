@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282261"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440809"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -73,7 +73,7 @@ Azure Digital Twins は、 **イベント ルート** を使用して、サー�
  
 イベント ルートを作成するには、Azure Digital Twins [**コントロール プレーン API**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI コマンド**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)、または [**Azure portal**](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。 
 
-次に示すのは、`CreateEventRoute` [.NET (C#) SDK](how-to-use-apis-sdks.md) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
+次に示すのは、`CreateEventRoute` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -105,7 +105,7 @@ await client.CreateEventRoute("routeName", er);
 
 SAS トークンの詳細については、以下を参照してください。 [*Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-配信不能処理を構成してエンドポイントを設定する方法については、操作方法ガイドの「 [*Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)* ](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)」を参照してください。
+配信不能処理を構成してエンドポイントを設定する方法については、操作方法ガイドの「 [*Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)」を参照してください。
 
 ### <a name="types-of-event-messages"></a>イベントメッセージの種類
 

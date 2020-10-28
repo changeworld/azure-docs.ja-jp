@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5094bd4aa5ac68c24f284cfb74e410fbdf089af7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536241"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677186"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>読み取り OCR Docker コンテナーを構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "91536241"
 |必須|設定|目的|
 |--|--|--|
 |いいえ|ReadEngineConfig:ResultExpirationPeriod| v2.0 コンテナーのみ。 結果の有効期限 (時間)。 既定値は 48 時間です。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 たとえば、`resultExpirationPeriod=1` の場合、プロセスの 1 時間後に、システムによって認識結果がクリアされます。 `resultExpirationPeriod=0` の場合、結果が取得された後に、システムによって認識結果がクリアされます。|
-|いいえ|Cache:Redis| v2.0 コンテナーのみ。 結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合は、キャッシュが "*必要*" です。|
+|いいえ|Cache:Redis| v2.0 コンテナーのみ。 結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合は、キャッシュが " *必要* " です。|
 |いいえ|Queue:RabbitMQ|v2.0 コンテナーのみ。 タスクをディスパッチするための RabbitMQ を有効にします。 この設定は、ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合に便利です。|
 |いいえ|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | v3.x コンテナーのみ。 別のワーカーが処理しているときにメッセージが非表示になる時間。 |
 |いいえ|Storage::DocumentStore::MongoDB|v2.0 コンテナーのみ。 永続的な結果ストレージ用に MongoDB を有効にします。 |
@@ -42,11 +42,11 @@ ms.locfileid: "91536241"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure `Cognitive Services` リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Cognitive Services_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure `Cognitive Services` リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、 [`Billing`](#billing-configuration-setting) 構成設定に指定された _Cognitive Services_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Cognitive Services** の [リソース管理] の **[キー]** の下
+* Azure portal: **Cognitive Services** の [リソース管理] の **[キー]** の下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -58,7 +58,7 @@ ms.locfileid: "91536241"
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
+* Azure portal: **Cognitive Services** の [概要]。`Endpoint` として表示されます。
 
 次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
 
@@ -99,8 +99,8 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](computer-vision-how-to-install-containers.md#stop-the-container)するまで動作し続けます。
 
-* **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
-* **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
+* **行連結文字** : 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
+* **引数の順序** : Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
 { _<引数名>_ } はお客様独自の値に置き換えてください。
 
@@ -113,7 +113,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
-> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある**キー**です。
+> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある **キー** です。
 
 ## <a name="container-docker-examples"></a>コンテナーの Docker の例
 
@@ -138,29 +138,6 @@ ApiKey={API_KEY}
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
 mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-Logging:Console:LogLevel:Default=Information
-```
-
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-### <a name="basic-example"></a>基本的な例
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="logging-example"></a>ログの例 
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

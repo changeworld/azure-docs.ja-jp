@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 4b0e0bd38c8bb9ea1d2331a65fc891e157971eef
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131549"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495853"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -147,7 +147,7 @@ ms.locfileid: "92131549"
 
 1. 最後に、次の Azure CLI コマンドを使用して、前の Azure SignalR の **接続文字列** を関数のアプリ設定に追加します。 このコマンドは、[Azure Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)場合はローカルで実行できます。
  
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
@@ -242,14 +242,8 @@ Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/c
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
-```
-
-Azure Digital Twins インスタンスを削除する場合は、次のコマンドを使用して、エンド ツー エンドのチュートリアルでそれのために作成した Azure AD アプリの登録も削除できます。
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダー ( *Azure_Digital_Twins_end_to_end_samples.zip* と *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip* ) を削除します。
