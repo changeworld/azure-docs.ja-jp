@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9bf03110fcb4f0c034c70d5e77e558b949a7825
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660927"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147997"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -42,12 +42,12 @@ ms.locfileid: "84660927"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ### <a name="azure-roles"></a>Azure ロール
-Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。
+Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、" *共同作成者* " または " *所有者* " ロールに属しているか、Azure サブスクリプションの " *管理者* " である必要があります。
 
-サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal に移動します。 右上隅にあるユーザー名をクリックし、 **[アクセス許可]** を選択してください。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」をご覧ください。
+サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal に移動します。 右上隅にあるユーザー名をクリックし、 **[アクセス許可]** を選択してください。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016、2017
-このチュートリアルでは、SQL Server データベースを "*ソース*" データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
+このチュートリアルでは、SQL Server データベースを " *ソース* " データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 
 1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
 
@@ -81,7 +81,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. Azure のユーザー名とパスワードを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、 **[すべてのサービス]** を選択します。 「**ストレージ**」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
+1. 左側のウィンドウで、 **[すべてのサービス]** を選択します。 「 **ストレージ** 」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
 
     ![Storage account search](media/doc-common-process/search-storage-account.png)
 
@@ -93,13 +93,13 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. **[ストレージ アカウント名]** ボックスと **[key1]** ボックスの値をコピーし、メモ帳などのエディターに貼り付けます。これらの値は、後でこのチュートリアルの中で使用します。
 
 #### <a name="create-the-adftutorial-container"></a>adftutorial コンテナーの作成
-このセクションでは、**adftutorial** という名前の BLOB コンテナーを Blob Storage に作成します。
+このセクションでは、 **adftutorial** という名前の BLOB コンテナーを Blob Storage に作成します。
 
 1. **[ストレージ アカウント]** ウィンドウで **[概要]** に切り替え、 **[BLOB]** を選択します。
 
 1. **[BLOB]** ウィンドウで **[+ コンテナー]** を選択します。
 
-1. **[新しいコンテナー]** ウィンドウの **[名前]** に「**adftutorial**」と入力し、 **[OK]** を選択します。
+1. **[新しいコンテナー]** ウィンドウの **[名前]** に「 **adftutorial** 」と入力し、 **[OK]** を選択します。
 
 1. コンテナーの一覧で、 **[adftutorial]** を選択します。
 
@@ -113,12 +113,12 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
    ![新しいデータ ファクトリの作成](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
+1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「 **ADFTutorialDataFactory** 」と入力します。
 
-   データ ファクトリの名前は "*グローバルに一意*" にする必要があります。 名前フィールドで次のエラー メッセージが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+   データ ファクトリの名前は " *グローバルに一意* " にする必要があります。 名前フィールドで次のエラー メッセージが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 
    ![新しいデータ ファクトリ名](./media/doc-common-process/name-not-available-error.png)
-1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+1. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
 
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
@@ -141,20 +141,20 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
    ![開始ページ](./media/doc-common-process/get-started-page.png)
 
-1. データのコピー ツールの **[プロパティ]** ページで、 **[タスク名]** に「**CopyFromOnPremSqlToAzureBlobPipeline**」と指定します。 **[次へ]** を選択します。 このフィールドで指定した名前のパイプラインが、データのコピー ツールによって作成されます。
+1. データのコピー ツールの **[プロパティ]** ページで、 **[タスク名]** に「 **CopyFromOnPremSqlToAzureBlobPipeline** 」と指定します。 **[次へ]** を選択します。 このフィールドで指定した名前のパイプラインが、データのコピー ツールによって作成されます。
   ![タスク名](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. **[ソース データ ストア]** ページで、 **[新しい接続の作成]** タイルをクリックします。
 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** で **SQL Server** を検索し、 **[続行]** を選択します。
 
-1. **[New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスの **[名前]** に「**SqlServerLinkedService**」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[+新規]** を選択します。 セルフホステッド統合ランタイムを作成してマシンにダウンロードし、それを Data Factory に登録する必要があります。 セルフホステッド統合ランタイムによって、オンプレミスの環境とクラウドとの間でデータがコピーされます。
+1. **[New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスの **[名前]** に「 **SqlServerLinkedService** 」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[+新規]** を選択します。 セルフホステッド統合ランタイムを作成してマシンにダウンロードし、それを Data Factory に登録する必要があります。 セルフホステッド統合ランタイムによって、オンプレミスの環境とクラウドとの間でデータがコピーされます。
 
 1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスで、 **[Self-Hosted]\(セルフホスト\)** を選択します。 その後 **[続行]** を選択します。
 
    ![統合ランタイムの作成](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスの **[名前]** に「**TutorialIntegrationRuntime**」と入力します。 **[作成]** を選択します。
+1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスの **[名前]** に「 **TutorialIntegrationRuntime** 」と入力します。 **[作成]** を選択します。
 
 1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスで、 **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 この操作により、統合ランタイムがマシンにインストールされ、Data Factory に登録されます。 別の方法として、手動セットアップのオプションを使用できます。インストール ファイルをダウンロードして実行し、キーを使用して統合ランタイムを登録します。
 
@@ -164,7 +164,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスの [統合ランタイム] フィールドで **TutorialIntegrationRuntime** が選択されていることを確認します。 その後、次の手順を行います。
 
-    a. **[名前]** に「**SqlServerLinkedService**」と入力します。
+    a. **[名前]** に「 **SqlServerLinkedService** 」と入力します。
 
     b. **[サーバー名]** に SQL Server インスタンスの名前を入力します。
 
@@ -174,7 +174,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
     e. **[ユーザー名]** に、SQL Server へのアクセス権を持つユーザーの名前を入力します。
 
-    f. ユーザーの**パスワード**を入力します。
+    f. ユーザーの **パスワード** を入力します。
 
     g. 接続をテストし、 **[完了]** を選択します。
 
@@ -193,7 +193,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログで、次の手順を実行します。
 
-   a. **[名前]** に「**AzureStorageLinkedService**」と入力します。
+   a. **[名前]** に「 **AzureStorageLinkedService** 」と入力します。
 
    b. **[Connect via integration runtime]\(統合ランタイム経由で接続\)**  で **[TutorialIntegrationRuntime]** を選択します
 
@@ -203,7 +203,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[配布先データ ストア]** ダイアログで、 **[Azure Blob Storage]** が選択されていることを確認します。 **[次へ]** を選択します。
 
-1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ダイアログで、 **[フォルダーのパス]** に「**adftutorial/fromonprem**」と入力します。 前提条件の 1 つとして **adftutorial** コンテナーを作成しました。 output フォルダーが存在しない場合は (この場合は **fromonprem**)、Data Factory によって自動的に作成されます。 また、 **[参照]** ボタンを使用して、Blob Storage とそのコンテナー (フォルダー) に移動することもできます。 **[ファイル名]** で値を指定しない場合は、既定でソースの名前 (この場合は **dbo.emp**) が使用されます。
+1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ダイアログで、 **[フォルダーのパス]** に「 **adftutorial/fromonprem** 」と入力します。 前提条件の 1 つとして **adftutorial** コンテナーを作成しました。 output フォルダーが存在しない場合は (この場合は **fromonprem** )、Data Factory によって自動的に作成されます。 また、 **[参照]** ボタンを使用して、Blob Storage とそのコンテナー (フォルダー) に移動することもできます。 **[ファイル名]** で値を指定しない場合は、既定でソースの名前 (この場合は **dbo.emp** ) が使用されます。
 
    ![出力ファイルまたはフォルダーの選択](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 

@@ -5,32 +5,51 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016129"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145362"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
-「[条件付きアクセスとは](overview.md)」の記事で説明されているように、条件付きアクセス ポリシーは、**割り当て**と**アクセス制御**の if then ステートメントです。 条件付きアクセス ポリシーではシグナルをまとめ、決定を行い、組織のポリシーを適用します。
+「 [条件付きアクセスとは](overview.md)」の記事で説明されているように、条件付きアクセス ポリシーは、 **割り当て** と **アクセス制御** の if then ステートメントです。 条件付きアクセス ポリシーではシグナルをまとめ、決定を行い、組織のポリシーを適用します。
 
-組織ではこれらのポリシーをどのように作成しますか? 必要なものは何ですか?
+組織ではこれらのポリシーをどのように作成しますか? 必要なものは何ですか? どのように適用しますか?
 
 ![条件付きアクセス (シグナル + 決定 + 適用 = ポリシー)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+複数の条件付きアクセス ポリシーは、いつでも個々のユーザーに適用される可能性があります。 この場合、適用されるすべてのポリシーを満たす必要があります。 たとえば、あるポリシーで多要素認証（MFA）が必要で、別のポリシーで準拠デバイスが必要な場合、MFAを完了し、準拠デバイスを使用する必要があります。 すべての割り当ては、論理的に **AND** 処理されます。 複数の割り当てを構成した場合、ポリシーをトリガーするには、すべての割り当てが満たされている必要があります。
+
+すべてのポリシーは 2 つのフェーズで適用されます。
+
+- フェーズ 1:セッション詳細の収集 
+   - ポリシーの評価に必要なネットワークの場所やデバイス ID などのセッションの詳細を収集します。 
+   - ポリシー評価のフェーズ 1 は、有効になっているポリシーと [レポート専用モード](concept-conditional-access-report-only.md) のポリシーで発生します。
+- フェーズ 2:適用 
+   - フェーズ 1 で収集されたセッション詳細を使用して、満たされていない要件を特定します。 
+   - ブロック許可の制御によってアクセスをブロックするように構成されているポリシーがある場合、適用はここで中止され、ユーザーはブロックされます。 
+   - ユーザーは、ポリシーが満たされるまで、フェーズ 1 で満たされなかった追加の許可制御要件を次の順序で完了するように求められます。  
+      - 多要素認証 
+      - 承認されたクライアント アプリ/アプリ保護ポリシー 
+      - マネージド デバイス (準拠または Hybrid Azure AD Join) 
+      - 使用条件 
+      - カスタム コントロール  
+   - すべての許可の制御が満たされたら、セッション制御を適用します (アプリによって適用、Microsoft Cloud App Security、トークンの有効期間) 
+   - ポリシー評価のフェーズ 2 は、すべての有効になっているポリシーで発生します。 
 
 ## <a name="assignments"></a>代入
 
 割り当て部分では、条件付きアクセス ポリシーについて、ユーザー、内容、および場所を制御します。
 
-### <a name="users-and-groups"></a>ユーザーとグループ
+### <a name="users-and-groups"></a>ユーザーおよびグループ
 
 [ユーザーとグループ](concept-conditional-access-users-groups.md)では、ポリシーに対して含めるまたは除外するユーザーを割り当てます。 この割り当てには、すべてのユーザー、特定のユーザー グループ、ディレクトリ ロール、または外部のゲスト ユーザーを含めることができます。 
 
@@ -114,18 +133,18 @@ ms.locfileid: "92016129"
 
 条件付きアクセス ポリシーを適用するには、少なくとも以下のものが含まれている必要があります。
 
-- ポリシーの**名前**。
-- **割り当て**
-   - ポリシーを適用する**ユーザーまたはグループあるいはその両方**。
-   - ポリシーを適用する**クラウド アプリまたはアクション**。
+- ポリシーの **名前** 。
+- **代入**
+   - ポリシーを適用する **ユーザーまたはグループあるいはその両方** 。
+   - ポリシーを適用する **クラウド アプリまたはアクション** 。
 - **アクセス制御**
-   - **許可**または**ブロック** コントロール
+   - **許可** または **ブロック** コントロール
 
 ![空の条件付きアクセス ポリシー](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
 記事「[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)」に、ほとんどの組織にとって役に立つと思われるいくつかのポリシーが含まれています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [条件付きアクセス ポリシーを作成する](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json#create-a-conditional-access-policy)
 

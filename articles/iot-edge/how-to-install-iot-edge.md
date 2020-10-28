@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045688"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109002"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Azure IoT Edge ランタイムをインストールまたはアンインストールする
 
@@ -39,19 +39,19 @@ Microsoft インストール パッケージにアクセスするようにデバ
 
 1. デバイスのオペレーティング システムに対応するリポジトリ構成をインストールします。
 
-   * **Ubuntu Server 16.04**:
+   * **Ubuntu Server 16.04** :
 
      ```bash
      curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Ubuntu Server 18.04**:
+   * **Ubuntu Server 18.04** :
 
      ```bash
      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Raspbian Stretch**:
+   * **Raspbian Stretch** :
 
      ```bash
      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -83,6 +83,12 @@ Linux コンテナーを使用する IoT Edge は、[Docker Desktop の要件](h
 Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー エンジンに依存します。 デバイスがコンテナーをサポートできることを確認します。
 
 IoT Edge を仮想マシンに インストールしている場合は、入れ子になった仮想化を有効にし、2 GB 以上のメモリを割り当てます。 Hyper-V の場合、第 2 世代仮想マシンでは入れ子になった仮想化が既定で有効になっています。 VMWare の場合、仮想マシンでこの機能を有効に切り替えます。
+
+IoT Edge を IoT Core デバイスにインストールしている場合は、[リモート PowerShell セッション](/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされているかどうかを確認します。
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -144,13 +150,13 @@ IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上�
    apt list -a iotedge
    ```
 
-最新バージョンのセキュリティ デーモンをインストールするには、次のコマンドを使用します。これにより、**libiothsm-std** パッケージの最新バージョンもインストールされます。
+最新バージョンのセキュリティ デーモンをインストールするには、次のコマンドを使用します。これにより、 **libiothsm-std** パッケージの最新バージョンもインストールされます。
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-特定のバージョンのセキュリティ デーモンをインストールする場合は、apt リスト出力から該当するバージョンを指定します。 また、**libiothsm-std** パッケージにも同じバージョンを指定します。そうしないと、最新バージョンがインストールされます。 たとえば、次のコマンドでは、1.0.8 リリースの最新バージョンがインストールされます。
+特定のバージョンのセキュリティ デーモンをインストールする場合は、apt リスト出力から該当するバージョンを指定します。 また、 **libiothsm-std** パッケージにも同じバージョンを指定します。そうしないと、最新バージョンがインストールされます。 たとえば、次のコマンドでは、1.0.8 リリースの最新バージョンがインストールされます。
 
    ```bash
    sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
@@ -159,6 +165,9 @@ IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上�
 インストールするバージョンが一覧にない場合は、次のセクションの「[オフラインまたは特定のバージョンのインストール](#offline-or-specific-version-installation)」の手順に従います。 そのセクションでは、IoT Edge セキュリティ デーモンの以前の任意のバージョン、またはリリース候補のバージョンをターゲットとする方法が説明されています。
 
 # <a name="windows"></a>[Windows](#tab/windows)
+
+>[!TIP]
+>IoT Core デバイスの場合、リモート PowerShell セッションを使用してインストール コマンドを実行することをお勧めします。 詳細については、「[Windows IoT 用 PowerShell の使用](/windows/iot-core/connect-your-device/powershell)」を参照してください。
 
 1. PowerShell を管理者として実行します。
 
@@ -186,7 +195,7 @@ IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上�
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. この時点で、再起動を求めるメッセージが出力される場合があります。 その場合、デバイスをすぐに再起動してください。
+3. この時点で、IoT Core デバイスが自動的に再起動することがあります。 Windows 10 デバイスまたは Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。
 
 デバイスに IoT Edge をインストールするときは、追加のパラメーターを使用して、プロセスを次のように変更できます。
 
@@ -322,6 +331,8 @@ IoT Edge のインストールを Windows デバイスから削除する場合�
 Uninstall-IoTEdge
 ```
 
+`Uninstall-IoTEdge` コマンドは、Windows IoT Core では動作しません。 IoT Edge を削除するには、Windows IoT Core イメージを再デプロイする必要があります。
+
 アンインストール オプションの詳細については、`Get-Help Uninstall-IoTEdge -full` コマンドを使用してください。
 
 ---
@@ -332,10 +343,10 @@ IoT Edge ランタイムをインストールした後は、IoT Hub と接続す
 
 使用する認証の種類に基づいて、次の記事を選択してください。
 
-* **対称キー**: IoT Hub と IoT Edge デバイスの両方に、セキュリティで保護されたキーのコピーがあります。 デバイスが IoT Hub に接続すると、キーが一致しているかどうかがチェックされます。 この認証方法は比較的すばやく開始できますが、それほど安全ではありません。
+* **対称キー** : IoT Hub と IoT Edge デバイスの両方に、セキュリティで保護されたキーのコピーがあります。 デバイスが IoT Hub に接続すると、キーが一致しているかどうかがチェックされます。 この認証方法は比較的すばやく開始できますが、それほど安全ではありません。
 
   [Azure IoT Edge デバイスに対称キー認証を設定する](how-to-manual-provision-symmetric-key.md)
 
-* **X.509 自己署名**: IoT Edge デバイスには X.509 ID 証明書があり、IoT Hub には証明書の拇印が提供されます。 デバイスが IoT Hub に接続すると、証明書がその拇印と比較されます。 この認証方法はより安全であり、運用環境のシナリオの場合に推奨されます。
+* **X.509 自己署名** : IoT Edge デバイスには X.509 ID 証明書があり、IoT Hub には証明書の拇印が提供されます。 デバイスが IoT Hub に接続すると、証明書がその拇印と比較されます。 この認証方法はより安全であり、運用環境のシナリオの場合に推奨されます。
 
   [Azure IoT Edge デバイスに X.509 証明書認証を設定する](how-to-manual-provision-x509.md)

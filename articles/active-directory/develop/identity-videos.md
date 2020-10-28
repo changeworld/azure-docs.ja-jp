@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 74ca7f80f483a722cc8dabde76d295210074bebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c03f0221fe781deffed6ecab107ab33d8a5ab829
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87540293"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203222"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft ID プラットフォームのビデオ
 
@@ -25,7 +25,33 @@ ms.locfileid: "87540293"
 
 ## <a name="microsoft-identity-platform-for-developers"></a>開発者向け Microsoft ID プラットフォーム
 
-"*開発者向け ID*" のビデオ シリーズでは、Matthijs Hoekstra と Kyle Marsh が Microsoft ID プラットフォームに関する概要をガイド付きで提供します。 プラットフォームの主要なコンポーネントと機能、およびその認証ライブラリを使用してアプリへの最新のセキュリティ保護された認証の追加を始める方法について学習してください。
+Microsoft ID プラットフォームの主要なコンポーネントと機能について説明します。
+
+___
+
+:::row:::
+  :::column:::
+        <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank">先進認証の基本 - Microsoft ID プラットフォーム<span class="docon docon-navigate-external x-hidden-focus"></span></a> (12:28)
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank"> <img src="./media/identity-videos/id-for-devs-07.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+
+<!-- IMAGES -->
+[id-plat-06-img]: ./media/identity-videos/id-for-devs-07.jpg
+
+<!-- VIDEOS -->
+[id-plat-06-vid]: https://www.youtube.com/watch?v=tkQJSHFsduY
+
+## <a name="developer-training-series"></a>開発者向けトレーニング シリーズ
+
+"開発者向け ID" のビデオ シリーズでは、Matthijs Hoekstra と Kyle Marsh が Microsoft ID プラットフォームに関する概要をガイド付きで提供します。 プラットフォームの主要なコンポーネントと機能、およびその認証ライブラリを使用してアプリへの最新のセキュリティ保護された認証の追加を始める方法について学習してください。
 
 このシリーズの内容は実施された多くのトレーニング セッションを通して厳選され、磨き上げられており、開発者が Azure での ID の使用を始めるのに最適です。
 ___
@@ -78,6 +104,7 @@ ___
 [id-plat-03-img]: ./media/identity-videos/id-for-devs-03.jpg
 [id-plat-04-img]: ./media/identity-videos/id-for-devs-04.jpg
 [id-plat-05-img]: ./media/identity-videos/id-for-devs-05.jpg
+[id-plat-06-img]: ./media/identity-videos/id-for-devs-07.jpg
 
 <!-- VIDEOS -->
 [id-plat-01-vid]: https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1
@@ -85,6 +112,7 @@ ___
 [id-plat-03-vid]: https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3
 [id-plat-04-vid]: https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4
 [id-plat-05-vid]: https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5
+[id-plat-06-vid]: https://www.youtube.com/watch?v=tkQJSHFsduY
 
 ## <a name="authentication-fundamentals"></a>認証の基礎
 

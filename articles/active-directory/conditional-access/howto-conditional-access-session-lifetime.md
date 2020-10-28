@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265937"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145267"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -134,9 +134,8 @@ What-If ツールを使用して、ポリシーをどのように構成するか
 
 ## <a name="policy-deployment"></a>ポリシーのデプロイ
 
-ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
+ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[条件付きアクセスのデプロイを計画する](plan-conditional-access.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 条件付きアクセス ポリシーを構成する方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」の記事を参照してください。
-* 環境のための条件付きアクセス ポリシーを構成する準備ができている場合は、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
+* 環境用に条件付きアクセス ポリシーを構成する準備ができたら、「[条件付きアクセスのデプロイを計画する](plan-conditional-access.md)」を参照してください。

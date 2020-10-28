@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069477"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131314"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -72,8 +72,8 @@ Azure Data Factory v2 セルフホステッド IR では、ワイルドカード
 
 #### <a name="symptoms"></a>現象
 
-Azure Data Factory の UI からコンカレント ジョブの制限を引き上げようとすると、"*更新中*" のまま、いつまでも応答しない状態になります。
-コンカレント ジョブの最大値が 24 に設定されていたので、ジョブの実行速度を上げるために、この数を増やそうと考えています。 入力できる最小値は 3 で、入力できる最大値は 32 です。 UI でこの値を 24 から 32 に増やして "*更新*" ボタンを押したところ、下図のように "*更新中*" でスタックしてしまいました。 最新の情報に更新した後も表示される値は 24 のまま変わらず、結局 32 には更新されませんでした。
+Azure Data Factory の UI からコンカレント ジョブの制限を引き上げようとすると、" *更新中* " のまま、いつまでも応答しない状態になります。
+コンカレント ジョブの最大値が 24 に設定されていたので、ジョブの実行速度を上げるために、この数を増やそうと考えています。 入力できる最小値は 3 で、入力できる最大値は 32 です。 UI でこの値を 24 から 32 に増やして " *更新* " ボタンを押したところ、下図のように " *更新中* " でスタックしてしまいました。 最新の情報に更新した後も表示される値は 24 のまま変わらず、結局 32 には更新されませんでした。
 
 ![状態の更新中](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
@@ -138,7 +138,7 @@ SSL/TLS ハンドシェイクに関連した症状に対応していると、証
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. **URL 取得ツール**が表示されます。 証明書の検証は、AIA、CDP、OCSP から **[取得]** ボタンをクリックして実行できます。
+    1. **URL 取得ツール** が表示されます。 証明書の検証は、AIA、CDP、OCSP から **[取得]** ボタンをクリックして実行できます。
 
         ![[取得] ボタン](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
@@ -164,7 +164,7 @@ SSL/TLS ハンドシェイクに関連した症状に対応していると、証
 
 > [!TIP] 
 > 以下のスクリーンショットのようにフィルターを設定できます。
-> これは、**System.ValueTuple** という DLL が、GAC 関連フォルダーにも、*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* にも、*C:\Program Files\Microsoft Integration Runtime\4.0\Shared* フォルダーにも存在しないことを表しています。
+> これは、 **System.ValueTuple** という DLL が、GAC 関連フォルダーにも、 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* にも、 *C:\Program Files\Microsoft Integration Runtime\4.0\Shared* フォルダーにも存在しないことを表しています。
 > 基本的に DLL は、まず *GAC* フォルダーから読み込まれ、次に *Shared* フォルダーから、最後に *Gateway* フォルダーから読み込まれます。 したがって、そのいずれかのパスに DLL を配置することで状況が改善する場合があります。
 
 ![フィルターを設定する](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
@@ -201,7 +201,7 @@ GAC の詳細については、[こちらの記事](https://docs.microsoft.com/d
 
 #### <a name="resolution"></a>解決方法
 
-上記のどちらの原因も該当しない場合、 *%programdata%\Microsoft\Data Transfer\DataManagementGateway* フォルダーに移動し、**Configurations** という名前のファイルが削除されているかどうかを確認してください。 削除されている場合、だれがファイルを削除したのかを[こちら](https://www.netwrix.com/how_to_detect_who_deleted_file.html)の手順に従って監査できます。
+上記のどちらの原因も該当しない場合、 *%programdata%\Microsoft\Data Transfer\DataManagementGateway* フォルダーに移動し、 **Configurations** という名前のファイルが削除されているかどうかを確認してください。 削除されている場合、だれがファイルを削除したのかを[こちら](https://www.netwrix.com/how_to_detect_who_deleted_file.html)の手順に従って監査できます。
 
 ![構成ファイルを確認する](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ GAC の詳細については、[こちらの記事](https://docs.microsoft.com/d
 
 #### <a name="symptoms"></a>現象
 
-ソースとターゲット両方のデータ ストアにセルフホステッド IR を作成した後、その 2 つの IR を接続してコピーを完了したいと考えています。 データ ストアが別々の VNET に構成されている場合や、ゲートウェイのメカニズムを認識しない場合、"*the driver of source cannot be found in destination IR (ソースのドライバーがターゲット IR に見つかりません)* " や "*the source cannot be accessed by the destination IR (ターゲット IR がソースにアクセスできません)* " などのエラーが発生します。
+ソースとターゲット両方のデータ ストアにセルフホステッド IR を作成した後、その 2 つの IR を接続してコピーを完了したいと考えています。 データ ストアが別々の VNET に構成されている場合や、ゲートウェイのメカニズムを認識しない場合、" *the driver of source cannot be found in destination IR (ソースのドライバーがターゲット IR に見つかりません)* " や " *the source cannot be accessed by the destination IR (ターゲット IR がソースにアクセスできません)* " などのエラーが発生します。
  
 #### <a name="cause"></a>原因
 
@@ -305,7 +305,7 @@ Integration Runtime のイベント ログにアクセスしてエラーを確�
         1. 現在のセルフホステッド IR を完全にアンインストールします。
         1. セルフホステッド IR ビットをインストールします。
         1. 下記の手順に従ってサービス アカウントを変更します。 
-            1. セルフホステッド IR のインストール フォルダーに移動し、*Microsoft Integration Runtime\4.0\Shared* フォルダーに切り替えます。
+            1. セルフホステッド IR のインストール フォルダーに移動し、 *Microsoft Integration Runtime\4.0\Shared* フォルダーに切り替えます。
             1. 昇格された特権を使用してコマンド ラインを開始します。 *\<user>* と *\<password>* を実際のユーザー名とパスワードに置き換えて、次のコマンドを実行します。
                        
                 ```
@@ -316,7 +316,7 @@ Integration Runtime のイベント ログにアクセスしてエラーを確�
                 ```
                 dmgcmd.exe -SwitchServiceAccount "NT Authority\System" ""
                 ```         
-                次のような形式は使用**しない**でください。
+                次のような形式は使用 **しない** でください。
 
                 ```
                 dmgcmd.exe -SwitchServiceAccount "LocalSystem" ""
@@ -325,7 +325,7 @@ Integration Runtime のイベント ログにアクセスしてエラーを確�
             1. IR サービスのログオン アカウントには、ローカルまたはドメインのユーザーを使用できます。            
         1. Integration Runtime を登録します。
 
-"*サービス 'Integration Runtime Service' (DIAHostService) が開始できませんでした。システム サービスを開始するための十分な特権があるか確認してください*" というエラーが表示された場合は、次の手順に従います。
+" *サービス 'Integration Runtime Service' (DIAHostService) が開始できませんでした。システム サービスを開始するための十分な特権があるか確認してください* " というエラーが表示された場合は、次の手順に従います。
 
 1. Windows サービス パネルで *DIAHostService* ログオン サービス アカウントを確認します。
    
@@ -549,7 +549,7 @@ Netmon トレースを取得して、さらに分析します。
 - 次に、フィルターを削除することにより、次のクライアントと Data Factory サーバー間の変換を取得できます。
 
     ![メッセージ交換の取得](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
-- 収集された netmon トレースに基づき、TTL (TimeToLive) の合計が 64 であることがわかります。 [この記事](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)に記載されている「**既定の TTL とホップの制限値**」(下に抜粋) によると、パッケージをリセットして切断を発生させたのは Linux システムであることがわかります。
+- 収集された netmon トレースに基づき、TTL (TimeToLive) の合計が 64 であることがわかります。 [この記事](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)に記載されている「 **既定の TTL とホップの制限値** 」(下に抜粋) によると、パッケージをリセットして切断を発生させたのは Linux システムであることがわかります。
 
     既定の TTL とホップの制限値は、オペレーティング システムによって異なります。既定値の一部を次に示します。
     - Linux カーネル 2.4 (2001 年ごろ):TCP、UDP、および ICMP の場合は 255
@@ -569,7 +569,7 @@ Netmon トレースを取得して、さらに分析します。
  
     *Linux システム A からの TTL 64 のネットワーク パッケージ -> B TTL 64-1 = 63 -> C TTL 63-1 = 62 -> TTL 62-1 = 61 セルフホステッド IR*
 
-- 理想的な状況では、TTL は 128 になります。これは、Windows システムで Data Factory が実行されていることを意味します。 次の例に示すように、*128 – 107 = 21 ホップ*になります。つまり、TCP 3 ハンドシェイク中に、そのパッケージに関して 21 ホップが Data Factory からセルフホステッド IR に送信されたことを意味します。
+- 理想的な状況では、TTL は 128 になります。これは、Windows システムで Data Factory が実行されていることを意味します。 次の例に示すように、 *128 – 107 = 21 ホップ* になります。つまり、TCP 3 ハンドシェイク中に、そのパッケージに関して 21 ホップが Data Factory からセルフホステッド IR に送信されたことを意味します。
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,7 +587,7 @@ Netmon トレースを取得して、さらに分析します。
 ![Netmon トレース 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-これは、ポート **888** で **8.8.8.8** のサーバー側に TCP 接続を確立できなかったことを意味し、2 つの **SynReTransmit** 追加パッケージが表示されています。 最初のパッケージでソース **SELF-HOST2** が **8.8.8.8**に接続できなかったため、接続の試行が継続されます。
+これは、ポート **888** で **8.8.8.8** のサーバー側に TCP 接続を確立できなかったことを意味し、2 つの **SynReTransmit** 追加パッケージが表示されています。 最初のパッケージでソース **SELF-HOST2** が **8.8.8.8** に接続できなかったため、接続の試行が継続されます。
 
 > [!TIP]
 > - **[フィルターの読み込み]**  ->  **[標準フィルター]**  ->  **[アドレス]**  ->  **[IPv4 アドレス]** をクリックします。
@@ -615,6 +615,37 @@ Netmon トレースを取得して、さらに分析します。
 
     ![TCP 4 ハンドシェイクのワークフロー](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
+
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>新しい IP アドレスでの通信を許可するようにネットワーク構成を更新するための電子メールを受け取った
+
+#### <a name="symptoms"></a>現象
+
+次の電子メール通知を受信することがあります。これは、2020 年 11 月 8 日までに Azure Data Factory で新しい IP アドレスでの通信を許可するようにネットワーク構成を更新することを推奨しています。
+
+   ![電子メール通知](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="resolution"></a>解像度
+
+この通知は、 **オンプレミス** または **Azure 仮想プライベート ネットワーク** 内で実行されている **Integration Runtime** から ADF サービスへの **送信方向の通信** に関するものです。 たとえば、ADF サービスにアクセスする必要があるセルフホステッド IR または Azure SQL Server Integration Services (SSIS) の IR が Azure VNET にある場合は、 **ネットワーク セキュリティ グループ (NSG)** のルールにこの新しい IP 範囲を追加する必要があるかどうかを確認する必要があります。 送信 NSG ルールでサービス タグが使用されている場合、影響はありません。
+
+#### <a name="more-details"></a>詳細
+
+オンプレミス ネットワークまたは Azure 仮想ネットワークにセルフホステッド IR または SSIS IR があるシナリオで、ADF サービスと通信する必要がある場合、これらの新しい IP 範囲は、 **オンプレミスのファイア ウォール** または **Azure 仮想プライベート ネットワーク** から ADF サービスへの **送信方向の通信ルールにのみ影響します** (「[IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」を参照してください)。
+
+**Azure VPN** を使用する既存のユーザーの場合:
+
+1. SSIS または Azure SSIS が構成されているプライベート ネットワークの送信 NSG ルールを確認します。 送信制限がない場合、それらには影響しません。
+1. アウトバウンド規則の制限がある場合は、サービス タグを使用しているかどうかを確認します。 サービス タグを使用している場合は、新しい IP 範囲が既存のサービス タグの下にあるため、変更や追加を行う必要はありません。 
+  
+    ![追加先の確認](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+1. ルールの設定で IP アドレスを直接使用する場合は、[サービス タグの IP 範囲のダウンロード リンク](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)ですべての IP 範囲が追加されているかどうかを確認します。 このファイルには、新しい IP 範囲を既に設定しています。 新しいユーザーの場合:NSG ルールを構成するには、ドキュメントに記載されている関連するセルフホステッド IR または SSIS IR の構成に従う必要があるだけです。
+
+**オンプレミス** で SSIS IR またはセルフホステッド IR を使用している既存のユーザーの場合:
+
+- ネットワーク インフラストラクチャ チームに連絡して、アウトバウンド規則の通信に新しい IP 範囲アドレスを含める必要があるかどうかを確認します。
+- FQDN 名に基づくファイアウォール規則の場合、「[IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」に記載されている設定を使用するときは、更新は必要ありません。 
+- 一部のオンプレミス ファイアウォールではサービス タグがサポートされます。更新された Azure サービス タグ構成ファイルを使用する場合、他の変更は必要ありません。
 
 ## <a name="self-hosted-ir-sharing"></a>セルフホステッド IR の共有
 

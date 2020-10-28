@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932262"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089317"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -80,9 +80,9 @@ Azure Dedicated HSM を使用したカスタマー マネージド キー (Bring
 
 いいえ。現在のところ、ネットワーク セキュリティ グループは、Azure NetApp Files の委任されたサブネットまたはサービスによって作成されたネットワーク インターフェイスに適用することはできません。
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Azure NetApp Files で Azure IAM を使用できますか?
+### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Azure NetApp Files で Azure RBAC を使用できますか?
 
-はい。Azure NetApp Files では、Azure IAM の RBAC 機能がサポートされています。
+はい。Azure NetApp Files では、Azure RBAC の機能がサポートされています。
 
 ## <a name="performance-faqs"></a>パフォーマンスに関する FAQ
 
@@ -150,7 +150,7 @@ Azure NetApp Files では、SMB 2.1 と SMB 3.1 (SMB 3.0 のサポートを含�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>サポートされている Active Directory 接続はいくつですか?
 
-Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの "*リージョン*" で複数の Active Directory (AD) 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合に限り、1 つの "*サブスクリプション*" で複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。 
+Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの " *リージョン* " で複数の Active Directory (AD) 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合に限り、1 つの " *サブスクリプション* " で複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。 
 
 AD 接続は、NetApp アカウントごとに構成され、作成された NetApp アカウントを介してのみ表示されます。
 

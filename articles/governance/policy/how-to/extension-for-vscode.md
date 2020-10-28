@@ -1,20 +1,20 @@
 ---
 title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Azure Resource Manager エイリアスを検索する方法について説明します。
-ms.date: 10/14/2020
+ms.date: 10/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077934"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317623"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
-> Azure Policy 拡張機能のバージョン **0.0.21** 以降に適用されます
+> Azure Policy 拡張機能のバージョン **0.1.0** 以降に適用されます
 
-Visual Studio Code 用の Azure Policy 拡張機能を使用して[エイリアス](../concepts/definition-structure.md#aliases)を検索し、リソースとポリシーを確認する方法について説明します。 最初に、Visual Studio Code で Azure Policy 拡張機能をインストールする方法を説明します。 次に、エイリアスを検索する方法について説明します。
+Visual Studio Code 用の Azure Policy 拡張機能を使用して[エイリアス](../concepts/definition-structure.md#aliases)を検索し、リソースとポリシーを確認し、オブジェクトをエクスポートし、ポリシー定義を評価する方法について説明します。 最初に、Visual Studio Code で Azure Policy 拡張機能をインストールする方法を説明します。 次に、エイリアスを検索する方法について説明します。
 
 Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code でサポートされているプラットフォームにインストールできます。 このサポートには、Windows、Linux、macOS が含まれます。
 
@@ -36,7 +36,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
 1. メニュー バーから、 **[ビュー]**  >  **[拡張機能]** の順に移動します。
 
-1. 検索ボックスに「**Azure Policy**」と入力します。
+1. 検索ボックスに「 **Azure Policy** 」と入力します。
 
 1. 検索結果から **Azure Policy** を選択し、 **[インストール]** を選択します。
 
@@ -68,7 +68,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
    - コマンド パレット
 
-     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
+     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「 **Azure: Sign In** 」と入力します。
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
 
@@ -82,11 +82,11 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
    - コマンド パレット: 
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「 **Azure: Select Subscriptions** 」と入力します。
 
    - ウィンドウのフッター
 
-     画面の下部にあるウィンドウのフッターで、**Azure: \<your account\>** に一致するセグメントを選択します。
+     画面の下部にあるウィンドウのフッターで、 **Azure: \<your account\>** に一致するセグメントを選択します。
 
 1. フィルター ボックスを使用して、名前でサブスクリプションをすばやく検索します。 次に、各サブスクリプションのチェックをオンまたはオフにして、Azure Policy 拡張機能によって表示されるサブスクリプションを設定します。 表示するサブスクリプションの追加または削除が完了したら、 **[OK]** を選択します。
 
@@ -111,7 +111,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「 **Resources: Search Resources** 」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -123,7 +123,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
 リソースを選択すると、検索インターフェイスを使用したか、ツリー ビューで選択したかに関係なく、リソースとその Azure Resource Manager のプロパティ値のすべてを表す JSON ファイルが Azure Policy 拡張機能によって開かれます。
 
-リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、**properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
+リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、 **properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
 
@@ -142,7 +142,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「 **Policies: Search Policies** 」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -152,9 +152,54 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
 ポリシーまたは割り当てを選択すると、検索インターフェイスを使用するか、ツリービューで選択することによって、ポリシーまたは割り当てとそのリソース マネージャーのすべてのプロパティ値を表す JSON が Azure Policy 拡張機能によって開かれます。 拡張機能により、開いている Azure Policy JSON スキーマの検証が可能です。
 
+## <a name="export-objects"></a>オブジェクトをエクスポートする
+
+サブスクリプションからのオブジェクトは、ローカルの JSON ファイルにエクスポートできます。 **[リソース]** または **[ポリシー]** ペインで、エクスポート可能なオブジェクトにマウス ポインターを合わせるか選択します。 強調表示された行の末尾で、保存アイコンを選択し、そのリソース JSON を保存するフォルダーを選択します。
+
+次のオブジェクトはローカルにエクスポートできます。
+
+- [リソース] ペイン
+  - リソース グループ
+  - 個々のリソース (リソース グループ内またはリソース プロバイダーの下)
+- [ポリシー] ペイン
+  - ポリシーの割り当て
+  - 組み込みのポリシー定義
+  - カスタム ポリシー定義
+  - イニシアティブ
+
+## <a name="on-demand-evaluation-scan"></a>オンデマンドの評価スキャン
+
+評価スキャンは、Visual Studio Code 用の Azure Policy 拡張機能を使用して開始できます。 評価を開始するには、リソース、ポリシー定義、ポリシー割り当ての各オブジェクトを選択し、ピン留めします。
+
+1. 各オブジェクトをピン留めするには、 **[リソース]** ペインまたは **[ポリシー]** ペインでそれを見つけ、編集タブへのピン留めアイコンを選択します。 オブジェクトをピン留めすると、それが拡張機能の **[評価]** ペインに追加されます。
+1. **[評価]** ペインで、各オブジェクトの 1 つを選択し、評価のために選択するアイコンを使用して、評価に含まれるものとしてマークします。
+1. **[評価]** ペインの上部で、評価の実行アイコンを選択します。 Visual Studio Code の新しいペインが開き、結果の評価の詳細が JSON 形式で表示されます。
+
+> [!NOTE]
+> 選択したポリシー定義が [AuditIfNotExists](../concepts/effects.md#auditifnotexists) または [DeployIfNotExists](../concepts/effects.md#deployifnotexists) のいずれかである場合は、 **[評価]** ペインでプラス アイコンを使用して、存在を確認するために " _関連する_ " リソースを選択します。
+
+評価結果には、ポリシー定義とポリシー割り当てに関する情報が、 **policyEvaluations.evaluationResult** プロパティと共に表示されます。 出力は次の例のようになります。
+
+```json
+{
+    "policyEvaluations": [
+        {
+            "policyInfo": {
+                ...
+            },
+            "evaluationResult": "Compliant",
+            "effectDetails": {
+                "policyEffect": "Audit",
+                "existenceScope": "None"
+            }
+        }
+    ]
+}
+```
+
 ## <a name="sign-out"></a>サインアウトする
 
-メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
+メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「 **Azure: Sign Out** 」と入力します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/02/2020
-ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 10/20/2020
+ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825762"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312408"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -60,7 +60,7 @@ ms.locfileid: "91825762"
 - Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。 
 - アーカイブのためにデータを Azure Storage に送信する。
 - [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
-- [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。 (プレビューでは使用できません。)
+- [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。 (プレビューでは使用できません。)
 
 Azure Monitor エージェントの制限事項は次のとおりです。
 
@@ -82,7 +82,7 @@ Log Analytics エージェントは、次のような場合に使用します。
 * データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md)でサポートされている機能を活用する。
 * 仮想マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
 * [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
-* [Azure Automation Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) を使用して、Azure VM の包括的な管理を提供する
+* [Azure Automation Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking/overview.md) を使用して、Azure VM の包括的な管理を提供する
 * さまざまな[ソリューション](../monitor-reference.md#insights-and-core-solutions)を使用して、特定のサービスまたはアプリケーションを監視する。
 
 Log Analytics エージェントの制限事項は次のとおりです。
@@ -148,9 +148,9 @@ Telegraf エージェントは、次のような場合に使用します。
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro  | X | X | X | X |
-| Windows 8 Enterprise および Pro                             |   | X | X |   |
-| Windows 7 SP1                                            |   | X | X |   |
+| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ)  | X | X | X | X |
+| Windows 8 Enterprise および Pro<br>(サーバー シナリオのみ)  |   | x | X |   |
+| Windows 7 SP1<br>(サーバー シナリオのみ)                 |   | x | X |   |
 
 
 ### <a name="linux"></a>Linux
@@ -160,28 +160,28 @@ Telegraf エージェントは、次のような場合に使用します。
 | Amazon Linux 2017.09                                     |   | X |   |   |
 | CentOS Linux 8                                           |   | X |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
-| CentOS Linux 7.8                                         | X | X | X | X |
-| CentOS Linux 7.6                                         | X | X | X | X |
-| CentOS Linux 6                                           | X | X |   |   |
-| CentOS Linux 6.5 以降                                        | X | X |   | X |
+| CentOS Linux 7.8                                         | X | x | X | X |
+| CentOS Linux 7.6                                         | X | x | X | X |
+| CentOS Linux 6                                           |   | X |   |   |
+| CentOS Linux 6.5 以降                                        |   | X |   | X |
 | Debian 10                                                | X |   |   |   |
-| Debian 9                                                 | x | X | x | X |
+| Debian 9                                                 | X | X | x | x |
 | Debian 8                                                 |   | X | X | X |
 | Debian 7                                                 |   |   |   | X |
 | OpenSUSE 13.1+                                           |   |   |   | X |
 | Oracle Linux 7                                           | X | X |   | X |
-| Oracle Linux 6                                           | X | X |   |   |
-| Oracle Linux 6.4+                                        | X | X |   | X |
+| Oracle Linux 6                                           |   | X |   |   |
+| Oracle Linux 6.4+                                        |   | X |   | X |
 | Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
-| Red Hat Enterprise Linux Server 6                        | X | X | X |   |
-| Red Hat Enterprise Linux Server 6.7 以降                     | X | X | X | X |
+| Red Hat Enterprise Linux Server 6                        |   | X | X |   |
+| Red Hat Enterprise Linux Server 6.7 以降                     |   | X | x | X |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
-| SUSE Linux Enterprise Server 12                          | X | X | X | X |
+| SUSE Linux Enterprise Server 12                          | X | X | x | X |
 | Ubuntu 20.04 LTS                                         |   | X |   |   |
-| Ubuntu 18.04 LTS                                         | X | X | X | X |
-| Ubuntu 16.04 LTS                                         | X | X | X | X |
-| Ubuntu 14.04 LTS                                         | X | X |   | X |
+| Ubuntu 18.04 LTS                                         | X | X | x | X |
+| Ubuntu 16.04 LTS                                         | X | X | x | X |
+| Ubuntu 14.04 LTS                                         |   | X |   | X |
 
 
 #### <a name="dependency-agent-linux-kernel-support"></a>依存関係エージェントの Linux カーネル サポート
@@ -212,4 +212,3 @@ Telegraf エージェントは、次のような場合に使用します。
 - [Log Analytics エージェントの概要](log-analytics-agent.md)
 - [Azure Diagnostics 拡張機能の概要](diagnostics-extension-overview.md)
 - [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](collect-custom-metrics-linux-telegraf.md)
-

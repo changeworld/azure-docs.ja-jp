@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91333275"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173884"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -50,7 +50,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="configure-appinsights-sdk"></a>AppInsights SDK を構成する
 
-1. **[概要]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
+1. **[概要]** を選択し、アプリケーションの **インストルメンテーション キー** をコピーします。
 
    ![Application Insights のインストルメンテーション キーを表示する](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
+3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、 *index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーション分析情報のインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -74,7 +74,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Azure Portal で監視を開始する
 
-1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
+1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の **概要** ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
    ![Application Insights の概要メニュー](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
@@ -82,7 +82,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights のアプリケーション マップ](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![Application Insights Analytics のグラフ](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -90,7 +90,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights の正常性の概要に関するタイムライン グラフ](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
-   **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
+   **[ページ ビューの読み込み時間]** グラフに **クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
    ```HTML
    <!-- 
@@ -126,7 +126,7 @@ Node.js の監視に関する詳細については、[AppInsights Node.js の追
 > 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
 
 1. Azure portal の左側のメニューで、 **[リソース グループ]** 、 **[myResourceGroup]** の順に選択します。
-2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。
+2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「 **myResourceGroup** 」と入力してから **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
 title: Network Watcher 拡張機能を最新バージョンに更新する
-description: Network Watcher 拡張機能を最新バージョンに更新する方法について説明します
+description: Azure Network Watcher 拡張機能を最新バージョンに更新する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: damendo
@@ -12,58 +12,70 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: fd3fff2d438bbf804e35f04db0cfae15eea5e782
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973341"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220589"
 ---
-# <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>Network Watcher 拡張機能を最新バージョンに更新する方法 
+# <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Network Watcher 拡張機能を最新バージョンに更新する
 
 ## <a name="overview"></a>概要
 
-[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン拡張機能は、オンデマンドでネットワーク トラフィックをキャプチャするためと、Azure 仮想マシンに関するその他の高度な機能を使用するための要件です。 Network Watcher 拡張機能は、接続モニター、接続モニター (プレビュー)、接続のトラブルシューティング、パケット キャプチャなどの機能で使用されています。   
+[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) は、Azure ネットワークを監視する、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン (VM) 拡張機能は、オンデマンドでネットワーク トラフィックをキャプチャするためと、Azure VM に関するその他の高度な機能を使用するための要件です。 Network Watcher 拡張機能は、接続モニター、接続モニター (プレビュー)、接続のトラブルシューティング、パケット キャプチャなどの機能で使用されています。
 
 ## <a name="prerequisites"></a>前提条件
-このドキュメントでは、Network Watcher 拡張機能が仮想マシンにインストールされている前提の下、これを最新バージョンに更新するための手順について説明します。 
+
+この記事では、Network Watcher 拡張機能が VM にインストールされていることを前提としています。
 
 ## <a name="latest-version"></a>最新バージョン
+
 現在の Network Watcher 拡張機能の最新バージョンは `1.4.1654.1` です。
 
-## <a name="updating-your-extension"></a>拡張機能を更新する 
+## <a name="update-your-extension"></a>拡張機能を更新する
 
-### <a name="check-your-extension-version"></a>拡張機能のバージョンを確認する  
+拡張機能を更新するには、拡張機能のバージョンを把握しておく必要があります。
 
-**Azure portal を使用する**
+### <a name="check-your-extension-version"></a>拡張機能のバージョンを確認する
 
-1. Azure portal で VM の [拡張機能] ブレードにアクセスします。   
-2. "AzureNetworkWatcher" 拡張機能をクリックすると、詳細ウィンドウが表示されます。  
-3. [バージョン] フィールドに記載されているバージョン番号を見つけます。  
+拡張機能のバージョンは、Azure portal、Azure CLI、または PowerShell を使用して確認できます。
 
-**Azure CLI を使用する** Azure CLI プロンプトから次のコマンドを実行します。   
+#### <a name="usetheazureportal"></a>Azure portal を使用する
+
+1. Azure portal で VM の **[拡張機能]** ペインにアクセスします。
+1. **AzureNetworkWatcher** 拡張機能を選択して、詳細ペインを表示します。
+1. **[バージョン]** フィールドに記載されているバージョン番号を見つけます。  
+
+#### <a name="use-the-azure-cli"></a>Azure CLI の使用
+
+Azure CLI のプロンプトで、次のコマンドを実行します。
 
 ```azurecli
-az vm extension list --resource-group  <ResourceGroupName> --vm-name <VMName>
+az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```
+出力から **"AzureNetworkWatcherExtension"** を見つけて、出力の *“TypeHandlerVersion”* フィールドからバージョン番号を特定します。  注意:拡張機能に関する情報は、JSON 出力に複数回出現します。 "extensions" ブロックの下を確認してください。拡張機能の完全なバージョン番号が表示されるはずです。 
 
-出力から AzureNetworkWatcher 拡張機能を見つけて、出力の "TypeHandlerVersion" フィールドからバージョン番号を特定します。  
+次のように表示されます。![Azure CLI のスクリーンショット](./media/network-watcher/azure-cli-screenshot.png)
 
+#### <a name="usepowershell"></a>PowerShell を使用する
 
-**Powershell を使用する** PowerShell プロンプトから次のコマンドを実行します。   
+PowerShell プロンプトから、次のコマンドを実行します。
 
 ```powershell
-Get-AzVMExtension -ResourceGroupName <ResourceGroupName> -VMName <VMName>  
+Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 ```
+出力から Azure Network Watcher 拡張機能を見つけて、出力の *“TypeHandlerVersion”* フィールドからバージョン番号を特定します。   
 
-出力から AzureNetworkWatcher 拡張機能を見つけて、出力の "TypeHandlerVersion" フィールドからバージョン番号を特定します。   
-
+次のように表示されます。![PowerShell のスクリーンショット](./media/network-watcher/powershell-screenshot.png)
 
 ### <a name="update-your-extension"></a>拡張機能を更新する
 
-バージョンが `1.4.1654.1` (最新バージョン) よりも古い場合は、次のいずれかのオプションを使用して拡張機能を更新します。 
+お使いのバージョンが、現在の最新バージョンである `1.4.1654.1` よりも古い場合は、次のいずれかのオプションを使用して拡張機能を更新します。
 
-**オプション 1: PowerShell を使用する**
+#### <a name="option-1-use-powershell"></a>オプション 1: PowerShell の使用
+
+次のコマンドを実行します。
 
 ```powershell
 #Linux command
@@ -73,10 +85,28 @@ Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS"
 Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
 ```
 
+それでもうまくいかない場合。 次の手順に従って、拡張機能を削除してからもう一度インストールします。 これにより、最新バージョンが自動的に追加されます。
 
-**オプション 2: Azure CLI を使用する**  
+拡張機能の削除 
 
-強制アップグレード 
+```powershell
+#Same command for Linux and Windows
+Remove-AzVMExtension -ResourceGroupName "SampleRG" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension"
+``` 
+
+拡張機能の再インストール
+
+```powershell
+#Linux command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux" -typeHandlerVersion "1.4"
+
+#Windows command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -typeHandlerVersion "1.4"
+```
+
+#### <a name="option-2-use-the-azure-cli"></a>オプション 2:Azure CLI の使用
+
+強制的にアップグレードします。
 
 ```azurecli
 #Linux command
@@ -86,9 +116,9 @@ az vm extension set --resource-group "myResourceGroup1" --vm-name "myVM1" --name
 az vm extension set --resource-group "myResourceGroup1" --vm-name "myVM1" --name "NetworkWatcherAgentWindows" --publisher "Microsoft.Azure.NetworkWatcher" --force-update
 ```
 
-それでもうまくいかない場合。 次の手順に従って、拡張機能を削除してからもう一度インストールします。 これにより、最新バージョンが自動的に追加されます。 
+それでもうまくいかない場合は、拡張機能を削除してから再度インストールし、これらの手順に従って最新バージョンを自動的に追加します。
 
-拡張機能の削除 
+拡張機能を削除します。
 
 ```azurecli
 #Same for Linux and Windows
@@ -96,7 +126,7 @@ az vm extension delete --resource-group "myResourceGroup1" --vm-name "myVM1" -n 
 
 ```
 
-拡張機能の再インストール
+拡張機能を再度インストールします。
 
 ```azurecli
 #Linux command
@@ -107,11 +137,10 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 ```
 
-**オプション 3:VM を再起動する**
+#### <a name="option-3-reboot-your-vms"></a>オプション 3:VM を再起動する
 
-NetworkWatcher 拡張機能の自動アップグレードが true に設定されている場合は、 VM を再起動すると、最新の拡張機能がインストールされます。
-
+Network Watcher 拡張機能の自動アップグレードが true に設定されている場合は、VM のインストールを再起動して最新の拡張機能にします。
 
 ## <a name="support"></a>サポート
 
-この記事についてさらにヘルプが必要な場合は、Network Watcher 拡張機能のドキュメント ([Linux](./network-watcher-linux.md)、[Windows](./network-watcher-windows.md)) を参照してください。また、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートにお問い合わせいただくこともできます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事のいずれかについてさらにヘルプが必要な場合は、[Linux](./network-watcher-linux.md) または [Windows](./network-watcher-windows.md) 向けの Network Watcher 拡張機能のドキュメントを参照してください。 また、[MSDN の Azure と Stack Overflow のフォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信してください。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

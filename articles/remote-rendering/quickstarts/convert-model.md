@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91652450"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281346"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>クイック スタート:モデルをレンダリング用に変換する
 
@@ -27,7 +27,7 @@ ms.locfileid: "91652450"
 ## <a name="prerequisites"></a>前提条件
 
 * 「[Quickstart: Unity によるモデルのレンダリング](render-model.md)」を完了する
-* Azure PowerShell をインストールする [(ドキュメント)](https://docs.microsoft.com/powershell/azure/)
+* PowerShell スクリプトを使用して変換する場合:Azure PowerShell をインストールする [(ドキュメント)](/powershell/azure/)
   * 管理者権限で PowerShell を開きます。
   * `Install-Module -Name Az -AllowClobber` を実行します。
 
@@ -69,8 +69,8 @@ BLOB ストレージを作成するには、最初にストレージ アカウ�
 
 次の方法でフォームに入力します。
 
-* ドロップダウン ボックスの下のリンクから新しいリソース グループを作成し、**ARR_Tutorial** という名前を付けます。
-* **[ストレージ アカウント名]** に一意の名前を入力します。 **この名前はグローバルに一意である必要があります**。そうでないと、名前が既に使用されていることを知らせるプロンプトが表示されます。 このクイックスタートのスコープでは、**arrtutorialstorage** という名前を付けます。 この名前は、このクイックスタートの該当箇所すべてで、適宜自分が使用する名前に置き換える必要があります。
+* ドロップダウン ボックスの下のリンクから新しいリソース グループを作成し、 **ARR_Tutorial** という名前を付けます。
+* **[ストレージ アカウント名]** に一意の名前を入力します。 **この名前はグローバルに一意である必要があります** 。そうでないと、名前が既に使用されていることを知らせるプロンプトが表示されます。 このクイックスタートのスコープでは、 **arrtutorialstorage** という名前を付けます。 この名前は、このクイックスタートの該当箇所すべてで、適宜自分が使用する名前に置き換える必要があります。
 * 近くの **[場所]** を選択します。 他のクイックスタートでレンダリングの設定に使用するのと同じ場所を使用するのが理想的です。
 * **[パフォーマンス]** を [標準] に設定します。
 * **[アカウントの種類]** を [StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\) に設定します。
@@ -91,13 +91,13 @@ BLOB ストレージを作成するには、最初にストレージ アカウ�
 
 ![Azure - コンテナーを追加する](./media/azure-add-containers.png)
 
-**[+ コンテナー]** ボタンを押して、**入力用**の BLOB ストレージ コンテナーを作成します。
+**[+ コンテナー]** ボタンを押して、 **入力用** の BLOB ストレージ コンテナーを作成します。
 作成時には、次の設定を使用します。
   
 * [名前] = arrinput
 * [パブリック アクセス レベル] = 非公開
 
-コンテナーが作成されたら、 **[+ コンテナー]** を再度クリックし、**出力用**コンテナーに対してこれらの設定を繰り返します。
+コンテナーが作成されたら、 **[+ コンテナー]** を再度クリックし、 **出力用** コンテナーに対してこれらの設定を繰り返します。
 
 * [名前] = arroutput
 * [パブリック アクセス レベル] = 非公開
@@ -108,16 +108,25 @@ BLOB ストレージを作成するには、最初にストレージ アカウ�
 
 ## <a name="run-the-conversion"></a>変換を実行する
 
-アセット変換サービスの呼び出しを簡単にするため、ユーティリティ スクリプトが用意されています。 それは *Scripts* フォルダーにあり、**Conversion.ps1** という名前が付いています。
+モデルの変換をトリガーするには、3 つの方法があります。
+
+### <a name="1-conversion-via-the-arrt-tool"></a>1. ARRT ツールを使用した変換
+
+変換を開始してレンダリングされた結果を操作するための [ARRT という UI ベースのツール](./../samples/azure-remote-rendering-asset-tool.md)があります。
+![ARRT](./../samples/media/azure-remote-rendering-asset-tool.png "ARRT のスクリーンショット")
+
+### <a name="2-conversion-via-a-powershell-script"></a>2. PowerShell スクリプトを使用した変換
+
+アセット変換サービスの呼び出しを簡単にするため、ユーティリティ スクリプトが用意されています。 それは *Scripts* フォルダーにあり、 **Conversion.ps1** という名前が付いています。
 
 具体的には、このスクリプトは次のように動作します。
 
 1. 指定されたディレクトリ内のすべてのファイルを、ローカル ディスクから入力用ストレージ コンテナーにアップロードします。
-1. [アセット変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出します。これは入力用ストレージ コンテナーからデータを取得し、変換 ID を返す変換を開始します。
+1. [アセット変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出します。これは入力用ストレージ コンテナーからデータを取得し、変換を開始して、変換 ID を返します
 1. 変換プロセスが成功または失敗で終了するまで、取得した変換 ID を使用して変換状態 API をポーリングします。
 1. 出力用ストレージ内の変換されたアセットへのリンクを取得します。
 
-このスクリプトは、*Scripts\arrconfig.json* というファイルから構成を読み取ります。 この JSON ファイルをテキスト エディターで開きます。
+このスクリプトは、 *Scripts\arrconfig.json* というファイルから構成を読み取ります。 この JSON ファイルをテキスト エディターで開きます。
 
 ```json
 {
@@ -144,29 +153,29 @@ BLOB ストレージを作成するには、最初にストレージ アカウ�
 }
 ```
 
-**accountSettings** グループ (アカウント ID とキー) 内の構成は、[クイックスタート「Unity によるモデルのレンダリング」](render-model.md)の資格情報と同様に入力する必要があります。
+**accountSettings** グループ (アカウント ID とキー) 内の構成は、 [クイックスタート「Unity によるモデルのレンダリング」](render-model.md)の資格情報と同様に入力する必要があります。
 
-**assetConversionSettings** グループ内では、**resourceGroup**、**blobInputContainerName**、**blobOutputContainerName** を必ず上記のように変更します。
-値 **arrtutorialstorage** は、ストレージ アカウントの作成時に選択した一意の名前に置き換える必要があることに注意してください。
+**assetConversionSettings** グループ内では、 **resourceGroup** 、 **blobInputContainerName** 、 **blobOutputContainerName** を必ず上記のように変更します。
+**arrtutorialstorage** の値は、ストレージ アカウントの作成時に選択した一意の名前で置き換える必要があることに注意してください。
 
 **localAssetDirectoryPath** を変更して、変換対象のモデルが含まれるディスク上のディレクトリを指すようにします。 パス内のバックスラッシュ ("\\") は、ニ重のバックスラッシュ ("\\\\") を使用して正しくエスケープするように注意してください。
 
-**localAssetDirectoryPath** で指定されているパスのすべてのデータは、**inputFolderPath** によって指定されたサブパスにある BLOB コンテナー **blobInputContainerName** にアップロードされます。 そのため、上の構成例の "D:\\tmp\\robot" ディレクトリのコンテンツは、パス "robotConversion" のストレージ アカウント "arrtutorialstorage" にある BLOB コンテナー "arrinput" にアップロードされます。 既存のファイルは上書きされます。
+**localAssetDirectoryPath** で指定されているパスのすべてのデータは、 **inputFolderPath** によって指定されたサブパスにある BLOB コンテナー **blobInputContainerName** にアップロードされます。 そのため、上の構成例の "D:\\tmp\\robot" ディレクトリのコンテンツは、パス "robotConversion" のストレージ アカウント "arrtutorialstorage" にある BLOB コンテナー "arrinput" にアップロードされます。 既存のファイルは上書きされます。
 
 **inputAssetPath** を、変換するモデルのパスに変更します。パスは localAssetDirectoryPath に対する相対パスです。 パスの区切り記号には、"\\" ではなく "/" を使用します。 そのため、"D:\\tmp\\robot" に直接配置されている "robot.fbx" ファイルには "robot.fbx" を使用します。
 
-変換されたモデルは、**blobOutputContainerName** によって指定されたストレージ コンテナーに書き戻されます。 サブパスは、オプションの **outputFolderPath** を使用して指定できます。 上記の例では、結果の "robot.arrAsset" が "converted/robot" にある出力用の BLOB コンテナーにコピーされます。
+変換されたモデルは、 **blobOutputContainerName** によって指定されたストレージ コンテナーに書き戻されます。 サブパスは、オプションの **outputFolderPath** を使用して指定できます。 上記の例では、結果の "robot.arrAsset" が "converted/robot" にある出力用の BLOB コンテナーにコピーされます。
 
 構成設定である **outputAssetFileName** によって、変換されたアセットの名前が決まります。このパラメーターは省略可能であり、省略した場合は出力ファイル名は入力ファイル名から推測されます。
 
-PowerShell を開き、「[前提条件](#prerequisites)」に記載されているとおり *Azure PowerShell* がインストールされていることを確認します。 そして、次のコマンドでご自分のサブスクリプションにログインし、画面上の指示に従います。
+PowerShell を開き、「 [前提条件](#prerequisites)」に記載されているとおり *Azure PowerShell* がインストールされていることを確認します。 そして、次のコマンドでご自分のサブスクリプションにログインし、画面上の指示に従います。
 
 ```PowerShell
 Connect-AzAccount
 ```
 
 > [!NOTE]
-> 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
+> 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](/powershell/module/az.accounts/connect-azaccount)を参照してください。
 
 `azure-remote-rendering\Scripts` ディレクトリに移動して、変換スクリプトを実行します。
 
@@ -176,9 +185,16 @@ Connect-AzAccount
 
 次のような結果が表示されます。![Conversion.ps1](./media/successful-conversion.png)
 
+### <a name="3-conversion-via-api-calls"></a>3. API 呼び出しによる変換
+
+C# および C++ API のどちらにも、サービスと対話するためのエントリ ポイントが用意されています。
+* [C# AzureFrontend.StartAssetConversionAsync()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
+* [C++ AzureFrontend::StartAssetConversionAsync()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+
+
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>新しいモデルをクイックスタート サンプル アプリに挿入する
 
-変換スクリプトによって、変換されたモデルの *Shared Access Signature (SAS)* URI が生成されます。 これで、この URI を**モデル名**としてクイックスタートのサンプル アプリにコピーできるようになりました (「[クイックスタート: Unity によるモデルのレンダリング](render-model.md)」を参照してください)。
+変換スクリプトによって、変換されたモデルの *Shared Access Signature (SAS)* URI が生成されます。 これで、この URI を **モデル名** としてクイックスタートのサンプル アプリにコピーできるようになりました (「 [クイックスタート: Unity によるモデルのレンダリング](render-model.md)」を参照してください)。
 
 ![Unity でモデルを置換する](./media/replace-model-in-unity.png)
 
@@ -189,8 +205,8 @@ Connect-AzAccount
 変換スクリプトによって作成された SAS URI は、24 時間のみ有効です。 ただし、この有効期限が切れた後に、モデルを再度変換する必要はありません。 代わりに、次の手順で説明するように、ポータルで新しい SAS を作成できます。
 
 1. [Azure portal](https://www.portal.azure.com) に移動します
-1. 自分の**ストレージ アカウント** リソースをクリックします。![選択したストレージ アカウント リソースが強調表示されているスクリーンショット。](./media/portal-storage-accounts.png)
-1. 次の画面で、左側のパネルにある **[ストレージ エクスプローラー]** をクリックし、*arroutput* BLOB ストレージ コンテナー内にある実際の出力モデル ( *.arrAsset* ファイル) を見つけます。 対象のファイルを右クリックし、コンテキスト メニューから **[Shared Access Signature の取得]** を選択します。![署名アクセス](./media/portal-storage-explorer.png)
+1. 自分の **ストレージ アカウント** リソースをクリックします。![選択したストレージ アカウント リソースが強調表示されているスクリーンショット。](./media/portal-storage-accounts.png)
+1. 次の画面で、左側のパネルにある **[ストレージ エクスプローラー]** をクリックし、 *arroutput* BLOB ストレージ コンテナー内にある実際の出力モデル ( *.arrAsset* ファイル) を見つけます。 対象のファイルを右クリックし、コンテキスト メニューから **[Shared Access Signature の取得]** を選択します。![署名アクセス](./media/portal-storage-explorer.png)
 1. 新しい画面が開き、そこで有効期限を選択できます。 **[作成]** をクリックし、次のダイアログに表示される URI をコピーします。 この新しい URI により、スクリプトによって作成された一時 URI が置き換えられます。
 
 ## <a name="next-steps"></a>次のステップ

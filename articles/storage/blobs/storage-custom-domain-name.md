@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053628"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314665"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
@@ -23,7 +23,7 @@ ms.locfileid: "88053628"
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動してカスタム ドメインのルート ドメインを有効にするため、そのセクション内の HTTPS を有効にする手順は省略可能です。 
+> このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動し、カスタム ドメインのルート ドメインを有効にするので、そのセクション内の HTTPS を有効にする手順を省略できます。 
 
 <a id="enable-http"></a>
 
@@ -60,9 +60,9 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
 
-3. **プライマリ BLOB サービス エンドポイント**または**プライマリ静的 Web サイト エンドポイント**の値をテキスト ファイルにコピーします。 
+3. **プライマリ BLOB サービス エンドポイント** または **プライマリ静的 Web サイト エンドポイント** の値をテキスト ファイルにコピーします。 
 
-4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
+4. その文字列からプロトコル識別子 ( *例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
 
    | エンドポイントの種類 |  endpoint | ホスト名 |
    |------------|-----------------|-------------------|
@@ -79,11 +79,11 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 1. ドメイン レジストラーの Web サイトにサインインし、DNS 設定を管理するためのページに移動します。
 
-   このページは、**Domain Name**、**DNS**、または **Name Server Management** というセクションにある可能性があります。
+   このページは、 **Domain Name** 、 **DNS** 、または **Name Server Management** というセクションにある可能性があります。
 
 2. CNAME レコードの管理セクションを見つけます。 
 
-   詳細設定ページに進み、**CNAME**、**Alias**、または **Subdomains** などを見つける必要があります。
+   詳細設定ページに進み、 **CNAME** 、 **Alias** 、または **Subdomains** などを見つける必要があります。
 
 3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。 
 
@@ -115,7 +115,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 カスタム ドメインが Blob service エンドポイントにマッピングされていることを確認するために、ストレージ アカウント内のパブリック コンテナーに BLOB を作成します。 次に、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-たとえば、*photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
+たとえば、 *photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
@@ -146,9 +146,9 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
 
-3. **プライマリ BLOB サービス エンドポイント**または**プライマリ静的 Web サイト エンドポイント**の値をテキスト ファイルにコピーします。 
+3. **プライマリ BLOB サービス エンドポイント** または **プライマリ静的 Web サイト エンドポイント** の値をテキスト ファイルにコピーします。 
 
-4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
+4. その文字列からプロトコル識別子 ( *例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
 
    | エンドポイントの種類 |  endpoint | ホスト名 |
    |------------|-----------------|-------------------|
@@ -163,11 +163,11 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 1. ドメイン レジストラーの Web サイトにサインインし、DNS 設定を管理するためのページに移動します。
 
-   このページは、**Domain Name**、**DNS**、または **Name Server Management** というセクションにある可能性があります。
+   このページは、 **Domain Name** 、 **DNS** 、または **Name Server Management** というセクションにある可能性があります。
 
 2. CNAME レコードの管理セクションを見つけます。 
 
-   詳細設定ページに進み、**CNAME**、**Alias**、または **Subdomains** などを見つける必要があります。
+   詳細設定ページに進み、 **CNAME** 、 **Alias** 、または **Subdomains** などを見つける必要があります。
 
 3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。 
 
@@ -211,11 +211,11 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 1. ドメイン レジストラーの Web サイトにサインインし、DNS 設定を管理するためのページに移動します。
 
-   このページは、**Domain Name**、**DNS**、または **Name Server Management** というセクションにある可能性があります。
+   このページは、 **Domain Name** 、 **DNS** 、または **Name Server Management** というセクションにある可能性があります。
 
 2. CNAME レコードの管理セクションを見つけます。 
 
-   詳細設定ページに進み、**CNAME**、**Alias**、または **Subdomains** などを見つける必要があります。
+   詳細設定ページに進み、 **CNAME** 、 **Alias** 、または **Subdomains** などを見つける必要があります。
 
 3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。 
 
@@ -227,7 +227,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 カスタム ドメインが Blob service エンドポイントにマッピングされていることを確認するために、ストレージ アカウント内のパブリック コンテナーに BLOB を作成します。 次に、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-たとえば、*photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
+たとえば、 *photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>カスタム ドメインのマッピングを削除する
 

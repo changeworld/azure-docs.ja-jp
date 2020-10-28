@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API を使用した新しいポリシー割り当て
 description: このクイックスタートでは、REST API を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88137093"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074007"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>クイック スタート:REST API を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
+このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに " _準拠していません_ "。
 
 REST API を使用して、Azure リソースを作成および管理します。 このガイドでは、REST API を使用してポリシー割り当てを作成し、Azure 環境内の準拠していないリソースを特定します。
 
@@ -23,13 +23,13 @@ REST API を使用して、Azure リソースを作成および管理します�
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-- [ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 これは、Azure Resource Manager ベースの REST API に HTTP 要求を送信するツールです。 代わりに、REST ドキュメントの "試してみる" 機能、または PowerShell の [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) や [Postman](https://www.postman.com) などのツールを使用することもできます。
+- [ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 これは、Azure Resource Manager ベースの REST API に HTTP 要求を送信するツールです。 REST ドキュメントの "試してみる" 機能、または PowerShell の [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) や [Postman](https://www.postman.com) などのツールを使用することもできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイックスタートでは、ポリシー割り当てを作成し、**マネージド ディスクを使用しない監査 VM** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
+このクイックスタートでは、ポリシー割り当てを作成し、 **マネージド ディスクを使用しない監査 VM** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
 
 ポリシーの割り当てを作成するには、次のコマンドを実行します。
 
@@ -59,12 +59,12 @@ REST API URI:
   - サブスクリプション: `/subscriptions/{subscriptionId}`
   - リソース グループ: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - リソース: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
-- **Name** - 割り当ての実際の名前。 この例では、_audit-vm-manageddisks_ が使用されました。
+- **Name** - 割り当ての実際の名前。 この例では、 _audit-vm-manageddisks_ が使用されました。
 
 要求本文: 
-- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"_Audit VMs without managed disks Assignment_" を使用します。
+- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、" _Audit VMs without managed disks Assignment_ " を使用します。
 - **Description** - ポリシーの機能またはこのスコープに割り当てる理由の詳細な説明。
-- **policyDefinitionId** - 割り当てを作成する際に基礎として使用するポリシー定義 ID。 ここでは、"_Managed Disks を使用していない VM の監査_" というポリシー定義の ID です。
+- **policyDefinitionId** - 割り当てを作成する際に基礎として使用するポリシー定義 ID。 ここでは、" _Managed Disks を使用していない VM の監査_ " というポリシー定義の ID です。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 

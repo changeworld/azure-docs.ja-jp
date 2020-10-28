@@ -2,14 +2,14 @@
 title: メトリックのためのコンテナーの Azure Monitor の更新方法 | Microsoft Docs
 description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするために、コンテナーの Azure Monitor を更新する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618147"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309447"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
 
@@ -23,13 +23,14 @@ ms.locfileid: "91618147"
 
 | メトリック名前空間 | メトリック | 説明 |
 |------------------|--------|-------------|
-| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは*ホスト*をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
+| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは *ホスト* をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
 | Insights.container/pods | podCount、completedJobsCount、restartingContainerCount、oomKilledContainerCount、podReadyPercentage | *ポッド* メトリックとして、それらは ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |
 | Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage | |
+| Insights.container/persistentvolumes | pvUsageExceededPercentage | |
 
 これらの新機能をサポートするために、新しいコンテナー化されたエージェントが、このリリースのバージョン **microsoft/oms:ciprod05262020** (AKS 用) およびバージョン **microsoft/oms:ciprod09252020** (Azure Arc 対応 Kubernetes クラスター用) に含まれています。 AKS の新しいデプロイでは、この構成の変更と機能が自動的に含まれます。 この機能をサポートするためのクラスターの更新は、Azure portal、Azure PowerShell、または Azure CLI で実行できます。 Azure PowerShell と Azure CLI を使用すると、 サブスクリプション内のクラスターごとに、またはすべてのクラスターでこれを実行できます。
 
-エージェントが収集したデータをクラスター リソースにパブリッシュできるように、どちらのプロセスでも、クラスターのサービス プリンシパルまたは監視アドオン用のユーザー割り当て済み MSI に対して**メトリックの発行元の監視**ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。 監視メトリック発行者ロールの要件は、Azure Arc 対応 Kubernetes クラスターには適用されません。
+エージェントが収集したデータをクラスター リソースにパブリッシュできるように、どちらのプロセスでも、クラスターのサービス プリンシパルまたは監視アドオン用のユーザー割り当て済み MSI に対して **メトリックの発行元の監視** ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。 監視メトリック発行者ロールの要件は、Azure Arc 対応 Kubernetes クラスターには適用されません。
 
 > [!IMPORTANT]
 > Azure Arc 対応 Kubernetes クラスターには、必要な最小バージョンのエージェントが既に存在するため、アップグレードは必要ありません。
@@ -56,7 +57,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 Azure コマンド シェルで Bash を使用してサブスクリプション内のすべてのクラスターを更新するには、次の手順を実行します。
 
-1. Azure CLI を使用して、次のコマンドを実行します。  AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** の値を編集します。
+1. Azure CLI を使用して、次のコマンドを実行します。  AKS クラスターの **[AKS の概要]** ページの値を使用して、 **subscriptionId** の値を編集します。
 
     ```azurecli
     az login
@@ -74,7 +75,7 @@ Azure コマンド シェルで Bash を使用してサブスクリプション�
 
 Azure CLI を使用してサブスクリプション内の特定のクラスターを更新するには、次の手順を実行します。
 
-1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
+1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、 **subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
 
     ```azurecli
     az login
@@ -83,7 +84,7 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ```
 
-    **clientIdOfSPNOrMsi** の値を取得するには、次の例に示すように、コマンド `az aks show` を実行します。 **servicePrincipalProfile** オブジェクトに有効な *clientid* 値がある場合は、その値を使用できます。 そうではなく、*msi* に設定されている場合は、`addonProfiles.omsagent.identity.clientId` から clientid を渡す必要があります。
+    **clientIdOfSPNOrMsi** の値を取得するには、次の例に示すように、コマンド `az aks show` を実行します。 **servicePrincipalProfile** オブジェクトに有効な *clientid* 値がある場合は、その値を使用できます。 そうではなく、 *msi* に設定されている場合は、`addonProfiles.omsagent.identity.clientId` から clientid を渡す必要があります。
 
     ```azurecli
     az login
@@ -96,8 +97,8 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
 
 Azure PowerShell を使用してサブスクリプション内のすべてのクラスターを更新するには、次の手順を実行します。
 
-1. GitHub リポジトリから **mdm_onboarding_atscale.ps1** スクリプトを[ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1)し、ローカル フォルダーに保存します。
-2. Azure PowerShell を使用して、次のコマンドを実行します。  AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** の値を編集します。
+1. GitHub リポジトリから **mdm_onboarding_atscale.ps1** スクリプトを [ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1)し、ローカル フォルダーに保存します。
+2. Azure PowerShell を使用して、次のコマンドを実行します。  AKS クラスターの **[AKS の概要]** ページの値を使用して、 **subscriptionId** の値を編集します。
 
     ```powershell
     .\mdm_onboarding_atscale.ps1 subscriptionId
@@ -112,9 +113,9 @@ Azure PowerShell を使用してサブスクリプション内のすべてのク
 
 Azure PowerShell を使用して特定のクラスターを更新するには、次の手順を実行します。
 
-1. GitHub リポジトリから **mdm_onboarding.ps1** スクリプトを[ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1)し、ローカル フォルダーに保存します。
+1. GitHub リポジトリから **mdm_onboarding.ps1** スクリプトを [ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1)し、ローカル フォルダーに保存します。
 
-2. Azure PowerShell を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。
+2. Azure PowerShell を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、 **subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。
 
     ```powershell
     .\mdm_onboarding.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>

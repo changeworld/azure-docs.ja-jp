@@ -5,37 +5,46 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/06/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f443cd5603e6ca0f60dc0e69b734bfa46138d476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab7749c93f39d0c7b630b63e0b0e68589b61ede2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018945"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090949"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET を使用して BLOB コンテナーを一覧表示する
 
-Azure Storage アカウント内のコンテナーをコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用してコンテナーを一覧表示する方法について説明します。  
+Azure Storage アカウント内のコンテナーをコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用してコンテナーを一覧表示する方法について説明します。  
 
 ## <a name="understand-container-listing-options"></a>コンテナーの一覧表示オプションについて
 
 ストレージ アカウント内のコンテナーを一覧表示するには、次のいずれかのメソッドを呼び出します。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+- [GetBlobContainers](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainers)
+- [GetBlobContainersAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainersasync)
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 - [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
 - [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
+
+---
 
 これらのメソッドのオーバーロードを使用すると、一覧表示操作によってコンテナーがどのように返されるかを管理するための、追加のオプションを指定できます。 以降のセクションでは、これらのオプションについて説明します。
 
 ### <a name="manage-how-many-results-are-returned"></a>返される結果の数を管理する
 
-既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットを減らすには、いずれかの **ListContainerSegmented** メソッドを呼び出すときに、`maxresults` パラメーターに 0 以外の値を指定します。
+既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットが小さくなるようにするには、返される結果ページのサイズに 0 以外の値を指定します。
 
-ストレージ アカウントに 5000 以上のコンテナーが含まれている場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるように `maxresults` の値を指定した場合、Azure Storage はコンテナーの一覧と共に*継続トークン*を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
+ストレージ アカウントに 5000 を超えるコンテナーが含まれている場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるようにページ サイズを指定した場合、Azure Storage はコンテナーの一覧と共に " *継続トークン* " を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
 
-コードでは、継続トークンの値をチェックして、それが null かどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、**ListContainersSegmented** または **ListContainersSegmentedAsync** をもう一度呼び出し、継続トークンを渡して次の結果セットを取得し、継続トークンが null になるまでそれを繰り返します。
+コードでは、継続トークンの値をチェックして、それが空 (.NET v12 の場合) または null (.NET v11 以前の場合) であるかどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、継続トークンが null になるまで、一覧表示メソッドをもう一度呼び出し、継続トークンを渡して次の結果セットを取得します。
 
 ### <a name="filter-results-with-a-prefix"></a>プレフィックスを使用して結果をフィルター処理する
 
@@ -43,31 +52,39 @@ Azure Storage アカウント内のコンテナーをコードから一覧表示
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共にコンテナーのメタデータを返すには、[ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各コンテナーにメタデータを追加します。そのため、コンテナーのメタデータを取得するために、いずれかの **FetchAttributes** メソッドを呼び出す必要はありません。
+結果と共にコンテナーのメタデータを返すには、 [BlobContainerTraits](/dotnet/api/azure.storage.blobs.models.blobcontainertraits) 列挙型 (.NET v12 の場合) または [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 列挙型 (.NET v11 以前の場合) の **メタデータ** 値を指定します。 Azure Storage では、返される各コンテナーにメタデータが含まれているため、コンテナーのメタデータもフェッチする必要はありません。
 
 ## <a name="example-list-containers"></a>例:コンテナーの一覧表示
 
-次の例では、指定されたプレフィックスで始まるコンテナーがストレージ アカウント内から非同期的に一覧表示されます。 この例では、一度に 5 つの結果を単位としてコンテナーを一覧表示し、継続トークンを使用して次の結果セグメントを取得しています。 また、この例では、結果と共にコンテナーのメタデータも返されます。
+次の例では、指定されたプレフィックスで始まるコンテナーがストレージ アカウント内から非同期的に一覧表示されます。 この例では、指定されたプレフィックスで始まるコンテナーを一覧表示し、一覧表示操作の呼び出しごとに指定された数の結果を返します。 その後、継続トークンを使用して、結果の次のセグメントを取得します。 また、この例では、結果と共にコンテナーのメタデータも返されます。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="ListContainers":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
-                                                        string prefix)
+                                                        string prefix,
+                                                        int? segmentSize)
 {
-    Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
+    Console.WriteLine("List containers beginning with prefix {0}, plus container metadata:", prefix);
+
+    BlobContinuationToken continuationToken = null;
+    ContainerResultSegment resultSegment;
 
     try
     {
-        ContainerResultSegment resultSegment = null;
-        BlobContinuationToken continuationToken = null;
-
         do
         {
-            // List containers beginning with the specified prefix, returning segments of 5 results each.
-            // Passing null for the maxResults parameter returns the max number of results (up to 5000).
-            // Requesting the container's metadata with the listing operation populates the metadata,
-            // so it's not necessary to also call FetchAttributes() to read the metadata.
+            // List containers beginning with the specified prefix,
+            // returning segments of 5 results each.
+            // Passing in null for the maxResults parameter returns the maximum number of results (up to 5000).
+            // Requesting the container's metadata as part of the listing operation populates the metadata,
+            // so it's not necessary to call FetchAttributes() to read the metadata.
             resultSegment = await blobClient.ListContainersSegmentedAsync(
-                prefix, ContainerListingDetails.Metadata, 5, continuationToken, null, null);
+                prefix, ContainerListingDetails.Metadata, segmentSize, continuationToken, null, null);
 
             // Enumerate the containers returned.
             foreach (var container in resultSegment.Results)
@@ -82,24 +99,27 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
                 }
             }
 
-            // Get the continuation token. If not null, get the next segment.
+            // Get the continuation token.
             continuationToken = resultSegment.ContinuationToken;
 
         } while (continuationToken != null);
+
+        Console.WriteLine();
     }
     catch (StorageException e)
     {
-        Console.WriteLine("HTTP error code {0} : {1}",
-                            e.RequestInformation.HttpStatusCode,
-                            e.RequestInformation.ErrorCode);
         Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="see-also"></a>関連項目
 
-[コンテナーの一覧表示](/rest/api/storageservices/list-containers2)
-[Enumerating Blob Resources (Blob リソースの列挙)](/rest/api/storageservices/enumerating-blob-resources)
+- [コンテナーの一覧表示](/rest/api/storageservices/list-containers2)
+- [BLOB リソースの列挙](/rest/api/storageservices/enumerating-blob-resources)

@@ -6,21 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/23/2020
-ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/19/2020
+ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268725"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207711"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 
 共同販売プログラムを使用すると、共同販売案件について Microsoft 販売者と直接連携し、商業マーケットプレースを通じて販売することで多大な営利上および販売促進のベネフィットを得られるようになります。
 
-共同販売プログラムは、**知的財産 (IP) を繰り返し可能なパッケージ化されたプランとして構築されたソフトウェア**および **Microsoft テクノロジが組み込まれたサービス**に使用できます。 共同販売プログラムのほとんどのプランの種類は、商業マーケットプレースでも入手できます。 追加の要件を満たすプランは、**共同販売の準備完了**または**共同販売インセンティブ対象**になります。
+共同販売プログラムは、 **知的財産 (IP) を繰り返し可能なパッケージ化されたプランとして構築されたソフトウェア** および **Microsoft テクノロジが組み込まれたサービス** に使用できます。 共同販売プログラムのほとんどのプランの種類は、商業マーケットプレースでも入手できます。 追加の要件を満たすプランは、 **共同販売の準備完了** または **共同販売インセンティブ対象** になります。
 
-- **共同販売の準備完了**プランは、Microsoft の現場販売者に公開されます。 Microsoft 販売者と連携し、共同販売プログラムを利用すると、Microsoft が管理する顧客の広大なコミュニティにリーチし、ビジネスの成長を加速する営業案件について協力するために役立ちます。
+- **共同販売の準備完了** プランは、Microsoft の現場販売者に公開されます。 Microsoft 販売者と連携し、共同販売プログラムを利用すると、Microsoft が管理する顧客の広大なコミュニティにリーチし、ビジネスの成長を加速する営業案件について協力するために役立ちます。
 
 <ul>
 
@@ -31,12 +31,12 @@ ms.locfileid: "91268725"
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>インセンティブ対象プランのマーケットプレースのベネフィット
 
-**Azure IP 共同販売インセンティブ対象**状態を達成するプランには、次の追加のマーケットプレースのベネフィットがあります。
+**Azure IP 共同販売インセンティブ対象** 状態を達成するプランには、次の追加のマーケットプレースのベネフィットがあります。
 
 * マーケットプレース サービス料金は 20% から 10% に引き下げられます。 この割引は、商業マーケットプレースを通じて販売される IaaS または SaaS プランに適用されます。 詳しくは、[サービス料金の減額](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee)に関するセクションをご覧ください。
 * クラウド ソリューション プロバイダー (CSP) パートナーは、10% のインセンティブを受けて IaaS または SaaS プランを販売します。 CSP プログラムの詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。
-* 商業マーケットプレースを介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となる顧客には、Azure Portal で "**Azure 特典対象**" とマークされたプランが表示されます。 詳しくは、「[Azure の消費コミットメントのベネフィット](azure-consumption-commitment-benefit.md)」をご覧ください。
-* ステータスが**Azure IP 共同販売インセンティブ対象**または **Business Applications 共同販売インセンティブ対象**になるオファーには、ネットショップで **"推奨されるソリューション"** バッジが与えられます。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。 詳しくは、「[Microsoft AppSource と Azure Marketplace のお勧めするソリューション](preferred-solutions.md)」をご覧ください。
+* 商業マーケットプレースを介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となる顧客には、Azure portal で " **Azure 特典対象** " とマークされたプランが表示されます。 詳しくは、「[Azure の消費コミットメントのベネフィット](azure-consumption-commitment-benefit.md)」をご覧ください。
+* ステータスが **Azure IP 共同販売インセンティブ対象** または **Business Applications 共同販売インセンティブ対象** になるオファーには、ネットショップで **"推奨されるソリューション"** バッジが与えられます。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。 詳しくは、「[Microsoft AppSource と Azure Marketplace のお勧めするソリューション](preferred-solutions.md)」をご覧ください。
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>共同販売の公開手順と要件
 
@@ -45,10 +45,10 @@ ms.locfileid: "91268725"
 |手順    |プランの種類    |必要条件    |共同販売の状態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> パートナー センターでアカウントを作成し、ご自分のプランをコマーシャル マーケットプレースに公開します。</li>|All|<li>オファーがコマーシャル マーケットプレースの公開要件を満たしていること。</li><li>パートナーセンターに完全なビジネス プロファイルが用意されていること。</li>|準備不完了|
-|<ol start=2><li>必要な共同販売資料を送信します。</li>|[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が "*ある*" IP プラン|[パートナー センターで必要な資料をアップロードします](#how-to-submit-co-sell-materials-in-partner-center)。 <ul><li>対象となる各国の営業担当者。</li><li>資料表: 顧客 1 ページャー、顧客向けプレゼンテーション デッキ (オプション)、ソリューションのランディング ページ URL、ソーシャル メディア チャネル URL、またはその他 (ケース スタディなど)。|共同販売の準備完了|
-||[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が "*ない*" IP プラン|<li>[クラウド スペシャリスト](https://partner.microsoft.com/campaigns/ced-nomination-form/)と連携し、必要な共同販売ドキュメントを提供するように依頼します。|共同販売の準備完了|
+|<ol start=2><li>必要な共同販売資料を送信します。</li>|[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ある* " IP プラン|[パートナー センターで必要な資料をアップロードしていること](#how-to-submit-co-sell-materials-in-partner-center)|共同販売の準備完了|
+||[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ない* " IP プラン|<li>[クラウド スペシャリスト](https://partner.microsoft.com/campaigns/ced-nomination-form/)と連携し、必要な共同販売ドキュメントを提供するように依頼します。|共同販売の準備完了|
 ||コンサルティング サービス|<li>[クラウド スペシャリスト](https://partner.microsoft.com/campaigns/ced-nomination-form/)と連携し、必要な共同販売ドキュメントを提供するように依頼します。</li><li>アクティブな Gold コンピテンシー</li>|共同販売の準備完了|
-|<ol start=3><li>IP 共同販売インセンティブの資格を得ます</li>|Azure アプリケーション、Azure コンテナー、IoT Edge モジュール、SaaS、VM|共同販売の準備完了を達成した後は、2 つの追加要件があります。 <ul> 要件 1: 次のいずれかを達成します。<ul><li>*組織レベル:* 過去 12 か月間に $100,000 USD の Azure 使用による収益を満たしたか、超えています。</li><li>*プラン レベル:* マーケットプレースで請求された累積収益が $100,000 USD です。</li></ul><br>要件 2: プランのインフラストラクチャの 50% 超が Azure 上で実行されている必要があります。<ul><li>[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が "*ある*" IP プラン: レビューのために、パートナー センターに共同販売ドキュメントを含むアーキテクチャ図をアップロードします。</li><li>[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が "*ない*" IP プラン: アーキテクチャ図を OCP GTM にアップロードします。|Azure IP 共同販売インセンティブ対象|
+|<ol start=3><li>IP 共同販売インセンティブの資格を得ます</li>|Azure アプリケーション、Azure コンテナー、IoT Edge モジュール、SaaS、VM|共同販売の準備完了を達成した後は、2 つの追加要件があります。 <ul> 要件 1: 次のいずれかを達成します。<ul><li>*組織レベル:* 過去 12 か月間に $100,000 USD の Azure 使用による収益を満たしたか、超えています。</li><li>*プラン レベル:* マーケットプレースで請求された累積収益が $100,000 USD です。</li></ul><br>要件 2: プランのインフラストラクチャの 50% 超が Azure 上で実行されている必要があります。<ul><li>[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ある* " IP プラン: レビューのために、パートナー センターに共同販売ドキュメントを含むアーキテクチャ図をアップロードします。</li><li>[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ない* " IP プラン: アーキテクチャ図を OCP GTM にアップロードします。|Azure IP 共同販売インセンティブ対象|
 ||Dynamics|<li>ISV コネクト Premium レベルへのアクティブな登録があること。</li>|Business Applications 共同販売インセンティブ対象|
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>パートナー センターで共同販売資料を送信する方法
@@ -63,15 +63,19 @@ ms.locfileid: "91268725"
 
 1. 左側のメニューで、 **[Microsoft と共同販売する]** を選択します。
 
-    [![この図は、[Microsoft と共同販売する] タブの場所を示しています。](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::
 
-1. プランの詳細を入力し、 **[ドキュメント]** セクションに記載されている資料をアップロードします。 Microsoft の販売者は、この情報を使用してお客様のオファーを推薦および販売します。
+1. **[Listing]\(登録情報\)** セクションに、Microsoft の販売者がプランをすばやく並べ替えて見つけるのに役立つ、基本的な登録情報の詳細を提供します。 ( *必須: すべてのフィールド。* )
+
+    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::  
+
+1. プランの詳細を入力し、 **[ドキュメント]** セクションに記載されている資料をアップロードします。 Microsoft の販売者は、この情報を使用してお客様のオファーを推薦および販売します。 ( *必須:顧客 1 ページャーおよび顧客プレゼンテーション デッキ。* )
+
+    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::
  
-   [![この図は、共同販売タブの [ドキュメント] セクションを示しています。](./media/co-sell/co-sell-documents-section.png)](./media/co-sell/co-sell-documents-section.png#lightbox)
+1. 営業担当者の情報を **[連絡先]** セクションにアップロードします。 Microsoft の販売者は、これらの連絡先に問い合わせて、オファーに関する追加情報を依頼することがあります。 ( *必須: プランが使用可能になる地理的な場所ごとの連絡先。* )
 
-1. 営業担当者の情報を **[連絡先]** セクションにアップロードします。 Microsoft の販売者は、これらの連絡先に問い合わせて、オファーに関する追加情報を依頼することがあります。
-
-     [![この図は、共同販売タブの [連絡先] セクションを示しています。](./media/co-sell/co-sell-contacts-section.png)](./media/co-sell/co-sell-contacts-section.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::
 
 1. 続行する前に、下書きを保存します。
 1. オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。 右上にある **[レビューと公開]** を選択します。 オファーの詳細を確認してから、 **[公開]** を選択します。

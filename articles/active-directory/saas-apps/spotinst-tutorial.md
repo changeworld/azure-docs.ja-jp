@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4028cb8d4f206a0e62dda1cb130cc55e71831c78
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587958"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123132"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Spotinst の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Spotinst では、**SP と IDP** によって開始される SSO がサポートされます
+* Spotinst では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-spotinst-from-the-gallery"></a>ギャラリーからの Spotinst の追加
 
@@ -49,7 +49,7 @@ Azure AD への Spotinst の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Spotinst**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Spotinst** 」と入力します。
 1. [結果] パネルから **[Spotinst]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>Spotinst の Azure AD シングル サインオンの構成とテスト
@@ -137,11 +137,11 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
 1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Spotinst にサインインします。
 
-2. 画面の右上にある**ユーザー アイコン**をクリックして、**[設定]** をクリックします。
+2. 画面の右上にある **ユーザー アイコン** をクリックして、 **[設定]** をクリックします。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![ユーザー アイコンから [設定] が選択された画面のスクリーンショット。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. 上部の **[SECURITY]\(セキュリティ\)** タブをクリックし、**[Identity Providers]\(ID プロバイダー\)** を選択して、以下の手順を実行します。
+3. 上部の **[SECURITY]\(セキュリティ\)** タブをクリックし、 **[Identity Providers]\(ID プロバイダー\)** を選択して、以下の手順を実行します。
 
     ![Spotinst のセキュリティ](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
@@ -159,19 +159,19 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
    a. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Spotinst にサインインします。
 
-   b. 画面の右上にある**ユーザー アイコン**をクリックして、**[設定]** をクリックします。
+   b. 画面の右上にある **ユーザー アイコン** をクリックして、 **[設定]** をクリックします。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![ユーザー アイコンから [設定] が選択された画面のスクリーンショット。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. **[Users]\(ユーザー\)** をクリックして、**[ADD USER]\(ユーザーの追加\)** を選択します。
+    c. **[Users]\(ユーザー\)** をクリックして、 **[ADD USER]\(ユーザーの追加\)** を選択します。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/adduser1.png)
+    ![[Users]\(ユーザー\) から [ADD USER]\(ユーザーの追加\) が選択された画面のスクリーンショット。](./media/spotinst-tutorial/adduser1.png)
 
     d. ユーザーの追加セクションで、次の手順を実行します。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/adduser2.png)
+    ![[Add user]\(ユーザーの追加\) セクションを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/spotinst-tutorial/adduser2.png)
 
-    * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (**BrittaSimon** など) を入力します。
+    * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 ( **BrittaSimon** など) を入力します。
 
     * **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレスを入力します (`brittasimon\@contoso.com` など)。
 

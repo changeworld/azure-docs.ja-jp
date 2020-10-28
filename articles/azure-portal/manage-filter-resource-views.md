@@ -3,15 +3,15 @@ title: Azure リソース情報の表示とフィルター処理
 description: 情報をフィルター処理し、さまざまなビューを使用して、Azure リソースをより深く理解します。
 author: mgblythe
 ms.service: azure-portal
-ms.topic: quickstart
+ms.topic: how-to
 ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6185e1c4042110f446337c1b2c2904fefdae7a9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650402"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280250"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure リソース情報の表示とフィルター処理
 
@@ -53,7 +53,7 @@ Azure portal を使用すると、Azure サブスクリプション全体でリ�
 
 ## <a name="summarize-resources-with-visuals"></a>ビジュアルを使用してリソースを集計する
 
-これまでに見たビューは_リスト ビュー_になっていますが、ビジュアルを含む_概要ビュー_もあります。 ビューを一覧表示できるのと同じように、これらのビューを保存して使用できます。 フィルターは 2 種類のビューの間で保持されます。 次に示す**場所**ビューなどの標準的なビューや、仮想マシンの**状態**ビューなど、特定のサービスに関連するビューがあります。
+これまでに見たビューは _リスト ビュー_ になっていますが、ビジュアルを含む _概要ビュー_ もあります。 ビューを一覧表示できるのと同じように、これらのビューを保存して使用できます。 フィルターは 2 種類のビューの間で保持されます。 次に示す **場所** ビューなどの標準的なビューや、Azure Storage の **状態** ビューなど、特定のサービスに関連するビューがあります。
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Azure portal の [すべてのリソース] ビュー":::
 
@@ -63,7 +63,7 @@ Azure portal を使用すると、Azure サブスクリプション全体でリ�
 
     :::image type="content" source="media/manage-filter-resource-views/menu-summary-view.png" alt-text="Azure portal の [すべてのリソース] ビュー":::
 
-1. [概要] ビューでは**場所**や**種類**などのさまざまな属性で集計できます。 **[集計の方法]** オプションおよび適切なビジュアルを選択します。 次のスクリーンショットは、 **[Bar chart]\(棒グラフ\)** ビジュアルを使用して **[種類の概要]** を示しています。
+1. [概要] ビューでは **場所** や **種類** などのさまざまな属性で集計できます。 **[集計の方法]** オプションおよび適切なビジュアルを選択します。 次のスクリーンショットは、 **[Bar chart]\(棒グラフ\)** ビジュアルを使用して **[種類の概要]** を示しています。
 
     :::image type="content" source="media/manage-filter-resource-views/type-summary-bar-chart.png" alt-text="Azure portal の [すべてのリソース] ビュー":::
 
@@ -83,7 +83,7 @@ Resource Graph クエリを実行するには、次のようにします。
 
     :::image type="content" source="media/manage-filter-resource-views/open-query.png" alt-text="Azure portal の [すべてのリソース] ビュー":::
 
-1. **Azure Resource Graph エクスプローラー**で、 **[クエリの実行]** を選択して結果を確認します。
+1. **Azure Resource Graph エクスプローラー** で、 **[クエリの実行]** を選択して結果を確認します。
 
     :::image type="content" source="media/manage-filter-resource-views/run-query.png" alt-text="Azure portal の [すべてのリソース] ビュー":::
 

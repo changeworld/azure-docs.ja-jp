@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042424"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093703"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT プラグ アンド プレイ サービス開発者ガイド
 
@@ -30,18 +30,18 @@ IoT ハブに接続されている IoT プラグ アンド プレイ デバイ�
 
 - IoT Hub サービス クライアント。 このサービスは、モデル ID をデバイス ツイン プロパティとして公開します。
 
-- Digital Twins サービス クライアント。 新しい Digital Twins API は、コンポーネント、プロパティ、コマンドなどの、[Digital Twins Definition Language (DTDL)](concepts-digital-twin.md) モデル コンストラクト上で機能します。 Digital Twin API を使用すると、ソリューション ビルダーで IoT プラグ アンド プレイ ソリューションを簡単に作成できます。
+- Digital Twins クライアント。 新しい Digital Twins API は、コンポーネント、プロパティ、コマンドなどの、[Digital Twins Definition Language (DTDL)](concepts-digital-twin.md) モデル コンストラクト上で機能します。 Digital Twin API を使用すると、ソリューション ビルダーで IoT プラグ アンド プレイ ソリューションを簡単に作成できます。
 
-| プラットフォーム | IoT Hub サービス クライアント | Digital Twins サービス クライアント |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [ドキュメント](/dotnet/api/microsoft.azure.devices) <br/> [サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [ドキュメント](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [サンプル](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [ドキュメント](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [サンプル](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [ドキュメント](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [サンプル](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [ドキュメント](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [サンプル](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [ドキュメント](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [サンプル](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| プラットフォーム | ドキュメント | サンプル |
+| -------- | ------------- | ------- |
+| .NET     | [参照](/dotnet/api/microsoft.azure.devices) | [サービス クライアント](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [Digital Twins](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [参照](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [サービス クライアント](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[Digital Twins](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [参照](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [サービス クライアント](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [参照](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [サービス クライアント](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアントと **RegistryManager** および **ServiceClient** クラスを使用した C# の例を示します。 **RegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **RegistryManager** クラスを使用して、IoT ハブ内の[デバイス登録のクエリ](..\iot-hub\iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、**ServiceClient** クラスを使用します。 デバイスの [DTDL](concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceTwinId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアントと **RegistryManager** および **ServiceClient** クラスを使用した C# の例を示します。 **RegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **RegistryManager** クラスを使用して、IoT ハブ内の[デバイス登録のクエリ](..\iot-hub\iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、 **ServiceClient** クラスを使用します。 デバイスの [DTDL](concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceTwinId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -73,7 +73,7 @@ Console.WriteLine($"Update the targetTemperature property to {desiredTargetTempe
 await registryManager.UpdateTwinAsync(deviceTwinId, twinPatch, twin.ETag);
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルでは、ツインの `ETag` を更新する前に取得する方法を示します。 プロパティは、**Thermostat1** インターフェイス内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルでは、ツインの `ETag` を更新する前に取得する方法を示します。 プロパティは、 **Thermostat1** インターフェイス内で定義されています。
 
 ```csharp
 Twin twin = await registryManager.GetTwinAsync(deviceTwinId);
@@ -137,7 +137,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**Thermostat1** インターフェイス内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **Thermostat1** インターフェイス内で定義されています。
 
 ```csharp
 // Create command name to invoke for component. The command is formatted as <component name>*<command name>
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>デジタル ツインの例
+## <a name="iot-hub-digital-twin-examples"></a>IoT Hub デジタル ツインの例
 
 **DigitalTwinClient** クラスを使用し、デジタル ツインを使用してデバイスの状態を操作します。 デバイスの [DTDL](concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。
 
@@ -280,7 +280,7 @@ HttpOperationHeaderResponse<DigitalTwinUpdateHeaders> updateDigitalTwinResponse 
 Console.WriteLine($"Update {digitalTwinId} digital twin response: {updateDigitalTwinResponse.Response.StatusCode}.");
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、**Thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、 **Thermostat1** コンポーネント内で定義されています。
 
 ```csharp
 int desiredTargetTemperature = 60;
@@ -349,7 +349,7 @@ catch (HttpOperationException e)
 }
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**Thermostat1** インターフェイス内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **Thermostat1** インターフェイス内で定義されています。
 
 ```csharp
 DateTimeOffset since = DateTimeOffset.Now.Subtract(TimeSpan.FromMinutes(2));
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST API
-
-次の例では、IoT Hub REST API を使用して、接続されている IoT プラグ アンド プレイ デバイスと対話します。 API の最新バージョンは `2020-09-30` です。 REST PI 呼び出しに `?api-version=2020-09-30` を追加してください。
-
-> [!NOTE]
-> モジュール ツインは、`digitalTwins` API によって現在サポートされていません。
-
-サーモスタット デバイスが `t-123` の場合、次の REST API GET 呼び出しにより、デバイスによって実装されているすべてのインターフェイス上のすべてのプロパティが取得されます。
-
-```REST
-GET /digitalTwins/t-123
-```
-
-この呼び出しには、デバイスからアナウンスされたモデル ID の Json プロパティ `$metadata.$model` が含まれます。
-
-`GET /DigitalTwin/{device-id}` REST API テンプレートを使用することで、すべてのインターフェイス上のすべてのプロパティにアクセスできます。ここで、`{device-id}` はデバイスの識別子です。
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-IoT プラグ アンド プレイ デバイス コマンドを直接呼び出すことができます。 `t-123` デバイスの `Thermostat` コンポーネントに `restart` コマンドがある場合は、REST API POST 呼び出しを使用して呼び出すことができます。
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-より一般的に、コマンドはこの REST API テンプレートを使用して呼び出すことができます。
-
-- `device-id`: デバイスの識別子。
-- `component-name`: デバイス機能モデルの implements セクションのインターフェイスの名前。
-- `command-name`: コマンドの名前。
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>デバイス テレメトリを読み取る
@@ -448,7 +411,7 @@ catch (TaskCanceledException)
 }
 ```
 
-前のコードからの次の出力は、既定のコンポーネントのみを持つ、コンポーネントのない**サーモスタット** IoT プラグ アンド プレイ デバイスによって送信された温度テレメトリを示しています。 `dt-dataschema` システム プロパティには、モデル ID が表示されます。
+前のコードからの次の出力は、既定のコンポーネントのみを持つ、コンポーネントのない **サーモスタット** IoT プラグ アンド プレイ デバイスによって送信された温度テレメトリを示しています。 `dt-dataschema` システム プロパティには、モデル ID が表示されます。
 
 ```cmd/sh
 Message received on partition 1:

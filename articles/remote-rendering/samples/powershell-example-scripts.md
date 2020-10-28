@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055853"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278998"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -20,20 +20,23 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 - [変換 REST API](../how-tos/conversion/conversion-rest-api.md)
 - [セッション REST API](../how-tos/session-rest-api.md)
 
-[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)には、*Scripts* フォルダーに、サービスの REST API を操作するためのサンプル スクリプトがあります。 この記事では、その使用方法について説明します。
+[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)には、 *Scripts* フォルダーに、サービスの REST API を操作するためのサンプル スクリプトがあります。 この記事では、その使用方法について説明します。
+
+> [!TIP]
+> また、サービスと対話するための [ARRT と呼ばれる UI ベースのツール](azure-remote-rendering-asset-tool.md)もあります。これは、スクリプトの使用に代わる便利な方法です。 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT のスクリーンショット")
 
 > [!CAUTION]
-> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、 **次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
-サンプル スクリプトを実行するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) の機能設定が必要です。
+サンプル スクリプトを実行するには、[Azure PowerShell](/powershell/azure/) の機能設定が必要です。
 
 1. Azure PowerShell をインストールします。
     1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Install-Module -Name Az -AllowClobber` を実行します。
 
-1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
+1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
     1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` を実行します。
 
@@ -44,9 +47,9 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
     1. `Connect-AzAccount` を実行し、画面の指示に従います。
 
     > [!NOTE]
-    > 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
+    > 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](/powershell/module/az.accounts/connect-azaccount)を参照してください。
 
-1. [Azure Remote Rendering GithHub リポジトリ](https://github.com/Azure/azure-remote-rendering)から *Scripts* フォルダーをダウンロードします。
+1. [Azure Remote Rendering GitHub リポジトリ](https://github.com/Azure/azure-remote-rendering)から *Scripts* フォルダーをダウンロードします。
 
 ## <a name="configuration-file"></a>構成ファイル
 
@@ -116,21 +119,21 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 .\RenderingSession.ps1
 ```
 
-このスクリプトは、[セッション管理 REST API](../how-tos/session-rest-api.md) を呼び出して、指定された設定でレンダリング VM を起動します。 成功すると、*sessionId* が取得されます。 その後、セッションの準備が完了するか、エラーが発生するまで、セッションのプロパティがポーリングされます。
+このスクリプトは、[セッション管理 REST API](../how-tos/session-rest-api.md) を呼び出して、指定された設定でレンダリング VM を起動します。 成功すると、 *sessionId* が取得されます。 その後、セッションの準備が完了するか、エラーが発生するまで、セッションのプロパティがポーリングされます。
 
-**代替の構成**ファイルを使用するには、次のようにします。
+**代替の構成** ファイルを使用するには、次のようにします。
 
 ```PowerShell
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-構成ファイルから**個々の設定をオーバーライドする**ことができます。
+構成ファイルから **個々の設定をオーバーライドする** ことができます。
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-**ポーリングせずにセッションの開始のみを行う**には、以下を使用します。
+**ポーリングせずにセッションの開始のみを行う** には、以下を使用します。
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
@@ -146,7 +149,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-`-Poll` を使用して、セッションの "*準備が完了*" するか、エラーが発生するまで待機します。
+`-Poll` を使用して、セッションの " *準備が完了* " するか、エラーが発生するまで待機します。
 
 ### <a name="list-active-sessions"></a>アクティブなセッションを一覧表示する
 
@@ -165,7 +168,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 現時点では、セッションの maxLeaseTime の変更のみがサポートされています。
 
 > [!NOTE]
-> リース時間は、セッション VM が最初に作成された時点から常にカウントされます。 そのため、セッション リースをさらに 1 時間延長するには、*maxLeaseTime* を 1 時間増やします。
+> リース時間は、セッション VM が最初に作成された時点から常にカウントされます。 そのため、セッション リースをさらに 1 時間延長するには、 *maxLeaseTime* を 1 時間増やします。
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
@@ -216,19 +219,19 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 
 ### <a name="additional-command-line-options"></a>追加のコマンド ライン オプション
 
-**代替の構成**ファイルを使用するには、次のようにします。
+**代替の構成** ファイルを使用するには、次のようにします。
 
 ```PowerShell
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-**ポーリングせずにモデルの変換の開始のみを行う**には、以下を使用できます。
+**ポーリングせずにモデルの変換の開始のみを行う** には、以下を使用できます。
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-次のコマンド ライン スイッチを使用して、構成ファイルから**個々の設定をオーバーライドする**ことができます。
+次のコマンド ライン スイッチを使用して、構成ファイルから **個々の設定をオーバーライドする** ことができます。
 
 * **Id:** GetConversionStatus で使用される ConversionId
 * **ArrAccountId:** accountSettings の arrAccountId
@@ -259,7 +262,7 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 .\Conversion.ps1 -Upload
 ```
 
-BLOB ストレージに既にアップロードされているモデルの変換プロセスの開始のみを行います (アップロードは実行せず、変換の状態はポーリングしません)。このスクリプトは、*conversionId* を返します。
+BLOB ストレージに既にアップロードされているモデルの変換プロセスの開始のみを行います (アップロードは実行せず、変換の状態はポーリングしません)。このスクリプトは、 *conversionId* を返します。
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset

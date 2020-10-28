@@ -5,19 +5,21 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/20/2020
 ms.author: banders
-ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371798"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316410"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
-Enterprise Agreement 加入契約の有効期限が切れているか、期限切れが近い場合は、Microsoft 顧客契約に署名して加入契約を更新できます。 この記事では、セットアップ後の既存の請求先に対する変更について説明し、新しい請求先アカウントのセットアップ手順について説明します。 更新の手順は次のとおりです。
+直接 Enterprise Agreement 加入契約の有効期限が切れているか、期限切れが近い場合は、Microsoft 顧客契約に署名して加入契約を更新できます。 この記事では、セットアップ後の既存の請求先に対する変更について説明し、新しい請求先アカウントのセットアップ手順について説明します。 現在、有効期限が切れた間接 Enterprise Agreement は、Microsoft 顧客契約では更新できません。
+
+更新の手順は次のとおりです。
 
 1. 新しい Microsoft 顧客契約に同意します。 Microsoft フィールド担当に問い合わせて、新しい契約の詳細を理解し、同意します。
 2. 新しい Microsoft 顧客契約用に作成された新しい請求先アカウントを設定します。
@@ -98,9 +100,9 @@ Microsoft 顧客契約に署名した組織内のユーザーが課金プロフ�
 
 Azure Active Directory (AD) テナントは、Microsoft 顧客契約への同意時に新しい課金アカウントに対して選択されます。 組織のテナントが存在しない場合は、新しいテナントが作成されます。 テナントは、Azure Active Directory 内の組織を表します。 組織のテナントの全体管理者は、組織内のアプリケーションとデータへのアクセスを管理するためにテナントを使用します。
 
-新しいアカウントでは、Microsoft 顧客契約に署名する際に選択したテナントのユーザーのみがサポートされます。 マイクロソフト エンタープライズ契約に対する管理アクセス許可を持つユーザーは、テナントに属していれば、セットアップ中も新しい請求先アカウントにアクセスできます。 テナントに属していない場合は、招待されない限り、新しい請求先アカウントにアクセスできません。
+新しいアカウントでは、Microsoft 顧客契約に署名する際に選択したテナントのユーザーのみがサポートされます。 マイクロソフト エンタープライズ契約に対する管理アクセス許可を持つユーザーは、テナントに属していれば、セットアップ中も新しい請求先アカウントにアクセスできます。 テナントに属していない場合は、招待されない限り、新しい課金アカウントにアクセスできません。
 
-ユーザーを招待すると、そのユーザーはテナントにゲスト ユーザーとして追加され、請求先アカウントにアクセスできます。 ユーザーを招待するには、テナントに対してゲスト アクセスをオンする必要があります。 詳しくは、「[Azure Active Directory 内のゲスト アクセスの制御](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)」をご覧ください。 ゲスト アクセスがオフの場合は、テナントの全体管理者に連絡してオンにしてください。 <!-- Todo - How can they find their global administrator -->
+ユーザーを招待すると、そのユーザーはテナントにゲスト ユーザーとして追加され、課金アカウントにアクセスできます。 ユーザーを招待するには、テナントに対してゲスト アクセスをオンする必要があります。 詳しくは、「[Azure Active Directory 内のゲスト アクセスの制御](/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)」をご覧ください。 ゲスト アクセスがオフの場合は、テナントの全体管理者に連絡してオンにしてください。 <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-replaced-features"></a>置き換えられた機能を表示する
 
@@ -112,7 +114,7 @@ Enterprise Agreement 加入契約で作成されたアカウントは、新し�
 
 ### <a name="notification-contacts"></a>通知の連絡窓口
 
-通知の連絡窓口には Azure Enterprise Agreement に関する電子メール通信が送信されます。 新しい請求先アカウントではサポートされません。 Azure クレジットと請求書に関する電子メールは、請求先アカウントの課金プロファイルへのアクセス権を持っているユーザーに送信されます。
+通知の連絡窓口には Azure Enterprise Agreement に関する電子メール通信が送信されます。 新しい課金アカウントではサポートされません。 Azure クレジットと請求書に関する電子メールは、請求先アカウントの課金プロファイルへのアクセス権を持っているユーザーに送信されます。
 
 ### <a name="spending-quotas"></a>支出クォータ
 
@@ -164,7 +166,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 ### <a name="closing-your-browser-during-setup"></a>セットアップ中にブラウザーを閉じる
 
-**[切り替えを開始]** をクリックする前に、ブラウザーを閉じることができます。 電子メールで取得したリンクを使用してセットアップに戻り、切り替えを開始できます。 切り替えの開始後にブラウザーを閉じた場合、切り替えは実行を続けます。 切り替え状態ページに戻って切り替えの最新状態を監視します。 切り替えが完了すると、電子メールが送られてきます。
+**[切り替えを開始]** を選択する前に、ブラウザーを閉じることができます。 電子メールで取得したリンクを使用してセットアップに戻り、切り替えを開始できます。 切り替えの開始後にブラウザーを閉じた場合、切り替えは実行を続けます。 切り替え状態ページに戻って切り替えの最新状態を監視します。 切り替えが完了すると、電子メールが送られてきます。
 
 ## <a name="complete-the-setup-in-the-azure-portal"></a>Azure portal でのセットアップを完了する
 
@@ -182,7 +184,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
     - Enterprise Agreement 階層に対応する課金階層は、新しい請求先アカウントに作成されます。 詳しくは、「[課金階層に対する変更を確認する](#understand-changes-to-your-billing-hierarchy)」をご覧ください。
     - Enterprise Agreement 加入契約の管理者には、新しい請求先アカウントへのアクセス権が付与されるので、引き続き組織の課金を管理できます。
-    - Azure サブスクリプションの請求先は、新しいアカウントに切り替えられます。 **この切り替え中に Azure サービスは影響を受けません。中断なく稼働し続けます**。
+    - Azure サブスクリプションの請求先は、新しいアカウントに切り替えられます。 **この切り替え中に Azure サービスは影響を受けません。中断なく稼働し続けます** 。
     - Azure の予約がある場合は、特典や条件の変更なしで新しい課金アカウントに移行されます。
 
 4. 切り替えの状態は、 **[切り替え状態]** ページで監視することができます。
@@ -197,11 +199,11 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. "**コスト管理 + 請求**" を検索します。
+2. " **コスト管理 + 請求** " を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)
 
-3. 請求先アカウントを選択します。 課金アカウントの種類は、**Microsoft 顧客契約**です。
+3. 請求先アカウントを選択します。 課金アカウントの種類は、 **Microsoft 顧客契約** です。
 
 4. 左側の **[Azure サブスクリプション]** を選択します。
 
@@ -217,11 +219,11 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. "**コスト管理 + 請求**" を検索します。
+2. " **コスト管理 + 請求** " を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)
 
-3. **Microsoft 顧客契約**の課金アカウントを選択します。
+3. **Microsoft 顧客契約** の課金アカウントを選択します。
 
 4. 左側から **[アクセス制御 (IAM)]** を選択します。
 
@@ -233,7 +235,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. "**コスト管理 + 請求**" を検索します。
+2. " **コスト管理 + 請求** " を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)
 
@@ -249,7 +251,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. "**コスト管理 + 請求**" を検索します。
+2. " **コスト管理 + 請求** " を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png).
 

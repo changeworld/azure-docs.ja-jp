@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/05/2020
+ms.date: 10/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4a21300872e98a35ea27835385b4045921f4657
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b481a1ccf36120a30bf7c923e2d59c5782433567
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969570"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282500"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -73,15 +73,15 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>SAP コンポーネントへの Azure サービスの統合に関するドキュメント
+このセクションでは、SAP データ ソースへの PowerBI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
-- [Power BI Desktop での SAP HANA の使用](/power-bi/desktop-sap-hana)
-- [DirectQuery と SAP HANA](/power-bi/desktop-directquery-sap-hana)
-- [Power BI Desktop での SAP BW コネクタの使用](/power-bi/desktop-sap-bw-connector) 
-- [Azure Data Factory による SAP HANA と Business Warehouse データの統合](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
 ## <a name="change-log"></a>変更履歴
 
+- 2020 年 10 月 16 日:セカンダリ IP での負荷分散シナリオではフローティング IP がサポートされないという説明を追加する変更が、[Pacemaker を使用する SLES 上の Azure VM での IBM Db2 LUW の HA](./dbms-guide-ha-ibm.md)、[SAP アプリケーション用 RHEL 上の Azure VM での SAP NW 向け HA](./high-availability-guide-rhel.md)、[RHEL 上の Azure VM での IBM Db2 LUW の HA](./high-availability-guide-rhel-ibm-db2-luw.md)、[RHEL マルチ SID 上の Azure VM での SAP NW に向けた HA ガイド](./high-availability-guide-rhel-multi-sid.md)、[ANF を使用する RHEL 上の Azure VM での SAP NW 向け HA](./high-availability-guide-rhel-netapp-files.md)、[SAP アプリケーション用 SLES 上の Azure VM での SAP NW 向け HA](./high-availability-guide-suse.md)、[SLES マルチ SID 上の Azure VM での SAP NNW に向けた HA ガイド](./high-availability-guide-suse-multi-sid.md)、[SAP アプリケーション用の ANF を使用する SLES 上の Azure VM での SAP NW 向け HA](./high-availability-guide-suse-netapp-files.md)、[SLES 上の Azure VM での NFS 向け HA ](./high-availability-guide-suse-nfs.md)、[SLES 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability.md)、[RHEL 上で ANF を使用する SAP HANA のスケールアップ向け HA](./sap-hana-high-availability-netapp-files-red-hat.md)、[RHEL 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability-rhel.md)、[RHEL 上の Azure VM で Pacemaker を使用する SAP HANA スケールアウトの HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)、[WSFC と共有ディスクを使用する SAP ASCS/SCS 向けの Azure インフラストラクチャの準備](./sap-high-availability-infrastructure-wsfc-shared-disk.md)、[WSFC と Azure 共有ディスクを使用する SAP ASCS/SCS 向けのマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)、および [WSFC と共有ディスクを使用する SAP ASCS/SCS 向けのマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)に加えられています 
+- 2020 年 10 月 16 日:「[HANA Large Instances 上の SAP HANA のバックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)」に、HANA Large Instances のストレージ スナップショットを制御するためのドキュメントが追加されています
+- 2020 年 10 月 15 日:Azure 上の SAP BusinessObjects BI プラットフォームに関するドキュメント、「[Azure での SAP BusinessObjects BI プラットフォームの計画および実装ガイド](businessobjects-deployment-guide.md)」、「[Azure での Linux 向け SAP BusinessObjects BI プラットフォームのデプロイ ガイド](businessobjects-deployment-guide-linux.md)」のリリース
 - 2020 年 10 月 5 日:[RHEL における Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関する構成ガイドのリリース
 - 2020 年 9 月 30 日:[RHEL 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)、[RHEL での ANF を使用した SAP HANA の高可用性のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)、[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)に関するページでの変更。RHEL 8.1 用の指示に適合するためのものです
 - 2020 年 9 月 29 日:記事「[SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ](./sap-proximity-placement-scenarios.md)」で、PPG の使用に関する制限事項と推奨事項をより明確にしました 

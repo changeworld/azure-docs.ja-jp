@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab63e54589f68516b0106a1c96edced38539d252
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553289"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108543"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* PureCloud by Genesys では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* PureCloud by Genesys では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの ID は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への PureCloud by Genesys の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**PureCloud by Genesys**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **PureCloud by Genesys** 」と入力します。
 1. 結果のパネルから **[PureCloud by Genesys]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>PureCloud by Genesys の Azure AD シングル サインオンの構成とテスト
@@ -167,21 +167,21 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 1. 上部の **[Admin] (管理)** を選択し、 **[Integrations] (統合)** の **[Single Sign-on] (シングル サインオン)** に移動します。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![[PureCloud Admin]\(PureCloud 管理\) ウィンドウのスクリーンショット。ここで [Single Sign-on]\(シングル サインオン\) を選択することができます。](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. **[ADFS/Azure AD (Premium)]** タブに切り替えて、次の手順に従います。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![[Integrations]\(統合\) ページのスクリーンショット。ここで、説明されている値を入力できます。](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. **[Browse] (参照)** を選択して、Azure portal からダウンロードした base 64 でエンコードされた証明書を **[ADFS Certificate] (ADFS 証明書)** にアップロードします。
 
-    b. **[ADFS Issuer URI] (ADFS 発行者の URI)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    b. **[ADFS Issuer URI] (ADFS 発行者の URI)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    c. **[Target URI] (ターゲット URI)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[Target URI] (ターゲット URI)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. **[Relying Party Identifier] (証明書利用者識別子)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブを選択して、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier] (証明書利用者識別子)** ボックスに貼り付けます。
+    d. **[Relying Party Identifier] (証明書利用者識別子)** の値については、Azure portal に移動し、 **PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブを選択して、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier] (証明書利用者識別子)** ボックスに貼り付けます。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![アプリケーション I D の値が表示される [プロパティ] ペインのスクリーンショット。](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. **[保存]** を選択します。
 
@@ -195,19 +195,19 @@ Azure AD ユーザーが PureCloud by Genesys にサインインできるよう�
 
 1. 上部の **[Admin] (管理)** を選択し、 **[People & Permissions] (ユーザーとアクセス許可)** の **[People] (ユーザー)** に移動します。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![[PureCloud Admin]\(PureCloud 管理\) ウィンドウのスクリーンショット。ここで [People]\(ユーザー\) を選択することができます。](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. **[People] (ユーザー)** ページで、 **[Add Person] (ユーザーの追加)** を選択します。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![ユーザーを追加できる [People]\(ユーザー\) ページのスクリーンショット。](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. **[Add People to the Organization] (組織へのユーザーの追加)** ダイアログボックスで、次の手順に従います。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![スクリーンショットは、説明した値を入力できるページを示しています。](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. **[Full Name] (フル ネーム)** ボックスに、ユーザーの名前を入力します。 次に例を示します。**B.simon**。
+    a. **[Full Name] (フル ネーム)** ボックスに、ユーザーの名前を入力します。 次に例を示します。 **B.simon** 。
 
-    b. **[Email] (メール)** ボックスに、ユーザーのメール アドレスを入力します。 例: **b.simon\@contoso.com**。
+    b. **[Email] (メール)** ボックスに、ユーザーのメール アドレスを入力します。 例: **b.simon\@contoso.com** 。
 
     c. **［作成］** を選択します
 

@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48a3972d7b7db3f0c68866f23d6deca0bbce2e35
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377303"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92157807"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
 
@@ -44,7 +44,7 @@ Azure Communication Services 通話クライアント ライブラリとその�
 3. **[全般]** タブで **[Frameworks, Libraries, and Embedded Content]\(フレームワーク、ライブラリ、埋め込みコンテンツ\)** セクションまでスクロールし、 **[+]** アイコンをクリックします。
 4. ダイアログの左下にあるドロップダウンを使用して **[ファイルを追加]** を選択し、解凍されたクライアント ライブラリ パッケージの **AzureCommunicationCalling.framework** ディレクトリに移動します。
     1. **AzureCore.framework** と **AzureCommunication.framework** を追加するための最後の手順を繰り返します。
-5. プロジェクト設定エディターの **[ビルド設定]** タブを開き **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい**フレームワーク検索パス** エントリを追加します。
+5. プロジェクト設定エディターの **[ビルド設定]** タブを開き **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい **フレームワーク検索パス** エントリを追加します。
     1. 依存関係を含むフォルダーを指す別のフレームワーク検索パス エントリを追加します。
 
 :::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
@@ -197,7 +197,7 @@ iOS シミュレーターでアプリをビルドして実行するには、 **[
 発信 VOIP 通話を行うには、テキスト フィールドにユーザー ID を指定し、 **[Start Call]\(通話の開始\)** ボタンをタップします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。 
 
 > [!NOTE]
-> 初めて通話を行うときに、マイクへのアクセスを求めるメッセージが表示されます。 実稼働アプリケーションでは、`AVAudioSession` API を使用して[アクセス許可の状態を確認し](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)、アクセス許可が付与されていない場合はアプリケーションの動作を適切に更新する必要があります。
+> 初めて通話を行うときに、マイクへのアクセスを求めるメッセージが表示されます。 運用環境のアプリケーションでは、`AVAudioSession` API を使用して[アクセス許可の状態を確認し](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)、アクセス許可が付与されていない場合はアプリケーションの動作を適切に更新する必要があります。
 
 ## <a name="sample-code"></a>サンプル コード
 

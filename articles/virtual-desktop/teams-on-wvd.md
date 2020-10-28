@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88922567"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131770"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
@@ -42,7 +42,7 @@ Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作
 
 Teams でメディアの最適化を有効にするには、ホストで次のレジストリ キーを設定します。
 
-1. スタート メニューから、**RegEdit** を管理者として実行します。 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** に移動します。
+1. スタート メニューから、 **RegEdit** を管理者として実行します。 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** に移動します。
 2. Teams のキー用に以下の値を作成します。
 
 | 名前             | Type   | データ/値  |
@@ -92,9 +92,9 @@ VM イメージに最新の [WebSocket Service](https://query.prod.cms.rt.micros
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
-        これにより、64 ビット オペレーティング システム上の Program Files (x86) フォルダーと、32 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
+        これにより、32 ビット オペレーティング システム上の Program Files (x86) フォルダーと、64 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
 
-        Teams のインストール時に設定できるフラグには、**ALLUSER=1** と **ALLUSERS=1** の 2 つがあります。 これらのパラメーターの違いを理解することが重要です。 **ALLUSER=1** パラメーターは、コンピューターごとのインストールを指定するために VDI 環境でのみ使用されます。 **ALLUSERS=1** パラメーターは、VDI 以外の環境と VDI 環境で使用できます。 このパラメーターを設定すると、[Teams Machine-Wide Installer] がコントロール パネルの [プログラムと機能] のほか [Windows の設定] の [アプリと機能] に表示されます。 コンピューターの管理者資格情報を持つすべてのユーザーが Teams をアンインストールできます。
+        Teams のインストール時に設定できるフラグには、 **ALLUSER=1** と **ALLUSERS=1** の 2 つがあります。 これらのパラメーターの違いを理解することが重要です。 **ALLUSER=1** パラメーターは、コンピューターごとのインストールを指定するために VDI 環境でのみ使用されます。 **ALLUSERS=1** パラメーターは、VDI 以外の環境と VDI 環境で使用できます。 このパラメーターを設定すると、[Teams Machine-Wide Installer] がコントロール パネルの [プログラムと機能] のほか [Windows の設定] の [アプリと機能] に表示されます。 コンピューターの管理者資格情報を持つすべてのユーザーが Teams をアンインストールできます。
 
         > [!NOTE]
         > この時点では、ユーザーと管理者がサインイン中に Teams の自動起動を無効にすることはできません。
@@ -152,7 +152,7 @@ Windows Virtual Desktop 上の Microsoft Teams に関するフィードバック
 
 Windows Virtual Desktop 環境で Teams デスクトップ アプリに問題が発生した場合には、クライアント ログを収集します。クライアント ログは、ホスト VM 上の **%appdata%\Microsoft\Teams\logs.txt** にあります。
 
-通話と会議に問題が発生した場合は、**Ctrl** + **Alt** + **Shift** + **1** を押して Teams Web クライアントのログを収集します。 ログは、ホスト VM 上の **%userprofile%\Downloads\MSTeams Diagnostics Log DATE_TIME.txt** に書き込まれます。
+通話と会議に問題が発生した場合は、 **Ctrl** + **Alt** + **Shift** + **1** を押して Teams Web クライアントのログを収集します。 ログは、ホスト VM 上の **%userprofile%\Downloads\MSTeams Diagnostics Log DATE_TIME.txt** に書き込まれます。
 
 ## <a name="contact-microsoft-teams-support"></a>Microsoft Teams サポートに問い合わせる
 

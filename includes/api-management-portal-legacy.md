@@ -2,17 +2,18 @@
 author: mikebudzynski
 ms.service: api-management
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: b4c8e9b07905e954879e5b65adbaae765fc41c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44de30438d59252a431bf37ac6919a9bc186c8ed
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73176499"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315732"
 ---
 > [!NOTE]
-> このドキュメントの内容は、従来の開発者ポータルに関するものです。 新しい開発者ポータルに関する内容については、次の記事を参照してください。
+> このドキュメントの内容は、非推奨の開発者ポータルに関するものです。 2023 年 10 月に廃止され、すべての API Management サービスから削除されるまで、通常どおりに引き続き使用できます。 非推奨のポータルでは、重要なセキュリティ更新プログラムのみを受信します。 詳細については、次の記事をご覧ください。
 > 
-> - [Azure API Management 開発者ポータルの概要](..\articles\api-management\api-management-howto-developer-portal.md)
-> - [マネージド開発者ポータルへのアクセスとカスタマイズ (チュートリアル)](..\articles\api-management\api-management-howto-developer-portal-customize.md)
+> - [新しい開発者ポータルへの移行方法を確認する](../articles/api-management/developer-portal-deprecated-migration.md)
+> - [新しい Azure API Management 開発者ポータルの概要](../articles/api-management/api-management-howto-developer-portal.md)
+> - [新しい開発者ポータルへのアクセスとカスタマイズ](../articles/api-management/api-management-howto-developer-portal-customize.md)

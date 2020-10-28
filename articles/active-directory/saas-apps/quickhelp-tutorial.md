@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55ab6b339d6cb71bf46340e458bcc93cd73e2ba9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548932"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル: Azure Active Directory と QuickHelp の統合
 
@@ -41,9 +41,9 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* QuickHelp では、**SP** Initiated SSO がサポートされます
+* QuickHelp では、 **SP** Initiated SSO がサポートされます
 
-* QuickHelp では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* QuickHelp では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-quickhelp-from-the-gallery"></a>ギャラリーからの QuickHelp の追加
 
@@ -63,13 +63,13 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**QuickHelp**」と入力し、結果パネルで **[QuickHelp]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **QuickHelp** 」と入力し、結果パネルで **[QuickHelp]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の QuickHelp](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、QuickHelp で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、QuickHelp で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと QuickHelp 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 QuickHelp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -110,7 +110,7 @@ QuickHelp で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 組織の QuickHelp 管理者や BrainStorm Client Success マネージャーに値を問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -130,19 +130,19 @@ QuickHelp で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のメニューで **[Admin]** をクリックします。
    
-    ![Configure single sign-on][21]
+    ![Brainstorm の [Admin]\(管理\) メニュー項目のスクリーンショット。][21]
 
 3. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。
    
-    ![Configure single sign-on][22]
+    ![[QuickHelp の管理者] メニューの [設定] が選択されている画面のスクリーンショット。][22]
 
 4. **[認証設定]** をクリックします。
 
 5. **[認証設定]** ページで、次の手順を実行します。
    
-    ![Configure single sign-on][23]
+    ![[認証設定] ページのスクリーンショット。ここでは、説明されている値を入力することができます。][23]
    
-    a. **SSO 型**として **WSFederation** を選びます。
+    a. **SSO 型** として **WSFederation** を選びます。
    
     b. ダウンロードした Azure メタデータ ファイルをアップロードするには、 **[参照]** をクリックし、目的のファイルに移動し、 **[メタデータのアップロード]** をクリックします。
    
@@ -170,7 +170,7 @@ QuickHelp で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

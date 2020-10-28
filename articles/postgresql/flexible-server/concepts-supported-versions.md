@@ -1,17 +1,17 @@
 ---
 title: サポートされるバージョン - Azure Database for PostgreSQL - フレキシブル サーバー
-description: Azure Database for PostgreSQL - フレキシブル サーバーでサポートされる、Postgres のメジャーおよびマイナー バージョンについて説明します。
+description: Azure Database for PostgreSQL - フレキシブル サーバーでサポートされる、PostgreSQL のメジャーおよびマイナー バージョンについて説明します。
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 9d651a38361ccaa7f8788fb4a375b39b2953228b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 334eaa88ae927ae61ebb445343494cfdce570563
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930821"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167493"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでサポートされる Postgres のメジャー バージョン
 
@@ -22,11 +22,11 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、現在�
 
 ## <a name="postgresql-version-12"></a>PostgreSQL バージョン 12
 
-現在のマイナー リリースは 12.1 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-1.html)を参照してください。
+現在のマイナー リリースは 12.4 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-4.html)を参照してください。
 
 ## <a name="postgresql-version-11"></a>PostgreSQL バージョン 11
 
-現在のマイナー リリースは 11.8 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-8.html)を参照してください。
+現在のマイナー リリースは 11.9 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-9.html)を参照してください。
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL バージョン 10 以前
 
@@ -36,7 +36,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、PostgreS
 
 PostgreSQL プロジェクトでは、報告されたバグを修正するためにマイナー リリースを定期的に発行しています。 Azure Database for PostgreSQL は、サービスの月次デプロイ中に、マイナー リリースのサーバーに自動的に修正を適用します。
 
-メジャー バージョンの自動アップグレードはまだサポートされていません。 たとえば、PostgreSQL 11 から PostgreSQL 12 への自動アップグレードは、現在は存在しません。<!-- To upgrade to the next major version, create a [database dump and restore](howto-migrate-using-dump-and-restore.md) to a server that was created with the new engine version.-->
+メジャー バージョンのアップグレードの自動化はまだサポートされていません。 たとえば、PostgreSQL 11 から PostgreSQL 12 への自動アップグレードは、現在は存在しません。<!-- To upgrade to the next major version, create a [database dump and restore](howto-migrate-using-dump-and-restore.md) to a server that was created with the new engine version.-->
 
 <!--
 ## Next steps

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98d94e9544e75f762d4532101a92d14106d6a575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b56824e386709bd330339f1f6acfd2812e040de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931796"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150919"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
@@ -88,23 +88,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
-アプリによるこのデータの処理方法について学ぶ場合は、**GetResourcesAsync** メソッドから始めてください。 このメソッドは、*Source/VisualProvision/Services/Recognition/RecognitionService.cs* ファイルで定義されています。  
+アプリによるこのデータの処理方法について学ぶ場合は、 **GetResourcesAsync** メソッドから始めてください。 このメソッドは、 *Source/VisualProvision/Services/Recognition/RecognitionService.cs* ファイルで定義されています。  
 
 ## <a name="add-computer-vision"></a>Computer Vision を追加する
 
-このチュートリアルの Custom Vision 部分が完了しました。 このアプリを実行するには、Computer Vision サービスも統合する必要があります。 このアプリでは、Computer Vision のテキスト認識機能を使用して、ロゴの検出プロセスが補完されます。 Azure のロゴは、その外観 "*または*" その近くに印刷されたテキストによって認識されます。 Computer Vision は、Custom Vision モデルとは異なり、画像や動画に対して特定の操作を実行するように事前にトレーニングされています。
+このチュートリアルの Custom Vision 部分が完了しました。 このアプリを実行するには、Computer Vision サービスも統合する必要があります。 このアプリでは、Computer Vision のテキスト認識機能を使用して、ロゴの検出プロセスが補完されます。 Azure のロゴは、その外観 " *または* " その近くに印刷されたテキストによって認識されます。 Computer Vision は、Custom Vision モデルとは異なり、画像や動画に対して特定の操作を実行するように事前にトレーニングされています。
 
 Computer Vision サービスに登録して、キーとエンドポイント URL を取得します。 この手順に関してサポートが必要な場合は、「[サブスクリプション キーを取得する方法](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)」を参照してください。
 
 ![[クイック スタート] メニューが選択された、Azure portal の Computer Vision サービス。 キーへのリンクと、API エンドポイント URL が枠線で囲まれている](media/azure-logo-tutorial/comvis-keys.png)
 
-次に、*Source\VisualProvision\AppSettings.cs* ファイルを開き、`ComputerVisionEndpoint` および `ComputerVisionKey` 変数に適切な値を入力します。
+次に、 *Source\VisualProvision\AppSettings.cs* ファイルを開き、`ComputerVisionEndpoint` および `ComputerVisionKey` 変数に適切な値を入力します。
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-このアプリでは、Azure サブスクリプションにサービスをデプロイするために、Azure サービス プリンシパル アカウントが必要です。 サービス プリンシパルを使用すると、ロールベースのアクセス制御を使用して特定のアクセス許可をアプリに委任できます。 詳細については、[サービス プリンシパルのガイド](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)を参照してください。
+このアプリでは、Azure サブスクリプションにサービスをデプロイするために、Azure サービス プリンシパル アカウントが必要です。 サービス プリンシパルを使用すると、Azure ロールベースのアクセス制御を使用して特定のアクセス許可をアプリに委任できます。 詳細については、[サービス プリンシパルのガイド](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)を参照してください。
 
 サービス プリンシパルは、ここで示すように、Azure Cloud Shell または Azure CLI を使用して作成できます。 開始するには、サインインして、使用するサブスクリプションを選択します。
 
@@ -146,7 +146,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 アプリを実行するには、次の手順に従います。
 
-1. Visual Studio ソリューション エクスプローラーで、**VisualProvision.Android** プロジェクトまたは **VisualProvision.iOS** プロジェクトを選択します。 メイン ツール バーのドロップダウン メニューで、対応するエミュレーターまたは接続されているモバイル デバイスを選択します。 その後、アプリを実行します。
+1. Visual Studio ソリューション エクスプローラーで、 **VisualProvision.Android** プロジェクトまたは **VisualProvision.iOS** プロジェクトを選択します。 メイン ツール バーのドロップダウン メニューで、対応するエミュレーターまたは接続されているモバイル デバイスを選択します。 その後、アプリを実行します。
 
     > [!NOTE]
     > iOS エミュレーターを実行するには、MacOS デバイスが必要になります。
@@ -154,7 +154,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 1. 最初の画面で、サービス プリンシパル クライアント ID、テナント ID、およびパスワードを入力します。 **[Login]\(ログイン\)** を選択します。
 
     > [!NOTE]
-    > 一部のエミュレーターでは、この手順で **[Login]\(ログイン\)** ボタンがアクティブにならない場合があります。 その場合はアプリを停止し、*Source/VisualProvision/Pages/LoginPage.xaml* ファイルを開きます。**LOGIN BUTTON** というラベルの付いた `Button` 要素を見つけて、次の行を削除し、アプリを再実行します。
+    > 一部のエミュレーターでは、この手順で **[Login]\(ログイン\)** ボタンがアクティブにならない場合があります。 その場合はアプリを停止し、 *Source/VisualProvision/Pages/LoginPage.xaml* ファイルを開きます。 **LOGIN BUTTON** というラベルの付いた `Button` 要素を見つけて、次の行を削除し、アプリを再実行します。
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
@@ -176,7 +176,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 このシナリオのすべての手順を実行し、アプリを使用して Azure サービスを自分のアカウントにデプロイした場合は、[Azure portal](https://ms.portal.azure.com/) に移動します。 そこで、使用しないサービスを取り消します。
 
-今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料サブスクリプションでは、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
+今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料サブスクリプションでは、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、 [Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

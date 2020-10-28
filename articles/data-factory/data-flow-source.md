@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/27/2020
-ms.openlocfilehash: 22f524ed4f01ad5b3be110008a82cd31c5c476c5
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 10/15/2020
+ms.openlocfilehash: 0efcc82617c75089ff2bf396133f9fbc7ec701ea
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827858"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107693"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換 
 
@@ -39,7 +39,7 @@ ms.locfileid: "91827858"
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> サポートされるソースの種類
 
-Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する "*ステージング*" データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
+Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する " *ステージング* " データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
 
 | コネクタ | Format | データセット/インライン |
 | --------- | ------ | -------------- |
@@ -48,6 +48,7 @@ Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチ�
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Common Data Model (プレビュー)](format-common-data-model.md#source-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[差分 (プレビュー)](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br/>-/✓<br>✓/-<br>-/✓<br>✓/✓<br>✓/-<br/>✓/✓<br/>✓/-<br>✓/✓ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Managed Instance (プレビュー)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
@@ -98,7 +99,7 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 
 テキスト ファイルが定義済みのスキーマを含まない場合は、Data Factory がデータ型をサンプリングして推論するように、 **[Detect data type]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。
 
-**スキーマをリセットする**と、参照されているデータベースにある定義にプロジェクションがリセットされます。
+**スキーマをリセットする** と、参照されているデータベースにある定義にプロジェクションがリセットされます。
 
 列のデータ型は、下流の派生列変換で変更できます。 選択変換を使用して、列の名前を変更します。
 

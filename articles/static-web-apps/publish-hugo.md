@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797719"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171498"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
@@ -107,7 +107,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_" として「**hugo-static-app**」と入力し、 **[OK]** を選択します。
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ " として「 **hugo-static-app** 」と入力し、 **[OK]** を選択します。
 
 1. 次に、 **[名前]** ボックスに対象のアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
 
@@ -119,7 +119,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_":::
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ ":::
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -127,13 +127,13 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[リポジトリ]_ として **hugo-static-app** を選択します。
 
-1. _[ブランチ]_ では、**master** を選択します。
+1. _[ブランチ]_ では、 **master** を選択します。
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
 
 1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_":::
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ ":::
 
 ### <a name="build"></a>Build
 
@@ -143,7 +143,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
 
-1. _[App artifact location]\(アプリ成果物の場所\)_ を「**public**」に設定します。
+1. _[App artifact location]\(アプリ成果物の場所\)_ を「 **public** 」に設定します。
 
    この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
@@ -161,7 +161,38 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_":::
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ ":::
+
+#### <a name="custom-hugo-version"></a>カスタム Hugo バージョン
+
+静的 Web アプリを生成すると、アプリケーションの発行構成設定を含む[ワークフロー ファイル](./github-actions-workflow.md)が生成されます。 `env` セクション内に `HUGO_VERSION` の値を指定することにより、ワークフロー ファイル内に特定の Hugo バージョンを指定できます。 次の構成例は、Hugo を特定のバージョンに設定する方法を示しています。
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "api" # Api source code path - optional
+          app_artifact_location: "public" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+        env:
+          HUGO_VERSION: 0.58.0
+```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

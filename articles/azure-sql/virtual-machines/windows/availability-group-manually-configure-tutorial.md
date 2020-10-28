@@ -14,28 +14,29 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360924"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168156"
 ---
-# <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>チュートリアル:Azure Virtual Machines で SQL Server 可用性グループを構成する
-
+# <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>チュートリアル:可用性グループを手動で構成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。 チュートリアル全体では、2 つの SQL Server にデータベース レプリカで可用性グループを作成します。
+このチュートリアルでは、Azure Virtual Machines (VM) に SQL Server の Always On 可用性グループを作成する方法を説明します。 チュートリアル全体で、2 つの SQL サーバー上にデータベース レプリカを使用して可用性グループを作成します。
 
-**推定所要時間**: 前提条件が満たされてから完了までに約 30 分かかります。
+この記事では可用性グループ環境を手動で構成しますが、[Azure portal](availability-group-azure-portal-configure.md)、[PowerShell や Azure CLI](availability-group-az-commandline-configure.md)、または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成することもできます。 
 
-次の図は、チュートリアルで構築するものを示しています。
 
-![可用性グループ](./media/availability-group-manually-configure-tutorial/00-EndstateSampleNoELB.png)
+**推定所要時間** : [前提条件](availability-group-manually-configure-prerequisites-tutorial.md)が満たされてから完了までに約 30 分かかります。
+
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルでは、SQL Server Always On 可用性グループの基本的な知識があることを前提としています。 詳しくは、「[Always On 可用性グループの概要 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)」をご覧ください。
+
+チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](availability-group-manually-configure-prerequisites-tutorial.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
 
 次の表に、このチュートリアルを開始する前に完了している必要がある前提条件を示します。
 
@@ -45,15 +46,12 @@ ms.locfileid: "91360924"
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | クラスター監視用のファイル共有 |  
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server サービス アカウント** | ドメイン アカウント |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server エージェント サービス アカウント** | ドメイン アカウント |  
-|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **ファイアウォール ポートを開く** | - SQL Server:**1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント:**5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ:**59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ:**58888** または使用可能な任意のポート |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **ファイアウォール ポートを開く** | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ: **59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ: **58888** または使用可能な任意のポート |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **フェールオーバー クラスタリング機能を追加する** | 両方の SQL Server インスタンスにこの機能が必要です |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **インストール ドメイン アカウント** | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
-
-チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](availability-group-manually-configure-prerequisites-tutorial.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
-
-  >[!NOTE]
-  > このチュートリアルで説明する手順の多くは、[Azure SQL VM CLI](availability-group-az-cli-configure.md) と [Azure クイック スタート テンプレート](availability-group-quickstart-template-configure.md)で自動化できるようになりました。
+>[!NOTE]
+> このチュートリアルで説明する手順の多くは、[Azure portal](availability-group-azure-portal-configure.md)、[PowerShell や Az CLI](availability-group-az-cli-configure.md)、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して自動化できるようになりました。
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -67,7 +65,7 @@ ms.locfileid: "91360924"
 1. リモート デスクトップ プロトコル (RDP) を使用して、最初の SQL Server に接続します。 SQL Server と監視サーバー両方の管理者であるドメイン アカウントを使用します。
 
    >[!TIP]
-   >[前提条件のドキュメント](availability-group-manually-configure-prerequisites-tutorial.md)に従っている場合、**CORP\Install** という名前のアカウントを作成しているはずです。 このアカウントを使います。
+   >[前提条件のドキュメント](availability-group-manually-configure-prerequisites-tutorial.md)に従っている場合、 **CORP\Install** という名前のアカウントを作成しているはずです。 このアカウントを使います。
 
 2. **[サーバー マネージャー]** ダッシュボードで、 **[ツール]** を選択し、 **[フェールオーバー クラスター マネージャー]** を選択します。
 3. 左側のペインで、 **[フェールオーバー クラスター マネージャー]** を右クリックし、 **[クラスターの作成]** を選択します。
@@ -81,15 +79,15 @@ ms.locfileid: "91360924"
    | はじめに |既定値を使用 |
    | サーバーの選択 |1 番目の SQL Server の名前を **[サーバー名を入力してください]** に入力し、 **[追加]** を選択します。 |
    | 検証の警告 |**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] を選択して、クラスターの作成を続行します。]** を選択します。 |
-   | クラスター管理用のアクセス ポイント |**[クラスター名]** にクラスター名を入力します (例: **SQLAGCluster1**)。|
+   | クラスター管理用のアクセス ポイント |**[クラスター名]** にクラスター名を入力します (例: **SQLAGCluster1** )。|
    | 確認 |記憶域スペースを使用している場合を除き、既定値を使用します。 この表の次の注を参照してください。 |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server フェールオーバー クラスターの IP アドレスを設定する
 
   > [!NOTE]
-  > Windows Server 2019 では、クラスターは**クラスターネットワーク名**ではなく、**分散サーバー名**を作成します。 Windows Server 2019 を使用している場合は、このチュートリアルでクラスターのコア名を参照するすべての手順をスキップしてください。 クラスター ネットワーク名は、[PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) を使用して作成できます。 詳細については、「[フェールオーバー クラスター:クラスタ ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」のブログを参照してください。 
+  > Windows Server 2019 では、クラスターは **クラスターネットワーク名** ではなく、 **分散サーバー名** を作成します。 Windows Server 2019 を使用している場合は、このチュートリアルでクラスターのコア名を参照するすべての手順をスキップしてください。 クラスター ネットワーク名は、[PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) を使用して作成できます。 詳細については、「[フェールオーバー クラスター:クラスタ ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」のブログを参照してください。 
 
-1. **フェールオーバー クラスター マネージャー**で、 **[クラスター コア リソース]** まで下にスクロールして、クラスターの詳細を展開します。 **[名前]** と **[IP アドレス]** リソースの両方が **[失敗]** 状態で表示されます。 クラスターにコンピューター自体と同じ IP アドレスが割り当てられていて、アドレスが重複するため、IP アドレス リソースをオンラインにすることができません。
+1. **フェールオーバー クラスター マネージャー** で、 **[クラスター コア リソース]** まで下にスクロールして、クラスターの詳細を展開します。 **[名前]** と **[IP アドレス]** リソースの両方が **[失敗]** 状態で表示されます。 クラスターにコンピューター自体と同じ IP アドレスが割り当てられていて、アドレスが重複するため、IP アドレス リソースをオンラインにすることができません。
 
 2. 失敗した **IP アドレス** リソースを右クリックし、 **[プロパティ]** を選択します。
 
@@ -97,7 +95,7 @@ ms.locfileid: "91360924"
 
 3. **[静的 IP アドレス]** を選択し、仮想マシンと同じサブネットの使用可能なアドレスを指定します。
 
-4. **[クラスター コア リソース]** セクションで、クラスター名を右クリックして、 **[オンラインにする]** を選択します。 両方のリソースがオンラインになるまで待ちます。 クラスター名リソースがオンラインになると、新しい Active Directory (AD) コンピューター アカウントでドメイン コントローラー (DC) サーバーが更新されます。 この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使います。
+4. **[クラスター コア リソース]** セクションで、クラスター名を右クリックして、 **[オンラインにする]** を選択します。 両方のリソースがオンラインになるまで待ちます。 クラスター名リソースがオンラインになると、新しい Active Directory (AD) コンピューター アカウントでドメイン コントローラー (DC) サーバーが更新されます。 この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使用します。
 
 ### <a name="add-the-other-sql-server-to-cluster"></a><a name="addNode"></a>他の SQL Server をクラスターに追加する
 
@@ -107,7 +105,7 @@ ms.locfileid: "91360924"
 
     ![クラスターにノードを追加](./media/availability-group-manually-configure-tutorial/44-addnode.png)
 
-1. **ノードの追加ウィザード**で、 **[次へ]** を選択します。 **[サーバーの選択]** ページで、2 番目の SQL Server を追加します。 サーバー名を **[サーバー名を入力してください]** に入力し、 **[追加]** を選択します。 完了したら、 **[次へ]** を選択します。
+1. **ノードの追加ウィザード** で、 **[次へ]** を選択します。 **[サーバーの選択]** ページで、2 番目の SQL Server を追加します。 サーバー名を **[サーバー名を入力してください]** に入力し、 **[追加]** を選択します。 完了したら、 **[次へ]** を選択します。
 
 1. **[検証の警告]** ページで **[いいえ]** を選択します (実際の運用シナリオでは、検証テストを実施する必要があります)。 次に、 **[次へ]** を選択します。
 
@@ -133,15 +131,15 @@ ms.locfileid: "91360924"
 
 1. リモート デスクトップ セッションでファイル共有監視メンバー サーバーに接続します。
 
-1. **サーバー マネージャー**で、 **[ツール]** を選択します。 **[コンピューターの管理]** を開きます。
+1. **サーバー マネージャー** で、 **[ツール]** を選択します。 **[コンピューターの管理]** を開きます。
 
 1. **[共有フォルダー]** を選択します。
 
 1. **[共有]** を右クリックし、 **[新しい共有]** を選択します。
 
-   ![新しい共有](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![[共有] を右クリックし、[新しい共有] を選択する](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
-   **共有フォルダーの作成ウィザード**を使って共有を作成します。
+   **共有フォルダーの作成ウィザード** を使って共有を作成します。
 
 1. **[フォルダー パス]** で、 **[参照]** を選択して、共有フォルダーのパスを検索するか作成します。 **[次へ]** を選択します。
 
@@ -153,7 +151,7 @@ ms.locfileid: "91360924"
 
 1. クラスターの作成に使うアカウントがフル コントロールを持っていることを確認します。
 
-   ![新しい共有](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
+   ![クラスターの作成に使うアカウントがフル コントロールを持っていることを確認する](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
 
 1. **[OK]** を選択します。
 
@@ -167,11 +165,11 @@ ms.locfileid: "91360924"
 
 1. リモート デスクトップで 1 番目のクラスター ノードに接続します。
 
-1. **フェールオーバー クラスター マネージャー**で、クラスターを右クリックし、 **[その他の操作]** をポイントして、 **[クラスター クォーラム設定の構成]** を選択します。
+1. **フェールオーバー クラスター マネージャー** で、クラスターを右クリックし、 **[その他の操作]** をポイントして、 **[クラスター クォーラム設定の構成]** を選択します。
 
-   ![新しい共有](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
+   ![[クラスター クォーラム設定の構成] を選択する](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
 
-1. **クラスター クォーラム構成ウィザード**で、 **[次へ]** を選択します。
+1. **クラスター クォーラム構成ウィザード** で、 **[次へ]** を選択します。
 
 1. **[クォーラム構成オプションの選択]** で、 **[クォーラム監視を選択する]** を選択し、 **[次へ]** を選択します。
 
@@ -191,13 +189,13 @@ ms.locfileid: "91360924"
 
 ## <a name="enable-availability-groups"></a>可用性グループを有効にする
 
-次に、**AlwaysOn 可用性グループ**機能を有効にします。 以下の手順は、両方の SQL Server に対して実行してください。
+次に、 **AlwaysOn 可用性グループ** 機能を有効にします。 以下の手順は、両方の SQL Server に対して実行してください。
 
-1. **スタート**画面から **SQL Server 構成マネージャー**を起動します。
+1. **スタート** 画面から **SQL Server 構成マネージャー** を起動します。
 2. ブラウザー ツリーで、 **[SQL Server のサービス]** を選択し、 **[SQL Server (MSSQLSERVER)]** サービスを右クリックして、 **[プロパティ]** を選択します。
 3. 次に示すように、 **[AlwaysOn 高可用性]** タブを選択し、 **[AlwaysOn 可用性グループを有効にする]** をオンにします。
 
-    ![AlwaysOn 可用性グループの有効化](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
+    ![[AlwaysOn 可用性グループを有効にする]](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
 4. **[適用]** を選択します。 ポップアップ ダイアログで **[OK]** を選択します。
 
@@ -208,7 +206,7 @@ ms.locfileid: "91360924"
 <!-----------------
 ## <a name="endpoint-firewall"></a>Open firewall for the database mirroring endpoint
 
-Each instance of SQL Server that participates in an Availability Group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the Availability Groups on that instance.
+Each instance of SQL Server that participates in an availability group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the availability groups on that instance.
 
 On both SQL Servers, open the firewall for the TCP port for the database mirroring endpoint.
 
@@ -231,20 +229,20 @@ Repeat these steps on the second SQL Server.
 
 1. sysadmin 固定サーバー ロールのメンバーであるドメイン アカウントを使って、1 番目の SQL Server に対する RDP ファイルを起動します。
 1. SQL Server Management Studio を開き、1 番目の SQL Server に接続します。
-7. **オブジェクト エクスプローラー**で、 **[データベース]** を右クリックし、 **[新しいデータベース]** を選択します。
-8. **[データベース名]** に「**MyDB1**」と入力し、 **[OK]** を選択します。
+7. **オブジェクト エクスプローラー** で、 **[データベース]** を右クリックし、 **[新しいデータベース]** を選択します。
+8. **[データベース名]** に「 **MyDB1** 」と入力し、 **[OK]** を選択します。
 
 ### <a name="create-a-backup-share"></a><a name="backupshare"></a>バックアップ共有を作成する
 
-1. **サーバー マネージャー**の 1 番目の SQL Server で、 **[ツール]** を選択します。 **[コンピューターの管理]** を開きます。
+1. **サーバー マネージャー** の 1 番目の SQL Server で、 **[ツール]** を選択します。 **[コンピューターの管理]** を開きます。
 
 1. **[共有フォルダー]** を選択します。
 
 1. **[共有]** を右クリックし、 **[新しい共有]** を選択します。
 
-   ![新しい共有](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![[新しい共有] を選択する](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
-   **共有フォルダーの作成ウィザード**を使って共有を作成します。
+   **共有フォルダーの作成ウィザード** を使って共有を作成します。
 
 1. **[フォルダー パス]** で、 **[参照]** を選択して、データベース バックアップ共有フォルダーのパスを検索するか作成します。 **[次へ]** を選択します。
 
@@ -256,7 +254,7 @@ Repeat these steps on the second SQL Server.
 
 1. SQL Server アカウントと SQL Server エージェント サービス アカウントの両方にフル コントロールがあることを確認します。
 
-   ![新しい共有](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
+   ![SQL Server アカウントと SQL Server エージェント サービス アカウントの両方にフル コントロールがあることを確認します。](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
 
 1. **[OK]** を選択します。
 
@@ -266,26 +264,26 @@ Repeat these steps on the second SQL Server.
 
 ログ チェーンを初期化するには、新しいデータベースをバックアップする必要があります。 新しいデータベースのバックアップを作成しないと、データベースを可用性グループに含めることはできません。
 
-1. **オブジェクト エクスプローラー**で、データベースを右クリックし、 **[タスク]** をポイントして、 **[バックアップ]** を選択します。
+1. **オブジェクト エクスプローラー** で、データベースを右クリックし、 **[タスク]** をポイントして、 **[バックアップ]** を選択します。
 
 1. **[OK]** を選択して、既定のバックアップ場所に完全バックアップを作成します。
 
-## <a name="create-the-availability-group"></a>可用性グループの作成
+## <a name="create-the-availability-group"></a>可用性グループを作成する
 
-次の手順で可用性グループを構成できるようになりました。
+これで、次の手順を使用して可用性グループを構成する準備が整いました。
 
 * 1 番目の SQL Server でデータベースを作成する
 * データベースの完全バックアップとトランザクション ログ バックアップの両方を作成します。
 * **NORECOVERY** オプションを使って、完全バックアップとログ バックアップを 2 番目の SQL Server に復元する。
-* 同期コミット、自動フェールオーバー、読み取り可能なセカンダリ レプリカを含む可用性グループ (**AG1**) を作成する。
+* 同期コミット、自動フェールオーバー、読み取り可能なセカンダリのレプリカを含む可用性グループ ( **AG1** ) を作成します。
 
 ### <a name="create-the-availability-group"></a>可用性グループを作成する
 
-1. 1 番目の SQL Server へのリモート デスクトップ セッションを開きます。 SSMS の**オブジェクト エクスプローラー**で、 **[AlwaysOn 高可用性]** を右クリックし、 **[新しい可用性グループ ウィザード]** を選択します。
+1. 1 番目の SQL Server へのリモート デスクトップ セッションを開きます。 SSMS の **オブジェクト エクスプローラー** で、 **[AlwaysOn 高可用性]** を右クリックし、 **[新しい可用性グループ ウィザード]** を選択します。
 
-    ![[新しい可用性グループ ウィザード] の起動](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
+    ![新しい可用性グループ ウィザードを起動する](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. **[説明]** ページで **[次へ]** を選択します。 **[可用性グループ名の指定]** ページで、 **[可用性グループ名]** に可用性グループの名前を入力します。 たとえば、**AG1**。 **[次へ]** を選択します。
+2. **[説明]** ページで **[次へ]** を選択します。 **[可用性グループ名の指定]** ページで、 **[可用性グループ名]** に可用性グループの名前を入力します。 たとえば、「 **AG1** 」のように入力します。 **[次へ]** を選択します。
 
     ![新しい可用性グループ ウィザード、可用性グループ名の指定](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -317,7 +315,7 @@ Repeat these steps on the second SQL Server.
    >完全同期では、SQL Server の 1 番目のインスタンスにあるデータベースの完全バックアップが作成されて、2 番目のインスタンスに復元されます。 大規模なデータベースの場合、完全同期は長い時間がかかることがあるのでお勧めできません。 手動でデータベースのバックアップを作成し、`NO RECOVERY` で復元することにより、この時間を短縮できます。 可用性グループを構成する前に 2 番目の SQL Server のデータベースが `NO RECOVERY` で既に復元されている場合は、 **[参加のみ]** を選びます。 可用性グループを構成した後でバックアップを作成する場合は、 **[最初のデータ同期をスキップ]** を選びます。
    >
 
-   ![新しい可用性グループ ウィザード、最初のデータ同期を選択](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
+   ![[最初のデータの同期をスキップ] を選択する](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
 
 9. **[検証]** ページで **[次へ]** を選択します。 このページは次の図のようになります。
 
@@ -326,7 +324,7 @@ Repeat these steps on the second SQL Server.
     >[!NOTE]
     >可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。 Azure Virtual Machines で Azure Load Balancer を作成した後にリスナーを作成するので、この警告は無視してかまいません。
 
-10. **[概要]** ページで、 **[完了]** を選択し、新しい可用性グループが構成されるまで待ちます。 **[進行状況]** ページで **[詳細]** を選択すると、進行状況が詳しく表示されます。 ウィザードが完了したら、 **[結果]** ページを調べて、可用性グループが正常に作成されたことを確認します。
+10. **[概要]** ページで、 **[完了]** を選択し、新しい可用性グループが構成されるまで待ちます。 **[進行状況]** ページで **[詳細]** を選択すると、進行状況が詳しく表示されます。 ウィザードが終了した後、 **[結果]** ページを調べ、可用性グループが正常に作成されたことを確認します。
 
      ![新しい可用性グループ ウィザード、結果](./media/availability-group-manually-configure-tutorial/74-results.png)
 
@@ -334,17 +332,17 @@ Repeat these steps on the second SQL Server.
 
 ### <a name="check-the-availability-group"></a>可用性グループを確認する
 
-1. **オブジェクト エクスプローラー**で、 **[AlwaysOn 高可用性]** 、 **[可用性グループ]** の順に展開します。 このコンテナー内に新しい可用性グループが表示されます。 可用性グループを右クリックし、 **[ダッシュボードの表示]** を選択します。
+1. **オブジェクト エクスプローラー** で、 **[AlwaysOn 高可用性]** 、 **[可用性グループ]** の順に展開します。 このコンテナー内に新しい可用性グループが表示されます。 可用性グループを右クリックして **[ダッシュボードの表示]** をクリックします。
 
-   ![可用性グループ ダッシュ ボードの表示](./media/availability-group-manually-configure-tutorial/76-showdashboard.png)
+   ![可用性グループ ダッシュ ボードを表示する](./media/availability-group-manually-configure-tutorial/76-showdashboard.png)
 
-   **AlwaysOn ダッシュボード**が、次のスクリーンショットのように表示されます。
+   **AlwaysOn ダッシュボード** が、次のスクリーンショットのように表示されます。
 
    ![可用性グループ ダッシュ ボード](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
 
    レプリカ、各レプリカのフェールオーバー モード、および同期の状態を確認できます。
 
-2. **フェールオーバー クラスター マネージャー**で、対象のクラスターを選択します。 **[役割]** を選びます。 使った可用性グループの名前は、クラスターでの役割です。 リスナーを構成していないため、その可用性グループにはクライアント接続用の IP アドレスがありません。 Azure Load Balancer を作成した後で、リスナーを構成します。
+2. **フェールオーバー クラスター マネージャー** で、対象のクラスターを選択します。 **[役割]** を選びます。 使った可用性グループの名前は、クラスターでの役割です。 リスナーを構成していないため、その可用性グループにはクライアント接続用の IP アドレスがありません。 Azure Load Balancer を作成した後で、リスナーを構成します。
 
    ![フェールオーバー クラスター マネージャー内の可用性グループ](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
 
@@ -352,27 +350,29 @@ Repeat these steps on the second SQL Server.
    > フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、[フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
     >
 
-この時点で、SQL Server の 2 つのインスタンス上にレプリカを持つ可用性グループができています。 可用性グループは、インスタンス間で移動できます。 リスナーがないため、可用性グループにまはだ接続できません。 Azure Virtual Machines では、リスナーにはロード バランサーが必要です。 次に、Azure でロード バランサーを作成します。
+この時点で、SQL Server の 2 つのインスタンス上にレプリカを含む可用性グループができています。 可用性グループは、インスタンス間で移動できます。 リスナーがないため、可用性グループにはまだ接続できません。 Azure Virtual Machines では、リスナーにはロード バランサーが必要です。 次に、Azure でロード バランサーを作成します。
 
 <a name="configure-internal-load-balancer"></a>
 
 ## <a name="create-an-azure-load-balancer"></a>Azure Load Balancer を作成する
 
-Azure Virtual Machines では、SQL Server 可用性グループにはロード バランサーが必要です。 ロード バランサーは、可用性グループ リスナーと Windows Server フェールオーバー クラスターの IP アドレスを保持しています。 このセクションでは、Azure Portal でロード バランサーを作成する方法の概要を説明します。
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
+Azure Virtual Machines では、SQL Server 可用性グループにはロード バランサーが必要です。 ロード バランサーには、可用性グループ リスナーと Windows Server フェールオーバー クラスターの IP アドレスが保持されます。 このセクションでは、Azure Portal でロード バランサーを作成する方法の概要を説明します。
 
 Azure のロード バランサーは、Standard Load Balancer または Basic Load Balancer のいずれかです。 Standard Load Balancer には、Basic Load Balancer よりも多くの機能があります。 可用性グループで、(可用性セットではなく) 可用性ゾーンを使用する場合は、Standard Load Balancer が必要です。 ロード バランサーの SKU の違いについては、「[Load Balancer の SKU の比較](../../../load-balancer/skus.md)」を参照してください。
 
 1. Azure portal で、対象の SQL Server が存在するリソース グループに移動し、 **[+ 追加]** を選択します。
-1. 「**ロード バランサー**」を検索します。 Microsoft が公開しているロード バランサーを選びます。
+1. 「 **ロード バランサー** 」を検索します。 Microsoft が公開しているロード バランサーを選びます。
 
-   ![フェールオーバー クラスター マネージャー内の可用性グループ](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
+   ![Microsoft が公開しているロード バランサーを選択する](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
 1. **［作成］** を選択します
 1. ロード バランサーに関して次のパラメーターを構成します。
 
    | 設定 | フィールド |
    | --- | --- |
-   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
+   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB** )。 |
    | **Type** |内部 |
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
@@ -495,7 +495,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 次の手順は、フェールオーバー クラスター上の可用性グループ リスナーの構成です。
 
 > [!NOTE]
-> このチュートリアルでは、1 つの ILB IP アドレスを持つ 1 つのリスナーを作成する方法を示します。 1 つまたは複数の IP アドレスを使って 1 つまたは複数のリスナーを作成する方法については、[Azure での可用性グループ リスナーとロード バランサーの作成に関するページ](availability-group-listener-powershell-configure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
+> このチュートリアルでは、1 つの ILB IP アドレスを持つ 1 つのリスナーを作成する方法を示します。 1 つまたは複数の IP アドレスを使用して 1 つまたは複数のリスナーを作成する方法については、[Azure での可用性グループ リスナーとロード バランサーの作成](availability-group-listener-powershell-configure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 >
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
@@ -506,7 +506,7 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. SQL Server Management Studio を起動し、プライマリ レプリカに接続します。
 
-1. **[AlwaysOn 高可用性]**  > 、 **[可用性グループ]**  > 、 **[可用性グループ リスナー]** の順に移動します。
+1. **[AlwaysOn 高可用性]**  >  **[可用性グループ]**  > z **[可用性グループ リスナー]** の順に移動します。
 
 1. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。 リスナー名を右クリックし、 **[プロパティ]** を選択します。
 

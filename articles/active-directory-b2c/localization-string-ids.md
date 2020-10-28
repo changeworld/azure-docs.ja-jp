@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054748"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096200"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ローカリゼーション**要素を使用すると、ユーザー体験に関するポリシーで複数のロケールまたは言語をサポートできます。 この記事では、ポリシーで使用できるローカリゼーション ID の一覧を示します。 UI のローカリゼーションに精通するには、[ローカリゼーション](localization.md)を参照してください。
+**ローカリゼーション** 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールまたは言語をサポートできます。 この記事では、ポリシーで使用できるローカリゼーション ID の一覧を示します。 UI のローカリゼーションに精通するには、[ローカリゼーション](localization.md)を参照してください。
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>サインアップ ページまたはサインイン ページの要素
 
@@ -57,7 +57,7 @@ ms.locfileid: "92054748"
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>サインアップまたはサインイン ID プロバイダー
 
-ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素で構成されます。 ID プロバイダーのタイトルをローカライズするには、 **ElementType** は`ClaimsProvider`に設定され、**StringId** は`ClaimsExchange`の ID に設定されます。
+ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素で構成されます。 ID プロバイダーのタイトルをローカライズするには、 **ElementType** は`ClaimsProvider`に設定され、 **StringId** は`ClaimsExchange`の ID に設定されます。
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -343,7 +343,42 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="verification-display-control-user-interface-elements"></a>検証表示コントロールのユーザー インターフェイス要素
 
-[検証表示コントロール](display-control-verification.md)の ID を次に示します。
+[ページ レイアウト バージョン](page-layout.md)が 2.1.0 以上の[検証表示コントロール](display-control-verification.md)の ID を次に示します。
+
+| id | 既定値 |
+| -- | ------------- |
+|intro_msg| 確認が必要です。 [送信] ボタンをクリックしてください。|
+|success_send_code_msg | 確認コードが受信トレイに送信されました。 次の入力ボックスにコピーしてください。|
+|failure_send_code_msg | ご使用のメールアドレスの確認に問題があります。 有効なメール アドレスを入力して、もう一度やり直してください。|
+|success_verify_code_msg | 電子メールアドレスが確認されました。 続行することができるようになりました。|
+|failure_verify_code_msg | ご使用のメールアドレスの確認に問題があります。 もう一度やり直してください。|
+|but_send_code | 確認コードを送信する|
+|but_verify_code | コードの確認|
+|but_send_new_code | 新しいコードを送信します|
+|but_change_claims | 電子メールを変更します|
+
+### <a name="verification-display-control-example"></a>検証表示コントロールの例
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>検証表示コントロールのユーザー インターフェイス要素 (非推奨)
+
+[ページ レイアウト バージョン](page-layout.md)が 2.0.0 の[検証表示コントロール](display-control-verification.md)の ID を次に示します。
 
 | id | 既定値 |
 | -- | ------------- |
@@ -355,7 +390,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |verification_control_but_verify_code |コードの確認 |
 |verification_control_code_sent| 確認コードが送信されました。 次の入力ボックスにコピーしてください。 |
 
-### <a name="verification-display-control-example"></a>検証表示コントロールの例
+### <a name="verification-display-control-example-deprecated"></a>検証表示コントロールの例 (非推奨)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>

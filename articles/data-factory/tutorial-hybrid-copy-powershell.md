@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: d148bc81e81c4afa32682fa1462ecfbf5427f164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db7112516941e53c07e1521f15140a8b9c28e47
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079232"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147972"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>チュートリアル:SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -43,12 +43,12 @@ ms.locfileid: "89079232"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ### <a name="azure-roles"></a>Azure ロール
-Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。
+Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、" *共同作成者* " または " *所有者* " ロールに属しているか、Azure サブスクリプションの " *管理者* " である必要があります。
 
-サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にあるユーザー名をクリックし、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にあるユーザー名をクリックし、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」の記事を参照してください。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016、2017
-このチュートリアルでは、SQL Server データベースを "*ソース*" データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Azure Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
+このチュートリアルでは、SQL Server データベースを " *ソース* " データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Azure Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 
 1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
 
@@ -83,7 +83,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. Azure のユーザー名とパスワードを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウの **[その他のサービス]** を選択し、「**ストレージ**」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
+1. 左側のウィンドウの **[その他のサービス]** を選択し、「 **ストレージ** 」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
 
     ![ストレージ アカウントを検索](media/doc-common-process/search-storage-account.png)
 
@@ -94,7 +94,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. **[ストレージ アカウント名]** ボックスと **[key1]** ボックスの値をコピーし、メモ帳などのエディターに貼り付けます。これらの値は、後でこのチュートリアルの中で使用します。
 
 #### <a name="create-the-adftutorial-container"></a>adftutorial コンテナーの作成
-このセクションでは、**adftutorial** という名前の BLOB コンテナーを Azure Blob Storage に作成します。
+このセクションでは、 **adftutorial** という名前の BLOB コンテナーを Azure Blob Storage に作成します。
 
 1. **[ストレージ アカウント]** ウィンドウで **[概要]** に切り替え、 **[BLOB]** を選択します。
 
@@ -102,7 +102,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[Blob service]** ウィンドウで **[コンテナー]** を選択します。
 
-1. **[新しいコンテナー]** ウィンドウの **[名前]** ボックスに「**adftutorial**」と入力し、 **[OK]** を選択します。
+1. **[新しいコンテナー]** ウィンドウの **[名前]** ボックスに「 **adftutorial** 」と入力し、 **[OK]** を選択します。
 
     ![コンテナー名を入力する](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
@@ -178,8 +178,8 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 >    ```
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
-> * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。
-> * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
+> * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、" *共同作成者* " または " *所有者* " ロールに属しているか、Azure サブスクリプションの " *管理者* " である必要があります。
+> * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 >
 >
 
@@ -239,7 +239,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     Id                        : /subscriptions/<subscription ID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/integrationruntimes/<integrationRuntimeName>
     ```
 
-1. 次のコマンドを実行して、クラウドの Data Factory サービスにセルフホステッド統合ランタイムを登録するための "*認証キー*" を取得します。 次の手順でマシンにインストールするセルフホステッド統合ランタイムを登録するために、いずれかのキーをコピーします (二重引用符は除外)。
+1. 次のコマンドを実行して、クラウドの Data Factory サービスにセルフホステッド統合ランタイムを登録するための " *認証キー* " を取得します。 次の手順でマシンにインストールするセルフホステッド統合ランタイムを登録するために、いずれかのキーをコピーします (二重引用符は除外)。
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
@@ -357,7 +357,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>SQL Server のリンクされたサービスを作成して暗号化する (ソース)
 この手順では、SQL Server インスタンスをデータ ファクトリにリンクします。
 
-1. 次のコードを使用して、*SqlServerLinkedService.json* という名前の JSON ファイルを *C:\ADFv2Tutorial* フォルダーに作成します。
+1. 次のコードを使用して、 *SqlServerLinkedService.json* という名前の JSON ファイルを *C:\ADFv2Tutorial* フォルダーに作成します。
 
     > [!IMPORTANT]
     > SQL Server への接続に使用する認証に該当するセクションを選んでください。
@@ -415,10 +415,10 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     > - SQL Server インスタンスへの接続に使用する認証に該当するセクションを選んでください。
     > - **\<integration runtime name>** を統合ランタイムの名前に置き換えます。
     > - ファイルを保存する前に、 **\<servername>** 、 **\<databasename>** 、 **\<username>** 、 **\<password>** を実際の SQL Server インスタンスの値に置き換えてください。
-    > - ユーザー アカウントまたはサーバー名にバックスラッシュ (\\) を使用する必要がある場合は、エスケープ文字 (\\) に続けて入力してください。 たとえば、「*mydomain\\\\myuser*」のように入力します。
+    > - ユーザー アカウントまたはサーバー名にバックスラッシュ (\\) を使用する必要がある場合は、エスケープ文字 (\\) に続けて入力してください。 たとえば、「 *mydomain\\\\myuser* 」のように入力します。
 
 1. 機密データ (ユーザー名、パスワードなど) を暗号化するには、`New-AzDataFactoryV2LinkedServiceEncryptedCredential` コマンドレットを実行します。  
-    この暗号化によって、資格情報が Data Protection Application Programming Interface (DPAPI) を使って暗号化されます。 暗号化された資格情報は、セルフホステッド統合ランタイム ノード (ローカル マシン) のローカルに格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は "*encryptedLinkedService.json*") にリダイレクトできます。
+    この暗号化によって、資格情報が Data Protection Application Programming Interface (DPAPI) を使って暗号化されます。 暗号化された資格情報は、セルフホステッド統合ランタイム ノード (ローカル マシン) のローカルに格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は " *encryptedLinkedService.json* ") にリダイレクトできます。
 
    ```powershell
    New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

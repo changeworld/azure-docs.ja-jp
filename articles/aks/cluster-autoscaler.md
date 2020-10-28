@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257512"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103868"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -25,8 +25,8 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 
 平日と夜間、または週末など、アプリケーションの変則的な需要に対応するために、多くの場合、クラスターには自動的にスケーリングする方法が必要になります。 AKS クラスターは、次の 2 つの方法のいずれかでスケーリングできます。
 
-* **クラスター オートスケーラー**は、リソース制約のためにノードでスケジュールできないポッドを監視します。 その後、クラスターによってノードの数が自動的に増やされます。
-* **ポッドの水平オートスケーラー**は、Kubernetes クラスターのメトリック サーバーを使用して、ポッドのリソースの需要をモニターします。 アプリケーションで必要なリソースが増えると、その需要を満たすためにポッドの数が自動的に増やされます。
+* **クラスター オートスケーラー** は、リソース制約のためにノードでスケジュールできないポッドを監視します。 その後、クラスターによってノードの数が自動的に増やされます。
+* **ポッドの水平オートスケーラー** は、Kubernetes クラスターのメトリック サーバーを使用して、ポッドのリソースの需要をモニターします。 アプリケーションで必要なリソースが増えると、その需要を満たすためにポッドの数が自動的に増やされます。
 
 ![クラスター オートスケーラーとポッドの水平オートスケーラーは、必要なアプリケーション需要に対応するために、多くの場合、連携して機能します。](media/autoscaler/cluster-autoscaler.png)
 
@@ -110,7 +110,7 @@ az aks update \
   --max-count 5
 ```
 
-上の例では、*myAKSCluster* の単一のノード プールにあるクラスター オートスケーラーを更新して、最小値を *1* ノード、最大値を *5* ノードにします。
+上の例では、 *myAKSCluster* の単一のノード プールにあるクラスター オートスケーラーを更新して、最小値を *1* ノード、最大値を *5* ノードにします。
 
 > [!NOTE]
 > クラスター オートスケーラーでは、各ノード プールに設定された最小数と最大数に基づいてスケーリングが決定されますが、最小数または最大数が更新された後にそれが適用されません。 たとえば、現在のノード数が 3 のときに最小値を 5 に設定しても、プールはすぐに 5 にはスケールアップされません。 ノード プールの最小値が現在のノード数よりも大きい値になると、2 つの新しいノードを必要とするほど十分な数の、オートスケーラー イベントをトリガーするスケジュールできないポッドが存在するときに、この新しい最小または最大の設定が適用されます。 スケール イベントの後、新しい数の制限が適用されます。
@@ -135,18 +135,8 @@ az aks update \
 
 > [!IMPORTANT]
 > クラスター オートスケーラー プロファイルは、クラスター オートスケーラーを使用するすべてのノード プールに影響を及ぼします。 ノード プールごとにオートスケーラー プロファイルを設定することはできません。
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-クラスター オートスケーラーの設定プロファイルを設定するには、*aks-preview* CLI 拡張機能のバージョン 0.4.30 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+>
+> クラスター オートスケーラー プロファイルには、バージョン *2.11.1* 以上の Azure CLI が必要です。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>既存の AKS クラスターに対してクラスター オートスケーラー プロファイルを設定する
 
@@ -204,7 +194,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>クラスター オートスケーラーの無効化
 
-クラスター オートスケーラーを今後使用しない場合は、[az aks update][az-aks-update-preview] コマンドで *--disable-cluster-autoscaler* パラメーターを指定することで無効にできます。 クラスター オートスケーラーが無効になってもノードは削除されません。
+クラスター オートスケーラーを今後使用しない場合は、 [az aks update][az-aks-update-preview] コマンドで *--disable-cluster-autoscaler* パラメーターを指定することで無効にできます。 クラスター オートスケーラーが無効になってもノードは削除されません。
 
 ```azurecli-interactive
 az aks update \
@@ -217,7 +207,7 @@ az aks update \
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>無効なクラスター オートスケーラーを再度有効にする
 
-既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、[az aks update][az-aks-update-preview] コマンドで *--enable-cluster-autoscaler*、 *--min-count*、および *--max-count* パラメーターを指定することで有効にできます。
+既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、 [az aks update][az-aks-update-preview] コマンドで *--enable-cluster-autoscaler* 、 *--min-count* 、および *--max-count* パラメーターを指定することで有効にできます。
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>クラスター オートスケーラーのログと状態を取得する
 
@@ -252,7 +242,7 @@ kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
 
 クラスター オートスケーラーは、[複数のノード プール][aks-multiple-node-pools]を有効にして使用できます。 そのドキュメントに従って、既存のクラスターで複数のノード プールを有効にし、ノード プールを追加する方法を確認してください。 両方の機能を一緒に使用すると、クラスター内の個々のノード プールでクラスター オートスケーラーを有効にし、それぞれに一意の自動スケーリング ルールを渡すことができます。
 
-次のコマンドは、このドキュメントで前述した[初期手順](#create-an-aks-cluster-and-enable-the-cluster-autoscaler)に従っており、既存のノード プールの最大数を *3* から *5* に更新することを前提としています。 既存のノード プールの設定を更新するには、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用します。
+次のコマンドは、このドキュメントで前述した [初期手順](#create-an-aks-cluster-and-enable-the-cluster-autoscaler)に従っており、既存のノード プールの最大数を *3* から *5* に更新することを前提としています。 既存のノード プールの設定を更新するには、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用します。
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -274,7 +264,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、[az aks nodepool update][az-aks-nodepool-update] コマンドで *--enable-cluster-autoscaler*、 *--min-count*、および *--max-count* パラメーターを指定することで有効にできます。
+既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、 [az aks nodepool update][az-aks-nodepool-update] コマンドで *--enable-cluster-autoscaler* 、 *--min-count* 、および *--max-count* パラメーターを指定することで有効にできます。
 
 ## <a name="next-steps"></a>次のステップ
 

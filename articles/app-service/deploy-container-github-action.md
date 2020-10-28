@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893358"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203196"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのカスタム コンテナーのデプロイ
 
@@ -30,16 +30,16 @@ Azure App Service のコンテナー ワークフロー ファイルには、次
 
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - GitHub アカウント。 お持ちでない場合は、[無料](https://github.com/join)でサインアップしてください。  
 - コンテナー用の作業コンテナー レジストリと Azure App Service アプリ。 この例では、Azure Container Registry を使用します。 
-    - [コンテナー化された Node.js アプリケーションを Docker を使って作成し、コンテナー イメージをレジストリにプッシュした後、イメージを Azure App Service にデプロイする方法をご確認ください](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [コンテナー化された Node.js アプリケーションを Docker を使って作成し、コンテナー イメージをレジストリにプッシュした後、イメージを Azure App Service にデプロイする方法をご確認ください](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
-GitHub Actions 用の Azure App Services での認証で推奨される方法は、発行プロファイルを使用することです。 サービス プリンシパルを使用して認証することもできますが、プロセスに必要な手順が多くなります。 
+GitHub Actions 用の Azure App Services での認証で推奨される方法は、発行プロファイルを使用することです。 サービス プリンシパルを使用して認証することもできますが、そのプロセスにはさらに多くの手順が必要です。 
 
-発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 このシークレットには、ワークフロー内でアクセスします。 
+発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/publish-profile)
 
@@ -47,7 +47,7 @@ GitHub Actions 用の Azure App Services での認証で推奨される方法は
 
 1. Azure portal で、お使いのアプリ サービスに移動します。 
 
-1. **[概要]** ページで、 **[発行プロファイルの取得]** を選択します。
+1. **[概要]** ページで、 **[発行プロファイルの取得]** オプションを選択します。
 
 1. ダウンロードしたファイルを保存します。 このファイルの内容を使用して、GitHub シークレットを作成します。
 
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>App Service コンテナーへのデプロイ
 
-App Service のカスタム コンテナーにイメージをデプロイするには、`azure/webapps-deploy@v2` アクションを使用します。 このアクションには、次の 5 つのパラメーターがあります。
+App Service のカスタム コンテナーにイメージをデプロイするには、`azure/webapps-deploy@v2` アクションを使用します。 このアクションには 7 つのパラメーターがあります。
 
 | **パラメーター**  | **説明**  |
 |---------|---------|
 | **app-name** | (必須) App Service アプリの名前 | 
-| **publish-profile** | (オプション) Web 配置のシークレットでプロファイル ファイルの内容を発行する |
-| **images** | 完全修飾コンテナー イメージ名。 たとえば、' myregistry.azurecr.io/nginx:latest ' や ' python:3.7.2-alpine/' などです。 複数コンテナーのシナリオでは、複数のコンテナー イメージ名を指定できます (複数行で区切ります) |
+| **publish-profile** | (オプション) Web アプリ (Windows および Linux) および Web アプリ コンテナー (Linux) に適用されます。 複数コンテナー シナリオはサポートされていません。 Web 配置のシークレットでプロファイル (\*.publishsettings) ファイルの内容を発行します | 
 | **slot-name** | (オプション) 運用スロット以外の既存のスロットを入力します。 |
-| **configuration-file** | (オプション) Docker-Compose ファイルのパス |
+| **package** | (オプション) Web アプリのみに適用されます。パッケージまたはフォルダーへのパス。 デプロイする \*.zip、\*.war、\*.jar またはフォルダー |
+| **images** | (必須) Web アプリ コンテナーのみに適用されます。完全修飾コンテナー イメージ名を指定します。 たとえば、' myregistry.azurecr.io/nginx:latest ' や ' python:3.7.2-alpine/' などです。 複数コンテナー アプリの場合は、複数のコンテナー イメージ名を指定できます (複数行で区切ります)。 |
+| **configuration-file** | (オプション) Web アプリ コンテナーのみに適用されます。Docker-Compose ファイルのパス。 完全修飾パスか、既定の作業ディレクトリを基準とした相対パスのいずれかです。 複数コンテナー アプリの場合は必須です。 |
+| **スタートアップ コマンド** | (オプション) スタートアップ コマンドを入力します。 たとえば、 dotnet run or dotnet filename.dll |
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/publish-profile)
 

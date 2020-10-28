@@ -1,35 +1,35 @@
 ---
 title: Azure セキュリティ ベンチマークの規制コンプライアンスの詳細
 description: Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ac37714aa18806d3eddbb5cf03c922754483f85
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932177"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311472"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細
 
-この記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、Azure セキュリティ ベンチマークの**コンプライアンス ドメイン**と**コントロール**にどのように対応するのかを、詳しく説明します。
-このコンプライアンス標準の詳細については、[Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に関するページを参照してください。 "_所有権_" については、[Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
+この記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、Azure セキュリティ ベンチマークの **コンプライアンス ドメイン** と **コントロール** にどのように対応するのかを、詳しく説明します。
+このコンプライアンス標準の詳細については、[Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に関するページを参照してください。 " _所有権_ " については、 [Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「 [クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
-以下のマッピングは、**Azure セキュリティ ベンチマーク**のコントロールに対するものです。 右側のナビゲーションを使用すると、特定の**コンプライアンス ドメイン**に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
-次に、**Azure セキュリティ ベンチマーク**規制コンプライアンスの組み込みイニシアティブ定義を選択します。
+以下のマッピングは、 **Azure セキュリティ ベンチマーク** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定の **コンプライアンス ドメイン** に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
+次に、 **Azure セキュリティ ベンチマーク** 規制コンプライアンスの組み込みイニシアティブ定義を選択します。
 
 この組み込みイニシアチブは、[Azure セキュリティ ベンチマーク ブループリント サンプル](../../blueprints/samples/azure-security-benchmark.md)の一部としてデプロイされます。
 
 > [!IMPORTANT]
 > 以下の各コントロールは、1 つ以上の [Azure Policy](../overview.md) 定義に関連します。
-> これらのポリシーは、コントロールに対する[コンプライアンスの評価](../how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での**準拠**では、ポリシー定義自体のみが示されています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス標準に対するコンプライアンス ドメイン、コントロール、Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json)に関するページを参照してください。
+> これらのポリシーは、コントロールに対する[コンプライアンスの評価](../how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** では、ポリシー定義自体のみが示されています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス標準に対するコンプライアンス ドメイン、コントロール、Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.1 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -58,7 +58,7 @@ ms.locfileid: "91932177"
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.2 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "91932177"
 
 ### <a name="protect-critical-web-applications"></a>重要な Web アプリケーションを保護する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.3 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ ms.locfileid: "91932177"
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>既知の悪意のある IP アドレスとの通信を拒否する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.4 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "91932177"
 
 ### <a name="record-network-packets-and-flow-logs"></a>ネットワーク パケットとフロー ログを記録する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.5 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.11 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.11 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,7 +115,7 @@ ms.locfileid: "91932177"
 
 ### <a name="configure-central-security-log-management"></a>セキュリティ ログの一元管理を構成する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.2 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -128,7 +128,7 @@ ms.locfileid: "91932177"
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>Azure リソースの監査ログ記録を有効にする
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.3 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,7 +150,7 @@ ms.locfileid: "91932177"
 
 ### <a name="collect-security-logs-from-operating-systems"></a>オペレーティング システムからセキュリティ ログを収集する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.4 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -161,7 +161,7 @@ ms.locfileid: "91932177"
 
 ### <a name="configure-security-log-storage-retention"></a>セキュリティ ログのストレージ保持を構成する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.5 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ ms.locfileid: "91932177"
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>異常なアクティビティについてのアラートを有効にする
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.7 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.7 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ ms.locfileid: "91932177"
 
 ### <a name="centralize-anti-malware-logging"></a>マルウェア対策のログ記録を一元管理する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.8 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ ms.locfileid: "91932177"
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>管理アカウントのインベントリを維持する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.1 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,7 +201,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-dedicated-administrative-accounts"></a>専用管理者アカウントを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.3 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.5 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-azure-active-directory"></a>Azure Active Directory を使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.9 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ ms.locfileid: "91932177"
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>ユーザー アクセスを定期的に確認して調整する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.10 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.10 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ ms.locfileid: "91932177"
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>機密情報のインベントリを維持する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.1 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ ms.locfileid: "91932177"
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>転送中のすべての機密情報を暗号化する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.4 **所有権**: 共有
+**[ID]** :Azure セキュリティ ベンチマーク 4.4 **所有権** : 共有
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>アクティブ検出ツールを使用して機密データを特定する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.5 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>Azure RBAC を使用してリソースへのアクセスを制御する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.6 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.6 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ ms.locfileid: "91932177"
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>機密情報を保存時に暗号化する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.8 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ ms.locfileid: "91932177"
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>重要な Azure リソースへの変更に関するログとアラート
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.9 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ ms.locfileid: "91932177"
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>自動化された脆弱性スキャン ツールを実行する
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.1 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ ms.locfileid: "91932177"
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.2 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,23 +336,23 @@ ms.locfileid: "91932177"
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>サードパーティの自動化されたソフトウェア修正プログラム管理ソリューションを展開する
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.3 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java の新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Java バージョンを関数アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の Java バージョンを Web アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
-|[API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを API アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを Web アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
-|[API アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[API アプリの一部として使用される "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java の新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Java バージョンを関数アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の Java バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[API アプリの一部として使用される "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[API アプリの一部として使用される "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 |[Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |現在の Kubernetes バージョンの既知の脆弱性から保護するため、Kubernetes Service クラスターを新しい Kubernetes バージョンにアップグレードしてください。 脆弱性 CVE-2019-9946 は、Kubernetes バージョン 1.11.9 以上、1.12.7 以上、1.13.5 以上、および 1.14.0 以上でパッチが適用されています |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json) |
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.5 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -366,7 +366,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-only-approved-applications"></a>承認されたアプリケーションのみを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 6.8 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 6.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-only-approved-azure-services"></a>承認された Azure サービスのみを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 6.9 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 6.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ ms.locfileid: "91932177"
 
 ### <a name="implement-approved-application-list"></a>承認されたアプリケーションの一覧を実装する
 
-**[ID]** :Azure セキュリティ ベンチマーク 6.10 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 6.10 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ ms.locfileid: "91932177"
 
 ### <a name="maintain-secure-operating-system-configurations"></a>セキュリティで保護されたオペレーティング システムの構成を維持する
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.4 **所有権**: 共有
+**[ID]** :Azure セキュリティ ベンチマーク 7.4 **所有権** : 共有
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "91932177"
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>オペレーティング システムの自動構成監視を実装する
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.10 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 7.10 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,7 +413,7 @@ ms.locfileid: "91932177"
 
 ### <a name="manage-azure-secrets-securely"></a>Azure シークレットを安全に管理する
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.11 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 7.11 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -421,7 +421,7 @@ ms.locfileid: "91932177"
 
 ### <a name="manage-identities-securely-and-automatically"></a>ID を安全かつ自動的に管理する 
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.12 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 7.12 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ ms.locfileid: "91932177"
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>一元管理されるマルウェア対策ソフトウェアを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 8.1 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 8.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ ms.locfileid: "91932177"
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-**[ID]** :Azure セキュリティ ベンチマーク 8.3 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 8.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ ms.locfileid: "91932177"
 
 ### <a name="ensure-regular-automated-back-ups"></a>定期的に自動バックアップを行う
 
-**[ID]** :Azure セキュリティ ベンチマーク 9.1 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 9.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ ms.locfileid: "91932177"
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**[ID]** :Azure セキュリティ ベンチマーク 9.2 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 9.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,7 +476,7 @@ ms.locfileid: "91932177"
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>バックアップとカスタマー マネージド キーの保護を確保する
 
-**[ID]** :Azure セキュリティ ベンチマーク 9.4 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 9.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -486,7 +486,7 @@ ms.locfileid: "91932177"
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**[ID]** :Azure セキュリティ ベンチマーク 10.4 **所有権**: Customer
+**[ID]** :Azure セキュリティ ベンチマーク 10.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

@@ -3,12 +3,12 @@ title: レジストリ ログインのトラブルシューティング
 description: Azure Container Registry にログインするときの一般的な問題の現象、原因、対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253356"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148444"
 ---
 # <a name="troubleshoot-registry-login"></a>レジストリ ログインのトラブルシューティング
 
@@ -56,13 +56,13 @@ Azure Container Registry にログインするときに発生する可能性の�
 
 ### <a name="specify-correct-registry-name"></a>正しいレジストリ名を指定する
 
-`docker login` を使用する場合は、*myregistry.azurecr.io* など、レジストリの完全なログイン サーバー名を指定します。 必ず小文字のみを使用してください。 例:
+`docker login` を使用する場合は、 *myregistry.azurecr.io* など、レジストリの完全なログイン サーバー名を指定します。 必ず小文字のみを使用してください。 例:
 
 ```console
 docker login myregistry.azurecr.io
 ```
 
-[az acr login](/cli/azure/acr#az-acr-login) を Azure Active Directory ID と共に使用する場合は、まず [Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)し、次にレジストリの Azure リソース名を指定します。 リソース名は、*myregistry* (ドメイン サフィックスはなし) のように、レジストリの作成時に指定された名前です。 例:
+[az acr login](/cli/azure/acr#az-acr-login) を Azure Active Directory ID と共に使用する場合は、まず [Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)し、次にレジストリの Azure リソース名を指定します。 リソース名は、 *myregistry* (ドメイン サフィックスはなし) のように、レジストリの作成時に指定された名前です。 例:
 
 ```azurecli
 az acr login --name myregistry
@@ -77,8 +77,8 @@ az acr login --name myregistry
 シナリオに使用する、レジストリ所有者から提供された資格情報が有効であることを確認します。 いくつかの問題が考えられます。
 
 * Active Directory サービス プリンシパルを使用している場合は、Active Directory テナントで確実に正しい資格情報を使用します。
-  * ユーザー名 - サービス プリンシパルのアプリケーション ID (*クライアント ID* とも呼ばれます)
-  * パスワード - サービス プリンシパルのパスワード (*クライアント シークレット*とも呼ばれます)
+  * ユーザー名 - サービス プリンシパルのアプリケーション ID ( *クライアント ID* とも呼ばれます)
+  * パスワード - サービス プリンシパルのパスワード ( *クライアント シークレット* とも呼ばれます)
 * Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。
 * `--expose-token` オプションを指定して `az acr login` を実行し、Docker デーモンを使用せずにレジストリをログインできるようにする場合は、確実にユーザー名 `00000000-0000-0000-0000-000000000000` で認証します。
 
@@ -95,7 +95,7 @@ az acr login --name myregistry
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>資格情報がレジストリへのアクセスが許可されていることを確認する
 
-レジストリからイメージをプルする `AcrPull` RBAC ロールや、イメージをプッシュする `AcrPush` ロールなど、資格情報に関連付けられているレジストリのアクセス許可を確認します。 
+レジストリからイメージをプルする `AcrPull` Azure ロールや、イメージをプッシュする `AcrPush` ロールなど、資格情報に関連付けられているレジストリのアクセス許可を確認します。 
 
 Azure CLI を使用してポータルまたはレジストリ管理でレジストリにアクセスするには、Azure Resource Manager 操作を実行するために少なくとも `Reader` ロールが必要です。
 
@@ -103,7 +103,7 @@ Azure CLI を使用してポータルまたはレジストリ管理でレジス�
 
 関連リンク:
 
-* [RBAC のロールとアクセス許可 - Azure Container Registry](container-registry-roles.md)
+* [Azure のロールとアクセス許可 - Azure Container Registry](container-registry-roles.md)
 * [リポジトリスコープのトークンを使用したログイン](container-registry-repository-scoped-permissions.md)
 * [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)
 * [リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ Azure CLI を使用してポータルまたはレジストリ管理でレジス�
   * [レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)
   * [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 * [コミュニティ サポート](https://azure.microsoft.com/support/community/) オプション
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [サポート チケットを開く](https://azure.microsoft.com/support/create-ticket/) - 入力した情報に基づいて、レジストリで認証エラーが発生した場合にクイック診断が実行される場合があります
-
-

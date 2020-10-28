@@ -4,16 +4,16 @@ description: このクイックスタートでは、Spring Cloud アプリケー
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 09/18/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336260"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170363"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "91336260"
 このクイックスタートでは、Azure で実行する単純な Azure Spring Cloud マイクロサービス アプリケーションをデプロイする方法について説明します。
 
 >[!NOTE]
-> Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
+> Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
 
 このクイックスタートでは、次の方法について説明します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91336260"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 Azure Spring Cloud サービスでは、.NET Core の 3.1 以降のバージョンがサポートされています。
-* [Azure CLI バージョン 2.0.67 以降](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* [Azure CLI バージョン 2.0.67 以降](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
@@ -112,7 +112,7 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
    }
    ```
 
-1. また、*appsettings.json* で、`Microsoft` カテゴリのログ レベルを `Warning` から `Information`に変更します。 この変更により、後の手順でストリーミング ログを表示するときにログが生成されるようになります。
+1. また、 *appsettings.json* で、`Microsoft` カテゴリのログ レベルを `Warning` から `Information`に変更します。 この変更により、後の手順でストリーミング ログを表示するときにログが生成されるようになります。
 
    *appsettings.json* ファイルは、次の例のようになります。
 
@@ -152,7 +152,7 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
    </Target>
    ```
 
-   パッケージは、Steeltoe サービスの検出と Azure Spring Cloud クライアント ライブラリ用です。 `Zip` タスクは、Azure へのデプロイ用です。 `dotnet publish` コマンドを実行すると、*publish* フォルダーにバイナリが生成されます。このタスクにより、*publish* フォルダーが *.zip* ファイルに圧縮されます。これを Azure にアップロードします。
+   パッケージは、Steeltoe サービスの検出と Azure Spring Cloud クライアント ライブラリ用です。 `Zip` タスクは、Azure へのデプロイ用です。 `dotnet publish` コマンドを実行すると、 *publish* フォルダーにバイナリが生成されます。このタスクにより、 *publish* フォルダーが *.zip* ファイルに圧縮されます。これを Azure にアップロードします。
 
 3. *Program.cs* ファイルに、`using` ディレクティブと Azure Spring Cloud クライアント ライブラリを使用するコードを追加します。
 
@@ -218,7 +218,7 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
 
 1. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
 
-   * **サブスクリプション**:このリソースに対する課金用のサブスクリプションを選択します。
+   * **サブスクリプション** :このリソースに対する課金用のサブスクリプションを選択します。
    * **[リソース グループ]** :新しいリソース グループを作成します。 ここで入力する名前は、後の手順で **\<resource group name\>** として使用されます。
    * **[サービスの詳細/名前]** : **\<service instance name\>** を指定します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
    * **[リージョン]** :自分のサービス インスタンスのリージョンを選択します。
@@ -317,7 +317,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 > [!TIP]
 > さらに多くのパラメーターとログ ストリーム機能を調べるには、`az spring-cloud app logs -h` を使用します。
 
-高度なログ分析機能については、[Azure portal](https://portal.azure.com/) のメニューで **[ログ]** タブにアクセスしてください。 ここで、ログの待ち時間は数分です。
+高度なログ分析機能については、 [Azure portal](https://portal.azure.com/) のメニューで **[ログ]** タブにアクセスしてください。 ここで、ログの待ち時間は数分です。
 [ ![Logs Analytics](media/spring-cloud-quickstart-java/logs-analytics.png) ](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
 ::: zone-end
 
@@ -338,10 +338,10 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 このクイック スタートを完了するには、以下が必要です。
 
-* [JDK 8 をインストールする](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [JDK 8 をインストールする](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
-* (オプション) [Azure CLI バージョン 2.0.67 以降をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
-* (オプション) [Azure Toolkit for IntelliJ をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する
+* (オプション) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
+* (オプション) [Azure Toolkit for IntelliJ をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud プロジェクトを生成する
 
@@ -387,7 +387,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
     ![ASC アイコンでの追加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
-    - **サブスクリプション**:このリソースに対する課金用のサブスクリプションを選択します。
+    - **サブスクリプション** :このリソースに対する課金用のサブスクリプションを選択します。
     - **[リソース グループ]** :新しいリソース用に新しいリソース グループを作成することをお勧めします。 これが、後の手順で **\<resource group name\>** として使用されます。
     - **[サービスの詳細/名前]** : **\<service instance name\>** を指定します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
     - **[場所]** :自分のサービス インスタンスのリージョンを選択します。
@@ -419,10 +419,10 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public
     ```
 
-1. アプリの Jar ファイルをデプロイします。
+1. アプリの Jar ファイルをデプロイします (Windows では `target\hellospring-0.0.1-SNAPSHOT.jar`)。
 
     ```azurecli
-    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path <jar file path>
     ```
     
 1. アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** ブレードに移動します。 アプリケーションの状態が表示されるはずです。
@@ -439,7 +439,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
     ![プロジェクトのインポート](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>アプリケーションのデプロイ
-Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
+Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 1. IntelliJ のプロジェクト エクスプローラーでプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
 
@@ -448,10 +448,10 @@ Azure にデプロイするには、Azure アカウントでサインインし�
 1. **[Name]\(名前\)** フィールドのアプリの名前はそのまま使用します。 **[Name]\(名前\)** は、アプリ名ではなく構成を参照します。 通常、ユーザーはこれを変更する必要はありません。
 1. **[Artifact]\(成果物\)** ボックスで、 *[hellospring-0.0.1-SNAPSHOT.jar]* を選択します。
 1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションを確認します。
-1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)」で作成した Azure Spring Cloud のインスタンスを選択します。
+1. **[Spring Cloud]** ボックスで、「 [Azure Spring Cloud インスタンスをプロビジョニングする](./spring-cloud-quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
 1. **[App:]\(アプリ:\)** ボックスで、 **[Create app]\(アプリの作成\)** を選択します。
-1. 「*hellospring*」と入力し、 **[OK]** をクリックします。
+1. 「 *hellospring* 」と入力し、 **[OK]** をクリックします。
 
     [ ![Azure へのデプロイ [OK]](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png) ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
@@ -493,7 +493,7 @@ az spring-cloud app logs -n hellospring -s <service instance name> -g <resource 
     [ ![ストリーミング ログの出力](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png) ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
 ---
 
-高度なログ分析機能については、[Azure portal](https://portal.azure.com/) のメニューで **[ログ]** タブにアクセスしてください。 ここで、ログの待ち時間は数分です。
+高度なログ分析機能については、 [Azure portal](https://portal.azure.com/) のメニューで **[ログ]** タブにアクセスしてください。 ここで、ログの待ち時間は数分です。
 
 [ ![Logs Analytics](media/spring-cloud-quickstart-java/logs-analytics.png) ](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
 ::: zone-end

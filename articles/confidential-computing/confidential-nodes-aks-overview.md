@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940771"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125443"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes Service のコンフィデンシャル コンピューティング ノード (パブリック プレビュー)
 
-[Azure Confidential Computing](overview.md) を使用すると、機密データをその使用中に保護することができます。 このデータは、基になるインフラストラクチャによって、他のアプリケーションや管理者、クラウド プロバイダーから保護されます。 
+[Azure Confidential Computing](overview.md) を使用すると、機密データをその使用中に保護することができます。 このデータは、基になるインフラストラクチャと、ハードウェアを基盤にした高信頼実行コンテナー環境によって、他のアプリケーションや管理者、クラウド プロバイダーから保護されます。
 
 ## <a name="overview"></a>概要
 
-Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コンフィデンシャル コンピューティング ノード](confidential-computing-enclaves.md)の追加をサポートします。 これらのノードは、メモリのプライベート領域の割り当てをユーザーレベルのコードに許可することで、ハードウェアベースの信頼できる実行環境 (TEE: Trusted Execution Environment ) 内で機密のワークロードを実行します。 これらのプライベート メモリ領域は、エンクレーブと呼ばれています。 エンクレーブは、コードとデータを、より高い特権で実行されるプロセスから保護するように設計されています。 SGX の実行モデルは、ゲスト OS とハイパーバイザーという中間レイヤーを排除します。 これによって、特殊なメモリ ブロックを暗号化したまま、コンテナー アプリケーションを直接 CPU 上で実行することができます。 
-
+Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コンフィデンシャル コンピューティング ノード](confidential-computing-enclaves.md)の追加をサポートします。 これらのノードは、メモリのプライベート領域の割り当てをユーザーレベルのコードに許可することで、ハードウェアベースの高信頼実行環境 (TEE: Trusted Execution Environment ) 内で機密のワークロードを実行できます。 これらのプライベート メモリ領域は、エンクレーブと呼ばれています。 エンクレーブは、コードとデータを、より高い特権で実行されるプロセスから保護するように設計されています。 SGX の実行モデルは、ゲスト OS とホスト OS、ハイパーバイザーという中間レイヤーを排除します。 " *コンテナーごとに分離されたハードウェア ベースの実行* " モデルによって、特殊なメモリ ブロックを暗号化したまま、アプリケーションを直接 CPU で実行することができます。 コンフィデンシャル コンピューティング ノードは、AKS におけるコンテナー アプリケーションの全体的なセキュリティの状態に寄与し、多層防御のコンテナー戦略をいっそう強固なものとします。 
 
 ![SGX ノードの概要](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コン�
 - AKS デーモンセットによるアウトプロセス構成証明ヘルパー
 - Ubuntu 18.04 Gen 2 VM ワーカー ノードによる Linux コンテナーのサポート
 
-## <a name="aks-provided-daemon-sets"></a>AKS によって提供されるデーモン セット
+## <a name="aks-provided-daemon-sets-addon"></a>AKS によって提供されるデーモン セット (アドオン)
 
 #### <a name="sgx-device-plugin"></a>SGX デバイス プラグイン <a id="sgx-plugin"></a>
 
@@ -50,11 +49,11 @@ SGX デバイス プラグインは、EPC メモリ用の Kubernetes デバイ�
 
 ### <a name="confidential-containers"></a>機密コンテナー
 
-[機密コンテナー](confidential-containers.md)では、既存のプログラムと**一般的なプログラミング言語**ランタイムの大半 (Python、Node、Java など)、そして、その既存のライブラリ依存関係が、ソースコードの変更や再コンパイルなしで実行されます。 機密性を最短で確保するモデルであり、オープン ソース プロジェクトと Azure のパートナーによって実現されています。 安全なエンクレーブ内で動作するようにあらかじめ作成されているコンテナー イメージを機密コンテナーと呼んでいます。
+[機密コンテナー](confidential-containers.md)では、既存のプログラムと **一般的なプログラミング言語** ランタイムの大半 (Python、Node、Java など)、そして、その既存のライブラリ依存関係が、ソースコードの変更や再コンパイルなしで実行されます。 機密性を最短で確保するモデルであり、オープン ソース プロジェクトと Azure のパートナーによって実現されています。 安全なエンクレーブ内で動作するようにあらかじめ作成されているコンテナー イメージを機密コンテナーと呼んでいます。
 
 ### <a name="enclave-aware-containers"></a>エンクレーブ対応コンテナー
 
-AKS では、機密ノード上で動作して、SDK やフレームワークを通じて提供される**特殊な命令セット**を利用するようにプログラムされたアプリケーションがサポートされます。 このアプリケーション モデルは、最も基盤となる Trusted Computing Base (TCB) と共に、ほとんどの制御をアプリケーションに提供します。 エンクレーブ対応コンテナーについての[詳細情報](enclave-aware-containers.md)をご覧ください。
+AKS では、機密ノード上で動作して、SDK やフレームワークを通じて提供される **特殊な命令セット** を利用するようにプログラムされたアプリケーションがサポートされます。 このアプリケーション モデルは、最も基盤となる Trusted Computing Base (TCB) と共に、ほとんどの制御をアプリケーションに提供します。 エンクレーブ対応コンテナーについての[詳細情報](enclave-aware-containers.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

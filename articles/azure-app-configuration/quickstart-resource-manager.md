@@ -4,24 +4,24 @@ titleSuffix: Azure App Configuration
 description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure App Configuration ストアを作成する方法について説明します。
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824180"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148999"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure App Configuration ストアを作成する
 
 このクイックスタートでは、以下の方法について説明します。
 
-- ARM テンプレートを使用して App Configuration ストアをデプロイする
-- ARM テンプレートを使用して App Configuration ストアにキー値を作成する
-- ARM テンプレートから App Configuration ストア内のキー値を読み取る
+- Azure Resource Manager テンプレート (ARM テンプレート) を使用して App Configuration ストアをデプロイする。
+- ARM テンプレートを使用して App Configuration ストアにキー値を作成する。
+- ARM テンプレートから App Configuration ストア内のキー値を読み取る。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,14 +35,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/)からのものです。 2 つのキー値を含む新しい App Configuration ストアを作成します。 その後、`reference` 関数を使用して、2 つのキー値リソースの値を出力します。 このようにしてキーの値を読み取ることで、それをテンプレート内の他の場所で使用することができます。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/)からのものです。 2 つのキー値を含む新しい App Configuration ストアを作成します。 その後、`reference` 関数を使用して、2 つのキー値リソースの値を出力します。 このようにしてキーの値を読み取ることで、それをテンプレート内の他の場所で使用することができます。
 
 このクイックスタートでは、`copy` 要素を使用して、キー値リソースのインスタンスを複数作成します。 `copy` 要素の詳細については、「[ARM テンプレートでのリソースの反復処理](../azure-resource-manager/templates/copy-resources.md)」を参照してください。
 
 > [!IMPORTANT]
 > このテンプレートには、App Configuration リソース プロバイダー バージョン `2020-07-01-preview` 以降が必要です。 このバージョンでは、キー値の読み取りに `reference` 関数が使用されます。 以前のバージョンでキー値の読み取りに使用されていた `listKeyValue` 関数は、バージョン `2020-07-01-preview` 以降では使用できません。
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
@@ -83,8 +83,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-1. [Azure ポータル](https://portal.azure.com)
-1. Azure portal の検索ボックスに「**App Configuration**」と入力します。 一覧から **[App Configuration]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. Azure portal の検索ボックスに「 **App Configuration** 」と入力します。 一覧から **[App Configuration]** を選択します。
 1. 新しく作成した App Configuration リソースを選択します。
 1. **[Operations]\(操作\)** の **[構成エクスプローラー]** をクリックします。
 1. 2 つのキー値が存在することを確認します。

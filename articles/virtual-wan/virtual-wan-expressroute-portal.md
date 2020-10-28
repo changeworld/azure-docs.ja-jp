@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054816"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102478"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "92054816"
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
+1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「 **Virtual WAN** 」と入力し、Enter キーを押します。
 2. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
 3. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 
@@ -105,11 +105,11 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>回線をハブ ゲートウェイに接続する
 
-ゲートウェイが作成されたら、[ExpressRoute 回線](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) をそれに接続できます。 ExpressRoute Global Reach がサポートされている場所にある ExpressRoute の Standard または Premium 回路を Virtual WAN ExpressRoute ゲートウェイに接続し、Virtual WAN のあらゆる転送機能 (VPN 間、VPN、ExpressRoute) を利用できます。 Global Reach の場所ではないところにある ExpressRoute の Standard または Premium 回路は Azure リソースに接続できますが、Virtual WAN の転送機能は使用できません。 ExpressRoute Local は、Azure Virtual WAN ではサポートされていません。
+ゲートウェイが作成されたら、[ExpressRoute 回線](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) をそれに接続できます。 ExpressRoute Global Reach がサポートされている場所にある ExpressRoute の Standard または Premium 回路を Virtual WAN ExpressRoute ゲートウェイに接続し、Virtual WAN のあらゆる転送機能 (VPN 間、VPN、ExpressRoute) を利用できます。 Global Reach の場所ではないところにある ExpressRoute の Standard または Premium 回路は Azure リソースに接続できますが、Virtual WAN の転送機能は使用できません。 ExpressRoute Local が Azure Virtual WAN ハブでサポートされるのは、仮想 WAN ハブに接続されたスポーク VNET が仮想 WAN ハブと同じリージョンに存在する場合に限られます。
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>回線をハブ ゲートウェイに接続するには
 
-ポータルで、**[仮想ハブ]、[接続]、[ExpressRoute]** ページの順に進みます。 サブスクリプションで ExpressRoute 回線にアクセスできる場合、回線の一覧に使用する回線が表示されます。 回線が表示されないが、承認キーとピア回線 URI が与えられている場合、回線を利用して接続できます。 「[承認キーを利用して接続するには](#authkey)」を参照してください。
+ポータルで、 **[仮想ハブ]、[接続]、[ExpressRoute]** ページの順に進みます。 サブスクリプションで ExpressRoute 回線にアクセスできる場合、回線の一覧に使用する回線が表示されます。 回線が表示されないが、承認キーとピア回線 URI が与えられている場合、回線を利用して接続できます。 「[承認キーを利用して接続するには](#authkey)」を参照してください。
 
 1. 回線を選択します。
 2. **[Connect circuit(s)]\(回線の接続\)** を選択します。
@@ -120,7 +120,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
 接続するために与えられた承認キーと回線 URI を使用します。
 
-1. [ExpressRoute] ページで、**[+Redeem authorization key]\(+承認キーを利用する\)** をクリックします。
+1. [ExpressRoute] ページで、 **[+Redeem authorization key]\(+承認キーを利用する\)** をクリックします。
 
    ![仮想ハブの ExpressRoute を示すスクリーンショット。[+Redeem authorization key]\(+ 承認キーを利用する\) が選択されている。](./media/virtual-wan-expressroute-portal/redeem.png "利用")
 2. [Redeem authorization key]\(承認キーを利用する\) ページで値を入力します。

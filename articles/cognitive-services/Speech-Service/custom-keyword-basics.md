@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667695"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166456"
 ---
 # <a name="get-started-with-custom-keyword"></a>Custom Keyword の概要
 
@@ -31,10 +31,10 @@ ms.locfileid: "91667695"
 カスタム キーワードを使用する前に、[Speech Studio](https://aka.ms/sdsdk-speechportal) の [[Custom Keyword]\(カスタム キーワード\)](https://aka.ms/sdsdk-wakewordportal) ページを使用してキーワードを作成する必要があります。 キーワードを指定すると、Speech SDK で使用できる `.table` ファイルが生成されます。
 
 > [!IMPORTANT]
-> カスタム キーワード モデルと、生成される `.table` ファイルは、Speech Studio で**のみ**作成できます。
+> カスタム キーワード モデルと、生成される `.table` ファイルは、Speech Studio で **のみ** 作成できます。
 > SDK または REST 呼び出しを使用してカスタム キーワードを作成することはできません。
 
-1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションをまだ持っていない場合は、[ **[サブスクリプションを作成する]** ](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
+1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して **サインイン** します。音声サブスクリプションをまだ持っていない場合は、 [ **[サブスクリプションを作成する]**](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 
 1. [[カスタム キーワード]](https://aka.ms/sdsdk-wakewordportal) ページで **[新しいプロジェクト]** を作成します。 
 
@@ -54,13 +54,13 @@ ms.locfileid: "91667695"
 
 1. ポータルで、キーワードの発音候補が作成されます。 再生ボタンをクリックして各工法をリッスンし、間違った発音の横にあるチェック ボックスをオフにします。 正しい発音のチェック ボックスのみをオンにした後、 **[トレーニング]** をクリックし、キーワード モデルの生成を開始します。 
 
-    ![キーワードを確認する](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![正しい発音を選択する場所を示すスクリーンショット。](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. モデルが生成されるまでに最大で 30 分かかる場合があります。 モデルが完了すると、キーワードの一覧が **[処理中]** から **[成功]** に変わります。 これでファイルをダウンロードできます。
 
     ![キーワードを確認する](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. ダウンロードしたファイルは `.zip` アーカイブです。 アーカイブを抽出すると、`.table` 拡張子を持つファイルが表示されます。 これは、次のセクションの SDK で使用するファイルであるため、パスをメモしておいてください。 ファイル名にはキーワード名が反映されます。たとえば、**Activate device** というキーワードのファイル名は `Activate_device.table` になります。
+1. ダウンロードしたファイルは `.zip` アーカイブです。 アーカイブを抽出すると、`.table` 拡張子を持つファイルが表示されます。 これは、次のセクションの SDK で使用するファイルであるため、パスをメモしておいてください。 ファイル名にはキーワード名が反映されます。たとえば、 **Activate device** というキーワードのファイル名は `Activate_device.table` になります。
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>SDK でのキーワード モデルの使用
 

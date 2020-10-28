@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326815"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152280"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
@@ -33,7 +33,7 @@ HTTP 経由で公開されるすべての Cognitive Services エンドポイン�
 
 ## <a name="authentication"></a>認証
 
-認証については、よく誤解されることがいくつかあります。 認証と承認は混同されることがよくあります。 ID も、セキュリティの主要なコンポーネントです。 ID は、<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">プリンシパル<span class="docon docon-navigate-external x-hidden-focus"></span></a>に関する情報のコレクションです。 ID プロバイダー (IdP) は、認証サービスに対して ID を提供します。 認証とは、ユーザーの ID を検証することです。 承認とは、特定の ID に対してリソースへのアクセス権と特権を指定することです。 Cognitive Services のいくつかのサービス内容には、ロールベースのアクセス制御 (RBAC) が含まれています。 RBAC を使用すると、プリンシパルの手動管理に関する手続きの一部を簡略化できます。 詳しくは、[Azure リソースに対するロールベースのアクセス制御](../role-based-access-control/overview.md)に関する記事をご覧ください。
+認証については、よく誤解されることがいくつかあります。 認証と承認は混同されることがよくあります。 ID も、セキュリティの主要なコンポーネントです。 ID は、<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">プリンシパル<span class="docon docon-navigate-external x-hidden-focus"></span></a>に関する情報のコレクションです。 ID プロバイダー (IdP) は、認証サービスに対して ID を提供します。 認証とは、ユーザーの ID を検証することです。 承認とは、特定の ID に対してリソースへのアクセス権と特権を指定することです。 Cognitive Services のいくつかのオファリングには、Azure ロールベースのアクセス制御 (Azure RBAC) が含まれています。 Azure RBAC を使用すると、プリンシパルの手動管理に関する手続きの一部を簡略化できます。 詳しくは、[Azure リソースに対する Azure ロールベースのアクセス制御](../role-based-access-control/overview.md)に関する記事を参照してください。
 
 サブスクリプション キー、アクセス トークン、Azure Active Directory (AAD) での認証について詳しくは、「<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure Cognitive Services に対する要求の認証<span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
 
@@ -42,7 +42,7 @@ HTTP 経由で公開されるすべての Cognitive Services エンドポイン�
 環境変数は名前と値のペアであり、特定の環境内に格納されます。 機密データに対してハードコーディングされた値を使用するより安全な方法は、環境変数を使用することです。 ハードコーディングされた値は安全ではないため、避ける必要があります。
 
 > [!CAUTION]
-> 機密データに対してはハードコーディングされた値を**使用しない**でください。使用すると、大きなセキュリティの脆弱性になります。
+> 機密データに対してはハードコーディングされた値を **使用しない** でください。使用すると、大きなセキュリティの脆弱性になります。
 
 > [!NOTE]
 > 環境変数はプレーンテキストで格納されますが、環境に分離されます。 環境が侵害された場合は、環境に関する変数も同様です。
@@ -60,7 +60,7 @@ HTTP 経由で公開されるすべての Cognitive Services エンドポイン�
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-**コマンド プロンプト**の新しいインスタンスで、環境変数を読み取ります。
+**コマンド プロンプト** の新しいインスタンスで、環境変数を読み取ります。
 
 ```CMD
 :: Prints the env var value
@@ -218,7 +218,7 @@ E0 SKU を使用するための機能を要求するには、この [要求フ
 Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、独自のストレージの持ち込み (BYOS) を使用して顧客データを格納できるため、カスタマー ロックボックスと類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
 
 > [!IMPORTANT]
-> Microsoft では、Speech モデルを改善するためにお客様のデータを**使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
+> Microsoft では、Speech モデルを改善するためにお客様のデータを **使用するということはありません** 。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
 
 ## <a name="next-steps"></a>次のステップ
 

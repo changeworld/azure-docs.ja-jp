@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317178"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164824"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -107,13 +107,13 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、 *function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、*function.json* で定義されている `name` プロパティによって決まります。
+ - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、 *function.json* で定義されている `name` プロパティによって決まります。
  
    ```javascript
    module.exports = async function(context) { 
@@ -134,11 +134,11 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
    ```
 
 ### <a name="outputs"></a>出力
-関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、*function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
+関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、 *function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
 
 次の方法のいずれかで (これらの方法を組み合わせることはできません)、出力バインドにデータを割り当てることができます。
 
-- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、 *function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
 
   ```javascript
   module.exports = async function(context) {
@@ -270,7 +270,7 @@ context.done([err],[propertyBag])
 
 ランタイムにコードが完了したことを知らせます。 関数で [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言を使用する場合、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。 非同期関数は Node 8 以降のバージョンで使用できますが、それにはバージョン 2.x の Functions ランタイムが必要です。
 
-関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために**呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
+関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために **呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
 
 `context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。
 
@@ -290,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
+既定のトレース レベルでストリーミング関数ログに書き込むことができます。他のログ レベルも使用できます。 トレース ログの詳細については、次のセクションを参照してください。 
 
+## <a name="write-trace-output-to-logs"></a>トレース出力をログに書き込む
 
-| Method                 | 説明                                |
-| ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
-| **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
-| **info(_message_)**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
-| **verbose(_message_)** | 詳細なレベルのログに書き込みます。           |
+Functions で、`context.log` メソッドを使用してトレース出力をログとコンソールに書き込みます。 `context.log()` を呼び出すと、既定のトレース レベルである、" _情報_ " トレース レベルでログにメッセージが書き込まれます。 Functions は Azure Application Insights と統合されているため、関数アプリのログをより適切にキャプチャすることができます。 Azure Monitor の一部である Application Insights では、アプリケーション テレメトリとトレース出力の両方を収集、視覚的に表示、分析するための機能を使用できます。 詳細については、「[Azure Functions の監視](functions-monitoring.md)」を参照してください。
 
-次の例では、警告トレース レベルでログを書き込んでいます。
+次の例では、情報トレース レベルで呼び出し ID を含む、ログを書き込んでいます。
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-host.json ファイルでは、[ログに対するトレース レベルのしきい値を構成する](#configure-the-trace-level-for-console-logging)ことができます。 ログの書き込みについて詳しくは、後の「[トレース出力をコンソールに書き込む](#writing-trace-output-to-the-console)」をご覧ください。
-
-関数のログの表示とクエリについて詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。
-
-## <a name="writing-trace-output-to-the-console"></a>トレース出力をコンソールに書き込む 
-
-関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 Functions v2.x では、`console.log` を使用するトレース出力は Function App レベルでキャプチャされます。 つまり、`console.log` からの出力は特定の関数呼び出しに関連付けられておらず、特定の関数のログには表示されません。 ただし、Application Insights に伝達されます。 Functions v1.x では、`console.log` を使用してコンソールに書き込むことはできません。
-
-`context.log()` を呼び出すと、既定のトレース レベルである、_情報_ トレース レベルでコンソールにメッセージが書き込まれます。 次のコードは、情報トレース レベルでコンソールに書き込みます。
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-次のコードは、上記のコードと同等です。
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-このコードは、エラー レベルでコンソールに書き込みます。
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。
 
 すべての `context.log` メソッドは、Node.js の [util.format メソッド](https://nodejs.org/api/util.html#util_util_format_format)でサポートされているのと同じパラメーター形式をサポートしています。 既定のトレース レベルを使用して関数ログに書き込む次のようなコードについて考えます。
 
@@ -348,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>コンソール ログのトレース レベルを構成する
+> [!NOTE]  
+> トレース出力の書き込みには、`console.log` を使用しないでください。 `console.log` からの出力は関数アプリ レベルでキャプチャされるため、特定の関数呼び出しには関連付けられておらず、特定の関数のログには表示されません。 また、Functions ランタイムのバージョン 1.x では、`console.log` を使用したコンソールへの書き込みはサポートされていません。
 
-関数 1.x を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
+### <a name="trace-levels"></a>トレース レベル
+
+既定のレベルに加えて、特定のトレース レベルで関数のログを書き込むことができる次の追加のログ記録メソッドがあります。
+
+| メソッド                 | 説明                                |
+| ---------------------- | ------------------------------------------ |
+| **error( _message_ )**   | ログにエラーレベルのイベントを書き込みます。   |
+| **warn( _message_ )**    | 警告レベルのイベントをログに書き込みます。 |
+| **info( _message_ )**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
+| **verbose( _message_ )** | 詳細なレベルのログに書き込みます。           |
+
+次の例では、情報レベルではなく、警告トレース レベルで同じログを書き込みます。
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。
+
+### <a name="configure-the-trace-level-for-logging"></a>ログ記録のトレース レベルを構成する
+
+Fuctions を使用して、ログまたはコンソールに書き込むためのしきい値のトレース レベルを定義できます。 具体的なしきい値の設定は、使用している Functions ランタイムのバージョンによって異なります。
+
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+ログに書き込まれるトレースのしきい値を設定するには、host.json ファイルの `logging.logLevel` プロパティを使用します。 この JSON オブジェクトを使用すると、関数アプリのすべての関数に既定のしきい値を定義できます。また、個々の関数に対して特定のしきい値を定義することもできます。 詳しくは、[Azure Functions で監視を構成する](configure-monitoring.md)方法に関するページを参照してください。
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+ログおよびコンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
 
 ```json
 {
@@ -360,7 +358,65 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 }  
 ```
 
-**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json](functions-host-json-v1.md) のリファレンスを参照してください。
+**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、 **consoleLevel** を _off_ に設定します。 詳細については、[host.json v1.x のリファレンス](functions-host-json-v1.md)を参照してください。
+
+---
+
+### <a name="log-custom-telemetry"></a>カスタム テレメトリをログに記録する
+
+既定では、出力は Functions によってトレースとして Application Insights に書き込まれます。 より細かく制御するには、代わりに [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) を使用して、Application Insights インスタンスにカスタム テレメトリ データを送信することもできます。 
+
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+`tagOverrides` パラメーターにより、関数の呼び出し ID に `operation_Id` を設定します。 この設定により、特定の関数呼び出しについての自動生成されたテレメトリとカスタム テレメトリをすべて関連付けることができます。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP トリガーとバインディング
 
@@ -494,7 +550,7 @@ module.exports = function(context) {
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
     関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
 
-4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。  
+4. package.json ファイルがアップロードされたら、 **Kudu リモート実行コンソール** で `npm install` コマンドを実行します。  
     この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
 
 ## <a name="environment-variables"></a>環境変数
@@ -664,7 +720,7 @@ App Service プランを使用する関数アプリを作成するときは、�
 
 ### <a name="cold-start"></a>コールド スタート
 
-サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート*とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
+サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート* とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
 
 ### <a name="connection-limits"></a>接続の制限
 

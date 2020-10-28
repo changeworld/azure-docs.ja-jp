@@ -10,18 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a51e9a628f67269357d42bd1d3af10c1d86f301a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739784"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131175"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-1 つまたは複数のキー コンテナーを作成したら、いつ、どのように、誰によってキー コンテナーがアクセスされるのかを監視するのが一般的です。 監視を行うには、Azure Key Vault のログ記録を有効にします。これにより、指定した Azure ストレージ アカウントに情報が保存されます。 指定したストレージ アカウント用の **insights-logs-auditevent** という名前の新しいコンテナーが自動的に作成されます。 このストレージ アカウントを使用して複数のキー コンテナーのログを収集することができます。
+1 つまたは複数のキー コンテナーを作成したら、いつ、どのように、誰によってキー コンテナーがアクセスされるのかを監視するのが一般的です。 監視を行うには、Azure Key Vault のログ記録を有効にします。これにより、指定した Azure ストレージ アカウントに情報が保存されます。 この設定の詳しい手順については、「[Key Vault のログ記録を有効にする方法](howto-logging.md)」を参照してください。
 
 キー コンテナーの操作を行ってから最大 10 分後には、ログ情報にアクセスできます。 ほとんどの場合は、これよりも早く確認できます。  ストレージ アカウントでのログの管理はお客様に委ねられます。
 
@@ -31,6 +29,8 @@ ms.locfileid: "91739784"
 Key Vault の概要については、「[Azure Key Vault とは](overview.md)」を参照してください。 Key Vault が使用可能な場所については、[価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)をご覧ください。 [Azure Monitor for Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) の使用に関する詳細です。
 
 ## <a name="interpret-your-key-vault-logs"></a>Key Vault のログを解釈する
+
+ログ記録を有効にすると、指定したストレージ アカウント用の **insights-logs-auditevent** という名前の新しいコンテナーが自動的に作成されます。 このストレージ アカウントを使用して複数のキー コンテナーのログを収集することができます。
 
 個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 ログ エントリの例を見てみましょう。 
 
@@ -73,15 +73,15 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **callerIpAddress** |要求を行ったクライアントの IP アドレスです。 |
 | **correlationId** |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
 | **identity** |REST API 要求に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
-| **properties** |操作によって異なる情報です (**operationName**)。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (**KeyCreate** や **VaultGet** など) を行った結果としてオブジェクトが返される場合、キーの URI (`id` として)、コンテナーの URI、またはシークレットの URI も含まれます。 |
+| **properties** |操作によって異なる情報です ( **operationName** )。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 ( **KeyCreate** や **VaultGet** など) を行った結果としてオブジェクトが返される場合、キーの URI (`id` として)、コンテナーの URI、またはシークレットの URI も含まれます。 |
 
-**operationName** フィールドの値は、*ObjectVerb* 形式となります。 次に例を示します。
+**operationName** フィールドの値は、 *ObjectVerb* 形式となります。 次に例を示します。
 
 * キー コンテナーに関するすべての操作は、`Vault<action>` 形式となります (`VaultGet` や `VaultCreate` など)。
 * キーに関するすべての操作は、`Key<action>` 形式となります (`KeySign` や `KeyList` など)。
 * シークレットに関するすべての操作は、`Secret<action>` 形式となります (`SecretGet` や `SecretListVersions` など)。
 
-次の表に、**operationName** の値と、対応する REST API コマンドを示します。
+次の表に、 **operationName** の値と、対応する REST API コマンドを示します。
 
 ### <a name="operation-names-table"></a>操作名の表
 
@@ -122,16 +122,15 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **CertificateNearExpiryEventGridNotification** |有効期限が近づいている証明書イベントが公開されました |
 | **CertificateExpiredEventGridNotification** |期限切れの証明書イベントが公開されました |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor ログの使用
+## <a name="use-azure-monitor-logs"></a>Azure Monitor ログの使用
 
 Azure Monitor ログの Key Vault ソリューションを使用して、Key Vault の `AuditEvent` ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。 
 
 この設定方法などの詳細については、[Azure Monitor の Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a><a id="next"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-.NET Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](tutorial-net-create-vault-azure-web-app.md)」を参照してください。
-
-プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](developers-guide.md)」を参照してください。
-
-Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)に関するページを参照してください。
+- [Key Vault のログ記録を有効にする方法](howto-logging.md)
+- .NET Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](tutorial-net-create-vault-azure-web-app.md)」を参照してください。
+- プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](developers-guide.md)」を参照してください。
+- Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)に関するページを参照してください。

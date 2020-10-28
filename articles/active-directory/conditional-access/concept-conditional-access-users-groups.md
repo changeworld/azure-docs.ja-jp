@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552902"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145410"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
-条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 
+条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。
 
 ![条件付きアクセスによって下される決定のシグナルとしてのユーザー](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -66,13 +66,15 @@ ms.locfileid: "87552902"
 
 ### <a name="preventing-administrator-lockout"></a>管理者のロックアウトを防ぐ
 
-**すべてのユーザー**および**すべてのアプリ**に適用されるポリシーを作成するときに、管理者自身が自分のディレクトリからロックアウトされるのを防ぐために、次の警告が表示されます。
+**すべてのユーザー** および **すべてのアプリ** に適用されるポリシーを作成するときに、管理者自身が自分のディレクトリからロックアウトされるのを防ぐために、次の警告が表示されます。
 
 > 自分自身をロックアウトしないでください。 まずは少数のユーザーにポリシーを適用して、想定どおりに動作するかどうかを確認することをお勧めします。 また、このポリシーから少なくとも 1 人の管理者を除外することをお勧めします。 こうすることで、アクセス権を保持し、変更が必要な場合にポリシーを更新できます。 影響を受けるユーザーとアプリを確認してください。
 
 既定では、ポリシーには現在のユーザーをポリシーから除外するオプションが用意されていますが、次の図に示すように、管理者はこの既定値を上書きできます。 
 
 ![警告。自分自身をロックアウトしないでください。](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[Azure portal からロックアウトされた場合はどのように対処すればよいですか。](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3ecb2e2022cab80abf6a8692ac8cc3ba54eff1e4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946247"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092088"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>クイック スタート:Azure Defender for IoT ソリューションを構成する
 
@@ -43,7 +43,7 @@ Defender for IoT をお使いの IoT Hub で有効にすると、その IoT Hub 
 IoT ソリューションに新しいリソースを追加するには、次の操作を行います。
 
 1. Azure portal で **[IoT Hub]** を開きます。
-1. 左側のメニューの **[セキュリティ]** セクションから **[設定]** を選択して開き、 **[監視対象リソース]** を選択します。
+1. **[セキュリティ]** の **[概要]** を選択し、続けて **[設定]** 、 **[Monitored Resources]\(監視対象リソース\)** の順に選択します。
 1. **[編集]** を選択し、自分の IoT ソリューションに属している監視対象リソースを選択します。
 1. **[追加]** をクリックします。
 

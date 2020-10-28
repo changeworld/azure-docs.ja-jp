@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620037"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147566"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
@@ -23,6 +24,7 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC タクシー データを SQLDB1 に読み込む
 
 1. Synapse Studio で **[開発]** ハブに移動し、新しい SQL スクリプトを作成します
+1. スクリプトの [接続先] セクションで、プール "SQLDB1" (このチュートリアルの[ステップ 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) で作成したプール) を選択します。
 1. 次のコードを入力します。
     ```
     CREATE TABLE [dbo].[Trip]

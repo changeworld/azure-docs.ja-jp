@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825935"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125015"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -18,6 +18,10 @@ ms.locfileid: "91825935"
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="モーション検出に基づく Live Video Analytics":::
+
+次のビデオをご覧ください。Live Video Analytics on IoT Edge の使用を開始する詳しい手順が紹介されています。
+
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -73,7 +77,7 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
 Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、次の手順に従います。
 
 1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
-1. マウスの右ボタンをクリックして、 **[拡張機能の設定]** を選択します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="モーション検出に基づく Live Video Analytics":::
@@ -86,7 +90,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 1. **[その他のオプション]** アイコンを選択して、コンテキスト メニューを表示します。 次に、 **[Set IoT Hub Connection String]\(IoT Hub 接続文字列を設定する\)** を選択します。
 1. 入力ボックスが表示されたら、IoT Hub 接続文字列を入力します。 Cloud Shell では、接続文字列を *~/clouddrive/lva-sample/appsettings.json* から取得できます。
 
-接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device**) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、**lva-sample-device** の下の **[モジュール]** ノードを展開します。
+接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device** ) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、 **lva-sample-device** の下の **[モジュール]** ノードを展開します。
 
 ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
 
@@ -101,8 +105,8 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を列挙するには、次のようにします。
 
-1. Visual Studio Code で、**lvaEdge** モジュールを右クリックし、 **[Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\)** を選択します。
-1. 表示されたボックスに、「*GraphTopologyList*」と入力します。
+1. Visual Studio Code で、 **lvaEdge** モジュールを右クリックし、 **[Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\)** を選択します。
+1. 表示されたボックスに、「 *GraphTopologyList* 」と入力します。
 1. 次の JSON ペイロードをコピーして、ボックスに貼り付けます。 次に、Enter キーを押します。
 
     ```

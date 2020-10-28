@@ -10,16 +10,16 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503941"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131600"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
-この記事では、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、階層型名前空間を持つストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
+この記事では、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/) を使用して、階層型名前空間を持つストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
 [サンプル](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [フィードバックを送る](https://github.com/Azure/azure-cli-extensions/issues)
 
@@ -32,14 +32,14 @@ ms.locfileid: "87503941"
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>正しいバージョンの Azure CLI がインストールされていることを確認する
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を開きます。または、Azure CLI をローカルに[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。または、Azure CLI をローカルに[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
 
 2. 次のコマンドを使用して、インストールされている Azure CLI のバージョンが `2.6.0` 以上であることを確認します。
 
    ```azurecli
     az --version
    ```
-   Azure CLI のバージョンが `2.6.0` より低い場合は、新しいバージョンをインストールします。 「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+   Azure CLI のバージョンが `2.6.0` より低い場合は、新しいバージョンをインストールします。 「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
@@ -216,7 +216,7 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-permissions"></a>アクセス許可の管理
+## <a name="manage-access-control-lists-acls"></a>アクセス制御リスト (ACL) を管理する
 
 ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
@@ -225,7 +225,7 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 
 ### <a name="get-an-acl"></a>ACL を取得する
 
-`az storage fs access show` コマンドを使用して、**ディレクトリ**の ACL を取得します。
+`az storage fs access show` コマンドを使用して、 **ディレクトリ** の ACL を取得します。
 
 この例では、ディレクトリの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -233,7 +233,7 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access show` コマンドを使用して、**ファイル**のアクセス許可を取得します。 
+`az storage fs access show` コマンドを使用して、 **ファイル** のアクセス許可を取得します。 
 
 この例では、ファイルの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -249,7 +249,7 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 
 ### <a name="set-an-acl"></a>ACL を設定する
 
-`az storage fs access set` コマンドを使用して、**ディレクトリ**の ACL を設定します。 
+`az storage fs access set` コマンドを使用して、 **ディレクトリ** の ACL を設定します。 
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに ACL を設定し、その ACL をコンソールに出力します。
 
@@ -257,13 +257,13 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに*既定の* ACL を設定し、その ACL をコンソールに出力します。
+この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに *既定の* ACL を設定し、その ACL をコンソールに出力します。
 
 ```azurecli
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access set` コマンドを使用して、**ファイル**の ACL を設定します。 
+`az storage fs access set` コマンドを使用して、 **ファイル** の ACL を設定します。 
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのファイルに ACL を設定し、その ACL をコンソールに出力します。
 
@@ -273,7 +273,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 次の画像は、ファイルの ACL を設定した後の出力を示しています。
 
-![ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![ACL 出力を取得する 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
 この例では、所有ユーザーと所有グループには、読み取りと書き込みのアクセス許可のみがあります。 他のすべてのユーザーには、書き込みと実行のアクセス許可があります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
 
@@ -283,13 +283,13 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 ディレクトリまたはファイルの ACL を更新するには、`-permissions` パラメーターを短縮形の ACL に設定します。
 
-この例では、**ディレクトリ**の ACL を更新します。
+この例では、 **ディレクトリ** の ACL を更新します。
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-この例では、**ファイル**の ACL を更新します。
+この例では、 **ファイル** の ACL を更新します。
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login

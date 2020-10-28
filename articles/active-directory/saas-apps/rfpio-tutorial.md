@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef8a93ebdc5eb389608ef3340b9707bfd040a295
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528545"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105721"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
 
@@ -41,7 +41,7 @@ RFPIO と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* RFPIO では、**SP と IDP** によって開始される SSO がサポートされます
+* RFPIO では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-rfpio-from-the-gallery"></a>ギャラリーからの RFPIO の追加
 
@@ -61,13 +61,13 @@ Azure AD への RFPIO の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**RFPIO**」と入力し、結果パネルで **[RFPIO]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **RFPIO** 」と入力し、結果パネルで **[RFPIO]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の RFPIO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、RFPIO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、RFPIO で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと RFPIO 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 RFPIO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,7 +99,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[RFPIO のドメインと URL] のシングル サインオン情報](common/idp-identifier.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。ここに ID を入力することができます。](common/idp-identifier.png)
 
     a. **[識別子]** ボックスに、`https://www.rfpio.com` の形式で URL を入力します。
 
@@ -107,7 +107,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
     c. **[リレー状態]** テキストボックスに文字列値を入力します。 この値を取得するには、[RFPIO サポート チーム](https://www.rfpio.com/contact/)に問い合わせてください。
 
-    ![[RFPIO のドメインと URL] のシングル サインオン情報](common/idp-preintegrated-relay.png)
+    ![[追加の U R L を設定します] 画面のスクリーンショット。](common/idp-preintegrated-relay.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -118,7 +118,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 この値を取得するには、[RFPIO クライアント サポート チーム](https://www.rfpio.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -134,32 +134,32 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="configure-rfpio-single-sign-on"></a>RFPIO シングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、**RFPIO** Web サイトに管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、 **RFPIO** Web サイトに管理者としてサインインします。
 
 1. 左下隅にあるドロップダウンをクリックします。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app1.png)
+    ![ペイン下部の下矢印を示すスクリーンショット。](./media/rfpio-tutorial/app1.png)
 
 1. **[組織設定]** をクリックします。 
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app2.png)
+    ![[組織設定] が選択された画面のスクリーンショット。](./media/rfpio-tutorial/app2.png)
 
 1. **[FEATURES & INTEGRATION (機能と統合)]** をクリックします。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app4.png)
+    ![[Settings]\(設定\) の [Features and Integration]\(機能と統合\) が選択されている画面のスクリーンショット。](./media/rfpio-tutorial/app4.png)
 
 1. **[SAML SSO 構成]** で **[編集]** をクリックします。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app3.png)
+    ![[SAML S S O 構成] と [編集] ボタンが強調表示されている画面のスクリーンショット。](./media/rfpio-tutorial/app3.png)
 
 1. このセクションでは、次のアクション実行します。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app5.png)
+    ![SAML が有効になった SAML S S O 構成を示す画面の SAML S S O 構成。](./media/rfpio-tutorial/app5.png)
     
     a. **ダウンロードしたメタデータ XML** の内容をコピーし、 **[ID 構成]** フィールドに貼り付けます。
 
     > [!NOTE]
-    >ダウンロードした**フェデレーション メタデータ XML** の内容をコピーするには、**Notepad++** または適切な **XML エディター**を使用します。
+    >ダウンロードした **フェデレーション メタデータ XML** の内容をコピーするには、 **Notepad++** または適切な **XML エディター** を使用します。
 
     b. **[検証]** をクリックします。
 
@@ -183,7 +183,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -223,25 +223,25 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
 1. 左下隅にあるドロップダウンをクリックします。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app1.png)
+    ![ペイン下部の下矢印を示すスクリーンショット。](./media/rfpio-tutorial/app1.png)
 
 1. **[組織設定]** をクリックします。 
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app2.png)
+    ![[組織設定] が選択された画面のスクリーンショット。](./media/rfpio-tutorial/app2.png)
 
 1. **[チーム メンバー]** をクリックします。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app6.png)
+    ![[設定] の [チーム メンバー] が選択されている画面のスクリーンショット。](./media/rfpio-tutorial/app6.png)
 
 1. **[メンバーの追加]** をクリックします。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app7.png)
+    ![[メンバーの追加] ボタンを示す画面のスクリーンショット。](./media/rfpio-tutorial/app7.png)
 
 1. **[新しいメンバーの追加]** セクションで、 次の操作を実行します。
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app8.png)
+    ![[新しいメンバーの追加] を示すスクリーンショット。ここで、説明されている値を入力できます。](./media/rfpio-tutorial/app8.png)
 
-    a. **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
+    a. **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに **電子メール アドレス** を入力します。
 
     b. 要件に応じて **[ロール]** を選択してください。
 

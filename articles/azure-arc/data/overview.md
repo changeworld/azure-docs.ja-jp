@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945727"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316967"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc 対応データ サービス (プレビュー) とは
 
@@ -33,7 +33,7 @@ Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale
 
 ## <a name="elastic-scale"></a>エラスティック スケール
 
-クラウドに似た柔軟性をオンプレミスで利用することで、インフラストラクチャの利用可能容量に基づいて、Azure 内とほぼ同じ方法でデータベースを動的にスケールアップまたはスケールダウンできます。 この機能により、リアルタイム、任意のスケール、1 秒未満の応答時間でのデータの取り込みやクエリを必要とするシナリオなど、揮発性のニーズを持つバースト シナリオに対応することができます。 さらに、Azure Database for PostgreSQL Hyperscale の固有のハイパー スケール デプロイ オプションを使用して、データベース インスタンスをスケールアウトすることもできます。 この機能により、データ ワークロードの容量の最適化が向上します。これには、一意のスケール "*アウト*" 読み取りと書き込みが使用されます。
+クラウドに似た柔軟性をオンプレミスで利用することで、インフラストラクチャの利用可能容量に基づいて、Azure 内とほぼ同じ方法でデータベースを動的にスケールアップまたはスケールダウンできます。 この機能により、リアルタイム、任意のスケール、1 秒未満の応答時間でのデータの取り込みやクエリを必要とするシナリオなど、揮発性のニーズを持つバースト シナリオに対応することができます。 さらに、Azure Database for PostgreSQL Hyperscale の固有のハイパー スケール デプロイ オプションを使用して、データベース インスタンスをスケールアウトすることもできます。 この機能により、データ ワークロードの容量の最適化が向上します。これには、一意のスケール " *アウト* " 読み取りと書き込みが使用されます。
 
 ## <a name="self-service-provisioning"></a>セルフサービス プロビジョニング
 
@@ -41,7 +41,7 @@ Azure Arc には、高速デプロイや大規模な自動化など、クラウ�
 
 ## <a name="unified-management"></a>統合された管理
 
-Azure portal、Azure Data Studio、Azure Data CLI などの使い慣れたツールを使用して、Azure Arc によってデプロイされたすべてのデータ資産の統合ビューを取得できるようになりました。お使いの環境と Azure でさまざまなリレーショナル データベースを表示および管理できるだけでなく、Kubernetes API からログとテレメトリを取得して、基盤となるインフラストラクチャの容量と正常性を分析することもできます。 ローカライズされたログ分析とパフォーマンスの監視に加えて、Azure Monitor を利用して、資産全体にわたる総合的なオペレーション インサイトを実現できるようになりました。
+Azure portal、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] などの使い慣れたツールを使用して、Azure Arc によってデプロイされたすべてのデータ資産の統合ビューを取得できるようになりました。お使いの環境と Azure でさまざまなリレーショナル データベースを表示および管理できるだけでなく、Kubernetes API からログとテレメトリを取得して、基盤となるインフラストラクチャの容量と正常性を分析することもできます。 ローカライズされたログ分析とパフォーマンスの監視に加えて、Azure Monitor を利用して、資産全体にわたる総合的なオペレーション インサイトを実現できるようになりました。
 
 ## <a name="disconnected-scenario-support"></a>切断されたシナリオのサポート
 

@@ -1,30 +1,29 @@
 ---
-title: Azure Content Delivery Network (CDN) 製品の機能の比較 | Microsoft Docs
+title: Azure Content Delivery Network (CDN) 製品の機能の比較
 description: 各 Azure Content Delivery Network (CDN) 製品がサポートする機能について説明します。
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: mdgattuso
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8d8b01e8c5f4ea3054e639ecc9dd8b14bbf048b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81260515"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148739"
 ---
-# <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
+# <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 製品の機能比較
 
-Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムがないことに注意してください。
+Azure Content Delivery Network (CDN) には、 
+
+* **Azure CDN Standard from Microsoft**
+* **Azure CDN Standard from Akamai**
+* **Azure CDN Standard from Verizon**
+* **Azure CDN Premium from Verizon** . 
 
 次の表では、各製品で使用できる機能を比較しています。
 
@@ -41,11 +40,11 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | [グローバル サーバー負荷分散 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [高速消去](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** (すべての消去およびワイルドカードによる消去は、現在 Azure CDN from Akamai ではサポートされていません) |**&#x2713;** |**&#x2713;** |
 | [アセットの事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用)  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  |**&#x2713;** |**&#x2713;** | |
-| カスタマイズ可能なルール ベースのコンテンツ配信エンジン |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ([ルール エンジン](cdn-rules-engine.md)を使用) |
-| キャッシュ/ヘッダーの設定  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |
-| URL のリダイレクト/書き換え |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |
-| モバイル デバイスのルール  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |
+| キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用)  |**&#x2713;** ( [Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  |**&#x2713;** |**&#x2713;** | |
+| カスタマイズ可能なルール ベースのコンテンツ配信エンジン |**&#x2713;** ( [Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ( [ルール エンジン](cdn-rules-engine.md)を使用) |
+| キャッシュ/ヘッダーの設定  |**&#x2713;** ( [Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ( [Premium ルール エンジン](cdn-rules-engine.md)を使用) |
+| URL のリダイレクト/書き換え |**&#x2713;** ( [Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ( [Premium ルール エンジン](cdn-rules-engine.md)を使用) |
+| モバイル デバイスのルール  |**&#x2713;** ( [Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ( [Premium ルール エンジン](cdn-rules-engine.md)を使用) |
 | [クエリ文字列のキャッシュ](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 デュアルスタック | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 のサポート](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -75,8 +74,16 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | [圧縮の MIME の種類](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |既定値のみ |構成可能 |構成可能  |構成可能  |
 | 圧縮のエンコード  |gzip、brotli |gzip |gzip、deflate、bzip2、brotili  |gzip、deflate、bzip2、brotili  |
 
+## <a name="migration"></a>移行
 
+**Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「 [Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 
 
+> [!NOTE]
+> Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムはありません。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure CDN](cdn-overview.md) についての詳しい情報をご覧ください。
 
 
 

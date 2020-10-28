@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575573"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122468"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する (プレビュー)
 
@@ -56,7 +56,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
 1. Microsoft Azure 資格情報を使用して、次の URL にサインインします。[https://portal.azure.com](https://portal.azure.com)
 
-2. **[+ リソースの作成]** を選択し、*Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
+2. **[+ リソースの作成]** を選択し、 *Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
 
    ![リソースを作成する](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
@@ -164,7 +164,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 2. **[+ Container]\(+ コンテナー\)** を選択して、コンテナーを作成します。
     ![[コンテナー] セクションのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. Azure portal の右側から表示される **[New Container]\(新しいコンテナー\)** タブで、コンテナーの名前を追加します。 名前は小文字にする必要があり、数字とダッシュ '-' を含めることができます。 次に、ドロップダウン リスト ボックスから **[Public access level]\(パブリック アクセス レベル\)** を選択します。 他のユーザーがデータにアクセスできないようにするため、 **[Private (non anonymous access)]\(プライベート (非匿名アクセス))\** を選択することをお勧めします。 コンテナーのアクセス レベルの詳細については、[コンテナーのアクセス許可](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)に関する記事を参照してください。
+3. Azure portal の右側から表示される **[New Container]\(新しいコンテナー\)** タブで、コンテナーの名前を追加します。 名前は小文字にする必要があり、数字とダッシュ '-' を含めることができます。 次に、ドロップダウン リスト ボックスから **[Public access level]\(パブリック アクセス レベル\)** を選択します。 他のユーザーがデータにアクセスできないようにするため、 **[Private (non anonymous access)]\(プライベート (非匿名アクセス))\** を選択することをお勧めします。 コンテナーのアクセス レベルの詳細については、[コンテナーのアクセス許可](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)に関する記事を参照してください。
 
    ![[プライベート (匿名アクセスなし)] オプションが選択されていることを示す [新しいコンテナー] タブのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
@@ -186,7 +186,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
 7. これで、XML ファイルがコンテナーに追加されました。 この XML で指定した BLOB と Azure ファイルのみがエクスポートされます。
 
-   ![[注文] ウィザードのスクリーンショット。[次へ: セキュリティ] オプションが強調表示されています。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![[注文] ウィザードのスクリーンショット。[次へ:セキュリティ] オプションが強調表示されています。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>注文を追跡する
 
@@ -206,7 +206,7 @@ Data Box によってソース ストレージ アカウントからデータが
 * 各共有で、ユーザー名やパスワードなどのアクセス資格情報が生成されます。
 * デバイスはロックされ、デバイスのロック解除パスワードを使用してのみアクセスできます。 パスワードを取得するには、Azure portal アカウントにログインし、 **[デバイスの詳細]** を選択する必要があります。
 
-次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、**出荷済み**状態の注文が表示されます。
+次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、 **出荷済み** 状態の注文が表示されます。
 
 ![出荷済みの Data Box のエクスポート注文](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
 
@@ -228,7 +228,7 @@ Data Box によってソース ストレージ アカウントからデータが
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
+   <!-- BlobList/prefix/Container list for Blob storage for export  -->
    <BlobList>
       <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
       <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
@@ -237,7 +237,7 @@ Data Box によってソース ストレージ アカウントからデータが
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

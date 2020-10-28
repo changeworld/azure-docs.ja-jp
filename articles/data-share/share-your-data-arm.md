@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654108"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146154"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>クイック スタート:Azure Data Share と Resource Manager テンプレートを使用してデータを共有する
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-これは、RBAC の割り当てが完了する前に、デプロイによってデータセットの作成が試行されているためです。 エラー メッセージにもかかわらず、デプロイは成功する可能性があります。  引き続き、[デプロイされたリソースを確認する](#review-deployed-resources)ことができます。
+これは、Azure ロールの割り当てが完了する前に、デプロイによってデータセットの作成が試行されているためです。 エラー メッセージにもかかわらず、デプロイは成功する可能性があります。  引き続き、[デプロイされたリソースを確認する](#review-deployed-resources)ことができます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * **[サブスクリプション]** : データ共有とその他のリソースの作成に使用する Azure サブスクリプションを選択します。
     * **[リソース グループ]** : **[新規作成]** を選択して新しいリソース グループを作成するか、既存のリソース グループを選択します。
-    * **場所**: リソース グループの場所を選択します。
+    * **場所** : リソース グループの場所を選択します。
     * **[プロジェクト名]** : プロジェクト名を入力します。  プロジェクト名は、リソース名を生成するために使用されます。  前のテンプレートの変数の定義を確認してください。
     * **[場所]** : リソースの場所を選択します。  リソース グループに対して同じ場所を使用できます。
     * **[Invitation Email]\(招待メール\)** : データ共有の受信者の Azure ログイン用メール アドレスを入力します。  メールの別名は機能しません。

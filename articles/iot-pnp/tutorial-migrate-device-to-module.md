@@ -1,22 +1,22 @@
 ---
-title: IoT プラグ アンド プレイ デバイスを汎用モジュールに変換する | Microsoft Docs
-description: C# の PnP デバイス コードを使用して、それをモジュールに変換します。
+title: 汎用 IoT プラグ アンド プレイの汎用モジュールを接続する | Microsoft Docs
+description: 汎用モジュールでサンプルの C# IoT プラグ アンド プレイ デバイス コードを使用します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046338"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089164"
 ---
-# <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>チュートリアル:IoT プラグ アンド プレイ デバイスをモジュールに変換する方法 (C#)
+# <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>チュートリアル:IoT プラグ アンド プレイ モジュールを接続する (C#)
 
-このチュートリアルでは、汎用モジュールとして実行するように IoT プラグ アンド プレイのデバイス コードを変換する方法を示します。
+このチュートリアルでは、汎用の IoT プラグ アンド プレイ [モジュール](../iot-hub/iot-hub-devguide-module-twins.md)の接続方法について説明します。
 
 IoT ハブに接続するときにモデル ID を発行し、そのモデル ID によって識別される Digital Twins Definition Language (DTDL) モデルに記述されているプロパティとメソッドを実装するデバイスである場合は、IoT プラグ アンド プレイ デバイスです。 デバイスで DTDL とモデル ID がどのように使用されるかの詳細については、[IoT プラグ アンド プレイの開発者ガイド](./concepts-developer-guide-device-csharp.md)を参照してください。 モジュールでは、モデル ID と DTDL モデルを同じ方法で使用します。
 
@@ -31,15 +31,15 @@ Windows でこのチュートリアルを完了するには、ご利用のロー
 * [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。
 * [Git](https://git-scm.com/download/).
 
-Azure IoT エクスプローラー ツールを使用して、**my-module-device** という新しいデバイスを IoT ハブに追加します。
+Azure IoT エクスプローラー ツールを使用して、 **my-module-device** という新しいデバイスを IoT ハブに追加します。
 
-**my-module-device** に、**my-module** というモジュールを追加します。
+**my-module-device** に、 **my-module** というモジュールを追加します。
 
-1. Azure IoT エクスプローラー ツールで、**my-module-device** デバイスに移動します。
+1. Azure IoT エクスプローラー ツールで、 **my-module-device** デバイスに移動します。
 
 1. **[モジュール ID]** を選択してから、 **[+ 追加]** を選択します。
 
-1. モジュール ID 名として「**my-module**」と入力し、 **[保存]** を選択します。
+1. モジュール ID 名として「 **my-module** 」と入力し、 **[保存]** を選択します。
 
 1. モジュール ID の一覧で **[my-module]** を選択します。 次に、プライマリ接続文字列をコピーします。 このチュートリアルでのちほど、このモジュール接続文字列が必要になります。
 
@@ -94,7 +94,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 サンプル プロジェクトを開いて準備するには:
 
-1. Visual Studio 2019 で、*azure-iot-sdk-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* プロジェクト ファイルを開きます。
+1. Visual Studio 2019 で、 *azure-iot-sdk-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* プロジェクト ファイルを開きます。
 
 1. Visual Studio で、 **[プロジェクト] > [Thermostat のプロパティ] > [デバッグ]** の順に移動します。 プロジェクトに次の環境変数を追加します。
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 デバイスではなくモジュールとして動作するようにコードを変更するには:
 
-1. Visual Studio で *Parameter.cs* を開き、**PrimaryConnectionString** 変数を設定する行を次のように変更します。
+1. Visual Studio で *Parameter.cs* を開き、 **PrimaryConnectionString** 変数を設定する行を次のように変更します。
 
     ```csharp
     public string PrimaryConnectionString { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_MODULE_CONNECTION_STRING");
@@ -169,7 +169,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 サービスの SDK を使用すると、接続されている IoT プラグ アンド プレイ デバイスとモジュールのモデル ID を取得できます。 サービスの SDK を使用して、書き込み可能なプロパティを設定し、コマンドを呼び出すことができます。
 
-1. Visual Studio の別のインスタンスで、*azure-iot-sdk-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* プロジェクトを開きます。
+1. Visual Studio の別のインスタンスで、 *azure-iot-sdk-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* プロジェクトを開きます。
 
 1. Visual Studio で、 **[プロジェクト] > [Thermostat のプロパティ] > [デバッグ]** の順に移動します。 プロジェクトに次の環境変数を追加します。
 

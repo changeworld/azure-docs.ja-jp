@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ea823a16714f9db85c3d5148bc8bb2ba7629b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 427facaffa277ec44ee99d70681928f49fe31df8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565515"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278481"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>チュートリアル:Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
@@ -36,7 +36,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 
 * スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](how-to-sql-query.md)を提供します。
 * 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
-* 無限のスケール。 お使いの Azure Cosmos のコンテナーは、[お使いのアプリの規模の拡大に合わせて拡大](partition-data.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションまたはデータベースは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
+* 無限のスケール。 お使いの Azure Cosmos のコンテナーは、[お使いのアプリの規模の拡大に合わせて拡大](partitioning-overview.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションまたはデータベースは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
 * グローバルに分散。 モバイル アプリ ユーザーは外に出かけ、世界中を飛び回ることもよくあります。 Azure Cosmos DB は、[グローバル分散データベース](distribute-data-globally.md)です。 ユーザーがデータにアクセスするには、地図をクリックします。
 * 組み込みの豊富な承認機能。 Azure Cosmos DB では、複雑なカスタムの承認コードを作成せずに、[ユーザーごとのデータ](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)やマルチ ユーザー共有データのような一般的なパターンを簡単に実装できます。
 * 地理空間クエリ。 現在、多くのモバイル アプリが地理的な場所に応じたエクスペリエンスを提供しています。 [地理空間型](geospatial.md)のファーストクラスのサポートにより、Azure Cosmos DB は、これらのエクスペリエンスの作成を簡単に実現可能なものにしています。
@@ -50,7 +50,7 @@ Azure Cosmos DB の利用を開始するのは簡単です。 Azure Portal に�
 
 :::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="モバイル アプリ向けの Azure Cosmos DB の機能":::
 
-または、既存の Xamarin アプリがある場合は、[Azure Cosmos DB NuGet パッケージ](sql-api-sdk-dotnet-core.md)を追加できます。 Azure Cosmos DB では、Xamarin.IOS、Xamarin.Android、および Xamarin Forms の共有ライブラリをサポートしています。
+または、既存の Xamarin アプリがある場合は、[Azure Cosmos DB NuGet パッケージ](sql-api-sdk-dotnet-core.md)を追加できます。 Azure Cosmos DB では、Xamarin.iOS、Xamarin.Android、および Xamarin Forms の共有ライブラリをサポートしています。
 
 ### <a name="work-with-data"></a>データの処理
 Azure Cosmos DB では、データ レコードをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 同じコレクションに異なる構造のドキュメントを格納できます。
@@ -88,10 +88,10 @@ To-Do List アプリをマルチ ユーザーの To-Do List アプリに変更�
 
 :::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="モバイル アプリ向けの Azure Cosmos DB の機能" border="false":::
 
-ここで、2 人のユーザーが同じ To-Do List にアクセスできるようにする場合は、リソース トークン ブローカーでアクセス トークンにアクセス許可を追加できます。
+2 人のユーザーが同じ To-Do List にアクセスできるようにする場合は、リソース トークン ブローカーでアクセス トークンにアクセス許可を追加できます。
 
 ### <a name="scale-on-demand"></a>オンデマンドでの拡張
-Azure Cosmos DB は、管理された DBaaS (database as a service) です。 ユーザー ベースが拡大しても、VM のプロビジョニングやコア数の増加について心配する必要はありません。 必要なのは、アプリに必要な 1 秒あたりの操作数 (スループット) を Azure Cosmos DB に指示することだけです。 **[スケール]** タブで、1 秒あたりの要求ユニット (RU) と呼ばれるスループットの尺度を使用して、スループットを指定できます。 たとえば、1 KB のドキュメントの読み取り操作には 1 RU が必要です。 また、**スループット** メトリックにアラートを追加して、トラフィックの増加を監視し、アラートの発生に応じてスループットをプログラムで変更することもできます。
+Azure Cosmos DB は、管理された DBaaS (database as a service) です。 ユーザー ベースが拡大しても、VM のプロビジョニングやコア数の増加について心配する必要はありません。 必要なのは、アプリに必要な 1 秒あたりの操作数 (スループット) を Azure Cosmos DB に指示することだけです。 **[スケール]** タブで、1 秒あたりの要求ユニット (RU) と呼ばれるスループットの尺度を使用して、スループットを指定できます。 たとえば、1 KB のドキュメントの読み取り操作には 1 RU が必要です。 また、 **スループット** メトリックにアラートを追加して、トラフィックの増加を監視し、アラートの発生に応じてスループットをプログラムで変更することもできます。
 
 :::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="モバイル アプリ向けの Azure Cosmos DB の機能":::
 

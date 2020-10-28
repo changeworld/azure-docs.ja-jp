@@ -1,116 +1,123 @@
 ---
 title: レプリケーション待機時間のトラブルシューティング - Azure Database for MySQL
-description: Azure Database for MySQL 読み取りレプリカでレプリケーション待機時間をトラブルシューティングする方法に関する詳細
+description: Azure Database for MySQL の読み取りレプリカを使用して、レプリケーション待機時間のトラブルシューティングを行う方法を説明します。
 keywords: mysql, トラブルシューティング, レプリケーション待機時間 (秒)
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/08/2020
-ms.openlocfilehash: 16a502a53b4441faf68ea342e0bc865731d38b1a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876867"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096098"
 ---
-# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL のレプリケーション待機時間のトラブルシューティング
+# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL のレプリケーション待ち時間のトラブルシューティング
 
-[読み取りレプリカ](concepts-read-replicas.md)機能を使用すると、Azure Database for MySQL サーバーから、読み取り専用のレプリカ サーバーにデータをレプリケートできます。 読み取りレプリカは、読み取りまたはレポート クエリをアプリケーションから複数のレプリカ サーバーにルーティングすることによって、ワークロードをスケールアウトするために使用されます。 これにより、プライマリ サーバーの負荷が軽減され、アプリケーションのスケーリングに合わせて全体的なパフォーマンスと待機時間が改善されます。 レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。 
+[読み取りレプリカ](concepts-read-replicas.md)機能を使用すると、Azure Database for MySQL サーバーから、読み取り専用のレプリカ サーバーにデータをレプリケートできます。 読み取りおよびレポート クエリをアプリケーションから複数のレプリカ サーバーにルーティングすることによって、ワークロードをスケールアウトできます。 このセットアップにより、ソース サーバーの負荷が軽減されます。 また、スケーリングにより、アプリケーションの全体的なパフォーマンスと待機時間も改善されます。 
 
-セカンダリの読み取りレプリカのレプリケーション ラグの要因は多数あり、たとえば次のようなものがあります。ただし、これにだけに限りません。 
+レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置に基づくレプリケーション テクノロジを使用して、非同期で更新されます。 詳細については、[MySQL の binlog ファイルの位置に基づくレプリケーションの構成の概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関するページを参照してください。 
 
-- ネットワーク待ち時間
-- ソース サーバーのトランザクション量
-- ソースとセカンダリの読み取りレプリカ サーバーのコンピューティング レベル
-- プライマリおよびセカンダリ サーバーで実行されているクエリ 
+セカンダリ読み取りレプリカでのレプリケーションのラグは、いくつかの要因に依存します。 このような要因には以下のものが含まれますが、これらだけではありません。 
 
-このドキュメントでは、Azure Database for MySQL でレプリケーション待機時間をトラブルシューティングする方法について説明します。 さらに、レプリカ サーバーでのレプリケーション待機時間が増加する一般的な原因についてもいくつか説明します。
+- ネットワーク待機時間。
+- ソース サーバーでのトランザクションの量。
+- ソース サーバーとセカンダリ読み取りレプリカ サーバーのコンピューティング レベル。
+- ソース サーバーとセカンダリ サーバーで実行されているクエリ。 
+
+この記事では、Azure Database for MySQL でレプリケーション待機時間のトラブルシューティングを行う方法について説明します。 レプリカ サーバーでレプリケーション待機時間が長くなるいくつかの一般的な原因についても説明します。
 
 ## <a name="replication-concepts"></a>レプリケーションの概念
 
-バイナリ ログが有効になっている場合、コミットされたトランザクションはソース サーバーによってバイナリ ログに書き込まれます。これは、レプリケーションに使用されます。 既定では、新しくプロビジョニングされるサーバーのうち、サポートされるストレージが 16 TB までのものはすべて、バイナリ ログが有効になります。 レプリカ サーバーでは、レプリカ サーバーごとに 2 つのスレッドが実行されています。1 つは IO スレッド、もう 1 つは SQL スレッドと呼ばれます。
+バイナリ ログが有効になっている場合、コミットされたトランザクションはソース サーバーによってバイナリ ログに書き込まれます。 バイナリ ログはレプリケーションに使用されます。 それは、新しくプロビジョニングされるサーバーのうち、サポートされるストレージが 16 TB までのもののすべてにおいて既定で有効になります。 各レプリカ サーバーで 2 つのスレッドが実行されます。 1 つのスレッドは " *IO スレッド* " で、もう 1 つは " *SQL スレッド* " です。
 
-- **IO スレッド** ではソース サーバーへの接続と、更新されたバイナリ ログの要求が行われます。 バイナリ ログの更新は、このスレッドによって受け取られた後、レプリカ サーバーのリレー ログというローカル ログに保存されます。
-- **SQL スレッド** では、リレー ログの読み取りと、レプリカ サーバー上のデータ変更の適用が行われます。
+- IO スレッドにより、ソース サーバーへの接続と、更新されたバイナリ ログの要求が行われます。 このスレッドは、バイナリ ログの更新を受け取ります。 それらの更新は、レプリカ サーバーの " *リレー ログ* " と呼ばれるローカル ログに保存されます。
+- SQL スレッドによって、リレー ログが読み取られた後、レプリカ サーバーにデータの変更が適用されます。
 
 ## <a name="monitoring-replication-latency"></a>レプリケーション待機時間の監視
 
-Azure Database for MySQL では、[Azure Monitor](concepts-monitoring.md) に [Replication lag in seconds]\(レプリケーションのラグ (秒)\) メトリックを提供しています。 このメトリックは、読み取りレプリカ サーバーのみで使用できます。 このメトリックは、MySQL で使用できる seconds_behind_master メトリックを使用して計算されます。 レプリケーション待機時間が増加する根本原因を理解するには、[MySQL Workbench](connect-workbench.md) または [Azure Cloud Shell](https://shell.azure.com) を使用してレプリカ サーバーに接続し、次のコマンドを実行します。
+Azure Database for MySQL により、[Azure Monitor](concepts-monitoring.md) でレプリケーション ラグ (秒単位) のメトリックが提供されます。 このメトリックは、読み取りレプリカ サーバーでのみ使用できます。 それは、MySQL で使用できる seconds_behind_master メトリックによって計算されます。 
 
- 値は実際のレプリカ サーバー名と管理者ユーザーのログイン名に置き換えてください。 管理者ユーザー名には、Azure Database for MySQL の "@\<servername>" が必要です。
+レプリケーション待機時間が増加する原因を理解するには、[MySQL Workbench](connect-workbench.md) または [Azure Cloud Shell](https://shell.azure.com) を使用してレプリカ サーバーに接続します。 そして、次のコマンドを実行します。
 
-  ```azurecli-interactive
-  mysql --host=myreplicademoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
-  ```
+>[!NOTE] 
+> コード内で、例の値を実際のレプリカ サーバー名と管理ユーザー名に置き換えます。 管理者ユーザー名には、Azure Database for MySQL の `@\<servername>` が必要です。
 
-  Cloud Shell ターミナルでのエクスペリエンスは次のようになります
-  ```
-  Requesting a Cloud Shell.Succeeded.
-  Connecting terminal...
+```azurecli-interactive
+mysql --host=myreplicademoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
+```
 
-  Welcome to Azure Cloud Shell
+Cloud Shell ターミナルでのエクスペリエンスは次のようになります。
 
-  Type "az" to use Azure CLI
-  Type "help" to learn about Cloud Shell
+```
+Requesting a Cloud Shell.Succeeded.
+Connecting terminal...
 
-  user@Azure:~$mysql -h myreplicademoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-  Enter password:
-  Welcome to the MySQL monitor.  Commands end with ; or \g.
-  Your MySQL connection id is 64796
-  Server version: 5.6.42.0 Source distribution
+Welcome to Azure Cloud Shell
 
-  Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+Type "az" to use Azure CLI
+Type "help" to learn about Cloud Shell
 
-  Oracle is a registered trademark of Oracle Corporation and/or its
-  affiliates. Other names may be trademarks of their respective
-  owners.
+user@Azure:~$mysql -h myreplicademoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 64796
+Server version: 5.6.42.0 Source distribution
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-  mysql>
-  ```
-  同じ Azure Cloud Shell ターミナルで、次のコマンドを実行します
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
 
-  ```
-  mysql> SHOW SLAVE STATUS;
-  ```
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
 
-  一般的な出力結果は次のようになります。
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+mysql>
+```
+
+同じ Cloud Shell ターミナルで、次のコマンドを実行します。
+
+```
+mysql> SHOW SLAVE STATUS;
+```
+
+一般的な出力を次に示します。
   
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="レプリケーション待機時間の監視&quot;:::
 
 
-出力結果には大量の情報が含まれていますが、通常、以下の列のメトリックを確認するのみで構いません。
+出力には大量の情報が含まれています。 通常は、次の表で説明する行だけに注目する必要があります。
 
 |メトリック|説明|
 |---|---|
-|Slave_IO_State| IO スレッドの現在の状態。 通常、同期している場合は、状態は &quot;Waiting for master to send event&quot; (マスターがイベントを送信するのを待機しています) です。 ただし、&quot;Connecting to master&quot; (マスターに接続しています) などの状態が表示された場合、レプリカとマスター サーバーとの接続が切断されています。 マスターが実行されているか、またはファイアウォールによって接続がブロックされていないかを確認してください。|
-|Master_Log_File| マスターの書き込み先のバイナリ ログ ファイル。|
-|Read_Master_Log_Pos| マスターの書き込み先である上記のバイナリ ログ ファイル内の位置を表します。|
-|Relay_Master_Log_File| レプリカ サーバーによってマスターから読み取られているバイナリ ログ ファイルを表します。|
-|Slave_IO_Running| IO スレッドが実行されているかどうかを示します。 &quot;Yes&quot; になっている必要があります。 &quot;NO&quot; の場合、レプリケーションが壊れている可能性があります。|
-|Slave_SQL_Running| SQL スレッドが実行されているかどうかを示します。 &quot;Yes&quot; になっている必要があります。 &quot;NO&quot; の場合、レプリケーションが壊れている可能性があります。|
-|Exec_Master_Log_Pos| レプリカによって適用されている Relay_Master_Log_File の位置を表示します。 待機時間がある場合、この位置シーケンスは Read_Master_Log_Pos より小さいはずです。|
-|Relay_Log_Space|リレー ログのサイズの上限を表示します。 サイズを確認するには、クエリ show global variables like &quot;relay_log_space_limit&quot; を実行します。|
+|Slave_IO_State| IO スレッドの現在の状態を表します。 通常、ソース (マスター) サーバーが同期している場合、状態は &quot;Waiting for master to send event&quot; (マスターによるイベントの送信を待機中) です。 &quot;Connecting to master" (マスターに接続中) などの状態は、レプリカがソース サーバーへの接続を失ったことを示します。 ソース サーバーが実行されていることを確認するか、ファイアウォールによって接続がブロックされているかどうかを調べます。|
+|Master_Log_File| ソース サーバーの書き込み先のバイナリ ログ ファイルを表します。|
+|Read_Master_Log_Pos| ソース サーバーによって書き込みが行われているバイナリ ログ ファイル内の場所を示します。|
+|Relay_Master_Log_File| レプリカ サーバーによってソース サーバーから読み取りが行われているバイナリ ログ ファイルを表します。|
+|Slave_IO_Running| IO スレッドが実行されているかどうかを示します。 値は `Yes` である必要があります。 値が `NO` の場合は、レプリケーションが中断されている可能性があります。|
+|Slave_SQL_Running| SQL スレッドが実行されているかどうかを示します。 値は `Yes` である必要があります。 値が `NO` の場合は、レプリケーションが中断されている可能性があります。|
+|Exec_Master_Log_Pos| レプリカによって適用されている Relay_Master_Log_File の位置を示します。 待機時間がある場合、この位置シーケンスが Read_Master_Log_Pos より小さくなるはずです。|
+|Relay_Log_Space|リレー ログのサイズの上限を示します。 `relay_log_space_limit` のように `SHOW GLOBAL VARIABLES` のクエリを実行することによって、サイズを確認できます。|
 |Seconds_Behind_Master| レプリケーション待機時間を秒単位で表示します。|
-|Last_IO_Errno|IO スレッドのエラー コードを表示します (存在する場合)。 これらのコードの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html)をご覧ください。|
+|Last_IO_Errno|IO スレッドのエラー コードを表示します (存在する場合)。 これらのコードの詳細については、[MySQL サーバーのエラー メッセージ リファレンス](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)に関するページを参照してください。|
 |Last_IO_Error| IO スレッドのエラー メッセージを表示します (存在する場合)。|
-|Last_SQL_Errno|SQL スレッドのエラー コードを表示します (存在する場合)。 これらのコードの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html)をご覧ください。|
+|Last_SQL_Errno|SQL スレッドのエラー コードを表示します (存在する場合)。 これらのコードの詳細については、[MySQL サーバーのエラー メッセージ リファレンス](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)に関するページを参照してください。|
 |Last_SQL_Error|SQL スレッドのエラー メッセージを表示します (存在する場合)。|
-|Slave_SQL_Running_State| 現在の SQL スレッドの状態を示します。 この状態で表示される &quot;System lock&quot; (システム ロック) は正常な動作です。 &quot;Waiting for dependent transaction to commit" (依存トランザクションのコミットを待機しています) という状態が表示されるのは正常です。 これは、コミットされたトランザクションがマスターによって更新されるのをレプリカが待機していることを示します。|
+|Slave_SQL_Running_State| 現在の SQL スレッドの状態を示します。 この状態では、`System lock` は正常です。 また、`Waiting for dependent transaction to commit` という状態が表示される場合も正常です。 この状態は、コミットされたトランザクションがソース サーバーによって更新されるのをレプリカが待機していることを示します。|
 
-Slave_IO_Running が Yes で、Slave_SQL_Running が Yes の場合、レプリケーションは正常に実行されています。 
+Slave_IO_Running が `Yes` で、Slave_SQL_Running が `Yes` の場合、レプリケーションは正常に実行されています。 
 
-次に、Last_IO_Errno、Last_IO_Error、Last_SQL_Errno、Last_SQL_Error を確認する必要があります。  これらのフィールドには、SQL スレッドの停止の原因となった最新のエラーのエラー番号とエラー メッセージが保持されます。 エラー番号 0 と空のメッセージは、エラーがないことを意味します。 エラーの値が 0 以外の場合は、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html)でエラー コードを検索してさらに調査する必要があります。
+次に、Last_IO_Errno、Last_IO_Error、Last_SQL_Errno、Last_SQL_Error を確認します。  これらのフィールドには、SQL スレッドの停止の原因となった最新のエラーのエラー番号とエラー メッセージが表示されます。 エラー番号が `0` でメッセージが空の場合は、エラーがないことを意味します。 [MySQL サーバーのエラー メッセージ リファレンス](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)に関するページでエラー コードを調べることにより、0 以外のエラー値を調査します。
 
 ## <a name="common-scenarios-for-high-replication-latency"></a>レプリケーション待機時間が長い場合の一般的なシナリオ
 
-### <a name="network-latency-or-high-cpu-on-source-server"></a>ネットワーク待機時間またはソース サーバーの高 CPU 使用率
+以下のセクションでは、レプリケーションの待機時間が長くなることがよくあるシナリオについて説明します。
 
-次の値が確認された場合、レプリケーション待機時間の原因として最も一般的なのは、ネットワーク待機時間が長いか、またはソース サーバーの CPU 使用量が高いことです。 この場合、IO スレッドは実行中であり、マスターを待機しています。 マスター (ソース サーバー) では既にバイナリ ログ ファイル #20 に書き込みを行っていますが、レプリカではファイル #10 までしか受信していません。 このシナリオでレプリケーション待機時間が長くなる主な要因は、ネットワーク速度またはソース サーバーの高い CPU 使用率です。  Azure のネットワーク待機時間は、1 つのリージョンの中なら一般にミリ秒単位ですが、リージョンをまたぐと秒単位にまで上がることがあります。 ほとんどの場合、ソース サーバーに接続するための IO スレッドの遅延は、ソース サーバーの CPU 使用率が高いために IO スレッドの処理速度が遅くなることが原因で発生します。 これは、Azure Monitor を使用して、CPU 使用率を監視し、ソース サーバー上のコンカレント接続数を観察すれば検出できます。
+### <a name="network-latency-or-high-cpu-consumption-on-the-source-server"></a>ソース サーバーでのネットワーク待機時間または高い CPU 使用率
 
-ソース サーバーの CPU 使用率が高くない場合、考えられる原因はネットワーク待機時間です。 突然、ネットワーク待機時間が異常に長くなった場合は [Azure の状態のページ](https://status.azure.com/status)を確認して、既知の問題や障害がないことを確認することをお勧めします。 
+次のような値が表示される場合、レプリケーション待機時間の原因は、長いネットワーク待機時間、またはソース サーバーでの高い CPU 使用率である可能性があります。 
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -118,9 +125,17 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller than Master_Log_File, e.g. mysql-bin.00010
 ```
 
-### <a name="heavy-burst-of-transactions-on-source-server"></a>ソース サーバーでのトランザクションの大量バースト
+この場合、IO スレッドは実行中であり、ソース サーバーを待機しています。 ソース サーバーは既に、番号が 20 のバイナリ ログ ファイルに書き込んでいます。 レプリカは、ファイル番号 10 までしか受信していません。 このシナリオでレプリケーション待機時間が長くなる主な要因は、ネットワークの速度またはソース サーバーでの高い CPU 使用率です。  
 
-次の値が確認された場合、レプリケーション待機時間の原因として最も一般的なのは、ソース サーバーでのトランザクションの大量バーストです。 以下の出力結果の場合、レプリカではマスターの背後にあるバイナリ ログを取得できますが、レプリカの IO スレッドでは、リレー ログ領域が既にいっぱいであることが示されています。 レプリカでは既に可能な限り高速でキャッチアップを試みているので、ネットワーク速度が遅延の原因ではないということになります。 むしろ、更新されたバイナリ ログのサイズがリレー ログ領域の上限を超えています。 この問題をさらにトラブルシューティングするには、マスター サーバーで[低速クエリ ログ](concepts-server-logs.md)を有効にする必要があります。 低速クエリ ログを使用すると、ソース サーバーで長時間トランザクションを特定できます。 特定されたクエリは、サーバーの待機時間を短縮するために調整する必要があります。 
+Azure においては、通常、リージョン内のネットワーク待機時間はミリ秒単位で測定されます。 リージョン間の場合の待機時間の範囲は、ミリ秒から秒です。 
+
+ほとんどの場合、IO スレッドとソース サーバーの間の接続遅延の原因は、ソース サーバーでの高い CPU 使用率です。 IO スレッドの処理が遅くなっています。 この問題は、Azure Monitor を使用して、ソース サーバーでの CPU の使用率とコンカレント接続の数を調べることにより検出できます。
+
+ソース サーバーの CPU 使用率が高くない場合、問題はネットワーク待機時間である可能性があります。 ネットワーク待機時間が突然異常に高くなった場合は、[Azure の状態ページ](https://status.azure.com/status)で既知の問題や停止を確認します。 
+
+### <a name="heavy-bursts-of-transactions-on-the-source-server"></a>ソース サーバーでのトランザクションの大量バースト
+
+次のような値が表示される場合、レプリケーション待機時間の原因として可能性が高いのは、ソース サーバーでのトランザクションの大量バーストです。 
 
 ```
 Slave_IO_State: Waiting for the slave SQL thread to free enough relay log space
@@ -128,15 +143,18 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller then Master_Log_File, e.g. mysql-bin.00010
 ```
 
-このカテゴリの待機時間の一般的な原因を次に示します。
+レプリカはソース サーバーより遅れてバイナリ ログを取得できることが出力で示されています。 しかし、レプリカの IO スレッドは、リレー ログ領域が既にいっぱいであることを示しています。 
 
-#### <a name="replication-latency-due-to-data-load-on-source-server"></a>ソース サーバーでのデータ読み込みが原因のレプリケーション待機時間
-場合によっては、ソース サーバーで週単位または月単位のデータ読み込みが実行されることがあります。 残念ながら、この場合、レプリケーション待機時間を避けることはできません。 このシナリオでは、ソース サーバーでデータ読み込みが完了した後、レプリカ サーバーによって最終的なキャッチアップが行われます。
+ネットワークの速度は遅延の原因ではありません。 レプリカは追い付こうとしています。 しかし、更新されたバイナリ ログのサイズがリレー ログ領域の上限を超えています。 
+
+この問題のトラブルシューティングを行うには、ソース サーバーで[低速クエリ ログ](concepts-server-logs.md)を有効にします。 低速クエリ ログを使用して、ソース サーバーで長い時間実行されているトランザクションを特定します。 その後、特定されたクエリを調整して、サーバーでの待機時間を短縮します。 
+
+この種のレプリケーション待機時間は、通常、ソース サーバーでのデータの読み込みが原因で発生します。 ソース サーバーで週単位または月単位のデータの読み込みがある場合、レプリケーション待機時間は避けられません。 ソース サーバーでデータの読み込みが完了した後、レプリカ サーバーは最終的に追い付きます。
 
 
 ### <a name="slowness-on-the-replica-server"></a>レプリカ サーバーのパフォーマンスの低下
 
-次の値が確認された場合、最も一般的な原因として考えられるのはレプリカ サーバー上の問題であり、さらに調査が必要です。 このシナリオでは、出力結果に示されているように、IO と SQL の両方のスレッドが正常に実行されており、レプリカでは、マスターによって書き込まれているものと同じバイナリ ログ ファイルが読み取られています。 ただし、レプリカ サーバーでは、ソース サーバーからの同じトランザクションを反映するのに多少の待機時間が発生しています。 
+次のような値が表示される場合は、レプリカ サーバーで問題が発生している可能性があります。 
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -149,15 +167,19 @@ Exec_Master_Log_Pos: The position of slave reads from master binary log file is 
 Seconds_Behind_Master: There is latency and the value here is greater than 0
 ```
 
-このカテゴリの待機時間の一般的な原因を次に示します。
+このシナリオでは、IO スレッドと SQL スレッドの両方が正常に実行されていることが出力で示されます。 ソース サーバーで書き込まれているのと同じバイナリ ログ ファイルが、レプリカによって読み取られています。 ただし、レプリカ サーバーでの多少の待機時間は、ソース サーバーからの同じトランザクションを反映しています。 
 
-#### <a name="no-primary-or-unique-key-on-a-table"></a>テーブルに主キーまたは一意キーがない
+以下のセクションでは、この種の待機時間の一般的な原因について説明します。
 
-Azure Database for MySQL では行ベースのレプリケーションが使用されます。 行ベースのレプリケーションでは、マスター サーバーにより、個々のテーブル行の変更に関するイベントがバイナリ ログに書き込まれます。 次いで、SQL スレッドにより、レプリカ サーバー上の対応するテーブル行に対してこれらの変更が実行されます。 テーブルに主キーまたは一意キーがないことは、レプリケーション待機時間が発生する一般的な原因の 1 つです。 主キーまたは一意キーがないと、変更を適用するために、ターゲット テーブル内のすべての行が SQL スレッドによってスキャンされることになります。
+#### <a name="no-primary-key-or-unique-key-on-a-table"></a>テーブルに主キーまたは一意キーがない
 
-MySQL で主キーは、高速なクエリのパフォーマンスを得られる関連インデックスです。これに NULL 値を含めることができないためです。 InnoDB ストレージ エンジンによりテーブル データは、主キーに基づいて超高速な検索と並べ替えを行えるよう物理的に編成されます。 そのため、レプリカ サーバーを作成する前に、ソース サーバーのテーブルに主キーを追加することをお勧めします。 このシナリオでは、レプリケーション待機時間を改善するために、ソース サーバーに主キーを追加し、読み取りレプリカを再作成する必要があります。
+Azure Database for MySQL では行ベースのレプリケーションが使用されます。 ソース サーバーにより、バイナリ ログにイベントが書き込まれて、個々のテーブル行での変更が記録されます。 その後、SQL スレッドにより、それらの変更が、レプリカ サーバー上の対応するテーブル行にレプリケートされます。 テーブルに主キーまたは一意キーがない場合、変更を適用するために、SQL スレッドによってターゲット テーブルのすべての行がスキャンされます。 このスキャンにより、レプリケーション待機時間が発生する可能性があります。
 
-次のクエリを使用すると、ソース サーバーに主キーがないテーブルを特定できます。
+MySQL の主キーは、NULL 値を含むことができないために高速のクエリ パフォーマンスが保証される、関連付けられたインデックスです。 InnoDB ストレージ エンジンを使用している場合、テーブル データは、主キーに基づいて超高速な検索と並べ替えを行えるよう物理的に編成されます。 
+
+レプリカ サーバーを作成する前に、ソース サーバーのテーブルに主キーを追加することをお勧めします。 ソース サーバーに主キーを追加した後、レプリケーション待機時間が向上するように、読み取りレプリカを再作成します。
+
+ソース サーバーで主キーがないテーブルを調べるには、次のクエリを使用します。
 
 ```sql 
 select tab.table_schema as database_name, tab.table_name 
@@ -173,29 +195,47 @@ order by tab.table_schema, tab.table_name;
 
 ```
 
-#### <a name="replication-latency-due-to-long-running-queries-on-replica-server"></a>レプリカ サーバーでの実行時間の長いクエリが原因で発生するレプリケーション待機時間
+#### <a name="long-running-queries-on-the-replica-server"></a>レプリカ サーバーでの実行時間の長いクエリ
 
-レプリカ サーバーのワークロードが原因で SQL スレッドが IO スレッドに追従できなくなる可能性があります。 これは、レプリカ サーバーで実行時間の長いクエリがある場合に、レプリケーション待機時間が長くなる一般的な原因の 1 つです。 この場合、問題のトラブルシューティングに役立つように、レプリカ サーバーで[低速クエリ ログ](concepts-server-logs.md)を有効にする必要があります。 低速クエリはリソースの消費の増加や、サーバーの速度の低下の原因となることがあり、そのためにレプリカはマスターに追いつけなくなります。 このシナリオでは、低速クエリを調整する必要があります。 クエリを高速化すると、SQL スレッドのブロックが回避され、レプリケーション待機時間が大幅に短縮されます。
+レプリカ サーバーでのワークロードにより、SQL スレッドが IO スレッドより遅れることがあります。 レプリカ サーバー上の実行時間の長いクエリは、レプリケーション待機時間が長くなる一般的な原因の 1 つです。 この問題のトラブルシューティングを行うには、レプリカ サーバーで[低速クエリ ログ](concepts-server-logs.md)を有効にします。 
+
+低速クエリにより、リソースの消費が増加したり、サーバーの速度が低下することがあり、そのためにレプリカはソース サーバーに追いつけなくなります。 このシナリオでは、低速のクエリを調整します。 クエリを高速化すると、SQL スレッドをブロックするものがなくなり、レプリケーション待機時間が大幅に短縮されます。
 
 
-#### <a name="replication-latency-due-to-ddl-queries-on-source-server"></a>ソース サーバーでの DDL クエリが原因のレプリケーション待機時間
-ソース サーバーで [ALTER TABLE](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html) のような実行時間の長い DDL コマンドが実行されていて、実行に 1 時間かかったとします。 その間、ソース サーバーでは何千もの他のクエリが並列実行されている可能性があります。 DDL がレプリカにレプリケートされるとき、データベースの一貫性を確保するために、MySQL エンジンでは DDL を単一のレプリケーション スレッドで実行する必要があります。 そのため、レプリケートされた他のクエリはすべてブロックされ、レプリカ サーバーで DDL 操作が完了するまで 1 時間以上待つ必要があります。 これは、オンライン DDL 操作の有無に関係なく当てはまります。 DDL 操作では、レプリケーションでレプリケーション待機時間が長くなることが予想されます。
+#### <a name="ddl-queries-on-the-source-server"></a>ソース サーバーでの DDL クエリ
+ソース サーバーで [`ALTER TABLE`](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html) のようなデータ定義言語 (DDL) コマンドを実行すると、時間がかかる場合があります。 DDL コマンドの実行中に、他の何千ものクエリがソース サーバーで並列に実行される可能性があります。 
 
-ソース サーバーで[低速クエリ ログ](concepts-server-logs.md)を有効にした場合、低速クエリ ログを参照して、ソース サーバーで DDL コマンドが実行されたかどうかを確認することでこのシナリオを検出できます。 インデックスの削除、名前の変更、作成では ALTER TABLE の INPLACE アルゴリズムが使用されますが、これにはテーブル データのコピーやテーブルの再構築を伴う場合があります。 通常、INPLACE アルゴリズムでは同時実行の DML がサポートされますが、操作の準備と実行のフェーズ中に一時的にテーブルの排他的なメタデータ ロックがかけられることがあります。 そのため、CREATE INDEX ステートメントでは、ALGORITHM 句と LOCK 句を使用して、テーブルのコピー方法および読み取りと書き込みのコンカレンシーのレベルに影響を与えることができますが、その場合でも、FULLTEXT または SPATIAL インデックスを追加することで DML 操作を回避できます。 ALGORITHM 句と LOCK 句を使用してインデックスを作成する例を以下に示します。
+DDL がレプリケートされるときは、データベースの整合性を維持するため、MySQL エンジンによって単一のレプリケーション スレッドで DDL が実行されます。 このタスクが実行されている間、他のすべてのレプリケートされたクエリはブロックされ、レプリカ サーバーで DDL 操作が完了するまで待機する必要があります。 オンライン DDL 操作でも、この遅延が発生します。 DDL 操作により、レプリケーション待機時間が増加します。
+
+ソース サーバーで[低速クエリ ログ](concepts-server-logs.md)を有効にした場合、ソース サーバーで実行された DDL コマンドを調べることで、この待機時間の問題を検出できます。 インデックスの削除、名前変更、作成を行うときは、ALTER TABLE に INPLACE アルゴリズムを使用できます。 テーブルのデータをコピーし、テーブルを再構築することが、必要になる場合があります。 
+
+通常、INPLACE アルゴリズムに対してはコンカレント DML がサポートされています。 ただし、操作を準備して実行するときに、テーブルに対する排他的なメタデータ ロックを簡単に取得できます。 したがって、CREATE INDEX ステートメントの場合、ALGORITHM 句と LOCK 句を使用して、テーブルをコピーする方法と、読み取りと書き込みのコンカレンシーのレベルに、影響を与えることができます。 その場合でも、FULLTEXT インデックスまたは SPATIAL インデックスを追加することにより、DML 操作を防ぐことができます。 
+
+次の例では、ALGORITHM 句と LOCK 句を使用してインデックスを作成します。
 
 ```sql
 ALTER TABLE table_name ADD INDEX index_name (column), ALGORITHM=INPLACE, LOCK=NONE;
 ```
 
-残念ながら、ロックを必要とする DDL ステートメントでは、レプリケーション待機時間を回避することはできません。その代わり、このような種類の DDL 操作は、影響の可能性を下げるために、ピーク時以外の時間帯、たとえば夜間に実行する必要があります。
+残念ながら、ロックを必要とする DDL ステートメントの場合、レプリケーション待機時間を回避することはできません。 可能性のある影響を軽くするには、夜間など、ピーク以外の時間帯にこれらの種類の DDL 操作を実行します。
 
-#### <a name="replication-latency-due-to-replica-server-lower-sku"></a>レプリカ サーバーの下位 SKU が原因のレプリケーション待機時間
+#### <a name="downgraded-replica-server"></a>ダウングレードされたレプリカ サーバー
 
-Azure Database for MySQL では、マスター サーバーと同じサーバー構成で読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 ただし、レプリカ サーバーをダウングレードすると、ワークロードによってリソースの消費量が増加し、その結果、レプリケーション待機時間が発生する可能性があります。 これは、Azure Monitor からレプリカ サーバーの CPU とメモリの使用量を監視すれば確認できます。 このシナリオでは、レプリカがマスターに追随できるようにするために、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくようお勧めします。
+Azure Database for MySQL の場合、ソース サーバーと同じサーバー構成が読み取りレプリカで使用されます。 作成された後で、レプリカ サーバーの構成を変更できます。 
 
-#### <a name="improving-replication-latency-using-server-parameter-tuning-on-source-server"></a>ソース サーバーでのサーバー パラメーターの調整を使用したレプリケーション待機時間の改善
+レプリカ サーバーをダウングレードすると、ワークロードによるリソースの消費量が増え、その結果、レプリケーション待機時間が発生する可能性があります。 この問題を検出するには、Azure Monitor を使用して、レプリカ サーバーの CPU とメモリの消費量を調べます。 
 
-Azure Database for MySQL では、レプリケーションは既定で、レプリカ上の並列スレッドで実行されるように最適化されています。 ソース サーバー上のコンカレンシーの高いワークロードでレプリカ サーバーがキャッチアップに失敗する場合、ソース サーバーでパラメーター binlog_group_commit_sync_delay を構成することで、レプリケーション待機時間を改善できます。 このパラメーターでは、バイナリ ログのコミットによってバイナリ ログ ファイルが同期されるまでに待機する時間 (マイクロ秒単位) を制御します。 利点は、トランザクションがコミットされるたびに直ちに適用する代わりに、マスターからバイナリ ログの更新が一括送信されることです。 これにより、レプリカの IO が減少し、パフォーマンスを向上させることができます。 このシナリオでは、binlog_group_commit_sync_delay を 1000 程度に設定し、レプリケーション待機時間を監視するのが有効と考えられます。 このパラメーターは慎重に設定し、コンカレンシーの高いワークロードにのみ使用する必要があります。 シングルトン トランザクションの数が多く、コンカレンシーの低いシナリオで binlog_group_commit_sync_delay を設定すると、コミットされるトランザクションが少ないにもかかわらず、IO スレッドがバイナリ ログの一括更新を待機するため、待機時間が増加するおそれがあります。 
+このシナリオの場合、レプリカ サーバーの構成を、ソース サーバーの値以上の値に維持することをお勧めします。 このように構成すると、レプリカはソース サーバーより遅れることがなくなります。
 
-## <a name="next-steps"></a>次のステップ
-[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)をご確認ください。
+#### <a name="improving-replication-latency-by-tuning-the-source-server-parameters"></a>ソース サーバーのパラメーターの調整によるレプリケーション待機時間の改善
+
+Azure Database for MySQL の場合、レプリケーションは既定で、レプリカ上の並列スレッドで実行されるように最適化されます。 ソース サーバーでの高コンカレンシー ワークロードのためにレプリカ サーバーが遅れる場合、ソース サーバーでパラメーター binlog_group_commit_sync_delay を構成することにより、レプリケーション待機時間を改善できます。 
+
+binlog_group_commit_sync_delay パラメーターにより、バイナリ ログ ファイルを同期する前にバイナリ ログ コミットが待機するマイクロ秒数が制御されます。 このパラメーターの利点は、トランザクションがコミットされるたびに直ちに適用されるのではなく、ソース サーバーからバイナリ ログの更新が一括送信されることです。 この遅延により、レプリカでの IO が減少し、パフォーマンスを向上させることができます。 
+
+binlog_group_commit_sync_delay パラメーターを 1000 程度に設定すると効果がある場合があります。 その後、レプリケーション待機時間を監視します。 このパラメーターを設定するときは慎重に行い、高コンカレンシー ワークロードに対してのみ使用します。 
+
+多数のシングルトン トランザクションが含まれる低コンカレンシーのワークロードの場合は、binlog_group_commit_sync_delay を設定すると待機時間が長くなる可能性があります。 コミットされるトランザクションが少ない場合でも、一括バイナリ ログ更新に対する IO スレッドの待機により、待機時間が増加する可能性があります。 
+
+## <a name="next-steps"></a>次の手順
+[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)を確認します。

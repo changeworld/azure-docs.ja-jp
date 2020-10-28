@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: fac5fad51137cd08f2498db132768263a770430d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826912"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203876"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault の新機能
 
@@ -27,7 +27,7 @@ ms.locfileid: "91826912"
 
 ### <a name="soft-delete-on-by-default"></a>既定で有効になる論理的な削除
 
-2020 末までに、新規と既存両方の**すべてのキー コンテナーに対して論理的な削除が既定でオンになります**。 この破壊的変更の可能性に関する詳細、および影響を受けるキー コンテナーを見つけて事前に更新する手順については、「[すべてのキー コンテナーでの論理的な削除の有効化](soft-delete-change.md)」を参照してください。 
+2020 末までに、新規と既存両方の **すべてのキー コンテナーに対して論理的な削除が既定でオンになります** 。 この破壊的変更の可能性に関する詳細、および影響を受けるキー コンテナーを見つけて事前に更新する手順については、「[すべてのキー コンテナーでの論理的な削除の有効化](soft-delete-change.md)」を参照してください。 
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
@@ -37,7 +37,7 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 
 - 2020 年 7 月 7 日に、[Azure Active Directory](/azure/active-directory) (Azure AD) サービスでこの移行が開始されました。
 - 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。
-- 既存の Azure エンドポイントは、2020 年 8 月 13 日から 2020 年 10 月 26 日までの期間に、段階的に移行されます。
+- 既存の Azure エンドポイントは、2020 年 8 月 13 日から段階的に移行されます。
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](/azure/iot-dps/) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細のすべてについては、ブログの投稿の「[Azure IoT TLS: 近日中の変更 (注意が必要な理由)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)」を参照してください。
 - [Azure Storage](/azure/storage) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細のすべてについては、ブログの投稿の「[Azure Storage TLS: 近日中の変更 (注意が必要な理由)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)」を参照してください。
 
@@ -65,13 +65,13 @@ Azure サービスによって使用される TLS 証明書は、次のいずれ
 
 ### <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>古い中間サムプリントはいつ廃止できますか?
 
-現在の CA 証明書は、2021 年 2 月 15 日まで取り消され "*ません*"。 その期日の後で、古いサムプリントをコードから削除できます。
+現在の CA 証明書は、2021 年 2 月 15 日まで取り消され " *ません* "。 その期日の後で、古いサムプリントをコードから削除できます。
 
 この期日が変更された場合、新しい失効日が通知されます。
 
 ### <a name="will-this-change-affect-me"></a>この変更による影響はありますか? 
 
-**Azure のほとんどのお客様には影響がない**ものと思われます。  ただし、受け入れ可能な CA のリストが明示的に指定されているアプリケーションでは、影響がある可能性があります。 この方法は、証明書のピン留めと呼ばれます。
+**Azure のほとんどのお客様には影響がない** ものと思われます。  ただし、受け入れ可能な CA のリストが明示的に指定されているアプリケーションでは、影響がある可能性があります。 この方法は、証明書のピン留めと呼ばれます。
 
 アプリケーションが影響を受けるかどうかを検出するには、次の方法があります。
 
@@ -80,11 +80,11 @@ Azure サービスによって使用される TLS 証明書は、次のいずれ
 - Azure API または他の Azure サービスと統合されているアプリケーションがあり、証明書のピン留めが使用されているかどうか不明な場合は、アプリケーション ベンダーに確認してください。
 
 - Azure サービスと通信するさまざまなオペレーティング システムと言語ランタイムでは、新しいルートを使用して証明書チェーンを正しく構築するために追加の手順が必要になる場合があります。
-    - **Linux**:多くのディストリビューションでは、CA を /etc/ssl/certs に追加する必要があります。 具体的な手順については、ディストリビューションのドキュメントを参照してください。
-    - **Java**: Java キース トアに上記の CA が含まれていることを確認します。
-    - **切断された環境で実行されている Windows**: 切断された環境で実行されているシステムでは、新しいルートを信頼されたルート証明機関ストアに追加し、中間を中間証明機関ストアに追加する必要があります。
-    - **Android**: デバイスのドキュメントと Android のバージョンを確認してください。
-    - **その他のハードウェア デバイス、特に IoT**: デバイスの製造元に問い合わせてください。
+    - **Linux** :多くのディストリビューションでは、CA を /etc/ssl/certs に追加する必要があります。 具体的な手順については、ディストリビューションのドキュメントを参照してください。
+    - **Java** : Java キース トアに上記の CA が含まれていることを確認します。
+    - **切断された環境で実行されている Windows** : 切断された環境で実行されているシステムでは、新しいルートを信頼されたルート証明機関ストアに追加し、中間を中間証明機関ストアに追加する必要があります。
+    - **Android** : デバイスのドキュメントと Android のバージョンを確認してください。
+    - **その他のハードウェア デバイス、特に IoT** : デバイスの製造元に問い合わせてください。
 
 - 特定の証明書失効リスト (CRL) のダウンロードやオンライン証明書状態プロトコル (OCSP) の検証場所のみに対する発信呼び出しが許可されるようにファイアウォール規則が設定されている環境の場合。 次の CRL と OCSP の URL を許可する必要があります。
 

@@ -10,18 +10,18 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8083d42d9ce79bcf31e3875f2ff5d5f06970a7ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713396"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131515"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、PowerShell を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
-[リファレンス](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
+[リファレンス](https://docs.microsoft.com/powershell/module/Az.Storage/) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "91713396"
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」を参照してください。
+   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
     
 2. **Az.Storage** モジュールをインストールします。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91713396"
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)」を参照してください。
+   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
@@ -266,9 +266,9 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 `-Force` パラメーターを使用すると、プロンプトを表示せずにファイルを削除できます。
 
-## <a name="manage-access-permissions"></a>アクセス許可を管理する
+## <a name="manage-access-control-lists-acls"></a>アクセス制御リスト (ACL) を管理する
 
-ディレクトリとファイルのアクセス許可を取得、設定、更新できます。 これらのアクセス許可は、アクセス制御リスト (ACL) でキャプチャされます。
+ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
 > [!NOTE]
 > Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
@@ -277,7 +277,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 `Get-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリまたはファイルの ACL を取得します。
 
-この例では、**コンテナー**のルート ディレクトリの ACL を取得し、その ACL をコンソールに出力します。
+この例では、 **コンテナー** のルート ディレクトリの ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -285,7 +285,7 @@ $filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
 $filesystem.ACL
 ```
 
-この例では、**ディレクトリ**の ACL を取得し、その ACL をコンソールに出力します。
+この例では、 **ディレクトリ** の ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -294,7 +294,7 @@ $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $d
 $dir.ACL
 ```
 
-この例では、**ファイル**の ACL を取得し、その ACL をコンソールに出力します。
+この例では、 **ファイル** の ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filePath = "my-directory/upload.txt"
@@ -312,7 +312,7 @@ $file.ACL
 
 `set-AzDataLakeGen2ItemAclObject` コマンドレットを使用して、所有ユーザー、所有グループ、またはその他のユーザーの ACL を作成します。 その後、`Update-AzDataLakeGen2Item` コマンドレットを使用して ACL をコミットします。
 
-この例では、所有ユーザー、所有グループ、またはその他のユーザーの**コンテナー**のルート ディレクトリに ACL を設定し、その ACL をコンソールに出力します。
+この例では、所有ユーザー、所有グループ、またはその他のユーザーの **コンテナー** のルート ディレクトリに ACL を設定し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -324,7 +324,7 @@ $filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
 $filesystem.ACL
 ```
 
-この例では、所有ユーザー、所有グループ、または他のユーザーの**ディレクトリ**に ACL を設定し、その ACL をコンソールに出力します。
+この例では、所有ユーザー、所有グループ、または他のユーザーの **ディレクトリ** に ACL を設定し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -336,7 +336,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 $dir.ACL
 ```
-この例では、所有ユーザー、所有グループ、または他のユーザーの**ファイル**に ACL を設定し、その ACL をコンソールに出力します。
+この例では、所有ユーザー、所有グループ、または他のユーザーの **ファイル** に ACL を設定し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -359,7 +359,7 @@ $file.ACL
 
 まず、ACL を取得します。 次に、`set-AzDataLakeGen2ItemAclObject` コマンドレットを使用して、ACL エントリを追加または更新します。 `Update-AzDataLakeGen2Item` コマンドレットを使用して ACL をコミットします。
 
-この例では、ユーザーの**ディレクトリ**で ACL を作成または更新します。
+この例では、ユーザーの **ディレクトリ** で ACL を作成または更新します。
 
 ```powershell
 $filesystemName = "my-file-system"

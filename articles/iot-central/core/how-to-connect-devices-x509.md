@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999873"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170313"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する方法
 
@@ -50,12 +50,15 @@ IoT Central では、デバイスとアプリケーションの間の通信を�
     npm install
     ```
 
-1. ルート証明書を作成してから、スクリプトを実行してデバイス証明書を取得します。 証明書の名前には、小文字の英数字とハイフンのみを使用します。
+1. ルート証明書を作成してから、スクリプトを実行してデバイス証明書を取得します。
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > デバイス ID には、文字、数字、および `-` 文字を含めることができます。
 
 これらのコマンドによって、ルートとデバイス証明書用のファイルがそれぞれ 3 つ生成されます。
 
@@ -69,7 +72,7 @@ filename | 目次
 
 1. IoT Central アプリケーションを開き、左側のペインで **[管理]** に移動し、 **[デバイスの接続]** を選択します。
 
-1. **[+ 登録グループの作成]** を選択し、構成証明書の種類として **証明書 (X.509)** を使用する、_MyX509Group_ という名前の新しい登録グループを作成します。
+1. **[+ 登録グループの作成]** を選択し、構成証明書の種類として **証明書 (X.509)** を使用する、 _MyX509Group_ という名前の新しい登録グループを作成します。
 
 1. 作成した登録グループを開き、 **[プライマリの管理]** を選択します。
 
@@ -91,9 +94,9 @@ filename | 目次
 
 ## <a name="run-sample-device-code"></a>サンプル デバイス コードを実行する
 
-1. Azure IoT Central アプリケーションで、 **[デバイス]** を選択し、**環境センサー** デバイス テンプレートから **デバイス ID** として _mytestdevice_ を使用する新しいデバイスを作成します。
+1. Azure IoT Central アプリケーションで、 **[デバイス]** を選択し、 **環境センサー** デバイス テンプレートから **デバイス ID** として _mytestdevice_ を使用する新しいデバイスを作成します。
 
-1. _mytestdevice_key.pem_ と _mytestdevice_cert.pem_ ファイルを、_environmentalSensor.js_ アプリケーションが含まれているフォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (Node.js) に関するチュートリアル](./tutorial-connect-device-nodejs.md)の完了時に作成されています。
+1. _mytestdevice_key.pem_ と _mytestdevice_cert.pem_ ファイルを、 _environmentalSensor.js_ アプリケーションが含まれているフォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (Node.js) に関するチュートリアル](./tutorial-connect-device-nodejs.md)の完了時に作成されています。
 
 1. environmentalSensor.js アプリケーションが含まれているフォルダーに移動し、次のコマンドを実行して X.509 パッケージをインストールします。
 
@@ -102,7 +105,7 @@ filename | 目次
     ```
 
 1. **environmentalSensor.js** ファイルを編集します。
-    - `idScope` 値を、前に書き留めておいた **ID スコープ**に置き換えます。
+    - `idScope` 値を、前に書き留めておいた **ID スコープ** に置き換えます。
     - `registrationId` 値を `mytestdevice` に置き換えます。
 
 1. `require` ステートメントを次のように編集します。
@@ -166,7 +169,7 @@ filename | 目次
 
 ## <a name="create-individual-enrollment"></a>個別登録を作成する
 
-1. Azure IoT Central アプリケーションで、 **[デバイス]** を選択し、環境センサー デバイス テンプレートから**デバイス ID** として _mytestselfcertprimary_ を使用する新しいデバイスを作成します。 **ID スコープ**の値をメモしておきます。後で使用します。
+1. Azure IoT Central アプリケーションで、 **[デバイス]** を選択し、環境センサー デバイス テンプレートから **デバイス ID** として _mytestselfcertprimary_ を使用する新しいデバイスを作成します。 **ID スコープ** の値をメモしておきます。後で使用します。
 
 1. 作成したデバイスを開き、 **[接続]** を選択します。
 
@@ -176,7 +179,7 @@ filename | 目次
 
 1. プライマリ用のファイル オプションを選択し、先ほど生成した _mytestselfcertprimary_cert.pem_ という名前の証明書ファイルをアップロードします。
 
-1. セカンダリ証明書用のファイル オプションを選択し、_mytestselfcertsecondary_cert.pem_ という名前の証明書ファイルをアップロードします。 次に、 **[保存]** を選択します。
+1. セカンダリ証明書用のファイル オプションを選択し、 _mytestselfcertsecondary_cert.pem_ という名前の証明書ファイルをアップロードします。 次に、 **[保存]** を選択します。
 
     ![個別登録証明書のアップロード](./media/how-to-connect-devices-x509/individual-enrollment.png)
 
@@ -187,7 +190,7 @@ filename | 目次
 1. _mytestselfcertprimary_key.pem_ と _mytestselfcertprimary_cert.pem_ ファイルを、environmentalSensor.js アプリケーションが含まれているフォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (Node.js) に関するチュートリアル](./tutorial-connect-device-nodejs.md)の完了時に作成されています。
 
 1. **environmentalSensor.js** ファイルを次のように編集して保存します。
-    - `idScope` 値を、前に書き留めておいた **ID スコープ**に置き換えます。
+    - `idScope` 値を、前に書き留めておいた **ID スコープ** に置き換えます。
     - `registrationId` 値を `mytestselfcertprimary` に置き換えます。
     - **var deviceCert** を次のように置き換えます。
 
@@ -210,6 +213,6 @@ filename | 目次
 
 _mytestselfcertsecondary_ 証明書に対して、上記の手順を繰り返すことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、X.509 証明書を使用するデバイスを接続する方法を学習できました。推奨される次の手順は、[Azure CLI を使用してデバイスの接続を監視する](howto-monitor-devices-azure-cli.md)方法を確認することです。
