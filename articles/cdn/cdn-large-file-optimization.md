@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192637"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148720"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
 
@@ -44,10 +44,10 @@ CDN エッジに届いたチャンクはキャッシュされ、即座にユー�
 
 バイト範囲の要求の詳細については、[RFC 7233](https://tools.ietf.org/html/rfc7233) をご覧ください。
 
-CDN は受信したチャンクをすべてキャッシュします。 ファイル全体を CDN のキャッシュに保存する必要はありません。 ファイルまたはバイト範囲に対する後続の要求は CDN キャッシュから処理されます。 すべてのチャンクが CDN にキャッシュされていない場合、プリフェッチを使用して配信元にチャンクが要求されます。 この最適化は、配信元サーバーのバイト範囲要求をサポートする機能に依存します。配信元サーバーがバイト範囲要求をサポートしていない場合、この最適化の効果はありません。 
+CDN は受信したチャンクをすべてキャッシュします。 ファイル全体を CDN のキャッシュに保存する必要はありません。 ファイルまたはバイト範囲に対する後続の要求は CDN キャッシュから処理されます。 すべてのチャンクが CDN にキャッシュされていない場合、プリフェッチを使用して配信元にチャンクが要求されます。 この最適化は、配信元サーバーのバイト範囲要求をサポートする機能に依存します。配信元サーバーがバイト範囲要求をサポートしていない場合、8 MB を超えるサイズのデータのダウンロードを要求すると失敗します。 
 
 ### <a name="conditions-for-large-file-optimization"></a>大きなファイルの最適化の条件
-一般的な Web 配信の最適化を使用すると、**Azure CDN Standard from Microsoft** の大きなファイルの最適化機能が既定で有効になります。 最大ファイル サイズの上限はありません。
+最大ファイル サイズの上限はありません。
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Azure CDN from Verizon を使った大きなファイルの配信の最適化
@@ -68,7 +68,7 @@ Complete Cache Fill は、サイズの大きな資産に対して最も有効的
 
 ### <a name="conditions-for-large-file-optimization"></a>大きなファイルの最適化の条件
 
-一般的な Web 配信の最適化を使用すると、**Azure CDN Standard from Verizon** および **Azure CDN Premium from Verizon** の大きなファイルの最適化機能が既定で有効になります。 最大ファイル サイズの上限はありません。 
+一般的な Web 配信の最適化を使用すると、 **Azure CDN Standard from Verizon** および **Azure CDN Premium from Verizon** の大きなファイルの最適化機能が既定で有効になります。 最大ファイル サイズの上限はありません。 
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Azure CDN Standard from Akamai を使った大きなファイルの配信の最適化
@@ -81,7 +81,7 @@ Complete Cache Fill は、サイズの大きな資産に対して最も有効的
 
 ### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>大きなファイルの配信を最適化するための Akamai CDN エンドポイントの構成
 
-**Azure CDN Standard from Akamai** エンドポイントは、Azure Portal 経由での大きなファイルの配信を最適化するように構成できます。 REST API またはクライアント SDK を使用してこれを行うこともできます。 次の手順は、Azure Portal を使用した、**Azure CDN Standard from Akamai** プロファイルのプロセスを示しています。
+**Azure CDN Standard from Akamai** エンドポイントは、Azure Portal 経由での大きなファイルの配信を最適化するように構成できます。 REST API またはクライアント SDK を使用してこれを行うこともできます。 次の手順は、Azure Portal を使用した、 **Azure CDN Standard from Akamai** プロファイルのプロセスを示しています。
 
 1. 新しいエンドポイントを追加するには、Akamai の **[CDN プロファイル]** ページで **[エンドポイント]** を選択します。
 

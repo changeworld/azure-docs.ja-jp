@@ -5,28 +5,28 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 967fdae49f904f6c1cb450b637a8dbc5c481b135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776886"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147530"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>他の作成者や編集者との共同作業
 
-QnA Maker リソースに設定されたロールベースのアクセス制御 (RBAC) を使用して、他の作成者や編集者と共同作業を行います。
+QnA Maker リソースに設定された Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、他の作成者や編集者と共同作業を行います。
 
 ## <a name="access-is-provided-on-the-qna-maker-resource"></a>アクセスは QnA Maker リソースで提供される
 
 すべてのアクセス許可は、QnA Maker リソースに設定されたアクセス許可によって制御されます。 これらのアクセス許可は、読み取り、書き込み、公開、フル アクセスに合わせて調整されます。
 
-この RBAC の特徴は次のとおりです。
-* Azure Active Directory (AAD) は、所有者および共同作成者のキーベースの認証と完全に下位互換性があります。 お客様は、要求でキーベースの認証または RBAC ベースの認証を使用できます。
+この Azure RBAC の特徴は次のとおりです。
+* Azure Active Directory (AAD) は、所有者および共同作成者のキーベースの認証と完全に下位互換性があります。 お客様は、要求でキーベースの認証または Azure RBAC ベースの認証を使用できます。
 * 制御はナレッジ ベース レベルではなくリソース レベルであるため、リソース内のすべてのナレッジ ベースに作成者と編集者をすばやく追加できます。
 
 ## <a name="access-is-provided-by-a-defined-role"></a>アクセスは定義済みのロールによって提供される
 
-[!INCLUDE [RBAC permissions table](../includes/role-based-access-control.md)]
+[!INCLUDE [Azure RBAC permissions table](../includes/role-based-access-control.md)]
 
 ## <a name="authentication-flow"></a>Authentication flow
 

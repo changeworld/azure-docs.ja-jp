@@ -9,16 +9,16 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996755"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139365"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
-この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) のリファレンス ページを参照してください。
+この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
@@ -27,38 +27,19 @@ ms.locfileid: "91996755"
 ### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK for Python v1.16.0
 + **バグの修正と機能強化**
   + **azure-cli-ml**
-    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらの省略可能な制限を定義するには、1. `AKSEndpoint.deploy_configuration()` および `AKSWebservice.deploy_configuration()` メソッドで `cpu_cores_limit` および `memory_gb_limit` パラメーターを設定します。2. 該当する CLI 呼び出しで `--cpu-cores-limit` および `--memory-gb-limit` フラグを設定します。3. デプロイメント構成の .json/.yml ファイルの `containerResourceRequirements` で `cpuLimit` と `memoryInGBLimit` を設定します。Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
-  + **azureml-contrib-interpret**
-    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
-  + **azureml-contrib-k8s**
-    + ArcKubernetes コンピューティングをアタッチするためのサポートが追加されました
-  + **azureml-contrib-mir**
-    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらの省略可能な制限を定義するには、1. `AKSEndpoint.deploy_configuration()` および `AKSWebservice.deploy_configuration()` メソッドで `cpu_cores_limit` および `memory_gb_limit` パラメーターを設定します。2. 該当する CLI 呼び出しで `--cpu-cores-limit` および `--memory-gb-limit` フラグを設定します。3. デプロイメント構成の .json/.yml ファイルの `containerResourceRequirements` で `cpuLimit` と `memoryInGBLimit` を設定します。Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
-  + **azureml-contrib-server**
-    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらの省略可能な制限を定義するには、1. `AKSEndpoint.deploy_configuration()` および `AKSWebservice.deploy_configuration()` メソッドで `cpu_cores_limit` および `memory_gb_limit` パラメーターを設定します。2. 該当する CLI 呼び出しで `--cpu-cores-limit` および `--memory-gb-limit` フラグを設定します。3. デプロイメント構成の .json/.yml ファイルの `containerResourceRequirements` で `cpuLimit` と `memoryInGBLimit` を設定します。Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
+    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 これらのオプション制限は、該当する CLI 呼び出しで `--cpu-cores-limit` フラグと `--memory-gb-limit` フラグを設定することで利用できます。
   + **azureml-core**
     + azureml-core の直接の依存関係のメジャー バージョンを固定します
-    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 Kubernetes のリソースと制限事項の詳細については、 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits を参照してください。
+    + AKSWebservice と AKSEndpoints は、ポッドレベルの CPU とメモリのリソース制限をサポートするようになりました。 [Kubernetes のリソースと制限事項](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)に関する詳細
     + 個々の行をログに記録できるように run.log_table を更新しました。
-    + ワークスペースのみを使用して実行を取得する静的メソッド `Run.get(workspace, run_id)` を追加しました - ワークスペース内の実行を取得するインスタンス メソッド `Workspace.get_run(run_id)` を追加しました
+    + ワークスペースの使用でのみ実行を取得するため、静的メソッド `Run.get(workspace, run_id)` を追加しました 
+    + ワークスペース内で実行を取得するため、インスタンス メソッド `Workspace.get_run(run_id)` を追加しました
     + 実行構成に、スクリプトと引数ではなくコマンドを送信できるようになるコマンド プロパティの導入。
-  + **azureml-dataprep-native**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
-  + **azureml-explain-model**
-    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
   + **azureml-interpret**
     + azureml-interpret のクライアントの is_raw フラグの動作に関する説明を修正しました
-    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
-  + **azureml-pipeline-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
   + **azureml-sdk**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
-  + **azureml-tensorboard**
-    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-tensorboard での pypi へのアップロード エラーの原因となるパッケージの説明を修正しました
-  + **azureml-train**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
+    + `azureml-sdk` は Python 3.8 を正式にサポートします。
   + **azureml-train-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` は Python 3.8 を正式にサポートします。
     + TensorFlow 2.3 キュレーション環境の追加
     + 実行構成に、スクリプトと引数ではなくコマンドを送信できるようになるコマンド プロパティの導入。
   + **azureml-widgets**
@@ -366,7 +347,7 @@ ms.locfileid: "91996755"
   + **azureml-pipeline-steps**
     + azureml-pipeline-steps のドキュメントを更新しました。
     +  ユーザーが環境をその他の構成と一緒にインラインで定義するか、別のファイルに定義できるように、ParallelRunConfig の `load_yaml()` のサポートを追加しました。
-  + **azureml-train-automl-client**.
+  + **azureml-train-automl-client** .
     + AutoMLConfig の一部として `enable_cache` を指定する機能を削除しました。
   + **azureml-train-automl-runtime**
     + BERT を使用したマルチノードおよびマルチ GPU の分散特徴量化が制限付きで使用できるようになりました。
@@ -516,7 +497,7 @@ ms.locfileid: "91996755"
     + AutoML の予測で、モデルを再トレーニングしなくても、事前に指定した期間の最大値を超える顧客の予測がサポートされるようになりました。 予測の対象が指定した期間の最大値よりも未来になる場合でも、forecast() 関数によって、再帰的操作モードを使用してそれ以降の日付に対してポイント予測が作成されます。 この新機能の説明については、[フォルダー](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)内の "forecasting-forecast-function" ノートブックの「期間の最大値を超える予測」セクションを参照してください。"
   
   + **azureml-pipeline-steps**
-    + ParallelRunStep がリリースされ、**azureml-pipeline-steps** パッケージに含まれるようになりました。 **azureml-contrib-pipeline-steps** パッケージに含まれる既存の ParallelRunStep は非推奨になります。 パブリック プレビュー バージョンからの変更点は次のとおりです。
+    + ParallelRunStep がリリースされ、 **azureml-pipeline-steps** パッケージに含まれるようになりました。 **azureml-contrib-pipeline-steps** パッケージに含まれる既存の ParallelRunStep は非推奨になります。 パブリック プレビュー バージョンからの変更点は次のとおりです。
       + 指定した任意のバッチに対してメソッドを実行する最大呼び出しを制御するための、省略可能な構成可能パラメーター `run_max_try` が追加されました (既定値は 3)。
       + PipelineParameter が自動生成されなくなりました。 次の構成可能な値は、PipelineParameter として明示的に設定できます。
         + mini_batch_size
@@ -1899,7 +1880,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
   + **azureml-pipeline-steps**
     + DatabricksStep の入力と出力に対して DBFS Datastore がサポートされるようになりました。
     + Azure Batch Step の入力/出力に関するドキュメントが更新されました。
-    + AzureBatchStep で、*delete_batch_job_after_finish* の既定値を *true* に変更しました。
+    + AzureBatchStep で、 *delete_batch_job_after_finish* の既定値を *true* に変更しました。
   + **azureml-telemetry**
     +  azureml-contrib-opendatasets を azureml-opendatasets に移動します。
     + オープン データセット クラスを Azure Machine Learning ワークスペースに登録し、AML データセットの機能をシームレスに利用できるようにします。
@@ -1931,7 +1912,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
 
 + **新機能**
   + **azureml-opendatasets**
-    + **azureml-contrib-opendatasets** は、**azureml-opendatasets** として使用できるようになりました。 古いパッケージも引き続き機能しますが、より高度な機能と機能強化を実現するために、今後は **azureml-opendatasets** を使用することをお勧めします。
+    + **azureml-contrib-opendatasets** は、 **azureml-opendatasets** として使用できるようになりました。 古いパッケージも引き続き機能しますが、より高度な機能と機能強化を実現するために、今後は **azureml-opendatasets** を使用することをお勧めします。
     + この新しいパッケージを使用すると、オープン データセットを Azure Machine Learning ワークスペースのデータセットとして登録し、そのデータセットで提供される任意の機能を活用できます。
     + これには、オープン データセットを Pandas/SPARK データフレームとして使用したり、天気などの一部のデータセット用に場所を結合するなど、既存の機能も含まれます。
 

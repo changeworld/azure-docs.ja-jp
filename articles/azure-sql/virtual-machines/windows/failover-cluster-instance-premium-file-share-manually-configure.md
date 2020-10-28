@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298713"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164399"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium ファイル共有を使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Premium ファイル共有は、記憶域スペース ダイレクト (SSD) に�
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
 - [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)内または異なる[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)内の [2 つ以上の準備済みの Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。
 - データ ファイル用のデータベースのストレージ クォータに基づいて、クラスター化されたドライブとして使用される [Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
-- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
+- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps)。 
 
 ## <a name="mount-premium-file-share"></a>Premium ファイル共有をマウントする
 
@@ -194,7 +194,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を作成するか、または SQL Server 2019 と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューできます。 
+現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
 
 ## <a name="limitations"></a>制限事項
 
@@ -204,7 +204,8 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="next-steps"></a>次のステップ
 
-[仮想ネットワーク名と Azure ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](hadr-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
+[仮想ネットワーク名と Azure ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
+
 
 Premium ファイル共有がお客様に適した FCI 記憶域ソリューションでない場合は、代わりに [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)または[記憶域スペース ダイレクト](failover-cluster-instance-storage-spaces-direct-manually-configure.md)を使用して FCI を作成することを検討してください。 
 

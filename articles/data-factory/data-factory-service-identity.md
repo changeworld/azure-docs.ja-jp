@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434947"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123751"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -57,7 +57,7 @@ Data Factory のマネージド ID は、次のように生成されます。
 
 ### <a name="generate-managed-identity-using-powershell"></a>PowerShell を使用したマネージド ID の生成
 
-**Set-AzDataFactoryV2** コマンドを再度呼び出すと、"Identity" フィールドが新たに生成されます。
+**Set-AzDataFactoryV2** コマンドを呼び出すと、"Identity" フィールドが新たに生成されます。
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -79,7 +79,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**要求本文**: add "identity": { "type":"SystemAssigned" } を追加します。
+**要求本文** : add "identity": { "type":"SystemAssigned" } を追加します。
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**応答**: マネージド ID が自動的に作成され、これに応じて "identity" セクションが設定されます。
+**応答** : マネージド ID が自動的に作成され、これに応じて "identity" セクションが設定されます。
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したマネージド ID の生成
 
-**テンプレート**: add "identity": { "type":"SystemAssigned" } を追加します。
+**テンプレート** : add "identity": { "type":"SystemAssigned" } を追加します。
 
 ```json
 {
@@ -201,7 +201,7 @@ Type                  : ServicePrincipal
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**応答**:次の例のような応答が返されます。 "identity" セクションに値が適宜入力されます。
+**応答** :次の例のような応答が返されます。 "identity" セクションに値が適宜入力されます。
 
 ```json
 {

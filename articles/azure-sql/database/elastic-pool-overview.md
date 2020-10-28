@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330789"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107897"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Azure SQL Database におけるエラスティック プールを利用した複数のデータベースの管理およびスケーリング
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 
    ![a single database suitable for a pool](./media/elastic-pool-overview/one-database.png)
 
-図に示した DB1 の 5 分間のピークは 90 DTU ですが、全体的な平均使用量は 5 DTU 未満です。 Single Database でこのワークロードを実行するためには S3 コンピューティング サイズが必要ですが、このパフォーマンスを確保すると、アクティビティの少ない時間帯にほとんどのリソースが使用されなくなります。
+このグラフは、12:00 から 1:00 までの 1 時間の DTU 使用率を示しています。ここでは、各データ ポイントの細分性は 1 分間です。 12:10 の時点で、DB1 のピークは 90 DTU にも上りますが、全体的な平均使用量は 5 DTU 未満です。 Single Database でこのワークロードを実行するためには S3 コンピューティング サイズが必要ですが、このパフォーマンスを確保すると、アクティビティの少ない時間帯にほとんどのリソースが使用されなくなります。
 
 プールを利用すれば、これらの未使用の DTU を複数のデータベースで共有できるので、必要な DTU と全体的なコストを削減できます。
 
@@ -74,7 +74,7 @@ DB1 と類似する使用パターンを持つデータベースが他にもあ�
 - 各データベースのピーク使用時間が異なります。
 - eDTU は、多くのデータベース間で共有されます。
 
-プールの価格は、プール eDTU の機能を表します。 プールの eDTU 単価は単一データベースの DTU 単価の 1.5 倍ですが、**プール eDTU は多数のデータベースで共有できるため、合計 eDTU は少なくて済みます**。 これらの価格と eDTU 共有の特徴が、プールで節約を可能にするベースとなります。
+プールの価格は、プール eDTU の機能を表します。 プールの eDTU 単価は単一データベースの DTU 単価の 1.5 倍ですが、 **プール eDTU は多数のデータベースで共有できるため、合計 eDTU は少なくて済みます** 。 これらの価格と eDTU 共有の特徴が、プールで節約を可能にするベースとなります。
 
 データベース数とデータベースの使用量に関連する次の経験則から、Single Database でのコンピューティング サイズを使用した場合と比べて、プールがコスト削減に繋がることがわかります。
 
@@ -113,11 +113,11 @@ DB1 と類似する使用パターンを持つデータベースが他にもあ�
 
 DTU ベースの購入モデルの場合:
 
-MAX(<*DB の合計数* X *DB あたりの平均 DTU 使用率*>, <*同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率*>)
+MAX(< *DB の合計数* X *DB あたりの平均 DTU 使用率* >, < *同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率* >)
 
 仮想コアベースの購入モデルの場合:
 
-MAX(<*DB の合計数* X *DB あたりの平均 vCore 使用率*>, <*同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率*>)
+MAX(< *DB の合計数* X *DB あたりの平均 vCore 使用率* >, < *同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率* >)
 
 2. プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。 次に、このストレージの容量を提供する eDTU プール サイズを決定します。
 3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 仮想コアベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。

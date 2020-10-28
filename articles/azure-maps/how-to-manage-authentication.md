@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311105"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089453"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -41,7 +41,7 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 次の表に、Azure Maps での一般的な認証と認可のシナリオの概要を示します。 表では、それぞれのシナリオによって提供される保護の種類を比較しています。
 
 > [!IMPORTANT]
-> Microsoft では、運用アプリケーション用に Azure Active Directory (Azure AD) およびロールベースのアクセス制御 (RBAC) を実装することをお勧めします。
+> Microsoft では、運用アプリケーション用に Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Active Directory (Azure AD) を実装することをお勧めします。
 
 | シナリオ                                                                                    | 認証 | 承認 | 開発の作業量 | 運用の作業量 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
@@ -56,17 +56,17 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 
 ## <a name="view-role-definitions"></a>ロール定義を表示する
 
-Azure Maps に使用できる Azure ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
+Azure Maps に使用できる Azure ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「 *Azure Maps* 」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
 
 > [!div class="mx-imgBorder"]
 > ![使用可能なロールの表示](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>ロールの割り当てを表示する
 
-Azure Maps の RBAC が付与されているユーザーやアプリを表示するには、 **[アクセス制御 (IAM)]** に移動します。 そこで、 **[ロールの割り当て]** を選択してから、「**Azure Maps**」でフィルター処理します。
+Azure Maps に対するアクセス権が付与されているユーザーやアプリを表示するには、 **[アクセス制御 (IAM)]** に移動します。 そこで、 **[ロールの割り当て]** を選択してから、「 **Azure Maps** 」でフィルター処理します。
 
 > [!div class="mx-imgBorder"]
-> ![RBAC が付与されているユーザーやアプリの表示](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![アクセス権が付与されているユーザーやアプリの表示](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Azure Maps のトークンを要求する
 

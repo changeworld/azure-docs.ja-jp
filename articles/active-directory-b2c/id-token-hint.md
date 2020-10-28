@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564743"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132076"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで ID トークン ヒントの技術プロファイルを定義する
 
@@ -59,7 +59,7 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 たとえば、**IdTokenHint_ExtractClaims** 技術プロファイルのプロトコルは `None` です。
+**Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 たとえば、 **IdTokenHint_ExtractClaims** 技術プロファイルのプロトコルは `None` です。
 
 ```xml
 <TechnicalProfile Id="IdTokenHint_ExtractClaims">
@@ -87,17 +87,17 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 | 発行者 | Yes | セキュリティ トークン サービス (トークン発行者) を識別します。 この値は、JWT トークン要求内の `iss` 要求と同じである必要があります。 | 
 | IdTokenAudience | Yes | トークンの受信者を示します。 JWT トークン要求内の `aud` 要求と同じである必要があります。 | 
 
-次のメタデータは、対称キーを使用する場合に関連します。 
+次のメタデータは、非対称キーを使用する場合に関連します。 
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | METADATA| Yes | トークン発行者の構成ドキュメントを指す URL。これは、OpenID の既知の構成エンドポイントとも呼ばれます。   |
 | 発行者 | No | セキュリティ トークン サービス (トークン発行者) を識別します。 この値は、メタデータで構成されている値を上書きするために使用できます。また、JWT トークン要求内の `iss` 要求と同じである必要があります。 |  
-| IdTokenAudience | No | トークンの受信者を示します。 この値は、メタデータで構成されている値を上書きするために使用できます。また、JWT トークン要求内の `aud` 要求と同じである必要があります。 |  
+| IdTokenAudience | No | トークンの受信者を示します。 JWT トークン要求内の `aud` 要求と同じである必要があります。 |  
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
-対称キーを使用する場合、**CryptographicKeys** 要素には次の属性が含まれます。
+対称キーを使用する場合、 **CryptographicKeys** 要素には次の属性が含まれます。
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
@@ -219,7 +219,7 @@ New-SelfSignedCertificate `
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <!-- <Item Key="IdTokenAudience">your_optional_audience_override</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

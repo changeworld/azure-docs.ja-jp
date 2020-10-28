@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470138"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152274"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -55,7 +55,7 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 ![リソース グループ設定](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>ストレージ アクセスのセキュリティ保護
-セキュリティのために、各ユーザーが自分のストレージ アカウントをプロビジョニングする必要があります。  ロールベースのアクセス制御 (RBAC) では、ユーザーはストレージ アカウント レベルで共同作成者以上のアクセス権を持つ必要があります。
+セキュリティのために、各ユーザーが自分のストレージ アカウントをプロビジョニングする必要があります。  Azure ロールベースのアクセス制御 (Azure RBAC) では、ユーザーはストレージ アカウント レベルで共同作成者以上のアクセス権を持つ必要があります。
 
 Cloud Shell では、指定されたサブスクリプション内のストレージ アカウントで Azure ファイル共有が使用されます。 アクセス許可が継承されるため、サブスクリプションに対する十分なアクセス権を持つユーザーは、サブスクリプションに含まれるすべてのストレージ アカウントとファイル共有にアクセスできます。
 

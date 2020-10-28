@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087256"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091612"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "87087256"
 アプリケーションは実行時に接続文字列にアクセスして、Azure Storage に対する要求を承認する必要があります。 接続文字列は次の方法で保存できます。
 
 * 接続文字列は、環境変数に保存することができます。
-* デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
+* デスクトップまたはデバイスで実行するアプリケーションの場合は、 **app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
 * Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](https://msdn.microsoft.com/library/ee758710.aspx)に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新して [Azurite ストレージ エミュレーター](../common/storage-use-azurite.md)とクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
@@ -57,10 +57,10 @@ Azure Storage アカウントへの接続文字列は、次の形式で作成し
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、"*HTTPS の使用を強くお勧めします*"。
+Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、" *HTTPS の使用を強くお勧めします* "。
 
 > [!TIP]
-> お使いのストレージ アカウントの接続文字列は、[Azure Portal](https://portal.azure.com) に見つかります。 ストレージ アカウントのメニュー ブレードの**設定** > 、**アクセス キー**の順に移動して、両方のプライマリおよびセカンダリのアクセス キーの接続文字列を確認できます。
+> お使いのストレージ アカウントの接続文字列は、[Azure Portal](https://portal.azure.com) に見つかります。 ストレージ アカウントのメニュー ブレードの **設定** > 、 **アクセス キー** の順に移動して、両方のプライマリおよびセカンダリのアクセス キーの接続文字列を確認できます。
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Shared Access Signature を使用して接続文字列を作成する
@@ -110,9 +110,10 @@ AccountKey=<account-key>
 
 カスタム ドメインにストレージ エンドポイントをマッピングし、そのエンドポイントを接続文字列に指定しなかった場合、コードからその接続文字列を使用して、サービスのデータにアクセスすることはできません。
 
+Azure Storage 用にカスタム ドメインを構成する方法の詳細については、「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](../blobs/storage-custom-domain-name.md)」を参照してください。
+
 > [!IMPORTANT]
-> 接続文字列のサービス エンドポイントの値は、`https://`(推奨) や `http://` など、整形式の URI である必要があります。 Azure Storage はカスタム ドメインに対して HTTPS をサポートしていないため、カスタム ドメインを指すすべてのエンドポイント URI に `http://` を指定する "*必要があります*"。
->
+> 接続文字列のサービス エンドポイントの値は、`https://`(推奨) や `http://` など、整形式の URI である必要があります。
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>エンドポイント サフィックスを含む接続文字列を作成する
 

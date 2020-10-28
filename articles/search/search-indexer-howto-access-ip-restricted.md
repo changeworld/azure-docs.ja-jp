@@ -1,25 +1,25 @@
 ---
 title: インデクサーの IP 範囲へのアクセスを許可する
 titleSuffix: Azure Cognitive Search
-description: インデクサーによるアクセスが可能なように IP ファイアウォール規則を設定する方法について説明するハウツー ガイド。
+description: Azure Cognitive Search インデクサーによるデータ アクセスを許可するように、IP ファイアウォール規則を構成します。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950195"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101394"
 ---
-# <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>インデクサーによるアクセスを可能にする IP ファイアウォール規則の設定
+# <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>インデクサー接続を許可するように IP ファイアウォール規則を構成する (Azure Cognitive Search)
 
-ストレージ アカウント、Cosmos DB アカウント、Azure SQL サーバーなどの Azure リソースに関する IP ファイアウォール規則では、特定の IP 範囲を送信元とするトラフィックにのみデータへのアクセスが許可されます。
+ストレージ アカウント、Cosmos DB アカウント、Azure SQL サーバーなどの Azure リソースに関する IP ファイアウォール規則を使用すると、特定の IP 範囲を送信元とするトラフィックにのみデータへのアクセスが許可されます。
 
-この記事では、Azure portal を使用してストレージ アカウントの IP ルールを構成して、Azure Cognitive Search インデクサーによるデータへのアクセスをセキュリティで保護できるようにする方法について説明します。 このガイドはストレージに固有のものですが、データへのアクセスをセキュリティで保護するために IP ファイアウォール規則も提供する他の Azure リソースでそのまま使用できます。
+この記事では、Azure portal を使用してストレージ アカウントの IP 規則を構成して、Azure Cognitive Search インデクサーによるデータへのアクセスをセキュリティで保護できるようにする方法について説明します。 Azure Storage に固有ですが、このアプローチは、データへのアクセスをセキュリティで保護するために、IP ファイアウォール規則を使用する他の Azure リソースに対しても機能します。
 
 > [!NOTE]
 > ストレージ アカウントの IP ファイアウォール規則は、ストレージ アカウントと検索サービスが異なるリージョンにある場合にのみ効力を発揮します。 設定でこれが許可されない場合は、[信頼されたサービスの例外オプション](search-indexer-howto-access-trusted-service-exception.md)を使用することをお勧めします。
@@ -30,7 +30,7 @@ ms.locfileid: "91950195"
 
    ![サービスの FQDN を取得する](media\search-indexer-howto-secure-access\search-service-portal.png "サービスの FQDN を取得する")
 
-検索サービスの IP アドレスは、FQDN の `nslookup` (または `ping`) を実行することで取得できます。 これはファイアウォール規則に追加する IP アドレスの 1 つになります。
+検索サービスの IP アドレスは、FQDN の `nslookup` (または `ping`) を実行することで取得できます。 以下の例では、Azure Storage ファイアウォールのインバウンド規則に "10.50.10.50" を追加します。
 
 ```azurepowershell
 
@@ -45,6 +45,8 @@ Aliases:  contoso.search.windows.net
 ```
 
 ## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>"AzureCognitiveSearch" サービス タグの IP アドレス範囲を取得する
+
+追加の IP アドレスは、インデクサーの[マルチテナント実行環境](search-indexer-securing-resources.md#indexer-execution-environment)からの要求に使用されます。 この IP アドレス範囲は、サービス タグから取得できます。
 
 `AzureCognitiveSearch` サービス タグの IP アドレス範囲は、[Discovery API (プレビュー)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)経由で取得できます。
 
@@ -79,16 +81,14 @@ IP アドレス範囲をストレージ アカウントのファイアウォー�
 
    ![ファイアウォールと仮想ネットワーク](media\search-indexer-howto-secure-access\storage-firewall.png "ファイアウォールと仮想ネットワーク")
 
-前もって取得した 3 つの IP アドレス (1 つは検索サービスの IP、2 つは `AzureCognitiveSearch` サービス タグ) をアドレス範囲に追加し、 **[保存]** をクリックします。
+前もって取得した 3 つの IP アドレス (1 つは検索サービスの IP、2 つは `AzureCognitiveSearch` サービス タグ) をアドレス範囲に追加し、 **[保存]** を選択します。
 
    ![ファイアウォール IP 規則](media\search-indexer-howto-secure-access\storage-firewall-ip.png "ファイアウォール IP 規則")
 
-ファイアウォール規則は更新されるまで 5 分から 10 分かかります。その後、インデクサーでストレージ アカウントのデータにアクセスできるようになります。
+ファイアウォール規則は更新されるまで 5 から 10 分かかります。その後、インデクサーでストレージ アカウントのデータにアクセスできるようになります。
 
 ## <a name="next-steps"></a>次の手順
 
-インデックスへのアクセスを許可するために 2 つの IP アドレス セットを取得する方法がわかったので、次のリンクを使用して、いくつかの一般的なデータ ソースに対する IP ファイアウォール規則を更新します。
-
 - [Azure Storage ファイアウォールを構成する](../storage/common/storage-network-security.md)
-- [CosmosDB の IP ファイアウォールを構成する](../cosmos-db/firewall-support.md)
+- [Cosmos DB の IP ファイアウォールを構成する](../cosmos-db/firewall-support.md)
 - [Azure SQL Server の IP ファイアウォールを構成する](../azure-sql/database/firewall-configure.md)

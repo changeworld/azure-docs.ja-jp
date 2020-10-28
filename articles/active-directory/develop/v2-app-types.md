@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256758"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103154"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -28,7 +28,7 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントでは、さ�
 Microsoft ID プラットフォーム エンドポイントを使う各アプリを、Azure portal の[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)で登録する必要があります。 アプリの登録プロセスでは、次の値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する **アプリケーション (クライアント) ID**
-* 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
+* 応答をアプリにリダイレクトして戻すために使用できる **リダイレクト URI** 。
 * 他にいくつかのシナリオ固有の値 (サポートされているアカウントの種類など)
 
 詳細については、[アプリの登録](quickstart-register-app.md)方法を参照してください。
@@ -46,7 +46,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 次のフロー図は、OAuth 2.0 承認コードの許可を示しています (PKCE に関する詳細は省略しています)。この例では、アプリで Microsoft ID プラットフォーム `authorize` エンドポイントからコードを受け取り、トークンに引き換え、クロスサイト Web 要求を使用してトークンを更新しています。 更新トークンは 24 時間ごとに期限切れになるため、アプリは別のコードを要求する必要があります。 通常、アクセス トークンに加えて、クライアント アプリケーションにサインインしたユーザーを表す `id_token` も、同じフローまたは別の OpenID Connect 要求 (ここには示されていません) を介して要求されます。
 
-![SPA アプリのコード フロー](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="シングル ページ アプリとセキュリティ トークン サービス エンドポイントの間の OAuth 2 認証コード フローを示す図。" border="false":::
 
 実際のシナリオについては、[認証コード フローを使用して、ユーザーをサインインし、JavaScript SPA から Microsoft Graph API を呼び出すチュートリアル](tutorial-v2-javascript-auth-code.md)を参照してください。
 
@@ -108,7 +108,7 @@ Web API では、すべての種類のアプリ (Web サーバー アプリ、�
 
 OAuth2 アクセス トークンを使用して Web API をセキュリティで保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
 
-多くの場合、Web API は Microsoft ID プラットフォームで保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API では**代理**フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
+多くの場合、Web API は Microsoft ID プラットフォームで保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API では **代理** フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
 
 ## <a name="mobile-and-native-apps"></a>モバイル アプリとネイティブ アプリ
 

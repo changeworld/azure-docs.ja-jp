@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000195"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089725"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -72,7 +72,7 @@ Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
-**[アクセス制御 (IAM)]** セクションでは、Azure Portal でのロールベースのアクセス制御 (RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+**[アクセス制御 (IAM)]** セクションでは、Azure portal での Azure ロールベースのアクセス制御 (Azure RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、[Azure portal での Azure ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 ### <a name="tags"></a>Tags
 
@@ -145,7 +145,7 @@ Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis
 
 **maxfragmentationmemory-reserved** 設定では、メモリの断片化に対応するために予約されるメモリ量をクラスター内のインスタンスあたりの MB 単位で構成します。 この値を設定すると、キャッシュがいっぱいになった場合や、キャッシュがほとんどいっぱいで断片化の割合が高い場合でも、Redis サーバーの動作がより安定します。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
-新しいメモリ予約値 (**maxmemory-reserved** または **maxfragmentationmemory-reserved**) を選択する際には、この変更によってすでに大量のデータが入っているキャッシュがどのような影響を受けるのかを考慮する必要があります。 たとえば、53 GB のキャッシュに 49 GB のデータが入っているときに、予約値を 8 GB に変更した場合、この変更によりシステムで利用可能な最大メモリは 45 GB まで低下します。 現在の `used_memory` または `used_memory_rss` が新しい上限値の 45 GB よりも大きい場合、システムでは、`used_memory` と `used_memory_rss` の両方が 45 GB を下回るまでデータを削除しなければならなくなります。 削除することによってサーバーの負荷やメモリの断片化が増える可能性もあります。 `used_memory` や `used_memory_rss` などのキャッシュに関するメトリックの詳細については、「[使用可能なメトリックとレポート期間](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)」をご覧ください。
+新しいメモリ予約値 ( **maxmemory-reserved** または **maxfragmentationmemory-reserved** ) を選択する際には、この変更によってすでに大量のデータが入っているキャッシュがどのような影響を受けるのかを考慮する必要があります。 たとえば、53 GB のキャッシュに 49 GB のデータが入っているときに、予約値を 8 GB に変更した場合、この変更によりシステムで利用可能な最大メモリは 45 GB まで低下します。 現在の `used_memory` または `used_memory_rss` が新しい上限値の 45 GB よりも大きい場合、システムでは、`used_memory` と `used_memory_rss` の両方が 45 GB を下回るまでデータを削除しなければならなくなります。 削除することによってサーバーの負荷やメモリの断片化が増える可能性もあります。 `used_memory` や `used_memory_rss` などのキャッシュに関するメトリックの詳細については、「[使用可能なメトリックとレポート期間](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)」をご覧ください。
 
 > [!IMPORTANT]
 > **maxmemory-reserved** と **maxfragmentationmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
@@ -190,7 +190,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 | サーバーの負荷 |[使用状況グラフ -  Redis サーバーの負荷](cache-how-to-monitor.md#usage-charts) |
 | メモリ使用量 |[キャッシュのパフォーマンス - サイズ](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-キャッシュをアップグレードするには、 **[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[適切なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください
+キャッシュをアップグレードするには、 **[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの [スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[適切なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください
 
 
 ### <a name="scale"></a>スケール
@@ -237,7 +237,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間です。
 
 > [!IMPORTANT]
-> **更新のスケジュール**機能は Premium レベルのキャッシュにのみ使用できます。 詳細および手順については、[Azure Cache for Redis の管理の、更新のスケジュール](cache-administration.md#schedule-updates)に関するページをご覧ください。
+> **更新のスケジュール** 機能は Premium レベルのキャッシュにのみ使用できます。 詳細および手順については、[Azure Cache for Redis の管理の、更新のスケジュール](cache-administration.md#schedule-updates)に関するページをご覧ください。
 >
 >
 
@@ -246,7 +246,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 **[geo レプリケーション]** ブレードには、レベルが Premium である Azure Cache for Redis の 2 つのインスタンスをリンクするメカニズムが用意されています。 一方のキャッシュはプライマリ リンク キャッシュとして、他方はセカンダリ リンク キャッシュとして指定されます。 セカンダリ リンク キャッシュは読み取り専用になり、プライマリ キャッシュに書き込まれたデータがセカンダリ リンク キャッシュにレプリケートされます。 この機能は、Azure リージョン間でキャッシュをレプリケートする際に使用できます。
 
 > [!IMPORTANT]
-> **geo レプリケーション**は、Premium レベルのキャッシュにのみ使用できます。 詳細と手順については、[Azure Cache for Redis の geo レプリケーションを構成する方法](cache-how-to-geo-replication.md)に関するページを参照してください。
+> **geo レプリケーション** は、Premium レベルのキャッシュにのみ使用できます。 詳細と手順については、[Azure Cache for Redis の geo レプリケーションを構成する方法](cache-how-to-geo-replication.md)に関するページを参照してください。
 >
 >
 
@@ -336,7 +336,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 * [診断](#diagnostics)
 
 ### <a name="redis-metrics"></a>[Redis メトリック]
-**[Redis メトリック]** をクリックしてキャッシュの[メトリックを表示](cache-how-to-monitor.md#view-cache-metrics)します。
+**[Redis メトリック]** をクリックしてキャッシュの [メトリックを表示](cache-how-to-monitor.md#view-cache-metrics)します。
 
 ### <a name="alert-rules"></a>アラート ルール
 
@@ -344,7 +344,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 
 ### <a name="diagnostics"></a>診断
 
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** をクリックし、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** をクリックし、キャッシュ診断の格納に使用する [ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
 
 >[!NOTE]
 >キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)できます。
@@ -439,7 +439,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
   * P4 (53 ～ 530 GB) - 最大 40,000 接続
 
 > [!NOTE]
-> 各キャッシュのサイズが特定の接続数*まで*許容される一方で、Redis への各接続はそれにオーバーヘッドが関連付けられています。 このようなオーバーヘッドの例には、TLS/SSL 暗号化の結果としての CPU とメモリの使用量があります。 指定したキャッシュ サイズの最大接続数の上限は、負荷が低いキャッシュを想定しています。 接続オーバーヘッドからの読み込みに*加えて*、クライアントの操作からの読み込みがシステムの容量を超える場合、現在のキャッシュ サイズが接続数の上限を超えていない場合でも、キャッシュ容量の問題が発生する可能性があります。
+> 各キャッシュのサイズが特定の接続数 *まで* 許容される一方で、Redis への各接続はそれにオーバーヘッドが関連付けられています。 このようなオーバーヘッドの例には、TLS/SSL 暗号化の結果としての CPU とメモリの使用量があります。 指定したキャッシュ サイズの最大接続数の上限は、負荷が低いキャッシュを想定しています。 接続オーバーヘッドからの読み込みに *加えて* 、クライアントの操作からの読み込みがシステムの容量を超える場合、現在のキャッシュ サイズが接続数の上限を超えていない場合でも、キャッシュ容量の問題が発生する可能性があります。
 >
 >
 
@@ -464,7 +464,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 Redis コマンドの詳細については、[https://redis.io/commands](https://redis.io/commands) を参照してください。
 
 ## <a name="redis-console"></a>Redis コンソール
-**Redis コンソール**を使用して Azure Cache for Redis インスタンスにコマンドを安全に発行できます。このコンソールはすべてのキャッシュ レベルで、Azure portal で使用できます。
+**Redis コンソール** を使用して Azure Cache for Redis インスタンスにコマンドを安全に発行できます。このコンソールはすべてのキャッシュ レベルで、Azure portal で使用できます。
 
 > [!IMPORTANT]
 > - [VNET](cache-how-to-premium-vnet.md) では Redis コンソールを使用できません。 キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。 Redis コンソールは、VNET の外部にあるローカル ブラウザーで実行されるため、キャッシュに接続できません。

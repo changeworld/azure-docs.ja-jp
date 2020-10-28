@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993493"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122205"
 ---
 # <a name="confidential-containers"></a>機密コンテナー
 
 ## <a name="overview"></a>概要
 
-開発者が**既存の Docker アプリケーション (新規または既存)** を取り込み、機密性の高いコンピューティング ノードのサポートを使用して Azure Kubernetes Service (AKS) で安全に実行できるようにします。
+開発者が **既存の Docker アプリケーション (新規または既存)** を取り込み、機密性の高いコンピューティング ノードのサポートを使用して Azure Kubernetes Service (AKS) で安全に実行できるようにします。
 
 機密コンテナーを使用して次のものを保護できます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "90993493"
 
 ハードウェア ベースの信頼できる実行環境 (TEE) は、信頼できるコンピューティング ベース (TCB) コンポーネントからハードウェアとソフトウェアの測定を通じて強力な保証を提供するために使用される重要なコンポーネントです。 これらの測定値の検証は、予期される計算の検証に役立ち、コンテナー アプリの改ざんが検証されます。
 
-機密コンテナーを使用すると、**Python、Java、Node JS などで開発されたカスタム アプリケーションや、NGINX、Redis Cache、MemCache などのパッケージ化されたソフトウェアア プリケーション**を、変更せずに AKS で実行できます。
+機密コンテナーを使用すると、 **Python、Java、Node JS などで開発されたカスタム アプリケーションや、NGINX、Redis Cache、MemCache などのパッケージ化されたソフトウェアア プリケーション** を、変更せずに AKS で実行できます。
 
 機密コンテナーは、コンテナーの機密性に対する最速のパスであり、暗号化によるコンテナーの保護が含まれ、ビジネス ロジックをまったく、またはほとんど変更せずに、リフト アンド シフトを可能にします。
 
@@ -67,7 +67,7 @@ AKS を使用した機密コンピューティング ノードへの Scone の�
 
 ### <a name="anjuna"></a>Anjuna
 
-[Anjuna](https://www.anjuna.io/) では、変更されていないコンテナーを AKS で実行できるようにする、SGX プラットフォーム ソフトウェアが提供されます。 **今後**の機能とユーザー フローの詳細については、[こちら](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)を参照してください。
+[Anjuna](https://www.anjuna.io/) では、変更されていないコンテナーを AKS で実行できるようにする、SGX プラットフォーム ソフトウェアが提供されます。 機能の詳細について参照し、サンプルアプリケーションを[こちら](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)で確認してください。
 
 サンプル Redis Cache と Python カスタム アプリケーションについては[こちら](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)を参照してください
 

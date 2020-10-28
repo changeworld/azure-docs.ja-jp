@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 89bad470d5ead43b79e3691343b53fff796f7abc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828130"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172784"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する
 
@@ -39,20 +39,28 @@ Azure Government リージョンまたは Azure China 21Vianet リージョン�
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>プライベート エンドポイントを使用するワークスペースを作成する
 
-プライベート エンドポイントを使用してワークスペースを作成するには、次のいずれかの方法を使用します。
+プライベート エンドポイントを使用してワークスペースを作成するには、次のいずれかの方法を使用します。 いずれの方法でも __既存の仮想ネットワークが必要です__ 。
 
 > [!TIP]
-> Azure Resource Manager テンプレートを使用すると、必要に応じて新しい仮想ネットワークを作成できます。 その他の方法にはすべて、既存の仮想ネットワークが必要です。
-
-# <a name="resource-manager-template"></a>[Resource Manager テンプレート](#tab/azure-resource-manager)
-
-[https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) にある Azure Resource Manager テンプレートを使用すると、プライベート エンドポイントと仮想ネットワークを使用してワークスペースを簡単に作成することができます。
-
-プライベート エンドポイントを含め、このテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。](how-to-create-workspace-template.md)」を参照してください。
+> ワークスペース、プライベート エンドポイント、仮想ネットワークを同時に作成する場合は、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成する](how-to-create-workspace-template.md)」を参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
 Azure Machine Learning Python SDK には、[PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) クラスが用意されています。これを [Workspace.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) で使用すると、プライベート エンドポイントを使用してワークスペースを作成できます。 このクラスには、既存の仮想ネットワークが必要です。
+
+```python
+from azureml.core import Workspace
+from azureml.core import PrivateEndPointConfig
+
+pe = PrivateEndPointConfig(name='myprivateendpoint', vnet_name='myvnet', vnet_subnet_name='default')
+ws = Workspace.create(name='myworkspace',
+    subscription_id='<my-subscription-id>',
+    resource_group='myresourcegroup',
+    location='eastus2',
+    private_endpoint_config=pe,
+    private_endpoint_auto_approval=True,
+    show_output=True)
+```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -67,6 +75,78 @@ Azure Machine Learning Python SDK には、[PrivateEndpointConfig](https://docs.
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure Machine Learning スタジオの __[ネットワーク]__ タブで、プライベート エンドポイントを構成できます。 ただし、既存の仮想ネットワークが必要です。 詳細については、[ポータルでのワークスペースの作成](how-to-manage-workspace.md)に関するページを参照してください。
+
+---
+
+## <a name="add-a-private-endpoint-to-a-workspace"></a>ワークスペースにプライベート エンドポイントを追加する
+
+次のいずれかの方法を使用して、既存のワークスペースにプライベート エンドポイントを追加します。
+
+> [!IMPORTANT]
+>
+> プライベート エンドポイントを作成するには、既存の仮想ネットワークが必要です。 また、プライベート エンドポイントを追加する前に、[プライベート エンドポイントのネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
+
+> [!WARNING]
+>
+> このワークスペースに関連付けられている既存のコンピューティング先があり、それらがプライベート エンドポイントが作成されたのと同じ仮想ネットワークの背後にない場合、それらは機能しません。
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+from azureml.core import Workspace
+from azureml.core import PrivateEndPointConfig
+
+pe = PrivateEndPointConfig(name='myprivateendpoint', vnet_name='myvnet', vnet_subnet_name='default')
+ws = Workspace.from_config()
+ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
+```
+
+この例で使用されているクラスとメソッドの詳細については、[PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) と [Workspace.add_private_endpoint](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-) を参照してください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint add](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) コマンドが用意されています。
+
+```azurecli
+az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+ポータルの Azure Machine Learning ワークスペースから、 __[プライベート エンドポイント接続]__ を選択し、 __[+ プライベート エンドポイント]__ を選択します。 新しいプライベート エンドポイントを作成するには、フィールドを使用します。
+
+* __[リージョン]__ を選択する場合は、ご使用の仮想ネットワークと同じリージョンを選択します。 
+* __[リソースの種類]__ を選択する場合は、 __Microsoft.MachineLearningServices/workspaces__ を使用します。 
+* __[リソース]__ を実際のワークスペース名に設定します。
+
+最後に、 __[作成]__ を選択してプライベート エンドポイントを作成します。
+
+---
+
+## <a name="remove-a-private-endpoint"></a>プライベート エンドポイントを削除する
+
+ワークスペースからプライベート エンドポイントを削除するには、次のいずれかの方法を使用します。
+
+# <a name="python"></a>[Python](#tab/python)
+
+プライベート エンドポイントを削除するには、[Workspace.delete_private_endpoint_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) を使用します。
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+# get the connection name
+_, _, connection_name = ws.get_details()['privateEndpointConnections'][0]['id'].rpartition('/')
+ws.delete_private_endpoint_connection(private_endpoint_connection_name=connection_name)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) コマンドが用意されています。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+ポータルの Azure Machine Learning ワークスペースから、 __[プライベート エンドポイント接続]__ を選択し、削除するエンドポイントを選択します。 最後に、 __[削除]__ を選択します。
 
 ---
 

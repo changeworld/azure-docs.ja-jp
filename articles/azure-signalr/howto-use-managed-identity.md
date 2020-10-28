@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559407"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152299"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR Service のマネージド ID
 
@@ -62,20 +62,20 @@ Azure SignalR Service は完全に管理されたサービスであるため、�
     - Empty
     - サービス プリンシパルのアプリケーション (クライアント) ID
     - サービス プリンシパルのアプリケーション ID URI
-    - [Azure サービスのリソース ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Azure サービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > サービスでアクセス トークンを自分で検証する場合は、任意のリソース形式を選択できます。 **[認証]** 設定の **[リソース]** の値と検証との間に整合性があることを確認してください。 データ プレーンに対してロールベースのアクセス制御 (RBAC) を使用する場合は、サービス プロバイダーが要求するリソースを使用する必要があります。
+    > サービスでアクセス トークンを自分で検証する場合は、任意のリソース形式を選択できます。 **[認証]** 設定の **[リソース]** の値と検証との間に整合性があることを確認してください。 データ プレーンに対して Azure ロールベースのアクセス制御 (Azure RBAC) を使用する場合は、サービス プロバイダーが要求するリソースを使用する必要があります。
 
 ### <a name="validate-access-tokens"></a>アクセス トークンを検証する
 
-`Authorization` ヘッダー内のトークンは、[Microsoft ID プラットフォームのアクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens)です。
+`Authorization` ヘッダー内のトークンは、[Microsoft ID プラットフォームのアクセス トークン](../active-directory/develop/access-tokens.md#validating-tokens)です。
 
 アクセス トークンを検証するには、アプリで対象ユーザーと署名トークンも検証する必要があります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、[テナントに依存しないバージョンのドキュメント](https://login.microsoftonline.com/common/.well-known/openid-configuration)を確認してください。
 
-Azure Active Directory (Azure AD) ミドルウェアには、アクセス トークンを検証するための機能が組み込まれています。 [サンプル](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)を参照して、任意の言語で検索することができます。
+Azure Active Directory (Azure AD) ミドルウェアには、アクセス トークンを検証するための機能が組み込まれています。 [サンプル](../active-directory/develop/sample-v2-code.md)を参照して、任意の言語で検索することができます。
 
-トークンの検証を処理する方法を示すライブラリとコード サンプルが用意されています。 また、JSON Web Token (JWT) 検証に使用できるオープンソースのパートナー ライブラリもいくつかあります。 ほとんどすべてのプラットフォームと言語に、少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries)」を参照してください。
+トークンの検証を処理する方法を示すライブラリとコード サンプルが用意されています。 また、JSON Web Token (JWT) 検証に使用できるオープンソースのパートナー ライブラリもいくつかあります。 ほとんどすべてのプラットフォームと言語に、少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](../active-directory/develop/reference-v2-libraries.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワークの分離とプライバシーの概要
+title: 仮想ネットワークの分離とセキュリティの概要
 titleSuffix: Azure Machine Learning
 description: 分離された Azure Virtual Network を Azure Machine Learning と共に使用して、ワークスペース リソースとコンピューティング環境をセキュリティで保護します。
 services: machine-learning
@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825510"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131940"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -50,8 +50,8 @@ ms.locfileid: "91825510"
 
 * **ワークスペース** - VNet からプライベート エンドポイントを作成して、ワークスペース上の Private Link に接続します。 プライベート エンドポイントは、複数のプライベート IP アドレスを使用してワークスペースを VNet に接続します。
 * **関連するリソース** - サービス エンドポイントまたはプライベート エンドポイントを使用して、Azure storage、Azure Key Vault、Azure Container Service などのワークスペース リソースに接続します。
-    * **サービス エンドポイント**は、仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントを有効にしたら、仮想ネットワーク規則を追加して、Azure サービス リソースへのアクセスを仮想ネットワークに限定することができます。 サービス エンドポイントは、パブリック IP アドレスを使用します。
-    * **プライベート エンドポイント**は、Azure Private Link を使用するサービスに安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。
+    * **サービス エンドポイント** は、仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントを有効にしたら、仮想ネットワーク規則を追加して、Azure サービス リソースへのアクセスを仮想ネットワークに限定することができます。 サービス エンドポイントは、パブリック IP アドレスを使用します。
+    * **プライベート エンドポイント** は、Azure Private Link を使用するサービスに安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。
 * **トレーニングのコンピューティング アクセス** - プライベート IP アドレスを使用して、Azure Machine Learning コンピューティング インスタンスや Azure Machine Learning コンピューティング クラスターのようなトレーニングのコンピューティング ターゲットに安全に接続します。 
 * **推論のコンピューティング アクセス** - プライベート IP アドレスを使用して、Azure Kubernetes Services (AKS) コンピューティング クラスターにアクセスします。
 
@@ -61,7 +61,7 @@ ms.locfileid: "91825510"
 1. [**ワークスペースと関連するリソース**](#secure-the-workspace-and-associated-resources)をセキュリティで保護します。
 1. [**トレーニング環境**](#secure-the-training-environment)をセキュリティで保護します。
 1. [**推論環境**](#secure-the-inferencing-environment)をセキュリティで保護します。
-1. 必要に応じて、[**Studio の機能を有効にします**](#optional-enable-studio-functionality)。
+1. 必要に応じて、 [**Studio の機能を有効にします**](#optional-enable-studio-functionality)。
 1. [**ファイアウォール設定**](#configure-firewall-settings)を構成します
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>ワークスペースと関連するリソースをセキュリティで保護する
@@ -124,9 +124,9 @@ ms.locfileid: "91825510"
 - 既定の AKS クラスターを VNet にデプロイまたはアタッチします。
 - プライベート AKS クラスターを VNet にアタッチします。
 
-**既定の AKS クラスター**には、パブリック IP アドレスを持つコントロール プレーンがあります。 デプロイ時に既定の AKS クラスターを VNet に追加することもできますし、クラスターの作成後にそれをアタッチすることもできます。
+**既定の AKS クラスター** には、パブリック IP アドレスを持つコントロール プレーンがあります。 デプロイ時に既定の AKS クラスターを VNet に追加することもできますし、クラスターの作成後にそれをアタッチすることもできます。
 
-**プライベート AKS クラスター**には、プライベート IP を介してのみアクセスできるコントロール プレーンがあります。 プライベート AKS クラスターは、クラスターの作成後にアタッチする必要があります。
+**プライベート AKS クラスター** には、プライベート IP を介してのみアクセスできるコントロール プレーンがあります。 プライベート AKS クラスターは、クラスターの作成後にアタッチする必要があります。
 
 既定のクラスターおよびプライベート クラスターを追加する方法の詳細については、[推論環境のセキュリティ保護](how-to-secure-inferencing-vnet.md)に関するページを参照してください。 
 

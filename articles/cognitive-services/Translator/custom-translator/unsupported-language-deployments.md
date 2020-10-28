@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964687"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221198"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
 
@@ -33,13 +33,13 @@ ms.locfileid: "85964687"
 * モデルの言語ペアは、カスタム翻訳ツールで、サポートされていない言語のペアである必要があります。  言語のペアの片方が英語をサポートしているもののその言語は英語では無い場合、サポートされていない言語の展開の対象となります。  たとえば、フランス語とドイツ語の言語ペアにおいてフランス語から英語がサポートされていて英語からドイツ語がサポートされていても、この言語ペアのハブ モデルはサポートされていない言語の組み合わせとなります。
 
 ## <a name="process"></a>Process
-展開の対象となるハブからモデルを移行すると、ワークスペースの**設定**ページに表示できます。ページ下部までスクロールすると**Unsupported Translator Hub Trainings** (サポートされていない翻訳ツールのハブ トレーニング) セクションが表示されます。  このセクションは、上記の前提条件を満たすプロジェクトの場合のみ表示されます。
+展開の対象となるハブからモデルを移行すると、ワークスペースの **設定** ページに表示できます。ページ下部までスクロールすると **Unsupported Translator Hub Trainings** (サポートされていない翻訳ツールのハブ トレーニング) セクションが表示されます。  このセクションは、上記の前提条件を満たすプロジェクトの場合のみ表示されます。
 
-![Hub から移行する方法](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![[Unsupported Translator Hub Trainings]\(サポートされていない翻訳ツールのハブ トレーニング\) セクションが強調表示されているスクリーンショット。](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 **Unsupported Translator Hub Trainings** (サポートされていない翻訳ツールのハブ トレーニング) において **[Unrequested trainings]** (要求されていないトレーニング) タブには、展開にふさわしいモデルが表示されます。  展開するモデルを選択し要求を送信します。   4 月 30 日の展開期限まで、展開を行おうとするモデルをできる限り多く選択できます。
  
-![Hub から移行する方法](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![[Unrequested trainings]\(要求されていないトレーニング\) タブのスクリーンショット。](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 送信後はモデルは **[Unrequested trainings]** (要求されていないトレーニング) タブではなく **[Requested trainings]** (要求されたトレーニング) タブに表示されます。いつでも、要求されたトレーニングを表示できます。
 

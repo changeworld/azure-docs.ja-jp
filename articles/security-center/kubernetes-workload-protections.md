@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999317"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091153"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -27,7 +27,7 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 - [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) を使用して、K8s クラスターのリアルタイムの脅威検出アラートを取得する
 
 > [!TIP]
-> 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の[コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
+> 表示される可能性がある、Kubernetes クラスターおよびノードに関する " *すべての* " セキュリティの推奨事項の一覧については、推奨事項リファレンス表の [コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
 
 
 
@@ -37,7 +37,7 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 |----|:----|
 |リリース状態:|プレビュー|
 |価格:|Free|
-|必要なロールとアクセス許可:|割り当てを編集するための**所有者**または**セキュリティ管理者**<br>推奨事項を表示するための**閲覧者**|
+|必要なロールとアクセス許可:|割り当てを編集するための **所有者** または **セキュリティ管理者**<br>推奨事項を表示するための **閲覧者**|
 |サポートされているクラスター:|Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
@@ -45,11 +45,11 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 
 ## <a name="set-up-your-workload-protection"></a>ワークロード保護を設定する
 
-Azure Security Center には、**Kubernetes 用の Azure Policy アドオン**がインストールされている場合に使用できる推奨事項のバンドルが含まれています。
+Azure Security Center には、 **Kubernetes 用の Azure Policy アドオン** がインストールされている場合に使用できる推奨事項のバンドルが含まれています。
 
 1. 推奨事項を構成するには、まず、このアドオンをインストールする必要があります。
 
-    1. 推奨事項ページで、**Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**という名前の推奨事項を検索します。
+    1. 推奨事項ページで、 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります** という名前の推奨事項を検索します。
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="推奨事項 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**":::
 
@@ -76,7 +76,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン**�
 
 1. クラスターに適用される推奨事項を確認するには、次の手順に従います。
 
-    1. Security Center の[資産インベントリ](asset-inventory.md) ページを開き、リソースの種類のフィルターを使用して **Kubernetes サービス**を選択します。
+    1. Security Center の [資産インベントリ](asset-inventory.md) ページを開き、リソースの種類のフィルターを使用して **Kubernetes サービス** を選択します。
 
     1. 調査するクラスターを選択し、クラスターで利用可能な推奨事項を確認します。 
 

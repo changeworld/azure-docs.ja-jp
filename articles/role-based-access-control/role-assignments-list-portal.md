@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361852"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151705"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -140,14 +140,9 @@ ms.locfileid: "85361852"
 
 ![アクセス制御 - ロールの割り当ての追加の警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="download-role-assignments-preview"></a>ロールの割り当てのダウンロード (プレビュー)
+## <a name="download-role-assignments"></a>ロールの割り当てのダウンロード
 
 スコープ内のロールの割り当ては、CSV 形式または JSON 形式でダウンロードできます。 これは、スプレッドシート内のリストを検査したり、サブスクリプションの移行時にインベントリを取得したりする必要がある場合に役立ちます。
-
-> [!IMPORTANT]
-> ロールの割り当てのダウンロードは、現在パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ロールの割り当てをダウンロードするときは、次の条件に注意する必要があります。
 
@@ -163,7 +158,7 @@ ms.locfileid: "85361852"
 
 1. **[アクセス制御 (IAM)]** をクリックします。
 
-1. **[ロールの割り当てのダウンロード] (プレビュー)** をクリックして、[ロールの割り当てのダウンロード] ペインを開きます。
+1. **[ロールの割り当てのダウンロード]** をクリックして、[ロールの割り当てのダウンロード] ペインを開きます。
 
     ![アクセス制御 - ロールの割り当てのダウンロード](./media/role-assignments-list-portal/download-role-assignments.png)
 

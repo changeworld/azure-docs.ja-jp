@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961790"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164603"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
@@ -47,9 +47,9 @@ ASE を作成した後は、次の変更は行えません。
 
 ASE を作成する方法は、3 つあります。
 
-- **App Service プランを作成中に作成する**。 この方法では、1 つの手順で、ASE と App Service プランを作成します。
-- **スタンドアロン アクションとして作成する**。 この方法では、何も含まない ASE である、スタンドアロン ASE を作成します。 この方法は、ASE を作成するより高度なプロセスです。 これを使用して ILB を備えた ASE を作成します。
-- **Azure Resource Manager テンプレートから作成する**。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートからの ASE の作成][MakeASEfromTemplate]に関するページをご覧ください。
+- **App Service プランを作成中に作成する** 。 この方法では、1 つの手順で、ASE と App Service プランを作成します。
+- **スタンドアロン アクションとして作成する** 。 この方法では、何も含まない ASE である、スタンドアロン ASE を作成します。 この方法は、ASE を作成するより高度なプロセスです。 これを使用して ILB を備えた ASE を作成します。
+- **Azure Resource Manager テンプレートから作成する** 。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートからの ASE の作成][MakeASEfromTemplate]に関するページをご覧ください。
 
 外部 ASE はパブリック VIP を持ちます。つまり、ASE 内のアプリへのすべての HTTP/HTTPS トラフィックは、インターネットからアクセス可能な IP アドレスに届きます。 ILB を備えた ASE には、ASE によって使用されるサブネットの IP アドレスがあります。 ILB ASE 内でホストされているアプリは、インターネットに直接は公開されません。
 
@@ -61,7 +61,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web アプリ]** を選択します。
 
-    ![Web アプリの作成][1]
+    ![Azure portal のスクリーンショット。Azure Marketplace で [Web + モバイル] が選択されています。新しい Web アプリを作成するための画面が右側で開いています。][1]
 
 2. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
@@ -71,7 +71,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 5. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
-    ![新しい App Service プラン][2]
+    ![Azure portal のスクリーンショット。[Web アプリ]、[App Service プラン]、[新しい App Service プラン] の各ウィンドウが開いています。][2]
 
 6. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
@@ -99,7 +99,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web App for Containers]** をクリックします。 
 
-    ![Web アプリの作成][7]
+    ![Azure portal のスクリーンショット。Azure Marketplace で [Web + モバイル] が選択されています。[Web App for Containers] ウィンドウが右側で開いています。][7]
 
 1. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
@@ -107,7 +107,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 1. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
-    ![新しい App Service プラン][8]
+    ![Azure portal のスクリーンショット。[Web App for Containers]、[App Service プラン]、[新しい App Service プラン] の各ウィンドウが開いています。][8]
 
 1. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
@@ -192,7 +192,7 @@ ASEv1 について詳しくは、「[App Service Environment v1 の概要][ASEv1
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md

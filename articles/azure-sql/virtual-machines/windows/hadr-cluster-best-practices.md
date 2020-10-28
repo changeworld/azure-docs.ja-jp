@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317023"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167952"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>クラスター構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,8 +47,6 @@ Azure Virtual Machines (VM) 上の SQL Server を使用して高可用性とデ�
 |**サポートされる OS**| All |Windows Server 2016 以降| All|
 
 
-
-
 ### <a name="disk-witness"></a>ディスク監視
 
 ディスク監視は、クラスターの使用可能記憶域グループ内にある小規模なクラスター化されたディスクです。 このディスクは可用性が高く、ノード間でフェールオーバーできます。 クラスター データベースのコピーが含まれ、通常 1 GB 未満の既定のサイズを持ちます。 ディスク監視は、Azure 共有ディスク (または共有 SCSI、iSCSI、ファイバー チャネル SAN などの共有ディスク ソリューション) を使用するすべてのクラスターに最適なクォーラム オプションです。  クラスター共有ボリュームをディスク監視として使用することはできません。
@@ -58,7 +56,7 @@ Azure 共有ディスクをディスク監視として構成します。
 開始するには、[ディスク監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 
 
-**サポートされる OS**:All   
+**サポートされる OS** :All   
 
 
 ### <a name="cloud-witness"></a>クラウド監視
@@ -68,7 +66,7 @@ Azure 共有ディスクをディスク監視として構成します。
 開始するには、[クラウド監視の構成](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)に関する記事をご覧ください。
 
 
-**サポートされる OS**:Windows Server 2016 以降   
+**サポートされる OS** :Windows Server 2016 以降   
 
 
 ### <a name="file-share-witness"></a>ファイル共有監視
@@ -80,54 +78,55 @@ Azure ファイル共有を使用する予定の場合は、[Premium ファイ�
 開始するには、[ファイル共有監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 
 
-**サポートされる OS**:Windows Server 2012 以降   
+**サポートされる OS** :Windows Server 2012 以降   
 
 ## <a name="connectivity"></a>接続
 
-従来のオンプレミス ネットワーク環境では、SQL Server のフェールオーバー クラスター インスタンスは、1 台のコンピューター上で実行されている SQL Server の 1 つのインスタンスのように見えます。 フェールオーバー クラスター インスタンスはノードからノードにフェールオーバーするため、そのインスタンスの仮想ネットワーク名 (VNN) によって統一された接続ポイントが提供され、現在アクティブになっているノードを認識することなくアプリケーションから SQL Server インスタンスに接続できるようになります。 フェールオーバーが発生した場合、仮想ネットワーク名は開始後の新しいアクティブ ノードに登録されます。 この処理は、SQL Server に接続しているクライアントまたはアプリケーションからは透過的に実行されます。これにより、障害発生中にクライアントまたはアプリケーションで発生するダウンタイムを最小限に抑えることができます。 
+従来のオンプレミス ネットワーク環境では、SQL Server のフェールオーバー クラスター インスタンスは、1 台のコンピューター上で実行されている SQL Server の 1 つのインスタンスのように見えます。 フェールオーバー クラスター インスタンスはノードからノードにフェールオーバーするため、そのインスタンスの仮想ネットワーク名 (VNN) によって統一された接続ポイントが提供され、現在アクティブになっているノードを認識することなくアプリケーションから SQL Server インスタンスに接続できるようになります。 フェールオーバーが発生した場合、仮想ネットワーク名は開始後の新しいアクティブ ノードに登録されます。 この処理は、SQL Server に接続しているクライアントまたはアプリケーションからは透過的に実行されます。これにより、障害発生中にクライアントまたはアプリケーションで発生するダウンタイムを最小限に抑えることができます。 同様に、トラフィックを適切なレプリカにルーティングするために、可用性グループ リスナーによって VNN が使用されます。 
 
-Azure Load Balancer または分散ネットワーク名 (DNN) と共に VNN を使用して、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンスの VNN にトラフィックをルーティングします。 現在、DNN 機能は Windows Server 2016 (またはそれ以降) の仮想マシン上の SQL Server 2019 CU2 以降でのみ使用できます。 
+Azure Load Balancer または分散ネットワーク名 (DNN) と共に VNN を使用して、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンスの VNN にトラフィックをルーティングするか、可用性グループ内の既存の VNN リスナーを置き換えます。 
+
 
 次の表は、HADR 接続のサポート性を比較したものです。 
 
 | |**仮想ネットワーク名 (VNN)**  |**分散ネットワーク名 (DNN)**  |
 |---------|---------|---------|
-|**OS の最小バージョン**| All | All |
-|**SQL Server の最小バージョン** |All |SQL Server 2019 CU2|
-|**サポートされる HADR ソリューション** | フェールオーバー クラスター インスタンス <br/> 可用性グループ | フェールオーバー クラスター インスタンス|
+|**OS の最小バージョン**| All | Windows Server 2016 |
+|**SQL Server の最小バージョン** |All |SQL Server 2019 CU2 (FCI の場合)<br/> SQL Server 2019 CU8 (AG の場合)|
+|**サポートされる HADR ソリューション** | フェールオーバー クラスター インスタンス <br/> 可用性グループ | フェールオーバー クラスター インスタンス <br/> 可用性グループ|
 
 
 ### <a name="virtual-network-name-vnn"></a>仮想ネットワーク名 (VNN)
 
-Azure では仮想 IP アクセス ポイントの動作が異なるため、FCI ノードの IP アドレスにトラフィックをルーティングするように [Azure Load Balancer](../../../load-balancer/index.yml) を構成する必要があります。 Azure 仮想マシンでは、ロード バランサーによって、クラスター化された SQL Server リソースが依存する VNN の IP アドレスが保持されます。 ロード バランサーでは、フロント エンドに到着する受信フローが分散され、バックエンド プールによって定義されたインスタンスにそのトラフィックがルーティングされます。 トラフィック フローを構成するには、負荷分散規則と正常性プローブを使用します。 SQL Server FCI の場合、バックエンド プールのインスタンスは SQL Server を実行する Azure 仮想マシンです。 
+Azure では仮想 IP アクセス ポイントの動作が異なるため、FCI ノードまたは可用性グループ リスナーの IP アドレスにトラフィックをルーティングするように [Azure Load Balancer](../../../load-balancer/index.yml) を構成する必要があります。 Azure 仮想マシンでは、ロード バランサーによって、クラスター化された SQL Server リソースが依存する VNN の IP アドレスが保持されます。 ロード バランサーでは、フロント エンドに到着する受信フローが分散され、バックエンド プールによって定義されたインスタンスにそのトラフィックがルーティングされます。 トラフィック フローを構成するには、負荷分散規則と正常性プローブを使用します。 SQL Server FCI の場合、バックエンド プールのインスタンスは SQL Server を実行する Azure 仮想マシンです。 
 
 ロード バランサーを使用している場合は、フェールオーバーにわずかな遅延が発生します。正常性プローブでは、既定で 10 秒ごとにアライブ チェックが行われるためです。 
 
-作業を開始するには、[FCI 用に Azure Load Balancer を構成する](hadr-vnn-azure-load-balancer-configure.md)方法をご確認ください。 
+まず、[フェールオーバー クラスター インスタンス](failover-cluster-instance-vnn-azure-load-balancer-configure.md)または[可用性グループ](availability-group-vnn-azure-load-balancer-configure.md)用に Azure Load Balancer を構成する方法について説明します。
 
-**サポートされる OS**:All   
-**サポートされる SQL バージョン**:All   
-**サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンス、可用性グループ   
+**サポートされる OS** :All   
+**サポートされる SQL バージョン** :All   
+**サポートされる HADR ソリューション** :フェールオーバー クラスター インスタンス、可用性グループ   
 
 
 ### <a name="distributed-network-name-dnn"></a>分散ネットワーク名 (DNN)
 
-分散ネットワーク名は、SQL Server 2019 CU2 の新しい Azure 機能です。 DNN によって、ロード バランサーを使用せずに SQL Server クライアントから SQL Server フェールオーバー クラスター インスタンスに接続するための別の方法が提供されます。 
+分散ネットワーク名は、SQL Server 2019 の新しい Azure 機能です。 ロード バランサーを使用せずに SQL Server クライアントから SQL Server フェールオーバー クラスター インスタンスまたは可用性グループに接続するための別の方法が、DNN によって提供されます。 
 
-DNN リソースを作成すると、クラスターではその DNS 名がクラスター内のすべてのノードの IP アドレスにバインドされます。 SQL クライアントでは、フェールオーバー クラスター インスタンスが現在実行されているノードを見つけるために、この一覧に含まれている各 IP アドレスへの接続が試行されます。 接続文字列に `MultiSubnetFailover=True` を指定することで、このプロセスを高速化できます。 この設定では、すべての IP アドレスを並行して試行するようにプロバイダーが指示されます。これにより、クライアントは瞬時に FCI に接続できます。 
+DNN リソースを作成すると、クラスターではその DNS 名がクラスター内のすべてのノードの IP アドレスにバインドされます。 接続先のリソースを見つけるために、SQL クライアントから、この一覧の各 IP アドレスへの接続が試みられます。  接続文字列に `MultiSubnetFailover=True` を指定することで、このプロセスを高速化できます。 この設定によって、プロバイダーはすべての IP アドレスを並行して試行するように指示されるので、クライアントから FCI またはリスナーへの瞬時の接続ができるようになります。 
 
 次の理由により、可能な場合は、ロード バランサーよりも優先して分散ネットワーク名を使用することをお勧めします。 
 - ロード バランサーのリソースを維持する必要がなくなるため、エンド ツー エンド ソリューションはより堅牢になります。 
 - ロード バランサーのプローブを排除すると、フェールオーバー時間を最小限に抑えられます。 
-- DNN を使用すると、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンスのプロビジョニングと管理が簡単になります。 
+- DNN を使用すると、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンスまたは可用性グループ リスナーのプロビジョニングと管理が簡単になります。 
 
-ほとんどの SQL Server 機能は、FCI で透過的に機能します。 このような場合は、既存の VNN の DNS 名を DNN の DNS 名に置き換えるか、DNN の値を既存の VNN の DNS 名に設定するだけで済みます。 ただし、一部のサーバー側コンポーネントには、VNN 名を DNN 名にマップするネットワークの別名が必要です。 特定のケースでは、DNN の DNS 名を明示的に使用することが必要になる場合があります。サーバー側の構成で特定の URL を定義する場合などです。 
+DNN を使用すると、ほとんどの SQL Server 機能は FCI と可用性グループに対して透過的に機能しますが、特定の機能については、特別な考慮が必要となる場合があります。 詳細については、[FCI と DNN の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関するページと、[AG と DNN の相互運用性](availability-group-dnn-interoperability.md)に関するページを参照してください。 
 
-作業を開始するには、[FCI 用に DNN リソースを構成する](hadr-distributed-network-name-dnn-configure.md)方法をご確認ください。 
+まず、[フェールオーバー クラスター インスタンス](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[可用性グループ](availability-group-distributed-network-name-dnn-listener-configure.md)用に分散ネットワーク名リソースを構成する方法について説明します。
 
-**サポートされる OS**:Windows Server 2016 以降   
-**サポートされる SQL バージョン**:SQL Server 2019 以降   
-**サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンスのみ
+**サポートされる OS** :Windows Server 2016 以降   
+**サポートされる SQL バージョン** :SQL Server 2019 CU2 (FCI) と SQL Server 2019 CU8 (AG)   
+**サポートされる HADR ソリューション** :フェールオーバー クラスター インスタンス、可用性グループ   
 
 
 ## <a name="limitations"></a>制限事項
@@ -146,5 +145,5 @@ Azure Virtual Machines では、次の理由により、クラスター共有ボ
 
 ## <a name="next-steps"></a>次のステップ
 
-ご自分のソリューションに適したベスト プラクティスを決定した後は、まず [FCI 用の SQL Server VM を準備します](failover-cluster-instance-prepare-vm.md)。 [Azure CLI](availability-group-az-cli-configure.md) または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して可用性グループを作成することもできます。 
+リューションに適したベストプラクティスを決定したら、[FCI 用に SQL Server VM を準備する](failover-cluster-instance-prepare-vm.md)か、あるいは [Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI/PowerShell](availability-group-az-cli-configure.md)、または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して、可用性グループを作成することから始めます。 
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 6174d108fd80df9725ca5ef0fb9296dfffaf4a64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10de2a4a00b716656626082a24ecbd56d0fcc3a4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300808"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127303"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してパブリック IP アドレスを作成する
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 >[!NOTE]
 >次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardZRPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
+[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、 **myResourceGroup** に **myStandardZRPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -89,7 +89,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 >[!NOTE]
 >次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
+[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、 **myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -106,7 +106,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-create-public-ip-basic)
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Basic 静的パブリック IP アドレスを作成します。  Basic パブリック IP には、可用性ゾーンという概念はありません。
+[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、 **myResourceGroup** に **myBasicPublicIP** という名前の Basic 静的パブリック IP アドレスを作成します。  Basic パブリック IP には、可用性ゾーンという概念はありません。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -118,7 +118,7 @@ $alloc = 'Static'
 
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku
 ```
-時間の経過と共に IP アドレスが変更されても問題ない場合は、AllocationMethod を "Dynamic" に変更することで**動的** IP の割り当てを選択できます。
+時間の経過と共に IP アドレスが変更されても問題ない場合は、AllocationMethod を "Dynamic" に変更することで **動的** IP の割り当てを選択できます。
 
 ---
 

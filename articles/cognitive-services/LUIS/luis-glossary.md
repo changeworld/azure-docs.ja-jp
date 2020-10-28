@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309491"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151985"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -96,7 +96,7 @@ LUIS の[作成リソース](luis-how-to-azure-subscription.md#azure-resources-f
 
 ## <a name="collaborator"></a>コラボレーター
 
-コラボレーターは、概念的には[共同作成者](#contributor)と同じです。 所有者が Azure ロールベースのアクセス制御 (Azure RBAC) で制御されていないアプリにコラボレーターのメール アドレスを追加すると、コラボレーターにアクセスが許可されます。 引き続きコラボレーターを使用している場合は、LUIS アカウントを移行し、LUIS 作成リソースを使用して RBAC で共同作成者を管理する必要があります。
+コラボレーターは、概念的には[共同作成者](#contributor)と同じです。 所有者が Azure ロールベースのアクセス制御 (Azure RBAC) で制御されていないアプリにコラボレーターのメール アドレスを追加すると、コラボレーターにアクセスが許可されます。 引き続きコラボレーターを使用している場合は、LUIS アカウントを移行し、LUIS 作成リソースを使用して Azure RBAC で共同作成者を管理する必要があります。
 
 ## <a name="contributor"></a>Contributor
 
@@ -123,7 +123,7 @@ LUIS 作成エンドポイント URL は、アプリを作成、トレーニン�
 
 ### <a name="prediction-endpoint"></a>予測エンドポイント
 
-LUIS 予測エンドポイント URL は、[LUIS アプリ](#application-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリのリージョンまたはカスタム サブドメインとアプリ ID が含まれています。 エンドポイントは、お使いのアプリの **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページにあります。また、[Get App Info API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) からエンドポイント URL を取得することもできます。
+LUIS 予測エンドポイント URL は、[LUIS アプリ](#application-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリのリージョンまたはカスタム サブドメインとアプリ ID が含まれています。 エンドポイントは、お使いのアプリの **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページにあります。また、 [Get App Info API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) からエンドポイント URL を取得することもできます。
 
 予測エンドポイントに対するアクセスは、LUIS 予測キーを使用して承認されます。
 
@@ -185,10 +185,10 @@ LUIS 予測エンドポイント URL は、[LUIS アプリ](#application-app)が
 ラベル付け、またはマーキングは、正または負の例をモデルに関連付けるプロセスです。
 
 ### <a name="labeling-for-intents"></a>意図のラベル付け
-LUIS では、アプリ内の意図は相互に排他的です。 つまり、発話を意図に追加すると、その意図に対して "_正_" の例と見なされ、他のすべての意図に対しては "_負_" の例と見なされます。 負の例は、アプリのスコープ外の発話を表す "なし" の意図と混同しないでください。
+LUIS では、アプリ内の意図は相互に排他的です。 つまり、発話を意図に追加すると、その意図に対して " _正_ " の例と見なされ、他のすべての意図に対しては " _負_ " の例と見なされます。 負の例は、アプリのスコープ外の発話を表す "なし" の意図と混同しないでください。
 
 ### <a name="labeling-for-entities"></a>エンティティのラベル付け
-LUIS では、エンティティを含む意図の例の発話に含まれる単語またはフレーズに、"_正_" の例という[ラベル付け](label-entity-example-utterance.md)をします。 ラベル付けは、その発話に対して何を予測すべき意図を示しています。 ラベル付けされた発話は、意図のトレーニングに使用されます。
+LUIS では、エンティティを含む意図の例の発話に含まれる単語またはフレーズに、" _正_ " の例という [ラベル付け](label-entity-example-utterance.md)をします。 ラベル付けは、その発話に対して何を予測すべき意図を示しています。 ラベル付けされた発話は、意図のトレーニングに使用されます。
 
 ## <a name="luis-app"></a>LUIS アプリ
 
@@ -305,7 +305,7 @@ LUIS アプリの[テスト](luis-concept-test.md)とは、モデル予測を表
 ## <a name="token"></a>トークン
 [トークン](luis-language-support.md#tokenization)は、LUIS で認識できるテキストの最小単位です。 これは、言語によって若干異なります。
 
-**英語**の場合、トークンは、文字と数字の連続するスパン (スペースや句読点を含まない) です。 スペースはトークンでは "ありません"。
+**英語** の場合、トークンは、文字と数字の連続するスパン (スペースや句読点を含まない) です。 スペースはトークンでは "ありません"。
 
 |フレーズ|トークン数|説明|
 |--|--|--|

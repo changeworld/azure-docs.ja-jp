@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400708"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089692"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>仮想ネットワークまたは VPN 接続の構成および検証
 
@@ -50,14 +50,14 @@ Azure 仮想ネットワーク ピアリングの実装と構成を開始する�
 
 * ピアリングする仮想ネットワークは同じ Azure リージョンに存在する必要があります。
 * ピアリングする仮想ネットワークの IP アドレス空間は、重複していてはなりません。
-* 仮想ネットワーク ピアリングは、2 つの仮想ネットワーク間の関係です。 ピアリング間で派生する推移的な関係は存在しません。 たとえば、VNetA が VNetB とピアリングされ、VNetB が VNetC とピアリングされているからといって、VNetA が VNetC とピアリングされていることには "*なりません*"。
+* 仮想ネットワーク ピアリングは、2 つの仮想ネットワーク間の関係です。 ピアリング間で派生する推移的な関係は存在しません。 たとえば、VNetA が VNetB とピアリングされ、VNetB が VNetC とピアリングされているからといって、VNetA が VNetC とピアリングされていることには " *なりません* "。
 
 これらの前提条件を満たしている場合は、「[チュートリアル: Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering)」に従って、ピアリングを作成して構成することが出来ます。
 
 ピアリングの構成を確認するには、次の方法を使用します。
 
 1. 必要な[ロールとアクセス許可](virtual-network-manage-peering.md#permissions)があるアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
-2. ポータルの上部にある "**リソースの検索**" というテキストが表示されたボックスに、「**仮想ネットワーク**」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
+2. ポータルの上部にある " **リソースの検索** " というテキストが表示されたボックスに、「 **仮想ネットワーク** 」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
 3. 表示される **[仮想ネットワーク]** ブレードで、ピアリングを作成する仮想ネットワークを選択します。
 4. 仮想ネットワークに対して表示されたウィンドウで、 **[設定]** セクションの **[ピアリング]** を選択します。
 5. ピアリングを選択して、構成の結果を表示します。
@@ -110,11 +110,11 @@ VPN 接続が正しく構成されていることを確認するには、次の�
 > 次の手順で、仮想ネットワーク コンポーネントの後の数字は、前の図の番号に対応しています。
 
 1. 接続された仮想ネットワークでアドレス空間が重複していないかどうかを確認します。
-2. Azure Resource Manager 仮想ネットワーク (1) のアドレス範囲が**接続オブジェクト** インスタンス (4) で正確に定義されていることを確認します。
-3. Azure Resource Manager 仮想ネットワーク (6) のアドレス範囲が**接続オブジェクト** インスタンス (3) で正確に定義されていることを確認します。
+2. Azure Resource Manager 仮想ネットワーク (1) のアドレス範囲が **接続オブジェクト** インスタンス (4) で正確に定義されていることを確認します。
+3. Azure Resource Manager 仮想ネットワーク (6) のアドレス範囲が **接続オブジェクト** インスタンス (3) で正確に定義されていることを確認します。
 4. 事前共有キーが接続オブジェクトで一致していることを確認します。
-5. Azure Resource Manager 仮想ネットワーク ゲートウェイ VIP (2) が**接続オブジェクト** インスタンス (4) で正確に定義されていることを確認します。
-6. Azure Resource Manager 仮想ネットワーク ゲートウェイ VIP (5) が**接続オブジェクト** インスタンス (3) で正確に定義されていることを確認します。
+5. Azure Resource Manager 仮想ネットワーク ゲートウェイ VIP (2) が **接続オブジェクト** インスタンス (4) で正確に定義されていることを確認します。
+6. Azure Resource Manager 仮想ネットワーク ゲートウェイ VIP (5) が **接続オブジェクト** インスタンス (3) で正確に定義されていることを確認します。
 
 ### <a name="connect-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>クラシック仮想ネットワークの Resource Manager 仮想ネットワークへの接続
 
@@ -122,7 +122,7 @@ VPN 接続が正しく構成されていることを確認するには、次の�
 
 クラシック仮想ネットワークと Resource Manager 仮想ネットワーク間の接続を構成する方法については、「[Azure portal を使って異なるデプロイ モデルの仮想ネットワークを接続する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal)」を参照してください。
 
-![クラシック仮想ネットワークから Azure Resource Manager 仮想ネットワークへの接続](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![クラシック仮想ネットワークから Azure Resource Manager 仮想ネットワークへの接続を示す図。](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 クラシック仮想ネットワークを Azure Resource Manager 仮想ネットワークに接続するときの構成を確認するには、次の手順に従います。
 
@@ -133,14 +133,14 @@ VPN 接続が正しく構成されていることを確認するには、次の�
 2. Azure Resource Manager 仮想ネットワーク (6) のアドレス範囲がクラシック ローカル ネットワーク定義 (3) で正確に定義されていることを確認します。
 3. クラシック仮想ネットワーク (1) のアドレス範囲が Azure Resource Manager **接続オブジェクト** インスタンス (4) で正確に定義されていることを確認します。
 4. クラシック仮想ネットワーク ゲートウェイ VIP(2) が Azure Resource Manager **接続オブジェクト** インスタンス (4) で正確に定義されていることを確認します。
-5. Azure Resource Manager 仮想ネットワーク ゲートウェイ (5) がクラシック **ローカル ネットワーク定義**インスタンス (3) で正確に定義されていることを確認します。
+5. Azure Resource Manager 仮想ネットワーク ゲートウェイ (5) がクラシック **ローカル ネットワーク定義** インスタンス (3) で正確に定義されていることを確認します。
 6. 接続されている仮想ネットワークの両方で、事前共有キーが一致していることを確認します。
-   - クラシック仮想ネットワーク:**ローカル ネットワーク定義** (3)
-   - Azure Resource Manager 仮想ネットワーク:**接続オブジェクト** (4)
+   - クラシック仮想ネットワーク: **ローカル ネットワーク定義** (3)
+   - Azure Resource Manager 仮想ネットワーク: **接続オブジェクト** (4)
 
 ## <a name="create-a-point-to-site-vpn-connection"></a>ポイント対サイト VPN 接続を作成する
 
-ポイント対サイト (次の図の *P2S*) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。 ポイント対サイト接続は、自宅や会議室など、リモートの場所から仮想ネットワークに接続する場合に便利です。 また、仮想ネットワークに接続するクライアントの数がごくわずかである場合にも便利です。 
+ポイント対サイト (次の図の *P2S* ) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。 ポイント対サイト接続は、自宅や会議室など、リモートの場所から仮想ネットワークに接続する場合に便利です。 また、仮想ネットワークに接続するクライアントの数がごくわずかである場合にも便利です。 
 
 ポイント対サイト VPN 接続は、クライアント コンピューターからネイティブ Windows VPN クライアントを介して開始されます。 クライアントの接続には、認証のために証明書が使用されます。
 
@@ -158,7 +158,7 @@ VPN 接続が正しく構成されていることを確認するには、次の�
 
 ## <a name="create-a-multisite-vpn-connection"></a>マルチサイトの VPN 接続を作成する
 
-サイト間接続、ポイント対サイト接続、またはネットワーク間接続が既にある仮想ネットワークに、サイト間 (次の図の *S2S*) 接続を追加することができます。 この種類の接続は、一般に "*マルチサイト*" 構成と呼ばれます。 
+サイト間接続、ポイント対サイト接続、またはネットワーク間接続が既にある仮想ネットワークに、サイト間 (次の図の *S2S* ) 接続を追加することができます。 この種類の接続は、一般に " *マルチサイト* " 構成と呼ばれます。 
 
 ![マルチサイト接続](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
 
@@ -213,7 +213,7 @@ ExpressRoute とサイト間が共存している場合、トランジット ル
 仮想ネットワーク ピアリングにトランジット ルートを構成したかどうかを確認するには、次の手順に従います。
 
 1. 必要な[ロールとアクセス許可](virtual-network-manage-peering.md#permissions)があるアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
-2. ポータルの上部にある "**リソースの検索**" というテキストが表示されたボックスに、「**仮想ネットワーク**」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
+2. ポータルの上部にある " **リソースの検索** " というテキストが表示されたボックスに、「 **仮想ネットワーク** 」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
 3. 表示される **[仮想ネットワーク]** ブレードで、ピアリング設定を確認する仮想ネットワークを選択します。
 4. 選択した仮想ネットワークに対して表示されたウィンドウで、 **[設定]** セクションの **[ピアリング]** を選択します。
 5. 表示するピアリングを選択します。 **[構成]** の下で **[ゲートウェイ転送を許可する]** と **[Use remote gateway]\(リモート ゲートウェイを使用する\)** が有効になっていることを確認します。
@@ -248,7 +248,7 @@ BGP は、2 つ以上のネットワーク間でルーティングと到達可�
 
 BGP を使用する VPN 接続を構成するには、「[PowerShell を使用して Azure VPN Gateway で BGP を構成する方法](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)」を参照してください。
 
-自律システム (AS) 番号を作成することによって、仮想ネットワーク ゲートウェイで BGP を有効にします。 基本ゲートウェイでは、BGP はサポートされていません。 ゲートウェイの SKU を確認するには、Azure portal で **[VPN Gateway]** ブレードの **[概要]** セクションに移動します。 SKU が **Basic** の場合は、SKU を **VpnGw1** に変更 ([ゲートウェイのサイズ変更](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)に関する記事を参照) する必要があります。 
+自律システム (AS) 番号を作成することによって、仮想ネットワーク ゲートウェイで BGP を有効にします。 基本ゲートウェイでは、BGP はサポートされていません。 ゲートウェイの SKU を確認するには、Azure portal で **[VPN Gateway]** ブレードの **[概要]** セクションに移動します。 SKU が **Basic** の場合は、SKU を **VpnGw1** に変更 ( [ゲートウェイのサイズ変更](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)に関する記事を参照) する必要があります。 
 
 SKU を確認すると、20 分から 30 分のダウンタイムが発生します。 ゲートウェイが適切な SKU を持つようになったら、[Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell コマンドレットを使用して AS 番号を追加できます。 AS 番号を構成すると、ゲートウェイの BGP ピア IP が自動的に提供されます。
 
@@ -278,14 +278,14 @@ BGP が正しく構成されているかどうかを確認するには、`get-Az
 
 * 2 つのパブリック IP アドレスを使用して 2 つのゲートウェイ IP 構成を作成する必要があります。
 * **EnableActiveActiveFeature** フラグを設定する必要があります。
-* ゲートウェイ SKU は、**VpnGw1**、**VpnGw2**、または **VpnGw3** である必要があります。
+* ゲートウェイ SKU は、 **VpnGw1** 、 **VpnGw2** 、または **VpnGw3** である必要があります。
 
 クロスプレミスとネットワーク間接続で高可用性を実現するには、複数の VPN ゲートウェイをデプロイし、ネットワークと Azure 間に複数の並列接続を確立する必要があります。 接続オプションとトロポジの概要については、[高可用性のクロスプレミス接続およびネットワーク間接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)に関する記事を参照してください。
 
 アクティブ/アクティブのクロスプレミス接続とネットワーク間接続を作成するには、「[Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell)」の手順に従って、アクティブ/アクティブ モードで Azure VPN ゲートウェイを構成します。
 
 > [!Note]  
-> * BGP が有効になっているアクティブ/アクティブ モードのローカル ネットワーク ゲートウェイにアドレスを追加する場合、*BGP ピアの /32 アドレスのみを追加*します。 さらにアドレスを追加すると、それらは静的ルートと見なされ、BGP ルートよりも優先されます。
+> * BGP が有効になっているアクティブ/アクティブ モードのローカル ネットワーク ゲートウェイにアドレスを追加する場合、 *BGP ピアの /32 アドレスのみを追加* します。 さらにアドレスを追加すると、それらは静的ルートと見なされ、BGP ルートよりも優先されます。
 > * Azure に接続するオンプレミス ネットワークには、異なる BGP AS 番号を使用する必要があります。 (これらが同じ場合、オンプレミス VPN デバイスが既に ASN を使用して他の BGP 近隣ノードとピアリングしているのであれば、仮想ネットワーク AS 番号を変更する必要があります。)
 
 ## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>デプロイ後に Azure VPN ゲートウェイの種類を変更する

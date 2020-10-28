@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6885c28d993b8ddab5fe158ad7b1480259cb8fb0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999005"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92163787"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -31,7 +31,7 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10 Enterprise マルチセッション - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 Enterprise マルチセッション - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.Hotfix](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) (.exe) |
 
 
 ## <a name="driver-installation"></a>ドライバーのインストール
@@ -48,11 +48,12 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 ドライバーのインストールはデバイス マネージャーで確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの正常な構成を示しています。
 <br />
-![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/device-manager.png)
+
+![Azure NVv4 VM での Radeon Instinct MI25 カードの正常な構成を示すスクリーンショット。](./media/n-series-amd-driver-setup/device-manager.png)
 
 dxdiag を使用して、ビデオ RAM などの GPU 表示プロパティを確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの 1/2 パーティションを示しています。
 <br />
-![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
+![Azure NVv4 VM での Radeon Instinct MI25 カードの 1/2 パーティションを示すスクリーンショット。](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Windows 10 ビルド1903 以降を実行している場合、dxdiag では [表示] タブに情報が表示されません。下部にある [すべての情報を保存する] オプションを使用してください。出力ファイルには、AMD MI25 GPU に関連する情報が表示されます。
 

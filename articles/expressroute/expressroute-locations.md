@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 0611297164f3fe0afb1e18afe3abbbac00fd9c9a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 931794dba3266301dd9bb873ff68cacfcb3cac07
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016367"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106367"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -33,7 +33,7 @@ ms.locfileid: "92016367"
 Azure リージョンは、Azure のコンピューティング、ネットワーク、およびストレージのリソースが配置されているグローバル データセンターです。 Azure リソースを作成する場合、お客様はリソースの場所を選択する必要があります。 リソースの場所によって、リソースが作成される Azure データセンター (または可用性ゾーン) が決まります。
 
 ## <a name="expressroute-locations"></a>ExpressRoute の場所
-ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ばれることもあります) は、Microsoft エンタープライズ エッジ (MSEE) デバイスが配置されているコロケーション施設です。 ExpressRoute の場所は Microsoft のネットワークへの入り口であり、世界中に分散されているため、お客様は世界中の Microsoft のネットワークに接続できます。 これらの場所は、ExpressRoute パートナーと ExpressRoute Direct のお客様が Microsoft のネットワークへの交差接続を実行する場所です。 一般的に、ExpressRoute の場所と Azure リージョンを一致させる必要はありません。 たとえば、お客様は、リソースの場所が*米国東部*で、ピアリングの場所が*シアトル*である ExpressRoute 回線を作成できます。
+ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ばれることもあります) は、Microsoft エンタープライズ エッジ (MSEE) デバイスが配置されているコロケーション施設です。 ExpressRoute の場所は Microsoft のネットワークへの入り口であり、世界中に分散されているため、お客様は世界中の Microsoft のネットワークに接続できます。 これらの場所は、ExpressRoute パートナーと ExpressRoute Direct のお客様が Microsoft のネットワークへの交差接続を実行する場所です。 一般的に、ExpressRoute の場所と Azure リージョンを一致させる必要はありません。 たとえば、お客様は、リソースの場所が *米国東部* で、ピアリングの場所が *シアトル* である ExpressRoute 回線を作成できます。
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。
 
@@ -105,7 +105,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **du datamena** |サポートされています |サポートされています | ドバイ 2 |
 | **eir** |サポートされています |サポートされています |ダブリン|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、ロサンゼルス 2、メルボルン、マイアミ、ミラノ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、シリコン バレー、シンガポール、ストックホルム、シドニー、東京、トロント、ワシントン DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、ベルリン、シカゴ、ダラス、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、ロサンゼルス 2、メルボルン、マイアミ、ミラノ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、シリコン バレー、シンガポール、ストックホルム、シドニー、東京、トロント、ワシントン DC |
 | **Etisalat UAE** |サポートされています |サポートされています |ドバイ|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ダブリン、フランクフルト、ロンドン |
 | **FarEasTone** |サポートされています |サポートされています |台北|
@@ -114,7 +114,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **GTT** |サポートされています |サポートされています |ロンドン 2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | サポートされています| サポートされています | チェンナイ、ムンバイ |
 | **Intelsat** | サポートされています | サポートされています | ワシントン DC 2 |
-| **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、シカゴ、香港特別行政区、ロンドン、ニューヨーク、パリ、シリコン バレー、シンガポール、ワシントン DC、チューリッヒ |
+| **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、シカゴ、フランクフルト、香港特別行政区、ロンドン、ニューヨーク、パリ、シリコン バレー、シンガポール、ワシントン DC、チューリッヒ |
 | **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |サポートされています |サポートされています |シカゴ、ダラス、シリコン バレー、ワシントン DC |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |サポートされています |サポートされています |大阪、東京 |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ、ロンドン |

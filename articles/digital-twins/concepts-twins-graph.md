@@ -7,31 +7,31 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87062051"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145929"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
-Azure Digital Twins ソリューションでは、環境内のエンティティは Azure **デジタル ツイン**で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを**リレーションシップ**によって他のデジタル ツインに接続して、**ツイン グラフ**を形成できます。このツイン グラフは、環境全体を表しています。
+Azure Digital Twins ソリューションでは、環境内のエンティティは Azure **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、 **ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
 
 > [!TIP]
 > "Azure Digital Twins" は、この Azure サービス全体を指します。 "デジタル ツイン" または単に "ツイン" は、サービスのインスタンス内の個々のツイン ノードを指します。
 
 ## <a name="digital-twins"></a>Digital Twins
 
-Azure Digital Twins インスタンスでデジタル ツインを作成するには、"*モデル*" をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、[*カスタム モデル*](concepts-models.md)に関するページを参照してください。
+Azure Digital Twins インスタンスでデジタル ツインを作成するには、" *モデル* " をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、 [*カスタム モデル*](concepts-models.md)に関するページを参照してください。
 
-モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル *Floor* を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (*GroundFloor* という *Floor* 型ツイン、*Floor2* という別のツインなど) を作成できます。 
+モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル *Floor* を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン ( *GroundFloor* という *Floor* 型ツイン、 *Floor2* という別のツインなど) を作成できます。 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>リレーションシップ: デジタル ツインのグラフ
 
 ツインは、そのリレーションシップによってツイン グラフに接続されます。 ツインが持つことのできるリレーションシップは、そのモデルの一部として定義されます。  
 
-たとえば、モデル *Floor* で、*room* 型のツインをターゲットとする *contains* リレーションシップが定義されているとします。 この定義により、Azure Digital Twins では、任意の *Floor* ツインから任意の *Room* ツイン (*Room* サブタイプのツインを含む) への *contains* リレーションシップを作成できます。 
+たとえば、モデル *Floor* で、 *room* 型のツインをターゲットとする *contains* リレーションシップが定義されているとします。 この定義により、Azure Digital Twins では、任意の *Floor* ツインから任意の *Room* ツイン ( *Room* サブタイプのツインを含む) への *contains* リレーションシップを作成できます。 
 
 このプロセスにより、グラフ内にエッジ (リレーションシップ) によって接続された一連のノード (デジタル ツイン) が作成されます。
 
@@ -43,41 +43,17 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、*Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
+[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、 *Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
 
 Azure Digital Twins の現在のプレビューでは、ツインを作成する前に、ツインのすべてのプロパティを初期化しておく必要があります。 これを行うには、必要な初期化値を提供する JSON ドキュメントを作成します。
 
-```csharp
-public Task<boolean> CreateRoom(string id, double temperature, double humidity) 
-{
-    // Define the model for the twin to be created
-    Dictionary<string, object> meta = new Dictionary<string, object>()
-    {
-      { "$model", "dtmi:com:contoso:Room;2" }
-    };
-    // Initialize the twin properties
-    Dictionary<string, object> initData = new Dictionary<string, object>()
-    {
-      { "$metadata", meta },
-      { "Temperature", temperature},
-      { "Humidity", humidity},
-    };
-    try
-    {
-      await client.DigitalTwins.AddAsync(id, initData);
-      return true;
-    }
-    catch (ErrorResponseException e)
-    {
-      Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}");
-      return false;
-    }
-}
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+
+ディクショナリを使用する代わりに、`BasicDigitalTwin` という名称のヘルパー クラスを使用し、"ツイン" オブジェクトにプロパティ フィールドをもっと直接的に格納することもできます。 ヘルパー クラスとその使用例の詳細については、「 [*デジタル ツインを作成するセクション*](how-to-manage-twin.md#create-a-digital-twin)」を参照してください。このセクションは *「デジタル ツインを管理する」方法* を参照してください。
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
-[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、*GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
+[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、 *GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
 
 ```csharp
 // Create Twins, using functions similar to the previous sample
@@ -109,7 +85,7 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 | --- | --- |
 | `$dtId` | デジタル ツインの ID を表すユーザー指定の文字列 |
 | `$etag` | Web サーバーによって割り当てられた標準 HTTP フィールド |
-| `$conformance` | このデジタル ツインの適合性状態 (*conformant*、*non-conformant*、*unknown*) を含む列挙型 |
+| `$conformance` | このデジタル ツインの適合性状態 ( *conformant* 、 *non-conformant* 、 *unknown* ) を含む列挙型 |
 | `{propertyName}` | JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
 | `$relationships` | リレーションシップ コレクションへのパスの URL。 デジタル ツインに発信リレーションシップ エッジがない場合、このフィールドは存在しません。 |
 | `$metadata.$model` | [省略可能] このデジタル ツインを特徴付けるモデル インターフェイスの ID |
@@ -201,4 +177,4 @@ Azure Digital Twins の API を使用してグラフ要素を管理する方法�
 * [*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)
 
 または、Azure Digital Twins のツイン グラフに対して情報のクエリを行う方法について学習します。
-* "[*概念: クエリ言語*](concepts-query-language.md)
+* " [*概念: クエリ言語*](concepts-query-language.md)

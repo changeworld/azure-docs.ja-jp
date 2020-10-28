@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444764"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164518"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Windows 証明書ストアを使用して Always Encrypted を構成する
 
@@ -49,9 +49,9 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 
 ## <a name="enable-client-application-access"></a>クライアント アプリケーションへのアクセスを有効にする
 
-Azure Active Directory (AAD) アプリケーションを設定し、アプリケーションを認証するために必要な "*アプリケーション ID*" と "*キー*" をコピーして、クライアント アプリケーションから SQL Database または SQL Managed Instance にアクセスできるようにする必要があります。
+Azure Active Directory (AAD) アプリケーションを設定し、アプリケーションを認証するために必要な " *アプリケーション ID* " と " *キー* " をコピーして、クライアント アプリケーションから SQL Database または SQL Managed Instance にアクセスできるようにする必要があります。
 
-"*アプリケーション ID*" と "*キー*" を取得するには、[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順に従ってください。
+" *アプリケーション ID* " と " *キー* " を取得するには、 [リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順に従ってください。
 
 
 
@@ -97,7 +97,7 @@ SSMS に用意されているウィザードを使用すると、CMK、CEK、お
 1. **[データベース]**  > **空の** >  **[テーブル]** を使用して、SQL データベース内の機密データを保護する方法について説明します。
 2. **Patients** テーブルを右クリックして **[列の暗号化]** を選択すると、Always Encrypted ウィザードが起動します。
 
-    ![[列の暗号化]](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![Patients テーブルの [列の暗号化] メニュー オプションのスクリーンショット。](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
 Always Encrypted ウィザードには、 **[列の選択]** 、 **[マスター キー構成]** (CMK)、 **[検証]** 、および **[まとめ]** のセクションがあります。
 
@@ -107,7 +107,7 @@ Always Encrypted ウィザードには、 **[列の選択]** 、 **[マスター
 
 各患者の **SSN** と **BirthDate** 情報を暗号化します。 **SSN** 列では決定論的な暗号化を使用します。この場合、等値のルックアップ、結合、グループ化を実行できます。 **BirthDate** 列ではランダム化された暗号化を使用します。この場合、操作は実行できません。
 
-**[暗号化の種類]** として、**SSN** 列には **[決定論的]** を、**BirthDate** 列には **[ランダム化]** を選択します。 **[次へ]** をクリックします。
+**[暗号化の種類]** として、 **SSN** 列には **[決定論的]** を、 **BirthDate** 列には **[ランダム化]** を選択します。 **[次へ]** をクリックします。
 
 ![[列の暗号化]](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -141,7 +141,7 @@ SSMS でキーが生成されていることを確認するには、 **[Clinic]*
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>暗号化されたデータを扱うクライアント アプリケーションを作成する
 
-Always Encrypted を設定したので、暗号化された列に対して、*inserts* や *selects* を実行するアプリケーションを構築できます。 サンプル アプリケーションを正常に実行するには、Always Encrypted ウィザードを実行したコンピューター上でアプリケーションを実行する必要があります。 別のコンピューター上でアプリケーションを実行する場合は、クライアント アプリケーションを実行するコンピューターに Always Encrypted 証明書をデプロイする必要があります。  
+Always Encrypted を設定したので、暗号化された列に対して、 *inserts* や *selects* を実行するアプリケーションを構築できます。 サンプル アプリケーションを正常に実行するには、Always Encrypted ウィザードを実行したコンピューター上でアプリケーションを実行する必要があります。 別のコンピューター上でアプリケーションを実行する場合は、クライアント アプリケーションを実行するコンピューターに Always Encrypted 証明書をデプロイする必要があります。  
 
 > [!IMPORTANT]
 > Always Encrypted 列を構成したサーバーにプレーンテキスト データを渡す場合は、 [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) オブジェクトを使用する必要があります。 SqlParameter オブジェクトを使用せずにリテラル値を渡すと、例外が発生します。
@@ -149,15 +149,15 @@ Always Encrypted を設定したので、暗号化された列に対して、*in
 1. Visual Studio を開き、新しい C# コンソール アプリケーションを作成します。 プロジェクトは必ず **.NET Framework 4.6** 以降に設定してください。
 2. プロジェクトに **AlwaysEncryptedConsoleApp** という名前を付けて、 **[OK]** をクリックします。
 
-![新しいコンソール アプリケーション](./media/always-encrypted-certificate-store-configure/console-app.png)
+![AlwaysEncryptedConsoleApp という名前が新しく付けられたプロジェクトのスクリーンショット。](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>接続文字列を変更して Always Encrypted を有効にする
 
 このセクションでは、データベース接続文字列で Always Encrypted を有効にする方法を説明します。 次のセクション「Always Encrypted サンプル コンソール アプリケーション」で、作成したコンソール アプリケーションを変更します。
 
-Always Encrypted を有効にするには、接続文字列に **Column Encryption Setting** キーワードを追加し、**Enabled** に設定します。
+Always Encrypted を有効にするには、接続文字列に **Column Encryption Setting** キーワードを追加し、 **Enabled** に設定します。
 
-接続文字列に直接設定することも、 [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx)を使用して設定することもできます。 **SqlConnectionStringBuilder**を使用する方法については、次のセクションでサンプル アプリケーションを使って説明します。
+接続文字列に直接設定することも、 [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx)を使用して設定することもできます。 **SqlConnectionStringBuilder** を使用する方法については、次のセクションでサンプル アプリケーションを使って説明します。
 
 > [!NOTE]
 > Always Encrypted を有効にするためにクライアント アプリケーションで必要な変更はこれだけです。 既存のアプリケーションで接続文字列を外部の構成ファイルなどに格納している場合は、コードを変更しなくても Always Encrypted を有効にできる場合があります。
@@ -510,15 +510,15 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 暗号化された列にプレーンテキスト データが含まれていないことがわかります。
 
-   ![新しいコンソール アプリケーション](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![暗号化された列の暗号化されたデータのスクリーンショット。](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 SSMS を使用してプレーンテキスト データにアクセスするには、接続に **Column Encryption Setting=enabled** パラメーターを追加します。
 
-1. SSMS の**オブジェクト エクスプローラー**でサーバーを右クリックし、 **[切断]** をクリックします。
+1. SSMS の **オブジェクト エクスプローラー** でサーバーを右クリックし、 **[切断]** をクリックします。
 2. **[接続]**  >  **[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開き、 **[オプション]** をクリックします。
-3. **[追加の接続パラメーター]** をクリックし、「**Column Encryption Setting=enabled**」と入力します。
+3. **[追加の接続パラメーター]** をクリックし、「 **Column Encryption Setting=enabled** 」と入力します。
 
-    ![新しいコンソール アプリケーション](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![[追加の接続パラメーター] タブのスクリーンショット。ボックスに「Column Encryption Setting=enabled」と入力されています。](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. **Clinic** データベースで次のクエリを実行します。
 
     ```tsql

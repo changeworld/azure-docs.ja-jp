@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456728"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167884"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラーの使用
 
@@ -51,7 +51,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
     ![共有の名前付け](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-1. 作業を終えたら、**Enter** キーを押してファイル共有を作成するか、**Esc** キーを押して取り消します。 ファイル共有は、正常に作成されると、選択されたストレージ アカウントの **[ファイル共有]** フォルダーの下に表示されます。
+1. 作業を終えたら、 **Enter** キーを押してファイル共有を作成するか、 **Esc** キーを押して取り消します。 ファイル共有は、正常に作成されると、選択されたストレージ アカウントの **[ファイル共有]** フォルダーの下に表示されます。
 
     ![新しい共有](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -73,7 +73,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 1. ファイル共有の内容がメイン ウィンドウに表示されます。
     
-    ![共有の内容](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Storage Explorer のファイル共有のメイン ウィンドウのスクリーンショット。共有の内容を確認できます。](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>ファイル共有の削除
 
@@ -87,7 +87,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 1. ストレージ アカウントの **[ファイル共有]** を展開します。
 
-1. 削除するファイル共有を右クリックし、コンテキスト メニューの **[削除]** を選択します。 また、**Delete** キーを押して、現在選択されているファイル共有を削除することもできます。
+1. 削除するファイル共有を右クリックし、コンテキスト メニューの **[削除]** を選択します。 また、 **Delete** キーを押して、現在選択されているファイル共有を削除することもできます。
 
     ![削除](media/vs-azure-tools-storage-explorer-files/image6.png)
 
@@ -191,7 +191,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 1.  ファイル共有の内容がメイン ウィンドウに表示されます。
 
-    ![共有の内容](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Storage Explorer のファイル共有 myazurefileshare のメイン ウィンドウのスクリーンショット。共有の内容を確認できます。最初のフォルダーが選択されています。](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  ファイル共有の内容がメイン ウィンドウに表示されます。
 

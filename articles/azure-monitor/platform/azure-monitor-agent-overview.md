@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263778"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132705"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -84,7 +84,7 @@ Azure Monitor エージェントでは、Azure Monitor メトリック、また�
 
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-Log Analytics エージェントで現在サポートされている Windows および Linux オペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](agents-overview.md#supported-operating-systems)」を参照してください。
+Azure Monitor エージェントで現在サポートされている Windows および Linux オペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](agents-overview.md#supported-operating-systems)」を参照してください。
 
 
 

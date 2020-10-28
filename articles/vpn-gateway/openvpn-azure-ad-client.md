@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 10/15/2020
+ms.author: alzam
+ms.openlocfilehash: 09d39acc867124acfd5c3c38d5c26053218972e7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819753"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109104"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 認証: P2S OpenVPN プロトコル接続用に VPN クライアントを構成する
 
@@ -136,7 +136,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
-1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
     ![省略記号と [診断] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
@@ -153,6 +153,10 @@ Always-on を使用して自動的に接続するように構成するには、�
     ![診断](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>よく寄せられる質問
+
+### <a name="is-the-azure-vpn-client-supported-with-windows-fips-mode"></a>Azure VPN クライアントは、Windows FIPS モードでサポートされていますか?
+
+はい。[KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-kb4577063) 修正プログラムを使用してください。
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>VPN クライアントに DNS サフィックスを追加する方法
 

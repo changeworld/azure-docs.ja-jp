@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e10336b9c817c71026c167144a190b2ed6b4ab6d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fa6f569a1a857c09f1e7d1173a5948b1747c05ed
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070267"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124363"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -79,7 +79,7 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 > これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](../../key-vault/general/about-keys-secrets-certificates.md)」
 
 > [!IMPORTANT]
-> "authenticationSettings" プロパティは、**ユーザー割り当て ID** を使用する VM の場合にのみ**必須**です。
+> "authenticationSettings" プロパティは、 **ユーザー割り当て ID** を使用する VM の場合にのみ **必須** です。
 > Key Vault への認証に使用する ID を指定します。
 
 
@@ -222,6 +222,11 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell を使用します。 特定の VM での拡張機能のデプロイ状態を確認するには、Azure PowerShell を使用して次のコマンドを実行します。
 
+### <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+* 設定できる observedCertificates の数に制限はありますか?
+  いいえ。Key Vault VM 拡張機能には、observedCertificates の数に制限はありません。
+  
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>

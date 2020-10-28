@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567538"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328191"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -52,13 +52,13 @@ ms.locfileid: "91567538"
 
 ![ARM テンプレートに含める](media/author-global-parameters/include-arm-template.png)
 
-ARM テンプレートにグローバル パラメーターを追加すると、他の環境でのカスタマー マネージド キーや git 構成など、その他のファクトリレベル設定を上書きできるファクトリレベル設定が追加されます。 UAT や PROD などの管理者特権環境でこれらの設定を有効にしている場合は、以下で説明する手順で、PowerShell スクリプトを使用してグローバル パラメーターをデプロイすることをお勧めします。
+ARM テンプレートにグローバル パラメーターを追加すると、他の環境でのカスタマー マネージド キーや git 構成など、その他のファクトリレベル設定をオーバーライドできるファクトリレベル設定が追加されます。 UAT や PROD などの管理者特権環境でこれらの設定を有効にしている場合は、以下で説明する手順で、PowerShell スクリプトを使用してグローバル パラメーターをデプロイすることをお勧めします。
 
 ### <a name="deploying-using-powershell"></a>PowerShell を使用したデプロイ
 
 以下の手順では、PowerShell を使用してグローバル パラメーターをデプロイする方法を説明します。 これは、ターゲット ファクトリに、カスタマー マネージド キーなどのファクトリレベル設定がある場合に便利です。
 
-グローバル パラメーターを使用してファクトリを発行したり、Resource Manager テンプレートをエクスポートしたりすると、*your-factory-name_GlobalParameters.json* という名前のファイルが含まれる *globalParameters* という名前のフォルダーが作成されます。 このファイルは、発行されたファクトリ内の各グローバル パラメーターの型と値を含む JSON オブジェクトです。
+グローバル パラメーターを使用してファクトリを発行したり、Resource Manager テンプレートをエクスポートしたりすると、 *your-factory-name_GlobalParameters.json* という名前のファイルが含まれる *globalParameters* という名前のフォルダーが作成されます。 このファイルは、発行されたファクトリ内の各グローバル パラメーターの型と値を含む JSON オブジェクトです。
 
 ![グローバル パラメーターの発行](media/author-global-parameters/global-parameters-adf-publish.png)
 

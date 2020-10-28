@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602005"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145540"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -37,10 +37,7 @@ Microsoft の ID セキュリティの担当部長である Alex Weinert は、2
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、次の内容を熟知していることを前提としています。 
-
-- Azure AD の条件付きアクセスの[基本的な概念](overview.md) 
-- Azure portal における条件付きアクセス ポリシーの構成に関する[ベスト プラクティス](best-practices.md)
+この記事では、Azure AD 条件付きアクセスの[基本的な概念](overview.md)を理解していることを前提としています。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -112,13 +109,13 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-**その他のクライアント**を使用しているアクセスをブロックすると、基本認証を使用している Exchange Online PowerShell および Dynamics 365 もブロックされます。
+**その他のクライアント** を使用しているアクセスをブロックすると、基本認証を使用している Exchange Online PowerShell および Dynamics 365 もブロックされます。
 
-**その他のクライアント**を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 このブロックは、旧バージョンのクライアントが想定していない方法で認証されるために発生します。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。
+**その他のクライアント** を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 このブロックは、旧バージョンのクライアントが想定していない方法で認証されるために発生します。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。
 
 ポリシーが有効になるまで、最大で 24 時間かかる可能性があります。
 
-**他のクライアント**条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
+**他のクライアント** 条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
 
 ## <a name="next-steps"></a>次のステップ
 

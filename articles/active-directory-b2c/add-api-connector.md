@@ -1,5 +1,5 @@
 ---
-title: API コネクタをユーザー フローに追加する
+title: API コネクタをユーザー フローに追加する (プレビュー)
 description: ユーザー フローで使用するように API コネクタを構成します。
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854360"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102274"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API コネクタをサインアップ ユーザー フローに追加する (プレビュー)
 
 [API コネクタ](api-connectors-overview.md)を使用するには、まず API コネクタを作成してから、ユーザー フローで有効にします。
 
@@ -29,11 +29,11 @@ ms.locfileid: "91854360"
 
    ![新しい API コネクタを追加する](./media/add-api-connector/api-connector-new.png)
 
-5. 呼び出しの表示名を指定します。 例: **ユーザー情報の検証**。
+5. 呼び出しの表示名を指定します。 例: **ユーザー情報の検証** 。
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
 7. API の認証情報を指定します。
 
-   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できる "ダミー" の **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https[]()://contoso.azurewebsites.net/api/endpoint<b>?code=0123456789</b>)。
+   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できる "ダミー" の **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https []()://contoso.azurewebsites.net/api/endpoint <b>?code=0123456789</b>)。
 
    ![新しい API コネクタを構成する](./media/add-api-connector/api-connector-config.png)
 8. **[保存]** を選択します。
@@ -74,13 +74,13 @@ Content-type: application/json
 
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)」を参照してください。
 
-また、**UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
+また、 **UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
 
 > [!IMPORTANT]
 > API エンドポイントが呼び出されたときに要求に値がない場合、要求は API に送信されません。 API は、要求に要求が含まれていないケースを明示的に確認して処理するように設計する必要があります。
 
 > [!TIP] 
-> [**identities ("identities")** ](https://docs.microsoft.com/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 "identities" 要求は、ユーザーが Google または Facebook などの ID プロバイダーで認証されるときに送信されます。 "email" は常に送信されます。
+> [**identities ("identities")**](https://docs.microsoft.com/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 "identities" 要求は、ユーザーが Google または Facebook などの ID プロバイダーで認証されるときに送信されます。 "email" は常に送信されます。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>ユーザー フローで API コネクタを有効にする
 
@@ -100,7 +100,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
 
-サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
+サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、 ***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>この手順で API に送信される要求の例
 ```http
@@ -238,8 +238,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納できます。 **[アプリケーション要求]** として選択されている場合、値をトークンで返すことができます。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 返される要求に `_<extensions-app-id>_` が含まれている必要はありません。 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納されます。 トークンではカスタム属性を返信できません。 |
+| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 要求に `_<extensions-app-id>_` が含まれている必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。  |
 
 ### <a name="example-of-a-blocking-response"></a>ブロック応答の例
 
@@ -267,6 +267,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>検証エラー応答の例
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -286,6 +288,8 @@ Content-type: application/json
 | status      | Integer | はい      | ValidationError 応答の値 `400` である必要があります。                        |
 | userMessage | String  | はい      | ユーザーに表示するメッセージ。                                            |
 
+*注:* HTTP 状態コードは、応答の本文で、"status" 値であることに加え、"400" である必要があります。
+
 **検証エラー応答を使用したエンド ユーザー エクスペリエンス**
 
 ![検証ページの例](./media/add-api-connector/validation-error-postal-code.png)
@@ -299,7 +303,7 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 ### <a name="best-practices"></a>ベスト プラクティス
 次のことを確認します。
 * API は、上で説明した API 要求と応答のコントラクトに従っています。 
-* API コネクタの**エンドポイント URL** によって、正確な API エンドポイントが指定されます。
+* API コネクタの **エンドポイント URL** によって、正確な API エンドポイントが指定されます。
 * API によって、受け取った要求の null 値が明示的に確認されます。
 * API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。
     * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを 使用します。 Azure Functions の場合は、[Premium プラン](../azure-functions/functions-scale.md)を使用することをお勧めします。

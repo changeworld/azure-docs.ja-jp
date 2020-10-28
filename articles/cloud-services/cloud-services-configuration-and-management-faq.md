@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070012"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144685"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -217,7 +217,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 ## <a name="permissions"></a>アクセス許可
 
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Cloud Services のロールベースのアクセスを実装するにはどうすればよいですか。
-Cloud Services は、Azure Resource Manager ベースのサービスではないため、ロールベースのアクセス制御 (RBAC) モデルをサポートしていません。
+Cloud Services は、Azure Resource Manager ベースのサービスではないため、Azure ロールベースのアクセス制御 (Azure RBAC) モデルをサポートしていません。
 
 「[Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
@@ -231,7 +231,7 @@ Microsoft では、所有者、またはその指名を受けた担当者から�
 このエラーは、Azure Active Directory に参加しているコンピューターから RDP ファイルを使った場合に発生する可能性があります。 この問題を解決するには、次の手順に従ってください。
 
 1. ダウンロードした RDP ファイルを右クリックして、 **[編集]** を選びます。
-2. ユーザー名の前にプレフィックスとして "&#92;" を追加します。 たとえば、**username** の代わりに **.\username** を使います。
+2. ユーザー名の前にプレフィックスとして "&#92;" を追加します。 たとえば、 **username** の代わりに **.\username** を使います。
 
 ## <a name="scaling"></a>Scaling
 
@@ -255,7 +255,7 @@ Cloud Services 用に Azure Diagnostics ログを有効にする方法につい�
 ## <a name="generic"></a>ジェネリック
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>自分の Web サイトに "nosniff" を追加する方法を教えてください。
-クライアントが MIME の種類をスニッフィングできないように、*web.config* ファイルに設定を追加します。
+クライアントが MIME の種類をスニッフィングできないように、 *web.config* ファイルに設定を追加します。
 
 ```xml
 <configuration>

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
-ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083159"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215775"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal (プレビュー)
 
@@ -95,7 +95,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    d. **[URL パスの値]** に、パスの新しい値を入力します。 この例では、 **/article.aspx** を使用します 
 
-   e. **[URL クエリ文字列の値]** に、URL クエリ文字列の新しい値を入力します。 この例では、**id={var_uri_path_1}&title={var_uri_path_2}** を使用します
+   e. **[URL クエリ文字列の値]** に、URL クエリ文字列の新しい値を入力します。 この例では、 **id={var_uri_path_1}&title={var_uri_path_2}** を使用します
     
     `{var_uri_path_1}` と `{var_uri_path_1}` は、この式 `.*article/(.*)/(.*)` で条件を評価しているときに取得された部分文字列を取り込むために使用されます
     
@@ -113,8 +113,8 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 アクセス ログの以下のフィールドを確認し、想定どおりに URL の書き換えが行われたかどうか確かめます。
 
-* **originalRequestUriWithArgs**:このフィールドには元の要求 URL が含まれています
-* **requestUri**:このフィールドには、Application Gateway での書き換え操作後の URL が含まれています
+* **originalRequestUriWithArgs** :このフィールドには元の要求 URL が含まれています
+* **requestUri** :このフィールドには、Application Gateway での書き換え操作後の URL が含まれています
 
 アクセス ログのすべてのフィールドの詳細については、[こちら](application-gateway-diagnostics.md#for-application-gateway-and-waf-v2-sku)を参照してください。
 

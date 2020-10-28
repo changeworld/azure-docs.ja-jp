@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836736"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091170"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
@@ -69,7 +69,7 @@ Service Fabric アプリケーションの完全なアプリケーションで�
 
 Service Fabric には、サービスのエンドポイント アドレスを解決するために使用できる、命名サービスというサービス検出メカニズムがあります。 
 
-![Service Fabric の直接的な通信][6]
+![Service Fabric によって、サービスのエンドポイント アドレスを解決するために使用できる、Naming Service というサービス検出メカニズムが提供されることを示す図。][6]
 
 ### <a name="queues"></a>キュー
 Cloud Services などのステートレスな環境での階層間の一般的な通信メカニズムでは、1 つの階層から別の階層に作業タスクを持続的に保存する外部ストレージ キューが使用されます。 一般的なシナリオは、Azure キューまたは Service Bus にジョブを送信する Web 層です。これでは Worker ロール インスタンスが、ジョブをキューから削除し、処理します。

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082161"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126801"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -143,8 +143,8 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 
 ### <a name="prerequisites"></a>前提条件
 
-このセクションを完了するには、Firebase アカウントを作成し、Cloud Messaging (FCM) を有効にします。 Firebase Cloud Messaging が Azure Notification Hub (ANH) インスタンスに接続されていることを確認します。 手順については、[Firebase の Azure への接続](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started)に関するページを参照してください。
-このセクションでは、Android Studio バージョン 3.6 以降が使用され、アプリケーションがビルドされていることを想定しています。
+Cloud Messaging (FCM) が有効になっている Firebase アカウントが設定されており、Firebase Cloud Messaging サービスが Azure Notification Hubs インスタンスに接続されているものとします。 詳細については、「[Communication Services の通知](https://docs.microsoft.com/azure/communication-services/concepts/notifications)」を参照してください。
+また、このチュートリアルでは、Android Studio バージョン 3.6 以降を使用してアプリケーションがビルドされているものとします。
 
 Firebase Cloud Messaging から通知メッセージを受信するには、Android アプリケーションに対する一連のアクセス許可が必要です。 お使いの `AndroidManifest.xml` ファイルの *<manifest ...>* の直後、または *</application>* タグの下に、次の一連のアクセス許可を追加します。
 
@@ -195,21 +195,21 @@ import com.google.firebase.iid.InstanceIdResult;
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 着信通話プッシュ通知用の通話サービス クライアント ライブラリに、デバイス登録トークンを登録します。
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -222,20 +222,20 @@ catch(Exception e) {
 
 着信通話プッシュ通知を受信するには、ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
 
-Firebase Cloud Messaging からペイロードを取得するには、*FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
+Firebase Cloud Messaging からペイロードを取得するには、 *FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +252,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-取得したペイロードは、Communication Services のクライアント ライブラリに渡し、`CallAgent` インスタンスで `handlePushNotification` メソッドを呼び出して処理されるようにできます。
+- ペイロードを取得したら、 *CallAgent* インスタンスで *handlePushNotification* メソッドを呼び出すことによって処理されるように、 *Communication Services* のクライアント ライブラリに渡すことができます。 `CallAgent` インスタンスを作成するには、`CallClient` クラスで `createCallAgent(...)` メソッドを呼び出します。
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }

@@ -4,12 +4,12 @@ description: アプリをインストルメント化することなく、任意�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537659"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215265"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>構成オプション - Azure Monitor Application Insights の Java スタンドアロン エージェント
 
@@ -164,9 +164,10 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_JMX_METRICS` を使用して、JMX メトリックを設定することもできます。
+数値およびブール型の JMX メトリック値がサポートされています。 ブール型の JMX メトリックは、false の場合は `0` に、true の場合は `1` にマップされます。
 
-この環境変数の内容は、上記の構造に一致する json データである必要があります。例: `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
+[//]: # "注: APPLICATIONINSIGHTS_JMX_METRICS に関する説明がここに記載されていません"
+[//]: # "env var に埋め込まれている json は整理されておらず、コード不要のアタッチ シナリオについてのみ記載する方がよいと考えられます"
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (Spring Boot アクチュエータのメトリックを含む)
 
@@ -216,7 +217,7 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 
 たとえば、サンプリングを 10% に設定した場合、トランザクションの 10% のみが表示されますが、これらの 10% のそれぞれに完全なエンドツーエンドのトランザクション詳細が含まれます。
 
-ここでは、サンプリングを**すべてのトランザクションの 10%** に設定する方法の例を示します。必ず、ユースケースに適したサンプリング レートを設定してください。
+ここでは、サンプリングを **すべてのトランザクションの 10%** に設定する方法の例を示します。必ず、ユースケースに適したサンプリング レートを設定してください。
 
 ```json
 {

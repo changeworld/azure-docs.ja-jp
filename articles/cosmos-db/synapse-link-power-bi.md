@@ -1,24 +1,24 @@
 ---
-title: Synapse Link で Azure Cosmos DB データを分析するための Power BI と Synapse SQL サーバーレス
-description: Azure Cosmos DB の Synapse Link 上に Synapse SQL サーバーレス データベースおよびビューを構築し、Azure Cosmos コンテナーに対してクエリを実行し、それらのビュー上に Power BI を使用してモデルを構築する方法について説明します。
+title: Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プール
+description: Azure Cosmos DB の Synapse Link 上にサーバーレス Synapse SQL プール データベースおよびビューを構築し、Azure Cosmos コンテナーに対してクエリを実行し、Power BI を使用してそれらのビュー上にモデルを構築する方法について説明します。
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26a6ddf3ea3009c1463f40403c9d1860a7cb81f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930988"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126005"
 ---
-# <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI および Synapse SQL サーバーレスを使用して Synapse Link で Azure Cosmos DB を分析する (プレビュー)
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プールを使用する (プレビュー) 
 
-この記事では、Azure Cosmos DB の Synapse Link 上に Synapse SQL サーバーレス (これは以前 **SQL オンデマンド**と呼ばれていました) データベースおよびビューを構築する方法について説明します。 Azure Cosmos コンテナーに対してクエリを実行し、そのクエリを反映するために、それらのビュー上に Power BI でモデルを構築します。
+この記事では、Azure Cosmos DB の Synapse Link 上にサーバーレス Synapse SQL プール (旧称 **SQL オンデマンド** ) データベースおよびビューを構築する方法について説明します。 Azure Cosmos コンテナーに対してクエリを実行し、そのクエリを反映するために、それらのビュー上に Power BI でモデルを構築します。
 
 > [!NOTE]
-> Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアの使用は、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
+> サーバーレス SQL プールでの Azure Cosmos DB 分析ストアの使用は、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
 
 このシナリオでは、パートナー小売店での Surface 製品の売上に関するダミー データを使用します。 大所帯への近さと、特定の週の広告の効果に基づいた店舗ごとの収益を分析します。 この記事では **RetailSales** と **StoreDemographics** という名前の 2 つのビューと、それらの間のクエリを作成します。 この [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) リポジトリからサンプル製品データを取得できます。
 
@@ -44,7 +44,7 @@ Synapse ワークスペースで、 **[開発]** タブをクリックし、 **+
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
 
-すべてのワークスペースに、Synapse SQL サーバーレス エンドポイントが付属しています。 SQL スクリプトを作成したら、上部のツール バーから **SQL オンデマンド**に接続します。
+すべてのワークスペースに、サーバーレス SQL エンドポイントが付属しています。 SQL スクリプトを作成したら、上部のツール バーから **SQL オンデマンド** に接続します。
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
 
@@ -55,7 +55,7 @@ Synapse ワークスペースで、 **[開発]** タブをクリックし、 **+
 Create database RetailCosmosDB
 ```
 
-次に、さまざまな Synapse Link 対応 Azure Cosmos コンテナー全体の多数のビューを作成します。 これにより、T-SQL を使用して、さまざまなコンテナーに格納されている Azure Cosmos DB データを結合し、クエリを実行することができます。  ビューの作成時に、**RetailCosmosDB** データベースを選択してください。
+次に、さまざまな Synapse Link 対応 Azure Cosmos コンテナー全体の多数のビューを作成します。 ビューにより、T-SQL を使用して、さまざまなコンテナーに格納されている Azure Cosmos DB データを結合し、クエリを実行することができます。  ビューの作成時に、 **RetailCosmosDB** データベースを選択してください。
 
 次のスクリプトは、各コンテナーでビューを作成する方法を示しています。 わかりやすくするために、Synapse Link 対応コンテナーで、Synapse SQL サーバーレスの[自動スキーマ推論](analytical-store-introduction.md#analytical-schema)機能を使用してみましょう。
 
@@ -110,17 +110,17 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Power BI によるコンテナー上のモデル ビュー
 
-次に、以下の手順に従って、Power BI デスクトップを開き、Synapse SQL サーバーレス エンドポイントに接続します。
+次に、以下の手順に従って、Power BI デスクトップを開き、サーバーレス SQL エンドポイントに接続します。
 
 1. Power BI Desktop アプリケーションを開きます。 **[データの取得]** を選択し、 **[その他]** を選択します。
 
 1. 接続オプションの一覧から **[Azure Synapse Analytics (SQL DW)]** を選択します。
 
-1. データベースが配置されている SQL エンドポイントの名前を入力します。 **[サーバー]** フィールドに `SynapseLinkBI-ondemand.sql.azuresynapse.net` と入力します。 この例では、**SynapseLinkBI** がワークスペースの名前です。 ワークスペースに別の名前を指定している場合は、それを置き換えます。 データ接続モードで、 **[直接クエリ]** を選択し、 **[OK]** をクリックします。
+1. データベースが配置されている SQL エンドポイントの名前を入力します。 **[サーバー]** フィールドに `SynapseLinkBI-ondemand.sql.azuresynapse.net` と入力します。 この例では、 **SynapseLinkBI** がワークスペースの名前です。 ワークスペースに別の名前を指定している場合は、それを置き換えます。 データ接続モードで、 **[直接クエリ]** を選択し、 **[OK]** をクリックします。
 
 1. Azure AD など、優先する認証方法を選択します。
 
-1. **RetailCosmosDB** データベースと **RetailSales** ビュー、**StoreDemographics** ビューを選択します。
+1. **RetailCosmosDB** データベースと **RetailSales** ビュー、 **StoreDemographics** ビューを選択します。
 
 1. 2 つのビューを直接クエリ モードに読み込むには **[読み込み]** を選択します。
 
@@ -128,9 +128,9 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 1. **RetailSales** ビューの **StoreId** 列を **StoreDemographics** ビューの **StoreId** 列までドラッグします。
 
-1. **RetailSales** ビューには同じ店舗 ID を持つ複数の行がありますが、**StoreDemographics** には店舗 ID 行が 1 つしかない (これはディメンション テーブルです) ため、多対一 (*: 1) リレーションシップを選択します
+1. **RetailSales** ビューには同じ店舗 ID を持つ複数の行があるため、多対一 (*: 1) リレーションシップを選択します **StoreDemographics** の店舗 ID 行は 1 行のみです (これはディメンション テーブルです)。
 
-ここで、**レポート** ウィンドウに移動し、収益と LargeHH インデックスの分散表現に基づいて、店舗あたりの平均収益に対する世帯規模の相対的な重要度を比較するレポートを作成します。
+ここで、 **レポート** ウィンドウに移動し、収益と LargeHH インデックスの分散表現に基づいて、店舗あたりの平均収益に対する世帯規模の相対的な重要度を比較するレポートを作成します。
 
 1. **[散布図]** を選択します。
 
@@ -145,4 +145,4 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse SQL サーバーレスを使用して、[Azure Open Datasets を分析し、Azure Synapse Studio で結果を視覚化する](../synapse-analytics/sql/tutorial-data-analyst.md)
+サーバーレス Synapse SQL プールを使用して、[Azure Open Datasets を分析し、Azure Synapse Studio で結果を視覚化する](../synapse-analytics/sql/tutorial-data-analyst.md)

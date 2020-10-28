@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 9506b3430775f137c09fe3d155b203cdcbd14783
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d46b3ba9e3df5e2b3600db2be2a41789fed5242f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070556"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207973"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -31,7 +31,7 @@ ms.locfileid: "92070556"
 はい。 API サーバーへのアクセスを制限するためのオプションは 2 つあります。
 
 - API サーバーのパブリック エンドポイントを維持するが、信頼できる IP 範囲へのアクセスを制限する場合は、[API サーバーの承認済み IP 範囲][api-server-authorized-ip-ranges]を使用します。
-- API サーバーへのアクセスを仮想ネットワーク内から "*のみ*" に制限する場合は、[プライベート クラスター][private-clusters]を使用します。
+- API サーバーへのアクセスを仮想ネットワーク内から " *のみ* " に制限する場合は、 [プライベート クラスター][private-clusters]を使用します。
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>1 つのクラスター内で、異なる VM サイズを設定できますか?
 
@@ -57,14 +57,14 @@ AKS は、仮想マシン スケール セット、仮想ネットワーク、�
 
 このアーキテクチャを有効にするため、各 AKS デプロイは、2 つのリソース グループにまたがっています。
 
-1. 最初のリソース グループを作成します。 このグループには、Kubernetes サービスのリソースのみが含まれます。 AKS リソース プロバイダーにより、デプロイの間に 2 番目のリソース グループが自動的に作成されます。 2 番目のリソース グループの例は、*MC_myResourceGroup_myAKSCluster_eastus* です。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
-1. *ノード リソース グループ*と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS は、クラスターが削除されるたびにノード リソースを自動的に削除するため、クラスターのライフサイクルを共有するリソースにのみ使用する必要があります。
+1. 最初のリソース グループを作成します。 このグループには、Kubernetes サービスのリソースのみが含まれます。 AKS リソース プロバイダーにより、デプロイの間に 2 番目のリソース グループが自動的に作成されます。 2 番目のリソース グループの例は、 *MC_myResourceGroup_myAKSCluster_eastus* です。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
+1. *ノード リソース グループ* と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS は、クラスターが削除されるたびにノード リソースを自動的に削除するため、クラスターのライフサイクルを共有するリソースにのみ使用する必要があります。
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS ノード リソース グループに独自の名前を指定できますか?
 
 はい。 既定では、AKS によってノード リソース グループに *MC_resourcegroupname_clustername_location* という名前が設定されますが、独自の名前を指定することもできます。
 
-独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、 *--node-resource-group* パラメーターを使用してリソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
+独自のリソース グループ名を指定するには、 [aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、 *--node-resource-group* パラメーターを使用してリソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、 *nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
 
 * セカンダリ リソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
 * カスタム リソース グループの名前を指定できるのは、クラスターを作成するときだけです。
@@ -81,7 +81,7 @@ AKS は、仮想マシン スケール セット、仮想ネットワーク、�
 
 ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS を使用すると、エンドユーザーが作成したカスタム タグを作成および変更できます。また、[ノード プールを作成](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)するときにそれらのタグを追加できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 これは、マネージド リソース グループにスコープを指定して Azure ポリシーを作成することによっても実現できます。
 
-ただし、AKS クラスター内のノード リソース グループにあるリソース上で **Azure によって作成されたタグ**を変更することは、サポートされていないアクションであり、サービス レベル目標 (SLO) が損なわれます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
+ただし、AKS クラスター内のノード リソース グループにあるリソース上で **Azure によって作成されたタグ** を変更することは、サポートされていないアクションであり、サービス レベル目標 (SLO) が損なわれます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 
@@ -100,7 +100,7 @@ AKS では、以下の[アドミッション コントローラー][admission-co
 
 ## <a name="can-i-use-admission-controller-webhooks-on-aks"></a>AKS でアドミッション コントローラー Webhook を使用できますか?
 
-はい、AKS でアドミッション コントローラー Webhook を使用できます。 **control-plane ラベル**でマークされた内部 AKS 名前空間を除外することをお勧めします。 たとえば、以下を Webhook 構成に追加します。
+はい、AKS でアドミッション コントローラー Webhook を使用できます。 **control-plane ラベル** でマークされた内部 AKS 名前空間を除外することをお勧めします。 たとえば、以下を Webhook 構成に追加します。
 
 ```
 namespaceSelector:
@@ -193,7 +193,7 @@ AKS には、このような構成に耐え、そこから復旧するための�
 
 ## <a name="can-i-use-custom-vm-extensions"></a>カスタム VM 拡張機能を使用できますか?
 
-マネージド サービスである AKS はなく、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントなどをインストールするには、 Kubernetes の API およびメカニズムを活用してください。 たとえば、必要なコンポーネントをインストールするには、DaemonSet を活用します。
+いいえ。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントなどをインストールするには、 Kubernetes の API およびメカニズムを活用してください。 たとえば、必要なコンポーネントをインストールするには、DaemonSet を活用します。
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS によって、クラスターのリージョン外に格納される顧客データはありますか?
 

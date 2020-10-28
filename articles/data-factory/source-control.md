@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595090"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101904"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -85,7 +85,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 | **RepositoryName** | Azure Repos コード リポジトリの名前｡ Azure Repos プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | `<your Azure Repos code repository name>` |
 | **コラボレーション ブランチ** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
 | **ルート フォルダー** | Azure Repos コラボレーション ブランチのルート フォルダー。 | `<your root folder name>` |
-| **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
+| **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス** からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 | **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
 
 > [!NOTE]
@@ -163,11 +163,13 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 - Data Factory ビジュアル作成ツールと GitHub の統合は、一般的に利用できるバージョンの Data Factory でのみ機能します。
 
+- Azure Data Factory は、GitHub 組織のアカウントをサポートしていません。
+
 - 1 つの GitHub ブランチからは、リソースの種類ごとに最大 1,000 のエンティティ (パイプライン、データセットなど) をフェッチできます。 この制限に達した場合は、リソースを個別のファクトリに分割することをお勧めします。 Azure DevOps Git にはこのような制限はありません。
 
 ## <a name="version-control"></a>バージョン コントロール
 
-開発者は、バージョン コントロール (_ソース管理_ とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
+開発者は、バージョン コントロール ( _ソース管理_ とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
@@ -205,7 +207,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 ![発行ブランチが正しいことを確認する](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
+> マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する " *必要があります* "。
 
 ## <a name="best-practices-for-git-integration"></a>Git 統合のベスト プラクティス
 
@@ -214,7 +216,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 通常、Data Factory を更新するアクセス許可をすべてのチーム メンバーには付与することはありません。 次のアクセス許可の設定をお勧めします。
 
 *   Data Factory に対する読み取りアクセス許可は、チーム メンバー全員に必要です。
-*   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある**リソース グループ**で、**Data Factory 共同作成者**ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
+*   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある **リソース グループ** で、 **Data Factory 共同作成者** ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
 
 コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されているプル要求のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 

@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327223"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151580"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -29,9 +29,9 @@ LUIS では、次の 3 種類の Azure リソースと Azure 以外の 1 つの�
 
 |リソース|目的|Cognitive service `kind`|Cognitive service `type`|
 |--|--|--|--|
-|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](luis-migration-authoring.md#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは次の 1 つです。<br> * **無料 F0 オーサリング リソース**。これによって、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が毎月提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
-|予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースで利用できるサービス レベルは次の 2 つです。<br> * **無料 F0 予測リソース**。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> * **標準 S0 予測リソース**。これは有料のサービス レベルです。 [価格に関する詳細情報](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインアップするときにスターター リソース オプションを選択した場合は、これが既定で作成されます。 ただし、スタート キーは最終的に非推奨となるので、すべての LUIS ユーザーは[自分のアカウントを移行](luis-migration-authoring.md#what-is-migration)し、自分の LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースの場合とは違い、このリソースによって、ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません|
+|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](luis-migration-authoring.md#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは次の 1 つです。<br> * **無料 F0 オーサリング リソース** 。これによって、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が毎月提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
+|予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースで利用できるサービス レベルは次の 2 つです。<br> * **無料 F0 予測リソース** 。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> * **標準 S0 予測リソース** 。これは有料のサービス レベルです。 [価格に関する詳細情報](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインアップするときにスターター リソース オプションを選択した場合は、これが既定で作成されます。 ただし、スタート キーは最終的に非推奨となるので、すべての LUIS ユーザーは[自分のアカウントを移行](luis-migration-authoring.md#what-is-migration)し、自分の LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースの場合とは違い、このリソースによって、Azure ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません|
 |[Cognitive Service マルチサービスのリソース キー](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUIS およびその他のサポートされている Cognitive Services と共有される予測エンドポイント要求に対するクエリを実行します。|`CognitiveServices`|`Cognitive Services`|
 
 
@@ -94,9 +94,9 @@ LUIS アプリを移行できます。 Azure portal または Azure CLI では�
 
 ### <a name="contributions-from-other-authors"></a>他の作成者からの投稿
 
-[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合: オーサリング リソースの "_共同作成者_" は、 **[アクセス制御 (IAM)]** ページを使用して、Azure portal で管理されます。 コラボレーターのメール アドレスと "_共同作成者_" ロールを使用して、[ユーザーを追加する方法](luis-how-to-collaborate.md)を参照してください。
+[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合: オーサリング リソースの " _共同作成者_ " は、 **[アクセス制御 (IAM)]** ページを使用して、Azure portal で管理されます。 コラボレーターのメール アドレスと " _共同作成者_ " ロールを使用して、 [ユーザーを追加する方法](luis-how-to-collaborate.md)を参照してください。
 
-まだ移行されていないアプリの場合: すべての "_コラボレーター_" は、LUIS ポータルの **[管理] -> [コラボレーター]** ページから管理されます。
+まだ移行されていないアプリの場合: すべての " _コラボレーター_ " は、LUIS ポータルの **[管理] -> [コラボレーター]** ページから管理されます。
 
 ### <a name="query-prediction-access-for-private-and-public-apps"></a>プライベート アプリとパブリック アプリのクエリ予測のアクセス
 
@@ -145,9 +145,9 @@ LUIS ランタイム キーを表示できるユーザーを制御するには�
 
 ### <a name="runtime-security-for-public-apps"></a>パブリック アプリのランタイム セキュリティ
 
-アプリをいったんパブリックとして構成すると、キーでエンドポイントのクォータを使い切ってない場合に限り、"_すべての_" 有効な LUIS オーサリング キーまたは LUIS エンドポイント キーでアプリにクエリを実行できます。
+アプリをいったんパブリックとして構成すると、キーでエンドポイントのクォータを使い切ってない場合に限り、" _すべての_ " 有効な LUIS オーサリング キーまたは LUIS エンドポイント キーでアプリにクエリを実行できます。
 
-所有者または共同作成者ではないユーザーは、アプリ ID が与えられている場合にのみ、パブリック アプリのランタイムにアクセスできます。 LUIS には、パブリックな "_マーケット_" やパブリック アプリを検索する他の方法がありません。
+所有者または共同作成者ではないユーザーは、アプリ ID が与えられている場合にのみ、パブリック アプリのランタイムにアクセスできます。 LUIS には、パブリックな " _マーケット_ " やパブリック アプリを検索する他の方法がありません。
 
 パブリック アプリはすべてのリージョンで公開されるので、リージョン ベースの LUIS リソース キーを持つユーザーは、どのリージョンがリソース キーと関連付けられているかにかかわらず、アプリにアクセスできます。
 
@@ -190,20 +190,20 @@ LUIS 予測ランタイム エンドポイント キーを表示できるユー�
 
     ブラウザー開いたら、正しいアカウントを選択し、認証できます。
 
-1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。
+1. **LUIS オーサリング リソース** を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、 _既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-limits.md#key-limits)に関するページをご覧ください。
+1. **LUIS 予測エンドポイント リソース** を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、 _既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-limits.md#key-limits)に関するページをご覧ください。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note]
-    > LUIS ポータルで **[管理]、[Azure リソース]** の順に選択して割り当てるまで、LUIS ポータルでこのキーが使用されることは**ありません**。
+    > LUIS ポータルで **[管理]、[Azure リソース]** の順に選択して割り当てるまで、LUIS ポータルでこのキーが使用されることは **ありません** 。
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -287,12 +287,12 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
     ![ご自身の LUIS 支払いレベルの変更](./media/luis-usage-tiers/plans.png)
 1.  価格の変更が完了したら、ポップアップ ウィンドウで新しい価格レベルを確認します。
     ![ご自身の LUIS 支払いレベルの確認](./media/luis-usage-tiers/updated.png)
-1. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](#assign-a-resource-to-an-app)て、すべてのエンドポイントのクエリで使用します。
+1. 必ず **[発行]** ページで [このエンドポイント キーを割り当て](#assign-a-resource-to-an-app)て、すべてのエンドポイントのクエリで使用します。
 
 ## <a name="viewing-azure-resource-metrics"></a>Azure リソース メトリックの表示
 
 ### <a name="viewing-azure-resource-summary-usage"></a>Azure リソース概要の使用状況の表示
-Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、 **[概要] ページ**を確認します。使用状況が表示されるまでに最大で 5 分かかります。
+Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、 **[概要] ページ** を確認します。使用状況が表示されるまでに最大で 5 分かかります。
 
 ![使用状況の表示](./media/luis-usage-tiers/overview.png)
 
@@ -310,7 +310,7 @@ Azure で LUIS の使用に関する情報を表示できます。 **[概要]** 
 
 ![既定のアラート](./media/luis-usage-tiers/alert-default.png)
 
-特定の期間に対して、**呼び出し合計**メトリックのメトリック アラートを追加します。 アラートを受け取るすべてのユーザーのメール アドレスを追加します。 アラートを受け取るすべてのシステムの Webhook を追加します。 アラートがトリガーされたときに、ロジック アプリを実行することもできます。
+特定の期間に対して、 **呼び出し合計** メトリックのメトリック アラートを追加します。 アラートを受け取るすべてのユーザーのメール アドレスを追加します。 アラートを受け取るすべてのシステムの Webhook を追加します。 アラートがトリガーされたときに、ロジック アプリを実行することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

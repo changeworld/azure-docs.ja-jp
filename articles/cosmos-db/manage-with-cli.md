@@ -4,14 +4,14 @@ description: Azure CLI を使用して Azure Cosmos DB Core (SQL) API リソー�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 631dd3242e695a1e7872a4b078ab3f9761591c56
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840593"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277767"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos Core (SQL) API リソースの管理
 
@@ -21,8 +21,10 @@ ms.locfileid: "91840593"
 
 CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI のバージョン 2.12.1 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
+他の API の Azure CLI サンプルについては、[CLI Samples for Cassandra](cli-samples-cassandra.md)、[CLI Samples for MongoDB API](cli-samples-mongodb.md)、[CLI Samples for Gremlin](cli-samples-gremlin.md)、[CLI Samples for Table](cli-samples-table.md) を参照してください。
+
 > [!IMPORTANT]
-> Azure Cosmos DB リソースの名前を変更することはできません。これは、Azure Resource Manager がリソース URI と連携する方法に違反するためです。
+> Azure Cosmos DB リソースの名前を変更することはできません。これは、Azure Resource Manager とリソース URI が連携する方法に違反するためです。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos アカウント
 

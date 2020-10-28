@@ -13,22 +13,23 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482801"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164569"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Azure VM 上で SQL Server の可用性グループを構成する (Azure portal - プレビュー)
+# <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure portal を使用し、Azure VM 上で SQL Server の可用性グループ (プレビュー) を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して、Azure VM 上に SQL Server の可用性グループを構成する方法について説明します。 
 
 Azure portal を使用して新しいクラスターを作成するか、既存のクラスターをオンボードしてから、可用性グループ、リスナー、および内部ロード バランサーを作成します。 
 
-   > [!NOTE]
-   > この機能は現在プレビュー段階であり、デプロイの途中です。目的のリージョンで利用できない場合は、後日に再度ご確認ください。 
+現在、この機能はプレビュー段階にあります。 
+
+この記事では Azure portal を使用して可用性グループ環境を構成しますが、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -37,14 +38,14 @@ Azure portal を使用して Always On 可用性グループを構成するに�
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [完全管理モードで SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)され、各 VM 上の SQL Server サービスで同じドメイン アカウントを使用している、"*同じ*" 可用性セットまたは "*異なる*" 可用性ゾーンにあって 1 つ以上のドメイン参加済みの [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
+- [完全管理モードで SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)され、各 VM 上の SQL Server サービスで同じドメイン アカウントを使用している、" *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにあって 1 つ以上のドメイン参加済みの [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
 - 2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 1 つは内部ロード バランサー用です。 もう 1 つは、可用性グループと同じサブネット内の可用性グループ リスナー用です。 既存のロード バランサーを使用している場合は、使用可能な IP アドレスが可用性グループ リスナー用に 1 つだけ必要です。 
 
 ## <a name="permissions"></a>アクセス許可
 
 Azure portal を使用して可用性グループを構成するには、次のアカウントのアクセス許可が必要です。 
 
-- ドメインで**コンピューター オブジェクトを作成する**ためのアクセス許可を持っている既存のドメイン ユーザー アカウント。 たとえばドメイン管理者アカウントは、一般に十分なアクセス許可を持っています (例: account@domain.com)。 _クラスターを作成するには、このアカウントが、各 VM でローカル管理者グループに含まれている必要もあります。_
+- ドメインで **コンピューター オブジェクトを作成する** ためのアクセス許可を持っている既存のドメイン ユーザー アカウント。 たとえばドメイン管理者アカウントは、一般に十分なアクセス許可を持っています (例: account@domain.com)。 _クラスターを作成するには、このアカウントが、各 VM でローカル管理者グループに含まれている必要もあります。_
 - SQL Server を制御するドメイン ユーザー アカウント。 これは、可用性グループに追加するすべての SQL Server VM で同じアカウントである必要があります。 
 
 ## <a name="configure-cluster"></a>クラスターの構成
@@ -69,7 +70,7 @@ Azure portal を使用してクラスターを構成します。 新しいクラ
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
-1. **[Windows Server Failover Cluster credentials]\(Windows Server フェールオーバー クラスターの資格情報\)** を展開して、SQL Server サービス アカウントの[資格情報](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile)を指定し、さらにクラスター オペレーターとブートストラップ アカウントが SQL Server サービスに使用されるアカウントとは異なる場合は、これらも指定します。 
+1. **[Windows Server Failover Cluster credentials]\(Windows Server フェールオーバー クラスターの資格情報\)** を展開して、SQL Server サービス アカウントの [資格情報](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile)を指定し、さらにクラスター オペレーターとブートストラップ アカウントが SQL Server サービスに使用されるアカウントとは異なる場合は、これらも指定します。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する"
     ```
@@ -137,14 +138,14 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 1. リモート デスクトップ接続 (RDP) などの任意の方法を使用して、SQL Server VM のいずれかに接続します。 
 1. SQL Server Management Studio (SSMS) を開きます。
 1. SQL Server インスタンスに接続します。 
-1. **オブジェクト エクスプローラー**で **[Always On 高可用性]** を展開します。
+1. **オブジェクト エクスプローラー** で **[Always On 高可用性]** を展開します。
 1. **[可用性グループ]** を展開し、可用性グループを右クリックして、 **[データベースの追加...]** を選択します。
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. プロンプトに従って、可用性グループに追加するデータベースを選択します。 
 1. **[OK]** を選択して設定を保存し、データベースを可用性グループに追加します。 
-1. データベースを追加したら、**オブジェクト エクスプローラー**を更新して、データベースの状態が `synchronized` であることを確認します。 
+1. データベースを追加したら、 **オブジェクト エクスプローラー** を更新して、データベースの状態が `synchronized` であることを確認します。 
 
 データベースを追加した後は、Azure portal で可用性グループの状態を確認できます。 
 
@@ -171,13 +172,13 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 ## <a name="modify-availability-group"></a>可用性グループの変更 
 
 
-Azure portal の **[高可用性]** ページから、可用性グループの横にある省略記号 (...) を選択することで、可用性グループへの**レプリカの追加**、**リスナーの構成**、および**リスナーの削除**を行うことができます。 
+Azure portal の **[高可用性]** ページから、可用性グループの横にある省略記号 (...) を選択することで、可用性グループへの **レプリカの追加** 、 **リスナーの構成** 、および **リスナーの削除** を行うことができます。 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 ## <a name="remove-cluster"></a>クラスターの削除
 
-クラスターからすべての SQL Server VM を削除して破棄し、SQL VM リソース プロバイダーからクラスター メタデータを削除します。 これを行うには、最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) または PowerShell を使用します。 
+クラスターからすべての SQL Server VM を削除して破棄し、SQL VM リソース プロバイダーからクラスター メタデータを削除します。 これを行うには、最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) または PowerShell を使用します。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

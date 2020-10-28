@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273009"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310896"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Data Studio を使用して Azure Arc 対応 PostgreSQL Hyperscale を作成する
 
@@ -62,7 +62,7 @@ OpenShift の SCC の詳細については、[OpenShift のドキュメント](h
 1. [接続] タブで、左上にある 3 つのドットをクリックし、[新しい展開] を選択します
 1. デプロイ オプションから、 **[PostgreSQL Hyperscale サーバー グループ - Azure Arc]** を選択します
     >[!NOTE]
-    > `azdata` CLI が現在インストールされていない場合は、ここでインストールするように求められることがあります。
+    > [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] が現在インストールされていない場合は、ここでインストールするように求められることがあります。
 1. プライバシーとライセンス条項に同意し、下部にある **[選択]** をクリックします
 1. [Deploy PostgreSQL Hyperscale server group - Azure Arc]\(PostgreSQL Hyperscale サーバー グループをデプロイする - Azure Arc\) ブレードで、次の情報を入力します。
    - サーバー グループの名前を入力します
@@ -89,7 +89,7 @@ OpenShift の SCC の詳細については、[OpenShift のドキュメント](h
     * [マルチテナント データベースを設計する](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [リアルタイム分析ダッシュボードを設計する](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
+    > \*上記のドキュメントの「 **Azure portal にサインインする** 」と「 **Azure Database for PostgreSQL - Hyperscale (Citus) を作成する** 」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
 - [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)

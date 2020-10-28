@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c9ea401a4a62f617b5acf6f96c60532d929ff1c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85799396"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167969"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Studio 3T を使用して Azure Cosmos アカウントに接続する
 
@@ -49,7 +49,7 @@ Studio 3T 接続マネージャーに Azure Cosmos アカウントを追加す�
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Studio 3T を使用してデータベース、コレクション、およびドキュメントを作成する
 Studio 3T を使用してデータベース、コレクション、およびドキュメントを作成するには、次の手順を実行します。
 
-1. **接続マネージャー**で目的の接続を強調表示し、 **[Connect (接続)]** をクリックします。
+1. **接続マネージャー** で目的の接続を強調表示し、 **[Connect (接続)]** をクリックします。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="接続文字列のページのスクリーンショット":::
 2. ホストを右クリックし、 **[データベースの追加]** を選択します。  データベースの名前を指定し、 **[OK]** をクリックします。

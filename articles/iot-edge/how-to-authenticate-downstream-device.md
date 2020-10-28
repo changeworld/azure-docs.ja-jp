@@ -4,16 +4,16 @@ description: IoT Hub へのダウンストリーム デバイスまたはリー�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046725"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151382"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
 
@@ -21,13 +21,13 @@ ms.locfileid: "92046725"
 
 透過的なゲートウェイ接続を正常にセットアップするための 3 つの一般的な手順があります。 この記事では、2 番目の手順について説明します。
 
-1. ゲートウェイ デバイスをサーバーとして構成し、ダウンストリーム デバイスが安全に接続できるようにします。 ダウンストリーム デバイスからメッセージを受信するようにゲートウェイを設定し、適切な宛先にルーティングします。 詳細については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
+1. ゲートウェイ デバイスをサーバーとして構成し、ダウンストリーム デバイスが安全に接続できるようにします。 ダウンストリーム デバイスからメッセージを受信するようにゲートウェイを設定し、適切な宛先にルーティングします。 その手順については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 2. **ダウンストリーム デバイスのデバイス ID を作成して、IoT Hub で認証できるようにします。ゲートウェイ デバイスを介してメッセージを送信するようにダウンストリーム デバイスを構成します。**
-3. ダウンストリーム デバイスをゲートウェイ デバイスに接続し、メッセージの送信を開始します。 詳細については、「[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)」のページを参照してください。
+3. ダウンストリーム デバイスをゲートウェイ デバイスに接続し、メッセージの送信を開始します。 その手順については、「[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)」を参照してください。
 
 ダウンストリーム デバイスは、対称キー (共有アクセス キーとも呼ばれます)、X.509 の自己署名証明書、X.509 証明機関 (CA) の署名済み証明書の 3 つの方法のいずれかを使用して IoT Hub で認証できます。 認証の手順は、IoT Hub を使用して IoT Edge ではない任意のデバイスを設定するために使用される手順に似ていますが、ゲートウェイのリレーションシップを宣言するところが少し違っています。
 
-この記事の手順では、手動でのデバイス プロビジョニングについて説明します。 Azure IoT Hub Device Provisioning Service (DPS) を使用したダウンストリーム デバイスの自動プロビジョニングはサポートされていません。
+Azure IoT Hub Device Provisioning Service (DPS) を使用したダウンストリーム デバイスの自動プロビジョニングはサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,17 +35,23 @@ ms.locfileid: "92046725"
 
 X.509 認証を使用している場合は、ダウンストリーム デバイス用の証明書を生成します。 同じルート CA 証明書と、透過的なゲートウェイの記事に使用した証明書生成スクリプトを再度使用できるようにします。
 
-この記事では、いくつかの時点で*ゲートウェイ ホスト名*を参照します。 ゲートウェイ ホスト名は、IoT Edge ゲートウェイ デバイス上の config.yaml ファイルの **hostname** パラメーターで宣言されます。 これはダウンストリーム デバイスの接続文字列で参照されます。 ゲートウェイ ホスト名は、DNS またはダウンストリーム デバイス上の host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。
+この記事では、いくつかの時点で *ゲートウェイ ホスト名* を参照します。 ゲートウェイ ホスト名は、IoT Edge ゲートウェイ デバイス上の config.yaml ファイルの **hostname** パラメーターで宣言されます。 これはダウンストリーム デバイスの接続文字列で参照されます。 ゲートウェイ ホスト名は、DNS またはダウンストリーム デバイス上の host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。
 
 ## <a name="register-device-with-iot-hub"></a>IoT Hub でデバイスを登録する
 
 IoT Hub でダウンストリーム デバイスを認証する方法を選択します。
 
 * [対称キー認証](#symmetric-key-authentication):IoT Hub で、ダウンストリーム デバイスに配置するキーが作成されます。 デバイスが認証されると、IoT Hub で 2 つのキーが一致することが確認されます。 対称キー認証を使用するために追加の証明書を作成する必要はありません。
+
+  開発またはテスト シナリオでゲートウェイをテストする場合、この方法のほうが早く始められます。
+
 * [X.509 自己署名認証](#x509-self-signed-authentication):デバイスの X.509 証明書からの拇印を IoT Hub と共有するため、拇印認証とも呼ばれます。
+
+  運用シナリオでは、デバイスに証明書認証をお勧めします。
+
 * [X.509 CA 署名認証](#x509-ca-signed-authentication):ルート CA 証明書を IoT Hub にアップロードします。 デバイスが認証用に X.509 証明書を提示すると、IoT Hub では、同じルート CA 証明書によって署名された信頼チェーンに属しているかどうかが確認されます。
 
-これら 3 つの方法のいずれかを使用してデバイスを登録したら、次のセクションに進み、ダウンストリーム デバイス用に[接続文字列を取得して変更](#retrieve-and-modify-connection-string)します。
+  運用シナリオでは、デバイスに証明書認証をお勧めします。
 
 ### <a name="symmetric-key-authentication"></a>対称キーの認証
 
@@ -59,17 +65,15 @@ Azure portal、Azure CLI、Visual Studio Code の IoT 拡張機能のいずれ�
 
 * 認証の種類として **[対称キー]** を選択します。
 
-* **[親デバイスの設定]** を選択し、このダウンストリーム デバイスが経由して接続する IoT Edge ゲートウェイ デバイスを選択します。 この手順では、ダウンストリーム デバイスの[オフライン機能](offline-capabilities.md)が有効になります。 親は後でいつでも変更できます。
+* **[親デバイスの設定]** を選択し、このダウンストリーム デバイスが経由して接続する IoT Edge ゲートウェイ デバイスを選択します。 親は後でいつでも変更できます。
 
    ![ポータルで対称キー認証を使用したデバイス ID の作成](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じ操作を完了できます。 次の例では、対称キーの認証で新しい IoT デバイスを作成し、親デバイスを割り当てます。
+[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じ操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、対称キー認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
-
-デバイスの作成と親/子の管理のための Azure CLI コマンドの詳細については、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドのリファレンス コンテンツを参照してください。
 
 次に、[接続文字列 を取得および変更](#retrieve-and-modify-connection-string)して、デバイスがゲートウェイ経由で接続するように設定 します。
 
@@ -104,7 +108,7 @@ X.509 自己署名認証 (拇印認証とも呼ばれます) の場合、お使�
    * デバイス証明書のサブジェクト名と一致する **[デバイス ID]** を指定します。
    * 認証の種類として **[X.509 自己署名済み]** を選択します。
    * デバイスのプライマリとセカンダリの証明書からコピーした 16 進数の文字列を貼り付けます。
-   * **[親デバイスの設定]** を選択し、このダウンストリーム デバイスが経由して接続する IoT Edge ゲートウェイ デバイスを選択します。 親デバイスは、ダウンストリーム デバイスの X.509 認証に必要です。
+   * **[親デバイスの設定]** を選択し、このダウンストリーム デバイスが経由して接続する IoT Edge ゲートウェイ デバイスを選択します。 親は後でいつでも変更できます。
 
    ![ポータルで X.509 自己署名認証を使用したデバイス ID の作成](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
@@ -120,13 +124,11 @@ X.509 自己署名認証 (拇印認証とも呼ばれます) の場合、お使�
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、X.509 自己署名認証で新しい IoT デバイスを作成し、親デバイスを割り当てます。
+[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、X.509 自己署名認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
-
-デバイスの作成、証明書の生成、および親子の管理を行うための Azure CLI コマンドの詳細については、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドのリファレンス コンテンツを参照してください。
 
 次に、[接続文字列 を取得および変更](#retrieve-and-modify-connection-string)して、デバイスがゲートウェイ経由で接続するように設定 します。
 
@@ -140,17 +142,17 @@ X.509 証明機関 (CA) 署名認証の場合、お使いのダウンストリ�
 
    X.509 証明書を作成するための証明機関がない場合は、IoT Edge のデモ証明書スクリプトを使用して、[ダウンストリーム デバイスの証明書を作成](how-to-create-test-certificates.md#create-downstream-device-certificates)できます。 CA 署名証明書を作成する手順に従います。 ゲートウェイ デバイスの証明書を生成した同じルート CA 証明書を使用します。
 
-2. 「*Azure IoT Hub での X.509 セキュリティの設定*」の「[IoT ハブに X.509 CA 証明書を登録する](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
+2. 「 *Azure IoT Hub での X.509 セキュリティの設定* 」の「 [IoT ハブに X.509 CA 証明書を登録する](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
 
    1. ルート CA 証明書をアップロードします。 デモ証明書を使用している場合、ルート CA は **\<path>/certs/azure-iot-test-only.root.ca.cert.pem** になります。
 
    2. そのルート CA 証明書を所有していることを確認します。
 
-3. 「*Azure IoT Hub での X.509 セキュリティの設定*」の「[IoT ハブの X.509 デバイスを作成する](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
+3. 「 *Azure IoT Hub での X.509 セキュリティの設定* 」の「 [IoT ハブの X.509 デバイスを作成する](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
 
-   1. 新しいデバイスを追加します。 **デバイス ID** に小文字の名前を指定し、認証の種類に **X.509 CA 署名済み**を選択します。
+   1. 新しいデバイスを追加します。 **デバイス ID** に小文字の名前を指定し、認証の種類に **X.509 CA 署名済み** を選択します。
 
-   2. 親デバイスを設定します。 ダウンストリーム デバイスの場合は、 **[親デバイスの設定]** を選択し、IoT Hub への接続を提供する IoT Edge ゲートウェイ デバイスを選択します。
+   2. 親デバイスを設定します。 **[親デバイスの設定]** を選択し、IoT Hub への接続を提供する IoT Edge ゲートウェイ デバイスを選択します。
 
 4. お使いのダウンストリーム デバイスに証明書チェーンを作成します。 このチェーンを作成するために IoT Hub にアップロードしたのと同じルート CA 証明書を使用します。 ポータルでお使いのデバイス ID に指定したのと同じ小文字のデバイス ID を使用します。
 
@@ -166,13 +168,11 @@ X.509 証明機関 (CA) 署名認証の場合、お使いのダウンストリ�
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、X.509 CA 署名済み認証で新しい IoT デバイスを作成し、親デバイスを割り当てます。
+[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、X.509 CA 署名認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
-
-詳細については、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドについての Azure CLI リファレンス コンテンツを参照してください。
 
 次に、[接続文字列 を取得および変更](#retrieve-and-modify-connection-string)して、デバイスがゲートウェイ経由で接続するように設定 します。
 
@@ -213,4 +213,4 @@ HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 
 この時点で、ご自身の IoT ハブに IoT Edge デバイスが登録され、透過的なゲートウェイとして構成されています。 また、ご自身の IoT ハブにダウンストリーム デバイスも登録され、そのゲートウェイ デバイスを指しています。
 
-この記事の手順では、IoT Hub に対して認証を行うようにダウンストリーム デバイスを設定しました。 次は、ゲートウェイ デバイスを信頼し、それに安全に接続するようにダウンストリーム デバイスを構成する必要があります。 透過的なゲートウェイ シリーズの次の記事に進み、[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続](how-to-connect-downstream-device.md)します。
+次は、ゲートウェイ デバイスを信頼し、それに安全に接続するようにダウンストリーム デバイスを構成する必要があります。 透過的なゲートウェイ シリーズの次の記事に進み、[ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続](how-to-connect-downstream-device.md)します。

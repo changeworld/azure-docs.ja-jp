@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852046"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214908"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -66,7 +66,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | 機能 | 開発 | プレビュー | GA | Notes |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 承認コード](authorization-code-flow.md) |  |  | X |  |
-| PKCE を使用した OAuth2 承認コード |  |  | X | モバイル アプリケーションのみ  |
+| PKCE を使用した OAuth2 承認コード |  |  | X | [パブリック クライアントとシングルページ アプリケーション](authorization-code-flow.md)  |
 | [OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 リソース所有者のパスワード資格情報](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |

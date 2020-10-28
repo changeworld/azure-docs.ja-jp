@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2969c963b491e4b08a0959d548e43ba11276d28a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439944"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126551"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL での SSL/TLS 接続
 
@@ -20,8 +20,11 @@ Azure Database for MySQL では、Secure Sockets Layer (SSL) を使用して、�
 > [!NOTE]
 > `require_secure_transport` サーバー パラメーター値を更新しても、MySQL サービスの動作には影響しません。 この記事に記載されている SSL および TLS の適用機能を使用して、データベースへの接続をセキュリティで保護します。
 
+>[!NOTE]
+> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨化を、2021 年 2 月 15 日 (02/15/2021) まで延長しました。
+
 > [!IMPORTANT] 
-> SSL ルート証明書は、2020 年 10 月 26 日 (10/26/2020) から期限切れになるように設定されています。 [新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)が使用されるようにアプリケーションを更新してください。 詳細については、[証明書の計画的な更新](concepts-certificate-rotation.md)に関するページをご覧ください
+> SSL ルート証明書は、2021 年 2 月 15 日 (02/15/2021) から期限切れになるように設定されています。 [新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)が使用されるようにアプリケーションを更新してください。 詳細については、[証明書の計画的な更新](concepts-certificate-rotation.md)に関するページをご覧ください
 
 ## <a name="ssl-default-settings"></a>SSL の既定の設定
 
@@ -31,7 +34,7 @@ Azure Portal や CLI を使用して新しい Azure Database for MySQL サーバ
 
 さまざまなプログラミング言語の接続文字列が Azure Portal に表示されます。 これらの接続文字列には、データベースへの接続に必要な SSL パラメーターが含まれます。 Azure Portal で、お使いのサーバーを選択します。 **[設定]** の見出しにある **[接続文字列]** を選択します。 SSL パラメーターはコネクタによって異なります ("ssl=true"、"sslmode=require"、"sslmode=required" など)。
 
-安全に接続するために、信頼された証明機関 (CA) 証明書ファイルから生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 ユーザーが https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem にある Azure Database for MySQL サーバーに接続するには、現在、定義済みの証明書**のみを使用**できます。 
+安全に接続するために、信頼された証明機関 (CA) 証明書ファイルから生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 ユーザーが https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem にある Azure Database for MySQL サーバーに接続するには、現在、定義済みの証明書 **のみを使用** できます。 
 
 同様に、次のリンクは、ソブリン クラウド内のサーバーの証明書を指しています。[Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、[Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)、[Azure Germany](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt) の各リンクを参照してください。
 

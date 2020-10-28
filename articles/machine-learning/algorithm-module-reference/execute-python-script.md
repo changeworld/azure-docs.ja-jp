@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 09/29/2020
-ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450127"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330370"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -37,7 +37,7 @@ Azure Machine Learning で使用されている Python の Anaconda ディスト
 
 完全な一覧については、「[プレインストールされている Python パッケージ](#preinstalled-python-packages)」セクションを参照してください。
 
-プレインストール一覧に含まれていないパッケージ (*scikit-misc* など) をインストールするには、スクリプトに次のコードを追加します。 
+プレインストール一覧に含まれていないパッケージ ( *scikit-misc* など) をインストールするには、スクリプトに次のコードを追加します。 
 
 ```python
 import os
@@ -108,7 +108,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 Python スクリプトの実行モジュールには、出発点として利用できるサンプル Python コードが含まれています。 Python スクリプトの実行モジュールを構成するには、実行する Python コードと一連の入力を **[Python スクリプト]** ボックスに指定します。
 
-1. **Python スクリプトの実行**モジュールをパイプラインに追加します。
+1. **Python スクリプトの実行** モジュールをパイプラインに追加します。
 
 2. デザイナーから、入力に使用するデータセットを追加して **Dataset1** に接続します。 Python スクリプトでは、このデータセットを **DataFrame1** として参照します。
 
@@ -120,9 +120,47 @@ Python スクリプトの実行モジュールには、出発点として利用�
 
     ![Python 実行入力マップ](media/module/python-module.png)
 
-4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースを含む ZIP ファイルを**スクリプト バンドル**で追加します。 **スクリプト バンドル**への入力は、ファイルの種類をデータセットとしてワークスペースにアップロードされた ZIP ファイルであることが必要です。 データセットのアップロードは、 **[データセット]** 資産ページで行うことができます。 デザイナー作成ページの左側のモジュール　ツリーにある **[My datasets]\(マイ データセット\)** リストから、データセット モジュールをドラッグしてください。 
+4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースが含まれる ZIP ファイルを **スクリプト バンドル** ポートに接続します。 または、スクリプトが 16 KB を超える場合は、 **スクリプト バンドル** ポートを使用すると、 *CommandLine exceeds the limit of 16597 characters (CommandLine が上限の 16,597 文字を超えています)* などのエラーを回避できます。 
 
-    アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれていても、その構造は維持されます。ただしその場合は、**src** というディレクトリをパスの先頭に追加する必要があります。
+    
+    1. スクリプトとその他のカスタム リソースを zip ファイルにバンドルます。
+    1. この zip ファイルを **[ファイル データセット]** として Studio にアップロードします。 
+    1. [デザイナー作成] ページの左側のモジュール ペインにある *[データセット]* の一覧から、データセット モジュールをドラッグします。 
+    1. データセット モジュールを **R スクリプトの実行** モジュールの **スクリプト バンドル** ポートに接続します。
+    
+    アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれる場合、その構造が保持されます。
+    
+    Python スクリプト ファイルと txt ファイルが含まれているスクリプト バンドルの例を次に示します。
+      
+    > [!div class="mx-imgBorder"]
+    > ![スクリプト バンドルの例](media/module/python-script-bundle.png)  
+
+    `my_script.py` の内容を次に示します。
+
+    ```python
+    def my_func(dataframe1):
+    return dataframe1
+    ```
+    スクリプト バンドルでファイルを使用する方法を示すサンプル コードを次に示します。    
+
+    ```python
+    import pandas as pd
+    from my_script import my_func
+ 
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+ 
+        # Execution logic goes here
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+ 
+        # Test the custom defined python function
+        dataframe1 = my_func(dataframe1)
+ 
+        # Test to read custom uploaded files by relative path
+        with open('./Script Bundle/my_sample.txt', 'r') as text_file:
+            sample = text_file.read()
+    
+        return dataframe1, pd.DataFrame(columns=["Sample"], data=[[sample]])
+    ```
 
 5. **[Python スクリプト]** ボックスに、有効な Python スクリプトを入力するか貼り付けます。
 
@@ -144,7 +182,7 @@ Python スクリプトの実行モジュールには、出発点として利用�
     デザイナーに対しては 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
 
     > [!WARNING]
-    > **Python スクリプトの実行モジュール**で、データベースまたはその他の外部ストレージに接続することは**お勧めしません**。 [データのインポート モジュール](./import-data.md)と[データのエクスポート モジュール](./export-data.md)を使用できます。     
+    > **Python スクリプトの実行モジュール** で、データベースまたはその他の外部ストレージに接続することは **お勧めしません** 。 [データのインポート モジュール](./import-data.md)と[データのエクスポート モジュール](./export-data.md)を使用できます。     
 
 6. パイプラインを送信します。
 
@@ -156,9 +194,9 @@ Python スクリプトの実行モジュールには、出発点として利用�
 
 このモジュールからは、次の 2 つのデータセットが返されます。  
   
-+ **Results Dataset 1**: Python スクリプトで最初に返される pandas データフレームによって定義されます。
++ **Results Dataset 1** : Python スクリプトで最初に返される pandas データフレームによって定義されます。
 
-+ **Result Dataset 2**: Python スクリプトで 2 番目に返される pandas データフレームによって定義されます。
++ **Result Dataset 2** : Python スクリプトで 2 番目に返される pandas データフレームによって定義されます。
 
 ## <a name="preinstalled-python-packages"></a>プレインストールされている Python パッケージ
 プレインストールされているパッケージは次のとおりです。

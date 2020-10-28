@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430785"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092887"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
@@ -37,17 +37,17 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ## <a name="developer-portal-templates-overview"></a>開発者ポータル テンプレートの概要
 
-テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
+テンプレートの編集は、管理者としてログインしているときに **開発者ポータル** から実行できます。 開発者ポータルにアクセスするには、まず Azure portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
 
 開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、 **[テンプレート]** をクリックします。
 
-![開発者ポータル テンプレート][api-management-customize-menu]
+![カスタマイズ メニューを表示するカスタマイズ アイコンが強調表示されているスクリーンショット。][api-management-customize-menu]
 
 テンプレートの一覧には、開発者ポータルのさまざまなページをカバーするテンプレートのカテゴリが表示されます。 各テンプレートは異なりますが、それらを編集して変更を発行する手順は同じです。 テンプレートを編集するには、テンプレートの名前をクリックします。
 
 ![開発者ポータル テンプレート][api-management-templates-menu]
 
-テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、**製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。
+テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、 **製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。
 
 ![製品リスト テンプレート][api-management-developer-portal-templates-overview]
 
@@ -145,9 +145,9 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 **[はい]** をクリックして確認すると、テンプレートが開発者ポータルで有効になります。
 
-![発行を確認する][api-management-publish-template-confirm]
+![テンプレートを有効にするための [はい] を選択する場所を示すスクリーンショット。][api-management-publish-template-confirm]
 
-現在未発行のテンプレートのすべてのバージョンを発行するには、テンプレートの一覧で **[発行]** をクリックします。 未発行のテンプレートは、テンプレート名の後ろのアスタリスクによって示されます。 この例では、**製品リスト** テンプレートと**製品**テンプレートが発行されます。
+現在未発行のテンプレートのすべてのバージョンを発行するには、テンプレートの一覧で **[発行]** をクリックします。 未発行のテンプレートは、テンプレート名の後ろのアスタリスクによって示されます。 この例では、 **製品リスト** テンプレートと **製品** テンプレートが発行されます。
 
 ![テンプレートを発行する][api-management-publish-templates]
 
@@ -160,11 +160,11 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 ## <a name="to-revert-a-template-to-the-previous-version"></a>テンプレートを前のバージョンに戻すには
 テンプレートを前に発行したバージョンに戻すには、テンプレート エディターで [戻す] をクリックします。
 
-![テンプレートを元に戻す][api-management-revert-template]
+![テンプレートを元に戻すために使用するアイコンが強調表示されているスクリーンショット。][api-management-revert-template]
 
 **[はい]** をクリックして確定します。
 
-![Confirm][api-management-revert-template-confirm]
+![変更を確認するための [はい] を選択する場所を示すスクリーンショット。][api-management-revert-template-confirm]
 
 元に戻す操作が完了すると、前に発行したバージョンのテンプレートが開発者ポータルで有効になります。
 

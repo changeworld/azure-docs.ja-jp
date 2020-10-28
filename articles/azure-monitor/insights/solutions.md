@@ -5,13 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/07/2020
-ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085996"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150528"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -19,7 +20,7 @@ Azure Monitor の監視ソリューションでは、特定の Azure アプリ�
 
 ## <a name="use-monitoring-solutions"></a>監視ソリューションの使用
 
-Azure Monitor のソリューションの **[概要]** ページには、Log Analytics ワークスペースにインストールされているソリューション別にタイルが表示されます。 このページを開くには、[Azure portal](https://ms.portal.azure.com) で **Azure Monitor** に移動します。 **[Insights]** メニューの下では、 **[詳細]** を選択して **Insights Hub** を開き、 **[Log Analytics ワークスペース]** をクリックします。
+Azure Monitor のソリューションの **[概要]** ページには、Log Analytics ワークスペースにインストールされているソリューション別にタイルが表示されます。 このページを開くには、 [Azure portal](https://ms.portal.azure.com) で **Azure Monitor** に移動します。 **[Insights]** メニューの下では、 **[詳細]** を選択して **Insights Hub** を開き、 **[Log Analytics ワークスペース]** をクリックします。
 
 [![Insights Hub](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
@@ -28,7 +29,7 @@ Azure Monitor のソリューションの **[概要]** ページには、Log Ana
 
 [![スクリーンショットには、[ソリューション] が選択され、[ソリューション] ウィンドウにソリューションが表示された Azure portal メニューが示されています。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、[クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。[ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
+監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、 [クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。 [ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
 
 ## <a name="list-installed-monitoring-solutions"></a>インストールされている監視ソリューションを一覧表示する
 
@@ -59,6 +60,21 @@ az monitor log-analytics solution list --subscription MySubscription
 
 # List all log-analytics solutions in a resource group
 az monitor log-analytics solution list --resource-group MyResourceGroup
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Get-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution) コマンドレットを使用し、サブスクリプションにインストールされている監視ソリューションを一覧表示します。 これらのコマンドを実行する前に、「[監視ソリューションをインストールする](#install-a-monitoring-solution)」に記載されている前提条件に従ってください。
+
+```azurepowershell-interactive
+# List all log-analytics solutions in the current subscription.
+Get-AzMonitorLogAnalyticsSolution
+
+# List all log-analytics solutions for a specific subscription
+Get-AzMonitorLogAnalyticsSolution -SubscriptionId 00000000-0000-0000-0000-000000000000
+
+# List all log-analytics solutions in a resource group
+Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 ```
 
 * * *
@@ -151,6 +167,54 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
                                            Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+### <a name="prepare-your-environment"></a>環境を準備する
+
+1. Azure PowerShell をインストールする
+
+   Azure PowerShell 参照コマンドを実行する前に [Azure PowerShell をインストールする](/powershell/azure/install-az-ps)必要があります。 必要に応じて、Azure Cloud Shell を使用してこの記事の手順を完了することもできます。 Azure Cloud Shell は、ブラウザーを介して使用する対話型のシェル環境です。 次のいずれかの方法で Cloud Shell を起動します。
+
+   - [https://shell.azure.com](https://shell.azure.com) に移動して Cloud Shell を開きます
+
+   - [Azure portal](https://portal.azure.com) の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します
+
+   > [!IMPORTANT]
+   > **Az.MonitoringSolutions** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを個別にインストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+
+   ```azurepowershell-interactive
+   Install-Module -Name Az.MonitoringSolutions
+   ```
+
+1. サインインします。
+
+   PowerShell のローカル インストールを使用している場合、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用してサインインします。 PowerShell に表示される手順に従って認証プロセスを完了します。
+
+   ```azurepowershell
+   Connect-AzAccount
+   ```
+
+### <a name="install-a-solution-with-azure-powershell"></a>Azure PowerShell を使用したソリューションのインストール
+
+ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。 Azure PowerShell では、[Az.MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell モジュールのコマンドレットを使用してワークスペースを管理します。 「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
+
+[New-AzMonitorLogAnalyticsSolution の](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) コマンドレットを使用し、監視ソリューションをインストールします。 角かっこで囲まれているパラメーターは省略可能です。
+
+```azurepowershell
+New-AzMonitorLogAnalyticsSolution -ResourceGroupName <string> -Type <string> -Location <string>
+-WorkspaceResourceId <string> [-SubscriptionId <string>] [-Tag <hashtable>]
+[-DefaultProfile <psobject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+[-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <uri>] [-ProxyCredential <pscredential>]
+[-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+次の例では、Log Analytics ワークスペースの Log Analytics 監視ソリューションが作成されます。
+
+```azurepowershell-interactive
+$workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName MyResourceGroup -Name WorkspaceName
+New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResourceGroup -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
+```
+
 * * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント
@@ -168,7 +232,7 @@ Log Analytics ワークスペースと Automation アカウント間のリンク
 
 1. Azure Portal で Automation アカウントを選択します。
 1. メニューの **[関連リソース]** セクションまでスクロールし、 **[リンクされたワークスペース]** を選択します。
-1. **ワークスペース**が Automation アカウントにリンクされている場合、リンクされているワークスペースがこのページに表示されます。 表示されるワークスペースの名前を選択すると、そのワークスペースの概要ページにリダイレクトされます。
+1. **ワークスペース** が Automation アカウントにリンクされている場合、リンクされているワークスペースがこのページに表示されます。 表示されるワークスペースの名前を選択すると、そのワークスペースの概要ページにリダイレクトされます。
 
 ## <a name="remove-a-monitoring-solution"></a>監視ソリューションを削除する
 
@@ -185,6 +249,14 @@ az monitor log-analytics solution delete --name
                                          --resource-group
                                          [--no-wait]
                                          [--yes]
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+インストールされているソリューションを Azure PowerShell で削除するには、[Remove-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/remove-azmonitorloganalyticssolution) コマンドレットを使用します。
+
+```azurepowershell-interactive
+Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name WorkspaceName
 ```
 
 * * *

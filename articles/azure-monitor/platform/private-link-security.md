@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802227"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329255"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -41,6 +41,9 @@ Azure Monitor Private Link Scope は、1 つまたは複数のプライベート
 ## <a name="planning-based-on-your-network"></a>ネットワークに基づく計画
 
 AMPLS リソースを設定する前に、ネットワークの分離要件を検討してください。 仮想ネットワークのパブリック インターネットへのアクセスと、各 Azure Monitor リソース (Application Insights コンポーネントと Log Analytics ワークスペース) のアクセス制限を評価します。
+
+> [!NOTE]
+> ハブ アンド スポーク ネットワーク、またはピアリングされたネットワークのその他のトポロジを使用すると、各 VNet にプライベート リンクを設定する代わりに、ハブ (メイン) VNet と関連する Azure Monitor リソースとの間にプライベート リンクを設定できます。 これは特に、これらのネットワークで使用される Azure Monitor リソースが共有されている場合に合理的です。 ただし、各 VNet が個別の監視リソース セットにアクセスできるようにする場合は、各ネットワークの専用 AMPLS へのプライベート リンクを作成します。
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>プライベート リンクに接続する仮想ネットワークを評価する
 
@@ -87,7 +90,7 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
 まず、Azure Monitor Private Link Scope リソースを作成します。
 
-1. Azure portal で **[リソースの作成]** に移動して、「**Azure Monitor Private Link Scope**」を検索します。
+1. Azure portal で **[リソースの作成]** に移動して、「 **Azure Monitor Private Link Scope** 」を検索します。
 
    ![Azure Monitor Private Link スコープを検索する](./media/private-link-security/ampls-find-1c.png)
 
@@ -125,7 +128,7 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
    a. Azure Monitor プライベート スコープ リソースを含む **[サブスクリプション]** を選択します。 
 
-   b. **[リソースの種類]** には、**Microsoft.insights/privateLinkScopes** を選択してください。 
+   b. **[リソースの種類]** には、 **Microsoft.insights/privateLinkScopes** を選択してください。 
 
    c. **[リソース]** ドロップダウンから、前に作成した Private Link スコープを選択します。 
 
@@ -232,11 +235,11 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure portal
 
-Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory**、**AzureResourceManager**、**AzureFrontDoor.FirstParty**、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をファイアウォールに追加します。
+Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory** 、 **AzureResourceManager** 、 **AzureFrontDoor.FirstParty** 、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をファイアウォールに追加します。
 
 ### <a name="programmatic-access"></a>プログラムによるアクセス
 
-REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) または PowerShell をプライベート ネットワーク上の Azure Monitor で使用するには、[サービスタグ](../../virtual-network/service-tags-overview.md) **AzureActiveDirectory** と **AzureResourceManager** をファイアウォールに追加します。
+REST API、 [CLI](/cli/azure/monitor?view=azure-cli-latest) または PowerShell をプライベート ネットワーク上の Azure Monitor で使用するには、 [サービスタグ](../../virtual-network/service-tags-overview.md) **AzureActiveDirectory** と **AzureResourceManager** をファイアウォールに追加します。
 
 これらのタグを追加すると、ログ データのクエリ、Log Analytics ワークスペースや AI コンポーネントの作成と管理などの操作を実行できます。
 

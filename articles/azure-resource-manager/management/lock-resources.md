@@ -2,21 +2,21 @@
 title: 変更されないようにリソースをロックする
 description: 重要な Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 10/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827284"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281736"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
 管理者は、サブスクリプション、リソース グループ、またはリソースをロックし、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止しなければならないことがあります。 ロック レベルは **CanNotDelete** または **ReadOnly** に設定できます。 ポータルでは、これらのロックはそれぞれ **[削除]** と **[読み取り専用]** と表示されます。
 
 * **CanNotDelete** は、正規ユーザーはリソースの読み取りと変更を実行できますが、削除は実行できないことを示します。
-* **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、**閲覧者**ロールによって与えられるアクセス許可に制限することに似ています。
+* **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、 **閲覧者** ロールによって与えられるアクセス許可に制限することに似ています。
 
 ## <a name="how-locks-are-applied"></a>ロックが適用されるしくみ
 
@@ -30,21 +30,21 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 
 ロックを適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
 
-* ロックを**ストレージ アカウント**に設定すると、どのユーザーもキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
+* ロックを **ストレージ アカウント** に設定すると、どのユーザーもキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
 
 * 読み取り専用ロックを **App Service** リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
 
-* 読み取り専用ロックを、**仮想マシン**を含む**リソース グループ**に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
+* 読み取り専用ロックを、 **仮想マシン** を含む **リソース グループ** に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
 
-* 削除不可ロックを**リソース グループ**に設定すると、Azure Resource Manager が履歴内の[デプロイを自動的に削除](../templates/deployment-history-deletions.md)できなくなります。 履歴内のデプロイが 800 に達した場合、デプロイは失敗します。
+* 削除不可ロックを **リソース グループ** に設定すると、Azure Resource Manager が履歴内の [デプロイを自動的に削除](../templates/deployment-history-deletions.md)できなくなります。 履歴内のデプロイが 800 に達した場合、デプロイは失敗します。
 
-* **Azure Backup サービス**によって作成された**リソース グループ**に削除不可のロックを設定した場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 ロックされている場合、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
+* **Azure Backup サービス** によって作成された **リソース グループ** に削除不可のロックを設定した場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 ロックされている場合、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
 
-* **サブスクリプション**に読み取り専用ロックを設定すると、**Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
+* **サブスクリプション** に読み取り専用ロックを設定すると、 **Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
 
-管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者**と**ユーザー アクセス管理者**にのみこれらのアクションが許可されています。
+管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、 **所有者** と **ユーザー アクセス管理者** にのみこれらのアクションが許可されています。
 
 ## <a name="managed-applications-and-locks"></a>Managed Applications とロック
 
@@ -58,7 +58,7 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 ![サービスを選択する](./media/lock-resources/select-service.png)
 
-サービスに**マネージド リソース グループ**へのリンクが含まれることに注意してください。 そのリソース グループがインフラストラクチャを保持しており、ロックされています。 直接削除することはできません。
+サービスに **マネージド リソース グループ** へのリンクが含まれることに注意してください。 そのリソース グループがインフラストラクチャを保持しており、ロックされています。 直接削除することはできません。
 
 ![マネージド グループを表示する](./media/lock-resources/show-managed-group.png)
 
@@ -66,20 +66,22 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 ![サービスの削除](./media/lock-resources/delete-service.png)
 
-## <a name="portal"></a>ポータル
+## <a name="configure-locks"></a>ロックの構成
+
+### <a name="portal"></a>ポータル
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>Template
+### <a name="arm-template"></a>ARM テンプレート
 
 ロックをデプロイするために Resource Manager テンプレートを使用する場合は、ロックの範囲に応じて名前と型に異なる値を使用します。
 
-ロックを**リソース**に適用するときには、次の形式を使用します。
+ロックを **リソース** に適用するときには、次の形式を使用します。
 
 * 名前 - `{resourceName}/Microsoft.Authorization/{lockName}`
 * 種類 - `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-**リソース グループ**または**サブスクリプション**にロックを適用するときには、次の形式を使用します。
+**リソース グループ** または **サブスクリプション** にロックを適用するときには、次の形式を使用します。
 
 * 名前 - `{lockName}`
 * 種類 - `Microsoft.Authorization/locks`
@@ -143,7 +145,7 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 リソース グループに対するロックの設定の例は、「[Create a resource group and lock it (リソース グループの作成とロック)](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)」を参照してください。
 
-## <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 デプロイされているリソースを Azure PowerShell でロックするには、[New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) コマンドを使います。
 
@@ -184,7 +186,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
 デプロイされているリソースを Azure CLI でロックするには、[az lock create](/cli/azure/lock#az-lock-create) コマンドを使います。
 
@@ -225,7 +227,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-## <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST API
 
 [管理ロック用の REST API](/rest/api/resources/managementlocks) を使用して、デプロイ済みのリソースをロックできます。 REST API を使用すると、ロックを作成し、削除できます。また、既存のロックに関する情報を取得することもできます。
 
@@ -235,7 +237,7 @@ az lock delete --ids $lockid
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 lock-name には、ロックの名前を指定できます。 api-version には、**2016-09-01** を使用します。
+スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 lock-name には、ロックの名前を指定できます。 api-version には、 **2016-09-01** を使用します。
 
 要求に、ロックのプロパティを指定する JSON オブジェクトを含めます。
 

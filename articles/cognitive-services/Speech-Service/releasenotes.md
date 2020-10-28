@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 89a87cd881689f58bbc4d2b4bf2a63a992e8dae9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206205"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461636"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
@@ -260,7 +260,7 @@ ms.locfileid: "92206205"
 **新機能**
 - Linux: Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 のサポートを追加しました。Speech SDK 向けのシステム構成方法の[インストラクション](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7)も付いています。
 - Linux: Linux ARM32 と ARM64 での C.NET Core C# のサポートを追加しました。 詳細については、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)をご覧ください。 
-- C# および C++:`ConversationTranscriptionResult` で `UtteranceId` を追加しました。これは、すべての中間および最終的な音声認識の結果にわたる一貫性のある ID です。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult) の詳細。
+- C# および C++:`ConversationTranscriptionResult` で `UtteranceId` を追加しました。これは、すべての中間および最終的な音声認識の結果にわたる一貫性のある ID です。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet&preserve-view=true) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult) の詳細。
 - Python: `Language ID` のサポートを追加しました。 [GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)の speech_sample.py を参照してください。
 - Windows: すべての win32 コンソール アプリケーション向けに、Windows プラットフォームでの圧縮されたオーディオ入力形式のサポートを追加しました。 詳細については、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams) を参照してください。 
 - JavaScript:NodeJS で音声合成 (テキスト読み上げ) をサポートします。 [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)をご覧ください。 
@@ -268,7 +268,7 @@ ms.locfileid: "92206205"
         
 **バグの修正**
 - C# および C++:`SendMessageAsync` がバイナリ型としてバイナリ メッセージを送信するよう、問題を修正しました。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection) の詳細。
-- C# および C++:`Connection` オブジェクトの前に `Recognizer` が破棄された場合に `Connection MessageReceived` イベントを使用するとクラッシュが発生する問題を修正しました。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived) の詳細。
+- C# および C++:`Connection` オブジェクトの前に `Recognizer` が破棄された場合に `Connection MessageReceived` イベントを使用するとクラッシュが発生する問題を修正しました。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet&preserve-view=true) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived) の詳細。
 - Android:マイクからのオーディオ バッファーサイズが 800ms から 100ms に減少し、待機時間が短縮されます。
 - Android:Android Studio の x86 Android emulator に関する[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563)を修正しました。
 - JavaScript:`fromSubscription` API の中国のリージョン向けのサポートが追加されました。 詳細については、[こちら](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-) を参照してください。 

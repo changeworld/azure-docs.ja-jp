@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076897"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107591"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。
@@ -79,7 +79,7 @@ ms.locfileid: "92076897"
     -   [XSLT を使用した XML の変換](api-management-transformation-policies.md#XSLTransform) - 要求本文または応答本文に含まれる XML に XSL 変換を適用します。
 - [Dapr 統合ポリシー](api-management-dapr-policies.md)
     - [サービスへの要求の送信](api-management-dapr-policies.md#invoke) - Dapr ランタイムを使用して Dapr マイクロサービスを検索し、このマイクロサービスとの通信を確実に行います。
-    -  [Pub/Sub トピックへのメッセージの送信](api-management-dapr-policies.md#pubsub) - Dapr ランタイムを使用して、Publish/Subscribe topic.publish-subscribe-messaging/README.md にメッセージを発行し、Dapr の Publish/Subscribe メッセージングについての詳細を確認します。
+    -  [Pub/Sub トピックへのメッセージの送信](api-management-dapr-policies.md#pubsub) - Dapr ランタイムを使用して、Publish/Subscribe トピックにメッセージを発行します。
     -  [トリガー出力バインド](api-management-dapr-policies.md#bind) - Dapr ランタイムを使用して、出力バインドを介して外部システムを呼び出します。
 
 ## <a name="next-steps"></a>次のステップ

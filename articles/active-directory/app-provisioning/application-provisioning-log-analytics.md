@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 4e14bd6365ce53d98d6e0b0d1f2601ff3b3e59b4
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997133"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145593"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>プロビジョニングを Azure Monitor ログと統合する方法の概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "91997133"
 
 Azure Monitoring と Log Analytics については既に理解している必要があります。 そうでない場合は、別のページでそれらについて学習してから、このページに戻ってアプリケーションのプロビジョニング ログについて学習してください。 Azure Monitoring の詳細については、「[Azure Monitor の概要](../../azure-monitor/overview.md)」を参照してください。 Azure Monitor ログと Log Analytics の詳細については、「[Azure Monitor のログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)」を参照してください。
 
-Azure Monitoring 上で構成すると、アプリケーションのプロビジョニングのログを有効にすることができます。 このオプションは、 **[診断設定]** ページにあります。
+Azure Monitoring を構成すると、アプリケーションのプロビジョニングのログを有効にすることができます。 このオプションは、 **[診断設定]** ページにあります。
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
@@ -36,7 +36,7 @@ Azure Monitoring 上で構成すると、アプリケーションのプロビジ
 > 最近ワークスペースをプロビジョニングしたばかりの場合は、ログを送信できるようになるまでに時間がかかることがあります。 サブスクリプションが  *microsoft.insights* を使用するように登録されていないというエラーを受け取った場合は、数分後にもう一度確認してください。
  
 ## <a name="understanding-the-data"></a>データの説明
-プロビジョニングからログ ビューアーに送信される基のデータ ストリームはほぼ同じです。 Azure Monitor ログには、Azure portal UI および Azure API とほぼ同じストリームが取得されます。 次の表に示すように、ログ フィールドにはわずかな**違い**しかありません。 これらのフィールドの詳細については、「[provisioningObjectSummary を一覧表示する](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true)」を参照してください。
+プロビジョニングからログ ビューアーに送信される基のデータ ストリームはほぼ同じです。 Azure Monitor ログには、Azure portal UI および Azure API とほぼ同じストリームが取得されます。 次の表に示すように、ログ フィールドにはわずかな **違い** しかありません。 これらのフィールドの詳細については、「[provisioningObjectSummary を一覧表示する](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true)」を参照してください。
 
 |Azure Monitor ログ   |Azure portal UI   |Azure API |
 |----------|-----------|------------|

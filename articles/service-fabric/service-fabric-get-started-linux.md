@@ -2,28 +2,26 @@
 title: Linux 上に開発環境をセットアップする
 description: Linux にランタイムと SDK をインストールし、ローカル開発クラスターを作成します。 このセットアップが終わると、アプリケーションを構築する準備は完了です。
 ms.topic: conceptual
-ms.date: 2/23/2018
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249996"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168411"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
-Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
+Linux の開発用コンピューターに (Azure Service Fabric アプリケーション)[service-fabric-application-model.md] をデプロイして実行するには、ランタイムと共通 SDK をインストールします。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
 
-この記事の手順では、Linux にネイティブにインストールするか、Service Fabric OneBox コンテナー イメージ (`mcr.microsoft.com/service-fabric/onebox:latest`) を使うことを想定しています。
+この記事の手順では、Linux にネイティブにインストールするか、(Service Fabric OneBox コンテナー イメージ)[https://hub.docker.com/_/microsoft-service-fabric-onebox ] (つまり、`mcr.microsoft.com/service-fabric/onebox:u18` ) を使用することを想定しています。
 
-Service Fabric のランタイムと SDK を Windows Subsystem for Linux にインストールすることはサポートされません。 Azure Service Fabric コマンド ライン インターフェイス (CLI) を使用して、クラウドやオンプレミスでホストされた Service Fabric のエンティティを管理することができ、これはサポートされています。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
+Azure Service Fabric コマンド ライン インターフェイス (CLI) を使用して、クラウドやオンプレミスでホストされている Service Fabric のエンティティを管理することができます。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,9 +40,17 @@ Service Fabric のランタイムと SDK を Windows Subsystem for Linux にイ�
 
 ## <a name="installation-methods"></a>インストール方法
 
-### <a name="script-installation-ubuntu"></a>インストール スクリプト (Ubuntu)
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 
-Service Fabric ランタイムと Service Fabric 共通 SDK を **sfctl** CLI と共にインストールする場合に便利なように、スクリプトが用意されています。 次のセクションの手動のインストール手順を実行します。 インストールされるものと関連のライセンスが表示されます。 スクリプトの実行では、インストールされているすべてのソフトウェアのライセンスに同意することを前提としています。
+# <a name="ubuntu"></a>[Ubuntu](#tab/sdksetupubuntu)
+
+## <a name="update-your-apt-sources"></a>APT ソースを更新する
+コマンド ライン ツール apt-get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず APT (Advanced Packaging Tool) ソースを更新する必要があります。
+
+## <a name="script-installation"></a>インストール スクリプト
+
+[**sfctl** CLI](service-fabric-cli.md) と併せて Service Fabric ランタイムと Service Fabric 共通 SDK をインストールする場合に便利であるように、スクリプトが用意されています。 スクリプトの実行では、インストールされているすべてのソフトウェアのライセンスに同意することを前提としています。 または、次のセクションで[手動インストール](#manual-installation)手順を行うこともできます。ここでは、関連付けられたライセンスと、インストールされているコンポーネントが示されます。
 
 スクリプトが正常に実行されたら、[ローカル クラスターのセットアップ](#set-up-a-local-cluster)に進みます。
 
@@ -52,13 +58,8 @@ Service Fabric ランタイムと Service Fabric 共通 SDK を **sfctl** CLI �
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="manual-installation"></a>手動のインストール
+## <a name="manual-installation"></a>手動のインストール
 Service Fabric ランタイムと共通 SDK の手動インストールの場合、このガイドの残りの説明に従います。
-
-## <a name="update-your-apt-sources-or-yum-repositories"></a>APT ソースまたは Yum リポジトリを更新する
-コマンド ライン ツール apt-get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず APT (Advanced Packaging Tool) ソースを更新する必要があります。
-
-### <a name="ubuntu"></a>Ubuntu
 
 1. ターミナルを開きます。
 
@@ -100,8 +101,30 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
     sudo apt-get update
     ```
 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>ローカル クラスター用の Service Fabric SDK をインストールしてセットアップする
 
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
+ソースを更新したら、SDK をインストールできます。 Service Fabric SDK パッケージをインストールし、インストールを確認して、ライセンス契約に同意します。
+
+### <a name="ubuntu"></a>Ubuntu
+
+```bash
+sudo apt-get install servicefabricsdkcommon
+```
+
+> [!TIP]
+>   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
+>   ```
+
+# <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
+
+## <a name="update-your-yum-repositories"></a>Yum リポジトリを更新する
+yum コマンド ライン ツールを使用して SDK および関連付けられたランタイム パッケージをインストールするには、最初にパッケージ ソースを更新する必要があります。
+
+## <a name="manual-installation-rhel"></a>手動インストール (RHEL)
+Service Fabric ランタイムと共通 SDK の手動インストールの場合、このガイドの残りの説明に従います。
 
 1. ターミナルを開きます。
 2. Extra Packages for Enterprise Linux (EPEL) をダウンロードしてインストールします。
@@ -129,44 +152,61 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-6. .NET SDK をインストールします。
-
-    ```bash
-    yum install rh-dotnet20 -y
-    ```
-
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>ローカル クラスター用の Service Fabric SDK をインストールしてセットアップする
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>ローカル クラスター用の Service Fabric SDK をインストールして設定する (RHEL)
 
 ソースを更新したら、SDK をインストールできます。 Service Fabric SDK パッケージをインストールし、インストールを確認して、ライセンス契約に同意します。
-
-### <a name="ubuntu"></a>Ubuntu
-
-```bash
-sudo apt-get install servicefabricsdkcommon
-```
-
-> [!TIP]
->   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
->   ```bash
->   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
->   ```
-
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
 
 ```bash
 sudo yum install servicefabricsdkcommon
 ```
 
+---
+
+## <a name="included-packages"></a>含まれているパッケージ
 SDK インストールに付属する Service Fabric ランタイムには、次の表のパッケージが含まれています。 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.0 | AzulJDK 1.8 | npm から暗黙的に | latest |
+**Ubuntu** | 2.0.7 | AzulJDK 1.8 | npm から暗黙的に | latest |
 **RHEL** | - | OpenJDK 1.8 | npm から暗黙的に | latest |
 
 ## <a name="set-up-a-local-cluster"></a>ローカル クラスターをセットアップする
-インストールの完了後、ローカル クラスターを起動します。
+1. ローカルの開発用 Service Fabric クラスターを起動します。
+
+# <a name="container-based-local-cluster"></a>[コンテナーベースのローカル クラスター](#tab/localclusteroneboxcontainer)
+
+コンテナーベースの [Onebox Service Fabric クラスター](https://hub.docker.com/r/microsoft/service-fabric-onebox/)を起動します。
+
+1. Moby をインストールして、Docker コンテナーをデプロイできるようにします。
+    ```bash
+    sudo apt-get install moby-engine moby-cli -y
+    ```
+2. 次の設定を使用してホスト上の Docker デーモン構成を更新し、Docker デーモンを再起動します。 詳細:「[Enable IPv6 support](https://docs.docker.com/config/daemon/ipv6/)」 (IPv6 サポートを有効にする)
+
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+
+3. クラスターを起動します。<br/>
+    <b>Ubuntu 18.04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
+    ```
+
+    <b>Ubuntu 16.04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
+
+# <a name="local-cluster"></a>[ローカル クラスター](#tab/localcluster)
+
+上記の手順に従って SDK をインストールしたら、ローカル クラスターを起動します。
 
 1. クラスターのセットアップ スクリプトを実行します。
 
@@ -174,7 +214,9 @@ SDK インストールに付属する Service Fabric ランタイムには、次
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Web ブラウザーを開いて､**Service Fabric Explorer** (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
+---
+
+2. Web ブラウザーを開いて､ **Service Fabric Explorer** (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
 
     ![Service Fabric Explorer on Linux][sfx-linux]
 
@@ -217,9 +259,9 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 
 ジェネレーターのインストール後、`yo azuresfguest` または `yo azuresfcontainer` を実行して、ゲスト実行可能ファイルまたはコンテナー サービスを作成します。
 
-## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 開発環境をセットアップする
+## <a name="set-up-net-core-31-development"></a>.NET Core 3.1 開発環境を設定する
 
-[.NET Core 2.0 SDK for Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 NuGet.org は、現在プレビュー段階の .NET Core 2.0 Service Fabric アプリケーション用のパッケージをホストします。
+[.NET Core 3.1 SDK for Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core Service Fabric アプリケーション用のパッケージは、NuGet.org でホストされています。
 
 ## <a name="set-up-java-development"></a>Java 開発をセットアップする
 
@@ -260,7 +302,7 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 
 2. **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに、「**https:\//dl.microsoft.com/eclipse**」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに、「 **https:\//dl.microsoft.com/eclipse** 」と入力します。
 
 4. **[追加]** を選択します。
 

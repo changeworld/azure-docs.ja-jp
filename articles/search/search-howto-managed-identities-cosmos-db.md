@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275287"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102695"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する
 
 このページでは、データ ソースのオブジェクト接続文字列で資格情報を指定する代わりに、マネージド ID を使用して Azure Cosmos DB データベースへのインデクサー接続を設定する方法を説明します。
 
 この機能についてさらに学ぶ前に、インデクサーとは何かについて、およびデータ ソースに対してインデクサーを設定する方法について理解しておくことをお勧めします。 以下のリンクで詳しい情報を確認できます。
+
 * [インデクサーの概要](search-indexer-overview.md)
 * [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)
 
@@ -56,7 +57,7 @@ ms.locfileid: "91275287"
 
 [REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用して Cosmos DB のデータにインデックスを付けるためのデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
-マネージド ID を使用して認証する場合、**資格情報**にはアカウント キーは含まれません。
+マネージド ID を使用して認証する場合、 **資格情報** にはアカウント キーは含まれません。
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -83,8 +84,8 @@ api-key: [Search service admin key]
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `cosmosdb`である必要があります。 |
-|**credentials** | 必須。 <br/><br/>マネージド ID を使用して接続する場合、**credentials** の形式は次のようになります。*Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>ResourceId の形式:*ResourceId=/subscriptions/**your subscription ID**/resourceGroups/**your resource group name**/providers/Microsoft.DocumentDB/databaseAccounts/**your cosmos db account name**/;*<br/><br/>SQL コレクションの場合は、接続文字列に ApiKind は必要ありません。<br/><br/>MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。 <br/><br/>Gremlin グラフと Cassandra テーブルの場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/>|
-| **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
+|**credentials** | 必須。 <br/><br/>マネージド ID を使用して接続する場合、 **credentials** の形式は次のようになります。 *Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>ResourceId の形式: *ResourceId=/subscriptions/ **your subscription ID** /resourceGroups/ **your resource group name** /providers/Microsoft.DocumentDB/databaseAccounts/ **your cosmos db account name** /;*<br/><br/>SQL コレクションの場合は、接続文字列に ApiKind は必要ありません。<br/><br/>MongoDB コレクションの場合は、 **ApiKind=MongoDb** を接続文字列に追加します。 <br/><br/>Gremlin グラフと Cassandra テーブルの場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/>|
+| **container** | 次の要素が含まれます。 <br/>**name** :必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query** : 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
 | **dataChangeDetectionPolicy** | 推奨 |
 |**dataDeletionDetectionPolicy** | 省略可能 |
 
@@ -143,9 +144,8 @@ Cosmos DB からのデータにインデックスを付けることができな�
 
 1. Cosmos DB のアカウント キーを最近ローテーションした場合は、マネージド ID の接続文字列が機能するまでに最大で 15 分間待つ必要があります。
 
-1. Cosmos DB アカウントで、特定のネットワークへのアクセスが制限されているかどうかを確認します。 されている場合は、「[Azure ネットワーク セキュリティ機能を使用したデータ ソースへのインデクサーのアクセス](search-indexer-securing-resources.md)」を参照してください。
+1. Cosmos DB アカウントで、特定のネットワークへのアクセスが制限されているかどうかを確認します。 そうされている場合は、[Azure ネットワーク セキュリティ機能を使用したデータ ソースへのインデクサーのアクセス](search-indexer-securing-resources.md)に関する記事を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
-Cosmos DB インデクサーの詳細情報:
 * [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005929"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164804"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -23,7 +23,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 この記事では、Azure サブスクリプションと Azure Media Services アカウントにリンクされた Video Indexer アカウントを作成する方法について説明します。 このトピックでは、自動 (既定) フローを使用して Azure に接続する手順について説明します。 また、手動で Azure に接続する方法 (上級) についても説明します。
 
-*試用版*から*有料版*の Video Indexer アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「[試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
+*試用版* から *有料版* の Video Indexer アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「 [試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     Azure AD ドメインがない場合は、Azure サブスクリプションを使用して作成してください。 詳細については、[Azure AD のカスタム ドメイン名の管理](../../active-directory/users-groups-roles/domains-manage.md)に関する記事を参照してください。
 
-* **アプリケーション管理者**のロールを持つ、Azure AD ドメイン内のユーザー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
+* **アプリケーション管理者** のロールを持つ、Azure AD ドメイン内のユーザー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
     このユーザーは、職場または学校アカウントを持つ Azure AD ユーザーである必要があります。 個人アカウント (outlook.com、live.com、hotmail.com など) は使用しないでください。
 
@@ -47,7 +47,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
-    このユーザーは、**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの両方が割り当てられた Azure サブスクリプションのメンバーである必要があります。 1 人のユーザーが 2 つのロールを持つ場合は 2 回追加できます。 共同作成者ロールで 1 回、ユーザー アクセス管理者ロールで 1 回です。
+    このユーザーは、 **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの両方が割り当てられた Azure サブスクリプションのメンバーである必要があります。 1 人のユーザーが 2 つのロールを持つ場合は 2 回追加できます。 共同作成者ロールで 1 回、ユーザー アクセス管理者ロールで 1 回です。 詳細については、「[Azure リソースに対するユーザーのアクセス権を表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」を参照してください。
 
     ![アクセスの制御](./media/create-account/access-control-iam.png)
 
@@ -87,7 +87,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
         Media Services アカウントのリージョンは Video Indexer アカウントと同じである必要があります。
 
         > [!NOTE]
-        > インデックス作成時間を最小限に抑え、スループットを低くするために、Media Services アカウントの[予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット**に調整することを強くお勧めします。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
+        > インデックス作成時間を最小限に抑え、スループットを低くするために、Media Services アカウントの [予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整することを強くお勧めします。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
 
     * 接続を手動で構成するには、 **[手動構成に切り替える]** リンクを選択します。
 
@@ -111,15 +111,15 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 1. [アカウントの作成](../previous/media-services-portal-create-account.md)に関するページに従って、[Azure](https://portal.azure.com/) portal を使用して Azure Media Services アカウントを作成します。
 
-    Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2**、レプリケーション フィールドに**地理冗長 (GRS)** を選択します。
+    Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2** 、レプリケーション フィールドに **地理冗長 (GRS)** を選択します。
 
     ![新しい AMS アカウント](./media/create-account/create-ams-account1.png)
 
     > [!NOTE]
     > Media Services リソースとアカウント名を書き留めてください。 次のセクションの手順で必要になります。
 
-2. 作成した Media Services アカウントの[予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット**に調整します。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
-3. Video Indexer Web アプリでビデオを再生するには、新しい Media Services アカウントの既定の**ストリーミング エンドポイント**を起動しておく必要があります。
+2. 作成した Media Services アカウントの [予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整します。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
+3. Video Indexer Web アプリでビデオを再生するには、新しい Media Services アカウントの既定の **ストリーミング エンドポイント** を起動しておく必要があります。
 
     新しい Media Services アカウントで **[ストリーミング エンドポイント]** を選択します。 次に、ストリーミング エンドポイントを選択し、[開始] を押します。
 
@@ -154,9 +154,9 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 |アプリケーション ID|前のセクションで作成した (指定した Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。|
 |アプリケーション キー|前のセクションで作成した Azure AD アプリケーション キー。 |
 
-## <a name="import-your-content-from-the-trial-account"></a>"*試用版*" アカウントからコンテンツをインポートする
+## <a name="import-your-content-from-the-trial-account"></a>" *試用版* " アカウントからコンテンツをインポートする
 
-[新しいアカウントを作成する](#connect-to-azure)場合は、"*試用版*" アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、"*試用版*" アカウントから新しいアカウントにコピーされます。
+[新しいアカウントを作成する](#connect-to-azure)場合は、" *試用版* " アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、" *試用版* " アカウントから新しいアカウントにコピーされます。
 
 コンテンツをインポートする機能は、前述の自動と手動の両方の方法で有効です。
 
@@ -176,13 +176,13 @@ Azure Media Services に関する次の考慮事項が適用されます。
 
    予想される負荷に従って、メディアの [予約ユニット] の種類と数を調整する必要があります。 負荷が高く、ユニットや速度が十分ではない場合は、ビデオ処理でタイムアウト エラーが発生する可能性がある点に注意してください。
 
-* 新しい Media Services アカウントに接続した場合、Video Indexer は、既定の**ストリーミング エンドポイント**を自動的に起動します。
+* 新しい Media Services アカウントに接続した場合、Video Indexer は、既定の **ストリーミング エンドポイント** を自動的に起動します。
 
     ![Media Services ストリーミング エンドポイント](./media/create-account/ams-streaming-endpoint.png)
 
     ストリーミング エンドポイントの起動には時間がかかります。 そのため、アカウントを Azure に接続してから Video Indexer Web アプリでビデオをストリーミングして視聴できるようになるまでに数分かかることがあります。
 
-* 既存の Media Services アカウントに接続した場合、Video Indexer で既定のストリーミング エンドポイントの構成は変更されません。 実行中の**ストリーミング エンドポイント**がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
+* 既存の Media Services アカウントに接続した場合、Video Indexer で既定のストリーミング エンドポイントの構成は変更されません。 実行中の **ストリーミング エンドポイント** がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
 
 ## <a name="next-steps"></a>次のステップ
 

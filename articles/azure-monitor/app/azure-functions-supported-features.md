@@ -6,16 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87033515"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168581"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
-Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](../../azure-functions/functions-monitoring.md)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)については、Azure Functions のガイドを確認してください。
+Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](../../azure-functions/functions-monitoring.md)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](../../azure-functions/configure-monitoring.md#enable-application-insights-integration)については、Azure Functions のガイドを確認してください。
 
 Functions ランタイム バージョンの詳細については、[こちら](../../azure-functions/functions-versions.md)をご覧ください。
 
@@ -47,7 +47,7 @@ Application Insights の互換性のあるバージョンの詳細について�
 | &bull; EventHub                       |                   | はい               | 
 | | | | 
 | **構成可否**                      |                   |                   |           
-| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
+| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
 
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
@@ -61,7 +61,7 @@ Application Insights の互換性のあるバージョンの詳細について�
 
 ## <a name="sampling"></a>サンプリング
 
-Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](../../azure-functions/functions-monitoring.md#configure-sampling)に関するページをご覧ください。
+Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](../../azure-functions/configure-monitoring.md#configure-sampling)に関するページをご覧ください。
 
 プロジェクトで Application Insights SDK に依存してテレメトリ追跡を手動で行っている場合、ご使用のサンプリング構成が Functions のサンプリング構成と異なっていると、予想外の動作が起こることがあります。 
 

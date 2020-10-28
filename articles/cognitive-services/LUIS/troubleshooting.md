@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: a09989e57729862cb18f148f95eb83f81a775b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542225"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149264"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -37,7 +37,7 @@ Language Understanding (LUIS) の詳細については、[こちら](whats-new.m
 
 ### <a name="is-it-important-to-train-the-none-intent"></a>None 意図をトレーニングすることは重要ですか?
 
-はい、他の意図にラベルを追加しながらより多くの発話で **None** 意図をトレーニングするのはよいことです。 適切な比率は、ある意図に 10 個のラベルが追加されるごとに、**None** 意図に 1 または 2 個のラベルが追加されるようにすることです。 この比率は、LUIS の弁別能力を高めます。
+はい、他の意図にラベルを追加しながらより多くの発話で **None** 意図をトレーニングするのはよいことです。 適切な比率は、ある意図に 10 個のラベルが追加されるごとに、 **None** 意図に 1 または 2 個のラベルが追加されるようにすることです。 この比率は、LUIS の弁別能力を高めます。
 
 ### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>発話のスペル ミスはどのようにして修正できますか?
 
@@ -47,7 +47,7 @@ Language Understanding (LUIS) の詳細については、[こちら](whats-new.m
 LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-how-to-azure-subscription.md#azure-resources-for-luis)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページをご覧ください。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>正規表現のマッチングを提供していたパターン機能はどこにありますか?
-以前の**パターン機能**は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。
+以前の **パターン機能** は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>エンティティを使って正しいデータを取得するにはどうすればよいですか?
 [エンティティ](luis-concept-entity-types.md)および[データ抽出](luis-concept-data-extraction.md)に関するページをご覧ください。
@@ -77,7 +77,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 
 ## <a name="collaborating-and-contributing"></a>コラボレーションと投稿
 
-### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Azure Active Directory (Azure AD) またはロールベースのアクセス制御 (RBAC) で、コラボレーターに LUIS へのアクセス権を付与するにはどうすればよいですか?
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-azure-role-based-access-control-azure-rbac"></a>Azure Active Directory (Azure AD) または Azure ロールベースのアクセス制御 (Azure RBAC) で、コラボレーターに LUIS へのアクセス権を付与するにはどうすればよいですか?
 
 コラボレーターにアクセス権を付与する方法については、「[Azure Active Directory リソース](luis-how-to-collaborate.md#azure-active-directory-resources)」および「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。
 
@@ -124,7 +124,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>LUIS エンドポイント キーを作成して割り当てるにはどうすればよいですか?
-Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページで[キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-how-to-azure-subscription.md)必要があります。
+Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページで [キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-how-to-azure-subscription.md)必要があります。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS のスコアを解釈するにはどうすればよいですか?
 システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図の[スコア](luis-concept-prediction-score.md)を上げるのに役立ちます。
@@ -201,7 +201,7 @@ Azure では、テナントはサービスに関連付けられているクラ�
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>割り当てた数より多くのエンドポイント キーがアプリに割り当てられているのはなぜですか?
 利便性のため、それぞれの LUIS アプリには、オーサリング/スターター キーがエンドポイント リストにあります。 このキーでは、LUIS を試用できるよう、数個のエンドポイント ヒットのみが許可されます。
 
-LUIS の一般公開 (GA) よりも前からアプリが存在していた場合、お使いのサブスクリプション内のエンドポイント キーが自動的に割り当てられます。 これは、GA の移行を容易にするために行われました。 Azure portal 内の新しい LUIS エンドポイント キーが自動的に LUIS に割り当てられることは_ありません_。
+LUIS の一般公開 (GA) よりも前からアプリが存在していた場合、お使いのサブスクリプション内のエンドポイント キーが自動的に割り当てられます。 これは、GA の移行を容易にするために行われました。 Azure portal 内の新しい LUIS エンドポイント キーが自動的に LUIS に割り当てられることは _ありません_ 。
 
 ## <a name="key-management"></a>キー管理
 
@@ -278,7 +278,7 @@ Azure Bot Service を使用していて、 **[Test in Web Chat]\(Web チャッ�
 1. オンライン コード エディターを開きます。
 1. 上部の青いナビゲーション バーで、ボットの名前 (右側の 2 番目の項目) を選択します。
 1. 結果のドロップダウン リストで、 **[Kudu コンソールを開く]** を選択します。
-1. **LogFiles** を選択し、**Application** を選択します。 すべてのログ ファイルを確認します。 アプリケーション フォルダーにエラーが見あたらない場合は、**LogFiles** ですべてのログ ファイルを確認します。
+1. **LogFiles** を選択し、 **Application** を選択します。 すべてのログ ファイルを確認します。 アプリケーション フォルダーにエラーが見あたらない場合は、 **LogFiles** ですべてのログ ファイルを確認します。
 1. C# などのコンパイル言語を使用している場合は、プロジェクトを忘れずにリビルドします。
 
 > [!Tip]

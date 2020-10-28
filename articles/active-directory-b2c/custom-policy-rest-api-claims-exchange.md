@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259596"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089572"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
@@ -59,7 +59,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 要求は、Azure AD B2C ポリシーの実行時に、データの一時的なストレージとなります。 要求は、[claims schema](claimsschema.md) セクションで宣言できます。 
 
-1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、 <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
 1. 次の要求を **ClaimsSchema** 要素に追加します。  
@@ -75,7 +75,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを構成する 
+## <a name="add-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを追加する 
 
 [Restful 技術プロファイル](restful-technical-profile.md)では、お使いの独自の RESTful サービスとのインターフェイスをサポートしています。 Azure AD B2C は、`InputClaims` コレクションでデータを RESTful サービスに送信し、`OutputClaims` コレクションで返却データを受信します。 お使いの <em> **`TrustFrameworkExtensions.xml`**</em> ファイルで **ClaimsProviders** を見つけ、次のように新しい要求プロバイダーを追加します。
 
@@ -87,6 +87,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ REST API エンドポイントの設定は、この記事では扱っていま�
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 この例では、`userLanguage` が JSON ペイロード内の `lang` として REST サービスに送信されます。 `userLanguage` 要求の値には、現在のユーザーの言語 ID が含まれます。 詳細については、[要求リゾルバー](claim-resolver-overview.md)に関するページを参照してください。
+
+### <a name="configure-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを構成する 
+
+REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイルのメタデータを、次のような独自の REST API を反映させるように設定します。
+
+- **ServiceUrl** : REST API エンドポイントの URL を設定します。
+- **SendClaimsIn** : RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。
+- **AuthenticationType** : RESTful 要求プロバイダーにより実行されている認証の種類を設定します。 
+- **AllowInsecureAuthInProduction** : 運用環境では、このメタデータを必ず `true` に設定してください。
+    
+詳細な構成については、[RESTful 技術プロファイルのメタデータ](restful-technical-profile.md#metadata)に関する記事を参照してください。
 
 `AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 お使いの RESTful API を実稼働用にセキュリティで保護する方法については、[RESTful API のセキュリティ保護](secure-rest-api.md)に関するページを参照してください。
 
@@ -117,9 +129,9 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 [ユーザー体験](userjourneys.md)では、証明書利用者アプリケーションがユーザーの任意の要求を取得できるようにする、ポリシーの明示的なパスを指定します。 ユーザー体験は、トランザクションを成功させるために従う必要のあるオーケストレーション シーケンスとして表されます。 オーケストレーションのステップは追加または削除できます。 この場合は、ユーザーのサインアップまたはサインイン後に、REST API の呼び出しでアプリケーションに提供する、情報を拡張する新しいオーケストレーション ステップを追加します。
 
-1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。
+1. ポリシーの基本ファイルを開きます。 たとえば、 <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。
 1. `<UserJourneys>` 要素を検索します。 要素全体をコピーしてから、削除します。
-1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、 <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. `<ClaimsProviders>` 要素を閉じた後、拡張ファイルに `<UserJourneys>` を貼り付けます。
 1. `<UserJourney Id="SignUpOrSignIn">` を見つけて、最後のオーケストレーション ステップの前に次のオーケストレーション ステップを追加します。
 
@@ -173,7 +185,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 **ProfileEdit.xml** および **PasswordReset.xml** のユーザー体験にこの手順を繰り返します。
 
-変更した次のファイルを保存します。*TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、および *PasswordReset.xml*。 
+変更した次のファイルを保存します。 *TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml* 、 *SignUpOrSignin.xml* 、 *ProfileEdit.xml* 、および *PasswordReset.xml* 。 
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
@@ -181,7 +193,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
-1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。*TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、および *PasswordReset.xml*。 
+1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。 *TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml* 、 *SignUpOrSignin.xml* 、 *ProfileEdit.xml* 、および *PasswordReset.xml* 。 
 1. アップロードしたサインアップまたはサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
 1. メール アドレスまたは Facebook のアカウントを使用してサインアップできるはずです。
 1. アプリケーションに返送されるトークンには、`balance` 要求が含まれています。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272530"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165245"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>記憶域スペース ダイレクトで FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "91272530"
 
 上の図では、次のリソースが同じリソース グループ内に示されています。
 
-- Windows Server フェールオーバー クラスター内の 2 つの仮想マシン。 仮想マシンがフェールオーバー クラスター内にある場合、仮想マシンは*クラスター ノード*または*ノード*とも呼ばれます。
+- Windows Server フェールオーバー クラスター内の 2 つの仮想マシン。 仮想マシンがフェールオーバー クラスター内にある場合、仮想マシンは *クラスター ノード* または *ノード* とも呼ばれます。
 - 各仮想マシンには、2 つ以上のデータ ディスクがあります。
 - 記憶域スペース ダイレクトは、データ ディスク上のデータを同期し、同期されたストレージを記憶域プールとして提供します。
 - 記憶域プールは、クラスターの共有ボリューム (CSV) をフェールオーバー クラスターに提供します。
@@ -57,7 +57,7 @@ ms.locfileid: "91272530"
 - Azure サブスクリプション。 [無料](https://azure.microsoft.com/free/)で開始できます。 
 - [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)内の [2 つ以上の準備済みの Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
-- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
+- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps)。 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>Windows クラスター機能を追加する
@@ -103,7 +103,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 1. **[次へ]** を選択します。
 1. **[確認]** で、 **[次へ]** を選択します。
 
-    **構成の検証**ウィザードにより、検証テストが実行されます。
+    **構成の検証** ウィザードにより、検証テストが実行されます。
 
 PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
 
@@ -164,7 +164,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. [ボリュームを作成します](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
 
-   記憶域スペース ダイレクトは、記憶域プールをユーザーが有効化した場合に、記憶域プールを自動的に作成します。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、ボリュームの作成プロセスを自動化します。 このプロセスには、書式設定、クラスターへのボリュームの追加、および CSV の作成が含まれます。 次の例では、800 ギガバイト (GB) の CSV を作成します。
+   記憶域スペース ダイレクトは、記憶域プールをユーザーが有効化した場合に、記憶域プールを自動的に作成します。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、ボリュームの作成プロセスを自動化します。 このプロセスには、書式設定、クラスターへのボリュームの追加、および CSV の作成が含まれます。 次の例では、800 ギガバイト (GB) の CSV が作成されます。
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -190,7 +190,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. RDP を使用して最初の仮想マシンに接続します。
 
-1. **フェールオーバー クラスター マネージャー**で、すべてのコア クラスター リソースが最初の仮想マシン上にあることを確認します。 必要に応じて、すべてのリソースをこの仮想マシンに移動します。
+1. **フェールオーバー クラスター マネージャー** で、すべてのコア クラスター リソースが最初の仮想マシン上にあることを確認します。 必要に応じて、すべてのリソースをこの仮想マシンに移動します。
 
 1. インストール メディアを探します。 仮想マシンでいずれかの Azure Marketplace イメージが使用されている場合、メディアは `C:\SQLServer_<version number>_Full` にあります。 **[Setup]\(セットアップ\)** を選択します。
 
@@ -233,7 +233,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)を作成することができます。または、SQL Server 2019 と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューすることもできます。 
+現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
 
 ## <a name="limitations"></a>制限事項
 
@@ -243,12 +243,12 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="next-steps"></a>次のステップ
 
-[仮想ネットワーク名と Azure ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](hadr-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
+[仮想ネットワーク名と Azure ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
 
 記憶域スペース ダイレクトがお客様に適した FCI ストレージ ソリューションでない場合は、代わりに [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)または [Premium ファイル共有](failover-cluster-instance-premium-file-share-manually-configure.md)を使用して FCI を作成することを検討してください。 
 
 詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。 
 
-追加情報については、次を参照してください。 
+詳細については、次を参照してください。 
 - [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

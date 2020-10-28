@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273043"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310919"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -39,13 +39,13 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 > * Kubernetes のサポートされている最小バージョンは 1.14 です。
 > * 環境と Azure の間に必要な接続については、「[接続要件](connectivity.md)」を参照してください。
 > * 永続ストレージを構成する方法の詳細については、「[ストレージ構成ガイダンス](storage-configuration.md)」を参照してください。
-> * Azure Kubernetes Service を使用している場合は、クラスターのワーカー ノードの VM サイズが少なくとも **Standard_D8s_v3** であり、**Premium ディスク**を使用している必要があります。 
+> * Azure Kubernetes Service を使用している場合は、クラスターのワーカー ノードの VM サイズが少なくとも **Standard_D8s_v3** であり、 **Premium ディスク** を使用している必要があります。 
 > * 別の Kubernetes ディストリビューションまたはサービスを使用している場合は、最小ノード サイズとして 8 GB RAM および 4 コアが必要であり、かつすべての Kubernetes ノードで使用可能な容量として合計 32 GB RAM を確保する必要があります。 たとえば、32 GB RAM と 4 コアのノードを 1 つ使用することも、それぞれが 16 GB RAM と 4 コアのノードを 2 つ使用することもできます。
 
 > [!NOTE]
 > Azure で Red Hat OpenShift Container Platform を使用している場合は、利用できる中で最新のバージョンを使用することをお勧めします。
 
-選択するオプションによっては、特定のツールが "_必要_" になりますが、Azure Arc データ コントローラーの作成を開始する前に、[すべてのクライアント ツール](./install-client-tools.md)をインストールしておくことをお勧めします。
+選択するオプションによっては、特定のツールが " _必要_ " になりますが、Azure Arc データ コントローラーの作成を開始する前に、 [すべてのクライアント ツール](./install-client-tools.md)をインストールしておくことをお勧めします。
 
 選択するオプションに関わりなく、作成プロセス中に次の情報を指定する必要があります。
 
@@ -53,7 +53,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - **データ コントローラーのユーザー名** - データ コントローラー管理者ユーザーの任意のユーザー名。
 - **データ コントローラーのパスワード** - データ コントローラー管理者ユーザーのパスワード。
 - **Kubernetes 名前空間の名前** - データ コントローラーを作成する Kubernetes 名前空間の名前。
-- **接続モード** - クラスターの[接続モード](./connectivity.md)。 現時点では、"間接" のみサポートされています。
+- **接続モード** - クラスターの [接続モード](./connectivity.md)。 現時点では、"間接" のみサポートされています。
 - **Azure サブスクリプション ID** - Azure 内のデータ コントローラー リソースを作成する場所の Azure サブスクリプション GUID。
 - **Azure リソース グループ名** - Azure 内のデータ コントローラー リソースを作成するリソース グループの名前。
 - **Azure の場所** - Azure でデータ コントローラー リソース メタデータが格納される Azure の場所。 利用可能なリージョンの一覧については、「[Azure グローバル インフラストラクチャ/リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)」を参照してください。
@@ -65,7 +65,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 > **試してみたい場合**  
 > Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) をすぐに開始できます。
 > 
-- [Azure Data CLI (azdata) を使用してデータ コントローラーを作成する](create-data-controller-using-azdata.md)
+- [[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用してデータ コントローラーを作成する](create-data-controller-using-azdata.md)
 - [Azure Data Studio を使用してデータ コントローラーを作成する](create-data-controller-azure-data-studio.md)
 - [Azure Data Studio で Jupyter ノートブックを使用して Azure portal からデータ コントローラーを作成する](create-data-controller-resource-in-azure-portal.md)
 - [kubectl や oc などの Kubernetes ツールを使用してデータ コントローラーを作成する](create-data-controller-using-kubernetes-native-tools.md)

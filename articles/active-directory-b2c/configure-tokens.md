@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67bc9d6b35d4841999721a00592a6bbe23bff10f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389566"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340225"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -41,6 +41,9 @@ ms.locfileid: "85389566"
 
 8. **[保存]** をクリックします。
 
+> [!NOTE]
+> PKCE での承認コード フローを使用するシングルページ アプリケーションには、24 時間有効な更新トークンが常に存在しています。 「[ブラウザーでの更新トークンのセキュリティへの影響](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)」で詳細情報を参照してください。
+
 ## <a name="configure-jwt-token-compatibility"></a>JWT トークンの互換性を構成する
 
 1. **[ユーザー フロー (ポリシー)]** を選択します。
@@ -51,6 +54,17 @@ ms.locfileid: "85389566"
     ![Azure portal のトークンの互換性プロパティの設定](./media/configure-tokens/token-compatibility.png)
 
 5. **[保存]** をクリックします。
+
+## <a name="provide-optional-claims-to-your-app"></a>アプリに省略可能な要求を提供する
+
+アプリケーション要求は、アプリケーションに返される値です。 ユーザー フローを更新して、目的の要求を含めます。
+
+1. **[ユーザー フロー (ポリシー)]** を選択します。
+1. あらかじめ作成しておいたユーザー フローを開きます。
+1. **[アプリケーション クレーム]** を選択します。
+1. アプリケーションに返信する要求と属性を選択します。
+1. **[保存]** をクリックします。
+
 
 ## <a name="next-steps"></a>次のステップ
 

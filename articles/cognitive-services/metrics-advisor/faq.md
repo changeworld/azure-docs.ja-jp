@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046810"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131685"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor に関してよく寄せられる質問
 
@@ -31,7 +31,7 @@ ms.locfileid: "92046810"
 
 :::image type="content" source="media/pricing.png" alt-text="F0 リソースが既に存在する場合のメッセージ":::
 
-パブリック プレビュー中は、1 つのリージョンで、Metrics Advisor のインスタンスをサブスクリプションに 1 つだけ作成できます。
+パブリック プレビューの間、作成できる Metrics Advisor のインスタンスの数は、1 つのサブスクリプションで 1 つのリージョンにつき 1 つだけです。
 
 同じリージョンで、同じサブスクリプションを使用して、既にインスタンスが作成されている場合は、別のリージョンまたは別のサブスクリプションで、新しいインスタンスの作成を試みることができます。 また、既存のインスタンスを削除して、新しいインスタンスを作成することもできます。
 
@@ -108,6 +108,40 @@ Metrics Advisor でデータを取り込むには、1 つのタイムスタン�
 
 データが通常は非常に不安定で変動が大きく、非常に安定したり直線になってしまったりするときには警告を表示したい場合、変化が非常にわずかであれば、そのようなデータ ポイントが検出されるように "しきい値の変更" を構成することができます。
 詳細については、[異常検出の構成](how-tos/configure-metrics.md#anomaly-detection-methods)に関する記事を参照してください。
+
+## <a name="advanced-concepts"></a>高度な概念
+
+### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>多次元メトリックのインシデント ツリーは、Azure Advisor によってどのように構築されますか?
+
+メトリックは、ディメンションによって複数の時系列に分割できます。 たとえば、メトリック `Response latency` は、チームが所有するすべてのサービスに対して監視されます。 `Service` カテゴリをディメンションとして使用してメトリックを強化し、`Service1`、`Service2` などによって `Response latency` を分割することができます。 各サービスは複数のデータ センター内の異なるコンピューターに展開できるので、メトリックは `Machine` や `Data center` によってさらに分割される可能性があります。
+
+|サービス| データ センター| Machine  | 
+|----|------|----------------   |
+| S1 |  DC1 |   M1 |
+| S1 |  DC1 |   M2 |
+| S1 |  DC2 |   M3 |
+| S1 |  DC2 |   M4 |
+| S2 |  DC1 |   M1 |
+| S2 |  DC1 |   M2 |
+| S2 |  DC2 |   M5 |
+| S2 |  DC2 |   M6 |
+| ...|      |      |
+
+合計の `Response latency` から始めて、`Service`、`Data center`、`Machine` でメトリックにドリルダウンできます。 ただし、サービス所有者にとってはパス `Service` -> `Data center` -> `Machine` を使用する方が意味がある場合、またインフラストラクチャ エンジニアにとってはパス `Data Center` -> `Machine` -> `Service` を使用する方が意味がある場合もあります。 これはすべて、ユーザーの個々のビジネス要件に依存します。 
+
+Metric Advisor を使用すると、階層トポロジの 1 つのノードからドリルダウンまたはロールアップする任意のパスをユーザーが指定できます。 より正確には、階層のトポロジは、ツリー構造ではなく有向非巡回グラフです。 次のように、可能性のあるすべてのディメンションの組み合わせで構成される完全な階層トポロジがあります。 
+
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="F0 リソースが既に存在する場合のメッセージ" lightbox="media/dimension-combinations-view.png":::
+
+理論的には、ディメンション `Service` に `Ls` 個の個別値があり、ディメンション `Data center` に `Ldc` 個の個別値があり、ディメンション `Machine` に `Lm` 個の個別値がある場合、階層トポロジには `(Ls + 1) * (Ldc + 1) * (Lm + 1)` 個のディメンションの組み合わせが存在する可能性があります。 
+
+ただし、通常は、すべてのディメンションの組み合わせが有効であることはないので、複雑さを大幅に軽減できます。 現在、ユーザー自身がメトリックを集計している場合、ディメンションの数は制限されません。 Metrics Advisor によって提供されるロールアップ機能を使用する必要がある場合、ディメンションの数を 6 より大きくすることはできません。 ただし、メトリックのディメンションによって展開される時系列の数は、10,000 未満に制限されています。
+
+診断ページの **インシデント ツリー** ツールには、トポロジ全体ではなく、異常が検出されたノードのみが表示されます。 これは、現在の問題に注目できるようにするためです。 また、メトリック内の異常がすべて表示されるとは限らず、代わりに寄与度に基づいて上位の異常が表示されます。 このようにして、異常なデータの影響、スコープ、分散パスをすばやく確認できます。 これにより、注目する必要がある異常の数が大幅に減り、ユーザーが重要な問題を把握して見つけるのに役立ちます。 
+ 
+たとえば、`Service = S2 | Data Center = DC2 | Machine = M5` で異常が発生した場合、異常の偏差はやはり異常が検出された親ノード `Service= S2` に影響を与えますが、異常は `DC2` のデータ センター全体と `M5` のすべてのサービスには影響しません。 インシデント ツリーは次のスクリーンショットのように構築されます。最上位の異常は `Service = S2` でキャプチャされ、根本原因はどちらも `Service = S2 | Data Center = DC2 | Machine = M5` に至る 2 つのパスで分析できます。
+
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5 つのラベル付き頂点と、エッジによって結合された 2 つの異なるパスと、S2 というラベルの付いた共通ノード。上位の異常は Service = S2 でキャプチャされ、根本原因はどちらも Service = S2 | Data Center = DC2 | Machine = M5 に至る 2 つのパスによって分析できます" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>次の手順
 - [Metrics Advisor の概要](overview.md)

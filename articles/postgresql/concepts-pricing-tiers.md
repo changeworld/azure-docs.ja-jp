@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: e0ac1ec93dba23eb6ab3380e342141618a1ab6e4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069660"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123254"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の価格レベル
 
@@ -51,7 +51,7 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 | IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!NOTE]
-> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
+> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、ブラジル南部、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
 >
 > その他のすべてのリージョンでは、最大で 4 TB および 6000 IOPS のストレージがサポートされています。
 >
@@ -102,7 +102,7 @@ Azure Database for PostgreSQL は、プロビジョニングされているサ�
 
 ## <a name="pricing"></a>価格
 
-最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/PostgreSQL/)を参照してください。 必要な構成のコストについては、[Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for PostgreSQL]** を選択してオプションをカスタマイズします。
+最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/PostgreSQL/)を参照してください。 必要な構成のコストについては、 [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for PostgreSQL]** を選択してオプションをカスタマイズします。
 
 ## <a name="next-steps"></a>次のステップ
 

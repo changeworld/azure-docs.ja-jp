@@ -6,14 +6,20 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee8613d0300a941f80577c98be106173d5d3ced1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470087"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220705"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月 30 日に廃止されます。 新しい Azure Red Hat OpenShift 3.11 クラスターの作成のサポートは、2020 年 11 月 30 日まで継続されます。 廃止された後、残っている Azure Red Hat OpenShift 3.11 クラスターは、セキュリティの脆弱性を防ぐためにシャットダウンされます。
+> 
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:arofeedback@microsoft.com)。
 
 Azure Active Directory (Azure AD) テナントをまだ作成していない場合は、これらの手順を続行する前に [Azure Red Hat OpenShift 用の Azure AD テナントの作成](howto-create-tenant.md)に関する記事の手順を行います。
 
@@ -98,17 +104,17 @@ Azure アプリケーション オブジェクトの詳細については、「[
 > [!NOTE]
 > "Microsoft Graph" タイルではなく、"Azure Active Directory Graph" を選択したことを確認します。
 
-3. 下の一覧で **[ユーザー]** を展開し、**User.Read** アクセス許可を有効にします。 **User.Read** が既定で有効になっている場合、**Azure Active Directory Graph** のアクセス許可 **User.Read** であることを確認してください。
+3. 下の一覧で **[ユーザー]** を展開し、 **User.Read** アクセス許可を有効にします。 **User.Read** が既定で有効になっている場合、 **Azure Active Directory Graph** のアクセス許可 **User.Read** であることを確認してください。
 4. 上にスクロールして **[アプリケーションのアクセス許可]** を選択します。
-5. 下の一覧で **[ディレクトリ]** を展開し、**Directory.ReadAll** を有効にします。
+5. 下の一覧で **[ディレクトリ]** を展開し、 **Directory.ReadAll** を有効にします。
 6. **[アクセス許可の追加]** をクリックして変更を適用します。
 7. この時点で、API アクセス許可パネルに *User.Read* と *Directory.ReadAll* の両方が表示されているはずです。 *Directory.ReadAll* の隣の **[Admin consent required]\(管理者の同意が必要\)** 列の警告に注意してください。
-8. *Azure サブスクリプション管理者*である場合、下の **[Grant admin consent for *Subscription Name*]\(<サブスクリプション名> に管理者の同意を付与する\)** をクリックします。 *Azure サブスクリプション管理者*でない場合、管理者からの同意を要求します。
+8. *Azure サブスクリプション管理者* である場合、下の **[Grant admin consent for *Subscription Name* ]\(<サブスクリプション名> に管理者の同意を付与する\)** をクリックします。 *Azure サブスクリプション管理者* でない場合、管理者からの同意を要求します。
 
 ![API アクセス許可パネルのスクリーンショット。 User.Read および Directory.ReadAll アクセス許可が追加され、Directory.ReadAll に管理者の同意が必要](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> クラスター管理者グループの同期は、同意が付与された後でないと機能しません。 チェックマークが付いた緑色の円と、"Granted for *Subscription Name*" (<サブスクリプション名> に許可済み) というメッセージが *[Admin consent required]\(管理者の同意が必要\)* 列に表示されます。
+> クラスター管理者グループの同期は、同意が付与された後でないと機能しません。 チェックマークが付いた緑色の円と、"Granted for *Subscription Name* " (<サブスクリプション名> に許可済み) というメッセージが *[Admin consent required]\(管理者の同意が必要\)* 列に表示されます。
 
 管理者およびその他のロールの管理の詳細については、[Azure サブスクリプション管理者の追加または変更](../cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。
 
