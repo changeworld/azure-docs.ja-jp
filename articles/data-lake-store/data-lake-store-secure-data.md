@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574145"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149281"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
-Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
+Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、Azure ロールベースのアクセス制御 (Azure RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
 
 1. まず、Azure Active Directory (Azure AD) でセキュリティ グループを作成します。 Azure portal で、これらのセキュリティ グループを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を実装します。 詳細については、[Azure RBAC](../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。
 2. Azure AD セキュリティ グループを Data Lake Storage Gen1 アカウントに割り当てます。 これにより、ポータルから Data Lake Storage Gen1 アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
@@ -32,8 +32,8 @@ Azure Data Lake Storage Gen1 のデータをセキュリティで保護するに
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
+* **Azure サブスクリプション** 。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Data Lake Storage Gen1 アカウント** 。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
 Azure AD セキュリティ グループを作成する手順およびグループにユーザーを追加する手順については、「[Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
@@ -59,7 +59,7 @@ Azure AD セキュリティ グループを作成する手順およびグルー�
    
     ![セキュリティ グループを Azure Data Lake Storage Gen1 アカウントに割り当てる](./media/data-lake-store-secure-data/adl.select.user.icon1.png "セキュリティ グループを Azure Data Lake Storage Gen1 アカウントに割り当てる")
 
-3. **[アクセス制御 (IAM)]** ブレードで、 **[追加]** をクリックして **[アクセス許可の追加]** ブレードを開きます。 **[アクセス許可の追加]** ブレードで、ユーザー/グループの**ロール**を選択します。 Azure Active Directory で以前に作成したセキュリティ グループを検索して選択します。 多数のユーザーおよびグループの中から検索する場合は、 **[選択]** ボックスを使用してグループ名をフィルター処理します。 
+3. **[アクセス制御 (IAM)]** ブレードで、 **[追加]** をクリックして **[アクセス許可の追加]** ブレードを開きます。 **[アクセス許可の追加]** ブレードで、ユーザー/グループの **ロール** を選択します。 Azure Active Directory で以前に作成したセキュリティ グループを検索して選択します。 多数のユーザーおよびグループの中から検索する場合は、 **[選択]** ボックスを使用してグループ名をフィルター処理します。 
    
     ![ユーザーのロールを追加する](./media/data-lake-store-secure-data/adl.add.user.1.png "ユーザーのロールを追加する")
    
@@ -68,7 +68,7 @@ Azure AD セキュリティ グループを作成する手順およびグルー�
     データ操作の場合、ユーザーが実行できる操作はファイル システムの個々のアクセス許可によって定義されます。 そのため、閲覧者ロールを持つユーザーはアカウントに関連付けられた管理設定しか表示できません。しかし、場合によっては、そのユーザーに割り当てられているファイル システムのアクセス許可に基づいて、データの読み取りおよび書き込みができます。 Data Lake Storage Gen1 ファイル システムのアクセス許可については、[セキュリティ グループを ACL として Azure Data Lake Storage Gen1 ファイル システムに割り当てる](#filepermissions)方法に関するセクションをご覧ください。
 
     > [!IMPORTANT]
-    > ファイル システムへのアクセスが自動的に有効になるのは**所有者**ロールだけです。 **共同作成者**、**閲覧者**、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者**ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[RBAC を使用したアカウント管理](data-lake-store-security-overview.md#rbac-for-account-management)」をご覧ください。
+    > ファイル システムへのアクセスが自動的に有効になるのは **所有者** ロールだけです。 **共同作成者** 、 **閲覧者** 、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者** ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 Azure RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[Azure RBAC を使用したアカウント管理](data-lake-store-security-overview.md#azure-rbac-for-account-management)」をご覧ください。
 
 4. **[アクセス許可の追加]** ブレードに表示されていないグループ/ユーザーを追加する場合は、 **[選択]** ボックスにそのグループ/ユーザーの電子メール アドレスを入力し、一覧からグループ/ユーザーを選択することで招待できます。
    

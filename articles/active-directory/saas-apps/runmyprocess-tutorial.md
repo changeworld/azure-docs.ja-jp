@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5c641ce9b224aecc3d199427bf27b804f7dd2dd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543611"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102087"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>チュートリアル:RunMyProcess と Azure Active Directory の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RunMyProcess では、**SP** Initiated SSO がサポートされます
+* RunMyProcess では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-runmyprocess-from-the-gallery"></a>ギャラリーからの RunMyProcess の追加
 
@@ -49,7 +49,7 @@ Azure AD への RunMyProcess の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RunMyProcess**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **RunMyProcess** 」と入力します。
 1. 結果ウィンドウで **[RunMyProcess]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -96,19 +96,19 @@ RunMyProcess で Azure AD の SSO を構成してテストするには、次の�
 
 1. 左側のナビゲーション パネルで、 **[Account (アカウント)]** 、 **[Configuration (構成)]** の順にクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![[Account]\(アカウント\) から選択された [Configuration]\(構成\) を示すスクリーンショット。](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. **[Authentication method (認証方法)]** セクションに移動し、次の手順に従います。
 
-    ![アプリ側でのシングル サインオンの構成](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![スクリーンショットは、説明した値を入力できる [Authentication method]\(認証方法\) タブを示しています。](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. **[Method]** として、 **[SSO with Samlv2]** を選択します。
 
-    b. **[SSO redirect]\(SSO リダイレクト\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[SSO redirect]\(SSO リダイレクト\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. **[Logout redirect]\(ログアウト リダイレクト\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[Logout redirect]\(ログアウト リダイレクト\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    d. **[Name ID Format]\(名前識別子形式\)** ボックスで、 **[名前識別子形式]** の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」のように入力します。
+    d. **[Name ID Format]\(名前識別子形式\)** ボックスで、 **[名前識別子形式]** の値を「 **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** 」のように入力します。
 
     e. Azure portal からダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして **[Certificate]\(証明書\)** ボックスに貼り付けます。
 
@@ -160,7 +160,7 @@ Azure AD ユーザーが RunMyProcess にサインインできるようにする
 
     ![プロファイル](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "プロファイル")
   
-    a. プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。
+    a. プロビジョニングする有効な Azure AD アカウントの **名前** と **メール** を対応するボックスに入力します。
 
     b. **[IDE 言語]** 、 **[言語]** 、 **[プロファイル]** を選択します。
 
