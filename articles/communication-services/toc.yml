@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: メトリック
       href: concepts/metrics.md
+    - name: トラブルシューティング
+      href: concepts/troubleshooting-info.md
 - name: サンプル
   items:
     - name: グループ通話のヒーロー サンプル
@@ -105,4 +107,4 @@
 - name: リソース
   items:
     - name: リリース ノート
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'
