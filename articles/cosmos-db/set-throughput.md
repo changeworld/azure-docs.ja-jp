@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777791"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331823"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 
@@ -32,11 +32,11 @@ Azure Cosmos コンテナーに対してプロビジョニングされたスル�
 
 コンテナーに対してプロビジョニングされたスループットは、物理パーティション間に均等に分散されます。また、パーティション キーが適切で、論理パーティションが物理パーティションに均等に分散されているとすると、スループットはコンテナーのすべての論理パーティション間にも均等に分散されます。 論理パーティションのスループットを選択的に指定することはできません。 コンテナーの 1 つ以上の論理パーティションが物理パーティションによってホストされているため、物理パーティションはそのコンテナーにのみ属し、そのコンテナーにプロビジョニングされたスループットをサポートします。 
 
-論理パーティションで実行されているワークロードの消費量が、基になる物理パーティションに割り当てられているスループットより多い場合、ユーザーの操作がレート制限される可能性があります。 1 つの論理パーティションの要求数が、他のパーティション キー値よりも不釣り合いに多い場合は、_ホット パーティション_と呼ばれるものが発生します。
+論理パーティションで実行されているワークロードの消費量が、基になる物理パーティションに割り当てられているスループットより多い場合、ユーザーの操作がレート制限される可能性があります。 1 つの論理パーティションの要求数が、他のパーティション キー値よりも不釣り合いに多い場合は、 _ホット パーティション_ と呼ばれるものが発生します。
 
-レートの制限が発生した場合は、コンテナー全体のプロビジョニング済みスループットを増やすか、操作を再試行することができます。 また、ストレージと要求の量を均等に配布するパーティション キーを選択したことを確認する必要があります。 パーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割と水平スケーリング](partition-data.md)」を参照してください。
+レートの制限が発生した場合は、コンテナー全体のプロビジョニング済みスループットを増やすか、操作を再試行することができます。 また、ストレージと要求の量を均等に配布するパーティション キーを選択したことを確認する必要があります。 パーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割と水平スケーリング](partitioning-overview.md)」を参照してください。
 
-コンテナーのパフォーマンスを保証する必要がある場合は、コンテナーの単位でスループットを構成することをお勧めします。
+コンテナーのパフォーマンスを予測できるようにしたい場合は、コンテナーの単位でスループットを構成することをお勧めします。
 
 次のイメージは、物理パーティションによって、コンテナーの 1 つ以上の論理パーティションをホストする方法を示しています。
 
@@ -49,7 +49,7 @@ Azure Cosmos コンテナーに対してプロビジョニングされたスル�
 
 Azure Cosmos データベースでスループットをプロビジョニングすると、スループットはデータベースのすべてのコンテナー (共有データベース コンテナーと呼ばれます) で共有されます。 例外は、データベース内の特定のコンテナーでプロビジョニング済みスループットを指定した場合です。 データベースレベルのプロビジョニング済みスループットを複数のコンテナーで共有することは、マシンのクラスター上でデータベースをホストすることと似ています。 データベース内のすべてのコンテナーによって、コンピューターで使用可能なリソースが共有されるため、必然的に、特定のコンテナーで予想どおりのパフォーマンスを得ることはできません。 データベース上のプロビジョニング済みスループットを構成する方法については、[Azure Cosmos データベース上のプロビジョニング済みスループットの構成](how-to-provision-database-throughput.md)に関するページを参照してください。 データベースで自動スケール スループットを構成する方法については、「[自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)」を参照してください。
 
-Azure Cosmos データベースにスループットを設定することで、そのデータベースに対してプロビジョニング済みのスループットを常時利用できることが保証されます。 データベース内のすべてのコンテナーによってプロビジョニング済みスループットが共有されるため、Azure Cosmos DB データベースでは、そのデータベース内の特定のコンテナーに対して、予測可能なスループットは保証されません。 特定のコンテナーが受け取ることができるスループットの部分は、次に依存します。
+データベース内のすべてのコンテナーによってプロビジョニング済みスループットが共有されるため、Azure Cosmos DB データベースでは、そのデータベース内の特定のコンテナーに対して、予測可能なスループットは保証されません。 特定のコンテナーが受け取ることができるスループットの部分は、次に依存します。
 
 * コンテナーの数。
 * さまざまなコンテナーのパーティション キーの選択。
@@ -63,9 +63,9 @@ Azure Cosmos データベースにスループットを設定することで、�
 
 * 一連のコンテナーでデータベースのプロビジョニング済みスループットを共有することは、ホストされている NoSQL データベース (MongoDB、Cassandra など) を、VM のクラスターやオンプレミスの物理サーバーから、Azure Cosmos DB へ移行する場合に便利です。 Azure Cosmos データベースで構成されているプロビジョニング済みスループットは、MongoDB や Cassandra クラスターのコンピューティング キャパシティと論理的に同等のものである (ただしコスト効率や柔軟性が高い) と考えてください。  
 
-スループットがプロビジョニング済みのデータベース内に作成されるコンテナーはすべて、[パーティション キー](partition-data.md)を使用して作成する必要があります。 特定の時点で、データベース内のコンテナーに割り当てられているスループットは、そのコンテナーのすべての論理パーティションに分散されます。 データベースに対して構成されたプロビジョニング済みスループットを共有するコンテナーがある場合は、特定のコンテナーや論理パーティションにスループットを選択して適用することはできません。 
+スループットがプロビジョニング済みのデータベース内に作成されるコンテナーはすべて、[パーティション キー](partitioning-overview.md)を使用して作成する必要があります。 特定の時点で、データベース内のコンテナーに割り当てられているスループットは、そのコンテナーのすべての論理パーティションに分散されます。 データベースに対して構成されたプロビジョニング済みスループットを共有するコンテナーがある場合は、特定のコンテナーや論理パーティションにスループットを選択して適用することはできません。 
 
-論理パーティションのワークロードによって、特定の論理パーティションに割り当てられている量より多くのスループットが消費されている場合、ユーザーの操作のレートが制限されます。 レートの制限が発生した場合は、データベース全体のスループットを増やすか、または操作を再試行することができます。 パーティション分割の詳細については、[論理パーティション](partition-data.md)に関するページをご覧ください。
+論理パーティションのワークロードによって、特定の論理パーティションに割り当てられている量より多くのスループットが消費されている場合、ユーザーの操作のレートが制限されます。 レートの制限が発生した場合は、データベース全体のスループットを増やすか、または操作を再試行することができます。 パーティション分割の詳細については、[論理パーティション](partitioning-overview.md)に関するページをご覧ください。
 
 共有スループット データベース内のコンテナーは、そのデータベースに割り当てられたスループット (RU/秒) を共有します。 データベースには、最大 4 つのコンテナーを最小の 400 RU/秒で含めることができます。 標準 (手動) のプロビジョニング済みスループットでは、最初の 4 つの後の新しい各コンテナーに、少なくとも追加の 100 RU/秒が必要です。 たとえば、8 つのコンテナーを持つ共有スループット データベースがある場合、データベースの最小 RU/秒は 800 RU/秒になります。 自動スケールのプロビジョニング済みスループットでは、自動スケールの最大値を 4000 RU/秒 (400 ～ 4000 RU/秒の間でスケール可能) にして、1 つのデータベース内に最大 25 個のコンテナーを作成できます。
 
@@ -81,12 +81,12 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 
 2 つのモデルを組み合わせることができます。 データベースとコンテナーの両方でスループットをプロビジョニングできます。 次に示すのは、Azure Cosmos データベースとコンテナーで標準 (手動) のプロビジョニング済みスループットをプロビジョニングする方法の例です。
 
-* *K* RU の標準 (手動) プロビジョニング済みスループットで、*Z* という名前の Azure Cosmos データベースを作成できます。 
-* 次に、データベース内に *A*、*B*、*C*、*D*、*E* という名前の 5 つのコンテナーを作成します。 コンテナー B を作成するときに、必ず **[Provision dedicated throughput for this container]\(このコンテナーの専用スループットをプロビジョニングする\)** オプションを有効にし、このコンテナーにプロビジョニングされているスループットの "*P*" RU を明示的に構成します。 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみであることに注意してください。 
+* *K* RU の標準 (手動) プロビジョニング済みスループットで、 *Z* という名前の Azure Cosmos データベースを作成できます。 
+* 次に、データベース内に *A* 、 *B* 、 *C* 、 *D* 、 *E* という名前の 5 つのコンテナーを作成します。 コンテナー B を作成するときに、必ず **[Provision dedicated throughput for this container]\(このコンテナーの専用スループットをプロビジョニングする\)** オプションを有効にし、このコンテナーにプロビジョニングされているスループットの " *P* " RU を明示的に構成します。 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみになります。 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション":::
 
-* *K* RU のスループットは、*A*、*C*、*D*、*E* の 4 つのコンテナーにわたって共有されます。使用可能なスループットの正確な量は、*A*、*C*、*D*、*E* のそれぞれで異なります。 個々のコンテナーのスループットに対する SLA はありません。
+* *K* RU のスループットは、 *A* 、 *C* 、 *D* 、 *E* の 4 つのコンテナーにわたって共有されます。使用可能なスループットの正確な量は、 *A* 、 *C* 、 *D* 、 *E* のそれぞれで異なります。 個々のコンテナーのスループットに対する SLA はありません。
 * コンテナー *B* は常に *P* RU のスループットを取得することが保証されます。 それは SLA によって裏付けられます。
 
 > [!NOTE]
@@ -94,22 +94,55 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>データベースまたはコンテナーのスループットを更新する
 
-Azure Cosmos コンテナーまたはデータベースを作成した後に、プロビジョニング済みのスループットを更新できます。 データベースまたはコンテナーで構成できる最大のプロビジョニング済みスループットに制限はありません。 
+Azure Cosmos コンテナーまたはデータベースを作成した後に、プロビジョニング済みのスループットを更新できます。 データベースまたはコンテナーで構成できる最大のプロビジョニング済みスループットに制限はありません。
 
-データベースまたはコンテナーの[プロビジョニングされた最小スループット](concepts-limits.md#storage-and-database-operations)を評価するには、以下の項目の最大値を確認します。
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a>現在のプロビジョニング済みのスループット
+
+コンテナーまたはデータベースのプロビジョニング済みのスループットを取得するには、Azure portal または SDK を使用します。
+
+* .NET SDK では [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true)。
+* Java SDK では [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true)。
+
+また、これらのメソッドの応答には、コンテナーまたはデータベースの[最小のプロビジョニング済みスループット](concepts-limits.md#storage-and-database-operations)も含まれます。
+
+* .NET SDK では [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true)。
+* Java SDK では [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true)。
+
+実際の最小 RU/秒は、アカウントの構成によって異なる場合があります。 ただし、通常、最大値は次のようになります。
 
 * 400 RU/秒 
 * 現在のストレージ (GB 単位) × 10 RU/秒
 * データベースまたはコンテナーでプロビジョニングされた最高 RU ÷ 100
 * コンテナー数 × 100 RU/秒 (共有スループットのデータベースのみ)
 
-実際の最小 RU/秒は、アカウントの構成によって異なる場合があります。 [Azure Monitor メトリック](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)を使用して、プロビジョニングされたスループット (RU/秒) とリソース上のストレージの履歴を表示できます。
+### <a name="changing-the-provisioned-throughput"></a>プロビジョニング済みのスループットの変更
 
-コンテナーまたはデータベースの最小スループットは、SDK を使用してプログラムで取得するか、Azure portal でその値を表示することができます。 .NET SDK の使用時、[container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) メソッドで、プロビジョニング済みのスループット値をスケールできます。 Java SDK の使用時、[CosmosContainer.replaceProvisionedThroughput](sql-api-java-sdk-samples.md) メソッドで、プロビジョニング済みのスループット値をスケールできます。
+コンテナーまたはデータベースのプロビジョニング済みのスループットをスケーリングするには、Azure portal または SDK を使用します。
 
-.NET SDK の使用時、[Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) メソッドで、コンテナーまたはデータベースの最小スループットを取得できます。 
+* .NET SDK では [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true)。
+* Java SDK では [Java SDK の CosmosContainer](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true)。
 
-コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 スループットを向上させるためにスケール操作を実行すると、必要なリソースをプロビジョニングするためのシステム タスクが原因で、より長い時間がかかる場合があります。 スケール操作の状態は、Azure portal で、または SDK を使用してプログラムで確認できます。 .NET SDK を使用する場合は、`Container.ReadThroughputAsync` メソッドを使用して、スケール操作の状態を取得できます。
+**プロビジョニング済みのスループットを低くする** 場合は、[最低値](#current-provisioned-throughput)までそれを行うことができます。
+
+**プロビジョニング済みのスループットを高くする** 場合、多くは、その操作は瞬時に行われます。 ただし、必要なリソースをプロビジョニングするシステム タスクが原因で、操作により長い時間がかかる場合があります。 この場合、その操作の実行中にプロビジョニング済みのスループットを変更しようとすると、別のスケーリング操作が進行中であることを示すエラーメッセージを含む HTTP 423 応答が返されます。
+
+> [!NOTE]
+> プロビジョニング済みスループットの大幅な増大を必要とする非常に大きなインジェスト ワークロードを計画している場合、スケーリング操作には SLA がなく、前の段落で説明したように、増大度が大きいと長い時間がかかる可能性があることに注意してください。 事前に計画を立て、ワークロードが開始される前にスケーリングを開始し、以下の方法を使用して進行状況を確認することをお勧めします。
+
+スケーリングの進行状況をプログラムで確認するには、[現在のプロビジョニング済みのスループット](#current-provisioned-throughput)を読み取り、次のものを使用します。
+
+* .NET SDK では [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true)。
+* Java SDK では [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true)。
+
+[Azure Monitor メトリック](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)を使用して、プロビジョニングされたスループット (RU/秒) とリソース上のストレージの履歴を表示できます。
+
+## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> 高ストレージ/低スループット プログラム
+
+上の「[現在のプロビジョニング済みのスループット](#current-provisioned-throughput)」セクションで説明したように、コンテナーまたはデータベースに対してプロビジョニングできる最小スループットは、さまざまな要因によって異なります。 その 1 つは現在格納されているデータの量であり、Azure Cosmos DB には 1 GB のストレージあたり 10 RU/秒の最小スループットが適用されます。
+
+これは、大量のデータを格納する必要があるが、それに比べてスループット要件が低いという状況では問題になる可能性があります。 これらのシナリオにより適切に対応するために、Azure Cosmos DB には、資格のあるアカウントに対して 1 GB あたりの RU/秒の制約を 10 から 1 に減らす **"高ストレージ/低スループット" プログラム** が導入されました。
+
+現在、対象となるアカウントでは 1 TB を超えるデータを含む、コンテナーまたは共有スループット データベースを少なくとも 1 つ備える必要があります。 このプログラムに参加してご自分の完全な適格性を評価するには、[このアンケート](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)に記入するだけで済みます。 その後、Azure Cosmos DB チームがフォローアップし、お客様のオンボードを進めます。
 
 ## <a name="comparison-of-models"></a>モデルの比較
 次の表は、標準 (手動) のスループットをデータベースでプロビジョニングする場合と、コンテナーでプロビジョニングする場合とでの比較を示したものです。 
@@ -126,7 +159,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [論理パーティション](partition-data.md)の詳細を確認する。
+* [論理パーティション](partitioning-overview.md)の詳細を確認する。
 * [Azure Cosmos コンテナーで標準 (手動) のスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法について学習する。
 * [Azure Cosmos データベースで標準 (手動) のスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法について学習する。
 * [Azure Cosmos データベースまたはコンテナー上で自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)方法を確認する。

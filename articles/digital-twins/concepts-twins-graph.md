@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440836"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -39,11 +39,11 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ## <a name="create-with-the-apis"></a>API を使用して作成する
 
-このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](how-to-use-apis-sdks.md) を利用する .NET コードの例が含まれています。
+このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](/rest/api/digital-twins/dataplane/twins) を利用する .NET コードの例が含まれています。
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、 *Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
+[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、 *Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
 
 Azure Digital Twins の現在のプレビューでは、ツインを作成する前に、ツインのすべてのプロパティを初期化しておく必要があります。 これを行うには、必要な初期化値を提供する JSON ドキュメントを作成します。
 
@@ -53,7 +53,7 @@ Azure Digital Twins の現在のプレビューでは、ツインを作成する
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
-[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、 *GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
+[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、 *GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
 
 ```csharp
 // Create Twins, using functions similar to the previous sample
