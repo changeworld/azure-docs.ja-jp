@@ -139,7 +139,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -556,8 +556,6 @@
               href: platform/alerts-managing-smart-groups.md
             - name: アラートとスマート グループの状態を管理する
               href: platform/alerts-managing-alert-states.md
-            - name: 他の監視サービスからのアラートを管理する
-              href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: アラート API
           href: platform/api-alerts.md
         - name: アラートのトラブルシューティング
@@ -576,8 +574,6 @@
               href: platform/itsmc-service-manager-script.md
             - name: ServiceNow ITSM の同期の問題を修正する
               href: platform/itsmc-resync-servicenow.md
-        - name: Alert Management ソリューション
-          href: platform/alert-management-solution.md
         - name: クラシック アラート ルールを移行する
           items:
             - name: クラシック アラートについて
@@ -1138,6 +1134,8 @@
               href: insights/vmware.md
             - name: Wire Data ソリューション
               href: insights/wire-data.md
+            - name: Alert Management ソリューション
+              href: platform/alert-management-solution.md
     - name: Workbooks
       items:
         - name: 概要
