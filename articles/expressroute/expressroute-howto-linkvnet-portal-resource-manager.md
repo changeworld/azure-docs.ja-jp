@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855355"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107285"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>チュートリアル:ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -63,11 +63,19 @@ ms.locfileid: "91855355"
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/express-route-circuit.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
-2. ExpressRoute 回線に仮想ネットワーク ゲートウェイをリンクする接続のプロビジョニングを開始できるようになりました。 **[接続]**  >  **[追加]** を選択して **[接続の追加]** ページを開き、値を構成します。
+1. ExpressRoute 回線に仮想ネットワーク ゲートウェイをリンクする接続のプロビジョニングを開始できるようになりました。 **[接続]**  >  **[追加]** を選択して **[接続の追加]** ページを開きます。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
-3. 接続が正常に構成されると、接続オブジェクトにより、接続の情報が表示されます。
+1. 接続の名前を入力し、 **[次へ: 設定 >]** を選択します。
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="ExpressRoute 回線のスクリーンショット":::
+
+1. 回線にリンクする仮想ネットワークに属しているゲートウェイを選択し、 **[確認および作成]** を選択します。 その後、検証が完了したら、 **[作成]** を選択してください。
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="ExpressRoute 回線のスクリーンショット":::
+
+1. 接続が正常に構成されると、接続オブジェクトにより、接続の情報が表示されます。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
@@ -99,17 +107,23 @@ ms.locfileid: "91855355"
 > 接続ごとに別個の認可が必要です。
 >
 
-1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、 **[保存]** をクリックします。
+1. [ExpressRoute] ページで **[承認]** をクリックし、承認の **名前** を入力して、 **[保存]** をクリックします。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
-2. 構成が保存されたら、**リソース ID** と**承認キー**をコピーします。
+2. 構成が保存されたら、 **リソース ID** と **承認キー** をコピーします。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization-key.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
 **接続の承認を削除するには**
 
-接続を削除するには、接続のページで **[削除]** アイコンを選びます。
+接続を削除するには、接続の承認キーの **[削除]** アイコンを選択します。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="ExpressRoute 回線のスクリーンショット":::
+
+接続のみ削除し、承認キーは保持したい場合は、回線の [接続] ページから接続を削除することができます。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
 ### <a name="circuit-user-operations"></a>回線ユーザーの操作
 
@@ -117,33 +131,28 @@ ms.locfileid: "91855355"
 
 **接続の承認を利用するには**
 
-1. **[+ 新規]** ボタンを選択します。
+1. **[+ リソースの作成]** ボタンを選択します。 「 **接続** 」を検索し、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="ExpressRoute 回線のスクリーンショット":::
-
-2. Marketplace で **"接続"** を検索し、選択して **[作成]** を選択します。
-
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/search-connection.png" alt-text="ExpressRoute 回線のスクリーンショット":::
-
-3. **[接続の種類]** を [ExpressRoute] に設定します。
-4. [基本] ページで詳細を入力し、 **[OK]** を選択します。
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="ExpressRoute 回線のスクリーンショット" *必要があります* "。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
-5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、**[承認の利用]** チェック ボックスをオンにします。
-6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 **[OK]** を選択します。 **[ピア回線の URI]** は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
+1. **[設定]** ページで *[仮想ネットワーク ゲートウェイ]* を選び、 **[承認の利用]** チェック ボックスをオンにします。 *承認キー* と *ピア回線 URI* を入力し、接続に名前を付けます。 **[OK]** を選択します。 
+ 
+    > [!NOTE]
+    > *[ピア回線の URI]* は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
-7. **[概要]** ページの内容を確認し、 **[OK]** を選択します。
+1. **[概要]** ページの内容を確認し、 **[OK]** を選択します。
 
-**接続の承認を解除するには**
-
-ExpressRoute 回線を仮想ネットワークにリンクしている接続を削除することで、承認を解除できます。
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 接続のページの **[削除]** アイコンを選ぶことにより、接続を削除して、ExpressRoute 回線への VNet のリンクを解除することができます。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="ExpressRoute 回線のスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 

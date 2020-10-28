@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048493"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460786"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
-このチュートリアルでは、Azure Digital Twins インスタンスとやり取りするためのコマンド ライン クライアント アプリケーションを実装したサンプル アプリケーションを紹介します。 このクライアント アプリは、"[*クライアント アプリのコーディングに関するチュートリアル*](tutorial-code.md)" で作成したアプリに似ています。
+このチュートリアルでは、Azure Digital Twins インスタンスとやり取りするためのコマンド ライン クライアント アプリケーションを実装したサンプル アプリケーションを紹介します。 このクライアント アプリは、" [*クライアント アプリのコーディングに関するチュートリアル*](tutorial-code.md)" で作成したアプリに似ています。
 
 このサンプルを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins アクションを実行することができます。 サンプル コードを見て、Azure Digital Twins の API について学んだり、サンプル プロジェクトに自由に変更を加えながら、独自のコマンドを実装する練習をしたりすることもできます。
 
@@ -24,7 +24,7 @@ ms.locfileid: "92048493"
 > [!div class="checklist"]
 > * Azure Digital Twins インスタンスを設定する
 > * そのインスタンスとやり取りするようにサンプル コマンド ライン アプリを構成する
-> * コマンド ライン アプリを使用して Azure Digital Twins を試す (**モデル**、**デジタル ツイン**、**リレーションシップ**、**クエリ**など)
+> * コマンド ライン アプリを使用して Azure Digital Twins を試す ( **モデル** 、 **デジタル ツイン** 、 **リレーションシップ** 、 **クエリ** など)
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -32,24 +32,24 @@ ms.locfileid: "92048493"
 
 ## <a name="explore-with-the-sample-solution"></a>サンプル ソリューションを試す
 
-インスタンスとサンプル アプリの構成が済んだら、サンプル プロジェクトと事前に作成してあるいくつかのサンプル コードを使用して、基本的な Azure Digital Twins ソリューションをビルドして試してみましょう。 主なソリューション コンポーネントは、**モデル**、**デジタル ツイン**、**リレーションシップ**です。結果的に、環境に対するクエリ可能な**ツイン グラフ**が得られます。
+インスタンスとサンプル アプリの構成が済んだら、サンプル プロジェクトと事前に作成してあるいくつかのサンプル コードを使用して、基本的な Azure Digital Twins ソリューションをビルドして試してみましょう。 主なソリューション コンポーネントは、 **モデル** 、 **デジタル ツイン** 、 **リレーションシップ** です。結果的に、環境に対するクエリ可能な **ツイン グラフ** が得られます。
 
 ### <a name="model-a-physical-environment-with-dtdl"></a>DTDL を使用して物理環境をモデル化する
 
 Azure Digital Twins ソリューションを作成するにあたり最初にすべきことは、対象となる環境のツイン [**モデル**](concepts-models.md)の定義です。 
 
-モデルは、オブジェクト指向プログラミング言語におけるクラスに似ています。つまりモデルは、[デジタル ツイン](concepts-twins-graph.md)のユーザー定義のテンプレートとなります。デジタル ツインは、そのテンプレートに従ってインスタンス化されることになります。 モデルは、**Digital Twins Definition Language (DTDL)** という JSON に似た言語で記述され、ツインの "*プロパティ*"、"*テレメトリ*"、"*リレーションシップ*"、"*コンポーネント*" を定義することができます。
+モデルは、オブジェクト指向プログラミング言語におけるクラスに似ています。つまりモデルは、[デジタル ツイン](concepts-twins-graph.md)のユーザー定義のテンプレートとなります。デジタル ツインは、そのテンプレートに従ってインスタンス化されることになります。 モデルは、 **Digital Twins Definition Language (DTDL)** という JSON に似た言語で記述され、ツインの " *プロパティ* "、" *テレメトリ* "、" *リレーションシップ* "、" *コンポーネント* " を定義することができます。
 
 > [!NOTE]
-> デジタル ツインに対する "*コマンド*" も DTDL で定義できます。 ただし Azure Digital Twins サービスでは現在、コマンドがサポートされていません。
+> デジタル ツインに対する " *コマンド* " も DTDL で定義できます。 ただし Azure Digital Twins サービスでは現在、コマンドがサポートされていません。
 
 _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウで、 *[ソリューション エクスプローラー]* ペインを使用して *AdtSampleApp\SampleClientApp\Models* フォルダーに移動します。 このフォルダーにサンプル モデルが格納されています。
 
 *[Room.json]* を選択して編集ウィンドウで開き、次のように変更を加えます。
 
-* **バージョン番号を更新する**。このモデルのバージョンを更新することを示します。 そのためには、`@id` 値の末尾にある *1* を *2* に変更します。 現在のバージョン番号よりも大きい数値であれば、何でもかまいません。
-* **プロパティを編集する**。 `Humidity` プロパティの名前を *HumidityLevel* に変更します (必要であれば、他の名前でもかまいません。 *HumidityLevel* 以外の名前を使用した場合は、その名前を覚えておいて、このチュートリアル全体の *HumidityLevel* の代わりにそれを使用し続けてください)。
-* **プロパティを追加する**。 `HumidityLevel` プロパティの最後 (15 行目) に続けて、次のコードを貼り付け、`RoomName` プロパティを room に追加します。
+* **バージョン番号を更新する** 。このモデルのバージョンを更新することを示します。 そのためには、`@id` 値の末尾にある *1* を *2* に変更します。 現在のバージョン番号よりも大きい数値であれば、何でもかまいません。
+* **プロパティを編集する** 。 `Humidity` プロパティの名前を *HumidityLevel* に変更します (必要であれば、他の名前でもかまいません。 *HumidityLevel* 以外の名前を使用した場合は、その名前を覚えておいて、このチュートリアル全体の *HumidityLevel* の代わりにそれを使用し続けてください)。
+* **プロパティを追加する** 。 `HumidityLevel` プロパティの最後 (15 行目) に続けて、次のコードを貼り付け、`RoomName` プロパティを room に追加します。
 
     ```json
     ,
@@ -59,7 +59,7 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
       "schema": "string"
     }
     ```
-* **リレーションシップを追加する**。 先ほど追加した `RoomName` プロパティの下に次のコードを貼り付けて、このタイプのツインが他のツインとの間で *contains* のリレーションシップを形成できるようにします。
+* **リレーションシップを追加する** 。 先ほど追加した `RoomName` プロパティの下に次のコードを貼り付けて、このタイプのツインが他のツインとの間で *contains* のリレーションシップを形成できるようにします。
 
     ```json
     ,
@@ -76,10 +76,10 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 次に進む前に、必ずファイルを保存してください。
 
 > [!TIP]
-> 独自のモデルを作成してみたい場合は、*Room* モデルのコードを新しいファイルに貼り付けて、 *.json* という拡張子で *AdtSampleApp\SampleClientApp\Models* フォルダーに保存してください。 その後、望みのものを表現するために、自由にプロパティやリレーションシップを追加してみましょう。 このフォルダーにある他のサンプル モデルも参考にしてください。
+> 独自のモデルを作成してみたい場合は、 *Room* モデルのコードを新しいファイルに貼り付けて、 *.json* という拡張子で *AdtSampleApp\SampleClientApp\Models* フォルダーに保存してください。 その後、望みのものを表現するために、自由にプロパティやリレーションシップを追加してみましょう。 このフォルダーにある他のサンプル モデルも参考にしてください。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、" [*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 ### <a name="get-started-with-the-command-line-app"></a>コマンド ライン アプリを使ってみる
 
@@ -130,7 +130,7 @@ CreateModels Room
 ```
 
 モデルを上書きすることはできないので、今度はサービス エラーが返されます。
-既存のモデルを削除する方法について詳しくは、"[*カスタム モデルを管理する方法*](how-to-manage-model.md)" に関するページを参照してください。
+既存のモデルを削除する方法について詳しくは、" [*カスタム モデルを管理する方法*](how-to-manage-model.md)" に関するページを参照してください。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -147,11 +147,11 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に基づいて[**デジタル ツイン**](concepts-twins-graph.md)を作成できます。 デジタル ツインは、農場のセンサー、建物内の部屋、車内の照明など、対象となるビジネス環境内のエンティティを表します。 
+Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に基づいて [**デジタル ツイン**](concepts-twins-graph.md)を作成できます。 デジタル ツインは、農場のセンサー、建物内の部屋、車内の照明など、対象となるビジネス環境内のエンティティを表します。 
 
 デジタル ツインを作成するには、`CreateDigitalTwin` コマンドを使用します。 ツインのベースとなるモデルを参照する必要があります。モデルのプロパティには、必要に応じて初期値を定義することができます。 この段階では、リレーションシップ情報を渡す必要はありません。
 
-実行中のプロジェクト コンソールでこのコードを実行すると、いくつかのツインが作成されます。先ほど更新した *Room* モデルに基づくツインと、もう 1 つのモデル (*Floor*) に基づくツインです。 *Room* には 3 つのプロパティがあったことを思い出してください。それらの初期値を引数で指定することができます。
+実行中のプロジェクト コンソールでこのコードを実行すると、いくつかのツインが作成されます。先ほど更新した *Room* モデルに基づくツインと、もう 1 つのモデル ( *Floor* ) に基づくツインです。 *Room* には 3 つのプロパティがあったことを思い出してください。それらの初期値を引数で指定することができます。
 
 ```cmd/sh
 CreateDigitalTwin dtmi:example:Room;2 room0 RoomName string Room0 Temperature double 70 HumidityLevel double 30
@@ -167,11 +167,11 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 :::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
-ツインが作成されたことは、`Query` コマンドを実行することによって確認することもできます。 Azure Digital Twins インスタンスに対し、そこに含まれるすべてのデジタル ツインがこのコマンドによって照会されます。 その結果から、*floor0*、*floor1*、*room0*、*room1* の各ツインを探してみましょう。
+ツインが作成されたことは、`Query` コマンドを実行することによって確認することもできます。 Azure Digital Twins インスタンスに対し、そこに含まれるすべてのデジタル ツインがこのコマンドによって照会されます。 その結果から、 *floor0* 、 *floor1* 、 *room0* 、 *room1* の各ツインを探してみましょう。
 
 #### <a name="modify-a-digital-twin"></a>デジタル ツインに変更を加える
 
-作成したツインのプロパティを変更することもできます。 次のコマンドを実行して、*room0* の RoomName を *Room0* から *PresidentialSuite* に変更してみましょう。
+作成したツインのプロパティを変更することもできます。 次のコマンドを実行して、 *room0* の RoomName を *Room0* から *PresidentialSuite* に変更してみましょう。
 
 ```cmd/sh
 UpdateDigitalTwin room0 add /RoomName string PresidentialSuite
@@ -192,11 +192,11 @@ GetDigitalTwin room0
 
 ### <a name="create-a-graph-by-adding-relationships"></a>リレーションシップを追加してグラフを作成する
 
-次に、ツイン間にいくつかの**リレーションシップ**を作成することで、それらのツインを接続し、[**ツイン グラフ**](concepts-twins-graph.md)を形成することができます。 ツイン グラフは、環境全体を表すために使用されます。 
+次に、ツイン間にいくつかの **リレーションシップ** を作成することで、それらのツインを接続し、 [**ツイン グラフ**](concepts-twins-graph.md)を形成することができます。 ツイン グラフは、環境全体を表すために使用されます。 
 
 リレーションシップを追加するには、`CreateRelationship` コマンドを使用します。 リレーションシップの接続元となるツインと、追加するリレーションシップの種類、リレーションシップの接続先のツインを指定してください。 最後に、リレーションシップの名前 (ID) を指定します。
 
-次のコードを実行すると、先ほど作成した各 *Floor* ツインから対応する *Room* ツインへの "contains" リレーションシップが追加されます。 そのためには、*Floor* モデルに *contains* リレーションシップが定義されていなければならない点に注意してください。
+次のコードを実行すると、先ほど作成した各 *Floor* ツインから対応する *Room* ツインへの "contains" リレーションシップが追加されます。 そのためには、 *Floor* モデルに *contains* リレーションシップが定義されていなければならない点に注意してください。
 
 ```cmd/sh
 CreateRelationship floor0 contains room0 relationship0
@@ -234,7 +234,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
     >[!NOTE]
-    >サンプル プロジェクトでは、引数が追加されていない `Query` コマンドは、`Query SELECT * FROM DIGITALTWINS` に相当します。 [クエリ API](how-to-use-apis-sdks.md) または [CLI コマンド](how-to-use-cli.md)を使用して、インスタンス内のすべてのツインに対してクエリを実行するには、より長い (完全な) クエリを使用します。
+    >サンプル プロジェクトでは、引数が追加されていない `Query` コマンドは、`Query SELECT * FROM DIGITALTWINS` に相当します。 [クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](how-to-use-cli.md)を使用して、インスタンス内のすべてのツインに対してクエリを実行するには、より長い (完全な) クエリを使用します。
 
 * **環境内に存在する部屋をすべて知りたい** (モデルで照会)
 
@@ -242,7 +242,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
     Query SELECT * FROM DIGITALTWINS T WHERE IS_OF_MODEL(T, 'dtmi:example:Room;2')
     ```
 
-    クエリを特定のタイプのツインに制限することで、表現されている内容についての、より具体的な情報を取得することができます。 このコマンドを実行すると、*room0* と *room1* は表示されますが、*floor0* と *floor1* は (room ではなく floor であるため) **表示されません**。
+    クエリを特定のタイプのツインに制限することで、表現されている内容についての、より具体的な情報を取得することができます。 このコマンドを実行すると、 *room0* と *room1* は表示されますが、 *floor0* と *floor1* は (room ではなく floor であるため) **表示されません** 。
     
     :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
@@ -272,13 +272,13 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
     Query SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.$dtId = 'floor0' AND IS_OF_MODEL(room, 'dtmi:example:Room;2') AND room.Temperature > 75
     ```
 
-    SQL と同様、結合演算子 (`AND`、`OR`、`NOT` など) を使用して、先行するクエリを結合することもできます。 このクエリは、`AND` を使用して、ツインの温度に関する先行するクエリを絞り込んでいます。 結果には、*floor0* 上の部屋のうち、温度が 75 度を超える部屋のみが表示されます。このケースでは、該当する部屋はありません。 結果セットは空になります。
+    SQL と同様、結合演算子 (`AND`、`OR`、`NOT` など) を使用して、先行するクエリを結合することもできます。 このクエリは、`AND` を使用して、ツインの温度に関する先行するクエリを絞り込んでいます。 結果には、 *floor0* 上の部屋のうち、温度が 75 度を超える部屋のみが表示されます。このケースでは、該当する部屋はありません。 結果セットは空になります。
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルのプロジェクトは、次のチュートリアル ("[*エンド ツー エンドのソリューションを接続する方法のチュートリアル*](tutorial-end-to-end.md)") の土台となっています。 次のチュートリアルに進む場合は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き使用します。
+このチュートリアルのプロジェクトは、次のチュートリアル (" [*エンド ツー エンドのソリューションを接続する方法のチュートリアル*](tutorial-end-to-end.md)") の土台となっています。 次のチュートリアルに進む場合は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き使用します。
 * この場合、サンプル アプリの `DeleteAllTwins` コマンドと `DeleteAllModels` コマンドをそれぞれ使用して、ツインとモデルをインスタンスから消去してください。 次のチュートリアルに備えて白紙の状態にすることができます。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]

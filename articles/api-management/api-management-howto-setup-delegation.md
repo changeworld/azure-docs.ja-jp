@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461002"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148763"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -44,38 +44,36 @@ ms.locfileid: "87461002"
 * 特殊な委任エンドポイントの URL を決めて **[委任エンドポイント URL]** フィールドに入力します。 
 * [委任の認証キー] フィールドに、要求が本当に Azure API Management から送信されたものかをどうかを確かめるための署名のコンピューティングに使用するシークレットを入力します。 **[生成]** ボタンをクリックすると、API Management によってランダムにキーを生成できます。
 
-次に、 **委任エンドポイント**を作成する必要があります。 委任エンドポイントでは、次に示す操作を実行します。
+次に、 **委任エンドポイント** を作成する必要があります。 委任エンドポイントでは、次に示す操作を実行します。
 
 1. 次の形式の要求を受け取ります。
    
-   > "*http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={元のページの URL}&salt={文字列}&sig={文字列}* "
+   > " *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={元のページの URL}&salt={文字列}&sig={文字列}* "
    
     サインイン/サインアップ処理のためのクエリ パラメーター:
    
-   * **operation**: 委任要求の種類を識別します。この場合は **[SignIn]** のみを指定できます。
-   * **returnUrl**: ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL。
-   * **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
-   * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
+   * **operation** : 委任要求の種類を識別します。この場合は **[SignIn]** のみを指定できます。
+   * **returnUrl** : ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL。
+   * **salt** : セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+   * **sig** : 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
    
-   * **returnUrl** および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 ハッシュを計算します ([コードの例を次に示します])。
+   * **returnUrl** および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 ハッシュを計算します ( [コードの例を次に示します])。
      
-     > HMAC(**salt** + '\n' + **returnUrl**)
-     > 
-     > 
+     > HMAC( **salt** + '\n' + **returnUrl** )
+
    * 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。 2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
-3. サインイン/サインアップの要求を受け取っていることを確認します。**operation** クエリ パラメーターが "**SignIn**" に設定されます。
+3. サインイン/サインアップの要求を受け取っていることを確認します。 **operation** クエリ パラメーターが " **SignIn** " に設定されます。
 4. サインインまたはサインアップのための UI をユーザーに表示します。
 5. サインアップの場合は、API Management に対応するアカウントを作成する必要があります。 [ユーザーを作成] します。 このとき、ユーザー ID をユーザー ストア内のユーザー ID と同じに設定するか、または追跡が可能な ID に設定してください。
 6. ユーザーが正常に認証されたら、次の操作を行います。
    
-   * [シングル サインオン (SSO) トークンを要求] します。
+   * API Management REST API を使用して[共有アクセス トークンを要求します]
    * 上記の API 呼び出しによって受け取った SSO URL に returnUrl クエリ パラメーターを付加します。
      
-     > 例: `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * 上記の手順で生成された URL にユーザーをリダイレクトします。
+     > 例: `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * 上で生成された URL にユーザーをリダイレクトします
 
 **SignIn** 操作に加えて、ここまでの手順に従い、さらに次の操作のいずれかを使用することにより、アカウント管理も実行できます。
 
@@ -86,10 +84,10 @@ ms.locfileid: "87461002"
 
 アカウントの管理操作を実行するには、次のクエリ パラメーターを渡す必要があります。
 
-* **operation**: 委任要求の種類を識別します (ChangePassword、ChangeProfile、または CloseAccount)
-* **userId**: 管理するアカウントのユーザー ID。
-* **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
-* **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
+* **operation** : 委任要求の種類を識別します (ChangePassword、ChangeProfile、または CloseAccount)
+* **userId** : 管理するアカウントのユーザー ID。
+* **salt** : セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+* **sig** : 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>製品のサブスクリプション処理の委任
 
@@ -105,26 +103,26 @@ ms.locfileid: "87461002"
 
 1. 次の形式の要求を受け取ります。
    
-   > "*http:\//www.yourwebsite.com/apimdelegation?operation={操作}&productId={サブスクライブする成果物}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}* "
+   > " *http:\//www.yourwebsite.com/apimdelegation?operation={操作}&productId={サブスクライブする成果物}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}* "
    >
    
     成果物のサブスクリプション処理のためのクエリ パラメーター:
    
-   * **operation**: 委任要求の種類を識別します。 成果物のサブスクリプション要求の有効なオプションを次に示します。
+   * **operation** : 委任要求の種類を識別します。 成果物のサブスクリプション要求の有効なオプションを次に示します。
      * "Subscribe": 提供された ID (以下を参照) を持つ特定の成果物をユーザーがサブスクライブするための要求。
      * "Unsubscribe": ユーザーの成果物のサブスクリプションを解除するための要求。
      * "Renew": (たとえば、有効期限が近づいている) サブスクリプションを更新するための要求。
-   * **productId**: "*Subscribe*" 時 - ユーザーから要求されたサブスクライブ対象の成果物の ID。
-   * **subscriptionId**: "*登録解除*" および "*更新*" 時 - 製品のサブスクリプション ID。
-   * **userId**: "*Subscribe*" 時 - 要求の対象のユーザーの ID。
-   * **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
-   * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
+   * **productId** : " *Subscribe* " 時 - ユーザーから要求されたサブスクライブ対象の成果物の ID。
+   * **subscriptionId** : " *登録解除* " および " *更新* " 時 - 製品のサブスクリプション ID。
+   * **userId** : " *Subscribe* " 時 - 要求の対象のユーザーの ID。
+   * **salt** : セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+   * **sig** : 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
    
-   * **productId**、**userId**、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
+   * **productId** 、 **userId** 、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
      
-     > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
+     > HMAC( **salt** + '\n' + **productId** + '\n' + **userId** )
      > 
      > 
    * 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。 2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
@@ -135,7 +133,7 @@ ms.locfileid: "87461002"
 
 以下のコード サンプルは、次の操作を行う方法を示しています｡
 
-* "*委任検証キー*" を取得する。このキーは、パブリッシャー ポータルの [委任] 画面で設定されます。
+* " *委任検証キー* " を取得する。このキーは、パブリッシャー ポータルの [委任] 画面で設定されます。
 * HMAC を作成する。作成した HMAC は、署名の検証のために使用され、これにより、渡された returnUrl の有効性が証明されます。
 
 同じコードは、わずかに変更するだけで、productId と userId に対して機能します。
@@ -186,7 +184,7 @@ var signature = digest.toString('base64');
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[シングル サインオン (SSO) トークンを要求]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[共有アクセス トークンを要求する]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [ユーザーを作成]: /rest/api/apimanagement/2019-12-01/user/createorupdate
 [サブスクリプションのための REST API の呼び出し]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps

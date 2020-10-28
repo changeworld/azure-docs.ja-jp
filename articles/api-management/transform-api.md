@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627767"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108135"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>チュートリアル:API を変換および保護する
 
@@ -60,7 +60,7 @@ ms.locfileid: "91627767"
 
 :::image type="content" source="media/transform-api/original-response.png" alt-text="ポータルでのポリシー":::
 
-応答に、**X-AspNet-Version** と **X-Powered-By** というヘッダーが含まれていることがわかります。
+応答に、 **X-AspNet-Version** と **X-Powered-By** というヘッダーが含まれていることがわかります。
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
 
@@ -70,7 +70,7 @@ ms.locfileid: "91627767"
    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="ポータルでのポリシー" border="false":::
 
 1. **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Show snippets]\(スニペットの表示\)** を選択します。
-1. 右側のウィンドウの **[変換ポリシー]** で、**[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
+1. 右側のウィンドウの **[変換ポリシー]** で、 **[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
 
    :::image type="content" source="media/transform-api/transform-api.png" alt-text="ポータルでのポリシー":::
 
@@ -115,7 +115,7 @@ ms.locfileid: "91627767"
 
 1.  **[Demo Conference API]\(デモ会議 API\)**  >  **[すべての操作]**  >  **[Design]\(デザイン\)** を選択します。
 1.  **[受信処理]** セクションで、コード エディター ( **</>** ) アイコンを選択します。
-1.  **&lt;inbound&gt;** 要素内にカーソルを配置します。
+1.  **&lt;inbound&gt;** 要素内にカーソルを置き、右上隅にある **[Show snippets]\(スニペットの表示\)** を選択します。
 
     :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="ポータルでのポリシー" border="false":::
 
@@ -176,7 +176,7 @@ ms.locfileid: "91627767"
 1. **[Demo Conference API]\(デモ会議 API)**  >  **[テスト]** を選択します。
 1. **[GetSpeakers]** 操作を選択します。 **[送信]** を 3 回続けて選択します。
 
-    要求を 3 回送信すると、"**429 要求が多すぎます**" 応答が返されます。
+    要求を 3 回送信すると、" **429 要求が多すぎます** " 応答が返されます。
 
     :::image type="content" source="media/transform-api/test-throttling.png" alt-text="ポータルでのポリシー" 応答が返されます。
 

@@ -1,35 +1,37 @@
 ---
 title: Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
-description: Custom Vision を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Live Video Analytics on IoT Edge (LVA) の AI 拡張機能を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
+description: Azure Custom Vision を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Azure Live Video Analytics on Azure IoT Edge の AI 拡張機能を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016792"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171507"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
-このチュートリアルでは、[Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Live Video Analytics on IoT Edge の [AI 拡張機能](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model)を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
+このチュートリアルでは、Azure [Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Azure Live Video Analytics on Azure IoT Edge の [AI 拡張機能](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model)を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
 
-ここでは、Custom Vision の機能 (これにより、データ サイエンス、ML、AI の知識がないユーザーでも数点の画像を単純にアップロードしてラベル付けすることでコンピューター ビジョン モデルを構築、トレーニングすることが可能) と Live Video Analytics の機能を組み合わせて、カスタム モデルをコンテナーとしてエッジに簡単にデプロイし、シミュレートされたライブ ビデオ フィードを分析する方法について説明します。 このチュートリアルは Azure VM を IoT Edge デバイスとして使用します。C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。
+ここでは、Custom Vision の機能を集約して、いくつかの画像をアップロードしてラベル付けすることでコンピューター ビジョン モデルを構築してトレーニングする方法について説明します。 データ サイエンス、機械学習、AI の知識は必要ありません。 また、簡単にカスタム モデルをコンテナーとしてエッジにデプロイし、シミュレートされたライブ ビデオ フィードを分析するために、Live Video Analytics の機能についても説明します。
+
+このチュートリアルは、C# で記述されたサンプル コードに基づいており、Azure 仮想マシン (VM) を IoT Edge デバイスとして使用します。 このチュートリアルの情報は、[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)のクイックスタートに基づいています。
 
 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > * 関連リソースを設定する。
-> * おもちゃのトラックを検出するための Custom Vision モデルをクラウドに構築してエッジにデプロイする
-> * HTTP 拡張機能を持つメディア グラフを作成してカスタム ビジョン モデルにデプロイする
+> * おもちゃのトラックを検出するための Custom Vision モデルをクラウドに構築してエッジにデプロイする。
+> * HTTP 拡張を使用したメディア グラフを作成して Custom Vision モデルにデプロイする。
 > * サンプル コードを実行する。
 > * 結果を確認して解釈する。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>推奨される事前読み取り  
+## <a name="suggested-pre-reading"></a>推奨される事前読み取り
 
-開始する前に、次の記事に目を通すことをお勧めします。 
+開始する前に、次の記事に目を通してください。
 
 * [IoT Edge の Live Video Analytics (プレビュー)](overview.md)
 * [Azure Custom Vision の概要](../../cognitive-services/custom-vision-service/overview.md)
@@ -51,40 +53,41 @@ ms.locfileid: "92016792"
 * 開発マシンにインストールされた [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer)。
 * 次のことを行っておきます。
     
-    * [Azure リソースを設定する](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
+    * [Azure リソースの設定](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [開発環境を設定する](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
 
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
-このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 Ctrl キーを押しながら N キーを押し、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv)へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒のマーカーで、おもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連する推論イベントを IoT Edge ハブに発行します。
+このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、 **おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連付けられた推論イベントを IoT Edge ハブに発行します。
 
 ## <a name="overview"></a>概要
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Custom Vision の概要":::
+> :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Custom Vision の概要を示す図。":::
 
 この図は、このチュートリアルでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](media-graph-concept.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードにビデオ フレームを送信します。 このプロセッサは、[HTTP 拡張プロセッサ](media-graph-concept.md#http-extension-processor) ノードに到達するビデオ ストリームのフレーム レートを制限します。
-HTTP 拡張ノードは、プロキシの役割を果たします。 ビデオ フレームを、指定した画像の種類に変換します。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに、REST 経由で転送します。 この例では、このエッジ モジュールは Custom Vision を使用して構築された、おもちゃのトラックの検出モデルです。 HTTP 拡張プロセッサ ノードは、検出結果を収集し、イベントを [IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub) に送信します。
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision のおもちゃ検出モデルを構築してデプロイする 
+HTTP 拡張ノードは、プロキシの役割を果たします。 ビデオ フレームを、指定した画像の種類に変換します。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに、REST 経由で転送します。 この例では、このエッジ モジュールは Custom Vision を使用して構築された、おもちゃのトラックの検出モデルです。 HTTP 拡張プロセッサ ノードは、検出結果を収集し、イベントを [Azure IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 その後、このノードはこれらのイベントを [IoT Edge ハブ](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)に送信します。
 
-Custom Vision という名前が示唆するように、この機能を活用して、独自のカスタム オブジェクト検出器または分類器をクラウドに構築できます。 シンプルで使いやすい、直感的なインターフェイスを使用してカスタム ビジョン モデルを構築し、コンテナーを介してクラウドまたはエッジにデプロイできます。 
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision のおもちゃ検出モデルを構築してデプロイする
 
-おもちゃのトラックの検出器を構築するには、Web ポータルの[クイックスタートの記事](../../cognitive-services/custom-vision-service/get-started-build-detector.md)で、この Custom Vision の「オブジェクト検出器の構築」に従うことをお勧めします。
+Custom Vision という名前が示唆するように、これを使用して、独自のカスタム オブジェクト検出器または分類器をクラウドに構築できます。 これには、コンテナーを介してクラウドまたはエッジにデプロイできる Custom Vision モデルを構築するためのシンプルで使いやすい、直感的なインターフェイスが用意されています。
+
+おもちゃのトラックの検出器を構築するには、「[クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する](../../cognitive-services/custom-vision-service/get-started-build-detector.md)」を参照してください。
 
 その他のメモ:
  
-* このチュートリアルでは、クイックスタートの記事の[前提条件セクション](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)にあるサンプル画像を使用しないでください。 特定の画像セットを利用しておもちゃ検出器のカスタム ビジョン モデルを構築する代わりに、クイックスタートで[トレーニング画像の選択](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)を求められときに、[こちらの画像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)を使用することをお勧めします。
-* クイックスタートの画像へのタグ付け セクションで、図に示されているおもちゃのトラックに、「デリバリー トラック」というタグを付けてください。
+* このチュートリアルでは、このクイックスタート記事の[「前提条件」セクション](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)にあるサンプル画像を使用しないでください。 ここでは、代わりに特定の画像セットを使用して、おもちゃの検出器の Custom Vision モデルを構築しました。 [これらの画像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)は、クイックスタートで[トレーニング画像を選択する](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)よう求められたときに使用してください。
+* クイック スタートの画像へのタグ付けに関するセクションでは、図に示されているおもちゃのトラックに "delivery truck" というタグを付けていることを確認してください。
 
-完了し、満足のいくモデルが準備できたら、[パフォーマンス] タブの [エクスポート] ボタンを使用して、Docker コンテナーにエクスポートできます。コンテナー プラットフォームの種類として Linux を選択してください。 これは、コンテナーが実行されるプラットフォームです。 コンテナーをダウンロードするコンピューターは、Windows でも Linux でもかまいません。 次の手順は、Windows コンピューターにダウンロードされたコンテナー ファイルに基づいています。
+完了したら、 **[パフォーマンス]** タブの **[エクスポート]** ボタンを使用して、モデルを Docker コンテナーにエクスポートできます。コンテナー プラットフォームの種類として Linux を選択するようにしてください。 これは、コンテナーが実行されるプラットフォームです。 コンテナーをダウンロードするコンピューターは、Windows でも Linux でもかまいません。 次の手順は、Windows コンピューターにダウンロードされたコンテナー ファイルに基づいています。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Custom Vision の概要"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Custom Vision の概要を示す図。"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
-            このコマンドは、ローカル コンピューター上のコンテナーをテストします。モデルをトレーニングしたときと同じデリバリー トラックが画像に含まれている場合、出力は次のようになり、これはデリバリー トラックが 90.12% の確率で検出されたことを示しています。
+            このコマンドは、ローカル コンピューター上のコンテナーをテストします。 モデルをトレーニングしたときと同じデリバリー トラックが画像に含まれている場合、出力は次の例のようになります。 これは、デリバリー トラックが 90.12% の確率で検出されたことを示します。
     
             ```
             {"created":"2020-03-20T07:10:47.827673","id":"","iteration":"","predictions":[{"boundingBox":{"height":0.66167289,"left":-0.03923762,"top":0.12781593,"width":0.70003178},"probability":0.90128148,"tagId":0,"tagName":"delivery truck"},{"boundingBox":{"height":0.63733053,"left":0.25220079,"top":0.0876643,"width":0.53331227},"probability":0.59745145,"tagId":0,"tagName":"delivery truck"}],"project":""}
@@ -94,105 +97,115 @@ Custom Vision という名前が示唆するように、この機能を活用し
 
 ## <a name="examine-the-sample-files"></a>サンプル ファイルを詳しく調べる
 
-1. VSCode で、"src/edge" を参照します。 作成した .env ファイルが、いくつかの展開テンプレート ファイルと共に確認できます。
+1. Visual Studio Code で src/edge に移動します。 作成した .env ファイルと、いくつかのデプロイ テンプレート ファイルを確認できます。
 
     展開テンプレートでは、いくつかのプレースホルダー値で、エッジ デバイスの配置マニフェストが参照されています。 それらの変数の値が .env ファイルに格納されています。
-1. 次に、"src/cloud-to-device-console-app" フォルダーに移動します。 ここには、作成した appsettings.json ファイルのほか、いくつかのファイルが確認できます。
+1. 次に、src/cloud-to-device-console-app フォルダーに移動します。 ここでは、作成した appsettings.json ファイルと、他のいくつかのファイルを確認できます。
 
-    * c2d-console-app.csproj - これは VSCode のプロジェクト ファイルです。
-    * operations.json - このファイルには、プログラムで実行するさまざまな操作がリストされます。
-    * Program.cs - これは次の処理を実行するサンプル プログラムのコードです。
+    * c2d-console-app.csproj: これは Visual Studio Code 用のプロジェクト ファイルです。
+    * operations.json: このファイルには、このプログラムで実行するさまざまな操作のリストが記載されています。
+    * Program.cs:このサンプル プログラム コードでは次を実行します。
 
         * アプリ設定を読み込みます。
-        * Live Video Analytics on IoT Edge モジュールのダイレクト メソッドを呼び出してトポロジを作成し、グラフのインスタンスを作成し、アクティブ化します。
-        * 一時停止し、グラフ出力を [ターミナル] ウィンドウで調べたり、IoT ハブに送信されたイベントを [出力] ウィンドウで調べたりできるようにします。
+        * Live Video Analytics on IoT Edge モジュールのダイレクト メソッドを呼び出して、トポロジの作成、グラフのインスタンス作成、グラフのアクティブ化を実行します。
+        * **[ターミナル]** ウィンドウでグラフ出力を、 **[出力]** ウィンドウで IoT ハブに送信されたイベントを調べるために一時停止します。
         * グラフ インスタンスを非アクティブ化し、グラフ インスタンスを削除して、グラフ トポロジを削除します。
         
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>配置マニフェストを生成してデプロイする
 
-1. VSCode で、"src/cloud-to-device-console-app/operations.json" に移動します
+1. Visual Studio Code で、src/cloud-to-device-console-app/operations.json に移動します。
 
-1. GraphTopologySet で、以下に該当することを確認します。<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
-1. GraphInstanceSet で、以下が設定されていることを確認します。 
-    1. "topologyName" :"InferencingWithHttpExtension"
+1. `GraphTopologySet` で、次に該当することを確認します。<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. `GraphInstanceSet` で、以下を確認します。
+    1. `"topologyName" : "InferencingWithHttpExtension"`
     1. パラメーター配列の先頭に `{"name": "inferencingUrl","value": "http://cv:80/image"},` を追加します。
-    1. rtspUrl パラメーターの値を "rtsp://rtspsim:554/media/t2.mkv" に変更します。    
-1. GraphTopologyDelete で、以下が設定されていることを確認します。"name":"InferencingWithHttpExtension"
-1. "src/edge/ deployment.customvision.template.json" ファイルを右クリックし、 **[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\)** をクリックします。
+    1. `rtspUrl` パラメーター値を `"rtsp://rtspsim:554/media/t2.mkv"` に変更します。
+1. `GraphTopologyDelete` で、`"name": "InferencingWithHttpExtension"` を確認します。
+1. src/edge/ deployment.customvision.template.json ファイルを右クリックし、 **[Generate IoT Edge Deployment Manifest]\(IoT Edge デプロイ マニフェストの生成\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Custom Vision の概要" ファイルを開き、registryCredentials json ブロックを見つけます。 このブロックには、Azure コンテナー レジストリのアドレスと、そのユーザー名とパスワードが記載されています。
-1. コマンド ラインに従って、ローカルの Custom Vision コンテナーを Azure コンテナー レジストリにプッシュします。
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Custom Vision の概要を示す図。":::
+  
+    この操作により、deployment.customvision.amd64.json という名前のマニフェスト ファイルが src/edge/config フォルダーに作成されます。
+1. src/edge/ deployment.customvision.template.json ファイルを開き、`registryCredentials` JSON ブロックを見つけます。 このブロックでは、Azure コンテナー レジストリのアドレスと共に、そのユーザー名とパスワードを確認できます。
+1. コマンド ラインで次の手順を実行して、ローカルの Custom Vision コンテナーを Azure Container Registry インスタンスにプッシュします。
 
-    1. 次のコマンドを実行して、レジストリにログインします。
+    1. 次のコマンドを実行して、レジストリにサインインします。
     
         `docker login <address>`
     
-        認証を求められたら、ユーザー名とパスワードを入力します。 
+        認証を求められたら、ユーザー名とパスワードを入力します。
         
         > [!NOTE]
-        > パスワードはコマンド ラインに表示されません。
-    1. 次を使用して画像にタグを付けます。<br/>`docker tag cvtruck   <address>/cvtruck`
-    1. 次を使用して画像をプッシュします。<br/>`docker push <address>/cvtruck`
+        > このパスワードはコマンド ラインに表示されません。
+    1. 次のコマンドを使用して画像にタグを付けます。 <br/>`docker tag cvtruck   <address>/cvtruck`.
+    1. 次のコマンドを使用して画像をプッシュします。 <br/>`docker push <address>/cvtruck`.
 
-        成功した場合は、コマンドラインに画像の SHA と共に 'Pushed' と表示されます。 
-    1. また、Azure portal で Azure コンテナー レジストリをチェックすることによって確認することもできます。 ここでは、リポジトリの名前がタグと共に表示されます。 
-1. 左下隅の [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンをクリックして、IoTHub 接続文字列を設定します。 この文字列は、appsettings.json ファイルからコピーできます (VSCode で適切な IoT Hub 構成を確実に行うためのもう 1 つの推奨される方法として、[IoT Hub の選択コマンド](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)を使用する方法があります)。
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Custom Vision の概要" を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** をクリックします。 
+        成功した場合は、コマンド ラインにその画像の SHA と共に `Pushed` と表示されます。
+    1. また、Azure portal で Azure Container Registry インスタンスをチェックすることによって確認することもできます。 ここでは、リポジトリの名前がタグと共に表示されます。
+1. 左下隅の **[Azure IoT Hub]** ペインの横にある **[その他のアクション]** アイコンを選択して、IoTHub 接続文字列を設定します。 この文字列は、appsettings.json ファイルからコピーできます (Visual Studio Code 内で適切な IoT ハブを確実に構成するために推奨されるもう 1 つの方法として、[[Select IoT Hub]\(IoT ハブの選択\) コマンド](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)の使用があります)。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Custom Vision の概要" という 1 つのタグのみでトレーニングされています)。
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Custom Vision の概要を示す図。":::
+1. 次に、src/edge/config/ deployment.customvision.amd64.json を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Custom Vision の概要を示す図。":::
+1. その後、IoT Hub デバイスを選択するよう求められます。 ドロップダウン リストから **[lva-sample-device]** を選択します。
+1. 30 秒ほど経過したら、左下のセクションで Azure IoT ハブを更新します。 エッジ デバイスに次のモジュールがデプロイされた状態になります。
+
+    * `lvaEdge` という名前の Live Video Analytics on IoT Edge モジュール。
+    * `rtspsim` という名前のモジュール。ライブ ビデオ フィードのソースとして機能する RTSP サーバーをシミュレートします。
+    * `cv` という名前のモジュール。これは名前が示唆するように、Custom Vision を画像に適用して複数のタグの種類を返す、Custom Vision のおもちゃのトラックの検出モデルです (このモデルは delivery truck という 1 つのタグのみでトレーニングされています)。
 
 ## <a name="prepare-for-monitoring-events"></a>イベントを監視するための準備をする
 
-Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。 この手順は、Visual Studio Code の [出力] ウィンドウで、IoT Hub イベントを監視するために必要です。
+Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。 この手順は、Visual Studio Code の **[出力]** ウィンドウで、IoT Hub イベントを監視するために必要です。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Custom Vision の概要":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Custom Vision の概要を示す図。":::
 
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
-このチュートリアルのグラフ トポロジをブラウザーで開くと、inferencingUrl の値が http://cv:80/image に設定されていることがわかります。これは、ライブ ビデオでおもちゃのトラックが検出された場合に、推論サーバーから結果が返されることを意味します。
+このチュートリアルのグラフ トポロジをブラウザーで開くと、`inferencingUrl` の値が `http://cv:80/image` に設定されていることがわかります。 この設定は、推論サーバーがライブ ビデオでおもちゃのトラック (ある場合) を検出した後に結果を返すことを意味します。
 
-1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
-1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Custom Vision の概要":::
-1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+1. Visual Studio Code で **[拡張機能]** タブを開き (または **Ctrl + Shift + X** キーを押し)、Azure IoT Hub を検索します。
+1. 右クリックして、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Custom Vision の概要"
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Custom Vision の概要を示す図。":::
+1. **[Show Verbose Message]\(詳細メッセージの表示\)** を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Custom Vision の概要を示す図。"
               }
             ]
           }
         }
    ```
     
-   * グラフ インスタンスを起動し、ビデオのフローを開始する GraphInstanceActivate の呼び出し。
-   * グラフ インスタンスが実行状態であることを表示する GraphInstanceList の 2 回目の呼び出し。
+   * グラフ インスタンスとビデオのフローを開始する `GraphInstanceActivate` の呼び出し。
+   * グラフ インスタンスが実行状態であることを示す `GraphInstanceList` の 2 回目の呼び出し。
     
-1. [ターミナル] ウィンドウの出力が、[続行するには Enter キーを押してください] というプロンプトで一時停止されます。 Enter キーはまだ押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
-1. Visual Studio Code の [出力] ウィンドウに切り替えます。 Live Video Analytics on IoT Edge モジュールから IoT ハブに送信されているメッセージが表示されます。 このチュートリアルの次のセクションでは、これらのメッセージについて説明します。
-1. メディア グラフは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 メディア グラフを停止するには、 [ターミナル] ウィンドウに戻り、Enter キーを押します。
+1. **[ターミナル]** ウィンドウの出力が、 **[続行するには Enter キーを押してください]** というプロンプトで一時停止されます。 **Enter** キーはまだ押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
+1. Visual Studio Code の **[出力]** ウィンドウに切り替えます。 Live Video Analytics on IoT Edge モジュールから IoT ハブに送信されているメッセージが表示されます。 このチュートリアルの次のセクションでは、これらのメッセージについて説明します。
+1. メディア グラフは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 メディア グラフを停止するには、 **[ターミナル]** ウィンドウに戻り、 **Enter** キーを押します。
 次の一連の呼び出しによって、リソースがクリーンアップされます。
     
-   * グラフ インスタンスを非アクティブ化する GraphInstanceDeactivate の呼び出し。
-   * インスタンスを削除する GraphInstanceDelete の呼び出し。
-   * トポロジを削除する GraphTopologyDelete の呼び出し。
-   * リストが空であることを示す GraphTopologyList の最後の呼び出し。
+   * `GraphInstanceDeactivate` の呼び出しによって、グラフ インスタンスが非アクティブ化されます。
+   * `GraphInstanceDelete` の呼び出しによって、インスタンスが削除されます。
+   * `GraphTopologyDelete` の呼び出しによって、トポロジが削除されます。
+   * `GraphTopologyList` の最後の呼び出しによって、リストが空であることが示されます。
     
 ## <a name="interpret-the-results"></a>結果を解釈する
 
-メディア グラフを実行すると、HTTP 拡張プロセッサ ノードから IoT Hub シンク ノードを介して IoT ハブに結果が渡されます。 出力ウィンドウに表示されるメッセージには、body セクションと applicationProperties セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
+メディア グラフを実行すると、HTTP 拡張プロセッサ ノードから IoT Hub シンク ノードを介して IoT ハブに結果が渡されます。 **[出力]** ウィンドウに表示されるメッセージには、body セクションと `applicationProperties` セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
 
 次のメッセージ内のアプリケーションのプロパティと body の内容は、Live Video Analytics モジュールによって定義されています。
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は、Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished です。
+メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` です。
 
 ```
 {
@@ -210,10 +223,10 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
 このメッセージでは、以下の詳細に注目します。
 
-* このメッセージは、診断イベントです。 MediaSessionEstablished は、RTSP ソース ノード (subject) が RTSP シミュレーターと接続され、(シミュレートされた) ライブ フィードの受信を開始したことを示します。
-* applicationProperties の subject を見ると、メッセージの生成元がメディア グラフの RTSP ソース ノードであることがわかります。
-* applicationProperties の eventType には、このイベントが診断イベントであることが示されています。
-* eventTime にはイベントの発生時刻が示されています。
+* このメッセージは、診断イベントです。 `MediaSessionEstablished` は、RTSP ソース ノード (subject) が RTSP シミュレーターと接続され、シミュレートされたライブ フィードの受信を開始したことを示します。
+* `applicationProperties` 内の `subject` は、メッセージがメディア グラフの RTSP ソース ノードから生成されたことを示しています。
+* `applicationProperties` 内のイベントの種類は、このイベントが診断イベントであることを示します。
+* イベント時刻は、イベントの発生時刻を示します。
 * body には、診断イベントに関するデータが含まれています。 このケースでは、データは[セッション記述プロトコル (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol) の詳細で構成されています。
 
 ### <a name="inference-event"></a>推論イベント
@@ -305,23 +318,23 @@ HTTP 拡張プロセッサ ノードは、Custom Vision コンテナーから推
 }
 ```
 
-上のメッセージに関して、次の点に注意してください。
+上記のメッセージに含まれる次の情報に注意してください。
 
-* applicationProperties の subject が、メッセージの生成元となった MediaGraph 内のノードを参照しています。 このケースでは、HTTP 拡張プロセッサからメッセージが生成されています。
-* applicationProperties の eventType を見ると、これは Analytics 推論イベントであることがわかります。
-* eventTime にはイベントの発生時刻が示されています。
-* "body" に、分析イベントに関するデータが含まれています。 このケースでは、イベントは推論イベントであるため、body には “predictions” という推論の配列が含まれています。
-* "predictions" セクションには、おもちゃのデリバリー トラック (タグ = デリバリー トラック) がフレーム内で見つかった予測の一覧が含まれています。 ご存じのように、デリバリー トラックは、おもちゃのトラック用のトレーニング済みのカスタム モデルに指定したカスタム タグであり、このモデルは様々な確率の信頼度スコアで入力ビデオ内のおもちゃのトラックを推論して識別します。
+* `applicationProperties` 内の subject は、メッセージの生成元となった、MediaGraph 内のノードを参照しています。 この場合、このメッセージは HTTP 拡張プロセッサから生成されます。
+* `applicationProperties` 内のイベントの種類は、これが分析推論イベントであることを示しています。
+* イベント時刻は、イベントの発生時刻を示します。
+* body には、分析イベントに関するデータが含まれています。 この場合、イベントは推論イベントであるため、body には predictions という推論の配列が含まれています。
+* predictions セクションには、フレーム内でおもちゃのデリバリー トラック (タグは "delivery truck") が見つかる予測のリストが含まれています。 ご存じのとおり、"delivery truck" は、おもちゃのトラック用にトレーニングされたカスタム モデルに指定したカスタム タグです。 このモデルは、さまざまな確率の信頼度スコアで入力ビデオ内のおもちゃのトラックを推論して特定します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-これから他のチュートリアルやクイックスタートに取り組む場合は、作成したリソースをそのまま残しておいてください。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、すべてのリソースを削除してください。
+他のチュートリアルやクイックスタートに取り組む予定がある場合は、作成したリソースをそのまま残しておいてください。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、すべてのリソースを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 上級ユーザー向けのその他の課題を確認します。
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで検索できます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-* Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge-linux.md)に関するページの手順を参照できます。 
+* Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge-linux.md)に関するページの手順を参照できます。
 
 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」の手順に従って、デバイスを Azure IoT Hub に登録します。

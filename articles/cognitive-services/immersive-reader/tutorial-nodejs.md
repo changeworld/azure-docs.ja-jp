@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
+ms.author: metang
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ac23ad66cadc553095ff869b665a6bba2fba6f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac7bca305b0c23cceb00f97f426b3f68fbea91b3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262282"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636444"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>チュートリアル:Immersive Reader の起動 (Node.js)
 
@@ -80,7 +80,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 このファイルは、公開するべきでない機密情報を含んでいるため、ソース管理にはコミットしないでください。
 
-次に、_app.js_ を開いて、ファイルの先頭に次を追加します。 これにより、.env ファイル内に定義したプロパティが環境変数として Node に読み込まれます。
+次に、 _app.js_ を開いて、ファイルの先頭に次を追加します。 これにより、.env ファイル内に定義したプロパティが環境変数として Node に読み込まれます。
 
 ```javascript
 require('dotenv').config();
@@ -129,7 +129,7 @@ module.exports = router;
 
 ```
 
-**getimmersivereaderlaunchparams** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用のイマーシブ リーダー サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
+**getimmersivereaderlaunchparams** API エンドポイントはなんらかの形式の認証 ( [OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用のイマーシブ リーダー サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
