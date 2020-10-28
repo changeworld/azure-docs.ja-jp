@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843126"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341959"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -149,7 +149,7 @@ ms.locfileid: "91843126"
 
 ### <a name="sync-device-state"></a>デバイスの状態の同期 
 
-`MainPage.xaml.cs` 内に、参照 `using Windows.Web.Http;` を追加します。 次のコードを `MainPage` クラスに追加します。 このメソッドでは、エンドポイントの例に GET 要求が送信され、ご利用のアプリに対する現在のデバイス状態が抽出されます。 `<your_app_name>` を必ず、カスタム コマンド Web エンドポイントの**ヘッダー**で使用したものに変更してください。
+`MainPage.xaml.cs` 内に、参照 `using Windows.Web.Http;` を追加します。 次のコードを `MainPage` クラスに追加します。 このメソッドでは、エンドポイントの例に GET 要求が送信され、ご利用のアプリに対する現在のデバイス状態が抽出されます。 `<your_app_name>` を必ず、カスタム コマンド Web エンドポイントの **ヘッダー** で使用したものに変更してください。
 
 ```C#
 private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs e)
@@ -206,4 +206,4 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [カスタム コマンド アプリケーションの CI/CD プロセスを有効にする](./how-to-custom-commands-deploy-cicd.md)
+> [Custom Commands アプリケーションをリモートのスキルとしてエクスポートする](./how-to-custom-commands-integrate-remote-skills.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 1773e1345e9410f54a0364b586c3afca5b648b4c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946095"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341534"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -30,8 +30,8 @@ ms.locfileid: "91946095"
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要です。<br>FIM は、Log Analytics ワークスペースにデータをアップロードします。 データ料金は、アップロードするデータの量に基づいて適用されます。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」をご覧ください。|
-|必要なロールとアクセス許可:|**ワークスペースの所有者**は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。<br>**閲覧者**は結果を表示できます。|
-|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov<br>Azure Automation の変更追跡ソリューションが利用可能なリージョンでのみサポートされます。<br>「[リンクされた Log Analytics ワークスペースでサポートされるリージョン](../automation/how-to/region-mappings.md)」を参照してください。<br>[変更追跡についてさらに学習](../automation/change-tracking.md)します。|
+|必要なロールとアクセス許可:|**ワークスペースの所有者** は、FIM を有効/無効にすることができます (詳細については、 [Log Analytics での Azure のロール](/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。<br>**閲覧者** は結果を表示できます。|
+|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov<br>Azure Automation の変更追跡ソリューションが利用可能なリージョンでのみサポートされます。<br>「[リンクされた Log Analytics ワークスペースでサポートされるリージョン](../automation/how-to/region-mappings.md)」を参照してください。<br>[変更追跡についてさらに学習](../automation/change-tracking/overview.md)します。|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>Security Center の FIM とは
@@ -56,7 +56,7 @@ Security Center では FIM での監視対象のエンティティが推奨さ�
 
 FIM では、これらの項目の現在の状態が前回のスキャン中の状態と比較され、疑わしい変更が加えられた場合にアラートが生成されます。
 
-FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 ファイルの整合性の監視を有効にすると、種類が**ソリューション**である **Change Tracking** リソースを使用できるようになります。 データ収集の頻度の詳細については、Azure Change Tracking の「[変更の追跡データ収集の詳細](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)」を参照してください。
+FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 ファイルの整合性の監視を有効にすると、種類が **ソリューション** である **Change Tracking** リソースを使用できるようになります。 データ収集の頻度の詳細については、[Change Tracking のデータ収集の詳細](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)に関する記事を参照してください。
 
 > [!NOTE]
 > **Change Tracking** リソースを削除すると、Security Center のファイルの整合性の監視機能も無効になります。
@@ -148,7 +148,7 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 
 ## <a name="audit-monitored-workspaces"></a>監視対象ワークスペースの監査 
 
-**ファイルの整合性の監視**ダッシュボードには、FIM が有効になっているワークスペースが表示されます。 FIM ダッシュボードは、ワークスペースの FIM を有効にした後、または **[ファイルの整合性の監視]** ウィンドウで FIM が既に有効になっているワークスペースを選択したときに開きます。
+**ファイルの整合性の監視** ダッシュボードには、FIM が有効になっているワークスペースが表示されます。 FIM ダッシュボードは、ワークスペースの FIM を有効にした後、または **[ファイルの整合性の監視]** ウィンドウで FIM が既に有効になっているワークスペースを選択したときに開きます。
 
 :::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM の起動":::
 
@@ -187,7 +187,7 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 
 ## <a name="edit-monitored-entities"></a>監視対象エンティティを編集する
 
-1. **ファイルの整合性の監視ダッシュボード**に戻り、 **[設定]** を選択します。
+1. **ファイルの整合性の監視ダッシュボード** に戻り、 **[設定]** を選択します。
 
    ![設定][11]
 
@@ -207,7 +207,7 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 - エンティティの削除、変更の破棄、または変更の保存を行う
 
 ## <a name="add-a-new-entity-to-monitor"></a>監視する新しいエンティティを追加する
-1. **ファイルの整合性の監視ダッシュボード**に戻り、上部にある **[設定]** を選択します。 **[ワークスペースの構成]** が開きます。
+1. **ファイルの整合性の監視ダッシュボード** に戻り、上部にある **[設定]** を選択します。 **[ワークスペースの構成]** が開きます。
 2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブを選択します:[Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]。 この例では、 **[Linux ファイル]** が選択されています。
 
    ![監視する新しい項目を追加する][14]
@@ -219,7 +219,7 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 4. **[追加]** ページで、要求された情報を入力し、 **[保存]** を選択します。
 
 ## <a name="disable-monitored-entities"></a>監視対象エンティティを無効にする
-1. **ファイルの整合性の監視**ダッシュボードに戻ります。
+1. **ファイルの整合性の監視** ダッシュボードに戻ります。
 2. FIM が現在有効になっているワークスペースを選択します。 [有効化] ボタンまたは [アップグレード プラン] ボタンが表示されていなければ、そのワークスペースの FIM は有効になっています。
 
    ![FIM が有効になっているワークスペースの選択][16]
@@ -249,7 +249,7 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 ## <a name="disable-fim"></a>FIM を無効にする
 FIM を無効にすることができます。 FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 FIM を無効にすることで、選択したワークスペースから Change Tracking ソリューションを削除します。
 
-1. FIM を無効にするには、**ファイルの整合性の監視**ダッシュボードに戻ります。
+1. FIM を無効にするには、 **ファイルの整合性の監視** ダッシュボードに戻ります。
 2. ワークスペースを選択します。
 3. **[ファイルの整合性の監視]** で、 **[無効化]** を選択します。
 
@@ -262,7 +262,7 @@ FIM を無効にすることができます。 FIM は、Azure Change Tracking �
 
 * [セキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 * [セキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明します。
-* [Azure セキュリティ ブログ](https://docs.microsoft.com/archive/blogs/azuresecurity/)-- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure セキュリティ ブログ](/archive/blogs/azuresecurity/)-- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png

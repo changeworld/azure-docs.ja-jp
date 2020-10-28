@@ -3,12 +3,12 @@ title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 36645d5eb50aaf571c608fc51127b47ac885777d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873627"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320423"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -22,7 +22,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 コンプライアンスの報告方法を説明する前に、コンプライアンス情報がいつ更新されるかと、評価サイクルをトリガーする頻度とイベントについて説明します。
 
 > [!WARNING]
-> コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切な Azure ロールベースのアクセス制御 (Azure RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における Azure RBAC アクセス許可](../overview.md#azure-rbac-permissions-in-azure-policy)」をご覧ください)。
+> コンプライアンス状態が **未登録** と報告されている場合は、 **Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切な Azure ロールベースのアクセス制御 (Azure RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における Azure RBAC アクセス許可](../overview.md#azure-rbac-permissions-in-azure-policy)」をご覧ください)。
 
 ## <a name="evaluation-triggers"></a>評価のトリガー
 
@@ -82,7 +82,7 @@ jobs:
 
 対応スキャンは [az policy state trigger-scan](/cli/azure/policy/state#az-policy-state-trigger-scan) コマンドを使用して開始されます。
 
-既定では、`az policy state trigger-scan` によって現在のサブスクリプションのすべてのリソースの評価が開始されます。 特定のリソース グループで評価を開始するには、**resource-group** パラメーターを使用します。 次の例では、_MyRG_ リソース グループの現在のサブスクリプションで対応スキャンを開始します。
+既定では、`az policy state trigger-scan` によって現在のサブスクリプションのすべてのリソースの評価が開始されます。 特定のリソース グループで評価を開始するには、 **resource-group** パラメーターを使用します。 次の例では、 _MyRG_ リソース グループの現在のサブスクリプションで対応スキャンを開始します。
 
 ```azurecli-interactive
 az policy state trigger-scan --resource-group "MyRG"
@@ -94,13 +94,13 @@ az policy state trigger-scan --resource-group "MyRG"
 
 対応スキャンは、[Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan) コマンドレットを使用して開始されます。
 
-既定では、`Start-AzPolicyComplianceScan` によって現在のサブスクリプションのすべてのリソースの評価が開始されます。 特定のリソース グループで評価を開始するには、**ResourceGroupName** パラメーターを使用します。 次の例では、_MyRG_ リソース グループの現在のサブスクリプションで対応スキャンを開始します。
+既定では、`Start-AzPolicyComplianceScan` によって現在のサブスクリプションのすべてのリソースの評価が開始されます。 特定のリソース グループで評価を開始するには、 **ResourceGroupName** パラメーターを使用します。 次の例では、 _MyRG_ リソース グループの現在のサブスクリプションで対応スキャンを開始します。
 
 ```azurepowershell-interactive
 Start-AzPolicyComplianceScan -ResourceGroupName 'MyRG'
 ```
 
-PowerShell で非同期呼び出しが完了するのを待ってから、結果の出力を提供したり、[ジョブ](/powershell/module/microsoft.powershell.core/about/about_jobs)としてバックグラウンドで実行したりすることができます。 PowerShell ジョブを使用して、バックグラウンドで対応スキャンを実行するには、**AsJob** パラメーターを使用して、次の例の `$job` のようにオブジェクトに値を設定します。
+PowerShell で非同期呼び出しが完了するのを待ってから、結果の出力を提供したり、[ジョブ](/powershell/module/microsoft.powershell.core/about/about_jobs)としてバックグラウンドで実行したりすることができます。 PowerShell ジョブを使用して、バックグラウンドで対応スキャンを実行するには、 **AsJob** パラメーターを使用して、次の例の `$job` のようにオブジェクトに値を設定します。
 
 ```azurepowershell-interactive
 $job = Start-AzPolicyComplianceScan -AsJob
@@ -118,7 +118,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
 ```
 
-対応スキャンが完了すると、**State** プロパティが _Completed_ に変わります。
+対応スキャンが完了すると、 **State** プロパティが _Completed_ に変わります。
 
 #### <a name="on-demand-evaluation-scan---rest"></a>オンデマンドの評価スキャン - REST
 
@@ -143,13 +143,13 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
-この呼び出しは「**202 受理されました**」の状態を返します。 応答ヘッダーには、次の形式の **Location** プロパティが含まれています。
+この呼び出しは「 **202 受理されました** 」の状態を返します。 応答ヘッダーには、次の形式の **Location** プロパティが含まれています。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
-`{ResourceContainerGUID}` は、要求されたスコープに対して静的に生成されます。 スコープで既にオンデマンド スキャンが実行されている場合、新しいスキャンは開始されません。 代わりに、新しい要求で状態の同じ `{ResourceContainerGUID}` **場所**の URI が提供されます。 **場所**の URI に対する REST API の **GET** コマンドは、評価の進行中に「**202 受理されました**」を返します。 評価スキャンが完了すると、「**200 OK**」の状態を返します。 完了済みスキャンの本文は、状態を含む JSON 応答です。
+`{ResourceContainerGUID}` は、要求されたスコープに対して静的に生成されます。 スコープで既にオンデマンド スキャンが実行されている場合、新しいスキャンは開始されません。 代わりに、新しい要求で状態の同じ `{ResourceContainerGUID}` **場所** の URI が提供されます。 **場所** の URI に対する REST API の **GET** コマンドは、評価の進行中に「 **202 受理されました** 」を返します。 評価スキャンが完了すると、「 **200 OK** 」の状態を返します。 完了済みスキャンの本文は、状態を含む JSON 応答です。
 
 ```json
 {
@@ -157,9 +157,14 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
+#### <a name="on-demand-evaluation-scan---visual-studio-code"></a>オンデマンドの評価スキャン - Visual Studio Code
+
+Visual Studio Code 用の Azure Policy 拡張機能では、特定のリソースに対して評価スキャンを実行できます。 このスキャンは、Azure PowerShell と REST メソッドとは異なり、同期プロセスです。
+詳細と手順については、[VS Code 拡張機能を使用したオンデマンド評価](./extension-for-vscode.md#on-demand-evaluation-scan)に関する記事を参照してください。
+
 ## <a name="how-compliance-works"></a>コンプライアンスのしくみ
 
-割り当てで、リソースがポリシーまたはイニシアティブ ルールに従っておらず、"_適用除外_" でない場合、リソースは**非準拠**になります。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
+割り当てで、リソースがポリシーまたはイニシアティブ ルールに従っておらず、" _適用除外_ " でない場合、リソースは **非準拠** になります。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
 
 | リソースの状態 | 結果 | ポリシーの評価 | コンプライアンスの状態 |
 | --- | --- | --- | --- |
@@ -177,22 +182,22 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
    Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。  ストレージ アカウント 1 と 3 は青ですが、ストレージ アカウント 2、4、および 5 は赤です。
 :::image-end:::
 
-この例では、セキュリティ リスクに注意する必要があります。 これで、作成したポリシー割り当てが、ContosoRG リソース グループ内のすべての包含されて適用除外でないストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を**非準拠**に変更します。
+この例では、セキュリティ リスクに注意する必要があります。 これで、作成したポリシー割り当てが、ContosoRG リソース グループ内のすべての包含されて適用除外でないストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を **非準拠** に変更します。
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
    Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。 ストレージ アカウント 1 と 3 は、それらの下に緑色のチェックマークが表示されるようになりましたが、ストレージ アカウント 2、4、および 5 は、それらの下に赤い警告記号が表示されるようになりました。
 :::image-end:::
 
-**準拠**と**非準拠**の他に、ポリシーとリソースには次の 4 つの状態があります。
+**準拠** と **非準拠** の他に、ポリシーとリソースには次の 4 つの状態があります。
 
-- **適用除外**: リソースは割り当てのスコープ内にありますが、[定義された適用除外](../concepts/exemption-structure.md)があります。
-- **競合**:2 つ以上のポリシー定義で、ルールが競合しています。 たとえば、2 つの定義が、異なる値の同じタグを追加します。
-- **未開始**:ポリシーまたはリソースの評価サイクルが開始されていません。
-- **未登録**:Azure Policy リソース プロバイダーが登録されていないか、ログインしたアカウントにコンプライアンス データを読み取るアクセス許可がありません。
+- **適用除外** : リソースは割り当てのスコープ内にありますが、 [定義された適用除外](../concepts/exemption-structure.md)があります。
+- **競合** :2 つ以上のポリシー定義で、ルールが競合しています。 たとえば、2 つの定義が、異なる値の同じタグを追加します。
+- **未開始** :ポリシーまたはリソースの評価サイクルが開始されていません。
+- **未登録** :Azure Policy リソース プロバイダーが登録されていないか、ログインしたアカウントにコンプライアンス データを読み取るアクセス許可がありません。
 
-Azure Policy では、定義内の **type**、**name**、または **kind** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**、**非準拠**、**適用除外**のいずれかの状態になります。 **type**、**name**、または **kind** のいずれかが定義の唯一のプロパティである場合は、すべての包含されて適用除外でないリソースが適用可能と見なされ、評価されます。
+Azure Policy では、定義内の **type** 、 **name** 、または **kind** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、 **準拠** 、 **非準拠** 、 **適用除外** のいずれかの状態になります。 **type** 、 **name** 、または **kind** のいずれかが定義の唯一のプロパティである場合は、すべての包含されて適用除外でないリソースが適用可能と見なされ、評価されます。
 
-コンプライアンス対応率は、**準拠**および**適用除外**のリソースを "_総リソース数_" で割って算出されます。 "_総リソース数_" は、**準拠**、**非準拠**、**適用除外**、および**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**または**適用除外**の個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。
+コンプライアンス対応率は、 **準拠** および **適用除外** のリソースを " _総リソース数_ " で割って算出されます。 " _総リソース数_ " は、 **準拠** 、 **非準拠** 、 **適用除外** 、および **競合** の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、 **準拠** または **適用除外** の個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが **非準拠** です。
 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
@@ -228,7 +233,7 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 
 ### <a name="understand-non-compliance"></a>コンプライアンス違反の把握
 
-リソースが**コンプライアンスに違反している**と判断される場合、多くの理由が考えられます。 リソースの**コンプライアンス違反**の理由や、原因となった変更を特定する方法については、「[コンプライアンス違反の原因の特定](./determine-non-compliance.md)」をご覧ください。
+リソースが **コンプライアンスに違反している** と判断される場合、多くの理由が考えられます。 リソースの **コンプライアンス違反** の理由や、原因となった変更を特定する方法については、「 [コンプライアンス違反の原因の特定](./determine-non-compliance.md)」をご覧ください。
 
 ## <a name="command-line"></a>コマンド ライン
 
@@ -282,7 +287,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ### <a name="query-for-resources"></a>リソースのクエリ
 
-上の例では、**value.policyAssignments.policyDefinitions.results.queryResultsUri** によって、特定のポリシー定義に準拠していないすべてのリソースのためのサンプル URI が提供されています。 **$filter** の値を見ると、ComplianceState は 'NonCompliant' に等しく (eq)、PolicyAssignmentId がポリシー定義に対して指定され、その後 PolicyDefinitionId 自体が指定されています。 フィルターに PolicyAssignmentId を含める理由は、PolicyDefinitionId がさまざまなスコープの複数のポリシーまたはイニシアティブ割り当てに存在する可能性があるためです。 PolicyAssignmentId と PolicyDefinitionId の両方を指定することにより、必要とする結果を明示することができます。 以前は、PolicyStates に **latest** を使用しました。この場合、直前の 24 時間の **from** および **to** 時間枠が自動的に設定されます。
+上の例では、 **value.policyAssignments.policyDefinitions.results.queryResultsUri** によって、特定のポリシー定義に準拠していないすべてのリソースのためのサンプル URI が提供されています。 **$filter** の値を見ると、ComplianceState は 'NonCompliant' に等しく (eq)、PolicyAssignmentId がポリシー定義に対して指定され、その後 PolicyDefinitionId 自体が指定されています。 フィルターに PolicyAssignmentId を含める理由は、PolicyDefinitionId がさまざまなスコープの複数のポリシーまたはイニシアティブ割り当てに存在する可能性があるためです。 PolicyAssignmentId と PolicyDefinitionId の両方を指定することにより、必要とする結果を明示することができます。 以前は、PolicyStates に **latest** を使用しました。この場合、直前の 24 時間の **from** および **to** 時間枠が自動的に設定されます。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
@@ -328,7 +333,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ### <a name="view-events"></a>イベントの表示
 
-リソースを作成または更新すると、ポリシーの評価結果が生成されます。 これらの結果は "_ポリシー イベント_" と呼ばれます。 サブスクリプションに関連する最近のポリシー イベントを表示するには、次の URI を使用します。
+リソースを作成または更新すると、ポリシーの評価結果が生成されます。 これらの結果は " _ポリシー イベント_ " と呼ばれます。 サブスクリプションに関連する最近のポリシー イベントを表示するには、次の URI を使用します。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2019-10-01

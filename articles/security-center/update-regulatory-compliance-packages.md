@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center の規制コンプライアンス ダッシュボードで規制コンプライアンスの動的監視に更新する方法 | Microsoft Docs
-description: 規制コンプライアンス パッケージの更新
+title: Azure Security Center の規制コンプライアンス ダッシュボードの使用
+description: Security Center の規制コンプライアンス ダッシュボードで規制基準を追加および削除する方法について説明します
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,37 +11,37 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078104"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342197"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ
 
-Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 **規制コンプライアンス ダッシュボード**では、特定のコンプライアンスのコントロールと要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
+Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 **規制コンプライアンス ダッシュボード** では、特定のコンプライアンスのコントロールと要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
 
 
 ## <a name="overview-of-compliance-packages"></a>コンプライアンス パッケージの概要
 
-業界標準、規制基準、およびベンチマークは、Security Center で "*コンプライアンス パッケージ*" として表されます。  各パッケージは、Azure Policy で定義されたイニシアチブです。 評価としてマップされたコンプライアンス データをダッシュボードに表示するには、**Security Policy** ページ内から管理グループまたはサブスクリプションにコンプライアンス パッケージを追加します。 (Azure Policy とイニシアチブの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」をご覧ください)。
+業界標準、規制基準、およびベンチマークは、Security Center で " *コンプライアンス パッケージ* " として表されます。  各パッケージは、Azure Policy で定義されたイニシアチブです。 評価としてマップされたコンプライアンス データをダッシュボードに表示するには、 **Security Policy** ページ内から管理グループまたはサブスクリプションにコンプライアンス パッケージを追加します。 (Azure Policy とイニシアチブの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」をご覧ください)。
 
 選択したスコープに標準またはベンチマークをオンボードすると、イニシアチブがそのスコープに割り当てられ、評価としてマップされた、関連するすべてのコンプライアンス データと共に、標準が規制コンプライアンス ダッシュボードに表示されます。 オンボードされている標準の概要レポートをダウンロードすることもできます。
 
 また、Microsoft では規制基準自体を追跡し、一部のパッケージの適用範囲を経時的かつ自動的に改善しています。 Microsoft がイニシアティブの新しいコンテンツ (標準のより多くのコントロールにマップされる新しいポリシー) をリリースすると、その追加のコンテンツがダッシュボードに自動的に表示されます。
 
 > [!TIP]
-> Microsoft が新しいコンテンツをリリースしたときに経時的に改善される標準の 1 つが、**Azure CIS 1.1.0 (new)** (正式名称は、[CIS Microsoft Azure Foundations Benchmark version 1.1.0](https://www.cisecurity.org/benchmark/azure/)) です。 これを Azure CIS 1.1.0 (すべての Security Center 環境で既定で構成されている Azure CIS の表現) と共にダッシュボードに追加する必要があります。 そのパッケージでは静的なルール セットが利用されます。 新しいパッケージには、より多くのポリシーが含まれており、経時的かつ自動的に更新されます。 以下の説明に従って、新しい動的パッケージに更新します。
+> Microsoft が新しいコンテンツをリリースしたときに経時的に改善される標準の 1 つが、 **Azure CIS 1.1.0 (new)** (正式名称は、 [CIS Microsoft Azure Foundations Benchmark version 1.1.0](https://www.cisecurity.org/benchmark/azure/)) です。 これを Azure CIS 1.1.0 (すべての Security Center 環境で既定で構成されている Azure CIS の表現) と共にダッシュボードに追加する必要があります。 そのパッケージでは静的なルール セットが利用されます。 新しいパッケージには、より多くのポリシーが含まれており、経時的かつ自動的に更新されます。 以下の説明に従って、新しい動的パッケージに更新します。
 
 
 ## <a name="available-packages"></a>使用可能なパッケージ
 
 NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official および UK NHS、Canada Federal PBMM、Azure CIS 1.1.0 (new) (Azure CIS 1.1.0 のより完全な表現) などの標準を追加できます。 
 
-さらに、**Azure セキュリティ ベンチマーク**を追加することもできます。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 (Azure セキュリティ ベンチマークの詳細については、[こちら](https://docs.microsoft.com/azure/security/benchmarks/introduction)をご覧ください)。
+さらに、 **Azure セキュリティ ベンチマーク** を追加することもできます。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 (Azure セキュリティ ベンチマークの詳細については、[こちら](../security/benchmarks/introduction.md)をご覧ください)。
 
 追加の標準が使用可能になると、ダッシュボードでサポートされます。 
 
@@ -78,7 +78,7 @@ NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official および UK NHS、Canada
 
 1. Security Center のサイドバーで、再度 **[規制コンプライアンス]** を選択して、規制コンプライアンス ダッシュボードに戻ります。
     * 業界標準および規制基準の一覧に新しい標準が表示されます。 
-    * **Azure CIS 1.1.0 (New)** を追加した場合、Azure CIS 1.1.0 コンプライアンスの元の "*静的*" ビューもそのまま残されます。 これは、今後自動的に削除される可能性があります。
+    * **Azure CIS 1.1.0 (New)** を追加した場合、Azure CIS 1.1.0 コンプライアンスの元の " *静的* " ビューもそのまま残されます。 これは、今後自動的に削除される可能性があります。
 
     > [!NOTE]
     > 新しく追加された標準がコンプライアンス ダッシュボードに表示されるまでに数時間かかることがあります。
@@ -112,10 +112,10 @@ NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official および UK NHS、Canada
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、追加の標準への準拠を監視するための**コンプライアンス パッケージを追加**する方法について説明しました。 
+この記事では、追加の標準への準拠を監視するための **コンプライアンス パッケージを追加** する方法について説明しました。 
 
 その他の関連資料については、次の記事を参照してください。 
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)
 - [Security Center の規制コンプライアンス ダッシュ ボード](security-center-compliance-dashboard.md)
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)

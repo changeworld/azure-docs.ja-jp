@@ -1,16 +1,16 @@
 ---
 author: baanders
-description: 基本的な Azure Digital Twins インスタンスとアプリの登録をクリーンアップするためのインクルード ファイル
+description: 基本的な Azure Digital Twins インスタンスをクリーンアップするためのインクルード ファイル
 ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: e8f167555434338416381aaf8978a3d551686fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e095a7b286a8860535d6b58fa93098735b30c87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606627"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372321"
 ---
 このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。
 
@@ -23,10 +23,4 @@ Azure Cloud Shell を開き、次のコマンドを実行すると、リソー�
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-次に、クライアント アプリ用に作成した Azure Active Directory アプリの登録を次のコマンドで削除します。
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```

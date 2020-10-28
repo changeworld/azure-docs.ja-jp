@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653640"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330038"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスへの高速なプライベート通信リンクです。 
@@ -21,17 +21,17 @@ Microsoft では、新たな開発投資を行わずに顧客向けの新しい�
 ExpressRoute は高可用性を実現するための一対の回線で構成されています。これらの回線は単一の顧客のサブスクリプションに関連付けられており、複数の顧客によって共有されることはありません。 高可用性を維持するため、回線はそれぞれ別のルーターに接続する必要があります。
 
 > [!NOTE]
-> ExpressRoute には帯域幅と接続数に制限があり、実装が大規模または複雑になると、単一の顧客に対して複数の ExpressRoute 回線が必要になります。
+> 各 ExpressRoute 回線で使用できる接続の帯域幅と数には制限があります。 単一の顧客のニーズがこれらの制限を超える場合は、ハイブリッド ネットワークの実装のために、複数の ExpressRoute 回線が必要になります。
 > 
 > 
 
 Microsoft Azure には顧客向けに提供できるさまざまなサービスがあり、その数はますます増加しています。 ExpressRoute を利用すれば、Microsoft Azure 環境に高速かつ短い待ち時間でアクセスできるため、そうしたサービスを企業やその顧客が最大限に活用することができます。
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure の管理
-Microsoft では、プログラムによって独自のサービス管理システムに統合することで Azure 顧客サブスクリプションを管理できる API を、CSP 向けに提供しています。 サポートされている管理機能は [こちら](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)から確認できます。
+Microsoft では、プログラムによって独自のサービス管理システムに統合することで Azure 顧客サブスクリプションを管理できる API を、CSP 向けに提供しています。 サポートされている管理機能は [こちら](/previous-versions/windows/mt844538(v=win.10))から確認できます。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure リソースの管理
-サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"*Connect-Through*" モデルと "*Direct-To*" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
+サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、" *Connect-Through* " モデルと " *Direct-To* " モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
 !["Connect-through" モデルを示す図。](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -40,7 +40,7 @@ Connect-Through モデルでは、CSP がデータセンターと顧客の Azure
 
 貴社が管理していない他の Azure サブスクリプションを顧客が保有している場合、その顧客はパブリック インターネットまたは顧客独自のプライベート接続を利用して、このような CSP の管理外のサブスクリプションにプロビジョニングされたサービスに対して接続します。 
 
-CSP が管理する Azure サービスでは、前提条件として CSP が事前に顧客 ID ストアを構築している必要があります。この ID ストアは、代理での管理 (AOBO) による CSP サブスクリプションの管理を行うために、Azure Active Directory にレプリケートされます。 このシナリオの主な推進要因としては、特定のパートナーまたはサービス プロバイダーと顧客との間に関係が確立されている場合、顧客が現在プロバイダーのサービスを利用している場合、CSP 単独では不可能な、柔軟性の提供と顧客の課題への対処を実現するため、プロバイダーがホストするソリューションと Azure がホストするソリューションを組み合わせて提供することをパートナーが望んでいる場合などが挙げられます。 このモデルを表した**図**を以下に示します。
+CSP が管理する Azure サービスでは、前提条件として CSP が事前に顧客 ID ストアを構築している必要があります。この ID ストアは、代理での管理 (AOBO) による CSP サブスクリプションの管理を行うために、Azure Active Directory にレプリケートされます。 このシナリオの主な推進要因としては、特定のパートナーまたはサービス プロバイダーと顧客との間に関係が確立されている場合、顧客が現在プロバイダーのサービスを利用している場合、CSP 単独では不可能な、柔軟性の提供と顧客の課題への対処を実現するため、プロバイダーがホストするソリューションと Azure がホストするソリューションを組み合わせて提供することをパートナーが望んでいる場合などが挙げられます。 このモデルを表した **図** を以下に示します。
 
 !["Connect-through" モデルの詳細なシナリオを示す図。](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
@@ -60,7 +60,7 @@ Connect-To モデルでは、サービス プロバイダーが顧客のネッ�
 
 これら 2 つのモデルのどちらを選択するかは、顧客のニーズと、Azure サービスの提供に対する貴社の現在のニーズによって決まります。 各モデルの詳細と、関連するロールベースのアクセス制御、ネットワーク、ID 設計パターンなどの詳細については、以下のリンクを参照してください。
 
-* **Azure ロールベースのアクセス制御 (Azure RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、[こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
+* **Azure ロールベースのアクセス制御 (Azure RBAC)** - Azure RBAC は Azure Active Directory を基盤としています。  Azure RBAC の詳細については、[こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
 * **ネットワーク** - Microsoft Azure でのネットワークに関するさまざまなトピックを紹介します。
 * **Azure Active Directory (Azure AD)** - Azure AD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、[こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
 
@@ -75,30 +75,30 @@ ExpressRoute では、50 Mb/秒～ 10 Gb/秒のネットワーク速度をサポ
 ExpressRoute では、より高速での接続の利用効率を上げるために、複数の VNet から単一の ExpressRoute 回線への接続をサポートしています。 単一の ExpressRoute 回線は、同じ顧客が所有する複数の Azure サブスクリプション間で共有できます。
 
 ## <a name="configuring-expressroute"></a>ExpressRoute の構成
-ExpressRoute は、1 本の ExpressRoute 回線で 3 種類のトラフィック ([ルーティング ドメイン](#expressroute-routing-domains)) をサポートするように構成できます。 このトラフィックは、Microsoft ピアリング、Azure パブリック ピアリング、プライベート ピアリングに分離されます。 1 種類または全種類のトラフィックを選択して 1 本の ExpressRoute 回線で送信することも、顧客が求める ExpressRoute 回線のサイズや分離性に応じて複数の ExpressRoute 回線を使用することもできます。 顧客のセキュリティ体制によっては、パブリック トラフィックとプライベート トラフィックを同じ回線で送受信できない場合があります。
+ExpressRoute は、1 本の ExpressRoute 回線で 3 種類のトラフィック ([ルーティング ドメイン](#expressroute-routing-domains)) をサポートするように構成できます。 このトラフィックは、プライベート ピアリング、Microsoft ピアリング、パブリック ピアリング (非推奨) に分離されます。 1 種類または全種類のトラフィックを選択して 1 本の ExpressRoute 回線で送信することも、顧客が求める ExpressRoute 回線のサイズや分離性に応じて複数の ExpressRoute 回線を使用することもできます。 顧客のセキュリティ体制によっては、パブリック トラフィックとプライベート トラフィックを同じ回線で送受信できない場合があります。
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
-Connect-Through の構成では、顧客データセンターのリソースを Azure でホストされるサブスクリプションに接続するためのすべてのネットワーク基盤に対して、貴社が責任を負います。 Azure の機能を利用するそれぞれの顧客には独自の ExpressRoute 接続が必要であり、それを貴社が管理します。 ExpressRoute 回線の調達は、顧客が調達する場合と同じ方法で行います。 回線のプロビジョニングと回線の状態に関しては、 [ExpressRoute ワークフロー](expressroute-workflows.md) に関する記事で概説されているものと同じ手順に従います。 その後、ボーダー ゲートウェイ プロトコル (BGP) のルートを構成して、オンプレミス ネットワークと Azure VNet の間のトラフィックを制御します。
+Connect-Through の構成では、顧客データセンターのリソースを、Azure でホストされるサブスクリプションに接続するためのすべてのネットワーク基盤に対して、貴社が責任を負います。 Azure の機能を利用する顧客それぞれに、独自の ExpressRoute 接続が必要となるため、それらを貴社が管理します。 ExpressRoute 回線の調達は、顧客が調達する場合と同じ方法で行います。 回線のプロビジョニングと回線の状態については、[ExpressRoute ワークフロー](expressroute-workflows.md)に関する記事で概説されているのと同じ手順に従います。 その後、Border Gateway Protocol (BGP) のルートを構成して、オンプレミス ネットワークと Azure VNet の間のトラフィックを制御します。
 
 ### <a name="connect-to-model"></a>Connect-To モデル
-Connect-To の構成では、顧客は Azure への接続を既に確保しているか、貴社のデータセンターではなく、顧客独自のデータセンターから直接 Azure に ExpressRoute をリンクするインターネット サービス プロバイダーへの接続を予定していることになります。 プロビジョニング プロセスを開始するには、前述の「Connect-Through モデル」で説明した手順を顧客が実行します。 回線が確立されると、顧客は貴社のネットワークと Azure VNet の両方にアクセスできるように、オンプレミスのルーターを構成する必要があります。
+Connect-To の構成では、顧客は、Azure への接続を既に用意しているか、貴社のデータセンターではなく、独自のデータセンターから Azure に直接 ExpressRoute をリンクするインターネット サービス プロバイダーに対して接続を開始することになります。 プロビジョニング プロセスを開始するには、前述の「Connect-Through モデル」で説明した手順を顧客が実行します。 回線が確立されたら、顧客は貴社のネットワークと Azure VNet の両方にアクセスできるように、オンプレミスのルーターを構成する必要があります。
 
 貴社が接続のセットアップやルートの構成を支援することで、貴社のデータセンターのリソースと、同じデータセンターのクライアント リソース、または Azure でホストされているリソースの間での通信が可能になります。
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute のルーティング ドメイン
-ExpressRoute では、パブリック ピアリング、プライベート ピアリング、Microsoft ピアリングという 3 つのルーティング ドメインを提供します。 各ルーティング ドメインは、高可用性を実現するため、同一のルーターを使用してアクティブ/アクティブ構成で構成されます。 ExpressRoute ルーティング ドメインの詳細については、 [こちら](expressroute-circuit-peerings.md)を参照してください。
+ExpressRoute には、プライベート ピアリングと Microsoft ピアリングという 2 つの新しい回線用のルーティング ドメインが用意されています。 各ルーティング ドメインは、高可用性を実現するため、同一のルーターを使用してアクティブ/アクティブ構成で構成されます。 ExpressRoute ルーティング ドメインの詳細については、 [こちら](expressroute-circuit-peerings.md)を参照してください。
 
 必要なルートのみを許可するようにカスタム ルート フィルターを定義することができます。 これらの変更を行う方法や詳細については、[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-classic.md)に関する記事でルーティング フィルターの詳細を参照してください。
 
 > [!NOTE]
-> Microsoft ピアリングとパブリック ピアリングの接続は、顧客または CSP が所有するパブリック IP アドレスを介したものであることが必要で、また定義されているすべてのルールに従う必要があります。 詳細については、「 [ExpressRoute の前提条件](expressroute-prerequisites.md) 」を参照してください。  
+> Microsoft ピアリングの場合、接続は、顧客または CSP が所有するパブリック IP アドレスを経由する必要があり、定義されているすべてのルールに従う必要があります。 詳細については、「 [ExpressRoute の前提条件](expressroute-prerequisites.md) 」を参照してください。  
 > 
 > 
 
 ## <a name="routing"></a>ルーティング
 ExpressRoute は、Azure 仮想ネットワーク ゲートウェイを介して Azure ネットワークに接続します。 ネットワーク ゲートウェイは、Azure 仮想ネットワーク向けにルーティングを提供します。
 
-Azure 仮想ネットワークを作成すると、VNet がそのサブネットとの間でトラフィックを送受信するための、既定のルーティング テーブルも作成されます。 既定のルーティング テーブルではソリューション用として不十分な場合、カスタム ルートを作成して送信トラフィックをカスタム アプライアンスにルーティングするか、特定のサブネットまたは外部ネットワークへのルーティングをブロックすることができます。
+Azure 仮想ネットワークを作成すると、VNet がそのサブネットとの間でトラフィックを送受信するための、既定のルーティング テーブルも作成されます。 既定のルーティング テーブルでは実際のソリューション用に不十分な場合、カスタム ルートを作成して、送信トラフィックをカスタム アプライアンスにルーティングするか、特定のサブネットまたは外部ネットワークへのルーティングをブロックすることができます。
 
 ### <a name="default-routing"></a>既定のルーティング
 既定のルーティング テーブルには、以下のようなルートが含まれています。
@@ -129,6 +129,6 @@ Connect-To モデルと Connect-Through モデルのどちらが使用されて�
 
 詳細については、以下のリンクを参照してください。
 
-[クラウド ソリューション プロバイダー プログラムにおける Azure](https://docs.microsoft.com/azure/cloud-solution-provider)。  
+[クラウド ソリューション プロバイダー プログラムにおける Azure](/azure/cloud-solution-provider)。  
 [クラウド ソリューション プロバイダーとしての取引の準備](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch)。  
 [マイクロソフト クラウド ソリューション プロバイダー リソース](https://partner.microsoft.com/solutions/cloud-reseller-resources)。

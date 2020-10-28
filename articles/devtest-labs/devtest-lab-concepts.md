@@ -3,12 +3,12 @@ title: DevTest Labs のコンセプト | Microsoft Docs
 description: DevTest Labs の基本概念と、DevTest Labs を Azure Virtual Machines を簡単に作成、管理、監視するために使用する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283845"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327860"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
 ## <a name="overview"></a>概要
@@ -56,7 +56,7 @@ DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレ�
 キャップは、ラボにおける無駄を最小限に抑えるメカニズムです。 たとえば、ユーザーごと、またはラボで作成できるVM の数を制限するためのキャップを設定できます。
 
 ## <a name="security-levels"></a>セキュリティ レベル
-セキュリティ アクセスは、Azure のロールベースのアクセス制御 (Azure RBAC) によって決定されます。 アクセスのしくみを理解するには、RBAC によって定義されているアクセス許可、ロール、およびスコープの違いを理解することが有用です。
+セキュリティ アクセスは、Azure のロールベースのアクセス制御 (Azure RBAC) によって決定されます。 アクセスのしくみを理解するには、Azure RBAC によって定義されているアクセス許可、ロール、およびスコープの違いを理解することが有用です。
 
 * アクセス許可 - アクセス許可とは、特定のアクションへのアクセスを定義したもの (たとえば、すべての仮想マシンへの読み取りアクセス) です。
 * ロール - ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、" *サブスクリプション所有者* " ロールは、サブスクリプション内のすべてのリソースにアクセスできます。

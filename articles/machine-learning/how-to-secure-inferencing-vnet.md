@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972511"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341313"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -119,11 +119,11 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 AKS クラスターと仮想ネットワークの間のトラフィックを分離するには、次の 2 つの方法があります。
 
-* __プライベート AKS クラスター__: この方法では、Azure Private Link を使用して、VNet 内に AKS クラスターのプライベート エンドポイントを作成します。
-* __内部 AKS ロード バランサー__: この方法では、VNet の内部 IP アドレスを使用するようにクラスターのロード バランサーを構成します。
+* __プライベート AKS クラスター__ : この方法では、Azure Private Link を使用して、デプロイまたは管理操作用のクラスターとの通信をセキュリティで保護します。
+* __内部 AKS ロード バランサー__ : この方法では、AKS へのデプロイのエンドポイントが、仮想ネットワーク内でプライベート IP を使用するように構成します。
 
 > [!WARNING]
-> どちらの構成も、方法は違いますが、達成する目標 (VNet 内の AKS クラスターへのトラフィックをセキュリティで保護すること) は同じです。 **どちらか一方を使用し、両方は使用しないでください**。
+> **プライベート AKS または内部ロード バランサーのどちらかを使用しますが、両方を使用することはできません** 。
 
 ### <a name="private-aks-cluster"></a>プライベート AKS クラスター
 
@@ -138,16 +138,16 @@ AKS クラスターと仮想ネットワークの間のトラフィックを分�
 
 既定では、AKS のデプロイでは[パブリック ロード バランサー](../aks/load-balancer-standard.md)が使用されます。 このセクションでは、内部ロード バランサーを使用するように AKS を構成する方法について説明します。 内部 (プライベート) ロード バランサーは、プライベート IP のみがフロントエンドとして許可される場合に使用されます。 内部ロード バランサーは、仮想ネットワーク内でトラフィックを負荷分散させるために使用されます
 
-プライベート ロード バランサーを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
+プライベート ロード バランサーを有効にするには、" _内部ロード バランサー_ " を使用するように AKS を構成します。 
 
 #### <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
 
 > [!IMPORTANT]
-> 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する_ネットワーク共同作成者_ロールを付与する必要があります。 これは、内部ロード バランサーをプライベート IP に変更する前に行う必要があります。
+> 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する _ネットワーク共同作成者_ ロールを付与する必要があります。 これは、内部ロード バランサーをプライベート IP に変更する前に行う必要があります。
 >
 > ネットワーク共同作成者として ID を追加するには、次の手順に従います。
 
-1. AKS のサービス プリンシパルまたはマネージド ID を検索するには、次の Azure CLI コマンドを使用します。 `<aks-cluster-name>` をクラスターの名前に置き換えます。 `<resource-group-name>` を、_AKS クラスターが含まれている_リソース グループの名前に置き換えます。
+1. AKS のサービス プリンシパルまたはマネージド ID を検索するには、次の Azure CLI コマンドを使用します。 `<aks-cluster-name>` をクラスターの名前に置き換えます。 `<resource-group-name>` を、 _AKS クラスターが含まれている_ リソース グループの名前に置き換えます。
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
@@ -159,7 +159,7 @@ AKS クラスターと仮想ネットワークの間のトラフィックを分�
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. 仮想ネットワークが含まれているリソース グループの ID を検索するには、次のコマンドを使用します。 `<resource-group-name>` を、_仮想ネットワークが含まれている_リソース グループの名前に置き換えます。
+1. 仮想ネットワークが含まれているリソース グループの ID を検索するには、次のコマンドを使用します。 `<resource-group-name>` を、 _仮想ネットワークが含まれている_ リソース グループの名前に置き換えます。
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id
@@ -177,7 +177,7 @@ AKS での内部ロードバランサーの使用の詳細については、「[
 > [!IMPORTANT]
 > Azure Machine Learning スタジオで Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 Python SDK を使用する場合、または機械学習用の Azure CLI 拡張機能を使用する場合は、内部ロード バランサーを使用して作成できます。
 
-次の例では、SDK と CLI を使用して、__プライベート IP または内部ロード バランサーで新しい AKS クラスターを作成する__方法を示します。
+次の例では、SDK と CLI を使用して、 __プライベート IP または内部ロード バランサーで新しい AKS クラスターを作成する__ 方法を示します。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -221,7 +221,7 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 
 ---
 
-ワークスペースに__既存のクラスターを接続する__場合は、アタッチ操作が完了するまで待ってから、ロード バランサーを構成する必要があります。 クラスターのアタッチの詳細については、「[既存の AKS クラスターをアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
+ワークスペースに __既存のクラスターを接続する__ 場合は、アタッチ操作が完了するまで待ってから、ロード バランサーを構成する必要があります。 クラスターのアタッチの詳細については、「[既存の AKS クラスターをアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
 
 既存のクラスターをアタッチした後、内部ロード バランサーまたはプライベート IP を使用するようにクラスターを更新できます。
 
@@ -244,7 +244,7 @@ aks_target.wait_for_completion(show_output = True)
 
 ## <a name="enable-azure-container-instances-aci"></a>Azure Container Instances (ACI) を有効にする
 
-Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して__サブネットの委任__を有効にする必要があります。
+Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して __サブネットの委任__ を有効にする必要があります。
 
 > [!WARNING]
 > 仮想ネットワークで Azure Container Instances を使用する場合、仮想ネットワークは、Azure Machine Learning ワークスペースと同じリソース グループに含まれている必要があります。

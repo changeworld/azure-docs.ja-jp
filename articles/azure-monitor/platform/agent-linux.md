@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013748"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332503"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -43,9 +43,11 @@ Log Analytics エージェントでサポートされている Linux ディス�
 >[!NOTE]
 >現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
 
-### <a name="python-2-requirement"></a>Python 2 要件
+### <a name="python-requirement"></a>Python の要件
 
- Log Analytics エージェントには Python 2 が必須です。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
+エージェント バージョン 1.13.27 以降では、Linux エージェントで Python 2 と 3 の両方がサポートされます。 常に最新のエージェントを使用することをお勧めします。 
+
+以前のバージョンのエージェントを使用している場合、既定では仮想マシンで python 2 が使用されている必要があります。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
 
  - Red Hat、CentOS、Oracle: `yum install -y python2`
  - Ubuntu、Debian: `apt-get install -y python2`
@@ -71,7 +73,7 @@ OMS エージェントでは、Linux のカスタマイズが制限されてい�
 現在、以下がサポートされています。 
 - FIPS
 
-以下は計画されていますが、まだサポートされていません。
+以下は考慮されていますが、まだサポートされていません。
 - CIS
 - SELINUX
 
@@ -124,7 +126,7 @@ Linux 用 Log Analytics エージェントのパッケージをインストー�
 
 次の手順では、直接またはプロキシサーバー経由で通信して、GitHub でホストされているエージェントをダウンロードしてインストールする Linux コンピューター用のラッパー スクリプトを使用して、Azure と Azure Government クラウドで Log Analytics 用エージェントのセットアップを構成します。  
 
-Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでこの構成を指定できます。 *protocol* プロパティは `http` または `https` を受け取り、*proxyhost* プロパティはプロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
+Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでこの構成を指定できます。 *protocol* プロパティは `http` または `https` を受け取り、 *proxyhost* プロパティはプロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
 
 例: `https://proxy01.contoso.com:30443`
 
@@ -213,7 +215,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 バージョン 1.0.0-47 以降の以前のバージョンからのアップグレードは、各リリースでサポートされています。 `--upgrade` パラメーターを使用してインストールを実行すると、エージェントのすべてのコンポーネントを最新バージョンにアップグレードできます。
 
 ## <a name="cache-information"></a>キャッシュ情報
-Linux 用 Log Analytics エージェントからのデータは、ローカル マシン上の *%STATE_DIR_WS%/out_oms_common*.buffer* にキャッシュされてから Azure Monitor に送信されます。 カスタム ログ データは *%STATE_DIR_WS%/out_oms_blob*.buffer* にバッファリングされます。 このパスは、一部の[ソリューションとデータ型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)では異なる場合があります。
+Linux 用 Log Analytics エージェントからのデータは、ローカル マシン上の *%STATE_DIR_WS%/out_oms_common* .buffer* にキャッシュされてから Azure Monitor に送信されます。 カスタム ログ データは *%STATE_DIR_WS%/out_oms_blob* .buffer* にバッファリングされます。 このパスは、一部の[ソリューションとデータ型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)では異なる場合があります。
 
 エージェントによって 20 秒ごとにアップロードが試行されます。 失敗した場合は、成功するまで、待機する時間が指数関数的に増加します。2 回目の試行の前に 30 秒前、3 回目の前に 60 秒前、さらにその次の前に 120 秒間といった具合に、再接続が成功するまで最大 16 分間待機します。 エージェントでは、特定のデータ チャンクに対して最大 6 回再試行されてから破棄され、次に進みます。 これは、エージェントが再度正常にアップロードできるようになるまで継続されます。 これは、データが破棄されるまでに最大約 30 分間バッファーされる可能性があることを意味します。
 

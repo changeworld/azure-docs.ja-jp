@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4c1d4d83ad3c39bab8058ad29662891fe3678a1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311531"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320312"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する
 
@@ -49,7 +49,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - [接続] タブで、左上にある 3 つのドットをクリックし、[新しい展開] を選択します
 - デプロイ オプションで、 **[Azure SQL managed instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc\)** を選択します 
   > [!NOTE]
-  > azdata CLI が現在インストールされていない場合は、ここでインストールするように求められることがあります。
+  > [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] が現在インストールされていない場合は、ここでインストールするように求められることがあります。
 - プライバシーとライセンス条項に同意し、下部にある **[選択]** をクリックします
 
 
@@ -91,7 +91,7 @@ sqlinstance1  1/1         25.51.65.109:1433  Ready
 - Azure Data Studio の **[接続]** タブで、 **[サーバー]** ビューの **[新しい接続]** をクリックします
 - **[接続]** ブレードで、ServerEndpoint を [サーバー] テキストボックスに貼り付けます
 - 認証の種類として **[SQL ログイン]** を選択します
-- ユーザー名として「*sa*」と入力します
+- ユーザー名として「 *sa* 」と入力します
 - `sa` のアカウントのパスワードを入力します
 - 必要に応じて、接続先の特定のデータベース名を入力します
 - 必要に応じて、[Add New Server Group]\(新しいサーバー グループの追加\) を選択します

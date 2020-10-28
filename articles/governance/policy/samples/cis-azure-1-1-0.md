@@ -1,35 +1,35 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark の規制コンプライアンスの詳細
 description: CIS Microsoft Azure Foundations Benchmark 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 5da46631d0b6cfcd142ab32172de306115a080bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 06b74daff584c9df35d4c762c3115b95e4ed3179
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932160"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320589"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure Foundations Benchmark 規制コンプライアンスの組み込みイニシアチブの詳細
 
-次の記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、CIS Microsoft Azure Foundations Benchmark の**コンプライアンス ドメイン**と**コントロール**にどのように対応するのかを、詳しく説明します。
-このコンプライアンス標準の詳細については、[CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) に関するページを参照してください。 "_所有権_" については、[Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
+次の記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、CIS Microsoft Azure Foundations Benchmark の **コンプライアンス ドメイン** と **コントロール** にどのように対応するのかを、詳しく説明します。
+このコンプライアンス標準の詳細については、[CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) に関するページを参照してください。 " _所有権_ " については、 [Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「 [クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
-次のマッピングは、**CIS Microsoft Azure Foundations Benchmark** コントロールへのマッピングです。 右側のナビゲーションを使用すると、特定の**コンプライアンス ドメイン**に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
+次のマッピングは、 **CIS Microsoft Azure Foundations Benchmark** コントロールへのマッピングです。 右側のナビゲーションを使用すると、特定の **コンプライアンス ドメイン** に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
 次に、 **[CIS Microsoft Azure Foundations Benchmark 1.1.0]** 規制コンプライアンスの組み込みイニシアチブ定義を見つけて選択します。
 
 この組み込みイニシアチブは、[CIS Microsoft Azure Foundations Benchmark ブループリント サンプル](../../blueprints/samples/cis-azure-1-1-0.md)の一部としてデプロイされます。
 
 > [!IMPORTANT]
 > 以下の各コントロールは、1 つ以上の [Azure Policy](../overview.md) 定義に関連します。
-> これらのポリシーは、コントロールに対する[コンプライアンスの評価](../how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での**準拠**では、ポリシー定義自体のみが示されています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス標準に対するコンプライアンス ドメイン、コントロール、Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json)に関するページを参照してください。
+> これらのポリシーは、コントロールに対する[コンプライアンスの評価](../how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** では、ポリシー定義自体のみが示されています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス標準に対するコンプライアンス ドメイン、コントロール、Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json)に関するページを参照してください。
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>特権のあるすべてのユーザーに対して多要素認証が有効になっていることを確認する
 
-**[ID]** :CIS Azure 1.1 **所有権**: Customer
+**[ID]** :CIS Azure 1.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>特権のないすべてのユーザーに対して多要素認証が有効になっていることを確認する
 
-**[ID]** :CIS Azure 1.2 **所有権**: Customer
+**[ID]** :CIS Azure 1.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -46,7 +46,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-there-are-no-guest-users"></a>ゲスト ユーザーがいないことを確認する
 
-**[ID]** :CIS Azure 1.3 **所有権**: Customer
+**[ID]** :CIS Azure 1.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -56,7 +56,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-no-custom-subscription-owner-roles-are-created"></a>カスタム サブスクリプションの所有者ロールが作成されていないことを確認する
 
-**[ID]** :CIS Azure 1.23 **所有権**: Customer
+**[ID]** :CIS Azure 1.23 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>[監視エージェントの自動プロビジョニング] が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 2.2 **所有権**: Customer
+**[ID]** :CIS Azure 2.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -74,7 +74,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-system-updates-is-not-disabled"></a>ASC の既定のポリシー設定 [システムの更新プログラムの監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.3 **所有権**: Customer
+**[ID]** :CIS Azure 2.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -82,7 +82,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-os-vulnerabilities-is-not-disabled"></a>ASC の既定のポリシー設定 [OS 脆弱性の監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.4 **所有権**: Customer
+**[ID]** :CIS Azure 2.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -90,7 +90,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-endpoint-protection-is-not-disabled"></a>ASC の既定のポリシー設定 [Endpoint Protection の監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.5 **所有権**: Customer
+**[ID]** :CIS Azure 2.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -98,7 +98,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-disk-encryption-is-not-disabled"></a>ASC の既定のポリシー設定 [ディスク暗号化の監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.6 **所有権**: Customer
+**[ID]** :CIS Azure 2.6 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -106,7 +106,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>ASC の既定のポリシー設定 [ネットワーク セキュリティ グループの監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.7 **所有権**: Customer
+**[ID]** :CIS Azure 2.7 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -114,7 +114,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>ASC の既定のポリシー設定 [次世代のファイアウォール (NGFW) 監視を有効にする] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.9 **所有権**: Customer
+**[ID]** :CIS Azure 2.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -123,7 +123,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>ASC の既定のポリシー設定 [脆弱性評価を監視する] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.10 **所有権**: Customer
+**[ID]** :CIS Azure 2.10 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -131,7 +131,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>ASC の既定のポリシー設定 [JIT ネットワーク アクセスの監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.12 **所有権**: Customer
+**[ID]** :CIS Azure 2.12 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -139,7 +139,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-adaptive-application-whitelisting-is-not-disabled"></a>ASC の既定のポリシー設定 [Monitor Adaptive Application Whitelisting]\(適応型アプリケーションのホワイトリスト登録の監視\) が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.13 **所有権**: Customer
+**[ID]** :CIS Azure 2.13 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -147,7 +147,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-sql-auditing-is-not-disabled"></a>ASC の既定のポリシー設定 [SQL 監査の監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.14 **所有権**: Customer
+**[ID]** :CIS Azure 2.14 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -155,7 +155,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>ASC の既定のポリシー設定 [SQL 暗号化の監視] が [無効] になっていないことを確認する
 
-**[ID]** :CIS Azure 2.15 **所有権**: Customer
+**[ID]** :CIS Azure 2.15 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -163,7 +163,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-security-contact-emails-is-set"></a>[セキュリティ連絡先の電子メール] が設定されていることを確認する
 
-**[ID]** :CIS Azure 2.16 **所有権**: Customer
+**[ID]** :CIS Azure 2.16 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -171,7 +171,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-security-contact-phone-number-is-set"></a>セキュリティ連絡先の [電話番号] が設定されていることを確認する
 
-**[ID]** :CIS Azure 2.17 **所有権**: Customer
+**[ID]** :CIS Azure 2.17 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -179,7 +179,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>[重要度 - 高についてアラートの電子メール通知を送信する] が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 2.18 **所有権**: Customer
+**[ID]** :CIS Azure 2.18 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -187,7 +187,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-send-email-also-to-subscription-owners-is-set-to-on"></a>[サブスクリプションの所有者にもメールを送信する] が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 2.19 **所有権**: Customer
+**[ID]** :CIS Azure 2.19 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -197,7 +197,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-secure-transfer-required-is-set-to-enabled"></a>[安全な転送が必要] が [有効] に設定されていることを確認する
 
-**[ID]** :CIS Azure 3.1 **所有権**: Customer
+**[ID]** :CIS Azure 3.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -205,7 +205,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>ストレージ アカウントの既定のネットワーク アクセス ルールが拒否に設定されていることを確認する
 
-**[ID]** :CIS Azure 3.7 **所有権**: Customer
+**[ID]** :CIS Azure 3.7 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>ストレージ アカウント アクセスに対して [信頼された Microsoft サービス] が有効になっていることを確認する
 
-**[ID]** :CIS Azure 3.8 **所有権**: Customer
+**[ID]** :CIS Azure 3.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-auditing-is-set-to-on"></a>[監査] が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.1 **所有権**: Customer
+**[ID]** :CIS Azure 4.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -231,7 +231,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>SQL Server の "監査" ポリシーの "AuditActionGroups" が適切に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.2 **所有権**: Customer
+**[ID]** :CIS Azure 4.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -239,7 +239,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-auditing-retention-is-greater-than-90-days"></a>"監査" 保持期間が "90 日を超える" ことを確認する
 
-**[ID]** :CIS Azure 4.3 **所有権**: Customer
+**[ID]** :CIS Azure 4.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -247,7 +247,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>SQL Server の "Advanced Data Security" が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.4 **所有権**: Customer
+**[ID]** :CIS Azure 4.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -256,7 +256,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-azure-active-directory-admin-is-configured"></a>Azure Active Directory 管理者が構成されていることを確認する
 
-**[ID]** :CIS Azure 4.8 **所有権**: Customer
+**[ID]** :CIS Azure 4.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -264,7 +264,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-data-encryption-is-set-to-on-on-a-sql-database"></a>SQL Database の [データ暗号化] が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.9 **所有権**: Customer
+**[ID]** :CIS Azure 4.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -272,7 +272,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>SQL Server の TDE 保護機能が BYOK (自分のキーの使用) で暗号化されていることを確認する
 
-**[ID]** :CIS Azure 4.10 **所有権**: Customer
+**[ID]** :CIS Azure 4.10 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -289,7 +289,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>サーバー パラメーターである "log_checkpoints" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.12 **所有権**: Customer
+**[ID]** :CIS Azure 4.12 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -297,7 +297,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>PostgreSQL データベース サーバーで [SSL 接続を強制する] が [有効] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.13 **所有権**: Customer
+**[ID]** :CIS Azure 4.13 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -305,7 +305,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>サーバー パラメーターである "log_connections" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.14 **所有権**: Customer
+**[ID]** :CIS Azure 4.14 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -313,7 +313,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>サーバー パラメーターである "log_disconnections" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.15 **所有権**: Customer
+**[ID]** :CIS Azure 4.15 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -321,7 +321,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>サーバー パラメーターである "connection_throttling" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 4.17 **所有権**: Customer
+**[ID]** :CIS Azure 4.17 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -331,7 +331,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-a-log-profile-exists"></a>ログ プロファイルが存在することを確認する
 
-**[ID]** :CIS Azure 5.1.1 **所有権**: Customer
+**[ID]** :CIS Azure 5.1.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -339,7 +339,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-retention-is-set-365-days-or-greater"></a>アクティビティ ログのリテンション期間が 365 日以上に設定されていることを確認する
 
-**[ID]** :CIS Azure 5.1.2 **所有権**: Customer
+**[ID]** :CIS Azure 5.1.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -347,7 +347,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-audit-profile-captures-all-the-activities"></a>監査プロファイルによってすべてのアクティビティがキャプチャされることを確認する
 
-**[ID]** :CIS Azure 5.1.3 **所有権**: Customer
+**[ID]** :CIS Azure 5.1.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -355,7 +355,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-the-log-profile-captures-activity-logs-for-all-regions-including-global"></a>ログ プロファイルによってグローバルを含むすべてのリージョンのアクティビティ ログがキャプチャされることを確認する
 
-**[ID]** :CIS Azure 5.1.4 **所有権**: Customer
+**[ID]** :CIS Azure 5.1.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -363,7 +363,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>アクティビティ ログがあるコンテナーを含むストレージ アカウントが BYOK (独自のキーの使用) を使用して暗号化されていることを確認する
 
-**[ID]** :CIS Azure 5.1.6 **所有権**: Customer
+**[ID]** :CIS Azure 5.1.6 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -371,7 +371,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-logging-for-azure-keyvault-is-enabled"></a>Azure KeyVault のログ記録が [有効] になっていることを確認する
 
-**[ID]** :CIS Azure 5.1.7 **所有権**: Customer
+**[ID]** :CIS Azure 5.1.7 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -379,7 +379,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>"ポリシー割り当ての作成" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.1 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -387,7 +387,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>"ネットワーク セキュリティ グループの作成または更新" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.2 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -395,7 +395,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>"ネットワーク セキュリティ グループの削除" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.3 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>"ネットワーク セキュリティ グループ規則の作成または更新" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.4 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -411,7 +411,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>"ネットワーク セキュリティ グループ規則の削除" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.5 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -419,7 +419,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>"セキュリティ ソリューションの作成または更新" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.6 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.6 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -427,7 +427,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>"セキュリティ ソリューションの削除" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.7 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.7 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -435,7 +435,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>"SQL Server ファイアウォール規則の作成、更新、削除" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.8 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -443,7 +443,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-update-security-policy"></a>"セキュリティ ポリシーの更新" のアクティビティ ログ アラートが存在することを確認する
 
-**[ID]** :CIS Azure 5.2.9 **所有権**: Customer
+**[ID]** :CIS Azure 5.2.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -453,7 +453,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-rdp-access-is-restricted-from-the-internet"></a>インターネットからの RDP アクセスが制限されていることを確認する
 
-**[ID]** :CIS Azure 6.1 **所有権**: Customer
+**[ID]** :CIS Azure 6.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -461,7 +461,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-ssh-access-is-restricted-from-the-internet"></a>インターネットからの SSH アクセスが制限されていることを確認する
 
-**[ID]** :CIS Azure 6.2 **所有権**: Customer
+**[ID]** :CIS Azure 6.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -469,7 +469,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-network-watcher-is-enabled"></a>Network Watcher が [有効] になっていることを確認する
 
-**[ID]** :CIS Azure 6.5 **所有権**: Customer
+**[ID]** :CIS Azure 6.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -479,7 +479,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-os-disk-are-encrypted"></a>"OS ディスク" が暗号化されていることを確認する
 
-**[ID]** :CIS Azure 7.1 **所有権**: Customer
+**[ID]** :CIS Azure 7.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -487,7 +487,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-data-disks-are-encrypted"></a>"データ ディスク" が暗号化されていることを確認する
 
-**[ID]** :CIS Azure 7.2 **所有権**: Customer
+**[ID]** :CIS Azure 7.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -495,7 +495,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-unattached-disks-are-encrypted"></a>"アタッチされていないディスク" が暗号化されていることを確認する
 
-**[ID]** :CIS Azure 7.3 **所有権**: Customer
+**[ID]** :CIS Azure 7.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -503,7 +503,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-only-approved-extensions-are-installed"></a>承認済みの拡張機能のみがインストールされていることを確認する
 
-**[ID]** :CIS Azure 7.4 **所有権**: Customer
+**[ID]** :CIS Azure 7.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -511,7 +511,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>すべての仮想マシンの最新の OS 修正プログラムが適用されていることを確認する
 
-**[ID]** :CIS Azure 7.5 **所有権**: Customer
+**[ID]** :CIS Azure 7.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -519,7 +519,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-the-endpoint-protection-for-all-virtual-machines-is-installed"></a>すべての仮想マシンの Endpoint Protection がインストールされていることを確認する
 
-**[ID]** :CIS Azure 7.6 **所有権**: Customer
+**[ID]** :CIS Azure 7.6 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -529,7 +529,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-the-key-vault-is-recoverable"></a>キー コンテナーが回復可能であることを確認する
 
-**[ID]** :CIS Azure 8.4 **所有権**: Customer
+**[ID]** :CIS Azure 8.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -537,7 +537,7 @@ ms.locfileid: "91932160"
 
 ### <a name="enable-role-based-access-control-rbac-within-azure-kubernetes-services"></a>Azure Kubernetes サービス内でロールベースのアクセス制御 (RBAC) を有効にする
 
-**[ID]** :CIS Azure 8.5 **所有権**: Customer
+**[ID]** :CIS Azure 8.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -547,7 +547,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-app-service-authentication-is-set-on-azure-app-service"></a>Azure App Service に App Service 認証が設定されていることを確認する
 
-**[ID]** :CIS Azure 9.1 **所有権**: Customer
+**[ID]** :CIS Azure 9.1 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -557,7 +557,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>Web アプリがすべての HTTP トラフィックを Azure App Service の HTTPS にリダイレクトすることを確認する
 
-**[ID]** :CIS Azure 9.2 **所有権**: Customer
+**[ID]** :CIS Azure 9.2 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -565,7 +565,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>Web アプリが最新バージョンの TLS 暗号化を使用していることを確認する
 
-**[ID]** :CIS Azure 9.3 **所有権**: Customer
+**[ID]** :CIS Azure 9.3 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -575,7 +575,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>Web アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する
 
-**[ID]** :CIS Azure 9.4 **所有権**: Customer
+**[ID]** :CIS Azure 9.4 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -585,7 +585,7 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>App Service で [Azure Active Directory に登録する] が有効になっていることを確認する
 
-**[ID]** :CIS Azure 9.5 **所有権**: Customer
+**[ID]** :CIS Azure 9.5 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -595,42 +595,42 @@ ms.locfileid: "91932160"
 
 ### <a name="ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>Web アプリの実行に使用された "PHP のバージョン" が最新であることを確認する
 
-**[ID]** :CIS Azure 9.7 **所有権**: Customer
+**[ID]** :CIS Azure 9.7 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを API アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを Web アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[API アプリの一部として使用される "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |セキュリティ上の欠陥のため、または追加機能を組み込むために、PHP ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の PHP バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
 
 ### <a name="ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>Web アプリの実行に使用された "Python のバージョン" が最新であることを確認する
 
-**[ID]** :CIS Azure 9.8 **所有権**: Customer
+**[ID]** :CIS Azure 9.8 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[API アプリの一部として使用される "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 
 ### <a name="ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>Web アプリの実行に使用された "Java のバージョン" が最新であることを確認する
 
-**[ID]** :CIS Azure 9.9 **所有権**: Customer
+**[ID]** :CIS Azure 9.9 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java の新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Java バージョンを関数アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の Java バージョンを Web アプリに使用することをお勧めします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[API アプリの一部として使用される "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java の新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Java バージョンを関数アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Java ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の Java バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
 
 ### <a name="ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 
-**[ID]** :CIS Azure 9.10 **所有権**: Customer
+**[ID]** :CIS Azure 9.10 **所有権** : Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
-|[関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
-|[Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 |AuditIfNotExists、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
+|[API アプリの実行に使用される "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
+|[関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
+|[Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
 
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。

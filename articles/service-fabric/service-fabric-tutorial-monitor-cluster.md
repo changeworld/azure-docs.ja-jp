@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020109"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331993"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure 内で Service Fabric クラスターを監視する
 
@@ -57,7 +57,7 @@ Service Fabric Analytics ソリューションにアクセスするには、[Azu
 
 **[概要]** に、有効になっているソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 
-![Service Fabric ソリューション](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![[Service Fabric] グラフが表示されているスクリーンショット。](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 次の画像には、Service Fabric Analytics ソリューションのホーム ページが示されています。 このホーム ページでは、クラスター内で行われている処理のスナップショット ビューが提供されます。
 
@@ -74,7 +74,7 @@ Service Fabric Analytics ソリューションにアクセスするには、[Azu
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>ノードに対する操作を含む Service Fabric イベントを表示する
 
-Service Fabric Analytics ページで、**クラスター イベント**のグラフをクリックします。  収集済みのすべてのシステム イベントのログが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
+Service Fabric Analytics ページで、 **クラスター イベント** のグラフをクリックします。  収集済みのすべてのシステム イベントのログが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
     
 ![クエリの操作チャネル](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -87,7 +87,7 @@ ServiceFabricOperationalEvent
 
 Kusto クエリ言語は優れています。 他にも便利なクエリをいくつか紹介します。
 
-エイリアス ServiceFabricEvent を使用してクエリを関数として保存することで、*ServiceFabricEvent* ルックアップ テーブルをユーザー定義関数として作成します。
+エイリアス ServiceFabricEvent を使用してクエリを関数として保存することで、 *ServiceFabricEvent* ルックアップ テーブルをユーザー定義関数として作成します。
 
 ```kusto
 let ServiceFabricEvent = datatable(EventId: int, EventName: string)
@@ -183,7 +183,7 @@ app('PlunkoServiceFabricCluster').traces
 
 ### <a name="view-service-fabric-application-events"></a>Service Fabric アプリケーション イベントを表示する
 
-クラスター上に展開されている Reliable Services アプリケーションと Reliable Actors アプリケーションのイベントを表示できます。  Service Fabric Analytics ページで、**アプリケーション イベント**のグラフをクリックします。
+クラスター上に展開されている Reliable Services アプリケーションと Reliable Actors アプリケーションのイベントを表示できます。  Service Fabric Analytics ページで、 **アプリケーション イベント** のグラフをクリックします。
 
 次のクエリを実行すると、Reliable Services アプリケーションのイベントが表示されます。
 ```kusto

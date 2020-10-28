@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260157"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341551"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>Synapse ワークスペース (プレビュー) のセキュリティ保護
+# <a name="secure-your-synapse-workspace-preview"></a>Synapse ワークスペース (プレビュー) のセキュリティ保護 
 
 この記事では、ロールとアクセス制御を使用して、アクティビティとデータへのアクセスを制御する方法について説明します。 次の手順に従うと、Azure Synapse Analytics でのアクセス制御が簡単になります。 3 つのセキュリティ グループのいずれかでユーザーを追加するか、削除する必要があるだけです。
 
@@ -31,7 +31,7 @@ Synapse ワークスペース (プレビュー) をセキュリティ保護す�
   - Apache Spark for Azure Synapse Analytics 管理者
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) でのデータのアクセス制御。
 - Synapse SQL および Spark データベースのアクセス制御
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Synapse ワークスペースをセキュリティ保護する手順
 
 このドキュメントでは、手順を簡素化するために、標準名を使用しています。 それらを任意の名前に置き換えてください。
@@ -65,17 +65,18 @@ Synapse ワークスペース (プレビュー) をセキュリティ保護す�
 
 - Azure portal を使用して、セキュリティ グループに、CNT1 に対する次のロールを割り当てます
 
-  - **WS1\_WSAdmins** に **Storage BLOB データ共同作成者**ロールを割り当てます
-  - **WS1\_SparkAdmins** に **Storage BLOB データ共同作成者**ロールを割り当てます。
-  - **WS1\_SQLAdmins** に **Storage BLOB データ共同作成者**ロールを割り当てます
+  - **WS1\_WSAdmins** に **Storage BLOB データ共同作成者** ロールを割り当てます
+  - **WS1\_SparkAdmins** に **Storage BLOB データ共同作成者** ロールを割り当てます。
+  - **WS1\_SQLAdmins** に **Storage BLOB データ共同作成者** ロールを割り当てます
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>手順 3:Synapse ワークスペースを作成して構成する
 
-Azure portal で、Synapse ワークスペースを作成します。
+ Azure portal で、Synapse ワークスペースを作成します。
 
+- サブスクリプションを選択します
+- リソース グループを選択します - **所有者** ロールが割り当てられているリソース グループにアクセスできる必要があります。
 - ワークスペースに WS1 という名前を指定します
-- ストレージ アカウントとして STG1 を選択します
-- "Filesystem" として使用されているコンテナーに CNT1 を選択します。
+- ストレージ アカウントとして STG1 を選択します - "Filesystem" として使用されているコンテナーに CNT1 を選択します。
 - Synapse Studio で WS1 を開きます
 - **[管理]**  >  **[アクセス制御]** を選択して、セキュリティ グループに次の Synapse ロールを割り当てます。
   - **WS1\_WSAdmins** に Synapse ワークスペース管理者を割り当てます
@@ -89,7 +90,7 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 - Azure ポータルを開きます
 - STG1 を見つけます
 - CNT1 に移動します
-- 確実に、WS1 の MSI (マネージド サービス ID) に、CNT1 に対する**ストレージ BLOB データ共同作成者**ロールが割り当てられるようにします
+- 確実に、WS1 の MSI (マネージド サービス ID) に、CNT1 に対する **ストレージ BLOB データ共同作成者** ロールが割り当てられるようにします
   - 割り当てられていることが確認できない場合は、割り当てます。
   - MSI には、ワークスペースと同じ名前が付けられます。 このケースでは、&quot;WS1&quot; になります。
 

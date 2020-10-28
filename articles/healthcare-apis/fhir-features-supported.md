@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cavoeg
+ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007572"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339510"
 ---
 # <a name="features"></a>特徴
 
@@ -37,15 +37,15 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | patch                          | いいえ        | いいえ        | いいえ        |                                                     |
 | delete                         | はい       | はい       | はい       |                                                     |
 | delete (条件付き)           | いいえ        | いいえ        | いいえ        |                                                     |
+| history                        | はい       | はい       | はい       |                                                     |
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | はい       | はい       |                                                     |
-| 検索                         | 部分的   | 部分的   | 部分的   | 下記参照                                           |
+| 検索                         | 部分的   | Partial   | 部分的   | 下記参照                                           |
 | chained search                 | いいえ        | はい       | いいえ        |                                           |
 | reverse chained search         | いいえ        | いいえ        | いいえ        |                                            |
 | capabilities                   | はい       | はい       | はい       |                                                     |
 | batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
-| history                        | はい       | はい       | はい       |                                                     |
 | paging                         | 部分的   | 部分的   | 部分的   | `self` と `next` がサポートされています                     |
 | intermediaries                 | いいえ        | いいえ        | いいえ        |                                                     |
 
@@ -94,28 +94,30 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | `_has`                  | いいえ        | いいえ        | いいえ        |         |
 | `_type`                 | はい       | はい       | はい       |         |
 | `_query`                | いいえ        | いいえ        | いいえ        |         |
-
-| 検索操作       | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
-|-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | いいえ        | いいえ        | いいえ        |         |
+
+| 検索結果のパラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
+|-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Partial        | Partial   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
-| `_score`                | いいえ        | いいえ        | いいえ        |         |
-| `_count`                | はい       | はい       | はい       |         |
-| `_summary`              | 部分的   | 部分的   | 部分的   | `_summary=count` がサポートされています |
+| `_count`                | はい       | はい       | はい       | `_count` の上限は 100 文字です。 100 より大きい値に設定すると、100 個だけが返され、バンドルで警告が返されます。 |
 | `_include`              | いいえ        | はい       | いいえ        |         |
 | `_revinclude`           | いいえ        | はい       | いいえ        | 含まれる項目は 100 に制限されています。 |
+| `_summary`              | Partial   | Partial   | 部分的   | `_summary=count` がサポートされています |
+| `_total`                | Partial   | Partial   | Partial   | _total=non および _total=accurate      |
+| `_elements`             | はい       | はい       | はい       |         |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
-| `_elements`             | はい        | はい        | はい        |         |
+| `containedType`         | いいえ        | いいえ        | いいえ        |         |
+| `_score`                | いいえ        | いいえ        | いいえ        |         |
 
 ## <a name="extended-operations"></a>拡張操作
 
 サポートされており、RESTful API を拡張するあらゆる操作。
 
 | 検索パラメーターの種類 | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
-|-----------------------|-----------|-----------|-----------|---------|
-| $export (システム全体)                | はい       | はい       | はい       |         |
-| Patient/$export         | はい       | はい       | はい       |         |
-| Group/$export               | はい       | はい       | はい       |         |
+|------------------------|-----------|-----------|-----------|---------|
+| $export (システム全体) | はい       | はい       | はい       |         |
+| Patient/$export        | はい       | はい       | はい       |         |
+| Group/$export          | はい       | はい       | はい       |         |
 
 ## <a name="persistence"></a>永続化
 
@@ -129,7 +131,7 @@ Cosmos DB は、グローバル分散型のマルチモデル (SQL API、MongoDB
 
 FHIR Server は、アクセス制御のために [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用します。 特に、`FhirServer:Security:Enabled` 構成パラメーターが `true` に設定され、FHIR Server へのすべての要求 (`/metadata` を除く) で `Authorization` 要求ヘッダーが `Bearer <TOKEN>` に設定されている必要がある場合は、ロールベースのアクセス制御 (RBAC) が適用されます。 トークンには、`roles` 要求で定義されている 1 つ以上のロールが含まれている必要があります。 トークンに、指定されたリソースに対する指定されたアクションを許可するロールが含まれている場合は、要求が許可されます。
 
-現在、特定のロールに対して許可されるアクションは API で*グローバルに*適用されます。
+現在、特定のロールに対して許可されるアクションは API で *グローバルに* 適用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

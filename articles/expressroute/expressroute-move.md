@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: duau
-ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649174e59c3e58b4675393ce665cf765016d5551
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395164"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331551"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行
 この記事では、Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する意味について概説します。
@@ -57,7 +57,7 @@ ExpressRoute 回線の **allowClassicOperations** パラメーターを設定す
 * クラシック仮想ネットワークへの仮想ネットワーク リンクの作成/更新/取得/削除
 * 仮想ネットワーク リンクでのサブスクリプションの境界を越えた接続に必要な承認の作成/更新/取得/削除
 
-ただし、**allowClassicOperations** が TRUE に設定されていても、次に示す従来の操作は実行できません。
+ただし、 **allowClassicOperations** が TRUE に設定されていても、次に示す従来の操作は実行できません。
 
 * Azure プライベート ピアリング、Azure パブリック ピアリング、Microsoft ピアリングに使用するボーダー ゲートウェイ プロトコル (BGP) ピアリングの作成/更新/取得/削除
 * ExpressRoute 回線の削除
@@ -85,7 +85,7 @@ ExpressRoute 回線は、クラシック デプロイ モデルと Resource Mana
 ここでは、ExpressRoute 回線でサポートされない操作について説明します。
 
 * クラシック デプロイ モデルからの ExpressRoute 回線のライフ サイクルの管理。
-* クラシック デプロイ モデルでのロールベースのアクセス制御 (RBAC)。 クラシック デプロイ モデルの回線に対して RBAC 制御を行うことはできません。 回線に対する仮想ネットワークのリンクとリンク解除は、サブスクリプションの管理者/共同管理者が実施できます。
+* クラシック デプロイ モデルでの Azure ロールベースのアクセス制御 (Azure RBAC)。 クラシック デプロイ モデルの回線に対して Azure RBAC 制御を行うことはできません。 回線に対する仮想ネットワークのリンクとリンク解除は、サブスクリプションの管理者/共同管理者が実施できます。
 
 ## <a name="configuration"></a>構成
 「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」に説明されている手順を参照してください。

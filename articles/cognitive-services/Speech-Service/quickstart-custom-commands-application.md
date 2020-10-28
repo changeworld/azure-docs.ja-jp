@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289421"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329153"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
-このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。 **カスタム コマンド**を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
+このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。 **カスタム コマンド** を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 現時点では、カスタム コマンドは、次のリージョンで作成された音声サブスクリプションをサポートしています。
@@ -37,7 +37,7 @@ ms.locfileid: "87289421"
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。<span class="docon docon-navigate-external x-hidden-focus"></span></a> サポートされているリージョンの一覧については、上記の「**利用可能なリージョン**」の項を参照してください。
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。<span class="docon docon-navigate-external x-hidden-focus"></span></a> サポートされているリージョンの一覧については、上記の「 **利用可能なリージョン** 」の項を参照してください。
 > * サンプルの [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON ファイルをダウンロードする。
 > * [Windows 音声アシスタント クライアント](https://aka.ms/speech/va-samples-wvac)の最新バージョンをダウンロードする。
 
@@ -123,7 +123,7 @@ ms.locfileid: "87289421"
 1. **VoiceAssistantClient.exe** を起動します。
 1. 新しい発行プロファイルを作成し、 **[接続プロファイル]** の値を入力します。 **[全般設定]** セクションで、 **[サブスクリプション キー]** (これはアプリケーションの公開時に保存した **[Speech resource key]\(音声リソース キー\)** 値と同じ)、 **[Subscription key region]\(サブスクリプション キーのリージョン\)** 、 **[Custom commands app ID]\(カスタム コマンド アプリの ID\)** の値を入力します。
     > [!div class="mx-imgBorder"]
-    > ![WVAC でのプロファイルの作成](media/custom-commands/create-profile.png)
+    > ![WVAC プロファイルを作成するための [全般設定] セクションが強調表示されているスクリーンショット。](media/custom-commands/create-profile.png)
 1. **[Save and Apply Profile]\(プロファイルを保存して適用する\)** を選択します。
 1. 音声またはテキストを通じて次の入力を試してみます。
     > [!div class="mx-imgBorder"]
@@ -131,7 +131,7 @@ ms.locfileid: "87289421"
 
 
 > [!TIP]
-> **アクティビティ ログ**のエントリをクリックすると、カスタム コマンド サービスから送信されている未加工の応答を調べることができます。
+> **アクティビティ ログ** のエントリをクリックすると、カスタム コマンド サービスから送信されている未加工の応答を調べることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

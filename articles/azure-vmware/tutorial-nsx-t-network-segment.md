@@ -3,16 +3,16 @@ title: チュートリアル - Azure VMware Solution で NSX-T ネットワー�
 description: vCenter 内の VM に使用される NSX-T ネットワーク セグメントを作成する方法について説明します
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 780cac15efc043b9ae44b77af1234adca3fec5a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254535"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367671"
 ---
 # <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>チュートリアル:Azure VMware Solution で NSX-T ネットワーク セグメントを作成する
 
-NSX-T Manager で作成されたネットワーク セグメントは、vCenter 内の仮想マシン (VM) 用のネットワークとして使用されます。 vCenter に作成された VM は、NSX-T に作成されたネットワーク セグメントに配置されて、vCenter に表示されるようになります。
+vCenter に作成された仮想マシン (VM) は、NSX-T に作成されたネットワーク セグメントに配置されて、vCenter に表示されるようになります。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -23,7 +23,7 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、vCenter と NSX-T Manager の管理インターフェイスへのアクセスが可能な Azure VMware Solution プライベート クラウドが必要です。 詳細については、[Azure での VMware プライベート クラウド用のネットワークの構成](tutorial-configure-networking.md)に関するチュートリアルを参照してください。
+vCenter と NSX-T Manager の管理インターフェイスへのアクセスが可能な Azure VMware Solution プライベート クラウドが必要です。 詳細については、[ネットワークの構成](tutorial-configure-networking.md)に関するチュートリアルを参照してください。
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>NSX-T でネットワーク セグメントをプロビジョニングする
 
@@ -71,7 +71,7 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、vCenter 内の VM に使用される NSX-T ネットワーク セグメントを作成しました。 これで、[Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成](deploy-vm-content-library.md)して、このチュートリアルで作成したネットワークに VM をプロビジョニングすることができるようになりました。
+このチュートリアルでは、vCenter 内の VM に使用される NSX-T ネットワーク セグメントを作成しました。 これで、[Azure VMware Solution に VM をデプロイするためのコンテンツ ライブラリを作成](deploy-vm-content-library.md)できるようになりました。 このチュートリアルで作成したネットワークに VM をプロビジョニングすることもできます。
 
 できない場合は、Azure VMware Solution のプライベート クラウドに対して ExpressRoute Global Reach ピアリングを作成する方法に関する次のチュートリアルに進んでください。
 

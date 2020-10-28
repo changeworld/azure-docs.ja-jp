@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 4ef53b2249f8ce57255c13126c9310f1c889d64f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855057"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332027"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -28,7 +28,7 @@ Data Lake Storage Gen2 を使用したクラスター作成オプションの詳
 Data Lake Storage Gen2 は、ほぼすべての Azure HDInsight クラスターの種類のストレージ オプションとして、既定のストレージ アカウントと追加のストレージ アカウントの両方で使用できます。 ただし、HBase では、Data Lake Storage Gen2 のアカウントを 1 つだけ持つことができます。
 
 > [!Note]  
-> **プライマリ ストレージの種類**として Data Lake Storage Gen2 を選択すると、追加のストレージとして Data Lake Storage Gen1 を選択できなくなります。
+> **プライマリ ストレージの種類** として Data Lake Storage Gen2 を選択すると、追加のストレージとして Data Lake Storage Gen1 を選択できなくなります。
 
 ## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDInsight クラスターを作成する
 
@@ -42,13 +42,13 @@ Data Lake Storage Gen2 にアクセスできる HDInsight クラスターを作�
 
 ### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Data Lake Storage Gen2 をサポートするアクセス許可の種類
 
-Data Lake Storage Gen2 では、ロール ベースのアクセス制御 (RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルを使用します。 Data Lake Storage Gen1 では、データへのアクセス制御の場合のみアクセス制御リストがサポートされていました。
+Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルが使用されています。 Data Lake Storage Gen1 では、データへのアクセス制御の場合のみアクセス制御リストがサポートされていました。
 
-RBAC では、ロールの割り当てを使用して、Azure リソースのユーザー、グループ、サービス プリンシパルにアクセス許可のセットを効果的に適用します。 通常、これらの Azure リソースは、最上位のリソース (例: Azure Blob Storage アカウント) に制約されます。 Azure Blob Storage と Data Lake Storage Gen2 では、このメカニズムがファイル システムのリソースにまで拡張されています。
+Azure RBAC では、ロールの割り当てを使用して、Azure リソースのユーザー、グループ、サービス プリンシパルにアクセス許可のセットを効果的に適用します。 通常、これらの Azure リソースは、最上位のリソース (例: Azure Blob Storage アカウント) に制約されます。 Azure Blob Storage と Data Lake Storage Gen2 では、このメカニズムがファイル システムのリソースにまで拡張されています。
 
-RBAC を使用したファイルのアクセス許可の詳細については、「[Azure のロールベースのアクセス制御 (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)」を参照してください。
+Azure RBAC を使用したファイルのアクセス許可の詳細については、「[Azure のロールベースのアクセス制御 (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)」を参照してください。
 
-ACL を使用したファイルのアクセス許可の詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
+ACL を使用したファイルのアクセス許可の詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md)」を参照してください。
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で自分のデータへのアクセスを制御する方法
 
@@ -66,19 +66,19 @@ Azure サービスには、システム割り当てとユーザー割り当て�
 
 複数の方法で、HDInsight クラスターから Data Lake Storage Gen2 のファイルにアクセスできます。
 
-* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     abfs:///<file.path>/
     ```
 
-* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/

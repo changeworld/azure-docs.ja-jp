@@ -1,24 +1,23 @@
 ---
 title: Digital Twins モデル パーサーについて理解する | Microsoft Docs
-description: 開発者は、DTDL パーサーを使用してモデルを検証する方法について理解する必要があります
+description: 開発者は、DTDL パーサーを使用してモデルを検証する方法について理解する必要があります。
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87352051"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331789"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>Digital Twins モデル パーサーについて理解する
 
-Digital Twins Definition Language (DTDL) については、[DTDL の仕様](https://github.com/Azure/opendigitaltwins-dtdl)に関する記事で説明されています。 ユーザーは、_Digital Twins モデル パーサー_ NuGet パッケージを使用して、複数のファイルで定義されているモデルを検証し、クエリを実行できます。
+Digital Twins Definition Language (DTDL) については、[DTDL の仕様](https://github.com/Azure/opendigitaltwins-dtdl)に関する記事で説明されています。 ユーザーは、 _Digital Twins モデル パーサー_ NuGet パッケージを使用して、複数のファイルで定義されているモデルを検証し、クエリを実行できます。
 
 ## <a name="install-the-dtdl-model-parser"></a>DTDL モデル パーサーをインストールする
 
@@ -28,9 +27,12 @@ Digital Twins Definition Language (DTDL) については、[DTDL の仕様](http
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> この記事の執筆時点では、パーサーのバージョンは `3.12.5` です。
+
 ## <a name="use-the-parser-to-validate-a-model"></a>パーサーを使用してモデルを検証する
 
-検証するモデルは、JSON ファイルに記述されている 1 つ以上のインターフェイスで構成されている場合があります。 パーサーを使用すると、特定のフォルダー内のすべてのファイルを読み込み、そのパーサーを使用して、ファイル間の参照を含めたすべてのファイルを全体的に検証することができます。
+1 つのモデルは、JSON ファイルに記述されている 1 つ以上のインターフェイスで構成されている場合があります。 パーサーを使用すると、特定のフォルダー内のすべてのファイルを読み込み、そのパーサーを使用して、ファイル間の参照を含めたすべてのファイルを全体的に検証することができます。
 
 1. すべてのモデル コンテンツの一覧を含む `IEnumerable<string>` を作成します。
 
@@ -57,18 +59,20 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. 検証エラーを確認します。 パーサーによってエラーが検出されると、詳細なエラー メッセージの一覧とともに `AggregateException` がスローされます。
+1. 検証エラーを確認します。 パーサーによってエラーが検出されると、エラーの一覧とともに `ParsingException` がスローされます。
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,19 +80,10 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
 1. `Model` を調べます。 検証が成功した場合は、モデルパーサー API を使用してモデルを検査できます。 次のコード スニペットは、解析されたすべてのモデルに対してどのように反復処理されるか、および既存のプロパティを示しています。
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 

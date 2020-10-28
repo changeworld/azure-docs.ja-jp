@@ -4,12 +4,12 @@ description: この記事では、Shared Access Signature を使用して Event 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270102"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332435"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -20,7 +20,7 @@ Shared Access Signature (SAS) を使用すると、共有アクセス署名を�
 - クライアントが別のクライアントを偽装できないようにする。
 - 悪意のあるクライアントをブロックして Event Hub にデータを送信できないようにする。
 
-この記事では、SAS を使用する Event Hubs リソースへのアクセスの認証について説明します。 SAS を使用する Event Hubs リソースへのアクセスの**承認**については、[こちらの記事](authorize-access-shared-access-signature.md)を参照してください。 
+この記事では、SAS を使用する Event Hubs リソースへのアクセスの認証について説明します。 SAS を使用する Event Hubs リソースへのアクセスの **承認** については、 [こちらの記事](authorize-access-shared-access-signature.md)を参照してください。 
 
 > [!NOTE]
 > Microsoft では、セキュリティのベスト プラクティスとして、より簡単に侵害される可能性のある Shared Access Signature を使用するのではなく、可能な限り Azure AD 資格情報を使用することをお勧めします。 引き続き Shared Access Signature (SAS) を使用して Event Hubs リソースへのきめ細かいアクセス許可を付与することはできますが、Azure AD では同様の機能が提供され、SAS トークンを管理したり、侵害された SAS の取り消しを心配したりする必要がありません。
@@ -185,7 +185,7 @@ private static string createToken(string resourceUri, string keyName, string key
 
 たとえば、Event Hubs への送信/発行のみを対象とする承認規則を定義するには、送信承認規則を定義する必要があります。 これは名前空間レベルで行うことも、特定のエンティティ (イベント ハブ インスタンスまたはトピック) に対してより詳細なスコープを指定することもできます。 このような詳細なアクセスでスコープが設定されているクライアントまたはアプリケーションは、Event Hubs パブリッシャーと呼ばれます。 これを行うには、次のステップに従います。
 
-1. 発行するエンティティに SAS キーを作成し、それに対して**送信**スコープを割り当てます。 詳細については、「[Shared access authorization policies](authorize-access-shared-access-signature.md#shared-access-authorization-policies)」 (共有アクセス承認ポリシー) を参照してください。
+1. 発行するエンティティに SAS キーを作成し、それに対して **送信** スコープを割り当てます。 詳細については、「[Shared access authorization policies](authorize-access-shared-access-signature.md#shared-access-authorization-policies)」 (共有アクセス承認ポリシー) を参照してください。
 2. 手順 1 で生成されたキーを使用して、特定のパブリッシャーの有効期限を指定した SAS トークンを生成します。
 
     ```csharp
@@ -216,13 +216,13 @@ private static string createToken(string resourceUri, string keyName, string key
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>SAS を使用する Event Hubs コンシューマーの認証 
-Event Hubs プロデューサーによって生成されたデータから消費するバックエンド アプリケーションを認証する場合、Event Hubs トークン認証では、クライアントに**管理**権限、または Event Hubs 名前空間あるいはイベント ハブ インスタンスまたはトピックに割り当てられる**リッスン**特権が求められます。 データは、コンシューマー グループを使用して Event Hubs から消費されます。 SAS ポリシーで詳細なスコープが提供されますが、このスコープは、コンシューマー レベルではなく、エンティティ レベルでのみ定義されます。 これは、名前空間レベルあるいはイベント ハブ インスタンス レベルまたはトピック レベルで定義された特権が、そのエンティティのコンシューマー グループに適用されることを意味します。
+Event Hubs プロデューサーによって生成されたデータから消費するバックエンド アプリケーションを認証する場合、Event Hubs トークン認証では、クライアントに **管理** 権限、または Event Hubs 名前空間あるいはイベント ハブ インスタンスまたはトピックに割り当てられる **リッスン** 特権が求められます。 データは、コンシューマー グループを使用して Event Hubs から消費されます。 SAS ポリシーで詳細なスコープが提供されますが、このスコープは、コンシューマー レベルではなく、エンティティ レベルでのみ定義されます。 これは、名前空間レベルあるいはイベント ハブ インスタンス レベルまたはトピック レベルで定義された特権が、そのエンティティのコンシューマー グループに適用されることを意味します。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。
 
 - [SAS を使用して承認する](authenticate-shared-access-signature.md)
-- [ロールベースのアクセス制御 (RBAC) を使用して承認する](authenticate-shared-access-signature.md)
+- [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して認可する](authenticate-shared-access-signature.md)
 - [Event Hubs についてさらに学習する](event-hubs-about.md)
 
 次の関連記事を参照してください。
