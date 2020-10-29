@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 33433587f0617382cc5f05550577594d7e3f9f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb04b17db94a2abf0ab11d9b9baff65e764e472a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322023"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457046"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>チュートリアル:Blink を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91322023"
 
 ## <a name="assigning-users-to-blink"></a>Blink へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザー、グループ メンバー、またはその両方のみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザー、グループ メンバー、またはその両方のみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、Blink へのアクセスが必要な Azure AD のユーザー、グループ メンバー、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Blink に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -50,9 +50,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="setup-blink-for-provisioning"></a>プロビジョニングのために Blink を設定する
 
-1. SCIM トークンを要求するには、[サポート ケース](https://support.joinblink.com)のログに記録するか、**Blink サポート** (support@joinblink.com) 宛にメールで送信します。 。
+1. SCIM トークンを要求するには、 [サポート ケース](https://support.joinblink.com)のログに記録するか、 **Blink サポート** (support@joinblink.com) 宛にメールで送信します。 。
 
-2.  **SCIM 認証トークン**をコピーします。 この値を、Azure portal で Blink アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+2.  **SCIM 認証トークン** をコピーします。 この値を、Azure portal で Blink アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
 ## <a name="add-blink-from-the-gallery"></a>ギャラリーから Blink を追加する
 
@@ -72,7 +72,7 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Blink**」と入力し、結果パネルで **[Blink]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Blink** 」と入力し、結果パネルで **[Blink]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Blink](common/search-new-app.png)
 
@@ -81,7 +81,7 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Blink でユーザーが作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成するステップについて説明します。
 
 > [!TIP]
-> Blink では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Blink シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Blink では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Blink シングル サインオンのチュートリアル](./blink-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Azure AD で Blink の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
@@ -101,7 +101,7 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.joinblink.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Blink への接続を確保します。 接続できない場合は、使用中の Blink アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.joinblink.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Blink への接続を確保します。 接続できない場合は、使用中の Blink アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -145,4 +145,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367f6713102912786ce258c471278373636f7326
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858100"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と KnowledgeOwl の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91858100"
 * ユーザーが自分の Azure AD アカウントを使用して KnowledgeOwl に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* KnowledgeOwl では、**SP と IDP** によって開始される SSO がサポートされます
-* KnowledgeOwl では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* KnowledgeOwl では、 **SP と IDP** によって開始される SSO がサポートされます
+* KnowledgeOwl では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-knowledgeowl-from-the-gallery"></a>ギャラリーからの KnowledgeOwl の追加
 
@@ -50,7 +50,7 @@ Azure AD への KnowledgeOwl の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**KnowledgeOwl**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **KnowledgeOwl** 」と入力します。
 1. 結果のパネルから **[KnowledgeOwl]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -181,9 +181,9 @@ KnowledgeOwl で Azure AD SSO を構成してテストするには、次の構�
 
     d. **[IdP entityID]** テキストボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    e. **[IdP Login URL]\(IdP ログイン URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    e. **[IdP Login URL]\(IdP ログイン URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    f. **[IdP Logout URL]\(IdP ログアウト URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    f. **[IdP Logout URL]\(IdP ログアウト URL\)** テキスト ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     g. **[Upload IdP Certificate]\(IdP 証明書のアップロード\)** をクリックして、Azure portal からダウンロードした証明書をアップロードします。
 
@@ -212,14 +212,14 @@ KnowledgeOwl で Azure AD SSO を構成してテストするには、次の構�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [KnowledgeOwl] タイルをクリックすると、SSO を設定した KnowledgeOwl に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [KnowledgeOwl] タイルをクリックすると、SSO を設定した KnowledgeOwl に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で KnowledgeOwl を試す](https://aad.portal.azure.com/)

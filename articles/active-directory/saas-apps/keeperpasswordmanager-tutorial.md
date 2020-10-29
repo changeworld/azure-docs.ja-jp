@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: c6bd0c130e860a5700256a54c081cc046219b41a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b81457af8e74f95bdd3af940fa2b39ba93504a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546748"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>チュートリアル: Azure Active Directory と Keeper Password Manager & Digital Vault の統合
 
@@ -27,7 +27,7 @@ Keeper Password Manager & Digital Vault と Azure AD の統合には、次の利
 * ユーザーが自分の Azure AD アカウントを使用して Keeper Password Manager & Digital Vault に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -43,9 +43,9 @@ Keeper Password Manager & Digital Vault と Azure AD の統合を構成するに
 
 * Keeper Password Manager & Digital Vault で **SP** によって開始される SSO をサポートします
 
-* Keeper Password Manager & Digital Vault では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Keeper Password Manager & Digital Vault では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
-* Keeper Password Manager & Digital Vault を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Keeper Password Manager & Digital Vault を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>ギャラリーからの Keeper Password Manager & Digital Vault の追加
 
@@ -55,7 +55,7 @@ Azure AD への Keeper Password Manager & Digital Vault の統合を構成する
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Keeper Password Manager & Digital Vault**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Keeper Password Manager & Digital Vault** 」と入力します。
 1. 結果のパネルから **[Keeper Password Manager & Digital Vault]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-keeper-password-manager--digital-vault"></a>Keeper Password Manager & Digital Vault の Azure AD SSO の構成とテスト
@@ -100,7 +100,7 @@ Keeper Password Manager & Digital Vault に対する Azure AD SSO を構成し�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Keeper Password Manager & Digital Vault クライアント サポート チーム](https://keepersecurity.com/contact.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -141,7 +141,7 @@ Keeper Password Manager & Digital Vault に対する Azure AD SSO を構成し�
 
 ## <a name="configure-keeper-password-manager--digital-vault-sso"></a>Keeper Password Manager & Digital Vault SSO の構成
 
-**Keeper Password Manager & Digital Vault Configuration** 側でシングル サインオンを構成するには、『[Keeper Support Guide](https://docs.keeper.io/sso-connect-guide/)』(Keeper サポート ガイド) のガイドラインに従ってください。
+**Keeper Password Manager & Digital Vault Configuration** 側でシングル サインオンを構成するには、『 [Keeper Support Guide](https://docs.keeper.io/sso-connect-guide/)』(Keeper サポート ガイド) のガイドラインに従ってください。
 
 ### <a name="create-keeper-password-manager--digital-vault-test-user"></a>Keeper Password Manager & Digital Vault テスト ユーザーの作成
 
@@ -151,16 +151,16 @@ Azure AD ユーザーが Keeper Password Manager & Digital Vault にログイン
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Keeper Password Manager & Digital Vault] タイルをクリックすると、SSO を設定した Keeper Password Manager & Digital Vault へのサインインが自動的に行われるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Keeper Password Manager & Digital Vault] タイルをクリックすると、SSO を設定した Keeper Password Manager & Digital Vault へのサインインが自動的に行われるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Keeper Password Manager & Digital Vault を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

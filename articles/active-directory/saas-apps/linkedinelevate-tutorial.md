@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4410a39cc9b04565d7b753b7821e11c8ece2593
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856413"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458542"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Elevate の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91856413"
 * ユーザーが自分の Azure AD アカウントを使用して LinkedIn Elevate に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,9 +41,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 
 
-* LinkedIn Elevate では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* LinkedIn Elevate では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* LinkedIn Elevate では、[**自動化された**ユーザー プロビジョニング](linkedinelevate-provisioning-tutorial.md)がサポートされます
+* LinkedIn Elevate では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* LinkedIn Elevate では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LinkedIn Elevate では、 [**自動化された** ユーザー プロビジョニング](linkedinelevate-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-linkedin-elevate-from-the-gallery"></a>ギャラリーからの LinkedIn Elevate の追加
 
@@ -53,7 +53,7 @@ Azure AD への LinkedIn Elevate の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**LinkedIn Elevate**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **LinkedIn Elevate** 」と入力します。
 1. 結果のパネルから **[LinkedIn Elevate]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -82,15 +82,15 @@ LinkedIn Elevate で Azure AD SSO を構成してテストするには、次の�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、**エンティティ ID** の値を入力します。エンティティ ID の値は、このチュートリアルで後述する Linkedin Portal からコピーします。
+    a. **[識別子]** ボックスに、 **エンティティ ID** の値を入力します。エンティティ ID の値は、このチュートリアルで後述する Linkedin Portal からコピーします。
 
-    b. **[応答 URL]** ボックスに、**Assertion Consumer Access (ACS) URL** の値を入力します。Assertion Consumer Access (ACS) URL の値は、このチュートリアルで後述する LinkedIn Portal からコピーします。
+    b. **[応答 URL]** ボックスに、 **Assertion Consumer Access (ACS) URL** の値を入力します。Assertion Consumer Access (ACS) URL の値は、このチュートリアルで後述する LinkedIn Portal からコピーします。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` という形式で URL を入力します。
 
-1. LinkedIn Elevate アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 LinkedIn Elevate アプリケーションでは、nameidentifier が **user.mail** にマップされると想定されているため、[編集] アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. LinkedIn Elevate アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 LinkedIn Elevate アプリケーションでは、nameidentifier が **user.mail** にマップされると想定されているため、[編集] アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -172,15 +172,14 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [LinkedIn Elevate] タイルをクリックすると、SSO を設定した LinkedIn Elevate に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [LinkedIn Elevate] タイルをクリックすると、SSO を設定した LinkedIn Elevate に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で LinkedIn Elevate を試す](https://aad.portal.azure.com/)
-

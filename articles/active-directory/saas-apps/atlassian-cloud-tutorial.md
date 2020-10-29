@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: b342731b953f7b68f8fcd9e55c49c907e5e8cc5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7690977f23b193bb3ba282df14d348b3fac0ad6b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973503"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457539"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -41,7 +41,7 @@ ms.locfileid: "90973503"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
-* Atlassian Cloud では、**SP と IDP** によって開始される SSO がサポートされます
+* Atlassian Cloud では、 **SP と IDP** によって開始される SSO がサポートされます
 * Atlassian Cloud では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](atlassian-cloud-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
@@ -52,7 +52,7 @@ Azure AD への Atlassian Cloud の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Atlassian Cloud**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Atlassian Cloud** 」と入力します。
 1. 結果のパネルから **[Atlassian Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
@@ -71,7 +71,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. Atlassian Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイ アプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
+1. Atlassian Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイ アプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -134,9 +134,9 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 
    ![証明書 1](./media/atlassian-cloud-tutorial/certificate-1.png)
 
-1. Atlassian に SAML 構成を**追加して保存**します。
+1. Atlassian に SAML 構成を **追加して保存** します。
 
-1. アプリケーションを **IDP** 開始モードで構成する場合は、Azure の **[SAML によるシングル サインオンのセットアップ]** ページの **[基本的な SAML 構成]** セクションを編集して、Atlassian Admin Portal の **SAML シングル サインオン ページ**を開きます。
+1. アプリケーションを **IDP** 開始モードで構成する場合は、Azure の **[SAML によるシングル サインオンのセットアップ]** ページの **[基本的な SAML 構成]** セクションを編集して、Atlassian Admin Portal の **SAML シングル サインオン ページ** を開きます。
 
    a. Atlassian から **[SP Entity ID]\(SP エンティティ ID\)** の値をコピーして Azure の **[識別子 (エンティティ ID)]** ボックスに貼り付け、既定として設定します。
    
@@ -166,7 +166,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 
       ![属性と要求](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlassian Cloud では、**nameidentifier** (**一意のユーザー ID**) がユーザーのメール (**user.email**) にマップされると想定されています。 **[ソース属性]** を編集して、「**user.mail**」に変更してください。 要求に対する変更を保存します。
+      b. Atlassian Cloud では、 **nameidentifier** ( **一意のユーザー ID** ) がユーザーのメール ( **user.email** ) にマップされると想定されています。 **[ソース属性]** を編集して、「 **user.mail** 」に変更してください。 要求に対する変更を保存します。
 
       ![一意のユーザー ID](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
@@ -180,7 +180,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 
       ![画像 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Microsoft 365 ライセンスのない Azure AD テナントに作成されたユーザーについては、**user.mail** 属性が Azure によって事前設定されません。そのようなユーザーのメールは、**userprincipalname** 属性に格納されます。 Atlassian Cloud では、**nameidentifier** (**一意のユーザー ID**) がユーザーのメール (**user.userprincipalname**) にマップされると想定されています。  **[ソース属性]** を編集して、「**user.userprincipalname**」に変更してください。 要求に対する変更を保存します。
+      b. Microsoft 365 ライセンスのない Azure AD テナントに作成されたユーザーについては、 **user.mail** 属性が Azure によって事前設定されません。そのようなユーザーのメールは、 **userprincipalname** 属性に格納されます。 Atlassian Cloud では、 **nameidentifier** ( **一意のユーザー ID** ) がユーザーのメール ( **user.userprincipalname** ) にマップされると想定されています。  **[ソース属性]** を編集して、「 **user.userprincipalname** 」に変更してください。 要求に対する変更を保存します。
 
       ![メールの設定](./media/atlassian-cloud-tutorial/set-email.png)
          
@@ -247,9 +247,9 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Atlassian Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Atlassian Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
 
-Atlassian Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Atlassian Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ef2dadfc0099822d68a5b1cfb2cc35759e1a866
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662286"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と askSpoke の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "89662286"
 * ご自分のユーザーが自分の Azure AD アカウントを使用して askSpoke に自動的にサインインするようにできます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* askSpoke では、**SP Initiated SSO と IDP Initiated SSO** がサポートされています
-* askSpoke では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
-* askSpoke を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* askSpoke では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされています
+* askSpoke では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* askSpoke を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -54,7 +54,7 @@ Azure AD に askSpoke を統合するには、ギャラリーからご自分の�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**askSpoke**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **askSpoke** 」と入力します。
 1. 結果のパネルから **[askSpoke]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>askSpoke の Azure AD SSO の構成とテスト
@@ -156,11 +156,11 @@ askSpoke で Azure AD SSO を構成してテストするには、次の構成要
 
     ![askSpoke の [Enable SAML & SCIM]\(SAML および SCIM の有効化\) セクション](./media/askspoke-tutorial/configure3.png)
 
-    1. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    1. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    1. **[発行者]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
+    1. **[発行者]** テキストボックスに、Azure portal からコピーした、 **Azure AD ID** の値を貼り付けます。
 
-    1. Azure portal からダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、証明書ファイルの内容をコピーして **[公開証明書]** テキストボックスに貼り付けます。
+    1. Azure portal からダウンロードした **証明書 (Base64)** ファイルをメモ帳で開き、証明書ファイルの内容をコピーして **[公開証明書]** テキストボックスに貼り付けます。
 
     1. **[ACS URL]** \(ACS URL\) の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
@@ -174,16 +174,16 @@ askSpoke で Azure AD SSO を構成してテストするには、次の構成要
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [askSpoke] タイルをクリックすると、SSO を設定した askSpoke に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [askSpoke] タイルをクリックすると、SSO を設定した askSpoke に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で askSpoke を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

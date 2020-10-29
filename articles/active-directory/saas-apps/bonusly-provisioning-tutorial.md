@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1ef3a8fa7de557444c25650410b4e84422be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33329fc30d1c20b4e20901d06a061accb2aeceb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849291"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456902"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 
@@ -54,7 +54,7 @@ Azure AD での自動ユーザー プロビジョニング用に Bonusly を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Bonusly**」と入力し、結果ウィンドウで **Bonusly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Bonusly** 」と入力し、結果ウィンドウで **Bonusly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Bonusly](common/search-new-app.png)
 
@@ -64,7 +64,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Bonusly へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Bonusly に割り当てることができます。
 
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-bonusly"></a>ユーザーを Bonusly に割り当てる際の重要なヒント
 
@@ -101,7 +101,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
 
-6. Bonusly アカウントの**シークレット トークン** は、 **[Admin]\(管理者\) > [Company]\(会社\) > [Integrations]\(統合\)** に配置されています。 **[If you want to code]\(コーディングするもの\)** セクションで、 **[API] > [Create New API Access Token]\(新しい API アクセストークンの作成\)** をクリックして、新しいシークレット トークンを作成します。
+6. Bonusly アカウントの **シークレット トークン** は、 **[Admin]\(管理者\) > [Company]\(会社\) > [Integrations]\(統合\)** に配置されています。 **[If you want to code]\(コーディングするもの\)** セクションで、 **[API] > [Create New API Access Token]\(新しい API アクセストークンの作成\)** をクリックして、新しいシークレット トークンを作成します。
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
 

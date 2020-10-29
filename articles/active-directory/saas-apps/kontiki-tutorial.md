@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549973"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458933"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>チュートリアル: Azure Active Directory と Kontiki の統合
 
@@ -28,7 +28,7 @@ Kontiki と Azure AD の統合により、次の利点が得られます。
 * ユーザーは、自分の Azure AD アカウントで Kontiki に自動的にサインイン (シングル サインオン) できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,13 +64,13 @@ Kontiki を Azure AD と統合するには、マネージド SaaS アプリの�
 
     ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「**Kontiki**」と入力します。 検索結果で **[Kontiki]** を選択し、 **[追加]** を選択します。
+1. 検索ボックスに「 **Kontiki** 」と入力します。 検索結果で **[Kontiki]** を選択し、 **[追加]** を選択します。
 
     ![結果リストの Kontiki](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Kontiki で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Kontiki 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Kontiki で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Kontiki 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Kontiki で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -136,9 +136,9 @@ Kontiki 側でシングル サインオンを構成するには、ダウンロ�
 
 1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
+    1. **[ユーザー名]** ボックスに「 **brittasimon\@\<your-company-domain>.\<extension>** 」と入力します。 たとえば、「 **brittasimon\@contoso.com** 」です。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -186,6 +186,6 @@ Kontiki でのユーザー プロビジョニングの構成にあたって必�
 
 詳細については、次の記事を参照してください。
 
-- [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](./tutorial-list.md)
+- [Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 715e99f07d0fcbc77fd1769e5da1cae6b46ac97e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc4087d1a10b4c4af7477a02f397c5a2bc547c2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850736"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル:Azure Active Directory と Jobscience の統合
 
@@ -67,7 +67,7 @@ Azure AD への Jobscience の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] が選択されたことを示すスクリーンショット。][3]
 
-1. 検索ボックスに、「**Jobscience**」と入力します。
+1. 検索ボックスに、「 **Jobscience** 」と入力します。
 
     ![[ギャラリーから追加する] に「jobscience」と入力されたことを示すスクリーンショット。](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
@@ -121,7 +121,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
 
     ![[保存] ボタンを示すスクリーンショット。](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. **[Jobscience 構成]** セクションで、 **[Jobscience の構成]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Jobscience 構成]** セクションで、 **[Jobscience の構成]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、 **サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Jobscience の構成ウィンドウを示すスクリーンショット。](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
@@ -135,7 +135,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
    
    ![マイ ドメイン](./media/jobscience-tutorial/ic767825.png "[マイ ドメイン]")
 
-1. ドメインが正しく設定されていることを確認するには、"**ステップ 4 ユーザーへのデプロイ**" で "**マイ ドメインの設定**" を確認します。
+1. ドメインが正しく設定されていることを確認するには、" **ステップ 4 ユーザーへのデプロイ** " で " **マイ ドメインの設定** " を確認します。
 
     ![ユーザーにデプロイされたドメイン](./media/jobscience-tutorial/ic784377.png "ユーザーにデプロイされたドメイン")
 
@@ -218,9 +218,9 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックスを示すスクリーンショット。ここでは、このステップで値を入力できます。](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
 
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+    b. **[ユーザー名]** ボックスに BrittaSimon の **電子メール アドレス** を入力します。
 
     c. **[パスワードを表示]** を選択し、 **[パスワード]** の値をメモします。
 
@@ -304,7 +304,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Jobscience] タイルをクリックすると、自動的に Jobscience アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -324,4 +324,3 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 [201]: ./media/jobscience-tutorial/tutorial_general_201.png
 [202]: ./media/jobscience-tutorial/tutorial_general_202.png
 [203]: ./media/jobscience-tutorial/tutorial_general_203.png
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 7fc9b4c4ae078cf7eb51c11a362bde3d940d1bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40ee2d9470f80f6bcfe79b0f96a871e1affe003c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89663083"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kumolus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kumolus の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "89663083"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Kumolus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Kumolus では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Kumolus では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Kumolus では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-kumolus-from-the-gallery"></a>ギャラリーからの Kumolus の追加
 
@@ -48,7 +48,7 @@ Azure AD への Kumolus の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Kumolus**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Kumolus** 」と入力します。
 1. 結果のパネルから **[Kumolus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -100,7 +100,7 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
     | role | user.assignedroles |
 
     > [!NOTE]
-    > Kumolus では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)を参照してください。
+    > Kumolus では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/active-directory-enterprise-app-role-management.md)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -136,7 +136,7 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-kumolus-sso"></a>Kumolus の SSO の構成
 
-**Kumolus** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Kumolus サポート チーム](mailto:kumoas@kumolus.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Kumolus** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Kumolus サポート チーム](mailto:kumoas@kumolus.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-kumolus-test-user"></a>Kumolus のテスト ユーザーの作成
 
@@ -156,8 +156,8 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Kumolus に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Kumolus タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Kumolus に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Kumolus タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Kumolus に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-Kumolus を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Kumolus を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

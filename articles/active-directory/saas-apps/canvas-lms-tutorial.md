@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 0725896c1357700cc0e05abfdaaa8acfa588f729
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761568"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -27,7 +27,7 @@ Canvas と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Canvas に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と Canvas の統合を構成するには、次の項目が必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Canvas では、**SP** によって開始される SSO がサポートされます
+* Canvas では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-canvas-from-the-gallery"></a>ギャラリーからの Canvas の追加
 
@@ -61,13 +61,13 @@ Canvas の Azure AD への統合を構成するには、Canvas をギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Canvas**」と入力し、結果ウィンドウで **Canvas** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Canvas** 」と入力し、結果ウィンドウで **Canvas** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Canvas](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Canvas で Azure AD のシングル サインオンを構成およびテストします。
+このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Canvas で Azure AD のシングル サインオンを構成およびテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Canvas 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Canvas で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -148,7 +148,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     c. **[Log Out URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
+    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした **パスワードの変更 URL** の値を貼り付けます。
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
@@ -174,9 +174,9 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -233,11 +233,11 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
    ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "ユーザーの追加")
 
-   a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
+   a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 ( **BrittaSimon** など) を入力します。
 
-   b. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
+   b. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
 
-   c. **[Login]\(ログイン\)** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス (**brittasimon\@contoso.com** など) を入力します。
+   c. **[Login]\(ログイン\)** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス ( **brittasimon\@contoso.com** など) を入力します。
 
    d. **[このアカウント作成についてユーザーに電子メールを送信]** を選択します。
 
@@ -250,13 +250,12 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Canvas] タイルをクリックすると、SSO を設定した Canvas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Canvas] タイルをクリックすると、SSO を設定した Canvas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

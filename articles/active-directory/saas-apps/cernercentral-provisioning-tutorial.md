@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88529867"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456338"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル:Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -45,7 +45,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 1 人のユーザーが初期テストを完了すると、Cerner ソリューション (Cerner Central ではない) にアクセスし、Cerner のユーザー リストにプロビジョニングされる予定のユーザーについて、ユーザー リストのすべてを割り当てることを Cerner Central が推奨します。  その他の Cerner ソリューションでは、ユーザー リスト内のユーザーのこのリストを利用します。
 
-* ユーザーを Cerner Central に割り当てるときに、割り当てのダイアログで**ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールのユーザーは、プロビジョニングから除外されます。
+* ユーザーを Cerner Central に割り当てるときに、割り当てのダイアログで **ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="configuring-user-provisioning-to-cerner-central"></a>Cerner Central へのユーザー プロビジョニングの構成
 
@@ -127,4 +127,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

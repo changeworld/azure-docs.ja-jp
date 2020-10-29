@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858236"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
 
@@ -27,7 +27,7 @@ LearnUpon と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して LearnUpon に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,9 +42,9 @@ LearnUpon と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 
-* LearnUpon では、**IDP** によって開始される SSO がサポートされます
+* LearnUpon では、 **IDP** によって開始される SSO がサポートされます
 
-* LearnUpon では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LearnUpon では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-learnupon-from-the-gallery"></a>ギャラリーからの LearnUpon の追加
@@ -65,13 +65,13 @@ Azure AD への LearnUpon の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**LearnUpon**」と入力し、結果パネルで **LearnUpon** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **LearnUpon** 」と入力し、結果パネルで **LearnUpon** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果リストの LearnUpon](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、LearnUpon で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、LearnUpon で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと LearnUpon 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 LearnUpon で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -146,13 +146,13 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Skip conditions]\(条件をスキップする\)** で **[いいえ]** を選択します。
 
-    d. **[SAML Token POST param name (SAML トークン POST パラメーター名)]** ボックスに、前述の SAML コンシューマー URL に対する POST 要求パラメーターの名前を入力します。ここには、確認と認証の対象である SAML アサーションが含まれます (**SAMLResponse** など)。
+    d. **[SAML Token POST param name (SAML トークン POST パラメーター名)]** ボックスに、前述の SAML コンシューマー URL に対する POST 要求パラメーターの名前を入力します。ここには、確認と認証の対象である SAML アサーションが含まれます ( **SAMLResponse** など)。
 
     e. **[Name Identifier Format]\(名前識別子形式\)** テキストボックスに、SAML アサーション内のユーザー ID (メール アドレス) の場所を示す値を入力します (例: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`)。
   
     f. Azure Portal のログイン画面でアップロード済みアイコンをクリックした際のユーザーの移動先を示す値を、 **[Identify Provider Location]\(プロバイダーの場所を特定\)** ボックスに入力します。
   
-    g. **[Sign Out URL]\(サインアウト URL\)** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    g. **[Sign Out URL]\(サインアウト URL\)** テキストボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     h. **[Manage finger prints (指紋の管理)]** をクリックし、ダウンロードした証明書の指紋をアップロードします。
 
@@ -180,7 +180,7 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -222,12 +222,12 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [LearnUpon] タイルをクリックすると、SSO を設定した LearnUpon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [LearnUpon] タイルをクリックすると、SSO を設定した LearnUpon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

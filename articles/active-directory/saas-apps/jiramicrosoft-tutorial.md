@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d4c8675d8f03d19a63b7564b05e2de1a809e763
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850525"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459477"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91850525"
 * ユーザーが自分の Azure AD アカウントで自動的に JIRA SAML SSO by Microsoft にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="description"></a>説明
 
@@ -69,7 +69,7 @@ JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次の�
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* JIRA SAML SSO by Microsoft では、**SP** によって開始される SSO がサポートされます
+* JIRA SAML SSO by Microsoft では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-jira-saml-sso-by-microsoft-from-the-gallery"></a>ギャラリーからの JIRA SAML SSO by Microsoft の追加
 
@@ -79,7 +79,7 @@ Azure AD への JIRA SAML SSO by Microsoft の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**JIRA SAML SSO by Microsoft**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **JIRA SAML SSO by Microsoft** 」と入力します。
 1. 結果のパネルから **[JIRA SAML SSO by Microsoft]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-jira-saml-sso-by-microsoft"></a>JIRA SAML SSO by Microsoft の Azure AD シングル サインオンの構成とテスト
@@ -190,7 +190,7 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
     1. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、 **[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
 
-    1. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[JIRA SAML SSO by Microsoft Domain and URLs]/(JIRA SAML SSO by Microsoft のドメインと URL\)** セクションにある**識別子、応答 URL、サインオン URL** ボックスにそれぞれ貼り付けます。
+    1. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[JIRA SAML SSO by Microsoft Domain and URLs]/(JIRA SAML SSO by Microsoft のドメインと URL\)** セクションにある **識別子、応答 URL、サインオン URL** ボックスにそれぞれ貼り付けます。
 
     1. ユーザーのログイン画面に表示するボタン名を **[Login Button Name]\(ログイン ボタン名\)** に入力します。
     
@@ -218,7 +218,7 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
     1. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
        > [!NOTE]
-       > インストールとトラブルシューティングについて詳しくは、[MS JIRA SSO コネクタ管理者ガイド](../ms-confluence-jira-plugin-adminguide.md)のページをご覧ください。 [FAQ](../ms-confluence-jira-plugin-faq.md) もご利用いただけます。
+       > インストールとトラブルシューティングについて詳しくは、[MS JIRA SSO コネクタ管理者ガイド](./ms-confluence-jira-plugin-adminguide.md)のページをご覧ください。 [FAQ](./ms-confluence-jira-plugin-adminguide.md) もご利用いただけます。
 
 ### <a name="create-jira-saml-sso-by-microsoft-test-user"></a>JIRA SAML SSO by Microsoft テスト ユーザーの作成
 
@@ -232,7 +232,7 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
     ![[Settings]\(設定\) メニューの [User management]\(ユーザー管理\) が選択されているスクリーンショット。](./media/jiramicrosoft-tutorial/user1.png)
 
-3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード**を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
+3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、 **パスワード** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
     ![資格情報を入力する [Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。](./media/jiramicrosoft-tutorial/user2.png)
 
@@ -258,14 +258,14 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [JIRA SAML SSO by Microsoft] タイルをクリックすると、SSO を設定した JIRA SAML SSO by Microsoft に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [JIRA SAML SSO by Microsoft] タイルをクリックすると、SSO を設定した JIRA SAML SSO by Microsoft に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で JIRA SAML SSO by Microsoft を試す](https://aad.portal.azure.com/)

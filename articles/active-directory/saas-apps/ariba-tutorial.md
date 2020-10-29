@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 36ca2bc8ba7812229c9c22cedd294085d5a63af7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 139aeb2fad37f96ad9e3d7fc801d574a93e896bd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055199"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
 
@@ -27,7 +27,7 @@ Ariba と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Ariba に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ Ariba と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Asana では、**SP** によって開始される SSO がサポートされます
+* Asana では、 **SP** によって開始される SSO がサポートされます
 
-* Ariba を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Ariba を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-ariba-from-the-gallery"></a>ギャラリーから Ariba を追加する
 
@@ -53,12 +53,12 @@ Azure AD への Ariba の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Ariba**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Ariba** 」と入力します。
 1. 結果のパネルから **[Ariba]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Ariba で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Ariba で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Ariba 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Ariba で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -104,9 +104,9 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
     | `https://<subdomain>.procurement-2.ariba.com/CUSTOM_URL` |
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、Ariba クライアント サポート チーム (**1-866-218-2155**) に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、Ariba クライアント サポート チーム ( **1-866-218-2155** ) に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -118,7 +118,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
+   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。  
    1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -143,23 +143,22 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
 ## <a name="configure-ariba-sso"></a>Ariba の SSO の構成
 
-アプリケーション用に SSO を構成するには、Ariba サポート チームに電話 (**1-866-218-2155**) で連絡し、指示された方法に従って、ダウンロードした**証明書 (Base64)** ファイルを提出してください。
+アプリケーション用に SSO を構成するには、Ariba サポート チームに電話 ( **1-866-218-2155** ) で連絡し、指示された方法に従って、ダウンロードした **証明書 (Base64)** ファイルを提出してください。
 
 ### <a name="create-ariba-test-user"></a>Ariba のテスト ユーザーの作成
 
-このセクションでは、Ariba で Britta Simon というユーザーを作成します。 Ariba サポート チーム (**1-866-218-2155**) と協力して、Ariba プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Ariba で Britta Simon というユーザーを作成します。 Ariba サポート チーム ( **1-866-218-2155** ) と協力して、Ariba プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Ariba] タイルをクリックすると、SSO を設定した Ariba に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Ariba] タイルをクリックすると、SSO を設定した Ariba に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

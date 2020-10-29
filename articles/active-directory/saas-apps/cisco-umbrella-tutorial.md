@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 86ba8527a6da3e995fc3cf63937b11f1915c82a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556030"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>チュートリアル:Azure Active Directory と Cisco Umbrella の統合
 
@@ -27,7 +27,7 @@ Cisco Umbrella と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで自動的に Cisco Umbrella にサインイン (シングル サインオン) できるようにします。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Cisco Umbrella と Azure AD の統合を構成するには、次の項目が必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cisco Umbrella では、**SP と IDP** によって開始される SSO がサポートされます
+* Cisco Umbrella では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-cisco-umbrella-from-the-gallery"></a>ギャラリーからの Cisco Umbrella の追加
 
@@ -61,13 +61,13 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Cisco Umbrella**」と入力して、結果パネルから **[Cisco Umbrella]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Cisco Umbrella** 」と入力して、結果パネルから **[Cisco Umbrella]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果リスト内の Cisco Umbrella](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと [アプリケーション名] 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 [アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
@@ -107,7 +107,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     c. **[サインオン URL]** ボックスに、「`https://login.umbrella.com/sso`」と入力します。
 
-5. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
+5. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから **メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -141,7 +141,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     ![次](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. **[Option A:Upload XML file]\(オプション A: XML ファイルのアップロード\)** で、Azure portal からダウンロードした**フェデレーション メタデータ XML** ファイルをアップロードします。アップロードすると、次の値が自動的に入力されます。 **[NEXT]\(次\)** をクリックします。
+6. **[Option A:Upload XML file]\(オプション A: XML ファイルのアップロード\)** で、Azure portal からダウンロードした **フェデレーション メタデータ XML** ファイルをアップロードします。アップロードすると、次の値が自動的に入力されます。 **[NEXT]\(次\)** をクリックします。
 
     ![Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
@@ -167,9 +167,9 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -184,7 +184,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**Cisco Umbrella**」と入力して選択します。
+2. アプリケーションの一覧で、「 **Cisco Umbrella** 」と入力して選択します。
 
     ![アプリケーションの一覧の [Cisco Umbrella] リンク](common/all-applications.png)
 
@@ -219,13 +219,13 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
     ![ユーザー](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
 
-    a. **[First Name]\(名\)** フィールドに、名前 (**Britta** など) を入力します。
+    a. **[First Name]\(名\)** フィールドに、名前 ( **Britta** など) を入力します。
 
-    b. **[Last Name]\(姓\)** フィールドに、姓 (**Simon** など) を入力します。
+    b. **[Last Name]\(姓\)** フィールドに、姓 ( **Simon** など) を入力します。
 
     c. **[Choose Delegated Admin Role]\(代理管理者ロールの選択\)** から自分のロールを選択します。
   
-    d. **[Email address]\(メール アドレス\)** フィールドに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
+    d. **[Email address]\(メール アドレス\)** フィールドに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
 
     e. **[Password]\(パスワード\)** フィールドにパスワードを入力します。
 
@@ -237,12 +237,12 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cisco Umbrella] タイルをクリックすると、SSO を設定した Cisco Umbrella に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Cisco Umbrella] タイルをクリックすると、SSO を設定した Cisco Umbrella に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

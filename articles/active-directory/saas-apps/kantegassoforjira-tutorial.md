@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b22bb16c583c0385b31bde89f30763cd4fb478a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 7d32fdd77fded90dc998db645aa6dcac2b502eb2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945925"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>チュートリアル: Azure Active Directory と Kantega SSO for JIRA の統合
 
@@ -27,7 +27,7 @@ Kantega SSO for JIRA と Azure AD を統合すると、次の利点が得られ�
 * ユーザーが自分の Azure AD アカウントで Kantega SSO for JIRA に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Kantega SSO for JIRA と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Kantega SSO for JIRA では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Kantega SSO for JIRA では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-kantega-sso-for-jira-from-the-gallery"></a>ギャラリーからの Kantega SSO for JIRA の追加
 
@@ -61,13 +61,13 @@ Azure AD への Kantega SSO for JIRA の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Kantega SSO for JIRA**」と入力し、結果パネルで **[Kantega SSO for JIRA]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Kantega SSO for JIRA** 」と入力し、結果パネルで **[Kantega SSO for JIRA]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Kantega SSO for JIRA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーを基に、Kantega SSO for JIRA で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Kantega SSO for JIRA で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Kantega SSO for JIRA 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Kantega SSO for JIRA で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
@@ -114,7 +114,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値は JIRA プラグインの構成中に受け取ります (これについてはこのチュートリアルの後半で説明します)。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -148,7 +148,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     !["Installed and ready to go!"\(インストールされ、使用できるようになりました\) と示すスクリーンショット。 [閉じる] アクションが選択されているダイアログ。](./media/kantegassoforjira-tutorial/addon33.png)
 
-1.  **Manage**をクリックします。
+1.  **Manage** をクリックします。
 
     ![[管理] ボタンが選択されている "Kantega SSO" アプリ ページを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon34.png)
     
@@ -168,7 +168,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     ![[アプリケーション ID/URI] というテキストボックスと [コピー] ボタンが強調表示され、[次へ] ボタンが選択された [App properties]\(アプリのプロパティ\) セクションを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a。 **[アプリケーション ID/URI]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションで**識別子、応答 URL、サインオン URL** として使用します。
+    a。 **[アプリケーション ID/URI]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションで **識別子、応答 URL、サインオン URL** として使用します。
 
     b. **[次へ]** をクリックします。
 
@@ -188,7 +188,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     b. **[次へ]** をクリックします。
 
-1. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。
+1. 署名証明書を確認し、 **[Next]\(次へ\)** をクリックします。
 
     ![[次へ] ボタンが選択されている [Signature verification]\(署名の検証\) セクションを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon9.png)
 
@@ -230,7 +230,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -242,11 +242,11 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
 このセクションでは、Britta Simon に Kantega SSO for JIRA へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Kantega SSO for JIRA]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Kantega SSO for JIRA]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[Kantega SSO for JIRA]** を選択します。
+2. アプリケーションの一覧で、 **[Kantega SSO for JIRA]** を選択します。
 
     ![アプリケーションの一覧の Kantega SSO for JIRA のリンク](common/all-applications.png)
 
@@ -298,12 +298,12 @@ Azure AD ユーザーが JIRA にサインインできるようにするには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル内で [Kantega SSO for JIRA] タイルをクリックすると、SSO を設定した Kantega SSO for JIRA に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル内で [Kantega SSO for JIRA] タイルをクリックすると、SSO を設定した Kantega SSO for JIRA に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

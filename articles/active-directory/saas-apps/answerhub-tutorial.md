@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713592"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
 
@@ -27,7 +27,7 @@ AnswerHub と Azure AD の統合には、以下の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して AnswerHub に自動的にサインイン (シングル サインオン) できるようにできます。
 * 中央の場所 (Azure portal) から自分のアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -61,7 +61,7 @@ AnswerHub の Azure AD への統合を設定するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**AnswerHub**」と入力します。 結果リストで **[AnswerHub]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「 **AnswerHub** 」と入力します。 結果リストで **[AnswerHub]** を選択し、 **[追加]** を選択します。
 
      ![結果一覧の AnswerHub](common/search-new-app.png)
 
@@ -146,7 +146,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
   
     b. **[IDP Logout URL]\(IDP ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** を貼り付けます。
 
-    c. **[IDP Name Identifier Format]\(IDP 名前識別子形式\)** ボックスに、Azure portal の **[ユーザー属性]** セクションで選択した**識別子**の値を入力します。
+    c. **[IDP Name Identifier Format]\(IDP 名前識別子形式\)** ボックスに、Azure portal の **[ユーザー属性]** セクションで選択した **識別子** の値を入力します。
   
     d. **[Keys and Certificates]\(キーと証明書\)** を選択します。
 
@@ -178,9 +178,9 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
     ![ユーザー プロパティ](common/user-properties.png)
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
   
-    b. **[ユーザー名]** ボックスに、「**brittasimon\@<yourcompanydomain.extension>** 」と入力します。  
+    b. **[ユーザー名]** ボックスに、「 **brittasimon\@<yourcompanydomain.extension>** 」と入力します。  
     たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
@@ -233,7 +233,7 @@ Azure AD ユーザーが AnswerHub にサインインできるようにするに
 
    ![このスクリーンショットは、[User and Groups]\(ユーザーとグループ\) タブが選択され、[Create or import users]\(ユーザーの作成またはインポート\) リンクがコールアウトされた状態の AnswerHub ページを示しています。](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
 
-5. 追加したい有効な Azure AD アカウントの**メール アドレス**、**ユーザー名**、**パスワード**を適切なボックスに入力してから、 **[Save]\(保存\)** を選択します。
+5. 追加したい有効な Azure AD アカウントの **メール アドレス** 、 **ユーザー名** 、 **パスワード** を適切なボックスに入力してから、 **[Save]\(保存\)** を選択します。
 
 > [!NOTE]
 > AnswerHub から提供されている他のユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントを設定できます。
@@ -242,13 +242,12 @@ Azure AD ユーザーが AnswerHub にサインインできるようにするに
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [AnswerHub] タイルを選択すると、SSO を設定した AnswerHub に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [AnswerHub] タイルを選択すると、SSO を設定した AnswerHub に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory の統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory の統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

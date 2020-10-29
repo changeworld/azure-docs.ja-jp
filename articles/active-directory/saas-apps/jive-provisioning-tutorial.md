@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: caeff5be83e02948baab4ecbcf05630eacff74df
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312098"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459375"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル:Jive を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、Jive アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Jive アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-jive"></a>ユーザーを Jive に割り当てる際の重要なヒント
 
@@ -67,7 +67,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
+    a. **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の **システム管理者** プロファイルが割り当てられている Jive アカウント名を入力します。
    
     b. **[JIVE 管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
    

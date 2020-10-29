@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2eced63b8f06f1d54973a603dabaeb14ee7f7e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757454"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457879"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Apple School Manager を構成する
 
 
 
-このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Apple School Manager と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、[Apple School Manager](https://school.apple.com/) に対するユーザーのプロビジョニングおよびプロビジョニング解除が、Azure AD プロビジョニング サービスを使用して自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Apple School Manager と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、[Apple School Manager](https://school.apple.com/) に対するユーザーのプロビジョニングおよびプロビジョニング解除が、Azure AD プロビジョニング サービスを使用して自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]
@@ -38,17 +38,17 @@ ms.locfileid: "91757454"
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
+* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 管理者、サイト マネージャー、またはユーザー マネージャーの役割を持つ Apple School Manager のアカウント。
 
 > [!NOTE]
 > Azure AD へのトークン転送と正常な接続の確立は 4 日以内に完了する必要があります。そうしないと、このプロセスを再度開始しなければならなくなります。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
-1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
-2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
-3. [Azure AD と Apple School Manager の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。
+1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
+2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+3. [Azure AD と Apple School Manager の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。
 
 ## <a name="step-2-configure-apple-school-manager-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Apple School Manager を構成する
 
@@ -64,15 +64,15 @@ ms.locfileid: "91757454"
 
 ## <a name="step-3-add-apple-school-manager-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Apple School Manager を追加する
 
-Azure AD アプリケーション ギャラリーから Apple School Manager を追加して、Apple School Manager へのプロビジョニングの管理を開始します。 前に SSO 用に Apple School Manager を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。
+Azure AD アプリケーション ギャラリーから Apple School Manager を追加して、Apple School Manager へのプロビジョニングの管理を開始します。 前に SSO 用に Apple School Manager を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-application-portal.md)を参照してください。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* Apple School Manager にユーザーを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
+* Apple School Manager にユーザーを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
-* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-apple-school-manager"></a>手順 5. Apple School Manager への自動ユーザー プロビジョニングを構成する
 
@@ -92,7 +92,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、Apple School Manager から取得した **SCIM 2.0 ベース URL およびアクセス トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD が Apple School Manager に接続できることを確認します。 接続できない場合は、お使いの Apple School Manager アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、Apple School Manager から取得した **SCIM 2.0 ベース URL およびアクセス トークン** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD が Apple School Manager に接続できることを確認します。 接続できない場合は、お使いの Apple School Manager アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -144,13 +144,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
-1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
+1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [Apple School Manager で SCIM を使用するための必要条件を確認する](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
 * [Apple School Manager でのユーザー ID の用途](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
@@ -160,9 +160,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * [Apple School Manager で SCIM のアクティビティを表示する](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
 * [Apple School Manager で既存の SCIM トークンと接続を管理する](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
 * [Apple School Manager で SCIM 接続を解除する](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Apple School Manager で既存の SCIM トークンと接続を管理する](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
 * [Apple School Manager での SCIM 接続のトラブルシューティング](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

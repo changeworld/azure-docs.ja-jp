@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758142"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458185"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>チュートリアル:Azure AD シングル サインオンと Maverics Identity Orchestrator SAML Connector を統合する
 
@@ -158,14 +158,14 @@ Azure portal または Azure CLI のいずれかを使用して、Azure Key Vaul
 
 **Azure Portal の使用**
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. [新しいキー コンテナーを作成します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)。
-1. [キー コンテナーにシークレットを追加します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)。
-1. [アプリケーションを Azure AD に登録します](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)。
-1. [アプリケーションによるシークレットの使用を承認します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)。
+1. [新しいキー コンテナーを作成します](../../key-vault/secrets/quick-create-portal.md#create-a-vault)。
+1. [キー コンテナーにシークレットを追加します](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
+1. [アプリケーションを Azure AD に登録します](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
+1. [アプリケーションによるシークレットの使用を承認します](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
 
 **Azure CLI の使用**
 
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を開き、次のコマンドを入力します。
+1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を開き、次のコマンドを入力します。
 
     ```shell
     az login
@@ -193,7 +193,7 @@ Azure portal または Azure CLI のいずれかを使用して、Azure Key Vaul
     generated in the previous step
     ```
 
-1. Azure Key Vault からシークレットを読み込むには、次の形式で、*azure-credentials.json* ファイルにある資格情報を使用して */etc/maverics/maverics.env* ファイルに環境変数 `MAVERICS_SECRET_PROVIDER` を設定します。
+1. Azure Key Vault からシークレットを読み込むには、次の形式で、 *azure-credentials.json* ファイルにある資格情報を使用して */etc/maverics/maverics.env* ファイルに環境変数 `MAVERICS_SECRET_PROVIDER` を設定します。
  
    `MAVERICS_SECRET_PROVIDER='azurekeyvault://<KEYVAULT NAME>.vault.azure.net?clientID=<APPID>&clientSecret=<PASSWORD>&tenantID=<TENANT>'`
 
@@ -201,7 +201,7 @@ Azure portal または Azure CLI のいずれかを使用して、Azure Key Vaul
 
 ## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>SAML ベースの SSO のために Azure AD でアプリケーションを構成する
 
-1. Azure AD テナントで、 **[エンタープライズ アプリケーション]** にアクセスし、**Maverics Identity Orchestrator SAML Connector** を検索して選択します。
+1. Azure AD テナントで、 **[エンタープライズ アプリケーション]** にアクセスし、 **Maverics Identity Orchestrator SAML Connector** を検索して選択します。
 
 1. Maverics Identity Orchestrator SAML Connector の **[プロパティ]** ペインで、 **[ユーザーの割り当てが必要ですか?]** を **[いいえ]** に設定して、新しく移行したユーザーがアプリケーションを使用できるようにします。
 
@@ -388,7 +388,7 @@ connectors:
 
 移行ワークフローを構成するには、次の手順を実行します。
 
-1. ワークフローに名前を付けます (例: **SiteMinder to Azure AD Migration**)。
+1. ワークフローに名前を付けます (例: **SiteMinder to Azure AD Migration** )。
 1. `endpoint` を指定します。これは、ワークフローが公開される HTTP パスであり、要求に応答してそのワークフローの `actions` をトリガーします。 通常、`endpoint` はプロキシ処理されるアプリに対応します (例: `/my_app`)。 値には、先頭と末尾の両方のスラッシュを含める必要があります。
 1. ワークフローに適切な `actions` を追加します。
 
@@ -428,7 +428,7 @@ Azure コネクタは、セッションが存在しないという想定で、`l
 
 認証が完了すると、結果として作成されたセッション トークンが Maverics に渡されます。 SiteMinder コネクタの `emulate` メソッドを使用して、Cookie ベースのセッションやヘッダー ベースのセッションがエミュレートされ、アプリケーションに必要な追加の属性で要求が装飾されます。
 
-1. ワークフローに名前を付けます (例: **SiteMinder Session Abstraction**)。
+1. ワークフローに名前を付けます (例: **SiteMinder Session Abstraction** )。
 1. `endpoint` を指定します。これはプロキシ処理されるアプリに対応します。 値には、先頭と末尾の両方のスラッシュを含める必要があります (例: `/my_app/`)。
 1. ワークフローに適切な `actions` を追加します。
 

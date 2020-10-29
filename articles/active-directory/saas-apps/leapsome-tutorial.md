@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c58c9febcbd8c1007938b16545337f07f1a0da63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc8cce7b56e0d9d4b3dc33dc1ad2d8c16582841
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88519151"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458710"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Leapsome の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88519151"
 * ユーザーが自分の Azure AD アカウントを使用して Leapsome に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Leapsome では、**SP と IDP** によって開始される SSO がサポートされます
+* Leapsome では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-leapsome-from-the-gallery"></a>ギャラリーからの Leapsome の追加
 
@@ -49,7 +49,7 @@ Azure AD への Leapsome の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Leapsome**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Leapsome** 」と入力します。
 1. 結果のパネルから **[Leapsome]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-leapsome"></a>Leapsome の Azure AD シングル サインオンの構成とテスト
@@ -161,7 +161,7 @@ Leapsome に対する Azure AD SSO を構成してテストするには、次の
 
     c. **[Reply URL (receives response from your identity provider)]\(応答 URL (ID プロバイダーからの応答をここで受け取る)\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** テキストボックスに貼り付けます。
 
-    d. **[SSO Login URL \(provided by identity provider\)]\(SSO ログイン URL \(ID プロバイダーから提供されたもの\)\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[SSO Login URL \(provided by identity provider\)]\(SSO ログイン URL \(ID プロバイダーから提供されたもの\)\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     e. Azure portal からダウンロードした証明書を `--BEGIN CERTIFICATE and END CERTIFICATE--` コメントなしでコピーして、 **[証明書] (ID プロバイダーによって提供されたもの)** テキストボックスに貼り付けます。
 
@@ -175,14 +175,14 @@ Leapsome に対する Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Leapsome] タイルをクリックすると、SSO を設定した Leapsome に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Leapsome] タイルをクリックすると、SSO を設定した Leapsome に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Leapsome を試す](https://aad.portal.azure.com/)

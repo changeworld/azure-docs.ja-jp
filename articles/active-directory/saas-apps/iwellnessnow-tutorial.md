@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 8221abe3ff726a7f94d49f69ae18368f87925901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4143d44591d92111d4d4a6cbba3e9059f201a29c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850831"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459613"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>チュートリアル:iWellnessNow と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91850831"
 * ユーザーが自分の Azure AD アカウントで iWellnessNow に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* iWellnessNow では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* iWellnessNow では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-iwellnessnow-from-the-gallery"></a>ギャラリーからの iWellnessNow の追加
 
@@ -49,7 +49,7 @@ Azure AD への iWellnessNow の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iWellnessNow**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **iWellnessNow** 」と入力します。
 1. 結果のパネルから **[iWellnessNow]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -75,24 +75,24 @@ iWellnessNow で Azure AD SSO を構成してテストするには、次の構�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **サービス プロバイダー メタデータ ファイル**を保持しており、**IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+1. **サービス プロバイダー メタデータ ファイル** を保持しており、 **IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     > [!Note]
-    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
-1. **サービス プロバイダー メタデータ ファイル**がないときに **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **サービス プロバイダー メタデータ ファイル** がないときに **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[iWellnessNow のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
@@ -119,7 +119,7 @@ iWellnessNow で Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="configure-iwellnessnow-sso"></a>iWellnessNow の SSO の構成
 
-**iWellnessNow** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [iWellnessNow サポート チーム](mailto:info@iwellnessnow.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**iWellnessNow** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [iWellnessNow サポート チーム](mailto:info@iwellnessnow.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -159,13 +159,12 @@ iWellnessNow で Azure AD SSO を構成してテストするには、次の構�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [iWellnessNow] タイルをクリックすると、SSO を設定した iWellnessNow に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [iWellnessNow] タイルをクリックすると、SSO を設定した iWellnessNow に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

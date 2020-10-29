@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 0aa0dab7b512c85fbbdf374c962e6ee8e1c7d616
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760728"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR Software の統合
 
@@ -27,7 +27,7 @@ Cezanne HR Software と Azure AD の統合には、次の利点があります�
 * ユーザーが自分の Azure AD アカウントで Cezanne HR Software に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Cezanne HR Software と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cezanne HR Software では、**SP** Initiated SSO がサポートされます
+* Cezanne HR Software では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-cezanne-hr-software-from-the-gallery"></a>ギャラリーからの Cezanne HR Software の追加
 
@@ -61,13 +61,13 @@ Azure AD への Cezanne HR Software の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Cezanne HR Software**」と入力し、結果ウィンドウで **Cezanne HR Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Cezanne HR Software** 」と入力し、結果ウィンドウで **Cezanne HR Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Cezanne HR Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cezanne HR Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Cezanne HR Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Cezanne HR Software 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Cezanne HR Software で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -110,7 +110,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を入手するには、[Cezanne HR Software クライアント サポート チーム](https://cezannehr.com/services/support/)にお問い合わせください。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -150,7 +150,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     c. **[SAML Binding (SAML バインディング)]** を "POST" に変更します。
 
-    d. **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     e. [ユーザー ID の属性名] ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
@@ -178,9 +178,9 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -231,9 +231,9 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     a. **[Internal User (内部ユーザー)]** をオフに設定します。
 
-    b. **[名]** ボックスに、ユーザーの名を入力します (この例では **Britta**)。  
+    b. **[名]** ボックスに、ユーザーの名を入力します (この例では **Britta** )。  
 
-    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
 
     d. **[電子メール]** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
@@ -265,12 +265,12 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cezanne HR Software] タイルをクリックすると、SSO を設定した Cezanne HR Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Cezanne HR Software] タイルをクリックすると、SSO を設定した Cezanne HR Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

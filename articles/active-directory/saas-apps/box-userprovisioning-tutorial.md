@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dde22fe9997e41d6d17fba94e6b9523d82c7b910
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312908"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456825"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,7 +32,7 @@ Box と Azure AD の統合を構成するには、次のものが必要です。
 - ボックス ビジネス プランまたは進化版
 
 > [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を*使用しない*ことをお勧めします。
+> このチュートリアルの手順をテストする場合、運用環境を *使用しない* ことをお勧めします。
 
 > [!NOTE]
 > 最初に Box アプリケーションでアプリを有効にする必要があります。
@@ -48,7 +48,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、Box アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Box アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="assign-users-and-groups"></a>ユーザーとグループの割り当て
 Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box へのアクセスを許可するユーザーとグループを指定できます。 ユーザーまたはグループを割り当てると、次の処理が実行されます。
@@ -60,7 +60,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
   * ユーザー オブジェクトのみをプロビジョニングするよう構成した場合は、直接割り当てられたすべてのユーザーがプロビジョニング キューに配置され、さらに、割り当てられたグループのメンバーであるユーザーもすべてプロビジョニング キューに配置されます。 
   * グループ オブジェクトをプロビジョニングするよう構成した場合は、割り当てられたすべてのグループ オブジェクトと、それらのグループのメンバーであるユーザーもすべて Box にプロビジョニングされます。 Box への書き込み時に、グループとユーザーのメンバーシップは保持されます。
 
-**[属性] の [シングル サインオン]** タブを使用すると、SAML ベースの認証時に Box に提示するユーザーの属性 (または要求) を構成できます。また、**[属性] の [プロビジョニング]** タブを使用すると、プロビジョニング操作時の Azure AD から Box へのユーザーとグループの属性のフロー方法を構成できます。
+**[属性] の [シングル サインオン]** タブを使用すると、SAML ベースの認証時に Box に提示するユーザーの属性 (または要求) を構成できます。また、 **[属性] の [プロビジョニング]** タブを使用すると、プロビジョニング操作時の Azure AD から Box へのユーザーとグループの属性のフロー方法を構成できます。
 
 ### <a name="important-tips-for-assigning-users-to-box"></a>ユーザーを Box に割り当てる際の重要なヒント 
 

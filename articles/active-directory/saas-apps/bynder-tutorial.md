@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a0318b8deedf8f4725efee2f3c2723f1a4fe6d3
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: af8d75120950e43a28e5ce5449928a55ca4ed943
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740243"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456604"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91740243"
 * ユーザーが自分の Azure AD アカウントを使用して Bynder に自動的にサインインできるようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Bynder では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Bynder では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Bynder では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Bynder では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-bynder-from-the-gallery"></a>ギャラリーからの Bynder の追加
 
@@ -50,7 +50,7 @@ Azure AD への Bynder の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Bynder**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Bynder** 」と入力します。
 1. 結果のパネルから **[Bynder]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -106,9 +106,9 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](common/edit-attribute.png)
 
-1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
+    1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
 
     1. ラジオ ボタンのリストから **[セキュリティ グループ]** を選択します。
 
@@ -128,7 +128,7 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="configure-bynder-sso"></a>Bynder SSO の構成
 
-**Bynder** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と Azure portal からコピーした適切な URL を [Bynder サポート チーム](https://www.bynder.com/en/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Bynder** 側でシングル サインオンを構成するには、ダウンロードした **メタデータ XML** と Azure portal からコピーした適切な URL を [Bynder サポート チーム](https://www.bynder.com/en/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -171,12 +171,12 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Bynder] タイルをクリックすると、SSO を設定した Bynder に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Bynder] タイルをクリックすると、SSO を設定した Bynder に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

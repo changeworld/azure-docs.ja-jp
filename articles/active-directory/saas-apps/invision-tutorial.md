@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 2e8f542f8a734f5bd6592ebc743b30676dd61f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1be5a46afbaa248232ff113cbfb45a8798af77c1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850552"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459868"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と InVision の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91850552"
 * ユーザーが自分の Azure AD アカウントを使用して InVision に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* InVision では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* InVision を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* InVision では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* InVision を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-invision-from-the-gallery"></a>ギャラリーからの InVision の追加
 
@@ -50,7 +50,7 @@ Azure AD への InVision の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**InVision**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **InVision** 」と入力します。
 1. 結果のパネルから **[InVision]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-invision"></a>InVision の Azure AD シングル サインオンの構成とテスト
@@ -143,17 +143,17 @@ InVision で Azure AD SSO を構成してテストするには、次の構成要
 
     ![この手順の値を入力する [Single sign-on]\(シングル サインオン\) ページを示すスクリーンショット。](./media/invision-tutorial/config4.png)
 
-    a. **[Require SSO for every member of < account name >]\(<アカウント名> のすべてのメンバーに対して SSO を要求する\)** を**オン**に変更します。
+    a. **[Require SSO for every member of < account name >]\(<アカウント名> のすべてのメンバーに対して SSO を要求する\)** を **オン** に変更します。
 
     b. **[name]\(名前\)** ボックスに、名前 (`azureadsso` など) を入力します。
 
     c. **[Sign-in URL]\(サインイン URL\)** ボックスに、サインオン URL 値を入力します。
 
-    d. **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト** URL の値を貼り付けます。
+    d. **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト** URL の値を貼り付けます。
 
-    e. ダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容をコピーして **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
+    e. ダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容をコピーして **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
-    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、**名前 ID の形式**に `Unspecified` を使用します。
+    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、 **名前 ID の形式** に `Unspecified` を使用します。
 
     g. **[HASH Algorithm]\(ハッシュ アルゴリズム\)** のドロップダウンで **[SHA-256]** を選択します。
 
@@ -171,7 +171,7 @@ InVision で Azure AD SSO を構成してテストするには、次の構成要
 
     ![[People]\(ユーザー\) が選択されている [Team]\(チーム\) タブを示すスクリーンショット。](./media/invision-tutorial/config2.png)
 
-1. **+ アイコン**をクリックして、新しいユーザーを追加します。
+1. **+ アイコン** をクリックして、新しいユーザーを追加します。
 
     ![ユーザーを追加する [+] アイコンを示すスクリーンショット。](./media/invision-tutorial/user1.png)
 
@@ -187,18 +187,18 @@ InVision で Azure AD SSO を構成してテストするには、次の構成要
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [InVision] タイルをクリックすると、SSO を設定した InVision に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [InVision] タイルをクリックすると、SSO を設定した InVision に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で InVision を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって InVision を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって InVision を保護する方法](/cloud-app-security/proxy-intro-aad)
