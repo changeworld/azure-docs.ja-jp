@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760199"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913672"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator のサブスクリプション キー。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator サービスをサブスクライブし、お客様のキーを取得してください。
+- Content Moderator のサブスクリプション キー。 [Cognitive Services アカウントの作成](../cognitive-services-apis-create-account.md)に関するページの手順に従って、Content Moderator サービスをサブスクライブし、お客様のキーを取得してください。
 - [Facebook アカウント](https://www.facebook.com/)。
 
 ## <a name="create-a-review-team"></a>レビュー チームを作成する
@@ -48,11 +48,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-image-moderation-workflow"></a>画像モデレーション ワークフローを構成する
 
-「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、カスタム画像ワークフローを作成します。 Content Moderator では、このワークフローを使用して自動的に Facebook 上の画像を確認し、一部をレビュー ツールに送信します。 ワークフローの**名前**を記録しておきます。
+「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、カスタム画像ワークフローを作成します。 Content Moderator では、このワークフローを使用して自動的に Facebook 上の画像を確認し、一部をレビュー ツールに送信します。 ワークフローの **名前** を記録しておきます。
 
 ## <a name="configure-text-moderation-workflow"></a>テキスト モデレーション ワークフローを構成する
 
-もう一度、[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)に関するガイドを参照して、今度はカスタム テキスト ワークフローを作成します。 Content Moderator では、このワークフローを使用して、テキスト コンテンツを自動的に確認します。 ワークフローの**名前**を記録しておきます。
+もう一度、[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)に関するガイドを参照して、今度はカスタム テキスト ワークフローを作成します。 Content Moderator では、このワークフローを使用して、テキスト コンテンツを自動的に確認します。 ワークフローの **名前** を記録しておきます。
 
 ![テキスト ワークフローを構成する](images/text-workflow-configure.PNG)
 
@@ -64,14 +64,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure portal](https://portal.azure.com/) にサインインして、次の手順を実行します。
 
-1. [[Azure Functions]](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) ページの表示に従って Azure Function アプリを作成します。
+1. [[Azure Functions]](../../azure-functions/functions-create-function-app-portal.md) ページの表示に従って Azure Function アプリを作成します。
 1. 新しく作成した Function アプリに移動します。
 1. アプリ内で **[プラットフォーム機能]** タブに移動し、 **[構成]** を選択します。 次のページの **[アプリケーション設定]** セクションで、 **[新しいアプリケーション設定]** を選択し、次のキー/値ペアを追加します。
     
     | アプリ設定の名前 | value   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | Content Moderator のチーム ID  | 
-    | `cm:SubscriptionKey` | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
+    | `cm:SubscriptionKey` | Content Moderator のサブスクリプション キー - [資格情報](./review-tool-user-guide/configure.md#credentials)に関するページを参照してください |
     | `cm:Region` | Content Moderator のリージョン名 (スペースなし)。 この名前は、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
     | `cm:ImageWorkflow` | 画像に対して実行するワークフローの名前 |
     | `cm:TextWorkflow` | テキストに対して実行するワークフローの名前 |
@@ -86,13 +86,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[関数の追加] ボタンが強調表示されている Azure Functions ウィンドウ。](images/new-function.png)
 
     1. **[Http trigger]\(Http トリガー\)** というタイルをクリックします。
-    1. 「**FBListener**」という名前を入力します。 **[Authorization Level]\(承認レベル\)** フィールドは **[Function]\(関数\)** に設定する必要があります。
+    1. 「 **FBListener** 」という名前を入力します。 **[Authorization Level]\(承認レベル\)** フィールドは **[Function]\(関数\)** に設定する必要があります。
     1. **Create** をクリックしてください。
     1. **run.csx** の内容を **FbListener/run.csx** の内容で置き換えます
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
-1. **CMListener** という名前の新しい **Http トリガー**関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 **run.csx** の内容を **CMListener/run.csx** の内容で置き換えます
+1. **CMListener** という名前の新しい **Http トリガー** 関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 **run.csx** の内容を **CMListener/run.csx** の内容で置き換えます
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
@@ -110,22 +110,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. 適当な名前を付けます
     1. **[Webhooks] > [設定]** を選択します
     1. ドロップダウン メニューで **[ページ]** を選択し、 **[Subscribe to this object]\(このオブジェクトをサブスクライブする\)** を選択します
-    1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、 **[Function App Settings]\(Function アプリの設定\)** で構成した**トークンを確認**します。
+    1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、 **[Function App Settings]\(Function アプリの設定\)** で構成した **トークンを確認** します。
     1. サブスクライブが完了したら、フィードまで下にスクロールして、 **[Subscribe]\(サブスクライブ\)** を選択します。
-    1. **フィード**行の **[テスト]** ボタンをクリックして、テスト メッセージを FBListener Azure 関数に送信してから、 **[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
+    1. **フィード** 行の **[テスト]** ボタンをクリックして、テスト メッセージを FBListener Azure 関数に送信してから、 **[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
 
 1. Facebook ページを作成します。
 
     > [!IMPORTANT]
     > 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、セクション 2、3、4 を実行できません。
 
-    1. [Facebook](https://www.facebook.com/bookmarks/pages) に移動し、**新しい Facebook ページ**を作成します。
+    1. [Facebook](https://www.facebook.com/bookmarks/pages) に移動し、 **新しい Facebook ページ** を作成します。
     1. Facebook アプリがこのページにアクセスできるようにするには、次の手順を実行します。
         1. [Graph API Explorer](https://developers.facebook.com/tools/explorer/) に移動します。
         1. **[Application]\(アプリケーション\)** を選択します。
-        1. **[Page Access Token]\(ページ アクセス トークン\)** を選択し、**Get** 要求を送信します。
+        1. **[Page Access Token]\(ページ アクセス トークン\)** を選択し、 **Get** 要求を送信します。
         1. 応答の **[Page ID]\(ページ ID\)** をクリックします。
-        1. URL に **/subscribed_apps** を付加し、**Get** (空の応答) 要求を送信します。
+        1. URL に **/subscribed_apps** を付加し、 **Get** (空の応答) 要求を送信します。
         1. **Post** 要求を送信します。 **success: true** という応答を受け取ります。
 
 3. 無期限の Graph API アクセス トークンを作成します。
@@ -134,11 +134,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     2. **[Application]\(アプリケーション\)** オプションを選択します。
     3. **[Get User Access Token]\(ユーザー アクセス トークンの取得\)** オプションを選択します。
     4. **[Select Permissions]\(アクセス許可の選択\)** で **manage_pages** および **publish_pages** オプションを選択します。
-    5. この**アクセス トークン** (短命トークン) は、次の手順で使用します。
+    5. この **アクセス トークン** (短命トークン) は、次の手順で使用します。
 
 4. 次のいくつかの手順では Postman を使用します。
 
-    1. **Postman** を開きます (または[こちら](https://www.getpostman.com/)で入手します)。
+    1. **Postman** を開きます (または [こちら](https://www.getpostman.com/)で入手します)。
     2. 以下の 2 つのファイルをインポートします。
         1. [Postman コレクション](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json)
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       

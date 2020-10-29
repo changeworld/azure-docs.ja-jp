@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332391"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913519"
 ---
 # <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
@@ -232,7 +232,7 @@ LargePersonGroup または LargeFaceList の Persons または Faces は、ト�
 
 比較的長い待機時間を許容できる場合は、新しいデータを追加した直後にトレーニング操作をトリガーする必要はありません。 代わりに、トレイン操作をメイン ロジックから分割して、定期的にトリガーすることができます。 この戦略は、許容できる待機時間がある動的なシナリオに適しています。 これは、トレーニングの頻度をさらに減らすために、静的なシナリオに適用することができます。
 
-`TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
+`TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](/dotnet/api/system.timers.timer) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
 
 ```csharp
 private static void Main()
