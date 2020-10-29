@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: c2f2e86a3080b0edfcb0a699ac9b3a78ee1b5a52
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940788"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519420"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91940788"
 * ユーザーが自分の Azure AD アカウントを使用して NetSuite に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ NetSuite では、以下がサポートされます。
 * IDP-Initiated SSO。
 * JIT (Just-In-Time) ユーザー プロビジョニング。
 * [自動化されたユーザー プロビジョニング](NetSuite-provisioning-tutorial.md)。
-* NetSuite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* NetSuite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -57,7 +57,7 @@ NetSuite の Azure AD への統合を構成するには、次の手順を実行�
 1. 左側のウィンドウで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NetSuite**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NetSuite** 」と入力します。
 1. 結果ペインで、 **[NetSuite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netsuite"></a>NetSuite の Azure AD シングル サインオンの構成とテスト
@@ -132,7 +132,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 1. **[ユーザー]** プロパティ ウィンドウで、以下の手順に従います。
 
-   a. **[名前]** ボックスに「**B.Simon**」と入力します。  
+   a. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
    b. **[ユーザー名]** ボックスに「username@companydomain.extension」と入力します (たとえば、B.Simon@contoso.com)。  
    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。  
    d. **［作成］** を選択します
@@ -204,7 +204,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
     b. **[Company Information]\(会社情報\)** ウィンドウで、右側の列の **[Account ID]\(アカウント ID\)** の値をコピーします。
 
-    c. NetSuite アカウントからコピーした**アカウント ID** を Azure AD の **[属性値]** ボックスに貼り付けます。
+    c. NetSuite アカウントからコピーした **アカウント ID** を Azure AD の **[属性値]** ボックスに貼り付けます。
 
 10. ユーザーは NetSuite にシングル サインオンする前に、まず、NetSuite で適切なアクセス許可が割り当てられている必要があります。 これらのアクセス許可を割り当てるには、以下を実行します。
 
@@ -218,7 +218,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
     c. **[New Role]\(新しいロール\)** を選択します。
 
-    d. 新しいロールの**名前**を入力します。
+    d. 新しいロールの **名前** を入力します。
 
     ![[セットアップ マネージャー] を示すスクリーンショット。ここでは、ロールの名前を入力できます。](./media/NetSuite-tutorial/ns-new-role.png)
 
@@ -258,14 +258,14 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [NetSuite] タイルを選択すると、SSO を設定した NetSuite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [NetSuite] タイルを選択すると、SSO を設定した NetSuite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 - [Azure AD で NetSuite を試す](https://aad.portal.azure.com/)
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって NetSuite を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって NetSuite を保護する方法](/cloud-app-security/proxy-intro-aad)

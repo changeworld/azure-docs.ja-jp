@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: d257935aa3e9ad54b64b0f416119931661809172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545966"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519828"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoom の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545966"
 * ユーザーが自分の Azure AD アカウントを使用して Zoom に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Zoom では、**SP** Initiated SSO がサポートされます。 
-* Zoom では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)がサポートされます。
+* Zoom では、 **SP** Initiated SSO がサポートされます。 
+* Zoom では、 [**自動化された** ユーザー プロビジョニング](./zoom-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-zoom-from-the-gallery"></a>ギャラリーからの Zoom の追加
 
@@ -50,7 +50,7 @@ Azure AD への Zoom の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zoom**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Zoom** 」と入力します。
 1. 結果パネルで **[Zoom]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Zoom の Azure AD シングル サインオンの構成とテスト
@@ -96,7 +96,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Azure AD でロールを構成する方法については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に関するページを参照してください。
+> Azure AD でロールを構成する方法については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](../develop/active-directory-enterprise-app-role-management.md)に関するページを参照してください。
 
 > [!NOTE]
 > Zoom は、グループ要求が SAML ペイロードに含まれていることを想定している場合があります。 グループを作成した場合は、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にグループ情報を連絡し、Zoom クライアント サポート チーム側で、そのグループ情報を構成できるようにしてください。 また、Zoom クライアント サポート チーム側でオブジェクト ID を構成できるよう、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にオブジェクト ID を提供する必要もあります。 オブジェクト ID の取得については、[Azure での Zoom の構成](https://support.zoom.us/hc/articles/115005887566)に関するページを参照してください。
@@ -135,17 +135,17 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. 別の Web ブラウザー ウィンドウで、Zoom 企業サイトに管理者としてサインインします。
 
-2. [**シングル サインオン**] タブをクリックします。
+2. [ **シングル サインオン** ] タブをクリックします。
 
     ![[Single sign-on]\(シングル サインオン\) タブ](./media/zoom-tutorial/zoom-sso1.png "シングル サインオン")
 
-3. [**セキュリティ制御**] タブをクリックし、[**シングル サインオン**] 設定に移動します。
+3. [ **セキュリティ制御** ] タブをクリックし、[ **シングル サインオン** ] 設定に移動します。
 
 4. [Single Sign-On] セクションで、次の手順に従います。
 
     ![[Single sign-on]\(シングル サインオン\) セクション](./media/zoom-tutorial/zoom-sso2.png "シングル サインオン")
 
-    a. **[Sign-in page URL]\(サインイン ページの URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Sign-in page URL]\(サインイン ページの URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     b. **[サインアウト ページの URL]** 値については、Azure portal に移動し、左側の **[Azure Active Directory]** をクリックしてから **[アプリの登録]** に移動する必要があります。
 
@@ -159,9 +159,9 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
     ![エンドポイントのコピー ボタン](./media/zoom-tutorial/endpoint1.png)
 
-    e. base-64 でエンコードされた証明書をメモ帳で開き、内容をクリップボードにコピーし、**[Identity Provider Certificate]** ボックスに貼り付けます。
+    e. base-64 でエンコードされた証明書をメモ帳で開き、内容をクリップボードにコピーし、 **[Identity Provider Certificate]** ボックスに貼り付けます。
 
-    f. **[Issuer]\(発行者\)** テキストボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。 
+    f. **[Issuer]\(発行者\)** テキストボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。 
 
     g. **[変更を保存]** をクリックします。
 
@@ -170,7 +170,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ### <a name="create-zoom-test-user"></a>Zoom テスト ユーザーの作成
 
-このセクションの目的は、Zoom で B.Simon というユーザーを作成することです。 Zoom では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)をご覧ください。
+このセクションの目的は、Zoom で B.Simon というユーザーを作成することです。 Zoom では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zoom-provisioning-tutorial.md)をご覧ください。
 
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)に問い合わせる必要があります
@@ -179,14 +179,14 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Zoom] タイルをクリックすると、SSO を設定した Zoom に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Zoom] タイルをクリックすると、SSO を設定した Zoom に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Zoom を試す](https://aad.portal.azure.com/)

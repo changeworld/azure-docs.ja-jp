@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 853c4a9eb08528586d8979cad79e353d6fcc374c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecccc0bf05dfc4e27835a676748ca144c6bcc6c8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450595"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521987"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Starmind の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "91450595"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Starmind では、**SP** Initiated SSO がサポートされます
-* Starmind では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Starmind では、 **SP** Initiated SSO がサポートされます
+* Starmind では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-starmind-from-the-gallery"></a>ギャラリーから Starmind を追加する
 
@@ -48,7 +48,7 @@ Azure AD への Starmind の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Starmind**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Starmind** 」と入力します。
 1. 結果のパネルから **[Starmind]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -123,7 +123,7 @@ Starmind に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-starmind-sso"></a>Starmind の SSO の構成
 
-**Starmind** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Starmind サポート チーム](mailto:support@starmind.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Starmind** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Starmind サポート チーム](mailto:support@starmind.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-starmind-test-user"></a>Starmind のテスト ユーザーの作成
 
@@ -137,10 +137,8 @@ Starmind に対して Azure AD SSO を構成してテストするには、次の
 
 2. Starmind のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Starmind] タイルをクリックすると、Starmind サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Starmind] タイルをクリックすると、Starmind サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Starmind を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Starmind を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

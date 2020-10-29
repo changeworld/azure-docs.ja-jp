@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ed3d5de27a2d9ce5060ff4bfe71c595512658e58
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 30cc4e66f73f0fe7f4c11f84f24312caf4f8a483
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940618"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と monday.com の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91940618"
 * ユーザーが自分の Azure AD アカウントで monday.com に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* monday.com では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* monday.com では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* monday.com では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* monday.com では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-mondaycom-from-the-gallery"></a>ギャラリーからの monday.com の追加
 
@@ -50,7 +50,7 @@ Azure AD への monday.com の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**monday.com**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **monday.com** 」と入力します。
 1. 結果のパネルから **[monday.com]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mondaycom"></a>monday.com の Azure AD シングル サインオンの構成とテスト
@@ -76,22 +76,22 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **サービス プロバイダー メタデータ ファイル**を保持しており、**IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+1. **サービス プロバイダー メタデータ ファイル** を保持しており、 **IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     > [!Note]
-    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、手動で値を入力してください。 **識別子**と**応答 URL** は同じであり、その値は `https://<your-domain>.monday.com/saml/saml_callback` というパターンになっています。
+    > **識別子** と **応答 URL** の値が自動的に設定されない場合は、手動で値を入力してください。 **識別子** と **応答 URL** は同じであり、その値は `https://<your-domain>.monday.com/saml/saml_callback` というパターンになっています。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -154,7 +154,7 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-mondaycom-sso"></a>monday.com の SSO の構成
 
-1. monday.com 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. monday.com 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -187,14 +187,14 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [monday.com] タイルをクリックすると、SSO を設定した monday.com に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [monday.com] タイルをクリックすると、SSO を設定した monday.com に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で monday.com を試す](https://aad.portal.azure.com/)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9f3b7ea3d99de51b9398bda82b690d2c249a1d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289332"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520967"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターにアカウントを移行する方法
 
@@ -65,7 +65,7 @@ Microsoft Partner Network の詳細については、パートナー Web サイ�
 
 Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のアカウントとオファーの管理を効率化するために、オファーは[パートナー センター](https://partner.microsoft.com/)に移行されました。 この移行により、パブリックと販売者の両方のカタログで同じコンテンツを使用できるようになります。
 
-Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオファーに関して **2019 年 10 月 15 日**までに実行する必要のあることについては、次の手順に従ってください。
+Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオファーに関して **2019 年 10 月 15 日** までに実行する必要のあることについては、次の手順に従ってください。
 
 > [!NOTE]
 > これは、Dynamics 365 Business Central オファーには適用されません。  
@@ -73,10 +73,10 @@ Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオフ
 1. MPN メンバーシップ アカウントが最初にパートナー メンバーシップ センター (PMC) で作成された場合は、[パートナー センター](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)にサインインしてそのアカウントが移行されていることを確認してください。 MPN ID を含むプロファイル画面が表示されている場合は、処理を続行する準備ができています。 そうでない場合は、[パートナー メンバーシップ センター](https://partners.microsoft.com/partnerprogram/Welcome.aspx)のプロンプトに従って、アカウントの移行を開始する必要があります。 ヘルプが必要な場合は、[サポート](https://partner.microsoft.com/support?issueid=100-0077)を参照してください。
 2. [パートナー センターの商業マーケットプレースの概要ページ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)に移動します。 左側のナビゲーション ウィンドウに "商業マーケットプレース" が表示されている場合は、登録済みであり、次の手順に進んでください。 そうでない場合は、ここで[商業マーケットプレースに登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。
 3. [プランを検索](https://appsource.microsoft.com/)して、プランが AppSource にあることを確認します。 オファーが AppSource に既に存在する場合は、次の手順に進みます。 AppSource にないオファーの場合は、[新しい Dynamics 365 for Customer Engagement オファー](create-new-customer-engagement-offer.md)または[新しい Dynamics 365 for Operations オファー](create-new-operations-offer.md)を作成します。
-4. パートナー センターの[契約ページ](https://partner.microsoft.com/dashboard/account/agreements)で「**Business アプリケーション ISV 補遺**」を確認し、同意していることを確認します。
+4. パートナー センターの [契約ページ](https://partner.microsoft.com/dashboard/account/agreements)で「 **Business アプリケーション ISV 補遺** 」を確認し、同意していることを確認します。
 5. パートナー センターの [[アカウント設定]](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile) で、課金情報が入力されていることを確認します。
 6. オファーが以前に認定されている場合でも、認定資格とパブリケーションのために新規と既存の各オファーを送信します。
-    * 認定資格のためのアプリの指定や、マーケティング情報など、情報画面に入力します。 **2019 年 10 月 15 日**までに **[送信]** (画面の右上隅) を選択します。 オファーの可用性に影響を与えないようにするには、これらの手順を完了する必要があります。
+    * 認定資格のためのアプリの指定や、マーケティング情報など、情報画面に入力します。 **2019 年 10 月 15 日** までに **[送信]** (画面の右上隅) を選択します。 オファーの可用性に影響を与えないようにするには、これらの手順を完了する必要があります。
     * 資格がある場合は、このプロセス中に Premium レベルへの参加を要求することができます。
     * 認定または再認定を行うには、アプリが最新バージョンの Business Applications プラットフォームをサポートしている必要があります。
     * アプリが承認されると、オファーに戻るためのメールが送信されます。[起動] を選択すると、Microsoft AppSource でオファーを開始することができます。

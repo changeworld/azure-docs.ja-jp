@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fe0d8e6ad2056a244ec0d811f1b2dcb67e7bd84
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849250"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516807"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>チュートリアル:Meta Networks Connector を構成して自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91849250"
 
 ## <a name="assigning-users-to-meta-networks-connector"></a>Meta Networks Connector へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Meta Networks Connector へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Meta Networks Connector に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -54,7 +54,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Meta Networks Connector 管理コンソール](media/meta-networks-connector-provisioning-tutorial/apikey.png)
 
-2.  画面の右上にあるプラス記号をクリックして、新しい **API キー**を作成します。
+2.  画面の右上にあるプラス記号をクリックして、新しい **API キー** を作成します。
 
     ![Meta Networks Connector のプラス記号アイコン](media/meta-networks-connector-provisioning-tutorial/plusicon.png)
 
@@ -74,7 +74,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Meta Networks Connector の IdP の追加](media/meta-networks-connector-provisioning-tutorial/newidp.png)
 
-7.  **[IdP Configuration]\(IdP 構成\)** ページで、IdP 構成の**名前**を指定し、**アイコン**を選択できます。
+7.  **[IdP Configuration]\(IdP 構成\)** ページで、IdP 構成の **名前** を指定し、 **アイコン** を選択できます。
 
     ![Meta Networks Connector の IdP 名](media/meta-networks-connector-provisioning-tutorial/idpname.png)
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Meta Networks Connector の SCIM の構成](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
-9.  **[管理] > [設定] > [IdP] タブ**に移動します。前述のステップで作成した IdP 構成の名前をクリックして、**IdP ID** を表示します。 この **ID** は、Azure portal で Meta Networks Connector アプリケーションの [プロビジョニング] タブにある **[テナント URL]** フィールドに値を入力するときに、**テナント URL** の末尾に追加されます。
+9.  **[管理] > [設定] > [IdP] タブ** に移動します。前述のステップで作成した IdP 構成の名前をクリックして、 **IdP ID** を表示します。 この **ID** は、Azure portal で Meta Networks Connector アプリケーションの [プロビジョニング] タブにある **[テナント URL]** フィールドに値を入力するときに、 **テナント URL** の末尾に追加されます。
 
     ![Meta Networks Connector の IdP ID](media/meta-networks-connector-provisioning-tutorial/idpid.png)
 
@@ -106,7 +106,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Meta Networks Connector**」と入力して、結果パネルから **Meta Networks Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Meta Networks Connector** 」と入力して、結果パネルから **Meta Networks Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Meta Networks Connector](common/search-new-app.png)
 
@@ -115,7 +115,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Meta Networks Connector のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
-> Meta Networks Connector では、SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Meta Networks Connector シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Meta Networks Connector では、SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Meta Networks Connector シングル サインオンのチュートリアル](./metanetworksconnector-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>Azure AD で Meta Networks Connector の自動ユーザー プロビジョニングを構成するには:
 
@@ -135,7 +135,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.metanetworks.com/v1/scim/<IdP ID>`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Meta Networks Connector に接続できることを確認します。 接続できない場合は、使用中の Meta Networks Connector アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.metanetworks.com/v1/scim/<IdP ID>`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Meta Networks Connector に接続できることを確認します。 接続できない場合は、使用中の Meta Networks Connector アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -187,4 +187,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

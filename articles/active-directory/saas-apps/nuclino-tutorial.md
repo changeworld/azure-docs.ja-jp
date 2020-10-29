@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4307838df56fb2dc1cdf6ee4044b8ce8de164227
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945483"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518604"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nuclino の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91945483"
 * ユーザーが自分の Azure AD アカウントを使用して Nuclino に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Nuclino では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Nuclino では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Nuclino では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Nuclino では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-nuclino-from-the-gallery"></a>ギャラリーからの Nuclino の追加
 
@@ -50,7 +50,7 @@ Azure AD への Nuclino の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Nuclino**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Nuclino** 」と入力します。
 1. 結果のパネルから **[Nuclino]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-nuclino"></a>Nuclino の Azure AD シングル サインオンの構成とテスト
@@ -143,7 +143,7 @@ Nuclino での Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-nuclino-sso"></a>Nuclino の SSO の構成
 
-1. Nuclino 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Nuclino 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -153,7 +153,7 @@ Nuclino での Azure AD SSO を構成してテストするには、次の構成�
 
 3. Nuclino を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Nuclino 企業サイトにサインインして、次の手順を実行します。
 
-4. **アイコン**をクリックします。
+4. **アイコン** をクリックします。
 
     ![[Azure AD SSO] の横にある "メニュー" アイコンが選択されているスクリーンショット。](./media/nuclino-tutorial/configure1.png)
 
@@ -175,11 +175,11 @@ Nuclino での Azure AD SSO を構成してテストするには、次の構成�
 
     c. **[Entity ID (You need to copy and paste this to your SSO provider)]\(エンティティ ID (この値をコピーして SSO プロバイダーにコピーしてください)\)** 値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    d. **[SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[SSO URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     e. **[エンティティ ID]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    f. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、 **[Public certificate]\(公開証明書\)** ボックスに貼り付けます。
+    f. ダウンロードした **証明書 (Base64)** ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、 **[Public certificate]\(公開証明書\)** ボックスに貼り付けます。
 
     g. **[SAVE CHANGES]\(変更の保存\)** をクリックします。
 
@@ -194,15 +194,14 @@ Nuclino での Azure AD SSO を構成してテストするには、次の構成�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Nuclino] タイルをクリックすると、SSO を設定した Nuclino に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Nuclino] タイルをクリックすると、SSO を設定した Nuclino に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Nuclino を試す](https://aad.portal.azure.com/)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: bb12b666315f6d30df64b33b6a87d6ce831fd225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a00cf11edfea2e732a18a392d465525b38ea45f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553852"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル: Azure Active Directory と Picturepark の統合
 
@@ -27,7 +27,7 @@ Picturepark と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Picturepark に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Picturepark と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Picturepark では、**SP** によって開始される SSO がサポートされます
+* Picturepark では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-picturepark-from-the-gallery"></a>ギャラリーからの Picturepark の追加
 
@@ -61,13 +61,13 @@ Azure AD への Picturepark の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Picturepark**」と入力し、結果パネルで **Picturepark** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Picturepark** 」と入力し、結果パネルで **Picturepark** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果リストの Picturepark](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Picturepark で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Picturepark で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Picturepark 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Picturepark で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -155,9 +155,9 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
    
     c. **[Set as default]** を選びます。
    
-    d. **[発行者 URI]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[発行者 URI]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
    
-    e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。 
+    e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、 **[SAML 署名証明書]** セクションからコピーした **拇印** の値を貼り付けます。 
 
 5. **[JoinDefaultUsersGroup]** をクリックします。
 
@@ -181,7 +181,7 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -205,7 +205,7 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -235,21 +235,21 @@ Azure AD ユーザーが Picturepark にサインインできるようにする�
    
     ![ユーザーの作成](./media/picturepark-tutorial/ic795069.png "[Create User]")
    
-    a. **[Email Address]\(電子メール アドレス\)** テキストボックスに、ユーザーの**電子メール アドレス**を「`BrittaSimon@contoso.com`」と入力します。  
+    a. **[Email Address]\(電子メール アドレス\)** テキストボックスに、ユーザーの **電子メール アドレス** を「`BrittaSimon@contoso.com`」と入力します。  
    
-    b. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、BrittaSimon の**パスワード**を入力します。 
+    b. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、BrittaSimon の **パスワード** を入力します。 
    
-    c. **[First Name]\(名\)** ボックスに、ユーザーの**名**を「**Britta**」と入力します。 
+    c. **[First Name]\(名\)** ボックスに、ユーザーの **名** を「 **Britta** 」と入力します。 
    
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの**姓**を「**Simon**」と入力します。
+    d. **[Last Name]\(姓\)** ボックスに、ユーザーの **姓** を「 **Simon** 」と入力します。
    
-    e. **[Company]\(会社\)** ボックスに、ユーザーの**会社名**を入力します。 
+    e. **[Company]\(会社\)** ボックスに、ユーザーの **会社名** を入力します。 
    
-    f. **[Country]\(国\)** テキストボックスに、ユーザーの**国/リージョン**を入力します。
+    f. **[Country]\(国\)** テキストボックスに、ユーザーの **国/リージョン** を入力します。
   
-    g. **[ZIP]\(郵便番号\)** ボックスに、ユーザーの**郵便番号**を入力します。
+    g. **[ZIP]\(郵便番号\)** ボックスに、ユーザーの **郵便番号** を入力します。
    
-    h. **[City]\(市区町村\)** ボックスに、ユーザーの**市区町村名**を入力します。
+    h. **[City]\(市区町村\)** ボックスに、ユーザーの **市区町村名** を入力します。
 
     i. **[Language]** を選択します。
    
@@ -263,13 +263,12 @@ Azure AD ユーザーが Picturepark にサインインできるようにする�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Picturepark] タイルをクリックすると、SSO を設定した Picturepark に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Picturepark] タイルをクリックすると、SSO を設定した Picturepark に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

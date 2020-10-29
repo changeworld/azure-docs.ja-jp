@@ -6,19 +6,20 @@ ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
+ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8005b8d804dbe78b98ff0f9d3e86f833c869a406
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4488d2b851b388dcd37df1f7322f23837a78b5a7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331636"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518672"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure Virtual Machines 用の Azure Policy 組み込み定義
 
 このページは、Azure Virtual Machines 用の [Azure Policy](../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。
 
-各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
+各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、 [Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 

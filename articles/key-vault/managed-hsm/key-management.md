@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448269"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521035"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLI を使用してマネージド HSM を管理する
 
 > [!NOTE]
-> Key Vault では、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。 この記事では、**Managed HSM** について説明します。 コンテナーの管理方法については、「[Azure CLI を使用して Key Vault を管理する](../general/manage-with-cli2.md)」を参照してください。
+> Key Vault では、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。 この記事では、 **Managed HSM** について説明します。 コンテナーの管理方法については、「[Azure CLI を使用して Key Vault を管理する](../general/manage-with-cli2.md)」を参照してください。
 
 Managed HSM の概要については、[Managed HSM の概要](overview.md)に関するページを参照してください
 
@@ -53,7 +53,7 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 ### <a name="create-an-rsa-key"></a>RSA キーを作成する
 
-次の例は、**wrapKey、unwrapKey** 操作 (--ops) にのみ使用される 3072 ビット **RSA** キーを作成する方法を示しています。 
+次の例は、 **wrapKey、unwrapKey** 操作 (--ops) にのみ使用される 3072 ビット **RSA** キーを作成する方法を示しています。 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>256 ビット対称キーを作成する
 
-次の例は、**encrypt と decrypt** 操作 (--ops) にのみ使用される 256 ビット**対称**キーを作成する方法を示しています。
+次の例は、 **encrypt と decrypt** 操作 (--ops) にのみ使用される 256 ビット **対称** キーを作成する方法を示しています。
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256
@@ -90,7 +90,7 @@ az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decr
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myaeskey --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256
+az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myaeskey --ops encrypt decrypt  --tags ‘usage=signing] appname=myapp’ --kty oct-HSM --size 256
 ```
 
 ## <a name="view-key-attributes-and-tags"></a>キー属性とタグを表示する

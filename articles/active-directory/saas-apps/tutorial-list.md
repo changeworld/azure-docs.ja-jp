@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 14a25559b1eddd4adb58ae2106e8c9e92873ea48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751157"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521948"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -25,7 +25,7 @@ ms.locfileid: "88751157"
 
 Azure AD に事前に統合されているすべての SaaS アプリの一覧については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) のページをご覧ください。
 
-[アプリケーション ネットワーク ポータル](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)を使用して、自動プロビジョニング用にギャラリーに追加される [SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) が有効なアプリケーションを要求したり、SSO 用にギャラリーに追加される SAML または OIDC が有効になっているアプリケーションを要求したりします。
+[アプリケーション ネットワーク ポータル](../azuread-dev/howto-app-gallery-listing.md)を使用して、自動プロビジョニング用にギャラリーに追加される [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) が有効なアプリケーションを要求したり、SSO 用にギャラリーに追加される SAML または OIDC が有効になっているアプリケーションを要求したりします。
 
 ## <a name="quick-links"></a>クイック リンク:
 
@@ -34,7 +34,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - Atlassian Cloud](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian Cloud - ユーザー プロビジョニング](atlassian-cloud-provisioning-tutorial.md)|
 | ![ロゴ - ServiceNow](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - ユーザー プロビジョニング](servicenow-provisioning-tutorial.md)|
 | ![ロゴ - Slack](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - User Provisioning](slack-provisioning-tutorial.md)|
-| ![ロゴ - SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors - ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
+| ![ロゴ - SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors - ユーザー プロビジョニング](./sap-successfactors-inbound-provisioning-tutorial.md) |
 | ![ロゴ - Workday](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday - User Provisioning](workday-inbound-tutorial.md)|
 
 その他のチュートリアルを見つけるには、左側の目次を使用してください。
@@ -47,7 +47,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - Alibaba Cloud Service (ロールベースの SSO)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (ロールベースの SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![ロゴ - Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform - ユーザー プロビジョニング](google-apps-provisioning-tutorial.md) |
 | ![ロゴ - Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - User Provisioning](salesforce-provisioning-tutorial.md) |
-| ![ロゴ - SAP Cloud ID プラットフォーム](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud ID プラットフォーム](saphana-tutorial.md)|[SAP Cloud ID プラットフォーム - プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
+| ![ロゴ - SAP Cloud ID プラットフォーム](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud ID プラットフォーム](saphana-tutorial.md)|[SAP Cloud ID プラットフォーム - プロビジョニング](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
 ## <a name="oneclick-sso"></a>OneClick SSO
 

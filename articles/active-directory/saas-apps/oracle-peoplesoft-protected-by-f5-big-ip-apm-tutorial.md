@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d2dc1d5d02f1a371d6d94f9eeddf395d49126d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620139"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522293"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Oracle PeopleSoft - Protected by F5 BIG-IP APM の統合
 
@@ -50,7 +50,7 @@ ms.locfileid: "91620139"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Oracle PeopleSoft - Protected by F5 BIG-IP APM では、**SP および IDP** Initiated SSO がサポートされます
+* Oracle PeopleSoft - Protected by F5 BIG-IP APM では、 **SP および IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>ギャラリーからの Oracle PeopleSoft - Protected by F5 BIG-IP APM の追加
 
@@ -60,7 +60,7 @@ Azure AD への Oracle PeopleSoft - Protected by F5 BIG-IP APM の統合を構�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Oracle PeopleSoft - Protected by F5 BIG-IP APM**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Oracle PeopleSoft - Protected by F5 BIG-IP APM** 」と入力します。
 1. 結果パネルで **[Oracle PeopleSoft - Protected by F5 BIG-IP APM]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -112,7 +112,7 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
     | ------------------ | --------- |
     | EMPLID | user.employeeid |
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**フェデレーション メタデータ XML** と**証明書 (Base64)** をダウンロードし、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **フェデレーション メタデータ XML** と **証明書 (Base64)** をダウンロードし、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/both-certificate.png)
 
@@ -177,8 +177,8 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
     ![新しい SAML SP サービス](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/new-saml-sp-service.png)
 
-1. SP 構成である PeopleSoftAppSSO を選択し、 **[Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\) をクリック**します。
-**[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した**外部 IdP コネクタ**を選択して、 **[Update]\(更新\)** 、 **[OK]** の順にクリックします。
+1. SP 構成である PeopleSoftAppSSO を選択し、 **[Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\) をクリック** します。
+**[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した **外部 IdP コネクタ** を選択して、 **[Update]\(更新\)** 、 **[OK]** の順にクリックします。
 
     ![SAML SP サービスを作成する](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/edit-saml-idp-use-sp.png)
 
@@ -235,16 +235,16 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
     ![マネージャー セルフ サービス](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-console.png)
 
-1. PeopleSoft アプリケーションで、新しいユーザー プロファイルとして **OAMPSFT** を作成し、**PeopleSoft User** などの低いセキュリティ ロールを関連付けます。
-**[Peopletools]、[Security]\(セキュリティ\)、[User Profiles]\(ユーザー プロファイル\)、[User Profiles]\(ユーザー プロファイル\)** の順に移動し、新しいユーザー プロファイル (たとえば **OAMPSFT**) を作成して、**Peoplesoft User** を追加します。
+1. PeopleSoft アプリケーションで、新しいユーザー プロファイルとして **OAMPSFT** を作成し、 **PeopleSoft User** などの低いセキュリティ ロールを関連付けます。
+**[Peopletools]、[Security]\(セキュリティ\)、[User Profiles]\(ユーザー プロファイル\)、[User Profiles]\(ユーザー プロファイル\)** の順に移動し、新しいユーザー プロファイル (たとえば **OAMPSFT** ) を作成して、 **Peoplesoft User** を追加します。
 
     ![Peoplesoft User](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/user-profile.png)
 
-1. Web プロファイルにアクセスし、パブリック アクセス **ユーザー ID** として「**OAMPSFT**」と入力します。
+1. Web プロファイルにアクセスし、パブリック アクセス **ユーザー ID** として「 **OAMPSFT** 」と入力します。
 
     ![ユーザー プロファイル](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/web-profile-configuration.png)
 
-1. **[PeopleTools Application Designer]\(PeopleTools アプリケーション デザイナー\)** で、**FUNCLIB_LDAP** レコードを開きます。
+1. **[PeopleTools Application Designer]\(PeopleTools アプリケーション デザイナー\)** で、 **FUNCLIB_LDAP** レコードを開きます。
 
     ![Web プロファイルの構成](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/funclib.png)
 
@@ -253,7 +253,7 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
     ![OAMSSO_AUTHENTICATION](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/record.png)
 
-1. **[Signon PeopleCode]\(サインオン PeopleCode\)** ページ ([PeopleTools]、[Security]\(セキュリティ\)、[Security Objects]\(セキュリティ オブジェクト\)、[Signon PeopleCode]\(サインオン PeopleCode\)) にアクセスし、**OAMSSO_AUTHENTICATION** 機能 (Oracle Access Manager シングル サインオンのためのサインオン PeopleCode) を有効にします。
+1. **[Signon PeopleCode]\(サインオン PeopleCode\)** ページ ([PeopleTools]、[Security]\(セキュリティ\)、[Security Objects]\(セキュリティ オブジェクト\)、[Signon PeopleCode]\(サインオン PeopleCode\)) にアクセスし、 **OAMSSO_AUTHENTICATION** 機能 (Oracle Access Manager シングル サインオンのためのサインオン PeopleCode) を有効にします。
 
     ![OAMSSO_AUTHENTICATION ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/sign-on-people-soft.png)
 
@@ -329,9 +329,9 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Oracle PeopleSoft-Protected by F5 BIG-IP APM に自動的にサインインされるはずです 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Oracle PeopleSoft-Protected by F5 BIG-IP APM] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Oracle PeopleSoft-Protected by F5 BIG-IP APM に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Oracle PeopleSoft-Protected by F5 BIG-IP APM] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Oracle PeopleSoft-Protected by F5 BIG-IP APM に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Oracle PeopleSoft-Protected by F5 BIG-IP APM を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Oracle PeopleSoft-Protected by F5 BIG-IP APM を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

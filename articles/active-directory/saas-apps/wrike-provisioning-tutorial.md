@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: e3ec25504decca0747c8a853bb88ab3e7a10966a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b5f279294dda0d2b1c01bf8cdd803390b04cec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546323"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520032"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>チュートリアル:Wrike を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Wrike にプロビジョニングまたは Wrike からプロビジョニング解除するように構成するために、Wrike と Azure Active Directory (Azure AD) で実行する手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスで実行されること、しくみ、よく寄せられる質問の重要な詳細については、[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関する記事を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスで実行されること、しくみ、よく寄せられる質問の重要な詳細については、[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)に関する記事を参照してください。
 >
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure の使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "88546323"
 * 管理者アクセス許可がある Wrike のユーザー アカウント
 
 ## <a name="assign-users-to-wrike"></a>ユーザーを Wrike に割り当てる
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Wrike にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 その後、次の手順に従って、これらのユーザーまたはグループを Wrike に割り当てます。
 
@@ -95,7 +95,7 @@ Azure AD ギャラリーから Wrike を追加するには、次の手順に従�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Wrike**」と入力し、結果ウィンドウで **[Wrike]** を選択してから、 **[追加]** を選択してアプリケーションを追加します。
+4. 検索ボックスに「 **Wrike** 」と入力し、結果ウィンドウで **[Wrike]** を選択してから、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の Wrike](common/search-new-app.png)
 

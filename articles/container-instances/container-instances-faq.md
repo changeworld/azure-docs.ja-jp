@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818480"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516972"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
@@ -53,7 +53,7 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>どの .NET または .NET Core イメージ レイヤーをコンテナーに使用すればよいですか。 
 
-お客様の要件を満たす最小のイメージを使用します。 Linux の場合は、.NET Core 2.1 のリリース以降のサポートされている *runtime-alpine* .NET Core イメージを使用できます。 Windows で、完全な .NET Framework を使用している場合は、Windows Server Core イメージ (*4.7.2-windowsservercore-ltsc2016* などのランタイム専用イメージ) を使用する必要があります。 ランタイム専用イメージの方が小さいのですが、.NET SDK を必要とするワークロードをサポートしていません。
+お客様の要件を満たす最小のイメージを使用します。 Linux の場合は、.NET Core 2.1 のリリース以降のサポートされている *runtime-alpine* .NET Core イメージを使用できます。 Windows で、完全な .NET Framework を使用している場合は、Windows Server Core イメージ ( *4.7.2-windowsservercore-ltsc2016* などのランタイム専用イメージ) を使用する必要があります。 ランタイム専用イメージの方が小さいのですが、.NET SDK を必要とするワークロードをサポートしていません。
 
 ## <a name="availability-and-quotas"></a>可用性とクォータ
 
@@ -61,7 +61,7 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 実際のところ、これはワークロードによって異なります。 小規模から始めてパフォーマンスをテストし、コンテナーの動作を確認します。 [CPU およびメモリ リソースの使用状況を監視します](container-instances-monitor.md)。次に、コンテナーにデプロイするプロセスの種類に基づいてコアまたはメモリを追加します。
 
-コンテナー グループごとに使用できる CPU コアとメモリの上限について、デプロイしているリージョンの[リソースの可用性](container-instances-region-availability.md#availability---general)も必ず確認します。 
+コンテナー グループごとに使用できる CPU コアとメモリの上限について、デプロイしているリージョンの[リソースの可用性](container-instances-region-availability.md)も必ず確認します。 
 
 > [!NOTE]
 > コンテナー グループの少量のリソースは、サービスの基になるインフラストラクチャによって使用されます。 コンテナーでは、グループに割り当てられているほとんどのリソースにアクセスできますが、すべてのリソースにアクセスできるわけではありません。 このため、グループ内のコンテナーのリソースを要求するときは、小さいリソース バッファーを計画してください。
@@ -80,7 +80,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>特定のリージョンで、ACI はいつ使用できるようになりますか。
 
-現在の利用可能なリージョンについては、[こちら](container-instances-region-availability.md#availability---general)で公開されています。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
+現在の利用可能なリージョンについては、[こちら](container-instances-region-availability.md)で公開されています。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
 
 ## <a name="features-and-scenarios"></a>機能とシナリオ
 

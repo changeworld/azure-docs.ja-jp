@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: fa8b150e7b5e1bd5bfc5e05b3b00a13522b52f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500532"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RSA Archer Suite の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "89500532"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RSA Archer Suite では、**SP** Initiated SSO がサポートされています
-* RSA Archer Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* RSA Archer Suite では、 **SP** Initiated SSO がサポートされています
+* RSA Archer Suite では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -51,7 +51,7 @@ Azure AD への RSA Archer Suite の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RSA Archer Suite**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **RSA Archer Suite** 」と入力します。
 1. 結果のパネルから **[RSA Archer Suite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -149,11 +149,11 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
     c. **[Instance Entity ID]\(インスタンス エンティティ ID\)** テキストボックスに、有効な名前を入力します。
 
-    d. **拇印の値**を、 **[証明書の拇印]** テキストボックスに貼り付けます。
+    d. **拇印の値** を、 **[証明書の拇印]** テキストボックスに貼り付けます。
 
-    e. **[選択]** ボタンをクリックし、Azure portal からダウンロードした**フェデレーション メタデータ XML** ファイルをアップロードします。
+    e. **[選択]** ボタンをクリックし、Azure portal からダウンロードした **フェデレーション メタデータ XML** ファイルをアップロードします。
 
-    f. シングル サインオンの設定を**保存**します。 
+    f. シングル サインオンの設定を **保存** します。 
 
 ### <a name="create-rsa-archer-suite-test-user"></a>RSA Archer Suite のテスト ユーザーを作成する
 
@@ -167,9 +167,8 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
 2. RSA Archer Suite のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [RSA Archer Suite] タイルをクリックすると、SSO を設定した RSA Archer Suite に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [RSA Archer Suite] タイルをクリックすると、SSO を設定した RSA Archer Suite に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
- RSA Archer Suite を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
+ RSA Archer Suite を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

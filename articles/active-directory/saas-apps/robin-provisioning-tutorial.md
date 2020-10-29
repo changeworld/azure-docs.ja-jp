@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: e69b6aa5518f83dbbeba34d70b459c781b50dc9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a7c2634f4dc06e3c988a48c7ca15294160759e2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299991"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520729"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>チュートリアル:Robin を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91299991"
 
 ## <a name="assigning-users-to-robin"></a>Robin へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、Robin へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Robin に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Robin Powered の SCIM の追加](media/robin-provisioning-tutorial/robin-token.png)
 
-3.  **SCIM 認証トークン**をコピーします。 この値を、Azure portal で Robin アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+3.  **SCIM 認証トークン** をコピーします。 この値を、Azure portal で Robin アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
 
 
@@ -80,7 +80,7 @@ Azure AD での自動ユーザー プロビジョニング用に Robin を構成
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Robin**」と入力し、結果パネルで **[Robin]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Robin** 」と入力し、結果パネルで **[Robin]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Robin](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ Azure AD での自動ユーザー プロビジョニング用に Robin を構成
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Robin でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Robin では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Robin シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Robin では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Robin シングル サインオンのチュートリアル](./robin-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-robin-in-azure-ad"></a>Azure AD で Robin の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
@@ -109,7 +109,7 @@ Azure AD での自動ユーザー プロビジョニング用に Robin を構成
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.robinpowered.com/v1.0/scim-2`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Robin への接続を確保します。 接続できない場合は、使用中の Robin アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.robinpowered.com/v1.0/scim-2`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Robin への接続を確保します。 接続できない場合は、使用中の Robin アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -163,4 +163,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

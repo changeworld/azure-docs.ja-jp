@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 3fa173d6191334fd4944966730ec1617ca2ec7e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ffa4263076571f14ff3267c0ee16e388bb0aac9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546493"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517777"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-talentsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Talentsoft の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546493"
 * ユーザーが自分の Azure AD アカウントを使用して Talentsoft に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Talentsoft では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Talentsoft では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-talentsoft-from-the-gallery"></a>ギャラリーからの Talentsoft の追加
 
@@ -49,7 +49,7 @@ Azure AD への Talentsoft の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Talentsoft**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Talentsoft** 」と入力します。
 1. 結果のパネルから **Talentsoft** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-talentsoft"></a>Talentsoft の Azure AD シングル サインオンの構成とテスト
@@ -128,7 +128,7 @@ Talentsoft に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-talentsoft-sso"></a>Talentsoft SSO の構成
 
-**Talentsoft** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Talentsoft サポート チーム](mailto:advancedservices@talentsoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Talentsoft** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Talentsoft サポート チーム](mailto:advancedservices@talentsoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-talentsoft-test-user"></a>Talentsoft テスト ユーザーの作成
 
@@ -138,14 +138,14 @@ Talentsoft に対する Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Talentsoft] タイルをクリックすると、SSO を設定した Talentsoft に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Talentsoft] タイルをクリックすると、SSO を設定した Talentsoft に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Talentsoft を試す](https://aad.portal.azure.com/)

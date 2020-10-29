@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: b3677b16921c6954f5f99e55af9afeae9c337cce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00adf8f1559d01d6ba17692e1166c93c93fcbf8f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255820"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516649"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>チュートリアル:Promapp を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91255820"
 
 ## <a name="assigning-users-to-promapp"></a>Promapp へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、Promapp へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Promapp に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -84,7 +84,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Promapp**」と入力し、結果パネルで **[Promapp]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Promapp** 」と入力し、結果パネルで **[Promapp]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Promapp](common/search-new-app.png)
 
@@ -93,7 +93,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Promapp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Promapp では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Promapp シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Promapp では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Promapp シングル サインオンのチュートリアル](./promapp-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Azure AD で Promapp の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
@@ -113,7 +113,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.promapp.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Promapp に接続できることを確認します。 接続できない場合は、使用中の Promapp アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.promapp.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Promapp に接続できることを確認します。 接続できない場合は、使用中の Promapp アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -127,7 +127,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
     ![Promapp のユーザー マッピング](media/promapp-provisioning-tutorial/usermappings.png)
 
-9. **[属性マッピング]** セクションで、Azure AD から Promapp に同期されるユーザー属性を確認します。 **照合**用プロパティとして選択されている属性は、更新処理で Promapp のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+9. **[属性マッピング]** セクションで、Azure AD から Promapp に同期されるユーザー属性を確認します。 **照合** 用プロパティとして選択されている属性は、更新処理で Promapp のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![Promapp のユーザー属性](media/promapp-provisioning-tutorial/userattributes.png)
 
@@ -157,4 +157,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

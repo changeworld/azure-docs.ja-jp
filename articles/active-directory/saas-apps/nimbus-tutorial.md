@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 92533fa5c52d4af2dff4b637df54315e0acb4b1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cc005ee22bff897a87679a0bde95ffec6e98e51
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91338245"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522412"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nimbus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nimbus の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "91338245"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Nimbus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Nimbus では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Nimbus では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Nimbus では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-nimbus-from-the-gallery"></a>ギャラリーからの Nimbus の追加
 
@@ -48,7 +48,7 @@ Azure AD への Nimbus の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Nimbus**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Nimbus** 」と入力します。
 1. 結果のパネルから **[Nimbus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -117,7 +117,7 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-nimbus-sso"></a>Nimbus SSO の構成
 
-**Nimbus** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Nimbus サポート チーム](mailto:support@nimbus.cloud)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Nimbus** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Nimbus サポート チーム](mailto:support@nimbus.cloud)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-nimbus-test-user"></a>Nimbus テスト ユーザーの作成
 
@@ -137,10 +137,8 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Nimbus に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Nimbus タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Nimbus に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Nimbus タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Nimbus に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Nimbus を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Nimbus を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

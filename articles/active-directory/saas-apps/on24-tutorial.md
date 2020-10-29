@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 30fd3843b50ac6b075d33e961986b94ee2496fef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944461"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>チュートリアル: Azure Active Directory と ON24 Virtual Environment SAML Connection の統合
 
@@ -27,7 +27,7 @@ ON24 Virtual Environment SAML Connection と Azure AD の統合には、次の�
 * ユーザーが自分の Azure AD アカウントを使用して自動的に ON24 Virtual Environment SAML Connection にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と ON24 Virtual Environment SAML Connection の統合を構成する�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ON24 Virtual Environment SAML Connection では、**SP** と **IDP** によって開始される SSO がサポートされます
+* ON24 Virtual Environment SAML Connection では、 **SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-on24-virtual-environment-saml-connection-from-the-gallery"></a>ギャラリーからの ON24 Virtual Environment SAML Connection の追加
 
@@ -61,13 +61,13 @@ Azure AD への ON24 Virtual Environment SAML Connection の統合を構成す�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ON24 Virtual Environment SAML Connection**」と入力して、結果パネルから **[ON24 Virtual Environment SAML Connection]\(ON24 Virtual Environment SAML Connection\)** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **ON24 Virtual Environment SAML Connection** 」と入力して、結果パネルから **[ON24 Virtual Environment SAML Connection]\(ON24 Virtual Environment SAML Connection\)** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果リストの ON24 Virtual Environment SAML Connection](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、ON24 Virtual Environment SAML Connection との Azure AD シングル サインオンを構成およびテストします。
+このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、ON24 Virtual Environment SAML Connection との Azure AD シングル サインオンを構成およびテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ON24 Virtual Environment SAML Connection 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 ON24 Virtual Environment SAML Connection との Azure AD シングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -154,7 +154,7 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のリレー状態とサインオン URL で更新してください。 これらの値を取得するには、[ON24 Virtual Environment SAML Connection クライアント サポート チーム](https://www.on24.com/contact-us/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -170,7 +170,7 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
 ### <a name="configure-on24-virtual-environment-saml-connection-single-sign-on"></a>ON24 Virtual Environment SAML Connection シングル サインオンの構成
 
-**ON24 Virtual Environment SAML Connection** 側でシングル サインオンを構成するには、Azure portal からダウンロードした**フェデレーション メタデータ XML** と コピーした適切な URL を [ON24 Virtual Environment SAML Connection サポート チーム](https://www.on24.com/about-us/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ON24 Virtual Environment SAML Connection** 側でシングル サインオンを構成するには、Azure portal からダウンロードした **フェデレーション メタデータ XML** と コピーした適切な URL を [ON24 Virtual Environment SAML Connection サポート チーム](https://www.on24.com/about-us/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -188,9 +188,9 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -225,19 +225,18 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
 ### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>ON24 Virtual Environment SAML Connection テスト ユーザーの作成
 
-このセクションでは、ON24 Virtual Environment SAML Connection に Britta Simon というユーザーを作成します。  [ON24 Virtual Environment SAML Connection サポート チーム](https://www.on24.com/about-us/support/)と協力して、ON24 Virtual Environment SAML Connection プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ON24 Virtual Environment SAML Connection に Britta Simon というユーザーを作成します。 [ON24 Virtual Environment SAML Connection サポート チーム](https://www.on24.com/about-us/support/)と協力して、ON24 Virtual Environment SAML Connection プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [ON24 Virtual Environment SAML Connection] タイルをクリックすると、SSO を設定した ON24 Virtual Environment SAML Connection に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルの [ON24 Virtual Environment SAML Connection] タイルをクリックすると、SSO を設定した ON24 Virtual Environment SAML Connection に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

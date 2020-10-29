@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e072d036c99b06e8d774f1305137687f315363c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bc9da59138a2e5f70f1b8c5f06a9ba606791fd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553803"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>チュートリアル: Azure Active Directory と PlanGrid の統合
 
@@ -27,7 +27,7 @@ PlanGrid と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して PlanGrid に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ PlanGrid と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* PlanGrid では、**SP** および **IDP** Initiated SSO がサポートされます
+* PlanGrid では、 **SP** および **IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-plangrid-from-the-gallery"></a>ギャラリーからの PlanGrid の追加
 
@@ -61,13 +61,13 @@ Azure AD への PlanGrid の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**PlanGrid**」と入力し、結果パネルで **[PlanGrid]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **PlanGrid** 」と入力し、結果パネルで **[PlanGrid]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の PlanGrid](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PlanGrid で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、PlanGrid で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと PlanGrid 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 PlanGrid で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -109,7 +109,7 @@ PlanGrid で Azure AD シングル サインオンを構成するには、次の
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://app.plangrid.com/login`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ PlanGrid で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-plangrid-single-sign-on"></a>PlanGrid シングル サインオンの構成
 
-**PlanGrid** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [PlanGrid サポート チーム](mailto:help@plangrid.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**PlanGrid** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [PlanGrid サポート チーム](mailto:help@plangrid.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -143,7 +143,7 @@ PlanGrid で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -180,19 +180,18 @@ PlanGrid で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-plangrid-test-user"></a>PlanGrid のテスト ユーザーの作成
 
-このセクションでは、PlanGrid で Britta Simon というユーザーを作成します。  [PlanGrid サポート チーム](mailto:help@plangrid.com)と連携し、PlanGrid プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、PlanGrid で Britta Simon というユーザーを作成します。 [PlanGrid サポート チーム](mailto:help@plangrid.com)と連携し、PlanGrid プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [PlanGrid] タイルをクリックすると、SSO を設定した PlanGrid に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [PlanGrid] タイルをクリックすると、SSO を設定した PlanGrid に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

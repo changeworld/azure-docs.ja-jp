@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: f7aeae20514cc969ad1beef339773823afa47ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d314dec6f202389b77d8eb9ea86df3f188ec355
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548108"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>チュートリアル: Azure Active Directory と Mercell の統合
 
@@ -27,7 +27,7 @@ Mercell と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Mercell に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ Mercell と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Mercell では、**IDP** によって開始される SSO がサポートされます
+* Mercell では、 **IDP** によって開始される SSO がサポートされます
 
-* Mercell では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Mercell では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-mercell-from-the-gallery"></a>ギャラリーからの Mercell の追加
 
@@ -63,13 +63,13 @@ Azure AD への Mercell の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Mercell**」と入力し、結果ウィンドウで **[Mercell]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Mercell** 」と入力し、結果ウィンドウで **[Mercell]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの Mercell](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Mercell を利用した Azure AD のシングル サインオンを構成してテストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Mercell を利用した Azure AD のシングル サインオンを構成してテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Mercell 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Mercell で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -111,7 +111,7 @@ Mercell を利用して Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-mercell-single-sign-on"></a>Mercell シングル サインオンの構成
 
-**Mercell** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Mercell サポート チーム](mailto:webmaster@mercell.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Mercell** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Mercell サポート チーム](mailto:webmaster@mercell.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -129,9 +129,9 @@ Mercell を利用して Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -175,13 +175,12 @@ Mercell を利用して Azure AD シングル サインオンを構成するに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Mercell] タイルをクリックすると、SSO を設定した Mercell に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Mercell] タイルをクリックすると、SSO を設定した Mercell に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
