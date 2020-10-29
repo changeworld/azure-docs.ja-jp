@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c1d96c373103e0a89a9553ce8dab6ce5cce23c7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490528"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からの Azure Cosmos DB へのアクセスを構成する
 
@@ -93,7 +93,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサービス エンドポイントを構成するには、次の手順を実行します。  
 
-1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) をインストールして Azure に[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。  
+1. [Azure PowerShell](/powershell/azure/install-Az-ps) をインストールして Azure に[サインイン](/powershell/azure/authenticate-azureps)します。  
 
 1. 仮想ネットワークにある、既存のサブネット用のサービス エンドポイントを有効にします。  
 
@@ -317,7 +317,7 @@ Azure Cosmos DB アカウントを移行するには、IP ファイアウォー�
 
 ### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Notebook と Mongo/Cassandra シェルは、現在、Virtual Network が有効になっているアカウントと互換性がありますか。
 
-現在、Cosmos DB Data Explorer での [Mongo シェル](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/)と [Cassandra シェル](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/)統合、および [Jupyter Notebook サービス](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks)は、VNET アクセスではサポートされていません。 これは現在開発が進められています。
+現在、Cosmos DB Data Explorer での [Mongo シェル](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/)と [Cassandra シェル](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/)統合、および [Jupyter Notebook サービス](./cosmosdb-jupyter-notebooks.md)は、VNET アクセスではサポートされていません。 これは現在開発が進められています。
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos アカウントに対して仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシーの両方を指定できますか。 
 

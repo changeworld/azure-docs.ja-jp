@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 12/06/2019
-ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69e7551fbf5b2f38dbc080a468baf81849e4372e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74951566"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490953"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET サンプル
 
@@ -33,7 +33,7 @@ ms.locfileid: "74951566"
 
 ## <a name="prerequisite"></a>前提条件
 
-[Azure HDInsight SDK for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+[Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 
@@ -46,4 +46,4 @@ ms.locfileid: "74951566"
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for .NET のリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)でご覧いただけます。
+ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for .NET のリファレンス ドキュメント](/dotnet/api/overview/azure/hdinsight&preserve-view=true)でご覧いただけます。

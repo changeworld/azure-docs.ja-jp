@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485377"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップと復元
 
@@ -39,7 +39,7 @@ Azure Database for PostgreSQL では、Hyperscale (Citus) クラスターを復�
 
 
 > [!IMPORTANT]
-> 削除された Hyperscale (Citus) クラスターを復元することはできません。 クラスターを削除すると、そのクラスターに属するすべてのノードが削除され、復旧できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からクラスターのリソースを保護するために、[管理ロック](/azure/azure-resource-manager/management/lock-resources)を利用できます。
+> 削除された Hyperscale (Citus) クラスターを復元することはできません。 クラスターを削除すると、そのクラスターに属するすべてのノードが削除され、復旧できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からクラスターのリソースを保護するために、[管理ロック](../azure-resource-manager/management/lock-resources.md)を利用できます。
 
 ### <a name="point-in-time-restore-pitr"></a>ポイントインタイム リストア (PITR)
 
@@ -65,5 +65,5 @@ Azure Database for PostgreSQL では、Hyperscale (Citus) クラスターを復�
 
 ## <a name="next-steps"></a>次のステップ
 
-*  [Azure 可用性ゾーン](/azure/availability-zones/az-overview)について学習します。
-* Hyperscale (Citus) サーバー グループで [推奨されるアラート](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts)を設定します。
+*  [Azure 可用性ゾーン](../availability-zones/az-overview.md)について学習します。
+* Hyperscale (Citus) サーバー グループで [推奨されるアラート](./howto-hyperscale-alert-on-metric.md#suggested-alerts)を設定します。

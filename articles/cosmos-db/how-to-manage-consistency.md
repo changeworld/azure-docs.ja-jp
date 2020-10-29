@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279609"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491191"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -63,7 +63,7 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
 クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 整合性レベルは要求ごとに設定できます。この設定によって、アカウント レベルで設定される既定の整合性レベルがオーバーライドされます。
 
 > [!TIP]
-> 整合性は、要求レベルでのみ **緩和**されます。 弱い整合性からより強い整合性に移行するには、Cosmos アカウントの既定の整合性を更新します。
+> 整合性は、要求レベルでのみ **緩和** されます。 弱い整合性からより強い整合性に移行するには、Cosmos アカウントの既定の整合性を更新します。
 
 ### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -162,7 +162,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>セッション トークンを利用する
 
-Azure Cosmos DB の整合性レベルの 1 つとして、"*セッション*" の整合性があります。 これは、Cosmos アカウントに既定で適用されるレベルです。 "*セッション*" の整合性で作業している場合、クライアントでは設定した整合性レベルが維持されるように、各読み取り/クエリ要求で内部的にセッション トークンが使用されます。
+Azure Cosmos DB の整合性レベルの 1 つとして、" *セッション* " の整合性があります。 これは、Cosmos アカウントに既定で適用されるレベルです。 " *セッション* " の整合性で作業している場合、クライアントでは設定した整合性レベルが維持されるように、各読み取り/クエリ要求で内部的にセッション トークンが使用されます。
 
 セッション トークンを手動で管理するには、応答からセッション トークンを取得し、それらを要求ごとに設定します。 セッション トークンを手動で管理する必要がない場合は、これらのサンプルを使用する必要はありません。 SDK では、セッション トークンが自動的に追跡されます。 セッション トークンを手動で設定しなかった場合、既定では、SDK によって直近のセッション トークンが使用されます。
 
@@ -279,7 +279,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>確率的有界整合性制約 (PBS) メトリックを監視する
 
-最終的な整合性は、どのくらい最終的でしょうか。 平均的なケースでは、バージョン履歴と時刻に関して、古さの限度を提示できます。 [**確率的有界整合性制約 (PBS)** ](https://pbs.cs.berkeley.edu/) メトリックは、古さの可能性を定量化し、それをメトリックとして表示します。 PBS メトリックを表示するには、Azure portal で Azure Cosmos アカウントに移動します。 **[メトリック]** ウィンドウを開き、 **[整合性]** タブを選択します。**Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
+最終的な整合性は、どのくらい最終的でしょうか。 平均的なケースでは、バージョン履歴と時刻に関して、古さの限度を提示できます。 [**確率的有界整合性制約 (PBS)**](https://pbs.cs.berkeley.edu/) メトリックは、古さの可能性を定量化し、それをメトリックとして表示します。 PBS メトリックを表示するには、Azure portal で Azure Cosmos アカウントに移動します。 **[メトリック]** ウィンドウを開き、 **[整合性]** タブを選択します。 **Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal の一貫性メニュー":::
 
@@ -288,7 +288,7 @@ item = client.ReadItem(doc_link, options)
 データの競合を管理する方法について学習するか、Azure Cosmos DB に関する次の主要概念に進んでください。 次の記事をご覧ください。
 
 * [Azure Cosmos DB の整合性レベル](consistency-levels.md)
-* [パーティション分割とデータ分散](partition-data.md)
+* [パーティション分割とデータ分散](./partitioning-overview.md)
 * [リージョン間の競合の管理](how-to-manage-conflicts.md)
 * [パーティション分割とデータ分散](partitioning-overview.md)
 * [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)

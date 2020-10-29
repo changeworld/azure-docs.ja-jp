@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 26c6f70f92e4c372c0ff6afbcbb3c0bb284e2f6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bacb7a434cfa04dbdfdaf39d9fd3a0baab5f11a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704805"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489814"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL の読み取りレプリカを作成し、管理する方法
 
@@ -26,14 +26,14 @@ PowerShell を使用して、読み取りレプリカを作成して管理でき
 
 このハウツー ガイドを完了するには、次が必要です。
 
-- ローカルにインストールされた [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
+- ローカルにインストールされた [Az PowerShell モジュール](/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for PostgreSQL サーバー](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az.PostgreSql PowerShell モジュールがプレビュー段階にある間は、コマンド `Install-Module -Name Az.PostgreSql -AllowPrerelease` を使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります。
 > Az.PostgreSql PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-PowerShell をローカルで使用する場合は、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
+PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +56,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 
-リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部**リージョンにレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、 **Location** パラメーターを使用します。 次の例では、 **米国西部** リージョンにレプリカを作成します。
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -65,7 +65,7 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。
 
-既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはプライマリと同じサーバー構成で作成されます。
+既定では、 **Sku** パラメーターが指定されていない限り、読み取りレプリカはプライマリと同じサーバー構成で作成されます。
 
 > [!NOTE]
 > レプリカが確実にマスターに追随できるように、レプリカ サーバーの構成をプライマリと同じかそれ以上の値にしておくことをお勧めします。

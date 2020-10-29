@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570657"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486142"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションで複数リージョン書き込みを構成する
 
@@ -129,8 +129,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [Azure Cosmos DB の競合の種類と解決ポリシー](conflict-resolution-policies.md)
 * [Azure Cosmos DB での高可用性](high-availability.md)
 * [Azure Cosmos DB の整合性レベル](consistency-levels.md)
-* [Azure Cosmos DB で適切な一貫性レベルを選択する](consistency-levels-choosing.md)
-* [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
-* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
-* [プロビジョニング スループットのグローバルなスケーリング](scaling-throughput.md)
+* [Azure Cosmos DB で適切な一貫性レベルを選択する](./consistency-levels.md)
+* [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](./consistency-levels.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](./consistency-levels.md)
+* [プロビジョニング スループットのグローバルなスケーリング](./request-units.md)
 * [グローバル配信: しくみ](global-dist-under-the-hood.md)

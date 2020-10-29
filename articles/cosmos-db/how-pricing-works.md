@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7d54dfe2efa82aaa650168c476da03d89fe4527
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281539"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490494"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル
 
@@ -19,7 +19,7 @@ Azure Cosmos DB の価格モデルにより、コストの管理と計画が合�
 
 - **データベース操作** :データベース操作に対する課金方法は、使用している Azure Cosmos アカウントの種類によって異なります。
 
-  - **プロビジョニング済みのスループット** :[プロビジョニング済みのスループット](set-throughput.md) (予約済みスループットとも呼ばれます) により、あらゆる規模でハイ パフォーマンスが実現します。 ユーザーが必要なスループットを 1 秒あたりの[要求ユニット](request-units.md) (RU/s) で指定すると、Azure Cosmos DB では構成されたスループットを提供するために必要なリソースが専用に確保されます。 [データベースまたはコンテナーに対してスループットをプロビジョニングする](set-throughput.md)ことができます。 ワークロードのニーズに基づいて、いつでもスループットを増減したり、[自動スケーリング](provision-throughput-autoscale.md)を使用したりできます (ただし、SLA を保証するため、データベースまたはコンテナーでは最低限のスループットを確保する必要があります)。 特定の 1 時間での最大のプロビジョニング スループットに対し、時間単位で請求されます。
+  - **プロビジョニング済みのスループット** : [プロビジョニング済みのスループット](set-throughput.md) (予約済みスループットとも呼ばれます) により、あらゆる規模でハイ パフォーマンスが実現します。 ユーザーが必要なスループットを 1 秒あたりの[要求ユニット](request-units.md) (RU/s) で指定すると、Azure Cosmos DB では構成されたスループットを提供するために必要なリソースが専用に確保されます。 [データベースまたはコンテナーに対してスループットをプロビジョニングする](set-throughput.md)ことができます。 ワークロードのニーズに基づいて、いつでもスループットを増減したり、[自動スケーリング](provision-throughput-autoscale.md)を使用したりできます (ただし、SLA を保証するため、データベースまたはコンテナーでは最低限のスループットを確保する必要があります)。 特定の 1 時間での最大のプロビジョニング スループットに対し、時間単位で請求されます。
 
    > [!NOTE]
    > プロビジョニング済みスループット モデルでは、コンテナーまたはデータベース専用にリソースが割り当てられるので、ワークロードを何も実行しない場合でも、プロビジョニングしたスループットの料金が発生します。
@@ -36,7 +36,7 @@ Azure Cosmos DB アカウントを米国の非政府リージョンにデプロ�
 
 Azure Cosmos DB では、開発者向けに無料のオプションが多数提供されています。 設定できるオプションは次のとおりです。
 
-* **Azure Cosmos DB の Free レベル** : Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります (アカウントの有効期間中)。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](manage-sql-with-resource-manager.md#free-tier)を使用します。
+* **Azure Cosmos DB の Free レベル** : Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります (アカウントの有効期間中)。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](./manage-with-templates.md#free-tier)を使用します。
 
 * **Azure 無料アカウント** :Azure の [Free レベル](https://azure.microsoft.com/free/)では、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](../cost-management-billing/manage/avoid-charges-free-account.md)に関するページをご覧ください。 Azure Cosmos DB は Azure 無料アカウントの一部です。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU/秒のプロビジョニング済みスループットが 1 年間提供されます。
 
@@ -59,7 +59,7 @@ Azure Cosmos DB リソースのコストの最適化について詳しくは、�
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します
 * [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
 * [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)について確認する
 * [Azure Cosmos DB Emulator](local-emulator.md) について確認する

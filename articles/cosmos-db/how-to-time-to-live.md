@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486006"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 
 Azure Cosmos DB では、コンテナー レベルで Time to Live (TTL) の構成を選択することも、コンテナーでの設定後に項目レベルでそれをオーバーライドすることもできます。 Azure portal または言語固有の SDK を使用して、コンテナーの TTL を構成できます。 項目レベルの TTL オーバーライドは、SDK を使用して構成できます。
 
-> このコンテンツは Azure Cosmos DB トランザクション ストア TTL に関連付けられています。 [Azure Synapse Link](https://docs.microsoft.com/azure/cosmos-db/synapse-link) 経由で NoETL HTAP シナリオを可能にする分析ストア TTL をお探しの場合、こちらを[クリック](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)してください。
+> このコンテンツは Azure Cosmos DB トランザクション ストア TTL に関連付けられています。 [Azure Synapse Link](./synapse-link.md) 経由で NoETL HTAP シナリオを可能にする分析ストア TTL をお探しの場合、こちらを[クリック](./analytical-store-introduction.md#analytical-ttl)してください。
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Azure portal を使用してコンテナーの Time to Live を有効にする
 

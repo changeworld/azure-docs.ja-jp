@@ -6,18 +6,18 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707950"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485462"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL 拡張機能の使用方法
-PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから  [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html)  コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
+PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
 
 Azure Database for PostgreSQL でサポートされる主要な拡張機能のサブセットを次に示します。 この情報は、`SELECT * FROM pg_available_extensions;`を実行して確認することもできます。 ここに示した以外の拡張機能はサポートされていません。 Azure Database for PostgreSQL で独自の拡張機能を作成することはできません。
 
@@ -205,7 +205,7 @@ Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サ�
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 [pg_stat_statements 拡張機能](https://www.postgresql.org/docs/current/pgstatstatements.html)は、すべての Azure Database for PostgreSQL サーバーにプリロードされ、SQL ステートメントの実行統計情報を追跡する手段が提供されています。
-ステートメントをコントロールする設定`pg_stat_statements.track`は、拡張機能と既定値によって`top`にカウントされ、クライアントが直接発行したすべてのステートメントがすべて追跡されます。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、[Azure portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)または[Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)を通じてサーバーのパラメーターとして構成可能です。
+ステートメントをコントロールする設定`pg_stat_statements.track`は、拡張機能と既定値によって`top`にカウントされ、クライアントが直接発行したすべてのステートメントがすべて追跡されます。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、[Azure portal](./howto-configure-server-parameters-using-portal.md)または[Azure CLI](./howto-configure-server-parameters-using-cli.md)を通じてサーバーのパラメーターとして構成可能です。
 
 各 SQL ステートメントをログに記録する時はPg_stat_statements が提供するクエリの実行情報とサーバーのパフォーマンスに与える影響にトレードオフがあります。 pg_stat_statements 拡張機能を使用していない場合、`pg_stat_statements.track`を`none`に設定することをお勧めします。 一部のサード パーティ監視サービスがクエリ パフォーマンスの分析情報を実行するために Pg_stat_statements に依存することがありますので、そのようなケースに該当するかどうかを確認してください。
 
@@ -231,7 +231,7 @@ TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時
 [Timescale, Inc.](https://www.timescale.com/)の登録商標である[TimescaleDBの詳細をご覧ください](https://docs.timescale.com/latest)。 Azure Database for PostgreSQL には、TimescaleDB [Apache-2 エディション](https://www.timescale.com/legal/licenses)が用意されています。
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
-TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。
+TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、 **サーバーの再起動** が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。
 
 [Azure portal](https://portal.azure.com/) を使用して以下を実行します。
 
@@ -245,7 +245,7 @@ TimescaleDB をインストールするには、それをサーバーの共有�
 
 5. **[保存]** を選択して変更を保存します。 変更が保存されると通知を受け取ります。 
 
-6. 通知後、サーバーを**再起動**してこれらの変更を適用します。 サーバーを再起動する方法については、[Azure Database for PostgreSQL サーバーの再起動](howto-restart-server-portal.md)に関するページを参照してください。
+6. 通知後、サーバーを **再起動** してこれらの変更を適用します。 サーバーを再起動する方法については、[Azure Database for PostgreSQL サーバーの再起動](howto-restart-server-portal.md)に関するページを参照してください。
 
 
 次に、Postgres データベースで TimescaleDB を有効にすることができます。 データベースに接続して、以下のコマンドを実行します。

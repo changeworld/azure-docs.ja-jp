@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8f573a3e851fe428c66066e36a913d6580cabd51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62a31750fe0c058624c4f69848abb56e7b5095b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022481"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491021"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Bulk Executor library からAzure Cosmos DB .NET V3 SDK のBulkサポートに移行する
 
@@ -20,13 +20,13 @@ ms.locfileid: "89022481"
 
 ## <a name="enable-bulk-support"></a>Bulkサポートを有効にする
 
-`CosmosClient`インスタンスで、[AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) 構成を使用し、Bulkサポートを有効にする：
+`CosmosClient`インスタンスで、[AllowBulkExecution](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) 構成を使用し、Bulkサポートを有効にする：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
 ## <a name="create-tasks-for-each-operation"></a>各操作のタスクを作成する
 
-.NET SDKにおけるBulkサポートは、 [タスク並列ライブラリ、および](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl)同時に発動するグループ化操作を活用することによって作動する。 
+.NET SDKにおけるBulkサポートは、 [タスク並列ライブラリ、および](/dotnet/standard/parallel-programming/task-parallel-library-tpl)同時に発動するグループ化操作を活用することによって作動する。 
 
 SDK にはドキュメントまたは操作のリストを入力パラメーターとして受け取る単一のメソッドがありませんが、一括で実行する操作ごとにタスクを作成する必要があります。その後、それらが完了するのを待ちます。
 
@@ -38,17 +38,17 @@ SDK にはドキュメントまたは操作のリストを入力パラメータ�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-一括*アップデート*（[BulkExecutor.BulkImportAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)の使用と同様）を実行したい場合は、項目の値を更新してから`ReplaceItemAsync`メソッドを同時に起動する必要があります。 次に例を示します。
+一括 *アップデート* （ [BulkExecutor.BulkImportAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)の使用と同様）を実行したい場合は、項目の値を更新してから`ReplaceItemAsync`メソッドを同時に起動する必要があります。 次に例を示します。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-一括*削除*（[BulkExecutor.BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)の使用と同様）を実行したい場合は、`DeleteItemAsync`を `id`および各項目のパーテーションキーと同時に起動する必要があります。 次に例を示します。
+一括 *削除* （ [BulkExecutor.BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)の使用と同様）を実行したい場合は、`DeleteItemAsync`を `id`および各項目のパーテーションキーと同時に起動する必要があります。 次に例を示します。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
 ## <a name="capture-task-result-state"></a>タスクの結果の状態をCaptureします
 
-以前のコード例では、タスクの同時実行リストを作成し、各タスクで `CaptureOperationResponse` メソッドを呼び出しました。 このメソッドは、エラーや [リクエストユニットの使用](request-units.md)の追跡を行うことによって、*BulkExecutorとしての*要求した応答スキーマを維持することを可能にする拡張機能です。
+以前のコード例では、タスクの同時実行リストを作成し、各タスクで `CaptureOperationResponse` メソッドを呼び出しました。 このメソッドは、エラーや [リクエストユニットの使用](request-units.md)の追跡を行うことによって、 *BulkExecutorとしての* 要求した応答スキーマを維持することを可能にする拡張機能です。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
@@ -68,7 +68,7 @@ SDK にはドキュメントまたは操作のリストを入力パラメータ�
 
 ## <a name="capture-statistics"></a>統計をCaptureする
 
-前のコードは、全ての操作が完了するまで待機し、それから必要な統計の計算を行います。 これらの統計は、一括実行プログラムの[BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)のものと類似しています。
+前のコードは、全ての操作が完了するまで待機し、それから必要な統計の計算を行います。 これらの統計は、一括実行プログラムの[BulkImportResponse](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)のものと類似しています。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
@@ -81,9 +81,9 @@ SDK にはドキュメントまたは操作のリストを入力パラメータ�
 
 ## <a name="retry-configuration"></a>コンフィグレーションを再試行する
 
-一括実行ライブラリには、`MaxRetryWaitTimeInSeconds`および [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions)の `MaxRetryAttemptsOnThrottledRequests`を、ライブラリにコントロールを委任するために`0`に設定する[ガイダンス](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)がありました。
+一括実行ライブラリには、`MaxRetryWaitTimeInSeconds`および [RetryOptions](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions)の `MaxRetryAttemptsOnThrottledRequests`を、ライブラリにコントロールを委任するために`0`に設定する[ガイダンス](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)がありました。
 
-.NET SDKの一括サポートに関しては、非表示の動作はありません。 再試行オプションを[CosmosClientOptions.MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) および [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)を通して直接コンフィギュアする事が出来ます。
+.NET SDKの一括サポートに関しては、非表示の動作はありません。 再試行オプションを[CosmosClientOptions.MaxRetryAttemptsOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) および [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)を通して直接コンフィギュアする事が出来ます。
 
 > [!NOTE]
 > データの量に基づき、供給された要求ユニットが予想よりはるかに低いとされた場合には、これらの値を高い値に設定することを検討してください。 一括操作は長時間かかりますが、再試行の回数が多いため、より高い可能性で完全に成功します。

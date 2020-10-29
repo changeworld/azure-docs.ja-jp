@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: aaa9a78342cf64461d85d7542c7ed8a69186906b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f49b7a2b4acc42724616121186093b112867d2b5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275114"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487723"
 ---
 # <a name="azure-cosmos-db-sql-api-spring-data-azure-cosmos-db-v3-examples"></a>Azure Cosmos DB SQL API: Spring Data Azure Cosmos DB v3 のサンプル
 
@@ -34,9 +34,9 @@ ms.locfileid: "92275114"
 > Spring Data Azure Cosmos DB では、SQL API のみがサポートされています。
 >
 > 他の Azure Cosmos DB API での Spring Data については、次の記事を参照してください。
-> * [Azure Cosmos DB での Apache Cassandra 用 Spring Data](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Azure Cosmos DB での Spring Data MongoDB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Azure Cosmos DB での Spring Data Gremlin](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Azure Cosmos DB での Apache Cassandra 用 Spring Data](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Azure Cosmos DB での Spring Data MongoDB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Azure Cosmos DB での Spring Data Gremlin](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 > [!IMPORTANT]  
@@ -59,7 +59,7 @@ Azure Cosmos DB リソースに対する CRUD 操作などの一般的な操作�
 * Java Development Kit 8
 * Spring Data Azure Cosmos DB v3
 
-プロジェクトで使用する最新の Spring Data Azure Cosmos DB v3 バイナリが必要な場合は、Maven を使用して取得することもできます。 必要な依存関係は Maven によって自動的に追加されます。 または、**pom.xml** ファイルに一覧表示されている依存関係を直接ダウンロードして、ビルドのパスに追加することもできます。
+プロジェクトで使用する最新の Spring Data Azure Cosmos DB v3 バイナリが必要な場合は、Maven を使用して取得することもできます。 必要な依存関係は Maven によって自動的に追加されます。 または、 **pom.xml** ファイルに一覧表示されている依存関係を直接ダウンロードして、ビルドのパスに追加することもできます。
 
 ```bash
 <dependency>
@@ -115,7 +115,7 @@ mvn spring-boot:run
 | [ドキュメントのクエリ](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java#L73-L77) | CosmosRepository.derivedQueryMethod |
 
 ## <a name="custom-query-examples"></a>カスタム クエリのサンプル
-この[サンプル](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) ファイルは、SQL クエリ文法を使用して次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB の SQL クエリ リファレンスについて知るために、「[Azure Cosmos DB の SQL クエリの例](how-to-sql-query.md)」を参照してください。 
+この[サンプル](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) ファイルは、SQL クエリ文法を使用して次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB の SQL クエリ リファレンスについて知るために、「[Azure Cosmos DB の SQL クエリの例](./sql-query-getting-started.md)」を参照してください。 
 
 
 | タスク | API リファレンス |

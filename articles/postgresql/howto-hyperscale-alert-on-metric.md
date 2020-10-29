@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: b5ccd1281e50ca10b8edd7d7567a000b97107901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907421"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489865"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure portal を使用して Azure Database for PostgreSQL でのメトリックに対するアラートを設定する - Hyperscale (Citus)
 
@@ -28,7 +28,7 @@ ms.locfileid: "90907421"
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 監視 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
 1. [Azure Portal](https://portal.azure.com/) で、監視する Azure Database for PostgreSQL サーバーを選択します。
@@ -87,8 +87,8 @@ ms.locfileid: "90907421"
 アラートを作成したら、それを選択して次のアクションを実行できます。
 
 * このアラートに関連するメトリックのしきい値と、前日の実際の値を示すグラフを表示する。
-* アラート ルールを**編集**または**削除**する。
-* アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
+* アラート ルールを **編集** または **削除** する。
+* アラートを **無効** にしてアラートを一時的に停止する、または **有効** にして通知の受け取りを再開する。
 
 ## <a name="suggested-alerts"></a>推奨されるアラート
 
@@ -110,4 +110,4 @@ CPU 使用率の監視は、パフォーマンスのベースラインを確立�
 
 ## <a name="next-steps"></a>次のステップ
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
-* [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [メトリック収集の概要](../azure-monitor/platform/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。

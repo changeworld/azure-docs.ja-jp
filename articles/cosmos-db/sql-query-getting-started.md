@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: f4ee0c0af6939e71f696fc900ec2ab1343ca91df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95fe72df152e297114f4bde59b11137c6accdb6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802516"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488148"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
 
 Azure Cosmos DB SQL API アカウントでは、次の 2 つの方法でデータを読み取ることができます。
 
-**ポイントの読み取り** - 1 つの*項目 ID* およびパーティション キーにおいてキーと値の参照を行うことができます。 *項目 ID* とパーティション キーの組み合わせがキーであり、項目自体は値です。 1 KB のドキュメントの場合、ポイントの読み取りには通常 1 個の[要求ユニット](request-units.md)が必要で、待機時間は 10 ミリ秒未満です。 ポイントの読み取りでは、1 つの項目が返されます。
+**ポイントの読み取り** - 1 つの *項目 ID* およびパーティション キーにおいてキーと値の参照を行うことができます。 *項目 ID* とパーティション キーの組み合わせがキーであり、項目自体は値です。 1 KB のドキュメントの場合、ポイントの読み取りには通常 1 個の[要求ユニット](request-units.md)が必要で、待機時間は 10 ミリ秒未満です。 ポイントの読み取りでは、1 つの項目が返されます。
 
 **SQL クエリ** - 構造化照会言語 (SQL) (Structured Query Language) を JSON クエリ言語として使用してクエリを記述することで、データを照会できます。 照会には常に 2.3 個以上の要求ユニットが必要で、通常はポイントの読み取りよりも待機時間が長く、その変動も大きくなります。 クエリを使用すると、多くの項目を返すことができます。
 
@@ -25,10 +25,10 @@ Azure Cosmos DB の読み取り負荷の高いワークロードのほとんど�
 
 以下に、各 SDK でポイントの読み取りを実行する方法の例を示します。
 
-- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet&preserve-view=true)
-- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable&preserve-view=true#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
-- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest&preserve-view=true#read-requestoptions-)
-- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python&preserve-view=true#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+- [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
+- [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
+- [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
 このドキュメントの残りの部分では、Azure Cosmos DB で SQL クエリの記述を開始する方法について説明します。 SQL クエリは、SDK または Azure portal を使用して実行できます。
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 727eb4cd7e7c3de090e1573cb5358ef23118385e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 830a97db562820853efcd88b1ab8c0b729a5dc9a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930820"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490137"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークを作成して管理する
 
@@ -23,9 +23,9 @@ Azure Database for PostgreSQL - フレキシブル サーバーによって、�
 * パブリック アクセス (許可された IP アドレス)
 * プライベート アクセス (VNet 統合)
 
-この記事では、**プライベート アクセス (VNet 統合)** を使用する PostgreSQL サーバーを、Azure CLI を使用して作成することに焦点を当てます。 *プライベート アクセス (VNet 統合)* を使用すると、フレキシブル サーバーを独自の [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) にデプロイできます。 Azure Virtual Network では、非公開で、セキュリティで保護されたネットワーク通信が提供されます。 プライベート アクセスでは、PostgreSQL サーバーへの接続は仮想ネットワーク内のみに制限されます。 詳細については、「[プライベート アクセス (VNet 統合)](./concepts-networking.md#private-access-vnet-integration)」を参照してください。
+この記事では、 **プライベート アクセス (VNet 統合)** を使用する PostgreSQL サーバーを、Azure CLI を使用して作成することに焦点を当てます。 *プライベート アクセス (VNet 統合)* を使用すると、フレキシブル サーバーを独自の [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) にデプロイできます。 Azure Virtual Network では、非公開で、セキュリティで保護されたネットワーク通信が提供されます。 プライベート アクセスでは、PostgreSQL サーバーへの接続は仮想ネットワーク内のみに制限されます。 詳細については、「[プライベート アクセス (VNet 統合)](./concepts-networking.md#private-access-vnet-integration)」を参照してください。
 
-Azure Database for PostgreSQL - フレキシブル サーバーでは、サーバーの作成時にのみ、サーバーを仮想ネットワークとサブネットにデプロイできます。 フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、別の仮想ネットワーク、サブネット、または "*パブリック アクセス (許可された IP アドレス)* " に移動することはできません。
+Azure Database for PostgreSQL - フレキシブル サーバーでは、サーバーの作成時にのみ、サーバーを仮想ネットワークとサブネットにデプロイできます。 フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、別の仮想ネットワーク、サブネット、または " *パブリック アクセス (許可された IP アドレス)* " に移動することはできません。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -33,24 +33,24 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、サー�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、 **[入力]** を選択して実行します。
 
-CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用してアカウントにサインインする必要があります。 **ID** プロパティに注意してください。これは、お使いの Azure アカウントの**サブスクリプション ID** のことです。
+[az login](/cli/azure/reference-index#az-login) コマンドを使用してアカウントにサインインする必要があります。 **ID** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** のことです。
 
 ```azurecli-interactive
 az login
 ```
 
-[az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 **az login** 出力の **ID** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) を使用します。
+[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 **az login** 出力の **ID** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
 ```
 
 ## <a name="create-azure-database-for-postgresql---flexible-server-using-cli"></a>CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する
-`az postgres flexible-server` コマンドを使用して、*プライベート アクセス (VNet 統合)* を使用するフレキシブル サーバーを作成できます。 このコマンドでは、既定の接続方法としてプライベート アクセス (VNet 統合) を使用します。 何も指定しない場合は、仮想ネットワークとサブネットが自動的に作成されます。 サブネット ID を使用して、既に存在する仮想ネットワークとサブネットを指定することもできます。 <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
+`az postgres flexible-server` コマンドを使用して、 *プライベート アクセス (VNet 統合)* を使用するフレキシブル サーバーを作成できます。 このコマンドでは、既定の接続方法としてプライベート アクセス (VNet 統合) を使用します。 何も指定しない場合は、仮想ネットワークとサブネットが自動的に作成されます。 サブネット ID を使用して、既に存在する仮想ネットワークとサブネットを指定することもできます。 <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
 
 >[!Important]
 > このコマンドを使用すると、サブネットが **Microsoft.DBforPostgreSQL/flexibleServers** に委任されます。 この委任は、Azure Database for PostgreSQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。

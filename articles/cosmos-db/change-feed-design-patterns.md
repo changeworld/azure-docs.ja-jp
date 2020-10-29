@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85118952"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489355"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィードの設計パターン
 
@@ -52,7 +52,7 @@ Cosmos コンテナーの変更フィードからの読み取りに加えて、A
 
 ### <a name="high-availability"></a>高可用性
 
-Azure Cosmos DB には、最大 99.999% の読み取りと書き込みの可用性が備わっています。 多くのメッセージ キューとは異なり、Azure Cosmos DB のデータは簡単にグローバルに分散させ、[RTO (目標復旧時間)](consistency-levels-tradeoffs.md#rto) を 0 にして構成できます。
+Azure Cosmos DB には、最大 99.999% の読み取りと書き込みの可用性が備わっています。 多くのメッセージ キューとは異なり、Azure Cosmos DB のデータは簡単にグローバルに分散させ、[RTO (目標復旧時間)](./consistency-levels.md#rto) を 0 にして構成できます。
 
 変更フィードの項目を処理した後で、具体化されたビューを作成したり、集計された値を Azure Cosmos DB に戻して保持したりできます。 たとえば、Azure Cosmos DB を使用してゲームを構築する場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
 
@@ -73,7 +73,7 @@ Azure Cosmos DB には、最大 99.999% の読み取りと書き込みの可用�
 
 ## <a name="event-sourcing"></a>イベント ソーシング
 
-[イベント ソーシング パターン](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)では、追加専用ストアを使用して、そのデータに対する一連のアクションをすべて記録します。 Azure Cosmos DB の変更フィードは、すべてのデータ インジェストが書き込み (更新や削除なし) としてモデル化されているイベント ソーシング アーキテクチャの中央データ ストアとして最適な選択肢となります。 この場合、Azure Cosmos DB への各書き込みは "イベント" であり、変更フィードには過去のイベントの完全な記録が保持されます。 中央イベント ストアによって発行されるイベントの一般的な用途は、具体化されたビューを維持したり、外部システムと統合したりするためです。 変更フィードには保持期間の制限がないため、Cosmos コンテナーの変更フィードの先頭から読み取ることによって、過去のすべてのイベントを再生できます。
+[イベント ソーシング パターン](/azure/architecture/patterns/event-sourcing)では、追加専用ストアを使用して、そのデータに対する一連のアクションをすべて記録します。 Azure Cosmos DB の変更フィードは、すべてのデータ インジェストが書き込み (更新や削除なし) としてモデル化されているイベント ソーシング アーキテクチャの中央データ ストアとして最適な選択肢となります。 この場合、Azure Cosmos DB への各書き込みは "イベント" であり、変更フィードには過去のイベントの完全な記録が保持されます。 中央イベント ストアによって発行されるイベントの一般的な用途は、具体化されたビューを維持したり、外部システムと統合したりするためです。 変更フィードには保持期間の制限がないため、Cosmos コンテナーの変更フィードの先頭から読み取ることによって、過去のすべてのイベントを再生できます。
 
 [複数の変更フィード コンシューマーが同じコンテナーの変更フィードにサブスクライブする](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers)ようにできます。 [リース コンテナー](change-feed-processor.md#components-of-the-change-feed-processor)のプロビジョニングされたスループットの他に、変更フィードを利用する費用はかかりません。 変更フィードは、利用されているかどうかに関係なく、すべてのコンテナーで使用可能です。
 

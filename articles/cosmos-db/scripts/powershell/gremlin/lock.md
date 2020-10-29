@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 6e119fe2cc54ce38dcb8ac2d0c711056dc7d77ce
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 02729b1a73cb66d9b72e9cbca7ed866725e07b83
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280631"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489151"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-powershell"></a>Azure PowerShell を使用して Azure Cosmos Gremlin API のデータベースとグラフのためのリソース ロックを作成する
 
@@ -42,11 +42,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | コマンド | Notes |
 |---|---|
 |**Azure リソース**| |
-| [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) | リソース ロックを作成します。 |
-| [Get-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcelock) | 1 つのリソース ロックを取得するか、リソース ロックを一覧表示します。 |
-| [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) | リソース ロックを削除します。 |
+| [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) | リソース ロックを作成します。 |
+| [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) | 1 つのリソース ロックを取得するか、リソース ロックを一覧表示します。 |
+| [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) | リソース ロックを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)をご覧ください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)をご覧ください。

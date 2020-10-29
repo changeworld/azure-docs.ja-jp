@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329374"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489287"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -35,7 +35,7 @@ ms.locfileid: "92329374"
 | コンテナーあたりの最大ストレージ | 無制限 |
 | データベースあたりの最大ストレージ | 無制限 |
 | アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は非推奨になってきています) | 2 GB |
-| 1 GB あたりに必要な最小 RU/秒 | 10 RU/秒<br>**注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。 |
+| 1 GB あたりに必要な最小 RU/秒 | 10 RU/秒<br>**注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、 ["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。 |
 
 > [!NOTE]
 > ストレージまたはスループットにより高い制限が必要なパーティション キーを持つワークロードを管理するためのベスト プラクティスについては、「[合成パーティション キーの作成](synthetic-partition-keys.md)」を参照してください。
@@ -144,7 +144,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 ## <a name="per-request-limits"></a>要求あたりの制限
 
-Azure Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](/rest/api/cosmos-db/)をサポートしています。 また、コンテナー内の同じパーティション キーを持つ複数の項目に対する[トランザクション バッチ要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)もサポートしています。
+Azure Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](/rest/api/cosmos-db/)をサポートしています。 また、コンテナー内の同じパーティション キーを持つ複数の項目に対する[トランザクション バッチ要求](/dotnet/api/microsoft.azure.cosmos.transactionalbatch)もサポートしています。
 
 | リソース | 既定の制限 |
 | --- | --- |
@@ -191,7 +191,7 @@ Azure Cosmos DB は、各アカウントのシステム メタデータを保持
 
 ## <a name="sql-query-limits"></a>SQL クエリの制限
 
-Cosmos DB は、[SQL](how-to-sql-query.md) を使用した項目のクエリをサポートしています。 次の表では、クエリ ステートメントでの制限 (句の数やクエリの長さなどの単位) について説明します。
+Cosmos DB は、[SQL](./sql-query-getting-started.md) を使用した項目のクエリをサポートしています。 次の表では、クエリ ステートメントでの制限 (句の数やクエリの長さなどの単位) について説明します。
 
 | リソース | 既定の制限 |
 | --- | --- |

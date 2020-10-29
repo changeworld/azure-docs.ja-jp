@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757845"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489270"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
 
@@ -58,7 +58,7 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 コンテナーの作成中に、Azure Cosmos コンテナーで分析ストアを有効にすることができます。 Azure portal を使用するか、Azure Cosmos DB SDK を使用してコンテナー作成時に `analyticalTTL` プロパティを構成することができます。
 
 > [!NOTE]
-> 現時点では、分析ストアは**新しい**コンテナーに対して有効にすることができます (新規、既存のどちらのアカウントでも)。 [Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行できます。
+> 現時点では、分析ストアは **新しい** コンテナーに対して有効にすることができます (新規、既存のどちらのアカウントでも)。 [Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行できます。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -217,10 +217,7 @@ Synapse Spark を使用してクエリを実行する方法については、[Az
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a>Synapse SQL サーバーレスを使用して分析ストアのクエリを実行する
 
-Synapse SQL サーバーレス (以前は **SQL オンデマンド**と呼ばれていたプレビュー機能) を使用すると、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータのクエリを実行して分析できます。 トランザクション ワークロードのパフォーマンスに影響を与えることなく、凖リアルタイムでデータを分析できます。 T-SQL インターフェイスを使用して分析ストアおよび統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。 詳細については、[Synapse SQL サーバーレスを使用した分析ストアのクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
-
-> [!NOTE]
-> Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアの使用は、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
+Synapse SQL サーバーレス (以前は **SQL オンデマンド** と呼ばれていたプレビュー機能) を使用すると、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータのクエリを実行して分析できます。 トランザクション ワークロードのパフォーマンスに影響を与えることなく、凖リアルタイムでデータを分析できます。 T-SQL インターフェイスを使用して分析ストアおよび統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。 詳細については、[Synapse SQL サーバーレスを使用した分析ストアのクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Synapse SQL サーバーレスを使用して Power BI のデータを分析して視覚化する
 
@@ -228,7 +225,7 @@ Synapse Link for Azure Cosmos DB 上に Synapse SQL サーバーレス データ
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-[Azure Resource Manager テンプレート](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store)では、SQL API の Synapse Link が有効な Azure Cosmos DB アカウントを作成します。 このテンプレートでは、分析 TTL を有効にして構成されたコンテナーと、手動または自動スケールのスループットを使用するオプションで、1 つのリージョンにコア (SQL) API アカウントを作成します。 このテンプレートをデプロイするには、readme ページで **[Azure に配置する]** をクリックします。
+[Azure Resource Manager テンプレート](./manage-with-templates.md#azure-cosmos-account-with-analytical-store)では、SQL API の Synapse Link が有効な Azure Cosmos DB アカウントを作成します。 このテンプレートでは、分析 TTL を有効にして構成されたコンテナーと、手動または自動スケールのスループットを使用するオプションで、1 つのリージョンにコア (SQL) API アカウントを作成します。 このテンプレートをデプロイするには、readme ページで **[Azure に配置する]** をクリックします。
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Azure Synpase Link の使用を開始する - サンプル
 

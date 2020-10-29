@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836512"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486210"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 
-Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (**サービス マネージド キー**) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー (**カスタマー マネージド キー**) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
+Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー ( **サービス マネージド キー** ) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー ( **カスタマー マネージド キー** ) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
@@ -36,7 +36,7 @@ Azure Cosmos アカウントに格納されているデータは、Microsoft が
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Azure Key Vault インスタンスを構成する
 
-Azure Cosmos DB でカスタマー マネージド キーを使用するには、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスで 2 つのプロパティを設定する必要があります。**論理的な削除**と**消去保護**です。
+Azure Cosmos DB でカスタマー マネージド キーを使用するには、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスで 2 つのプロパティを設定する必要があります。 **論理的な削除** と **消去保護** です。
 
 新しい Azure Key Vault インスタンスを作成する場合は、作成時にこれらのプロパティを有効にします。
 
@@ -59,7 +59,7 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
-1. **[プリンシパルの選択]** で、 **[選択されていません]** を選択します。 次に、**Azure Cosmos DB** プリンシパルを検索して選択します (検索しやすくするために、Azure Government リージョンを除くすべての Azure リージョンはプリンシパル ID: `a232010e-820c-4083-83bb-3ace5fc29d0b`、Azure Government リージョンはプリンシパル ID: `57506a73-e302-42a9-b869-6f12d9ec29e9` を使用して検索することもできます)。 最後に、一番下の **[選択]** を選択します。 **Azure Cosmos DB** プリンシパルが一覧にない場合は、この記事の[リソース プロバイダーの登録](#register-resource-provider)に関するセクションの説明に従って **Microsoft.DocumentDB** リソース プロバイダーを再登録することが必要になる場合があります。
+1. **[プリンシパルの選択]** で、 **[選択されていません]** を選択します。 次に、 **Azure Cosmos DB** プリンシパルを検索して選択します (検索しやすくするために、Azure Government リージョンを除くすべての Azure リージョンはプリンシパル ID: `a232010e-820c-4083-83bb-3ace5fc29d0b`、Azure Government リージョンはプリンシパル ID: `57506a73-e302-42a9-b869-6f12d9ec29e9` を使用して検索することもできます)。 最後に、一番下の **[選択]** を選択します。 **Azure Cosmos DB** プリンシパルが一覧にない場合は、この記事の [リソース プロバイダーの登録](#register-resource-provider)に関するセクションの説明に従って **Microsoft.DocumentDB** リソース プロバイダーを再登録することが必要になる場合があります。
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
@@ -279,7 +279,7 @@ Azure Cosmos DB でカスタマー マネージド キー (CMK) を使用して�
 
 カスタマー マネージド キーでは、次のメタデータを除き、ご自分の Azure Cosmos アカウントに格納されているすべてのデータが暗号化されます。
 
-- Azure Cosmos DB [アカウント、データベース、およびコンテナー](./account-overview.md#elements-in-an-azure-cosmos-account)の名前
+- Azure Cosmos DB [アカウント、データベース、およびコンテナー](./account-databases-containers-items.md#elements-in-an-azure-cosmos-account)の名前
 
 - [ストアド プロシージャ](./stored-procedures-triggers-udfs.md)の名前
 

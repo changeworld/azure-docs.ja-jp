@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 615bd423296fb9ed2ee28cab9e362873a30ee7b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283327"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488386"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API を使用する場合のクエリの問題のトラブルシューティング
 
@@ -116,7 +116,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 | `timeInclusiveMS` | バックエンド クエリの待機時間 |
 | `pathsIndexed` | クエリで使用されたインデックスを表示します | 
 | `pathsNotIndexed` | 使用可能であった場合に、クエリで使用された可能性があるインデックスを表示します | 
-| `shardInformation` | 特定の[物理パーティション](partition-data.md#physical-partitions)のクエリ パフォーマンスの概要 | 
+| `shardInformation` | 特定の[物理パーティション](./partitioning-overview.md#physical-partitions)のクエリ パフォーマンスの概要 | 
 | `retrievedDocumentCount` | クエリ エンジンによって読み込まれたドキュメントの数 | 
 | `outputDocumentCount` | クエリ結果で返されたドキュメントの数 | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | レート制限による追加のクエリ待機時間の推定 | 
@@ -256,7 +256,7 @@ Azure Cosmos DB の MongoDB 用 API におけるインデックスのベスト�
 
 [ワイルドカード インデックス](mongodb-indexing.md#wildcard-indexes)を使用すると、インデックス作成を簡単に行うことができます。 MongoDB とは異なり、ワイルドカード インデックスはクエリ述語内の複数のフィールドをサポートできます。 プロパティごとに個別のインデックスを作成する代わりに 1 つのワイルドカード インデックスを使用しても、クエリのパフォーマンスに違いはありません。 すべてのクエリを最適化する最も簡単な方法は、すべてのプロパティにワイルドカード インデックスを追加することです。
 
-書き込みまたは読み取りの可用性に影響を与えることなく、いつでも新しいインデックスを追加できます。 [インデックス変換の進行状況を追跡](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)できます。
+書き込みまたは読み取りの可用性に影響を与えることなく、いつでも新しいインデックスを追加できます。 [インデックス変換の進行状況を追跡](./how-to-manage-indexing-policy.md#dotnet-sdk)できます。
 
 ### <a name="understand-which-aggregation-operations-use-the-index"></a>インデックスを使用する集計操作を理解する
 

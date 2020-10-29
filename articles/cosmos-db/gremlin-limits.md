@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
 ms.author: sngun
-ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a265f1ae6e925440e2804056348cb705b09da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400470"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490562"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin の制限
 この記事では Azure Cosmos DB Gremling エンジンの制限事項について説明し、それらが顧客トラバーサルに与える影響について説明します。
 
-Cosmos DB Gremlin は、Cosmos DB インフラストラクチャの上に構築されています。 このため、[Azure Cosmos DB サービスの制限](https://docs.microsoft.com/azure/cosmos-db/concepts-limits)に関する記事で説明されているすべての制限が当てはまります。
+Cosmos DB Gremlin は、Cosmos DB インフラストラクチャの上に構築されています。 このため、[Azure Cosmos DB サービスの制限](./concepts-limits.md)に関する記事で説明されているすべての制限が当てはまります。
 
 ## <a name="limits"></a>制限
 

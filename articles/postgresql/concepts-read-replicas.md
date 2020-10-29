@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7f81e6182209e29e41a21abadbaf05518844d201
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123298"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490171"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -143,7 +143,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 ### <a name="disaster-recovery"></a>障害復旧
 
-可用性ゾーン レベルまたは局地的な障害などの重大な障害イベントが発生した場合は、読み取りレプリカを昇格させることでディザスター リカバリー操作を実行できます。 UI ポータルから、読み取りレプリカ サーバーに移動できます。 次に、[レプリケーション] タブをクリックし、レプリカを停止して、独立したサーバーに昇格させることができます。 または、[Azure CLI](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) を使用して、レプリカ サーバーの停止と昇格を行うこともできます。
+可用性ゾーン レベルまたは局地的な障害などの重大な障害イベントが発生した場合は、読み取りレプリカを昇格させることでディザスター リカバリー操作を実行できます。 UI ポータルから、読み取りレプリカ サーバーに移動できます。 次に、[レプリケーション] タブをクリックし、レプリカを停止して、独立したサーバーに昇格させることができます。 または、[Azure CLI](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) を使用して、レプリカ サーバーの停止と昇格を行うこともできます。
 
 ## <a name="considerations"></a>考慮事項
 

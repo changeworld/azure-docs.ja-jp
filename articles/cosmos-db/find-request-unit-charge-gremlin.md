@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 43685440de236d30698922b3b16a820eb935ae7c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ea9ab661fce1cd88bf1bdc065c2b26ccad73c30d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490715"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API で実行された操作の要求ユニット使用量を確認する
 
@@ -67,4 +67,4 @@ RU 使用量を最適化する方法については、次の記事をご覧く�
 
 * [Azure Cosmos DB における要求ユニットとスループット](request-units.md)
 * [Azure Cosmos DB でのプロビジョニングされたスループット コストを最適化する](optimize-cost-throughput.md)
-* [Azure Cosmos DB でのクエリ コストを最適化する](optimize-cost-queries.md)
+* [Azure Cosmos DB でのクエリ コストを最適化する](./optimize-cost-reads-writes.md)

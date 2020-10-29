@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40a909b111d5e667f7554cf727ab26bf9bc39650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997219"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485853"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する
 
@@ -42,7 +42,7 @@ ms.locfileid: "88997219"
 
 ここでは、プロセッサと推定機能の両方の `leaseContainer` と名前が同じです。
 
-他の 2 つのパラメーターはデリゲートです。このデリゲートは、プロセッサによって**読み取られる保留中の変更の数**と、この測定値を取得する時間間隔を表す数値を受け取ります。
+他の 2 つのパラメーターはデリゲートです。このデリゲートは、プロセッサによって **読み取られる保留中の変更の数** と、この測定値を取得する時間間隔を表す数値を受け取ります。
 
 推定を受け取るデリゲートの例は次のとおりです。
 
@@ -64,4 +64,4 @@ ms.locfileid: "88997219"
 以下の記事で、変更フィード プロセッサに関してさらに詳しく知ることができます。
 
 * [変更フィード プロセッサの概要](change-feed-processor.md)
-* [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)
+* [変更フィード プロセッサの開始時刻](./change-feed-processor.md#starting-time)

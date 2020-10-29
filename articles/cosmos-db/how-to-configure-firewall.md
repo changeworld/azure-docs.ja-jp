@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ad53a90586ccf88c5c74326103997ca0a53cdf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279759"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490511"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "92279759"
 
 既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。 データ エクスプローラーを使用する場合は、Azure portal にアカウントへのアクセスを許可するだけでなく、ファイアウォール規則に現在の IP アドレスを追加するようファイアウォール設定を更新する必要もあります。 ファイアウォールの変更が反映されるまでに最大 15 分かかる場合があります。
 
-IP ベースのファイアウォールと、サブネットおよび VNET のアクセス制御を組み合わせることができます。 これらを組み合わせることで、パブリック IP を保持する任意のソースへのアクセスや、VNET 内の特定のサブネットからのアクセスを制限できます。 サブネットおよび VNET ベースのアクセス制御に関する詳細については、[仮想ネットワークから Azure Cosmos DB リソースへのアクセス](vnet-service-endpoint.md)に関するページを参照してください。
+IP ベースのファイアウォールと、サブネットおよび VNET のアクセス制御を組み合わせることができます。 これらを組み合わせることで、パブリック IP を保持する任意のソースへのアクセスや、VNET 内の特定のサブネットからのアクセスを制限できます。 サブネットおよび VNET ベースのアクセス制御に関する詳細については、[仮想ネットワークから Azure Cosmos DB リソースへのアクセス](./how-to-configure-vnet-service-endpoint.md)に関するページを参照してください。
 
 端的に言えば、Azure Cosmos アカウントにアクセスするには、常に認証トークンが必要になります。 IP ファイアウォールおよび VNET アクセス制御リスト (ACL) が設定されていない場合は、認証トークンで Azure Cosmos アカウントにアクセスできます。 IP ファイアウォールまたは VNET ACL、あるいはその両方が Azure Cosmos アカウントに設定された後は、指定したソースから送信された要求 (認証トークンを備えている) のみが、有効な応答を取得します。 
 
@@ -91,7 +91,7 @@ Azure では、Azure Cosmos DB を使用して中間層のサービス ロジッ
 
 ### <a name="requests-from-virtual-machines"></a>仮想マシンからの要求
 
-Azure Cosmos DB を使用する中間層サービスのホスティングには、[仮想マシン](https://azure.microsoft.com/services/virtual-machines/)または[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用することもできます。 仮想マシンからのアクセスを許可するようにご利用の Cosmos DB アカウントを構成するには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことで、仮想マシンや仮想マシン スケール セットのパブリック IP アドレスを、ご利用の Azure Cosmos DB アカウントに許可されている IP アドレスの 1 つとして構成する必要があります。
+Azure Cosmos DB を使用する中間層サービスのホスティングには、[仮想マシン](https://azure.microsoft.com/services/virtual-machines/)または[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を使用することもできます。 仮想マシンからのアクセスを許可するようにご利用の Cosmos DB アカウントを構成するには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことで、仮想マシンや仮想マシン スケール セットのパブリック IP アドレスを、ご利用の Azure Cosmos DB アカウントに許可されている IP アドレスの 1 つとして構成する必要があります。
 
 仮想マシンの IP アドレスは Azure portal で取得できます。次のスクリーンショットを参照してください。
 
@@ -105,7 +105,7 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Resource Manager テンプレートを使用して IP ファイアウォールを構成する
 
-ご利用の Azure Cosmos DB アカウントへのアクセス制御を構成するには、Resource Manager テンプレートで、許可される IP 範囲の配列を使用して **ipRules** プロパティを指定します。 既にデプロイされている Cosmos アカウントに IP ファイアウォールを構成する場合には、配列 `locations` が現在デプロイされているものと一致していることを確認します。 配列 `locations` とそれ以外のプロパティを同時に変更することはできません。 Azure Cosmos DB 用の Azure Resource Manager テンプレートの詳細とサンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](resource-manager-samples.md)」を参照してください。
+ご利用の Azure Cosmos DB アカウントへのアクセス制御を構成するには、Resource Manager テンプレートで、許可される IP 範囲の配列を使用して **ipRules** プロパティを指定します。 既にデプロイされている Cosmos アカウントに IP ファイアウォールを構成する場合には、配列 `locations` が現在デプロイされているものと一致していることを確認します。 配列 `locations` とそれ以外のプロパティを同時に変更することはできません。 Azure Cosmos DB 用の Azure Resource Manager テンプレートの詳細とサンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](./templates-samples-sql.md)」を参照してください。
 
 > [!IMPORTANT]
 > **ipRules** プロパティは、API バージョン 2020-04-01 で導入されました。 以前のバージョンでは、コンマ区切りの IP アドレスのリストである **ipRangeFilter** プロパティが公開されていました。
@@ -221,7 +221,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="source-ips-in-blocked-requests"></a>ブロックされた要求内のソース IP
 
-Azure Cosmos DB アカウントで診断ログを有効にします。 これらのログには個々の要求と応答が表示されます。 ファイアウォールに関連するメッセージは、403 リターン コードを使用してログに記録されます。 これらのメッセージをフィルター処理することにより、ブロックされた要求のソース IP を確認できます。 「[Azure Cosmos DB 診断ログ](logging.md)」を参照してください。
+Azure Cosmos DB アカウントで診断ログを有効にします。 これらのログには個々の要求と応答が表示されます。 ファイアウォールに関連するメッセージは、403 リターン コードを使用してログに記録されます。 これらのメッセージをフィルター処理することにより、ブロックされた要求のソース IP を確認できます。 「[Azure Cosmos DB 診断ログ](./monitor-cosmos-db.md)」を参照してください。
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Azure Cosmos DB 用のサービス エンドポイントが有効にされているサブネットからの要求
 

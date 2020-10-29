@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929532"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490103"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>チュートリアル:App Service と Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) を使用して Django アプリをデプロイする
 
@@ -28,13 +28,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-[az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) コマンドを使用して、アカウントにログインする必要があります。 対応するサブスクリプション名のコマンド出力で **id** プロパティを確認します。
+[az login](/cli/azure/authenticate-azure-cli) コマンドを使用して、アカウントにログインする必要があります。 対応するサブスクリプション名のコマンド出力で **id** プロパティを確認します。
 
 ```azurecli
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の**サブスクリプション ID** プロパティに置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、 **az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -59,7 +59,7 @@ cd djangoapp
 
 [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択します。
 
-その ZIP ファイルを、*djangoapp* という名前のフォルダーに展開します。
+その ZIP ファイルを、 *djangoapp* という名前のフォルダーに展開します。
 
 次に、その *djangoapp* フォルダー内でターミナル ウィンドウを開きます。
 
@@ -69,7 +69,7 @@ djangoapp サンプルには、データ ドリブンの Django 投票アプリ�
 
 このサンプルは、App Service のような運用環境で実行するために変更もされています。
 
-- 運用環境の設定は、*azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
+- 運用環境の設定は、 *azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
 - `DJANGO_ENV` 環境変数を "production" に設定した場合に、アプリで運用環境の設定が使用されます。 この環境変数は、PostgreSQL データベース構成に使用する他のものと共に、チュートリアルの後半で作成します。
 
 これらの変更は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有ではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)に関するページを参照してください。
@@ -88,8 +88,8 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 
 - リソース グループがまだ存在していない場合は作成します。
 - サーバー名が指定されていない場合は、それが生成されます。
-- 新しい postgreSQL サーバー用の新しい仮想ネットワークが作成されます。 Web アプリを同じ仮想ネットワークに追加する必要があるため、サーバー用に作成された**仮想ネットワーク名とサブネット名をメモしておいてください**。
-- サーバーの管理者のユーザー名とパスワードが指定されていない場合は、それらが作成されます。 次の手順で使用するため、**ユーザー名とパスワードをメモしておいてください**。
+- 新しい postgreSQL サーバー用の新しい仮想ネットワークが作成されます。 Web アプリを同じ仮想ネットワークに追加する必要があるため、サーバー用に作成された **仮想ネットワーク名とサブネット名をメモしておいてください** 。
+- サーバーの管理者のユーザー名とパスワードが指定されていない場合は、それらが作成されます。 次の手順で使用するため、 **ユーザー名とパスワードをメモしておいてください** 。
 - 開発のために使用できるデータベース ```postgres``` を作成します。 [**psql** を実行してデータベースに接続](quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)し、別のデータベースを作成できます。
 
 > [!NOTE]
@@ -140,7 +140,7 @@ Django データベースの移行によって、Azure データベース上の 
 
 1. ブラウザーで *https://\<app-name>.scm.azurewebsites.net/webssh/host* に移動して SSH セッションを開き、Azure アカウントの資格情報 (データベース サーバーの資格情報ではなく) を使用してサインインします。
 
-1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
+1. SSH セッションで次のコマンドを実行します ( **Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
     ```bash
     cd site/wwwroot
@@ -155,7 +155,7 @@ Django データベースの移行によって、Azure データベース上の 
     python manage.py createsuperuser
     ```
 
-1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、**Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`postgres1`」と入力します。
+1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、 **Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`postgres1`」と入力します。
 
 ### <a name="create-a-poll-question-in-the-app"></a>アプリで投票の質問を作成する
 
@@ -226,7 +226,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-`python manage.py runserver` を使用して開発サーバーを再度実行し、*http:\//localhost:8000/admin* でアプリをテストします。
+`python manage.py runserver` を使用して開発サーバーを再度実行し、 *http:\//localhost:8000/admin* でアプリをテストします。
 
 **Ctrl**+**C** キーを使用して Django Web サーバーを再度停止します。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 85f358d205a4a14874e520efdace5345de837588
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276263"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490545"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB で高可用性を実現する方法
 
@@ -58,7 +58,7 @@ Azure Cosmos アカウントが *N* 個の Azure リージョンに分散して�
 
 まれに、一部のリージョンで障害が発生した場合でも、Azure Cosmos DB によってデータベースの高可用性が常に維持されます。 Azure Cosmos アカウントの構成に応じた、障害発生中の Azure Cosmos DB の動作の詳細を次に説明します。
 
-* Azure Cosmos DB では、クライアントに対して書き込み操作が承認される前に、書き込み操作を受け入れるリージョン内のレプリカのクォーラムによってデータが永続的にコミットされます。 詳細については、「[整合性レベルとスループット](consistency-levels-tradeoffs.md#consistency-levels-and-throughput)」を参照してください。
+* Azure Cosmos DB では、クライアントに対して書き込み操作が承認される前に、書き込み操作を受け入れるリージョン内のレプリカのクォーラムによってデータが永続的にコミットされます。 詳細については、「[整合性レベルとスループット](./consistency-levels.md#consistency-levels-and-throughput)」を参照してください。
 
 * 複数書き込みリージョンで構成された複数リージョン アカウントは、書き込みと読み取りの両方について高可用性を実現します。 リージョン間フェールオーバーは、Azure Cosmos DB クライアントで検出され、処理されます。 これらは瞬間的であるため、アプリケーションからの変更は必要ありません。
 
@@ -89,7 +89,7 @@ Azure Cosmos アカウントが *N* 個の Azure リージョンに分散して�
 
 * それ以降の読み取りは、アプリケーション コードを変更しなくても、回復したリージョンにリダイレクトされます。 フェールオーバー中も、以前に障害が発生したリージョンの再参加中も、読み取り整合性の保証は引き続き Azure Cosmos DB によって遵守されます。
 
-* Azure リージョンが永久に回復不可能になるという、まれで不運な状況でも、複数リージョンの Azure Cosmos アカウントが *[厳密]* の整合性で構成されていれば、データ損失は発生しません。 永久に回復不可能となった書き込みリージョンで、有界整合性制約で構成された複数リージョンの Azure Cosmos アカウントの場合、考えられるデータ損失ウィンドウは、整合性制約ウィンドウ ( *K* または *T* ) に制限されます (K = 100,000 回の更新、T = 5 分です)。 セッション、一貫性のあるプレフィックス、および最終的な整合性レベルの場合、考えられるデータ損失ウィンドウは最大 15 分に制限されます。 Azure Cosmos DB の RTO と RPO ターゲットの詳細については、「[整合性レベルとデータ持続性](consistency-levels-tradeoffs.md#rto)」を参照してください。
+* Azure リージョンが永久に回復不可能になるという、まれで不運な状況でも、複数リージョンの Azure Cosmos アカウントが *[厳密]* の整合性で構成されていれば、データ損失は発生しません。 永久に回復不可能となった書き込みリージョンで、有界整合性制約で構成された複数リージョンの Azure Cosmos アカウントの場合、考えられるデータ損失ウィンドウは、整合性制約ウィンドウ ( *K* または *T* ) に制限されます (K = 100,000 回の更新、T = 5 分です)。 セッション、一貫性のあるプレフィックス、および最終的な整合性レベルの場合、考えられるデータ損失ウィンドウは最大 15 分に制限されます。 Azure Cosmos DB の RTO と RPO ターゲットの詳細については、「[整合性レベルとデータ持続性](./consistency-levels.md#rto)」を参照してください。
 
 ## <a name="availability-zone-support"></a>可用性ゾーンのサポート
 
@@ -131,7 +131,7 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 
 * [Azure CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Azure リソース マネージャーのテンプレート](manage-sql-with-resource-manager.md)
+* [Azure リソース マネージャーのテンプレート](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>高可用性アプリケーションの構築
 
@@ -143,15 +143,15 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 
 * Azure Cosmos アカウントの可用性が高くても、アプリケーションが高可用性を維持するよう正しく設計できていないこともあります。 アプリケーション テストまたはディザスター リカバリー (DR) ドリルの一環として、アプリケーションのエンドツーエンドの高可用性をテストするには、アカウントの自動フェールオーバーを一時的に無効にし、[PowerShell、Azure CLI または Azure portal を使用して手動フェールオーバー](how-to-manage-database-account.md#manual-failover)を呼び出し、アプリケーションのフェールオーバーを監視します。 完了したら、プライマリ リージョンにフェールバックし、アカウントの自動フェールオーバーを復元できます。
 
-* グローバルに分散されるデータベース環境内では、リージョン全体にわたる停止が発生した場合の整合性レベルとデータ持続性の間には、直接的な関係があります。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる新しいデータ更新の最大期間についても理解する必要があります。 損失を許容できる更新の期間は、目標復旧時点 (RPO) と呼ばれます。 Azure Cosmos DB の RPO および RTO を表示するには、「[整合性レベルとデータ持続性](consistency-levels-tradeoffs.md#rto)」を参照してください。
+* グローバルに分散されるデータベース環境内では、リージョン全体にわたる停止が発生した場合の整合性レベルとデータ持続性の間には、直接的な関係があります。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる新しいデータ更新の最大期間についても理解する必要があります。 損失を許容できる更新の期間は、目標復旧時点 (RPO) と呼ばれます。 Azure Cosmos DB の RPO および RTO を表示するには、「[整合性レベルとデータ持続性](./consistency-levels.md#rto)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 次に、次の記事を読むことができます。
 
-* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](./consistency-levels.md)
 
-* [プロビジョニング スループットのグローバルなスケーリング](scaling-throughput.md)
+* [プロビジョニング スループットのグローバルなスケーリング](./request-units.md)
 
 * [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26794f0d743bc701879a161f69e374340206e5d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570355"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488471"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -70,7 +70,7 @@ Azure を初めてお使いの場合は、[Azure の無料アカウント](https
 
 技術的な質問をするには、次の 2 つの質問および回答フォーラムのいずれかに投稿することができます。
 
-* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&A 質問ページ](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
 
 新機能を要求するには、[User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db) で新しい要求を作成します。
@@ -104,7 +104,7 @@ Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブ�
 
 ### <a name="what-is-a-primary-key"></a>主キーとは
 
-主キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 主キーを配布するときには十分な注意が必要です。 プライマリ主キーとセカンダリ主キーは、[Azure portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#list-account-keys)」を参照してください。
+主キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 主キーを配布するときには十分な注意が必要です。 プライマリ主キーとセカンダリ主キーは、 [Azure portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#list-account-keys)」を参照してください。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>PreferredLocations として設定できるリージョンを教えてください。
 
@@ -179,7 +179,7 @@ SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計
 
 SQL API は、HTTP エンティティ タグ (ETag) によるオプティミスティック コンカレンシー (OCC) をサポートしています。 すべての SQL API リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 ETag を If-Match ヘッダーと共に使用することで、サーバーはリソースを更新する必要があるかどうかを判断できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が最新ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントは、リソースを再フェッチしてリソースの最新の ETag 値を取得します。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判断できます。
 
-.NET でオプティミスティック コンカレンシーを使用するには、 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
+.NET でオプティミスティック コンカレンシーを使用するには、 [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>どのようにして SQL API のトランザクションを実行しますか?
 
@@ -210,7 +210,7 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 ResourceTokens の使用によるアクセス許可の作成は、コンテナー レベルとその子孫 (ドキュメントや添付ファイルなど) で許可されます。 これは、データベースまたはアカウント レベルでのアクセス許可の作成は、現時点では許可されないことを示唆しています。
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>次のステップ
 

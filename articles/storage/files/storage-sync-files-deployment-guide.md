@@ -4,15 +4,15 @@ description: Azure portal、PowerShell、または Azure CLI を使用して Azu
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 012b5c76a025e6dc6ae1fbd5aedddf9ea3d2a4f0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: a57956de574f74308747edd463851eb1ea4dbb42
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057826"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489491"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -41,7 +41,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     $PSVersionTable.PSVersion
     ```
 
-    Windows Server 2012 R2 の最新のインストールのように、**PSVersion** の値が 5.1.\* 未満の場合は、[Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をダウンロードしてインストールすることで簡単にアップグレードできます。 Windows Server 2012 R2 でダウンロードしてインストールする適切なパッケージは、**Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu** です。 
+    Windows Server 2012 R2 の最新のインストールのように、 **PSVersion** の値が 5.1.\* 未満の場合は、 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をダウンロードしてインストールすることで簡単にアップグレードできます。 Windows Server 2012 R2 でダウンロードしてインストールする適切なパッケージは、 **Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu** です。 
 
     PowerShell 6+ は、サポートされているすべてのシステムで使用でき、その [GitHub ページ](https://github.com/PowerShell/PowerShell#get-powershell)経由でダウンロードできます。 
 
@@ -103,7 +103,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 ---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Azure File Sync で使用する Windows Server の準備
-フェールオーバー クラスターの各サーバー ノードなど、Azure File Sync で使用する各サーバーで、**Internet Explorer セキュリティ強化の構成**を無効にします。 これは、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
+フェールオーバー クラスターの各サーバー ノードなど、Azure File Sync で使用する各サーバーで、 **Internet Explorer セキュリティ強化の構成** を無効にします。 これは、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 > [!Note]  
@@ -147,18 +147,18 @@ Azure portal または PowerShell の手順に従います。
 ---
 
 ## <a name="deploy-the-storage-sync-service"></a>ストレージ同期サービスのデプロイ 
-Azure File Sync のデプロイでは最初に、選択したサブスクリプションのリソース グループに**ストレージ同期サービス** リソースを配置します。 必要に応じて、これらをプロビジョニングすることをお勧めします。 後でサーバーとこのリソースの間に信頼関係を作成し、サーバーは 1 つのストレージ同期サービスにのみ登録できます。 そのため、必要な数のストレージ同期サービスをデプロイし、サーバーのグループを分離することをお勧めします。 異なるストレージ同期サービスを使用するサーバー間では同期できないことに注意してください。
+Azure File Sync のデプロイでは最初に、選択したサブスクリプションのリソース グループに **ストレージ同期サービス** リソースを配置します。 必要に応じて、これらをプロビジョニングすることをお勧めします。 後でサーバーとこのリソースの間に信頼関係を作成し、サーバーは 1 つのストレージ同期サービスにのみ登録できます。 そのため、必要な数のストレージ同期サービスをデプロイし、サーバーのグループを分離することをお勧めします。 異なるストレージ同期サービスを使用するサーバー間では同期できないことに注意してください。
 
 > [!Note]
 > ストレージ同期サービスは、デプロイされたサブスクリプションとリソース グループからアクセス許可を継承します。 アクセス権を持つユーザーを慎重に確認することをお勧めします。 書き込みアクセス権を持つエンティティは、このストレージ同期サービスに登録されたサーバーからファイルの新しいセットの同期を開始することができ、それらにアクセスできる Azure Storage にデータが送られます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-ストレージ同期サービスをデプロイするには、[Azure portal](https://portal.azure.com/) に移動し、 *[リソースの作成]* をクリックして、Azure File Sync を検索します。検索結果から **[Azure File Sync]** を選択した後、 **[作成]** を選択して **[ストレージ同期のデプロイ]** タブを開きます。
+ストレージ同期サービスをデプロイするには、 [Azure portal](https://portal.azure.com/) に移動し、 *[リソースの作成]* をクリックして、Azure File Sync を検索します。検索結果から **[Azure File Sync]** を選択した後、 **[作成]** を選択して **[ストレージ同期のデプロイ]** タブを開きます。
 
 開いたウィンドウに、次の情報を入力します。
 
-- **Name**:ストレージ同期サービスの (リージョンごとに) 一意の名前。
-- **サブスクリプション**:ストレージ同期サービスを作成するサブスクリプション。 組織の構成方針によっては、1 つ以上のサブスクリプションにアクセスできることがあります。 Azure サブスクリプションは、各クラウド サービス (Azure Files など) に対する課金の最も基本的なコンテナーです。
+- **Name** :ストレージ同期サービスの (リージョンごとに) 一意の名前。
+- **サブスクリプション** :ストレージ同期サービスを作成するサブスクリプション。 組織の構成方針によっては、1 つ以上のサブスクリプションにアクセスできることがあります。 Azure サブスクリプションは、各クラウド サービス (Azure Files など) に対する課金の最も基本的なコンテナーです。
 - **[リソース グループ]** :リソース グループは、ストレージ アカウントやストレージ同期サービスなどの Azure リソースの論理グループです。 Azure File Sync 用の新しいリソース グループを作成するか、既存のリソース グループを選択できます (リソース グループをコンテナーとして使用して、組織のリソースを論理的に分離することをお勧めします。たとえば、HR リソースや特定のプロジェクトのリソースをグループ化します)。
 - **[場所]** :Azure File Sync をデプロイするリージョン。この一覧ではサポートされているリージョンのみを使用できます。
 
@@ -279,7 +279,7 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 > [!Note]
 > サーバーの登録時には、Azure 資格情報を使ってストレージ同期サービスと Windows Server の間に信頼関係が作成されますが、その後、サーバーは独自の ID を作成して使用します。この ID は、サーバーが登録されていて、現在の Shared Access Signature トークン (ストレージ SAS) が有効な間だけ有効です。 サーバーの登録が解除されるとサーバーに新しい SAS トークンを発行できなくなるので、サーバーは Azure ファイル共有にアクセスできず、すべての同期を停止します。
 
-サーバーを登録する管理者は、特定のストレージ同期サービスに対する**所有者**または**共同作成者**の管理ロールのメンバーである必要があります。 これは、Azure portal においてストレージ同期サービスに対する **[アクセス制御 (IAM)]** で構成できます。
+サーバーを登録する管理者は、特定のストレージ同期サービスに対する **所有者** または **共同作成者** の管理ロールのメンバーである必要があります。 これは、Azure portal においてストレージ同期サービスに対する **[アクセス制御 (IAM)]** で構成できます。
 
 また、サーバーを登録できる管理者と、ストレージ同期サービスで同期を構成することも許可されている管理者を、区別することもできます。 その場合、サーバーの登録のみが許可される管理者の一覧を取得するカスタム ロールを作成し、そのカスタム ロールに次のアクセス許可を付与する必要があります。
 
@@ -295,9 +295,9 @@ Azure File Sync エージェントがインストールされると、サーバ�
 
 ![サーバー登録 UI のスクリーンショット](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Azure サブスクリプション**: ストレージ同期サービスを含むサブスクリプション (「[ストレージ同期サービスのデプロイ](#deploy-the-storage-sync-service)」をご覧ください)。 
-- **リソース グループ**:ストレージ同期サービスを含むリソース グループ。
-- **ストレージ同期サービス**: 登録するストレージ同期サービスの名前。
+- **Azure サブスクリプション** : ストレージ同期サービスを含むサブスクリプション (「 [ストレージ同期サービスのデプロイ](#deploy-the-storage-sync-service)」をご覧ください)。 
+- **リソース グループ** :ストレージ同期サービスを含むリソース グループ。
+- **ストレージ同期サービス** : 登録するストレージ同期サービスの名前。
 
 適切な情報を選択したら、 **[登録]** を選択してサーバー登録を完了します。 登録プロセスの一環として、追加のサインインを求められます。
 
@@ -319,19 +319,19 @@ Azure portal または PowerShell の手順に従います。
 > [!Important]  
 > 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
-クラウド エンドポイントを作成する管理者は、クラウドエンド ポイントで参照されている Azure ファイル共有が含まれるストレージ アカウントの**所有者**管理ロールのメンバーである必要があります。 これは、Azure portal においてストレージ アカウントに対する **[アクセス制御 (IAM)]** で構成できます。
+クラウド エンドポイントを作成する管理者は、クラウドエンド ポイントで参照されている Azure ファイル共有が含まれるストレージ アカウントの **所有者** 管理ロールのメンバーである必要があります。 これは、Azure portal においてストレージ アカウントに対する **[アクセス制御 (IAM)]** で構成できます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-同期グループを作成するには、[Azure Portal](https://portal.azure.com/) でストレージ同期サービスに移動し、 **[+ 同期グループ]** を選びます。
+同期グループを作成するには、 [Azure Portal](https://portal.azure.com/) でストレージ同期サービスに移動し、 **[+ 同期グループ]** を選びます。
 
 ![Azure Portal で新しい同期グループを作成する](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 表示されるウィンドウで次の情報を入力して、同期グループとクラウド エンドポイントを作成します。
 
-- **同期グループ名**: 作成する同期グループの名前。 この名前は、ストレージ同期サービス内で一意である必要がありますが、理にかなった任意の名前を指定できます。
-- **サブスクリプション**:「[ストレージ同期サービスのデプロイ](#deploy-the-storage-sync-service)」でストレージ同期サービスをデプロイしたサブスクリプション。
-- **ストレージ アカウント**: **[ストレージ アカウントの選択]** を選んだ場合は、同期する Azure ファイル共有を持っているストレージ アカウントを選択できる別のウィンドウが表示されます。
-- **Azure ファイル共有**: 同期する Azure ファイル共有の名前。
+- **同期グループ名** : 作成する同期グループの名前。 この名前は、ストレージ同期サービス内で一意である必要がありますが、理にかなった任意の名前を指定できます。
+- **サブスクリプション** :「 [ストレージ同期サービスのデプロイ](#deploy-the-storage-sync-service)」でストレージ同期サービスをデプロイしたサブスクリプション。
+- **ストレージ アカウント** : **[ストレージ アカウントの選択]** を選んだ場合は、同期する Azure ファイル共有を持っているストレージ アカウントを選択できる別のウィンドウが表示されます。
+- **Azure ファイル共有** : 同期する Azure ファイル共有の名前。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 同期グループを作成するには、次の PowerShell を実行します。 `<my-sync-group>` は、同期グループの適切な名前に置き換えます。
@@ -414,11 +414,10 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 
 **[サーバー エンドポイントの追加]** ウィンドウで、次の情報を入力してサーバー エンドポイントを作成します。
 
-- **登録済みサーバー**: サーバー エンドポイントを作成するサーバーまたはクラスターの名前。
-- **パス**:同期グループの一部として同期される Windows Server のパス。
-- **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化によって、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できます。
-- **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
-- **初期ダウンロード モード**:これは、エージェント バージョン 11 からの省略可能な選択で、Azure ファイル共有にはファイルがあるが、サーバー上にはない場合に役立ちます。 このような状況は、たとえば、別のブランチ オフィス サーバーを同期グループに追加するためにサーバー エンドポイントを作成する場合や、障害が発生したサーバーをディザスター リカバリーする場合などに起こりうる可能性があります。 クラウドを使った階層化が有効になっている場合、既定では、最初にファイルのコンテンツではなく、名前空間のみが呼び戻されます。 これは、ユーザーのアクセス要求で、サーバーにどのファイルのコンテンツを呼び戻すかを決めるべきだと考えている場合に便利です。 クラウドを使った階層化が無効になっている場合、既定では、名前空間が最初にダウンロードされた後、ローカル容量に到達するまで、最終更新タイムスタンプに基づいてファイルが呼び戻されます。 ただし、初期ダウンロード モードは名前空間のみに変更できます。 3 番目のモードは、このサーバー エンドポイントでクラウドを使った階層化が無効になっている場合にのみ使用できます。 このモードでは、最初に名前空間が呼び戻されることを回避します。 ファイルは、完全にダウンロードされた場合にのみ、ローカル サーバーに表示されます。 このモードは、例えばアプリケーションでは完全なファイルが必要とされ、名前空間に階層化されたファイルがあることが許容されない場合に便利です。
+- **登録済みサーバー** : サーバー エンドポイントを作成するサーバーまたはクラスターの名前。
+- **パス** :同期グループの一部として同期される Windows Server のパス。
+- **クラウドの階層化** : クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化によって、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できます。
+- **ボリュームの空き領域** : サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
 
 サーバー エンドポイントを追加するには、 **[作成]** を選びます。 Azure ファイル共有と Windows Server でファイルの同期が維持されます。 
 
@@ -429,8 +428,6 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
-# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
-$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -447,16 +444,14 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
-        -InitialDownloadPolicy $initialDownloadPolicy
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath `
-        -InitialDownloadPolicy $initialDownloadPolicy
+        -ServerLocalPath $serverEndpointPath
 }
 ```
 
@@ -483,7 +478,6 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
                                                  --cloud-tiering on \
                                                  --volume-free-space-percent 85 \
                                                  --tier-files-older-than-days 15 \
-                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
 
@@ -575,40 +569,6 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 ボリュームごとの VSS スナップショット最大数として 64 が適切ではない場合、[レジストリ キーでその値を変更する](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)ことができます。
 新しい制限値を有効にするには、既に有効にされている、以前のバージョンの互換性を有効にするためのコマンドレットを各ボリュームで再実行する必要があります。ボリュームごとの新しい VSS スナップショット最大数を反映するために、-Force フラグを使用します。 これにより、互換性が維持される日数が新しく計算されます。 この変更は、新しく階層化されたファイルでのみ有効になり、既に実行した VSS スケジュールへのカスタマイズはすべて上書きされることにご注意ください。
-
-<a id="proactive-recall"></a>
-## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>新規および変更されたファイルを Azure ファイル共有から事前に呼び戻す
-
-エージェント バージョン 11 では、サーバー エンドポイントで新しいモードが使用できるようになります。 このモードでは、世界各地に分散している企業向けに、ローカル ユーザーがファイルにアクセスする前に、リモート リージョンのサーバー キャッシュを事前に設定しておくことができます。 このモードがサーバーエンド ポイントで有効になっている場合、Azure ファイル共有で作成または変更されたファイルがこのサーバーによって呼び戻されます。
-
-### <a name="scenario"></a>シナリオ
-
-世界各地に分散しているある企業は、米国およびインドにブランチ オフィスを構えています。 朝 (米国時間)、インフォメーション ワーカーが新しいプロジェクト用の新しいフォルダーと新しいファイルを作成し、それらを使用して一日作業しました。 Azure File Sync によって、フォルダーとファイルが Azure ファイル共有 (クラウド エンドポイント) に同期されます。 インドにいるインフォメーション ワーカーは、インドのタイムゾーンでプロジェクトの作業を続行します。 彼らが朝に作業に取り掛かる際、インドにあるローカルの Azure File Sync 対応サーバーでは、インド チームが効率的にローカル キャッシュで作業できるように、これらの新しいファイルがローカルで利用できるようになっている必要があります。 このモードを有効にすることで、オンデマンドの呼び戻しによる最初のファイル アクセスが遅くなることを回避し、Azure ファイル共有でファイルが変更または作成されるとすぐにサーバーによって事前にファイルが呼び戻されるようになります。
-
-> [!IMPORTANT]
-> ここまで詳細に Azure ファイル共有の変更をサーバー上で追跡すると、エグレス トラフィックとAzure からの請求額が増加する可能性があることを認識することが重要です。 サーバーに呼び戻されたファイルが実際にはローカルで必要でない場合、サーバーへの不要な呼び戻しによって、悪影響を及ぼす可能性があります。 このモードは、クラウドの最近の変更をサーバー上のキャッシュに事前に保存しておくことで、そのサーバー上のファイルを使用しているユーザーやアプリケーションに良い影響を与えることがわかっている場合に使用します。
-
-### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>サーバー エンドポイントで Azure ファイル共有の変更内容を事前に呼び戻すよう有効にする
-
-# <a name="portal"></a>[ポータル](#tab/proactive-portal)
-
-1. [Azure portal](https://portal.azure.com/) で、ストレージ同期サービスにアクセスし、適切な同期グループを選択して、Azure ファイル共有 (クラウド エンドポイント) で変更を詳細に追跡するサーバー エンドポイントを特定します。
-1. [クラウドを使った階層化] セクションで、"Azure ファイル共有のダウンロード" トピックを探します。 現在選択されているモードが表示され、それを変更して Azure ファイル共有の変更をより詳細に追跡し、サーバーに事前に呼び戻すことができます。
-
-:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="現在有効になっているサーバー エンドポイントにおける Azure ファイル共有のダウンロード動作と、それを変更するためのメニューを開くボタンを示す画像。":::
-
-# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
-
-PowerShell で [Set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) コマンドレットを使用することで、サーバー エンドポイントのプロパティを変更できます。
-
-```powershell
-# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
-$recallBehavior = "DownloadNewAndModifiedFiles"
-
-Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
-```
-
----
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>DFS レプリケーション (DFS-R) のデプロイを Azure File Sync に移行する
 DFS-R のデプロイを Azure File Sync に移行するには:

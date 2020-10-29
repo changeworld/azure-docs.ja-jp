@@ -7,23 +7,23 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d33308932ecd7c523c6fbe287648d4afc21ef0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252954"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485802"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
-Azure Cosmos DB では、統合された JavaScript 言語によるトランザクション実行が可能なため、開発者は、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を記述できます。 Azure Cosmos DB で SQL API を使用するとき、ストアド プロシージャ、トリガー、および UDF を JavaScript 言語で定義できます。 JavaScript でロジックを記述し、データベース エンジン内でロジックを実行することができます。 トリガー、ストアド プロシージャ、および UDF は、[Azure portal](https://portal.azure.com/)、[Azure Cosmos DB のJavaScript 言語統合クエリ API](javascript-query-api.md)、[Cosmos DB SQL API クライアント SDK](sql-api-dotnet-samples.md) を使用して作成および実行できます。 
+Azure Cosmos DB では、統合された JavaScript 言語によるトランザクション実行が可能なため、開発者は、 **ストアド プロシージャ** 、 **トリガー** 、 **ユーザー定義関数 (UDF)** を記述できます。 Azure Cosmos DB で SQL API を使用するとき、ストアド プロシージャ、トリガー、および UDF を JavaScript 言語で定義できます。 JavaScript でロジックを記述し、データベース エンジン内でロジックを実行することができます。 トリガー、ストアド プロシージャ、および UDF は、[Azure portal](https://portal.azure.com/)、[Azure Cosmos DB のJavaScript 言語統合クエリ API](javascript-query-api.md)、[Cosmos DB SQL API クライアント SDK](sql-api-dotnet-samples.md) を使用して作成および実行できます。 
 
 ストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出すには、これを登録する必要があります。 詳細については、[Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する方法](how-to-use-stored-procedures-triggers-udfs.md)に関する記事を参照してください。
 
 > [!NOTE]
 > パーティション分割されたコンテナーの場合、ストアド プロシージャを実行するとき、要求オプションにパーティション キー値を指定する必要があります。 ストアド プロシージャは常に 1 つのパーティション キーに範囲設定されます。 別のパーティション キー値を持つ項目は、ストアド プロシージャから認識できません。 このことはトリガーにも該当します。
 > [!Tip]
-> Cosmos は、ストアド プロシージャ、トリガー、およびユーザー定義関数を使用したコンテナーのデプロイをサポートしています。 詳細については、「[サーバー側機能を使用して Azure Cosmos DB コンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc)」を参照してください。
+> Cosmos は、ストアド プロシージャ、トリガー、およびユーザー定義関数を使用したコンテナーのデプロイをサポートしています。 詳細については、「[サーバー側機能を使用して Azure Cosmos DB コンテナーを作成する](./manage-with-templates.md#create-sproc)」を参照してください。
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>ストアド プロシージャを記述する方法
 

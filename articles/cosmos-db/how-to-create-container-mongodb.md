@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1a8d375519ed4c7d252afe60d71aad4c5244cd1c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fa7f122c5a9957db0800d2ccf4e5c1f8effd574
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283311"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491174"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API でコンテナーを作成する
 
@@ -62,12 +62,11 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 
 ## <a name="create-a-container-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してコンテナーを作成する
 
-[Azure Resource Manager テンプレートを使用して Azure Cosmos DB for MongoDB API のコレクションを作成します](manage-sql-with-resource-manager.md#azure-cosmos-account-with-standard-provisioned-throughput)。
+[Azure Resource Manager テンプレートを使用して Azure Cosmos DB for MongoDB API のコレクションを作成します](./manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput)。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
-* [Azure Cosmos アカウントの使用](account-overview.md)
-
+* [Azure Cosmos アカウントの使用](./account-databases-containers-items.md)

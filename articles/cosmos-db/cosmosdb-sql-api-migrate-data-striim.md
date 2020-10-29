@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce805fb302264a0c3907c006983f9d939a2908e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e190c9f06dc2c662760421b7240eafdf22986b0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262074"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491310"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB SQL API アカウントにデータを移行する
  
 Azure Marketplace の Striim イメージは、データウェアハウスとデータベースから Azure への継続的なリアルタイム データ移動を提供します。 データの移動中に、インライン非正規化とデータ変換の実行、およびリアルタイム分析とデータ レポートのシナリオの有効化を行うことができます。 Striim を使用してエンタープライズ データを Azure Cosmos DB SQL API に継続的に移動することは簡単に開始できます。 Azure には、Striim のデプロイと Azure Cosmos DB へのデータの移行を容易にするマーケットプレース オファリングが用意されています。 
 
-この記事では、Striim を使用して **Oracle データベース**から **Azure Cosmos DB SQL API アカウント**にデータを移行する方法について説明します。
+この記事では、Striim を使用して **Oracle データベース** から **Azure Cosmos DB SQL API アカウント** にデータを移行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure サブスクリプション](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+* [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
 * オンプレミスで実行されている、データが含まれた Oracle データベース。
 
@@ -30,11 +30,11 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. **[リソースの作成]** を選択し、Azure Marketplace で "**Striim**" を検索します。 最初のオプションを選択し、 **[作成]** します。
+1. **[リソースの作成]** を選択し、Azure Marketplace で " **Striim** " を検索します。 最初のオプションを選択し、 **[作成]** します。
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Striim の Marketplace 項目を見つける":::
 
-1. 次に、Striim インスタンスの構成プロパティを入力します。 Striim 環境が仮想マシンにデプロイされます。 **[基本]** ウィンドウから、**VM ユーザー名**、**VM パスワード**を入力します (このパスワードは、VM への SSH 接続に使用されます)。 ご使用の**サブスクリプション**、**リソース グループ**、および Striim をデプロイする**場所の詳細**を選択します。 完了したら、 **[OK]** を選択します。
+1. 次に、Striim インスタンスの構成プロパティを入力します。 Striim 環境が仮想マシンにデプロイされます。 **[基本]** ウィンドウから、 **VM ユーザー名** 、 **VM パスワード** を入力します (このパスワードは、VM への SSH 接続に使用されます)。 ご使用の **サブスクリプション** 、 **リソース グループ** 、および Striim をデプロイする **場所の詳細** を選択します。 完了したら、 **[OK]** を選択します。
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Striim の Marketplace 項目を見つける":::
 
@@ -68,7 +68,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. Azure portal を使用して [Azure Cosmos DB SQL API アカウント](create-cosmosdb-resources-portal.md)を作成します。
 
-1. Azure Cosmos アカウントで **[データ エクスプローラー]** ウィンドウに移動します。 **[新しいコンテナー]** を選択して、新しいコンテナーを作成します。 "*製品*" と "*注文*" のデータを Oracle データベースから Azure Cosmos DB に移行するとします。 **Orders** という名前のコンテナーを持つ、**StriimDemo** という名前の新しいデータベースを作成します。 **1000 RU** でコンテナーをプロビジョニングします (この例では 1000 RU を使用しますが、ご自分のワークロード用に推定されるスループットを使用してください)。そして、パーティション キーとして **/ORDER_ID** を使用します。 これらの値は、ソース データによって異なります。 
+1. Azure Cosmos アカウントで **[データ エクスプローラー]** ウィンドウに移動します。 **[新しいコンテナー]** を選択して、新しいコンテナーを作成します。 " *製品* " と " *注文* " のデータを Oracle データベースから Azure Cosmos DB に移行するとします。 **Orders** という名前のコンテナーを持つ、 **StriimDemo** という名前の新しいデータベースを作成します。 **1000 RU** でコンテナーをプロビジョニングします (この例では 1000 RU を使用しますが、ご自分のワークロード用に推定されるスループットを使用してください)。そして、パーティション キーとして **/ORDER_ID** を使用します。 これらの値は、ソース データによって異なります。 
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/create-sql-api-account.png" alt-text="Striim の Marketplace 項目を見つける":::
 
@@ -80,7 +80,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="Striim の Marketplace 項目を見つける":::
 
-1. 新しいターミナル ウィンドウを開き、Azure portal からコピーした SSH コマンドを実行します。 この記事では、MacOS でターミナルを使用しますが、PuTTY または Windows コンピューター上の別の SSH クライアントを使用して、同様の手順を実行できます。 プロンプトが表示されたら、**yes** と入力して続行し、前の手順で仮想マシンに対して設定した**パスワード**を入力します。
+1. 新しいターミナル ウィンドウを開き、Azure portal からコピーした SSH コマンドを実行します。 この記事では、MacOS でターミナルを使用しますが、PuTTY または Windows コンピューター上の別の SSH クライアントを使用して、同様の手順を実行できます。 プロンプトが表示されたら、 **yes** と入力して続行し、前の手順で仮想マシンに対して設定した **パスワード** を入力します。
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="Striim の Marketplace 項目を見つける":::
 
@@ -93,7 +93,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="Striim の Marketplace 項目を見つける":::
 
-1. 次に、Striim インスタンスへの SSH 接続を実行したウィンドウに戻り、sudo としてログインします。 次のコマンドを使用して、**ojdbc8.jar** ファイルを **/tmp** ディレクトリから、Striim インスタンスの **lib** ディレクトリに移動します。
+1. 次に、Striim インスタンスへの SSH 接続を実行したウィンドウに戻り、sudo としてログインします。 次のコマンドを使用して、 **ojdbc8.jar** ファイルを **/tmp** ディレクトリから、Striim インスタンスの **lib** ディレクトリに移動します。
 
    ```bash
    sudo su
@@ -128,7 +128,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Striim の Marketplace 項目を見つける":::
 
-1. これで、Striim のホーム ページが表示されます。 3 つの異なるウィンドウ (**ダッシュボード**、**アプリ**、**SourcePreview**) があります。 [ダッシュボード] ウィンドウでは、リアルタイムでデータを移動し、視覚化することができます。 [アプリ] ウィンドウには、ストリーミング データ パイプライン (データ フロー) が含まれています。 このページの右側には SourcePreview があります。ここでは、データを移動する前にプレビューすることができます。
+1. これで、Striim のホーム ページが表示されます。 3 つの異なるウィンドウ ( **ダッシュボード** 、 **アプリ** 、 **SourcePreview** ) があります。 [ダッシュボード] ウィンドウでは、リアルタイムでデータを移動し、視覚化することができます。 [アプリ] ウィンドウには、ストリーミング データ パイプライン (データ フロー) が含まれています。 このページの右側には SourcePreview があります。ここでは、データを移動する前にプレビューすることができます。
 
 1. **[アプリ]** ウィンドウを選択します。今はこのウィンドウに焦点を当てます。 Striim について学ぶために使用できるさまざまなサンプル アプリがありますが、この記事では、独自のものを作成します。 右上隅にある **[アプリの追加]** ボタンを選択します。
 
@@ -144,7 +144,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. 次のページで、アプリケーションに名前を付けます。 **oraToCosmosDB** などの名前を指定できます。その後、 **[保存]** を選択します。
 
-1. 次に、ソース Oracle インスタンスのソース構成を入力します。 **[ソース名]** に値を入力します。 ソース名は、単に Striim アプリケーションの名前付け規則です。**src_onPremOracle** などを使用できます。 残りのソース パラメーター **[URL]** 、 **[ユーザー名]** 、 **[パスワード]** に値を入力し、Oracle からデータを読み取るリーダーとして **LogMiner** を選択します。 **[次へ]** をクリックして続行します。
+1. 次に、ソース Oracle インスタンスのソース構成を入力します。 **[ソース名]** に値を入力します。 ソース名は、単に Striim アプリケーションの名前付け規則です。 **src_onPremOracle** などを使用できます。 残りのソース パラメーター **[URL]** 、 **[ユーザー名]** 、 **[パスワード]** に値を入力し、Oracle からデータを読み取るリーダーとして **LogMiner** を選択します。 **[次へ]** をクリックして続行します。
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png" alt-text="Striim の Marketplace 項目を見つける":::
 

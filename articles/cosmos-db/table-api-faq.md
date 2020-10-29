@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167591"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485003"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Table API についてよく寄せられる質問
 
@@ -97,7 +97,7 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 
 ### <a name="which-tools-work-with-the-table-api"></a>Table API で動作するのはどのツールですか?
 
-[Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使うことができます。
+[Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使うことができます。
 
 以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API に対応できます。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。
 
@@ -115,7 +115,7 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>既存の Azure Table Storage アプリケーションをこのサービスに移行するにはどうすればよいですか?
 
-[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) と [Azure Cosmos DB データ移行ツール](import-data.md)の両方がサポートされています。
+[AzCopy](../storage/common/storage-use-azcopy-v10.md) と [Azure Cosmos DB データ移行ツール](import-data.md)の両方がサポートされています。
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>たとえば、最初は *n* GB のデータが時間の経過と共に 1 TB に増加した場合、このサービスではストレージ サイズはどのように拡張されるのですか?
 
@@ -195,7 +195,7 @@ Table API は、Azure Cosmos DB のグローバルに分散されたプラット
 
 はい。インデックス定義を提供することでインデックス作成ポリシーを変更できます。 設定を適切にエンコードし、エスケープする必要があります。
 
-.NET SDK がない場合、インデックス作成ポリシーを設定できる唯一の方法は次のとおりです。ポータルの**データ エクスプローラー**で、変更する特定のテーブルに移動し、 **[Scale & Settings]\(スケールと設定\)** > [インデックス作成ポリシー] で必要な変更を行って、 **[保存]** を選びます。
+.NET SDK がない場合、インデックス作成ポリシーを設定できる唯一の方法は次のとおりです。ポータルの **データ エクスプローラー** で、変更する特定のテーブルに移動し、 **[Scale & Settings]\(スケールと設定\)** > [インデックス作成ポリシー] で必要な変更を行って、 **[保存]** を選びます。
 
 .NET SDK からは、app.config ファイルで送信できます。
 
@@ -231,7 +231,7 @@ Table API は、Azure Cosmos DB のグローバルに分散されたプラット
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>プラットフォームとしての Azure Cosmos DB は、並べ替え、集計、階層などの多数の機能を備えているようですが、 これらの機能は Table API に追加される予定ですか?
 
-Table API は Azure Table Storage と同じクエリ機能を提供します。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 詳細については、[SQL クエリ](how-to-sql-query.md)に関する記事を参照してください。
+Table API は Azure Table Storage と同じクエリ機能を提供します。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 詳細については、[SQL クエリ](./sql-query-getting-started.md)に関する記事を参照してください。
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Table API の TableThroughput は、どのようなときに変更する必要がありますか?
 
@@ -274,7 +274,7 @@ Azure Cosmos DB は、可用性、待機時間、スループットが保証さ�
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Azure Table Storage にデータを取り込んだときに、(パーティションがいっぱいであることを示す) "クォータが上限に達した" ことを通知するメッセージが表示されたことは一度もありませんでした。 Table API では、このメッセージが表示されました。 このサービスには制限があり、既存のアプリケーションを変更しなければならないのでしょうか?
 
-Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 保証された Premium パフォーマンスを確保するために、データ サイズとインデックスが管理可能であり、スケーラブルであることを確認してください。 パーティション キーごとのエンティティ数または項目数に 20 GB の制限を設けているのは、検索やクエリの優れたパフォーマンスを確実に提供するためです。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。Azure Storage でもアプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。
+Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 保証された Premium パフォーマンスを確保するために、データ サイズとインデックスが管理可能であり、スケーラブルであることを確認してください。 パーティション キーごとのエンティティ数または項目数に 20 GB の制限を設けているのは、検索やクエリの優れたパフォーマンスを確実に提供するためです。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。Azure Storage でもアプリケーションが適切にスケールできるように、ホット パーティションが発生 *しない* ようにすることをお勧めします。
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Table API で PartitionKey と RowKey が必要なのはそのためですか?
 
@@ -293,7 +293,7 @@ Azure Cosmos DB は、待機時間、スループット、可用性、整合性�
 次のいずれかの方法でフィードバックをお寄せください。
 
 * [ユーザーの声](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&A 質問ページ](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
 
 ## <a name="next-steps"></a>次のステップ

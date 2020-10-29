@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceb2b8812b52b1ca2030a0fd0006c9388630c05e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114777"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487485"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
 
@@ -46,7 +46,7 @@ A:キーは Microsoft によって管理されます。
 A:マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Q:独自の暗号化キーを使用できますか?
-A:はい。この機能は新しい Azure Cosmos DB アカウントで使用できるようになっており、アカウントの作成時に行う必要があります。 詳細については、[カスタマー マネージド キー](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)のドキュメントを参照してください。
+A:はい。この機能は新しい Azure Cosmos DB アカウントで使用できるようになっており、アカウントの作成時に行う必要があります。 詳細については、[カスタマー マネージド キー](./how-to-setup-cmk.md)のドキュメントを参照してください。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Q:どのリージョンで暗号化が有効になっていますか?
 A:すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。

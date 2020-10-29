@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: e322449913ca1f8848f0d8c60ac6f11a28bdfb91
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ab8ffb41d45f60394c27eb492b19eaf280c2e64e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282009"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488301"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-cassandra-api-keyspace-and-table-using-azure-powershell"></a>Azure PowerShell を使用して Azure Cosmos Cassandra API のキースペースとテーブルに対するリソース ロックを作成する
 
@@ -42,11 +42,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | コマンド | Notes |
 |---|---|
 |**Azure リソース**| |
-| [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) | リソース ロックを作成します。 |
-| [Get-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcelock) | 1 つのリソース ロックを取得するか、リソース ロックを一覧表示します。 |
-| [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) | リソース ロックを削除します。 |
+| [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) | リソース ロックを作成します。 |
+| [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) | 1 つのリソース ロックを取得するか、リソース ロックを一覧表示します。 |
+| [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) | リソース ロックを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)をご覧ください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)をご覧ください。

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715796"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488760"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>PowerShell を使用して BLOB およびキュー データへのアクセスのための Azure ロールを割り当てる
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセ
 
 Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
-この記事では、Azure PowerShell を使用して Azure 組み込みロールの一覧を表示し、それらをユーザーに割り当てる方法について説明します。 Azure PowerShell の詳細については、「[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/)」を参照してください。
+この記事では、Azure PowerShell を使用して Azure 組み込みロールの一覧を表示し、それらをユーザーに割り当てる方法について説明します。 Azure PowerShell の詳細については、「[Azure PowerShell の概要](/powershell/azure/)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -68,7 +68,7 @@ Azure ロールをセキュリティ プリンシパルに割り当てるには�
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-次の例では、*sample-container* という名前のコンテナーにスコープが指定された**ストレージ BLOB データ共同作成者**ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+次の例では、 *sample-container* という名前のコンテナーにスコープが指定された **ストレージ BLOB データ共同作成者** ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -84,7 +84,7 @@ New-AzRoleAssignment -SignInName <email> `
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-次の例では、*sample-queue* という名前のキューに対してスコープが指定された**ストレージ キュー データ共同作成者**ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+次の例では、 *sample-queue* という名前のキューに対してスコープが指定された **ストレージ キュー データ共同作成者** ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -100,7 +100,7 @@ New-AzRoleAssignment -SignInName <email> `
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-次の例は、ストレージ アカウントのレベルでユーザーに対して**ストレージ BLOB データ閲覧者**ロールのスコープを指定する方法を示しています。 サンプルの値は必ず実際の値に置き換えてください。 
+次の例は、ストレージ アカウントのレベルでユーザーに対して **ストレージ BLOB データ閲覧者** ロールのスコープを指定する方法を示しています。 サンプルの値は必ず実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -110,7 +110,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="resource-group-scope"></a>リソース グループ スコープ
 
-リソース グループにスコープが指定されたロールを割り当てるには、リソース グループの名前または ID を `--resource-group` パラメーターに指定します。 次の例は、リソース グループのレベルで**ストレージ キュー データ閲覧者**ロールをユーザーに割り当てています。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+リソース グループにスコープが指定されたロールを割り当てるには、リソース グループの名前または ID を `--resource-group` パラメーターに指定します。 次の例は、リソース グループのレベルで **ストレージ キュー データ閲覧者** ロールをユーザーに割り当てています。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -126,7 +126,7 @@ New-AzRoleAssignment -SignInName <email> `
 /subscriptions/<subscription>
 ```
 
-次の例は、ストレージ アカウントのレベルで**ストレージ BLOB データ閲覧者**ロールをユーザーに割り当てる方法を示しています。 サンプルの値は必ず実際の値に置き換えてください。 
+次の例は、ストレージ アカウントのレベルで **ストレージ BLOB データ閲覧者** ロールをユーザーに割り当てる方法を示しています。 サンプルの値は必ず実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

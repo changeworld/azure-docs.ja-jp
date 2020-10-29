@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 944f36dfbd8468a9f5867757ce32b8da74e235b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: eb9e8caff81e86b7db732c970eee1e1a08be5241
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279650"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491106"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API にコンテナーを作成する
 
@@ -69,4 +69,4 @@ await client.CreateDocumentCollectionAsync(
 * [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
-* [Azure Cosmos アカウントの使用](account-overview.md)
+* [Azure Cosmos アカウントの使用](./account-databases-containers-items.md)

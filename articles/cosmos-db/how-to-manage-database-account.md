@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570714"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491123"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "91570714"
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager テンプレート
 
-[Azure Resource Manager テンプレートを使用した Azure Cosmos DB アカウントの作成](manage-sql-with-resource-manager.md)に関する記事を参照してください。
+[Azure Resource Manager テンプレートを使用した Azure Cosmos DB アカウントの作成](./manage-with-templates.md)に関する記事を参照してください。
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除
 

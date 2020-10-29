@@ -11,20 +11,21 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.custom: contperfq2
+ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893460"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486924"
 ---
 # <a name="manage-app-consent-policies"></a>アプリ同意ポリシーを管理する
 
 Azure AD PowerShell を使用すると、アプリ同意ポリシーを表示および管理できます。
 
-アプリ同意ポリシーは、1 つ以上の "包含" 条件セットと、0 個以上の "除外" 条件セットで構成されます。 イベントがアプリ同意ポリシーにおいて考慮されるには、多数の "*いずれか*" の "除外" 条件セットにではなく、"*少なくとも*" 1 つの "包含" 条件セットに一致している必要があります。
+アプリ同意ポリシーは、1 つ以上の "包含" 条件セットと、0 個以上の "除外" 条件セットで構成されます。 イベントがアプリ同意ポリシーにおいて考慮されるには、多数の " *いずれか* " の "除外" 条件セットにではなく、" *少なくとも* " 1 つの "包含" 条件セットに一致している必要があります。
 
-各条件セットは、いくつかの条件で構成されます。 イベントが条件セットに一致するためには、条件セット内の "*すべての*" 条件が満たされる必要があります。
+各条件セットは、いくつかの条件で構成されます。 イベントが条件セットに一致するためには、条件セット内の " *すべての* " 条件が満たされる必要があります。
 
 ID が "microsoft-" で始まるアプリ同意ポリシーは、組み込みのポリシーです。 これらの組み込みポリシーの一部は、既存の組み込みディレクトリ ロールで使用されます。 たとえば、`microsoft-application-admin` というアプリ同意ポリシーには、アプリケーション管理者とクラウド アプリケーション管理者のロールが、テナント全体にわたる管理者の同意を許可される条件が記述されています。 組み込みのポリシーは、カスタム ディレクトリ ロール内で、また、ユーザーの同意設定を構成するために使用できますが、編集または削除することはできません。
 
@@ -56,14 +57,14 @@ ID が "microsoft-" で始まるアプリ同意ポリシーは、組み込みの
 1. ポリシーの "包含" 条件セットを表示します。
 
     ```powershell
-    Get-AzureADMSPermissionGrantConditionSet -Id "microsoft-application-admin" `
+    Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "includes"
     ```
 
 1. "除外" 条件セットを表示します。
 
     ```powershell
-    Get-AzureADMSPermissionGrantConditionSet -Id "microsoft-application-admin" `
+    Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "excludes"
     ```
 
@@ -132,8 +133,8 @@ ID が "microsoft-" で始まるアプリ同意ポリシーは、組み込みの
 | 条件 | 説明|
 |:---------------|:----------|
 | PermissionClassification | 付与されるアクセス許可を表す[アクセス許可の分類](configure-permission-classifications.md)。または、任意のアクセス許可の分類 (分類されていないアクセス許可を含む) と一致する "all"。 既定値は "all" です。 |
-| PermissionType | 付与されるアクセス許可を表すアクセス許可の種類。 アプリケーションのアクセス許可 (アプリ ロールなど) を表す "application"、または委任されたアクセス許可を表す "delegated" を使用します。 <br><br>**注**:値 "delegatedUserConsentable" は、管理者の同意を要求するように API 公開元によって構成されていない、委任されたアクセス許可を示します。この値は、組み込みのアクセス許可付与ポリシーで使用できますが、カスタムのアクセス許可付与ポリシーでは使用できません。 必須。 |
-| ResourceApplication | アクセス許可が付与されるリソース アプリケーション (API など) の **AppId**。または、任意のリソース アプリケーションや API と一致する "any"。 既定値は "any" です。 |
+| PermissionType | 付与されるアクセス許可を表すアクセス許可の種類。 アプリケーションのアクセス許可 (アプリ ロールなど) を表す "application"、または委任されたアクセス許可を表す "delegated" を使用します。 <br><br>**注** :値 "delegatedUserConsentable" は、管理者の同意を要求するように API 公開元によって構成されていない、委任されたアクセス許可を示します。この値は、組み込みのアクセス許可付与ポリシーで使用できますが、カスタムのアクセス許可付与ポリシーでは使用できません。 必須。 |
+| ResourceApplication | アクセス許可が付与されるリソース アプリケーション (API など) の **AppId** 。または、任意のリソース アプリケーションや API と一致する "any"。 既定値は "any" です。 |
 | アクセス許可 | 一致する特定のアクセス許可のアクセス許可 ID の一覧。または、任意のアクセス許可と一致する "all" という単一の値。 既定値は単一の値 "all" です。 <ul><li>委任されたアクセス許可 ID は、API の ServicePrincipal オブジェクトの **OAuth2Permissions** プロパティで確認できます。</li><li>アプリケーションのアクセス許可 ID は、API の ServicePrincipal オブジェクトの **AppRoles** プロパティで確認できます。</li></ol> |
 | ClientApplicationIds | 一致するクライアント アプリケーションの **AppId** 値の一覧。または、任意のクライアント アプリケーションと一致する単一の値 "all" を含む一覧。 既定値は単一の値 "all" です。 |
 | ClientApplicationTenantIds | クライアント アプリケーションが登録されている Azure Active Directory テナント ID の一覧。または、任意のテナントに登録されているクライアント アプリと一致する単一の値 "all" を含む一覧。 既定値は単一の値 "all" です。 |

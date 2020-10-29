@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116790"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486874"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -121,7 +121,7 @@ geo レプリケーションは、Azure Container Registry の [Premium サー�
 
 ## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>geo レプリカ レジストリでプッシュ操作の問題を解決する
  
-geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに*近くの*レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
+geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに *近くの* レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
  
 この問題が発生する場合、Linux ホスト上で、`dnsmasq` など、クライアント側 DNS キャッシュを適用することが 1 つの解決策です。 これでレジストリ名の解決に一貫性が与えられます。 Azure で Linux VM を使用してレジストリにプッシュしている場合、「[Azure での Linux 仮想マシンの DNS 名前解決のオプション](../virtual-machines/linux/azure-dns.md)」を参照してください。
 
@@ -131,14 +131,14 @@ geo レプリカ レジストリにイメージをプッシュする Docker ク�
 
 Geo レプリケートされたレジストリでの操作をトラブルシューティングする場合、1 つまたは複数のレプリケーションへの Traffic Manager のルーティングを一時的に無効にすることができます。 Azure CLI バージョン 2.8 以降では、レプリケートされたリージョンを作成または更新する際に、`--region-endpoint-enabled` オプション (プレビュー) を構成できます。 レプリケーションの `--region-endpoint-enabled` オプションを `false` に設定すると、Traffic Manager はそのリージョンに docker push 要求または docker pull 要求をルーティングしなくなります。 既定では、すべてのレプリケーションへのルーティングが有効になっており、ルーティングの有効/無効にかかわらず、すべてのレプリケーション間でデータ同期が実行されます。
 
-既存のレプリケーションへのルーティングを無効にするには、最初に [az acr replication list][az-acr-replication-list] を実行して、レジストリ内のレプリケーションを一覧表示します。 次に、[az acr replication update][az-acr-replication-update] を実行し、特定のレプリケーションに `--region-endpoint-enabled false` を設定します。 たとえば、*myregistry* の *westus* レプリケーションの設定を構成するには、以下のように指定します。
+既存のレプリケーションへのルーティングを無効にするには、最初に [az acr replication list][az-acr-replication-list] を実行して、レジストリ内のレプリケーションを一覧表示します。 次に、[az acr replication update][az-acr-replication-update] を実行し、特定のレプリケーションに `--region-endpoint-enabled false` を設定します。 たとえば、 *myregistry* の *westus* レプリケーションの設定を構成するには、以下のように指定します。
 
 ```azurecli
 # Show names of existing replications
 az acr replication list --registry --output table
 
 # Disable routing to replication
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled false
 ```
@@ -146,7 +146,7 @@ az acr replication update update --name westus \
 レプリケーションへのルーティングを復元するには、以下のように指定します。
 
 ```azurecli
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled true
 ```

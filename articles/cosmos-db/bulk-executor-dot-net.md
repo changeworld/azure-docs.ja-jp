@@ -10,17 +10,17 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb3e2031d5656668b9971fdf357f66824179fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31baad997733c46cf3e9aa8dc92ac0613468f72f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975890"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489389"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
 > [!NOTE]
-> この記事で説明されているこのバルク エグゼキューター ライブラリは、.NET SDK 2.x バージョンを使用するアプリケーションに対して維持されます。 新しいアプリケーションの場合は、[.NET SDK バージョン 3.x](tutorial-sql-api-dotnet-bulk-import.md) で直接使用できる**バルク サポート**を使用できるため、外部ライブラリを必要としません。 
+> この記事で説明されているこのバルク エグゼキューター ライブラリは、.NET SDK 2.x バージョンを使用するアプリケーションに対して維持されます。 新しいアプリケーションの場合は、 [.NET SDK バージョン 3.x](tutorial-sql-api-dotnet-bulk-import.md) で直接使用できる **バルク サポート** を使用できるため、外部ライブラリを必要としません。 
 
 > 現在、バルク エグゼキューター ライブラリを使用していて、新しい SDK でのバルク サポートへの移行を計画している場合は、[移行ガイド](how-to-migrate-from-bulk-executor-library.md)の手順を使用して、アプリケーションを移行してください。
 
@@ -34,7 +34,7 @@ ms.locfileid: "90975890"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB エミュレーター](/azure/cosmos-db/local-emulator)を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticate-requests)で与えられます。
+* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB エミュレーター](./local-emulator.md)を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticate-requests)で与えられます。
 
 * .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 

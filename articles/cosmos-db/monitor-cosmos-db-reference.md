@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43a059354c70c792592ba46aa3d5b63677bda4eb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080455"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488352"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 監視データのリファレンス
 
@@ -21,13 +21,13 @@ ms.locfileid: "88080455"
 
 ## <a name="resource-logs"></a>リソース ログ
 
-次の表に、Azure Cosmos DB のリソース ログのプロパティを示します。 リソース ログは Azure Monitor ログまたは Azure Storage に収集されます。 Azure Monitor では、ログは `MICROSOFT.DOCUMENTDB` という名前のリソース プロバイダー** の下にある、**AzureDiagnostics** テーブルに収集されます。
+次の表に、Azure Cosmos DB のリソース ログのプロパティを示します。 リソース ログは Azure Monitor ログまたは Azure Storage に収集されます。 Azure Monitor では、ログは `MICROSOFT.DOCUMENTDB` という名前のリソース プロバイダー** の下にある、 **AzureDiagnostics** テーブルに収集されます。
 
 | Azure Storage のフィールドまたはプロパティ | Azure Monitor ログのプロパティ | 説明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作が発生した日時 (UTC)。 |
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
-| **category** | **カテゴリ** | Azure Cosmos DB の場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests** があります。 |
+| **category** | **カテゴリ** | Azure Cosmos DB の場合、利用できるログの種類には **DataPlaneRequests** 、 **MongoRequests** 、 **QueryRuntimeStatistics** 、 **PartitionKeyStatistics** 、 **PartitionKeyRUConsumption** 、 **ControlPlaneRequests** があります。 |
 | **operationName** | **OperationName** | 操作の名前。 操作名は、`Create`、`Update`、`Read`、`ReadFeed`、`Delete`、`Replace`、`Execute`、`SqlQuery`、`Query`、`JSQuery`、`Head`、`HeadFeed`、`Upsert` のいずれかです。   |
 | **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
@@ -41,13 +41,13 @@ ms.locfileid: "88080455"
 | **duration** | **duration_d** | 操作時間 (ミリ秒)。 |
 | **requestLength** | **requestLength_s** | 要求の長さ (バイト単位)。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
-| **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
+| **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](./secure-access-to-data.md#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 
-すべての Azure Monitor ログ カテゴリと関連スキーマのリンクの一覧については、[Azure Monitor のログ カテゴリとスキーマ](../azure-monitor/platform/diagnostic-logs-schema.md)に関するページを参照してください。 
+すべての Azure Monitor ログ カテゴリと関連スキーマのリンクの一覧については、[Azure Monitor のログ カテゴリとスキーマ](../azure-monitor/platform/resource-logs-schema.md)に関するページを参照してください。 
 
 ## <a name="metrics"></a>メトリック
-次の表は、Azure CosmOS DB 用に収集されたプラットフォーム メトリックを示しています。 メトリックはすべて、**Cosmos DB 標準メトリック**という名前空間に格納されます。
+次の表は、Azure CosmOS DB 用に収集されたプラットフォーム メトリックを示しています。 メトリックはすべて、 **Cosmos DB 標準メトリック** という名前空間に格納されます。
 
 すべての Azure Monitor サポート メトリック (Azure Cosmos DB を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/platform/metrics-supported.md)に関するページを参照してください。 
 

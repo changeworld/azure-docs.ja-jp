@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 787c39681d0e9aff25d205c7b195be00b8c0bc9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020016"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490443"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK でセッション トークン形式を変換する
 
@@ -26,7 +26,7 @@ ms.locfileid: "89020016"
 
 ## <a name="session-token-formats"></a>セッション トークン形式
 
-セッション トークン形式には、**シンプル**と**ベクター**の 2 つがあります。  これらの 2 つの形式は互換性がないため、バージョンが異なるクライアント アプリケーションに渡すときに形式を変換する必要があります。
+セッション トークン形式には、 **シンプル** と **ベクター** の 2 つがあります。  これらの 2 つの形式は互換性がないため、バージョンが異なるクライアント アプリケーションに渡すときに形式を変換する必要があります。
 - **シンプル** セッション トークン形式は、.NET SDK V1 (Microsoft.Azure.DocumentDB バージョン 1.x) で使用されます。
 - **ベクター** セッション トークン形式は、.NET SDK V2 (Microsoft.Azure.DocumentDB バージョン 2.x) で使用されます。
 
@@ -40,7 +40,7 @@ ms.locfileid: "89020016"
 
 ## <a name="convert-to-simple-session-token"></a>シンプル セッション トークンに変換する
 
-.NET SDK V1 を使用してセッション トークンをクライアントに渡すには、**シンプル** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
+.NET SDK V1 を使用してセッション トークンをクライアントに渡すには、 **シンプル** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
 
 ```csharp
 private static readonly char[] SegmentSeparator = (new[] { '#' });
@@ -74,7 +74,7 @@ else
 
 ## <a name="convert-to-vector-session-token"></a>ベクター セッション トークンに変換する
 
-.NET SDK V2 を使用してセッション トークンをクライアントに渡すには、**ベクター** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
+.NET SDK V2 を使用してセッション トークンをクライアントに渡すには、 **ベクター** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
 
 ```csharp
 
@@ -111,6 +111,6 @@ else
 次の記事を参照してください。
 
 * [セッション トークンを使用して Azure Cosmos DB で一貫性を管理する](how-to-manage-consistency.md#utilize-session-tokens)
-* [Azure Cosmos DB で適切な一貫性レベルを選択する](consistency-levels-choosing.md)
-* [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
-* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB で適切な一貫性レベルを選択する](./consistency-levels.md)
+* [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](./consistency-levels.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](./consistency-levels.md)

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166252"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487434"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>1 対多のリレーショナル データを Azure Cosmos DB SQL API アカウントに移行する
 
@@ -334,5 +334,5 @@ pool.map(writeOrder, orderids)
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="SQL データベースの Orders テーブルと OrderDetails テーブルが表示されているスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Cosmos DB のデータ モデリング](https://docs.microsoft.com/azure/cosmos-db/modeling-data)について確認する
-* [Azure Cosmos DB のデータをモデル化およびパーティション分割する方法](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example)について確認する
+* [Azure Cosmos DB のデータ モデリング](./modeling-data.md)について確認する
+* [Azure Cosmos DB のデータをモデル化およびパーティション分割する方法](./how-to-model-partition-example.md)について確認する

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707661"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489746"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for Azure Database for PostgreSQL - Single Server を別のリージョンに移動する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91707661"
 別のリージョンへの移動を完了するには、Azure Database for PostgreSQL の[リージョン間の読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を使用できます。 これを行うには、まずターゲット リージョンに読み取りレプリカを作成します。 次に、読み取りレプリカ サーバーへのレプリケーションを停止すると、読み取りと書き込みの両方のトラフィックを受け入れるスタンドアロン サーバーになります。 
 
 > [!NOTE]
-> この記事では、サーバーを別のリージョンに移動することに重点を置いています。 サーバーを別のリソース グループまたはサブスクリプションに移動する場合は、[移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)に関する記事を参照してください。 
+> この記事では、サーバーを別のリージョンに移動することに重点を置いています。 サーバーを別のリソース グループまたはサブスクリプションに移動する場合は、[移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関する記事を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ Azure portal を使用してレプリケーションのためにソース サー
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ソース サーバーとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。 この操作で、 **[概要]** ページが開きます。
 1. サーバーのメニューから **[レプリケーション]** を選択します。 Azure レプリケーション サポートが少なくとも **[レプリカ]** に設定されていれば、読み取りレプリカを作成できます。 
-1. Azure レプリケーション サポートが少なくとも **[レプリカ]** に設定されていない場合は、そう設定します。 **[保存]** を選択します。
+1. Azure レプリケーション サポートが少なくとも **[レプリカ]** に設定されていない場合は、設定します。 **[保存]** を選択します。
 1. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
 1. 操作が完了すると、Azure portal の通知を 2 つ受け取ります。 1 つの通知は、サーバー パラメーターの更新に関するものです。 もう 1 つの通知は、すぐ後のサーバーの再起動に関するものです。
 1. Azure portal のページを最新の情報に更新して、レプリケーション ツール バーを更新します。 このサーバーの読み取りレプリカを作成できるようになります。

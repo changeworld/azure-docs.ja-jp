@@ -2,17 +2,18 @@
 title: Linux の暗号化状態の確認 - Azure Disk Encryption
 description: この記事では、プラットフォームおよび OS レベルの暗号化の状態を確認する手順について説明します。
 author: kailashmsft
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e39a230c71cf48422220768adfa8de91cbaa6692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f51aae39c2cb60d8b60d4fb496f74eadb91b33b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072844"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487655"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 
 
@@ -55,7 +56,7 @@ Azure portal の **[拡張機能]** セクションで、一覧から Azure Disk
 
 ## <a name="powershell"></a>PowerShell
 
-暗号化された VM の "*全体的な*" 暗号化の状態は、次の PowerShell コマンドを使用して確認できます。
+暗号化された VM の " *全体的な* " 暗号化の状態は、次の PowerShell コマンドを使用して確認できます。
 
 ```azurepowershell
    $VMNAME="VMNAME"
@@ -157,7 +158,7 @@ Write-Host "====================================================================
 ```
 ## <a name="azure-cli"></a>Azure CLI
 
-暗号化された VM の "*全体的な*" 暗号化の状態は、次の Azure CLI コマンドを使用して確認できます。
+暗号化された VM の " *全体的な* " 暗号化の状態は、次の Azure CLI コマンドを使用して確認できます。
 
 ```bash
 VMNAME="VMNAME"

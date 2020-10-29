@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b874ad4ce566cfca3b0dbd28bdfe48bf30272121
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302933"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482827"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB の地理空間データと GeoJSON 位置データ
 
@@ -36,7 +36,7 @@ ms.locfileid: "91302933"
 
 空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。
 
-Azure Cosmos DB の SQL API では、**geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
+Azure Cosmos DB の SQL API では、 **geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
 
 - **geometry** 型では、ユークリッド (平面) 座標系でデータを表します。
 - **geography** 型は、球体地球座標系のデータを表します。
@@ -210,7 +210,7 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](https://msdn.microsoft.com/library/ff701713.aspx)を参照してください。
+緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](/bingmaps/rest-services/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

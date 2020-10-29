@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276095"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485037"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB での改ページ
 
@@ -56,7 +56,7 @@ Azure Cosmos DB では、クエリ結果が複数のページにわたる場合�
 
 Azure Cosmos DB の REST API では、`x-ms-continuation` ヘッダーを使用して継続トークンを管理できます。 .NET や Java SDK でクエリを実行する場合と同様に、`x-ms-continuation` 応答ヘッダーが空でない場合は、クエリに追加の結果があることを意味します。
 
-同じ SDK バージョンを使用している限り、継続トークンは期限切れになりません。 必要に応じて、[継続トークンのサイズを制限する](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)ことができます。 コンテナー内のデータ量や物理パーティション数に関係なく、クエリから返される継続トークンは 1 つです。
+同じ SDK バージョンを使用している限り、継続トークンは期限切れになりません。 必要に応じて、[継続トークンのサイズを制限する](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)ことができます。 コンテナー内のデータ量や物理パーティション数に関係なく、クエリから返される継続トークンは 1 つです。
 
 [GROUP BY](sql-query-group-by.md) や [DISTINCT](sql-query-keywords.md#distinct) を含むクエリに対しては、継続トークンを使用できません。これは、これらのクエリでは、大量の状態を格納する必要があるためです。 `DISTINCT` を含むクエリに対しては、`ORDER BY` をクエリに追加すると、継続トークンを使用できます。
 

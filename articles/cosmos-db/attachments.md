@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 56e8212d60494d469e225c25edbbd331c601ea6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 847ae3688fb713ddbd2dbf196ad1b89a6bb472a1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804162"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486635"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB の添付ファイル
 
@@ -21,8 +21,8 @@ Azure Cosmos DB の添付ファイルは、外部 BLOB またはメディア フ
 
 Azure Cosmos DB では 2 種類の添付ファイルがサポートされます。
 
-* **管理対象外の添付ファイル**は、外部サービス (たとえば、Azure Storage、OneDrive など) に格納されている BLOB への URI 参照のラッパーです。 この方法は、標準の Azure Cosmos DB 項目に URI プロパティを格納することと似ています。
-* **管理対象の添付ファイル**は、Azure Cosmos DB によって内部的に管理および格納され、システムによって生成された mediaLink を介して公開される BLOB です。
+* **管理対象外の添付ファイル** は、外部サービス (たとえば、Azure Storage、OneDrive など) に格納されている BLOB への URI 参照のラッパーです。 この方法は、標準の Azure Cosmos DB 項目に URI プロパティを格納することと似ています。
+* **管理対象の添付ファイル** は、Azure Cosmos DB によって内部的に管理および格納され、システムによって生成された mediaLink を介して公開される BLOB です。
 
 
 > [!NOTE]
@@ -160,7 +160,7 @@ namespace attachments
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)を使用する
-- [Azure Cosmos DB の .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet&preserve-view=true) を用いて添付ファイルを使用するための参照を取得する
-- [Azure Cosmos DB の Java SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable&preserve-view=true) を用いて添付ファイルを使用するための参照を取得する
-- [Azure Cosmos DB の REST API](https://docs.microsoft.com/rest/api/cosmos-db/attachments) を用いて添付ファイルを使用するための参照を取得する
+- [Azure BLOB ストレージ](../storage/blobs/storage-quickstart-blobs-dotnet.md)を使用する
+- [Azure Cosmos DB の .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet) を用いて添付ファイルを使用するための参照を取得する
+- [Azure Cosmos DB の Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable) を用いて添付ファイルを使用するための参照を取得する
+- [Azure Cosmos DB の REST API](/rest/api/cosmos-db/attachments) を用いて添付ファイルを使用するための参照を取得する

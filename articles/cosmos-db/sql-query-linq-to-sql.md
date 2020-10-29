@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498856"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485105"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ から SQL への変換
 
-Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL クエリへのマッピングをベスト エフォートで実行します。 LINQ から変換される SQL クエリを取得する場合、生成された `IQueryable` オブジェクトで `ToString()` メソッドを使用します。 以下の説明では、[LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) の基本的知識を前提としています。
+Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL クエリへのマッピングをベスト エフォートで実行します。 LINQ から変換される SQL クエリを取得する場合、生成された `IQueryable` オブジェクトで `ToString()` メソッドを使用します。 以下の説明では、[LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) の基本的知識を前提としています。
 
 クエリ プロバイダーの型システムでは、JSON プリミティブ型 (数値型、ブール値、文字列、null) のみがサポートされます。
 
@@ -79,19 +79,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子がサポートされています。
 
-- **Select**:オブジェクトの構築など、プロジェクションによって [SELECT](sql-query-select.md) に変換します。
-- **Where**:フィルターによって [WHERE](sql-query-where.md) に変換します。また、`&&`、`||`、および `!` から SQL 演算子への変換をサポートしています
-- **SelectMany**:[JOIN](sql-query-join.md) 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用します。
-- **OrderBy** と **OrderByDescending**:ASC または DESC で [ORDER BY](sql-query-order-by.md) に変換します。
-- [集計](sql-query-aggregates.md)のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
-- **CompareTo**:範囲比較に変換します。 .NET では比較できないので、一般的に文字列に使用されます。
-- **Skip** と **Take**:クエリからの結果を制限して改ページ位置の自動修正を実行するために、[OFFSET および LIMIT](sql-query-offset-limit.md) に変換されます。
-- **数学関数**:.NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`、および `Truncate` から同等の[組み込み数学関数](sql-query-mathematical-functions.md)への変換をサポートします。
-- **文字列関数**:.NET `Concat`、`Contains`、`Count`、`EndsWith`,`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`、および `TrimStart` から同等の[組み込み文字列関数](sql-query-string-functions.md)への変換をサポートします。
-- **配列関数**:.NET `Concat`、`Contains`、および `Count` から同等の[組み込み配列関数](sql-query-array-functions.md)への変換をサポートします。
-- **地理空間の拡張関数**:スタブ メソッド `Distance`、`IsValid`、`IsValidDetailed`、および `Within` から同等の[組み込み地理空間関数](sql-query-geospatial-query.md)への変換をサポートします。
-- **ユーザー定義関数の拡張関数**:スタブ メソッド `UserDefinedFunctionProvider.Invoke` から、対応する[ユーザー定義関数](sql-query-udfs.md)への変換をサポートします。
-- **その他**:`Coalesce` と条件[演算子](sql-query-operators.md)の変換をサポートします。 コンテキストに応じて、`Contains` から、文字列 CONTAINS、ARRAY_CONTAINS、または IN に変換できます。
+- **Select** :オブジェクトの構築など、プロジェクションによって [SELECT](sql-query-select.md) に変換します。
+- **Where** :フィルターによって [WHERE](sql-query-where.md) に変換します。また、`&&`、`||`、および `!` から SQL 演算子への変換をサポートしています
+- **SelectMany** : [JOIN](sql-query-join.md) 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用します。
+- **OrderBy** と **OrderByDescending** :ASC または DESC で [ORDER BY](sql-query-order-by.md) に変換します。
+- [集計](sql-query-aggregates.md)のための **Count** 、 **Sum** 、 **Min** 、 **Max** 、 **Average** 演算子と非同期でそれに相当する **CountAsync** 、 **SumAsync** 、 **MinAsync** 、 **MaxAsync** 、 **AverageAsync** 演算子。
+- **CompareTo** :範囲比較に変換します。 .NET では比較できないので、一般的に文字列に使用されます。
+- **Skip** と **Take** :クエリからの結果を制限して改ページ位置の自動修正を実行するために、 [OFFSET および LIMIT](sql-query-offset-limit.md) に変換されます。
+- **数学関数** :.NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`、および `Truncate` から同等の [組み込み数学関数](sql-query-mathematical-functions.md)への変換をサポートします。
+- **文字列関数** :.NET `Concat`、`Contains`、`Count`、`EndsWith`,`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`、および `TrimStart` から同等の [組み込み文字列関数](sql-query-string-functions.md)への変換をサポートします。
+- **配列関数** :.NET `Concat`、`Contains`、および `Count` から同等の [組み込み配列関数](sql-query-array-functions.md)への変換をサポートします。
+- **地理空間の拡張関数** :スタブ メソッド `Distance`、`IsValid`、`IsValidDetailed`、および `Within` から同等の [組み込み地理空間関数](sql-query-geospatial-query.md)への変換をサポートします。
+- **ユーザー定義関数の拡張関数** :スタブ メソッド `UserDefinedFunctionProvider.Invoke` から、対応する [ユーザー定義関数](sql-query-udfs.md)への変換をサポートします。
+- **その他** :`Coalesce` と条件 [演算子](sql-query-operators.md)の変換をサポートします。 コンテキストに応じて、`Contains` から、文字列 CONTAINS、ARRAY_CONTAINS、または IN に変換できます。
 
 ## <a name="examples"></a>例
 

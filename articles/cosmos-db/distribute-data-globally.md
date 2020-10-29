@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ddb6bc297a32be856172707a220fe1dfaefb9f6d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278773"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487451"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる
 
@@ -55,7 +55,6 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [SQL API アカウント用のカスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 * [Cosmos DB でのプログラミング可能な整合性モデル](consistency-levels.md)
-* [アプリケーションのための適切な整合性レベルを選択する](consistency-levels-choosing.md)
-* [Azure Cosmos DB API における整合性レベル](consistency-levels-across-apis.md)
-* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
-
+* [アプリケーションのための適切な整合性レベルを選択する](./consistency-levels.md)
+* [Azure Cosmos DB API における整合性レベル](./consistency-levels.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](./consistency-levels.md)

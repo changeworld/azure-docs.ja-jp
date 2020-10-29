@@ -9,27 +9,27 @@ ms.date: 05/28/2019
 ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53c770bb8cc9d7a80ae7d11b6b1c089fcc9355da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d113189d1361122305f92bc86c46346e1e700f4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565634"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489372"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
-このチュートリアルでは、Azure CosmosDB の Bulk Executor .NET ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ オブジェクトをインポートし、更新する手順を紹介しています。 この手順では、[Bulk Executor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview)の Graph クラスを利用してプログラムから Vertex オブジェクトと Edge オブジェクトを作成し、1 回のネットワーク要求につき複数それらを挿入します。 この動作を Bulk Executor ライブラリで構成することにより、データベース リソースとローカル メモリ リソースの両方を最大限に活用することができます。
+このチュートリアルでは、Azure CosmosDB の Bulk Executor .NET ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ オブジェクトをインポートし、更新する手順を紹介しています。 この手順では、[Bulk Executor ライブラリ](./bulk-executor-overview.md)の Graph クラスを利用してプログラムから Vertex オブジェクトと Edge オブジェクトを作成し、1 回のネットワーク要求につき複数それらを挿入します。 この動作を Bulk Executor ライブラリで構成することにより、データベース リソースとローカル メモリ リソースの両方を最大限に活用することができます。
 
 Gremlin クエリをデータベースに送信した場合は、コマンドが 1 つずつ評価されて実行されますが、それとは対照的に Bulk Executor ライブラリでは、オブジェクトをローカルで作成して検証するよう要求されます。 オブジェクトの作成後、グラフ オブジェクトを順次データベース サービスに送信することができます。 この手法を用いることでデータ インジェストの速度を最大 100 倍に高めることができることから、初期データ移行や定期的なデータ移動の操作に最適な手段となっています。 詳細については、[Azure Cosmos DB Graph Bulk Executor サンプル アプリケーション](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)の GitHub ページを参照してください。
 
 ## <a name="bulk-operations-with-graph-data"></a>グラフ データの一括操作
 
-[Bulk Executor ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true)には、グラフ オブジェクトを作成したりインポートしたりする機能を備えた `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 名前空間が存在します。 
+[Bulk Executor ライブラリ](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet)には、グラフ オブジェクトを作成したりインポートしたりする機能を備えた `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 名前空間が存在します。 
 
 Gremlin API コンテナーに対してデータ移行を使用する大まかな手順は次のとおりです。
 1. データ ソースからレコードを取得します。
 2. 取得したレコードから `GremlinVertex` オブジェクトと `GremlinEdge` オブジェクトを構築し、それらを `IEnumerable` データ構造に追加します。 この部分に関しては、データ ソースがグラフ データベースではなかった場合を想定し、関係を検出して追加するためのロジックをアプリケーションに実装することをお勧めします。
-3. [Graph BulkImportAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)を使ってグラフ オブジェクトをコレクションに挿入します。
+3. [Graph BulkImportAsync メソッド](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?preserve-view=true&view=azure-dotnet)を使ってグラフ オブジェクトをコレクションに挿入します。
 
 このメカニズムは、Gremlin クライアントを使用した場合よりも、データ移行の効率が高くなります。 このように効率が改善される理由は、Gremlin を使ってデータを挿入した場合、アプリケーションは、クエリを一度に 1 つずつ送信する必要があるためです。データを作成するためには、クエリを 1 つずつ検証、評価、実行する必要があるのです。 Bulk Executor ライブラリは、アプリケーションで検証を処理し、1 回のネットワーク要求で一度に複数のグラフ オブジェクトを送信します。
 
@@ -78,7 +78,7 @@ Bulk Executor ライブラリのパラメーターについて詳しくは、[Az
 
 ペイロードは、`GremlinVertex` オブジェクトと `GremlinEdge` オブジェクトとしてインスタンス化する必要があります。 これらのオブジェクトの作成方法は次のとおりです。
 
-**頂点**:
+**頂点** :
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -92,7 +92,7 @@ v.AddProperty("customProperty", "value");
 v.AddProperty("partitioningKey", "value");
 ```
 
-**エッジ**:
+**エッジ** :
 ```csharp
 // Creating an edge
 GremlinEdge e = new GremlinEdge(
@@ -117,7 +117,7 @@ e.AddProperty("customProperty", "value");
 ### <a name="prerequisites"></a>前提条件
 * Visual Studio 2019 と Azure 開発ワークロード。 無料の [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) を使用できます。
 * Azure サブスクリプション。 [こちらで無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)を作成できます。 または、Azure サブスクリプションがなくても、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」から Cosmos データベース アカウントを作成できます。
-* Azure Cosmos DB Gremlin API データベース (**無制限のコレクション**)。 このガイドでは、[Azure Cosmos DB Gremlin API を .NET で使用](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)する基本的な方法を紹介しています。
+* Azure Cosmos DB Gremlin API データベース ( **無制限のコレクション** )。 このガイドでは、[Azure Cosmos DB Gremlin API を .NET で使用](./create-graph-dotnet.md)する基本的な方法を紹介しています。
 * Git 詳細については、[Git のダウンロード ページ](https://git-scm.com/downloads)を参照してください。
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
@@ -139,9 +139,9 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 設定|説明
 ---|---
-`EndPointUrl`|Azure Cosmos DB Gremlin API データベース アカウントの [概要] ブレードに表示される **.NET SDK エンドポイント**です。 `https://your-graph-database-account.documents.azure.com:443/` という形式が使用されます。
-`AuthorizationKey`|Azure Cosmos DB アカウントに表示されるプライマリ キーまたはセカンダリ キーです。 詳細については、[Azure Cosmos DB データへのアクセスのセキュリティ保護](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#primary-keys)に関するページを参照してください。
-`DatabaseName`, `CollectionName`|**ターゲットとなるデータベースとコレクションの名前**です。 `ShouldCleanupOnStart` が `true` に設定されている場合、これらの値と `CollectionThroughput` を使用してデータベースとコレクションがドロップされ、新たに作成されます。 同様に、`ShouldCleanupOnFinish` が `true` に設定されている場合は、インジェストが完了するとすぐに、これらを使用してデータベースが削除されます。 ターゲット コレクションは、**無制限のコレクション**であることが必要です。
+`EndPointUrl`|Azure Cosmos DB Gremlin API データベース アカウントの [概要] ブレードに表示される **.NET SDK エンドポイント** です。 `https://your-graph-database-account.documents.azure.com:443/` という形式が使用されます。
+`AuthorizationKey`|Azure Cosmos DB アカウントに表示されるプライマリ キーまたはセカンダリ キーです。 詳細については、[Azure Cosmos DB データへのアクセスのセキュリティ保護](./secure-access-to-data.md#primary-keys)に関するページを参照してください。
+`DatabaseName`, `CollectionName`|**ターゲットとなるデータベースとコレクションの名前** です。 `ShouldCleanupOnStart` が `true` に設定されている場合、これらの値と `CollectionThroughput` を使用してデータベースとコレクションがドロップされ、新たに作成されます。 同様に、`ShouldCleanupOnFinish` が `true` に設定されている場合は、インジェストが完了するとすぐに、これらを使用してデータベースが削除されます。 ターゲット コレクションは、 **無制限のコレクション** であることが必要です。
 `CollectionThroughput`|`ShouldCleanupOnStart` オプションが `true` に設定されている場合に、新しいコレクションを作成する目的で使用されます。
 `ShouldCleanupOnStart`|プログラムの実行前にデータベース アカウントとコレクションをドロップした後、`DatabaseName`、`CollectionName`、`CollectionThroughput` の各値を使って新たに作成します。
 `ShouldCleanupOnFinish`|プログラムの実行後、指定された `DatabaseName` と `CollectionName` を使って、データベース アカウントとコレクションをドロップします。
@@ -158,5 +158,5 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 ## <a name="next-steps"></a>次のステップ
 
 * NuGet パッケージの詳細と Bulk Executor .NET ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 
-* Bulk Executor の使用をさらに最適化するためには、「[パフォーマンスに関するヒント](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips)」を参照してください。
-* この名前空間に定義されているクラスとメソッドの詳細については、[BulkExecutor.Graph のリファレンス記事](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true)を参照してください。
+* Bulk Executor の使用をさらに最適化するためには、「[パフォーマンスに関するヒント](./bulk-executor-dot-net.md#performance-tips)」を参照してください。
+* この名前空間に定義されているクラスとメソッドの詳細については、[BulkExecutor.Graph のリファレンス記事](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet)を参照してください。

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 35d81d0076c4b29a8b1399331aa0254178720931
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fcb6e004c86289e2efa89a988b362e76145a9538
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277810"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490426"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
@@ -68,7 +68,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 ### <a name="range-index"></a>範囲インデックス
 
-**範囲**インデックスは、順序付けされたツリーのような構造に基づいています。 範囲インデックスの種類は、以下のために使用されます。
+**範囲** インデックスは、順序付けされたツリーのような構造に基づいています。 範囲インデックスの種類は、以下のために使用されます。
 
 - 等値クエリ:
 
@@ -124,7 +124,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 ### <a name="spatial-index"></a>空間インデックス
 
-**空間**インデックスを使用すると、点、線、多角形、複数の多角形などの地理空間オブジェクトに対して、効率的なクエリを行うことができます。 これらのクエリでは、ST_DISTANCE、ST_WITHIN、ST_INTERSECTS の各キーワードを使用します。 空間インデックスの種類を使用するいくつかの例を次に示します。
+**空間** インデックスを使用すると、点、線、多角形、複数の多角形などの地理空間オブジェクトに対して、効率的なクエリを行うことができます。 これらのクエリでは、ST_DISTANCE、ST_WITHIN、ST_INTERSECTS の各キーワードを使用します。 空間インデックスの種類を使用するいくつかの例を次に示します。
 
 - 地理空間距離クエリ:
 
@@ -144,11 +144,11 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-空間インデックスは、正しい形式の [GeoJSON](geospatial.md) オブジェクトに対して使用できます。 現在、Points、LineStrings、Polygons、MultiPolygons がサポートされています。
+空間インデックスは、正しい形式の [GeoJSON](./sql-query-geospatial-intro.md) オブジェクトに対して使用できます。 現在、Points、LineStrings、Polygons、MultiPolygons がサポートされています。
 
 ### <a name="composite-indexes"></a>複合インデックス
 
-**複合**インデックスを使用すると、複数のフィールドに対して操作を実行するときの効率が向上します。 複合のインデックスの種類は、次のために使用されます。
+**複合** インデックスを使用すると、複数のフィールドに対して操作を実行するときの効率が向上します。 複合のインデックスの種類は、次のために使用されます。
 
 - 複数のプロパティに対する `ORDER BY` クエリ:
 
@@ -183,7 +183,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 :::image type="content" source="./media/index-overview/matching-path.png" alt-text="ツリーとして表現された前の項目" border="false":::
 
 > [!NOTE]
-> 1 つのプロパティで並べ替える `ORDER BY` 句には*常に*範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、*常に*複合インデックスが必要です。
+> 1 つのプロパティで並べ替える `ORDER BY` 句には *常に* 範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、 *常に* 複合インデックスが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

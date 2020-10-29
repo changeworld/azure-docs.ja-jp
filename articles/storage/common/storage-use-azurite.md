@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331575"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490783"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
@@ -58,7 +58,7 @@ Visual Studio Code 内で Azurite を構成するには、拡張機能ウィン�
    - **Azurite:Blob Port** - Blob service のリスニング ポート。 既定のポートは 10000 です。
    - **Azurite:Cert** - HTTPS モードを有効にするための、ローカルに信頼されている PEM または PFX 証明書ファイルへのパス。
    - **Azurite:Debug** - Azurite チャネルにデバッグ ログを出力します。 既定値は **false** です。
-   - **Azurite:Key** - ローカルに信頼されている PEM キーファイルへのパス。**Azurite:Cert** が PEM ファイルを指す場合は必須です。
+   - **Azurite:Key** - ローカルに信頼されている PEM キーファイルへのパス。 **Azurite:Cert** が PEM ファイルを指す場合は必須です。
    - **Azurite:Location** - ワークスペースの場所のパス。 既定値は Visual Studio Code の作業フォルダーです。
    - **Azurite:Loose** - ルーズ モード (サポートされていないヘッダーとパラメーターを無視します) を有効にします。
    - **Azurite:OAuth** - 省略可能な OAuth レベル。
@@ -86,7 +86,7 @@ Azurite をインストールしたら、「[Azurite をコマンド ライン�
 docker pull mcr.microsoft.com/azure-storage/azurite
 ```
 
-**Azurite Docker イメージを実行する**:
+**Azurite Docker イメージを実行する** :
 
 次のコマンドは Azurite Docker を実行します。 `-p 10000:10000` パラメーターにより、ホスト マシンのポート 10000 から Docker インスタンスに要求がリダイレクトされます。
 
@@ -95,9 +95,9 @@ docker run -p 10000:10000 -p 10001:10001 \
     mcr.microsoft.com/azure-storage/azurite
 ```
 
-**ワークスペースの場所を指定する**:
+**ワークスペースの場所を指定する** :
 
-次の例で、`-v c:/azurite:/data` パラメーターでは Azurite の永続的なデータの場所として *c:/azurite* が指定されています。 Docker コマンドを実行する前に、*c:/azurite* ディレクトリを作成しておく必要があります。
+次の例で、`-v c:/azurite:/data` パラメーターでは Azurite の永続的なデータの場所として *c:/azurite* が指定されています。 Docker コマンドを実行する前に、 *c:/azurite* ディレクトリを作成しておく必要があります。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -136,7 +136,7 @@ Azurite をインストールおよびビルドしたら、「[Azurite をコマ
 > [!NOTE]
 > Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、Visual Studio Code コマンド パレットを使用します。 詳細については、「[Azurite Visual Studio Code の拡張機能をインストールして実行する](#install-and-run-the-azurite-visual-studio-code-extension)」を参照してください。
 
-コマンド ラインを使用してすぐに作業を開始するには、*c:\azurite* という名前のディレクトリを作成し、次のコマンドを発行して Azurite を起動します。
+コマンド ラインを使用してすぐに作業を開始するには、 *c:\azurite* という名前のディレクトリを作成し、次のコマンドを発行して Azurite を起動します。
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
@@ -282,7 +282,7 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>証明書の構成 (HTTPS)
 
-**オプション** - 既定では、Azurite は HTTP プロトコルを使用します。 HTTPS モードを有効にするには、Privacy Enhanced Mail (.pem) または [Personal Information Exchange (.pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 証明書ファイルへのパスを `--cert` スイッチに指定します。
+**オプション** - 既定では、Azurite は HTTP プロトコルを使用します。 HTTPS モードを有効にするには、Privacy Enhanced Mail (.pem) または [Personal Information Exchange (.pfx)](/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 証明書ファイルへのパスを `--cert` スイッチに指定します。
 
 PEM ファイルに `--cert` が指定されている場合、対応する `--key` スイッチを指定する必要があります。
 
@@ -364,7 +364,7 @@ Azurite では、既定で、1 分ごとにカスタム アカウント名とキ
 
 ### <a name="connection-strings"></a>Connection strings
 
-アプリケーションから Azurite に接続する最も簡単な方法は、ショートカット *UseDevelopmentStorage=true* を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、*app.config* ファイル内の接続文字列は次のようになります。
+アプリケーションから Azurite に接続する最も簡単な方法は、ショートカット *UseDevelopmentStorage=true* を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、 *app.config* ファイル内の接続文字列は次のようになります。
 
 ```xml
 <appSettings>

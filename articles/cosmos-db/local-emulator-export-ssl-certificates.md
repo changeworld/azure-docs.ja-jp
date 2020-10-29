@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 068b316eaa92a1e781df0b9945133a26fa0b88a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f747cc6405cef07510766bcfa4c826aec9d9857b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445279"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490409"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
 
@@ -30,7 +30,7 @@ Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレ
 
 Windows 証明書ストアと統合されていない言語およびランタイム環境からエミュレーター エンドポイントを正常に使用するには、エミュレーター証明書をエクスポートする必要があります。 Windows 証明書マネージャーを使用して証明書をエクスポートできます。 次の手順に従って、"DocumentDBEmulatorCertificate" 証明書を BASE-64 でエンコードされた X.509 (.cer) ファイルとしてエクスポートします。
 
-1. certlm.msc を実行して Windows 証明書マネージャーを起動します。次に、Personal フォルダー、Certificates フォルダーの順に移動して、**DocumentDbEmulatorCertificate** というフレンドリ名の証明書を開きます。
+1. certlm.msc を実行して Windows 証明書マネージャーを起動します。次に、Personal フォルダー、Certificates フォルダーの順に移動して、 **DocumentDbEmulatorCertificate** というフレンドリ名の証明書を開きます。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
 
@@ -54,7 +54,7 @@ Windows 証明書ストアと統合されていない言語およびランタイ
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
 
-1. 証明書に名前を付けます。 ここでは「**documentdbemulatorcert**」と入力し、 **[次へ]** をクリックします。
+1. 証明書に名前を付けます。 ここでは「 **documentdbemulatorcert** 」と入力し、 **[次へ]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
 
@@ -66,7 +66,7 @@ Windows 証明書ストアと統合されていない言語およびランタイ
 
 Java ベースのクライアントが使用される Java アプリケーションまたは MongoDB アプリケーションを実行している場合は、`-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` フラグを渡すよりも、既定の Java 証明書ストアに証明書をインストールする方が簡単です。 たとえば、付属の Java デモ アプリケーション (`https://localhost:8081/_explorer/index.html`) では、既定の証明書ストアを使用します。
 
-X.509 証明書を既定の Java 証明書ストアにインポートする場合は、[証明書を Java 証明書ストアに追加する方法](https://docs.microsoft.com/azure/java-add-certificate-ca-store)に関するページの手順に従ってください。 keytool を実行する際には *%JAVA_HOME%* ディレクトリで作業することに注意してください。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントが Azure Cosmos エミュレーターに接続できるようになります。
+X.509 証明書を既定の Java 証明書ストアにインポートする場合は、[証明書を Java 証明書ストアに追加する方法](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store)に関するページの手順に従ってください。 keytool を実行する際には *%JAVA_HOME%* ディレクトリで作業することに注意してください。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントが Azure Cosmos エミュレーターに接続できるようになります。
 
 また、次の bash スクリプトを実行して証明書をインポートすることもできます。
 
@@ -106,4 +106,3 @@ Windows トレイで実行されている Azure Cosmos DB エミュレーター�
 
 * [コマンド ライン パラメーターと PowerShell コマンドを使用してエミュレーターを制御する](emulator-command-line-parameters.md)
 * [エミュレーターに関する問題をデバッグする](troubleshoot-local-emulator.md)
-

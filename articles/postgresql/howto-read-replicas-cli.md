@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707542"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489712"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
@@ -34,7 +34,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 ### <a name="prerequisites"></a>前提条件
 
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)
 - プライマリ サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-up-azure-cli.md)。
 
 
@@ -60,7 +60,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
-[az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) コマンドには、次のパラメーターが必要です。
+[az postgres server replica create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) コマンドには、次のパラメーターが必要です。
 
 | 設定 | 値の例 | 説明  |
 | --- | --- | --- |
@@ -91,14 +91,14 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > プライマリ サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ### <a name="list-replicas"></a>レプリカの一覧表示
-プライマリ サーバーのレプリカの一覧を表示するには、[az postgres server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) コマンドを使用します。
+プライマリ サーバーのレプリカの一覧を表示するには、[az postgres server replica list](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) コマンドを使用します。
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
-プライマリ サーバーと読み取りレプリカの間のレプリケーションを停止するには、[az postgres server replica stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) コマンドを使用します。
+プライマリ サーバーと読み取りレプリカの間のレプリケーションを停止するには、[az postgres server replica stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) コマンドを使用します。
 
 プライマリ サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
 
@@ -107,7 +107,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>プライマリ サーバーまたはレプリカ サーバーを削除する
-プライマリ サーバーまたはレプリカ サーバーを削除するには、[az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) コマンドを使用します。
+プライマリ サーバーまたはレプリカ サーバーを削除するには、[az postgres server delete](/cli/azure/postgres/server#az-postgres-server-delete) コマンドを使用します。
 
 プライマリ サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000619"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488998"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# のユーザー定義関数を使用する
 
@@ -30,7 +30,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
     必要なすべての IDE を使用します。 [Visual Studio](https://www.visualstudio.com/vs)または [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。 このドキュメントの手順では、Visual Studio 2019 を使用します。
 
-* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 [Data Lake Tools for Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、[Azure PowerShell](/powershell/azure)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
+* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 [Data Lake Tools for Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、[Azure PowerShell](/powershell/azure)、[Azure CLI](/cli/azure/install-azure-cli) をお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
 
     Hive クエリを実行する他の方法については、「[Azure HDInsight における Apache Hive と HiveQL](hdinsight-use-hive.md)」を参照してください。
 
@@ -38,7 +38,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-*Linux ベースの HDInsight* クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
+*Linux ベースの HDInsight* クラスターでは、 [Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
 
 .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
@@ -58,9 +58,9 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
 
-4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
+4. **[新しいプロジェクトを構成します]** ウィンドウで、 *HiveCSharp* の **プロジェクト名** を入力し、新しいプロジェクトを保存する **場所** に移動または場所を作成します。 **[作成]** を選択します。
 
-5. Visual Studio IDE で、*Program.cs* の内容を次のコードに置き換えます。
+5. Visual Studio IDE で、 *Program.cs* の内容を次のコードに置き換えます。
 
     ```csharp
     using System;
@@ -125,9 +125,9 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
 
-4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
+4. **[新しいプロジェクトを構成します]** ウィンドウで、 *PigUDF* の **プロジェクト名** を入力し、新しいプロジェクトを保存する **場所** に移動または場所を作成します。 **[作成]** を選択します。
 
-5. Visual Studio IDE で、*Program.cs* の内容を次のコードに置き換えます。
+5. Visual Studio IDE で、 *Program.cs* の内容を次のコードに置き換えます。
 
     ```csharp
     using System;
@@ -176,21 +176,21 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
     ![既定のストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント**を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント** を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用します。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
 1. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-    * **Azure ストレージ アカウント**を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
+    * **Azure ストレージ アカウント** を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
         ![新しいプロジェクトの HDInsight アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
-        **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、*HiveCSharp* プロジェクトの *bin\debug* フォルダーに移動し、*HiveCSharp.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
+        **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、 *HiveCSharp* プロジェクトの *bin\debug* フォルダーに移動し、 *HiveCSharp.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
 
-    * **Azure Data Lake Storage** を使用している場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、*HiveCSharp.exe* ファイルを選び、 **[OK]** を選択します。
+    * **Azure Data Lake Storage** を使用している場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、 *HiveCSharp.exe* ファイルを選び、 **[OK]** を選択します。
 
-    *HiveCSharp.exe* のアップロードが完了したら、*PigUDF.exe* ファイルのアップロード プロセスを繰り返します。
+    *HiveCSharp.exe* のアップロードが完了したら、 *PigUDF.exe* ファイルのアップロード プロセスを繰り返します。
 
 ## <a name="run-an-apache-hive-query"></a>Apache Hive クエリを実行する
 
@@ -222,7 +222,7 @@ Hive UDF アプリケーションを使用する Hive クエリを実行でき�
     > [!IMPORTANT]
     > クラスターに使用した既定のストレージの種類に一致する `add file` ステートメントのコメントを解除します。
 
-    このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` の各フィールドを選択し、*HiveCSharp.exe* アプリケーションに選択したフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 このクエリでは、既定のストレージ コンテナーのルートで *HiveCSharp.exe* が見つかることを想定しています。
+    このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` の各フィールドを選択し、 *HiveCSharp.exe* アプリケーションに選択したフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 このクエリでは、既定のストレージ コンテナーのルートで *HiveCSharp.exe* が見つかることを想定しています。
 
 5. 既定の **[対話型]** を **[バッチ]** に切り替えてから、 **[送信]** を選択して、ジョブを HDInsight クラスターに送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 

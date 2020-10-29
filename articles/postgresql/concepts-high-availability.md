@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707933"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485445"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性
 Azure Database for PostgreSQL – Single Server サービスでは、[99.99 %](https://azure.microsoft.com/support/legal/sla/postgresql) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されます。 Azure Database for PostgreSQL は、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性を提供します。 Azure Database for PostgreSQL は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。
@@ -40,8 +40,8 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 | ------------ | ----------- |
 | <b>コンピューティングのスケールアップ/スケールダウン | ユーザーがコンピューティングのスケールアップ/ダウン操作を実行すると、スケーリングされたコンピューティング構成を使用して新しいデータベース サーバーがプロビジョニングされます。 古いデータベース サーバーでは、アクティブなチェックポイントを完了でき、クライアント接続がドレインされ、コミットされていないトランザクションが取り消され、サーバー自体がシャットダウンされます。 続いてストレージが古いデータベース サーバーからデタッチされ、新しいデータベース サーバーに接続されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を確立しようとすると、ゲートウェイはその接続要求を新しいデータベース サーバーに転送します。|
 | <b>ストレージのスケール アップ | ストレージのスケール アップはオンライン操作であるため、データベース サーバーは中断されません。|
-| <b>新しいソフトウェアのデプロイ (Azure) | 新機能のロールアウトやバグ修正プログラムは、サービスの計画的なメンテナンスの一環として自動的に行われます。 詳細については、[ドキュメント](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
-| <b>マイナー バージョンのアップグレード | Azure Database for PostgreSQL では、Azure によって決定されたマイナー バージョンへの修正プログラムが自動的にデータベース サーバーに適用されます。 これは、サービスの計画的なメンテナンスの一環として行われます。 これにより、秒単位の短いダウンタイムが発生し、データベース サーバーは新しいマイナー バージョンで自動的に再起動されます。 詳細については、[ドキュメント](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
+| <b>新しいソフトウェアのデプロイ (Azure) | 新機能のロールアウトやバグ修正プログラムは、サービスの計画的なメンテナンスの一環として自動的に行われます。 詳細については、[ドキュメント](./concepts-monitoring.md#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
+| <b>マイナー バージョンのアップグレード | Azure Database for PostgreSQL では、Azure によって決定されたマイナー バージョンへの修正プログラムが自動的にデータベース サーバーに適用されます。 これは、サービスの計画的なメンテナンスの一環として行われます。 これにより、秒単位の短いダウンタイムが発生し、データベース サーバーは新しいマイナー バージョンで自動的に再起動されます。 詳細については、[ドキュメント](./concepts-monitoring.md#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>計画外のダウンタイムの軽減
@@ -68,8 +68,8 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 
 | **シナリオ** | **復旧計画** |
 | ---------- | ---------- |
-| <b>リージョンの障害 | リージョンの障害は、まれにしか発生しないイベントです。 ただし、リージョンの障害から保護する必要がある場合は、ディザスター リカバリー (DR) 用に他のリージョンで 1 つ以上の読み取りレプリカを構成できます。 (詳細については、読み取りレプリカの作成と管理に関する[この記事](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)をご覧ください)。 リージョン レベルの障害が発生した場合は、運用データベースサーバーとして他のリージョンで構成されている読み取りレプリカを手動で昇格できます。 |
-| <b> 論理/ユーザー エラー | 誤って破棄されたテーブルや間違って更新されたデータなどのユーザーエラーからの復旧には、エラーが発生する直前の時間までデータを復元および復旧することによる、[特定の時点への復旧](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) の実行が含まれます。<br> <br>  データベース サーバー内のすべてのデータベースではなく、データベースまたは特定のテーブルのサブセットのみを復元する場合は、新しいインスタンスでデータベース サーバーを復元し、[pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) を使用してテーブルをエクスポートし、[pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) を使用してそれらのテーブルをデータベースに復元することができます。 |
+| <b>リージョンの障害 | リージョンの障害は、まれにしか発生しないイベントです。 ただし、リージョンの障害から保護する必要がある場合は、ディザスター リカバリー (DR) 用に他のリージョンで 1 つ以上の読み取りレプリカを構成できます。 (詳細については、読み取りレプリカの作成と管理に関する[この記事](./howto-read-replicas-portal.md)をご覧ください)。 リージョン レベルの障害が発生した場合は、運用データベースサーバーとして他のリージョンで構成されている読み取りレプリカを手動で昇格できます。 |
+| <b> 論理/ユーザー エラー | 誤って破棄されたテーブルや間違って更新されたデータなどのユーザーエラーからの復旧には、エラーが発生する直前の時間までデータを復元および復旧することによる、[特定の時点への復旧](./concepts-backup.md) (PITR) の実行が含まれます。<br> <br>  データベース サーバー内のすべてのデータベースではなく、データベースまたは特定のテーブルのサブセットのみを復元する場合は、新しいインスタンスでデータベース サーバーを復元し、[pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) を使用してテーブルをエクスポートし、[pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) を使用してそれらのテーブルをデータベースに復元することができます。 |
 
 
 

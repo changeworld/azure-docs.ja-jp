@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 5832214b5b0a98249f951915e867db8542c28a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23e70d8ed17846100d82a5545e9215bce4eee30f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803961"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491344"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "91803961"
 |   |   |
 |---|---|
 |**SDK のダウンロード**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API ドキュメント**|[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python&preserve-view=true)|
+|**API ドキュメント**|[Python の API リファレンス ドキュメント](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
 |**SDK のインストール手順**|[Python SDK のインストール手順](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/)、または [Python 3.3、3.4、3.5、3.6](https://www.python.org/downloads/)|
@@ -61,5 +61,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>参照
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。 
-
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。

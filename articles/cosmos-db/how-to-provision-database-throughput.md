@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a67a062c06950294ec9e49e2ec69552edc4ee77a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278610"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486108"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB SQL API のデータベースに標準 (手動) のスループットをプロビジョニングする
 
@@ -72,7 +72,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 Azure Cosmos DB のプロビジョニングされたスループットについては、次の記事を参照してください。
 
-* [プロビジョニングされたスループットのグローバルなスケーリング](scaling-throughput.md)
+* [プロビジョニングされたスループットのグローバルなスケーリング](./request-units.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
 * [コンテナーに標準 (手動) スループットをプロビジョニングする方法](how-to-provision-container-throughput.md)
 * [コンテナーに自動スケーリングのスループットをプロビジョニングする方法](how-to-provision-autoscale-throughput.md)

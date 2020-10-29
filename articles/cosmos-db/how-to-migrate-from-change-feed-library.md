@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c54c2e486f935b3c3ba1b13207caaa67099459
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019523"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490987"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>変更フィード プロセッサ ライブラリから Azure Cosmos DB .NET V3 SDK に移行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "89019523"
 .NET V3 SDK には、いくつかの破壊的変更があります。ご利用のアプリケーションを移行する上で重要な手順を次に示します。
 
 1. `DocumentCollectionInfo` インスタンスを、監視されているコンテナーおよびリース コンテナーに対する `Container` 参照に変換します。
-1. `WithProcessorOptions` を使用しているカスタマイズについては、間隔に `WithLeaseConfiguration` と `WithPollInterval` を使用し、`WithStartTime`開始時刻[に ](how-to-configure-change-feed-start-time.md) を使用し、最大項目数を定義するために `WithMaxItems` を使用するように更新する必要があります。
+1. `WithProcessorOptions` を使用しているカスタマイズについては、間隔に `WithLeaseConfiguration` と `WithPollInterval` を使用し、`WithStartTime`開始時刻[に ](./change-feed-processor.md#starting-time) を使用し、最大項目数を定義するために `WithMaxItems` を使用するように更新する必要があります。
 1. `GetChangeFeedProcessorBuilder` 上の `processorName` については `ChangeFeedProcessorOptions.LeasePrefix` 上で構成されている値と一致するように設定します。それ以外の場合は `string.Empty` を使用します。
 1. 変更は `IReadOnlyList<Document>` として配信されなくなりました。代わりに、それは `IReadOnlyCollection<T>` となります。ここで、`T` は定義する必要のある型です。基本項目クラスはもうありません。
 1. 変更を処理する場合、実装は不要になりました。その代わりに、[デリゲートを定義](change-feed-processor.md#implementing-the-change-feed-processor)する必要があります。 デリゲートは静的関数とすることができます。実行中に状態を維持する必要がある場合は、独自のクラスを作成して、インスタンス メソッドをデリゲートとして渡すこともできます。
@@ -60,4 +60,4 @@ SDK V3 変更フィード プロセッサでは、移行されたアプリケー
 
 * [変更フィード プロセッサの概要](change-feed-processor.md)
 * [変更フィード推定機能の使用](how-to-use-change-feed-estimator.md)
-* [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)
+* [変更フィード プロセッサの開始時刻](./change-feed-processor.md#starting-time)

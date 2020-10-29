@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: d1fe28e4339cb4585deeeef1c44e3614fd693943
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6b1e2d6e9d5d06410596a40f16869d7c1a0f094e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283444"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490698"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API で実行された操作の要求ユニット使用量を確認する
 
@@ -91,4 +91,4 @@ RU 使用量を最適化する方法については、次の記事をご覧く�
 
 * [Azure Cosmos DB における要求ユニットとスループット](request-units.md)
 * [Azure Cosmos DB でのプロビジョニングされたスループット コストを最適化する](optimize-cost-throughput.md)
-* [Azure Cosmos DB でのクエリ コストを最適化する](optimize-cost-queries.md)
+* [Azure Cosmos DB でのクエリ コストを最適化する](./optimize-cost-reads-writes.md)

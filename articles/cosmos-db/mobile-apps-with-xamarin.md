@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 427facaffa277ec44ee99d70681928f49fe31df8
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2aa4e7d063141f74dc94e5f23cd227fcc16ba84f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278481"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487417"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>チュートリアル:Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
@@ -21,7 +21,7 @@ ms.locfileid: "92278481"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -34,12 +34,12 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 
 :::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="モバイル アプリ向けの Azure Cosmos DB の機能":::
 
-* スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](how-to-sql-query.md)を提供します。
+* スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](./sql-query-getting-started.md)を提供します。
 * 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
 * 無限のスケール。 お使いの Azure Cosmos のコンテナーは、[お使いのアプリの規模の拡大に合わせて拡大](partitioning-overview.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションまたはデータベースは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
 * グローバルに分散。 モバイル アプリ ユーザーは外に出かけ、世界中を飛び回ることもよくあります。 Azure Cosmos DB は、[グローバル分散データベース](distribute-data-globally.md)です。 ユーザーがデータにアクセスするには、地図をクリックします。
 * 組み込みの豊富な承認機能。 Azure Cosmos DB では、複雑なカスタムの承認コードを作成せずに、[ユーザーごとのデータ](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)やマルチ ユーザー共有データのような一般的なパターンを簡単に実装できます。
-* 地理空間クエリ。 現在、多くのモバイル アプリが地理的な場所に応じたエクスペリエンスを提供しています。 [地理空間型](geospatial.md)のファーストクラスのサポートにより、Azure Cosmos DB は、これらのエクスペリエンスの作成を簡単に実現可能なものにしています。
+* 地理空間クエリ。 現在、多くのモバイル アプリが地理的な場所に応じたエクスペリエンスを提供しています。 [地理空間型](./sql-query-geospatial-intro.md)のファーストクラスのサポートにより、Azure Cosmos DB は、これらのエクスペリエンスの作成を簡単に実現可能なものにしています。
 * バイナリの添付ファイル。 アプリ データには、バイナリ BLOB が含まれていることがよくあります。 添付ファイルがネイティブでサポートされているため、Azure Cosmos DB をアプリ データのワンストップ ショップとして簡単に使用できます。
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB と Xamarin のチュートリアル
@@ -106,8 +106,5 @@ Azure Cosmos DB は、管理された DBaaS (database as a service) です。 �
 * [GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) のソース コードを確認する。
 * [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) をダウンロードする。
 * [.NET アプリケーション](sql-api-dotnet-samples.md)向けの他のコード サンプルを探す。
-* [Azure Cosmos DB のリッチ クエリ機能](how-to-sql-query.md)について確認する。
-* [Azure Cosmos DB の地理空間サポート](geospatial.md)について確認する。
-
-
-
+* [Azure Cosmos DB のリッチ クエリ機能](./sql-query-getting-started.md)について確認する。
+* [Azure Cosmos DB の地理空間サポート](./sql-query-geospatial-intro.md)について確認する。

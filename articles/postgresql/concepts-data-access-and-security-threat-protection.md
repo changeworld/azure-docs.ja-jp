@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: cfe565c45ea6aa0a4bcfecc95b1e1149b17542a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa136a15e4fa034307e16ef50c2b16060c5af0d2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708052"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490205"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server での Advanced Threat Protection
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、デー�
 Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Threat Protection (ATP) オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) または [REST API](/rest/api/postgresql) を使ってアクセスおよび管理できます。 この機能は、General Purpose サーバーとメモリ最適化サーバーでご利用いただけます。
 
 > [!NOTE]
-> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用 **できません** 。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 
 ## <a name="what-is-advanced-threat-protection"></a>Advanced Threat Protection とは
 
@@ -41,6 +41,6 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、普通�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
+* [Azure Security Center](../security-center/security-center-introduction.md) の詳細について参照してください
 * 価格の詳細については、[Azure Database for PostgreSQL の価格ページ](https://azure.microsoft.com/pricing/details/postgresql/)をご覧ください 
-* Azure portal を使用して [Azure Database for PostgreSQL の Advanced Threat Protection を構成する](howto-database-threat-protection-portal.md)  
+* Azure portal を使用して [Azure Database for PostgreSQL の Advanced Threat Protection を構成する](howto-database-threat-protection-portal.md)
