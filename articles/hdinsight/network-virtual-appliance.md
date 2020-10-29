@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c831e099eca3cd6e6da20f55ad19980ae8e9ddc5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127422"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545924"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight でネットワーク仮想アプライアンスを構成する
 
 > [!Important]
-> 次の情報が必要なのは、 [Azure Firewall](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic) 以外のネットワーク仮想アプライアンス (NVA) を構成する場合 **のみ** です。
+> 次の情報が必要なのは、 [Azure Firewall](./hdinsight-restrict-outbound-traffic.md) 以外のネットワーク仮想アプライアンス (NVA) を構成する場合 **のみ** です。
 
 Azure Firewall FQDN タグは、多くの一般的で重要な FQDN のトラフィックを許可するように、自動的に構成されます。 別のネットワーク仮想アプライアンスを使用するには、いくつかの追加機能を構成する必要があります。 ネットワーク仮想アプライアンスを構成する場合は、次の要因にご注意ください。
 

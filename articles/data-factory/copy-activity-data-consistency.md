@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522909"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634914"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>コピー アクティビティでのデータ整合性の検証 (プレビュー)
 
@@ -79,7 +79,7 @@ linkedServiceName | セッション ログ ファイルを格納するための�
 path | ログ ファイルのパス。 | ログ ファイルを格納するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
 >[!NOTE]
->- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
+>- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
 >- ADF では、ストレージ ストア間でバイナリ ファイルをコピーするとき、ファイル サイズ検証が行われます。
 
 ## <a name="monitoring"></a>監視
@@ -107,14 +107,14 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 データ整合性の検証の詳細は、"dataConsistencyVerification プロパティ" から確認できます。
 
 **VerificationResult** の値: 
--   **Verified**:コピーしたデータは、ソース ストアとコピー先ストアとの間で整合性があることが確認されています。 
--   **NotVerified**:コピー アクティビティで validateDataConsistency が有効になっていないため、コピーしたデータの整合性が検証されていません。 
--   **Unsupported**:この特定のコピー ペアでは、データの整合性の確認がサポートされていないため、コピーしたデータの整合性が検証されていません。 
+-   **Verified** :コピーしたデータは、ソース ストアとコピー先ストアとの間で整合性があることが確認されています。 
+-   **NotVerified** :コピー アクティビティで validateDataConsistency が有効になっていないため、コピーしたデータの整合性が検証されていません。 
+-   **Unsupported** :この特定のコピー ペアでは、データの整合性の確認がサポートされていないため、コピーしたデータの整合性が検証されていません。 
 
 **InconsistentData** の値: 
--   **Found**:ADF のコピー アクティビティで、整合性のないデータが検出されました。 
--   **Skipped**:ADF のコピー アクティビティで、整合性のないデータが検出され、スキップされました。 
--   **None**:ADF のコピー アクティビティで、整合性のないデータは検出されませんでした。 ソース ストアとコピー先ストアの間でデータの整合性があることが確認されたか、またはコピー アクティビティで validateDataConsistency を無効にしたためである可能性があります。 
+-   **Found** :ADF のコピー アクティビティで、整合性のないデータが検出されました。 
+-   **Skipped** :ADF のコピー アクティビティで、整合性のないデータが検出され、スキップされました。 
+-   **None** :ADF のコピー アクティビティで、整合性のないデータは検出されませんでした。 ソース ストアとコピー先ストアの間でデータの整合性があることが確認されたか、またはコピー アクティビティで validateDataConsistency を無効にしたためである可能性があります。 
 
 ### <a name="session-log-from-copy-activity"></a>コピー アクティビティからのセッション ログ
 
@@ -144,5 +144,3 @@ Timestamp, Level, OperationName, OperationItem, Message
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)
-
-

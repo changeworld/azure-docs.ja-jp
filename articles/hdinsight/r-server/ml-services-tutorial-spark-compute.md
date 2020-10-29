@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71121933"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545907"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
 
@@ -168,7 +168,7 @@ Spark コンピューティング コンテキストでは、次の関数を使�
 |`RxParquetData` | Parquet データ ソース オブジェクトを生成します。|
 |`RxOrcData` | Orc データ ソース オブジェクトを生成します。|
 
-HDFS にコピーしたファイルを使用して、[RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) オブジェクトを作成します。 RStudio に次のコードを入力します。
+HDFS にコピーしたファイルを使用して、[RxTextData](/machine-learning-server/r-reference/revoscaler/rxtextdata) オブジェクトを作成します。 RStudio に次のコードを入力します。
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -179,7 +179,7 @@ airDS <- RxTextData( airDataDir,
 
 ## <a name="create-a-compute-context-for-spark"></a>Spark のコンピューティング コンテキストを作成する
 
-ワーカー ノード上でデータを読み込んで分析を実行するには、スクリプトのコンピューティング コンテキストを [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark) に設定します。 このコンテキストでは、R 関数はすべてのワーカー ノード全体でワークロードを自動的に分散します。ジョブまたはキューを管理するための組み込み要件はありません。 Spark コンピューティング コンテキストは、`RxSpark` または `rxSparkConnect()` を通じて設定および作成され、`rxSparkDisconnect()` を使用してローカル コンピューティング コンテキストに戻ります。 RStudio に次のコードを入力します。
+ワーカー ノード上でデータを読み込んで分析を実行するには、スクリプトのコンピューティング コンテキストを [RxSpark](/machine-learning-server/r-reference/revoscaler/rxspark) に設定します。 このコンテキストでは、R 関数はすべてのワーカー ノード全体でワークロードを自動的に分散します。ジョブまたはキューを管理するための組み込み要件はありません。 Spark コンピューティング コンテキストは、`RxSpark` または `rxSparkConnect()` を通じて設定および作成され、`rxSparkDisconnect()` を使用してローカル コンピューティング コンテキストに戻ります。 RStudio に次のコードを入力します。
 
 ```R
 # Define the Spark compute context
@@ -191,7 +191,7 @@ rxSetComputeContext(mySparkCluster)
 
 ## <a name="fit-a-linear-model"></a>線形モデルを適合させる
 
-1. [rxLinMod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) 関数を使用して、`airDS` データ ソースを使用する線形モデルを適合させます。 RStudio に次のコードを入力します。
+1. [rxLinMod](/machine-learning-server/r-reference/revoscaler/rxlinmod) 関数を使用して、`airDS` データ ソースを使用する線形モデルを適合させます。 RStudio に次のコードを入力します。
 
     ```R
     system.time(
@@ -225,14 +225,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
     ---
-    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -247,7 +247,7 @@ rxSetComputeContext(mySparkCluster)
 
 ご覧のように、Hadoop 上で R を使用して CSV ファイルを直接分析できます。 ただし、より効率的な形式でデータを格納すると、分析をより迅速に実行できます。 R XDF ファイル形式は効率的ですが、個々のファイルが単一の HDFS ブロック内に保持されるように、HDFS 用に多少修正されています (HDFS ブロック サイズはインストールごとに異なりますが、通常は 64 MB か 128 MB です)。 
 
-Hadoop 上で [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) を使用して一連の複合 XDF ファイルを作成する場合は、inData として `AirDS` のような `RxTextData` データ ソースを指定し、outFile 引数として fileSystem が HDFS ファイル システムに設定された `RxXdfData` データ ソースを指定します。 その後、`RxXdfData` オブジェクトは、後続の R 分析でデータ引数として使用できます。
+Hadoop 上で [rxImport](/machine-learning-server/r-reference/revoscaler/rximport) を使用して一連の複合 XDF ファイルを作成する場合は、inData として `AirDS` のような `RxTextData` データ ソースを指定し、outFile 引数として fileSystem が HDFS ファイル システムに設定された `RxXdfData` データ ソースを指定します。 その後、`RxXdfData` オブジェクトは、後続の R 分析でデータ引数として使用できます。
 
 1. `RxXdfData` オブジェクトを定義します。 RStudio に次のコードを入力します。
 
@@ -298,7 +298,7 @@ Hadoop 上で [rxImport](https://docs.microsoft.com/machine-learning-server/r-re
 
 ### <a name="in-a-spark-context"></a>Spark コンテキストで
 
-分析実行時の効率化のために CSV ファイルを XDF ファイル形式に変換したが、データを元の CSV に戻したい場合は、[rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) を使用します。
+分析実行時の効率化のために CSV ファイルを XDF ファイル形式に変換したが、データを元の CSV に戻したい場合は、[rxDataStep](/machine-learning-server/r-reference/revoscaler/rxdatastep) を使用します。
 
 CSV ファイルのフォルダーを作成するには、まず、ファイル引数としてディレクトリ名を使用して `RxTextData` オブジェクトを作成します。 このオブジェクトは、CSV ファイルを作成するフォルダーを表します。 `rxDataStep` を実行すると、このディレクトリが作成されます。 次に、`rxDataStep` の `outFile` 引数で、この `RxTextData` オブジェクトを指し示します。 作成された各 CSV には、ディレクトリ名に基づいて名前が付けられ、その後に番号が付けられます。
 
@@ -366,4 +366,4 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 このチュートリアルでは、HDInsight Machine Learning service クラスター上で実行されている Apache Spark 内で R 関数を使用する方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure HDInsight Machine Learning service クラスターのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-* [Hadoop 上の Spark 用の R 関数](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)
+* [Hadoop 上の Spark 用の R 関数](/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

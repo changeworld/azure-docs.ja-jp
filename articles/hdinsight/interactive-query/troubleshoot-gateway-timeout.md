@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895049"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547386"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari Hive ビューからクエリを実行するときの例外
 
@@ -54,13 +54,13 @@ HTTP ハンドラー スレッドは迅速にジョブを準備し、`queryid` �
 
 * 外部の Hive メタストアを使用している場合は、DB メトリックを確認し、データベースが過負荷になっていないことを確かめます。 メタストア データベース レイヤーをスケーリングすることを検討してください。
 
-* 並列操作が有効になっていることを確認します (これにより、HTTP ハンドラー スレッドを並列で実行できます)。 値を確認するには、[Apache Ambari](../hdinsight-hadoop-manage-ambari.md) を起動し、 **[Hive]**  >  **[Configs]\(構成\)**  >  **[詳細設定]**  >  **[Custom hive-site]\(カスタム Hive サイト\)** の順に移動します。 `hive.server2.parallel.ops.in.session` の値は `true` にする必要があります。
+* 並列操作が有効になっていることを確認します (これにより、HTTP ハンドラー スレッドを並列で実行できます)。 値を確認するには、 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) を起動し、 **[Hive]**  >  **[Configs]\(構成\)**  >  **[詳細設定]**  >  **[Custom hive-site]\(カスタム Hive サイト\)** の順に移動します。 `hive.server2.parallel.ops.in.session` の値は `true` にする必要があります。
 
 * クラスターの VM SKU が、負荷に対して小さくなりすぎないようにします。 複数のクラスターで作業を分割することを検討してください。 詳細については、「[クラスターの種類の選択](../hdinsight-capacity-planning.md#choose-a-cluster-type)」を参照してください。
 
 * クラスターに Rangers がインストールされている場合は、クエリごとに評価する必要がある Rangers ポリシーが多すぎないかどうかを確認します。 重複しているポリシーまたは不要なポリシーを探してください。
 
-* Ambari の **HiveServer2 ヒープ サイズ**の値を確認します。 **[Hive]**  >  **[Configs]\(構成\)**  >  **[設定]**  >  **[最適化]** に移動します。 値が 10 GB よりも大きいことを確認してください。 必要に応じて調整して、パフォーマンスを最適化します。
+* Ambari の **HiveServer2 ヒープ サイズ** の値を確認します。 **[Hive]**  >  **[Configs]\(構成\)**  >  **[設定]**  >  **[最適化]** に移動します。 値が 10 GB よりも大きいことを確認してください。 必要に応じて調整して、パフォーマンスを最適化します。
 
 * Hive クエリが適切にチューニングされていることを確認します。 詳細については、「[Azure HDInsight での Apache Hive クエリの最適化](../hdinsight-hadoop-optimize-hive-query.md)」を参照してください。
 
@@ -72,4 +72,4 @@ HTTP ハンドラー スレッドは迅速にジョブを準備し、`queryid` �
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

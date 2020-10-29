@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537397"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634285"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>パイプライン アクティビティでの Azure Key Vault シークレットの使用
 
@@ -25,7 +25,7 @@ ms.locfileid: "91537397"
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能は、データ ファクトリのマネージド ID に依存しています。  [データ ファクトリのマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) からのその動作方法について理解し、使用中のデータ ファクトリに ID が関連付けられていることを確認します。
+この機能は、データ ファクトリのマネージド ID に依存しています。  [データ ファクトリのマネージド ID](./data-factory-service-identity.md) からのその動作方法について理解し、使用中のデータ ファクトリに ID が関連付けられていることを確認します。
 
 ## <a name="steps"></a>手順
 
@@ -71,4 +71,4 @@ ms.locfileid: "91537397"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Key Vault を使用して、データ ストアおよび計算のための資格情報を格納する方法については、「[Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)」を参照してください
+Azure Key Vault を使用して、データ ストアおよび計算のための資格情報を格納する方法については、「[Azure Key Vault への資格情報の格納](./store-credentials-in-key-vault.md)」を参照してください

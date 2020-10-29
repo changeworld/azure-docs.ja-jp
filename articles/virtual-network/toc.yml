@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: パブリック IP プレフィックスの管理
               href: manage-public-ip-address-prefix.md
+            - name: パブリック IP アドレスのアップグレード
+              href: virtual-network-public-ip-address-upgrade.md
             - name: NIC の IP アドレスの追加または削除
               href: virtual-network-network-interface-addresses.md
             - name: ルーティング設定

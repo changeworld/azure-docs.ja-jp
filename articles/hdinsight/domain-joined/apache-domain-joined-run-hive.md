@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397829"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544938"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -21,7 +21,7 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Enterprise セキュリティ パッケージを使用している HDInsight クラスター。 [ESP を使用した HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
+* Enterprise セキュリティ パッケージを使用している HDInsight クラスター。 [ESP を使用した HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
 * 企業向け Microsoft 365 アプリ、Office 2016、Office 2013 Professional Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされたワークステーション。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger 管理 UI への接続
@@ -88,9 +88,9 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
  | データ ソース名 | データ ソースに名前を付けます。 |
  | Host | CLUSTERNAME.azurehdinsight.net を入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
  | Port | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
- | データベース | **既定値**を使用します。 |
+ | データベース | **既定値** を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
- | メカニズム | **Azure HDInsight サービス**を選択します。 |
+ | メカニズム | **Azure HDInsight サービス** を選択します。 |
  | HTTP パス | 空白のままにします。 |
  | [ユーザー名] | 「hiveuser1@contoso158.onmicrosoft.com」と入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。 |
  | Password | hiveuser1 のパスワードを入力します。 |
@@ -158,7 +158,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 ## <a name="next-steps"></a>次のステップ
 
-* Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
+* Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
 * ESP での HDInsight クラスターの管理については、「[Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する](apache-domain-joined-manage.md)」をご覧ください。
 * SSH を使用して ESP を含む HDInsight クラスターで Hive クエリを実行する方法については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)」をご覧ください。
 * Hive JDBC を使用して Hive に接続する方法については、[Hive の JDBC ドライバーを使用して Azure HDInsight の Apache Hive に接続する方法](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)に関するページを参照してください。

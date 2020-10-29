@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 43abe6a827af668f2b756e5f00497fbfe1698413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69844a392aa03dc962f8af456996ab51f1adf561
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083238"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547471"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントを使用した Apache Hadoop クラスター
 
@@ -32,13 +32,13 @@ Azure portal で既存のストレージ アカウントを更新するには、
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell コマンドレット [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) の場合、パラメーター `-EnableHttpsTrafficOnly` が `1` に設定されていることを確認してください。
+PowerShell コマンドレット [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) の場合、パラメーター `-EnableHttpsTrafficOnly` が `1` に設定されていることを確認してください。
 
 PowerShell で既存のストレージ アカウントを更新するには、「[PowerShell を使用して安全な転送を要求する](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)」を参照してください。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI コマンド [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) の場合、パラメーター `--https-only` が `true` に設定されていることを確認してください。
+Azure CLI コマンド [az storage account create](/cli/azure/storage/account#az-storage-account-create) の場合、パラメーター `--https-only` が `true` に設定されていることを確認してください。
 
 Azure CLI で既存のストレージ アカウントを更新するには、「[Azure CLI を使用して安全な転送を要求する](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)」を参照してください。
 

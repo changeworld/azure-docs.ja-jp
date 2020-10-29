@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 5fce1a8e2f4dda8ea84cfd66aa9dc13768ab17e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56154f7e5ebd71e1b6580bec55ca57520eb126ff
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077087"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548015"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -64,9 +64,9 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
 5. 利用可能な更新プログラムの一覧に **[Azure Data Lake and Stream Analytic Tools]\(Azure Data Lake および Stream Analytic Tools\)** が含まれている場合は、それを選択します。 次に、 **[更新]** ボタンを選択します。 **[ダウンロードとインストール]** ダイアログ ボックスが表示され、表示されなくなると、Visual Studio によって、 **[Azure Data Lake and Stream Analytic Tools]\(Azure Data Lake および Stream Analytic Tools\)** の拡張機能が更新スケジュールに追加されます。
 
-6. すべての Visual Studio ウィンドウを閉じます。 **VSIX インストーラー**のダイアログ ボックスが表示されます。
+6. すべての Visual Studio ウィンドウを閉じます。 **VSIX インストーラー** のダイアログ ボックスが表示されます。
 
-7. **[ライセンス]** を選択してライセンス条項を読み、 **[閉じる]** を選択して **VSIX インストーラー**のダイアログ ボックスに戻ります。
+7. **[ライセンス]** を選択してライセンス条項を読み、 **[閉じる]** を選択して **VSIX インストーラー** のダイアログ ボックスに戻ります。
 
 8. **[変更]** を選択します。 拡張機能の更新プログラムのインストールが開始されます。 しばらくすると、変更が加えられたことを示すダイアログ ボックスが表示されます。 **[閉じる]** を選択し、Visual Studio を再起動してインストールを完了します。
 
@@ -78,7 +78,7 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 Data Lake Tools for Visual Studio を使用して、HDInsight クラスターへの接続、いくつかの基本的な管理操作の実行、および Hive クエリの実行が可能です。
 
 > [!NOTE]  
-> 汎用の Hadoop クラスターに接続する方法の詳細については、「[How to write and submit Hive queries using Visual Studio](https://blogs.msdn.microsoft.com/xiaoyong/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio/)」(Visual Studio を使用した Hive クエリの書き込みおよび送信方法) を参照してください。
+> 汎用の Hadoop クラスターに接続する方法の詳細については、「[How to write and submit Hive queries using Visual Studio](/archive/blogs/xiaoyong/how-to-write-and-submit-hive-queries-using-visual-studio)」(Visual Studio を使用した Hive クエリの書き込みおよび送信方法) を参照してください。
 
 ### <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 
@@ -90,13 +90,13 @@ Azure サブスクリプションに接続するには:
 
 3. IDE のメニュー バーで、 **[表示]**  >  **[サーバー エクスプローラー]** を選択します。
 
-4. **[サーバー エクスプローラー]** で **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択して認証処理を完了します。 **サーバー エクスプローラー**から **[Azure]**  >  **[HDInsight]** を展開して、既存の HDInsight クラスターの一覧を表示します。
+4. **[サーバー エクスプローラー]** で **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択して認証処理を完了します。 **サーバー エクスプローラー** から **[Azure]**  >  **[HDInsight]** を展開して、既存の HDInsight クラスターの一覧を表示します。
 
 5. クラスターが 1 つもない場合は、Azure portal、Azure PowerShell、または HDInsight SDK を使用して作成します。 詳細については、[HDInsight でのクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。
 
    ![HDInsight クラスター一覧、サーバー エクスプローラー、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png)
 
-6. HDInsight クラスターを展開します。 クラスターには、**Hive データベース**用のノードが含まれています。 また、既定のストレージ アカウント、すべての追加のリンクされたストレージ アカウント、および **Hadoop サービス ログ**。 さらに、エンティティを展開できます。
+6. HDInsight クラスターを展開します。 クラスターには、 **Hive データベース** 用のノードが含まれています。 また、既定のストレージ アカウント、すべての追加のリンクされたストレージ アカウント、および **Hadoop サービス ログ** 。 さらに、エンティティを展開できます。
 
 Azure サブスクリプションに接続した後で、次のタスクを実行できます。
 
@@ -104,7 +104,7 @@ Azure サブスクリプションに接続した後で、次のタスクを実�
 
 Visual Studio から Azure Portal に接続するには:
 
-1. **サーバー エクスプローラー**で、 **[Azure]**  >  **[HDInsight]** を展開し、クラスターを選択します。
+1. **サーバー エクスプローラー** で、 **[Azure]**  >  **[HDInsight]** を展開し、クラスターを選択します。
 
 2. HDInsight クラスターを右クリックし、 **[Azure Portal でのクラスターの管理]** を選択します。
 
@@ -156,7 +156,7 @@ HDInsight クラスターをリンクするには:
 
 Data Lake Tools for Visual Studio を使用して、Hive ジョブの内容を表示することもできます。 Data Lake Tools for Visual Studio は、特定の Hive ジョブを収集し、Yarn ログを表示できます。
 
-**サーバー エクスプローラー**で、 **[Azure]**  >  **[HDInsight]** を選択し、クラスターを選択します。  このノードが、次に進むセクションの**サーバー エクスプローラー**の開始点になります。
+**サーバー エクスプローラー** で、 **[Azure]**  >  **[HDInsight]** を選択し、クラスターを選択します。  このノードが、次に進むセクションの **サーバー エクスプローラー** の開始点になります。
 
 ### <a name="view-hivesampletable"></a>hivesampletable を表示する
 
@@ -250,17 +250,17 @@ Hive ソリューションを作成して実行するには:
 
 1. メニュー バーで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
 
-2. **[新しいプロジェクトの作成]** ウィンドウで、検索ボックスを選択し、「**Hive**」と入力します。 次に **[Hive アプリケーション]** を選択し、 **[次へ]** を選択します。
+2. **[新しいプロジェクトの作成]** ウィンドウで、検索ボックスを選択し、「 **Hive** 」と入力します。 次に **[Hive アプリケーション]** を選択し、 **[次へ]** を選択します。
 
 3. **[新しいプロジェクトの構成]** ウィンドウで、 **[プロジェクト名]** を入力し、プロジェクトの **[場所]** を選択または作成し、 **[作成]** を選択します。
 
     ![新しい Hive アプリケーション、新しいプロジェクトの構成ウィンドウ、HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png)
 
-4. **ソリューション エクスプローラー**で、**Script.hql** をダブルクリックしてスクリプトを開きます。
+4. **ソリューション エクスプローラー** で、 **Script.hql** をダブルクリックしてスクリプトを開きます。
 
 ### <a name="view-job-summary-and-output"></a>ジョブの概要と出力の表示
 
-ジョブの概要は、**バッチ** モードと**対話**モードとで若干異なります。
+ジョブの概要は、 **バッチ** モードと **対話** モードとで若干異なります。
 
 ![Hive ジョブの概要ウィンドウ、バッチと対話モード、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png)
 
@@ -268,7 +268,7 @@ Hive ソリューションを作成して実行するには:
 
 * **バッチ** モードのジョブの詳細については、下部にあるリンクを選択して **[ジョブ クエリ]** 、 **[ジョブ出力]** 、 **[ジョブのログ]** を表示するか、 **[Yarn ログの表示]** に移動します。
 
-* **対話**モードのジョブ詳細については、 **[出力]** ペインおよび **[HiveServer2 出力]** ペインを参照してください。
+* **対話** モードのジョブ詳細については、 **[出力]** ペインおよび **[HiveServer2 出力]** ペインを参照してください。
 
     ![Hive 対話型ジョブの出力、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png)
 
@@ -312,11 +312,11 @@ Hive ジョブを表示するには:
 
 1. メニュー バーで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
 
-2. **[スタート]** ウィンドウで、検索ボックスを選択し、「**Pig**」と入力します。 次に、**Pig Application** を選択し、 **[次へ]** を選択します。
+2. **[スタート]** ウィンドウで、検索ボックスを選択し、「 **Pig** 」と入力します。 次に、 **Pig Application** を選択し、 **[次へ]** を選択します。
 
 3. **[新しいプロジェクトの構成]** ウィンドウで、 **[プロジェクト名]** を入力し、プロジェクトの **[場所]** を選択または作成します。 **[作成]** を選択します。
 
-4. IDE **ソリューション エクスプローラー** ペインで、**Script.pig** をダブルクリックしてスクリプトを開きます。
+4. IDE **ソリューション エクスプローラー** ペインで、 **Script.pig** をダブルクリックしてスクリプトを開きます。
 
 ## <a name="feedback-and-known-issues"></a>フィードバックと既知の問題
 

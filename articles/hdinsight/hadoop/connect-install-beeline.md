@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754958"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547590"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>HDInsight での Apache Beeline に接続するか、ローカルでインストールする
 
@@ -104,7 +104,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="install-beeline-client"></a>Beeline クライアントをインストールする
 
-Beeline はヘッド ノードに含まれていますが、ローカルにインストールしたい場合があります。  ローカル コンピューターにインストールするための手順は、[Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10)に基づいています。
+Beeline はヘッド ノードに含まれていますが、ローカルにインストールしたい場合があります。  ローカル コンピューターにインストールするための手順は、[Linux 用 Windows サブシステム](/windows/wsl/install-win10)に基づいています。
 
 1. パッケージ リストを更新します。 ご利用の Bash シェルで次のコマンドを入力します。
 
@@ -128,7 +128,7 @@ Beeline はヘッド ノードに含まれていますが、ローカルにイ�
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        次に、**Ctrl + X** キー、**Y** キー、Enter キーの順に押します。
+        次に、 **Ctrl + X** キー、 **Y** キー、Enter キーの順に押します。
 
 1. Hadoop と Beeline のアーカイブをダウンロードし、次のコマンドを入力します。
 
@@ -144,7 +144,7 @@ Beeline はヘッド ノードに含まれていますが、ローカルにイ�
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. bashrc ファイルをさらに修正します。 アーカイブがアンパックされた場所へのパスを識別する必要があります。 [Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10) を使用し、手順に正確に従った場合、パスは `/mnt/c/Users/user/` になります。ここで、`user` はユーザー名です。
+1. bashrc ファイルをさらに修正します。 アーカイブがアンパックされた場所へのパスを識別する必要があります。 [Linux 用 Windows サブシステム](/windows/wsl/install-win10) を使用し、手順に正確に従った場合、パスは `/mnt/c/Users/user/` になります。ここで、`user` はユーザー名です。
 
     1. ファイルを開きます: `nano ~/.bashrc`
 
@@ -156,7 +156,7 @@ Beeline はヘッド ノードに含まれていますが、ローカルにイ�
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. 次に、**Ctrl + X** キー、**Y** キー、Enter キーの順に押します。
+    1. 次に、 **Ctrl + X** キー、 **Y** キー、Enter キーの順に押します。
 
 1. ご利用の Bash セッションを閉じてから再度開きます。
 

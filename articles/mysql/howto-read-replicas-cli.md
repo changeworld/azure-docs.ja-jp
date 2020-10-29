@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74e62c39295d36132abdce0abc033162fa22cb64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 747b8bc1abbf19c861e180faf17e2fa1a143a237
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531634"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546315"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MySQL の読み取りレプリカを作成および管理する方法
 
@@ -23,7 +23,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 ### <a name="prerequisites"></a>前提条件
 
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)
 - ソース サーバーとして使用される [Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-portal.md)。 
 
 > [!IMPORTANT]
@@ -42,9 +42,9 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 `az mysql server replica create` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
+| resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
 | name | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 | source-server | mydemoserver | レプリケート元の既存のソース サーバーの名前または ID。 |
 
@@ -71,9 +71,9 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 `az mysql server replica list` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
+| resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
 | server-name | mydemoserver | ソース サーバーの名前または ID。 |
 
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
@@ -89,9 +89,9 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 `az mysql server replica stop` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  レプリカ サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  レプリカ サーバーが存在するリソース グループ。  |
 | name | mydemoreplicaserver | レプリケーションを停止するレプリカ サーバーの名前。 |
 
 ### <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します

@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 97d899d73359cc45daf88940b815ed262c3b4766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290839"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548032"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight の保存データの二重暗号化
 
@@ -23,7 +23,7 @@ ms.locfileid: "89290839"
 
 ## <a name="introduction"></a>はじめに
 
-Azure のマネージド ディスクのロールは、主にデータ ディスク、OS ディスク、一時ディスクの 3 つです。 マネージド ディスクの種類の詳細については、「[Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)」を参照してください。 
+Azure のマネージド ディスクのロールは、主にデータ ディスク、OS ディスク、一時ディスクの 3 つです。 マネージド ディスクの種類の詳細については、「[Azure マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)」を参照してください。 
 
 HDInsight では、次の複数の種類の暗号化が 2 つの異なるレイヤーでサポートされています。
 
@@ -35,8 +35,8 @@ HDInsight では、次の複数の種類の暗号化が 2 つの異なるレイ�
 
 |クラスターの種類 |OS Disk（マネージド ディスク） |データ ディスク（マネージド ディスク） |一時データ ディスク (ローカル SSD) |
 |---|---|---|---|
-|Kafka、高速書き込みが可能な HBase|レイヤー 1:[SSE での暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) (既定)|レイヤー 1:[SSE での暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) (既定)、レイヤー 2:CMK での保存時の暗号化 (オプション)|レイヤー 1:PMK を使用したホストでの暗号化 (オプション)、レイヤー 2:CMK での保存時の暗号化 (オプション)|
-|その他すべてのクラスター (高速書き込みのない Spark、Interactive、Hadoop、HBase)|レイヤー 1:[SSE での暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) (既定)|該当なし|レイヤー 1:PMK を使用したホストでの暗号化 (オプション)、レイヤー 2:CMK での保存時の暗号化 (オプション)|
+|Kafka、高速書き込みが可能な HBase|レイヤー 1:[SSE での暗号化](../virtual-machines/managed-disks-overview.md#encryption) (既定)|レイヤー 1:[SSE での暗号化](../virtual-machines/managed-disks-overview.md#encryption) (既定)、レイヤー 2:CMK での保存時の暗号化 (オプション)|レイヤー 1:PMK を使用したホストでの暗号化 (オプション)、レイヤー 2:CMK での保存時の暗号化 (オプション)|
+|その他すべてのクラスター (高速書き込みのない Spark、Interactive、Hadoop、HBase)|レイヤー 1:[SSE での暗号化](../virtual-machines/managed-disks-overview.md#encryption) (既定)|該当なし|レイヤー 1:PMK を使用したホストでの暗号化 (オプション)、レイヤー 2:CMK での保存時の暗号化 (オプション)|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した保存時の暗号化
 
@@ -73,15 +73,15 @@ Key Vault に対して認証するユーザー割り当てのマネージド ID 
 
 Key Vault を作成します。 具体的な手順については、「[ Azure Key Vault の作成](../key-vault/secrets/quick-create-portal.md) 」をご参照ください。
 
-HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キー コンテナーでは、 **論理的な削除** を有効にする必要があります。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
+HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キー コンテナーでは、 **論理的な削除** を有効にする必要があります。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」をご覧ください。
 
 ### <a name="create-key"></a>キーを作成する
 
-1. 新しいキー コンテナーから、 **設定** > **キー** >  **+ 生成/インポート**に移動します。
+1. 新しいキー コンテナーから、 **設定** > **キー** >  **+ 生成/インポート** に移動します。
 
     ![Azure Key Vault で新しいキーを生成する](./media/disk-encryption/create-new-key.png "Azure Key Vault で新しいキーを生成する")
 
-1. 名前を入力し、 **作成**を選択します。 **RSA**のデフォルトの **キー タイプ** を維持します。
+1. 名前を入力し、 **作成** を選択します。 **RSA** のデフォルトの **キー タイプ** を維持します。
 
     ![キー名を生成する](./media/disk-encryption/create-key.png "キー名の生成")
 
@@ -89,13 +89,13 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
     ![キー コンテナーのキーの一覧](./media/disk-encryption/key-vault-key-list.png)
 
-1. バージョンを選択すると、 **キー バージョン** ページが開きます。 HDInsight クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子**をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
+1. バージョンを選択すると、 **キー バージョン** ページが開きます。 HDInsight クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子** をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
 
     ![キー識別子を取得する](./media/disk-encryption/get-key-identifier.png)
 
 ### <a name="create-access-policy"></a>アクセス ポリシーの作成
 
-1. 新しいキー コンテナーから、 **設定** > **アクセス ポリシー** >  **+ アクセス ポリシーの追加**に移動します。
+1. 新しいキー コンテナーから、 **設定** > **アクセス ポリシー** >  **+ アクセス ポリシーの追加** に移動します。
 
     ![新しい Azure Key Vault アクセス ポリシーを作成する](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,8 +103,8 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
     |プロパティ |説明|
     |---|---|
-    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除**してから、 **キーををラップ**します。|
-    |シークレットのアクセス許可|**取得**、 **設定**、 **削除**を選択します。|
+    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除** してから、 **キーををラップ** します。|
+    |シークレットのアクセス許可|**取得** 、 **設定** 、 **削除** を選択します。|
     |プリンシパルの選択|以前に作成したユーザー割り当てマネージド ID を選択します。|
 
     ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -121,13 +121,13 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 #### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-クラスター作成時、キーのバージョンも含む、完全 **キー識別子**を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
+クラスター作成時、キーのバージョンも含む、完全 **キー識別子** を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
 
 ![新しいクラスターを作成する](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)」をご参照ください。
+次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](/cli/azure/hdinsight#az-hdinsight-create)」をご参照ください。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +141,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 
-次の例では、Azure Resource Manager テンプレートを使用して、ディスク暗号化が有効になっている新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「[ARM テンプレートとは](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)」を参照してください。
+次の例では、Azure Resource Manager テンプレートを使用して、ディスク暗号化が有効になっている新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「[ARM テンプレートとは](../azure-resource-manager/templates/overview.md)」を参照してください。
 
 この例では、PowerShell を使用してテンプレートを呼び出します。
 
@@ -365,7 +365,7 @@ HDInsight クラスターで使用される暗号化キーを、作成後に変�
 
 #### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、既存の HDInsight クラスターでディスク暗号化キーをローテーションする方法を示します。 詳細については、「 [Azure CLI az hdinsight rotate-disk-encryption-key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)」をご参照ください。
+次の例では、既存の HDInsight クラスターでディスク暗号化キーをローテーションする方法を示します。 詳細については、「 [Azure CLI az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key)」をご参照ください。
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -392,13 +392,13 @@ Hdinsight は、HDInsight クラスターに関連するマネージド ID を�
 
 **クラスターがキー　コンテナーまたはキーにアクセスできなくなった場合はどうなりますか。**
 
-クラスターがキーへのアクセスを失うと、Apache Ambari ポータルに警告が表示されます。 この状態では、**キーの変更**操作は失敗します。 キー アクセスが復元されると、Ambari の警告が消え、キーの交換などの操作を正常に実行できます。
+クラスターがキーへのアクセスを失うと、Apache Ambari ポータルに警告が表示されます。 この状態では、 **キーの変更** 操作は失敗します。 キー アクセスが復元されると、Ambari の警告が消え、キーの交換などの操作を正常に実行できます。
 
 ![キー アクセス Ambari アラート](./media/disk-encryption/ambari-alert.png)
 
 **キーを削除した場合、どのようにしてクラスターを復元しますか?**
 
-「論理的な削除」対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)」に関するページを参照してください。
+「論理的な削除」対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key#az-keyvault-key-recover)」に関するページを参照してください。
 
 
 **クラスターがスケールアップされた場合、新しいノードでは、カスタマー マネージド キーはシームレスにサポートされますか?**
@@ -420,7 +420,7 @@ HDInsight のカスタマー マネージド キーは、すべてのパブリ�
 
 :::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="ホストでの暗号化の有効化。":::
 
-このオプションでは、PMK を使用し、HDInsight の VM の一時データ ディスクに[ホストでの暗号化](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md)を有効にします。 ホストでの暗号化は、[限られたリージョンの特定の VM SKU でのみサポートされています](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md)。HDInsight では、[このノード構成と SKU](./hdinsight-supported-node-configuration.md) がサポートされています。
+このオプションでは、PMK を使用し、HDInsight の VM の一時データ ディスクに[ホストでの暗号化](../virtual-machines/disks-enable-host-based-encryption-portal.md)を有効にします。 ホストでの暗号化は、[限られたリージョンの特定の VM SKU でのみサポートされています](../virtual-machines/disks-enable-host-based-encryption-portal.md)。HDInsight では、[このノード構成と SKU](./hdinsight-supported-node-configuration.md) がサポートされています。
 
 お使いの HDInsight クラスターに適切な VM サイズを確認するには、「[Azure HDInsight クラスターの適切な VM サイズの選択](hdinsight-selecting-vm-size.md)」を参照してください。 ホストでの暗号化が有効になっている場合、Zookeeper ノードでの既定の VM SKU は DS2V2 になります。
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044643"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544955"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 
@@ -45,7 +45,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache HBase クラス�
 
 ## <a name="create-domain-users"></a>ドメイン ユーザーの作成
 
-**sales_user1** および **marketing_user1** ドメイン ユーザーを作成する方法の詳細については、[Enterprise セキュリティ パッケージでの HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)に関するページを参照してください。 運用シナリオでは、ドメイン ユーザーは Active Directory テナントに含まれます。
+**sales_user1** および **marketing_user1** ドメイン ユーザーを作成する方法の詳細については、 [Enterprise セキュリティ パッケージでの HDInsight クラスターの作成](./apache-domain-joined-configure-using-azure-adds.md)に関するページを参照してください。 運用シナリオでは、ドメイン ユーザーは Active Directory テナントに含まれます。
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>HBase テーブルの作成とサンプル データのインポート
 
@@ -145,7 +145,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 ## <a name="test-the-ranger-policies"></a>Ranger ポリシーのテスト
 
-構成された Ranger ポリシーに基づいて、**sales_user1** は、`Name` と `Contact` の両方の列ファミリの列のすべてのデータを表示できます。 **marketing_user1** は、`Contact` 列ファミリのデータのみを表示できます。
+構成された Ranger ポリシーに基づいて、 **sales_user1** は、`Name` と `Contact` の両方の列ファミリの列のすべてのデータを表示できます。 **marketing_user1** は、`Contact` 列ファミリのデータのみを表示できます。
 
 ### <a name="access-data-as-sales_user1"></a>sales_user1 としてデータにアクセスする
 
@@ -191,7 +191,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 ### <a name="access-data-as-marketing_user1"></a>marketing_user1 としてデータにアクセスする
 
-1. クラスターへの新しい SSH 接続を開きます。 次のコマンドを使用して、**marketing_user1** としてサインインします。
+1. クラスターへの新しい SSH 接続を開きます。 次のコマンドを使用して、 **marketing_user1** としてサインインします。
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -236,7 +236,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. 上部の**検索**ボックスに「**HDInsight**」と入力します。 
+2. 上部の **検索** ボックスに「 **HDInsight** 」と入力します。 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。

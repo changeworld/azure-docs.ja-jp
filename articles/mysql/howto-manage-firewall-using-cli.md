@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb7f8547419b45314ad044b41957a53085cdbe13
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503057"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546400"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MySQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -21,18 +21,18 @@ ms.locfileid: "87503057"
 仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure CLI を使用した仮想ネットワーク サービス エンドポイントと規則の作成と管理](howto-manage-vnet-using-cli.md)の詳細を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
-* [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* [Azure CLI のインストール](/cli/azure/install-azure-cli)。
 * [Azure Database for MySQL サーバーとデータベース](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>ファイアウォール規則のコマンド:
 Azure CLI の **az mysql server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create**:Azure MySQL サーバーのファイアウォール規則を作成します。
-- **delete**:Azure MySQL サーバーのファイアウォール規則を削除します。
-- **list**:Azure MySQL サーバーのファイアウォール規則を一覧表示します。
-- **show**:Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
-- **update**:Azure MySQL サーバーのファイアウォール規則を更新します。
+- **create** :Azure MySQL サーバーのファイアウォール規則を作成します。
+- **delete** :Azure MySQL サーバーのファイアウォール規則を削除します。
+- **list** :Azure MySQL サーバーのファイアウォール規則を一覧表示します。
+- **show** :Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
+- **update** :Azure MySQL サーバーのファイアウォール規則を更新します。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Azure にサインインして Azure Database for MySQL サーバーを一覧表示する
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。

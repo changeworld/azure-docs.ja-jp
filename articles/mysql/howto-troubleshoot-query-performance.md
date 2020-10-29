@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0725de878836e415695d307b68db43802d9b5c2f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83836126"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545856"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>EXPLAIN を使用して Azure Database for MySQL でのクエリのパフォーマンスをプロファイリングする方法
 **EXPLAIN** は、クエリを最適化するための便利なツールです。 EXPLAIN ステートメントを使うと、SQL ステートメントの実行状況に関する情報を取得できます。 EXPLAIN ステートメントを実行したときの出力の例を次に示します。
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-この例からわかるように、*key* の値が NULL になっています。 この出力は、MySQL がクエリ用に最適化されたインデックスを見つけることができず、フル テーブル スキャンを実行していることを意味します。 **ID** 列にインデックスを追加することで、このクエリを最適化してみます。
+この例からわかるように、 *key* の値が NULL になっています。 この出力は、MySQL がクエリ用に最適化されたインデックスを見つけることができず、フル テーブル スキャンを実行していることを意味します。 **ID** 列にインデックスを追加することで、このクエリを最適化してみます。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -54,10 +54,10 @@ possible_keys: id
 ```
 
 新しい EXPLAIN では、MySQL がインデックスを使って行数を 1 に制限するようになったため、検索時間が大幅に短縮されたことが示されています。
- 
+ 
 ## <a name="covering-index"></a>カバリング インデックス
 カバリング インデックスは、データ テーブルからの値の取得を減らすため、インデックスのクエリのすべての列で構成されます。 ここでは、次のような **GROUP BY** ステートメントについて説明します。
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -75,11 +75,11 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-出力からわかるように、適切なインデックスを利用できないため、MySQL はインデックスを使っていません。 また、*Using temporary; Using file sort* と表示されていますが、これは MySQL が一時テーブルを作成して **GROUP BY** 句を満たしていることを意味します。
- 
+出力からわかるように、適切なインデックスを利用できないため、MySQL はインデックスを使っていません。 また、 *Using temporary; Using file sort* と表示されていますが、これは MySQL が一時テーブルを作成して **GROUP BY** 句を満たしていることを意味します。
+ 
 **c2** 列だけにインデックスを作成しても違いはなく、MySQL はまだ一時テーブルを作成する必要があります。
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -97,9 +97,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-この場合、**c1** と **c2** の両方に対して **カバリング インデックス** を作成することができ、それによりインデックスに **c2** の値を直接追加してさらにデータの参照を減らすことができます。
+この場合、 **c1** と **c2** の両方に対して **カバリング インデックス** を作成することができ、それによりインデックスに **c2** の値を直接追加してさらにデータの参照を減らすことができます。
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,7 +120,7 @@ possible_keys: covered
 上の EXPLAIN が示すように、MySQL はカバリング インデックスを使うことで、一時テーブルを作成しなくて済むようになっています。 
 
 ## <a name="combined-index"></a>結合インデックス
-結合インデックスは、複数の列の値で構成され、インデックス付き列の連結値により並べ替えられた行の配列と見なすことができます。 この方法は、**GROUP BY** ステートメントで役に立ちます。
+結合インデックスは、複数の列の値で構成され、インデックス付き列の連結値により並べ替えられた行の配列と見なすことができます。  この方法は、 **GROUP BY** ステートメントで役に立ちます。
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,9 +139,9 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MySQL の "*ファイル並べ替え*" 操作の実行はかなり遅く、多くの行を並べ替える必要があるときは特にそうです。 このクエリを最適化するには、並べ替えられる両方の列に対して結合インデックスを作成します。
+MySQL の " *ファイル並べ替え* " 操作の実行はかなり遅く、多くの行を並べ替える必要があるときは特にそうです。 このクエリを最適化するには、並べ替えられる両方の列に対して結合インデックスを作成します。
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -160,11 +160,11 @@ possible_keys: NULL
 ```
 
 EXPLAIN では、MySQL が結合インデックスを使うようになり、インデックスが既に並べ替えられているので、さらに並べ替えを行う必要がないことが示されています。
- 
+ 
 ## <a name="conclusion"></a>まとめ
- 
+ 
 EXPLAIN と異なる種類のインデックスを使うと、パフォーマンスを大幅に向上させることができます。 テーブルにインデックスを作成しても、必ずしも MySQL がそれを使ってクエリを実行できるわけではありません。 常に、EXPLAIN を使って想定を検証し、インデックスを使ってクエリを最適化する必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ
-- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。
+- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[Microsoft Q&A の質問ページ](/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

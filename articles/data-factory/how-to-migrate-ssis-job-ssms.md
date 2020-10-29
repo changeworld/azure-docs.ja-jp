@@ -11,20 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984915"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634608"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS を使用して SQL Server エージェント ジョブを ADF に移行する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-[オンプレミスの SQL Server Integration Services (SSIS) ワークロードを ADF の SSIS に移行する](scenario-ssis-migration-overview.md)ときは、SSIS パッケージが移行された後で、SQL Server Management Studio (SSMS) の **SSIS ジョブ移行ウィザード**を使用して、SQL Server Integration Services パッケージのジョブ ステップの種類で、Azure Data Factory (ADF) のパイプライン、アクティビティ、スケジュール トリガーへの、SQL Server エージェント ジョブの一括移行を実行できます。
+[オンプレミスの SQL Server Integration Services (SSIS) ワークロードを ADF の SSIS に移行する](scenario-ssis-migration-overview.md)ときは、SSIS パッケージが移行された後で、SQL Server Management Studio (SSMS) の **SSIS ジョブ移行ウィザード** を使用して、SQL Server Integration Services パッケージのジョブ ステップの種類で、Azure Data Factory (ADF) のパイプライン、アクティビティ、スケジュール トリガーへの、SQL Server エージェント ジョブの一括移行を実行できます。
 
-一般に、該当するジョブ ステップの種類で選択した SQL Agent ジョブに対し、**SSIS ジョブ移行ウィザード**で次のことを実行できます。
+一般に、該当するジョブ ステップの種類で選択した SQL Agent ジョブに対し、 **SSIS ジョブ移行ウィザード** で次のことを実行できます。
 
 - オンプレミスの SSIS パッケージの場所を、パッケージの移行先にマップします。これには ADF の SSIS からアクセスできます。
     > [!NOTE]
@@ -34,14 +34,14 @@ ms.locfileid: "90984915"
 |SQL Agent ジョブ オブジェクト  |ADF リソース  |Notes|
 |---------|---------|---------|
 |SQL Agent ジョブ|pipeline     |パイプラインの名前は *Generated for \<job name>* になります。 <br> <br> 組み込みのエージェントジョブには適用されません。 <li> SSIS サーバー メンテナンス ジョブ <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
-|SSIS ジョブ ステップ|SSIS パッケージの実行アクティビティ|<li> アクティビティの名前は \<step name> になります。 <li> ジョブ ステップで使用されるプロキシ アカウントは、このアクティビティの Windows 認証として移行されます。 <li> ジョブ ステップで定義されている、 *[32 ビット ランタイムを使用する]* を除く *[実行オプション]* は、移行時に無視されます。 <li> ジョブ ステップで定義されている "*検証*" は、移行時に無視されます。|
+|SSIS ジョブ ステップ|SSIS パッケージの実行アクティビティ|<li> アクティビティの名前は \<step name> になります。 <li> ジョブ ステップで使用されるプロキシ アカウントは、このアクティビティの Windows 認証として移行されます。 <li> ジョブ ステップで定義されている、 *[32 ビット ランタイムを使用する]* を除く *[実行オプション]* は、移行時に無視されます。 <li> ジョブ ステップで定義されている " *検証* " は、移行時に無視されます。|
 |schedule      |スケジュール トリガー        |スケジュール トリガーの名前は *Generated for \<schedule name>* になります。 <br> <br> SQL Agent ジョブ スケジュールの以下のオプションは、移行時に無視されます。 <li> 第 2 レベルの間隔。 <li> *[SQL Server エージェントの開始時に自動的に開始]* <li> *[CPU がアイドル状態になったときに開始]* <li> *[平日]* と *[土日]* <time zone> <br> SQL Agent ジョブ スケジュールが ADF スケジュール トリガーに移行された後の相違点は次のとおりです。 <li> ADF スケジュール トリガーの後続の実行が、先行してトリガーされた実行の実行状態に依存していません。 <li> ADF スケジュール トリガーの繰り返し構成は、SQL Agent ジョブの [一日のうちの頻度] とは異なります。|
 
-- ローカル出力フォルダーに Azure Resource Manager (ARM) テンプレートを生成し、データ ファクトリに直接、または後ほど手動で配置します。 ADF Resource Manager テンプレートの詳細については、「[Microsoft.DataFactory リソースの種類](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)」を参照してください。
+- ローカル出力フォルダーに Azure Resource Manager (ARM) テンプレートを生成し、データ ファクトリに直接、または後ほど手動で配置します。 ADF Resource Manager テンプレートの詳細については、「[Microsoft.DataFactory リソースの種類](/azure/templates/microsoft.datafactory/allversions)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事で説明する機能には、SQL Server Management Studio バージョン 18.5 以降が必要になります。 最新バージョンの SSMS を入手するには、「[SQL Server Management Studio (SSMS) のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)」を参照してください。
+この記事で説明する機能には、SQL Server Management Studio バージョン 18.5 以降が必要になります。 最新バージョンの SSMS を入手するには、「[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)」を参照してください。
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS ジョブを ADF に移行する
 
@@ -60,14 +60,14 @@ ms.locfileid: "90984915"
 ![スクリーンショットには、[Map SSIS Package and Configuration Paths]\(SSIS パッケージと構成パスのマップ\) ページが示されています。ここではマッピングを追加できます。](media/how-to-migrate-ssis-job-ssms/step2.png)
 ![スクリーンショットには、[Map SSIS Package and Configuration Paths]\(SSIS パッケージと構成パスのマップ\) ページが示されています。ここでは、ソースと宛先のフォルダー パスを更新できます。](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
-1. 移行する適切なジョブを選択し、対応する "*SSIS パッケージの実行アクティビティ*" の設定を構成します。
+1. 移行する適切なジョブを選択し、対応する " *SSIS パッケージの実行アクティビティ* " の設定を構成します。
 
-    - *[既定の設定]* は、既定で選択されるすべてのステップに適用されます。 各プロパティの詳細については、パッケージの場所が "*ファイル システム (パッケージ)* " のときの [SSIS パッケージの実行アクティビティ](how-to-invoke-ssis-package-ssis-activity.md)の *[設定] タブ*を参照してください。
+    - *[既定の設定]* は、既定で選択されるすべてのステップに適用されます。 各プロパティの詳細については、パッケージの場所が " *ファイル システム (パッケージ)* " のときの [SSIS パッケージの実行アクティビティ](how-to-invoke-ssis-package-ssis-activity.md)の *[設定] タブ* を参照してください。
     ![スクリーンショットには、[Select SSIS Jobs]\(SSIS ジョブの選択\) ページが示されています。ここでは、対応する実行済み SSIS パッケージ アクティビティの設定を構成できます。](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - *[Step Setting]\(ステップの設定\)* では、選択したステップの設定を構成します。
         
         **[Apply Default Setting]\(既定の設定を適用\)** : 既定で選択されています。 選択したステップのみの設定を構成するには、オフにします。  
-        他のプロパティの詳細については、パッケージの場所が "*ファイル システム (パッケージ)* " のときの [SSIS パッケージの実行アクティビティ](how-to-invoke-ssis-package-ssis-activity.md)の *[設定] タブ*を参照してください。
+        他のプロパティの詳細については、パッケージの場所が " *ファイル システム (パッケージ)* " のときの [SSIS パッケージの実行アクティビティ](how-to-invoke-ssis-package-ssis-activity.md)の *[設定] タブ* を参照してください。
     ![スクリーンショットには、[Select SSIS Jobs]\(SSIS ジョブの選択\) ページが示されています。ここでは、既定の設定を適用できます。](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. ARM テンプレートを生成してデプロイします。

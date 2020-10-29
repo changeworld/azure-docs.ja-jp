@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 04/16/2020
+ms.date: 10/19/2020
 ms.author: tamram
-ms.openlocfilehash: f2e18b060aabcb849fb8e17722c530d199ebdbb8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bf9d6eb68536588b35df93e13b04841d7868d31
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88067769"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547157"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -35,7 +35,7 @@ Azure Portal でコンテナーを作成するには、次の手順に従いま�
 5. コンテナーにパブリック アクセスのレベルを設定します。 既定のレベルは **[ プライベート (匿名アクセスなし)]** です。
 6. **[OK]** を選択してコンテナーを作成します。
 
-    ![Azure Portal でコンテナーを作成する方法を示したスクリーンショット](media/storage-quickstart-blobs-portal/create-container.png)
+    :::image type="content" source="media/storage-quickstart-blobs-portal/create-container.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
 
 ## <a name="upload-a-block-blob"></a>ブロック BLOB をアップロードする
 
@@ -45,9 +45,9 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 
 1. Azure Portal で、前のセクションで作成したコンテナーに移動します。
 1. コンテナーを選択して、それに含まれている BLOB の一覧を表示します。 このコンテナーは新しいため、BLOB はまだ含まれていません。
-1. **[アップロード]** ボタンを選択してアップロード ブレードを開き、ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけます。 必要に応じて**詳細**セクションを展開し、アップロード操作に関する他の設定を構成することができます。
+1. **[アップロード]** ボタンを選択してアップロード ブレードを開き、ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけます。 必要に応じて **詳細** セクションを展開し、アップロード操作に関する他の設定を構成することができます。
 
-    ![ローカル ドライブから BLOB をアップロードする方法を示したスクリーン ショット](media/storage-quickstart-blobs-portal/upload-blob.png)
+    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
 
 1. **[アップロード]** ボタンを選択して、BLOB をアップロードします。
 1. この方法で、希望する数の BLOB をアップロードします。 これで新しい BLOB がコンテナー内で一覧表示されていることを確認できます。
@@ -59,14 +59,19 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 1. 前のセクションでアップロードした BLOB の一覧に移動します。
 1. ダウンロードする BLOB を右クリックし、 **[ダウンロード]** を選択します。
 
-    ![BLOB をダウンロードする方法を示すスクリーンショット](media/storage-quickstart-blobs-portal/download-blob.png)
+    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
 
 ## <a name="delete-a-block-blob"></a>ブロック BLOB を削除する
 
-ブロック BLOB をダウンロードして、ブラウザーで表示したり、ローカル ファイル システムに保存したりできます。 ブロック BLOB をダウンロードするには、次の手順に従います。
+Azure portal で 1 つ以上の BLOB を削除するには、次の手順に従います。
 
-1. 前のセクションでアップロードした BLOB の一覧に移動します。
-1. 削除する BLOB を選択し、上部の操作バーの **[削除]** を選択します。
+1. Azure portal でコンテナーに移動します。
+1. コンテナー内の BLOB の一覧を表示します。
+1. チェック ボックスを使用して、一覧から 1 つ以上の BLOB を選択します。
+1. 選択した BLOB を削除するには、 **[削除]** ボタンを選択します。
+1. ダイアログで、削除を確認し、BLOB スナップショットも削除するかどうかを指定します。
+
+:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -81,7 +86,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure portal を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
+このクイックスタートでは、Azure portal を使用して、コンテナーを作成して BLOB をアップロードする方法を学習しました。 Web アプリから BLOB ストレージを操作する方法の詳細については、ストレージ アカウントへのイメージのアップロード方法を示すチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Blob Storage の操作方法](storage-dotnet-how-to-use-blobs.md)
+> [チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする](storage-upload-process-images.md)

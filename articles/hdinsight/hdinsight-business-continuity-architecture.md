@@ -8,12 +8,12 @@ keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207582"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547029"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight のビジネス継続性アーキテクチャ
 
@@ -58,7 +58,7 @@ Hive のイベントベースのレプリケーションは、プライマリ �
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
 
-Hive レプリケーションとコード サンプルの詳細については、[Azure HDInsight クラスターでの Apache Hive レプリケーション](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication)に関する記事を参照してください。
+Hive レプリケーションとコード サンプルの詳細については、[Azure HDInsight クラスターでの Apache Hive レプリケーション](./interactive-query/apache-hive-replication.md)に関する記事を参照してください。
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -97,7 +97,7 @@ HDInsight でネイティブに提供されるものを超える顧客固有の�
 
 HBase エクスポートと HBase レプリケーションは、HDInsight HBase クラスター間で事業継続性を実現するための一般的な方法です。
 
-HBase エクスポートは、HBase エクスポート ユーティリティを使用して、プライマリ HBase クラスターからその基になる Azure Data Lake Storage Gen 2 ストレージにテーブルをエクスポートするバッチ レプリケーション プロセスです。 エクスポートされたデータには、セカンダリ HBase クラスターからアクセスして、テーブル (セカンダリにあらかじめ存在している必要があります) にインポートすることができます。 HBase のエクスポートはテーブル レベルの細かさを提供しますが、増分更新の場合、エクスポート オートメーション エンジンによって、各実行に含まれる増分行の範囲が制御されます。 詳細については、[HDInsight の HBase バックアップおよびレプリケーション](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import)に関するページを参照してください。
+HBase エクスポートは、HBase エクスポート ユーティリティを使用して、プライマリ HBase クラスターからその基になる Azure Data Lake Storage Gen 2 ストレージにテーブルをエクスポートするバッチ レプリケーション プロセスです。 エクスポートされたデータには、セカンダリ HBase クラスターからアクセスして、テーブル (セカンダリにあらかじめ存在している必要があります) にインポートすることができます。 HBase のエクスポートはテーブル レベルの細かさを提供しますが、増分更新の場合、エクスポート オートメーション エンジンによって、各実行に含まれる増分行の範囲が制御されます。 詳細については、[HDInsight の HBase バックアップおよびレプリケーション](./hbase/apache-hbase-backup-replication.md#export-then-import)に関するページを参照してください。
 
 HBase レプリケーションでは、完全に自動化された方法で HBase クラスター間の凖リアルタイム レプリケーションが使用されます。 レプリケーションはテーブル レベルで実行されます。 すべてのテーブル、あるいは特定のテーブルをレプリケーションの対象にすることができます。 HBase レプリケーションは結果整合性です。つまり、プライマリ リージョンのテーブルに対する最新の編集が、即座にすべてのセカンダリで利用できるとは限らないということです。 セカンダリは、結果的にプライマリと整合することが保証されています。 HBase レプリケーションは、以下の場合に、2 つ以上の HDInsight HBase クラスター間で設定できます。
 
@@ -105,9 +105,9 @@ HBase レプリケーションでは、完全に自動化された方法で HBas
 * プライマリとセカンダリが、同じリージョン内の異なるピアリングされた VNet に存在している。
 * プライマリとセカンダリが、異なるリージョン内の、異なるピアリングされた VNet に存在している。
 
-詳細については、「[Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication)」を参照してください。
+詳細については、「[Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する](./hbase/apache-hbase-replication.md)」を参照してください。
 
-HBase クラスターのバックアップを実行するには、[hbase フォルダのコピー](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder)、[テーブルのコピー](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables)、[スナップショット](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots)など、他にもいくつかの方法があります。
+HBase クラスターのバックアップを実行するには、[hbase フォルダのコピー](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder)、[テーブルのコピー](./hbase/apache-hbase-backup-replication.md#copy-tables)、[スナップショット](./hbase/apache-hbase-backup-replication.md#snapshots)など、他にもいくつかの方法があります。
 
 ### <a name="hbase-rpo--rto"></a>HBase の RPO と RTO
 
@@ -147,7 +147,7 @@ HBase レプリケーションは、次の 3 つのモードで設定できま�
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-複数のリージョンにわたる可用性を提供するため、HDInsight 4.0 では Kafka MirrorMaker がサポートされています。これを使用すると、別のリージョンでプライマリ Kafka クラスターのセカンダリ レプリカを維持することができます。 MirrorMaker は、プライマリ クラスター内の特定のトピックから消費し、セカンダリ内の同じ名前のトピックへ生成する、大まかなコンシューマーとプロデューサーのペアとして機能します。 MirrorMaker を使用した高可用性ディザスター リカバリーのためのクラスター間レプリケーションは、プロデューサーとコンシューマーをレプリカ クラスターにフェールオーバーさせる必要があることを前提にしています。 詳細については、「[MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring)」を参照してください
+複数のリージョンにわたる可用性を提供するため、HDInsight 4.0 では Kafka MirrorMaker がサポートされています。これを使用すると、別のリージョンでプライマリ Kafka クラスターのセカンダリ レプリカを維持することができます。 MirrorMaker は、プライマリ クラスター内の特定のトピックから消費し、セカンダリ内の同じ名前のトピックへ生成する、大まかなコンシューマーとプロデューサーのペアとして機能します。 MirrorMaker を使用した高可用性ディザスター リカバリーのためのクラスター間レプリケーションは、プロデューサーとコンシューマーをレプリカ クラスターにフェールオーバーさせる必要があることを前提にしています。 詳細については、「[MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする](./kafka/apache-kafka-mirroring.md)」を参照してください
 
 レプリケーションが開始された時点のトピックの有効期間によっては、MirrorMaker トピックのレプリケーションにより、ソースとレプリカのトピックの間で異なるオフセットが発生する可能性があります。 HDInsight Kafka クラスターでは、個々のクラスター レベルで使用できる高可用性機能であるトピック パーティション レプリケーションもサポートされています。
 
@@ -192,7 +192,7 @@ HBase レプリケーションは、次の 3 つのモードで設定できま�
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight Enterprise セキュリティ パッケージ
 
-このセットアップは、プライマリとセカンダリの両方でマルチユーザー機能を提供し、[Azure AD DS レプリカ セット](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set)を使用して、ユーザーが 2 つのクラスターに対して認証できるようにするために使用されます。 通常の操作中は、ユーザーが読み取り操作に制限されるように、Ranger ポリシーをセカンダリに設定する必要があります。 次のアーキテクチャでは、ESP が有効になっている Hive のアクティブ プライマリ (スタンバイ セカンダリ) のセットアップを示します。
+このセットアップは、プライマリとセカンダリの両方でマルチユーザー機能を提供し、[Azure AD DS レプリカ セット](../active-directory-domain-services/tutorial-create-replica-set.md)を使用して、ユーザーが 2 つのクラスターに対して認証できるようにするために使用されます。 通常の操作中は、ユーザーが読み取り操作に制限されるように、Ranger ポリシーをセカンダリに設定する必要があります。 次のアーキテクチャでは、ESP が有効になっている Hive のアクティブ プライマリ (スタンバイ セカンダリ) のセットアップを示します。
 
 Ranger メタストア レプリケーション:
 

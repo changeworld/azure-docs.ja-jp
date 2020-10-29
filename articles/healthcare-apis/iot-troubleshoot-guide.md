@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982981"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558518"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT Connector for FHIR (プレビュー) のトラブルシューティング ガイド
 
@@ -97,7 +97,7 @@ Azure IoT Connector for FHIR マッピング ファイルのコピーは、Azure
 
    :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
 
-2. 変換マッピング JSON のコピー元となる**コネクタ**を選択します。
+2. 変換マッピング JSON のコピー元となる **コネクタ** を選択します。
 
    :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
@@ -122,7 +122,7 @@ Azure IoT Connector for FHIR マッピング ファイルのコピーは、Azure
 Azure IoT Connector for FHIR についてよく寄せられる質問を確認します。
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.md)
 
 *Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。
 

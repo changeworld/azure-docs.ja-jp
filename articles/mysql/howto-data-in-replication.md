@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596494"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544037"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "91596494"
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、" _スレーブ_ " という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 Azure Database for MySQL サービスでレプリカを作成するために、[データイン レプリケーション](concepts-data-in-replication.md)によって、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのソース MySQL サーバーからデータが同期されます。 データイン レプリケーションは、MySQL のネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーションに基づいています。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
@@ -51,9 +51,9 @@ Azure Database for MySQL サービスでレプリカを作成するために、[
 
 1. 続行する前に、[マスター サーバーの要件](concepts-data-in-replication.md#requirements)を確認してください。 
 
-2. 確実に、ソース サーバーでポート 3306 での受信と送信の両方のトラフィックが許可されていて、ソース サーバーに**パブリック IP アドレス**がある、または DNS にパブリックにアクセス可能である、あるいは完全修飾ドメイン名 (FQDN) があるかのいずれかであるようにします。 
+2. 確実に、ソース サーバーでポート 3306 での受信と送信の両方のトラフィックが許可されていて、ソース サーバーに **パブリック IP アドレス** がある、または DNS にパブリックにアクセス可能である、あるいは完全修飾ドメイン名 (FQDN) があるかのいずれかであるようにします。 
    
-   別のマシンでホストされている MySQL のコマンド ラインや、Azure portal で使用可能な [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) などのツールから接続を試行することで、ソース サーバーへの接続性をテストします。
+   別のマシンでホストされている MySQL のコマンド ラインや、Azure portal で使用可能な [Azure Cloud Shell](../cloud-shell/overview.md) などのツールから接続を試行することで、ソース サーバーへの接続性をテストします。
 
    組織に厳密なセキュリティ ポリシーがあり、ソース サーバー上のすべての IP アドレスで Azure からソース サーバーへの通信が許可されない場合は、次のコマンドを使用して MySQL サーバーの IP アドレスを確認できます。
 
@@ -189,7 +189,7 @@ Azure Database for MySQL サービスでレプリカを作成するために、[
 
 1. ソース サーバーを設定する
 
-   データイン レプリケーションの機能は、すべてストアド プロシージャによって実現されています。 「[データイン レプリケーションのストアド プロシージャ](reference-data-in-stored-procedures.md)」で、すべてのプロシージャをご覧いただけます。 これらのストアド プロシージャは、MySQL シェルまたは MySQL Workbench で実行できます。 
+   データイン レプリケーションの機能は、すべてストアド プロシージャによって実現されています。 「[データイン レプリケーションのストアド プロシージャ](./reference-stored-procedures.md)」で、すべてのプロシージャをご覧いただけます。 これらのストアド プロシージャは、MySQL シェルまたは MySQL Workbench で実行できます。 
 
    2 つのサーバーをリンクさせてレプリケーションを開始するには、Azure DB for MySQL サービスにあるレプリケーション先のレプリカ サーバーにログインし、外部インスタンスをソース サーバーとして設定します。 この設定は、Azure DB for MySQL サーバーで `mysql.az_replication_change_master` ストアド プロシージャを使用して行います。
 
@@ -286,4 +286,4 @@ CALL mysql.az_replication_skip_counter;
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- Azure Database for MySQL の[データイン レプリケーション](concepts-data-in-replication.md)について確認します。 
+- Azure Database for MySQL の[データイン レプリケーション](concepts-data-in-replication.md)について確認します。

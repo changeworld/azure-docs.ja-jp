@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91928981"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546468"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>HDInsight クラスターの VM を再起動する
 
@@ -32,19 +32,19 @@ Azure HDInsight クラスターには、クラスター ノードとして仮想
 - VM 上のプロセス テーブルには、プロセスが完了しているエントリが多数あるが、"終了状態" と示されている。
 
 > [!NOTE]
-> 再起動によってデータが失われる可能性があるため、**HBase** クラスターと **Kafka** クラスターでは VM を再起動できません。
+> 再起動によってデータが失われる可能性があるため、 **HBase** クラスターと **Kafka** クラスターでは VM を再起動できません。
 
 ## <a name="use-powershell-to-reboot-vms"></a>PowerShell を使用して VM を再起動する
 
 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
 
-1. ノードを一覧表示します。 クラスター ノードの一覧を取得するには、[Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost) を使用します。
+1. ノードを一覧表示します。 クラスター ノードの一覧を取得するには、[Get-AzHDInsightHost](/powershell/module/az.hdinsight/get-azhdinsighthost) を使用します。
 
       ```
       Get-AzHDInsightHost -ClusterName myclustername
       ```
 
-1. ホストを再起動します。 再起動するノードの名前を取得したら、[Restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost) を使用してノードを再起動します。
+1. ホストを再起動します。 再起動するノードの名前を取得したら、[Restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost) を使用してノードを再起動します。
 
       ```
       Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
@@ -52,15 +52,15 @@ Azure HDInsight クラスターには、クラスター ノードとして仮想
 
 ## <a name="use-a-rest-api-to-reboot-vms"></a>REST API を使用して VM を再起動する
 
-API ドキュメントの**試してみる**機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
+API ドキュメントの **試してみる** 機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
 
-1. ノードを一覧表示します。 クラスター ノードの一覧は、REST API または Ambari から取得できます。 詳細については、[HDInsight list hosts REST API の操作](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts)に関するページを参照してください。
+1. ノードを一覧表示します。 クラスター ノードの一覧は、REST API または Ambari から取得できます。 詳細については、[HDInsight list hosts REST API の操作](/rest/api/hdinsight/virtualmachines/listhosts)に関するページを参照してください。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、*NodeType(wn/hn/zk/gw)*  + *x* + *クラスター名の最初の 6 文字*のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
+1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、 *NodeType(wn/hn/zk/gw)*  + *x* + *クラスター名の最初の 6 文字* のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -77,6 +77,6 @@ API ドキュメントの**試してみる**機能を使用して、HDInsight �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [HDInsight virtual machines REST API](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines)
-* [HDInsight REST API](https://docs.microsoft.com/rest/api/hdinsight/)
+* [Restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
+* [HDInsight virtual machines REST API](/rest/api/hdinsight/virtualmachines)
+* [HDInsight REST API](/rest/api/hdinsight/)

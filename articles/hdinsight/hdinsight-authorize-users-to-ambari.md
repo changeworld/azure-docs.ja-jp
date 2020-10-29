@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: fc10d385df1dffed07e771d622d9bf9d8bedee39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086536"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547930"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Apache Ambari ビューに対してユーザーを承認する
 
@@ -24,11 +24,11 @@ Active Directory ユーザーは、自分のドメイン資格情報を使用し
 > [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
-新しい ESP クラスターをまだプロビジョニングしていない場合は、[こちらの手順](./domain-joined/apache-domain-joined-configure.md)に従ってプロビジョニングしてください。
+新しい ESP クラスターをまだプロビジョニングしていない場合は、[こちらの手順](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に従ってプロビジョニングしてください。
 
 ## <a name="access-the-ambari-management-page"></a>Ambari 管理ページにアクセスする
 
-[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) の **Ambari 管理ページ**にアクセスするには、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。 次に、Ambari のダッシュボードで **[admin]\(管理\)** メニューの **[Manage Ambari]\(Ambari の管理\)** を選択します。
+[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) の **Ambari 管理ページ** にアクセスするには、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。 次に、Ambari のダッシュボードで **[admin]\(管理\)** メニューの **[Manage Ambari]\(Ambari の管理\)** を選択します。
 
 ![Apache Ambari のダッシュボードの管理](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -42,7 +42,7 @@ Active Directory ユーザーは、自分のドメイン資格情報を使用し
 
 1. **[+ Create Local User]\(+ ローカル ユーザーの作成\)** を選択します。
 
-1. **ユーザー名**と**パスワード**を指定します。 **[保存]** を選択します。
+1. **ユーザー名** と **パスワード** を指定します。 **[保存]** を選択します。
 
 ### <a name="add-users-through-powershell"></a>PowerShell を使用してユーザーを追加する
 
@@ -167,7 +167,7 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Apache Hive ビューへのアクセス許可を付与する
 
-Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https://tez.apache.org/) のビュー インスタンスが備わっています。 Hive ビュー インスタンスへのアクセス権を付与するには、**Ambari 管理ページ**に移動します。
+Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https://tez.apache.org/) のビュー インスタンスが備わっています。 Hive ビュー インスタンスへのアクセス権を付与するには、 **Ambari 管理ページ** に移動します。
 
 1. 管理ページの左側の **[Views]\(ビュー\)** メニュー ヘッダーにある **[Views]\(ビュー\)** リンクを選択します。
 
@@ -191,14 +191,14 @@ Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https:/
 
    * ユーザー名を選択するか、最後まで入力します。 このユーザー名を新しいユーザーとして追加するには、 **[New]\(新規\)** ボタンを選択します。
 
-   * 変更を保存するには、**青色のチェック ボックス**をオンにします。
+   * 変更を保存するには、 **青色のチェック ボックス** をオンにします。
 
      ![Apache Ambari のユーザーへのアクセス許可の付与](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. グループを追加するには、 **[Add Group]\(グループの追加\)** ボタンを選択します。
 
    * グループ名の入力を開始します。 既存のグループ名を選択 (または新しいグループを追加) するプロセスは、ユーザーを追加するときと同じです。
-   * 変更を保存するには、**青色のチェック ボックス**をオンにします。
+   * 変更を保存するには、 **青色のチェック ボックス** をオンにします。
 
      ![Apache Ambari のアクセス許可の付与](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
@@ -224,7 +224,7 @@ Tez ビュー インスタンスにユーザーとグループを割り当てる
 * サービス オペレーター
 * クラスター ユーザー
 
-ロールを管理するには、**Ambari 管理ページ**に移動し、左側の *[Clusters]\(クラスター\)* メニュー グループにある **[Roles]\(ロール\)** リンクを選択します。
+ロールを管理するには、 **Ambari 管理ページ** に移動し、左側の *[Clusters]\(クラスター\)* メニュー グループにある **[Roles]\(ロール\)** リンクを選択します。
 
 ![Apache Ambari のロールのメニュー リンク](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
@@ -252,7 +252,7 @@ Tez ビュー インスタンスにユーザーとグループを割り当てる
 
     ![Apache Ambari のロールのリスト ビュー - グループ](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
-    上の画像では、"hiveusers" グループに "*クラスター ユーザー*" ロールが割り当てられています。 これは読み取り専用のロールで、このグループのユーザーは、サービスの構成とクラスターのメトリックを表示することはできますが、変更することはできません。
+    上の画像では、"hiveusers" グループに " *クラスター ユーザー* " ロールが割り当てられています。 これは読み取り専用のロールで、このグループのユーザーは、サービスの構成とクラスターのメトリックを表示することはできますが、変更することはできません。
 
 ## <a name="log-in-to-ambari-as-a-view-only-user"></a>Ambari に読み取り専用ユーザーとしてログインする
 
@@ -262,7 +262,7 @@ Azure AD ドメイン ユーザー "hiveuser1" には、Hive ビューと Tez �
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Ambari にクラスター ユーザーとしてログインする
 
-"*クラスター ユーザー*" ロールには、Azure AD ドメイン ユーザー "hiveuser2" を割り当ててあります。 このロールは、ダッシュボードとすべてのメニュー項目にアクセスすることができます。 クラスター ユーザーは、選択できるオプションが管理者と比べて少なくなります。 たとえば hiveuser2 は、各サービスの構成を表示することはできますが、編集することはできません。
+" *クラスター ユーザー* " ロールには、Azure AD ドメイン ユーザー "hiveuser2" を割り当ててあります。 このロールは、ダッシュボードとすべてのメニュー項目にアクセスすることができます。 クラスター ユーザーは、選択できるオプションが管理者と比べて少なくなります。 たとえば hiveuser2 は、各サービスの構成を表示することはできますが、編集することはできません。
 
 ![Apache Ambari のダッシュボードの表示](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 

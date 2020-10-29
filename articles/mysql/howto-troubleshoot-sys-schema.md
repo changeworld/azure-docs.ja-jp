@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902775"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544853"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
 
@@ -29,7 +29,7 @@ sys_schema には 52 個のビューがあり、各ビューには次のいず�
 - ユーザー:消費され、ユーザーごとにグループ化されたリソース。 ファイル I/O、接続、メモリなどです。
 - wait: ホストまたはユーザーごとにグループ化された待機イベント。
 
-では、sys_schema の一般的な使用パターンをいくつか見てみましょう。 まず、使用パターンを**パフォーマンスのチューニング**と**データベース メンテナンス**の 2 つのカテゴリにグループ化します。
+では、sys_schema の一般的な使用パターンをいくつか見てみましょう。 まず、使用パターンを **パフォーマンスのチューニング** と **データベース メンテナンス** の 2 つのカテゴリにグループ化します。
 
 ## <a name="performance-tuning"></a>パフォーマンスのチューニング
 
@@ -45,13 +45,13 @@ Azure Database for MySQL ではストレージに応じて IO が増減するの
 
 ### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
-慎重に計画しても、多くのクエリでフル テーブル スキャンが行われる可能性があります。 インデックスの種類とそれらを最適化する方法の詳細については、[クエリのパフォーマンスをトラブルシューティングする方法](./howto-troubleshoot-query-performance.md)に関する記事を参照できます。 フル テーブル スキャンはリソースを大量に消費するため、データベースのパフォーマンスを低下させます。 フル テーブル スキャンが行われたテーブルを調べる最も簡単な方法は、*sys.schema_tables_with_full_table_scans* ビューのクエリを行うことです。
+慎重に計画しても、多くのクエリでフル テーブル スキャンが行われる可能性があります。 インデックスの種類とそれらを最適化する方法の詳細については、[クエリのパフォーマンスをトラブルシューティングする方法](./howto-troubleshoot-query-performance.md)に関する記事を参照できます。 フル テーブル スキャンはリソースを大量に消費し、データベースのパフォーマンスを低下させます。 フル テーブル スキャンが行われたテーブルを調べる最も簡単な方法は、 *sys.schema_tables_with_full_table_scans* ビューのクエリを行うことです。
 
 :::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="sys_schema のビュー":::
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
-データベースのパフォーマンスの問題をトラブルシューティングするには、データベースの内部で起こっているイベントを明らかにすると役に立つ場合があり、*sys.user_summary_by_statement_type* ビューがそれに使えることがあります。
+データベースのパフォーマンスの問題をトラブルシューティングするには、データベースの内部で起こっているイベントを明らかにすると役に立つ場合があり、 *sys.user_summary_by_statement_type* ビューがそれに使えることがあります。
 
 :::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="sys_schema のビュー":::
 
@@ -64,7 +64,7 @@ Azure Database for MySQL ではストレージに応じて IO が増減するの
 [!IMPORTANT]
 > このビューにクエリを実行すると、パフォーマンスに影響する場合があります。 このトラブルシューティングは、ピーク時以外の営業時間に実行することをお勧めします。
 
-InnoDB バッファー プールはメモリ内に存在し、DBMS とストレージの間の主なキャッシュ メカニズムです。 InnoDB バッファー プールのサイズはパフォーマンス レベルに関連付けられており、別の製品 SKU を選ばない限り変更できません。 オペレーティング システムのメモリと同様に、古いページはスワップ アウトされて新しいデータのための領域が確保されます。 InnoDB バッファー プールのメモリを最も多く消費しているテーブルを調べるには、*sys.innodb_buffer_stats_by_table* ビューのクエリを行います。
+InnoDB バッファー プールはメモリ内に存在し、DBMS とストレージの間の主なキャッシュ メカニズムです。 InnoDB バッファー プールのサイズはパフォーマンス レベルに関連付けられており、別の製品 SKU を選ばない限り変更できません。 オペレーティング システムのメモリと同様に、古いページはスワップ アウトされて新しいデータのための領域が確保されます。 InnoDB バッファー プールのメモリを最も多く消費しているテーブルを調べるには、 *sys.innodb_buffer_stats_by_table* ビューのクエリを行います。
 
 :::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="sys_schema のビュー":::
 
@@ -83,4 +83,4 @@ InnoDB バッファー プールはメモリ内に存在し、DBMS とストレ�
 まとめると、sys_schema はパフォーマンスのチューニングとデータベースのメンテナンスの両方に対して優れたツールです。 お使いの Azure Database for MySQL でこの機能を活用してください。 
 
 ## <a name="next-steps"></a>次のステップ
-- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。
+- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[Microsoft Q&A 質問ページ](/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

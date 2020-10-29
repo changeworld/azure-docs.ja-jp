@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 70077f8f0e7a951b6da8cf65c874b17eb98b416c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276380"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547080"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の整合性レベル
 
@@ -189,8 +189,6 @@ Azure Cosmos アカウントが、強固な整合性以外の任意の整合性�
 
 Azure Cosmos DB の整合性レベルの概念の詳細については、以下の記事をご覧ください。
 
-- [アプリケーションのための適切な整合性レベルを選択する](consistency-levels-choosing.md)
-- [Azure Cosmos DB API における整合性レベル](consistency-levels-across-apis.md)
 - [既定の一貫性レベルを構成する](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [既定の整合性レベルをオーバーライドする](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

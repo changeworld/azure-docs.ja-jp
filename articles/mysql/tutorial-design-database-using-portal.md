@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d0c4167192c42939e16dfd36bdc3eeef4b54b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906545"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543714"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for MySQL データベースを設計する
 
@@ -37,28 +37,23 @@ Web ブラウザーを開いて [Microsoft Azure Portal](https://portal.azure.co
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 
-Azure Database for MySQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)内に作成されます。
+Azure Database for MySQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-pricing-tiers.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
 
-2. **[データベース]**  >  **[Azure Database for MySQL]** の順に選択します。 **[データベース]** カテゴリ内に MySQL Server が見つからない場合は、 **[すべて表示]** をクリックして、使用可能なすべてのデータベース サービスを表示します。 検索ボックスに「**Azure Database for MySQL**」と入力すれば、サービスをすばやく探せます。
+2. **[データベース]**  >  **[Azure Database for MySQL]** の順に選択します。 **[データベース]** カテゴリ内に MySQL Server が見つからない場合は、 **[すべて表示]** をクリックして、使用可能なすべてのデータベース サービスを表示します。 検索ボックスに「 **Azure Database for MySQL** 」と入力すれば、サービスをすばやく探せます。
    
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png" alt-text="MySQL への移動":::
 
 3. **[Azure Database for MySQL]** タイルをクリックします。 Azure Database for MySQL フォームに入力します。
    
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="MySQL への移動" | *[空白]* を選択し、最初から新しいサーバーを作成します (既存の Azure Database for MySQL サーバーの geo バックアップからサーバーを作成する場合は、 *[Backup]* を選択します)。
-    サーバー管理者のログイン | myadmin | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
-    Password | *<任意>* | サーバー管理者アカウントの新しいパスワードを入力します。 8 文字以上 128 文字以内にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
-    [パスワードの確認入力] | *<任意>*| 管理者アカウントのパスワードを確認します。
-    場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
-    Version | "*最新バージョン*"| 最新バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
-    Pricing tier | **汎用**、**Gen 5**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、 **[汎用]** タブを選択します。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="MySQL への移動" *最新バージョン* "| 最新バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
+    Pricing tier | **汎用** 、 **Gen 5** 、 **2 仮想コア** 、 **5 GB** 、 **7 日** 、 **地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、 **[汎用]** タブを選択します。 *Gen 5* 、 *2 仮想コア* 、 *5 GB* 、および *7 日* は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="MySQL への移動":::
 
    > [!TIP]
-   > **自動拡張**が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
+   > **自動拡張** が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
 
 4. **[Review + create]\(レビュー + 作成\)** をクリックします。 ツール バーの **[通知]** ボタンをクリックすると、デプロイ プロセスを監視できます。 デプロイには、最大 20 分かかる場合があります。
 
@@ -69,7 +64,7 @@ Azure Databases for MySQL は、ファイアウォールによって保護され
 1. 新しく作成したサーバーをクリックし、 **[接続のセキュリティ]** をクリックします。
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="MySQL への移動":::
-2. **自分の IP を追加**するか、またはファイアウォール規則を構成できます。 規則を作成したら、忘れずに **[保存]** をクリックしてください。
+2. **自分の IP を追加** するか、またはファイアウォール規則を構成できます。 規則を作成したら、忘れずに **[保存]** をクリックしてください。
 これで、mysql コマンド ライン ツールまたは MySQL Workbench GUI ツールを使用してサーバーに接続することができます。
 
 > [!TIP]
@@ -77,14 +72,14 @@ Azure Databases for MySQL は、ファイアウォールによって保護され
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-Azure Portal から、Azure Database for MySQL サーバーの完全修飾**サーバー名**と**サーバー管理者ログイン名**を取得します。 この完全修飾サーバー名は、mysql コマンド ライン ツールでサーバーに接続する際に使用します。
+Azure Portal から、Azure Database for MySQL サーバーの完全修飾 **サーバー名** と **サーバー管理者ログイン名** を取得します。 この完全修飾サーバー名は、mysql コマンド ライン ツールでサーバーに接続する際に使用します。
 
 1. [Azure Portal](https://portal.azure.com/) の左側のメニューにある **[すべてのリソース]** をクリックして名前を入力し、Azure Database for MySQL サーバーを探します。 サーバー名を選択すると、詳細が表示されます。
 
 2. **[概要]** ページで、 **[サーバー名]** と **[サーバー管理者ログイン名]** の値をメモしておきます。 各フィールドの横にあるコピー ボタンをクリックすると、クリップボードにコピーできます。
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="MySQL への移動":::
 
-この例では、サーバー名は *mydemoserver.mysql.database.azure.com*、サーバー管理者ログインは *myadmin\@mydemoserver* です。
+この例では、サーバー名は *mydemoserver.mysql.database.azure.com* 、サーバー管理者ログインは *myadmin\@mydemoserver* です。
 
 ## <a name="connect-to-the-server-using-mysql"></a>mysql を使用してサーバーに接続する
 
@@ -167,12 +162,12 @@ SELECT * FROM inventory;
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="MySQL への移動":::
 
-   - **復元ポイント**:一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
-   - **新しいサーバーに復元**: 復元先の新しいサーバー名を指定します。
+   - **復元ポイント** :一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
+   - **新しいサーバーに復元** : 復元先の新しいサーバー名を指定します。
    - **[場所]** :リージョンはソース サーバーと同じ場所にします。変更することはできません。
-   - **価格レベル**:ソース サーバーと同じ価格レベルにします。変更することはできません。
+   - **価格レベル** :ソース サーバーと同じ価格レベルにします。変更することはできません。
    
-3. **[OK]** をクリックして、[テーブルが削除される前の状態にサーバーを復元](./howto-restore-server-portal.md)します。 サーバーを復元すると、指定した時点のサーバーのコピーが新たに作成されます。
+3. **[OK]** をクリックして、 [テーブルが削除される前の状態にサーバーを復元](./howto-restore-server-portal.md)します。 サーバーを復元すると、指定した時点のサーバーのコピーが新たに作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

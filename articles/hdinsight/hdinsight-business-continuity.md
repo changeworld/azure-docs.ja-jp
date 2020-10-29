@@ -8,12 +8,12 @@ keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893647"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546944"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight のビジネス継続性
 
@@ -23,7 +23,7 @@ Azure HDInsight クラスターは、ストレージ、データベース、Acti
 
 このセクションでは、ビジネス継続性の計画時に考慮する必要があるベスト プラクティスについて説明します。
 
-* 障害が発生した場合に必要とする最小限のビジネス機能とその理由を決定します。 たとえば、データ変換層 (黄色で示されています) "*および*" データ サービス層 (青色で表示) にフェールオーバー機能が必要か、またはデータ サービス層にだけフェールオーバーが必要かを評価します。
+* 障害が発生した場合に必要とする最小限のビジネス機能とその理由を決定します。 たとえば、データ変換層 (黄色で示されています) " *および* " データ サービス層 (青色で表示) にフェールオーバー機能が必要か、またはデータ サービス層にだけフェールオーバーが必要かを評価します。
 
    :::image type="content" source="media/hdinsight-business-continuity/data-layers.png" alt-text="データ変換とデータ サービスの層":::
 
@@ -39,7 +39,7 @@ Azure HDInsight クラスターは、ストレージ、データベース、Acti
 
 * HDInsight で Azure 監視ツールを使用して、クラスター内の異常な動作を検出し、対応するアラート通知を設定します。 特定のクラスターの種類についての重要なパフォーマンス メトリックを収集する、構成済みの HDInsight クラスター固有の管理ソリューションをデプロイできます。 詳細については、[HDInsight 用の Azure Monitoring](./hdinsight-hadoop-oms-log-analytics-tutorial.md) に関するページを参照してください。  
 
-* Azure の正常性アラートをサブスクライブして、サービスの問題と計画メンテナンスについて、および、サブスクリプション、サービス、またはリージョンの正常性とセキュリティに関するアドバイザリについての通知を受け取ります。 問題の原因と確定 ETA を含む正常性の通知は、フェールオーバーとフェールバックをより適切に実行するのに役立ちます。 詳細については、[Azure Service Health のドキュメント](/azure/service-health/)を参照してください。
+* Azure の正常性アラートをサブスクライブして、サービスの問題と計画メンテナンスについて、および、サブスクリプション、サービス、またはリージョンの正常性とセキュリティに関するアドバイザリについての通知を受け取ります。 問題の原因と確定 ETA を含む正常性の通知は、フェールオーバーとフェールバックをより適切に実行するのに役立ちます。 詳細については、[Azure Service Health のドキュメント](../service-health/index.yml)を参照してください。
 
 ## <a name="single-region-availability"></a>単一リージョンの可用性
 

@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123595bb6cd0112e597b9d958763900e07b9ff38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633078"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -56,7 +56,7 @@ ms.locfileid: "89596119"
 
 Azure Data Factory の UI を使用してセルフホステッド IR を作成するには、次の手順に従います。
 
-1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](./author-management-hub.md)を選択します。
 
    ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -71,7 +71,7 @@ Azure Data Factory の UI を使用してセルフホステッド IR を作成�
 
 1. IR の名前を入力し、 **[作成]** を選択します。
 
-1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、 **[Option 1]\(オプション 1\)** の下にあるリンクを選択して、コンピューターで高速セットアップを開きます。 または、**オプション 2** の手順に従って、手動でセットアップします。 以降の手順は、手動セットアップに基づいています。
+1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、 **[Option 1]\(オプション 1\)** の下にあるリンクを選択して、コンピューターで高速セットアップを開きます。 または、 **オプション 2** の手順に従って、手動でセットアップします。 以降の手順は、手動セットアップに基づいています。
 
    ![統合ランタイムのセットアップ](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
@@ -138,7 +138,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. データ開発者は、PowerShell コマンドレットを使用して Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。 現時点では、Azure ポータルはこの機能をサポートしていません。
 1. データ開発者は、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 開発者は、データ ストアへの接続にサービスが使用するセルフホステッド統合ランタイムのインスタンスを指定することによって、この操作を行います。
 1. セルフホステッド統合ランタイム ノードでは、Windows DPAPI (Data Protection Application Programming Interface) を使用して資格情報を暗号化し、その資格情報をローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードでは、DPAPI を使用して資格情報を暗号化し、それらをローカルに格納します。 資格情報の同期は、データ開発者に透過的であり、セルフホステッド IR によって処理されます。
-1. Azure Data Factory は、セルフホステッド統合ランタイムと通信して、ジョブのスケジュール設定と管理を行います。 通信は、[Azure Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay) 共有接続を使用する制御チャネルを介して行われます。 アクティビティ ジョブを実行する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 これは、セルフホステッド統合ランタイムに資格情報がまだ格納されていない場合に備えて行われます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
+1. Azure Data Factory は、セルフホステッド統合ランタイムと通信して、ジョブのスケジュール設定と管理を行います。 通信は、[Azure Service Bus Relay](../azure-relay/relay-what-is-it.md#wcf-relay) 共有接続を使用する制御チャネルを介して行われます。 アクティビティ ジョブを実行する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 これは、セルフホステッド統合ランタイムに資格情報がまだ格納されていない場合に備えて行われます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
 1. セルフホステッド統合ランタイムによって、オンプレミス ストアとクラウドとの間でデータがコピーされます。 コピーの方向は、データ パイプライン内でのコピー アクティビティの構成方法によって異なります。 この手順では、セルフホステッド統合ランタイムは、セキュリティで保護された HTTPS チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信を行います。
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>セルフホステッド IR の使用に関する注意点
@@ -171,7 +171,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - ホスト コンピューターが休止状態の場合、セルフホステッド統合ランタイムはデータ要求に応答しません。 セルフホステッド統合ランタイムをインストールする前に、コンピューターに適切な電源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、セルフホステッド統合ランタイムのインストーラーによりメッセージが出力されます。
 - セルフホステッド統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
 - コピー アクティビティは特定の頻度で実行されます。 コンピューター上のプロセッサおよび RAM の使用量は、ピーク時とアイドル時のある同じパターンに従います。 また、リソース使用量は、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
-- Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。 Parquet の詳細については、「[Azure Data Factory での Parquet 形式](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)」を参照してください。 ファイルの作成は、セルフホステッド統合コンピューターで実行されます。 予想どおりに動作するには、ファイルの作成に次の前提条件が必要です。
+- Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。 Parquet の詳細については、「[Azure Data Factory での Parquet 形式](./format-parquet.md#using-self-hosted-integration-runtime)」を参照してください。 ファイルの作成は、セルフホステッド統合コンピューターで実行されます。 予想どおりに動作するには、ファイルの作成に次の前提条件が必要です。
     - [Visual C++ 2010 再領布](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)パッケージ (x64)
     - [Adopt OpenJDK](https://adoptopenjdk.net/) などの JRE プロバイダーの Java Runtime (JRE) バージョン 8。 `JAVA_HOME` 環境変数が設定されていることを確認します。
 
@@ -190,7 +190,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. マネージド ID ファイルを直接実行するか、ハード ドライブに保存してから実行します。
 1. **[ようこそ]** ウィンドウで言語を選び、 **[次へ]** を選択します。
 1. マイクロソフト ソフトウェア ライセンス条項に同意して、 **[次へ]** を選択します。
-1. セルフホステッド統合ランタイムをインストールする**フォルダー**を選んで、 **[次へ]** を選択します。
+1. セルフホステッド統合ランタイムをインストールする **フォルダー** を選んで、 **[次へ]** を選択します。
 1. **[インストールの準備完了]** ページで **[インストール]** をクリックします。
 1. **[完了]** を選択してインストールを完了します。
 1. PowerShell を使用して認証キーを取得します。 認証キーを取得するための PowerShell の例を以下に示します。
@@ -214,7 +214,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 * セルフホステッド統合ランタイムの可用性が向上することによって、ビッグ データ ソリューションや Data Factory を使用したクラウド データ統合において、単一障害点となることはなくなります。 この可用性により、最大 4 つのノードを使用する場合に継続性が確保されます。
 * オンプレミスとクラウド データ ストアとの間のデータ移動は、パフォーマンスとスループットが向上しました。 詳しくは[パフォーマンス比較](copy-activity-performance.md)を参照してください。
 
-セルフホステッド統合ランタイム ソフトウェアを[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からインストールして、複数のノードを関連付けることができます。 その後、[チュートリアル](tutorial-hybrid-copy-powershell.md)の説明に従って、**New-AzDataFactoryV2IntegrationRuntimeKey** コマンドレットから取得した認証キーのいずれかを使用して、登録します。
+セルフホステッド統合ランタイム ソフトウェアを[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からインストールして、複数のノードを関連付けることができます。 その後、 [チュートリアル](tutorial-hybrid-copy-powershell.md)の説明に従って、 **New-AzDataFactoryV2IntegrationRuntimeKey** コマンドレットから取得した認証キーのいずれかを使用して、登録します。
 
 > [!NOTE]
 > 各ノードを関連付けるために新しいセルフホステッド統合ランタイムを作成する必要はありません。 セルフホステッド統合ランタイムを別のコンピューターにインストールし、同じ認証キーを使用してそれを登録できます。
@@ -265,8 +265,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="terminology"></a>用語
 
-- **共有された IR**:物理インフラストラクチャで実行されている元のセルフホステッド IR。  
-- **リンクされた IR**:別の共有された IR を参照する IR。 リンクされた IR は論理 IR であり、共有された別のセルフホステッド IR のインフラストラクチャを使用します。
+- **共有された IR** :物理インフラストラクチャで実行されている元のセルフホステッド IR。  
+- **リンクされた IR** :別の共有された IR を参照する IR。 リンクされた IR は論理 IR であり、共有された別のセルフホステッド IR のインフラストラクチャを使用します。
 
 ### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを共有する方法
 
@@ -288,7 +288,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項
 
-* リンクされた IR が作成されるデータ ファクトリには、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的にマネージド ID が作成されます。 ただし、Azure Resource Manager テンプレートまたは SDK を使用してデータ ファクトリを作成する場合は、**ID** プロパティを明示的に設定する必要があります。 この設定により、Resource Manager ではマネージド ID を含むデータ ファクトリが作成されます。
+* リンクされた IR が作成されるデータ ファクトリには、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的にマネージド ID が作成されます。 ただし、Azure Resource Manager テンプレートまたは SDK を使用してデータ ファクトリを作成する場合は、 **ID** プロパティを明示的に設定する必要があります。 この設定により、Resource Manager ではマネージド ID を含むデータ ファクトリが作成されます。
 
 * この機能をサポートする Data Factory .NET SDK のバージョンは、1.1.0 以降である必要があります。
 
@@ -296,7 +296,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 * 共有機能は、同じ Azure AD テナント内のデータ ファクトリに対してのみ機能します。
 
-* Azure AD の[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) の場合、UI の検索機能 (検索キーワードを使用するすべてのデータ ファクトリの一覧表示) が[動作しません](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 ただし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能を使用せずに IR を共有できます。 IR を共有する必要があるデータ ファクトリのマネージド ID について、 **[アクセス許可の割り当て]** ボックスにそのマネージド ID を入力し、Data Factory UI で **[追加]** を選択します。
+* Azure AD の[ゲスト ユーザー](../active-directory/governance/manage-guest-access-with-access-reviews.md) の場合、UI の検索機能 (検索キーワードを使用するすべてのデータ ファクトリの一覧表示) が[動作しません](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 ただし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能を使用せずに IR を共有できます。 IR を共有する必要があるデータ ファクトリのマネージド ID について、 **[アクセス許可の割り当て]** ボックスにそのマネージド ID を入力し、Data Factory UI で **[追加]** を選択します。
 
   > [!NOTE]
   > この機能は Data Factory V2 でのみ使用できます。
@@ -311,8 +311,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 考慮すべきファイアウォールが 2 つあります。
 
-- 組織の中央ルーターで実行されている "*企業ファイアウォール*"
-- セルフホステッド統合ランタイムがインストールされているローカル コンピューターでデーモンとして実行されている "*Windows ファイアウォール*"
+- 組織の中央ルーターで実行されている " *企業ファイアウォール* "
+- セルフホステッド統合ランタイムがインストールされているローカル コンピューターでデーモンとして実行されている " *Windows ファイアウォール* "
 
 ![ファイアウォール](media/create-self-hosted-integration-runtime/firewall.png)
 
@@ -346,21 +346,21 @@ Windows ファイアウォール レベル (コンピューター レベル) で
 
 ![プロキシを指定する](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-構成されると、セルフホステッド統合ランタイムはプロキシ サーバーを使用してクラウド サービスのソースおよびコピー先 (HTTP または HTTPS プロトコルを使用しているもの) に接続します。 初期セットアップ時に **[変更] リンク**を選択したのはこのためです。
+構成されると、セルフホステッド統合ランタイムはプロキシ サーバーを使用してクラウド サービスのソースおよびコピー先 (HTTP または HTTPS プロトコルを使用しているもの) に接続します。 初期セットアップ時に **[変更] リンク** を選択したのはこのためです。
 
 ![プロキシを設定する](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 3 つの構成オプションがあります。
 
-- **プロキシを使用しない**:セルフホステッド統合ランタイムは、クラウド サービスに接続するときにプロキシを明示的には使用しません。
-- **システム プロキシを使用する**:セルフホステッド統合ランタイムでは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。これらのファイルでプロキシ構成が指定されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。
-- **カスタム プロキシを使用する**:diahost.exe.config と diawp.exe.config の構成は使用せず、セルフホステッド統合ランタイムで使用するように HTTP プロキシ設定を構成します。 **[アドレス]** と **[ポート]** の値は必須です。 **[ユーザー名]** と **[パスワード]** の値は、プロキシの認証設定によっては省略できます。 すべての設定は Windows DPAPI を使用して、自己ホスト型統合ランタイム上で暗号化され、コンピューターにローカルに格納されます。
+- **プロキシを使用しない** :セルフホステッド統合ランタイムは、クラウド サービスに接続するときにプロキシを明示的には使用しません。
+- **システム プロキシを使用する** :セルフホステッド統合ランタイムでは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。これらのファイルでプロキシ構成が指定されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。
+- **カスタム プロキシを使用する** :diahost.exe.config と diawp.exe.config の構成は使用せず、セルフホステッド統合ランタイムで使用するように HTTP プロキシ設定を構成します。 **[アドレス]** と **[ポート]** の値は必須です。 **[ユーザー名]** と **[パスワード]** の値は、プロキシの認証設定によっては省略できます。 すべての設定は Windows DPAPI を使用して、自己ホスト型統合ランタイム上で暗号化され、コンピューターにローカルに格納されます。
 
 統合ランタイムのホスト サービスは、更新済みのプロキシ設定を保存した後に自動的に再起動されます。
 
 セルフホステッド統合ランタイムが登録された後、プロキシ設定を表示または更新する必要がある場合は、Microsoft Integration Runtime 構成マネージャーを使用します。
 
-1. **Microsoft Integration Runtime 構成マネージャー**を開きます。
+1. **Microsoft Integration Runtime 構成マネージャー** を開きます。
 1. **[設定]** タブを選択します。
 1. **[HTTP プロキシ]** の **[変更]** リンクを選択して、 **[HTTP プロキシを設定する]** ダイアログ ボックスを開きます。
 1. **[次へ]** を選択します。 その後、プロキシ設定を保存して統合ランタイムのホスト サービスを再起動するためのアクセス許可を求める警告が表示されます。
@@ -396,7 +396,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** オ
     </system.net>
     ```
 
-    プロキシ タグでは、`scriptLocation` のように必要な設定を指定するための追加のプロパティが許可されます。 構文については、「[\<proxy\> 要素 (ネットワーク設定)](https://msdn.microsoft.com/library/sa91de1e.aspx)」を参照してください。
+    プロキシ タグでは、`scriptLocation` のように必要な設定を指定するための追加のプロパティが許可されます。 構文については、「[\<proxy\> 要素 (ネットワーク設定)](/dotnet/framework/configure-apps/file-schema/network/proxy-element-network-settings)」を参照してください。
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -438,7 +438,7 @@ PowerShell を使用して、セルフホステッド統合ランタイムがイ
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 
-セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、**New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
+セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、 **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

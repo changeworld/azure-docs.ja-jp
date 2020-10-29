@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 89f7a4a23f4d1b62fe5a76fbd4625bae8bb3018f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951090"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634762"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -40,8 +40,8 @@ ms.locfileid: "91951090"
 | データ ストア固有   | **Azure Synpase Analytics (旧称 SQL DW)** へのデータ読み込み: 使用しない場合は、PolyBase または COPY ステートメントを使用することをお勧めします。 |
 | &nbsp;                | **Azure SQL Database** との間でのデータのコピー: DTU の使用率が高い場合は、上位レベルへのアップグレードをお勧めします。 |
 | &nbsp;                | **Azure Cosmos DB** との間でのデータのコピー: RU の使用率が高い場合は、より大きな RU にアップグレードすることをお勧めします。 |
-|                       | **SAP テーブル**からのデータのコピー: 大量のデータをコピーする場合は、SAP コネクタのパーティション オプションを利用して並列読み込みを有効にし、最大パーティション数を増やすことをお勧めします。 |
-| &nbsp;                | **Amazon Redshift**からデータを取り込み: 使用されていない場合は、UNLOAD を使用することをお勧めします。 |
+|                       | **SAP テーブル** からのデータのコピー: 大量のデータをコピーする場合は、SAP コネクタのパーティション オプションを利用して並列読み込みを有効にし、最大パーティション数を増やすことをお勧めします。 |
+| &nbsp;                | **Amazon Redshift** からデータを取り込み: 使用されていない場合は、UNLOAD を使用することをお勧めします。 |
 | データ ストアの調整 | コピー中にデータ ストアによって多数の読み取り/書き込み操作が調整されている場合は、データ ストアに対して許可されている要求レートを確認して増やすか、同時実行ワークロードを減らすことをお勧めします。 |
 | 統合ランタイム  | **セルフホステッド統合ランタイム (IR)** を使用し、IR が実行可能なリソースを使用できるようになるまで、コピー アクティビティがキュー内で長時間待機している場合は、IR のスケールアウト/アップをお勧めします。 |
 | &nbsp;                | 最適でないリージョンにある **Azure Integration Runtime** を使用して読み取り/書き込み速度が低下する場合は、別のリージョンの IR を使用するようにを構成することをお勧めします。 |
@@ -63,18 +63,18 @@ ms.locfileid: "91951090"
 
 [パフォーマンス チューニングの手順](copy-activity-performance.md#performance-tuning-steps) に従って、シナリオのパフォーマンステストを計画および実施します。 
 
-コピー アクティビティのパフォーマンスが予想を満たさない場合、Azure Integration Runtime で実行されている単一のコピー アクティビティのトラブルシューティングを行うには、[コピーの監視] ビューに表示されている[パフォーマンス チューニングのヒント](#performance-tuning-tips) が表示されたら、候補を適用して、もう一度お試しください。 それ以外の場合は、[コピー アクティビティの実行の詳細を理解し](#understand-copy-activity-execution-details)、**最長** 期間を持つステージを確認し、以下のガイダンスを適用してコピーのパフォーマンスを向上させます。
+コピー アクティビティのパフォーマンスが予想を満たさない場合、Azure Integration Runtime で実行されている単一のコピー アクティビティのトラブルシューティングを行うには、[コピーの監視] ビューに表示されている[パフォーマンス チューニングのヒント](#performance-tuning-tips) が表示されたら、候補を適用して、もう一度お試しください。 それ以外の場合は、 [コピー アクティビティの実行の詳細を理解し](#understand-copy-activity-execution-details)、 **最長** 期間を持つステージを確認し、以下のガイダンスを適用してコピーのパフォーマンスを向上させます。
 
 - **"コピー前スクリプト" に長い時間がかかっています:** シンク データベースで実行されているコピー前スクリプトが完了するまでに時間がかかることを意味します。 パフォーマンスを向上させるために、指定されたコピー前スクリプト ロジックを調整します。 スクリプトの改善についてさらに支援が必要な場合は、データベース チームにお問い合わせください。
 
-- **"転送 - 最初のバイトまでの転送時間" に長い時間がかかっています**: ソース クエリで任意のデータが返されるまでに時間がかかることを意味します。 クエリまたはサーバーを確認して最適化します。 さらに支援が必要な場合は、データ ストア チームにお問い合わせください。
+- **"転送 - 最初のバイトまでの転送時間" に長い時間がかかっています** : ソース クエリで任意のデータが返されるまでに時間がかかることを意味します。 クエリまたはサーバーを確認して最適化します。 さらに支援が必要な場合は、データ ストア チームにお問い合わせください。
 
-- **"転送 - リスト ソース" の作業時間が長くなっています**: これは、ソース ファイルまたはソース データベースのデータ パーティションの列挙に時間がかかることを意味します。
-  - ファイルベースのソースからデータをコピーする場合、フォルダー パスまたはファイル名 (`wildcardFolderPath` または `wildcardFileName`) で **ワイルドカード フィルター** を使用するか、**ファイルの最終変更時刻フィルター** (`modifiedDatetimeStart` または`modifiedDatetimeEnd`) を使用すると、このようなフィルターにより、指定したフォルダーにあるすべてのファイルがクライアント側にリスト化されます。 このようなファイル列挙は、フィルター規則に一致するファイルのセットが少数しかない場合に、特にボトルネックになる可能性があります。
+- **"転送 - リスト ソース" の作業時間が長くなっています** : これは、ソース ファイルまたはソース データベースのデータ パーティションの列挙に時間がかかることを意味します。
+  - ファイルベースのソースからデータをコピーする場合、フォルダー パスまたはファイル名 (`wildcardFolderPath` または `wildcardFileName`) で **ワイルドカード フィルター** を使用するか、 **ファイルの最終変更時刻フィルター** (`modifiedDatetimeStart` または`modifiedDatetimeEnd`) を使用すると、このようなフィルターにより、指定したフォルダーにあるすべてのファイルがクライアント側にリスト化されます。 このようなファイル列挙は、フィルター規則に一致するファイルのセットが少数しかない場合に、特にボトルネックになる可能性があります。
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では " **prefix** "、ADLS Gen1 では " **listAfter/listBefore** " です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
@@ -82,7 +82,7 @@ ms.locfileid: "91951090"
 
   - Azure IR をソース データ ストア領域と同じか近い場所で使用します。
 
-- **"転送 - ソースからの読み取り" に長い時間がかかっています**: 
+- **"転送 - ソースからの読み取り" に長い時間がかかっています** : 
 
   - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 たとえば、[Amazon Redshift](connector-amazon-redshift.md)からデータをコピーする場合は、Redshift UNLOAD を使用するように構成します。
 
@@ -96,7 +96,7 @@ ms.locfileid: "91951090"
 
   - Azure IR をソース データ ストア領域と同じか近い場所で使用します。
 
-- **"シンクへの転送の書き込み"は、長時間の作業継続時間の**:
+- **"シンクへの転送の書き込み"は、長時間の作業継続時間の** :
 
   - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 例えば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (以前の SQL DW) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
 
@@ -114,27 +114,27 @@ ms.locfileid: "91951090"
 
 [パフォーマンス チューニングの手順](copy-activity-performance.md#performance-tuning-steps) に従って、シナリオのパフォーマンステストを計画および実施します。 
 
-コピー アクティビティのパフォーマンスが予想を満たさない場合、Azure Integration Runtime で実行されている単一のコピー アクティビティのトラブルシューティングを行うには、[コピーの監視] ビューに表示されている[パフォーマンス チューニングのヒント](#performance-tuning-tips) が表示されたら、候補を適用して、もう一度お試しください。 それ以外の場合は、[コピー アクティビティの実行の詳細を理解し](#understand-copy-activity-execution-details)、**最長** 期間を持つステージを確認し、以下のガイダンスを適用してコピーのパフォーマンスを向上させます。
+コピー アクティビティのパフォーマンスが予想を満たさない場合、Azure Integration Runtime で実行されている単一のコピー アクティビティのトラブルシューティングを行うには、[コピーの監視] ビューに表示されている[パフォーマンス チューニングのヒント](#performance-tuning-tips) が表示されたら、候補を適用して、もう一度お試しください。 それ以外の場合は、 [コピー アクティビティの実行の詳細を理解し](#understand-copy-activity-execution-details)、 **最長** 期間を持つステージを確認し、以下のガイダンスを適用してコピーのパフォーマンスを向上させます。
 
 - **"Queue" に長い時間がかかっています:** セルフホステッド IR が実行するリソースを持つようになるまで、コピー アクティビティがキュー内で待機時間を待機することを意味します。 IR の容量と使用量を確認し、ワークロードに応じて [スケールアップまたはスケールアウトします](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
-- **"転送 - 最初のバイトまでの転送時間" に長い時間がかかっています**: ソース クエリで任意のデータが返されるまでに時間がかかることを意味します。 クエリまたはサーバーを確認して最適化します。 さらに支援が必要な場合は、データ ストア チームにお問い合わせください。
+- **"転送 - 最初のバイトまでの転送時間" に長い時間がかかっています** : ソース クエリで任意のデータが返されるまでに時間がかかることを意味します。 クエリまたはサーバーを確認して最適化します。 さらに支援が必要な場合は、データ ストア チームにお問い合わせください。
 
-- **"転送 - リスト ソース" の作業時間が長くなっています**: これは、ソース ファイルまたはソース データベースのデータ パーティションの列挙に時間がかかることを意味します。
+- **"転送 - リスト ソース" の作業時間が長くなっています** : これは、ソース ファイルまたはソース データベースのデータ パーティションの列挙に時間がかかることを意味します。
 
   - セルフホスティッド IR マシンのソースデータストアへの接続の待機時間が短いかどうかを確認してください。 シンクが Azure にある場合は、[このツール](http://www.azurespeed.com/Azure/Latency) を使用して、セルフホステッド IR マシンから Azure リージョンへの待機時間を確認することができます。待機時間が少なければより優れています。
 
-  - ファイルベースのソースからデータをコピーする場合、フォルダー パスまたはファイル名 (`wildcardFolderPath` または `wildcardFileName`) で **ワイルドカード フィルター** を使用するか、**ファイルの最終変更時刻フィルター** (`modifiedDatetimeStart` または`modifiedDatetimeEnd`) を使用すると、このようなフィルターにより、指定したフォルダーにあるすべてのファイルがクライアント側にリスト化されます。 このようなファイル列挙は、フィルター規則に一致するファイルのセットが少数しかない場合に、特にボトルネックになる可能性があります。
+  - ファイルベースのソースからデータをコピーする場合、フォルダー パスまたはファイル名 (`wildcardFolderPath` または `wildcardFileName`) で **ワイルドカード フィルター** を使用するか、 **ファイルの最終変更時刻フィルター** (`modifiedDatetimeStart` または`modifiedDatetimeEnd`) を使用すると、このようなフィルターにより、指定したフォルダーにあるすべてのファイルがクライアント側にリスト化されます。 このようなファイル列挙は、フィルター規則に一致するファイルのセットが少数しかない場合に、特にボトルネックになる可能性があります。
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では " **prefix** "、ADLS Gen1 では " **listAfter/listBefore** " です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
   - ADF がソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
-- **"転送 - ソースからの読み取り" に長い時間がかかっています**: 
+- **"転送 - ソースからの読み取り" に長い時間がかかっています** : 
 
   - セルフホスティッド IR マシンのソースデータストアへの接続の待機時間が短いかどうかを確認してください。 お使いのソースが Azure にある場合は、[このツール](http://www.azurespeed.com/Azure/Latency) を使用して、セルフホステッド IR マシンから Azure リージョンへの待機時間を確認することができます。待機時間が少なければより優れています。
 
@@ -158,7 +158,7 @@ ms.locfileid: "91951090"
 
     - それ以外の場合は、単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 詳細については、「[複数のコンテナーからのファイルのコピー](solution-template-copy-files-multiple-containers.md)」、「[Amazon S3 から ADLS Gen2 にデータを移行する](solution-template-migration-s3-azure.md)」、または「一般例として[管理テーブル ソリューションテンプレートを使用して一括コピーする](solution-template-bulk-copy-with-control-table.md)」を参照してください。
 
-- **"シンクへの転送の書き込み"は、長時間の作業継続時間の**:
+- **"シンクへの転送の書き込み"は、長時間の作業継続時間の** :
 
   - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 例えば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (以前の SQL DW) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
 
@@ -178,11 +178,11 @@ ms.locfileid: "91951090"
 
 * Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
 * Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
-* Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
+* Azure SQL Database:[パフォーマンスを監視](../azure-sql/database/monitor-tune-overview.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure Synapse Analytics (旧称 SQL Data Warehouse):その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure Synapse Analytics のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
-* SQL Server:[パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
-* オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)。
+* SQL Server:[パフォーマンスの監視とチューニング](/sql/relational-databases/performance/monitor-and-tune-for-performance)。
+* オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](/previous-versions//dn567661(v=vs.85))。
 
 ## <a name="next-steps"></a>次のステップ
 コピー アクティビティの他の記事を参照してください。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855669"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547437"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -44,23 +44,23 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
 
 ## <a name="access-files-from-within-cluster"></a>クラスター内からファイルにアクセスする
 
-複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と TLS で暗号化されたアクセス (*wasbs*) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
+複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス ( *wasb:* プレフィックス) と TLS で暗号化されたアクセス ( *wasbs* ) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
-* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/
@@ -151,7 +151,7 @@ Ambari REST API を使用してパスを取得する方法については、「 
 
 ## <a name="blob-containers"></a>BLOB コンテナー
 
-BLOB を使用するには、まず、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)を作成します。 この手順の一環として、ストレージ アカウントを作成する Azure リージョンを指定します。 クラスターとストレージ アカウントは、同じリージョンに置く必要があります。 Hive メタストア SQL Server データベースと Apache Oozie メタストア SQL Server データベースは同じリージョンに配置する必要があります。
+BLOB を使用するには、まず、[Azure ストレージ アカウント](../storage/common/storage-account-create.md)を作成します。 この手順の一環として、ストレージ アカウントを作成する Azure リージョンを指定します。 クラスターとストレージ アカウントは、同じリージョンに置く必要があります。 Hive メタストア SQL Server データベースと Apache Oozie メタストア SQL Server データベースは同じリージョンに配置する必要があります。
 
 作成される各 BLOB は、どこにあるとしても、Azure ストレージ アカウント内のコンテナーに属します。 このコンテナーは、HDInsight の外部で作成された既存の BLOB であっても、 HDInsight クラスター用に作成されたコンテナーであってもかまいません。
 

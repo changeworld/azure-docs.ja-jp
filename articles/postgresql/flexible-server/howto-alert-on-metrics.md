@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d3d5ced5860c14e9e4d522c42ffd0bc71341a9c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac252c3898eb014885bf9a6bf6bdedb7db74fb62
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931118"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545839"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーのメトリックのアラートを設定する
 
@@ -30,9 +30,9 @@ ms.locfileid: "90931118"
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 
-* [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#create-with-azure-portal)
-* [Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#with-azure-cli)
-* [Azure 監視 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
 
@@ -87,10 +87,10 @@ ms.locfileid: "90931118"
 アラートを作成したら、それを選択して次のアクションを実行できます。
 
 * このアラートに関連するメトリックのしきい値と、前日の実際の値を示すグラフを表示する。
-* アラート ルールを**編集**または**削除**する。
-* アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
+* アラート ルールを **編集** または **削除** する。
+* アラートを **無効** にしてアラートを一時的に停止する、または **有効** にして通知の受け取りを再開する。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アラートでの webhook の構成](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-webhooks)に関する詳細情報を確認します。
-* [メトリック収集の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-how-to-customize-monitoring) 情報を入手して、サービスの可用性と応答性を確認します。
+* [アラートでの webhook の構成](../../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
+* [メトリック収集の概要](../../azure-monitor/platform/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。

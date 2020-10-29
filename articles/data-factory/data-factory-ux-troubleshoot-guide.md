@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426226"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632569"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX の問題のトラブルシューティング
 
@@ -120,4 +120,4 @@ ADF 作成 UI では、アクティビティ (Copy、Lookup、GetMetadata、Dele
 * [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 * [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/)
-* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Microsoft Q&A 質問ページ](/answers/topics/azure-data-factory.html)

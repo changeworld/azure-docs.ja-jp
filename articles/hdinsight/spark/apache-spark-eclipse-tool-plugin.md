@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8607c10d0c5e2dd6544bf6edb7aa267dfa301a91
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082218"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545890"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -27,7 +27,7 @@ Azure Toolkit for [Eclipse](https://www.eclipse.org/) の HDInsight Tools を使
 
 * HDInsight 上の Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-* [Java Developer キット](https://aka.ms/azure-jdks) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
 
 * [Eclipse IDE](https://www.eclipse.org/downloads/)。 この記事では、Java 開発者向けの Eclipse IDE を使用します。
 
@@ -35,7 +35,7 @@ Azure Toolkit for [Eclipse](https://www.eclipse.org/) の HDInsight Tools を使
 
 ### <a name="install-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse をインストールする
 
-インストール手順については、「[Azure Toolkit for Eclipse のインストール](https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation)」を参照してください。
+インストール手順については、「[Azure Toolkit for Eclipse のインストール](/azure/developer/java/toolkit-for-eclipse/installation)」を参照してください。
 
 ### <a name="install-the-scala-plug-in"></a>Scala プラグインをインストールする
 
@@ -57,7 +57,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
 1. Eclipse IDE を起動します。
 
-1. **[ウィンドウ]**  >   **[表示ビュー]**  >  **[その他...]**  >  **[サインイン...] に移動します**。
+1. **[ウィンドウ]**  >   **[表示ビュー]**  >  **[その他...]**  >  **[サインイン...] に移動します** 。
 
 1. **[表示ビュー]** ダイアログで、 **[Azure]**  >  **[Azure Explorer]** に移動し、 **[開く]** を選択します。
 
@@ -73,7 +73,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
    ![[Select Subscriptions]\(サブスクリプションの選択\) ダイアログ ボックス](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. **Azure Explorer** から、**Azure** >  **HDInsight** に移動し、サブスクリプションの下にある HDInsight Spark クラスターを表示します。
+1. **Azure Explorer** から、 **Azure** >  **HDInsight** に移動し、サブスクリプションの下にある HDInsight Spark クラスターを表示します。
 
    ![Azure Explorer での HDInsight Spark クラスター 3](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -85,11 +85,11 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
 Ambari マネージド ユーザー名を使用して、通常のクラスターをリンクすることができます。 同様に、ドメイン参加済み HDInsight クラスターでは、`user1@contoso.com` などのドメインとユーザー名を使用して、リンクできます。
 
-1. **Azure Explorer**で、 **[HDInsight]** を右クリックし、 **[クラスターのリンク]** を選択します。
+1. **Azure Explorer** で、 **[HDInsight]** を右クリックし、 **[クラスターのリンク]** を選択します。
 
    ![Azure Explorer のリンク クラスター メニュー](./media/apache-spark-eclipse-tool-plugin/link-a-cluster-context-menu.png)
 
-1. **クラスター名**、**ユーザー名**、および **パスワード**を入力し、 **[OK]** を選択します。 任意で、[ストレージ アカウント] と [ストレージ キー] を入力し、左のツリー ビューでストレージ エクスプローラーに [ストレージ コンテナー] を選択します。
+1. **クラスター名** 、 **ユーザー名** 、および **パスワード** を入力し、 **[OK]** を選択します。 任意で、[ストレージ アカウント] と [ストレージ キー] を入力し、左のツリー ビューでストレージ エクスプローラーに [ストレージ コンテナー] を選択します。
 
    ![[Link New HDInsight cluster]\(新しい HDInsight クラスターのリンク\) ダイアログ](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog1.png)
 
@@ -97,13 +97,13 @@ Ambari マネージド ユーザー名を使用して、通常のクラスター
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
    > ![Azure Explorer のストレージ アカウント](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
    >
-   > キーボードのみを使用しているユーザーの場合、現在のフォーカスが**ストレージ キー**にあるときは、**Ctrl+TAB** を使用して、ダイアログの次のフィールドにフォーカスを移動する必要があります。
+   > キーボードのみを使用しているユーザーの場合、現在のフォーカスが **ストレージ キー** にあるときは、 **Ctrl+TAB** を使用して、ダイアログの次のフィールドにフォーカスを移動する必要があります。
 
 1. リンクされたクラスターは **HDInsight** の下に表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 
    ![Azure Explorer の hdi リンク済みクラスター](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
 
-1. また、**Azure 用エクスプローラー**からクラスターのリンクを解除することもできます。
+1. また、 **Azure 用エクスプローラー** からクラスターのリンクを解除することもできます。
 
    ![Azure Explorer からクラスターのリンクを解除する](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
 
@@ -118,7 +118,7 @@ Ambari マネージド ユーザー名を使用して、通常のクラスター
 1. **[New HDInsight Scala Project]\(新しい HDInsight Scala プロジェクト\)** ダイアログ ボックスで、次の値を指定し、 **[Next]\(次へ\)** を選択します。
    * プロジェクトの名前を入力します。
    * **[JRE]** 領域で、 **[Use an execution environment JRE]\(実行環境 JRE を使用する\)** が **JavaSE-1.7** 以降に設定されていることを確認します。
-   * **[Spark Library]\(Spark ライブラリ\)** 領域では、 **[Use Maven to configure Spark SDK]\(Maven を使用して Spark SDK を構成する\)** オプションを選択できます。  ツールにより Spark SDK と Scala SDK の適切なバージョンが統合されます。 また、**手動で Spark SDK を手動で追加する** オプションを選択して、ダウンロードし、Spark SDK を手動で追加することもできます。
+   * **[Spark Library]\(Spark ライブラリ\)** 領域では、 **[Use Maven to configure Spark SDK]\(Maven を使用して Spark SDK を構成する\)** オプションを選択できます。  ツールにより Spark SDK と Scala SDK の適切なバージョンが統合されます。 また、 **手動で Spark SDK を手動で追加する** オプションを選択して、ダウンロードし、Spark SDK を手動で追加することもできます。
 
    ![[New HDInsight Scala Project]\(新しい HDInsight Scala プロジェクト\) ダイアログ ボックス](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
 
@@ -180,7 +180,7 @@ HDInsight Tools を使用すると、ジョブの出力へのアクセスなど�
 
 ### <a name="access-the-job-view"></a>ジョブ ビューにアクセスする
 
-1. **Azure Explorer**で、 **[HDInsight]** 、[Spark クラスター名] の順に展開し、 **[ジョブ]** を選択します。
+1. **Azure Explorer** で、 **[HDInsight]** 、[Spark クラスター名] の順に展開し、 **[ジョブ]** を選択します。
 
    ![Azure Explorer Eclipse のジョブ ビュー ノード](./media/apache-spark-eclipse-tool-plugin/eclipse-job-view-node.png)
 
@@ -198,7 +198,7 @@ HDInsight Tools を使用すると、ジョブの出力へのアクセスなど�
 
      ![Apache Spark ジョブ グラフのステージ情報](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
-   * **[Log]\(ログ\)** タブを選択して、**Driver Stderr**、**Driver Stdout**、**Directory Info** などの頻繁に使用されるログを表示します。
+   * **[Log]\(ログ\)** タブを選択して、 **Driver Stderr** 、 **Driver Stdout** 、 **Directory Info** などの頻繁に使用されるログを表示します。
 
      ![Apache Spark Eclipse のジョブ ログ情報](./media/apache-spark-eclipse-tool-plugin/eclipse-job-log-info.png)
 
@@ -212,7 +212,7 @@ HDInsight Tools を使用すると、ジョブの出力へのアクセスなど�
 
    ![ストレージ アカウントと既定のストレージ コンテナー](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer5.png)
 
-1. クラスターに関連付けられているストレージ コンテナー名を選択します。 右側のウィンドウで、**HVACOut** フォルダーをダブルクリックします。 **part-** ファイルのいずれかを開いて、アプリケーションの出力を確認します。
+1. クラスターに関連付けられているストレージ コンテナー名を選択します。 右側のウィンドウで、 **HVACOut** フォルダーをダブルクリックします。 **part-** ファイルのいずれかを開いて、アプリケーションの出力を確認します。
 
 ### <a name="access-the-spark-history-server"></a>Spark 履歴サーバーにアクセスする
 
@@ -242,7 +242,7 @@ Azure Toolkit for Eclipse の HDInsight Tools を使用すると、ワークス�
 
 Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に **WinUtils.exe** がないことが原因で発生します。
 
-このエラーを解決するには、**C:\WinUtils\bin** などの場所に [Winutils.exe](https://github.com/steveloughran/winutils) が必要です。次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
+このエラーを解決するには、 **C:\WinUtils\bin** などの場所に [Winutils.exe](https://github.com/steveloughran/winutils) が必要です。次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
 
 ### <a name="run-a-local-spark-scala-application"></a>ローカル Spark Scala アプリケーションの実行
 
@@ -254,11 +254,11 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 1. プロジェクトの詳細を指定するために、前のセクション「[HDInsight Spark クラスター用の Spark Scala プロジェクトを設定する](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)」の手順 3. から 6. に従います。
 
-1. テンプレートは、コンピューターでローカルに実行することができるサンプル コード (**LogQuery**) を **src** フォルダーの下に追加します。
+1. テンプレートは、コンピューターでローカルに実行することができるサンプル コード ( **LogQuery** ) を **src** フォルダーの下に追加します。
 
    ![LogQuery ローカル Scala アプリケーションの場所](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
-1. **LogQuery.scala** を右クリックし、 **[実行]**  > **1 つのアプリケーション**　を選択します。 次のような出力が **[コンソール]** タブに表示されます。
+1. **LogQuery.scala** を右クリックし、 **[実行]**  > **1 つのアプリケーション** 　を選択します。 次のような出力が **[コンソール]** タブに表示されます。
 
    ![Spark アプリケーションをローカルに実行した結果](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
@@ -299,19 +299,19 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
    ![Azure Explorer での HDInsight Spark クラスター 送信](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer11.png)
 
-3. **クラスター名**に対する閲覧者専用のロールアクセス許可を持つクラスターを選択します。 警告メッセージが表示されます。 **[Link this cluster]\(このクラスターをリンク\)** をクリックして、クラスターをリンクできます。
+3. **クラスター名** に対する閲覧者専用のロールアクセス許可を持つクラスターを選択します。 警告メッセージが表示されます。 **[Link this cluster]\(このクラスターをリンク\)** をクリックして、クラスターをリンクできます。
 
    ![Azure Explorer での HDInsight Spark クラスター これをリンク](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
 
 ### <a name="view-storage-accounts"></a>ストレージ アカウントを表示する
 
-* 読み取り専用ロールのアクセス許可があるクラスターで、**Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。
+* 読み取り専用ロールのアクセス許可があるクラスターで、 **Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。
 
    ![Azure Explorer での HDInsight Spark クラスター ストレージ](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer13.png)
 
    ![Azure Explorer での HDInsight Spark クラスター 拒否](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer12.png)
 
-* リンクされたクラスターで、**Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。
+* リンクされたクラスターで、 **Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。
 
    ![Azure Explorer での HDInsight Spark クラスター 拒否 2](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer14.png)
 
@@ -346,8 +346,8 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
 * [Azure Toolkit for IntelliJ を使用して Spark Scala アプリケーションを作成して送信する](apache-spark-intellij-tool-plugin.md)
-* [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](./apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](./apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)

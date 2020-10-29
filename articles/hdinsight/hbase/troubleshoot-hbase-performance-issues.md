@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887157"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547896"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight での Apache HBase のパフォーマンスに関する問題のトラブルシューティング
 
@@ -79,32 +79,32 @@ HDInsight HBase では、HFiles はリモート ストレージに格納され�
 
 - フラッシュを制御するには、次の設定を使用します。
 
-    - `Hbase.regionserver.maxlogs`:**140** (WAL の制限のためフラッシュを回避)
+    - `Hbase.regionserver.maxlogs`: **140** (WAL の制限のためフラッシュを回避)
 
-    - `Hbase.regionserver.global.memstore.lowerLimit`:**0.55**
+    - `Hbase.regionserver.global.memstore.lowerLimit`: **0.55**
 
-    - `Hbase.regionserver.global.memstore.upperLimit`:**0.60**
+    - `Hbase.regionserver.global.memstore.upperLimit`: **0.60**
 
 - スレッド プール チューニングのための Phoenix 固有の構成:
 
-    - `Phoenix.query.queuesize`:**10000**
+    - `Phoenix.query.queuesize`: **10000**
 
-    - `Phoenix.query.threadpoolsize`:**512**
+    - `Phoenix.query.threadpoolsize`: **512**
 
 - その他の Phoenix 固有の構成:
 
-    - `Phoenix.rpc.index.handler.count`:**50** (大規模な、または多くのインデックス参照がある場合)
+    - `Phoenix.rpc.index.handler.count`: **50** (大規模な、または多くのインデックス参照がある場合)
 
-    - `Phoenix.stats.updateFrequency`:**1 時間**
+    - `Phoenix.stats.updateFrequency`: **1 時間**
 
-    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`:**1 時間**
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 時間**
 
-    - `Phoenix.coprocessor.maxmetadatacachesize`:**50 MB**
+    - `Phoenix.coprocessor.maxmetadatacachesize`: **50 MB**
 
-- RPC タイムアウト:**3 分**
+- RPC タイムアウト: **3 分**
 
    - RPC タイムアウトには、HBase RPC タイムアウト、HBase クライアント スキャナー タイムアウト、および Phoenix クエリ タイムアウトが含まれます。 
-   - `hbase.client.scanner.caching` パラメーターが、サーバー側とクライアント側の両方で同じ値に設定されていることを確認します。 同じでない場合、この設定により、`OutOfOrderScannerException` に関連したクライアント側のエラーが発生します。 大規模なスキャンの場合、この設定は小さい値に設定する必要があります。 この値は、**100** に設定します。
+   - `hbase.client.scanner.caching` パラメーターが、サーバー側とクライアント側の両方で同じ値に設定されていることを確認します。 同じでない場合、この設定により、`OutOfOrderScannerException` に関連したクライアント側のエラーが発生します。 大規模なスキャンの場合、この設定は小さい値に設定する必要があります。 この値は、 **100** に設定します。
 
 ## <a name="other-considerations"></a>その他の考慮事項
 
@@ -124,4 +124,4 @@ HDInsight HBase では、HFiles はリモート ストレージに格納され�
 
 - [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる。 これは、カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウントです。 Azure コミュニティを適切なリソース (回答、サポート、エキスパート) と結び付けます。
 
-- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 Microsoft Azure サブスクリプションには、サブスクリプション管理と課金サポートへのアクセスが含まれています。テクニカル サポートは、いずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)によって提供されます。
+- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 Microsoft Azure サブスクリプションには、サブスクリプション管理と課金サポートへのアクセスが含まれています。テクニカル サポートは、いずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)によって提供されます。

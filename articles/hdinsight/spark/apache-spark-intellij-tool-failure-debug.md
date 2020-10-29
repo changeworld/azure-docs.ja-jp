@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82857417"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545703"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
 
-この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
+この記事では、 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "82857417"
   
 * IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows) を使用します。
   
-* Azure Toolkit for IntelliJ。 「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)」を参照してください。
+* Azure Toolkit for IntelliJ。 「[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/installation)」を参照してください。
 
 * HDInsight クラスターに接続します。 [HDInsight クラスターへの接続](apache-spark-intellij-tool-plugin.md)に関するページを参照してください。
 
@@ -52,13 +52,13 @@ ms.locfileid: "82857417"
 
    a. プロジェクト名とプロジェクトの場所を入力します。
 
-   b. **[Project SDK] (プロジェクト SDK)** ドロップダウン リストで、**Spark 2.3.2** クラスター用に **[Java 1.8]** を選択します。
+   b. **[Project SDK] (プロジェクト SDK)** ドロップダウン リストで、 **Spark 2.3.2** クラスター用に **[Java 1.8]** を選択します。
 
    c. **[Spark バージョン]** ドロップダウン リストで、 **[Spark 2.3.2(Scala 2.11.8)]** を選択します。
 
    d. **[完了]** を選択します。
 
-3. **[src]**  >  **[main]**  >  **[scala]** を選択してプロジェクトのコードを開きます。 この例では、**AgeMean_Div()** スクリプトを使用します。
+3. **[src]**  >  **[main]**  >  **[scala]** を選択してプロジェクトのコードを開きます。 この例では、 **AgeMean_Div()** スクリプトを使用します。
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>HDInsight クラスター上で Spark Scala/Java アプリケーションを実行する
 
@@ -72,7 +72,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
    ![Intellij の新規構成の追加](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. **[Remotely Run in Cluster]\(クラスターでリモート実行\)** タブに切り替えます。 **[名前]** 、 **[Spark cluster]\(Spark クラスター\)** 、 **[Main class name]\(メイン クラス名\)** に情報を入力します。 ツールでは、**Executor** を使用したデバッグがサポートされています。 **[numExectors]** は既定値が 5 ですが、3 より大きい値に設定することはお勧めできません。 実行時間を短縮するために、 **[job Configurations] (ジョブ構成)** に **[spark.yarn.maxAppAttempts]** を追加し、その値を 1 に設定できます。 **[OK]** ボタンをクリックして構成を保存します。
+3. **[Remotely Run in Cluster]\(クラスターでリモート実行\)** タブに切り替えます。 **[名前]** 、 **[Spark cluster]\(Spark クラスター\)** 、 **[Main class name]\(メイン クラス名\)** に情報を入力します。 ツールでは、 **Executor** を使用したデバッグがサポートされています。 **[numExectors]** は既定値が 5 ですが、3 より大きい値に設定することはお勧めできません。 実行時間を短縮するために、 **[job Configurations] (ジョブ構成)** に **[spark.yarn.maxAppAttempts]** を追加し、その値を 1 に設定できます。 **[OK]** ボタンをクリックして構成を保存します。
 
    ![Intellij の新規構成の実行/デバッグ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -100,7 +100,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. 元のプロジェクトを開くか、または新しいプロジェクトを作成し、それを元のソース コードに関連付けます。 現在、失敗したデバッグでは Spark 2.3.2 バージョンのみがサポートされています。
 
-1. IntelliJ IDEA で、**Spark Failure Debug** 構成ファイルを作成し、 **[Spark Job Failure Context location] (Spark ジョブの失敗したコンテキストの場所)** フィールドで前にダウンロードされた失敗したジョブのリソースから FTD ファイルを選択します。
+1. IntelliJ IDEA で、 **Spark Failure Debug** 構成ファイルを作成し、 **[Spark Job Failure Context location] (Spark ジョブの失敗したコンテキストの場所)** フィールドで前にダウンロードされた失敗したジョブのリソースから FTD ファイルを選択します。
 
    ![失敗構成の作成](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
@@ -128,19 +128,19 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](./apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](../hdinsight-apache-spark-create-standalone-application.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](./apache-spark-create-standalone-application.md)
 * [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
 * [Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](./apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)

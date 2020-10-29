@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076880"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545227"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
@@ -120,6 +120,6 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 
 ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 
-* [HDInsight での Apache Hive の使用](../hdinsight-use-hive.md)
+* [HDInsight での Apache Hive の使用](./hdinsight-use-hive.md)
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 * [Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする](./apache-hadoop-use-sqoop-mac-linux.md)
