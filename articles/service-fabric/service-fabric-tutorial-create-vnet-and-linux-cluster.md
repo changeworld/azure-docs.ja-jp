@@ -3,13 +3,13 @@ title: Azure に Linux Service Fabric クラスターを作成する
 description: Azure CLI を使用して Linux Service Fabric クラスターを既存の Azure 仮想ネットワークにデプロイする方法を学習します。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.custom: mvc
-ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586922"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738960"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -75,7 +75,7 @@ Ubuntu 18.04 LTS の 2 つのテンプレートの違い
 
 ### <a name="virtual-network-and-subnet"></a>仮想ネットワークとサブネット
 
-仮想ネットワークとサブネットの名前は、テンプレート パラメーターで宣言されています。  仮想ネットワークとサブネットのアドレス空間も、テンプレート パラメーターで宣言され、**Microsoft.Network/virtualNetworks** リソース内に構成されます。
+仮想ネットワークとサブネットの名前は、テンプレート パラメーターで宣言されています。  仮想ネットワークとサブネットのアドレス空間も、テンプレート パラメーターで宣言され、 **Microsoft.Network/virtualNetworks** リソース内に構成されます。
 
 * 仮想ネットワークのアドレス空間: 10.0.0.0/16
 * Service Fabric サブネットのアドレス空間: 10.0.2.0/24

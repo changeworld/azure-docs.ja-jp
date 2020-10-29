@@ -7,13 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.custom: devx-track-csharp
-ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 48b8737fc37a183405f42b958e38c328a2ce7cb8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530898"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739581"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -23,16 +23,16 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 たとえば、プロビジョニングの際にデバイスで使用されている証明書を確認し、証明書のプロパティに基づいて IoT ハブにデバイスを割り当てる必要がある場合です。 または、デバイス用のデータベースに情報を格納していて、どの IoT ハブにデバイスを割り当てるかを決定するためにそのデータベースを照会する必要がある場合です。
 
-この記事では、C# で記述された Azure 関数を使用して、カスタム割り当てポリシーについて説明します。 "*Contoso トースター部門*" と "*Contoso ヒート ポンプ部門*" を表す 2 つの新しい IoT ハブを作成します。 プロビジョニングを必要とするデバイスには、プロビジョニングの要求が受け入れられるようにするために、次のいずれかのサフィックスを持つ登録 ID が必要です。
+この記事では、C# で記述された Azure 関数を使用して、カスタム割り当てポリシーについて説明します。 " *Contoso トースター部門* " と " *Contoso ヒート ポンプ部門* " を表す 2 つの新しい IoT ハブを作成します。 プロビジョニングを必要とするデバイスには、プロビジョニングの要求が受け入れられるようにするために、次のいずれかのサフィックスを持つ登録 ID が必要です。
 
-* **-contoso-tstrsd-007**: Contoso トースター部門
-* **-contoso-hpsd-088**: Contoso ヒート ポンプ部門
+* **-contoso-tstrsd-007** : Contoso トースター部門
+* **-contoso-hpsd-088** : Contoso ヒート ポンプ部門
 
 デバイスは、これらの登録 ID の必須サフィックスのいずれかに基づいてプロビジョニングされます。 これらのデバイスは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) に含まれるプロビジョニング サンプルを使用してシミュレートされます。
 
 この記事の以下の手順を実施します。
 
-* Azure CLI を使用して 2 つの Contoso 部門 IoT ハブ (**Contoso トースター部門**と**Contoso ヒート ポンプ部門**) を作成する
+* Azure CLI を使用して 2 つの Contoso 部門 IoT ハブ ( **Contoso トースター部門** と **Contoso ヒート ポンプ部門** ) を作成する
 * カスタム割り当てポリシー用に Azure 関数を使用して新しいグループ登録を作成する
 * 2 つのデバイス シミュレーションのためのデバイス キーを作成する
 * Azure IoT C SDK の開発環境をセットアップする
@@ -52,7 +52,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>プロビジョニング サービスと 2 つの部門 IoT ハブを作成する
 
-このセクションでは、Azure Cloud Shell を使用して、プロビジョニング サービスと、**Contoso トースター部門**と **Contoso ヒート ポンプ部門**を表す 2 つの IoT ハブを作成します。
+このセクションでは、Azure Cloud Shell を使用して、プロビジョニング サービスと、 **Contoso トースター部門** と **Contoso ヒート ポンプ部門** を表す 2 つの IoT ハブを作成します。
 
 > [!TIP]
 > この記事で使用するコマンドにより、米国西部の場所にプロビジョニング サービスとその他のリソースが作成されます。 ご自分の場所から最も近い、Device Provisioning Service がサポートされているリージョンにリソースを作成することをお勧めします。 使用可能な場所の一覧を表示するには、`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` コマンドを実行するか、[Azure の状態](https://azure.microsoft.com/status/)ページに移動して "Device Provisioning Service" を検索します。 コマンドでは、場所は 1 単語または複数単語の形式で指定できます。たとえば、westus、West US、WEST US などです。この値で、大文字と小文字は区別されません。 複数単語形式で場所を指定する場合は、値を引用符で囲みます。たとえば、`-- location "West US"` のようにします。
@@ -60,15 +60,15 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-    次の例では、*contoso-us-resource-group* という名前のリソース グループを *westus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 こうすることで、終わった後のクリーンアップが簡単になります。
+    次の例では、 *contoso-us-resource-group* という名前のリソース グループを *westus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 こうすることで、終わった後のクリーンアップが簡単になります。
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Azure Cloud Shell を使用して、[az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) コマンドでデバイス プロビジョニング サービスを作成します。 このプロビジョニング サービスは、*contoso-us-resource-group* に追加されます。
+2. Azure Cloud Shell を使用して、[az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) コマンドでデバイス プロビジョニング サービスを作成します。 このプロビジョニング サービスは、 *contoso-us-resource-group* に追加されます。
 
-    次の例では、*contoso-provisioning-service-1098* という名前のプロビジョニング サービスを *westus* の場所に作成します。 一意のサービス名を使用する必要があります。 **1098** の代わりに、サービス名に独自のサフィックスを構成します。
+    次の例では、 *contoso-provisioning-service-1098* という名前のプロビジョニング サービスを *westus* の場所に作成します。 一意のサービス名を使用する必要があります。 **1098** の代わりに、サービス名に独自のサフィックスを構成します。
 
     ```azurecli-interactive 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
@@ -76,9 +76,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     このコマンドが完了するまでに数分かかる場合があります。
 
-3. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso トースター部門** IoT ハブを作成します。 この IoT ハブは、*contoso-us-resource-group* に追加されます。
+3. Azure Cloud Shell を使用して、 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso トースター部門** IoT ハブを作成します。 この IoT ハブは、 *contoso-us-resource-group* に追加されます。
 
-    次の例では、*contoso-toasters-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-toasters-` が必要です。
+    次の例では、 *contoso-toasters-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-toasters-` が必要です。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -86,9 +86,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     このコマンドが完了するまでに数分かかる場合があります。
 
-4. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso ヒート ポンプ部門** IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
+4. Azure Cloud Shell を使用して、 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso ヒート ポンプ部門** IoT ハブを作成します。 この IoT ハブも、 *contoso-us-resource-group* に追加されます。
 
-    次の例では、*contoso-heatpumps-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-heatpumps-` が必要です。
+    次の例では、 *contoso-heatpumps-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-heatpumps-` が必要です。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -104,17 +104,17 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、 **[作成]** を選択します。
 
-3. **関数アプリ**の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、 **[確認と作成]** を選択します。
+3. **関数アプリ** の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、 **[確認と作成]** を選択します。
 
-    **リソース グループ**: **[contoso-us-resource-group]** を選択して、この記事で作成されるすべてのリソースをまとめて保持します。
+    **リソース グループ** : **[contoso-us-resource-group]** を選択して、この記事で作成されるすべてのリソースをまとめて保持します。
 
-    **関数アプリ名**:一意の関数アプリ名を入力します。 この例では、**contoso-function-app-1098** を使用します。
+    **関数アプリ名** :一意の関数アプリ名を入力します。 この例では、 **contoso-function-app-1098** を使用します。
 
-    **発行**: **[コード]** が選択されていることを確認します。
+    **発行** : **[コード]** が選択されていることを確認します。
 
-    **ランタイム スタック**:ドロップダウンから **[.NET Core]** を選択します。
+    **ランタイム スタック** :ドロップダウンから **[.NET Core]** を選択します。
 
-    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では**米国西部**を使用します。
+    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では **米国西部** を使用します。
 
     > [!NOTE]
     > 既定では、Application Insights が有効になっています。 この記事では Application Insights は必要ありませんが、カスタム割り当てで発生する問題を理解し、調査するのに役立つ場合があります。 必要に応じて、 **[監視]** タブを選択し、 **[Application Insights を有効にする]** を **[いいえ]** に選択することで、Application Insights を無効にすることができます。
@@ -127,13 +127,13 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     ![関数アプリに関数を追加する](./media/how-to-use-custom-allocation-policies/create-function.png)
 
-6. **.NET 用の Azure Functions - 作業の開始**ページの**デプロイ環境の選択**ステップで **[ポータル内]** タイルを選択してから、 **[続行]** を選択します。
+6. **.NET 用の Azure Functions - 作業の開始** ページの **デプロイ環境の選択** ステップで **[ポータル内]** タイルを選択してから、 **[続行]** を選択します。
 
     ![ポータル開発環境を選択する](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-7. 次のページの**関数の作成**ステップで、 **[Webhook + API]** タイルを選択してから、 **[作成]** を選択します。 **HttpTrigger1** という名前の関数が作成され、ポータルに **run.csx** コード ファイルの内容が表示されます。
+7. 次のページの **関数の作成** ステップで、 **[Webhook + API]** タイルを選択してから、 **[作成]** を選択します。 **HttpTrigger1** という名前の関数が作成され、ポータルに **run.csx** コード ファイルの内容が表示されます。
 
-8. 必須の Nuget パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの Nuget パッケージで定義されているクラスが使用されます。 Azure Functions では、*function.host* ファイルを使用して Nuget パッケージが参照されます。 このステップで、*function.host* ファイルを保存してアップロードします。
+8. 必須の Nuget パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの Nuget パッケージで定義されているクラスが使用されます。 Azure Functions では、 *function.host* ファイルを使用して Nuget パッケージが参照されます。 このステップで、 *function.host* ファイルを保存してアップロードします。
 
     1. 次の行を任意のエディターにコピーし、ファイルを *function.host* としてご使用のコンピューターに保存します。
 
@@ -153,7 +153,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
         ![[ファイルの表示] を開く](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    3. **[アップロード]** を選択し、**function.proj** ファイルを参照し、 **[開く]** を選択してファイルをアップロードします。
+    3. **[アップロード]** を選択し、 **function.proj** ファイルを参照し、 **[開く]** を選択してファイルをアップロードします。
 
         ![アップロード ファイルの選択](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
 
@@ -306,7 +306,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 3. **[登録グループの追加]** で、次の情報を入力して、 **[保存]** ボタンを選択します。
 
-    **[グループ名]** : 「**contoso-custom-allocated-devices**」を入力します。
+    **[グループ名]** : 「 **contoso-custom-allocated-devices** 」を入力します。
 
     **[構成証明の種類]** : **[対称キー]** を選択します。
 
@@ -320,7 +320,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     両方の部門 IoT ハブに対してこの手順を実行する必要があります。
 
-    **サブスクリプション**:複数のサブスクリプションがある場合は、部門 IoT ハブを作成したサブスクリプションを選択します。
+    **サブスクリプション** :複数のサブスクリプションがある場合は、部門 IoT ハブを作成したサブスクリプションを選択します。
 
     **[IoT ハブ]** : 作成した部門ハブのいずれかを選択します。
 
@@ -342,7 +342,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 このセクションでは、一意のデバイス キーを 2 つ作成します。 1 つのキーは、シミュレートされたトースター デバイスに使用します。 もう 1 つのキーは、シミュレートされたヒート ポンプ デバイスに使用します。
 
-デバイス キーを生成するには、前にメモした**主キー**を使用して、デバイスごとにデバイス登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。 登録グループを使用して派生デバイス キーを作成する方法の詳細については、「[Symmetric key attestation (対称キーの構成証明)](concepts-symmetric-key-attestation.md)」のグループ登録に関するセクションを参照してください。
+デバイス キーを生成するには、前にメモした **主キー** を使用して、デバイスごとにデバイス登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。 登録グループを使用して派生デバイス キーを作成する方法の詳細については、「[Symmetric key attestation (対称キーの構成証明)](concepts-symmetric-key-attestation.md)」のグループ登録に関するセクションを参照してください。
 
 この記事の例では、次の 2 つのデバイス登録 ID を使用して、両方のデバイスのデバイス キーを計算します。 両方の登録 ID に、カスタム割り当てポリシーのサンプル コードを操作するために有効なサフィックスが付いています。
 
@@ -353,7 +353,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
 
-1. **KEY** の値を、前に書き留めた**主キー**で置き換えます。
+1. **KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -377,7 +377,7 @@ Linux ワークステーションを使用している場合は、次の例に�
 
 Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
 
-1. **KEY** の値を、前に書き留めた**主キー**で置き換えます。
+1. **KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -410,7 +410,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に** 、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -461,7 +461,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、トースター デバイスが認識され、カスタム割り当てポリシーを使用して IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[ _ID スコープ_ ]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -471,9 +471,9 @@ Windows ベースのワークステーションを使用している場合は、
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、**prov\_dev\_client\_sample.c** を開きます。
+3. Visual Studio の " *ソリューション エクスプローラー* " ウィンドウで、 **Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、 **prov\_dev\_client\_sample.c** を開きます。
 
-4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ**の値で置き換えます。 
+4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -492,7 +492,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Contoso トースター デバイスをシミュレートする
 
-1. トースター デバイスをシミュレートするには、**prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
+1. トースター デバイスをシミュレートするには、 **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -528,7 +528,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 ### <a name="simulate-the-contoso-heat-pump-device"></a>Contoso ヒート ポンプ デバイスをシミュレートする
 
-1. ヒート ポンプ デバイスをシミュレートするには、**prov\_dev\_client\_sample.c** の `prov_dev_set_symmetric_key_info()` の呼び出しを、同じようにヒート ポンプの登録 ID とデバイス派生キー (先ほど生成したもの) で更新します。 以下に示したキーの値 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** も、あくまで一例です。
+1. ヒート ポンプ デバイスをシミュレートするには、 **prov\_dev\_client\_sample.c** の `prov_dev_set_symmetric_key_info()` の呼び出しを、同じようにヒート ポンプの登録 ID とデバイス派生キー (先ほど生成したもの) で更新します。 以下に示したキーの値 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** も、あくまで一例です。
 
     ```c
     // Set the symmetric key if using they auth type

@@ -3,15 +3,15 @@ title: Azure Functions のテスト
 description: Visual Studio の C# 関数と VS Code の JavaScript 関数の自動化テストを作成する
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff70c14310dd81a051ac27c1d6d59bb3d1deb7b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212900"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677612"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -69,7 +69,7 @@ namespace Functions.Tests
 }
 ```
 
-次に、*Functions.Tests* プロジェクトに **ListLogger.cs** という名前の新しいクラスを作成し、次のコードを入力します。
+次に、 *Functions.Tests* プロジェクトに **ListLogger.cs** という名前の新しいクラスを作成し、次のコードを入力します。
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -107,15 +107,15 @@ namespace Functions.Tests
 
 `ListLogger` クラスは、`ILogger` インターフェイスによって縮小される次のメンバーを実装します。
 
-- **BeginScope**:スコープがログにコンテキストを追加します。 この場合、テストで `NullScope` クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
+- **BeginScope** :スコープがログにコンテキストを追加します。 この場合、テストで `NullScope` クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
 
-- **IsEnabled**:既定の値 `false` が指定されます。
+- **IsEnabled** :既定の値 `false` が指定されます。
 
-- **Log**:このメソッドは、指定された `formatter` 関数を使用してメッセージの書式を設定してから、結果のテキストを `Logs` コレクションに追加します。
+- **Log** :このメソッドは、指定された `formatter` 関数を使用してメッセージの書式を設定してから、結果のテキストを `Logs` コレクションに追加します。
 
 `Logs` コレクションは `List<string>` のインスタンスであり、コンストラクターで初期化されます。
 
-次に、*Functions.Tests* プロジェクトに **LoggerTypes.cs** という名前の新しいファイルを作成し、次のコードを入力します。
+次に、 *Functions.Tests* プロジェクトに **LoggerTypes.cs** という名前の新しいファイルを作成し、次のコードを入力します。
 
 ```csharp
 namespace Functions.Tests
@@ -130,7 +130,7 @@ namespace Functions.Tests
 
 この列挙型は、テストで使用されるロガーの種類を指定します。
 
-次に、*Functions.Tests* プロジェクトに **TestFactory.cs** という名前の新しいクラスを作成し、次のコードを入力します。
+次に、 *Functions.Tests* プロジェクトに **TestFactory.cs** という名前の新しいクラスを作成し、次のコードを入力します。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -193,15 +193,15 @@ namespace Functions.Tests
 
 `TestFactory` クラスは、次のメンバーを実装します。
 
-- **Data**:このプロパティは、サンプル データの [IEnumerable](/dotnet/api/system.collections.ienumerable) コレクションを返します。 キー値のペアは、クエリ文字列に渡される値を表します。
+- **Data** :このプロパティは、サンプル データの [IEnumerable](/dotnet/api/system.collections.ienumerable) コレクションを返します。 キー値のペアは、クエリ文字列に渡される値を表します。
 
-- **CreateDictionary**:このメソッドは、キー/値ペアを引数として受け取り、クエリ文字列値を表す `QueryCollection` を作成するために使用する新しい `Dictionary` を返します。
+- **CreateDictionary** :このメソッドは、キー/値ペアを引数として受け取り、クエリ文字列値を表す `QueryCollection` を作成するために使用する新しい `Dictionary` を返します。
 
-- **CreateHttpRequest**:このメソッドは、指定されたクエリ文字列パラメーターで初期化される HTTP 要求を作成します。
+- **CreateHttpRequest** :このメソッドは、指定されたクエリ文字列パラメーターで初期化される HTTP 要求を作成します。
 
-- **CreateLogger**:このメソッドは、ロガーの種類に応じて、テストに使用されるロガー クラスを返します。 `ListLogger` は、テストで評価に使用できるログ記録されたメッセージを追跡します。
+- **CreateLogger** :このメソッドは、ロガーの種類に応じて、テストに使用されるロガー クラスを返します。 `ListLogger` は、テストで評価に使用できるログ記録されたメッセージを追跡します。
 
-最後に、*Functions.Tests* プロジェクトに **FunctionsTests.cs** という名前の新しいクラスを作成し、次のコードを入力します。
+最後に、 *Functions.Tests* プロジェクトに **FunctionsTests.cs** という名前の新しいクラスを作成し、次のコードを入力します。
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -245,23 +245,23 @@ namespace Functions.Tests
 
 このクラスで実装されるメンバーは次のとおりです。
 
-- **Http_trigger_should_return_known_string**:このテストは、HTTP 関数へのクエリ文字列値 `name=Bill` を含む要求を作成し、予期された応答が返されることを確認します。
+- **Http_trigger_should_return_known_string** :このテストは、HTTP 関数へのクエリ文字列値 `name=Bill` を含む要求を作成し、予期された応答が返されることを確認します。
 
-- **Http_trigger_should_return_string_from_member_data**:このテストは、xUnit 属性を使用して、HTTP 関数にサンプル データを提供します。
+- **Http_trigger_should_return_string_from_member_data** :このテストは、xUnit 属性を使用して、HTTP 関数にサンプル データを提供します。
 
-- **Timer_should_log_message**:このテストは、`ListLogger` のインスタンスを作成してタイマー関数に渡します。 関数が実行されると、予期されたメッセージが存在することを確認するためにログがチェックされます。
+- **Timer_should_log_message** :このテストは、`ListLogger` のインスタンスを作成してタイマー関数に渡します。 関数が実行されると、予期されたメッセージが存在することを確認するためにログがチェックされます。
 
 テストでアプリケーション設定にアクセスする場合は、[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables) を使用できます。
 
 ### <a name="run-tests"></a>テストの実行
 
-テストを実行するには、**テスト エクスプローラー**に移動し、 **[すべて実行]** の順にクリックします。
+テストを実行するには、 **テスト エクスプローラー** に移動し、 **[すべて実行]** の順にクリックします。
 
 ![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>テストのデバッグ
 
-テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、 **[実行] > [前回の実行をデバッグする]** の順にクリックします。
+テストをデバッグするには、テストにブレークポイントを設定し、 **テスト エクスプローラー** に移動して、 **[実行] > [前回の実行をデバッグする]** の順にクリックします。
 
 ## <a name="javascript-in-vs-code"></a>VS Code での JavaScript
 
@@ -293,7 +293,7 @@ npm i jest
 
 ### <a name="create-test-modules"></a>テスト モジュールを作成する
 
-プロジェクトが初期化されたら、自動テストの実行に使用するモジュールを作成できます。 最初に、*testing* という名前の、サポート モジュールを保持する新しいフォルダーを作成します。
+プロジェクトが初期化されたら、自動テストの実行に使用するモジュールを作成できます。 最初に、 *testing* という名前の、サポート モジュールを保持する新しいフォルダーを作成します。
 
 *testing* フォルダーに新しいファイルを追加して **defaultContext.js** という名前を付け、次のコードを追加します。
 
@@ -303,7 +303,7 @@ module.exports = {
 };
 ```
 
-このモジュールは、*log* 関数をモックして既定の実行コンテキストを表します。
+このモジュールは、 *log* 関数をモックして既定の実行コンテキストを表します。
 
 次に、新しいファイルを追加して **defaultTimer.js** という名前を付け、次のコードを追加します。
 
@@ -315,7 +315,7 @@ module.exports = {
 
 このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。 テスト ハーネスは結果をテストするために関数を直接呼び出すだけなので、ここでは NCRONTAB 式などのタイマー構成は必要ありません。
 
-次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](/azure/developer/javascript/tutorial-vscode-serverless-node-01)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+次に、VS Code の Functions 拡張機能を使用して、 [JavaScript HTTP 関数を新規作成](/azure/developer/javascript/tutorial-vscode-serverless-node-01)して *HttpTrigger* という名前を付けます。 関数を作成した後、 **index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 
 ```javascript
 const httpFunction = require('./index');
@@ -334,9 +334,9 @@ test('Http trigger should return known text', async () => {
 });
 ```
 
-テンプレートからの HTTP 関数は、クエリ文字列に指定された名前と連結された文字列 "Hello" を返します。 このテストは、要求の偽のインスタンスを作成して HTTP 関数に渡します。 このテストは、*log* メソッドが 1 回呼び出され、返されるテキストが "Hello Bill" に等しいことを確認します。
+テンプレートからの HTTP 関数は、クエリ文字列に指定された名前と連結された文字列 "Hello" を返します。 このテストは、要求の偽のインスタンスを作成して HTTP 関数に渡します。 このテストは、 *log* メソッドが 1 回呼び出され、返されるテキストが "Hello Bill" に等しいことを確認します。
 
-次に、VS Code の Functions 拡張機能を使用して、JavaScript タイマー関数を新規作成して *TimerTrigger*という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+次に、VS Code の Functions 拡張機能を使用して、JavaScript タイマー関数を新規作成して *TimerTrigger* という名前を付けます。 関数を作成した後、 **index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 
 ```javascript
 const timerFunction = require('./index');
@@ -349,11 +349,11 @@ test('Timer trigger should log message', () => {
 });
 ```
 
-テンプレートからのタイマー関数は、関数本文の最後のメッセージをログに記録します。 このテストは、*log* 関数が 1 回呼び出されることを確認します。
+テンプレートからのタイマー関数は、関数本文の最後のメッセージをログに記録します。 このテストは、 *log* 関数が 1 回呼び出されることを確認します。
 
 ### <a name="run-tests"></a>テストの実行
 
-キーを実行するには、**CTRL + ~** を押してコマンド ウィンドウを開き、`npm test` を実行します。
+キーを実行するには、 **CTRL + ~** を押してコマンド ウィンドウを開き、`npm test` を実行します。
 
 ```bash
 npm test
@@ -363,7 +363,7 @@ npm test
 
 ### <a name="debug-tests"></a>テストのデバッグ
 
-テストをデバッグするには、*launch.json* ファイルに次の構成を追加します。
+テストをデバッグするには、 *launch.json* ファイルに次の構成を追加します。
 
 ```json
 {
@@ -379,7 +379,7 @@ npm test
 }
 ```
 
-次に、テストにブレークポイントを設定し、**F5** を押します。
+次に、テストにブレークポイントを設定し、 **F5** を押します。
 
 ## <a name="next-steps"></a>次のステップ
 

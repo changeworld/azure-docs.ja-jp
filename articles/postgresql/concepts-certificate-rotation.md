@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 65357642d940453b5bbfabf2fbb726ca909ce6f5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0eec1538814b93c024fe6a5aa34ee73c4c09184c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173125"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740422"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL シングル サーバーのルート CA の変更について
 
-Azure Database for PostgreSQL では、[データベース サーバーに接続する](concepts-connectivity-architecture.md)ために使用される、SSL によって有効にされるクライアント アプリケーションやドライバー用のルート証明書が変更されます。 現在使用できるルート証明書は、標準メンテナンスおよびセキュリティのベスト プラクティスの一環として、2021 年 2 月 15 日 (2021/02/15) に有効期限が切れるように設定されています。 この記事では、予定されている変更、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
+Azure Database for PostgreSQL では、[データベース サーバーに接続する](concepts-connectivity-architecture.md)ために使用される、SSL によって有効にされるクライアント アプリケーションやドライバー用のルート証明書が変更されます。 現在使用できるルート証明書は、標準メンテナンスおよびセキュリティのベスト プラクティスの一部として、2021 年 2 月 15 日 (2021/02/15) に有効期限が切れます。 この記事では、予定されている変更、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
 
 >[!NOTE]
-> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2020 年 10 月 26 日から 2021 年 2 月 15 日まで延長しました。 この延長により、ユーザーが影響を受ける場合に、ユーザーがクライアントの変更を実装するのに十分なリード タイムが得られることを願っています。
+> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2020 年 10 月 26 日から 2021 年 2 月 15 日まで延長しました。 この延長により、ユーザーが影響を受ける場合に、クライアントの変更を実装するのに十分なリード タイムを提供できるのではないかと考えています。
 
 ## <a name="what-update-is-going-to-happen"></a>予定されている更新
 
@@ -52,11 +52,11 @@ PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメント�
 *   **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方の証明書が含まれる、結合された CA 証明書ストアを生成します。
     *   DefaultJavaSSLFactory を使用する Java (PostgreSQL JDBC) ユーザーの場合は、以下を実行します。
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -88,7 +88,7 @@ PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメント�
 *   接続がタイムアウトしました
 
 > [!NOTE]
-> 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。それ以降は、Baltimore 証明書を破棄しても構いません。 
+> 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -104,7 +104,7 @@ SSL/TLS を使用していない場合は、何も行う必要は必要ありま
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4.Azure Database for PostgreSQL で App Service を使用している場合、どのような影響がありますか?
 Azure App Services で Azure Database for PostgreSQL に接続している場合、アプリケーションでの SSL の使用方法により、2 つのシナリオが考えられます。
 *   この新しい証明書は、プラットフォーム レベルで App Service に追加されています。 App Service プラットフォームに含まれる SSL 証明書をアプリケーションで使用している場合は、何もする必要はありません。
-*   SSL 証明書ファイルへのパスをコードに明示的に含めている場合は、新しい証明書をダウンロードし、新しい証明書を使用するようにコードを更新する必要があります。このシナリオの良い例は、[App Service ドキュメント](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)で共有されているように、App Service でカスタム コンテナーを使用する場合です。
+*   SSL 証明書ファイルへのパスをコードに明示的に含めている場合は、新しい証明書をダウンロードし、新しい証明書を使用するようにコードを更新する必要があります。このシナリオの好例は、[App Service ドキュメント](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)で共有されている、App Service でカスタム コンテナーを使用する場合です。
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-postgresql"></a>5.Azure Database for PostgreSQL で Azure Kubernetes Services (AKS) を使用している場合、どのような影響がありますか?
 Azure Kubernetes Services (AKS) を使用して Azure Database for PostgreSQL に接続しようとしている場合は、専用の顧客ホスト環境からのアクセスに似ています。 [こちら](../aks/ingress-own-tls.md)の手順を参照してください。
@@ -136,7 +136,7 @@ Azure Database for PostgreSQL によって使用されるこれらの証明書�
 いいえ。 証明書ファイルに **DigiCertGlobalRootG2** が既に含まれている場合、必要なアクションはありません。
 
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14.Microsoft によって提供される PgBouncer サイドカーの docker イメージは、どのようなものを使用していますか?
-[**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) と [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) の両方をサポートする新しい docker イメージは、[こちら](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar)に公開されます (最新のタグ)。 2021 年 2 月 15 日以降の接続の中断を回避するために、この新しいイメージをプルすることができます。 
+[**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) と [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) の両方をサポートする新しい docker イメージは、 [こちら](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar)に公開されます (最新のタグ)。 2021 年 2 月 15 日以降の接続の中断を回避するために、この新しいイメージをプルすることができます。 
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. さらに質問がある場合はどうすればよいですか?
 質問がある場合は、[Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com) でコミュニティの専門家から回答を得ることができます。 サポート プランをお持ちで技術的なヘルプが必要な場合は、[こちらまでお問い合わせください](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

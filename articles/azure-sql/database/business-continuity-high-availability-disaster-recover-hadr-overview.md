@@ -13,17 +13,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327563"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678053"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database および SQL Managed Instance での**ビジネス継続性**とは、中断 (特にそのコンピューティング インフラストラクチャに対する) が発生した場合でもビジネス活動を続けることができるようにするメカニズム、ポリシー、手順を指します。 ほとんどの場合、SQL Database および SQL Managed Instance では、クラウド環境で発生する可能性がある破壊的なイベントが処理され、アプリケーションとビジネス プロセスの実行が維持されます。 ただし、次のような SQL Database では自動的に対処できない破壊的なイベントがあります。
+Azure SQL Database および SQL Managed Instance での **ビジネス継続性** とは、中断 (特にそのコンピューティング インフラストラクチャに対する) が発生した場合でもビジネス活動を続けることができるようにするメカニズム、ポリシー、手順を指します。 ほとんどの場合、SQL Database および SQL Managed Instance では、クラウド環境で発生する可能性がある破壊的なイベントが処理され、アプリケーションとビジネス プロセスの実行が維持されます。 ただし、次のような SQL Database では自動的に対処できない破壊的なイベントがあります。
 
 - ユーザーが誤ってテーブルの行を削除または更新した。
 - 悪意のある攻撃者がデータの削除やデータベースの削除に成功した。
@@ -48,7 +48,7 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 
 - [テンポラル テーブル](../temporal-tables.md)では、任意の時点から行バージョンを復元することができます。
 - [組み込み自動バックアップ](automated-backups-overview.md)と[ポイントインタイム リストア](recovery-using-backups.md#point-in-time-restore)を使用すると、構成された保有期間 (最大 35 日間) 内の特定の時点にデータベース全体を復元できます。
-- **サーバーが削除されていない**場合は、[削除されたデータベースを削除された時点に復元する](recovery-using-backups.md#deleted-database-restore)ことができます。
+- **サーバーが削除されていない** 場合は、 [削除されたデータベースを削除された時点に復元する](recovery-using-backups.md#deleted-database-restore)ことができます。
 - [長期的なバックアップ保有期間](long-term-retention-overview.md)では、バックアップを 10 年間保持することができます。 これは SQL Managed Instance の制限付きパブリック プレビュー段階にあります。
 - データ センターの停止またはアプリケーションのアップグレードが発生した場合に、[アクティブ geo レプリケーション](active-geo-replication-overview.md)を使って、読み取り可能レプリカを作成し、手動で任意のレプリカにフェールオーバーできます。
 - [自動フェールオーバー グループ](auto-failover-group-overview.md#terminology-and-capabilities)を使用すると、データセンターの機能停止が発生した場合に、アプリケーションを自動的に復旧することができます。
@@ -93,7 +93,7 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 | 手動のデータベース フェールオーバー | 30 秒 | 5 秒 |
 
 > [!NOTE]
-> *手動のデータベース フェールオーバー*は、[計画外モード](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)を使用して、単一データベースをその geo レプリケートされたセカンダリにフェールオーバーすることを指します。
+> *手動のデータベース フェールオーバー* は、 [計画外モード](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)を使用して、単一データベースをその geo レプリケートされたセカンダリにフェールオーバーすることを指します。
 自動フェールオーバーの RTO と RPO について詳しくは、この記事の前出の表を参照してください。
 
 自動フェールオーバー グループは、アプリケーションが次のいずれかの条件を満たす場合に使用します。
@@ -141,7 +141,7 @@ geo 冗長ストレージ (既定で有効) で自動バックアップを使用
 
 - クライアントとクライアント アプリケーションを、新しいサーバーおよび復元されたデータベースにリダイレクトする。
 - ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)を使用して、適切な規則を有効にする。
-- 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確保する (または [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を使用する)。
+- 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確保する (または [包含ユーザー](/sql/relational-databases/security/contained-database-users-making-your-database-portable)を使用する)。
 - 必要に応じて、監査を構成する。
 - 必要に応じて、アラートを構成する。
 

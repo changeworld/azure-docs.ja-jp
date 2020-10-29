@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055175"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740018"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド
 
@@ -20,9 +20,9 @@ ms.locfileid: "88055175"
 
 現在、Microsoft では、エンティティを定義するための 2 つの API を提供しています。
 
-- **クラスベースの構文**は、エンティティと操作をクラスおよびメソッドとして表します。 この構文を使用すると、簡単に読み取り可能なコードが生成され、インターフェイスによって型チェックされた方法で操作を呼び出すことができます。 
+- **クラスベースの構文** は、エンティティと操作をクラスおよびメソッドとして表します。 この構文を使用すると、簡単に読み取り可能なコードが生成され、インターフェイスによって型チェックされた方法で操作を呼び出すことができます。 
 
-- **関数ベースの構文**は、エンティティを関数として表す下位レベルのインターフェイスです。 これにより、エンティティ操作のディスパッチ方法と、エンティティの状態の管理方法を細かく制御できます。  
+- **関数ベースの構文** は、エンティティを関数として表す下位レベルのインターフェイスです。 これにより、エンティティ操作のディスパッチ方法と、エンティティの状態の管理方法を細かく制御できます。  
 
 この記事では、主に、ほとんどのアプリケーションに適していると予想されるクラスベースの構文について重点的に説明します。 ただし、[関数ベースの構文](#function-based-syntax)は、エンティティの状態と操作に対して独自の抽象的概念を定義または管理する必要があるアプリケーションに適している場合があります。 また、クラスベースの構文で現在サポートされていない総称性を必要とするライブラリの実装にも適している可能性があります。 
 
@@ -67,10 +67,10 @@ public class Counter
 }
 ```
 
-`Run` 関数には、クラスベースの構文を使用するために必要な定型句が含まれています。 それは、*静的な* Azure Function である必要があります。 エンティティによって処理される操作メッセージごとに 1 回実行されます。 `DispatchAsync<T>` が呼び出され、エンティティがまだメモリに存在しない場合は、`T` 型のオブジェクトが構築され、ストレージで見つかった最後に保持されていた JSON (存在する場合) を使ってフィールドが設定されます。 次に、名前が一致するメソッドが呼び出されます。
+`Run` 関数には、クラスベースの構文を使用するために必要な定型句が含まれています。 それは、 *静的な* Azure Function である必要があります。 エンティティによって処理される操作メッセージごとに 1 回実行されます。 `DispatchAsync<T>` が呼び出され、エンティティがまだメモリに存在しない場合は、`T` 型のオブジェクトが構築され、ストレージで見つかった最後に保持されていた JSON (存在する場合) を使ってフィールドが設定されます。 次に、名前が一致するメソッドが呼び出されます。
 
 > [!NOTE]
-> クラスベースのエンティティの状態は、エンティティが操作を処理する前に**暗黙的に作成**され、`Entity.Current.DeleteState()` を呼び出すことにより、操作で**明示的に削除**できます。
+> クラスベースのエンティティの状態は、エンティティが操作を処理する前に **暗黙的に作成** され、`Entity.Current.DeleteState()` を呼び出すことにより、操作で **明示的に削除** できます。
 
 ### <a name="class-requirements"></a>クラスの要件
  
@@ -331,7 +331,7 @@ public class Counter
 }
 ```
 
-既定では、クラスの名前は JSON 表現の一部として格納*されません*。つまり、`TypeNameHandling.None` を既定の設定として使用します。 この既定の動作は、`JsonObject` 属性または `JsonProperty` 属性を使用してオーバーライドできます。
+既定では、クラスの名前は JSON 表現の一部として格納 *されません* 。つまり、`TypeNameHandling.None` を既定の設定として使用します。 この既定の動作は、`JsonObject` 属性または `JsonProperty` 属性を使用してオーバーライドできます。
 
 ### <a name="making-changes-to-class-definitions"></a>クラス定義に対する変更
 
@@ -427,7 +427,7 @@ public class HttpEntity
     [JsonIgnore]
     private readonly HttpClient client;
 
-    public class HttpEntity(IHttpClientFactory factory)
+    public HttpEntity(IHttpClientFactory factory)
     {
         this.client = factory.CreateClient();
     }
@@ -450,7 +450,7 @@ public class HttpEntity
 > シリアル化に関する問題を回避するには、挿入された値を格納するためのフィールドをシリアル化から除外するようにしてください。
 
 > [!NOTE]
-> 通常の .NET Azure Functions でコンストラクターの挿入を使用する場合とは異なり、クラスベースのエンティティに対する関数のエントリ ポイント メソッドは、`static` と宣言する "*必要があります*"。 非静的な関数エントリ ポイントを宣言すると、通常の Azure Functions オブジェクト初期化子と永続エンティティ オブジェクト初期化子との間で競合が発生する可能性があります。
+> 通常の .NET Azure Functions でコンストラクターの挿入を使用する場合とは異なり、クラスベースのエンティティに対する関数のエントリ ポイント メソッドは、`static` と宣言する " *必要があります* "。 非静的な関数エントリ ポイントを宣言すると、通常の Azure Functions オブジェクト初期化子と永続エンティティ オブジェクト初期化子との間で競合が発生する可能性があります。
 
 ## <a name="function-based-syntax"></a>関数ベースの構文
 

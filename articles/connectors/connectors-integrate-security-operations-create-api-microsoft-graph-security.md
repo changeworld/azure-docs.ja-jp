@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986370"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677500"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
@@ -30,13 +30,13 @@ ms.locfileid: "87986370"
 
 ロジック アプリのワークフローでは、Microsoft Graph Security コネクタから応答を取得するアクションを使用して、その出力をワークフローの他のアクションで使用できるようにすることができます。 Microsoft Graph Security コネクタのアクションからの出力を、ワークフローの他のアクションで使用することもできます。 たとえば、Microsoft Graph Security コネクタを通して重大度が高いアラートを取得したら、これらのアラートを Outlook コネクタを使用して電子メール メッセージで送信できます。 
 
-Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](https://aka.ms/graphsecuritydocs)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Microsoft Flow または PowerApps については、[Flow の概要](https://flow.microsoft.com/)または [PowerApps の概要](https://powerapps.microsoft.com/)に関するページを参照してください。
+Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](/graph/security-concept-overview)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Microsoft Flow または PowerApps については、[Flow の概要](https://flow.microsoft.com/)または [PowerApps の概要](https://powerapps.microsoft.com/)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
-* Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって "*明示的に与えられた*" 同意が必要です。これは [Microsoft Graph Security の認証要件](https://aka.ms/graphsecurityauth)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
+* Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって " *明示的に与えられた* " 同意が必要です。これは [Microsoft Graph Security の認証要件](/graph/security-authorization)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
 
   | プロパティ | 値 |
   |----------|-------|
@@ -96,7 +96,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
    | **間隔** | `interval` | はい | Integer | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
-   | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
+   | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、 [UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、 [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で [日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 " [*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
    ||||||
 
 1.  操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
@@ -109,7 +109,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 ### <a name="manage-alerts"></a>Manage alerts
 
-フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 重大度が高いアラートの一覧を取得する場合の**アラートの取得**アクションのパラメーターの例は次のとおりです。
+フィルター処理、並べ替え、または最新の結果の取得を行うには、 [Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) " *だけ* " を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は " *指定しないでください* "。 重大度が高いアラートの一覧を取得する場合の **アラートの取得** アクションのパラメーターの例は次のとおりです。
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -124,7 +124,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 ### <a name="manage-alert-subscriptions"></a>アラート サブスクリプションを管理する
 
-Microsoft Graph では、"[*サブスクリプション*](/graph/api/resources/subscription)" ([*Webhook*](/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は "*含めないでください*"。 代わりに、次の例の形式を使用してください。
+Microsoft Graph では、" [*サブスクリプション*](/graph/api/resources/subscription)" ( [*Webhook*](/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は " *含めないでください* "。 代わりに、次の例の形式を使用してください。
 
 `security/alerts?$filter=status eq 'NewAlert'`
 
@@ -138,30 +138,29 @@ Microsoft Graph では、"[*サブスクリプション*](/graph/api/resources/s
 
 ### <a name="manage-threat-intelligence-indicators"></a>脅威インテリジェンス インジケーターを管理する
 
-フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の**脅威インテリジェンス インジケーターの取得**アクションのパラメーターの具体例を次に示します。
+フィルター処理、並べ替え、または最新の結果の取得を行うには、 [Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) " *だけ* " を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は " *指定しないでください* "。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の **脅威インテリジェンス インジケーターの取得** アクションのパラメーターの具体例を次に示します。
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-このコネクタで使用できるクエリの詳細については、[Microsoft Graph セキュリティ脅威インテリジェンス インジケーター リファレンス ドキュメントの「オプションのクエリ パラメーター」](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティの脅威インテリジェンス インジケーター](/graph/api/resources/tiindicator?view=graph-rest-beta)の詳細を確認してください。
+このコネクタで使用できるクエリの詳細については、[Microsoft Graph セキュリティ脅威インテリジェンス インジケーター リファレンス ドキュメントの「オプションのクエリ パラメーター」](/graph/api/tiindicators-list)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティの脅威インテリジェンス インジケーター](/graph/api/resources/tiindicator)の詳細を確認してください。
 
 | アクション | 説明 |
 |--------|-------------|
-| **脅威インテリジェンス インジケーターを取得する** | 1 つまたは複数の[脅威インテリジェンス インジケーターのプロパティ](/graph/api/resources/tiindicator?view=graph-rest-beta)に基づいてフィルター処理された脅威インテリジェンス インジケーターを取得します。例: `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **脅威インテリジェンス インジケーターを取得する** | 1 つまたは複数の[脅威インテリジェンス インジケーターのプロパティ](/graph/api/resources/tiindicator)に基づいてフィルター処理された脅威インテリジェンス インジケーターを取得します。例: `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **脅威インテリジェンス インジケーターを ID で取得する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを取得します。 | 
-| **脅威インテリジェンス インジケーターを作成する** | 脅威インテリジェンス インジケーター コレクションに投稿することで、新しい 脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターを作成するための必須プロパティ](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
-| **複数の脅威インテリジェンス インジケーターを送信する** | 脅威インテリジェンス インジケーターのコレクションを投稿することで、複数の新しい脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを送信するための必須プロパティ](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
-| **脅威インテリジェンス インジケーターを更新する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを更新します。 必須プロパティと編集可能なプロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターの編集可能なプロパティ](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 たとえば、targetProduct セキュリティ ツール内でインジケーターが一致した場合に適用するアクションを更新するには、脅威インテリジェンス インジケーターの **action** プロパティを更新します。 |
-| **複数の脅威インテリジェンス インジケーターを更新する** | 複数の脅威インテリジェンス インジケーターを更新します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを更新するための必須プロパティ](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
+| **脅威インテリジェンス インジケーターを作成する** | 脅威インテリジェンス インジケーター コレクションに投稿することで、新しい 脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターを作成するための必須プロパティ](/graph/api/tiindicators-post)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを送信する** | 脅威インテリジェンス インジケーターのコレクションを投稿することで、複数の新しい脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを送信するための必須プロパティ](/graph/api/tiindicator-submittiindicators)に関する記事を参照してください。 |
+| **脅威インテリジェンス インジケーターを更新する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを更新します。 必須プロパティと編集可能なプロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターの編集可能なプロパティ](/graph/api/tiindicator-update)に関する記事を参照してください。 たとえば、targetProduct セキュリティ ツール内でインジケーターが一致した場合に適用するアクションを更新するには、脅威インテリジェンス インジケーターの **action** プロパティを更新します。 |
+| **複数の脅威インテリジェンス インジケーターを更新する** | 複数の脅威インテリジェンス インジケーターを更新します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを更新するための必須プロパティ](/graph/api/tiindicator-updatetiindicators)に関する記事を参照してください。 |
 | **脅威インテリジェンス インジケーターを ID で削除する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを削除します。 |
-| **複数の脅威インテリジェンス インジケーターを ID で削除する** | 複数の脅威インテリジェンス インジケーターを ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを ID で削除するための必須プロパティ](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
-| **複数の脅威インテリジェンス インジケーターを外部 ID で削除する** | 複数の脅威インテリジェンス インジケーターを外部 ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを外部 ID で削除するための必須プロパティ](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを ID で削除する** | 複数の脅威インテリジェンス インジケーターを ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを ID で削除するための必須プロパティ](/graph/api/tiindicator-deletetiindicators)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを外部 ID で削除する** | 複数の脅威インテリジェンス インジケーターを外部 ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを外部 ID で削除するための必須プロパティ](/graph/api/tiindicator-deletetiindicatorsbyexternalid)に関する記事を参照してください。 |
 |||
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](https://aka.ms/graphsecurityconnectorreference)を参照してください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/microsoftgraphsecurity/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
-

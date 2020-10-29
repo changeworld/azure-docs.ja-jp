@@ -8,12 +8,13 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+- devx-track-azurecli
+ms.openlocfilehash: 7efcff5709995898a6ec950dfea6450f7e0dd48d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578038"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736795"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -23,7 +24,7 @@ Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれ�
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Premium プランは、Azure CLI から [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) を使用して作成することもできます。 次の例では、_Elastic Premium 1_ レベルのプランを作成しています。
+Premium プランは、Azure CLI から [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) を使用して作成することもできます。 次の例では、 _Elastic Premium 1_ レベルのプランを作成しています。
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
@@ -47,14 +48,14 @@ Premium プランでは、指定された数のインスタンスでアプリを
 > [!NOTE]
 > すべての Premium プランには、常に 1 つ以上のアクティブな (課金された) インスタンスがあります。
 
-Azure portal で常時使用可能なインスタンスの数を構成するには、選択した**関数アプリ**から、 **[プラットフォーム機能]** タブへ移動して、 **[スケールアウト]** オプションを選択します。 関数アプリの編集ウィンドウでは、常時使用可能なインスタンスはそのアプリに固有のものです。
+Azure portal で常時使用可能なインスタンスの数を構成するには、選択した **関数アプリ** から、 **[プラットフォーム機能]** タブへ移動して、 **[スケールアウト]** オプションを選択します。 関数アプリの編集ウィンドウでは、常時使用可能なインスタンスはそのアプリに固有のものです。
 
 ![エラスティック スケールの設定](./media/functions-premium-plan/scale-out.png)
 
 アプリの常時使用可能なインスタンスは、Azure CLI を使用して構成することもできます。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="pre-warmed-instances"></a>事前ウォーミングされたインスタンス
@@ -68,7 +69,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 アプリの事前ウォーミングされたインスタンスの数は、Azure CLI を使用して変更できます。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="maximum-instances-for-an-app"></a>アプリの最大インスタンス数
@@ -104,7 +105,7 @@ Azure Functions の従量課金プランでは、1 回の実行が 10 分まで�
 Azure CLI から最大バースト制限を増やすこともできます。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --max-burst <desired_max_burst>
 ```
 
 各プランの最小値は、1 つ以上のインスタンスになります。  実際のインスタンスの最小数は、プラン内のアプリによって要求された常時使用可能なインスタンス数に基づいて自動構成されます。  たとえば、アプリ A が 5 つの常時使用可能なインスタンスを要求し、同じプラン内でアプリ B が 2 つの常時使用可能なインスタンスを要求した場合、最小プラン サイズは 5 として計算されます。  アプリ A は 5 つのすべてで実行され、アプリ B は 2 つでのみ実行されます。
@@ -117,12 +118,12 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 プランの計算された最小値を増やすには、Azure CLI を使用します。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-instances <desired_min_instances>
 ```
 
 ### <a name="available-instance-skus"></a>利用可能インスタンス SKU
 
-プランを作成またはスケーリングするときは、3 つのインスタンス サイズから選択できます。  プロビジョニングされたコアとメモリの合計数に対して、各インスタンスが割り当てられている秒単位で課金されます。  アプリは必要に応じて自動的に複数のインスタンスにスケール アウトできます。  
+プランを作成またはスケーリングするときは、3 つのインスタンス サイズから選択できます。  プロビジョニングされたコアとメモリの合計数に対して、各インスタンスが割り当てられている秒単位で課金されます。  アプリは必要に応じて自動的に複数のインスタンスにスケール アウトできます。
 
 |SKU|コア|メモリ|ストレージ|
 |--|--|--|--|

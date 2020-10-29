@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 53e759b973a5d912474dd754876c5279cfb7bdab
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.custom: how-to, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: bce02917acb05c06b8f506871c1f3b8500622d61
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596470"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735530"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -187,7 +187,7 @@ ms.locfileid: "91596470"
     
         実験ページでは、アクティブなコンピューティング先の数と各実行の期間を確認できます。 
     
-    1. 比較する実行を選択するか、グラフを追加するか、フィルターを適用することにより、実験のカスタマイズを行います。 これらの変更は**カスタム ビュー**として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集または表示できます。 また、ブラウザーで URL をコピーして貼り付けることにより、カスタム ビューを他のユーザーと共有することもできます。  
+    1. 比較する実行を選択するか、グラフを追加するか、フィルターを適用することにより、実験のカスタマイズを行います。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集または表示できます。 また、ブラウザーで URL をコピーして貼り付けることにより、カスタム ビューを他のユーザーと共有することもできます。  
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="スクリーンショット: カスタム ビューを作成する":::
     

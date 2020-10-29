@@ -3,13 +3,13 @@ title: チュートリアル - geo レプリケートされたレジストリを
 description: Azure Container Registry を作成し、geo レプリケーションを構成して、Docker イメージを準備し、それをレジストリにデプロイします。 3 部構成のシリーズのパート 1。
 ms.topic: tutorial
 ms.date: 06/30/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148396"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739480"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
 
@@ -50,16 +50,16 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 次の設定で、新しいレジストリを構成します。 **[基本]** タブを次のように設定します。
 
-* **レジストリ名**:Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
-* **リソース グループ**:**新規作成** > `myResourceGroup`
-* **場所**: `West US`
-* **SKU**: `Premium` (geo レプリケーションに必要)
+* **レジストリ名** :Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
+* **リソース グループ** : **新規作成** > `myResourceGroup`
+* **場所** : `West US`
+* **SKU** : `Premium` (geo レプリケーションに必要)
 
 **[確認および作成]** 、 **[作成]** の順に選択して、レジストリ インスタンスを作成します。
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
-このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名**のプレースホルダーとして `<acrName>` を使用します。
+このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名** のプレースホルダーとして `<acrName>` を使用します。
 
 > [!TIP]
 > Azure Container Registry は通常、複数のコンテナー ホスト間で使用される有効期間が長いリソースであるため、独自のリソース グループにレジストリを作成することをお勧めします。 geo レプリケーション レジストリと webhook を構成すると、これらの追加リソースが同じリソース グループに配置されます。
@@ -80,7 +80,7 @@ Azure portal で新しいコンテナー レジストリに移動し、 **[サ�
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
-レプリケーションが完了すると、ポータルで、両方のリージョンに対して*準備完了*が示されます。 **[更新]** ボタンを使用して、レプリケーションの状態を更新します。レプリカが作成され、同期されるまで、1 分ほどかかる可能性があります。
+レプリケーションが完了すると、ポータルで、両方のリージョンに対して *準備完了* が示されます。 **[更新]** ボタンを使用して、レプリケーションの状態を更新します。レプリカが作成され、同期されるまで、1 分ほどかかる可能性があります。
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
@@ -212,13 +212,13 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-次に、`docker push` コマンドを使用して、*acr-helloworld* イメージをレジストリにプッシュします。 `<acrName>` をレジストリの名前に置き換えます。
+次に、`docker push` コマンドを使用して、 *acr-helloworld* イメージをレジストリにプッシュします。 `<acrName>` をレジストリの名前に置き換えます。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-geo レプリケーション用にレジストリを構成したため、この単一の `docker push` コマンドで、イメージが*米国西部*と*米国東部*リージョンの両方に自動的にレプリケートされます。
+geo レプリケーション用にレジストリを構成したため、この単一の `docker push` コマンドで、イメージが *米国西部* と *米国東部* リージョンの両方に自動的にレプリケートされます。
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

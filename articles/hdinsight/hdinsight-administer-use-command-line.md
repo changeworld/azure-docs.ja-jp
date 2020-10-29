@@ -6,26 +6,26 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d47c741bdf0d056a75a86cdb8aa14333320bb52a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699364"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742131"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI を使用した Azure HDInsight クラスターの管理
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、Azure HDInsight クラスターを管理する方法について説明します。 Azure コマンド ライン インターフェイス (CLI) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
+[Azure CLI](/cli/azure/) を使用して、Azure HDInsight クラスターを管理する方法について説明します。 Azure コマンド ライン インターフェイス (CLI) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI。 Azure CLI をインストールしていない場合、手順については「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI。 Azure CLI をインストールしていない場合、手順については「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
@@ -42,7 +42,7 @@ az login
 
 ## <a name="list-clusters"></a>クラスターを一覧表示する
 
-[az hdinsight list](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) を使用して、クラスターを一覧表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` を自分のリソース グループの名前に置き換えてから、そのコマンドを入力します。
+[az hdinsight list](/cli/azure/hdinsight#az-hdinsight-list) を使用して、クラスターを一覧表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` を自分のリソース グループの名前に置き換えてから、そのコマンドを入力します。
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>クラスターの表示
 
-[az hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) を使用して、指定したクラスターに関する情報を表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
+[az hdinsight show](/cli/azure/hdinsight#az-hdinsight-show) を使用して、指定したクラスターに関する情報を表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>クラスターの削除
 
-[az hdinsight delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) を使用して、指定したクラスターを削除します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
+[az hdinsight delete](/cli/azure/hdinsight#az-hdinsight-delete) を使用して、指定したクラスターを削除します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>クラスターのスケール
 
-[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) を使用して、指定した HDInsight クラスターのサイズを指定のサイズに変更します。 次のコマンドを編集して、`RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えます。 `WORKERNODE_COUNT` を、お使いのクラスターに必要なワーカー ノードの数に置き換えます。 クラスターのスケーリングの詳細については、[HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)に関するページを参照してください。 次のコマンドを入力します。
+[az hdinsight resize](/cli/azure/hdinsight#az-hdinsight-resize) を使用して、指定した HDInsight クラスターのサイズを指定のサイズに変更します。 次のコマンドを編集して、`RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えます。 `WORKERNODE_COUNT` を、お使いのクラスターに必要なワーカー ノードの数に置き換えます。 クラスターのスケーリングの詳細については、[HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)に関するページを参照してください。 次のコマンドを入力します。
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
@@ -95,4 +95,4 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --w
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
+* [Azure CLI の概要](/cli/azure/get-started-with-azure-cli)

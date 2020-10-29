@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665993"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741068"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure のロールの割り当てに関する問題
 
-- **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
+- **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている [所有者](built-in-roles.md#owner)や [ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
 - サービス プリンシパルを使用してロールを割り当てると、"この操作を完了するのに十分な特権がありません" というエラーが表示されることがあります。 たとえば、所有者ロールが割り当てられたサービス プリンシパルがあり、Azure CLI を使用して、次のロールの割り当てをサービスプリンシパルとして作成しようとするとします。
 
     ```azurecli
@@ -61,7 +61,7 @@ $ras.Count
 
     "この操作を完了するのに十分な特権がありません" というエラーが表示される場合は、Azure CLI が Azure AD で担当者 ID を参照しようとしていて、サービス プリンシパルが既定で Azure AD を読み取ることができないためである可能性があります。
 
-    このエラーを解決する可能性がある 2 つの方法があります。 最初の方法は、ディレクトリ内のデータを読み取ることができるように、[Directory Readers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) ロールをサービス プリンシパルに割り当てることです。
+    このエラーを解決する可能性がある 2 つの方法があります。 最初の方法は、ディレクトリ内のデータを読み取ることができるように、[Directory Readers](../active-directory/roles/permissions-reference.md#directory-readers) ロールをサービス プリンシパルに割り当てることです。
 
     このエラーを解決する 2 番目の方法は、`--assignee` ではなく `--assignee-object-id` パラメーターを使用して、ロールの割り当てを作成することです。 `--assignee-object-id` を使用すると、Azure CLI で Azure AD 検索がスキップされます。 ロールを割り当てるユーザー、グループ、またはアプリケーションのオブジェクト ID を取得する必要があります。 詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)」を参照してください。
 
@@ -87,8 +87,8 @@ $ras.Count
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>サブスクリプションを別のディレクトリに譲渡する
 
 - サブスクリプションを別の Azure AD ディレクトリに譲渡する手順については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](transfer-subscription.md)」をご覧ください。
-- 別の Azure AD ディレクトリにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD ディレクトリから**完全**に削除され、ターゲット Azure AD ディレクトリに移行されることはありません。 ターゲット ディレクトリでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
-- Azure AD グローバル管理者であり、ディレクトリ間で譲渡された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
+- 別の Azure AD ディレクトリにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD ディレクトリから **完全** に削除され、ターゲット Azure AD ディレクトリに移行されることはありません。 ターゲット ディレクトリでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
+- Azure AD グローバル管理者であり、ディレクトリ間で譲渡された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に [アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題
 
@@ -107,7 +107,7 @@ Azure ロールがリソース (または子リソース) に直接割り当て�
 
 ## <a name="role-assignments-with-identity-not-found"></a>ID が見つからないロールの割り当て
 
-Azure portal のロールの割り当ての一覧で、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、**不明**な種類の**見つからない ID** として表示されている場合があります。
+Azure portal のロールの割り当ての一覧で、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、 **不明** な種類の **見つからない ID** として表示されている場合があります。
 
 ![Azure のロールの割り当ての一覧に ID が見つからない](./media/troubleshooting/unknown-security-principal.png)
 
@@ -120,7 +120,7 @@ ID は、次の 2 つの理由で見つからない可能性があります。
 
 ただし、このセキュリティ プリンシパルが最近招待されたユーザーでない場合は、削除されたセキュリティ プリンシパルである可能性があります。 ロールをセキュリティ プリンシパに割り当てた後、最初にロールの割り当てを削除せずにそのセキュリティ プリンシパルを削除した場合、そのセキュリティ プリンシパルは **ID が見つからない** **[不明]** な種類として表示されます。
 
-Azure PowerShell を使用してこのロールの割り当てを一覧表示すると、空の `DisplayName` と **Unknown**に設定された `ObjectType` が表示される場合があります。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次の出力のようなロールの割り当てが返されます。
+Azure PowerShell を使用してこのロールの割り当てを一覧表示すると、空の `DisplayName` と **Unknown** に設定された `ObjectType` が表示される場合があります。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次の出力のようなロールの割り当てが返されます。
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -179,7 +179,7 @@ Azure Resource Manager は、パフォーマンスを高めるために構成や
 
 ## <a name="web-app-features-that-require-write-access"></a>書き込みアクセス権限を必要とする Web アプリ機能
 
-1 つの Web アプリに対する読み取り専用アクセスをユーザーに付与する場合、予期しない機能が無効になることがあります。 以下の管理機能には、Web アプリに対する**書き込み**アクセス権 (共同作成者または所有者) が必要なので、読み取り専用のシナリオでは利用できません。
+1 つの Web アプリに対する読み取り専用アクセスをユーザーに付与する場合、予期しない機能が無効になることがあります。 以下の管理機能には、Web アプリに対する **書き込み** アクセス権 (共同作成者または所有者) が必要なので、読み取り専用のシナリオでは利用できません。
 
 * コマンド (開始や停止など)
 * 一般的な構成、スケール設定、バックアップ設定、監視設定などの設定の変更。
@@ -202,13 +202,13 @@ Azure Resource Manager は、パフォーマンスを高めるために構成や
 
 結果として、Web アプリのみに対するアクセス権を付与すると、Azure Portal の Web サイト ブレード上の多数の機能が使用できなくなります。
 
-以下の項目には、Web サイトに対応する **App Service プランへ**の**書き込み**アクセス権が必要です。  
+以下の項目には、Web サイトに対応する **App Service プランへ** の **書き込み** アクセス権が必要です。  
 
 * Web アプリの価格レベル (Free または Standard) の表示  
 * スケールの構成 (インスタンスの数、仮想マシンのサイズ、自動スケールの設定)  
 * クォータ (ストレージ、帯域幅、CPU)  
 
-以下の項目には、Web サイトが含まれる**リソース グループ**全体に対する**書き込み**アクセス権が必要です。  
+以下の項目には、Web サイトが含まれる **リソース グループ** 全体に対する **書き込み** アクセス権が必要です。  
 
 * TLS/SSL 証明書とバインド (TLS/SSL 証明書は同じリソース グループや地理的な場所にあるサイト間で共有できるため)  
 * アラート ルール  
@@ -222,14 +222,14 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 仮想マシンは、ドメイン名、仮想ネットワーク、ストレージ アカウント、アラート ルールなどのリソースと関連しています。
 
-以下の項目には、**仮想マシン**に対する**書き込み**アクセス権が必要です。
+以下の項目には、 **仮想マシン** に対する **書き込み** アクセス権が必要です。
 
 * エンドポイント  
 * IP アドレス  
 * ディスク  
 * 拡張機能  
 
-以下には、**仮想マシン**と、その仮想マシンが含まれる**リソース グループ** (とドメイン名) の両方に対する**書き込み**アクセス権が必要です。  
+以下には、 **仮想マシン** と、その仮想マシンが含まれる **リソース グループ** (とドメイン名) の両方に対する **書き込み** アクセス権が必要です。  
 
 * 可用性セット  
 * 負荷分散セット  

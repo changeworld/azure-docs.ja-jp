@@ -6,16 +6,16 @@ ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
-ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701666"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737397"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する
 
@@ -40,13 +40,13 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 
 DNS レコードを作成するには、`az network dns record-set <record-type> add-record` コマンドを使用します (`<record-type>` は srv や txt など、 レコードの種類です)。`az network dns record-set --help` を使用すると、ヘルプが表示されます。
 
-レコードの作成時に、リソース グループ名、ゾーン名、レコード セット名、レコードの種類、および作成するレコードの詳細を指定する必要があります。 指定するレコード セット名は、ゾーン名を除いた*相対*名にする必要があります。
+レコードの作成時に、リソース グループ名、ゾーン名、レコード セット名、レコードの種類、および作成するレコードの詳細を指定する必要があります。 指定するレコード セット名は、ゾーン名を除いた *相対* 名にする必要があります。
 
 レコード セットがまだ存在していない場合は、このコマンドによって作成されます。 レコード セットが既に存在する場合、このコマンドは、指定されたレコードを既存のレコード セットに追加します。
 
 新しいレコード セットが作成される場合は、既定の Time-to-Live (TTL) である 3600 が使用されます。 さまざまな TTL を使用する方法については、「[DNS レコード セットを作成する](#create-a-dns-record-set)」を参照してください。
 
-次の例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* に *www* という A レコードを作成します。 A レコードの IP アドレスは、*1.2.3.4* です。
+次の例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* に *www* という A レコードを作成します。 A レコードの IP アドレスは、 *1.2.3.4* です。
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
@@ -60,7 +60,7 @@ az network dns record-set a add-record --resource-group myresourcegroup --zone-n
 
 ## <a name="create-a-dns-record-set"></a>DNS レコード セットを作成する
 
-上記の例では、DNS レコードは既存のレコード セットに追加されるか、レコード セットが*暗黙的に*作成されました。 レコード セットは、レコードを追加する前に*明示的に*作成することもできます。 Azure DNS では、DNS レコードの作成前に DNS 名を予約するためのプレースホルダーとして機能する "空" のレコード セットがサポートされています。 空のレコード セットは、Azure DNS コントロール プレーンには表示されるものの、Azure DNS ネーム サーバーには表示されません。
+上記の例では、DNS レコードは既存のレコード セットに追加されるか、レコード セットが *暗黙的に* 作成されました。 レコード セットは、レコードを追加する前に *明示的に* 作成することもできます。 Azure DNS では、DNS レコードの作成前に DNS 名を予約するためのプレースホルダーとして機能する "空" のレコード セットがサポートされています。 空のレコード セットは、Azure DNS コントロール プレーンには表示されるものの、Azure DNS ネーム サーバーには表示されません。
 
 レコード セットは、`az network dns record-set <record-type> create` コマンドを使用して作成します。 `az network dns record-set <record-type> create --help` を使用すると、ヘルプが表示されます。
 
@@ -155,7 +155,7 @@ az network dns record-set txt add-record --resource-group myresourcegroup --zone
 
 既存のレコード セットを取得するには、 `az network dns record-set <record-type> show`を使用します。 `az network dns record-set <record-type> show --help` を使用すると、ヘルプが表示されます。
 
-レコードやレコード セットの作成時と同様、指定するレコード セット名は*相対*名にする必要があります。つまり、ゾーン名を除く必要があります。 レコードの種類のほか、レコード セットを含むゾーンと、ゾーンを含むリソース グループも指定する必要があります。
+レコードやレコード セットの作成時と同様、指定するレコード セット名は *相対* 名にする必要があります。つまり、ゾーン名を除く必要があります。 レコードの種類のほか、レコード セットを含むゾーンと、ゾーンを含むリソース グループも指定する必要があります。
 
 次の例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* から *www* という種類 A のレコードを取得します。
 
@@ -268,7 +268,7 @@ az network dns record-set a update --resource-group myresourcegroup --zone-name 
 
 [レコード セット メタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 既存のレコード セットのメタデータを変更するには、`az network dns record-set <record-type> update` を使用します。 `az network dns record-set <record-type> update --help` を使用すると、ヘルプが表示されます。
 
-次の例は、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを変更する方法を示しています。 既存のメタデータは指定した値に*置換*されることに注意してください。
+次の例は、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを変更する方法を示しています。 既存のメタデータは指定した値に *置換* されることに注意してください。
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set metadata.dept=finance metadata.environment=production

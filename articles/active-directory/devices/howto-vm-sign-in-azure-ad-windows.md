@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826659"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740180"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
-組織は、**Windows Server 2019 Datacenter エディション** または **Windows 10 1809** 以降を実行している Azure 仮想マシン (VM) に Azure Active Directory (AD) 認証を利用できるようになりました。 Azure AD を使用して VM を認証することにより、ポリシーを一元的に管理し、適用することができます。 Azure のロール ベースのアクセス制御 (Azure RBAC) や Azure AD 条件付きアクセスなどのツールを使用すると、VM にアクセスできるユーザーを制御することができます。 この記事では、Azure AD 認証を使用できるように Windows Server 2019 VM を作成して構成する方法について説明します。
+組織は、 **Windows Server 2019 Datacenter エディション** または **Windows 10 1809** 以降を実行している Azure 仮想マシン (VM) に Azure Active Directory (AD) 認証を利用できるようになりました。 Azure AD を使用して VM を認証することにより、ポリシーを一元的に管理し、適用することができます。 Azure のロール ベースのアクセス制御 (Azure RBAC) や Azure AD 条件付きアクセスなどのツールを使用すると、VM にアクセスできるユーザーを制御することができます。 この記事では、Azure AD 認証を使用できるように Windows Server 2019 VM を作成して構成する方法について説明します。
 
 > [!NOTE]
 > Azure Windows VM への Azure AD サインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
@@ -49,7 +49,7 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
 - Windows 10 1809 以降
 
 > [!IMPORTANT]
-> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 登録済み (Windows 10 20H1 より)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として **同じ** ディレクトリに対して Azure AD 登録済み (Windows 10 20H1 より)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 
 
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 
@@ -73,7 +73,7 @@ Azure 内の Windows VM に Azure AD ログインを使用するには、最初�
 Windows VM に対して Azure AD ログインを有効にするには、次のような複数の方法があります。
 
 - Windows VM の作成時に Azure portal のエクスペリエンスを使用する
-- Windows VM の作成時に、**または既存の Windows VM に対して**、Azure Cloud Shell エクスペリエンスを使用する
+- Windows VM の作成時に、 **または既存の Windows VM に対して** 、Azure Cloud Shell エクスペリエンスを使用する
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Azure portal の VM の作成エクスペリエンスを使用して Azure AD ログインを有効にする
 
@@ -82,7 +82,7 @@ Windows Server 2019 Datacenter または Windows 10 1809 以降の VM イメー�
 Azure AD ログオンを使用して、Azure で Windows Server 2019 Datacenter VM を作成するには、次の手順を行います。 
 
 1. VM を作成するためのアクセス権を持つアカウントを使用して [Azure portal](https://portal.azure.com) にサインし、 **[+ リソースの作成]** を選択します。
-1. [マーケットプレースを検索] 検索バーに「**Windows Server**」と入力します。
+1. [マーケットプレースを検索] 検索バーに「 **Windows Server** 」と入力します。
    1. **[Windows Server]** をクリックして、[ソフトウェア プランの選択] ドロップダウンから **[Windows Server 2019 Datacenter]** を選択します。
    1. **[作成]** をクリックします。
 1. [管理] タブの [Azure Active Directory] セクションで **[AAD 資格情報を使用してログインする (プレビュー)]** オプションを [オフ] から **[オン]** に変更して有効にします。
@@ -146,8 +146,8 @@ az vm extension set \
 
 VM を作成したので、VM にログインできるユーザーを決定する Azure RBAC ポリシーを構成する必要があります。 VM へのログインを承認するには、次の 2 つの Azure ロールが使用されます。
 
-- **仮想マシンの管理者ログイン**:このロールを割り当てられたユーザーは、管理者特権を持つユーザーとして Azure 仮想マシンにログインできます。
-- **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
+- **仮想マシンの管理者ログイン** :このロールを割り当てられたユーザーは、管理者特権を持つユーザーとして Azure 仮想マシンにログインできます。
+- **仮想マシンのユーザー ログイン** :このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
 
 > [!NOTE]
 > ユーザーが RDP 経由で VM にログインできるようにするには、仮想マシンの管理者ログインまたは仮想マシンのユーザー ログインのいずれかのロールを割り当てる必要があります。 VM の所有者ロールまたは共同作成者ロールが割り当てられた Azure ユーザーに対して、RDP 経由で VM にログインする権限は自動的には付与されません。 これは、仮想マシンを管理するユーザーと仮想マシンにアクセスできるユーザーを監査上分離するためです。
@@ -208,7 +208,7 @@ Azure AD サインインで有効になる Azure 上の Windows VM へのアク�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD 資格情報を使用して Windows VM にログインする
 
 > [!IMPORTANT]
-> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 登録済み (最低限必要なビルドは 20H1)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの Azure ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 Azure AD 登録済みの Windows 10 PC を使用している場合は、資格情報を AzureAD\UPN 形式で入力する必要があります (例: AzureAD\john@contoso.com)。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。直接 RDP のみサポートされています。
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として **同じ** ディレクトリに対して Azure AD 登録済み (最低限必要なビルドは 20H1)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの Azure ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 Azure AD 登録済みの Windows 10 PC を使用している場合は、資格情報を AzureAD\UPN 形式で入力する必要があります (例: AzureAD\john@contoso.com)。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。直接 RDP のみサポートされています。
 
 Azure AD を使用して Windows Server 2019 仮想マシンにログインするには、次の操作を行います。 
 

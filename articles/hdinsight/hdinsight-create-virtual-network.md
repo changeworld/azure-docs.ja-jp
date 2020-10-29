@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f604ba2edcc63a245a5e87d3dcb6fdd16a9d050
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074754"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741449"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスターの仮想ネットワークの作成
 
@@ -27,8 +27,8 @@ Azure HDInsight での仮想ネットワークの使用に関する背景情報�
 
 この記事のサンプルに関するその他の前提条件には、次の項目があります。
 
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)をインストールする必要があります。
-* Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* PowerShell を使用する場合は、[AZ モジュール](/powershell/azure/)をインストールする必要があります。
+* Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 > [!IMPORTANT]  
 > Azure Virtual Network を使用して HDInsight をオンプレミス ネットワークに接続するための詳しい手順については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」を参照してください。
@@ -331,7 +331,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     };
     ```
 
-    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` の値を、__別の__ 仮想ネットワークの DNS サフィックスに置き換えます。 このエントリにより、リモート ネットワークの DNS サフィックスへの要求はそのネットワークのカスタム DNS にルーティングされます。
+    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` の値を、 __別の__ 仮想ネットワークの DNS サフィックスに置き換えます。 このエントリにより、リモート ネットワークの DNS サフィックスへの要求はそのネットワークのカスタム DNS にルーティングされます。
 
 3. 両方の仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.options` ファイルの内容として次のテキストを使用します。
 
@@ -377,6 +377,6 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 * Apache HBase geo レプリケーションの構成については、「[Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する](hbase/apache-hbase-replication.md)」を参照してください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に関するページをご覧ください。
 
 * ユーザー定義のルートについて詳しくは、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。

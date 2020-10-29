@@ -7,17 +7,17 @@ ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: f983c0f5fc951376246fdbed9869211c8b495402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: d275a7ca97ac26257a83ad696df780669a00646e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977956"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737710"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 
-**Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化を有効にするために Azure AD アプリケーション パラメーターを指定する必要はありません。新しいリリースでは、暗号化を有効にする手順の途中で、Azure AD の資格情報を指定する必要がなくなりました。すべての新しい VM は、新しいリリースを使用して、Azure AD アプリケーション パラメーターを指定せずに暗号化する必要があります。新しいリリースを使用して VM のディスク暗号化を有効にする手順を表示するには、[Azure Disk Encryption](disk-encryption-overview.md) に関するページを参照してください。Azure AD アプリケーション パラメーターで既に暗号化された VM はまだサポートされていますが、AAD 構文を使用して保持し続ける必要があります。**
+**Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化を有効にするために Azure AD アプリケーション パラメーターを指定する必要はありません。新しいリリースでは、暗号化を有効にする手順の途中で、Azure AD の資格情報を指定する必要がなくなりました。すべての新しい VM は、新しいリリースを使用して、Azure AD アプリケーション パラメーターを指定せずに暗号化する必要があります。新しいリリースを使用して VM のディスク暗号化を有効にする手順を表示するには、 [Azure Disk Encryption](disk-encryption-overview.md) に関するページを参照してください。Azure AD アプリケーション パラメーターで既に暗号化された VM はまだサポートされていますが、AAD 構文を使用して保持し続ける必要があります。**
 
 Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/secure-your-key-vault.md)」を参照してください。 
 
@@ -61,7 +61,7 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. 返される**コンテナー名**、**リソース グループ名**、**リソース ID**、**コンテナーの URI**、および**オブジェクト ID** をメモします。これらの情報は、後でディスクを暗号化するときに使用します。 
+4. 返される **コンテナー名** 、 **リソース グループ名** 、 **リソース ID** 、 **コンテナーの URI** 、および **オブジェクト ID** をメモします。これらの情報は、後でディスクを暗号化するときに使用します。 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a>Azure CLI を使用してキー コンテナーを作成する
@@ -80,7 +80,7 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. 返される**コンテナー名** (名前)、**リソース グループ名**、**リソース ID** (ID)、**コンテナーの URI**、および**オブジェクト ID** をメモします。これらの情報は後で使用します。 
+4. 返される **コンテナー名** (名前)、 **リソース グループ名** 、 **リソース ID** (ID)、 **コンテナーの URI** 、および **オブジェクト ID** をメモします。これらの情報は後で使用します。 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してキー コンテナーを作成する
 
@@ -135,7 +135,7 @@ Azure CLI で [az ad sp](/cli/azure/ad/sp) コマンドを使用してサービ�
 指定した Key Vault に暗号化シークレット情報を書き込むには、シークレットを Key Vault に書き込むアクセス許可を持つ Azure Active Directory アプリケーションのクライアント ID とクライアント シークレットが Azure Disk Encryption に必要です。 
 
 > [!NOTE]
-> Azure Disk Encryption では、Azure AD のクライアント アプリケーションに対して、次のアクセス ポリシーを構成する必要があります:_WrapKey_ および _Set_ アクセス許可。
+> Azure Disk Encryption では、Azure AD のクライアント アプリケーションに対して、次のアクセス ポリシーを構成する必要があります: _WrapKey_ および _Set_ アクセス許可。
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a>Azure PowerShell を使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
 Azure AD アプリケーションには、Vault 内のキーまたはシークレットへのアクセス権が必要です。 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットで、 _–ServicePrincipalName_ パラメーター値としてクライアント ID (アプリケーションの登録時に生成されたもの) を使用して、アプリケーションに権限を付与します。 詳しくは、ブログ投稿「[Azure Key Vault - Step by Step](/archive/blogs/kv/azure-key-vault-step-by-step)」(Azure Key Vault - 手順) をご覧ください。 

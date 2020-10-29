@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336702"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741274"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>チュートリアル:Python で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -58,7 +58,7 @@ az login
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-次のいずれかの方法を使用して、**myVM** という名前の VM を作成します。
+次のいずれかの方法を使用して、 **myVM** という名前の VM を作成します。
 
 | Linux | Windows |
 |--|--|
@@ -66,7 +66,7 @@ az login
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure ポータル](../../virtual-machines/windows/quick-create-portal.md) |
 
-Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh*) に配置されます。 
+Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、 *azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh* ) に配置されます。 
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>サンプルの Python スクリプトを作成して編集する
 
-仮想マシンで、**sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
+仮想マシンで、 **sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
 
 ```python
 from azure.keyvault.secrets import SecretClient
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>サンプルの Python アプリを実行する
 
-最後に、**sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
+最後に、 **sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
 
 ```bash
 python3 sample.py

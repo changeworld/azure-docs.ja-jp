@@ -9,17 +9,17 @@ keywords: ipv6, azure load balancer, デュアル スタック, パブリック 
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001575"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735909"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
@@ -48,11 +48,11 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成します。
 
-* **フロントエンド IP 構成**: 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
-* **バックエンド アドレス プール**: ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
-* **負荷分散規則**: ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
-* **受信 NAT 規則**: ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
-* **プローブ**: バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
+* **フロントエンド IP 構成** : 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
+* **バックエンド アドレス プール** : ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
+* **負荷分散規則** : ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
+* **受信 NAT 規則** : ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
+* **プローブ** : バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
 
 ## <a name="set-up-azure-cli"></a>Azure CLI をセットアップする
 
@@ -122,7 +122,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     > [!IMPORTANT]
     > ロード バランサーはその完全修飾ドメイン名 (FQDN) としてパブリック IP のドメイン ラベルを使用します。 これはロード バランサー FQDN としてクラウド サービス名を使用する従来のデプロイメントからの変更点です。
     >
-    > この例では、FQDN は *contoso09152016.southcentralus.cloudapp.azure.com*です。
+    > この例では、FQDN は *contoso09152016.southcentralus.cloudapp.azure.com* です。
 
 ## <a name="create-front-end-and-back-end-pools"></a>フロントエンド プールとバックエンド プールの作成
 

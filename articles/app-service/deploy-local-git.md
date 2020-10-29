@@ -5,13 +5,13 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77152994"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741303"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -82,7 +82,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    
 1. `git push azure master` を使用して Azure リモートにプッシュします。 
    
-1. **[Git Credential Manager]** ウィンドウで、ご利用の Azure サインインパスワードではなく、ご利用の[デプロイ ユーザー パスワード](#configure-a-deployment-user)を入力します。
+1. **[Git Credential Manager]** ウィンドウで、ご利用の Azure サインインパスワードではなく、ご利用の [デプロイ ユーザー パスワード](#configure-a-deployment-user)を入力します。
    
 1. 出力結果を確認します。 MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。 
    
@@ -94,13 +94,13 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 - ご利用の Azure アカウントには、Azure Active Directory への書き込みを行うためのアクセス許可とサービスを作成するためのアクセス許可が必要です。 
   
-- ご利用の Azure アカウントには、Azure サブスクリプションの**所有者**ロールが必要です。
+- ご利用の Azure アカウントには、Azure サブスクリプションの **所有者** ロールが必要です。
 
 - ご自身が、使用する Azure DevOps プロジェクトの管理者である必要があります。
 
 Azure Pipelines (プレビュー) を使用してアプリのローカル Git デプロイを有効にするには:
 
-1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。 
+1. [Azure portal](https://portal.azure.com) で、 **App Services** を検索して選択します。 
 
 1. ご利用の Azure App Service アプリを選択し、左側のメニューで **[デプロイ センター]** を選択します。
    
@@ -117,7 +117,7 @@ Azure Pipelines (プレビュー) を使用してアプリのローカル Git �
    > [!NOTE]
    > 既存の Azure DevOps 組織が一覧に表示されていない場合は、それをお使いの Azure サブスクリプションにリンクしなければならない場合があります。 詳細については、「[Define your CD release pipeline](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)」(CD リリース パイプラインを定義する) を参照してください。
    
-1. App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、 **[ステージングへのデプロイ]** ページが表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択して、 **[続行]** を選択します。
+1. App Service プランの [価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、 **[ステージングへのデプロイ]** ページが表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択して、 **[続行]** を選択します。
    
 1. **[概要]** ページで設定を確認して、 **[完了]** を選択します。
    
@@ -152,7 +152,7 @@ Git を使用して Azure の App Service アプリに発行すると、次の�
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
 |`src refspec [branchname] does not match any.`|"azure" リモートの master 以外のブランチにプッシュしようとしました。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|このエラーは、HTTPS 経由で大規模な Git リポジトリをプッシュしようとした場合に発生する可能性があります。|ローカル コンピューター上の Git 構成を変更して `postBuffer` を増やします。 (例: `git config --global http.postBuffer 524288000`)。|
-|`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル**: `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル** : `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>その他のリソース
 

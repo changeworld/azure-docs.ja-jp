@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc27b1fea97471e9ca1991467902e666c1451605
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543722"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675547"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce Sandbox の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543722"
 * ユーザーが自分の Azure AD アカウントを使用して Salesforce Sandbox に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +39,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Salesforce Sandbox では、**SP と IDP** によって開始される SSO がサポートされます
-* Salesforce Sandbox では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Salesforce Sandbox では、[**自動化された**ユーザー プロビジョニング](salesforce-sandbox-provisioning-tutorial.md)がサポートされます
-* Salesforce Sandbox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Salesforce Sandbox では、 **SP と IDP** によって開始される SSO がサポートされます
+* Salesforce Sandbox では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Salesforce Sandbox では、 [**自動化された** ユーザー プロビジョニング](salesforce-sandbox-provisioning-tutorial.md)がサポートされます
+* Salesforce Sandbox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-salesforce-sandbox-from-the-gallery"></a>ギャラリーからの Salesforce Sandbox の追加
 
@@ -52,7 +52,7 @@ Azure AD への Salesforce Sandbox の統合を構成するには、ギャラリ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Salesforce Sandbox**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Salesforce Sandbox** 」と入力します。
 1. 結果のパネルから **[Salesforce Sandbox]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -79,13 +79,13 @@ Salesforce Sandbox で Azure AD SSO を構成してテストするには、次�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **サービス プロバイダー メタデータ ファイル**を保持しており、**IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+4. **サービス プロバイダー メタデータ ファイル** を保持しており、 **IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
@@ -99,7 +99,7 @@ Salesforce Sandbox で Azure AD SSO を構成してテストするには、次�
     > [!Note]
     > **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
-5. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
+5. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから **メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -147,7 +147,7 @@ Salesforce Sandbox で Azure AD SSO を構成してテストするには、次�
 
 1. ブラウザーで新しいタブを開き、Salesforce Sandbox の管理者アカウントにサインインします。
 
-2. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
+2. ページの右上隅の **設定アイコン** の下の **[Setup]\(セットアップ\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/configure1.png)
 
@@ -200,7 +200,7 @@ Salesforce Sandbox で Azure AD SSO を構成してテストするには、次�
 
 12. ブラウザーで新しいタブを開き、Salesforce Sandbox の管理者アカウントにサインインします。
 
-13. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
+13. ページの右上隅の **設定アイコン** の下の **[Setup]\(セットアップ\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/configure1.png)
 
@@ -224,7 +224,7 @@ Salesforce Sandbox で Azure AD SSO を構成してテストするには、次�
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. **[SAML Single Sign-On Settings]\(SAML のシングル サインオン設定\)** ページのフィールドには自動的に値が入力されています。 **[名前]** ボックスに構成の名前 (例: *SPSSOWAAD_Test*) を入力し、[保存] をクリックします。
+19. **[SAML Single Sign-On Settings]\(SAML のシングル サインオン設定\)** ページのフィールドには自動的に値が入力されています。 **[名前]** ボックスに構成の名前 (例: *SPSSOWAAD_Test* ) を入力し、[保存] をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -253,20 +253,20 @@ Salesforce Sandbox で Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Salesforce Sandbox] タイルをクリックすると、SSO を設定した Salesforce Sandbox に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Salesforce Sandbox] タイルをクリックすると、SSO を設定した Salesforce Sandbox に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Salesforce Sandbox を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/protect-salesforce)
 
 - [[ユーザー プロビジョニングの構成]](salesforce-sandbox-provisioning-tutorial.md)
 
-- [高度な可視性と制御によって Salesforce Sandbox を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Salesforce Sandbox を保護する方法](/cloud-app-security/proxy-intro-aad)

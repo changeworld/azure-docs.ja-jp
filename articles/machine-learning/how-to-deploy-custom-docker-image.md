@@ -10,13 +10,13 @@ author: saachigopal
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: eb3acc9b30b9016ae33f223911cc01cbf8daea47
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: e58e9271ad3b6161a1b2c72509ecc4045b75e1db
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999121"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741985"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 
@@ -41,7 +41,7 @@ Azure Machine Learning を使用してトレーニング済みモデルをデプ
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークグループ。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
+* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
@@ -57,7 +57,7 @@ Azure Machine Learning を使用してトレーニング済みモデルをデプ
     __ワークスペースのコンテナー レジストリ__ に格納されているイメージを使用するときは、そのレジストリの認証を受ける必要はありません。 認証はワークスペースによって処理されます。
 
     > [!WARNING]
-    > ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
+    > ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__ 。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
     __スタンドアロン コンテナー レジストリ__ に格納されているイメージを使用する場合は、少なくとも読み取りアクセス権を持つサービス プリンシパルを構成する必要があります。 次に、レジストリのイメージを使用するユーザーにサービス プリンシパル ID (ユーザー名) とパスワードを提供します。 例外は、コンテナー レジストリを一般にアクセス可能にする場合です。
 
@@ -97,7 +97,7 @@ CPU イメージは、ubuntu16.04 から構築されています。 cuda9 の GP
 このセクションでは、Azure Machine Learning ワークスペースの Azure Container Registry の名前を取得する方法について説明します。
 
 > [!WARNING]
-> ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
+> ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__ 。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
 Azure Machine Learning を使用してモデルのトレーニングまたはデプロイを既に行っている場合は、ワークスペース用のコンテナー レジストリが作成されています。 このコンテナー レジストリの名前を確認するには、次の手順を実行します。
 
@@ -197,15 +197,15 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 
 カスタム イメージを使用するには、次の情報が必要です。
 
-* __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する単純な Docker イメージへのパスです。
+* __イメージ名__ 。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する単純な Docker イメージへのパスです。
 
     > [!IMPORTANT]
     > 作成したカスタム イメージに対しては、必ず、イメージに使用したタグを含めてください。 たとえば、`:v1`などの特定のタグを使ってイメージを作成した場合などです。 イメージの作成時に特定のタグを使用しなかった場合は、`:latest` のタグが適用済みになっています。
 
 * イメージが __プライベート リポジトリ__ 内にある場合は、次の情報が必要です。
 
-    * レジストリの __アドレス__。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。
-    * レジストリへの読み取りアクセス権を持つサービス プリンシパルの __ユーザー名__ および __パスワード__。
+    * レジストリの __アドレス__ 。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。
+    * レジストリへの読み取りアクセス権を持つサービス プリンシパルの __ユーザー名__ および __パスワード__ 。
 
     この情報がわからない場合は、イメージを含む Azure Container Registry の管理者に相談してください。
 
@@ -231,7 +231,7 @@ ONNX Runtime の基本イメージの詳細については、GitHub リポジト
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でイメージを使用する
 
-**ご自分のワークスペースの Azure Container Registry**、または**パブリックにアクセスできるコンテナー レジストリ**に格納されたイメージを使用するには、次の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)属性を設定します。
+**ご自分のワークスペースの Azure Container Registry** 、または **パブリックにアクセスできるコンテナー レジストリ** に格納されたイメージを使用するには、次の [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)属性を設定します。
 
 + `docker.enabled=True`
 + `docker.base_image`:レジストリとイメージへのパスを設定します。

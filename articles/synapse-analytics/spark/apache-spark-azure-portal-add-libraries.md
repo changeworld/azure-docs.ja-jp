@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826724"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737976"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 
@@ -58,7 +58,7 @@ Spark アプリケーションを開発するときに、既存のライブラ�
    
 3. ページの **[パッケージ]** セクションにあるファイル セレクターを使用して、環境構成ファイルをアップロードします。 
    
-![プールの作成時に Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python ライブラリを追加する")
+    ![プールの作成時に Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python ライブラリを追加する")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Synapse ワークスペースからパッケージをインストールする
@@ -72,7 +72,7 @@ Azure Synapse Analytics ポータルから Spark プール (プレビュー) に
    
 4. Spark プールを 1 つ選択し、ページの **[パッケージ]** セクションにあるファイル セレクターを使用して、環境構成ファイルをアップロードします。
 
-![Synapse で Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "Python ライブラリを追加する")
+    ![Synapse で Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Azure portal からパッケージをインストールする
 Azure portal から Spark プール (プレビュー) にライブラリを直接インストールするには:
@@ -85,7 +85,7 @@ Azure portal から Spark プール (プレビュー) にライブラリを直�
 
  4. ファイル セレクターを使用して、環境構成ファイルをアップロードします。
 
-![環境構成ファイルのアップロード ボタンが強調表示されていることを示すスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python ライブラリを追加する")
+    ![環境構成ファイルのアップロード ボタンが強調表示されていることを示すスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python ライブラリを追加する")
 
 ### <a name="verify-installed-libraries"></a>インストールされているライブラリの検証
 
@@ -102,13 +102,13 @@ for i in pip.get_installed_distributions(local_only=True):
 ライブラリを更新またはアンインストールするには:
 1. Azure Synapse Analytics ワークスペースに移動します。 
 
-2. Azure portal または Azure Synapse ワークスペースを使用して、更新する **Apache Spark プール**を選択します。
+2. Azure portal または Azure Synapse ワークスペースを使用して、更新する **Apache Spark プール** を選択します。
 
 3. **[パッケージ]** セクションに移動し、新しい環境構成ファイルをアップロードします
    
 4. 変更を保存したら、アクティブなセッションを終了し、プールを再起動する必要があります。 必要に応じて、 **[Force new settings]\(新しい設定を強制\)** チェック ボックスをオンにして、アクティブなセッションを強制的に終了できます。
 
-![Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python ライブラリを追加する")
+    ![Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python ライブラリを追加する")
    
 
 > [!IMPORTANT]

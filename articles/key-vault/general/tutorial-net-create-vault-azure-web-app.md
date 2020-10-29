@@ -9,13 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336685"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741392"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>チュートリアル:マネージド ID と .NET を使用して Key Vault を Azure Web アプリに接続する
 
@@ -95,7 +95,7 @@ git commit -m "first commit"
 
 ### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
 
-FTP およびローカルの Git では、"*デプロイ ユーザー*" を使用して Azure Web アプリにデプロイできます。 デプロイ ユーザーを構成すると、すべての Azure デプロイでこのユーザーを使用できます。 アカウントレベルのデプロイのユーザー名とパスワードは、Azure サブスクリプションの資格情報とは異なります。 
+FTP およびローカルの Git では、" *デプロイ ユーザー* " を使用して Azure Web アプリにデプロイできます。 デプロイ ユーザーを構成すると、すべての Azure デプロイでこのユーザーを使用できます。 アカウントレベルのデプロイのユーザー名とパスワードは、Azure サブスクリプションの資格情報とは異なります。 
 
 デプロイ ユーザーを構成するには、[az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) コマンドを実行します。 次のガイドラインに準拠したユーザー名とパスワードを選択してください。 
 
@@ -112,7 +112,7 @@ Web アプリのデプロイに使用するユーザー名とパスワードを�
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Azure CLI の [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest) コマンドで、App Service プランを作成します。 次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
+Azure CLI の [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest) コマンドで、App Service プランを作成します。 次の例では、 **Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -183,7 +183,7 @@ https://<your-webapp-name>.azurewebsites.net
 
 ### <a name="deploy-your-local-app"></a>ローカル アプリをデプロイする
 
-ローカルのターミナル ウィンドウに戻り、Azure リモートをローカル Git リポジトリに追加します。 *\<deploymentLocalGitUrl-from-create-step>* は、「[リモート Web アプリを作成する](#create-a-remote-web-app)」の手順で保存した Git リモートの URL に置き換えてください。
+ローカルのターミナル ウィンドウに戻り、Azure リモートをローカル Git リポジトリに追加します。 *\<deploymentLocalGitUrl-from-create-step>* は、「 [リモート Web アプリを作成する](#create-a-remote-web-app)」の手順で保存した Git リモートの URL に置き換えてください。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
@@ -323,7 +323,7 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-**Hello World** が表示される前に、シークレットの値が表示されるはずです。**成功です**
+**Hello World** が表示される前に、シークレットの値が表示されるはずです。 **成功です**
 
 ## <a name="next-steps"></a>次のステップ
 

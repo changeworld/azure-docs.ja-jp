@@ -3,13 +3,13 @@ title: チュートリアル - マルチステップの ACR タスク
 description: このチュートリアルでは、ソース コードを Git リポジトリにコミットしたらクラウドでコンテナー イメージをビルド、実行、およびプッシュするマルチステップ ワークフローを自動的にトリガーするように Azure Container Registry タスクを構成する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/09/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 6ba3b276c68885a0811ee445d965c486f158d193
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402305"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739611"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードをコミットしたらクラウドでマルチステップ コンテナー ワークフローを実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "78402305"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.62** 以降がインストールされていて、[az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.62** 以降がインストールされていて、 [az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -282,7 +282,7 @@ cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:
 
 2 番目のレジストリがまだない場合は、この例のために作成してください。 レジストリが必要な場合は、[前のチュートリアル](container-registry-tutorial-quick-task.md)または [Azure CLI を使用したコンテナー レジストリの作成に関するクイック スタート](container-registry-get-started-azure-cli.md)を参照してください。
 
-タスクを作成するには、レジストリ ログイン サーバーの名前が必要です。これは、*mycontainerregistrydate.azurecr.io* (すべて小文字) の形式になります。 この例では、2 番目のレジストリを使用して、ビルド日付でタグ付けされたイメージを格納します。
+タスクを作成するには、レジストリ ログイン サーバーの名前が必要です。これは、 *mycontainerregistrydate.azurecr.io* (すべて小文字) の形式になります。 この例では、2 番目のレジストリを使用して、ビルド日付でタグ付けされたイメージを格納します。
 
 ### <a name="yaml-file"></a>YAML ファイル
 
@@ -332,7 +332,7 @@ az acr task create \
 
 `regDate` の値で識別されるレジストリにイメージをプッシュするには、[az acr task credential add][az-acr-task-credential-add] コマンドを使用して、そのレジストリのログイン資格情報をタスクに追加します。
 
-この例では、*AcrPush* ロールにスコープ指定されたレジストリへのアクセス許可を持つ[サービス プリンシパル](container-registry-auth-service-principal.md)を作成することをお勧めします。 サービス プリンシパルを作成するには、この [Azure CLI スクリプト](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)を参照してください。
+この例では、 *AcrPush* ロールにスコープ指定されたレジストリへのアクセス許可を持つ [サービス プリンシパル](container-registry-auth-service-principal.md)を作成することをお勧めします。 サービス プリンシパルを作成するには、この [Azure CLI スクリプト](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)を参照してください。
 
 サービス プリンシパルのアプリケーション ID とパスワードを次の `az acr task credential add` コマンドで渡します。
 

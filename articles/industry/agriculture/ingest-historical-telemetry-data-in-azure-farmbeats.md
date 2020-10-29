@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510268"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675827"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -40,13 +40,13 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 1. https://portal.azure.com/ にサインインします。
 
-2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある**設定**アイコンを選択します。
+2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある **設定** アイコンを選択します。
 
       a.  **[Azure Active Directory]**  >  **[アプリの登録]** の順に進みます。
 
       b. FarmBeats デプロイの一部として作成された **[アプリの登録]** を選択します。 それは、FarmBeats データ ハブと同じ名前になります。
 
-      c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+      c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「 **04b07795-8ddb-461a-bbee-02f9e1bf7b46** 」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
 3. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
@@ -70,7 +70,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 7. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive 
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -84,7 +84,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
     ```
 
-9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+9. 画面の指示に従って、 **API エンドポイント** 、 **テナント ID** 、 **クライアント ID** 、 **クライアント シークレット** 、および **EventHub 接続文字列** の値をキャプチャします。
 
 
 ## <a name="create-device-or-sensor-metadata"></a>デバイスまたはセンサーのメタデータを作成する
@@ -94,12 +94,12 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
  FarmBeats Datahub には、デバイスまたはセンサーのメタデータの作成と管理を可能にする次の API が用意されています。
 
  > [!NOTE]
- > パートナーは、メタデータの読み取り、作成、更新のみを行うことができます。**削除オプションは、パートナーに制限されます。**
+ > パートナーは、メタデータの読み取り、作成、更新のみを行うことができます。 **削除オプションは、パートナーに制限されます。**
 
-- /**DeviceModel**:DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノードのいずれか) に対応します。
-- /**Device**:Device は、ファームに存在する物理デバイスに対応します。
-- /**SensorModel**:SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
-- /**Sensor**:センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
+- /**DeviceModel** :DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノードのいずれか) に対応します。
+- /**Device** :Device は、ファームに存在する物理デバイスに対応します。
+- /**SensorModel** :SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
+- /**Sensor** :センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
 
 
 |        DeviceModel   |  検索候補   |
@@ -192,9 +192,9 @@ access_token = token_response.get('access_token')
 
 FarmBeats Datahub への API 呼び出しを行うときに指定する必要がある、最も一般的な要求ヘッダーを次に示します。
 
-- **Content-Type**: application/json
-- **承認**: Bearer <Access-Token>
-- **Accept**: application/json
+- **Content-Type** : application/json
+- **承認** : Bearer <Access-Token>
+- **Accept** : application/json
 
 ### <a name="input-payload-to-create-metadata"></a>メタデータを作成するための入力ペイロード
 
@@ -336,7 +336,7 @@ FarmBeats でデバイスとセンサーを作成したので、関連付けら�
 
 ### <a name="create-a-telemetry-client"></a>テレメトリ クライアントを作成する
 
-テレメトリを Azure Event Hubs に送信して、処理する必要があります。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 テレメトリ データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 テレメトリの送信の詳細については、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send) に関するページを参照してください。
+テレメトリを Azure Event Hubs に送信して、処理する必要があります。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 テレメトリ データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 テレメトリの送信の詳細については、[Azure Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) に関するページを参照してください。
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>クライアントとしてテレメトリ メッセージを送信する
 
@@ -431,9 +431,9 @@ write_client.stop()
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>センサーから履歴またはストリーミング データを取り込んだ後で、テレメトリ データを表示できない
 
-**現象**:デバイスまたはセンサーがデプロイされており、FarmBeats 上でデバイスまたはセンサーを作成し、EventHub にテレメトリを取り込みましたが、FarmBeats 上でテレメトリ データを取得または表示することができません。
+**現象** :デバイスまたはセンサーがデプロイされており、FarmBeats 上でデバイスまたはセンサーを作成し、EventHub にテレメトリを取り込みましたが、FarmBeats 上でテレメトリ データを取得または表示することができません。
 
-**是正措置**:
+**是正措置** :
 
 1. 適切なパートナー登録を確実に行ってください。これを確かめるには、ご利用の Datahub Swagger にアクセスし、/Partner API に移動し、Get を実行して、パートナーが登録されているかどうかを確認します。 そうなっていない場合は、[こちらのステップ](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)に従って、パートナーを追加してください。
 

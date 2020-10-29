@@ -6,13 +6,13 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: c7900341cfcda52dafcb269b833f5ad8dd0f55b7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742606"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739759"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
@@ -117,7 +117,7 @@ App Service プランの SKU 要件が存在する以外に、ハイブリッド
 
 このツールは、Windows Server 2012 以降のバージョンの Windows で実行されます。 HCM はサービスとして実行し、送信のためにポート 443 で Azure Relay に接続します。  
 
-HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに*ハイブリッド接続マネージャー UI*と入力して検索できます。  
+HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに *ハイブリッド接続マネージャー UI* と入力して検索できます。  
 
 ![ハイブリッド接続マネージャーのスクリーンショット][7]
 
@@ -197,7 +197,7 @@ Commands:
 
 基になる Azure Service Bus Relay に対する十分なアクセス許可を持つユーザーは、既存のハイブリッド接続を他の App Service Web Apps に追加できます。 これは、他のユーザーが同じハイブリッド接続を再利用できないようにする必要がある場合 (たとえば、ターゲット リソースが、未承認のアクセスを防ぐための追加のセキュリティ対策が取られていないサービスである場合)、Azure Service Bus Relay へのアクセスをロックダウンする必要があることを意味します。
 
-Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azure portal でハイブリッド接続を自分の Web アプリに追加しようとするときにそれを "_表示_" することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、"_追加_" することはできません。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
+Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azure portal でハイブリッド接続を自分の Web アプリに追加しようとするときにそれを " _表示_ " することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、" _追加_ " することはできません。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 

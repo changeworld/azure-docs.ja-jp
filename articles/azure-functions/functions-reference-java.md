@@ -3,13 +3,13 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996498"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736693"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -45,7 +45,7 @@ Java の関数を作成しやすくするために、Maven ベースのツール
 
 ### <a name="project-scaffolding"></a>プロジェクトのスキャフォールディング
 
-ターミナルからのコマンド ライン開発を希望する場合、Java ベースの関数プロジェクトをスキャフォールディングする最も簡単な方法は、`Apache Maven` アーキタイプを使用することです。 Azure Functions の Java Maven アーキタイプは、[com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) という _groupId_:_artifactId_ で発行されています。 
+ターミナルからのコマンド ライン開発を希望する場合、Java ベースの関数プロジェクトをスキャフォールディングする最も簡単な方法は、`Apache Maven` アーキタイプを使用することです。 Azure Functions の Java Maven アーキタイプは、 [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) という _groupId_ : _artifactId_ で発行されています。 
 
 次のコマンドを使用すると、このアーキタイプを使用して新しい Java 関数プロジェクトが生成されます。
 
@@ -134,8 +134,6 @@ public class Function {
 
 ## <a name="java-versions"></a>Java のバージョン
 
-_Java 11 のサポートは現在プレビュー段階です_
-
 Azure で関数を実行する関数アプリを作成する場合に使用する Java のバージョンは、pom.xml ファイルに指定します。 Maven アーキタイプでは現在、Java 8 用の pom.xml が生成され、これは、発行前に変更できます。 pom.xml の Java バージョンは、アプリをローカルで開発してテストしたバージョンと一致している必要があります。 
 
 ### <a name="supported-versions"></a>サポートされているバージョン
@@ -144,14 +142,14 @@ Azure で関数を実行する関数アプリを作成する場合に使用す�
 
 | Functions バージョン | Java バージョン (Windows) | Java バージョン (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (プレビュー)<br/>8 | 11 (プレビュー)<br/>8 |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | 該当なし |
 
 デプロイのための Java バージョンを指定しない限り、Azure へのデプロイ中、Maven アーキタイプは既定で Java 8 になります。
 
 ### <a name="specify-the-deployment-version"></a>デプロイ バージョンを指定する
 
-Maven アーキタイプが対象とする Java のバージョンは、`-DjavaVersion` パラメーターを使用して制御できます。 このパラメーターの値には `8` または `11` を指定できます。 Java 11 のサポートは、現在プレビュー段階です。 
+Maven アーキタイプが対象とする Java のバージョンは、`-DjavaVersion` パラメーターを使用して制御できます。 このパラメーターの値には `8` または `11` を指定できます。 
 
 Maven アーキタイプでは、指定された Java バージョンを対象とする pom.xml が生成されます。 pom.xml 内の次の要素は、使用する Java バージョンを示しています。
 

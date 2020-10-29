@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443753"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676504"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,9 +67,9 @@ ms.locfileid: "91443753"
 
 ## <a name="install-sqlpackage"></a>SqlPackage をインストールする
 
-[最新バージョンの SqlPackage をダウンロードしてインストール](https://docs.microsoft.com/sql/tools/sqlpackage-download)します。
+[最新バージョンの SqlPackage をダウンロードしてインストール](/sql/tools/sqlpackage-download)します。
 
-詳細については、「[SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)」を参照してください。
+詳細については、「[SqlPackage.exe](/sql/tools/sqlpackage)」を参照してください。
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>データベースへの VM アクセスを許可するためのファイアウォール規則を作成する
 
@@ -77,7 +77,7 @@ ms.locfileid: "91443753"
 
 次の手順では、仮想マシンのパブリック IP アドレスのためのサーバー レベルの IP ファイアウォール規則を作成し、仮想マシンからの接続を有効にします。
 
-1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページでデータベースを選択します。 データベースの概要ページが開き、完全修飾サーバー名 (**servername.database.windows.net** など) と、さらに構成するためのオプションが表示されます。
+1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページでデータベースを選択します。 データベースの概要ページが開き、完全修飾サーバー名 ( **servername.database.windows.net** など) と、さらに構成するためのオプションが表示されます。
 
 2. サーバーやそのデータベースに接続するときに使用するために、この完全修飾サーバー名をコピーします。
 
@@ -95,9 +95,9 @@ ms.locfileid: "91443753"
 
 ## <a name="export-a-database-using-sqlpackage"></a>SqlPackage を使用してデータベースをエクスポートする
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して Azure SQL データベースをエクスポートするには、「[エクスポートのパラメーターおよびプロパティ](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)」を参照してください。 SqlPackage ユーティリティには、最新バージョンの [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) と [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) が付属しています。または、最新バージョンの [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download) をダウンロードすることもできます。
+[SqlPackage](/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して Azure SQL データベースをエクスポートするには、「[エクスポートのパラメーターおよびプロパティ](/sql/tools/sqlpackage#export-parameters-and-properties)」を参照してください。 SqlPackage ユーティリティには、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) と [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) が付属しています。または、最新バージョンの [SqlPackage](/sql/tools/sqlpackage-download) をダウンロードすることもできます。
 
-ほとんどの運用環境でのスケールとパフォーマンスのために、SqlPackage ユーティリティを使用することをお勧めします。 BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。
+ほとんどの運用環境でのスケールとパフォーマンスのために、SqlPackage ユーティリティを使用することをお勧めします。 BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)」を参照してください。
 
 この例は、SqlPackage.exe と Active Directory ユニバーサル認証を使用してデータベースをエクスポートする方法を示しています。 環境に固有の値に置き換えてください。
 
@@ -107,11 +107,11 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 ## <a name="import-a-database-using-sqlpackage"></a>SqlPackage を使用してデータベースをインポートする
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL Server データベースをインポートするには、「[インポート パラメーターとプロパティ](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)」をご覧ください。 SqlPackage には、最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) と [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) が含まれています。 また、最新バージョンの [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download) をダウンロードすることもできます。
+[SqlPackage](/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL Server データベースをインポートするには、「[インポート パラメーターとプロパティ](/sql/tools/sqlpackage#import-parameters-and-properties)」をご覧ください。 SqlPackage には、最新の [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) と [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) が含まれています。 また、最新バージョンの [SqlPackage](/sql/tools/sqlpackage-download) をダウンロードすることもできます。
 
-スケールとパフォーマンスのために、ほとんどの運用環境では、Azure portal の使用ではなく SqlPackage の使用をお勧めします。 `BACPAC` ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」をご覧ください。
+スケールとパフォーマンスのために、ほとんどの運用環境では、Azure portal の使用ではなく SqlPackage の使用をお勧めします。 `BACPAC` ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)」をご覧ください。
 
-次の SqlPackage コマンドでは、**AdventureWorks2017** データベースがローカル ストレージから Azure SQL データベースにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
+次の SqlPackage コマンドでは、 **AdventureWorks2017** データベースがローカル ストレージから Azure SQL データベースにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -141,11 +141,11 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 ## <a name="store-the-imported-or-exported-bacpac-file"></a>インポートまたはエクスポートされた .BACPAC ファイルを格納する
 
-.BACPAC ファイルは、[Azure BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) または [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) に格納できます。
+.BACPAC ファイルは、[Azure BLOB](../../storage/blobs/storage-blobs-overview.md) または [Azure Files](../../storage/files/storage-files-introduction.md) に格納できます。
 
 最高のパフォーマンスを実現するには、Azure Files を使用します。 SqlPackage はファイル システムで動作するため、Azure Files に直接アクセスできます。
 
-コストを削減するには、Premium Azure ファイル共有よりコストの低い Azure BLOB を使用します。 ただし、それには、インポートまたはエクスポート操作の前に BLOB とローカル ファイル システムの間で [.BACPAC ファイル](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)をコピーする必要があります。 その結果、このプロセスにかかる時間は長くなります。
+コストを削減するには、Premium Azure ファイル共有よりコストの低い Azure BLOB を使用します。 ただし、それには、インポートまたはエクスポート操作の前に BLOB とローカル ファイル システムの間で [.BACPAC ファイル](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)をコピーする必要があります。 その結果、このプロセスにかかる時間は長くなります。
 
 .BACPAC ファイルをアップロードまたはダウンロードするには、「[AzCopy と Blob Storage でデータを転送する](../../storage/common/storage-use-azcopy-blobs.md)」および「[AzCopy とファイル ストレージでデータを転送する](../../storage/common/storage-use-azcopy-files.md)」 を参照してください。
 
@@ -156,4 +156,4 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 - インポートした SQL Database に接続してそれを照会する方法については、「[クイック スタート:Azure SQL Database:SQL Server Management Studio を使ってデータに接続してクエリを行う方法](connect-query-ssms.md)に関する記事をご覧ください。
 - BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407)」を参照してください。
 - パフォーマンスの推奨事項も含む、SQL Server データベースの移行プロセス全体の詳細については、[Azure SQL Database への SQL Server データベースの移行](migrate-to-database-from-sql-server.md)に関するページを参照してください。
-- ストレージ キーと共有アクセス署名を管理および共有する方法については、「[Azure Storage セキュリティ ガイド](https://docs.microsoft.com/azure/storage/common/storage-security-guide)」をご覧ください。
+- ストレージ キーと共有アクセス署名を管理および共有する方法については、「[Azure Storage セキュリティ ガイド](../../storage/blobs/security-recommendations.md)」をご覧ください。

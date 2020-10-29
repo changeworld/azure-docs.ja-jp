@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80349798"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677484"
 ---
 # <a name="query-ingested-telemetry-data"></a>取り込まれたテレメトリ データのクエリ
 
@@ -24,7 +24,7 @@ ms.locfileid: "80349798"
 
 センサー テレメトリ データを取り込む場合は、「[過去のテレメトリ データの取り込み](ingest-historical-telemetry-data-in-azure-farmbeats.md)」を参照してください
 
-また、API を使用して、取り込まれたテレメトリにクエリを実行するので、作業を続行する前に、FarmBeats REST API について理解しておいてください。 FarmBeats API の詳細については、[FarmBeats REST API](rest-api-in-azure-farmbeats.md) に関する記事を参照してください。 **FarmBeats Datahub エンドポイントに対して API 要求を行うことができることを確認してください**。
+また、API を使用して、取り込まれたテレメトリにクエリを実行するので、作業を続行する前に、FarmBeats REST API について理解しておいてください。 FarmBeats API の詳細については、[FarmBeats REST API](rest-api-in-azure-farmbeats.md) に関する記事を参照してください。 **FarmBeats Datahub エンドポイントに対して API 要求を行うことができることを確認してください** 。
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>取り込まれたセンサー テレメトリ データにクエリを実行する
 
@@ -40,9 +40,9 @@ FarmBeats REST API を使用して、取り込まれたセンサー テレメト
 1. 関心があるセンサーを特定します。 これは、/Sensor API で GET 要求を実行することで行うことができます。
 
 > [!NOTE]
-> 関心があるセンサー オブジェクトの **id** と **sensorModelId**。
+> 関心があるセンサー オブジェクトの **id** と **sensorModelId** 。
 
-2. 手順 1 でメモした **sensorModelId** について、/SensorModel API で GET/{id} を実行します。 "センサー モデル" には、センサーから取り込まれたテレメトリに関するすべてのメタデータと詳細が含まれています。 たとえば、**センサー モデル** オブジェクト内の**センサー メジャー**には、センサーによって送信されるメジャーおよびその種類と単位に関する詳細が含まれます。 たとえば、次のように入力します。
+2. 手順 1 でメモした **sensorModelId** について、/SensorModel API で GET/{id} を実行します。 "センサー モデル" には、センサーから取り込まれたテレメトリに関するすべてのメタデータと詳細が含まれています。 たとえば、 **センサー モデル** オブジェクト内の **センサー メジャー** には、センサーによって送信されるメジャーおよびその種類と単位に関する詳細が含まれます。 たとえば、次のように入力します。
 
   ```json
   {
@@ -111,7 +111,7 @@ FarmBeats REST API を使用して、取り込まれたセンサー テレメト
 
 FarmBeats では [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) を利用して、IoT スケールでデータを取り込み、格納し、クエリを実行して視覚化します。これは、豊富なコンテキスト情報が付加され、時系列に合わせて最適化されたデータです。
 
-テレメトリ データは EventHub で受信されてから処理され、FarmBeats リソース グループ内の TSI 環境にプッシュされます。 その後、TSI から直接、データにクエリを実行することができます。 詳細については、[TSI のドキュメント](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)を参照してください。
+テレメトリ データは EventHub で受信されてから処理され、FarmBeats リソース グループ内の TSI 環境にプッシュされます。 その後、TSI から直接、データにクエリを実行することができます。 詳細については、[TSI のドキュメント](../../time-series-insights/time-series-insights-explorer.md)を参照してください。
 
 TSI でデータを視覚化するには、以下の手順に従います。
 

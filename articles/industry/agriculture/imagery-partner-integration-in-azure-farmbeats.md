@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613287"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675938"
 ---
 # <a name="imagery-partner-integration"></a>画像パートナーの統合
 
@@ -43,9 +43,9 @@ API には、Swagger の技術ドキュメントが用意されています。 A
 
 ## <a name="authentication"></a>認証
 
-FarmBeats には Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) が使用されます。 Azure App Service によって、組み込みの認証と承認がサポートされます。 
+FarmBeats には Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD) が使用されます。 Azure App Service によって、組み込みの認証と承認がサポートされます。 
 
-Azure AD の詳細については、「[Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)」を参照してください。   
+Azure AD の詳細については、「[Azure Active Directory](../../app-service/overview-authentication-authorization.md)」を参照してください。   
 
 FarmBeats Datahub ではベアラー認証が使用され、次の資格情報が必要です。
 

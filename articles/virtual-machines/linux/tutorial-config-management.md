@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: e233c7c4eb76e79e73d0c5fc386a9d908f0e35b5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 175c92c02196105e9fb1249e5b88d73bc8b87d48
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216693"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735238"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -42,13 +42,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-vm"></a>VM を作成する
 
-診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
+診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、 *myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成し、SSH キーを生成します ( *~/.ssh/* にまだ存在していない場合)。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 次の例では、 *myVM* という名前の VM を作成し、SSH キーを生成します ( *~/.ssh/* にまだ存在していない場合)。
 
 ```azurecli-interactive
 az vm create \
@@ -99,7 +99,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ### <a name="view-update-assessment"></a>更新の評価を確認する
 
-**更新管理**が有効になると、 **[更新管理]** 画面が表示されます。 更新の評価が完了すると、 **[不足している更新プログラム]** タブに、不足している更新プログラムの一覧が表示されます。
+**更新管理** が有効になると、 **[更新管理]** 画面が表示されます。 更新の評価が完了すると、 **[不足している更新プログラム]** タブに、不足している更新プログラムの一覧が表示されます。
 
  ![更新ステータスを確認する](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
 
@@ -127,7 +127,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 更新プログラムのデプロイはプログラムで作成することもできます。 REST API を使用して更新プログラムのデプロイを作成する方法については、「[Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create)」(ソフトウェア更新プログラムの構成 - 作成) をご覧ください。 週単位の更新プログラムのデプロイを作成するために使用できるサンプル Runbook もあります。 この Runbook について詳しくは、「[Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)」(リソース グループ内の VM に対して週単位の更新プログラムのデプロイを作成する) をご覧ください。
 
 スケジュールの構成が完了したら、 **[作成]** ボタンをクリックして、状態ダッシュボードに戻ります。
-**スケジュール済み**の表に、作成したデプロイ スケジュールが表示されていることを確認してください。
+**スケジュール済み** の表に、作成したデプロイ スケジュールが表示されていることを確認してください。
 
 ### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を確認する
 
@@ -141,9 +141,9 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 **[新プログラムを実行した結果]** のタイルに表示されるのは、VM 上の更新プログラムの合計数とデプロイ結果の概要です。
 右側の表に、各更新プログラムとインストールの結果の詳細が示されます。これは、次の値のいずれかになります。
 
-* **試行されていません**: メンテナンス期間として定義した時間が十分ではなかったため、更新プログラムがインストールされませんでした。
-* **成功**: 更新できました。
-* **失敗**: 更新できませんでした。
+* **試行されていません** : メンテナンス期間として定義した時間が十分ではなかったため、更新プログラムがインストールされませんでした。
+* **成功** : 更新できました。
+* **失敗** : 更新できませんでした。
 
 展開によって作成されたログ エントリをすべて表示するには、 **[すべてのログ]** を選択します。
 

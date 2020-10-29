@@ -4,13 +4,13 @@ description: Azure コンテナー レジストリからコンテナー イメ�
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173650"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736729"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -18,9 +18,9 @@ ms.locfileid: "92173650"
 
 ## <a name="prerequisites"></a>前提条件
 
-**Azure コンテナー レジストリ**: この記事の手順を完了するには、Azure コンテナー レジストリと、そのレジストリ内の少なくとも 1 つのコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
+**Azure コンテナー レジストリ** : この記事の手順を完了するには、Azure コンテナー レジストリと、そのレジストリ内の少なくとも 1 つのコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
 
-**Azure CLI**:この記事のコマンド ラインの例は [Azure CLI](/cli/azure/) を使用し、Bash シェル用にフォーマットされています。 ローカルに [Azure CLI をインストール](/cli/azure/install-azure-cli)するほかに、[Azure Cloud Shell][cloud-shell-bash] を使用することもできます。
+**Azure CLI** :この記事のコマンド ラインの例は [Azure CLI](/cli/azure/) を使用し、Bash シェル用にフォーマットされています。 ローカルに [Azure CLI をインストール](/cli/azure/install-azure-cli)するほかに、[Azure Cloud Shell][cloud-shell-bash] を使用することもできます。
 
 ## <a name="limitations"></a>制限事項
 
@@ -55,7 +55,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納します。
 
-次のコマンドでは、[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用してコンテナーにサービス プリンシパルの**パスワード**を格納します。
+次のコマンドでは、 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成し、 [az keyvault secret set][az-keyvault-secret-set] を使用してコンテナーにサービス プリンシパルの **パスワード** を格納します。
 
 ```azurecli
 # Create service principal, store its password in vault (the registry *password*)
@@ -70,9 +70,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-上記のコマンドの `--role` 引数により、*acrpull* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリに対するプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *acrpush* に変更します。
+上記のコマンドの `--role` 引数により、 *acrpull* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリに対するプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *acrpush* に変更します。
 
-次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure コンテナー レジストリに渡す**ユーザー名**です。
+次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure コンテナー レジストリに渡す **ユーザー名** です。
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -84,8 +84,8 @@ az keyvault secret set \
 
 Azure キー コンテナーを作成し、そこに 2 つのシークレットを格納します。
 
-* `$ACR_NAME-pull-usr`:サービス プリンシパル ID。コンテナー レジストリの**ユーザー名**として使用します。
-* `$ACR_NAME-pull-pwd`:サービス プリンシパルのパスワード。コンテナー レジストリの**パスワード**として使用します。
+* `$ACR_NAME-pull-usr`:サービス プリンシパル ID。コンテナー レジストリの **ユーザー名** として使用します。
+* `$ACR_NAME-pull-pwd`:サービス プリンシパルのパスワード。コンテナー レジストリの **パスワード** として使用します。
 
 これらのシークレットは、アプリケーションおよびサービスがレジストリからイメージをプルしたときの名前で参照できます。
 

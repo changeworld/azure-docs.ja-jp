@@ -4,15 +4,15 @@ description: オンプレミスのプロキシ設定とファイアウォール�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903716"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675785"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -44,14 +44,14 @@ Azure File Sync は、Azure に到達さえできれば、その接続手段を�
 ## <a name="proxy"></a>プロキシ
 Azure File Sync では、アプリ固有のプロキシ設定とマシン全体のプロキシ設定がサポートされています。
 
-**アプリ固有のプロキシ設定**を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 4.0.1.0 以降でサポートされ、エージェントのインストール中に、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
+**アプリ固有のプロキシ設定** を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 4.0.1.0 以降でサポートされ、エージェントのインストール中に、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
 
 アプリ固有のプロキシ設定を構成する PowerShell コマンドを次に示します。
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-**マシン全体のプロキシ設定**は、Azure File Sync エージェントに対して透過的です。このプロキシではサーバーのトラフィック全体がルーティングされるためです。
+**マシン全体のプロキシ設定** は、Azure File Sync エージェントに対して透過的です。このプロキシではサーバーのトラフィック全体がルーティングされるためです。
 
 マシン全体のプロキシ設定を構成するには、次の手順のようにします。 
 
@@ -121,6 +121,8 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | パブリック | 東アジア | https:\//eastasia01.afs.azure.net<br>https:\//kailani11.one.microsoft.com | 東南アジア | https:\//tm-eastasia01.afs.azure.net<br>https:\//tm-kailani11.one.microsoft.com |
 | パブリック | 米国東部 | https:\//eastus01.afs.azure.net<br>https:\//kailani1.one.microsoft.com | 米国西部 | https:\//tm-eastus01.afs.azure.net<br>https:\//tm-kailani1.one.microsoft.com |
 | パブリック | 米国東部 2 | https:\//eastus201.afs.azure.net<br>https:\//kailani-ess.one.microsoft.com | 米国中部 | https:\//tm-eastus201.afs.azure.net<br>https:\//tm-kailani-ess.one.microsoft.com |
+| パブリック | ドイツ北部 | https:\//germanynorth01.afs.azure.net | ドイツ中西部 | https:\//tm-germanywestcentral01.afs.azure.net |
+| パブリック | ドイツ中西部 | https:\//germanywestcentral01.afs.azure.net | ドイツ北部 | https:\//tm-germanynorth01.afs.azure.net |
 | パブリック | 東日本 | https:\//japaneast01.afs.azure.net | 西日本 | https:\//tm-japaneast01.afs.azure.net |
 | パブリック | 西日本 | https:\//japanwest01.afs.azure.net | 東日本 | https:\//tm-japanwest01.afs.azure.net |
 | パブリック | 韓国中部 | https:\//koreacentral01.afs.azure.net/ | 韓国南部 | https:\//tm-koreacentral01.afs.azure.net/ |

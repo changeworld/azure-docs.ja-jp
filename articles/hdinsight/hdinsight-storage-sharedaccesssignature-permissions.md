@@ -6,21 +6,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856566"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742063"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Blob Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
 HDInsight には、クラスターに関連付けられた Azure Blob Storage アカウントのデータへのフル アクセス権があります。 BLOB コンテナーで Shared Access Signature を使って、データへのアクセスを制限できます。 Shared Access Signature (SAS) は、データへのアクセスを制限できる Azure Blob Storage アカウントの機能です。 たとえば、データに読み取り専用のアクセス権を提供します。
 
 > [!IMPORTANT]  
-> Apache Ranger を使うソリューションでは、ドメインに参加している HDInsight を使うことを検討してください。 詳しくは、「[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure.md)」をご覧ください。
+> Apache Ranger を使うソリューションでは、ドメインに参加している HDInsight を使うことを検討してください。 詳しくは、「[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)」をご覧ください。
 
 > [!WARNING]  
 > HDInsight には、クラスターの既定のストレージへのフル アクセス権が必要です。
@@ -31,9 +31,9 @@ HDInsight には、クラスターに関連付けられた Azure Blob Storage �
 
 * 既存の[ストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。
 
-* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 * [Python](https://www.python.org/downloads/) バージョン 2.7 以降 (Python を使用する場合)。
 
@@ -76,7 +76,7 @@ Shared Access Signature には、次の 2 つのフォームがあります。
 
 保存済みのアクセス ポリシーを常に使用することをお勧めします。 保存済みのポリシーを使用している場合、必要に応じて署名を失効させるか、有効期限を延長することができます。 ドキュメント内のこれらの手順は、保存済みのアクセス ポリシーを使用して、SAS を生成します。
 
-Shared Access Signature の詳細については、「 [SAS モデルについて](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Shared Access Signature の詳細については、「 [SAS モデルについて](../storage/common/storage-sas-overview.md)」を参照してください。
 
 ## <a name="create-a-stored-policy-and-sas"></a>保存済みのポリシーと SAS を作成する
 
@@ -357,8 +357,8 @@ Remove-AzResourceGroup `
 
 1. **[カスタム core-site]** セクションを展開して、最後までスクロールし、 **[プロパティの追加]** を選択します。 **[キー]** と **[値]** に次の値を使用します。
 
-    * **キー**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **値**: これまでに実行したいずれかの方法で取得した SAS。
+    * **キー** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **値** : これまでに実行したいずれかの方法で取得した SAS。
 
     `CONTAINERNAME` を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 `STORAGEACCOUNTNAME` には、使用したストレージ アカウント名を指定します。
 
@@ -411,7 +411,7 @@ Remove-AzResourceGroup `
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    このコマンドは、**testfile.txt** という名前のローカル ファイルにファイルをダウンロードします。
+    このコマンドは、 **testfile.txt** という名前のローカル ファイルにファイルをダウンロードします。
 
 5. 次のコマンドを使用して、ローカル ファイルを SAS ストレージ上の **testupload.txt** という名前の新しいファイルにアップロードします。
 

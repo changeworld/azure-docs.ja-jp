@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257318"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675634"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
@@ -32,13 +32,13 @@ ms.locfileid: "91257318"
 
 多くの最新の Web アプリケーションは、クライアント側のシングル ページ アプリケーションとして構築されています。 開発者は、JavaScript または SPA フレームワーク (Angular、Vue、React など) を使用してそれらを作成します。 これらのアプリケーションは Web ブラウザーで実行され、その認証には、従来のサーバー側 Web アプリケーションとは異なる特性があります。
 
-Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得するための **2 つ**のオプションが提供されます。
+Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得するための **2 つ** のオプションが提供されます。
 
-- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な**アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 また、ユーザーが操作しなくてもユーザーの代わりにリソースへの長期間アクセスを提供する**更新**トークンが返されます。 これが**推奨される**方法です。
+- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な **アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 また、ユーザーが操作しなくてもユーザーの代わりにリソースへの長期間アクセスを提供する **更新** トークンが返されます。 これが **推奨される** 方法です。
 
 ![シングルページ アプリケーション認証](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)。 暗黙的な許可フローでは、**ID** と**アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは**更新トークン**が返されません。
+- [OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)。 暗黙的な許可フローでは、 **ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。
 
 ![シングルページ アプリケーション暗黙的](./media/scenarios/spa-app.svg)
 

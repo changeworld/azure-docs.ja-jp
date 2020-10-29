@@ -3,17 +3,17 @@ title: チュートリアル - コンテナー イメージのクイック ビ�
 description: このチュートリアルでは、Azure Container Registry Task (ACR Task) 使用して Azure で Docker コンテナー イメージをビルドして、Azure Container Instances にデプロイする方法を説明します。
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259488"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739535"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
-**ACR Task** は、Azure Container Registry 内の機能スイートで、Azure での合理的かつ効率的な Docker コンテナー イメージ ビルドを実現します。 この記事では、ACR Task の*クイック タスク*機能を使用する方法を説明します。
+**ACR Task** は、Azure Container Registry 内の機能スイートで、Azure での合理的かつ効率的な Docker コンテナー イメージ ビルドを実現します。 この記事では、ACR Task の *クイック タスク* 機能を使用する方法を説明します。
 
 「内部ループ」開発サイクルは、コードの記述、ビルド、およびソース管理にコミットする前のアプリケーションのテストの反復的なプロセスです。 クイック タスクは「内部ループ」をクラウドに拡張し、ビルド成功の検証と、正常にビルドされたイメージのコンテナー レジストリへの自動プッシュを提供します。 イメージは、お使いのレジストリの近くのクラウドにネイティブにビルドされるため、デプロイが高速化されます。
 
@@ -30,7 +30,7 @@ Dockerfile に関する専門知識をすべて、ACR Task に直接転送でき
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、 [az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -87,7 +87,7 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-レジストリができたので、ACR Task を使用して、サンプル コードからコンテナー イメージをビルドします。 [az acr build][az-acr-build] コマンドを実行して、*クイック タスク*を実行します。
+レジストリができたので、ACR Task を使用して、サンプル コードからコンテナー イメージをビルドします。 [az acr build][az-acr-build] コマンドを実行して、 *クイック タスク* を実行します。
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -188,7 +188,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納する必要があります。
 
-[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用して資格情報コンテナーにサービス プリンシパルの**パスワード**を格納します。
+[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用してサービス プリンシパルを作成し、 [az keyvault secret set][az-keyvault-secret-set] を使用して資格情報コンテナーにサービス プリンシパルの **パスワード** を格納します。
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -203,9 +203,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-上記のコマンドの `--role` 引数により、*acrpull* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリに対するプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *acrpush* に変更します。
+上記のコマンドの `--role` 引数により、 *acrpull* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリに対するプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *acrpush* に変更します。
 
-次にサービス プリンシパルの *appId* を資格情報コンテナーに格納します。appId は、認証のために Azure Container Registry に渡す**ユーザー名**です。
+次にサービス プリンシパルの *appId* を資格情報コンテナーに格納します。appId は、認証のために Azure Container Registry に渡す **ユーザー名** です。
 
 ```azurecli-interactive
 # Store service principal ID in AKV (the registry *username*)
@@ -217,8 +217,8 @@ az keyvault secret set \
 
 Azure キー コンテナーを作成してに 2 つのシークレットを格納します。
 
-* `$ACR_NAME-pull-usr`:サービス プリンシパル ID。コンテナー レジストリの**ユーザー名**として使用します。
-* `$ACR_NAME-pull-pwd`:サービス プリンシパルのパスワード。コンテナー レジストリの**パスワード**として使用します。
+* `$ACR_NAME-pull-usr`:サービス プリンシパル ID。コンテナー レジストリの **ユーザー名** として使用します。
+* `$ACR_NAME-pull-pwd`:サービス プリンシパルのパスワード。コンテナー レジストリの **パスワード** として使用します。
 
 これらのシークレットは、アプリケーションおよびサービスがレジストリからイメージをプルしたときの名前で参照できます。
 
@@ -286,7 +286,7 @@ Server running at http://localhost:80
 az container delete --resource-group $RES_GROUP --name acr-tasks
 ```
 
-このチュートリアルで作成した "*すべての*" リソース (コンテナー レジストリ、キー コンテナー、サービス プリンシパルなど) を削除するには、次のコマンドを実行します。 ただし、これらのリソースはシリーズの[次のチュートリアル](container-registry-tutorial-build-task.md)で使用するため、次のチュートリアルに進んでいる場合は削除しないことをお勧めします。
+このチュートリアルで作成した " *すべての* " リソース (コンテナー レジストリ、キー コンテナー、サービス プリンシパルなど) を削除するには、次のコマンドを実行します。 ただし、これらのリソースはシリーズの[次のチュートリアル](container-registry-tutorial-build-task.md)で使用するため、次のチュートリアルに進んでいる場合は削除しないことをお勧めします。
 
 ```azurecli-interactive
 az group delete --resource-group $RES_GROUP
@@ -295,7 +295,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、クイックタスクで内部ループをテストしたので、ソース コードを Git リポジトリにコミットしたときにコンテナー イメージ ビルドをトリガーするように**ビルド タスク**を構成します。
+これで、クイックタスクで内部ループをテストしたので、ソース コードを Git リポジトリにコミットしたときにコンテナー イメージ ビルドをトリガーするように **ビルド タスク** を構成します。
 
 > [!div class="nextstepaction"]
 > [タスクによる自動ビルドのトリガー](container-registry-tutorial-build-task.md)

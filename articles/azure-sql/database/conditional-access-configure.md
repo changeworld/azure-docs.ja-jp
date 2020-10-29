@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: ad80f68c1ab3b3583c5a22de49b77211571f345e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678064"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics での条件付きアクセス
 
@@ -37,7 +37,7 @@ ms.locfileid: "91443979"
 > [!NOTE]
 > 次の例では Azure SQL Database を使用しますが、条件付きアクセスを構成する適切な製品を選択する必要があります。
 
-1. Azure portal にサインインし、 **[Azure Active Directory]** を選択してから **[条件付きアクセス]** を選択します。 詳細については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference)」を参照してください。  
+1. Azure portal にサインインし、 **[Azure Active Directory]** を選択してから **[条件付きアクセス]** を選択します。 詳細については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](../../active-directory/conditional-access/concept-conditional-access-conditions.md)」を参照してください。  
    ![[条件付きアクセス] ブレード](./media/conditional-access-configure/conditional-access-blade.png)
 
 2. **[Conditional Access-Policies]\(条件付きアクセス ポリシー\)** ブレードで、 **[新しいポリシー]** をクリックし、名前を指定してから **[Configure rules]\(規則の構成\)** をクリックします。  

@@ -107,7 +107,7 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
           href: how-to-integrate-time-series-insights.md
-    - name: トラブルシューティング
+    - name: 監視とトラブルシューティング
       items:
         - name: Azure Monitor のメトリックを表示する
           href: troubleshoot-metrics.md
@@ -115,6 +115,8 @@
           href: troubleshoot-diagnostics.md
         - name: アラートを有効にする
           href: troubleshoot-alerts.md
+        - name: リソースの正常性を理解する
+          href: troubleshoot-resource-health.md
         - name: 既知の問題
           href: troubleshoot-known-issues.md
         - name: 問題解決
@@ -144,7 +146,7 @@
             - name: Java SDK - リファレンス
               href: /java/api/overview/azure/digitaltwins/management?view=azure-java-preview
             - name: Java SDK - ソース
-              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
             - name: JavaScript SDK
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
             - name: JavaScript SDK - ソース
@@ -152,9 +154,11 @@
             - name: Python SDK
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
             - name: Python SDK - ソース
-              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+            - name: Go - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: データ プレーン
           items:
             - name: Swagger

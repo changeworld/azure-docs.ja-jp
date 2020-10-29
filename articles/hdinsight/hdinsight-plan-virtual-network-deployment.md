@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60bb16b0a4fd2e710d0d5fddc6cf82916f2f66af
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82786616"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741431"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -26,7 +26,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 * インターネットで公開されていない Apache Hadoop サービスに直接アクセスする。 たとえば、Apache Kafka API や Apache HBase Java API などです。
 
 > [!IMPORTANT]
-> VNET で HDInsight クラスターを作成すると、NIC やロード バランサーなど、いくつかのネットワーク リソースが作成されます。 これらのネットワーク リソースは、クラスターが VNET で正常に機能するために必要なため、削除**しないでください**。
+> VNET で HDInsight クラスターを作成すると、NIC やロード バランサーなど、いくつかのネットワーク リソースが作成されます。 これらのネットワーク リソースは、クラスターが VNET で正常に機能するために必要なため、削除 **しないでください** 。
 >
 > 2019 年 2 月 28 日以降、VNET で作成された "新しい" HDInsight クラスターのネットワーク リソース (NIC、LB など) は、同じ HDInsight クラスター リソース グループにプロビジョニングされます。 以前は、これらのリソースは、VNET リソース グループにプロビジョニングされていました。 現在実行中のクラスターや、VNET なしで作成されたクラスターへの変更はありません。
 
@@ -84,7 +84,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
         詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/diagnose-network-traffic-filter-problem.md) 」をご覧ください。
 
         > [!IMPORTANT]  
-        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
+        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/network-security-groups-overview.md)」をご覧ください。
 
     * ユーザー定義のルート
 
@@ -125,7 +125,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
     これら両方のノードは、内部 DNS 名を使用して、互いに直接通信でき、また HDInsight 内の他のノードとも直接通信できます。
 
-既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは __できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみを使用している場合、HDInsight はオンプレミス ネットワーク内のリソースに名前でアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
+既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは __できません__ 。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみを使用している場合、HDInsight はオンプレミス ネットワーク内のリソースに名前でアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
 
 > [!WARNING]  
 > HDInsight クラスターを作成する前に、カスタムの DNS サーバーを作成し、これを使用するように仮想ネットワークを構成する必要があります。
@@ -148,7 +148,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
          * その他の要求はすべて、オンプレミス DNS サーバーに転送されます。 その他のすべての名前解決要求は、Microsoft.com などのインターネット リソースへの要求も含めて、オンプレミス DNSが処理します。
 
-     * __オンプレミス DNS__:仮想ネットワークの DNS サフィックスの要求をカスタム DNS サーバーに転送します。 その後、カスタム DNS サーバーにより、Azure の再帰リゾルバーに転送されます。
+     * __オンプレミス DNS__ :仮想ネットワークの DNS サフィックスの要求をカスタム DNS サーバーに転送します。 その後、カスタム DNS サーバーにより、Azure の再帰リゾルバーに転送されます。
 
        この構成では、仮想ネットワークの DNS サフィックスを持つ完全修飾ドメイン名の要求は、カスタム DNS サーバーに送信されます。 他のすべての要求は、(公開インターネットのアドレスの要求も含め) オンプレミスの DNS サーバーによって処理されます。
 
@@ -210,6 +210,6 @@ HDInsight クラスターを作成すると、ロード バランサーも作成
 * コード サンプルおよび Azure Virtual Network の作成例については、[Azure HDInsight クラスター用の仮想ネットワークの作成](hdinsight-create-virtual-network.md)に関するページを参照してください。
 * HDInsight を オンプレミス ネットワークに接続する構成方法の詳しい例については、 [HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページをご覧ください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に関するページをご覧ください。
 * ユーザー定義のルートについて詳しくは、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
 * トラフィックのコントロールの詳細については、[ネットワーク トラフィックのコントロール](./control-network-traffic.md)に関するページをご覧ください。

@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: georgewallace
 ms.author: gwallace
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: eedd796e3223c6cbcd0844cc4e814a35172d6c7e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078529"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737201"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 
@@ -159,7 +159,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **マスター サブネットの[サブネット プライベート エンドポイント ポリシーを無効にします](../private-link/disable-private-link-service-network-policy.md)。** これは、クラスターに接続して管理できるようにするために必要です。
+5. **マスター サブネットの [サブネット プライベート エンドポイント ポリシーを無効にします](../private-link/disable-private-link-service-network-policy.md)。** これは、クラスターに接続して管理できるようにするために必要です。
 
     ```azurecli-interactive
     az network vnet subnet update \

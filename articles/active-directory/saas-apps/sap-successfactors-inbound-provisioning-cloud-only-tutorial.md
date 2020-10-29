@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b7571b0a064e10faf5f002c9487ecc804ac78665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 317fef0381222cc7bd9f86fce13a809aa3c787ea
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017899"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676582"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Azure AD へのユーザー プロビジョニングの構成
 このチュートリアルでは、SuccessFactors Employee Central から Azure Active Directory に社員データをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
@@ -92,7 +92,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 ### <a name="create-an-api-permissions-role"></a>API アクセス許可ロールを作成する
 
 * Admin Center にアクセスできるユーザーアカウントで SAP SuccessFactors にログインします。
-* "*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+* " *Manage Permission Roles* " を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
   ![アクセス許可ロールを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
 * [Permission Role List]\(アクセス許可ロール一覧\) で、 **[Create New]\(新規作成\)** をクリックします。
   > [!div class="mx-imgBorder"]
@@ -110,7 +110,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API ユーザーのアクセス許可グループを作成する
 
-* SuccessFactors Admin Center で、"*Manage Permission Groups*" を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
+* SuccessFactors Admin Center で、" *Manage Permission Groups* " を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
   > [!div class="mx-imgBorder"]
   > ![アクセス許可グループを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
 * [Manage Permission Groups]\(アクセス許可グループの管理\) ウィンドウで、 **[Create New]\(新規作成\)** をクリックします。
@@ -126,7 +126,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>許可グループに許可ロールを付与する
 
-* SuccessFactors Admin Center で、"*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+* SuccessFactors Admin Center で、" *Manage Permission Roles* " を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
 * **[Permission Role List]\(アクセス許可ロール一覧\)** から、API 使用アクセス許可用に作成したロールを選択します。
 * **[Grant this role to]\(このロールに付与するアクセス許可\)** で、 **[Add]\(追加\)** ボタンをクリックします。
 * ドロップダウン メニューから **[Permission Group]\(アクセス許可グループ\)** を選択し、 **[Select]\(選択\)** をクリックして [Groups]\(グループ\) ウィンドウを開き、先ほど作成したグループを検索して選択します。 
@@ -169,11 +169,11 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
    * **管理パスワード** - SuccessFactors API ユーザー アカウントのパスワードを入力します。 
 
-   * **テナント URL** - SuccessFactors OData API サービス エンドポイントの名前を入力します。 http または https なしでサーバーのホスト名のみを入力してください。 この値は次のようになります: **api-server-name.successfactors.com**。
+   * **テナント URL** - SuccessFactors OData API サービス エンドポイントの名前を入力します。 http または https なしでサーバーのホスト名のみを入力してください。 この値は次のようになります: **api-server-name.successfactors.com** 。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
     > [!NOTE]
-    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状態になった場合にメール通知を送信します。
+    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](../app-provisioning/application-provisioning-quarantine-status.md)状態になった場合にメール通知を送信します。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、SuccessFactors 資格情報および URL が有効か再度確認します。
     >[!div class="mx-imgBorder"]
@@ -209,7 +209,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
    > [!CAUTION] 
    > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の SuccessFactors と Azure AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../app-provisioning/skip-out-of-scope-deletions.md)」の記事を参照してください。
   
-1. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成**と**更新**が最も一般的です。
+1. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成** と **更新** が最も一般的です。
 
 1. **[属性マッピング]** セクションでは、個別の SuccessFactors 属性を Active Directory の属性にマッピングする方法を定義できます。
 
@@ -276,5 +276,3 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 * [SuccessFactors と Azure Active Directory Domain Services の間でシングル サインオンを構成する方法を学習する](successfactors-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)
 * [プロビジョニング構成をエクスポートおよびインポートする方法を学習する](../app-provisioning/export-import-provisioning-configuration.md)
-
-

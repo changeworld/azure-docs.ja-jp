@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 51c794d3e121b06f7eafc7f59f1fb8912e9d1f08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b15d560e2678772cefdf3d87c047013b24ed467
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543433"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>チュートリアル: Azure Active Directory と SAML 1.1 Token enabled LOB App の統合
 
@@ -27,7 +27,7 @@ SAML 1.1 Token enabled LOB App と Azure AD の統合には、次の利点があ
 * ユーザーが自分の Azure AD アカウントで SAML 1.1 Token enabled LOB App に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と SAML 1.1 Token enabled LOB App の統合を構成するには、次
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAML 1.1 Token enabled LOB App では、**SP** によって開始される SSO がサポートされます
+* SAML 1.1 Token enabled LOB App では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-saml-11-token-enabled-lob-app-from-the-gallery"></a>ギャラリーからの SAML 1.1 Token enabled LOB App の追加
 
@@ -61,13 +61,13 @@ Azure AD への SAML 1.1 Token enabled LOB App の統合を構成するには、
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. [検索] ボックスに「**SAML 1.1 Token enabled LOB App**」と入力し、結果パネルで **SAML 1.1 Token enabled LOB App** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. [検索] ボックスに「 **SAML 1.1 Token enabled LOB App** 」と入力し、結果パネルで **SAML 1.1 Token enabled LOB App** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SAML 1.1 Token enabled LOB App](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAML 1.1 Token enabled LOB App 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -108,7 +108,7 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、SAML 1.1 Token enabled LOB App クライアント サポート チームに問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -124,7 +124,7 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
 
 ### <a name="configure-saml-11-token-enabled-lob-app-single-sign-on"></a>SAML 1.1 Token enabled LOB App のシングル サインオンの構成
 
-**SAML 1.1 Token enabled LOB App** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を SAML 1.1 Token enabled LOB App サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SAML 1.1 Token enabled LOB App** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を SAML 1.1 Token enabled LOB App サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -142,9 +142,9 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -159,7 +159,7 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で「**SAML 1.1 Token enabled LOB App**」と入力して選択します。
+2. アプリケーションの一覧で「 **SAML 1.1 Token enabled LOB App** 」と入力して選択します。
 
     ![アプリケーションの一覧の [SAML 1.1 Token enabled LOB App] リンク](common/all-applications.png)
 
@@ -185,13 +185,12 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SAML 1.1 Token enabled LOB App] タイルをクリックすると、SSO を設定した SAML 1.1 Token enabled LOB App に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SAML 1.1 Token enabled LOB App] タイルをクリックすると、SSO を設定した SAML 1.1 Token enabled LOB App に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -3,13 +3,13 @@ title: チュートリアル - 基本イメージの更新時にイメージ ビ
 description: このチュートリアルでは、同じレジストリの基本イメージが更新されたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするように Azure Container Registry タスクを構成する方法を説明します。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-js
-ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: f6dfc5b6cfe3312f2b3b4663ab5211cc60309eb6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262248"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741118"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
@@ -76,7 +76,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="build-the-base-image"></a>基本イメージをビルドする
 
-ACR タスクの "*クイック タスク*" で、[az acr build][az-acr-build] を使用して基本イメージをビルドすることから開始します。 シリーズの[最初のチュートリアル](container-registry-tutorial-quick-task.md)で説明したように、このプロセスではイメージがビルドされるだけでなく、ビルドが成功した場合にイメージがコンテナー レジストリにプッシュされます。
+ACR タスクの " *クイック タスク* " で、 [az acr build][az-acr-build] を使用して基本イメージをビルドすることから開始します。 シリーズの[最初のチュートリアル](container-registry-tutorial-quick-task.md)で説明したように、このプロセスではイメージがビルドされるだけでなく、ビルドが成功した場合にイメージがコンテナー レジストリにプッシュされます。
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -113,7 +113,7 @@ FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 az acr task run --registry $ACR_NAME --name taskhelloworld
 ```
 
-次のオプションの手順を実行する場合は、タスクが完了したら、**実行 ID** ("da6" など) をメモしておきます。
+次のオプションの手順を実行する場合は、タスクが完了したら、 **実行 ID** ("da6" など) をメモしておきます。
 
 ### <a name="optional-run-application-container-locally"></a>省略可能:アプリケーション コンテナーをローカルで実行する
 
@@ -170,7 +170,7 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 ENV NODE_VERSION 9.11.2a
 ```
 
-クイック タスクを実行して、変更された基本イメージをビルドします。 出力の**実行 ID** をメモします。
+クイック タスクを実行して、変更された基本イメージをビルドします。 出力の **実行 ID** をメモします。
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -201,7 +201,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:50:
 da1                       Linux       Succeeded  Manual        2018-09-17T22:29:59Z  00:00:57
 ```
 
-新しくビルドされたコンテナーを実行する次のオプションの手順を実行し、更新後のバージョン番号を表示する場合は、イメージの更新によってトリガーされたビルドの**実行 ID** の値をメモしておきます (前の出力では "da8")。
+新しくビルドされたコンテナーを実行する次のオプションの手順を実行し、更新後のバージョン番号を表示する場合は、イメージの更新によってトリガーされたビルドの **実行 ID** の値をメモしておきます (前の出力では "da8")。
 
 ### <a name="optional-run-newly-built-image"></a>省略可能:新しくビルドされたイメージを実行する
 
@@ -215,7 +215,7 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 ![ブラウザーに表示されたサンプル アプリケーションのスクリーンショット][base-update-02]
 
-**基本**イメージを新しいバージョン番号に更新しましたが、最後にビルドされた**アプリケーション** イメージによって新しいバージョンが表示されることに注意してください。 ACR Tasks によって変更が基本イメージに反映され、アプリケーション イメージが自動的にリビルドされました。
+**基本** イメージを新しいバージョン番号に更新しましたが、最後にビルドされた **アプリケーション** イメージによって新しいバージョンが表示されることに注意してください。 ACR Tasks によって変更が基本イメージに反映され、アプリケーション イメージが自動的にリビルドされました。
 
 コンテナーを停止して削除するには、次のコマンドを実行します。
 

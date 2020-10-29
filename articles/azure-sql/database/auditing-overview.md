@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 02ea65748928fda7142ce17532999e1a069f6eb0
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 5c87344c4cd179beae6502901a23b2dace6591a7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169415"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677231"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
   > [!NOTE]
-  > 一時停止している Synapse SQL プールで監査を有効にすることはできません。 監査を有効にするには、Synapse SQL プールの一時停止を解除します。 [Synapse SQL プール](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)の詳細を確認してください。
+  > 一時停止している Synapse SQL プールで監査を有効にすることはできません。 監査を有効にするには、Synapse SQL プールの一時停止を解除します。 [Synapse SQL プール](../../synapse-analytics/sql/best-practices-sql-pool.md)の詳細を確認してください。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
@@ -117,11 +117,11 @@ Microsoft サポートの操作の監査 (プレビュー) を有効にするに
 #### <a name="remarks"></a>解説
 
 - 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある **追加 BLOB** に書き込まれます
-- 監査ログは .xel 形式であり、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して開くことができます。
-- サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
+- 監査ログは .xel 形式であり、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して開くことができます。
+- サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
 - VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
 - 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。
-- ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)に関するドキュメントを参照してください。
+- ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](./audit-log-format.md)に関するドキュメントを参照してください。
 - Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 " *されません* "。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
 - [読み取り専用レプリカ](read-scale-out.md)での監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
 
@@ -131,7 +131,7 @@ Log Analytics ワークスペースへの監査ログの書き込みを構成す
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
-Azure Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)」を参照してください。
+Azure Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../../azure-monitor/platform/design-logs-deployment.md)」を参照してください。
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
@@ -171,7 +171,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
-- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](https://go.microsoft.com/fwlink/?linkid=829599)」を参照してください。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](./audit-log-format.md)」を参照してください。
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 

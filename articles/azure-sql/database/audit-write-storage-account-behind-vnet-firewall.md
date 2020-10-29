@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444536"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677242"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -41,7 +41,7 @@ VNet の概念やベスト プラクティスなどの詳細については、�
 >
 > * 汎用 v2 ストレージ アカウント。 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、[汎用 v2 ストレージ アカウントにアップグレードします](../../storage/common/storage-account-upgrade.md)。 詳細については、「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 > * ストレージ アカウントは、[論理 SQL サーバー](logical-servers.md)と同じサブスクリプションで、かつ同じ場所にある必要があります。
-> * Azure ストレージ アカウントには `Allow trusted Microsoft services to access this storage account` が必要です。 これをストレージ アカウントの**ファイアウォールと仮想ネットワーク**に設定します。
+> * Azure ストレージ アカウントには `Allow trusted Microsoft services to access this storage account` が必要です。 これをストレージ アカウントの **ファイアウォールと仮想ネットワーク** に設定します。
 > * 選択したストレージ アカウントに対する `Microsoft.Authorization/roleAssignments/write` アクセス許可が必要です。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 ## <a name="configure-in-azure-portal"></a>Azure Portal での構成
@@ -93,7 +93,7 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**REST API**](/rest/api/sql/servers/createorupdate):
 
    要求のサンプル
 
@@ -117,12 +117,12 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
    }
    ```
 
-2. [Azure Portal](https://portal.azure.com) を開きます。 ストレージ アカウントに移動します。 **[アクセス制御 (IAM)]** を見つけて、 **[ロールの割り当ての追加]** をクリックします。 先ほどの手順で Azure Active Directory (Azure AD) に登録したデータベースをホストするサーバーに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
+2. [Azure Portal](https://portal.azure.com) を開きます。 ストレージ アカウントに移動します。 **[アクセス制御 (IAM)]** を見つけて、 **[ロールの割り当ての追加]** をクリックします。 先ほどの手順で Azure Active Directory (Azure AD) に登録したデータベースをホストするサーバーに、 **ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
 
    > [!NOTE]
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-3. *storageAccountAccessKey* を指定せずに、[サーバーの BLOB 監査ポリシー](/rest/api/sql/server%20auditing%20settings/createorupdate)を構成します。
+3. *storageAccountAccessKey* を指定せずに、 [サーバーの BLOB 監査ポリシー](/rest/api/sql/server%20auditing%20settings/createorupdate)を構成します。
 
    要求のサンプル
 
@@ -151,7 +151,7 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
 次の例に示すように、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) テンプレートを使用して、仮想ネットワークとファイアウォールの背後にあるストレージ アカウントにデータベース イベントを書き込むように監査を構成できます。
 
 > [!IMPORTANT]
-> 仮想ネットワークとファイアウォールの背後でストレージ アカウントを使用するには、**isStorageBehindVnet** パラメーターを true に設定する必要があります。
+> 仮想ネットワークとファイアウォールの背後でストレージ アカウントを使用するには、 **isStorageBehindVnet** パラメーターを true に設定する必要があります。
 
 - [BLOB ストレージに監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
