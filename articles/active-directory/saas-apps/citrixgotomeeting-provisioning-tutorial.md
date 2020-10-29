@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4abd16d6b5c9593cb1a4df52a7135a658c513410
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299699"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455939"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、GoToMeeting アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを GoToMeeting アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>ユーザーを GoToMeeting に割り当てる際の重要なヒント
 
@@ -68,7 +68,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     b. **[GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
-1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
+1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、 **"管理者資格情報"** の手順をもう一度試してください。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -90,6 +90,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
-
-
+* [シングル サインオンの構成](./citrix-gotomeeting-tutorial.md)

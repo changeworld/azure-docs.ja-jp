@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a618e6018d07bfa316acd9bbcf9e4c6027a615ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa645e7399b4c53aec8b042573882c6a5da4104
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544143"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Foodee の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544143"
 * ユーザーが自分の Azure AD アカウントを使用して Foodee に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Foodee では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Foodee では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Foodee では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Foodee では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への Foodee の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Foodee**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Foodee** 」と入力します。
 1. 結果のパネルから **[Foodee]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-foodee"></a>Foodee の Azure AD シングル サインオンの構成とテスト
@@ -130,7 +130,7 @@ Foodee に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="configure-foodee-sso"></a>Foodee の SSO の構成
 
-1. Foodee 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Foodee 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -140,7 +140,7 @@ Foodee に対する Azure AD SSO を構成してテストするには、次の�
 
 3. Foodee を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Foodee 企業サイトにサインインして、次の手順を実行します。
 
-4. ページの右上隅の**プロファイル ロゴ**をクリックし、 **[Single Sign On]\(シングル サインオン\)** に移動して以下の手順を実行します。
+4. ページの右上隅の **プロファイル ロゴ** をクリックし、 **[Single Sign On]\(シングル サインオン\)** に移動して以下の手順を実行します。
 
    ![Foodee の構成](./media/foodee-tutorial/config01.png)
 
@@ -156,15 +156,14 @@ Foodee に対する Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Foodee] タイルをクリックすると、SSO を設定した Foodee に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Foodee] タイルをクリックすると、SSO を設定した Foodee に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Foodee を試す](https://aad.portal.azure.com/)
-

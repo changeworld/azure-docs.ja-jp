@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f120554574f8dc7d0b97744af6dad447b404005b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056525"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
@@ -27,7 +27,7 @@ FreshDesk と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで FreshDesk に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ FreshDesk と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* FreshDesk では、**SP** によって開始される SSO がサポートされます
-* FreshDesk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* FreshDesk では、 **SP** によって開始される SSO がサポートされます
+* FreshDesk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-freshdesk-from-the-gallery"></a>ギャラリーからの FreshDesk の追加
 
@@ -52,7 +52,7 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**FreshDesk**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **FreshDesk** 」と入力します。
 1. 結果のパネルから **FreshDesk** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>FreshDesk の Azure AD SSO の構成とテスト
@@ -91,7 +91,7 @@ FreshDesk に対する Azure AD SSO を構成してテストするには、次�
 
     ![image](common/edit-attribute.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで **[ダウンロード]** をクリックして、要件に適した特定のオプションの**証明書 (Base64)** をダウンロードし、コンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで **[ダウンロード]** をクリックして、要件に適した特定のオプションの **証明書 (Base64)** をダウンロードし、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -121,9 +121,9 @@ FreshDesk に対する Azure AD SSO を構成してテストするには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -139,7 +139,7 @@ FreshDesk に対する Azure AD SSO を構成してテストするには、次�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**FreshDesk**」と入力して選択します。
+2. アプリケーションの一覧で、「 **FreshDesk** 」と入力して選択します。
 
     ![アプリケーションの一覧の FreshDesk リンク](common/all-applications.png)
 
@@ -169,15 +169,15 @@ FreshDesk に対する Azure AD SSO を構成してテストするには、次�
 
     b. **[Login Method]\(ログイン方法\)** で、 **[SAML SSO]** を選択します。
 
-    c. **[Entity ID provided by the IdP]\(IdP によって提供されたエンティティ ID\)** テキスト ボックスに、Azure portal からコピーした**エンティティ ID** の値を貼り付けます。
+    c. **[Entity ID provided by the IdP]\(IdP によって提供されたエンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **エンティティ ID** の値を貼り付けます。
 
-    d. **[SAML SSO URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[SAML SSO URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     e. **[Signing Options]\(署名オプション\)** で、ドロップダウンから **[Only Signed Assertions]\(署名されたアサーションのみ\)** を選択します。
 
-    f. **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    f. **[ログアウト URL]** テキストボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    g. **[Security Certificate]\(セキュリティ証明書\)** テキスト ボックスに、前に取得した**証明書 (Base64)** の値を貼り付けます。
+    g. **[Security Certificate]\(セキュリティ証明書\)** テキスト ボックスに、前に取得した **証明書 (Base64)** の値を貼り付けます。
   
     h. **[保存]** をクリックします。
 
@@ -212,13 +212,12 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [FreshDesk] タイルをクリックすると、SSO を設定した FreshDesk に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [FreshDesk] タイルをクリックすると、SSO を設定した FreshDesk に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ce6e4dc44a19f4aaee35cc4477761010d76a96b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 9636c8cbb517c7aece450f53cfc37e4ddd9803b7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775920"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Comm100 Live Chat の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91775920"
 * ユーザーが自分の Azure AD アカウントを使用して Comm100 Live Chat に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Comm100 Live Chat では、**SP** によって開始される SSO がサポートされます
+* Comm100 Live Chat では、 **SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Comm100 Live Chat の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Comm100 Live Chat**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Comm100 Live Chat** 」と入力します。
 1. 結果ウィンドウで **Comm100 Live Chat** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -152,9 +152,9 @@ Comm100 Live Chat で Azure AD SSO を構成してテストするには、次の
 
    a. 強調表示されている最初のリンクをコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
-   b. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+   b. **[SAML SSO URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-   c. **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+   c. **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
    d. **[Choose a File]\(ファイルの選択\)** を選択して、Azure Portal からダウンロードした base 64 でエンコードされた証明書を **[Certificate]\(証明書\)** にアップロードします。
 
@@ -180,13 +180,13 @@ Azure AD ユーザーが Comm100 Live Chat にサインインできるように�
 
     ![Comm100 Live Chat の新規エージェント](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **B.simon\@contoso.com**) を入力します。
+    a. a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **B.simon\@contoso.com** ) を入力します。
 
-    b. **[名]** ボックスに、ユーザーの名を入力します (例: **B**)。
+    b. **[名]** ボックスに、ユーザーの名を入力します (例: **B** )。
 
-    c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
+    c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon** )。
 
-    d. **[Display Name]\(表示名\)** ボックスに、ユーザーの表示名を入力します (例: **B.simon**)
+    d. **[Display Name]\(表示名\)** ボックスに、ユーザーの表示名を入力します (例: **B.simon** )
 
     e. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
@@ -196,15 +196,14 @@ Azure AD ユーザーが Comm100 Live Chat にサインインできるように�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Comm100 Live Chat] タイルをクリックすると、SSO を設定した Comm100 Live Chat に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Comm100 Live Chat] タイルをクリックすると、SSO を設定した Comm100 Live Chat に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Comm100 Live Chat を試す](https://aad.portal.azure.com/)
-

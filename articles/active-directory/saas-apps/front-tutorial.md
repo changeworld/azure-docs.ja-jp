@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3edd1e9bf3b42b3d4ad0c7c533dedb23ea05e5ec
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821216"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル: Azure Active Directory と Front の統合
 
@@ -27,7 +27,7 @@ Front と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Front に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Front と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Front では、**IDP** Initiated SSO がサポートされます
+* Front では、 **IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-front-from-the-gallery"></a>ギャラリーからの Front の追加
 
@@ -61,13 +61,13 @@ Azure AD への Front の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Front**」と入力し、結果パネルで **[Front]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Front** 」と入力し、結果パネルで **[Front]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Front](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Front で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Front で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Front 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Front で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -108,7 +108,7 @@ Front で Azure AD シングル サインオンを構成するには、次の手
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[Front クライアント サポート チーム](mailto:support@frontapp.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -142,7 +142,7 @@ Front で Azure AD シングル サインオンを構成するには、次の手
     
     ![[Entry Point]\(エントリ ポイント\) ボックスを示すスクリーンショット。](./media/front-tutorial/tutorial_front_003.png)
 
-6. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[Signing certificate]** ボックスに貼り付けます。
+6. ダウンロードした **証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[Signing certificate]** ボックスに貼り付けます。
     
     ![[Signing certificate]\(署名証明書\) が強調表示され、テキスト ボックスが淡色表示されているところを示すスクリーンショット。](./media/front-tutorial/tutorial_front_004.png)
 
@@ -172,9 +172,9 @@ Front で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -215,13 +215,12 @@ Front で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Front] タイルをクリックすると、SSO を設定した Front に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Front] タイルをクリックすると、SSO を設定した Front に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

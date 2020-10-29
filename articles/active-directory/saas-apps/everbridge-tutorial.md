@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555401"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル:Azure Active Directory と Everbridge の統合
 
@@ -26,7 +26,7 @@ Azure AD と Everbridge を統合すると、次のことができます。
 * Everbridge にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Everbridge に自動的にサインインできるようにする。 このアクセス制御はシングル サインオン (SSO) と呼ばれます。
 * Azure portal を使用して 1 つの中央サイトでアカウントを管理する。
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD との統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」をご覧ください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD との統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -60,7 +60,7 @@ Azure Marketplace から Everbridge を追加するには、次の手順に従�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Everbridge**」と入力します。 結果パネルで **[Everbridge]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「 **Everbridge** 」と入力します。 結果パネルで **[Everbridge]** を選択し、 **[追加]** を選択します。
 
      ![結果リスト内の Everbridge](common/search-new-app.png)
 
@@ -130,7 +130,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
      > [!NOTE]
      > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL の値で更新してください。 これらの値を取得するには、[Everbridge サポート チーム](mailto:support@everbridge.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して**フェデレーション メタデータ XML** をダウンロードします。 それを自分のコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して **フェデレーション メタデータ XML** をダウンロードします。 それを自分のコンピューターに保存します。
 
     ![証明書のダウンロード リンク](common/metadataxml.png)
 
@@ -160,7 +160,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
    
      d. **[SAML Identity Location]\(SAML ID の場所\)** で、 **[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
    
-     e. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+     e. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
    
      f. **[Service Provider initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド)** で **[HTTP Redirect]\(HTTP リダイレクト)** を選択します。
 
@@ -168,7 +168,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Everbridge を Everbridge Member Portal シングル サインオンとして構成
 
-**Everbridge Member Portal** としての **Everbridge** でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** を [Everbridge のサポート チーム](mailto:support@everbridge.com)に送信します。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Everbridge Member Portal** としての **Everbridge** でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** を [Everbridge のサポート チーム](mailto:support@everbridge.com)に送信します。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -186,7 +186,7 @@ Azure portal で Britta Simon というテスト ユーザーを作成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば BrittaSimon@contoso.com です。
 
@@ -228,11 +228,10 @@ Britta Simon に Everbridge へのアクセスを許可することで、この�
 
 アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Everbridge] タイルを選択すると、SSO を設定した Everbridge アカウントに自動的にサインインできます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Everbridge] タイルを選択すると、SSO を設定した Everbridge アカウントに自動的にサインインできます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

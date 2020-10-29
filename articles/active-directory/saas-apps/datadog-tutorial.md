@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4a94fb855c48f62e1c82354c4c9360edc95cad02
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950009"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454917"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datadog の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91950009"
 * ユーザーが自分の Azure AD アカウントを使用して Datadog に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Datadog では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Datadog を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Datadog では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Datadog を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 
 ## <a name="adding-datadog-from-the-gallery"></a>ギャラリーからの Datadog の追加
@@ -51,7 +51,7 @@ Azure AD への Datadog の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Datadog**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Datadog** 」と入力します。
 1. 結果のパネルから **[Datadog]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -130,7 +130,7 @@ Datadog で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-datadog-sso"></a>Datadog SSO の構成
 
-**Datadog** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Datadog サポート チーム](mailto:support@datadoghq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Datadog** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Datadog サポート チーム](mailto:support@datadoghq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-datadog-test-user"></a>Datadog テスト ユーザーの作成
 
@@ -140,7 +140,7 @@ Datadog で Azure AD SSO を構成してテストするには、次の構成要�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Datadog] タイルをクリックすると、SSO を設定した Datadog に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Datadog] タイルをクリックすると、SSO を設定した Datadog に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>テナントのすべてのユーザーがアプリで認証できるようにする
 
@@ -160,12 +160,12 @@ Datadog で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Datadog を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

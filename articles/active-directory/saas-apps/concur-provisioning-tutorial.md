@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455422"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、Concur アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Concur アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>ユーザーを Concur に割り当てる際の重要なヒント
 
@@ -98,9 +98,9 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
  
     ![Azure portal の Concur の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、[テスト接続] ボタンが強調表示されています。](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「**ユーザー名**」と「**パスワード**」を入力します。
+10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「 **ユーザー名** 」と「 **パスワード** 」を入力します。
 
-11. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
+11. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
 
 12. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -110,7 +110,7 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 15. **[属性マッピング]** セクションで、Azure AD から Concur に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Concur のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 17. **[保存]** をクリックします。
 
@@ -121,4 +121,3 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](concur-tutorial.md)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: df993aae4e6c572c8f99688fd0053bdd07aefd56
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826745"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453930"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -38,7 +38,7 @@ E Sales Manager Remix と Azure AD の統合を構成するには、次のもの
 - E Sales Manager Remix SSO が有効なサブスクリプション
 
 > [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を*使用しない*ことをお勧めします。
+> このチュートリアルの手順をテストする場合、運用環境を *使用しない* ことをお勧めします。
 
 このチュートリアルの手順をテストするには、次の推奨事項に従います。
 
@@ -68,7 +68,7 @@ Azure AD と E Sales Manager Remix の統合を構成するには、次の手順
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. [検索] ボックスに「**E Sales Manager Remix**」と入力します。結果一覧から **[E Sales Manager Remix]** を選択し、 **[追加]** を選択します。
+1. [検索] ボックスに「 **E Sales Manager Remix** 」と入力します。結果一覧から **[E Sales Manager Remix]** を選択し、 **[追加]** を選択します。
 
     ![結果一覧の E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -96,9 +96,9 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[E Sales Manager Remix のドメインと URL] のシングル サインオン情報](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. **[サインオン URL]** ボックスに、*https://\<Server-Based-URL>/\<sub-domain>/esales-pc* の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、 *https://\<Server-Based-URL>/\<sub-domain>/esales-pc* の形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、*https://\<Server-Based-URL>/\<sub-domain>/* 形式で URL を入力します。
+    b. **[識別子]** ボックスに、 *https://\<Server-Based-URL>/\<sub-domain>/* 形式で URL を入力します。
 
     c. **[識別子]** の値は、このチュートリアルの中で後で使用します。
     
@@ -109,7 +109,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![証明書 (Base64) ダウンロード リンク](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-1. **[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにし、**emailaddress** 属性を選択します。
+1. **[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにし、 **emailaddress** 属性を選択します。
     
     ![[ユーザー属性] ウィンドウ](./media/esalesmanagerremix-tutorial/configure1.png)
 
@@ -193,7 +193,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[ユーザー] ウィンドウ](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
@@ -217,7 +217,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
     
     ![[New employee registration]\(従業員の新規登録) セクション](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. **[Employee Name]\(従業員の名前\)** ボックスに、ユーザーの名前 (たとえば **Britta**) を入力します。
+    a. **[Employee Name]\(従業員の名前\)** ボックスに、ユーザーの名前 (たとえば **Britta** ) を入力します。
 
     b. その他の必須フィールドに入力します。
     
@@ -235,11 +235,11 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
 ![ユーザー ロールを割り当てる][200] 
 
-1. Azure Portal で **[アプリケーション]** ビューを開いて**ディレクトリ** ビューに移動してから、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+1. Azure Portal で **[アプリケーション]** ビューを開いて **ディレクトリ** ビューに移動してから、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
 
-1. **アプリケーション**の一覧で **[E Sales Manager Remix]** を選択します。
+1. **アプリケーション** の一覧で **[E Sales Manager Remix]** を選択します。
 
     ![[E Sales Manager Remix] リンク](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
@@ -251,7 +251,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[割り当ての追加] ウィンドウ][203]
 
-1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
+1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、 **Britta Simon** を選択します。
 
 1. **[選択]** ボタンを選択します。
 
@@ -263,7 +263,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
 アクセス パネルで [E Sales Manager Remix] タイルを選択すると、自動的に E Sales Manager Remix アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -283,4 +283,3 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 [201]: ./media/esalesmanagerremix-tutorial/tutorial_general_201.png
 [202]: ./media/esalesmanagerremix-tutorial/tutorial_general_202.png
 [203]: ./media/esalesmanagerremix-tutorial/tutorial_general_203.png
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981653"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454696"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
 
@@ -40,13 +40,13 @@ ms.locfileid: "90981653"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成、テストして、次のことを確認します。
 
-* DocuSign では、**SP** (Service Provider) Initiated SSO がサポートされます。
+* DocuSign では、 **SP** (Service Provider) Initiated SSO がサポートされます。
 
-* DocuSign では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* DocuSign では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-* DocuSign では、[自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)がサポートされます。
+* DocuSign では、[自動ユーザー プロビジョニング](./docusign-provisioning-tutorial.md)がサポートされます。
 
-* DocuSign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* DocuSign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-docusign-from-the-gallery"></a>ギャラリーからの DocuSign の追加
 
@@ -56,7 +56,7 @@ Azure AD への DocuSign の統合を構成するには、ギャラリーから�
 1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**DocuSign**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **DocuSign** 」と入力します。
 1. 結果のパネルから **[DocuSign]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -118,7 +118,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
+   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。  
    1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -177,11 +177,11 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
     a. **[Name]\(名前\)** ボックスに、構成の一意の名前を入力します。 スペースは使用しないでください。
 
-    b. **[Identity Provider Issuer]\(ID プロバイダーの発行者\) ボックス**に、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
+    b. **[Identity Provider Issuer]\(ID プロバイダーの発行者\) ボックス** に、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
-    c. **[Identity Provider Login URL]\(ID プロバイダーのログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[Identity Provider Login URL]\(ID プロバイダーのログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d. **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     e. **[Sign AuthN request]\(AuthN 要求に署名する\)** を選択します。
 
@@ -193,12 +193,12 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
        ![[Custom Attribute Mapping]\(カスタム属性のマッピング\) UI][62]
 
-    i. Azure AD の要求にマッピングするフィールドを選択します。 この例では、**emailaddress** 要求は `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。 **[SAVE]\(保存\)** を選択します。
+    i. Azure AD の要求にマッピングするフィールドを選択します。 この例では、 **emailaddress** 要求は `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。 **[SAVE]\(保存\)** を選択します。
 
        ![[Custom Attribute Mapping]\(カスタム属性のマッピング\) のフィールド][57]
 
        > [!NOTE]
-       > Azure AD のユーザーを DocuSign のユーザー マッピングにマッピングする際は、適切な**ユーザー識別子**を使用してください。 適切なフィールドを選択し、組織の設定に基づく適切な値を入力してください。
+       > Azure AD のユーザーを DocuSign のユーザー マッピングにマッピングする際は、適切な **ユーザー識別子** を使用してください。 適切なフィールドを選択し、組織の設定に基づく適切な値を入力してください。
 
     j. **[Identity Provider Certificate]\(ID プロバイダー証明書\)** セクションで **[ADD CERTIFICATE]\(証明書の追加\)** を選択し、Azure AD ポータルからダウンロードした証明書をアップロードし、 **[SAVE]\(保存\)** を選択します。
 
@@ -235,12 +235,12 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 2. DocuSign のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [DocuSign] タイルをクリックすると、SSO を設定した DocuSign に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [DocuSign] タイルをクリックすると、SSO を設定した DocuSign に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
 
-DocuSign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+DocuSign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 <!--Image references-->
 

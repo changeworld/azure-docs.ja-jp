@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d58bb5ddf78a23463e908977c41501078cd84b56
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774130"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454796"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Deskradar の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91774130"
 * ユーザーが自分の Azure AD アカウントを使用して Deskradar に自動的にサインインできるようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 
 
-* Deskradar では、**SP と IDP** によって開始される SSO がサポートされます
+* Deskradar では、 **SP と IDP** によって開始される SSO がサポートされます
 
 
 
@@ -53,7 +53,7 @@ Azure AD への Deskradar の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Deskradar**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Deskradar** 」と入力します。
 1. 結果のパネルから **[Deskradar]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -146,7 +146,7 @@ Deskradar で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-deskradar-sso"></a>Deskradar SSO の構成
 
-1. Deskradar 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Deskradar 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -166,11 +166,11 @@ Deskradar で Azure AD SSO を構成してテストするには、次の構成�
 
     a. **SAML** 認証方法を有効にします。
 
-    b. **[SAML SSO URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を入力します。
+    b. **[SAML SSO URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を入力します。
 
-    c. **[ID プロバイダーの発行者]** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を入力します。
+    c. **[ID プロバイダーの発行者]** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を入力します。
 
-1. ダウンロードした**証明書 (Base64)** ファイルをテキスト エディターで開き、その内容をコピーして、Deskradar の **[公開証明書]** フィールドに貼り付けます。
+1. ダウンロードした **証明書 (Base64)** ファイルをテキスト エディターで開き、その内容をコピーして、Deskradar の **[公開証明書]** フィールドに貼り付けます。
 
     ![Deskradar の構成](./media/deskradar-tutorial/15-paste-certificate.jpg)
 
@@ -182,15 +182,14 @@ Deskradar で Azure AD SSO を構成してテストするには、次の構成�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Deskradar] タイルをクリックすると、SSO を設定した Deskradar に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Deskradar] タイルをクリックすると、SSO を設定した Deskradar に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Deskradar を試す](https://aad.portal.azure.com/)
-

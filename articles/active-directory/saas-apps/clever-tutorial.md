@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: bb8eef01e2673c3f84b1678a93b4bd168f1faf63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d232048cbc5592b9b0fcacea6ee44e00e8d671e2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708123"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455835"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Clever の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "90708123"
 * ユーザーが自分の Azure AD アカウントを使用して Clever に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Clever では、**SP** によって開始される SSO がサポートされます
-* Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Clever では、 **SP** によって開始される SSO がサポートされます
+* Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への Clever の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Clever**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Clever** 」と入力します。
 1. 結果ウィンドウで **Clever** を選択してそのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -74,7 +74,7 @@ Clever で Azure AD SSO を構成してテストするには、次の構成要�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Clever** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Clever** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -140,12 +140,12 @@ Clever で Azure AD SSO を構成してテストするには、次の構成要�
  
     ![[インスタント ログイン] ページの SSO 構成](./media/clever-tutorial/ic798985.png "[インスタント ログイン]")
 
-    a. **ログイン URL**を入力します。
+    a. **ログイン URL** を入力します。
 
     >[!NOTE]
     >**ログイン URL** はカスタム値です。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。
 
-    b. **[ID システム]** として、**[ADFS]** を選択します。
+    b. **[ID システム]** として、 **[ADFS]** を選択します。
 
     c. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付けます。
 
@@ -164,14 +164,14 @@ Clever の場合は、[Clever クライアント サポート チーム](https:/
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Clever] タイルをクリックすると、SSO を設定した Clever に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Clever] タイルをクリックすると、SSO を設定した Clever に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Clever を試す](https://aad.portal.azure.com/)

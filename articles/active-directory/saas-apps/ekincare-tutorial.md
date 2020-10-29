@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 987a8676fa9f738b788b183a1f3d964c0d0b88ad
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 349cc4ed17edeba6bdfabd0369fbef55c1a0f0f7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826805"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>チュートリアル: Azure Active Directory と eKincare の統合
 
@@ -27,7 +27,7 @@ eKincare と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に eKincare にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ Azure AD と eKincare の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* eKincare では、**IDP** によって開始される SSO がサポートされます
+* eKincare では、 **IDP** によって開始される SSO がサポートされます
 
-* eKincare では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* eKincare では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-ekincare-from-the-gallery"></a>ギャラリーから eKincare を追加する
 
@@ -63,13 +63,13 @@ Azure AD への eKincare の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**eKincare**」と入力し、結果パネルで **eKincare** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **eKincare** 」と入力し、結果パネルで **eKincare** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の eKincare](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、eKincare で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、eKincare で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと eKincare 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 eKincare で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
     ![[編集] ボタンが選択されている [ユーザー属性] ダイアログを示すスクリーンショット。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name | ソース属性 |
     | ---------------| --------------- |    
@@ -140,7 +140,7 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
     g. **[保存]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -156,7 +156,7 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-ekincare-single-sign-on"></a>eKincare のシングル サインオンの構成
 
-**eKincare** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [eKincare サポート チーム](mailto:tech@ekincare.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**eKincare** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [eKincare サポート チーム](mailto:tech@ekincare.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -174,9 +174,9 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -211,19 +211,18 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-ekincare-test-user"></a>eKincare テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを eKincare に作成します。 eKincare では、**Just-In-Time ユーザー プロビジョニング**がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 eKincare にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを eKincare に作成します。 eKincare では、 **Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 eKincare にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [eKincare] タイルをクリックすると、SSO を設定した eKincare に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [eKincare] タイルをクリックすると、SSO を設定した eKincare に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 730cfbbffdae4b1525d58392152f533c413ba31d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad7952a604f8c02d16502d89bf14e7fb0ad15388
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545297"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455478"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-community-spark"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Community Spark の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545297"
 * ユーザーが自分の Azure AD アカウントを使用して Community Spark に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,11 +39,11 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Community Spark では、**SP** Initiated SSO がサポートされます
+* Community Spark では、 **SP** Initiated SSO がサポートされます
 
-* Community Spark では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Community Spark では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
-* Community Spark を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Community Spark を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-community-spark-from-the-gallery"></a>ギャラリーからの Community Spark の追加
 
@@ -53,7 +53,7 @@ Azure AD への Community Spark の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Community Spark**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Community Spark** 」と入力します。
 1. 結果のパネルから **[Community Spark]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -127,7 +127,7 @@ Community Spark で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-community-spark-sso"></a>Community Spark の SSO の構成
 
-**Community Spark** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Community Spark サポート チーム](mailto:support@socialassurance.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Community Spark** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Community Spark サポート チーム](mailto:support@socialassurance.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-community-spark-test-user"></a>Community Spark のテスト ユーザーの作成
 
@@ -137,19 +137,18 @@ Community Spark で Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Community Spark] タイルをクリックすると、SSO を設定した Community Spark に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Community Spark] タイルをクリックすると、SSO を設定した Community Spark に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Community Spark を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Community Spark を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって Community Spark を保護する方法](/cloud-app-security/proxy-intro-aad)

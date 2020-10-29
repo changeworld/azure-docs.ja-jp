@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775669"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455342"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Confluence SAML SSO by Microsoft の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91775669"
 * ユーザーが自分の Azure AD アカウントを使用して Confluence SAML SSO by Microsoft に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="description"></a>説明:
 
@@ -72,7 +72,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Confluence SAML SSO by Microsoft では、**SP** によって開始される SSO がサポートされます
+* Confluence SAML SSO by Microsoft では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>ギャラリーからの Confluence SAML SSO by Microsoft の追加
 
@@ -82,7 +82,7 @@ Azure AD への Confluence SAML SSO by Microsoft の統合を構成するには�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Confluence SAML SSO by Microsoft**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Confluence SAML SSO by Microsoft** 」と入力します。
 1. 結果のパネルから **[Confluence SAML SSO by Microsoft]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-confluence-saml-sso-by-microsoft"></a>Confluence SAML SSO by Microsoft の Azure AD シングル サインオンの構成とテスト
@@ -221,7 +221,7 @@ Confluence SAML SSO by Microsoft で Azure AD の SSO を構成してテスト�
     1. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
        > [!NOTE]
-       > インストールとトラブルシューティングについて詳しくは、[MS Confluence SSO コネクタ管理者ガイド](../ms-confluence-jira-plugin-adminguide.md)のページをご覧ください。 [FAQ](../ms-confluence-jira-plugin-faq.md) もご利用いただけます。
+       > インストールとトラブルシューティングについて詳しくは、[MS Confluence SSO コネクタ管理者ガイド](./ms-confluence-jira-plugin-adminguide.md)のページをご覧ください。 [FAQ](./ms-confluence-jira-plugin-adminguide.md) もご利用いただけます。
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>Confluence SAML SSO by Microsoft のテスト ユーザーの作成
 
@@ -255,14 +255,14 @@ Confluence SAML SSO by Microsoft で Azure AD の SSO を構成してテスト�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [Confluence SAML SSO by Microsoft] のタイルをクリックすると、SSO を設定した Confluence SAML SSO by Microsoft に自動的にサインオンされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルの [Confluence SAML SSO by Microsoft] のタイルをクリックすると、SSO を設定した Confluence SAML SSO by Microsoft に自動的にサインオンされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Confluence SAML SSO by Microsoft を試す](https://aad.portal.azure.com/)
