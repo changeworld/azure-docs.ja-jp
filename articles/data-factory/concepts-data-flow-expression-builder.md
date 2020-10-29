@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531057"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635373"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、リテラルで構成されます。 マッピング データ フローには、これらの式の構築を支援する、**式ビルダー**と呼ばれる専用のエクスペリエンスがあります。 [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) のコード補完を利用して、強調表示、構文チェック、オートコンプリートを行うことで、式ビルダーはデータ フローを簡単に構築できるように設計されています。 この記事では、式ビルダーを使用してビジネス ロジックを効率よく構築する方法について説明します。
+マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、リテラルで構成されます。 マッピング データ フローには、これらの式の構築を支援する、 **式ビルダー** と呼ばれる専用のエクスペリエンスがあります。 [IntelliSense](/visualstudio/ide/using-intellisense) のコード補完を利用して、強調表示、構文チェック、オートコンプリートを行うことで、式ビルダーはデータ フローを簡単に構築できるように設計されています。 この記事では、式ビルダーを使用してビジネス ロジックを効率よく構築する方法について説明します。
 
 ![式ビルダー](media/data-flow/expresion-builder.png "式ビルダー")
 

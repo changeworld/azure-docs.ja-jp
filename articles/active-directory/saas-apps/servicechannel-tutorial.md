@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 55a685222444b99c10b19699560553a510d2a7a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46ef5dda412013dfa5c832472447ee5ec9179239
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543042"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672743"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceChannel の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543042"
 * ユーザーが自分の Azure AD アカウントを使用して ServiceChannel に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* ServiceChannel では、**IDP** によって開始される SSO がサポートされます
-* ServiceChannel では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* ServiceChannel では、 **IDP** によって開始される SSO がサポートされます
+* ServiceChannel では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-servicechannel-from-the-gallery"></a>ギャラリーからの ServiceChannel の追加
 
@@ -50,7 +50,7 @@ Azure AD への ServiceChannel の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ServiceChannel**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **ServiceChannel** 」と入力します。
 1. 結果パネルで **[ServiceChannel]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-servicechannel"></a>ServiceChannel の Azure AD シングル サインオンの構成とテスト
@@ -85,7 +85,7 @@ ServiceChannel で Azure AD SSO を構成してテストするには、次の構
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[ServiceChannel クライアント サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. ロール要求はあらかじめ構成されているため、自分で構成する必要はありませんが、それらを Azure AD に作成する必要があります。こちらの[記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に従ってください。 要求に関する詳細なガイダンスについては、ServiceChannel ガイドの[ここ](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)を参照してください。
+1. ロール要求はあらかじめ構成されているため、自分で構成する必要はありませんが、それらを Azure AD に作成する必要があります。こちらの[記事](../develop/active-directory-enterprise-app-role-management.md)に従ってください。 要求に関する詳細なガイダンスについては、ServiceChannel ガイドの[ここ](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -127,7 +127,7 @@ ServiceChannel で Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-servicechannel-sso"></a>ServiceChannel SSO の構成
 
-**ServiceChannel** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [ServiceChannel サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ServiceChannel** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [ServiceChannel サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-servicechannel-test-user"></a>ServiceChannel のテスト ユーザーの作成
 
@@ -137,14 +137,14 @@ ServiceChannel で Azure AD SSO を構成してテストするには、次の構
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [ServiceChannel] タイルをクリックすると、SSO を設定した ServiceChannel に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [ServiceChannel] タイルをクリックすると、SSO を設定した ServiceChannel に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で ServiceChannel を試す](https://aad.portal.azure.com/)

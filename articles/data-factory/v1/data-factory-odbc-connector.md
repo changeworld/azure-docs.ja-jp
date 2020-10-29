@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707380"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636869"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -47,15 +47,15 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 ## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、ODBC データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、 **コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。 **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager テンプレート** 、 **.NET API** 、 **REST API** 。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+1. **リンクされたサービス** を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す **データセット** を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。
 
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの ODBC データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする](#json-example-copy-data-from-odbc-data-store-to-azure-blob)」のセクションを参照してください。
 
@@ -66,7 +66,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |はい |
+| type |type プロパティは、次のように設定する必要があります: **OnPremisesOdbc** |はい |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |はい |
 | 資格情報 (credential) |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
@@ -94,7 +94,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>暗号化された資格情報で基本認証を使用する
-[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (Azure PowerShell のバージョン 1.0) コマンドレットまたは [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Azure PowerShell のバージョン 0.9 以前) を使用して資格情報を暗号化することができます。
+[New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (Azure PowerShell のバージョン 1.0) コマンドレットまたは [New-AzureDataFactoryEncryptValue](/previous-versions/azure/dn834940(v=azure.100)) (Azure PowerShell のバージョン 0.9 以前) を使用して資格情報を暗号化することができます。
 
 ```json
 {
@@ -293,7 +293,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 **ODBC ソース (RelationalSource) と BLOB シンク (BlobSink) を使用するパイプラインでのコピー アクティビティ**
 
-パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、 **source** 型が **RelationalSource** に設定され、 **sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 ```json
 {
@@ -346,7 +346,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-「 [ODBC データ型のマッピング](https://msdn.microsoft.com/library/cc668763.aspx) 」で説明するように、ODBC データ ストアからデータを移動する際に、ODBC データ型は .NET 型にマップされます。
+「 [ODBC データ型のマッピング](/dotnet/framework/data/adonet/odbc-data-type-mappings) 」で説明するように、ODBC データ ストアからデータを移動する際に、ODBC データ型は .NET 型にマップされます。
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
@@ -355,16 +355,16 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="troubleshoot-connectivity-issues"></a>接続の問題のトラブルシューティング
-接続の問題をトラブルシューティングするには、**Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。
+接続の問題をトラブルシューティングするには、 **Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。
 
-1. **Data Management Gateway 構成マネージャー**を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、**Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
+1. **Data Management Gateway 構成マネージャー** を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、 **Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
 
     ![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
 2. **[診断]** タブに切り替えます。
 
     ![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
 3. データ ストアの **種類** (リンクされたサービス) を選択します。
-4. **認証方法**を指定し、**資格情報**を入力します。または、データ ストアへの接続に使用する**接続文字列**を入力します。
+4. **認証方法** を指定し、 **資格情報** を入力します。または、データ ストアへの接続に使用する **接続文字列** を入力します。
 5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング

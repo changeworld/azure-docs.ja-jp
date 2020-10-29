@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082870"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636070"
 ---
 # <a name="what-are-wrangling-data-flows"></a>ラングリング データ フローとは
 
@@ -21,7 +21,7 @@ ms.locfileid: "87082870"
 
 組織では、日々増え続ける複雑なデータを正確に分析するために、データの準備とラングリングを行う必要があります。 さまざまなビジネス プロセスのデータを使用して、価値創造までの時間を短縮できるようにするには、データの準備が不可欠です。
 
-Azure Data Factory のラングリング データ フローを使用すると、コードなしのデータ準備をクラウド規模で繰り返し実行できます。 ラングリング データ フローは [Power Query Online](https://docs.microsoft.com/power-query/) と統合されているので、Power Query M の関数をデータ ファクトリ ユーザー向けに提供することができます。
+Azure Data Factory のラングリング データ フローを使用すると、コードなしのデータ準備をクラウド規模で繰り返し実行できます。 ラングリング データ フローは [Power Query Online](/power-query/) と統合されているので、Power Query M の関数をデータ ファクトリ ユーザー向けに提供することができます。
 
 ラングリング データ フローを使用すれば、Power Query Online Mashup Editor によって生成された M を、クラウド規模で実行するための Spark コードに変換できます。
 
@@ -56,7 +56,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 ## <a name="the-mashup-editor"></a>マッシュアップ エディター
 
-ラングリング データ フローを作成する場合、すべてのソース データがデータセット クエリになり、**ADFResource** フォルダーに配置されます。 既定では、UserQuery は最初のデータセット クエリを指します。 データセット クエリに対する変更はサポートされておらず、永続化もされないため、すべての変換は UserQuery で実行される必要があります。 クエリの名前変更、追加、削除は、現在サポートされていません。
+ラングリング データ フローを作成する場合、すべてのソース データがデータセット クエリになり、 **ADFResource** フォルダーに配置されます。 既定では、UserQuery は最初のデータセット クエリを指します。 データセット クエリに対する変更はサポートされておらず、永続化もされないため、すべての変換は UserQuery で実行される必要があります。 クエリの名前変更、追加、削除は、現在サポートされていません。
 
 ![ラングリング](media/wrangling-data-flow/editor.png)
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886494"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672087"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "90886494"
 - 機密性の高いデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 
 > [!NOTE]
-> オンプレミスの SQL Server については、「[SQL データの検出と分類](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
+> オンプレミスの SQL Server については、「[SQL データの検出と分類](/sql/relational-databases/security/sql-data-discovery-and-classification)」をご覧ください。
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>データの検出と分類とは
 
@@ -55,18 +55,18 @@ ms.locfileid: "90886494"
 
 分類には、次の 2 つのメタデータ属性が含まれます。
 
-- **ラベル**:列に格納されるデータの機密レベルを定義するために使用される、主な分類属性。  
-- **情報の種類**:列に格納されているデータの型に関するより詳細な情報を提供する属性。
+- **ラベル** :列に格納されるデータの機密レベルを定義するために使用される、主な分類属性。  
+- **情報の種類** :列に格納されているデータの型に関するより詳細な情報を提供する属性。
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
 
 データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できるようになりました。
 
-Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
+Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](../../security-center/security-center-introduction.md) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
 
 情報保護のポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。 パターンは、データベース内のこの種類のデータを識別するための検出ロジックに追加されます。
 
-詳細については、「[Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)」を参照してください。
+詳細については、「[Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)](../../security-center/security-center-info-protection-policy.md)」を参照してください。
 
 組織全体のポリシーを定義したら、カスタマイズしたポリシーを使用して個別のデータベースの分類を続行できます。
 
@@ -125,7 +125,7 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 - Contributor
 - SQL Security Manager
 
-ロールベースのアクセス許可の詳細については、[Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) に関する記事を参照してください。
+ロールベースのアクセス許可の詳細については、[Azure RBAC](../../role-based-access-control/overview.md) に関する記事を参照してください。
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>分類の管理
 
@@ -140,42 +140,42 @@ T-SQL を使って、列の分類を追加または削除したり、データ�
 
 T-SQL を使用した分類の詳細については、次のリファレンスを参照してください。
 
-- 1 つ以上の列の分類を追加または更新するには:[ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- 1 つ以上の列の分類を削除するには:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- データベースのすべての分類を表示するには: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- 1 つ以上の列の分類を追加または更新するには:[ADD SENSITIVITY CLASSIFICATION](/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- 1 つ以上の列の分類を削除するには:[DROP SENSITIVITY CLASSIFICATION](/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- データベースのすべての分類を表示するには: [sys.sensitivity_classifications](/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 PowerShell を使用して、Azure SQL Database と Azure SQL Managed Instance の分類および推奨事項を管理します。
 
 #### <a name="powershell-cmdlets-for-azure-sql-database"></a>Azure SQL Database 用の PowerShell コマンドレット
 
-- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Get-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Enable-AzSqlDatabaSesensitivityRecommendation](/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 #### <a name="powershell-cmdlets-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance 用の PowerShell コマンドレット
 
-- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
-- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ### <a name="use-the-rest-api"></a>REST API を使用する
 
 REST API を使用して、分類および推奨事項をプログラムで管理できます。 公開された REST API では、次の操作がサポートされます。
 
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate):指定された列の機密ラベルを作成または更新します。
-- [[削除]](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete):指定された列の機密ラベルを削除します。
-- [推奨の無効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation):指定された列の機密度の推奨を無効にします。
-- [推奨の有効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation):指定された列の機密度の推奨を有効にします。 (推奨は、すべての列に対して既定で有効になっています。)
-- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get):指定された列の機密ラベルを取得します。
-- [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
-- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
+- [作成または更新](/rest/api/sql/sensitivitylabels/createorupdate):指定された列の機密ラベルを作成または更新します。
+- [[削除]](/rest/api/sql/sensitivitylabels/delete):指定された列の機密ラベルを削除します。
+- [推奨の無効化](/rest/api/sql/sensitivitylabels/disablerecommendation):指定された列の機密度の推奨を無効にします。
+- [推奨の有効化](/rest/api/sql/sensitivitylabels/enablerecommendation):指定された列の機密度の推奨を有効にします。 (推奨は、すべての列に対して既定で有効になっています。)
+- [取得](/rest/api/sql/sensitivitylabels/get):指定された列の機密ラベルを取得します。
+- [現在の内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
+- [推奨される内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
 
 ## <a name="next-steps"></a><a id="next-steps"></a>次のステップ
 

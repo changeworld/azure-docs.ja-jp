@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: cd8c8450d6e747e9789c785d1c594532b94a36cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443077"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637991"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>PowerShell を使用して、クラウド内のデータをコピーするための Data Factory パイプラインを作成する
 
@@ -26,8 +26,8 @@ ms.locfileid: "89443077"
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」をご覧ください。 
-* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
+* **Azure Storage アカウント** 。 BLOB ストレージを、 **ソース** と **シンク** の両方のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」をご覧ください。 
+* Blob Storage に **BLOB コンテナー** を作成し、コンテナーに入力 **フォルダー** を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -68,6 +68,6 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
 Azure Data Factory のその他の PowerShell サンプル スクリプトについては、[Azure Data Factory の PowerShell のサンプル](../samples-powershell.md)に関する記事をご覧ください。

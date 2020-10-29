@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/13/2020
-ms.openlocfilehash: 292d80f7fad796b2ee4f80478c55099148d7f855
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a82606be62007816d545942161774e776c38a4e3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086695"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637294"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 
@@ -152,7 +152,7 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 | objectApiName | データの取得元の Salesforce オブジェクト名。 | ソースの場合はいいえ、シンクの場合ははい |
 
 > [!IMPORTANT]
-> カスタム オブジェクトには、**API 名**の "__c" の部分が必要となります。
+> カスタム オブジェクトには、 **API 名** の "__c" の部分が必要となります。
 
 ![Data Factory の Salesforce 接続 API 名](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
@@ -195,10 +195,10 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | はい |
 | query |カスタム クエリを使用してデータを読み取ります。 [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリまたは SQL-92 クエリを使用できます。 その他のヒントについては、「[クエリのヒント](#query-tips)」セクションをご覧ください。 クエリが指定されていない場合は、データセット内の "objectApiName"で指定された Salesforce オブジェクトのすべてのデータが取得されます。 | いいえ (データセットの "objectApiName" が指定されている場合) |
-| readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、**queryAll**.  | いいえ |
+| readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、 **queryAll** .  | いいえ |
 
 > [!IMPORTANT]
-> カスタム オブジェクトには、**API 名**の "__c" の部分が必要となります。
+> カスタム オブジェクトには、 **API 名** の "__c" の部分が必要となります。
 
 ![Data Factory の Salesforce 接続 API 名一覧](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
@@ -244,10 +244,10 @@ Salesforce にデータをコピーするには、コピー アクティビテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります。 | はい |
-| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert**。 | いいえ (既定値は Insert) |
+| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert** 。 | いいえ (既定値は Insert) |
 | externalIdFieldName | Upsert 操作の外部 ID フィールドの名前。 指定するフィールドは、Salesforce オブジェクトに "External ID Field" として定義されている必要があります。 対応する入力データに NULL 値を持つことはできません。 | "Upsert" の場合ははい |
 | writeBatchSize | 各バッチで Salesforce に書き込まれたデータの行数。 | いいえ (既定値は 5,000) |
-| ignoreNullValues | 書き込み操作時に入力データからの NULL 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**:upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**:upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
+| ignoreNullValues | 書き込み操作時に入力データからの NULL 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false** 。<br>- **True** :upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False** :upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
 **例:コピー アクティビティでの Salesforce シンク**
 
@@ -302,7 +302,7 @@ Salesforce からデータをコピーするときは、SOQL クエリまたは 
 |:--- |:--- |:--- |
 | 列の選択 | コピーするフィールドをクエリで列挙する必要があります (例: `SELECT field1, filed2 FROM objectname`) | 列の選択に加えて、`SELECT *` がサポートされています。 |
 | 引用符 | フィールド/オブジェクト名を引用符で囲むことはできません。 | フィールド/オブジェクト名を引用符で囲むことができます (例: `SELECT "id" FROM "Account"`) |
-| 日時の形式 |  [こちら](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)の詳細と次のセクションのサンプルをご覧ください。 | [こちら](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)の詳細と次のセクションのサンプルをご覧ください。 |
+| 日時の形式 |  [こちら](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)の詳細と次のセクションのサンプルをご覧ください。 | [こちら](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)の詳細と次のセクションのサンプルをご覧ください。 |
 | ブール値 | `False` および `True` と表されます (例: `SELECT … WHERE IsDeleted=True`)。 | 0 または 1 と表されます (例: `SELECT … WHERE IsDeleted=1`)。 |
 | 列の名前変更 | サポートされていません。 | サポートされています (例: `SELECT a AS b FROM …`)。 |
 | リレーションシップ | サポートされています (例: `Account_vod__r.nvs_Country__c`)。 | サポートされていません。 |
@@ -311,8 +311,8 @@ Salesforce からデータをコピーするときは、SOQL クエリまたは 
 
 SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 次に例を示します。
 
-* **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* **SOQL サンプル** : `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL の例** : `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY:Truncated のエラー
 

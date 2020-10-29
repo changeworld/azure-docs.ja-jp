@@ -2,16 +2,14 @@
 title: Azure portal から Kubernetes リソースにアクセスする (プレビュー)
 description: Azure portal から Azure Kubernetes Service (AKS) クラスターを管理するために Kubernetes リソースを操作する方法について説明します。
 services: container-service
-author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
-ms.author: lahugh
-ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae617615a8ba83e311a416581fb41d3cb6ca1b05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070641"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635611"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal から Kubernetes リソースにアクセスする (プレビュー)
 

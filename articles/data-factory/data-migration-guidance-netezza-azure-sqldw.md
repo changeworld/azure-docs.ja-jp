@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638076"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する 
 
@@ -41,13 +41,13 @@ Azure Data Factory は、さまざまなレベルで並列処理を可能にす�
 
 上の図は、次のように解釈できます。
 
-- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。 Azure Integration Runtime を使用する場合は、各コピー アクティビティに対して[最大 256 DIU](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) をサーバーレス方式で指定できます。 セルフホステッド統合ランタイム (セルフホステッド IR) では、マシンを手動でスケールアップしたり、複数のマシン ([最大 4 台のノード](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) にスケールアウトしたりすることができます。また、1 回のコピー アクティビティにより、すべてのノードでアクティビティがパーティションを配布されます。 
+- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。 Azure Integration Runtime を使用する場合は、各コピー アクティビティに対して[最大 256 DIU](./copy-activity-performance.md#data-integration-units) をサーバーレス方式で指定できます。 セルフホステッド統合ランタイム (セルフホステッド IR) では、マシンを手動でスケールアップしたり、複数のマシン ([最大 4 台のノード](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) にスケールアウトしたりすることができます。また、1 回のコピー アクティビティにより、すべてのノードでアクティビティがパーティションを配布されます。 
 
 - 1 回のコピー アクティビティで、複数のスレッドを使用したデータ ストアの読み取りと書き込みが行われます。 
 
-- Azure Data Factory 制御フローでは、複数のコピー アクティビティを並列して開始できます。 たとえば、[For Each ループ](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)を使用して開始できます。 
+- Azure Data Factory 制御フローでは、複数のコピー アクティビティを並列して開始できます。 たとえば、[For Each ループ](./control-flow-for-each-activity.md)を使用して開始できます。 
 
-詳細については、[コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)を参照してください。
+詳細については、[コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド](./copy-activity-performance.md)を参照してください。
 
 ## <a name="resilience"></a>回復力
 
@@ -95,39 +95,39 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
 
 ### <a name="manage-authentication-and-credentials"></a>認証情報と資格情報の管理 
 
-- Netezza に対して認証を行うために、[接続文字列を介した ODBC 認証](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)を使用できます。 
+- Netezza に対して認証を行うために、[接続文字列を介した ODBC 認証](./connector-netezza.md#linked-service-properties)を使用できます。 
 
 - Azure BLOB ストレージに対して認証するには: 
 
-   - [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) を使用することを強くお勧めします。 マネージド ID は Azure Active Directory (Azure AD) で自動的に管理される Azure Data Factory ID をベースに構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。  
+   - [Azure リソースのマネージド ID](./connector-azure-blob-storage.md#managed-identity) を使用することを強くお勧めします。 マネージド ID は Azure Active Directory (Azure AD) で自動的に管理される Azure Data Factory ID をベースに構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。  
 
-   - また、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共有アクセス署名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)、または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)を使用して Azure BLOB ストレージに対する認証を行うこともできます。 
+   - また、[サービス プリンシパル](./connector-azure-blob-storage.md#service-principal-authentication)、[共有アクセス署名](./connector-azure-blob-storage.md#shared-access-signature-authentication)、または[ストレージ アカウント キー](./connector-azure-blob-storage.md#account-key-authentication)を使用して Azure BLOB ストレージに対する認証を行うこともできます。 
 
 - Data Lake Storage Gen2 に対して認証するには: 
 
-   - [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) を使用することを強くお勧めします。
+   - [Azure リソースのマネージド ID](./connector-azure-data-lake-storage.md#managed-identity) を使用することを強くお勧めします。
    
-   - また、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)を使用することもできます。 
+   - また、[サービス プリンシパル](./connector-azure-data-lake-storage.md#service-principal-authentication)または[ストレージ アカウント キー](./connector-azure-data-lake-storage.md#account-key-authentication)を使用することもできます。 
 
 - Azure Synapse Analytics に対して認証するには:
 
-   - [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity) を使用することを強くお勧めします。
+   - [Azure リソースのマネージド ID](./connector-azure-sql-data-warehouse.md#managed-identity) を使用することを強くお勧めします。
    
-   - また、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication)または [SQL 認証](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)を使用することもできます。
+   - また、[サービス プリンシパル](./connector-azure-sql-data-warehouse.md#service-principal-authentication)または [SQL 認証](./connector-azure-sql-data-warehouse.md#sql-authentication)を使用することもできます。
 
-- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)して、Azure Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これは、[CI/CD のベスト プラクティス](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)の1 つでもあります。 
+- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、Azure Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これは、[CI/CD のベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)の1 つでもあります。 
 
 ### <a name="migrate-initial-snapshot-data"></a>初回のスナップショット データ移行 
 
 小さいテーブル (ボリューム サイズが 100 GB より小さい、または 2 時間以内に Azure に移行できる) の場合は、各コピー ジョブでテーブルごとにデータを読み込むよう設定できます。 スループットを向上させるには、複数の Azure Data Factory コピー ジョブを実行して、異なるテーブルを同時に読み込むことができます。 
 
-各コピー ジョブ内では、並列クエリを実行してデータをパーティションでコピーするには、以下のいずれかのデータ パーティションのオプションで[`parallelCopies`プロパティ設定](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)を使用することで、ある程度の水準の並列処理を達成することもできます。
+各コピー ジョブ内では、並列クエリを実行してデータをパーティションでコピーするには、以下のいずれかのデータ パーティションのオプションで[`parallelCopies`プロパティ設定](./copy-activity-performance.md#parallel-copy)を使用することで、ある程度の水準の並列処理を達成することもできます。
 
 - 効率を高めるために、データ スライスから始めることをお勧めします。  `parallelCopies` 設定の値が、Netezza サーバー上のテーブル内のデータ スライス パーティションの合計数より小さいことを確認します。  
 
 - 各データ スライス パーティションのボリューム サイズが依然として大きい場合 (たとえば、10 GB を超える場合) は、動的範囲パーティションに切り替えることをお勧めします。 このオプションを使用すると、パーティションの数と各パーティションのパーティション列ごとのボリュームのサイズやその上限と下限を柔軟に定義できます。
 
-大きなテーブル (つまり、ボリューム サイズが 100 GB より大きい、または 2 時間以内に Azure に移行*できない*テーブル) では、データをカスタム クエリを使用してパーティション分割し、各コピー ジョブでパーティションを 1 つづつコピーすることをお勧めします。 スループットを向上させるには、複数の Azure Data Factory コピー ジョブを同時に実行することができます。 カスタム クエリにより各コピー ジョブで 1 つのパーティションを読み込むよう設定している場合でも、データ スライスまたは動的範囲を介して並列処理を有効にすることで、スループットを向上させることができます。 
+大きなテーブル (つまり、ボリューム サイズが 100 GB より大きい、または 2 時間以内に Azure に移行 *できない* テーブル) では、データをカスタム クエリを使用してパーティション分割し、各コピー ジョブでパーティションを 1 つづつコピーすることをお勧めします。 スループットを向上させるには、複数の Azure Data Factory コピー ジョブを同時に実行することができます。 カスタム クエリにより各コピー ジョブで 1 つのパーティションを読み込むよう設定している場合でも、データ スライスまたは動的範囲を介して並列処理を有効にすることで、スループットを向上させることができます。 
 
 ネットワークまたはデータ ストアの一時的な問題によってコピー ジョブが失敗した場合は、失敗したコピー ジョブを再実行して、そのテーブルから特定のパーティションを再度読み込むことができます。 読み込むパーティションが異なるその他のコピー ジョブは影響を受けません。
 
@@ -192,18 +192,18 @@ Azure Data Factory のコピー アクティビティによって報告された
 詳細については、次の記事とガイドを参照してください。
 
 - [Azure Data Factory を使用してオンプレミスのリレーショナル データ ウェアハウス データベースから Azure にデータを移行する](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza コネクタ](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC コネクタ](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure BLOB ストレージ コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure Synapse Analytics コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [コピー アクティビティのパフォーマンスとチューニングに関するガイド](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [セルフホステッド統合ランタイムを作成して構成する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [セルフホステッド統合ランタイム HA とスケーラビリティ](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [データ移動のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [1 つのテーブルからデータを増分コピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [複数のテーブルからデータを増分コピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Netezza コネクタ](./connector-netezza.md)
+- [ODBC コネクタ](./connector-odbc.md)
+- [Azure BLOB ストレージ コネクタ](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2 コネクタ](./connector-azure-data-lake-storage.md)
+- [Azure Synapse Analytics コネクタ](./connector-azure-sql-data-warehouse.md)
+- [コピー アクティビティのパフォーマンスとチューニングに関するガイド](./copy-activity-performance.md)
+- [セルフホステッド統合ランタイムを作成して構成する](./create-self-hosted-integration-runtime.md)
+- [セルフホステッド統合ランタイム HA とスケーラビリティ](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [データ移動のセキュリティに関する考慮事項](./data-movement-security-considerations.md)
+- [Azure Key Vault への資格情報の格納](./store-credentials-in-key-vault.md)
+- [1 つのテーブルからデータを増分コピーする](./tutorial-incremental-copy-portal.md)
+- [複数のテーブルからデータを増分コピーする](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Azure Data Factory の価格ページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>次のステップ

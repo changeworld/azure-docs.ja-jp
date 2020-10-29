@@ -8,20 +8,20 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
-ms.openlocfilehash: d752b747a0156bcef587f81ee421c55a6de81e17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52e45017643c63937ffc521adfe08d6415460254
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079474"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637141"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>マッピング データ フローを使用して安全にデータを変換する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](https://docs.microsoft.com/azure/data-factory/introduction)」を参照してください。
+Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](./introduction.md)」を参照してください。
 
-このチュートリアルでは、Data Factory ユーザー インターフェイス (UI) を使い、[Data Factory マネージド仮想ネットワーク](managed-virtual-network-private-endpoint.md)内でマッピング データ フローを使用して *Azure Data Lake Storage Gen2 ソースから Data Lake Storage Gen2 シンク (どちらも、選択したネットワークへの接続のみを許可)* にデータをコピーして変換するパイプラインを作成します。 このチュートリアルの構成パターンは、マッピング データ フローを使用してデータを変換するときに拡張することができます。
+このチュートリアルでは、Data Factory ユーザー インターフェイス (UI) を使い、 [Data Factory マネージド仮想ネットワーク](managed-virtual-network-private-endpoint.md)内でマッピング データ フローを使用して *Azure Data Lake Storage Gen2 ソースから Data Lake Storage Gen2 シンク (どちらも、選択したネットワークへの接続のみを許可)* にデータをコピーして変換するパイプラインを作成します。 このチュートリアルの構成パターンは、マッピング データ フローを使用してデータを変換するときに拡張することができます。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -34,10 +34,10 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 > * データ フロー アクティビティを監視します。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure ストレージ アカウント**。 Data Lake Storage を、*ソース*と*シンク*のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)に関するページを参照してください。 *ストレージ アカウントで、選択したネットワークからのアクセスのみが許可されていることを確認します。* 
+* **Azure サブスクリプション** 。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* **Azure ストレージ アカウント** 。 Data Lake Storage を、 *ソース* と *シンク* のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)に関するページを参照してください。 *ストレージ アカウントで、選択したネットワークからのアクセスのみが許可されていることを確認します。* 
 
-このチュートリアルで変換するファイルは、[GitHub コンテンツ サイト](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)にある moviesDB.csv です。 GitHub からファイルを取得するには、コンテンツを任意のテキスト エディターにコピーして、.csv ファイルとしてローカルに保存します。 ファイルをご自分のストレージ アカウントにアップロードするには、[Azure portal を使用した BLOB のアップロード](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に関するページを参照してください。 例では、**sample-data** という名前のコンテナーを参照します。
+このチュートリアルで変換するファイルは、[GitHub コンテンツ サイト](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)にある moviesDB.csv です。 GitHub からファイルを取得するには、コンテンツを任意のテキスト エディターにコピーして、.csv ファイルとしてローカルに保存します。 ファイルをご自分のストレージ アカウントにアップロードするには、[Azure portal を使用した BLOB のアップロード](../storage/blobs/storage-quickstart-blobs-portal.md)に関するページを参照してください。 例では、 **sample-data** という名前のコンテナーを参照します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
@@ -45,11 +45,11 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 1. Microsoft Edge または Google Chrome を開きます。 現在、Data Factory UI をサポートしている Web ブラウザーは Microsoft Edge と Google Chrome のみです。
 1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
-1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
+1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「 **ADFTutorialDataFactory** 」と入力します。
 
-   データ ファクトリの名前は "*グローバルに一意*" にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+   データ ファクトリの名前は " *グローバルに一意* " にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 
-1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+1. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
 
     * **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
@@ -88,7 +88,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
    ![パイプラインの作成を示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの [プロパティ] ウィンドウで、パイプラインの名前として **TransformMovies** と入力します。
-1. ファクトリの上部のバーで、 **[データ フローのデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 データ フロー クラスターのウォームアップには 5 から 7 分かかります。 データ フローの開発を計画している場合は、最初に **[データ フローのデバッグ]** をオンにします。 詳細については、[デバッグ モード](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode)に関するページを参照してください。
+1. ファクトリの上部のバーで、 **[データ フローのデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 データ フロー クラスターのウォームアップには 5 から 7 分かかります。 データ フローの開発を計画している場合は、最初に **[データ フローのデバッグ]** をオンにします。 詳細については、[デバッグ モード](./concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
     ![[データ フローのデバッグ] のスライダーを示すスクリーンショット。](media/tutorial-data-flow-private/dataflow-debug.png)
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** を展開します。 ウィンドウから **[Data Flow]** アクティビティをパイプライン キャンバスにドラッグします。
@@ -117,13 +117,13 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 1. データセットに **MoviesDB** という名前を付けます。 リンクされたサービスのドロップダウンで、 **[新規]** を選択します。
 
-1. リンクされたサービスの作成画面で、Data Lake Storage Gen2 のリンクされたサービスに **ADLSGen2** という名前を付けて、使用する認証方法を指定します。 次に、接続の資格情報を入力します。 このチュートリアルでは、**アカウント キー**を使用してストレージ アカウントに接続しています。 
+1. リンクされたサービスの作成画面で、Data Lake Storage Gen2 のリンクされたサービスに **ADLSGen2** という名前を付けて、使用する認証方法を指定します。 次に、接続の資格情報を入力します。 このチュートリアルでは、 **アカウント キー** を使用してストレージ アカウントに接続しています。 
 
 1. **[Interactive authoring]\(インタラクティブな作成\)** を必ず有効にしてください。 これは有効になるまでに 1 分程かかる場合があります。
 
     ![インタラクティブな作成を示すスクリーンショット。](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. **[接続テスト]** を選択します。 プライベート エンドポイントを作成および承認しなければストレージ アカウントにアクセスできないようになっているため、これは失敗するはずです。 エラー メッセージ内に、プライベート エンドポイントを作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 代わりに、 **[管理]** タブに直接移動し、[こちらのセクション](#create-a-managed-private-endpoint)の指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。
+1. **[接続テスト]** を選択します。 プライベート エンドポイントを作成および承認しなければストレージ アカウントにアクセスできないようになっているため、これは失敗するはずです。 エラー メッセージ内に、プライベート エンドポイントを作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 代わりに、 **[管理]** タブに直接移動し、 [こちらのセクション](#create-a-managed-private-endpoint)の指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。
 
 1. ダイアログ ボックスは開いたままにして、ストレージ アカウントに移動します。
 
@@ -181,7 +181,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. フィルター変換に **FilterYears** という名前を付けます。 **[フィルター適用]** の横にある式ボックスを選択して、式ビルダーを開きます。 ここでフィルター条件を指定します。
 
     ![FilterYears を示すスクリーンショット。](media/tutorial-data-flow-private/filter-years.png)
-1. データ フローの式ビルダーでは、さまざまな変換で使用する式を対話形式で作成できます。 式には、組み込み関数、入力スキーマの列、ユーザー定義のパラメーターを含めることができます。 式の作成方法の詳細については、[データ フローの式ビルダー](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder)に関するページを参照してください。
+1. データ フローの式ビルダーでは、さまざまな変換で使用する式を対話形式で作成できます。 式には、組み込み関数、入力スキーマの列、ユーザー定義のパラメーターを含めることができます。 式の作成方法の詳細については、[データ フローの式ビルダー](./concepts-data-flow-expression-builder.md)に関するページを参照してください。
 
     * このチュートリアルでは、1910 年から 2000 年の間に公開された、ジャンルがコメディの映画をフィルター処理します。 現在、年は文字列になっているため、```toInteger()``` 関数を使用して整数に変換する必要があります。 以上演算子 (>=) と以下演算子 (<=) を使用して、年のリテラル値 1910 と 2000 に対する比較を行います。 これらの式を and (&&) 演算子を使用して結合します。 式は次のようになります。
 
@@ -197,7 +197,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
     * 式の操作が完了したら、 **[Save and Finish]\(保存して終了する\)** を選択します。
 
-1. フィルターが正しく機能していることを確認するには、**データ プレビュー**をフェッチします。
+1. フィルターが正しく機能していることを確認するには、 **データ プレビュー** をフェッチします。
 
     ![フィルター処理されたデータのプレビューを示すスクリーンショット。](media/tutorial-data-flow-private/filter-data.png)
 

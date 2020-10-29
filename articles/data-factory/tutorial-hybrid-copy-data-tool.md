@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: b9bf03110fcb4f0c034c70d5e77e558b949a7825
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3237ff37e4314459a9e9a7a255b0ad10b3958509
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147997"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636954"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -49,7 +49,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016、2017
 このチュートリアルでは、SQL Server データベースを " *ソース* " データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 
-1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
+1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
 
 1. 自分の資格情報で SQL Server インスタンスに接続します。
 

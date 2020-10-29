@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443665"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674772"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91443665"
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * [Visual Studio](https://www.visualstudio.com/downloads/). このサンプルをビルドして実行するには、C++ 言語コンポーネントをインストールする必要があります。
-* [Visual Studio Linux Development](https://docs.microsoft.com/cpp/linux/?view=vs-2019)。 Linux で開発する場合は、Visual Studio Linux 拡張機能もインストールする必要があります。
+* [Visual Studio Linux Development](/cpp/linux/?view=vs-2019)。 Linux で開発する場合は、Visual Studio Linux 拡張機能もインストールする必要があります。
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database と仮想マシン上の SQL Server
 
@@ -39,7 +39,7 @@ Azure SQL Database は Microsoft SQL Server 上に構築されており、高可
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>データ アクセス テクノロジ:ODBC および OLE DB
 
-Azure SQL Database への接続も変わりはなく、現在、データベースに接続するには次の 2 つの方法があります。ODBC (Open Database Connectivity) と OLE DB (Object Linking and Embedding Database)。 近年、Microsoft は、[ネイティブのリレーショナル データベースにおいて ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)と連携してきました。 ODBC は比較的シンプルであり、OLE DB よりも動作が速くなります。 ただし、ODBC は以前の C スタイルの API を使用しているという点で注意が必要です。
+Azure SQL Database への接続も変わりはなく、現在、データベースに接続するには次の 2 つの方法があります。ODBC (Open Database Connectivity) と OLE DB (Object Linking and Embedding Database)。 近年、Microsoft は、[ネイティブのリレーショナル データベースにおいて ODBC](/archive/blogs/sqlnativeclient/microsoft-is-aligning-with-odbc-for-native-relational-data-access)と連携してきました。 ODBC は比較的シンプルであり、OLE DB よりも動作が速くなります。 ただし、ODBC は以前の C スタイルの API を使用しているという点で注意が必要です。
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>手順 1:Azure SQL Database を作成する
 
@@ -73,7 +73,7 @@ Visual Studio でビルドする[こちらのサンプルを使用すれば、Wi
 
 データベースの接続文字列の一部として、データベースの適切な認証情報が指定されていることを確認します。
 
-アプリケーションを起動してビルドします。 正常な接続を検証する次のウィンドウが表示されます。 **create table**のような基本的な SQL コマンドを実行して、データベースの接続を検証することもできます。
+アプリケーションを起動してビルドします。 正常な接続を検証する次のウィンドウが表示されます。 **create table** のような基本的な SQL コマンドを実行して、データベースの接続を検証することもできます。
 
 ![SQL コマンド](./media/develop-cplusplus-simple/sqlcommands.png)
 
@@ -143,7 +143,7 @@ GitHub では、この記事のすべてのサンプルを含む GetStarted ソ�
 ## <a name="next-steps"></a>次のステップ
 
 * 「 [SQL Database の開発: 概要](develop-overview.md)
-* [ODBC API リファレンス](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
+* [ODBC API リファレンス](/sql/odbc/reference/syntax/odbc-api-reference/)
 
 ## <a name="additional-resources"></a>その他のリソース
 

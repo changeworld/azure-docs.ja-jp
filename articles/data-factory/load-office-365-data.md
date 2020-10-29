@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de0224c51debe4d0203400b55721208ce7093649
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435561"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636291"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -34,10 +34,10 @@ ms.locfileid: "89435561"
       
    ![[新しいデータ ファクトリ] ページ](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
-    * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-    * **バージョン**: **[V2]** を選択します。
+    * **Name** :Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **サブスクリプション** :データ ファクトリを作成する Azure サブスクリプションを選択します。 
+    * **リソース グループ** :ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
+    * **バージョン** : **[V2]** を選択します。
     * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
 3. **［作成］** を選択します
@@ -53,7 +53,7 @@ ms.locfileid: "89435561"
  
     ![パイプラインの作成](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. パイプラインの **[全般]** タブで、パイプラインの**名前**として「CopyPipeline」と入力します。
+2. パイプラインの **[全般]** タブで、パイプラインの **名前** として「CopyPipeline」と入力します。
 
 3. [アクティビティ] ツール ボックスの [Move & Transform]\(移動と変換) で、ツール ボックスからパイプライン デザイナー画面に **[コピー]** アクティビティ をドラッグ アンド ドロップします。 アクティビティ名として "CopyFromOffice365ToBlob" を指定します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "89435561"
 
     ![一般的な Office 365 データセットを構成する](./media/load-office-365-data/transition-to-edit-dataset.png)
  
-4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ**で、[名前] に「SourceOffice365Dataset」と入力します。
+4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ** で、[名前] に「SourceOffice365Dataset」と入力します。
  
 5. プロパティ ウィンドウの **[接続]** タブに移動します。 [リンクされたサービス] ボックスの横にある **[+ 新規]** をクリックします。
 
@@ -79,7 +79,7 @@ ms.locfileid: "89435561"
 
     ![Office 365 データセット テーブルを構成する](./media/load-office-365-data/edit-dataset.png)
 
-8. 次に、 **[パイプライン]**  >  **[ソース] タブ**に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)に関するセクションを参照してください。
+8. 次に、 **[パイプライン]**  >  **[ソース] タブ** に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](./connector-office-365.md#dataset-properties)に関するセクションを参照してください。
 
 9. 日付フィルターの 1 つを選択し、開始時刻と終了時刻の値を指定する必要があります。
 
@@ -130,7 +130,7 @@ ms.locfileid: "89435561"
 
 ![アクティビティを監視する](./media/load-office-365-data/activity-status.png) 
 
-このコンテキスト (アクセスされるデータ テーブル、データが読み込まれる宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) にデータを要求するのはこれが初めての場合は、コピー アクティビティの状態が "**In Progress**" (進行中) として表示され、[アクション] の下にある [詳細] リンクをクリックしたときにのみ、状態は "**RequesetingConsent**" と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
+このコンテキスト (アクセスされるデータ テーブル、データが読み込まれる宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) にデータを要求するのはこれが初めての場合は、コピー アクティビティの状態が " **In Progress** " (進行中) として表示され、[アクション] の下にある [詳細] リンクをクリックしたときにのみ、状態は " **RequesetingConsent** " と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
 
 _同意を要求しているときの状態:_ 
 ![アクティビティ実行の詳細 - 同意の要求](./media/load-office-365-data/activity-details-request-consent.png) 

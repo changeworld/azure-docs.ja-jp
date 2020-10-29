@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616926"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638042"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する 
 
@@ -41,9 +41,9 @@ ADF には、さまざまなレベルで並列処理を可能にするサーバ�
 
 上の図は、さまざまなレベルの並列処理で優れたデータ移動速度を実現する方法を示しています。
  
-- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。Azure Integration Runtime を使用する場合は、サーバーレス方式で各コピー アクティビティに対して[最大 256 DIU](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) を指定できます。セルフホステッド統合ランタイムを使用する場合は、手動でマシンをスケールアップするか、複数のマシン ([最大 4 ノード](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) にスケールアウトすることができます。また、1 回のコピー アクティビティによって、すべてのノードでファイル セットがパーティション分割されます。 
+- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。Azure Integration Runtime を使用する場合は、サーバーレス方式で各コピー アクティビティに対して[最大 256 DIU](./copy-activity-performance.md#data-integration-units) を指定できます。セルフホステッド統合ランタイムを使用する場合は、手動でマシンをスケールアップするか、複数のマシン ([最大 4 ノード](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) にスケールアウトすることができます。また、1 回のコピー アクティビティによって、すべてのノードでファイル セットがパーティション分割されます。 
 - 1 回のコピー アクティビティで、複数のスレッドを使用したデータ ストアの読み取りと書き込みが行われます。 
-- ADF 制御フローでは、複数のコピー アクティビティを並列して開始できます。たとえば、[For Each ループ](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)を使用します。 
+- ADF 制御フローでは、複数のコピー アクティビティを並列して開始できます。たとえば、[For Each ループ](./control-flow-for-each-activity.md)を使用します。 
 
 ## <a name="resilience"></a>回復力
 
@@ -81,10 +81,10 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 
 ### <a name="authentication-and-credential-management"></a>認証と資格情報の管理 
 
-- Amazon S3 アカウントに対して認証するには、[IAM アカウントのアクセス キー](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)を使用する必要があります。 
-- Azure Blob Storage に接続するには、複数の認証の種類がサポートされています。  [Azure リソースにはマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) を使用することを強くお勧めします。Azure AD で自動的に管理されるADF ID を基にして構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。  また、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共有アクセス署名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)、または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)を使用して Azure Blob Storage に対する認証を行うこともできます。 
-- Azure Data Lake Storage Gen2 に接続するには、複数の認証の種類がサポートされています。  [サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)を使用することもできますが、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) を使用することを強くお勧めします。 
-- Azure リソースに対してマネージド ID を使用していない場合は、[Azure Key Vault に資格情報を格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)して、ADF のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。  これは、[CI/CD のベスト プラクティス](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)の1 つでもあります。 
+- Amazon S3 アカウントに対して認証するには、[IAM アカウントのアクセス キー](./connector-amazon-simple-storage-service.md#linked-service-properties)を使用する必要があります。 
+- Azure Blob Storage に接続するには、複数の認証の種類がサポートされています。  [Azure リソースにはマネージド ID](./connector-azure-blob-storage.md#managed-identity) を使用することを強くお勧めします。Azure AD で自動的に管理されるADF ID を基にして構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。  また、[サービス プリンシパル](./connector-azure-blob-storage.md#service-principal-authentication)、[共有アクセス署名](./connector-azure-blob-storage.md#shared-access-signature-authentication)、または[ストレージ アカウント キー](./connector-azure-blob-storage.md#account-key-authentication)を使用して Azure Blob Storage に対する認証を行うこともできます。 
+- Azure Data Lake Storage Gen2 に接続するには、複数の認証の種類がサポートされています。  [サービス プリンシパル](./connector-azure-data-lake-storage.md#service-principal-authentication)または[ストレージ アカウント キー](./connector-azure-data-lake-storage.md#account-key-authentication)を使用することもできますが、[Azure リソースのマネージド ID](./connector-azure-data-lake-storage.md#managed-identity) を使用することを強くお勧めします。 
+- Azure リソースに対してマネージド ID を使用していない場合は、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、ADF のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。  これは、[CI/CD のベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)の1 つでもあります。 
 
 ### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行 
 
@@ -138,16 +138,16 @@ S3 から Azure Blob Storage にデータを移行するために、次のパイ
 ![推定料金を示す表のスクリーンショット。](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>その他のリファレンス 
-- [Amazon Simple Storage Service コネクタ](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob Storage コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [コピー アクティビティのパフォーマンスとチューニングに関するガイド](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [セルフホステッド統合ランタイムの作成と構成](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [セルフホステッド統合ランタイム HA とスケーラビリティ](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [データ移動のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [時間でパーティション分割されたファイル名に基づいてファイルを増分コピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [LastModifiedDate に基づいて新しいファイルと変更されたファイルをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Amazon Simple Storage Service コネクタ](./connector-amazon-simple-storage-service.md)
+- [Azure Blob Storage コネクタ](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2 コネクタ](./connector-azure-data-lake-storage.md)
+- [コピー アクティビティのパフォーマンスとチューニングに関するガイド](./copy-activity-performance.md)
+- [セルフホステッド統合ランタイムの作成と構成](./create-self-hosted-integration-runtime.md)
+- [セルフホステッド統合ランタイム HA とスケーラビリティ](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [データ移動のセキュリティに関する考慮事項](./data-movement-security-considerations.md)
+- [Azure Key Vault への資格情報の格納](./store-credentials-in-key-vault.md)
+- [時間でパーティション分割されたファイル名に基づいてファイルを増分コピーする](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [LastModifiedDate に基づいて新しいファイルと変更されたファイルをコピーする](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [ADF 料金ページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>Template

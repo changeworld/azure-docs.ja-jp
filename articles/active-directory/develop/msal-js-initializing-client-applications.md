@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87027038"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674086"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 
@@ -37,13 +37,13 @@ ms.locfileid: "87027038"
 | 値 | 必須 | 説明 |
 |:----- | :------: | :---------- |
 | アプリケーション (クライアント) ID | 必須 | Microsoft ID プラットフォーム内でアプリケーションを一意に識別する GUID。 |
-| Authority | 省略可能 | ID プロバイダーの URL (*インスタンス*) とアプリケーションの*サインイン対象ユーザー*。 インスタンスとサインイン対象ユーザーが連結されると、*Authority* が構成されます。 |
-| ディレクトリ (テナント) ID | 省略可能 | 組織専用の基幹業務アプリケーション (*シングルテナント アプリケーション*とも呼ばれる) を構築している場合は、この値を指定します。 |
+| Authority | 省略可能 | ID プロバイダーの URL ( *インスタンス* ) とアプリケーションの *サインイン対象ユーザー* 。 インスタンスとサインイン対象ユーザーが連結されると、 *Authority* が構成されます。 |
+| ディレクトリ (テナント) ID | 省略可能 | 組織専用の基幹業務アプリケーション ( *シングルテナント アプリケーション* とも呼ばれる) を構築している場合は、この値を指定します。 |
 | リダイレクト URI | 省略可能 | Web アプリを構築している場合、`redirectUri` では、ID プロバイダー (Microsoft ID プラットフォーム) が発行済みのセキュリティ トークンを返す場所を指定します。 |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2.x アプリの初期化
 
-[構成オブジェクト][msal-js-configuration]を使用して [PublicClientApplication][msal-js-publicclientapplication] をインスタンス化することで、MSAL 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに**アプリケーション (クライアント) ID** として表示されます。
+[構成オブジェクト][msal-js-configuration]を使用して [PublicClientApplication][msal-js-publicclientapplication] をインスタンス化することで、MSAL 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに **アプリケーション (クライアント) ID** として表示されます。
 
 次に、構成オブジェクトと `PublicClientApplication` のインスタンス化の例を示します。
 
@@ -113,9 +113,9 @@ Promise では、次の 3 つの結果が考えられます。
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1.x アプリの初期化
 
-構成オブジェクトを使用して [UserAgentApplication][msal-js-useragentapplication] をインスタンス化することで、MSAL 1.x 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに**アプリケーション (クライアント) ID** として表示されます。
+構成オブジェクトを使用して [UserAgentApplication][msal-js-useragentapplication] をインスタンス化することで、MSAL 1.x 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに **アプリケーション (クライアント) ID** として表示されます。
 
-リダイレクト フローを使用した認証メソッドの場合 ([loginRedirect][msal-js-loginredirect] と [acquireTokenRedirect][msal-js-acquiretokenredirect])、MSAL.js 1.2.x 以前では、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 MSAL.js 1.2.x 以前では、コールバックを明示的に登録する必要があります。これは、リダイレクト フローがポップアップ エクスペリエンスを持つメソッドのように Promise を返さないためです。 バージョン 1.3.x 以降の MSAL.js では、コールバックの登録は*省略可能*です。
+リダイレクト フローを使用した認証メソッドの場合 ([loginRedirect][msal-js-loginredirect] と [acquireTokenRedirect][msal-js-acquiretokenredirect])、MSAL.js 1.2.x 以前では、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 MSAL.js 1.2.x 以前では、コールバックを明示的に登録する必要があります。これは、リダイレクト フローがポップアップ エクスペリエンスを持つメソッドのように Promise を返さないためです。 バージョン 1.3.x 以降の MSAL.js では、コールバックの登録は *省略可能* です。
 
 ```javascript
 // Configuration object constructed

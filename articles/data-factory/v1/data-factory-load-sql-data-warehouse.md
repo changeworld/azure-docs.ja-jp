@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442481"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636903"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure Synapse Analytics に読み込む
 > [!NOTE]
@@ -26,12 +26,12 @@ ms.locfileid: "89442481"
 
 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大量のデータを処理できます。  超並列処理 (MPP) アーキテクチャが基になっている Azure Synapse Analytics は、企業のデータ ウェアハウスのワークロード向けに最適化されています。  ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
 
-Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそう使いやすくなります。  Azure Data Factory は、フル マネージドのクラウド ベースのデータ統合サービスであり、このサービスを使用して既存のシステムのデータを Azure Synapse Analytics に入力することで、貴重な時間を節約しながら、Azure Synapse Analytics の評価と分析ソリューションの構築を行うことができます。 Azure Data Factory を使用して Azure Synapse Analytics にデータを読み込む主な利点を次に示します。
+Azure Synapse Analytics は、 **Azure Data Factory** を使用するといっそう使いやすくなります。  Azure Data Factory は、フル マネージドのクラウド ベースのデータ統合サービスであり、このサービスを使用して既存のシステムのデータを Azure Synapse Analytics に入力することで、貴重な時間を節約しながら、Azure Synapse Analytics の評価と分析ソリューションの構築を行うことができます。 Azure Data Factory を使用して Azure Synapse Analytics にデータを読み込む主な利点を次に示します。
 
-* **簡単なセットアップ**: 5 つの手順からなる直感的なウィザードを使用でき、スクリプト作成の必要はありません。
-* **豊富なデータ ストアのサポート**: オンプレミスとクラウド ベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。
-* **セキュリティとコンプライアンスへの準拠**: データは HTTPS または ExpressRoute で転送され、グローバル サービスの存在により、データが地理的な境界を越えることはありません。
-* **PolyBase の使用による比類のないパフォーマンス**: PolyBase の使用は、Azure Synapse Analytics にデータを移動するための最も効率的な方法です。 ステージング BLOB の機能を使用して、Azure Blob ストレージを含むすべての種類のデータ ストアからデータを高速で読み込むことができます。これは PolyBase が既定でサポートしている機能です。
+* **簡単なセットアップ** : 5 つの手順からなる直感的なウィザードを使用でき、スクリプト作成の必要はありません。
+* **豊富なデータ ストアのサポート** : オンプレミスとクラウド ベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。
+* **セキュリティとコンプライアンスへの準拠** : データは HTTPS または ExpressRoute で転送され、グローバル サービスの存在により、データが地理的な境界を越えることはありません。
+* **PolyBase の使用による比類のないパフォーマンス** : PolyBase の使用は、Azure Synapse Analytics にデータを移動するための最も効率的な方法です。 ステージング BLOB の機能を使用して、Azure Blob ストレージを含むすべての種類のデータ ストアからデータを高速で読み込むことができます。これは PolyBase が既定でサポートしている機能です。
 
 この記事では、Data Factory コピー ウィザードを使用して、1 TB のデータを 1.2 GBps 以上のスループットで 15 分以内に Azure Blob Storage から Azure Synapse Analytics に読み込む方法を示します。
 
@@ -56,7 +56,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
     次に、生成されたファイルを Azure Blob にコピーします。  ADF コピーを使用した実行方法については、「[Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する](data-factory-onprem-file-system-connector.md)」を参照してください。    
 * Azure Synapse Analytics: この実験では、6,000 DWU で作成された Azure Synapse Analytics にデータを読み込みます
 
-    Azure Synapse Analytics データベースを作成する方法の詳細については、「[Azure Synapse Analytics を作成する](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)」を参照してください。  ここでは、PolyBase を使用した Azure Synapse Analytics への最高の読み込みパフォーマンスを得るために、パフォーマンス設定で許可される最大数の Data Warehouse ユニット (DWU) を選択しています。その最大数は 6,000 DWU です。
+    Azure Synapse Analytics データベースを作成する方法の詳細については、「[Azure Synapse Analytics を作成する](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。  ここでは、PolyBase を使用した Azure Synapse Analytics への最高の読み込みパフォーマンスを得るために、パフォーマンス設定で許可される最大数の Data Warehouse ユニット (DWU) を選択しています。その最大数は 6,000 DWU です。
 
   > [!NOTE]
   > Azure Blob からの読み込みでは、データ読み込みのパフォーマンスは Azure Synapse Analytics で構成した DWU の数と正比例します。
@@ -79,7 +79,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
     この実験では、`xlargerc` リソース クラスを使用して Azure Synapse Analytics にデータを読み込みます。
 
-    最高のスループットを実現するには、`xlargerc` リソース クラスに所属する Azure Synapse Analytics ユーザーでコピーを実行する必要があります。  「[ユーザー リソース クラスの変更例](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)」で、実行方法を確認してください。  
+    最高のスループットを実現するには、`xlargerc` リソース クラスに所属する Azure Synapse Analytics ユーザーでコピーを実行する必要があります。  「[ユーザー リソース クラスの変更例](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)」で、実行方法を確認してください。  
 * 次の DDL ステートメントを実行して、Azure Synapse Analytics データベースに変換先テーブル スキーマを作成します。
 
     ```SQL  
@@ -115,22 +115,22 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 2. 左上隅にある **[リソースの作成]** 、 **[インテリジェンス + 分析]** 、 **[データ ファクトリ]** の順にクリックします。
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。
 
-   1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません**が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
-   2. Azure **サブスクリプション**を選択します。
+   1. **[名前]** に「 **LoadIntoSQLDWDataFactory** 」と入力します。
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません** が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
+   2. Azure **サブスクリプション** を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。
       1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
       2. **[新規作成]** を選択し、リソース グループの名前を入力します。
-   4. データ ファクトリの**場所**を選択します。
+   4. データ ファクトリの **場所** を選択します。
    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
    6. **Create** をクリックしてください。
 4. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。
 
    ![データ ファクトリのホーム ページ](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。
+5. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、 **コピー ウィザード** を起動します。
 
    > [!NOTE]
-   > 承認中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
+   > 承認中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、 **サード パーティの Cookie とサイト データをブロック** する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
    >
    >
 
@@ -139,7 +139,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
 **[プロパティ]** ページで次の操作を実行します。
 
-1. **[タスク名]** に「**CopyFromBlobToAzureSqlDataWarehouse**」と入力します。
+1. **[タスク名]** に「 **CopyFromBlobToAzureSqlDataWarehouse** 」と入力します。
 2. **[Run once now (今すぐ 1 度だけ実行する)]** オプションを選択します。   
 3. **[次へ]** をクリックします。  
 
@@ -156,7 +156,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
     ![コピー ウィザード - ソース接続情報](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. TPC-H 行項目ファイルが含まれている**フォルダー**を選択し、 **[次へ]** をクリックします。
+3. TPC-H 行項目ファイルが含まれている **フォルダー** を選択し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - 入力フォルダーの選択](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
@@ -171,7 +171,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
     ![コピー ウィザード - 変換先データ ストアの選択](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Azure Synapse Analytics の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、 **[次へ]** をクリックします。
+2. Azure Synapse Analytics の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「 **前提条件** 」セクションを参照してください) を指定したことを確認し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - 変換先の接続情報](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -196,7 +196,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
     ![コピー ウィザード - [概要] ページ 2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
-    右側のパネルの**アクティビティ ウィンドウ エクスプローラー**で、コピーの実行の詳細を確認できます。ソースから読み取られたデータ量、変換先に書き込まれたデータ量、および実行の平均スループットなどが表示されます。
+    右側のパネルの **アクティビティ ウィンドウ エクスプローラー** で、コピーの実行の詳細を確認できます。ソースから読み取られたデータ量、変換先に書き込まれたデータ量、および実行の平均スループットなどが表示されます。
 
     次のスクリーンショットからわかるように、1 TB のデータを Azure Blob Storage から Azure Synapse Analytics にコピーする処理は 14 分で完了し、実質的に 1.22 GBps のスループットが達成されています。
 

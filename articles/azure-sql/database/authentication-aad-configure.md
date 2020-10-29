@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99af4d5711c70523053b37e19b08173f32bd117b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444485"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675114"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -57,11 +57,11 @@ Azure AD インスタンスを作成し、ユーザーとグループを設定�
 2. Azure Portal のディレクトリ スイッチャーを使用して、ドメインに関連付けられたサブスクリプションに切り替えます。
 
    > [!IMPORTANT]
-   > すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。 リソースの詳細については、[Azure でのリソース アクセスの説明](../../active-directory/b2b/add-users-administrator.md)に関するページを参照してください。 この信頼関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+   > すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。 リソースの詳細については、[Azure でのリソース アクセスの説明](../../active-directory/external-identities/add-users-administrator.md)に関するページを参照してください。 この信頼関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
 ## <a name="azure-ad-admin-with-a-server-in-sql-database"></a>SQL Database でのサーバーの Azure AD 管理者
 
-Azure 内の (SQL Database または Azure Synapse をホストする) 各[サーバー](logical-servers.md)は、サーバー全体の管理者である単一のサーバー管理者アカウントを使用して開始されます。 2 番目の管理者アカウントを Azure AD アカウントとして作成します。 このプリンシパルは、サーバーの master データベースの包含データベース ユーザーとして作成されます。 管理者アカウントは、すべてのユーザー データベースの **db_owner** ロールのメンバーであり、**dbo** ユーザーとして各ユーザー データベースに入ります。 管理者アカウントの詳細については、「[データベースとログインの管理](logins-create-manage.md)」を参照してください。
+Azure 内の (SQL Database または Azure Synapse をホストする) 各[サーバー](logical-servers.md)は、サーバー全体の管理者である単一のサーバー管理者アカウントを使用して開始されます。 2 番目の管理者アカウントを Azure AD アカウントとして作成します。 このプリンシパルは、サーバーの master データベースの包含データベース ユーザーとして作成されます。 管理者アカウントは、すべてのユーザー データベースの **db_owner** ロールのメンバーであり、 **dbo** ユーザーとして各ユーザー データベースに入ります。 管理者アカウントの詳細については、「[データベースとログインの管理](logins-create-manage.md)」を参照してください。
 
 geo レプリケーションで Azure Active Directory を使用する場合は、プライマリ サーバーとセカンダリ サーバーの両方で Azure Active Directory 管理者を構成する必要があります。 サーバーに Azure Active Directory 管理者がいない場合、Azure Active Directory へのログイン時に、"`Cannot connect`" サーバー エラーが発生します。
 
@@ -73,7 +73,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 > [!IMPORTANT]
 > 次の手順は、Azure SQL Managed Instance をプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者か、特権ロール管理者だけが実行できます。
 >
-> **パブリック プレビュー**では、Azure AD 内のグループに**ディレクトリ閲覧者**ロールを割り当てることができます。 その後、グループの所有者が、このグループのメンバーとしてマネージ インスタンス ID を追加すると、その SQL Managed Instance に Azure AD 管理者をプロビジョニングできるようになります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
+> **パブリック プレビュー** では、Azure AD 内のグループに **ディレクトリ閲覧者** ロールを割り当てることができます。 その後、グループの所有者が、このグループのメンバーとしてマネージ インスタンス ID を追加すると、その SQL Managed Instance に Azure AD 管理者をプロビジョニングできるようになります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、SQL Managed Instance に Azure AD の読み取りアクセス許可が必要です。 そのためには、SQL Managed Instance に Azure AD の読み取りアクセス許可を付与する必要があります。 この操作は、Azure portal または PowerShell から実行できます。
 
@@ -245,7 +245,7 @@ CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」�
     ![[SQL サーバー] を探して選択する](./media/authentication-aad-configure/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
-    > このページでは、 **[SQL Server]** を選択する前に、名前の横にある**星マーク**を選択してそのカテゴリを "*お気に入りに追加*" し、 **[SQL Server]** を左側のナビゲーション バーに追加することができます。
+    > このページでは、 **[SQL Server]** を選択する前に、名前の横にある **星マーク** を選択してそのカテゴリを " *お気に入りに追加* " し、 **[SQL Server]** を左側のナビゲーション バーに追加することができます。
 
 3. **[SQL Server]** ページで、 **[Active Directory 管理者]** を選択します。
 
@@ -253,7 +253,7 @@ CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」�
 
     ![[SQL サーバー] の Active Directory 管理者の設定](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](authentication-aad-overview.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
+5. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「 [Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](authentication-aad-overview.md)」の「 **Azure AD の機能と制限事項** 」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
 
     ![Azure Active Directory 管理者を選択する](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
@@ -287,7 +287,7 @@ SQL Database および Azure Synapse に対する Azure AD 管理者のプロビ
 
 これらの各コマンドの情報を確認するには、PowerShell の get-help コマンドを使用します。 たとえば、「 `get-help Set-AzSqlServerActiveDirectoryAdministrator` 」のように入力します。
 
-次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo_server** に対して、**DBA_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
+次のスクリプトでは、 **Group-23** という名前のリソース グループ内にあるサーバー **demo_server** に対して、 **DBA_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
@@ -298,7 +298,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 > [!NOTE]
 > Azure PowerShell コマンド ```Set-AzSqlServerActiveDirectoryAdministrator``` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
 
-次の例では、オプションとして **ObjectID**を使用します。
+次の例では、オプションとして **ObjectID** を使用します。
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" `
@@ -342,8 +342,8 @@ CLI コマンドの詳細については、「[az sql server](/cli/azure/sql/ser
 
 Azure AD の ID を使用して SQL Database または Azure Synapse に接続するアプリケーションまたはユーザーが存在するすべてクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
 
-- [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) の .NET Framework 4.6 以降。
-- SQL Server 用 Azure Active Directory 認証ライブラリ (*ADAL.DLL*)。 *ADAL.DLL* ライブラリを含む最新の SSMS、ODBC、OLE DB ドライバーをインストールするためのダウンロード リンクを以下に示します。
+- [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) の .NET Framework 4.6 以降。
+- SQL Server 用 Azure Active Directory 認証ライブラリ ( *ADAL.DLL* )。 *ADAL.DLL* ライブラリを含む最新の SSMS、ODBC、OLE DB ドライバーをインストールするためのダウンロード リンクを以下に示します。
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -351,18 +351,18 @@ Azure AD の ID を使用して SQL Database または Azure Synapse に接続�
 これらの要件は、次の操作を行うことで満たすことができます。
 
 - 最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) または [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) をインストールすると、.NET Framework 4.6 の要件が満たされます。
-  - SSMS の場合、x86 バージョンの *ADAL.DLL*がインストールされます。
-  - SSDT の場合、amd64 バージョンの *ADAL.DLL*がインストールされます。
+  - SSMS の場合、x86 バージョンの *ADAL.DLL* がインストールされます。
+  - SSDT の場合、amd64 バージョンの *ADAL.DLL* がインストールされます。
   - [Visual Studio の「ダウンロード」](https://www.visualstudio.com/downloads/download-visual-studio-vs)にある最新の Visual Studio をインストールすると、.NET Framework 4.6 の要件は満たされますが、必要な amd64 バージョンの *ADAL.DLL* はインストールされません。
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Azure AD ID にマップされる包含ユーザーを作成する
 
 SQL Managed Instance では Azure AD サーバー プリンシパル (ログイン) がサポートされているため、包含データベース ユーザーを使用する必要はありません。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD ユーザー、グループ、またはアプリケーションからログインを作成できます。 つまり、包含データベース ユーザーではなく、Azure AD サーバー ログインを使用して、SQL Managed Instance での認証を行うことができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
 
-ただし、SQL Database と Azure Synapse で Azure Active Directory 認証を使用するには、Azure AD ID に基づく包含データベース ユーザーを使用する必要があります。 包含データベース ユーザーは、master データベース内にログインを持たず、データベースに関連付けられている Azure AD の ID にマップされます。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+ただし、SQL Database と Azure Synapse で Azure Active Directory 認証を使用するには、Azure AD ID に基づく包含データベース ユーザーを使用する必要があります。 包含データベース ユーザーは、master データベース内にログインを持たず、データベースに関連付けられている Azure AD の ID にマップされます。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」を参照してください。
 
 > [!NOTE]
-> Azure Portal を使用して、データベース ユーザー (管理者を除く) を作成することはできません。 Azure ロールは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースには反映されません。 Azure ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。 たとえば、**SQL Server 共同作成者**ロールでは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースに接続するためのアクセス権は付与されません。 Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
+> Azure Portal を使用して、データベース ユーザー (管理者を除く) を作成することはできません。 Azure ロールは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースには反映されません。 Azure ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。 たとえば、 **SQL Server 共同作成者** ロールでは、SQL Database、SQL Managed Instance、または Azure Synapse 内のデータベースに接続するためのアクセス権は付与されません。 Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
 
 > [!WARNING]
 > T-SQL の `CREATE LOGIN` ステートメントと `CREATE USER` ステートメントのユーザー名に含まれるコロン `:` やアンパサンド `&` などの特殊文字は、サポートされていません。
@@ -400,19 +400,19 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!TIP]
 > 使用している Azure サブスクリプションに関連付けられている Azure Active Directory とは別の Azure Active Directory から、ユーザーを直接作成することはできません。 ただし、別の Active Directory のメンバーのうち、関連付けられている Active Directory にインポート済みのユーザー (外部ユーザーと呼ばれます) は、テナント Active Directory の Active Directory グループに追加できます。 外部の Active Directory のユーザーは、この AD グループの包含データベース ユーザーを作成することで SQL Database にアクセスできるようになります。
 
-Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
+Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql)」を参照してください。
 
 > [!NOTE]
 > サーバーの Azure Active Directory 管理者を削除すると、Azure AD 認証ユーザーはサーバーに接続できなくなります。 必要に応じて、SQL Database 管理者は不要な Azure AD ユーザーを手動で削除できます。
 
 > [!NOTE]
-> "**接続がタイムアウトしました**" と表示された場合は、接続文字列の `TransparentNetworkIPResolution` パラメーターを false に設定することが必要になる場合があります。 詳しくは、「[Connection timeout issue with .NET Framework 4.6.1 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)」(.NET Framework 4.6.1 での接続タイムアウトの問題 - TransparentNetworkIPResolution) をご覧ください。
+> " **接続がタイムアウトしました** " と表示された場合は、接続文字列の `TransparentNetworkIPResolution` パラメーターを false に設定することが必要になる場合があります。 詳しくは、「[Connection timeout issue with .NET Framework 4.6.1 - TransparentNetworkIPResolution](/archive/blogs/dataaccesstechnologies/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution)」(.NET Framework 4.6.1 での接続タイムアウトの問題 - TransparentNetworkIPResolution) をご覧ください。
 
-データベース ユーザーを作成すると、そのユーザーには **CONNECT** アクセス許可が付与され、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できるようになります。 最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Azure AD グループに付与されているアクセス許可のみです。 Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。 通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。 詳細については、 [データベース エンジンのアクセス許可の基本知識](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。 特殊な SQL Database ロールの詳細については、「 [Azure SQL Database におけるデータベースとログインの管理](logins-create-manage.md)」を参照してください。
+データベース ユーザーを作成すると、そのユーザーには **CONNECT** アクセス許可が付与され、 **PUBLIC** ロールのメンバーとしてそのデータベースに接続できるようになります。 最初にこのユーザーが利用できるアクセス許可は、 **PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Azure AD グループに付与されているアクセス許可のみです。 Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。 通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。 詳細については、 [データベース エンジンのアクセス許可の基本知識](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。 特殊な SQL Database ロールの詳細については、「 [Azure SQL Database におけるデータベースとログインの管理](logins-create-manage.md)」を参照してください。
 外部ユーザーとしてマネージド ドメインにインポートされるフェデレーション ドメイン ユーザー アカウントは、マネージド ドメインの ID を使用する必要があります。
 
 > [!NOTE]
-> データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL_USER) 、グループはタイプ X (EXTERNAL_GROUPS) でマークされます。 詳細については、「[sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)」を参照してください。
+> データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL_USER) 、グループはタイプ X (EXTERNAL_GROUPS) でマークされます。 詳細については、「[sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql)」を参照してください。
 
 ## <a name="connect-to-the-database-using-ssms-or-ssdt"></a>SSMS または SSDT を使用してデータベースに接続する  
 
@@ -420,7 +420,7 @@ Azure AD 管理者が正しく設定されていることを確認するには�
 Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。
 
 > [!IMPORTANT]
-> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
+> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) および Visual Studio 2015 の [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD の ID で SSMS または SSDT を利用して接続する
 
@@ -514,7 +514,7 @@ conn.AccessToken = "Your JWT token"
 conn.Open();
 ```
 
-詳細については、「 [SQL Server Security Blog (SQL Server のセキュリティに関するブログ)](https://blogs.msdn.microsoft.com/sqlsecurity/20../../token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)」をご覧ください。 証明書の追加の詳細については、「[Azure Active Directory の証明書ベースの認証の概要](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)」を参照してください。
+詳細については、「 [SQL Server Security Blog (SQL Server のセキュリティに関するブログ)](/archive/blogs/sqlsecurity/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth)」をご覧ください。 証明書の追加の詳細については、「[Azure Active Directory の証明書ベースの認証の概要](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)」を参照してください。
 
 ### <a name="sqlcmd"></a>sqlcmd
 
@@ -535,8 +535,8 @@ Azure AD 認証に関する問題のトラブルシューティングのガイ�
 ## <a name="next-steps"></a>次のステップ
 
 - SQL Database のログイン、ユーザー、データベース ロール、アクセス許可の概要については、[ログイン、ユーザー、データベース ロール、ユーザー アカウント](logins-create-manage.md)に関するページを参照してください。
-- データベース プリンシパルの詳細については、「[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)」を参照してください。
-- データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関するページを参照してください。
+- データベース プリンシパルの詳細については、「[プリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine)」を参照してください。
+- データベース ロールの詳細については、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)に関するページを参照してください。
 - SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](firewall-configure.md)に関するページを参照してください。
 - Azure AD ゲスト ユーザーを Azure AD 管理者として設定する方法については、「[Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する](authentication-aad-guest-users.md)」を参照してください。
 - Azure SQL でプリンシパルにサービスを提供する方法の詳細については、「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](authentication-aad-service-principal-tutorial.md)」を参照してください

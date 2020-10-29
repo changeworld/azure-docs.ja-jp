@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443885"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672259"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Azure portal を使って、Azure SQL Database でご利用のデータベース
 
 ## <a name="viewing-recommendations"></a>推奨事項の表示
 
-パフォーマンスの推奨事項を表示して適用するには、Azure の適切な [Azureロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) アクセス許可が必要です。 推奨事項を表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
+パフォーマンスの推奨事項を表示して適用するには、Azure の適切な [Azureロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) アクセス許可が必要です。 推奨事項を表示するには、 **リーダー** 権限と **SQL DB の共同作成者** 権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、 **所有者** 権限と **SQL DB の共同作成者** 権限が必要です。
 
 Azure portal でパフォーマンスに関する推奨事項を調べるには、次の手順に従います。
 
@@ -114,11 +114,11 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 
 任意の推奨事項を選択し、 **[スクリプトの表示]** をクリックします。 データベースに対してこのスクリプトを実行し、推奨事項を手動で適用します。
 
-*手動で実行されたインデックスは、パフォーマンスへの影響についてサービスによる監視や検証が行われません。* そのため、作成後にこれらのインデックスを監視して、パフォーマンスが向上するかどうかを検証し、必要に応じて調整または削除することをお勧めします。 インデックスの作成方法の詳細については、「 [CREATE INDEX (TRANSACT-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)」を参照してください。 さらに、手動で適用した推奨事項は、24 時間から 48 時間、アクティブなままになり、推奨事項の一覧に表示された後、 自動的に取り消されます。 それよりも前に推奨事項を削除したい場合は、手動で破棄できます。
+*手動で実行されたインデックスは、パフォーマンスへの影響についてサービスによる監視や検証が行われません。* そのため、作成後にこれらのインデックスを監視して、パフォーマンスが向上するかどうかを検証し、必要に応じて調整または削除することをお勧めします。 インデックスの作成方法の詳細については、「 [CREATE INDEX (TRANSACT-SQL)](/sql/t-sql/statements/create-index-transact-sql)」を参照してください。 さらに、手動で適用した推奨事項は、24 時間から 48 時間、アクティブなままになり、推奨事項の一覧に表示された後、 自動的に取り消されます。 それよりも前に推奨事項を削除したい場合は、手動で破棄できます。
 
 ### <a name="canceling-recommendations"></a>推奨事項のキャンセル
 
-状態が**保留中**、**検証中**、または**成功**の推奨事項はキャンセルすることができます。 ただし、 **実行中** の状態の推奨事項はキャンセルできないのでご注意ください。
+状態が **保留中** 、 **検証中** 、または **成功** の推奨事項はキャンセルすることができます。 ただし、 **実行中** の状態の推奨事項はキャンセルできないのでご注意ください。
 
 1. **[チューニングの履歴]** 領域の推奨事項を選択して、 **[推奨事項の詳細]** ページを開きます。
 2. **[キャンセル]** をクリックして推奨事項の適用プロセスを中止します。
@@ -170,6 +170,6 @@ Azure SQL Database では、データベースのパフォーマンス向上の�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
+* [クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
+* [CREATE INDEX](/sql/t-sql/statements/create-index-transact-sql)
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440509"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635764"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -65,12 +65,12 @@ Data Factory V2 の充実した SDK セットを使用すると、使い慣れ�
 ユーザーは、文書化されている REST API を Data Factory V2 に対するインターフェイスとして使用することもできます。
 
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>ビジュアル ツールを使用した反復開発とデバッグ
-Azure Data Factory ビジュアル ツールを使用すると、反復開発とデバッグを行うことができます。 パイプラインを作成し、パイプライン キャンバスの**デバッグ**機能を使用して、1 行もコードを記述せずにテストを実行できます。 テストの実行結果は、パイプライン キャンバスの **[出力]** ウィンドウに表示されます。 テストの実行が成功したら、パイプラインにさらにアクティビティを追加し、反復的な方法でデバッグを続行できます。 進行中になったテストをキャンセルすることもできます。 
+Azure Data Factory ビジュアル ツールを使用すると、反復開発とデバッグを行うことができます。 パイプラインを作成し、パイプライン キャンバスの **デバッグ** 機能を使用して、1 行もコードを記述せずにテストを実行できます。 テストの実行結果は、パイプライン キャンバスの **[出力]** ウィンドウに表示されます。 テストの実行が成功したら、パイプラインにさらにアクティビティを追加し、反復的な方法でデバッグを続行できます。 進行中になったテストをキャンセルすることもできます。 
 
 **[デバッグ]** を選択する前にデータ ファクトリ サービスの変更を発行する必要はありません。 これは、データ ファクトリのワークフローを更新する前に、新しい追加や変更が開発環境、テスト環境、運用環境で期待どおりに動作することを確認する場合に便利です。 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS パッケージを Azure にデプロイする機能 
-SSIS ワークロードを移動する場合は、データ ファクトリを作成し、Azure-SSIS 統合ランタイムをプロビジョニングできます。 Azure-SSIS 統合ランタイムは、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) のフル マネージドのクラスターです。 詳しい手順については、「[SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」チュートリアルを参照してください。 
+SSIS ワークロードを移動する場合は、データ ファクトリを作成し、Azure-SSIS 統合ランタイムをプロビジョニングできます。 Azure-SSIS 統合ランタイムは、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) のフル マネージドのクラスターです。 詳しい手順については、「[SSIS パッケージを Azure にデプロイする](./tutorial-deploy-ssis-packages-azure.md)」チュートリアルを参照してください。 
  
 ### <a name="sdks"></a>SDK
 プログラマティック インターフェイスを必要とする詳しい知識のあるユーザー向けに、Data Factory では、使い慣れた IDE を使用してパイプラインを作成、管理、監視するために使用できる豊富な SDK セットが用意されています。 .NET、PowerShell、Python、REST などの言語がサポートされています。
@@ -95,9 +95,9 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 ## <a name="what-is-the-integration-runtime"></a>統合ランタイムについて
 統合ランタイムは、さまざまなネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory で使用されるコンピューティング インフラストラクチャです。
 
-- **データ移動**:データ移動では、統合ランタイムは移動元と移動先のデータ ストア間でデータを移動しながら、組み込みのコネクタ、形式変換、列マッピング、および高性能でスケーラブルなデータ転送のサポートを提供します。
-- **アクティビティの送信**: 変換では、統合ランタイムは、SSIS パッケージをネイティブに実行する機能を提供します。
-- **SSIS パッケージの実行**: 統合ランタイムは、マネージド Azure コンピューティング環境で SSIS パッケージをネイティブに実行します。 統合ランタイムでは、Azure HDInsight、Azure Machine Learning、SQL Database、SQL Server などのさまざまなコンピューティング サービス上で実行される変換アクティビティのディスパッチや監視もサポートされています。
+- **データ移動** :データ移動では、統合ランタイムは移動元と移動先のデータ ストア間でデータを移動しながら、組み込みのコネクタ、形式変換、列マッピング、および高性能でスケーラブルなデータ転送のサポートを提供します。
+- **アクティビティの送信** : 変換では、統合ランタイムは、SSIS パッケージをネイティブに実行する機能を提供します。
+- **SSIS パッケージの実行** : 統合ランタイムは、マネージド Azure コンピューティング環境で SSIS パッケージをネイティブに実行します。 統合ランタイムでは、Azure HDInsight、Azure Machine Learning、SQL Database、SQL Server などのさまざまなコンピューティング サービス上で実行される変換アクティビティのディスパッチや監視もサポートされています。
 
 データの移動と変換に必要な 1 つ以上の統合ランタイム インスタンスをデプロイできます。 統合ランタイムは、Azure パブリック ネットワークまたはプライベート ネットワーク (オンプレミス、Azure Virtual Network、またはアマゾン ウェブ サービス Virtual Private Cloud (VPC)) 上で実行できます。 
 
@@ -126,7 +126,7 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 
 Data Factory では、リンクされたサービスは 2 つの目的に使用されます。
 
-- SQL Server インスタンス、Oracle データベース インスタンス、ファイル共有、Azure Blob Storage アカウント、その他の "*データ ストア*" を表すため。 サポートされるデータ ストアの一覧については、「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を参照してください。
+- SQL Server インスタンス、Oracle データベース インスタンス、ファイル共有、Azure Blob Storage アカウント、その他の " *データ ストア* " を表すため。 サポートされるデータ ストアの一覧については、「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を参照してください。
 - アクティビティの実行をホストできる *コンピューティング リソース* を表すため。 たとえば、HDInsight Hive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[Azure Data Factory でデータを変換する](transform-data.md)」を参照してください。
 
 ### <a name="triggers"></a>トリガー
@@ -159,7 +159,7 @@ Azure Data Factory の価格の詳細については、[Data Factory の価格�
 Azure Data Factory の最新情報を入手するには、次のサイトを参照してください。
 
 - [ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [ドキュメントのホーム ページ](/azure/data-factory)
+- [ドキュメントのホーム ページ](./index.yml)
 - [製品のホーム ページ](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>技術的な詳細情報 

@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564000"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635781"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -55,7 +55,7 @@ Azure Data Factory では、プライベート リンクがサポートされま
 
 プライベート リンクを使用すると、データ ストアとマネージド仮想ネットワーク間のトラフィックは、全面的に Microsoft のバックボーンネットワークを介して転送されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
 
-プライベート エンドポイントでは、マネージド仮想ネットワークでプライベート IP アドレスを使用して、効率的にサービスを取り込みます。 プライベート エンドポイントは、サービス全体にではなく Azure 内の特定のリソースにマップされます。 顧客は、その組織で承認されている特定のリソースに接続を制限することができます。 [プライベート リンクとプライベート エンドポイント](https://docs.microsoft.com/azure/private-link/)についての詳しい情報をご覧ください。
+プライベート エンドポイントでは、マネージド仮想ネットワークでプライベート IP アドレスを使用して、効率的にサービスを取り込みます。 プライベート エンドポイントは、サービス全体にではなく Azure 内の特定のリソースにマップされます。 顧客は、その組織で承認されている特定のリソースに接続を制限することができます。 [プライベート リンクとプライベート エンドポイント](../private-link/index.yml)についての詳しい情報をご覧ください。
 
 > [!NOTE]
 > Azure のデータ ソースとの接続にはすべて、マネージド プライベート エンドポイントを作成することをお勧めします。 
@@ -94,6 +94,7 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 - 米国東部
 - 米国東部 2
 - 米国中西部
+- 米国西部
 - 米国西部 2
 - 米国中南部
 - 米国中部
@@ -102,6 +103,7 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 - 英国南部
 - 東南アジア
 - オーストラリア東部
+- オーストラリア南東部
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF マネージド仮想ネットワークからのパブリック エンドポイントを介した送信方向の通信
 - 送信方向の通信用には、ポート 443 のみが開かれています。
@@ -109,7 +111,7 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault のリンクされたサービスの作成 
 - Azure Key Vault のリンクされたサービスを作成する場合、Azure Integration Runtime の参照はありません。 そのため、Azure Key Vault のリンクされたサービスの作成中にプライベート エンドポイントを作成することはできません。 ただし、Azure Key Vault のリンクされたサービスを参照するデータ ストアに対してリンクされたサービスを作成し、そのリンクされたサービスが、マネージド仮想ネットワークが有効になっている Azure Integration Runtime を参照する場合は、作成中に Azure Key Vault のリンクされたサービスのプライベート エンドポイントを作成できます。 
-- Azure Key Vault のリンクされたサービスの**テスト接続**操作では、単に URL 形式が検証され、ネットワーク操作は実行されません。
+- Azure Key Vault のリンクされたサービスの **テスト接続** 操作では、単に URL 形式が検証され、ネットワーク操作は実行されません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577511"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675111"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
 
 1. **[フェールオーバー グループ]** ページで、必要な値を入力するか選択してから、 **[作成]** を選択します。
 
-   - **グループ内のデータベース**:フェールオーバー グループに追加するデータベースを選択します。 フェールオーバー グループにデータベースを追加すると、geo レプリケーション プロセスが自動的に開始されます。
+   - **グループ内のデータベース** :フェールオーバー グループに追加するデータベースを選択します。 フェールオーバー グループにデータベースを追加すると、geo レプリケーション プロセスが自動的に開始されます。
 
    ![フェールオーバー グループに SQL Database を追加する](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -370,12 +370,12 @@ Azure portal または PowerShell を使用して、Azure SQL Managed Instance �
 
 Azure portal を使用して、プライマリ仮想ネットワーク ゲートウェイを作成します。
 
-1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ マネージド インスタンスの**仮想ネットワーク** リソースを選択します。
-1. **[設定]** で **[サブネット]** を選び、新しい**ゲートウェイ サブネット**を追加することを選択します。 既定値のままにします。
+1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ マネージド インスタンスの **仮想ネットワーク** リソースを選択します。
+1. **[設定]** で **[サブネット]** を選び、新しい **ゲートウェイ サブネット** を追加することを選択します。 既定値のままにします。
 
    ![プライマリ マネージド インスタンスのゲートウェイを追加する](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. サブネット ゲートウェイが作成されたら、左側のナビゲーション ウィンドウで **[リソースの作成]** を選択し、検索ボックスに「`Virtual network gateway`」と入力します。 **Microsoft** によって公開された**仮想ネットワーク ゲートウェイ** リソースを選択します。
+1. サブネット ゲートウェイが作成されたら、左側のナビゲーション ウィンドウで **[リソースの作成]** を選択し、検索ボックスに「`Virtual network gateway`」と入力します。 **Microsoft** によって公開された **仮想ネットワーク ゲートウェイ** リソースを選択します。
 
    ![新しい仮想ネットワーク ゲートウェイを作成する](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -507,7 +507,7 @@ Azure portal または PowerShell を使用して、2 つのゲートウェイ�
 Azure portal を使用して、2 つのゲートウェイ間の接続を作成します。
 
 1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
-1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された**接続**リソースに移動します。
+1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された **接続** リソースに移動します。
 1. **[作成]** を選択して接続を作成します。
 1. **[基本]** タブで次の値を選択し、 **[OK]** を選択します。
     1. **[接続の種類]** に対して `VNet-to-VNet` を選択します。
@@ -519,7 +519,7 @@ Azure portal を使用して、2 つのゲートウェイ間の接続を作成�
     1. **[2 番目の仮想ネットワーク ゲートウェイ]** のセカンダリ ネットワーク ゲートウェイを選択します (`Secondary-Gateway` など)。
     1. **[双方向接続の確立]** の横にあるチェック ボックスをオンにします。
     1. 既定のプライマリ接続名をそのまま使用するか、名前を任意の値に変更します。
-    1. 接続の**共有キー (PSK)** を指定します (`mi1m2psk` など)。
+    1. 接続の **共有キー (PSK)** を指定します (`mi1m2psk` など)。
 
    ![ゲートウェイ接続を作成する](./media/auto-failover-group-configure/create-gateway-connection.png)
 
@@ -617,7 +617,7 @@ Azure portal を使用して、フェールオーバー グループのフェー
 
    ![フェールオーバー後にマネージド インスタンスのロールが切り替わっている](./media/auto-failover-group-configure/mi-switched-after-failover.png)
 
-1. 新しい "_セカンダリ_" マネージド インスタンスに移動し、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェールバックします。
+1. 新しい " _セカンダリ_ " マネージド インスタンスに移動し、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェールバックします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -665,7 +665,7 @@ Private Link を使用すると、論理サーバーを、仮想ネットワー�
 
 フェールオーバー グループで Private Link を使用するには、次の手順を実行します。
 
-1. プライマリ サーバーとセカンダリ サーバーが、[ペアになっているリージョン](/azure/best-practices-availability-paired-regions)内にあることを確認します。 
+1. プライマリ サーバーとセカンダリ サーバーが、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)内にあることを確認します。 
 1. 各リージョンに仮想ネットワークとサブネットを作成して、プライマリ サーバーとセカンダリ サーバーのプライベート エンドポイントをホストします。これにより、重複しない IP アドレス空間が存在するようになります。 たとえば、10.0.0.0/16 のプライマリ仮想ネットワーク アドレス範囲と、10.0.0.1/16 のセカンダリ仮想ネットワーク アドレス範囲は重複しています。 仮想ネットワーク アドレス範囲の詳細については、[Azure 仮想ネットワークの設計](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)に関するブログを参照してください。
 1. [プライマリ サーバーのプライベート エンドポイントと Azure プライベート DNS ゾーン](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)を作成します。 
 1. セカンダリ サーバーのプライベート エンドポイントも作成しますが、今回は、プライマリ サーバー用に作成されたプライベート DNS ゾーンと同じものを再利用することを選択します。 

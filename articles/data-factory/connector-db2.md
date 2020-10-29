@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83873633"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638195"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -49,7 +49,7 @@ DB2 データベースのデータを、サポートされているシンク デ
 * IBM DB2 for LUW 10.1
 
 >[!TIP]
->DB2 コネクタは、Microsoft OLE DB Provider for DB2 の上に構築されています。 DB2 コネクタのエラーのトラブルシューティングを行うには、「[データ プロバイダーのエラー コード](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)」を参照してください。
+>DB2 コネクタは、Microsoft OLE DB Provider for DB2 の上に構築されています。 DB2 コネクタのエラーのトラブルシューティングを行うには、「[データ プロバイダーのエラー コード](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +69,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**Db2** | はい |
+| type | type プロパティは、次のように設定する必要があります: **Db2** | はい |
 | connectionString | DB2 インスタンスに接続するために必要な情報を指定します。<br/> パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -79,7 +79,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 |:--- |:--- |:--- |
 | server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。<br>DB2 コネクタでは、DDM/DRDA プロトコルが利用されます。指定されていない場合、既定でポート 50000 が使用されます。 特定の DB2 データベースが使用するポートは、バージョンと設定によって異なる場合があります。たとえば、DB2 LUW の場合、既定のポートは 50000 です。AS400 の場合、既定のポートは 446 または448 (TLS が有効になっている場合) です。 ポートの一般的な構成方法については、[DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html)、[DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)、[DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html) の各ドキュメントをご覧ください。 |はい |
 | database |DB2 データベースの名前です。 |はい |
-| authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
+| authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic** 。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 これが設定されていない場合、Data Factory では既定値として {username} が使用されます。 | いいえ |
@@ -114,13 +114,13 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
         "type": "Db2",
         "typeProperties": {
             "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -166,7 +166,7 @@ DB2 からのデータ コピーについては、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**Db2Table** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります: **Db2Table** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -201,7 +201,7 @@ DB2 からデータをコピーするために、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**Db2Source** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **Db2Source** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

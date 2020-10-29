@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086910"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636920"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザードでデータを簡単にコピーまたは移動する
 > [!NOTE]
@@ -73,11 +73,11 @@ Azure Data Factory コピー ウィザードを使用すると、通常エンド
 ...
 ```
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、Tab キーを押します。この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、 **2016** を **{year}** 、 **03** を **{month}** 、 **01** を **{day}** 、 **02** を **{hour}** にそれぞれ置き換え、Tab キーを押します。この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![システム変数の使用](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-次のスクリーンショットに示すように、 **custom** 変数と、任意の [サポートされる書式文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)を使用することもできます。 その構造のフォルダーを選択するには、まず **[参照]** をクリックします。 次に、値を **{custom}** に置き換え、Tab キーを押して、書式文字列を入力できるテキスト ボックスを表示します。     
+次のスクリーンショットに示すように、 **custom** 変数と、任意の [サポートされる書式文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用することもできます。 その構造のフォルダーを選択するには、まず **[参照]** をクリックします。 次に、値を **{custom}** に置き換え、Tab キーを押して、書式文字列を入力できるテキスト ボックスを表示します。     
 
 ![カスタム変数の使用](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -95,4 +95,3 @@ Azure Data Factory コピー ウィザードを使用すると、通常エンド
 
 ## <a name="next-steps"></a>次のステップ
 Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
-

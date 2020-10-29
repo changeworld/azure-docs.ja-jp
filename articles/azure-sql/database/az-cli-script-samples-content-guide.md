@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f28d8f82796f54002312514b1a34e3dd8b666a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497173"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675263"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のための Azure CLI サンプル 
  
@@ -73,7 +73,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 | [SQL Managed Instance のフェールオーバー グループを構成する](../../sql-database/scripts/sql-database-add-managed-instance-to-failover-group-cli.md) | SQL Managed Instance のインスタンスを 2 つ作成し、それらをフェールオーバー グループに追加して、プライマリ SQL Managed Instance からセカンダリ SQL Managed Instance へのフェールオーバーをテストします。 |
 |||
 
-その他の SQL Managed Instance サンプルについては、データベースの[作成](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/)、[更新](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/)、[移動](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)、[操作](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)に関するスクリプトを参照してください。
+その他の SQL Managed Instance サンプルについては、データベースの[作成](/archive/blogs/sqlserverstorageengine/create-azure-sql-managed-instance-using-azure-cli)、[更新](/archive/blogs/sqlserverstorageengine/modify-azure-sql-database-managed-instance-using-azure-cli)、[移動](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance)、[操作](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)に関するスクリプトを参照してください。
 
 [SQL Managed Instance の Azure CLI API](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-configure-managed-instances) について理解を深めましょう。
 

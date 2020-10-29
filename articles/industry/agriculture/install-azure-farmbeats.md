@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5863dcc20fb13f1bb203c68ad168655371130601
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330480"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674557"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats をインストールする
 
@@ -87,7 +87,7 @@ Azure FarmBeats をインストールするには、Azure テナントで次の�
 
 FarmBeats をマーケットプレースからインストールするユーザーは、FarmBeats がインストールされるリソース グループの所有者である必要があります。 サブスクリプションの所有者については、リソース グループの作成時にこの内容が自動的に発生します。 その他については、リソース グループを事前に作成し、リソース グループの所有者になるようにサブスクリプションの所有者に依頼してください。
 
-Azure portal でアクセス許可を確認するには、[Azure ロール ベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/check-access)に関する記事の手順に従います。
+Azure portal でアクセス許可を確認するには、[Azure ロール ベースのアクセス制御](../../role-based-access-control/check-access.md)に関する記事の手順に従います。
 
 ### <a name="decide-subscription-and-region"></a>サブスクリプションとリージョンを決定する
 

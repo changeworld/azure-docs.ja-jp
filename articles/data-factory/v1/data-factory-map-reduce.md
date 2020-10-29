@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74703149"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636852"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -26,8 +26,8 @@ ms.locfileid: "74703149"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -118,7 +118,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 このチュートリアルのパイプラインでは、Azure HDInsight クラスターで Word Count Map/Reduce プログラムを実行します。   
 
 ### <a name="linked-services"></a>リンクされたサービス
-最初に、Azure HDInsight クラスターによって使用される Azure Storage を Azure データ ファクトリにリンクする、リンクされたサービスを作成します。 次のコードをコピー/貼り付けする場合は、**アカウント名**と**アカウント キー**を、使用する Azure Storage のアカウント名とアカウント キーに必ず置き換えてください。 
+最初に、Azure HDInsight クラスターによって使用される Azure Storage を Azure データ ファクトリにリンクする、リンクされたサービスを作成します。 次のコードをコピー/貼り付けする場合は、 **アカウント名** と **アカウント キー** を、使用する Azure Storage のアカウント名とアカウント キーに必ず置き換えてください。 
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
 
@@ -183,7 +183,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 
 | プロパティ | メモ |
 |:--- |:--- |
-| type |type には、 **HDInsightMapReduce**を設定する必要があります。 |
+| type |type には、 **HDInsightMapReduce** を設定する必要があります。 |
 | className |クラスの名前は **wordcount** |
 | jarFilePath |クラスを含む jar ファイルのパス。 次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 |
 | jarLinkedService |jar ファイルが含まれるAzure Storage のリンクされたサービス。 このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 |
@@ -235,14 +235,14 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 ## <a name="run-spark-programs"></a>Spark プログラムの実行
 MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。 詳細については、「 [Invoke Spark programs from Azure Data Factory (Azure Data Factory から Spark プログラムを呼び出す)](data-factory-spark.md) 」を参照してください。  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>参照
@@ -251,4 +251,3 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
 * [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

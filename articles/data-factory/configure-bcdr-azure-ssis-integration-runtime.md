@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195711"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635288"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>SQL Database geo レプリケーションとフェールオーバーを使用して Azure-SSIS 統合ランタイムを構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "84195711"
 
 この記事では、Azure SQL Database geo レプリケーションを使用して、SSISDB データベース用に Azure-SSIS 統合ランタイム (IR) を構成する方法について説明します。 フェールオーバーが発生したときに、セカンダリ データベースにより Azure-SSIS IR の動作を維持できます。
 
-SQL Database の geo レプリケーションとフェールオーバーの詳細については、[アクティブ geo レプリケーションと自動フェールオーバー グループの概要](../sql-database/sql-database-geo-replication-overview.md)に関するページを参照してください。
+SQL Database の geo レプリケーションとフェールオーバーの詳細については、[アクティブ geo レプリケーションと自動フェールオーバー グループの概要](../azure-sql/database/auto-failover-group-overview.md)に関するページを参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,7 +33,7 @@ SQL Database の geo レプリケーションとフェールオーバーの詳�
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure SQL マネージド インスタンスでは、"*データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、*サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
+Azure SQL マネージド インスタンスでは、" *データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、 *サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
 
 SMK はフェールオーバー グループにレプリケートされません。 フェールオーバー後の DMK 復号化のために、プライマリ インスタンスとセカンダリ インスタンスの両方にパスワードを追加する必要があります。
 
@@ -178,7 +178,7 @@ When failover occurs, take the following steps:
 このシナリオは、次の場合に適しています。
 
 - Azure-SSIS IR がフェールオーバー グループの読み取りと書き込みのリスナー エンドポイントを指している。
-- SQL Database サーバーが仮想ネットワーク サービス エンドポイントに関する規則で "*構成されていない*"。
+- SQL Database サーバーが仮想ネットワーク サービス エンドポイントに関する規則で " *構成されていない* "。
 
 Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイントを指すようにするには、まず、プライマリ サーバー エンドポイントを指す必要があります。 SSISDB をフェールオーバー グループに配置した後は、読み取りと書き込みのリスナー エンドポイントに変更して Azure-SSIS IR を再起動することができます。
 

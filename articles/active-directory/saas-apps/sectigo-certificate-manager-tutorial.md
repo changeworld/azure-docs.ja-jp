@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 905ca5fd92a09b209bf099bfac0862132ec679a4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875506"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>チュートリアル:Azure Active Directory と Sectigo Certificate Manager の統合
 
@@ -28,7 +28,7 @@ Sectigo Certificate Manager と Azure AD の統合により、次の利点が得
 * ユーザーは自分の Azure AD アカウントを使用して Sectigo Certificate Manager に自動的にサインイン (シングル サインオン) できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,13 +67,13 @@ Sectigo Certificate Manager と Azure AD を統合するには、マネージド
 
     ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「**Sectigo Certificate Manager**」と入力します。 検索結果で **Sectigo Certificate Manager** を選択し、 **[追加]** を選択します。
+1. 検索ボックスに「 **Sectigo Certificate Manager** 」と入力します。 検索結果で **Sectigo Certificate Manager** を選択し、 **[追加]** を選択します。
 
     ![結果リストの Sectigo Certificate Manager](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sectigo Certificate Manager で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Sectigo Certificate Manager 内の関連ユーザー間にリンクされた関係を確立する必要があります。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Sectigo Certificate Manager で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Sectigo Certificate Manager 内の関連ユーザー間にリンクされた関係を確立する必要があります。
 
 Sectigo Certificate Manager による Azure AD のシングル サインオンを構成してテストするには、次のビルド ブロックを完了する必要があります。
 
@@ -104,24 +104,24 @@ Sectigo Certificate Manager による Azure AD のシングル サインオン�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[識別子 (エンティティ ID)]** ボックスに「**https:\//cert-manager.com/shibboleth**」と入力します。
+    1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[識別子 (エンティティ ID)]** ボックスに「 **https:\//cert-manager.com/shibboleth** 」と入力します。
 
-    1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[応答 URL]** ボックスに「**https:\//cert-manager.com/Shibboleth.sso/SAML2/POST**」と入力します。
+    1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[応答 URL]** ボックスに「 **https:\//cert-manager.com/Shibboleth.sso/SAML2/POST** 」と入力します。
         
     > [!NOTE]
-    > 一般に "*SP Initiated モード*" では**サインオン URL** が必須となっていますが、Sectigo Certificate Manager からのログインでは不要です。        
+    > 一般に " *SP Initiated モード* " では **サインオン URL** が必須となっていますが、Sectigo Certificate Manager からのログインでは不要です。        
 
-1. 必要に応じて、"*IDP Initiated モード*" を構成し、**テスト**を機能させるために、 **[基本的な SAML 構成]** セクションで次の手順を実行します。
+1. 必要に応じて、" *IDP Initiated モード* " を構成し、 **テスト** を機能させるために、 **[基本的な SAML 構成]** セクションで次の手順を実行します。
 
     1. **[追加の URL を設定します]** を選択します。
 
-    1. **[リレー状態]** ボックスに、Sectigo Certificate Manager の顧客別 URL を入力します。 Sectigo Certificate Manager のメイン インスタンスの場合には、「**https:\//cert-manager.com/customer/\<customerURI\>/idp**」を入力します。
+    1. **[リレー状態]** ボックスに、Sectigo Certificate Manager の顧客別 URL を入力します。 Sectigo Certificate Manager のメイン インスタンスの場合には、「 **https:\//cert-manager.com/customer/\<customerURI\>/idp** 」を入力します。
 
     ![Sectigo Certificate Manager ドメインと URL のシングル サインオン情報](common/idp-relay.png)
 
 1. **[ユーザー属性とクレーム]** セクションで、次の手順に従います。
 
-    1. **追加の要求**をすべて削除します。
+    1. **追加の要求** をすべて削除します。
     
     1. **[新しいクレームの追加]** を選択し、次の 4 つのクレームを追加します。
     
@@ -156,9 +156,9 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension\>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
+    1. **[ユーザー名]** ボックスに「 **brittasimon\@\<your-company-domain>.\<extension\>** 」と入力します。 たとえば、「 **brittasimon\@contoso.com** 」です。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を記録しておきます。
 
@@ -216,8 +216,6 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 詳細については、次の記事を参照してください。
 
-- [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-
+- [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](./tutorial-list.md)
+- [Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

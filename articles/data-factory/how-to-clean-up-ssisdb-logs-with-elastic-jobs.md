@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3539b867d8f03d11e7799498d0207a65ac9db7d8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073558"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636631"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 
@@ -160,7 +160,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Transact-SQL を使ってログをクリーンアップする
 
-以下のサンプル Transact-SQL スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する](../sql-database/elastic-jobs-tsql.md)」を参照してください。
+以下のサンプル Transact-SQL スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する](../azure-sql/database/elastic-jobs-tsql-create-manage.md)」を参照してください。
 
 1. SSISDBCleanup ジョブ データベースとして使用する、S0 以上で中身が空の Azure SQL Database を作成するか特定します。 次に、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent) でエラスティック ジョブ エージェントを作成します。
 

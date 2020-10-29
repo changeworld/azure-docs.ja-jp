@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ddc79721355924f125acedd7420cab5f487c065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673269"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>チュートリアル:Azure portal でアクティブ geo レプリケーションとフェールオーバーを構成する (Azure SQL Database)
 
@@ -35,7 +35,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 * Azure SQL Database 内のデータベース:別の地理的リージョンにレプリケートするプライマリ データベースです。
 
 > [!Note]
-> Azure portal を使用する場合は、プライマリと同じサブスクリプション内にのみセカンダリ データベースを作成できます。 別のサブスクリプション内にセカンダリ データベースが必要な場合、[データベースの作成の REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) または [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) を使用します。
+> Azure portal を使用する場合は、プライマリと同じサブスクリプション内にのみセカンダリ データベースを作成できます。 別のサブスクリプション内にセカンダリ データベースが必要な場合、[データベースの作成の REST API](/rest/api/sql/databases/createorupdate) または [ALTER DATABASE Transact-SQL API](/sql/t-sql/statements/alter-database-transact-sql) を使用します。
 
 ## <a name="add-a-secondary-database"></a>セカンダリ データベースの追加
 

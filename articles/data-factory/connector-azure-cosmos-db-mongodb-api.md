@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 9b23f46a418f2663531cc121f00b83d00d84e48d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67e5fba562a398fe8f0e9639b3db2fd3d325b60f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415440"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635883"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB の MongoDB 用 API との間でデータを双方向にコピーする
 
@@ -33,8 +33,8 @@ Azure Cosmos DB の MongoDB 用 API のデータをサポートされる任意�
 
 Azure Cosmos DB の MongoDB 用 API コネクタを使用して次のことができます。
 
-- [Azure Cosmos DB の MongoDB 用 API](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) との間で双方向にデータをコピーします。
-- **挿入**または **upsert** として Azure Cosmos DB に書き込みます。
+- [Azure Cosmos DB の MongoDB 用 API](../cosmos-db/mongodb-introduction.md) との間で双方向にデータをコピーします。
+- **挿入** または **upsert** として Azure Cosmos DB に書き込みます。
 - JSON ドキュメントをインポートおよびエクスポートしたり、表形式データセットに、または表形式データセットからデータをコピーしたりします。 例としては、SQL データベースや CSV ファイルなどがあります。 JSON ファイルまたは他の Azure Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「JSON ドキュメントをインポートまたはエクスポートする」を参照してください。
 
 ## <a name="get-started"></a>はじめに
@@ -50,7 +50,7 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは **CosmosDbMongoDbApi** に設定する必要があります。 | はい |
-| connectionString |Azure Cosmos DB の MongoDB 用 API 用の接続文字列を指定します。 これは、Azure portal、Cosmos DB ブレード、プライマリまたはセカンダリの接続文字列の順に移動して確認できます。パターンは次のとおりです。`mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb` <br/><br />パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。|はい |
+| connectionString |Azure Cosmos DB の MongoDB 用 API 用の接続文字列を指定します。 これは、Azure portal、Cosmos DB ブレード、プライマリまたはセカンダリの接続文字列の順に移動して確認できます。パターンは次のとおりです。`mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb` <br/><br />パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。|はい |
 | database | アクセスするデータベースの名前。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -79,7 +79,7 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、**CosmosDbMongoDbApiCollection** に設定する必要があります。 |はい |
+| type | データセットの **type** プロパティは、 **CosmosDbMongoDbApiCollection** に設定する必要があります。 |はい |
 | collectionName |Azure Cosmos DB コレクションの名前。 |はい |
 
 **例**
@@ -119,10 +119,10 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 | cursorMethods.sort | 一致するドキュメントがクエリによって返される順序を指定します。 「[cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)」を参照してください。 | いいえ |
 | cursorMethods.limit | サーバーが返すドキュメントの最大数を指定します。 「[cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)」を参照してください。  | いいえ | 
 | cursorMethods.skip | スキップするドキュメントの数と、MongoDB が結果を返すときの開始位置を指定します。 「[cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)」を参照してください。 | いいえ |
-| batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100**) |
+| batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100** ) |
 
 >[!TIP]
->ADF は、**厳格モード**での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
+>ADF は、 **厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
 
 **例**
 
@@ -169,8 +169,8 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは **CosmosDbMongoDbApiSink** に設定する必要があります。 |はい |
-| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
-| writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000**) |
+| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、 **Insert** 、 **Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注** :元のドキュメントまたは列のマッピングで `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、 **upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000** ) |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。使用可能な値は timespan です。 | いいえ<br/>(既定値は **00:30:00** - 30 分) |
 
 >[!TIP]

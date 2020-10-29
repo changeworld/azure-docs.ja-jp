@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444909"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675134"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal を使用して、Azure SQL Database と Azure Synapse Analytics のアラートを作成します
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "91444909"
 * [Azure ポータル](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [コマンド ライン インターフェイス (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure 監視 REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 
@@ -64,7 +64,7 @@ ms.locfileid: "91444909"
 6. **[CPU の割合]** などのシグナルを選択すると、 **[シグナル ロジックの構成]** ページが表示されます。
   ![シグナル ロジックを構成する](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. このページで、しきい値の種類、演算子、集計の種類、しきい値、集計の粒度、および評価の頻度を構成します。 次に、 **[Done]** をクリックします。
-8. **[ルールの作成]** で、既存の**アクション グループ**を選択するか、新しいグループを作成します。 アクション グループを使用して、アラート条件が発生したときに実行するアクションを定義できます。
+8. **[ルールの作成]** で、既存の **アクション グループ** を選択するか、新しいグループを作成します。 アクション グループを使用して、アラート条件が発生したときに実行するアクションを定義できます。
   ![アクション グループを定義する](./media/alerts-insights-configure-portal/action-group.png)
 
 9. ルールの名前を定義し、必要に応じて説明を入力し、ルールの重大度レベルを選択し、ルールの作成時にルールを有効にするかどうかを選択した後、 **[Create rule alert]\(ルールのアラートの作成\)** をクリックしてメトリック ルールのアラートを作成します。

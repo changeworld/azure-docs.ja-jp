@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63c31312070fbac99959d833344ccf04760bb8e4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021893"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637889"
 ---
 # <a name="use-case---customer-profiling"></a>使用事例 - 顧客プロファイル
 Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  Cortana Intelligence の詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)を参照してください。 このドキュメントでは、Azure Data Factory が一般的な分析の問題を解決する方法を理解するのに役立つ簡単な使用事例を説明します。
@@ -29,7 +29,7 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 このソリューションでは、Contoso が、最近開始したマーケティング キャンペーンの効果を評価したいと考えています。 未処理のゲーム ログから開始し、そのログを処理しながら、地理位置情報のデータで強化し、広告参照データに結合していきます。そして、最後に Azure SQL Database にコピーして、キャンペーンの影響を分析します。
 
 ## <a name="deploy-solution"></a>ソリューションのデプロイ
-このシンプルな使用事例にアクセスして試すにあたり必要となるのは、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob Storage アカウント](../../storage/common/storage-account-create.md)、および [Azure SQL Database](../../sql-database/sql-database-get-started.md) です。 顧客プロファイリング パイプラインは、Data Factory のホーム ページにある **[サンプル パイプライン]** タイルからデプロイします。
+このシンプルな使用事例にアクセスして試すにあたり必要となるのは、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob Storage アカウント](../../storage/common/storage-account-create.md)、および [Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md) です。 顧客プロファイリング パイプラインは、Data Factory のホーム ページにある **[サンプル パイプライン]** タイルからデプロイします。
 
 1. データ ファクトリを作成するか、既存のデータ ファクトリを開きます。 データ ファクトリを作成する手順については、「[Data Factory を使用した Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 2. データ ファクトリの **[Data Factory]** ブレードで、 **[サンプル パイプライン]** タイルをクリックします。
@@ -45,7 +45,7 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 6. 先程 **[サンプル パイプライン]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
 
     ![[デプロイ ステータス]](./media/data-factory-samples/DeploymentStatus.png)
-7. サンプルのタイルに "**デプロイに成功しました**" メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
+7. サンプルのタイルに " **デプロイに成功しました** " メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
 8. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認します。  
 
     ![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
@@ -65,4 +65,3 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 
 ## <a name="benefits"></a>メリット
 ゲーム会社は、ユーザー プロファイルの分析を最適化してビジネス目標と一致させることで、迅速に使用状況パターンを収集し、マーケティング キャンペーンの効果を分析できます。
-

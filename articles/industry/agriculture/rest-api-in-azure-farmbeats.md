@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536574"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674510"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API
 
@@ -172,7 +172,7 @@ Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプ�
 ```
 
   > [!NOTE]
-  > ユーザーと Active Directory 登録の追加方法については、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) に関する記事を参照してください。
+  > ユーザーと Active Directory 登録の追加方法については、[Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md) に関する記事を参照してください。
 
 前の手順を完了すると、ベアラー認証を介してアクセス トークンを使用することで、アプリの登録 (クライアント) から Azure FarmBeats API を呼び出すことができるようになります。
 

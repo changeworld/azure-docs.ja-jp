@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124188"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675317"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -30,7 +30,7 @@ ms.locfileid: "92124188"
 
 ### <a name="backup-frequency"></a>バックアップ頻度
 
-SQL Database と SQL Managed Instance は SQL Server 技術を利用して、[完全バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)を毎週、[差分バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)を 12 から 24 時間ごと、そして[トランザクション ログ バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)を 5 から 10 分ごとに作成します。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。
+SQL Database と SQL Managed Instance は SQL Server 技術を利用して、[完全バックアップ](/sql/relational-databases/backup-restore/full-database-backups-sql-server)を毎週、[差分バックアップ](/sql/relational-databases/backup-restore/differential-backups-sql-server)を 12 から 24 時間ごと、そして[トランザクション ログ バックアップ](/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)を 5 から 10 分ごとに作成します。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。
 
 データベースを復元するとき、復元する必要がある完全バックアップ、差分バックアップ、トランザクション ログ バックアップはどれであるかがサービスによって判定されます。
 
@@ -56,7 +56,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 
 これらのバックアップを使用して、以下を行うことができます。
 
-- **既存データベースのポイントインタイム リストア** - Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、保持期間内の [過去の特定の時点に既存のデータベースを復元します](recovery-using-backups.md#point-in-time-restore)。 SQL Database では、この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されますが、元のデータベースが上書きされるのを防ぐため、別の名前が使用されます。 復元が完了したら、元のデータベースを削除することができます。 または、元のデータベースの[名前を変更](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)したうえで、復元されたデータベースの名前を元のデータベース名に変更してもかまいません。 SQL Managed Instance でも同様に、この操作により、同じリージョン、同じサブスクリプションの同じ、または異なるマネージド インスタンスに、データベースのコピーが作成されます。
+- **既存データベースのポイントインタイム リストア** - Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、保持期間内の [過去の特定の時点に既存のデータベースを復元します](recovery-using-backups.md#point-in-time-restore)。 SQL Database では、この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されますが、元のデータベースが上書きされるのを防ぐため、別の名前が使用されます。 復元が完了したら、元のデータベースを削除することができます。 または、元のデータベースの[名前を変更](/sql/relational-databases/databases/rename-a-database)したうえで、復元されたデータベースの名前を元のデータベース名に変更してもかまいません。 SQL Managed Instance でも同様に、この操作により、同じリージョン、同じサブスクリプションの同じ、または異なるマネージド インスタンスに、データベースのコピーが作成されます。
 - **削除されたデータベースのポイントインタイム リストア** - [削除されたデータベースを削除の時点に復元します](recovery-using-backups.md#deleted-database-restore)。または、保持期間内の特定の時点に復元します。 削除されたデータベースは、元のデータベースが作成されていたのと同じサーバーまたはマネージド インスタンスにのみ復元できます。 データベースを削除すると、データが失われないように、削除前にサービスによって最後のトランザクション ログ バックアップが取得されます。
 - **geo リストア** - [別の地理的リージョンにデータベースを復元します](recovery-using-backups.md#geo-restore)。 geo リストアを使用すると、プライマリ リージョンのデータベースまたはバックアップにアクセスできないときでも、地理的な災害から復旧できます。 任意の Azure リージョンの既存のサーバーまたはマネージド インスタンスに、新しいデータベースが作成されます。
    > [!IMPORTANT]
@@ -72,11 +72,11 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 
 | 操作 | Azure portal | Azure PowerShell |
 |---|---|---|
-| **バックアップ保有期間を変更する** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **バックアップ保有期間を変更する** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | **長期的なバックアップ保有期間を変更する** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL Managed Instance - N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
-| **特定の時点からデータベースを復元する** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **削除されたデータベースの復元** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Azure Blob Storage からデータベースを復元する** | SQL Database - N/A <br/>SQL Managed Instance - N/A  | SQL Database - N/A <br/>[SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **特定の時点からデータベースを復元する** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **削除されたデータベースの復元** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Azure Blob Storage からデータベースを復元する** | SQL Database - N/A <br/>SQL Managed Instance - N/A  | SQL Database - N/A <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
 
 ## <a name="backup-scheduling"></a>バックアップのスケジュール設定
 
@@ -115,7 +115,7 @@ SQL Database と SQL Managed Instance では、使用されたバックアップ
 
 - 必要最小限まで[バックアップの保持期間](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)を短縮します。
 - インデックスの再構築などの大規模な書き込み操作を、必要以上に頻繁に行わないようにします。
-- 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)を使用して、関連する[ベスト プラクティス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)に従うことを検討し、クラスター化されていないインデックスの数を減らします。
+- 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview)を使用して、関連する[ベスト プラクティス](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)に従うことを検討し、クラスター化されていないインデックスの数を減らします。
 - 汎用サービス レベルでは、プロビジョニングされたデータ ストレージの方が、バックアップ ストレージの価格よりも安価です。 超過のバックアップ ストレージのコストが継続的に増加している場合は、データ ストレージを増やしてバックアップ ストレージを節約することを検討してください。
 - 一時的な結果やデータの保存には、アプリケーションのロジックでの永続的テーブルではなく TempDB を使用します。
 - 可能な限り (Dev/Test 環境など) ローカル冗長バックアップ ストレージを使用します。
@@ -249,7 +249,7 @@ SQL Managed Instance の PITR バックアップ保有期間の変更は、個�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell AzureRM モジュールは SQL Database と SQL Managed Instance によって引き続きサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 詳細については、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールのコマンドの引数は、AzureRm モジュールのものと実質的に同じです。
+> PowerShell AzureRM モジュールは SQL Database と SQL Managed Instance によって引き続きサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 詳細については、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールのコマンドの引数は、AzureRm モジュールのものと実質的に同じです。
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
@@ -333,7 +333,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 }
 ```
 
-詳細については、[バックアップの保有期間の REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
+詳細については、[バックアップの保有期間の REST API](/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
 
 #### <a name="sample-request"></a>要求のサンプル
 
@@ -366,7 +366,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 }
 ```
 
-詳細については、[バックアップの保有期間の REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
+詳細については、[バックアップの保有期間の REST API](/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
 
 ## <a name="configure-backup-storage-redundancy"></a>バックアップ ストレージの冗長性を構成する
 
@@ -403,7 +403,7 @@ Azure portal には、バックアップ ストレージの冗長性を変更す
 New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -BackupStorageRedundancy Geo
 ```
 
-詳細については、「[New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)」を参照してください。
+詳細については、「[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)」を参照してください。
 
 既存のデータベースのバックアップ ストレージの冗長性を更新するには、-BackupStorageRedundancy パラメーターを使用できます。 指定できる値は、Geo、Zone、Local です。
 変更がデータベースに適用されるまでに、最大で 48 時間かかる場合があることに注意してください。 geo 冗長バックアップ ストレージからローカルまたはゾーン冗長ストレージに切り替えると、geo リストアは無効になります。 
@@ -413,7 +413,7 @@ New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -D
 Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -BackupStorageRedundancy Zone
 ```
 
-詳細については、「[Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)」を参照してください
+詳細については、「[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)」を参照してください
 
 > [!NOTE]
 > データベースの復元、データベースのコピー、またはセカンダリの作成の操作で -BackupStorageRedundancy パラメーターを使用するには、Azure PowerShell のバージョン Az.Sql 2.11.0 を使用します。 
@@ -427,13 +427,13 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4 -BackupStorageRedundancy Geo
 ```
 
-詳細については、「[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)」を参照してください。
+詳細については、「[New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)」を参照してください。
 
 ---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>Azure Policy を使用してバックアップ ストレージの冗長性を適用する
 
-すべてのデータを 1 つの Azure リージョンに保持する必要があるデータ所在地の要件がある場合は、Azure Policy を使用して、SQL Database または Managed Instance に対し、ゾーン冗長またはローカル冗長のバックアップを適用することができます。 Azure Policy は、Azure リソースにルールを適用するポリシーの作成、割り当て、管理に使用できるサービスです。 Azure Policy を使用すると、これらのリソースが会社の標準やサービス レベル アグリーメントに準拠した状態を維持するのに役立ちます。 詳細については、[Azure Policy の概要](https://docs.microsoft.com/azure/governance/policy/overview)に関するページを参照してください。 
+すべてのデータを 1 つの Azure リージョンに保持する必要があるデータ所在地の要件がある場合は、Azure Policy を使用して、SQL Database または Managed Instance に対し、ゾーン冗長またはローカル冗長のバックアップを適用することができます。 Azure Policy は、Azure リソースにルールを適用するポリシーの作成、割り当て、管理に使用できるサービスです。 Azure Policy を使用すると、これらのリソースが会社の標準やサービス レベル アグリーメントに準拠した状態を維持するのに役立ちます。 詳細については、[Azure Policy の概要](../../governance/policy/overview.md)に関するページを参照してください。 
 
 ### <a name="built-in-backup-storage-redundancy-policies"></a>バックアップ ストレージの冗長性の組み込みポリシー 
 
@@ -443,14 +443,14 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 [SQL マネージド インスタンスでは GRS バックアップ冗長の使用を避ける](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
 
-SQL Database と Managed Instance に対する組み込みポリシーの定義の完全な一覧については、[こちら](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)を参照してください。
+SQL Database と Managed Instance に対する組み込みポリシーの定義の完全な一覧については、[こちら](./policy-reference.md)を参照してください。
 
 データ所在地要件を組織レベルで適用するには、これらのポリシーをサブスクリプションに割り当てることができます。 これらをサブスクリプション レベルで割り当てると、指定したサブスクリプションのユーザーは、Azure portal または Azure PowerShell を使用して、geo 冗長バックアップ ストレージでデータベースまたはマネージド インスタンスを作成できなくなります。 
 
 > [!IMPORTANT]
-> T-SQL を使用してデータベースを作成する場合は、Azure ポリシーは適用されません。 T-SQL を使用してデータベースを作成するときにデータ所在地を適用するには、[CREATE DATABASE ステートメントの BACKUP_STORAGE_REDUNDANCY パラメーターに対する入力として "LOCAL" または "ZONE" を使用します](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups)。
+> T-SQL を使用してデータベースを作成する場合は、Azure ポリシーは適用されません。 T-SQL を使用してデータベースを作成するときにデータ所在地を適用するには、[CREATE DATABASE ステートメントの BACKUP_STORAGE_REDUNDANCY パラメーターに対する入力として "LOCAL" または "ZONE" を使用します](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups)。
 
-[Azure portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) または [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell) を使用してポリシーを割り当てる方法を参照してください
+[Azure portal](../../governance/policy/assign-policy-portal.md) または [Azure PowerShell](../../governance/policy/assign-policy-powershell.md) を使用してポリシーを割り当てる方法を参照してください
 
 
 ## <a name="next-steps"></a>次のステップ

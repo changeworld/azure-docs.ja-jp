@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d1993f89f8b1da4789541006c15380d2145d3d81
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126996"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル: Azure Active Directory と Sequr の統合
 
@@ -27,7 +27,7 @@ Sequr と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Sequr に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -201,19 +201,18 @@ Sequr で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="create-sequr-test-user"></a>Sequr のテスト ユーザーの作成
 
-このセクションでは、Sequr で Britta Simon というユーザーを作成します。  [Sequr クライアント サポート チーム](mailto:support@sequr.io) と協力して、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Sequr で Britta Simon というユーザーを作成します。 [Sequr クライアント サポート チーム](mailto:support@sequr.io)と連携し、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Sequr] タイルをクリックすると、SSO を設定した Sequr に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Sequr] タイルをクリックすると、SSO を設定した Sequr に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

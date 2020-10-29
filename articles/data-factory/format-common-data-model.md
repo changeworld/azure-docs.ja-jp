@@ -7,17 +7,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042594"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636410"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Common Data Model (CDM) メタデータ システムを使用すると、データとその意味をアプリケーションやビジネス プロセス間で簡単に共有できます。 詳しくは、「[Common Data Model](https://docs.microsoft.com/common-data-model/)」の概要を参照してください。
+Common Data Model (CDM) メタデータ システムを使用すると、データとその意味をアプリケーションやビジネス プロセス間で簡単に共有できます。 詳しくは、「[Common Data Model](/common-data-model/)」の概要を参照してください。
 
 Azure Data Factory では、マッピング データ フローを使用して、[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) に格納されている model.json およびマニフェスト形式の両方の CDM エンティティのデータの変換を行うことができます。 また、データをパーティション分割されたフォルダーに CSV または Parquet 形式で格納する CDM エンティティ参照を使用して、データを CDM 形式でシンクすることもできます。 
 

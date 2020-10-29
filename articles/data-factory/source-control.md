@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 43e3916e47aa0305209b8e6e32803426ac1ebe3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101904"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637566"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -50,7 +50,7 @@ Git 統合が作成作業にもたらす利点をいくつか下の一覧にま�
 
 ## <a name="author-with-azure-repos-git-integration"></a>Azure Repos Git 統合を使用した作成
 
-Azure Repos Git 統合を使ったビジュアルの作成では、データ ファクトリ パイプラインでの作業時にソース管理とコラボレーションがサポートされます。 ソース管理やコラボレーション、バージョン管理などで､データ ファクトリを Azure Repos Git 統合リポジトリに関連付けることができます。 各 Azure Repos Git 組織は複数のレポジトリを持つことができますが､1つの Azure Repos Git リポジトリに関連付けられるデータ ファクトリの数は 1 つだけです｡ Azure Repos アカウントまたはリポジトリがない場合は、[こちらの手順](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)に従ってリソースを作成します。
+Azure Repos Git 統合を使ったビジュアルの作成では、データ ファクトリ パイプラインでの作業時にソース管理とコラボレーションがサポートされます。 ソース管理やコラボレーション、バージョン管理などで､データ ファクトリを Azure Repos Git 統合リポジトリに関連付けることができます。 各 Azure Repos Git 組織は複数のレポジトリを持つことができますが､1つの Azure Repos Git リポジトリに関連付けられるデータ ファクトリの数は 1 つだけです｡ Azure Repos アカウントまたはリポジトリがない場合は、[こちらの手順](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)に従ってリソースを作成します。
 
 > [!NOTE]
 > スクリプトとデータ ファイルは Azure Repos Git リポジトリに格納できます。 ただし、Azure Storage に手動でファイルをアップロードする必要があります。 Data Factory パイプラインは、Azure Repos Git リポジトリに保存されているスクリプトまたはデータ ファイルを Azure Storage に自動的にアップロードしません。
@@ -93,13 +93,13 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>別の Azure Active Directory テナントを使用する
 
-別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。 詳細については、[サブスクリプション管理者の変更](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator)に関する記事を参照してください。
+別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。 詳細については、[サブスクリプション管理者の変更](../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator)に関する記事を参照してください。
 
 ### <a name="use-your-personal-microsoft-account"></a>個人用の Microsoft アカウントを使用する
 
 Git の統合に個人用の Microsoft アカウントを使用するには、Azure の個人用のリポジトリを組織の Active Directory にリンクできます。
 
-1. 個人用の Microsoft アカウントを組織の Active Directory にゲストとして追加します。 詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)」をご覧ください。
+1. 個人用の Microsoft アカウントを組織の Active Directory にゲストとして追加します。 詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md)」をご覧ください。
 
 2. 個人用の Microsoft アカウントを使用して、Azure portal にログインします。 その後組織の Active Directory に切り替えます。
 
@@ -111,7 +111,7 @@ Azure Repos を組織の Active Directoryに接続する方法について詳し
 
 ## <a name="author-with-github-integration"></a>GitHub 統合での作成
 
-GitHub 統合を使用したビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを GitHub アカウント リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの GitHub アカウントで複数のリポジトリを使用できますが、1 つの GitHub リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 GitHub アカウントまたはリポジトリがない場合は、 [こちらの手順](https://github.com/join) に従ってリソースを作成します。
+GitHub 統合を使用したビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを GitHub アカウント リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの GitHub アカウントで複数のリポジトリを使用できますが、1 つの GitHub リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 GitHub アカウントまたはリポジトリがない場合は、[こちらの手順](https://github.com/join)に従ってリソースを作成します。
 
 Data Factory と GitHub の統合では、パブリック GitHub (つまり [https://github.com](https://github.com)) と GitHub Enterprise の両方がサポートされます。 GitHub のリポジトリの読み取りおよび書き込みアクセス許可があれば、パブリックおよびプライベートの両方の GitHub リポジトリを Data Factory で使用できます。
 

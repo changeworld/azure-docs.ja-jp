@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86172028"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637923"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -82,7 +82,7 @@ IR の実行中にこのエラーが発生する場合は、おそらくネッ�
 
 ## <a name="custom-setup-issues"></a>カスタム セットアップの問題
 
-カスタム セットアップでは、お使いの SSIS IR のプロビジョニングまたは再構成の間に、独自のセットアップ手順を追加するためのインターフェイスを提供します。 詳細については、「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)」をご覧ください。
+カスタム セットアップでは、お使いの SSIS IR のプロビジョニングまたは再構成の間に、独自のセットアップ手順を追加するためのインターフェイスを提供します。 詳細については、「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](./how-to-configure-azure-ssis-ir-custom-setup.md)」をご覧ください。
 
 必要なカスタム セットアップ ファイルのみがコンテナーに含まれていることを確認してください。コンテナー内のすべてのファイルが SSIS IR ワーカー ノードにダウンロードされます。 SSIS IR でスクリプトを実行する前に、ローカル コンピューターでカスタム セットアップ スクリプトをテストして、スクリプトの実行に関する問題を修正することをお勧めします。
 
@@ -114,7 +114,7 @@ IR が実行中の状態の場合は、まず IR を停止し、新しいカス�
 
 ## <a name="virtual-network-configuration"></a>Virtual Network の構成
 
-SSIS IR を Azure Virtual Network に参加させると、SSIS IR はユーザー サブスクリプションにある仮想ネットワークを使用します。 詳細については、「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
+SSIS IR を Azure Virtual Network に参加させると、SSIS IR はユーザー サブスクリプションにある仮想ネットワークを使用します。 詳細については、「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](./join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
 SSIS IR が正常に起動した後、ネットワーク接続の問題が発生した場合は、[診断接続ツール](ssis-integration-runtime-diagnose-connectivity-faq.md)を使用して、問題を自分で診断できます。
 Virtual Network 関連の問題がある場合は、次のいずれかのエラーが表示されます。
 
@@ -141,7 +141,7 @@ Virtual Network 関連の問題がある場合は、次のいずれかのエラ�
 
 この種のエラー メッセージは次のようになります。"Vnet 内の統合ランタイムのプロビジョニングに失敗しました。 DNS サーバーまたは NSG の設定が構成されている場合は、DNS サーバーにアクセスできること、NSG が正しく構成されていることを確認してください。"
 
-この状況では、DNS サーバーまたは NSG の設定の構成をカスタマイズしたことにより、SSIS IR に必要な Azure サーバー名を解決できないか、またはアクセスできなくなっている可能性があります。 詳細については、[SSIS IR 仮想ネットワークの構成](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)に関する記事を参照してください。 問題が解決しない場合は、Azure Data Factory サポート チームにお問い合わせください。
+この状況では、DNS サーバーまたは NSG の設定の構成をカスタマイズしたことにより、SSIS IR に必要な Azure サーバー名を解決できないか、またはアクセスできなくなっている可能性があります。 詳細については、[SSIS IR 仮想ネットワークの構成](./join-azure-ssis-integration-runtime-virtual-network.md)に関する記事を参照してください。 問題が解決しない場合は、Azure Data Factory サポート チームにお問い合わせください。
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ SSIS IR を停止すると、Virtual Network に関連するすべてのリソ�
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-このエラーは IR の実行中に発生し、IR が異常になったことを意味します。 このエラーは常に、SSIS IR が必要なサービスに接続できないようにする DNS サーバーまたは NSG 構成の変更によって発生します。 DNS サーバーと NSG の構成はお客様が制御するため、お客様は自分の側の障害となっている問題を修正する必要があります。 詳細については、[SSIS IR 仮想ネットワークの構成](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)に関する記事を参照してください。 問題が解決しない場合は、Azure Data Factory サポート チームにお問い合わせください。
+このエラーは IR の実行中に発生し、IR が異常になったことを意味します。 このエラーは常に、SSIS IR が必要なサービスに接続できないようにする DNS サーバーまたは NSG 構成の変更によって発生します。 DNS サーバーと NSG の構成はお客様が制御するため、お客様は自分の側の障害となっている問題を修正する必要があります。 詳細については、[SSIS IR 仮想ネットワークの構成](./join-azure-ssis-integration-runtime-virtual-network.md)に関する記事を参照してください。 問題が解決しない場合は、Azure Data Factory サポート チームにお問い合わせください。
 
 ## <a name="static-public-ip-addresses-configuration"></a>静的パブリック IP アドレスの構成
 
-Azure-SSIS IR を Azure Virtual Network に参加させる場合、特定の IP アドレスのみにアクセスが制限されているデータ ソースに IR からアクセスできるように、IR 用に独自の静的パブリック IP アドレスを利用することもできます。 詳細については、「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
+Azure-SSIS IR を Azure Virtual Network に参加させる場合、特定の IP アドレスのみにアクセスが制限されているデータ ソースに IR からアクセスできるように、IR 用に独自の静的パブリック IP アドレスを利用することもできます。 詳細については、「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](./join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
 
 上記の仮想ネットワークの問題に加えて、静的パブリック IP アドレス関連の問題も発生することがあります。 解決策については、次のエラーを確認してください。
 
@@ -174,7 +174,7 @@ Azure-SSIS IR を Azure Virtual Network に参加させる場合、特定の IP 
 | The provided static public IP address is already used, please provide two unused ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは既に使用されています。Azure-SSIS Integration Runtime 向けに未使用の IP アドレスを 2 つ指定してください。) | 未使用の静的パブリック IP アドレスを 2 つ選択するか、指定したパブリック IP アドレスへの現在の参照を削除してから、Azure-SSIS IR を再起動してください。 |
 | The provided static public IP address has no DNS name, please provide two of them with DNS name for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスには DNS 名が設定されていません。Azure-SSIS Integration Runtime 向けに、これら 2 つに DNS 名を指定してください。) | 下図に示すように、Azure portal でパブリック IP アドレスの DNS 名を設定できます。 具体的な手順は次のとおりです。(1) Azure portal を開き、目的のパブリック IP アドレスのリソース ページに移動します。(2) **[構成]** セクションを選択して DNS 名を設定し、 **[保存]** ボタンをクリックします。(3) Azure-SSIS IR を再起動します。 |
 | The provided VNet and static public IP addresses for your Azure-SSIS Integration Runtime must be in the same location. (Azure-SSIS Integration Runtime に指定する VNet と静的パブリック IP アドレスは、同じ場所内に存在する必要があります。) | Azure ネットワークの要件に従い、静的パブリック IP アドレスと仮想ネットワークは、同じ場所およびサブスクリプション内に存在する必要があります。 有効な静的パブリック IP アドレスを 2 つ指定し、Azure-SSIS IR を再起動してください。 |
-| The provided static public IP address is a basic one, please provide two standard ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは Basic のものです。Azure-SSIS Integration Runtime では Standard の IP アドレスを 2 つ指定してください。) | 詳細については、[パブリック IP アドレスの SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) に関するセクションを参照してください。 |
+| The provided static public IP address is a basic one, please provide two standard ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは Basic のものです。Azure-SSIS Integration Runtime では Standard の IP アドレスを 2 つ指定してください。) | 詳細については、[パブリック IP アドレスの SKU](../virtual-network/public-ip-addresses.md#sku) に関するセクションを参照してください。 |
 
 ![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 

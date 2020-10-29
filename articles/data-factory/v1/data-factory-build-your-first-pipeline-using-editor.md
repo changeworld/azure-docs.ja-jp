@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 50e6ce9b4c206650de72d9cdd41bdd6dd555acd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948962a73137f78ec26a01c1d2f54d883e76783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566603"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637447"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "91566603"
 > この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 > [!WARNING]
-> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
+> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初のデータ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 
@@ -58,7 +58,7 @@ ms.locfileid: "91566603"
 
    ![[作成] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-1. **[新しいデータ ファクトリ]** ブレードで、 **[名前]** に「**GetStartedDF**」と入力します。
+1. **[新しいデータ ファクトリ]** ブレードで、 **[名前]** に「 **GetStartedDF** 」と入力します。
 
    ![[新しいデータ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "91566603"
    >
 1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。
 
-1. 既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは、**ADFGetStartedRG** という名前のリソース グループを作成します。
+1. 既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは、 **ADFGetStartedRG** という名前のリソース グループを作成します。
 
 1. **[場所]** で、データ ファクトリの場所を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
 
@@ -159,9 +159,9 @@ ms.locfileid: "91566603"
 
      b. オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。 詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
 
-     c. HDInsight クラスターは、JSON プロパティ (**linkedServiceName**) で指定した BLOB ストレージに既定のコンテナーを作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
+     c. HDInsight クラスターは、JSON プロパティ ( **linkedServiceName** ) で指定した BLOB ストレージに既定のコンテナーを作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター ( **timeToLive** ) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
 
-     処理されるスライスが多いほど、BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 BLOB ストレージ内のコンテナーを削除するには、[Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
+     処理されるスライスが多いほど、BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名** -日時スタンプ" というパターンに従います。 BLOB ストレージ内のコンテナーを削除するには、[Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
      詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
@@ -181,7 +181,7 @@ ms.locfileid: "91566603"
 
     ![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
-1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、 **adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
 
     ```JSON
     {
@@ -214,7 +214,7 @@ ms.locfileid: "91566603"
    | linkedServiceName | format |前に作成した AzureStorageLinkedService を参照します。 |
    | folderPath | typeProperties | BLOB コンテナーと、入力 BLOB を格納するフォルダーを指定します。 | 
    | fileName | typeProperties |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log ファイルのみが処理されます。 |
-   | type | format |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
+   | type | format |ログ ファイルはテキスト形式です。そのため、 **TextFormat** を使用します。 |
    | columnDelimiter | format |ログ ファイル内の列はコンマ (`,`) で区切られています。 |
    | frequency/interval | availability |frequency を **Month** に設定し、interval を **1** に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
    | external | properties | このパイプラインによって入力データが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルでは、input.log ファイルはこのパイプラインで生成されないため、プロパティを **true** に設定します。 |
@@ -228,7 +228,7 @@ ms.locfileid: "91566603"
 
 1. Data Factory エディターで、 **[詳細]**  >  **[新しいデータセット]**  >  **[Azure Blob Storage]** を選択します。
 
-1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、**AzureBlobOutput** というデータセットを作成して、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが毎月生成されることを指定します。
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、 **AzureBlobOutput** というデータセットを作成して、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、 **adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが毎月生成されることを指定します。
 
     ```JSON
     {
@@ -319,13 +319,13 @@ ms.locfileid: "91566603"
 
     この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 
-    Hive スクリプト ファイル **partitionweblogs.hql** は、**AzureStorageLinkedService** という名前の scriptLinkedService で指定されたストレージ アカウントに保存されます。 これは、**adfgetstarted** コンテナーの **script** フォルダーにあります。
+    Hive スクリプト ファイル **partitionweblogs.hql** は、 **AzureStorageLinkedService** という名前の scriptLinkedService で指定されたストレージ アカウントに保存されます。 これは、 **adfgetstarted** コンテナーの **script** フォルダーにあります。
 
     **defines** セクションは、Hive 構成値として Hive スクリプトに渡される実行時設定を指定するために使用されます。 その例として、${hiveconf:inputtable} や ${hiveconf:partitionedtable} があります。
 
     パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
-    アクティビティ JSON では、**linkedServiceName**:**HDInsightOnDemandLinkedService** で指定された計算で Hive スクリプトが実行されるように指定します。
+    アクティビティ JSON では、 **linkedServiceName** : **HDInsightOnDemandLinkedService** で指定された計算で Hive スクリプトが実行されるように指定します。
 
    > [!NOTE]
    > 例で使用されている JSON プロパティの詳細については、[Data Factory のパイプラインとアクティビティ](data-factory-create-pipelines.md)に関するページの「パイプライン JSON」を参照してください。
@@ -339,7 +339,7 @@ ms.locfileid: "91566603"
 
    c. パイプライン JSON で実際のストレージ アカウントの名前を **storageaccountname** に指定済みであること。
 
-1. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、**isPaused** が **false** に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
+1. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、 **isPaused** が **false** に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
 
 1. ツリー ビューにパイプラインが表示されることを確認します。
 
@@ -367,13 +367,13 @@ ms.locfileid: "91566603"
 
     前のビューに戻るには、上部にあるメニューの **[データ ファクトリ]** を選択します。
 
-1. **[ダイアグラム]** ビューで、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が **[準備完了]** と表示されるまでに数分かかる場合があります。 しばらく待っても [準備完了] と表示されない場合は、入力ファイル (**input.log**) が適切なコンテナー (**adfgetstarted**) とフォルダー (**inputdata**) に配置されていることを確認してください。
+1. **[ダイアグラム]** ビューで、 **AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が **[準備完了]** と表示されるまでに数分かかる場合があります。 しばらく待っても [準備完了] と表示されない場合は、入力ファイル ( **input.log** ) が適切なコンテナー ( **adfgetstarted** ) とフォルダー ( **inputdata** ) に配置されていることを確認してください。
 
    ![準備完了状態の入力スライス](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
 1. **[AzureBlobInput]** ブレードを閉じます。
 
-1. **[ダイアグラム]** ビューで、**AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
+1. **[ダイアグラム]** ビューで、 **AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
 
    ![実行中のデータセット処理](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 
@@ -402,7 +402,7 @@ ms.locfileid: "91566603"
    詳細については、[Azure Portal のブレードを使用したパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 入力ファイルは、スライスが正常に処理された時点で削除されます。 そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、**adfgetstarted** コンテナーの **inputdata** フォルダーに入力ファイル (**input.log**) をアップロードしてください。
+> 入力ファイルは、スライスが正常に処理された時点で削除されます。 そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、 **adfgetstarted** コンテナーの **inputdata** フォルダーに入力ファイル ( **input.log** ) をアップロードしてください。
 >
 >
 

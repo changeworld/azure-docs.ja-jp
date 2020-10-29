@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6f502374996f01363ad27ff10dff3b34964a3474
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220739"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637226"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -49,7 +49,7 @@ Data Factory では、クラシック デプロイ モデルまたは Azure Reso
 
 ## <a name="access-to-on-premises-data-stores"></a>オンプレミスのデータ ストアにアクセスする
 
-SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている仮想ネットワークに Azure-SSIS IR を参加させることができます。 または、セルフホステッド IR を Azure-SSIS IR のプロキシとして構成して管理することができます。 詳細については、[セルフホステッド IR を Azure-SSIS IR のプロキシとして構成する](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)方法に関する記事を参照してください。 
+SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている仮想ネットワークに Azure-SSIS IR を参加させることができます。 または、セルフホステッド IR を Azure-SSIS IR のプロキシとして構成して管理することができます。 詳細については、[セルフホステッド IR を Azure-SSIS IR のプロキシとして構成する](./self-hosted-integration-runtime-proxy-ssis.md)方法に関する記事を参照してください。 
 
 Azure-SSIS IR を仮想ネットワークに参加させる場合は、次の重要な点に注意してください。 
 
@@ -73,7 +73,7 @@ SSIS パッケージで、[仮想ネットワーク サービス エンドポイ
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>IP ファイアウォール規則によって保護されているデータ ソースへのアクセス
 
-SSIS パッケージで、特定の静的パブリック IP アドレスのみを許可するデータ ストアおよびリソースにアクセスするときに、Azure-SSIS IR からのそれらのリソースへのアクセスをセキュリティで保護する必要がある場合は、Azure-SSIS IR を仮想ネットワーク サブネットに参加させながら独自の[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)を使用し、それらの IP アドレスからのアクセスを許可するために関連するリソースに IP ファイアウォール規則を追加することができます。
+SSIS パッケージで、特定の静的パブリック IP アドレスのみを許可するデータ ストアおよびリソースにアクセスするときに、Azure-SSIS IR からのそれらのリソースへのアクセスをセキュリティで保護する必要がある場合は、Azure-SSIS IR を仮想ネットワーク サブネットに参加させながら独自の[パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)を使用し、それらの IP アドレスからのアクセスを許可するために関連するリソースに IP ファイアウォール規則を追加することができます。
 
 すべての場合に、仮想ネットワークは Azure Resource Manager デプロイ モデルでのみデプロイすることができます。
 
@@ -99,7 +99,7 @@ SSIS パッケージで、特定の静的パブリック IP アドレスのみ�
 
 - 仮想ネットワークのリソース グループ (独自のパブリック IP アドレスを使用する場合は、パブリック IP アドレスのリソース グループ) が特定の Azure ネットワーク リソースを作成および削除できることを確認します。 詳細については、「[リソース グループを設定する](#resource-group)」を参照してください。 
 
-- [Azure-SSIS IR のカスタムの設定](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)に関する記事で説明されているように Azure-SSIS IR をカスタマイズすると、Azure-SSIS IR ノードは、事前に定義された範囲の 172.16.0.0 から 172.31.255.255 のプライベート IP アドレスを取得します。 そのため、仮想またはオンプレミス ネットワークのプライベート IP アドレスの範囲がこの範囲と競合しないようにしてください。
+- [Azure-SSIS IR のカスタムの設定](./how-to-configure-azure-ssis-ir-custom-setup.md)に関する記事で説明されているように Azure-SSIS IR をカスタマイズすると、Azure-SSIS IR ノードは、事前に定義された範囲の 172.16.0.0 から 172.31.255.255 のプライベート IP アドレスを取得します。 そのため、仮想またはオンプレミス ネットワークのプライベート IP アドレスの範囲がこの範囲と競合しないようにしてください。
 
 次の図は、Azure-SSIS IR に必要な接続を示しています。
 
@@ -133,7 +133,7 @@ Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静
 
 - まだ他の Azure リソースに関連付けられていない 2 つの未使用のもののみを指定する必要があります。 余分なものは、定期的に Azure-SSIS IR をアップグレードするときに使用されます。 アクティブな Azure-SSIS IR 間で 1 つのパブリック IP アドレスを共有することはできません。
 
-- これらの両方が、標準の種類の静的なものである必要があります。 詳細については、[パブリック IP アドレスの SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) に関するページを参照してください。
+- これらの両方が、標準の種類の静的なものである必要があります。 詳細については、[パブリック IP アドレスの SKU](../virtual-network/public-ip-addresses.md#sku) に関するページを参照してください。
 
 - これらの両方に DNS 名が必要です。 作成時に DNS 名を指定していない場合は、Azure portal で行うことができます。
 
@@ -151,7 +151,7 @@ Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静
 詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。 
 
 > [!NOTE]
-> プライベート ホスト名には完全修飾ドメイン名 (FQDN) を使用してください (たとえば、`<your_private_server>` ではなく `<your_private_server>.contoso.com` を使用します)。 または、Azure-SSIS IR 上で標準のカスタム セットアップを使用して、独自の DNS サフィックス (たとえば `contoso.com`) を非修飾の 1 つのラベル ドメイン名に自動的に追加することで、DNS クエリで使用する前に FQDN に変換することもできます。[標準のカスタム セットアップのサンプル](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples)に関するページを参照してください。 
+> プライベート ホスト名には完全修飾ドメイン名 (FQDN) を使用してください (たとえば、`<your_private_server>` ではなく `<your_private_server>.contoso.com` を使用します)。 または、Azure-SSIS IR 上で標準のカスタム セットアップを使用して、独自の DNS サフィックス (たとえば `contoso.com`) を非修飾の 1 つのラベル ドメイン名に自動的に追加することで、DNS クエリで使用する前に FQDN に変換することもできます。[標準のカスタム セットアップのサンプル](./how-to-configure-azure-ssis-ir-custom-setup.md#standard-custom-setup-samples)に関するページを参照してください。 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> NSG を設定する
 Azure-SSIS IR によって使用されるサブネットに NSG を実装する必要がある場合は、次のポートを経由する受信および送信トラフィックを許可します。 
@@ -176,7 +176,7 @@ Azure-SSIS IR によって使用されるサブネットに NSG を実装する�
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Azure ExpressRoute または UDR を使用する
-Azure-SSIS IR からの送信トラフィックを検査する場合は、Azure-SSIS IR から開始されたトラフィックを、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 強制トンネリングを使用して (仮想ネットワークへの、BGP ルート、0.0.0.0/0、をアドバタイズする) オンプレミス ファイアウォール アプライアンスに、あるいは [UDR](../virtual-network/virtual-networks-udr-overview.md) 経由で [Azure Firewall](https://docs.microsoft.com/azure/firewall/) またはファイアウォールとしてのネットワーク仮想アプライアンス (NVA) にルーティングできます。 
+Azure-SSIS IR からの送信トラフィックを検査する場合は、Azure-SSIS IR から開始されたトラフィックを、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 強制トンネリングを使用して (仮想ネットワークへの、BGP ルート、0.0.0.0/0、をアドバタイズする) オンプレミス ファイアウォール アプライアンスに、あるいは [UDR](../virtual-network/virtual-networks-udr-overview.md) 経由で [Azure Firewall](../firewall/index.yml) またはファイアウォールとしてのネットワーク仮想アプライアンス (NVA) にルーティングできます。 
 
 ![Azure-SSIS IR の NVA シナリオ](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
@@ -186,7 +186,7 @@ Azure-SSIS IR からの送信トラフィックを検査する場合は、Azure-
 
 Azure Batch 管理サービスと Azure-SSIS IR 間の受信トラフィックを、ファイアウォール アプライアンスにルーティングすることはできません。これを行うと、非対称ルーティングの問題によってトラフィックが切断されます。 受信トラフィックに対してルートを定義して、トラフィックが受信されたときと同じ方法で応答できるようにする必要があります。 Azure Batch 管理サービスと、次ホップの種類が **[インターネット]** である Azure-SSIS IR 間でトラフィックをルーティングする特定の UDR を定義できます。
 
-たとえば、Azure-SSIS IR が `UK South` にあり、Azure Firewall 経由の送信トラフィックを検査する場合は、まず、[サービス タグの IP 範囲のダウンロード リンク](https://www.microsoft.com/download/details.aspx?id=56519)から、または [Service Tag Discovery API](https://aka.ms/discoveryapi) を通じて、サービス タグ `BatchNodeManagement.UKSouth` の IP 範囲一覧を取得します。 その後、次ホップの種類が **[インターネット]** である関連する IP 範囲ルートの以下の UDR を、次ホップの種類が **[仮想アプライアンス]** である 0.0.0.0/0 ルートと共に適用します。
+たとえば、Azure-SSIS IR が `UK South` にあり、Azure Firewall 経由の送信トラフィックを検査する場合は、まず、[サービス タグの IP 範囲のダウンロード リンク](https://www.microsoft.com/download/details.aspx?id=56519)から、または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises) を通じて、サービス タグ `BatchNodeManagement.UKSouth` の IP 範囲一覧を取得します。 その後、次ホップの種類が **[インターネット]** である関連する IP 範囲ルートの以下の UDR を、次ホップの種類が **[仮想アプライアンス]** である 0.0.0.0/0 ルートと共に適用します。
 
 ![Azure Batch UDR の設定](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -306,7 +306,7 @@ Azure SSIS IR では、仮想ネットワークと同じリソース グルー�
  
   現時点では、Azure-SSIS IR が仮想ネットワークに参加すると、パブリック IP アドレスが自動的に作成されます。 NIC レベルの NSG を使用して、Azure-SSIS IR への受信接続のみを Azure Batch 管理サービスに許可します。 受信保護のために、サブネットレベルの NSG を指定することもできます。
 
-  このシナリオに該当する場合、パブリック IP アドレスが公開されないようにするには、仮想ネットワークに Azure-SSIS IR を参加させるのではなく、[Azure-SSIS IR のプロキシとしてセルフホステッド IR を構成する](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)ことを検討してください。
+  このシナリオに該当する場合、パブリック IP アドレスが公開されないようにするには、仮想ネットワークに Azure-SSIS IR を参加させるのではなく、[Azure-SSIS IR のプロキシとしてセルフホステッド IR を構成する](./self-hosted-integration-runtime-proxy-ssis.md)ことを検討してください。
  
 - データ ソースのファイアウォールの許可リストに Azure-SSIS IR のパブリック IP アドレスを追加できますか。
 
@@ -315,7 +315,7 @@ Azure SSIS IR では、仮想ネットワークと同じリソース グルー�
   - データ ソースがオンプレミスの場合は、仮想ネットワークをオンプレミス ネットワークに接続し、仮想ネットワーク サブネットに Azure-SSIS IR を参加させた後、そのサブネットのプライベート IP アドレス範囲を、データ ソースのファイアウォールの許可リストに追加することができます。
   - データ ソースが、仮想ネットワーク サービス エンドポイントをサポートする Azure サービスである場合は、仮想ネットワーク サブネット上で仮想ネットワーク サービス エンドポイントを構成し、そのサブネットに Azure-SSIS IR を参加させることができます。 その後、そのサブネットの仮想ネットワーク規則を、データ ソースのファイアウォールに追加できます。
   - データソースが Azure 以外のクラウド サービスの場合は、UDR を使用して、Azure-SSIS IR からの送信トラフィックを、静的パブリック IP アドレスを介して NVA または Azure Firewall にルーティングできます。 その後、NVA または Azure Firewall の静的パブリック IP アドレスを、データ ソースのファイアウォールの許可リストに追加できます。
-  - 上記のいずれのオプションもニーズを満たしていない場合は、[Azure-SSIS IR のプロキシとしてのセルフホステッド IR の構成](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)を検討してください。 その後、セルフホステッド IR をホストするコンピューターの静的パブリック IP アドレスを、データ ソースのファイアウォールの許可リストに追加できます。
+  - 上記のいずれのオプションもニーズを満たしていない場合は、[Azure-SSIS IR のプロキシとしてのセルフホステッド IR の構成](./self-hosted-integration-runtime-proxy-ssis.md)を検討してください。 その後、セルフホステッド IR をホストするコンピューターの静的パブリック IP アドレスを、データ ソースのファイアウォールの許可リストに追加できます。
 
 - Azure-SSIS IR 用に独自のものを使用する場合に、2 つの静的パブリック アドレスを指定する必要があるのはなぜですか。
 
@@ -601,7 +601,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Azure-SSIS IR の詳細については、次の記事を参照してください。 
 - 「[Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime)」。 この記事では、Azure-SSIS IR を含め、IR に関する全般的な概念情報が説明されています。 
-- [チュートリアル:Azure への SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。 このチュートリアルでは、Azure-SSIS IR の作成手順を示しています。 Azure SQL Database を使って SSIS カタログをホストします。 
+- [チュートリアル:Azure への SSIS パッケージのデプロイに関するチュートリアル](./tutorial-deploy-ssis-packages-azure.md)の手順に従って作成します。 このチュートリアルでは、Azure-SSIS IR の作成手順を示しています。 Azure SQL Database を使って SSIS カタログをホストします。 
 - 「[Azure-SSIS IR を作成する](create-azure-ssis-integration-runtime.md)」。 この記事は、このチュートリアルを拡張しています。 仮想ネットワーク サービス エンドポイントまたは仮想ネットワーク内の SQL Managed Instance を含む Azure SQL Database を使用して、SSIS カタログをホストする手順について説明されます。 Azure-SSIS IR を仮想ネットワークに参加させる方法が示されます。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR に関する情報を取得する方法が説明されています。 返された情報の状態の説明が提供されます。 
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、または削除する方法を示しています。 また、ノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。

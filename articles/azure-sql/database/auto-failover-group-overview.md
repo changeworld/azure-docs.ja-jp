@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627229"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675285"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -243,7 +243,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成する
 
-サブスクリプションが同じ [Azure Active Directory テナント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)に関連付けられている限り、2 つの異なるサブスクリプションの SQL Managed Instances 間でフェールオーバー グループを作成することができます。 PowerShell API を使用する場合は、セカンダリ SQL Managed Instance の `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
+サブスクリプションが同じ [Azure Active Directory テナント](../../active-directory/fundamentals/active-directory-whatis.md#terminology)に関連付けられている限り、2 つの異なるサブスクリプションの SQL Managed Instances 間でフェールオーバー グループを作成することができます。 PowerShell API を使用する場合は、セカンダリ SQL Managed Instance の `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
   
 > [!IMPORTANT]
 > Azure portal では、異なるサブスクリプション間でのフェールオーバー グループの作成はサポートされません。 また、異なるサブスクリプションやリソース グループにまたがる既存のフェールオーバー グループについては、プライマリ SQL Managed Instance からポータルを使用して手動でフェールオーバーを開始することはできません。 代わりに、geo セカンダリ インスタンスから開始してください。
@@ -332,7 +332,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 4. 機能停止が検出されたときに手動フェールオーバーを開始する。 このオプションは、フロント エンドとデータ層の間で一貫した待機時間を必要とするアプリケーションに対して最適化されており、フロント エンド、データ層、またはこの両方が機能停止の影響を受ける場合に回復をサポートします。
 
 > [!NOTE]
-> **読み取り専用リスナー**を使用して読み取り専用ワークロードの負荷を分散する場合は、このワークロードを必ずセカンダリ リージョン内の VM などのリソースで実行することで、セカンダリ データベースに接続できるようにします。
+> **読み取り専用リスナー** を使用して読み取り専用ワークロードの負荷を分散する場合は、このワークロードを必ずセカンダリ リージョン内の VM などのリソースで実行することで、セカンダリ データベースに接続できるようにします。
 
 ### <a name="use-failover-groups-and-firewall-rules"></a>フェールオーバー グループおよびファイアウォール規則を使用する
 
@@ -341,8 +341,8 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 1. [パブリック IP を作成します](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)。
 2. [パブリック ロード バランサーを作成](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)し、パブリック IP を割り当てます。
 3. フロント エンド コンポーネントに対して[仮想ネットワークと仮想マシンを作成](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)します。
-4. [ネットワーク セキュリティ グループを作成](../../virtual-network/security-overview.md)し、受信接続を構成します。
-5. ‘Sql’ [サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用して、確実に Azure SQL Database への送信接続が開かれるようにします。
+4. [ネットワーク セキュリティ グループを作成](../../virtual-network/network-security-groups-overview.md)し、受信接続を構成します。
+5. ‘Sql’ [サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、確実に Azure SQL Database への送信接続が開かれるようにします。
 6. [SQL Database ファイアウォール規則](firewall-configure.md)を作成して、手順 1 で作成したパブリック IP アドレスからの受信トラフィックを許可します。
 
 送信アクセスを構成する方法と、ファイアウォール規則で使用する IP の詳細については、[ロード バランサー送信接続](../../load-balancer/load-balancer-outbound-connections.md)に関するページを参照してください。
@@ -362,7 +362,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL Managed Instance のインスタンスによって使用される仮想ネットワークは、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポート対象ですが、次の注記で説明する制限事項があります。
 
    > [!IMPORTANT]
-   > [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
+   > [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
 
 - 2 つの SQL Managed Instance VNet に、重複する IP アドレスを含めることはできません。
 - 他のマネージド インスタンスのサブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します。
@@ -406,7 +406,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 
-前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
+前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](/rest/api/sql/)、[Azure PowerShell コマンドレット](/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
 
 ### <a name="manage-sql-database-failover"></a>SQL Database のフェールオーバーを管理する
 
@@ -435,13 +435,13 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | API | 説明 |
 | --- | --- |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
-| [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 完全なデータ同期を行って、現在のプライマリ サーバーからセカンダリ サーバーへのフェールオーバーをトリガーします。|
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | データを同期せずに、現在のプライマリ サーバーからセカンダリ サーバーへのフェールオーバーをトリガーします。 この操作を行うとデータが失われる可能性があります。 |
-| [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | フェールオーバー グループの構成を取得します。 |
-| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | サーバーのフェールオーバー グループの一覧を表示します。 |
-| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | フェールオーバー グループの構成を更新します。 |
+| [Create or Update Failover Group](/rest/api/sql/failovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
+| [Delete Failover Group](/rest/api/sql/failovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
+| [Failover (計画されたフェールオーバー)](/rest/api/sql/failovergroups/failover) | 完全なデータ同期を行って、現在のプライマリ サーバーからセカンダリ サーバーへのフェールオーバーをトリガーします。|
+| [Force Failover Allow Data Loss](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | データを同期せずに、現在のプライマリ サーバーからセカンダリ サーバーへのフェールオーバーをトリガーします。 この操作を行うとデータが失われる可能性があります。 |
+| [フェールオーバー グループの取得](/rest/api/sql/failovergroups/get) | フェールオーバー グループの構成を取得します。 |
+| [List Failover Groups By Server](/rest/api/sql/failovergroups/listbyserver) | サーバーのフェールオーバー グループの一覧を表示します。 |
+| [Update Failover Group](/rest/api/sql/failovergroups/update) | フェールオーバー グループの構成を更新します。 |
 
 ---
 
@@ -473,12 +473,12 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | API | 説明 |
 | --- | --- |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループの構成を作成または更新します。 |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをインスタンスから削除します。 |
-| [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 完全なデータ同期を行って、現在のプライマリ インスタンスからこのインスタンスへのフェールオーバーをトリガーします。 |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | データを同期せずに、現在のプライマリ インスタンスからセカンダリ インスタンスへのフェールオーバーをトリガーします。 この操作を行うとデータが失われる可能性があります。 |
-| [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | フェールオーバー グループの構成を取得します。 |
-| [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 場所ごとにフェールオーバー グループをリストします。 |
+| [Create or Update Failover Group](/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループの構成を作成または更新します。 |
+| [Delete Failover Group](/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをインスタンスから削除します。 |
+| [Failover (計画されたフェールオーバー)](/rest/api/sql/instancefailovergroups/failover) | 完全なデータ同期を行って、現在のプライマリ インスタンスからこのインスタンスへのフェールオーバーをトリガーします。 |
+| [Force Failover Allow Data Loss](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | データを同期せずに、現在のプライマリ インスタンスからセカンダリ インスタンスへのフェールオーバーをトリガーします。 この操作を行うとデータが失われる可能性があります。 |
+| [フェールオーバー グループの取得](/rest/api/sql/instancefailovergroups/get) | フェールオーバー グループの構成を取得します。 |
+| [List Failover Groups - List By Location](/rest/api/sql/instancefailovergroups/listbylocation) | 場所ごとにフェールオーバー グループをリストします。 |
 
 ---
 

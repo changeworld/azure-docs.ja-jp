@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 7886691559a63e6d54ea748582f641f33cecf995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26618382223a87f779f95452000a39126f37efbb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979733"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675433"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "90979733"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Azure AD SAML Toolkit では、**SP** Initiated SSO がサポートされます
+* Azure AD SAML Toolkit では、 **SP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -50,7 +50,7 @@ Azure AD への Azure AD SAML Toolkit の統合を構成するには、マネー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Azure AD SAML Toolkit**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Azure AD SAML Toolkit** 」と入力します。
 1. 結果のパネルから **[Azure AD SAML Toolkit]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-azure-ad-saml-toolkit"></a>Azure AD SAML Toolkit の Azure AD SSO の構成とテスト
@@ -132,13 +132,13 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
     ![Azure AD SAML Toolkit の SSO 構成の作成](./media/saml-toolkit-tutorial/fill-details.png)
 
-    1. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    1. **[ログイン URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     1. **[Azure AD 識別子]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    1. **[Logout URL]\(ログアウト URL\)** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    1. **[Logout URL]\(ログアウト URL\)** テキストボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    1. **[ファイルの選択]** をクリックして、Azure portal からダウンロードした**証明書 (未加工)** ファイルをアップロードします。
+    1. **[ファイルの選択]** をクリックして、Azure portal からダウンロードした **証明書 (未加工)** ファイルをアップロードします。
 
     1. **Create** をクリックしてください。
 
@@ -156,8 +156,8 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
 2. SAML Toolkit のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [SAML Toolkit] タイルをクリックすると、SSO を設定した SAML Toolkit に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [SAML Toolkit] タイルをクリックすると、SSO を設定した SAML Toolkit に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD SAML Toolkit を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Azure AD SAML Toolkit を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

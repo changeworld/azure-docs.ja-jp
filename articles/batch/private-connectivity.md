@@ -4,12 +4,12 @@ description: プライベート エンドポイントを使用して、Azure Bat
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542140"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669017"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch アカウントでプライベート エンドポイントを使用する
 

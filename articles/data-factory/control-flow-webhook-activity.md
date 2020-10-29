@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634982"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
 
@@ -60,9 +60,9 @@ Webhook アクティビティを使用すると、カスタム コードでパ�
 **method** | ターゲット エンドポイント用の REST API メソッド。 | 文字列 をオンにします。 サポートされている型は "POST" です。 | はい |
 **url** | ターゲット エンドポイントおよびパス。 | 文字列または **resultType** 値の文字列が含まれる式。 | はい |
 **headers** | 要求に送信されるヘッダー。 言語と種類を要求に設定する場合の例を次に示します。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列または **resultType** 値の文字列が含まれる式。 | はい。 `"headers":{ "Content-Type":"application/json"}` のような `Content-Type` ヘッダーが必要です。 |
-**body** | エンドポイントに送信されるペイロードを表します。 | 有効な JSON または **resultType** 値の JSON が含まれる式。 要求ペイロードのスキーマについては、「[要求ペイロードのスキーマ](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema)」を参照してください。 | はい |
-**認証** | エンドポイントを呼び出すために使用される認証方法。 サポートされる種類は "Basic" および "ClientCertificate" です。 詳細については、[認証](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)に関するページをご覧ください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列または **resultType** 値の文字列が含まれる式。 | いいえ |
-**timeout** | **callBackUri** で指定されたコールバックが呼び出されるまでのアクティビティの待機時間。 既定値は 10 分 ("00:10:00") です。 値の TimeSpan 形式は *d*.*hh*:*mm*:*ss* です。 | String | いいえ |
+**body** | エンドポイントに送信されるペイロードを表します。 | 有効な JSON または **resultType** 値の JSON が含まれる式。 要求ペイロードのスキーマについては、「[要求ペイロードのスキーマ](./control-flow-web-activity.md#request-payload-schema)」を参照してください。 | はい |
+**認証** | エンドポイントを呼び出すために使用される認証方法。 サポートされる種類は "Basic" および "ClientCertificate" です。 詳細については、[認証](./control-flow-web-activity.md#authentication)に関するページをご覧ください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列または **resultType** 値の文字列が含まれる式。 | いいえ |
+**timeout** | **callBackUri** で指定されたコールバックが呼び出されるまでのアクティビティの待機時間。 既定値は 10 分 ("00:10:00") です。 値の TimeSpan 形式は *d* . *hh* : *mm* : *ss* です。 | String | いいえ |
 **Report status on callback (コールバックで状態を報告する)** | ユーザーが Webhook アクティビティの失敗した状態を報告できるようにします。 | Boolean | いいえ |
 
 ## <a name="authentication"></a>認証
@@ -71,7 +71,7 @@ Webhook アクティビティでは、次の認証の種類がサポートされ
 
 ### <a name="none"></a>なし
 
-認証が必要ない場合は、**authentication** プロパティを含めないでください。
+認証が必要ない場合は、 **authentication** プロパティを含めないでください。
 
 ### <a name="basic"></a>Basic
 
@@ -99,7 +99,7 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 
 ### <a name="managed-identity"></a>マネージド ID
 
-データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
 ```json
 "authentication": {
@@ -119,7 +119,7 @@ Webhook アクティビティが失敗するのは、カスタム エンドポ�
 
 毎回の REST API 呼び出しでは、エンドポイントが 1 分以内に応答しない場合、クライアントがタイムアウトします。 この動作は、HTTP の標準的なベスト プラクティスです。 この問題を解決するには、202 パターンを実装します。 現在のケースでは、エンドポイントで 202 (受理) が返され、クライアントでポーリングが行われます。
 
-要求時の 1 分間のタイムアウトは、アクティビティ タイムアウトとは関係ありません。 後者は、**callbackUri** によって指定されたコールバックを待機するために使用されます。
+要求時の 1 分間のタイムアウトは、アクティビティ タイムアウトとは関係ありません。 後者は、 **callbackUri** によって指定されたコールバックを待機するために使用されます。
 
 コールバック URI に戻される本文は、有効な JSON である必要があります。 `Content-Type` ヘッダーを `application/json` に設定します。
 

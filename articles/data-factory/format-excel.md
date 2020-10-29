@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 65dc9f556a9b7c257273349c056cf997973e942f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ecca75f294cf70ba8f7d82fcce7bdd3e9611b21a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328285"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636342"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -39,7 +39,7 @@ Excel 形式は、以下のコネクタでサポートされています。[Amaz
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は **空の文字列** です。 | いいえ       |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
 | type<br/>( *`compression` の下にあります* ) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **snappy** 、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに **注意** してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに **注意** してください。 | いいえ。  |
-| level<br/>( *`compression` の下にあります* ) | 圧縮率です。 <br>使用できる値は、 **Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal** : 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
+| level<br/>( *`compression` の下にあります* ) | 圧縮率です。 <br>使用できる値は、 **Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal** : 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の Excel データセットの例を次に示します。
 

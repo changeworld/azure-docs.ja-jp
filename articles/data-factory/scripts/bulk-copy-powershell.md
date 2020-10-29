@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: ecfc9930c3387e19fd74d7cc52d11864ef25259a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83719586b516d9db62df1fc0c7045fed57d083b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439029"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637107"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使って複数のテーブルを一括コピーする
 
@@ -65,6 +65,6 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
 Azure Data Factory のその他の PowerShell サンプル スクリプトについては、[Azure Data Factory の PowerShell スクリプト](../samples-powershell.md)に関する記事を参照してください。

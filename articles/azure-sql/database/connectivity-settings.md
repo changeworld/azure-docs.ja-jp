@@ -9,31 +9,31 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: eecd4220cdda471807e4b84261d7f76c31b9ba70
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824139"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672327"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続の設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-この記事では、Azure SQL Database と Azure Synapse Analytics のサーバーへの接続を制御する設定について説明します。 これらの設定は、サーバーに関連する**すべての** SQL Database および Azure Synapse データベースに適用されます。
+この記事では、Azure SQL Database と Azure Synapse Analytics のサーバーへの接続を制御する設定について説明します。 これらの設定は、サーバーに関連する **すべての** SQL Database および Azure Synapse データベースに適用されます。
 
 > [!IMPORTANT]
-> この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。
+> この記事は、 **Azure SQL Managed Instance** には適用され " *ません* "。
 
 接続設定は、次のスクリーンショットに示すように、 **[ファイアウォールと仮想ネットワーク]** ブレードからアクセスできます。
 
  ![接続設定のスクリーンショット][1]
 
 > [!NOTE]
-> これらの設定を適用すると、それらは**直ちに有効になり**、各設定の要件を満たしていない場合はクライアントの接続が失われる可能性があります。
+> これらの設定を適用すると、それらは **直ちに有効になり** 、各設定の要件を満たしていない場合はクライアントの接続が失われる可能性があります。
 
 ## <a name="deny-public-network-access"></a>パブリック ネットワーク アクセスの拒否
 
-**[パブリック ネットワーク アクセスの拒否]** 設定が **[はい]** に設定されている場合、プライベート エンドポイント経由の接続のみが許可されます。 この設定が **[いいえ]** (既定) に設定されているとき、[ネットワーク アクセスの概要](network-access-controls-overview.md)に記載されているように、パブリック エンドポイント (IP ベースのファイアウォール規則、VNET ベースのファイアウォール規則) またはプライベート エンドポイント (Private Link を使用) を使用してクライアントから接続できます。 
+**[パブリック ネットワーク アクセスの拒否]** 設定が **[はい]** に設定されている場合、プライベート エンドポイント経由の接続のみが許可されます。 この設定が **[いいえ]** (既定) に設定されているとき、 [ネットワーク アクセスの概要](network-access-controls-overview.md)に記載されているように、パブリック エンドポイント (IP ベースのファイアウォール規則、VNET ベースのファイアウォール規則) またはプライベート エンドポイント (Private Link を使用) を使用してクライアントから接続できます。 
 
  ![接続のスクリーンショット。パブリック ネットワーク アクセスが拒否されています][2]
 
@@ -68,9 +68,9 @@ To manage server or database level firewall rules, please enable the public netw
 ## <a name="change-public-network-access-via-powershell"></a>PowerShell を使用してパブリック ネットワーク アクセスを変更する
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
 
-次の PowerShell スクリプトは、**パブリック ネットワーク アクセス** プロパティをサーバー レベルで `Get` および `Set` する方法を示しています。
+次の PowerShell スクリプトは、 **パブリック ネットワーク アクセス** プロパティをサーバー レベルで `Get` および `Set` する方法を示しています。
 
 ```powershell
 #Get the Public Network Access property
@@ -85,11 +85,11 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 ## <a name="change-public-network-access-via-cli"></a>CLI を使用してパブリック ネットワーク アクセスを変更する
 
 > [!IMPORTANT]
-> このセクションのすべてのスクリプトでは [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) が必要です。
+> このセクションのすべてのスクリプトでは [Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>bash シェルでの Azure CLI
 
-次の CLI スクリプトは、bash シェルでの**パブリック ネットワーク アクセス**の変更方法を示しています。
+次の CLI スクリプトは、bash シェルでの **パブリック ネットワーク アクセス** の変更方法を示しています。
 
 ```azurecli-interactive
 
@@ -124,9 +124,9 @@ Login failed with invalid TLS version
 ## <a name="set-minimal-tls-version-via-powershell"></a>PowerShell を使用して最小 TLS バージョンを設定する
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
 
-次の PowerShell スクリプトは、**最少 TLS バージョン** プロパティを論理サーバー レベルで `Get` および `Set` する方法を示しています。
+次の PowerShell スクリプトは、 **最少 TLS バージョン** プロパティを論理サーバー レベルで `Get` および `Set` する方法を示しています。
 
 ```powershell
 #Get the Minimal TLS Version property
@@ -141,11 +141,11 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>Azure CLI 経由で最小 TLS バージョンを設定する
 
 > [!IMPORTANT]
-> このセクションのすべてのスクリプトでは [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) が必要です。
+> このセクションのすべてのスクリプトでは [Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>bash シェルでの Azure CLI
 
-次の CLI スクリプトは、bash シェルでの**最少 TLS バージョン**の変更方法を示しています。
+次の CLI スクリプトは、bash シェルでの **最少 TLS バージョン** の変更方法を示しています。
 
 ```azurecli-interactive
 # Get current setting for Minimal TLS Version
@@ -164,7 +164,7 @@ az sql server update -n sql-server-name -g sql-server-group --set minimalTlsVers
 ## <a name="change-connection-policy-via-powershell"></a>PowerShell を使用して接続ポリシーを変更する
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
 
 次の PowerShell スクリプトは、PowerShell を使用して接続ポリシーを変更する方法を示しています。
 
@@ -185,7 +185,7 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ## <a name="change-connection-policy-via-azure-cli"></a>Azure CLI を使用して接続ポリシーを変更する
 
 > [!IMPORTANT]
-> このセクションのすべてのスクリプトでは [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) が必要です。
+> このセクションのすべてのスクリプトでは [Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>bash シェルでの Azure CLI
 
@@ -223,7 +223,7 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Database で接続がどのように機能するかに関する概要については、「[接続のアーキテクチャ](connectivity-architecture.md)」を参照してください
-- サーバーの接続ポリシーの変更方法については、「[conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)」を参照してください。
+- サーバーの接続ポリシーの変更方法については、「[conn-policy](/cli/azure/sql/server/conn-policy)」を参照してください。
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png

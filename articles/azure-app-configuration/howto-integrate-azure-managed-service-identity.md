@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078172"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671611"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -65,7 +65,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 1. **[アクセスの確認]** タブで、 **[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
 
-1. **[ロール]** の中から、**App Configuration データ リーダー**を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
+1. **[ロール]** の中から、 **App Configuration データ リーダー** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
 
 1. **[サブスクリプション]** で自分の Azure サブスクリプションを選択します。 アプリの App Service リソースを選択します。
 
@@ -107,78 +107,82 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   config.AddAzureAppConfiguration(options =>
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+               })
+               .UseStartup<Startup>();
+    ```
+
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     var settings = config.Build();
                     config.AddAzureAppConfiguration(options =>
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>();
-    ```
-
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>());
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
-1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、*Program.cs* を更新します。 このコードにより、`AzureServiceTokenProvider` を使用して新しい `KeyVaultClient` が作成され、この参照が `UseAzureKeyVault` メソッドの呼び出しに渡されます。
+1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、 *Program.cs* を更新します。 このコードにより、`AzureServiceTokenProvider` を使用して新しい `KeyVaultClient` が作成され、この参照が `UseAzureKeyVault` メソッドの呼び出しに渡されます。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-            public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-                WebHost.CreateDefaultBuilder(args)
-                    .ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>();
+                   config.AddAzureAppConfiguration(options =>
+                   {
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                           .ConfigureKeyVault(kv =>
+                           {
+                              kv.SetCredential(credentials);
+                           });
+                   });
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>());
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(credentials);
+                            });
+                    });
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -222,7 +226,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-_ローカル ターミナル ウィンドウ_で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
+_ローカル ターミナル ウィンドウ_ で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「 [Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
 
 ```bash
 git remote add azure <url>
@@ -248,7 +252,7 @@ http://<app_name>.azurewebsites.net
 
 .NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらのプロバイダーのいずれかを構成するとき、完全な接続文字列の代わりに、ご自分のストアの URL エンドポイントを使用できます。
 
-たとえば、クイックスタートで作成された .NET Framework コンソールアプリを更新して、*App.config* ファイルで次の設定を指定できます。
+たとえば、クイックスタートで作成された .NET Framework コンソールアプリを更新して、 *App.config* ファイルで次の設定を指定できます。
 
 ```xml
     <configSections>

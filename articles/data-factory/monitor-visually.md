@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570135"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638110"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory でパイプラインを作成して公開した後、それをトリガーに関連付けたり、アドホック実行を手動で開始したりできます。 Azure Data Factory ユーザー エクスペリエンスで、すべてのパイプラインの実行をネイティブに監視できます。 監視エクスペリエンスを開くには、[Azure portal](https://portal.azure.com/) の [データ ファクトリ] ブレードで **[監視と管理]** タイルを選択します。 ADF UX を既に使用している場合は、左側のサイドバーにある **[監視]** アイコンをクリックします。
+Azure Data Factory でパイプラインを作成して公開した後、それをトリガーに関連付けたり、アドホック実行を手動で開始したりできます。 Azure Data Factory ユーザー エクスペリエンスで、すべてのパイプラインの実行をネイティブに監視できます。 監視エクスペリエンスを開くには、 [Azure portal](https://portal.azure.com/) の [データ ファクトリ] ブレードで **[監視と管理]** タイルを選択します。 ADF UX を既に使用している場合は、左側のサイドバーにある **[監視]** アイコンをクリックします。
 
 すべてのデータ ファクトリの実行は、ブラウザーのローカル タイム ゾーンで表示されます。 タイム ゾーンを変更した場合、すべての日付/時刻フィールドは選択したものにスナップされます。
 
@@ -36,7 +36,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
 | Triggered By (トリガー元) | パイプラインを開始したトリガーの名前 |
-| Status | **失敗**、**成功**、**進行中**、**キャンセル済**、または **キューに登録済み** |
+| Status | **失敗** 、 **成功** 、 **進行中** 、 **キャンセル済** 、または **キューに登録済み** |
 | 注釈 | パイプラインに関連付けられたフィルター可能なタグ  |
 | パラメーター | パイプラインの実行のパラメーター (名前/値のペア) |
 | エラー | パイプラインが失敗した場合の実行エラー |
@@ -55,11 +55,11 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | **列名** | **説明** |
 | --- | --- |
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前 |
-| Activity Type (アクティビティの種類) | アクティビティの種類 (**Copy**、**ExecuteDataFlow**、**AzureMLExecutePipeline**  など) |
+| Activity Type (アクティビティの種類) | アクティビティの種類 ( **Copy** 、 **ExecuteDataFlow** 、 **AzureMLExecutePipeline**  など) |
 | Actions | JSON 入力情報、JSON 出力情報、またはアクティビティ固有の詳細な監視エクスペリエンスの表示を可能にするアイコン | 
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
-| Status | **失敗**、**成功**、**進行中**、または**キャンセル済** |
+| Status | **失敗** 、 **成功** 、 **進行中** 、または **キャンセル済** |
 | 統合ランタイム | アクティビティが実行された統合ランタイム |
 | ユーザー プロパティ | アクティビティのユーザー定義プロパティ |
 | エラー | アクティビティが失敗した場合の実行エラー |
@@ -94,7 +94,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | --- | --- |
 | Pipeline Name (パイプライン名) | パイプラインの名前でフィルター処理します。 |
 | Run Start (実行の開始) |  表示されるパイプラインの実行の時間範囲を決定します。 オプションには **[過去 24 時間]** 、 **[先週]** 、および **[過去 30 日間]** のクイック フィルターが含まれています。または、カスタムの日時を選択します。 |
-| Run Status (ジョブの状態) | 次の状態別に実行をフィルター処理:**成功**、**失敗**、**キューに登録済み**、**キャンセル済**、または**進行中**。 |
+| Run Status (ジョブの状態) | 次の状態別に実行をフィルター処理: **成功** 、 **失敗** 、 **キューに登録済み** 、 **キャンセル済** 、または **進行中** 。 |
 | 注釈 | 各パイプラインに適用されるタグでフィルター処理する |
 | 実行 | パイプラインを表示するかどうかでフィルター処理する |
 
@@ -162,7 +162,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 ![ガント チャートの期間](media/monitor-visually/gantt3.png)
 
 ## <a name="guided-tours"></a>ガイド ツアー
-左下の**情報**アイコンを選択します。 次に、**ガイド ツアー**を選択して、パイプラインの実行やアクティビティの実行を監視する方法について詳細な手順を確認します。
+左下の **情報** アイコンを選択します。 次に、 **ガイド ツアー** を選択して、パイプラインの実行やアクティビティの実行を監視する方法について詳細な手順を確認します。
 
 ![ガイド ツアー](media/monitor-visually/guided-tours.png)
 
@@ -212,4 +212,4 @@ Data Factory で、サポートされるメトリックに対してアラート�
 
 ## <a name="next-steps"></a>次のステップ
 
-パイプラインの監視と管理の詳細については、[プログラムでのパイプラインの監視と管理](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)に関する記事をご覧ください。
+パイプラインの監視と管理の詳細については、[プログラムでのパイプラインの監視と管理](./monitor-programmatically.md)に関する記事をご覧ください。

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: e9647de255b749e064b94f57c9067aaff7dc3cb7
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2d9be3ec005b2eb6c1cc8e530c44117ba8fbb401
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219464"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635033"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "92219464"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
-Azure-SSIS IR をまだプロビジョニングしていない場合は、[チュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従ってプロビジョニングします。 
+Azure-SSIS IR をまだプロビジョニングしていない場合は、[チュートリアル](./tutorial-deploy-ssis-packages-azure.md)の手順に従ってプロビジョニングします。 
 
 ## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Azure-SSIS IR を開始および停止する ADF パイプラインを作成してスケジュールする
 このセクションでは、ADF パイプラインの Web アクティビティを使用して、スケジュールに従って、またはオンデマンドで、Azure-SSIS IR を開始/停止する方法を説明します。 3 つのパイプラインを作成します。 
@@ -97,7 +97,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
   
     2. **[メソッド]** では、 **[POST]** を選択します。 
     3. **[本文]** には、「`{"message":"Start my IR"}`」を入力します。 
-    4. **[認証]** において **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「 [Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
+    4. **[認証]** において **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「 [Data Factory のマネージド ID](./data-factory-service-identity.md)」をご覧ください。
     5. **[リソース]** に、「`https://management.azure.com/`」と入力します。
     
        ![ADF Web アクティビティのスケジュールの SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)

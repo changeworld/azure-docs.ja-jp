@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 55d8b5ebdfb226247f8a500f36e6df3ae02ea58a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619051"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638297"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime の IP アドレス
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Integration Runtime によって使用される IP アドレスは、Azure Integration Runtime が配置されているリージョンによって異なります。 同じリージョン内の "*すべての*" Azure Integration Runtime は、同じ IP アドレス範囲を使用します。
+Azure Integration Runtime によって使用される IP アドレスは、Azure Integration Runtime が配置されているリージョンによって異なります。 同じリージョン内の " *すべての* " Azure Integration Runtime は、同じ IP アドレス範囲を使用します。
 
 > [!IMPORTANT]  
 > マネージド仮想ネットワークを有効にするデータ フローと Azure Integration Runtime では、固定 IP 範囲の使用はサポートされていません。
@@ -31,12 +31,12 @@ Azure Integration Runtime によって使用される IP アドレスは、Azure
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime の IP アドレス: 特定のリージョン
 
-リソースが配置されている特定の Azure リージョンの Azure Integration Runtime 用として一覧に示されている IP アドレスからのトラフィックを許可します。 [サービス タグの IP 範囲のダウンロード リンク](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)から、サービス タグの IP 範囲の一覧を取得できます。 たとえば、Azure リージョンが **AustraliaEast** の場合、**DataFactory.AustraliaEast** から IP 範囲の一覧を取得できます。
+リソースが配置されている特定の Azure リージョンの Azure Integration Runtime 用として一覧に示されている IP アドレスからのトラフィックを許可します。 [サービス タグの IP 範囲のダウンロード リンク](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)から、サービス タグの IP 範囲の一覧を取得できます。 たとえば、Azure リージョンが **AustraliaEast** の場合、 **DataFactory.AustraliaEast** から IP 範囲の一覧を取得できます。
 
 
 ## <a name="known-issue-with-azure-storage"></a>Azure Storage に関する既知の問題
 
-* Azure Storage アカウントに接続しているとき、IP ネットワーク ルールは、ストレージ アカウントと同じリージョン内の Azure Integration Runtime から送信された要求に対して効果がありません。 詳細については、[こちらの記事を参照](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)してください。 
+* Azure Storage アカウントに接続しているとき、IP ネットワーク ルールは、ストレージ アカウントと同じリージョン内の Azure Integration Runtime から送信された要求に対して効果がありません。 詳細については、[こちらの記事を参照](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range)してください。 
 
   代わりに、[Azure Storage に接続しているときは、信頼できるサービス](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)を使用することをお勧めします。 
 
