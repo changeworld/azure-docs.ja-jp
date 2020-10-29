@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76da267ae14a1f58ee2cadbf48f4b2ec419312b4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093019"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543527"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
 
@@ -22,10 +22,10 @@ Azure Cache for Redis は、従量課金制の料金と比較して、コンピ�
 Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com/) で購入できます。 予約容量を購入するには:
 
 * 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
-* Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
+* Enterprise サブスクリプションの場合、 [EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 * クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Cache for Redis の予約容量を購入できます。
 
-エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)」をご覧ください。
+エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
 
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>購入する前に適切なキャッシュのサイズを決定する
@@ -59,7 +59,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="cache-size-flexibility"></a>キャッシュのサイズの柔軟性
 
@@ -77,10 +77,9 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 
 * Azure の予約の詳細については、次の記事を参照してください。
 
-    * [Azure の予約とは](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-    * [Azure の予約の管理](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-    * [Azure の予約割引を理解する](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-    * [従量課金制サブスクリプションの予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-    * [エンタープライズ加入契約の予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-    * [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
-
+    * [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+    * [Azure の予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    * [Azure の予約割引を理解する](../cost-management-billing/reservations/understand-reservation-charges.md)
+    * [従量課金制サブスクリプションの予約使用量について](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+    * [エンタープライズ加入契約の予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    * [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505031"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542779"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -52,7 +52,7 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
 * 現在のストレージの場所を指す新しい HDInsight インスタンスを作成します。 新しいインスタンスは、既存のすべてのデータを使用して作成されます。
 
-* `hbase` フォルダーを別の Azure Storage BLOB コンテナーまたは Data Lake Storage の場所にコピーしてから、そのデータで新しいクラスターを起動します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy.md) を使用し、Data Lake Storage の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
+* `hbase` フォルダーを別の Azure Storage BLOB コンテナーまたは Data Lake Storage の場所にコピーしてから、そのデータで新しいクラスターを起動します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy-v10.md) を使用し、Data Lake Storage の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
 
 ## <a name="export-then-import"></a>エクスポート後にインポートする
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>スナップショット
 
-[スナップショット](https://hbase.apache.org/book.html#ops.snapshots)を使用すると、HBase データストア内に特定の時点のデータ バックアップを作成できます。 スナップショットは、最小限のオーバーヘッドで、数秒以内に完了します。これは、スナップショット操作が、事実上、そのインスタンスのストレージ内にあるすべてのファイルの名前をキャプチャするメタデータ操作であるからです。 スナップショットの時点では、実際のデータはコピーされません。 スナップショットは、HDFS に保存されているデータの不変的な性質を利用します。ここでは、更新、削除、挿入すべてが新しいデータとして表されます。 スナップショットは、同じクラスター上に復元 ("*複製*") することも、別のクラスターにエクスポートすることもできます。
+[スナップショット](https://hbase.apache.org/book.html#ops.snapshots)を使用すると、HBase データストア内に特定の時点のデータ バックアップを作成できます。 スナップショットは、最小限のオーバーヘッドで、数秒以内に完了します。これは、スナップショット操作が、事実上、そのインスタンスのストレージ内にあるすべてのファイルの名前をキャプチャするメタデータ操作であるからです。 スナップショットの時点では、実際のデータはコピーされません。 スナップショットは、HDFS に保存されているデータの不変的な性質を利用します。ここでは、更新、削除、挿入すべてが新しいデータとして表されます。 スナップショットは、同じクラスター上に復元 (" *複製* ") することも、別のクラスターにエクスポートすることもできます。
 
 スナップショットを作成するには、HDInsight HBase クラスターのヘッド ノードに SSH で接続し、`hbase` シェルを起動します。
 
@@ -245,4 +245,4 @@ HDInsight でレプリケーションを有効にするには、実行中のレ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache HBase のレプリケーションを構成する](apache-hbase-replication.md)
-* [HBase の Import および Export ユーティリティの使用](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [HBase の Import および Export ユーティリティの使用](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

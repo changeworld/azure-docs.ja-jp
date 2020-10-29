@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999953"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543153"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID ブローカー (プレビュー)
 
@@ -31,8 +31,8 @@ HDInsight ID ブローカーにより、パスワード ハッシュを Azure AD
 
 |認証オプション |HDInsight 構成 | 検討するべき要素 |
 |---|---|---|
-| OAuth のみ | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | 最も安全なオプションです。 (多要素認証がサポートされています)。パス ハッシュ同期は必要では "*ありません*"。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit/keytab 接続することができます。 OAuth による Ambari への Web ベースのアクセス。 OAuth をサポートするために、レガシ アプリ (JDBC/ODBC など) を更新する必要があります。|
-| OAuth と基本認証 | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | OAuth による Ambari への Web ベースのアクセス。 レガシ アプリでは、基本認証が引き続き使用されます。基本認証アクセスでは、多要素認証を無効にする必要があります。 パス ハッシュ同期は必要では "*ありません*"。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit 接続することができます。 |
+| OAuth のみ | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | 最も安全なオプションです。 (多要素認証がサポートされています)。パス ハッシュ同期は必要では " *ありません* "。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit/keytab 接続することができます。 OAuth による Ambari への Web ベースのアクセス。 OAuth をサポートするために、レガシ アプリ (JDBC/ODBC など) を更新する必要があります。|
+| OAuth と基本認証 | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | OAuth による Ambari への Web ベースのアクセス。 レガシ アプリでは、基本認証が引き続き使用されます。基本認証アクセスでは、多要素認証を無効にする必要があります。 パス ハッシュ同期は必要では " *ありません* "。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit 接続することができます。 |
 | 基本認証のみ | Enterprise セキュリティ パッケージ | オンプレミスのセットアップに最も似ています。 Azure AD DS へのパスワード ハッシュ同期が必要です。 オンプレミスのアカウントでは、ssh/kinit 接続することも、keytab を使用することもできます。 バッキング ストレージが Azure Data Lake Storage Gen2 である場合は、多要素認証を無効にする必要があります。 |
 
 次の図は、HDInsight ID ブローカーが有効になった後の、フェデレーション ユーザーを含むすべてのユーザーの、最新の OAuth ベースの認証フローを示しています。
@@ -43,7 +43,7 @@ HDInsight ID ブローカーにより、パスワード ハッシュを Azure AD
 
 基本認証 (つまり、ユーザー名とパスワード) のみがサポートされるレガシ アプリケーションはまだ多数存在する可能性があります。 これらのシナリオでは、引き続き HTTP 基本認証を使用してクラスター ゲートウェイに接続できます。 このセットアップでは、ゲートウェイ ノードから Active Directory Federation Services (AD FS) エンドポイントへのネットワーク接続を確保して、ゲートウェイ ノードからの直接の通信経路を確保する必要があります。
 
-次の図は、フェデレーション ユーザーの基本認証フローを示しています。 まず、ゲートウェイで [ROPC フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)を使用した認証が試みられます。 Azure AD に同期されたパスワード ハッシュがない場合は、フォールバックして AD FS エンドポイントを検出し、AD FS エンドポイントへアクセスすることで認証が完了します。
+次の図は、フェデレーション ユーザーの基本認証フローを示しています。 まず、ゲートウェイで [ROPC フロー](../../active-directory/develop/v2-oauth-ropc.md)を使用した認証が試みられます。 Azure AD に同期されたパスワード ハッシュがない場合は、フォールバックして AD FS エンドポイントを検出し、AD FS エンドポイントへアクセスすることで認証が完了します。
 
 :::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="HDInsight ID ブローカーによる認証フローを示す図。":::
 
@@ -103,7 +103,7 @@ HDInsight ID ブローカー機能によって、クラスターに追加の VM 
 
 ## <a name="tool-integration"></a>ツールの統合
 
-HDInsight ツールは、OAuth をネイティブにサポートするように更新されています。 これらのツールは、クラスターへの最新の OAuth ベースのアクセスに使用します。 HDInsight [IntelliJ プラグイン](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)は、Scala などの Java ベースのアプリケーションに使用できます。 [Visual Studio Code 用の Spark および Hive Tools](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) は、PySpark および Hive ジョブに使用できます。 これらのツールでは、バッチと対話型ジョブの両方がサポートされています。
+HDInsight ツールは、OAuth をネイティブにサポートするように更新されています。 これらのツールは、クラスターへの最新の OAuth ベースのアクセスに使用します。 HDInsight [IntelliJ プラグイン](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib)は、Scala などの Java ベースのアプリケーションに使用できます。 [Visual Studio Code 用の Spark および Hive Tools](../hdinsight-for-vscode.md) は、PySpark および Hive ジョブに使用できます。 これらのツールでは、バッチと対話型ジョブの両方がサポートされています。
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS でのパスワード ハッシュを使用しない SSH アクセス
 
@@ -117,11 +117,11 @@ HDInsight ツールは、OAuth をネイティブにサポートするように�
 
 組織では Azure AD DS にパスワード ハッシュが同期されていない場合は、ベスト プラクティスとして、Azure AD にクラウド専用ユーザーを 1 人作成します。 次に、クラスターを作成するときにこれをクラスター管理者として割り当て、管理目的で使用します。 これを使用して、SSH 経由で VM へのルート アクセスを取得できます。
 
-認証問題を解決するには、[こちらのガイド](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)を参照してください。
+認証問題を解決するには、[こちらのガイド](./domain-joined-authentication-issues.md)を参照してください。
 
 ## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>HDInsight ID ブローカーで OAuth を使用して HDInsight ゲートウェイに接続するクライアント
 
-HDInsight ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 [こちらのドキュメント](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)の手順に従って、次の情報を含むトークンを取得します。
+HDInsight ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 [こちらのドキュメント](../../storage/common/storage-auth-aad-app.md)の手順に従って、次の情報を含むトークンを取得します。
 
 *   OAuth リソース URI: `https://hib.azurehdinsight.net` 
 *   アプリID: 7865c1d2-f040-46cc-875f-831a1ef6a28a
