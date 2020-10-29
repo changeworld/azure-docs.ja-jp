@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919292"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912839"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
@@ -35,7 +35,7 @@ ms.locfileid: "88919292"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、カスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](Review-Tool-User-Guide/tags.md)に関する記事をご覧ください。
+- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、カスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](./review-tool-user-guide/configure.md#tags)に関する記事をご覧ください。
 
     ![ビデオ モデレーションのカスタム タグのスクリーンショット](images/video-tutorial-custom-tags.png)
 - サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) に関するガイドを参照してください。
@@ -83,7 +83,7 @@ ms.locfileid: "88919292"
 コマンド ライン引数が指定されていない場合、`Main()` は `GetUserInputs()` を呼び出します。 このメソッドは、1 つのビデオ ファイルへのパスの入力と、テキスト トランスクリプトを生成するかどうかを指定するようにユーザーに要求します。
 
 > [!NOTE]
-> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](../../media-services/previous/legacy-components.md) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize メソッドと ProcessVideo メソッド
 
@@ -224,7 +224,7 @@ ms.locfileid: "88919292"
 `GenerateVTT` フラグが設定されると、ビデオの音声のトランスクリプトも生成されます。
 
 > [!NOTE]
-> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](../../media-services/previous/legacy-components.md) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
 ## <a name="create-a-human-review"></a>人間のレビューを作成する
 
@@ -249,7 +249,7 @@ ms.locfileid: "88919292"
 
 ## <a name="process-the-transcript"></a>トランスクリプトを処理する
 
-このチュートリアルでここまでに提示したコードは、ビジュアル コンテンツが中心になっています。 音声コンテンツのレビューは、前述したように、音声から生成されたトランスクリプトを使用する独立した省略可能なプロセスです。 ここでは、テキスト スクリプトがどのように作成され、レビュープロセスで使用されるかを調べていきます。 トランスクリプトを生成するタスクは、[Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content) サービスで実行されます。
+このチュートリアルでここまでに提示したコードは、ビジュアル コンテンツが中心になっています。 音声コンテンツのレビューは、前述したように、音声から生成されたトランスクリプトを使用する独立した省略可能なプロセスです。 ここでは、テキスト スクリプトがどのように作成され、レビュープロセスで使用されるかを調べていきます。 トランスクリプトを生成するタスクは、[Azure Media Indexer](../../media-services/previous/media-services-index-content.md) サービスで実行されます。
 
 このアプリケーションは、以下のタスクを実行します。
 
@@ -319,7 +319,7 @@ ms.locfileid: "88919292"
 
 `TextScreen()` は大きなメソッドであるため、分解してみましょう。
 
-1. 最初に、このメソッドは、トランスクリプト ファイルを 1 行づつ読み取ります。 空白行と、`NOTE` と信頼度スコアを含む行は無視されます。 ファイル内の "*キュー*" からタイムスタンプとテキスト項目を抽出します。 キューは、オーディオ トラックからのテキストを表し、開始時刻と終了時刻が含まれています。 キューは、文字列 `-->` を含むタイム スタンプ行で始まります。 1 行または複数行のテキストが続きます。
+1. 最初に、このメソッドは、トランスクリプト ファイルを 1 行づつ読み取ります。 空白行と、`NOTE` と信頼度スコアを含む行は無視されます。 ファイル内の " *キュー* " からタイムスタンプとテキスト項目を抽出します。 キューは、オーディオ トラックからのテキストを表し、開始時刻と終了時刻が含まれています。 キューは、文字列 `-->` を含むタイム スタンプ行で始まります。 1 行または複数行のテキストが続きます。
 
 1. `CaptionScreentextResult` インスタンス (`TranscriptProfanity.cs`内に定義されます) を使用して、各キューから解析された情報を保持します。  新しいタイムスタンプ行が検出されるか、テキストの最大長である 1024 文字に達すると、新しい `CaptionScreentextResult` が `csrList` に追加されます。 
 
