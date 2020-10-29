@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341264"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371071"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
@@ -52,20 +52,20 @@ Security Center の ID とアクセスの保護にはいくつかの制限があ
 
 - 600 を超えるアカウントを持つサブスクリプションでは、ID に関する推奨事項は利用できません。 このような場合、これらの推奨事項は [利用できない評価] の下に表示されます。
 - クラウド ソリューション プロバイダー (CSP) パートナーの管理エージェントでは、ID に関する推奨事項は利用できません。
-- ID に関する推奨事項では、特権 ID 管理 (PIM) システムによって管理されているアカウントは識別されません。 PIM ツールを使用している場合、**アクセスとアクセス許可の管理**コントロールに不正確な結果が表示されることがあります。
+- ID に関する推奨事項では、特権 ID 管理 (PIM) システムによって管理されているアカウントは識別されません。 PIM ツールを使用している場合、 **アクセスとアクセス許可の管理** コントロールに不正確な結果が表示されることがあります。
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>多要素認証 (MFA) と Azure Active Directory 
 
-MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)が必要です。
+MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](../active-directory/roles/permissions-reference.md)が必要です。
 
 - AD の Premium Edition を使用している場合は、[条件付きアクセス](../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して MFA を有効にします。
-- AD の無料エディションを使用している場合は、[Azure Active Directory のドキュメント](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の説明に従って、**セキュリティの既定値**を有効にします。
+- AD の無料エディションを使用している場合は、 [Azure Active Directory のドキュメント](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の説明に従って、 **セキュリティの既定値** を有効にします。
 
 ## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>多要素認証 (MFA) が有効になっていないアカウントを識別する
 
 MFA が有効になっていないアカウントを確認するには、次の Azure Resource Graph クエリを使用します。 このクエリによって、"サブスクリプションの所有者アクセス許可を持つアカウントで MFA を有効にする必要があります" という推奨事項があるすべての異常なリソース (アカウント) が返されます。 
 
-1. **Azure Resource Graph エクスプローラー**を開きます。
+1. **Azure Resource Graph エクスプローラー** を開きます。
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
 

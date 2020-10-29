@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447456"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370612"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
 
@@ -26,26 +26,26 @@ Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com]
 
 ソリューション アクセラレータは、次の構成でデプロイできます。
 
-* **Standard**:運用環境を開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
-* **Basic**:デモンストレーションのため、またはデプロイをテストするための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
-* **Local**: テストと開発のためのローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内の IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
+* **Standard** :運用環境を開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
+* **Basic** :デモンストレーションのため、またはデプロイをテストするための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
+* **Local** : テストと開発のためのローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内の IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
 
 各ソリューション アクセラレータは、IoT Hub、Azure Stream Analytics、Cosmos DB など、Azure サービスの異なる組み合わせを使用します。 詳細については、[AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) にアクセスしてソリューション アクセラレータを選択してください。
 
 ## <a name="sign-in-at-azureiotsolutionscom"></a>azureiotsolutions.com でサインインする
 
-ソリューション アクセラレータをデプロイするには、Azure サブスクリプションに関連付けられた資格情報を使用して AzureIoTSolutions.com でサインインする必要があります。 アカウントが複数の Microsoft Azure Active Directory (AD) テナントに関連付けられている場合は、**アカウント選択のドロップダウン**を使用して、使用するディレクトリを選択できます。
+ソリューション アクセラレータをデプロイするには、Azure サブスクリプションに関連付けられた資格情報を使用して AzureIoTSolutions.com でサインインする必要があります。 アカウントが複数の Microsoft Azure Active Directory (AD) テナントに関連付けられている場合は、 **アカウント選択のドロップダウン** を使用して、使用するディレクトリを選択できます。
 
 ソリューション アクセラレータをデプロイし、ユーザーを管理し、Azure サービスを管理するためのアクセス許可は、選択されたディレクトリ内のロールによって異なります。 ソリューション アクセラレータに関連付けられた一般的な Azure AD ロールは次のとおりです。
 
-* **全体管理者**: Azure AD テナントごとに多数の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)がいてもかまいません。
+* **全体管理者** : Azure AD テナントごとに多数の [全体管理者](../active-directory/roles/permissions-reference.md)がいてもかまいません。
 
   * Azure AD テナントを作成したユーザーは、既定でそのテナントの全体管理者になります。
   * 全体管理者は、基本的なソリューション アクセラレータと標準のソリューション アクセラレータをデプロイできます。
 
-* **ドメイン ユーザー**: Azure AD テナントごとに多数のドメイン ユーザーがいてもかまいません。 ドメイン ユーザーは、基本的なソリューション アクセラレータをデプロイできます。
+* **ドメイン ユーザー** : Azure AD テナントごとに多数のドメイン ユーザーがいてもかまいません。 ドメイン ユーザーは、基本的なソリューション アクセラレータをデプロイできます。
 
-* **ゲスト ユーザー**: Azure AD テナントごとに多数のゲスト ユーザーがいてもかまいません。 ゲスト ユーザーは、Azure AD テナントでソリューション アクセラレータをデプロイできません。
+* **ゲスト ユーザー** : Azure AD テナントごとに多数のゲスト ユーザーがいてもかまいません。 ゲスト ユーザーは、Azure AD テナントでソリューション アクセラレータをデプロイできません。
 
 Azure AD 内のユーザーとロールの詳細については、次のリソースを参照してください。
 

@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 39e483c5cdb7e5acc0677b0d0cf2b41c390eef0b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538449"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371564"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD のカスタム ロールを構成する
 
@@ -54,15 +54,15 @@ ms.locfileid: "91538449"
 
 ロールの設定を構成するときに、割り当ての種類 (対象とアクティブ) ごとに 2 とおりの割り当て期間を選択できます。 これらのオプションは、Privileged Identity Management でメンバーがロールに割り当てられるときの既定の最大期間になります。
 
-"*資格のある*" 割り当ての期間について、次のいずれかのオプションを選択できます。
+" *資格のある* " 割り当ての期間について、次のいずれかのオプションを選択できます。
 
-- **永続的に資格のある割り当てを許可する**: 管理者は、永続的に資格のあるメンバーシップを割り当てることができます。
-- **資格のある割り当てが次の期間後に期限切れになる**: 管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。
+- **永続的に資格のある割り当てを許可する** : 管理者は、永続的に資格のあるメンバーシップを割り当てることができます。
+- **資格のある割り当てが次の期間後に期限切れになる** : 管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。
 
-また、"*アクティブな*" 割り当ての期間については、次のいずれかのオプションを選択できます。
+また、" *アクティブな* " 割り当ての期間については、次のいずれかのオプションを選択できます。
 
-- **永続するアクティブな割り当てを許可する**: 管理者は、永続的にアクティブなメンバーシップを割り当てることができます。
-- **アクティブな割り当てが次の期間後に期限切れになる**: 管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。
+- **永続するアクティブな割り当てを許可する** : 管理者は、永続的にアクティブなメンバーシップを割り当てることができます。
+- **アクティブな割り当てが次の期間後に期限切れになる** : 管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。
 
 ### <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
 
@@ -103,4 +103,4 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 - [Azure AD のカスタム ロールをアクティブ化する](azure-ad-custom-roles-activate.md)
 - [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
 - [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
-- [Azure AD のロールの定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD のロールの定義](../roles/permissions-reference.md)

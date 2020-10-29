@@ -4,10 +4,10 @@ description: 既存の Azure Service Bus Standard 名前空間を Premium に移
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "85340750"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
@@ -21,11 +21,11 @@ ms.locfileid: "85340750"
 
 いくつかの点に注意してください。
 
-- この移行はインプレースで行われるよう設計されており、既存の送信側および受信側アプリケーションで**コードまたは構成の変更は必要ありません**。 既存の接続文字列は、新しい Premium 名前空間を自動的に指すようになります。
-- 移行を成功させるためには、**Premium** 名前空間に**エンティティが含まれない**ようにしてください。
-- Standard 名前空間のすべての**エンティティ**は、移行プロセスの間に Premium 名前空間に**コピー**されます。
-- 移行では、Premium レベルで**メッセージング ユニットあたり 1,000 エンティティ**がサポートされます。 必要なメッセージング ユニットの数を明らかにするには、現在の Standard 名前空間に存在するエンティティの数から始めます。
-- **Basic レベル**から **Premium レベル**に直接移行することはできませんが、まず Basic から Standard に移行し、次のステップで Standard から Premium に移行することによって間接的に移行できます。
+- この移行はインプレースで行われるよう設計されており、既存の送信側および受信側アプリケーションで **コードまたは構成の変更は必要ありません** 。 既存の接続文字列は、新しい Premium 名前空間を自動的に指すようになります。
+- 移行を成功させるためには、 **Premium** 名前空間に **エンティティが含まれない** ようにしてください。
+- Standard 名前空間のすべての **エンティティ** は、移行プロセスの間に Premium 名前空間に **コピー** されます。
+- 移行では、Premium レベルで **メッセージング ユニットあたり 1,000 エンティティ** がサポートされます。 必要なメッセージング ユニットの数を明らかにするには、現在の Standard 名前空間に存在するエンティティの数から始めます。
+- **Basic レベル** から **Premium レベル** に直接移行することはできませんが、まず Basic から Standard に移行し、次のステップで Standard から Premium に移行することによって間接的に移行できます。
 
 ## <a name="migration-steps"></a>移行の手順
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258338"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363455"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>アプリを発行者確認済みとしてマークする
 
@@ -42,7 +42,7 @@ Microsoft Partner Network (MPN) に既に登録していて、[前提条件](pub
 
 1. [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)を使用して発行者確認済みとしてマークするアプリを変更することが許可されている組織 (Azure AD) アカウントでサインインし、パートナー センターに MPN アカウントでサインインしていることを確認します。
 
-    - Azure AD では、このユーザーは次の[ロール](../users-groups-roles/directory-assign-admin-roles.md)のいずれかに属する必要があります。アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
+    - Azure AD では、このユーザーは次の[ロール](../roles/permissions-reference.md)のいずれかに属する必要があります。アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
 
     - パートナー センターでは、このユーザーには次のいずれかの[ロール](/partner-center/permissions-overview)が必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。 
 
@@ -70,7 +70,7 @@ Microsoft Partner Network (MPN) に既に登録していて、[前提条件](pub
 
 1. アプリへの同意を求めるメッセージが表示されるユーザーに対しては、プロセスが正常に終了した直後から、バッジが表示されるようになります。ただし、この情報がシステム全体に複製されるまで、少し時間がかかる場合があります。 
 
-1. アプリケーションにサインインし、確認済みバッジが同意画面に表示されることを確認して、この機能をテストします。 アプリへの同意を既に許可しているユーザーとしてサインインしている場合は、*prompt=consent* クエリ パラメーターを使用して、同意プロンプトを強制することができます。 このパラメーターはテストのみに使用し、アプリの要求にはハードコーディングしないでください。
+1. アプリケーションにサインインし、確認済みバッジが同意画面に表示されることを確認して、この機能をテストします。 アプリへの同意を既に許可しているユーザーとしてサインインしている場合は、 *prompt=consent* クエリ パラメーターを使用して、同意プロンプトを強制することができます。 このパラメーターはテストのみに使用し、アプリの要求にはハードコーディングしないでください。
 
 1. バッジを表示する追加のアプリについて、必要に応じてこのプロセスを繰り返します。 Microsoft Graph を使用してこの処理を一括ですばやく行うことができ、間もなく PowerShell コマンドレットが利用可能になります。 詳細については、「[Microsoft Graph API の呼び出しを行う](troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)」を参照してください。 
 

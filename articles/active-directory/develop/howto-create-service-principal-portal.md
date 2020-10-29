@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265903"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366158"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -45,15 +45,15 @@ Azure portal を使用してサービス プリンシパルを直接作成する
 1. 左側のウィンドウで、 **[ユーザー設定]** を選択します。
 1. **[アプリの登録]** 設定を確認します。 この値は、管理者だけが設定できます。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。
 
-アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[利用可能なロール](../users-groups-roles/directory-assign-admin-roles.md#available-roles)と[ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)に関するページを参照してください。 アカウントにユーザー ロールが割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、アプリの登録のすべての側面について作成と管理が可能な管理者ロールの 1 つを、登録を行うユーザーに割り当てるか、ユーザーがアプリを登録できるようにするよう、管理者に依頼してください。
+アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[利用可能なロール](../roles/permissions-reference.md#available-roles)と[ロールのアクセス許可](../roles/permissions-reference.md#role-permissions)に関するページを参照してください。 アカウントにユーザー ロールが割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、アプリの登録のすべての側面について作成と管理が可能な管理者ロールの 1 つを、登録を行うユーザーに割り当てるか、ユーザーがアプリを登録できるようにするよう、管理者に依頼してください。
 
 ### <a name="check-azure-subscription-permissions"></a>Azure サブスクリプションのアクセス許可を確認する
 
-Azure サブスクリプションで AD アプリにロールを割り当てるには、アカウントが `Microsoft.Authorization/*/Write` アクセス権を持っている必要があります。 このアクションは、[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールを通じて許可されます。 アカウントに**共同作成者**ロールが割り当てられている場合は、適切なアクセス許可がありません。 この場合、サービス プリンシパルにロールを割り当てようとすると、エラーが発生します。
+Azure サブスクリプションで AD アプリにロールを割り当てるには、アカウントが `Microsoft.Authorization/*/Write` アクセス権を持っている必要があります。 このアクションは、[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールを通じて許可されます。 アカウントに **共同作成者** ロールが割り当てられている場合は、適切なアクセス許可がありません。 この場合、サービス プリンシパルにロールを割り当てようとすると、エラーが発生します。
 
 サブスクリプションのアクセス許可を確認するには、次の手順に従います。
 
-1. **[サブスクリプション]** を検索して選択するか、**ホーム** ページの **[サブスクリプション]** を選択します。
+1. **[サブスクリプション]** を検索して選択するか、 **ホーム** ページの **[サブスクリプション]** を選択します。
 
    ![検索](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -61,7 +61,7 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
 
    ![割り当てのためのサブスクリプションを選択する](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   探しているサブスクリプションが表示されない場合は、**グローバル サブスクリプション フィルター**を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
+   探しているサブスクリプションが表示されない場合は、 **グローバル サブスクリプション フィルター** を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
 
 1. **[アクセス許可]** を選択します。 次に、 **[Click here to view complete access details for this subscription] (このサブスクリプションの完全なアクセスの詳細を表示するにはここをクリック)** を選択します。
 
@@ -89,7 +89,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 サブスクリプション内のリソースにアクセスするには、アプリケーションにロールを割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用できるロールの詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの*閲覧者*ロールに追加すると、そのリソース グループと、その中にあるどのリソースも読み取りができることになります。
+スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの *閲覧者* ロールに追加すると、そのリソース グループと、その中にあるどのリソースも読み取りができることになります。
 
 1. Azure portal で、アプリケーションを割り当てるスコープのレベルを選択します。 たとえば、サブスクリプションのスコープでロールを割り当てるには、 **[サブスクリプション]** を検索して選択するか、 **[ホーム]** ページで **[サブスクリプション]** を選択します。
 
@@ -99,17 +99,17 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![割り当てのためのサブスクリプションを選択する](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   探しているサブスクリプションが表示されない場合は、**グローバル サブスクリプション フィルター**を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
+   探しているサブスクリプションが表示されない場合は、 **グローバル サブスクリプション フィルター** を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
 
 1. **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当ての追加]** を選択します。
-1. アプリケーションに割り当てるロールを選択します。 たとえば、アプリケーションがインスタンスの**再起動**、**開始**、**停止**などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。  [使用可能なロール](../../role-based-access-control/built-in-roles.md)の詳細を参照してください。既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
+1. アプリケーションに割り当てるロールを選択します。 たとえば、アプリケーションがインスタンスの **再起動** 、 **開始** 、 **停止** などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。  [使用可能なロール](../../role-based-access-control/built-in-roles.md)の詳細を参照してください。既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
 
    ![アプリケーションに割り当てるロールを選択します。](./media/howto-create-service-principal-portal/select-role.png)
 
 1. **[保存]** を選択して、ロールの割り当てを完了します。 該当のスコープのロールを持つユーザーの一覧に、アプリケーションが表示されます。
 
-サービス プリンシパルが設定されました。 それを使用してスクリプトまたはアプリの実行を開始できます。 サービス プリンシパル (アクセス許可、ユーザーが承諾したアクセス許可、承諾したユーザーの参照、アクセス許可の確認、サインイン情報の参照など) を管理するには、**エンタープライズ アプリケーション**に移動します。
+サービス プリンシパルが設定されました。 それを使用してスクリプトまたはアプリの実行を開始できます。 サービス プリンシパル (アクセス許可、ユーザーが承諾したアクセス許可、承諾したユーザーの参照、アクセス許可の確認、サインイン情報の参照など) を管理するには、 **エンタープライズ アプリケーション** に移動します。
 
 次のセクションでは、プログラムでサインインするときに必要な値を取得する方法を示します。
 
@@ -131,11 +131,11 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ## <a name="authentication-two-options"></a>認証: 2 つのオプション
 
-サービス プリンシパルで使用できる認証には、パスワードベースの認証 (アプリケーション シークレット) と証明書ベースの認証の 2 種類があります。 "*証明書を使用することをお勧めします*" が、アプリケーション シークレットを作成することもできます。
+サービス プリンシパルで使用できる認証には、パスワードベースの認証 (アプリケーション シークレット) と証明書ベースの認証の 2 種類があります。 " *証明書を使用することをお勧めします* " が、アプリケーション シークレットを作成することもできます。
 
 ### <a name="option-1-upload-a-certificate"></a>オプション 1: 証明書のアップロード
 
-既存の証明書がある場合は、それを使用できます。  必要に応じて、*テスト目的でのみ*自己署名証明書を作成できます。 自己署名証明書を作成するには、PowerShell を開き、次のパラメーターを使用して [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行し、コンピューター上のユーザー証明書ストアに証明書を作成します。
+既存の証明書がある場合は、それを使用できます。  必要に応じて、 *テスト目的でのみ* 自己署名証明書を作成できます。 自己署名証明書を作成するには、PowerShell を開き、次のパラメーターを使用して [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行し、コンピューター上のユーザー証明書ストアに証明書を作成します。
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -143,7 +143,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Windows コントロール パネルからアクセスできる [[Manage User Certificate]\(ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC スナップインを使用して、この証明書をファイルにエクスポートします。
 
-1. **[スタート]** メニューから **[ファイル名を指定して実行]** メニューを選択し、「**certmgr.msc**」と入力します。
+1. **[スタート]** メニューから **[ファイル名を指定して実行]** メニューを選択し、「 **certmgr.msc** 」と入力します。
 
    現在のユーザーの証明書マネージャー ツールが表示されます。
 
@@ -181,7 +181,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 ## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
 アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)必要があります。
 
-1. **Azure portal** で、キー コンテナーに移動し、[[アクセス ポリシー]](https://portal.azure.com) を選択します。
+1. **Azure portal** で、キー コンテナーに移動し、 [[アクセス ポリシー]](https://portal.azure.com) を選択します。
 1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。
 1. **[追加]** を選択してアクセス ポリシーを追加し、 **[保存]** を選択して変更をコミットします。
     ![アクセス ポリシーの追加](./media/howto-create-service-principal-portal/add-access-policy.png)
@@ -190,4 +190,4 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 * [Azure PowerShell を使用してサービス プリンシパルを作成する](howto-authenticate-service-principal-powershell.md)方法について学習します。
 * セキュリティ ポリシーを指定する方法については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。
 * ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。
-* **Microsoft Graph** を使用したアプリ登録の操作の詳細については、[アプリケーション](/graph/api/resources/application) API リファレンスを参照してください。
+* **Microsoft Graph** を使用したアプリ登録の操作の詳細については、 [アプリケーション](/graph/api/resources/application) API リファレンスを参照してください。

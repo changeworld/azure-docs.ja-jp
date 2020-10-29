@@ -3,19 +3,19 @@ title: サービス プロバイダーのアクティビティを表示する
 description: お客様は、ログに記録されたアクティビティを表示して、Azure の委任されたリソース管理を通じてサービス プロバイダーによって実行されるアクションを確認できます。
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974313"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371088"
 ---
 # <a name="view-service-provider-activity"></a>サービス プロバイダーのアクティビティを表示する
 
 [Azure Lighthouse](../overview.md) に委任されたサブスクリプションのあるお客様は、[Azure アクティビティ ログ データを表示](../../azure-monitor/platform/platform-logs-overview.md)して、実行されたすべてのアクションを確認できます。 これによりお客様は、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を通じてサービス プロバイダーが実行している操作と、お客様独自の Azure Active Directory (Azure AD) テナント内のユーザーによって実行された操作を完全に可視化できます。
 
 > [!TIP]
-> また、[特定の管理テナントへの委任の制限](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json)と[管理テナントへの委任スコープの監査](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)を行うための Azure Policy 組み込みポリシー定義も用意されています。 詳細については、「[お使いの環境での委任を監査する](view-manage-service-providers.md#audit-delegations-in-your-environment)」を参照してください。
+> また、[特定の管理テナントへの委任の制限](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json)と[管理テナントへの委任スコープの監査](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)を行うための Azure Policy 組み込みポリシー定義も用意されています。 詳細については、「[お使いの環境での委任を監査する](view-manage-service-providers.md#audit-delegations-in-your-environment)」を参照してください。
 
 ## <a name="view-activity-log-data"></a>アクティビティ ログ データを表示する
 

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83736502"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368793"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection ポリシー
 
-Azure Active Directory Identity Protection には、管理者が有効にすることを選択できる 3 つの既定のポリシーが含まれています。 これらのポリシーには限定されたカスタマイズが含まれていますが、ほとんどの組織に適用できます。 すべてのポリシーで、[緊急時の管理者アカウント](../users-groups-roles/directory-emergency-access.md)などのユーザーを除外できます。
+Azure Active Directory Identity Protection には、管理者が有効にすることを選択できる 3 つの既定のポリシーが含まれています。 これらのポリシーには限定されたカスタマイズが含まれていますが、ほとんどの組織に適用できます。 すべてのポリシーで、[緊急時の管理者アカウント](../roles/security-emergency-access.md)などのユーザーを除外できます。
 
 ![Identity Protection ポリシー](./media/concept-identity-protection-policies/identity-protection-policies.png)
 

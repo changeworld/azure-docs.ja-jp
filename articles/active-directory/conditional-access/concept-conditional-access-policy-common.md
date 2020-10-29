@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114f26c71ee1aecdb1a0ad3d1c01e558843c0969
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91705060"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366345"
 ---
 # <a name="common-conditional-access-policies"></a>一般的な条件付きアクセス ポリシー
 
@@ -28,7 +28,7 @@ ms.locfileid: "91705060"
 
 緊急アクセス アカウントとそれが重要である理由の詳細については、以下の記事を参照してください。 
 
-* [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+* [Azure AD で緊急アクセス用アカウントを管理する](../roles/security-emergency-access.md)
 * [Azure Active Directory で回復性があるアクセス制御管理戦略を作成する](../authentication/concept-resilient-controls.md)
 
 ## <a name="typical-policies-deployed-by-organizations"></a>組織によってデプロイされる一般的なポリシー

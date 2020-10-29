@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797239"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370918"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
 1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
 
-2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、 _Alain Charon_ を選びます。
 
     **[Alain Charon - Profile]** \(Alain Charon - プロファイル\) ページが表示されます。
 
@@ -66,4 +66,4 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../enterprise-users/index.yml)」を参照してください。

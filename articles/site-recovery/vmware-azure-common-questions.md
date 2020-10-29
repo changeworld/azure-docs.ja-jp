@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054973"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359800"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -75,7 +75,7 @@ Site Recovery は ISO 27001:2013 および 27018、HIPAA、DPA の認証を受�
 
 Site Recovery を使用している間は、[料金計算ツール](https://aka.ms/asr_pricing_calculator)を利用してコストを見積もります。
 
-コストの詳細な見積もりのためには、[VMware](https://aka.ms/siterecovery_deployment_planner) に対して Deployment Planner ツールを実行し、[コスト見積もりレポート](https://aka.ms/asr_DP_costreport)を使用します。
+コストの詳細な見積もりのためには、[VMware](./site-recovery-deployment-planner.md) に対して Deployment Planner ツールを実行し、[コスト見積もりレポート](./site-recovery-vmware-deployment-planner-cost-estimation.md)を使用します。
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>ストレージにレプリケートする場合とマネージド ディスクに直接レプリケートする場合との間にコストの差はありますか?
 
@@ -106,7 +106,7 @@ Azure Site Recovery のトランザクションは大量にあるため、通常
 Site Recovery では、オンプレミスの VMware VM と物理サーバーが Azure のマネージド ディスクにレプリケートされます。
 
 - Site Recovery のプロセス サーバーは、レプリケーション ログをターゲット リージョンのキャッシュ ストレージ アカウントに書き込みます。
-- これらのログは、**asrseeddisk** のプレフィックスを持つ Azure マネージド ディスクの復旧ポイントを作成するために使用されます。
+- これらのログは、 **asrseeddisk** のプレフィックスを持つ Azure マネージド ディスクの復旧ポイントを作成するために使用されます。
 - フェールオーバーが発生すると、選択された復旧ポイントを使用して、新しいターゲット マネージド ディスクが作成されます。 このマネージド ディスクは、Azure で VM にアタッチされます。
 - 以前 (2019 年 3 月より前) にストレージ アカウントにレプリケートされた VM は影響を受けません。
 
@@ -114,7 +114,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 いいえ。 いいえ。2019 年 3 月以降、Azure portal では、Azure のマネージド ディスクだけにレプリケートできます。
 
-ストレージ アカウントへの新しい VM のレプリケーションは、PowerShell ([Az.RecoveryServices モジュールのバージョン 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) または REST API (バージョン 2018-01-10 または 2016-08-10) を使用する場合にのみ、行うことができます。 PowerShell コマンドを使用してレプリケーションを設定する方法については、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)をご覧ください。
+ストレージ アカウントへの新しい VM のレプリケーションは、PowerShell ([Az.RecoveryServices モジュールのバージョン 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) または REST API (バージョン 2018-01-10 または 2016-08-10) を使用する場合にのみ、行うことができます。 PowerShell コマンドを使用してレプリケーションを設定する方法については、[こちら](./vmware-azure-disaster-recovery-powershell.md)をご覧ください。
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>マネージド ディスクのレプリケートにはどのようなメリットがありますか?
 
@@ -124,7 +124,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 はい。実行中のレプリケーションの場合、[マネージド ディスクの種類は簡単に変更](../virtual-machines/windows/convert-disk-storage.md)できます。 種類を変更する前に、マネージド ディスクで Shared Access Signature の URL が生成されていないことを確認します。
 
-1. Azure portal の**マネージド ディスク** リソースに移動し、 **[概要]** ブレードに Shared Access Signature の URL バナーがあるかどうかを確認します。
+1. Azure portal の **マネージド ディスク** リソースに移動し、 **[概要]** ブレードに Shared Access Signature の URL バナーがあるかどうかを確認します。
 1. バナーが表示されている場合は、これを選択して進行中のエクスポートをキャンセルします。
 1. 数分以内にディスクの種類を変更します。 種類がマネージド ディスクであるディスクを変更する場合は、Azure Site Recovery によって新しい復旧ポイントが生成されるまで待機します。
 1. すべてのテスト フェールオーバーまたは今後のフェールオーバーで、新しい復旧ポイントを使用します。
@@ -153,7 +153,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="what-is-asrseeddisk"></a>asrseeddisk とは何ですか?
 
-すべてのソース ディスクで、データは Azure のマネージド ディスクにレプリケートされます。 このディスクには、**asrseeddisk** のプレフィックスがあります。 ここには、ソース ディスクのコピーとすべての回復ポイントのスナップショットが格納されます。
+すべてのソース ディスクで、データは Azure のマネージド ディスクにレプリケートされます。 このディスクには、 **asrseeddisk** のプレフィックスがあります。 ここには、ソース ディスクのコピーとすべての回復ポイントのスナップショットが格納されます。
 
 ### <a name="can-i-exclude-disks-from-replication"></a>レプリケーションからディスクを除外できますか?
 
@@ -190,7 +190,7 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>モビリティ サービス エージェントまたは構成サーバーのバージョンが古く、アップグレードが失敗しました。 どうすればよいですか。
 
-Site Recovery は、N-4 サポート モデルに従っています。 非常に古いバージョンからアップグレードする方法に関する[詳細を参照](https://aka.ms/asr_support_statement)してください。
+Site Recovery は、N-4 サポート モデルに従っています。 非常に古いバージョンからアップグレードする方法に関する[詳細を参照](./service-updates-how-to.md#support-statement-for-azure-site-recovery)してください。
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Azure Site Recovery のリリース ノートと更新プログラムのロールアップはどこで入手できますか?
 
@@ -198,11 +198,11 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのアップグレードに関する情報はどこで入手できますか?
 
-[アップグレードに関する詳細を参照してください](https://aka.ms/asr_vmware_upgrades)。
+[アップグレードに関する詳細を参照してください](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)。
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>アップグレードごとにソース マシンを再起動する必要がありますか?
 
-アップグレードごとに再起動することをお勧めしますが、必須ではありません。 [詳細については、こちらを参照してください](https://aka.ms/asr_vmware_upgrades)。
+アップグレードごとに再起動することをお勧めしますが、必須ではありません。 [詳細については、こちらを参照してください](./service-updates-how-to.md#reboot-after-mobility-service-upgrade)。
 
 ## <a name="configuration-server"></a>構成サーバー
 
@@ -246,7 +246,7 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 - 最新の更新情報については、[Azure の更新情報のページ](https://azure.microsoft.com/updates/?product=site-recovery)を参照してください。
 - 最新バージョンは、ポータルからダウンロードできます。 または、構成サーバーの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードできます。
-- お使いの古いバージョンと最新のバージョンの差が 4 を超える場合は、[サポートに関する声明](https://aka.ms/asr_support_statement)でアップグレードのガイダンスを確認してください。
+- お使いの古いバージョンと最新のバージョンの差が 4 を超える場合は、[サポートに関する声明](./service-updates-how-to.md#support-statement-for-azure-site-recovery)でアップグレードのガイダンスを確認してください。
 
 ### <a name="should-i-back-up-the-configuration-server"></a>構成サーバーはバックアップする必要がありますか?
 

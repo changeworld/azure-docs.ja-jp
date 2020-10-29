@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/06/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: bf4a1feb91a1ac4b0bca0d6afdbac41a8be3aa4f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049528"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370986"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する
 
@@ -23,10 +23,10 @@ ms.locfileid: "92049528"
 
 ## <a name="cli"></a>CLI
 
-`source` 変数をイメージ バージョンの ID に設定してから、[az disk create](/cli/azure/disk.md#az_disk_create) を使用してマネージド ディスクを作成します。 
+`source` 変数をイメージ バージョンの ID に設定してから、[az disk create](/cli/azure/disk#az_disk_create) を使用してマネージド ディスクを作成します。 
 
 
-[az sig image-version list](/cli/azure/sig/image-version.md#az_sig_image_version_list) を使用して、イメージ バージョンの一覧を表示できます。 この例では、*myImageDefinition* イメージ定義の一部であるイメージ バージョンを、*myGallery* イメージ ギャラリーですべて検索しています。
+[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、イメージ バージョンの一覧を表示できます。 この例では、 *myImageDefinition* イメージ定義の一部であるイメージ バージョンを、 *myGallery* イメージ ギャラリーですべて検索しています。
 
 ```azurecli-interactive
 az sig image-version list \
@@ -37,7 +37,7 @@ az sig image-version list \
 ```
 
 
-この例では、*myManagedDisk* という名前のマネージド ディスクを、*EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
+この例では、 *myManagedDisk* という名前のマネージド ディスクを、 *EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"

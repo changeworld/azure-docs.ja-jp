@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22f74d3135597e8627cf7af933f8c6f4fbebc990
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246811"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364050"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -226,15 +226,15 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 #### <a name="implement-just-in-time-access"></a>Just-In-Time アクセスを実装する
 
-*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) を使用します。
+*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity) を使用します。
 
 - ユーザーに JIT のみを必要とするアクセス許可を付与します。
 - 権限が自動的に取り消される、短縮された期間のロールを割り当てます。
 
 ### <a name="require-re-authentication-for-important-transactions"></a>重要なトランザクションには再認証を要求する
 
-[クロスサイト リクエスト フォージェリ](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (*XSRF* または *CSRF*) は、Web でホストされるアプリに対する攻撃であり、悪意のある Web アプリが、クライアント ブラウザーとそのブラウザーが信頼する Web アプリの間のやり取りに影響を及ぼします。 クロスサイト リクエスト フォージェリ攻撃が起こり得るのは、Web ブラウザーが要求ごとにある種の認証トークンを自動的に Web サイトに送信するからです。
-この種の悪用は、攻撃がユーザーの以前に認証されたセッションを利用するため、*ワンクリック攻撃*または*セッション ライディング*とも呼ばれています。
+[クロスサイト リクエスト フォージェリ](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) ( *XSRF* または *CSRF* ) は、Web でホストされるアプリに対する攻撃であり、悪意のある Web アプリが、クライアント ブラウザーとそのブラウザーが信頼する Web アプリの間のやり取りに影響を及ぼします。 クロスサイト リクエスト フォージェリ攻撃が起こり得るのは、Web ブラウザーが要求ごとにある種の認証トークンを自動的に Web サイトに送信するからです。
+この種の悪用は、攻撃がユーザーの以前に認証されたセッションを利用するため、 *ワンクリック攻撃* または *セッション ライディング* とも呼ばれています。
 
 このような攻撃を防御する最善の方法は、購入、アカウントの非アクティブ化、パスワードの変更などのすべての重要なトランザクションの前に、ユーザーしか提供できないものを提供するようユーザーに求めることです。 ユーザーに、パスワードの再入力、キャプチャの入力、またはユーザーだけが持っているシークレット トークンの送信を求めることもできます。 最も一般的なアプローチは、シークレット トークンです。
 
@@ -244,9 +244,9 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 キー、証明書、シークレット、および接続文字列は、常にキー管理ソリューションに格納してください。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](../../key-vault/general/overview.md) によりクラウドで HSM を提供しています。
 
-Azure Key Vault は*シークレット ストア*であり、アプリケーション シークレットを格納するための一元的なクラウド サービスです。 Key Vault は、アプリケーションのシークレットを中央の 1 か所に保存し、アクセスをセキュリティで保護し、アクセス許可を制御し、アクセスをログに記録することで、機密データを保護します。
+Azure Key Vault は *シークレット ストア* であり、アプリケーション シークレットを格納するための一元的なクラウド サービスです。 Key Vault は、アプリケーションのシークレットを中央の 1 か所に保存し、アクセスをセキュリティで保護し、アクセス許可を制御し、アクセスをログに記録することで、機密データを保護します。
 
-シークレットは個々の*コンテナー*に格納されています。 各コンテナーには、アクセスを制御するための独自の構成とセキュリティ ポリシーがあります。 データにアクセスするには、REST API を使用するか、クライアントのほとんどのプログラミング言語で利用可能な SDK を使用します。
+シークレットは個々の *コンテナー* に格納されています。 各コンテナーには、アクセスを制御するための独自の構成とセキュリティ ポリシーがあります。 データにアクセスするには、REST API を使用するか、クライアントのほとんどのプログラミング言語で利用可能な SDK を使用します。
 
 > [!IMPORTANT]
 > Azure Key Vault は、サーバー アプリケーションの構成シークレットを格納するように設計されています。 アプリ ユーザーに属するデータを格納するためのものではありません。 これは、そのパフォーマンス特性、API、およびコスト モデルに反映されます。

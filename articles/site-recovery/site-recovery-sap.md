@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86133703"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369422"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -39,13 +39,13 @@ Site Recovery を使用すると、次のことができます。
 
 Site Recovery を使用して、次のシナリオのディザスター リカバリー ソリューションを実装できます。
 * ある Azure データセンターで実行されている SAP システムを、別の Azure データセンターにレプリケートしています (Azure 間のディザスター リカバリー)。 
-   詳細については、「[Azure から Azure へのレプリケーション アーキテクチャ](https://aka.ms/asr-a2a-architecture)」をご覧ください。
+   詳細については、「[Azure から Azure へのレプリケーション アーキテクチャ](./azure-to-azure-architecture.md)」をご覧ください。
 * オンプレミスの VMware (または物理) サーバーで実行されている SAP システムがあります。 また、SAP システムを Azure データセンターのディザスター リカバリー サイトにレプリケートしています (VMware から Azure へのディザスター リカバリー)。 
-   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[VMware から Azure へのレプリケーション アーキテクチャ](https://aka.ms/asr-v2a-architecture)」をご覧ください。
+   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[VMware から Azure へのレプリケーション アーキテクチャ](./vmware-azure-architecture.md)」をご覧ください。
 * SAP システムをオンプレミスの Hyper-V で実行しています。 また、SAP システムを Azure データセンターのディザスター リカバリー サイトにレプリケートしています (Hyper-V から Azure へのディザスター リカバリー)。
-   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[Hyper-V から Azure へのレプリケーション アーキテクチャ](https://aka.ms/asr-h2a-architecture)」をご覧ください。
+   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[Hyper-V から Azure へのレプリケーション アーキテクチャ](./hyper-v-azure-architecture.md)」をご覧ください。
 
-この記事では、**Azure から Azure** へのディザスター リカバリー シナリオを使用します。 このシナリオでは、Site Recovery の SAP ディザスター リカバリー機能について説明します。 Site Recovery レプリケーションはアプリケーション固有ではないため、説明されているプロセスの他のシナリオへの適用も期待できます。
+この記事では、 **Azure から Azure** へのディザスター リカバリー シナリオを使用します。 このシナリオでは、Site Recovery の SAP ディザスター リカバリー機能について説明します。 Site Recovery レプリケーションはアプリケーション固有ではないため、説明されているプロセスの他のシナリオへの適用も期待できます。
 
 ### <a name="required-foundation-services"></a>必要な基礎サービス
 この記事で説明するシナリオでは、次の基盤サービスがデプロイされます。

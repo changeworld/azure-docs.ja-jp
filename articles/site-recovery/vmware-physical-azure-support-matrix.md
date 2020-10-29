@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 8983923a6ccc3b5462c3e9f00337763b225ed9ac
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5b511eeb99b70fd64a5366b7b54900166f06b4d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330310"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369320"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -65,7 +65,7 @@ Site Recovery は、サポートされているマシンで実行されている
 **コンポーネント** | **詳細**
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
-マシンのワークロード | Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。 [詳細については、こちらを参照してください](https://aka.ms/asr_workload)。
+マシンのワークロード | Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。 [詳細については、こちらを参照してください](./site-recovery-workload.md)。
 コンピューター名 | コンピューターの表示名が [Azure 予約済みリソース名](../azure-resource-manager/templates/error-reserved-resource-name.md)に含まれていないことを確認します。<br/><br/> 論理ボリューム名では、大文字と小文字は区別されません。 デバイス上の 2 つのボリュームに同じ名前が付いていないことを確認します。 例:"voLUME1" と "volume1" という名前のボリュームは、Azure Site Recovery を使用して保護できません。
 
 ### <a name="for-windows"></a>Windows の場合
@@ -235,7 +235,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
 ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
-ゲスト/サーバー EFI/UEFI ブート | - Site Recovery モビリティ エージェント バージョン 9.30 以降のすべての [Azure Marketplace UEFI OS](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) でサポートされています。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+ゲスト/サーバー EFI/UEFI ブート | - Site Recovery モビリティ エージェント バージョン 9.30 以降のすべての [Azure Marketplace UEFI OS](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) でサポートされています。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 

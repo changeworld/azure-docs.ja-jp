@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565057"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369813"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -65,9 +65,9 @@ ms.locfileid: "89565057"
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 
-* [Assigning licenses to a group in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
-* [Azure Active Directory のグループのライセンスに関する問題の特定と解決](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory グループベース ライセンスのその他のシナリオ](../users-groups-roles/licensing-group-advanced.md)
-* [Azure Active Directory のグループベースのライセンスの PowerShell の例](../users-groups-roles/licensing-ps-examples.md)
+* [Assigning licenses to a group in Azure Active Directory](../enterprise-users/licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
+* [Azure Active Directory のグループのライセンスに関する問題の特定と解決](../enterprise-users/licensing-groups-resolve-problems.md)
+* [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](../enterprise-users/licensing-groups-migrate-users.md)
+* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../enterprise-users/licensing-groups-change-licenses.md)
+* [Azure Active Directory グループベース ライセンスのその他のシナリオ](../enterprise-users/licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスの PowerShell の例](../enterprise-users/licensing-ps-examples.md)

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387679"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363863"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell を使用して Azure AD B2C のカスタム ポリシーを管理する
 
@@ -29,7 +29,7 @@ Azure PowerShell には、Azure AD B2C テナントに対するコマンド ラ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
+* [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
 * テナントにアップロード済みの[カスタム ポリシー](custom-policy-get-started.md)
 * [Azure AD PowerShell for Graph **プレビュー モジュール**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
@@ -37,7 +37,7 @@ Azure PowerShell には、Azure AD B2C テナントに対するコマンド ラ�
 
 Azure AD B2C テナントでカスタム ポリシーを使用するには、まず、[Connect-AzureAD][Connect-AzureAD] コマンドを使用して、PowerShell セッションをテナントに接続する必要があります。
 
-次のコマンドを実行します。`{b2c-tenant-name}` を Azure AD B2C テナントの名前で置き換えてください。 ディレクトリ内で [B2C IEF ポリシー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)ロールが割り当てられているアカウントを使用してサインインします。
+次のコマンドを実行します。`{b2c-tenant-name}` を Azure AD B2C テナントの名前で置き換えてください。 ディレクトリ内で [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)ロールが割り当てられているアカウントを使用してサインインします。
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"

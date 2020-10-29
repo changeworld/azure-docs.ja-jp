@@ -9,12 +9,12 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b004bb4fbca768d782863f73d83ec5443bc66ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320611"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366957"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher の構成
 
@@ -144,7 +144,7 @@ OPC Publisher は、次の IoT Hub ダイレクト メソッド呼び出しを�
 - ExitApplication
 - GetInfo
 
-メソッドの要求と応答の JSON ペイロードの形式は、[opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs) に定義されています。
+メソッドの要求と応答の JSON ペイロードの形式は、[opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher) に定義されています。
 
 モジュールで不明なメソッドを呼び出すと、そのメソッドが実装されていないことを示す文字列を返します。 不明なメソッドの呼び出しを、モジュールに ping を実行する手段として使用できます。
 

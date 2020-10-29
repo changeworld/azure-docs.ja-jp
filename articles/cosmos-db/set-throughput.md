@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331823"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367127"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 
@@ -43,9 +43,6 @@ Azure Cosmos コンテナーに対してプロビジョニングされたスル�
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>データベースでスループットを設定する
-
-> [!NOTE]
-> 現在のところ、[カスタマーマネージド キー](how-to-setup-cmk.md)が有効なアカウントでは、Azure Cosmos データベースでのスループットのプロビジョニングを使用できません。
 
 Azure Cosmos データベースでスループットをプロビジョニングすると、スループットはデータベースのすべてのコンテナー (共有データベース コンテナーと呼ばれます) で共有されます。 例外は、データベース内の特定のコンテナーでプロビジョニング済みスループットを指定した場合です。 データベースレベルのプロビジョニング済みスループットを複数のコンテナーで共有することは、マシンのクラスター上でデータベースをホストすることと似ています。 データベース内のすべてのコンテナーによって、コンピューターで使用可能なリソースが共有されるため、必然的に、特定のコンテナーで予想どおりのパフォーマンスを得ることはできません。 データベース上のプロビジョニング済みスループットを構成する方法については、[Azure Cosmos データベース上のプロビジョニング済みスループットの構成](how-to-provision-database-throughput.md)に関するページを参照してください。 データベースで自動スケール スループットを構成する方法については、「[自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)」を参照してください。
 
@@ -122,7 +119,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 * .NET SDK では [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true)。
 * Java SDK では [Java SDK の CosmosContainer](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true)。
 
-**プロビジョニング済みのスループットを低くする** 場合は、[最低値](#current-provisioned-throughput)までそれを行うことができます。
+**プロビジョニング済みのスループットを低くする** 場合は、 [最低値](#current-provisioned-throughput)までそれを行うことができます。
 
 **プロビジョニング済みのスループットを高くする** 場合、多くは、その操作は瞬時に行われます。 ただし、必要なリソースをプロビジョニングするシステム タスクが原因で、操作により長い時間がかかる場合があります。 この場合、その操作の実行中にプロビジョニング済みのスループットを変更しようとすると、別のスケーリング操作が進行中であることを示すエラーメッセージを含む HTTP 423 応答が返されます。
 

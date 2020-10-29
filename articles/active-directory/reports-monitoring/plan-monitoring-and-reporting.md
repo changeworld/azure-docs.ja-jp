@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311231"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362401"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -101,11 +101,11 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 |領域 |説明 |
 |-|-|
-|保持| **30 日を超えるログ保有期間**。 ‎法的または業務上の要件により、Azure AD の監査ログとサインイン ログを 30 日よりも長く保存する必要があります。 |
-|Analytics| **ログが検索可能である必要がある**。 ‎保存されたログを分析ツールを使用して検索できる必要があります。 |
-| Operational Insights| **さまざまなチームのための分析情報**。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
-| セキュリティ分析情報| **さまざまなチームのための分析情報**。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
-| SIEM システムでの統合      | **SIEM の統合**。 ‎Azure AD のサインイン ログと監査ログを既存の SIEM システムに統合およびストリーム配信する必要があります。 |
+|保持| **30 日を超えるログ保有期間** 。 ‎法的または業務上の要件により、Azure AD の監査ログとサインイン ログを 30 日よりも長く保存する必要があります。 |
+|Analytics| **ログが検索可能である必要がある** 。 ‎保存されたログを分析ツールを使用して検索できる必要があります。 |
+| Operational Insights| **さまざまなチームのための分析情報** 。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
+| セキュリティ分析情報| **さまざまなチームのための分析情報** 。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
+| SIEM システムでの統合      | **SIEM の統合** 。 ‎Azure AD のサインイン ログと監査ログを既存の SIEM システムに統合およびストリーム配信する必要があります。 |
 
 ### <a name="choose-a-monitoring-solution-architecture"></a>監視ソリューションのアーキテクチャを選択する
 
@@ -151,9 +151,9 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 * レポート閲覧者
 
-[Azure AD 管理者ロール](../users-groups-roles/directory-assign-admin-roles.md)の詳細を確認します。
+[Azure AD 管理者ロール](../roles/permissions-reference.md)の詳細を確認します。
 
-*アカウント侵害*のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
+*アカウント侵害* のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
 
 ##  
 

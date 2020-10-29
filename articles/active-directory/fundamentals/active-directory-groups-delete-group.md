@@ -13,17 +13,17 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565509"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371819"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory を使用してグループを削除する
 Azure Active Directory (Azure AD) グループはさまざまな理由で削除されますが、通常は次のために行います。
 
-- 不正なオプションで**グループの種類**を設定してしまった。
+- 不正なオプションで **グループの種類** を設定してしまった。
 
 - 誤って不正なグループを作成したか、重複して作成してしまった。 
 
@@ -48,4 +48,4 @@ Azure Active Directory (Azure AD) グループはさまざまな理由で削除�
 
 - 間違ってグループを削除してしまった場合、それを再作成することができます。 詳細については、[基本グループを作成し、メンバーを追加する方法](active-directory-groups-create-azure-portal.md)に関するページを参照してください。
 
-- Microsoft 365 グループを誤って削除した場合は、それを復元できる可能性があります。 詳細については、「[削除済みの Office 365 グループを復元する](../users-groups-roles/groups-restore-deleted.md)」を参照してください。
+- Microsoft 365 グループを誤って削除した場合は、それを復元できる可能性があります。 詳細については、「[削除済みの Office 365 グループを復元する](../enterprise-users/groups-restore-deleted.md)」を参照してください。

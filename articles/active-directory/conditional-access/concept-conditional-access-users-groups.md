@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145410"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366362"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
@@ -46,13 +46,13 @@ ms.locfileid: "92145410"
 > ユーザーまたはグループが 2048 を超えるグループのメンバーである場合、そのアクセスはブロックされる可能性があります。 この制限は、直接と入れ子の両方のグループ メンバーシップに適用されます。
 
 > [!WARNING]
-> 条件付きアクセス ポリシーは、[管理単位にスコープ指定されている](../users-groups-roles/roles-admin-units-assign-roles.md)ディレクトリ ロール、または ([カスタム ロール](../users-groups-roles/roles-create-custom.md)経由などで) オブジェクトに直接スコープ指定されているディレクトリ ロールが割り当てられているユーザーをサポートしません。
+> 条件付きアクセス ポリシーは、[管理単位にスコープ指定されている](../roles/admin-units-assign-roles.md)ディレクトリ ロール、または ([カスタム ロール](../roles/custom-create.md)経由などで) オブジェクトに直接スコープ指定されているディレクトリ ロールが割り当てられているユーザーをサポートしません。
 
 ## <a name="exclude-users"></a>ユーザーを除外する
 
 組織がユーザーまたはグループの追加と除外の両方を実行すると、ポリシーでは除外アクションが追加よりも優先されるため、ユーザーまたはグループがポリシーから除外されます。 除外は一般的に、緊急アクセス アカウントや非常用アカウントのために使用されます。 緊急アクセス アカウントとそれが重要である理由の詳細については、以下の記事を参照してください。 
 
-* [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+* [Azure AD で緊急アクセス用アカウントを管理する](../roles/security-emergency-access.md)
 * [Azure Active Directory で回復性があるアクセス制御管理戦略を作成する](../authentication/concept-resilient-controls.md)
 
 条件付きアクセス ポリシーの作成時には、除外するために以下のオプションを使用できます。

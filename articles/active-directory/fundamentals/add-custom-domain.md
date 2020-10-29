@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321176"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370867"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 
-新しい Azure AD テナントにはすべて、 *\<domainname>.onmicrosoft.com* という初期ドメイン名が付きます。 初期ドメイン名は変更したり削除したりできませんが、お客様の組織の名前を追加することはできます。 カスタム ドメイン名を追加すると、*alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
+新しい Azure AD テナントにはすべて、 *\<domainname>.onmicrosoft.com* という初期ドメイン名が付きます。 初期ドメイン名は変更したり削除したりできませんが、お客様の組織の名前を追加することはできます。 カスタム ドメイン名を追加すると、 *alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -30,7 +30,7 @@ ms.locfileid: "89321176"
 
 ## <a name="create-your-directory-in-azure-ad"></a>Azure AD ディレクトリを作成する
 
-ドメイン名を取得したら、最初の Azure AD ディレクトリを作成できます。 サブスクリプションの**所有者**ロールを持つアカウントを使用して、お使いのディレクトリの Azure portal にサインインします。
+ドメイン名を取得したら、最初の Azure AD ディレクトリを作成できます。 サブスクリプションの **所有者** ロールを持つアカウントを使用して、お使いのディレクトリの Azure portal にサインインします。
 
 [組織の新しいテナントを作成する](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)ことに関するページの手順に従って、新しいディレクトリを作成します。
 
@@ -84,7 +84,7 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 1. 任意のページから *Azure Active Directory* を検索して選択し、 **[カスタム ドメイン名]** を選択します。
 
-1. **[カスタム ドメイン名]** から、カスタム ドメイン名を選択します。 この例では、**contoso.com** を選択します。
+1. **[カスタム ドメイン名]** から、カスタム ドメイン名を選択します。 この例では、 **contoso.com** を選択します。
 
     ![[Fabrikam - カスタム ドメイン名] ページで [Contoso] が強調表示されている](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
@@ -98,15 +98,15 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 Azure AD でカスタム ドメイン名を検証できない場合は、次の推奨事項を試してください。
 
-- **少なくとも 1 時間待機してから、もう一度試します**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 このプロセスに 1 時間以上かかることがあります。
+- **少なくとも 1 時間待機してから、もう一度試します** 。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 このプロセスに 1 時間以上かかることがあります。
 
 - **DNS レコードが正しいことを確認します。** ドメイン名レジストラー サイトに戻ります。 エントリがあること、およびそれが Azure AD によって提供される DNS エントリ情報と一致していることを確認します。
 
   ご自分ではレジストラー サイトでレコードを更新できない場合は、エントリを追加するアクセス許可を持つ人とエントリを共有して、それが正しいことを検証してください。
 
-- **そのドメイン名が、別のディレクトリで既に使用中でないことを確認します。** ドメイン名は、1 つのディレクトリでのみ検証できます。 ドメイン名が現在別のディレクトリで検証中の場合、それを新しいディレクトリでも検証することはできません。 この重複の問題を解決するには、古いディレクトリからそのドメイン名を削除する必要があります。 ドメイン名の削除に関する詳細については、[カスタム ドメイン名の管理](../users-groups-roles/domains-manage.md)に関するページを参照してください。
+- **そのドメイン名が、別のディレクトリで既に使用中でないことを確認します。** ドメイン名は、1 つのディレクトリでのみ検証できます。 ドメイン名が現在別のディレクトリで検証中の場合、それを新しいディレクトリでも検証することはできません。 この重複の問題を解決するには、古いディレクトリからそのドメイン名を削除する必要があります。 ドメイン名の削除に関する詳細については、[カスタム ドメイン名の管理](../enterprise-users/domains-manage.md)に関するページを参照してください。
 
-- **管理されていない Power BI テナントがないことを確認します。** ユーザーがセルフサービス サインアップから Power BI をアクティブ化し、組織に対して管理されていないテナントを作成した場合、PowerShell を使用して、内部管理者または外部管理者として管理を引き継ぐ必要があります。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../users-groups-roles/domains-admin-takeover.md)」を参照してください。
+- **管理されていない Power BI テナントがないことを確認します。** ユーザーがセルフサービス サインアップから Power BI をアクティブ化し、組織に対して管理されていないテナントを作成した場合、PowerShell を使用して、内部管理者または外部管理者として管理を引き継ぐ必要があります。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../enterprise-users/domains-admin-takeover.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -114,6 +114,6 @@ Azure AD でカスタム ドメイン名を検証できない場合は、次の�
 
 - ユーザーをドメインに追加します。 詳細については、[ユーザーを追加または削除する](add-users-azure-active-directory.md)方法に関する記事をご覧ください。
 
-- Azure AD でドメイン名の情報を管理します。 詳細については、[カスタム ドメイン名の管理](../users-groups-roles/domains-manage.md)に関するページを参照してください。
+- Azure AD でドメイン名の情報を管理します。 詳細については、[カスタム ドメイン名の管理](../enterprise-users/domains-manage.md)に関するページを参照してください。
 
 - Azure Active Directory と共に使用するつもりのオンプレミス バージョンの Windows Server がある場合は、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。

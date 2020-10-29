@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2847678c78aec4a287427463a9aeeb8bd82c6771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969916"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371938"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、ユーザーまたはサービス プリンシパルがなることができ、メンバーシップを含むグループを管理できます。 既存のグループ所有者またはグループを管理する管理者のみがグループ所有者を割り当てることができます。 グループ所有者は、グループのメンバーである必要はありません。
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) グループを所有および管理するの�
 ### <a name="to-add-a-group-owner"></a>グループ所有者を追加するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、 *MDM policy - West* ) を選択します。
 
 3. **[MDM policy - West の概要]** ページで、 **[所有者]** を選択します。
 
@@ -48,7 +48,7 @@ Azure AD を使用してグループから所有者を削除します。
 ### <a name="to-remove-an-owner"></a>所有者を削除するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、 *MDM policy - West* ) を選択します。
 
 3. **[MDM policy - West の概要]** ページで、 **[所有者]** を選択します。
 
@@ -63,10 +63,10 @@ Azure AD を使用してグループから所有者を削除します。
 ## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 
-- [グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)
+- [グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)
 
-- [グループを使用して、統合された SaaS アプリに対するアクセス権を割り当てる](../users-groups-roles/groups-saasapps.md)
+- [グループを使用して、統合された SaaS アプリに対するアクセス権を割り当てる](../enterprise-users/groups-saasapps.md)
 
 - [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)
 
-- [グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-v2-cmdlets.md)

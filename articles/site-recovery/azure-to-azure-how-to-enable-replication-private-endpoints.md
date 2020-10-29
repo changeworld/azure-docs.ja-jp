@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2db8d09511385039ea79ad1ed1f50177156f69c8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658257"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369932"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>プライベート エンドポイントを使用してマシンをレプリケートする
 
@@ -32,11 +32,11 @@ Azure Site Recovery では、分離された仮想ネットワーク内部から
 
 ## <a name="prerequisites-and-caveats"></a>前提条件と注意事項
 
-- プライベート エンドポイントは、コンテナー内に登録済みの項目がない新しい Recovery Services コンテナーに対してのみ作成できます。 そのため、プライベート エンドポイントは、**コンテナーに項目が追加される前に作成される必要があります**。 [プライベート エンドポイント](https://azure.microsoft.com/pricing/details/private-link/)の価格体系を確認してください。
-- コンテナーに対してプライベート エンドポイントが作成されると、そのコンテナーはロック ダウンされ、**プライベート エンドポイントを持つネットワーク以外のネットワークからアクセスできなくなります**。
+- プライベート エンドポイントは、コンテナー内に登録済みの項目がない新しい Recovery Services コンテナーに対してのみ作成できます。 そのため、プライベート エンドポイントは、 **コンテナーに項目が追加される前に作成される必要があります** 。 [プライベート エンドポイント](https://azure.microsoft.com/pricing/details/private-link/)の価格体系を確認してください。
+- コンテナーに対してプライベート エンドポイントが作成されると、そのコンテナーはロック ダウンされ、 **プライベート エンドポイントを持つネットワーク以外のネットワークからアクセスできなくなります** 。
 - 現在 Azure Active Directory では、プライベート エンドポイントはサポートされていません。 そのため、Azure Active Directory をリージョンで動作させるために必要な IP と完全修飾ドメイン名は、セキュリティで保護されたネットワークからの発信アクセスで許可されたものである必要があります。 また必要に応じて、ネットワーク セキュリティ グループ タグである "Azure Active Directory" と Azure Firewall タグを使用して、Azure Active Directory へのアクセスを許可することもできます。
-- ソースマシンと回復マシンの両方のサブネットに、**少なくとも 7 つの IP アドレスが必要です**。 コンテナーのプライベート エンドポイントを作成すると、Site Recovery によってマイクロサービスにアクセスするための 5 つのプライベート リンクが作成されます。 さらに、レプリケーションを有効にすると、ソース リージョンとターゲット リージョンのペアリング用に 2 つの追加プライベート リンクが追加されます。
-- ソース サブネットと回復サブネットの両方に、**追加の IP アドレスが 1 つ必要です**。 この IP アドレスは、キャッシュ ストレージ アカウントに接続しているプライベート エンドポイントを使用する必要がある場合にのみ必要です。
+- ソースマシンと回復マシンの両方のサブネットに、 **少なくとも 7 つの IP アドレスが必要です** 。 コンテナーのプライベート エンドポイントを作成すると、Site Recovery によってマイクロサービスにアクセスするための 5 つのプライベート リンクが作成されます。 さらに、レプリケーションを有効にすると、ソース リージョンとターゲット リージョンのペアリング用に 2 つの追加プライベート リンクが追加されます。
+- ソース サブネットと回復サブネットの両方に、 **追加の IP アドレスが 1 つ必要です** 。 この IP アドレスは、キャッシュ ストレージ アカウントに接続しているプライベート エンドポイントを使用する必要がある場合にのみ必要です。
   ストレージのプライベート エンドポイントは、General Purpose v2 の種類でのみ作成できます。 [GPv2 でのデータ転送](https://azure.microsoft.com/pricing/details/storage/page-blobs/)の価格体系を確認してください。
 
  ## <a name="creating-and-using-private-endpoints-for-site-recovery"></a>Site Recovery のプライベート エンドポイントを作成して使用する
@@ -61,7 +61,7 @@ Recovery Services コンテナーは、マシンのレプリケーション情�
 
 1. **[状態]** を _[On]_ に変更し、 **[保存]** を選択します。
 
-1. コンテナーが Azure Active Directory に登録されたことを示す、**オブジェクト ID** が生成されます。
+1. コンテナーが Azure Active Directory に登録されたことを示す、 **オブジェクト ID** が生成されます。
 
 ## <a name="create-private-endpoints-for-the-recovery-services-vault"></a>Recovery Services コンテナーのプライベート エンドポイントを作成する
 
@@ -83,11 +83,11 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
-   1. **リソース**:このタブでは、接続を作成する対象となるサービスとしてのプラットフォームのリソースについて指定する必要があります。 選択したサブスクリプションの **[リソースの種類]** から、 _[Microsoft.RecoveryServices/vaults]_ を選択します。 次に、 **[リソース]** で Recovery Services コンテナーの名前を選択し、 **[対象サブリソース]** として _[Azure Site Recovery]_ を設定します。
+   1. **リソース** :このタブでは、接続を作成する対象となるサービスとしてのプラットフォームのリソースについて指定する必要があります。 選択したサブスクリプションの **[リソースの種類]** から、 _[Microsoft.RecoveryServices/vaults]_ を選択します。 次に、 **[リソース]** で Recovery Services コンテナーの名前を選択し、 **[対象サブリソース]** として _[Azure Site Recovery]_ を設定します。
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
-   1. **構成**:[構成] では、プライベート エンドポイントを作成する仮想ネットワークとサブネットを指定します。 この仮想ネットワークは、仮想マシンが存在するネットワークです。 プライベート DNS ゾーンとの統合を有効にするために、 **[はい]** を選択します。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。 **[はい]** を選択すると、ゾーンがソース仮想ネットワークに自動的にリンクされ、プライベート エンドポイント用に作成された新しい IP と完全修飾ドメイン名の DNS 解決に必要な DNS レコードが追加されます。
+   1. **構成** :[構成] では、プライベート エンドポイントを作成する仮想ネットワークとサブネットを指定します。 この仮想ネットワークは、仮想マシンが存在するネットワークです。 プライベート DNS ゾーンとの統合を有効にするために、 **[はい]** を選択します。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。 **[はい]** を選択すると、ゾーンがソース仮想ネットワークに自動的にリンクされ、プライベート エンドポイント用に作成された新しい IP と完全修飾ドメイン名の DNS 解決に必要な DNS レコードが追加されます。
 
       同じコンテナーに接続する新しいプライベート エンドポイントごとに、新しい DNS ゾーンを作成することを選択するようにしてください。 既存のプライベート DNS ゾーンを選択した場合は、以前の CNAME レコードは上書きされます。 続行する前に、[プライベート エンドポイントのガイダンス](../private-link/private-endpoint-overview.md#private-endpoint-properties)に関するページを参照してください。
 
@@ -97,7 +97,7 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
-   1. **タグ**:必要に応じて、プライベート エンドポイントにタグを追加できます。
+   1. **タグ** :必要に応じて、プライベート エンドポイントにタグを追加できます。
 
    1. **[確認と作成]** :検証が完了したら、 **[作成]** を選択してプライベート エンドポイントを作成します。
 
@@ -117,15 +117,15 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
 ## <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>(省略可能) キャッシュ ストレージ アカウントのプライベート エンドポイントを作成する
 
-Azure Storage へのプライベート エンドポイントが使用できます。 ストレージ アクセス用のプライベート エンドポイントの作成は、Azure Site Recovery レプリケーションでは_省略可能_です。 ストレージのプライベート エンドポイントを作成すると、次の要件が適用されます。
+Azure Storage へのプライベート エンドポイントが使用できます。 ストレージ アクセス用のプライベート エンドポイントの作成は、Azure Site Recovery レプリケーションでは _省略可能_ です。 ストレージのプライベート エンドポイントを作成すると、次の要件が適用されます。
 
 - ソース仮想ネットワーク内にキャッシュ/ログ ストレージ アカウントのプライベート エンドポイントが必要です。
 - 回復ネットワーク内でフェールオーバーされたコンピューターを再保護するときに、2 番目のプライベート エンドポイントが必要です。 このプライベート エンドポイントは、ターゲット リージョンで作成された新しいストレージ アカウント用です。
 
 > [!NOTE]
-> ストレージのプライベート エンドポイントは、**General Purpose v2** ストレージ アカウントでのみ作成できます。 価格情報については、[Standard ページ BLOB の価格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)に関するページを参照してください。
+> ストレージのプライベート エンドポイントは、 **General Purpose v2** ストレージ アカウントでのみ作成できます。 価格情報については、[Standard ページ BLOB の価格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)に関するページを参照してください。
 
-[プライベート ストレージを作成するためのガイダンス](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint)に従って、プライベート エンドポイントとともにストレージ アカウントを作成します。 プライベート DNS ゾーンとの統合で **[はい]** を選択するようにしてください。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。
+[プライベート ストレージを作成するためのガイダンス](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint)に従って、プライベート エンドポイントとともにストレージ アカウントを作成します。 プライベート DNS ゾーンとの統合で **[はい]** を選択するようにしてください。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。
 
 ## <a name="grant-required-permissions-to-the-vault"></a>コンテナーに必要なアクセス許可を付与する
 
@@ -151,7 +151,7 @@ Azure Storage へのプライベート エンドポイントが使用できま�
 
    :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
-1. [ロールの割り当てを追加する] サイド ページで、 **[ロール]** ドロップダウンの一覧からロールを選択します。 コンテナーの**名前**を入力し、 **[保存]** を選択します。
+1. [ロールの割り当てを追加する] サイド ページで、 **[ロール]** ドロップダウンの一覧からロールを選択します。 コンテナーの **名前** を入力し、 **[保存]** を選択します。
 
    :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 

@@ -61,7 +61,7 @@ JavaScript フレームワークまたはライブラリで環境変数を使用
 
 ## <a name="about-api-app-settings"></a>API アプリケーション設定
 
-Azure Static Web Apps の API は Azure Functions の機能を利用しています。これにより、_local.settings.json_ ファイルでアプリケーション設定を定義できます。 このファイルは、構成の `Values` プロパティでアプリケーション設定を定義します。
+Azure Static Web Apps の API は Azure Functions の機能を利用しています。これにより、 _local.settings.json_ ファイルでアプリケーション設定を定義できます。 このファイルは、構成の `Values` プロパティでアプリケーション設定を定義します。
 
 次のサンプル _local.settings.json_ は、`DATABASE_CONNECTION_STRING` の値を追加する方法を示しています。
 
@@ -116,7 +116,7 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
 
 `az rest` コマンドを使用すると、設定を Azure に一括アップロードできます。 このコマンドは、`properties` という親プロパティで JSON オブジェクトとしてアプリケーション設定を受け入れます。
 
-適切な値を使用して JSON ファイルを作成する方法として最も簡単なのは、_local.settings.json_ ファイルの変更バージョンを作成することです。
+適切な値を使用して JSON ファイルを作成する方法として最も簡単なのは、 _local.settings.json_ ファイルの変更バージョンを作成することです。
 
 1. 機密データを含む新しいファイルが公開されないようにするには、 _.gitignore_ ファイルに次のエントリを追加します。
 
@@ -124,7 +124,7 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
    local.settings*.json
    ```
 
-2. 次に、_local.settings.json_ ファイルのコピーを作成して、_local.settings.properties.json_ という名前を付けます。
+2. 次に、 _local.settings.json_ ファイルのコピーを作成して、 _local.settings.properties.json_ という名前を付けます。
 
 3. この新しいファイル内で、アプリケーション設定を除く他のすべてのデータをファイルから削除し、名前を `Values` から `properties` に変更します。
 

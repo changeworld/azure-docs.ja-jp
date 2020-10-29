@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "91761841"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
@@ -66,7 +66,7 @@ ms.locfileid: "91761841"
 
 ## <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
 
-1. ポータルの左側で、 **[リソースの作成]** を選択し、検索ボックスに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で**仮想ネットワーク ゲートウェイ**を見つけて、そのエントリを選択します。 **[仮想ネットワーク ゲートウェイ]** のページで、 **[作成]** を選択します。
+1. ポータルの左側で、 **[リソースの作成]** を選択し、検索ボックスに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、そのエントリを選択します。 **[仮想ネットワーク ゲートウェイ]** のページで、 **[作成]** を選択します。
 1. **[仮想ネットワーク ゲートウェイの作成]** ページで、これらの設定を入力または選択します。
 
     | 設定 | [値] |

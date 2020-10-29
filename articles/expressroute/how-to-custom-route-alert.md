@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329851"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371496"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 
@@ -70,7 +70,7 @@ Automation アカウントを作成するには、特権とアクセス許可が
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2.実行アカウントにロールを割り当てる
 
-既定では、 **共同作成者** ロールが、 **実行** アカウントによって使用されるサービス プリンシパルに割り当てられます。 サービス プリンシパルに割り当てられた既定のロールを維持することも、[組み込みロール](../role-based-access-control/built-in-roles.md) (閲覧者など) または[カスタム ロール](../active-directory/users-groups-roles/roles-create-custom.md)を割り当てることによってアクセス許可を制限することもできます。
+既定では、 **共同作成者** ロールが、 **実行** アカウントによって使用されるサービス プリンシパルに割り当てられます。 サービス プリンシパルに割り当てられた既定のロールを維持することも、[組み込みロール](../role-based-access-control/built-in-roles.md) (閲覧者など) または[カスタム ロール](../active-directory/roles/custom-create.md)を割り当てることによってアクセス許可を制限することもできます。
 
  次の手順を使用して、実行アカウントで使用されるサービス プリンシパルに割り当てられているロールを決定します。
 

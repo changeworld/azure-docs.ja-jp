@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 7046062b1c2e42f47d650df6d616d6fb73c8d1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033066"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368589"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -95,7 +95,7 @@ PowerShell の使用
 
 1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、 **[IP フローの確認]** を選択します。 
 2. VM および NVA の IP アドレスを指定して、トラフィックが任意のネットワーク セキュリティ グループ (NSG) によってブロックされるかどうかを確認します。
-3. トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
+3. トラフィックをブロックする NSG ルールがある場合は、 **有効なセキュリティ** 規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
 
 **NVA および VM が予想されるトラフィックをリッスンしているかどうかを確認する**
 
@@ -140,7 +140,7 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. ソース VM から宛先 VM に対して **PsPing** または **Nmap** を使用します (例: `PsPing 10.0.0.4:80` または `Nmap -p 80 10.0.0.4`)。
-3. [ネットワーク モニター](https://cnet-downloads.com/network-monitor)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
+3. [ネットワーク モニター](https://download.cnet.com/s/network-monitor)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、 **PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
 
 ### <a name="analyze-traces"></a>トレースの分析
 

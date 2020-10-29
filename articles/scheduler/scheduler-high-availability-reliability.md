@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98a6672af7e74fdd0732f3ba03264d2f674eb44f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78898558"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368147"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure Scheduler の高可用性と信頼性
 
@@ -22,7 +22,7 @@ ms.locfileid: "78898558"
 >
 > Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
-Azure Scheduler では、[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)と信頼性の両方がジョブに提供されます。 詳しくは、「[Scheduler の SLA](https://azure.microsoft.com/support/legal/sla/scheduler)」をご覧ください。
+Azure Scheduler では、[高可用性](/azure/architecture/framework/#resiliency)と信頼性の両方がジョブに提供されます。 詳しくは、「[Scheduler の SLA](https://azure.microsoft.com/support/legal/sla/scheduler)」をご覧ください。
 
 ## <a name="high-availability"></a>高可用性
 

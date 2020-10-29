@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361906"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368385"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する
 
@@ -151,7 +151,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 ディレクトリからゲスト ユーザーを削除する前に、まずそのゲスト ユーザーのすべてのロールの割り当てを削除する必要があります。 ディレクトリからゲスト ユーザーを削除するには、次の手順を実行します。
 
-1. ゲスト ユーザーにロールが割り当てられている管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで**アクセス制御 (IAM)** を開きます。
+1. ゲスト ユーザーにロールが割り当てられている管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで **アクセス制御 (IAM)** を開きます。
 
 1. **[ロールの割り当て]** タブをクリックして、すべてのロールの割り当てを表示します。
 
@@ -183,7 +183,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 ![ゲスト ユーザーがディレクトリ内のユーザーを参照できません](./media/role-assignments-external-users/directory-no-users.png)
 
-ゲスト ユーザーがディレクトリで追加の特権を必要とする場合は、ゲスト ユーザーにディレクトリ ロールを割り当てることができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+ゲスト ユーザーがディレクトリで追加の特権を必要とする場合は、ゲスト ユーザーにディレクトリ ロールを割り当てることができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
 
 ![ディレクトリ閲覧者ロールの割り当て](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,11 +193,11 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 ![ゲスト ユーザーがセキュリティ プリンシパルを参照してロールを割り当てられません](./media/role-assignments-external-users/directory-no-browse.png)
 
-ゲスト ユーザーは、ディレクトリ内のユーザーの正確なサインイン名を知っていれば、アクセス権を付与することができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+ゲスト ユーザーは、ディレクトリ内のユーザーの正確なサインイン名を知っていれば、アクセス権を付与することができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>ゲスト ユーザーがアプリケーションを登録できません、またはサービス プリンシパルを作成できません
 
-ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがアプリケーションを登録できる、またはサービス プリンシパルを作成できる必要がある場合は、Azure AD の[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)ロールにゲスト ユーザーを追加します。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがアプリケーションを登録できる、またはサービス プリンシパルを作成できる必要がある場合は、Azure AD の[アプリケーション開発者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加します。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
 
 ![ゲスト ユーザーがアプリケーションを登録できません](./media/role-assignments-external-users/directory-access-denied.png)
 

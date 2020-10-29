@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80878393"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368164"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -40,7 +40,7 @@ Azure Scheduler REST API では、以下の主要なエンティティつまり�
 
 ### <a name="job-management"></a>ジョブの管理
 
-ジョブを作成および編集するための操作をサポートしています。 すべてのジョブは既存のジョブ コレクションに属する必要があるため、暗黙的な作成はありません。 詳しくは、[ジョブの Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/jobs) に関するページをご覧ください。 これらの操作の URI アドレスを次に示します。
+ジョブを作成および編集するための操作をサポートしています。 すべてのジョブは既存のジョブ コレクションに属する必要があるため、暗黙的な作成はありません。 詳しくは、[ジョブの Scheduler REST API](/rest/api/scheduler/jobs) に関するページをご覧ください。 これらの操作の URI アドレスを次に示します。
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>ジョブ コレクションの管理
 
-ジョブとジョブ コレクションの作成と編集の操作をサポートし、クォータと共有設定にマップしています。 たとえば、クォータではジョブの最大数や最小の繰り返し間隔が指定されています。 詳しくは、[ジョブ コレクションの Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/jobcollections) に関するページをご覧ください。 これらの操作の URI アドレスを次に示します。
+ジョブとジョブ コレクションの作成と編集の操作をサポートし、クォータと共有設定にマップしています。 たとえば、クォータではジョブの最大数や最小の繰り返し間隔が指定されています。 詳しくは、[ジョブ コレクションの Scheduler REST API](/rest/api/scheduler/jobcollections) に関するページをご覧ください。 これらの操作の URI アドレスを次に示します。
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>ジョブ履歴の管理
 
-ジョブの経過時間やジョブの実行結果など、60 日分のジョブの実行履歴をフェッチするための GET 操作がサポートされています。 状態およびステータスに基づいてフィルター処理を行うためのクエリ文字列パラメーターのサポートを含みます。 詳しくは、[ジョブのジョブ履歴一覧表示の Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) に関するページをご覧ください。 この操作の URI アドレスを次に示します。
+ジョブの経過時間やジョブの実行結果など、60 日分のジョブの実行履歴をフェッチするための GET 操作がサポートされています。 状態およびステータスに基づいてフィルター処理を行うためのクエリ文字列パラメーターのサポートを含みます。 詳しくは、[ジョブのジョブ履歴一覧表示の Scheduler REST API](/rest/api/scheduler/jobs/listjobhistory) に関するページをご覧ください。 この操作の URI アドレスを次に示します。
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -150,7 +150,7 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 
 ## <a name="action"></a>action
 
-Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [**errorAction**](#erroraction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
+Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション** を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション** が失敗した場合、Scheduler はエラーを処理するセカンダリ [**errorAction**](#erroraction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
 
 * アクションのサービスの種類
 * アクションの詳細
@@ -214,17 +214,17 @@ Service Bus トピック アクションの例を次に示します。
 },
 ```
 
-Shared Access Signature (SAS) トークンについて詳しくは、[Shared Access Signature での承認](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
+Shared Access Signature (SAS) トークンについて詳しくは、[Shared Access Signature での承認](../storage/common/storage-sas-overview.md)に関するページをご覧ください。
 
 <a name="error-action"></a>
 
 ## <a name="erroraction"></a>errorAction
 
-ジョブのプライマリ **アクション**が失敗した場合、Scheduler はエラーを処理する **errorAction** を実行できます。 プライマリ **アクション**では、Scheduler がエラー処理エンドポイントを呼び出したりユーザー通知を送信したりできるように、**errorAction** オブジェクトを指定できます。 
+ジョブのプライマリ **アクション** が失敗した場合、Scheduler はエラーを処理する **errorAction** を実行できます。 プライマリ **アクション** では、Scheduler がエラー処理エンドポイントを呼び出したりユーザー通知を送信したりできるように、 **errorAction** オブジェクトを指定できます。 
 
-たとえば、プライマリ エンドポイントで障害が発生した場合、**errorAction** を使用して、セカンダリ エンドポイントを呼び出したり、エラー処理エンドポイントに通知したりできます。 
+たとえば、プライマリ エンドポイントで障害が発生した場合、 **errorAction** を使用して、セカンダリ エンドポイントを呼び出したり、エラー処理エンドポイントに通知したりできます。 
 
-エラー アクションは、プライマリ **アクション**と同じように、単純なロジックにすることも、他のアクションに基づいた複合型のロジックにすることもできます。 
+エラー アクションは、プライマリ **アクション** と同じように、単純なロジックにすることも、他のアクションに基づいた複合型のロジックにすることもできます。 
 
 <a name="recurrence"></a>
 
@@ -248,9 +248,9 @@ Shared Access Signature (SAS) トークンについて詳しくは、[Shared Acc
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **frequency** | はい。**recurrence** が使用されているとき | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 発生の間隔の時間単位 | 
+| **frequency** | はい。 **recurrence** が使用されているとき | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 発生の間隔の時間単位 | 
 | **interval** | いいえ | 1 ～ 1000 | **frequency** に基づいて実行間の時間単位の数を決定する正の整数 | 
-| **schedule** | いいえ | 場合により異なる | 複雑で高度なスケジュールの詳細。 **hours**、**minutes**、**weekDays**、**months**、**monthDays** を参照してください | 
+| **schedule** | いいえ | 場合により異なる | 複雑で高度なスケジュールの詳細。 **hours** 、 **minutes** 、 **weekDays** 、 **months** 、 **monthDays** を参照してください | 
 | **hours** | いいえ | 1 ～ 24 | ジョブ実行日時に対する時マークを含む配列 | 
 | **分** | いいえ | 0 ～ 59 | ジョブ実行日時に対する分マークを含む配列 | 
 | **months** | いいえ | 1 ～ 12 | ジョブ実行日時に対する月の配列 | 
@@ -278,7 +278,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **retryType** | はい | **Fixed**、**None** | 再試行ポリシーを指定するか (**fixed**) しないか (**none**) を決定します。 | 
+| **retryType** | はい | **Fixed** 、 **None** | 再試行ポリシーを指定するか ( **fixed** ) しないか ( **none** ) を決定します。 | 
 | **retryInterval** | いいえ | PT30S | 再試行の間隔と頻度を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。 最小値は 15 秒、最大値は 18 か月です。 | 
 | **retryCount** | いいえ | 4 | 再試行の回数を指定します。 最大値は 20 です。 | 
 ||||
@@ -289,7 +289,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 
 ## <a name="state"></a>state
 
-ジョブの状態は、**Enabled**、**Disabled**、**Completed**、または **Faulted** です。次はその例です。 
+ジョブの状態は、 **Enabled** 、 **Disabled** 、 **Completed** 、または **Faulted** です。次はその例です。 
 
 `"state": "Disabled"`
 
@@ -300,7 +300,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 
 ## <a name="status"></a>status
 
-ジョブが開始した後、Scheduler はジョブのステータスに関する情報を **status** オブジェクトで返します。これは、Scheduler のみが制御します。 ただし、**status** オブジェクトは **job** オブジェクト内で見つかります。 ジョブのステータスには次の情報が含まれます。
+ジョブが開始した後、Scheduler はジョブのステータスに関する情報を **status** オブジェクトで返します。これは、Scheduler のみが制御します。 ただし、 **status** オブジェクトは **job** オブジェクト内で見つかります。 ジョブのステータスには次の情報が含まれます。
 
 * 前回の実行の日時 (ある場合)
 * 進行中のジョブに対してスケジュールされている次回の実行の日時

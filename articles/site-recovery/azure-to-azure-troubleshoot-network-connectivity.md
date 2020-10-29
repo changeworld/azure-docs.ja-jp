@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398308"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92368011"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -51,7 +51,7 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
 
 > [!NOTE]
-> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Microsoft 365 IP にアクセスすることはできません。 記事「[Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
+> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Microsoft 365 IP にアクセスすることはできません。 記事「 [Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
 
 #### <a name="possible-cause"></a>考えられる原因
 
@@ -60,23 +60,23 @@ Microsoft 365 認証と ID IP4 エンドポイントへの接続を確立でき�
 #### <a name="resolution"></a>解像度
 
 - Azure Site Recovery では、認証のために Microsoft 365 の IP 範囲にアクセスする必要があります。
-- VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルールやファイアウォール プロキシを使用している場合は、Microsoft 365 の IP 範囲への通信を確実に許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (Azure AD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG 規則を作成します。
+- VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルールやファイアウォール プロキシを使用している場合は、Microsoft 365 の IP 範囲への通信を確実に許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (Azure AD) サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags) ベースの NSG 規則を作成します。
 - 今後、新しいアドレスが Azure AD に追加された場合は、新しい NSG 規則を作成する必要があります。
 
 ### <a name="example-nsg-configuration"></a>NSG 構成の例
 
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
 
-- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して、"**HTTPS 送信を許可**" ルールを使用します。
-- この例では、VM ソースの場所は**米国東部**で、ターゲットの場所は**米国中部**であると仮定します。
+- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して、" **HTTPS 送信を許可** " ルールを使用します。
+- この例では、VM ソースの場所は **米国東部** で、ターゲットの場所は **米国中部** であると仮定します。
 
 #### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
 
-1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_Storage.EastUS_ および **[宛先ポート範囲]** : _443_。
+1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。 _Storage.EastUS_ および **[宛先ポート範囲]** : _443_ 。
 
      :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-error":::
 
-1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_AzureActiveDirectory_ および **[宛先ポート範囲]** : _443_。
+1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。 _AzureActiveDirectory_ および **[宛先ポート範囲]** : _443_ 。
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-error" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
@@ -118,8 +118,8 @@ Azure Site Recovery サービスのエンドポイントに対する接続を確
 1. モビリティ サービス エージェントは、Windows では IE から、Linux では `/etc/environment` からプロキシ設定を検出します。
 1. プロキシを Azure Site Recovery Mobility Service にのみ設定する場合は、次の場所にある _ProxyInfo.conf_ 内にプロキシの詳細を指定できます。
 
-   - **Linux**: `/usr/local/InMage/config/`
-   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux** : `/usr/local/InMage/config/`
+   - **Windows** : `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo.conf_ 内のプロキシ設定は、次の _INI_ 形式になっている必要があります。
 
@@ -130,7 +130,7 @@ Azure Site Recovery サービスのエンドポイントに対する接続を確
    ```
 
 > [!NOTE]
-> Azure Site Recovery Mobility Service エージェントでは、**認証されていないプロキシ**のみがサポートされます
+> Azure Site Recovery Mobility Service エージェントでは、 **認証されていないプロキシ** のみがサポートされます
 
 ### <a name="fix-the-problem"></a>問題の解決
 

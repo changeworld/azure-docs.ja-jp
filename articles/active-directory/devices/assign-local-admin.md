@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419820"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365835"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
 Windows デバイスを管理するには、ローカル管理者グループのメンバーになる必要があります。 Azure Active Directory (Azure AD) では、Azure AD の参加プロセス時に、デバイス上でのこのグループのメンバーシップが更新されます。 メンバーシップの更新方法は、ビジネス要件に応じてカスタマイズすることもできます。 メンバーシップの更新は、たとえば、デバイスへの管理者権限を要するタスクをヘルプデスク スタッフが実行できるようにするうえで役立ちます。
 
-この記事では、Azure AD 参加中のローカル管理者メンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、**ハイブリッド Azure AD 参加**デバイスには適用されません。
+この記事では、Azure AD 参加中のローカル管理者メンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、 **ハイブリッド Azure AD 参加** デバイスには適用されません。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -33,13 +33,13 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 - Azure AD 参加を実行するユーザー   
 
 ローカル管理者グループに Azure AD ロールを追加すれば、デバイスに一切変更を加えることなく、デバイスの管理ユーザーを Azure AD でいつでも更新できます。 現時点では、管理者ロールにグループを割り当てることはできません。
-また、Azure AD では、最小権限の原則 (PoLP) をサポートするために、Azure AD のデバイス管理者ロールもローカル管理者グループに追加されます。 グローバル管理者だけでなく、デバイス管理者ロール*だけ*を割り当てられたユーザーにも、デバイスの管理を許可することができます。 
+また、Azure AD では、最小権限の原則 (PoLP) をサポートするために、Azure AD のデバイス管理者ロールもローカル管理者グループに追加されます。 グローバル管理者だけでなく、デバイス管理者ロール *だけ* を割り当てられたユーザーにも、デバイスの管理を許可することができます。 
 
 ## <a name="manage-the-global-administrators-role"></a>グローバル管理者ロールの管理
 
 グローバル管理者ロールのメンバーシップを表示する方法や更新する方法については、次の記事をご覧ください。
 
-- [Azure Active Directory の管理者ロールのすべてのメンバーを表示する](../users-groups-roles/directory-manage-roles-portal.md)
+- [Azure Active Directory の管理者ロールのすべてのメンバーを表示する](../roles/manage-roles-portal.md)
 - [Azure Active Directory でユーザーを管理者ロールに割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
@@ -59,7 +59,7 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 >[!NOTE]
 > このオプションを使用するには、Azure AD Premium テナントが必要です。 
 
-デバイス管理者は、すべての Azure AD 参加済みデバイスに割り当てられます。 デバイス管理者の対象範囲を特定のデバイス セットに限定することはできません。 デバイス管理者ロールを更新しても、対象のユーザーにすぐに影響が及ぶとは限りません。 ユーザーが既にサインインしているデバイスでは、次の "*両方の*" アクションが発生したときに特権の昇格が行われます。
+デバイス管理者は、すべての Azure AD 参加済みデバイスに割り当てられます。 デバイス管理者の対象範囲を特定のデバイス セットに限定することはできません。 デバイス管理者ロールを更新しても、対象のユーザーにすぐに影響が及ぶとは限りません。 ユーザーが既にサインインしているデバイスでは、次の " *両方の* " アクションが発生したときに特権の昇格が行われます。
 
 - Azure AD が適切な特権を備える新しいプライマリ更新トークンを発行するために最大 4 時間が経過した。 
 - ユーザーが、プロファイルを更新するために、ロックおよびロック解除ではなく、いったんログアウトした後でサインインした。

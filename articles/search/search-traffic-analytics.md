@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "91333734"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 ユーザーによって検索要求が発行されるたびに、Application Insights のカスタム イベントに関する次のスキーマを使用して、検索要求を検索イベントとしてログに記録する必要があります。 ユーザーが生成する検索クエリだけをログに記録してください。
 
-+ **SearchServiceName**: (文字列) 検索サービス名
-+ **SearchId**: (GUID) 検索クエリの一意識別子 (検索応答で提供されます)
-+ **IndexName**: (文字列) クエリの実行対象となる検索サービス インデックス
-+ **QueryTerms**: (文字列) ユーザーによって入力された検索語句
-+ **ResultCount**: (整数) 返されたドキュメントの数 (検索応答で提供されます)
-+ **ScoringProfile**: (文字列) 使用されるスコアリング プロファイルの名前 (ある場合)
++ **SearchServiceName** : (文字列) 検索サービス名
++ **SearchId** : (GUID) 検索クエリの一意識別子 (検索応答で提供されます)
++ **IndexName** : (文字列) クエリの実行対象となる検索サービス インデックス
++ **QueryTerms** : (文字列) ユーザーによって入力された検索語句
++ **ResultCount** : (整数) 返されたドキュメントの数 (検索応答で提供されます)
++ **ScoringProfile** : (文字列) 使用されるスコアリング プロファイルの名前 (ある場合)
 
 > [!NOTE]
 > 検索クエリに $count=true を追加して、ユーザーによって生成されたクエリの数を要求します。 詳細については、[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents#counttrue--false) に関するページを参照してください。
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 ユーザーがドキュメントをクリックするたびに、それをシグナルとして、検索分析用にログに記録する必要があります。 Application Insights のカスタム イベントで次のスキーマを使用して、これらのイベントをログに記録します。
 
-+ **ServiceName**: (文字列) 検索サービス名
-+ **SearchId**: (GUID) 関連する検索クエリの一意識別子
-+ **DocId**: (文字列) ドキュメント識別子
-+ **Position**: (整数) 検索結果ページのドキュメントの順位
++ **ServiceName** : (文字列) 検索サービス名
++ **SearchId** : (GUID) 関連する検索クエリの一意識別子
++ **DocId** : (文字列) ドキュメント識別子
++ **Position** : (整数) 検索結果ページのドキュメントの順位
 
 > [!NOTE]
 > Position は、アプリケーションでの基本的な順序を指します。 比較できるように、この数値は常に同じであれば自由に設定できます。

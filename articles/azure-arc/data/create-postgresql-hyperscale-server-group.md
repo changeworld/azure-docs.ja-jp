@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108305"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364424"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -80,7 +80,7 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 
 > [!NOTE]
 > - **他のコマンドライン パラメーターも使用できます。`azdata arc postgres server create --help` を実行して、オプションの完全なリストを確認してください。**
-> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
+> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_ ) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
 > - --volume-size-* パラメーターで使用できる単位は、Kubernetes リソースの数量 (後に SI サフィックス (T、G、M、K、M) または 2 のべき乗の同等物 (Ti、Gi、Mi、Ki) のいずれかが続く整数) です。
 > - 名前は、12 文字以下の長さで入力し、DNS 名前付け規則に準拠している必要があります。
 > - _postgres_ という標準管理ユーザーのパスワードを入力するように求められます。  create コマンドを実行する前に、`AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップできます。
@@ -136,9 +136,9 @@ Azure VM を使用してテストしている場合は、次の手順に従い�
 
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>Azure 仮想マシンのデプロイに関する特別な注意事項
 
-Azure 仮想マシンを使用している場合は、エンドポイントの IP アドレスに_パブリック_ IP アドレスが表示されません。 パブリック IP アドレスを検索するには、次のコマンドを使用します。
+Azure 仮想マシンを使用している場合は、エンドポイントの IP アドレスに _パブリック_ IP アドレスが表示されません。 パブリック IP アドレスを検索するには、次のコマンドを使用します。
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,15 +148,15 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 
 規則を設定するには、NSG の名前を把握しておく必要があります。 次のコマンドを使用して、NSG を特定します。
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30655 に対する NSG 規則を作成し、**任意の**ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロック ダウンできます。
+NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30655 に対する NSG 規則を作成し、 **任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロック ダウンできます。
 
 以下の --destination-port-ranges パラメーターの値は、上記の 'azdata arc postgres server list' コマンドで取得されたポート番号に置き換えてください。
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -167,9 +167,9 @@ Azure Data Studio を開き、上記の外部エンドポイントの IP アド�
 > [!NOTE]
 > 接続パネルの [詳細] ボタンをクリックして、ポート番号を入力する必要があります。
 
-Azure VM を使用している場合は、次のコマンドを使用してアクセスできる_パブリック_ IP アドレスが必要であることを忘れないでください。
+Azure VM を使用している場合は、次のコマンドを使用してアクセスできる _パブリック_ IP アドレスが必要であることを忘れないでください。
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -194,7 +194,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
     * [マルチテナント データベースを設計する](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [リアルタイム分析ダッシュボードを設計する](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
+    > \*上記のドキュメントの「 **Azure portal にサインインする** 」と「 **Azure Database for PostgreSQL - Hyperscale (Citus) を作成する** 」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
 - [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)

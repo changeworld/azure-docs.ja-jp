@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597626"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368320"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure ロールの割り当てを追加または削除する
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure portal を使用してロールを割り当てる方法について説明します。
 
-Azure Active Directory で管理者ロールを割り当てる必要がある場合は、「[Azure Active Directory で管理者ロールを表示して割り当てる](../active-directory/users-groups-roles/directory-manage-roles-portal.md)」を参照してください。
+Azure Active Directory で管理者ロールを割り当てる必要がある場合は、「[Azure Active Directory で管理者ロールを表示して割り当てる](../active-directory/roles/manage-roles-portal.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -140,7 +140,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
 1. **[ロールの割り当ての追加 (プレビュー)]** をクリックします。
 
-1. ドロップダウン リストを使用して、**サブスクリプション**、**リソース グループ**、リソースなど、ロールの割り当てを適用するリソースのセットを選択します。
+1. ドロップダウン リストを使用して、 **サブスクリプション** 、 **リソース グループ** 、リソースなど、ロールの割り当てを適用するリソースのセットを選択します。
 
     選択したスコープに対するロールの割り当ての書き込みアクセス許可がない場合は、インライン メッセージが表示されます。 
 
@@ -168,7 +168,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
 1. **[ロールの割り当ての追加 (プレビュー)]** をクリックします。
 
-1. ドロップダウン リストを使用して、**サブスクリプション**、**リソース グループ**、リソースなど、ロールの割り当てを適用するリソースのセットを選択します。
+1. ドロップダウン リストを使用して、 **サブスクリプション** 、 **リソース グループ** 、リソースなど、ロールの割り当てを適用するリソースのセットを選択します。
 
     選択したスコープに対するロールの割り当ての書き込みアクセス許可がない場合は、インライン メッセージが表示されます。 
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3fe7b39d0e47965a9603b276960d48d6d3063073
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108254"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364373"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
@@ -38,7 +38,7 @@ ms.locfileid: "92108254"
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>リソース グループ全体の削除
-Azure Arc 対応データ サービスに特定の専用リソース グループを使用していて、そのリソース グループ内の*すべてのもの*を削除したい場合、リソース グループを削除すれば、その中のすべてのものが削除され ます。  
+Azure Arc 対応データ サービスに特定の専用リソース グループを使用していて、そのリソース グループ内の *すべてのもの* を削除したい場合、リソース グループを削除すれば、その中のすべてのものが削除され ます。  
 
 Azure portal でリソース グループを削除するには、次の操作を行います。
 
@@ -63,7 +63,7 @@ Azure CLI を使用して、特定の Azure Arc 対応データ サービスの�
 
 Azure CLI を使用して Azure から SQL マネージド インスタンスのリソースを削除するには、以下のコマンドのプレースホルダー値を置き換えて、そのコマンドを実行します。
 
-```console
+```azurecli
 az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
@@ -74,7 +74,7 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 
 Azure CLI を使用して Azure から PostgreSQL Hyperscale サーバー グループのリソースを削除するには、以下のコマンドのプレースホルダー値を置き換えて、そのコマンドを実行します。
 
-```console
+```azurecli
 az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
 
 #Example
@@ -88,7 +88,7 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 
 Azure CLI を使用して Azure から Azure Arc データ コントローラーを削除するには、以下のコマンドのプレースホルダー値を置き換えて、そのコマンドを実行します。
 
-```console
+```azurecli
 az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
 
 #Example

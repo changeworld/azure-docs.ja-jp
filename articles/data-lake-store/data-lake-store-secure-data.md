@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149281"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370697"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
 Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、Azure ロールベースのアクセス制御 (Azure RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
@@ -39,7 +39,7 @@ Azure Data Lake Storage Gen1 のデータをセキュリティで保護するに
 Azure AD セキュリティ グループを作成する手順およびグループにユーザーを追加する手順については、「[Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 > [!NOTE] 
-> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)を使用します。
+> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)を使用します。
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

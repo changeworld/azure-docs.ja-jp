@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80576722"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366005"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
@@ -36,7 +36,7 @@ ms.locfileid: "80576722"
 共有デバイス モード アプリを作成するには、開発者とクラウド デバイス管理者が協力して作業します。
 
 - 開発者は、単一アカウント アプリ (共有デバイス モードでは複数アカウント アプリはサポートされていません) を記述し、アプリの構成に `"shared_device_mode_supported": true` を追加して、共有デバイスのサインアウトなどを処理するためのコードを記述します。
-- デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](../user-help/user-help-auth-app-overview.md)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
+- デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](../user-help/user-help-auth-app-overview.md)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator-permissions)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
 
  この記事では主に、開発者が考慮すべき事項に重点を置いています。
 
@@ -44,7 +44,7 @@ ms.locfileid: "80576722"
 
 Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 アプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードまたは複数アカウント モードのどちらで実行されているかによって異なります。
 
-**共有デバイス モード アプリは、単一アカウント モードでのみ動作します**。
+**共有デバイス モード アプリは、単一アカウント モードでのみ動作します** 。
 
 > [!IMPORTANT]
 > 複数アカウント モードのみをサポートするアプリケーションは、共有デバイス上で実行できません。 従業員が、単一アカウント モードをサポートしていないアプリを読み込んだ場合、そのアプリは共有デバイス上で実行されません。

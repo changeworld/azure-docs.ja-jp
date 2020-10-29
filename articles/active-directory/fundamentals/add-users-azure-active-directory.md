@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321091"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370816"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 
@@ -40,17 +40,17 @@ Azure Active Directory ポータルを使用して、新しいユーザーを作
 
 1. **[ユーザー]** ページで、このユーザーの情報を入力します。
 
-   - **名前**。 必須。 新しいユーザーの氏名です。 たとえば、*Mary Parker* にします。
+   - **名前** 。 必須。 新しいユーザーの氏名です。 たとえば、 *Mary Parker* にします。
 
-   - **ユーザー名**。 必須。 新しいユーザーのユーザー名です。 たとえば、「 `mary@contoso.com` 」のように入力します。
+   - **ユーザー名** 。 必須。 新しいユーザーのユーザー名です。 たとえば、「 `mary@contoso.com` 」のように入力します。
 
-     ユーザー名のドメイン部分には、既定の初期ドメイン名の *\<yourdomainname>.onmicrosoft.com*、またはカスタム ドメイン名 (*contoso.com* など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、「[Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する](add-custom-domain.md)」を参照してください。
+     ユーザー名のドメイン部分には、既定の初期ドメイン名の *\<yourdomainname>.onmicrosoft.com* 、またはカスタム ドメイン名 ( *contoso.com* など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、「[Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する](add-custom-domain.md)」を参照してください。
 
-   - **グループ**。 オプションで、1 つまたは複数の既存のグループにユーザーを追加できます。 後でグループにユーザーを追加することもできます。 グループへのユーザーの追加方法の詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
+   - **グループ** 。 オプションで、1 つまたは複数の既存のグループにユーザーを追加できます。 後でグループにユーザーを追加することもできます。 グループへのユーザーの追加方法の詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
 
-   - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 ユーザーには、グローバル管理者を割り当てることも、Azure AD の限られた管理者ロールを 1 つ以上割り当てることもできます。 ロールの割り当て方法の詳細については、[ユーザーにロールを割り当てる方法](active-directory-users-assign-role-azure-portal.md)に関するページを参照してください。
+   - **ディレクトリ ロール** : ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 ユーザーには、グローバル管理者を割り当てることも、Azure AD の限られた管理者ロールを 1 つ以上割り当てることもできます。 ロールの割り当て方法の詳細については、[ユーザーにロールを割り当てる方法](active-directory-users-assign-role-azure-portal.md)に関するページを参照してください。
 
-   - **ジョブ情報**:こちらにはユーザーに関する詳細情報を追加できます。これは後で行うこともできます。 ユーザー情報の追加方法の詳細については、[ユーザー プロファイル情報を追加または変更する方法](active-directory-users-profile-azure-portal.md)に関するページを参照してください。
+   - **ジョブ情報** :こちらにはユーザーに関する詳細情報を追加できます。これは後で行うこともできます。 ユーザー情報の追加方法の詳細については、[ユーザー プロファイル情報を追加または変更する方法](active-directory-users-profile-azure-portal.md)に関するページを参照してください。
 
 1. **[パスワード]** ボックスに表示されている自動生成されたパスワードをコピーします。 このパスワードは初回のサインインのためにユーザーに渡す必要があります。
 
@@ -80,7 +80,7 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 
 1. 任意のページから *Azure Active Directory* を検索して選択します。
 
-1. Azure AD テナントから削除するユーザーを検索して選択します。 たとえば、_Mary Parker_ にします。
+1. Azure AD テナントから削除するユーザーを検索して選択します。 たとえば、 _Mary Parker_ にします。
 
 1. **[ユーザーの削除]** を選択します。
 
@@ -103,6 +103,6 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-- [動的グループとユーザーを操作する](../users-groups-roles/groups-create-rule.md)
+- [動的グループとユーザーを操作する](../enterprise-users/groups-create-rule.md)
 
-または、[別のディレクトリからのゲスト ユーザーの追加](../external-identities/what-is-b2b.md)や、[削除されたユーザーの復元](active-directory-users-restore.md)など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+または、[別のディレクトリからのゲスト ユーザーの追加](../external-identities/what-is-b2b.md)や、[削除されたユーザーの復元](active-directory-users-restore.md)など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../enterprise-users/index.yml)」を参照してください。

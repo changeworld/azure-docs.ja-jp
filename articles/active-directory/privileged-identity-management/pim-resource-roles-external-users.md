@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88782738"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365529"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management でゲスト ユーザーを招待して Azure リソース ロールを割り当てる
 
@@ -67,7 +67,7 @@ B2B コラボレーションを使用する場合は、外部ユーザーをゲ�
 
 Privileged Identity Management を使用すると、ゲストを招待し、Azure リソース ロールの資格を付与することができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)または[ユーザー管理者](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)または[ユーザー管理者](../roles/permissions-reference.md#user-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -127,7 +127,7 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
     ![組織があなたに確認を求めるアクセス許可の一覧が含まれる、ブラウザー内の [アクセス許可の確認] ページ](./media/pim-resource-roles-external-users/invite-accept.png)
 
-1. 利用規約に同意し、サインインしたままにするかどうかを指定するように求められる場合があります。 Azure portal では、ロールの "*資格*" があっても、リソースにはまだアクセスできません。
+1. 利用規約に同意し、サインインしたままにするかどうかを指定するように求められる場合があります。 Azure portal では、ロールの " *資格* " があっても、リソースにはまだアクセスできません。
 
 1. ロールの割り当てをアクティブ化するには、ロールをアクティブ化するリンクがある電子メールを開きます。 電子メールは次のような内容です。
 
@@ -157,7 +157,7 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
     ![時刻、要求元、およびアクションが一覧表示される [Azure リソース] - [リソースの監査] ページ](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. ゲストのアクティビティを表示するには、 **[Azure Active Directory]**  >  **[ユーザー]**  > *ゲスト名*の順に選択します。
+1. ゲストのアクティビティを表示するには、 **[Azure Active Directory]**  >  **[ユーザー]**  > *ゲスト名* の順に選択します。
 
 1. **[監査ログ]** を選択して、組織の監査ログを表示します。 必要に応じて、フィルターを指定できます。
 

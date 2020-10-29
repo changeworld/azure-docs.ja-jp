@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982494"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368249"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
 ロールの定義は、読み取り、書き込み、削除などの実行できるアクセス許可のコレクションです。 通常は単に "ロール" と呼ばれます。 [Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) には、120 個を超える[組み込みロール](built-in-roles.md)があります。また、独自のカスタム ロールを作成することもできます。 この記事では、Azure リソースへのアクセスを許可するために使用できる組み込みロールとカスタム ロールの一覧を表示する方法について説明します。
 
-Azure Active Directory の管理者ロールを一覧表示するには、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+Azure Active Directory の管理者ロールを一覧表示するには、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)」を参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -235,7 +235,7 @@ az role definition list --custom-role-only false --output json --query '[].{role
 az role definition list --name {roleName}
 ```
 
-次の例では、"*共同作成者*" ロール定義を一覧表示します。
+次の例では、" *共同作成者* " ロール定義を一覧表示します。
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -275,7 +275,7 @@ az role definition list --name "Contributor"
 
 ### <a name="list-permissions-of-a-role-definition"></a>ロールの定義のアクセス許可の一覧表示
 
-次の例では、"*共同作成者*" ロールの *actions* および *notActions* を一覧表示します。
+次の例では、" *共同作成者* " ロールの *actions* および *notActions* を一覧表示します。
 
 ```azurecli
 az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
@@ -298,7 +298,7 @@ az role definition list --name "Contributor" --output json --query '[].{actions:
 ]
 ```
 
-次の例では、"*仮想マシンの共同作成者*" ロールの動作を一覧表示します。
+次の例では、" *仮想マシンの共同作成者* " ロールの動作を一覧表示します。
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'

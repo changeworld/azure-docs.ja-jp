@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3781a87bde283de3b798f840274db1dd5ea3ac7e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145398"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366498"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -44,7 +44,7 @@ Azure AD Terms of Use では、以下のことができます。
 - 従業員やゲストに、Azure Multi-factor Authentication (MFA) でセキュリティ情報を登録する前に利用規約への同意を求める。
 - 従業員やゲストに、Azure AD のセルフサービス パスワード リセット (SSPR) でセキュリティ情報を登録する前に利用規約への同意を求める。
 - 組織内のすべてのユーザーに一般的な利用規約を提示する。
-- ユーザーの属性 (例: [動的グループ](../users-groups-roles/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
+- ユーザーの属性 (例: [動的グループ](../enterprise-users/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
 - ビジネスへの影響が大きいアプリケーション (Salesforce など) にアクセスする際に特定の利用規約を提示する。
 - 利用規約を異なる言語で提示する。
 - 利用規約に同意したユーザーと同意していないユーザーを一覧表示する。
@@ -97,7 +97,7 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
    | 今日の日付  | 月単位 | ユーザーは本日から利用規約に同意する必要があります。また、毎月再同意する必要があります。 |
    | 未来の日付  | 月単位 | ユーザーは本日から利用規約に同意する必要があります。 未来の日付が来ると、同意の有効期限が切れ、ユーザーは毎月再同意する必要があります。  |
 
-   たとえば、期限切れの開始日を **1 月 1 日**に設定し、頻度で **[月単位]** を選んだ場合、2 人のユーザーの有効期限は次のようになります。
+   たとえば、期限切れの開始日を **1 月 1 日** に設定し、頻度で **[月単位]** を選んだ場合、2 人のユーザーの有効期限は次のようになります。
 
    | User | 最初の同意日 | 最初に有効期限が切れる日付 | 2 回目に有効期限が切れる日付 | 3 回目に有効期限が切れる日付 |
    | --- | --- | --- | --- | --- |
@@ -143,7 +143,7 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 
 [使用条件] ブレードには、同意したユーザーと拒否したユーザーの数が表示されます。 これらの数および同意したユーザーと拒否したユーザーは、利用規約が有効な間、保存されます。
 
-1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+1. Azure にサインインし、 [https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 
    ![同意したユーザーと拒否したユーザーの数を一覧表示する [使用条件] ブレード](./media/terms-of-use/view-tou.png)
 
@@ -161,11 +161,11 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 
 ## <a name="view-azure-ad-audit-logs"></a>Azure AD 監査ログの表示
 
-追加のアクティビティを確認できるように、Azure AD Terms of Use には監査ログが用意されています。 ユーザーが同意するたびに、イベントがトリガーされます。そのイベントは、監査ログに記録され、**30 日間**保存されます。 これらのログはポータルで表示することや、.csv ファイルとしてダウンロードすることができます。
+追加のアクティビティを確認できるように、Azure AD Terms of Use には監査ログが用意されています。 ユーザーが同意するたびに、イベントがトリガーされます。そのイベントは、監査ログに記録され、 **30 日間** 保存されます。 これらのログはポータルで表示することや、.csv ファイルとしてダウンロードすることができます。
 
 Azure AD 監査ログを使い始める手順は次のとおりです。
 
-1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+1. Azure にサインインし、 [https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 1. 利用規約を選択します。
 1. **[監査ログの表示]** をクリックします。
 
@@ -216,7 +216,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 利用規約の詳細の一部を編集できますが、既存のドキュメントを変更することはできません。 詳細の編集方法を次の手順で説明します。
 
-1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+1. Azure にサインインし、 [https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 1. 編集する利用規約を選択します。
 1. **[条件の編集]** をクリックします。
 1. [利用規約の編集] ウィンドウで、[名前]、[表示名]、または [require users to expand values]\(値の展開をユーザーに要求する\) を変更します。
@@ -233,7 +233,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 利用規約の言語を追加する方法を次の手順で説明します。
 
-1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+1. Azure にサインインし、 [https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 1. 編集する利用規約を選択します。
 1. [詳細] ウィンドウで、 **[言語]** タブをクリックします。
 
@@ -295,10 +295,10 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
 次の手順を使って、古い利用規約を削除できます。
 
-1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+1. Azure にサインインし、 [https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 1. 削除する使用条件を選びます。
 1. **[条件の削除]** をクリックします。
-1. 続行するかどうかを確認するメッセージが表示されたら、**はい** をクリックします。
+1. 続行するかどうかを確認するメッセージが表示されたら、 **はい** をクリックします。
 
    ![使用条件の削除を確認するメッセージ](./media/terms-of-use/delete-tou.png)
 

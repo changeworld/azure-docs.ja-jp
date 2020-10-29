@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 869513d5a668544b2aa8afb13bb56e8293788b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570654"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368725"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータ操作にユーザー アクセスを制限する
 
 Azure Cosmos DB では、データベース サービスとの対話を認証するには、次の 2 つの方法があります。
 
 - Azure portal と対話するときに Azure Active Directory ID を使用する。
-- API および SDK からの呼び出しを発行するときに Azure Cosmos DB の[キー](secure-access-to-data.md#primary-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)を使用する。
+- API および SDK からの呼び出しを発行するときに Azure Cosmos DB の[キー](database-security.md#primary-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)を使用する。
 
 各認証方法では、さまざまな操作のセットにアクセスできますが、いくつかの重複があります。
 

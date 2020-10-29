@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318411"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371904"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -43,8 +43,8 @@ ms.locfileid: "89318411"
 
 | タスク | Detail | 必要とされるライセンス |
 | ---- | ------ | ---------------- |
-| [複数のグローバル管理者を指定する](../users-groups-roles/directory-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 | Azure AD Free |
-| [可能な場合は非グローバル管理者ロールを使用する](../users-groups-roles/directory-assign-admin-roles.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 | Azure AD Free |
+| [複数のグローバル管理者を指定する](../roles/security-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 | Azure AD Free |
+| [可能な場合は非グローバル管理者ロールを使用する](../roles/permissions-reference.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 | Azure AD Free |
 | [管理者ロールの使用の追跡について Privileged Identity Management を有効にする](../privileged-identity-management/pim-getting-started.md) | Privileged Identity Management を有効にして、管理者ロールの使用状況の追跡を開始します。 | Azure AD Premium P2 |
 | [セルフサービス パスワード リセット をロール アウトする](../authentication/howto-sspr-deployment.md) | ユーザーに管理者権限を付与するポリシーを使用して、スタッフによる各自のパスワードのリセットを許可することで、パスワードのリセットに関するヘルプデスクの呼び出しを削減します。 | |
 | [組織固有の禁止パスワードのカスタム リストを作成する](../authentication/tutorial-configure-custom-password-protection.md) | ユーザーが、お客様の組織や分野において一般的な単語や語句を含むパスワードを作成しないようにします。 | |
@@ -69,7 +69,7 @@ ms.locfileid: "89318411"
 | [パスワード ハッシュ同期の実装](../hybrid/how-to-connect-password-hash-synchronization.md) | パスワード ハッシュを同期し、パスワード変更のレプリケート、不正なパスワードの検出と修正、漏洩した資格情報の報告を行えるようにします。 | Azure AD Free |
 | [パスワード ライトバックの実装](../authentication/tutorial-enable-sspr-writeback.md) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 | Azure AD Premium P1 |
 | [Azure AD Connect Health の実装](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Azure AD Connect サーバー、AD FS サーバー、およびドメイン コント ローラーについて、正常性に関する重要な統計情報の監視を有効にします。 | Azure AD Premium P1 |
-| [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../users-groups-roles/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
+| [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../enterprise-users/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
 | [ゲスト ユーザー アクセスの計画を作成する](../external-identities/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 | [Azure AD B2B のライセンスに関するガイダンス](../external-identities/licensing-guidance.md) |
 | [デバイス管理戦略を決定する](../devices/overview.md) | デバイスに関して組織が何を許可するかを決定します。 登録か参加か、Bring Your Own Device か会社支給かなどです。 | |
 | [組織に Windows Hello for Business を配置する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello を使用するパスワードなしの認証のための準備を行います | |
@@ -93,7 +93,7 @@ ms.locfileid: "89318411"
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management の使用を強制する](../privileged-identity-management/pim-security-wizard.md) | 通常の日常ユーザー アカウントから管理者ロールを削除します。 管理ユーザーにそのロールの使用を認めるのは、多要素認証チェックの成功後、業務上妥当である理由の提示後、指定された承認者からの要求後とします。 | Azure AD Premium P2 |
 | [PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する](../privileged-identity-management/pim-how-to-start-security-review.md) | セキュリティおよびリーダーシップ チームと協力して、組織のポリシーに基づいて管理アクセスをレビューするアクセス レビュー ポリシーを作成します。 | Azure AD Premium P2 |
-| [動的グループ メンバーシップのポリシーを実装する](../users-groups-roles/groups-dynamic-membership.md) | 動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいて、グループにユーザーを自動的に割り当てます。 |  |
+| [動的グループ メンバーシップのポリシーを実装する](../enterprise-users/groups-dynamic-membership.md) | 動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいて、グループにユーザーを自動的に割り当てます。 |  |
 | [グループ ベースのアプリケーション プロビジョニングを実装する](../manage-apps/what-is-access-management.md) | グループベース アクセス管理のプロビジョニングを使用して、SaaS アプリケーションのユーザーを自動的にプロビジョニングします。 |  |
 | [ユーザー プロビジョニングとプロビジョニング解除を自動化する](../app-provisioning/user-provisioning.md) | 未承認のアクセスを防ぐために、従業員のアカウント ライフサイクルから手動の手順をなくします。 適切なソース (人事システム) からの ID を Azure AD に同期する。 |  |
 

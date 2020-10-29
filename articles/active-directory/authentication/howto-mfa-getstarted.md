@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964470"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366481"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication のデプロイを計画する
 
@@ -37,7 +37,7 @@ Azure Multi-factor Authentication のデプロイを始める前に考慮すべ�
 
 | シナリオ | 前提条件 |
 | --- | --- |
-| 先進認証を使用する**クラウド専用**の ID 環境 | **追加の前提条件タスクはありません** |
+| 先進認証を使用する **クラウド専用** の ID 環境 | **追加の前提条件タスクはありません** |
 | **ハイブリッド** ID のシナリオ | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) がデプロイされ、ユーザー ID はオンプレミスの Active Directory Domain Services および Azure Active Directory と同期またはフェデレーションされています。 |
 | クラウド アクセス用に公開されたオンプレミスのレガシ アプリケーション | Azure AD の[アプリケーション プロキシ](../manage-apps/application-proxy.md)がデプロイされています。 |
 | Azure MFA と RADIUS 認証の使用 | [ネットワーク ポリシー サーバー (NPS)](howto-mfa-nps-extension.md) がデプロイされています。 |
@@ -117,7 +117,7 @@ Microsoft では、組織が条件付きアクセスを使用し、[ネームド
 モバイル デバイスの Microsoft Authenticator アプリに、プッシュ通知が送信されます。 ユーザーは通知を表示し、 **[承認]** を選択して認証を完了します。 モバイル アプリによるプッシュ通知では、ユーザーへの影響が最も少ないオプションが提供されます。 テレフォニーではなくデータ接続を使用するため、最も信頼性が高くて安全なオプションでもあります。
 
 > [!NOTE]
-> 組織に中国勤務のスタッフや中国に出張中のスタッフがいる場合、**Android デバイス**での**モバイル アプリによる通知**メソッドはその国/地域では機能しません。 このようなユーザーには別の方法を使用できるようにする必要があります。
+> 組織に中国勤務のスタッフや中国に出張中のスタッフがいる場合、 **Android デバイス** での **モバイル アプリによる通知** メソッドはその国/地域では機能しません。 このようなユーザーには別の方法を使用できるようにする必要があります。
 
 ### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
 
@@ -226,7 +226,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 MFA やその他の制御がいつ必要になるかを決定する条件付きアクセス ポリシーの戦略を計画するには、「[一般的な条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)」を参照してください。
 
-誤って自分が Azure AD テナントからロックアウトされないようにすることが重要です。 [テナント内に 2 つ以上の緊急アクセス用アカウントを作成](../users-groups-roles/directory-emergency-access.md)し、それらを条件付きアクセス ポリシーから除外することによって、この誤って管理アクセス権がなくなる影響を軽減できます。
+誤って自分が Azure AD テナントからロックアウトされないようにすることが重要です。 [テナント内に 2 つ以上の緊急アクセス用アカウントを作成](../roles/security-emergency-access.md)し、それらを条件付きアクセス ポリシーから除外することによって、この誤って管理アクセス権がなくなる影響を軽減できます。
 
 ### <a name="create-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 

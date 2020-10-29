@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601310"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371003"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory の ID およびアクセス管理の運用リファレンス ガイド
 
@@ -45,7 +45,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="assigning-owners-recommended-reading"></a>所有者の割り当てに関する推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)
 - [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>オンプレミスの ID の同期
@@ -105,9 +105,9 @@ Azure AD Connect のバージョンが 6 か月を超えている場合は、最
 
 #### <a name="source-anchor"></a>ソース アンカー
 
-**ms-DS-consistencyguid** を[ソース アンカー](../hybrid/plan-connect-design-concepts.md)として使用すると、フォレストおよびドメイン間でのオブジェクトの移行が容易になります。これは、AD ドメインの統合/クリーンアップ、合併、買収、および売却に共通です。
+**ms-DS-consistencyguid** を [ソース アンカー](../hybrid/plan-connect-design-concepts.md)として使用すると、フォレストおよびドメイン間でのオブジェクトの移行が容易になります。これは、AD ドメインの統合/クリーンアップ、合併、買収、および売却に共通です。
 
-現在 **ObjectGuid** をソース アンカーとして使用している場合は、**ms-DS-ConsistencyGuid** の使用に切り替えることをお勧めします。
+現在 **ObjectGuid** をソース アンカーとして使用している場合は、 **ms-DS-ConsistencyGuid** の使用に切り替えることをお勧めします。
 
 #### <a name="custom-rules"></a>カスタム規則
 
@@ -157,20 +157,20 @@ Azure Active Directory は、Microsoft クラウド サービスの[グループ
 - 必要に応じて、ユーザーのパッケージを保持する属性を定義できます。
 
 > [!IMPORTANT]
-> Azure AD のグループベースのライセンスでは、ユーザーのライセンス付与に関してエラー状態の概念が導入されています。 ライセンスに関するエラーが発生した場合は、直ちにライセンスの割り当ての問題を[特定して解決](../users-groups-roles/licensing-groups-resolve-problems.md)してください。
+> Azure AD のグループベースのライセンスでは、ユーザーのライセンス付与に関してエラー状態の概念が導入されています。 ライセンスに関するエラーが発生した場合は、直ちにライセンスの割り当ての問題を[特定して解決](../enterprise-users/licensing-groups-resolve-problems.md)してください。
 
 ![自動的に生成されたコンピューター画面の説明のスクリーンショット](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>ライフサイクル管理
 
-オンプレミスのインフラストラクチャに依存する [Microsoft Identity Manager](/microsoft-identity-manager/) やサードパーティ システムなどのツールを現在使用している場合は、既存のツールから割り当てをオフロードし、グループベースのライセンスを実装し、[グループの](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)に基づいてグループのライフサイクル管理を定義することをお勧めします。 同様に、既存のプロセスで、新しい従業員や組織を離れる従業員が考慮されていない場合は、動的グループに基づいてグループベースのライセンスをデプロイし、グループ メンバーシップのライフサイクルを定義する必要があります。 最後に、ライフサイクル管理が行われていないオンプレミスのグループに対してグループベースのライセンスをデプロイする場合は、クラウド グループを使用して、委任された所有権や属性ベースの動的メンバーシップなどの機能を有効にすることを検討してください。
+オンプレミスのインフラストラクチャに依存する [Microsoft Identity Manager](/microsoft-identity-manager/) やサードパーティ システムなどのツールを現在使用している場合は、既存のツールから割り当てをオフロードし、グループベースのライセンスを実装し、[グループの](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)に基づいてグループのライフサイクル管理を定義することをお勧めします。 同様に、既存のプロセスで、新しい従業員や組織を離れる従業員が考慮されていない場合は、動的グループに基づいてグループベースのライセンスをデプロイし、グループ メンバーシップのライフサイクルを定義する必要があります。 最後に、ライフサイクル管理が行われていないオンプレミスのグループに対してグループベースのライセンスをデプロイする場合は、クラウド グループを使用して、委任された所有権や属性ベースの動的メンバーシップなどの機能を有効にすることを検討してください。
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>"すべてのユーザー" グループを使用したアプリの割り当て
 
-リソースの所有者は、**すべてのユーザー** グループに実際には**企業の従業員**と**ゲスト**の両方が含まれている可能性があるときに、**企業の従業員**のみが含まれていると考えることがあります。 そのため、**すべてのユーザー** グループを使用してアプリケーションの割り当てを行い、SharePoint コンテンツやアプリケーションなどのリソースへのアクセスを許可する場合は、特別な注意を払う必要があります。
+リソースの所有者は、 **すべてのユーザー** グループに実際には **企業の従業員** と **ゲスト** の両方が含まれている可能性があるときに、 **企業の従業員** のみが含まれていると考えることがあります。 そのため、 **すべてのユーザー** グループを使用してアプリケーションの割り当てを行い、SharePoint コンテンツやアプリケーションなどのリソースへのアクセスを許可する場合は、特別な注意を払う必要があります。
 
 > [!IMPORTANT]
-> **すべてのユーザー** グループが有効になっていて、条件付きアクセス ポリシー、アプリ、またはリソースの割り当てに使用されている場合に、ゲスト ユーザーを含めたくない場合は、必ず[グループをセキュリティで保護](../external-identities/use-dynamic-groups.md)してください。 さらに、**企業の従業員**のみが含まれるグループを作成して割り当てることによって、ライセンスの割り当てを修正する必要があります。 一方で、**すべてのユーザー** グループが有効になっているが、リソースへのアクセスを許可するために使用されていない場合は、組織の運用上のガイダンスで、そのグループ (**企業の従業員**と**ゲスト**を含む) を意図的に使用していることを確認してください。
+> **すべてのユーザー** グループが有効になっていて、条件付きアクセス ポリシー、アプリ、またはリソースの割り当てに使用されている場合に、ゲスト ユーザーを含めたくない場合は、必ず [グループをセキュリティで保護](../external-identities/use-dynamic-groups.md)してください。 さらに、 **企業の従業員** のみが含まれるグループを作成して割り当てることによって、ライセンスの割り当てを修正する必要があります。 一方で、 **すべてのユーザー** グループが有効になっているが、リソースへのアクセスを許可するために使用されていない場合は、組織の運用上のガイダンスで、そのグループ ( **企業の従業員** と **ゲスト** を含む) を意図的に使用していることを確認してください。
 
 ### <a name="automated-user-provisioning-to-apps"></a>自動化されたアプリへのユーザー プロビジョニング
 

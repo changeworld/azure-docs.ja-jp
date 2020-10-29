@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600799"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369779"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -26,7 +26,7 @@ ms.locfileid: "90600799"
 
 Azure Active Directory (Azure AD) のハイブリッド ID ソリューションを採用することで、組織は、自動化、委任、セルフサービス、シングル サインオンの各機能を通じて生産性を高めるプレミアムな機能にアクセスできます。 これにより、従業員は、作業を行う必要があるどの場所からでも会社のリソースにアクセスでき、一方 IT チームは、適切な人が適切なリソースに適切にアクセスして安全な生産性を確立できるようにすることでそのアクセスを管理できます。
 
-学習したことに基づき、このベスト プラクティスのチェックリストは、推奨されたアクションを素早く展開して組織に*強固な* ID 基盤を構築する上で役立ちます。
+学習したことに基づき、このベスト プラクティスのチェックリストは、推奨されたアクションを素早く展開して組織に *強固な* ID 基盤を構築する上で役立ちます。
 
 * アプリに簡単に接続する
 * すべてのユーザーに対して 1 つの ID を自動的に確立する
@@ -50,7 +50,7 @@ Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.c
 * フェデレーション アプリへの直接サインオン
 * 直接サインオンのリンク
 
-アプリへのユーザー アクセスの詳細については、この記事の「**ステップ 3 -- ユーザーに権限を与える**」を参照してください。
+アプリへのユーザー アクセスの詳細については、この記事の「 **ステップ 3 -- ユーザーに権限を与える** 」を参照してください。
 
 ### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Active Directory フェデレーション サービスから Azure AD にアプリを移行する
 
@@ -83,7 +83,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
-<em>"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 シャドウ IT を検出することに加え、MCAS は、アプリのリスク レベルを判別し、会社のデータへの未承認アクセス、データ漏洩の可能性、およびアプリケーションに固有のその他のセキュリティ リスクを防止することもできます。
 
@@ -156,7 +156,7 @@ MFA の[サインイン レポート](../authentication/howto-mfa-reporting.md)�
 * 動的グループ メンバーシップを使った属性ベース
 * アプリの所有者への委任
 
-Azure AD には、セキュリティ グループと Microsoft 365 グループを使用してリソースへのアクセスを管理する機能があります。 これらのグループは、メンバーシップ要求の承認または拒否、グループ メンバーシップの制御の委任を実行できるグループ所有者によって管理できます。 [セルフサービス グループ管理](../users-groups-roles/groups-self-service-management.md)と呼ばれるこの機能では、管理者ロールを割り当てられていないグループ所有者が、要求を処理するために管理者に頼らずにグループを作成および管理できるようにすることで時間を節約します。
+Azure AD には、セキュリティ グループと Microsoft 365 グループを使用してリソースへのアクセスを管理する機能があります。 これらのグループは、メンバーシップ要求の承認または拒否、グループ メンバーシップの制御の委任を実行できるグループ所有者によって管理できます。 [セルフサービス グループ管理](../enterprise-users/groups-self-service-management.md)と呼ばれるこの機能では、管理者ロールを割り当てられていないグループ所有者が、要求を処理するために管理者に頼らずにグループを作成および管理できるようにすることで時間を節約します。
 
 ## <a name="step-4---operationalize-your-insights"></a>ステップ 4 - 分析情報を運用化する
 
@@ -172,9 +172,9 @@ Azure AD には、セキュリティ グループと Microsoft 365 グループ�
 
 操作に対するアプローチを考えるとき、検討すべきいくつかの管理レベルがあります。 最初のレベルは、管理の負担をグローバル管理者に負わせます。 常にグローバル管理者ロールを使用することは、小規模の会社では適切と考えられます。 しかし、特定のタスクを担当するヘルプ デスク担当者と管理者がいる大規模な組織では、グローバル管理者のロールを割り当てることにより、本来実行できる以上のタスクを管理する能力をそれらの個人に提供するため、セキュリティ リスクになる可能性があります。
 
-この場合は、次の管理レベルを検討する必要があります。 Azure AD を使用すると、エンド ユーザーを、低い特権ロールでタスクを管理できる "制限付き管理者" に指定することができます。 たとえば、ヘルプ デスクの担当者に[セキュリティ閲覧者](../users-groups-roles/directory-assign-admin-roles.md#security-reader)のロールを割り当てることで、読み取り専用アクセス権を使用したセキュリティ関連機能の管理を許可できます。 あるいは、[認証管理者](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator)ロールを個人に割り当てることで、パスワード以外の資格情報をリセットしたり、Azure Service Health の構成や読み取りを行ったりする権限を付与することは、おそらく理にかなっています。
+この場合は、次の管理レベルを検討する必要があります。 Azure AD を使用すると、エンド ユーザーを、低い特権ロールでタスクを管理できる "制限付き管理者" に指定することができます。 たとえば、ヘルプ デスクの担当者に[セキュリティ閲覧者](../roles/permissions-reference.md#security-reader)のロールを割り当てることで、読み取り専用アクセス権を使用したセキュリティ関連機能の管理を許可できます。 あるいは、[認証管理者](../roles/permissions-reference.md#authentication-administrator)ロールを個人に割り当てることで、パスワード以外の資格情報をリセットしたり、Azure Service Health の構成や読み取りを行ったりする権限を付与することは、おそらく理にかなっています。
 
-詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使ってハイブリッド コンポーネント (Azure AD Connect 同期、AD FS) を監視する
 

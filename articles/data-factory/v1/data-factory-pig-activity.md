@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 35990312658492e1e41b47096a43748c3a4e653e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282580"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359902"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -26,8 +26,8 @@ ms.locfileid: "91282580"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -121,13 +121,13 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 Data Factory パイプラインでこの Pig スクリプトを実行するには、以下の手順を実行します。
 
-1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。 このリンクされたサービスを **HDInsightLinkedService**と呼ぶことにしましょう。
-2. [リンクされたサービス](data-factory-azure-blob-connector.md) を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。 このリンクされたサービスを **StorageLinkedService**と呼ぶことにしましょう。
-3. 入力と出力のデータを指定する [データセット](data-factory-create-datasets.md) を作成します。 入力データセットは **PigSampleIn**、出力データセットは **PigSampleOut** と呼ぶことにしましょう。
+1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。 このリンクされたサービスを **HDInsightLinkedService** と呼ぶことにしましょう。
+2. [リンクされたサービス](data-factory-azure-blob-connector.md) を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。 このリンクされたサービスを **StorageLinkedService** と呼ぶことにしましょう。
+3. 入力と出力のデータを指定する [データセット](data-factory-create-datasets.md) を作成します。 入力データセットは **PigSampleIn** 、出力データセットは **PigSampleOut** と呼ぶことにしましょう。
 4. 上記の手順 2. で構成した Azure BLOB ストレージのファイルに Pig クエリをコピーします。 データをホストするリンクされた Azure ストレージが、クエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成します。 アクティビティの構成で、このリンクされたサービスを参照します。 **scriptPath** を使用して、pig スクリプト ファイルへのパスと **scriptLinkedService** を指定します。 
    
    > [!NOTE]
-   > また、**script** プロパティを使用して、アクティビティ定義で Pig スクリプトをインライン化することもできます。 ただし、スクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題を引き起こすことがあるため、この方法はお勧めできません。 手順 4. の使用をお勧めします。
+   > また、 **script** プロパティを使用して、アクティビティ定義で Pig スクリプトをインライン化することもできます。 ただし、スクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題を引き起こすことがあるため、この方法はお勧めできません。 手順 4. の使用をお勧めします。
    >
    >
 5. HDInsightPig アクティビティでパイプラインを作成します。 このアクティビティは、HDInsight クラスターで Pig スクリプトを実行して、入力データを処理します。
@@ -172,7 +172,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 
 パラメーター化された Pig スクリプトを使用するには、以下の手順を実行します。
 
-* **defines**でパラメーターを定義します。
+* **defines** でパラメーターを定義します。
 
     ```JSON
     {
@@ -210,7 +210,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
       }
     }
     ```
-* 次の例に示すように、' **$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
+* 次の例に示すように、' **$parameterName** ' を使用するパラメーターを Pig スクリプトで参照します。
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

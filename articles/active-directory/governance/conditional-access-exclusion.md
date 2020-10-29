@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783690"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362724"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 
@@ -38,7 +38,7 @@ ms.locfileid: "88783690"
 
 ![条件付きアクセスでのネームド ロケーション](./media/conditional-access-exclusion/named-locations.png)
 
-残念ながら、ユーザーによっては、これらのブロックされた国または地域からサインインするための正当な理由を、引き続き保持している場合があります。 たとえば、ユーザーが出張していたり、会社のリソースにアクセスする必要が生じる可能性があります。 この場合、これらの国や地域をブロックする条件付きアクセス ポリシーでは、ポリシーから除外されたユーザーのためにクラウド セキュリティ グループを使用できます。 旅行中にアクセスする必要があるユーザーは、[Azure AD のセルフサービスによるグループ管理](../users-groups-roles/groups-self-service-management.md)を使用して、グループに自分自身を追加することができます。
+残念ながら、ユーザーによっては、これらのブロックされた国または地域からサインインするための正当な理由を、引き続き保持している場合があります。 たとえば、ユーザーが出張していたり、会社のリソースにアクセスする必要が生じる可能性があります。 この場合、これらの国や地域をブロックする条件付きアクセス ポリシーでは、ポリシーから除外されたユーザーのためにクラウド セキュリティ グループを使用できます。 旅行中にアクセスする必要があるユーザーは、[Azure AD のセルフサービスによるグループ管理](../enterprise-users/groups-self-service-management.md)を使用して、グループに自分自身を追加することができます。
 
 もう 1 つの例は、[大半のユーザーのレガシ認証をブロックする](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)条件付きアクセス ポリシーを使用する場合です。 ただし、Office 2010 または IMAP/SMTP/POP ベースのクライアント経由でリソースにアクセスするために、レガシ認証の方法を使用することが必要なユーザーがいる場合は、レガシ認証の方法をブロックするポリシーからこれらのユーザーを除外することができます。
 

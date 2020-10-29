@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cbe32125d957bb1fd53e7cb5a39ae9f745cef4a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0f82314b0a4e16829b4c192a14fae7f24875365d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317031"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359613"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対するセキュリティ アラートを構成する
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) 組織内で疑わしいアクティビティ�
 
 2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)があります。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
   [![[Azure AD] > [Privileged Identity Management] を選択する](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -44,9 +44,9 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 このセクションでは、Azure AD ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
 
-- **高**: ポリシー違反のため直ちに対処が必要です。
-- **中**: 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
-- **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
+- **高** : ポリシー違反のため直ちに対処が必要です。
+- **中** : 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
+- **低** : 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理者が特権ロールを使用してません
 
@@ -87,7 +87,7 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 | **修正方法** | リスト内のアカウントを確認します。 もうアクセスが不要になっているアカウントは、特権ロールから削除します。 |
 | **防止** | パスワードを知っているユーザーの変更がある場合に、共有されているアカウントが、強固なパスワードのローテーションを行っていることを確認します。 </br>[アクセス レビュー](pim-how-to-start-security-review.md)を使用して特権ロールを持つアカウントを定期的に確認し、不要になっているロールの割り当てを削除します。 |
 | **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
-| **ベスト プラクティス** | パスワードを使って認証を行い、グローバル管理者やセキュリティ管理者などの高い特権を持つ管理者ロールに割り当てられる共有、サービス、および緊急アクセス用のアカウントでは、次の場合にパスワードをローテーションする必要があります。<ul><li>管理アクセス権の悪用や侵害が関係するセキュリティ インシデントの後</li><li>管理者ではなくなったユーザーの特権を変更した後 (たとえば、IT 管理者であった従業員が IT 部門から異動したり退職したりした後)</li><li>IT スタッフの認識された侵害や変更がない場合でも、一定の間隔で (たとえば、毎四半期または毎年)</li></ul>これらのアカウントの資格情報には複数のユーザーがアクセスできるので、資格情報をローテーションして、それらのロールから抜けたユーザーがアカウントにアクセスできないようにする必要があります。 [アカウントの保護に関する詳細情報](../users-groups-roles/directory-admin-roles-secure.md) |
+| **ベスト プラクティス** | パスワードを使って認証を行い、グローバル管理者やセキュリティ管理者などの高い特権を持つ管理者ロールに割り当てられる共有、サービス、および緊急アクセス用のアカウントでは、次の場合にパスワードをローテーションする必要があります。<ul><li>管理アクセス権の悪用や侵害が関係するセキュリティ インシデントの後</li><li>管理者ではなくなったユーザーの特権を変更した後 (たとえば、IT 管理者であった従業員が IT 部門から異動したり退職したりした後)</li><li>IT スタッフの認識された侵害や変更がない場合でも、一定の間隔で (たとえば、毎四半期または毎年)</li></ul>これらのアカウントの資格情報には複数のユーザーがアクセスできるので、資格情報をローテーションして、それらのロールから抜けたユーザーがアカウントにアクセスできないようにする必要があります。 [アカウントの保護に関する詳細情報](../roles/security-planning.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>ロールが Privileged Identity Management の外部に割り当てられている
 
@@ -143,9 +143,9 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 このセクションでは、Azure AD ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
 
-- **高**: ポリシー違反のため直ちに対処が必要です。
-- **中**: 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
-- **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
+- **高** : ポリシー違反のため直ちに対処が必要です。
+- **中** : 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
+- **低** : 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理者が特権ロールを使用してません
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145273"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366328"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -105,7 +105,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 ## <a name="understand-ca-policy-components"></a>CA ポリシー コンポーネントについて
 CA ポリシーは if-then ステートメントです。割り当てが満たされた場合、それらのアクセス制御が適用されます。
 
-CA ポリシーを構成する場合、条件は "*割り当て*" と呼ばれます。 CA ポリシーを使用すると、特定の割り当てに基づいて組織のアプリに対してアクセス制御を適用できます。
+CA ポリシーを構成する場合、条件は " *割り当て* " と呼ばれます。 CA ポリシーを使用すると、特定の割り当てに基づいて組織のアプリに対してアクセス制御を適用できます。
 
 
 詳細については、[CA ポリシーの構築](concept-conditional-access-policies.md)に関する記事を参照してください。
@@ -220,7 +220,7 @@ CA ポリシー条件によってアクセス制御がトリガーされない�
 
 ### <a name="set-up-emergency-access-accounts"></a>緊急アクセス用アカウントを設定する
 
-ポリシーを誤って構成した場合、それによって Azure portal から組織がロックアウトされる可能性があります。 組織で[緊急アクセス用アカウント](../users-groups-roles/directory-emergency-access.md)を 2 つ以上作成することで、誤って管理者がロックアウトされた場合の影響を軽減します。
+ポリシーを誤って構成した場合、それによって Azure portal から組織がロックアウトされる可能性があります。 組織で[緊急アクセス用アカウント](../roles/security-emergency-access.md)を 2 つ以上作成することで、誤って管理者がロックアウトされた場合の影響を軽減します。
 
 * ポリシー管理専用のユーザー アカウントを作成し、すべてのポリシーから除外します。
 
@@ -264,7 +264,7 @@ MFA や 1 つのネットワークの場所などの単一のアクセス制御�
 
 ![ポリシーの命名規則を示すスクリーンショット。](media/plan-conditional-access/11.png)
 
-**例**: 外部ネットワークから Dynamics CRP アプリにアクセスするマーケティング ユーザーに対して MFA を要求するポリシーは次のようになります。
+**例** : 外部ネットワークから Dynamics CRP アプリにアクセスするマーケティング ユーザーに対して MFA を要求するポリシーは次のようになります。
 
 ![名前付け基準](media/plan-conditional-access/naming-example.png)
 
@@ -287,7 +287,7 @@ EM01 - ENABLE IN EMERGENCY:MFA Disruption [1/4] - Exchange SharePoint:Require hy
 
 ### <a name="exclude-countries-from-which-you-never-expect-a-sign-in"></a>サインイン元の国として想定されない国を除外する
 
-Azure Active Directory では、[ネームド ロケーション](location-condition.md)を作成できます。 サインイン元の国として想定されないすべての国を含むネームド ロケーションを作成します。 次に、そのネームド ロケーションからのサインインをブロックする、すべてのアプリ用のポリシーを作成します。 **管理者はこのポリシーから必ず除外してください**。
+Azure Active Directory では、[ネームド ロケーション](location-condition.md)を作成できます。 サインイン元の国として想定されないすべての国を含むネームド ロケーションを作成します。 次に、そのネームド ロケーションからのサインインをブロックする、すべてのアプリ用のポリシーを作成します。 **管理者はこのポリシーから必ず除外してください** 。
 
 ### <a name="plan-your-policy-deployment"></a>ポリシーのデプロイを計画する
 
@@ -421,7 +421,7 @@ CA ポリシーを作成する方法について詳しくは、次の例を参�
 
 テスト ユーザーを使用して、テスト計画で各テストを実行します。
 
-**ポリシーの除外条件を必ずテストしてください**。 たとえば、MFA を必要とするポリシーからユーザーまたはグループを除外することができます。 他のポリシーの組み合わせでは、除外されたユーザーに MFA を要求する可能性があるため、それらのユーザーに MFA を求めるプロンプトが表示されるかどうかをテストする必要があります。
+**ポリシーの除外条件を必ずテストしてください** 。 たとえば、MFA を必要とするポリシーからユーザーまたはグループを除外することができます。 他のポリシーの組み合わせでは、除外されたユーザーに MFA を要求する可能性があるため、それらのユーザーに MFA を求めるプロンプトが表示されるかどうかをテストする必要があります。
 
 ### <a name="roll-back-policies"></a>ポリシーをロールバックする
 

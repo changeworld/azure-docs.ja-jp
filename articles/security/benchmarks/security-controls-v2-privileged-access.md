@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758372"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367484"
 ---
 # <a name="security-control-v2-privileged-access"></a>セキュリティ コントロール V2:特権アクセス
 
@@ -34,15 +34,15 @@ ms.locfileid: "91758372"
 
 Azure Privileged Identity Management (PIM) を使用して、Azure リソースと Azure AD への Just-In-Time (JIT) の特権アクセスを有効にすることができます。 ユーザーが必要とする場合にのみ特権タスクを実行するための一時的なアクセス許可は、JIT によって付与されます。 PIM を使用すると、Azure AD 組織に不審なアクティビティや安全でないアクティビティがある場合に、セキュリティ アラートを生成することもできます。
 
-- [Azure AD での管理者ロールのアクセス許可](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD での管理者ロールのアクセス許可](../../active-directory/roles/permissions-reference.md)
 
 - [Azure Privileged Identity Management のセキュリティ アラートを使用する](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/roles/security-planning.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -70,9 +70,9 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 - [Azure サブスクリプション管理者](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -95,9 +95,9 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../../active-directory/governance/access-reviews-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -114,11 +114,11 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 Azure AD 組織から誤ってロックアウトされるのを防ぐために、通常の管理者アカウントを使用できない場合にアクセスするための緊急アクセス用アカウントを設定します。 緊急アクセス用アカウントは高い特権を持っており、特定の個人に割り当てることはできません。 緊急アクセス用アカウントは、通常の管理者アカウントを使うことができない "緊急事態" に制限されます。
 緊急アクセス用アカウントの資格情報 (パスワード、証明書、スマート カードなど) は安全に保管し、緊急時にのみそれらを使うことを許可された個人のみに知らせる必要があります。
 
-- [Azure AD で緊急アクセス用アカウントを管理する](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [Azure AD で緊急アクセス用アカウントを管理する](../../active-directory/roles/security-emergency-access.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -139,9 +139,9 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 - [Azure AD エンタイトルメント管理とは](../../active-directory/governance/entitlement-management-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -161,9 +161,9 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 - [特権アクセス ワークステーションを展開する](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -186,9 +186,9 @@ Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../../active-directory/governance/access-reviews-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -208,9 +208,9 @@ Microsoft が顧客データにアクセスする必要があるサポート シ
 
 - [カスタマー ロックボックスについて](../fundamentals/customer-lockbox-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 

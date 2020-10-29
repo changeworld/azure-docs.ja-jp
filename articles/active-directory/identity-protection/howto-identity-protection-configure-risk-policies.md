@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49f3e082969b7483601088cd976d8cc30d500017
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337451"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367467"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする
 
@@ -45,7 +45,7 @@ Microsoft で推奨しているのは、ユーザー リスク ポリシーの�
 
 ## <a name="exclusions"></a>除外
 
-すべてのポリシーで、[緊急時の管理者アカウント](../users-groups-roles/directory-emergency-access.md)などのユーザーを除外できます。 組織は、アカウントの使用方法に基づいて、特定のポリシーから他のアカウントを除外する必要があると判断できます。 すべての除外を定期的に見直して、適用を続行するかどうかを確認する必要があります。
+すべてのポリシーで、[緊急時の管理者アカウント](../roles/security-emergency-access.md)などのユーザーを除外できます。 組織は、アカウントの使用方法に基づいて、特定のポリシーから他のアカウントを除外する必要があると判断できます。 すべての除外を定期的に見直して、適用を続行するかどうかを確認する必要があります。
 
 Identity Protection で構成済みのセキュリティで保護された[ネットワークの場所](../conditional-access/location-condition.md)を使用することで、リスクを検出して偽陽性を減らすことができます。
 

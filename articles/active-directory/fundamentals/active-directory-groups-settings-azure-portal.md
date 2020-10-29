@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797527"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369133"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory を使用してグループ情報を編集する
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
     
     - **[メンバーシップの種類]。** メンバーシップの種類を変更します。 利用可能なさまざまなメンバーシップの種類については、「[How to:Azure Active Directory ポータルを使用して基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
     
-    - **[オブジェクト ID]。** オブジェクト ID は変更できませんが、コピーして PowerShell コマンドでグループに対して使用できます。 PowerShell コマンドレットの使用に関する詳細については、[グループ設定の構成用の Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-v2-cmdlets.md)に関するページをご覧ください。
+    - **[オブジェクト ID]。** オブジェクト ID は変更できませんが、コピーして PowerShell コマンドでグループに対して使用できます。 PowerShell コマンドレットの使用に関する詳細については、[グループ設定の構成用の Azure Active Directory コマンドレット](../enterprise-users/groups-settings-v2-cmdlets.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
 
 - [グループからメンバーを追加または削除する方法](active-directory-groups-members-azure-portal.md)
 
-- [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-create-rule.md)
+- [グループ内のユーザーの動的ルールの管理](../enterprise-users/groups-create-rule.md)
 
 - [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 

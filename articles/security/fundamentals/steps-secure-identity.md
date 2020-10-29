@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107812"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364118"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -72,7 +72,7 @@ Azure AD の[パスワードの動的禁止](../../active-directory/authenticati
 [NIST ガイダンス](https://pages.nist.gov/800-63-3/sp800-63b.html)に基づく次のような先進のパスワード ポリシーを採用することをお勧めします。
 
 1. パスワードに 8 文字以上を必要とする。 ユーザーが予測可能なパスワードを選んだり、パスワードをファイルに保存したり、書き留めたりする原因となるため、必ずしも長ければ長いほど良いというわけではありません。
-2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Spring2019!** など) をユーザーが使用する原因になります
+2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード ( **Spring2019!** など) をユーザーが使用する原因になります
 3. 文字構成の要件を無効にして、よく攻撃されるパスワードをユーザーが選択するのを防ぐ。これは、文字構成の要件が、パスワードで予測可能な文字置換をユーザーが選択する原因となるためです。
 
 Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](../../active-directory/authentication/concept-sspr-policy.md)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。
@@ -135,7 +135,7 @@ Microsoft では、攻撃の対象となる領域を減らし、このリスク�
 
 Azure AD PIM を有効にして管理者ロールが割り当てられたユーザーを表示し、それらのロールの不必要なアカウントを削除します。 残りの特権ユーザーを永続から候補に変更します。 最後に、適切な変更制御により、これらの特権ロールにアクセスできる必要がある場合に安全にアクセスできるよう、適切なポリシーを確立します。
 
-特権アカウントのプロセスをデプロイする一環として、自分自身をロックアウトしてしまった場合でも Azure AD にアクセスできるよう、[少なくとも 2 つの緊急アカウントを作成するベスト プラクティス](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)に従ってください。
+特権アカウントのプロセスをデプロイする一環として、自分自身をロックアウトしてしまった場合でも Azure AD にアクセスできるよう、[少なくとも 2 つの緊急アカウントを作成するベスト プラクティス](../../active-directory/roles/security-planning.md)に従ってください。
 
 ## <a name="step-3---automate-threat-response"></a>ステップ 3. - 脅威への対応を自動化する
 
@@ -193,7 +193,7 @@ Azure AD の[セルフサービス パスワード リセット (SSPR)](../../ac
 
 ### <a name="implement-self-service-group-and-application-access"></a>セルフサービス グループとアプリケーションのアクセスを実装する
 
-Azure AD を使用すると、セキュリティ グループ、Microsoft 365 グループ、アプリケーション ロール、アクセス パッケージ カタログを使用して、管理者以外のユーザーがリソースへのアクセスを管理できます。  [セルフサービス グループ管理](../../active-directory/users-groups-roles/groups-self-service-management.md)を使用すると、グループ所有者は、管理者ロールを割り当てられることなく、自分のグループを管理できます。 ユーザーは、自身の依頼の処理に管理者に頼らずに Microsoft 365 グループを作成および管理することもでき、未使用のグループも自動的に期限切れになります。  [Azure AD エンタイトルメント管理](../../active-directory/governance/entitlement-management-overview.md)を使用すると、包括的なアクセス要求ワークフローと自動有効期限を使用して委任と可視化をさらに高めることができます。  管理者以外のユーザーが所有するグループ、Teams、アプリケーション、および SharePoint Online サイト用に独自のアクセス パッケージを構成する機能を、それらのユーザーに委任することができます。これには、従業員のマネージャーやビジネス パートナー スポンサーの承認者としての構成など、アクセスを承認する必要があるユーザー用のカスタム ポリシーを使用します。
+Azure AD を使用すると、セキュリティ グループ、Microsoft 365 グループ、アプリケーション ロール、アクセス パッケージ カタログを使用して、管理者以外のユーザーがリソースへのアクセスを管理できます。  [セルフサービス グループ管理](../../active-directory/enterprise-users/groups-self-service-management.md)を使用すると、グループ所有者は、管理者ロールを割り当てられることなく、自分のグループを管理できます。 ユーザーは、自身の依頼の処理に管理者に頼らずに Microsoft 365 グループを作成および管理することもでき、未使用のグループも自動的に期限切れになります。  [Azure AD エンタイトルメント管理](../../active-directory/governance/entitlement-management-overview.md)を使用すると、包括的なアクセス要求ワークフローと自動有効期限を使用して委任と可視化をさらに高めることができます。  管理者以外のユーザーが所有するグループ、Teams、アプリケーション、および SharePoint Online サイト用に独自のアクセス パッケージを構成する機能を、それらのユーザーに委任することができます。これには、従業員のマネージャーやビジネス パートナー スポンサーの承認者としての構成など、アクセスを承認する必要があるユーザー用のカスタム ポリシーを使用します。
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD アクセス レビューを実装する
 

@@ -3,12 +3,12 @@ title: ISV ツールまたは Movere と連携するように Azure Migrate を�
 description: この記事では、ISV ツールまたは Movere と連携するように Azure Migrate を準備する方法と、ツールの使用を開始する方法について説明します。
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103927"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369150"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>ISV ツールまたは Movere を使用するための準備を行う
 
@@ -26,7 +26,7 @@ Azure ユーザー アカウントには、次のアクセス許可が必要で�
 
 1. Azure AD で、お使いのアカウントのロールを確認します。
 2. ユーザー ロールがある場合、左側にある **[ユーザー設定]** を選択し、ユーザーがアプリケーションを登録できるかどうかを確認します。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。 **[いいえ]** に設定されている場合は、管理者ユーザーのみがアプリを登録できます。   
-3. アクセス許可がない場合、管理者ユーザーがユーザー アカウントに[アプリケーション管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-administrator)ロールを提供することで、ユーザーはアプリを登録できるようになります。
+3. アクセス許可がない場合、管理者ユーザーがユーザー アカウントに[アプリケーション管理者](../active-directory/roles/permissions-reference.md#application-administrator)ロールを提供することで、ユーザーはアプリを登録できるようになります。
 4. ツールが Azure Migrate にリンクされると、管理者はユーザーのアカウントからロールを削除できます。
 
 ### <a name="set-permissions-to-assign-a-role-to-an-azure-ad-app"></a>ロールを Azure AD アプリに割り当てるためのアクセス許可を設定する

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101864"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367824"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -48,19 +48,18 @@ Azure Active Directory (Azure AD) では、すべてのユーザーに既定の�
 権限 | 設定の説明
 ---------- | ------------
 ユーザーはアプリケーションを登録できる | このオプションを [いいえ] に設定すると、ユーザーはアプリケーション登録を作成できません。 この場合、特定のユーザーをアプリケーション開発者ロールに追加することで、そのユーザーにこの機能を付与できます。
-ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](../users-groups-roles/linkedin-user-consent.md)」を参照してください。
-セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
-Microsoft 365 グループを作成する機能 | このオプションを [いいえ] に設定すると、ユーザーは Microsoft 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Microsoft 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Microsoft 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
+ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](../enterprise-users/linkedin-user-consent.md)」を参照してください。
+セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」をご覧ください。
+Microsoft 365 グループを作成する機能 | このオプションを [いいえ] に設定すると、ユーザーは Microsoft 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Microsoft 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Microsoft 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」をご覧ください。
 Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。<p>**注** : この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。<p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。
 他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 このフラグを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、このフラグを $false に設定することは推奨されません。
-
 
 ## <a name="restrict-guest-users-default-permissions"></a>ゲスト ユーザーの既定のアクセス許可を制限する
 
 ゲスト ユーザーの既定のアクセス許可は、次の方法で制限できます。
 
->[!NOTE] 
->**[Guests user access restrictions]\(ゲスト ユーザーのアクセス制限\)** 設定によって、 **[ゲストのアクセス許可を制限する]** 設定が置き換えられました。 この機能の使用に関するガイダンスについては、「[Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)](../users-groups-roles/users-restrict-guest-permissions.md)」を参照してください。
+>[!NOTE]
+>[Guests user access restrictions]\(ゲスト ユーザーのアクセス制限\) 設定は、 **[ゲストのアクセス許可を制限する]** 設定に置き換わりました。 この機能の使用に関するガイダンスについては、「[Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)](../enterprise-users/users-restrict-guest-permissions.md)」を参照してください。
 
 権限 | 設定の説明
 ---------- | ------------
@@ -143,7 +142,7 @@ Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス
 
 ## <a name="next-steps"></a>次のステップ
 
-* ゲスト ユーザーのアクセス制限の設定の詳細については、「[Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)](../users-groups-roles/users-restrict-guest-permissions.md)」を参照してください。
+* ゲスト ユーザーのアクセス制限の設定の詳細については、「[Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)](../enterprise-users/users-restrict-guest-permissions.md)」を参照してください。
 * Azure AD の管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)

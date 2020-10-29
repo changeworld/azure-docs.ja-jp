@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977016"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359715"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -47,11 +47,11 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 1. Azure AD 組織のライセンス管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
+1. **[Azure Active Directory]** を選択し、 **[ライセンス]** を選択します。
 
     ![購入したサービス数と割り当てられたライセンスを示す [ライセンス] ページ](media/license-users-groups/license-details-blade.png)
 
-1. **[購入済み]** のリンクを選択して **[製品]** ページを表示し、ライセンス プランの **[割り当て済み]**、**[利用可能]**、**[まもなく有効期限切れ]** の数を確認します。
+1. **[購入済み]** のリンクを選択して **[製品]** ページを表示し、ライセンス プランの **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の数を確認します。
 
     ![サービス ライセンス プランと関連付けられているライセンス情報を示すサービス ページ](media/license-users-groups/license-products-blade-with-products.png)
 
@@ -67,7 +67,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![サービス ライセンス プランが強調表示されたサービス ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. ライセンス プランの概要ページで、**[割り当て]** を選択します。
+1. ライセンス プランの概要ページで、 **[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されているサービス ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -75,7 +75,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
+1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
 
     ![ライセンス プランで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-assignments.png)
 
@@ -96,7 +96,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![製品ライセンス プランが強調表示されている [製品] ブレード](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
+1. **[Azure Active Directory Premium プラン 2]** ページで、 **[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -104,7 +104,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
+1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
 
     ![ライセンス プランで利用可能なすべてのオプションを示している [ライセンス オプション] ページ 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
@@ -120,7 +120,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 ### <a name="to-remove-a-license-from-a-user"></a>ユーザーからライセンスを削除するには
 
-1. サービス プランの **[ライセンスされているユーザー]** ページで、ライセンスが必要なくなったユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
+1. サービス プランの **[ライセンスされているユーザー]** ページで、ライセンスが必要なくなったユーザーを選択します。 たとえば、 _Alain Charon_ を選びます。
 
 1. **[ライセンスを削除する]** を選択します。
 
@@ -138,16 +138,16 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
     ![[ライセンスを削除する] オプションが強調表示されている [ライセンスされているグループ] ページ 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
-    > Azure AD と同期しているオンプレミスのユーザー アカウントが同期の対象外になった場合、または同期が削除された場合、ユーザーは Azure AD で論理的に削除されます。 この場合、ユーザーに直接、またはグループ ベースのライセンスを介して割り当てられたライセンスは、**削除済み**ではなく**保留中**としてマークされます。
+    > Azure AD と同期しているオンプレミスのユーザー アカウントが同期の対象外になった場合、または同期が削除された場合、ユーザーは Azure AD で論理的に削除されます。 この場合、ユーザーに直接、またはグループ ベースのライセンスを介して割り当てられたライセンスは、 **削除済み** ではなく **保留中** としてマークされます。
 
 ## <a name="next-steps"></a>次のステップ
 
 ライセンスを割り当てた後、次のプロセスを実行できます。
 
-- [ライセンスの割り当てに関する問題を特定して解決する](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [ライセンスの割り当てに関する問題を特定して解決する](../enterprise-users/licensing-groups-resolve-problems.md)
 
-- [ライセンス付与の目的でライセンスされているユーザーをグループに追加する](../users-groups-roles/licensing-groups-migrate-users.md)
+- [ライセンス付与の目的でライセンスされているユーザーをグループに追加する](../enterprise-users/licensing-groups-migrate-users.md)
 
-- [Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](../users-groups-roles/licensing-group-advanced.md)
+- [Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](../enterprise-users/licensing-group-advanced.md)
 
 - [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)

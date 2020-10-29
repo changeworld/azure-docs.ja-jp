@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eed12593168975b1dfda6e51b07b256cbd0c246
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004070"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92145809"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
 
@@ -171,7 +171,7 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
 
 このチュートリアルでは、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明しました。
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT ソリューション アクセラレータのドキュメント](/azure/iot-accelerators)を参照してください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT ソリューション アクセラレータのドキュメント](../iot-accelerators/index.yml)を参照してください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843109"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367008"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
@@ -42,7 +42,7 @@ ms.locfileid: "91843109"
 ## <a name="prerequisites"></a>前提条件
 - インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
 
-- インシデントを割り当てる必要があるゲスト ユーザーがいる場合は、そのユーザーに Azure AD テナントの[ディレクトリ閲覧者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)ロールを割り当てる必要があります。 通常の (ゲスト以外の) ユーザーには、既定でこのロールが割り当てられています。
+- インシデントを割り当てる必要があるゲスト ユーザーがいる場合は、そのユーザーに Azure AD テナントの[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md#directory-readers)ロールを割り当てる必要があります。 通常の (ゲスト以外の) ユーザーには、既定でこのロールが割り当てられています。
 
 ## <a name="how-to-investigate-incidents"></a>インシデントの調査方法
 
@@ -72,11 +72,11 @@ ms.locfileid: "91843109"
   
 調査グラフには、次のものがあります。
 
-- **生データからのビジュアル コンテキスト**:ライブのビジュアル グラフには、生データから自動的に抽出されたエンティティのリレーションシップが表示されます。 これにより、さまざまなデータ ソース間の接続を簡単に確認できます。
+- **生データからのビジュアル コンテキスト** :ライブのビジュアル グラフには、生データから自動的に抽出されたエンティティのリレーションシップが表示されます。 これにより、さまざまなデータ ソース間の接続を簡単に確認できます。
 
-- **調査範囲全体の検出**:組み込みの探索クエリを使用して調査範囲を拡大し、侵害の全範囲を明らかにします。
+- **調査範囲全体の検出** :組み込みの探索クエリを使用して調査範囲を拡大し、侵害の全範囲を明らかにします。
 
-- **組み込みの調査手順**:定義済みの探索オプションを使用して、脅威の発生時に適切な質問をするようにします。
+- **組み込みの調査手順** :定義済みの探索オプションを使用して、脅威の発生時に適切な質問をするようにします。
 
 調査グラフを使用するには:
 
@@ -91,7 +91,7 @@ ms.locfileid: "91843109"
 
     ![マップでのエンティティの表示](media/tutorial-investigate-cases/map-entities.png)
   
-1. 各エンティティの上にカーソルを置くと、エンティティの種類ごとにセキュリティ エクスパートやアナリストによって作成された質問の一覧が表示され、調査を深めることができます。 これらのオプションを**探索クエリ**と呼びます。
+1. 各エンティティの上にカーソルを置くと、エンティティの種類ごとにセキュリティ エクスパートやアナリストによって作成された質問の一覧が表示され、調査を深めることができます。 これらのオプションを **探索クエリ** と呼びます。
 
     ![詳細の探索](media/tutorial-investigate-cases/exploration-cases.png)
 

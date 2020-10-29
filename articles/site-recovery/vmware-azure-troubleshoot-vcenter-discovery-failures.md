@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135345"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366660"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server の検出エラーをトラブルシューティングする
 
@@ -54,7 +54,7 @@ vCenter の検出では、システム ユーザーによって構成された�
 
 この問題を解決するには:
 
-[PsExec ツール](https://aka.ms/PsExec) をダウンロードします。 
+[PsExec ツール](/sysinternals/downloads/psexec) をダウンロードします。 
 
 PsExec ツールを使用して、システム ユーザーのコンテキストにアクセスし、プロキシ アドレスが構成されているかどうかを判断します。 次の手順に従って、バイパス リストに vCenter を追加できます。
 
@@ -81,4 +81,4 @@ DRA プロキシ構成の場合
 
 ## <a name="next-steps"></a>次のステップ
 
-[VMware VM のディザスター リカバリー用の構成サーバーを管理する](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[VMware VM のディザスター リカバリー用の構成サーバーを管理する](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

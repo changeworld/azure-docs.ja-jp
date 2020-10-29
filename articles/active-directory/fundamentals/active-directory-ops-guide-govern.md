@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321516"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370969"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory ガバナンス運用リファレンス ガイド
 
@@ -49,7 +49,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="owner-recommended-reading"></a>所有者に関する推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)
 - [Azure でのガバナンス](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>構成変更のテスト
@@ -66,7 +66,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 |新しい機能の展開|この機能がターゲットとなるユーザー セットへの展開をサポートしている場合は、パイロット ユーザーを特定して構築します。たとえば、セルフサービス パスワード リセットと多要素認証は、特定のユーザーまたはグループをターゲットにすることができます。|
 |Active Directory などのオンプレミス ID プロバイダー (IdP) から Azure AD へのアプリケーションの切り替え|アプリケーションが複数の IdP 構成 (Salesforce など) をサポートしている場合、変更期間中に両方を構成し、Azure AD をテストします (アプリケーションで HRD ページを導入する場合)。 アプリケーションが複数の IdP をサポートしていない場合、変更管理期間とプログラムのダウンタイム中にテストをスケジュールします。|
 |動的グループ規則の更新|新しい規則を使用して、並列動的グループを作成します。 計算された結果と比較します。たとえば、同じ条件で PowerShell を実行します。<br>テストに合格した場合、古いグループが使用されていた場所をスワップします (可能な場合)。|
-|製品ライセンスの移行|「[Azure Active Directory のライセンス グループ内の 1 人のユーザーのライセンスを変更する](../users-groups-roles/licensing-groups-change-licenses.md)」を参照してください。|
+|製品ライセンスの移行|「[Azure Active Directory のライセンス グループ内の 1 人のユーザーのライセンスを変更する](../enterprise-users/licensing-groups-change-licenses.md)」を参照してください。|
 |承認、発行、MFA などの AD FS 規則の変更|グループ要求を使用して、ユーザーのサブセットをターゲットにします。|
 |AD FS 認証エクスペリエンスまたは同様のファーム全体の変更|同じホスト名で並列ファームを作成し、構成の変更を実装し、HOSTS ファイル、NLB ルーティング規則、または同様のルーティングを使用してクライアントからテストします。<br>ターゲット プラットフォームが HOSTS ファイル (モバイル デバイスなど) をサポートしていない場合、変更を管理します。|
 
@@ -92,9 +92,9 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="privileged-account-usage"></a>特権アカウントの使用
 
-ハッカーは、多くの場合、管理者アカウントや特権アクセスのその他の要素を標的にして、機密データやシステムにすばやくアクセスします。 特権ロールを持つユーザーは時間の経過と共に蓄積する傾向があるため、定期的に管理者アクセスを確認および管理し、Azure AD および Azure リソースへのジャストインタイム特権アクセスを提供することが重要です。
+ハッカーは、多くの場合、管理者アカウントや特権アクセスのその他の要素を標的にして、機密データやシステムにすばやくアクセスします。  特権ロールを持つユーザーは時間の経過と共に蓄積する傾向があるため、定期的に管理者アクセスを確認および管理し、Azure AD および Azure リソースへのジャストインタイム特権アクセスを提供することが重要です。
 
-特権アカウントを管理するプロセスが組織に存在しない場合、または通常のユーザー アカウントを使用してサービスとリソースを管理する管理者が現在いる場合は、すぐに個別のアカウントの使用を開始することをお勧めします。たとえば、定期的な日常のアクティビティ用と、特権アクセス用で MFA を使用して構成されたものです。 さらに、組織に Azure AD Premium P2 サブスクリプションがある場合は、すぐに [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) をデプロイするようにします。 同じトークン内で、その特権アカウントも確認し、必要に応じて[下位の特権ロールを割り当てます](../users-groups-roles/directory-admin-roles-secure.md)。
+特権アカウントを管理するプロセスが組織に存在しない場合、または通常のユーザー アカウントを使用してサービスとリソースを管理する管理者が現在いる場合は、すぐに個別のアカウントの使用を開始することをお勧めします。たとえば、定期的な日常のアクティビティ用と、特権アクセス用で MFA を使用して構成されたものです。 さらに、組織に Azure AD Premium P2 サブスクリプションがある場合は、すぐに [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) をデプロイするようにします。 同じトークン内で、その特権アカウントも確認し、必要に応じて[下位の特権ロールを割り当てます](../roles/security-planning.md)。
 
 実装が推奨される特権アカウント管理のもう 1 つの側面は、そのようなアカウントに対して、手動で、または [PIM による自動的な方法](../privileged-identity-management/pim-how-to-perform-security-review.md)で[アクセス レビュー](../governance/access-reviews-overview.md)を定義することです。
 
@@ -104,12 +104,12 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="emergency-access-accounts"></a>緊急アクセス アカウント
 
-組織は、次のような認証停止などの場合に備えて、[緊急アカウント](../users-groups-roles/directory-emergency-access.md)を作成して Azure AD を管理できるように準備する必要があります。
+組織は、次のような認証停止などの場合に備えて、[緊急アカウント](../roles/security-emergency-access.md)を作成して Azure AD を管理できるように準備する必要があります。
 
 - 認証インフラストラクチャ (AD FS、オンプレミス AD、MFA サービス) の停止コンポーネント
 - 管理スタッフの離職
 
-管理者としてのサインインまたはアクティブ化に既存の個々のユーザーのアカウントを使用できないためにテナントから誤ってロックアウトされる問題を回避するには、2 つ以上の緊急アカウントを作成します。また、それらが実装され、[Microsoft のベスト プラクティス](../users-groups-roles/directory-admin-roles-secure.md)と ["非常時" の手順](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)に従っていることを確認します。
+管理者としてのサインインまたはアクティブ化に既存の個々のユーザーのアカウントを使用できないためにテナントから誤ってロックアウトされる問題を回避するには、2 つ以上の緊急アカウントを作成します。また、それらが実装され、[Microsoft のベスト プラクティス](../roles/security-planning.md)と ["非常時" の手順](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)に従っていることを確認します。
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Azure EA ポータルへの特権アクセス
 
@@ -119,7 +119,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="privileged-access-recommended-reading"></a>特権アクセスに関する推奨資料
 
-- [Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>エンタイトルメント管理
 

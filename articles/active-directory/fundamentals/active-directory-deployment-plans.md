@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318429"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371887"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -54,7 +54,7 @@ ms.locfileid: "89318429"
 
 最初の段階では、テストを受けてフィードバックを提供できる IT、ユーザビリティ、およびその他の適切なユーザーを対象にします。 このフィードバックを使用して、ユーザーに伝える情報と指示をさらに開発し、サポート スタッフが確認する可能性がある問題の種類に関する分析情報を提供します。 
 
-大規模なユーザー グループへのロールアウトの拡大は、対象とするグループのスコープを広げることで実行する必要があります。 これは、[動的グループ メンバーシップ](../users-groups-roles/groups-dynamic-membership.md)を使用するか、対象グループにユーザーを手動で追加することで実行できます。
+大規模なユーザー グループへのロールアウトの拡大は、対象とするグループのスコープを広げることで実行する必要があります。 これは、[動的グループ メンバーシップ](../enterprise-users/groups-dynamic-membership.md)を使用するか、対象グループにユーザーを手動で追加することで実行できます。
 
 
 ## <a name="deploy-authentication"></a>認証のデプロイ

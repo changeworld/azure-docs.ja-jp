@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528130"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365913"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS デバイスの共有デバイス モード
 
@@ -39,11 +39,11 @@ ms.locfileid: "90528130"
 
 共有デバイス モード アプリを作成するには、開発者とクラウド デバイス管理者が協力して作業します。
 
-1. **アプリケーション開発者**は、単一アカウント アプリ (共有デバイス モードでは複数アカウント アプリはサポートされていません) を記述し、共有デバイスのサインアウトなどを処理するためのコードを記述します。
+1. **アプリケーション開発者** は、単一アカウント アプリ (共有デバイス モードでは複数アカウント アプリはサポートされていません) を記述し、共有デバイスのサインアウトなどを処理するためのコードを記述します。
 
-1. **デバイス管理者**は、組織内のデバイスを管理するために Microsoft Intune のようなモバイル デバイス管理 (MDM) プロバイダーを使用して、デバイスの共有を準備します。 MDM は、デバイスに Microsoft Authenticator アプリをプッシュし、デバイスのプロファイルの更新を通じて、各デバイスの "共有モード" をオンにします。 この共有モード設定は、デバイスでサポートされているアプリの動作を変更するものです。 MDM プロバイダーからのこの構成によって、デバイスの共有デバイス モードを設定し、共有デバイス モードで必要とされる [Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を有効にします。
+1. **デバイス管理者** は、組織内のデバイスを管理するために Microsoft Intune のようなモバイル デバイス管理 (MDM) プロバイダーを使用して、デバイスの共有を準備します。 MDM は、デバイスに Microsoft Authenticator アプリをプッシュし、デバイスのプロファイルの更新を通じて、各デバイスの "共有モード" をオンにします。 この共有モード設定は、デバイスでサポートされているアプリの動作を変更するものです。 MDM プロバイダーからのこの構成によって、デバイスの共有デバイス モードを設定し、共有デバイス モードで必要とされる [Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を有効にします。
 
-1. **[パブリック プレビュー中にのみ必要]** [クラウド デバイス管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) ロールを持つユーザーは、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を起動し、デバイスを組織に参加させる必要があります。
+1. **[パブリック プレビュー中にのみ必要]** [クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator) ロールを持つユーザーは、 [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を起動し、デバイスを組織に参加させる必要があります。
 
     Azure portal で組織ロールのメンバーシップを構成するには: **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]**
 
@@ -59,9 +59,9 @@ ms.locfileid: "90528130"
 1. Intune 構成ポータルで、デバイスに次の構成で [Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を有効にするように指示します。
 
     - **[種類]** :リダイレクト
-    - **拡張 ID**: com.microsoft.azureauthenticator.ssoextension
-    - **チーム ID**: (iOS ではこのフィールドは必要ありません)
-    - **URL**:   
+    - **拡張 ID** : com.microsoft.azureauthenticator.ssoextension
+    - **チーム ID** : (iOS ではこのフィールドは必要ありません)
+    - **URL** :   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -71,7 +71,7 @@ ms.locfileid: "90528130"
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **構成する追加データ**:
+    - **構成する追加データ** :
       - キー: sharedDeviceMode
       - 型: Boolean
       - 値: true
@@ -182,7 +182,7 @@ parameters.loginHint = self.loginHintTextField.text;
 
 ### <a name="globally-sign-out-a-user"></a>ユーザーをグローバルにサインアウトさせる
 
-次のコードは、サインインしているアカウントを削除し、キャッシュされているトークンをアプリだけでなく共有デバイス モードのデバイスからもクリアします。 ただし、これによって、アプリケーションから*データ*はクリアされません。 アプリケーションからデータをクリアするだけでなく、アプリケーションでユーザーに表示している可能性があるキャッシュ データもクリアする必要があります。
+次のコードは、サインインしているアカウントを削除し、キャッシュされているトークンをアプリだけでなく共有デバイス モードのデバイスからもクリアします。 ただし、これによって、アプリケーションから *データ* はクリアされません。 アプリケーションからデータをクリアするだけでなく、アプリケーションでユーザーに表示している可能性があるキャッシュ データもクリアする必要があります。
 
 #### <a name="clear-browser-state"></a>ブラウザーの状態をクリアする
 

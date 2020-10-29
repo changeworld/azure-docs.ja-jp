@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9fe4d5cfb4b0b31a257dfecdeeb191a9c7920772
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 993e1a513fae726e00a29c4b9927a0a039572f74
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365937"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web API:コード構成
 
@@ -88,7 +88,7 @@ Microsoft.Identity.Web では、構成またはコードの両方で証明書を
 
 ## <a name="startupcs"></a>Startup.cs
 
-Web API では、ダウンストリーム API のトークンを取得する必要があります。 これを指定するには、`.AddMicrosoftIdentityWebApi(Configuration)` の後に `.EnableTokenAcquisitionToCallDownstreamApi()` 行を追加します。 この行により、コントローラーまたはページのアクションで使用できる `ITokenAcquisition` サービスが公開されます。 ただし、次の 2 つの箇条書きでわかるように、さらに簡単に行うことができます。 また、*Startup.cs* で、`.AddInMemoryTokenCaches()` などのトークン キャッシュの実装を選択する必要もあります。
+Web API では、ダウンストリーム API のトークンを取得する必要があります。 これを指定するには、`.AddMicrosoftIdentityWebApi(Configuration)` の後に `.EnableTokenAcquisitionToCallDownstreamApi()` 行を追加します。 この行により、コントローラーまたはページのアクションで使用できる `ITokenAcquisition` サービスが公開されます。 ただし、次の 2 つの箇条書きでわかるように、さらに簡単に行うことができます。 また、 *Startup.cs* で、`.AddInMemoryTokenCaches()` などのトークン キャッシュの実装を選択する必要もあります。
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -109,7 +109,7 @@ public class Startup
 }
 ```
 
-トークンを自分で取得しない場合は、*Microsoft.Identity.Web* には、別の API からダウンストリーム Web API を呼び出すための 2 つのメカニズムが用意されています。 選択するオプションは、Microsoft Graph または別の API のどちらを呼び出すかによって異なります。
+トークンを自分で取得しない場合は、 *Microsoft.Identity.Web* には、別の API からダウンストリーム Web API を呼び出すための 2 つのメカニズムが用意されています。 選択するオプションは、Microsoft Graph または別の API のどちらを呼び出すかによって異なります。
 
 ### <a name="option-1-call-microsoft-graph"></a>オプション 1: Microsoft Graph の呼び出し
 
@@ -140,7 +140,7 @@ public class Startup
 
 ### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>オプション 2:Microsoft Graph 以外のダウンストリーム Web API を呼び出す
 
-Microsoft Graph 以外のダウンストリーム API を呼び出すために、*Microsoft.Identity.Web* には、トークンを要求し、ダウンストリーム Web API を呼び出す `.AddDownstreamWebApi()` が用意されています。
+Microsoft Graph 以外のダウンストリーム API を呼び出すために、 *Microsoft.Identity.Web* には、トークンを要求し、ダウンストリーム Web API を呼び出す `.AddDownstreamWebApi()` が用意されています。
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -164,7 +164,7 @@ public class Startup
 
 Web アプリと同様に、さまざまなトークン キャッシュの実装を選択できます。 詳細については、GitHub の [Microsoft identity web - Token cache serialization](https://aka.ms/ms-id-web/token-cache-serialization) (トークン キャッシュのシリアル化) を参照してください。
 
-次の図は、*Microsoft.Identity.Web* のさまざまな可能性と、*Startup.cs* ファイルへの影響を示しています。
+次の図は、 *Microsoft.Identity.Web* のさまざまな可能性と、 *Startup.cs* ファイルへの影響を示しています。
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Web API を呼び出し、トークン キャッシュの実装を指定するための Startup.cs のサービス構成オプションを示すブロック図":::
 
@@ -248,7 +248,7 @@ Python Web API は、クライアントから受信したベアラー トーク�
 
 ---
 
-また、[Node.js と Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61) への OBO フロー実装の例を確認することもできます。
+また、[Node.js と Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/Function/MyHttpTrigger/index.js#L61) への OBO フロー実装の例を確認することもできます。
 
 ## <a name="protocol"></a>Protocol
 

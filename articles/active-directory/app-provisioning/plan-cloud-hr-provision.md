@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070386"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363659"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -60,9 +60,9 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 この記事では、次の用語を使用しています。
 
-- **ソース システム**:Azure AD のプロビジョニング元である、ユーザーのリポジトリ。 例として、Workday や SuccessFactors などのクラウド人事アプリがあります。
-- **ターゲット システム**:Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 例として、Active Directory、Azure AD、Microsoft 365、その他の SaaS アプリがあります。
-- **入社/異動/退職プロセス**:クラウド人事アプリを記録システムとして使用する新規雇用、異動、退職に対して使われる用語。 プロセスが完了するのは、サービスによって必要な属性がターゲット システムに正常にプロビジョニングされた時点です。
+- **ソース システム** :Azure AD のプロビジョニング元である、ユーザーのリポジトリ。 例として、Workday や SuccessFactors などのクラウド人事アプリがあります。
+- **ターゲット システム** :Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 例として、Active Directory、Azure AD、Microsoft 365、その他の SaaS アプリがあります。
+- **入社/異動/退職プロセス** :クラウド人事アプリを記録システムとして使用する新規雇用、異動、退職に対して使われる用語。 プロセスが完了するのは、サービスによって必要な属性がターゲット システムに正常にプロビジョニングされた時点です。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -81,8 +81,8 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure AD Connect プロビジョニング エージェントを構成するための [Azure AD ハイブリッド ID 管理者](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)。
-- Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)ロール
+- Azure AD Connect プロビジョニング エージェントを構成するための [Azure AD ハイブリッド ID 管理者](../roles/permissions-reference.md#hybrid-identity-administrator)。
+- Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)ロール
 - クラウド人事アプリのテストおよび運用インスタンス。
 - クラウド人事アプリの管理者権限。システム統合ユーザーを作成したり、テスト目的でテスト用社員データを変更したりするために必要です。
 - Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です
@@ -110,15 +110,15 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 #### <a name="description-of-workflow"></a>ワークフローの説明
 
-次の主要な手順を図に示します。  
+次の主要な手順を図に示します。  
 
-1. **人事チーム**は、クラウド人事アプリのテナントでトランザクションを実行します。
-2. **Azure AD プロビジョニング サービス**は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、Active Directory との同期のために処理する必要がある変更を識別します。
-3. **Azure AD プロビジョニング サービス**は、Active Directory アカウントの作成、更新、有効化、無効化の操作を含む要求ペイロードを使用して、Azure AD Connect プロビジョニング エージェントを呼び出します。
-4. **Azure AD Connect プロビジョニング エージェント**は、サービス アカウントを使用して Active Directory アカウントのデータを管理します。
-5. **Azure AD Connect** は、デルタ[同期](../hybrid/how-to-connect-sync-whatis.md)を実行して Active Directory 内の更新をプルします。
+1. **人事チーム** は、クラウド人事アプリのテナントでトランザクションを実行します。
+2. **Azure AD プロビジョニング サービス** は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、Active Directory との同期のために処理する必要がある変更を識別します。
+3. **Azure AD プロビジョニング サービス** は、Active Directory アカウントの作成、更新、有効化、無効化の操作を含む要求ペイロードを使用して、Azure AD Connect プロビジョニング エージェントを呼び出します。
+4. **Azure AD Connect プロビジョニング エージェント** は、サービス アカウントを使用して Active Directory アカウントのデータを管理します。
+5. **Azure AD Connect** は、デルタ [同期](../hybrid/how-to-connect-sync-whatis.md)を実行して Active Directory 内の更新をプルします。
 6. **Active Directory** の更新は、Azure AD と同期されます。
-7. **Azure AD プロビジョニング サービス**は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
+7. **Azure AD プロビジョニング サービス** は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -144,9 +144,9 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 クラウド人事アプリと Active Directory の間の Azure AD プロビジョニング ワークフローを容易にするため、Azure AD アプリ ギャラリーからプロビジョニング コネクタ アプリを複数追加できます。
 
-- **クラウド人事アプリからAzure Active Directory へのユーザー プロビジョニング**:このプロビジョニング コネクタ アプリは、クラウド人事アプリから 1 つの Active Directory ドメインへのユーザー アカウントのプロビジョニングを容易にします。 複数のドメインがある場合は、プロビジョニング先にする必要がある Active Directory ドメインごとに 1 つ、Azure AD アプリ ギャラリーからこのアプリのインスタンスを追加できます。
-- **クラウド人事アプリから Azure AD へのユーザー プロビジョニング**:Azure AD Connect は Active Directory ユーザーを Azure AD に同期するために使用するツールですが、このプロビジョニング コネクタ アプリを使用すると、クラウドのみのユーザーをクラウド人事アプリから 1 つの Azure AD テナントに容易にプロビジョニングできます。
-- **クラウド人事アプリへの書き戻し**:このプロビジョニング コネクタ アプリを使用すると、ユーザーのメール アドレスを Azure AD からクラウド人事アプリに容易に書き戻すことができます。
+- **クラウド人事アプリからAzure Active Directory へのユーザー プロビジョニング** :このプロビジョニング コネクタ アプリは、クラウド人事アプリから 1 つの Active Directory ドメインへのユーザー アカウントのプロビジョニングを容易にします。 複数のドメインがある場合は、プロビジョニング先にする必要がある Active Directory ドメインごとに 1 つ、Azure AD アプリ ギャラリーからこのアプリのインスタンスを追加できます。
+- **クラウド人事アプリから Azure AD へのユーザー プロビジョニング** :Azure AD Connect は Active Directory ユーザーを Azure AD に同期するために使用するツールですが、このプロビジョニング コネクタ アプリを使用すると、クラウドのみのユーザーをクラウド人事アプリから 1 つの Azure AD テナントに容易にプロビジョニングできます。
+- **クラウド人事アプリへの書き戻し** :このプロビジョニング コネクタ アプリを使用すると、ユーザーのメール アドレスを Azure AD からクラウド人事アプリに容易に書き戻すことができます。
 
 たとえば、次の図は、Azure AD アプリ ギャラリーで入手できる Workday コネクタ アプリの一覧です。
 
@@ -245,7 +245,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 
 要件に応じて、Azure AD では、定数値の提供、または[属性マッピングの式の作成](../app-provisioning/functions-for-customizing-application-data.md)によって属性から属性への直接マッピングをサポートします。 この柔軟性により、ターゲット アプリの属性に設定される内容を完全に制御できます。 [Microsoft Graph API](../app-provisioning/export-import-provisioning-configuration.md) と Graph Explorer を使用すると、ユーザー プロビジョニングの属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートし直すことができます。
 
-既定では、一意の社員 ID を表すクラウド人事アプリの属性が、*Active Directory の一意の属性にマップされる一致属性*として使用されます。 たとえば、Workday アプリのシナリオでは、**Workday** の **WorkerID** 属性が Active Directory の **employeeID** 属性にマップされます。
+既定では、一意の社員 ID を表すクラウド人事アプリの属性が、 *Active Directory の一意の属性にマップされる一致属性* として使用されます。 たとえば、Workday アプリのシナリオでは、 **Workday** の **WorkerID** 属性が Active Directory の **employeeID** 属性にマップされます。
 
 複数の一致属性を設定し、一致の優先順位を割り当てることができます。 一致の優先順位に従って評価が行われます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
@@ -366,9 +366,9 @@ Azure AD プロビジョニング サービスを初めて実行すると、ク�
 
 ソリューションの要件に合ったクラウド人事アプリを選択します。
 
-**Workday**:Workday から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)」を参照してください。 必要に応じて、メール アドレス、ユーザー名、電話番号を Workday に書き戻すことができます。
+**Workday** :Workday から Active Directory および Azure AD に従業員プロファイルをインポートするには、「 [チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)」を参照してください。 必要に応じて、メール アドレス、ユーザー名、電話番号を Workday に書き戻すことができます。
 
-**SAP SuccessFactors**:SuccessFactors から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:SAP SuccessFactors を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)」をご覧ください。 必要に応じて、メール アドレスとユーザー名を SuccessFactors に書き戻すことができます。
+**SAP SuccessFactors** :SuccessFactors から Active Directory および Azure AD に従業員プロファイルをインポートするには、「 [チュートリアル:SAP SuccessFactors を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)」をご覧ください。 必要に応じて、メール アドレスとユーザー名を SuccessFactors に書き戻すことができます。
 
 ## <a name="manage-your-configuration"></a>構成の管理
 

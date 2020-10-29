@@ -60,7 +60,7 @@ Run ID: cf4 was successful after 5s
 
 Azure Container Registry では、すべてのタスクの実行ログが保存されます。 保存されている実行ログは、Azure portal で表示できます。 または [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用して、選択したログを表示します。 既定では、ログは 30 日間保持されます。
 
-たとえばソースコードの更新でタスクが自動的にトリガーされる場合、保存されているログへのアクセスが、実行ログを表示する*唯一*の方法になります。 自動タスク トリガーには、ソース コードのコミットまたはプル要求、基本イメージの更新、およびタイマー トリガーが含まれます。
+たとえばソースコードの更新でタスクが自動的にトリガーされる場合、保存されているログへのアクセスが、実行ログを表示する *唯一* の方法になります。 自動タスク トリガーには、ソース コードのコミットまたはプル要求、基本イメージの更新、およびタイマー トリガーが含まれます。
 
 ポータル内の実行ログを表示するには:
 
@@ -83,7 +83,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 タスク実行ログをローカル ファイル システムに保存することも、Azure Storage などの代替アーカイブ ソリューションを使用することもできます。
 
-たとえば、ローカルの *tasklogs* ディレクトリを作成し、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) の出力をローカル ファイルにリダイレクトします。
+たとえば、ローカルの *tasklogs* ディレクトリを作成し、 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) の出力をローカル ファイルにリダイレクトします。
 
 ```azurecli
 mkdir ~/tasklogs

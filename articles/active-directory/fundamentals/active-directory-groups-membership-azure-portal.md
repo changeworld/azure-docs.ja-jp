@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565466"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371802"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory を使用して別のグループからグループを追加または削除する
 この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。
@@ -78,6 +78,6 @@ ms.locfileid: "89565466"
 
 - [グループの設定を編集する](active-directory-groups-settings-azure-portal.md)
 
-- [SaaS アプリケーションへのアクセスをグループで管理する](../users-groups-roles/groups-saasapps.md)
+- [SaaS アプリケーションへのアクセスをグループで管理する](../enterprise-users/groups-saasapps.md)
 
-- [Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

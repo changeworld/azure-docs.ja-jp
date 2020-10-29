@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499757"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369405"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -54,11 +54,11 @@ ms.locfileid: "87499757"
 ![Healthy][green] | なし  | プロセス サーバーは接続されており、正常な状態です。
 ![警告][yellow] | 指定されたサービスが実行されていません。 | 1.サービスが実行されていることを確認します。<br/> 2.サービスが期待どおりに実行されている場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
 ![警告][yellow]  | 過去 15 分間の CPU 使用率が 80% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![Critical][red] |  過去 15 分間の CPU 使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
+![Critical][red] |  過去 15 分間の CPU 使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](./site-recovery-deployment-planner.md) を実行します。
 ![警告][yellow] | 過去 15 分間のメモリ使用率が 80% を超えています。 |  1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.警告に関連付けられているすべての手順に従います。<br/> 4.問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![Critical][red] | 過去 15 分間のメモリ使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/> 2.警告に関連付けられているすべての手順に従います。<br/> 3. 問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーションの問題用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
+![Critical][red] | 過去 15 分間のメモリ使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/> 2.警告に関連付けられているすべての手順に従います。<br/> 3. 問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーションの問題用に [Deployment Planner](./site-recovery-deployment-planner.md) を実行します。
 ![警告][yellow] | 過去 15 分間のキャッシュ フォルダーの空き領域が 30% 未満です。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>2.プロセス サーバーを使用している VM の数が[ガイドライン](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認します。<br/> 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![Critical][red] |  過去 15 分間の空き領域が 25% 未満です。 | 1.この問題の警告に関連付けられている手順に従います。<br/> 2. 下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 3.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
+![Critical][red] |  過去 15 分間の空き領域が 25% 未満です。 | 1.この問題の警告に関連付けられている手順に従います。<br/> 2. 下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 3.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](./site-recovery-deployment-planner.md) を実行します。
 ![Critical][red] | プロセス サーバーからのハートビートが 15 分以上ありません。 tmansvs サービスが構成サーバーと通信していません。 | 1) プロセス サーバーが稼働していることを確認します。<br/> 2.tmassvc がプロセス サーバー上で実行されていることを確認します。<br/> 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
 
 
@@ -85,7 +85,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 1. プロセス サーバー VM が稼働していることを確認します。
 2. 次のログでエラーを確認します。
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log  C\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *.log  C\ProgramData\ASR\home\svsystems\monitor_protection* .log
 
 ## <a name="check-connectivity-and-replication"></a>接続とレプリケーションの確認
 
@@ -200,7 +200,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>手順 10: プロセス サーバーの Azure パブリック IP アドレスへの接続の確認
 
 1. プロセス サーバーで、 **%programfiles%\Microsoft Azure Recovery Services Agent\Temp** から最新の CBEngineCurr.errlog ファイルを開きます。
-2. このファイル内で、**443** または **connection attempt failed** という文字列を検索します。
+2. このファイル内で、 **443** または **connection attempt failed** という文字列を検索します。
 
   ![Temp フォルダー内のエラー ログ](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 

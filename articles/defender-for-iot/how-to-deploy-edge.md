@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 06836673f1a567f64217d49cf8e0ca82e132111f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931051"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368810"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -34,7 +34,7 @@ ms.locfileid: "90931051"
 
 ### <a name="prerequisites"></a>前提条件
 
-1. IoT Hub で、ご使用のデバイスが [IoT Edge デバイスとして登録されている](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)ことを確認してください。
+1. IoT Hub で、ご使用のデバイスが [IoT Edge デバイスとして登録されている](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device)ことを確認してください。
 
 1. Defender for IoT Edge モジュールでは、[AuditD フレームワーク](https://linux.die.net/man/8/auditd)が IoT Edge デバイスにインストールされている必要があります。
 
@@ -51,13 +51,13 @@ ms.locfileid: "90931051"
 
 1. Azure portal から **Marketplace** を開きます。
 
-1. **[モノのインターネット]** を選択し、「**Defender for IoT**」を検索して選択します。
+1. **[モノのインターネット]** を選択し、「 **Defender for IoT** 」を検索して選択します。
 
    ![Defender for IoT を選択する](media/howto/edge-onboarding-8.png)
 
 1. **[作成]** をクリックして、デプロイを構成します。
 
-1. ご使用の IoT Hub のAzure **サブスクリプション**を選択してから、ご使用の **IoT Hub** を選択します。<br>単一のデバイスをターゲットにするには **[デバイスへのデプロイ]** を選択し、複数のデバイスをターゲットにするには **[大規模にデプロイする]** を選択します。その後、 **[作成]** をクリックします。 大規模デプロイの詳細については、[デプロイ方法](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)に関する記事を参照してください。
+1. ご使用の IoT Hub のAzure **サブスクリプション** を選択してから、ご使用の **IoT Hub** を選択します。<br>単一のデバイスをターゲットにするには **[デバイスへのデプロイ]** を選択し、複数のデバイスをターゲットにするには **[大規模にデプロイする]** を選択します。その後、 **[作成]** をクリックします。 大規模デプロイの詳細については、[デプロイ方法](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)に関する記事を参照してください。
 
     >[!Note]
     >**[大規模にデプロイする]** を選択した場合は、以下の手順にある **[モジュールの追加]** タブに進む前にデバイス名と詳細を追加してください。
@@ -67,7 +67,7 @@ ms.locfileid: "90931051"
 #### <a name="step-1-modules"></a>手順 1:モジュール
 
 1. **AzureSecurityCenterforIoT** モジュールを選択します。
-1. **[モジュールの設定]** タブで、**名前** を **azureiotsecurity** に変更します。
+1. **[モジュールの設定]** タブで、 **名前** を **azureiotsecurity** に変更します。
 1. **[環境変数]** タブで、必要に応じて変数を追加します (デバッグ レベルなど)。
 1. **[コンテナーの作成オプション]** タブで、次の構成を追加します。
 
@@ -145,7 +145,7 @@ ms.locfileid: "90931051"
 
 #### <a name="step-3-specify-routes"></a>手順 3:ルートを指定する
 
-1. **[ルートの指定]** タブで、次の例に従い、**azureiotsecurity** モジュールから **$upstream** にメッセージを転送するルート (明示的または暗黙的) があることを確認します。 ルートが存在する場合にのみ、 **[次へ]** 選択します。
+1. **[ルートの指定]** タブで、次の例に従い、 **azureiotsecurity** モジュールから **$upstream** にメッセージを転送するルート (明示的または暗黙的) があることを確認します。 ルートが存在する場合にのみ、 **[次へ]** 選択します。
 
    ルートの例:
 

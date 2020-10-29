@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950495"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369439"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -71,7 +71,7 @@ Azure パック、クラウド プラットフォーム システム、および
 
 Site Recovery を使用している間は、[料金計算ツール](https://aka.ms/asr_pricing_calculator)を利用してコストを見積もることができます。
 
-コストの詳細な見積もりのためには、[VMware](https://aka.ms/siterecovery_deployment_planner) または [Hyper-V](https://aka.ms/asr-deployment-planner) に対してデプロイ プランナー ツールを実行し、[コスト見積もりレポート](https://aka.ms/asr_DP_costreport)を使用します。
+コストの詳細な見積もりのためには、[VMware](./site-recovery-deployment-planner.md) または [Hyper-V](https://aka.ms/asr-deployment-planner) に対してデプロイ プランナー ツールを実行し、[コスト見積もりレポート](./site-recovery-vmware-deployment-planner-cost-estimation.md)を使用します。
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>現在、VMware VM と物理サーバーをレプリケートするために、マネージド ディスクが使用されています。 マネージド ディスクには、キャッシュ ストレージ アカウントに対する追加料金はありますか?
@@ -132,10 +132,10 @@ Azure Site Recovery のマイクロサービス間のすべての通信は、TLS
 ## <a name="disaster-recovery"></a>障害復旧
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery が保護できるものは何ですか。
-* **Azure VM**: Site Recovery は、サポート対象の Azure VM で実行されているすべてのワークロードをレプリケートできます
-* **Hyper-V 仮想マシン**:Site Recovery は、Hyper-V VM で実行されているすべてのワークロードを保護できます。
-* **物理サーバー**:Site Recovery は、Windows または Linux が実行されている物理サーバーを保護できます。
-* **VMware 仮想マシン**:Site Recovery は、VMware VM で実行されているすべてのワークロードを保護できます。
+* **Azure VM** : Site Recovery は、サポート対象の Azure VM で実行されているすべてのワークロードをレプリケートできます
+* **Hyper-V 仮想マシン** :Site Recovery は、Hyper-V VM で実行されているすべてのワークロードを保護できます。
+* **物理サーバー** :Site Recovery は、Windows または Linux が実行されている物理サーバーを保護できます。
+* **VMware 仮想マシン** :Site Recovery は、VMware VM で実行されているすべてのワークロードを保護できます。
 
 ### <a name="what-workloads-can-i-protect-with-site-recovery"></a>Site Recovery で保護できるワークロードは何ですか。
 Site Recovery を使用すると、サポートされている VM または物理サーバーで実行されているほとんどのワークロードを保護できます。 また、アプリケーションに対応したレプリケーションもサポートしているため、アプリをインテリジェントな状態に復元できます。 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合し、Oracle、SAP、IBM、Red Hat などの主要なベンダーと緊密に連携します。 [詳細情報](site-recovery-workload.md) を参照してください。

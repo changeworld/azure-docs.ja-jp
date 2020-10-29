@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abca66dbe80cecec2320256d8a736408de20b64f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968295"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363710"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory のセルフサービス パスワード リセットのユーザー エクスペリエンスをカスタマイズする
 
@@ -44,13 +44,13 @@ ms.locfileid: "91968295"
 
 既定の連絡先メールは、次の順序で受信者に送信されます。
 
-1. *ヘルプデスク管理者*ロールまたは*パスワード管理者*ロールが割り当てられている場合は、これらのロールを持つ管理者が通知を受け取ります。
-1. ヘルプデスク管理者またはパスワード管理者が割り当てられていない場合は、"*ユーザー管理者*" ロールを持つ管理者が通知を受け取ります。
-1. 上記のどのロールも割り当てられていない場合は、*グローバル管理者*が通知を受け取ります。
+1. *ヘルプデスク管理者* ロールまたは *パスワード管理者* ロールが割り当てられている場合は、これらのロールを持つ管理者が通知を受け取ります。
+1. ヘルプデスク管理者またはパスワード管理者が割り当てられていない場合は、" *ユーザー管理者* " ロールを持つ管理者が通知を受け取ります。
+1. 上記のどのロールも割り当てられていない場合は、 *グローバル管理者* が通知を受け取ります。
 
 どの場合も、最大 100 人の受信者が通知を受け取ります。
 
-さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)」を参照してください。
 
 ### <a name="disable-contact-your-administrator-emails"></a>"管理者に問い合わせてください" メールを無効にする
 
@@ -74,8 +74,8 @@ ms.locfileid: "91968295"
 
 ユーザーにわかりやすくするには、ポータルおよび自動通信の組織名を変更することができます。 Azure portal でディレクトリ名属性を変更するには、 **[Azure Active Directory]**  >  **[プロパティ]** に移動します。 このわかりやすい組織名オプションは、次の例のように、自動化された電子メールでよく見られるものです。
 
-* メールのフレンドリ名 (例: "*CONTOSO の代理としての Microsoft のデモ*")
-* メールの件名行 (例: "*CONTOSO デモ アカウントのメール確認コード*")
+* メールのフレンドリ名 (例: " *CONTOSO の代理としての Microsoft のデモ* ")
+* メールの件名行 (例: " *CONTOSO デモ アカウントのメール確認コード* ")
 
 ## <a name="customize-the-ad-fs-sign-in-page"></a>AD FS サインイン ページをカスタマイズする
 
