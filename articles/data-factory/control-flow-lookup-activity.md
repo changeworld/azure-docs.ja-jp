@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044073"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425686"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -58,21 +58,21 @@ ms.locfileid: "92044073"
 
 名前 | 説明 | Type | 必須
 ---- | ----------- | ---- | --------
-dataset | ルックアップ用のデータセット参照を提供します。 対応する各コネクタの記事の 「**データセットのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
-source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「**コピー アクティビティのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
+dataset | ルックアップ用のデータセット参照を提供します。 対応する各コネクタの記事の 「 **データセットのプロパティ** 」セクションから詳細を取得します。 | キーと値のペア | はい
+source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「 **コピー アクティビティのプロパティ** 」セクションから詳細を取得します。 | キーと値のペア | はい
 firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | Boolean | いいえ。 既定では、 `true`です。
 
 > [!NOTE]
 > 
 > * **ByteArray** 型のソース列はサポートされていません。
-> * データセット定義内の**構造体**はサポートされていません。 テキスト形式のファイルの場合は、ヘッダー行を使用して列名を指定できます。
+> * データセット定義内の **構造体** はサポートされていません。 テキスト形式のファイルの場合は、ヘッダー行を使用して列名を指定できます。
 > * ルックアップ ソースが JSON ファイルの場合、JSON オブジェクトを整形するための `jsonPathDefinition` 設定はサポートされていません。 オブジェクト全体が取得されます。
 
 ## <a name="use-the-lookup-activity-result"></a>ルックアップ アクティビティの結果の使用
 
 ルックアップ結果は、アクティビティ実行結果の `output` セクションに返されます。
 
-* **`firstRowOnly` が `true` (既定値) に設定されているときは**、出力形式は次のコードに示すとおりです。 ルックアップ結果は固定の `firstRow` キーの下にあります。 後続のアクティビティで結果を使用するには、パターン `@{activity('LookupActivity').output.firstRow.table` を使用します。
+* **`firstRowOnly` が `true` (既定値) に設定されているときは** 、出力形式は次のコードに示すとおりです。 ルックアップ結果は固定の `firstRow` キーの下にあります。 後続のアクティビティで結果を使用するには、パターン `@{activity('LookupActivity').output.firstRow.table}` を使用します。
 
     ```json
     {
@@ -85,7 +85,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
     }
     ```
 
-* **`firstRowOnly` が `false` に設定されているときは**、出力形式は次のコードに示すとおりです。 `count` フィールドは、返されたレコードの数を示します。 固定された `value` 配列の下に詳細な値が表示されます。 このような場合は、ルックアップ アクティビティの後ろに [Foreach アクティビティ](control-flow-for-each-activity.md)が続きます。 `value` 配列は、パターン `@activity('MyLookupActivity').output.value` を使用して ForEach アクティビティの `items` フィールドに渡します。 `value` 配列の要素にアクセスするには、構文 `@{activity('lookupActivity').output.value[zero based index].propertyname}` を使用します。 たとえば `@{activity('lookupActivity').output.value[0].schema}` です。
+* **`firstRowOnly` が `false` に設定されているときは** 、出力形式は次のコードに示すとおりです。 `count` フィールドは、返されたレコードの数を示します。 固定された `value` 配列の下に詳細な値が表示されます。 このような場合は、ルックアップ アクティビティの後ろに [Foreach アクティビティ](control-flow-for-each-activity.md)が続きます。 `value` 配列は、パターン `@activity('MyLookupActivity').output.value` を使用して ForEach アクティビティの `items` フィールドに渡します。 `value` 配列の要素にアクセスするには、構文 `@{activity('lookupActivity').output.value[zero based index].propertyname}` を使用します。 たとえば `@{activity('lookupActivity').output.value[0].schema}` です。
 
     ```json
     {
@@ -107,7 +107,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 
 ## <a name="example"></a>例
 
-この例では、パイプラインに 2 つのアクティビティ、**ルックアップ**と**コピー**が含まれています。 コピー アクティビティは、お使いの Azure SQL Database インスタンスの SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
+この例では、パイプラインに 2 つのアクティビティ、 **ルックアップ** と **コピー** が含まれています。 コピー アクティビティは、お使いの Azure SQL Database インスタンスの SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
 
 この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、「[Azure Data Factory を使って複数のテーブルを一括コピーする](tutorial-bulk-copy.md)」のサンプルを参照してください。
 
@@ -244,7 +244,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 
 ### <a name="lookup-dataset"></a>ルックアップ データセット
 
-**ルックアップ** データセットは、**AzureBlobStorageLinkedService** 型で指定された Azure Storage ルックアップ フォルダー内の **sourcetable.json** ファイルです。 
+**ルックアップ** データセットは、 **AzureBlobStorageLinkedService** 型で指定された Azure Storage ルックアップ フォルダー内の **sourcetable.json** ファイルです。 
 
 ```json
 {
@@ -267,7 +267,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 }
 ```
 
-### <a name="source-dataset-for-copy-activity"></a>コピー アクティビティの**ソース** データセット
+### <a name="source-dataset-for-copy-activity"></a>コピー アクティビティの **ソース** データセット
 
 **ソース** データセットは、SQL テーブルの名前であるルックアップ アクティビティの出力を使用します。 コピー アクティビティは、SQL テーブルから Azure Blob Storage 内の場所にデータをコピーします。 場所は **sink** データセットによって指定されます。 
 
@@ -304,9 +304,9 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 }
 ```
 
-### <a name="sink-dataset-for-copy-activity"></a>コピー アクティビティの**シンク** データセット
+### <a name="sink-dataset-for-copy-activity"></a>コピー アクティビティの **シンク** データセット
 
-コピー アクティビティは、SQL テーブルから、Azure Storage の **csv** フォルダー内の **filebylookup.csv** ファイルにデータをコピーします。 このファイルは、**AzureBlobStorageLinkedService** プロパティで指定されています。 
+コピー アクティビティは、SQL テーブルから、Azure Storage の **csv** フォルダー内の **filebylookup.csv** ファイルにデータをコピーします。 このファイルは、 **AzureBlobStorageLinkedService** プロパティで指定されています。 
 
 ```json
 {

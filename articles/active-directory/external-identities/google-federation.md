@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8c07a6a67e97deafa2f611b297574a801aa356d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273995"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441948"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -81,7 +81,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
     - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br>(`<tenant id>` はご利用のテナントの ID です)
    
     > [!NOTE]
-    > テナント ID を見つけるには、 https://portal.azure.com に移動します。 **[Azure Active Directory]** で **[プロパティ]** を選択して、**テナント ID** をコピーします。
+    > テナント ID を見つけるには、 https://portal.azure.com に移動します。 **[Azure Active Directory]** で **[プロパティ]** を選択して、 **テナント ID** をコピーします。
 
     ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
 
@@ -109,7 +109,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > クライアント ID とクライアント シークレットは、「手順 1:Google 開発者プロジェクトを構成する」で作成したアプリのものを使用します。 詳細については、記事「[New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview)」を参照してください。 
+   > クライアント ID とクライアント シークレットは、「手順 1:Google 開発者プロジェクトを構成する」で作成したアプリのものを使用します。 詳細については、記事「[New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview)」を参照してください。 
  
 ## <a name="how-do-i-remove-google-federation"></a>Google フェデレーションを削除する方法
 Google フェデレーション セットアップは削除できます。 これを行うと、招待を既に利用している Google ゲスト ユーザーはサインインできなくなります。しかし、ディレクトリからこれらのユーザーを削除して招待し直すことで、もう一度リソースへのアクセス権を付与できます。 
@@ -133,4 +133,4 @@ Google フェデレーション セットアップは削除できます。 こ�
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > 詳細については、「[Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)」を参照してください。 
+   > 詳細については、「[Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)」を参照してください。

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542429"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425892"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB サーバーを別のリージョンに移動する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91542429"
 別のリージョンへの移動を完了するには、Azure Database for MariaDB の[リージョン間の読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を使用できます。 これを行うには、まずターゲット リージョンに読み取りレプリカを作成します。 次に、読み取りレプリカ サーバーへのレプリケーションを停止すると、読み取りと書き込みの両方のトラフィックを受け入れるスタンドアロン サーバーになります。 
 
 > [!NOTE]
-> この記事では、サーバーを別のリージョンに移動することに重点を置いています。 サーバーを別のリソース グループまたはサブスクリプションに移動する場合は、[移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)に関する記事を参照してください。 
+> この記事では、サーバーを別のリージョンに移動することに重点を置いています。 サーバーを別のリソース グループまたはサブスクリプションに移動する場合は、[移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関する記事を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

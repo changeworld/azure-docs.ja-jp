@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317363"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372159"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -79,7 +79,7 @@ VM の Start/Stop VMs during off-hours 機能を有効にするには、特定�
 VM の Start/Stop VMs during off-hours 機能は Automation アカウントと Log Analytics ワークスペースを利用して有効にできます。 この場合、前のセクションで定義されたアクセス許可と、このセクションで定義されているアクセス許可が必要です。 次のロールも必要です。
 
 - サブスクリプションの共同管理者。 クラシック VM を管理する場合は、クラシック実行アカウントを作成するためにこのロールが必要です。 [クラシック実行アカウント](automation-create-standalone-account.md#create-a-classic-run-as-account)は、既定では作成されなくなりました。
-- [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) アプリケーション開発者ロールのメンバーシップ。 実行アカウントの構成の詳細については、「[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)」を参照してください。
+- [Azure AD](../active-directory/roles/permissions-reference.md) アプリケーション開発者ロールのメンバーシップ。 実行アカウントの構成の詳細については、「[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)」を参照してください。
 - サブスクリプションまたは次のアクセス許可の共同作成者。
 
 | 権限 |Scope|
@@ -117,7 +117,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |ScheduledStartStop_Child | VMName <br> アクション:開始または停止 <br> ResourceGroupName | 親 Runbook から呼び出されます。 停止スケジュールの起動または停止アクションを実行します。|
 |ScheduledStartStop_Child_Classic | VMName<br> アクション:開始または停止<br> ResourceGroupName | 親 Runbook から呼び出されます。 クラシック VM に対して、スケジュールに従って開始または停止アクションを実行します。 |
 |ScheduledStartStop_Parent | アクション:開始または停止 <br>VMList <br> WhatIf: True または False | サブスクリプション内のすべての VM を開始または停止します。 これらの対象のリソース グループに対してのみ実行するように変数 `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` を編集します。 `External_ExcludeVMNames` 変数を更新することで、特定の VM を除外することもできます。|
-|SequencedStartStop_Parent | アクション:開始または停止 <br> WhatIf: True または False<br>VMList| 開始または停止アクティビティのシーケンスを指定する各 VM に、**sequencestart** および **sequencestop** という名前のタグを作成します。 これらのタグ名では、大文字と小文字が区別されます。 タグの値は、起動または停止する順序に対応する正の整数の一覧にする必要があります (例: `1,2,3`)。 <br>**注**:VM は、`External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` 変数で定義されたリソース グループ内にある必要があります。 アクションを有効にするための適切なタグが必要です。|
+|SequencedStartStop_Parent | アクション:開始または停止 <br> WhatIf: True または False<br>VMList| 開始または停止アクティビティのシーケンスを指定する各 VM に、 **sequencestart** および **sequencestop** という名前のタグを作成します。 これらのタグ名では、大文字と小文字が区別されます。 タグの値は、起動または停止する順序に対応する正の整数の一覧にする必要があります (例: `1,2,3`)。 <br>**注** :VM は、`External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` 変数で定義されたリソース グループ内にある必要があります。 アクションを有効にするための適切なタグが必要です。|
 
 ### <a name="variables"></a>変数
 
@@ -150,21 +150,21 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 >[!NOTE]
 >変数 `External_WaitTimeForVMRetryInSeconds` の場合、既定値は 600 から 2100 に更新されています。 
 
-すべてのシナリオで、変数 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` は、VM のターゲット設定に必要です。ただし、**AutoStop_CreateAlert_Parent**、**SequencedStartStop_Parent**、および **ScheduledStartStop_Parent** Runbook のコンマ区切りの VM リストは除きます。 つまり、開始および停止アクションを発生させるには、対象のリソース グループに VM が属している必要があります。 このロジックは Azure Policy に似ています。サブスクリプションまたはリソース グループを対象にすることができ、アクションは新しく作成された VM に継承されます。 この方法により、VM ごとに個別のスケジュールを保持したり、スケールで起動および停止を管理したりする必要がなくなります。
+すべてのシナリオで、変数 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` は、VM のターゲット設定に必要です。ただし、 **AutoStop_CreateAlert_Parent** 、 **SequencedStartStop_Parent** 、および **ScheduledStartStop_Parent** Runbook のコンマ区切りの VM リストは除きます。 つまり、開始および停止アクションを発生させるには、対象のリソース グループに VM が属している必要があります。 このロジックは Azure Policy に似ています。サブスクリプションまたはリソース グループを対象にすることができ、アクションは新しく作成された VM に継承されます。 この方法により、VM ごとに個別のスケジュールを保持したり、スケールで起動および停止を管理したりする必要がなくなります。
 
 ### <a name="schedules"></a>スケジュール
 
-次の表は、Automation アカウント内に作成される既定のスケジュールの一覧です。 それらを変更したり、独自のカスタム スケジュールを作成したりできます。 既定では、すべてのスケジュールは **Scheduled_StartVM** と **Scheduled_StopVM** スケジュールを除いて無効になっています。
+次の表は、Automation アカウント内に作成される既定のスケジュールの一覧です。  それらを変更したり、独自のカスタム スケジュールを作成したりできます。  既定では、すべてのスケジュールは **Scheduled_StartVM** と **Scheduled_StopVM** スケジュールを除いて無効になっています。
 
 すべてのスケジュールを有効にしないでください。スケジュール操作が重複する可能性があります。 実行する必要がある最適化を特定し、それに応じて変更することをお勧めします。 詳細については、概要セクションのシナリオ例をご覧ください。
 
 |スケジュール名 | 頻度 | 説明|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 時間ごと | **AutoStop_CreateAlert_Parent** Runbook を 8 時間ごとに実行し、`External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` 変数の VM ベースの値を停止します。 または、`VMList` パラメーターを使用して VM のコンマ区切りリストを指定できます。|
-|Scheduled_StopVM | ユーザー定義、毎日 | `Stop` パラメーターを持つ **ScheduledStopStart_Parent** Runbook を毎日指定された時刻に実行します。 変数資産によって定義されたルールを満たす VM すべてを自動的に停止します。 関連するスケジュール (**Scheduled-StartVM**) を有効にしてください。|
-|Scheduled_StartVM | ユーザー定義、毎日 | `Start` パラメーター値を持つ **ScheduledStopStart_Parent** Runbook を毎日指定された時刻に実行します。 変数資産によって定義されたルールを満たす VM すべてを自動的に開始します。 関連するスケジュール (**Scheduled-StopVM**) を有効にしてください。|
-|Sequenced-StopVM | 午前 1 時 00 分 (UTC)、毎週金曜日 | `Stop` パラメーター値を持つ **Sequenced_StopStop_Parent** Runook を毎週金曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStop** のタグを持つ VM すべてを順番 (昇順) に停止します。 タグ値と資産である変数の詳細については、「[Runbook](#runbooks)」を参照してください。 関連するスケジュール (**Sequenced-StartVM**) を有効にしてください。|
-|Sequenced-StartVM | 午後 1 時 00 分 (UTC)、毎週月曜日 | `Start` のパラメーター値を持つ **SequencedStopStart_Parent** Runbook を毎週月曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStart** のタグを持つ VM すべてを順番 (降順)に 起動します。 タグ値と変数資産の詳細については、「[Runbook](#runbooks)」を参照してください。 関連するスケジュール (**Sequenced-StopVM**) を有効にしてください。
+|Scheduled_StopVM | ユーザー定義、毎日 | `Stop` パラメーターを持つ **ScheduledStopStart_Parent** Runbook を毎日指定された時刻に実行します。  変数資産によって定義されたルールを満たす VM すべてを自動的に停止します。  関連するスケジュール ( **Scheduled-StartVM** ) を有効にしてください。|
+|Scheduled_StartVM | ユーザー定義、毎日 | `Start` パラメーター値を持つ **ScheduledStopStart_Parent** Runbook を毎日指定された時刻に実行します。 変数資産によって定義されたルールを満たす VM すべてを自動的に開始します。  関連するスケジュール ( **Scheduled-StopVM** ) を有効にしてください。|
+|Sequenced-StopVM | 午前 1 時 00 分 (UTC)、毎週金曜日 | `Stop` パラメーター値を持つ **Sequenced_StopStop_Parent** Runook を毎週金曜日の指定された時刻に実行します。  適切な変数で定義された **SequenceStop** のタグを持つ VM すべてを順番 (昇順) に停止します。 タグ値と資産である変数の詳細については、「[Runbook](#runbooks)」を参照してください。  関連するスケジュール ( **Sequenced-StartVM** ) を有効にしてください。|
+|Sequenced-StartVM | 午後 1 時 00 分 (UTC)、毎週月曜日 | `Start` のパラメーター値を持つ **SequencedStopStart_Parent** Runbook を毎週月曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStart** のタグを持つ VM すべてを順番 (降順)に 起動します。 タグ値と変数資産の詳細については、「[Runbook](#runbooks)」を参照してください。 関連するスケジュール ( **Sequenced-StopVM** ) を有効にしてください。
 
 ## <a name="use-the-feature-with-classic-vms"></a>クラシック VM で機能を使用する
 
@@ -195,7 +195,7 @@ Azure CSP サブスクリプションでは、Azure Resource Manager モデル�
 
 * Automation アカウントにリンクされている Log Analytics ワークスペースに移動します。 ワークスペースを選択した後、左側のペインから **[ソリューション]** を選択します。 [ソリューション] ページで、一覧から **Start-Stop-VM[ワークスペース]** を選択します。  
 
-機能を選択すると、Start-Stop-VM[ワークスペース] ページが表示されます。 ここでは、**StartStopVM** タイルの情報など、重要な詳細を確認できます。 Log Analytics ワークスペースと同様、このタイルには、その機能に関して開始された Runbook ジョブの数と、正常に終了した Runbook ジョブの数、およびそのグラフが表示されます。
+機能を選択すると、Start-Stop-VM[ワークスペース] ページが表示されます。 ここでは、 **StartStopVM** タイルの情報など、重要な詳細を確認できます。 Log Analytics ワークスペースと同様、このタイルには、その機能に関して開始された Runbook ジョブの数と、正常に終了した Runbook ジョブの数、およびそのグラフが表示されます。
 
 ![Automation Update Management ページ](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
@@ -217,7 +217,7 @@ Start/Stop VMs during off-hours を削除するには:
 
 3. **[全般]** の下にある **[ソリューション]** をクリックします。 
 
-4. [ソリューション] ページで、**Start-Stop-VM[ワークスペース]** を選択します。 
+4. [ソリューション] ページで、 **Start-Stop-VM[ワークスペース]** を選択します。 
 
 5. VMManagementSolution[ワークスペース] ページで、メニューから **[削除]** を選択します。<br><br> ![VM 管理機能を削除する](media/automation-solution-vm-management/vm-management-solution-delete.png)
 

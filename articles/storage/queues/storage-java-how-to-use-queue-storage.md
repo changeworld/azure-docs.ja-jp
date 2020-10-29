@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 9c2f8ea55f99ac893dca0fa380729b7cc866812e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f61fef58485a905b96bdada32b915106e60d1a8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871287"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425138"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java から Queue ストレージを使用する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "88871287"
 
 ## <a name="overview"></a>概要
 
-このガイドでは、Azure Queue storage サービスを使用して一般的なシナリオのためのコードを作成する方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 シナリオには、キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**が含まれます。 キューを**作成**および**削除**するためのコードについても説明します。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
+このガイドでは、Azure Queue storage サービスを使用して一般的なシナリオのためのコードを作成する方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 シナリオには、キュー メッセージの **挿入** 、 **ピーク** 、 **取得** 、 **削除** が含まれます。 キューを **作成** および **削除** するためのコードについても説明します。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "88871287"
 
 *queues-how-to-v12* という名前の Java アプリケーションを作成するには:
 
-1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven を使用して、*queues-how-to-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して "Hello world!" を作成します。 Java プロジェクト。
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven を使用して、 *queues-how-to-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して "Hello world!" を作成します。 Java プロジェクト。
 
    ```bash
     mvn archetype:generate \
@@ -152,7 +152,7 @@ final String storageConnectionString =
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
-この文字列を、*ServiceConfiguration.cscfg* という名前のサービス構成ファイルに格納できます。 Microsoft Azure ロール内で実行されているアプリの場合は、**RoleEnvironment.getConfigurationSettings** を呼び出して接続文字列にアクセスします。 次の例では、**StorageConnectionString** という名前の *Setting* 要素から接続文字列を取得しています。
+この文字列を、 *ServiceConfiguration.cscfg* という名前のサービス構成ファイルに格納できます。 Microsoft Azure ロール内で実行されているアプリの場合は、 **RoleEnvironment.getConfigurationSettings** を呼び出して接続文字列にアクセスします。 次の例では、 **StorageConnectionString** という名前の *Setting* 要素から接続文字列を取得しています。
 
 ```java
 // Retrieve storage account from connection-string.
@@ -168,13 +168,13 @@ String storageConnectionString =
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-**QueueClient** オブジェクトには、キューとやりとりするための操作が含まれています。 次のコードでは、**QueueClient** オブジェクトが作成されます。 使用するキューを作成するには、**QueueClient** オブジェクトを使用します。
+**QueueClient** オブジェクトには、キューとやりとりするための操作が含まれています。 次のコードでは、 **QueueClient** オブジェクトが作成されます。 使用するキューを作成するには、 **QueueClient** オブジェクトを使用します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_CreateQueue":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、**CloudQueueClient** オブジェクトを作成します。 (注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、「[Azure ストレージ クライアント SDK リファレンス]」の **CloudStorageAccount** をご覧ください。)
+**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、 **CloudQueueClient** オブジェクトを作成します。 (注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、「 [Azure ストレージ クライアント SDK リファレンス]」の **CloudStorageAccount** をご覧ください。)
 
 **CloudQueueClient** オブジェクトを使用して、使用するキューへの参照を取得します。 キューが存在しない場合は作成できます。
 
@@ -207,13 +207,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-既存のキューにメッセージを挿入するには、**sendMessage** メソッドを呼び出します。 メッセージには、文字列 (UTF-8 形式) またはバイト配列のいずれかを指定できます。 キューに文字列メッセージを送信するコードを次に示します。
+既存のキューにメッセージを挿入するには、 **sendMessage** メソッドを呼び出します。 メッセージには、文字列 (UTF-8 形式) またはバイト配列のいずれかを指定できます。 キューに文字列メッセージを送信するコードを次に示します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_AddMessage":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-既存のキューにメッセージを挿入するには、最初に新しい **CloudQueueMessage**を作成します。 次に、 **addMessage** メソッドを呼び出します。 **CloudQueueMessage** は、文字列 (UTF-8 形式) またはバイト配列から作成できます。 次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
+既存のキューにメッセージを挿入するには、最初に新しい **CloudQueueMessage** を作成します。 次に、 **addMessage** メソッドを呼び出します。 **CloudQueueMessage** は、文字列 (UTF-8 形式) またはバイト配列から作成できます。 次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
 
 ```java
 try
@@ -246,7 +246,7 @@ catch (Exception e)
 
 ## <a name="how-to-peek-at-the-next-message"></a>方法:次のメッセージをピークする
 
-**peekMessage**を呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
+**peekMessage** を呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
@@ -393,13 +393,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-**getProperties** メソッドでは、Queue サービスに対していくつかの現在値が要求されます。 値の 1 つは、キュー内のメッセージの数です。 要求の後でメッセージが追加または削除される可能性があるため、これらの値はあくまでも概数です。 **getApproximateMessageCount** メソッドでは、Queue サービスを呼び出さずに、**getProperties** の呼び出しによって取得された最後の値が返されます。
+**getProperties** メソッドでは、Queue サービスに対していくつかの現在値が要求されます。 値の 1 つは、キュー内のメッセージの数です。 要求の後でメッセージが追加または削除される可能性があるため、これらの値はあくまでも概数です。 **getApproximateMessageCount** メソッドでは、Queue サービスを呼び出さずに、 **getProperties** の呼び出しによって取得された最後の値が返されます。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-**downloadAttributes** メソッドでは、Queue サービスに対していくつかの現在値が要求されます。 値の 1 つは、キュー内のメッセージの数です。 要求の後でメッセージが追加または削除される可能性があるため、これらの値はあくまでも概数です。 **getApproximateMessageCount** メソッドは、Queue サービスを呼び出さずに、**downloadAttributes** の呼び出しによって取得された最後の値を返します。
+**downloadAttributes** メソッドでは、Queue サービスに対していくつかの現在値が要求されます。 値の 1 つは、キュー内のメッセージの数です。 要求の後でメッセージが追加または削除される可能性があるため、これらの値はあくまでも概数です。 **getApproximateMessageCount** メソッドは、Queue サービスを呼び出さずに、 **downloadAttributes** の呼び出しによって取得された最後の値を返します。
 
 ```java
 try
@@ -436,13 +436,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-コードでは、2 つの手順でキューからメッセージをデキューします。 **receiveMessage** を呼び出すと、キュー内の次のメッセージが表示されます。 **receiveMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、 **deleteMessage**を呼び出す必要があります。 コードでのメッセージの処理が失敗した場合でも、この 2 段階のプロセスにより、同じメッセージを取得して再試行できます。 コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
+コードでは、2 つの手順でキューからメッセージをデキューします。 **receiveMessage** を呼び出すと、キュー内の次のメッセージが表示されます。 **receiveMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、 **deleteMessage** を呼び出す必要があります。 コードでのメッセージの処理が失敗した場合でも、この 2 段階のプロセスにより、同じメッセージを取得して再試行できます。 コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-コードでは、2 つの手順でキューからメッセージをデキューします。 **retrieveMessage**を呼び出すと、キュー内の次のメッセージを取得します。 **retrieveMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、 **deleteMessage**を呼び出す必要があります。 コードでのメッセージの処理が失敗した場合でも、この 2 段階のプロセスにより、同じメッセージを取得して再試行できます。 コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
+コードでは、2 つの手順でキューからメッセージをデキューします。 **retrieveMessage** を呼び出すと、キュー内の次のメッセージを取得します。 **retrieveMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、 **deleteMessage** を呼び出す必要があります。 コードでのメッセージの処理が失敗した場合でも、この 2 段階のプロセスにより、同じメッセージを取得して再試行できます。 コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
 ```java
 try
@@ -481,13 +481,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-次のコード例では、**receiveMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージが取得されます。 その後、**for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分 (300 秒) に設定します。 タイムアウトは、すべてのメッセージに対して同時に開始されます。 **receiveMessages** を呼び出してから 5 分経過すると、削除されていないメッセージは再び見えるようになります。
+次のコード例では、 **receiveMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージが取得されます。 その後、 **for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分 (300 秒) に設定します。 タイムアウトは、すべてのメッセージに対して同時に開始されます。 **receiveMessages** を呼び出してから 5 分経過すると、削除されていないメッセージは再び見えるようになります。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-次のコード例では、**retrieveMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、**for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分 (300 秒) に設定します。 タイムアウトは、すべてのメッセージに対して同時に開始されます。 **retrieveMessages** を呼び出してから 5 分経過すると、削除されていないメッセージは再び見えるようになります。
+次のコード例では、 **retrieveMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、 **for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分 (300 秒) に設定します。 タイムアウトは、すべてのメッセージに対して同時に開始されます。 **retrieveMessages** を呼び出してから 5 分経過すると、削除されていないメッセージは再び見えるようになります。
 
 ```java
 try
@@ -522,13 +522,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-現在のキューの一覧を取得するには、**QueueServiceClient.listQueues()** メソッドを呼び出します。このメソッドからは、**QueueItem** オブジェクトのコレクションが返されます。
+現在のキューの一覧を取得するには、 **QueueServiceClient.listQueues()** メソッドを呼び出します。このメソッドからは、 **QueueItem** オブジェクトのコレクションが返されます。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ListQueues":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-現在のキューの一覧を取得するには、**CloudQueueClient.listQueues()** メソッドを呼び出します。このメソッドは、**CloudQueue** オブジェクトのコレクションを返します。
+現在のキューの一覧を取得するには、 **CloudQueueClient.listQueues()** メソッドを呼び出します。このメソッドは、 **CloudQueue** オブジェクトのコレクションを返します。
 
 ```java
 try
@@ -561,13 +561,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-キューおよびキューに格納されているすべてのメッセージを削除するには、**QueueClient** オブジェクトで **delete** メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、 **QueueClient** オブジェクトで **delete** メソッドを呼び出します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DeleteMessageQueue":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-キューおよびキューに格納されているすべてのメッセージを削除するには、**CloudQueue** オブジェクトの **deleteIfExists** メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、 **CloudQueue** オブジェクトの **deleteIfExists** メソッドを呼び出します。
 
 ```java
 try
@@ -608,5 +608,5 @@ catch (Exception e)
 [Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
 [Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage
 [Azure ストレージ クライアント SDK リファレンス]: https://azure.github.io/azure-sdk-for-java/storage.html
-[Azure Storage Services REST API]: https://docs.microsoft.com/rest/api/storageservices/
+[Azure Storage Services REST API]: /rest/api/storageservices/
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

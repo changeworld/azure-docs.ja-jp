@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b622372c881997fd77a83feb8f6c393504900b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542361"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428292"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB の読み取りレプリカを作成し、管理する方法
 
@@ -26,14 +26,14 @@ PowerShell を使用して、読み取りレプリカを作成して管理でき
 
 このハウツー ガイドを完了するには、次が必要です。
 
-- ローカルにインストールされた [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
+- ローカルにインストールされた [Az PowerShell モジュール](/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for MariaDB サーバー](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az.MariaDb PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります: `Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > Az.MariaDb PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-PowerShell をローカルで使用する場合は、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
+PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,12 +54,12 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMariaDbServerReplica` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 
-リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部**リージョンにレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、 **Location** パラメーターを使用します。 次の例では、 **米国西部** リージョンにレプリカを作成します。
 
 ```azurepowershell-interactive
 Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -68,10 +68,10 @@ Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。
 
-既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはソースと同じサーバー構成で作成されます。
+既定では、 **Sku** パラメーターが指定されていない限り、読み取りレプリカはソースと同じサーバー構成で作成されます。
 
 > [!NOTE]
-> レプリカが確実にマスターに追随できるように、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。
+> レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。
 
 ### <a name="list-replicas-for-a-source-server"></a>ソース サーバーのレプリカを一覧表示する
 
@@ -83,9 +83,9 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
 | ServerName | mydemoserver | ソース サーバーの名前または ID。 |
 
 ### <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します

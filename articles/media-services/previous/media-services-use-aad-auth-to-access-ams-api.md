@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262517"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425907"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス 
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262517"
 
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
-Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../../active-directory/fundamentals/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。  
+Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../../active-directory/fundamentals/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための **共同作成者** ロールまたは **所有者** ロールが付与されている必要があります。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。  
 
 このドキュメントでは、REST API または .NET API を使用して Media Services API にアクセスする方法の概要を説明します。
 
@@ -48,8 +48,8 @@ Azure Media REST 要求を成功させるには、呼び出すユーザーに、
  
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 
-- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
-- **サービス プリンシパル認証**。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービスなどです。
+- **ユーザー認証** 。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
+- **サービス プリンシパル認証** 。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービスなどです。
 
 ### <a name="user-authentication"></a>ユーザー認証 
 
@@ -153,7 +153,7 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 - [Azure AD で対応できる認証シナリオ](../../active-directory/develop/authentication-vs-authorization.md)
 - [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/quickstart-register-app.md)
-- [PowerShell を使用したロールベースのアクセス制御の構成と管理](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>次のステップ
 

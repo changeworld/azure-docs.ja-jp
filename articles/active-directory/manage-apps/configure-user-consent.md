@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.custom: contperfq2
+ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819261"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427635"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -37,17 +38,17 @@ ms.locfileid: "91819261"
 
 * **ユーザーの同意を無効にする** - ユーザーはアプリケーションにアクセス許可を付与できません。 ユーザーは、以前に同意していたアプリ、または管理者によって代理で同意されているアプリにサインインし続けることができますが、新しいアクセス許可や新しいアプリに独自に同意することは許可されません。 同意するアクセス許可を含むディレクトリ ロールが付与されているユーザーのみが、新しいアプリに同意できます。
 
-* **ユーザーは、確認済み発行者または自分の組織からのアプリに対し、選択されたアクセス許可にのみ同意できる** - すべてのユーザーが同意できるのは、[確認済み発行者](../develop/publisher-verification-overview.md) によって発行されたアプリと、テナントに登録されているアプリのみです。 ユーザーは、"低影響" として分類されたアクセス許可に対してのみ同意できます。 ユーザーが同意を許可されるアクセス許可を選択するには、[アクセス許可を分類](configure-permission-classifications.md)する必要があります。
+* **ユーザーは、確認済み発行者または自分の組織からのアプリに対し、選択されたアクセス許可にのみ同意できる** - すべてのユーザーが同意できるのは、 [確認済み発行者](../develop/publisher-verification-overview.md) によって発行されたアプリと、テナントに登録されているアプリのみです。 ユーザーは、"低影響" として分類されたアクセス許可に対してのみ同意できます。 ユーザーが同意を許可されるアクセス許可を選択するには、[アクセス許可を分類](configure-permission-classifications.md)する必要があります。
 
 * **ユーザーはすべてのアプリに同意できる** - すべてのユーザーが、すべてのアプリケーションに対し、管理者の同意を必要としないすべてのアクセス許可に同意することができます。
 
-* **カスタム アプリの同意ポリシー** - ユーザーが同意するタイミングを管理する条件に関してさらに多くのオプションが必要な場合は、[カスタム アプリの同意ポリシーを作成](manage-app-consent-policies.md#create-a-custom-app-consent-policy)し、それらをユーザーの同意に適用するように構成することができます。
+* **カスタム アプリの同意ポリシー** - ユーザーが同意するタイミングを管理する条件に関してさらに多くのオプションが必要な場合は、 [カスタム アプリの同意ポリシーを作成](manage-app-consent-policies.md#create-a-custom-app-consent-policy)し、それらをユーザーの同意に適用するように構成することができます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してユーザーの同意設定を構成するには:
 
-1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)としてサインインします。
+1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)としてサインインします。
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[同意とアクセス許可]**  >  **[ユーザーの同意設定]** を選択します。
 1. **[User consent for applications]\(アプリケーションに対するユーザーの同意\)** で、すべてのユーザーに対して構成する同意設定を選択します。
 1. **[Save]\(保存\)** を選択して設定を保存します。
@@ -128,7 +129,7 @@ Microsoft によってリスクが検出された場合に必要となる管理�
    Connect-AzureAD
    ```
 
-1. テナントの**同意ポリシー設定**ディレクトリ設定の現在の値を取得します。 このために、この機能のディレクトリ設定が作成されているかどうかを確認する必要があります。作成されていない場合は、対応するディレクトリ設定テンプレートの値を使用します。
+1. テナントの **同意ポリシー設定** ディレクトリ設定の現在の値を取得します。 このために、この機能のディレクトリ設定が作成されているかどうかを確認する必要があります。作成されていない場合は、対応するディレクトリ設定テンプレートの値を使用します。
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings

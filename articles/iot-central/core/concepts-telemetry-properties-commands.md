@@ -7,16 +7,17 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: device-developer
+ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291613"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427870"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
-"_この記事は、デバイス開発者を対象としています。_ "
+" _この記事は、デバイス開発者を対象としています。_ "
 
 Azure IoT Central のデバイス テンプレートは、以下を定義するブループリントです。
 
@@ -802,7 +803,7 @@ DCM の次のスニペットは、書き込み可能な `string` プロパティ
 }
 ```
 
-デバイスは、更新の処理後、次の JSON ペイロードを IoT Central に送信する必要があります。 このメッセージには、IoT Central から受信した元の更新のバージョン番号が含まれています。 IoT Central がこのメッセージを受信すると、このプロパティは UI で**同期済み**とマークされます。
+デバイスは、更新の処理後、次の JSON ペイロードを IoT Central に送信する必要があります。 このメッセージには、IoT Central から受信した元の更新のバージョン番号が含まれています。 IoT Central がこのメッセージを受信すると、このプロパティは UI で **同期済み** とマークされます。
 
 ```json
 {
@@ -874,7 +875,7 @@ DCM の次のスニペットは、書き込み可能な `Enum` プロパティ�
 }
 ```
 
-デバイスは、更新の処理後、次の JSON ペイロードを IoT Central に送信する必要があります。 このメッセージには、IoT Central から受信した元の更新のバージョン番号が含まれています。 IoT Central がこのメッセージを受信すると、このプロパティは UI で**同期済み**とマークされます。
+デバイスは、更新の処理後、次の JSON ペイロードを IoT Central に送信する必要があります。 このメッセージには、IoT Central から受信した元の更新のバージョン番号が含まれています。 IoT Central がこのメッセージを受信すると、このプロパティは UI で **同期済み** とマークされます。
 
 ```json
 {

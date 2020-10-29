@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327820"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372210"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -281,7 +281,7 @@ Azure サブスクリプションの作成または使用には、Azure アカ�
 
 すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-Azure AD では、個々の Azure アカウント ID ( *ユーザー* とも呼ばれます) を定義できるだけでなく、 *グループ* も定義できます。 Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
+Azure AD では、個々の Azure アカウント ID ( *ユーザー* とも呼ばれます) を定義できるだけでなく、 *グループ* も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 
@@ -301,7 +301,7 @@ Azure リソースへのアクセス権を許可する場合、そのタスク�
 
   > **いつ使用するか** : ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
   >
-  > **作業開始** : 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+  > **作業開始** : 詳細については、「 [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 - **サービス プリンシパル オブジェクト** :ユーザー プリンシパルとグループへのアクセス権を付与するだけでなく、サービス プリンシパルに同じアクセス権を付与することができます。
 

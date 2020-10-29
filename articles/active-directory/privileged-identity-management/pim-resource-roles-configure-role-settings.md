@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a38194c46fa1f5bf7a6a0683e85776abb1f93b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8458fc11f5e836e290c593d3ad4983f44e6abf6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743798"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370374"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -30,7 +30,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 次の手順を実行して、Azure リソース ロールの設定を開きます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -40,7 +40,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
     ![管理できるリソースを一覧表示する [Azure リソース] ページ](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. **ロール設定**を選択します。
+1. **ロール設定** を選択します。
 
     ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -76,14 +76,14 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 ロールの設定を構成するときに、各割り当ての種類 (対象とアクティブ) に 2 つの割り当て期間オプションから選択できます。 これらのオプションは、Privileged Identity Management でユーザーがロールに割り当てられるときの既定の最大期間になります。
 
-このような**資格のある**割り当て期間のオプションからいずれかを選択することができます。
+このような **資格のある** 割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
 | **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のある割り当てを行うことができます。 |
 | **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
-また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
+また、このような **アクティブな** 割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |

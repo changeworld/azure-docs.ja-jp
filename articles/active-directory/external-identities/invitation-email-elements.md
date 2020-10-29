@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340619"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441880"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -63,7 +63,7 @@ ms.locfileid: "92340619"
 
 ### <a name="footer-section"></a>フッター セクション
 
-フッターには、送信された招待に関する詳細情報が含まれています。 招待された人が将来の招待をブロックするためのオプションが常にあります。 組織に[プライバシーに関する声明が設けられている](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)場合、声明へのリンクがここに表示されます。  それ以外の場合は、組織によってプライバシーに関する声明が設けられていないことが示されます。
+フッターには、送信された招待に関する詳細情報が含まれています。 招待された人が将来の招待をブロックするためのオプションが常にあります。 組織に[プライバシーに関する声明が設けられている](../fundamentals/active-directory-properties-area.md)場合、声明へのリンクがここに表示されます。  それ以外の場合は、組織によってプライバシーに関する声明が設けられていないことが示されます。
 
 ![メールのフッター セクションの画像](media/invitation-email-elements/footer-section.png)
 
@@ -85,8 +85,8 @@ ms.locfileid: "92340619"
 
 招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。
 
-- 招待の作成 API が使用されている場合は、 [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
--   ゲストの [ユーザー オブジェクト](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
+- 招待の作成 API が使用されている場合は、 [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
+-   ゲストの [ユーザー オブジェクト](/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
 -   ゲスト ユーザーのホーム テナントのプロパティで設定されている **通知言語** (Azure AD テナントの場合のみ)
 -   リソース テナントのプロパティで設定されている **通知言語**
 

@@ -11,22 +11,22 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295160"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442050"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
-多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>招待 API の機能
 
 API には次の機能が用意されています。
 
-1. "*任意の*" 電子メール アドレスで外部ユーザーを招待できます。
+1. " *任意の* " 電子メール アドレスで外部ユーザーを招待できます。
 
     ```
     "invitedUserDisplayName": "Sam"
@@ -100,12 +100,12 @@ New-AzureADMSInvitation
 
 ### <a name="invitation-status"></a>招待の状態
 
-外部ユーザーに招待を送信した後、**Get-AzureADUser** コマンドレットを使用して、招待が受け取られたかどうかを確認できます。 外部ユーザーに招待が送信されると、Get-AzureADUser の次のプロパティが入力されます。
+外部ユーザーに招待を送信した後、 **Get-AzureADUser** コマンドレットを使用して、招待が受け取られたかどうかを確認できます。 外部ユーザーに招待が送信されると、Get-AzureADUser の次のプロパティが入力されます。
 
 * **UserState** は、招待が **PendingAcceptance** であるか **Accepted** であるかを示します。
-* **UserStateChangedOn** は、**UserState** プロパティに対する最新の変更のタイムスタンプを示します。
+* **UserStateChangedOn** は、 **UserState** プロパティに対する最新の変更のタイムスタンプを示します。
 
-**Filter** オプションを使用して、**UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
+**Filter** オプションを使用して、 **UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
  
 
 ```powershell
@@ -117,7 +117,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 ## <a name="see-also"></a>参照
 
-招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) で確認できます。
+招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation) で確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

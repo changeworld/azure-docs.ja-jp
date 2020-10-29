@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87907366"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441557"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 
 ## <a name="what-are-dynamic-groups"></a>動的グループとは
-Azure Active Directory (Azure AD) のセキュリティ グループ メンバーシップの動的な構成は、[Azure Portal](https://portal.azure.com) で利用できます。 管理者は、ユーザー属性 (userType、部門、国/地域など) に基づいて、Azure AD で作成されたグループのメンバーを設定するためのルールを指定できます。 メンバーを属性に基づいて自動的にセキュリティ グループに追加したり、セキュリティ グループから削除したりすることができます。 これらのグループを使用すると、アプリケーションやクラウド リソース (SharePoint サイト、ドキュメント) へのアクセスを付与したり、メンバーにライセンスを割り当てたりすることができます。 動的なグループの詳細については、「[Azure Active Directory の専用グループ](../active-directory-accessmanagement-dedicated-groups.md)」を参照してください。
+Azure Active Directory (Azure AD) のセキュリティ グループ メンバーシップの動的な構成は、[Azure Portal](https://portal.azure.com) で利用できます。 管理者は、ユーザー属性 (userType、部門、国/地域など) に基づいて、Azure AD で作成されたグループのメンバーを設定するためのルールを指定できます。 メンバーを属性に基づいて自動的にセキュリティ グループに追加したり、セキュリティ グループから削除したりすることができます。 これらのグループを使用すると、アプリケーションやクラウド リソース (SharePoint サイト、ドキュメント) へのアクセスを付与したり、メンバーにライセンスを割り当てたりすることができます。 動的なグループの詳細については、「[Azure Active Directory の専用グループ](../fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-動的グループを作成および使用するには、適切な [Azure AD Premium P1 または P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。 詳細については「[Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する](../users-groups-roles/groups-dynamic-membership.md)」の記事を参照してください。
+動的グループを作成および使用するには、適切な [Azure AD Premium P1 または P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。 詳細については「[Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する](../enterprise-users/groups-dynamic-membership.md)」の記事を参照してください。
 
 ## <a name="creating-an-all-users-dynamic-group"></a>"すべてのユーザー" の動的グループの作成
 メンバーシップ ルールを使用し、テナント内のすべてのユーザーを含むグループを作成できます。 将来、ユーザーがテナントに追加されたり、テナントから削除されたりしたとき、メンバーシップは自動的に調整されます。
@@ -76,4 +76,3 @@ Azure Active Directory (Azure AD) のセキュリティ グループ メンバ�
 - [B2B コラボレーション ユーザーのプロパティ](user-properties.md)
 - [B2B コラボレーション ユーザーのロールへの追加](add-guest-to-role.md)
 - [B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)
-

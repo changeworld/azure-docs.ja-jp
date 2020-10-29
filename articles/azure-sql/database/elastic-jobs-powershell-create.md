@@ -4,19 +4,19 @@ description: PowerShell を使用したエラスティック ジョブ エージ
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408669"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427286"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,13 +53,13 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
 ```
 
-このチュートリアルには、**Az.Sql** モジュールに加えて、*SqlServer* PowerShell モジュールも必要です。 詳細については、「[SQL Server PowerShell モジュールのインストール](/sql/powershell/download-sql-server-ps-module)」を参照してください。
+このチュートリアルには、 **Az.Sql** モジュールに加えて、 *SqlServer* PowerShell モジュールも必要です。 詳細については、「[SQL Server PowerShell モジュールのインストール](/sql/powershell/download-sql-server-ps-module)」を参照してください。
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 
@@ -135,7 +135,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 エラスティック ジョブ エージェントは、ジョブを作成、実行、および管理するための Azure リソースです。 エージェントは、スケジュールに基づいて、または 1 回だけのジョブとして、ジョブを実行します。
 
-**New-AzSqlElasticJobAgent** コマンドレットを実行するには、Azure SQL Database のデータベースが既に存在する必要があるため、*resourceGroupName*、*serverName*、および *databaseName* のすべてのパラメーターが既存のリソースを指している必要があります。
+**New-AzSqlElasticJobAgent** コマンドレットを実行するには、Azure SQL Database のデータベースが既に存在する必要があるため、 *resourceGroupName* 、 *serverName* 、および *databaseName* のすべてのパラメーターが既存のリソースを指している必要があります。
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -165,12 +165,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +192,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred
@@ -205,7 +205,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [ターゲット グループ](job-automation-overview.md#target-group)は、ジョブ ステップによって実行される 1 つまたは複数のデータベースのセットを定義します。
 
-次のスニペットを実行すると、*serverGroup* と *serverGroupExcludingDb2* の 2 つのターゲット グループが作成されます。 *serverGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*serverGroupExcludingDb2* では、*targetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
+次のスニペットを実行すると、 *serverGroup* と *serverGroupExcludingDb2* の 2 つのターゲット グループが作成されます。 *serverGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。 *serverGroupExcludingDb2* では、 *targetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +221,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>ジョブとステップを作成する
 
-この例では、1 つのジョブと、そのジョブを実行するための 2 つのジョブ ステップを定義します。 最初のジョブ ステップ (*step1*) では、ターゲット グループ *ServerGroup* 内のすべてのデータベースに新しいテーブル (*Step1Table*) を作成します。 2 番目のジョブ ステップ (*step2*) では、*TargetDb2* を除くすべてのデータベースに新しいテーブル (*Step2Table*) を作成します。これは、ターゲット グループの事前の定義によって除外することが指定されているためです。
+この例では、1 つのジョブと、そのジョブを実行するための 2 つのジョブ ステップを定義します。 最初のジョブ ステップ ( *step1* ) では、ターゲット グループ *ServerGroup* 内のすべてのデータベースに新しいテーブル ( *Step1Table* ) を作成します。 2 番目のジョブ ステップ ( *step2* ) では、 *TargetDb2* を除くすべてのデータベースに新しいテーブル ( *Step2Table* ) を作成します。これは、ターゲット グループの事前の定義によって除外することが指定されているためです。
 
 ```powershell
 Write-Output "Creating a new job..."

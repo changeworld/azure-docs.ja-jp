@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825421"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370425"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -167,11 +167,11 @@ HTTPS の送信を許可する: ポート 443 | Azure Automation コントロー
 
 #### <a name="control-access-with-nsg-rules"></a>NSG ルールでアクセスを制御する
 
-[NSG ルール](../virtual-network/security-overview.md)を使用して、Azure のネットワーク/サブネットが送受信するネットワーク トラフィックをフィルタリングすることによって VM の接続を制御する場合、次の要件に注意してください。
+[NSG ルール](../virtual-network/network-security-groups-overview.md)を使用して、Azure のネットワーク/サブネットが送受信するネットワーク トラフィックをフィルタリングすることによって VM の接続を制御する場合、次の要件に注意してください。
 
 - ソース Azure リージョンの NSG ルールでは、レプリケーション トラフィックの送信アクセスを許可する必要があります。
 - 運用環境に配置する前に、テスト環境でルールを作成することをお勧めします。
-- 個々の IP アドレスを許可するのではなく、[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用します。
+- 個々の IP アドレスを許可するのではなく、[サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)を使用します。
     - サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えます。
     - Microsoft は、時間の経過と共に、サービス タグを自動的に更新します。 
  

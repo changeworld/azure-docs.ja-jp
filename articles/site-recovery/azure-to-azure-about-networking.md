@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332044"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370442"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 NSG を使用して送信接続を制御すると同時に、次のサービス タグを許可する必要があります。
 
 - ソース リージョンのストレージ アカウントの場合:
-    - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。
+    - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)に基づく NSG ルールを作成します。
     - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
-- AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG ルールを作成します。
+- AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags) ベースの NSG ルールを作成します。
 - EventsHub サービス タグ ベースの NSG ルールをターゲット リージョンに対して作成し、Site Recovery 監視へのアクセスを許可します。
 - 任意のリージョンでの Site Recovery サービスへのアクセスを許可するために、AzureSiteRecovery サービス タグ ベースの NSG ルールを作成します。
 - AzureKeyVault サービス タグ ベースの NSG ルールを作成します。 これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です。

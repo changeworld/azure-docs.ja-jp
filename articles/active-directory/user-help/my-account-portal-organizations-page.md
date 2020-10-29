@@ -11,26 +11,26 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90005073"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370340"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>アクセスできる組織をマイ アカウント ポータルで管理する
 
 **[マイ アカウント]** ポータルの **[組織]** ページでは、アクセスできる組織 (通常は組織の名前) を管理できます。 **[組織]** ページに表示される組織には、次の 2 種類があります。
 
-- **ホーム組織**。 ホーム組織は、ご自分の職場または学校アカウントを所有している組織です。 ホーム組織から脱退することはできません。
+- **ホーム組織** 。 ホーム組織は、ご自分の職場または学校アカウントを所有している組織です。 ホーム組織から脱退することはできません。
 
     >[!NOTE]
     > ホーム組織が割り当てられていない場合は、関連付けられている組織の一覧を示す [組織] という 1 つの見出しだけが表示されます。
 
-- **その他の組織**。 その他の組織は、ご自分の職場または学校アカウントを使用して前にサインインしたことがあるグループです。 これらの組織からの脱退は、いつでも実行できます。
+- **その他の組織** 。 その他の組織は、ご自分の職場または学校アカウントを使用して前にサインインしたことがあるグループです。 これらの組織からの脱退は、いつでも実行できます。
 
 >[!Important]
->この記事は、職場または学校アカウントでアクセスし、組織情報を更新するユーザーを対象としています。 従業員のグループとユーザーの管理、およびその他の用途に関する情報を探している管理者の場合は、「[Enterprise ユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+>この記事は、職場または学校アカウントでアクセスし、組織情報を更新するユーザーを対象としています。 従業員のグループとユーザーの管理、およびその他の用途に関する情報を探している管理者の場合は、「[Enterprise ユーザー管理のドキュメント](../enterprise-users/index.yml)」を参照してください。
 
 ## <a name="view-your-organizations"></a>組織を表示する
 

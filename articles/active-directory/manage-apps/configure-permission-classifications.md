@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: d5016dbff30eb054e413acc66b1b2dfee62a5873
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: contperfq2
+ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070675"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427664"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 
@@ -33,7 +34,7 @@ ms.locfileid: "92070675"
 
 次の手順で Azure portal を使用し、アクセス許可を分類します。
 
-1. [グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします
+1. [グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[同意とアクセス許可]**  >  **[Permission classifications]\(アクセス許可の分類\)** を選択します。
 1. **[アクセス許可の追加]** を選択して、別のアクセス許可を "低影響" として分類します。
 1. API を選択し、委任されたアクセス許可を選択します。

@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984a5d52dfdd45190cbded5e900d3fcfe2f9ad43
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87833251"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424507"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB サーバーをバックアップおよび復元する方法
 
@@ -23,14 +23,14 @@ Azure Database for MariaDB サーバーは、復元機能が有効になるよ�
 
 このハウツー ガイドを完了するには、次が必要です。
 
-- ローカルにインストールされた [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
+- ローカルにインストールされた [Az PowerShell モジュール](/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for MariaDB サーバー](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az.MariaDb PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にインストールする必要があります: `Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > Az.MariaDb PowerShell モジュールは一般提供されると、将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-PowerShell をローカルで使用する場合は、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
+PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -41,9 +41,9 @@ PowerShell をローカルで使用する場合は、[Connect-AzAccount](https:/
 > [!NOTE]
 > サーバーの作成後は、冗長の種類 (geo 冗長とローカル冗長) を変更することはできません。
 
-`New-AzMariaDbServer` コマンドでサーバーを作成するときに、**GeoRedundantBackup** パラメーターでバックアップの冗長オプションを指定します。 **[Enabled]\(有効\)** を指定すると、geo 冗長バックアップが取得されます。 **[Disabled]\(無効\)** を指定すると、ローカル冗長バックアップが取得されます。
+`New-AzMariaDbServer` コマンドでサーバーを作成するときに、 **GeoRedundantBackup** パラメーターでバックアップの冗長オプションを指定します。 **[Enabled]\(有効\)** を指定すると、geo 冗長バックアップが取得されます。 **[Disabled]\(無効\)** を指定すると、ローカル冗長バックアップが取得されます。
 
-バックアップのリテンション期間は、**BackupRetentionDay** パラメーターで設定します。
+バックアップのリテンション期間は、 **BackupRetentionDay** パラメーターで設定します。
 
 サーバー作成時にこれらの値を設定する方法の詳細については、「[PowerShell を使用した Azure Database for MariaDB サーバーの作成](quickstart-create-mariadb-server-database-using-azure-powershell.md)」をご覧ください。
 
@@ -75,11 +75,11 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `Restore-AzMariaDbServer` コマンドレットの **PointInTimeRestore** パラメーター セットには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | 名前 | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
-| RestorePointInTime | 2020-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、**2020-03-13T05:59:00-08:00** など自身のローカル タイム ゾーンを使用できます。 また、**2018-03-13T13:59:00Z** など UTC Zulu 形式も使用できます。 |
+| RestorePointInTime | 2020-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、 **2020-03-13T05:59:00-08:00** など自身のローカル タイム ゾーンを使用できます。 また、 **2018-03-13T13:59:00Z** など UTC Zulu 形式も使用できます。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | ポイントインタイム モードを使用して復元します。 |
 
 サーバーを過去の特定の時点に復元すると、新しいサーバーが作成されます。 特定の時点における元のサーバーとそのデータベースが新しいサーバーにコピーされます。
@@ -94,7 +94,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 geo 冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MariaDB を使用できる任意のリージョンに作成できます。
 
-geo 冗長バックアップを使ってサーバーを作成するには、**UseGeoRestore** パラメーターを指定して `Restore-AzMariaDbServer` コマンドを使用します。
+geo 冗長バックアップを使ってサーバーを作成するには、 **UseGeoRestore** パラメーターを指定して `Restore-AzMariaDbServer` コマンドを使用します。
 
 > [!NOTE]
 > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
@@ -106,7 +106,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-この例は、**myresourcegroup** に属する **mydemoserver-georestored** という名前の新しいサーバーを米国東部リージョンに作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは **mydemoserver** の geo 冗長バックアップ (これもリソース グループ**myresourcegroup** に含まれます) から作成されます。
+この例は、 **myresourcegroup** に属する **mydemoserver-georestored** という名前の新しいサーバーを米国東部リージョンに作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは **mydemoserver** の geo 冗長バックアップ (これもリソース グループ **myresourcegroup** に含まれます) から作成されます。
 
 既存のサーバーとは異なるリソース グループに新しいサーバーを作成するには、次の例のように **ResourceGroupName** パラメーターを使用して新しいリソース グループ名を指定します。
 
@@ -117,14 +117,14 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `Restore-AzMariaDbServer` コマンドレットの **GeoRestore** パラメーター セットには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |名前 | mydemoserver-georestored | 新しいサーバーの名前。 |
 |場所 | eastus | 新しいサーバーの場所。 |
 |UseGeoRestore | `<SwitchParameter>` | geo モードを使用して復元します。 |
 
-geo リストアを使用して新しいサーバーを作成すると、**Sku** パラメーターが指定されていない限り、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。
+geo リストアを使用して新しいサーバーを作成すると、 **Sku** パラメーターが指定されていない限り、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。
 
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 

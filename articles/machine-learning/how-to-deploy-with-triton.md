@@ -11,30 +11,30 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 9a6e2de07921d05e123154f604c3d1b369b3b89d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998748"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92428349"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
 [NVIDIA Triton 推論サーバー](https://developer.nvidia.com/nvidia-triton-inference-server)を使用して、モデルの推論に使用する Web サービスのパフォーマンスを向上させる方法について説明します。
 
-推論用のモデルを展開する方法の 1 つは、Web サービスとして展開することです。 たとえば、Azure Kubernetes Service または Azure Container Instances への展開です。 既定では、Azure Machine Learning はシングルスレッドの "*汎用*" Web フレームワークを使用して Web サービスを展開します。
+推論用のモデルを展開する方法の 1 つは、Web サービスとして展開することです。 たとえば、Azure Kubernetes Service または Azure Container Instances への展開です。 既定では、Azure Machine Learning はシングルスレッドの " *汎用* " Web フレームワークを使用して Web サービスを展開します。
 
-Triton は、"*推論用に最適化された*" フレームワークです。 GPU の使用率が高く、コスト効率に優れた推論を実現します。 サーバー側では、受信した要求をバッチ処理し、推論のためにこれらのバッチを送信します。 バッチ処理は GPU リソースのより適切な利用を可能にする、Triton のパフォーマンスにおける重要な部分です。
+Triton は、" *推論用に最適化された* " フレームワークです。 GPU の使用率が高く、コスト効率に優れた推論を実現します。 サーバー側では、受信した要求をバッチ処理し、推論のためにこれらのバッチを送信します。 バッチ処理は GPU リソースのより適切な利用を可能にする、Triton のパフォーマンスにおける重要な部分です。
 
 > [!IMPORTANT]
-> Azure Machine Learning からの展開に対する Triton の使用は、現在__プレビュー__段階です。 プレビューの機能は、カスタマー サポートの対象になっていない場合があります。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> Azure Machine Learning からの展開に対する Triton の使用は、現在 __プレビュー__ 段階です。 プレビューの機能は、カスタマー サポートの対象になっていない場合があります。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 > [!TIP]
-> このドキュメントに記載されているコード スニペットは説明を目的としたものであり、完全なソリューションとなっていない場合があります。 動作するコード例については、[Azure Machine Learning での Triton のエンドツーエンドのサンプル](https://aka.ms/aml-triton-sample)を参照してください。
+> このドキュメントに記載されているコード スニペットは説明を目的としたものであり、完全なソリューションとなっていない場合があります。 動作するコード例については、[Azure Machine Learning での Triton のエンドツーエンドのサンプル](https://github.com/Azure/azureml-examples/tree/main/tutorials)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション** 。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 * Azure Machine Learning で[モデルを展開する方法と場所](how-to-deploy-and-where.md)について理解していること。
 * [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) **または** [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) と [機械学習拡張機能](reference-azure-machine-learning-cli.md)。
 * ローカル テスト用の Docker の動作するインストール。 Docker のインストールと検証の詳細については、[オリエンテーションとセットアップ](https://docs.docker.com/get-started/)に関する Docker ドキュメントを参照してください。
@@ -47,16 +47,16 @@ Triton は、"*推論用に最適化された*" フレームワークです。 G
 
 * 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
 * これらのワーカーでは、前処理、モデルの呼び出し、および後処理が行われます。 
-* 推論要求には、__スコアリング URI__ が使用されます。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
+* 推論要求には、 __スコアリング URI__ が使用されます。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="標準の、Triton を使用しない展開アーキテクチャの図":::
 
 **Triton を使用した推論構成の展開**
 
 * 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
-* 要求は **Triton サーバー**に転送されます。 
+* 要求は **Triton サーバー** に転送されます。 
 * Triton によって、GPU 使用率を最大化するために要求がバッチ処理されます。
-* クライアントは、__スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
+* クライアントは、 __スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="標準の、Triton を使用しない展開アーキテクチャの図":::
 
@@ -178,7 +178,7 @@ az ml model register --model-path='triton' \
 
 ## <a name="add-pre-and-post-processing"></a>前処理と後処理を追加する
 
-Web サービスが動作していることを確認した後、"_エントリ スクリプト_" を定義することで、前処理と後処理のコードを追加できます。 このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、「[エントリ スクリプトを定義する](how-to-deploy-and-where.md#define-an-entry-script)」を参照してください。
+Web サービスが動作していることを確認した後、" _エントリ スクリプト_ " を定義することで、前処理と後処理のコードを追加できます。 このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、「[エントリ スクリプトを定義する](how-to-deploy-and-where.md#define-an-entry-script)」を参照してください。
 
 主なステップの 2 つは、`init()` メソッドで Triton HTTP クライアントを初期化し、`run()` 関数でそのクライアントを呼び出すことです。
 

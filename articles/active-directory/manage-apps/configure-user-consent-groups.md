@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: e590981fabcd20f23f25d12b4176b6730cb0fc3c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.custom: contperfq2
+ms.openlocfilehash: df50231b03f71008f967c4f09ce09c5b5890802f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804258"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427650"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
@@ -30,7 +31,7 @@ ms.locfileid: "91804258"
 
 次の手順でグループ データにアクセスするアプリに対するグループ所有者の同意を管理します。
 
-1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)としてサインインします。
+1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)としてサインインします。
 2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[同意とアクセス許可]**  >  **[ユーザーの同意設定]** を選択します。
 3. **[アプリがデータにアクセスすることへのグループ所有者の同意]** で、有効にするオプションを選択します。
 4. **[Save]\(保存\)** を選択して設定を保存します。
@@ -56,7 +57,7 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](ht
    Connect-AzureAD
    ```
 
-1. テナントの**同意ポリシー設定**ディレクトリ設定の現在の値を取得します。 このために、この機能のディレクトリ設定が作成されているかどうかを確認する必要があります。作成されていない場合は、対応するディレクトリ設定テンプレートの値を使用します。
+1. テナントの **同意ポリシー設定** ディレクトリ設定の現在の値を取得します。 このために、この機能のディレクトリ設定が作成されているかどうかを確認する必要があります。作成されていない場合は、対応するディレクトリ設定テンプレートの値を使用します。
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings

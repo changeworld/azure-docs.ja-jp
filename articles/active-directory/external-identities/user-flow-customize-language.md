@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354991"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441438"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory での言語のカスタマイズ (プレビュー)
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) の言語のカスタマイズを使うと、�
 3. 翻訳を有効にするユーザー フローを選択します。
 4. **[言語]** を選択します。
 5. ユーザー フローの **[言語]** ページで、カスタマイズする言語を選択します。
-6. **属性コレクション ページ**を展開します。
+6. **属性コレクション ページ** を展開します。
 7. **[既定値のダウンロード]** (この言語を前に編集した場合は **[オーバーライドのダウンロード]** ) を選びます。
 
 上記の手順により、文字列の編集を開始する際に使用できる JSON ファイルを入手できます。
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) の言語のカスタマイズを使うと、�
 1. **[ユーザー フロー]** を選択し、翻訳を有効にするユーザー フローをクリックします。
 1. **[言語]** を選択します。
 1. 翻訳する言語を選びます。
-1. **属性コレクション ページ**を選択します。
+1. **属性コレクション ページ** を選択します。
 1. フォルダー アイコンを選び、アップロードする JSON ファイルを選びます。
 
 変更がユーザー フローに自動的に保存されます。
@@ -146,7 +146,7 @@ Chrome と Firefox はどちらも、それぞれに設定されている言語�
 
 ## <a name="supported-languages"></a>サポートされている言語
 
-Azure AD では、以下の言語がサポートされています。 ユーザー フローの言語は、Azure AD によって提供されます。 Multi-Factor Authentication (MFA) 通知の言語は、[Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) によって提供されます。
+Azure AD では、以下の言語がサポートされています。 ユーザー フローの言語は、Azure AD によって提供されます。 Multi-Factor Authentication (MFA) 通知の言語は、[Azure MFA](../authentication/concept-mfa-howitworks.md) によって提供されます。
 
 | Language              | 言語コード | ユーザー フロー         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

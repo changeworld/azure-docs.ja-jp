@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166110"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425264"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -29,7 +29,7 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 - イノベーションを活用できます。
 
-**MSAL.NET は、Microsoft ID プラットフォームと併せて使用する場合にお勧めの認証ライブラリです**。 ADAL.NET に新しい機能は実装されません。 この取り組みは、MSAL の改良に重点を置いています。
+**MSAL.NET は、Microsoft ID プラットフォームと併せて使用する場合にお勧めの認証ライブラリです** 。 ADAL.NET に新しい機能は実装されません。 この取り組みは、MSAL の改良に重点を置いています。
 
 この記事では、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) との違いについて説明し、MSAL への移行を支援します。
 
@@ -51,7 +51,7 @@ MSAL.NET を使用するには、[Microsoft.Identity.Client](https://www.nuget.o
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL.NET では*リソース* のトークンが取得されますが、MSAL.NET では*スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープとして、[Microsoft Graph のスコープ](/graph/permissions-reference)があります。
+ADAL.NET では *リソース* のトークンが取得されますが、MSAL.NET では *スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープとして、[Microsoft Graph のスコープ](/graph/permissions-reference)があります。
 
 MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳細については、[v1.0 アプリケーションのスコープ](#scopes-for-a-web-api-accepting-v10-tokens)に関する記述を参照してください。
 
@@ -176,8 +176,8 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 Microsoft Graph API (https://graph.microsoft.com/) を使用して、MSAL.NET Azure Active Directory で読み取りと書き込みを行う場合、次のスニペットのようにスコープのリストを作成します。
 
 ```csharp
-ResourceId = "https://graph.microsoft.com/";
-var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
+string ResourceId = "https://graph.microsoft.com/"; 
+string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write" }
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告:v1.0 Web API に対応するスコープに 1 つまたは 2 つのスラッシュがある場合

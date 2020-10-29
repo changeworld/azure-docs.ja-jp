@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 786c6309f685af6b8e42108c490ce86c7844bc81
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826246"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>チュートリアル: Azure Active Directory と Hosted Graphite の統合
 
@@ -27,7 +27,7 @@ Hosted Graphite と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Hosted Graphite に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ Azure AD と Hosted Graphite の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Hosted Graphite では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Hosted Graphite では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Hosted Graphite では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Hosted Graphite では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-hosted-graphite-from-the-gallery"></a>ギャラリーからの Hosted Graphite の追加
 
@@ -62,13 +62,13 @@ Azure AD への Hosted Graphite の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Hosted Graphite**」と入力し、結果パネルで **[Hosted Graphite]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Hosted Graphite** 」と入力し、結果パネルで **[Hosted Graphite]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Hosted Graphite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Hosted Graphite で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Hosted Graphite で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Hosted Graphite 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Hosted Graphite で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -115,7 +115,7 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これは実際の値ではないので注意してください。 実際の識別子、応答 URL、サインオン URL にこれらの値を置き換える必要があります。 これらの値を取得するには、アプリケーション側で [Access]\(アクセス\) > [SAML setup]\(SAML のセットアップ\) と移動するか、[Hosted Graphite サポート チーム](mailto:help@hostedgraphite.com)に問い合わせてください。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -133,7 +133,7 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
 1. Hosted Graphite テナントに管理者としてサインオンします。
 
-2. サイド バーの **SAML のセットアップ ページ**に移動します ( **[Access (アクセス)]、[SAML Setup (SAML のセットアップ)]** の順に移動)。
+2. サイド バーの **SAML のセットアップ ページ** に移動します ( **[Access (アクセス)]、[SAML Setup (SAML のセットアップ)]** の順に移動)。
 
     ![[SAML Setup]\(SAML のセットアップ\) が選択された [Access]\(アクセス\) メニューのスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
@@ -141,7 +141,7 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
     ![[基本的な SAML 構成] を示すスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
-4. **[Entity or Issuer ID]\(エンティティまたは発行者 ID\)** および **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**と**ログイン URL** の値を貼り付けます。
+4. **[Entity or Issuer ID]\(エンティティまたは発行者 ID\)** および **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** と **ログイン URL** の値を貼り付けます。
 
     ![ID プロバイダーに関する入力画面のスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
@@ -171,9 +171,9 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -217,13 +217,12 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Hosted Graphite] タイルをクリックすると、SSO を設定した Hosted Graphite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Hosted Graphite] タイルをクリックすると、SSO を設定した Hosted Graphite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -9,17 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079628"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440452"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
-[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用すると、"*リソースへのアクセスに必要な最低限のアクセス許可*" でワークスペースを構成できます。 
+[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用すると、" *リソースへのアクセスに必要な最低限のアクセス許可* " でワークスペースを構成できます。 
 
 Azure Machine Learning ワークスペースを信頼できる方法で構成する場合、ワークスペースに関連付けられているさまざまなサービスのアクセス レベルが適切であることを確認することが重要です。 たとえば機械学習ワークフロー時に、ワークスペースでは、Docker イメージ用に Azure Container Registry (ACR) と、トレーニング データ用にストレージ アカウントへのアクセスが必要です。 
 
@@ -29,7 +29,6 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 
  * ACR への管理者ユーザーのアクセスを有効にせずに、Azure Machine Learning ワークスペース用に ACR を構成して使用します。
  * ワークスペースの外部のプライベート ACR にアクセスして、トレーニングまたは推論用のベース イメージをプルします。
- * ストレージ アクセス キーの代わりにマネージド ID を使用して、トレーニング用のデータ セットにアクセスします。
 
 > [!IMPORTANT]
 > マネージド ID を使用した Azure Machine Learning でのリソースへのアクセス制御は、現在プレビュー段階です。 プレビュー機能では、サポートやサービス レベル アグリーメントは保証されず、"現状有姿" で提供されます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
@@ -39,7 +38,7 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 - [Machine Learning service 用 Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)
 - [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-- ロールを割り当てるには、Azure サブスクリプションのログインに[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロール、または必要なアクション (__所有者__など) を付与するその他のロールが含まれている必要があります。
+- ロールを割り当てるには、Azure サブスクリプションのログインに [マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロール、または必要なアクション ( __所有者__ など) を付与するその他のロールが含まれている必要があります。
 - [マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) の作成と操作に慣れている必要があります。
 
 ## <a name="configure-managed-identities"></a>マネージド ID の構成
@@ -47,7 +46,7 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 場合によっては、Azure Container Registry への管理者ユーザーのアクセスを禁止する必要があります。 たとえば、ACR が共有可能な場合に、他のユーザーによる管理者のアクセスを禁止する必要がある場合などです。 または、管理者ユーザーが有効になっている ACR の作成が、サブスクリプション レベルのポリシーで許可されていない場合です。
 
 > [!IMPORTANT]
-> Azure Container Instance (ACI) での推論に Azure Machine Learning を使用する場合、ACR への管理者ユーザー アクセスが__必要__です。 推論のために ACI にモデルをデプロイする予定の場合は、無効にしないでください。
+> Azure Container Instance (ACI) での推論に Azure Machine Learning を使用する場合、ACR への管理者ユーザー アクセスが __必要__ です。 推論のために ACI にモデルをデプロイする予定の場合は、無効にしないでください。
 
 管理者ユーザーのアクセスを有効にせずに ACR を作成した場合、マネージド ID を使用して ACR にアクセスし、Docker イメージをビルドおよびプルします。
 
@@ -174,8 +173,8 @@ env.python.user_managed_dependencies = True
 
 このシナリオでは、Azure Machine Learning サービスによって、プライベート ACR から提供するベース イメージ上にトレーニングまたは推論環境がビルドされます。 イメージのビルド タスクは、ワークスペース ACR 上で ACR タスクを使用して実行されるため、アクセスを許可するために追加の手順を実行する必要があります。
 
-1. __ユーザー割り当てマネージド ID__ を作成し、ID に__プライベート ACR__ への ACRPull アクセス権を付与します。  
-1. ワークスペースの__システム割り当てマネージド ID__ に、前の手順の__ユーザー割り当てマネージド ID__ のマネージド ID オペレーター ロールを付与します。 このロールによってワークスペースでは、マネージド環境をビルドするために、ユーザー割り当てマネージド ID を ACR タスクに割り当てることができるようになります。 
+1. __ユーザー割り当てマネージド ID__ を作成し、ID に __プライベート ACR__ への ACRPull アクセス権を付与します。  
+1. ワークスペースの __システム割り当てマネージド ID__ に、前の手順の __ユーザー割り当てマネージド ID__ のマネージド ID オペレーター ロールを付与します。 このロールによってワークスペースでは、マネージド環境をビルドするために、ユーザー割り当てマネージド ID を ACR タスクに割り当てることができるようになります。 
 
     1. ワークスペースのシステム割り当て マネージド ID のプリンシパル ID を取得します。
 
@@ -191,7 +190,7 @@ env.python.user_managed_dependencies = True
 
         UAI リソース ID は、ユーザー割り当て ID の Azure リソース ID で、`/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` の形式です。
 
-1. [Workspace.set_connection メソッド](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)を使用して、ワークスペース接続の外部 ACR と__ユーザー割り当てマネージド ID__ のクライアント ID を指定します。
+1. [Workspace.set_connection メソッド](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)を使用して、ワークスペース接続の外部 ACR と __ユーザー割り当てマネージド ID__ のクライアント ID を指定します。
 
     ```python
     workspace.set_connection(
@@ -222,31 +221,6 @@ identity.client_id="<UAI client ID>”
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
-
-## <a name="access-training-data"></a>トレーニング データへのアクセス
-
-前述のように、マネージド ID を使用して機械学習コンピューティング クラスターを作成したら、その ID を使用して、ストレージ アカウント キーなしでトレーニング データにアクセスできます。 このシナリオでは、システム割り当てまたはユーザー割り当てマネージド ID のどちらも使用できます。
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>コンピューティングのマネージド ID にストレージ アカウントへのアクセス許可を付与する
-
-トレーニング データを格納するストレージ アカウントに対する[閲覧者ロールをマネージド ID に付与します](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights)。
-
-### <a name="register-data-store-with-workspace"></a>ワークスペースへのデータ ストアの登録
-
-マネージド ID を割り当てた後は、ストレージの資格情報を指定しなくても、データ ストアを作成できます。
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>トレーニングの実行の送信
-
-データ ストアを使用してトレーニングの実行を送信すると、機械学習コンピューティングでのデータへのアクセスは、そのマネージド ID を使用して行われます。
 
 ## <a name="use-docker-images-for-inference"></a>推論に Docker イメージを使用する
 

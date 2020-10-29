@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091442"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372125"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -29,9 +29,9 @@ Azure では、サポート要求 (サポート チケットとも呼ばれる) 
 
 サポート リクエスト エクスペリエンスでは、主に次の 3 つの目標に重点を置いています。
 
-* **合理化**:サポートとトラブルシューティングを見つけやすくして、サポート リクエストの送信方法を簡略化します。
-* **統合**:Azure リソースに関する問題のトラブルシューティングを行う際に、コンテキストを切り替えずに、サポート リクエストを容易に開くことができます。
-* **効率性**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
+* **合理化** :サポートとトラブルシューティングを見つけやすくして、サポート リクエストの送信方法を簡略化します。
+* **統合** :Azure リソースに関する問題のトラブルシューティングを行う際に、コンテキストを切り替えずに、サポート リクエストを容易に開くことができます。
+* **効率性** : 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
 
 Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。 技術的なサポートについては、サポート プランが必要になります。 詳細については、「[サポート プランの比較](https://azure.microsoft.com/support/plans)」を参照してください。
 
@@ -41,7 +41,7 @@ Azure portal で **[ヘルプとサポート]** にアクセスできます。 �
 
 ### <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)である必要があります。
+サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/roles/permissions-reference.md)である必要があります。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>グローバル ヘッダーから [ヘルプとサポート] にアクセスする
 
@@ -73,7 +73,7 @@ Microsoft は、発生している問題について情報を収集してその�
 
 サポート要求プロセスの最初の手順は、ユーザーが抱える問題とそのサポート プランに必要な基本情報を集めることです。
 
-**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン**など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を記述してから、 **[問題の種類]** と **[問題のサブタイプ]** を選択して、より具体的にご説明下さい。
+**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン** など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を記述してから、 **[問題の種類]** と **[問題のサブタイプ]** を選択して、より具体的にご説明下さい。
 
 ![[基本] ブレード](./media/how-to-create-azure-support-request/basics2lower.png)
 

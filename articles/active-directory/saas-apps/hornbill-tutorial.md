@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 315c6ecaeb466f3a04ed33dc9040ddab49361575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4131f1d0ef36eb49641ac184cd3f72fb719ea90e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88521945"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>チュートリアル: Azure Active Directory と Hornbill の統合
 
@@ -27,7 +27,7 @@ Hornbill と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Hornbill に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,8 +44,8 @@ Hornbill と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Hornbill では、**SP** Initiated SSO がサポートされます
-* Hornbill では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Hornbill では、 **SP** Initiated SSO がサポートされます
+* Hornbill では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-hornbill-from-the-gallery"></a>ギャラリーからの Hornbill の追加
 
@@ -65,13 +65,13 @@ Azure AD への Hornbill の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Hornbill**」と入力し、結果パネルで **[Hornbill]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Hornbill** 」と入力し、結果パネルで **[Hornbill]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Hornbill](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Hornbill で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Hornbill で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Hornbill 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Hornbill で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -132,11 +132,11 @@ Hornbill で Azure AD シングル サインオンを構成するには、次の
 
     ![Hornbill のシングル](./media/hornbill-tutorial/tutorial_hornbill_sso.png)
 
-5. ページの右上の**追加のロゴ**をクリックします。
+5. ページの右上の **追加のロゴ** をクリックします。
 
     ![Hornbill の追加](./media/hornbill-tutorial/tutorial_hornbill_addlogo.png)
 
-6. **[Profile Details]\(プロファイルの詳細\)** バーで、**SAML メタデータのインポートのロゴ**をクリックします。
+6. **[Profile Details]\(プロファイルの詳細\)** バーで、 **SAML メタデータのインポートのロゴ** をクリックします。
 
     ![Hornbill のロゴ](./media/hornbill-tutorial/tutorial_hornbill_logo.png)
 
@@ -170,9 +170,9 @@ Hornbill で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -210,19 +210,18 @@ Hornbill で Azure AD シングル サインオンを構成するには、次の
 このセクションでは、Britta Simon というユーザーを Hornbill に作成します。 Hornbill では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Hornbill にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [Hornbill クライアント サポート チーム](https://www.hornbill.com/support/?request/)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[Hornbill クライアント サポート チーム](https://www.hornbill.com/support/?request/)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Hornbill] タイルをクリックすると、SSO を設定した Hornbill に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Hornbill] タイルをクリックすると、SSO を設定した Hornbill に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

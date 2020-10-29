@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: c972bd3b770f42353d285d0c69aacef56d6e04d5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742844"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426125"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -27,7 +27,7 @@ ms.locfileid: "91742844"
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 監視 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>メトリックのアラート ルールを作成する
 1. [Azure portal](https://portal.azure.com/) で、監視する Azure Database for MariaDB サーバーを選択します。
@@ -80,10 +80,10 @@ ms.locfileid: "91742844"
 アラートを作成したら、それを選択して次のアクションを実行できます。
 
 * このアラートに関連するメトリックのしきい値と、前日の実際の値を示すグラフを表示する。
-* アラート ルールを**編集**または**削除**する。
-* アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
+* アラート ルールを **編集** または **削除** する。
+* アラートを **無効** にしてアラートを一時的に停止する、または **有効** にして通知の受け取りを再開する。
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
-* [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
+* [メトリック収集の概要](../azure-monitor/platform/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。
