@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f4c6eb8ad8e3d69d2b3545bc5754e1a632f5cc8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 881b1df00f8a962087f1e57b7141ac50f5cfa18b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285818"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514828"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure Active Directory (Azure AD) によって自動的にユーザーまたはグループが [Snowflake](https://www.Snowflake.com/pricing/) にプロビジョニングされる、または Snowflake からプロビジョニング解除されるように構成するため、Snowflake と Azure AD で実行する手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
+このチュートリアルの目的は、Azure Active Directory (Azure AD) によって自動的にユーザーまたはグループが [Snowflake](https://www.Snowflake.com/pricing/) にプロビジョニングされる、または Snowflake からプロビジョニング解除されるように構成するため、Snowflake と Azure AD で実行する手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
 
 > [!NOTE]
@@ -32,21 +32,21 @@ ms.locfileid: "91285818"
 > * アクセスが不要になった場合に Snowflake のユーザーを削除する
 > * Azure AD と Snowflake の間でユーザー属性の同期を維持する
 > * Snowflake でグループとグループ メンバーシップをプロビジョニングする
-> * Snowflake への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial) (推奨)
+> * Snowflake への[シングル サインオン](./snowflake-tutorial.md) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
-* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
+* [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
+* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [Snowflake テナント](https://www.Snowflake.com/pricing/)。
 * Admin アクセス許可がある Snowflake のユーザー アカウント。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
-1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
-2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
-3. [Azure AD と Snowflake の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
+1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
+2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+3. [Azure AD と Snowflake の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。 
 
 ## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Snowflake を構成する
 
@@ -66,15 +66,15 @@ Azure AD での自動ユーザー プロビジョニング用に Snowflake を�
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Snowflake を追加する
 
-Azure AD アプリケーション ギャラリーから Snowflake を追加して、Snowflake へのプロビジョニングの管理を開始します。 SSO のために Snowflake を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
+Azure AD アプリケーション ギャラリーから Snowflake を追加して、Snowflake へのプロビジョニングの管理を開始します。 SSO のために Snowflake を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-application-portal.md)を参照してください。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* Snowflake にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
+* Snowflake にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
-* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-snowflake"></a>手順 5. Snowflake への自動ユーザー プロビジョニングを構成する 
@@ -99,7 +99,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** フィールドおよび **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL および認証トークン**の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Snowflake に接続できることを確認します。 接続できない場合は、使用中の Snowflake アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** フィールドおよび **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL および認証トークン** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Snowflake に接続できることを確認します。 接続できない場合は、使用中の Snowflake アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -152,9 +152,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
-1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
+1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 

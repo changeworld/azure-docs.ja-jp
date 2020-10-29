@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa9ed0954cbfa2d83eeed1c70f40beedcf4f44cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285956"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514794"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>チュートリアル:Soloinsight-CloudGate SSO を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91285956"
 
 ## <a name="assigning-users-to-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate SSO にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Soloinsight-CloudGate SSO へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Soloinsight-CloudGate SSO に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Soloinsight-CloudGate SSO の SCIM 追加](media/soloinsight-cloudgate-sso-provisioning-tutorial/config.png)
 
-3.  下にスクロールし、ページの終わりにある **[テナント URL]** と **[シークレット トークン]** を表示します。 **シークレット トークン**をコピーします。 この値は、Azure portal で Soloinsight-CloudGate SSO アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力されます。
+3.  下にスクロールし、ページの終わりにある **[テナント URL]** と **[シークレット トークン]** を表示します。 **シークレット トークン** をコピーします。 この値は、Azure portal で Soloinsight-CloudGate SSO アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力されます。
 
     ![Soloinsight-CloudGate SSO のトークン作成](media/soloinsight-cloudgate-sso-provisioning-tutorial/token.png)
 
@@ -80,7 +80,7 @@ Azure AD での自動ユーザー プロビジョニング用に Soloinsight-Clo
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Soloinsight-CloudGate SSO**」と入力し、結果パネルで **[Soloinsight-CloudGate SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Soloinsight-CloudGate SSO** 」と入力し、結果パネルで **[Soloinsight-CloudGate SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Soloinsight-CloudGate SSO](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ Azure AD での自動ユーザー プロビジョニング用に Soloinsight-Clo
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Soloinsight-CloudGate SSO のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
-> Soloinsight-CloudGate SSO で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Soloinsight-CloudGate SSO シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Soloinsight-CloudGate SSO で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Soloinsight-CloudGate SSO シングル サインオンのチュートリアル](./soloinsight-cloudgate-sso-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Azure AD で Soloinsight-CloudGate SSO の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
@@ -109,7 +109,7 @@ Azure AD での自動ユーザー プロビジョニング用に Soloinsight-Clo
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://sigateway.com/scim/v2/sync/serviceproviderconfig`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Soloinsight-CloudGate SSO への接続を確保します。 接続に失敗する場合は、使用中の Soloinsight-CloudGate SSO アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://sigateway.com/scim/v2/sync/serviceproviderconfig`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Soloinsight-CloudGate SSO への接続を確保します。 接続に失敗する場合は、使用中の Soloinsight-CloudGate SSO アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -161,4 +161,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 2d770ce1fca9a5d36ba605bccc46d3995cd1764b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a741e96807acdb7b162b65597c651a2a6c3235
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450603"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509252"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TravelPerk の統合
 
@@ -37,9 +37,9 @@ ms.locfileid: "91450603"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TravelPerk では、**SP** Initiated SSO がサポートされます
+* TravelPerk では、 **SP** Initiated SSO がサポートされます
 
-* TravelPerk では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* TravelPerk では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-travelperk-from-the-gallery"></a>ギャラリーから TravelPerk を追加する
 
@@ -49,7 +49,7 @@ Azure AD への TravelPerk の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TravelPerk**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TravelPerk** 」と入力します。
 1. 結果のパネルから **[TravelPerk]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -87,7 +87,7 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[TravelPerk クライアント サポート チーム](mailto:trex@travelperk.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. TravelPerk アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**emailaddress** は **user.mail** にマップされています。 TravelPerk アプリケーションでは、**emailaddress** が **user.userprincipalname** にマップされることが想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. TravelPerk アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **emailaddress** は **user.mail** にマップされています。 TravelPerk アプリケーションでは、 **emailaddress** が **user.userprincipalname** にマップされることが想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/default-attributes.png)
 
@@ -124,7 +124,7 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-travelperk-sso"></a>TravelPerk の SSO の構成
 
-**TravelPerk** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [TravelPerk のサポート チーム](mailto:trex@travelperk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**TravelPerk** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [TravelPerk のサポート チーム](mailto:trex@travelperk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-travelperk-test-user"></a>TravelPerk テスト ユーザーの作成
 
@@ -138,10 +138,8 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 
 2. TravelPerk のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [TravelPerk] タイルをクリックすると、TravelPerk サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [TravelPerk] タイルをクリックすると、TravelPerk サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-TravelPerk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+TravelPerk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

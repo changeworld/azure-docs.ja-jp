@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed697b54b868319d715fdbb88dcae8f8968852d2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996551"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515663"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91996551"
 * ユーザーが自分の Azure AD アカウントで Oracle Cloud Infrastructure Console に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Oracle Cloud Infrastructure Console では、**SP** Initiated SSO がサポートされます。
-* Oracle Cloud Infrastructure Console を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Oracle Cloud Infrastructure Console では、 **SP** Initiated SSO がサポートされます。
+* Oracle Cloud Infrastructure Console を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>ギャラリーからの Oracle Cloud Infrastructure Console の追加
 
@@ -50,7 +50,7 @@ Azure AD への Oracle Cloud Infrastructure Console の統合を構成するに�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Oracle Cloud Infrastructure Console**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Oracle Cloud Infrastructure Console** 」と入力します。
 1. 結果のパネルから **[Oracle Cloud Infrastructure Console]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -79,16 +79,16 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
 
    > [!NOTE]
-   > チュートリアルの「**Oracle Cloud Infrastructure Console シングルサインオンの構成**」セクションで、サービス プロバイダー メタデータ ファイルを取得します。
+   > チュートリアルの「 **Oracle Cloud Infrastructure Console シングルサインオンの構成** 」セクションで、サービス プロバイダー メタデータ ファイルを取得します。
     
    1. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-   1. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+   1. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-   1. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、 **[基本的な SAML 構成]** セクションのテキストボックスに自動的に設定されます。
+   1. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、 **[基本的な SAML 構成]** セクションのテキストボックスに自動的に設定されます。
     
       > [!NOTE]
-      > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+      > **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
       **[サインオン URL]** ボックスに、`https://console.<REGIONNAME>.oraclecloud.com/` という形式で URL を入力します。
 
@@ -105,7 +105,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
 1. その他に、Oracle Cloud Infrastructure Console アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
-   1. **[名前識別子の値]** の横にある**ペン**をクリックします。
+   1. **[名前識別子の値]** の横にある **ペン** をクリックします。
 
    1. **[名前識別子の形式の選択 ]** として **[Persistent]** を選択します。
  
@@ -115,7 +115,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
     
       ![[ユーザー要求の管理] ダイアログのスクリーンショット。[Persistent]\(永続\) と [保存] ボタンが選択されています。](./media/oracle-cloud-tutorial/config11.png)
 
-   1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
+   1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
 
    1. ラジオ ボタンのリストから **[セキュリティ グループ]** を選択します。
 
@@ -123,7 +123,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
    1. **[グループ要求の名前をカスタマイズする]** をオンにします。
 
-   1. **[名前]** ボックスに「**groupName**」と入力します。
+   1. **[名前]** ボックスに「 **groupName** 」と入力します。
 
    1. **[名前空間 (省略可能)]** ボックスに「`https://auth.oraclecloud.com/saml/claims`」と入力します。
 
@@ -175,7 +175,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
    ![[Oracle Cloud Infrastructure Console] のスクリーンショット。左上のメニューから [ID] と [Federation]\(フェデレーション\) が選択されています。](./media/oracle-cloud-tutorial/config01.png)
 
-1. **[Download this document]\(このドキュメントをダウンロードする\)** リンクをクリックして**サービス プロバイダー メタデータ ファイル**を保存し、Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、 **[ID プロバイダーの追加]** をクリックします。
+1. **[Download this document]\(このドキュメントをダウンロードする\)** リンクをクリックして **サービス プロバイダー メタデータ ファイル** を保存し、Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、 **[ID プロバイダーの追加]** をクリックします。
 
    ![左側のメニューで [Federation]\(フェデレーション\) が選択されている画面のスクリーンショット。[ID プロバイダーの追加] ボタンと [Download this document]\(このドキュメントをダウンロードする\) が選択されています。](./media/oracle-cloud-tutorial/config02.png)
 
@@ -207,16 +207,16 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Oracle Cloud Infrastructure Console] タイルを選択すると、Oracle Cloud Infrastructure Console のサインイン ページにリダイレクトされます。 次のようにドロップダウン メニューから **[IDENTITY PROVIDER]\(ID プロバイダー\)** を選択し、 **[Continue]\(続行\)** をクリックしてサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Oracle Cloud Infrastructure Console] タイルを選択すると、Oracle Cloud Infrastructure Console のサインイン ページにリダイレクトされます。 次のようにドロップダウン メニューから **[IDENTITY PROVIDER]\(ID プロバイダー\)** を選択し、 **[Continue]\(続行\)** をクリックしてサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ![構成](./media/oracle-cloud-tutorial/config10.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
-- [高度な可視性と制御によって Oracle Cloud Infrastructure Console を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Oracle Cloud Infrastructure Console を保護する方法](/cloud-app-security/proxy-intro-aad)

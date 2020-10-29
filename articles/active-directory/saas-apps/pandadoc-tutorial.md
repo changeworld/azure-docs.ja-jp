@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 357687f89413a99cf9041ab41653619f04a60d28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7af3f311db6a3f8b68014eb8114aa1c7a40a9dee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553950"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92512763"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pandadoc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PandaDoc の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553950"
 * ユーザーが自分の Azure AD アカウントを使用して PandaDoc に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* PandaDoc では、**SP と IDP** によって開始される SSO がサポートされます。
-* PandaDoc では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* PandaDoc では、 **SP と IDP** によって開始される SSO がサポートされます。
+* PandaDoc では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への PandaDoc の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**PandaDoc**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **PandaDoc** 」と入力します。
 1. 結果のパネルから **[PandaDoc]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-pandadoc"></a>PandaDoc の Azure AD シングル サインオンの構成とテスト
@@ -79,7 +79,7 @@ PandaDoc に対する Azure AD SSO を構成してテストするには、次の
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -136,7 +136,7 @@ PandaDoc に対する Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-pandadoc-sso"></a>PandaDoc SSO の構成
 
-**PandaDoc** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [PandaDoc サポート チーム](mailto:support@pandadoc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**PandaDoc** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [PandaDoc サポート チーム](mailto:support@pandadoc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-pandadoc-test-user"></a>PandaDoc テスト ユーザーの作成
 
@@ -146,15 +146,14 @@ PandaDoc に対する Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [PandaDoc] タイルをクリックすると、SSO を設定した PandaDoc に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [PandaDoc] タイルをクリックすると、SSO を設定した PandaDoc に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で PandaDoc を試す](https://aad.portal.azure.com/)
-

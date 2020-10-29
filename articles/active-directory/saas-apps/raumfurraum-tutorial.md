@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdc598a5afed5eb29e285b279eced98ad06e296c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29040795f16ee804e2413b52d2692b38ab0f814c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500537"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92510561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raumfrraum"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と raum]für[raum の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "89500537"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* raum]für[raum では、**SP および IDP** Initiated SSO がサポートされています
-* raum]für[raum では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* raum]für[raum では、 **SP および IDP** Initiated SSO がサポートされています
+* raum]für[raum では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 ## <a name="add-raumfrraum-from-the-gallery"></a>ギャラリーから raum]für[raum を追加する
 
@@ -48,7 +48,7 @@ Azure AD への raum]für[raum の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**raum]für[raum**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **raum]für[raum** 」と入力します。
 1. 結果のパネルから **[raum]für[raum]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -137,7 +137,7 @@ raum]für[raum に対して Azure AD SSO を構成してテストするには、
 
 ## <a name="configure-raumfurraum-sso"></a>raumfurraum の SSO を構成する
 
-**raum]für[raum** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [raumfurraum サポート チーム](mailto:it@mediadialog.de)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**raum]für[raum** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [raumfurraum サポート チーム](mailto:it@mediadialog.de)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-raumfurraum-test-user"></a>raumfurraum のテスト ユーザーを作成する
 
@@ -157,7 +157,7 @@ raum]für[raum に対して Azure AD SSO を構成してテストするには、
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した raum]für[raum に自動的にサインインされるはずです 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [raum]für[raum] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した raum]für[raum に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [raum]für[raum] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した raum]für[raum に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-raum]für[raum を構成したら、組織の機微なデータの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+raum]für[raum を構成したら、組織の機微なデータの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

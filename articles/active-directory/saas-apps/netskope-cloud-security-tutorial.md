@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 081c61610c4134917ffa90cf45fb096f3df4bcbe
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: eda584f2cb531cbf526c43eab00831b218a14f93
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939292"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514420"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>チュートリアル:Netskope Administrator Console と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91939292"
 * ユーザーが自分の Azure AD アカウントを使用して自動的に Netskope Administrator Console にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ Netskope Administrator Console の Azure AD への統合を構成するには、
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Netskope Administrator Console**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Netskope Administrator Console** 」と入力します。
 1. 結果のパネルから **[Netskope Administrator Console]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-administrator-console"></a>Netskope Administrator Console の Azure AD シングル サインオンの構成とテスト
@@ -102,7 +102,7 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
     | admin-role | user.assignedroles |
 
     > [!NOTE]
-    > Azure AD でロールを作成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)をクリックしてください。
+    > Azure AD でロールを作成する方法については、[ここ](../develop/active-directory-enterprise-app-role-management.md)をクリックしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -176,7 +176,7 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
     a. **[Enable SSO]\(SSO を有効にする\)** を選択します。
 
-    b. **[IDP URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[IDP URL]** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[IDP ENTITY ID]\(IDP エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -184,7 +184,7 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
     e. **[Enable SSO]\(SSO を有効にする\)** を選択します。
 
-    f. **[IDP SLO URL]** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    f. **[IDP SLO URL]** テキスト ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     g. **[SUBMIT]\(送信\)** をクリックします。
 
@@ -216,14 +216,14 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Netskope Administrator Console] タイルをクリックすると、SSO を設定した Netskope Administrator Console に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Netskope Administrator Console] タイルをクリックすると、SSO を設定した Netskope Administrator Console に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Netskope Administrator Console を試す](https://aad.portal.azure.com/)

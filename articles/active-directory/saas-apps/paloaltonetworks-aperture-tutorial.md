@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f2603ce055d18e1ad7e202e0c662e042a1d1d48
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a70d075ae25b0059e4e1ab75c44907f584e15350
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996109"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92512839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - Aperture の統合
 
@@ -38,7 +38,7 @@ Azure AD と Palo Alto Networks - Aperture の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Palo Alto Networks - Aperture では、**SP** と **IDP** によって開始される SSO がサポートされます
+* Palo Alto Networks - Aperture では、 **SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - Aperture の追加
 
@@ -48,12 +48,12 @@ Azure AD への Palo Alto Networks - Aperture の統合を構成するには、�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Palo Alto Networks - Aperture**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Palo Alto Networks - Aperture** 」と入力します。
 1. 結果パネルで **[Palo Alto Networks - Aperture]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、**B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Palo Alto Networks - Aperture 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成してテストするには、次の手順を行います。
@@ -92,7 +92,7 @@ Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Palo Alto Networks - Aperture クライアント サポート チーム](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -148,7 +148,7 @@ Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成
 
     d. **[Identity Provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    e. **[Aperture 情報]** セクションで IdP 情報を確認し、**[Aperture キー]** フィールドから証明書をダウンロードします。
+    e. **[Aperture 情報]** セクションで IdP 情報を確認し、 **[Aperture キー]** フィールドから証明書をダウンロードします。
 
     f. **[保存]** をクリックします。
 
@@ -171,9 +171,9 @@ Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Palo Alto Networks - Aperture に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Palo Alto Networks - Aperture] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Palo Alto Networks - Aperture に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Palo Alto Networks - Aperture] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Palo Alto Networks - Aperture に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
 
-Palo Alto Networks - Aperture を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Palo Alto Networks - Aperture を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

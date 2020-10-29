@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 8cf73e7eae333bcf2a5cb639f1c9e3d9e70140e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb946bc889d37b37f3330b07b18dd3ef3423af28
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553582"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515306"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PrinterLogic SaaS の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553582"
 * ユーザーが自分の Azure AD アカウントで自動的に PrinterLogic SaaS にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,8 +41,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 
 
-* PrinterLogic SaaS では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* PrinterLogic SaaS では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* PrinterLogic SaaS では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* PrinterLogic SaaS では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-printerlogic-saas-from-the-gallery"></a>ギャラリーからの PrinterLogic SaaS の追加
@@ -53,7 +53,7 @@ PrinterLogic SaaS の Azure AD への統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**PrinterLogic SaaS**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **PrinterLogic SaaS** 」と入力します。
 1. 結果パネルから **[PrinterLogic SaaS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -104,7 +104,7 @@ PrinterLogic SaaS で Azure AD SSO を構成してテストするには、次の
     | Role     | user.assignedroles |
 
     > [!NOTE]
-    > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
+    > Azure AD で役割を構成する方法については、[ここ](../develop/active-directory-enterprise-app-role-management.md)をクリックしてください
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -156,15 +156,14 @@ PrinterLogic SaaS で Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [PrinterLogic SaaS] タイルをクリックすると、SSO を設定した PrinterLogic SaaS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [PrinterLogic SaaS] タイルをクリックすると、SSO を設定した PrinterLogic SaaS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で PrinterLogic SaaS を試す](https://aad.portal.azure.com/)
-

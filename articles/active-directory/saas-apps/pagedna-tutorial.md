@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 543085eaea993f6e464a501ffc93befd7589a009
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554134"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92513829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>チュートリアル:Azure Active Directory と PageDNA の統合
 
@@ -28,7 +28,7 @@ PageDNA と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して PageDNA に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,13 +64,13 @@ Azure AD への PageDNA の統合を構成するには、Azure Marketplace か�
 
     ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「**PageDNA**」と入力します。 検索結果で **[PageDNA]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
+1. 検索ボックスに「 **PageDNA** 」と入力します。 検索結果で **[PageDNA]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の PageDNA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PageDNA で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと PageDNA 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、PageDNA で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと PageDNA 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 PageDNA で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -95,7 +95,7 @@ PageDNA で Azure AD シングル サインオンを構成するには、次の�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ PageDNA で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PageDNA サポート チーム](mailto:success@pagedna.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ウィンドウに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して特定のオプションの**証明書 (未加工)** をダウンロードし、コンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して特定のオプションの **証明書 (未加工)** をダウンロードし、コンピューターに保存します。
 
     ![証明書 (未加工) のダウンロード オプション](common/certificateraw.png)
 
@@ -154,9 +154,9 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
+    1. **[ユーザー名]** ボックスに「 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「 **BrittaSimon\@contoso.com** 」です。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -196,13 +196,12 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで **[PageDNA]** を選択すると、シングル サインオンを設定した PageDNA サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+マイ アプリ ポータルで **[PageDNA]** を選択すると、シングル サインオンを設定した PageDNA サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](./tutorial-list.md)
 
-* [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
 
-* [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+* [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

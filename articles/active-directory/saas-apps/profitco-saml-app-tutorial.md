@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 669ab403d738a12a7d4b3093fe50b9cf55a75510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 027fb66538dfcead24470507b8080f2e0aacb469
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553497"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Profit.co の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553497"
 * ユーザーが自分の Azure AD アカウントを使用して Profit.co に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関する記事を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88553497"
 
 * Profit.co では、IDP Initiated SSO がサポートされます。
 
-* Profit.co を構成した後、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Profit.co を構成した後、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-profitco-from-the-gallery"></a>ギャラリーからの Profit.co の追加
 
@@ -51,7 +51,7 @@ Azure AD への Profit.co の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Profit.co**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Profit.co** 」と入力します。
 1. 結果のパネルから **[Profit.co]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Profit.co の Azure AD シングル サインオンの構成とテスト
@@ -79,7 +79,7 @@ Profit.co に対する Azure AD SSO を構成してテストする一般的な�
 
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]** を選択して構成を保存する必要があります。
 
-1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[コピー]** を選択します。 これにより、**アプリのフェデレーション メタデータ URL** がコピーされ、お使いのコンピューターに保存されます。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[コピー]** を選択します。 これにより、 **アプリのフェデレーション メタデータ URL** がコピーされ、お使いのコンピューターに保存されます。
 
     ![コピー ボタンが強調表示された [SAML 署名証明書] セクションのスクリーンショット](common/copy-metadataurl.png)
 
@@ -125,18 +125,18 @@ Profit.co 側でシングル サインオンを構成するには、アプリの
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Profit.co] タイルを選択すると、SSO を設定した Profit.co に自動的にサインインします。 詳細については、「[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [Profit.co] タイルを選択すると、SSO を設定した Profit.co に自動的にサインインします。 詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Profit.co を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Profit.co を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Profit.co を保護する方法](/cloud-app-security/proxy-intro-aad)

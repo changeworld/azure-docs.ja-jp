@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 67b6dc544eeda81bc24cc74088441304b6723006
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37d47c36ebbd7c274bac2a9e1b7e940614f2aa6f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553461"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>チュートリアル:Azure Active Directory と ProMaster (by Inlogik) の統合
 
@@ -27,7 +27,7 @@ ProMaster (by Inlogik) と Azure AD の統合には、次の利点がありま�
 * ユーザーが自分の Azure AD アカウントで ProMaster (by Inlogik) に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ ProMaster (by Inlogik) と Azure AD の統合を構成するには、次のも�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ProMaster (by Inlogik) では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
-* ProMaster (by Inlogik) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* ProMaster (by Inlogik) では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* ProMaster (by Inlogik) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>ギャラリーからの ProMaster (by Inlogik) の追加
 
@@ -52,12 +52,12 @@ Azure AD への ProMaster (by Inlogik) の統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ProMaster (by Inlogik)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **ProMaster (by Inlogik)** 」と入力します。
 1. 結果のパネルから **[ProMaster (by Inlogik)]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**B.Simon** というテスト ユーザーに基づいて、ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **B.Simon** というテスト ユーザーに基づいて、ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ProMaster (by Inlogik) の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -151,7 +151,7 @@ ProMaster (by Inlogik) で Azure AD シングル サインオンを構成する�
 
 ## <a name="configure-promaster-by-inlogik-sso"></a>ProMaster (by Inlogik) SSO の構成
 
-**ProMaster (by Inlogik)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [ProMaster (by Inlogik) サポート チーム](https://www.inlogik.com/contact)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ProMaster (by Inlogik)** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [ProMaster (by Inlogik) サポート チーム](https://www.inlogik.com/contact)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-promaster-by-inlogik-test-user"></a>ProMaster (by Inlogik) テスト ユーザーの作成
 
@@ -161,18 +161,18 @@ ProMaster (by Inlogik) で Azure AD シングル サインオンを構成する�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [ProMaster (by Inlogik)] タイルをクリックすると、SSO を設定した ProMaster (by Inlogik) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [ProMaster (by Inlogik)] タイルをクリックすると、SSO を設定した ProMaster (by Inlogik) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で ProMaster (by Inlogik) を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって ProMaster (by Inlogik) を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって ProMaster (by Inlogik) を保護する方法](/cloud-app-security/proxy-intro-aad)

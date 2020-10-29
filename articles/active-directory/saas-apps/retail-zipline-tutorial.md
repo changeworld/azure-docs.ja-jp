@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: db154cea379a3bac4d2fab33968c886c4665db45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50cf98a2646d88360ea9d48d2d84d98ad237a099
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373006"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514964"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retail-zipline"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Retail Zipline の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "91373006"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Retail Zipline により、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Retail Zipline により、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Retail Zipline により、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Retail Zipline により、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-retail-zipline-from-the-gallery"></a>ギャラリーからの Retail Zipline の追加
 
@@ -48,7 +48,7 @@ Azure AD への Retail Zipline の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Retail Zipline**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Retail Zipline** 」と入力します。
 1. 結果パネルで **Retail Zipline** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -133,7 +133,7 @@ Retail Zipline に対して Azure AD SSO を構成してテストするには、
 
 ## <a name="configure-retail-zipline-sso"></a>Retail Zipline の SSO を構成する
 
-**Retail Zipline** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Retail Zipline サポート チーム](mailto:support@retailzipline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Retail Zipline** 側でシングル サインオンを構成するには、 **アプリケーション フェデレーション メタデータ URL** を [Retail Zipline サポート チーム](mailto:support@retailzipline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-retail-zipline-test-user"></a>Retail Zipline のテスト ユーザーを作成する
 
@@ -153,10 +153,8 @@ Retail Zipline に対して Azure AD SSO を構成してテストするには、
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Retail Zipline に自動的にサインインされるはずです 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Retail Zipline タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Retail Zipline に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Retail Zipline タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Retail Zipline に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Retail Zipline を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Retail Zipline を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f67d1bb1e4502d918cd7af6d98ce5ed5f76c969
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 638b6899331aa1414a730045e6ce9d1e5d332569
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102291"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>チュートリアル:Azure Active Directory と RStudio Connect の統合
 
@@ -27,7 +27,7 @@ RStudio Connect と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで RStudio Connect に自動的にサインイン (シングル サインオン) できるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ RStudio Connect と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* RStudio Connect では、**SP と IDP** initiated SSO がサポートされます
+* RStudio Connect では、 **SP と IDP** initiated SSO がサポートされます
 
-* RStudio Connect では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* RStudio Connect では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-rstudio-connect-from-the-gallery"></a>ギャラリーからの RStudio Connect の追加
 
@@ -63,13 +63,13 @@ Azure AD への RStudio Connect の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**RStudio Connect**」と入力し、結果パネルで **[RStudio Connect]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **RStudio Connect** 」と入力し、結果パネルで **[RStudio Connect]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの RStudio Connect](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、RStudio Connect で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、RStudio Connect で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと RStudio Connect 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 RStudio Connect で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -116,7 +116,7 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 それらは、RStudio Connect のサーバー アドレス (上記例の `https://example.com`) から判別されます。 問題がある場合は、[RStudio Connect のサポート チーム](mailto:support@rstudio.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. RStudio Connect アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングをご自分の SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 RStudio Connect アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+6. RStudio Connect アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングをご自分の SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 RStudio Connect アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -153,7 +153,7 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-**サーバー アドレス**を `Server.Address` 値に格納し、**アプリのフェデレーション メタデータ URL** を `SAML.IdPMetaData` 値に格納します。 このサンプル構成では、暗号化されていない HTTP 接続を使用しますが、Azure AD では暗号化された HTTPS 接続を使用する必要があることに注意してください。 RStudio Connect の前面に[リバース プロキシ](https://docs.rstudio.com/connect/admin/proxy/)を使用するか、RStudio Connect を構成して [HTTPS を直接使用](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)することができます。 
+**サーバー アドレス** を `Server.Address` 値に格納し、 **アプリのフェデレーション メタデータ URL** を `SAML.IdPMetaData` 値に格納します。 このサンプル構成では、暗号化されていない HTTP 接続を使用しますが、Azure AD では暗号化された HTTPS 接続を使用する必要があることに注意してください。 RStudio Connect の前面に[リバース プロキシ](https://docs.rstudio.com/connect/admin/proxy/)を使用するか、RStudio Connect を構成して [HTTPS を直接使用](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)することができます。 
 
 構成に問題がある場合は、「[RStudio Connect Admin Guide](https://docs.rstudio.com/connect/admin/authentication/saml/)」をお読みいただくか、ヘルプについてのメールを [RStudio のサポート チーム](mailto:support@rstudio.com)まで送信してください。
 
@@ -173,7 +173,7 @@ SSOInitiated = IdPAndSP
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -215,13 +215,12 @@ SSOInitiated = IdPAndSP
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [RStudio Connect] タイルをクリックすると、SSO を設定した RStudio Connect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [RStudio Connect] タイルをクリックすると、SSO を設定した RStudio Connect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

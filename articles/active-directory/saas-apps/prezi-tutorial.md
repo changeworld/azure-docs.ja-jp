@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658935"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515323"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>チュートリアル:Azure Active Directory シングル サインオンと Prezi の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "89658935"
 * ユーザーが自分の Azure AD アカウントを使用して Prezi に自動的にサインインできるように設定する。
 * Azure portal でアカウントを管理する。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "89658935"
 
 * Prezi では、SP Initiated SSO と IDP Initiated SSO がサポートされます。
 * Prezi では、Just-In-Time ユーザー プロビジョニングがサポートされます。
-* Prezi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
+* Prezi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -54,7 +54,7 @@ Azure AD への Prezi の統合を構成するには、ギャラリーからマ�
 1. 左端のペインで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Prezi**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Prezi** 」と入力します。
 1. 結果パネルで **[Prezi]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-prezi"></a>Prezi の Azure AD SSO の構成とテスト
@@ -114,7 +114,7 @@ Azure portal で Azure AD SSO を有効にするには、次のようにしま�
 1. Azure portal の左端のペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** に移動し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. ユーザーのプロパティで、以下の手順を実行します。
-   1. **[名前]** ボックスに「**B.Simon**」と入力します。
+   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。
    1. **[ユーザー名]** ボックスに「`username@companydomain.extension`」と入力します (たとえば、`B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -141,7 +141,7 @@ Azure portal で Azure AD SSO を有効にするには、次のようにしま�
 
 1. 別の Web ブラウザー ウィンドウで、チーム アカウントで Prezi にサインインし、[管理コンソール](https://prezi.com/organizations/manage)に移動します。
 
-1. **管理コンソール**で **[Settings]\(設定\)** タブを選択します。
+1. **管理コンソール** で **[Settings]\(設定\)** タブを選択します。
 
     ![Settings tab](./media/prezi-tutorial/settings-image.png)
 
@@ -153,11 +153,11 @@ Azure portal で Azure AD SSO を有効にするには、次のようにしま�
 
     ![[Single sign-on (SSO)]\(シングル サインオン (SSO)\) セクション](./media/prezi-tutorial/configuration.png)
 
-    1. **[Identifier or Issuer URL]\(ID または発行者 URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    1. **[Identifier or Issuer URL]\(ID または発行者 URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    1. **[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    1. **[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    1. Azure portal からダウンロードした**証明書 (Base64)** をメモ帳で開きます。 証明書の内容をコピーし、その内容を **[Certificate (X.509)]\(証明書 (X.509)\)** ボックスに貼り付けます。
+    1. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開きます。 証明書の内容をコピーし、その内容を **[Certificate (X.509)]\(証明書 (X.509)\)** ボックスに貼り付けます。
 
     1. **[保存]** を選択します。
 
@@ -169,14 +169,13 @@ Azure portal で Azure AD SSO を有効にするには、次のようにしま�
 
 このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
 
-アクセス パネルで [Prezi] タイルを選択すると、SSO を設定した Prezi アカウントに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Prezi] タイルを選択すると、SSO を設定した Prezi アカウントに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 - [Azure AD で Prezi を試す](https://aad.portal.azure.com/)
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [高度な可視性と制御によって Prezi を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Prezi を保護する方法](/cloud-app-security/proxy-intro-aad)

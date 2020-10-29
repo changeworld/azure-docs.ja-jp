@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e79d8584a7c760fa0a50a614390370ee7ff8ae15
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996073"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92512482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル: Azure Active Directory と Panorama9 の統合
 
@@ -27,7 +27,7 @@ Panorama9 と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に Panorama9 にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Panorama9 と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Panorama9 では、**SP** Initiated SSO がサポートされます
+* Panorama9 では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-panorama9-from-the-gallery"></a>ギャラリーから Panorama9 を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Panorama9 の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Panorama9**」と入力し、結果パネルで **[Panorama9]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Panorama9** 」と入力し、結果パネルで **[Panorama9]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Panorama9](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Panorama9 で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Panorama9 で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Panorama9 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Panorama9 で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,7 +142,7 @@ Panorama9 で Azure AD シングル サインオンを構成するには、次�
    
     ![[設定]](./media/panorama9-tutorial/ic790025.png "設定")
    
-    a. **[Identity provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Identity provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
    
     b. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** テキスト ボックスに、Azure Portal からコピーした証明書の **[拇印]** 値を貼り付けます。    
          
@@ -164,7 +164,7 @@ Panorama9 で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -227,13 +227,12 @@ Panorama9 の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Panorama9] タイルをクリックすると、SSO を設定した Panorama9 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Panorama9] タイルをクリックすると、SSO を設定した Panorama9 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

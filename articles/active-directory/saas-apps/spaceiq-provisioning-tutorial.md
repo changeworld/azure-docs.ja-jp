@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: cd1e9431d7125b405f31cb1ed329e6e264cd247e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 135b780f547ddd8e979899898b9971c4dcf89cee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285927"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514709"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>チュートリアル:SpaceIQ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91285927"
 
 ## <a name="assigning-users-to-spaceiq"></a>SpaceIQ へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、SpaceIQ へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを SpaceIQ に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,13 +58,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![SpaceIQ での SCIM の追加](media/spaceiq-provisioning-tutorial/thirdparty.png)
 
-3.  **[Provisioning and SSO]\(プロビジョニングと SSO\)** タブに移動します。**Azure** タイルを検索します。 **[Activate]\(アクティブ化\)** をクリックします。
+3.  **[Provisioning and SSO]\(プロビジョニングと SSO\)** タブに移動します。 **Azure** タイルを検索します。 **[Activate]\(アクティブ化\)** をクリックします。
 
     ![SpaceIQ プロビジョニングと SSO](media/spaceiq-provisioning-tutorial/provisioning.png)
 
     ![SpaceIQ による Azure のアクティブ化 ](media/spaceiq-provisioning-tutorial/azure.png)
 
-3.  **SCIM ベアラー トークン**をコピーします。 この値を、Azure portal で SpaceIQ アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。 **[アクティブ化]** をクリックします。
+3.  **SCIM ベアラー トークン** をコピーします。 この値を、Azure portal で SpaceIQ アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。 **[アクティブ化]** をクリックします。
 
     ![SpaceIQ でのトークンの作成](media/spaceiq-provisioning-tutorial/token.png)
 
@@ -86,7 +86,7 @@ Azure AD での自動ユーザー プロビジョニング用に SpaceIQ を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SpaceIQ**」と入力し、結果パネルで **[SpaceIQ]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **SpaceIQ** 」と入力し、結果パネルで **[SpaceIQ]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の SpaceIQ](common/search-new-app.png)
 
@@ -95,7 +95,7 @@ Azure AD での自動ユーザー プロビジョニング用に SpaceIQ を構�
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて SpaceIQ のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> SpaceIQ では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[SpaceIQ シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/spaceiq-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> SpaceIQ では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[SpaceIQ シングル サインオンのチュートリアル](./spaceiq-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-spaceiq-in-azure-ad"></a>Azure AD で SpaceIQ の自動ユーザー プロビジョニングを構成するには:
 
@@ -115,7 +115,7 @@ Azure AD での自動ユーザー プロビジョニング用に SpaceIQ を構�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.spaceiq.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から SpaceIQ に接続できることを確認します。 接続できない場合は、使用中の SpaceIQ アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.spaceiq.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[接続テスト]** をクリックして、Azure AD から SpaceIQ に接続できることを確認します。 接続できない場合は、使用中の SpaceIQ アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 7965edd5dc54155f03b9211d5c2b21d451018bd1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940979"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
 
@@ -27,7 +27,7 @@ MobileIron と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで MobileIron に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ MobileIron と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MobileIron では、**SP と IDP** によって開始される SSO がサポートされます
+* MobileIron では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>ギャラリーから MobileIron を追加する
 
@@ -67,7 +67,7 @@ Azure AD への MobileIron の統合を構成するには、ギャラリーか�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、MobileIron で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、MobileIron で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと MobileIron 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 MobileIron で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -97,7 +97,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、 **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
@@ -105,7 +105,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     b. **[応答 URL]** ボックスに、`https://<host>.mobileiron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します
 
-    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+    c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
@@ -114,7 +114,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 このチュートリアルで後ほど説明する MobileIron の管理ポータルからキーとホストの値を取得します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -122,11 +122,11 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
 1. 別の Web ブラウザー ウィンドウで、MobileIron 企業サイトに管理者としてログインします。
 
-2. **[Admin]\(管理\)** > **[Identity]\(ID\)** に移動し、**[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
+2. **[Admin]\(管理\)** > **[Identity]\(ID\)** に移動し、 **[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
 
     ![スクリーンショットは、[Identity]\(ID\) が選択された MobileIron サイトの [Admin]\(管理\) タブを示しています。](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
-3. **キー**と**ホスト**の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションに貼り付けて URL を完成させます。
+3. **キー** と **ホスト** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションに貼り付けて URL を完成させます。
 
     ![スクリーンショットは、キーとホストの値を含む、[Setting Up SAML]\(SAML の設定\) オプションを示しています。](./media/mobileiron-tutorial/key.png)
 
@@ -150,9 +150,9 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -167,7 +167,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**MobileIron**」と入力して選択します。
+2. アプリケーションの一覧で、「 **MobileIron** 」と入力して選択します。
 
     ![アプリケーションの一覧の [MobileIron] リンク](common/all-applications.png)
 
@@ -175,7 +175,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -214,13 +214,12 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [MobileIron] タイルをクリックすると、SSO を設定した MobileIron に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [MobileIron] タイルをクリックすると、SSO を設定した MobileIron に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b7de874cc074faa63203c58638fb04cc5cb2282b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127473"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
 
@@ -27,7 +27,7 @@ SmartRecruiters と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで SmartRecruiters に自動的にサインイン (シングル サインオン) されるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -207,19 +207,18 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
 ### <a name="create-smartrecruiters-test-user"></a>SmartRecruiters のテスト ユーザーの作成
 
-このセクションでは、SmartRecruiters で Britta Simon というユーザーを作成します。 SmartRecruiters プラットフォームでユーザーを追加するには、 [SmartRecruiters サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/) に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SmartRecruiters で Britta Simon というユーザーを作成します。 SmartRecruiters プラットフォームでユーザーを追加するには、[SmartRecruiters サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/)に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SmartRecruiters] タイルをクリックすると、SSO を設定した SmartRecruiters に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SmartRecruiters] タイルをクリックすると、SSO を設定した SmartRecruiters に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

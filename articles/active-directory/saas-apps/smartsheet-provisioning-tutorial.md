@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 623ec6999add175e85f117e547fba61734d2b892
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a3c2567cf1799bca5750e90fbe5d89f6da952ff5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286012"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514894"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Smartsheet を構成する
 
-このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Smartsheet にプロビジョニングまたは Smartsheet からプロビジョニング解除するように構成するために、[Smartsheet](https://www.smartsheet.com/pricing) と Azure Active Directory (Azure AD) で実行される手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
+このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Smartsheet にプロビジョニングまたは Smartsheet からプロビジョニング解除するように構成するために、[Smartsheet](https://www.smartsheet.com/pricing) と Azure Active Directory (Azure AD) で実行される手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
@@ -37,15 +37,15 @@ ms.locfileid: "91286012"
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
-* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
+* [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
+* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [Smartsheet テナント](https://www.smartsheet.com/pricing)。
 * システム管理者アクセス許可を持つ Smartsheet Enterprise または Enterprise Premier プランのユーザー アカウント。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
-1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
-2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
-3. [Azure AD と Smartsheet の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
+1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
+2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+3. [Azure AD と Smartsheet の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。 
 
 ## <a name="step-2-configure-smartsheet-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Smartsheet を構成する
 
@@ -85,21 +85,21 @@ Azure AD での自動ユーザー プロビジョニング用に Smartsheet を�
 
 ## <a name="step-3-add-smartsheet-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Smartsheet を追加する
 
-Azure AD アプリケーション ギャラリーから Smartsheet を追加して、Smartsheet へのプロビジョニングの管理を開始します。 SSO のために以前 Smartsheet を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
+Azure AD アプリケーション ギャラリーから Smartsheet を追加して、Smartsheet へのプロビジョニングの管理を開始します。 SSO のために以前 Smartsheet を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-application-portal.md)を参照してください。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* Smartsheet にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
+* Smartsheet にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * Smartsheet と Azure AD の間でユーザー ロールの割り当てを一致させるために、Smartsheet ユーザー一覧全体に設定されているものと同じロールの割り当てを利用することをお勧めします。 Smartsheet からこのユーザー一覧を取得するには、 **[Account Admin]\(アカウント管理\) > [User Management]\(ユーザー管理\) > [More Actions]\(その他の操作\) > [Download User List (csv)]\(ユーザー一覧のダウンロード (csv)\)** に移動します。
 
 * アプリの一部の機能にアクセスするには、Smartsheet でユーザーが複数のロールを持つ必要があります。 Smartsheet のユーザーの種類とアクセス許可の詳細については、「[User Types and Permissions (ユーザーの種類とアクセス許可)](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions)」を参照してください。
 
-*  Smartsheet でユーザーに複数のロールを割り当てられている場合、ユーザーが Smartsheet オブジェクトへのアクセスを完全に失うことがないように、これらのロールの割り当てを Azure AD で確実に複製する**必要があります**。 Smartsheet 内の一意の各ロールは、Azure AD 内で別のグループに割り当てる**必要があります**。 次に、ユーザーを目的のロールに対応する各グループに追加する**必要があります**。 
+*  Smartsheet でユーザーに複数のロールを割り当てられている場合、ユーザーが Smartsheet オブジェクトへのアクセスを完全に失うことがないように、これらのロールの割り当てを Azure AD で確実に複製する **必要があります** 。 Smartsheet 内の一意の各ロールは、Azure AD 内で別のグループに割り当てる **必要があります** 。 次に、ユーザーを目的のロールに対応する各グループに追加する **必要があります** 。 
 
-* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-smartsheet"></a>手順 5. Smartsheet への自動ユーザー プロビジョニングを構成する 
 
@@ -123,7 +123,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど Smartsheet から取得した **SCIM 2.0 ベース URL およびアクセス トークン**の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Smartsheet に接続できることを確認します。 接続できない場合は、使用中の Smartsheet アカウントに SysAdmin アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど Smartsheet から取得した **SCIM 2.0 ベース URL およびアクセス トークン** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Smartsheet に接続できることを確認します。 接続できない場合は、使用中の Smartsheet アカウントに SysAdmin アクセス許可があることを確認してから、もう一度試します。
 
     ![トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -177,9 +177,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
-1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
+1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 

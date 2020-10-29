@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828027"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92510825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>チュートリアル:Azure Active Directory と Silverback の統合
 
@@ -27,7 +27,7 @@ Silverback と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Silverback に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Silverback と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Silverback では、**SP** によって開始される SSO がサポートされます
+* Silverback では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-silverback-from-the-gallery"></a>ギャラリーから Silverback を追加する
 
@@ -61,13 +61,13 @@ Silverback の Azure AD への統合を構成するには、マネージド SaaS
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Silverback**」と入力し、結果パネルで **[Silverback]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Silverback** 」と入力し、結果パネルで **[Silverback]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Silverback](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Silverback で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Silverback で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Silverback 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Silverback で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -138,7 +138,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     g.  **[Choose File]\(ファイルの選択\)** をクリックして **[Icon]\(アイコン\)** をアップロードします。
 
-    h.  ボタンの背景**色**を選択します。
+    h.  ボタンの背景 **色** を選択します。
 
     i.  **[保存]** をクリックします。
 
@@ -158,9 +158,9 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -183,7 +183,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -201,19 +201,19 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
 
 1. Silverback Server に Administrator としてログインします。
 
-2. **[Users]\(ユーザー\)** に移動し、**新しいデバイス ユーザーを追加**します。
+2. **[Users]\(ユーザー\)** に移動し、 **新しいデバイス ユーザーを追加** します。
 
 3. **[Basic]\(基本\)** ページで、次の手順を行います。
 
     ![ユーザー](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーの名前を入力します (例: **Britta**)。
+    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーの名前を入力します (例: **Britta** )。
 
-    b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
+    b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta** )。
 
-    c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
+    c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
 
-    d. **[E-mail Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
+    d. **[E-mail Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス ( **Brittasimon\@contoso.com** など) を入力します。
 
     e. **[Password]\(パスワード\)** ボックスにパスワードを入力します。
 
@@ -222,19 +222,18 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
     g. **[保存]** をクリックします。
 
 > [!NOTE]
-> 手動で各ユーザーを作成しない場合は、**[Admin]\(管理者\)** > **[Authentication Provider]\(認証プロバイダー\)** の **[Dynamic User Creation]\(動的ユーザーの作成\)** チェックボックスをオンにします。
+> 手動で各ユーザーを作成しない場合は、 **[Admin]\(管理者\)** > **[Authentication Provider]\(認証プロバイダー\)** の **[Dynamic User Creation]\(動的ユーザーの作成\)** チェックボックスをオンにします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Silverback] タイルをクリックすると、SSO を設定した Silverback に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Silverback] タイルをクリックすると、SSO を設定した Silverback に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
