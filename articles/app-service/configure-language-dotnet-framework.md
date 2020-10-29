@@ -2,15 +2,15 @@
 title: ASP.NET アプリの構成
 description: Azure App Service で ASP.NET アプリを構成する方法を説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961705"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744154"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET アプリを構成する
 
@@ -83,7 +83,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>例外の詳細ページを表示する
 
-Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページは汎用のエラー メッセージに置き換わります。 App Service で例外の詳細ページを表示するには、*Web.config* ファイルを開き、`<system.web>` 要素の下に `<customErrors mode="Off"/>` 要素を追加します。 次に例を示します。
+Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページは汎用のエラー メッセージに置き換わります。 App Service で例外の詳細ページを表示するには、 *Web.config* ファイルを開き、`<system.web>` 要素の下に `<customErrors mode="Off"/>` 要素を追加します。 次に例を示します。
 
 ```xml
 <system.web>

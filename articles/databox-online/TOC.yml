@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: 作業開始
+        - name: はじめに
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
@@ -183,6 +183,8 @@
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: リファレンス
       items:
+        - name: API、SDK、PowerShell を介した IoT Edge ロール
+          href: azure-stack-edge-gpu-iot-edge-api-update.md
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
         - name: REST API

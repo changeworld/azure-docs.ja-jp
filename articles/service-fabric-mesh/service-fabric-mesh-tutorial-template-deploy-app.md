@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842531"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745986"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -61,7 +61,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次のコマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次のコマンドを使用して、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -69,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>コンテナー レジストリを作成する
 
-`az acr create` コマンドを使用して ACR のインスタンスを作成します。 レジストリの名前は Azure 内で一意にする必要があり、英数字で 5 ～ 50 文字にする必要があります。 次の例では、*myContainerRegistry* という名前を使用します。 レジストリの名前が使用されているエラーが発生する場合は、別の名前を選択します。
+`az acr create` コマンドを使用して ACR のインスタンスを作成します。 レジストリの名前は Azure 内で一意にする必要があり、英数字で 5 ～ 50 文字にする必要があります。 次の例では、 *myContainerRegistry* という名前を使用します。 レジストリの名前が使用されているエラーが発生する場合は、別の名前を選択します。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -156,7 +156,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-次の例では、**azure-mesh-todo-service** リポジトリのタグが一覧表示されます。
+次の例では、 **azure-mesh-todo-service** リポジトリのタグが一覧表示されます。
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -196,9 +196,9 @@ Service Fabric Mesh アプリケーションは、Azure Resource Manager (RM) �
 このチュートリアルでは、例として To Do List サンプルを使います。  新しいテンプレート ファイルとパラメーター ファイルを作成する代わりに、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをダウンロードします。
 
 ### <a name="parameters"></a>パラメーター
-アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。 これを行う適切な方法は、デプロイ テンプレートの先頭に "parameters" セクションを作成し、そこでパラメーターの名前とプロパティを指定して、以降のデプロイ テンプレートではそれを参照することです。 各パラメーターの定義には、*type*、*defaultValue*、および省略可能な *metadata* セクションと *description* が含まれます。
+アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。 これを行う適切な方法は、デプロイ テンプレートの先頭に "parameters" セクションを作成し、そこでパラメーターの名前とプロパティを指定して、以降のデプロイ テンプレートではそれを参照することです。 各パラメーターの定義には、 *type* 、 *defaultValue* 、および省略可能な *metadata* セクションと *description* が含まれます。
 
-parameters セクションは、デプロイ テンプレートの先頭の、*resources* セクションの直前で定義します。
+parameters セクションは、デプロイ テンプレートの先頭の、 *resources* セクションの直前で定義します。
 
 ```json
 {

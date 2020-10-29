@@ -5,13 +5,13 @@ author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356887"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744764"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>クラウドの一貫性を実現する ARM テンプレートを開発する
 
@@ -205,7 +205,7 @@ Resource Manager は入れ子になったテンプレートを実行時に取得
 }
 ```
 
-このアプローチでは、構成スクリプトを含むすべての展開成果物を、テンプレート自体と同じ場所に格納できます。 すべてのリンクの場所を変更する場合は、_artifactsLocation_ パラメーターに異なるベース URL を指定するだけで済みます。
+このアプローチでは、構成スクリプトを含むすべての展開成果物を、テンプレート自体と同じ場所に格納できます。 すべてのリンクの場所を変更する場合は、 _artifactsLocation_ パラメーターに異なるベース URL を指定するだけで済みます。
 
 ## <a name="factor-in-differing-regional-capabilities"></a>異なるリージョン機能での要因
 
@@ -443,8 +443,8 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 
 一般に、テンプレートにエンドポイントをハードコーディングすることは避けます。 ベスト プラクティスは、参照テンプレート関数を使ってエンドポイントを動的に取得することです。 たとえば、最もよくハードコーディングされるエンドポイントは、ストレージ アカウントのエンドポイント名前空間です。 各ストレージ アカウントは、ストレージ アカウントの名前とエンドポイントの名前空間を連結して作成される一意の FQDN を持っています。 mystorageaccount1 という名前の BLOB ストレージ アカウントは、クラウドによって異なる FQDN になります。
 
-* **mystorageaccount1.blob.core.windows.net**: グローバル Azure クラウドで作成されたとき。
-* **mystorageaccount1.blob.core.chinacloudapi.cn**: Azure China 21Vianet クラウドで作成されたとき。
+* **mystorageaccount1.blob.core.windows.net** : グローバル Azure クラウドで作成されたとき。
+* **mystorageaccount1.blob.core.chinacloudapi.cn** : Azure China 21Vianet クラウドで作成されたとき。
 
 次の参照テンプレート関数は、ストレージ リソース プロバイダーからエンドポイントの名前空間を取得します。
 
@@ -611,7 +611,7 @@ VM 拡張機能はファースト パーティ Resource Manager リソースで�
 
 VM 拡張機能リソースの API バージョンは、テンプレートの対象になるすべての場所に存在する必要があります。 場所の依存関係は、前の「すべてのリソースの種類のバージョンを確認する」セクションで説明したリソース プロバイダーの API バージョンの可用性と同じように動作します。
 
-VM 拡張機能リソースで利用可能な API バージョンの一覧を取得するには、次に示すように、**Microsoft.Compute** リソース プロバイダーで [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) コマンドレットを使います。
+VM 拡張機能リソースで利用可能な API バージョンの一覧を取得するには、次に示すように、 **Microsoft.Compute** リソース プロバイダーで [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) コマンドレットを使います。
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}

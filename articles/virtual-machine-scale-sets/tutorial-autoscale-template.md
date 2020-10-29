@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: f94a68833347d662f427fa0944dd83d33458bd14
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84629549"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745995"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル:Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -33,7 +33,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 
 ## <a name="define-an-autoscale-profile"></a>自動スケール プロファイルの定義
-Azure テンプレート内で自動スケール プロファイルを定義するには、*Microsoft.insights/autoscalesettings* リソース プロバイダーを使用します。 "*プロファイル*" には、スケール セットの容量の詳細と関連ルールを記述します。 次の例では、*Autoscale by percentage based on CPU usage* という名前のプロファイルを定義し、VM インスタンスの既定容量と最小容量を *2*、最大容量を *10* に設定しています。
+Azure テンプレート内で自動スケール プロファイルを定義するには、 *Microsoft.insights/autoscalesettings* リソース プロバイダーを使用します。 " *プロファイル* " には、スケール セットの容量の詳細と関連ルールを記述します。 次の例では、 *Autoscale by percentage based on CPU usage* という名前のプロファイルを定義し、VM インスタンスの既定容量と最小容量を *2* 、最大容量を *10* に設定しています。
 
 ```json
 {
@@ -137,13 +137,13 @@ Azure テンプレート内で自動スケール プロファイルを定義す�
 ## <a name="create-an-autoscaling-scale-set"></a>自動スケール スケール セットの作成
 サンプル テンプレートを使用してスケール セットを作成し、自動スケール ルールを適用しましょう。 [完全なテンプレートを確認](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)するか、テンプレートの [*Microsoft.insights/autoscalesettings* リソース プロバイダー セクションを確認](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)してください。
 
-最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az group deployment create](/cli/azure/group/deployment) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、*azureuser* などの独自のユーザー名と、各 VM インスタンスの資格情報として使用するパスワードを入力します。
+ここでは、[az group deployment create](/cli/azure/group/deployment) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、 *azureuser* などの独自のユーザー名と、各 VM インスタンスの資格情報として使用するパスワードを入力します。
 
 ```azurecli-interactive
 az group deployment create \
@@ -180,7 +180,7 @@ az vmss list-instance-connection-info \
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-ログインしたら、**stress** ユーティリティをインストールします。 最初は *10* 個の **stress** worker を使用して CPU 負荷を生成します。 これらの worker は、*420* 秒間実行されます。これは、自動スケール ルールで目的のアクションを実行するのに十分な値です。
+ログインしたら、 **stress** ユーティリティをインストールします。 最初は *10* 個の **stress** worker を使用して CPU 負荷を生成します。 これらの worker は、 *420* 秒間実行されます。これは、自動スケール ルールで目的のアクションを実行するのに十分な値です。
 
 ```console
 sudo apt-get update
@@ -188,9 +188,9 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-**stress** から *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* のような出力が表示されたら、*Enter* キーを押してプロンプトに戻ります。
+**stress** から *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* のような出力が表示されたら、 *Enter* キーを押してプロンプトに戻ります。
 
-**stress** によって CPU 負荷が生成されていることを確認するために、**top** ユーティリティを使用してアクティブなシステム負荷を調べます。
+**stress** によって CPU 負荷が生成されていることを確認するために、 **top** ユーティリティを使用してアクティブなシステム負荷を調べます。
 
 ```console
 top
@@ -216,7 +216,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-再び **stress** から *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* のような出力が表示されたら、*Enter* キーを押してプロンプトに戻ります。
+再び **stress** から *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* のような出力が表示されたら、 *Enter* キーを押してプロンプトに戻ります。
 
 2 番目の VM インスタンスへの接続を閉じます。 **stress** は、VM インスタンスで実行され続けます。
 
@@ -225,7 +225,7 @@ exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>アクティブな自動スケール ルールの監視
-スケール セット内の VM インスタンスの数を監視するには、**watch** を使用します。 各 VM インスタンスで **stress** によって生成された CPU 負荷に対するスケールアウト プロセスが自動スケール ルールによって開始されるまでに 5 分かかります。
+スケール セット内の VM インスタンスの数を監視するには、 **watch** を使用します。 各 VM インスタンスで **stress** によって生成された CPU 負荷に対するスケールアウト プロセスが自動スケール ルールによって開始されるまでに 5 分かかります。
 
 ```azurecli-interactive
 watch az vmss list-instances \

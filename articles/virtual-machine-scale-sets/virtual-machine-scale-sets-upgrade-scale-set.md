@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029299"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745825"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -23,7 +23,7 @@ ms.locfileid: "87029299"
 ## <a name="fundamental-concepts"></a>基本的な概念
 
 ### <a name="the-scale-set-model"></a>スケール セット モデル
-スケール セットには、スケール セット全体の "*望ましい*" 状態をキャプチャする "スケール セット モデル" があります。 スケール セット モデルは、次の方法で照会することができます。 
+スケール セットには、スケール セット全体の " *望ましい* " 状態をキャプチャする "スケール セット モデル" があります。 スケール セット モデルは、次の方法で照会することができます。 
 
 - REST API ([compute/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get))
 
@@ -67,7 +67,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ### <a name="the-scale-set-instance-view"></a>スケール セットのインスタンス ビュー
-スケール セットには、スケール セット全体の現在の "*ランタイム*" 状態をキャプチャする "スケール セットのインスタンス ビュー" もあります。 スケール セットのインスタンス ビューのクエリを実行するには、以下を使用できます。
+スケール セットには、スケール セット全体の現在の " *ランタイム* " 状態をキャプチャする "スケール セットのインスタンス ビュー" もあります。 スケール セットのインスタンス ビューのクエリを実行するには、以下を使用できます。
 
 - REST API ([compute/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview))
 
@@ -310,7 +310,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - その他、言語固有の [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります。
 
 >[!NOTE]
-> Service Fabric クラスターは "*自動*" モードのみを使用できますが、更新は別途処理されます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](../service-fabric/service-fabric-application-upgrade.md)」をご覧ください。
+> Service Fabric クラスターは " *自動* " モードのみを使用できますが、更新は別途処理されます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](../service-fabric/service-fabric-application-upgrade.md)」をご覧ください。
 
 グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 スケール セット OS およびデータ ディスク プロファイル (管理者のユーザー名とパスワードなど) に対する変更は、API バージョン *2017-12-01* 以降でのみ実行できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
 
@@ -348,7 +348,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>現在の値に基づいてのみ変更できるプロパティ
 一部のプロパティは、現在の値に基づく例外付きで変更できます。 これには次のようなプロパティがあります。
 
-- **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更**できません**。
+- **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更 **できません** 。
 - **サブネット** - 元のサブネットと新しいサブネットが同じ仮想ネットワークにある限り、スケール セットのサブネットは変更できます。
 
 ### <a name="properties-that-require-deallocation-to-change"></a>変更するために割り当て解除が必要なプロパティ
@@ -364,17 +364,17 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="scenarios"></a>シナリオ
 
 ### <a name="application-updates"></a>アプリケーションの更新
-拡張機能を通じてアプリケーションがスケール セットにデプロイされている場合、拡張機能の構成を更新すると、アップグレード ポリシーに従ってアプリケーションが更新されます。 たとえば、カスタム スクリプト拡張機能で実行するスクリプトの新しいバージョンがある場合は、新しいスクリプトを指すように *fileUris* プロパティを更新できます。 場合によっては、拡張機能の構成が変更されていない場合でも、強制的に更新したいことがあります (たとえば、スクリプトの URI を変更せずにスクリプトを更新した場合など)。 このような場合は、強制的に更新するように *forceUpdateTag* を変更することができます。 Azure プラットフォームはこのプロパティを解釈しません。 その値を変更しても、拡張機能の動作は変わりません。 変更しても、拡張機能が強制的に再実行されるだけです。 *forceUpdateTag* について詳しくは、[拡張機能の REST API ドキュメント](/rest/api/compute/virtualmachineextensions/createorupdate)をご覧ください。 *forceUpdateTag* はカスタム スクリプト拡張機能だけでなく、すべての拡張機能で使用できることに注意してください。
+拡張機能を通じてアプリケーションがスケール セットにデプロイされている場合、拡張機能の構成を更新すると、アップグレード ポリシーに従ってアプリケーションが更新されます。 たとえば、カスタム スクリプト拡張機能で実行するスクリプトの新しいバージョンがある場合は、新しいスクリプトを指すように *fileUris* プロパティを更新できます。 場合によっては、拡張機能の構成が変更されていない場合でも、強制的に更新したいことがあります (たとえば、スクリプトの URI を変更せずにスクリプトを更新した場合など)。 このような場合は、強制的に更新するように *forceUpdateTag* を変更することができます。 Azure プラットフォームはこのプロパティを解釈しません。 その値を変更しても、拡張機能の動作は変わりません。 変更しても、拡張機能が強制的に再実行されるだけです。 *forceUpdateTag* について詳しくは、 [拡張機能の REST API ドキュメント](/rest/api/compute/virtualmachineextensions/createorupdate)をご覧ください。 *forceUpdateTag* はカスタム スクリプト拡張機能だけでなく、すべての拡張機能で使用できることに注意してください。
 
 カスタム イメージを使用してアプリケーションをデプロイするのも一般的です。 このシナリオについては、次のセクションで説明します。
 
 ### <a name="os-updates"></a>OS の更新
-Azure プラットフォーム イメージを使用している場合は、*imageReference* を変更してイメージを更新することができます (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
+Azure プラットフォーム イメージを使用している場合は、 *imageReference* を変更してイメージを更新することができます (詳しくは、 [REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 >[!NOTE]
-> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味**しません**。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
+> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味 **しません** 。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
 
-カスタム イメージを使用している場合は、*imageReference* ID を更新してイメージを更新することができます (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
+カスタム イメージを使用している場合は、 *imageReference* ID を更新してイメージを更新することができます (詳しくは、 [REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 ## <a name="examples"></a>例
 
@@ -447,7 +447,7 @@ Azure Load Balancer を使用するスケール セットがあり、Azure Load 
     ```
 
 >[!NOTE]
-> これらのコマンドでは、スケール セットの IP 構成とロード バランサーが 1 つだけであると想定されます。 複数ある場合は、*0* 以外のリスト インデックスを使用する必要があります。
+> これらのコマンドでは、スケール セットの IP 構成とロード バランサーが 1 つだけであると想定されます。 複数ある場合は、 *0* 以外のリスト インデックスを使用する必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

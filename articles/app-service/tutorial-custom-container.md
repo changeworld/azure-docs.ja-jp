@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
-ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152106"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743724"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "92152106"
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub アカウントにサインアップする</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
-- **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
+- **ASP.NET と Web 開発** ワークロードと **Azure の開発** ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
     - **[ヘルプ]**  >  **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
     - **[ツール]**  >  **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92152106"
 
 ### <a name="install-the-font"></a>フォントをインストールする
 
-エクスプローラーで _custom-font-win-container-master/CustomFontSample_ に移動し、_FrederickatheGreat-Regular.ttf_ を右クリックして、 **[インストール]** を選択します。
+エクスプローラーで _custom-font-win-container-master/CustomFontSample_ に移動し、 _FrederickatheGreat-Regular.ttf_ を右クリックして、 **[インストール]** を選択します。
 
 このフォントは、[Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) で一般公開されています。
 
@@ -68,7 +68,7 @@ ms.locfileid: "92152106"
 
 **[Docker Compose]**  >  **[OK]** を選択します。
 
-プロジェクトが Windows コンテナーで実行するように設定されます。 _Dockerfile_ が **CustomFontSample** プロジェクトに追加され、**docker-compose** プロジェクトがソリューションに追加されます。 
+プロジェクトが Windows コンテナーで実行するように設定されます。 _Dockerfile_ が **CustomFontSample** プロジェクトに追加され、 **docker-compose** プロジェクトがソリューションに追加されます。 
 
 ソリューション エクスプローラーで **Dockerfile** を開きます。
 
@@ -119,7 +119,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 | 設定  | 推奨値 | 詳細情報 |
 | ----------------- | ------------ | ----|
 |**DNS プレフィックス**| 生成されたレジストリ名をそのまま使用するか、または別の一意名に変更します。 |  |
-|**リソース グループ**| **[新規]** をクリックし、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
+|**リソース グループ**| **[新規]** をクリックし、「 **myResourceGroup** 」と入力して、 **[OK]** をクリックします。 |  |
 |**SKU**| Basic | [価格レベル](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**レジストリの場所**| 西ヨーロッパ | |
 
@@ -137,17 +137,17 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ### <a name="configure-app-basics"></a>アプリの基本情報を構成する
 
-**基本** タブで、次の表に従って設定を構成し、**Next: Docker\(次へ: Docker** をクリックします。
+**基本** タブで、次の表に従って設定を構成し、 **Next: Docker\(次へ: Docker** をクリックします。
 
 | 設定  | 推奨値 | 詳細情報 |
 | ----------------- | ------------ | ----|
 |**サブスクリプション**| 正しいサブスクリプションが選択されていることを確認します。 |  |
-|**リソース グループ**| **[新規作成]** を選択し、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
+|**リソース グループ**| **[新規作成]** を選択し、「 **myResourceGroup** 」と入力して、 **[OK]** をクリックします。 |  |
 |**名前**| 一意の名前を入力します。 | Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
 |**発行**| Docker コンテナー | |
 |**オペレーティング システム**| Windows | |
 |**リージョン**| 西ヨーロッパ | |
-|**Windows プラン**| **[新規作成]** を選択し、「**myAppServicePlan**」と入力して、 **[OK]** をクリックします。 | |
+|**Windows プラン**| **[新規作成]** を選択し、「 **myAppServicePlan** 」と入力して、 **[OK]** をクリックします。 | |
 
 **[基本]** タブは、次のように表示されます。
 
@@ -276,9 +276,9 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>GitHub からのダウンロード
 
-Git Clone を使用する代わりに、[https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択してもかまいません。 
+Git Clone を使用する代わりに、 [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択してもかまいません。 
 
-その ZIP ファイルを、*docker-django-webapp-linux* という名前のフォルダーに展開します。 
+その ZIP ファイルを、 *docker-django-webapp-linux* という名前のフォルダーに展開します。 
 
 次に、その *docker-django-webapp-linux* フォルダーからターミナル ウィンドウを開きます。
 
@@ -334,7 +334,7 @@ ENTRYPOINT ["init.sh"]
     この [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) コマンドに `-p` 引数でポートを指定し、続けてイメージの名前を指定します。 
     
     > [!TIP]
-    > Windows を実行していて "*standard_init_linux.go:211: exec user process caused "no such file or directory" (standard_init_linux.go:211: exec ユーザー プロセスが原因で "ファイルまたはディレクトリの欠落" が発生しました)* " というエラーが表示された場合、LF であるはずの *init.sh* ファイルの行末が CR-LF になっています。 このエラーは、Git を使用してサンプル リポジトリをクローンした際、`--config core.autocrlf=input` パラメーターを省略した場合に発生します。 その場合は、`--config`` 引数を使用して、再度リポジトリをクローンしてください。 *init.sh* を編集し、行末に CRLF を使用して保存した場合にも、このエラーが表示される可能性があります。 この場合は、行末を LF のみにして再度ファイルを保存してください。
+    > Windows を実行していて " *standard_init_linux.go:211: exec user process caused "no such file or directory" (standard_init_linux.go:211: exec ユーザー プロセスが原因で "ファイルまたはディレクトリの欠落" が発生しました)* " というエラーが表示された場合、LF であるはずの *init.sh* ファイルの行末が CR-LF になっています。 このエラーは、Git を使用してサンプル リポジトリをクローンした際、`--config core.autocrlf=input` パラメーターを省略した場合に発生します。 その場合は、`--config`` 引数を使用して、再度リポジトリをクローンしてください。 *init.sh* を編集し、行末に CRLF を使用して保存した場合にも、このエラーが表示される可能性があります。 この場合は、行末を LF のみにして再度ファイルを保存してください。
 
 1. ブラウザーで `http://localhost:8000` にアクセスして、Web アプリとコンテナーが正しく機能していることを確認します。
 
@@ -561,7 +561,7 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
 
     `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
 
-1. 任意のタイミングでログのストリーミングを停止するには、**Ctrl**+**C** キーを押します。
+1. 任意のタイミングでログのストリーミングを停止するには、 **Ctrl**+**C** キーを押します。
 
 ## <a name="connect-to-the-container-using-ssh"></a>SSH を使用してコンテナーに接続する
 

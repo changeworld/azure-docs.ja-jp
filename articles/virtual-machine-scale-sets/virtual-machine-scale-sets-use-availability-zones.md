@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611921"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745847"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "89611921"
 
 最大拡散を選ぶと、スケール セットは各ゾーン内の可能な限り多くの障害ドメインに VM を拡散します。 この拡散では、ゾーンごとの障害ドメインが 5 個より多く、または少なくなる可能性があります。 静的固定拡散を使用すると、スケール セットはゾーンごとに 5 個の障害ドメインに VM を拡散します。 割り当て要求を満たすために各ゾーン 5 個の個別障害ドメインを検出できない場合、要求は失敗します。
 
-この方法ではほとんどの場合に最善の拡散を提供するので、**ほとんどのワークロードでは最大拡散を使って展開することをお勧めします**。 個別のハードウェア分離ユニットにレプリカを拡散する必要がある場合は、複数の可用性ゾーンに拡散し、各ゾーン内では最大拡散を利用することを勧めします。
+この方法ではほとんどの場合に最善の拡散を提供するので、 **ほとんどのワークロードでは最大拡散を使って展開することをお勧めします** 。 個別のハードウェア分離ユニットにレプリカを拡散する必要がある場合は、複数の可用性ゾーンに拡散し、各ゾーン内では最大拡散を利用することを勧めします。
 
 > [!NOTE]
 > 最大拡散では、VM が拡散される障害ドメインの数に関係なく、スケール セット VM インスタンス ビューおよびインスタンス メタデータには、既定の 1 つのドメインだけが表示されることに注意してください。 各ゾーン内の拡散は暗黙で行われます。
@@ -52,7 +52,7 @@ ms.locfileid: "89611921"
 
 ベスト エフォートのゾーン バランスでは、スケール セットはバランスを維持しながらスケールインとスケールアウトを試みます。 ただし、何らかの理由によりそれが不可能な場合 (たとえば、1 つのゾーンがダウンして、スケール セットがそのゾーンに新しい VM を作成できなくなった場合)、スケール セットは、スケールインまたはスケールアウトを成功させるため、一時的なアンバランスを許可します。後続のスケールアウトの試行では、スケール セットは、スケール セットのバランスを取るために VM を増やす必要があるゾーンに VM を追加します。 同様に、後続のスケールインの試行では、スケール セットは、スケール セットのバランスを取るために VM を少なくする必要があるゾーンから VM を削除します。 "厳密なゾーン バランス" では、実行することによってバランスが崩れるスケールインまたはスケールアウトの試行はすべて失敗します。
 
-ベスト エフォートのゾーン バランスを使うには、*zoneBalance* を *false* に設定します。 この設定は API バージョン *2017-12-01* の既定値です。 厳密なゾーン バランスを使うには、*zoneBalance* を *true* に設定します。
+ベスト エフォートのゾーン バランスを使うには、 *zoneBalance* を *false* に設定します。 この設定は API バージョン *2017-12-01* の既定値です。 厳密なゾーン バランスを使うには、 *zoneBalance* を *true* に設定します。
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>単一ゾーン スケール セットとゾーン冗長スケール セット
 
@@ -79,7 +79,7 @@ ms.locfileid: "89611921"
 
 可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。
 
-`--zones` パラメーターを [az vmss create](/cli/azure/vmss) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
+`--zones` パラメーターを [az vmss create](/cli/azure/vmss) コマンドに追加して、使うゾーンを指定します (ゾーン *1* 、 *2* 、 *3* など)。 次の例では、 *myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
 
 ```azurecli
 az vmss create \
@@ -96,9 +96,9 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
-ゾーン冗長スケールを作成するには、*Standard* SKU のパブリック IP アドレスとロード バランサーを使います。 冗長性を高めるため、*Standard* SKU はゾーン冗長ネットワーク リソースを作成します。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+ゾーン冗長スケールを作成するには、 *Standard* SKU のパブリック IP アドレスとロード バランサーを使います。 冗長性を高めるため、 *Standard* SKU はゾーン冗長ネットワーク リソースを作成します。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
-ゾーン冗長スケール セットを作成するには、`--zones` パラメーターで複数のゾーンを指定します。 次の例では、*myScaleSet* という名前のゾーン冗長スケール セットを、ゾーン *1、2、3* にまたがって作成します。
+ゾーン冗長スケール セットを作成するには、`--zones` パラメーターで複数のゾーンを指定します。 次の例では、 *myScaleSet* という名前のゾーン冗長スケール セットを、ゾーン *1、2、3* にまたがって作成します。
 
 ```azurecli
 az vmss create \
@@ -115,9 +115,9 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。 `-Zone` パラメーターを [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。
+可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。 `-Zone` パラメーターを [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) コマンドに追加して、使うゾーンを指定します (ゾーン *1* 、 *2* 、 *3* など)。
 
-次の例では、*myScaleSet* という名前の単一ゾーン スケール セットを、*米国東部 2* のゾーン *1* に作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
+次の例では、 *myScaleSet* という名前の単一ゾーン スケール セットを、 *米国東部 2* のゾーン *1* に作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```powershell
 New-AzVmss `
@@ -134,7 +134,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
-ゾーン冗長スケール セットを作成するには、`-Zone` パラメーターで複数のゾーンを指定します。 次の例では、*myScaleSet* という名前のゾーン冗長スケール セットを、"*米国東部 2*" のゾーン *1、2、3* にまたがって作成します。 仮想ネットワーク用のゾーン冗長 Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
+ゾーン冗長スケール セットを作成するには、`-Zone` パラメーターで複数のゾーンを指定します。 次の例では、 *myScaleSet* という名前のゾーン冗長スケール セットを、" *米国東部 2* " のゾーン *1、2、3* にまたがって作成します。 仮想ネットワーク用のゾーン冗長 Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```powershell
 New-AzVmss `
@@ -151,9 +151,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure リソース マネージャー テンプレートの使用
 
-可用性ゾーンを使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets* のリソースの種類に `zones` プロパティを追加し、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。
+可用性ゾーンを使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets* のリソースの種類に `zones` プロパティを追加し、使うゾーンを指定します (ゾーン *1* 、 *2* 、 *3* など)。
 
-次の例では、*myScaleSet* という名前の Linux 単一ゾーン スケール セットを、"*米国東部 2*" のゾーン *1* に作成します。
+次の例では、 *myScaleSet* という名前の Linux 単一ゾーン スケール セットを、" *米国東部 2* " のゾーン *1* に作成します。
 
 ```json
 {
@@ -197,7 +197,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
-ゾーン冗長スケール セットを作成するには、リソースの種類 *Microsoft.Compute/virtualMachineScaleSets* の `zones` プロパティで複数の値を指定します。 次の例では、*myScaleSet* という名前のゾーン冗長スケール セットを、"*米国東部 2*" のゾーン *1、2、3* にまたがって作成します。
+ゾーン冗長スケール セットを作成するには、リソースの種類 *Microsoft.Compute/virtualMachineScaleSets* の `zones` プロパティで複数の値を指定します。 次の例では、 *myScaleSet* という名前のゾーン冗長スケール セットを、" *米国東部 2* " のゾーン *1、2、3* にまたがって作成します。
 
 ```json
 {
@@ -213,7 +213,7 @@ New-AzVmss `
 }
 ```
 
-パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、*"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、 *"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 

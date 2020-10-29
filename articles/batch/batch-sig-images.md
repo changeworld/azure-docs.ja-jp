@@ -3,13 +3,13 @@ title: Shared Image Gallery を使用してカスタム イメージ プール�
 description: カスタム イメージ プールは、Batch ワークロードを実行する計算ノードを構成するための効率的な方法です。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605194"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745524"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "90605194"
 
 - **Azure Batch アカウント。** Batch アカウントを作成するには、[Azure portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- **Shared Image Gallery のイメージ**。 共有イメージを作成するには、マネージド イメージ リソースが必要です。ない場合は作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
+- **Shared Image Gallery のイメージ** 。 共有イメージを作成するには、マネージド イメージ リソースが必要です。ない場合は作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
 
 > [!NOTE]
 > 共有イメージが Batch アカウントと同じサブスクリプションに含まれていない場合は、そのサブスクリプションの [Microsoft.Batch リソース プロバイダーを登録](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)する必要があります。 2 つのサブスクリプションが同じ Azure AD テナントに存在する必要があります。
@@ -206,7 +206,7 @@ client.pool.add(new_pool)
 次の手順を使用し、Azure portal で共有イメージからプールを作成します。
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-1. **Batch アカウント**に進み、自分のアカウントを選択します。
+1. **Batch アカウント** に進み、自分のアカウントを選択します。
 1. **[プール]** を選択し、次に **[追加]** を選択し、新しいプールを作成します。
 1. **[イメージの種類]** セクションで **[Shared Image Gallery]** を選択します。
 1. 残りのセクションにはマネージド イメージに関する情報を入力します。

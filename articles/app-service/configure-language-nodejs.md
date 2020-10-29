@@ -1,17 +1,17 @@
 ---
 title: Node.js アプリの構成
 description: Azure App Service のネイティブ Windows インスタンス、または事前に作成した Linux コンテナーで Node.js アプリを構成する方法について学習します。 この記事では、最も一般的な構成タスクを紹介しています。
-ms.custom: devx-track-js
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311837"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744066"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
@@ -123,7 +123,7 @@ Node.js コンテナーには、製造工程マネージャーである [PM2](ht
 
 ### <a name="run-custom-command"></a>カスタム コマンドを実行する
 
-App Service は、*run.sh* のような実行可能ファイルなどのカスタム コマンドを使用してアプリを開始できます。たとえば、`npm run start:prod` を実行するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+App Service は、 *run.sh* のような実行可能ファイルなどのカスタム コマンドを使用してアプリを開始できます。たとえば、`npm run start:prod` を実行するには、 [Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -144,7 +144,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 }
 ```
 
-プロジェクトでカスタム *package.json* を使用するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+プロジェクトでカスタム *package.json* を使用するには、 [Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
@@ -164,7 +164,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 次の拡張子を持つカスタム スタート ファイルを構成することもできます。
 
 - *.js* ファイル
-- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+- *.json* 、 *. config.js* 、 *.yaml* 、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
 カスタム スタート ファイルを追加するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
@@ -177,7 +177,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > リモート デバッグは、現在、プレビュー段階です。
 
-[PM2 で実行](#run-with-pm2)するように構成した場合、*.config.js、*.yml、または *.yaml* を使用して実行したときを除き、[Visual Studio Code](https://code.visualstudio.com/) で Node.js アプリをリモートからデバッグできます。
+[PM2 で実行](#run-with-pm2)するように構成した場合、*.config.js、*.yml、または *.yaml* を使用して実行したときを除き、 [Visual Studio Code](https://code.visualstudio.com/) で Node.js アプリをリモートからデバッグできます。
 
 ほとんどの場合、アプリ用に追加の構成は必要ありません。 アプリが *process.json* ファイル (既定またはカスタム) で実行されている場合、JSON ルートに `script` プロパティが必要です。 次に例を示します。
 
@@ -191,9 +191,9 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 リモート デバッグ用に Visual Studio Code を設定するには、[App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)をインストールします。 拡張機能ページの指示に従い、Visual Studio Code で Azure にサインインします。
 
-Azure エクスプローラーで、デバッグするアプリを見つけ、それを右クリックして、**[リモート デバッグを開始する]** を選択します。 **[はい]** をクリックしてアプリに対して有効にします。 App Service により、トンネル プロキシが開始され、デバッガがアタッチされます。 続いて、アプリに対して要求を行って、ブレーク ポイントで中断しているデバッガを確認できます。
+Azure エクスプローラーで、デバッグするアプリを見つけ、それを右クリックして、 **[リモート デバッグを開始する]** を選択します。 **[はい]** をクリックしてアプリに対して有効にします。 App Service により、トンネル プロキシが開始され、デバッガがアタッチされます。 続いて、アプリに対して要求を行って、ブレーク ポイントで中断しているデバッガを確認できます。
 
-デバッグが完了すると、**[切断]** を選択してデバッガを停止します。 求められたら、**[はい]** をクリックしてリモート デバッグを無効にする必要があります。 後で無効にするには、Azure エクスプローラーでもう一度アプリを右クリックし、**[リモート デバッグの無効化]** を選択します。
+デバッグが完了すると、 **[切断]** を選択してデバッガを停止します。 求められたら、 **[はい]** をクリックしてリモート デバッグを無効にする必要があります。 後で無効にするには、Azure エクスプローラーでもう一度アプリを右クリックし、 **[リモート デバッグの無効化]** を選択します。
 
 ::: zone-end
 
@@ -209,7 +209,7 @@ process.env.NODE_ENV
 
 既定では、App Service のビルド自動化によって、Node.js アプリが Git またはビルド自動化が有効になっている Zip デプロイを介してデプロイされることが認識されると、`npm install --production` が実行されます。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
 
-リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
+リポジトリでこれらのツールを実行できるようにするには、 *package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
 ```json
 "dependencies": {
@@ -237,7 +237,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-このセクションは、`npm install --production` の実行で終わります。 `Deployment` セクションの*末尾*に必要なツールの実行に必要なコード セクションを追加します。
+このセクションは、`npm install --production` の実行で終わります。 `Deployment` セクションの *末尾* に必要なツールの実行に必要なコード セクションを追加します。
 
 - [Bower](#bower)
 - [Gulp](#gulp)

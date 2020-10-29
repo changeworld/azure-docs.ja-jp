@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-js
+ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312041"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743650"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>チュートリアル:Azure で Node.js と MongoDB のアプリを構築する
 
@@ -186,7 +186,7 @@ Azure CLI によって次の例のような情報が表示されます。
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
-ローカルの MEAN.js リポジトリの "_config/env/_ " フォルダーに、"_local-production.js_" という名前のファイルを作成します。 _.gitignore_ は既に、このファイルがリポジトリにアクセスできないように構成されます。 
+ローカルの MEAN.js リポジトリの " _config/env/_ " フォルダーに、" _local-production.js_ " という名前のファイルを作成します。 _.gitignore_ は既に、このファイルがリポジトリにアクセスできないように構成されます。 
 
 ここに次のコードをコピーします。 2 つの *\<cosmosdb-name>* プレースホルダーを Cosmos DB データベース名で置き換え、 *\<primary-master-key>* プレースホルダーを前の手順でコピーしたキーで置き換えます。
 
@@ -210,7 +210,7 @@ module.exports = {
 gulp prod
 ```
 
-ローカル ターミナル ウィンドウで次のコマンドを実行して、_config/env/local-production.js_ で構成した接続文字列を使用します。 証明書エラーと config.domain の警告は無視します。
+ローカル ターミナル ウィンドウで次のコマンドを実行して、 _config/env/local-production.js_ で構成した接続文字列を使用します。 証明書エラーと config.domain の警告は無視します。
 
 ```bash
 # Bash
@@ -287,7 +287,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Node.js コードでは、任意の環境変数にアクセスする場合と同じように、`process.env.MONGODB_URI` を使用して、この[アプリ設定にアクセス](configure-language-nodejs.md#access-environment-variables)します。 
 
-ローカル MEAN.js リポジトリで、運用環境固有の構成を含む _config/env/production.js_ を開きます (_config/env/local-production.js_ ではありません)。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
+ローカル MEAN.js リポジトリで、運用環境固有の構成を含む _config/env/production.js_ を開きます ( _config/env/local-production.js_ ではありません)。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
 
 ```javascript
 db: {
@@ -317,13 +317,13 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 </pre>
 
 デプロイ プロセスにより、`npm install` の後、[Gulp](https://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
 
 - _.deployment_ - このファイルは、カスタム デプロイ スクリプトとして `bash deploy.sh`を実行するよう App Service に指示します。
-- _deploy.sh_- カスタム デプロイ スクリプト。 ファイルを確認すると、`npm install` と `bower install` の後に `gulp prod` が実行されることがわかります。 
+- _deploy.sh_ - カスタム デプロイ スクリプト。 ファイルを確認すると、`npm install` と `bower install` の後に `gulp prod` が実行されることがわかります。 
 
 この方法を使用して、Git ベースのデプロイに任意の手順を追加できます。 任意の時点で Azure アプリを再起動しても、これらの自動タスクが App Service によって再び実行されることはありません。 詳細については、「[Run Grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp)」(Grunt/Bower/Gulp を実行する) を参照してください。
 
@@ -351,7 +351,7 @@ http://<app-name>.azurewebsites.net
 
 ### <a name="update-the-data-model"></a>データ モデルを更新する
 
-ローカル MEAN.js リポジトリで、"_modules/articles/server/models/article.server.model.js_" を開きます。
+ローカル MEAN.js リポジトリで、" _modules/articles/server/models/article.server.model.js_ " を開きます。
 
 `ArticleSchema` に `comment` という `String` 型を追加します。 完了すると、スキーマ コードは次のようになります。
 

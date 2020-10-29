@@ -3,13 +3,13 @@ title: 受信/送信 IP アドレス
 description: Azure App Service で受信および送信 IP アドレスがどのように使用されるか、いつ変更されるかについて、およびアプリのアドレスを見つける方法について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050694"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746149"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -28,7 +28,7 @@ App Service プランをデプロイ単位間で移動することは許可さ�
 スケールアウトされたインスタンスの数に関係なく、各アプリは、1 つの受信 IP アドレスを持ちます。 受信 IP アドレスは、次の操作のいずれかを実行したときに変更される可能性があります。
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
-- リソース グループ_と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
+- リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
 - 証明書の更新中などに既存の IP ベースの TLS/SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-certificate)に関する記事を参照してください)。
 
 ## <a name="find-the-inbound-ip"></a>受信 IP を検索する
@@ -50,8 +50,8 @@ nslookup <app-name>.azurewebsites.net
 次のいずれかの操作を実行すると、アプリの一連の送信 IP アドレスが変更されます。
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
-- リソース グループ_と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
-- アプリを下位レベル (**Basic**、**Standard**、および **Premium**) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
+- リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
+- アプリを下位レベル ( **Basic** 、 **Standard** 、および **Premium** ) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
 
 アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIpAddresses` プロパティを調べるか、Azure portal の **[プロパティ]** ブレードの **[追加の送信 IP アドレス]** で確認できます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
 
@@ -69,7 +69,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-アプリで考えられる "_すべて_" の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
+アプリで考えられる " _すべて_ " の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
 
 [Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行することで、同じ情報を見つけることができます。
 

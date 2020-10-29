@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88082469"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743449"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-Cloud Shell で [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所*米国中南部*に作成します。 **Standard** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) コマンドを実行します。
+Cloud Shell で [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを場所 *米国中南部* に作成します。 **Standard** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) コマンドを実行します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -79,7 +79,7 @@ Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=az
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-次の例では、**Standard** 価格レベル (`--sku S1`) を使用して、Linux コンテナー (`--is-linux`) に `myAppServicePlan` という名前の App Service プランを作成します。
+次の例では、 **Standard** 価格レベル (`--sku S1`) を使用して、Linux コンテナー (`--is-linux`) に `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
@@ -138,7 +138,7 @@ Web アプリが作成されると、Cloud Shell に、次の例のような出�
 
 ![Web App for Containers のサンプル マルチコンテナー アプリ][1]
 
-**おめでとうございます**。Web App for Containers にマルチコンテナー アプリを作成しました。 次に、Azure Database for MySQL を使用するようにアプリを構成します。 この時点で WordPress をインストールしないでください。
+**おめでとうございます** 。Web App for Containers にマルチコンテナー アプリを作成しました。 次に、Azure Database for MySQL を使用するようにアプリを構成します。 この時点で WordPress をインストールしないでください。
 
 ## <a name="connect-to-production-database"></a>運用データベースに接続する
 
@@ -413,7 +413,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
-Redis を使用するには、App Service 内でこの設定 `WP_REDIS_HOST` を有効にします。 これは、WordPress が Redis ホストと通信するために*必要な設定*です。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+Redis を使用するには、App Service 内でこの設定 `WP_REDIS_HOST` を有効にします。 これは、WordPress が Redis ホストと通信するために *必要な設定* です。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -482,11 +482,11 @@ WordPress 管理にサインインします。左側のナビゲーションで 
 
 ![[Enable Object Cache]\(オブジェクト キャッシュを有効にする\) ボタンをクリックする][5]
 
-WordPress が Redis サーバーに接続されます。 同じページに接続の**状態**が表示されます。
+WordPress が Redis サーバーに接続されます。 同じページに接続の **状態** が表示されます。
 
 ![WordPress が Redis サーバーに接続されます。 同じページに接続の**状態**が表示されます。][6]
 
-**おめでとうございます**。WordPress を Redis に接続しました。 運用環境対応のアプリが、**Azure Database for MySQL、永続的なストレージ、Redis** を使用するようになりました。 App Service プランを複数のインスタンスにスケールアウトできるようになりました。
+**おめでとうございます** 。WordPress を Redis に接続しました。 運用環境対応のアプリが、 **Azure Database for MySQL、永続的なストレージ、Redis** を使用するようになりました。 App Service プランを複数のインスタンスにスケールアウトできるようになりました。
 
 ## <a name="find-docker-container-logs"></a>Docker コンテナー ログを検索する
 

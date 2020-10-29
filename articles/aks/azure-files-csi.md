@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078359"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745794"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 
@@ -21,7 +21,7 @@ CSI は、Kubernetes のコンテナー化されたワークロードに任意�
 CSI ドライバーがサポートされる AKS クラスターを作成するには、「[AKS の Azure ディスクおよび Azure Files で CSI ドライバーを有効にする](csi-storage-drivers.md)」を参照してください。
 
 >[!NOTE]
-> *ツリー内ドライバー*とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
+> *ツリー内ドライバー* とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
 
 ## <a name="use-a-persistent-volume-with-azure-files"></a>Azure Files を使用した永続ボリュームを使用する
 
@@ -35,11 +35,11 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ストレージ クラスを使用して、Azure Files 共有を作成する方法を定義します。 ストレージ アカウントは、ストレージ クラスと共に使用して Azure Files 共有を保持するために、[ノード リソース グループ][node-resource-group]内に自動的に作成されます。 *skuName* には、次のいずれかの [Azure Storage の冗長性 SKU][storage-skus] を選択します。
 
-* **Standard_LRS**:標準のローカル冗長ストレージ
-* **Standard_GRS**:標準の geo 冗長ストレージ
-* **Standard_ZRS**:標準のゾーン冗長ストレージ
-* **Standard_RAGRS**:標準の読み取りアクセス geo 冗長ストレージ
-* **Premium_LRS**:Premium ローカル冗長ストレージ
+* **Standard_LRS** :標準のローカル冗長ストレージ
+* **Standard_GRS** :標準の geo 冗長ストレージ
+* **Standard_ZRS** :標準のゾーン冗長ストレージ
+* **Standard_RAGRS** :標準の読み取りアクセス geo 冗長ストレージ
+* **Premium_LRS** :Premium ローカル冗長ストレージ
 
 > [!NOTE]
 > Azure Files は Azure Premium Storage をサポートしています。 Premium ファイル共有の最小サイズは 100 GB です。
@@ -76,7 +76,7 @@ total 29
 
 既定のストレージ クラスは最も一般的なシナリオに適合しますが、すべてに適合するわけではありません。 場合によっては、独自のストレージ クラスを独自のパラメーターを使用してカスタマイズすることもできます。 たとえば、次のマニフェストを使用して、ファイル共有の `mountOptions` を構成します。
 
-Kubernetes でマウントされたファイル共有の場合、*fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラス オブジェクトでは、さまざまなマウント オプションを指定できます。
+Kubernetes でマウントされたファイル共有の場合、 *fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラス オブジェクトでは、さまざまなマウント オプションを指定できます。
 
 `azure-file-sc.yaml` という名前のファイルを作成し、次のマニフェストの例を貼り付けます。
 
@@ -218,7 +218,7 @@ az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.Storage* リソース プロバイダーの登録を更新します。
+準備ができたら、 [az provider register][az-provider-register] コマンドを使用して、 *Microsoft.Storage* リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Storage
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 [kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する[ステートフル セット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)の例をデプロイできます。
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

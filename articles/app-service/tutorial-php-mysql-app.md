@@ -5,14 +5,14 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 06/15/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150214"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743544"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP および MySQL アプリを構築する
 
@@ -121,7 +121,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-この _.env_ ファイルを Laravel でどのように使用するかの詳細については、[Laravel 環境の構成](https://laravel.com/docs/5.4/configuration#environment-configuration)に関するページを参照してください。
+この _.env_ ファイルを Laravel でどのように使用するかの詳細については、 [Laravel 環境の構成](https://laravel.com/docs/5.4/configuration#environment-configuration)に関するページを参照してください。
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
@@ -197,7 +197,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-Cloud Shell 内で *\<your-ip-address>* を[ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<your-ip-address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -265,7 +265,7 @@ MYSQL_SSL=true
 
 ### <a name="configure-tlsssl-certificate"></a>TLS/SSL 証明書を構成する
 
-既定では、Azure Database for MySQL はクライアントからの TLS 接続を強制します。 Azure で MySQL データベースに接続するには、[Azure Database for MySQL から提供された _.pem_ 証明書](../mysql/howto-configure-ssl.md)を使用する必要があります。
+既定では、Azure Database for MySQL はクライアントからの TLS 接続を強制します。 Azure で MySQL データベースに接続するには、 [Azure Database for MySQL から提供された _.pem_ 証明書](../mysql/howto-configure-ssl.md)を使用する必要があります。
 
 _config/database.php_ を開き、次のコードに示すように `sslmode` パラメーターと `options` パラメーターを `connections.mysql` に追加します。
 
@@ -377,7 +377,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service で、 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を " _アプリ設定_ " として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;app-name>_ と _&lt;mysql-server-name>_ を置き換えます。
 
@@ -385,7 +385,7 @@ App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、 _config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [
@@ -420,7 +420,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ::: zone pivot="platform-windows"  
 
-アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく _パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
+アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、 [Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく _パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
 
 Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;app-name>_ プレースホルダーを置換します。
 
@@ -428,13 +428,13 @@ Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) �
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス ( _/_ ) をポイントします。
+既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ ( _sites\wwwroot_ ) に対して仮想アプリケーションのルート パス ( _/_ ) をポイントします。
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-[Laravel アプリケーションのライフサイクル](https://laravel.com/docs/5.4/lifecycle)は、アプリケーションのルート ディレクトリではなく "_パブリック_" ディレクトリから始まります。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
+[Laravel アプリケーションのライフサイクル](https://laravel.com/docs/5.4/lifecycle)は、アプリケーションのルート ディレクトリではなく " _パブリック_ " ディレクトリから始まります。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
 
 詳細については、「[Change site root (サイトのルートを変更する)](configure-language-php.md#change-site-root)」を参照してください。
 
@@ -550,7 +550,7 @@ public function down()
 php artisan migrate
 ```
 
-[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` (_app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
+[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` ( _app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
 
 ### <a name="update-application-logic"></a>アプリケーション ロジックを更新する
 
@@ -669,7 +669,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 ::: zone-end
 
 > [!TIP]
-> PHP アプリケーションは、標準の [error_log()](https://php.net/manual/function.error-log.php) を使用してコンソールに出力できます。 サンプル アプリケーションでは、_app/Http/routes.php_ でこの方法を使用しています。
+> PHP アプリケーションは、標準の [error_log()](https://php.net/manual/function.error-log.php) を使用してコンソールに出力できます。 サンプル アプリケーションでは、 _app/Http/routes.php_ でこの方法を使用しています。
 >
 > Web フレームワークとして、[Laravel では、ログ記録プロバイダーとして Monolog を使用](https://laravel.com/docs/5.4/errors)しています。 Monolog でコンソールにメッセージを出力する方法については、「[PHP:How to use monolog to log to console (php://out)](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out)」 (PHP: monolog を使用してコンソールにログを記録する方法 (php://out)) を参照してください。
 >

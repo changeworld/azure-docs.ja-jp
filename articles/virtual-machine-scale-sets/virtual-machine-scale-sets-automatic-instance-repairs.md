@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527423"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744840"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
 
@@ -54,7 +54,7 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 ## <a name="how-do-automatic-instance-repairs-work"></a>自動インスタンス修復のしくみ
 
-自動インスタンス修復機能は、スケール セット内の個々のインスタンスの正常性の監視に依存します。 スケール セット内の VM インスタンスは、[アプリケーション正常性拡張機能](./virtual-machine-scale-sets-health-extension.md)または [Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)を使用してアプリケーションの正常性状態を出力するように構成できます。 インスタンスが異常であることが判明した場合、スケール セットでは正常でないインスタンスが削除されて新たに作成されたインスタンスにより置き換えられ、修復操作が実行されます。 新しいインスタンスの作成には、最新の仮想マシン スケール セット モデルが使用されます。 この機能は、*automaticRepairsPolicy* オブジェクトを使用して、仮想マシン スケール セット モデルで有効にすることができます。
+自動インスタンス修復機能は、スケール セット内の個々のインスタンスの正常性の監視に依存します。 スケール セット内の VM インスタンスは、[アプリケーション正常性拡張機能](./virtual-machine-scale-sets-health-extension.md)または [Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)を使用してアプリケーションの正常性状態を出力するように構成できます。 インスタンスが異常であることが判明した場合、スケール セットでは正常でないインスタンスが削除されて新たに作成されたインスタンスにより置き換えられ、修復操作が実行されます。 新しいインスタンスの作成には、最新の仮想マシン スケール セット モデルが使用されます。 この機能は、 *automaticRepairsPolicy* オブジェクトを使用して、仮想マシン スケール セット モデルで有効にすることができます。
 
 ### <a name="batching"></a>バッチ処理
 
@@ -80,7 +80,7 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 ## <a name="instance-protection-and-automatic-repairs"></a>インスタンスの保護と自動修復
 
-スケール セット内のインスタンスが[保護ポリシー](./virtual-machine-scale-sets-instance-protection.md)のいずれかを適用することで保護されている場合、そのインスタンスに対して自動修復は実行されません。 これは、次の両方の保護ポリシーに適用されます: "*スケールインから保護する*" および "*スケールセットから保護する*" アクション。 
+スケール セット内のインスタンスが[保護ポリシー](./virtual-machine-scale-sets-instance-protection.md)のいずれかを適用することで保護されている場合、そのインスタンスに対して自動修復は実行されません。 これは、次の両方の保護ポリシーに適用されます: " *スケールインから保護する* " および " *スケールセットから保護する* " アクション。 
 
 ## <a name="terminatenotificationandautomaticrepairs"></a>終了通知と自動修復
 
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-仮想マシン スケール セットで API バージョン 2019-12-01 以降を指定して「[インスタンス ビューの取得](/rest/api/compute/virtualmachinescalesets/getinstanceview)」を使用し、プロパティ *orchestrationServices* の下の自動修復の *serviceState* を表示します。 
+仮想マシン スケール セットで API バージョン 2019-12-01 以降を指定して「 [インスタンス ビューの取得](/rest/api/compute/virtualmachinescalesets/getinstanceview)」を使用し、プロパティ *orchestrationServices* の下の自動修復の *serviceState* を表示します。 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744737"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -121,14 +121,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-スケール セットに自動 OS イメージ アップグレードを構成するには、[Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用します。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
+スケール セットに自動 OS イメージ アップグレードを構成するには、[Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用します。 次の例では、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-スケール セットに自動 OS イメージ アップグレードを構成するには、[az vmss update](/cli/azure/vmss#az-vmss-update) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
+スケール セットに自動 OS イメージ アップグレードを構成するには、[az vmss update](/cli/azure/vmss#az-vmss-update) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -184,7 +184,7 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 Azure PowerShell、Azure CLI 2.0、または REST API を使用して、スケール セットに対して実行された最新の OS のアップグレードの履歴を確認できます。 過去 2 か月間に試行された最後の 5 回の OS アップグレードの履歴を取得できます。
 
 ### <a name="rest-api"></a>REST API
-次の例では、[REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) を使用して、*myResourceGroup* という名前のリソース グループ内の *myScaleSet* という名前のスケール セットの状態をチェックします。
+次の例では、 [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) を使用して、 *myResourceGroup* という名前のリソース グループ内の *myScaleSet* という名前のスケール セットの状態をチェックします。
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
@@ -228,14 +228,14 @@ GET 呼び出しは、次の例の出力に似たプロパティを返します�
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Get-AzVmss](/powershell/module/az.compute/get-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
+[Get-AzVmss](/powershell/module/az.compute/get-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例は、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
+[az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -269,21 +269,21 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 > OS イメージのアップグレードの手動トリガーでは、自動ロールバック機能を利用できません。 アップグレード操作後にインスタンスの正常性が回復しない場合、その以前の OS ディスクは復元できません。
 
 ### <a name="rest-api"></a>REST API
-[OS アップグレードの開始](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼び出しを使用してローリング アップグレードを開始し、すべての仮想マシン スケール セット インスタンスを、入手できる最新のイメージ OS バージョンに移行します。 入手できる最新の OS バージョンを既に実行しているインスタンスは影響を受けません。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+[OS アップグレードの開始](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼び出しを使用してローリング アップグレードを開始し、すべての仮想マシン スケール セット インスタンスを、入手できる最新のイメージ OS バージョンに移行します。 入手できる最新の OS バージョンを既に実行しているインスタンスは影響を受けません。 次の例は、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-スケール セットの OS アップグレード履歴を確認するには、[Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) コマンドレットを使用します。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+スケール セットの OS アップグレード履歴を確認するには、[Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) コマンドレットを使用します。 次の例は、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-スケール セットの OS アップグレード履歴を確認するには、[az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+スケール セットの OS アップグレード履歴を確認するには、[az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、 *myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

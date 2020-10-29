@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812864"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746407"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -73,10 +73,6 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
    ![プライベート データ ストレージ アカウントの設定](./media/data-protection/storage-account-create.png)
 
-
-
-### <a name="known-issues"></a>既知の問題
-現在、マネージド ID を使用して入力または出力を認証するときに、カスタマー マネージド キーを使用するジョブが失敗するという既知の制限があります。
 
 ## <a name="next-steps"></a>次のステップ
 

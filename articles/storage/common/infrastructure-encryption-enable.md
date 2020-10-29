@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984170"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746583"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する
 

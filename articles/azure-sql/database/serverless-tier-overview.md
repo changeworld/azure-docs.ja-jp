@@ -4,19 +4,19 @@ description: この記事では、新しいサーバーレス コンピューテ
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: test sqldbrb=1
+ms.custom: test sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
-ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743151"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,8 +31,8 @@ Azure SQL Database の単一データベースのサーバーレス コンピュ
 
 ### <a name="performance-configuration"></a>パフォーマンス構成
 
-- **最小仮想コア**と**最大仮想コア**は、データベースに使用可能なコンピューティング容量の範囲を定義する構成可能なパラメーターです。 メモリと IO の上限は、指定された仮想コアの範囲に比例します。  
-- **自動一時停止遅延**は、データベースが自動的に一時停止するために必要な非アクティブ期間を定義する構成可能なパラメーターです。 次のログインまたはその他のアクティビティが発生すると、データベースは自動的に再開されます。  自動一時停止を無効にすることもできます。
+- **最小仮想コア** と **最大仮想コア** は、データベースに使用可能なコンピューティング容量の範囲を定義する構成可能なパラメーターです。 メモリと IO の上限は、指定された仮想コアの範囲に比例します。  
+- **自動一時停止遅延** は、データベースが自動的に一時停止するために必要な非アクティブ期間を定義する構成可能なパラメーターです。 次のログインまたはその他のアクティビティが発生すると、データベースは自動的に再開されます。  自動一時停止を無効にすることもできます。
 
 ### <a name="cost"></a>コスト
 
@@ -314,17 +314,17 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 コンピューティング請求金額は、各秒に使用された CPU およびメモリの最大量です。 CPU とメモリの使用量がそれぞれのプロビジョニング済みの最小量より少ない場合、プロビジョニング済みの量が請求されます。 請求のために CPU とメモリを比較するため、メモリは GB 単位のメモリ量を仮想コアあたり 3 GB で再スケーリングすることによって、仮想コアの単位に正規化されます。
 
-- **請求されるリソース**: CPU とメモリ
-- **請求される金額**: 仮想コア単位価格 * (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値 
-- **請求頻度**: 1 秒あたり
+- **請求されるリソース** : CPU とメモリ
+- **請求される金額** : 仮想コア単位価格 * (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値 
+- **請求頻度** : 1 秒あたり
 
 仮想コア単位価格は、1 秒あたり、仮想コアあたりのコストです。 特定のリージョンの特定の単位価格については、[Azure SQL Database の価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/single/)をご覧ください。
 
 請求されるコンピューティングの金額は、次のメトリックで示されます。
 
-- **メトリック**: app_cpu_billed (仮想コア秒数)
-- **定義**: (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値
-- **レポート頻度**: 1 分あたり
+- **メトリック** : app_cpu_billed (仮想コア秒数)
+- **定義** : (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値
+- **レポート頻度** : 1 分あたり
 
 この量が 1 秒ごとに計算され、1 分間について集計されます。
 

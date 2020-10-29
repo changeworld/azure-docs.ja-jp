@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d1122d723058af7b11004589a9ebd14958cc4ef
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173100"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743013"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Azure Database for MariaDB のルート CA の変更について
 
-Azure Database for MariaDB によって、[データベース サーバーに接続する](concepts-connectivity-architecture.md)ために使用する、SSL で有効にされるクライアント アプリケーションやドライバー用のルート証明書が変更されます。 現在使用できるルート証明書は、標準メンテナンスおよびセキュリティのベスト プラクティスの一環として、2021 年 2 月 15 日 (2021/02/15) に有効期限が切れるように設定されています。 この記事では、予定されている変更、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
+Azure Database for MariaDB によって、[データベース サーバーに接続する](concepts-connectivity-architecture.md)ために使用する、SSL で有効にされるクライアント アプリケーションやドライバー用のルート証明書が変更されます。 現在使用できるルート証明書は、標準メンテナンスおよびセキュリティのベスト プラクティスの一部として、2021 年 2 月 15 日 (2021/02/15) に有効期限が切れます。 この記事では、予定されている変更、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
 
 >[!NOTE]
-> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2020 年 10 月 26 日から 2021 年 2 月 15 日まで延長しました。 この延長により、ユーザーが影響を受ける場合に、ユーザーがクライアントの変更を実装するのに十分なリード タイムが得られることを願っています。
+> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2020 年 10 月 26 日から 2021 年 2 月 15 日まで延長しました。 この延長により、ユーザーが影響を受ける場合に、クライアントの変更を実装するのに十分なリード タイムを提供できるのではないかと考えています。
 
 ## <a name="what-update-is-going-to-happen"></a>予定されている更新
 
@@ -52,11 +52,11 @@ Azure Database for MariaDB の sslmode については、[SSL モードの説明
 *   **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方の証明書が含まれる、結合された CA 証明書ストアを生成します。
     *   Java (MariaDB Connector/J) ユーザーの場合、以下を実行します。
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MariaDBServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MariaDBServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -87,7 +87,7 @@ Azure Database for MariaDB の sslmode については、[SSL モードの説明
 *   接続がタイムアウトしました
 
 > [!NOTE]
-> 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。それ以降は、Baltimore 証明書を破棄しても構いません。 
+> 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

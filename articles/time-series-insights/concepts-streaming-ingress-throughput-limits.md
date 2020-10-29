@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e2f6cd943e381d53c36867ce960cd99552f3aea6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650767"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746540"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>ストリーミング インジェストのスループットの制限
 
@@ -28,7 +28,7 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
 一般に、イングレス レートの要因としては、組織内のデバイスの数、イベント出力の頻度、各イベントのサイズがあります。
 
-* **デバイスの数** × **イベント出力の頻度** × **各イベントのサイズ**。
+* **デバイスの数** × **イベント出力の頻度** × **各イベントのサイズ** 。
 
 既定では、Azure Time Series Insights Gen2 では **Azure Time Series Insights Gen2 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。 [ハブのパーティションごとに](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)追加の制限があります。
 
@@ -41,7 +41,7 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
     Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つ IoT Hub を Azure Time Series Insights Gen2 イベント ソースとして使用しています。
 
-  * それらの Azure Time Series Insights Gen2 環境のインジェスト率は次のようになります。**100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps**。
+  * それらの Azure Time Series Insights Gen2 環境のインジェスト率は次のようになります。 **100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps** 。
     * パーティションのバランスが取れているとすると、パーティションあたりのインジェスト率は 0.25 MBps です。
     * Contoso Shipping のインジェスト率は、スケールの制限内になります。
 
@@ -49,7 +49,7 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
     Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 40,000 個のデバイスがあります。 それらは、2 つのパーティションを持つイベント ハブを Azure Time Series Insights Gen2 イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
 
-  * 環境のインジェスト率は次のようになります。**40,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 8 MBps**。
+  * 環境のインジェスト率は次のようになります。 **40,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 8 MBps** 。
     * パーティションのバランスが取れているとすると、パーティションあたりの率は 4 MBps になります。
     * Contoso Fleet Analytics のインジェスト率は、環境とパーティションの制限を超えています。 Azure portal で Azure Time Series Insights Gen2 に要求を送信して、環境のインジェスト率を上げることができます。また、制限内に収まるように、より多くのパーティションを備えたイベント ハブを作成することもできます。
 
@@ -57,7 +57,7 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
 Azure Time Series Insights Gen2 環境を計画するときは、Azure Time Series Insights Gen2 に接続するイベント ソースの構成を考慮することが重要です。 Azure IoT Hub と Event Hubs はどちらもパーティションを使用して、イベント処理のための水平スケールを有効にします。
 
-*パーティション*は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。
+*パーティション* は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。
 
 Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)」を参照してください。
 
@@ -66,7 +66,7 @@ Event Hubs のパーティション分割のベスト プラクティスにつ�
 
 Azure Time Series Insights Gen2 環境用の新しいハブを作成する場合でも、既存のハブを使用する場合でも、パーティションごとのインジェスト率を計算して、それが制限内にあるかどうかを判断する必要があります。
 
-Azure Time Series Insights Gen2 には現在、一般的な **0.5 MBps のパーティションごとの制限**があります。
+Azure Time Series Insights Gen2 には現在、一般的な **0.5 MBps のパーティションごとの制限** があります。
 
 ### <a name="iot-hub-specific-considerations"></a>IoT Hub 固有の考慮事項
 
@@ -74,7 +74,7 @@ Azure Time Series Insights Gen2 には現在、一般的な **0.5 MBps のパー
 
 固定パーティション割り当ては、IoT Hub のダウンストリームから送信されるデータを取り込んでいる Azure Time Series Insights Gen2 インスタンスにも影響します。 複数のデバイスからのメッセージが同じゲートウェイ デバイス ID を使用してハブに転送されると、それらは同じパーティションに同時に到着することがあるため、パーティションごとのスケール制限を超える可能性があります。
 
-**影響**:
+**影響** :
 
 * 1 つのパーティションで制限を超えるインジェスト率が継続的に発生している場合は、IoT Hub のデータ保有期間を超える前に Azure Time Series Insights Gen2 がすべてのデバイス テレメトリを同期しない可能性があります。 その結果、インジェストの制限を一貫して超えている場合、送信されたデータが失われる可能性があります。
 
