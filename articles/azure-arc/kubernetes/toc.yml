@@ -33,3 +33,7 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: リソース
+  items:
+    - name: Azure Arc のジャンプスタート
+      href: 'https://github.com/microsoft/azure_arc'

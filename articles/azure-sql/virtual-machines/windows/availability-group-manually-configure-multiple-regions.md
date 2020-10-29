@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f312b690ac7743b1574dbbec9d408b3fafbb0194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263183"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789983"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -69,7 +69,7 @@ ms.locfileid: "91263183"
    >[!NOTE]
    >場合によっては、PowerShell を使って VNet 間接続を作成する必要があります。 たとえば、異なる Azure アカウントを使っている場合、ポータルで接続を構成することはできません。 その場合は、[PowerShell を使って VNet 間接続を構成します](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 
-1. [新しいリージョンにドメイン コントローラーを作成します](../../../active-directory/active-directory-new-forest-virtual-machine.md)。
+1. [新しいリージョンにドメイン コントローラーを作成します](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。
 
    このドメイン コントローラーは、プライマリ サイトのドメイン コントローラーが利用できない場合に認証を提供します。
 
@@ -84,7 +84,7 @@ ms.locfileid: "91263183"
    - ロード バランサーと同じリージョン内の仮想マシンのみで構成されるバックエンド プールを含むこと。
    - IP アドレスに固有の TCP ポート プローブを使用していること。
    - 同じリージョン内の SQL Server に固有の負荷分散ルールがあること。  
-   - バックエンド プール内の仮想マシンが単一の可用性セットまたは仮想マシン スケール セットの一部でない場合は、Standard ロード バランサーであること。 詳細については、「[Azure Load Balancer Standard の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」をご覧ください。
+   - バックエンド プール内の仮想マシンが単一の可用性セットまたは仮想マシン スケール セットの一部でない場合は、Standard ロード バランサーであること。 詳細については、「[Azure Load Balancer Standard の概要](../../../load-balancer/load-balancer-overview.md)」をご覧ください。
 
 1. [新しい SQL Server にフェールオーバー クラスタリング機能を追加します](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -129,7 +129,7 @@ ms.locfileid: "91263183"
    ![可用性グループ](./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >クラスター リソース グループには、両方の IP アドレスが含まれます。 両方の IP アドレスが、リスナー クライアント アクセス ポイントの依存関係です。 クラスターの依存関係の構成では、**OR** 演算子を使います。
+   >クラスター リソース グループには、両方の IP アドレスが含まれます。 両方の IP アドレスが、リスナー クライアント アクセス ポイントの依存関係です。 クラスターの依存関係の構成では、 **OR** 演算子を使います。
 
 1. [PowerShell でクラスターのパラメーターを設定する](availability-group-manually-configure-tutorial.md#setparam)。
 
@@ -161,7 +161,7 @@ ms.locfileid: "91263183"
 
 リモート データ センターのレプリカは、可用性グループの一部ですが、異なるサブネット内にあります。 このレプリカがプライマリ レプリカになった場合、アプリケーション接続のタイムアウトが発生する可能性があります。 この動作は、マルチサブネット デプロイでのオンプレミスの可用性グループと同じです。 クライアント アプリケーションからの接続を許可するには、クライアント接続を更新するか、またはクラスター ネットワーク名リソースに名前解決キャッシュを構成します。
 
-可能であれば、`MultiSubnetFailover=Yes` を設定するようにクライアント接続文字列を更新します。 「[MultiSubnetFailover を使用した接続](https://msdn.microsoft.com/library/gg471494#Anchor_0)」をご覧ください。
+可能であれば、`MultiSubnetFailover=Yes` を設定するようにクライアント接続文字列を更新します。 「[MultiSubnetFailover を使用した接続](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)」をご覧ください。
 
 接続文字列を変更できない場合は、名前解決キャッシュを構成できます。 「[Time-out error and you cannot connect to a SQL Server 2012 AlwaysOn availability group listener in a multi-subnet environment](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)」 (タイムアウト エラーおよび複数サブネット環境で SQL Server 2012 AlwaysOn 可用性グループ リスナーに接続できない) を参照してください。
 
@@ -169,14 +169,14 @@ ms.locfileid: "91263183"
 
 リモート リージョンへのリスナー接続をテストするには、リモート リージョンにレプリカをフェールオーバーしてみます。 レプリカは非同期ですが、フェールオーバーはデータ損失の可能性に対して脆弱です。 データを失わずにフェールオーバーするには、可用性モードを同期に変更し、フェールオーバー モードを自動に設定します。 次の手順に従います。
 
-1. **オブジェクト エクスプローラー**で、プライマリ レプリカをホストする SQL Server のインスタンスに接続します。
+1. **オブジェクト エクスプローラー** で、プライマリ レプリカをホストする SQL Server のインスタンスに接続します。
 1. **[AlwaysOn 可用性グループ]** の **[可用性グループ]** で、可用性グループを右クリックして **[プロパティ]** を選択します。
 1. **[全般]** ページの **[可用性レプリカ]** で、DR サイトのセカンダリ レプリカを、 **[同期コミット]** 可用性モードと **[自動]** フェールオーバー モードを使うように設定します。
 1. 高可用性のためにプライマリ レプリカと同じサイトにセカンダリ レプリカがある場合は、このレプリカを **[非同期コミット]** および **[手動]** に設定します。
 1. [OK] を選択します。
-1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[ダッシュボードの表示]** を選択します。
+1. **オブジェクト エクスプローラー** で、可用性グループを右クリックし、 **[ダッシュボードの表示]** を選択します。
 1. ダッシュボードで、DR サイトのレプリカが同期されていることを確認します。
-1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[フェールオーバー]** を選択します。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
+1. **オブジェクト エクスプローラー** で、可用性グループを右クリックし、 **[フェールオーバー]** を選択します。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
 1. **[次へ]** を選択し、DR サイトの SQL Server インスタンスを選択します。 もう一度 **[次へ]** を選択します
 1. DR サイトの SQL Server インスタンスに接続し、 **[次へ]** を選択します。
 1. **[概要]** ページで設定を確認し、 **[完了]** を選択します。
@@ -194,12 +194,12 @@ ms.locfileid: "91263183"
 
 詳細については、次のトピックを参照してください。
 
-- [可用性グループの計画的な手動フェールオーバーの実行 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
-- [可用性グループの強制手動フェールオーバーの実行 (SQLServer)](https://msdn.microsoft.com/library/ff877957.aspx)
+- [可用性グループの計画的な手動フェールオーバーの実行 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server)
+- [可用性グループの強制手動フェールオーバーの実行 (SQLServer)](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Always On 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
+* [Azure Virtual Machines](../../../virtual-machines/windows/index.yml)
 * [Azure Load Balancer](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
-* [Azure の可用性セット](../../../virtual-machines/linux/manage-availability.md)
+* [Azure の可用性セット](../../../virtual-machines/manage-availability.md)

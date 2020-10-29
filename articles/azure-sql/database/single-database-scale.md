@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/16/2020
-ms.openlocfilehash: 41760eb91d2a8406d4deb52cd8e247731239e2b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d24143a440c0d30c3abcd6eb5efd454033b8f71c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309865"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791479"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
 この記事では、プロビジョニングされたコンピューター レベルで Azure SQL データベース用に使用できるコンピューティング リソースとストレージ リソースをスケーリングする方法について説明します。 また、[サーバーレス コンピューティング レベル](serverless-tier-overview.md)は、コンピューティングの自動スケーリングと、使用されたコンピューティングの 1 秒あたりの請求額を提供します。
 
-最初に仮想コア数または DTU 数を選択すると、[Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際のエクスペリエンスに基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
+最初に仮想コア数または DTU 数を選択すると、[Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](/rest/api/sql/databases/update) を使い、実際のエクスペリエンスに基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
 
 次のビデオでは、サービス レベルとコンピューティング サイズを動的に変更して単一データベースで使用可能な DTU を増やす方法を示します。
 
@@ -58,7 +58,7 @@ ms.locfileid: "91309865"
 |**Hyperscale**|該当なし|該当なし|該当なし|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 2 分未満|
 
 > [!NOTE]
-> さらに、Standard (S2-S12) データベースと General Purpose データベースでは、データベースで Premium ファイル共有 ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。
+> さらに、Standard (S2-S12) データベースと General Purpose データベースでは、データベースで Premium ファイル共有 ([PFS](../../storage/files/storage-files-introduction.md)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。
 >
 > データベースで PFS ストレージが使用されているかどうかを確認するには、データベースのコンテキストで次のクエリを実行します。 AccountType 列の値が `PremiumFileStorage` または `PremiumFileStorage-ZRS` の場合、データベースでは PFS ストレージが使用されています。
  
@@ -72,7 +72,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) と [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+> 実行中の操作の監視については、[SQL REST API を使った操作の管理](/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) と [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
 ## <a name="cancelling-changes"></a>変更の取り消し
 
@@ -122,7 +122,7 @@ else {
 ### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
 - ストレージは、1 GB の増分値を使用して、データ ストレージの最大サイズの上限までプロビジョニングできます。 構成可能な最小データ ストレージは 1 GB です。 リソース制限のドキュメント ページにて、[単一データベース](resource-limits-vcore-single-databases.md)および[エラスティック プール](resource-limits-vcore-elastic-pools.md)の各サービス目標におけるデータ ストレージの最大サイズの制限をご確認ください。
-- 単一データベースのストレージは、[Azure portal](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使って最大サイズを増減してプロビジョニングできます。 バイトで指定する最大サイズの値は、1 GB (1073741824 バイト) の倍数である必要があります。
+- 単一データベースのストレージは、[Azure portal](https://portal.azure.com)、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](/rest/api/sql/databases/update) を使って最大サイズを増減してプロビジョニングできます。 バイトで指定する最大サイズの値は、1 GB (1073741824 バイト) の倍数である必要があります。
 - データベースのデータ ファイルに格納できるデータ量は、データ ストレージに構成されている最大サイズによって制限されます。 Azure SQL Database では、この記憶域のほかに 30% さらに多いストレージを、トランザクション ログで使用するために自動的に割り当てます。
 - Azure SQL Database では、`tempdb` データベースの仮想コアごとに 32 GB が自動的に割り当てられます。 `tempdb` は、すべてのサービス レベルのローカル SSD ストレージにあります。
 - 単一データベースまたはエラスティック プールのストレージ料金は、データ ストレージとトランザクション ログ ストレージの容量の合計にサービス レベルのストレージ ユニットを掛けて計算します。 `tempdb` のコストは価格に含まれています。 ストレージの価格について詳しくは、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
@@ -133,7 +133,7 @@ else {
 ### <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
 - 単一データベースの DTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 付属するストレージ容量と最大サイズ制限については、「[単一データベース: ストレージ サイズとコンピューティング サイズ](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)」をご覧ください。
-- 単一データベースの追加ストレージは、Azure portal、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
+- 単一データベースの追加ストレージは、Azure portal、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](/rest/api/sql/databases/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
 - 単一データベースの追加ストレージの料金は、追加ストレージ容量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 > [!IMPORTANT]
@@ -156,4 +156,3 @@ else {
 ## <a name="next-steps"></a>次のステップ
 
 全体的なリソースの制限については、[Azure SQL Database の仮想コアベースのリソース制限 - 単一データベース](resource-limits-vcore-single-databases.md)および [Azure SQL Database の DTU ベースのリソース制限 - 単一データベース](resource-limits-dtu-single-databases.md)に関するページを参照してください。
- 

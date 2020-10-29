@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0054b6e9bb73ef2918a8e5c52c59a272bae5da26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cec356b8438952327624e71deebb5e23db281a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612508"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787807"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -40,7 +40,7 @@ ms.locfileid: "91612508"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず、**Az.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)」を参照してください。
+PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず、 **Az.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-Az-ps)」を参照してください。
 
 次に、次のコマンドを呼び出してアカウントをアップグレードします。その際、ご使用のリソース グループ名、ストレージ アカウント名、および目的のアカウント アクセス層に置き換えます。
 
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 次に、次のコマンドを呼び出してアカウントをアップグレードします。その際、ご使用のリソース グループ名、ストレージ アカウント名、および目的のアカウント アクセス層に置き換えます。
 
@@ -78,17 +78,17 @@ v1 ストレージ アカウントから汎用 v2 アカウントへのアップ
 
 すべてのストレージ アカウントでは、各 BLOB の層に基づいた Blob Storage の価格モデルを採用しています。 ストレージ アカウントを使用するときには、課金に関して次の点を考慮してください。
 
-* **ストレージ コスト**:データの格納のコストは、格納されているデータの量だけでなく、ストレージ アクセス層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
+* **ストレージ コスト** :データの格納のコストは、格納されているデータの量だけでなく、ストレージ アクセス層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
 
-* **データ アクセス コスト**:データ アクセス料金は、よりクールな層になるほど高くなります。 クールおよびアーカイブ ストレージ アクセス層のデータの場合、読み取りに対して、ギガバイト単位のデータ アクセス料金が課金されます。
+* **データ アクセス コスト** :データ アクセス料金は、よりクールな層になるほど高くなります。 クールおよびアーカイブ ストレージ アクセス層のデータの場合、読み取りに対して、ギガバイト単位のデータ アクセス料金が課金されます。
 
-* **トランザクション コスト**:すべての層に対してトランザクションごとに課金されます。よりクールな層になるほどコストが高くなります。
+* **トランザクション コスト** :すべての層に対してトランザクションごとに課金されます。よりクールな層になるほどコストが高くなります。
 
-* **geo レプリケーション データ転送コスト**:GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。 geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
+* **geo レプリケーション データ転送コスト** :GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。 geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
 
-* **送信データ転送コスト**:送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金が 1 ギガバイトごとに発生します。これは、汎用ストレージ アカウントと同じです。
+* **送信データ転送コスト** :送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金が 1 ギガバイトごとに発生します。これは、汎用ストレージ アカウントと同じです。
 
-* **ストレージ アクセス層の変更**:アカウント ストレージ アクセス層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント アクセス層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
+* **ストレージ アクセス層の変更** :アカウント ストレージ アクセス層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント アクセス層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
 
 > [!NOTE]
 > ストレージ アカウントの価格モデルの詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
@@ -111,7 +111,7 @@ v1 ストレージ アカウントから汎用 v2 アカウントへのアップ
 
 既存のストレージ アカウントを監視し、そのデータを収集するには、Azure Storage Analytics を利用できます。これにより、ログ記録が実行され、ストレージ アカウントのメトリック データが得られます。 Storage Analytics では、GPv1、GPv2、BLOB というストレージ アカウントの種類について、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 このデータは、同じストレージ アカウント内の既知のテーブルに格納されます。
 
-詳細については、「[About Storage Analytics Metrics (Storage Analytics メトリックについて)](https://msdn.microsoft.com/library/azure/hh343258.aspx)」と「[Storage Analytics Metrics Table Schema (Storage Analytics メトリックのテーブル スキーマ)](https://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。
+詳細については、「[About Storage Analytics Metrics (Storage Analytics メトリックについて)](../blobs/monitor-blob-storage.md)」と「[Storage Analytics Metrics Table Schema (Storage Analytics メトリックのテーブル スキーマ)](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」を参照してください。
 
 > [!NOTE]
 > BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table service エンドポイントを公開します。
@@ -141,7 +141,7 @@ BLOB ストレージのデータ アクセス パターンを監視するには�
 
 #### <a name="transaction-costs"></a>トランザクション コスト
 
-*"TotalBillableRequests"* の合計は、トランザクション メトリック テーブル内の API のすべてのエントリを対象とし、その特定の API のトランザクションの総数を示すものです。 "*たとえば*"、特定期間の "*GetBlob*" トランザクションの合計は、行キー "*user;GetBlob*" を備えたすべてのエントリに対する課金対象の要求をすべて加算することによって計算できます。
+*"TotalBillableRequests"* の合計は、トランザクション メトリック テーブル内の API のすべてのエントリを対象とし、その特定の API のトランザクションの総数を示すものです。 " *たとえば* "、特定期間の " *GetBlob* " トランザクションの合計は、行キー " *user;GetBlob* " を備えたすべてのエントリに対する課金対象の要求をすべて加算することによって計算できます。
 
 BLOB ストレージ アカウントのトランザクション コストを見積もるには、トランザクションを 3 つのグループに分類する必要があります (それぞれ価格が異なるため)。
 
@@ -164,7 +164,7 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 また、BLOB ストレージ アカウントの geo レプリケーション データ転送のコストは、GRS ストレージ アカウントまたは RA-GRS ストレージ アカウントを使用する場合に書き込まれるデータ量の見積もりを使用することによって計算することもできます。
 
 > [!NOTE]
-> ホット ストレージ アクセス層またはクール ストレージ アクセス層を使用する場合のコストの計算に関する詳細な例については、「*Azure Storage の価格* 」というページにある、 ["ホットおよびクール アクセス層とはどのようなものですか? また、どちらを使用すればよいのでしょうか?"](https://azure.microsoft.com/pricing/details/storage/)にサインインします。
+> ホット ストレージ アクセス層またはクール ストレージ アクセス層を使用する場合のコストの計算に関する詳細な例については、「 *Azure Storage の価格* 」というページにある、 ["ホットおよびクール アクセス層とはどのようなものですか? また、どちらを使用すればよいのでしょうか?"](https://azure.microsoft.com/pricing/details/storage/)にサインインします。
 
 ## <a name="next-steps"></a>次のステップ
 

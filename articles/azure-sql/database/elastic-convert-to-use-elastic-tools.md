@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443471"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787144"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,11 +72,11 @@ $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<passw
 
 ![リスト マッピング][1]
 
-マルチテナント モデルでは、個々のデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。 各テナントで必要なデータが少ない場合は、このモデルを使用します。 このモデルでは、**範囲マッピング**を使用してデータベースにテナントの範囲を割り当てます。
+マルチテナント モデルでは、個々のデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。 各テナントで必要なデータが少ない場合は、このモデルを使用します。 このモデルでは、 **範囲マッピング** を使用してデータベースにテナントの範囲を割り当てます。
 
 ![範囲マッピング][2]
 
-または、*リスト マッピング*を使用して複数のテナントを個々のデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。
+または、 *リスト マッピング* を使用して複数のテナントを個々のデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。
 
 ![単一 DB 上の複数のテナント][3]
 
@@ -168,7 +168,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
 
-ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)を参照してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)を参照してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

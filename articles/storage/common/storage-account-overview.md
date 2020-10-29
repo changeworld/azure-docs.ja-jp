@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280149"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793009"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -60,7 +60,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 - アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。
 
-- 2014-02-14 より前の [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) バージョンを使用しているか、4.x より前のクライアント ライブラリ バージョンを使用しています。 アプリケーションをアップグレードできません。
+- 2014-02-14 より前の [Storage Services REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) バージョンを使用しているか、4.x より前のクライアント ライブラリ バージョンを使用しています。 アプリケーションをアップグレードできません。
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage アカウント
 
@@ -108,7 +108,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 
 - **ホット** アクセス層。 この層は、ストレージ アカウント内のオブジェクトへの頻繁なアクセスに対応するように最適化されています。 ホット層でのデータのアクセスは、費用対効果は最も高くなりますが、ストレージ コストは高くなります。 新しいストレージ アカウントは、既定ではホット層に作成されます。
 - **クール** アクセス層。 この層は、アクセスされる頻度が低いデータで、少なくとも 30 日以上保管される大量データを格納するために最適化されています。 クール層でのデータの格納は、費用対効果が高くなりますが、データへのアクセスがホット層でのデータへのアクセスよりも高くなる場合があります。
-- **アーカイブ**層。 アーカイブ層は、個々のブロック BLOB 用にのみ使用できます。 このアーカイブ層は、数時間の取得待機時間を許容でき、少なくとも 180 日以上アーカイブ層に保持されるデータ用に最適化されています。 アーカイブ層は、データを格納するための最もコスト効率のよいオプションです。 しかし、ホット層またはクール層のデータにアクセスするよりも、そのデータにアクセスする方がコストが高くなります。
+- **アーカイブ** 層。 アーカイブ層は、個々のブロック BLOB 用にのみ使用できます。 このアーカイブ層は、数時間の取得待機時間を許容でき、少なくとも 180 日以上アーカイブ層に保持されるデータ用に最適化されています。 アーカイブ層は、データを格納するための最もコスト効率のよいオプションです。 しかし、ホット層またはクール層のデータにアクセスするよりも、そのデータにアクセスする方がコストが高くなります。
 
 データの使用パターンが変化した場合は、いつでもこれらのアクセス層を切り替えできます。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 
@@ -133,12 +133,12 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 - テーブル ストレージ: `https://*mystorageaccount*.table.core.windows.net`
 - キュー ストレージ: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2:`https://*mystorageaccount*.dfs.core.windows.net` ([特にビッグ データのために最適化されている ABFS ドライバー](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)を使用します。)
+- Azure Data Lake Storage Gen2:`https://*mystorageaccount*.dfs.core.windows.net` ([特にビッグ データのために最適化されている ABFS ドライバー](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)を使用します。)
 
 > [!NOTE]
 > ブロック BLOB および BLOB ストレージ アカウントは、Blob service エンドポイントのみを公開します。
 
-ストレージアカウント内のオブジェクトの場所をエンドポイントに追加して、ストレージアカウント内のオブジェクトにアクセスするためのURLを構築します。 たとえば、BLOB アドレスは、 http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob* のような形式になります。
+ストレージアカウント内のオブジェクトの場所をエンドポイントに追加して、ストレージアカウント内のオブジェクトにアクセスするためのURLを構築します。 たとえば、BLOB アドレスは、 http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* のような形式になります。
 
 BLOB 用のカスタム ドメインを使用するようにストレージ アカウントを構成することもできます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。  
 
@@ -151,7 +151,7 @@ BLOB 用のカスタム ドメインを使用するようにストレージ ア�
 次の方法のいずれかを使用して、ストレージ アカウント内のデータへのアクセス権を付与できます。
 
 - **Azure Active Directory:** Azure Active Directory (Azure AD) の資格情報を使用して、ユーザー、グループ、またはその他の ID による BLOB データとキュー データへのアクセスを認証します。 ID の認証が成功した場合、Azure AD は、Azure Blob Storage または Queue Storage に対する要求の承認で使用されるトークンを返します。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。
-- **共有キーによる承認:** ストレージ アカウント アクセス キーを使用して、アプリケーションが実行時に Azure Storage にアクセスするために使用する接続文字列を構成します。 接続文字列内の値を使用して、Azure Storage に渡される "*承認*" ヘッダーが作成されます。 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
+- **共有キーによる承認:** ストレージ アカウント アクセス キーを使用して、アプリケーションが実行時に Azure Storage にアクセスするために使用する接続文字列を構成します。 接続文字列内の値を使用して、Azure Storage に渡される " *承認* " ヘッダーが作成されます。 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
 - **共有アクセス署名:** Azure AD 承認を使用していない場合は、共有アクセス署名を使用して、ストレージ アカウント内のリソースへのアクセス権を委任します。 共有アクセス署名は、URL 上の Azure Storage への要求を承認するために必要なすべての情報をカプセル化するトークンです。 ストレージ リソース、与えられるアクセス許可、そのアクセス許可が共有アクセス署名の一部として有効である期間を指定できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
 > [!NOTE]
@@ -167,7 +167,7 @@ Microsoft では、オンプレミス ストレージ デバイスまたはサ�
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計された Windows コマンドライン ユーティリティです。 AzCopy を使用して、既存の汎用ストレージ アカウントから BLOB ストレージ アカウントにデータをコピーできます。またオンプレミス ストレージ デバイスから データをアップロードできます。 詳細については、[AzCopy コマンド ライン ユーティリティを使用したデータの転送](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページをご覧ください。
+AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計された Windows コマンドライン ユーティリティです。 AzCopy を使用して、既存の汎用ストレージ アカウントから BLOB ストレージ アカウントにデータをコピーできます。またオンプレミス ストレージ デバイスから データをアップロードできます。 詳細については、[AzCopy コマンド ライン ユーティリティを使用したデータの転送](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)に関するページをご覧ください。
 
 ### <a name="data-movement-library"></a>データ移動ライブラリ
 
@@ -177,7 +177,7 @@ Azure Storage Data Movement Library for .Net は、AzCopy を動作させてい�
 
 汎用 v1 ストレージアカウントから Blob ストレージアカウントに、データを移行するためのカスタムアプリケーションを作成できます。 Azure クライアント ライブラリまたは Azure Storage サービス REST API のいずれかを使用します。 Azure Storage には、.NET、Java、C++、Node.js、PHP、Ruby、Python などの複数の言語とプラットフォーム用の豊富なクライアント ライブラリが用意されています。 クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。 また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
 
-Azure Storage REST API の詳細については、「[Azure Storage Services REST API Reference](https://docs.microsoft.com/rest/api/storageservices/)」(Azure Storage Services REST API リファレンス) を参照してください。
+Azure Storage REST API の詳細については、「[Azure Storage Services REST API Reference](/rest/api/storageservices/)」(Azure Storage Services REST API リファレンス) を参照してください。
 
 > [!IMPORTANT]
 > クライアント側の暗号化を使用して暗号化された BLOB には、BLOB と共に暗号化関連メタデータが格納されます。 クライアント側の暗号化で暗号化された BLOB をコピーする場合は、コピー操作の際に BLOB メタデータ、特に暗号化関連のメタデータが保持されるようにしてください。 暗号化メタデータなしで BLOB をコピーした場合、BLOB コンテンツを再度取得することはできません。 暗号化関連メタデータの詳細については、[Azure Storage のクライアント側の暗号化](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。

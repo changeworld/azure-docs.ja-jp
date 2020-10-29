@@ -12,18 +12,18 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
-ms.openlocfilehash: 6154625f1e943007d0ed4c3341dc1265657f3bfc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046352"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790731"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>サーバー信頼グループを使用して SQL マネージド インスタンス間の信頼を設定および管理する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 サーバー信頼グループは、Azure SQL Managed Instance 間の信頼を管理するために使用される概念です。 グループを作成すると、そのメンバー間に証明書ベースの信頼が確立されます。 この信頼は、さまざまなクロスインスタンス シナリオに使用できます。 グループからサーバーを削除するか、グループを削除すると、サーバー間の信頼が解除されます。 サーバー信頼グループを作成または削除するには、マネージド インスタンスに対する書き込みアクセス許可が必要です。
-[サーバー信頼グループ](https://aka.ms/mi-server-trust-group-arm)は、Azure portal で **[SQL trust groups]\(SQL 信頼グループ\)** としてラベル付けされた Azure Resource Manager オブジェクトです。
+[サーバー信頼グループ](/azure/templates/microsoft.sql/allversions)は、Azure portal で **[SQL trust groups]\(SQL 信頼グループ\)** としてラベル付けされた Azure Resource Manager オブジェクトです。
 
 > [!NOTE]
 > サーバー信頼グループは、Azure SQL Managed Instance 間の分散トランザクションのパブリック プレビューで導入されています。現在、この記事の後半で説明するいくつかの制限事項があります。
@@ -66,7 +66,7 @@ ms.locfileid: "92046352"
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="サーバー信頼グループ":::
 
 > [!NOTE]
-> サーバー信頼グループを削除しても、2 つの Managed Instance 間の信頼がすぐに削除されない場合があります。 信頼の削除は、Managed Instance の[フェールオーバー](https://docs.microsoft.com/powershell/module/az.sql/Invoke-AzSqlInstanceFailover)を呼び出すことによって適用できます。 この最新の更新プログラムに関する「[既知の問題](https://docs.microsoft.com/azure/azure-sql/database/doc-changes-updates-release-notes?tabs=managed-instance#known-issues)」を確認してください。
+> サーバー信頼グループを削除しても、2 つの Managed Instance 間の信頼がすぐに削除されない場合があります。 信頼の削除は、Managed Instance の[フェールオーバー](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover)を呼び出すことによって適用できます。 この最新の更新プログラムに関する「[既知の問題](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues)」を確認してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -77,7 +77,7 @@ ms.locfileid: "92046352"
  * 分散トランザクションは、サーバー信頼グループに適用できる唯一のスコープです。
  * サーバー信頼グループは、Azure portal からのみ管理できます。 PowerShell と CLI は後ほどサポートされます。
  * Azure portal でサーバー信頼グループを編集することはできません。 作成または削除のみが可能です。
- * 分散トランザクションの追加の制限は、シナリオに関連している場合があります。 最も注目すべき点は、VNET または VNET ピアリングを介してプライベート エンドポイントで Managed Instance 間を接続する必要があることです。 [Managed Instance に関する現在の分散トランザクションの制限事項](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview#limitations)を把握しておいてください。
+ * 分散トランザクションの追加の制限は、シナリオに関連している場合があります。 最も注目すべき点は、VNET または VNET ピアリングを介してプライベート エンドポイントで Managed Instance 間を接続する必要があることです。 [Managed Instance に関する現在の分散トランザクションの制限事項](../database/elastic-transactions-overview.md#limitations)を把握しておいてください。
 
 ## <a name="next-steps"></a>次のステップ
 

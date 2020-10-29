@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: 3a8086c75a7125b744730de83c760db44ce222e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164569"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790102"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure portal を使用し、Azure VM 上で SQL Server の可用性グループ (プレビュー) を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Azure portal を使用して Always On 可用性グループを構成するに�
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [完全管理モードで SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)され、各 VM 上の SQL Server サービスで同じドメイン アカウントを使用している、" *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにあって 1 つ以上のドメイン参加済みの [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
+- [完全管理モードで SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)され、各 VM 上の SQL Server サービスで同じドメイン アカウントを使用している、" *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにあって 1 つ以上のドメイン参加済みの [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](./create-sql-vm-portal.md)。
 - 2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 1 つは内部ロード バランサー用です。 もう 1 つは、可用性グループと同じサブネット内の可用性グループ リスナー用です。 既存のロード バランサーを使用している場合は、使用可能な IP アドレスが可用性グループ リスナー用に 1 つだけ必要です。 
 
 ## <a name="permissions"></a>アクセス許可
@@ -70,7 +70,7 @@ Azure portal を使用してクラスターを構成します。 新しいクラ
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
-1. **[Windows Server Failover Cluster credentials]\(Windows Server フェールオーバー クラスターの資格情報\)** を展開して、SQL Server サービス アカウントの [資格情報](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile)を指定し、さらにクラスター オペレーターとブートストラップ アカウントが SQL Server サービスに使用されるアカウントとは異なる場合は、これらも指定します。 
+1. **[Windows Server Failover Cluster credentials]\(Windows Server フェールオーバー クラスターの資格情報\)** を展開して、SQL Server サービス アカウントの [資格情報](/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile)を指定し、さらにクラスター オペレーターとブートストラップ アカウントが SQL Server サービスに使用されるアカウントとは異なる場合は、これらも指定します。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する"
     ```

@@ -2,7 +2,7 @@
 title: DNS エイリアス (PowerShell & Azure CLI)
 description: PowerShell コマンドレットと Azure CLI コマンドレットを使用すると、クライアントの構成を手動で変更することなく、新しいクライアント接続を Azure 内の別の SQL サーバーにリダイレクトできます。
 keywords: DNS SQL Database
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: c1006cce4125adf67b9e3009bf8e27c0123acfd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443630"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790459"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Azure SQL Database を参照する DNS エイリアス用の PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,10 +52,10 @@ SQL Server Management Studio (SSMS) などのクライアントでは、[論理 
 
 使用されているコマンドレットを次に示します。
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias):Azure SQL Database サービス システム内に DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべてのエイリアスを取得して一覧表示します。
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 からエイリアスを削除します。
+- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias):Azure SQL Database サービス システム内に DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
+- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべてのエイリアスを取得して一覧表示します。
+- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
+- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 からエイリアスを削除します。
 
 インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
@@ -98,10 +98,10 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
 
 使用されているコマンドを次に示します。
 
-- [az sql server dns-alias create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias):サーバーの DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
-- [az sql server dns-alias show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべてのエイリアスを取得して一覧表示します。
-- [az sql server dns-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
-- [az sql server dns-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 からエイリアスを削除します。
+- [az sql server dns-alias create](/powershell/module/az.Sql/New-azSqlServerDnsAlias):サーバーの DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
+- [az sql server dns-alias show](/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべてのエイリアスを取得して一覧表示します。
+- [az sql server dns-alias set](/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
+- [az sql server dns-alias delete](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 からエイリアスを削除します。
 
 インストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
@@ -142,4 +142,4 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL Database の DNS エイリアス機能の詳細については、「[Azure SQL Database の DNS エイリアス](../../sql-database/dns-alias-overview.md)」を参照してください。
+SQL Database の DNS エイリアス機能の詳細については、「[Azure SQL Database の DNS エイリアス](./dns-alias-overview.md)」を参照してください。

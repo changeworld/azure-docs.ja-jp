@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293358"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789847"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM での SQL Server エディションのインプレース変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,8 +34,8 @@ SQL Server のエディションが内部で SQL Server VM に変更された後
 SQL Server のエディションのインプレース変更を行うには、以下のものが必要です。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録された [Windows 上の SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
-- SQL Server の**目的のエディション**が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`C:\SQLServerFull` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
+- [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録された [Windows 上の SQL Server VM](./create-sql-vm-portal.md)。
+- SQL Server の **目的のエディション** が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`C:\SQLServerFull` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
 
 
 ## <a name="upgrade-an-edition"></a>エディションをアップグレードする
@@ -102,5 +102,3 @@ SQL Server のエディションをダウングレードした後、Azure portal
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 * [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
-
-

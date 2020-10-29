@@ -10,18 +10,18 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333581"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784356"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
 Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル、キュー、テーブル、およびディスク) が含まれます。 ストレージ アカウントでは、世界中のどこからでも HTTP または HTTPS 経由でアクセスできる Azure Storage データ用の一意の名前空間が提供されます。 Azure ストレージ アカウント内のデータは、持続性があり、高可用性で、セキュリティ保護されており、非常にスケーラブルです。
 
-このハウツー記事では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure)、または [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)を使ってストレージ アカウントを作成する方法を説明します。  
+このハウツー記事では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](/powershell/azure/)、[Azure CLI](/cli/azure)、または [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)を使ってストレージ アカウントを作成する方法を説明します。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -143,7 +143,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 > [!IMPORTANT]
 > [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `-EnableHierarchicalNamespace $True` を含めてください。
 
-別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、**SkuName** パラメーターを次の表の目的の値で置き換えます。
+別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、 **SkuName** パラメーターを次の表の目的の値で置き換えます。
 
 |レプリケーション オプション  |SkuName パラメーター  |
 |---------|---------|
@@ -186,7 +186,7 @@ az storage account create \
 > [!IMPORTANT]
 > [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `--enable-hierarchical-namespace true` を含めてください。
 
-別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、**sku** パラメーターを次の表の目的の値で置き換えます。
+別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、 **sku** パラメーターを次の表の目的の値で置き換えます。
 
 |レプリケーション オプション  |sku パラメーター  |
 |---------|---------|
@@ -223,7 +223,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 このテンプレートの変更方法または新しいテンプレートの作成方法については、以下を参照してください。
 
-- [Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)。
+- [Azure Resource Manager のドキュメント](../../azure-resource-manager/index.yml)。
 - [ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/allversions)。
 - [その他のストレージ アカウント テンプレート サンプル](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)。
 
@@ -279,7 +279,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 > [!WARNING]
 > 削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。 アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。 これはアカウントのどのリソースにも当てはまります。BLOB、テーブル、キュー、またはファイルを削除すると、完全に削除されます。
 >
-> Azure 仮想マシンに関連付けられているストレージ アカウントを削除しようとすると、まだ使用しているストレージ アカウントに関するエラー メッセージが表示されることがあります。 このエラーのトラブルシューティングについては、[ストレージ アカウントを削除する際のエラーのトラブルシューティング](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。
+> Azure 仮想マシンに関連付けられているストレージ アカウントを削除しようとすると、まだ使用しているストレージ アカウントに関するエラー メッセージが表示されることがあります。 このエラーのトラブルシューティングについては、[ストレージ アカウントを削除する際のエラーのトラブルシューティング](../../virtual-machines/troubleshooting/index.yml)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

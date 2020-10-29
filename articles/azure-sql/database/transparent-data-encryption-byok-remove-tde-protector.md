@@ -5,19 +5,19 @@ description: Bring YOur Own Key (BYOK) をサポートする TDE を使用して
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 77f2312438f3f9db7aa4e0dc7cc0f672644a87c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617403"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791377"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,16 +26,16 @@ ms.locfileid: "91617403"
 このトピックでは、Azure Key Vault のカスタマー マネージド キー、つまり Bring Your Own Key (BYOK) をサポートする TDE を使用している Azure SQL Database または Azure Synapse Analytics の侵害された可能性のある TDE 保護機能に対応する方法について説明します。 TDE の BYOK サポートの詳細については、[概要ページ](transparent-data-encryption-byok-overview.md)をご覧ください。
 
 > [!CAUTION]
-> この記事で説明する手順は、極端な状況またはテスト環境でのみ実行する必要があります。 アクティブに使用されている TDE 保護機能を Azure Key Vault から削除すると、**データベースは使用不能**になるため、手順をよく確認してください。
+> この記事で説明する手順は、極端な状況またはテスト環境でのみ実行する必要があります。 アクティブに使用されている TDE 保護機能を Azure Key Vault から削除すると、 **データベースは使用不能** になるため、手順をよく確認してください。
 
 サービスまたはユーザーがキーに不正アクセスしているなど、キーが侵害された疑いがある場合は、キーを削除するのが最善です。
 
-Key Vault で TDE 保護機能を削除したら、最大 10 分ですべての暗号化されたデータベースで、対応するエラー メッセージを使用してすべての接続の拒否が開始され、状態が [[アクセス不可]](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector) に変更されることに注意してください。
+Key Vault で TDE 保護機能を削除したら、最大 10 分ですべての暗号化されたデータベースで、対応するエラー メッセージを使用してすべての接続の拒否が開始され、状態が [[アクセス不可]](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector) に変更されることに注意してください。
 
 このハウツー ガイドでは、侵害のあったインシデント対応後の望ましい結果に応じた次の 2 つの方法を説明します。
 
-- Azure SQL Database /Azure Synapse Analytics 内のデータベースを**アクセス不可**にする
-- Azure SQL Database/Azure Synapse Analytics (旧称 SQL Data Warehouse) 内のデータベースを**アクセス不可**にする。
+- Azure SQL Database /Azure Synapse Analytics 内のデータベースを **アクセス不可** にする
+- Azure SQL Database/Azure Synapse Analytics (旧称 SQL Data Warehouse) 内のデータベースを **アクセス不可** にする。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Key Vault で TDE 保護機能を削除したら、最大 10 分ですべての�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。
+ Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。

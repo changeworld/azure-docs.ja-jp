@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298831"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790034"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -78,8 +78,8 @@ Active Directory がないため、Windows 接続を認証する方法はあり�
 ホスト ファイルを編集するには、次の手順を実行します。
 
 1. お使いの仮想マシンに RDP 接続します。 
-1. **エクスプローラー**を使用して、`c:\windows\system32\drivers\etc` に移動します。 
-1. **hosts** ファイルを右クリックし、**メモ帳** (またはその他のテキスト エディター) を使用してファイルを開きます。
+1. **エクスプローラー** を使用して、`c:\windows\system32\drivers\etc` に移動します。 
+1. **hosts** ファイルを右クリックし、 **メモ帳** (またはその他のテキスト エディター) を使用してファイルを開きます。
 1. ファイルの末尾に、次のように、各ノード、可用性グループ、およびリスナーのエントリを `IP Address, DNS Suffix #comment` の形式で追加します。 
 
    ```
@@ -115,7 +115,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 クラスターが作成されたら、静的なクラスター IP アドレスを割り当てます。 これを行うには、次のステップに従います。
 
-1. いずれかのノードで、**フェールオーバー クラスター マネージャー**を開いてクラスターを選択し、 **[クラスター コア リソース]** の下にある **[名前: \<ClusterNam>]** を右クリックしてから、 **[プロパティ]** を選択します。 
+1. いずれかのノードで、 **フェールオーバー クラスター マネージャー** を開いてクラスターを選択し、 **[クラスター コア リソース]** の下にある **[名前: \<ClusterNam>]** を右クリックしてから、 **[プロパティ]** を選択します。 
 
    ![クラスター名のプロパティの起動](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
@@ -179,7 +179,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
    GO  
    ```
 
-1. **エクスプローラー**を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
+1. **エクスプローラー** を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
 1. 最初のノードから証明書のコピーを手動で作成し (`AGNode1Cert.crt` など)、それを 2 番目のノードの同じ場所に転送します。 
 
 2 番目のノードを構成するには、次の手順に従います。 
@@ -220,7 +220,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
    GO  
    ```
 
-1. **エクスプローラー**を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
+1. **エクスプローラー** を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
 1. 2 番目のノードからの証明書のコピーを手動で作成し (`AGNode2Cert.crt` など)、それを最初のノードと同じ場所に転送します。 
 
 クラスターに他のノードがある場合は、それぞれの証明書の名前を変更しながら、これらの手順を繰り返します。 
@@ -291,6 +291,4 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-[Az SQL VM CLI](availability-group-az-cli-configure.md) を使用して、可用性グループを構成することもできます。 
-
-
+[Az SQL VM CLI](./availability-group-az-commandline-configure.md) を使用して、可用性グループを構成することもできます。

@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 294adce3dc312003d72336bd0752ba3aba5eaace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077910"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792856"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -282,7 +282,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 AzCopy を使用し、BLOB を他のストレージ アカウントにコピーできます。 コピー操作は同期しているため、コマンドが返されると、それはすべてのファイルがコピーされていることを示します。 
 
-AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。 `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、これらの操作のスループットを上げることができます。 詳しくは、「[スループットを最適化する](storage-use-azcopy-configure.md#optimize-throughput)」をご覧ください。
+AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) [API](/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。 `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、これらの操作のスループットを上げることができます。 詳しくは、「[スループットを最適化する](storage-use-azcopy-configure.md#optimize-throughput)」をご覧ください。
 
 > [!NOTE]
 > 現在のリリースでは、このシナリオに以下の制限があります。
@@ -363,7 +363,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 `--delete-destination` フラグを `true` に設定すると、AzCopy では、プロンプトを与えずにファイルが削除されます。 AzCopy でファイルが削除される前にプロンプトを表示する場合、`--delete-destination` フラグを `prompt` に設定します。
 
 > [!NOTE]
-> 誤削除を防ぐために、`--delete-destination=prompt|true` フラグを使用する前に[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)機能を有効にしてください。
+> 誤削除を防ぐために、`--delete-destination=prompt|true` フラグを使用する前に[論理的な削除](../blobs/soft-delete-blob-overview.md)機能を有効にしてください。
 
 > [!TIP]
 > オプションのフラグを使用して、同期操作を調整できます。 以下にいくつか例を示します。

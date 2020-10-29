@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8ee440c77ec94a7c3e61c37e589aa5ef23031ca7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 860fcb2948869d21eb78d0b318074b9a5e2ba0b9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332418"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790323"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL Database、Azure Synapse Analytics、Data Factory、Power BI による SaaS 分析を調べる
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千ものデータベースに分散している場合、アクセスは複雑になります。 この複雑さを軽減する 1 つの方法として、クエリ用の分析データベースまたはデータ ウェアハウスにデータを抽出します。
 
-このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics (旧称 SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) を使います。
+このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) を使います。
 
 次に、抽出されたデータを変換して一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに読み込みます。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。
 
@@ -70,10 +70,10 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-- Wingtip Tickets SaaS Database Per Tenant アプリケーションをデプロイします。 5 分未満でデプロイする方法については、[Wingtip SaaS アプリケーションのデプロイと確認](../../sql-database/saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
+- Wingtip Tickets SaaS Database Per Tenant アプリケーションをデプロイします。 5 分未満でデプロイする方法については、[Wingtip SaaS アプリケーションのデプロイと確認](./saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
 - Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション [ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)を GitHub からダウンロードします。 ダウンロードの手順を参照してください。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除* してください。
 - Power BI Desktop をインストールします。 [Power BI Desktop をダウンロードします](https://powerbi.microsoft.com/downloads/)。
-- 追加のテナントのバッチをプロビジョニングします。 [**テナントのプロビジョニングに関するチュートリアル**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)をご覧ください。
+- 追加のテナントのバッチをプロビジョニングします。 [**テナントのプロビジョニングに関するチュートリアル**](./saas-dbpertenant-provision-and-catalog.md)をご覧ください。
 
 ### <a name="create-data-for-the-demo"></a>デモ用のデータを作成する
 
@@ -85,7 +85,7 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 ### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Azure Synapse Analytics、Data Factory、Blob Storage をデプロイする
 
-Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) を使ってデータ ウェアハウスにデータを読み込みます。
+Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) を使ってデータ ウェアハウスにデータを読み込みます。
 
 この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、 _tenantanalytics_ という名前の SQL プール、 _dbtodwload-\<user\>_ という名前の Azure Data Factory、 _wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
 
@@ -97,7 +97,7 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 
 #### <a name="tenant-databases-and-analytics-store"></a>テナント データベースと分析ストア
 
-[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、 **tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P\@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使って、 **tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P\@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](./saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
 ![SSMS から SQL Database に接続する](./media/saas-tenancy-tenant-analytics-adf/ssmsSignIn.JPG)
 
@@ -148,14 +148,14 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
 
 ![adf_overview](./media/saas-tenancy-tenant-analytics-adf/adf-data-factory.PNG)
 
-概要ページで左側の **[作成者]** タブに切り替え、3 つの [パイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)と 3 つの [データセット](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)が作成されていることを確認します。
+概要ページで左側の **[作成者]** タブに切り替え、3 つの [パイプライン](../../data-factory/concepts-pipelines-activities.md)と 3 つの [データセット](../../data-factory/concepts-datasets-linked-services.md)が作成されていることを確認します。
 ![adf_author](./media/saas-tenancy-tenant-analytics-adf/adf_author_tab.JPG)
 
 入れ子になった 3 つのパイプラインは、SQLDBToDW、DBCopy、および TableCopy です。
 
 **パイプライン 1 - SQLDBToDW** は、カタログ データベース (テーブル名: [__ShardManagement].[ShardsGlobal]) に格納されているテナント データベースの名前を調べて、テナント データベースごとに、 **DBCopy** パイプラインを実行します。 完了すると、提供されている **sp_TransformExtractedData** ストアド プロシージャのスキーマが実行されます。 このストアド プロシージャは、ステージング テーブルに読み込まれたデータを変換し、スター スキーマのテーブルに設定します。
 
-**パイプライン 2 - DBCopy** は、BLOB ストレージに格納されている構成ファイルから、ソース テーブルと列の名前を調べます。  その後、 **TableCopy** パイプラインが TicketFacts、CustomerFacts、EventFacts、および VenueFacts の 4 つの各テーブルに対して実行されます。 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** アクティビティが、20 個のデータベースすべてに対して並列に実行します。 ADF では、最大 20 のループ イテレーションが並列に実行できます。 データベースを増やす場合は、複数のパイプラインを作成することを検討します。
+**パイプライン 2 - DBCopy** は、BLOB ストレージに格納されている構成ファイルから、ソース テーブルと列の名前を調べます。  その後、 **TableCopy** パイプラインが TicketFacts、CustomerFacts、EventFacts、および VenueFacts の 4 つの各テーブルに対して実行されます。 **[Foreach](../../data-factory/control-flow-for-each-activity.md)** アクティビティが、20 個のデータベースすべてに対して並列に実行します。 ADF では、最大 20 のループ イテレーションが並列に実行できます。 データベースを増やす場合は、複数のパイプラインを作成することを検討します。
 
 **パイプライン 3 - TableCopy** は、SQL Database の行バージョン番号 ( _rowversion_ ) を使って、変更または更新された行を識別します。 このアクティビティは、ソース テーブルから行を抽出するために開始と終了の行バージョンを検索します。 各テナント データベースに格納されている **CopyTracker** テーブルは、各実行において各ソース テーブルから抽出された最後の行を追跡します。 新しい行または変更された行は、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets** 、 **raw_Customers** 、 **raw_Venues** 、 **raw_Events** にコピーされます。 最後に、次の抽出の最初の行バージョンとして使われるために、最後の行バージョンが **CopyTracker** テーブルに保存されます。
 
@@ -276,4 +276,4 @@ Wingtip Tickets の例では、チケット販売の傾向が予測可能なパ�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+- [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

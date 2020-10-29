@@ -4,19 +4,19 @@ description: Azure portal、PowerShell、Azure CLI、Transact-SQL (T-SQL)、お�
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254992"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791530"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database でのサーバーと単一データベースの作成と管理
 
@@ -45,7 +45,7 @@ Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使
 
 既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定のデータベース ページ、 **[SQL サーバー]** ページ、 **[すべてのリソース]** ページから移動します。
 
-既存のデータベースを管理するには、 **[SQL データベース]** ページに移動し、管理するデータベースを選択します。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
+既存のデータベースを管理するには、 **[SQL データベース]** ページに移動し、管理するデータベースを選択します。 次のスクリーンショットでは、データベースの **概要** ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
 
    ![サーバーのファイアウォール規則](./media/single-database-manage/server-firewall-rule.png)
 
@@ -58,7 +58,7 @@ Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 Azure PowerShell を利用して、サーバー、単一データベースおよびプールされたデータベース、およびサーバーレベルのファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
@@ -74,17 +74,17 @@ Azure PowerShell を利用して、サーバー、単一データベースおよ
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|リソース グループを作成します。|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|サーバーを作成します。|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|サーバーに関する情報を返します。|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|サーバーのプロパティを変更します。|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|サーバーのプロパティを変更します。|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|サーバーを削除します。|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|サーバーレベルのファイアウォール規則を作成します。 |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|サーバーのファイアウォール規則を取得します。|
 |[Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|サーバーのファイアウォール規則を変更します。|
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|サーバーからファイアウォール規則を削除します。|
-| New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
+| New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、 [*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
 
 ## <a name="the-azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure) を使用してサーバー、データベース、ファイアウォールを作成および管理するには、次の [Azure CLI](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](elastic-pool-overview.md)に関する記事をご覧ください。
+[Azure CLI](/cli/azure) を使用してサーバー、データベース、ファイアウォールを作成および管理するには、次の [Azure CLI](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](../../cloud-shell/overview.md) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](elastic-pool-overview.md)に関する記事をご覧ください。
 
 > [!TIP]
 > Azure CLI クイックスタートについては、[Azure CLI を使用した単一の Azure SQL Database の作成](az-cli-script-samples-content-guide.md)に関するページを参照してください。 Azure CLI のスクリプトの例については、[CLI を使用した Azure SQL Database 内のデータベースの作成と SQL Database ファイアウォール規則の構成](scripts/create-and-configure-database-cli.md)に関する記事と、[CLI を使用した Azure SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-cli.md)に関する記事を参照してください。
@@ -144,22 +144,22 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 
 | コマンド | 説明 |
 | --- | --- |
-|[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
-|[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
-|[サーバー - 取得](https://docs.microsoft.com/rest/api/sql/servers/get)|サーバーを取得します。|
-|[サーバー - 一覧取得](https://docs.microsoft.com/rest/api/sql/servers/list)|サブスクリプション内のサーバーの一覧を取得します。|
-|[サーバー - リソース グループごとの一覧取得](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
-|[サーバー - 更新](https://docs.microsoft.com/rest/api/sql/servers/update)|既存のサーバーを更新します。|
-|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 削除](https://docs.microsoft.com/rest/api/sql/databases/delete)|データベースを削除します。|
-|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|既存のデータベースを更新します。|
-|[ファイアウォール規則 - 作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
-|[ファイアウォール規則 - 削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
-|[ファイアウォール規則 - 取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
-|[ファイアウォール規則 - サーバーごとに一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
+|[サーバー - 作成または更新](/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
+|[サーバー - 削除](/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
+|[サーバー - 取得](/rest/api/sql/servers/get)|サーバーを取得します。|
+|[サーバー - 一覧取得](/rest/api/sql/servers/list)|サブスクリプション内のサーバーの一覧を取得します。|
+|[サーバー - リソース グループごとの一覧取得](/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
+|[サーバー - 更新](/rest/api/sql/servers/update)|既存のサーバーを更新します。|
+|[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 削除](/rest/api/sql/databases/delete)|データベースを削除します。|
+|[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
+|[ファイアウォール規則 - 作成または更新](/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
+|[ファイアウォール規則 - 削除](/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
+|[ファイアウォール規則 - 取得](/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
+|[ファイアウォール規則 - サーバーごとに一覧取得](/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
 
 ## <a name="next-steps"></a>次のステップ
 

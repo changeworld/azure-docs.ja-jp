@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566994"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786498"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server についてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "91566994"
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > カスタムの一般化されたイメージからデプロイされたものを含め、Azure VM 上の SQL Server を [SQL VM リソース プロバイダーに登録](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)してコンプライアンス要件を満たし、自動パッチや自動バックアップなどのオプション機能を利用します。 リソースプロバイダーでは、各 SQL Server VM の[ライセンスの種類を指定する](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal)こともできます。
+   > カスタムの一般化されたイメージからデプロイされたものを含め、Azure VM 上の SQL Server を [SQL VM リソース プロバイダーに登録](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash)してコンプライアンス要件を満たし、自動パッチや自動バックアップなどのオプション機能を利用します。 リソースプロバイダーでは、各 SQL Server VM の[ライセンスの種類を指定する](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal)こともできます。
 
 1. **独自の VHD を使用して SQL Server VM をデプロイできますか?**
 
@@ -97,7 +97,7 @@ ms.locfileid: "91566994"
 
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
-   いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)が前提条件です。SQL IaaS 拡張機能を_完全_モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される_軽量_モードでインストールするか、メンテナンス期間中であれば_完全_モードでインストールしてください。 _軽量_モードでインストールされた SQL IaaS 拡張機能はいつでも_完全_モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
+   いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、 [SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)が前提条件です。SQL IaaS 拡張機能を _完全_ モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される _軽量_ モードでインストールするか、メンテナンス期間中であれば _完全_ モードでインストールしてください。 _軽量_ モードでインストールされた SQL IaaS 拡張機能はいつでも _完全_ モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
    
 1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか?**
 
@@ -118,7 +118,7 @@ ms.locfileid: "91566994"
 
    1. [ライセンス モビリティ](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)は[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)を通して与えられます。 
    1. パッシブ SQL Server インスタンスでは、クライアントに SQL Server データを提供することや、アクティブな SQL Server ワークロードを実行することがありません。 プライマリ サーバーと同期を取ること、それ以外では、パッシブ データベースをウォーム スタンバイの状態で維持することにのみ使用されます。 アクティブな SQL Server ワークロードを実行しているか、または製品条項で指定されているもの以外の何らかの作業を行っているクライアントへのレポートなどのデータを提供している場合、これは有料のライセンス付与された SQL Server インスタンスである必要があります。 セカンダリ インスタンスでは、データベース整合性チェックまたは CheckDB、完全バックアップ、トランザクション ログ バックアップ、およびリソース使用状況データの監視のアクティビティが許可されます。 また、ディザスター リカバリー テストの短期間、プライマリおよび対応するディザスター リカバリー インスタンスを 90 日ごとに同時に実行することもできます。 
-   1. アクティブ SQL Server ライセンスはソフトウェア アシュアランスの対象となり、パッシブ セカンダリ SQL Server インスタンスが **1 つ**だけ許可され、その計算処理量はライセンスのあるアクティブ サーバーの計算処理量までになります。 
+   1. アクティブ SQL Server ライセンスはソフトウェア アシュアランスの対象となり、パッシブ セカンダリ SQL Server インスタンスが **1 つ** だけ許可され、その計算処理量はライセンスのあるアクティブ サーバーの計算処理量までになります。 
    1. セカンダリ SQL Server VM は、Azure portal で[ディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) ライセンスを利用します。
    
 1. **どのようなものがパッシブ インスタンスと見なされますか?**
@@ -145,11 +145,11 @@ ms.locfileid: "91566994"
  
    はい。SQL Server VM がクラシック モデルではなく Resource Manager モデルを使用してパブリック クラウドにデプロイされた場合に限ります。 他のお客様はすべて、新しい SQL Server VM リソース プロバイダーに登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) をアクティブ化し、独自のライセンスを使用できるのは、[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)の特典をお持ちのお客様だけです。 
 
-1. **VM リソースが移動または破棄されると、リソース プロバイダー (_Microsoft.SqlVirtualMachine_) リソースはどうなりますか?** 
+1. **VM リソースが移動または破棄されると、リソース プロバイダー ( _Microsoft.SqlVirtualMachine_ ) リソースはどうなりますか?** 
 
    Microsoft.Compute/VirtualMachine リソースが破棄または移動されると、関連付けられた Microsoft.SqlVirtualMachine リソースに、操作が非同期的にレプリケートされることが通知されます。
 
-1. **リソース プロバイダー (_Microsoft.SqlVirtualMachine_) リソースが破棄されると、VM はどうなりますか?**
+1. **リソース プロバイダー ( _Microsoft.SqlVirtualMachine_ ) リソースが破棄されると、VM はどうなりますか?**
 
     Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。 
 
@@ -162,14 +162,14 @@ ms.locfileid: "91566994"
 
 1. **同じ VM に SQL Server の 2 つ目のインスタンスをインストールできますか? 既定のインスタンスのインストール済みの機能を変更することはできますか?**
 
-   はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。 一部の機能 (自動バックアップ、自動修正、Azure Key Vault の統合など) は、既定のインスタンスまたは正しく構成された名前付きインスタンス (質問 3 を参照) でしか動作しないので注意が必要です。 [Azure ハイブリッド特典によるソフトウェア アシュアランス](licensing-model-azure-hybrid-benefit-ahb-change.md)、または**従量課金制**ライセンス モデルをご利用のお客様は、余分なライセンス コストを発生させることなく、仮想マシンに複数の SQL Server インスタンスをインストールすることができます。 追加の SQL Server インスタンスは、正しく構成されていなければ、システム リソースに負荷がかかる場合があります。 
+   はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。 一部の機能 (自動バックアップ、自動修正、Azure Key Vault の統合など) は、既定のインスタンスまたは正しく構成された名前付きインスタンス (質問 3 を参照) でしか動作しないので注意が必要です。 [Azure ハイブリッド特典によるソフトウェア アシュアランス](licensing-model-azure-hybrid-benefit-ahb-change.md)、または **従量課金制** ライセンス モデルをご利用のお客様は、余分なライセンス コストを発生させることなく、仮想マシンに複数の SQL Server インスタンスをインストールすることができます。 追加の SQL Server インスタンスは、正しく構成されていなければ、システム リソースに負荷がかかる場合があります。 
 
 1. **1 つの VM 上のインスタンスの最大数とは**
    SQL Server 2012 から SQL Server 2019 では、スタンドアロン サーバー上で [50 のインスタンス](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)をサポートできます。 これは、Azure でもオンプレミスでも同じ制限です。 環境をより適切に準備する方法については、[ベスト プラクティス](performance-guidelines-best-practices.md#multiple-instances)を参照してください。 
 
 1. **SQL Server の既定のインスタンスをアンインストールできますか?**
 
-   はい。ただし、考慮事項がいくつかあります。 まず、VM のライセンス モデルによっては、SQL Server 関連の請求が引き続き発生することがあります。 2 つ目に、前出の回答で述べたように、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存する機能があります。 IaaS 拡張機能を削除せずに既定のインスタンスをアンインストールすると、拡張機能が既定のインスタンスを探し続けるために、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します:**Microsoft SQL Server Credential Management**、**Microsoft SQL Server IaaS Agent**。 エラーの例を次に示します。
+   はい。ただし、考慮事項がいくつかあります。 まず、VM のライセンス モデルによっては、SQL Server 関連の請求が引き続き発生することがあります。 2 つ目に、前出の回答で述べたように、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存する機能があります。 IaaS 拡張機能を削除せずに既定のインスタンスをアンインストールすると、拡張機能が既定のインスタンスを探し続けるために、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します: **Microsoft SQL Server Credential Management** 、 **Microsoft SQL Server IaaS Agent** 。 エラーの例を次に示します。
 
       SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。
 
@@ -210,7 +210,7 @@ ms.locfileid: "91566994"
 
 1. **SQL Server 2008 / 2008 R2 インスタンスを SQL Server VM リソース プロバイダーに登録した後にアップグレードできますか?**
 
-   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、[SQL IaaS 拡張機能モード](sql-vm-resource-provider-register.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
+   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、 [SQL IaaS 拡張機能モード](sql-vm-resource-provider-register.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
 
 1. **サポートが終了した SQL Server 2008 および SQL Server 2008 R2 インスタンスの無料の延長セキュリティ更新プログラムを取得するどうすればよいですか?**
 
@@ -225,7 +225,7 @@ ms.locfileid: "91566994"
    はい。 フェールオーバー クラスター インスタンスは、記憶域サブシステムに [Premium ファイル共有 (PFS)](failover-cluster-instance-premium-file-share-manually-configure.md) または[記憶域スペース ダイレクト (S2D)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) を使用してインストールできます。 Premium ファイル共有は、多くのワークロードのニーズを満たす IOPS とスループット容量を提供します。 IO 集中型ワークロードの場合は、マネージド Premium または Ultra ディスクに基づいて記憶域スペース ダイレクトを使用することを検討してください。 または、[Azure 仮想マシンでの SQL Server の高可用性とディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
 
    > [!IMPORTANT]
-   > 現時点では、Azure 上の SQL Server FCI では _完全な_ [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、_完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。
+   > 現時点では、Azure 上の SQL Server FCI では _完全な_ [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、 _完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。
 
 1. **SQL Server VM と SQL Database サービスの違いは何ですか?**
 
@@ -241,7 +241,7 @@ ms.locfileid: "91566994"
 
 ## <a name="resources"></a>リソース
 
-**Windows VM**:
+**Windows VM** :
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)
@@ -250,9 +250,9 @@ ms.locfileid: "91566994"
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)
 
-**Linux VM**:
+**Linux VM** :
 
 * [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM での SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)
 * [よく寄せられる質問 (Linux)](../linux/frequently-asked-questions-faq.md)
-* [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)

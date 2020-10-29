@@ -7,19 +7,19 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b51746326c2df81e2dd2bdc72bf2a9ab72b649b5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588196"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790561"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>開発とテストに Azure ストレージ エミュレーターを使用する
 
 Microsoft Azure ストレージ エミュレーターは、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
 
 > [!IMPORTANT]
-> Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
+> Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、 [**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
 
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターを入手する
 
@@ -44,7 +44,7 @@ Microsoft Azure ストレージ エミュレーターは、ローカル開発の
 
 Azure ストレージ エミュレーターを起動するには、次の手順を実行します。
 
-1. **[スタート]** を選択するか、**Windows** キーを押します。
+1. **[スタート]** を選択するか、 **Windows** キーを押します。
 2. 「`Azure Storage Emulator`」と入力を開始します。
 3. 表示されているアプリケーションの一覧からエミュレーターを選択します。
 
@@ -95,7 +95,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-接続文字列の詳細については、「[Azure Storage の接続文字列を構成する](../storage-configure-connection-string.md)」を参照してください。
+接続文字列の詳細については、「[Azure Storage の接続文字列を構成する](./storage-configure-connection-string.md)」を参照してください。
 
 ### <a name="authorize-with-a-shared-access-signature"></a>共有アクセス署名を使用して承認する
 
@@ -161,7 +161,7 @@ Azure ストレージ アカウントのリソースをアドレス指定する�
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
 
 > [!NOTE]
-> ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。 詳細については、「 [.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx) 」を参照してください。
+> ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。 詳細については、「 [.NET 用の Microsoft Azure Storage クライアント ライブラリ](/previous-versions/azure/dn261237(v=azure.100)) 」を参照してください。
 >
 >
 
@@ -184,11 +184,11 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 | オプション | 説明 | コマンド | 引数 |
 | --- | --- | --- | --- |
-| **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
+| **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess* : 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
 | **状態** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
-| **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*:BLOB データを消去します。 <br/>*queue*:キュー データを消去します。 <br/>*table*:テーブル データを消去します。 <br/>*all*:すべてのサービスのすべてのデータを消去します。 |
-| **Init** |エミュレーターを設定するために、1 回限りの初期化を行います。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*:SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName*:既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate*:SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate*:SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports*:サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports*:サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess*:新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
+| **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob* :BLOB データを消去します。 <br/>*queue* :キュー データを消去します。 <br/>*table* :テーブル データを消去します。 <br/>*all* :すべてのサービスのすべてのデータを消去します。 |
+| **Init** |エミュレーターを設定するために、1 回限りの初期化を行います。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName* :SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName* :既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate* :SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate* :SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports* :サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports* :サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess* :新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>ストレージ エミュレーターと Azure ストレージとの違い
 
@@ -254,7 +254,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-54"></a>バージョン 5.4
 
-* インストールの安定性を向上させるために、エミュレーターでインストール時にポートの予約を試行しなくなりました。 ポートの予約が必要な場合は、**init** コマンドの *-reserveports* オプションを使用して指定します。
+* インストールの安定性を向上させるために、エミュレーターでインストール時にポートの予約を試行しなくなりました。 ポートの予約が必要な場合は、 **init** コマンドの *-reserveports* オプションを使用して指定します。
 
 ### <a name="version-53"></a>バージョン 5.3
 
@@ -329,7 +329,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 ## <a name="next-steps"></a>次のステップ
 
 * コミュニティで管理されているオープンソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/azure/azurite) を評価します。 
-* 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
+* 「[.NET を使用した Azure Storage サンプル](./storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
 * [Microsoft Azure Storage Explorer](https://storageexplorer.com) を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
 
 ## <a name="see-also"></a>参照

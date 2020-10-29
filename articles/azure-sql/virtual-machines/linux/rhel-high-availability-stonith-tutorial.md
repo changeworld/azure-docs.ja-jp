@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358935"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790238"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -242,7 +242,7 @@ az vm availability-set create \
     done
     ```
 
-上記のコマンドでは、VM を作成し、それらの VM 用に既定の VNet を作成します。 さまざまな構成の詳細については、[az vm create](https://docs.microsoft.com/cli/azure/vm) に関する記事を参照してください。
+上記のコマンドでは、VM を作成し、それらの VM 用に既定の VNet を作成します。 さまざまな構成の詳細については、[az vm create](/cli/azure/vm) に関する記事を参照してください。
 
 各 VM のコマンドが完了すると、次のような結果が得られます。
 
@@ -324,7 +324,7 @@ ssh <username>@publicipaddress
     sudo vi /etc/hosts
     ```
 
-    **vi** エディターで、テキストを挿入するために「`i`」と入力します。空白行に、対応する VM の**プライベート IP** を追加します。 次に、IP アドレスの後にスペースを入れ、VM 名を追加します。 1 行ごとに別のエントリを入れていきます。
+    **vi** エディターで、テキストを挿入するために「`i`」と入力します。空白行に、対応する VM の **プライベート IP** を追加します。 次に、IP アドレスの後にスペースを入れ、VM 名を追加します。 1 行ごとに別のエントリを入れていきます。
 
     ```output
     <IP1> <VM1>
@@ -333,7 +333,7 @@ ssh <username>@publicipaddress
     ```
 
     > [!IMPORTANT]
-    > 上記の**プライベート IP** アドレスを使用することをお勧めします。 この構成でパブリック IP アドレスを使用すると、設定が失敗します。また、VM を外部ネットワークに公開することはお勧めしません。
+    > 上記の **プライベート IP** アドレスを使用することをお勧めします。 この構成でパブリック IP アドレスを使用すると、設定が失敗します。また、VM を外部ネットワークに公開することはお勧めしません。
 
     **vi** エディターを終了するには、まず **Esc** キーを押し、コマンド `:wq` を入力してファイルを書き込み、終了します。
 
@@ -373,7 +373,7 @@ ssh <username>@publicipaddress
 
     **RHEL8**
 
-    RHEL 8 では、ノードを個別に認証する必要があります。 プロンプトが表示されたら、**hacluster** のユーザー名とパスワードを手動で入力します。
+    RHEL 8 では、ノードを個別に認証する必要があります。 プロンプトが表示されたら、 **hacluster** のユーザー名とパスワードを手動で入力します。
 
     ```bash
     sudo pcs host auth <node1> <node2> <node3>
@@ -486,7 +486,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
  1. [https://resources.azure.com](https://portal.azure.com ) に移動します
  2. [[Azure Active Directory] ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)を開きます。 [プロパティ] に移動し、ディレクトリ ID をメモします。 これは `tenant ID` です
- 3. [ **[アプリの登録]** ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) をクリックします
+ 3. [ **[アプリの登録]**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) をクリックします
  4. **[新規登録]** をクリックします
  5. **名前** (たとえば、`<resourceGroupName>-app`) を入力し、 **[Accounts in this organization directory only]\(この組織ディレクトリ内のアカウントのみ\)** を選択します
  6. アプリケーションの種類として **[Web]** を選択します。サインオン URL (たとえば http://localhost) ) を入力し、[追加] をクリックします。 サインオン URL は使用されず、任意の有効な URL を指定することができます。 完了したら、 **[登録]** をクリックします
@@ -601,7 +601,7 @@ sudo firewall-cmd --reload
 ## <a name="install-sql-server-and-mssql-tools"></a>SQL Server と mssql-tools をインストールする
 
 > [!NOTE]
-> SQL Server 2019 が RHEL8-HA にプレインストールされた VM を作成した場合、以下の SQL Server と mssql-tools をインストールする手順はスキップしてください。すべての VM で `sudo /opt/mssql/bin/mssql-conf set-sa-password` コマンドを実行し、すべての VM に sa パスワードを設定した後、「**可用性グループを構成する**」セクションに進んでください。
+> SQL Server 2019 が RHEL8-HA にプレインストールされた VM を作成した場合、以下の SQL Server と mssql-tools をインストールする手順はスキップしてください。すべての VM で `sudo /opt/mssql/bin/mssql-conf set-sa-password` コマンドを実行し、すべての VM に sa パスワードを設定した後、「 **可用性グループを構成する** 」セクションに進んでください。
 
 次のセクションを使用して、SQL Server と mssql-tools を VM にインストールします。 以下のいずれかのサンプルを選択して、SQL Server 2017 を RHEL 7 にインストールするか、SQL Server 2019 を RHEL 8 にインストールしてください。 すべてのノードでこれらのアクションをそれぞれ実行します。 詳細については、[Red Hat VM への SQL Server のインストール](/sql/linux/quickstart-install-connect-red-hat)に関するページを参照してください。
 
@@ -699,7 +699,7 @@ sudo systemctl restart mssql-server
 
 現在、AG エンドポイントに対する AD 認証はサポートされていません。 そのため、AG エンドポイントの暗号化には証明書を使用する必要があります。
 
-1. SQL Server Management Studio (SSMS) または SQL CMD を使用して、**すべてのノード**に接続します。 次のコマンドを実行して、AlwaysOn_health セッションを有効にし、マスター キーを作成します。
+1. SQL Server Management Studio (SSMS) または SQL CMD を使用して、 **すべてのノード** に接続します。 次のコマンドを実行して、AlwaysOn_health セッションを有効にし、マスター キーを作成します。
 
     > [!IMPORTANT]
     > 自分の SQL Server インスタンスにリモートで接続する場合は、ファイアウォールでポート 1433 を開いておく必要があります。 さらに、各 VM の NSG でポート 1433 へのインバウンド接続を許可する必要があります。 インバウンド セキュリティ規則の作成の詳細については、「[セキュリティ規則を作成する](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)」を参照してください。

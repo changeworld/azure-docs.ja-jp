@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058048"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793349"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>クラウド データベースにまたがる分散トランザクション (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database と Azure SQL Managed Instance のエラスティック データベース トランザクションは、複数のデータベースにまたがるトランザクションを実行する機能です。 エラスティック データベース トランザクションは、.NET アプリケーションから ADO.NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
-さらに、Managed Instance 分散トランザクションは、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) で使用できます。
+Azure SQL Database と Azure SQL Managed Instance のエラスティック データベース トランザクションは、複数のデータベースにまたがるトランザクションを実行する機能です。 エラスティック データベース トランザクションは、.NET アプリケーションから ADO.NET を介して利用できます。[System.Transaction](/dotnet/api/system.transactions) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
+さらに、Managed Instance 分散トランザクションは、[Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) で使用できます。
 
 従来、このようなシナリオをオンプレミスで実現するためには通常、Microsoft 分散トランザクション コーディネーター (MSDTC) が必要でした。 Azure における PaaS (Platform-as-a-Service) アプリケーションでは MSDTC が利用できないため、分散トランザクションの調整機能が SQL Database または Managed Instance に直接統合されました。 アプリケーションは、任意のデータベースに接続して分散トランザクションを開始できます。すると、いずれかのデータベースまたはサーバーによって分散トランザクションが透過的に調整されます。そのようすを示したのが次の図です。
 
@@ -32,7 +32,7 @@ Azure SQL Database と Azure SQL Managed Instance のエラスティック デ�
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
-エラスティック データベース トランザクションの特長は、複数の異なるデータベースに格納されているデータに対して不可分な変更をアプリケーションから実行できることです。 プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) を使用したサーバー側のエクスペリエンス (ストアド プロシージャまたはサーバー側スクリプトで記述されたコード) は、Managed Instance のみで使用できます。
+エラスティック データベース トランザクションの特長は、複数の異なるデータベースに格納されているデータに対して不可分な変更をアプリケーションから実行できることです。 プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。 [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) を使用したサーバー側のエクスペリエンス (ストアド プロシージャまたはサーバー側スクリプトで記述されたコード) は、Managed Instance のみで使用できます。
 > [!IMPORTANT]
 > プレビューの場合、Azure SQL Database と Azure SQL Managed Instance との間でエラスティック データベース トランザクションを実行することは、現時点ではサポートされていません。 エラスティック データベース トランザクションは、SQL Database のセットまたは Managed Instance のセットのどちらかのみにまたがって使用できます。
 
@@ -136,9 +136,9 @@ SQL Database および Managed Instance のエラスティック データベー
 
 ## <a name="transact-sql-development-experience"></a>Transact-SQL 開発エクスペリエンス
 
-Transact-SQL を使用したサーバー側の分散トランザクションは、Azure SQL Managed Instance でのみ使用できます。 分散トランザクションは、同じ[サーバー信頼グループ](https://aka.ms/mitrusted-groups)に属する Managed Instance 間でのみ実行できます。 このシナリオでは、Managed Instance の相互参照のために、[リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure)を使用する必要があります。
+Transact-SQL を使用したサーバー側の分散トランザクションは、Azure SQL Managed Instance でのみ使用できます。 分散トランザクションは、同じ[サーバー信頼グループ](../managed-instance/server-trust-group-overview.md)に属する Managed Instance 間でのみ実行できます。 このシナリオでは、Managed Instance の相互参照のために、[リンク サーバー](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure)を使用する必要があります。
 
-次の Transact-SQL コードの例では、[BEGIN DISTRIBUTED TRANSACTION](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) を使用して分散トランザクションを開始しています。
+次の Transact-SQL コードの例では、[BEGIN DISTRIBUTED TRANSACTION](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) を使用して分散トランザクションを開始しています。
 
 ```Transact-SQL
 
@@ -232,19 +232,19 @@ Transact-SQL を使用したサーバー側の分散トランザクションは�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 エラスティック データベース トランザクションは、Azure SQL Database の複数のサーバーに対して実行できます。 トランザクションがサーバーの境界を超えた場合、参加するサーバーが最初に双方向の通信リレーションシップに入る必要があります。 通信リレーションシップが確立されると、2 つのサーバーのいずれのデータベースも、もう一方のサーバーのデータベースを使用してエラスティック トランザクションに参加できます。 2 つのサーバーにまたがるトランザクションでは、サーバーの任意のペア用に通信リレーションシップが用意されている必要があります。
 
 次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
 
-* **New-AzSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つのサーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対称です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
-* **Get-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
-* **Remove-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。
+* **New-AzSqlServerCommunicationLink** :このコマンドレットを使用して Azure SQL Database で 2 つのサーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対称です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **Get-AzSqlServerCommunicationLink** :このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
+* **Remove-AzSqlServerCommunicationLink** :このコマンドレットを使用して既存の通信リレーションシップを削除します。
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション
 
-分散トランザクションは、Azure SQL Managed Instance の複数のサーバーに対して実行できます。 トランザクションが Managed Instance の境界を越える場合、参加するインスタンスが最初に双方向のセキュリティおよび通信リレーションシップに入る必要があります。 これを行うには、[サーバー信頼グループ](https://aka.ms/mitrusted-groups)を作成します。これは Azure portal で行うことができます。 Managed Instance が同じ仮想ネットワーク上にない場合は、[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定する必要があります。また、ネットワーク セキュリティ グループのインバウンドおよびアウトバウンド規則で、参加しているすべての仮想ネットワーク上でポート 5024 と 11000 - 12000 を許可する必要があります。
+分散トランザクションは、Azure SQL Managed Instance の複数のサーバーに対して実行できます。 トランザクションが Managed Instance の境界を越える場合、参加するインスタンスが最初に双方向のセキュリティおよび通信リレーションシップに入る必要があります。 これを行うには、[サーバー信頼グループ](../managed-instance/server-trust-group-overview.md)を作成します。これは Azure portal で行うことができます。 Managed Instance が同じ仮想ネットワーク上にない場合は、[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)を設定する必要があります。また、ネットワーク セキュリティ グループのインバウンドおよびアウトバウンド規則で、参加しているすべての仮想ネットワーク上でポート 5024 と 11000 - 12000 を許可する必要があります。
 
   ![Azure portal のサーバー信頼グループ][3]
 
@@ -254,13 +254,13 @@ Transact-SQL を使用したサーバー側の分散トランザクションは�
 
 ## <a name="monitoring-transaction-status"></a>トランザクションの状態の監視
 
-現在実行されているエラスティック データベース トランザクションの状態と進行状況は、動的管理ビュー (DMV) を使用して監視します。 トランザクションに関連したすべての DMV は、SQL Database と Managed Instance の分散トランザクションにとって重要となります。 対応する DMV の一覧については、「[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)」を参照してください。
+現在実行されているエラスティック データベース トランザクションの状態と進行状況は、動的管理ビュー (DMV) を使用して監視します。 トランザクションに関連したすべての DMV は、SQL Database と Managed Instance の分散トランザクションにとって重要となります。 対応する DMV の一覧については、「[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql)」を参照してください。
 
 次の DMV が特に重要となります。
 
-* **sys.dm\_tran\_active\_transactions**:現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms174302.aspx)を参照してください。
-* **sys.dm\_tran\_database\_transactions**:トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms186957.aspx)を参照してください。
-* **sys.dm\_tran\_locks**:実行中のトランザクションによって現在保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms190345.aspx)を参照してください。
+* **sys.dm\_tran\_active\_transactions** :現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)を参照してください。
+* **sys.dm\_tran\_database\_transactions** :トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)を参照してください。
+* **sys.dm\_tran\_locks** :実行中のトランザクションによって現在保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -268,19 +268,19 @@ SQL Database のエラスティック データベース トランザクショ�
 
 * サポートされるトランザクションの対象は、SQL Database 内のデータベースに限られます。 その他の [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) リソース プロバイダーや SQL Database 以外のデータベースがエラスティック データベース トランザクションに参加することはできません。 つまり、オンプレミス SQL Server と Azure SQL Database にまたがってエラスティック データベース トランザクションを実行することはできません。 オンプレミスの分散トランザクションについては、引き続き MSDTC をご利用ください。
 * サポートされるのは、.NET アプリケーションからクライアント側で調整されるトランザクションだけです。 将来的には、サーバー側の T-SQL サポート (BEGIN DISTRIBUTED TRANSACTION など) が予定されていますが、現時点では利用できません。
-* WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)として失敗します。
+* WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](/dotnet/api/system.servicemodel.protocolexception)として失敗します。
 
 Managed Instance の分散トランザクションには現在、次の制限が適用されます。
 
 * サポートされるトランザクションの対象は、Managed Instance 内のデータベースに限られます。 その他の [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) リソース プロバイダーや Azure SQL Managed Instance 以外のデータベースが分散トランザクションに参加することはできません。 つまり、オンプレミス SQL Server と Azure SQL Managed Instance にまたがって分散トランザクションを実行することはできません。 オンプレミスの分散トランザクションについては、引き続き MSDTC をご利用ください。
-* WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)として失敗します。
-* 分散トランザクションに参加するには、Azure SQL Managed Instance が[サーバー信頼グループ](https://aka.ms/mitrusted-groups)に属している必要があります。
-* [サーバー信頼グループ](https://aka.ms/mitrusted-groups)の制限事項が分散トランザクションに影響します。
+* WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](/dotnet/api/system.servicemodel.protocolexception)として失敗します。
+* 分散トランザクションに参加するには、Azure SQL Managed Instance が[サーバー信頼グループ](../managed-instance/server-trust-group-overview.md)に属している必要があります。
+* [サーバー信頼グループ](../managed-instance/server-trust-group-overview.md)の制限事項が分散トランザクションに影響します。
 * 分散トランザクションに参加する Managed Instance は、プライベート エンドポイント (デプロイ先の仮想ネットワークのプライベート IP アドレスを使用) を介して接続する必要があり、プライベート FQDN を使用して相互参照される必要があります。 クライアント アプリケーションからプライベート エンドポイントで分散トランザクションを使用できます。 さらに、プライベート エンドポイントを参照するリンク サーバーを Transact-SQL で利用する場合、クライアント アプリケーションからパブリック エンドポイントでも分散トランザクションを使用できます。 この制限について次の図で説明します。
   ![プライベート エンドポイントの接続に関する制限][4]
 ## <a name="next-steps"></a>次の手順
 
-* 質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)から Microsoft にご連絡ください。
+* 質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)から Microsoft にご連絡ください。
 * 機能に関する要望については、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)または [Managed Instance フォーラム](https://feedback.azure.com/forums/915676-sql-managed-instance)に追加してください。
 
 
@@ -290,4 +290,3 @@ Managed Instance の分散トランザクションには現在、次の制限が
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
 [4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
- 

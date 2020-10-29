@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985757"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785784"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -30,7 +30,7 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 2017 年 10 月 20 日より後に Azure Storage に書き込まれたすべてのブロック BLOB、追加 BLOB、またはページ BLOB は暗号化されます。 この日付より前に作成された BLOB は、引き続きバックグラウンド プロセスによって暗号化されます。 2017 年 10 月 20 日より前に作成された BLOB を強制的に暗号化するには、BLOB を書き換えることができます。 BLOB の暗号化状態を確認する方法については、「[BLOB の暗号化状態を確認する](../blobs/storage-blob-encryption-status.md)」を参照してください。
 
-Azure Storage 暗号化の基になっている暗号化モジュールについて詳しくは、「[Cryptography API: Next Generation (暗号化 API: 次世代)](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)」を参照してください。
+Azure Storage 暗号化の基になっている暗号化モジュールについて詳しくは、「[Cryptography API: Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
 
 Azure マネージド ディスクの暗号化とキー管理に関する詳細については、「Azure Managed Disks のサーバー側暗号化」のページを参照してください。Windows VM の場合は[こちら](../../virtual-machines/windows/disk-encryption.md)を、Linux VM の場合は[こちら](../../virtual-machines/linux/disk-encryption.md)をご覧ください。
 
@@ -38,8 +38,8 @@ Azure マネージド ディスクの暗号化とキー管理に関する詳細�
 
 既定では、新しいストレージ アカウント内のデータは Microsoft マネージド キーで暗号化されます。 引き続き Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 独自のキーで暗号化を管理する場合は、次の 2 つのオプションがあります。 どちらかの種類のキー管理またはその両方を使用できます。
 
-- BLOB ストレージと Azure Files のデータの暗号化と復号化に使用する "*カスタマーマネージド キー*" を指定できます。<sup>1、2</sup> カスタマーマネージド キーは、Azure Key Vault または Azure Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納する必要があります。 カスタマーマネージド キーの詳細については、[Azure Storage 暗号化へのカスタマーマネージド キーの使用](encryption-customer-managed-keys.md)に関するページを参照してください。
-- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](../blobs/encryption-customer-provided-keys.md)」を参照してください。
+- BLOB ストレージと Azure Files のデータの暗号化と復号化に使用する " *カスタマーマネージド キー* " を指定できます。 <sup>1、2</sup> カスタマーマネージド キーは、Azure Key Vault または Azure Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納する必要があります。 カスタマーマネージド キーの詳細については、[Azure Storage 暗号化へのカスタマーマネージド キーの使用](./customer-managed-keys-overview.md)に関するページを参照してください。
+- BLOB ストレージの操作では、" *カスタマー指定のキー* " を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](../blobs/encryption-customer-provided-keys.md)」を参照してください。
 
 次の表では、Azure Storage 暗号化のキー管理オプションを比較しています。
 
@@ -101,8 +101,8 @@ Azure Storage リソース プロバイダーを使用して、ストレージ �
 
 暗号化スコープが Azure Key Vault のカスタマー マネージド キーで保護されている場合は、暗号化スコープを無効にするために、キー コンテナー内の関連付けられているキーを削除することもできます。 Azure Key Vault 内のカスタマー マネージド キーは論理的な削除と消去保護によって保護されており、削除されたキーには、それらのプロパティによって定義されている動作が適用されることに注意してください。 詳細については、Azure Key Vault のドキュメントで次のトピックのいずれかを参照してください。
 
-- [PowerShell で論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)
-- [CLI で論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)
+- [PowerShell で論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
+- [CLI で論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > 暗号化スコープを削除することはできません。

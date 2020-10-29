@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a7d96c13b47bee9c092be926dc54555979e6c6f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565141"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790119"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "91565141"
 > * [SQL Server 2014](automated-backup-sql-2014.md)
 > * [SQL Server 2016 以降](automated-backup.md)
 
-自動バックアップ v2 では、SQL Server 2016 以降の Standard、Enterprise、または Developer エディションを実行している Azure VM 上のすべての既存および新規データベースのための [Microsoft Azure へのマネージド バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)が自動的に構成されます。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップ v2 は、[SQL Server IaaS (サービスとしてのインフラストラクチャ) Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存します。
+自動バックアップ v2 では、SQL Server 2016 以降の Standard、Enterprise、または Developer エディションを実行している Azure VM 上のすべての既存および新規データベースのための [Microsoft Azure へのマネージド バックアップ](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)が自動的に構成されます。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップ v2 は、[SQL Server IaaS (サービスとしてのインフラストラクチャ) Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存します。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -38,16 +38,16 @@ ms.locfileid: "91565141"
 
 - Windows Server 2012 R2 以降
 
-**SQL Server バージョン/エディション**:
+**SQL Server バージョン/エディション** :
 
 - SQL Server 2016 以降:Developer、Standard、または Enterprise
 
 > [!NOTE]
 > SQL Server 2014 については、[SQL Server 2014 の自動バックアップ](automated-backup-sql-2014.md)に関するページを参照してください。
 
-**データベースの構成**:
+**データベースの構成** :
 
-- ターゲット "_ユーザー_" データベースでは、完全復旧モデルを使用する必要があります。 システム データベースでは、完全復旧モデルを使用する必要はありません。 しかし、モデルまたは MSDB のログのバックアップの作成を必要とする場合は、完全復旧モデルを使用する必要があります。 バックアップに対する完全復旧モデルの影響の詳細については、「[完全復旧モデルでのバックアップ](https://technet.microsoft.com/library/ms190217.aspx)」を参照してください。 
+- ターゲット " _ユーザー_ " データベースでは、完全復旧モデルを使用する必要があります。 システム データベースでは、完全復旧モデルを使用する必要はありません。 しかし、モデルまたは MSDB のログのバックアップの作成を必要とする場合は、完全復旧モデルを使用する必要があります。 バックアップに対する完全復旧モデルの影響の詳細については、「[完全復旧モデルでのバックアップ](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))」を参照してください。 
 - SQL Server VM が SQL VM リソース プロバイダーに[フル管理モード](sql-vm-resource-provider-register.md#upgrade-to-full)で登録されています。 
 -  自動バックアップは、フル [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存します。 そのため、自動バックアップは、既定のインスタンスのターゲット データベース、または単一の名前付きインスタンスでのみサポートされます。 既定のインスタンスがなく、複数の名前付きインスタンスがある場合、SQL IaaS 拡張機能は失敗し、自動バックアップは機能しません。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "91565141"
 | **自動化されたバックアップ** | 有効/無効 (無効) | SQL Server 2016/2017 Developer、Standard、または Enterprise を実行している Azure VM の自動バックアップを有効または無効にします。 |
 | **保有期間** | 1 ～ 30 日 (30 日) | バックアップを保持する日数。 |
 | **ストレージ アカウント** | Azure ストレージ アカウント | 自動バックアップのファイルを BLOB ストレージに保存するために使用する Azure ストレージ アカウント。 この場所にコンテナーが作成され、すべてのバックアップ ファイルが保存されます。 バックアップ ファイルの名前付け規則には、日付、時刻、およびデータベース GUID が含まれます。 |
-| **暗号化** |有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントに配置されます。 それには、同じ**自動バックアップ** コンテナーと、同じ名前付け規則が使われます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
+| **暗号化** |有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントに配置されます。 それには、同じ **自動バックアップ** コンテナーと、同じ名前付け規則が使われます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
 | **パスワード** |パスワード テキスト | 暗号化キーのパスワード。 このパスワードは、暗号化を有効にした場合にのみ必須となります。 暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。 |
 
 ### <a name="advanced-settings"></a>詳細設定
@@ -117,7 +117,7 @@ ms.locfileid: "91565141"
 
 Resource Manager デプロイ モデルで新しい SQL Server 2016 または 2017 仮想マシンを作成する場合は、Azure portal を使用して自動バックアップ v2 を構成します。
 
-**[SQL Server の設定]** タブで、 **[自動バックアップ]** の **[有効にする]** を選択します。 次の Azure Portal のスクリーンショットは、**SQL Automated Backup** の設定を示しています。
+**[SQL Server の設定]** タブで、 **[自動バックアップ]** の **[有効にする]** を選択します。 次の Azure Portal のスクリーンショットは、 **SQL Automated Backup** の設定を示しています。
 
 ![Azure portal での SQL 自動バックアップ構成](./media/automated-backup/automated-backup-blade.png)
 
@@ -128,7 +128,7 @@ Resource Manager デプロイ モデルで新しい SQL Server 2016 または 20
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-既存の SQL Server 仮想マシンの場合、[SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)に移動してから **[バックアップ]** を選択し、自動バックアップを構成します。
+既存の SQL Server 仮想マシンの場合、 [SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)に移動してから **[バックアップ]** を選択し、自動バックアップを構成します。
 
 ![既存の VM の SQL 自動バックアップ](./media/automated-backup/sql-server-configuration.png)
 
@@ -142,12 +142,12 @@ Resource Manager デプロイ モデルで新しい SQL Server 2016 または 20
 PowerShell を使用して自動バックアップ v2 を構成できます。 開始する前に、次の操作を行う必要があります。
 
 - [最新の Azure PowerShell をダウンロードしてインストールします](https://aka.ms/webpi-azps)。
-- Windows PowerShell を開き、**Connect-AzAccount** コマンドを使用してそれをアカウントに関連付けます。
+- Windows PowerShell を開き、 **Connect-AzAccount** コマンドを使用してそれをアカウントに関連付けます。
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-server-iaas-extension"></a>SQL Server IaaS 拡張機能のインストール
-SQL Server 仮想マシンを Azure Portal からプロビジョニングした場合は、SQL Server IaaS 拡張機能は既にインストールされています。 これがお使いの仮想マシンにインストールされているかどうかは、**Get-AzVM** コマンドを呼び出し、**Extensions** プロパティを調べることで判断できます。
+SQL Server 仮想マシンを Azure Portal からプロビジョニングした場合は、SQL Server IaaS 拡張機能は既にインストールされています。 これがお使いの仮想マシンにインストールされているかどうかは、 **Get-AzVM** コマンドを呼び出し、 **Extensions** プロパティを調べることで判断できます。
 
 ```powershell
 $vmname = "vmname"
@@ -158,7 +158,7 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Agent 拡張機能がインストールされている場合、それは "SqlIaaSAgent" または "SQLIaaSExtension" と表示されます。 また、拡張機能の **ProvisioningState** も "Succeeded" と表示されるはずです。 
 
-インストールされていない場合、またはプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region**) を指定する必要があります。
+インストールされていない場合、またはプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region** ) を指定する必要があります。
 
 ```powershell
 $region = "EASTUS2"
@@ -231,7 +231,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。 
 
-暗号化を有効にするには、**EnableEncryption** パラメーターと、**CertificatePassword** パラメーターのパスワード (セキュリティで保護された文字列) を渡すように、前のスクリプトを変更します。 次のスクリプトでは、前の例の自動バックアップ設定を有効にし、暗号化を追加します。
+暗号化を有効にするには、 **EnableEncryption** パラメーターと、 **CertificatePassword** パラメーターのパスワード (セキュリティで保護された文字列) を渡すように、前のスクリプトを変更します。 次のスクリプトでは、前の例の自動バックアップ設定を有効にし、暗号化を追加します。
 
 ```powershell
 $password = "P@ssw0rd"
@@ -252,7 +252,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 設定が適用されたことを確認するには、[自動バックアップの構成を確認します](#verifysettings)。
 
 ### <a name="disable-automated-backup"></a>自動バックアップを無効にする
-自動バックアップを無効にするには、**New-AzVMSqlServerAutoBackupConfig** コマンドの **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。 インストールと同様に、自動バックアップの無効化には数分かかる場合があります。
+自動バックアップを無効にするには、 **New-AzVMSqlServerAutoBackupConfig** コマンドの **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。 インストールと同様に、自動バックアップの無効化には数分かかる場合があります。
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
@@ -310,22 +310,21 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 SQL Server 2016/2017 上で自動バックアップを監視するには、主なオプションが 2 つあります。 自動バックアップでは SQL Server マネージド バックアップ機能を使用するため、この両方に同じ監視手法が適用されます。
 
-まず、[msdb.managed_backup.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) を呼び出すことによって状態をポーリングできます。 または、[msdb.managed_backup.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) テーブル値関数のクエリを実行します。
+まず、[msdb.managed_backup.sp_get_backup_diagnostics](/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) を呼び出すことによって状態をポーリングできます。 または、[msdb.managed_backup.fn_get_health_status](/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) テーブル値関数のクエリを実行します。
 
 もう 1 つのオプションは、通知に組み込みのデータベース メール機能を利用する方法です。
 
-1. [msdb.managed_backup.sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) ストアド プロシージャを呼び出して、**SSMBackup2WANotificationEmailIds** パラメーターにメール アドレスを割り当てます。 
+1. [msdb.managed_backup.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) ストアド プロシージャを呼び出して、 **SSMBackup2WANotificationEmailIds** パラメーターにメール アドレスを割り当てます。 
 1. [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) が Azure VM から電子メールを送信できるようにします。
-1. SMTP サーバーとユーザー名を使用してデータベース メールを構成します。 データベース メールは、SQL Server Management Studio または Transact-SQL コマンドで構成できます。 詳細については、「[データベース メール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail)」を参照してください。
-1. [データベース メールを使用するように SQL Server エージェントを構成します](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
+1. SMTP サーバーとユーザー名を使用してデータベース メールを構成します。 データベース メールは、SQL Server Management Studio または Transact-SQL コマンドで構成できます。 詳細については、「[データベース メール](/sql/relational-databases/database-mail/database-mail)」を参照してください。
+1. [データベース メールを使用するように SQL Server エージェントを構成します](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
 1. SMTP ポートがローカルの VM ファイアウォールと、その VM のネットワーク セキュリティ グループの両方で許可されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-自動バックアップ v2 では、Azure VM でマネージド バックアップが構成されます。 そのため、 [マネージド バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
+自動バックアップ v2 では、Azure VM でマネージド バックアップが構成されます。 そのため、 [マネージド バックアップに関するドキュメント](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) を見直して、動作と影響を理解することが重要です。
 
 Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、[Azure Virtual Machines での SQL Server のバックアップと復元](backup-restore.md)に関する記事を参照してください。
 
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。
 
 Azure VM で SQL Server を実行する方法の詳細については、[Azure 仮想マシンにおける SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。
-

@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: 61160943fc5762fd492f61a75a44159f2ef9cab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76390efaed94003a792b04836d6850e6b7a7ead
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448784"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789558"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>動的管理ビューを使用した Microsoft Azure SQL Database および Azure SQL Managed Instance のパフォーマンスの監視
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,18 +30,18 @@ Microsoft Azure SQL Database および Azure SQL Managed Instance では、動�
 - 実行関連の動的管理ビュー。
 - トランザクション関連の動的管理ビュー。
 
-動的管理ビューの詳細については、[動的管理ビューおよび関数 (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) に関する記事をご覧ください。
+動的管理ビューの詳細については、[動的管理ビューおよび関数 (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) に関する記事をご覧ください。
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。 **VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。
+Azure SQL Database で、動的管理ビューに対してクエリを実行するには、 **VIEW DATABASE STATE** アクセス許可が必要です。 **VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。
 **VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
 ```sql
 GRANT VIEW DATABASE STATE TO database_user;
 ```
 
-Azure SQL Managed Instance で、動的管理ビューに対してクエリを実行するには、**VIEW SERVER STATE** アクセス許可が必要です。 詳細については、「[システム動的管理ビュー](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions)」を参照してください。
+Azure SQL Managed Instance で、動的管理ビューに対してクエリを実行するには、 **VIEW SERVER STATE** アクセス許可が必要です。 詳細については、「[システム動的管理ビュー](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions)」を参照してください。
 
 SQL Server のインスタンスおよび Azure SQL Managed Instance では、動的管理ビューにサーバーの状態についての情報が返されます。 Azure SQL Database では、現在の論理データベースに関する情報のみが返されます。
 
@@ -94,7 +94,7 @@ GO
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>CPU に関する問題が過去に発生した
 
-過去に問題が発生していて、根本原因分析を行いたい場合は、[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用します。 データベースにアクセスできるユーザーは、T-SQL を使用して、クエリ ストア データにクエリを実行できます。 クエリ ストアの既定の構成では、1 時間の粒度が使用されます。 大量の CPU を消費するクエリのアクティビティを確認するには、次のクエリを使用します。 このクエリは、CPU の消費が上位 15 のクエリを返します。 必ず `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()` を変更してください。
+過去に問題が発生していて、根本原因分析を行いたい場合は、[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用します。 データベースにアクセスできるユーザーは、T-SQL を使用して、クエリ ストア データにクエリを実行できます。 クエリ ストアの既定の構成では、1 時間の粒度が使用されます。 大量の CPU を消費するクエリのアクティビティを確認するには、次のクエリを使用します。 このクエリは、CPU の消費が上位 15 のクエリを返します。 必ず `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()` を変更してください。
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -131,7 +131,7 @@ IO パフォーマンスに関する問題を特定する場合、IO の問題�
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>IO に関する問題が現時点で発生している場合
 
-[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) または [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を使用して、`wait_type` と `wait_time` を確認します。
+[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) または [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を使用して、`wait_type` と `wait_time` を確認します。
 
 #### <a name="identify-data-and-log-io-usage"></a>データ IO およびログ IO の使用率の特定
 
@@ -252,7 +252,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>`tempdb` パフォーマンスに関する問題の特定
 
-IO パフォーマンスに関する問題を特定する場合、`tempdb` の問題に関連している待機の種類の上位は `PAGELATCH_*` です (`PAGEIOLATCH_*` ではありません)。 ただし、`PAGELATCH_*` 待機は必ずしも `tempdb` 競合があることを意味しません。  この待機は、同一のデータ ページを対象とする同時要求が原因で、ユーザーオブジェクト データ ページ競合が発生していることを意味する場合もあります。 `tempdb` 競合をさらに確認するには、[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) を使用して、wait_resource 値が `2:x:y` で始まることを確認します。ここで、2 は `tempdb` (データベース ID)、`x` はファイル ID、`y` はページ ID です。  
+IO パフォーマンスに関する問題を特定する場合、`tempdb` の問題に関連している待機の種類の上位は `PAGELATCH_*` です (`PAGEIOLATCH_*` ではありません)。 ただし、`PAGELATCH_*` 待機は必ずしも `tempdb` 競合があることを意味しません。  この待機は、同一のデータ ページを対象とする同時要求が原因で、ユーザーオブジェクト データ ページ競合が発生していることを意味する場合もあります。 `tempdb` 競合をさらに確認するには、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) を使用して、wait_resource 値が `2:x:y` で始まることを確認します。ここで、2 は `tempdb` (データベース ID)、`x` はファイル ID、`y` はページ ID です。  
 
 tempdb 競合では、`tempdb` が使用されるアプリケーション コードを減らすか、または書き直すのが一般的な方法です。  `tempdb` の一般的な使用領域には以下があります。
 
@@ -521,17 +521,17 @@ WHERE c.session_id = @@SPID;
 
 ## <a name="monitor-resource-use"></a>リソース使用量の監視
 
-[SQL Database Query Performance Insight](query-performance-insight-use.md) を使用して、Azure SQL Database リソースの使用量を監視できます。 Azure SQL Database および Azure SQL Managed Instance の場合は、[クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)を使用して監視できます。
+[SQL Database Query Performance Insight](query-performance-insight-use.md) を使用して、Azure SQL Database リソースの使用量を監視できます。 Azure SQL Database および Azure SQL Managed Instance の場合は、[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して監視できます。
 
 また、次のビューを使用して使用量を監視することもできます。
 
 - Azure SQL Database: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 - Azure SQL Managed Instance: [sys.server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
-- Azure SQL Database および Azure SQL Managed Instance の両方: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- Azure SQL Database および Azure SQL Managed Instance の両方: [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 
 ### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
-[sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) ビューは、すべてのデータベースで使用できます。 **sys.dm_db_resource_stats** ビューには、サービス レベルに関連した最近のリソース使用率データが表示されます。 CPU、データ IO、ログ書き込み、メモリの平均 (%) が 15 秒ごとに記録され、1 時間保持されます。
+[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューは、すべてのデータベースで使用できます。 **sys.dm_db_resource_stats** ビューには、サービス レベルに関連した最近のリソース使用率データが表示されます。 CPU、データ IO、ログ書き込み、メモリの平均 (%) が 15 秒ごとに記録され、1 時間保持されます。
 
 このビューにはリソース使用率が詳細に表示されるので、現状の分析やトラブルシューティングが目的の場合、最初に **sys.dm_db_resource_stats** を使用してください。 たとえば次のクエリは、現在のデータベースの過去 1 時間の平均リソース使用率と最大リソース使用率を表示します。
 
@@ -548,7 +548,7 @@ SELECT
 FROM sys.dm_db_resource_stats;  
 ```
 
-その他のクエリについては、[sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) の例を参照してください。
+その他のクエリについては、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) の例を参照してください。
 
 ### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
@@ -568,7 +568,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
-**master** データベースの [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) ビューには、特定のサービス レベルとコンピューティング サイズでのデータベースのパフォーマンス監視に役立つ追加情報が含まれます。 データは 5 分ごとに集められ、約 14 日間保持されます。 このビューは、過去にデータベースでリソースがどのように使用されたかを長期にわたり分析する場合に役立ちます。
+**master** データベースの [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューには、特定のサービス レベルとコンピューティング サイズでのデータベースのパフォーマンス監視に役立つ追加情報が含まれます。 データは 5 分ごとに集められ、約 14 日間保持されます。 このビューは、過去にデータベースでリソースがどのように使用されたかを長期にわたり分析する場合に役立ちます。
 
 次のグラフは、Premium データベースの CPU リソース使用率を示しています (P2 コンピューティング サイズ、1 週間における毎時間の使用率)。 このグラフは月曜日から始まります。5 営業日が経過した後の週末ではアプリケーションの活動が大幅に減っていることがわかります。
 
@@ -581,7 +581,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 データベース エンジンでは、各アクティブ データベースの使用済みリソース情報が、各サーバーの **master** データベースの **sys.resource_stats** ビューで公開されます。 テーブルのデータは 5 分おきに集計されます。 Basic、Standard、Premium のサービス レベルでは、データをテーブルに表示するのに 5 分を超える時間がかかる可能性があります。このため、このデータはほぼリアルタイムの分析よりも過去の分析に役に立ちます。 **sys.resource_stats** ビューに照会すると、データベースの最近の履歴が表示され、選択した予約で必要なときに望ましいパフォーマンスが発揮されたかどうかを検証できます。
 
 > [!NOTE]
-> Azure SQL Database で、次の例の **sys.resource_stats** にクエリを実行するには、**master** データベースに接続する必要があります。
+> Azure SQL Database で、次の例の **sys.resource_stats** にクエリを実行するには、 **master** データベースに接続する必要があります。
 
 次の例は、このビューのデータが表示されているところです。
 
@@ -594,7 +594,7 @@ ORDER BY start_time DESC
 
 ![The sys.resource_stats catalog view](./media/monitoring-with-dmvs/sys_resource_stats.png)
 
-次の例では、**sys.resource_stats** カタログ ビューを使用して、データベースでのリソースの使用状況に関する情報を取得するさまざまな方法を示します。
+次の例では、 **sys.resource_stats** カタログ ビューを使用して、データベースでのリソースの使用状況に関する情報を取得するさまざまな方法を示します。
 
 1. データベース userdb1 の過去 1 週間のリソース使用率を確認するには、このクエリを実行します。
 
@@ -606,7 +606,7 @@ ORDER BY start_time DESC
     ORDER BY start_time DESC;
     ```
 
-2. ワークロードがコンピューティング サイズにどの程度適合しているかを評価するには、リソース メトリックの各側面を分析する必要があります。つまり、CPU、読み取り、書き込み、ワーカー数、セッション数です。 次に、**sys.resource_stats** を使用してこれらのリソース メトリックの平均値と最大値を報告するように修正したクエリを示します:
+2. ワークロードがコンピューティング サイズにどの程度適合しているかを評価するには、リソース メトリックの各側面を分析する必要があります。つまり、CPU、読み取り、書き込み、ワーカー数、セッション数です。 次に、 **sys.resource_stats** を使用してこれらのリソース メトリックの平均値と最大値を報告するように修正したクエリを示します:
 
     ```sql
     SELECT
@@ -624,7 +624,7 @@ ORDER BY start_time DESC
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. 各リソース メトリックの平均値と最大値に関するこの情報に基づいて、選択したコンピューティング サイズにワークロードが適合しているかどうかを評価できます。 通常、**sys.resource_stats** からの平均値が目標サイズに対する有効な基準となります。 これを主要なものさしとしてください。 たとえば、S2 コンピューティング サイズで Standard サービス レベルを使用しているとします。 CPU と IO の読み取り/書き込みの平均使用率が 40% を下回り、ワーカーの平均数が 50 を下回り、セッションの平均数が 200 を下回っています。 このワークロードには、S1 コンピューティング サイズが適している可能性があります。 データベースがワーカーとセッションの制限内に収まるかどうかは簡単にわかります。 CPU、読み取り、書き込みに関して、データベースが下位のコンピューティング サイズに適合するかどうかを確認するには、下位コンピューティング サイズの DTU 数を現在のコンピューティング サイズの DTU 数で割り、その計算結果に 100 を掛けます。
+3. 各リソース メトリックの平均値と最大値に関するこの情報に基づいて、選択したコンピューティング サイズにワークロードが適合しているかどうかを評価できます。 通常、 **sys.resource_stats** からの平均値が目標サイズに対する有効な基準となります。 これを主要なものさしとしてください。 たとえば、S2 コンピューティング サイズで Standard サービス レベルを使用しているとします。 CPU と IO の読み取り/書き込みの平均使用率が 40% を下回り、ワーカーの平均数が 50 を下回り、セッションの平均数が 200 を下回っています。 このワークロードには、S1 コンピューティング サイズが適している可能性があります。 データベースがワーカーとセッションの制限内に収まるかどうかは簡単にわかります。 CPU、読み取り、書き込みに関して、データベースが下位のコンピューティング サイズに適合するかどうかを確認するには、下位コンピューティング サイズの DTU 数を現在のコンピューティング サイズの DTU 数で割り、その計算結果に 100 を掛けます。
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -714,7 +714,7 @@ WHERE D.name = 'MyDatabase'
 
 ここでも、これらのクエリはある時点の数を返します。 時間をかけて複数のサンプルを集めると、セッションの使用状況を正確に把握できます。
 
-[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューにクエリを実行し、**active_session_count** 列を確認して、セッションの過去の統計値を取得できます。
+[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューにクエリを実行し、 **active_session_count** 列を確認して、セッションの過去の統計値を取得できます。
 
 ## <a name="monitoring-query-performance"></a>クエリのパフォーマンスの監視
 
@@ -743,11 +743,11 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>クエリのブロックの監視
 
-クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。 ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。 sys.dm_tran_locks ビューを使用すると、データベースで現在ロックされているアクティビティに関する情報を取得することができます。 サンプル コードについては、「[sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
+クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。 ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。 sys.dm_tran_locks ビューを使用すると、データベースで現在ロックされているアクティビティに関する情報を取得することができます。 サンプル コードについては、「[sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)」を参照してください。
 
 ### <a name="monitoring-query-plans"></a>クエリ プランの監視
 
-クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。 次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
+クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。 次の例では、[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
 
 ```sql
 SELECT

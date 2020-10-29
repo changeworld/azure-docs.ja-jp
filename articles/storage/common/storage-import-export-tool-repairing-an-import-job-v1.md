@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0454e7bcc81c71cdffcddcd859bb6d335cc8aef2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052428"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791819"
 ---
 # <a name="repairing-an-import-job"></a>Import ジョブの修復
 Microsoft Azure Import/Export サービスでは、ファイルの全部または一部の Windows Azure Blob service へのコピーに失敗する場合があります。 失敗の原因には次のものが挙げられます。  
@@ -34,13 +34,13 @@ Microsoft Azure Import/Export ツールは、インポート ジョブのコピ�
 |-|-|  
 |**/r:** <RepairFile\>|**必須。** 修復の進行状況を追跡し、中断された修復を再開できる修復ファイルへのパスです。 各ドライブには修復ファイルが 1 つのみ必要です。 特定のドライブの修復を開始する際、まだ存在していない修復ファイルへのパスに渡されます。 中断された修復を再開するには、既存の修復ファイルの名前を指定してください。 ターゲット ドライブに対応する修復ファイルを必ず指定してください。|  
 |**/logdir:** <LogDirectory\>|**省略可。** ログ ディレクトリ。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
-|**/d:**<TargetDirectories\>|**必須。** インポートされた元のファイルを含む、セミコロンで区切られた 1 つまたは複数のディレクトリです。 インポート ドライブを使用することもできますが、元のファイルの別の場所が使用できる場合は必要ありません。|  
+|**/d:** <TargetDirectories\>|**必須。** インポートされた元のファイルを含む、セミコロンで区切られた 1 つまたは複数のディレクトリです。 インポート ドライブを使用することもできますが、元のファイルの別の場所が使用できる場合は必要ありません。|  
 |**/bk:** <BitLockerKey\>|**省略可。** 元のファイルがある暗号化されたドライブのロックを解除する場合は BitLocker キーを指定します。|  
-|**/sn:**<StorageAccountName\>|**必須。** インポート ジョブのストレージ アカウント名です。|  
-|**/sk:**<StorageAccountKey\>|コンテナー SAS が指定されていない場合のみ**必須**。 インポート ジョブのストレージ アカウントのアカウント キーです。|  
-|**/csas:**<ContainerSas\>|ストレージ アカウント キーが指定されていない場合のみ**必須**。 インポート ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。|  
+|**/sn:** <StorageAccountName\>|**必須。** インポート ジョブのストレージ アカウント名です。|  
+|**/sk:** <StorageAccountKey\>|コンテナー SAS が指定されていない場合のみ **必須** 。 インポート ジョブのストレージ アカウントのアカウント キーです。|  
+|**/csas:** <ContainerSas\>|ストレージ アカウント キーが指定されていない場合のみ **必須** 。 インポート ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。|  
 |**/CopyLogFile:** <DriveCopyLogFile\>|**必須。** ドライブ コピー ログ ファイル (詳細ログまたはエラー ログ) へのパスです。 ファイルは、Windows Azure Import/Export サービスによって生成され、ジョブに関連付けられた BLOB ストレージからダウンロードできます。 コピー ログ ファイルには、障害が発生した BLOB または修復するファイルに関する情報が含まれています。|  
-|**/PathMapFile:**<DrivePathMapFile\>|**省略可。** 同じジョブにインポートした複数のファイルに同じ名前が使用されている場合、あいまいさを解決するために使用されているテキスト ファイルへのパスです。 はじめてツールを実行すると、このファイルにすべてのあいまいな名前が入力されます。 その後のツールの実行では、あいまいさの解決のためにこのファイルが使用されます。|  
+|**/PathMapFile:** <DrivePathMapFile\>|**省略可。** 同じジョブにインポートした複数のファイルに同じ名前が使用されている場合、あいまいさを解決するために使用されているテキスト ファイルへのパスです。 はじめてツールを実行すると、このファイルにすべてのあいまいな名前が入力されます。 その後のツールの実行では、あいまいさの解決のためにこのファイルが使用されます。|  
   
 ## <a name="using-the-repairimport-command"></a>RepairImport コマンドの使用  
 ネットワーク経由でデータをストリーミングすることでインポート データを修復するには、インポートした元のファイルが格納されたディレクトリを、`/d` パラメーターを使用して指定する必要があります。 ストレージ アカウントからダウンロードしたコピー ログ ファイルも指定します。 部分的な不具合を持つインポート ジョブを修復するための一般的なコマンド ラインは、次のようになります。  
@@ -100,6 +100,6 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 ## <a name="next-steps"></a>次のステップ
  
 * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
-* [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [インポート ジョブ用のハード ドライブを準備する](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [エクスポート ジョブの修復](./storage-import-export-tool-repairing-an-export-job-v1.md)

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855924"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787467"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage を使用する
 
@@ -71,7 +71,7 @@ Azure クラウド サービス、Web アプリ、デスクトップ アプリ�
 
 NuGet を使用してこれらのパッケージを取得できます。 次の手順に従います。
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 1. **[参照]** を選択します。
 1. "Azure.Storage.Queues" をオンラインで検索し、 **[インストール]** を選択してストレージ クライアント ライブラリとその依存関係をインストールします。 これにより、キュー ライブラリの依存関係である Azure.Storage.Common と Azure.Core libraries もインストールされます。
 1. "System.Configuration.ConfigurationManager" をオンラインで検索し、 **[インストール]** を選択して Configuration Manager をインストールします。
@@ -86,7 +86,7 @@ NuGet を使用してこれらのパッケージを取得できます。 次の�
 
 NuGet を使用してこれらのパッケージを取得できます。 次の手順に従います。
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 1. **[参照]** を選択します。
 1. "Microsoft.Azure.Storage.Queue" をオンラインで検索し、 **[インストール]** を選択して、Storage クライアント ライブラリとその依存関係をインストールします。 これによって、キュー ライブラリの依存関係である Microsoft.Azure.Storage.Common ライブラリもインストールされます。
 1. "Microsoft.Azure.ConfigurationManager" をオンラインで検索し、 **[インストール]** を選択して Azure Configuration Manager をインストールします。
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Async-Await パターンを一般的なキュー ストレージ API で使用する
 
-この例では、Async-Await パターンを一般的なキュー ストレージ API で使用する方法を示します。 このサンプルは、特定のメソッドの非同期バージョンをそれぞれ呼び出しています。これは、各メソッドの *Async* 接尾辞によって確認できます。 非同期のメソッドを使用する場合、async-await パターンは、呼び出しが完了するまでローカルでの実行を中断します。 この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性を向上させることができます。 .NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。
+この例では、Async-Await パターンを一般的なキュー ストレージ API で使用する方法を示します。 このサンプルは、特定のメソッドの非同期バージョンをそれぞれ呼び出しています。これは、各メソッドの *Async* 接尾辞によって確認できます。 非同期のメソッドを使用する場合、async-await パターンは、呼び出しが完了するまでローカルでの実行を中断します。 この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性を向上させることができます。 .NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](/previous-versions/hh191443(v=vs.140)) に関するページを参照してください。
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 - 利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
-  - [.NET 用ストレージ クライアント ライブラリ リファレンス](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355)
+  - [.NET 用ストレージ クライアント ライブラリ リファレンス](/dotnet/api/overview/azure/storage)
+  - [REST API リファレンス](/rest/api/storageservices/)
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-  - [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md) 」を参照してください。
-  - [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
+  - [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/tutorial-develop-table-dotnet.md) 」を参照してください。
+  - [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-quickstart-blobs-dotnet.md) 」を参照してください。
   - リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../../azure-sql/database/connect-query-dotnet-core.md)」を参照してください。
 - Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure WebJobs SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。

@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e4ec1e7b3b5ec935bb9d5d819b4562e7fd3e5a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616382"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791700"
 ---
 # <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance のインメモリ OLTP ストレージを監視する
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "91616382"
 - メモリ最適化テーブルにデータを残す必要がある場合は、十分なインメモリ ストレージがあるサービス階層にアップグレードします。
 
 > [!NOTE]
-> まれに、エラー 41823 および 41840 が一時的なものである場合があります。これは、利用できるインメモリ OLTP ストレージが十分にあり、操作の再試行が成功することを意味します。 したがって、使用可能なインメモリ OLTP ストレージの総量を監視し、かつ、エラー 41823 または 41840 が初めて発生した場合は再試行することをお勧めします。 再試行ロジックについて詳しくは、[インメモリ OLTP での競合の検出と再試行ロジック](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)に関する項目をご覧ください。
+> まれに、エラー 41823 および 41840 が一時的なものである場合があります。これは、利用できるインメモリ OLTP ストレージが十分にあり、操作の再試行が成功することを意味します。 したがって、使用可能なインメモリ OLTP ストレージの総量を監視し、かつ、エラー 41823 または 41840 が初めて発生した場合は再試行することをお勧めします。 再試行ロジックについて詳しくは、[インメモリ OLTP での競合の検出と再試行ロジック](/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)に関する項目をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

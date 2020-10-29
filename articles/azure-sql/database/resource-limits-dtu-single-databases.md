@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 0bcc26c637e8ef6043589d963cfa9708b599a456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619068"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790255"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU 購入モデルを使用した単一データベースのリソース制限 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ ms.locfileid: "91619068"
 > [!IMPORTANT]
 > 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。
 > [!NOTE]
-> `tempdb` の制限については、[tempdb の制限](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
+> `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/30/2020
-ms.openlocfilehash: c1f60888a3d1fda50e63c7d11ea5d871f7c1e9fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33c63ffc4220da6d98c462039897067e4ba69491
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321341"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793162"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,7 +84,7 @@ Azure SQL Database には追加のサービス レベルがあります。
 > [!IMPORTANT]
 > MDF および LDF ファイルに割り当てられている合計ストレージに対して課金されます。
 
-MDF および LDF ファイルの現在の合計サイズを監視するには、[sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql) を使用します。 個々の MDF ファイルおよび LDF ファイルの現在のサイズを監視するには、[sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) を使用します。
+MDF および LDF ファイルの現在の合計サイズを監視するには、[sp_spaceused](/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql) を使用します。 個々の MDF ファイルおよび LDF ファイルの現在のサイズを監視するには、[sys.database_files](/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) を使用します。
 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](file-space-manage.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
@@ -93,8 +93,8 @@ MDF および LDF ファイルの現在の合計サイズを監視するには�
 
 データベース バックアップ用のストレージは、SQL Database と SQL Managed Instance のポイントインタイム リストア (PITR) および[長期リテンション期間 (LTR)](long-term-retention-overview.md) 機能をサポートするために割り当てられます。 このストレージはデータベースごとに別個に割り当てられ、データベース料金ごとに 2 つが個々に課金されます。
 
-- **PITR**:個々のデータベース バックアップは、[読み取りアクセス geo 冗長ストレージ (RA-GRS) ストレージ](../../storage/common/geo-redundant-design.md)に自動的にコピーされます。 ストレージ サイズは、新しいバックアップが作成されるにつれて、動的に増大します。 ストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とバックアップのリテンション期間に応じて異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データベース サイズの 100% (1 倍) に等しい最小ストレージ量は、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
-- **LTR**:また、最大 10 年間の完全バックアップの長期保有を構成することもできます (この機能は、[SQL Managed Instance の限定パブリック プレビュー](long-term-retention-overview.md#sql-managed-instance-support)です。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](long-term-retention-overview.md)に関するページをご覧ください。
+- **PITR** :個々のデータベース バックアップは、 [読み取りアクセス geo 冗長ストレージ (RA-GRS) ストレージ](../../storage/common/geo-redundant-design.md)に自動的にコピーされます。 ストレージ サイズは、新しいバックアップが作成されるにつれて、動的に増大します。 ストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とバックアップのリテンション期間に応じて異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データベース サイズの 100% (1 倍) に等しい最小ストレージ量は、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
+- **LTR** :また、最大 10 年間の完全バックアップの長期保有を構成することもできます (この機能は、 [SQL Managed Instance の限定パブリック プレビュー](long-term-retention-overview.md#sql-managed-instance-support)です。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](long-term-retention-overview.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -102,5 +102,4 @@ General Purpose サービス レベルおよび Business Critical サービス �
 
 - [Azure SQL Database の仮想コアベースのリソース制限](resource-limits-vcore-single-databases.md)
 - [プールされた Azure SQL Database データベースの仮想コアベースのリソース制限](resource-limits-vcore-elastic-pools.md)
-- [Azure SQL Managed Instance の仮想コアベースのリソース制限](../managed-instance/resource-limits.md) 
-
+- [Azure SQL Managed Instance の仮想コアベースのリソース制限](../managed-instance/resource-limits.md)

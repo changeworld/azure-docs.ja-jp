@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332918"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789864"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -38,12 +38,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 SQL Server 仮想マシンを作成する際には、仮想マシン ギャラリーにあるいくつかの事前構成済みイメージの中から、使用するイメージを選択できます。 次の手順は、SQL Server 2017 イメージの中から、イメージを 1 つを選択する方法を示したものです。
 
-1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。 
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「 *Azure SQL* 」と入力します。 
 
    **[Azure SQL]** の横にある星を選択してお気に入りとして保存し、左側のナビゲーションの項目として追加することもできます。 
 
 1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[詳細の表示]** を選択すると、追加情報を表示できます。 
-1. **[SQL 仮想マシン]** タイルの SQL Server イメージ検索ボックスに「*2017*」と入力し、ドロップダウンから **[Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016]** を選択します。 
+1. **[SQL 仮想マシン]** タイルの SQL Server イメージ検索ボックスに「 *2017* 」と入力し、ドロップダウンから **[Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016]** を選択します。 
 
    ![SQL VM イメージの選択](./media/create-sql-vm-portal/select-sql-vm-image-portal.png)
 
@@ -76,14 +76,14 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 
     1. 一意の **[仮想マシン名]** を入力します。  
     1. **[リージョン]** で場所を選択します。 
-    1. このガイドでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/windows/availability.md)に関するページを参照してください。 
-    1. **[イメージ]** の一覧で、_Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。  
+    1. このガイドでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/availability.md)に関するページを参照してください。 
+    1. **[イメージ]** の一覧で、 _Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。  
     1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
 
     ![インスタンスの詳細](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[SQL Server Azure VM の料金ガイダンス](pricing-guidance.md)」と[仮想マシンのサイズ](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[SQL Server Azure VM の料金ガイダンス](pricing-guidance.md)」と[仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)に関するページを参照してください。
 
 * **[管理者アカウント]** で、ユーザー名とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
 
@@ -104,7 +104,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 * **[詳細]** で、 **[Managed Disks を使用]** の下の **[はい]** を選択します。
 
    > [!NOTE]
-   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)に関する記事をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../../../virtual-machines/windows/manage-availability.md)」を参照してください。
+   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)に関する記事をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../../../virtual-machines/manage-availability.md)」を参照してください。
 
 ![SQL VM ディスク設定](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -113,7 +113,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 
 **[ネットワーク]** タブで、ネットワーク オプションを構成します。 
 
-* SQL Server VM 用に新しい**仮想ネットワーク**を作成するか、既存の仮想ネットワークを使用します。 **[サブネット]** も指定します。 
+* SQL Server VM 用に新しい **仮想ネットワーク** を作成するか、既存の仮想ネットワークを使用します。 **[サブネット]** も指定します。 
 
 * **[NIC ネットワーク セキュリティ グループ]** で、[Basic] セキュリティ グループまたは [詳細] セキュリティ グループを選択します。 [Basic] オプションを選択すると、 **[基本]** タブに構成されているものと同じ値である SQL Server VM の受信ポートを選択できます。[詳細] オプションを選択すると、既存のネットワーク セキュリティ グループを選択するか、新しいグループを作成することができます。 
 
@@ -126,7 +126,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 **[監視]** タブで、監視と自動シャットダウンを構成します。 
 
 * **[ブート診断]** は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。 このタブでは、これらの設定を変更して、 **[OS のゲスト診断]** を有効にすることができます。 
-* このタブでは、 **[システム割り当てマネージド ID]** と**自動シャットダウン**を有効にすることもできます。 
+* このタブでは、 **[システム割り当てマネージド ID]** と **自動シャットダウン** を有効にすることもできます。 
 
 ![SQL VM の管理設定](./media/create-sql-vm-portal/azure-sqlvm-management.png)
 
@@ -149,7 +149,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 **[SQL の接続]** で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。 このチュートリアルでは、 **[パブリック (インターネット)]** を選択して、インターネット上のコンピューターやサービスから SQL Server に接続できるようにします。 このオプションを選択すると、選択したポートのトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
 
 > [!TIP]
-> 既定では、SQL Server は既知のポート (**1433**) をリッスンします。 セキュリティ強化のためには、前のダイアログでポートを変更して、1401 など、既定以外のポートをリッスンするようにします。 ポートを変更する場合は、SQL Server Management Studio (SSMS) などのクライアント ツールからそのポートを使用して接続する必要があります。
+> 既定では、SQL Server は既知のポート ( **1433** ) をリッスンします。 セキュリティ強化のためには、前のダイアログでポートを変更して、1401 など、既定以外のポートをリッスンするようにします。 ポートを変更する場合は、SQL Server Management Studio (SSMS) などのクライアント ツールからそのポートを使用して接続する必要があります。
 
 ![SQL VM のセキュリティ](./media/create-sql-vm-portal/azure-sqlvm-security.png)
 
@@ -171,7 +171,7 @@ SQL Server 認証が必要な場合は、 **[SQL Server の設定]** タブで *
 > [!NOTE]
 > インターネット経由で SQL Server にアクセスする場合 (パブリック接続オプション)、ここで SQL 認証を有効にする必要があります。 SQL Server へのパブリック アクセスには、SQL 認証が必要です。
 
-SQL Server 認証を有効にする場合は、 **[ログイン名]** と **[パスワード]** を指定します。 このログイン名が、SQL Server 認証ログインと **sysadmin** 固定サーバー ロールのメンバーとして構成されます。 認証モードの詳細については、「[Choose an Authentication Mode (認証モードの選択)](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)」を参照してください。
+SQL Server 認証を有効にする場合は、 **[ログイン名]** と **[パスワード]** を指定します。 このログイン名が、SQL Server 認証ログインと **sysadmin** 固定サーバー ロールのメンバーとして構成されます。 認証モードの詳細については、「[Choose an Authentication Mode (認証モードの選択)](/sql/relational-databases/security/choose-an-authentication-mode)」を参照してください。
 
 SQL Server 認証を有効にしない場合は、VM のローカル管理者アカウントを使用して SQL Server インスタンスに接続できます。
 
@@ -188,7 +188,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 | **Key Vault の URL** |Key Vault の場所。 |`https://contosokeyvault.vault.azure.net/` |
 | **プリンシパル名** |Azure Active Directory サービスのプリンシパル名。 クライアント ID とも呼ばれます。 |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
 | **プリンシパル シークレット** |Azure Active Directory サービスのプリンシパル シークレット。 クライアント シークレットとも呼ばれます。 |`9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=` |
-| **[資格情報名]** |**資格情報名**:AKV の統合によって、SQL Server 内に資格情報が作成され、VM からキー コンテナーにアクセスできるようになります。 この資格情報の名前を選択します。 |`mycred1` |
+| **[資格情報名]** |**資格情報名** :AKV の統合によって、SQL Server 内に資格情報が作成され、VM からキー コンテナーにアクセスできるようになります。 この資格情報の名前を選択します。 |`mycred1` |
 
 詳細については、 [Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](azure-key-vault-integration-configure.md)に関するページを参照してください。
 
@@ -234,7 +234,7 @@ SQL の自動バックアップを有効にするときは、以下の設定の�
 * システム データベースのバックアップ
 * バックアップ スケジュールの構成
 
-バックアップを暗号化するには、 **[有効]** を選択します。 **パスワード**を指定します。 Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。 スケジュールは既定で自動的に設定されますが、 **[手動]** を選択して手動スケジュールを作成できます。 
+バックアップを暗号化するには、 **[有効]** を選択します。 **パスワード** を指定します。 Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。 スケジュールは既定で自動的に設定されますが、 **[手動]** を選択して手動スケジュールを作成できます。 
 
 ![SQL VM の自動バックアップ](./media/create-sql-vm-portal/automated-backup.png)
 
@@ -269,7 +269,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 ## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> SQL Server にリモート接続する
 
-このチュートリアルでは、仮想マシンと **SQL Server 認証**に**SQL Server 認証** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
+このチュートリアルでは、仮想マシンと **SQL Server 認証** に **SQL Server 認証** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
 
 > [!NOTE]
 > プロビジョニング中に [パブリック] を選択しなかった場合は、プロビジョニング後にポータルで SQL 接続設定を変更できます。 詳細については、「[Change your SQL connectivity settings (SQL 接続設定の変更)](ways-to-connect-to-sql.md#change)」を参照してください。

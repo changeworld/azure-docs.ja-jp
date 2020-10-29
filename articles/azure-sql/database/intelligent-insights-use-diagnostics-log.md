@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 488d10906039327d830bfb6bcffc3163d65ad01e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334975"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792040"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を含んだ Intelligent Insights のパフォーマンス診断ログを使用する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-このページでは、[Intelligent Insights](intelligent-insights-overview.md) によって生成される、Azure SQL Database と Azure SQL Managed Instance のパフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
+このページでは、[Intelligent Insights](intelligent-insights-overview.md) によって生成される、Azure SQL Database と Azure SQL Managed Instance のパフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)、[Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
 
 > [!NOTE]
 > Intelligent Insights はプレビュー機能であり、次のリージョンでは利用できません。西ヨーロッパ、北ヨーロッパ、米国西部 1、米国東部 1。
@@ -144,5 +144,5 @@ Intelligent Insights パフォーマンス ログは、[Azure Monitor ログ]( h
 
 - [Intelligent Insights](intelligent-insights-overview.md) の概念の習得
 - [Intelligent Insights を使用したパフォーマンスに関する問題のトラブルシューティング](intelligent-insights-troubleshoot-performance.md)方法の習得
-- [Azure SQL Analytics を使用してパフォーマンスの問題を監視](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)する方法の習得
-- [Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)の習得
+- [Azure SQL Analytics を使用してパフォーマンスの問題を監視](../../azure-monitor/insights/azure-sql.md)する方法の習得
+- [Azure リソースからのログ データの収集と使用](../../azure-monitor/platform/platform-logs-overview.md)の習得

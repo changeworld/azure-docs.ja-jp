@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: eddb0c8339069025f0742e9bcbc371efbef094ee
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793332"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL Database を使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -127,9 +127,9 @@ SaaS アプリケーションにより、これらの変更は、大容量にな
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-- Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
+- Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
 
-- Wingtip Tickets SaaS マルチテナント データベース アプリがデプロイされます。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイと探索)](../../sql-database/saas-multitenantdb-get-started-deploy.md)」を参照してください。
+- Wingtip Tickets SaaS マルチテナント データベース アプリがデプロイされます。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイと探索)](./saas-multitenantdb-get-started-deploy.md)」を参照してください。
 
 - Wingtip スクリプトとソース コードを取得します。
     - Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーションのソース コードは、[WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub リポジトリで入手できます。
@@ -173,7 +173,7 @@ Wingtip アプリが共有データベースに新しいテナントのプロビ
 
 5. 呼び出された関数にステップ オーバーしたりステップ インしたりする **F10** キーや **F11** キーなどの **デバッグ** のメニュー オプションを使用して、スクリプトの実行をトレースします。
 
-PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>*独自の* データベース内にテナントをプロビジョニングする
 
@@ -263,9 +263,9 @@ Azure Portal でテナント データベースを表示しても、共有デー
 
 ## <a name="additional-resources"></a>その他のリソース
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
+<!-- - Additional [tutorials that build upon the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [エラスティック データベース クライアント ライブラリ](elastic-database-client-library.md)
-- [Windows PowerShell ISE でスクリプトをデバッグする方法](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [Windows PowerShell ISE でスクリプトをデバッグする方法](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -277,5 +277,4 @@ Azure Portal でテナント データベースを表示しても、共有デー
 > * バッチを使って追加のテナントをプロビジョニングする方法
 > * テナントをプロビジョニングしてカタログに登録するまでの流れを詳しく確認する方法
 
-[パフォーマンスの監視に関するチュートリアル](../../sql-database/saas-multitenantdb-performance-monitoring.md)を試してください。
-
+[パフォーマンスの監視に関するチュートリアル](./saas-multitenantdb-performance-monitoring.md)を試してください。

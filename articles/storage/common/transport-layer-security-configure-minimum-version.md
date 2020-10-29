@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018579"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785801"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "90018579"
 
 ストレージ アカウントに対して TLS の最小バージョンを適用すると、それより古いバージョンの TLS を使用してデータを送信するクライアントからの要求が拒否される危険があります。 TLS の最小バージョンの構成がクライアント アプリケーションにどのように影響する可能性があるかを理解するために、Microsoft では、Azure Storage アカウントのログ記録を有効にし、一定期間後にログを分析して、クライアント アプリケーションによって使用される TLS のバージョンを検出することをお勧めします。
 
-Azure Storage アカウントに対する要求をログに記録し、クライアントによって使用される TLS のバージョンを特定するために、Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用することができます。 詳細については、「[Azure Storage を監視する](monitor-storage.md)」を参照してください。
+Azure Storage アカウントに対する要求をログに記録し、クライアントによって使用される TLS のバージョンを特定するために、Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用することができます。 詳細については、「[Azure Storage を監視する](../blobs/monitor-blob-storage.md)」を参照してください。
 
 Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/get-started-portal.md)」を参照してください。
 
@@ -46,14 +46,14 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 1. 要求をログに記録する Azure Storage サービスを選択します。 たとえば、Blob Storage に対する要求をログに記録するには、 **[Blob]** を選択します。
 1. **[診断設定の追加]** を選択します。
 1. 診断設定の名前を指定します。
-1. **[カテゴリの詳細]** の **[ログ]** セクションで、ログを記録する要求の種類を選択します。 読み取り、書き込み、および削除要求をログに記録できます。 たとえば、**StorageRead** と **StorageWrite** を選択すると、選択されたサービスへの読み取りおよび書き込み要求がログに記録されます。
+1. **[カテゴリの詳細]** の **[ログ]** セクションで、ログを記録する要求の種類を選択します。 読み取り、書き込み、および削除要求をログに記録できます。 たとえば、 **StorageRead** と **StorageWrite** を選択すると、選択されたサービスへの読み取りおよび書き込み要求がログに記録されます。
 1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択します。 以下の図に示すように、ご利用のサブスクリプションと、先ほど作成した Log Analytics ワークスペースを選択します。
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
 診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
 
-Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](monitor-storage-reference.md#resource-logs-preview)」を参照してください。
+Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview)」を参照してください。
 
 ### <a name="query-logged-requests-by-tls-version"></a>TLS バージョンでログに記録された要求に対してクエリを実行する
 
@@ -91,9 +91,6 @@ StorageBlobLogs
 
 ストレージ アカウントの TLS の最小バージョンを構成するには、アカウントに対して **MinimumTlsVersion** バージョンを設定します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 Azure Resource Manager デプロイ モデルの詳細については、「[ストレージ アカウントの概要](storage-account-overview.md)」を参照してください。
 
-> [!NOTE]
-> **MinimumTlsVersion** プロパティは現在、Azure パブリック クラウド内のストレージ アカウントでのみ使用できます。
-
 # <a name="portal"></a>[ポータル](#tab/portal)
 
 Azure portal でストレージ アカウントを作成する場合、TLS の最小バージョンは既定で 1.2 に設定されます。
@@ -110,9 +107,9 @@ Azure portal を使用して既存のストレージ アカウントの TLS の�
 
 PowerShell を使用してストレージ アカウントの最小 TLS バージョンを構成するには、[Azure PowerShell バージョン 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) 以降をインストールします。 次に、新規または既存のストレージ アカウントに **MinimumTLSVersion** プロパティを構成します。 **MinimumTlsVersion** の有効な値は、`TLS1_0`、`TLS1_1`、`TLS1_2` です。
 
-PowerShell を使用してストレージ アカウントを作成する場合、**MinimumTlsVersion** プロパティは既定では設定されません。 このプロパティは、明示的に設定されるまで値を返しません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
+PowerShell を使用してストレージ アカウントを作成する場合、 **MinimumTlsVersion** プロパティは既定では設定されません。 このプロパティは、明示的に設定されるまで値を返しません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
 
-次の例では、ストレージ アカウントを作成し、**MinimumTLSVersion** を TLS 1.1 に設定した後、アカウントを更新して、**MinimumTLSVersion** を TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、ストレージ アカウントを作成し、 **MinimumTLSVersion** を TLS 1.1 に設定した後、アカウントを更新して、 **MinimumTLSVersion** を TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```powershell
 $rgName = "<resource-group>"
@@ -142,9 +139,9 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 Azure CLI を使用してストレージ アカウントの最小 TLS バージョンを構成するには、Azure CLI バージョン 2.9.0 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 次に、新規または既存のストレージ アカウントに **minimumTlsVersion** プロパティを構成します。 **minimumTlsVersion** の有効な値は、`TLS1_0`、`TLS1_1`、`TLS1_2` です。
 
-Azure CLI を使用してストレージ アカウントを作成する場合、**minimumTlsVersion** プロパティは既定では設定されません。 このプロパティは、明示的に設定されるまで値を返しません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
+Azure CLI を使用してストレージ アカウントを作成する場合、 **minimumTlsVersion** プロパティは既定では設定されません。 このプロパティは、明示的に設定されるまで値を返しません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
 
-次の例では、ストレージ アカウントを作成し、**minimumTLSVersion** を TLS 1.1 に設定します。 次に、アカウントを更新して、**minimumTLSVersion** プロパティを TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、ストレージ アカウントを作成し、 **minimumTLSVersion** を TLS 1.1 に設定します。 次に、アカウントを更新して、 **minimumTLSVersion** プロパティを TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
 az storage account create \
@@ -174,10 +171,10 @@ az storage account show \
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
-テンプレートを使用してストレージ アカウントの最小 TLS バージョンを構成するには、**MinimumTLSVersion** プロパティを `TLS1_0`、`TLS1_1`、または `TLS1_2` に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
+テンプレートを使用してストレージ アカウントの最小 TLS バージョンを構成するには、 **MinimumTLSVersion** プロパティを `TLS1_0`、`TLS1_1`、または `TLS1_2` に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
 
 1. Azure portal で、 **[リソースの作成]** を選択します。
-1. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
+1. **[Marketplace を検索]** で「 **template deployment** 」と入力し、 **Enter** キーを押します。
 1. **[Template deployment (deploy using custom templates) (preview)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** 、 **[作成]** 、 **[エディターで独自のテンプレートを作成する]** の順に選択します。
 1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、最小 TLS バージョンを TLS 1.2 に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
 
@@ -210,7 +207,7 @@ az storage account show \
     ```
 
 1. テンプレートを保存します。
-1. リソース グループ パラメーターを指定し、 **[確認と作成]** ボタンを選択してテンプレートをデプロイし、**MinimumTLSVersion** プロパティが構成されたストレージ アカウントを作成します。
+1. リソース グループ パラメーターを指定し、 **[確認と作成]** ボタンを選択してテンプレートをデプロイし、 **MinimumTLSVersion** プロパティが構成されたストレージ アカウントを作成します。
 
 ---
 
@@ -221,7 +218,7 @@ az storage account show \
 
 ### <a name="check-the-minimum-required-tls-version-for-multiple-accounts"></a>複数のアカウントに必要な TLS の最小バージョンを調べる
 
-最適なパフォーマンスの一連のストレージ アカウント全体で必要な TLS の最小バージョンを確認するために、Azure portal の Azure Resource Graph エクスプローラーを使用できます。 Resource Graph エクスプローラーの使用の詳細については、「[クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](/azure/governance/resource-graph/first-query-portal)」を参照してください。
+最適なパフォーマンスの一連のストレージ アカウント全体で必要な TLS の最小バージョンを確認するために、Azure portal の Azure Resource Graph エクスプローラーを使用できます。 Resource Graph エクスプローラーの使用の詳細については、「[クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](../../governance/resource-graph/first-query-portal.md)」を参照してください。
 
 Resource Graph エクスプローラーで次のクエリを実行すると、ストレージ アカウントの一覧が返され、各アカウントの TLS の最小バージョンが表示されます。
 
@@ -291,7 +288,7 @@ Azure portal でポリシーを割り当てるには、次の手順を実行し�
 1. **[スコープ]** フィールドで、ポリシー割り当てのスコープを選択します。
 1. **[ポリシー定義]** フィールドで、 **[More]\(詳細\)** ボタンを選択して、前のセクションで定義したポリシーを一覧から選択します。
 1. ポリシー割り当て用の名前 を入力します。 説明は省略できます。
-1. **[ポリシーの適用]** を "*有効*" のままに設定しておきます。 この設定は、監査ポリシーには影響しません。
+1. **[ポリシーの適用]** を " *有効* " のままに設定しておきます。 この設定は、監査ポリシーには影響しません。
 1. **[確認および作成]** を選択して割り当てを作成します。
 
 ### <a name="view-compliance-report"></a>コンプライアンス レポートを表示する
@@ -315,7 +312,7 @@ Azure Policy では、Azure リソースが要件と標準に準拠している�
 
 適用ポリシーでは、Deny 効果を使用して、最小 TLS バージョンが組織の標準に準拠しなくなるようなストレージ アカウントの作成要求または変更要求が禁止されます。 効果の詳細については、「[Azure Policy の効果について](../../governance/policy/concepts/effects.md)」を参照してください。
 
-TLS 1.2 より小さい最小 TLS バージョンに対して Deny 効果を持つポリシーを作成するには、「[Azure Policy を使用してコンプライアンスを監査する](#use-azure-policy-to-audit-for-compliance)」で説明されている手順に従いますが、ポリシー定義の **policyRule** セクションに次の JSON を指定します。
+TLS 1.2 より小さい最小 TLS バージョンに対して Deny 効果を持つポリシーを作成するには、「 [Azure Policy を使用してコンプライアンスを監査する](#use-azure-policy-to-audit-for-compliance)」で説明されている手順に従いますが、ポリシー定義の **policyRule** セクションに次の JSON を指定します。
 
 ```json
 {

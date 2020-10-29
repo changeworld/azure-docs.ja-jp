@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531005"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788084"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -63,13 +63,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [基本] タブでは、次の項目が必要です。 それ以外のすべてのものには、既定値をそのまま使用します。
 
-   + **リソース グループ**。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
+   + **リソース グループ** 。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
 
-   + **ストレージ アカウント名**。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、*blobstoragewestus*)。 
+   + **ストレージ アカウント名** 。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、 *blobstoragewestus* )。 
 
-   + **場所**。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
+   + **場所** 。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
 
-   + **アカウントの種類**。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
+   + **アカウントの種類** 。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
 
 1. **[確認および作成]** をクリックしてサービスを作成します。
 
@@ -77,7 +77,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[BLOB]** サービスをクリックします。
 
-1. **[+ コンテナー]** をクリックしてコンテナーを作成し、*cog-search-demo* という名前を付けます。
+1. **[+ コンテナー]** をクリックしてコンテナーを作成し、 *cog-search-demo* という名前を付けます。
 
 1. *[cog-search-demo]* を選択し、 **[アップロード]** をクリックして、ダウンロード ファイルを保存したフォルダーを開きます。 画像以外のすべてのファイルを選択します。 7 個のファイルがあるはずです。 **[OK]** をクリックしてアップロードします。
 
@@ -117,7 +117,7 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="ストレージ アカウントの作成" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 すべての要求で、自分のサービスに送信される各要求のヘッダーに API キーが必要になります。 有効なキーにより、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼が確立されます。
 
@@ -194,7 +194,7 @@ Azure portal 内の Search サービスのダッシュボード ページに戻�
 
 ### <a name="step-2-create-a-skillset"></a>手順 2:スキルセットを作成する
 
-この手順では、データに適用するエンリッチメント ステップのセットを定義します。 それぞれのエンリッチメント ステップを*スキル*と呼び、エンリッチメント ステップのセットを*スキルセット*と呼びます。 このチュートリアルでは、スキルセット用に次の[ビルトイン コグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
+この手順では、データに適用するエンリッチメント ステップのセットを定義します。 それぞれのエンリッチメント ステップを *スキル* と呼び、エンリッチメント ステップのセットを *スキルセット* と呼びます。 このチュートリアルでは、スキルセット用に次の[ビルトイン コグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
 
 + [エンティティの認識](cognitive-search-skill-entity-recognition.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
 
@@ -315,7 +315,7 @@ print(r.status_code)
 
 この演習では、次のフィールドとフィールドの型を使用します。
 
-| field-names: | id         | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | ID         | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335071"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789609"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database でデータベースのファイル領域を管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ Azure SQL Database では、データベースの基礎となるデータ ファ
 
 Azure portal に表示されるほとんどのストレージ領域のメトリックと次の API は、使用されるデータ ページのサイズを測定するだけです。
 
-- PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric) などの Azure Resource Manager ベースのメトリック API
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric) などの Azure Resource Manager ベースのメトリック API
+- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 ただし、次の API は、データベースとエラスティック プールに割り当てられている領域のサイズを測ることもできます。
 
-- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>データ ファイルの圧縮
 
@@ -148,7 +148,7 @@ ORDER BY end_time DESC
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
-PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)に関するページを参照してください。
+PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](/sql/powershell/download-sql-server-ps-module)に関するページを参照してください。
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -214,7 +214,7 @@ DBCC SHRINKDATABASE (N'db1')
 
 このコマンドは、実行中のデータベース パフォーマンスに影響を及ぼす可能性があります。また、可能であれば、使用率が低い期間中に実行してください。  
 
-このコマンドの詳細については、[SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
+このコマンドの詳細については、[SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
 
 ### <a name="auto-shrink"></a>自動圧縮
 
@@ -226,11 +226,11 @@ DBCC SHRINKDATABASE (N'db1')
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-このコマンドの詳細については、[DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) オプションをご覧ください。
+このコマンドの詳細については、[DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) オプションをご覧ください。
 
 ### <a name="rebuild-indexes"></a>インデックスの再構築
 
-データベース データ ファイルの縮小後は、インデックスが断片化され、パフォーマンスの最適化の効果が失われる可能性があります。 パフォーマンスの低下が発生した場合、データベース インデックスの再構築を検討します。 インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
+データベース データ ファイルの縮小後は、インデックスが断片化され、パフォーマンスの最適化の効果が失われる可能性があります。 パフォーマンスの低下が発生した場合、データベース インデックスの再構築を検討します。 インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

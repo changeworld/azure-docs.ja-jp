@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619986"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788283"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のパブリック エンドポイントを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)のパブリック エンドポイントを使用すると、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)の外部からマネージド インスタンスにデータ アクセスできます。 マネージド インスタンスには、Power BI や Azure App Service などのマルチテナント Azure サービスまたはオンプレミス ネットワークからアクセスできます。 マネージド インスタンスでパブリック エンドポイントを使用すると、VPN を使用する必要がなくなるため、VPN のスループットの問題を回避できます。
+[マネージド インスタンス](./sql-managed-instance-paas-overview.md)のパブリック エンドポイントを使用すると、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)の外部からマネージド インスタンスにデータ アクセスできます。 マネージド インスタンスには、Power BI や Azure App Service などのマルチテナント Azure サービスまたはオンプレミス ネットワークからアクセスできます。 マネージド インスタンスでパブリック エンドポイントを使用すると、VPN を使用する必要がなくなるため、VPN のスループットの問題を回避できます。
 
 この記事では、次の方法について学習します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91619986"
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Azure portal でマネージド インスタンスのパブリック エンドポイントを有効にする
 
 1. Azure portal (<https://portal.azure.com/.>) を起動します。
-1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL マネージド インスタンス**を選択します。
+1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL マネージド インスタンス** を選択します。
 1. **[セキュリティ]** の設定で、 **[仮想ネットワーク]** タブを選択します。
 1. 仮想ネットワークの構成ページで **[有効]** を選択し、 **[保存]** アイコンを選択して構成を更新します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "91619986"
 
 ### <a name="enable-public-endpoint"></a>パブリック エンドポイントの有効化
 
-次の PowerShell コマンドを実行します。 **subscription-id** を実際のサブスクリプション ID に置き換えます。 また、**rg-name** を実際のマネージド インスタンスのリソース グループに置き換え、**mi-name** を実際のマネージド インスタンスの名前に置き換えます。
+次の PowerShell コマンドを実行します。 **subscription-id** を実際のサブスクリプション ID に置き換えます。 また、 **rg-name** を実際のマネージド インスタンスのリソース グループに置き換え、 **mi-name** を実際のマネージド インスタンスの名前に置き換えます。
 
 ```powershell
 Install-Module -Name Az
@@ -82,7 +82,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>ネットワーク セキュリティ グループでパブリック エンドポイント トラフィックを許可する
 
-1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、**SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
+1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、 **SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
 
     ![仮想ネットワークとサブネットの値を確認できる仮想ネットワーク構成ページを示すスクリーンショット](./media/public-endpoint-configure/mi-overview.png)
 
@@ -90,9 +90,9 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
     ![マネージド インスタンスのセキュリティ グループを取得できる [サブネット] タブを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
-1. そのマネージド インスタンスが含まれているリソース グループに戻ります。 前に書き留めておいた**ネットワーク セキュリティ グループ**の名前が表示されるはずです。 名前を選択して、ネットワーク セキュリティ グループの構成ページに移動します。
+1. そのマネージド インスタンスが含まれているリソース グループに戻ります。 前に書き留めておいた **ネットワーク セキュリティ グループ** の名前が表示されるはずです。 名前を選択して、ネットワーク セキュリティ グループの構成ページに移動します。
 
-1. **[受信セキュリティ規則]** タブを選択し、**deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で**追加**します。 </br> </br>
+1. **[受信セキュリティ規則]** タブを選択し、 **deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で **追加** します。 </br> </br>
 
     |設定  |推奨値  |説明  |
     |---------|---------|---------|
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>マネージド インスタンスのパブリック エンドポイントの接続文字列を取得する
 
 1. パブリック エンドポイントに対して有効になっている マネージド インスタンスの構成ページに移動します。 **[設定]** 構成の下にある **[接続文字列]** タブを選択します。
-1. パブリック エンドポイントのホスト名が <mi_name>.**public**.<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
+1. パブリック エンドポイントのホスト名が <mi_name>. **public** .<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
 
     ![パブリック エンドポイントとプライベート エンドポイントの接続文字列を示すスクリーンショット。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

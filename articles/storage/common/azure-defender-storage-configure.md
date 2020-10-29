@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289771"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789014"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender for Storage を構成する
 
@@ -23,7 +23,7 @@ Azure Defender for Storage では、ストレージ アカウントに対する�
 
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
-このサービスでは、脅威の検出のために、Blob Storage と Azure Files に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Azure Defender からのアラートを調査するには、Storage Analytics Logging を使用して関連するストレージ アクティビティを確認します。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
+このサービスでは、脅威の検出のために、Blob Storage と Azure Files に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Azure Defender からのアラートを調査するには、Storage Analytics Logging を使用して関連するストレージ アクティビティを確認します。 詳細については、「 [Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「 **ログの構成** 」を参照してください。
 
 ## <a name="availability"></a>可用性
 
@@ -37,7 +37,7 @@ Data Lake Storage 用に階層型名前空間が有効になっているアカ�
 
 - リリース状態:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
-  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (一般公開)
+  - [Azure Files](../files/storage-files-introduction.md) (一般公開)
   - Azure Data Lake Storage Gen2 (一般公開)
 - クラウド:<br>
     ✔ 商用クラウド<br>
@@ -98,16 +98,16 @@ Azure Resource Manager テンプレートを使用して、Azure Defender が有
 
 Rest API コマンドを使用して、特定のストレージ アカウントの Azure Defender 設定を作成、更新、または取得します。
 
-- [Advanced Threat Protection - 作成](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-- [Advanced Threat Protection - 取得](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+- [Advanced Threat Protection - 作成](/rest/api/securitycenter/advancedthreatprotection/create)
+- [Advanced Threat Protection - 取得](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell コマンドレットを使用します。
 
-- [Advanced Threat Protection を有効にする](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Advanced Threat Protection を取得する](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Advanced Threat Protection を無効にする](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+- [Advanced Threat Protection を有効にする](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+- [Advanced Threat Protection を取得する](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+- [Advanced Threat Protection を無効にする](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 
@@ -138,4 +138,4 @@ Azure Security Center の [[セキュリティ アラート] タイル](../../se
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Storage アカウントのログ](/rest/api/storageservices/About-Storage-Analytics-Logging)に関する詳細を確認する
-- [Azure Security Center](../../security-center/security-center-intro.md) の詳細について参照してください
+- [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について参照してください

@@ -12,20 +12,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9b6b0ee6fa33ecd0d677d7d075236517d85d4ab7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335143"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789643"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と Azure Synapse Analytics (旧称 SQL Data Warehouse) の両方を言い表します。
+たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー ( *mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、 *SQL Database* という言葉を使用して、SQL Database と Azure Synapse Analytics (旧称 SQL Data Warehouse) の両方を言い表します。
 
 > [!IMPORTANT]
-> この記事は、*Azure SQL Managed Instance* には適用され "*ません*"。 ネットワーク構成については、「[Azure SQL Managed Instance にアプリケーションを接続する](../managed-instance/connect-application-instance.md)」を参照してください。
+> この記事は、 *Azure SQL Managed Instance* には適用され " *ません* "。 ネットワーク構成については、「[Azure SQL Managed Instance にアプリケーションを接続する](../managed-instance/connect-application-instance.md)」を参照してください。
 >
 > Azure Synapse では、サーバー レベルの IP ファイアウォール規則のみがサポートされます。 データベース レベルの IP ファイアウォール規則はサポートされていません。
 
@@ -37,20 +37,20 @@ ms.locfileid: "91335143"
 
 ### <a name="server-level-ip-firewall-rules"></a>サーバーレベルの IP ファイアウォール規則
 
-これらのルールにより、クライアントがサーバー全体、つまりサーバーで管理されているすべてのデータベースにアクセスできるようになります。 規則は、*master* データベースに保存されます。 1 つのサーバーに対し、最大 128 個のサーバー レベルの IP ファイアウォール規則を作成できます。 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の設定を有効にしてある場合、これはサーバーに対する 1 つのファイアウォール規則としてカウントされます。
+これらのルールにより、クライアントがサーバー全体、つまりサーバーで管理されているすべてのデータベースにアクセスできるようになります。 規則は、 *master* データベースに保存されます。 1 つのサーバーに対し、最大 128 個のサーバー レベルの IP ファイアウォール規則を作成できます。 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の設定を有効にしてある場合、これはサーバーに対する 1 つのファイアウォール規則としてカウントされます。
   
 サーバー レベルの IP ファイアウォール規則を構成するには、Azure portal、PowerShell、または Transact-SQL ステートメントを使用します。
 
 - ポータルまたは PowerShell を使用するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
-- Transact-SQL を使用するには、サーバーレベル プリンシパル ログインまたは Azure Active Directory 管理者として "*マスター*" データベースに接続する必要があります。 (サーバー レベルの IP ファイアウォール規則は、Azure レベルのアクセス許可を持つユーザーが最初に作成する必要があります。)
+- Transact-SQL を使用するには、サーバーレベル プリンシパル ログインまたは Azure Active Directory 管理者として " *マスター* " データベースに接続する必要があります。 (サーバー レベルの IP ファイアウォール規則は、Azure レベルのアクセス許可を持つユーザーが最初に作成する必要があります。)
 
 ### <a name="database-level-ip-firewall-rules"></a>データベース レベルの IP ファイアウォール規則
 
-データベース レベルの IP ファイアウォール規則により、クライアントは、特定の (セキュリティで保護された) データベースにアクセスできるようになります。 規則は、データベースごと (*master* データベースを含む) に作成し、個々のデータベースに格納されます。
+データベース レベルの IP ファイアウォール規則により、クライアントは、特定の (セキュリティで保護された) データベースにアクセスできるようになります。 規則は、データベースごと ( *master* データベースを含む) に作成し、個々のデータベースに格納されます。
   
 - master データベースとユーザー データベースのデータベース レベルの IP ファイアウォール規則は、Transact-SQL ステートメントを使うことによって、最初のサーバー レベルのファイアウォール規則を構成した後でのみ、作成および管理できます。
 - サーバー レベルの IP ファイアウォール規則の範囲外にあるデータベース レベルの IP ファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。
-- データベースに対し、最大 128 個のデータベース レベルの IP ファイアウォール規則を作成できます。 データベース レベルの IP ファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
+- データベースに対し、最大 128 個のデータベース レベルの IP ファイアウォール規則を作成できます。 データベース レベルの IP ファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)」を参照してください。
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>ファイアウォール規則の設定方法に関する推奨事項
 
@@ -61,27 +61,27 @@ ms.locfileid: "91335143"
 
 ## <a name="server-level-versus-database-level-ip-firewall-rules"></a>サーバー レベルとデータベース レベルの IP ファイアウォール規則
 
-"*個々のデータベースのユーザーを別のデータベースから完全に分離する必要がありますか?* "
+" *個々のデータベースのユーザーを別のデータベースから完全に分離する必要がありますか?* "
 
-答えが "*はい*" の場合は、データベース レベルの IP ファイアウォール規則を使用してアクセスを付与します。 この方法により、サーバー レベルの IP ファイアウォール規則の使用を回避できます。この規則では、すべてのデータベースへのファイアウォール経由のアクセスが許可されます。 それによって、セキュリティが低下します。
+答えが " *はい* " の場合は、データベース レベルの IP ファイアウォール規則を使用してアクセスを付与します。 この方法により、サーバー レベルの IP ファイアウォール規則の使用を回避できます。この規則では、すべてのデータベースへのファイアウォール経由のアクセスが許可されます。 それによって、セキュリティが低下します。
 
-"*指定した IP アドレスでユーザーがすべてのデータベースにアクセスする必要がありますか?* "
+" *指定した IP アドレスでユーザーがすべてのデータベースにアクセスする必要がありますか?* "
 
-答えが "*はい*" の場合は、サーバー レベルの IP ファイアウォール規則を使用して、IP ファイアウォール規則を構成する回数を減らします。
+答えが " *はい* " の場合は、サーバー レベルの IP ファイアウォール規則を使用して、IP ファイアウォール規則を構成する回数を減らします。
 
-"*IP ファイアウォール規則を構成する個人またはチームが、Azure portal、PowerShell、または REST API からのみ、アクセスが許可されていますか?* "
+" *IP ファイアウォール規則を構成する個人またはチームが、Azure portal、PowerShell、または REST API からのみ、アクセスが許可されていますか?* "
 
 そうである場合、サーバー レベルの IP ファイアウォール規則を使用する必要があります。 データベース レベルの IP ファイアウォール規則は、Transact-SQL でのみ構成できます。  
 
-"*IP ファイアウォール規則を構成する個人またはチームが、データベース レベルでの高度なアクセス許可を持つことが禁止されていますか?* "
+" *IP ファイアウォール規則を構成する個人またはチームが、データベース レベルでの高度なアクセス許可を持つことが禁止されていますか?* "
 
 そうである場合、サーバー レベルの IP ファイアウォール規則を使用します。 Transact-SQL を使用してデータベース レベルの IP ファイアウォール規則を構成するには、データベース レベルで少なくとも *CONTROL DATABASE* 権限が必要です。  
 
-"*IP ファイアウォール規則を構成または監査する個人またはチームが、多くの (数百の) データベースの IP ファイアウォール規則を一元的に管理していますか?* "
+" *IP ファイアウォール規則を構成または監査する個人またはチームが、多くの (数百の) データベースの IP ファイアウォール規則を一元的に管理していますか?* "
 
 このシナリオでは、ベスト プラクティスはニーズと環境によって決まります。 サーバー レベルの IP ファイアウォール規則の方が簡単に構成できると思われますが、スクリプトを使用すればデータベース レベルで規則を構成できます。 また、サーバー レベルの IP ファイアウォール規則を使用する場合でも、データベース レベルの IP ファイアウォール規則の監査が必要になることもあります。これは、データベースに対する *CONTROL* 権限を持つユーザーがデータベース レベルの IP ファイアウォール規則を作成するかどうかを確認するためです。
 
-"*サーバー レベルの IP ファイアウォール規則とデータベース レベルの IP ファイアウォール規則を組み合わせて使用できますか?* "
+" *サーバー レベルの IP ファイアウォール規則とデータベース レベルの IP ファイアウォール規則を組み合わせて使用できますか?* "
 
 はい。 サーバー レベルの IP ファイアウォール規則が必要なユーザー (管理者など) と、 データベース レベルの IP ファイアウォール規則が必要なユーザー (データベース アプリケーションのユーザーなど) がいる可能性があります。
 
@@ -107,18 +107,18 @@ Azure 内でホストされているアプリケーションから SQL Server �
 
 Azure SQL Server の IP ファイアウォール規則を作成して管理できるようにするには、次のいずれかの操作を行う必要があります。
 
-- [SQL Server 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)ロール
-- [SQL セキュリティ管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)ロール
+- [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロール
+- [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)ロール
 - Azure SQL Server を含むリソースの所有者
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP ファイアウォール規則の作成および管理
 
-最初のサーバー レベルのファイアウォール設定は、[Azure portal](https://portal.azure.com/) を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql)、[Azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule)、または Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) を使用して作成します。 追加のサーバー レベルの IP ファイアウォール規則を作成して管理するには、これらの方法または Transact-SQL を使用します。
+最初のサーバー レベルのファイアウォール設定は、[Azure portal](https://portal.azure.com/) を使用するか、プログラムで [Azure PowerShell](/powershell/module/az.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule)、または Azure [REST API](/rest/api/sql/firewallrules/createorupdate) を使用して作成します。 追加のサーバー レベルの IP ファイアウォール規則を作成して管理するには、これらの方法または Transact-SQL を使用します。
 
 > [!IMPORTANT]
 > データベース レベルの IP ファイアウォール規則は、Transact-SQL でのみ作成と管理が可能です。
 
-パフォーマンスを向上させるため、サーバー レベルの IP ファイアウォール規則はデータベース レベルで一時的にキャッシュされます。 キャッシュを更新する方法については、「[DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)」をご覧ください。
+パフォーマンスを向上させるため、サーバー レベルの IP ファイアウォール規則はデータベース レベルで一時的にキャッシュされます。 キャッシュを更新する方法については、「[DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql)」をご覧ください。
 
 > [!TIP]
 > [データベース監査](../../azure-sql/database/auditing-overview.md)を使用して、サーバー レベルおよびデータベース レベルのファイアウォールの変更を監査できます。
@@ -144,7 +144,7 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 
 #### <a name="from-the-server-overview-page"></a>サーバーの概要ページから
 
-サーバーの概要ページが開きます。 完全修飾サーバー名 (*mynewserver20170403.database.windows.net* など) や追加の構成オプションが表示されます。
+サーバーの概要ページが開きます。 完全修飾サーバー名 ( *mynewserver20170403.database.windows.net* など) や追加の構成オプションが表示されます。
 
 1. このページからサーバー レベルの規則を設定するには、左側の **[設定]** メニューから **[ファイアウォール]** を選択します。
 
@@ -161,7 +161,7 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 | [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |データベース |データベース レベルの IP ファイアウォール規則を作成または更新する |
 | [sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database) |データベース |データベース レベルの IP ファイアウォール規則を削除する |
 
-次の例では、既存の規則を確認し、*Contoso* サーバーで一定範囲の IP アドレスを有効にして、IP ファイアウォール規則を削除します。
+次の例では、既存の規則を確認し、 *Contoso* サーバーで一定範囲の IP アドレスを有効にして、IP ファイアウォール規則を削除します。
 
 ```sql
 SELECT * FROM sys.firewall_rules ORDER BY name;
@@ -174,7 +174,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-サーバー レベルの IP ファイアウォール規則を削除するには、*sp_delete_firewall_rule* ストアド プロシージャを実行します。 次の例では、*ContosoFirewallRule* という規則を削除します。
+サーバー レベルの IP ファイアウォール規則を削除するには、 *sp_delete_firewall_rule* ストアド プロシージャを実行します。 次の例では、 *ContosoFirewallRule* という規則を削除します。
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
@@ -202,7 +202,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、**mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
+> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、 **mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
 >
 > クイックスタートのコンテキストでの PowerShell の例については、[DB の作成 - PowerShell](powershell-script-content-guide.md) に関するページと [PowerShell を使用した単一データベースの作成とサーバー レベルの IP ファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)に関するページを参照してください。
 
@@ -224,7 +224,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、**mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
+> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、 **mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
 >
 > クイックスタートのコンテキストでの CLI の例については、[DB の作成 - Azure CLI](az-cli-script-samples-content-guide.md) に関するページと [Azure CLI を使用した単一データベースの作成とサーバーレベルの IP ファイアウォール規則の構成](scripts/create-and-configure-database-cli.md)に関するページを参照してください。
 
@@ -232,10 +232,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | Level | 説明 |
 | --- | --- | --- |
-| [ファイアウォール規則の一覧表示](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を表示する |
-| [ファイアウォール規則の作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |サーバー |サーバー レベルの IP ファイアウォール規則を作成または更新する |
-| [ファイアウォール規則の削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
-| [ファイアウォール規則の取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | サーバー | サーバー レベルの IP ファイアウォール規則を取得する |
+| [ファイアウォール規則の一覧表示](/rest/api/sql/firewallrules/listbyserver) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を表示する |
+| [ファイアウォール規則の作成または更新](/rest/api/sql/firewallrules/createorupdate) |サーバー |サーバー レベルの IP ファイアウォール規則を作成または更新する |
+| [ファイアウォール規則の削除](/rest/api/sql/firewallrules/delete) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
+| [ファイアウォール規則の取得](/rest/api/sql/firewallrules/get) | サーバー | サーバー レベルの IP ファイアウォール規則を取得する |
 
 ## <a name="troubleshoot-the-database-firewall"></a>データベース ファイアウォールのトラブルシューティング
 
@@ -258,7 +258,7 @@ Azure SQL Database に期待どおりにアクセスできない場合は、次�
 
 - **ログインが許可されない、または正しくないパスワードが使用された:**
 
-  ログインでのサーバーに対するアクセス許可がないか、パスワードが正しくない場合、サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、サーバーへの接続を試行する "*機会*" をクライアントに提供するだけです。 クライアントには、必要なセキュリティ資格情報の提供が依然として必要です。 ログインの準備の詳細については、[データベース アクセスの制御と許可](logins-create-manage.md)に関する記事を参照してください。
+  ログインでのサーバーに対するアクセス許可がないか、パスワードが正しくない場合、サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、サーバーへの接続を試行する " *機会* " をクライアントに提供するだけです。 クライアントには、必要なセキュリティ資格情報の提供が依然として必要です。 ログインの準備の詳細については、[データベース アクセスの制御と許可](logins-create-manage.md)に関する記事を参照してください。
 
 - **動的 IP アドレス:**
 

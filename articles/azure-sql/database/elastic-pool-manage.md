@@ -9,13 +9,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
+ms.openlocfilehash: 5916a687c4eff4c6c8890b14a8c204cbabc145ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330810"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792193"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "91330810"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 エラスティック プールのサーバーを作成および管理する方法については、[サーバーの作成と管理](logical-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules)に関する記事を参照してください。
 
@@ -52,7 +52,7 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 | --- | --- |
 |[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|エラスティック プールを作成します。|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|エラスティック プールとそのプロパティ値を取得します。|
-|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|エラスティック プールのプロパティを変更します。たとえば、**StorageMB** プロパティを使用して、エラスティック プールの最大容量を変更します。|
+|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|エラスティック プールのプロパティを変更します。たとえば、 **StorageMB** プロパティを使用して、エラスティック プールの最大容量を変更します。|
 |[Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)|エラスティック プールを削除します。|
 |[Get-AzSqlElasticPoolActivity](/powershell/module/az.sql/get-azsqlelasticpoolactivity)|エラスティック プールに対する操作の状態を取得します。|
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 |
@@ -65,7 +65,7 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure) を使用して SQL Database エラスティック プールを作成および管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。
+[Azure CLI](/cli/azure) を使用して SQL Database エラスティック プールを作成および管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](../../cloud-shell/overview.md) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。
 
 > [!TIP]
 > Azure CLI のサンプル スクリプトについては、[CLI を使用した SQL エラスティック プールへの SQL Database 内のデータベースの移動](scripts/move-database-between-elastic-pools-cli.md)に関する記事、および[Azure CLI を使用した Azure SQL Database 内の SQL エラスティック プールのスケーリング](scripts/scale-pool-cli.md)に関する記事を参照してください。
@@ -102,18 +102,18 @@ SQL Database エラスティック プールとプールされたデータベー
 
 | コマンド | 説明 |
 | --- | --- |
-|[エラスティック プール - 作成または更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
-|[エラスティック プール - 削除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|
-|[エラスティック プール - 取得](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|エラスティック プールを取得します。|
-|[エラスティック プール - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|サーバー内のエラスティック プールの一覧を返します。|
-|[エラスティック プール - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|既存のエラスティック プールを更新します。|
-|[エラスティック プールのアクティビティ](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|エラスティック プールのアクティビティを返します。|
-|[エラスティック プール データベースのアクティビティ](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|エラスティック プール内のデータベースのアクティビティを返します。|
-|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|既存のデータベースを更新します。|
+|[エラスティック プール - 作成または更新](/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
+|[エラスティック プール - 削除](/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|
+|[エラスティック プール - 取得](/rest/api/sql/elasticpools/get)|エラスティック プールを取得します。|
+|[エラスティック プール - サーバーごとの一覧取得](/rest/api/sql/elasticpools/listbyserver)|サーバー内のエラスティック プールの一覧を返します。|
+|[エラスティック プール - 更新](/rest/api/sql/elasticpools/listbyserver)|既存のエラスティック プールを更新します。|
+|[エラスティック プールのアクティビティ](/rest/api/sql/elasticpoolactivities)|エラスティック プールのアクティビティを返します。|
+|[エラスティック プール データベースのアクティビティ](/rest/api/sql/elasticpooldatabaseactivities)|エラスティック プール内のデータベースのアクティビティを返します。|
+|[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
 ## <a name="next-steps"></a>次のステップ
 

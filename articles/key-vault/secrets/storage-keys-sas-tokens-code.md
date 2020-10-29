@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597982"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786073"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>コードでの SAS 定義の作成と Shared Access Signature トークンの取得
 
@@ -23,7 +23,7 @@ ms.locfileid: "91597982"
 > [!NOTE]
 > 共有キーによる承認のセキュリティと使いやすさを強化できるように、[ロールベースのアクセス制御 (RBAC)](../../storage/common/storage-auth-aad.md) を使用してストレージ アカウントをセキュリティで保護することをお勧めします。
 
-この記事では、SAS 定義を作成し、SAS トークンをフェッチする .NET コードのサンプルを示します。 Key Vault マネージド ストレージ アカウント用に生成されたクライアントなど、詳細については、[ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) のサンプルを参照してください。 SAS トークンを作成して保存する方法の詳細については、「[Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する](overview-storage-keys.md)」または「[Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する](overview-storage-keys-powershell.md)」を参照してください。
+この記事では、SAS 定義を作成し、SAS トークンをフェッチする .NET コードのサンプルを示します。 Key Vault マネージド ストレージ アカウント用に生成されたクライアントなど、詳細については、[ShareLink](/samples/azure/azure-sdk-for-net/share-link/) のサンプルを参照してください。 SAS トークンを作成して保存する方法の詳細については、「[Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する](overview-storage-keys.md)」または「[Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する](overview-storage-keys-powershell.md)」を参照してください。
 
 ## <a name="code-samples"></a>コード サンプル
 
@@ -41,7 +41,7 @@ SAS 定義を作成したら、`SecretClient` を使用してシークレット�
 
 Shared Access Signature トークンの有効期限が間もなく切れる場合は、同じシークレットを再度フェッチして、新しいものを生成することができます。
 
-取得した Key Vault SAS トークンを使用して Azure Storage サービスにアクセスする方法のガイドについては、[アカウント SAS を使用した Blob service へのアクセス](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)に関する記事をご覧ください
+取得した Key Vault SAS トークンを使用して Azure Storage サービスにアクセスする方法のガイドについては、[アカウント SAS を使用した Blob service へのアクセス](../../storage/common/storage-account-sas-create-dotnet.md#use-an-account-sas-from-a-client)に関する記事をご覧ください
 
 > [!NOTE]
 > アプリでは、ストレージから 403 を取得した場合、SAS の更新に向けた準備が行われる必要があります。これにより、キーが侵害され、通常のローテーション期間よりも速くローテンションを行う必要があるケースを処理することができます。 

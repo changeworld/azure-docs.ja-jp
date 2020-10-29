@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740934"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787960"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure BLOB から AI で生成する検索可能なコンテンツ
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ZIP ファイルを右クリックし、 **[すべて展開]** を選択します。 さまざまな種類のファイルが 14 個あります。 この演習では、7 個を使用します。
 
-このチュートリアルのソース コードをダウンロードすることもできます。 ソース コードは、[azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) リポジトリの **tutorial-ai-enrichment/v11** フォルダーにあります。
+このチュートリアルのソース コードをダウンロードすることもできます。 ソース コードは、 [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) リポジトリの **tutorial-ai-enrichment/v11** フォルダーにあります。
 
 ## <a name="1---create-services"></a>1 - サービスを作成する
 
@@ -72,13 +72,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [基本] タブでは、次の項目が必要です。 それ以外のすべてのものには、既定値をそのまま使用します。
 
-   * **リソース グループ**。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
+   * **リソース グループ** 。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
 
-   * **ストレージ アカウント名**。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、*blobstoragewestus*)。 
+   * **ストレージ アカウント名** 。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、 *blobstoragewestus* )。 
 
-   * **場所**。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
+   * **場所** 。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
 
-   * **アカウントの種類**。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
+   * **アカウントの種類** 。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
 
 1. **[確認および作成]** をクリックしてサービスを作成します。
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[BLOB]** サービスをクリックします。
 
-1. **[+ コンテナー]** をクリックしてコンテナーを作成し、*cog-search-demo* という名前を付けます。
+1. **[+ コンテナー]** をクリックしてコンテナーを作成し、 *cog-search-demo* という名前を付けます。
 
 1. *[cog-search-demo]* を選択し、 **[アップロード]** をクリックして、ダウンロード ファイルを保存したフォルダーを開きます。 14 ファイルすべてを選択し、 **[OK]** をクリックしてアップロードします。
 
@@ -128,7 +128,7 @@ AI エンリッチメントは、自然言語と画像の処理のための Text
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-javascript/service-name-and-keys.png)
 
 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -285,7 +285,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 ### <a name="step-2-create-a-skillset"></a>手順 2:スキルセットを作成する
 
-このセクションでは、データに適用するエンリッチメント ステップのセットを定義します。 各エンリッチメント ステップは "*スキル*" と呼ばれ、エンリッチメント ステップのセットは "*スキルセット*" と呼ばれます。 このチュートリアルでは、スキルセット用に次の[ビルトイン コグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
+このセクションでは、データに適用するエンリッチメント ステップのセットを定義します。 各エンリッチメント ステップは " *スキル* " と呼ばれ、エンリッチメント ステップのセットは " *スキルセット* " と呼ばれます。 このチュートリアルでは、スキルセット用に次の[ビルトイン コグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
 
 * [光学式文字認識](cognitive-search-skill-ocr.md)。画像ファイルに印字された手書きテキストを認識します。
 
@@ -338,7 +338,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>マージ スキル
 
-このセクションでは、ドキュメント コンテンツ フィールドを、OCR スキルで生成されたテキストとマージする**マージ** スキルを作成します。
+このセクションでは、ドキュメント コンテンツ フィールドを、OCR スキルで生成されたテキストとマージする **マージ** スキルを作成します。
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -377,7 +377,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>言語検出スキル
 
-**言語検出**スキルは、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 **言語検出**スキルの出力を、**テキスト分割**スキルに対する入力の一部として使用します。
+**言語検出** スキルは、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 **言語検出** スキルの出力を、 **テキスト分割** スキルに対する入力の一部として使用します。
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -406,7 +406,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>テキスト分割スキル
 
-以下の**分割**スキルは、ページごとにテキストを分割し、`String.Length` で測定してページ サイズを 4,000 文字に制限します。 このアルゴリズムは、テキストを最大でサイズが `maximumPageLength` のチャンクに分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは `maximumPageLength` よりも少し小さくなることがあります。
+以下の **分割** スキルは、ページごとにテキストを分割し、`String.Length` で測定してページ サイズを 4,000 文字に制限します。 このアルゴリズムは、テキストを最大でサイズが `maximumPageLength` のチャンクに分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは `maximumPageLength` よりも少し小さくなることがあります。
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -442,7 +442,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>エンティティ認識スキル
 
-この `EntityRecognitionSkill` インスタンスは、カテゴリの種類 `organization` を認識するように設定されています。 **エンティティ認識**スキルでは、カテゴリの種類 `person` および `location` も認識できます。
+この `EntityRecognitionSkill` インスタンスは、カテゴリの種類 `organization` を認識するように設定されています。 **エンティティ認識** スキルでは、カテゴリの種類 `person` および `location` も認識できます。
 
 "context" フィールドが、アスタリスク付きで ```"/document/pages/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが ```"/document/pages"``` の下にある各ページごとに呼び出されることを意味します。
 
@@ -475,7 +475,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>キー フレーズ抽出スキル
 
-先ほど作成した `EntityRecognitionSkill` インスタンスと同様に、**キー フレーズ抽出**スキルもドキュメントのページごとに呼び出されます。
+先ほど作成した `EntityRecognitionSkill` インスタンスと同様に、 **キー フレーズ抽出** スキルもドキュメントのページごとに呼び出されます。
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()

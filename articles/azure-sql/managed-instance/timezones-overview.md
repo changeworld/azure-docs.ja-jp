@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978375"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790629"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のタイム ゾーン
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "91978375"
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-インスタンスの作成時にタイム ゾーンを設定するには、[Resource Manager テンプレート](https://aka.ms/sql-mi-create-arm-posh)で timezoneId プロパティを指定します。
+インスタンスの作成時にタイム ゾーンを設定するには、[Resource Manager テンプレート](./scripts/create-powershell-azure-resource-manager-template.md)で timezoneId プロパティを指定します。
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ ms.locfileid: "91978375"
 
 ## <a name="limitations"></a>制限事項
 
-- 既存のマネージド インスタンスのタイム ゾーンは変更できません。 対処方法として、適切なタイム ゾーンで新しいマネージド インスタンスを作成し、手動バックアップおよび復元を実行するか、[クロスインスタンスのポイントインタイム リストア](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database) (推奨) を実行する方法があります。
+- 既存のマネージド インスタンスのタイム ゾーンは変更できません。 対処方法として、適切なタイム ゾーンで新しいマネージド インスタンスを作成し、手動バックアップおよび復元を実行するか、[クロスインスタンスのポイントインタイム リストア](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database) (推奨) を実行する方法があります。
 - SQL Server エージェントのジョブから起動される外部プロセスでは、インスタンスのタイム ゾーンは確認されません。
 
 ## <a name="list-of-supported-time-zones"></a>サポートされているタイム ゾーンの一覧
@@ -243,7 +243,7 @@ ms.locfileid: "91978375"
 
 ## <a name="see-also"></a>関連項目 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [AT TIME ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

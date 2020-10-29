@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617759"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791632"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-(BC と GP 両方のサービス レベルに適用) プライマリ ノードのフェールオーバーを開始するには、次の例のように PowerShell コマンド [Invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) を使用します。
+(BC と GP 両方のサービス レベルに適用) プライマリ ノードのフェールオーバーを開始するには、次の例のように PowerShell コマンド [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) を使用します。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>REST API の使用
 
-継続的テスト パイプラインや自動パフォーマンス問題軽減機能を実装する目的で、SQL Managed Instance のフェールオーバーを自動化する必要がある上級ユーザーの場合、API 呼び出しによってフェールオーバーを開始することで、この機能を実現できます。 詳細については、[Managed Instance のフェールオーバー REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)に関する記事を参照してください。
+継続的テスト パイプラインや自動パフォーマンス問題軽減機能を実装する目的で、SQL Managed Instance のフェールオーバーを自動化する必要がある上級ユーザーの場合、API 呼び出しによってフェールオーバーを開始することで、この機能を実現できます。 詳細については、[Managed Instance のフェールオーバー REST API](/rest/api/sql/managed%20instances%20-%20failover/failover)に関する記事を参照してください。
 
 REST API の呼び出しを使用してフェールオーバーを開始するには、まず、任意の API クライアントを使用して認証トークンを生成します。 生成された認証トークンは、API 要求のヘッダーで Authorization プロパティとして使用されます。これは必須です。
 
@@ -136,11 +136,11 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 GP サービス レベルでは、上記の BC で示されているものと同じ出力を表示することはできません。 これは、GP サービス レベルは 1 つのノードのみに基づいているためです。 GP サービス レベルに対する T-SQL クエリの出力では、フェールオーバーの前後で 1 つのノードのみが表示されます。 フェールオーバー中にクライアントからの接続が失われた場合 (通常は 1 分未満)、フェールオーバーが実行されていることを示します。
 
 > [!NOTE]
-> (実際の短い使用不可ではなく) フェールオーバー プロセスが完了するには、**高負荷**のワークロードで一度に数分かかることがあります。 これは、フェールオーバーが行われる前に、インスタンス エンジンによって、プライマリ上のすべての現在のトランザクションが処理され、セカンダリ ノードでキャッチアップされるためです。
+> (実際の短い使用不可ではなく) フェールオーバー プロセスが完了するには、 **高負荷** のワークロードで一度に数分かかることがあります。 これは、フェールオーバーが行われる前に、インスタンス エンジンによって、プライマリ上のすべての現在のトランザクションが処理され、セカンダリ ノードでキャッチアップされるためです。
 
 > [!IMPORTANT]
 > ユーザーが開始した手動フェールオーバーの機能上の制限は次のとおりです。
-> - 同じ Managed Instance では、**30 分**ごとに 1 つのフェールオーバーを開始できます。
+> - 同じ Managed Instance では、 **30 分** ごとに 1 つのフェールオーバーを開始できます。
 > - BC インスタンスの場合、フェールオーバー要求が受け入れられるには、レプリカのクォーラムが存在している必要があります。
 > - BC インスタンスの場合、フェールオーバーを開始する読み取り可能セカンダリ レプリカを指定することはできません。
 

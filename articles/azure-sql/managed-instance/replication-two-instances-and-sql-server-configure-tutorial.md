@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058558"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790799"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>チュートリアル:Azure SQL Managed Instance と SQL Server の間にトランザクション レプリケーションを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "92058558"
 
 
 > [!NOTE]
-> この記事では、Azure SQL Managed Instance での[トランザクション レプリケーション](/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のインスタンスを完全に読み取れるレプリカを作成する Azure SQL Managed Instance の機能である、[フェールオーバー グループ](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)とは無関係です。 [フェールオーバー グループを使用してトランザクション レプリケーション](replication-transactional-overview.md#with-failover-groups)を構成する場合は、追加の考慮事項があります。
+> この記事では、Azure SQL Managed Instance での[トランザクション レプリケーション](/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のインスタンスを完全に読み取れるレプリカを作成する Azure SQL Managed Instance の機能である、[フェールオーバー グループ](../database/auto-failover-group-overview.md)とは無関係です。 [フェールオーバー グループを使用してトランザクション レプリケーション](replication-transactional-overview.md#with-failover-groups)を構成する場合は、追加の考慮事項があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 [Azure portal](https://portal.azure.com) を使用して、この新しいリソース グループ内に 2 つのマネージド インスタンスを作成します。
 
 - パブリッシャー マネージド インスタンスの名前は `sql-mi-publisher` (およびランダム化のためのいくつかの文字) にして、仮想ネットワークの名前は `vnet-sql-mi-publisher` にする必要があります。
-- ディストリビューター マネージド インスタンスの名前は `sql-mi-distributor` (およびランダム化のためのいくつかの文字) にして、"_パブリッシャー マネージド インスタンスと同じ仮想ネットワークに配置する_" 必要があります。
+- ディストリビューター マネージド インスタンスの名前は `sql-mi-distributor` (およびランダム化のためのいくつかの文字) にして、" _パブリッシャー マネージド インスタンスと同じ仮想ネットワークに配置する_ " 必要があります。
 
    ![ディストリビューターにはパブリッシャー VNet を使用する](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -159,7 +159,7 @@ VNet ピアリングを確立した後、SQL Server で SQL Server Management St
 
 ### <a name="create-an-a-record"></a>A レコードを作成する
 
-1. 新しい**プライベート DNS ゾーン**に移動して、 **[概要]** を選択します。
+1. 新しい **プライベート DNS ゾーン** に移動して、 **[概要]** を選択します。
 1. **[+ レコード セット]** を選択して、新しい A レコードを作成します。
 1. SQL Server VM の名前と、プライベート内部 IP アドレスを指定します。
 
@@ -169,7 +169,7 @@ VNet ピアリングを確立した後、SQL Server で SQL Server Management St
 
 ### <a name="link-the-virtual-network"></a>仮想ネットワークのリンク
 
-1. 新しい**プライベート DNS ゾーン**に移動して、 **[仮想ネットワーク リンク]** を選択します。
+1. 新しい **プライベート DNS ゾーン** に移動して、 **[仮想ネットワーク リンク]** を選択します。
 1. **[+ 追加]** を選択します。
 1. リンクの名前を指定します (例: `Pub-link`)。
 1. ドロップダウンからサブスクリプションを選択し、パブリッシャー マネージド インスタンスの仮想ネットワークを選択します。
@@ -182,7 +182,7 @@ VNet ピアリングを確立した後、SQL Server で SQL Server Management St
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-作業ディレクトリ用に [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。
+作業ディレクトリ用に [Azure ストレージ アカウントを作成](../../storage/common/storage-account-create.md#create-a-storage-account)し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。
 
 `\\storage-account-name.file.core.windows.net\file-share-name` の形式のファイル共有パスをコピーします。
 
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -283,7 +283,7 @@ GO
 
 1. SQL Server 上で SQL Server Management Studio を起動します。
 1. `sql-mi-publisher` マネージド インスタンスに接続します。
-1. **オブジェクト エクスプローラー**で **[レプリケーション]** ノードを展開し、 **[ローカル パブリケーション]** フォルダーを右クリックします。 **[新しいパブリケーション...]** を選択します。
+1. **オブジェクト エクスプローラー** で **[レプリケーション]** ノードを展開し、 **[ローカル パブリケーション]** フォルダーを右クリックします。 **[新しいパブリケーション...]** を選択します。
 1. **[次へ]** を選択して、ようこそページの後まで移動します。
 1. **[パブリケーション データベース]** ページで、前に作成した `ReplTutorial` データベースを選択します。 **[次へ]** を選択します。
 1. **[パブリケーションの種類]** ページで、 **[トランザクション パブリケーション]** を選択します。 **[次へ]** を選択します。
@@ -296,7 +296,7 @@ GO
 
 1. **[ウィザードのアクション]** ページで **[パブリケーションを作成する]** を選択し、後のためにこのスクリプトを保存する場合は **[パブリケーションを作成するためのステップを含むスクリプト ファイルを生成する]** を選択します (省略可能)。
 1. **[ウィザードの完了]** ページで、パブリケーションに `ReplTest` という名前を指定し、 **[次へ]** を選択してパブリケーションを作成します。
-1. パブリケーションが作成されたら、**オブジェクト エクスプローラー**の **[レプリケーション]** ノードを更新し、 **[ローカル パブリケーション]** を展開して、新しいパブリケーションを確認します。
+1. パブリケーションが作成されたら、 **オブジェクト エクスプローラー** の **[レプリケーション]** ノードを更新し、 **[ローカル パブリケーション]** を展開して、新しいパブリケーションを確認します。
 
 ## <a name="create-the-subscription"></a>サブスクリプションを作成する
 
@@ -352,8 +352,8 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。
-1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスは、バックグラウンドで完了するまでに時間がかかる場合があります。完了するまでは、"*仮想クラスター*" やその他の依存リソースを削除することはできません。 **[アクティビティ]** タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。
-1. マネージド インスタンスが削除されたら、"*仮想クラスター*" を削除します。そのためには、リソース グループでそれを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。
+1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスは、バックグラウンドで完了するまでに時間がかかる場合があります。完了するまでは、" *仮想クラスター* " やその他の依存リソースを削除することはできません。 **[アクティビティ]** タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。
+1. マネージド インスタンスが削除されたら、" *仮想クラスター* " を削除します。そのためには、リソース グループでそれを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。
 1. 残りのリソースを削除します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。
 1. リソース グループを削除するには、 **[リソース グループの削除]** を選択し、リソース グループの名前 (`myResourceGroup`) を入力して、 **[削除]** を選びます。
 
@@ -414,7 +414,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 - [脅威の検出](threat-detection-configure.md)
 - [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)
-- [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL Managed Instance の機能
 

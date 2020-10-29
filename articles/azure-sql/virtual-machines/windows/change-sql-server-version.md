@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ec7ed958ac045c68fd7b616903f401dd07d8166
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293375"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789830"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上の SQL Server バージョンのインプレース変更
 
@@ -32,7 +32,7 @@ ms.locfileid: "91293375"
 SQL Server のインプレース アップグレードを実行するには、次の条件が適用されます。
 
 - SQL Server の目的のバージョンのセットアップ メディアが必要です。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、SQL Server の新しいバージョン (通常、C:\SQLServerFull にあります) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。
-- エディションのアップグレードは、[サポート アップグレード パス](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)に従う必要があります。
+- エディションのアップグレードは、[サポート アップグレード パス](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)に従う必要があります。
 
 ## <a name="planning-for-version-change"></a>バージョンの変更の計画
 
@@ -40,25 +40,25 @@ SQL Server のインプレース アップグレードを実行するには、�
 
 1. アップグレードを計画しているバージョンの新機能を確認します。
 
-   - [SQL 2019](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15) の新機能
-   - [SQL 2017](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15) の新機能
-   - [SQL 2016](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15) の新機能
-   - [SQL 2014](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014) の新機能
+   - [SQL 2019](/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15) の新機能
+   - [SQL 2017](/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15) の新機能
+   - [SQL 2016](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15) の新機能
+   - [SQL 2014](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014) の新機能
 
-1. アップグレードの影響を最小限に抑えるため、データベース互換性モードを使用できるように、変更するバージョンの[互換性証明書](https://docs.microsoft.com/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15)を確認することをお勧めします。
+1. アップグレードの影響を最小限に抑えるため、データベース互換性モードを使用できるように、変更するバージョンの[互換性証明書](/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15)を確認することをお勧めします。
 1. 正常な結果を得るには、次の記事を参照してください。
 
    - [ビデオ: Modernizing SQL Server | Pam Lahoud & Pedro Lopes | 20 Years of PASS (SQL Server を最新にする | Pam Lahoud & Pedro Lopes | 20 年来の PASS)](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [AB テスト用の Database Experimentation Assistant](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
-   - [クエリ調整アシスタントを使用したデータベースのアップグレード](https://docs.microsoft.com/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
-   - [データベース互換性レベルの変更とクエリ ストアの使用](https://docs.microsoft.com/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
+   - [AB テスト用の Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
+   - [クエリ調整アシスタントを使用したデータベースのアップグレード](/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
+   - [データベース互換性レベルの変更とクエリ ストアの使用](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
 
 ## <a name="upgrade-sql-version"></a>SQL バージョンのアップグレード
 
 > [!WARNING]
 > SQL Server のバージョンをアップグレードすると、Analysis Services や R Services などのすべての関連するサービスに加えて、SQL Server のサービスが再起動されます。
 
-SQL Server のバージョンをアップグレードするには、SQL Server の[アップグレード パスをサポートする](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)新しいバージョンの SQL Server セットアップ メディアを入手し、次の手順を実行します。
+SQL Server のバージョンをアップグレードするには、SQL Server の[アップグレード パスをサポートする](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)新しいバージョンの SQL Server セットアップ メディアを入手し、次の手順を実行します。
 
 1. プロセスを開始する前に、システム データベース (tempdb を除く) とユーザー データベースを含むデータベースをバックアップします。 Azure Backup Services を使用して、アプリケーション整合性のある VM レベルのバックアップを作成することもできます。
 1. SQL Server のインストール メディアから Setup.exe を開始します。
@@ -66,12 +66,12 @@ SQL Server のバージョンをアップグレードするには、SQL Server �
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
-1. **[プロダクト キー]** ページで、SQL Server の無償のエディションにアップグレードするか、製品の運用バージョンの PID キーを持っているかを示すオプションを選択します。 詳細については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15)」と「[サポートされているバージョンとエディションのアップグレード (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)」を参照してください。
-1. **[アップグレードの準備完了]** ページが表示されるまで **[次へ]** を選択し、 **[アップグレード]** を選択します。 変更が有効になるまで数分間、セットアップ ウィンドウの応答が停止することがあります。 **[完了]** ページで、アップグレードが完了したことが確認されます。 アップグレード手順の詳細については、[完全な手順](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)を参照してください。
+1. **[プロダクト キー]** ページで、SQL Server の無償のエディションにアップグレードするか、製品の運用バージョンの PID キーを持っているかを示すオプションを選択します。 詳細については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15)」と「[サポートされているバージョンとエディションのアップグレード (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)」を参照してください。
+1. **[アップグレードの準備完了]** ページが表示されるまで **[次へ]** を選択し、 **[アップグレード]** を選択します。 変更が有効になるまで数分間、セットアップ ウィンドウの応答が停止することがあります。 **[完了]** ページで、アップグレードが完了したことが確認されます。 アップグレード手順の詳細については、[完全な手順](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)を参照してください。
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
-バージョンを変更するだけでなく SQL Server エディションを変更した場合は、エディションも更新します。SQL VM インスタンスを変更するには、「**ポータルでバージョンとエディションを確認する**」セクションを参照してください。
+バージョンを変更するだけでなく SQL Server エディションを変更した場合は、エディションも更新します。SQL VM インスタンスを変更するには、「 **ポータルでバージョンとエディションを確認する** 」セクションを参照してください。
 
    :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 

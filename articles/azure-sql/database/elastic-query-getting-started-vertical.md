@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 089cc8f22248a2b7152afaf951f6028a05682648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443331"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792125"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,9 +33,9 @@ ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。 このアク
 
 ## <a name="create-the-sample-databases"></a>サンプル データベースの作成
 
-最初に、"**Customers**" と "**Orders**" という 2 つのデータベースを同じサーバーか異なるサーバーに作成する必要があります。
+最初に、" **Customers** " と " **Orders** " という 2 つのデータベースを同じサーバーか異なるサーバーに作成する必要があります。
 
-「**Orders**」データベースで次のクエリを実行し、「**OrderInformation**」テーブルを作成し、サンプル データを入力します。
+「 **Orders** 」データベースで次のクエリを実行し、「 **OrderInformation** 」テーブルを作成し、サンプル データを入力します。
 
 ```tsql
 CREATE TABLE [dbo].[OrderInformation](
@@ -49,7 +49,7 @@ INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
 INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 ```
 
-次に、**Customers** データベースで次のクエリを実行して、**CustomerInformation** テーブルを作成し、サンプル データを入力します。
+次に、 **Customers** データベースで次のクエリを実行して、 **CustomerInformation** テーブルを作成し、サンプル データを入力します。
 
 ```tsql
 CREATE TABLE [dbo].[CustomerInformation](
@@ -129,4 +129,4 @@ ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 * 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](elastic-query-vertical-partitioning.md)」をご覧ください。
 * 行方向のパーティション分割 (シャード化) のチュートリアルについては、「[スケールアウトされたクラウド データベース全体のレポート (プレビュー)](elastic-query-getting-started.md)」をご覧ください。
 * 行方向にパーティション分割されたデータの構文とサンプル クエリについては、「[スケールアウトされたクラウド データベース全体をレポートする (プレビュー)](elastic-query-horizontal-partitioning.md)」をご覧ください。
-* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)」をご覧ください。
+* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)」をご覧ください。

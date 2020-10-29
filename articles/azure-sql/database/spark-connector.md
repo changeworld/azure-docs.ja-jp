@@ -11,18 +11,18 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 09/02/2020
-ms.openlocfilehash: 36010ff0206ddf9dae08391eb6e4c3dd7762cc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319335"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790204"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark コネクタを使用したリアルタイムのビッグ データ分析の高速化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 > [!NOTE]
-> 2020 年 9 月現在、このコネクタは積極的に保守されていません。 ただし、[SQL Server および Azure SQL 用の Apache Spark コネクタ](https://docs.microsoft.com/sql/connect/spark/connector)が使用できるようになりました。Python および R のバインディング、データをバルク インサートするための使いやすいインターフェイス、その他多くの機能強化がサポートされています。 このページのコネクタではなく、新しいコネクタを評価して使用することを強くお勧めします。 古いコネクタに関する情報 (このページ) は、アーカイブ目的でのみ保持されます。
+> 2020 年 9 月現在、このコネクタは積極的に保守されていません。 ただし、[SQL Server および Azure SQL 用の Apache Spark コネクタ](/sql/connect/spark/connector)が使用できるようになりました。Python および R のバインディング、データをバルク インサートするための使いやすいインターフェイス、その他多くの機能強化がサポートされています。 このページのコネクタではなく、新しいコネクタを評価して使用することを強くお勧めします。 古いコネクタに関する情報 (このページ) は、アーカイブ目的でのみ保持されます。
 
 Spark コネクタを使用すると、Azure SQL Database、Azure SQL Managed Instance、SQL Server のデータベースを Spark ジョブの入力データ ソースまたは出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。 組み込みの JDBC コネクタに比べて、このコネクタには、データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 Spark コネクタでは、Azure SQL Database と Azure SQL Managed Instance に接続するための Azure Active Directory (Azure AD) 認証がサポートされています。これにより、Azure AD アカウントを使用して、Azure Databricks からデータベースを接続できるようになります。 組み込みの JDBC コネクタと同様のインターフェイスを備えています。 この新しいコネクタを使用するための既存の Spark ジョブの移行は簡単に実行できます。
 
@@ -238,4 +238,4 @@ Spark コネクタをまだダウンロードしていない場合は、[GitHub 
 - [Azure Databricks ノートブックのサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [サンプル スクリプト (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。
+また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](/azure/azure-databricks/)を確認することもできます。

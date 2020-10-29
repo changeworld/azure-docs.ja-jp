@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 640dcfc49d1b467cbb852e8b07b113c1180daf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b796d6689db143cf59ae4ca0a180c2c7c317b7bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617096"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789439"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics 統合を使用して Azure SQL Database にデータをストリーム配信する (プレビュー)
 
@@ -55,8 +55,8 @@ ms.locfileid: "91617096"
 4. イベント ソースの詳細を入力し、 **[Next:Output]\(次へ: 出力\)** を選択します。
 
    - **[Input type]\(入力の種類\)** :イベントハブ/IoT ハブ
-   - **入力のエイリアス**:イベント ソースを識別する名前を入力してください
-   - **サブスクリプション**:Azure SQL Database のサブスクリプションと同じです
+   - **入力のエイリアス** :イベント ソースを識別する名前を入力してください
+   - **サブスクリプション** :Azure SQL Database のサブスクリプションと同じです
    - **[イベント ハブの名前空間]** :名前空間の名前
    - **[イベント ハブ名]** : 選択した名前空間内のイベント ハブの名前
    - **[イベント ハブ ポリシー名]** \(既定では新規作成):ポリシー名を指定します
@@ -69,7 +69,7 @@ ms.locfileid: "91617096"
 5. ストリーミング データを取り込むテーブルを選択します。 完了したら、 **[作成]** を選択します。
 
    - **[ユーザー名]** 、 **[パスワード]** :SQL サーバー認証用の資格情報を入力します。 **[検証]** を選択します。
-   - **テーブル**: **[新規作成]** または **[既存のデータを使用する]** を選択します。 このフローでは、 **[作成]** を選択します。 これにより、Stream Analytics ジョブの開始時に新しいテーブルが作成されます。
+   - **テーブル** : **[新規作成]** または **[既存のデータを使用する]** を選択します。 このフローでは、 **[作成]** を選択します。 これにより、Stream Analytics ジョブの開始時に新しいテーブルが作成されます。
 
      ![Stream Analytics ジョブを作成する](./media/stream-data-stream-analytics-integration/create.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "91617096"
       - [新規作成]:手順 5 でこのオプションを選択した場合は、ストリーミング ジョブを開始するまでスキーマが表示されません。 新しいテーブルを作成する場合は、適切なテーブル インデックスを選択します。 テーブル インデックス作成の詳細については、「[クラスター化インデックスと非クラスター化インデックスの説明](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/)」を参照してください。
       - [既存のものを使用]:手順 5. でこのオプションを選択した場合は、選択したテーブルのスキーマが表示されます。
 
-7. クエリの作成およびテストを完了したら、 **[クエリの保存]** を選択します。 **[Start Stream Analytics job]\(Stream Analytics ジョブを開始する\)** を選択して、変換されたデータを SQL テーブルに取り込む操作を開始します。 次のフィールドを確定したら、ジョブを**開始**します。
+7. クエリの作成およびテストを完了したら、 **[クエリの保存]** を選択します。 **[Start Stream Analytics job]\(Stream Analytics ジョブを開始する\)** を選択して、変換されたデータを SQL テーブルに取り込む操作を開始します。 次のフィールドを確定したら、ジョブを **開始** します。
    - **[出力開始時刻]** :これにより、ジョブの最初の出力時刻が定義されます。  
      - [今すぐ]:ジョブはすぐに開始され、新しい受信データを処理します。
      - カスタム:ジョブはすぐに開始されますが、特定の時点 (過去または将来の可能性があります) のデータを処理します。 詳細については、「[Azure Stream Analytics ジョブを開始する方法](../../stream-analytics/start-job.md)」を参照してください。
@@ -124,6 +124,5 @@ ms.locfileid: "91617096"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stream Analytics のドキュメント](https://docs.microsoft.com/azure/stream-analytics/)
+- [Azure Stream Analytics のドキュメント](../../stream-analytics/index.yml)
 - [Azure Stream Analytics のソリューション パターン](../../stream-analytics/stream-analytics-solution-patterns.md)
- 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c964e3c02148c461c601eab4bc5bfb0abb4ac052
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013306"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791615"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して複数のデータ ソースのデータにインデックスを付ける
 
@@ -70,11 +70,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="新しいデータベースの作成" border="false":::
 
-1. 「**hotel-rooms-db**」という名前を入力します。 残りの設定は既定値のままにします。
+1. 「 **hotel-rooms-db** 」という名前を入力します。 残りの設定は既定値のままにします。
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="新しいデータベースの作成" border="false":::
 
-1. 新しいコンテナーを作成します。 先ほど作成した既存のデータベースを使用します。 コンテナー名として「**hotels**」と入力し、[パーティション キー] に「 **/HotelId**」を使用します。
+1. 新しいコンテナーを作成します。 先ほど作成した既存のデータベースを使用します。 コンテナー名として「 **hotels** 」と入力し、[パーティション キー] に「 **/HotelId** 」を使用します。
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="新しいデータベースの作成" border="false":::
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure portal](https://portal.azure.com) にサインインし、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
-1. サンプルのホテルの部屋の JSON ファイルを格納するために、**hotel-rooms** という名前の [BLOB コンテナーを作成](../storage/blobs/storage-quickstart-blobs-portal.md)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+1. サンプルのホテルの部屋の JSON ファイルを格納するために、 **hotel-rooms** という名前の [BLOB コンテナーを作成](../storage/blobs/storage-quickstart-blobs-portal.md)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="新しいデータベースの作成" border="false":::
 
@@ -112,7 +112,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="新しいデータベースの作成" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="新しいデータベースの作成" border="false":::
 
 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -120,7 +120,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Visual Studio を起動し、 **[ツール]** メニューから、 **[NuGet パッケージ マネージャー]** 、 **[ソリューションの NuGet パッケージの管理]** の順に選択します。 
 
-1. **[参照]** タブで、**Azure.Search.Documents** (バージョン 11.0 以降) を見つけてインストールします。 インストールを完了するには、クリックしてさらにダイアログを進む必要があります。
+1. **[参照]** タブで、 **Azure.Search.Documents** (バージョン 11.0 以降) を見つけてインストールします。 インストールを完了するには、クリックしてさらにダイアログを進む必要があります。
 
     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="新しいデータベースの作成" border="false":::
 
@@ -128,7 +128,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ソリューション ファイル **/v11/AzureSearchMultipleDataSources.sln** を開きます。
 
-1. ソリューション エクスプローラーで、**appsettings.json** ファイルを編集し、接続情報を追加します。  
+1. ソリューション エクスプローラーで、 **appsettings.json** ファイルを編集し、接続情報を追加します。  
 
     ```json
     {
@@ -185,7 +185,7 @@ Azure Cognitive Search インデクサーでは、フィールド マッピン�
 
 このプログラムは、この例を複数回実行する場合に備えて、新しいインデックスを作成する前に同じ名前の既存のものを削除します。
 
-**Hotel.cs** ファイルからの次のスニペットには、単一フィールドと、その後に続く別のデータ モデル クラス Room[] への参照が示されています。それは、**Room.cs** ファイル内で定義されます (表示していません)。
+**Hotel.cs** ファイルからの次のスニペットには、単一フィールドと、その後に続く別のデータ モデル クラス Room[] への参照が示されています。それは、 **Room.cs** ファイル内で定義されます (表示していません)。
 
 ```csharp
 . . .
@@ -199,7 +199,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-**Program.cs** ファイルでは、[SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) が、`FieldBuilder.Build` メソッドで生成された名前とフィールド コレクションを使用して定義されてから、次のように作成されます。
+**Program.cs** ファイルでは、 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) が、`FieldBuilder.Build` メソッドで生成された名前とフィールド コレクションを使用して定義されてから、次のように作成されます。
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
@@ -240,7 +240,7 @@ private static async Task CreateAndRunCosmosDbIndexerAsync(string indexName, Sea
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(cosmosDbDataSource);
 ```
 
-データ ソースが作成された後、このプログラムは、**hotel-rooms-cosmos-indexer** という名前の Azure Cosmos DB インデクサーを設定します。
+データ ソースが作成された後、このプログラムは、 **hotel-rooms-cosmos-indexer** という名前の Azure Cosmos DB インデクサーを設定します。
 
 プログラムは同じ名前の既存のインデクサーがあれば更新します。これにより、該当する既存のインデクサーは上記のコードの内容で上書きされます。 また、この例を複数回実行する場合に備えて、リセットおよび実行アクションも含められています。
 
@@ -306,7 +306,7 @@ private static async Task CreateAndRunBlobIndexerAsync(string indexName, SearchI
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(blobDataSource);
 ```
 
-データ ソースが作成された後、このプログラムでは、次に示すように、**hotel-rooms-blob-indexer** という名前の BLOB インデクサーを設定します。
+データ ソースが作成された後、このプログラムでは、次に示すように、 **hotel-rooms-blob-indexer** という名前の BLOB インデクサーを設定します。
 
 JSON BLOB には、 **`HotelId`** ではなく、 **`Id`** という名前のキー フィールドが含まれています。 このコードでは、`FieldMapping` クラスを使用して、 **`Id`** フィールド値をインデックス内の **`HotelId`** ドキュメント キーに対応させるようインデクサーに指示しています。
 

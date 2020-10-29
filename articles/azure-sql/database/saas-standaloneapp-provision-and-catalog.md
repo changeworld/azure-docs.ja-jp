@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332197"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793247"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92332197"
 
 ## <a name="standalone-application-per-tenant-pattern"></a>テナントごとのスタンドアロン アプリケーション パターン
 
-テナントごとのスタンドアロン アプリ パターンは、マルチテナント SaaS アプリケーションのさまざまなパターンのうちの 1 つです。  このパターンでは、各テナントに対してスタンドアロン アプリがプロビジョニングされます。 アプリケーションは、アプリケーション レベルのコンポーネントと Azure SQL Database で構成されます。  各テナントのアプリは、ベンダーのサブスクリプション内にデプロイできます。  または、アプリをテナントのサブスクリプション内にデプロイし、テナントに代わってベンダーが管理できる[マネージド アプリケーション プログラム](https://docs.microsoft.com/azure/managed-applications/overview)が Azure によって提供されます。
+テナントごとのスタンドアロン アプリ パターンは、マルチテナント SaaS アプリケーションのさまざまなパターンのうちの 1 つです。  このパターンでは、各テナントに対してスタンドアロン アプリがプロビジョニングされます。 アプリケーションは、アプリケーション レベルのコンポーネントと Azure SQL Database で構成されます。  各テナントのアプリは、ベンダーのサブスクリプション内にデプロイできます。  または、アプリをテナントのサブスクリプション内にデプロイし、テナントに代わってベンダーが管理できる[マネージド アプリケーション プログラム](../../azure-resource-manager/managed-applications/overview.md)が Azure によって提供されます。
 
    ![テナントごとのアプリケーション パターン](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -72,8 +72,8 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
-* 3 つのサンプル テナント アプリがデプロイされている。 これらのアプリを 5 分未満でデプロイするには、「[Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](../../sql-database/saas-standaloneapp-get-started-deploy.md)」を参照してください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
+* 3 つのサンプル テナント アプリがデプロイされている。 これらのアプリを 5 分未満でデプロイするには、「[Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](./saas-standaloneapp-get-started-deploy.md)」を参照してください。
 
 ## <a name="provision-the-catalog"></a>カタログをプロビジョニングする
 
@@ -92,7 +92,7 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 1. **F5** キーを押してスクリプトを実行します。
 1.  ブレークポイントでスクリプトの実行が停止したら、 **F11** キーを押して New-Catalog.ps1 スクリプトにステップ インします。
 1.  デバッグのメニュー オプション (F10 キーと F11 キー) を使用して、呼び出された関数へのステップ オーバーまたはステップ インを行って、スクリプトの実行をトレースします。
-    *   PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+    *   PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
 
 スクリプトが完了すると、カタログが作成され、サンプルのすべてのテナントが登録されます。
 
@@ -156,4 +156,4 @@ Azure Portal で作成された新しいリソースを検査できます。
 > * アプリを構成するサーバーおよびデータベースについて。
 > * サンプル リソースを削除して、関連する課金を停止する方法。
 
-[Wingtip Tickets SaaS アプリケーション](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)のテナントごとのデータベース バージョンを使用して、さまざまなテナント間シナリオをサポートするためにカタログを使用する方法を調べることができます。
+[Wingtip Tickets SaaS アプリケーション](./saas-dbpertenant-wingtip-app-overview.md)のテナントごとのデータベース バージョンを使用して、さまざまなテナント間シナリオをサポートするためにカタログを使用する方法を調べることができます。

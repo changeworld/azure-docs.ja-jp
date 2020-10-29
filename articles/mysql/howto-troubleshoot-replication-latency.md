@@ -6,15 +6,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/08/2020
-ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.date: 10/25/2020
+ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096098"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791581"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL のレプリケーション待ち時間のトラブルシューティング
+
+[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
 [読み取りレプリカ](concepts-read-replicas.md)機能を使用すると、Azure Database for MySQL サーバーから、読み取り専用のレプリカ サーバーにデータをレプリケートできます。 読み取りおよびレポート クエリをアプリケーションから複数のレプリカ サーバーにルーティングすることによって、ワークロードをスケールアウトできます。 このセットアップにより、ソース サーバーの負荷が軽減されます。 また、スケーリングにより、アプリケーションの全体的なパフォーマンスと待機時間も改善されます。 
 

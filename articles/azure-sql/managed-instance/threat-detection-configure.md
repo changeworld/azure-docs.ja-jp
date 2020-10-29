@@ -12,17 +12,17 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d2ea14356bf85c795769f1d406f1571f36adaa38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a47b9032ac014fa4eedde343d03d4fd343ff02
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617920"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790663"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance で Advanced Threat Protection を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) の [Advanced Threat Protection](../database/threat-detection-overview.md) では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。 Advanced Threat Protection によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[Advanced Threat Protectionアラート](../database/threat-detection-overview.md#alerts)に関する記事を参照してください。
+[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) の [Advanced Threat Protection](../database/threat-detection-overview.md) では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。 Advanced Threat Protection によって、 **SQL インジェクションの可能性** 、 **通常とは異なる場所またはデータ センターからのアクセス** 、 **通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス** 、 **SQL 資格情報に対するブルート フォース攻撃** を特定できます。詳細については、 [Advanced Threat Protectionアラート](../database/threat-detection-overview.md#alerts)に関する記事を参照してください。
 
 検出された脅威に関する通知は、[電子メールの通知](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event)または [Azure portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal) で受け取ることができます。
 
@@ -33,9 +33,9 @@ ms.locfileid: "91617920"
 1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. 保護する SQL Managed Instance のインスタンスの構成ページに移動します。 **[セキュリティ]** で **[セキュリティ センター]** を選択します。
 3. Azure Defender for SQL の構成ページで、以下の操作を行います
-   - Azure Defender for SQL を**オン**にします。
-   - 異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取る**電子メールのリスト**を構成します。
-   - 異常な脅威監査レコードの保存先となる **Azure ストレージ アカウント**を選択します。
+   - Azure Defender for SQL を **オン** にします。
+   - 異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取る **電子メールのリスト** を構成します。
+   - 異常な脅威監査レコードの保存先となる **Azure ストレージ アカウント** を選択します。
    - 構成する **[Advanced Threat Protection の種類]** を選択します。 詳しくは、[Advanced Threat Protection のアラート](../database/threat-detection-overview.md)に関する記事をご覧ください。
 4. **[保存]** をクリックして、新しい、または更新された Azure Defender for SQL ポリシーを保存します。
 
@@ -44,5 +44,5 @@ ms.locfileid: "91617920"
 - [Advanced Threat Protection](../database/threat-detection-overview.md) の詳細について学習します。
 - マネージド インスタンスの詳細については、[Azure SQL Managed Instance の概要](sql-managed-instance-paas-overview.md)に関するページをご覧ください。
 - 詳しくは、[Azure SQL Database の Advanced Threat Protection](../database/threat-detection-configure.md) に関するページをご覧ください。
-- 詳しくは、[SQL Managed Instance の監査](https://go.microsoft.com/fwlink/?linkid=869430)に関するページをご覧ください。
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。
+- 詳しくは、[SQL Managed Instance の監査](./auditing-configure.md)に関するページをご覧ください。
+- [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について学習します。

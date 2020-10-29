@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203836"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792924"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
  
@@ -95,17 +95,17 @@ ms.locfileid: "86203836"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Import/Export でデータを転送する方法を学習します](/azure/storage/common/storage-import-export-data-to-blobs)。
+- [Import/Export でデータを転送する方法を学習します](./storage-import-export-data-to-blobs.md)。
 - 以下の方法を理解します
 
-    - [Data Box Edge を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
-    - [Data Box を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
-- [AzCopy を使用してデータを転送する](/azure/storage/common/storage-use-azcopy-v10)。
+    - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
+    - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
+- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)します。
-    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [Azure Data Factory を使用してデータを転送する方法を学習します](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)。
+    - [Data Box Gateway を使用してデータを転送する](../../databox-online/data-box-gateway-deploy-add-shares.md)します。
+    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+- [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/quickstart-create-data-factory-portal.md)。
 - REST API を使用してデータ転送する
 
-    - [.NET の場合](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java の場合](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [.NET の場合](/dotnet/api/overview/azure/storage)
+    - [Java の場合](/java/api/overview/azure/storage)

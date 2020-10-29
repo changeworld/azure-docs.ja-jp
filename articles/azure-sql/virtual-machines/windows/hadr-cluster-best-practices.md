@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167952"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786430"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>クラスター構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -135,7 +135,7 @@ FCI または可用性グループと Azure Virtual Machines 上の SQL Server �
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines では、クラスター共有ボリューム (CSV) と [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上のストレージを使用する Windows Server 2019、または Azure 共有ディスクを使用する SQL Server VM で、Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされます。 
+Azure Virtual Machines では、クラスター共有ボリューム (CSV) と [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを使用する Windows Server 2019、または Azure 共有ディスクを使用する SQL Server VM で、Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされます。 
 
 Azure Virtual Machines では、次の理由により、クラスター共有ボリュームを使用する Windows Server 2016 以前では、MSDTC はサポートされません。
 
@@ -145,5 +145,4 @@ Azure Virtual Machines では、次の理由により、クラスター共有ボ
 
 ## <a name="next-steps"></a>次のステップ
 
-リューションに適したベストプラクティスを決定したら、[FCI 用に SQL Server VM を準備する](failover-cluster-instance-prepare-vm.md)か、あるいは [Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI/PowerShell](availability-group-az-cli-configure.md)、または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して、可用性グループを作成することから始めます。 
-
+リューションに適したベストプラクティスを決定したら、[FCI 用に SQL Server VM を準備する](failover-cluster-instance-prepare-vm.md)か、あるいは [Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)、または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して、可用性グループを作成することから始めます。

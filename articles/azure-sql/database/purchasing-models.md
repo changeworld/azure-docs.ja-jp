@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319454"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788827"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>仮想コアと DTU のどちらかの購入モデルを選択する - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 仮想コア (vCore) は論理 CPU を表し、ハードウェアの世代とハードウェアの物理特性 (コア数、メモリ、ストレージ サイズなど) を選択できるオプションを提供します。 仮想コア ベースの購入モデルでは、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行する方法を提供しています。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージのリソースを選択できます。
 
-仮想コアベースの購入モデルでは、SQL Database と SQL Managed Instance について、[General Purpose](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) と [Business Critical](high-availability-sla.md#premium-and-business-critical-service-tier-availability) のどちらかのサービス レベルを選択できます。  単一データベースの場合は、[Hyperscale サービス レベル](service-tier-hyperscale.md)も選択できます。
+仮想コアベースの購入モデルでは、SQL Database と SQL Managed Instance について、[General Purpose](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) と [Business Critical](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) のどちらかのサービス レベルを選択できます。  単一データベースの場合は、[Hyperscale サービス レベル](service-tier-hyperscale.md)も選択できます。
 
 仮想コア ベースの購入モデルでは、コンピューティングとストレージのリソースを個別に選択し、オンプレミスのパフォーマンスと一致させて、価格を最適化できます。 仮想コア ベースの購入モデルでは、以下に対して支払いを行います。
 
@@ -82,7 +82,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 > [!IMPORTANT]
 > コンピューティング リソース、I/O、データとログのストレージは、データベースまたはエラスティック プールごとに課金されます。 バックアップ ストレージはデータベースごとに課金されます。 SQL Managed Instance の料金の詳細については、[SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) に関するページを参照してください。
-> **リージョンの制限:** サポートされているリージョンの現在の一覧については、[リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](quota-increase-request.md)します。
+> **リージョンの制限:** サポートされているリージョンの現在の一覧については、 [リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](quota-increase-request.md)します。
 
 データベースで消費量が 300 DTU を超える場合は、仮想コア ベースの購入モデルに変換すると、コストが減る可能性があります。 任意の API を使用するか、または Azure portal を使用して、ダウンタイムなしで変換できます。 ただし、変換は必須ではなく、自動的には行われません。 DTU ベースの購入モデルが自分のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。
 
@@ -127,7 +127,7 @@ DTU は、さまざまなコンピューティング サイズとサービス �
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>ワークロードで必要とされる DTU の数を決定する
 
-既存のオンプレミスのワークロードや、SQL Server 仮想マシンのワークロードを SQL Database に移行することを検討している場合は、[DTU Calculator](https://dtucalculator.azurewebsites.net/) を使用すると、必要な DTU のおおよその数がわかります。 既存の SQL Database ワークロードについては、[クエリ パフォーマンスの分析情報](query-performance-insight-use.md)を使用してデータベース リソースの消費量 (DTU) を把握し、ワークロードを最適化するための詳細な分析情報が得られます。 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビュー (DMV) を使用して、過去 1 時間のリソース消費量を表示できます。 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) カタログ ビューは、過去 14 日間のリソース消費量を表示しますが、データの精度がやや低く、5 分間の平均となります。
+既存のオンプレミスのワークロードや、SQL Server 仮想マシンのワークロードを SQL Database に移行することを検討している場合は、[DTU Calculator](https://dtucalculator.azurewebsites.net/) を使用すると、必要な DTU のおおよその数がわかります。 既存の SQL Database ワークロードについては、[クエリ パフォーマンスの分析情報](query-performance-insight-use.md)を使用してデータベース リソースの消費量 (DTU) を把握し、ワークロードを最適化するための詳細な分析情報が得られます。 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビュー (DMV) を使用して、過去 1 時間のリソース消費量を表示できます。 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) カタログ ビューは、過去 14 日間のリソース消費量を表示しますが、データの精度がやや低く、5 分間の平均となります。
 
 ### <a name="determine-dtu-utilization"></a>DTU 使用率を決定する
 
@@ -135,7 +135,7 @@ DTU は、さまざまなコンピューティング サイズとサービス �
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-この式に入力する値は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、および [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV から取得できます。 つまり、データベースまたはエラスティック プールの DTU/eDTU 上限に対する DTU/eDTU の使用率を決定するには、特定の時点での `avg_cpu_percent`、`avg_data_io_percent`、および `avg_log_write_percent` から、最大の割合値を選びます。
+この式に入力する値は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、および [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV から取得できます。 つまり、データベースまたはエラスティック プールの DTU/eDTU 上限に対する DTU/eDTU の使用率を決定するには、特定の時点での `avg_cpu_percent`、`avg_data_io_percent`、および `avg_log_write_percent` から、最大の割合値を選びます。
 
 > [!NOTE]
 > データベースの DTU 上限は、そのデータベースで使用できる CPU、読み取り、書き込み、およびメモリによって決まります。 ただし、SQL Database エンジンでは、通常、パフォーマンス向上のためにそのデータ キャッシュ用に利用できるすべてのメモリが使用されるため、`avg_memory_usage_percent` の値は、現在のデータベースの負荷に関係なく、通常は 100% 近くになります。 そのため、メモリが DTU 上限に間接的に影響する場合でも、DTU 使用率の式では使用されません。
@@ -150,13 +150,13 @@ DTU ベースの購入モデルでは、お客様は自分のデータベース�
 
 たとえば、別のサービス目標にスケール アップまたはスケール ダウンする場合、データ センターにある現在のインフラストラクチャがその容量制限に近づいている場合、あるいは現在使用されているハードウェアが耐用年数終了により使用停止になる場合、データベースを別のハードウェア世代に移動できます。
 
-データベースを別のハードウェアに移動すると、ワークロード パフォーマンスが変わることがあります。 DTU モデルでは、サービス目標 (DTU の数) が同じである限り、データベースを別のハードウェア世代に移動しても、[DTU ベンチマーク](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) ワークロードのスループットと応答時間がおおむね同じになります。
+データベースを別のハードウェアに移動すると、ワークロード パフォーマンスが変わることがあります。 DTU モデルでは、サービス目標 (DTU の数) が同じである限り、データベースを別のハードウェア世代に移動しても、[DTU ベンチマーク](./service-tiers-dtu.md#dtu-benchmark) ワークロードのスループットと応答時間がおおむね同じになります。
 
 ただし、Azure SQL Database で実行されている顧客ワークロードは幅が広く、同じサービス目標に別のハードウェアを使用したときの影響がもっと目立つこともあります。 ハードウェアの構成や特徴が違えば、ワークロードが受ける恩恵もさまざまです。 そのため、DTU ベンチマーク以外のワークロードについては、データベースをあるハードウェア世代から別のものに移した場合、パフォーマンスに違いが見られることがあります。
 
 たとえば、ネットワークの待機時間が重要となるアプリケーションの場合、Gen5 と Gen4 を比較したとき、高速ネットワークを使用しているため Gen5 の方がパフォーマンスの面で優れています。一方、集中的な読み取り IO を扱うアプリケーションの場合、Gen4 ではコアあたりのメモリ比率が高いため、Gen4 ハードウェアのパフォーマンスが Gen5 と比べて 優れている可能性があります。
 
-ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代の選択を制御する必要がある場合は、[仮想コア](service-tiers-vcore.md) モデルを使用して、データベースの作成およびスケーリング時、好みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルのハードウェア世代の詳細については、「[ハードウェアの世代](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)」を参照してください。
+ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代の選択を制御する必要がある場合は、[仮想コア](service-tiers-vcore.md) モデルを使用して、データベースの作成およびスケーリング時、好みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルのハードウェア世代の詳細については、「[ハードウェアの世代](./service-tiers-vcore.md#hardware-generations)」を参照してください。
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 

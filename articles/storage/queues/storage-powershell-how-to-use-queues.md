@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f45a4de2e13f936556f8dd99aa107110edc6e91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077927"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791139"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用し、Azure Queue Storage を操作する
 
@@ -56,7 +56,7 @@ $location = "eastus"
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、*howtoqueuesrg* という名前のリソース グループが *eastus* リージョンに作成されます。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、 *howtoqueuesrg* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"
@@ -86,7 +86,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Azure Queue サービスでの名前付け規則の詳細については、「 [キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/azure/dd179349.aspx)」を参照してください。
+Azure Queue サービスでの名前付け規則の詳細については、「 [キューおよびメタデータの名前付け](/rest/api/storageservices/Naming-Queues-and-Metadata)」を参照してください。
 
 ## <a name="retrieve-a-queue"></a>キューを取得する
 
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>メッセージをキューに追加する
 
-キュー内の実際のメッセージに影響を与える操作では、PowerShell で公開されるとおりに、.NET ストレージ クライアント ライブラリを使用します。 キューにメッセージを追加するには、メッセージ オブジェクト [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) クラスの新しいインスタンスを作成します。 次に、 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) メソッドを呼び出します。 CloudQueueMessage は、文字列 (UTF-8 形式) またはバイト配列から作成できます。
+キュー内の実際のメッセージに影響を与える操作では、PowerShell で公開されるとおりに、.NET ストレージ クライアント ライブラリを使用します。 キューにメッセージを追加するには、メッセージ オブジェクト [Microsoft.Azure.Storage.Queue.CloudQueueMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) クラスの新しいインスタンスを作成します。 次に、 [AddMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) メソッドを呼び出します。 CloudQueueMessage は、文字列 (UTF-8 形式) またはバイト配列から作成できます。
 
 次の例は、メッセージをキューに追加する方法を示しています。
 
@@ -129,7 +129,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 メッセージは、先入れ先出しをできるだけ試すという方式で読まれます。 最初に届いたメッセージが最初に読まれるという保証はありません。 キューのメッセージを読むと、そのキューを見ているその他すべてのプロセスでそのメッセージが見えなくなります。 この措置によって、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合でも、コードの別のインスタンスで同じメッセージを取得し、もう一度処理できます。  
 
-この**非表示タイムアウト**によって、メッセージが見えなくなる時間が定義されます。この時間を過ぎると、再び表示され、処理できます。 既定値は 30 秒です。
+この **非表示タイムアウト** によって、メッセージが見えなくなる時間が定義されます。この時間を過ぎると、再び表示され、処理できます。 既定値は 30 秒です。
 
 コードは 2 つの手順でキューのメッセージを読みます。 [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) メソッドを呼び出すと、キュー内の次のメッセージが取得されます。 **GetMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 キューからのメッセージの削除を完了するには、[Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) メソッドを呼び出します。
 

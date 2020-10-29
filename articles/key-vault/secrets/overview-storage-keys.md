@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612185"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786277"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 
@@ -32,13 +32,13 @@ Key Vault マネージド ストレージ アカウント キー機能を使用�
 
 Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のクラウドベースの ID およびアクセス管理サービス) を使用することをお勧めします。 Azure AD 統合は [Azure BLOB およびキュー](../../storage/common/storage-auth-aad.md)で利用できます。また、Azure Key Vault と同様に、Azure Storage へのトークンベースの OAuth2 アクセスが提供されます。
 
-Azure AD では、ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証することができます。 Azure で実行するときは、[Azure AD マネージド ID](/azure/active-directory/managed-identities-azure-resources/) を使用できます。 マネージド ID を使用すると、クライアント認証やアプリケーションでの資格情報の保存が不要になります。
+Azure AD では、ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証することができます。 Azure で実行するときは、[Azure AD マネージド ID](../../active-directory/managed-identities-azure-resources/index.yml) を使用できます。 マネージド ID を使用すると、クライアント認証やアプリケーションでの資格情報の保存が不要になります。
 
 Azure AD は、Key Vault でもサポートされているロール ベースのアクセス制御 (RBAC) を使用して承認を管理します。
 
 ## <a name="service-principal-application-id"></a>サービス プリンシパルのアプリケーション ID
 
-Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](/azure/active-directory/develop/developer-glossary#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能します。アプリケーション ID は、RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
+Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](../../active-directory/develop/developer-glossary.md#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能します。アプリケーション ID は、RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
 
 Key Vault は、すべての Azure AD テナントに事前登録されている Microsoft アプリケーションです。 Key Vault は、各 Azure クラウド内に同じアプリケーション ID で登録されています。
 
@@ -163,6 +163,6 @@ az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 
 ## <a name="next-steps"></a>次のステップ
 
-- [キー、シークレット、証明書](https://docs.microsoft.com/rest/api/keyvault/)について学習します。
-- [Azure Key Vault チームのブログ](https://blogs.technet.microsoft.com/kv/)の記事を確認します。
-- [az keyvault storage](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) のリファレンス ドキュメントを参照してください。
+- [キー、シークレット、証明書](/rest/api/keyvault/)について学習します。
+- [Azure Key Vault チームのブログ](/archive/blogs/kv/)の記事を確認します。
+- [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest) のリファレンス ドキュメントを参照してください。

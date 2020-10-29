@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 52ee08e0cce23aebbac1564a5c3ed894d0e487d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711018"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787484"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue storage 監視データのリファレンス
 
@@ -36,7 +36,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="queue-storage"></a>ストレージ
 
-この表は、[Queue storage のメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)を示しています。
+この表は、[Queue storage のメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |

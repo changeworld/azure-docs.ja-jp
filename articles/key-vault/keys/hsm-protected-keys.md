@@ -10,16 +10,16 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 33249da6772d146de3e5e7351bc82c203674ddff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba4ef77dee8eb3cad753aca54a77aeedd166f142
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532139"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784560"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
-Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。 Azure Key Vault では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 2 で検証済み) を使用してキーが保護されます。
+Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、 *Bring Your Own Key* または BYOK と呼ばれています。 Azure Key Vault では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 2 で検証済み) を使用してキーが保護されます。
 
 この機能は Azure China 21Vianet では使用できません。
 
@@ -43,4 +43,4 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 ## <a name="next-steps"></a>次のステップ
 
 * [Key Vault のベスト プラクティス](../general/best-practices.md)に従って、キーのセキュリティ、持続性および監視を確実にします。
-* 新しい BYOK の方法の詳細については、[BYOK の仕様](https://docs.microsoft.com/azure/key-vault/keys/byok-specification)に関するページを参照してください
+* 新しい BYOK の方法の詳細については、[BYOK の仕様](./byok-specification.md)に関するページを参照してください

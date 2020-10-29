@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619646"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790969"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 > - Wingtip Tickets SaaS アプリケーションのデプロイ方法。
 > - アプリケーションのソース コード、および管理スクリプトを取得する場所。
 > - アプリを構成するサーバーおよびデータベースについて。
-> - *カタログ*によるテナントとデータのマッピング方法。
+> - *カタログ* によるテナントとデータのマッピング方法。
 > - 新しいテナントのプロビジョニング方法。
 > - アプリでテナントのアクティビティを監視する方法。
 
@@ -57,9 +57,9 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 ### <a name="plan-the-names"></a>名前を考える
 
-このセクションの手順では、リソース名がグローバルに一意であることを保証するために使用される "*ユーザー*" 値と、アプリのデプロイによって作成されるすべてのリソースを含む "*リソース グループ*" を指定します。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
+このセクションの手順では、リソース名がグローバルに一意であることを保証するために使用される " *ユーザー* " 値と、アプリのデプロイによって作成されるすべてのリソースを含む " *リソース グループ* " を指定します。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
 - *ユーザー:* **af1** *(イニシャルに一桁の数字を付けます。アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。)* "
-- "*リソース グループ:* " **wingtip-mt-af1** " *(wingtip-mt は、これがシャード化されたマルチテナント アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)* "
+- " *リソース グループ:* " **wingtip-mt-af1** " *(wingtip-mt は、これがシャード化されたマルチテナント アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)* "
 
 名前を選択し、書き留めておきます。 
 
@@ -80,7 +80,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
         - ドロップダウン から **[場所]** を選択します。
     - **ユーザー** - **ユーザー** には短い値を選択することをお勧めします。
 
-1. **アプリケーションをデプロイします**。
+1. **アプリケーションをデプロイします** 。
 
     - 使用条件に同意したら、チェック ボックスをオンにします。
     - **[購入]** をクリックします。
@@ -108,10 +108,10 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>このデプロイの構成ファイルの更新
 
-スクリプトを実行する前に、**UserConfig.psm1** で*リソース グループ*と*ユーザー*の値を設定します。 これらの変数は、デプロイ中に設定した値に設定します。
+スクリプトを実行する前に、 **UserConfig.psm1** で *リソース グループ* と *ユーザー* の値を設定します。 これらの変数は、デプロイ中に設定した値に設定します。
 
 1. *PowerShell ISE* で ...\\Learning Modules\\*UserConfig.psm1* を開きます。
-2. *ResourceGroupName*と*Name*をデプロイの固有の値で更新します (10 行目および 11 行目のみ)。
+2. *ResourceGroupName* と *Name* をデプロイの固有の値で更新します (10 行目および 11 行目のみ)。
 3. 変更を保存します。
 
 このファイルで設定された値はすべてのスクリプトで使用されるため、正確であることが重要です。 アプリを再デプロイする場合は、ユーザーとリソース グループにそれぞれ別の値を選択する必要があります。 次に新しい値で UserConfig.psm1 ファイルを再度更新します。
@@ -137,7 +137,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
 Wingtip アプリは、受信要求の配布を制御するために [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/ *fabrikamjazzclub*
 
 1. イベント アプリによって、URL からテナント名が解析されます。 前の URL の例では、テナント名は *fabrikamjazzclub* です。
 2. アプリはテナント名をハッシュして、[シャード マップ管理](elastic-scale-shard-map-management.md)を使用するカタログにアクセスするためのキーを作成します。
@@ -164,17 +164,17 @@ Wingtip アプリは、受信要求の配布を制御するために [Azure Traf
 
 PowerShell セッションを閉じると、すべてのジョブが停止します。
 
-ロード ジェネレーター セッションを再起動して、異なるパラメーター値を使用する必要が生じる場合があります。 その場合、PowerShell 生成セッションを閉じてから、*Demo-LoadGenerator.ps1* を再度実行します。
+ロード ジェネレーター セッションを再起動して、異なるパラメーター値を使用する必要が生じる場合があります。 その場合、PowerShell 生成セッションを閉じてから、 *Demo-LoadGenerator.ps1* を再度実行します。
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>シャード化されたデータベースへの新しいテナントのプロビジョニング
 
 最初のデプロイの *Tenants1* データベースには 3 つのサンプル テナントが含まれています。 別のテナントを作成して、デプロイ済みのアプリケーションに及ぼす影響を確認してみましょう。 この手順では、キー操作 1 つで新しいテナントを作成します。
 
 1. *PowerShell ISE* で ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* を開きます。
-2. **F5** (**F8** ではない) を押してスクリプトを実行します (この時点では、既定値のままにしておきます)。
+2. **F5** ( **F8** ではない) を押してスクリプトを実行します (この時点では、既定値のままにしておきます)。
 
    > [!NOTE]
-   > **F8** キーを押してスクリプトの選択部分を実行するのではなく、**F5** キーだけを押して PowerShell スクリプトを実行する必要があります。 **F8** の問題は、 *$PSScriptRoot* 変数が評価されないことです。 この変数は、フォルダー間の移動、別のスクリプトの呼び出し、モジュールのインポートなどを行う多くのスクリプトで必要です。
+   > **F8** キーを押してスクリプトの選択部分を実行するのではなく、 **F5** キーだけを押して PowerShell スクリプトを実行する必要があります。 **F8** の問題は、 *$PSScriptRoot* 変数が評価されないことです。 この変数は、フォルダー間の移動、別のスクリプトの呼び出し、モジュールのインポートなどを行う多くのスクリプトで必要です。
 
 新しい Red Maple Racing テナントが *Tenants1* データベースに追加され、カタログに登録されます。 ブラウザーに新しいテナントのチケット販売 **Events** サイトが開きます。
 
@@ -212,7 +212,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
    ![resource group](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. **catalog-mt&lt;ユーザー&gt;** サーバーをクリックします。 カタログ サーバーには、*tenantcatalog* と *basetenantdb* という名前の 2 つのデータベースが含まれています。 *basetenantdb* データベースは空のテンプレート データベースです。 これをコピーして新しいテナント データベースを作成します。多くのテナント用または 1 つのテナントのみに使用します。
+2. **catalog-mt&lt;ユーザー&gt;** サーバーをクリックします。 カタログ サーバーには、 *tenantcatalog* と *basetenantdb* という名前の 2 つのデータベースが含まれています。 *basetenantdb* データベースは空のテンプレート データベースです。 これをコピーして新しいテナント データベースを作成します。多くのテナント用または 1 つのテナントのみに使用します。
 
    ![カタログ サーバー](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -232,7 +232,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
    DTU 使用率のグラフは、多くのテナント間の予測不能な負荷をマルチテナント データベースがサポートする方法を適切に示しています。 ここでは、ロード ジェネレーターは、各テナントに約 30 DTU の散発的な負荷をかけています。 この負荷は、50 DTU データベースの 60% の使用率に相当します。 60% を超えるピークは、同時に複数のテナントに負荷がかけられた結果です。
 
-2. **tenants1-mt&lt;ユーザー&gt;** サーバーを参照し、**salixsalsa** データベースをクリックします。 1 つのテナントのみを含むこのデータベースのリソース使用率を表示できます。
+2. **tenants1-mt&lt;ユーザー&gt;** サーバーを参照し、 **salixsalsa** データベースをクリックします。 1 つのテナントのみを含むこのデータベースのリソース使用率を表示できます。
 
    ![salixsalsa データベース](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
@@ -260,7 +260,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 > [!div class="checklist"]
 > - Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ方法。
 > - アプリを構成するサーバーおよびデータベースについて。
-> - *カタログ*によるテナントとデータのマッピング。
+> - *カタログ* によるテナントとデータのマッピング。
 > - マルチテナント データベースとシングルテナント データベースに新しいテナントをプロビジョニングする方法。
 > - プール使用率を表示してテナント アクティビティを監視する方法。
 > - サンプル リソースを削除して、関連する課金を停止する方法。
@@ -278,7 +278,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 [link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
-[link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
+[link-azure-get-started-powershell-41q]: /powershell/azure/get-started-azureps
 
 [link-github-wingtip-multitenantdb-55g]: https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB/
 
@@ -290,4 +290,3 @@ A [series of related tutorials] is available that build upon this initial deploy
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Azure にデプロイするためのボタン。"
-

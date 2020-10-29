@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103001"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793179"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 >
 
 > [!TIP]
-> データベースまたはエラスティック プールに対する実際の[リソース管理](resource-limits-logical-server.md#resource-governance)の制限を確認するには、[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューを照会します。
+> データベースまたはエラスティック プールに対する実際の[リソース管理](resource-limits-logical-server.md#resource-governance)の制限を確認するには、[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューを照会します。
 
 > [!NOTE]
 > Azure 無料アカウントと組み合わせて Azure SQL Database の無料のデータベースを Basic サービス レベルで取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。

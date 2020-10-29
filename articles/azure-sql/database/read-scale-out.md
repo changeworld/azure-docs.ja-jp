@@ -11,32 +11,32 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319429"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790272"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[高可用性アーキテクチャ](high-availability-sla.md#premium-and-business-critical-service-tier-availability)の一部として、Premium および Business Critical サービス レベルの各単一データベース、エラスティック プール データベース、およびマネージド インスタンスは、1 つのプライマリ読み取り/書き込みレプリカと複数のセカンダリ読み取り専用レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 "*読み取りスケールアウト*" 機能では、読み取り/書き込みレプリカ上で実行する代わりに、読み取り専用レプリカのいずれか 1 つのコンピューティング能力を使用して読み取り専用ワークロードをオフロードできます。 これにより、読み取り専用のワークロードを読み取り/書き込みワークロードから分離でき、パフォーマンスに影響が及ぶことがありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 Premium および Business Critical サービス レベルでは、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上のメリットをアプリケーションで得ることが可能です。
+[高可用性アーキテクチャ](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)の一部として、Premium および Business Critical サービス レベルの各単一データベース、エラスティック プール データベース、およびマネージド インスタンスは、1 つのプライマリ読み取り/書き込みレプリカと複数のセカンダリ読み取り専用レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 " *読み取りスケールアウト* " 機能では、読み取り/書き込みレプリカ上で実行する代わりに、読み取り専用レプリカのいずれか 1 つのコンピューティング能力を使用して読み取り専用ワークロードをオフロードできます。 これにより、読み取り専用のワークロードを読み取り/書き込みワークロードから分離でき、パフォーマンスに影響が及ぶことがありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 Premium および Business Critical サービス レベルでは、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上のメリットをアプリケーションで得ることが可能です。
 
-また、少なくとも 1 つのセカンダリ レプリカが作成されている場合は、ハイパースケール サービス レベルで "*読み取りスケールアウト*" 機能を使用することもできます。 複数のセカンダリ レプリカを使用して、1 つのセカンダリ レプリカで利用可能なリソースよりも多くのリソースを必要とする読み取り専用ワークロードを負荷分散できます。
+また、少なくとも 1 つのセカンダリ レプリカが作成されている場合は、ハイパースケール サービス レベルで " *読み取りスケールアウト* " 機能を使用することもできます。 複数のセカンダリ レプリカを使用して、1 つのセカンダリ レプリカで利用可能なリソースよりも多くのリソースを必要とする読み取り専用ワークロードを負荷分散できます。
 
-Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 "*読み取りスケールアウト*" 機能は、これらのサービス レベルでは使用できません。
+Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 " *読み取りスケールアウト* " 機能は、これらのサービス レベルでは使用できません。
 
 次の図にこの機能を示します。
 
 ![読み取り専用レプリカ](./media/read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-新しい Premium、Business Critical、および Hyperscale データベースでは、"*読み取りスケールアウト*" 機能は既定で有効になっています。 ハイパースケールの場合、既定では、新しいデータベースに対して 1 つのセカンダリ レプリカが作成されます。 
+新しい Premium、Business Critical、および Hyperscale データベースでは、" *読み取りスケールアウト* " 機能は既定で有効になっています。 ハイパースケールの場合、既定では、新しいデータベースに対して 1 つのセカンダリ レプリカが作成されます。 
 
 > [!NOTE]
 > 読み取りスケールアウトは、Managed Instance の Business Critical サービス レベルでは常に有効になっています。
 
-お使いの SQL 接続文字列が `ApplicationIntent=ReadOnly` で構成されている場合、アプリケーションは、そのデータベースまたはマネージド インスタンスの読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの使用方法の詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」をご覧ください。
+お使いの SQL 接続文字列が `ApplicationIntent=ReadOnly` で構成されている場合、アプリケーションは、そのデータベースまたはマネージド インスタンスの読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの使用方法の詳細については、「[アプリケーションの目的を指定する](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」をご覧ください。
 
 SQL 接続文字列の `ApplicationIntent` 設定に関係なく、アプリケーションがプライマリ レプリカに確実に接続されるようにする場合は、データベースを作成するとき、またはその構成を変更するときに、読み取りスケールアウトを明示的に無効にする必要があります。 たとえばデータベースを Standard または General Purpose レベルから Premium、Business Critical、または Hyperscale レベルにアップグレードするときに、すべての接続が引き続きプライマリ レプリカに対して行われるようにするには、読み取りスケールアウトを無効にします。無効にする方法の詳細については、「[読み取りスケールアウトの有効化と無効化](#enable-and-disable-read-scale-out)」を参照してください。
 
@@ -87,16 +87,16 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 | 名前 | 目的 |
 |:---|:---|
-|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 過去 1 時間のリソース使用率のメトリックが提供されます (サービス目標の制限に対する CPU、データ IO、ログ書き込みの使用率など)。|
-|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| データベース エンジン インスタンスの待機統計の集計が提供されます。 |
-|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| レプリカの正常性状態と同期の統計情報が提供されます。 再実行キューのサイズと再実行率は、読み取り専用レプリカのデータ待機時間のインジケーターとして機能します。 |
-|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| データベース エンジンのパフォーマンス カウンターが提供されます。|
-|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 実行回数、CPU 使用時間など、クエリごとの実行統計が提供されます。|
-|[sys.dm_exec_query_plan()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| キャッシュされたクエリ プランが提供されます。 |
-|[sys.dm_exec_sql_text()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| キャッシュされたクエリ プランのクエリ テキストが提供されます。|
-|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| クエリの実行中のリアルタイムでのクエリの進行状況が提供されます。|
-|[sys.dm_exec_query_plan_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| クエリのランタイム統計を含む最後の既知の実際の実行プランが提供されます。|
-|[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| すべてのデータベース ファイルのストレージ IOPS、スループット、および待機時間の統計が提供されます。 |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 過去 1 時間のリソース使用率のメトリックが提供されます (サービス目標の制限に対する CPU、データ IO、ログ書き込みの使用率など)。|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| データベース エンジン インスタンスの待機統計の集計が提供されます。 |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| レプリカの正常性状態と同期の統計情報が提供されます。 再実行キューのサイズと再実行率は、読み取り専用レプリカのデータ待機時間のインジケーターとして機能します。 |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| データベース エンジンのパフォーマンス カウンターが提供されます。|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 実行回数、CPU 使用時間など、クエリごとの実行統計が提供されます。|
+|[sys.dm_exec_query_plan()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| キャッシュされたクエリ プランが提供されます。 |
+|[sys.dm_exec_sql_text()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| キャッシュされたクエリ プランのクエリ テキストが提供されます。|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| クエリの実行中のリアルタイムでのクエリの進行状況が提供されます。|
+|[sys.dm_exec_query_plan_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| クエリのランタイム統計を含む最後の既知の実際の実行プランが提供されます。|
+|[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| すべてのデータベース ファイルのストレージ IOPS、スループット、および待機時間の統計が提供されます。 |
 
 > [!NOTE]
 > 論理マスター データベース内の `sys.resource_stats` および `sys.elastic_pool_resource_stats` DMV では、プライマリ レプリカのリソース使用率データが返されます。
@@ -109,13 +109,13 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>読み取り専用レプリカでのトランザクション分離レベル
 
-読み取り専用レプリカで実行されるクエリは、常に[スナップショット](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) トランザクション分離レベルにマップされます。 スナップショット分離では、行のバージョン管理を使用して、リーダーがライターをブロックするブロック シナリオが回避されます。
+読み取り専用レプリカで実行されるクエリは、常に[スナップショット](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) トランザクション分離レベルにマップされます。 スナップショット分離では、行のバージョン管理を使用して、リーダーがライターをブロックするブロック シナリオが回避されます。
 
-まれに、スナップショット分離トランザクションで、別の同時実行トランザクションで変更されたオブジェクト メタデータへのアクセスが行われる場合、エラー [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)、"データベース '%.*ls' でスナップショット分離トランザクションが失敗しました。ステートメントからアクセスされるオブジェクトが、このトランザクションの開始後に別の同時実行トランザクションの DDL ステートメントで変更されました。 メタデータはバージョン管理されないため、この操作は許可されません。 メタデータに対する同時更新は、スナップショット分離と組み合わせると一貫性を損なう結果になる可能性があります。" というメッセージが表示される場合があります。
+まれに、スナップショット分離トランザクションで、別の同時実行トランザクションで変更されたオブジェクト メタデータへのアクセスが行われる場合、エラー [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)、"データベース '%.*ls' でスナップショット分離トランザクションが失敗しました。ステートメントからアクセスされるオブジェクトが、このトランザクションの開始後に別の同時実行トランザクションの DDL ステートメントで変更されました。 メタデータはバージョン管理されないため、この操作は許可されません。 メタデータに対する同時更新は、スナップショット分離と組み合わせると一貫性を損なう結果になる可能性があります。" というメッセージが表示される場合があります。
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>読み取り専用レプリカでの実行時間の長いクエリ
 
-読み取り専用レプリカで実行されるクエリでは、クエリで参照されるオブジェクト (テーブル、インデックス、統計など) のメタデータにアクセスする必要があります。まれに、クエリが読み取り専用レプリカ上で同じオブジェクトに対してロックを保持しているときに、プライマリ レプリカ上でメタデータ オブジェクトが変更された場合、プライマリ レプリカから読み取り専用レプリカに変更を適用するプロセスをクエリによって[ブロック](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)できます。 このようなクエリを長時間実行すると、読み取り専用レプリカのプライマリ レプリカとの同期が大きく外れる場合があります。 
+読み取り専用レプリカで実行されるクエリでは、クエリで参照されるオブジェクト (テーブル、インデックス、統計など) のメタデータにアクセスする必要があります。まれに、クエリが読み取り専用レプリカ上で同じオブジェクトに対してロックを保持しているときに、プライマリ レプリカ上でメタデータ オブジェクトが変更された場合、プライマリ レプリカから読み取り専用レプリカに変更を適用するプロセスをクエリによって[ブロック](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)できます。 このようなクエリを長時間実行すると、読み取り専用レプリカのプライマリ レプリカとの同期が大きく外れる場合があります。 
 
 読み取り専用レプリカに対する実行時間の長いクエリによってこの種のブロッキングが発生すると、これは自動的に終了され、セッションでは、"高い優先度の DDL 操作が原因で、セッションが切断されました。" というエラー 1219 が表示されます。
 
@@ -123,7 +123,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > 読み取り専用レプリカに対してクエリを実行したときにエラー 3961 またはエラー 1219 が発生した場合は、クエリを再試行してください。
 
 > [!TIP]
-> Premium および Business Critical サービス レベルでは、読み取り専用レプリカに接続されている場合、[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV の `redo_queue_size` および `redo_rate` 列を使用してデータ同期処理を監視でき、これは読み取り専用レプリカでのデータ待機時間のインジケーターとして機能します。
+> Premium および Business Critical サービス レベルでは、読み取り専用レプリカに接続されている場合、[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV の `redo_queue_size` および `redo_rate` 列を使用してデータ同期処理を監視でき、これは読み取り専用レプリカでのデータ待機時間のインジケーターとして機能します。
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>読み取りスケールアウトの有効化と無効化
@@ -144,7 +144,7 @@ Premium または Business Critical サービス レベルの単一データベ�
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 Azure Resource Manager モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと Azure Resource Manager モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
-Azure PowerShell で読み取りスケールアウトを管理するには、2016 年 12 月以降のリリースの Azure PowerShell が必要です。 最新の PowerShell リリースについては、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) に関するページを参照してください。
+Azure PowerShell で読み取りスケールアウトを管理するには、2016 年 12 月以降のリリースの Azure PowerShell が必要です。 最新の PowerShell リリースについては、[Azure PowerShell](/powershell/azure/install-az-ps) に関するページを参照してください。
 
 Azure PowerShell で [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドレットを呼び出し、`-ReadScale` パラメーターに目的の値 (`Enabled` または `Disabled`) を渡すことで、読み取りスケールアウトを無効にし、再び有効にできます。
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-詳細については、「[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)」を参照してください。
+詳細については、「[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)」を参照してください。
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>読み取り専用レプリカでの `tempdb` データベースの使用
 

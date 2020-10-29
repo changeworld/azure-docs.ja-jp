@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: be7e4a641e5b5ac2ef755037142cfd8063d66b5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448887"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790374"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Query Performance Insight は、単一およびプールされたデータベー
 
 ## <a name="prerequisites"></a>前提条件
 
-Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx) がデータベース上で実行されている必要があります。 既定では、Azure SQL Database のすべてのデータベースに対して自動的に有効になります。 クエリ ストアが実行されていない場合、Azure portal で有効にするように求められます。
+Query Performance Insight では、 [クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) がデータベース上で実行されている必要があります。 既定では、Azure SQL Database のすべてのデータベースに対して自動的に有効になります。 クエリ ストアが実行されていない場合、Azure portal で有効にするように求められます。
 
 > [!NOTE]
 > ポータルで "クエリ ストアはこのデータベースで適切に構成されていません" というメッセージが表示された場合は、[クエリ ストア構成の最適化](#optimize-the-query-store-configuration)に関する記述を参照してください。
@@ -41,8 +41,8 @@ Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft
 
 Query Performance Insight を使用するには、次の [Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) 権限が必要です。
 
-* 上位のリソース消費量クエリとグラフを表示するには、**閲覧者**、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。
-* クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。
+* 上位のリソース消費量クエリとグラフを表示するには、 **閲覧者** 、 **所有者** 、 **共同作成者** 、 **SQL DB 共同作業者** 、または **SQL Server 共同作業者** の権限が必要です。
+* クエリ テキストを表示するには、 **所有者** 、 **共同作成者** 、 **SQL DB 共同作業者** 、または **SQL Server 共同作業者** の権限が必要です。
 
 ## <a name="use-query-performance-insight"></a>Query Performance Insight の使用
 
@@ -61,7 +61,7 @@ Query Performance Insight は簡単に使用できます。
    ![パフォーマンス ダッシュボード](./media/query-performance-insight-use/performance.png)
 
 > [!NOTE]
-> Query Performance Insight で情報を表示する Azure SQL Database の場合、クエリ ストアで数時間分のデータをキャプチャする必要があります。 一定の期間に、データベースでアクティビティが発生していない場合、またはクエリ ストアがアクティブではなかった場合、Query Performance Insight でその時間の範囲が表示されたときにグラフは空になります。 クエリ ストアが実行されていない場合はいつでも有効にできます。 詳細については、「[クエリ ストアを使用するときの推奨事項](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)」を参照してください。
+> Query Performance Insight で情報を表示する Azure SQL Database の場合、クエリ ストアで数時間分のデータをキャプチャする必要があります。 一定の期間に、データベースでアクティビティが発生していない場合、またはクエリ ストアがアクティブではなかった場合、Query Performance Insight でその時間の範囲が表示されたときにグラフは空になります。 クエリ ストアが実行されていない場合はいつでも有効にできます。 詳細については、「[クエリ ストアを使用するときの推奨事項](/sql/relational-databases/performance/best-practice-with-the-query-store)」を参照してください。
 >
 
 データベースのパフォーマンスに関する推奨事項を確認する場合は、Query Performance Insight のナビゲーション ブレードの [[推奨事項]](database-advisor-implement-performance-recommendations.md) を選択します。
@@ -232,22 +232,22 @@ Query Performance Insight を使用しているときに、次のようなクエ
 
    ![クエリ ストアの詳細](./media/query-performance-insight-use/qds-off.png)
 
-2 つ目は、クエリ ストアが有効になっていないか、パラメーターが最適に設定されていない場合に発生します。 保持およびキャプチャ ポリシーを変更できます。また、クエリ ストアを有効にすることもできます。その場合は、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から提供される以下のコマンドを実行します。
+2 つ目は、クエリ ストアが有効になっていないか、パラメーターが最適に設定されていない場合に発生します。 保持およびキャプチャ ポリシーを変更できます。また、クエリ ストアを有効にすることもできます。その場合は、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から提供される以下のコマンドを実行します。
 
 ### <a name="recommended-retention-and-capture-policy"></a>推奨される保存とキャプチャのポリシー
 
 保持ポリシーには 2 つの種類があります。
 
-* **サイズ ベース**:このポリシーが **AUTO** に設定されている場合、最大サイズに近づくとデータが自動的にクリーンアップされます。
-* **時間ベース**:既定では、このポリシーは 30 日に設定されます。 クエリ ストアの領域が不足すると、30 日を経過したクエリ情報が削除されます。
+* **サイズ ベース** :このポリシーが **AUTO** に設定されている場合、最大サイズに近づくとデータが自動的にクリーンアップされます。
+* **時間ベース** :既定では、このポリシーは 30 日に設定されます。 クエリ ストアの領域が不足すると、30 日を経過したクエリ情報が削除されます。
 
 キャプチャ ポリシーは、次のように設定できます。
 
 * **[すべて]** : クエリ ストアですべてのクエリがキャプチャされます。
-* **Auto**:クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 既定のオプションです。
-* **None**:クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
+* **Auto** :クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 既定のオプションです。
+* **None** :クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
 
-[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします (`YourDB` はデータベース名に置き換えてください)。
+[SSMS](/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします (`YourDB` はデータベース名に置き換えてください)。
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -260,7 +260,7 @@ Query Performance Insight を使用しているときに、次のようなクエ
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal 経由でデータベースに接続し、以下のクエリを実行して、クエリ ストアのサイズを増やします (`YourDB` はデータベース名に置き換えてください)。
+[SSMS](/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal 経由でデータベースに接続し、以下のクエリを実行して、クエリ ストアのサイズを増やします (`YourDB` はデータベース名に置き換えてください)。
 
 ```SQL
     ALTER DATABASE [YourDB]

@@ -11,27 +11,27 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619833"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791292"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database での拡張イベント向けリング バッファー ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](https://msdn.microsoft.com/library/ff878182.aspx)です。
+テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130))です。
 
 このトピックでは、以下を実行する TRANSACT-SQL コードのサンプルについて説明します。
 
 1. 表示させるデータでテーブルを作成する。
-2. 既存の拡張イベントのセッション (つまり **sqlserver.sql_statement_starting**) を作成する。
+2. 既存の拡張イベントのセッション (つまり **sqlserver.sql_statement_starting** ) を作成する。
 
    * イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’** 。
-   * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring_buffer**) に送信するよう選択できる。
+   * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring_buffer** ) に送信するよう選択できる。
 3. イベント セッションを開始する。
 4. 単純な SQL UPDATE ステートメントをいくつか発行する。
 5. リング バッファーからイベント出力を取得する SQL SELECT を発行する。
@@ -50,7 +50,7 @@ ms.locfileid: "91619833"
 * SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。
   最新の ssms.exe をダウンロードすることができる。
   
-  * 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  * 「 [SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」というタイトルのトピック。
   * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>コード サンプル
@@ -349,6 +349,6 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

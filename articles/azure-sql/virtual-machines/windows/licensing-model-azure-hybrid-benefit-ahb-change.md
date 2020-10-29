@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b09d808201d58b571b2fe5ceb2e228d4e1c21d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316955"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786515"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,9 +28,9 @@ ms.locfileid: "91316955"
 
 SQL Server をホストする VM には、従量課金制、Azure ハイブリッド特典 (AHB)、およびディザスター リカバリー (DR) の 3 種類のライセンス モデルがあります。 ご利用の SQL Server VM のライセンス モデルは、Azure portal、Azure CLI、または PowerShell を使用して変更することができます。 
 
-- **従量課金制**モデルでは、Azure VM を実行する秒単位のコストに、SQL Server ライセンスのコストが含まれています。
+- **従量課金制** モデルでは、Azure VM を実行する秒単位のコストに、SQL Server ライセンスのコストが含まれています。
 - [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)では、SQL Server を実行する VM に対して独自の SQL Server ライセンスを使用することができます。 
-- **ディザスター リカバリー** ライセンスは、Azure での[無料 DR レプリカ](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)に使用します。 
+- **ディザスター リカバリー** ライセンスは、Azure での [無料 DR レプリカ](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)に使用します。 
 
 Azure ハイブリッド特典では、Azure 仮想マシン上で SQL Server ライセンスをソフトウェア アシュアランス ("条件を満たしたライセンス") 付きで使用できます。 Azure ハイブリッド特典の場合、VM 上での SQL Server ライセンスの使用に対してお客様は課金されません。 ただし、基になるクラウド コンピューティング (基本料金)、ストレージ、およびバックアップのコストについては、引き続き料金を支払う必要があります。 また、サービスの使用に関連付けられている I/O についても支払う必要があります (該当する場合)。
 
@@ -42,14 +42,14 @@ Azure VM 上の SQL Server 向け Azure ハイブリッド特典を使用して�
 - Azure Marketplace からの従量課金制の SQL Server イメージを使用して、仮想マシンをプロビジョニングし、Azure ハイブリッド特典をアクティブにします。
 - Azure VM に SQL Server をセルフインストールし、手動で [SQL VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)して、Azure ハイブリッド特典をアクティブにします。
 
-SQL Server のライセンスの種類は、VM がプロビジョニングされるとき、またはその後の任意のときに構成できます。 ライセンス モデル間の切り替えを行っても、ダウンタイムは発生せず、VM や SQL Serverサービスが再起動されたり、追加コストが追加されることもなく、すぐに有効になります。 実際には、Azure ハイブリッド特典をアクティブにするとコストが*削減*されます。
+SQL Server のライセンスの種類は、VM がプロビジョニングされるとき、またはその後の任意のときに構成できます。 ライセンス モデル間の切り替えを行っても、ダウンタイムは発生せず、VM や SQL Serverサービスが再起動されたり、追加コストが追加されることもなく、すぐに有効になります。 実際には、Azure ハイブリッド特典をアクティブにするとコストが *削減* されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 SQL Server VM のライセンスモデルを変更するには、次の要件があります。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録された [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
+- [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録された [SQL Server VM](./create-sql-vm-portal.md)。
 - [ソフトウェアアシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) は、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用するための要件です。 
 
 
@@ -83,7 +83,7 @@ Azure CLI を使用して、ご利用のライセンス モデルを変更する
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**従量課金制**: 
+**従量課金制** : 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -180,5 +180,3 @@ SQL Server VM が SQL VM リソースプロバイダーに登録されている�
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 * [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)
-
-

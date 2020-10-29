@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542792"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791989"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [DecryptBlobFile のランディング ページ](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile#deployment)にある **[Azure に配置する]** ボタンをクリックします。提供された Resource Manager テンプレートが Azure portal で開かれます。
 
-1. **Azure Key Vault のインスタンスが存在するサブスクリプション**を選択し (別のサブスクリプションを選択した場合、このガイドは機能しません)、既存のリソース グループを選択するか、新しいものを作成します (新しいものを作成する場合は、デプロイ先のリージョンも選択する必要があります)。
+1. **Azure Key Vault のインスタンスが存在するサブスクリプション** を選択し (別のサブスクリプションを選択した場合、このガイドは機能しません)、既存のリソース グループを選択するか、新しいものを作成します (新しいものを作成する場合は、デプロイ先のリージョンも選択する必要があります)。
 
 1. **[確認および作成]** を選択し、使用条件に同意していることを確認した後、 **[作成]** を選択して Azure 関数をデプロイます。
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
         ![関数の URL](media/indexing-encrypted-blob-files/function-uri.jpg "Azure 関数の URL を探す場所")
 
-    1. ホスト キー コード。 **[アプリ キー]** に移動し、**default** キーをクリックして表示し、値をコピーします。
+    1. ホスト キー コード。 **[アプリ キー]** に移動し、 **default** キーをクリックして表示し、値をコピーします。
      
         ![関数のホスト キー コード](media/indexing-encrypted-blob-files/function-host-key.jpg "Azure 関数のホスト キー コードを探す場所")
 
@@ -108,7 +108,7 @@ Azure 関数と同様に、管理者キーを収集します。 さらに、要�
 
 2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-javascript/service-name-and-keys.png)
 
 すべての要求で、自分のサービスに送信される各要求のヘッダーに API キーが必要になります。 有効なキーにより、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼が確立されます。
 
@@ -140,7 +140,7 @@ Postman をインストールして設定します。
 | `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、 **[key1]**  >  **[接続文字列]** を選択します。 | 
 | `storage-container-name` | インデックスを付ける暗号化されたファイルが含まれる BLOB コンテナーの名前。 | 
 | `function-uri` |  メイン ページの **[基本]** の下にある Azure 関数内。 | 
-| `function-code` | Azure 関数で、 **[アプリ キー]** に移動し、**default** キーをクリックして表示し、値をコピー。 | 
+| `function-code` | Azure 関数で、 **[アプリ キー]** に移動し、 **default** キーをクリックして表示し、値をコピー。 | 
 | `api-version` | **2020-06-30** のままにします。 |
 | `datasource-name` | **encrypted-blobs-ds** のままにします。 | 
 | `index-name` | **encrypted-blobs-idx** のままにします。 | 
@@ -151,16 +151,16 @@ Postman をインストールして設定します。
 
 このガイドを実行するときは、4 つの HTTP 要求を発行する必要があります。 
 
-- **インデックスを作成するための PUT 要求**:このインデックスでは、Azure Cognitive Search で使用され、返されるデータが保持されます。
-- **データソースを作成するための POST 要求**:このデータソースにより、Azure Cognitive Search Service がストレージ アカウント、したがって暗号化された BLOB ファイルに接続されます。 
-- **スキルセットを作成するための PUT 要求**:スキルセットにより、BLOB ファイルのデータを解読する Azure 関数のカスタム スキル定義と、解読された後の各ドキュメントからテキストを抽出するための [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) が指定されます。
-- **インデクサーを作成するための PUT 要求**:インデクサーを実行すると、データの読み取り、スキルセットの適用、結果の格納が行われます。 この要求は最後に実行する必要があります。
+- **インデックスを作成するための PUT 要求** :このインデックスでは、Azure Cognitive Search で使用され、返されるデータが保持されます。
+- **データソースを作成するための POST 要求** :このデータソースにより、Azure Cognitive Search Service がストレージ アカウント、したがって暗号化された BLOB ファイルに接続されます。 
+- **スキルセットを作成するための PUT 要求** :スキルセットにより、BLOB ファイルのデータを解読する Azure 関数のカスタム スキル定義と、解読された後の各ドキュメントからテキストを抽出するための [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) が指定されます。
+- **インデクサーを作成するための PUT 要求** :インデクサーを実行すると、データの読み取り、スキルセットの適用、結果の格納が行われます。 この要求は最後に実行する必要があります。
 
 [ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)には、4 つの要求を保持する Postman コレクションと、いくつかの便利なフォローアップ要求が含まれています。 要求を発行するには、Postman で要求のタブを選択し、それぞれに対して **[送信]** を選択します。
 
 ## <a name="3---monitor-indexing"></a>3 - インデックス付けを監視する
 
-インデックス作成とエンリッチメントは、インデクサー作成要求を送信するとすぐに開始されます。 ストレージ アカウントに含まれるドキュメントの数によっては、インデックス付けに時間がかかることがあります。 インデクサーがまだ実行されているかどうかを確認するには、Postman コレクションの一部として提供されている**インデクサー状態の取得**要求を使用し、応答を確認して、インデクサーが実行されているかどうかを確認するか、エラーと警告の情報を表示します。  
+インデックス作成とエンリッチメントは、インデクサー作成要求を送信するとすぐに開始されます。 ストレージ アカウントに含まれるドキュメントの数によっては、インデックス付けに時間がかかることがあります。 インデクサーがまだ実行されているかどうかを確認するには、Postman コレクションの一部として提供されている **インデクサー状態の取得** 要求を使用し、応答を確認して、インデクサーが実行されているかどうかを確認するか、エラーと警告の情報を表示します。  
 
 Free レベルを使用している場合は、次のメッセージが表示されます: `"Could not extract content or metadata from your document. Truncated extracted text to '32768' characters"`。 このメッセージが表示されるのは、Free レベルでの BLOB のインデックス作成には、[文字の抽出に 32K の制限](search-limits-quotas-capacity.md#indexer-limits)があるためです。 より上位のレベルでは、このデータ セットに対してこのメッセージは表示されません。 
 

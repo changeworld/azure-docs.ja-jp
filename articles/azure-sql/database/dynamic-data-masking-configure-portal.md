@@ -11,17 +11,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 1d4c29cdb9cf24f87df4acc3556b318a1079810a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443621"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791054"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この記事では、Azure Portal で[動的データ マスク](dynamic-data-masking-overview.md)を実装する方法を示します。 [Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/az.sql/)または [REST API](https://docs.microsoft.com/rest/api/sql/) を使って動的データ マスクを実装することもできます。
+この記事では、Azure Portal で[動的データ マスク](dynamic-data-masking-overview.md)を実装する方法を示します。 [Azure SQL Database コマンドレット](/powershell/module/az.sql/)または [REST API](/rest/api/sql/) を使って動的データ マスクを実装することもできます。
 
 > [!NOTE]
 > この機能は、Azure Synapse のポータル (PowerShell または REST API を使用) または SQL Managed Instance を使用して設定することはできません。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
@@ -34,7 +34,7 @@ ms.locfileid: "91443621"
 
    ![動的データマスクが強調表示されている [セキュリティ] セクションを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
 
-4. **動的データ マスク**構成ページには、推奨エンジンがマスク対象として推奨したデータベース列がいくつか表示される場合があります。 推奨を受け入れるには、1 つまたは複数の列の **[マスクの追加]** をクリックします。その列の既定タイプに基づきマスクが作成されます。 マスク機能を変更できます。その場合、マスク ルールをクリックし、マスク フィールド形式を別の形式に変更します。 必ず **[保存]** をクリックして設定を保存します。
+4. **動的データ マスク** 構成ページには、推奨エンジンがマスク対象として推奨したデータベース列がいくつか表示される場合があります。 推奨を受け入れるには、1 つまたは複数の列の **[マスクの追加]** をクリックします。その列の既定タイプに基づきマスクが作成されます。 マスク機能を変更できます。その場合、マスク ルールをクリックし、マスク フィールド形式を別の形式に変更します。 必ず **[保存]** をクリックして設定を保存します。
 
     ![動的データ マスクの構成ページを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "91443621"
     ![[マスク ルールの追加] 構成ページを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
 6. **[スキーマ]** 、 **[テーブル]** 、 **[列]** を選択し、マスクする指定のフィールドを定義します。
-7. 機密データのマスク カテゴリの一覧から**マスク方法を選択**します。
+7. 機密データのマスク カテゴリの一覧から **マスク方法を選択** します。
 
     ![[マスク方法の選択] セクションの下にある機密データのマスキングのカテゴリを示すスクリーンショット。](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
 
@@ -60,4 +60,4 @@ ms.locfileid: "91443621"
 ## <a name="next-steps"></a>次のステップ
 
 - 動的データ マスクの概要については、「[動的データ マスク](dynamic-data-masking-overview.md)」をご覧ください。
-- [Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/az.sql/)または [REST API](https://docs.microsoft.com/rest/api/sql/) を使って動的データ マスクを実装することもできます。
+- [Azure SQL Database コマンドレット](/powershell/module/az.sql/)または [REST API](/rest/api/sql/) を使って動的データ マスクを実装することもできます。

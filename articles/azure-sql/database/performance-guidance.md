@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773f011e0c79dc7b246ddc4a737914c15fe0f2f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645788"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789541"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance でアプリケーションとデータベースのパフォーマンスを調整します
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])
 
 ![A query plan with corrected indexes](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-重要なことは、共有される汎用システムの IO 容量は専用サーバー コンピューターの IO 容量より限られているということです。 不必要な IO を最小限に抑え、サービス レベルの各コンピューティング サイズのリソース内でシステムを最大限に活用することが重要です。 適切な物理データベース設計を選択すると、個々のクエリの待機時間のほか、スケール ユニットごとに処理される同時要求のスループットを大幅に改善し、クエリを満たすために必要なコストを最小限に抑えることができます。 インデックス不足の DMV に関する詳細については、「[sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)」を参照してください。
+重要なことは、共有される汎用システムの IO 容量は専用サーバー コンピューターの IO 容量より限られているということです。 不必要な IO を最小限に抑え、サービス レベルの各コンピューティング サイズのリソース内でシステムを最大限に活用することが重要です。 適切な物理データベース設計を選択すると、個々のクエリの待機時間のほか、スケール ユニットごとに処理される同時要求のスループットを大幅に改善し、クエリを満たすために必要なコストを最小限に抑えることができます。 インデックス不足の DMV に関する詳細については、「[sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql)」を参照してください。
 
 ### <a name="query-tuning-and-hinting"></a>クエリの調整とヒント
 
@@ -230,9 +230,9 @@ ORDER BY start_time DESC
 > [!NOTE]
 > この例では規模を意図的に小さくしてありますが、最適でないパラメーターの影響は特に大規模なデータベースで顕著になります。 極端なケースでは、速い場合は数秒単位、遅い場合は数時間単位の差異になります。
 
-**sys.resource_stats** を調べると、あるテストで使用されるリソースが別のテストより多いか少ないか判断できます。 データを比較するとき、**sys.resource_stats** ビューで同じ 5 分の枠に入らないようにテストのタイミングを離します。 この演習の目標は、使用されるリソースの総量を最小限に抑えることであり、ピーク リソースを最小限に抑えることではありません。 一般的に、待ち時間のコードの一部を最適化すると、リソースの消費量も減ります。 アプリケーションに施す変更が必要なものであることと、アプリケーションでクエリ ヒントを使用している他のユーザーのカスタマー エクスペリエンスに対し変更による悪影響がないことを確認してください。
+**sys.resource_stats** を調べると、あるテストで使用されるリソースが別のテストより多いか少ないか判断できます。 データを比較するとき、 **sys.resource_stats** ビューで同じ 5 分の枠に入らないようにテストのタイミングを離します。 この演習の目標は、使用されるリソースの総量を最小限に抑えることであり、ピーク リソースを最小限に抑えることではありません。 一般的に、待ち時間のコードの一部を最適化すると、リソースの消費量も減ります。 アプリケーションに施す変更が必要なものであることと、アプリケーションでクエリ ヒントを使用している他のユーザーのカスタマー エクスペリエンスに対し変更による悪影響がないことを確認してください。
 
-ワークロードに一連の反復的なクエリが含まれる場合は、データベースをホストするために必要な最小リソース サイズ単位を把握できるため、たいてい、プラン選択肢の最適性を理解して検証することは合理的です。 検証した後、プランのパフォーマンスが低くなっていないことを確認するために、ときどきプランを調べ直してください。 詳細については、「 [クエリ ヒント (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)」をご覧ください。
+ワークロードに一連の反復的なクエリが含まれる場合は、データベースをホストするために必要な最小リソース サイズ単位を把握できるため、たいてい、プラン選択肢の最適性を理解して検証することは合理的です。 検証した後、プランのパフォーマンスが低くなっていないことを確認するために、ときどきプランを調べ直してください。 詳細については、「 [クエリ ヒント (Transact-SQL)](/sql/t-sql/queries/hints-transact-sql-query)」をご覧ください。
 
 ### <a name="very-large-database-architectures"></a>非常に大規模なデータベースのアーキテクチャ
 

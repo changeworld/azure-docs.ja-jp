@@ -9,16 +9,16 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822279"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789677"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする
 
-Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure Storage リソース プロバイダーは、Azure Resource Manager に基づき、Azure Storage の管理リソースへのアクセスを提供するサービスです。 Azure Storage リソース プロバイダーを使用すると、ストレージ アカウント、プライベート エンドポイント、アカウント アクセス キーなどのリソースを作成、更新、管理、および削除できます。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure Storage リソース プロバイダーは、Azure Resource Manager に基づき、Azure Storage の管理リソースへのアクセスを提供するサービスです。 Azure Storage リソース プロバイダーを使用すると、ストレージ アカウント、プライベート エンドポイント、アカウント アクセス キーなどのリソースを作成、更新、管理、および削除できます。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。
 
 Azure Storage リソース プロバイダーを使用すると、ストレージ アカウントの作成または削除、サブスクリプション内のストレージ アカウント一覧の取得などのアクションを実行できます。 Azure Storage リソース プロバイダーに対する要求を承認するには、Azure Active Directory (Azure AD) を使用します。 この記事では、管理リソースにアクセス許可を割り当てる方法について説明し、Azure Storage リソース プロバイダーに対して要求を行う方法を示す例を紹介します。
 
@@ -32,9 +32,9 @@ Azure Storage は、Azure AD を使用して Blob および Queue ストレー�
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) を使用して管理アクセス許可を割り当てる
 
-すべての Azure サブスクリプションには、ユーザー、グループ、アプリケーションを管理する Azure Active Directory が関連付けられています。 ユーザー、グループ、アプリケーションは、[Microsoft ID プラットフォーム](/azure/active-directory/develop/)のコンテキストではセキュリティ プリンシパルと呼ばれることもあります。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用し、Active Directory で定義されているセキュリティ プリンシパルに対して、サブスクリプションのリソースへのアクセス権を付与できます。
+すべての Azure サブスクリプションには、ユーザー、グループ、アプリケーションを管理する Azure Active Directory が関連付けられています。 ユーザー、グループ、アプリケーションは、[Microsoft ID プラットフォーム](../../active-directory/develop/index.yml)のコンテキストではセキュリティ プリンシパルと呼ばれることもあります。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用し、Active Directory で定義されているセキュリティ プリンシパルに対して、サブスクリプションのリソースへのアクセス権を付与できます。
 
-Azure ロールをセキュリティ プリンシパルに割り当てるときに、ロールによって付与されたアクセス許可を有効にするスコープも指定します。 管理操作の場合、サブスクリプション、リソース グループ、またはストレージ アカウントのレベルでロールを割り当てることができます。 セキュリティ プリンシパルに Azure ロールを割り当てるには、[Azure portal](https://portal.azure.com/)、[Azure CLI ツール](../../cli-install-nodejs.md)、[PowerShell](/powershell/azure/)、または [Azure Storage リソース プロバイダー REST API](/rest/api/storagerp) を使用します。
+Azure ロールをセキュリティ プリンシパルに割り当てるときに、ロールによって付与されたアクセス許可を有効にするスコープも指定します。 管理操作の場合、サブスクリプション、リソース グループ、またはストレージ アカウントのレベルでロールを割り当てることができます。 セキュリティ プリンシパルに Azure ロールを割り当てるには、[Azure portal](https://portal.azure.com/)、[Azure CLI ツール](/cli/azure/install-classic-cli)、[PowerShell](/powershell/azure/)、または [Azure Storage リソース プロバイダー REST API](/rest/api/storagerp) を使用します。
 
 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」 と[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
@@ -76,6 +76,6 @@ Azure デプロイ モデルの詳細については、「[Resource Manager デ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure リソース マネージャーの概要](/azure/azure-resource-manager/resource-group-overview)
+- [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)
 - [Azure Storage リソース プロバイダーのスケーラビリティ ターゲット](scalability-targets-resource-provider.md)

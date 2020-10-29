@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0efc6f6f6d4ae6355fbb42fbc7e13ad7c078cf3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504340"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792890"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
  
@@ -25,7 +25,7 @@ ms.locfileid: "85504340"
 
 定期的なデータ転送用の推奨されるオプションは、転送が定期的であるか継続的であるかに応じて 2 つのカテゴリに分類されます。
 
-- **スクリプト/プログラム ツール**– 一定間隔で発生するデータ転送では、AzCopy や Azure Storage REST API などのスクリプトおよびプログラム ツールを使用します。 これらのツールは、IT プロフェッショナルおよび開発者を対象としています。
+- **スクリプト/プログラム ツール** – 一定間隔で発生するデータ転送では、AzCopy や Azure Storage REST API などのスクリプトおよびプログラム ツールを使用します。 これらのツールは、IT プロフェッショナルおよび開発者を対象としています。
 
     - **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
     - **Azure Storage REST API/SDK** – アプリケーションの構築時に、Azure Storage REST API に対するアプリケーションを開発し、複数の言語で提供される Azure SDK を使用できます。 REST API では、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように特別に設計された、Azure Storage Data Movement Library を利用することもできます。
@@ -57,7 +57,7 @@ ms.locfileid: "85504340"
 | フォーム ファクター                                   | 仮想デバイス             | 物理デバイス          | Azure portal のサービス、オンプレミス エージェント                                                            |
 | ハードウェア                                      | ハイパーバイザー            | Microsoft により提供    | NA                                                            |
 | 初期セットアップ作業                          | 短時間 (< 30 分)            | 中程度 (から数時間) | 長時間 (から数日間)                                                 |
-| データ形式                                   | Azure BLOB、Azure Files   | Azure BLOB、Azure Files | [データ ストアと形式について、70 個を超えるデータ コネクタをサポート](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
+| データ形式                                   | Azure BLOB、Azure Files   | Azure BLOB、Azure Files | [データ ストアと形式について、70 個を超えるデータ コネクタをサポート](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)|
 | データの前処理                           | いいえ                         | はい、Edge コンピューティング経由    | はい                                                           |
 | ローカル キャッシュ<br>(オンプレミス データを格納)    | はい                        | はい                      | いいえ                                                            |
 | その他のクラウドからの転送                    | いいえ                         | いいえ                       | はい                                                           |
@@ -65,9 +65,9 @@ ms.locfileid: "85504340"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [AzCopy を使用してデータを転送する](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
-- [Storage REST API を使用したデータ転送の詳細](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
+- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ftables%252ftoc.json)。
+- [Storage REST API を使用したデータ転送の詳細](/dotnet/api/overview/azure/storage)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)します。
-    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [Azure Data Factory を使用してデータを転送する方法を学習します](https://docs.microsoft.com/azure/data-factory/tutorial-bulk-copy-portal)。
+    - [Data Box Gateway を使用してデータを転送する](../../databox-online/data-box-gateway-deploy-add-shares.md)します。
+    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+- [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/tutorial-bulk-copy-portal.md)。

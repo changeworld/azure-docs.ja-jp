@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843228"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786056"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -115,7 +115,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-関数アプリを作成し、マネージド ID を使用して Key Vault にアクセスする方法については、「[Azure portal から関数アプリを作成する](/azure/azure-functions/functions-create-function-app-portal)」、[App Service と Azure Functions のマネージド ID を使用する方法](/azure/app-service/overview-managed-identity)、および [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../general/assign-access-policy-portal.md)に関するページを参照してください。
+関数アプリを作成し、マネージド ID を使用して Key Vault にアクセスする方法については、「[Azure portal から関数アプリを作成する](../../azure-functions/functions-create-function-app-portal.md)」、[App Service と Azure Functions のマネージド ID を使用する方法](../../app-service/overview-managed-identity.md)、および [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../general/assign-access-policy-portal.md)に関するページを参照してください。
 
 ### <a name="rotation-function"></a>ローテーション関数
 前の手順でデプロイした関数は、イベントを使用して、Key Vault と SQL データベースを更新することにより、シークレットのローテーションをトリガーします。 
@@ -190,7 +190,7 @@ public static class SimpleRotationEventHandler
 [GitHub](https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp) に完全なサンプル コードがあります。
 
 ## <a name="add-the-secret-to-key-vault"></a>Key Vault にシークレットを追加する
-*シークレットの管理*権限をユーザーに付与するようにアクセス ポリシーを設定します。
+*シークレットの管理* 権限をユーザーに付与するようにアクセス ポリシーを設定します。
 
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name akvrotation-kv --secret-permissions set delete get list
@@ -242,7 +242,7 @@ Web アプリには次のコンポーネントが必要です。
  
 https://akvrotation-app.azurewebsites.net/
 
-アプリケーションをブラウザーで開いている場合、**生成されたシークレット値**が表示され、**データベース接続済み**の値が *true* と表示されます。
+アプリケーションをブラウザーで開いている場合、 **生成されたシークレット値** が表示され、 **データベース接続済み** の値が *true* と表示されます。
 
 ## <a name="learn-more"></a>詳細情報
 

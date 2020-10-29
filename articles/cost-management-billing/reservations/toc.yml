@@ -123,9 +123,11 @@
         - name: 有効なサブスクリプションがない
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 予約使用率のトラブルシューティング
-          href: troubleshoot-reservation-utilization.md??toc=/azure/cost-management-billing/reservations/toc.json
+          href: troubleshoot-reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 予約のレコメンデーションのトラブルシューティング
-          href: troubleshoot-reservation-recommendation.md??toc=/azure/cost-management-billing/reservations/toc.json
+          href: troubleshoot-reservation-recommendation.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 利用できない予約のトラブルシューティング
+          href: troubleshoot-product-not-available.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: リファレンス
   items:
     - name: 予約 REST API

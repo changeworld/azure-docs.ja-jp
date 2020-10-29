@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86145658"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790493"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Azure SQL Database にはドメイン ネーム システム (DNS) サーバーが用意されています。 PowerShell と REST API では、[論理 SQL サーバー](logical-servers.md)名の [DNS エイリアスの作成や管理を行う呼び出し](#anchor-powershell-code-62x)を使用できます。
 
-"*DNS エイリアス*" はサーバー名の代わりとして使用できます。 クライアント プログラムで接続文字列内にエイリアスを使用することができます。 DNS エイリアスには、クライアント プログラムを別のサーバーにリダイレクトする変換レイヤーがあります。 このレイヤーによって、ユーザーはすべてのクライアントとその接続文字列を特定して編集するという面倒な作業が不要になっています。
+" *DNS エイリアス* " はサーバー名の代わりとして使用できます。 クライアント プログラムで接続文字列内にエイリアスを使用することができます。 DNS エイリアスには、クライアント プログラムを別のサーバーにリダイレクトする変換レイヤーがあります。 このレイヤーによって、ユーザーはすべてのクライアントとその接続文字列を特定して編集するという面倒な作業が不要になっています。
 
 DNS エイリアスの一般的な使用法には、次のようなものがあります。
 
@@ -60,8 +60,8 @@ Azure SQL Database の DNS エイリアス機能は、次のようなシナリ�
 - *サーバーが必要:* DNS エイリアスは 1 つのサーバーを正確に参照していないと作成できません。また、サーバーはあらかじめ存在している必要があります。 エイリアスを更新した場合も、常に 1 つの既存サーバーを正確に参照していなければなりません。
   - サーバーを削除すると、そのサーバーを参照するすべての DNS エイリアスも Azure システムによって削除されます。
 - *どのリージョンにもバインドされない:* DNS エイリアスはリージョンにバインドされません。 どの DNS エイリアスも任意のリージョンに存在する地理的サーバーを参照するよう更新できます。
-  - ただし、別のサーバーを参照するようエイリアスを更新する際は、両方のサーバーが同じ Azure *サブスクリプション*に存在する必要があります。
-- *権限:* DNS エイリアスを管理するユーザーには、*サーバー共同作成者*権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。
+  - ただし、別のサーバーを参照するようエイリアスを更新する際は、両方のサーバーが同じ Azure *サブスクリプション* に存在する必要があります。
+- *権限:* DNS エイリアスを管理するユーザーには、 *サーバー共同作成者* 権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="manage-your-dns-aliases"></a>DNS エイリアスの管理
 
@@ -71,7 +71,7 @@ DNS エイリアスをプログラムによって管理できるように、REST
 
 REST API に関するドキュメントは、Web 上の次の場所で入手できます。
 
-- [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)
+- [Azure SQL Database REST API](/rest/api/sql/)
 
 また、REST API については、GitHub の次の場所でも確認できます。
 
@@ -83,7 +83,7 @@ REST API に関するドキュメントは、Web 上の次の場所で入手で�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 REST API を呼び出す PowerShell コマンドレットを使用できます。
 
@@ -93,10 +93,10 @@ DNS エイリアスを管理するために使用されている PowerShell コ�
 
 コード例で使用されているコマンドレットは次のとおりです。
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias):Azure SQL Database サービス システムに新しい DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべての DNS エイリアスを取得して一覧表示します。
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 から DNS エイリアスを削除します。
+- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias):Azure SQL Database サービス システムに新しい DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
+- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべての DNS エイリアスを取得して一覧表示します。
+- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
+- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 から DNS エイリアスを削除します。
 
 ## <a name="limitations-during-preview"></a>プレビュー期間中の制限事項
 
@@ -104,16 +104,16 @@ DNS エイリアスには、現在、次の制限事項があります。
 
 - *最大 2 分の遅延:* DNS エイリアスの更新または削除に最大 2 分かかります。
   - ただし、遅延の有無にかかわらず、エイリアスは元のサーバーへのクライアント接続の参照を直ちに停止します。
-- *DNS の参照:* 現時点では、特定の DNS エイリアスが参照しているサーバーを確認する正式な方法は、[DNS の参照](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)の実行だけです。
-- _テーブルの監査はサポートされていない:_ データベースで "*テーブル監査*" が有効になっているサーバーでは DNS エイリアスを使用できません。
+- *DNS の参照:* 現時点では、特定の DNS エイリアスが参照しているサーバーを確認する正式な方法は、 [DNS の参照](/windows-server/administration/windows-commands/nslookup)の実行だけです。
+- _テーブルの監査はサポートされていない:_ データベースで " *テーブル監査* " が有効になっているサーバーでは DNS エイリアスを使用できません。
   - テーブル監査は非推奨になりました。
   - [BLOB 監査](../../azure-sql/database/auditing-overview.md)に移行することをお勧めします。
 
 ## <a name="related-resources"></a>関連リソース
 
 - [Azure SQL Database によるビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)。ディザスター リカバリーについても解説しています。
-- [Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure/)
-- [サーバー DNS エイリアス API](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
+- [Azure REST API リファレンス](/rest/api/azure/)
+- [サーバー DNS エイリアス API](/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>次のステップ
 

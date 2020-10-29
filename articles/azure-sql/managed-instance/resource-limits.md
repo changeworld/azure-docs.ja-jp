@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34f71dfeb0b4e5f94d953137fd45777bf14baa4e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618116"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790765"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ SQL Managed Instance には、基になるインフラストラクチャとア�
 SQL Managed Instance には 2 つのサービス レベルがあります。[General Purpose](../database/service-tier-general-purpose.md) と [Business Critical](../database/service-tier-business-critical.md) です。 これらのレベルでは、次の表に示すように、[別の機能](../database/service-tiers-general-purpose-business-critical.md)が提供されます。
 
 > [!Important]
-> Business Critical サービス レベルには、読み取り専用ワークロードに使用できる SQL Managed Instance の追加の組み込みコピー (セカンダリ レプリカ) が用意されています。 読み取りおよび書き込みクエリと、読み取り専用、分析、レポート クエリとを分離できる場合は、同じ価格で仮想コアとメモリを 2 度取得することになります。 セカンダリ レプリカは、プライマリ インスタンスよりも数秒遅れる場合があるため、データの正確な現在の状態を必要としないレポートと分析のワークロードをオフロードするように設計されています。 次の表で、**読み取り専用クエリ**は、セカンダリ レプリカ上で実行されるクエリです。
+> Business Critical サービス レベルには、読み取り専用ワークロードに使用できる SQL Managed Instance の追加の組み込みコピー (セカンダリ レプリカ) が用意されています。 読み取りおよび書き込みクエリと、読み取り専用、分析、レポート クエリとを分離できる場合は、同じ価格で仮想コアとメモリを 2 度取得することになります。 セカンダリ レプリカは、プライマリ インスタンスよりも数秒遅れる場合があるため、データの正確な現在の状態を必要としないレポートと分析のワークロードをオフロードするように設計されています。 次の表で、 **読み取り専用クエリ** は、セカンダリ レプリカ上で実行されるクエリです。
 
 | **機能** | **汎用** | **Business Critical** |
 | --- | --- | --- |
@@ -89,7 +89,7 @@ SQL Managed Instance には 2 つのサービス レベルがあります。[Gen
 
 追加の考慮事項: 
 
-- **現在利用可能なインスタンスのストレージ サイズ**は、予約インスタンスのサイズと使用されているストレージ スペースの差です。
+- **現在利用可能なインスタンスのストレージ サイズ** は、予約インスタンスのサイズと使用されているストレージ スペースの差です。
 - ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、[sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
 - General Purpose レベルではスループットと IOPS も、SQL Managed Instance によって明示的に制限されない[ファイル サイズ](#file-io-characteristics-in-general-purpose-tier)に依存します。
   [自動フェールオーバー グループ](../database/auto-failover-group-configure.md)を利用すれば、異なる Azure リージョンで別の読み取り可能レプリカを作成できます
@@ -120,7 +120,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [クラウド サービス プロバイダー (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [クラウド サービス プロバイダー (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio サブスクライバー向けの毎月の Azure クレジット付きサブスクリプション](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -132,13 +132,13 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 
 サポートされているサブスクリプションの種類には、リージョンごとのリソース数の制限を組み入れることができます。 SQL Managed Instance には、サブスクリプションの種類に応じて、(特別な[サポート リクエストを Azure portal で](../database/quota-increase-request.md)作成することによって、オンデマンドで増加する可能性がある) Azure リージョンごとに 2 つの既定の制限があります。
 
-- **サブネットの制限**: SQL Managed Instance のインスタンスが単一リージョンにデプロイされているサブネットの最大数。
-- **仮想コア ユニットの制限**: 単一リージョン内のすべてのインスタンスを超えてデプロイできる仮想コア ユニットの最大数。 1 つの GP 仮想コアでは仮想コア ユニットを 1 つ使用し、1 つの BC 仮想コアでは仮想コア ユニットを 4 つ使用します。 インスタンスの合計数は、仮想コア ユニットの制限内である限り、制限されません。
+- **サブネットの制限** : SQL Managed Instance のインスタンスが単一リージョンにデプロイされているサブネットの最大数。
+- **仮想コア ユニットの制限** : 単一リージョン内のすべてのインスタンスを超えてデプロイできる仮想コア ユニットの最大数。 1 つの GP 仮想コアでは仮想コア ユニットを 1 つ使用し、1 つの BC 仮想コアでは仮想コア ユニットを 4 つ使用します。 インスタンスの合計数は、仮想コア ユニットの制限内である限り、制限されません。
 
 > [!Note]
 > これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くのインスタンスが必要な場合、[Azure portal でサポート リクエスト](../database/quota-increase-request.md)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート リクエストを送信せずに、代わりに、別の Azure リージョンに SQL Managed Instance の新しいインスタンスを作成することも可能です。
 
-次の表は、サポートされている種類のサブスクリプションを対象に、**既定のリージョン別制限**についてまとめたものです (既定の制限は、下に説明がある、サポート リクエストを利用して拡張できます)。
+次の表は、サポートされている種類のサブスクリプションを対象に、 **既定のリージョン別制限** についてまとめたものです (既定の制限は、下に説明がある、サポート リクエストを利用して拡張できます)。
 
 |サブスクリプションの種類| SQL Managed Instance のサブネットの最大数 | 最大仮想コア ユニット数* |
 | :---| :--- | :--- |
@@ -150,7 +150,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional および MSDN Platforms|2|32|
 
-\* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コア ユニットとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「**最大仮想コア ユニット数**」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「**最大仮想コア ユニット数**」以下である必要があります。
+\* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コア ユニットとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「 **最大仮想コア ユニット数** 」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「 **最大仮想コア ユニット数** 」以下である必要があります。
 
 \*\* 次のリージョンには、より大きなサブネットと仮想コアの制限があります。オーストラリア東部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、英国南部、西ヨーロッパ、米国西部 2。
 

@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409589"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792176"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>エラスティック ジョブの作成、構成、および管理 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,14 +27,14 @@ ms.locfileid: "91409589"
 
 ## <a name="create-and-configure-the-agent"></a>エージェントの作成と構成
 
-1. S0 以上で、中身が空のデータベースを作成または特定します。 このデータベースが、エラスティック ジョブ エージェントの作成時に "*ジョブ データベース*" として使用されます。
+1. S0 以上で、中身が空のデータベースを作成または特定します。 このデータベースが、エラスティック ジョブ エージェントの作成時に " *ジョブ データベース* " として使用されます。
 2. [ポータル](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)または [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) を使用してエラスティック ジョブ エージェントを作成します。
 
    ![エラスティック ジョブ エージェントの作成中](./media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>ジョブの作成、実行、および管理
 
-1. [PowerShell](elastic-jobs-powershell-create.md) または [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution) を使用して、"*ジョブ データベース*" にジョブ実行のための資格情報を作成します。
+1. [PowerShell](elastic-jobs-powershell-create.md) または [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution) を使用して、" *ジョブ データベース* " にジョブ実行のための資格情報を作成します。
 2. [PowerShell](elastic-jobs-powershell-create.md) または [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-target-group-servers) を使用して、ターゲット グループ (ジョブの実行の対象とするデータベース) を定義します。
 3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](logins-create-manage.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell-create.md)を参照してください。
 4. [PowerShell](elastic-jobs-powershell-create.md) または [T-SQL](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases) を使用してジョブを作成します。
@@ -50,11 +50,11 @@ ms.locfileid: "91409589"
 
 ジョブの実行に必要な資格情報を正しく設定する作業は多少複雑ですので、次のポイントを頭に入れておくようにしてください。
 
-- データベース スコープ資格情報は "*ジョブ データベース*" に作成する必要があります。
-- **ターゲット データベースにはいずれも、ジョブが正常に完了するうえで[十分なアクセス許可](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)を備えたログインを設定しておく必要があります** (以下の図の `jobuser`)。
+- データベース スコープ資格情報は " *ジョブ データベース* " に作成する必要があります。
+- **ターゲット データベースにはいずれも、ジョブが正常に完了するうえで [十分なアクセス許可](/sql/relational-databases/security/permissions-database-engine)を備えたログインを設定しておく必要があります** (以下の図の `jobuser`)。
 - 資格情報は複数のジョブで再利用できます。このため、資格情報のパスワードは暗号化のうえ、ジョブ オブジェクトに対する読み取りアクセス許可が認められたユーザーに知られることがないように保護されます。
 
-次の図は、ジョブの正しい資格情報を把握し、その設定をサポートすることを意図して用意したものです。 **ジョブの実行が必要なデータベースの 1 つひとつ ("*ターゲット ユーザー DB*" すべて) で、忘れずにユーザーを作成してください**。
+次の図は、ジョブの正しい資格情報を把握し、その設定をサポートすることを意図して用意したものです。 **ジョブの実行が必要なデータベースの 1 つひとつ (" *ターゲット ユーザー DB* " すべて) で、忘れずにユーザーを作成してください** 。
 
 ![エラスティック ジョブの資格情報](./media/elastic-jobs-overview/job-credentials.png)
 
@@ -63,14 +63,14 @@ ms.locfileid: "91409589"
 エラスティック ジョブを使用する際のベスト プラクティスをいくつか紹介します。
 
 - API の使用を信頼できるユーザーに制限します。
-- 資格情報には、ジョブ ステップの実行に最小限必要な権限だけを設定します。 詳細については、[承認と権限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)に関するページを参照してください。
+- 資格情報には、ジョブ ステップの実行に最小限必要な権限だけを設定します。 詳細については、[承認と権限](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)に関するページを参照してください。
 - ターゲット グループのメンバーとしてサーバーまたはプールを使用する場合には、マスター データベースでデータベースを表示/一覧表示するための権限を設定した資格情報を別個に作成することを強くお勧めします。この資格情報は、ジョブの実行前にサーバーまたはプールのデータベースの一覧を展開する際に使用します。
 
 ## <a name="agent-performance-capacity-and-limitations"></a>エージェントのパフォーマンス、容量、および制約
 
 エラスティック ジョブでは、実行時間の長いジョブの完了を待っている間に消費する計算リソースを最小限に抑えます。
 
-データベースから成るターゲット グループの大きさと、ジョブについて希望する実行時間 (同時に実行する worker の数) に応じて、エージェントが "*ジョブ データベース*" に要求する計算量とパフォーマンスが変わります (ターゲットとジョブの数が増えるほど、要求される計算量が増大します)。
+データベースから成るターゲット グループの大きさと、ジョブについて希望する実行時間 (同時に実行する worker の数) に応じて、エージェントが " *ジョブ データベース* " に要求する計算量とパフォーマンスが変わります (ターゲットとジョブの数が増えるほど、要求される計算量が増大します)。
 
 現時点のプレビュー版では、同時に実行するジョブの上限が 100 件に制限されています。
 
@@ -83,7 +83,7 @@ SQL エラスティック プール内のデータベースにジョブを実行
 ## <a name="best-practices-for-creating-jobs"></a>ジョブ作成のベスト プラクティス
 
 ### <a name="idempotent-scripts"></a>べき等スクリプト
-ジョブの T-SQL スクリプトは [べき等](https://en.wikipedia.org/wiki/Idempotence)にする必要があります。 **べき等**とは、実行に成功したスクリプトを再度実行した場合に、結果が同じになることを意味します。 一時的なネットワークの問題により、スクリプトが失敗することがあります。 その場合、ジョブは事前に設定した回数に達するまで自動的にスクリプトを再試行します。 べき等スクリプトは、2 回 (以上) 実行して成功した場合、結果が同じになります。
+ジョブの T-SQL スクリプトは [べき等](https://en.wikipedia.org/wiki/Idempotence)にする必要があります。 **べき等** とは、実行に成功したスクリプトを再度実行した場合に、結果が同じになることを意味します。 一時的なネットワークの問題により、スクリプトが失敗することがあります。 その場合、ジョブは事前に設定した回数に達するまで自動的にスクリプトを再試行します。 べき等スクリプトは、2 回 (以上) 実行して成功した場合、結果が同じになります。
 
 単純な方法として、作成前に、オブジェクトの存在をテストします。
 

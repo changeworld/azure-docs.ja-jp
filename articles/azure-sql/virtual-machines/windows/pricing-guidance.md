@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316938"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785002"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の料金ガイダンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "91316938"
 この記事では、[Azure Virtual Machines における SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) の料金ガイダンスを示します。 コストに影響するいくつかのオプションがあるため、コストとビジネス要件が釣り合うように適切なイメージを選択することが重要です。
 
 > [!TIP]
-> SQL Server のエディションと仮想マシン (VM) のサイズの特定の組み合わせのコスト見積もりのみを確認したい場合は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の料金ページを参照してください。 **OS / ソフトウェア**の一覧から、お使いのプラットフォームと SQL Server エディションを選択します。
+> SQL Server のエディションと仮想マシン (VM) のサイズの特定の組み合わせのコスト見積もりのみを確認したい場合は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の料金ページを参照してください。 **OS / ソフトウェア** の一覧から、お使いのプラットフォームと SQL Server エディションを選択します。
 >
 > ![VM 料金ページの UI](./media/pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -61,19 +61,19 @@ ms.locfileid: "91316938"
 | Standard | 少量から中量のワークロード |
 | Enterprise | 大量のワークロードまたはミッションクリティカルなワークロード|
 
-これらのエディションの SQL Server ライセンス料金には 2 つのオプションがあります。"*使用した分を支払う*" 方法と、"*自分のライセンスを持ち込む (BYOL)* " 方法です。
+これらのエディションの SQL Server ライセンス料金には 2 つのオプションがあります。" *使用した分を支払う* " 方法と、" *自分のライセンスを持ち込む (BYOL)* " 方法です。
 
 ## <a name="pay-per-usage"></a>使用した分を支払う
 
-**使用した分の SQL Server ライセンス料金を支払う**方法 (**従量課金制**とも呼ばれている) は、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれることを意味します。 SQL Server の各種エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure Virtual Machines の料金ページで確認できます。
+**使用した分の SQL Server ライセンス料金を支払う** 方法 ( **従量課金制** とも呼ばれている) は、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれることを意味します。 SQL Server の各種エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure Virtual Machines の料金ページで確認できます。
 
 コストはすべてのバージョンの SQL Server (2012 SP3 から 2019 まで) で同じです。 1 秒あたりのライセンス コストは、VM vCPU の数によって異なります。
 
 使用した分だけ SQL Server ライセンス料金を支払う方法は、次の場合にお勧めします。
 
-- **一時的なワークロードまたは定期的なワークロード**。 たとえば、毎年 2 か月間行われるイベントや毎週月曜日に行われるビジネス分析をサポートする必要があるアプリです。
+- **一時的なワークロードまたは定期的なワークロード** 。 たとえば、毎年 2 か月間行われるイベントや毎週月曜日に行われるビジネス分析をサポートする必要があるアプリです。
 
-- **有効期間または規模が不明なワークロード**。 たとえば、数か月で不要になるアプリ、または要求によって必要な処理能力が増減するアプリです。
+- **有効期間または規模が不明なワークロード** 。 たとえば、数か月で不要になるアプリ、または要求によって必要な処理能力が増減するアプリです。
 
 これらの従量課金制イメージのいずれかを使用して SQL Server 2017 を実行する Azure VM を作成するには、次のリンクを参照してください。
 
@@ -96,7 +96,7 @@ ms.locfileid: "91316938"
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> ライセンスを持ち込む (BYOL)
 
-**ライセンス モビリティを使用した自分の SQL Server ライセンスの持ち込み** (**BYOL**) は、Azure VM のソフトウェア アシュアランスで既存の SQL Server ボリューム ライセンスを使用することです。 BYOL を使用した SQL Server VM の料金は、SQL Server のライセンスではなく、VM を実行するコストに対してのみ発生します。これは、ボリューム ライセンス プログラムを介して既にライセンスとソフトウェア アシュアランスを取得している場合が対象になります。
+**ライセンス モビリティを使用した自分の SQL Server ライセンスの持ち込み** ( **BYOL** ) は、Azure VM のソフトウェア アシュアランスで既存の SQL Server ボリューム ライセンスを使用することです。 BYOL を使用した SQL Server VM の料金は、SQL Server のライセンスではなく、VM を実行するコストに対してのみ発生します。これは、ボリューム ライセンス プログラムを介して既にライセンスとソフトウェア アシュアランスを取得している場合が対象になります。
 
 > [!IMPORTANT]
 > BYOL イメージには、ソフトウェア アシュアランスの Enterprise Agreement が必要です。 現時点では、Azure Cloud Solution Partner (CSP) の一部として利用することはできません。 CSP のお客様は従量課金イメージをデプロイし、次に [Azure ハイブリッド特典](licensing-model-azure-hybrid-benefit-ahb-change.md)を有効にして、ご自身のライセンスを持ち込めます。
@@ -106,9 +106,9 @@ ms.locfileid: "91316938"
 
 ライセンス モビリティを使用した SQL Server ライセンスの持ち込みは、次の場合に推奨されます。
 
-- **継続的なワークロード**。 たとえば、年中無休の業務をサポートする必要があるアプリ。
+- **継続的なワークロード** 。 たとえば、年中無休の業務をサポートする必要があるアプリ。
 
-- **有効期間と規模がわかっているワークロード**。 たとえば、1 年にわたって必要で、要求が予測されているアプリ。
+- **有効期間と規模がわかっているワークロード** 。 たとえば、1 年にわたって必要で、要求が予測されているアプリ。
 
 BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
 
@@ -136,7 +136,7 @@ BYOL を SQL Server VM で利用するには、SQL Server Standard または Ent
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> VM の適切なサイズ設定
 
-SQL Server のライセンス コストは vCPU の数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)と [Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをそれぞれご覧ください。
+SQL Server のライセンス コストは vCPU の数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](../../../virtual-machines/sizes.md)と [Linux VM のサイズ](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)に関するページをそれぞれご覧ください。
 
 特定の種類の SQL Server ワークロードで適切に動作する新しいマシン サイズがあります。 こうしたマシン サイズでは、メモリ、記憶域、および I/O 帯域幅が高いレベルで維持されますが、仮想化されたコア数は少なくなります。 たとえば、次の例を考えてみましょう。
 
@@ -148,7 +148,7 @@ SQL Server のライセンス コストは vCPU の数に直接関連します�
 > [!IMPORTANT]
 > これは、特定の時点の例です。 最新の仕様については、マシンのサイズに関する記事と、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) および [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) それぞれの Azure 価格ページをご覧ください。
 
-前の例で、**Standard_DS14v2** と **Standard_DS14-4v2** の仕様は、vCPU を除いて同じであることがわかります。 **Standard_DS14-4v2** マシン サイズの末尾のサフィックス **-4v2** は、アクティブな vCPU の番号を示します。 SQL Server のライセンス コストは vCPU の数と関連するため、追加 vCPU が不要なシナリオでは、これにより VM のコストが大幅に削減されます。 これは 1 つの例であり、このサフィックス パターンで特定される、vCPU が制約されたマシン サイズは多数あります。 詳細については、[データベース作業のコスト効率を高めるための新しい Azure VM サイズについての発表](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
+前の例で、 **Standard_DS14v2** と **Standard_DS14-4v2** の仕様は、vCPU を除いて同じであることがわかります。 **Standard_DS14-4v2** マシン サイズの末尾のサフィックス **-4v2** は、アクティブな vCPU の番号を示します。 SQL Server のライセンス コストは vCPU の数と関連するため、追加 vCPU が不要なシナリオでは、これにより VM のコストが大幅に削減されます。 これは 1 つの例であり、このサフィックス パターンで特定される、vCPU が制約されたマシン サイズは多数あります。 詳細については、[データベース作業のコスト効率を高めるための新しい Azure VM サイズについての発表](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
 
 ### <a name="shut-down-your-vm-when-possible"></a>可能な場合は VM をシャットダウン
 
@@ -167,7 +167,7 @@ SQL Server のライセンス コストは vCPU の数に直接関連します�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure の一般的な料金ガイダンスについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../../cost-management-billing/manage/getting-started.md)」をご覧ください。 最新の Azure Virtual Machines の料金 (SQL Server を含む) については、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) および [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) の Azure Virtual Machines の料金ページを参照してください。
+Azure の一般的な料金ガイダンスについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../../cost-management-billing/cost-management-billing-overview.md)」をご覧ください。 最新の Azure Virtual Machines の料金 (SQL Server を含む) については、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) および [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) の Azure Virtual Machines の料金ページを参照してください。
 
 Azure Virtual Machines における SQL Server の概要については、次の記事を参照してください。
 

@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168258"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790085"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>PowerShell または Az CLI を使用して Azure VM で SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Always On 可用性グループを構成するには、次の前提条件を満�
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されているのと " *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにある、1 つ以上のドメイン参加済みの、 [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
+- [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されているのと " *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにある、1 つ以上のドメイン参加済みの、 [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](./create-sql-vm-portal.md)。  
 - 最新バージョンの [PowerShell](/powershell/scripting/install/installing-powershell) または [Azure CLI](/cli/azure/install-azure-cli)。 
 - 2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 1 つは内部ロード バランサー用です。 もう 1 つは、可用性グループと同じサブネット内の可用性グループ リスナー用です。 既存のロード バランサーを使用している場合は、使用可能な IP アドレスが可用性グループ リスナー用に 1 つだけ必要です。 
 
@@ -64,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> 古いバージョンの Azure CLI を使用している場合は、エラー `az sql: 'vm' is not in the 'az sql' command group` が表示されることがあります。 このエラーを回避するには、[最新バージョンの Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) をダウンロードしてください。
+> 古いバージョンの Azure CLI を使用している場合は、エラー `az sql: 'vm' is not in the 'az sql' command group` が表示されることがあります。 このエラーを回避するには、[最新バージョンの Azure CLI](/cli/azure/install-azure-cli-windows) をダウンロードしてください。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -84,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>クラスター メタデータを定義する
 
-Azure CLI の [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group) コマンド グループは、可用性グループをホストする Windows Server フェールオーバー クラスター (WSFC) サービスのメタデータを管理するものです。 クラスター メタデータには、Active Directory ドメイン、クラスター アカウント、クラウド監視として使用されるストレージ アカウント、および SQL Server バージョンが含まれています。 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) を使用して WSFC のメタデータを定義し、最初の SQL Server VM が追加されたら、定義のとおりにクラスターが作成されるようにします。 
+Azure CLI の [az sql vm group](/cli/azure/sql/vm/group) コマンド グループは、可用性グループをホストする Windows Server フェールオーバー クラスター (WSFC) サービスのメタデータを管理するものです。 クラスター メタデータには、Active Directory ドメイン、クラスター アカウント、クラウド監視として使用されるストレージ アカウント、および SQL Server バージョンが含まれています。 [az sql vm group create](/cli/azure/sql/vm/group#az-sql-vm-group-create) を使用して WSFC のメタデータを定義し、最初の SQL Server VM が追加されたら、定義のとおりにクラスターが作成されるようにします。 
 
 次のコード スニペットは、クラスターのメタデータを定義します。
 
@@ -129,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>クラスターに VM を追加する
 
-クラスターに最初の SQL Server VM を追加すると、クラスターが作成されます。 [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) コマンドは、前に指定された名前でクラスターを作成し、SQL Server VM にクラスター ロールをインストールした後、それらの VM をクラスターに追加します。 その後に `az sql vm add-to-group` コマンドを使用すると、新しく作成されたクラスターに SQL Server VM が追加されます。 
+クラスターに最初の SQL Server VM を追加すると、クラスターが作成されます。 [az sql vm add-to-group](/cli/azure/sql/vm#az-sql-vm-add-to-group) コマンドは、前に指定された名前でクラスターを作成し、SQL Server VM にクラスター ロールをインストールした後、それらの VM をクラスターに追加します。 その後に `az sql vm add-to-group` コマンドを使用すると、新しく作成されたクラスターに SQL Server VM が追加されます。 
 
 次のコード スニペットはクラスターを作成し、そこに最初の SQL Server VM を追加します。 
 
@@ -521,4 +521,4 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 * [可用性グループの管理 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
 * [可用性グループの監視 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
 * [Always On 可用性グループ用の Transact-SQL ステートメントの概要 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [Always On 可用性グループ用の PowerShell コマンドレットの概要 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  
+* [Always On 可用性グループ用の PowerShell コマンドレットの概要 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)

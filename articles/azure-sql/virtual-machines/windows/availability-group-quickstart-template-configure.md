@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf5c3f7d854081c7306a038cc452b620d1af00d0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 204c7d756a13ed0427f06abfb56e3f1256df48bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167995"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789949"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "92167995"
 クイック スタート テンプレートを使用して Always On 可用性グループのセットアップを自動化するには、次の前提条件が必要です。 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行する Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
+- [SQL VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行する Azure の VM](./create-sql-vm-portal.md)。  
 - 可用性グループと同じサブネット内の内部ロード バランサー用に 1 つと、可用性グループ リスナー用に 1 つの、2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 既存のロード バランサーが使用されている場合は、使用可能な IP アドレスが 1 つだけ必要です。  
 
 ## <a name="permissions"></a>アクセス許可
@@ -226,6 +226,3 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 * [SQL Server VM の価格ガイダンス](pricing-guidance.md)
 * [SQL Server VM のリリース ノート](../../database/doc-changes-updates-release-notes.md)
 * [SQL Server VM のライセンス モデルの切り替え](licensing-model-azure-hybrid-benefit-ahb-change.md)
-
-
-

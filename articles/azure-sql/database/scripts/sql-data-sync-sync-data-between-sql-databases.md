@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a2e371ea49b9b2a0e7bd14e91a0b80c54f6c21ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e92f3e36b3dd7c407b9c490151f9b32446145771
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321491"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792771"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database の複数データベース間でデータを同期する
 
@@ -281,7 +281,7 @@ Remove-AzResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  同期エージェントのすべての情報を取得します。 |
 | [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  同期グループに新しいメンバーを追加します。 |
 | [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  データベース スキーマを最新の情報に更新します。 |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  データベース スキーマ情報を取得します。 |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/Get-azSqlSyncSchema) |  データベース スキーマ情報を取得します。 |
 | [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  同期グループを更新します。 |
 | [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | 同期をトリガーします。 |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  同期ログを確認します。 |
@@ -301,7 +301,7 @@ SQL データ同期の詳細については、以下を参照してください�
     - PowerShell の使用 - [PowerShell を使用して Azure SQL Database と SQL Server のデータベース間でデータを同期する](sql-data-sync-sync-data-between-azure-onprem.md)
 - データ同期エージェント - [Azure の SQL データ同期の Data Sync Agent](../sql-data-sync-agent-overview.md)
 - ベスト プラクティス - [Azure の SQL データ同期のベスト プラクティス](../sql-data-sync-best-practices.md)
-- 監視 - [Azure Monitor ログによる SQL データ同期の監視](../sql-data-sync-monitor-sync.md)
+- 監視 - [Azure Monitor ログによる SQL データ同期の監視](../monitor-tune-overview.md)
 - トラブルシューティング - [Azure の SQL データ同期に関する問題のトラブルシューティング](../sql-data-sync-troubleshoot.md)
 - 同期スキーマの更新
     - Transact-SQL の使用 - [Azure の SQL データ同期内でスキーマ変更のレプリケートを自動化する](../sql-data-sync-update-sync-schema.md)
@@ -310,4 +310,4 @@ SQL データ同期の詳細については、以下を参照してください�
 SQL Database の詳細については、以下をご覧ください。
 
 - [SQL Database の概要](../sql-database-paas-overview.md)
-- [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
+- [データベースのライフサイクル管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

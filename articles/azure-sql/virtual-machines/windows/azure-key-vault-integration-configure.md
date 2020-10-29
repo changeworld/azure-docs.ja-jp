@@ -14,26 +14,26 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7fab8db1fcc02e26d1b19d3889414565ff56351b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fca190d4818dc2ee8d598a3a1d3535ba7132398
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293563"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789966"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Azure VM で SQL Server 用に Azure Key Vault 統合を構成する (リソース マネージャー)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[透過的なデータ暗号化 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)、[列レベルの暗号化 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)、[バックアップ暗号化](https://msdn.microsoft.com/library/dn449489.aspx) など、SQL Server 暗号化機能が複数存在します。 これらの形態の暗号化では、暗号化に利用する暗号鍵を管理し、保存する必要があります。 Azure Key Vault サービスは、セキュリティを強化し、安全かつ可用性の高い場所で鍵を管理できるように設計されています。 [SQL Server コネクタ](https://www.microsoft.com/download/details.aspx?id=45344) を利用すると、SQL Server は Azure Key Vault にある鍵を利用できます。
+[透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)、[列レベルの暗号化 (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)、[バックアップ暗号化](/sql/relational-databases/backup-restore/backup-encryption) など、SQL Server 暗号化機能が複数存在します。 これらの形態の暗号化では、暗号化に利用する暗号鍵を管理し、保存する必要があります。 Azure Key Vault サービスは、セキュリティを強化し、安全かつ可用性の高い場所で鍵を管理できるように設計されています。 [SQL Server コネクタ](https://www.microsoft.com/download/details.aspx?id=45344) を利用すると、SQL Server は Azure Key Vault にある鍵を利用できます。
 
-SQL Server をオンプレミスで実行している場合、いくつかの手順を踏んで[オンプレミスの SQL Server インスタンスから Azure Key Vault にアクセス](https://msdn.microsoft.com/library/dn198405.aspx)できます。 ただし、Azure VM の SQL Server の場合、*Azure Key Vault の統合*機能を利用することで時間を節約できます。
+SQL Server をオンプレミスで実行している場合、いくつかの手順を踏んで[オンプレミスの SQL Server インスタンスから Azure Key Vault にアクセス](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)できます。 ただし、Azure VM の SQL Server の場合、 *Azure Key Vault の統合* 機能を利用することで時間を節約できます。
 
 この機能が有効になっていると、SQL Server コネクタが自動的にインストールされ、Azure Key Vault にアクセスするように EKM プロバイダーが構成され、Vault へのアクセスを許可する資格情報が作成されます。 前述のオンプレミス文書の手順を見れば、この機能で手順 2 と 3 が自動化されることがわかります。 手動でしなければならないことは、Key Vault と鍵を作成することだけです。 そこから先は、SQL Server VM の設定全体が自動化されます。 この機能でこの設定が完了したら、Transact-SQL (T-SQL) ステートメントを実行し、通常どおり、データベースやバックアップの暗号化を開始できます。
 
 [!INCLUDE [Prepare for Key Vault integration](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
   >[!NOTE]
-  > 拡張キー管理 (EKM) プロバイダー バージョン 1.0.4.0 は、[SQL IaaS (サービスとしてのインフラストラクチャ) 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)を通じて SQL Server VM にインストールされます。 SQL IaaS 拡張機能をアップグレードしても、プロバイダーのバージョンは更新されません。 必要に応じて、EKM プロバイダーのバージョンの手動アップグレードを検討してください (たとえば、SQL マネージド インスタンスへの移行時)。
+  > 拡張キー管理 (EKM) プロバイダー バージョン 1.0.4.0 は、[SQL IaaS (サービスとしてのインフラストラクチャ) 拡張機能](./sql-server-iaas-agent-extension-automate-management.md)を通じて SQL Server VM にインストールされます。 SQL IaaS 拡張機能をアップグレードしても、プロバイダーのバージョンは更新されません。 必要に応じて、EKM プロバイダーのバージョンの手動アップグレードを検討してください (たとえば、SQL マネージド インスタンスへの移行時)。
 
 
 ## <a name="enabling-and-configuring-key-vault-integration"></a>Key Vault 統合の有効化と構成
@@ -50,7 +50,7 @@ Key Vault 統合はプロビジョニング時に有効にできます。また�
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-既存の SQL 仮想マシンの場合、[[SQL 仮想マシン リソース]](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) を開き、 **[設定]** の **[セキュリティ]** を選択します。 **[有効にする]** を選択し、Azure Key Vault の統合を有効にします。 
+既存の SQL 仮想マシンの場合、 [[SQL 仮想マシン リソース]](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) を開き、 **[設定]** の **[セキュリティ]** を選択します。 **[有効にする]** を選択し、Azure Key Vault の統合を有効にします。 
 
 ![既存の VM 用の SQL Key Vault 統合](./media/azure-key-vault-integration-configure/azure-sql-rm-akv-existing-vms.png)
 

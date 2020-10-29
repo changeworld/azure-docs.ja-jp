@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168156"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790068"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>チュートリアル:可用性グループを手動で構成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "92168156"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、SQL Server Always On 可用性グループの基本的な知識があることを前提としています。 詳しくは、「[Always On 可用性グループの概要 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)」をご覧ください。
+このチュートリアルでは、SQL Server Always On 可用性グループの基本的な知識があることを前提としています。 詳しくは、「[Always On 可用性グループの概要 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)」をご覧ください。
 
 チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](availability-group-manually-configure-prerequisites-tutorial.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92168156"
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **インストール ドメイン アカウント** | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
 >[!NOTE]
-> このチュートリアルで説明する手順の多くは、[Azure portal](availability-group-azure-portal-configure.md)、[PowerShell や Az CLI](availability-group-az-cli-configure.md)、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して自動化できるようになりました。
+> このチュートリアルで説明する手順の多くは、[Azure portal](availability-group-azure-portal-configure.md)、[PowerShell や Az CLI](./availability-group-az-commandline-configure.md)、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して自動化できるようになりました。
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -114,7 +114,7 @@ ms.locfileid: "92168156"
    ![ノードの追加の確認](./media/availability-group-manually-configure-tutorial/46-addnodeconfirmation.png)
 
    >[!WARNING]
-   >記憶域スペースを使っている場合に、 **[使用可能な記憶域をすべてクラスターに追加する]** をオフにしないと、Windows はクラスター作成処理中に仮想ディスクをデタッチします。 その結果、記憶域スペースがクラスターから削除され、PowerShell を使って再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーに表示されなくなります。 記憶域スペースは、複数のディスクを記憶域プールにグループ化します。 詳細については、[記憶域スペース](https://technet.microsoft.com/library/hh831739)に関するページを参照してください。
+   >記憶域スペースを使っている場合に、 **[使用可能な記憶域をすべてクラスターに追加する]** をオフにしないと、Windows はクラスター作成処理中に仮想ディスクをデタッチします。 その結果、記憶域スペースがクラスターから削除され、PowerShell を使って再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーに表示されなくなります。 記憶域スペースは、複数のディスクを記憶域プールにグループ化します。 詳細については、[記憶域スペース](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))に関するページを参照してください。
    >
 
 1. **[次へ]** を選択します。
@@ -127,7 +127,7 @@ ms.locfileid: "92168156"
 
 ### <a name="add-a-cluster-quorum-file-share"></a>クラスター クォーラム ファイル共有を追加する
 
-この例では、Windows クラスターはファイル共有を使ってクラスター クォーラムを作成します。 このチュートリアルでは、"ノードおよびファイル共有マジョリティ" クォーラムを使います。 詳しくは、「[フェールオーバー クラスターのクォーラム構成について](https://technet.microsoft.com/library/cc731739.aspx)」をご覧ください。
+この例では、Windows クラスターはファイル共有を使ってクラスター クォーラムを作成します。 このチュートリアルでは、"ノードおよびファイル共有マジョリティ" クォーラムを使います。 詳しくは、「[フェールオーバー クラスターのクォーラム構成について](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731739(v=ws.11))」をご覧ください。
 
 1. リモート デスクトップ セッションでファイル共有監視メンバー サーバーに接続します。
 
@@ -176,7 +176,7 @@ ms.locfileid: "92168156"
 1. **[クォーラム監視の選択]** で、 **[ファイル共有監視を構成する]** を選択します。
 
    >[!TIP]
-   >Windows Server 2016 では、クラウド監視がサポートされています。 この種類の監視を選んだ場合は、ファイル共有監視は必要ありません。 詳しくは、「[Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)」(フェールオーバー クラスターにクラウド監視を展開する) をご覧ください。 このチュートリアルでは、以前のオペレーティング システムでサポートされているファイル共有監視を使います。
+   >Windows Server 2016 では、クラウド監視がサポートされています。 この種類の監視を選んだ場合は、ファイル共有監視は必要ありません。 詳しくは、「[Deploy a cloud witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness)」(フェールオーバー クラスターにクラウド監視を展開する) をご覧ください。 このチュートリアルでは、以前のオペレーティング システムでサポートされているファイル共有監視を使います。
    >
 
 1. **[ファイル共有監視の構成]** で、作成した共有のパスを入力します。 **[次へ]** を選択します。
@@ -347,7 +347,7 @@ Repeat these steps on the second SQL Server.
    ![フェールオーバー クラスター マネージャー内の可用性グループ](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、[フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
+   > フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、[フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](/sql/database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server)のページを参照してください。
     >
 
 この時点で、SQL Server の 2 つのインスタンス上にレプリカを含む可用性グループができています。 可用性グループは、インスタンス間で移動できます。 リスナーがないため、可用性グループにはまだ接続できません。 Azure Virtual Machines では、リスナーにはロード バランサーが必要です。 次に、Azure でロード バランサーを作成します。
@@ -535,7 +535,7 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。
 
 > [!TIP]
-> 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](https://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。
+> 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11))」をご覧ください。
 >
 
 ## <a name="next-steps"></a>次のステップ

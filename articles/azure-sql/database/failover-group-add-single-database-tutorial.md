@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4709bf901ed74e0ea7589824a280651f8b73866
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442735"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793383"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>チュートリアル:自動フェールオーバー グループに Azure SQL Database を追加する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,11 +77,11 @@ ms.locfileid: "91442735"
 
 1. **[フェールオーバー グループ]** ページで、次の値を入力するか選択してから、 **[作成]** を選択します。
 
-   - **フェールオーバー グループ名**:一意のフェールオーバー グループ名 (`failovergrouptutorial` など) を入力します。
-   - **セカンダリ サーバー**:*必要な設定を構成*するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 次の値を入力したら、 **[選択]** を選択します。
+   - **フェールオーバー グループ名** :一意のフェールオーバー グループ名 (`failovergrouptutorial` など) を入力します。
+   - **セカンダリ サーバー** : *必要な設定を構成* するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 次の値を入力したら、 **[選択]** を選択します。
       - **[サーバー名]** : セカンダリ サーバーの一意の名前 (`mysqlsecondary` など) を入力します。
-      - **サーバー管理者ログイン**:「`azureuser`」と入力します
-      - **パスワード**:パスワードの要件を満たす複雑なパスワードを入力します。
+      - **サーバー管理者ログイン** :「`azureuser`」と入力します
+      - **パスワード** :パスワードの要件を満たす複雑なパスワードを入力します。
       - **[場所]** :ドロップダウンから場所 (`East US` など) を選択します。 この場所をプライマリ サーバーと同じ場所にすることはできません。
 
      > [!NOTE]
@@ -89,7 +89,7 @@ ms.locfileid: "91442735"
 
      ![フェールオーバー グループのセカンダリ サーバーを作成する](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **グループ内のデータベース**:セカンダリ サーバーを選択すると、このオプションがロック解除されます。 これを **[追加するデータベースを選択]** に選択してから、セクション 1 で作成したデータベースを選択します。 フェールオーバー グループにデータベースを追加すると、geo レプリケーション プロセスが自動的に開始されます。
+   - **グループ内のデータベース** :セカンダリ サーバーを選択すると、このオプションがロック解除されます。 これを **[追加するデータベースを選択]** に選択してから、セクション 1 で作成したデータベースを選択します。 フェールオーバー グループにデータベースを追加すると、geo レプリケーション プロセスが自動的に開始されます。
 
    ![フェールオーバー グループに SQL Database を追加する](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -373,7 +373,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 | コマンド | Notes |
 |---|---|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ---
 
@@ -417,7 +417,7 @@ Azure CLI を使用してリソース グループを削除します。
 | [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Azure SQL Database にフェールオーバー グループを作成します。 |
 | [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Azure SQL Database 内のサーバーのフェールオーバー グループを一覧表示します。 |
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 現在のプライマリ サーバーからすべてのデータベースをフェールオーバーして、フェールオーバー グループのプライマリを設定します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 # <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 

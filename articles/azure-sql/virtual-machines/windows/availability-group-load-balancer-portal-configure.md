@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b3f2e8b56af41d1729b9786adda3abdcc4eb0b02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4af7e10b573743602fea609264c73d58a1e6a7d1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325030"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790000"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "91325030"
 
 この記事では、Azure Resource Manager で動作する Azure Virtual Machines に、SQL Server Always On 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure Virtual Machines 上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
 
-この作業を行うには、Resource Manager で動作する Azure VM に SQL Server Always On 可用性グループがデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](availability-group-azure-marketplace-template-configure.md)を使用すると、Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
+この作業を行うには、Resource Manager で動作する Azure VM に SQL Server Always On 可用性グループがデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](./availability-group-quickstart-template-configure.md)を使用すると、Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
 
 必要に応じて [可用性グループを手動で構成](availability-group-manually-configure-tutorial.md)することもできます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "91325030"
 
 2. リソース グループで、 **[追加]** を選択します。
 
-3. " **ロード バランサー**" を検索します。 検索結果で**ロード バランサー** (**Microsoft**によって公開) を選択します。
+3. " **ロード バランサー** " を検索します。 検索結果で **ロード バランサー** ( **Microsoft** によって公開) を選択します。
 
 4. **[ロード バランサー]** ブレードで **[作成]** を選択します。
 
@@ -69,9 +69,9 @@ ms.locfileid: "91325030"
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |ロード バランサーを表すテキスト名 (例: **sqlLB**)。 |
-   | **Type** |**内部**:ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部**:アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
-   | **SKU** |**Basic**:既定のオプション。 SQL Server インスタンスが同じ可用性セット内にある場合にのみ有効です。 </br> **Standard**:推奨。 SQL Server インスタンスが同じ可用性セット内にある場合に有効です。 SQL Server インスタンスが異なる可用性ゾーンに存在する場合は必須です。 |
+   | **名前** |ロード バランサーを表すテキスト名 (例: **sqlLB** )。 |
+   | **Type** |**内部** :ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部** :アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
+   | **SKU** |**Basic** :既定のオプション。 SQL Server インスタンスが同じ可用性セット内にある場合にのみ有効です。 </br> **Standard** :推奨。 SQL Server インスタンスが同じ可用性セット内にある場合に有効です。 SQL Server インスタンスが異なる可用性ゾーンに存在する場合は必須です。 |
    | **Virtual Network** |SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** |SQL Server インスタンスが存在するサブネットを選択します。 |
    | **IP アドレスの割り当て** |**静的** |
@@ -86,7 +86,7 @@ ms.locfileid: "91325030"
 
 ### <a name="step-2-configure-the-back-end-pool"></a>手順 2:バックエンド プールを構成する
 
-Azure では、バックエンド アドレス プールを "*バックエンド プール*" と呼んでいます。 この例では、可用性グループに含まれる 2 つの SQL Server インスタンスのアドレスがバックエンド プールとなります。 
+Azure では、バックエンド アドレス プールを " *バックエンド プール* " と呼んでいます。 この例では、可用性グループに含まれる 2 つの SQL Server インスタンスのアドレスがバックエンド プールとなります。 
 
 1. リソース グループで、作成したロード バランサーを選択します。 
 
@@ -118,16 +118,16 @@ Azure では、バックエンド アドレス プールを "*バックエンド
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |プローブを表すテキスト名 (例: **SQLAlwaysOnEndPointProbe**)。 |
+   | **名前** |プローブを表すテキスト名 (例: **SQLAlwaysOnEndPointProbe** )。 |
    | **プロトコル** |**TCP** |
-   | **[ポート]** |空いている任意のポートを使用できます (例: *59999*)。 |
+   | **[ポート]** |空いている任意のポートを使用できます (例: *59999* )。 |
    | **間隔** |*5* |
    | **異常のしきい値** |*2* |
 
 4.  **[OK]** を選択します。 
 
 > [!NOTE]
-> 指定したポートは、両方の SQL Server インスタンスのファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のインスタンスに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](https://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。 
+> 指定したポートは、両方の SQL Server インスタンスのファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のインスタンスに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11))」をご覧ください。 
 > 
 
 Azure はこのプローブを作成、使用して、どの SQL Server インスタンスが可用性グループのリスナーを所有しているかを判定します。
@@ -144,10 +144,10 @@ Azure はこのプローブを作成、使用して、どの SQL Server イン�
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |負荷分散規則を表すテキスト名。 (例: **SQLAlwaysOnEndPointListener**)。 |
+   | **名前** |負荷分散規則を表すテキスト名。 (例: **SQLAlwaysOnEndPointListener** )。 |
    | **プロトコル** |**TCP** |
    | **[ポート]** |*1433* |
-   | **バックエンド ポート** |*1433*この規則には **[フローティング IP (Direct Server Return)]** が使用されるため、この値は無視されます。 |
+   | **バックエンド ポート** |*1433* この規則には **[フローティング IP (Direct Server Return)]** が使用されるため、この値は無視されます。 |
    | **プローブ** |このロード バランサーに対して作成したプローブの名前を使用します。 |
    | **セッション永続化** |**なし** |
    | **アイドル タイムアウト (分)** |*4* |
@@ -289,7 +289,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 可用性グループが分散可用性グループに参加している場合は、ロード バランサーに追加の規則が必要になります。 この規則には、分散可用性グループ リスナーによって使用されるポートが格納されます。
 
 >[!IMPORTANT]
->この手順は、可用性グループが[分散可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)に参加している場合にのみ適用されます。 
+>この手順は、可用性グループが[分散可用性グループ](/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)に参加している場合にのみ適用されます。 
 
 1. 分散可用性グループに参加している各サーバーで、分散可用性グループ リスナーの TCP ポートに関する受信規則を作成します。 ドキュメントでは、多くの例で 5022 が使用されます。 
 
@@ -302,7 +302,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
    |**名前** |分散可用性グループの負荷分散規則を識別するための名前。 
    |**フロントエンド IP アドレス** |可用性グループと同じフロント エンド IP アドレスを使用します。
    |**プロトコル** |TCP
-   |**[ポート]** |5022 - [分散可用性グループのエンドポイント リスナー](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)用のポート。</br> 任意のポートを使用できます。  
+   |**[ポート]** |5022 - [分散可用性グループのエンドポイント リスナー](/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)用のポート。</br> 任意のポートを使用できます。  
    |**バックエンド ポート** | 5022 - **[ポート]** と同じ値を使用します。
    |**バックエンド プール** |SQL Server インスタンスがある仮想マシンを含むプールです。 
    |**正常性プローブ** |作成したプローブを選択します。

@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669463"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792550"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux 仮想マシンについてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ ms.locfileid: "84669463"
 
 1. **Azure VM に SQL Server のライセンス版をインストールするにはどうすればよいですか?**
 
-   まず、Linux OS 専用の仮想マシンを作成します。 次に、Linux ディストリビューション用の [SQL Server のインストール手順](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms)を実行します。 SQL Server の無料ライセンス版のいずれかをインストールしていない限り、SQL Server ライセンスと [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)も必要です。
+   まず、Linux OS 専用の仮想マシンを作成します。 次に、Linux ディストリビューション用の [SQL Server のインストール手順](/sql/linux/sql-server-linux-setup#platforms)を実行します。 SQL Server の無料ライセンス版のいずれかをインストールしていない限り、SQL Server ライセンスと [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)も必要です。
 
 1. **SQL Server のライセンス持ち込み (BYOL) Linux 仮想マシンのイメージはありますか?**
 
@@ -75,7 +75,7 @@ ms.locfileid: "84669463"
 
 1. **SQL Server を実行している Linux 仮想マシンを SQL Server Management Studio (SSMS) で管理できますか?**
 
-   はい。ただし、SSMS は現時点では Windows 限定のツールです。 SQL Server を実行している Linux VM で SSMS を使用するには、Windows マシンからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールについては、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) を参照してください。
+   はい。ただし、SSMS は現時点では Windows 限定のツールです。 SQL Server を実行している Linux VM で SSMS を使用するには、Windows マシンからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールについては、[Azure Data Studio](/sql/azure-data-studio/what-is) を参照してください。
 
 1. **SQL Server VM から SQL Server を完全に削除できますか?**
 
@@ -85,7 +85,7 @@ ms.locfileid: "84669463"
 
 1. **Azure VM で SQL Server の新しいバージョン/エディションにアップグレードするにはどうすればよいですか?**
 
-   現在、Azure VM で実行している SQL Server のインプレース アップグレードはありません。 目的の SQL Server バージョン/エディションで新しい Azure 仮想マシンを作成し、[標準のデータ移行方法](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)を使用して、データベースを新しいサーバーに移行します。
+   現在、Azure VM で実行している SQL Server のインプレース アップグレードはありません。 目的の SQL Server バージョン/エディションで新しい Azure 仮想マシンを作成し、[標準のデータ移行方法](/sql/linux/sql-server-linux-migrate-overview)を使用して、データベースを新しいサーバーに移行します。
 
 ## <a name="general"></a>全般
 
@@ -95,13 +95,13 @@ ms.locfileid: "84669463"
 
 ## <a name="resources"></a>リソース
 
-**Linux VM**:
+**Linux VM** :
 
 * [Linux VM における SQL Server の概要](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM での SQL Server のプロビジョニング](sql-vm-create-portal-quickstart.md)
-* [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)
 
-**Windows VM**:
+**Windows VM** :
 
 * [Windows VM における SQL Server の概要](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM での SQL Server のプロビジョニング](../windows/sql-vm-create-portal-quickstart.md)

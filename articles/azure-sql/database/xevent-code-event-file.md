@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620190"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791309"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620190"
 
 拡張イベントに関する情報を確かな方法で取得し、レポートするための完全なコード サンプルが必要です。
 
-Microsoft SQL Server では、イベント出力をローカル ハード ドライブ ファイルに保存するために [イベント ファイル ターゲット](https://msdn.microsoft.com/library/ff878115.aspx) が使用します。 ただし、このファイルは Azure SQL Database で利用できません。 代わりに、イベント ファイル ターゲットをサポートする Azure ストレージ サービスを使用します。
+Microsoft SQL Server では、イベント出力をローカル ハード ドライブ ファイルに保存するために [イベント ファイル ターゲット](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) が使用します。 ただし、このファイルは Azure SQL Database で利用できません。 代わりに、イベント ファイル ターゲットをサポートする Azure ストレージ サービスを使用します。
 
 このトピックでは、2 段階のコード サンプルを使用します。
 
@@ -39,7 +39,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 - Azure アカウントとサブスクリプション。 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 - テーブルを作成できるデータベース。
@@ -49,7 +49,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 - SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。
   最新の ssms.exe をダウンロードすることができる。
   
-  - 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  - 「 [SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」というタイトルのトピック。
   - [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - [Azure PowerShell モジュール](https://go.microsoft.com/?linkid=9811175) をインストールしておく必要があります。
@@ -62,7 +62,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
 このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まるので、再実行可能です。
 
-1. PowerShell スクリプトを Notepad.exe のような単純なテキスト エディターに貼り付け、 **.ps1**拡張子が付いたファイルとしてスクリプトを保存します。
+1. PowerShell スクリプトを Notepad.exe のような単純なテキスト エディターに貼り付け、 **.ps1** 拡張子が付いたファイルとしてスクリプトを保存します。
 2. PowerShell ISE を管理者として起動します。
 3. プロンプトで、「<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>」と入力し、Enter キーを押します。
 4. PowerShell ISE で、 **.ps1** ファイルを開きます。 スクリプトを実行します。
@@ -258,7 +258,7 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 6. 保存し、スクリプトを実行します。
 
 > [!WARNING]
-> 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。 次の T-SQL スクリプトで SAS キーを使用する場合は、 *先頭の "?" を削除*する必要があります。 削除しないと、セキュリティによって操作がブロックされる可能性があります。
+> 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。 次の T-SQL スクリプトで SAS キーを使用する場合は、 *先頭の "?" を削除* する必要があります。 削除しないと、セキュリティによって操作がブロックされる可能性があります。
 
 ### <a name="transact-sql-code"></a>Transact-SQL コード
 
@@ -451,7 +451,7 @@ GO
 
 ## <a name="output"></a>出力
 
-Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **\<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
+Transact-SQL スクリプトが完了したら、 **event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **\<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
 
 ここに、テスト中に生成された **\<event>** 要素が 1 つあります。
 
@@ -496,19 +496,19 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 前述のTransact-SQL スクリプトでは、event_file の読み取りに次のシステム関数を使用します。
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 拡張イベントのデータ表示の高度なオプションについての説明は、次で入手できます。
 
-- [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](https://msdn.microsoft.com/library/mt752502.aspx)
+- [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>SQL Server で実行できるようにコード サンプルを変換する
 
 先の Transact-SQL サンプルを Microsoft SQL Server で実行するとします。
 
-- わかりやすくするために、Azure Storage コンテナーの使用を「*C:\myeventdata.xel*」のような単純なファイルに完全に置換します。 ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
+- わかりやすくするために、Azure Storage コンテナーの使用を「 *C:\myeventdata.xel* 」のような単純なファイルに完全に置換します。 ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
 - **CREATE MASTER KEY** と **CREATE CREDENTIAL** には Transact-SQL ステートメントを必要としません。
-- **CREATE EVENT SESSION** ステートメントの **ADD TARGET** 句で、**filename=** に割り当てられている HTTP 値を「*C:\myfile.xel*」のような完全パス文字列に置換します。
+- **CREATE EVENT SESSION** ステートメントの **ADD TARGET** 句で、 **filename=** に割り当てられている HTTP 値を「 *C:\myfile.xel* 」のような完全パス文字列に置換します。
   
   - Azure ストレージ アカウントは必要ありません。
 
@@ -517,8 +517,8 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
 - [.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [コンテナー、BLOB、メタデータの名前付けと参照](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [ルート コンテナーの使用](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [レッスン 1:保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [レッスン 2:Shared Access Signature を使用して SQL Server 資格情報を作成する](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Microsoft SQL Server の拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [コンテナー、BLOB、メタデータの名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [ルート コンテナーの使用](/rest/api/storageservices/Working-with-the-Root-Container)
+- [レッスン 1:保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [レッスン 2:Shared Access Signature を使用して SQL Server 資格情報を作成する](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Microsoft SQL Server の拡張イベント](/sql/relational-databases/extended-events/extended-events)

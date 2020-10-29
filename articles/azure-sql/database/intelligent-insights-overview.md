@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6133d838fa31919a37ddd633193e5559c50de9b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317057"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790442"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Intelligent Insights は、データベースのパフォーマンス問題の�
 
 Intelligent Insights の出力は、分析のためにいずれかの宛先にストリーム配信できます。
 
-- Azure portal のユーザー インターフェイスで分析情報を表示する目的で、Log Analytics ワークスペースにストリーム配信された出力を [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) と共に使用できます。 これは統合された Azure ソリューションであり、分析情報を表示する最も一般的な方法です。
+- Azure portal のユーザー インターフェイスで分析情報を表示する目的で、Log Analytics ワークスペースにストリーム配信された出力を [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) と共に使用できます。 これは統合された Azure ソリューションであり、分析情報を表示する最も一般的な方法です。
 - カスタムの監視および警告シナリオを開発する目的で、Azure Event Hubs にストリーム配信された出力を使用できます。
 - カスタム レポートや長期データ アーカイブなどのカスタム アプリケーションを開発する目的で、Azure Storage にストリーム配信された出力を使用できます。
 
@@ -107,7 +107,7 @@ Azure SQL Analytics で表示された Intelligent Insights の例を以下に�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs で使用するように設定する
 
-Event Hubs と共に Intelligent Insights を使用する方法と、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成する方法については、[メトリックと診断のロギング](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)と、[Azure Diagnostics ログを Event Hubs にストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)ことに関するページをご覧ください。
+Event Hubs と共に Intelligent Insights を使用する方法と、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成する方法については、[メトリックと診断のロギング](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)と、[Azure Diagnostics ログを Event Hubs にストリーミングする](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)ことに関するページをご覧ください。
 
 Event Hubs をカスタムの監視とアラートの設定に使用するには、「[Event Hubs におけるメトリックと診断ログの活用方法](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)」をご覧ください。
 

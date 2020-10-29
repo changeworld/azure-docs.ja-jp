@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031094"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791088"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し
 
@@ -32,7 +32,7 @@ ms.locfileid: "90031094"
 
 自分または管理者によって同意されたアプリを表示するには、 **[マイ アプリ]** ポータルでアプリにマウス ポインターを置いて **[...]** を選択し、 **[アプリケーションの管理]** を選択します。
 
-![マイ アプリ ポータルでのアプリケーションの管理](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![マイ アプリ ポータルでのアプリケーションの管理](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 アクセス許可ウィンドウの上部には、個人的に同意したものが表示されます。 アプリのアクセス許可の例には、カレンダー、連絡先、またはカメラにアクセスする機能があります。
 

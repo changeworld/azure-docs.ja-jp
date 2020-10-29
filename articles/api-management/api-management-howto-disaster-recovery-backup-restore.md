@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1a1e9c394f3665845b1f2bbbd605322b43f5f25d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075333"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787229"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -56,7 +56,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. API Management サービス インスタンスを含むサブスクリプションを使用して、**Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
+2. API Management サービス インスタンスを含むサブスクリプションを使用して、 **Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
 
     > [!NOTE]
     > Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。
@@ -152,7 +152,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - バックアップ対象の API Management サービスを保持するサブスクリプションの ID
 -   `resourceGroupName` - Azure API Management サービスのリソース グループの名前
 -   `serviceName` - バックアップを作成する API Management サービスの、作成時に指定された名前
--   `api-version` - `2018-06-01-preview` に置き換えます
+-   `api-version` - `2019-12-01` に置き換えます
 
 要求の本文に、ターゲットの Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
@@ -171,14 +171,14 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 #### <a name="constraints-when-making-backup-or-restore-request"></a>バックアップまたは復元要求を行う際の制約
 
--   要求の本文に指定された**コンテナー**は、**存在する必要があります**。
--   バックアップの進行中は、**サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
--   バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
--   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた**変更**は、**バックアップ対象から除外され、その結果失われる可能性があります**。
--   [ファイアウォール][azure-storage-ip-firewall]が有効になっている場合は、コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 お客様は、バックアップまたは復元用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 これは、Azure Storage への要求が、SNAT によってコンピューティング > (Azure API Management コントロール プレーン) からパブリック IP に変換されないためです。 リージョン間のストレージ要求は、SNAT により変換されます。
+-   要求の本文に指定された **コンテナー** は、 **存在する必要があります** 。
+-   バックアップの進行中は、 **サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
+-   バックアップの復元は、作成されたときから **30 日間だけ保証されます** 。
+-   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた **変更** は、 **バックアップ対象から除外され、その結果失われる可能性があります** 。
+-   [ファイアウォール][azure-storage-ip-firewall]が有効になっている場合は、コントロール プレーンから Azure Storage アカウントへのアクセスを **許可** します。 お客様は、バックアップまたは復元用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 これは、Azure Storage への要求が、SNAT によってコンピューティング > (Azure API Management コントロール プレーン) からパブリック IP に変換されないためです。 リージョン間のストレージ要求は、SNAT により変換されます。
 
 #### <a name="what-is-not-backed-up"></a>バックアップされないもの
--   分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
+-   分析レポートの生成に使用される **使用状況データ** は、バックアップに **含まれません** 。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
 -   [カスタム ドメインの TLS/SSL](configure-custom-domain.md) 証明書
 -   顧客によってアップロードされた中間証明書またはルート証明書を含む[カスタム CA 証明書](api-management-howto-ca-certificates.md)
 -   [仮想ネットワーク](api-management-using-with-vnet.md)の統合設定
@@ -202,7 +202,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - バックアップの復元先の API Management サービスを保持するサブスクリプションの ID
 -   `resourceGroupName` - バックアップの復元先の Azure API Management サービスを保持するリソース グループの名前
 -   `serviceName` - 復元先の API Management サービスの、作成時に指定された名前
--   `api-version` - `2018-06-01-preview` に置き換えます
+-   `api-version` - `api-version=2019-12-01` に置き換えます
 
 要求の本文には、バックアップ ファイルの場所を指定します。 つまり、Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を追加します。
 
@@ -220,9 +220,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 復元は、完了までに 30 分以上かかることのある長時間の操作です。 要求が成功して復元処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。 `Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。 復元の進行中は、"202 Accepted" 状態コードの受け取りが続きます。 応答コードの `200 OK` は、復元処理が正常に終了したことを示します。
 
 > [!IMPORTANT]
-> 復元先のサービスの **SKU** は、復元されるバックアップ サービスの SKU と**一致しなければなりません**。
+> 復元先のサービスの **SKU** は、復元されるバックアップ サービスの SKU と **一致しなければなりません** 。
 >
-> 復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**上書きされることがあります**。
+> 復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる **変更** は、 **上書きされることがあります** 。
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 

@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84324396"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791717"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL Hyperscale のパフォーマンスのトラブルシューティング診断
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ RBPEX で実行された読み取りと、他のすべてのデータ ファイ�
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>リソース使用率の統計でのデータ IO
 
-ハイパースケール以外のデータベースでは、データファイルに対する合計読み取り/書き込み IOPS は、[リソース ガバナンス](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) データの IOPS 制限を基準として、`avg_data_io_percent` 列の [dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューで報告されます。 Azure portal では、同じ値が_データ IO の割合_として報告されます。
+ハイパースケール以外のデータベースでは、データファイルに対する合計読み取り/書き込み IOPS は、[リソース ガバナンス](./resource-limits-logical-server.md#resource-governance) データの IOPS 制限を基準として、`avg_data_io_percent` 列の [dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューで報告されます。 Azure portal では、同じ値が _データ IO の割合_ として報告されます。
 
 Hyperscale データベースでは、この列は、データ IOPS の使用率を、コンピューティング レプリカのみのローカル ストレージの制限 (特に RBPEX および `tempdb` に対する IO) を基準として報告します。 この列の100% 値は、リソース ガバナンスがローカル ストレージの IOPS を制限していることを示します。 これがパフォーマンスの問題に関連付けられている場合は、負荷の少ない IO を生成するようにワークロードを調整するか、データベースサービスの目標値を増やして、リソース ガバナンス _最大データ IOPS_ [制限](resource-limits-vcore-single-databases.md) を増やします。 RBPEX の読み取りと書き込みのリソース ガバナンスでは、SQL Server データベース エンジンによって発行される可能性のあるより大きな IO ではなく、個々の 8 KB の IO がカウントされます。
 

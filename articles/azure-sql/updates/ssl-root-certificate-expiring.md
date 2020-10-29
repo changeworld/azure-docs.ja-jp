@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: a273b9aaae083bb4566d289e9680b50c686d4e9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340081"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792533"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のルート CA の変更における変更点について
 
@@ -34,7 +34,7 @@ SSL/TLS を現在使用していない場合、アプリケーションの可用
 
 大多数のドライバーでそうであるように、クライアント ドライバーが OS 証明書ストアを利用しており、OS のメンテナンスが定期的に行われている場合、この変更の影響はおそらくありません。切り替え後のルート証明書は、お客様の信頼されたルート証明書ストアで既に使用可能になっているためです。 Baltimore CyberDigiCert GlobalRoot G2 を調べて、それが存在することを確認してください。
 
-クライアント ドライバーがローカルのファイル証明書ストアを利用している場合は、証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、「[**接続を維持するために必要な作業**](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
+クライアント ドライバーがローカルのファイル証明書ストアを利用している場合は、証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、「 [**接続を維持するために必要な作業**](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>接続を維持するために必要な作業
 
@@ -79,4 +79,4 @@ Azure SQL Database と SQL Managed Instance によって使用されるこれら
 この構成はクライアント側であるため、サーバー側では情報を使用できません。
 
 ### <a name="what-if-i-have-further-questions"></a>さらに質問がある場合はどうすればよいですか?
-サポート プランをご利用で、技術的支援が必要な場合は、[Azure サポート リクエストを作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)に関するページを参照し、Azure サポート リクエストを作成してください。
+サポート プランをご利用で、技術的支援が必要な場合は、[Azure サポート リクエストを作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)に関するページを参照し、Azure サポート リクエストを作成してください。

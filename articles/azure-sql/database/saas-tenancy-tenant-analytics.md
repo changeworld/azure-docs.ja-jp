@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: dd77305a1b2f7d11a2e371f7682855e15739ee7d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331670"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790935"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -69,11 +69,11 @@ ms.locfileid: "92331670"
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-- Wingtip Tickets SaaS Database Per Tenant アプリケーションをデプロイします。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](../../sql-database/saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
+- Wingtip Tickets SaaS Database Per Tenant アプリケーションをデプロイします。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](./saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
 - Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション [ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)を GitHub からダウンロードします。 ダウンロードの手順を参照してください。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除* してください。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 - Power BI Desktop をインストールします。 [Power BI Desktop のダウンロード](https://powerbi.microsoft.com/downloads/)
-- 追加のテナントのバッチをプロビジョニングします。 [**テナントのプロビジョニングに関するチュートリアル**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)をご覧ください。
-- ジョブ アカウントとジョブ アカウント データベースを作成します。 適切な手順については、 [**スキーマ管理に関するチュートリアル**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)をご覧ください。
+- 追加のテナントのバッチをプロビジョニングします。 [**テナントのプロビジョニングに関するチュートリアル**](./saas-dbpertenant-provision-and-catalog.md)をご覧ください。
+- ジョブ アカウントとジョブ アカウント データベースを作成します。 適切な手順については、 [**スキーマ管理に関するチュートリアル**](./saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)をご覧ください。
 
 ### <a name="create-data-for-the-demo"></a>デモ用のデータを作成する
 
@@ -93,7 +93,7 @@ ms.locfileid: "92331670"
     - 列ストアを使用して SQL Database を使用するには、 **$DemoScenario** = **3** を設定します  
 3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト ( *Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
-アプリケーションをデプロイし、対象のテナント データを入力しました。次に、 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、 **tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。ログイン名として「 *developer* 」、パスワードとして「 *P\@ssword1* 」を使用します。 詳しいガイダンスについては、[入門チュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+アプリケーションをデプロイし、対象のテナント データを入力しました。次に、 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して、 **tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。ログイン名として「 *developer* 」、パスワードとして「 *P\@ssword1* 」を使用します。 詳しいガイダンスについては、[入門チュートリアル](./saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
 ![SQL Server への接続に必要な情報を示すスクリーンショット。](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -240,6 +240,6 @@ WingTip アプリケーションのテナント データの傾向を確認し�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-- [エラスティック ジョブ](../../sql-database/elastic-jobs-overview.md)
-- [抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ](../../sql-database/saas-multitenantdb-tenant-analytics.md)
+- [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+- [エラスティック ジョブ](./elastic-jobs-overview.md)
+- [抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ](./saas-multitenantdb-tenant-analytics.md)

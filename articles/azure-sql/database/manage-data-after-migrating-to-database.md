@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439777"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789575"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -102,7 +102,7 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 SQL Database では 2 種類の認証方法が提供されています。
 
 - [Azure Active Directory 認証](authentication-aad-overview.md)
-- [SQL 認証](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [SQL 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 
 
@@ -113,7 +113,7 @@ Azure AD は [Azure Multi-Factor Authentication](authentication-mfa-ssms-overvie
 |Azure で Azure Active Directory (Azure AD) を使用しない|[SQL 認証](security-overview.md)を使用します。|
 |オンプレミスの SQL Server で AD を使用している|[AD と Azure AD をフェデレーションして](../../active-directory/hybrid/whatis-hybrid-identity.md)、Azure AD 認証を使用します。 これにより、シングル サインオンを使用できます。|
 |Multi-Factor Authentication を適用する必要がある|[Microsoft 条件付きアクセス](conditional-access-configure.md)で Multi-Factor Authentication をポリシーとして必須にして、[ サポート付きの Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
-|Microsoft アカウント (live.com、outlook.com) または他のドメイン (gmail.com など) のゲスト アカウントを持っている|SQL Database/Data Warehouse で、[Azure AD B2B コラボレーション](../../active-directory/b2b/what-is-b2b.md)を利用する [Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
+|Microsoft アカウント (live.com、outlook.com) または他のドメイン (gmail.com など) のゲスト アカウントを持っている|SQL Database/Data Warehouse で、[Azure AD B2B コラボレーション](../../active-directory/external-identities/what-is-b2b.md)を利用する [Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
 |フェデレーション ドメインから Azure AD の資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
 |Azure にフェデレーションされていないドメインから資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
 |SQL Database または Azure Synapse Analytics への接続が必要な中間層サービスを使用している|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
@@ -320,11 +320,11 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Database のデータを BACPAC ファイルとしてエクスポートおよびインポートするにはどうすればよいですか
 
-- **Export**:Azure SQL Database は、Azure Portal で BACPAC ファイルとしてエクスポートできます
+- **Export** :Azure SQL Database は、Azure Portal で BACPAC ファイルとしてエクスポートできます
 
    ![データベースのエクスポート](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Import**:Azure portal を使って、データを BACPAC ファイルとして Azure SQL Database のデータベースにインポートすることもできます。
+- **Import** :Azure portal を使って、データを BACPAC ファイルとして Azure SQL Database のデータベースにインポートすることもできます。
 
    ![データベースのインポート](./media/manage-data-after-migrating-to-database/import1.png)
 

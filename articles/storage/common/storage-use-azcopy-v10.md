@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6398f63149a7f5dd3102d75c8db324f526c419
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856784"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791156"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -37,7 +37,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 これらのファイルは、zip ファイル (Windows および Mac) または tar ファイル (Linux) として圧縮されます。 Linux 上で tar ファイルをダウンロードして圧縮を解除するには、お使いの Linux ディストリビューションのドキュメントを参照してください。
 
 > [!NOTE]
-> [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) サービスとの間でデータをコピーする場合、[AzCopy バージョン 7.3](https://aka.ms/downloadazcopynet) をインストールしてください。
+> [Azure Table Storage](../tables/table-storage-overview.md) サービスとの間でデータをコピーする場合、[AzCopy バージョン 7.3](https://aka.ms/downloadazcopynet) をインストールしてください。
 
 
 ## <a name="run-azcopy"></a>AzCopy を実行する
@@ -80,14 +80,14 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 
 必要な認証レベルは、ファイルをアップロードする予定か、ファイルをダウンロードするだけなのかによって異なります。
 
-ファイルをダウンロードするだけの場合は、ユーザー ID、マネージド ID、またはサービス プリンシパルに[ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)が割り当てられていることを確認します。
+ファイルをダウンロードするだけの場合は、ユーザー ID、マネージド ID、またはサービス プリンシパルに[ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)が割り当てられていることを確認します。
 
-> ユーザー ID、マネージド ID、およびサービス プリンシパルはそれぞれ "*セキュリティ プリンシパル*" の種類です。そのため、この記事の残りの部分では、"*セキュリティ プリンシパル*" という用語を使います。
+> ユーザー ID、マネージド ID、およびサービス プリンシパルはそれぞれ " *セキュリティ プリンシパル* " の種類です。そのため、この記事の残りの部分では、" *セキュリティ プリンシパル* " という用語を使います。
 
 ファイルをアップロードする場合は、これらのロールのいずれかがご自分のセキュリティ プリンシパルに割り当てられていることを確認します。
 
-- [ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [ストレージ BLOB データ所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 
 これらのロールは、以下のいずれかの範囲でセキュリティ プリンシパルに割り当てることができます。
 
@@ -96,14 +96,14 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 - Resource group
 - サブスクリプション
 
-ロールを確認して割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+ロールを確認して割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)」を参照してください。
 
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
 ターゲット コンテナーまたはディレクトリのアクセス制御リスト (ACL) にご自分のセキュリティ プリンシパルが追加されている場合は、これらのロールのいずれかがご自分のセキュリティ プリンシパルに割り当てられている必要はありません。 ACL では、ご自分のセキュリティ プリンシパルには、ターゲット ディレクトリの書き込みアクセス許可と、コンテナーおよび各親ディレクトリの実行アクセス許可が必要になります。
 
-詳細については、[Azure Data Lake Storage Gen2 でのアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)に関するページを参照してください。
+詳細については、[Azure Data Lake Storage Gen2 でのアクセス制御](../blobs/data-lake-storage-access-control.md)に関するページを参照してください。
 
 #### <a name="authenticate-a-user-identity"></a>ユーザー ID の認証
 
@@ -137,9 +137,9 @@ azcopy login --tenant-id=<tenant-id>
 
 クライアント シークレットを使用して、またはご自分のサービス プリンシパルのアプリ登録に関連付けられている証明書のパスワードを使用して、ご自分のアカウントにサインインできます。
 
-サービス プリンシパルの作成の詳細については、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+サービス プリンシパルの作成の詳細については、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
 
-サービス プリンシパル全般の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください。
+サービス プリンシパル全般の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
 ##### <a name="using-a-client-secret"></a>クライアント シークレットの使用
 
@@ -169,7 +169,7 @@ azcopy login --service-principal  --application-id application-id --tenant-id=te
 
 承認にご自分の資格情報を使用する場合は、ご自分のアプリ登録に証明書をアップロードした後、その証明書を使用してログインできます。
 
-ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 Windows を使用していて、ご使用の証明書が証明書ストア内にのみ存在する場合は、必ず、その証明書 (秘密キーを含む) を PFX ファイルにエクスポートしてください。 ガイダンスについては、「[Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)」を参照してください。
+ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 Windows を使用していて、ご使用の証明書が証明書ストア内にのみ存在する場合は、必ず、その証明書 (秘密キーを含む) を PFX ファイルにエクスポートしてください。 ガイダンスについては、「[Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)」を参照してください。
 
 次に、`AZCOPY_SPA_CERT_PASSWORD` 環境変数を、証明書のパスワードに設定します。
 
@@ -205,7 +205,7 @@ VM で有効にしたシステム全体のマネージド ID を使用して、�
 
 ##### <a name="using-a-system-wide-managed-identity"></a>システム全体のマネージド ID の使用
 
-まず、VM でシステム全体のマネージド ID が有効になっていることを確認します。 「[システム割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)」をご覧ください。
+まず、VM でシステム全体のマネージド ID が有効になっていることを確認します。 「[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)」をご覧ください。
 
 次に、コマンド コンソールで、次のコマンドを入力して Enter キーを押します。
 
@@ -215,7 +215,7 @@ azcopy login --identity
 
 ##### <a name="using-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID の使用
 
-まず、VM でユーザー割り当てマネージド ID が有効になっていることを確認します。 「[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity)」をご覧ください。
+まず、VM でユーザー割り当てマネージド ID が有効になっていることを確認します。 「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)」をご覧ください。
 
 次に、コマンド コンソールで、次のいずれかのコマンドを入力して Enter キーを押します。
 
@@ -247,7 +247,7 @@ AzCopy コマンドで使用する各コピー元または各コピー先の URL
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-SAS トークンの詳細とその取得方法については、「[Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)」を参照してください。
+SAS トークンの詳細とその取得方法については、「[Shared Access Signatures (SAS) の使用](./storage-sas-overview.md)」を参照してください。
 
 ## <a name="transfer-files"></a>ファイルの転送
 
@@ -261,7 +261,7 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 - [AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)
 
-- [AzCopy と Azure Stack ストレージを使用してデータを転送する](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
+- [AzCopy と Azure Stack ストレージを使用してデータを転送する](/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
 ## <a name="use-azcopy-in-a-script"></a>スクリプト内で AzCopy を使用する
 
@@ -312,9 +312,9 @@ Storage Explorer では、ご自分のアカウント キーを使用して、�
 
 以前のバージョンの AzCopy を使用する必要がある場合は、次のいずれかのリンクを参照してください。
 
-- [Windows での AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
+- [Windows での AzCopy (v8)](/previous-versions/azure/storage/storage-use-azcopy)
 
-- [Linux での AzCopy (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [Linux での AzCopy (v7)](/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 

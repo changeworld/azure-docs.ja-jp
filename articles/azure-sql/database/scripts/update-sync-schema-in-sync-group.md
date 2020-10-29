@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d346d1ff30c138667749822b258bab4c6a621f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321466"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792720"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell を使用して、既存の同期グループの同期スキーマを更新する
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-この Azure PowerShell の例では、既存の SQL データ同期の同期グループの同期スキーマを更新します。 複数のテーブルを同期しているときは、同期スキーマの効率的な更新にこのスクリプトが役立ちます。 この例では、**UpdateSyncSchema** スクリプトの使用方法を示します。このスクリプトは、GitHub で [UpdateSyncSchema.ps1](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-data-sync/UpdateSyncSchema.ps1) として入手できます。
+この Azure PowerShell の例では、既存の SQL データ同期の同期グループの同期スキーマを更新します。 複数のテーブルを同期しているときは、同期スキーマの効率的な更新にこのスクリプトが役立ちます。 この例では、 **UpdateSyncSchema** スクリプトの使用方法を示します。このスクリプトは、GitHub で [UpdateSyncSchema.ps1](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-data-sync/UpdateSyncSchema.ps1) として入手できます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
@@ -78,11 +78,11 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 
 | コマンド | Notes |
 |---|---|
-| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | 同期グループに関する情報を返します。 |
-| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | 同期グループを更新します。 |
-| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | 同期メンバーに関する情報を返します。 |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | 同期スキーマに関する情報を返します。 |
-| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | 同期スキーマを更新します。 |
+| [Get-AzSqlSyncGroup](/powershell/module/az.sql/get-azsqlsyncgroup) | 同期グループに関する情報を返します。 |
+| [Update-AzSqlSyncGroup](/powershell/module/az.sql/update-azsqlsyncgroup) | 同期グループを更新します。 |
+| [Get-AzSqlSyncMember](/powershell/module/az.sql/get-azsqlsyncmember) | 同期メンバーに関する情報を返します。 |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/get-azsqlsyncschema) | 同期スキーマに関する情報を返します。 |
+| [Update-AzSqlSyncSchema](/powershell/module/az.sql/update-azsqlsyncschema) | 同期スキーマを更新します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -100,7 +100,7 @@ SQL データ同期の詳細については、以下を参照してください�
         -  [PowerShell を使用して Azure SQL Database と SQL Server の間でデータを同期する](sql-data-sync-sync-data-between-azure-onprem.md)
 - データ同期エージェント - [Azure の SQL データ同期の Data Sync Agent](../sql-data-sync-agent-overview.md)
 - ベスト プラクティス - [Azure の SQL データ同期のベスト プラクティス](../sql-data-sync-best-practices.md)
-- 監視 - [Azure Monitor ログによる SQL データ同期の監視](../sql-data-sync-monitor-sync.md)
+- 監視 - [Azure Monitor ログによる SQL データ同期の監視](../monitor-tune-overview.md)
 - トラブルシューティング - [Azure の SQL データ同期に関する問題のトラブルシューティング](../sql-data-sync-troubleshoot.md)
 - 同期スキーマの更新
     - Transact-SQL の使用 - [Azure の SQL データ同期内でスキーマ変更のレプリケートを自動化する](../sql-data-sync-update-sync-schema.md)
@@ -108,4 +108,4 @@ SQL データ同期の詳細については、以下を参照してください�
 SQL Database の詳細については、以下をご覧ください。
 
 - [SQL Database の概要](../sql-database-paas-overview.md)
-- [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
+- [データベースのライフサイクル管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

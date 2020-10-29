@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: fdd5f7d291d9c56361c17547628795b378091109
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443444"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792227"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager クラスを使用したシャード マップに関する問題の解決
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) クラスを使用すると、ADO.NET アプリケーションで、シャード化されたデータベース環境におけるグローバル シャード マップ (GSM) とローカル シャード マップ (LSM) 間の不整合を簡単に検出して修正できます。
+[RecoveryManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) クラスを使用すると、ADO.NET アプリケーションで、シャード化されたデータベース環境におけるグローバル シャード マップ (GSM) とローカル シャード マップ (LSM) 間の不整合を簡単に検出して修正できます。
 
 GSM と LSM はシャード化環境内の各データベースのマッピングを追跡します。 場合によっては、GSM と LSM の間で断絶が発生します。 その場合は、RecoveryManager クラスを使用して断絶を検出し、修復します。
 
@@ -33,11 +33,11 @@ RecoveryManager クラスは、 [Elastic Database クライアント ライブ�
 
 ## <a name="why-use-the-recovery-manager"></a>Recovery Manager を使用する理由
 
-シャード化データベース環境では、データベースごとに 1 つのテナントがあり、サーバーごとに多くのデータベースがあります。 また、環境に多くのサーバーが存在する場合もあります。 各データベースはシャード マップでマッピングされるため、呼び出しを適切なサーバーとデータベースにルーティングできます。 データベースは、**シャーディング キー**に従って追跡されます。各シャードには**キー値の範囲**が割り当てられます。 たとえば、あるシャーディング キーは、"D" ～ "F" の顧客名を表します。 すべてのシャード (データベースとも呼ばれます) のマッピングとそのマッピング範囲は、**グローバル シャード マップ (GSM)** に保持されます。 各データベースには、シャードに属している範囲のマップも保持されます。これを**ローカル シャード マップ (LSM)** と呼びます。 アプリがシャードに接続すると、すばやく取得できるようにマッピングがアプリにキャッシュされます。 LSM は、キャッシュされたデータの検証に使用されます
+シャード化データベース環境では、データベースごとに 1 つのテナントがあり、サーバーごとに多くのデータベースがあります。 また、環境に多くのサーバーが存在する場合もあります。 各データベースはシャード マップでマッピングされるため、呼び出しを適切なサーバーとデータベースにルーティングできます。 データベースは、 **シャーディング キー** に従って追跡されます。各シャードには **キー値の範囲** が割り当てられます。 たとえば、あるシャーディング キーは、"D" ～ "F" の顧客名を表します。 すべてのシャード (データベースとも呼ばれます) のマッピングとそのマッピング範囲は、 **グローバル シャード マップ (GSM)** に保持されます。 各データベースには、シャードに属している範囲のマップも保持されます。これを **ローカル シャード マップ (LSM)** と呼びます。 アプリがシャードに接続すると、すばやく取得できるようにマッピングがアプリにキャッシュされます。 LSM は、キャッシュされたデータの検証に使用されます
 
 GSM と LSM は、次の理由により、同期されなくなる可能性があります。
 
-1. 使用されていないと思われる範囲のシャードの削除またはシャードの名前変更 シャードを削除すると、**孤立したシャード マッピング**が発生します。 同様に、データベースの名前を変更した場合も、孤立したシャード マッピングが発生します。 変更の目的に応じて、シャードの削除が必要になることもあれば、シャードの場所を更新するだけで済むこともあります。 削除されたデータベースを回復するには、[削除されたデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。
+1. 使用されていないと思われる範囲のシャードの削除またはシャードの名前変更 シャードを削除すると、 **孤立したシャード マッピング** が発生します。 同様に、データベースの名前を変更した場合も、孤立したシャード マッピングが発生します。 変更の目的に応じて、シャードの削除が必要になることもあれば、シャードの場所を更新するだけで済むこともあります。 削除されたデータベースを回復するには、[削除されたデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。
 2. geo フェールオーバー イベントの発生。 続行するには、アプリケーションのシャード マップ マネージャーのサーバー名とデータベース名を更新し、シャード マップ内のすべてのシャードのシャード マッピングの詳細を更新する必要があります。 geo フェールオーバーが発生する場合は、フェールオーバー ワークフロー内でこのような復旧ロジックを自動化しておく必要があります。 復旧操作を自動化すると、geo 対応データベースを円滑に管理でき、ユーザーによる手動操作もなくすことができます。 データ センターの停止が発生した場合にデータベースを復元するオプションの詳細については、[ビジネス継続性](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関する記事および[ディザスター リカバリー](disaster-recovery-guidance.md)に関する記事をご覧ください。
 3. シャード化データベースまたは ShardMapManager データベースが以前の時点に復元された。 バックアップを使った特定の時点への復旧については、[バックアップを使用した復旧](recovery-using-backups.md)に関する記事をご覧ください。
 
@@ -49,7 +49,7 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>RecoveryManager からの ShardMapManager の取得
 
-最初の手順は、RecoveryManager インスタンスの作成です。 [GetRecoveryManager メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager)を実行すると、現在の [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) インスタンスのリカバリ マネージャーが返されます。 シャード マップ内の不整合を解決するには、最初に、特定のシャード マップの RecoveryManager を取得する必要があります。
+最初の手順は、RecoveryManager インスタンスの作成です。 [GetRecoveryManager メソッド](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager)を実行すると、現在の [ShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) インスタンスのリカバリ マネージャーが返されます。 シャード マップ内の不整合を解決するには、最初に、特定のシャード マップの RecoveryManager を取得する必要があります。
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
@@ -63,7 +63,7 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 ## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>シャードを削除した後の ShardMap からのシャードの削除
 
-[DetachShard メソッド](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) を実行すると、シャード マップから特定のシャードがデタッチされ、そのシャードに関連付けられたマッピングが削除されます。  
+[DetachShard メソッド](/previous-versions/azure/dn842083(v=azure.100)) を実行すると、シャード マップから特定のシャードがデタッチされ、そのシャードに関連付けられたマッピングが削除されます。  
 
 * Location パラメーターはシャードの場所、具体的には、デタッチするシャードのサーバー名とデータベース名です。
 * shardMapName パラメーターは、シャード マップの名前です。 これは、複数のシャード マップが同じシャード マップ マネージャーによって管理されている場合のみ必須です。 省略可能。
@@ -83,7 +83,7 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 ## <a name="to-detect-mapping-differences"></a>マッピングの相違点を検出するには
 
-[DetectMappingDifferences メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択されて返され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
+[DetectMappingDifferences メソッド](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択されて返され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
@@ -94,19 +94,19 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 ## <a name="to-resolve-mapping-differences"></a>マッピングの相違点を解決するには
 
-[ResolveMappingDifferences メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
+[ResolveMappingDifferences メソッド](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
 * *RecoveryToken* パラメーターには、特定のシャードの GSM と LSM のマッピングの相違点を列挙します。
-* [MappingDifferenceResolution 列挙体](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) は、シャード マッピングの相違点を解決するためのメソッドを指定するために使用します。
-* LSM に正確なマッピングが含まれていて、そのため、シャード内のマッピングを使う必要のあるイベントでは、**MappingDifferenceResolution.KeepShardMapping** を使うことをお勧めします。 これは通常、フェールオーバーが発生した場合に当てはまります。そのような状況では、新しいサーバーにシャードが存在します。 最初に (RecoveryManager.DetachShard メソッドを使用して) GSM からシャードを削除する必要があるため、マッピングは GSM には存在しなくなります。 そのため、LSM を使って、シャード マッピングを再確立する必要があります。
+* [MappingDifferenceResolution 列挙体](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) は、シャード マッピングの相違点を解決するためのメソッドを指定するために使用します。
+* LSM に正確なマッピングが含まれていて、そのため、シャード内のマッピングを使う必要のあるイベントでは、 **MappingDifferenceResolution.KeepShardMapping** を使うことをお勧めします。 これは通常、フェールオーバーが発生した場合に当てはまります。そのような状況では、新しいサーバーにシャードが存在します。 最初に (RecoveryManager.DetachShard メソッドを使用して) GSM からシャードを削除する必要があるため、マッピングは GSM には存在しなくなります。 そのため、LSM を使って、シャード マッピングを再確立する必要があります。
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>シャードを復元した後の ShardMap へのシャードのアタッチ
 
-[AttachShard メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) を実行すると、特定のシャードがシャード マップにアタッチされます。 その後、シャード マップの不整合が検出され、復元された時点のシャードと一致するようにマッピングが更新されます。 ポイントインタイム リストアでは既定で新しいデータベースにタイムスタンプが付加されるため、(シャードの復元の実行前に) 元のデータベース名を反映するようにデータベース名が変更されていることを前提とします。
+[AttachShard メソッド](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) を実行すると、特定のシャードがシャード マップにアタッチされます。 その後、シャード マップの不整合が検出され、復元された時点のシャードと一致するようにマッピングが更新されます。 ポイントインタイム リストアでは既定で新しいデータベースにタイムスタンプが付加されるため、(シャードの復元の実行前に) 元のデータベース名を反映するようにデータベース名が変更されていることを前提とします。
 
    ```java
    rm.AttachShard(location, shardMapName)

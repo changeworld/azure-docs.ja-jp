@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165245"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792516"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>記憶域スペース ダイレクトで FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -81,7 +81,7 @@ ms.locfileid: "92165245"
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-次の手順の詳細については、「手順 3: 記憶域スペース ダイレクトを構成する」セクション ([Windows Server 2016 で記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct)に関する記事) の手順を参照してください。
+次の手順の詳細については、「手順 3: 記憶域スペース ダイレクトを構成する」セクション ([Windows Server 2016 で記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)に関する記事) の手順を参照してください。
 
 
 ## <a name="validate-the-cluster"></a>クラスターを検証する
@@ -150,9 +150,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="add-storage"></a>ストレージを追加する
 
-記憶域スペース ダイレクト用のディスクは空にする必要があります。 パーティションまたはその他のデータを含めることはできません。 ディスクをクリーニングするには、「[記憶域スペース ダイレクトの展開](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives)」の手順に従います。
+記憶域スペース ダイレクト用のディスクは空にする必要があります。 パーティションまたはその他のデータを含めることはできません。 ディスクをクリーニングするには、「[記憶域スペース ダイレクトの展開](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)」の手順に従います。
 
-1. [記憶域スペース ダイレクトを有効にします](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
+1. [記憶域スペース ダイレクトを有効にします](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
 
    次の PowerShell スクリプトを実行すると、記憶域スペース ダイレクトが有効化されます。  
 
@@ -162,7 +162,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
    **[フェールオーバー クラスター マネージャー]** に、記憶域プールが表示されるようになります。
 
-1. [ボリュームを作成します](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
+1. [ボリュームを作成します](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes)。
 
    記憶域スペース ダイレクトは、記憶域プールをユーザーが有効化した場合に、記憶域プールを自動的に作成します。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、ボリュームの作成プロセスを自動化します。 このプロセスには、書式設定、クラスターへのボリュームの追加、および CSV の作成が含まれます。 次の例では、800 ギガバイト (GB) の CSV が作成されます。
 
@@ -211,7 +211,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. **[SQL Server フェールオーバー クラスターにノードを追加]** を選択します。 ウィザードの指示に従って SQL Server をインストールし、このサーバーを FCI に追加します。
 
    >[!NOTE]
-   >SQL Server を含む Azure Marketplace ギャラリー イメージを使用した場合、SQL Server のツールはイメージに含まれています。 これらのいずれかのイメージを使用しなかった場合、SQL Server のツールは別途インストールしてください。 詳細については、「 [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)」 (SQL Server Management Studio (SSMS) のダウンロード) を参照してください。
+   >SQL Server を含む Azure Marketplace ギャラリー イメージを使用した場合、SQL Server のツールはイメージに含まれています。 これらのいずれかのイメージを使用しなかった場合、SQL Server のツールは別途インストールしてください。 詳細については、「 [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)」 (SQL Server Management Studio (SSMS) のダウンロード) を参照してください。
    >
 
 
@@ -237,7 +237,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="limitations"></a>制限事項
 
-- Azure Virtual Machines では、CSV および [Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。
+- Azure Virtual Machines では、CSV および [Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。
 - NTFS でフォーマットされたディスクとして接続されているディスクは、ストレージがクラスターに追加されるときに、ディスク適格性オプションがオフにされている場合にのみ、記憶域スペース ダイレクトで使用できます。 
 - [軽量管理モード](sql-vm-resource-provider-register.md#management-modes)での SQL VM リソース プロバイダーへの登録のみがサポートされています。
 

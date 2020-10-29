@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332986"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791445"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL データ同期のベスト プラクティス 
 
@@ -27,7 +27,7 @@ ms.locfileid: "91332986"
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-data-sync-data-sql-server-sql-database.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> 現時点では、Azure SQL データ同期で Azure SQL Managed Instance はサポート**されていません**。
+> 現時点では、Azure SQL データ同期で Azure SQL Managed Instance はサポート **されていません** 。
 
 ## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>セキュリティと信頼性
 
@@ -41,11 +41,11 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 
 ### <a name="database-accounts-with-least-required-privileges"></a>最低限必要な特権が付与されたデータベース アカウント
 
--   **同期のセットアップ**。 テーブルの作成/変更、データベースの変更、プロシージャの作成、スキーマの選択/変更、ユーザー定義型の作成。
+-   **同期のセットアップ** 。 テーブルの作成/変更、データベースの変更、プロシージャの作成、スキーマの選択/変更、ユーザー定義型の作成。
 
--   **継続的な同期**。同期の対象として選択したテーブルと同期メタデータおよび追跡テーブルでの選択/挿入/更新/削除、サービスによって作成されたストアド プロシージャに対する実行アクセス許可、ユーザー定義テーブル型に対する実行アクセス許可。
+-   **継続的な同期** 。同期の対象として選択したテーブルと同期メタデータおよび追跡テーブルでの選択/挿入/更新/削除、サービスによって作成されたストアド プロシージャに対する実行アクセス許可、ユーザー定義テーブル型に対する実行アクセス許可。
 
--   **プロビジョニング解除**。 同期に含まれるテーブルでの変更、同期メタデータ テーブルでの選択/削除、同期追跡テーブル、ストアド プロシージャ、およびユーザー定義型の制御。
+-   **プロビジョニング解除** 。 同期に含まれるテーブルでの変更、同期メタデータ テーブルでの選択/削除、同期追跡テーブル、ストアド プロシージャ、およびユーザー定義型の制御。
 
 Azure SQL Database では、単一の資格情報セットのみをサポートしています。 この制約内でこれらのタスクを行うため、次のオプションを検討してください。
 
@@ -238,7 +238,7 @@ SQL データ同期の詳細については、以下を参照してください�
         -  [PowerShell を使用して Azure SQL Database の複数データベース間で同期する](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell を使用して SQL Database と SQL Server インスタンスのデータベース間で同期する](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-data-sync-agent-overview.md)
--   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-data-sync-monitor-sync.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](./monitor-tune-overview.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-data-sync-troubleshoot.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-data-sync-update-sync-schema.md)
@@ -247,4 +247,4 @@ SQL データ同期の詳細については、以下を参照してください�
 SQL Database の詳細については、以下をご覧ください。
 
 -   [SQL Database の概要](sql-database-paas-overview.md)
--   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [データベースのライフサイクル管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

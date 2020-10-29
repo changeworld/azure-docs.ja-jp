@@ -4,24 +4,24 @@ description: Transparent Data Encryption を使用してデータベースのデ
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618167"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790697"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-ネイティブな復元オプションを使用して、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、SQL Server インスタンスから対応する証明書を移行しておく必要があります。 この記事では、証明書を Azure SQL Managed Instance に手動で移行するプロセスについて説明します。
+ネイティブな復元オプションを使用して、[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、SQL Server インスタンスから対応する証明書を移行しておく必要があります。 この記事では、証明書を Azure SQL Managed Instance に手動で移行するプロセスについて説明します。
 
 > [!div class="checklist"]
 >
@@ -38,20 +38,20 @@ TDE で保護されたデータベースと対応する証明書の両方を円�
 
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
-* ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、自己完結型コマンドライン環境である [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
+* ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、自己完結型コマンドライン環境である [Enterprise Windows Driver Kit](/windows-hardware/drivers/download-the-wdk) に含まれています。
 * [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) バージョン 5.0 以上のインストール。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次のものを用意してください。
 
-* Azure PowerShell モジュールの[インストールと更新](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+* Azure PowerShell モジュールの[インストールと更新](/powershell/azure/install-az-ps)。
 * [Az.Sql モジュール](https://www.powershellgallery.com/packages/Az.Sql)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Managed Instance によってまだサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRM モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Managed Instance によってまだサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRM モジュールのコマンドの引数は実質的に同じです。
 
 PowerShell で次のコマンドを実行して、モジュールをインストール/更新します。
 
@@ -160,7 +160,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-最初に、 *.pfx* ファイルを使用して [Azure キー コンテナーを設定する](/azure/key-vault/key-vault-manage-with-cli2)必要があります。
+最初に、 *.pfx* ファイルを使用して [Azure キー コンテナーを設定する](../../key-vault/general/manage-with-cli2.md)必要があります。
 
 1. PowerShell で準備手順を開始します。
 

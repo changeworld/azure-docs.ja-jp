@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1d6eb4df91ce912832d15835a00bdb287f67e787
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168326"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789745"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,9 +56,9 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 
 | [変更点] | 詳細 |
 | --- | --- |
-| **分散ネットワーク名 (DNN)** | Windows Server 2016 以降の SQL Server 2019 では、Azure Load Balancer を使用する代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)を使用してフェールオーバー クラスター インスタンス (FCI) にトラフィックをルーティングするためのサポートをプレビュー公開しています。 このサポートにより、Azure の高可用性 (HA) ソリューションへの接続が簡素化および合理化されます。 | 
+| **分散ネットワーク名 (DNN)** | Windows Server 2016 以降の SQL Server 2019 では、Azure Load Balancer を使用する代わりに[分散ネットワーク名](./failover-cluster-instance-distributed-network-name-dnn-configure.md)を使用してフェールオーバー クラスター インスタンス (FCI) にトラフィックをルーティングするためのサポートをプレビュー公開しています。 このサポートにより、Azure の高可用性 (HA) ソリューションへの接続が簡素化および合理化されます。 | 
 | **Azure 共有ディスクを使用した FCI** | [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を使用し、[フェールオーバー クラスター インスタンス (FCI)](failover-cluster-instance-overview.md) をデプロイできるようになりました。 |
-| **再構成された FCI のドキュメント** | 書き直しおよび再構成により、[Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関するドキュメントがわかりやすくなりました。 [クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)、[SQL Server FCI 用の仮想マシン](failover-cluster-instance-prepare-vm.md)を準備する方法、[Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を構成する方法など、構成コンテンツの一部が分けられました。 | 
+| **再構成された FCI のドキュメント** | 書き直しおよび再構成により、[Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関するドキュメントがわかりやすくなりました。 [クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)、[SQL Server FCI 用の仮想マシン](failover-cluster-instance-prepare-vm.md)を準備する方法、[Azure Load Balancer](./availability-group-vnn-azure-load-balancer-configure.md) を構成する方法など、構成コンテンツの一部が分けられました。 | 
 | &nbsp; | &nbsp; |
 
 
@@ -96,7 +96,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | **名前付きインスタンスのサポートの可否** | 既定のインスタンスが適切にアンインストールされている場合、名前付きインスタンスで [SQL Server IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md#installation)を使用できるようになりました。 | 
 | **ポータルの機能強化** | SQL Server VM をデプロイするための Azure portal エクスペリエンスは、より使いやすくなるように改良されています。 詳細については、SQL Server VM のデプロイに関する簡単な[クイックスタート](sql-vm-create-portal-quickstart.md)と、より包括的な[ハウツー](create-sql-vm-portal.md) ガイドを参照してください。|
 | **ポータルの改善** | [Azure portal](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider) を使用して、SQL Server VM のライセンス モデルを従量課金制からライセンス持ち込みに変更できるようになりました。|
-| **Azure CLI を使用した SQL Server VM への可用性グループのデプロイの簡素化** | 可用性グループを Azure の SQL Server VM にデプロイすることが以前より簡単になりました。 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) を使用すると、Windows フェールオーバー クラスター、内部ロード バランサー、および可用性グループのリスナーのすべてをコマンド ラインから作成できます。 詳細については、「[Azure CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する](availability-group-az-cli-configure.md)」を参照してください。 | 
+| **Azure CLI を使用した SQL Server VM への可用性グループのデプロイの簡素化** | 可用性グループを Azure の SQL Server VM にデプロイすることが以前より簡単になりました。 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) を使用すると、Windows フェールオーバー クラスター、内部ロード バランサー、および可用性グループのリスナーのすべてをコマンド ラインから作成できます。 詳細については、「[Azure CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する](./availability-group-az-commandline-configure.md)」を参照してください。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -126,4 +126,4 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 * [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux 仮想マシンでの SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)
 * [よく寄せられる質問 (Linux)](../linux/frequently-asked-questions-faq.md)
-* [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)

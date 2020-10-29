@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936012"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788062"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -61,13 +61,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [基本] タブでは、次の項目が必要です。 それ以外のすべてのものには、既定値をそのまま使用します。
 
-   + **リソース グループ**。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
+   + **リソース グループ** 。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
 
-   + **ストレージ アカウント名**。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、*blobstoragewestus*)。 
+   + **ストレージ アカウント名** 。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、 *blobstoragewestus* )。 
 
-   + **場所**。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
+   + **場所** 。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
 
-   + **アカウントの種類**。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
+   + **アカウントの種類** 。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
 
 1. **[確認および作成]** をクリックしてサービスを作成します。
 
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[BLOB]** サービスをクリックします。
 
-1. **[+ コンテナー]** をクリックしてコンテナーを作成し、*cog-search-demo* という名前を付けます。
+1. **[+ コンテナー]** をクリックしてコンテナーを作成し、 *cog-search-demo* という名前を付けます。
 
 1. *[cog-search-demo]* を選択し、 **[アップロード]** をクリックして、ダウンロード ファイルを保存したフォルダーを開きます。 画像以外のすべてのファイルを選択します。 7 個のファイルがあるはずです。 **[OK]** をクリックしてアップロードします。
 
@@ -115,7 +115,7 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-javascript/service-name-and-keys.png)
 
 すべての要求で、自分のサービスに送信される各要求のヘッダーに API キーが必要になります。 有効なキーにより、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼が確立されます。
 
@@ -123,7 +123,7 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
 Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
 
-このチュートリアルで使用した要求メソッドは **POST**、**PUT**、**GET** です。 これらのメソッドを使用して、検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、スキルセット、インデックス、およびインデクサーを作成します。
+このチュートリアルで使用した要求メソッドは **POST** 、 **PUT** 、 **GET** です。 これらのメソッドを使用して、検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、スキルセット、インデックス、およびインデクサーを作成します。
 
 ヘッダーで "Content-type" を `application/json` に設定し、`api-key` に自分の Azure Cognitive Search サービスの管理者 API キーを設定します。 ヘッダーを設定したら、この演習の各要求でそれらを使用できます。
 
@@ -143,7 +143,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
    https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
-1. 要求の**本文**に次の JSON 定義をコピーします。`connectionString` は、自分のストレージ アカウントの実際の接続に置き換えてください。 
+1. 要求の **本文** に次の JSON 定義をコピーします。`connectionString` は、自分のストレージ アカウントの実際の接続に置き換えてください。 
 
    コンテナー名も忘れずに編集してください。 前の手順でコンテナー名として推奨した名前は、"cog-search-demo" です。
 
@@ -173,7 +173,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
     https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
-1. 要求の**本文**に次の JSON 定義をコピーします。 このスキルセットは、次の組み込みスキルで構成されています。
+1. 要求の **本文** に次の JSON 定義をコピーします。 このスキルセットは、次の組み込みスキルで構成されています。
 
    | スキル                 | 説明    |
    |-----------------------|----------------|
@@ -258,7 +258,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. 要求の**本文**に次の JSON 定義をコピーします。 `content` フィールドには、ドキュメント自体が格納されます。 `languageCode`、`keyPhrases`、および `organizations` の追加フィールドは、スキルセットによって作成される新しい情報 (フィールドと値) を表します。
+1. 要求の **本文** に次の JSON 定義をコピーします。 `content` フィールドには、ドキュメント自体が格納されます。 `languageCode`、`keyPhrases`、および `organizations` の追加フィールドは、スキルセットによって作成される新しい情報 (フィールドと値) を表します。
 
     ```json
     {
@@ -342,7 +342,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
    https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
-1. 要求の**本文**に次の JSON 定義をコピーします。 フィールド マッピング要素に注目してください。これらのマッピングは、データ フローを定義するものであるため、重要です。 
+1. 要求の **本文** に次の JSON 定義をコピーします。 フィールド マッピング要素に注目してください。これらのマッピングは、データ フローを定義するものであるため、重要です。 
 
    スキルセットの前に `fieldMappings` が処理されて、データ ソースからインデックス内のターゲット フィールドにコンテンツが送信されます。 フィールド マッピングを使用して、変更されていない既存のコンテンツをインデックスに送信します。 フィールド名と型が両側で共通していれば、マッピングは必要ありません。
 
@@ -498,7 +498,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 
 ![検索オブジェクトを削除する](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "ポータル内で検索オブジェクトを削除する")
 
-または、**DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
+または、 **DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
 
 ```http
 DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30

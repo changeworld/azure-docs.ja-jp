@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8150375eff98374e21d200d98c04158b07f1c243
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789694"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>テーブルとキューのカスタマーマネージド キーがサポートされるアカウントを作成する
 
@@ -252,4 +252,4 @@ az storage account show /
 
 - [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
 - [Azure Storage の暗号化のためのカスタマー マネージド キー](customer-managed-keys-overview.md)
-- [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Azure Key Vault とは](../../key-vault/general/overview.md)

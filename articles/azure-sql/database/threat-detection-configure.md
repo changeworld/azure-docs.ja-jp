@@ -10,17 +10,17 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: 678de4354012dcea5b954980109fd71c1004aca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68ab5c820f3a67a7fd332557d47918d2a7aa4b62
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619289"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789422"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection for Azure SQL Database を構成する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Advanced Threat Protection](threat-detection-overview.md) for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Advanced Threat Protection によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[Advanced Threat Protectionアラート](threat-detection-overview.md#alerts)に関する記事を参照してください。
+[Advanced Threat Protection](threat-detection-overview.md) for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Advanced Threat Protection によって、 **SQL インジェクションの可能性** 、 **通常とは異なる場所またはデータ センターからのアクセス** 、 **通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス** 、 **SQL 資格情報に対するブルート フォース攻撃** を特定できます。詳細については、 [Advanced Threat Protectionアラート](threat-detection-overview.md#alerts)に関する記事を参照してください。
 
 検出された脅威に関する通知は、[電子メールの通知](threat-detection-overview.md#explore-detection-of-a-suspicious-event)または [Azure portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) で受け取ることができます。
 
@@ -45,5 +45,5 @@ ms.locfileid: "91619289"
 - [SQL Managed Instance での Advanced Threat Protection](../managed-instance/threat-detection-configure.md) の詳細について学習します。  
 - [Azure Defender for SQL](azure-defender-for-sql.md) についてさらに詳しく学習します。
 - [監査](../../azure-sql/database/auditing-overview.md)の詳細について学習します。
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。
-- 価格の詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。  
+- [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について学習します。
+- 価格の詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。

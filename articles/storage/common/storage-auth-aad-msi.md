@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b37e2530d8716f48eae696fef8f856e8334e24b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713667"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791173"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -28,7 +28,7 @@ Azure の Blob およびキュー ストレージは、Azure Active Directory (A
 
 Azure リソースのマネージド ID を使用して VM から BLOB およびキューへのアクセスを認証するには、最初に VM で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースのマネージド ID を有効にする方法については、次の記事のいずれかを参照してください。
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portal](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager テンプレート](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -48,7 +48,7 @@ Azure ID クライアント ライブラリの利点は、アプリケーショ�
 
 ### <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 
-Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB またはキュー データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 Azure RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」の「**アクセス権に Azure ロールを割り当てる**」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB またはキュー データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 Azure RBAC 経由でのアクセス許可の割り当てについては、「 [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」の「 **アクセス権に Azure ロールを割り当てる** 」というタイトルのセクションを参照してください。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
 
@@ -66,7 +66,7 @@ Azure CLI を使用してサービス Azure ロールを割り当てるには、
 
 サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
 
-次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、**ストレージ BLOB データ閲覧者ロール**をアカウント スコープで割り当てています。
+次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、 **ストレージ BLOB データ閲覧者ロール** をアカウント スコープで割り当てています。
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -163,6 +163,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC を使用してストレージ データへのアクセス権を管理する](storage-auth-aad-rbac.md)。
+- [Azure RBAC を使用してストレージ データへのアクセス権を管理する](./storage-auth-aad-rbac-portal.md)。
 - [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)。
 - [Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-active-directory-powershell.md)

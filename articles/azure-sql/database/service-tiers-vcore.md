@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614429"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793145"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ Azure SQL Database と Azure SQL Managed Instance で使用される仮想コア
 |-|**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
-|ストレージ|リモート ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**SQL Managed Instance**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**SQL Managed Instance**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
-|IOPS とスループット (概算)|**SQL Database**:[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。<br/>**SQL Managed Instance**:[Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md#service-tier-characteristics)に関するページを参照してください。|[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS とスループットはワークロードによって異なります。|
+|ストレージ|リモート ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング** :<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング** :<br/>5 GB - 3 TB<br/>**SQL Managed Instance** :32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング** :<br/>5 GB – 4 TB<br/>**SQL Managed Instance** :<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
+|IOPS とスループット (概算)|**SQL Database** : [単一データベース](resource-limits-vcore-single-databases.md)と [エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。<br/>**SQL Managed Instance** : [Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md#service-tier-characteristics)に関するページを参照してください。|[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS とスループットはワークロードによって異なります。|
 |可用性|1 レプリカ、読み取りスケール レプリカなし|3 レプリカ、1 [読み取りスケール レプリカ](read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](read-scale-out.md)|
 |バックアップ|[ 読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/geo-redundant-design.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../..//storage/common/geo-redundant-design.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージでのスナップショット ベースのバックアップ。 このようなスナップショットを使用して復元することで、高速復元が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間または数日ではなく、数分で完了)。|
 |メモリ内|サポートされていません|サポートされています|サポートされていません|
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2 シリーズ     |- Intel® 8168 (Skylake) プロセッサ<br>- すべての主要なターボ クロック速度 (3.4 GHz) と、最大 1 コアのターボ クロック速度 (3.7 GHz) を実現します。<br>- 最大 72 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 1.9 GB<br>- 最大 136 GB をプロビジョニング|
 |M シリーズ     |- Intel® E7-8890 v3 2.5 GHz プロセッサおよび Intel® 8280M 2.7 GHz (Cascade Lake) プロセッサ<br>- 最大 128 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 29 GB<br>- 最大 3.7 TB をプロビジョニング|
 
-\* [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel® SP-8160 (Skylake) プロセッサを使用するデータベースのハードウェア世代は Gen6 と表示され、Intel® 8272CL (Cascade Lake) を使用するデータベースのハードウェア世代は Gen7 と表示されます。 すべての Gen5 データベースのリソース制限は、プロセッサの種類 (Broadwell、Skylake、Cascade Lake) に関係なく同じです。
+\* [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel® SP-8160 (Skylake) プロセッサを使用するデータベースのハードウェア世代は Gen6 と表示され、Intel® 8272CL (Cascade Lake) を使用するデータベースのハードウェア世代は Gen7 と表示されます。 すべての Gen5 データベースのリソース制限は、プロセッサの種類 (Broadwell、Skylake、Cascade Lake) に関係なく同じです。
 
 リソース制限の詳細については、[単一データベースに対するリソース制限 (仮想コア)](resource-limits-vcore-single-databases.md) に関するページ、または[エラスティック プールに対するリソース制限 (仮想コア)](resource-limits-vcore-elastic-pools.md) に関するページを参照してください。
 
@@ -168,7 +168,7 @@ SQL Managed Instance のページで、[設定] セクションの下にある *
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-詳細については [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) コマンドを調べてください。
+詳細については [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) コマンドを調べてください。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-詳細については [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) コマンドを調べてください。
+詳細については [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update) コマンドを調べてください。
 
 ---
 
@@ -238,5 +238,4 @@ General Purpose サービス レベルおよび Business Critical サービス �
 
 - [Azure SQL Database の仮想コアベースのリソース制限](resource-limits-vcore-single-databases.md)
 - [プールされた Azure SQL Database の仮想コアベースのリソース制限](resource-limits-vcore-elastic-pools.md)
-- [Azure SQL Managed Instance の仮想コアベースのリソース制限](../managed-instance/resource-limits.md) 
-
+- [Azure SQL Managed Instance の仮想コアベースのリソース制限](../managed-instance/resource-limits.md)

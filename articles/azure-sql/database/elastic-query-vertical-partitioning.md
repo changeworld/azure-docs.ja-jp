@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443086"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792091"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,10 +36,10 @@ ms.locfileid: "91443086"
 > 行方向のパーティション分割とは異なり、これらの DDL ステートメントは、Elastic Database クライアント ライブラリを介したシャード マップを使ったデータ層の定義に依存しません。
 >
 
-1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>データベース スコープのマスター キーと資格情報の作成
 
@@ -121,7 +121,7 @@ select * from sys.external_tables;
 エラスティック クエリでは、既存の外部テーブル構文を拡張して、RDBMS 型の外部データ ソースを使用する外部テーブルを定義します。 列方向のパーティション分割のための外部テーブルの定義は、次の側面に対応しています。
 
 * **[スキーマ]** : 外部テーブル DDL では、ご利用のクエリで使用できるスキーマが定義されます。 外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。
-* **リモート データベース参照**:外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、実際のテーブル データが格納されているリモート データベースのサーバー名とデータベース名を指定します。
+* **リモート データベース参照** :外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、実際のテーブル データが格納されているリモート データベースのサーバー名とデータベース名を指定します。
 
 前のセクションで説明したように外部データ ソースを使用する、外部テーブルを作成するための構文を次に示します。
 
@@ -135,7 +135,7 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**CREATE/DROP EXTERNAL TABLE に対するアクセス許可**: 外部テーブル DDL に ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。これは、基になるデータ ソースを参照する場合にも必要です。  
+**CREATE/DROP EXTERNAL TABLE に対するアクセス許可** : 外部テーブル DDL に ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。これは、基になるデータ ソースを参照する場合にも必要です。  
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -163,7 +163,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
 
-エラスティック クエリには、リモート データベースへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。
+エラスティック クエリには、リモート データベースへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。
 
 * データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前です。
 * クエリ (nvarchar): リモート データベース上で実行する T-SQL クエリです。
@@ -195,7 +195,7 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 * 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](elastic-query-getting-started-vertical.md)」をご覧ください。
 * 行方向のパーティション分割 (シャード化) のチュートリアルについては、「[スケールアウトされたクラウド データベース全体のレポート (プレビュー)](elastic-query-getting-started.md)」をご覧ください。
 * 行方向にパーティション分割されたデータの構文とサンプル クエリについては、「[スケールアウトされたクラウド データベース全体をレポートする (プレビュー)](elastic-query-horizontal-partitioning.md)」をご覧ください。
-* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)」をご覧ください。
+* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)」をご覧ください。
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

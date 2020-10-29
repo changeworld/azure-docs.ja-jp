@@ -79,6 +79,8 @@
               href: sync-ldap.md
             - name: SCIM 同期
               href: sync-scim.md
+        - name: Azure で使用される証明機関
+          href: certificate-authorities.md
     - name: デプロイ ガイド
       items:
         - name: デプロイ 30、90、およびそれ以降
