@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335332"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895445"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -26,7 +26,7 @@ Web ページでマップ コントロールを使用するには、次のいず
 
 * [Azure Maps アカウント](quick-demo-map-app.md#create-an-azure-maps-account)を作成し、[プライマリ サブスクリプション キー](quick-demo-map-app.md#get-the-primary-key-for-your-account) (主キーまたはサブスクリプション キーとも呼ばれます) を取得します。
 
-* [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用して Azure Active Directory (AAD) 資格情報を取得します。
+* [認証オプション](/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用して Azure Active Directory (AAD) 資格情報を取得します。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Web ページに新しいマップを作成する
 
@@ -83,7 +83,7 @@ Web ページでマップ コントロールを使用するには、次のいず
     </body>
    ```
 
-5. ここで、マップ コントロールを初期化します。 コントロールを認証するには、Azure Maps サブスクリプション キーを所有するか、[認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)で Azure Active Directory (AAD) 資格情報を使用する必要があります。
+5. ここで、マップ コントロールを初期化します。 コントロールを認証するには、Azure Maps サブスクリプション キーを所有するか、[認証オプション](/javascript/api/azure-maps-control/atlas.authenticationoptions)で Azure Active Directory (AAD) 資格情報を使用する必要があります。
 
     認証にサブスクリプション キーを使用している場合は、`<head>` 要素内の最初の `<script>` 要素の下に、次のスクリプト要素をコピーして貼り付けます。 `<Your Azure Maps Key>` を実際の Azure Maps プライマリ サブスクリプション キーに置き換えます。
 
@@ -279,7 +279,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 > [マップを作成する](map-create.md)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)
 
 Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧については、次を参照してください。
 

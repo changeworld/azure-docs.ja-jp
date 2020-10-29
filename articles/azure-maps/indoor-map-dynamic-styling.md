@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86517299"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895377"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
 
-Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
+Azure Maps Creator [Feature State サービス](/rest/api/maps/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](/rest/api/maps/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/
 
 ### <a name="select-features"></a>機能を選択する
 
-動的スタイル設定を実装するには、会議室やカンファレンス ルームなどの地物をその地物 `id` から参照する必要があります。 地物 `id` を使用して、その地物の動的プロパティまたは "*状態*" を更新します。 データセットで定義されている地物を表示するには、次のいずれかの方法を使用できます。
+動的スタイル設定を実装するには、会議室やカンファレンス ルームなどの地物をその地物 `id` から参照する必要があります。 地物 `id` を使用して、その地物の動的プロパティまたは " *状態* " を更新します。 データセットで定義されている地物を表示するには、次のいずれかの方法を使用できます。
 
 * WFS API (Web Feature Service)。 データセットにクエリを実行するには、WFS API を使用します。 WFS は Open Geospatial Consortium API の地物に従います。 WFS API は、データセット内の地物のクエリに役立ちます。 たとえば、WFS を使用して、特定の施設とレベルの中規模の会議室をすべて検索することができます。
 
@@ -60,7 +60,7 @@ map.events.add("click", function(e){
 
 [屋内マップの作成](tutorial-creator-indoor-maps.md)チュートリアルでは、`occupancy` の状態の更新を受け入れるように地物状態セットを構成しました。
 
-次のセクションでは、オフィス `UNIT26` の占有 "*状態*" を `true` に設定します。 一方、オフィス `UNIT27` は `false` に設定されます。
+次のセクションでは、オフィス `UNIT26` の占有 " *状態* " を `true` に設定します。 一方、オフィス `UNIT27` は `false` に設定されます。
 
 ### <a name="set-occupancy-status"></a>占有状態を設定する
 
@@ -68,7 +68,7 @@ map.events.add("click", function(e){
 
 1. Postman アプリケーションで、 **[New]\(新規\)** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 **[Request name]\(要求名\)** を入力し、コレクションを選択します。 **[保存]**
 
-2. [Feature Update States API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) を使用して状態を更新します。 状態セット ID を渡し、2 つのユニットのいずれかに `UNIT26` を渡します。 Azure Maps サブスクリプション キーを追加します。 状態を更新するための **POST** 要求の URL は次のとおりです。
+2. [Feature Update States API](/rest/api/maps/featurestate/updatestatespreview) を使用して状態を更新します。 状態セット ID を渡し、2 つのユニットのいずれかに `UNIT26` を渡します。 Azure Maps サブスクリプション キーを追加します。 状態を更新するための **POST** 要求の URL は次のとおりです。
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -134,4 +134,3 @@ map.events.add("click", function(e){
 
 > [!div class="nextstepaction"]
 > [WFS サービス](creator-indoor-maps.md#web-feature-service-api)
-

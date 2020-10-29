@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321715"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896682"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
 
-このチュートリアルでは、Azure Maps [Route Service API](https://docs.microsoft.com/rest/api/maps/route) と[マップ コントロール](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)を使用して、始点から終点までのルートの道順を表示する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure Maps [Route Service API](/rest/api/maps/route) と[マップ コントロール](./how-to-use-map-control.md)を使用して、始点から終点までのルートの道順を表示する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * マップ コントロールを作成して Web ページに表示します。 
 > * [シンボル レイヤー](map-add-pin.md)と[線レイヤー](map-add-line-layer.md)を定義して、ルートの表示レンダリングを定義します。
 > * GeoJSON オブジェクトを作成し、始点と終点を表すようにマップに追加します。
-> * [Get Route Directions API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) を使用して、始点と終点からのルートの道順を取得します。
+> * [Get Route Directions API](/rest/api/maps/route/getroutedirections) を使用して、始点と終点からのルートの道順を取得します。
 
 サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)でご覧いただけます。
 
@@ -170,7 +170,7 @@ ms.locfileid: "91321715"
 
     このコードにより、ルートの始点と終点を表す 2 つの [GeoJSON ポイント オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)が作成され、データ ソースに追加されます。 
 
-    最後のコード ブロックでは、始点と終点の緯度と経度を使用してカメラ ビューを設定します。 起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンのピクセル寸法を補正するためにパディングを追加しています。 マップ コントロールの setCamera プロパティの詳細については、[setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) プロパティを参照してください。
+    最後のコード ブロックでは、始点と終点の緯度と経度を使用してカメラ ビューを設定します。 起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンのピクセル寸法を補正するためにパディングを追加しています。 マップ コントロールの setCamera プロパティの詳細については、[setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) プロパティを参照してください。
 
 3. **MapRoute.html** を保存し、ブラウザーを更新します。 これで、マップの中心がシアトルに設定されました。 涙形の青いピンは、始点をマークしています。 円形の青いピンは、終点をマークしています。
 
@@ -183,7 +183,7 @@ ms.locfileid: "91321715"
 このセクションでは、Azure Maps Route Directions API を使用して、ルートの道順と、特定ポイント間の推定到着時間を取得する方法について説明します。
 
 >[!TIP]
->Azure Maps Route Service には、距離、渋滞状況、使用する輸送モードに基づく、"*最速*"、"*最短*"、"*エコ*"、"*スリリング*" などのさまざまなルートの種類を基にルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
+>Azure Maps Route Service には、距離、渋滞状況、使用する輸送モードに基づく、" *最速* "、" *最短* "、" *エコ* "、" *スリリング* " などのさまざまなルートの種類を基にルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
 
 1. `GetMap` 関数のコントロールの `ready` イベント ハンドラー内で、JavaScript コードに以下を追加します。
 
@@ -198,7 +198,7 @@ ms.locfileid: "91321715"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](/rest/api/maps/route) 操作の URL を表します。
 
 2. 資格情報と URL を設定した後、コントロールの `ready` イベント ハンドラーに次のコードを追加します。 このコードにより、始点から終点までのルートが構築されます。 `routeURL` は、Azure Maps Route Service API に対して、ルートの道順を計算するように要求します。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。
 

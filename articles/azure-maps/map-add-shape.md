@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 74c8ba4ed1f228b9b3ba90b46c47f538d71ff409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890999"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>マップに多角形レイヤーを追加する
 
-この記事では、多角形レイヤーを使用してマップ上に `Polygon` および `MultiPolygon` フィーチャー ジオメトリの領域をレンダリングする方法を示します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリの作成もサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換されます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) クラスでラップされている場合は、すべてのフィーチャー ジオメトリを簡単に更新できます。
+この記事では、多角形レイヤーを使用してマップ上に `Polygon` および `MultiPolygon` フィーチャー ジオメトリの領域をレンダリングする方法を示します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリの作成もサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換されます。 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) クラスでラップされている場合は、すべてのフィーチャー ジオメトリを簡単に更新できます。
 
 ## <a name="use-a-polygon-layer"></a>多角形レイヤーを使用する 
 
-多角形レイヤーがデータ ソースに接続されていると、マップに読み込まれるときに、`Polygon` および `MultiPolygon` フィーチャーを含む領域がレンダリングされます。 多角形を作成し、データ ソースに追加し、[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer) クラスを使用して多角形レイヤーでレンダリングします。
+多角形レイヤーがデータ ソースに接続されていると、マップに読み込まれるときに、`Polygon` および `MultiPolygon` フィーチャーを含む領域がレンダリングされます。 多角形を作成し、データ ソースに追加し、[PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer) クラスを使用して多角形レイヤーでレンダリングします。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -115,7 +115,7 @@ Azure Maps Web SDK では、このような `Point` フィーチャーが `Polyg
 
 ## <a name="make-a-geometry-easy-to-update"></a>ジオメトリを簡単に更新する
 
-`Shape` クラスは [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry) または [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) をラップしているため、これらのフィーチャーの更新や管理が簡単です。 図形変数をインスタンス化するには、図形コンストラクターにジオメトリまたはプロパティのセットを渡します。
+`Shape` クラスは [Geometry](/javascript/api/azure-maps-control/atlas.data.geometry) または [Feature](/javascript/api/azure-maps-control/atlas.data.feature) をラップしているため、これらのフィーチャーの更新や管理が簡単です。 図形変数をインスタンス化するには、図形コンストラクターにジオメトリまたはプロパティのセットを渡します。
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -137,10 +137,10 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Polygon](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
+> [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)

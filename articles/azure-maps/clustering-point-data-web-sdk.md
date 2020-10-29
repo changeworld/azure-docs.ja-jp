@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecde4cb0c8a3bfe3dd8fb2edb59423838e0751c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285113"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889869"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
@@ -132,13 +132,13 @@ Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a h
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [DataSource クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
+> [DataSource クラス](/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
+> [DataSourceOptions オブジェクト](/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [atlas.math 名前空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)
+> [atlas.math 名前空間](/javascript/api/azure-maps-control/atlas.math)
 
 ご利用のアプリに機能を追加するには、次のコード例を参照してください。
 

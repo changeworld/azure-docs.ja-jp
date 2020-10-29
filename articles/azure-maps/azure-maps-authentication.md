@@ -10,28 +10,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: dc3792b5eff1b0ba51f5d7938e52e6914660109a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091408"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889886"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
-Azure Maps には、要求の認証方法が 2 つあります。共有キー認証と [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 認証です。 この記事では、Azure Maps サービスの実装の参考になるように、これらの認証方法の両方について説明します。
+Azure Maps には、要求の認証方法が 2 つあります。共有キー認証と [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 認証です。 この記事では、Azure Maps サービスの実装の参考になるように、これらの認証方法の両方について説明します。
 
 > [!NOTE]
-> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と 1.1 のサポートは廃止されます。 現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
+> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と 1.1 のサポートは廃止されます。 現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
 
 ## <a name="shared-key-authentication"></a>共有キー認証
 
  Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 共有キー認証を使用して Azure Maps を呼び出す場合は、主キーをサブスクリプション キーとして使用することをお勧めします。 共有キー認証では、Azure Maps アカウントによって生成されたキーを Azure Maps サービスに渡します。 Azure Maps サービスへの要求ごとに、 *サブスクリプション キー* をパラメーターとして URL に追加します。 2 次キーは、キーのローリング変更などのシナリオで使用できます。  
 
-Azure portal でキーを表示する方法について詳しくは、[認証の管理](https://aka.ms/amauthdetails)に関する記事をご覧ください。
+Azure portal でキーを表示する方法について詳しくは、[認証の管理](./how-to-manage-authentication.md#view-authentication-details)に関する記事をご覧ください。
 
 > [!TIP]
-> セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)」を参照してください。
+> セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](../key-vault/secrets/tutorial-rotation-dual.md)」を参照してください。
 
 ## <a name="azure-ad-authentication"></a>Azure AD 認証
 
@@ -45,17 +45,17 @@ Azure Maps では、Azure Maps アカウントを含む Azure サブスクリプ
 
 Azure Maps では、Azure Maps アカウントごとに *一意の識別子 (クライアント ID)* を生成します。 このクライアント ID を追加のパラメーターと組み合わせると、Azure AD からトークンを要求できます。
 
-Azure AD を構成して Azure Maps のトークンを要求する方法について詳しくは、「[Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
+Azure AD を構成して Azure Maps のトークンを要求する方法について詳しくは、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」をご覧ください。
 
-Azure AD による認証に関する一般的な情報については、[認証の概要](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)に関するページを参照してください。
+Azure AD による認証に関する一般的な情報については、[認証の概要](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照してください。
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure リソースと Azure Maps のマネージド ID
 
-[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) により、Azure AD で認証可能な自動的に管理されるアプリケーション ベースのセキュリティ プリンシパルが Azure サービスに提供されます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、マネージド ID セキュリティ プリンシパルに対して、Azure Maps サービスへのアクセスを承認することができます。 マネージド ID の例としては、次のものがあります。Azure App Service、Azure Functions、Azure Virtual Machines。 マネージド ID の一覧については、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) に関するページを参照してください。
+[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) により、Azure AD で認証可能な自動的に管理されるアプリケーション ベースのセキュリティ プリンシパルが Azure サービスに提供されます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、マネージド ID セキュリティ プリンシパルに対して、Azure Maps サービスへのアクセスを承認することができます。 マネージド ID の例としては、次のものがあります。Azure App Service、Azure Functions、Azure Virtual Machines。 マネージド ID の一覧については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) に関するページを参照してください。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>アプリケーションの Azure AD 認証を構成する
 
-アプリケーションは、Azure AD によって提供される 1 つ以上のサポートされるシナリオを使用して、Azure AD テナントで認証されます。 各 Azure AD アプリケーション シナリオは、ビジネス ニーズに基づいたさまざまな要件を表します。 ユーザーのサインイン エクスペリエンスを必要とするアプリケーションもあれば、アプリケーションのサインイン エクスペリエンスを必要とするアプリケーションもあります。 詳細については、「[認証フローとアプリケーションのシナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios)」を参照してください。
+アプリケーションは、Azure AD によって提供される 1 つ以上のサポートされるシナリオを使用して、Azure AD テナントで認証されます。 各 Azure AD アプリケーション シナリオは、ビジネス ニーズに基づいたさまざまな要件を表します。 ユーザーのサインイン エクスペリエンスを必要とするアプリケーションもあれば、アプリケーションのサインイン エクスペリエンスを必要とするアプリケーションもあります。 詳細については、「[認証フローとアプリケーションのシナリオ](../active-directory/develop/authentication-flows-app-scenarios.md)」を参照してください。
 
 アプリケーションでアクセス トークンが受け取られた後、SDK またはアプリケーションによって HTTPS 要求が送信されます。これには、他の REST API HTTP ヘッダーに加えて次の必須 HTTP ヘッダーが含まれます。
 
@@ -76,15 +76,15 @@ x-ms-client-id: 30d7cc….9f55
 Authorization: Bearer eyJ0e….HNIVN
 ```
 
-クライアント ID を表示する方法については、「[認証の詳細を表示する](https://aka.ms/amauthdetails)」をご覧ください。
+クライアント ID を表示する方法については、「[認証の詳細を表示する](./how-to-manage-authentication.md#view-authentication-details)」をご覧ください。
 
 ## <a name="authorization-with-role-based-access-control"></a>ロールベースのアクセス制御による認証
 
-Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview) (Azure RBAC) のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
+Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](../role-based-access-control/overview.md) (Azure RBAC) のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
 
 次のセクションでは、Azure Maps と Azure RBAC との統合の概念とコンポーネントについて説明します。 Azure Maps アカウントを設定するプロセスの一環として、Azure AD ディレクトリが、Azure Maps アカウントがある Azure サブスクリプションに関連付けられます。 
 
-Azure RBAC を構成する場合、セキュリティ プリンシパルを選択して、それをロールの割り当てに適用します。 Azure portal でロールの割り当てを追加する方法については、[Azure ロールの割り当ての追加と削除](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)に関するページを参照してください。
+Azure RBAC を構成する場合、セキュリティ プリンシパルを選択して、それをロールの割り当てに適用します。 Azure portal でロールの割り当てを追加する方法については、[Azure ロールの割り当ての追加と削除](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 ### <a name="picking-a-role-definition"></a>ロールの定義の選択
 
@@ -104,13 +104,13 @@ Azure RBAC を構成する場合、セキュリティ プリンシパルを選�
 | Creator            | Azure Maps データ共同作成者 |
 | Spatial            | Azure Maps データ共同作成者 |
 
-Azure RBAC 設定を確認する方法については、[Azure Maps 用に Azure RBAC を構成する方法](https://aka.ms/amrbac)に関するページをご覧ください。
+Azure RBAC 設定を確認する方法については、[Azure Maps 用に Azure RBAC を構成する方法](./how-to-manage-authentication.md)に関するページをご覧ください。
 
 #### <a name="custom-role-definitions"></a>カスタム ロールの定義
 
 アプリケーションのセキュリティの 1 つの側面は、最小限の特権のプリンシパルを適用することです。 この原則は、セキュリティ プリンシパルには、必須のアクセスのみを許可し、追加のアクセスは持たないようにする必要があることを意味します。 カスタム ロールの定義を作成すると、さらにきめ細かなアクセス制御を必要とするユース ケースをサポートできます。 カスタム ロールの定義を作成するには、その定義に含まれる、またはその定義から除外される特定のデータ アクションを選択できます。
 
-カスタム ロールの定義は、セキュリティ プリンシパルのロールの割り当てで使用できます。 Azure カスタム ロールの定義の詳細については、「[Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。
+カスタム ロールの定義は、セキュリティ プリンシパルのロールの割り当てで使用できます。 Azure カスタム ロールの定義の詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 カスタム ロールによってアプリケーションのセキュリティを向上できるシナリオ例をいくつか紹介します。
 
@@ -123,7 +123,7 @@ Azure RBAC 設定を確認する方法については、[Azure Maps 用に Azure
 
 ### <a name="understanding-scope"></a>スコープについて
 
-ロールの割り当てを作成する場合、Azure リソースの階層内で定義されます。 この階層の最上位は[管理グループ](https://docs.microsoft.com/azure/governance/management-groups/overview)で、最下位は、Azure Maps アカウントなどの Azure リソースです。
+ロールの割り当てを作成する場合、Azure リソースの階層内で定義されます。 この階層の最上位は[管理グループ](../governance/management-groups/overview.md)で、最下位は、Azure Maps アカウントなどの Azure リソースです。
 ロールの割り当てをリソース グループに割り当てると、グループ内の複数の Azure Maps アカウントまたはリソースにアクセスできるようになります。
 
 > [!TIP]
@@ -133,12 +133,12 @@ Azure RBAC 設定を確認する方法については、[Azure Maps 用に Azure
 
 Azure RBAC の詳細については、次の記事をご覧ください。
 > [!div class="nextstepaction"]
-> [Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Azure ロールベースのアクセス制御](../role-based-access-control/overview.md)
 
 Azure AD と Azure Maps を使用してアプリケーションを認証する方法の詳細については、次の記事を参照してください。
 > [!div class="nextstepaction"]
-> [Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)
+> [Azure Maps での認証の管理](./how-to-manage-authentication.md)
 
 Azure AD を使用した Azure Maps のマップ コントロールの認証の詳細については、次の記事を参照してください。
 > [!div class="nextstepaction"]
-> [Azure Maps のマップ コントロールを使用する](https://aka.ms/amaadmc)
+> [Azure Maps のマップ コントロールを使用する](./how-to-use-map-control.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335264"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896851"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -76,7 +76,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 このデータのスクリーンショットを見ると、次のことが確認できます。
 
-* 所在地情報は、**AddressLine**、**City**、**Municipality** (郡)、**AdminDivision** (州)、**PostCode** (郵便番号)、**Country** の各列を使用して格納されています。  
+* 所在地情報は、 **AddressLine** 、 **City** 、 **Municipality** (郡)、 **AdminDivision** (州)、 **PostCode** (郵便番号)、 **Country** の各列を使用して格納されています。  
 * **Latitude** 列と **Longitude** 列には、Contoso Coffee コーヒー ショップの各所在地に対応する座標が格納されています。 座標情報がない場合は、Azure Maps の Search サービスを使用して所在地の座標を特定できます。
 * その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、ブール型列、店舗の開店時間と閉店時間 (24 時間形式) です。 ブール型列は、Wi-Fi と車椅子の利用の可否に使用されます。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
 
@@ -97,7 +97,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ## <a name="set-up-the-project"></a>プロジェクトのセットアップ
 
-プロジェクトの作成には、[Visual Studio](https://visualstudio.microsoft.com) または任意のコード エディターを使用できます。 プロジェクト フォルダーに、*index.html*、*index.css*、*index.js* の 3 つのファイルを作成します。 これらのファイルによって、アプリケーションのレイアウト、スタイル、ロジックが定義されます。 *data* という名前のフォルダーを作成し、そのフォルダーに *ContosoCoffee.txt* を追加します。 *images* という名前の別のフォルダーを作成します。 このアプリケーションでは、地図上のアイコン、ボタン、マーカー用に 10 個の画像を使用します。 [これらの画像をダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)することができます。 これでプロジェクト フォルダーは、次の図のようになります。
+プロジェクトの作成には、[Visual Studio](https://visualstudio.microsoft.com) または任意のコード エディターを使用できます。 プロジェクト フォルダーに、 *index.html* 、 *index.css* 、 *index.js* の 3 つのファイルを作成します。 これらのファイルによって、アプリケーションのレイアウト、スタイル、ロジックが定義されます。 *data* という名前のフォルダーを作成し、そのフォルダーに *ContosoCoffee.txt* を追加します。 *images* という名前の別のフォルダーを作成します。 このアプリケーションでは、地図上のアイコン、ボタン、マーカー用に 10 個の画像を使用します。 [これらの画像をダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)することができます。 これでプロジェクト フォルダーは、次の図のようになります。
 
 ![Simple Store Locator プロジェクト フォルダーのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
@@ -158,7 +158,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     </main>
     ```
 
-完成した *index.html* は、[こちらの例の index.html ファイルのようになります](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
+完成した *index.html* は、 [こちらの例の index.html ファイルのようになります](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
 
 次の手順で、CSS スタイルを定義します。 アプリケーション コンポーネントのレイアウトとアプリケーションの外観は、CSS スタイルによって定義されます。 *index.css* を開いて、次のコードを追加します。 `@media` スタイルは、画面幅が 700 ピクセルよりも狭いときに使用される代替スタイルのオプションを定義します。  
 
@@ -369,7 +369,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ## <a name="wire-the-application-with-javascript"></a>JavaScript を使用してアプリケーションを接続する
 
-ユーザー インターフェイスの設定はすべて整っています。 さらに、データを読み込んで解析した後、そのデータを地図上にレンダリングする JavaScript を追加する必要があります。 最初に、以下の手順で示すとおり、*index.js* を開いてコードを追加します。
+ユーザー インターフェイスの設定はすべて整っています。 さらに、データを読み込んで解析した後、そのデータを地図上にレンダリングする JavaScript を追加する必要があります。 最初に、以下の手順で示すとおり、 *index.js* を開いてコードを追加します。
 
 1. 設定を更新しやすいようグローバル オプションを追加します。 マップ、ポップアップ ウィンドウ、データ ソース、アイコン レイヤー、および HTML マーカーの変数を定義します。 検索領域の中心を示すように HTML マーカーを設定します。 また、Azure Maps 検索サービス クライアントのインスタンスを定義します。
 
@@ -385,7 +385,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
+1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](/javascript/api/azure-maps-control/atlas.map#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
 
    ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力して Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国または地域に限定するために、それらの国または地域の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国/地域を限定することで、返される結果の精度向上につながります。 
   
@@ -931,8 +931,8 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
  * ユーザーが[ルートに沿って場所をフィルター処理](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)できるようにする。 
  * [フィルターを設定](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)する機能を追加する。 
  * クエリ文字列を使用して検索の初期値を指定できるようにする。 このオプションをストア ロケーターに実装すれば、ユーザーが検索をブックマークに登録したり共有したりできます。 このページに対し、別のページから検索を渡す簡単な方法としても利用できます。  
- * ストア ロケーターを [Azure App Service Web アプリ](https://docs.microsoft.com/azure/app-service/quickstart-html)としてデプロイする。 
- * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true)と[空間データに対するニアレストネイバーのクエリ](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true)に関するページを参照してください。
+ * ストア ロケーターを [Azure App Service Web アプリ](../app-service/quickstart-html.md)としてデプロイする。 
+ * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017)と[空間データに対するニアレストネイバーのクエリ](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017)に関するページを参照してください。
 
 [完全なソース コード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)や[ライブ サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)を見たり、[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)を使用して Azure Maps の対象範囲と機能について詳しく理解したりできます。 また、[データドリブンのスタイルの式を使用](data-driven-style-expressions-web-sdk.md)して、ビジネス ロジックに適用することもできます。
 

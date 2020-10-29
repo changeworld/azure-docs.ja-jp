@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873746"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897009"
 ---
 # <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>チュートリアル - Bing 地図から Azure Maps に移行する
 
@@ -69,7 +69,7 @@ Azure Maps のいくつかのライセンス関連リソースを次に示しま
 -   [Azure Maps の価格のページ](https://azure.microsoft.com/pricing/details/azure-maps/)
 -   [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 -   [Azure Maps 使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (Microsoft オンライン サービスの使用条件に含まれています)
--   [Azure Maps での適切な価格レベルの選択](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+-   [Azure Maps での適切な価格レベルの選択](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>おすすめの移行プラン
 
@@ -77,7 +77,7 @@ Azure Maps のいくつかのライセンス関連リソースを次に示しま
 
 1.  アプリケーションで使用している Bing Maps SDK とサービスのインベントリを取得し、移行先となる代替の SDK とサービスが Azure Maps で用意されていることを確認します。
 2.  <https://azure.com> で Azure サブスクリプションを作成します (まだお持ちでない場合)。
-3.  Azure Maps アカウント ([ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) と認証キーまたは Azure Active Directory ([ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)) を作成します。
+3.  Azure Maps アカウント ([ドキュメント](./how-to-manage-account-keys.md)) と認証キーまたは Azure Active Directory ([ドキュメント](./how-to-manage-authentication.md)) を作成します。
 4.  アプリケーション コードを移行します。
 5.  移行したアプリケーションをテストします。
 6.  移行したアプリケーションを運用環境にデプロイします。
@@ -88,8 +88,8 @@ Azure Maps アカウントを作成し、Azure Maps プラットフォームに�
 
 1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 2. [Azure portal](https://portal.azure.com/) にサインインします。
-3. [Azure Maps アカウント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)を作成します。 
-4. [Azure Maps サブスクリプション キー](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)を取得するか、Azure Active Directory 認証を設定し、セキュリティを強化します。
+3. [Azure Maps アカウント](./how-to-manage-account-keys.md)を作成します。 
+4. [Azure Maps サブスクリプション キー](./how-to-manage-authentication.md#view-authentication-details)を取得するか、Azure Active Directory 認証を設定し、セキュリティを強化します。
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps の技術リソース
 
@@ -105,7 +105,7 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 
 ## <a name="migration-support"></a>移行サポート
 
-開発者は、[フォーラム](https://aka.ms/AzureMapsForums) または多くの Azure サポート オプション (<https://azure.microsoft.com/support/options/>) のいずれかを使用して、移行サポートを探すことができます。
+開発者は、[フォーラム](/answers/topics/azure-maps.html) または多くの Azure サポート オプション (<https://azure.microsoft.com/support/options/>) のいずれかを使用して、移行サポートを探すことができます。
 
 ## <a name="new-terminology"></a>新しい用語 
 

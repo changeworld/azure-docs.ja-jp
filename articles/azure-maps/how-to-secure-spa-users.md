@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090286"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895615"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>ユーザー サインインでシングル ページ アプリケーションをセキュリティで保護する
 
@@ -75,7 +75,7 @@ ms.locfileid: "92090286"
 
 シングル ページ アプリケーションのシナリオの詳細については、次を参考にしてください。
 > [!div class="nextstepaction"]
-> [シングルページ アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [シングルページ アプリケーション](../active-directory/develop/scenario-spa-overview.md)
 
 Azure Maps アカウントにおける API 使用状況メトリックを確認します。
 > [!div class="nextstepaction"]

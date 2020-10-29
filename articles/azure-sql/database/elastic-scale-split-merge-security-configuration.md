@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829436"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793434"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,18 +32,18 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
 
-証明書はパブリック証明機関 (CA) または [Windows Certificate Service](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
+証明書はパブリック証明機関 (CA) または [Windows Certificate Service](/windows/win32/seccrypto/certificate-services)から取得できます。 これは証明書を取得するための推奨方法です。
 
-これらの方法が利用可能でない場合は、 **自己署名証明書**を生成できます。
+これらの方法が利用可能でない場合は、 **自己署名証明書** を生成できます。
 
 ## <a name="tools-to-generate-certificates"></a>証明書を生成するツール
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](/previous-versions/dotnet/netframework-4.0/bfsktky3(v=vs.100))
+* [pvk2pfx.exe](/windows-hardware/drivers/devtest/pvk2pfx)
 
 ### <a name="to-run-the-tools"></a>ツールを実行するには
 
-* Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](https://msdn.microsoft.com/library/ms229859.aspx) 
+* Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs) 
   
     インストールされている場合は、次のように参照します。
   
@@ -124,7 +124,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 既定の構成では、HTTPS エンドポイントへのすべてのアクセスを許可します。 この設定は、さらに制限できます。
 
 ### <a name="changing-the-configuration"></a>構成の変更
-エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **\<EndpointAcls>** セクションに構成されます。
+エンドポイントに適用されるアクセス制御ルールのグループは、 **サービス構成ファイル** の **\<EndpointAcls>** セクションに構成されます。
 
 ```xml
 <EndpointAcls>
@@ -452,7 +452,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 11. 一覧から 1 つの証明書を選択します。
 
 ## <a name="export-certificate"></a>証明書をエクスポートします。
-**証明書のエクスポート ウィザード**で次のように実行します。
+**証明書のエクスポート ウィザード** で次のように実行します。
 
 1. **[次へ]** をクリックします。
 2. **[はい]** 、 **[秘密キーをエクスポートします]** の順に選択します。
@@ -508,4 +508,3 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 このデータベースに格納されている資格情報が暗号化されます。 ただし、ベスト プラクティスとして、サービス デプロイメントにおける Web ロールとワーカー ロールの両方を最新に保ち、両者がメタデータのデータベースと保存された資格情報の暗号化と解読に使用する証明書へアクセスする際の安全性が保たれるようにします。 
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
-

@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: eedbbc0126adacc2a9bdc151aa6dbc27c7ba0750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310256"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890770"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>マップに多角形浮き出しレイヤーを追加する
 
-この記事では、多角形浮き出しレイヤーを使用して、フィーチャー ジオメトリ `Polygon` および `MultiPolygon` の領域が浮き出るようにレンダリングする方法を紹介します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリのレンダリングをサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換できます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) クラスでラップされている場合は、すべてのフィーチャー ジオメトリを簡単に更新することができます。
+この記事では、多角形浮き出しレイヤーを使用して、フィーチャー ジオメトリ `Polygon` および `MultiPolygon` の領域が浮き出るようにレンダリングする方法を紹介します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリのレンダリングをサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換できます。 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) クラスでラップされている場合は、すべてのフィーチャー ジオメトリを簡単に更新することができます。
 
 ## <a name="use-a-polygon-extrusion-layer"></a>多角形浮き出しレイヤーを使用する
 
-[多角形浮き出しレイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)をデータ ソースに接続します。 その後、マップに読み込まれます。 多角形浮き出しレイヤーでは、`Polygon` および `MultiPolygon` のフィーチャーの領域が浮き出るようにレンダリングされます。 多角形浮き出しレイヤーの `height` プロパティと `base` プロパティにより、地面からの基本距離と浮き出し形状の高さが**メートル**で定義されます。 次のコードでは、多角形を作成してそれをデータ ソースに追加し、PolygonExtrusionLayer クラスを利用してレンダリングする方法を確認できます。
+[多角形浮き出しレイヤー](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)をデータ ソースに接続します。 その後、マップに読み込まれます。 多角形浮き出しレイヤーでは、`Polygon` および `MultiPolygon` のフィーチャーの領域が浮き出るようにレンダリングされます。 多角形浮き出しレイヤーの `height` プロパティと `base` プロパティにより、地面からの基本距離と浮き出し形状の高さが **メートル** で定義されます。 次のコードでは、多角形を作成してそれをデータ ソースに追加し、PolygonExtrusionLayer クラスを利用してレンダリングする方法を確認できます。
 
 > [!Note]
 > 多角形浮き出しレイヤーに定義されている `base` 値は、`height` 以下にする必要があります。
@@ -45,7 +45,7 @@ ms.locfileid: "91310256"
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 `Circle` の `subType` プロパティと、**メートル**で半径を表わす数値付き `Radius` プロパティでフィーチャー `point` を作成することで、浮き出した円をマップ上でレンダリングできます。 次に例を示します。
+Azure Maps は、[ここ](./extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 `Circle` の `subType` プロパティと、 **メートル** で半径を表わす数値付き `Radius` プロパティでフィーチャー `point` を作成することで、浮き出した円をマップ上でレンダリングできます。 次に例を示します。
 
 ```javascript
 {
@@ -83,10 +83,10 @@ Azure Maps Web SDK では、このような `Point` フィーチャーが内部�
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Polygon](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [多角形浮き出しレイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
+> [多角形浮き出しレイヤー](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
 
 その他のリソース:
 

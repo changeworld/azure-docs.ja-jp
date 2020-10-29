@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310375"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890787"
 ---
 # <a name="interact-with-the-map"></a>マップの操作
 
-この記事では、[マップ イベント クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)の使用方法を示します。 プロパティでは、マップ上とマップの異なるレイヤー上のイベントを強調表示します。 また、HTML マーカーを操作すると、イベントを強調表示することもできます。
+この記事では、[マップ イベント クラス](/javascript/api/azure-maps-control/atlas.map#events)の使用方法を示します。 プロパティでは、マップ上とマップの異なるレイヤー上のイベントを強調表示します。 また、HTML マーカーを操作すると、イベントを強調表示することもできます。
 
 ## <a name="interact-with-the-map"></a>マップの操作
 
@@ -117,4 +117,4 @@ ms.locfileid: "91310375"
 > [Azure Maps サービス モジュールの使用](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)

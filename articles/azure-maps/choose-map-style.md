@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285164"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889801"
 ---
 # <a name="change-the-style-of-the-map"></a>マップのスタイルを変更する
 
-マップ コントロールでは、複数の異なるマップ [スタイル オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)と[基本マップ スタイル](supported-map-styles.md)がサポートされています。 すべてのスタイルは、マップ コントロールを初期化するときに設定できます。 または、マップ コントロールの `setStyle` 関数を使用してスタイルを設定することもできます。 この記事では、これらのスタイル オプションを使用してマップの外観をカスタマイズする方法について説明します。 また、マップにスタイル ピッカー コントロールを実装する方法についても説明します。 ユーザーは、スタイル ピッカー コントロールを使用して別の基本スタイルに切り替えることができます。
+マップ コントロールでは、複数の異なるマップ [スタイル オプション](/javascript/api/azure-maps-control/atlas.styleoptions)と[基本マップ スタイル](supported-map-styles.md)がサポートされています。 すべてのスタイルは、マップ コントロールを初期化するときに設定できます。 または、マップ コントロールの `setStyle` 関数を使用してスタイルを設定することもできます。 この記事では、これらのスタイル オプションを使用してマップの外観をカスタマイズする方法について説明します。 また、マップにスタイル ピッカー コントロールを実装する方法についても説明します。 ユーザーは、スタイル ピッカー コントロールを使用して別の基本スタイルに切り替えることができます。
 
 ## <a name="set-map-style-options"></a>マップ スタイル オプションを設定する
 
-スタイル オプションは、Web コントロールの初期化時に設定できます。 または、マップ コントロールの `setStyle` 関数を呼び出してスタイル オプションを更新することもできます。 使用できるすべてのスタイル オプションについては、「[StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)」を参照してください。
+スタイル オプションは、Web コントロールの初期化時に設定できます。 または、マップ コントロールの `setStyle` 関数を呼び出してスタイル オプションを更新することもできます。 使用できるすべてのスタイル オプションについては、「[StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)」を参照してください。
 
 ```javascript
 //Set the style options when creating the map.
@@ -82,7 +82,7 @@ var map = new atlas.Map('map', {
 map.setStyle({ style: 'satellite' });
 ```
 
-次のコードでは、マップ インスタンスが読み込まれた後、[setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 関数を使用して、マップのスタイルが `grayscale_dark` から `satellite` に更新されます。
+次のコードでは、マップ インスタンスが読み込まれた後、[setStyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 関数を使用して、マップのスタイルが `grayscale_dark` から `satellite` に更新されます。
 
 <br/>
 
@@ -93,7 +93,7 @@ map.setStyle({ style: 'satellite' });
 
 スタイル ピッカー コントロールには、ポップアップ パネル付きの使いやすいボタンがあり、エンド ユーザーが基本スタイルを切り替えるために使用できます。
 
-スタイル ピッカーには、`icon` と `list` という 2 つの異なるレイアウト オプションがあります。 また、スタイル ピッカーでは、`light` と `dark` という 2 つの異なるスタイル ピッカー コントロールの `style` オプションを選択できます。 この例では、スタイル ピッカーに `icon` レイアウトが使用され、基本マップ スタイルの選択リストがアイコン形式で表示されています。 スタイル ピッカー コントロールには、基本スタイルのセットとして `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` が含まれています。 スタイル ピッカー コントロールのオプションの詳細については、「[StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)」を参照してください。
+スタイル ピッカーには、`icon` と `list` という 2 つの異なるレイアウト オプションがあります。 また、スタイル ピッカーでは、`light` と `dark` という 2 つの異なるスタイル ピッカー コントロールの `style` オプションを選択できます。 この例では、スタイル ピッカーに `icon` レイアウトが使用され、基本マップ スタイルの選択リストがアイコン形式で表示されています。 スタイル ピッカー コントロールには、基本スタイルのセットとして `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` が含まれています。 スタイル ピッカー コントロールのオプションの詳細については、「[StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)」を参照してください。
 
 次の画像は、`icon` レイアウトで表示されるスタイル ピッカー コントロールを示しています。
 
@@ -118,16 +118,16 @@ map.setStyle({ style: 'satellite' });
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
 マップにコントロールを追加する場合は、以下を参照してください。
 

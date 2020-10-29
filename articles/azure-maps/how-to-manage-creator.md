@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677950"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895802"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Creator を管理する
 
@@ -69,7 +69,7 @@ Creator リソースを削除するには、Azure Maps アカウントに移動�
 
 Creator は Azure Maps Access Control (IAM) の設定を継承します。 データにアクセスするすべての API 呼び出しは、認証および承認の規則と共に送信される必要があります。
 
-Creator の使用状況データは、Azure Maps の使用状況グラフとアクティビティ ログに組み込まれています。  詳細については、「[Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
+Creator の使用状況データは、Azure Maps の使用状況グラフとアクティビティ ログに組み込まれています。  詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」をご覧ください。
 
 ## <a name="access-to-creator-services"></a>Creator サービスにアクセスする
 

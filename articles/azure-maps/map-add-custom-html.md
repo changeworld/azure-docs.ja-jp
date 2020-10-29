@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 25ed41be53c114c258e5c63437ff2b5df875af75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c4367e2a649f4e239e2dab374afc4fb867e517b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310732"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891195"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 
 この記事では、イメージ ファイルなどのカスタム HTML をマップに HTML マーカーとして追加する方法について説明します。
 
 > [!NOTE]
-> HTML マーカーはデータ ソースに結び付けられません。 代わりに、位置情報がマーカーに直接追加され、マーカーはマップの `markers` プロパティ ([HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager)) に追加されます。
+> HTML マーカーはデータ ソースに結び付けられません。 代わりに、位置情報がマーカーに直接追加され、マーカーはマップの `markers` プロパティ ([HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager)) に追加されます。
 
 > [!IMPORTANT]
 > レンダリングに WebGL を使用する Azure Maps Web コントロールのほとんどのレイヤーとは異なり、HTML マーカーはレンダリングに従来の DOM 要素を使用します。 そのため、ページに追加される HTML マーカーが多くなるほど、DOM 要素数も多くなります。 数百個の HTML マーカーを追加すると、パフォーマンスが低下する可能性があります。 大規模なデータ セットの場合は、データをクラスター化するか、Symbol または Bubble レイヤーを使用することを検討してください。
 
 ## <a name="add-an-html-marker"></a>HTML マーカーを追加する
 
-[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker) クラスには既定のスタイルがあります。 マーカーをカスタマイズするには、マーカーの色とテキストのオプションを設定します。 HTML マーカー クラスの既定のスタイルは、`{color}` と `{text}` のプレースホルダーがある SVG テンプレートです。 簡単にカスタマイズするには、HTML マーカー オプションの色とテキストのプロパティを設定します。 
+[HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker) クラスには既定のスタイルがあります。 マーカーをカスタマイズするには、マーカーの色とテキストのオプションを設定します。 HTML マーカー クラスの既定のスタイルは、`{color}` と `{text}` のプレースホルダーがある SVG テンプレートです。 簡単にカスタマイズするには、HTML マーカー オプションの色とテキストのプロパティを設定します。 
 
 次のコードでは、HTML マーカーを作成し、color プロパティを "DodgerBlue" に、text プロパティを "10" に設定しています。 ポップアップがマーカーにアタッチされ、ポップアップの表示を切り替えるために `click` イベントが使用されます。
 
@@ -103,13 +103,13 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+> [HtmlMarkerOptions](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
+> [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
 
 マップに追加するコード例の詳細については、次の記事を参照してください。
 

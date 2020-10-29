@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089453"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895768"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -22,7 +22,7 @@ Azure Maps アカウントを作成した後、Azure Active Directory (Azure AD)
 
 ## <a name="view-authentication-details"></a>認証の詳細を表示する
 
-Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 [共有キー認証を使用して](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication) Azure Maps を呼び出す場合は、サブスクリプション キーとして主キーを使用することをお勧めします。 2 次キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](https://aka.ms/amauth)」をご覧ください。
+Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 [共有キー認証を使用して](./azure-maps-authentication.md#shared-key-authentication) Azure Maps を呼び出す場合は、サブスクリプション キーとして主キーを使用することをお勧めします。 2 次キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](./azure-maps-authentication.md)」をご覧ください。
 
 認証の詳細は、Azure portal で確認できます。 Azure portal の自分のアカウントで、 **[設定]** メニューの **[認証]** を選択します。
 
@@ -31,7 +31,7 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 
 ## <a name="discover-category-and-scenario"></a>カテゴリとシナリオを調べる
 
-アプリケーションのニーズに応じて、アプリケーションをセキュリティで保護するための特定の方法があります。 Azure AD では、さまざまな認証フローをサポートするためのカテゴリが定義されています。 アプリケーションがどのカテゴリに適合するかについては、「[アプリケーションのカテゴリ](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#application-categories)」を参照してください。
+アプリケーションのニーズに応じて、アプリケーションをセキュリティで保護するための特定の方法があります。 Azure AD では、さまざまな認証フローをサポートするためのカテゴリが定義されています。 アプリケーションがどのカテゴリに適合するかについては、「[アプリケーションのカテゴリ](../active-directory/develop/authentication-flows-app-scenarios.md#application-categories)」を参照してください。
 
 > [!NOTE]
 > 共有キー認証を使用する場合でも、カテゴリとシナリオを理解することは、アプリケーションをセキュリティで保護するのに役立ちます。
@@ -77,11 +77,11 @@ Azure AD トークン エンドポイントからトークンを要求します�
 | Azure パブリック クラウド     | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
 | Azure Government クラウド | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
-Azure AD からユーザーやサービス プリンシパルのアクセス トークンを要求する方法の詳細については、[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)に関するページを参照し、[シナリオ](./how-to-manage-authentication.md#determine-authentication-and-authorization)の表から特定のシナリオを確認してください。
+Azure AD からユーザーやサービス プリンシパルのアクセス トークンを要求する方法の詳細については、[Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照し、[シナリオ](./how-to-manage-authentication.md#determine-authentication-and-authorization)の表から特定のシナリオを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure AD と Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) に関する記事をご覧ください。
+詳細については、[Azure AD と Azure Maps Web SDK](./how-to-use-map-control.md) に関する記事をご覧ください。
 
 Azure Maps アカウントにおける API 使用状況メトリックを確認します。
 > [!div class="nextstepaction"]

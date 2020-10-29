@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761449"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893688"
 ---
 # <a name="receipt-concepts"></a>レシートの概念
 
@@ -437,7 +437,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 事業経費のファイリングでは、多くの場合、レシートの画像からデータを手動で入力することに時間を費やす必要があります。 レシート API があれば、抽出されたフィールドを使用して、このプロセスを部分的に自動化し、レシートをすばやく分析することができます。  
 
-レシート API には単純な JSON 出力があるため、抽出されたフィールド値をさまざまな方法で使用できます。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。  
+レシート API には単純な JSON 出力があるため、抽出されたフィールド値をさまざまな方法で使用できます。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。  
 
 ### <a name="auditing-and-accounting"></a>監査と会計 
 

@@ -8,16 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b085fbc6e330d38b59fce0c494f672b00c712b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85120490"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891701"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>動的マップの StylesObject スキーマ リファレンス ガイド
 
-この記事は、`StylesObject` の JSON スキーマと構文のリファレンス ガイドです。 `StylesObject` は、stateset スタイルを表す `StyleObject` 配列です。 Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)を使用して、stateset スタイルを屋内マップ データ地物に適用します。 stateset スタイルを作成して屋内マップ機能に関連付けると、それらを使用して動的な屋内マップを作成できます。 動的な屋内マップの作成の詳細については、「[Creator の屋内マップに動的スタイル設定を実装する](indoor-map-dynamic-styling.md)」を参照してください。
+この記事は、`StylesObject` の JSON スキーマと構文のリファレンス ガイドです。 `StylesObject` は、stateset スタイルを表す `StyleObject` 配列です。 Azure Maps Creator [Feature State サービス](/rest/api/maps/featurestate)を使用して、stateset スタイルを屋内マップ データ地物に適用します。 stateset スタイルを作成して屋内マップ機能に関連付けると、それらを使用して動的な屋内マップを作成できます。 動的な屋内マップの作成の詳細については、「[Creator の屋内マップに動的スタイル設定を実装する](indoor-map-dynamic-styling.md)」を参照してください。
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -68,7 +68,7 @@ ms.locfileid: "85120490"
 |-----------|----------|-------------|-------------|
 | `keyName` | string | *state* または動的プロパティ名。 `keyName` は `StyleObject` 配列内で一意である必要があります。| はい |
 | `type` | string | 値は "数値" です。 | はい |
-| `rules` | [`NumberRuleObject`](#numberruleobject)[]| 色が関連付けられている数値スタイルの範囲の配列。 各範囲には、*state* 値が範囲を満たすときに使用される色を定義します。| はい |
+| `rules` | [`NumberRuleObject`](#numberruleobject)[]| 色が関連付けられている数値スタイルの範囲の配列。 各範囲には、 *state* 値が範囲を満たすときに使用される色を定義します。| はい |
 
 ### <a name="numberruleobject"></a>NumberRuleObject
 
@@ -76,7 +76,7 @@ ms.locfileid: "85120490"
 
 複数の重複する範囲を定義した場合、該当する最初の範囲に定義されている色が選択されます。
 
-次の JSON サンプルでは、*state* 値が 50 から 60 の場合、両方の範囲が true になります。 ただし、使用される色は `#343deb` です。これは、一覧の中で該当する最初の範囲だからです。
+次の JSON サンプルでは、 *state* 値が 50 から 60 の場合、両方の範囲が true になります。 ただし、使用される色は `#343deb` です。これは、一覧の中で該当する最初の範囲だからです。
 
 ```json
 
@@ -103,7 +103,7 @@ ms.locfileid: "85120490"
 
 | プロパティ | Type | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
-| `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) には、一連の論理的な範囲条件を定義します。これにより、`true` の場合、*state* の表示色が `color` プロパティで指定された色に変更されます。 `range` が指定されていない場合、`color` プロパティで定義された色が常に使用されます。   | いいえ |
+| `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) には、一連の論理的な範囲条件を定義します。これにより、`true` の場合、 *state* の表示色が `color` プロパティで指定された色に変更されます。 `range` が指定されていない場合、`color` プロパティで定義された色が常に使用されます。   | いいえ |
 | `color` | string | state 値が範囲内にあるときに使用する色。 `color` プロパティは、次のいずれかの形式の JSON 文字列です。 <ul><li> HTML スタイルの 16 進値 </li><li> RGB ("#ff0", "#ffff00", "rgb(255, 255, 0)")</li><li> RGBA ("rgba(255, 255, 0, 1)")</li><li> HSL("hsl(100, 50%, 50%)")</li><li> HSLA("hsla(100, 50%, 50%, 1)")</li><li> 黄や青など、定義済みの HTML の色名。</li></ul> | はい |
 
 ### <a name="rangeobject"></a>RangeObject

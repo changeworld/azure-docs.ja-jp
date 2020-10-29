@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361536"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895938"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Drawing Conversion のエラーと警告
 
-[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/conversion)を使用すると、アップロードした Drawing パッケージをマップ データに変換できます。 Drawing パッケージは、[Drawing パッケージの要件](drawing-requirements.md)に従っている必要があります。 1 つ以上の要件が満たされていない場合、Conversion サービスからエラーまたは警告が返されます。 この記事では、変換のエラーと警告コードと、その解決方法の推奨事項を示します。 また、Conversion サービスからこれらのコードが返される可能性がある図面の例もいくつか示します。
+[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用すると、アップロードした Drawing パッケージをマップ データに変換できます。 Drawing パッケージは、[Drawing パッケージの要件](drawing-requirements.md)に従っている必要があります。 1 つ以上の要件が満たされていない場合、Conversion サービスからエラーまたは警告が返されます。 この記事では、変換のエラーと警告コードと、その解決方法の推奨事項を示します。 また、Conversion サービスからこれらのコードが返される可能性がある図面の例もいくつか示します。
 
 変換の警告が発生しても、Conversion サービスは成功します。 ただし、すべての警告を確認して解決することをお勧めします。 警告は、変換の一部が無視されたか、自動的に修正されたことを意味します。 警告を解決しないと、後のプロセスでエラーが発生する可能性があります。
 
@@ -159,7 +159,7 @@ DWG ファイルにサポートされているエンティティの種類のみ�
 
 #### <a name="how-to-fix-redundantattribution"></a>*redundantAttribution を修正する方法*
 
-**redundantAttribution* 警告を修正するには、冗長な、または競合するオブジェクト プロパティを削除します。
+* *redundantAttribution* 警告を修正するには、冗長な、または競合するオブジェクト プロパティを削除します。
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
@@ -347,7 +347,7 @@ DWG ファイルにサポートされているエンティティの種類のみ�
 
 #### <a name="how-to-fix-dwgerror"></a>*dwgError を修正する方法*
 
-**dwgError** を修正するには、_manifest.json_ ファイルを調べて次のことを確認します。
+**dwgError** を修正するには、 _manifest.json_ ファイルを調べて次のことを確認します。
 
 * ZIP アーカイブ内のすべての DWG ファイルは有効な AutoCAD DWG 形式の図面です。1 つずつ AutoCAD で開きます。 すべての無効な図面を削除するか修正します。
 * _manifest.json_ 内の DWG ファイルの一覧は、ZIP アーカイブの DWG ファイルと一致します。
@@ -358,7 +358,7 @@ DWG ファイルにサポートされているエンティティの種類のみ�
 
 #### <a name="description-for-invalidjsonformat"></a>invalidJsonFormat の説明
 
-**invalidJsonFormat** エラーは、_manifest.json_ ファイルを読み取れない場合に発生します。
+**invalidJsonFormat** エラーは、 _manifest.json_ ファイルを読み取れない場合に発生します。
 
 JSON の形式または構文エラーのため、_manifest.json_file を読み取ることができません。 JSON の形式と構文の詳細については、「[The JavaScript Object Notation (JSON) Data Interchange Format (JavaScript Object Notation (JSON) データ交換形式)](https://tools.ietf.org/html/rfc7159)」を参照してください。
 
@@ -370,7 +370,7 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 
 #### <a name="description-for-missingrequiredfield"></a>*missingRequiredField の説明*
 
-**missingRequiredField** エラーは、_manifest.json_ ファイルに必要なデータが不足している場合に発生します。
+**missingRequiredField** エラーは、 _manifest.json_ ファイルに必要なデータが不足している場合に発生します。
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*missingRequiredField を修正する方法*
 
@@ -380,7 +380,7 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 
 #### <a name="description-for-missingmanifest"></a>*missingManifest の説明*
 
-**missingManifest** エラーは、_manifest.json_ ファイルが ZIP アーカイブに存在しない場合に発生します。
+**missingManifest** エラーは、 _manifest.json_ ファイルが ZIP アーカイブに存在しない場合に発生します。
 
 **missingManifest** エラーは、次の理由の 1 つ以上が原因で発生します。
 
@@ -396,7 +396,7 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 
 #### <a name="description-for-conflict"></a>*conflict の説明*
 
-**conflict** エラーは、_manifest.json_ ファイルに競合する情報が含まれている場合に発生します。
+**conflict** エラーは、 _manifest.json_ ファイルに競合する情報が含まれている場合に発生します。
 
 #### <a name="example-scenario-for-conflict"></a>*conflict のシナリオ例*
 
@@ -422,13 +422,13 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 
 #### <a name="how-to-fix-conflict"></a>*conflict を修正する方法*
 
-**conflict** エラーを修正するには、_manifest.json_ を調べて競合する情報を削除します。
+**conflict** エラーを修正するには、 _manifest.json_ を調べて競合する情報を削除します。
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 
 #### <a name="description-for-invalidgeoreference"></a>*invalidGeoreference の説明*
 
-**invalidGeoreference** エラーは、_manifest.json_ ファイルに無効なジオリファレンスが含まれている場合に発生します。
+**invalidGeoreference** エラーは、 _manifest.json_ ファイルに無効なジオリファレンスが含まれている場合に発生します。
 
 **invalidGeoreference** エラーは、次の理由の 1 つ以上が原因で発生します。
 
@@ -498,7 +498,7 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>verticalPenetrationError を修正する方法
 
-**verticalPenetrationError** エラーを修正するには、「[Drawing パッケージの要件](drawing-requirements.md)」の記事の垂直貫入地物の使用方法を参照してください。
+**verticalPenetrationError** エラーを修正するには、「 [Drawing パッケージの要件](drawing-requirements.md)」の記事の垂直貫入地物の使用方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

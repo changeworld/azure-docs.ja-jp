@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 5383309143302e0f3fb2052b47e4c497d9a21bf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976877"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896618"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps の天気の対象範囲
 
-この記事では、Azure Maps [Weather Services](https://aka.ms/AzureMapsWeatherService) の対象範囲情報を提供します。 Azure Maps Weather データ サービスを使用すると、レーダー タイル、現在の気象状況、天気予報、ルートに沿った天気などの詳細を返すことができます。
+この記事では、Azure Maps [Weather Services](/rest/api/maps/weather) の対象範囲情報を提供します。 Azure Maps Weather データ サービスを使用すると、レーダー タイル、現在の気象状況、天気予報、ルートに沿った天気などの詳細を返すことができます。
 
 Azure Maps の情報と精度は、すべての国と地域に対して同じレベルを備えているわけではありません。
 
@@ -299,4 +299,4 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | トルコ                 | ✓ |   | | ✓| 
 | ウクライナ                | ✓ |   | | ✓| 
 | イギリス         | ✓ | ✓ | ✓| ✓| 
-| バチカン           | ✓ |   |✓ | ✓| 
+| バチカン           | ✓ |   |✓ | ✓|

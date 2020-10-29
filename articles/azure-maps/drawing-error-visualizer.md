@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86524745"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895853"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
 
-Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](https://docs.microsoft.com/rest/api/maps/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
+Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](/rest/api/maps/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,8 +58,8 @@ Drawing Error Visualizer をダウンロードする前に、次のことを行�
 
 `diagnosticPackageLocation` リンクからダウンロードした zip パッケージ内には 2 つのファイルがあります。
 
-* _VisualizationTool.zip_:Drawing Error Visualizer のソース コード、メディア、および Web ページが含まれています。
-* _ConversionWarningsAndErrors.json_:Drawing Error Visualizer によって使用される警告、エラー、その他の詳細の書式設定された一覧が含まれています。
+* _VisualizationTool.zip_ :Drawing Error Visualizer のソース コード、メディア、および Web ページが含まれています。
+* _ConversionWarningsAndErrors.json_ :Drawing Error Visualizer によって使用される警告、エラー、その他の詳細の書式設定された一覧が含まれています。
 
 _VisualizationTool.zip_ フォルダーを展開します。 次の項目が含まれています。
 
@@ -67,7 +67,7 @@ _VisualizationTool.zip_ フォルダーを展開します。 次の項目が含�
 * _static_ フォルダー: ソース コード
 * _index.html_ ファイル: Web アプリケーション。
 
-以下の各バージョン番号のブラウザーを使用して、_index.html_ ファイルを開きます。 記載されているバージョンと同等の互換性のある動作を提供するバージョンであれば、別のバージョンを使用できます。
+以下の各バージョン番号のブラウザーを使用して、 _index.html_ ファイルを開きます。 記載されているバージョンと同等の互換性のある動作を提供するバージョンであれば、別のバージョンを使用できます。
 
 * Microsoft Edge 80
 * Safari 13
@@ -90,7 +90,7 @@ _ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawin
 
 ## <a name="next-steps"></a>次のステップ
 
-[Drawing パッケージが要件を満たしたら](drawing-requirements.md)、[Azure Maps Dataset サービス](https://docs.microsoft.com/rest/api/maps/conversion)を使用して、Drawing パッケージをデータセットに変換できます。 その後、屋内マップ Web モジュールを使用してアプリケーションを開発できます。 詳細については、次の記事を参照してください。
+[Drawing パッケージが要件を満たしたら](drawing-requirements.md)、[Azure Maps Dataset サービス](/rest/api/maps/conversion)を使用して、Drawing パッケージをデータセットに変換できます。 その後、屋内マップ Web モジュールを使用してアプリケーションを開発できます。 詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Drawing Conversion のエラー コード](drawing-conversion-error-codes.md)

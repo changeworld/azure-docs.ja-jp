@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876517"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897145"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>チュートリアル - Bing 地図から Web アプリを移行する
 
 Bing 地図が使用される Web アプリでは、多くの場合、Bing 地図 V8 JavaScript SDK が使用されます。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。
 
-既存の Web アプリケーションを移行する場合は、Cesium、Leaflet、OpenLayers などのオープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 そういったライブラリが使用されていて、使用を継続したい場合は、それを Azure Maps タイル サービス ([道路タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星タイル](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) に接続することができます。 よく使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法については、以下のリンクから詳しい情報をご覧いただけます。
+既存の Web アプリケーションを移行する場合は、Cesium、Leaflet、OpenLayers などのオープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 そういったライブラリが使用されていて、使用を継続したい場合は、それを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続することができます。 よく使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法については、以下のリンクから詳しい情報をご覧いただけます。
 
 -   Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
 -   Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
@@ -68,7 +68,7 @@ Azure Maps には、その機能を拡張する [Web SDK 用のオープンソ�
 
 Bing 地図と Azure Maps の Web SDK の注意すべき主な相違点をいくつか以下に示します。
 
--   Azure Maps Web SDK にアクセスするためのホスト エンドポイントが提供されるだけでなく、必要に応じて、Web SDK をアプリに埋め込むための NPM パッケージも使用可能です。 詳細については、こちらの[ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)を参照してください。 このパッケージには TypeScript 定義も含まれています。
+-   Azure Maps Web SDK にアクセスするためのホスト エンドポイントが提供されるだけでなく、必要に応じて、Web SDK をアプリに埋め込むための NPM パッケージも使用可能です。 詳細については、こちらの[ドキュメント](./how-to-use-map-control.md)を参照してください。 このパッケージには TypeScript 定義も含まれています。
 -   Bing 地図には、SDK のホスト ブランチとして、リリース用と実験用の 2 つがあります。 実験ブランチでは、新規の開発が進行していると、1 日に複数回、更新が行われる場合があります。 Azure Maps でホストされるのはリリース ブランチのみですが、オープンソースの Azure Maps コード サンプル プロジェクトに試験的な機能がカスタム モジュールとして作成されます。 Bing 地図にはかつて、更新頻度を低くすることによってリリースによる破壊的変更のリスクを軽減する凍結ブランチもありました。 Azure Maps では、NPM モジュールを使用して、過去にリリースされたあらゆるマイナー バージョンを参照できるようになっています。
 
 > [!TIP]
@@ -78,20 +78,20 @@ Bing 地図と Azure Maps の Web SDK の注意すべき主な相違点をいく
 -   両方のプラットフォームで基本マップに同様のタイリング システムを使用しますが、Bing 地図のタイルのディメンションは 256 ピクセルで、Azure Maps のタイルのディメンションは 512 ピクセルとなります。 そのため、Azure Maps で Bing 地図と同じマップ ビューを取得するには、Bing 地図で使用されるズーム レベルを、Azure Maps で 1 ずつ減算する必要があります。
 -   Bing 地図では座標は `latitude, longitude` と呼ばれますが、Azure Maps では `longitude, latitude` が使用されます。 この形式は、ほとんどの GIS プラットフォームが準拠する標準の `[x, y]` と合致します。
 
--   Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、"[atlas.data" 名前空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、[atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) というクラスがあります。これを使用して、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新および保守できるようにします。
+-   Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、"[atlas.data" 名前空間](/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、[atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) というクラスがあります。これを使用して、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新および保守できるようにします。
 -   Azure Maps の座標は、`[longitude, latitude]` または `new atlas.data.Position(longitude, latitude)` 形式のシンプルな数値配列として指定できる位置オブジェクトとして定義されます。
 
 > [!TIP]
-> Position クラスには、`latitude, longitude` 形式の座標をインポートするための静的ヘルパー関数があります。 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position) 関数は、多くの場合、Bing 地図コードの `new Microsoft.Maps.Location` 関数と置き換えることができます。
+> Position クラスには、`latitude, longitude` 形式の座標をインポートするための静的ヘルパー関数があります。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) 関数は、多くの場合、Bing 地図コードの `new Microsoft.Maps.Location` 関数と置き換えることができます。
 
 -   マップに追加される各図形にスタイル設定情報を指定するのではなく、Azure Maps によってデータからスタイルが分離されます。 データはデータ ソースに格納され、Azure Maps コードでデータをレンダリングするために使用される、レンダリング レイヤーに接続されます。 この手法では、パフォーマンスが向上します。 さらに、多くのレイヤーでは、データドリブンのスタイル設定がサポートされます。これにより、ビジネス ロジックをレイヤー スタイル オプションに追加して、図形で定義されているプロパティに基づいてレイヤー内で個々の図形をレンダリングする方法を変更することができます。
 -   Azure Maps の `atlas.math` 名前空間には、便利な空間演算関数が数多く用意されていますが、これらは Bing 地図の空間演算モジュールのものとは異なります。 主な違いとして、Azure Maps には、二項演算 (和集合、積集合など) 用の組み込みの関数がありません。ただし Azure Maps は、オープン スタンダードである GeoJSON をベースとしているため、オープンソースのライブラリが数多く提供されています。 広く使われているオプションの 1 つとして、[turf js](http://turfjs.org/) があります。これは Azure Maps との相性がよく、多数の空間演算機能を利用できます。
 
-Azure Maps 関連の用語を網羅した一覧については、[Azure Maps の用語集](https://docs.microsoft.com/azure/azure-maps/glossary)も参照してください。
+Azure Maps 関連の用語を網羅した一覧については、[Azure Maps の用語集](./glossary.md)も参照してください。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK のサイドバイサイドの例
 
-Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps Web SDK に移行する際に役立つ一般的なユース ケースについて説明する、各プラットフォームのコード サンプルのコレクションを以下に示します。 Web アプリケーションに関連するコード サンプルは JavaScript で提供されています。しかし、Azure Maps では、[NPM モジュール](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)を通じて、追加オプションとして TypeScript 定義も提供されます。
+Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps Web SDK に移行する際に役立つ一般的なユース ケースについて説明する、各プラットフォームのコード サンプルのコレクションを以下に示します。 Web アプリケーションに関連するコード サンプルは JavaScript で提供されています。しかし、Azure Maps では、[NPM モジュール](./how-to-use-map-control.md)を通じて、追加オプションとして TypeScript 定義も提供されます。
 
 **トピック**
 
@@ -230,14 +230,14 @@ Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps 
 
 ![Azure Maps のマップ](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
 
-Web アプリで Azure Maps マップ コントロールを設定して使用する方法に関する詳細なドキュメントについては、[こちら](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)を参照してください。
+Web アプリで Azure Maps マップ コントロールを設定して使用する方法に関する詳細なドキュメントについては、[こちら](./how-to-use-map-control.md)を参照してください。
 
 > [!TIP]
 > Azure Maps では、縮小されたバージョンと縮小されていないバージョン両方の SDK が公開されています。 ファイル名から `.min` を削除してください。 縮小されていないバージョンは問題をデバッグする際に役立ちますが、運用環境では必ず、縮小されたバージョンを使用してください。その方がファイル サイズが小さくて済みます。
 
 **その他のリソース**
 
--   Azure Maps では、マップ ビューの回転とピッチを行うためのナビゲーション コントロールも提供されます ([こちら](https://docs.microsoft.com/azure/azure-maps/map-add-controls)を参照してください)。
+-   Azure Maps では、マップ ビューの回転とピッチを行うためのナビゲーション コントロールも提供されます ([こちら](./map-add-controls.md)を参照してください)。
 
 ### <a name="localizing-the-map"></a>マップのローカライズ
 
@@ -281,7 +281,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Azure Maps を使用すると、言語と地域の設定が異なる複数のマップ インスタンスを同じページに読み込むことができます。 また、マップでは読み込み後に、これらの設定を更新することもできます。 Azure Maps でサポートされている言語の詳細な一覧については、[こちら](https://docs.microsoft.com/azure/azure-maps/supported-languages)を参照してください。
+> Azure Maps を使用すると、言語と地域の設定が異なる複数のマップ インスタンスを同じページに読み込むことができます。 また、マップでは読み込み後に、これらの設定を更新することもできます。 Azure Maps でサポートされている言語の詳細な一覧については、[こちら](./supported-languages.md)を参照してください。
 
 言語が "fr" に設定され、ユーザーの地域が "fr-FR" に設定されている Azure Maps の例を以下に示します。
 
@@ -333,8 +333,8 @@ map.setStyle({
 
 **その他のリソース**
 
--   [マップ スタイルを選択する](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
--   [サポートされているマップ スタイル](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)
+-   [マップ スタイルを選択する](./choose-map-style.md)
+-   [サポートされているマップ スタイル](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>画鋲の追加
 
@@ -462,16 +462,16 @@ map.markers.add(new atlas.HtmlMarker({
 
 **その他のリソース**
 
--   [データ ソースを作成する](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [シンボル レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [バブル レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [ポイント データをクラスタリングする](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [HTML マーカーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [データドリブンのスタイルの式を使用する](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [シンボル レイヤーのアイコン オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [シンボル レイヤーのテキスト オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML マーカーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML マーカーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [データ ソースを作成する](./create-data-source-web-sdk.md)
+-   [シンボル レイヤーを追加する](./map-add-pin.md)
+-   [バブル レイヤーを追加する](./map-add-bubble-layer.md)
+-   [ポイント データをクラスタリングする](./clustering-point-data-web-sdk.md)
+-   [HTML マーカーを追加する](./map-add-custom-html.md)
+-   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+-   [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>カスタム画鋲の追加
 
@@ -593,14 +593,14 @@ Azure Maps のシンボル レイヤーでもカスタム イメージがサポ�
 
 **その他のリソース**
 
--   [データ ソースを作成する](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [シンボル レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [HTML マーカーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [データドリブンのスタイルの式を使用する](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [シンボル レイヤーのアイコン オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [シンボル レイヤーのテキスト オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML マーカーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML マーカーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [データ ソースを作成する](./create-data-source-web-sdk.md)
+-   [シンボル レイヤーを追加する](./map-add-pin.md)
+-   [HTML マーカーを追加する](./map-add-custom-html.md)
+-   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+-   [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>ポリラインの追加
 
@@ -668,9 +668,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **その他のリソース**
 
--   [マップに線を追加する](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-lines-to-the-map)
--   [線レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [データドリブンのスタイルの式を使用する](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [マップに線を追加する](./map-add-line-layer.md)
+-   [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>多角形の追加
 
@@ -744,11 +744,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **その他のリソース**
 
--   [マップに多角形を追加する](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-polygon-to-the-map)
--   [マップに円を追加する](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
--   [多角形レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [線レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [データドリブンのスタイルの式を使用する](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [マップに多角形を追加する](./map-add-shape.md#use-a-polygon-layer)
+-   [マップに円を追加する](./map-add-shape.md#add-a-circle-to-the-map)
+-   [多角形レイヤーのオプション](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+-   [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>情報ボックスの表示
 
@@ -820,12 +820,12 @@ map.events.add('click', marker, function () {
 
 **その他のリソース**
 
--   [ポップアップを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-popup)
+-   [ポップアップを追加する](./map-add-popup.md)
 -   [メディア コンテンツを含むポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 -   [図形のポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 -   [複数のピンでのポップアップの再利用](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [ポップアップのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
--   [ポップアップのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+-   [ポップアップのクラス](/javascript/api/azure-maps-control/atlas.popup)
+-   [ポップアップのオプション](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>画鋲クラスタリング
 
@@ -947,7 +947,7 @@ Azure Maps では、データはデータ ソースによって追加および�
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | クラスターが拡大し始めるか、分解するズーム レベルを計算します。    |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | `Promise<Feature<Geometry, any> | Shape>` | クラスター内のすべてのポイントを取得します。 ポイントのサブセットを返すには `limit` を設定し、ポイントをページ送りするには `offset` を使用します。    |
 
-クラスター化されたデータをマップ上にレンダリングする際、多くの場合は、2 つ以上のレイヤーを使用するのが最も簡単です。 以下の例では、3 つのレイヤーを使用します。つまり、クラスターのサイズに基づいてスケーリングされた色付き円を描画するためのバブル レイヤー、クラスター サイズをテキストとしてレンダリングするためのシンボル レイヤー、およびクラスタリング解除されたポイントをレンダリングするための 2 番目のシンボル レイヤーです。 Azure Maps でクラスタリングされたデータをレンダリングする方法は他にも多数あります (詳しくは、[ポイント データのクラスタリング](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)に関するドキュメントを参照)。
+クラスター化されたデータをマップ上にレンダリングする際、多くの場合は、2 つ以上のレイヤーを使用するのが最も簡単です。 以下の例では、3 つのレイヤーを使用します。つまり、クラスターのサイズに基づいてスケーリングされた色付き円を描画するためのバブル レイヤー、クラスター サイズをテキストとしてレンダリングするためのシンボル レイヤー、およびクラスタリング解除されたポイントをレンダリングするための 2 番目のシンボル レイヤーです。 Azure Maps でクラスタリングされたデータをレンダリングする方法は他にも多数あります (詳しくは、[ポイント データのクラスタリング](./clustering-point-data-web-sdk.md)に関するドキュメントを参照)。
 
 GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を使用して、Azure Maps に直接インポートできます。
 
@@ -1051,10 +1051,10 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
 
 **その他のリソース**
 
--   [シンボル レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [バブル レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [ポイント データをクラスタリングする](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [データドリブンのスタイルの式を使用する](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [シンボル レイヤーを追加する](./map-add-pin.md)
+-   [バブル レイヤーを追加する](./map-add-bubble-layer.md)
+-   [ポイント データをクラスタリングする](./clustering-point-data-web-sdk.md)
+-   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>ヒート マップを追加する
 
@@ -1183,10 +1183,10 @@ Azure Maps で、GeoJSON データをデータ ソースに読み込み、その
 
 **その他のリソース**
 
--   [ヒート マップ レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-heat-map-layer)
--   [ヒート マップ レイヤーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [ヒート マップ レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [データドリブンのスタイルの式を使用する](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [ヒート マップ レイヤーを追加する](./map-add-heat-map-layer.md)
+-   [ヒート マップ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+-   [ヒート マップ レイヤーのオプション](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+-   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>タイル レイヤーをオーバーレイする
 
@@ -1238,9 +1238,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **その他のリソース**
 
--   [タイル レイヤーを追加する](https://docs.microsoft.com/azure/azure-maps/map-add-tile-layer)
--   [タイル レイヤーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [タイル レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+-   [タイル レイヤーを追加する](./map-add-tile-layer.md)
+-   [タイル レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+-   [タイル レイヤーのオプション](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>トラフィック データを表示する
 
@@ -1284,7 +1284,7 @@ Azure Maps の交通アイコンのいずれかをクリックすると、ポッ
 
 **その他のリソース**
 
--   [マップ上にトラフィックを表示する](https://docs.microsoft.com/azure/azure-maps/map-show-traffic)
+-   [マップ上にトラフィックを表示する](./map-show-traffic.md)
 -   [交通情報オーバーレイのオプション](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 -   [トラフィック コントロール](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
@@ -1344,7 +1344,7 @@ Bing 地図でグラウンド オーバーレイを作成する場合は、オ�
 Azure Maps では、`atlas.layer.ImageLayer` クラスを使用して、ジオリファレンスされたイメージをオーバーレイできます。 このクラスでは、イメージへの URL と、イメージの四隅の座標のセットが必要です。 イメージは、同じドメインでホストされているか、CORS が有効になっている必要があります。
 
 > [!TIP]
-> 画像の各隅の座標ではなく、北、南、東、西および回転の情報のみがある場合は、静的な [atlas.layer.ImageLayer.getCoordinatesFromEdges](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) 関数を使用できます。
+> 画像の各隅の座標ではなく、北、南、東、西および回転の情報のみがある場合は、静的な [atlas.layer.ImageLayer.getCoordinatesFromEdges](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) 関数を使用できます。
 
 ```html
 <!DOCTYPE html>
@@ -1404,8 +1404,8 @@ Azure Maps では、`atlas.layer.ImageLayer` クラスを使用して、ジオ�
 
 **その他のリソース**
 
--   [イメージをオーバーレイする](https://docs.microsoft.com/azure/azure-maps/map-add-image-layer)
--   [イメージ レイヤーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+-   [イメージをオーバーレイする](./map-add-image-layer.md)
+-   [イメージ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>マップへの KML データの追加
 
@@ -1467,7 +1467,7 @@ Azure と Bing のどちらのマップも、KML、KMZ、GeoRSS、GeoJSON、Well
 
 **後: Azure Maps**
 
-Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式となりますが、 [空間 IO モジュール](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)を使用すれば、その他の空間データ形式も容易に統合することができます。 このモジュールには、空間データの読み取りと書き込みの両方に対応した関数のほか、これらの空間データ形式から簡単にデータをレンダリングできるシンプルなデータ レイヤーが備わっています。 空間データ ファイルのデータを読み取るには、URL を (あるいは生データを文字列または BLOB として)  `atlas.io.read` 関数に渡します。 ファイルから解析済みのデータがすべて返されるので、そのデータをマップに追加することができます。 KML は、多くのスタイル情報を含んでいるため、ほとんどの空間データ形式と比べてやや複雑です。 そうしたスタイルの大半のレンダリングは、 `SpatialDataLayer` クラスでサポートされますが、機能データを読み込む前にアイコン画像をマップに読み込む必要があり、また、マップには別途レイヤーとしてグラウンド オーバーレイを追加する必要があります。 URL でデータを読み込む場合は、CORS が有効なエンドポイントでデータがホストされているか、または、読み取り関数にオプションとしてプロキシ サービスを渡す必要があります。
+Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式となりますが、[空間 IO モジュール](/javascript/api/azure-maps-spatial-io/)を使用すれば、その他の空間データ形式も容易に統合することができます。 このモジュールには、空間データの読み取りと書き込みの両方に対応した関数のほか、これらの空間データ形式から簡単にデータをレンダリングできるシンプルなデータ レイヤーが備わっています。 空間データ ファイルのデータを読み取るには、URL を (あるいは生データを文字列または BLOB として) `atlas.io.read` 関数に渡します。 ファイルから解析済みのデータがすべて返されるので、そのデータをマップに追加することができます。 KML は、多くのスタイル情報を含んでいるため、ほとんどの空間データ形式と比べてやや複雑です。 そうしたスタイルの大半のレンダリングは、`SpatialDataLayer` クラスでサポートされますが、地物データを読み込む前にアイコン画像をマップに読み込む必要があり、また、マップには別途レイヤーとしてグラウンド オーバーレイを追加する必要があります。 URL でデータを読み込む場合は、CORS が有効なエンドポイントでデータがホストされているか、または、読み取り関数にオプションとしてプロキシ サービスを渡す必要があります。
 
 ```html
 <!DOCTYPE html>
@@ -1564,9 +1564,9 @@ Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式�
 
 **その他のリソース**
 
--   [atlas.io.read 関数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+-   [atlas.io.read 関数](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+-   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+-   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>描画ツールの追加
 
@@ -1683,7 +1683,7 @@ Azure Maps では、アプリで参照する必要のある JavaScript ファイ
 
 **その他のリソース**
 
--   [ドキュメント](https://docs.microsoft.com/azure/azure-maps/set-drawing-options)
+-   [ドキュメント](./set-drawing-options.md)
 -   [コード サンプル](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="next-steps"></a>次の手順
@@ -1703,16 +1703,16 @@ Azure Maps では、アプリで参照する必要のある JavaScript ファイ
 **サービス**
 
 > [!div class="nextstepaction"]
-> [Azure Maps サービス モジュールの使用](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [Azure Maps サービス モジュールの使用](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [観光名所の検索](https://docs.microsoft.com/azure/azure-maps/map-search-location)
+> [観光名所の検索](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [座標から情報を取得する (逆ジオコード)](https://docs.microsoft.com/azure/azure-maps/map-get-information-from-coordinate)
+> [座標から情報を取得する (逆ジオコード)](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [A から B までのルートを表示する ](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [A から B までのルートを表示する ](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [JQuery UI を使用する自動提案検索](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
@@ -1729,7 +1729,7 @@ Azure Maps Web SDK の詳細について学習します。
 > [描画ツール モジュールの使用方法](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Azure Maps Web SDK サービス API のリファレンス ドキュメント](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Azure Maps Web SDK サービス API のリファレンス ドキュメント](/javascript/api/azure-maps-control/)

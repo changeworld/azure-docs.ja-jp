@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbc972d230988420a066c4b927388b885f99a17
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321834"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896747"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -38,7 +38,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」をご覧ください。
 
-4. [リソース グループを作成します](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups)。 このチュートリアルでは、リソース グループに *ContosoRental* という名前を付けますが、好きな名前を選択できます。
+4. [リソース グループを作成します](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。 このチュートリアルでは、リソース グループに *ContosoRental* という名前を付けますが、好きな名前を選択できます。
 
 5. [rentalCarSimulation C# プロジェクト](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation)をダウンロードします。
 
@@ -83,7 +83,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 3. Azure 関数が、デバイス テレメトリ イベントに対するイベント サブスクリプションによってトリガーされます。
 
-4. この関数は、車載デバイスの位置座標、イベント時刻、デバイス ID をログに記録します。 次に、[Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して、車がジオフェンスの外側に移動したかどうかを判断します。 ジオフェンス境界の外側で走行した場合、この関数により、イベントから受信した位置データが BLOB コンテナーに格納されます。 また、関数によって[住所の逆引き検索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)に対してクエリが実行されて、座標位置が住所に変換され、残りのデバイス位置データと共に格納されます。
+4. この関数は、車載デバイスの位置座標、イベント時刻、デバイス ID をログに記録します。 次に、[Spatial Geofence Get API](/rest/api/maps/spatial/getgeofence) を使用して、車がジオフェンスの外側に移動したかどうかを判断します。 ジオフェンス境界の外側で走行した場合、この関数により、イベントから受信した位置データが BLOB コンテナーに格納されます。 また、関数によって[住所の逆引き検索](/rest/api/maps/search/getsearchaddressreverse)に対してクエリが実行されて、座標位置が住所に変換され、残りのデバイス位置データと共に格納されます。
 
 次の図は、このシステムの概要を示したものです。
 
@@ -95,9 +95,9 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-車の違反の追跡データを格納するために、リソース グループに[汎用 v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview#general-purpose-v2-accounts)を作成します。 リソース グループを作成していない場合は、[リソース グループの作成](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups)に関するセクションの指示に従ってください。 このチュートリアルでは、リソース グループに *ContosoRental* という名前を付けます。
+車の違反の追跡データを格納するために、リソース グループに[汎用 v2 ストレージ アカウント](../storage/common/storage-account-overview.md#general-purpose-v2-accounts)を作成します。 リソース グループを作成していない場合は、[リソース グループの作成](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)に関するセクションの指示に従ってください。 このチュートリアルでは、リソース グループに *ContosoRental* という名前を付けます。
 
-ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)」の手順に従います。 このチュートリアルでは、ストレージ アカウントの名前を *contosorentalstorage* としていますが、通常は好きな名前を付けることができます。
+ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)」の手順に従います。 このチュートリアルでは、ストレージ アカウントの名前を *contosorentalstorage* としていますが、通常は好きな名前を付けることができます。
 
 ストレージ アカウントを正常に作成したら、ログ データを格納するコンテナーを作成する必要があります。
 
@@ -109,13 +109,13 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
      :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="システムの概要図。":::
 
-3. 自分のストレージ アカウントの **[アクセス キー]** ペインに移動し、**ストレージ アカウント名**と **[key1]** セクションの **[キー]** の値をコピーします。 Azure 関数を作成して Event Grid サブスクリプションを追加する方法に関するセクションで、両方の値が必要になります。
+3. 自分のストレージ アカウントの **[アクセス キー]** ペインに移動し、 **ストレージ アカウント名** と **[key1]** セクションの **[キー]** の値をコピーします。 Azure 関数を作成して Event Grid サブスクリプションを追加する方法に関するセクションで、両方の値が必要になります。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="システムの概要図。":::
 
 ## <a name="upload-a-geofence"></a>ジオフェンスをアップロードする
 
-次に、[Postman アプリ](https://www.getpostman.com)を使用して、Azure Maps に[ジオフェンスをアップロードします](https://docs.microsoft.com/azure/azure-maps/geofence-geojson)。 ジオフェンスにより、レンタカーの承認された地理的領域が定義されます。 Azure 関数でジオフェンスを使用して、車がジオフェンス領域の外に移動したかどうかを判断します。
+次に、[Postman アプリ](https://www.getpostman.com)を使用して、Azure Maps に[ジオフェンスをアップロードします](./geofence-geojson.md)。 ジオフェンスにより、レンタカーの承認された地理的領域が定義されます。 Azure 関数でジオフェンスを使用して、車がジオフェンス領域の外に移動したかどうかを判断します。
 
 Azure Maps Data Upload API を使用してジオフェンスをアップロードするには、次の手順に従います。 
 
@@ -155,16 +155,16 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 
 ## <a name="create-an-iot-hub"></a>IoT ハブを作成する
 
-IoT ハブを使用すると、IoT アプリケーションとそれが管理するデバイスの間で、セキュリティで保護された信頼性の高い双方向通信を実現できます。 このチュートリアルでは、車載デバイスから情報を取得して、レンタカーの位置を特定する必要があります。 このセクションでは、*ContosoRental* リソース グループ内に IoT ハブを作成します。 このハブは、デバイス テレメトリ イベントを発行する役割を担います。
+IoT ハブを使用すると、IoT アプリケーションとそれが管理するデバイスの間で、セキュリティで保護された信頼性の高い双方向通信を実現できます。 このチュートリアルでは、車載デバイスから情報を取得して、レンタカーの位置を特定する必要があります。 このセクションでは、 *ContosoRental* リソース グループ内に IoT ハブを作成します。 このハブは、デバイス テレメトリ イベントを発行する役割を担います。
 
 > [!NOTE]
 > Event Grid でデバイス テレメトリ イベントを発行する機能は、現在、パブリック プレビュー段階です。 この機能は、以下を除くすべての Logic Apps リージョンで利用できます。米国東部、米国西部、西ヨーロッパ、Azure Government、Azure China 21Vianet、Azure Germany。
 
-*ContosoRental* リソース グループに IoT ハブを作成するには、[IoT ハブの作成](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)に関するセクションの手順に従います。
+*ContosoRental* リソース グループに IoT ハブを作成するには、 [IoT ハブの作成](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)に関するセクションの手順に従います。
 
 ## <a name="register-a-device-in-your-iot-hub"></a>IoT ハブにデバイスを登録する
 
-デバイスは、IoT ハブ ID レジストリに登録されていない限り、IoT ハブに接続できません。 ここでは、*InVehicleDevice* という名前のデバイスを 1 つ作成します。 IoT ハブ内にデバイスを作成して登録するには、「[IoT ハブに新しいデバイスを登録する](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)」の手順に従います。 デバイスのプライマリ接続文字列を必ずコピーしてください。 この情報は後で必要になります。
+デバイスは、IoT ハブ ID レジストリに登録されていない限り、IoT ハブに接続できません。 ここでは、 *InVehicleDevice* という名前のデバイスを 1 つ作成します。 IoT ハブ内にデバイスを作成して登録するには、「[IoT ハブに新しいデバイスを登録する](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)」の手順に従います。 デバイスのプライマリ接続文字列を必ずコピーしてください。 この情報は後で必要になります。
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>関数を作成して Event Grid サブスクリプションを追加する
 
@@ -176,24 +176,24 @@ Azure Functions はサーバーレス コンピューティング サービス�
 
 次に、Azure 関数を設定します。
 
-1. Azure portal のダッシュボードで、 **[リソースの作成]** を選択します。 検索テキスト ボックスに「**関数アプリ**」と入力します。 **[関数アプリ]**  >  **[作成]** を選択します。
+1. Azure portal のダッシュボードで、 **[リソースの作成]** を選択します。 検索テキスト ボックスに「 **関数アプリ** 」と入力します。 **[関数アプリ]**  >  **[作成]** を選択します。
 
 1. **[関数アプリ]** 作成ページで、関数アプリに名前を付けます。 **[リソース グループ]** のドロップダウン リストから **[ContosoRental]** を選択します。 **[ランタイム スタック]** として **[.NET Core]** を選択します。 ページの下部にある **[Next: Hosting >]\(次へ: ホスティング\)** を選択します。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="システムの概要図。":::
 
-1. **[ストレージ アカウント]** で、「[Azure のストレージ アカウントの作成](#create-an-azure-storage-account)」で作成したストレージ アカウントを選択します。 **[Review + create]\(レビュー + 作成\)** を選択します。
+1. **[ストレージ アカウント]** で、「 [Azure のストレージ アカウントの作成](#create-an-azure-storage-account)」で作成したストレージ アカウントを選択します。 **[Review + create]\(レビュー + 作成\)** を選択します。
 
 1. 関数アプリの詳細を確認し、 **[作成]** を選択します。
 
 1. アプリが作成されたら、それに関数を追加します。 Function App に移動します。 **[関数]** ペインを選択します。 ページの最上部で **[追加]** を選択します。 関数テンプレート パネルが表示されます。 パネルを下にスクロールし、 **[Azure Event Grid Trigger]\(Azure Event Grid トリガー\)** を選択します。
 
      >[!IMPORTANT]
-    > **Azure Event Hub トリガー**と **Azure Event Grid トリガー**のテンプレートには似た名前が付いています。 **Azure Event Grid トリガー** テンプレートを選択していることを確認します。
+    > **Azure Event Hub トリガー** と **Azure Event Grid トリガー** のテンプレートには似た名前が付いています。 **Azure Event Grid トリガー** テンプレートを選択していることを確認します。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="システムの概要図。":::
 
-1. 関数に名前を付けます。 このチュートリアルでは、*GetGeoFunction* という名前を使用しますが、通常は好きな名前を使用できます。 **[関数の作成]** を選択します。
+1. 関数に名前を付けます。 このチュートリアルでは、 *GetGeoFunction* という名前を使用しますが、通常は好きな名前を使用できます。 **[関数の作成]** を選択します。
 
 1. 左側のメニューで、 **[コードとテスト]** ペインを選択します。 [C# スクリプト](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)をコピーし、コード ウィンドウに貼り付けます。
 
@@ -201,8 +201,8 @@ Azure Functions はサーバーレス コンピューティング サービス�
 
 1. C# コード内で、次のパラメーターを置き換えます。
     * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのプライマリ サブスクリプション キーに置き換えます。
-    * **UDID** を、「[ジオフェンスをアップロードする](#upload-a-geofence)」でアップロードしたジオフェンスの `udid` に置き換えます。
-    * スクリプト内の `CreateBlobAsync` 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY**、**ACCOUNT_NAME**、**STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、データ ストレージ コンテナーに置き換えます。 これらの値は、「[Azure のストレージ アカウントの作成](#create-an-azure-storage-account)」でストレージ アカウントを作成したときに生成されました。
+    * **UDID** を、「 [ジオフェンスをアップロードする](#upload-a-geofence)」でアップロードしたジオフェンスの `udid` に置き換えます。
+    * スクリプト内の `CreateBlobAsync` 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY** 、 **ACCOUNT_NAME** 、 **STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、データ ストレージ コンテナーに置き換えます。 これらの値は、「[Azure のストレージ アカウントの作成](#create-an-azure-storage-account)」でストレージ アカウントを作成したときに生成されました。
 
 1. 左側のメニューで、 **[統合]** ペインを選択します。 ダイアグラムの **[Event Grid Trigger]\(Event Grid トリガー\)** を選択します。 トリガーの名前 *eventGridEvent* を入力し、 **[Event Grid サブスクリプションの作成]** を選択します。
 
@@ -226,7 +226,7 @@ Azure 関数に Event Grid サブスクリプションを追加すると、指�
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="システムの概要図。":::
 
-このシナリオ例では、レンタカーの移動中にのみメッセージを受信する必要があります。 `Engine` プロパティが **"ON"** になっているイベントをフィルター処理するルーティング クエリを作成します。 ルーティング クエリを作成するには、**RouteToEventGrid** ルートをクリックし、 **[ルーティング クエリ]** の値を **"Engine='ON'"** で置き換えます。 次に、 **[保存]** を選択します。 これで、IoT ハブにより、エンジンがオンになっているデバイス テレメトリのみが発行されます。
+このシナリオ例では、レンタカーの移動中にのみメッセージを受信する必要があります。 `Engine` プロパティが **"ON"** になっているイベントをフィルター処理するルーティング クエリを作成します。 ルーティング クエリを作成するには、 **RouteToEventGrid** ルートをクリックし、 **[ルーティング クエリ]** の値を **"Engine='ON'"** で置き換えます。 次に、 **[保存]** を選択します。 これで、IoT ハブにより、エンジンがオンになっているデバイス テレメトリのみが発行されます。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="システムの概要図。":::
 
@@ -270,14 +270,14 @@ Azure 関数が実行されると、テレメトリ データを IoT ハブに�
 
 このチュートリアルで使用した Azure Maps API シリーズの詳細については、以下を参照してください。
 
-* [Get Search Address Reverse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
-* [Get Geofence](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+* [Get Search Address Reverse](/rest/api/maps/search/getsearchaddressreverse)
+* [Get Geofence](/rest/api/maps/spatial/getgeofence)
 
 Azure Maps REST API シリーズの完全な一覧については、次を参照してください。
 
-* [Azure Maps REST API シリーズ](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+* [Azure Maps REST API シリーズ](/rest/api/maps/spatial/getgeofence)
 
-* [IoT プラグ アンド プレイ](https://docs.microsoft.com/azure/iot-pnp)
+* [IoT プラグ アンド プレイ](../iot-pnp/index.yml)
 
 Azure で IoT の認定を受けたデバイスの一覧を取得するには、次のページにアクセスします。
 
@@ -289,4 +289,4 @@ device-to-cloud、およびその逆方向にテレメトリを送信する方�
 
 
 > [!div class="nextstepaction"]
-> [デバイスから利用統計情報を送信する](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+> [デバイスから利用統計情報を送信する](../iot-hub/quickstart-send-telemetry-dotnet.md)

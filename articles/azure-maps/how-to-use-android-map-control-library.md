@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2c714c2e16cb8a7a9c530e8e458c33218b1c2b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330929"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895496"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -57,7 +57,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
 アプリケーションのビルドの次の手順は、Azure Maps Android SDK をインストールすることです。 SDK をインストールするには、以下の手順を完了します。
 
-1. 最上位の **build.gradle** ファイルを開き、次のコードを**すべてのプロジェクト**の**リポジトリ** ブロック セクションに追加します。
+1. 最上位の **build.gradle** ファイルを開き、次のコードを **すべてのプロジェクト** の **リポジトリ** ブロック セクションに追加します。
 
     ```
     maven {
@@ -299,7 +299,7 @@ mapControl.onReady(map -> {
 > [Android マップへのシンボル レイヤーの追加](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android マップへの図形の追加](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Android マップへの図形の追加](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android マップでのマップ スタイルの変更](./set-android-map-styles.md)

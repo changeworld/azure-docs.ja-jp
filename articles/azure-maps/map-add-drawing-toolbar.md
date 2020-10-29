@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 05a409faedb2093637b3d93045b35eb4e4929626
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310749"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896397"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>描画ツールのツールバーをマップに追加する
 
-この記事では、描画ツール モジュールを使用する方法、およびマップ上に描画ツールバーを表示する方法について説明します。 [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) コントロールでは、マップ上に描画ツールバーが追加されます。 描画ツールを 1 つのみ、およびすべて使用してマップを作成する方法と、描画マネージャーで描画図形のレンダリングをカスタマイズする方法について説明します。
+この記事では、描画ツール モジュールを使用する方法、およびマップ上に描画ツールバーを表示する方法について説明します。 [DrawingToolbar](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) コントロールでは、マップ上に描画ツールバーが追加されます。 描画ツールを 1 つのみ、およびすべて使用してマップを作成する方法と、描画マネージャーで描画図形のレンダリングをカスタマイズする方法について説明します。
 
 ## <a name="add-drawing-toolbar"></a>描画ツール バーの追加
 
@@ -143,10 +143,10 @@ drawingManager.setOptions({
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [描画ツール バー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [描画ツール バー](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
 
 > [!div class="nextstepaction"]
-> [描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [描画マネージャー](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)

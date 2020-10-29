@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80d61e69b5e8d666406c378c2d3fece28c822491
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371424"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896781"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>チュートリアル:Creator を使用して屋内マップを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "91371424"
 
 ## <a name="upload-a-drawing-package"></a>Drawing パッケージをアップロードする
 
-Drawing パッケージを Azure Maps リソースにアップロードするには、[Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用します。
+Drawing パッケージを Azure Maps リソースにアップロードするには、[Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。
 
 Data Upload API は、ここで定義されたパターンを実装する長時間トランザクションです。 操作が完了したら、`udid` を使用してアップロードされたパッケージにアクセスし、変換します。 次の手順で `udid` を取得します。
 
@@ -113,7 +113,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     >[!IMPORTANT]
     > このドキュメントの API URL は、場合によっては、Creator リソースの場所に合わせて調整する必要があります。 「[Creator サービスにアクセスする](how-to-manage-creator.md#access-to-creator-services)」を参照してください。
 
-3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
+3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、 **Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Location キーの値をコピーする":::
 
@@ -164,11 +164,11 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 ## <a name="create-a-dataset"></a>データセットを作成する
 
-データセットは、建物、階層、部屋などのマップ地物のコレクションです。 データセットを作成するには、[Dataset Create API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) を使用します。 Dataset Create API は、変換された Drawing パッケージの `conversionId` を受け取り、作成されたデータセットの `datasetId` を返します。 次の手順は、データセットを作成する方法を示します。
+データセットは、建物、階層、部屋などのマップ地物のコレクションです。 データセットを作成するには、[Dataset Create API](/rest/api/maps/dataset/createpreview) を使用します。 Dataset Create API は、変換された Drawing パッケージの `conversionId` を受け取り、作成されたデータセットの `datasetId` を返します。 次の手順は、データセットを作成する方法を示します。
 
 1. Postman アプリケーションで、 **[New]\(新規\)** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 **[Request name]\(要求名\)** を入力し、コレクションを選択します。 **[保存]**
 
-2. [Dataset Create API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) に **POST** 要求を行い、新しいデータセットを作成します。 要求を送信する前に、サブスクリプション キーと `conversionId` の両方に、手順 5 の変換プロセスで取得した `conversionId` を追加します。  要求は次の URL のようになります。
+2. [Dataset Create API](/rest/api/maps/dataset/createpreview) に **POST** 要求を行い、新しいデータセットを作成します。 要求を送信する前に、サブスクリプション キーと `conversionId` の両方に、手順 5 の変換プロセスで取得した `conversionId` を追加します。  要求は次の URL のようになります。
 
     ```http
     https://atlas.microsoft.com/dataset/create?api-version=1.0&conversionID={conversionId}&type=facility&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -224,7 +224,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 ## <a name="query-datasets-with-wfs-api"></a>WFS API を使用してデータセットのクエリを実行する
 
- データセットには、[WFS API](https://docs.microsoft.com/rest/api/maps/wfs) を使用してクエリを実行できます。 WFS API を使用すると、地物コレクション、特定のコレクション、または地物 **ID** を指定して特定の地物のクエリを実行できます。 地物 **ID** を使用すると、データセット内の地物が一意に識別されます。 たとえば、特定の状態セットで更新する必要がある地物状態を識別するために使用されます。
+ データセットには、[WFS API](/rest/api/maps/wfs) を使用してクエリを実行できます。 WFS API を使用すると、地物コレクション、特定のコレクション、または地物 **ID** を指定して特定の地物のクエリを実行できます。 地物 **ID** を使用すると、データセット内の地物が一意に識別されます。 たとえば、特定の状態セットで更新する必要がある地物状態を識別するために使用されます。
 
 1. Postman アプリケーションで、 **[New]\(新規\)** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 **[Request name]\(要求名\)** を入力し、コレクションを選択します。 **[保存]**
 
@@ -234,7 +234,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. 応答本文は GeoJSON 形式で配信され、データセット内のすべてのコレクションが含まれます。 わかりやすくするために、この例では `unit` コレクションのみを示しています。 すべてのコレクションを含む例を参照するには、[WFS Describe Collections API](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview) に関するページを参照してください。 コレクションの詳細については、`link` 要素内の任意の URL をクリックしてください。
+3. 応答本文は GeoJSON 形式で配信され、データセット内のすべてのコレクションが含まれます。 わかりやすくするために、この例では `unit` コレクションのみを示しています。 すべてのコレクションを含む例を参照するには、[WFS Describe Collections API](/rest/api/maps/wfs/collectiondescriptionpreview) に関するページを参照してください。 コレクションの詳細については、`link` 要素内の任意の URL をクリックしてください。
 
     ```json
     {
@@ -304,13 +304,13 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 1. Postman アプリケーションで、 **[New]\(新規\)** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 **[Request name]\(要求名\)** を入力し、コレクションを選択します。 **[保存]**
 
-2. [Create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview) に対して **POST** 要求を行います。 変更する状態を含むデータセットの `datasetId` を使用します。 要求は次の URL のようになります。
+2. [Create Stateset API](/rest/api/maps/featurestate/createstatesetpreview) に対して **POST** 要求を行います。 変更する状態を含むデータセットの `datasetId` を使用します。 要求は次の URL のようになります。
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **[Body]\(本文\)** で、次のスタイルを指定して `occupied` および `temperature` "*状態*" への変更を反映します。 設定が完了したら、 **[Send]\(送信\)** をクリックします。
+3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **[Body]\(本文\)** で、次のスタイルを指定して `occupied` および `temperature` " *状態* " への変更を反映します。 設定が完了したら、 **[Send]\(送信\)** をクリックします。
 
     ```json
     {
@@ -402,7 +402,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 7. 正常に更新されると、`200 OK` HTTP 状態コードを受け取ります。 屋内マップに[動的スタイル設定を実装](indoor-map-dynamic-styling.md)している場合、指定されたタイム スタンプでレンダリングされたマップに更新が表示されます。
 
-[Feature Get States API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) を使用すると、地物 `ID` を使用して地物状態を取得できます。 [Feature State Delete API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview) を使用して、状態セットとそのリソースを削除することもできます。
+[Feature Get States API](/rest/api/maps/featurestate/getstatespreview) を使用すると、地物 `ID` を使用して地物状態を取得できます。 [Feature State Delete API](/rest/api/maps/featurestate/deletestatesetpreview) を使用して、状態セットとそのリソースを削除することもできます。
 
 この記事で説明するさまざまな Azure Maps Creator サービスの詳細については、[屋内マップ用の Creator](creator-indoor-maps.md) に関するページを参照してください。
 

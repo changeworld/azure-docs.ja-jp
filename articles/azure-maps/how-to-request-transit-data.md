@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ded5f6186d8ccdae0f42ecb9942c70e09f2dd9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6f50d0ffeb48b5f359221992cc9a51d2ebb056
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310885"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895666"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する
 
-この記事では、Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) を使用して公共輸送機関のデータを要求する方法について説明します。 輸送データには、停留所、ルート情報、および所要時間の見積もりが含まれます。
+この記事では、Azure Maps [Mobility Service](/rest/api/maps/mobility) を使用して公共輸送機関のデータを要求する方法について説明します。 輸送データには、停留所、ルート情報、および所要時間の見積もりが含まれます。
 
 この記事では、次の方法について学習します。
 
-* [Get Metro Area API](https://aka.ms/AzureMapsMobilityMetro) を使用して、都市圏 ID を取得します
-* [Get Nearby Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) サービスを使用して、近くの停留所情報を要求します。
-* [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) にクエリを実行し、公共輸送機関を使用してルートを計画します。
+* [Get Metro Area API](/rest/api/maps/mobility/getmetroareapreview) を使用して、都市圏 ID を取得します
+* [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitpreview) サービスを使用して、近くの停留所情報を要求します。
+* [Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) にクエリを実行し、公共輸送機関を使用してルートを計画します。
 * [Get Transit Itinerary API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/) を使用して、輸送ルート ジオメトリおよびルートについての詳細なスケジュールを要求します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,7 +36,7 @@ ms.locfileid: "91310885"
 
 ## <a name="get-a-metro-area-id"></a>都市圏 ID を取得する
 
-交通機関に関する詳細情報、および特定の大都市圏でサポートされている交通の種類を要求するには、その地域の`metroId` が必要です。 [Get Metro Area API](https://aka.ms/AzureMapsMobilityMetro) を使うと、Azure Maps Mobility Service を利用可能な都市圏を要求できます。 応答には、`metroId`、`metroName` などの詳細と、都市圏ジオメトリの GeoJSON 形式での表現が含まれます。
+交通機関に関する詳細情報、および特定の大都市圏でサポートされている交通の種類を要求するには、その地域の`metroId` が必要です。 [Get Metro Area API](/rest/api/maps/mobility/getmetroareapreview) を使うと、Azure Maps Mobility Service を利用可能な都市圏を要求できます。 応答には、`metroId`、`metroName` などの詳細と、都市圏ジオメトリの GeoJSON 形式での表現が含まれます。
 
 それでは、シアトルとタコマの都市圏 ID を取得するための要求を行ってみましょう。 都市圏 ID を要求するには、次の手順を実行します。
 
@@ -111,13 +111,13 @@ ms.locfileid: "91310885"
 
 ## <a name="request-nearby-transit-stops"></a>近くの公共輸送機関の停留所を要求する
 
-Azure Maps の [Get Nearby Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) サービスを使うと、輸送オブジェクトを検索できます。 API からは、特定の場所周辺にある公共輸送機関の停留所や共有自転車など、輸送オブジェクトの詳細が返されます。 次に、特定の場所から半径 300 m 以内にある近くの公共輸送機関の停留所を検索するようサービスに要求します。
+Azure Maps の [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitpreview) サービスを使うと、輸送オブジェクトを検索できます。 API からは、特定の場所周辺にある公共輸送機関の停留所や共有自転車など、輸送オブジェクトの詳細が返されます。 次に、特定の場所から半径 300 m 以内にある近くの公共輸送機関の停留所を検索するようサービスに要求します。
 
-[Get Nearby Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) に対する要求を行うには、次の手順に従います。
+[Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitpreview) に対する要求を行うには、次の手順に従います。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Nearby stops**」 (近くの停留所の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get Nearby stops** 」 (近くの停留所の取得) という名前を付けます。
 
-2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2. [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126&radius=300&objectType=stop
@@ -216,23 +216,23 @@ Azure Maps の [Get Nearby Transit](https://aka.ms/AzureMapsMobilityNearbyTransi
 
 ## <a name="request-a-transit-route"></a>輸送ルートを要求する
 
-Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) を使うと、旅行を計画できます。 出発地から目的地までの最適なルートのオプションが返されます。 このサービスには、ウォーキング、サイクリング、公共輸送機関など、さまざまな種類の旅行モードが用意されています。 次に、最も近いバス停から、シアトルのスペース ニードル タワーまでのルートを検索します。
+Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) を使うと、旅行を計画できます。 出発地から目的地までの最適なルートのオプションが返されます。 このサービスには、ウォーキング、サイクリング、公共輸送機関など、さまざまな種類の旅行モードが用意されています。 次に、最も近いバス停から、シアトルのスペース ニードル タワーまでのルートを検索します。
 
 ### <a name="get-location-coordinates-for-destination"></a>目的地の位置座標を取得する
 
-スペース ニードル タワーの位置座標を取得するために、Azure Maps の[ファジー検索サービス](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)を使用してみましょう。
+スペース ニードル タワーの位置座標を取得するために、Azure Maps の[ファジー検索サービス](/rest/api/maps/search/getsearchfuzzy)を使用してみましょう。
 
 ファジー検索サービスを要求するには、次の手順に従います。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get location coordinates**」 (位置座標の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get location coordinates** 」 (位置座標の取得) という名前を付けます。
 
-2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2. [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
     ```HTTP
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
 
-3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、**位置**の位置座標が含まれています。 最初の結果の **position** の下の `lat` と `lon` をコピーします。
+3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、 **位置** の位置座標が含まれています。 最初の結果の **position** の下の `lat` と `lon` をコピーします。
 
    ```JSON
    {
@@ -331,13 +331,13 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
 
 ルートの要求を行うには、次の手順を実行します。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Route info**」 (ルート情報の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get Route info** 」 (ルート情報の取得) という名前を付けます。
 
-2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2. [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
-    `modeType` と `transitType` のパラメーターを指定することによって、バスについての公共輸送機関のルートを要求します。 要求 URL には、前のセクションで取得した場所が含まれています。 `originType` には、**stopId** があります。 そして、`destionationType` には **position** があります。
+    `modeType` と `transitType` のパラメーターを指定することによって、バスについての公共輸送機関のルートを要求します。 要求 URL には、前のセクションで取得した場所が含まれています。 `originType` には、 **stopId** があります。 そして、`destionationType` には **position** があります。
 
-    [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) への要求で使用できる [URI パラメーターの一覧](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters)を参照してください。
+    [Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) への要求で使用できる [URI パラメーターの一覧](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters)を参照してください。
   
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/route/json?subscription-key={subscription-key}&api-version=1.0&originType=stopId&origin=522---2060603&destionationType=position&destination=47.62039,-122.34928&modeType=publicTransit&transitType=bus
@@ -520,15 +520,15 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
     }
     ```
 
-4. 注意深く観察すると、応答には複数の **bus** ルートがあります。 各ルートには、一意の**スケジュール ID**、ルートの各区間を説明する概要、およびバス チケットの明細と合計の両方の価格を示す `itineraryFare` があります。 ルート レグは、2 つの停留所のウェイポイント間のルートの一部です。 次に、応答の `itineraryId` を使用して、最も速いルートについての詳細を要求します。
+4. 注意深く観察すると、応答には複数の **bus** ルートがあります。 各ルートには、一意の **スケジュール ID** 、ルートの各区間を説明する概要、およびバス チケットの明細と合計の両方の価格を示す `itineraryFare` があります。 ルート レグは、2 つの停留所のウェイポイント間のルートの一部です。 次に、応答の `itineraryId` を使用して、最も速いルートについての詳細を要求します。
 
 ## <a name="request-fastest-route-itinerary"></a>最も速いルートの移動プランを要求する
 
-Azure Maps の [Get Transit Itinerary](https://aka.ms/AzureMapsMobilityTransitItinerary) サービスでは、[Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
+Azure Maps の [Get Transit Itinerary](/rest/api/maps/mobility/gettransititinerarypreview) サービスでは、 [Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Transit info**」 (輸送情報の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get Transit info** 」 (輸送情報の取得) という名前を付けます。
 
-2. [ビルダー] タブで、**GET** HTTP メソッドを選択します。 API エンドポイントの次の要求 URL を入力し、 **[送信]** をクリックします。
+2. [ビルダー] タブで、 **GET** HTTP メソッドを選択します。 API エンドポイントの次の要求 URL を入力し、 **[送信]** をクリックします。
 
     `detailType` パラメーターを **geometry** に設定することで、公共輸送機関の停留所情報と、ルートの徒歩および自転車区間の道案内ナビゲーションが応答に含まれるようにします。
 
@@ -804,4 +804,4 @@ Mobility Service を使用してリアルタイム データを要求する方�
 Azure Maps Mobility Service API のドキュメントを確認する
 
 > [!div class="nextstepaction"]
-> [Mobility Service に関するドキュメント](https://aka.ms/AzureMapsMobilityService)
+> [Mobility Service に関するドキュメント](/rest/api/maps/mobility)

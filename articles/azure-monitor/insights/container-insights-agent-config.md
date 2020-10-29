@@ -3,12 +3,12 @@ title: コンテナーの Azure Monitor エージェントのデータ収集を�
 description: この記事では、コンテナーの Azure Monitor エージェントによる stdout/stderr および環境変数のログ収集の制御を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320405"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890498"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
@@ -57,7 +57,7 @@ ConfigMaps はグローバル リストであり、エージェントに適用�
 
 ConfigMap 構成ファイルを構成してクラスターにデプロイするには、次の手順のようにします。
 
-1. [テンプレート ConfigMap の YAML ファイル](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml)をダウンロードし、container-azm-ms-agentconfig.yaml として保存します。 
+1. [テンプレート ConfigMap の YAML ファイル](https://aka.ms/container-azm-ms-agentconfig)をダウンロードし、container-azm-ms-agentconfig.yaml として保存します。 
 
    > [!NOTE]
    > Azure Red Hat OpenShift を使用する場合は、ConfigMap テンプレートがクラスターに既に存在しているため、この手順は必要ありません。

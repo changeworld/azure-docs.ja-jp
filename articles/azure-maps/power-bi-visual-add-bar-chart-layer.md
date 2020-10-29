@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 136676b46df6e32f98dca99fccba19d4aa369dbe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288156"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896278"
 ---
 # <a name="add-a-bar-chart-layer"></a>横棒グラフ レイヤーを追加する
 
-**横棒グラフ レイヤー**は、マップ上で場所データを 3D 横棒や円柱として視覚化できるようにすることで、データを次のディメンションに移動させるのに役立ちます。 バブル レイヤーと同様に、横棒グラフ レイヤーでは、色と相対的高さを使用して 2 つのメトリックを同時に視覚化することが容易にできます。 棒の高さを設定するには、 **[フィールド]** ペインの **[サイズ]** バケットにメジャーを追加する必要があります。 メジャーが指定されていない場合は、 **[棒の形状]** オプションに応じて、高さのない棒は、平らな正方形または円として表示されます。
+**横棒グラフ レイヤー** は、マップ上で場所データを 3D 横棒や円柱として視覚化できるようにすることで、データを次のディメンションに移動させるのに役立ちます。 バブル レイヤーと同様に、横棒グラフ レイヤーでは、色と相対的高さを使用して 2 つのメトリックを同時に視覚化することが容易にできます。 棒の高さを設定するには、 **[フィールド]** ペインの **[サイズ]** バケットにメジャーを追加する必要があります。 メジャーが指定されていない場合は、 **[棒の形状]** オプションに応じて、高さのない棒は、平らな正方形または円として表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![横棒グラフ レイヤーを使用してポイント データを表示しているマップ](media/power-bi-visual/bar-chart-layer-styled.png)
@@ -28,14 +28,14 @@ ms.locfileid: "87288156"
 -   **[Format]\(形式\)** ペインの **[マップの設定]** で **[ナビゲーション コントロール]** オプションをオンにします。 これにより、マップを傾けるボタンが追加されます。
 -   マウスの右ボタンを押しながら、マウスを上または下にドラッグします。
 -   タッチスクリーンを使用して 2 本の指でマップをタッチして、上または下にドラッグします。
--   マップにフォーカスがある状態で、**Shift** キーを押しながら、**上方向**キーまたは**下方向**キーを押します。
+-   マップにフォーカスがある状態で、 **Shift** キーを押しながら、 **上方向** キーまたは **下方向** キーを押します。
 
 マップを回転するには、次のいずれかの方法を使用します。
 
 -   **[Format]\(形式\)** ペインの **[マップの設定]** で **[ナビゲーション コントロール]** オプションをオンにします。 これにより、マップを回転するボタンが追加されます。
 -   マウスの右ボタンを押しながら、マウスを左または右にドラッグします。
 -   タッチスクリーンを使用して 2 本の指でマップをタッチし、回転します。
--   マップにフォーカスがある状態で、**Shift** キーを押しながら、**左方向**キーまたは**右方向**キーを押します。
+-   マップにフォーカスがある状態で、 **Shift** キーを押しながら、 **左方向** キーまたは **右方向** キーを押します。
 
 **[横棒グラフ レイヤー]** セクションで使用できる **[Format]\(形式\)** ペインのすべての設定を次に示します。
 
@@ -71,7 +71,7 @@ ms.locfileid: "87288156"
 ビジュアルをカスタマイズする:
 
 > [!div class="nextstepaction"]
-> [Power BI における色の書式設定に関するヒントとコツ](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Power BI における色の書式設定に関するヒントとコツ](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [視覚エフェクトのタイトル、背景、および凡例をカスタマイズする](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [視覚エフェクトのタイトル、背景、および凡例をカスタマイズする](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

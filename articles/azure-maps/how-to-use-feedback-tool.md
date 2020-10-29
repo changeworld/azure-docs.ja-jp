@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 807c8908b70065d5d82229e7750b166bfabcf53b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335366"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895513"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure Maps にデータのフィードバックを提供する
 
@@ -67,4 +67,4 @@ Azure Maps は 2018 年 5 月から使用できるようになりました。 �
 
 Azure Maps に関する技術的な質問を投稿するには、以下にアクセスしてください。
 
-* [Microsoft Q & A](https://docs.microsoft.com/answers/topics/azure-maps.html)
+* [Microsoft Q & A](/answers/topics/azure-maps.html)

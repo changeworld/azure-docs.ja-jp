@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310477"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891038"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "91310477"
 
 ## <a name="understand-the-code"></a>コードの理解
 
-次のコードでは、シンボル レイヤーを使用して、`name` プロパティと `description` プロパティを持つポイント フィーチャーをマップに追加します。 [Popup クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)のインスタンスが作成されますが、表示されません。 ポップアップのオープンとクローズをトリガーするためのマウス イベントがシンボル レイヤーに追加されます。 マーカー シンボルをマウスでポイントすると、ポップアップの `position` プロパティがマーカーの位置に応じて更新され、マウスでポイントされているポイント フィーチャーの `name` プロパティと `description` プロパティをラップしている HTML に応じて `content` オプションが更新されます。 次に、その `open` 関数を使用してマップにポップアップが表示されます。
+次のコードでは、シンボル レイヤーを使用して、`name` プロパティと `description` プロパティを持つポイント フィーチャーをマップに追加します。 [Popup クラス](/javascript/api/azure-maps-control/atlas.popup)のインスタンスが作成されますが、表示されません。 ポップアップのオープンとクローズをトリガーするためのマウス イベントがシンボル レイヤーに追加されます。 マーカー シンボルをマウスでポイントすると、ポップアップの `position` プロパティがマーカーの位置に応じて更新され、マウスでポイントされているポイント フィーチャーの `name` プロパティと `description` プロパティをラップしている HTML に応じて `content` オプションが更新されます。 次に、その `open` 関数を使用してマップにポップアップが表示されます。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -279,13 +279,13 @@ CodePen でマップ上のポイントをクリックします。 次の各ポ�
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+> [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+> [PopupTemplate](/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 完全なコードのサンプルについては、次の優れた記事をご覧ください。
 

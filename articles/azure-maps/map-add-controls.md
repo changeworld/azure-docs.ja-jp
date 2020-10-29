@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 08a3b72bb137713721345ecb52cf4e1bb7afcdc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310766"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895292"
 ---
 # <a name="add-controls-to-a-map"></a>マップにコントロールを追加する
 
-この記事では、マップにコントロールを追加する方法について説明します。 すべてのコントロールと[スタイル選択機能](https://docs.microsoft.com/azure/azure-maps/choose-map-style)を備えたマップを作成する方法についても説明します。
+この記事では、マップにコントロールを追加する方法について説明します。 すべてのコントロールと[スタイル選択機能](./choose-map-style.md)を備えたマップを作成する方法についても説明します。
 
 ## <a name="add-zoom-control"></a>ズーム コントロールを追加する
 
@@ -142,4 +142,3 @@ map.controls.add([
 
 > [!div class="nextstepaction"]
 > [バブル レイヤーを追加する](map-add-bubble-layer.md)
-

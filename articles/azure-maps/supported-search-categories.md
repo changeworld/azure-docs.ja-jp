@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 240bc8429ca786eb2f474a5a0b6ee296deb3b356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9cf9e031c73b1412ab9fc20f5ffe94736d28eb4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310124"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896907"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps でサポートされているカテゴリ
 
-目的地の[カテゴリ検索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)を行うときのために、100 を超えるカテゴリがサポートされています。 以下は、サポートされているカテゴリ名のカテゴリ コードの一覧です。 カテゴリ コードは最上位レベルのカテゴリに対して生成されます。 すべてのサブ カテゴリは同じカテゴリ コードを共有します。 このカテゴリ リストは、新しいデータがリリースされると変更される可能性があります。
+目的地の[カテゴリ検索](/rest/api/maps/search/getsearchpoicategory)を行うときのために、100 を超えるカテゴリがサポートされています。 以下は、サポートされているカテゴリ名のカテゴリ コードの一覧です。 カテゴリ コードは最上位レベルのカテゴリに対して生成されます。 すべてのサブ カテゴリは同じカテゴリ コードを共有します。 このカテゴリ リストは、新しいデータがリリースされると変更される可能性があります。
 
 <br/>
 

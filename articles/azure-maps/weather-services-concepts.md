@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972038"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896729"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 
-この記事では、[Azure Maps Weather Services](https://aka.ms/AzureMapsWeatherService) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。
+この記事では、[Azure Maps Weather Services](/rest/api/maps/weather) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。
 
 ## <a name="unit-types"></a>単位の種類
 
@@ -100,7 +100,7 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>レーダーと衛星画像のカラー スケール
 
-ユーザーは、[Get Map Tile v2 API](https://aka.ms/AzureMapsWeatherTiles) を使用して、最新のレーダー画像と赤外衛星画像を要求でき ます。 レーダー タイルと衛星タイルで使用される色を解釈するには、以下のガイドを参照してください。
+ユーザーは、[Get Map Tile v2 API](/rest/api/maps/renderv2/getmaptilepreview) を使用して、最新のレーダー画像と赤外衛星画像を要求でき ます。 レーダー タイルと衛星タイルで使用される色を解釈するには、以下のガイドを参照してください。
 
 ### <a name="radar-images"></a>レーダー画像
 
@@ -475,7 +475,7 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 ## <a name="index-ids-and-index-groups-ids"></a>インデックス ID とインデックス グループ ID
 
-[Get Daily Indices API](https://aka.ms/AzureMapsWeatherDailyIndices) を使用すると、ユーザーは返される結果を特定のインデックスの種類またはインデックス グループに限定できます。
+[Get Daily Indices API](/rest/api/maps/weather) を使用すると、ユーザーは返される結果を特定のインデックスの種類またはインデックス グループに限定できます。
 
 使用可能なインデックス ID とその名前、およびそれらの範囲のセットへのリンクを次の表に示します。 この表の後に、さまざまなインデックス グループを一覧した表を示します。
 
@@ -547,7 +547,7 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 ## <a name="daily-index-range-sets"></a>日次インデックスの範囲のセット
 
-[Get Daily Indices API](https://aka.ms/AzureMapsWeatherDailyIndices) は、各インデックス ID に対する範囲の値とそれに関連付けられているカテゴリ名を返します。 範囲のセットはすべてのインデックスで同じではありません。 次の表は、「[インデックス ID とインデックス グループ ID](#index-ids-and-index-groups-ids)」に一覧で示されているサポートされているインデックスによって使用されるさまざまな範囲のセットを示しています。 どのインデックスがどの範囲のセットを使用しているかを調べるには、このドキュメントの「[インデックス ID とインデックス グループ ID](#index-ids-and-index-groups-ids)」を参照してください。
+[Get Daily Indices API](/rest/api/maps/weather) は、各インデックス ID に対する範囲の値とそれに関連付けられているカテゴリ名を返します。 範囲のセットはすべてのインデックスで同じではありません。 次の表は、「[インデックス ID とインデックス グループ ID](#index-ids-and-index-groups-ids)」に一覧で示されているサポートされているインデックスによって使用されるさまざまな範囲のセットを示しています。 どのインデックスがどの範囲のセットを使用しているかを調べるには、このドキュメントの「[インデックス ID とインデックス グループ ID](#index-ids-and-index-groups-ids)」を参照してください。
 
 ### <a name="poor-excellent-1"></a>悪い - 非常に良い 1
 

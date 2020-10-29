@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310358"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896941"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps でサポートされている組み込みのマップ スタイル
 
@@ -27,15 +27,15 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 **該当する API:**
 
-* [マップ画像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [マップ画像](/rest/api/maps/render/getmapimage)
+* [マップ タイル](/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール
 * Android マップ コントロール
 * Power BI 視覚エフェクト
 
 ## <a name="blank-and-blank_accessible"></a>blank と blank_accessible
 
-**blank** と **blank_accessible** マップ スタイルでは、データを視覚化するための空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、**blank_accessible** スタイルでは、マップの場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
+**blank** と **blank_accessible** マップ スタイルでは、データを視覚化するための空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、 **blank_accessible** スタイルでは、マップの場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
 
 > [!Note]
 > Web SDK では、マップの DIV 要素の CSS `background-color` スタイルを設定することによって、マップの背景色を変更できます。
@@ -46,13 +46,13 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 ## <a name="satellite"></a>衛星
 
-**衛星**スタイルは、衛星画像と航空映像の組み合わせです。
+**衛星** スタイルは、衛星画像と航空映像の組み合わせです。
 
 ![衛星タイル マップ スタイル](./media/supported-map-styles/satellite.png)
 
 **該当する API:**
 
-* [衛星タイル](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [衛星タイル](/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK マップ コントロール
 * Android マップ コントロール
 * Power BI 視覚エフェクト
@@ -71,21 +71,21 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 
-**グレースケール ダーク**は、道路マップ スタイルの濃いバージョンです。
+**グレースケール ダーク** は、道路マップ スタイルの濃いバージョンです。
 
 ![gray_scale マップ スタイル](./media/supported-map-styles/grayscale-dark.png)
 
 **該当する API:**
 
-* [マップ画像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [マップ画像](/rest/api/maps/render/getmapimage)
+* [マップ タイル](/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール
 * Android マップ コントロール
 * Power BI 視覚エフェクト
 
 ## <a name="grayscale_light"></a>grayscale_light
 
-**グレースケール ライト**は、道路マップ スタイルの薄いバージョンです。
+**グレースケール ライト** は、道路マップ スタイルの薄いバージョンです。
 
 ![グレースケール ライト マップ スタイル](./media/supported-map-styles/grayscale-light.png)
 
@@ -108,13 +108,13 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 
-**道路の影付きレリーフ**は、地球の輪郭で完成する、Azure Maps の主要スタイルです。
+**道路の影付きレリーフ** は、地球の輪郭で完成する、Azure Maps の主要スタイルです。
 
 ![影付きレリーフ マップ スタイル](./media/supported-map-styles/shaded-relief.png)
 
 **該当する API:**
 
-* [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [マップ タイル](/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール
 * Android マップ コントロール
 * Power BI 視覚エフェクト
@@ -134,4 +134,4 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 Azure Maps でマップ スタイルを設定する方法について説明します。
 
-[マップ スタイルを選択する](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[マップ スタイルを選択する](./choose-map-style.md)

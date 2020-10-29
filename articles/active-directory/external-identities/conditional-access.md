@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274148"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892453"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -110,5 +110,5 @@ B2B ユーザーのデバイスが Contoso によって管理されていない�
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
-* [Azure AD B2B コラボレーションのライセンス](licensing-guidance.md)
+* [External Identities の価格](external-identities-pricing.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](faq.md)

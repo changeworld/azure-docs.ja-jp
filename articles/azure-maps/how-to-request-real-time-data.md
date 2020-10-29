@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6f0cf663b42c8487495602e4cdbf1a88427f9daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f6d0738cb1673b752e35761a112f2ca22a409e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310936"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895717"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用してリアルタイムの公共輸送データを要求する
 
-この記事では、Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) を使用してリアルタイムの公共輸送データを要求する方法を説明します。
+この記事では、Azure Maps [Mobility Service](/rest/api/maps/mobility) を使用してリアルタイムの公共輸送データを要求する方法を説明します。
 
 この記事では、特定の停留所に到着するすべての路線について次のリアルタイムの到着を要求する方法を学習します
 
@@ -30,7 +30,7 @@ Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps ア�
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>停留所のリアルタイムの到着を要求する
 
-特定の公共輸送機関の停留所にリアルタイムの到着データを要求するには、Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) の [Real-time Arrivals API](https://aka.ms/AzureMapsMobilityRealTimeArrivals) に要求を送信する必要があります。 要求を完了するには **metroID** と **stopID** が必要です。 これらのパラメーターを要求する方法の詳細については、[公共輸送機関のルートの要求](https://aka.ms/AMapsHowToGuidePublicTransitRouting)方法に関するガイドを参照してください。
+特定の公共輸送機関の停留所にリアルタイムの到着データを要求するには、Azure Maps [Mobility Service](/rest/api/maps/mobility) の [Real-time Arrivals API](/rest/api/maps/mobility/getrealtimearrivalspreview) に要求を送信する必要があります。 要求を完了するには **metroID** と **stopID** が必要です。 これらのパラメーターを要求する方法の詳細については、[公共輸送機関のルートの要求](./how-to-request-transit-data.md)方法に関するガイドを参照してください。
 
 地下鉄 ID として "522" を使用しましょう。これは、"Seattle–Tacoma–Bellevue, WA" 地域の地下鉄 ID です。 停留所 ID として "522---2060603" を使用してください。このバス停は "Ne 24th St & 162nd Ave Ne, Bellevue WA" にあります。 この停留所での次のすべてのライブ到着について、次の 5 つのリアルタイム到着データを要求するには、次の手順を行います。
 
@@ -121,4 +121,4 @@ Mobility Service を使用して輸送データを要求する方法について
 Azure Maps Mobility Service API のドキュメントを確認します。
 
 > [!div class="nextstepaction"]
-> [Mobility Service API ドキュメント](https://aka.ms/AzureMapsMobilityService)
+> [Mobility Service API ドキュメント](/rest/api/maps/mobility)

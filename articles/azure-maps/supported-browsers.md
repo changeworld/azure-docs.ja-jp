@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310188"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896924"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 
-Azure Maps の Web SDK は、[atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)という名前のヘルパー関数を提供します。 この関数は、マップ コントロールのロードとレンダリグをサポートするために必要な WebGL 機能の最小セットが Web ブラウザにあるかどうかを検出します。 この関数の使用方法の例を次に示します。
+Azure Maps の Web SDK は、[atlas.isSupported](/javascript/api/azure-maps-control/atlas#issupported-boolean-)という名前のヘルパー関数を提供します。 この関数は、マップ コントロールのロードとレンダリグをサポートするために必要な WebGL 機能の最小セットが Web ブラウザにあるかどうかを検出します。 この関数の使用方法の例を次に示します。
 
 ```JavaScript
 if (!atlas.isSupported()) {

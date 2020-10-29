@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 65e424c6275f9990a5d5a42a54bc4131300a45bf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "88526552"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88526552"
 * ユーザーが Azure AD アカウントを使って Workspot Control に自動的にサインイン (シングル サインオン (SSO)) できるようにします。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -100,20 +100,20 @@ Workspot Control で Azure AD シングル サインオンを構成するには�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを IDP-initiated モードで構成する場合は、次の手順のようにします。
 
-    ![[Workspot Control のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     1. **[識別子]** テキスト ボックスに、次のパターンで URL を入力します。<br/>
     **_https://<<i></i>インスタンス名>-saml.workspot.com/saml/metadata_* _
 
     1. _*[応答 URL]* * テキスト ボックスに、次のパターンで URL を入力します。<br/>
-    **_https://<<i></i>インスタンス名>-saml.workspot.com/saml/assertion_*_
+    **_https://< <i></i>インスタンス名>-saml.workspot.com/saml/assertion_*_
 
 5. アプリケーションを SP-initiated モードで構成する場合は、_*[追加の URL を設定します]** を選択します。
 
-    ![[Workspot Control のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** テキスト ボックスに、次のパターンで URL を入力します。<br/>
-    **_https://<<i></i>インスタンス名>-saml.workspot.com/_* _
+    **_https://< <i></i>インスタンス名>-saml.workspot.com/_* _
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を置き換えます。 これらの値を取得するには、[Workspot Control クライアント サポート チーム](mailto:support@workspot.com)に問い合わせてください。 または、Azure portal の _ *[基本的な SAML 構成]* * セクションのパターンを参照することもできます。
@@ -172,7 +172,7 @@ Workspot Control で Azure AD シングル サインオンを構成するには�
 
     1. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    1. **[ユーザー名]** フィールドに、* *brittasimon@* yourcompanydomain.extension*** と入力します。 たとえば、「 **BrittaSimon@contoso.<i></i>com** 」と入力します。
+    1. **[ユーザー名]** フィールドに、* *brittasimon@* yourcompanydomain.extension*** と入力します。 たとえば、「 **BrittaSimon@contoso. <i></i>com** 」と入力します。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -224,7 +224,7 @@ Azure AD ユーザーが Workspot Control にサインインできるように�
 
     1. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon** )。
 
-    1. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso.<i></i>com** )。
+    1. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso. <i></i>com** )。
 
     1. **[Role]\(ロール\)** ドロップダウン リストから適切なユーザー ロールを選択します。
 
@@ -236,12 +236,12 @@ Azure AD ユーザーが Workspot Control にサインインできるように�
 
 このセクションでは、" *アクセス パネル* " を使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで **[Workspot Control]** タイルをクリックすると、SSO を設定した Workspot Control に自動的にサインインします。 詳細については、「[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)」を参照してください。
+アクセス パネルで **[Workspot Control]** タイルをクリックすると、SSO を設定した Workspot Control に自動的にサインインします。 詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

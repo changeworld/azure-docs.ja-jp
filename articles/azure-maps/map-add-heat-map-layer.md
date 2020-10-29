@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 5008e3b11a7e00e8f831333551c892113f03dd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310630"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896380"
 ---
 # <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 
@@ -24,9 +24,9 @@ ms.locfileid: "91310630"
 
 ヒート マップは、次のようなさまざまなシナリオで使用できます。
 
-- **気温データ**: 2 つのデータ ポイント間の気温の近似値が提供されます。
-- **ノイズ センサーのデータ**: センサーがある場所のノイズの強度が示されるだけでなく、離れた場所での散逸に対する分析情報も提供できます。 個々の場所のノイズ レベルは高くないかもしれません。 複数のセンサーのノイズ感知領域が重なる場合は、この重なる領域においてノイズ レベルがより高くなる可能性があります。 そのため、ヒート マップ上では重なった領域が可視化されます。
-- **GPS トレース**: 速度を、重み付けされたハイト マップとして含めます。ここで、各データ ポイントの強度は速度に基づいています。 たとえば、この機能により、車両のスピードが速められた場所を確認する方法が提供されます。
+- **気温データ** : 2 つのデータ ポイント間の気温の近似値が提供されます。
+- **ノイズ センサーのデータ** : センサーがある場所のノイズの強度が示されるだけでなく、離れた場所での散逸に対する分析情報も提供できます。 個々の場所のノイズ レベルは高くないかもしれません。 複数のセンサーのノイズ感知領域が重なる場合は、この重なる領域においてノイズ レベルがより高くなる可能性があります。 そのため、ヒート マップ上では重なった領域が可視化されます。
+- **GPS トレース** : 速度を、重み付けされたハイト マップとして含めます。ここで、各データ ポイントの強度は速度に基づいています。 たとえば、この機能により、車両のスピードが速められた場所を確認する方法が提供されます。
 
 > [!TIP]
 > ヒート マップ レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'Point']` に設定します。 MultiPoint フィーチャーも含める場合は、レイヤーの `filter` プロパティを `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` に設定します。
@@ -120,10 +120,10 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HeatMapLayer](/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+> [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 マップに追加するコード例の詳細については、次の記事を参照してください。
 

@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: e37bc2c9a6f6ad48695ce5fe346ef2402f3c6a6c
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 4a8d05c05f0c6dc357ac8ea8623ab10cae1e4335
+  ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90086268"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92895360"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -77,17 +77,17 @@ landingContent:
     - text: 屋内マップ モジュールを使用する
       url: how-to-use-indoor-module.md
     - text: Azure Digital Twins を使用してフロア ガイドを更新する
-      url: https://docs.microsoft.com/azure/digital-twins/how-to-integrate-maps
+      url: ../digital-twins/how-to-integrate-maps.md
   - linkListType: reference
     links:
     - text: 変換サービス
-      url: https://docs.microsoft.com/rest/api/maps/conversion
+      url: /rest/api/maps/conversion
     - text: データセット サービス
-      url: https://docs.microsoft.com/rest/api/maps/dataset
+      url: /rest/api/maps/dataset
     - text: タイルセット サービス
-      url: https://docs.microsoft.com/rest/api/maps/tileset
+      url: /rest/api/maps/tileset
     - text: 機能の状態セット サービス
-      url: https://docs.microsoft.com/rest/api/maps/featurestate
+      url: /rest/api/maps/featurestate
 - title: Web SDK を使用した開発
   linkLists:
   - linkListType: concept
@@ -121,13 +121,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: マップ コントロール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-control/
+      url: /javascript/api/azure-maps-control/
     - text: 描画ツール モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/
+      url: /javascript/api/azure-maps-drawing-tools/
     - text: サービス モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/
+      url: /javascript/api/azure-maps-rest/
     - text: 空間 IO モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/
+      url: /javascript/api/azure-maps-spatial-io/
 - title: Android SDK を使用した開発
   linkLists:
   - linkListType: how-to-guide
@@ -165,13 +165,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Search サービス
-      url: https://docs.microsoft.com/rest/api/maps/search
+      url: /rest/api/maps/search
     - text: Route サービス
-      url: https://docs.microsoft.com/rest/api/maps/route
+      url: /rest/api/maps/route
     - text: Traffic サービス
-      url: https://docs.microsoft.com/rest/api/maps/traffic
+      url: /rest/api/maps/traffic
     - text: Time Zones サービス
-      url: https://docs.microsoft.com/rest/api/maps/timezone
+      url: /rest/api/maps/timezone
 - title: 空間分析
   linkLists:
   - linkListType: concept
@@ -187,9 +187,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: Data Service
-      url: https://docs.microsoft.com/rest/api/maps/data
+      url: /rest/api/maps/data
     - text: 空間サービス
-      url: https://docs.microsoft.com/rest/api/maps/spatial
+      url: /rest/api/maps/spatial
 - title: Power BI を使用した空間分析
   linkLists:
   - linkListType: how-to-guide
@@ -215,7 +215,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: モビリティ サービス
-      url: https://docs.microsoft.com/rest/api/maps/mobility
+      url: /rest/api/maps/mobility
 - title: 天気サービスを使用した開発
   linkLists:
   - linkListType: concept
@@ -229,4 +229,4 @@ landingContent:
   - linkListType: reference
     links:
     - text: 天気サービス
-      url: https://docs.microsoft.com/rest/api/maps/weather
+      url: /rest/api/maps/weather

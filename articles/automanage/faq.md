@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714959"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891463"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問
 
 この記事では、[Azure Automanage for virtual machines](automanage-virtual-machines.md) に関してよく寄せられる質問への回答を提供します。
 
-この記事で Azure の問題に対処できない場合は、[MSDN および Stack Overflow の Azure 関連フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 Azure サポート要求を送信することもできます。 サポート リクエストを送信するには、[Azure サポート ページ](https://azure.microsoft.com/support/options/)で **[サポートの利用]** を選択します。
+この記事で Azure の問題に対処できない場合は、[MSDN および Stack Overflow の Azure 関連フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 Azure サポート要求を送信することもできます。 サポート リクエストを送信するには、 [Azure サポート ページ](https://azure.microsoft.com/support/options/)で **[サポートの利用]** を選択します。
 
 
 ## <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
@@ -32,7 +32,6 @@ Azure Automanage を有効にするための前提条件は次のとおりです
 - VM はサポート対象のリージョンに存在する必要があります
 - ユーザーは正しいアクセス許可を持っている必要があります
 - スケール セット以外の VM のみ
-- VM が異なるサブスクリプションの Log Analytics ワークスペースにリンクしていてはなりません
 - 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
 
 **Automanage を有効にするために必要な Azure RBAC アクセス許可は何ですか?**
@@ -106,11 +105,11 @@ VM が既存の Log Analytics ワークスペースにリンクされている�
 
 **Automanage ポータルで VM の状態が "失敗" になるのはなぜですか?**
 
-状態が "*失敗*" と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+状態が " *失敗* " と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、" *失敗* " 状態とエラーの詳細を確認します。
 
 **Automanage のトラブルシューティングのサポートを受けるにはどうすればよいですか?**
 
-[テクニカル サポート ケースのチケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出できます。 **[サービス]** オプションについては、"*監視と管理*" のセクションで *Automanage* を探して選択します。
+[テクニカル サポート ケースのチケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出できます。 **[サービス]** オプションについては、" *監視と管理* " のセクションで *Automanage* を探して選択します。
 
 
 ## <a name="next-steps"></a>次の手順

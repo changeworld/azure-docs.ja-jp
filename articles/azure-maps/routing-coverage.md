@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88030896"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896176"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
 この記事では、Azure Maps のルーティングの対象範囲情報を提供します。 Azure Maps で検索クエリを実行すると、場所 A から場所 B への最適なルートが返されます。正確な移動時間、移動に関する情報のライブ更新、ルートの指示が表示されます。 ルートでは、現在の交通量、車両の種類、避けるべき条件などの追加の検索パラメーターを追加できます。 ルートの最適化は、地域によって異なります。 Azure Maps には、さまざまな地域用のさまざまなレベルの情報と精度があるためです。 次の表は、リージョンとそれらに要求できる情報の種類を示しています。
  
-ジオコーディングの対象範囲については[**こちら**](geocoding-coverage.md)を参照してください。       
-トラフィックの対象範囲については[**こちら**](traffic-coverage.md)を参照してください。  
-レンダーの対象範囲は[**こちら**](render-coverage.md)をご覧ください。
+ジオコーディングの対象範囲については [**こちら**](geocoding-coverage.md)を参照してください。       
+トラフィックの対象範囲については [**こちら**](traffic-coverage.md)を参照してください。  
+レンダーの対象範囲は [**こちら**](render-coverage.md)をご覧ください。
 <br>  
 **凡例**
 
@@ -245,4 +245,4 @@ ms.locfileid: "88030896"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps のルーティングの詳細については、[ルーティング](https://docs.microsoft.com/rest/api/maps/route)のリファレンス ページを参照してください。
+Azure Maps のルーティングの詳細については、[ルーティング](/rest/api/maps/route)のリファレンス ページを参照してください。

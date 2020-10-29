@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321749"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896703"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索して表示する
 
-このチュートリアルでは、Azure Maps の [Route Service](https://docs.microsoft.com/rest/api/maps/route) および[マップ コントロール](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)を使用して、自家用車と、積み荷の種類が `USHazmatClass2` である営業車 (トラック) の両方の道順を表示する方法について説明します。 また、マップ上でリアルタイムのトラフィック データを視覚化する方法についても説明します。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、Azure Maps の [Route Service](/rest/api/maps/route) および[マップ コントロール](./how-to-use-map-control.md)を使用して、自家用車と、積み荷の種類が `USHazmatClass2` である営業車 (トラック) の両方の道順を表示する方法について説明します。 また、マップ上でリアルタイムのトラフィック データを視覚化する方法についても説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * マップ コントロールを作成して Web ページに表示する
@@ -117,7 +117,7 @@ ms.locfileid: "91321749"
     });
     ```
 
-    マップの `ready` イベントのハンドラーで、マップのトラフィック フロー設定を `relative` (フリーフローを基準とした道路の速度) に設定します。 トラフィック オプションの詳細については、「[TrafficOptions インターフェイス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions?view=azure-maps-typescript-latest&preserve-view=false)」を参照してください。
+    マップの `ready` イベントのハンドラーで、マップのトラフィック フロー設定を `relative` (フリーフローを基準とした道路の速度) に設定します。 トラフィック オプションの詳細については、「[TrafficOptions インターフェイス](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest)」を参照してください。
 
 2. **MapTruckRoute.html** ファイルを保存し、ブラウザーでページを更新します。 ロサンゼルスなどの任意の都市にズームインすると、現在のトラフィック フロー データと共に街路が表示されます。
 
@@ -193,7 +193,7 @@ ms.locfileid: "91321749"
 
     このコードにより、ルートの始点と終点を表す 2 つの [GeoJSON ポイント オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)が作成され、データ ソースに追加されます。
 
-    最後のコード ブロックでは、始点と終点の緯度と経度を使用してカメラ ビューを設定します。 起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンのピクセル寸法を補正するためにパディングを追加しています。 マップ コントロールの setCamera プロパティの詳細については、[setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) プロパティを参照してください。
+    最後のコード ブロックでは、始点と終点の緯度と経度を使用してカメラ ビューを設定します。 起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンのピクセル寸法を補正するためにパディングを追加しています。 マップ コントロールの setCamera プロパティの詳細については、[setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) プロパティを参照してください。
 
 3. **TruckRoute.html** を保存し、ブラウザーを更新します。 これで、マップの中心がシアトルに設定されました。 涙形の青いピンは、始点をマークしています。 円形の青いピンは、終点をマークしています。
 
@@ -206,7 +206,7 @@ ms.locfileid: "91321749"
 このセクションでは、Azure Maps Route Service を使用して、輸送モードに基づいて、ある地点から別の地点への道順を取得する方法について説明します。 2 つの輸送モード (トラックと車) を使用します。
 
 >[!TIP]
->Route Service には、距離、渋滞状況、および使用する輸送モードに基づいて、"*最速*"、"*最短*"、"*エコ*"、または "*スリリング*" なルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
+>Route Service には、距離、渋滞状況、および使用する輸送モードに基づいて、" *最速* "、" *最短* "、" *エコ* "、または " *スリリング* " なルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
 
 1. `GetMap` 関数のコントロールの `ready` イベント ハンドラー内で、JavaScript コードに以下を追加します。
 
@@ -221,7 +221,7 @@ ms.locfileid: "91321749"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](/rest/api/maps/route) 操作の URL を表します。
 
 2. 資格情報と URL を設定したら、次の JavaScript コードを追加して、起点から終点までのトラックのルートを作成します。 このルートは、`USHazmatClass2` に分類された積み荷を運搬するトラックに対して作成および表示されます。
 
@@ -250,10 +250,10 @@ ms.locfileid: "91321749"
     });
     ```
 
-    上記のコードでは、[Azure Maps Route Directions API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) を介して Azure Maps Route Service に対してクエリを実行します。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 最後に、ルートの線がデータ ソースに追加されます。 トラックのルート計算は自家用車のルート計算よりも時間がかかることが多いため、これをインデックス 0 で追加して、トラックのルートがデータ ソース内の他の線よりも先にレンダリングされるようにします。 トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまいます。 トラックのルートの線には、線の色 (青) と幅 (9 ピクセル) という 2 つのプロパティを追加します。
+    上記のコードでは、[Azure Maps Route Directions API](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) を介して Azure Maps Route Service に対してクエリを実行します。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 最後に、ルートの線がデータ ソースに追加されます。 トラックのルート計算は自家用車のルート計算よりも時間がかかることが多いため、これをインデックス 0 で追加して、トラックのルートがデータ ソース内の他の線よりも先にレンダリングされるようにします。 トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまいます。 トラックのルートの線には、線の色 (青) と幅 (9 ピクセル) という 2 つのプロパティを追加します。
 
     >[!TIP]
-    > Azure Maps Route Directions API で使用可能なすべてのオプションと値を確認するには、[郵送ルートの道順の URI パラメーター](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#uri-parameters)を参照してください。
+    > Azure Maps Route Directions API で使用可能なすべてのオプションと値を確認するには、[郵送ルートの道順の URI パラメーター](/rest/api/maps/route/postroutedirections#uri-parameters)を参照してください。
 
 3. 今度は、次の JavaScript コードを追加して、自家用車のルートを作成します。
 
@@ -273,7 +273,7 @@ ms.locfileid: "91321749"
     });
     ```
 
-    上記のコードでは、[Azure Maps Route Directions API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) メソッドを介して Azure Maps ルーティング サービスに対してクエリを実行します。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 最後に、ルートの線がデータ ソースに追加されます。 トラックのルートの線には、線の色 (紫) と幅 (5 ピクセル) という 2 つのプロパティを追加します。
+    上記のコードでは、[Azure Maps Route Directions API](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) メソッドを介して Azure Maps ルーティング サービスに対してクエリを実行します。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 最後に、ルートの線がデータ ソースに追加されます。 トラックのルートの線には、線の色 (紫) と幅 (5 ピクセル) という 2 つのプロパティを追加します。
 
 4. **TruckRoute.html** ファイルを保存し、Web ブラウザーを更新します。 これで、マップにトラックと自家用車のルートが表示されます。
 

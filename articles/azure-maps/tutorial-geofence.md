@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335196"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896802"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
 このチュートリアルでは、Azure Maps ジオフェンス サービスの作成と使用の基礎を確認します。 これは、次のシナリオのコンテキストに基づいて行います。
 
-"*建設現場の管理者が、建設区域の境界を出入りする機材を追跡する必要があります。それらの境界を機材が出入りするたびに、メール通知が作業管理者に送信されます。* "
+" *建設現場の管理者が、建設区域の境界を出入りする機材を追跡する必要があります。それらの境界を機材が出入りするたびに、メール通知が作業管理者に送信されます。* "
 
 建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
-> * 機材がジオフェンス領域を出入りしたときにトリガーされ、メール通知を建設現場の作業管理者に送信する 2 つの[ロジック アプリ](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)を設定する。
-> * [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) を使用して Azure Maps ジオフェンスの enter イベントと exit イベントをサブスクライブする。 ここでは、2 つのロジック アプリに定義された HTTP エンドポイントを呼び出す Webhook イベントのサブスクリプションを 2 つ設定します。 これらのロジック アプリから、ジオフェンスを出入りする機材に関する適切なメール通知が送信されます。
-> * 機材がジオフェンス領域を出入りしたときに、[Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して通知を受信する。
+> * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
+> * 機材がジオフェンス領域を出入りしたときにトリガーされ、メール通知を建設現場の作業管理者に送信する 2 つの[ロジック アプリ](../event-grid/handler-webhooks.md#logic-apps)を設定する。
+> * [Azure Event Grid](../event-grid/overview.md) を使用して Azure Maps ジオフェンスの enter イベントと exit イベントをサブスクライブする。 ここでは、2 つのロジック アプリに定義された HTTP エンドポイントを呼び出す Webhook イベントのサブスクリプションを 2 つ設定します。 これらのロジック アプリから、ジオフェンスを出入りする機材に関する適切なメール通知が送信されます。
+> * 機材がジオフェンス領域を出入りしたときに、[Search Geofence Get API](/rest/api/maps/spatial/getgeofence) を使用して通知を受信する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "91335196"
 このチュートリアルでは、`FeatureCollection` を含んだジオフェンシング GeoJSON データをアップロードします。 `FeatureCollection` には、建設現場内の多角形領域を定義する 2 つのジオフェンスが含まれています。 1 つ目のジオフェンスには、時間の有効期限や制限はありません。 2 つ目のジオフェンスは、照会できる期間が作業時間 (太平洋標準時の午前 9 時から午後 5 時) に限られ、2022 年 1 月 1 日を過ぎると無効となります。 GeoJSON 形式の詳細については、「[ジオフェンシング GeoJSON データ](geofence-geojson.md)」を参照してください。
 
 >[!TIP]
->ジオフェンシング データはいつでも更新することができます。 詳細については、[Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) に関するページをご覧ください。
+>ジオフェンシング データはいつでも更新することができます。 詳細については、[Data Upload API](/rest/api/maps/data/uploadpreview) に関するページをご覧ください。
 
 1. Postman アプリを開きます。 上部にある **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。 コレクションに名前を付け、 **[作成]** を選択します。
 
@@ -186,20 +186,20 @@ ms.locfileid: "91335196"
 
 ## <a name="create-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフローを作成する
 
-次に、メール通知をトリガーする 2 つの[ロジック アプリ](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) エンドポイントを作成します。 1 つ目の作成方法は次のとおりです。
+次に、メール通知をトリガーする 2 つの[ロジック アプリ](../event-grid/handler-webhooks.md#logic-apps) エンドポイントを作成します。 1 つ目の作成方法は次のとおりです。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
-3. **[Marketplace を検索]** ボックスに「**Logic App**」と入力します。
+3. **[Marketplace を検索]** ボックスに「 **Logic App** 」と入力します。
 
 4. 結果から **[Logic App]**  >  **[作成]** を選択します。
 
 5. **[Logic App]** ページで、次の値を入力します。
-    * このロジック アプリに使用する "**サブスクリプション**"。
-    * このロジック アプリの "**リソース グループ**" の名前。 **[新規作成]** を選んで新しく作成することも、 **[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
-    * "**ロジック アプリ名**"。 この場合は、名前として `Equipment-Enter` を使用します。
+    * このロジック アプリに使用する " **サブスクリプション** "。
+    * このロジック アプリの " **リソース グループ** " の名前。 **[新規作成]** を選んで新しく作成することも、 **[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
+    * " **ロジック アプリ名** "。 この場合は、名前として `Equipment-Enter` を使用します。
 
     このチュートリアルの目的上、他の値はすべて、既定の設定のままにしてください。
 
@@ -224,7 +224,7 @@ ms.locfileid: "91335196"
     :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="ロジック アプリを作成する際のスクリーンショット。":::
 
     >[!TIP]
-    > `geometryId` や `deviceId` などの GeoJSON 応答データは、メール通知で取得できます。 Event Grid によって送信されたデータを読み取るように Logic Apps を構成できます。 イベント データを使用したり、イベント データをメール通知に渡したりするように Logic Apps を構成する方法については、「[チュートリアル: Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)」を参照してください。
+    > `geometryId` や `deviceId` などの GeoJSON 応答データは、メール通知で取得できます。 Event Grid によって送信されたデータを読み取るように Logic Apps を構成できます。 イベント データを使用したり、イベント データをメール通知に渡したりするように Logic Apps を構成する方法については、「[チュートリアル: Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](../event-grid/publish-iot-hub-events-to-logic-apps.md)」を参照してください。
 
 11. ロジック アプリ デザイナーの左上隅にある **[保存]** を選択します。
 
@@ -232,7 +232,7 @@ ms.locfileid: "91335196"
 
 ## <a name="create-azure-maps-events-subscriptions"></a>Azure Maps イベントのサブスクリプションを作成する
 
-Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)をサポートしています。 ここでは 2 種類のイベント サブスクリプションを作成する必要があります。1 つはジオフェンスの enter イベント用、もう 1 つはジオフェンスの exit イベント用です。
+Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-maps.md)をサポートしています。 ここでは 2 種類のイベント サブスクリプションを作成する必要があります。1 つはジオフェンスの enter イベント用、もう 1 つはジオフェンスの exit イベント用です。
 
 次の手順では、ジオフェンスの enter イベント用にイベント サブスクリプションを作成する方法を示します。 ジオフェンスの exit イベントも同様の手順を繰り返してサブスクライブできます。
 
@@ -242,12 +242,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 2. イベント サブスクリプションを作成するには、[イベント] ページの **[+ イベント サブスクリプション]** を選択します。
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="ロジック アプリを作成する際のスクリーンショット。":::
-
-3. **[イベント サブスクリプションの作成]** ページで、次の値を入力します。
-    * イベント サブスクリプションの "**名前**"。
-    * **[イベント スキーマ]** は *[イベント グリッド スキーマ]* にする必要があります。
-    * このイベント サブスクリプションの "**システム トピック名**"。この場合は、`Contoso-Construction` となります。
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="ロジック アプリを作成する際のスクリーンショット。" **システム トピック名** "。この場合は、`Contoso-Construction` となります。
     * **[イベントの種類のフィルター]** では、イベントの種類として `Geofence Entered` を選択します。
     * **[エンドポイントのタイプ]** では、`Web Hook` を選択します。
     * **[エンドポイント]** には、前のセクションで作成したロジック アプリの enter エンドポイントの HTTP POST の URL をコピーします。 保存し忘れていた場合は、ロジック アプリ デザイナーに戻って HTTP トリガーの手順からコピーしてください。
@@ -260,13 +255,13 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 ## <a name="use-spatial-geofence-get-api"></a>Spatial Geofence Get API を使用する
 
-[Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して、機材がジオフェンスを出入りしたときにメール通知を作業管理者に送信します。
+[Spatial Geofence Get API](/rest/api/maps/spatial/getgeofence) を使用して、機材がジオフェンスを出入りしたときにメール通知を作業管理者に送信します。
 
 各機材には `deviceId` が指定されます。 このチュートリアルでは、一意の ID が `device_1` である 1 つの機材を追跡します。
 
-次の図は、時間の経過に伴う機材の 5 つの位置を示したものです。ジオフェンス外部のどこかにある *Start* 位置が起点となります。 このチュートリアルの目的上、*Start* 位置は定義していません。その位置のデバイスに対してクエリを実行することはないからです。
+次の図は、時間の経過に伴う機材の 5 つの位置を示したものです。ジオフェンス外部のどこかにある *Start* 位置が起点となります。 このチュートリアルの目的上、 *Start* 位置は定義していません。その位置のデバイスに対してクエリを実行することはないからです。
 
-ジオフェンスの最初の出入りを示す機材位置を指定して [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) に対するクエリを実行すると、Event Grid によって適切なロジック アプリ エンドポイントが呼び出されて、メール通知が作業管理者に送信されます。
+ジオフェンスの最初の出入りを示す機材位置を指定して [Spatial Geofence Get API](/rest/api/maps/spatial/getgeofence) に対するクエリを実行すると、Event Grid によって適切なロジック アプリ エンドポイントが呼び出されて、メール通知が作業管理者に送信されます。
 
 以降の各セクションでは、5 つの異なる機材位置座標を使用して API 要求を実行します。
 
@@ -274,7 +269,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 ### <a name="equipment-location-1-47638237-122132483"></a>機材位置 1 (47.638237,-122.132483)
 
-1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 1* とします。 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
+1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 1* とします。 「 [ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 `{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます。
 
@@ -314,7 +309,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 ### <a name="location-2-4763800-122132531"></a>位置 2 (47.63800,-122.132531)
 
-1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 2* とします。 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
+1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 2* とします。 「 [ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 `{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます。
 
@@ -354,7 +349,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 ### <a name="location-3-4763810783315048-12213336020708084"></a>位置 3 (47.63810783315048,-122.13336020708084)
 
-1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 3* とします。 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
+1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 3* とします。 「 [ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 `{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます。
 
@@ -397,7 +392,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 ### <a name="location-4-47637988-1221338344"></a>場所 4 (47.637988,-122.1338344)
 
-1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 4* とします。 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
+1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 4* とします。 「 [ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 `{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます。
 
@@ -431,7 +426,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 ### <a name="location-5-4763799--122134505"></a>位置 5 (47.63799、-122.134505)
 
-1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 5* とします。 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
+1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 5* とします。 「 [ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 `{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます。
 
@@ -470,9 +465,9 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 前の GeoJSON 応答では、機材はメイン サイト ジオフェンスから出ています。 その結果、`isEventPublished` パラメーターが `true` に設定され、作業管理者には、機材がジオフェンスから出たことを示すメール通知が送信されます。
 
 
-また、[Event Grid と Logic Apps を使用して電子メール通知を送信](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)して、[Event Grid でサポートされているイベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)を確認することもできます。
+また、[Event Grid と Logic Apps を使用して電子メール通知を送信](../event-grid/publish-iot-hub-events-to-logic-apps.md)して、[Event Grid でサポートされているイベント ハンドラー](../event-grid/event-handlers.md)を確認することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Logic Apps における各種コンテンツの扱い](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
+> [Azure Logic Apps における各種コンテンツの扱い](../logic-apps/logic-apps-content-type.md)

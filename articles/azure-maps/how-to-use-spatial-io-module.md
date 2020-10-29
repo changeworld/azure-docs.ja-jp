@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335298"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895394"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 
-Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、**空間 IO モジュール**が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
+Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、 **空間 IO モジュール** が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
 
 - [一般的な空間データ ファイルに対する読み取りと書き込み](spatial-io-read-write-spatial-data.md)。 サポートされているファイル形式は以下の通りです｡空間情報を含む列がある、KML、KMZ、GPX、GeoRSS、GML、CSV ファイル。 また、Well-Known Text (WKT) もサポートされています。
 - [Open Geospatial Consortium (OGC) サービスに接続し、Azure Maps Web SDK と統合する。Web Map Service (WMS) と Web Map Tile Service (WMTS) をマップにレイヤーとしてオーバーレイする。](spatial-io-add-ogc-map-layer.md)
@@ -40,7 +40,7 @@ Azure Maps Web SDK には、JavaScript または TypeScript を使用して、�
 
 ## <a name="prerequisites"></a>前提条件
 
-空間 IO モジュールを使用する前に、[Azure Maps アカウントを作成](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)し、[お使いのアカウントのプライマリ サブスクリプション キーを取得](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)する必要があります。
+空間 IO モジュールを使用する前に、[Azure Maps アカウントを作成](./quick-demo-map-app.md#create-an-azure-maps-account)し、[お使いのアカウントのプライマリ サブスクリプション キーを取得](./quick-demo-map-app.md#get-the-primary-key-for-your-account)する必要があります。
 
 ## <a name="installing-the-spatial-io-module"></a>空間 IO モジュールのインストール
 
@@ -68,7 +68,7 @@ Azure Maps 空間 IO モジュールは、次の 2 つのオプションのい�
 
 1. 新しい HTML ファイルを作成します。
 
-2. Azure Maps Web SDK を読み込んで、マップ コントロールを初期化します。 詳細については、[Azure Maps のマップ コントロール](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) ガイドに関するページを参照してください。 この手順を完了すると、お使いの HTML ファイルは次のようになります。
+2. Azure Maps Web SDK を読み込んで、マップ コントロールを初期化します。 詳細については、[Azure Maps のマップ コントロール](./how-to-use-map-control.md) ガイドに関するページを参照してください。 この手順を完了すると、お使いの HTML ファイルは次のようになります。
 
     ```html
     <!DOCTYPE html>
@@ -256,4 +256,4 @@ Azure Maps 空間 IO モジュールは、次の 2 つのオプションのい�
 以下の Azure Maps 空間 IO のドキュメントを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Maps 空間 IO パッケージ](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Azure Maps 空間 IO パッケージ](/javascript/api/azure-maps-spatial-io/)

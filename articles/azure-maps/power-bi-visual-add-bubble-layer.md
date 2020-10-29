@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261474"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896227"
 ---
 # <a name="add-a-bubble-layer"></a>バブル レイヤーを追加する
 
-**バブル レイヤー**は、場所データをマップ上で拡大縮小された円としてレンダリングします。
+**バブル レイヤー** は、場所データをマップ上で拡大縮小された円としてレンダリングします。
 
 > [!div class="mx-imgBorder"]
 > ![バブル レイヤーを使用してポイント データを表示しているマップ](media/power-bi-visual/bubble-layer-with-legend-color.png)
@@ -90,7 +90,7 @@ ms.locfileid: "86261474"
 ビジュアルをカスタマイズする:
 
 > [!div class="nextstepaction"]
-> [Power BI における色の書式設定に関するヒントとコツ](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Power BI における色の書式設定に関するヒントとコツ](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [視覚エフェクトのタイトル、背景、および凡例をカスタマイズする](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [視覚エフェクトのタイトル、背景、および凡例をカスタマイズする](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

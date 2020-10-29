@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825299"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896584"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-地図の幅と高さはズーム レベルによって異なるため、ピクセル座標もそうです。 地図の左上隅にあるピクセルは、常にピクセル座標が (0, 0) です。 地図の右下隅にあるピクセルのピクセル座標は *(width-1, height-1)* 、または前のセクションの式を参照すると *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)* になります。 たとえば、レベル 2 で 512 の正方形のタイルを使用する場合、ピクセル座標は次のように (0, 0) から (2047, 2047) の範囲になります。
+地図の幅と高さはズーム レベルによって異なるため、ピクセル座標もそうです。 地図の左上隅にあるピクセルは、常にピクセル座標が (0, 0) です。 地図の右下隅にあるピクセルのピクセル座標は *(width-1, height-1)* 、または前のセクションの式を参照すると *(tileSize \* 2 <sup>zoom</sup>–1, tileSize \* 2 <sup>zoom</sup>–1)* になります。 たとえば、レベル 2 で 512 の正方形のタイルを使用する場合、ピクセル座標は次のように (0, 0) から (2047, 2047) の範囲になります。
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="ワールドマップタイル":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-各タイルには、左上の (0, 0) から右下の *(2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)* の範囲の XY 座標が与えられます。 たとえば、ズーム レベル 3 の場合、タイルの座標は次のように (0, 0) から (7, 7) までの範囲になります。
+各タイルには、左上の (0, 0) から右下の *(2 <sup>zoom</sup>–1, 2 <sup>zoom</sup>–1)* の範囲の XY 座標が与えられます。 たとえば、ズーム レベル 3 の場合、タイルの座標は次のように (0, 0) から (7, 7) までの範囲になります。
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="ワールドマップタイル":::
 
@@ -114,7 +114,7 @@ var tileY = Math.floor(pixelY / tileSize);
 
 タイルは、ズーム レベルによって呼び出されます。 X 座標と Y 座標は、そのズーム レベルのグリッド上のタイルの位置に対応します。
 
-使用するズーム レベルを決定する際は、それぞれの場所が、そのタイル上の固定された位置に配置されるということに注意してください。 つまり、特定の区域を表示するために必要なタイル数は、ズーム グリッドが世界地図上のどこに配置されるかによって左右されます。 たとえば、互いに 900 メートル離れた 2 つの地点がある場合、ズーム レベル 17 では、それらの地点間のルートを 3 つのタイルで表示できる*場合もあります*が、 西側の地点がタイルの右寄りにあり、東側の地点がタイルの左寄りにある場合は、タイルが 4 個必要になる可能性もあります。
+使用するズーム レベルを決定する際は、それぞれの場所が、そのタイル上の固定された位置に配置されるということに注意してください。 つまり、特定の区域を表示するために必要なタイル数は、ズーム グリッドが世界地図上のどこに配置されるかによって左右されます。 たとえば、互いに 900 メートル離れた 2 つの地点がある場合、ズーム レベル 17 では、それらの地点間のルートを 3 つのタイルで表示できる *場合もあります* が、 西側の地点がタイルの右寄りにあり、東側の地点がタイルの左寄りにある場合は、タイルが 4 個必要になる可能性もあります。
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="ワールドマップタイル":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > Azure Maps SDK の対話型マップ コントロールには、地理空間位置とビューポートのピクセルの間で変換を行うためのヘルパー関数が用意されています。 
-> - [Web SDK: 地図のピクセルと位置の計算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK: 地図のピクセルと位置の計算](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Maps REST サービスから地図のタイルに直接アクセスします。
 
 > [!div class="nextstepaction"]
-> [地図のタイルを取得する](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [地図のタイルを取得する](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [トラフィック フローのタイルを取得する](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [トラフィック フローのタイルを取得する](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [トラフィック インシデントのタイルを取得する](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [トラフィック インシデントのタイルを取得する](/rest/api/maps/traffic/gettrafficincidenttile)
 
 地理空間の概念について詳しくは、次をご覧ください。
 

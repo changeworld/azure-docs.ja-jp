@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272958"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895530"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップに交通情報データを表示する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91272958"
 
 ## <a name="prerequisites"></a>前提条件
 
-マップに交通情報を表示するには、事前に [Azure アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[サブスクリプション キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)しておく必要があります。 次に、[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) をインストールしてマップを読み込む必要があります。
+マップに交通情報を表示するには、事前に [Azure アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[サブスクリプション キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)しておく必要があります。 次に、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
 
 ## <a name="incidents-traffic-data"></a>インシデント交通情報データ
 
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 特定の機能のインシデントを取得するには、次のコードを使用できます。 機能をクリックすると、コード ロジックによって、インシデントの発生についてチェックが行われ、インシデントに関するメッセージが作成されます。 画面の下部に、詳細を含むメッセージが表示されます。
 
-1. まず、**res > layout > activity_main.xml** を以下に示されているように編集する必要があります。 `mapcontrol_centerLat`、`mapcontrol_centerLng`、および `mapcontrol_zoom` は、目的の値に置き換えることができます。 この場合、ズーム レベルは 0 から 22 の値になることに注意してください。 ズーム レベルが 0 の場合は、世界全体が 1 つのタイルに収まります。
+1. まず、 **res > layout > activity_main.xml** を以下に示されているように編集する必要があります。 `mapcontrol_centerLat`、`mapcontrol_centerLng`、および `mapcontrol_zoom` は、目的の値に置き換えることができます。 この場合、ズーム レベルは 0 から 22 の値になることに注意してください。 ズーム レベルが 0 の場合は、世界全体が 1 つのタイルに収まります。
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
