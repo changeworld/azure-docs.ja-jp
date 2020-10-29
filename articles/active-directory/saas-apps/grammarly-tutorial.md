@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327971"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92447723"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grammarly の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "91327971"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Grammarly では、**IDP** Initiated SSO がサポートされます
-* Grammarly では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Grammarly では、 **IDP** Initiated SSO がサポートされます
+* Grammarly では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -51,7 +51,7 @@ Azure AD への Grammarly の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Grammarly**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Grammarly** 」と入力します。
 1. 結果のパネルから **[Grammarly]** を選択して、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -123,7 +123,7 @@ Grammarly に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-grammarly-sso"></a>Grammarly SSO の構成
 
-**Grammarly** でシングル サインオンを構成するには、**ログイン URL**、**Azure AD 識別子**、ダウンロードした**証明書 (Base64)** を Grammarly の管理パネルにコピーする必要があります。 方法については、[こちら](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-)をご覧ください。
+**Grammarly** でシングル サインオンを構成するには、 **ログイン URL** 、 **Azure AD 識別子** 、ダウンロードした **証明書 (Base64)** を Grammarly の管理パネルにコピーする必要があります。 方法については、[こちら](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-)をご覧ください。
 
 ### <a name="create-grammarly-test-user"></a>Grammarly テスト ユーザーの作成
 
@@ -135,8 +135,8 @@ Grammarly に対する Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal で **[このアプリケーションをテストします]** をクリックします。すると、SSO を設定した Grammarly に自動的にサインインします。 
 
-2. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Grammarly] タイルをクリックすると、SSO を設定した Grammarly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+2. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Grammarly] タイルをクリックすると、SSO を設定した Grammarly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Grammarly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Grammarly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

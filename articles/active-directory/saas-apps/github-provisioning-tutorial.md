@@ -2,20 +2,20 @@
 title: チュートリアル:GitHub のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを GitHub に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: ArvindHarinder1
+author: Zhchia
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.author: Zhchia
+ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857539"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448964"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -28,7 +28,7 @@ ms.locfileid: "91857539"
 * Azure Active Directory テナント
 * [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)
 * 組織への Admin アクセス許可がある GitHub のユーザー アカウント
-* [GitHub Enterprise Cloud 組織用に構成された SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
+* [GitHub Enterprise Cloud 組織用に構成された SAML](./github-tutorial.md)
 * [こちら](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)で説明しているように、組織に OAuth アクセスが提供されていることを確認します
 * 1 つの組織に対する SCIM のプロビジョニングは、組織レベルで SSO が有効になっている場合のみサポートされます
 
@@ -47,7 +47,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 単一の Azure AD ユーザーを GitHub に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-* GitHub にユーザーを割り当てるときは、**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
+* GitHub にユーザーを割り当てるときは、 **ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
 
 ## <a name="configuring-user-provisioning-to-github"></a>GitHub へのユーザー プロビジョニングの構成
 
@@ -57,9 +57,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために GitHub を既に構成している場合は、検索フィールドで GitHub のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **GitHub** を検索します。 検索結果から GitHub を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために GitHub を既に構成している場合は、検索フィールドで GitHub のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **GitHub** を検索します。 検索結果から GitHub を選択してアプリケーションの一覧に追加します。
 
-3. GitHub のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. GitHub のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -71,7 +71,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![GitHub の [サインイン] ページを示すスクリーンショット。](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Azure Portal で、**[テナント URL]** を入力し、**[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、**[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します (**テナント URL** はルール `https://api.github.com/scim/v2/organizations/<Organization_name>` で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)** > **[Organizations]\(組織\)** でわかります)。
+7. Azure Portal で、 **[テナント URL]** を入力し、 **[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、 **[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します ( **テナント URL** はルール `https://api.github.com/scim/v2/organizations/<Organization_name>` で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)** > **[Organizations]\(組織\)** でわかります)。
 
     ![GitHub の [組織] ページを示すスクリーンショット。](./media/github-provisioning-tutorial/GitHub3.png)
 
@@ -83,7 +83,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. **[属性マッピング]** セクションで、Azure AD から GitHub に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で GitHub のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-12. GitHub に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+12. GitHub に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
 13. **[保存]** をクリックします。
 
