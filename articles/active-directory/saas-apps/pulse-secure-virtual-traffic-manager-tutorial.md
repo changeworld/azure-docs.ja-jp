@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: d487295e9aab1a56553dc9d31b0a8714688005c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91338285"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505728"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pulse Secure Virtual Traffic Manager の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "91338285"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Pulse Secure Virtual Traffic Manager では、**SP** Initiated SSO がサポートされます
+* Pulse Secure Virtual Traffic Manager では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-pulse-secure-virtual-traffic-manager-from-the-gallery"></a>ギャラリーからの Pulse Secure Virtual Traffic Manager の追加
 
@@ -47,7 +47,7 @@ Azure AD への Pulse Secure Virtual Traffic Manager の統合を構成するに
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Pulse Secure Virtual Traffic Manager**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Pulse Secure Virtual Traffic Manager** 」と入力します。
 1. 結果のパネルから **[Pulse Secure Virtual Traffic Manager]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -135,9 +135,9 @@ b. 新しい信頼できる SAML ID プロバイダーの詳細を追加し、Az
 
 * **[Entity_id]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を入力します。  
 
-* **[URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を入力します。 
+* **[URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を入力します。 
 
-* Azure portal からダウンロードした**証明書**をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。
+* Azure portal からダウンロードした **証明書** をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。
 
 c. 新しい SAML ID プロバイダーが正常に作成されたことを確認します。 
 
@@ -183,7 +183,7 @@ c. 仮想サーバーに対して次の認証設定を構成します。
 
     b. **[auth!saml!sp_acs_url]\(認証 SAML SP ACS URL\)** を、Azure AD シングル サインオン構成の応答 URL (Assertion Consumer Service URL) として使用されているものと同じ URL に設定します。 `https://pulseweb.labb.info/saml/consume` などです。 
 
-    c. **[auth!saml!idp]\(認証 SAML IDP\)** で、前のステップで作成した**信頼できる ID プロバイダー**を選択します。 
+    c. **[auth!saml!idp]\(認証 SAML IDP\)** で、前のステップで作成した **信頼できる ID プロバイダー** を選択します。 
 
     d. [auth!saml!time_tolerance]\(認証 SAML 許容時間\) では、既定値の "5" 秒をそのまま使用します。 
 
@@ -203,8 +203,8 @@ c. 仮想サーバーに対して次の認証設定を構成します。
 
 2. Pulse Secure Virtual Traffic Manager のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Pulse Secure Virtual Traffic Manager] タイルをクリックすると、Pulse Secure Virtual Traffic Manager のサインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Pulse Secure Virtual Traffic Manager] タイルをクリックすると、Pulse Secure Virtual Traffic Manager のサインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Pulse Secure Virtual Traffic Manager を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Pulse Secure Virtual Traffic Manager を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

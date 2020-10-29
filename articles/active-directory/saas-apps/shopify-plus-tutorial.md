@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 61d2eb05f7953cda16664f6b4e3317feb46aa8ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7a5d160fa8a0209478fe81d2880e8956828350d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548576"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504731"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Shopify Plus の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548576"
 * ユーザーが Azure AD アカウントを使用して Shopify Plus に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Shopify Plus では、**SP および IDP** によって開始される SSO がサポートされます
+* Shopify Plus では、 **SP および IDP** によって開始される SSO がサポートされます
 
-* Shopify Plus を構成すると、組織の機密データを流出や侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Shopify Plus を構成すると、組織の機密データを流出や侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-shopify-plus-from-the-gallery"></a>ギャラリーからの Shopify Plus の追加
 
@@ -51,7 +51,7 @@ Azure AD への Shopify Plus の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Shopify Plus**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Shopify Plus** 」と入力します。
 1. 結果のパネルから **[Shopify Plus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -138,7 +138,7 @@ Shopify Plus との Azure AD SSO を構成し、テストするには、以下�
 
 完全な手順を確認するには、[SAML 統合の設定に関する Shopify のドキュメント](https://help.shopify.com/en/manual/shopify-plus/saml)を参照してください。
 
-**Shopify Plus** 側でシングルサインオンを構成するには、**アプリのフェデレーション メタデータ URL** を Azure Active Directory からコピーします。 次に、[組織の管理者](https://shopify.plus)にログインし、 **[Users]\(ユーザー\)**  >  **[Security]\(セキュリティ\)** に移動します。 **[Set up configuration]\(構成の設定\)** を選択し、 **[Identity provider metadata URL]\(ID プロバイダー メタデータ URL\)** にアプリのフェデレーション メタデータ URL を貼り付けます。 **[Add]\(追加\)** を選択してこの手順を完了します。
+**Shopify Plus** 側でシングルサインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を Azure Active Directory からコピーします。 次に、 [組織の管理者](https://shopify.plus)にログインし、 **[Users]\(ユーザー\)**  >  **[Security]\(セキュリティ\)** に移動します。 **[Set up configuration]\(構成の設定\)** を選択し、 **[Identity provider metadata URL]\(ID プロバイダー メタデータ URL\)** にアプリのフェデレーション メタデータ URL を貼り付けます。 **[Add]\(追加\)** を選択してこの手順を完了します。
 
 ### <a name="create-shopify-plus-test-user"></a>Shopify Plus テスト ユーザーの作成
 
@@ -166,18 +166,18 @@ Shopify Plus との Azure AD SSO を構成し、テストするには、以下�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Shopify Plus] タイルをクリックすると、SSO を設定した Shopify Plus に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Shopify Plus] タイルをクリックすると、SSO を設定した Shopify Plus に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD を使用する Shopify Plus を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Shopify Plus を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Shopify Plus を保護する方法](/cloud-app-security/proxy-intro-aad)

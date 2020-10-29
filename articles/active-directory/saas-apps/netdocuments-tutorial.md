@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: f07aaa3b1d133d8011b7e98df5c36a8bac1b5f29
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938476"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92506897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NetDocuments の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91938476"
 * ユーザーが自分の Azure AD アカウントを使用して NetDocuments に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NetDocuments では、**SP** によって開始される SSO がサポートされます
+* NetDocuments では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-netdocuments-from-the-gallery"></a>ギャラリーからの NetDocuments の追加
 
@@ -49,7 +49,7 @@ Azure AD への NetDocuments の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NetDocuments**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NetDocuments** 」と入力します。
 1. 結果のパネルから **[NetDocuments]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netdocuments"></a>NetDocuments の Azure AD シングル サインオンの構成とテスト
@@ -84,9 +84,9 @@ NetDocuments での Azure AD SSO を構成してテストするには、次の�
     c. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://netdocuments.com/VAULT`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 リポジトリ ID は、**CA-** で始まり、その後に NetDocuments リポジトリに関連付けられている 8 文字のコードが続く値です。 詳細については、[NetDocuments Federated Identity サポート ドキュメント](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)を参照してください。 また、上の情報を使用して構成することが難しい場合は、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/)に連絡して、これらの値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 リポジトリ ID は、 **CA-** で始まり、その後に NetDocuments リポジトリに関連付けられている 8 文字のコードが続く値です。 詳細については、[NetDocuments Federated Identity サポート ドキュメント](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)を参照してください。 また、上の情報を使用して構成することが難しい場合は、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/)に連絡して、これらの値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. NetDocuments アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 NetDocuments アプリケーションでは、**nameidentifier** が **employeeid** にマップされるか、または実際の組織の **nameidentifier** に該当する他の要求にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. NetDocuments アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 NetDocuments アプリケーションでは、 **nameidentifier** が **employeeid** にマップされるか、または実際の組織の **nameidentifier** に該当する他の要求にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -179,14 +179,14 @@ Azure AD ユーザーが NetDocuments にサインインできるようにする
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [NetDocuments] タイルをクリックすると、SSO を設定した NetDocuments に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [NetDocuments] タイルをクリックすると、SSO を設定した NetDocuments に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で NetDocuments を試す](https://aad.portal.azure.com/)

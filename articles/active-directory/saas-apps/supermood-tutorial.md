@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
-ms.openlocfilehash: f30dea768e7b3a0376ebdf6c3d80e98eaba6f760
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1f8fb4c6586281352b6da05978c6ca4dac23ce5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533386"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Supermood の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88533386"
 * ユーザーが自分の Azure AD アカウントを使用して Supermood に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Supermood では、**SP と IDP** によって開始される SSO がサポートされます
-* Supermood では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Supermood では、 **SP と IDP** によって開始される SSO がサポートされます
+* Supermood では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-supermood-from-the-gallery"></a>ギャラリーからの Supermood の追加
 
@@ -50,7 +50,7 @@ Azure AD への Supermood の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Supermood**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Supermood** 」と入力します。
 1. 結果のパネルから **Supermood** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-supermood"></a>Supermood の Azure AD シングル サインオンの構成とテスト
@@ -151,7 +151,7 @@ Supermood に対する Azure AD SSO を構成してテストするには、次�
 
     a. **[email domain for this Identity provider]\(この ID プロバイダーの電子メール ドメイン\)** テキストボックスに、自分のドメインを入力します。
 
-    b. **[Use a metadata URL]\(メタデータ URL の使用\)** テキストボックスに、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** を貼り付けます。
+    b. **[Use a metadata URL]\(メタデータ URL の使用\)** テキストボックスに、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** を貼り付けます。
 
     c. **[追加]** をクリックします。
 
@@ -163,14 +163,14 @@ Supermood に対する Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Supermood] タイルをクリックすると、SSO を設定した Supermood に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Supermood] タイルをクリックすると、SSO を設定した Supermood に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Supermood を試す](https://aad.portal.azure.com/)
