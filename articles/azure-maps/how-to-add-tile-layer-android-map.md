@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311090"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897094"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
 
@@ -39,7 +39,7 @@ ms.locfileid: "91311090"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事のプロセスを完了するには、[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) をインストールしてマップを読み込む必要があります。
+この記事のプロセスを完了するには、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>マップにタイル レイヤーを追加する
@@ -179,4 +179,4 @@ ms.locfileid: "91311090"
 マップのスタイルを設定する方法の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android マップでのマップ スタイルの変更](./set-android-map-styles.md)

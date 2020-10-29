@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 05071be4fc1705787a649d331613e8d9399f983f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089470"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897179"
 ---
 # <a name="glossary"></a>用語集
 
@@ -347,7 +347,7 @@ ms.locfileid: "92089470"
 
 <a name="spatial-reference"></a> **空間参照** :地域から地球規模まで対応する座標ベースのシステム。地物の位置を正確に特定するために使用されます。 地図座標を実世界の位置情報に関連付けるための座標系を定義します。 空間参照があることで、異なるレイヤーや異なるソースの空間データを確実に統合し、正確な表示または分析が可能となります。 Azure Maps では、入力ジオメトリ データに、[EPSG:3857](https://epsg.io/3857) 座標参照系と WGS 84 が使用されます。
 
-<a name="sql-spatial"></a> **SQL 空間** :SQL Azure と SQL Server 2008 以降に組み込まれた空間機能を指す用語。 この空間機能は、SQL Server から切り離して使用できる .NET ライブラリとしても提供されています。 詳細については、「[空間データ (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)」を参照してください。
+<a name="sql-spatial"></a> **SQL 空間** :SQL Azure と SQL Server 2008 以降に組み込まれた空間機能を指す用語。 この空間機能は、SQL Server から切り離して使用できる .NET ライブラリとしても提供されています。 詳細については、「[空間データ (SQL Server)](/sql/relational-databases/spatial/spatial-data-sql-server)」を参照してください。
 
 <a name="subscription-key"></a> **サブスクリプション キー** :「 [共有キー認証](#shared-key-authentication)」を参照してください。
 
@@ -409,4 +409,3 @@ ms.locfileid: "92089470"
 <a name="zip-code"></a> **ZIP コード** :「 [郵便番号](#postal-code)」を参照してください。
 
 <a name="Zoom level"></a> **ズーム レベル** :地図が見える範囲と詳細度を指定します。 レベル 0 にズームすると、完全な世界地図が表示されることがよくあります。 ただし、マップには、国/地域名、国境、および海洋名などの制限された詳細が表示されます。 ズーム レベル 17 まで拡大した場合、地図には、数ブロックから成るエリアが詳細な道路情報と共に表示されます。 Azure Maps では、最大ズームレベルは 22 です。 詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
-

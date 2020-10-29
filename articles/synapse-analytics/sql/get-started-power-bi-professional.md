@@ -1,5 +1,5 @@
 ---
-title: Power BI Professional への接続
+title: Power BI Professional で Synapse SQL に接続する
 description: このチュートリアルでは、Power BI Desktop を SQL オンデマンド (プレビュー) に接続する手順について説明します。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288700"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899117"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional で Synapse SQL に接続する
 
@@ -75,7 +75,7 @@ DROP DATABASE IF EXISTS demo;
 > [!NOTE]
 > ストレージ アカウントにアクセスするための資格情報を作成する必要があります。 SQL オンデマンドは異なるリージョンからストレージにアクセスできますが、ストレージと Azure Synapse ワークスペースを同じリージョンにすると、パフォーマンスが向上します。
 
-**国勢調査データ コンテナーの資格情報を作成する方法についてのコード スニペット**:
+**国勢調査データ コンテナーの資格情報を作成する方法についてのコード スニペット** :
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')

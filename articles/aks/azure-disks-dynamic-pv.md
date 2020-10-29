@@ -5,19 +5,19 @@ description: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: fd2bc698a107599dccf8f142b0d318400b40aaf3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299325"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900758"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
 永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 この記事では、Azure Kubernetes Service (AKS) クラスター内の単一のポッドによって使用するために Azure ディスクの永続ボリュームを動的に作成する方法を説明します。
 
 > [!NOTE]
-> Azure ディスクは、"*アクセス モード*" の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の 1 ノードに限られます。 複数のノード間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用してください。
+> Azure ディスクは、" *アクセス モード* " の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の 1 ノードに限られます。 複数のノード間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用してください。
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
@@ -25,7 +25,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="built-in-storage-classes"></a>組み込みストレージ クラス
 
@@ -36,7 +36,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 * *default* ストレージ クラスは、標準の SSD Azure ディスクをプロビジョニングします。
     * Standard ストレージでは、Standard SDD が使用されており、信頼性の高いパフォーマンスを実現しながらコスト効率にも優れたストレージを提供します。 
 * *managed-premium* ストレージ クラスは、プレミアムな Azure ディスクをプロビジョニングします。
-    * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、*managed-premium* クラスを選択します。
+    * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、 *managed-premium* クラスを選択します。
     
 既定のストレージ クラスの 1 つを使用している場合、ストレージ クラスの作成後、ボリューム サイズを更新することはできません。 ストレージ クラスの作成後にボリューム サイズを更新できるようにするには、既定のストレージ クラスの 1 つに行 `allowVolumeExpansion: true` を追加します。あるいは、独自のカスタム ストレージ クラスを作成できます。 (データの損失を防ぐための) PVC のサイズの縮小はサポートされていないことに注意してください。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 
 
@@ -61,7 +61,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 永続ボリューム要求 (PVC) を使用して、ストレージ クラスに基づいてストレージを自動的にプロビジョニングします。 この場合、PVC は、事前作成されているストレージ クラスのいずれかを使用して、標準のまたはプレミアムな Azure マネージド ディスクを作成できます。
 
-`azure-premium.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 要求は、サイズが *5GB* で *ReadWriteOnce* アクセスがある `azure-managed-disk` という名前のディスクを要求します。 ストレージ クラスとして、*managed-premium* ストレージ クラスが指定されます。
+`azure-premium.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 要求は、サイズが *5GB* で *ReadWriteOnce* アクセスがある `azure-managed-disk` という名前のディスクを要求します。 ストレージ クラスとして、 *managed-premium* ストレージ クラスが指定されます。
 
 ```yaml
 apiVersion: v1
@@ -78,9 +78,9 @@ spec:
 ```
 
 > [!TIP]
-> Standard ストレージを使用するディスクを作成するには、*managed-premium*ではなく、`storageClassName: default` を使用します。
+> Standard ストレージを使用するディスクを作成するには、 *managed-premium* ではなく、`storageClassName: default` を使用します。
 
-[kubectl apply][kubectl-apply] コマンドを使用して、*azure-premium.yaml* ファイルを指定することで、永続ボリューム要求を作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、 *azure-premium.yaml* ファイルを指定することで、永続ボリューム要求を作成します。
 
 ```console
 $ kubectl apply -f azure-premium.yaml
@@ -90,7 +90,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、*azure-managed-disk* という名前の永続ボリューム要求を使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
+永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、 *azure-managed-disk* という名前の永続ボリューム要求を使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
 `azure-pvc-disk.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
@@ -102,7 +102,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-[az snapshot create][az-snapshot-create] で、ディスク ID を使用してスナップショット ディスクを作成します。 次の例では、*pvcSnapshot* という名前のスナップショットを、AKS クラスターと同じリソース グループ (*MC_myResourceGroup_myAKSCluster_eastus*) 内に作成します。 AKS クラスターがアクセスできないリソース グループ内にスナップショットを作成してディスクを復元する場合、アクセス許可の問題が発生する可能性があります。
+[az snapshot create][az-snapshot-create] で、ディスク ID を使用してスナップショット ディスクを作成します。 次の例では、 *pvcSnapshot* という名前のスナップショットを、AKS クラスターと同じリソース グループ ( *MC_myResourceGroup_myAKSCluster_eastus* ) 内に作成します。 AKS クラスターがアクセスできないリソース グループ内にスナップショットを作成してディスクを復元する場合、アクセス許可の問題が発生する可能性があります。
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -189,7 +189,7 @@ $ az snapshot create \
 
 ## <a name="restore-and-use-a-snapshot"></a>復元とスナップショットの使用
 
-ディスクを復元して Kubernetes ポッドで使用するには、[az disk create][az-disk-create] でディスクを作成するときに、ソースとしてスナップショットを使用します。 この操作では、元のデータのスナップショットにアクセスする必要がある場合に備えて、元のリソースが保持されます。 次の例は、*pvcSnapshot* という名前のスナップショットから、*pvcRestored* という名前のディスクを作成します。
+ディスクを復元して Kubernetes ポッドで使用するには、[az disk create][az-disk-create] でディスクを作成するときに、ソースとしてスナップショットを使用します。 この操作では、元のデータのスナップショットにアクセスする必要がある場合に備えて、元のリソースが保持されます。 次の例は、 *pvcSnapshot* という名前のスナップショットから、 *pvcRestored* という名前のディスクを作成します。
 
 ```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
@@ -211,7 +211,7 @@ metadata:
 spec:
   containers:
   - name: mypodrestored
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

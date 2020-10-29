@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f5e774e9b7327d4b403f6a09187e97082a77aa78
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164484"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900344"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
@@ -127,7 +127,7 @@ Azure Monitor for VMs では、監視する各仮想マシンまたは仮想マ�
 | メソッド | 説明 |
 |:---|:---|
 | [Azure Portal](./vminsights-enable-portal.md) | Azure Arc に接続されている 1 つの仮想マシン、仮想マシン スケール セット、またはハイブリッド仮想マシンに両方のエージェントをインストールします。 |
-| [Resource Manager テンプレート](vminsights-enable-powershell.md) | CLI と PowerShell を含む Resource Manager テンプレートをデプロイするために、サポートされているいずれかの方法を使用して両方のエージェントをインストールします。 |
+| [Resource Manager テンプレート](vminsights-enable-resource-manager.md) | CLI と PowerShell を含む Resource Manager テンプレートをデプロイするために、サポートされているいずれかの方法を使用して両方のエージェントをインストールします。 |
 | [Azure Policy](./vminsights-enable-policy.md) | 仮想マシンまたは仮想マシン スケール セットの作成時にエージェントを自動的にインストールするように、Azure Policy イニシアチブを割り当てます。 |
 | [手動インストール](./vminsights-enable-hybrid.md) | データセンターや他のクラウド環境など、Azure の外部でホストされているコンピューター上のゲスト オペレーティング システムにエージェントをインストールします。 |
 

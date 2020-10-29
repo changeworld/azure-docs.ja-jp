@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: a1fafdf1db29917982bbf136de45237459712bcd
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073463"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900116"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Azure Policy を使用したポッドのセキュリティ保護
 
@@ -38,7 +38,7 @@ Azure Policy を使用して AKS ポッドをセキュリティ保護するに�
 > 
 > ポッドのセキュリティ ポリシーが有効になっているクラスターに Azure Policy アドオンをインストールする場合は、[こちら](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster)の手順に従ってポッドのセキュリティ ポリシーを無効にます。
 
-AKS クラスターでは、リソースが作成され更新されるときに、API サーバーへの要求をインターセプトするためにアドミッション コントローラーが使用されます。 次にアドミッション コントローラーは、一連のルールに対してリソース要求を*検証*して、それを作成する必要があるかどうかを判断します。
+AKS クラスターでは、リソースが作成され更新されるときに、API サーバーへの要求をインターセプトするためにアドミッション コントローラーが使用されます。 次にアドミッション コントローラーは、一連のルールに対してリソース要求を *検証* して、それを作成する必要があるかどうかを判断します。
 
 以前は、Kubernetes プロジェクトによって[ポッドのセキュリティ ポリシー (プレビュー)](use-pod-security-policies.md) 機能が有効にされ、デプロイ可能なポッドが制限されていました。
 
@@ -53,15 +53,15 @@ Kubernetes クラスターの Azure Policy アドオンに、次の一般的な�
 - Kubernetes の Azure Policy アドオンは、Kubernetes バージョン **1.14** 以降でサポートされています。
 - Kubernetes の Azure Policy アドオンは、Linux ノード プールにのみデプロイできます
 - 組み込みのポリシー定義のみがサポートされます
-- クラスターごとのポリシー単位での非対応レコードの最大数:**500**
-- サブスクリプションごとの非対応レコードの最大数:**100 万**
+- クラスターごとのポリシー単位での非対応レコードの最大数: **500**
+- サブスクリプションごとの非対応レコードの最大数: **100 万**
 - Azure Policy アドオン以外の Gatekeeper のインストールは、サポートされていません。 Azure Policy アドオンを有効にする前に、以前の Gatekeeper インストールによってインストールされたすべてのコンポーネントをアンインストールします。
 - [非対応の理由](../governance/policy/how-to/determine-non-compliance.md#compliance-reasons)は、この[リソース プロバイダー モード](../governance/policy/concepts/definition-structure.md#resource-provider-modes)には利用できません。
 
 AKS の Azure Policy アドオンにのみ、次の制限事項が適用されます。
 
 - [AKS Pod セキュリティ ポリシー (プレビュー) ](use-pod-security-policies.md)と AKS の Azure Policy アドオンの両方を同時に有効にすることはできません。 
-- 評価版の Azure Policy アドオンによって自動的に除外される名前空間は _kube-system_、_gatekeeper-system_、および _aks-periscope_ です。
+- 評価版の Azure Policy アドオンによって自動的に除外される名前空間は _kube-system_ 、 _gatekeeper-system_ 、および _aks-periscope_ です。
 
 ### <a name="recommendations"></a>推奨事項
 
@@ -76,7 +76,7 @@ Azure Policy アドオンを使用する場合の一般的な推奨事項を次�
 
 - `CriticalAddonsOnly` テイントとシステム ノード プールを使用して、Gatekeeper ポッドをスケジュールします。 詳細については、[システム ノード プールの使用](use-system-pools.md#system-and-user-node-pools)に関するページを参照してください。
 - AKS クラスターから送信トラフィックをセキュリティで保護します。 詳細については、[クラスター ノードのエグレス トラフィックの制御](limit-egress-traffic.md)に関する記事をご覧ください。
-- クラスターで `aad-pod-identity` が有効になっている場合、Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この構成の場合、Metadata エンドポイントに要求が行われると、ポッドで `aad-pod-identity` が使用されていない場合でも NMI により要求がインターセプトされます。 CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを `aad-pod-identity` に通知するよう、AzurePodIdentityException CRD を構成できます。 _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドは、AzurePodIdentityException CRD を構成することで、`aad-pod-identity` で除外してください。 詳細については、[特定のポッドまたはアプリケーションの aad-pod-identity の無効化](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)に関するページをご覧ください。
+- クラスターで `aad-pod-identity` が有効になっている場合、Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この構成の場合、Metadata エンドポイントに要求が行われると、ポッドで `aad-pod-identity` が使用されていない場合でも NMI により要求がインターセプトされます。 CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを `aad-pod-identity` に通知するよう、AzurePodIdentityException CRD を構成できます。 _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドは、AzurePodIdentityException CRD を構成することで、`aad-pod-identity` で除外してください。 詳細については、[特定のポッドまたはアプリケーションの aad-pod-identity の無効化](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)に関するページをご覧ください。
   例外を構成するには、[mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml) をインストールします。
 
 Azure Policy アドオンでは、CPU とメモリのリソースを操作する必要があります。 これらの要件は、クラスターのサイズが大きくなるにつれて増加します。 Azure Policy アドオンを使用する場合の一般的なガイダンスについては、[Azure Policy の推奨事項][policy-recommendations]に関するページをご覧ください。
@@ -128,7 +128,7 @@ Kubernetes 用の Azure Policy には、ポッド、[ベースライン](https:/
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>マネージド AKS クラスターに対してサポートされていない組み込みポリシー
 
 > [!NOTE]
-> 次の 3 つのポリシーは、AKS によって管理サービスとして管理およびセキュリティ保護されているアスペクトのカスタマイズのため、**AKS ではサポートされていません**。 これらのポリシーは、管理されていないコントロール プレーンがある Azure Arc の接続されたクラスター専用に構築されています。
+> 次の 3 つのポリシーは、AKS によって管理サービスとして管理およびセキュリティ保護されているアスペクトのカスタマイズのため、 **AKS ではサポートされていません** 。 これらのポリシーは、管理されていないコントロール プレーンがある Azure Arc の接続されたクラスター専用に構築されています。
 
 |[ポッドのセキュリティ ポリシーの制御](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
 |---|
@@ -150,7 +150,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > kube-system などの管理名前空間内のポッドは、クラスターを正常な状態に維持するために実行する必要があります。既定の除外された名前空間のリストから必要な名前空間を削除すると、必須システム ポッドが原因でポリシー違反が発生する可能性があります。
 
-AKS では、DNS 解決などの重要なサービスを提供するために、クラスターでシステム ポッドを実行する必要があります。 ポッド機能を制限するポリシーは、システムポッドの安定性に影響を与える可能性があります。 結果として、次の名前空間は、**作成、更新、およびポリシー監査中の受付要求においてポリシーの評価から除外されます**。 この結果、これらの名前空間への新しいデプロイは Azure policy から強制的に除外されます。
+AKS では、DNS 解決などの重要なサービスを提供するために、クラスターでシステム ポッドを実行する必要があります。 ポッド機能を制限するポリシーは、システムポッドの安定性に影響を与える可能性があります。 結果として、次の名前空間は、 **作成、更新、およびポリシー監査中の受付要求においてポリシーの評価から除外されます** 。 この結果、これらの名前空間への新しいデプロイは Azure policy から強制的に除外されます。
 
 1. kube-system
 1. gatekeeper-system
@@ -209,7 +209,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         privileged: true
 ```
@@ -244,7 +244,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
@@ -330,7 +330,7 @@ Azure portal から Azure Policy アドオンを削除する方法について�
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity
-[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
+[aad-pod-identity-exception]: https://azure.github.io/aad-pod-identity/docs/configure/application_exception
 
 <!-- LINKS - internal -->
 [policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md

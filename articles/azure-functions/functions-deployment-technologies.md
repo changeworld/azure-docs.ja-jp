@@ -4,12 +4,12 @@ description: Azure Functions にコードをデプロイするさまざまな方
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641961"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900180"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -110,13 +110,13 @@ Azure Functions では、次のデプロイ方法が使用できます。
 >
 >Azure Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を備えたプライベート コンテナーを使用して、Functions にパッケージへのアクセス権を付与します。 アプリケーションが再起動されるたびに、コンテンツのコピーがフェッチされます。 アプリケーションの有効期間中は、参照が有効である必要があります。
 
->__いつ使用するか:__ ユーザーが[リモート ビルド](#remote-build)の発生を望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
+>__いつ使用するか:__ ユーザーが [リモート ビルド](#remote-build)の発生を望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
 
 ### <a name="zip-deploy"></a>ZIP デプロイ
 
 ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイルを Azure にプッシュします。 必要に応じて、[パッケージから実行](run-functions-from-deployment-package.md)を開始するようにアプリを設定するか、[リモート ビルド](#remote-build)を実行するように指定することができます。
 
->__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、またはコマンド ラインを使用した [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 既定では、これらのツールは zip デプロイを使用し、[パッケージから実行](run-functions-from-deployment-package.md)されます。 Core Tools と Visual Studio Code 拡張機能の両方で、Linux へのデプロイ時に[リモート ビルド](#remote-build)が有効になります。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
+>__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。 [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、 [Visual Studio](functions-develop-vs.md#publish-to-azure)、またはコマンド ラインを使用した [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 既定では、これらのツールは zip デプロイを使用し、[パッケージから実行](run-functions-from-deployment-package.md)されます。 Core Tools と Visual Studio Code 拡張機能の両方で、Linux へのデプロイ時に[リモート ビルド](#remote-build)が有効になります。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
 
 >zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
 
@@ -143,7 +143,7 @@ Web デプロイは、Azure の Windows で実行される関数アプリを含�
 >
 >また、[Web Deploy 3.6](https://www.iis.net/downloads/microsoft/web-deploy) をダウンロードし、`MSDeploy.exe` を直接呼び出すこともできます。
 
->__いつ使用するか:__ Web デプロイはサポートされており、問題はありませんが、推奨されているメカニズムは、[[パッケージから実行する] が有効化された ZIP デプロイ](#zip-deploy)です。 詳細については、[Visual Studio デプロイ ガイド](functions-develop-vs.md#publish-to-azure)に関する記事をご覧ください。
+>__いつ使用するか:__ Web デプロイはサポートされており、問題はありませんが、推奨されているメカニズムは、 [[パッケージから実行する] が有効化された ZIP デプロイ](#zip-deploy)です。 詳細については、[Visual Studio デプロイ ガイド](functions-develop-vs.md#publish-to-azure)に関する記事をご覧ください。
 
 ### <a name="source-control"></a>ソース管理
 
@@ -157,7 +157,7 @@ Web デプロイは、Azure の Windows で実行される関数アプリを含�
 
 ローカル Git は、Git を使用して、ローカル コンピューターから Azure Functions にコードをプッシュするのに使用できます。
 
->__使用方法:__ 「[Azure App Service へのローカル Git デプロイ](../app-service/deploy-local-git.md)」の指示に従ってください。
+>__使用方法:__ 「 [Azure App Service へのローカル Git デプロイ](../app-service/deploy-local-git.md)」の指示に従ってください。
 
 >__いつ使用するか:__ 一般に、別のデプロイ方法を使用することをお勧めします。 ローカル Git からパブリッシュする場合、[トリガーを手動で同期](#trigger-syncing)する必要があります。
 
@@ -165,7 +165,7 @@ Web デプロイは、Azure の Windows で実行される関数アプリを含�
 
 Dropbox および OneDrive から Azure Functions にコンテンツを同期するには、クラウドの同期を使用します。
 
->__使用方法:__ 「[クラウド フォルダーからのコンテンツを同期する](../app-service/deploy-content-sync.md)」の指示に従ってください。
+>__使用方法:__ 「 [クラウド フォルダーからのコンテンツを同期する](../app-service/deploy-content-sync.md)」の指示に従ってください。
 
 >__いつ使用するか:__ 一般に、他のデプロイ方法をお勧めします。 クラウドの同期を使用してパブリッシュする場合、[トリガーを手動で同期](#trigger-syncing)する必要があります。
 
@@ -181,7 +181,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ポータルベースのエディターでは、関数アプリ内のファイルを直接編集できます (基本的には、変更内容を保存するたびにデプロイされます)。
 
->__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。
+>__使用方法:__ Azure portal で関数を編集できるようにするために、 [ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。
 
 >__いつ使用するか:__ Azure Functions の使用を開始するには、ポータルが適しています。 より集中的な開発作業には、次のクライアント ツールのいずれかを使用することをお勧めします。
 >
@@ -212,7 +212,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ## <a name="deployment-slots"></a>デプロイ スロット
 
-関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](../app-service/deploy-staging-slots.md)のドキュメントをご覧ください。
+関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](functions-deployment-slots.md)のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022277"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900825"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
 
@@ -29,19 +29,19 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 **ベスト プラクティス ガイダンス** - 別のユーザーまたはグループとして実行し、基盤となるノードのプロセスおよびサービスへのアクセスを制限するには、ポッドのセキュリティ コンテキスト設定を定義します。 必要な最小数の特権を割り当てます。
 
-アプリケーションを正常に実行するには、*ルート*ではなく、定義済みのユーザーまたはグループとしてポッドを実行する必要があります。 ポッドまたはコンテナーに対して `securityContext` を使用すると、*runAsUser* や *fsGroup* などの設定を定義して適切なアクセス許可を想定することができます。 必要なユーザーまたはグループのアクセス許可のみを割り当てます。追加のアクセス許可を想定する手段としてセキュリティ コンテキストを使用しないでください。 *runAsUser*、権限昇格、およびその他の Linux 機能の設定は、Linux のノードとポッドでのみ使用可能です。
+アプリケーションを正常に実行するには、 *ルート* ではなく、定義済みのユーザーまたはグループとしてポッドを実行する必要があります。 ポッドまたはコンテナーに対して `securityContext` を使用すると、 *runAsUser* や *fsGroup* などの設定を定義して適切なアクセス許可を想定することができます。 必要なユーザーまたはグループのアクセス許可のみを割り当てます。追加のアクセス許可を想定する手段としてセキュリティ コンテキストを使用しないでください。 *runAsUser* 、権限昇格、およびその他の Linux 機能の設定は、Linux のノードとポッドでのみ使用可能です。
 
 ルート以外のユーザーとして実行する際に、コンテナーを 1024 下の特権ポートにバインドすることはできません。 このシナリオでは、アプリが特定のポートで実行されているという事実を偽装するために Kubernetes Services を使用できます。
 
 ポッドのセキュリティ コンテキストでは、プロセスおよびサービスにアクセスするための追加の機能またはアクセス許可も定義できます。 次の一般的なセキュリティ コンテキスト定義を設定できます。
 
-* **allowPrivilegeEscalation** は、ポッドが*ルート*特権を想定できるかどうかを定義します。 この設定が常に *false* に設定されるようにアプリケーションを設計します。
-* **Linux 機能**を使用すると、ポッドに対して、基になるノード プロセスへのアクセスを許可できます。 これらの機能を割り当てる際には注意が必要です。 必要な最小数の特権を割り当ててください。 詳細については、[Linux 機能][linux-capabilities]に関する記事を参照してください。
-* **SELinux ラベル**は、サービス、プロセス、およびファイル システム アクセスに対するアクセス ポリシーを定義するための Linux カーネル セキュリティ モジュールです。 ここでも、必要な最小数の特権を割り当ててください。 詳細については、[Kubernetes での SELinux オプション][selinux-labels]に関する記事を参照してください。
+* **allowPrivilegeEscalation** は、ポッドが *ルート* 特権を想定できるかどうかを定義します。 この設定が常に *false* に設定されるようにアプリケーションを設計します。
+* **Linux 機能** を使用すると、ポッドに対して、基になるノード プロセスへのアクセスを許可できます。 これらの機能を割り当てる際には注意が必要です。 必要な最小数の特権を割り当ててください。 詳細については、[Linux 機能][linux-capabilities]に関する記事を参照してください。
+* **SELinux ラベル** は、サービス、プロセス、およびファイル システム アクセスに対するアクセス ポリシーを定義するための Linux カーネル セキュリティ モジュールです。 ここでも、必要な最小数の特権を割り当ててください。 詳細については、[Kubernetes での SELinux オプション][selinux-labels]に関する記事を参照してください。
 
 次のポッド YAML マニフェストの例では、定義するセキュリティ コンテキスト設定を実行します。
 
-* ユーザー ID *1000*、およびグループ ID *2000* の一部として実行されるポッド
+* ユーザー ID *1000* 、およびグループ ID *2000* の一部として実行されるポッド
 * `root` を使用するように特権をエスカレートできない
 * Linux 機能に対して、ネットワーク インターフェイスおよびホストのリアルタイム (ハードウェア) クロックへのアクセスを許可する
 
@@ -55,7 +55,7 @@ spec:
     fsGroup: 2000
   containers:
     - name: security-context-demo
-      image: nginx:1.15.5
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         runAsUser: 1000
         allowPrivilegeEscalation: false

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) で複数の同時実行ポッドで
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad252118a56402386691d1cdf7d975ef69ec45ad
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299271"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900437"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -22,7 +22,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="create-a-storage-class"></a>ストレージ クラスの作成
 
@@ -40,7 +40,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 Azure Files 用の Kubernetes ストレージ クラスの詳細については、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページを参照してください。
 
-`azure-file-sc.yaml` という名前のファイルを作成し、次の例のマニフェストにコピーします。 *mountOptions* の詳細については、「[マウント オプション][mount-options]」セクションを参照してください。
+`azure-file-sc.yaml` という名前のファイルを作成し、次の例のマニフェストにコピーします。 *mountOptions* の詳細については、「 [マウント オプション][mount-options]」セクションを参照してください。
 
 ```yaml
 kind: StorageClass
@@ -67,7 +67,7 @@ kubectl apply -f azure-file-sc.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>永続ボリューム要求の作成
 
-永続ボリューム要求 (PVC) は、ストレージ クラス オブジェクトを使用して、Azure ファイル共有を動的にプロビジョニングします。 次の YAML を使うと、サイズが *5 GB* で、*ReadWriteMany* アクセス権の永続ボリューム要求を作成できます。 アクセス モードの詳細については、[Kubernetes 永続ボリューム][access-modes]に関するドキュメントを参照してください。
+永続ボリューム要求 (PVC) は、ストレージ クラス オブジェクトを使用して、Azure ファイル共有を動的にプロビジョニングします。 次の YAML を使うと、サイズが *5 GB* で、 *ReadWriteMany* アクセス権の永続ボリューム要求を作成できます。 アクセス モードの詳細については、[Kubernetes 永続ボリューム][access-modes]に関するドキュメントを参照してください。
 
 `azure-file-pvc.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 *storageClassName* が最後の手順で作成したストレージ クラスと一致していることを確認します。
 
@@ -86,7 +86,7 @@ spec:
 ```
 
 > [!NOTE]
-> ストレージ クラスに *Premium_LRS* SKU を使用する場合、*storage* の最小値は *100Gi* である必要があります。
+> ストレージ クラスに *Premium_LRS* SKU を使用する場合、 *storage* の最小値は *100Gi* である必要があります。
 
 [kubectl apply][kubectl-apply] コマンドを使用して永続ボリューム要求を作成します。
 
@@ -117,7 +117,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -165,7 +165,7 @@ Volumes:
 
 ## <a name="mount-options"></a>マウント オプション
 
-Kubernetes バージョン 1.13.0 以降の場合、*fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラスを使って永続ボリュームを動的に作成している場合は、ストレージ クラスのオブジェクトに対してマウント オプションを指定できます。 次の例では、*0777* が設定されます。
+Kubernetes バージョン 1.13.0 以降の場合、 *fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラスを使って永続ボリュームを動的に作成している場合は、ストレージ クラスのオブジェクトに対してマウント オプションを指定できます。 次の例では、 *0777* が設定されます。
 
 ```yaml
 kind: StorageClass

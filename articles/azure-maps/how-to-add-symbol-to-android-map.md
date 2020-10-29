@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311276"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897111"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "91311276"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順に完全に従うには、[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) をインストールしてマップを読み込む必要があります。
+この記事の手順に完全に従うには、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
 
 ## <a name="add-a-symbol-layer"></a>シンボル レイヤーを追加する
 
@@ -72,7 +72,7 @@ ms.locfileid: "91311276"
     
     ```
     
-    上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次にこれは **DataSource** クラスを使用してデータ ソース オブジェクトを作成し、それをマップに追加します。 次にこれは、ポイント ジオメトリを含む**図形**を追加します。 シンボルのアイコンとして赤いマーカー イメージが設定されます。 **シンボル レイヤー**は、テキストまたはアイコンを使用して、マップ上のシンボルとしてデータ ソースにラップされたポイント ベースのデータをレンダリングします。 次にシンボル レイヤーが作成され、それにレンダリングするためにデータ ソースが渡され、マップのレイヤーに追加されます。
+    上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次にこれは **DataSource** クラスを使用してデータ ソース オブジェクトを作成し、それをマップに追加します。 次にこれは、ポイント ジオメトリを含む **図形** を追加します。 シンボルのアイコンとして赤いマーカー イメージが設定されます。 **シンボル レイヤー** は、テキストまたはアイコンを使用して、マップ上のシンボルとしてデータ ソースにラップされたポイント ベースのデータをレンダリングします。 次にシンボル レイヤーが作成され、それにレンダリングするためにデータ ソースが渡され、マップのレイヤーに追加されます。
     
     上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
     
@@ -180,7 +180,7 @@ ms.locfileid: "91311276"
 さらに内容をマップに追加するには、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Android マップへの図形の追加](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Android マップへの図形の追加](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [フィーチャーの情報を表示する](display-feature-information-android.md)

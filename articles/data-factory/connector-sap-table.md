@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1970709dea67111bfd8b90f9fc315a3b044b2ab9
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279834"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900265"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -51,9 +51,10 @@ SAP テーブルから、サポートされている任意のシンク データ
 - 既定の RFC またはカスタム RFC によるデータの取得。
 
 バージョン 7.01 以降は、SAP ECC のバージョンではなく SAP NetWeaver のバージョンを指します。 たとえば、一般に SAP ECC 6.0 EHP 7 の NetWeaver バージョンは 7.4 以降です。 お使いの環境が不明な場合に、SAP システムからバージョンを確認する手順を次に示します。
-1.  SAP GUI を使用して SAP システムに接続します。 
-2.  **[システム]**  ->  **[ステータス]** に移動します。 
-3.  SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
+
+1. SAP GUI を使用して SAP システムに接続します。 
+2. **[システム]**  ->  **[ステータス]** に移動します。 
+3. SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
       ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>前提条件

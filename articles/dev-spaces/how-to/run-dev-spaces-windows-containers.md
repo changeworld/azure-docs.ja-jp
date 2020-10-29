@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 51a91c9ff74c4d0d1c5bccff2f1033eb14cd9198
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e6c4279717ef0a7bed0a66a9b0dba1d78e418835
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972936"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900162"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
@@ -85,7 +85,7 @@ myapi-4b9667d123-1a2b3   1/1     Running             0          98s
 
 ## <a name="enable-azure-dev-spaces"></a>Azure Dev Spaces の有効化
 
-Windows サービスの実行に使用した名前空間と同じ名前空間で Dev Spaces を有効にします。 次のコマンドを実行すると、*dev* 名前空間で Dev Spaces が有効になります。
+Windows サービスの実行に使用した名前空間と同じ名前空間で Dev Spaces を有効にします。 次のコマンドを実行すると、 *dev* 名前空間で Dev Spaces が有効になります。
 
 ```console
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
@@ -163,7 +163,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-azds up コマンドの出力に示されているパブリック URL を開くと、サービスが実行されていることを確認できます。 この例のパブリック URL は `http://dev.webfrontend.abcdef0123.eus.azds.io/` です。 ブラウザーでサービスに移動し、上部の *[バージョン情報]* をクリックします。 コンテナーが使用している Windows のバージョンが記載されたメッセージが、*mywebapi* サービスから表示されることを確認します。
+azds up コマンドの出力に示されているパブリック URL を開くと、サービスが実行されていることを確認できます。 この例のパブリック URL は `http://dev.webfrontend.abcdef0123.eus.azds.io/` です。 ブラウザーでサービスに移動し、上部の *[バージョン情報]* をクリックします。 コンテナーが使用している Windows のバージョンが記載されたメッセージが、 *mywebapi* サービスから表示されることを確認します。
 
 ![mywebapi から Windows のバージョンを通知するサンプル アプリ](../media/run-dev-spaces-windows-containers/sample-app.png)
 
@@ -180,5 +180,5 @@ Azure Dev Spaces のしくみの詳細について確認します。
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
+[using-taints]: ../../aks/use-multiple-node-pools.md#setting-nodepool-taints
 [windows-container-cli]: ../../aks/windows-container-cli.md

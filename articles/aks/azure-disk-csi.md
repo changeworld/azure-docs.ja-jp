@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 68a892768e5cfa5be7fe6f9ad99fc4cded68b02d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 260631e36d113b6ccd190f66ce61caa7ba1b187b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071814"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900879"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
@@ -20,7 +20,7 @@ CSI は、Kubernetes のコンテナー化されたワークロードに任意�
 CSI ドライバーがサポートされる AKS クラスターを作成するには、[AKS で Azure ディスクおよび Azure Files 用の CSI ドライバーを有効にする方法](csi-storage-drivers.md)に関する記事を参照してください。
 
 >[!NOTE]
-> "*ツリー内ドライバー*" とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
+> " *ツリー内ドライバー* " とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
 
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Azure ディスクを含む CSI 永続ボリュームを使用する
 
@@ -101,7 +101,7 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>ボリューム スナップショット
 
-Azure ディスクの CSI ドライバーでは、[永続ボリュームのスナップショット](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)の作成がサポートされています。 この機能の一部として、ドライバーでは、`incremental` パラメーターに設定されている値 (既定では true) に応じて、"*完全*" または "[*増分*" スナップショット](../virtual-machines/windows/disks-incremental-snapshots.md)のいずれかを実行できます。
+Azure ディスクの CSI ドライバーでは、[永続ボリュームのスナップショット](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)の作成がサポートされています。 この機能の一部として、ドライバーでは、`incremental` パラメーターに設定されている値 (既定では true) に応じて、" *完全* " または " [*増分* " スナップショット](../virtual-machines/windows/disks-incremental-snapshots.md)のいずれかを実行できます。
 
 すべてのパラメーターの詳細については、[ボリューム スナップショット クラスのパラメーター](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass)に関するページを参照してください。
 
@@ -339,7 +339,7 @@ spec:
     spec:
       containers:
         - name: deployment-azuredisk
-          image: nginx
+          image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
           volumeDevices:
             - name: azuredisk
               devicePath: /dev/sdx
@@ -360,11 +360,10 @@ deployment/deployment-azuredisk created
 最後に、ポッド内のブロック デバイスを確認しましょう。
 
 ```console
-# kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp bash
-root@deployment-sharedisk-7454978bc6-xh7jp:/# dd if=/dev/zero of=/dev/sdx bs=1024k count=100
+# kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp sh
+/ # dd if=/dev/zero of=/dev/sdx bs=1024k count=100
 100+0 records in
-100+0 records out
-104857600 bytes (105 MB, 100 MiB) copied, 0.0502999 s, 2.1 GB/s
+100+0 records out/s
 ```
 
 ## <a name="windows-containers"></a>Windows コンテナー

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fd4867532832e0304a27317b21950bf131de79
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443060"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900777"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
@@ -26,13 +26,13 @@ GPU (Graphical processing units) は、多くの場合に、グラフィック�
 
 この記事は、GPU をサポートするノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターで Kubernetes 1.10 以降を実行している必要があります。 これらの要件を満たす AKS クラスターが必要な場合は、この記事の最初のセクションを参照して、[AKS クラスターを作成](#create-an-aks-cluster)してください。
 
-また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 最小要件 (GPU 対応ノードと Kubernetes バージョン 1.10 以降) を満たしている AKS クラスターが必要な場合は、次の手順を実行します。 これらの要件を満たしている AKS クラスターが既にある場合は、[次のセクションに進んでください](#confirm-that-gpus-are-schedulable)。
 
-まず、[az group create][az-group-create] コマンドを使用して、クラスターのリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成します。
+まず、[az group create][az-group-create] コマンドを使用して、クラスターのリソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -58,7 +58,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ノード内の GPU を使用するには、NVIDIA デバイス プラグイン用の DaemonSet をデプロイしておく必要があります。 この DaemonSet により、各ノードでポッドが実行され、GPU に必要なドライバーが提供されます。
 
-まず、[kubectl create namespace][kubectl-create] コマンドを使用して、名前空間 (*gpu-resources* など) を作成します。
+まず、 [kubectl create namespace][kubectl-create] コマンドを使用して、名前空間 ( *gpu-resources* など) を作成します。
 
 ```console
 kubectl create namespace gpu-resources
@@ -97,7 +97,7 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-      - image: nvidia/k8s-device-plugin:1.11
+      - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false
@@ -134,7 +134,7 @@ daemonset "nvidia-device-plugin" created
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が " **登録済み** " と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
@@ -198,7 +198,7 @@ aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 
 ここで、[kubectl describe node][kubectl-describe] コマンドを使用して、GPU がスケジュール可能であることを確認します。 *Capacity* セクションで、GPU は `nvidia.com/gpu:  1` と表示されているはずです。
 
-次の抜粋された例では、*aks nodepool1 18821093 0* という名前のノードで GPU が使用できることを示しています。
+次の抜粋された例では、 *aks nodepool1 18821093 0* という名前のノードで GPU が使用できることを示しています。
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0

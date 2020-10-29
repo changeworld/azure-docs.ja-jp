@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のストレージについて、ボ
 services: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ed38625703397c9ba5021e84cd3118f30fa83c7
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421154"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900945"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -26,11 +26,11 @@ Azure Kubernetes Service (AKS) で実行されるアプリケーションで、�
 
 ## <a name="volumes"></a>ボリューム
 
-多くの場合、アプリケーションではデータの格納と取得を行う必要があります。 通常、Kubernetes では、破棄できる短期的なリソースとして個々のポッドが扱われるため、アプリケーションで必要に応じてデータを使用したり保存したりするためのさまざまなアプローチが提供されています。 "*ボリューム*" とは、複数のポッドにまたがり、アプリケーション ライフサイクルを通じて、データを格納、取得および保存する手段です。
+多くの場合、アプリケーションではデータの格納と取得を行う必要があります。 通常、Kubernetes では、破棄できる短期的なリソースとして個々のポッドが扱われるため、アプリケーションで必要に応じてデータを使用したり保存したりするためのさまざまなアプローチが提供されています。 " *ボリューム* " とは、複数のポッドにまたがり、アプリケーション ライフサイクルを通じて、データを格納、取得および保存する手段です。
 
 データを格納して取得するための従来のボリュームは、Azure Storage を基盤とする Kubernetes リソースとして作成されます。 これらのデータ ボリュームを手動で作成してポッドに直接割り当てることも、Kubernetes で自動的に作成することもできます。 これらのデータ ボリュームには、Azure ディスクまたは Azure Files を使用できます。
 
-- "*Azure ディスク*" は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HDD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのポッドでしか使用できません。 複数のポッドから同時にアクセスできるストレージ ボリュームについては、Azure Files を使用します。
+- " *Azure ディスク* " は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HDD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのポッドでしか使用できません。 複数のポッドから同時にアクセスできるストレージ ボリュームについては、Azure Files を使用します。
 - *Azure Files* は、Azure Storage アカウントによって支えられる SMB 3.0 共有をポッドにマウントするために使用できます。 Files では、複数のノードとポッドにまたがってデータを共有できます。 ファイルは、標準 HDD に支えられた Azure Standard ストレージ、または高パフォーマンス SSD に支えられた Azure Premium ストレージを使用できます。
 
 Kubernetes におけるボリュームは、情報を格納して取得するだけの従来のディスクとは異なります。 Kubernetes のボリュームは、コンテナーで使用するために、ポッドにデータを挿入する手段としても使用できます。 Kubernetes における、その他の一般的なボリュームの種類を次に示します。
@@ -41,17 +41,17 @@ Kubernetes におけるボリュームは、情報を格納して取得するだ
 
 ## <a name="persistent-volumes"></a>永続ボリューム
 
-ポッド ライフサイクルの一部として定義および作成されるボリュームは、そのポッドが削除されるまでしか存在しません。 メンテナンス イベントでポッドが別のホストに再スケジュールされた場合でも、多くの場合、ポッドはストレージがそのまま存在することを予期しています (特に StatefulSets)。 "*永続ボリューム*" (PV) は、Kubernetes API によって作成および管理されるストレージ リソースであり、個々のポッドの有効期間が終了しても存在できます。
+ポッド ライフサイクルの一部として定義および作成されるボリュームは、そのポッドが削除されるまでしか存在しません。 メンテナンス イベントでポッドが別のホストに再スケジュールされた場合でも、多くの場合、ポッドはストレージがそのまま存在することを予期しています (特に StatefulSets)。 " *永続ボリューム* " (PV) は、Kubernetes API によって作成および管理されるストレージ リソースであり、個々のポッドの有効期間が終了しても存在できます。
 
 PersistentVolume を提供するために Azure ディスクまたは Azure Files が使用されます。 前の「ボリューム」のセクションで説明したように、多くの場合、ディスクまたは Files の選択はデータへの同時アクセスの必要性またはパフォーマンス レベルによって決まります。
 
 ![Azure Kubernetes Services (AKS) クラスターでの永続ボリューム](media/concepts-storage/persistent-volumes.png)
 
-PersistentVolume は、クラスター管理者が "*静的に*" 作成することも、Kubernetes API サーバーが "*動的に*" 作成することもできます。 ポッドがスケジュールされ、そのポッドが現在使用可能でないストレージを要求する場合、Kubernetes は基礎となる Azure ディスクまたは Files ストレージを作成して、ポッドに接続することができます。 動的なプロビジョニングでは *StorageClass* を使用して、どの種類の Azure Storage を作成する必要があるかを特定します。
+PersistentVolume は、クラスター管理者が " *静的に* " 作成することも、Kubernetes API サーバーが " *動的に* " 作成することもできます。 ポッドがスケジュールされ、そのポッドが現在使用可能でないストレージを要求する場合、Kubernetes は基礎となる Azure ディスクまたは Files ストレージを作成して、ポッドに接続することができます。 動的なプロビジョニングでは *StorageClass* を使用して、どの種類の Azure Storage を作成する必要があるかを特定します。
 
 ## <a name="storage-classes"></a>ストレージ クラス
 
-Premium や Standard など異なる階層を定義するために、*StorageClass* を作成できます。 StorageClass によって *reclaimPolicy* も定義されます。 この reclaimPolicy が、ポッドが削除されて永続ボリュームが不要になる可能性がある場合の、基礎となる Azure Storage リソースの動作を制御します。 基礎となるストレージ リソースは削除することも、将来のポッドで使用するために保持しておくこともできます。
+Premium や Standard など異なる階層を定義するために、 *StorageClass* を作成できます。 StorageClass によって *reclaimPolicy* も定義されます。 この reclaimPolicy が、ポッドが削除されて永続ボリュームが不要になる可能性がある場合の、基礎となる Azure Storage リソースの動作を制御します。 基礎となるストレージ リソースは削除することも、将来のポッドで使用するために保持しておくこともできます。
 
 AKS では、4 つの初期 `StorageClasses` が、ツリー内ストレージ プラグインを使用してクラスター用に作成されます。
 
@@ -66,7 +66,7 @@ AKS では、4 つの初期 `StorageClasses` が、ツリー内ストレージ �
 - `azurefile-csi` - Azure Standard ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーによって、基礎となる Azure ファイル共有は、それを使用していた永続ボリュームが削除されるときに、確実に削除されます。
 - `azurefile-csi-premium` - Azure Premium ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーによって、基礎となる Azure ファイル共有は、それを使用していた永続ボリュームが削除されるときに、確実に削除されます。
 
-永続ボリュームで StorageClass が指定されない場合は、既定の StorageClass が使用されます。 永続ボリュームを要求するときは、必要なストレージが使用されることに注意してください。 `kubectl` を使用して、その他のニーズのために StorageClass を作成できます。 次の例は、Premium マネージド ディスクを使用し、ポッドの削除時に基礎となる Azure ディスクを "*保持する*" ように指定します。
+永続ボリュームで StorageClass が指定されない場合は、既定の StorageClass が使用されます。 永続ボリュームを要求するときは、必要なストレージが使用されることに注意してください。 `kubectl` を使用して、その他のニーズのために StorageClass を作成できます。 次の例は、Premium マネージド ディスクを使用し、ポッドの削除時に基礎となる Azure ディスクを " *保持する* " ように指定します。
 
 ```yaml
 kind: StorageClass
@@ -89,9 +89,9 @@ PersistentVolumeClaim は、特定の StorageClass のディスクまたはフ�
 
 ![Azure Kubernetes Services (AKS) クラスターでの永続ボリューム要求](media/concepts-storage/persistent-volume-claims.png)
 
-要求したポッドに、使用可能なストレージ リソースがポッドに割り当てられると、PersistentVolume が PersistentVolumeClaim に "*バインド*" されます。 永続ボリュームと要求は 1 対 1 のマッピングです。
+要求したポッドに、使用可能なストレージ リソースがポッドに割り当てられると、PersistentVolume が PersistentVolumeClaim に " *バインド* " されます。 永続ボリュームと要求は 1 対 1 のマッピングです。
 
-次の例の YAML マニフェストでは、*managed-premium* StorageClass を使用し、サイズが *5Gi* のディスクを要求する永続ボリューム要求が示されます。
+次の例の YAML マニフェストでは、 *managed-premium* StorageClass を使用し、サイズが *5Gi* のディスクを要求する永続ボリューム要求が示されます。
 
 ```yaml
 apiVersion: v1
@@ -117,7 +117,7 @@ metadata:
 spec:
   containers:
     - name: myfrontend
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       volumeMounts:
       - mountPath: "/mnt/azure"
         name: volume
