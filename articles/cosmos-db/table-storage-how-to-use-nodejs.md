@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318774"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477285"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 
@@ -41,7 +41,7 @@ Azure Storage または Azure Cosmos DB を使用するには、Azure Storage SD
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージをインストールする
 
-1. **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使って、アプリケーションを作成したフォルダーに移動します。
+1. **PowerShell** (Windows)、 **Terminal** (Mac)、 **Bash** (Unix) などのコマンド ライン インターフェイスを使って、アプリケーションを作成したフォルダーに移動します。
 2. コマンド ウィンドウに「 **npm install azure-storage** 」と入力します。 このコマンドの出力は次の例のようになります。
 
    ```bash
@@ -57,7 +57,7 @@ Azure Storage または Azure Cosmos DB を使用するには、Azure Storage SD
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
    ```
 
-3. 手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。 このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
+3. 手動で **ls** コマンドを実行して、 **node_modules** フォルダーが作成されたことを確認することもできます。 このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
 ### <a name="import-the-package"></a>パッケージをインポートする
 
@@ -137,7 +137,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 * **PartitionKey** - エンティティが格納されるパーティションを決定します。
 * **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」を参照してください。
 
 エンティティを定義する例を次に示します。 **dueDate** は、`Edm.DateTime` の型として定義されています。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
@@ -268,7 +268,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 
 ## <a name="retrieve-an-entity-by-key"></a>キーを使用したエンティティを取得する
 
-**PartitionKey** と **RowKey** に基づいて特定のエンティティを返すには、**retrieveEntity** メソッドを使います。
+**PartitionKey** と **RowKey** に基づいて特定のエンティティを返すには、 **retrieveEntity** メソッドを使います。
 
 ```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
@@ -299,7 +299,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-**select** が使用されていないため、すべてのフィールドが返されます。 テーブルでクエリを実行するには、 **queryEntities**を使用します。 次の例では、このクエリを使用して "mytable" からエンティティを返します。
+**select** が使用されていないため、すべてのフィールドが返されます。 テーブルでクエリを実行するには、 **queryEntities** を使用します。 次の例では、このクエリを使用して "mytable" からエンティティを返します。
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -309,7 +309,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
+成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は *null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
 
 ### <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
 
@@ -325,7 +325,7 @@ var query = new azure.TableQuery()
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
 
-パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、**task1** オブジェクトに、削除するエンティティの **RowKey** と **PartitionKey** の値が格納されます。 次に、このオブジェクトが **deleteEntity** メソッドに渡されます。
+パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、 **task1** オブジェクトに、削除するエンティティの **RowKey** と **PartitionKey** の値が格納されます。 次に、このオブジェクトが **deleteEntity** メソッドに渡されます。
 
 ```javascript
 var task = {
@@ -357,7 +357,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-テーブルが存在するかどうかが不明な場合は、 **deleteTableIfExists**を使用します。
+テーブルが存在するかどうかが不明な場合は、 **deleteTableIfExists** を使用します。
 
 ## <a name="use-continuation-tokens"></a>継続トークンを使用する
 
@@ -392,7 +392,7 @@ dc.table.queryEntities(tableName,
 
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。 多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
 
-クラウドベースのサービスなどの信頼されたアプリケーションは、**TableService** の **generateSharedAccessSignature** を使って SAS を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。 SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
+クラウドベースのサービスなどの信頼されたアプリケーションは、 **TableService** の **generateSharedAccessSignature** を使って SAS を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。 SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
 
 次の例では、SAS の保有者に対してテーブルのクエリ ('r') を許可し、作成時から 100 分後に期限が切れる、新しい共有アクセス ポリシーを作成しています。
 
@@ -455,7 +455,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-次の例では、現在の **hometasks** テーブルの ACL を取得し、**setTableAcl** を使って新しいポリシーを追加しています。 この手法で以下を実行できます。
+次の例では、現在の **hometasks** テーブルの ACL を取得し、 **setTableAcl** を使って新しいポリシーを追加しています。 この手法で以下を実行できます。
 
 ```javascript
 var extend = require('extend');
@@ -483,6 +483,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * GitHub の [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) リポジトリ
-* [Node.js 開発者向けの Azure](https://docs.microsoft.com/azure/developer/javascript/)
+* [Node.js 開発者向けの Azure](/azure/developer/javascript/)
 * [Azure で Node.js Web アプリを作成する](../app-service/quickstart-nodejs.md)
 * [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)

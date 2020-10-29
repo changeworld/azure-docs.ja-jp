@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: d60fbf57847c26d03fab4eb98fd74607984369da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73f5dc6bdc976bd0166cfb1f2621f57f558f944c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707602"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478594"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>チュートリアル:PowerShell を使用して Azure Database for PostgreSQL - 単一サーバーを設計する
 
@@ -32,13 +32,13 @@ Azure Database for PostgreSQL は、Microsoft クラウドにおける、Postgre
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 > [!IMPORTANT]
 > Az.PostgreSql PowerShell モジュールがプレビュー段階にある間は、コマンド `Install-Module -Name Az.PostgreSql -AllowPrerelease` を使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります。
 > Az.PostgreSql PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-Azure Database for PostgreSQL サービスを初めて使用する場合は、**Microsoft.DBforPostgreSQL** リソース プロバイダーを登録する必要があります。
+Azure Database for PostgreSQL サービスを初めて使用する場合は、 **Microsoft.DBforPostgreSQL** リソース プロバイダーを登録する必要があります。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforPostgreSQL
@@ -46,7 +46,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforPostgreSQL
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプション ID を選択します。
+複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプション ID を選択します。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -54,9 +54,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、**myresourcegroup** という名前のリソース グループを**米国西部**リージョンに作成します。
+次の例では、 **myresourcegroup** という名前のリソース グループを **米国西部** リージョンに作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 `New-AzPostgreSqlServer` コマンドレットを使用して、Azure Database for PostgreSQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-次の例では、**米国西部**リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の PostgreSQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは PostgreSQL サーバー管理者アカウントのパスワードであるため、これを記録しておきます。
+次の例では、 **米国西部** リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の PostgreSQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは PostgreSQL サーバー管理者アカウントのパスワードであるため、これを記録しておきます。
 
 > [!TIP]
 > サーバー名は DNS 名に対応しており、Azure 内でグローバルに一意であることが必要です。
@@ -82,7 +82,7 @@ New-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sk
 - `-Sku GP_Gen5_32` は、"汎用、Gen 5、および 32 個の仮想コア" にマップされます。
 - `-Sku MO_Gen5_2` は、"メモリ最適化、Gen 5、および 2 個の仮想コア" にマップされます。
 
-リージョンおよびレベルごとの有効な **Sku** 値については、[Azure Database for PostgreSQL の価格レベル](./concepts-pricing-tiers.md)に関する記事を参照してください。
+リージョンおよびレベルごとの有効な **Sku** 値については、 [Azure Database for PostgreSQL の価格レベル](./concepts-pricing-tiers.md)に関する記事を参照してください。
 
 低負荷なコンピューティングと I/O がワークロードに適している場合は、Basic 価格レベルの使用を検討してください。
 
@@ -93,7 +93,7 @@ New-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sk
 
 `New-AzPostgreSqlFirewallRule` コマンドレットを使用して、Azure Database for PostgreSQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、`psql` コマンドライン ツールや PostgreSQL Workbench などの外部アプリケーションが、Azure Database for PostgreSQL サービス ファイアウォールを経由してサーバーに接続できるようになります。
 
-次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、**AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
+次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、 **AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 
 ```azurepowershell-interactive
 New-AzPostgreSqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -ServerName mydemoserver -StartIPAddress 192.168.0.1 -EndIPAddress 192.168.0.1
@@ -119,7 +119,7 @@ mydemoserver.postgresql.database.azure.com       myadmin
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>psql を使用した PostgreSQL データベースへの接続
 
-クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) のローカル インスタンスを使用して Azure PostgreSQL サーバーに接続できます。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `psql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
+クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) のローカル インスタンスを使用して Azure PostgreSQL サーバーに接続できます。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `psql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、 [shell.azure.com](https://shell.azure.com/) にアクセスします。
 
 1. `psql` コマンドライン ユーティリティを使用して、Azure PostgreSQL サーバーに接続します。
 

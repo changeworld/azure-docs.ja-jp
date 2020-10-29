@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 8d249cdabcbfd82fc555c486f29bbdba200e1da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ae3c538c78be8af0fa4569592ac60547e7f5912
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710500"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481297"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 
@@ -72,7 +72,7 @@ Powershell、CLI、または REST API を使用してリソース ログを有�
 
 ### <a name="access-resource-logs"></a>リソース ログへのアクセス
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
 
 Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
 
@@ -96,7 +96,7 @@ AzureDiagnostics
 
 ### <a name="log-format"></a>ログの形式
 
-次の表では、**PostgreSQLLogs** タイプのフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。 
+次の表では、 **PostgreSQLLogs** タイプのフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。 
 
 |**フィールド** | **説明** |
 |---|---|

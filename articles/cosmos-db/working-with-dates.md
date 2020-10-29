@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019190"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476248"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 
@@ -66,7 +66,7 @@ DateTime 文字列をフィルターとして使用する範囲クエリは、Da
     }
 ```  
 
-または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 Azure Cosmos DB の内部 Timestamp (`_ts`) プロパティは、この方法を使用しています。 [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) クラスを使用して、DateTime を数値としてシリアル化できます。
+または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 Azure Cosmos DB の内部 Timestamp (`_ts`) プロパティは、この方法を使用しています。 [UnixDateTimeConverter](/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) クラスを使用して、DateTime を数値としてシリアル化できます。
 
 ## <a name="querying-datetimes-in-linq"></a>LINQ での DateTime のクエリ
 

@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281595"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482674"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra 用 Azure Cosmos DB API でフィードを変更する
 
 Cassandra 用 Azure Cosmos DB API の[変更フィード](change-feed.md) サポートは、Cassandra Query Language (CQL) のクエリ述語を通じて利用できます。 これらの述語条件を使用して、フィード変更 API に対してクエリを実行できます。 アプリケーションでは、CQL で必要とされる主キー (パーティション キーとも呼ばれます) を使用して、テーブルへの変更を取得できます。 その後、結果に基づいてさらにアクションを実行できます。 テーブルの行に加えた変更は、変更時刻順かつ、パーティション キー別の並べ替え順序でキャプチャされます。
 
-次の例では、.NET を使用して Cassandra API キー スペース テーブル内のすべての行で変更フィードを取得する方法を示します。 述語 COSMOS_CHANGEFEED_START_TIME () は CQL 内で直接使用され、指定された開始時刻 (この場合は現在の日付/時刻) か変更フィードの項目をクエリします。 C# は[こちら](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)、および Java は[こちら](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)から、完全なサンプルをダウンロードすることができます。
+次の例では、.NET を使用して Cassandra API キー スペース テーブル内のすべての行で変更フィードを取得する方法を示します。 述語 COSMOS_CHANGEFEED_START_TIME () は CQL 内で直接使用され、指定された開始時刻 (この場合は現在の日付/時刻) か変更フィードの項目をクエリします。 C# は[こちら](/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)、および Java は[こちら](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)から、完全なサンプルをダウンロードすることができます。
 
 各反復処理では、ページング状態を使用して、最後に変更が読み取られた時点でクエリが再開されます。 キー スペースのテーブルに新しい変更のストリームが連続して表示されます。 挿入または更新された行の変更が表示されます。 Cassandra API の変更フィードを使用した削除操作の監視は、現在はサポートされていません。
 
@@ -146,4 +146,4 @@ Cassandra API で変更フィードを使用するときは、次のエラー �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Resource Manager テンプレートを使用して Azure Cosmos DB Cassandra API リソースを管理する](manage-cassandra-with-resource-manager.md)
+* [Azure Resource Manager テンプレートを使用して Azure Cosmos DB Cassandra API リソースを管理する](./templates-samples-cassandra.md)

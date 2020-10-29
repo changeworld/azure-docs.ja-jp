@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289040"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474769"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>具体化されたビューを使用したパフォーマンス チューニング
 
@@ -79,7 +79,9 @@ SQL プールでは、標準ビューと具体化されたビューの両方が�
 
 **クエリ パフォーマンスを向上させるために別のデータ分散方法が必要である**
 
-Azure データ ウェアハウスは、分散型の超並列処理 (MPP) システムです。   データ ウェアハウス テーブル内のデータは、3 つの[分散方式](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。  
+Azure データ ウェアハウスは、分散型の超並列処理 (MPP) システムです。  
+
+Synapse SQL は、データ エンジニアにとって使い慣れた標準の T-SQL エクスペリエンスを使用して、エンタープライズがデータ ウェアハウジングおよびデータ仮想化シナリオを実装できるようにする分散クエリ システムです。 また、SQL の機能を拡張して、ストリーミングや機械学習のシナリオに対応します。 データ ウェアハウス テーブル内のデータは、3 つの[分散方式](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。  
 
 データ分散はテーブルの作成時に指定され、テーブルが削除されるまで変更されることなく維持されます。 具体化されたビューはディスク上の仮想テーブルであるため、ハッシュとラウンド ロビンによるデータ分散がサポートされます。  ユーザーは、ベース テーブルとは異なっているものの、頻繁にビューを使用するクエリのパフォーマンスに最適なデータ分散を選択できます。  
 

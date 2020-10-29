@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: ed3ea64bf76eafd965e13f4dab1911840ed8139a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282852"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477336"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 
@@ -78,7 +78,7 @@ Azure Storage クライアントまたは Cosmos DB クライアントでは、�
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-`<your_storage_account>` にはストレージ アカウントの名前を使用します。 <your_storage_account_key> については、[Azure portal](https://portal.azure.com) に記載されているストレージアカウントのアクセス キーを使用します。 ストレージ アカウントとアクセス キーについて詳しくは、「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。
+`<your_storage_account>` にはストレージ アカウントの名前を使用します。 <your_storage_account_key> については、[Azure portal](https://portal.azure.com) に記載されているストレージアカウントのアクセス キーを使用します。 ストレージ アカウントとアクセス キーについて詳しくは、「[ストレージ アカウントを作成する](../storage/common/storage-account-create.md)」を参照してください。
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列の設定
 
@@ -98,7 +98,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、*Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
+Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、 *Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
 
 ### <a name="retrieve-your-connection-string"></a>接続文字列の取得
 
@@ -138,7 +138,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
-エンティティをテーブルに追加するには、新しい `table_entity` オブジェクトを作成し、`table_operation::insert_entity` に渡します。 次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。 多様なパーティション キーを使用すると、並列操作のスケーラビリティを高めることができます。 詳しくは、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)」をご覧ください。
+エンティティをテーブルに追加するには、新しい `table_entity` オブジェクトを作成し、`table_operation::insert_entity` に渡します。 次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。 多様なパーティション キーを使用すると、並列操作のスケーラビリティを高めることができます。 詳しくは、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/blobs/storage-performance-checklist.md)」をご覧ください。
 
 次のコードでは、ユーザー データの格納用に `table_entity` の新しいインスタンスを作成しています。 次に、テーブルへのエンティティの挿入用に `table_operation` を作成するために `table_operation::insert_entity` を呼び出し、それに新しいテーブル エンティティを関連付けています。 最後に、`cloud_table` オブジェクトに対して `execute` メソッドを呼び出します。 新しい `table_operation` により、新しいユーザー エンティティを `people` テーブルに挿入する要求が Table service に送信されます。  
 
@@ -501,7 +501,7 @@ else
 
 Visual Studio Community エディションの場合、インクルード ファイル *storage_account.h* と *table.h* が原因でプロジェクトにビルド エラーが発生する場合は、 **/permissive-** コンパイラ スイッチを削除します。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[プロパティ]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[プロパティ]** を選択します。
 1. **[プロパティ ページ]** ダイアログ ボックスで、 **[構成プロパティ]** を展開し、 **[C/C++]** を展開し、 **[言語]** を選択します。
 1. **[準拠モード]** を **[いいえ]** に設定します。
 

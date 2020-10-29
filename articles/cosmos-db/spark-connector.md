@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603052"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478050"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
 
@@ -33,8 +33,8 @@ Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されて
 
 ## <a name="quickstart"></a>クイック スタート
 
-* [Java SDK の開始](sql-api-async-java-get-started.md)の手順に従って Cosmos DB アカウントをセットアップし、データを入力してください。
-* [Azure Databricks の開始](/azure/azure-databricks/quickstart-create-databricks-workspace-portal)の手順に従って Azure Databricks ワークスペースとクラスターをセットアップします。
+* [Java SDK の開始](./create-sql-api-java.md)の手順に従って Cosmos DB アカウントをセットアップし、データを入力してください。
+* [Azure Databricks の開始](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)の手順に従って Azure Databricks ワークスペースとクラスターをセットアップします。
 * これで、新しい Notebook を作成し、Cosmos DB コネクタ ライブラリをインポートすることができるようになりました。 ワークスペースのセットアップ方法についての詳細は、[Cosmos DB コネクタの操作](#bk_working_with_connector)に関する記事をご覧ください。
 * 次のセクションには、コネクタを使用した読み取りと書き込みの方法のスニペットがあります。
 
@@ -233,7 +233,7 @@ df
 Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネクタの使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)に関する記事に従って、Databricks ワークスペースでライブラリを作成します
 
 > [!NOTE]
-> **Azure Cosmos DB Spark コネクタの使用**に関するページは、現在最新ではありません。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、[azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
+> **Azure Cosmos DB Spark コネクタの使用** に関するページは、現在最新ではありません。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、[azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
 > 
 
 ### <a name="using-spark-cli"></a>spark-cli の使用
@@ -274,8 +274,8 @@ mvn clean package
 [Cosmos DB Spark GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-spark)では、以下のサンプル ノートブックとスクリプトをお試しいただけます。
 
 * **Spark と Cosmos DB を利用したオンタイム フライト パフォーマンス (シアトル)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html):Spark SQL、GraphFrames を表示する HDInsight Jupyter ノートブック サービスを使用して Spark を Cosmos DB に接続し、ML パイプラインを使用してフライト遅延を予測します。
-* **Apache Spark と Azure Cosmos DB 変更フィードの Twitter ソース**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
-* **Apache Spark を使用して Cosmos DB グラフを検索する**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* **Apache Spark と Azure Cosmos DB 変更フィードの Twitter ソース** : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **Apache Spark を使用して Cosmos DB グラフを検索する** : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * `azure-cosmosdb-spark` を使用した **[Azure Cosmos DB への Azure Databricks の接続](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** 。  ここでリンクされているものも、[オンタイム フライト パフォーマンス ノートブック](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)の Azure Databricks バージョンです。
 * **[Azure Cosmos DB と HDInsight でのラムダ アーキテクチャ (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** :Cosmos DB と Spark を使用してビッグ データ パイプラインを維持するための運用上のオーバーヘッドを削減できます。
 

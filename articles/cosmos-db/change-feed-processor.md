@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277030"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475806"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ
 
@@ -125,10 +125,10 @@ ms.locfileid: "92277030"
 
 変更フィード プロセッサは、長時間実行されるプロセスまたはタスクをサポートする任意のプラットフォームでホストできます。
 
-* 継続的に実行される [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
-* [Azure Virtual Machine](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines) 内のプロセス
-* [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service) でのバックグラウンド ジョブ
-* [ASP.NET ホステッド サービス](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
+* 継続的に実行される [Azure WebJob](/learn/modules/run-web-app-background-task-with-webjobs/)。
+* [Azure Virtual Machine](/azure/architecture/best-practices/background-jobs#azure-virtual-machines) 内のプロセス
+* [Azure Kubernetes Service](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service) でのバックグラウンド ジョブ
+* [ASP.NET ホステッド サービス](/aspnet/core/fundamentals/host/hosted-services)。
 
 変更フィード プロセッサは有効期間が短い環境で実行できますが、その状態がリース コンテナーによって維持されるため、これらの環境の開始および停止サイクルでは、通知の受信に遅延が加えられます (環境が開始されるたびにプロセッサを開始するオーバーヘッドが生じるため)。
 
@@ -147,4 +147,4 @@ ms.locfileid: "92277030"
 * [変更フィードのプル モデル](change-feed-pull-model.md)
 * [変更フィード プロセッサ ライブラリから移行する方法](how-to-migrate-from-change-feed-library.md)
 * [変更フィード推定機能の使用](how-to-use-change-feed-estimator.md)
-* [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)
+* [変更フィード プロセッサの開始時刻](#starting-time)

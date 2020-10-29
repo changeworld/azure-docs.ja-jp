@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277308"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475330"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -39,7 +39,7 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
 
 ここに示す 4 種類のアプリケーションでは、既定で 32 ビットのホスト処理が使用されます。 アプリケーションの種類のホスト処理を 64 ビット処理に変更するには、次の手順に従います。
 
-- **実行可能アプリケーションの場合** : **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、 [[プラットフォーム ターゲット]](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) を **x64** に設定します。
+- **実行可能アプリケーションの場合** : **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、 [[プラットフォーム ターゲット]](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) を **x64** に設定します。
 
 - **Vstest ベースのテスト プロジェクトの場合** :Visual Studio の **[テスト]** メニューで、 **[テスト]**  >  **[テストの設定]** の順に選択し、 **[既定のプロセッサ アーキテクチャ]** を **X64** に設定します。
 
@@ -53,7 +53,7 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
     
 **サーバー側のガベージ コレクションを有効にする**
 
-ガベージ コレクションの頻度を減らした方がよい場合もあります。 .NET では、[gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) を `true` に設定します。
+ガベージ コレクションの頻度を減らした方がよい場合もあります。 .NET では、[gcServer](/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) を `true` に設定します。
 
 **クライアント ワークロードをスケールアウトする**
 
@@ -86,8 +86,8 @@ new CosmosClientOptions
 
 アクセス頻度が低く、ゲートウェイ モード アクセスと比べて接続数が多い場合は、次のことが可能です。
 
-* [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン 4.6.1 以降および .NET Core バージョン 2.0 以降で有効)。 このプロパティにより、SDK はさまざまな Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
-* [CosmosClientOptions.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) プロパティを 10 分以上に構成します。 推奨値は 20 分～ 24 時間です。
+* [CosmosClientOptions.PortReuseMode](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン 4.6.1 以降および .NET Core バージョン 2.0 以降で有効)。 このプロパティにより、SDK はさまざまな Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
+* [CosmosClientOptions.IdleConnectionTimeout](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) プロパティを 10 分以上に構成します。 推奨値は 20 分～ 24 時間です。
 
 <a id="same-region"></a>
 
@@ -103,7 +103,7 @@ new CosmosClientOptions
 
 **スレッドまたはタスクの数を増やす**
 
-Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待ち時間を最短にするために、要求のコンカレンシーの次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
+Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待ち時間を最短にするために、要求のコンカレンシーの次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](/dotnet/standard/parallel-programming/task-parallel-library-tpl)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
 
 **高速ネットワークの有効化**
  
@@ -146,7 +146,7 @@ itemResponse.Resource
 
 **ゲートウェイ モードを使用するときにホストあたりの System.Net MaxConnections を増やす**
 
-ゲートウェイ モードを使用すると、Azure Cosmos DB の要求は HTTPS/REST を介して行われます。 それらは、ホスト名または IP アドレスごとの既定の接続数の上限に従います。 場合によっては、Azure Cosmos DB に対する複数の同時接続をクライアント ライブラリで使用できるよう、`MaxConnections` を高い値 (100 ～ 1,000) に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。 値を変更するには、[`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) を高い値に設定します。
+ゲートウェイ モードを使用すると、Azure Cosmos DB の要求は HTTPS/REST を介して行われます。 それらは、ホスト名または IP アドレスごとの既定の接続数の上限に従います。 場合によっては、Azure Cosmos DB に対する複数の同時接続をクライアント ライブラリで使用できるよう、`MaxConnections` を高い値 (100 ～ 1,000) に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) の既定値は 50 です。 値を変更するには、[`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) を高い値に設定します。
 
 **パーティション分割コレクションに対する並列クエリを調整する**
 
@@ -170,7 +170,7 @@ SQL .NET SDK では、並列クエリがサポートされています。この�
 
 パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 要求がスロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 
 
-詳細については、[RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter) に関するページを参照してください。
+詳細については、[RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter) に関するページを参照してください。
     
 次の例のように、追加の診断情報をログに記録し、待ち時間に関する問題をトラブルシューティングするメカニズムがあります。 読み取り待ち時間の長い要求についての診断文字列をログに記録できます。 取得した診断文字列は、特定の要求に対して *429* エラーを受け取った回数を把握するのに役立ちます。
 

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: ba4382e03e6fc1acfd606a375a062c05581f712c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 10da2f3a84a4c1e6d761c86901f3249972cc0f5b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278232"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477846"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB の Python サンプル
 
@@ -38,7 +38,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
     * Azure アクティブ サブスクリプション内で:
         * [Azure 無料アカウントを作成する](https://azure.microsoft.com/free)か、既存のサブスクリプションを使用します 
         * [Visual Studio 月単位クレジット](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB の Free レベル](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB の Free レベル](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * Azure アクティブ サブスクリプションなしで:
         * 30 日間継続するテスト環境として、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)。
         * [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) 
@@ -90,7 +90,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 
 ## <a name="indexing-examples"></a>インデックス作成のサンプル
 
-[index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python サンプルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス作成ポリシー](index-policy.md)、[インデックスの種類](index-types.md)、[インデックスのパス](index-paths.md)に関する概念記事を参照してください。
+[index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python サンプルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス作成ポリシー](index-policy.md)、[インデックスの種類](index-overview.md#index-kinds)、[インデックスのパス](index-policy.md#include-exclude-paths)に関する概念記事を参照してください。
 
 | タスク | API リファレンス |
 | --- | --- |

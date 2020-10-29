@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: e846f00388ce21690729f62592c86b73cc42c3f3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173778"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482623"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストのために Azure Cosmos エミュレーターをインストールして使用する
 
@@ -38,7 +38,7 @@ Azure Cosmos DB サービスのエミュレーションは忠実ですが、エ�
 
 Azure Cosmos エミュレーターは、ローカルの開発者ワークステーションに環境をエミュレートして提供するものであるため、このエミュレーターとクラウドにある Azure Cosmos アカウントとの間には機能にいくつかの違いがあります。
 
-* 現在、エミュレーターの **[データ エクスプローラー]** ペインで完全にサポートされているのは、SQL API クライアントのみです。 MongoDB、Table、Graph、Cassandra などの API のような、Azure Cosmos DB 用の API については、**データ エクスプローラー**のビューと操作が完全にはサポートされていません。
+* 現在、エミュレーターの **[データ エクスプローラー]** ペインで完全にサポートされているのは、SQL API クライアントのみです。 MongoDB、Table、Graph、Cassandra などの API のような、Azure Cosmos DB 用の API については、 **データ エクスプローラー** のビューと操作が完全にはサポートされていません。
 
 * エミュレーターでサポートされるのは、1 つの固定アカウントと既知の主キーのみです。 Azure Cosmos エミュレーターを使用している場合、キーを再生成することはできませんが、[コマンドライン](emulator-command-line-parameters.md) オプションを使用して既定のキーを変更できます。
 
@@ -80,7 +80,7 @@ Azure Cosmos エミュレーターは、ローカルの開発者ワークステ�
 
 ## <a name="use-the-emulator-on-windows"></a><a id="run-on-windows"></a>Windows 上でエミュレーターを使用する
 
-Azure Cosmos エミュレーターは、既定で `C:\Program Files\Azure Cosmos DB Emulator` の場所にインストールされます。 Windows 上で Azure Cosmos エミュレーターを起動するには、 **[スタート]** ボタンを選択するか、Windows キーを押します。 「**Azure Cosmos Emulator**」と入力して、アプリケーションの一覧からエミュレーターを選択します。
+Azure Cosmos エミュレーターは、既定で `C:\Program Files\Azure Cosmos DB Emulator` の場所にインストールされます。 Windows 上で Azure Cosmos エミュレーターを起動するには、 **[スタート]** ボタンを選択するか、Windows キーを押します。 「 **Azure Cosmos Emulator** 」と入力して、アプリケーションの一覧からエミュレーターを選択します。
 
 :::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="[スタート] ボタンを選択するか Windows キーを押して「Azure Cosmos エミュレーター」と入力し、アプリケーションの一覧からエミュレーターを選択する":::
 
@@ -328,7 +328,7 @@ Node.js アプリケーションの場合は、アプリケーションの起動
 
 ローカル ネットワークでのエミュレーターを実行できます。 ネットワーク アクセスを有効にするには、[コマンド ライン](emulator-command-line-parameters.md)で `/AllowNetworkAccess` オプションを指定します。また、`/Key=key_string` または `/KeyFile=file_name` を指定する必要もあります。 `/GenKeyFile=file_name` を使用すると、ランダムなキーを備えたファイルを事前に生成できます。 その後、それを `/KeyFile=file_name` または `/Key=contents_of_file` に渡すことができます。
 
-ネットワーク アクセスを初めて有効にする場合は、エミュレーターをシャットダウンし、エミュレーターのデータ ディレクトリ ( *%LOCALAPPDATA%\CosmosDBEmulator*) を削除する必要があります。
+ネットワーク アクセスを初めて有効にする場合は、エミュレーターをシャットダウンし、エミュレーターのデータ ディレクトリ ( *%LOCALAPPDATA%\CosmosDBEmulator* ) を削除する必要があります。
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>エミュレーターの使用時に接続を認証する
 
@@ -369,7 +369,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>テーブル API
 
-デスクトップで Azure Cosmos エミュレーターが実行中になったら、[Azure Cosmos DB Table API SDK](table-storage-how-to-use-dotnet.md) を使用してエミュレーターを操作できます。 [コマンド プロンプト](emulator-command-line-parameters.md)から管理者としてエミュレーターを起動します。その際、一緒に "/EnableTableEndpoint" を指定します。 続いて、次のコードを実行して Table API アカウントに接続します。
+デスクトップで Azure Cosmos エミュレーターが実行中になったら、[Azure Cosmos DB Table API SDK](./tutorial-develop-table-dotnet.md) を使用してエミュレーターを操作できます。 [コマンド プロンプト](emulator-command-line-parameters.md)から管理者としてエミュレーターを起動します。その際、一緒に "/EnableTableEndpoint" を指定します。 続いて、次のコードを実行して Table API アカウントに接続します。
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -460,9 +460,9 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 1. システム トレイの **Azure Cosmos エミュレーター** アイコンを右クリックし、 **[終了]** を選択して、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 
-1. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果を選択します。
+1. Windows 検索ボックスに「 **アプリと機能** 」と入力し、 **アプリと機能 (システム設定)** の検索結果を選択します。
 
-1. アプリの一覧で、**Azure Cosmos DB エミュレーター** までスクロールして選択し、 **[アンインストール]** を選択し、確認して再度、 **[アンインストール]** をクリックします。
+1. アプリの一覧で、 **Azure Cosmos DB エミュレーター** までスクロールして選択し、 **[アンインストール]** を選択し、確認して再度、 **[アンインストール]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

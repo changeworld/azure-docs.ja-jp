@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ee7e180094c1584995e5d734adbe589a112754b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326679"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477574"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Azure Cosmos DB Apache Spark コネクタ:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "91326679"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -42,7 +42,7 @@ ms.locfileid: "91326679"
 
 | コンポーネント | Version |
 |---------|-------|
-| Apache Spark | 2.4.*x*、2.3.*x*、2.2.*x*、および 2.1.*x* |
+| Apache Spark | 2.4. *x* 、2.3. *x* 、2.2. *x* 、および 2.1. *x* |
 | Scala | 2.11 |
 | Azure Databricks (ランタイムのバージョン) | 3\.4 より後 |
 
@@ -59,7 +59,7 @@ ms.locfileid: "91326679"
 | **SDK のダウンロード** | [最新の .jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)、[Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) のダウンロード |
 |**API ドキュメント** | [Spark コネクタのリファレンス]() |
 |**SDK に投稿する** | [GitHub の Apache Spark 用 Azure Cosmos DB コネクタ](https://github.com/Azure/azure-cosmosdb-spark) | 
-|**開始するには** | [Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
+|**開始するには** | [Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化](./spark-connector.md#bk_working_with_connector) <br> [Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>リリース履歴
 

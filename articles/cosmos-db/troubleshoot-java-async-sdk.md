@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3bb6925e11579deff914a930116d8ef464e39f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321056"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476894"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Async Java SDK v2 を使用する場合の問題のトラブルシューティング
 
@@ -26,7 +26,7 @@ ms.locfileid: "87321056"
 > 
 
 > [!IMPORTANT]
-> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 対象のプロジェクトを [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) にアップグレードしてから、Azure Cosmos DB Java SDK v4 の[トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md)をお読みください。 [Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[リアクターと RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってアップグレードします。 
+> これは Azure Cosmos DB 用の最新の Java SDK では " *ありません* "。 対象のプロジェクトを [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) にアップグレードしてから、Azure Cosmos DB Java SDK v4 の[トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md)をお読みください。 [Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[リアクターと RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってアップグレードします。 
 >
 > この記事では、Azure Cosmos DB Async Java SDK v2 のトラブルシューティングについてのみ説明します。 詳細については、Azure Cosmos DB Async Java SDK v2 の[リリース ノート](sql-api-sdk-async-java.md)、[Maven リポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)、および[パフォーマンスに関するヒント](performance-tips-async-java.md)を参照してください。
 >
@@ -63,13 +63,13 @@ ulimit -a
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) ポート不足
 
-パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
+パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって制限されます。
 
  Azure SNAT ポートが使用されるのは、VM がプライベート IP アドレスを持ち、VM からのプロセスが、パブリック IP アドレスに接続しようとしている場合に限られます。 Azure SNAT の制限を回避するには次の 2 つの回避策があります。
 
-* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)に関するページを参照してください。 
+* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure 仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。 
 
-    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
+    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
 * Azure VM にパブリック IP を割り当てます。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>サービスに到達できない - ファイアウォール
@@ -276,5 +276,3 @@ Azure Cosmos DB エンドポイントへの接続の多くが `CLOSE_WAIT` 状�
 [Enable client SDK logging]: #enable-client-sice-logging
 [ホスト マシンの接続制限]: #connection-limit-on-host
 [Azure SNAT (PAT) ポート不足]: #snat
-
-

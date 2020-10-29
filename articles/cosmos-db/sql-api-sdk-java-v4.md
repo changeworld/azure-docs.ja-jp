@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 686c1e37e093a358bb5122fbfeccdfd98eb301ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2632d5c4fe637222cb6248d35671057430d935e7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804233"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477319"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "91804233"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -43,7 +43,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 >
 > 次の 3 つの手順に従って作業を進めてください。
 > 1. この SDK を使用できるように、[サポートされている最小 Java ランタイムの JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) をインストールします。
-> 2. [Azure Cosmos DB Java SDK v4 のクイックスタート ガイド](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java)に従って、Maven アーティファクトにアクセスし、Azure Cosmos DB の基本的な要求の詳細を確認します。
+> 2. [Azure Cosmos DB Java SDK v4 のクイックスタート ガイド](./create-sql-api-java.md)に従って、Maven アーティファクトにアクセスし、Azure Cosmos DB の基本的な要求の詳細を確認します。
 > 3. Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)と[トラブルシューティング](troubleshoot-java-sdk-v4-sql.md)のガイドを読んで、SDK をお使いのアプリケーションに最適化します。
 >
 > [Azure Cosmos DB のワークショップとラボ](https://aka.ms/cosmosworkshop)は、Azure Cosmos DB Java SDK v4 の使用方法を学習するための別の優れたリソースです。
@@ -54,9 +54,9 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 | コンテンツ | Link |
 |---|---|
 |**SDK のダウンロード**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API ドキュメント** | [Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable&preserve-view=true) |
+|**API ドキュメント** | [Java API リファレンス ドキュメント](/java/api/overview/azure/cosmosdb/client?preserve-view=true&view=azure-java-stable) |
 |**SDK への協力** | [GitHub の Azure SDK for Java 中央リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
-|**開始するには** | [クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [クイック スタート コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**開始するには** | [クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する](./create-sql-api-java.md) <br> [クイック スタート コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**基本的なコード サンプル** | [Azure Cosmos DB: SQL API の Java のサンプル](sql-api-java-sdk-samples.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**変更フィードを使用するコンソール アプリ**| [変更フィード - Java SDK v4 サンプル](create-sql-api-java-changefeed.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Web アプリのサンプル**| [Java SDK v4 を使用した Web アプリの構築](sql-api-java-application.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|

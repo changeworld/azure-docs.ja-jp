@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567861"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476401"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 
 完全に管理されたクラウドネイティブ データベース サービスとして、Azure Cosmos DB では、データベース操作と使用ストレージに対してのみ請求することで、課金を簡略化しています。 オンプレミスまたは IaaS でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
 
-- **データベース操作**: データベース操作に対する請求方法は、使用している Azure Cosmos アカウントの種類によって異なります。
+- **データベース操作** : データベース操作に対する請求方法は、使用している Azure Cosmos アカウントの種類によって異なります。
 
-  - **プロビジョニング済みのスループット**:対象となる 1 時間での最大のプロビジョニング スループットに対し、100 RU/秒ずつ、時間単位で課金されます。
-  - **サーバーレス**: データベース操作によって使用された要求ユニットの合計に対し、時間単位で課金されます。
+  - **プロビジョニング済みのスループット** :対象となる 1 時間での最大のプロビジョニング スループットに対し、100 RU/秒ずつ、時間単位で課金されます。
+  - **サーバーレス** : データベース操作によって使用された要求ユニットの合計に対し、時間単位で課金されます。
 
-- **ストレージ**: 対象となる 1 時間にデータおよびインデックスで使用されたストレージの合計量 (GB 単位) に対し、固定料金が課金されます。
+- **ストレージ** : 対象となる 1 時間にデータおよびインデックスで使用されたストレージの合計量 (GB 単位) に対し、固定料金が課金されます。
 
 最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
@@ -270,7 +270,7 @@ RU/秒の合計:500 + 400 = 900 時間あたりのコスト:900/100 * $0.008 = $
 
 総月額料金 = ストレージの毎月のコスト + スループットの毎月のコスト 総月額料金 = $25.00 + $53.57 = $78.57
 
-*料金はリージョンによって異なる場合があります。最新の料金については、[価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。*
+*料金はリージョンによって異なる場合があります。最新の料金については、 [価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。*
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB の予約容量での課金
 
@@ -313,5 +313,5 @@ Azure Cosmos DB の予約容量を使用すると、すべての Azure リージ
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します
 * [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します

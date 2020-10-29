@@ -7,20 +7,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476979"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL)
 
-Azure Cosmos DB は、**Time to Live** (TTL) を使用して、一定の期間が経過したらアイテムをコンテナーから自動的に削除する機能を提供します。 既定では、コンテナー レベルで Time to Live を設定し、項目ごとに値をオーバーライドできます。 コンテナー レベルまたは項目レベルで TTL を設定すると、項目が最後に変更されてからその期間が経過した後で、Azure Cosmos DB によってそれらの項目が自動的に削除されます。 Time to Live 値は秒数で構成します。 TTL を構成すると、TTL 値に基づいてシステムが自動的に期限切れアイテムを削除します。クライアント アプリケーションが明示的に発行する削除操作は必要ありません。 TTL の最大値は 2147483647 です。
+Azure Cosmos DB は、 **Time to Live** (TTL) を使用して、一定の期間が経過したらアイテムをコンテナーから自動的に削除する機能を提供します。 既定では、コンテナー レベルで Time to Live を設定し、項目ごとに値をオーバーライドできます。 コンテナー レベルまたは項目レベルで TTL を設定すると、項目が最後に変更されてからその期間が経過した後で、Azure Cosmos DB によってそれらの項目が自動的に削除されます。 Time to Live 値は秒数で構成します。 TTL を構成すると、TTL 値に基づいてシステムが自動的に期限切れアイテムを削除します。クライアント アプリケーションが明示的に発行する削除操作は必要ありません。 TTL の最大値は 2147483647 です。
 
 期限切れアイテムの削除は、残っている[要求ユニット](request-units.md)、つまりユーザー要求によってまだ消費されていない要求ユニットを消費するバックグラウンド タスクです。 TTL の期限が切れた後であっても、要求のためにコンテナーが過負荷の状態で、使用できる RU が十分にない場合、データの削除は遅延します。 削除操作を実行するのに十分な RU が利用可能になると、データは削除されます。 たとえデータの削除が遅延しても、TTL の期限が切れた後は、どんなクエリによっても (どんな API によっても) データが返されることはありません。
 
-> このコンテンツは Azure Cosmos DB トランザクション ストア TTL に関連付けられています。 [Azure Synapse Link](https://docs.microsoft.com/azure/cosmos-db/synapse-link) 経由で NoETL HTAP シナリオを可能にする分析ストア TTL をお探しの場合、こちらを[クリック](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)してください。
+> このコンテンツは Azure Cosmos DB トランザクション ストア TTL に関連付けられています。 [Azure Synapse Link](./synapse-link.md) 経由で NoETL HTAP シナリオを可能にする分析ストア TTL をお探しの場合、こちらを[クリック](./analytical-store-introduction.md#analytical-ttl)してください。
 
 ## <a name="time-to-live-for-containers-and-items"></a>コンテナーおよび項目の Time to Live
 
@@ -32,7 +32,7 @@ Time to Live 値は秒数で設定され、項目が最後に変更された時�
 
    - 値が存在し "-1" (無限) に設定されている場合、既定で項目は期限切れになりません。
 
-   - 設定されており、値がいずれかの数 (*"n"*) に設定されている場合、項目は最終変更時刻から *"n"* 秒後に期限切れになります。
+   - 設定されており、値がいずれかの数 ( *"n"* ) に設定されている場合、項目は最終変更時刻から *"n"* 秒後に期限切れになります。
 
 2. **項目の Time to Live** (`ttl` を使用):
 

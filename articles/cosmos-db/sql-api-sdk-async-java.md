@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 509c6e7a7940cb740a3dcbf81deed9f0d26c2bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3f9261922a5d281e173fba9e833da2ba82e9102
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802856"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477812"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -39,13 +39,13 @@ ms.locfileid: "91802856"
 SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポートした非同期操作が可能であるという点で、SQL API Java SDK とは異なります。 既存の [SQL API Java SDK](sql-api-sdk-java.md) では、非同期操作はサポートされません。 
 
 > [!IMPORTANT]  
-> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
+> これは Azure Cosmos DB 用の最新の Java SDK では " *ありません* "。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
 >
 
 | |  |
 |---|---|
 | **SDK のダウンロード** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
-|**API ドキュメント** |[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable&preserve-view=true) | 
+|**API ドキュメント** |[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?preserve-view=true&view=azure-java-stable) | 
 |**SDK への協力** | [GitHub](https://github.com/Azure/azure-cosmosdb-java) | 
 |**開始するには** | [Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
 |**Code sample** | [GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
@@ -58,4 +58,3 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 
 ## <a name="see-also"></a>関連項目
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。
-

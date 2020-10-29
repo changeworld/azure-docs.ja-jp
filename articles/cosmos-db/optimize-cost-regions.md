@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 8d98c9a7e58f08d9ad63183805cd6cd0d2ab3b3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047e2855949b800a88ca87bcc50e0df06f420aa8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570169"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475499"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 
@@ -58,5 +58,4 @@ ms.locfileid: "91570169"
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
-
+* [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します

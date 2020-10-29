@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9f26dc5214222bb7564c0ba2b199adefad056ed5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: dac2ed3888dcf1d38fc5e2c21611edf8008a07f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281003"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476367"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
 
@@ -43,7 +43,7 @@ ms.locfileid: "92281003"
 
 * 異なる一意キーを使用するように、既存のコンテナーを更新することはできません。 つまり、一意キー ポリシーを指定してコンテナーを作成した後で、ポリシーを変更することはできません。
 
-* 既存のコンテナーに対して一意キーを設定するには、一意キー制約を持つ新しいコンテナーを作成します。 適切なデータ移行ツールを使用して、既存のコンテナーから新しいコンテナーにデータを移動します。 SQL コンテナーの場合は、[データ移行ツール](import-data.md)を使用してデータを移動します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](mongodb-migrate.md) を使用してデータを移動します。
+* 既存のコンテナーに対して一意キーを設定するには、一意キー制約を持つ新しいコンテナーを作成します。 適切なデータ移行ツールを使用して、既存のコンテナーから新しいコンテナーにデータを移動します。 SQL コンテナーの場合は、[データ移行ツール](import-data.md)を使用してデータを移動します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) を使用してデータを移動します。
 
 * 一意キー ポリシーでは、最大で 16 個のパス値を使用できます。 たとえば、`/firstName`、`/lastName`、`/address/zipCode` を値として使用できます。 一意キー ポリシーには、それぞれ最大 10 個の一意キー制約または一意なキーの組み合わせを含めることができます。 一意インデックス制約ごとの結合されたパスの長さは、60 バイトを超えないようにする必要があります。 上の例では、姓、名、メール アドレスの組み合わせで 1 つの制約になっています。 この制約では、可能な 16 個のパスのうち 3 個が使用されています。
 

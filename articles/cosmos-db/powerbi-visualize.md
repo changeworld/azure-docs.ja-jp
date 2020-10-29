@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570828"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475279"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 
@@ -32,7 +32,7 @@ ms.locfileid: "91570828"
 
 * GitHub から[サンプル火山データ](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)をダウンロードします。
 
-* [Azure Cosmos データベース アカウントを作成し](https://azure.microsoft.com/documentation/articles/create-account/)、[Azure Cosmos DB データ移行ツール](import-data.md)を使用して火山データをインポートします。 データをインポートするときは、データ移行ツールのソースとインポート先に対して次の設定を考慮してください。
+* [Azure Cosmos データベース アカウントを作成し](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)、[Azure Cosmos DB データ移行ツール](import-data.md)を使用して火山データをインポートします。 データをインポートするときは、データ移行ツールのソースとインポート先に対して次の設定を考慮してください。
 
    * **ソース パラメーター** 
 
@@ -98,7 +98,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 10. 次に、取得するデータを含むコレクションを選択し、 **[volcano1]** を選択します (実際のコレクション名は異なる場合があります)。
     
-    プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record**として表されます。
+    プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record** として表されます。
     
     :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
 
@@ -131,7 +131,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 1. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]** をクリックします。
    
-   DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
+   DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
 
@@ -187,7 +187,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 ## <a name="create-a-dashboard-in-powerbicom"></a>PowerBI.com でのダッシュボードの作成
 レポートが用意できたので、PowerBI.com で共有しましょう。
 
-レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、**PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
+レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、 **PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
 
    :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
 
@@ -222,4 +222,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>次のステップ
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * Azure Cosmos DB について詳しくは、[Azure Cosmos DB ドキュメントのランディング ページ](https://azure.microsoft.com/documentation/services/cosmos-db/)をご覧ください。
-

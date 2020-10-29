@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850883"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460188"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>チュートリアル:Infor CloudSuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91850883"
 
 ## <a name="assigning-users-to-infor-cloudsuite"></a>Infor CloudSuite へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Infor CloudSuite へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Infor CloudSuite に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -50,7 +50,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="set-up-infor-cloudsuite-for-provisioning"></a>プロビジョニングのために Infor CloudSuite を設定する
 
-1. [Infor CloudSuite 管理コンソール](https://www.infor.com/customer-center)にサインインします。 ユーザー アイコンをクリックし、**ユーザー管理**に移動します。
+1. [Infor CloudSuite 管理コンソール](https://www.infor.com/customer-center)にサインインします。 ユーザー アイコンをクリックし、 **ユーザー管理** に移動します。
 
     ![Infor CloudSuite 管理コンソール](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
@@ -94,7 +94,7 @@ Azure AD での自動ユーザー プロビジョニング用に Infor CloudSuit
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Infor CloudSuite**」と入力し、結果ウィンドウで **[Infor CloudSuite]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Infor CloudSuite** 」と入力し、結果ウィンドウで **[Infor CloudSuite]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Infor CloudSuite](common/search-new-app.png)
 
@@ -103,7 +103,7 @@ Azure AD での自動ユーザー プロビジョニング用に Infor CloudSuit
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Infor CloudSuite のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
-> [Infor CloudSuite のシングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)で説明している手順に従って、Infor CloudSuite で SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> [Infor CloudSuite のシングル サインオンのチュートリアル](./infor-cloud-suite-tutorial.md)で説明している手順に従って、Infor CloudSuite で SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 > [!NOTE]
 > Infor CloudSuite の SCIM エンドポイントの詳細については、[こちら](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)を参照してください。

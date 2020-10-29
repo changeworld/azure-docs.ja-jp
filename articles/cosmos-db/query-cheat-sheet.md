@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5683fb64c9b5df027ff8b0f50cec49e9bce5808
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117983"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475126"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
 
-**Azure Cosmos DB クエリのチート シート**は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、操作、関数、演算子が記載されており、これを利用すればデータのクエリをすばやく記述できます。 チート シートには、SQL、MongoDB、Table、Gremlin の各 API のリファレンス情報が含まれます。 
+**Azure Cosmos DB クエリのチート シート** は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、操作、関数、演算子が記載されており、これを利用すればデータのクエリをすばやく記述できます。 チート シートには、SQL、MongoDB、Table、Gremlin の各 API のリファレンス情報が含まれます。 
 
 レター サイズまたは A3 サイズのダウンロードを選択します。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "85117983"
 
 ## <a name="next-steps"></a>次のステップ
 クエリの記述の詳細については、以下の記事を参照してください。
-* SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](how-to-sql-query.md)、および[SQL 構文のリファレンス](sql-api-query-reference.md)を参照してください
+* SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](./sql-query-getting-started.md)、および[SQL 構文のリファレンス](./sql-query-getting-started.md)を参照してください
 * MongoDB クエリについては、[Azure Cosmos DB の MongoDB 用 API を使用するクエリ](tutorial-query-mongodb.md)と [Azure Cosmos DB の MongoDB 用 API の機能のサポートと構文](mongodb-feature-support.md)に関するページを参照してください
 * Gremlin API クエリについては、[Gremlin API を使用したクエリ](tutorial-query-graph.md)、[Azure Cosmos DB での Gremlin グラフのサポート](gremlin-support.md)を参照してください
 * テーブル API クエリについては、[テーブル API を使用したクエリ](tutorial-query-table.md)を参照してください

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 15d3b5eb0dfd5eb35b81da1c0c1ef629aa0def63
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760827"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477421"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v2:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "91760827"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -48,14 +48,14 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 > Spring Data Azure Cosmos DB では、SQL API のみがサポートされています。
 >
 > 他の Azure Cosmos DB API での Spring Data については、次の記事を参照してください。
-> * [Azure Cosmos DB での Apache Cassandra 用 Spring Data](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Azure Cosmos DB での Spring Data MongoDB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Azure Cosmos DB での Spring Data Gremlin](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Azure Cosmos DB での Apache Cassandra 用 Spring Data](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Azure Cosmos DB での Spring Data MongoDB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Azure Cosmos DB での Spring Data Gremlin](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > 急いでいますか?
 > 1. この SDK を使用できるように、[サポートされている最小 Java ランタイムの JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) をインストールします。
-> 2. [スターター](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)を使用して Spring Data Azure Cosmos DB アプリを作成します。 これは簡単にできます。
-> 3. 基本的な Azure Cosmos DB の要求について説明している「[Spring Data Azure Cosmos DB 開発者ガイド](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)」を参照します。
+> 2. [スターター](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)を使用して Spring Data Azure Cosmos DB アプリを作成します。 これは簡単にできます。
+> 3. 基本的な Azure Cosmos DB の要求について説明している「[Spring Data Azure Cosmos DB 開発者ガイド](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)」を参照します。
 >
 > Spring Boot Starter アプリは、[Spring Initializr](https://start.spring.io/) によってすぐに利用できます。
 >
@@ -69,9 +69,9 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 |**SDK に投稿する** | [GitHub の Spring Data Azure Cosmos DB リポジトリ](https://github.com/microsoft/spring-data-cosmosdb) | 
 |**Spring Boot Starter**| [Java 用 Azure Cosmos DB Spring Boot Starter クライアント ライブラリ](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Azure Cosmos DB による Spring TODO アプリ サンプル**| [App Service Linux でのエンドツーエンドの Java エクスペリエンス (パート 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
-|**開発者ガイド** | [Spring Data Azure Cosmos DB 開発者ガイド](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Starter の使用** | [Azure Cosmos DB SQL API で Spring Boot Starter を使用する方法](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Azure Cosmos DB Spring Boot Starter の GitHub リポジトリ](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
-|**Azure App Service によるサンプル** | [App Service on Linux で Spring と Cosmos DB を使用する方法](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [TODO アプリのサンプル](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
+|**開発者ガイド** | [Spring Data Azure Cosmos DB 開発者ガイド](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
+|**Starter の使用** | [Azure Cosmos DB SQL API で Spring Boot Starter を使用する方法](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Azure Cosmos DB Spring Boot Starter の GitHub リポジトリ](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
+|**Azure App Service によるサンプル** | [App Service on Linux で Spring と Cosmos DB を使用する方法](/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [TODO アプリのサンプル](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>リリース履歴
 

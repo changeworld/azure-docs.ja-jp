@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021937"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476928"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Azure Cosmos DB .NET SDK の要求タイムアウト例外を診断してトラブルシューティングする
 HTTP 408 エラーは、タイムアウト制限が発生する前に SDK が要求を完了できなかった場合に発生します。
@@ -28,7 +28,7 @@ HTTP 408 エラーは、タイムアウト制限が発生する前に SDK が要
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-SDK のすべての非同期操作にオプションの CancellationToken パラメーターがあります。 この [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) パラメーターは、すべてのネットワーク要求にわたって、操作全体を通して使用されます。 ネットワーク要求の合間にキャンセル トークンが確認され、関連トークンの有効期間が切れている場合、操作が取り消されます。 キャンセル トークンは、操作スコープに予想されるおよそのタイムアウトを定義する目的で使用してください。
+SDK のすべての非同期操作にオプションの CancellationToken パラメーターがあります。 この [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) パラメーターは、すべてのネットワーク要求にわたって、操作全体を通して使用されます。 ネットワーク要求の合間にキャンセル トークンが確認され、関連トークンの有効期間が切れている場合、操作が取り消されます。 キャンセル トークンは、操作スコープに予想されるおよそのタイムアウトを定義する目的で使用してください。
 
 > [!NOTE]
 > `CancellationToken` パラメーターは、取り消しによって[無効な状態が引き起こされない](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/)ときに、ライブラリによって取り消しが確認されるメカニズムです。 取り消しに定義された時間が経過しても、厳密にその時点で操作がキャンセルされない場合があります。 その代わりに、その時間が経過した後、そうしても安全なときにキャンセルされます。

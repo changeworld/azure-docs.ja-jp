@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278183"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482606"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Cassandra API についてよく寄せられる質問
 
@@ -75,7 +75,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 複数のパーティション全体、または集計して、時間単位、日単位、7 日間単位で使用されたスループットを示すメトリックを使用できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
 
-診断ログについては、「[Azure Cosmos DB 診断ログ](logging.md)」の記事を参照してください。
+診断ログについては、「[Azure Cosmos DB 診断ログ](./monitor-cosmos-db.md)」の記事を参照してください。
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>プライマリ キーは、Azure Cosmos DB のパーティション キーの概念と対応していますか?
 
@@ -85,7 +85,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 Azure Cosmos DB はサービス レベル アグリーメント (SLA) に基づくシステムです。 待機時間、スループット、可用性、一貫性が保証され、無制限のスケールが提供されます。 この無制限のストレージは、主要な概念としてパーティション分割を使用し、データの水平スケールアウトに基づいています。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)」の記事でわかりやすく説明されています。
 
-論理パーティションあたりのエンティティ数または項目数に関する 20 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (20 GB を超える) データが偏っている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択すると、データの分散が改善されます。
+論理パーティションあたりのエンティティ数または項目数に関する 20 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生 *しない* ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (20 GB を超える) データが偏っている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択すると、データの分散が改善されます。
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>数百万個または数十億個のパーティション キーを擁するキー値ストアとして Cassandra API を使用できますか?
 
@@ -135,9 +135,9 @@ Azure Cosmos DB では、読み取り、書き込み、スループットのパ�
 
 Azure Cosmos DB はプラットフォーム サービスであり、生産性を向上させ、インフラストラクチャの管理と監視の心配を取り除きます。 たとえば、以前のようにさまざまなツールを使用してノードの状態、レプリカの状態、gc、OS パラメーターを監視する必要はありません。 ポータルのメトリックで使用できるスループットを監視し、調整されているかどうかを確認し、そのスループットを増減するだけです。 次のようにすることができます。
 
-- [SLA](monitor-accounts.md) を監視する
+- [SLA](./monitor-cosmos-db.md) を監視する
 - [メトリック](use-metrics.md)を使用する
-- [診断ログ](logging.md)を使用する
+- [診断ログ](./monitor-cosmos-db.md)を使用する
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Cassandra API ではどのクライアント SDK を使用できますか?
 
@@ -187,7 +187,7 @@ Cassandra API には、Azure Cosmos DB のグローバルに分散されたプ�
 フィードバックは [UserVoice のフィードバック](https://feedback.azure.com/forums/263030-azure-cosmos-db)でお寄せください。
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>次のステップ
 

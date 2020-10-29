@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280514"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477829"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 
-Azure Cosmos DB は、スキーマやセカンダリ インデックスを使用せず[データを照会するための SQL API](how-to-sql-query.md) を提供します。 この記事は、開発者を対象とした次の情報を提供します。
+Azure Cosmos DB は、スキーマやセカンダリ インデックスを使用せず[データを照会するための SQL API](./sql-query-getting-started.md) を提供します。 この記事は、開発者を対象とした次の情報を提供します。
 
 * Azure Cosmos DB の SQL クエリの実行構造の詳細
 * クエリの要求および応答ヘッダー、およびクライアント SDK オプションの詳細
@@ -275,6 +275,4 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 ## <a name="next-steps"></a>次のステップ
 * サポートされている SQL クエリ演算子とキーワードの詳細については、「[SQL クエリ](sql-query-getting-started.md)」を参照してください。 
 * 要求ユニットの詳細については、「[要求ユニット](request-units.md)」を参照してください。
-* インデックス作成ポリシーの詳細については、「[インデックス作成ポリシー](index-policy.md)」を参照してください 
-
-
+* インデックス作成ポリシーの詳細については、「[インデックス作成ポリシー](index-policy.md)」を参照してください

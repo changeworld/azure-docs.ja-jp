@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b8d74f9da62b0f5a596c811efa9f93b55c99f1d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331364"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476350"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 
@@ -28,7 +28,7 @@ ms.locfileid: "92331364"
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。
 
-Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[Gremlin API](graph-introduction.md)、[Table API](table-introduction.md) を含むデータ アクセス用の多くの API を、ネイティブおよび拡張可能な方法でサポートします。 
+Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)、[SQL API](./introduction.md)、[Gremlin API](graph-introduction.md)、[Table API](table-introduction.md) を含むデータ アクセス用の多くの API を、ネイティブおよび拡張可能な方法でサポートします。 
 
 Azure Cosmos DB を、グローバルな展開を視野に入れた高性能アプリケーションに最適なものにしている属性のいくつかを次に示します。
 

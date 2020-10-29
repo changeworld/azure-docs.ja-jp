@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568048"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480056"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
 
@@ -118,7 +118,7 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
   * バッチ データとストリーミング データの両方の高スループットのインジェストが、トランザクション ストアでの[リアルタイムのインデックス作成](index-policy.md)により強化されます。
 
-  * Azure Cosmos DB のトランザクション ストアは、ビジネス ニーズに最も近い[可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)を実現するために、強力かつ最終的な整合性レベルという利点に加えて 3 つのオプションを提供しています。
+  * Azure Cosmos DB のトランザクション ストアは、ビジネス ニーズに最も近い[可用性とパフォーマンスのトレードオフ](./consistency-levels.md)を実現するために、強力かつ最終的な整合性レベルという利点に加えて 3 つのオプションを提供しています。
 
 * CompanyXYZ のサプライ チェーン パートナーでは、1 秒あたりの要求数が数百から数百万の範囲で大幅に変動するというトラフィック パターンがあるため、在庫管理プラットフォームでトラフィックの予期しない急増に対処する必要があります。  Azure Cosmos DB を使用することの利点:
 

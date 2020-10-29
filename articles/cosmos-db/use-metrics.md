@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2a7645950fd7a239376f07d6c6f4689c1a3f3da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280808"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476316"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
-Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](cosmos-db-azure-monitor-metrics.md)に関する記事を参照してください。
+Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](./monitor-cosmos-db.md)に関する記事を参照してください。
 
 この記事では、一般的なユース ケースと、Azure Cosmos DB メトリックを使用してこれらの問題を分析およびデバッグする手順について説明します。 メトリックは 5 分間隔で収集され、7 日間保持されます。
 
@@ -55,11 +55,11 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>パーティション全体のスループットの分散を決める
 
-適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
+適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、 [Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Azure portal での Cosmos DB のパフォーマンス メトリック":::
 
-スループット分散が不均一の場合、*ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
+スループット分散が不均一の場合、 *ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>パーティション全体のストレージの分散を決める
 
@@ -112,6 +112,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Azure portal で提供されているメトリックを使用して、問題の監視とデバッグを行う方法について説明しました。 データベースのパフォーマンスを改善する方法については、次の記事を参照してください。
 
-* Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](cosmos-db-azure-monitor-metrics.md)に関する記事を参照してください。 
+* Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](./monitor-cosmos-db.md)に関する記事を参照してください。 
 * [Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)
 * [Azure Cosmos DB のパフォーマンスに関するヒント](performance-tips.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 06559039f31464e7d393a7b0fb0fd8a90da21e32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cc6922fb2c5c7c8b4a1bad94006acbda2d6bb2e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88519905"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>チュートリアル: Azure Active Directory と InTime の統合
 
@@ -27,7 +27,7 @@ InTime と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に InTime にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ InTime と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* InTime では、**SP** によって開始される SSO がサポートされます
+* InTime では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-intime-from-the-gallery"></a>ギャラリーからの InTime の追加
 
@@ -61,13 +61,13 @@ Azure AD への InTime の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**InTime**」と入力し、結果パネルで **InTime** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **InTime** 」と入力し、結果パネルで **InTime** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の InTime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、InTime で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、InTime で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと InTime 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 InTime で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -105,11 +105,11 @@ InTime で Azure AD シングル サインオンを構成するには、次の�
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://auth.intimesoft.com/auth/realms/master` という URL を入力します。
 
-5. InTime アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 InTime アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. InTime アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 InTime アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ InTime で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-intime-single-sign-on"></a>InTime シングル サインオンの構成
 
-**InTime** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [InTime サポート チーム](mailto:hdollard@intimesoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**InTime** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [InTime サポート チーム](mailto:hdollard@intimesoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -143,7 +143,7 @@ InTime で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -180,18 +180,18 @@ InTime で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-intime-test-user"></a>InTime テスト ユーザーの作成
 
-このセクションでは、InTime で Britta Simon というユーザーを作成します。  [InTime サポート チーム](mailto:hdollard@intimesoft.com)と連携し、InTime プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、InTime で Britta Simon というユーザーを作成します。 [InTime サポート チーム](mailto:hdollard@intimesoft.com)と連携し、InTime プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [InTime] タイルをクリックすると、SSO を設定した InTime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [InTime] タイルをクリックすると、SSO を設定した InTime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

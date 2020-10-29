@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606878"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482249"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
 
@@ -75,13 +75,13 @@ Azure portal から Azure Cosmos DB リソースの使用を開始するとき�
 
 ## <a name="use-budgets-and-cost-alerts"></a>予算とコストのアラートを使用する
 
-[予算](../cost-management/tutorial-acm-create-budgets.md)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知するアラートを作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 ただし、より高いレベルでコストを追跡するように設計されているため、Azure Cosmos DB のコストなど、個々の Azure サービスのコストを管理する機能が限定されていることがあります。
+[予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知するアラートを作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 ただし、より高いレベルでコストを追跡するように設計されているため、Azure Cosmos DB のコストなど、個々の Azure サービスのコストを管理する機能が限定されていることがあります。
 
-Azure サブスクリプションに使用制限がある場合は、Azure により、クレジット額を超える支出が防止されます。 Azure リソースを作成して使用するときに、クレジットが使用されます。 クレジットの上限に達すると、その請求期間の残りの期間は、デプロイしたリソースが無効にされます。 クレジットの上限は変更できませんが、上限の削除は可能です。 使用制限の詳細については、「[Azure の使用制限](../billing/billing-spending-limit.md)」を参照してください。
+Azure サブスクリプションに使用制限がある場合は、Azure により、クレジット額を超える支出が防止されます。 Azure リソースを作成して使用するときに、クレジットが使用されます。 クレジットの上限に達すると、その請求期間の残りの期間は、デプロイしたリソースが無効にされます。 クレジットの上限は変更できませんが、上限の削除は可能です。 使用制限の詳細については、「[Azure の使用制限](../cost-management-billing/manage/spending-limit.md)」を参照してください。
 
 ## <a name="monitor-costs"></a>コストを監視する
 
-Azure Cosmos DB でリソースを使用するとコストが発生します。 リソース使用のユニット コストは、期間 (秒、分、時間、日) や要求ユニット使用量によって異なります。 Azure Cosmos DB の使用が始まるとすぐに、コストが発生して、Azure portal の[コスト分析](../cost-management/quick-acm-cost-analysis.md)のウィンドウでそれを参照することができます。
+Azure Cosmos DB でリソースを使用するとコストが発生します。 リソース使用のユニット コストは、期間 (秒、分、時間、日) や要求ユニット使用量によって異なります。 Azure Cosmos DB の使用が始まるとすぐに、コストが発生して、Azure portal の[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)のウィンドウでそれを参照することができます。
 
 コスト分析を使用すると、さまざまな期間について、Azure Cosmos DB のコストをグラフや表で表示できます。 日単位、現在の分、以前の月、年単位などです。 予算や予想コストを基準としてコストを表示することもできます。 長期にわたるより長い期間のビューに切り替えると、支出の傾向を特定し、超過出費が発生した可能性のある時期を確認するのに役立ちます。 予算を作成した場合は、どこで予算を超過したかも容易に確認できます。コスト分析で Azure Cosmos DB コストを表示するには:
 
@@ -103,5 +103,5 @@ Azure Cosmos DB での課金のしくみの詳細については、以下の記�
 
 * [Azure Cosmos DB の価格モデル](how-pricing-works.md)
 * [Azure Cosmos DB でのプロビジョニングされたスループット コストを最適化する](optimize-cost-throughput.md)
-* [Azure Cosmos DB でのクエリ コストを最適化する](optimize-cost-queries.md)
+* [Azure Cosmos DB でのクエリ コストを最適化する](./optimize-cost-reads-writes.md)
 * [Azure Cosmos DB でのストレージ コストを最適化する](optimize-cost-storage.md)

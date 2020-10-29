@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3bb7b575869aa0c7e6f847eee81f91c1de146b19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f6a8ee7606f8efc49b1ba7da352c5719e13bf4f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547479"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460457"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IDC の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88547479"
 * ユーザーが自分の Azure AD アカウントを使用して IDC に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* IDC では、**SP と IDP** によって開始される SSO がサポートされます
+* IDC では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-idc-from-the-gallery"></a>ギャラリーからの IDC の追加
 
@@ -49,7 +49,7 @@ Azure AD への IDC の統合を構成するには、ギャラリーから管理
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**IDC**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **IDC** 」と入力します。
 1. 結果のパネルから **[IDC]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-idc"></a>IDC の Azure AD シングル サインオンの構成とテスト
@@ -130,7 +130,7 @@ IDC で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ## <a name="configure-idc-sso"></a>IDC SSO を構成する
 
-**IDC** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を IDC サポート チームに送信する必要があります。 SAML SSO 接続が両側で正しく設定されるように、IDC によってこの設定が構成されます。
+**IDC** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を IDC サポート チームに送信する必要があります。 SAML SSO 接続が両側で正しく設定されるように、IDC によってこの設定が構成されます。
 
 ### <a name="create-idc-test-user"></a>IDC テスト ユーザーを作成する
 
@@ -140,15 +140,14 @@ IDC では、ユーザーを事前に作成する必要はありません。 ユ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [IDC] タイルをクリックすると、SSO が設定された IDC に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [IDC] タイルをクリックすると、SSO が設定された IDC に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で IDC を試す](https://aad.portal.azure.com/)
-

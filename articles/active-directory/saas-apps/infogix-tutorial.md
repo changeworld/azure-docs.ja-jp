@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f4874a16e12c5c9e7e5a0fd9858d3e42f2bb1cd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821271"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>チュートリアル: Azure Active Directory と Infogix Data3Sixty Govern の統合
 
@@ -27,7 +27,7 @@ Infogix Data3Sixty Govern と Azure AD の統合には、次の利点があり�
 * ユーザーが自分の Azure AD アカウントで Infogix Data3Sixty Govern に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ Infogix Data3Sixty Govern と Azure AD の統合を構成するには、次の�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Infogix Data3Sixty Govern では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Infogix Data3Sixty Govern では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Infogix Data3Sixty Govern では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Infogix Data3Sixty Govern では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>ギャラリーからの Infogix Data3Sixty Govern の追加
 
@@ -62,13 +62,13 @@ Azure AD への Infogix Data3Sixty Govern の統合を構成するには、ギ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Infogix Data3Sixty Govern**」と入力し、結果パネルで **[Infogix Data3Sixty Govern]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Infogix Data3Sixty Govern** 」と入力し、結果パネルで **[Infogix Data3Sixty Govern]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Infogix Data3Sixty Govern](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Infogix Data3Sixty Govern 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -119,7 +119,7 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | Name | ソース属性|
     | -----------| -------------- |
@@ -145,7 +145,7 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
 
     g. **[保存]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -161,7 +161,7 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
 
 ### <a name="configure-infogix-data3sixty-govern-single-sign-on"></a>Infogix Data3Sixty Govern のシングル サインオンの構成
 
-**Infogix Data3Sixty Govern** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [Infogix Data3Sixty Govern サポート チーム](mailto:data3sixtysupport@infogix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Infogix Data3Sixty Govern** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [Infogix Data3Sixty Govern サポート チーム](mailto:data3sixtysupport@infogix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -179,7 +179,7 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -219,19 +219,18 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
 このセクションでは、Britta Simon というユーザーを Infogix Data3Sixty Govern に作成します。 Infogix Data3Sixty Govern では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Infogix Data3Sixty Govern にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [Infogix Data3Sixty Govern サポート チーム](mailto:data3sixtysupport@infogix.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[Infogix Data3Sixty Govern サポート チーム](mailto:data3sixtysupport@infogix.com)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Infogix Data3Sixty Govern] タイルをクリックすると、SSO を設定した Infogix Data3Sixty Govern に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Infogix Data3Sixty Govern] タイルをクリックすると、SSO を設定した Infogix Data3Sixty Govern に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

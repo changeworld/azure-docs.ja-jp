@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: f90160ba58983414b5421542c6292f4570f1e10a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 708a7139aec7b8d3fe9e5f08df2c5e93b99d0668
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142845"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476792"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Java SDK v4 を使用する場合の問題のトラブルシューティング
 
@@ -34,9 +34,9 @@ Azure Cosmos DB Java SDK v4 には、Azure Cosmos DB SQL API にアクセスす�
 次の一覧から開始します。
 
 * この記事の[一般的な問題と対処法]のセクションを確認します。
-* Azure Cosmos DB 中央リポジトリにある Java SDK を参照してください。これは、[GitHub のオープン ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)として利用可能です。 アクティブに監視されている[問題セクション](https://github.com/Azure/azure-sdk-for-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認します。 役に立つヒントの 1 つは、*cosmos:v4-item* タグによって問題をフィルター処理することです。
+* Azure Cosmos DB 中央リポジトリにある Java SDK を参照してください。これは、[GitHub のオープン ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)として利用可能です。 アクティブに監視されている[問題セクション](https://github.com/Azure/azure-sdk-for-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認します。 役に立つヒントの 1 つは、 *cosmos:v4-item* タグによって問題をフィルター処理することです。
 * Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)を確認し、推奨される方法に従います。
-* この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-sdk-for-java/issues)を提出します。 GitHub の問題にタグを追加するオプションがある場合は、*cosmos:v4-item* タグを追加します。
+* この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-sdk-for-java/issues)を提出します。 GitHub の問題にタグを追加するオプションがある場合は、 *cosmos:v4-item* タグを追加します。
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>一般的な問題と対処法
 
@@ -46,7 +46,7 @@ Azure Cosmos DB Java SDK v4 には、Azure Cosmos DB SQL API にアクセスす�
 パフォーマンスを最大限高めるためのヒントを示します。
 * アプリが Azure Cosmos DB アカウントと同じリージョンで実行されていることを確認します。 
 * アプリが実行されているホストの CPU 使用率を確認します。 CPU 使用率が 50% 以上の場合は、より高度な構成のホスト上でアプリを実行します。 また、より多数のマシンに負荷を分散することもできます。
-    * Azure Kubernetes Service でアプリケーションを実行している場合は、[Azure Monitor を使用して CPU 使用率を監視する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze)ことができます。
+    * Azure Kubernetes Service でアプリケーションを実行している場合は、[Azure Monitor を使用して CPU 使用率を監視する](../azure-monitor/insights/container-insights-analyze.md)ことができます。
 
 #### <a name="connection-throttling"></a>接続の帯域幅調整
 接続の帯域幅調整は、[ホスト マシンの接続制限]、または [Azure SNAT (PAT) ポート不足]のいずれかが原因で発生します。
@@ -62,13 +62,13 @@ ulimit -a
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) ポート不足
 
-パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
+パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって制限されます。
 
  Azure SNAT ポートが使用されるのは、VM がプライベート IP アドレスを持ち、VM からのプロセスが、パブリック IP アドレスに接続しようとしている場合に限られます。 Azure SNAT の制限を回避するには次の 2 つの回避策があります。
 
-* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)に関するページを参照してください。 
+* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure 仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。 
 
-    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
+    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
 * Azure VM にパブリック IP を割り当てます。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>サービスに到達できない - ファイアウォール
@@ -135,7 +135,7 @@ mvn dependency:tree
 ```
 詳細については、[maven の依存関係ツリー ガイド](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)を参照してください。
 
-プロジェクトの依存関係のうち、古いバージョンに依存しているものがどれかわかったら、次の例に従って、pom ファイル内でその lib に対する依存関係を変更し、推移的な依存関係を排除します (例は "*リアクター コア*" が古い依存関係であることを前提としています)。
+プロジェクトの依存関係のうち、古いバージョンに依存しているものがどれかわかったら、次の例に従って、pom ファイル内でその lib に対する依存関係を変更し、推移的な依存関係を排除します (例は " *リアクター コア* " が古い依存関係であることを前提としています)。
 
 ```xml
 <dependency>
@@ -217,5 +217,3 @@ Azure Cosmos DB エンドポイントへの接続の多くが `CLOSE_WAIT` 状�
 [Enable client SDK logging]: #enable-client-sice-logging
 [ホスト マシンの接続制限]: #connection-limit-on-host
 [Azure SNAT (PAT) ポート不足]: #snat
-
-

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9ef3347b6f22d623571c8fe9cc8b156bfd92c411
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbf2893896b7258115ed3f59224caef9cf843b1f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282555"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481518"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET のサンプル
 
@@ -90,7 +90,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 | [ドキュメントが変更された場合にのみ、ドキュメントを読み取る](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L454-L500) |[DocumentClient.AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition)<br>[Documents.Client.AccessConditionType](/dotnet/api/microsoft.azure.documents.client.accessconditiontype) |
 
 ## <a name="indexing-examples"></a>インデックス作成のサンプル
-サンプルの *IndexManagement* プロジェクトの [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス ポリシー](index-policy.md)、[インデックスの種類](index-types.md)、[インデックスのパス](index-paths.md)に関する記事を参照してください。 
+サンプルの *IndexManagement* プロジェクトの [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) メソッドは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス ポリシー](index-policy.md)、[インデックスの種類](index-overview.md#index-kinds)、[インデックスのパス](index-policy.md#include-exclude-paths)に関する記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -102,7 +102,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 | [インデックス変換の実行](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L318-L370) |[ReplaceDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync) |
 
 ## <a name="geospatial-examples"></a>地理空間のサンプル
-サンプルの *Geospatial* プロジェクトの [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L94-L139) メソッドは、次のタスクを実行する方法を示しています。  以下のサンプルを実行する前に GeoJSON データと地理空間データについて知るために、[地理空間データと GeoJSON 位置データ](geospatial.md)に関する記事を参照してください。 
+サンプルの *Geospatial* プロジェクトの [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L94-L139) メソッドは、次のタスクを実行する方法を示しています。  以下のサンプルを実行する前に GeoJSON データと地理空間データについて知るために、[地理空間データと GeoJSON 位置データ](./sql-query-geospatial-intro.md)に関する記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -114,7 +114,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 | [ポイントとポリゴンのデータの検証](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L290-L326) |[ST_ISVALID](sql-query-st-isvalid.md)<br>[ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)<br>[GeometryOperationExtensions.IsValid](/dotnet/api/microsoft.azure.documents.spatial.geometryoperationextensions.isvalid)<br>[GeometryOperationExtensions.IsValidDetailed](/dotnet/api/microsoft.azure.documents.spatial.geometryoperationextensions.isvaliddetailed) |
 
 ## <a name="query-examples"></a>クエリのサンプル
-サンプルの *Queries* プロジェクトの [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L64-L129) メソッドは、SQL クエリ文法、LINQ プロバイダーとクエリ、およびラムダを使用して、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB の SQL クエリ リファレンスについて知るために、「[Azure Cosmos DB の SQL クエリの例](how-to-sql-query.md)」を参照してください。 
+サンプルの *Queries* プロジェクトの [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L64-L129) メソッドは、SQL クエリ文法、LINQ プロバイダーとクエリ、およびラムダを使用して、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB の SQL クエリ リファレンスについて知るために、「[Azure Cosmos DB の SQL クエリの例](./sql-query-getting-started.md)」を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -164,4 +164,3 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 | [ユーザーの作成](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L93) |[DocumentClient.CreateUserAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createuserasync) |
 | [コレクションまたはドキュメントのアクセス許可の設定](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L97) |[DocumentClient.CreatePermissionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createpermissionasync) |
 | [ユーザーのアクセス許可の一覧の取得](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L241) |[DocumentClient.ReadUserAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readuserasync)<br>[DocumentClient.ReadPermissionFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpermissionfeedasync) |
-

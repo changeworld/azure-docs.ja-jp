@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2defeb2c417e94109721d32d8d4b611e2e46569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01e61abacac63d698456c3ab25826f9799d2837e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003220"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482283"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>非パーティション分割コンテナーをパーティション分割コンテナーに移行する
 
@@ -132,6 +132,6 @@ V2 SDK を使用して挿入された項目、または `PartitionKey.None` パ�
 * [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
-* [Azure Cosmos アカウントの使用](account-overview.md)
+* [Azure Cosmos アカウントの使用](./account-databases-containers-items.md)
 
 [1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

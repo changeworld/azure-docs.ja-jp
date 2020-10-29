@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 022b6eb6595f25af4189d783a6a91031f95c7216
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037118"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479359"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -48,7 +48,7 @@ AWS アクセス キーとシークレット アクセス キーを収集して�
 
 ## <a name="copy-objects-directories-and-buckets"></a>オブジェクト、ディレクトリ、バケットをコピーする
 
-AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API が使用されます。そのため、データは AWS S3 とストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
+AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-block-from-url) API が使用されます。そのため、データは AWS S3 とストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
 
 > [!TIP]
 > このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -135,7 +135,7 @@ AzCopy は、発生する可能性のある最も一般的な 2 つの問題を�
 
 ## <a name="handle-differences-in-object-metadata"></a>オブジェクトのメタデータの違いに対処する
 
-AWS S3 と Azure では、オブジェクト キーの名前にさまざまな文字セットを使用できます。 AWS S3 で使用する文字の詳細については、[こちら](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)をご覧ください。 Azure 側では、BLOB オブジェクト キーは [C# 識別子](https://docs.microsoft.com/dotnet/csharp/language-reference/)の名前付け規則に従います。
+AWS S3 と Azure では、オブジェクト キーの名前にさまざまな文字セットを使用できます。 AWS S3 で使用する文字の詳細については、[こちら](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)をご覧ください。 Azure 側では、BLOB オブジェクト キーは [C# 識別子](/dotnet/csharp/language-reference/)の名前付け規則に従います。
 
 AzCopy の `copy` コマンドの一部として、オプションの `s2s-handle-invalid-metadata` フラグの値を指定することができます。これは、ファイルのメタデータに互換性のないキー名が含まれているファイルを処理する方法を指定します。 次の表は、それぞれのフラグ値の説明です。
 
@@ -155,10 +155,10 @@ AzCopy では次の手順が実行されます。
 
 2. 文字列 `rename_` を新しい有効なキーの先頭に追加します。
 
-   このキーは、元のメタデータ**値**を保存するために使用されます。
+   このキーは、元のメタデータ **値** を保存するために使用されます。
 
 3. 文字列 `rename_key_` を新しい有効なキーの先頭に追加します。
-   このキーは、元のメタデータの無効な**キー**を保存するために使用されます。
+   このキーは、元のメタデータの無効な **キー** を保存するために使用されます。
    メタデータ キーは BLOB ストレージ サービスに値として保持されるため、このキーを使用して、Azure 側でメタデータを試して復元することができます。
 
 ## <a name="next-steps"></a>次のステップ

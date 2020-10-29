@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283467"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477030"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB Table API リソースを管理する
 
 この記事では、ご利用の Azure Cosmos DB アカウント、データベース、およびコンテナーのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
 
-この記事に含まれているのは、Table API アカウントの例のみです。他の種類の API アカウントでの例については、[Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md) 用の Azure Cosmos DB の API での Azure Resource Manager テンプレートの使用に関する記事を参照してください。
+この記事に含まれているのは、Table API アカウントの例のみです。他の種類の API アカウントでの例については、[Cassandra](./templates-samples-cassandra.md)、[Gremlin](./templates-samples-gremlin.md)、[MongoDB](./templates-samples-mongodb.md)、[SQL](./manage-with-templates.md) 用の Azure Cosmos DB の API での Azure Resource Manager テンプレートの使用に関する記事を参照してください。
 
 > [!IMPORTANT]
 >
@@ -54,7 +54,7 @@ ms.locfileid: "92283467"
 
 次にその他のリソースを示します。
 
-* [Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)
+* [Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)
 * [Azure Cosmos DB リソース プロバイダー スキーマ](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Azure Resource Manager デプロイの一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)

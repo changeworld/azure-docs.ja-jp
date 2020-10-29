@@ -2,17 +2,18 @@
 title: 暗号化されたデバイスで LVM と RAID を構成する - Azure Disk Encryption
 description: この記事では、Linux VM 用の暗号化されたデバイスで LVM と RAID を構成する手順について説明します。
 author: jofrance
-ms.service: security
+ms.service: virtual-machines
+ms.subservice: security
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ccb74fe58742974798732605b4a017a06777bcc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328175"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476163"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
 
@@ -286,7 +287,7 @@ cat /etc/fstab
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>暗号化されたレイヤーの上位に LVM を構成する
 #### <a name="create-the-physical-volumes"></a>物理ボリュームを作成する
-ファイル システムの署名を消去するかどうかを確認する警告が表示されます。 「**y**」を入力して続行するか、次のように「**echo "y"** 」を使用します。
+ファイル システムの署名を消去するかどうかを確認する警告が表示されます。 「 **y** 」を入力して続行するか、次のように「 **echo "y"** 」を使用します。
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -371,7 +372,7 @@ df -h
 
 この **lsblk** のバリエーションでは、依存関係を逆順にしてデバイスを一覧表示しています。 このオプションを使用すると、元の /dev/sd[disk] デバイス名ではなく、論理ボリューム別にグループ化されたデバイスを識別できます。
 
-Azure Disk Encryption で暗号化されたデバイスの上位に作成された LVM ボリュームのマウント ポイント オプションに、**nofail** オプションが追加されていることを確認することが重要です。 起動プロセス中 (またはメンテナンス モード中) の OS の停止を防ぐことができます。
+Azure Disk Encryption で暗号化されたデバイスの上位に作成された LVM ボリュームのマウント ポイント オプションに、 **nofail** オプションが追加されていることを確認することが重要です。 起動プロセス中 (またはメンテナンス モード中) の OS の停止を防ぐことができます。
 
 **nofail** オプションを使用しない場合:
 
@@ -438,7 +439,7 @@ df -h
 ```
 ![マウントされたファイル システムに関する情報](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
-Azure Disk Encryption で暗号化されたデバイスの上位に作成された RAID ボリュームのマウント ポイント オプションに、**nofail** オプションが追加されていることを確認することが重要です。 起動プロセス中 (またはメンテナンス モード中) の OS の停止を防ぐことができます。
+Azure Disk Encryption で暗号化されたデバイスの上位に作成された RAID ボリュームのマウント ポイント オプションに、 **nofail** オプションが追加されていることを確認することが重要です。 起動プロセス中 (またはメンテナンス モード中) の OS の停止を防ぐことができます。
 
 **nofail** オプションを使用しない場合:
 

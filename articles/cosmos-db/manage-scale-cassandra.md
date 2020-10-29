@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277683"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482521"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントをエラスティックにスケーリングする
 
 Azure Cosmos DB の Cassandra 用 API のエラスティック特性を調べるためのさまざまなオプションがあります。 Azure Cosmos DB で効果的にスケールする方法を理解するには、システムのパフォーマンス要求を考慮して適切な量の要求ユニット (RU/秒) をプロビジョニングする方法を理解することが重要です。 要求ユニットの詳細については、[要求ユニット](request-units.md)に関する記事を参照してください。 
 
-Cassandra API では、[.NET および Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api) を使用して、個々のクエリの要求ユニットの料金を取得できます。 これは、サービスでプロビジョニングする必要がある RU/秒の量を決定するのに役立ちます。
+Cassandra API では、[.NET および Java SDK](./find-request-unit-charge-cassandra.md) を使用して、個々のクエリの要求ユニットの料金を取得できます。 これは、サービスでプロビジョニングする必要がある RU/秒の量を決定するのに役立ちます。
 
 :::image type="content" source="./media/request-units/request-units.png" alt-text="データベース操作による要求ユニットの消費" border="false":::
 
@@ -46,7 +46,7 @@ Azure portal を使用して Azure Cosmos DB Cassandra API アカウントのリ
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>コントロール プレーンを使用する
 
-Azure Cosmos DB の Cassandra 用 API には、さまざまなコントロール プレーン機能を使用して、プログラムでスループットを調整する機能が用意されています。 ガイダンスとサンプルについては、[Azure Resource Manager](manage-cassandra-with-resource-manager.md)、[Powershell](powershell-samples.md)、および [Azure CLI](cli-samples.md) に関する記事を参照してください。
+Azure Cosmos DB の Cassandra 用 API には、さまざまなコントロール プレーン機能を使用して、プログラムでスループットを調整する機能が用意されています。 ガイダンスとサンプルについては、[Azure Resource Manager](./templates-samples-cassandra.md)、[Powershell](powershell-samples.md)、および [Azure CLI](cli-samples.md) に関する記事を参照してください。
 
 この方法の利点は、ピーク時のアクティビティ、またはアクティビティの少ない時間帯を考慮して、タイマーに基づいてリソースのスケールアップまたはスケールダウンを自動化できることです。 Azure Functions と PowerShell を使用してこれを実現する方法については、[こちら](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)のサンプルをご覧ください。
 

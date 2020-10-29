@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ae99f5fc1cd6f27c46f7a4444bc75b8c773b4f74
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014547"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480005"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 
@@ -120,9 +120,7 @@ Synapse Link は、次の場合にお勧めします。
 
 * 現時点では、分析ストアは新しいコンテナーに対してのみ有効にすることができます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
 
-* Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Synapse Link チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
-
-* 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB はコンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore)します。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。 
+* 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](./online-backup-and-restore.md)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。 
 
 * プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
 

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850689"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478152"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 
-大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
+大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク** に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
 
 エンジニアや開発者なら、これらのネットワークでデータがどのように格納されて相互接続されるのか気になることでしょう。 または、特定のニッチ市場向けに新しいソーシャル ネットワークを作成または設計したことさえあるかもしれません。 そこで、"このすべてのデータはどのように保存されているのか" という大きな疑問が生じます。
 
@@ -216,9 +216,9 @@ Azure Cosmos DB を使用しているので、[Azure Cognitive Search](https://a
 
 このプロセスがとても簡単な理由
 
-Azure Cognitive Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure Cosmos DB インデクサー](../search/search-howto-index-documentdb.md)がサポートされています。 Cosmos DB から Azure Cognitive Search への情報の移行は簡単です。 どちらのテクノロジも JSON 形式で情報を保存するので、必要なのは、[インデックスを作成](../search/search-create-index-portal.md)し、インデックス付けするドキュメントから属性をマップすることだけです。 これで終了です。 データのサイズによっては、クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。
+Azure Cognitive Search は、いわゆる[インデクサー](/rest/api/searchservice/Indexer-operations)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure Cosmos DB インデクサー](../search/search-howto-index-cosmosdb.md)がサポートされています。 Cosmos DB から Azure Cognitive Search への情報の移行は簡単です。 どちらのテクノロジも JSON 形式で情報を保存するので、必要なのは、[インデックスを作成](../search/search-what-is-an-index.md)し、インデックス付けするドキュメントから属性をマップすることだけです。 これで終了です。 データのサイズによっては、クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。
 
-Azure Cognitive Search の詳細については、「[検索のヒッチハイク ガイド](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
+Azure Cognitive Search の詳細については、「[検索のヒッチハイク ガイド](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search)」をご覧ください。
 
 ## <a name="the-underlying-knowledge"></a>基礎となる知識
 
@@ -238,21 +238,21 @@ Azure Cognitive Search の詳細については、「[検索のヒッチハイ�
 
 ## <a name="a-planet-scale-social-experience"></a>世界規模のソーシャル エクスペリエンス
 
-最後に触れなければならない重要な項目は**スケーラビリティ**です。 アーキテクチャを設計するときは、各コンポーネントが自動的に拡張できるようにする必要があります。 最終的に、データの処理量の増加や、地理的範囲の拡大に対応する必要があります。 Cosmos DB を使用すると、両方のタスクを**ターンキー エクスペリエンス**として実現できます。
+最後に触れなければならない重要な項目は **スケーラビリティ** です。 アーキテクチャを設計するときは、各コンポーネントが自動的に拡張できるようにする必要があります。 最終的に、データの処理量の増加や、地理的範囲の拡大に対応する必要があります。 Cosmos DB を使用すると、両方のタスクを **ターンキー エクスペリエンス** として実現できます。
 
-Cosmos DB では、動的なパーティション分割をすぐに使用できます。 ドキュメントの属性として定義されている特定の**パーティション キー**に基づいて、パーティションが自動的に作成されます。 正しいパーティション キーの定義は、設計時に行う必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partitioning-overview.md)に関するページを参照してください。
+Cosmos DB では、動的なパーティション分割をすぐに使用できます。 ドキュメントの属性として定義されている特定の **パーティション キー** に基づいて、パーティションが自動的に作成されます。 正しいパーティション キーの定義は、設計時に行う必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partitioning-overview.md)に関するページを参照してください。
 
 ソーシャル エクスペリエンスでは、パーティション分割戦略をクエリおよび書き込みの方法と整合させる必要があります。 (たとえば、同じパーティション内の読み取りが望ましい、書き込みを複数のパーティションに分散させることによって "ホット スポット" を回避する、など。)たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割できます。 すべては、データのクエリ方法と、ソーシャル エクスペリエンスでのデータの表示方法に依存します。
 
 Cosmos DB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行されるので、データが拡大しても、ロジックを追加する必要はありません。
 
-トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、**スループットを拡張する**機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](/rest/api/cosmos-db/replace-an-offer)します。
+トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、 **スループットを拡張する** 機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](/rest/api/cosmos-db/replace-an-offer)します。
 
 :::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="相対リレーショナル モデルを示す図":::
 
 状況が好転し続けるとどうなるでしょう。 自分のプラットフォームが、他のリージョン、国、または大陸のユーザーのに認識されて、使われるようになることを想像してください。 嬉しい驚きですね。
 
-でもちょっと待ってください。 やがて、そのプラットフォームでの体験が最適ではないことに気付きます。 運用リージョンから離れているので、待ち時間は相当なものになります。 当然ですが、その人たちにやめてほしくはありません。 **グローバル展開を広げる**簡単な手段があればいいと思うでしょう。 あるのです。
+でもちょっと待ってください。 やがて、そのプラットフォームでの体験が最適ではないことに気付きます。 運用リージョンから離れているので、待ち時間は相当なものになります。 当然ですが、その人たちにやめてほしくはありません。 **グローバル展開を広げる** 簡単な手段があればいいと思うでしょう。 あるのです。
 
 Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-sql-api.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-sql-api.md)からそのリージョンを選択できます。 また、このプロセスは[複数のフェールオーバー リージョン](high-availability.md)を確保できることも意味します。
 

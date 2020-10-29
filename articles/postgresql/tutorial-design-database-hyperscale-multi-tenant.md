@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2939b3b3beac55b537c1dcf844f702a0ad73f06e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895248"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478611"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、マルチテナント データベースを設計する
 
@@ -275,5 +275,5 @@ SELECT id
 
 このチュートリアルでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。 テナント内とテナント間の両方でデータをクエリしたり、テナントごとにスキーマをカスタマイズしたりすることを学習しました。
 
-- サーバー グループの[ノードの種類](https://aka.ms/hyperscale-concepts)について学習する
+- サーバー グループの[ノードの種類](./concepts-hyperscale-nodes.md)について学習する
 - サーバー グループに最適な[初期サイズ](howto-hyperscale-scaling.md#picking-initial-size)を決定する

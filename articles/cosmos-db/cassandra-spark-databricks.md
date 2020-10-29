@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 30bd3187973de204f27a3be3862351550d6a56f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 861e3994ad9aa0d7c6fd4dee68631f78418c8a64
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260476"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482572"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks から Azure Cosmos DB Cassandra API のデータにアクセスする
 
-この記事では、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 上の Spark からAzure Cosmos DB Cassandra API を使用する方法について説明します。
+この記事では、[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 上の Spark からAzure Cosmos DB Cassandra API を使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "85260476"
 
 * [Azure Cosmos DB Cassandra API への接続の基本を確認する](cassandra-spark-generic.md)
 
-* [Azure Databricks クラスターのプロビジョニング](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Azure Databricks クラスターのプロビジョニング](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)
 
 * [Cassandra API の使用におけるコード サンプルを確認する](cassandra-spark-generic.md#next-steps)
 

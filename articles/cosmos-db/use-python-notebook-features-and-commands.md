@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 596d34ef0544f4160c18210f05f68b488ec114d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801853"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476282"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB の Python ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
 
@@ -167,7 +167,7 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 ## <a name="create-a-custom-instance-of-cosmos_client"></a>``cosmos_client`` のカスタム インスタンスを作成する
 自由度を上げるために、次の目的で ``cosmos_client`` のカスタム インスタンスを作成できます。
 
-- [接続ポリシー](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true)をカスタマイズする
+- [接続ポリシー](/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?preserve-view=true&view=azure-python-preview)をカスタマイズする
 - 現在のアカウントとは異なる Azure Cosmos アカウントに対して操作を実行する
 
 [環境変数](#access-the-account-endpoint-and-primary-key-env-variables)を介して現在のアカウントの接続文字列と主キーにアクセスできます。 
