@@ -8,24 +8,24 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: f83ec4d09389d91c2dd427c9840885c0b829eafb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1333a135f3e123757e268513f73e8329537e630b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150312"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538206"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx 内部エラー
 
-この記事では、**500xxx 内部エラー**の原因と解決策について説明します。
+この記事では、 **500xxx 内部エラー** の原因と解決策について説明します。
 
 ## <a name="symptoms"></a>現象
 
 IoT Hub に対する要求が、500 から始まるエラー、または何らかの種類の "サーバー エラー" で失敗します。 次のような可能性があります。
 
-* **500001 ServerError**:IoT Hub はサーバー側の問題に遭遇しました。
+* **500001 ServerError** :IoT Hub はサーバー側の問題に遭遇しました。
 
-* **500008 GenericTimeout**:IoT Hub は、タイムアウトする前に接続要求を完了できませんでした。
+* **500008 GenericTimeout** :IoT Hub は、タイムアウトする前に接続要求を完了できませんでした。
 
 * **ServiceUnavailable (エラー コードなし)** :IoT Hub 内部エラーが発生しました。
 
@@ -37,4 +37,4 @@ IoT Hub に対する要求が、500 から始まるエラー、または何ら�
 
 ## <a name="solution"></a>解決策
 
-500xxx エラーを軽減するには、デバイスから再試行を発行します。 [自動的に再試行を管理](./iot-hub-reliability-features-in-sdks.md#connection-and-retry)するには、最新バージョンの [Azure IoT SDK](./iot-hub-devguide-sdks.md) を使用してください。 一時的な障害処理と再試行のベスト プラクティスについては、「[Transient Fault Handling (一時的な障害処理)](/azure/architecture/best-practices/transient-faults)」を参照してください。  問題が解決しない場合は、[[リソース正常性]](./iot-hub-monitor-resource-health.md#use-azure-resource-health) と [[Azure の状態]](https://status.azure.com/) で IoT Hub に既知の問題があるかどうかを確認します。 [手動フェールオーバー機能](./tutorial-manual-failover.md)を使用することもできます。 既知の問題がなく、問題が引き続き発生する場合は、[サポートに問い合わせて](https://azure.microsoft.com/support/options/)さらに調査してください。
+500xxx エラーを軽減するには、デバイスから再試行を発行します。 [自動的に再試行を管理](./iot-hub-reliability-features-in-sdks.md#connection-and-retry)するには、最新バージョンの [Azure IoT SDK](./iot-hub-devguide-sdks.md) を使用してください。 一時的な障害処理と再試行のベスト プラクティスについては、「[Transient Fault Handling (一時的な障害処理)](/azure/architecture/best-practices/transient-faults)」を参照してください。  問題が解決しない場合は、[[リソース正常性]](./iot-hub-azure-service-health-integration.md#check-health-of-an-iot-hub-with-azure-resource-health) と [[Azure の状態]](https://status.azure.com/) で IoT Hub に既知の問題があるかどうかを確認します。 [手動フェールオーバー機能](./tutorial-manual-failover.md)を使用することもできます。 既知の問題がなく、問題が引き続き発生する場合は、[サポートに問い合わせて](https://azure.microsoft.com/support/options/)さらに調査してください。

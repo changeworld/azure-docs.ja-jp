@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541664"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542558"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Ambari のメール通知を構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91541664"
 
 ## <a name="prerequisites"></a>前提条件
 
-* SendGrid 電子メール アカウント。 手順については、「[SendGrid を使用した Azure での電子メールの送信方法](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)」を参照してください。
+* SendGrid 電子メール アカウント。 手順については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」を参照してください。
 
 * HDInsight クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](./hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 

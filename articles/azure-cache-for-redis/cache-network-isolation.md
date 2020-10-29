@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b01e7ca9ff05b6eed51e1c454b8064ab28bda0d5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221895"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537475"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis のネットワークの分離オプション 
 この記事では、ニーズに合わせて最適なネットワークの分離ソリューションを決定する方法について説明します。 Azure Private Link、Azure Virtual Network (VNet) インジェクション、Azure Firewall 規則の基本を、その利点と制限事項とともに説明します。  
@@ -21,7 +21,7 @@ Azure Private Link を使用すると、仮想ネットワークから Azure Paa
 
 ### <a name="advantages"></a>長所
 * Basic、Standard、および Premium の Azure Cache for Redis インスタンスに対してサポートされています。 
-* [Azure Private Link](/azure/private-link/private-link-overview) を使用すると、仮想ネットワーク内のサブネットでプライベート IP アドレスが割り当てられているプライベート エンドポイント経由で、仮想ネットワークから Azure Cache インスタンスに接続できます。 これにより、キャッシュ インスタンスは VNet 内とパブリックの両方から使用できるようになります。  
+* [Azure Private Link](../private-link/private-link-overview.md) を使用すると、仮想ネットワーク内のサブネットでプライベート IP アドレスが割り当てられているプライベート エンドポイント経由で、仮想ネットワークから Azure Cache インスタンスに接続できます。 これにより、キャッシュ インスタンスは VNet 内とパブリックの両方から使用できるようになります。  
 * プライベート エンドポイントが作成されたら、`publicNetworkAccess` フラグを使用してパブリック ネットワークへのアクセスを制限できます。 このフラグは既定では `Enabled` に設定されており、キャッシュへのパブリックおよびプライベート リンクの両方のアクセスを許可するオプションが提供されます。 `Disabled` に設定すると、プライベート リンクのアクセスのみが許可されます。 この値は、PATCH 要求を使用して `Disabled` に設定できます。 詳細については、「[Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)](cache-private-link.md)」を参照してください。 
 * 外部キャッシュの依存関係はすべて、VNet の NSG ルールには影響しません。
 
@@ -51,7 +51,7 @@ VNet は、Azure 内のプライベート ネットワークの基本的な構�
 
 
 ## <a name="azure-firewall-rules"></a>Azure Firewall 規則
-[Azure Firewall](/azure/firewall/overview) は、Azure VNet リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。  
+[Azure Firewall](../firewall/overview.md) は、Azure VNet リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。  
 
 ### <a name="advantages"></a>長所
 * ファイアウォール ルールを構成すると、指定した IP アドレス範囲からのクライアント接続のみがキャッシュに接続できます。 ファイアウォール ルールが構成されている場合でも、Azure Cache for Redis 監視システムからの接続は常に許可されます。 自分が定義した NSG ルールも許可されます。  
@@ -63,4 +63,4 @@ VNet は、Azure 内のプライベート ネットワークの基本的な構�
 ## <a name="next-steps"></a>次の手順
 * [Premium の Azure Cache for Redis インスタンス用の VNet インジェクションされたキャッシュ](cache-how-to-premium-vnet.md)を構成する方法について学習します。  
 * [すべてのレベルの Azure Cache for Redis に対するファイアウォール規則](cache-configure.md#firewall)を構成する方法について学習します。 
-* [すべてのレベルの Azure Cache for Redis に対するプライベート エンドポイントを構成する](cache-private-link.md)方法について学習します。 
+* [すべてのレベルの Azure Cache for Redis に対するプライベート エンドポイントを構成する](cache-private-link.md)方法について学習します。

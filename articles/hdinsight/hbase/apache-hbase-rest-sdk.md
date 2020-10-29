@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: e8bce1ca10e9175b699bd548d9241b78bce3b5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c3f07fe553e363d1eb2a997287feb77296a621
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504861"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540314"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
@@ -23,7 +23,7 @@ C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase 
 
 ## <a name="install-the-sdk"></a>SDK のインストール
 
-HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio の **NuGet パッケージ マネージャー コンソール**から、次のコマンドを使用してインストールできます。
+HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio の **NuGet パッケージ マネージャー コンソール** から、次のコマンドを使用してインストールできます。
 
 ```console
 Install-Package Microsoft.HBase.Client
@@ -42,9 +42,9 @@ CLUSTERNAME を HDInsight HBase クラスターの名前に、USERNAME と PASSW
 
 ## <a name="create-a-new-table"></a>新しいテーブルを作成する
 
-HBase ではテーブルにデータが格納されます。 テーブルは *Rowkey*、主キー、"*列ファミリ*" と呼ばれる 1 つ以上の列グループで構成されます。 各テーブルのデータは、Rowkey 範囲によって水平方向に分散され、"*領域*" に配置されます。 各領域には、開始および終了キーがあります。 テーブル には、1 つ以上の領域を含めることができます。 テーブルのデータが増大すると、HBase によって、大きな領域が小さな領域に分割されます。 領域が格納されるのは "*領域サーバー*" で、1 つの領域サーバーに複数の領域を格納できます。
+HBase ではテーブルにデータが格納されます。 テーブルは *Rowkey* 、主キー、" *列ファミリ* " と呼ばれる 1 つ以上の列グループで構成されます。 各テーブルのデータは、Rowkey 範囲によって水平方向に分散され、" *領域* " に配置されます。 各領域には、開始および終了キーがあります。 テーブル には、1 つ以上の領域を含めることができます。 テーブルのデータが増大すると、HBase によって、大きな領域が小さな領域に分割されます。 領域が格納されるのは " *領域サーバー* " で、1 つの領域サーバーに複数の領域を格納できます。
 
-データは *HFiles* に物理的に格納されます。 1 つの HFile には、1 つのテーブル、1 つの領域、および 1 つの列ファミリのデータが含まれています。 HFile の行は Rowkey 順に格納されます。 HFile ごとに、行を迅速に取得するための "*B+ ツリー*" インデックスがあります。
+データは *HFiles* に物理的に格納されます。 1 つの HFile には、1 つのテーブル、1 つの領域、および 1 つの列ファミリのデータが含まれています。 HFile の行は Rowkey 順に格納されます。 HFile ごとに、行を迅速に取得するための " *B+ ツリー* " インデックスがあります。
 
 新しいテーブルを作成するには、`TableSchema` と列を指定します。 次のコードでは、"RestSDKTable" テーブルが既に存在するかどうかを確認し、存在しない場合は、そのテーブルを作成します。
 
@@ -190,4 +190,4 @@ finally
 ## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache HBase の例を使用する](apache-hbase-tutorial-get-started-linux.md)
-* [Apache HBase での Twitter センチメントのリアルタイム分析](../hdinsight-hbase-analyze-twitter-sentiment.md)によりエンド ツー エンド アプリケーションを構築する
+* [Apache HBase での Twitter センチメントのリアルタイム分析](./apache-hbase-tutorial-get-started-linux.md)によりエンド ツー エンド アプリケーションを構築する

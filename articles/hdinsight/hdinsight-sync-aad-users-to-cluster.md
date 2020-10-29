@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504657"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535180"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
-[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](hdinsight-domain-joined-introduction.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、"*Azure ロールベースのアクセス制御 (Azure RBAC)* " ポリシーを使用したりすることができます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
+[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](./domain-joined/hdinsight-security-overview.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、" *Azure ロールベースのアクセス制御 (Azure RBAC)* " ポリシーを使用したりすることができます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-まだそのようにしていない場合は、[Enterprise セキュリティ パッケージを使用する HDInsight クラスターを作成します](hdinsight-domain-joined-configure.md)。
+まだそのようにしていない場合は、[Enterprise セキュリティ パッケージを使用する HDInsight クラスターを作成します](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="add-new-azure-ad-users"></a>新しい Azure AD ユーザーを追加する
 
@@ -33,7 +33,7 @@ ms.locfileid: "89504657"
 
     ![Azure portal のすべてのユーザーとグループ](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ESP クラスターを作成するための[手順の例](hdinsight-domain-joined-configure.md)には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
+3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ESP クラスターを作成するための[手順の例](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
 
     ![Azure portal ユーザー ウィンドウのグループの選択](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
@@ -123,13 +123,13 @@ ms.locfileid: "89504657"
 1. この結果は、状態が **[完了]** であり、新しいユーザーが 1 人作成され、そのユーザーにメンバーシップが割り当てられたことを示しています。 この例では、ユーザーが Azure AD 内の同じグループに追加されたため、ユーザーは "HiveUsers" 同期済み LDAP グループに割り当てられます。
 
     > [!NOTE]  
-    > 上記の方法では、クラスターの作成時にドメイン設定の**アクセス ユーザー グループ** プロパティに指定されている Azure AD グループのみが同期されます。 詳細については、「[create an HDInsight cluster (HDInsight クラスターを作成する)](domain-joined/apache-domain-joined-configure.md)」を参照してください。
+    > 上記の方法では、クラスターの作成時にドメイン設定の **アクセス ユーザー グループ** プロパティに指定されている Azure AD グループのみが同期されます。 詳細については、「[create an HDInsight cluster (HDInsight クラスターを作成する)](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)」を参照してください。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>新しく追加された Azure AD ユーザーを確認する
 
 新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://CLUSTERNAME.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
 
-1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
+1. Ambari ダッシュボードから、 **[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
     ![Apache Ambari ダッシュボードの Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
@@ -148,6 +148,6 @@ ms.locfileid: "89504657"
 
 ## <a name="see-also"></a>参照
 
-* [ESP HDInsight での Apache Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
-* [ESP を使用する HDInsight クラスターを管理する](hdinsight-domain-joined-manage.md)
+* [ESP HDInsight での Apache Hive ポリシーの構成](./domain-joined/apache-domain-joined-run-hive.md)
+* [ESP を使用する HDInsight クラスターを管理する](./domain-joined/apache-domain-joined-manage.md)
 * [Apache Ambari に対するユーザーの承認](hdinsight-authorize-users-to-ambari.md)

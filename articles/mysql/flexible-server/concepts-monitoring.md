@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: f3a58a6766c42385dd6611c2014ba36fd1078710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fe1d5a5a472b47abd364a89d1a65f1249c67c0d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931367"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538665"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>組み込みのメトリックを使用して Azure Database for MySQL フレキシブル サーバーを監視する
 
@@ -24,9 +24,9 @@ Azure Database for MySQL フレキシブル サーバーでは、Azure Monitor �
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 
-Azure Database for MySQL フレキシブル サーバーには、ワークロードがどのように実行されているかを把握し、そのデータに基づいてサーバーとアプリケーションへの影響を理解するための、さまざまなメトリックが用意されています。 たとえば、フレキシブル サーバーでは、**ホストの CPU 使用率**、**アクティブな接続**、**IO の割合**、および**ホストのメモリ使用率**を監視して、パフォーマンスに影響があるタイミングを特定できます。 そこから、ワークロードを最適化したり、コンピューティング レベルを変更して垂直方向にスケーリングしたり、読み取りレプリカを使用して水平方向にスケーリングしたりすることが必要になる場合があります。
+Azure Database for MySQL フレキシブル サーバーには、ワークロードがどのように実行されているかを把握し、そのデータに基づいてサーバーとアプリケーションへの影響を理解するための、さまざまなメトリックが用意されています。 たとえば、フレキシブル サーバーでは、 **ホストの CPU 使用率** 、 **アクティブな接続** 、 **IO の割合** 、および **ホストのメモリ使用率** を監視して、パフォーマンスに影響があるタイミングを特定できます。 そこから、ワークロードを最適化したり、コンピューティング レベルを変更して垂直方向にスケーリングしたり、読み取りレプリカを使用して水平方向にスケーリングしたりすることが必要になる場合があります。
 
-すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 詳細な手順については、[アラートの設定方法](./how-to-alert-on-metric.md)に関する記事をご覧ください。 その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
+すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 詳細な手順については、[アラートの設定方法](./how-to-alert-on-metric.md)に関する記事をご覧ください。 その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../../azure-monitor/platform/data-platform.md)に関する記事をご覧ください。
 
 ### <a name="list-of-metrics"></a>メトリックの一覧
 これらのメトリックは、Azure Database for MySQL に使用できます。

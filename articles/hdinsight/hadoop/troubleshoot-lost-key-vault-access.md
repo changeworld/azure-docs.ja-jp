@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532564"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533412"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>シナリオ:ディスク暗号化を使用する Azure HDInsight クラスターにおいて Key Vault のアクセスが失われる
 
@@ -26,7 +26,7 @@ Resource Health Center (RHC) のアラート `The HDInsight cluster is unable to
 
 アラートでは、クラスター ノードから KV にアクセスでき、それによってネットワーク接続、KV 正常性、ユーザー割り当てマネージド ID のアクセス ポリシーが保証される状態を確保します。 このアラートでは単に、構造ノードの再起動時にブローカーがシャットダウンされる兆候を警告しており、ノードが再起動されるまでクラスターは引き続き機能します。
 
-**ディスク暗号化の Key Vault ステータス**からのアラートに関する詳細情報を検索するには、Apache Ambari UI に移動します。 このアラートには、検証エラーの理由に関する詳細が含まれます。
+**ディスク暗号化の Key Vault ステータス** からのアラートに関する詳細情報を検索するには、Apache Ambari UI に移動します。 このアラートには、検証エラーの理由に関する詳細が含まれます。
 
 ## <a name="resolution"></a>解像度
 
@@ -36,7 +36,7 @@ Resource Health Center (RHC) のアラート `The HDInsight cluster is unable to
 
 ### <a name="kv-accidental-deletion"></a>KV の誤削除
 
-* 削除されたキーを KV 上にリストアして、自動復元する。 詳細については、「[削除されたキーの復元](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey)」を参照してください。
+* 削除されたキーを KV 上にリストアして、自動復元する。 詳細については、「[削除されたキーの復元](/rest/api/keyvault/recoverdeletedkey)」を参照してください。
 * KV チームに連絡を取って、誤削除から復元してもらう。
 
 ### <a name="kv-access-policy-changed"></a>KV アクセス ポリシーが変更された
@@ -88,4 +88,4 @@ BYOK クラスター ノードから KV へのアクセスを許可するよう�
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e96c73578a9341f67d90cd4482ed75179c6886d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010798"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537526"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Azure Cache for Redis の監視とトラブルシューティングに関するよくあるご質問
 この記事では、Azure Cache for Redis の監視とトラブルシューティングに関してよくある質問に対する回答を提供します。
@@ -26,10 +26,10 @@ ms.locfileid: "88010798"
 ### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>キャッシュの正常性とパフォーマンスの監視方法
 Microsoft Azure Cache for Redis のインスタンスは、[Azure Portal](https://portal.azure.com) で監視できます。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 詳細については、[Azure Cache for Redis の監視](cache-how-to-monitor.md)に関するページを参照してください。
 
-Azure Cache for Redis の **[リソース] メニュー**にも、キャッシュの監視およびトラブルシューティングのためのツールがいくつか含まれています。
+Azure Cache for Redis の **[リソース] メニュー** にも、キャッシュの監視およびトラブルシューティングのためのツールがいくつか含まれています。
 
 * **[問題の診断と解決]** では、一般的な問題と、その問題を解決するための戦略に関する情報を確認できます。
-* **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。 Azure Resource Health サービスの詳細については、「 [Azure Resource Health の概要](../resource-health/resource-health-overview.md)」を参照してください。
+* **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。 Azure Resource Health サービスの詳細については、「 [Azure Resource Health の概要](../service-health/resource-health-overview.md)」を参照してください。
 * **[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
 
 これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティング設定」を参照してください。

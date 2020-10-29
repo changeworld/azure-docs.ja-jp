@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51977c00dc8c9932def89d54ec1b6ec34afad652
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856230"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541997"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
-HDInsight に Azure Storage "*アカウント*" を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の HDInsight クラスターにストレージ "*アカウント*" を追加します。 この記事は、ストレージ "*アカウント*" (既定のクラスター ストレージ アカウントではない) に適用されます。[`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) や [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) など、追加のストレージには適用されません。
+HDInsight に Azure Storage " *アカウント* " を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の HDInsight クラスターにストレージ " *アカウント* " を追加します。 この記事は、ストレージ " *アカウント* " (既定のクラスター ストレージ アカウントではない) に適用されます。 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) や [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) など、追加のストレージには適用されません。
 
 > [!IMPORTANT]  
 > このドキュメントでは、クラスターの作成後に、そのクラスターにストレージ アカウントを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
@@ -26,7 +26,7 @@ HDInsight に Azure Storage "*アカウント*" を追加するためにスク�
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * ストレージ アカウントの名前とキー。 「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」をご覧ください。
-* PowerShell を使用する場合は、AZ モジュールが必要です。  「[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/)」を参照してください。
+* PowerShell を使用する場合は、AZ モジュールが必要です。  「[Azure PowerShell の概要](/powershell/azure/)」を参照してください。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -125,7 +125,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。 HDInsight は、クラスターの core-site.xml 内のキャッシュされたキーのコピーを使用します。 このキャッシュされたコピーは、新しいキーに一致するように更新する必要があります。
 
-スクリプト アクションを再実行しても、キーは**更新されません**。スクリプトで、ストレージ アカウントのエントリが既に存在するかどうかが確認されます。 エントリが既に存在する場合、いかなる変更もしません。
+スクリプト アクションを再実行しても、キーは **更新されません** 。スクリプトで、ストレージ アカウントのエントリが既に存在するかどうかが確認されます。 エントリが既に存在する場合、いかなる変更もしません。
 
 この問題を回避するには、次のようにします。  
 1. ストレージ アカウントを削除します。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462243"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540382"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -27,11 +27,11 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-* **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **HDInsight 上の Hadoop クラスター** 。 [Linux での HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* **SSH クライアント** 。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は wasbs:// になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 * **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
-* 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
+* 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
 
 > [!NOTE]  
 > この記事で使用されたストレージ アカウントは[安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっている Azure Storage なので、`wasbs` がこの記事全体で使用されています。
@@ -46,7 +46,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 > * ローカル開発環境に Python スクリプトを作成します。
 > * `scp` コマンドまたは提供された PowerShell スクリプトを使って、HDInsight にスクリプトをアップロードします。
 >
-> [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) を使って HDInsight を処理する場合は、以下のことが必要です。
+> [Azure Cloud Shell (bash)](../../cloud-shell/overview.md) を使って HDInsight を処理する場合は、以下のことが必要です。
 >
 > * クラウド シェル環境内でスクリプトを作成します。
 > * `scp` を使って、クラウド シェルから HDInsight にファイルをアップロードします。
@@ -300,8 +300,8 @@ Get-AzHDInsightJobOutput `
 
 Python インタープリターを指定するには、Python スクリプトを参照するときに `register` を使います。 次の例では、スクリプトを `myfuncs` として Pig に登録します。
 
-* **Jython を使用するには**: `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python を使用するには**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython を使用するには** : `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python を使用するには** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Jython を使用する場合、pig_jython ファイルへのパスには、ローカル パスまたは WASBS:// パスを指定できます。 ただし、C Python を使用する場合は、Pig ジョブの送信に使用しているノードのローカル ファイル システム上のファイルを参照する必要があります。
@@ -343,7 +343,7 @@ def create_structure(input):
 
 Pig Latin の例では、入力の一貫したスキーマがないため、`LINE` 入力は chararray と定義されています。 この Python スクリプトでは、出力用に、データを一貫したスキーマに変換します。
 
-1. `@outputSchema` ステートメントは、Pig に返されるデータの形式を定義します。 この場合、Pig のデータ型である、 **data bag**になります。 この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
+1. `@outputSchema` ステートメントは、Pig に返されるデータの形式を定義します。 この場合、Pig のデータ型である、 **data bag** になります。 この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
 
    * date - ログ エントリが作成された日付
    * time - ログ エントリが作成された時刻
@@ -423,7 +423,7 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
     #from pig_util import outputSchema
     ```
 
-    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、**Ctrl キーを押しながら X キー**を押してエディターを終了します。 **Y** キーを押し、**Enter** キーを押して変更を保存します。
+    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、 **Ctrl キーを押しながら X キー** を押してエディターを終了します。 **Y** キーを押し、 **Enter** キーを押して変更を保存します。
 
 6. `pig` コマンドを使用してシェルを再起動します。 `grunt>` プロンプトが出たら、次のステートメントを使って C Python インタープリターを使用する Python スクリプトを実行します。
 
@@ -594,7 +594,7 @@ Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An e
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 
-既定で提供されない Python モジュールを読み込む必要がある場合は、[モジュールを Azure HDInsight にデプロイする方法](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)に関するブログ記事をご覧ください。
+既定で提供されない Python モジュールを読み込む必要がある場合は、[モジュールを Azure HDInsight にデプロイする方法](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)に関するブログ記事をご覧ください。
 
 Pig と Hive を使用する他の方法と、MapReduce の使用方法については、次のドキュメントをご覧ください。
 

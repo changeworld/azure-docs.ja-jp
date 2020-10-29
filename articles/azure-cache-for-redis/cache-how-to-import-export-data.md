@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8bb1457bbf5d610518c3bc84768186972734099
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004336"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536863"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュと Azure Storage アカウント内の BLOB の間でインポートとエクスポートを行うことで、データを Azure Cache for Redis にインポートしたり、Azure Cache for Redis からエクスポートしたりすることができます。
@@ -32,11 +32,11 @@ Import/Export により、異なる Azure Cache for Redis インスタンス間�
 Import は、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Cache for Redis では RDB ファイルが Azure Storage からメモリに読み込まれて、キーがキャッシュに挿入されます。
 
 > [!NOTE]
-> インポート操作を開始する前に、Redis データベース (RDB) ファイルが、Azure Cache for Redis インスタンスと同じリージョンとサブスクリプションにある Azure Storage 内のページ BLOB またはブロック BLOB にアップロードされる設定になっていることを確認してください。 詳細については、 [Azure Blob Storage の使用](../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関するページをご覧ください。 [Azure Cache for Redis の Export](#export) 機能を使って RDB ファイルをエクスポートした場合、そのファイルは既にページ BLOB に格納されており、インポートの準備ができています。
+> インポート操作を開始する前に、Redis データベース (RDB) ファイルが、Azure Cache for Redis インスタンスと同じリージョンとサブスクリプションにある Azure Storage 内のページ BLOB またはブロック BLOB にアップロードされる設定になっていることを確認してください。 詳細については、 [Azure Blob Storage の使用](../storage/blobs/storage-quickstart-blobs-dotnet.md)に関するページをご覧ください。 [Azure Cache for Redis の Export](#export) 機能を使って RDB ファイルをエクスポートした場合、そのファイルは既にページ BLOB に格納されており、インポートの準備ができています。
 >
 >
 
-1. エクスポートされた 1 つ以上のキャッシュ BLOB をインポートするには、Azure Portal で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース]** メニューの **[データのインポート]** をクリックします。
+1. エクスポートされた 1 つ以上のキャッシュ BLOB をインポートするには、Azure Portal で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース]** メニューの **[データのインポート]** をクリックします。
 
     ![データのインポート](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. **[BLOB の選択]** をクリックして、インポートするデータを含むストレージ アカウントを選択します。
@@ -64,7 +64,7 @@ Import は、任意のクラウドまたは環境で稼働している任意の 
 ## <a name="export"></a>[エクスポート]
 Export では、Azure Cache for Redis に格納されたデータを、Redis と互換性のある RDB ファイルにエクスポートできます。 この機能を使えば、ある Azure Cache for Redis インスタンスから、別のインスタンスまたは別の Redis サーバーにデータを移動できます。 エクスポート処理中に、Azure Cache for Redis サーバー インスタンスをホストしている VM に一時ファイルが作成され、そのファイルが、指定されているストレージ アカウントにアップロードされます。 エクスポート処理が完了したら、処理の成否にかかわらず、この一時ファイルは削除されます。
 
-1. キャッシュの現在の内容をストレージにエクスポートするには、Azure Portal で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース]** メニューの **[データのエクスポート]** をクリックします。
+1. キャッシュの現在の内容をストレージにエクスポートするには、Azure Portal で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース]** メニューの **[データのエクスポート]** をクリックします。
 
     ![[ストレージ コンテナーの選択]](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. **[ストレージ コンテナーの選択]** をクリックし、目的のストレージ アカウントを選択します。 ストレージ アカウントは、キャッシュと同じサブスクリプションおよびリージョン内にある必要があります。
@@ -77,7 +77,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 3. 目的の BLOB コンテナーを選び、 **[選択]** をクリックします。 新しいコンテナーを使用するには、まず **[コンテナーの追加]** をクリックして新しいコンテナーを追加したうえで、一覧からそれを選択します。
 
     ![[ストレージ コンテナーの選択]](./media/cache-how-to-import-export-data/cache-export-data-container.png)
-4. **BLOB 名のプレフィックス**を入力し、 **[エクスポート]** をクリックしてエクスポート処理を開始します。 BLOB 名のプレフィックスは、このエクスポート操作によって生成されるファイル名のプレフィックスとして使用されます。
+4. **BLOB 名のプレフィックス** を入力し、 **[エクスポート]** をクリックしてエクスポート処理を開始します。 BLOB 名のプレフィックスは、このエクスポート操作によって生成されるファイル名のプレフィックスとして使用されます。
 
     ![[エクスポート]](./media/cache-how-to-import-export-data/cache-export-data.png)
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: c82f6eb37d542f80b6cb79ffb1fae6fe0cf0c233
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144276"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538461"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -47,7 +47,7 @@ IoT Hub の Standard レベルではすべての機能が有効になり、双�
 | [メッセージ ルーティング](iot-hub-devguide-messages-read-custom.md)、[メッセージ エンリッチメント](iot-hub-message-enrichments-overview.md)、[Event Grid の統合](iot-hub-event-grid.md) | はい | はい |
 | [HTTP、AMQP、MQTT プロトコル](iot-hub-devguide-protocols.md) | はい | はい |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | はい | はい |
-| [監視と診断](iot-hub-monitor-resource-health.md) | はい | はい |
+| [監視と診断](monitor-iot-hub.md) | はい | はい |
 | [cloud-to-device メッセージング](iot-hub-devguide-c2d-guidance.md) |   | はい |
 | [デバイス ツイン](iot-hub-devguide-device-twins.md)、[モジュール ツイン](iot-hub-devguide-module-twins.md)、および[デバイス管理](iot-hub-device-management-overview.md) |   | はい |
 | [デバイス ストリーム (プレビュー)](iot-hub-device-streams-overview.md) |   | はい |

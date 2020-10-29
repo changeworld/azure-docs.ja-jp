@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874029"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541708"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |クラスター名|グローバルに一意の名前を入力します。|
 |リージョン|ドロップダウン リストから、クラスターの作成先となるリージョンを選択します。|
 |クラスターの種類|**[クラスターの種類の選択]** をクリックして、一覧を開きます。 一覧から、目的のクラスターの種類を選択します。 HDInsight クラスターには、さまざまな種類があります。 それぞれに対応するワークロードやテクノロジがあり、それに合わせてクラスターが調整されます。 複数の種類を組み合わせたクラスターを作成する方法はサポートされていません。|
-|Version|ドロップダウン リストから**バージョン**を選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
+|Version|ドロップダウン リストから **バージョン** を選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
 |クラスター ログイン ユーザー名|ユーザー名を指定します。既定値は **admin** です。|
 |クラスター ログイン パスワード|パスワードを指定します。|
 |クラスター ログイン パスワードを確認する|パスワードを再入力します。|
@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="storage"></a>ストレージ
 
 > [!WARNING] 
-> 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
+> 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
 ![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal での新しいクラスターの作成 - ストレージ")
 
@@ -73,8 +73,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **[プライマリ ストレージの種類]** ドロップダウン リストから、既定のストレージの種類を選択します。 後で入力するフィールドは、選択内容によって異なります。 **Azure Storage** の場合:
 
 1. **[選択方法]** については、 **[一覧から選択する]** または **[アクセス キーを使用する]** を選択します。
-    * **[一覧から選択する]** では、ドロップダウン リストからお使いの**プライマリ ストレージ アカウント**を選択するか、 **[新規作成]** を選択します。
-    * **[アクセス キーを使用する]** では、お使いの**ストレージ アカウント名**を入力します。 次に、**アクセス キー**を指定します。
+    * **[一覧から選択する]** では、ドロップダウン リストからお使いの **プライマリ ストレージ アカウント** を選択するか、 **[新規作成]** を選択します。
+    * **[アクセス キーを使用する]** では、お使いの **ストレージ アカウント名** を入力します。 次に、 **アクセス キー** を指定します。
 
 1. **[コンテナー]** では、既定値をそのまま使用するか、新しい値を入力します。
 
@@ -87,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 省略可能:既存の SQL Database を指定して、クラスターの外部に Apache Hive、Apache Oozie、または Apache Ambari メタデータを保存します。 メタストアに使用される Azure SQL データベースでは、Azure HDInsight を含む他の Azure サービスに接続できる必要があります。 メタストアを作成するとき、データベース名にダッシュやハイフンを使用しないでください。 これらの文字が含まれると、クラスター作成プロセスが失敗する可能性があります。
 
 > [!IMPORTANT]
-> メタストアをサポートするクラスター図形の場合、既定のメタストアでは、**DTU 上限が Basic レベルの 5 (アップグレード不可能)** である Azure SQL Database が提供されます。 基本的なテスト目的に適しています。 より大きなワークロードや運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。
+> メタストアをサポートするクラスター図形の場合、既定のメタストアでは、 **DTU 上限が Basic レベルの 5 (アップグレード不可能)** である Azure SQL Database が提供されます。 基本的なテスト目的に適しています。 より大きなワークロードや運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。
 
 **セキュリティとネットワーク >>** を選択して、次のタブに進みます。
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |プロパティ |説明 |
 |---|---|
-|Enterprise セキュリティ パッケージ|省略可能:**Enterprise セキュリティ パッケージ**を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
+|Enterprise セキュリティ パッケージ|省略可能: **Enterprise セキュリティ パッケージ** を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
 |TLS|省略可能:ドロップダウン リストから TLS バージョンを選択します。 詳細については、「[トランスポート層セキュリティ](./transport-layer-security.md)」を参照してください。|
 |仮想ネットワーク|省略可能:ドロップダウン リストから既存の仮想ネットワークとサブネットを選択します。 詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](hdinsight-plan-virtual-network-deployment.md)に関する記事を参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。|
 |ディスク暗号化設定|省略可能:暗号化を使用するには、このチェックボックスをオンにします。 詳細については、「[お客様が管理するキー ディスクの暗号化](./disk-encryption.md)」を参照してください。|

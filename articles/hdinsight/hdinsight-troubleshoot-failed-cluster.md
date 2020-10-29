@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895312"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535095"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
@@ -56,7 +56,7 @@ Azure Portal は次の情報を提供できます。
 
 ![HDInsight、Azure Portal の情報](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使うこともできます。
+[Azure CLI](/cli/azure/) を使うこともできます。
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -90,8 +90,8 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 
 #### <a name="check-azure-service-usage-limits"></a>Azure サービスの使用制限を確認する
 
-大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
-[Resource Manager のコア クォータ増加要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
+大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
+[Resource Manager のコア クォータ増加要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
 
 #### <a name="check-the-release-version"></a>リリース バージョンを確認する
 
@@ -115,7 +115,7 @@ HDInsight クラスターは、仮想マシンのインスタンスで稼働す�
 
 ### <a name="check-your-webhcat-service"></a>WebHCat サービスを確認する
 
-Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般的なシナリオの 1 つは、[WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (または *Templeton*) サービスでの障害です。 WebHCat は、Hive、Pig、Scoop、MapReduce などのリモート ジョブ実行用の REST インターフェイスです。 WebHCat は、ジョブ送信要求を Apache Hadoop YARN アプリケーションに変換し、YARN アプリケーションの状態から抽出された状態を返します。  次のセクションでは、WebHCat HTTP の一般的な状態コードについて説明します。
+Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般的なシナリオの 1 つは、 [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (または *Templeton* ) サービスでの障害です。 WebHCat は、Hive、Pig、Scoop、MapReduce などのリモート ジョブ実行用の REST インターフェイスです。 WebHCat は、ジョブ送信要求を Apache Hadoop YARN アプリケーションに変換し、YARN アプリケーションの状態から抽出された状態を返します。  次のセクションでは、WebHCat HTTP の一般的な状態コードについて説明します。
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 状態コード)
 
@@ -172,7 +172,7 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
     `/var/log/webhcat/webhcat.log` ログ ファイルを開き、"queued job" を検索すると、実行時間が異常に長く (2000 ミリ秒超) 待機時間が徐々に長くなる複数のエントリが見つかる場合があります。
 
-    新しいジョブが送信される数の方が、古いジョブが完了する数より多いので、ジョブがキューに入っている時間は長くなり続けます。 YARN メモリが 100% 使われると、"*joblauncher キュー*" は "*既定のキュー*" から容量を借りることができなくなります。 そのため、joblauncher キューはそれ以上新しいジョブを受け付けることができません。 このような動作のため、待機時間はどんどん長くなってタイムアウト エラーが発生し、通常はそれに続いて他にも多くのエラーが発生します。
+    新しいジョブが送信される数の方が、古いジョブが完了する数より多いので、ジョブがキューに入っている時間は長くなり続けます。 YARN メモリが 100% 使われると、" *joblauncher キュー* " は " *既定のキュー* " から容量を借りることができなくなります。 そのため、joblauncher キューはそれ以上新しいジョブを受け付けることができません。 このような動作のため、待機時間はどんどん長くなってタイムアウト エラーが発生し、通常はそれに続いて他にも多くのエラーが発生します。
 
     次の図は、714.4 の過剰使用状態の joblauncher キューを示したものです。 既定のキューに借用可能な空き容量がある限り、これは許容されます。 しかし、クラスターが完全に利用されて、YARN メモリの容量が 100% になると、新しいジョブは待機する必要があり、最終的にタイムアウトが発生します。
 
@@ -262,7 +262,7 @@ HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービス
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight ログの分析](hdinsight-debug-jobs.md)
+* [HDInsight ログの分析](./hdinsight-troubleshoot-guide.md)
 * [Linux ベースの HDInsight への Apache Hadoop YARN アプリケーションのサインインにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight における Apache Spark クラスターの既知の問題](hdinsight-apache-spark-known-issues.md)
+* [HDInsight における Apache Spark クラスターの既知の問題](./spark/apache-spark-known-issues.md)

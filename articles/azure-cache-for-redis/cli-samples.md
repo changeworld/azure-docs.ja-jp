@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32530982bc2a9d1b5deb31b3bc71460462352258
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499604"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536421"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure CLI を使用した Azure Cache for Redis の管理
 
@@ -30,4 +30,4 @@ ms.locfileid: "87499604"
 |**キャッシュの削除**| **説明** |
 | [キャッシュを削除する](./scripts/delete-cache.md) | Azure Cache for Redis インスタンスを削除する  |
 
-Azure CLI の詳細については、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)と[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関するぺージを参照してください。
+Azure CLI の詳細については、[Azure CLI のインストール](/cli/azure/install-azure-cli)と[Azure CLI の概要](/cli/azure/get-started-with-azure-cli)に関するぺージを参照してください。

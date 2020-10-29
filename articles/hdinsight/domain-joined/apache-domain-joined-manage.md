@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dcb5d7ed75bda8422ba3bd461b08d3bfb2d974f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595786"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541011"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 
@@ -87,13 +87,13 @@ Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 ESP を使用していない HDInsight クラスターには、クラスターの作成中に作成される、次の 2 つのユーザー アカウントがあります。
 
-- **Ambari 管理者**: このアカウントは、"*Hadoop ユーザー*" または "*HTTP ユーザー*" とも呼ばれます。 このアカウントを使用すると、`https://CLUSTERNAME.azurehdinsight.net` で Ambari にサインインできます。 また、Ambari ビューに対するクエリの実行、外部ツール (PowerShell、Templeton、Visual Studio など) によるジョブの実行、Hive ODBC ドライバーと BI ツール (Excel、Power BI、Tableau など) による認証にも使用できます。
+- **Ambari 管理者** : このアカウントは、" *Hadoop ユーザー* " または " *HTTP ユーザー* " とも呼ばれます。 このアカウントを使用すると、`https://CLUSTERNAME.azurehdinsight.net` で Ambari にサインインできます。 また、Ambari ビューに対するクエリの実行、外部ツール (PowerShell、Templeton、Visual Studio など) によるジョブの実行、Hive ODBC ドライバーと BI ツール (Excel、Power BI、Tableau など) による認証にも使用できます。
 
 ESP を使用している HDInsight クラスターには、Ambari 管理者以外に、3 つの新しいユーザーの種類があります。
 
-- **Ranger 管理者**: このアカウントは、ローカルの Apache Ranger 管理者アカウントです。 これは Active Directory ドメイン ユーザーではありません。 このアカウントは、ポリシーのセットアップや、他のユーザー管理者または代理管理者の作成に使用することができます (それらの管理者がポリシーを管理できるようにするため)。 既定では、ユーザー名は *admin* で、パスワードは Ambari 管理者パスワードと同じです。 パスワードは、Ranger の [Settings (設定)] ページで更新することができます。
+- **Ranger 管理者** : このアカウントは、ローカルの Apache Ranger 管理者アカウントです。 これは Active Directory ドメイン ユーザーではありません。 このアカウントは、ポリシーのセットアップや、他のユーザー管理者または代理管理者の作成に使用することができます (それらの管理者がポリシーを管理できるようにするため)。 既定では、ユーザー名は *admin* で、パスワードは Ambari 管理者パスワードと同じです。 パスワードは、Ranger の [Settings (設定)] ページで更新することができます。
 
-- **クラスター管理者ドメイン ユーザー**: このアカウントは、Ambari と Ranger を含む Hadoop クラスター管理者として指定された Active Directory ドメイン ユーザーです。 クラスターの作成中に、このユーザーの資格情報を指定する必要があります。 このユーザーは、次の特権を持ちます。
+- **クラスター管理者ドメイン ユーザー** : このアカウントは、Ambari と Ranger を含む Hadoop クラスター管理者として指定された Active Directory ドメイン ユーザーです。 クラスターの作成中に、このユーザーの資格情報を指定する必要があります。 このユーザーは、次の特権を持ちます。
     - コンピューターをドメインに参加させ、クラスターの作成中に指定する OU 内に配置します。
     - クラスターの作成中に指定する OU 内にサービス プリンシパルを作成します。
     - 逆引き DNS エントリを作成します。
@@ -102,7 +102,7 @@ ESP を使用している HDInsight クラスターには、Ambari 管理者以�
 
     クラスター内には、Ranger によって管理されていないために安全ではないエンドポイント (Templeton など) がいくつか存在します。 これらのエンドポイントは、クラスター管理者ドメイン ユーザーを除くすべてのユーザーに対してロックダウンされます。
 
-- **レギュラー**: クラスターの作成中に、複数の Active Directory グループを指定することができます。 これらのグループのユーザーは、Ranger と Ambari に同期されます。 これらのユーザーはドメイン ユーザーであり、Ranger によって管理されているエンドポイント (たとえば Hiveserver2) のみにアクセスできます。 すべての RBAC ポリシーと監査は、これらのユーザーに適用できます。
+- **レギュラー** : クラスターの作成中に、複数の Active Directory グループを指定することができます。 これらのグループのユーザーは、Ranger と Ambari に同期されます。 これらのユーザーはドメイン ユーザーであり、Ranger によって管理されているエンドポイント (たとえば Hiveserver2) のみにアクセスできます。 すべての RBAC ポリシーと監査は、これらのユーザーに適用できます。
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>ESP を使用する HDInsight クラスターのロール
 
@@ -173,5 +173,5 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
+- Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
 - Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用する HDInsight クラスター用の Apache Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関するページを参照してください。

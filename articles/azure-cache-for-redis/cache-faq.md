@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 197decbb263391a32b8bf01cdbb6c2f34b750111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e554a3354b9cfdce7d0c367f757251f44e4599
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003571"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536826"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -33,12 +33,11 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 
 アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](/previous-versions/azure/azure-services/dn386103(v=azure.100))を参照してください。
 
-["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
+["minIoThreads" configuration setting]: /previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
-* さらに多くの人と情報交換する場合は、[Azure Cache に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cache-redis.html)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
+* さらに多くの人と情報交換する場合は、[Azure Cache に関する Microsoft Q&A 質問ページ](/answers/topics/azure-cache-redis.html)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
 * 機能要求を作成する場合は、要求とアイデアを [Azure Redis Cache のユーザーの声](https://feedback.azure.com/forums/169382-cache)に送信することができます。
 * また、[azurecache@microsoft.com](mailto:azurecache@microsoft.com) にご質問をお送りいただくこともできます。
-

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539112"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533837"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari の古いアラート
 
@@ -26,7 +26,7 @@ Apache Ambari UI では、次のようなアラートが表示される場合が
 
 ## <a name="cause"></a>原因
 
-Ambari エージェントでは、多くのリソースの正常性が継続的に監視されます。 *アラート*は、特定のクラスターのプロパティが事前に定義されたしきい値内にあるかどうかを通知するように構成できます。 各リソース チェックが実行された後、アラートの条件が満たされている場合、Ambari エージェントから Ambari サーバーへ状態が報告され、アラートがトリガーされます。 アラート プロファイルの間隔に従ってアラートが確認されていない場合、サーバーでは *Ambari Server Stale Alerts* アラートがトリガーされます。
+Ambari エージェントでは、多くのリソースの正常性が継続的に監視されます。 *アラート* は、特定のクラスターのプロパティが事前に定義されたしきい値内にあるかどうかを通知するように構成できます。 各リソース チェックが実行された後、アラートの条件が満たされている場合、Ambari エージェントから Ambari サーバーへ状態が報告され、アラートがトリガーされます。 アラート プロファイルの間隔に従ってアラートが確認されていない場合、サーバーでは *Ambari Server Stale Alerts* アラートがトリガーされます。
 
 定義された間隔で正常性チェックが実行されない原因はいくつかあります。
 
@@ -84,6 +84,6 @@ Ambari エージェントには、構成されたアラートがスケジュー�
 
 * Twitter で [@AzureSupport](https://twitter.com/azuresupport) と繋がります。 これは、カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウントです。 Azure コミュニティを適切なリソース (回答、サポート、エキスパート) と結び付けます。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信します。 表示するには、ポータル メニューから [ヘルプ] ( **?** ) を選択するか、 **[Help + support]\(ヘルプとサポート\)** ウィンドウを開きます。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信します。 表示するには、ポータル メニューから [ヘルプ] ( **?** ) を選択するか、 **[Help + support]\(ヘルプとサポート\)** ウィンドウを開きます。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 
 
   サブスクリプションの管理と課金のサポートは、Microsoft Azure サブスクリプションに含まれています。 テクニカル サポートは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)を通じて提供されます。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75933931"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539702"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Apache Hadoop エコシステムで作業する
 
@@ -31,17 +31,17 @@ PowerShell で実行できるタスクの例を次に示します。
 * [PowerShell を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-powershell.md)。
 * [PowerShell を使用したクラスターの管理](hdinsight-administer-use-powershell.md)。
 
-[Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページの手順に従い、最新バージョンを入手してください。
+[Azure PowerShell のインストールと構成](/powershell/azure/install-az-ps)に関するページの手順に従い、最新バージョンを入手してください。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>ブラウザーで実行できるユーティリティ
 
 次のユーティリティは、ブラウザーで動作する Web UI を備えています。
-* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** は、対話型のコマンド ライン シェルであり、ブラウザおよび Azure portal 内から実行します。
+* **[Azure Cloud Shell](../cloud-shell/overview.md)** は、対話型のコマンド ライン シェルであり、ブラウザおよび Azure portal 内から実行します。
 
 * **[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** は、Azure portal に用意されている管理および監視ユーティリティで、次のようなさまざまな種類のジョブを管理するために使用できます。
     * [Apache Ambari で REST API を使用する](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Ambari の Apache Hive ビュー](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Apache Ambari の Apache Tez ビュー](hdinsight-debug-ambari-tez-view.md)
+    * [Apache Ambari の Apache Tez ビュー](./index.yml)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop) Tools for Visual Studio
 
@@ -58,7 +58,7 @@ Visual Studio と Data Lake Tools for Visual Studio を使用して実行でき�
 クラスターの管理やビッグ データ アプリケーションの開発のために Visual Studio で .NET SDK を使用することができます。 他の IDE を次のタスクに使用することもできますが、例では Visual Studio を使用しています。
 
 Visual Studio で .NET SDK を使用して実行できるタスクの例:
-* [Azure HDInsight SDK for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
+* [Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)。
 * [.NET SDK を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。
 * [Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数を使用する](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
 
@@ -84,13 +84,13 @@ HDInsight の Apache Spark クラスターには、Jupyter ノートブックと
 
 Linux のみで提供されているツールまたはテクノロジを使用する必要がある場合は、次のオプションを検討してください。
 
-* **Bash on Ubuntu on Windows 10** は、Windows で Linux サブシステムを提供します。 Bash では、専用の Linux インストールを管理することなく、Linux ユーティリティを直接実行することができます。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。
+* **Bash on Ubuntu on Windows 10** は、Windows で Linux サブシステムを提供します。 Bash では、専用の Linux インストールを管理することなく、Linux ユーティリティを直接実行することができます。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。
 * **Docker for Windows** は、多くの Linux ベースのツールへのアクセスを提供し、Windows から直接実行できます。 たとえば、Docker を使用して、Windows から Hive 用 Beeline クライアントを直接実行できます。 また、Docker を使用して、ローカルの Jupyter ノートブックを実行し、HDInsight の Spark にリモート接続することもできます。 [Docker for Windows を使用する](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)** を使用すると、SSH 接続経由でクラスター ファイル システムをグラフィカルに参照することができます。
 
 ## <a name="cross-platform-tools"></a>クロス プラットフォーム ツール
 
-Azure コマンド ライン インターフェイス (CLI) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。  詳細については、「[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)」を参照してください。
+Azure コマンド ライン インターフェイス (CLI) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。  詳細については、「[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

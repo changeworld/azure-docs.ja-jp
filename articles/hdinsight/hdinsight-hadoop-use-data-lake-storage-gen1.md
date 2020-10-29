@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858723"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539838"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
 
@@ -126,7 +126,7 @@ Data Lake Storage アカウントを追加として追加したり、複数の D
 
 ## <a name="configure-data-lake-storage-gen1-access"></a>Data Lake Storage Gen1 のアクセスの構成
 
-HDInsight クラスターから Azure Data Lake Storage Gen1 へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳細については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」および「[自己署名証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)」を参照してください。
+HDInsight クラスターから Azure Data Lake Storage Gen1 へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳細については、「[クイック スタート: HDInsight のクラスターを設定する](./hdinsight-hadoop-provision-linux-clusters.md)」および「[自己署名証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)」を参照してください。
 
 > [!NOTE]  
 > Azure Data Lake Storage Gen1 を HDInsight クラスターの追加のストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Storage Gen1 を既存の HDInsight クラスターに追加のストレージとして追加することは、サポートされていないシナリオです。
@@ -137,19 +137,19 @@ HDInsight クラスターから Azure Data Lake Storage Gen1 へのアクセス�
 
 複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。
 
-* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     adl:///<file path>
     ```
 
-* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/
@@ -220,7 +220,7 @@ LOCATION '/example/data/';
 
 Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成する方法の詳しい手順については、以下のリンクを参照してください。
 
-* [ポータルの使用](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [ポータルの使用](./hdinsight-hadoop-provision-linux-clusters.md)
 * [PowerShell の使用 (Data Lake Storage Gen1 を既定のストレージとして使用)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [PowerShell の使用 (Data Lake Storage Gen1 を追加のストレージとして使用)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure テンプレートの使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -305,7 +305,7 @@ Invoke-AzResourceAction `
 
 詳細については、次を参照してください。
 
-* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [クイック スタート: HDInsight のクラスターを設定する](./hdinsight-hadoop-provision-linux-clusters.md)
 * [Azure PowerShell を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
 * [Azure Blob Storage の Shared Access Signature を使用した HDInsight でのデータへのアクセスの制限](hdinsight-storage-sharedaccesssignature-permissions.md)

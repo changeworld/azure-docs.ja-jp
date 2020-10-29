@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929622"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537934"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバー (プレビュー) のアプリを構築する
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Azure で PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Azure App Service on Linux で実行される [Laravel](https://laravel.com/) アプリが完成します。
+[Azure App Service](../../app-service/overview.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Azure で PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Azure App Service on Linux で実行される [Laravel](https://laravel.com/) アプリが完成します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -31,7 +31,7 @@ ms.locfileid: "90929622"
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure Portal でアプリを管理する
 
-[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+[Azure サブスクリプション](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,7 +110,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-この _.env_ ファイルを Laravel でどのように使用するかの詳細については、[Laravel 環境の構成](https://laravel.com/docs/5.4/configuration#environment-configuration)に関するページを参照してください。
+この _.env_ ファイルを Laravel でどのように使用するかの詳細については、 [Laravel 環境の構成](https://laravel.com/docs/5.4/configuration#environment-configuration)に関するページを参照してください。
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
@@ -139,14 +139,14 @@ php artisan serve
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>MySQL フレキシブル サーバー (プレビュー) を作成する
-このステップでは、[Azure Database for MySQL フレキシブル サーバー](/azure/mysql) (パブリック プレビュー) に MySQL データベースを作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で、[`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) コマンドを使用してサーバーを作成します。
+このステップでは、[Azure Database for MySQL フレキシブル サーバー](../index.yml) (パブリック プレビュー) に MySQL データベースを作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。 [Azure Cloud Shell](../../cloud-shell/overview.md) で、[`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) コマンドを使用してサーバーを作成します。
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
 ```
 
 > [!IMPORTANT]
-> - 次のステップで接続して Laravel データの移行を実行するときに使用するので、**サーバー名**と**接続文字列**を記録しておきます。
+> - 次のステップで接続して Laravel データの移行を実行するときに使用するので、 **サーバー名** と **接続文字列** を記録しておきます。
 > - **IP-Address** 引数では、クライアント コンピューターの IP アドレスを指定します。 サーバーは作成時にロックされているので、ローカル環境でサーバーを管理するには、クライアント コンピューターへのアクセスを許可する必要があります。
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>Web アプリがサーバーに接続できるようにサーバー ファイアウォールを構成する
@@ -219,7 +219,7 @@ MYSQL_SSL=true
 
 ### <a name="configure-tlsssl-certificate"></a>TLS/SSL 証明書を構成する
 
-既定では、MySQL フレキシブル サーバーによって、クライアントからの TLS 接続が強制されます。 Azure で MySQL データベースに接続するには、[Azure Database for MySQL フレキシブル サーバーから提供された _.pem_ 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)を使用する必要があります。 [この証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードし、サンプル アプリ リポジトリのローカル コピーの **ssl** フォルダーに置きます。
+既定では、MySQL フレキシブル サーバーによって、クライアントからの TLS 接続が強制されます。 Azure で MySQL データベースに接続するには、 [Azure Database for MySQL フレキシブル サーバーから提供された _.pem_ 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)を使用する必要があります。 [この証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードし、サンプル アプリ リポジトリのローカル コピーの **ssl** フォルダーに置きます。
 
 _config/database.php_ を開き、次のコードに示すように `sslmode` パラメーターと `options` パラメーターを `connections.mysql` に追加します。
 
@@ -280,7 +280,7 @@ git commit -m "database.php updates"
 
 FTP およびローカルの Git では、"デプロイ ユーザー" を使用して Azure Web アプリにデプロイできます。 デプロイ ユーザーを構成すると、すべての Azure デプロイでこのユーザーを使用できます。 アカウントレベルのデプロイのユーザー名とパスワードは、Azure サブスクリプションの資格情報とは異なります。
 
-デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 _&lt;username>_ と _&lt;password>_ を、デプロイ ユーザーのユーザー名とパスワードに置き換えます。
+デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 _&lt;username>_ と _&lt;password>_ を、デプロイ ユーザーのユーザー名とパスワードに置き換えます。
 
 ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。
 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。
@@ -293,7 +293,7 @@ JSON の出力では、パスワードは null として表示されます。 "�
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Cloud Shell で [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。 次の例では、myAppServicePlan という名前の App Service プランを、Free 価格レベル (--sku F1) で Linux コンテナー (--is-linux) に作成します。
+Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。 次の例では、myAppServicePlan という名前の App Service プランを、Free 価格レベル (--sku F1) で Linux コンテナー (--is-linux) に作成します。
 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 
@@ -301,9 +301,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-myAppServicePlan App Service プランに [Web アプリ](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux)を作成します。
+myAppServicePlan App Service プランに [Web アプリ](../../app-service/overview.md#app-service-on-linux)を作成します。
 
-Cloud Shell では、[az webapp create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) コマンドを使用できます。 次の例では、 _&lt;app-name>_ を、グローバルに一意のアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes --linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes) を実行します。
+Cloud Shell では、[az webapp create](/cli/azure/webapp#az-webapp-create) コマンドを使用できます。 次の例では、 _&lt;app-name>_ を、グローバルに一意のアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes) を実行します。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -334,7 +334,7 @@ Git デプロイが有効な、空の新しい Web アプリが作成されま�
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service で、 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を " _アプリ設定_ " として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;app-name>_ と _&lt;mysql-server-name>_ を置き換えます。
 
@@ -342,7 +342,7 @@ App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、 _config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [
@@ -375,19 +375,19 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
 
-[Laravel アプリケーションのライフサイクル](https://laravel.com/docs/5.4/lifecycle)は、アプリケーションのルート ディレクトリではなく "_パブリック_" ディレクトリから始まります。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
+[Laravel アプリケーションのライフサイクル](https://laravel.com/docs/5.4/lifecycle)は、アプリケーションのルート ディレクトリではなく " _パブリック_ " ディレクトリから始まります。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
 
-詳細については、「[Change site root (サイトのルートを変更する)](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root)」を参照してください。
+詳細については、「[Change site root (サイトのルートを変更する)](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root)」を参照してください。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、[Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
+ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、 [Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、「**デプロイ ユーザーを構成する**」で作成した資格情報を入力してください。
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、「 **デプロイ ユーザーを構成する** 」で作成した資格情報を入力してください。
 
 ```bash
 git push azure master
@@ -466,7 +466,7 @@ public function down()
 php artisan migrate
 ```
 
-[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` (_app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
+[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` ( _app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
 
 ### <a name="update-application-logic"></a>アプリケーション ロジックを更新する
 
@@ -572,6 +572,6 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure portal でリソースを管理する方法](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [Azure portal でリソースを管理する方法](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [サーバーを管理する方法](how-to-manage-server-cli.md)

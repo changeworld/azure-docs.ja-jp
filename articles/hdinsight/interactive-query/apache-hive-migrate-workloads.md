@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308386"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534687"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -37,9 +37,9 @@ HDInsight 3.6 と HDInsight 4.0 の ACID テーブルでは、ACID のデルタ�
 外部メタストアの新しいコピーを作成します。 外部メタストアを使用している場合、メタストアのコピーを作成する安全で簡単な方法の 1 つは、`RESTORE` 関数を使用して、別の名前で[データベースを復元](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)することです。  HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。
 
 ### <a name="3-upgrade-metastore-schema"></a>3.メタストア スキーマをアップグレードする
-メタストアの**コピー**が完了したら、既存の HDInsight 3.6 クラスター上の[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)でスキーマ アップグレード スクリプトを実行して、新しいメタストアを Hive 3 スキーマにアップグレードします。 (この手順では、新しいメタストアがクラスターに接続されている必要はありません。)これにより、データベースを HDInsight 4.0 メタストアとして接続できるようになります。
+メタストアの **コピー** が完了したら、既存の HDInsight 3.6 クラスター上の [スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)でスキーマ アップグレード スクリプトを実行して、新しいメタストアを Hive 3 スキーマにアップグレードします。 (この手順では、新しいメタストアがクラスターに接続されている必要はありません。)これにより、データベースを HDInsight 4.0 メタストアとして接続できるようになります。
 
-下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、スペース区切りで、Hive メタストアの**コピー**用に適切な値に置き換えます。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
+下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、スペース区切りで、Hive メタストアの **コピー** 用に適切な値に置き換えます。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
 
 |プロパティ | 値 |
 |---|---|
@@ -117,7 +117,7 @@ HDInsight 3.6 および 4.0 のクラスターでは、同じストレージ ア
 
 1. [Secure Shell (SSH) クライアント](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して HDInsight 3.6 クラスターに接続します。
 
-1. 開いている SSH セッションから、次のスクリプト ファイルをダウンロードして、**alltables.sql** という名前のファイルを生成します。
+1. 開いている SSH セッションから、次のスクリプト ファイルをダウンロードして、 **alltables.sql** という名前のファイルを生成します。
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -147,13 +147,13 @@ HDInsight 3.6 および 4.0 のクラスターでは、同じストレージ ア
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. **alltables.hql** を "*新しい*" HDInsight クラスターにアップロードします。
+1. **alltables.hql** を " *新しい* " HDInsight クラスターにアップロードします。
 
     ```bash
     scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-1. 次に SSH を使用して、"*新しい*" HDInsight 4.0 クラスターに接続します。 このクラスターへの SSH セッションから、次のコードを実行します。
+1. 次に SSH を使用して、" *新しい* " HDInsight 4.0 クラスターに接続します。 このクラスターへの SSH セッションから、次のコードを実行します。
 
     ESP を使用しない場合:
 
@@ -208,7 +208,7 @@ HDInsight 3.6 以降では、HDInsight は、HDInsight Enterprise セキュリ�
 
 ## <a name="query-execution-across-hdinsight-versions"></a>HDInsight バージョン間でのクエリの実行
 
-HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、[Tez ビューと Hive ビュー](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view)では GUI ベースのワークフローが提供されます。
+HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、[Tez ビューと Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)では GUI ベースのワークフローが提供されます。
 
 HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。 Tez ビューと Hive ビューには、GUI ベースのワークフローが用意されています。 HiveCLI は Hiveserver 1 用の Thrift クライアントであり、Beeline は Hiveserver 2 へのアクセスを提供する JDBC クライアントです。 Beeline は、その他の JDBC 互換のデータベース エンドポイントへの接続にも使用できます。 Beeline は、HDInsight 4.0 上ですぐに使用可能で、インストールは必要ありません。
 

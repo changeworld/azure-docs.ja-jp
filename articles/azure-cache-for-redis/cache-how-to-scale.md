@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/11/2017
-ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213332"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537849"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -30,7 +30,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 キャッシュがアプリケーションの要件を満たさなくなったと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュにスケーリングできます。 使用するキャッシュの価格レベルを決定する方法の詳細については、「[最適なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください。
 
 ## <a name="scale-a-cache"></a>キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、**[リソース] メニュー**の **[スケール]** をクリックします。
+キャッシュをスケーリングするには、 [Azure Portal](https://portal.azure.com) で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース] メニュー** の **[スケール]** をクリックします。
 
 ![スケール](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
@@ -65,7 +65,7 @@ Azure Portal でキャッシュ インスタンスをスケーリングするほ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell を使用して Azure Cache for Redis インスタンスをスケーリングするには、`Size`、`Sku`、または `ShardCount` プロパティを変更するときに [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) コマンドレットを使用します。 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 
+PowerShell を使用して Azure Cache for Redis インスタンスをスケーリングするには、`Size`、`Sku`、または `ShardCount` プロパティを変更するときに [Set-AzRedisCache](/powershell/module/az.rediscache/set-azrediscache) コマンドレットを使用します。 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 
 
 ```powershell
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
@@ -136,7 +136,7 @@ Azure CLI によるスケーリングの詳細については、「[Change setti
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>スケーリング中にキャッシュからデータは失われますか
 * 新しいサイズに **Basic** キャッシュをスケーリングすると、すべてのデータが失われ、スケーリング処理中にキャッシュは使用できなくなります。
 * **Basic** キャッシュを **Standard** キャッシュにスケーリングする場合、通常、キャッシュのデータは保存されます。
-* **Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。 **Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。 スケールダウンのときにデータが失われた場合、 [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
+* **Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、 **Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。 **Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。 スケールダウンのときにデータが失われた場合、 [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>スケーリング中に影響を受けるカスタム データベース
 キャッシュの作成中に `databases` の設定のカスタム値を構成した場合、価格レベルによってさまざまな[データベース制限](cache-configure.md#databases)があることに注意してください。 このシナリオでスケーリングを行う場合は、次の点を考慮します。
@@ -151,7 +151,7 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 ### <a name="will-my-cache-be-available-during-scaling"></a>スケーリング中にキャッシュを使用できますか
 * **Standard** キャッシュと **Premium** キャッシュはスケーリング処理中でも使用できます。 ただし、Standard および Premium キャッシュのスケーリングや、Basic から Standard キャッシュへのスケーリングの際に接続の中断が発生する可能性があります。 こうした接続の中断はわずかで、Redis クライアントはすぐに接続を再確立できます。
-* 別のサイズにスケーリングする場合、**Basic** キャッシュはオフラインになります。 **Basic** から **Standard** にスケーリングする際は、Basic キャッシュを引き続き利用できますが、接続の中断がわずかに発生する可能性があります。 接続の中断が発生しても、Redis クライアントはすぐに接続を再確立できます。
+* 別のサイズにスケーリングする場合、 **Basic** キャッシュはオフラインになります。 **Basic** から **Standard** にスケーリングする際は、Basic キャッシュを引き続き利用できますが、接続の中断がわずかに発生する可能性があります。 接続の中断が発生しても、Redis クライアントはすぐに接続を再確立できます。
 
 
 ### <a name="scaling-limitations-with-geo-replication"></a>geo レプリケーションのスケーリング制限

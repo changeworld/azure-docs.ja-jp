@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103341"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535469"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92103341"
 
 HDInsight クラスターは、通常は仮想ネットワークにデプロイされます。 クラスターは、その仮想ネットワークの外部にあるサービスに依存しています。
 
-受信管理トラフィックはファイアウォールを介して送信できません。 [ここ](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)に記載されているように、受信トラフィックには NSG サービス タグを使用できます。 
+受信管理トラフィックはファイアウォールを介して送信できません。 [ここ](./hdinsight-service-tags.md)に記載されているように、受信トラフィックには NSG サービス タグを使用できます。 
 
 HDInsight の送信トラフィックの依存関係は、ほぼすべて、FQDN を使用して定義されています。 その背後には静的 IP アドレスがありません。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) によってクラスターからの送信トラフィックをロックできないことを意味します。 IP アドレスは頻繁に変わるので、現在の名前解決に基づいてルールを設定し、使用することはできません。
 
@@ -160,7 +160,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 ## <a name="logging-and-scale"></a>ログ記録とスケール
 
-Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、次のチュートリアルの手順に従ってください。「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/tutorial-diagnostics.md)」を参照してください。
+Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、次のチュートリアルの手順に従ってください。「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/firewall-diagnostics.md)」を参照してください。
 
 ログ記録のセットアップを完了した後、Log Analytics を使用する場合は、次のようなクエリでブロックされたトラフィックを表示することができます。
 

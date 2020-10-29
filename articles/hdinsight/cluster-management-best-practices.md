@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89648695"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542320"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight クラスター管理のベスト プラクティス
 
@@ -26,12 +26,12 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 | Azure Data Factory | [Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-adf.md) |
 | カスタム Resource Manager テンプレート | [Resource Manager テンプレートを使用して、HDInsight で Apache Hadoop クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | クイック スタート テンプレート | [HDInsight クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
-| Azure サンプル | [HDInsight Azure のサンプル](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
+| Azure サンプル | [HDInsight Azure のサンプル](/samples/browse/?products=azure-hdinsight) |
 | Azure portal | [Azure portal を使用して、HDInsight で Linux ベースのクラスターを作成する](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Azure CLI を使用した HDInsight クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Azure PowerShell を使用した HDInsight の Linux ベースのクラスターを作成する](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Azure REST API を使用して Apache Hadoop クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDKs (.NET, Python, Java) | [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable), [Go](https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview) |
+| SDKs (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > クラスターを作成し、以前に作成したクラスターからクラスター名を再利用する場合は、以前のクラスターの削除が完了するまで待ってからクラスターを作成してください。
@@ -62,7 +62,7 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 | 手動スケーリング | [Azure HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md) |
 | Ambari を使用した監視| [Azure HDInsight でクラスター パフォーマンスを監視する](./hdinsight-key-scenarios-to-monitor.md) |
 | Azure Monitor ログでの監視 | [Azure Monitor ログを使用して Azure HDInsight クラスターを監視する](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
-| サービスの問題、計画メンテナンス、正常性およびセキュリティに関する勧告 | [サブスクリプション固有のサービス正常性アラートをサブスクライブする](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+| サービスの問題、計画メンテナンス、正常性およびセキュリティに関する勧告 | [サブスクリプション固有のサービス正常性アラートをサブスクライブする](../service-health/alerts-activity-log-service-notifications-portal.md) |
 
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>削除された HDInsight クラスターを確認する方法ha?

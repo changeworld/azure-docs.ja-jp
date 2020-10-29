@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087539"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534806"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する
 
@@ -21,12 +21,12 @@ ms.locfileid: "86087539"
 
 ![HDInsight Power BI の地図レポート](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Power BI Desktop の汎用 ODBC コネクタを介してインポートするために、[Apache Hive ODBC ドライバー](../hadoop/apache-hadoop-connect-hive-power-bi.md)を利用することができます。 ただし、Hive クエリ エンジンの非対話的な性質を与えられた BI ワークロードに対しては、この方法はお勧めしません。 この場合は、[HDInsight 対話型クエリ コネクタ](./apache-hadoop-connect-hive-power-bi-directquery.md)および [HDInsight Apache Spark コネクタ](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)を選択した方が、良いパフォーマンスを得られます。
+Power BI Desktop の汎用 ODBC コネクタを介してインポートするために、[Apache Hive ODBC ドライバー](../hadoop/apache-hadoop-connect-hive-power-bi.md)を利用することができます。 ただし、Hive クエリ エンジンの非対話的な性質を与えられた BI ワークロードに対しては、この方法はお勧めしません。 この場合は、[HDInsight 対話型クエリ コネクタ](./apache-hadoop-connect-hive-power-bi-directquery.md)および [HDInsight Apache Spark コネクタ](/power-bi/spark-on-hdinsight-with-direct-connect)を選択した方が、良いパフォーマンスを得られます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight クラスター**。 このクラスターは、Apache Hive を含む HDInsight クラスターか、新しくリリースされた対話型クエリ クラスターのいずれかです。 クラスターの作成については、「[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
+* **HDInsight クラスター** 。 このクラスターは、Apache Hive を含む HDInsight クラスターか、新しくリリースされた対話型クエリ クラスターのいずれかです。 クラスターの作成については、「[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) からコピーをダウンロードできます。
 
 ## <a name="load-data-from-hdinsight"></a>HDInsight からデータを読み込む
@@ -39,7 +39,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
     ![HDInsight Power BI のその他のデータ取得](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
-3. **[データの取得]** ウィンドウで、検索ボックスに「**hdinsight**」と入力します。  
+3. **[データの取得]** ウィンドウで、検索ボックスに「 **hdinsight** 」と入力します。  
 
 4. 検索結果から **[HDInsight 対話型クエリ]** を選択し、 **[接続]** を選択します。  **[HDInsight 対話型クエリ]** が表示されない場合、Power BI Desktop を最新バージョンに更新する必要があります。
 
@@ -49,7 +49,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
     |プロパティ | 値 |
     |---|---|
-    |サーバー |クラスターの名前 (*myiqcluster.azurehdinsight.net* など) を入力します。|
+    |サーバー |クラスターの名前 ( *myiqcluster.azurehdinsight.net* など) を入力します。|
     |データベース |この記事では **[既定]** を入力します。|
     |データ接続モード |この記事では、 **[DirectQuery]** を選択します。|
 
@@ -57,7 +57,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
 7. HTTP 資格情報を入力して、 **[接続]** を選択します。 既定のユーザー名は **admin** です。
 
-8. 左側のウィンドウの **[ナビゲーター]** ウィンドウから、**hivesampletale** を選択します。
+8. 左側のウィンドウの **[ナビゲーター]** ウィンドウから、 **hivesampletale** を選択します。
 
 9. メイン ウィンドウで **[ロード]** を選択します。
 
