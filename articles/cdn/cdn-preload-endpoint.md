@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192574"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778204"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "88192574"
 1. [Azure Portal](https://portal.azure.com) で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。 プロファイルのウィンドウが開きます。
     
 2. リスト内のエンドポイントをクリックします。 エンドポイントのウィンドウが開きます。
-3. CDN エンドポイント ウィンドウで、**[読み込み]** を選択します。
+3. CDN エンドポイント ウィンドウで、 **[読み込み]** を選択します。
    
     ![CDN エンドポイント ウィンドウ](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
@@ -47,7 +47,7 @@ ms.locfileid: "88192574"
 4. **[コンテンツ パス]** で、読み込む各アセットの完全なパスを入力します (たとえば、`/pictures/kitten.png`)。
    
    > [!TIP]
-   > テキストの入力を開始すると、**[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、**[削除]** を選択します。
+   > テキストの入力を開始すると、 **[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、 **[削除]** を選択します。
    > 
    > 各コンテンツ パスは、次の[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference)に準拠する相対 URL にする必要があります。  
    > - 1 つのファイル パスの読み込み: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ ms.locfileid: "88192574"
    > 
    
     ![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. コンテンツ パスの入力が終わったら、**[読み込み]** を選択します。
+5. コンテンツ パスの入力が終わったら、 **[読み込み]** を選択します。
    
 
 > [!NOTE]
@@ -68,6 +68,5 @@ ms.locfileid: "88192574"
 
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
-* [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
-
+* [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](/rest/api/cdn/endpoints/purgecontent)

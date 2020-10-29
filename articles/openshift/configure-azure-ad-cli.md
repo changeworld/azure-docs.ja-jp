@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469424"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748043"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (CLI)
 
@@ -21,7 +21,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 Azure Active Directory アプリケーションの構成に使用するクラスター固有の URL を取得します。
 
-クラスターの OAuth コールバック URL を作成し、変数 **oauthCallbackURL** に格納します。 **aro-rg** を実際のリソース グループの名前に、**aro-cluster** を実際のクラスター名に置き換えてください。
+クラスターの OAuth コールバック URL を作成し、変数 **oauthCallbackURL** に格納します。 **aro-rg** を実際のリソース グループの名前に、 **aro-cluster** を実際のクラスター名に置き換えてください。
 
 > [!NOTE]
 > OAuth コールバック URL の `AAD` セクションは、後でセットアップする OAuth ID プロバイダー名と一致している必要があります。
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Azure Active Directory を使用したログインの検証
 
-OpenShift Web コンソールをログアウトしてもう一度ログインしようとすると、**AAD** でログインするための新しいオプションが表示されます。 数分待つ必要がある場合があります。
+OpenShift Web コンソールをログアウトしてもう一度ログインしようとすると、 **AAD** でログインするための新しいオプションが表示されます。 数分待つ必要がある場合があります。
 
 ![Azure Active Directory オプションを使用したログイン画面](media/aro4-login-2.png)

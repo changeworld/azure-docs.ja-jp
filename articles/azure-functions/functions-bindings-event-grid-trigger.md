@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 3bbe704e6223bb04a17af7109c61875ca3b21bf9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214135"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748183"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -78,7 +78,7 @@ namespace Company.Function
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。
+次の例は、 *function.json* ファイルのトリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -130,7 +130,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
+次の例は、 *function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -161,7 +161,7 @@ module.exports = function (context, eventGridEvent) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。
+次の例は、 *function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -305,7 +305,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 ## <a name="configuration"></a>構成
 
-次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 `EventGridTrigger` 属性で設定するコンストラクター パラメーターまたはプロパティはありません。
+次の表は、 *function.json* ファイルで設定したバインド構成のプロパティを説明しています。 `EventGridTrigger` 属性で設定するコンストラクター パラメーターまたはプロパティはありません。
 
 |function.json のプロパティ |説明|
 |---------|---------|
@@ -345,11 +345,11 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Event Grid インスタンスは、*function.json* ファイルの `name` プロパティで構成されたパラメーターを介して使用できます。
+Event Grid インスタンスは、 *function.json* ファイルの `name` プロパティで構成されたパラメーターを介して使用できます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Event Grid インスタンスは、*function.json* ファイルの `name` プロパティで構成されたパラメーターを介して、`func.EventGridEvent` と型指定して使用できます。
+Event Grid インスタンスは、 *function.json* ファイルの `name` プロパティで構成されたパラメーターを介して、`func.EventGridEvent` と型指定して使用できます。
 
 # <a name="java"></a>[Java](#tab/java)
 

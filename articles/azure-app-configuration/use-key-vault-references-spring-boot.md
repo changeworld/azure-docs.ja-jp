@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3cdb7796f3f8c877f130f47b971dc66c113c4d36
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070114"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748858"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -52,13 +52,13 @@ App Configuration に格納されているその他のキーの場合と同様�
 1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します。
 
     ![Key Vault の作成が完了した後の出力](./media/quickstarts/search-services.png)
-1. 検索ボックスに「**Key Vault**」と入力します。
+1. 検索ボックスに「 **Key Vault** 」と入力します。
 1. 結果リストで、左側の **[キー コンテナー]** を選択します。
 1. **[キー コンテナー]** で、 **[追加]** を選択します。
 1. **[キー コンテナーの作成]** の右側に、次の情報を入力します。
     * **[サブスクリプション]** を選択してサブスクリプションを選択します。
     * **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループの名前を入力します。
-    * **[キー コンテナー名]** では、一意の名前が必要です。 このチュートリアルでは、「**Contoso-vault2**」と入力します。
+    * **[キー コンテナー名]** では、一意の名前が必要です。 このチュートリアルでは、「 **Contoso-vault2** 」と入力します。
     * **[リージョン]** ドロップダウン リストで、場所を選択します。
 1. **[キー コンテナーの作成]** オプションは既定値のままにしておきます。
 1. **［作成］** を選択します
@@ -74,9 +74,9 @@ App Configuration に格納されているその他のキーの場合と同様�
 1. Key Vault のプロパティ ページで、 **[シークレット]** を選択します。
 1. **[Generate/Import]\(生成/インポート\)** を選択します。
 1. **[シークレットの作成]** ウィンドウで、次の値を入力します。
-    * **[アップロード オプション]** :「**Manual**」と入力します。
-    * **Name**:「**Message**」と入力します。
-    * **値**: 「**Hello from Key Vault**」と入力します。
+    * **[アップロード オプション]** :「 **Manual** 」と入力します。
+    * **Name** :「 **Message** 」と入力します。
+    * **値** : 「 **Hello from Key Vault** 」と入力します。
 1. **[シークレットの作成]** の他のプロパティは既定値のままにしておきます。
 1. **［作成］** を選択します
 
@@ -88,9 +88,9 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. **[+ 作成]** 、 **[キー コンテナー参照]** の順に選択し、次の値を指定します。
     * **[キー]** : **[/application/config.keyvaultmessage]** を選択します。
-    * **ラベル**:この値は空白のままにしておきます。
+    * **ラベル** :この値は空白のままにしておきます。
     * **[サブスクリプション]** 、 **[リソース グループ]** 、 **[キー コンテナー]** : 前のセクションで作成したキー コンテナーの値に対応する値を入力します。
-    * **[シークレット]** : 前のセクションで作成した、**Message** という名前のシークレットを選択します。
+    * **[シークレット]** : 前のセクションで作成した、 **Message** という名前のシークレットを選択します。
 
 ## <a name="connect-to-key-vault"></a>Key Vault に接続する
 
@@ -129,7 +129,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. **AZURE_CLIENT_ID**、**AZURE_CLIENT_SECRET**、および **AZURE_TENANT_ID** 環境変数を作成します。 前の手順で表示されたサービス プリンシパルの値を使用します。 コマンド ラインで次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
+1. **AZURE_CLIENT_ID** 、 **AZURE_CLIENT_SECRET** 、および **AZURE_TENANT_ID** 環境変数を作成します。 前の手順で表示されたサービス プリンシパルの値を使用します。 コマンド ラインで次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -238,7 +238,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     }
     ```
 
-1. リソースの META-INF ディレクトリに、*spring.factories* という新しいファイルを作成し、次のコードを追加します。
+1. リソースの META-INF ディレクトリに、 *spring.factories* という新しいファイルを作成し、次のコードを追加します。
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
@@ -252,7 +252,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     mvn spring-boot:run
     ```
 
-1. アプリケーションが実行されたら、*curl* を使用してアプリケーションをテストできます。次に例を示します。
+1. アプリケーションが実行されたら、 *curl* を使用してアプリケーションをテストできます。次に例を示します。
 
       ```shell
       curl -X GET http://localhost:8080/

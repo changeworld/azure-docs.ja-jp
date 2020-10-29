@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 82d482cd0a1b3a5b6028b9249030b7b1a093d22d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 1efd4baf80c9ba30b1d1ea35390386bc4e7659d3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570544"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747789"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 17a29621d3d70d56745d2e51e0ce80974876a9ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399042"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782163"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問
 
@@ -55,13 +55,13 @@ ms.locfileid: "91399042"
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>エクスポート ジョブを作成するときに、ディスクの準備作業を実行する必要はありますか?
 
-いいえ。 いくつかの事前チェックをお勧めします。 必要なディスクの数を確認するには、WAImportExport ツールの PreviewExport コマンドを使います。 詳細については、「 [Previewing Drive Usage for an Export Job (エクスポート ジョブのドライブ使用率のプレビュー)](https://msdn.microsoft.com/library/azure/dn722414.aspx)」をご覧ください。 このコマンドは、使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。 また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
+いいえ。 いくつかの事前チェックをお勧めします。 必要なディスクの数を確認するには、WAImportExport ツールの PreviewExport コマンドを使います。 詳細については、「 [Previewing Drive Usage for an Export Job (エクスポート ジョブのドライブ使用率のプレビュー)](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1)」をご覧ください。 このコマンドは、使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。 また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
 
 ## <a name="importexport-jobs"></a>Import/Export ジョブ
 
 ### <a name="can-i-cancel-my-job"></a>ジョブを取り消すことはできますか?
 
-はい。 ジョブの状態が**作成**または**発送**のときは、ジョブを取り消すことができます。 これらのステージを過ぎると、ジョブをキャンセルすることはできず、最後のステージまで行われます。
+はい。 ジョブの状態が **作成** または **発送** のときは、ジョブを取り消すことができます。 これらのステージを過ぎると、ジョブをキャンセルすることはできず、最後のステージまで行われます。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Azure Portal では、どのくらいの期間、完了したジョブの状態を確認できますか?
 
@@ -132,7 +132,7 @@ Azure データ センターでは、サポートされる要件に適合しな�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>このサービスでインポートされたデータには、どのようにしてアクセスできますか?
 
-Azure ストレージ アカウントのデータにアクセスするには、Azure portal または[ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を使用します。  
+Azure ストレージ アカウントのデータにアクセスするには、Azure portal または[ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>インポートの完了後、ストレージ アカウント内でデータはどのような状態になりますか? ディレクトリ階層は保持されますか?
 
@@ -144,7 +144,7 @@ Azure ストレージ アカウントのデータにアクセスするには、A
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport ツールは、32 ビット オペレーティング システムと互換性がありますか?
 
-いいえ。 WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされる OS の全一覧については、[サポートされるオペレーティング システム](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)に関するページをご覧ください。
+いいえ。 WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされる OS の全一覧については、[サポートされるオペレーティング システム](./storage-import-export-requirements.md)に関するページをご覧ください。
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?
 

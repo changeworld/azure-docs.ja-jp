@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400548"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784050"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>データ転送用の Azure ソリューションを選択する
 
@@ -71,15 +71,15 @@ Azure portal で Azure Storage アカウントにアクセスして、 **[デー
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Storage Explorer の概要を理解する](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)
-- [AzCopy の概要を理解する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [AzCopy の概要を理解する](./storage-use-azcopy-v10.md)
 - [クイック スタート: PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../blobs/storage-quickstart-blobs-powershell.md)
 - [クイック スタート: Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](../blobs/storage-quickstart-blobs-cli.md)
 - 内容は次のとおりです。
 
-    - [オフライン転送用の Azure Data Box、Azure Data Box Disk、および Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)
-    - [オンライン転送用の Azure Data Box Gateway と Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/)
-- [Azure Data Factory の概要を理解する](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)
+    - [オフライン転送用の Azure Data Box、Azure Data Box Disk、および Azure Data Box Heavy](../../databox/index.yml)
+    - [オンライン転送用の Azure Data Box Gateway と Azure Stack Edge](../../databox-online/index.yml)
+- [Azure Data Factory の概要を理解する](../../data-factory/copy-activity-overview.md)
 - REST API を使用してデータ転送する
 
-    - [.NET の場合](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java の場合](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [.NET の場合](/dotnet/api/overview/azure/storage)
+    - [Java の場合](/java/api/overview/azure/storage)

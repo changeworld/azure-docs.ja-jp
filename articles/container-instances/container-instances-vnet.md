@@ -3,13 +3,13 @@ title: Azure 仮想ネットワークへのコンテナー グループのデプ
 description: Azure コマンド ライン インターフェイスを使用して、新規または既存の Azure 仮想ネットワークにコンテナー グループをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303010"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746892"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -36,11 +36,11 @@ ms.locfileid: "91303010"
 
 仮想ネットワークとサブネットのアドレス プレフィックスでは、仮想ネットワークとサブネットそれぞれのアドレス空間を指定します。 これらの値は、CIDR (Classless Inter-domain Routing) 表記法で表されます (例: `10.0.0.0/16`)。 サブネットの操作について詳しくは、「[仮想ネットワーク サブネットの追加、変更、削除](../virtual-network/virtual-network-manage-subnet.md)」をご覧ください。
 
-この方法を使用して最初のコンテナー グループをデプロイした後は、仮想ネットワーク名とサブネット名を指定するか、Azure によって自動作成されたネットワーク プロファイルを指定して、同じサブネットへのデプロイを実行できます。 サブネットは Azure によって Azure Container Instances に委任されるので、サブネットにデプロイできるのは、コンテナー グループ*のみ*となります。
+この方法を使用して最初のコンテナー グループをデプロイした後は、仮想ネットワーク名とサブネット名を指定するか、Azure によって自動作成されたネットワーク プロファイルを指定して、同じサブネットへのデプロイを実行できます。 サブネットは Azure によって Azure Container Instances に委任されるので、サブネットにデプロイできるのは、コンテナー グループ *のみ* となります。
 
 ### <a name="example"></a>例
 
-次の [az container create][az-container-create] コマンドは、新しい仮想ネットワークとサブネットの設定を指定します。 仮想ネットワーク内のコンテナー グループのデプロイが[利用できる](container-instances-region-availability.md#availability---virtual-network-deployment)リージョンで作成されたリソース グループの名前を指定します。 このコマンドにより、パブリックの Microsoft [aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
+次の [az container create][az-container-create] コマンドは、新しい仮想ネットワークとサブネットの設定を指定します。 仮想ネットワーク内のコンテナー グループのデプロイが[利用できる](container-instances-region-availability.md)リージョンで作成されたリソース グループの名前を指定します。 このコマンドにより、パブリックの Microsoft [aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
 
 ```azurecli
 az container create \
@@ -59,7 +59,7 @@ az container create \
 
 コンテナー グループを既存の仮想ネットワークにデプロイするには:
 
-1. 既存の仮想ネットワーク内にサブネットを作成し、コンテナー グループが既にデプロイされている既存のサブネットを使用するか、または、他のリソースが*いっさい入っていない*空の既存のサブネットを使用します。
+1. 既存の仮想ネットワーク内にサブネットを作成し、コンテナー グループが既にデプロイされている既存のサブネットを使用するか、または、他のリソースが *いっさい入っていない* 空の既存のサブネットを使用します。
 1. [az container create][az-container-create] を使用してコンテナー グループをデプロイし、次のいずれかを指定します。
    * 仮想ネットワーク名とサブネット名
    * 仮想ネットワーク リソース ID、およびサブネット リソース ID (これにより、別のリソース グループから仮想ネットワークを使用できます)
@@ -69,7 +69,7 @@ az container create \
 
 次の例では、前に作成した同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信を検証します。
 
-まず、デプロイした 1 つ目のコンテナー グループ (*appcontainer*) の IP アドレスを取得します。
+まず、デプロイした 1 つ目のコンテナー グループ ( *appcontainer* ) の IP アドレスを取得します。
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -83,7 +83,7 @@ az container show --resource-group myResourceGroup \
 10.0.0.4
 ```
 
-次に、`CONTAINER_GROUP_IP` を `az container show` コマンドで取得した IP アドレスに設定し、次の `az container create` コマンドを実行します。 この 2 つ目のコンテナー (*commchecker*) は、Alpine Linux ベースのイメージを実行し、最初のコンテナー グループのプライベート サブネット IP アドレスに対して `wget` を実行します。
+次に、`CONTAINER_GROUP_IP` を `az container show` コマンドで取得した IP アドレスに設定し、次の `az container create` コマンドを実行します。 この 2 つ目のコンテナー ( *commchecker* ) は、Alpine Linux ベースのイメージを実行し、最初のコンテナー グループのプライベート サブネット IP アドレスに対して `wget` を実行します。
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ az network profile list --resource-group myResourceGroup \
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-ネットワーク プロファイル ID が取得できたら、*vnet-deploy-aci.yaml* という名前の新しいファイルに、次の YAML をコピーします。 `networkProfile` で、`id` の値を先ほど取得した ID に置き換え、ファイルを保存します。 この YAML は、*appcontaineryaml* という名前のコンテナー グループを仮想ネットワーク内に作成します。
+ネットワーク プロファイル ID が取得できたら、 *vnet-deploy-aci.yaml* という名前の新しいファイルに、次の YAML をコピーします。 `networkProfile` で、`id` の値を先ほど取得した ID に置き換え、ファイルを保存します。 この YAML は、 *appcontaineryaml* という名前のコンテナー グループを仮想ネットワーク内に作成します。
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -204,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 スクリプトを実行する前に、`RES_GROUP` 変数を、削除する仮想ネットワークとサブネットを含んだリソース グループの名前に設定してください。 以前に提案された `aci-vnet` の名前を使用しなかった場合は、仮想ネットワークの名前を更新します。 スクリプトは Bash シェル用に書式設定されています。 別のシェル (PowerShell やコマンド プロンプトなど) を使用する場合は、変数の割り当てとアクセサーを適宜調整する必要があります。
 
 > [!WARNING]
-> このスクリプトを実行すると、リソースが削除されます。 仮想ネットワークと、それに含まれているすべてのサブネットが削除されます。 このスクリプトを実行する前に、仮想ネットワーク (およびそれに含まれるすべてのサブネット) 内の*いずれの*リソースも、今後必要でないことを確認してください。 一度削除すると、**それらのリソースを復旧することはできません**。
+> このスクリプトを実行すると、リソースが削除されます。 仮想ネットワークと、それに含まれているすべてのサブネットが削除されます。 このスクリプトを実行する前に、仮想ネットワーク (およびそれに含まれるすべてのサブネット) 内の *いずれの* リソースも、今後必要でないことを確認してください。 一度削除すると、 **それらのリソースを復旧することはできません** 。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

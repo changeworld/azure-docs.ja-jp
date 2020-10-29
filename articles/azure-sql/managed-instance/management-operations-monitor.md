@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993194"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782452"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の監視
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -62,9 +62,9 @@ API は次のとおりです。
 
 | command | 説明 |
 | --- | --- |
-|[Managed Instance の操作 - 取得](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|マネージド インスタンスに対する管理操作を取得します。|
-|[Managed Instance の操作 - キャンセル](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|マネージド インスタンスに対する非同期操作をキャンセルします。|
-|[Managed Instance の操作 - Managed Instance 別に一覧表示](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|マネージド インスタンス上で実行された操作の一覧を取得します。|
+|[Managed Instance の操作 - 取得](/rest/api/sql/managedinstanceoperations/get)|マネージド インスタンスに対する管理操作を取得します。|
+|[Managed Instance の操作 - キャンセル](/rest/api/sql/managedinstanceoperations/cancel)|マネージド インスタンスに対する非同期操作をキャンセルします。|
+|[Managed Instance の操作 - Managed Instance 別に一覧表示](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|マネージド インスタンス上で実行された操作の一覧を取得します。|
 
 > [!NOTE]
 > API バージョン 2020-02-02 を使用して、操作の一覧でマネージド インスタンスの作成操作を確認します。 これは、Azure portal と最新の PowerShell および Azure CLI パッケージで使用される既定のバージョンです。
@@ -75,7 +75,7 @@ API は次のとおりです。
 
 Azure portal で、マネージド インスタンスの **[概要]** ページを使用してマネージド インスタンスの操作を監視します。 
 
-たとえば、**作成操作**は、作成プロセスの開始時に **[概要]** ページで確認できます。 
+たとえば、 **作成操作** は、作成プロセスの開始時に **[概要]** ページで確認できます。 
 
 ![マネージド インスタンスの作成の進行状況](./media/management-operations-monitor/monitoring-create-operation.png)
 
@@ -98,7 +98,7 @@ $managementOperations = Get-AzSqlInstanceOperation `
     -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
 ```
 
-コマンドの詳細な説明については、「[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)」を参照してください。
+コマンドの詳細な説明については、「[Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)」を参照してください。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -108,7 +108,7 @@ az sql mi op list を使用すると、マネージド インスタンスに対�
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
 ```
 
-コマンドの詳細については、[az sql mi op](https://docs.microsoft.com/cli/azure/sql/mi/op) を参照してください。
+コマンドの詳細については、[az sql mi op](/cli/azure/sql/mi/op) を参照してください。
 
 ---
 

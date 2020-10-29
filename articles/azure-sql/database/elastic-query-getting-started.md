@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443312"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781228"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体のレポート (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,10 +34,10 @@ ms.locfileid: "91443312"
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>サンプル アプリケーションを使用してシャード マップ マネージャーを作成する
 ここでは、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。 シャードがすでにセットアップされ、シャード データが取り込まれている場合は、以下の手順を省略して、次のセクションに進むことができます。
 
-1. 「[サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app-1)」セクションの手順に従って、「**Elastic Database ツールの概要**」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
+1. 「 [サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app-1)」セクションの手順に従って、「 **Elastic Database ツールの概要** 」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
 
     ![コマンド プロンプト (command prompt)][1]
-2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
+2. コマンド ウィンドウで、「1」を入力し、 **Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、 **Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
 3. [Azure Portal](https://portal.azure.com) に、サーバー内の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認][2]
@@ -72,7 +72,7 @@ ms.locfileid: "91443312"
     SECRET = '<password>';
     ```
 
-    "username" と "password" は、記事「**Elastic Database ツールの概要**」の「[サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
+    "username" と "password" は、記事「 **Elastic Database ツールの概要** 」の「 [サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
 
 ### <a name="external-data-sources"></a>外部データ ソース
 外部データ ソースを作成するには、ElasticDBQuery データベースで、次のコマンドを実行します。
@@ -144,7 +144,7 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 * 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](elastic-query-getting-started-vertical.md)」をご覧ください。
 * 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](elastic-query-vertical-partitioning.md)」をご覧ください。
 * 行方向にパーティション分割されたデータの構文とサンプル クエリについては、「[スケールアウトされたクラウド データベース全体をレポートする (プレビュー)](elastic-query-horizontal-partitioning.md)」をご覧ください。
-* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)」をご覧ください。
+* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)」をご覧ください。
 
 
 <!--Image references-->

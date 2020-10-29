@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714380"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783761"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer セキュリティ ガイド
 
@@ -44,13 +44,13 @@ Azure Storage リソースにアクセスする最も簡単で安全な方法は
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC)
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure リソースに対するきめ細かいアクセス制御を提供します。 Azure のロールとアクセス許可は、Azure portal から管理できます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure リソースに対するきめ細かいアクセス制御を提供します。 Azure のロールとアクセス許可は、Azure portal から管理できます。
 
 Storage Explorer では、ストレージ アカウント、BLOB、およびキューへの Azure RBAC アクセスがサポートされています。 ファイル共有またはテーブルにアクセスする必要がある場合は、ストレージ アカウント キーを一覧表示するアクセス許可を付与する Azure ロールを割り当てる必要があります。
 
 #### <a name="access-control-lists-acls"></a>アクセス制御リスト (ACL)
 
-[アクセス制御リスト (ACL)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) を使用すると、ADLS Gen2 BLOB コンテナーでファイルおよびフォルダー レベルのアクセスを制御できます。 Storage Explorer を使用して ACL を管理できます。
+[アクセス制御リスト (ACL)](../blobs/data-lake-storage-access-control.md) を使用すると、ADLS Gen2 BLOB コンテナーでファイルおよびフォルダー レベルのアクセスを制御できます。 Storage Explorer を使用して ACL を管理できます。
 
 ### <a name="shared-access-signatures-sas"></a>Shared Access Signatures (SAS)
 
@@ -102,4 +102,4 @@ BLOB コンテナーのパブリック アクセスを有効にする場合は�
 
 ## <a name="next-steps"></a>次の手順
 
-- [セキュリティに関する推奨事項](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+- [セキュリティに関する推奨事項](../blobs/security-recommendations.md)

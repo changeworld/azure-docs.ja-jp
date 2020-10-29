@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
-ms.openlocfilehash: 75eda1720e80a886ca0efb2d1f4204416a5b55f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083340"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748738"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -28,7 +28,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 ## <a name="create-a-template"></a>テンプレートの作成
 
-Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なリソースを 1 つのテンプレートで定義することができます。
+Azure Resource Manager テンプレートは、 **リソース グループ** とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なリソースを 1 つのテンプレートで定義することができます。
 
 次の JSON ドキュメントは、[https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
 
@@ -205,7 +205,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
    }
    ```
 
-このサンプルをこのドキュメントの手順で使用します。 **Parameters** セクションのサンプルの "*値*" は、ご自身のクラスターの値に置き換えてください。
+このサンプルをこのドキュメントの手順で使用します。 **Parameters** セクションのサンプルの " *値* " は、ご自身のクラスターの値に置き換えてください。
 
 > [!IMPORTANT]  
 > テンプレートでは、HDInsight クラスターに既定数 (4) の worker ノードを使用します。 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
@@ -214,12 +214,12 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 
-「[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
+「[Azure CLI の概要](/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 > [!NOTE]  
-> 以下の手順は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)」ドキュメントの「*パスワードを使用したサービス プリンシパルの作成*」セクションを要約したものです。 この手順を実行すると、Azure REST API への認証に使用されるサービス プリンシパルが作成されます。
+> 以下の手順は、「 [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」ドキュメントの「 *パスワードを使用したサービス プリンシパルの作成* 」セクションを要約したものです。 この手順を実行すると、Azure REST API への認証に使用されるサービス プリンシパルが作成されます。
 
 1. コマンド ラインで、次のコマンドを使用して Azure サブスクリプションを一覧表示します。
 
@@ -227,7 +227,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    一覧で、使用するサブスクリプションを選択し、**Subscription_ID** 列と __Tenant_ID__ 列を書き留めます。 これらの値を保存します。
+    一覧で、使用するサブスクリプションを選択し、 **Subscription_ID** 列と __Tenant_ID__ 列を書き留めます。 これらの値を保存します。
 
 2. 次のコマンドを使用して、Azure Active Directory 内にアプリケーションを作成します。
 
@@ -242,15 +242,15 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
    このコマンドから返される値は、新しいアプリケーションの __アプリ ID__ です。 この値を保存します。
 
-3. 次のコマンドを使用して、**アプリ ID** を使用するサービス プリンシパルを作成します。
+3. 次のコマンドを使用して、 **アプリ ID** を使用するサービス プリンシパルを作成します。
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     このコマンドから返される値は、__オブジェクト ID__ です。 この値を保存します。
+     このコマンドから返される値は、 __オブジェクト ID__ です。 この値を保存します。
 
-4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した**サブスクリプション ID** を使用します。
+4. **所有者** の役割を、 **オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した **サブスクリプション ID** を使用します。
 
    ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
@@ -274,7 +274,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に JSON ドキュメントが含まれています。
 
-この要求によって返される JSON ドキュメントには、**access_token** という名前の要素が含まれます。 **access_token** の値が、REST API への認証要求で使用されます。
+この要求によって返される JSON ドキュメントには、 **access_token** という名前の要素が含まれます。 **access_token** の値が、REST API への認証要求で使用されます。
 
 ```json
 {

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330708"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781211"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Database でエラスティック プールのリソースをスケーリングする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91330708"
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>コンピューティング リソース (仮想コアまたは DTU) の変更
 
-仮想コアまたは eDTU の数を最初に選択した後は、[Azure portal](elastic-pool-manage.md#azure-portal)、[PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、[Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update) を使い、実際の状況に基づいて、エラスティック プールを動的にスケールアップまたはスケールダウンできます。
+仮想コアまたは eDTU の数を最初に選択した後は、[Azure portal](elastic-pool-manage.md#azure-portal)、[PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、[Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)、または [REST API](/rest/api/sql/elasticpools/update) を使い、実際の状況に基づいて、エラスティック プールを動的にスケールアップまたはスケールダウンできます。
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>サービス レベルの変更またはコンピューティング サイズの再スケーリングの影響
 
@@ -57,7 +57,7 @@ ms.locfileid: "91330708"
 >
 > - サービス レベルを変更する場合、またはエラスティック プールのコンピューティングを再度スケーリングする場合は、そのプール内のすべてのデータベース全体で使用される領域の合計を、推定値の計算に使用する必要があります。
 > - エラスティック プールとの間でデータベースを移動する場合、エラスティック プールで使用される領域ではなく、データベースの使用領域のみが待機時間に影響します。
-> - Standard および General Purpose エラスティック プールでは、エラスティック プールで Premium ファイル共有 ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。 プールで PFS ストレージが使用されているかどうかを確認するには、プールのデータベースのコンテキストで次のクエリを実行します。 AccountType 列の値が `PremiumFileStorage` または `PremiumFileStorage-ZRS` の場合、プールで PFS ストレージが使用されています。
+> - Standard および General Purpose エラスティック プールでは、エラスティック プールで Premium ファイル共有 ([PFS](../../storage/files/storage-files-introduction.md)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。 プールで PFS ストレージが使用されているかどうかを確認するには、プールのデータベースのコンテキストで次のクエリを実行します。 AccountType 列の値が `PremiumFileStorage` または `PremiumFileStorage-ZRS` の場合、プールで PFS ストレージが使用されています。
 
 ```sql
 SELECT s.file_id,
@@ -69,7 +69,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) と [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+> 実行中の操作の監視については、[SQL REST API を使った操作の管理](/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) と [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>サービス レベルを変更またはコンピューティング サイズを再スケーリングする場合の追加の考慮事項
 
@@ -100,7 +100,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ### <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
 - エラスティック プールの eDTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 付属するストレージの量と最大サイズ制限については、「[エラスティック プール: ストレージ サイズとコンピューティング サイズ](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)」をご覧ください。
-- エラスティック プールの追加ストレージは、[Azure Portal](elastic-pool-manage.md#azure-portal)、[PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、[Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
+- エラスティック プールの追加ストレージは、[Azure Portal](elastic-pool-manage.md#azure-portal)、[PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、[Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)、または [REST API](/rest/api/sql/elasticpools/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
 - エラスティック プールの追加ストレージの料金は、追加ストレージ量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 > [!IMPORTANT]

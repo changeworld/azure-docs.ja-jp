@@ -5,19 +5,19 @@ description: PowerShell または Azure CLI を使用して、保存時の暗号
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619119"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779970"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ ms.locfileid: "91619119"
 - TDE に使用するには、キーに次の属性が必要です。
   - 有効期限がない
   - 無効化されていない
-  - "*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作を実行できる
+  - " *取得* "、" *キーのラップ* "、" *キーのラップ解除* " の各操作を実行できる
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。
+Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。
 
 Key Vault の詳細については、「[PowerShell を使用した Key Vault の操作](../../key-vault/secrets/quick-create-powershell.md)」と「[PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)」を参照してください。
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-必要なバージョンの Azure CLI (バージョン 2.0 以降) をインストールして Azure サブスクリプションに接続するには、[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli)に関する記事をご覧ください。
+必要なバージョンの Azure CLI (バージョン 2.0 以降) をインストールして Azure サブスクリプションに接続するには、[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](/cli/azure/install-azure-cli)に関する記事をご覧ください。
 
 Key Vault の詳細については、[CLI 2.0 を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md)と [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)に関する記事をご覧ください。
 
@@ -239,7 +239,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 新しいキーをサーバーに追加できない場合や、新しいキーを TDE 保護機能として更新できない場合は、以下を確認します。
    - キーに有効期限がないこと。
-   - キーで、"*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作が有効になっている必要があります。
+   - キーで、" *取得* "、" *キーのラップ* "、" *キーのラップ解除* " の各操作が有効になっている必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

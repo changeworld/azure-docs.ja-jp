@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4daac353c69677021245e95c0b11550372f5d4ec
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080705"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748787"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI。 Azure CLI をインストールしていない場合、手順については「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+Azure CLI。 Azure CLI をインストールしていない場合、手順については「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) を参照してください。
+2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](/cli/azure/hdinsight#az-hdinsight-create) を参照してください。
 
     |パラメーター | 説明 |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
     export componentVersion=Hadoop=2.7
     ```
 
-3. 次のコマンドを入力して、[リソース グループを作成します](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)。
+3. 次のコマンドを入力して、[リソース グループを作成します](/cli/azure/group#az-group-create)。
 
     ```azurecli-interactive
     az group create \
@@ -78,7 +78,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
 
     グループの作成先として有効な場所は、`az account list-locations` コマンドで一覧表示できます。`name` 値に表示されるいずれかの場所を使用してください。
 
-4. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。
+4. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](/cli/azure/storage/account#az-storage-account-create)。
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
         --sku Standard_LRS
     ```
 
-5. 次のコマンドを入力して、[Azure ストレージ アカウントからプライマリ キーを抽出し](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)、それを変数に保存します。
+5. 次のコマンドを入力して、[Azure ストレージ アカウントからプライマリ キーを抽出し](/cli/azure/storage/account/keys#az-storage-account-keys-list)、それを変数に保存します。
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
         --query [0].value -o tsv)
     ```
 
-6. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)。
+6. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](/cli/azure/storage/container#az-storage-container-create)。
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. 次のコマンドを入力して、[HDInsight クラスターを作成します](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
+7. 次のコマンドを入力して、[HDInsight クラスターを作成します](/cli/azure/hdinsight#az-hdinsight-create)。
 
     ```azurecli-interactive
     az hdinsight create \

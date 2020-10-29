@@ -4,13 +4,13 @@ description: この Azure Kubernetes Service (AKS) チュートリアルでは�
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: bf2ea5c7ea0c2f3ae90f9d98d8009915d5ced6f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576286"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747061"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -34,7 +34,7 @@ Azure Container Registry (ACR) は、コンテナー イメージ用のプライ
 
 Azure Container Registry を作成するには、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -74,7 +74,7 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 ACR で *azure-vote-front* コンテナー イメージを使用するには、イメージにレジストリのログイン サーバー アドレスでタグを付ける必要があります。 このタグは、イメージ レジストリにコンテナー イメージをプッシュするときに、ルーティングするために使用されます。
 
-ログイン サーバー アドレスを取得するには、[az acr list][az-acr-list] コマンドを使用し、*loginServer* に対して次のようにクエリを実行します。
+ログイン サーバー アドレスを取得するには、 [az acr list][az-acr-list] コマンドを使用し、 *loginServer* に対して次のようにクエリを実行します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -104,7 +104,7 @@ tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863
 
 ## <a name="push-images-to-registry"></a>イメージをレジストリにプッシュ
 
-ビルドしてタグ付けしたイメージと共に、*azure-vote-front* イメージを ACR インスタンスにプッシュします。 [docker push][docker-push] を使用して、次のように、イメージ名に独自の *acrLoginServer* アドレスを指定します。
+ビルドしてタグ付けしたイメージと共に、 *azure-vote-front* イメージを ACR インスタンスにプッシュします。 [docker push][docker-push] を使用して、次のように、イメージ名に独自の *acrLoginServer* アドレスを指定します。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1

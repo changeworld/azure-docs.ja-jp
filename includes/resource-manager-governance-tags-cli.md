@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/20/2018
 ms.author: tomfitz
-ms.custom: include file
-ms.openlocfilehash: c1259584e91461865b0c7e7bbbd6aced1781827b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 53d4aa70b55577cdf2f6a1b898b496eb368157f5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67708440"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755950"
 ---
 リソース グループに 2 つのタグを追加するには、[az group update](/cli/azure/group) コマンドを使用します。
 

@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: contperfq1
-ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: 906ec80ecc198675fdb5b163403267be1d13de00
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500319"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746840"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -39,7 +39,7 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 
     Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD Domain Services を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/tutorial-create-instance.md)に関する記事に書かれている手順を実行します。
 
-    通常、Azure AD DS のデプロイが完了するまでには 15 分ほどかかります。 次の手順に進む前に、Azure AD DS の正常性状態が**実行中**と表示されており、パスワード ハッシュ同期が有効になっていることを確認します。
+    通常、Azure AD DS のデプロイが完了するまでには 15 分ほどかかります。 次の手順に進む前に、Azure AD DS の正常性状態が **実行中** と表示されており、パスワード ハッシュ同期が有効になっていることを確認します。
 
 1.  **Azure AD DS を使用している Azure VM ドメインに参加します。**
 
@@ -99,7 +99,7 @@ SMB を使用した Azure AD DS 認証を有効にするには、Azure AD テナ
 
 Azure PowerShell を使用して SMB 経由で Azure AD DS 認証を有効にするには、最新の Az モジュール (2.4 以降) または Az.Storage モジュール (1.5 以降) をインストールします。 PowerShell のインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関する記事を参照してください。
 
-新しいストレージ アカウントを作成するには、[New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0) を呼び出し、**EnableAzureActiveDirectoryDomainServicesForFile** パラメーターを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **EnableAzureFilesAadIntegrationForSMB** です。)
+新しいストレージ アカウントを作成するには、 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0) を呼び出し、 **EnableAzureActiveDirectoryDomainServicesForFile** パラメーターを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **EnableAzureFilesAadIntegrationForSMB** です。)
 
 ```powershell
 # Create a new storage account
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Azure CLI を使用して SMB 経由の Azure AD 認証を有効にするには、最新バージョンの CLI (バージョン2.0.70 以降) をインストールします。 Azure CLI のインストール方法については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
-新しいストレージ アカウントを作成するには、[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を呼び出し、`--enable-files-aadds` プロパティを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **file-aad** です)。
+新しいストレージ アカウントを作成するには、 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を呼び出し、`--enable-files-aadds` プロパティを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **file-aad** です)。
 
 ```azurecli-interactive
 # Create a new storage account

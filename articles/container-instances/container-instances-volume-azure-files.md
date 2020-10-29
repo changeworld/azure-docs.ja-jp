@@ -3,13 +3,13 @@ title: Azure Files ボリュームをコンテナー グループにマウント
 description: Azure Files ボリュームをマウントして、Azure Container Instances で状態を保持する方法について説明します
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259465"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746873"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
@@ -81,7 +81,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` 値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル**のエラー メッセージが表示された場合は、前述のコマンドの値を更新してください。
+`--dns-name-label` 値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル** のエラー メッセージが表示された場合は、前述のコマンドの値を更新してください。
 
 ## <a name="manage-files-in-mounted-volume"></a>マウントしたボリューム内のファイルの管理
 
@@ -235,7 +235,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 コンテナー インスタンスに複数のボリュームをマウントするには、[Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)、YAML ファイル、またはその他のプログラムによる方法を使用してデプロイを行う必要があります。 テンプレートまたは YAML ファイルを使用するには、ファイルの `properties` セクションで `volumes` 配列を設定することにより、共有の詳細を指定し、ボリュームを定義します。 
 
-たとえば、*share1* および *share2* という 2 つの Azure Files 共有をストレージ アカウント *myStorageAccount* に作成した場合、Resource Manager テンプレート内の `volumes` 配列は次のようになります。
+たとえば、 *share1* および *share2* という 2 つの Azure Files 共有をストレージ アカウント *myStorageAccount* に作成した場合、Resource Manager テンプレート内の `volumes` 配列は次のようになります。
 
 ```JSON
 "volumes": [{

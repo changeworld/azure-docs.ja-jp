@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: danlep
-ms.custom: include file
-ms.openlocfilehash: 2b1d9b7f9ff07a3e0c7745191decc3e82181553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 173c9156f253e43111299b53287e97ab7b2c0aa5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708021"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746958"
 ---
 ## <a name="create-azure-container-registry"></a>Azure Container Registry の作成
 
-コンテナー レジストリを作成する前に、そのデプロイ先となる*リソース グループ*が必要です。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
+コンテナー レジストリを作成する前に、そのデプロイ先となる *リソース グループ* が必要です。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

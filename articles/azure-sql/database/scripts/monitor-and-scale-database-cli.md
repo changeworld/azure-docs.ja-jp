@@ -4,19 +4,19 @@ description: Azure CLI サンプル スクリプトを使用し、Azure SQL Data
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: c4df9ecc025bbffb63730273be06f54cf46f613c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b74bf5fc324d8ea6cc113d50d8e11b0e0d994797
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319399"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747389"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Azure CLI を使用して Azure SQL Database の単一データベースを監視してスケーリングする
 

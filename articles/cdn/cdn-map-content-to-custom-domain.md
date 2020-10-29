@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e880d257b8a8bd6eb287b88e11a1f6c3243fe9a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362097"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778612"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する
 このチュートリアルでは、カスタム ドメインを Azure Content Delivery Network (CDN) エンドポイントに追加する方法について説明します。 CDN エンドポイントを使用してコンテンツを配信するときに独自のドメイン名を CDN URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。 
@@ -38,9 +38,9 @@ ms.locfileid: "91362097"
 
 このチュートリアルの手順を完了するには、最初に CDN プロファイルと少なくとも 1 つの CDN エンドポイントを作成する必要があります。 詳細については、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
 
-カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)に関するページを参照してください。
+カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](../app-service/manage-custom-dns-buy-domain.md)に関するページを参照してください。
 
-Azure を使用して [DNS ドメイン](https://docs.microsoft.com/azure/dns/dns-overview) をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
+Azure を使用して [DNS ドメイン](../dns/dns-overview.md) をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](../dns/dns-delegate-domain-azure-dns.md)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
 
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS レコードを作成する
@@ -50,7 +50,7 @@ Azure を使用して [DNS ドメイン](https://docs.microsoft.com/azure/dns/dn
 カスタム ドメインとそのサブドメインは、一度に 1 つのエンドポイントにのみ関連付けることができます。 ただし、複数の CNAME レコードを使用して、異なる Azure サービス エンドポイントに対して同じカスタム ドメインの異なるサブドメインを使用することができます。 また、異なるサブドメインがあるカスタム ドメインを同じ CDN エンドポイントにマップすることもできます。
 
 > [!NOTE]
-> ドメイン プロバイダーとして Azure DNS を使用している場合は、任意のエイリアス レコード タイプをカスタム ドメインに使用できます。 このチュートリアルでは、CNAME レコード タイプを使用します。 A または AAAA レコード タイプを使用している場合は、次の同じ手順に従って、選択したレコード タイプで CNAME を置き換えてください。 ルート ドメインをカスタム ドメインとして追加するためにエイリアス レコードを使用していて、TLS を有効にする場合は、[こちらの記事](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)の説明に従って手動による検証を使用する必要があります。 詳細については、「[ゾーンの頂点から Azure CDN エンドポイントをポイントする](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)」を参照してください。
+> ドメイン プロバイダーとして Azure DNS を使用している場合は、任意のエイリアス レコード タイプをカスタム ドメインに使用できます。 このチュートリアルでは、CNAME レコード タイプを使用します。 A または AAAA レコード タイプを使用している場合は、次の同じ手順に従って、選択したレコード タイプで CNAME を置き換えてください。 ルート ドメインをカスタム ドメインとして追加するためにエイリアス レコードを使用していて、TLS を有効にする場合は、[こちらの記事](./cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)の説明に従って手動による検証を使用する必要があります。 詳細については、「[ゾーンの頂点から Azure CDN エンドポイントをポイントする](../dns/dns-alias.md#point-zone-apex-to-azure-cdn-endpoints)」を参照してください。
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>一時 cdnverify サブドメインをマップする
 
@@ -72,7 +72,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
     - ソース:cdnverify サブドメインを含めて、カスタム ドメイン名を cdnverify.&lt;カスタム ドメイン名&gt; 形式で入力します。 たとえば、cdnverify.www\.contoso.com とします。
 
-    - 型: 「*CNAME*」と入力します。
+    - 型: 「 *CNAME* 」と入力します。
 
     - 変換先:cdnverify サブドメインを含めて、CDN エンドポイントのホスト名を cdnverify. _&lt;エンドポイント名&gt;_ .azureedge.net 形式で入力します。 たとえば、cdnverify.contoso.azureedge.net とします。
 
@@ -166,7 +166,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
    - ソース:カスタム ドメイン名 (例: www\.contoso.com) を入力します。
 
-   - 型: 「*CNAME*」と入力します。
+   - 型: 「 *CNAME* 」と入力します。
 
    - 変換先:CDN エンドポイントのホスト名を入力します。 名前は _&lt;エンドポイント名&gt;_ .azureedge.net 形式である必要があります。 たとえば、contoso.azureedge.net とします。
 
@@ -233,5 +233,3 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する](cdn-custom-ssl.md)
-
-

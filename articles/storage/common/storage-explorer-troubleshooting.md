@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714442"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783795"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -23,7 +23,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux での Azure Stor
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC のアクセス許可に関する問題
 
-Azure のロールベースのアクセス制御 ([Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)) を使用すると、アクセス許可のセットを "_ロール_" に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
+Azure のロールベースのアクセス制御 ( [Azure RBAC](../../role-based-access-control/overview.md)) を使用すると、アクセス許可のセットを " _ロール_ " に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Storage Explorer で自分のリソースにアクセスするにはどうすればいいですか?
 
@@ -31,7 +31,7 @@ Azure RBAC を使用したストレージ リソースへのアクセスに問�
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>"読み取り:ストレージ アカウントの一覧表示/取得" アクセス許可の問題
 
-ストレージ アカウントを一覧表示するためのアクセス許可が必要です。 このアクセス許可を取得するには、_閲覧者_ ロールが割り当てられている必要があります。
+ストレージ アカウントを一覧表示するためのアクセス許可が必要です。 このアクセス許可を取得するには、 _閲覧者_ ロールが割り当てられている必要があります。
 
 #### <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
 
@@ -42,11 +42,11 @@ Storage Explorer では、アカウント キーを使用して要求を認証�
 
 #### <a name="data-roles"></a>データ ロール
 
-リソースからデータを読み取るためのアクセス権を付与するロールが少なくとも 1 つ割り当てられている必要があります。 たとえば、BLOB を一覧表示したりダウンロードしたりする場合は、少なくとも_ストレージ BLOB データ閲覧者_ ロールが必要になります。
+リソースからデータを読み取るためのアクセス権を付与するロールが少なくとも 1 つ割り当てられている必要があります。 たとえば、BLOB を一覧表示したりダウンロードしたりする場合は、少なくとも _ストレージ BLOB データ閲覧者_ ロールが必要になります。
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Storage Explorer でリソースを表示するには、管理レイヤーのロールが必要ですか?
 
-Azure Storage には、_管理_と_データ_という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
+Azure Storage には、 _管理_ と _データ_ という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
 
 Azure ロールでは、管理レイヤーまたはデータ レイヤーにアクセスするためのアクセス許可を与えることができます。 たとえば、閲覧者ロールは、管理レイヤー リソースへの読み取り専用アクセス権を付与します。
 
@@ -65,24 +65,24 @@ BLOB コンテナーまたはキューにアクセスする場合、Azure 資格
 3. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 [次へ] をクリックします。
 4. リソースの種類を選択し、リソースの URL を入力し、接続の一意の表示名を入力します。 [次へ] をクリックします。 [接続] をクリックします。
 
-その他のリソースの種類については現在、Azure RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
+その他のリソースの種類については現在、Azure RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)することができます。
 
 ### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
 
 Storage Explorer を使用するために必要なアクセス許可を提供できる Azure 組み込みロールがいくつかあります。 そうしたロールの一部を以下に示します。
-- [所有者](/azure/role-based-access-control/built-in-roles#owner):リソースへのアクセスを含め、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
-- [共同作成者](/azure/role-based-access-control/built-in-roles#contributor):リソースへのアクセスを除き、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
-- [閲覧者](/azure/role-based-access-control/built-in-roles#reader):リソースを読み取って一覧表示します。
-- [ストレージ アカウント共同作業者](/azure/role-based-access-control/built-in-roles#storage-account-contributor): ストレージ アカウントの完全な管理。 **注**: このロールでは、キー アクセスが付与されます。
-- [ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
-- [ストレージ BLOB データ共同作成者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
-- [ストレージ BLOB データ閲覧者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
+- [所有者](../../role-based-access-control/built-in-roles.md#owner):リソースへのアクセスを含め、すべてを管理します。 **注** : このロールでは、キー アクセスが付与されます。
+- [共同作成者](../../role-based-access-control/built-in-roles.md#contributor):リソースへのアクセスを除き、すべてを管理します。 **注** : このロールでは、キー アクセスが付与されます。
+- [閲覧者](../../role-based-access-control/built-in-roles.md#reader):リソースを読み取って一覧表示します。
+- [ストレージ アカウント共同作業者](../../role-based-access-control/built-in-roles.md#storage-account-contributor): ストレージ アカウントの完全な管理。 **注** : このロールでは、キー アクセスが付与されます。
+- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
+- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
+- [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
 
 証明書のエラーは、通常、次のいずれかの状況で発生します。
 
-- アプリは "_透過プロキシ_" 経由で接続されます。 つまり、サーバー (会社のサーバーなど) は HTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
+- アプリは " _透過プロキシ_ " 経由で接続されます。 つまり、サーバー (会社のサーバーなど) は HTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
 - 受信した HTTPS メッセージに自己署名 TLS/SSL 証明書を挿入するアプリケーションを実行しています。 証明書を挿入するアプリケーションの例としては、ウイルス対策およびネットワーク トラフィック検査ソフトウェアなどがあります。
 
 Storage Explorer は自己署名証明書または信頼されない証明書が表示されると、受信した HTTPS メッセージが変更されているかどうかを認識できなくなります。 自己署名証明書のコピーがある場合は、次の手順に従って、それを信頼するように Storage Explorer に指示できます。
@@ -98,7 +98,7 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html):任意の Light バージョンで十分です。
     * Mac と Linux:お使いのオペレーティング システムに付属しているはずです。
 2. OpenSSL を実行します。
-    * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
+    * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、 **openssl.exe** をダブルクリックします。
     * Mac と Linux:ターミナルから `openssl` を実行します。
 3. `s_client -showcerts -connect microsoft.com:443` を実行します。
 4. 自己署名証明書を検索します。 どの証明書が自己署名かわからない場合は、Subject (発行先) `("s:")` と Issuer (発行元) `("i:")` が同じであるものをすべてメモします。
@@ -141,7 +141,7 @@ Storage Explorer によって使用される Azure AD ライブラリの制限�
 macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題を引き起こす状態になることがあります。 キーチェーンをこの状態から抜け出させるには、次の手順を実行します。
 
 1. Storage Explorer を閉じます。
-2. キーチェーンを開きます (コマンド キーと Space キーを押し、「**keychain**」と入力して、Enter キーを押す)。
+2. キーチェーンを開きます (コマンド キーと Space キーを押し、「 **keychain** 」と入力して、Enter キーを押す)。
 3. "ログイン" キーチェーンを選択します。
 4. 南京錠アイコンを選択してキーチェーンをロックします。 (南京錠は、プロセスの完了時にロックされているように見えます。 開いているアプリによっては、数秒かかることがあります。)
 
@@ -153,7 +153,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>サインインの一般的なトラブルシューティングの手順
 
-* macOS を使用しており、 **[Waiting for authentication]\(認証の完了を待機しています\)** ダイアログ ボックスの上にサインイン ウィンドウが表示されない場合は、[この手順](#mac-keychain-errors)を試してください。
+* macOS を使用しており、 **[Waiting for authentication]\(認証の完了を待機しています\)** ダイアログ ボックスの上にサインイン ウィンドウが表示されない場合は、 [この手順](#mac-keychain-errors)を試してください。
 * Storage Explorer を再起動します。
 * 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
 * プロキシと証明書の設定が、使用中のマシンと Storage Explorer の両方で適切に構成されていることを確認します。
@@ -332,7 +332,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
-2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
+2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
-2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
+2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
-2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
+2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

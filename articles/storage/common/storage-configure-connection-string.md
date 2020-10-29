@@ -10,12 +10,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091612"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783880"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "92091612"
 
 * 接続文字列は、環境変数に保存することができます。
 * デスクトップまたはデバイスで実行するアプリケーションの場合は、 **app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
-* Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](https://msdn.microsoft.com/library/ee758710.aspx)に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
+* Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](/previous-versions/azure/reference/ee758710(v=azure.100))に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新して [Azurite ストレージ エミュレーター](../common/storage-use-azurite.md)とクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
 

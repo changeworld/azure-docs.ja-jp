@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a4f8b99be564779b350bff2ab5b37f3c7ccc6f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25858ac3dc78803f59aec7e77e151dc9afcc4950
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87020978"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781670"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "87020978"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概要
-このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**と、**キューの作成と削除**の各シナリオについて説明します。
+このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 キュー メッセージの **挿入** 、 **ピーク** 、 **取得** 、 **削除** と、 **キューの作成と削除** の各シナリオについて説明します。
 
 > [!NOTE]
 > このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。 推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](https://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
@@ -57,7 +57,7 @@ Azure Storage API を使用してキューにアクセスする C++ ファイル
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure portal](https://portal.azure.com) に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。 ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。 *AccountName* と *AccountKey* の値には、 [Azure portal](https://portal.azure.com) に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。 ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)」を参照してください。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 ```cpp
 // Define the connection-string with your values.
@@ -84,7 +84,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>方法:キューを作成する
-**cloud_queue_client** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、**cloud_queue_client** オブジェクトを作成します。
+**cloud_queue_client** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、 **cloud_queue_client** オブジェクトを作成します。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -105,7 +105,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>方法:メッセージをキューに挿入する
-既存のキューにメッセージを挿入するには、最初に新しい **cloud_queue_message** を作成します。 次に、**add_message** メソッドを呼び出します。 **cloud_queue_message** は、文字列または**バイト**配列から作成できます。 次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
+既存のキューにメッセージを挿入するには、最初に新しい **cloud_queue_message** を作成します。 次に、 **add_message** メソッドを呼び出します。 **cloud_queue_message** は、文字列または **バイト** 配列から作成できます。 次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -172,7 +172,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 ```
 
 ## <a name="how-to-de-queue-the-next-message"></a>方法:次のメッセージをデキューする
-コードでは、2 つの手順でキューからメッセージをデキューします。 **get_message** を呼び出すと、キュー内の次のメッセージを取得します。 **get_message** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 また、キューからのメッセージの削除を完了するには、**delete_message** を呼び出す必要があります。 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 コードでは、メッセージが処理された直後に **delete_message** を呼び出します。
+コードでは、2 つの手順でキューからメッセージをデキューします。 **get_message** を呼び出すと、キュー内の次のメッセージを取得します。 **get_message** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 また、キューからのメッセージの削除を完了するには、 **delete_message** を呼び出す必要があります。 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 コードでは、メッセージが処理された直後に **delete_message** を呼び出します。
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -193,7 +193,7 @@ queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>方法:追加オプションを利用してメッセージをデキューする
-キューからのメッセージの取得をカスタマイズする方法は 2 つあります。 1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。 2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。 次のコード例では、**get_messages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、**for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。 この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**get_messages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。 1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。 2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。 次のコード例では、 **get_messages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、 **for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。 この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、 **get_messages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
 
 ```cpp
 // Retrieve storage account from connection-string.

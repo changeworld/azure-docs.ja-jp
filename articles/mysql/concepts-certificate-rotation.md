@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: cc32a67ab681341fd8320b9445f4e00013f2aa51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 57d077e1631fa89058d67ba54d72e7713db17371
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170281"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747368"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Azure Database for MySQL のルート CA の変更について
 
@@ -52,11 +52,11 @@ Azure Database for MySQL の sslmode を理解するには、[SSL モードの�
 *   **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方の証明書が含まれる、結合された CA 証明書ストアを生成します。
     *   Java (MySQL Connector/J) ユーザーの場合は、次を実行します。
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MySQLServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MySQLServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 

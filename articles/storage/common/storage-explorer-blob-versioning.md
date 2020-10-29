@@ -7,22 +7,22 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: d318983cec1365b71d14731395e71528621659d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e20733cb4b93fcfac7606895746645727f12d6c8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051880"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783829"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure Storage Explorer BLOB バージョン管理ガイド
 
-Microsoft Azure Storage Explorer では、BLOB のバージョンに簡単にアクセスし、管理することができます。 このガイドは、Storage Explorer での BLOB バージョン管理のしくみを理解するのに役立ちます。 次に進む前に、[BLOB のバージョン管理](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)に関する記事をよく読んでおくことをお勧めします。
+Microsoft Azure Storage Explorer では、BLOB のバージョンに簡単にアクセスし、管理することができます。 このガイドは、Storage Explorer での BLOB バージョン管理のしくみを理解するのに役立ちます。 次に進む前に、[BLOB のバージョン管理](../blobs/versioning-overview.md)に関する記事をよく読んでおくことをお勧めします。
 
 ## <a name="terminology"></a>用語
 
 ここでは、この記事での用法を理解するのに役立ついくつかの定義を示します。
 
-- 論理的な削除:代替の自動データ保護機能。 論理的な削除の詳細については、[こちら](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)を参照してください。
+- 論理的な削除:代替の自動データ保護機能。 論理的な削除の詳細については、[こちら](../blobs/soft-delete-blob-overview.md)を参照してください。
 - アクティブな BLOB:BLOB または BLOB バージョンは、アクティブな状態で作成されます。 操作できるのは、アクティブな状態の BLOB または BLOB バージョンだけです。
 - 論理的に削除された BLOB:論理的に削除済みとしてマークされている BLOB または BLOB バージョン。 論理的に削除された BLOB は、その保持期間の間のみ保持されます。
 - BLOB バージョン:BLOB のバージョン管理が有効な状態で作成された BLOB。 個々の BLOB バージョンはバージョン ID に関連付けられます。
@@ -117,5 +117,5 @@ BLOB バージョンごとに、独自のアクセス層があります。 BLOB 
 
 ## <a name="see-also"></a>参照
 
-* [BLOB バージョン管理](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)
-* [BLOB の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)
+* [BLOB バージョン管理](../blobs/versioning-overview.md)
+* [BLOB の論理的な削除](../blobs/soft-delete-blob-overview.md)

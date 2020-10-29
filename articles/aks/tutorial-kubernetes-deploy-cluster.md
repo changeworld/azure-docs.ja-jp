@@ -4,13 +4,13 @@ description: この Azure Kubernetes Service (AKS) のチュートリアルで�
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: e78dcb3b7ba503011ec83058d9ad765815ef66a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 55af44f498492136b2ae03c7e23fce3676aa8e22
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576355"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747093"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル:Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -33,7 +33,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 AKS クラスターでは、Kubernetes のロールベースのアクセス制御 (RBAC) を使用できます。 これらのコントロールを使用すると、ユーザーに割り当てられているロールに基づいてリソースへのアクセスを定義できます。 ユーザーに複数のロールが割り当てられている場合は、アクセス許可が組み合わされます。また、アクセス許可のスコープを 1 つの名前空間またはクラスター全体に設定できます。 Azure CLI の既定では、AKS クラスターを作成するときに RBAC が自動的に有効になります。
 
-[az aks create][] を使用して AKS クラスターを作成します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました ("*米国東部*" リージョン)。 次の例ではリージョンが指定されず、AKS クラスターも "*米国東部*" リージョンで作成されます。 AKS のリソース制限とリージョン可用性に関する詳細については、「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、利用可能なリージョン][quotas-skus-regions]」を参照してください。
+[az aks create][] を使用して AKS クラスターを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、 [前のチュートリアル][aks-tutorial-prepare-acr]で作成しました (" *米国東部* " リージョン)。 次の例ではリージョンが指定されず、AKS クラスターも " *米国東部* " リージョンで作成されます。 AKS のリソース制限とリージョン可用性に関する詳細については、「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、利用可能なリージョン][quotas-skus-regions]」を参照してください。
 
 AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルが自動的に作成されます (指定しなかったため)。 この場合、このサービス プリンシパルは、前のチュートリアルで作成した Azure Container Registry (ACR) インスタンスから[イメージをプルする権利を付与][container-registry-integration]されます。 管理しやすくするために、サービス プリンシパルの代わりに[マネージド ID](use-managed-identity.md) を使用することもできることに注意してください。
 
@@ -65,7 +65,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>kubectl を使用したクラスターへの接続
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、*myResourceGroup* の *myAKSCluster* という名前の AKS クラスターの資格情報を取得します。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、 *myResourceGroup* の *myAKSCluster* という名前の AKS クラスターの資格情報を取得します。
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362131"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780956"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL Database へのレプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362131"
 Azure SQL Database は、一方向のトランザクションまたはスナップショット レプリケーション トポロジのプッシュ サブスクライバーとして構成できます。
 
 > [!NOTE]
-> この記事では、Azure SQL Database での[のトランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のデータベースの完全な読み取り可能レプリカを作成するための Azure SQL Database の機能である、[アクティブ geo レプリケーション](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)とは無関係です。
+> この記事では、Azure SQL Database での[のトランザクション レプリケーション](/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のデータベースの完全な読み取り可能レプリカを作成するための Azure SQL Database の機能である、[アクティブ geo レプリケーション](./active-geo-replication-overview.md)とは無関係です。
 
 ## <a name="supported-configurations"></a>サポートされている構成
   
@@ -50,16 +50,16 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 
 ### <a name="types-of-replication"></a>レプリケーションの種類
 
-さまざまな[レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)があります。
+さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
 | レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**標準トランザクション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
-| [**スナップショット**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
-| [**マージ レプリケーション**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | いいえ | いいえ|
-| [**ピア ツー ピア**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | いいえ | いいえ|
-| [**双方向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | いいえ | はい|
-| [**更新可能なサブスクリプション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | いいえ | いいえ|
+| [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
+| [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
+| [**マージ レプリケーション**](/sql/relational-databases/replication/merge/merge-replication) | いいえ | いいえ|
+| [**ピア ツー ピア**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | いいえ | いいえ|
+| [**双方向**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | いいえ | はい|
+| [**更新可能なサブスクリプション**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | いいえ | いいえ|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -73,7 +73,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 - Azure SQL Database のサブスクライバーは、どのリージョンであってもかまいません。  
 - SQL Server 上の単一パブリケーションで、Azure SQL Database と、SQL Server (オンプレミスの SQL Server と Azure 仮想マシンの SQL Server) の両方のサブスクライバーをサポートできます。  
 - レプリケーションの管理、監視、およびトラブルシューティングは、Azure SQL Database からではなく SQL Server から実行する必要があります。  
-- SQL Database については、**sp_addsubscription** で `@subscriber_type = 0` のみがサポートされています。  
+- SQL Database については、 **sp_addsubscription** で `@subscriber_type = 0` のみがサポートされています。  
 - Azure SQL Database では、双方向、即時、更新可能、またはピア ツー ピアのレプリケーションはサポートされていません。
 
 ## <a name="replication-architecture"></a>レプリケーション アーキテクチャ  
@@ -85,7 +85,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 ### <a name="typical-replication-scenario"></a>一般的なレプリケーション シナリオ  
 
 1. SQL Server データベースで、トランザクション レプリケーション パブリケーションを作成します。  
-2. SQL Server で、**新しいサブスクリプション ウィザード**または Transact-SQL ステートメントを使用して、Azure SQL Database のサブスクリプションに対するプッシュを作成します。  
+2. SQL Server で、 **新しいサブスクリプション ウィザード** または Transact-SQL ステートメントを使用して、Azure SQL Database のサブスクリプションに対するプッシュを作成します。  
 3. Azure SQL Database の単一およびプールされたデータベースでは、初期データ セットはスナップショットです。このスナップショットは、スナップショット エージェントによって作成され、ディストリビューション エージェントによって配布および適用されます。 SQL Managed Instance パブリッシャーでは、データベース バックアップを使用して Azure SQL Database サブスクライバーをシードすることもできます。
 
 ### <a name="data-migration-scenario"></a>データ移行シナリオ  
@@ -126,14 +126,14 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 
 パブリケーションおよびプッシュ サブスクリプションを作成します。 詳細については、次を参照してください。
   
-- [パブリケーションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [プッシュ サブスクリプションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。サーバー名をサブスクライバーとして (**N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用します。  
+- [パブリケーションを作成する](/sql/relational-databases/replication/publish/create-a-publication)
+- [プッシュ サブスクリプションを作成する](/sql/relational-databases/replication/create-a-push-subscription/)。サーバー名をサブスクライバーとして ( **N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL Database 名を宛先データベースとして ( **AdventureWorks** など) 使用します。  
 
 ## <a name="see-also"></a>参照  
 
 - [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md)
-- [パブリケーションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [プッシュ サブスクリプションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [監視 (レプリケーション)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [サブスクリプションを初期化する](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [パブリケーションを作成する](/sql/relational-databases/replication/publish/create-a-publication)
+- [プッシュ サブスクリプションを作成する](/sql/relational-databases/replication/create-a-push-subscription/)
+- [レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)
+- [監視 (レプリケーション)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [サブスクリプションを初期化する](/sql/relational-databases/replication/initialize-a-subscription)

@@ -3,19 +3,19 @@ title: 一般的な問題のトラブルシューティング
 description: Azure Container Instances をデプロイ、実行、または管理する際の一般的な問題をトラブルシューティングする方法を学習します。
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148619"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746915"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
 この記事では、Azure Container Instances を管理し、またはこれ にコンテナーをデプロイする際の、一般的問題をトラブルシューティングする方法を示します。 [よく寄せられる質問](container-instances-faq.md)も参照してください。
 
-追加のサポートが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) で利用可能な **[ヘルプとサポート]** オプションをご覧ください。
+追加のサポートが必要な場合は、 [Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) で利用可能な **[ヘルプとサポート]** オプションをご覧ください。
 
 ## <a name="issues-during-container-group-deployment"></a>コンテナー グループのデプロイ時に発生する問題
 ### <a name="naming-conventions"></a>名前付け規則
@@ -99,7 +99,7 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 ## <a name="issues-during-container-group-runtime"></a>コンテナー グループの実行時に発生する問題
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>コンテナーが絶えず終了して再起動する (長時間実行されるプロセスがない)
 
-コンテナー グループは[再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
+コンテナー グループは [再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
 Ubuntu や Alpine などのイメージを使用した場合、長時間実行されるプロセスのないコンテナー グループを実行していると、終了と再起動が繰り返されることがあります。 コンテナーを実行したままにするプロセスがないため、[EXEC](container-instances-exec.md) を使った接続は機能しません。 この問題を解決するには、コンテナー グループのデプロイに次のような起動コマンドを含め、コンテナーを実行したままにします。
 

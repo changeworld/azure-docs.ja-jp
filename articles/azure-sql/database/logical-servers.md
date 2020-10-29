@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441716"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782894"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL Database と Azure Synapse の論理 SQL サーバーとは何ですか。
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ SQL Database と Azure Synapse のサーバーは、以下のような特長を�
 - データベース、エラスティック プール、およびデータ ウェアハウスの親リソースです
 - データベース、エラスティック プール、データ ウェアハウス データベースの名前空間を提供します
 - 強力な有効期間のセマンティクスが含まれる論理コンテナーです。サーバーを削除すると、そのデータベース、エラスティック プール、SQK プールが削除されます
-- [Azure ロール ベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/overview) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウス データベースはサーバーからアクセス権を継承します
+- [Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウス データベースはサーバーからアクセス権を継承します
 - Azure のリソース管理目的での、データベース、エラスティック プール、データ ウェアハウス データベースの上位要素です (データベースとプールの URL スキーマを参照してください)
 - 領域内にリソースを併置します
 - データベース アクセスの接続エンドポイント (`<serverName>`.database.windows.net) を提供します
@@ -68,9 +68,9 @@ SQL Database と Azure Synapse のサーバーは、以下のような特長を�
 
 ### <a name="manage-an-existing-server"></a>既存のサーバーを管理する
 
-既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定のデータベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。
+既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定のデータベース ページ、 **SQL サーバー** ページ、 **すべてのリソース** ページから移動します。
 
-既存のデータベースを管理するには、**SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
+既存のデータベースを管理するには、 **SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの **概要** ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
 
    ![サーバーのファイアウォール規則](./media/single-database-create-quickstart/server-firewall-rule.png)
 
@@ -83,7 +83,7 @@ SQL Database と Azure Synapse のサーバーは、以下のような特長を�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 Azure PowerShell を利用してサーバー、データベース、ファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 エラスティック プールの作成と管理については、[エラスティック プール](elastic-pool-overview.md)に関する記事をご覧ください。
 
@@ -96,13 +96,13 @@ Azure PowerShell を利用してサーバー、データベース、ファイア
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|リソース グループを作成します。|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|サーバーを作成します。|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|サーバーに関する情報を返します。|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|サーバーのプロパティを変更します。|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|サーバーのプロパティを変更します。|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|サーバーを削除します。|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|サーバーレベルのファイアウォール規則を作成します。 |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|サーバーのファイアウォール規則を取得します。|
 |[Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|サーバーのファイアウォール規則を変更します。|
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|サーバーからファイアウォール規則を削除します。|
-| New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
+| New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、 [*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
 
 > [!TIP]
 > PowerShell クイックスタートについては、[PowerShell を使用した Azure SQL Database 内のデータベースの作成](single-database-create-quickstart.md)に関する記事を参照してください。 PowerShell のスクリプトの例については、[PowerShell を使用した Azure SQL Database 内のデータベースの作成とファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)に関する記事と、[PowerShell を使用した Azure SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-powershell.md)に関する記事を参照してください。
@@ -110,7 +110,7 @@ Azure PowerShell を利用してサーバー、データベース、ファイア
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Azure CLI を利用してサーバー、データベース、ファイアウォールを管理する
 
-[Azure CLI](/cli/azure) を利用してサーバー、データベース、ファイアウォールを作成し、管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](elastic-pool-overview.md)に関する記事をご覧ください。
+[Azure CLI](/cli/azure) を利用してサーバー、データベース、ファイアウォールを作成し、管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](../../cloud-shell/overview.md) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](elastic-pool-overview.md)に関する記事をご覧ください。
 
 | コマンドレット | 説明 |
 | --- | --- |
@@ -150,7 +150,7 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Azure SQL Database に新しいデータベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
 |[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Azure Synapse に新しいデータ ウェアハウス データベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |データベースまたはエラスティック プールを変更します。 |
-|[ALTER DATABASE (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure Synapse 内のデータ ウェアハウス データベースを変更します。|
+|[ALTER DATABASE (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure Synapse 内のデータ ウェアハウス データベースを変更します。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|データベースを削除します。|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|データベースのエディション (サービス レベル)、サービス目標 (価格レベル)、およびエラスティック プール名 (存在する場合) を返します。 サーバーの master データベースにログオンしている場合は、すべてのデータベースの情報が返されます。 Azure Synapse の場合は、master データベースに接続する必要があります。|
 |[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL Database 内のデータベースの CPU、IO、メモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒ごとに 1 つの行が存在します。|
@@ -173,22 +173,22 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 
 | コマンド | 説明 |
 | --- | --- |
-|[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
-|[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/delete)|サーバーを削除します。|
-|[サーバー - 取得](https://docs.microsoft.com/rest/api/sql/servers/get)|サーバーを取得します。|
-|[サーバー - 一覧取得](https://docs.microsoft.com/rest/api/sql/servers/list)|サーバーの一覧を返します。|
-|[サーバー - リソース グループごとの一覧取得](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
-|[サーバー - 更新](https://docs.microsoft.com/rest/api/sql/servers/update)|既存のサーバーを更新します。|
-|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 削除](https://docs.microsoft.com/rest/api/sql/databases/delete)|データベースを削除します。|
-|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|既存のデータベースを更新します。|
-|[ファイアウォール規則 - 作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
-|[ファイアウォール規則 - 削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
-|[ファイアウォール規則 - 取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
-|[ファイアウォール規則 - サーバーごとに一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
+|[サーバー - 作成または更新](/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
+|[サーバー - 削除](/rest/api/sql/servers/delete)|サーバーを削除します。|
+|[サーバー - 取得](/rest/api/sql/servers/get)|サーバーを取得します。|
+|[サーバー - 一覧取得](/rest/api/sql/servers/list)|サーバーの一覧を返します。|
+|[サーバー - リソース グループごとの一覧取得](/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
+|[サーバー - 更新](/rest/api/sql/servers/update)|既存のサーバーを更新します。|
+|[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 削除](/rest/api/sql/databases/delete)|データベースを削除します。|
+|[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
+|[ファイアウォール規則 - 作成または更新](/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
+|[ファイアウォール規則 - 削除](/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
+|[ファイアウォール規則 - 取得](/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
+|[ファイアウォール規則 - サーバーごとに一覧取得](/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
 
 ## <a name="next-steps"></a>次のステップ
 

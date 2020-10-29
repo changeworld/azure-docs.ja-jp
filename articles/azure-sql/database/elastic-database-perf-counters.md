@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443417"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781262"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>パフォーマンス カウンターを作成してシャード マップ マネージャーのパフォーマンスを追跡する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,19 +35,19 @@ ms.locfileid: "91443417"
 
 ## <a name="create-performance-category-and-counters"></a>パフォーマンス カテゴリとカウンターを作成する
 
-カウンターを作成するには、[ShardMapManagementFactory クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)の CreatePerformanceCategoryAndCounters メソッドを呼び出します。 このメソッドは、管理者だけが実行できます。
+カウンターを作成するには、[ShardMapManagementFactory クラス](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)の CreatePerformanceCategoryAndCounters メソッドを呼び出します。 このメソッドは、管理者だけが実行できます。
 
 `ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()`
 
 [この](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell スクリプトを使用してメソッドを実行することもできます。
 このメソッドは、次のパフォーマンス カウンターを作成します。  
 
-* **キャッシュされたマッピング**: シャード マップ用にキャッシュされたマッピングの数です。
-* **DDR 操作数/秒**: シャード マップ用のデータ依存ルーティング操作の割合です。 このカウンターは、[OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) に対する呼び出しで宛先のシャードへの接続が成功したときに更新されます。
-* **マッピングのキャッシュ検索ヒット数/秒**: シャード マップでのマッピングで成功したキャッシュ検索操作の割合です。
-* **マッピングのキャッシュ検索ミス数/秒**: シャード マップでのマッピングで失敗したキャッシュ検索操作の割合です。
-* **キャッシュに追加または更新されたマッピング数/秒**: シャード マップ用のキャッシュに追加または更新されたマッピングの割合です。
-* **キャッシュから削除されたマッピング数/秒**: シャード マップ用のキャッシュから削除されたマッピングの割合です。
+* **キャッシュされたマッピング** : シャード マップ用にキャッシュされたマッピングの数です。
+* **DDR 操作数/秒** : シャード マップ用のデータ依存ルーティング操作の割合です。 このカウンターは、[OpenConnectionForKey()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) に対する呼び出しで宛先のシャードへの接続が成功したときに更新されます。
+* **マッピングのキャッシュ検索ヒット数/秒** : シャード マップでのマッピングで成功したキャッシュ検索操作の割合です。
+* **マッピングのキャッシュ検索ミス数/秒** : シャード マップでのマッピングで失敗したキャッシュ検索操作の割合です。
+* **キャッシュに追加または更新されたマッピング数/秒** : シャード マップ用のキャッシュに追加または更新されたマッピングの割合です。
+* **キャッシュから削除されたマッピング数/秒** : シャード マップ用のキャッシュから削除されたマッピングの割合です。
 
 パフォーマンス カウンターは、それぞれのキャッシュされたシャード マップで、プロセスごとに作成されます。  
 
@@ -55,8 +55,8 @@ ms.locfileid: "91443417"
 
 次のイベントは、パフォーマンス カウンターの作成をトリガーします。  
 
-* [一括読み込み](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)による [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy) の初期化 (ShardMapManager にシャード マップが含まれている場合)。 [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) メソッドと [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) メソッドを含みます。
-* シャード マップの検索の成功 ([GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx)、[GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx)、または [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx) を使用)。
+* [一括読み込み](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)による [ShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy) の初期化 (ShardMapManager にシャード マップが含まれている場合)。 [GetSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) メソッドと [TryGetSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) メソッドを含みます。
+* シャード マップの検索の成功 ([GetShardMap()](/previous-versions/azure/dn824215(v=azure.100))、[GetListShardMap()](/previous-versions/azure/dn824212(v=azure.100))、または [GetRangeShardMap()](/previous-versions/azure/dn824173(v=azure.100)) を使用)。
 * CreateShardMap() を使用したシャード マップの作成の成功。
 
 パフォーマンス カウンターは、シャード マップとマッピングに対して実行されるすべてのキャッシュ操作によって更新されます。 DeleteShardMap () を使用してシャード マップが正常に削除されると、パフォーマンス カウンター インスタンスも削除されます。  

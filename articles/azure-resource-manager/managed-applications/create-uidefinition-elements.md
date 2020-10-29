@@ -3,14 +3,14 @@ title: UI 定義要素を作成する
 description: Azure Portal の UI 定義を作成するときに使う要素について説明します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 10/27/2020
 ms.author: tomfitz
-ms.openlocfilehash: 8b6c6e78c64f83ca39a29f319a103e893d8d8b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3ba36fc3aaa98aec54b6c70cd416c589be27cfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923723"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747359"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
 
@@ -63,6 +63,7 @@ ms.locfileid: "88923723"
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft.KeyVault.KeyVaultCertificateSelector](microsoft-keyvault-keyvaultcertificateselector.md)
 - [Microsoft.managedidentity を選択します](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
@@ -70,6 +71,7 @@ ms.locfileid: "88923723"
 - [Microsoft.Solutions.ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
+- [Microsoft.Storage.StorageBlobSelector](microsoft-storage-storageblobselector.md)
 
 ## <a name="next-steps"></a>次のステップ
 

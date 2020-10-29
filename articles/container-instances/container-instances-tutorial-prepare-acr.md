@@ -3,13 +3,13 @@ title: チュートリアル - イメージをデプロイするようにコン�
 description: Azure Container Instances チュートリアル 2/3 - Azure コンテナー レジストリの準備とイメージのプッシュ
 ms.topic: tutorial
 ms.date: 12/18/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708038"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746935"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure コンテナー レジストリを作成してコンテナー イメージをプッシュする
 
@@ -83,7 +83,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-プライベート レジストリの完全なログイン サーバー名で *aci-tutorial-app* イメージにタグ付けしたので、[docker push][docker-push] コマンドを使ってレジストリにイメージをプッシュできます。 `<acrLoginServer>` は、先行する手順で取得したログイン サーバーのフル ネームに置き換えてください。
+プライベート レジストリの完全なログイン サーバー名で *aci-tutorial-app* イメージにタグ付けしたので、 [docker push][docker-push] コマンドを使ってレジストリにイメージをプッシュできます。 `<acrLoginServer>` は、先行する手順で取得したログイン サーバーのフル ネームに置き換えてください。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -123,7 +123,7 @@ Result
 aci-tutorial-app
 ```
 
-特定のイメージの "*タグ*" を表示するには、[az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
+特定のイメージの " *タグ* " を表示するには、 [az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table

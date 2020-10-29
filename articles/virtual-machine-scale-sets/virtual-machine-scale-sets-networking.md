@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783724"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747835"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -43,7 +43,7 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 仮想マシン スケール セットと Azure Load Balancer
-自分のシナリオに基づき、お使いの Standard Load Balancer で Virtual Machine Scale Sets を構成する方法の詳細については、[Azure Load Balancer と Virtual Machine Scale Sets](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) に関するページを参照してください。
+自分のシナリオに基づき、お使いの Standard Load Balancer で Virtual Machine Scale Sets を構成する方法の詳細については、[Azure Load Balancer と Virtual Machine Scale Sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) に関するページを参照してください。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
 アプリケーション ゲートウェイを使うスケール セットを作成するには、次の ARM テンプレート構成のように、スケール セットの ipConfigurations セクションにおいてアプリケーション ゲートウェイのバックエンド アドレス プールを参照します。
@@ -84,7 +84,7 @@ Azure テンプレート内でカスタム DNS サーバーを構成するには
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>構成可能な仮想マシン ドメイン名を備えたスケール セットの作成
-CLI を使用して、仮想マシンのカスタム DNS 名が付いたスケール セットを作成するには、**virtual machine scale set create** コマンドに **--vm-domain-name** 引数を追加し、その後にドメイン名を表す文字列を追加します。
+CLI を使用して、仮想マシンのカスタム DNS 名が付いたスケール セットを作成するには、 **virtual machine scale set create** コマンドに **--vm-domain-name** 引数を追加し、その後にドメイン名を表す文字列を追加します。
 
 Azure テンプレート内でドメイン名を設定するには、スケール セットの **networkInterfaceConfigurations** セクションに **dnsSettings** プロパティを追加します。 次に例を示します。
 
@@ -130,7 +130,7 @@ Azure テンプレート内でドメイン名を設定するには、スケー�
 ただし、一部のシナリオでは、スケール セット仮想マシンが独自のパブリック IP アドレスを備える必要があります。 たとえば、ゲームで、ゲームの物理処理を行っているクラウド仮想マシンにコンソールが直接接続する必要がある場合です。 もう 1 つの例は、分散型データベースで複数のリージョンにわたって各仮想マシンが互いに対する外部接続を確立する必要がある場合です。
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>仮想マシンごとにパブリック IP アドレスがあるスケール セットの作成
-CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。 
+CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、 **vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。 
 
 Azure テンプレートを使用してスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが少なくとも **2017-03-30** であることを確認し、スケール セットの ipConfigurations セクションに **publicIpAddressConfiguration** JSON プロパティを追加します。 次に例を示します。
 
@@ -146,9 +146,9 @@ Azure テンプレートを使用してスケール セットを作成するに�
 テンプレートの例:[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
-CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
+CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、 **az vmss list-instance-public-ips** コマンドを使用します。
 
-PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzPublicIpAddress_ コマンドを使用します。 次に例を示します。
+PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、 _Get-AzPublicIpAddress_ コマンドを使用します。 次に例を示します。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
@@ -299,7 +299,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>スケール セットごとの NSG と ASG
-[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)では、セキュリティ規則を使用して、Azure 仮想ネットワーク内の Azure リソースとの間でやり取りされるトラフィックをフィルター処理できます。 [アプリケーション セキュリティ グループ](../virtual-network/security-overview.md#application-security-groups)を使用すると、Azure リソースのネットワーク セキュリティを処理し、Azure リソースをアプリケーションの構造の拡張機能としてグループ化することができます。
+[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)では、セキュリティ規則を使用して、Azure 仮想ネットワーク内の Azure リソースとの間でやり取りされるトラフィックをフィルター処理できます。 [アプリケーション セキュリティ グループ](../virtual-network/network-security-groups-overview.md#application-security-groups)を使用すると、Azure リソースのネットワーク セキュリティを処理し、Azure リソースをアプリケーションの構造の拡張機能としてグループ化することができます。
 
 ネットワーク セキュリティ グループは、スケール セットに直接適用できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス構成セクションに参照を追加します。
 

@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620360"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780021"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,13 +33,13 @@ ms.locfileid: "91620360"
 以下のセクションでは、マネージド インスタンスの監査の構成について説明します。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. 監査ログが格納される Azure Storage **コンテナー**を作成します。
+2. 監査ログが格納される Azure Storage **コンテナー** を作成します。
 
    1. 監査ログを格納する Azure ストレージ アカウントに移動します。
 
       > [!IMPORTANT]
       > - リージョンをまたいで読み取り/書き込みが行われないように、マネージド インスタンスと同じリージョンのストレージ アカウントを使います。 
-      > - ストレージ アカウントが仮想ネットワークまたはファイアウォールの内側にある場合は、「[仮想ネットワークからアクセスの許可](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)」をご覧ください。
+      > - ストレージ アカウントが仮想ネットワークまたはファイアウォールの内側にある場合は、「[仮想ネットワークからアクセスの許可](../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)」をご覧ください。
       > - リテンション期間を 0 (無制限のリテンション期間) から他の値に変更した場合、リテンション期間は、リテンション期間の値が変更された後に書き込まれたログにのみ適用されることに注意してください (リテンション期間が無制限に設定されている間に書き込まれたログは、リテンション期間が有効になった後も保持されます)。
 
    1. ストレージ アカウントで **[概要]** に移動し、 **[BLOB]** をクリックします。
@@ -55,7 +55,7 @@ ms.locfileid: "91620360"
       ![BLOB コンテナー構成の作成アイコン](./media/auditing-configure/3_create_container_config.png)
 
     > [!IMPORTANT]
-    > サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成する顧客は、[Azure Storage で提供される手順](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)に従う必要があります。 (不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認してください)。
+    > サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成する顧客は、[Azure Storage で提供される手順](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)に従う必要があります。 (不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認してください)。
   
 3. 監査ログ用のコンテナーを作成した後、それを監査ログ用のターゲットとして構成するには、[T-SQL を使用する](#blobtsql)方法と [SQL Server Management Studio (SSMS) UI を使用する](#blobssms)方法の 2 つがあります。
 
@@ -69,7 +69,7 @@ ms.locfileid: "91620360"
 
         ![BLOB コンテナーの URL をコピーする](./media/auditing-configure/5_container_copy_name.png)
 
-     1. マネージド インスタンスの監査アクセス権をストレージ アカウントに付与するための Azure Storage の **SAS トークン**を生成します。
+     1. マネージド インスタンスの監査アクセス権をストレージ アカウントに付与するための Azure Storage の **SAS トークン** を生成します。
 
         - 前の手順でコンテナーを作成した Azure ストレージ アカウントに移動します。
 
@@ -79,11 +79,11 @@ ms.locfileid: "91620360"
 
         - 次に示すように SAS を構成します。
 
-          - **使用できるサービス**:BLOB
+          - **使用できるサービス** :BLOB
 
-          - **開始日**: タイム ゾーンに関連する問題を回避するため、前日の日付を使用します
+          - **開始日** : タイム ゾーンに関連する問題を回避するため、前日の日付を使用します
 
-          - **終了日**: この SAS トークンの有効期限が切れる日付を選びます
+          - **終了日** : この SAS トークンの有効期限が切れる日付を選びます
 
             > [!NOTE]
             > 監査の失敗を避けるため、トークンの期限が切れたら更新します。
@@ -101,7 +101,7 @@ ms.locfileid: "91620360"
 
      1. SQL Server Management Studio またはサポートされるその他のツールを介してマネージド インスタンスに接続します。
 
-     1. 次の T-SQL ステートメントを実行し、前の手順で作成したコンテナー URL と SAS トークンを使って、**新しい資格情報を作成**します。
+     1. 次の T-SQL ステートメントを実行し、前の手順で作成したコンテナー URL と SAS トークンを使って、 **新しい資格情報を作成** します。
 
         ```SQL
         CREATE CREDENTIAL [<container_url>]
@@ -146,8 +146,8 @@ ms.locfileid: "91620360"
 
 4. <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
 
-   - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [サーバー監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [データベース監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
 5. 手順 3 で作成したサーバー監査を有効にします。
 
@@ -160,8 +160,8 @@ ms.locfileid: "91620360"
 以下の追加情報をご覧ください。
 
 - [Azure SQL Managed Instance と SQL Server のデータベースでの監査の相違点](#auditing-differences-between-databases-in-azure-sql-managed-instance-and-databases-in-sql-server)
-- [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
-- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql)
+- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
 
 ## <a name="set-up-auditing-for-your-server-to-event-hubs-or-azure-monitor-logs"></a>Event Hubs または Azure Monitor ログに対するサーバー監査の設定
 
@@ -192,8 +192,8 @@ ms.locfileid: "91620360"
 
 9. SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
 
-   - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [サーバー監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [データベース監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
 10. 手順 8 で作成したサーバー監査を有効にします。
 
@@ -209,9 +209,9 @@ ms.locfileid: "91620360"
 
 BLOB 監査ログを表示するには、いくつかの方法が使用できます。
 
-- システム関数 `sys.fn_get_audit_file` (T-SQL) を使って、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
+- システム関数 `sys.fn_get_audit_file` (T-SQL) を使って、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
 
-- [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+- [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](../database/audit-log-format.md)を参照してください。
 
 - 監査ログの使い方の完全な一覧については、[Azure SQL Database 監査の使用](../../azure-sql/database/auditing-overview.md)に関するページをご覧ください。
 
@@ -223,7 +223,7 @@ Event Hubs の監査ログ データを使用するには、イベントを処�
 
 監査ログが Azure Monitor ログに書き込まれると、それらの監査ログが Log Analytics ワークスペースで使用可能になります。Log Analytics ワークスペースでは、監査データに対して高度な検索を実行できます。 最初に、Log Analytics ワークスペースに移動します。 **[全般]** セクションで、 **[ログ]** をクリックし、単純なクエリ (例: `search "SQLSecurityAuditEvents"`) を入力して監査ログを表示します。  
 
-Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関するページをご覧ください。
+Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -234,15 +234,15 @@ Azure SQL Managed Instance のデータベースと SQL Server のデータベ�
 - Azure SQL Managed Instance では、監査はサーバー レベルで機能し、Azure BLOB Storage に `.xel` ログ ファイルが保存されます。
 - SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
 
-マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは**サポートされていません**。
+マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされていません** 。
 
 Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 
 - 新しい `TO URL` 構文が用意されています。この構文を使って、`.xel` ファイルを配置する Azure Blob Storage コンテナーの URL を指定できます。
 - Event Hubs および Azure Monitor ログ ターゲットを有効にするための新しい構文 `TO EXTERNAL MONITOR` が用意されています。
-- Azure SQL Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文は**サポートされていません**。
-- Shutdown オプションは**サポートされていません**。
-- `queue_delay` の値として 0 は**サポートされていません**。
+- Azure SQL Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文は **サポートされていません** 。
+- Shutdown オプションは **サポートされていません** 。
+- `queue_delay` の値として 0 は **サポートされていません** 。
 
 ## <a name="next-steps"></a>次のステップ
 

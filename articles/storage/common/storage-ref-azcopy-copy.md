@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645469"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781738"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -292,7 +292,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--s2s-handle-invalid-metadata** string   無効なメタデータ キーの処理方法を指定します。 使用できるオプションは ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid です。 既定値は `ExcludeIfInvalid` です。 (既定値は "ExcludeIfInvalid")
 
-**--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 既定値は `true` です。  (既定値は "true")
+**--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 既定値は `true` です。  (既定値は "true")
 
 **--s2s-preserve-properties** サービス間のコピー中にすべてのプロパティを保持します。 AWS S3 と Azure File の非単一ファイル ソースの場合、リスト操作はオブジェクトとファイルの完全なプロパティを返しません。 完全なプロパティを保持するために、AzCopy では、オブジェクトまたはファイルごとに 1 つの追加の要求を送信する必要があります。 (既定値は true)
 

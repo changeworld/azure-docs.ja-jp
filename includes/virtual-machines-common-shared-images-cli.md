@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: b49dc6ef2bfee311bc3ca524a5ccb0a4e4b5ca9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 58f38f5fe5544f01636d5fd2b2393025e5cb01ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793633"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756076"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 
@@ -21,7 +21,7 @@ ms.locfileid: "84793633"
 
 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。   ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
+[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、 *myGalleryRG* という名前のリソース グループを " *米国東部* " に作成し、 *myGallery* という名前のギャラリーを作成します。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus

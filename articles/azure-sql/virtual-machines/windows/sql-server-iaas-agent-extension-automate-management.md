@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: df3e2ae2737aa8bfedd0e8d7daa9d42771f1937b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1b68242e7cb8eba885c78ab62572d257198d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570334"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779715"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して Azure 仮想マシン上で管理タスクを自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを�
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-この記事のクラシック バージョンを確認するには、[SQL Server VM 用 SQL Server IaaS Agent 拡張機能 (クラシック)](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md) に関する記事をご覧ください。
+この記事のクラシック バージョンを確認するには、[SQL Server VM 用 SQL Server IaaS Agent 拡張機能 (クラシック)](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension) に関する記事をご覧ください。
 
 
 ## <a name="supported-services"></a>サポートされているサービス
@@ -59,7 +59,7 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件を次に
 * Windows Server 2016
 * Windows Server 2019 
 
-**SQL Server のバージョン**:
+**SQL Server のバージョン** :
 
 * SQL Server 2008 
 * SQL Server 2008 R2
@@ -69,7 +69,7 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件を次に
 * SQL Server 2017
 * SQL Server 2019
 
-**Azure PowerShell**:
+**Azure PowerShell** :
 
 * [最新の Azure PowerShell コマンドをダウンロードして構成します](/powershell/azure/)
 

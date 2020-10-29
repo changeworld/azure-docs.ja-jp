@@ -7,17 +7,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 489ee630deb56aef6c004067f29779053fbcd3e7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989517"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756038"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-*リソース グループが既にある場合は、「[キー コンテナーを作成する](#create-a-key-vault)」に進むことができます。*
+*リソース グループが既にある場合は、「 [キー コンテナーを作成する](#create-a-key-vault)」に進むことができます。*
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -35,7 +35,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 
-*キー コンテナーが既にある場合は、「[キー コンテナーに高度なアクセス ポリシーを設定する](#set-key-vault-advanced-access-policies)」に進むことができます。*
+*キー コンテナーが既にある場合は、「 [キー コンテナーに高度なアクセス ポリシーを設定する](#set-key-vault-advanced-access-policies)」に進むことができます。*
 
 キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI コマンド、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell コマンド、[Azure portal](https://portal.azure.com)、または [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) のいずれかを使用します。
 

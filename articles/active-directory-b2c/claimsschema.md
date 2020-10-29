@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201363"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781721"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。
+**ClaimsSchema** 要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には **ClaimType** 要素の一覧が含まれています。 **ClaimType** 要素に **Id** 属性が含まれており、 それは要求の名前であります。
 
 ```xml
 <BuildingBlocks>
@@ -46,19 +46,19 @@ ms.locfileid: "85201363"
 | --------- | -------- | ----------- |
 | Id | はい | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 
-**ClaimType**要素には、次の要素が含まれています。
+**ClaimType** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | さまざまな画面上のユーザーに表示されるタイトル。 値を[ローカライズ](localization.md)することができます。 |
 | DataType | 1:1 | 要求の種類です。 |
-| DefaultPartnerClaimTypes | 0:1 | パートナーの既定要求は、指定されたプロトコルに使用する種類です。 **InputClaim**または**OutputClaim** 要素で指定されている**PartnerClaimType**内の値を上書きすることができます。 この要素を使用すると、プロトコルの既定の名前を指定できます。  |
+| DefaultPartnerClaimTypes | 0:1 | パートナーの既定要求は、指定されたプロトコルに使用する種類です。 **InputClaim** または **OutputClaim** 要素で指定されている **PartnerClaimType** 内の値を上書きすることができます。 この要素を使用すると、プロトコルの既定の名前を指定できます。  |
 | Mask | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |
 | UserInputType | 0:1 | 要求の種類の要求データを手動で入力するときに、ユーザーが利用できるような入力コントロールの種類。 このページの後半で定義されている、ユーザーにより入力された種類を参照してください。 |
 | AdminHelpText | 0:1 | 管理者がその目的を理解するのに役立つ要求の種類の説明。 |
 | Restriction | 0:1 | 正規表現 (Regex) または許容される値の一覧など、この要求に対する値の制限。 値を[ローカライズ](localization.md)することができます。 |
-PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参照。 **PredicateValidationReference**要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
+PredicateValidationReference| 0:1 | **PredicateValidationsInput** 要素への参照。 **PredicateValidationReference** 要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
 
 
 
@@ -82,7 +82,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
-**DefaultPartnerClaimTypes**には次の要素が含まれることがあります。
+**DefaultPartnerClaimTypes** には次の要素が含まれることがあります。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
@@ -95,7 +95,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 | 名前 | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 次のいずれかの値になります。OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | はい | 使用する要求種類の名。 |
 
-次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname**要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。
+次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname** 要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。
 
 ```xml
 <ClaimType Id="surname">
@@ -163,7 +163,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 ### <a name="restriction"></a>Restriction
 
-**制限**要素は、次の属性を含めることがあります。
+**制限** 要素は、次の属性を含めることがあります。
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
@@ -178,9 +178,9 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 #### <a name="enumeration"></a>Enumeration
 
-**Enumeration** 要素は、ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (`CheckboxMultiSelect`、`DropdownSingleSelect`、または `RadioSingleSelect` の値など) を定義します。 または、[LocalizedCollections](localization.md#localizedcollections) 要素を使用して、使用可能なオプションを定義してローカライズすることもできます。 要求 **Enumeration** コレクションから項目を検索するには、[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 要求変換を使用します。
+**Enumeration** 要素は、ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (`CheckboxMultiSelect`、`DropdownSingleSelect`、または `RadioSingleSelect` の値など) を定義します。 または、[LocalizedCollections](localization.md#localizedcollections) 要素を使用して、使用可能なオプションを定義してローカライズすることもできます。 要求 **Enumeration** コレクションから項目を検索するには、 [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 要求変換を使用します。
 
-**列挙型**要素には、次の属性が含まれています。
+**列挙型** 要素には、次の属性が含まれています。
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
@@ -188,7 +188,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 |Value | はい | このオプションの選択に関連付けられている要求の値。 |
 | SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
-次の例では、**市区町村**ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
+次の例では、 **市区町村** ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
 
 ```xml
 <ClaimType Id="city">
@@ -209,14 +209,14 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 ### <a name="pattern"></a>Pattern
 
-**パターン**要素には、次の属性が含まれることがあります。
+**パターン** 要素には、次の属性が含まれることがあります。
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ | 正規表現のチェックが失敗した場合にユーザーに表示されるエラー メッセージ。 |
 
-次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。
+次の例では、 **電子メール** 要求を正規表現入力検証とヘルプ テキストとともに設定します。
 
 ```xml
 <ClaimType Id="email">
@@ -228,7 +228,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9.!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
     </Restriction>
  </ClaimType>
 ```
@@ -239,7 +239,7 @@ Identity Experience Framework は、電子メールの入力検証の形式を�
 
 ### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C では、さまざまなクレームの種類の要求データを手動で入力するときに使用できるテキスト ボックス、パスワード、およびドロップダウン リストなど、ユーザー入力の種類をサポートしています。 [セルフ アサートの技術プロファイル](self-asserted-technical-profile.md)および[表示コントロール](display-controls.md)を使用してユーザーから情報を収集する時に **UserInputType** を指定する必要があります。
+Azure AD B2C では、さまざまなクレームの種類の要求データを手動で入力するときに使用できるテキスト ボックス、パスワード、およびドロップダウン リストなど、ユーザー入力の種類をサポートしています。 [セルフ アサートの技術プロファイル](self-asserted-technical-profile.md)および [表示コントロール](display-controls.md)を使用してユーザーから情報を収集する時に **UserInputType** を指定する必要があります。
 
 **UserInputType** 要素で使用できるユーザー入力の種類:
 
@@ -258,7 +258,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="textbox"></a>TextBox
 
-**TextBox**ユーザー入力の種類が 1 行のテキスト ボックスを表示するために使用します。
+**TextBox** ユーザー入力の種類が 1 行のテキスト ボックスを表示するために使用します。
 
 ![要求の種類で指定されたプロパティを示しているテキストボックス](./media/claimsschema/textbox.png)
 
@@ -273,7 +273,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="emailbox"></a>EmailBox
 
-**EmailBox**ユーザー入力の種類が基本的な電子メールの入力フィールドを提供するために使用します。
+**EmailBox** ユーザー入力の種類が基本的な電子メールの入力フィールドを提供するために使用します。
 
 ![要求の種類で指定されたプロパティを示している電子メール ボックス](./media/claimsschema/emailbox.png)
 
@@ -284,14 +284,14 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>EmailBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
   </Restriction>
 </ClaimType>
 ```
 
 #### <a name="password"></a>Password
 
-**パスワード**ユーザー入力の種類は、ユーザーが入力したパスワードを記録するために使用します。
+**パスワード** ユーザー入力の種類は、ユーザーが入力したパスワードを記録するために使用します。
 
 ![パスワードを使用する要求種類](./media/claimsschema/password.png)
 
@@ -306,7 +306,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown**ユーザー入力の種類は、日、月、および年を選択するドロップダウン リストのセットを提供するために使用します。 述語および PredicateValidations 要素を使用すると、日付の最小値と最大値を制御できます。 詳細については、[述語および PredicateValidations](predicates.md)の**日付範囲を構成する**セクションを参照してください。
+**DateTimeDropdown** ユーザー入力の種類は、日、月、および年を選択するドロップダウン リストのセットを提供するために使用します。 述語および PredicateValidations 要素を使用すると、日付の最小値と最大値を制御できます。 詳細については、 [述語および PredicateValidations](predicates.md)の **日付範囲を構成する** セクションを参照してください。
 
 ![datetimedropdown を使用する要求の種類](./media/claimsschema/datetimedropdown.png)
 
@@ -321,7 +321,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="radiosingleselect"></a>RadioSingleSelect
 
-**RadioSingleSelect**ユーザー入力の種類はユーザーが 1 つのオプションを選択できるようラジオ ボタンのコレクションを提供するために使用します。
+**RadioSingleSelect** ユーザー入力の種類はユーザーが 1 つのオプションを選択できるようラジオ ボタンのコレクションを提供するために使用します。
 
 ![radiodsingleselect を使用する要求の種類](./media/claimsschema/radiosingleselect.png)
 
@@ -340,7 +340,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-**DropdownSingleSelect**ユーザー入力の種類はユーザーが 1 つのオプションを選択できるようドロップダウンボックスを提供するために使用します。
+**DropdownSingleSelect** ユーザー入力の種類はユーザーが 1 つのオプションを選択できるようドロップダウンボックスを提供するために使用します。
 
 ![dropdownsingleselect を使用する要求の種類](./media/claimsschema/dropdownsingleselect.png)
 
@@ -359,7 +359,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-**CheckboxMultiSelect**ユーザー入力の種類はユーザーが 複数のオプションを選択できるようチェックボックスのコレクションを提供するために使用します。
+**CheckboxMultiSelect** ユーザー入力の種類はユーザーが 複数のオプションを選択できるようチェックボックスのコレクションを提供するために使用します。
 
 ![checkboxmultiselect を使用する要求の種類](./media/claimsschema/checkboxmultiselect.png)
 
@@ -378,7 +378,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="readonly"></a>Readonly
 
-**Readonly**ユーザー入力の種類は、要求と値を表示する読み取り専用フィールドを提供するために使用します。
+**Readonly** ユーザー入力の種類は、要求と値を表示する読み取り専用フィールドを提供するために使用します。
 
 ![Readonly を使用する要求の種類](./media/claimsschema/readonly.png)
 
@@ -394,7 +394,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="paragraph"></a>段落
 
-**段落**ユーザー入力の種類は、段落タグ内のテキストだけを表示するフィールドを提供するために使用します。  たとえば、 &lt;p&gt;テキスト&lt;/p&gt;。 セルフアサート技術プロファイルの**段落**ユーザー入力の種類 `OutputClaim` は、`Required` 属性 `false` (既定値) を設定する必要があります。
+**段落** ユーザー入力の種類は、段落タグ内のテキストだけを表示するフィールドを提供するために使用します。  たとえば、 &lt;p&gt;テキスト&lt;/p&gt;。 セルフアサート技術プロファイルの **段落** ユーザー入力の種類 `OutputClaim` は、`Required` 属性 `false` (既定値) を設定する必要があります。
 
 ![段落を使用する要求種類](./media/claimsschema/paragraph.png)
 

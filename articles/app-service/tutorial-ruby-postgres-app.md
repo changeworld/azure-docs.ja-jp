@@ -4,13 +4,13 @@ description: Linux Ruby アプリを Azure App Service で動作させて、Azur
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c2baccec75c7b525c0837cebd9d828dff3a79543
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150176"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747135"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -125,7 +125,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 az extension add --name db-up
 ```
 
-次の例に示すように、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して、Azure に Postgres データベースを作成します。 *\<postgresql-name>* は、"*一意*" の名前に置き換えてください (サーバー エンドポイントは *https://\<postgresql-name>.postgres.database.azure.com*)。 *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
+次の例に示すように、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して、Azure に Postgres データベースを作成します。 *\<postgresql-name>* は、" *一意* " の名前に置き換えてください (サーバー エンドポイントは *https://\<postgresql-name>.postgres.database.azure.com* )。 *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -255,7 +255,7 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を " _アプリ設定_ " として設定します。
 
 次の Cloud Shell コマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;postgres-server-name>_ を置き換えます。
 
@@ -336,7 +336,7 @@ remote: Running deployment command...
 rails generate migration AddDoneToTasks Done:boolean
 ```
 
-このコマンドは、_db/migrate_ ディレクトリに新しい移行ファイルを生成します。
+このコマンドは、 _db/migrate_ ディレクトリに新しい移行ファイルを生成します。
 
 
 ターミナルで、Rails データベースの移行を実行して、ローカル データベースを変更します。

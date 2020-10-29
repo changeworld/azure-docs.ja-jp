@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993305"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782503"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作のキャンセル
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,7 +75,7 @@ Azure portal を使用して管理操作をキャンセルするには、次の�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure PowerShell がまだインストールされていない場合は、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+Azure PowerShell がまだインストールされていない場合は、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 管理操作をキャンセルするには、管理操作名を指定する必要があります。 したがって、最初に get コマンドを使用して操作一覧を取得してから、特定の操作をキャンセルします。
 
@@ -93,7 +93,7 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-コマンドの詳細については、[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) と [Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation) を参照してください。
+コマンドの詳細については、[Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation) と [Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation) を参照してください。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-コマンドの詳細については、[az sql mi op](https://docs.microsoft.com/cli/azure/sql/mi/op) を参照してください。
+コマンドの詳細については、[az sql mi op](/cli/azure/sql/mi/op) を参照してください。
 
 ---
 
 ## <a name="canceled-deployment-request"></a>デプロイ要求のキャンセル
 
-API バージョン 2020-02-02 では、インスタンス作成要求が受け入れられるとすぐに、デプロイ プロセスの進行状況に関係なくインスタンスはリソースとして存在し始めます (マネージド インスタンスの状態は **Provisioning**)。 インスタンスのデプロイ要求 (新しいインスタンスの作成) をキャンセルした場合、マネージド インスタンスの状態は **Provisioning** から **FailedToCreate** に移ります。
+API バージョン 2020-02-02 では、インスタンス作成要求が受け入れられるとすぐに、デプロイ プロセスの進行状況に関係なくインスタンスはリソースとして存在し始めます (マネージド インスタンスの状態は **Provisioning** )。 インスタンスのデプロイ要求 (新しいインスタンスの作成) をキャンセルした場合、マネージド インスタンスの状態は **Provisioning** から **FailedToCreate** に移ります。
 
 作成に失敗したインスタンスは、リソースとして引き続き存在しますが次のようになります。 
 

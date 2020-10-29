@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276926"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783982"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -54,9 +54,9 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 さらに、Azure Storage のデータの高可用性を維持するためには、次のベスト プラクティスに留意してください。
 
 - **ディスク:** [Azure Backup](https://azure.microsoft.com/services/backup/) を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。 また、[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) を使用して地域的な災害が発生した場合の VM の保護も検討します。
-- **ブロック BLOB:** [ソフト削除](../blobs/storage-blob-soft-delete.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、[AzCopy](storage-use-azcopy.md)、[Azure PowerShell](/powershell/module/az.storage/)、または [Azure Data Movement Library](storage-use-data-movement-library.md) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
-- **ファイル:** [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
-- **テーブル:** [AzCopy](storage-use-azcopy.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
+- **ブロック BLOB:** [ソフト削除](../blobs/soft-delete-blob-overview.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、 [AzCopy](./storage-use-azcopy-v10.md)、 [Azure PowerShell](/powershell/module/az.storage/)、または [Azure Data Movement Library](storage-use-data-movement-library.md) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
+- **ファイル:** [AzCopy](./storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
+- **テーブル:** [AzCopy](./storage-use-azcopy-v10.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
 
 ## <a name="track-outages"></a>障害を追跡する
 
@@ -102,7 +102,7 @@ geo 冗長アカウントの場合は、DNS エントリが更新されて、要
 
 ベスト プラクティスとしては、最終同期時刻を使用して予想されるデータ損失を評価できるようにアプリケーションを設計します。 たとえば、すべての書き込み操作をログに記録している場合は、最後の書き込み操作の時刻を最終同期時刻と比較することで、セカンダリに同期されていない書き込みを特定できます。
 
-**[最終同期時刻]** プロパティの詳細については、「[ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
+**[最終同期時刻]** プロパティの詳細については、「 [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>元のプライマリにフェールバックするときは注意が必要である
 
@@ -132,7 +132,7 @@ Azure Storage リソース プロバイダーはフェールオーバーしな�
 
 ### <a name="azure-virtual-machines"></a>Azure の仮想マシン
 
-Azure 仮想マシン (VM) は、アカウントのフェールオーバーの一部としてフェイルオーバーされません。 プライマリ リージョンが使用不能になり、セカンダリ リージョンにフェールオーバーする場合は、フェールオーバー後に VM を再作成する必要があります。 また、アカウントのフェールオーバーに関連したデータ損失の可能性があります。 Microsoft では、次に示す Azure の仮想マシンに固有の[高可用性](../../virtual-machines/windows/manage-availability.md)と[ディザスター リカバリー](../../virtual-machines/windows/backup-recovery.md)のガイダンスを推奨しています。
+Azure 仮想マシン (VM) は、アカウントのフェールオーバーの一部としてフェイルオーバーされません。 プライマリ リージョンが使用不能になり、セカンダリ リージョンにフェールオーバーする場合は、フェールオーバー後に VM を再作成する必要があります。 また、アカウントのフェールオーバーに関連したデータ損失の可能性があります。 Microsoft では、次に示す Azure の仮想マシンに固有の[高可用性](../../virtual-machines/manage-availability.md)と[ディザスター リカバリー](../../virtual-machines/backup-recovery.md)のガイダンスを推奨しています。
 
 ### <a name="azure-unmanaged-disks"></a>Azure アンマネージド ディスク
 
@@ -162,7 +162,7 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>フェールオーバーの代わりとしてのデータのコピー
 
-ストレージ アカウントがセカンダリへの読み取りアクセス用に構成されている場合、セカンダリ エンドポイントから読み取るようにアプリケーションを設計できます。 プライマリ リージョンで障害が発生したときにフェールオーバーしたくない場合は、[AzCopy](storage-use-azcopy.md)、[Azure PowerShell](/powershell/module/az.storage/)、[Azure Data Movement Library](../common/storage-use-data-movement-library.md) などのツールを使用して、セカンダリ リージョンのストレージ アカウントから、影響を受けていないリージョンの別のストレージ アカウントに、データをコピーできます。 その後は、アプリケーションの参照先をそのストレージ アカウントにして、読み取りと書き込みの両方に利用できます。
+ストレージ アカウントがセカンダリへの読み取りアクセス用に構成されている場合、セカンダリ エンドポイントから読み取るようにアプリケーションを設計できます。 プライマリ リージョンで障害が発生したときにフェールオーバーしたくない場合は、[AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](/powershell/module/az.storage/)、[Azure Data Movement Library](../common/storage-use-data-movement-library.md) などのツールを使用して、セカンダリ リージョンのストレージ アカウントから、影響を受けていないリージョンの別のストレージ アカウントに、データをコピーできます。 その後は、アプリケーションの参照先をそのストレージ アカウントにして、読み取りと書き込みの両方に利用できます。
 
 > [!CAUTION]
 > アカウントのフェールオーバーは、データ移行戦略の一環として使用しないでください。

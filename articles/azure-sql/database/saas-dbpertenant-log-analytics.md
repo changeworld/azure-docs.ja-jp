@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 787ee50dc04337d82940973d47af454264629afe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a078ba6147d4d874a890f406563111b6fdb82ed6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619799"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780905"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>マルチテナントの Azure SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、[Azure Monitor ログ](/azure/log-analytics/log-analytics-overview)を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 Azure Monitor ログを使用して、Azure portal で提供された監視とアラート設定を拡張する方法を示します。 Azure Monitor ログでは、何千単位のエラスティック プールと何十万単位のデータベースの監視をサポートしています。 Azure Monitor ログは単一の監視ソリューションを提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 Azure Monitor ログを使用して、Azure portal で提供された監視とアラート設定を拡張する方法を示します。 Azure Monitor ログでは、何千単位のエラスティック プールと何十万単位のデータベースの監視をサポートしています。 Azure Monitor ログは単一の監視ソリューションを提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -33,8 +33,8 @@ ms.locfileid: "91619799"
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Wingtip Tickets SaaS テナント単位データベース アプリをデプロイします。 5 分未満でデプロイするには、[Wingtip Tickets SaaS テナント単位データベース アプリケーションのデプロイと探索](../../sql-database/saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
-* Azure PowerShell がインストールされている。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
+* Wingtip Tickets SaaS テナント単位データベース アプリをデプロイします。 5 分未満でデプロイするには、[Wingtip Tickets SaaS テナント単位データベース アプリケーションのデプロイと探索](./saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
+* Azure PowerShell がインストールされている。 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 
 SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)に関するページを参照してください。
 
@@ -135,7 +135,7 @@ Log Analytics ワークスペースでは、ログとメトリック データ�
 
 Azure Monitor ログの監視とアラートは、Azure portal の各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
 
-Azure Monitor ログを使用してアラートのクエリと設定を行う方法については、[Azure Monitor ログのアラート ルールの操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)に関するページを参照してください。
+Azure Monitor ログを使用してアラートのクエリと設定を行う方法については、[Azure Monitor ログのアラート ルールの操作](../../azure-monitor/platform/alerts-metric.md)に関するページを参照してください。
 
 SQL Database の Azure Monitor ログでは、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、無料のワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
 

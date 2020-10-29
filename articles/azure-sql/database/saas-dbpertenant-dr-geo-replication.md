@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ffe5a1d0c9bbdbc416ecce7c36b3710339c4f059
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330123"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781024"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>データベースの geo レプリケーションを使用したマルチテナント SaaS アプリケーションのディザスター リカバリー
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "92330123"
 
 このチュートリアルを始める前に、次の前提条件を満たしておく必要があります。
 * Wingtip Tickets SaaS テナント単位データベース アプリをデプロイする。 5 分未満でデプロイするには、[テナントごとのデータベースを使用する Wingtip Tickets SaaS アプリケーションのデプロイと探索](saas-dbpertenant-get-started-deploy.md)に関する記事を参照してください。  
-* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="introduction-to-the-geo-replication-recovery-pattern"></a>geo レプリケーション復旧パターンの概要
 
@@ -66,11 +66,11 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 
 このチュートリアルでは、Azure SQL Database と Azure プラットフォームの以下の機能を使って、これらの課題に対応します。
 
-* [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。すべての必要な容量を可能な限り早く確保します。 復旧リージョン内に運用サーバーとエラスティック プールのミラー イメージをプロビジョニングするには、Azure Resource Manager テンプレートを使います。
+* [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。すべての必要な容量を可能な限り早く確保します。 復旧リージョン内に運用サーバーとエラスティック プールのミラー イメージをプロビジョニングするには、Azure Resource Manager テンプレートを使います。
 * [geo レプリケーション](active-geo-replication-overview.md)は、すべてのデータベースのレプリケートされた読み取り専用のセカンダリを非同期的に作成します。 障害時には、復旧リージョンのレプリカにフェールオーバーします。  障害が解決した後で、データを失うことなく元のリージョン内のデータベースにフェールバックします。
-* テナントの優先順に送信される[非同期](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)フェールオーバー操作は、大量のデータベースのフェールオーバー時間を最小限に抑えます。
+* テナントの優先順に送信される[非同期](../../azure-resource-manager/management/async-operations.md)フェールオーバー操作は、大量のデータベースのフェールオーバー時間を最小限に抑えます。
 * [シャード管理復旧機能](elastic-database-recovery-manager.md)は、復旧および復帰の間にカタログのデータベース エントリを変更します。 これらの機能により、アプリは、再構成しなくても、場所に関係なく、テナント データベースに接続できます。
-* [SQL サーバーの DNS エイリアス](../../sql-database/dns-alias-overview.md)は、アプリが動作しているリージョンに関係なく、新しいテナントのシームレスなプロビジョニングを可能にします。 また、DNS エイリアスは、カタログの場所に関係なく、カタログ同期プロセスがアクティブなカタログに接続できるようにするためにも使われます。
+* [SQL サーバーの DNS エイリアス](./dns-alias-overview.md)は、アプリが動作しているリージョンに関係なく、新しいテナントのシームレスなプロビジョニングを可能にします。 また、DNS エイリアスは、カタログの場所に関係なく、カタログ同期プロセスがアクティブなカタログに接続できるようにするためにも使われます。
 
 ## <a name="get-the-disaster-recovery-scripts"></a>ディザスター リカバリー スクリプトを取得する 
 
@@ -85,7 +85,7 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 その後、別の復帰手順において、復旧リージョンのカタログとテナント データベースを元のリージョンにフェールオーバーします。 復帰の期間中、アプリケーションとデータベースは使用可能な状態のままになります。 完了すると、アプリケーションは元のリージョンで完全に機能するようになります。
 
 > [!Note]
-> アプリケーションは、アプリケーションが展開されたリージョンの _ペア リージョン_ に復旧されます。 詳細については、「[Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」をご覧ください。
+> アプリケーションは、アプリケーションが展開されたリージョンの _ペア リージョン_ に復旧されます。 詳細については、「[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」をご覧ください。
 
 ## <a name="review-the-healthy-state-of-the-application"></a>アプリケーションの正常性状態を確認する
 
@@ -106,7 +106,7 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 このタスクでは、サーバー、エラスティック プール、およびデータベースの構成をテナント カタログに同期するプロセスを開始します。 このプロセスは、カタログ内のこの情報を最新の状態に維持します。  このプロセスは、元のリージョンでも復旧リージョンでも、アクティブなカタログで動作します。 構成情報は、復旧プロセスの一部として復旧環境が元の環境と一致していることを確認するために、また後の復帰プロセスでは元のリージョンが復旧環境で行われた変更と整合していることを確認するために、使用されます。 カタログは、テナント リソースの復旧状態の追跡にも使われます。
 
 > [!IMPORTANT]
-> わかりやすくするため、これらのチュートリアルでは、同期プロセスおよびその他の実行時間の長い復旧プロセスと復帰プロセスは、ご使用のクライアントのユーザー ログインで実行されるローカル PowerShell ジョブまたはセッションとして実装されています。 ログイン時に発行される認証トークンは、数時間で有効期限が切れ、ジョブは失敗するようになります。 運用のシナリオでは、実行時間の長いプロセスは、サービス プリンシパルで実行される、何らかの信頼性の高い Azure サービスとしてを実装する必要があります。 「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)」をご覧ください。
+> わかりやすくするため、これらのチュートリアルでは、同期プロセスおよびその他の実行時間の長い復旧プロセスと復帰プロセスは、ご使用のクライアントのユーザー ログインで実行されるローカル PowerShell ジョブまたはセッションとして実装されています。 ログイン時に発行される認証トークンは、数時間で有効期限が切れ、ジョブは失敗するようになります。 運用のシナリオでは、実行時間の長いプロセスは、サービス プリンシパルで実行される、何らかの信頼性の高い Azure サービスとしてを実装する必要があります。 「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)」をご覧ください。
 
 1. _PowerShell ISE_ で、...\Learning Modules\UserConfig.psm1 ファイルを開きます。 10 行目と 11 行目の `<resourcegroup>` および `<user>` は、アプリを展開したときに使った値に置き換えます。  ファイルを保存します。
 
@@ -186,7 +186,7 @@ Azure リージョンのマップで、元のリージョンのプライマリ�
 
 2. **F5** キーを押して、スクリプトを実行します。  
     * 新しい PowerShell ウィンドウでスクリプトが開き、並列に実行される一連の PowerShell ジョブが開始されます。 これらのジョブは、テナント データベースを復旧リージョンにフェールオーバーします。
-    * 復旧リージョンは、アプリケーションを展開した Azure リージョンに関連付けられている _ペア リージョン_ です。 詳細については、「[Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」をご覧ください。 
+    * 復旧リージョンは、アプリケーションを展開した Azure リージョンに関連付けられている _ペア リージョン_ です。 詳細については、「[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」をご覧ください。 
 
 3. PowerShell ウィンドウで復旧プロセスの状態を監視します。
     ![フェールオーバー プロセス](./media/saas-dbpertenant-dr-geo-replication/failover-process.png)

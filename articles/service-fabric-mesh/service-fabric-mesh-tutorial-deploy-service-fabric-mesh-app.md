@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 6305bdd8c892bb0323cd4f7dc61b7ad22652ed73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 51e5fd29d16c3f927dc9b89d9c7145a16f4fd49f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842735"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748241"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル:Service Fabric Mesh アプリケーションをデプロイする
 
@@ -65,7 +65,7 @@ Azure アカウントとサブスクリプションを選択します。 **[場�
 
 ![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-**[Service Fabric アプリケーションの発行]** ダイアログに戻り、 **[Azure Container Registry]** の **\<Create New Container Registry...>** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、 **[コンテナー レジストリ名]** に一意の名前を使用します。 **場所**を指定します (このチュートリアルでは、 **[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、 **[作成]** をクリックして、プライベート Azure コンテナー レジストリを作成し、発行ダイアログに戻ります。
+**[Service Fabric アプリケーションの発行]** ダイアログに戻り、 **[Azure Container Registry]** の **\<Create New Container Registry...>** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、 **[コンテナー レジストリ名]** に一意の名前を使用します。 **場所** を指定します (このチュートリアルでは、 **[米国東部]** を使用します)。 前の手順で作成した **リソース グループ** をドロップダウンで選択します (例: **sfmeshTutorial1RG** )。 **[SKU]** を **[Basic]** に設定し、 **[作成]** をクリックして、プライベート Azure コンテナー レジストリを作成し、発行ダイアログに戻ります。
 
 ![Visual Studio の Service Fabric Mesh 新規コンテナー レジストリ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -84,7 +84,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 
 発行ダイアログで **[発行]** をクリックして、Service Fabric アプリケーションを Azure にデプロイします。
 
-Azure に初めて発行したときは、Docker イメージが Azure Container Registry (ACR) にプッシュされます。イメージのサイズによっては、この処理に時間がかかります。 同じプロジェクトの以降の発行は高速になります。 Visual Studio の**出力**ウィンドウで **[Service Fabric Tools]** ウィンドウを選択することで、デプロイの進行状況を監視できます。 デプロイが完了すると、**Service Fabric Tools** の出力に、アプリケーションの IP アドレスとポートが URL の形式で表示されます。
+Azure に初めて発行したときは、Docker イメージが Azure Container Registry (ACR) にプッシュされます。イメージのサイズによっては、この処理に時間がかかります。 同じプロジェクトの以降の発行は高速になります。 Visual Studio の **出力** ウィンドウで **[Service Fabric Tools]** ウィンドウを選択することで、デプロイの進行状況を監視できます。 デプロイが完了すると、 **Service Fabric Tools** の出力に、アプリケーションの IP アドレスとポートが URL の形式で表示されます。
 
 ```
 Packaging Application...

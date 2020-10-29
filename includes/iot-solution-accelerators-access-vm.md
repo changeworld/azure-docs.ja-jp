@@ -7,19 +7,19 @@ ms.service: iot-accelerators
 ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
-ms.custom: include file
-ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 817c41a969f03ad04d372c516a16ef6b770f3e18
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68781469"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755603"
 ---
 ## <a name="access-the-virtual-machine"></a>仮想マシンにアクセスする
 
 次の手順では、Azure Cloud Shell の Azure CLI を使用します。 必要に応じて、開発用マシンに [Azure CLI をインストール](/cli/azure/install-azure-cli)し、ローカルでコマンドを実行することができます。
 
-次の手順は、**SSH** アクセスを許可するように Azure 仮想マシンを構成する方法を示しています。 ここに示された手順では、ソリューション アクセラレータ用に選択された名前を **contoso-simulation** と想定しています。この値を実際のデプロイの名前に置き換えてください。
+次の手順は、 **SSH** アクセスを許可するように Azure 仮想マシンを構成する方法を示しています。 ここに示された手順では、ソリューション アクセラレータ用に選択された名前を **contoso-simulation** と想定しています。この値を実際のデプロイの名前に置き換えてください。
 
 1. ソリューション アクセラレータ リソースを含むリソース グループの内容を一覧表示します。
 

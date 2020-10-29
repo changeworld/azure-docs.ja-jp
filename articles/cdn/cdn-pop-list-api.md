@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b4bcaee447d84efa088e84340ccfc717fe2777
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192555"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778320"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
 
 ## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Verizon POP IP リストの取得
 
-REST API を使用して、Verizon の POP (point of presence) サーバーの IP アドレスのセットを取得できます。 これらの POP サーバーは、Verizon プロファイル (**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon**) で Azure Content Delivery Network (CDN) エンドポイントに関連付けられている配信元サーバーに要求を送信します。 この IP アドレスのセットは POP に要求を送信するときにクライアントが認識する IP アドレスとは異なることに注意してください。 
+REST API を使用して、Verizon の POP (point of presence) サーバーの IP アドレスのセットを取得できます。 これらの POP サーバーは、Verizon プロファイル ( **Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** ) で Azure Content Delivery Network (CDN) エンドポイントに関連付けられている配信元サーバーに要求を送信します。 この IP アドレスのセットは POP に要求を送信するときにクライアントが認識する IP アドレスとは異なることに注意してください。 
 
-POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)」を参照してください。
+POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](/rest/api/cdn/edgenodes/list)」を参照してください。
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Microsoft POP IP リストの取得
 
@@ -48,4 +48,4 @@ Microsoft の Azure CDN でサービス タグを使用するには、Azure Fron
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API の詳細については、「[Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/)」を参照してください。
+REST API の詳細については、「[Azure CDN REST API](/rest/api/cdn/)」を参照してください。

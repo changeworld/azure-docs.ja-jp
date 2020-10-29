@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84883718"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779137"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services での Azure CDN キャッシュ ポリシーの管理
 Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。 HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。 ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。 ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。 HTTP キャッシュ ヘッダーの詳細については、 [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。
@@ -40,10 +40,9 @@ Azure Portal または Azure Media Services API を使用して、キャッシ�
 
 1. Azure Portal を使用してキャッシュ ヘッダーを構成する方法については、[ストリーミング エンドポイントの管理方法](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)に関するページの「ストリーミング エンドポイントの構成」セクションをご覧ください。
 2. Azure Media Services REST API の「 [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl)」。
-3. Azure Media Services .NET SDK の「 [StreamingEndpointCacheControl プロパティ](https://go.microsoft.com/fwlink/?LinkId=615302)」。
+3. Azure Media Services .NET SDK の「 [StreamingEndpointCacheControl プロパティ](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol)」。
 
 ## <a name="cache-configuration-precedence-order"></a>キャッシュの構成の優先順位
 1. Azure Media Services で構成されたキャッシュ値は、既定値をオーバーライドします。
 2. 手動による構成がない場合は既定値が適用されます。
 3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値のオーバーライドは使用できません。
-

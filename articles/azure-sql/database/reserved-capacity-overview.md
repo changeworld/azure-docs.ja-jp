@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
-ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b4a8b809fc135a4af26fae10912890f2017153f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058269"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780922"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>予約容量を使用してリソースのコストを節約する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -31,7 +31,7 @@ ms.locfileid: "92058269"
 予約容量は [Azure portal](https://portal.azure.com) で購入できます。 予約の支払いは、[前払いまたは月払い](../../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
-- Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。 予約容量。
+- Enterprise サブスクリプションの場合、 [EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。 予約容量。
 
 エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
 
@@ -65,7 +65,7 @@ ms.locfileid: "92058269"
     |期間        |1 年間または 3 年間。|
     |Quantity    |予約容量の予約内で購入されるコンピューティング リソース数。 この数量は、予約し、請求時に割り引きを受ける、選択された Azure リージョンとパフォーマンス レベルに含まれる仮想コアの数です。 たとえば、米国東部リージョンで、合計コンピューティング容量を Gen5 仮想コア 16 個とする複数のデータベースを実行する場合、あるいは実行する予定の場合、すべてのデータベースを最大限に活用するため、数量に 16 を指定します。 |
 
-1. 予約容量の予約コストについては、「**コスト**」セクションを参照してください。
+1. 予約容量の予約コストについては、「 **コスト** 」セクションを参照してください。
 1. **[購入]** を選択します。
 1. **[この予約を表示する]** を選択すると、購入の状態が表示されます。
 
@@ -98,4 +98,4 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [Azure の予約割引を理解する](../../cost-management-billing/reservations/understand-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
-- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
+- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)

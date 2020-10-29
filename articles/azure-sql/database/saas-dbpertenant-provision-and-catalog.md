@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26add03929551c912b4d7b7cf10741d53333689a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619697"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780565"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,8 +33,8 @@ ms.locfileid: "91619697"
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Wingtip Tickets SaaS テナント単位データベース アプリをデプロイします。 5 分未満でデプロイする方法については、[Wingtip Tickets SaaS テナント単位データベース アプリケーションのデプロイと探索](../../sql-database/saas-dbpertenant-get-started-deploy.md)に関する記事を参照してください。
-* Azure PowerShell がインストールされている。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
+* Wingtip Tickets SaaS テナント単位データベース アプリをデプロイします。 5 分未満でデプロイする方法については、[Wingtip Tickets SaaS テナント単位データベース アプリケーションのデプロイと探索](./saas-dbpertenant-get-started-deploy.md)に関する記事を参照してください。
+* Azure PowerShell がインストールされている。 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS カタログ パターンの概要
 
@@ -53,7 +53,7 @@ Wingtip Tickets SaaS サンプルでは、[Elastic Database クライアント �
 シャード マップにはシャード (データベース) の一覧と、キー (テナント) とシャード間のマッピングが含まれます。 EDCL の関数はテナントのプロビジョニング中に使用され、シャード マップ内のエントリーを作成します。 それらは実行時にアプリケーションによって使用され、正しいデータベースに接続します。 EDCL は接続情報をキャッシュして、カタログ データベースへのトラフィックを最小限に抑え、アプリケーションを高速化します。
 
 > [!IMPORTANT]
-> マッピング データはカタログ データベースからアクセスできますが、"*編集しないでください*"。 マッピング データの編集には、必ず Elastic Database クライアント ライブラリ API を使用してください。 マッピング データを直接操作すると、カタログが破損するおそれがあるため、サポートしていません。
+> マッピング データはカタログ データベースからアクセスできますが、" *編集しないでください* "。 マッピング データの編集には、必ず Elastic Database クライアント ライブラリ API を使用してください。 マッピング データを直接操作すると、カタログが破損するおそれがあるため、サポートしていません。
 
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>SaaS プロビジョニング パターンの概要
@@ -64,9 +64,9 @@ Wingtip Tickets SaaS サンプルでは、[Elastic Database クライアント �
 
 データベースのプロビジョニングは、スキーマ管理戦略の一部である必要があります。 新しいデータベースが最新のスキーマでプロビジョニングされる必要があります。 この要件については、[スキーマ管理のチュートリアル](saas-tenancy-schema-management.md)をご覧ください。
 
-Wingtip Tickets テナント単位データベース アプリは、カタログ サーバーにデプロイされている、_basetenantdb_ という名前のテンプレート データベースをコピーすることで、新しいテナントをプロビジョニングします。 プロビジョニングは、サインアップ エクスペリエンスの一部としてアプリケーションに統合できます。 また、スクリプトを使用することでオフラインでも実行できます。 このチュートリアルでは、PowerShell を使用したプロビジョニングについて説明します。
+Wingtip Tickets テナント単位データベース アプリは、カタログ サーバーにデプロイされている、 _basetenantdb_ という名前のテンプレート データベースをコピーすることで、新しいテナントをプロビジョニングします。 プロビジョニングは、サインアップ エクスペリエンスの一部としてアプリケーションに統合できます。 また、スクリプトを使用することでオフラインでも実行できます。 このチュートリアルでは、PowerShell を使用したプロビジョニングについて説明します。
 
-プロビジョニング用のスクリプトは、_basetenantdb_ データベースをコピーし、新しいテナント データベースをエラスティック プールに作成します。 テナント データベースは、_newtenant_ DNS エイリアスにマップされているテナント サーバーに作成されます。 このエイリアスは、新しいテナントのプロビジョニングに使用されるサーバーへの参照を保持し、災害復旧チュートリアルで復旧テナント サーバーを指定するように更新されます ([georestore を使用した DR](../../sql-database/saas-dbpertenant-dr-geo-restore.md)、 [georeplication を使用した DR](../../sql-database/saas-dbpertenant-dr-geo-replication.md))。 その後、そのスクリプトはテナント固有の情報を使用してデータベースを初期化し、それをカタログのシャード マップに登録します。 テナント データベースはテナント名に基づいて名前が付けられます。 この名前付けスキームはパターンの重要な部分ではありません。 カタログはテナント キーをデータベース名にマッピングするため、どのような名前付け規則でも使用できます。
+プロビジョニング用のスクリプトは、 _basetenantdb_ データベースをコピーし、新しいテナント データベースをエラスティック プールに作成します。 テナント データベースは、 _newtenant_ DNS エイリアスにマップされているテナント サーバーに作成されます。 このエイリアスは、新しいテナントのプロビジョニングに使用されるサーバーへの参照を保持し、災害復旧チュートリアルで復旧テナント サーバーを指定するように更新されます ([georestore を使用した DR](./saas-dbpertenant-dr-geo-restore.md)、 [georeplication を使用した DR](./saas-dbpertenant-dr-geo-replication.md))。 その後、そのスクリプトはテナント固有の情報を使用してデータベースを初期化し、それをカタログのシャード マップに登録します。 テナント データベースはテナント名に基づいて名前が付けられます。 この名前付けスキームはパターンの重要な部分ではありません。 カタログはテナント キーをデータベース名にマッピングするため、どのような名前付け規則でも使用できます。
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS テナント単位データベース アプリケーションのスクリプトを入手する
@@ -80,11 +80,11 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 
 1. PowerShell ISE で、...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_ を開き、次のパラメーターを設定します。
 
-   * **$TenantName** = 新しい会場の名称 (たとえば、*Bushwillow Blues*)。
-   * **$VenueType** = 事前に定義しておいた会場の種類のいずれか ("_ブルース、クラシック、ダンス、ジャズ、柔道、モーターレース、多目的、オペラ、ロック、サッカー_")。
-   * **$DemoScenario** = **1** ("*シングル テナントのプロビジョニング*")。
+   * **$TenantName** = 新しい会場の名称 (たとえば、 *Bushwillow Blues* )。
+   * **$VenueType** = 事前に定義しておいた会場の種類のいずれか (" _ブルース、クラシック、ダンス、ジャズ、柔道、モーターレース、多目的、オペラ、ロック、サッカー_ ")。
+   * **$DemoScenario** = **1** (" *シングル テナントのプロビジョニング* ")。
 
-2. ブレークポイントを追加するには、*New-Tenant `* と記述されている行のどこかにカーソルを置きます。 その後、F9 キーを押します。
+2. ブレークポイントを追加するには、 *New-Tenant `* と記述されている行のどこかにカーソルを置きます。 その後、F9 キーを押します。
 
    ![スクリプトを示すスクリーンショット。ブレークポイントを追加するために、New-Tenant が強調表示されています。](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
@@ -96,7 +96,7 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 
 
 
-**[デバッグ]** メニュー オプションを使用してスクリプトの実行をトレースします。 呼び出された関数に対して、F10 キーを使用してステップ オーバー、F11 キーを使用してステップ インします。 PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+**[デバッグ]** メニュー オプションを使用してスクリプトの実行をトレースします。 呼び出された関数に対して、F10 キーを使用してステップ オーバー、F11 キーを使用してステップ インします。 PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
 
 
 このワークフローに明示的に従う必要はありません。 これはスクリプトをデバッグする方法について説明します。
@@ -104,9 +104,9 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 * **CatalogAndDatabaseManagement.psm1 モジュールのインポート。** カタログとテナントレベルで[シャード管理](elastic-scale-shard-map-management.md)関数を抽象化します。 このモジュールは、カタログ パターンの大部分をカプセル化するため、確認する価値があります。
 * **SubscriptionManagement.psm1 モジュールのインポート。** Azure にサインインし、操作する Azure のサブスクリプションを選択する関数が含まれます。
 * **構成情報の取得。** F11 キーを使用して Get-Configuration にステップ インし、アプリの構成がどのように指定されているかを確認します。 リソース名やその他アプリ固有の値がここに定義されています。 スクリプトに慣れるまで、これらの値は変更しないでください。
-* **カタログ オブジェクトの取得。** より高いレベルのスクリプトで使用されるカタログ オブジェクトを構成して返す Get-Catalog にステップ インします。 この関数では、**AzureShardManagement.psm1**からインポートされたシャード管理関数を使用します。 カタログ オブジェクトは、以下の要素で構成されています。
+* **カタログ オブジェクトの取得。** より高いレベルのスクリプトで使用されるカタログ オブジェクトを構成して返す Get-Catalog にステップ インします。 この関数では、 **AzureShardManagement.psm1** からインポートされたシャード管理関数を使用します。 カタログ オブジェクトは、以下の要素で構成されています。
 
-   * $catalogServerFullyQualifiedName。これは、標準的なステム部分とユーザー名を組み合わせた構成になっています (例: _catalog-\<user\>.database.windows.net_)。
+   * $catalogServerFullyQualifiedName。これは、標準的なステム部分とユーザー名を組み合わせた構成になっています (例: _catalog-\<user\>.database.windows.net_ )。
    * $catalogDatabaseName。これは、構成 *tenantcatalog* から取得されます。
    * $shardMapManager オブジェクト。これは、カタログ データベースから初期化されます。
    * $shardMap オブジェクト。これは、カタログ データベースの _tenantcatalog_ シャード マップから初期化されます。 カタログ オブジェクトが構成され、返されます。 これは、上位レベルのスクリプトで使用されます。
@@ -114,7 +114,7 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 * **テナント キーが既に存在するかどうかの確認。** カタログにキーがあることを確認します。
 * **New-TenantDatabase によるテナント データベースのプロビジョニング。** F11 キーを使用して、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)によってデータベースがどのようにプロビジョニングされているかをステップ インします。
 
-    データベース名は、どのシャードがどのテナントに属しているかが明確になるよう、テナント名を基に作成されます 他のデータベース名前付け規則も使用できます。 Resource Manager テンプレートは、カタログ サーバーでテンプレート データベース (_baseTenantDB_) をコピーすることでテナント データベースを作成します。 代わりに、データベースを作成し、bacpac をインポートしてそれを初期化できます。 または、既知の場所から初期化スクリプトを実行できます。
+    データベース名は、どのシャードがどのテナントに属しているかが明確になるよう、テナント名を基に作成されます 他のデータベース名前付け規則も使用できます。 Resource Manager テンプレートは、カタログ サーバーでテンプレート データベース ( _baseTenantDB_ ) をコピーすることでテナント データベースを作成します。 代わりに、データベースを作成し、bacpac をインポートしてそれを初期化できます。 または、既知の場所から初期化スクリプトを実行できます。
 
     Resource Manager テンプレートは、…\Learning Modules\Common\ フォルダーにある *tenantdatabasecopytemplate.json* ファイルです。
 
@@ -138,14 +138,14 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 
 1. PowerShell ISE で、...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1* を開きます。 *$DemoScenario* のパラメーターを、次のように 3 に変更します。
 
-   * **$DemoScenario** = **3** (*テナント バッチのプロビジョニング*)。
+   * **$DemoScenario** = **3** ( *テナント バッチのプロビジョニング* )。
 2. F5 キーを押してスクリプトを実行します。
 
 このスクリプトにより、追加のテナントのバッチがデプロイされます。 このスクリプトでは、バッチを制御し、各データベースのプロビジョニングをリンクされているテンプレートに委任する [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を使用しています。 テンプレートをこのように使用することによって、Azure Resource Manager がスクリプトのプロビジョニングの処理を仲介できるようになっています。 テンプレートは、データベースを並列にプロビジョニングし、必要であれば再試行を処理します。 このスクリプトはべき等です。そのため、スクリプトがなんらかの理由で失敗または停止した場合はもう一度実行してください。
 
 ### <a name="verify-the-batch-of-tenants-that-successfully-deployed"></a>テナントのバッチが正常にデプロイされたかどうかを確認する
 
-* [Azure Portal](https://portal.azure.com) で、サーバーの一覧を参照して、*tenants1* サーバーを開きます。 **SQL データベース**を選択し、17 個の追加データベースのバッチが一覧に追加されたことを確認します。
+* [Azure Portal](https://portal.azure.com) で、サーバーの一覧を参照して、 *tenants1* サーバーを開きます。 **SQL データベース** を選択し、17 個の追加データベースのバッチが一覧に追加されたことを確認します。
 
    ![データベースの一覧](./media/saas-dbpertenant-provision-and-catalog/database-list.png)
 
@@ -155,9 +155,9 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 
 このチュートリアルで取り上げた以外の他のプロビジョニング パターンとしては、以下のものが存在します。
 
-**データベースの事前プロビジョニング**:事前プロビジョニング パターンでは、エラスティック プール内のデータベースには追加のコストが発生しないという点が利用されています。 課金はデータベースではなく、エラスティック プールに対して発生します。 アイドル状態のデータベースはリソースを消費しません。 プールにデータベースを事前にプロビジョニングしておいて、必要に応じて割り当てるという方法により、テナントの追加にかかる時間を削減できます。 事前にプロビジョニングされるデータベースの数は、予想されるプロビジョニング速度に応じて適切なバッファーを維持できるよう、必要に応じて調整できます。
+**データベースの事前プロビジョニング** :事前プロビジョニング パターンでは、エラスティック プール内のデータベースには追加のコストが発生しないという点が利用されています。 課金はデータベースではなく、エラスティック プールに対して発生します。 アイドル状態のデータベースはリソースを消費しません。 プールにデータベースを事前にプロビジョニングしておいて、必要に応じて割り当てるという方法により、テナントの追加にかかる時間を削減できます。 事前にプロビジョニングされるデータベースの数は、予想されるプロビジョニング速度に応じて適切なバッファーを維持できるよう、必要に応じて調整できます。
 
-**自動プロビジョニング**:自動プロビジョニング パターンでは、プロビジョニング サービスを使用して、必要に応じてサーバー、プール、およびデータベースを自動的にプロビジョニングします。 必要な場合は、エラスティック プールに事前にプロビジョニングされたデータベースを含めることもできます。 データベースの使用を停止および削除した場合は、このプロビジョニング サービスによりエラスティック プール間の格差が是正されます。 このようなサービスは単純なこともあれば、多くの地域にまたがるプロビジョニングを処理し、ディザスター リカバリーのために geo レプリケーションをセットアップするなど、複雑になることもあります。
+**自動プロビジョニング** :自動プロビジョニング パターンでは、プロビジョニング サービスを使用して、必要に応じてサーバー、プール、およびデータベースを自動的にプロビジョニングします。 必要な場合は、エラスティック プールに事前にプロビジョニングされたデータベースを含めることもできます。 データベースの使用を停止および削除した場合は、このプロビジョニング サービスによりエラスティック プール間の格差が是正されます。 このようなサービスは単純なこともあれば、多くの地域にまたがるプロビジョニングを処理し、ディザスター リカバリーのために geo レプリケーションをセットアップするなど、複雑になることもあります。
 
 自動プロビジョニング パターンでは、プロビジョニング サービスによって処理されるプロビジョニング要求がクライアント アプリケーションまたはスクリプトからキューに送信されます。 その後、サービスをポーリングして完了を判定します。 事前プロビジョニングを使用する場合、要求が迅速に処理されます。 サービスは背景で代替データベースをプロビジョニングします。
 
@@ -172,10 +172,10 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 > * 追加テナントのバッチをプロビジョニングする。
 > * テナントをプロビジョニングしてカタログに登録するまでの流れの詳細を確認する。
 
-[パフォーマンスの監視に関するチュートリアル](../../sql-database/saas-dbpertenant-performance-monitoring.md)を試してください。
+[パフォーマンスの監視に関するチュートリアル](./saas-dbpertenant-performance-monitoring.md)を試してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Wingtip Tickets SaaS テナント単位データベース アプリケーションに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [エラスティック データベース クライアント ライブラリ](elastic-database-client-library.md)
-* [Windows PowerShell ISE でスクリプトをデバッグする](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [Windows PowerShell ISE でスクリプトをデバッグする](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488968"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780191"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -136,7 +136,7 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>サポートされる読み取りスケールアウト レプリカの数
 
-ハイパースケール データベースは、既定で 1 つの読み取りスケールアウト レプリカを含むように作成されます (プライマリを含めて 2 つのレプリカ)。 [Azure portal](https://portal.azure.com) または [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、読み取り専用レプリカの数を 0 から 4 の間でスケールすることができます。
+ハイパースケール データベースは、既定で 1 つの読み取りスケールアウト レプリカを含むように作成されます (プライマリを含めて 2 つのレプリカ)。 [Azure portal](https://portal.azure.com) または [REST API](/rest/api/sql/databases/createorupdate) を使用して、読み取り専用レプリカの数を 0 から 4 の間でスケールすることができます。
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>高可用性のために追加の計算レプリカをプロビジョニングできるか
 
@@ -198,7 +198,7 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>大きなテーブルのデータを複数のデータ ファイルに分散できるか
 
-はい。 特定のテーブルに関連付けられたデータ ページを、同じファイルグループに含まれる複数のデータ ファイルに分散することができます。 SQL Server は、[比例配分方式](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)を使用してデータをデータ ファイルに均等配置します。
+はい。 特定のテーブルに関連付けられたデータ ページを、同じファイルグループに含まれる複数のデータ ファイルに分散することができます。 SQL Server は、[比例配分方式](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)を使用してデータをデータ ファイルに均等配置します。
 
 ## <a name="data-migration-questions"></a>データの移行に関する質問
 
@@ -231,9 +231,9 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>BLOB ストレージからデータを読み取って高速読み込みできるか (Azure Synapse Analytics の Polybase のように)
 
-クライアント アプリケーションで Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (他の Azure SQL Database データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 高速読み込みを提供する代替手段として、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) を使用するか、[SQL 用 Spark コネクタ](spark-connector.md)で Spark ジョブを [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) で使用できます。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
+クライアント アプリケーションで Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (他の Azure SQL Database データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 高速読み込みを提供する代替手段として、[Azure Data Factory](../../data-factory/index.yml) を使用するか、[SQL 用 Spark コネクタ](spark-connector.md)で Spark ジョブを [Azure Databricks](/azure/azure-databricks/) で使用できます。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
 
-BULK INSERT または OPENROWSET を使用して、Azure BLOB ストアからデータを一括で読み取ることもできます。[Azure Blob Storage のデータに一括アクセスする例](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+BULK INSERT または OPENROWSET を使用して、Azure BLOB ストアからデータを一括で読み取ることもできます。[Azure Blob Storage のデータに一括アクセスする例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現して特定の時点に復旧するには、完全復旧モデルが必要です。 ただし、ハイパースケール ログ アーキテクチャでは、他の Azure SQL Database サービス レベルと比較してデータ取り込み率が向上しています。
 
@@ -277,7 +277,7 @@ RPO は 0 分です。ほとんどの復元操作は、データベース サイ
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>ハイパースケール データベースを使用して geo リストアを実行できるか
 
-はい。 geo リストアは完全にサポートされています。 ポイントインタイム リストアとは異なり、geo リストアでは、データ サイズに応じた操作が必要です。 データ ファイルは並行してコピーされるため、この操作の実行時間は、データベースの合計サイズではなく、データベース内の最大ファイルのサイズによって主に決まります。 ソース データベースのリージョンと[ペアリングされた](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Azure リージョンでデータベースを復元した場合、Geo リストアの時間は大幅に短くなります。
+はい。 geo リストアは完全にサポートされています。 ポイントインタイム リストアとは異なり、geo リストアでは、データ サイズに応じた操作が必要です。 データ ファイルは並行してコピーされるため、この操作の実行時間は、データベースの合計サイズではなく、データベース内の最大ファイルのサイズによって主に決まります。 ソース データベースのリージョンと[ペアリングされた](../../best-practices-availability-paired-regions.md) Azure リージョンでデータベースを復元した場合、Geo リストアの時間は大幅に短くなります。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>ハイパースケール データベースを使用して geo レプリケーションを設定できるか
 
@@ -357,7 +357,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>セカンダリ計算レプリカをいくつプロビジョニングできるか
 
-既定では、ハイパースケール データベース用にセカンダリ レプリカが 1 つ作成されます。 レプリカの数を調整する場合は、[Azure portal](https://portal.azure.com) または [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用します。
+既定では、ハイパースケール データベース用にセカンダリ レプリカが 1 つ作成されます。 レプリカの数を調整する場合は、[Azure portal](https://portal.azure.com) または [REST API](/rest/api/sql/databases/createorupdate) を使用します。
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>これらのセカンダリ計算レプリカにどのように接続するか
 

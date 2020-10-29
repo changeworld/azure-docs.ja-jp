@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) API サーバーのオプション�
 services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.custom: references_regions
-ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: dd1836220b5fd5a0af2d4ece3d9bc3932f1ae554
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749122"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748863"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -48,13 +48,13 @@ ms.locfileid: "88749122"
 
 アップタイム SLA を使用して新しいクラスターを作成するには、Azure CLI を使用します。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 # Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-AKS クラスターを作成するには、[`az aks create`][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 この操作は、完了するまでに数分かかります。
+AKS クラスターを作成するには、[`az aks create`][az-aks-create] コマンドを使用します。 次の例では、 *myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 この操作は、完了するまでに数分かかります。
 
 ```azurecli-interactive
 # Create an AKS cluster with uptime SLA
