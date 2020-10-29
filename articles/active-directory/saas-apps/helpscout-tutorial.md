@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817109"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル: Azure Active Directory と Help Scout の統合
 
@@ -27,7 +27,7 @@ Help Scout と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Help Scout に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ Help Scout と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Help Scout では、**SP と IDP** によって開始される SSO がサポートされます
-* Help Scout では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Help Scout では、 **SP と IDP** によって開始される SSO がサポートされます
+* Help Scout では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-help-scout-from-the-gallery"></a>ギャラリーからの Help Scout の追加
 
@@ -52,12 +52,12 @@ Azure AD への Help Scout の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Help Scout**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Help Scout** 」と入力します。
 1. 結果ウィンドウで **[Help Scout]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**B.Simon** というテスト ユーザーに基づいて、Help Scout で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **B.Simon** というテスト ユーザーに基づいて、Help Scout で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Help Scout 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Help Scout で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -91,20 +91,20 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
-    a. **識別子**は、Help Scout の**対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭は `urn:` です
+    a. **識別子** は、Help Scout の **対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭は `urn:` です
 
-    b. **応答 URL** は、Help Scout の**ポスト バック URL (Assertion Consumer Service URL)** で、先頭は `https://` です 
+    b. **応答 URL** は、Help Scout の **ポスト バック URL (Assertion Consumer Service URL)** で、先頭は `https://` です 
 
     > [!NOTE]
     > これらの URL の値は、単なる例です。 これらの値は、実際の応答 URL と識別子で更新する必要があります。 この値は、[認証] セクションの **[シングル サインオン]** タブから取得します。これについては後で説明します。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、「`https://secure.helpscout.net/members/login/`」と入力します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -134,9 +134,9 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**B.Simon**」と入力します。
+    a. **[名前]** フィールドに「 **B.Simon** 」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**B.Simon\@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「 **B.Simon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、B.Simon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -159,7 +159,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -171,7 +171,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
 ## <a name="configure-help-scout-sso"></a>Help Scout の SSO の構成
 
-1. Help Scout 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Help Scout 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -203,7 +203,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     a. **[Single Sign-On URL]\(シングル サインオン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    b. **[証明書のアップロード]** をクリックして、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
+    b. **[証明書のアップロード]** をクリックして、Azure Portal からダウンロードした **証明書 (Base64)** をアップロードします。
 
     c. **[メール ドメイン]** ボックスに、組織のメール ドメイン (例: `contoso.com`) を入力します。 複数のドメインを指定する場合は、コンマで区切ります。 Help Scout ユーザーまたは管理者が [Help Scout ログイン ページ](https://secure.helpscout.net/members/login/)で特定のドメインを入力すると必ず、その資格情報で認証するために ID プロバイダーにルーティングされます。
 
@@ -219,14 +219,14 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Help Scout] タイルをクリックすると、SSO を設定した Help Scout に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Help Scout] タイルをクリックすると、SSO を設定した Help Scout に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Help Scout を試す](https://aad.portal.azure.com/)

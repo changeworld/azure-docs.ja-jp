@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: e49fc29f03269096bfc7d6bb6e905187bb8788ff
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: d6a6c8b49582b34c2603e0ddf78b76736f97c183
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944106"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445581"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Harness の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91944106"
 * ユーザーが自分の Azure AD アカウントを使用して Harness に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Harness では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Harness では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-harness-from-the-gallery"></a>ギャラリーからの Harness の追加
 
@@ -49,7 +49,7 @@ Azure AD への Harness の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Harness**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Harness** 」と入力します。
 1. 結果パネルで **[Harness]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-harness"></a>Harness の Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ Harness に対する Azure AD SSO を構成してテストするには、次の�
     **[サインオン URL]** テキスト ボックスに URL として「`https://app.harness.io/`」と入力します。
 
     > [!NOTE]
-    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL は、このチュートリアルの後半で説明する「**Harness SSO の構成**」セクションで取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL は、このチュートリアルの後半で説明する「 **Harness SSO の構成** 」セクションで取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -126,7 +126,7 @@ Harness に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-harness-sso"></a>Harness SSO の構成
 
-1. Harness 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Harness 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -178,7 +178,7 @@ Azure AD ユーザーが Harness にサインインできるようにするに�
 
     a. **[Email Address(es)]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (例: `B.simon@contoso.com`)。
 
-    b. 対象の**ユーザー グループ**を選択します。
+    b. 対象の **ユーザー グループ** を選択します。
 
     c. **[送信]** をクリックします。
 
@@ -186,15 +186,14 @@ Azure AD ユーザーが Harness にサインインできるようにするに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Harness] タイルをクリックすると、SSO を設定した Harness に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Harness] タイルをクリックすると、SSO を設定した Harness に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Harness を試す](https://aad.portal.azure.com/)
-

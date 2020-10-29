@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 37554fa8d2f9c0082903d052f5afbf328b054d30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bdd11fa8e083d3a36767c04fd20b72da2b544c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540103"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445003"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-health-support-system"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Health Support System の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88540103"
 * ユーザーが自分の Azure AD アカウントで自動的に Health Support System にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Health Support System では、**SP** Initiated SSO がサポートされます
+* Health Support System では、 **SP** Initiated SSO がサポートされます
 
-* Health Support System を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Health Support System を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-health-support-system-from-the-gallery"></a>ギャラリーからの Health Support System の追加
 
@@ -51,7 +51,7 @@ Azure AD への Health Support System の統合を構成するには、マネー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Health Support System**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Health Support System** 」と入力します。
 1. 結果のパネルから **[Health Support System]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -116,7 +116,7 @@ Health Support System で Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-health-support-system-sso"></a>Health Support System SSO の構成
 
-**Health Support System** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Health Support System サポート チーム](https://wellcoms.jp/inquiry/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Health Support System** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Health Support System サポート チーム](https://wellcoms.jp/inquiry/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-health-support-system-test-user"></a>Health Support System テスト ユーザーの作成
 
@@ -126,18 +126,18 @@ Health Support System で Azure AD SSO を構成してテストするには、�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Health Support System] タイルをクリックすると、SSO を設定した Health Support System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Health Support System] タイルをクリックすると、SSO を設定した Health Support System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Health Support System を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Health Support System を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Health Support System を保護する方法](/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 84bbec783630aadc68a9632c90ee90f4a8cc98d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944973"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92446686"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grovo の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91944973"
 * ユーザーが自分の Azure AD アカウントを使用して Grovo に自動的にサインインできるようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Grovo では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Grovo では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Grovo では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Grovo では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-grovo-from-the-gallery"></a>ギャラリーからの Grovo の追加
 
@@ -50,7 +50,7 @@ Azure AD への Grovo の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Grovo**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Grovo** 」と入力します。
 1. 結果のパネルから **[Grovo]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-grovo"></a>Grovo の Azure AD シングル サインオンの構成とテスト
@@ -149,11 +149,11 @@ Grovo に対する Azure AD SSO を構成してテストするには、次の構
 
     a. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    b. **[Single sign-on service endpoint]\(シングル サインオン サービス エンドポイント\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[Single sign-on service endpoint]\(シングル サインオン サービス エンドポイント\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[Single sign-on service endpoint binding]\(シングル サインオン サービス エンドポイント バインディング\)** として `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` を選択します。
     
-    d. Azure Portal からダウンロードした **Base64 でエンコードされた証明書**をメモ帳で開き、 **[公開キー]** ボックスに貼り付けます。
+    d. Azure Portal からダウンロードした **Base64 でエンコードされた証明書** をメモ帳で開き、 **[公開キー]** ボックスに貼り付けます。
 
     e. **[次へ]** をクリックします。
 
@@ -168,14 +168,14 @@ Grovo に対する Azure AD SSO を構成してテストするには、次の構
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Grovo] タイルをクリックすると、SSO を設定した Grovo に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Grovo] タイルをクリックすると、SSO を設定した Grovo に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Grovo を試す](https://aad.portal.azure.com/)

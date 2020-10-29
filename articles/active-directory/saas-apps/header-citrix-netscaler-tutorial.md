@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: de02e8ea995482b815734565f839c4cb1c348782
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944226"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445632"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>チュートリアル:Azure Active Directory シングル サインオンと Citrix NetScaler の統合 (ヘッダーベースの認証)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91944226"
 * ユーザーが自身の Azure AD アカウントを使用して Citrix NetScaler に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に関する記事を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "91944226"
 
 * Citrix NetScaler の **SP Initiated** SSO
 
-* Citrix NetScaler の**ジャスト イン タイム** ユーザー プロビジョニング
+* Citrix NetScaler の **ジャスト イン タイム** ユーザー プロビジョニング
 
 * [Citrix NetScaler のヘッダーベースの認証](#publish-the-web-server)
 
@@ -59,7 +59,7 @@ Citrix NetScaler を Azure AD に統合するには、最初にギャラリー�
 
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Citrix NetScaler**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Citrix NetScaler** 」と入力します。
 
 1. 結果から **[Citrix NetScaler]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
@@ -89,17 +89,17 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
 1. **[シングル サインオン方式の選択]** ペインで、 **[SAML]** を選択します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ペインで、 **[基本的な SAML 構成]** の**編集** (ペン) アイコンを選択して設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ペインで、 **[基本的な SAML 構成]** の **編集** (ペン) アイコンを選択して設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP 開始**モードで構成するには:
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP 開始** モードで構成するには:
 
     1. **[識別子]** テキスト ボックスに、`https://<Your FQDN>` の形式で URL を入力します。
 
     1. **[応答 URL]** テキスト ボックスに、`https://<Your FQDN>/CitrixAuthService/AuthService.asmx` の形式で URL を入力します。
 
-1. アプリケーションを **SP 開始**モードで構成するには、 **[追加の URL を設定します]** を選択して、次の手順を実行します。
+1. アプリケーションを **SP 開始** モードで構成するには、 **[追加の URL を設定します]** を選択して、次の手順を実行します。
 
     * **[サインオン URL]** テキスト ボックスに、`https://<Your FQDN>/CitrixAuthService/AuthService.asmx` の形式で URL を入力します。
 
@@ -111,7 +111,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. Citrix NetScaler アプリケーションでは、SAML アサーションが特定の形式になっていることが想定されているため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **編集**アイコンを選択し、属性マッピングを変更します。
+1. Citrix NetScaler アプリケーションでは、SAML アサーションが特定の形式になっていることが想定されているため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **編集** アイコンを選択し、属性マッピングを変更します。
 
     ![SAML 属性マッピングを編集する](common/edit-attribute.png)
 
@@ -149,7 +149,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
 1. **[ユーザー]** プロパティで、これらの手順を実行します。
 
-   1. **名前**には、`B.Simon`を入力します。  
+   1. **名前** には、`B.Simon`を入力します。  
 
    1. **[ユーザー名]** への入力は「 _username@companydomain.extension_ 」の形式にします。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
 
@@ -263,9 +263,9 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
 
 1. **[Create Authentication Policy]\(認証ポリシーの作成\)** ペインで、次の値を入力または選択します。
 
-    * **Name**:認証ポリシーの名前を入力します。
-    * **アクション**:「**SAML**」と入力し、 **[Add]\(追加\)** を選択します。
-    * **式**: 「**true**」と入力します。     
+    * **Name** :認証ポリシーの名前を入力します。
+    * **アクション** :「 **SAML** 」と入力し、 **[Add]\(追加\)** を選択します。
+    * **式** : 「 **true** 」と入力します。     
     
     ![Citrix NetScaler の構成 - [Create Authentication Policy]\(認証ポリシーの作成\) ペイン](./media/header-citrix-netscaler-tutorial/policy01.png)
 
@@ -354,11 +354,11 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
 
     1. **[Name]\(名前\)** には、書き換えアクションの名前を入力します。
 
-    1. **[Type]\(種類\)** には、「**INSERT_HTTP_HEADER**」と入力します。
+    1. **[Type]\(種類\)** には、「 **INSERT_HTTP_HEADER** 」と入力します。
 
-    1. **[Header Name]\(ヘッダー名\)** には、ヘッダー名を入力します (この例では、「_SecretID_」を使用します)。
+    1. **[Header Name]\(ヘッダー名\)** には、ヘッダー名を入力します (この例では、「 _SecretID_ 」を使用します)。
 
-    1. **[Expression]\(式\)** には、「**aaa.USER.ATTRIBUTE("mySecretID")** 」と入力します。ここで、**mySecretID** は Citrix ADC に送信された Azure AD SAML 要求です。
+    1. **[Expression]\(式\)** には、「 **aaa.USER.ATTRIBUTE("mySecretID")** 」と入力します。ここで、 **mySecretID** は Citrix ADC に送信された Azure AD SAML 要求です。
 
     1. **［作成］** を選択します
 
@@ -376,7 +376,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
 
     1. **[Action]\(アクション\)** には、前のセクションで作成した書き換えアクションを選択します。
 
-    1. **[Expression]\(式\)** には、「**true**」と入力します。
+    1. **[Expression]\(式\)** には、「 **true** 」と入力します。
 
     1. **［作成］** を選択します
 
@@ -437,15 +437,15 @@ GUI を使用して書き換えポリシーを仮想サーバーにバインド�
 
 このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
 
-アクセス パネルで [Citrix NetScaler] タイルを選択すると、SSO を設定した Citrix NetScaler に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Citrix NetScaler] タイルを選択すると、SSO を設定した Citrix NetScaler に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD と Citrix NetScaler の併用を試す](https://aad.portal.azure.com/)
 

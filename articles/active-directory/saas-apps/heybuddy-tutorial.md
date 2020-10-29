@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7e27bb9a342270c821eba92b19248933e760809a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 106b95d7d3f67504cc213b5ce4f23a767a486770
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550590"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92444498"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と HeyBuddy の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88550590"
 * ユーザーが自分の Azure AD アカウントを使用して HeyBuddy に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +39,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* HeyBuddy では、**SP** によって開始される SSO がサポートされます
+* HeyBuddy では、 **SP** によって開始される SSO がサポートされます
 
 
-* HeyBuddy では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* HeyBuddy では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-heybuddy-from-the-gallery"></a>ギャラリーからの HeyBuddy の追加
@@ -53,7 +53,7 @@ Azure AD への HeyBuddy の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**HeyBuddy**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **HeyBuddy** 」と入力します。
 1. 結果のパネルから **HeyBuddy** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -101,7 +101,7 @@ HeyBuddy に対する Azure AD SSO を構成してテストするには、次の
     | | |
     
     > [!NOTE]
-    > アプリケーションのロールの構成および設定の方法については、こちらの[リンク](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)を参照してください。
+    > アプリケーションのロールの構成および設定の方法については、こちらの[リンク](../develop/active-directory-enterprise-app-role-management.md)を参照してください。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -139,7 +139,7 @@ HeyBuddy に対する Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-heybuddy-sso"></a>HeyBuddy の SSO の構成
 
-**HeyBuddy** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [HeyBuddy サポート チーム](mailto:support@heybuddy.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**HeyBuddy** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [HeyBuddy サポート チーム](mailto:support@heybuddy.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-heybuddy-test-user"></a>HeyBuddy テスト ユーザーの作成
 
@@ -152,15 +152,14 @@ HeyBuddy に対する Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [HeyBuddy] タイルをクリックすると、SSO を設定した HeyBuddy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [HeyBuddy] タイルをクリックすると、SSO を設定した HeyBuddy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で HeyBuddy を試す](https://aad.portal.azure.com/)
-
