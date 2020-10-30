@@ -212,8 +212,6 @@
           href: log-query/get-started-portal.md
         - name: クエリ スコープ
           href: log-query/scope.md
-        - name: シンプルなログ エクスペリエンス
-          href: log-query/simple-logs.md
         - name: Azure Data Explorer でのクエリ
           href: platform/azure-data-explorer-monitor-proxy.md
         - name: ログ クエリ

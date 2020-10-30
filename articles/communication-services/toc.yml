@@ -74,6 +74,8 @@
       href: concepts/sdk-options.md
     - name: 価格モデル
       href: concepts/pricing.md
+    - name: プライバシー
+      href: concepts/privacy.md
     - name: 認証
       href: concepts/authentication.md
     - name: イベント処理

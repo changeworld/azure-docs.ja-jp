@@ -50,6 +50,8 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: QnA Maker アプリの管理
       href: How-To/manage-qna-maker-app.md
+    - name: アクティブ ラーニングを有効にする
+      href: How-To/use-active-learning.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースを作成する
