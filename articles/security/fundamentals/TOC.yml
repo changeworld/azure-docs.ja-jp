@@ -56,8 +56,8 @@
       href: network-overview.md
     - name: ベスト プラクティス
       href: network-best-practices.md
-    - name: DDoS Protection
-      href: ddos-best-practices.md
+    - name: DDoS Protection のベスト プラクティス
+      href: 'https://docs.microsoft.com/azure/ddos-protection/fundamental-best-practices'
     - name: DDoS Protection のセキュリティ ベースライン
       href: ddos-protection-security-baseline.md
     - name: 未解決の DNS とサブドメインの引き継ぎ

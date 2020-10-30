@@ -1,5 +1,9 @@
 - name: 概要
   href: overview.md
+- name: Red Hat クイックスタート
+  items: null
+- name: クイックスタート - CentOS の WildFly
+  href: wildfly-on-centos.md
 - name: Red Hat Enterprise Linux イメージ
   items:
     - name: Red Hat Enterprise Linux イメージの概要

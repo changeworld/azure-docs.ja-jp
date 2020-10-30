@@ -65,7 +65,7 @@
       href: disaster-recovery.md
 - name: 操作方法ガイド
   items:
-    - name: Java Spring アプリをデプロイ用に準備する
+    - name: アプリをデプロイ用に準備する
       href: spring-cloud-tutorial-prepare-app-deployment.md
     - name: ソース コードから Java アプリを起動する
       href: spring-cloud-howto-launch-from-source.md

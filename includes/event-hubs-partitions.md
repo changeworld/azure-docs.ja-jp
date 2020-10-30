@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc7c86ff1df48f9ce96769098f7aab76d33c8822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd2d3b46ec339328e0d0889a722d39070104953
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68481503"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347341"
 ---
 Event Hubs は、パーティション化されたコンシューマー パターンを使用してメッセージ ストリーミングを実現します。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。
 
 パーティションは、イベント ハブで保持される順序付けされた一連のイベントです。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 パーティションは "コミット ログ" として考えることができます。
 
-![Event Hubs](./media/event-hubs-partitions/partition.png)
+![古いものから新しいものへのイベントのシーケンスを表示する図。](./media/event-hubs-partitions/partition.png)
 
 Event Hubs は構成されたリテンション期間にわたりデータを保持します。この期間は、イベント ハブのすべてのパーティションに適用されます。 イベントの有効期限は時間で設定されます。イベントを明示的に削除することはできません。 パーティションは独立していて、それぞれ独自のデータ シーケンスを含んでいるため、多くの場合、拡大するペースは異なります。
 

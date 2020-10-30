@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ea1ac064799b0cede1de82851a514a2b389f20aa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116712"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499065"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -46,6 +46,8 @@ ms.locfileid: "92116712"
 
 ### <a name="dedicated-tier"></a>Dedicated レベル
 Event Hubs Dedicated オファリングは固定の月額料金で課金され、最低の使用量は 4 時間です。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けにエンタープライズ スケールの容量と制限で提供されます。 
+
+Azure portal を使用して専用 Event Hubs クラスターを作成する方法については、この[ドキュメント](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)を参照してください。
 
 | 機能 | 制限 |
 | --- | ---|

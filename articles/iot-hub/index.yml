@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 5459129d5d49324839bfe36e2031d5be8d1e0521
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: 11145abb06fb84f533ee6d556cafe1e943579131
+  ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92545380"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92890226"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -40,12 +40,6 @@ landingContent:
     links:
     - text: Node.js を使用したデバイス ツインの操作
       url: iot-hub-node-node-twin-getstarted.md
-    - text: IoT Hub の監視
-      url: monitor-iot-hub.md
-    - text: IoT Hub 監視データのリファレンス
-      url: monitor-iot-hub-reference.md
-    - text: IoT との切断に関する監視、診断、およびトラブルシューティング
-      url: iot-hub-troubleshoot-connectivity.md
 - title: ソリューションをスケール調整する
   linkLists:
   - linkListType: concept
@@ -92,6 +86,18 @@ landingContent:
       url: iot-hub-create-use-iot-toolkit.md
     - text: IoT エクスプローラー
       url: ../iot-pnp/howto-use-iot-explorer.md
+- title: IoT Hub の監視とトラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: IoT Hub の監視
+      url: monitor-iot-hub.md
+    - text: IoT Hub 監視データのリファレンス
+      url: monitor-iot-hub-reference.md
+    - text: IoT Hub との切断に関する監視、診断、およびトラブルシューティング
+      url: iot-hub-troubleshoot-connectivity.md
+    - text: Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
+      url: iot-hub-how-to-order-connection-state-events.md
 - title: IoT セキュリティ証明書の使用
   linkLists:
   - linkListType: concept

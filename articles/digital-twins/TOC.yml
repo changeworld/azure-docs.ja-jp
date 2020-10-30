@@ -23,8 +23,6 @@
   items:
     - name: カスタム モデル
       href: concepts-models.md
-    - name: 業界標準モデルの変換
-      href: concepts-convert-models.md
     - name: デジタル ツインとツイン グラフ
       href: concepts-twins-graph.md
     - name: クエリ言語
@@ -63,6 +61,8 @@
       items:
         - name: カスタム モデルを管理する
           href: how-to-manage-model.md
+        - name: 業界標準モデルを変換する
+          href: how-to-convert-models.md
         - name: モデルを解析および検証する
           href: how-to-parse-models.md
         - name: タグを追加する
@@ -176,11 +176,15 @@
             - name: Java SDK - ソース
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: JavaScript SDK - npm
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
             - name: JavaScript SDK - リファレンス
               href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
+            - name: JavaScript SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/'
+            - name: Python SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI のリファレンス

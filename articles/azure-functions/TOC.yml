@@ -79,7 +79,33 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: CLI サンプルのインデックス
+          href: functions-cli-samples.md
+        - name: Function App の作成
+          items:
+            - name: サーバーレス関数アプリ
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: サーバーレス Python アプリ
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: スケーラブルな Premium プランのアプリ
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: Dedicated (App Service) プランのアプリ
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: サービスの統合
+          items:
+            - name: Azure Storage の接続
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: Azure Cosmos DB の接続
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Python マウント ファイル共有
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: 継続的なデプロイ
+          items:
+            - name: GitHub のデプロイ
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: DevOps 配置
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
     - name: ランタイムのバージョンの比較

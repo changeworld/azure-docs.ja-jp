@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Azure DDoS Protection Standard のドキュメント
+summary: Azure DDoS Protection Standard をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御を提供する方法について説明します。
+metadata:
+  description: Azure DDoS Protection Standard をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御を提供する方法について説明します。
+  keywords: azure ddos protection standard
+  author: yitoh
+  ms.author: yitoh
+  ms.date: 09/04/2019
+  ms.service: ddos-protection
+  ms.topic: landing-page
+  ms.custom: azure-ddos-protection
+  ms.openlocfilehash: cfc0a8c4856711c4f011805322e2b28942866573
+  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92904722"
+landingContent:
+- title: Azure DDoS Protection Standard について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure DDoS Protection Standard とは
+      url: ddos-protection-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure DDoS Protection Standard の機能
+      url: ddos-protection-standard-features.md
+    - text: 参照用アーキテクチャ
+      url: ddos-protection-reference-architectures.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: DDoS Protection プランを作成する - ポータル
+      url: manage-ddos-protection.md
+- title: 攻撃分析を構成する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: DDoS 保護テレメトリの表示と構成
+      url: telemetry-monitoring-alerting.md
+    - text: DDoS 攻撃の軽減策レポートとフロー ログを構成する
+      url: reports-and-flow-logs.md
+- title: DDoS 攻撃への対応
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 攻撃の種類
+      url: types-of-attacks.md
+    - text: 基本的なベスト プラクティス
+      url: fundamental-best-practices.md
+    - text: DDoS 対応戦略のコンポーネント
+      url: ddos-response-strategy.md
+  - linkListType: how-to-guide
+    links:
+    - text: DDoS Rapid Response (DRR) に参加する
+      url: ddos-rapid-response.md
