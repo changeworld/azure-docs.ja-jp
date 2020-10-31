@@ -11,14 +11,14 @@
 - name: チュートリアル
   items:
     - name: 動的グループの作成
-      href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+      href: /azure/active-directory/enterprise-users/users-revoke-access
 - name: 概念
   expanded: true
   items:
     - name: Azure AD 管理者ロールの委任
       href: concept-delegation.md
     - name: 既定のユーザー アクセス許可の比較
-      href: /azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+      href: /azure/active-directory/fundamentals/users-default-permissions
     - name: Azure と Azure AD のロールの比較
       href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Azure AD の管理単位について
@@ -29,13 +29,13 @@
     - name: ユーザーと役割
       items:
         - name: 管理者ロールへのユーザーの割り当て
-          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
         - name: ユーザーのアクセスを取り消す
-          href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/enterprise-users/users-revoke-access
         - name: ゲスト ユーザーにロールを割り当てる
           href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/roles/context/ugr-context
         - name: ゲスト ユーザーのアクセスを制限する
-          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 動的グループとゲスト
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/roles/context/ugr-context
     - name: ロールとアクセス許可
@@ -57,7 +57,7 @@
         - name: カスタム ロールの割り当ての表示
           href: custom-view-assignments.md
         - name: Azure portal でのカスタム ロールの割り当て
-          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
         - name: PowerShell でのカスタム ロールの割り当て
           href: custom-assign-powershell.md
         - name: エンタープライズ アプリのカスタム ロールの割り当て
@@ -111,7 +111,7 @@
     - name: トラブルシューティング
       items:
         - name: Azure AD のサポートを受ける
-          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto
 - name: リファレンス
   items:
     - name: タスク別の最小特権ロール
@@ -125,4 +125,4 @@
     - name: Azure AD PowerShell for Graph
       href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
     - name: Azure AD サービスの制約
-      href: /azure/active-directory/fundamentals/directory-service-limits-restrictions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+      href: /azure/active-directory/enterprise-users/directory-service-limits-restrictions

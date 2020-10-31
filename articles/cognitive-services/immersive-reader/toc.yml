@@ -38,6 +38,8 @@
   items:
     - name: JavaScript SDK
       href: reference.md
+    - name: リリース ノート
+      href: release-notes.md
 - name: リソース
   items:
     - name: サポートとヘルプのオプション

@@ -123,8 +123,6 @@
           href: platform/data-platform-metrics.md
         - name: Event Hubs へのデータのストリーム配信
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: 洞察
-      href: insights/insights-overview.md
     - name: データのセキュリティ
       items:
         - name: ログ データ
@@ -1062,7 +1060,7 @@
               href: insights/container-insights-optout-hybrid.md
         - name: トラブルシューティング
           href: insights/container-insights-troubleshoot.md
-    - name: その他の分析情報
+    - name: 洞察
       items:
         - name: Azure Cache for Redis (プレビュー)
           href: insights/redis-cache-insights-overview.md
@@ -1079,61 +1077,61 @@
           href: insights/resource-group-insights.md
         - name: 分析情報のトラブルシューティング
           href: insights/troubleshoot-workbooks.md
-    - name: ソリューション
-      items:
-        - name: 概要
-          href: insights/solutions.md
-          displayName: 'Azure CLI, az monitor log-analytics'
-        - name: ターゲット ソリューション
-          href: insights/solution-targeting.md
-        - name: 使用可能なソリューション
+        - name: ソリューション
           items:
-            - name: AD の正常性評価
-              href: insights/ad-assessment.md
-            - name: AD レプリケーションの状態
-              href: insights/ad-replication-status.md
-            - name: 容量とパフォーマンス ソリューション
-              href: insights/capacity-performance.md
-            - name: Docker および Windows コンテナーの監視
-              href: insights/containers.md
-            - name: ネットワーク
+            - name: 概要
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: ターゲット ソリューション
+              href: insights/solution-targeting.md
+            - name: 使用可能なソリューション
               items:
-                - name: ネットワーク分析
-                  href: insights/azure-networking-analytics.md
-                - name: DNS
-                  href: insights/dns-analytics.md
-                - name: ネットワーク パフォーマンス監視
+                - name: AD の正常性評価
+                  href: insights/ad-assessment.md
+                - name: AD レプリケーションの状態
+                  href: insights/ad-replication-status.md
+                - name: 容量とパフォーマンス ソリューション
+                  href: insights/capacity-performance.md
+                - name: Docker および Windows コンテナーの監視
+                  href: insights/containers.md
+                - name: ネットワーク
                   items:
-                    - name: ソリューションの概要
-                      href: insights/network-performance-monitor.md
-                    - name: パフォーマンス モニター
-                      href: insights/network-performance-monitor-performance-monitor.md
-                    - name: サービス接続モニター
-                      href: insights/network-performance-monitor-service-connectivity.md
-                    - name: ExpressRoute
-                      href: insights/network-performance-monitor-expressroute.md
-                    - name: 価格
-                      href: insights/network-performance-monitor-pricing-faq.md
-                    - name: よく寄せられる質問
-                      href: insights/network-performance-monitor-faq.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: Service Map ソリューション
-              href: insights/service-map.md
-            - name: Service Map と Operations Manager
-              href: insights/service-map-scom.md
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-            - name: VMware 分析ソリューション
-              href: insights/vmware.md
-            - name: Wire Data ソリューション
-              href: insights/wire-data.md
-            - name: Alert Management ソリューション
-              href: platform/alert-management-solution.md
+                    - name: ネットワーク分析
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: ネットワーク パフォーマンス監視
+                      items:
+                        - name: ソリューションの概要
+                          href: insights/network-performance-monitor.md
+                        - name: パフォーマンス モニター
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: サービス接続モニター
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: 価格
+                          href: insights/network-performance-monitor-pricing-faq.md
+                        - name: よく寄せられる質問
+                          href: insights/network-performance-monitor-faq.md
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: Service Map ソリューション
+                  href: insights/service-map.md
+                - name: Service Map と Operations Manager
+                  href: insights/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: VMware 分析ソリューション
+                  href: insights/vmware.md
+                - name: Wire Data ソリューション
+                  href: insights/wire-data.md
+                - name: Alert Management ソリューション
+                  href: platform/alert-management-solution.md
     - name: Workbooks
       items:
         - name: 概要

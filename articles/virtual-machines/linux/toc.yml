@@ -328,7 +328,7 @@
         - name: 高パフォーマンス用の設計
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ディスク バースト
-          href: disk-bursting.md
+          href: ../disk-bursting.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ディスクのスケーラビリティ ターゲット
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
@@ -343,7 +343,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -581,7 +581,7 @@
           href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

@@ -731,6 +731,10 @@
               items:
                 - name: Java SDK v4 のトラブルシューティング
                   href: troubleshoot-java-sdk-v4-sql.md
+                - name: 要求タイムアウトのトラブルシューティング
+                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                - name: サービス利用不可のトラブルシューティング
+                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: トラブルシューティング - Async Java SDK v2
                   href: troubleshoot-java-async-sdk.md
         - name: Change Feed
@@ -877,8 +881,6 @@
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
-        - name: エミュレーターのリリース ノート
-          href: local-emulator-release-notes.md
         - name: Azure Policy の組み込み
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -1279,6 +1281,8 @@
               href: emulator-command-line-parameters.md
             - name: エミュレーターのトラブルシューティング
               href: troubleshoot-local-emulator.md
+            - name: エミュレーターのリリース ノート
+              href: local-emulator-release-notes.md
             - name: Visual Studio Code 拡張機能
               href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
         - name: Azure DevOps CI/CD パイプラインの設定

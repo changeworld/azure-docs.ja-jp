@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Digital Twins プレビューのドキュメント
+title: Azure Digital Twins のドキュメント
 summary: Azure Digital Twins を使用して資産、環境、ビジネス システムのデジタル版を作成し、現実世界を模した次世代の IoT ソリューションを構築する方法を説明します。
 metadata:
-  title: Azure Digital Twins プレビューのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure Digital Twins のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。
   ms.service: digital-twins
   ms.topic: landing-page
@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: b9d6067fe8c5c81024f6fa211d32e0ecc92f5a47
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: a05f168b18f32e2b4730e5ef50624d41fb48e147
+  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92358985"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93099098"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
