@@ -1,51 +1,23 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces のドキュメント
-summary: Azure Dev Spaces は非推奨となり、2023 年 10 月 31 日に廃止されます。
+summary: Azure Dev Spaces は廃止の予定であり、2023 年 10 月 31 日に終了します。
 metadata:
   title: Azure Dev Spaces のドキュメント
-  description: Azure Dev Spaces は非推奨となり、2023 年 10 月 31 日に廃止されます。
+  description: Azure Dev Spaces は廃止の予定であり、2023 年 10 月 31 日に終了します。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
   author: zr-msft
   ms.author: zarhoads
   manager: gwallace
-  ms.date: 10/12/2020
-  ms.openlocfilehash: 47cc21196875e09576b7a8e0a5a8233df294de7d
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.date: 10/29/2020
+  ms.openlocfilehash: a3b3ca8c87871b9ae8e1d6a3db32d9e2051215b6
+  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91965864"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93072033"
 landingContent:
-- title: Azure Dev Spaces について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Dev Spaces とは
-      url: about.md
-  - linkListType: concept
-    links:
-    - text: Azure Dev Spaces のしくみ
-      url: how-dev-spaces-works.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Dev Spaces のインストール
-      url: how-to/install-dev-spaces.md
-- title: 高度なシナリオ
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: カスタム NuGet フィードを使用する
-      url: how-to/use-custom-nuget-feed.md
-    - text: 非公開 Helm リポジトリを使用する
-      url: how-to/use-private-helm-repo.md
-    - text: Windows コンテナーを操作する
-      url: how-to/run-dev-spaces-windows-containers.md
-    - text: カスタム イングレスと HTTPS に traefik を使用する
-      url: how-to/ingress-https-traefik.md
-    - text: カスタムのイングレスと HTTPS に NGINX を使用する
-      url: how-to/ingress-https-nginx.md
 - title: Bridge to Kubernetes
   linkLists:
   - linkListType: how-to-guide
@@ -56,3 +28,21 @@ landingContent:
       url: /visualstudio/containers/bridge-to-kubernetes
     - text: Bridge to Kubernetes への移行
       url: migrate-to-bridge-to-kubernetes.md
+- title: Azure Dev Spaces について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Dev Spaces とは
+      url: about.md
+  - linkListType: concept
+    links:
+    - text: Azure Dev Spaces のしくみ
+      url: how-dev-spaces-works.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: トラブルシューティング
+      url: troubleshooting.md
+    - text: よく寄せられる質問
+      url: faq.md

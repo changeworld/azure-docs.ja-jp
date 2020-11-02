@@ -79,8 +79,6 @@
   items:
     - name: プランの種類別の公開ガイド
       href: publisher-guide-by-offer-type.md
-    - name: Azure AD によるオファー認証を有効にする
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure アプリケーション プラン
       items:
         - name: ソリューション テンプレート オファーの計画

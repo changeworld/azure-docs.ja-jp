@@ -212,6 +212,8 @@
           href: container-registry-task-run-template.md
         - name: 専用エージェント プールでタスクを実行する (プレビュー)
           href: tasks-agent-pools.md
+        - name: パブリック コンテンツの使用と管理
+          href: tasks-consume-public-content.md
         - name: Buildpack を使用したイメージのビルド (プレビュー)
           href: container-registry-tasks-pack-build.md
         - name: タスク ログを表示する

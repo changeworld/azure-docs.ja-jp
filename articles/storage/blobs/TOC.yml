@@ -179,7 +179,7 @@
               href: storage-blob-rehydration.md
             - name: パフォーマンス レベル
               href: storage-blob-performance-tiers.md
-            - name: Azure Blob Storage のライフサイクルを管理する
+            - name: アクセス層のライフサイクルの自動化
               href: storage-lifecycle-management-concepts.md
         - name: ディザスター リカバリーとフェールオーバー
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -367,7 +367,7 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: サービス SAS の作成 (.NET)
+                - name: サービス SAS を作成する
                   href: storage-blob-service-sas-create-dotnet.md
                 - name: アカウント SAS の作成 (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

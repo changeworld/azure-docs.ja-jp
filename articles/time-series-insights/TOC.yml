@@ -97,12 +97,10 @@
           items:
             - name: プロビジョニングと管理の方法
               href: how-to-provision-manage.md
-            - name: 診断とトラブルシューティングの方法
-              href: how-to-diagnose-troubleshoot.md
-        - name: イングレスとストレージ
-          items:
             - name: TSID を選択する方法
               href: how-to-select-tsid.md
+            - name: 診断とトラブルシューティングの方法
+              href: how-to-diagnose-troubleshoot.md
         - name: モデル
           items:
             - name: モデルを編集する方法

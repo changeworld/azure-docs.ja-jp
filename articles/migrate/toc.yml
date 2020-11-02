@@ -166,6 +166,8 @@
           href: scale-physical-assessment.md
         - name: 多数の VM の移行の自動化
           href: how-to-migrate-at-scale.md
+        - name: VMware の移行を自動化する方法
+          href: how-to-automate-migration.md
         - name: 移行の例 (Contoso シリーズ)
           href: contoso-migration-overview.md
 - name: トラブルシューティング

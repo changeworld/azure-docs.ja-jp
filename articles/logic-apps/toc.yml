@@ -101,7 +101,7 @@
           href: logic-apps-batch-process-send-receive-messages.md
         - name: メッセージを順番に送信する - シーケンシャルなコンボイ
           href: send-related-messages-sequential-convoy.md
-        - name: JSON 定義の作成
+        - name: JSON でワークフロー定義を作成する
           href: logic-apps-author-definitions.md
         - name: コンテンツ タイプを処理する
           href: logic-apps-content-type.md
@@ -109,6 +109,8 @@
           href: logic-apps-exception-handling.md
         - name: 大きいメッセージを処理する
           href: logic-apps-handle-large-messages.md
+        - name: SQL コネクタの実行時間の長いストアド プロシージャを処理する
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: 調整の問題または 429 エラーを処理する
           href: handle-throttling-problems-429-errors.md
         - name: カスタム コネクタを開発する

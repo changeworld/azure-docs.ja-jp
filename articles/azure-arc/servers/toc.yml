@@ -37,11 +37,13 @@
           href: onboard-service-principal.md
         - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
           href: onboard-dsc.md
+        - name: Windows Admin Center からマシンを接続する
+          href: onboard-windows-admin-center.md
         - name: PowerShell を使用してマシンを Azure Arc に接続する
           href: onboard-powershell.md
     - name: 管理する
       items:
-        - name: Azure VM 拡張機能
+        - name: VM 拡張機能
           items:
             - name: 概要
               href: manage-vm-extensions.md

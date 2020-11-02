@@ -32,6 +32,9 @@
     - name: ポリシーの割り当て - ARM テンプレート
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: ポリシーの割り当て - Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: チュートリアル
   items:
     - name: Azure Policy の作成と管理
@@ -191,7 +194,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Azure Monitor for VMs の有効化 (プレビュー)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure Storage の統合
+      items:
+        - name: Azure Policy を使用した TLS の監査
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Azure Web Application Firewall の統合
+      items:
+        - name: WAF と Azure Policy の統合
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: トラブルシューティング
   items:
     - name: 一般的な問題
@@ -264,6 +275,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: イニシアティブの定義
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform のリソース
+      items:
+        - name: 割り当て
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: 定義
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: イニシアチブ (定義の設定)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: Remediation
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: リソース
   items:
     - name: GitHub - Azure Policy サンプル
@@ -280,6 +301,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Azure のガバナンス ビジュアライザー
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Azure Monitor 用の Azure Policy スクリプト
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: フィードバックとサポート
       items:
         - name: Azure Policy 用の Microsoft Q&A

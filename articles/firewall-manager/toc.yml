@@ -28,6 +28,8 @@
       href: deployment-overview.md
     - name: セキュリティ パートナー プロバイダー
       href: trusted-security-partners.md
+    - name: Check Point Cloudguard Connect を使用してハブをセキュリティで保護する
+      href: check-point-overview.md
     - name: IP グループ
       href: ip-groups.md
     - name: ルール処理ロジック

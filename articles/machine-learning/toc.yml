@@ -413,6 +413,8 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: グラフとメトリックを理解する
           href: how-to-understand-automated-ml.md
+        - name: .NET アプリケーションでの ONNX モデルの使用
+          href: how-to-use-automl-onnx-model-dotnet.md
     - name: モデルをデプロイおよび提供する
       items:
         - name: デプロイする場所と方法
