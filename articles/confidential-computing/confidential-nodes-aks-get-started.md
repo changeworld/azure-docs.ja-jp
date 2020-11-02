@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122180"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341908"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>クイック スタート:コンフィデンシャル コンピューティング ノードを含んだ Azure Kubernetes Service (AKS) クラスターを Azure CLI を使用してデプロイする (プレビュー)
 
@@ -27,11 +27,11 @@ ms.locfileid: "92122180"
 ### <a name="deployment-pre-requisites"></a>デプロイの前提条件
 
 1. 有効な Azure サブスクリプションを持っている。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)アカウントを作成してください。
-1. デプロイ マシンに Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている (バージョンを調べるには  `az --version` を実行します)。 インストールまたはアップグレードする必要がある場合は、 [Azure CLI のインストール](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)に関するページを参照してください。
+1. デプロイ マシンに Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている (バージョンを調べるには `az --version` を実行します)。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)に関するページを参照してください
 1. [aks-preview 拡張機能](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) (バージョン 0.4.62 以降) 
-1. ご利用のサブスクリプションで最低 6 つの DCSv2 コアが利用できる。 既定では、コンフィデンシャル コンピューティングの VM コア クォータは、Azure サブスクリプションごとに 8 コアです。 プロビジョニングする予定のクラスターに必要なコア数が 8 を超える場合は、[こちら](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)の手順に従って、クォータの引き上げチケットを起票してください。
+1. ご利用のサブスクリプションで最低 6 つの **DC<x>s-v2** コアが利用できる。 既定では、コンフィデンシャル コンピューティングの VM コア クォータは、Azure サブスクリプションごとに 8 コアです。 プロビジョニングする予定のクラスターに必要なコア数が 8 を超える場合は、[こちら](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)の手順に従って、クォータの引き上げチケットを起票してください。
 
-### <a name="confidential-computing-node-features"></a>コンフィデンシャル コンピューティング ノードの機能
+### <a name="confidential-computing-node-features-dcxs-v2"></a>コンフィデンシャル コンピューティング ノードの機能 (DC<x>s-v2)
 
 1. Linux コンテナーのみをサポートする Linux ワーカー ノード
 1. Ubuntu 第 2 世代 18.04 仮想マシン
@@ -94,14 +94,14 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-上のコマンドを実行すると、DCSv2 ノード プールを含んだ新しい AKS クラスターがプロビジョニングされ、2 つのデーモン セット ([SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin) および [SGX Quote Helper](confidential-nodes-aks-overview.md#sgx-quote)) が自動的にインストールされます。
+上のコマンドを実行すると、 **DC<x>s-v2** ノード プールを含んだ新しい AKS クラスターがプロビジョニングされ、2 つのデーモン セット ([SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin) および [SGX Quote Helper](confidential-nodes-aks-overview.md#sgx-quote)) が自動的にインストールされます。
 
 az aks get-credentials コマンドを使用して、AKS クラスターの資格情報を取得します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-DCSv2 ノード プールにノードが適切に作成され、SGX 関連のデーモン セットが実行されていることを確認します。以下のように、kubectl get pods と kubectl get nodes コマンドを使用します。
+**DC<x>s-v2** ノード プールにノードが適切に作成され、SGX 関連のデーモン セットが実行されていることを確認します。以下のように、kubectl get pods と kubectl get nodes コマンドを使用します。
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -130,9 +130,12 @@ az aks update --enable-addons confcom --resource-group myResourceGroup --name my
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-次に、DCSv2 ノード プールをクラスターに追加します。
-
-```azurecli-interactive
+次に、 **DC<x>s-v2** ノード プールをクラスターに追加します。
+    
+> [!NOTE]
+> コンフィデンシャル コンピューティングの機能を使用するためには、既存の AKS クラスターに **DC<x>s-v2** VM SKU ベースのノード プールが少なくとも 1 つ存在する必要があります。 コンフィデンシャル コンピューティング DCsv2 VM SKU について詳しくは、[使用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)に関するページを参照してください。
+    
+  ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
 
 output node pool added
