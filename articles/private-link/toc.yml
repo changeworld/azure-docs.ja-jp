@@ -37,6 +37,8 @@
       items:
         - name: SQL Server に接続する - ポータル
           href: tutorial-private-endpoint-sql-portal.md
+        - name: SQL サーバーに接続する - PowerShell
+          href: tutorial-private-endpoint-sql-powershell.md
 - name: 概念
   items:
     - name: プライベート エンドポイント
